@@ -15,16 +15,17 @@ class ReplaceCloudGtmAddressPoolAddressRequest(DaraModel):
         addresses: List[main_models.ReplaceCloudGtmAddressPoolAddressRequestAddresses] = None,
         client_token: str = None,
     ):
-        # The language of the response. Valid values:
+        # The response language. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US (default)**: English
+        # - **zh-CN**: Chinese
+        # 
+        # - **en-US** (Default): English
         self.accept_language = accept_language
-        # The ID of the address pool for which you want to replace addresses. This ID uniquely identifies the address pool.
+        # The unique ID of the address pool to update.
         self.address_pool_id = address_pool_id
-        # The addresses.
+        # The list of addresses.
         self.addresses = addresses
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Ensure the client token is unique for each request. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
 
     def validate(self):
@@ -81,16 +82,17 @@ class ReplaceCloudGtmAddressPoolAddressRequestAddresses(DaraModel):
         serial_number: int = None,
         weight_value: int = None,
     ):
-        # The ID of the new address. This ID uniquely identifies the address.
+        # The unique ID of the address.
         # 
-        # *   If you specify this parameter, the original addresses in the address pool will be deleted and replaced with new addresses.
-        # *   If you do not specify this parameter, all addresses in the address pool will be deleted and the address pool will be left empty.
+        # - If you specify this parameter, all existing addresses in the address pool are deleted and replaced with the specified addresses.
+        # 
+        # - If you leave this parameter empty, all existing addresses in the address pool are deleted.
         self.address_id = address_id
-        # The DNS request sources.
+        # The list of DNS request sources.
         self.request_source = request_source
-        # The sequence number that specifies the priority for returning the new address. A smaller sequence number specifies a higher priority. This setting takes effect for new addresses.
+        # The serial number, which determines the priority of the address. A smaller number indicates a higher priority. This setting applies to the updated addresses.
         self.serial_number = serial_number
-        # The weight value of the new address. You can set a different weight value for each address. This way, addresses are returned based on the weight values for Domain Name System (DNS) requests. A weight value must be an integer that ranges from 1 to 100. This setting takes effect for new addresses.
+        # The weight of the address. Valid values: 1 to 100. You can set a different weight for each address. DNS queries are then resolved based on the weight ratio. This setting applies to the updated addresses.
         self.weight_value = weight_value
 
     def validate(self):

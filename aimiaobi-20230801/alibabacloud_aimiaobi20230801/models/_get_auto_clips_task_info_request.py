@@ -12,10 +12,16 @@ class GetAutoClipsTaskInfoRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Show video understanding results.
         self.show_analysis_results = show_analysis_results
+        # Show video source information.
         self.show_resource_info = show_resource_info
+        # Unique ID of the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # [Workspace](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

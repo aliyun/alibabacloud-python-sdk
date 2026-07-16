@@ -9,7 +9,7 @@ class ListQuotasRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The quota name. Fuzzy search is supported.
+        # The name of the resource quota. Fuzzy search is supported.
         self.name = name
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetBackupStorageCountResponseBody(DaraModel):
         backup_storage_count: main_models.GetBackupStorageCountResponseBodyBackupStorageCount = None,
         request_id: str = None,
     ):
-        # The details about the anti-ransomware capacity.
+        # The details of the anti-ransomware storage capacity.
         self.backup_storage_count = backup_storage_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -53,18 +53,18 @@ class GetBackupStorageCountResponseBodyBackupStorageCount(DaraModel):
         uni_usage_storage_byte: int = None,
         usage_storage_byte: int = None,
     ):
-        # The anti-ransomware capacity that you purchased. Unit: bytes.
+        # The purchased anti-ransomware capacity. Unit: bytes.
         self.buy_storage_byte = buy_storage_byte
-        # The storage capacity that is occupied by the backup data of your servers. Unit: bytes.
+        # The storage capacity occupied by server backups in the backup data. Unit: bytes.
         self.ecs_usage_storage_byte = ecs_usage_storage_byte
-        # Indicates whether the anti-ransomware capacity that is used exceeds the anti-ransomware capacity that you purchased. Valid values:
+        # Indicates whether the anti-ransomware usage exceeds the purchased capacity. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: not exceeded
+        # - **1**: exceeded.
         self.overflow = overflow
-        # The storage capacity that is occupied by the backup data of your databases. Unit: bytes.
+        # The storage capacity occupied by database backups in the backup data. Unit: bytes.
         self.uni_usage_storage_byte = uni_usage_storage_byte
-        # The total anti-ransomware capacity that is used. Unit: bytes.
+        # The total used anti-ransomware storage capacity. Unit: bytes.
         self.usage_storage_byte = usage_storage_byte
 
     def validate(self):

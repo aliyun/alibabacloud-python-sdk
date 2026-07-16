@@ -5,6 +5,9 @@ from __future__ import annotations
 from ._add_ext_code_sign_request import AddExtCodeSignRequest
 from ._add_ext_code_sign_response_body import AddExtCodeSignResponseBody
 from ._add_ext_code_sign_response import AddExtCodeSignResponse
+from ._add_rcs_sign_menu_request import AddRcsSignMenuRequest
+from ._add_rcs_sign_menu_response_body import AddRcsSignMenuResponseBody
+from ._add_rcs_sign_menu_response import AddRcsSignMenuResponse
 from ._add_short_url_request import AddShortUrlRequest
 from ._add_short_url_response_body import AddShortUrlResponseBody
 from ._add_short_url_response import AddShortUrlResponse
@@ -34,6 +37,12 @@ from ._create_digital_sign_order_response import CreateDigitalSignOrderResponse
 from ._create_digital_sms_template_request import CreateDigitalSmsTemplateRequest
 from ._create_digital_sms_template_response_body import CreateDigitalSmsTemplateResponseBody
 from ._create_digital_sms_template_response import CreateDigitalSmsTemplateResponse
+from ._create_rcsmobile_capable_task_request import CreateRCSMobileCapableTaskRequest
+from ._create_rcsmobile_capable_task_response_body import CreateRCSMobileCapableTaskResponseBody
+from ._create_rcsmobile_capable_task_response import CreateRCSMobileCapableTaskResponse
+from ._create_rcstemplate_request import CreateRCSTemplateRequest
+from ._create_rcstemplate_response_body import CreateRCSTemplateResponseBody
+from ._create_rcstemplate_response import CreateRCSTemplateResponse
 from ._create_smart_short_url_request import CreateSmartShortUrlRequest
 from ._create_smart_short_url_response_body import CreateSmartShortUrlResponseBody
 from ._create_smart_short_url_response import CreateSmartShortUrlResponse
@@ -87,6 +96,9 @@ from ._get_ossinfo_for_upload_file_response import GetOSSInfoForUploadFileRespon
 from ._get_qualification_oss_info_request import GetQualificationOssInfoRequest
 from ._get_qualification_oss_info_response_body import GetQualificationOssInfoResponseBody
 from ._get_qualification_oss_info_response import GetQualificationOssInfoResponse
+from ._get_rcssignature_request import GetRCSSignatureRequest
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBody
+from ._get_rcssignature_response import GetRCSSignatureResponse
 from ._get_sms_ocr_oss_info_request import GetSmsOcrOssInfoRequest
 from ._get_sms_ocr_oss_info_response_body import GetSmsOcrOssInfoResponseBody
 from ._get_sms_ocr_oss_info_response import GetSmsOcrOssInfoResponse
@@ -128,6 +140,18 @@ from ._query_mobiles_card_support_response import QueryMobilesCardSupportRespons
 from ._query_page_smart_short_url_log_request import QueryPageSmartShortUrlLogRequest
 from ._query_page_smart_short_url_log_response_body import QueryPageSmartShortUrlLogResponseBody
 from ._query_page_smart_short_url_log_response import QueryPageSmartShortUrlLogResponse
+from ._query_rcsmobile_capable_request import QueryRCSMobileCapableRequest
+from ._query_rcsmobile_capable_response_body import QueryRCSMobileCapableResponseBody
+from ._query_rcsmobile_capable_response import QueryRCSMobileCapableResponse
+from ._query_rcsmobile_capable_task_result_request import QueryRCSMobileCapableTaskResultRequest
+from ._query_rcsmobile_capable_task_result_response_body import QueryRCSMobileCapableTaskResultResponseBody
+from ._query_rcsmobile_capable_task_result_response import QueryRCSMobileCapableTaskResultResponse
+from ._query_rcstemplate_request import QueryRCSTemplateRequest
+from ._query_rcstemplate_response_body import QueryRCSTemplateResponseBody
+from ._query_rcstemplate_response import QueryRCSTemplateResponse
+from ._query_rcs_sign_menu_by_version_request import QueryRcsSignMenuByVersionRequest
+from ._query_rcs_sign_menu_by_version_response_body import QueryRcsSignMenuByVersionResponseBody
+from ._query_rcs_sign_menu_by_version_response import QueryRcsSignMenuByVersionResponse
 from ._query_send_details_request import QuerySendDetailsRequest
 from ._query_send_details_response_body import QuerySendDetailsResponseBody
 from ._query_send_details_response import QuerySendDetailsResponse
@@ -182,6 +206,12 @@ from ._send_card_sms_response import SendCardSmsResponse
 from ._send_logistics_sms_request import SendLogisticsSmsRequest
 from ._send_logistics_sms_response_body import SendLogisticsSmsResponseBody
 from ._send_logistics_sms_response import SendLogisticsSmsResponse
+from ._send_rcsrequest import SendRCSRequest
+from ._send_rcsresponse_body import SendRCSResponseBody
+from ._send_rcsresponse import SendRCSResponse
+from ._send_rcsreply_request import SendRCSReplyRequest
+from ._send_rcsreply_response_body import SendRCSReplyResponseBody
+from ._send_rcsreply_response import SendRCSReplyResponse
 from ._send_sms_request import SendSmsRequest
 from ._send_sms_response_body import SendSmsResponseBody
 from ._send_sms_response import SendSmsResponse
@@ -201,6 +231,9 @@ from ._untag_resources_response import UntagResourcesResponse
 from ._update_ext_code_sign_request import UpdateExtCodeSignRequest
 from ._update_ext_code_sign_response_body import UpdateExtCodeSignResponseBody
 from ._update_ext_code_sign_response import UpdateExtCodeSignResponse
+from ._update_rcssignature_request import UpdateRCSSignatureRequest
+from ._update_rcssignature_response_body import UpdateRCSSignatureResponseBody
+from ._update_rcssignature_response import UpdateRCSSignatureResponse
 from ._update_sms_qualification_request import UpdateSmsQualificationRequest
 from ._update_sms_qualification_shrink_request import UpdateSmsQualificationShrinkRequest
 from ._update_sms_qualification_response_body import UpdateSmsQualificationResponseBody
@@ -213,6 +246,9 @@ from ._update_sms_template_request import UpdateSmsTemplateRequest
 from ._update_sms_template_shrink_request import UpdateSmsTemplateShrinkRequest
 from ._update_sms_template_response_body import UpdateSmsTemplateResponseBody
 from ._update_sms_template_response import UpdateSmsTemplateResponse
+from ._upgrade_to_rcssignature_request import UpgradeToRCSSignatureRequest
+from ._upgrade_to_rcssignature_response_body import UpgradeToRCSSignatureResponseBody
+from ._upgrade_to_rcssignature_response import UpgradeToRCSSignatureResponse
 from ._valid_phone_code_request import ValidPhoneCodeRequest
 from ._valid_phone_code_response_body import ValidPhoneCodeResponseBody
 from ._valid_phone_code_response import ValidPhoneCodeResponse
@@ -234,6 +270,11 @@ from ._get_media_resource_id_response_body import GetMediaResourceIdResponseBody
 from ._get_ossinfo_for_card_template_response_body import GetOSSInfoForCardTemplateResponseBodyData
 from ._get_ossinfo_for_upload_file_response_body import GetOSSInfoForUploadFileResponseBodyModel
 from ._get_qualification_oss_info_response_body import GetQualificationOssInfoResponseBodyData
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBodyDataRegisterResultListRegisterStatusReasons
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBodyDataRegisterResultList
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBodyDataShelfResultListShelfStatusReasons
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBodyDataShelfResultList
+from ._get_rcssignature_response_body import GetRCSSignatureResponseBodyData
 from ._get_sms_ocr_oss_info_response_body import GetSmsOcrOssInfoResponseBodyModel
 from ._get_sms_sign_response_body import GetSmsSignResponseBodyAuditInfo
 from ._get_sms_sign_response_body import GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons
@@ -241,6 +282,7 @@ from ._get_sms_sign_response_body import GetSmsSignResponseBodySignIspRegisterDe
 from ._get_sms_template_response_body import GetSmsTemplateResponseBodyAuditInfo
 from ._get_sms_template_response_body import GetSmsTemplateResponseBodyFileUrlList
 from ._get_sms_template_response_body import GetSmsTemplateResponseBodyMoreDataFileUrlList
+from ._get_sms_template_response_body import GetSmsTemplateResponseBodySignList
 from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyDataListTemplateTag
 from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyDataList
 from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyData
@@ -277,17 +319,23 @@ from ._send_batch_card_sms_response_body import SendBatchCardSmsResponseBodyData
 from ._send_card_sms_request import SendCardSmsRequestCardObjects
 from ._send_card_sms_response_body import SendCardSmsResponseBodyData
 from ._send_logistics_sms_response_body import SendLogisticsSmsResponseBodyData
+from ._send_rcsresponse_body import SendRCSResponseBodyData
+from ._send_rcsreply_response_body import SendRCSReplyResponseBodyData
 from ._submit_sms_qualification_request import SubmitSmsQualificationRequestBusinessLicensePics
 from ._submit_sms_qualification_request import SubmitSmsQualificationRequestOtherFiles
 from ._tag_resources_request import TagResourcesRequestTag
 from ._update_sms_qualification_request import UpdateSmsQualificationRequestBusinessLicensePics
 from ._update_sms_qualification_request import UpdateSmsQualificationRequestOtherFiles
+from ._upgrade_to_rcssignature_response_body import UpgradeToRCSSignatureResponseBodyData
 from ._verify_logistics_sms_mail_no_response_body import VerifyLogisticsSmsMailNoResponseBodyData
 
 __all__ = [
     AddExtCodeSignRequest,
     AddExtCodeSignResponseBody,
     AddExtCodeSignResponse,
+    AddRcsSignMenuRequest,
+    AddRcsSignMenuResponseBody,
+    AddRcsSignMenuResponse,
     AddShortUrlRequest,
     AddShortUrlResponseBody,
     AddShortUrlResponse,
@@ -317,6 +365,12 @@ __all__ = [
     CreateDigitalSmsTemplateRequest,
     CreateDigitalSmsTemplateResponseBody,
     CreateDigitalSmsTemplateResponse,
+    CreateRCSMobileCapableTaskRequest,
+    CreateRCSMobileCapableTaskResponseBody,
+    CreateRCSMobileCapableTaskResponse,
+    CreateRCSTemplateRequest,
+    CreateRCSTemplateResponseBody,
+    CreateRCSTemplateResponse,
     CreateSmartShortUrlRequest,
     CreateSmartShortUrlResponseBody,
     CreateSmartShortUrlResponse,
@@ -370,6 +424,9 @@ __all__ = [
     GetQualificationOssInfoRequest,
     GetQualificationOssInfoResponseBody,
     GetQualificationOssInfoResponse,
+    GetRCSSignatureRequest,
+    GetRCSSignatureResponseBody,
+    GetRCSSignatureResponse,
     GetSmsOcrOssInfoRequest,
     GetSmsOcrOssInfoResponseBody,
     GetSmsOcrOssInfoResponse,
@@ -411,6 +468,18 @@ __all__ = [
     QueryPageSmartShortUrlLogRequest,
     QueryPageSmartShortUrlLogResponseBody,
     QueryPageSmartShortUrlLogResponse,
+    QueryRCSMobileCapableRequest,
+    QueryRCSMobileCapableResponseBody,
+    QueryRCSMobileCapableResponse,
+    QueryRCSMobileCapableTaskResultRequest,
+    QueryRCSMobileCapableTaskResultResponseBody,
+    QueryRCSMobileCapableTaskResultResponse,
+    QueryRCSTemplateRequest,
+    QueryRCSTemplateResponseBody,
+    QueryRCSTemplateResponse,
+    QueryRcsSignMenuByVersionRequest,
+    QueryRcsSignMenuByVersionResponseBody,
+    QueryRcsSignMenuByVersionResponse,
     QuerySendDetailsRequest,
     QuerySendDetailsResponseBody,
     QuerySendDetailsResponse,
@@ -465,6 +534,12 @@ __all__ = [
     SendLogisticsSmsRequest,
     SendLogisticsSmsResponseBody,
     SendLogisticsSmsResponse,
+    SendRCSRequest,
+    SendRCSResponseBody,
+    SendRCSResponse,
+    SendRCSReplyRequest,
+    SendRCSReplyResponseBody,
+    SendRCSReplyResponse,
     SendSmsRequest,
     SendSmsResponseBody,
     SendSmsResponse,
@@ -484,6 +559,9 @@ __all__ = [
     UpdateExtCodeSignRequest,
     UpdateExtCodeSignResponseBody,
     UpdateExtCodeSignResponse,
+    UpdateRCSSignatureRequest,
+    UpdateRCSSignatureResponseBody,
+    UpdateRCSSignatureResponse,
     UpdateSmsQualificationRequest,
     UpdateSmsQualificationShrinkRequest,
     UpdateSmsQualificationResponseBody,
@@ -496,6 +574,9 @@ __all__ = [
     UpdateSmsTemplateShrinkRequest,
     UpdateSmsTemplateResponseBody,
     UpdateSmsTemplateResponse,
+    UpgradeToRCSSignatureRequest,
+    UpgradeToRCSSignatureResponseBody,
+    UpgradeToRCSSignatureResponse,
     ValidPhoneCodeRequest,
     ValidPhoneCodeResponseBody,
     ValidPhoneCodeResponse,
@@ -517,6 +598,11 @@ __all__ = [
     GetOSSInfoForCardTemplateResponseBodyData,
     GetOSSInfoForUploadFileResponseBodyModel,
     GetQualificationOssInfoResponseBodyData,
+    GetRCSSignatureResponseBodyDataRegisterResultListRegisterStatusReasons,
+    GetRCSSignatureResponseBodyDataRegisterResultList,
+    GetRCSSignatureResponseBodyDataShelfResultListShelfStatusReasons,
+    GetRCSSignatureResponseBodyDataShelfResultList,
+    GetRCSSignatureResponseBodyData,
     GetSmsOcrOssInfoResponseBodyModel,
     GetSmsSignResponseBodyAuditInfo,
     GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons,
@@ -524,6 +610,7 @@ __all__ = [
     GetSmsTemplateResponseBodyAuditInfo,
     GetSmsTemplateResponseBodyFileUrlList,
     GetSmsTemplateResponseBodyMoreDataFileUrlList,
+    GetSmsTemplateResponseBodySignList,
     GetSmsTemplateListResponseBodyDataListTemplateTag,
     GetSmsTemplateListResponseBodyDataList,
     GetSmsTemplateListResponseBodyData,
@@ -560,10 +647,13 @@ __all__ = [
     SendCardSmsRequestCardObjects,
     SendCardSmsResponseBodyData,
     SendLogisticsSmsResponseBodyData,
+    SendRCSResponseBodyData,
+    SendRCSReplyResponseBodyData,
     SubmitSmsQualificationRequestBusinessLicensePics,
     SubmitSmsQualificationRequestOtherFiles,
     TagResourcesRequestTag,
     UpdateSmsQualificationRequestBusinessLicensePics,
     UpdateSmsQualificationRequestOtherFiles,
+    UpgradeToRCSSignatureResponseBodyData,
     VerifyLogisticsSmsMailNoResponseBodyData
 ]

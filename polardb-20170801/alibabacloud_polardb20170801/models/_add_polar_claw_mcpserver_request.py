@@ -13,9 +13,14 @@ class AddPolarClawMCPServerRequest(DaraModel):
         server_config: Dict[str, Any] = None,
         server_name: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The configuration object for the MCP server.
         self.server_config = server_config
+        # The unique identifier for the MCP server.
+        # 
         # This parameter is required.
         self.server_name = server_name
 

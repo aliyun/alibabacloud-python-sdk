@@ -13,17 +13,17 @@ class SaveByPassOrShuntEventRequest(DaraModel):
         event_type: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event ID.
+        # The event ID.
         self.event_id = event_id
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type.
         self.event_type = event_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

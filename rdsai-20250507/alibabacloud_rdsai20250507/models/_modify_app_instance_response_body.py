@@ -16,7 +16,6 @@ class ModifyAppInstanceResponseBody(DaraModel):
     ):
         self.components = components
         self.instance_name = instance_name
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

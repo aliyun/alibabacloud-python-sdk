@@ -14,17 +14,17 @@ class DescribeDomainSecureStatisticsResponseBody(DaraModel):
         total_domain_count: int = None,
         vul_count: int = None,
     ):
-        # The number of domain names that trigger security alerts.
+        # The number of domain names that have security alerts.
         self.alarm_count = alarm_count
-        # The number of the websites for which no certificates are installed.
+        # The number of websites without certificates.
         self.no_ssl_count = no_ssl_count
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of the domain names that have security risks.
+        # The number of domain names that have security risks.
         self.risk_count = risk_count
         # The total number of domain names.
         self.total_domain_count = total_domain_count
-        # The number of the domain names that have vulnerabilities.
+        # The number of domain names that have vulnerabilities.
         self.vul_count = vul_count
 
     def validate(self):

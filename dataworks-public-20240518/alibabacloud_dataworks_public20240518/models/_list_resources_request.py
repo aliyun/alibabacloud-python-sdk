@@ -32,10 +32,13 @@ class ListResourcesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Python
-        # *   Jar
-        # *   Archive
-        # *   File
+        # - Python
+        # 
+        # - Jar
+        # 
+        # - Archive
+        # 
+        # - File
         self.type = type
 
     def validate(self):

@@ -20,86 +20,78 @@ class ModifyWebLockCreateConfigRequest(DaraModel):
         source_ip: str = None,
         uuid: str = None,
     ):
-        # The prevention mode. Valid values:
+        # The defense mode. Valid values:
         # 
-        # *   **block**: Interception Mode
-        # *   **audit**: Alert Mode
+        # - **block**: Block mode.
+        # - **audit**: Alert mode.
         # 
         # This parameter is required.
         self.defence_mode = defence_mode
-        # The directory that you want to protect.
+        # The protected directory.
         # 
         # This parameter is required.
         self.dir = dir
-        # The directory for which you want to disable web tamper proofing.
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # The folder to exclude from web tamper proofing protection.
+        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
         self.exclusive_dir = exclusive_dir
-        # The file for which you want to disable web tamper proofing.
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # The file to exclude from web tamper proofing protection.
+        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
         self.exclusive_file = exclusive_file
-        # The type of file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # The file types to exclude from web tamper proofing protection. Separate multiple file types with semicolons (;). Valid values:
+        # - php
+        # - jsp
+        # - asp
+        # - aspx
+        # - js
+        # - cgi
+        # - html
+        # - htm
+        # - xml
+        # - shtml
+        # - shtm
+        # - jpg
+        # - gif
+        # - png
         # 
-        # *   php
-        # *   jsp
-        # *   asp
-        # *   aspx
-        # *   js
-        # *   cgi
-        # *   html
-        # *   htm
-        # *   xml
-        # *   shtml
-        # *   shtm
-        # *   jpg
-        # *   gif
-        # *   png
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # > This parameter is required when the Defense mode **Mode** is set to **blacklist** pattern.
         self.exclusive_file_type = exclusive_file_type
-        # The file for which you want to enable web tamper proofing.
-        # 
-        # > If you set **Mode** to **whitelist**, you must specify this parameter.
+        # The file to protect.
+        # > This parameter is required when the Defense mode **Mode** is set to **whitelist** pattern.
         self.inclusive_file = inclusive_file
-        # The type of file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # The file types to protect with web tamper proofing. Separate multiple file types with semicolons (;). Valid values:
+        # - php
+        # - jsp
+        # - asp
+        # - aspx
+        # - js
+        # - cgi
+        # - html
+        # - htm
+        # - xml
+        # - shtml
+        # - shtm
+        # - jpg
+        # - gif
+        # - png
         # 
-        # *   php
-        # *   jsp
-        # *   asp
-        # *   aspx
-        # *   js
-        # *   cgi
-        # *   html
-        # *   htm
-        # *   xml
-        # *   shtml
-        # *   shtm
-        # *   jpg
-        # *   gif
-        # *   png
-        # 
-        # > If you set **Mode** to **whitelist**, you must specify this parameter.
+        # > This parameter is required when the Defense mode **Mode** is set to **whitelist** pattern.
         self.inclusive_file_type = inclusive_file_type
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The local path to the backup files of the protected directory.
+        # The local backup path used for secure backup of the protected directory.
         # 
         # This parameter is required.
         self.local_backup_dir = local_backup_dir
-        # The protection mode of web tamper proofing. Valid values:
-        # 
-        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
-        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified sub-directories, file types, and files in the protected directories.
+        # The protection directory mode. Valid values:
+        # - **whitelist**: whitelist mode. Protects only the specified directories and file types.
+        # - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files under the protected directory that are not excluded.
         self.mode = mode
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the server for which you want to add a directory to protect.
-        # 
-        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUID of the server for which you want to add a protected directory.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
         # 
         # This parameter is required.
         self.uuid = uuid

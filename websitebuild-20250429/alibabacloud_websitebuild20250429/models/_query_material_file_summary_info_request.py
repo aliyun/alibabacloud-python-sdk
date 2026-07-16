@@ -19,16 +19,27 @@ class QueryMaterialFileSummaryInfoRequest(DaraModel):
         status_list: List[str] = None,
         type_list: List[str] = None,
     ):
+        # The business instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The ID of the directory.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
+        # The file name.
         self.name = name
+        # The field by which to sort the results.
         self.order_column = order_column
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The file status.
         self.status_list = status_list
+        # The file type.
         self.type_list = type_list
 
     def validate(self):

@@ -11,11 +11,11 @@ class ListCustomDomainsRequest(DaraModel):
         next_token: str = None,
         prefix: str = None,
     ):
-        # The number of custom domain names returned.
+        # The number of custom domain names to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used to start paging.
         self.next_token = next_token
-        # The domain name prefix.
+        # The prefix of the domain name.
         self.prefix = prefix
 
     def validate(self):

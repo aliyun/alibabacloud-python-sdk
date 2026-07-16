@@ -20,6 +20,7 @@ class Service(DaraModel):
         health_check: main_models.ServiceHealthCheck = None,
         health_status: str = None,
         label_details: List[main_models.LabelDetail] = None,
+        model_provider_id: str = None,
         name: str = None,
         namespace: str = None,
         outlier_endpoints: List[str] = None,
@@ -27,59 +28,62 @@ class Service(DaraModel):
         protocol: str = None,
         qualifier: str = None,
         resource_group_id: str = None,
+        runtime_detail_error_code: str = None,
+        runtime_detail_status: str = None,
         service_id: str = None,
         source_type: str = None,
         unhealthy_endpoints: List[str] = None,
         update_timestamp: int = None,
         versions: List[main_models.ServiceVersions] = None,
     ):
-        # The address details, which can be IP addresses or domain names.
+        # The address information, including IP addresses or domain names.
         self.addresses = addresses
-        # The agent service configuration
+        # The agent service configuration.
         self.agent_service_config = agent_service_config
-        # The AI service configurations.
+        # The AI service configuration.
         self.ai_service_config = ai_service_config
-        # The creation time (unix timestamp).
+        # The time when the service was created.
         self.create_timestamp = create_timestamp
-        # The express type
+        # The CloudFlow execution mode.
         self.express_type = express_type
         # The gateway instance ID.
         self.gateway_id = gateway_id
         # The service group name.
         self.group_name = group_name
-        # The health check configurations.
+        # The health check configuration.
         self.health_check = health_check
-        # The health check status.
-        # 
-        # Valid values:
-        # 
-        # *   Unhealthy
-        # *   Healthy
+        # The health check status. Valid values:
+        # - Healthy
+        # - Unhealthy
         self.health_status = health_status
-        # The label details for service version configuration
+        # The label information of the service.
         self.label_details = label_details
+        self.model_provider_id = model_provider_id
         # The service name.
         self.name = name
-        # The namespace of the service.
+        # The namespace.
         self.namespace = namespace
-        # The outlier endpoints list
+        # The circuit-broken endpoints.
         self.outlier_endpoints = outlier_endpoints
-        # The list of objects containing port details.
+        # The list of port information.
         self.ports = ports
-        # The service protocol type.
+        # The service protocol.
         self.protocol = protocol
-        # The function qualifier name.
+        # The qualifier of the function.
         self.qualifier = qualifier
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The service unique ID.
+        self.runtime_detail_error_code = runtime_detail_error_code
+        self.runtime_detail_status = runtime_detail_status
+        # The unique ID of the service.
         self.service_id = service_id
-        # The source type.
+        # The source type of the service.
         self.source_type = source_type
-        # The list of unhealthy endpoints.
+        # The unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The last modified time (unix timestamp).
+        # The time when the service was updated.
         self.update_timestamp = update_timestamp
+        # The list of service versions.
         self.versions = versions
 
     def validate(self):
@@ -139,6 +143,9 @@ class Service(DaraModel):
             for k1 in self.label_details:
                 result['labelDetails'].append(k1.to_map() if k1 else None)
 
+        if self.model_provider_id is not None:
+            result['modelProviderId'] = self.model_provider_id
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -161,6 +168,12 @@ class Service(DaraModel):
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+
+        if self.runtime_detail_error_code is not None:
+            result['runtimeDetailErrorCode'] = self.runtime_detail_error_code
+
+        if self.runtime_detail_status is not None:
+            result['runtimeDetailStatus'] = self.runtime_detail_status
 
         if self.service_id is not None:
             result['serviceId'] = self.service_id
@@ -219,6 +232,9 @@ class Service(DaraModel):
                 temp_model = main_models.LabelDetail()
                 self.label_details.append(temp_model.from_map(k1))
 
+        if m.get('modelProviderId') is not None:
+            self.model_provider_id = m.get('modelProviderId')
+
         if m.get('name') is not None:
             self.name = m.get('name')
 
@@ -242,6 +258,12 @@ class Service(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('runtimeDetailErrorCode') is not None:
+            self.runtime_detail_error_code = m.get('runtimeDetailErrorCode')
+
+        if m.get('runtimeDetailStatus') is not None:
+            self.runtime_detail_status = m.get('runtimeDetailStatus')
 
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
@@ -269,7 +291,9 @@ class ServiceVersions(DaraModel):
         labels: List[main_models.ServiceVersionsLabels] = None,
         name: str = None,
     ):
+        # The list of version labels.
         self.labels = labels
+        # The version name.
         self.name = name
 
     def validate(self):
@@ -312,7 +336,9 @@ class ServiceVersionsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):

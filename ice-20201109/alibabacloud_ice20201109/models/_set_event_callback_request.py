@@ -18,15 +18,17 @@ class SetEventCallbackRequest(DaraModel):
         self.auth_key = auth_key
         # Specifies whether to enable callback authentication. This parameter takes effect only if you set CallbackType to **HTTP**. Valid values:
         # 
-        # *   **on**
-        # *   **off**
+        # - **on**
+        # 
+        # - **off**
         self.auth_switch = auth_switch
         # The name of the Simple Message Queue (SMQ) queue in the region. The name must start with ice-callback-.
         self.callback_queue_name = callback_queue_name
         # The callback method. Valid values:
         # 
-        # *   **HTTP**
-        # *   **MNS**
+        # - **HTTP**
+        # 
+        # - **MNS**
         self.callback_type = callback_type
         # The callback URL. This parameter is required if you set CallbackType to **HTTP**. The callback URL cannot exceed 256 bytes in length. You can specify only one callback URL.
         self.callback_url = callback_url

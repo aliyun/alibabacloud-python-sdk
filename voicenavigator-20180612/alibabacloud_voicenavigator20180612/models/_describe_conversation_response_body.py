@@ -17,14 +17,23 @@ class DescribeConversationResponseBody(DaraModel):
         transferred_to_agent: bool = None,
         user_utterance_count: int = None,
     ):
+        # The start time.
         self.begin_time = begin_time
+        # The calling number.
         self.calling_number = calling_number
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The number of effective Q&A pairs.
         self.effective_answer_count = effective_answer_count
+        # The end time.
         self.end_time = end_time
+        # The request ID.
         self.request_id = request_id
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # Indicates whether the conversation was transferred to a human agent.
         self.transferred_to_agent = transferred_to_agent
+        # The number of user utterances.
         self.user_utterance_count = user_utterance_count
 
     def validate(self):

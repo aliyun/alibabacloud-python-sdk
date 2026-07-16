@@ -13,8 +13,12 @@ class UpdateUdfRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateUdfRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -58,20 +62,47 @@ class UpdateUdfRequestUpdateCommand(DaraModel):
         project_id: int = None,
         ref_resource_id_list: List[int] = None,
     ):
+        # The category. Valid values:
+        # 
+        # - 1: window function
+        # - 2: aggregate function
+        # - 3: numerical function
+        # - 4: string function
+        # - 5: time function
+        # - 6: IP address utility function
+        # - 7: URL-related function
+        # - 8: encoding and decoding function
+        # - 9: business-related function
+        # - 10: other.
+        # 
         # This parameter is required.
         self.category = category
+        # The class name that implements the function in the resource.
+        # 
         # This parameter is required.
         self.class_name = class_name
+        # The command format for function calling to invoke.
+        # 
         # This parameter is required.
         self.command_help = command_help
+        # The commit remarks.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The description.
+        # 
         # This parameter is required.
         self.description = description
+        # The ID of the user-defined function.
+        # 
         # This parameter is required.
         self.id = id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The IDs of the referenced resources.
+        # 
         # This parameter is required.
         self.ref_resource_id_list = ref_resource_id_list
 

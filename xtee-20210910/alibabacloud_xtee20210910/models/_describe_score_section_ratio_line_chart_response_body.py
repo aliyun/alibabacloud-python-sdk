@@ -13,9 +13,9 @@ class DescribeScoreSectionRatioLineChartResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeScoreSectionRatioLineChartResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -52,7 +52,7 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
         # Details of the xaxis node.
         self.xaxis = xaxis
@@ -99,7 +99,7 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis(DaraModel)
         self,
         data: List[str] = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
 
     def validate(self):
@@ -128,9 +128,9 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries(DaraModel
         data: List[str] = None,
         name: str = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
-        # Statistical dimension.
+        # The statistical dimension.
         self.name = name
 
     def validate(self):

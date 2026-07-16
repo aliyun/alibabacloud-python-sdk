@@ -9,9 +9,8 @@ class DescribeContainerStatisticsRequest(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the specified container cluster.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain the cluster ID.
+        # The ID of the container cluster to query.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id

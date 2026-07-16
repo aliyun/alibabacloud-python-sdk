@@ -18,23 +18,24 @@ class ListOfficeSiteUsersRequest(DaraModel):
         sort_type: str = None,
     ):
         self.assigned_info = assigned_info
-        # The query string for fuzzy query.
+        # The query string for fuzzy matching.
         self.filter = filter
         self.include_assigned_user = include_assigned_user
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # *   Valid values: 1 to 100.
-        # *   Default value: 10.
+        # - Maximum value: 100.
+        # 
+        # - Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request or if no next query exists. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next page of results. Leave this empty for the first query. For subsequent queries, use the NextToken value from the previous response.
         self.next_token = next_token
-        # The organizational unit (OU) of the specified AD domain.
+        # The path of the organizational unit (OU) in the AD domain.
         self.oupath = oupath
-        # The office network ID. The office network must be of the enterprise AD account type.
+        # The office network ID. Only office networks that use enterprise AD accounts are supported.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where WUYING Workspace is available.
         # 
         # This parameter is required.
         self.region_id = region_id

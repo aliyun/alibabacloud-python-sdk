@@ -18,43 +18,43 @@ class DescribeClusterAttachScriptsRequest(DaraModel):
         options: str = None,
         rds_instances: List[str] = None,
     ):
-        # The CPU architecture of the node. Valid values: `amd64`, `arm`, and `arm64`.
+        # The CPU architecture of the node. Supported CPU architectures include `amd64`, `arm`, and `arm64`.
         # 
         # Default value: `amd64`.
         # 
-        # >  This parameter is required if you want to add a node to an ACK Edge cluster.
+        # > This parameter is required when the cluster type is managed edge cluster.
         self.arch = arch
-        # The expiration time of the token that is generated. The value is a UNIX timestamp. For example, a value of 1739980800 indicates 00:00:00 (UTC+8) on February 20, 2025.
+        # The expiration time of the generated token. The value is a UNIX timestamp. For example, 1739980800 indicates 2025-02-20 00:00:00.
         self.expired = expired
-        # Specifies whether to mount data disks to an existing instance when you manually add this instance to the cluster. You can use data disks to store container data and images. Valid values:
+        # Specifies whether to mount data disks to the instance when you manually add the existing instance to the cluster. Container and image data is stored on the data disks. Valid values:
         # 
-        # *   `true`: mounts data disks to the instance that you want to add. After a data disk is mounted, the original data on the disk is erased. Back up data before you mount a data disk.
-        # *   `false`: does not mount data disks to the instance.
+        # - `true`: Mounts data disks to the instance. Existing data on the data disks will be lost. Back up your data before you proceed.
+        # - `false`: Does not mount data disks to the instance.
         # 
         # Default value: `false`.
         # 
-        # How a data disk is mounted:
+        # Data disk mounting rules:
         # 
-        # *   If the Elastic Compute Service (ECS) instances are already mounted with data disks and the file system of the last data disk is uninitialized, the system automatically formats this data disk to ext4 and uses the disk to store the data in the /var/lib/docker and /var/lib/kubelet directories.
-        # *   If no data disk is mounted to the ECS instance, the system does not purchase a new data disk.
+        # - If data disks are already mounted to the ECS instance and the file system of the last data disk is not initialized, the system automatically formats the data disk as ext4 to store /var/lib/docker and /var/lib/kubelet.
+        # - If no data disks are mounted to the ECS instance, no new data disks are mounted.
         self.format_disk = format_disk
-        # Specifies whether to retain the name of an existing instance when it is added to the cluster. If you do not retain the instance name, the instance is renamed in the `worker-k8s-for-cs-<clusterid>` format. Valid values:
+        # Specifies whether to retain the instance name when adding an existing instance to the cluster. If the instance name is not retained, the instance name is in the format of `worker-k8s-for-cs-<clusterid>`. Valid values:
         # 
-        # *   `true`: retains the instance name.
-        # *   `false`: does not retain the instance name.
+        # - `true`: Retains the instance name.
+        # - `false`: Does not retain the instance name. The instance name is replaced based on system rules.
         # 
         # Default value: `true`.
         self.keep_instance_name = keep_instance_name
-        # The ID of the node pool to which you want to add an existing node.
+        # The node pool ID. You can add the node to a specified node pool.
         # 
-        # >  If you do not specify a node pool ID, the node is added to the default node pool.
+        # > If you do not specify a node pool ID, the node is added to the default node pool.
         self.nodepool_id = nodepool_id
         self.one_time_token = one_time_token
-        # The node configurations for the node that you want to add.
+        # The configuration parameters for node registration.
         # 
-        # >  This parameter is required if you want to add a node to an ACK Edge cluster.
+        # > This parameter is required when the cluster type is managed edge cluster.
         self.options = options
-        # A list of ApsaraDB RDS instances. ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
+        # If you specify a list of ApsaraDB RDS instances, the ECS instances in the cluster are automatically added to the whitelists of the specified ApsaraDB RDS instances.
         self.rds_instances = rds_instances
 
     def validate(self):

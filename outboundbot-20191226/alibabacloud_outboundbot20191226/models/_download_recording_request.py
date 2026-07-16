@@ -9,11 +9,19 @@ class DownloadRecordingRequest(DaraModel):
         self,
         instance_id: str = None,
         need_voice_slice_recording: bool = None,
+        swap_channels: bool = None,
         task_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to retrieve voice slice recordings.
         self.need_voice_slice_recording = need_voice_slice_recording
+        # Specifies whether to swap the left and right audio channels. The default value is `false`.
+        self.swap_channels = swap_channels
+        # The call ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -31,6 +39,9 @@ class DownloadRecordingRequest(DaraModel):
         if self.need_voice_slice_recording is not None:
             result['NeedVoiceSliceRecording'] = self.need_voice_slice_recording
 
+        if self.swap_channels is not None:
+            result['SwapChannels'] = self.swap_channels
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -43,6 +54,9 @@ class DownloadRecordingRequest(DaraModel):
 
         if m.get('NeedVoiceSliceRecording') is not None:
             self.need_voice_slice_recording = m.get('NeedVoiceSliceRecording')
+
+        if m.get('SwapChannels') is not None:
+            self.swap_channels = m.get('SwapChannels')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

@@ -908,7 +908,6 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListRefundRuleItemRef
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1247,9 +1246,7 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRef
         refund_sub_contents: List[main_models.FlightOtaSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents] = None,
         title: str = None,
     ):
-        # isStruct : true
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1621,7 +1618,6 @@ class FlightOtaSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBaggag
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 
@@ -2569,7 +2565,6 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListRefu
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -2909,7 +2904,6 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListChan
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -3281,7 +3275,6 @@ class FlightOtaSearchResponseBodyModuleFlightListCabinInfoListFlightRuleListBagg
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 

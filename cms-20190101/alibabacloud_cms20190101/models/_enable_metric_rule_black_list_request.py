@@ -21,8 +21,9 @@ class EnableMetricRuleBlackListRequest(DaraModel):
         self.id = id
         # Specifies whether to enable the blacklist policy. Valid values:
         # 
-        # *   true: The blacklist policy is enabled.
-        # *   false (default): The blacklist policy is disabled.
+        # - true: The blacklist policy is enabled.
+        # 
+        # - false (default): The blacklist policy is disabled.
         # 
         # This parameter is required.
         self.is_enable = is_enable

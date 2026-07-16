@@ -14,10 +14,10 @@ class DescribeEventsForRegionResponseBody(DaraModel):
         next_token: str = None,
         page_info: main_models.DescribeEventsForRegionResponseBodyPageInfo = None,
     ):
-        # The events.
+        # The list of events.
         self.events = events
         self.next_token = next_token
-        # The pagination details.
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -70,11 +70,11 @@ class DescribeEventsForRegionResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of pages.
+        # The page number.
         self.page_number = page_number
-        # The number of records on each page.
+        # The maximum number of results displayed on each page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -122,7 +122,7 @@ class DescribeEventsForRegionResponseBodyEvents(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The description of the event.
+        # The event description.
         self.data = data
         # The event ID.
         self.event_id = event_id
@@ -130,7 +130,7 @@ class DescribeEventsForRegionResponseBodyEvents(DaraModel):
         self.source = source
         # The object associated with the event.
         self.subject = subject
-        # The time when the event was generated.
+        # The time when the event occurred.
         self.time = time
         # The event type.
         self.type = type
@@ -200,9 +200,9 @@ class DescribeEventsForRegionResponseBodyEventsData(DaraModel):
         message: str = None,
         reason: str = None,
     ):
-        # The severity level of the event.
+        # The event level.
         self.level = level
-        # The details of the event.
+        # The event details.
         self.message = message
         # The event status.
         self.reason = reason

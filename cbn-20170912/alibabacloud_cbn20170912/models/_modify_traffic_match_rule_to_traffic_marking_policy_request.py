@@ -20,14 +20,15 @@ class ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a unique parameter value from your client for each request. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request.
+        # - **true**: Performs a dry run. The system checks for required parameters, the request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. After the request passes the check, the stream classification rule is added to the traffic marking policy.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37,17 +38,17 @@ class ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.traffic_marking_policy_id = traffic_marking_policy_id
-        # The description of the traffic classification rule.
+        # The description of the stream classification rule.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. The description cannot start with http\\:// or https\\://.
         self.traffic_match_rule_description = traffic_match_rule_description
-        # The ID of the traffic classification rule.
+        # The ID of the stream classification rule.
         # 
         # This parameter is required.
         self.traffic_match_rule_id = traffic_match_rule_id
-        # The name of the traffic classification rule.
+        # The name of the stream classification rule.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. The name cannot start with http\\:// or https\\://.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):

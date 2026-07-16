@@ -12,11 +12,11 @@ class DescribeClusterVulStatisticsRequest(DaraModel):
     ):
         # The ID of the container cluster.
         self.cluster_id = cluster_id
-        # The type of the vulnerabilities. Valid values:
+        # The type of vulnerability that you want to query. Valid values:
         # 
-        # *   **cve**: Linux software vulnerabilities
-        # *   **app**: application vulnerabilities
-        # *   **sca**: vulnerabilities that are detected based on software component analysis
+        # - **cve**: Linux software vulnerabilities
+        # - **app**: application vulnerabilities
+        # - **sca**: software composition analysis (SCA) vulnerabilities
         self.types = types
 
     def validate(self):

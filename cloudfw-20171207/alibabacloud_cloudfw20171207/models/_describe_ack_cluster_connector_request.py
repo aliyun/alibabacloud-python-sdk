@@ -10,8 +10,12 @@ class DescribeAckClusterConnectorRequest(DaraModel):
         connector_id: str = None,
         lang: str = None,
     ):
+        # The ID of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The language in which the health status error reason of the ACK cluster connector is displayed.
         self.lang = lang
 
     def validate(self):

@@ -1,0 +1,101 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class RenewMobileAgentPackageRequest(DaraModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        mobile_agent_package_ids: List[str] = None,
+        paid_callback_url: str = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+    ):
+        # Specifies whether to enable automatic payment. Valid values:
+        # 
+        # - **true**: Enables automatic payment. Make sure that your account balance is sufficient.
+        # 
+        # - **false** (default): Generates an unpaid order.
+        # 
+        # > If your account balance is insufficient, set this parameter to `false` to generate an unpaid order. You can then pay for the order in the Wuying Mobile Cloud Phone management console.
+        self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. The default value is `false`.
+        self.auto_renew = auto_renew
+        # A list of mobile agent package IDs.
+        self.mobile_agent_package_ids = mobile_agent_package_ids
+        # The URL to which a user is redirected after a successful payment.
+        self.paid_callback_url = paid_callback_url
+        # The renewal period. The `PeriodUnit` parameter specifies the time unit.
+        self.period = period
+        # The unit of the renewal period.
+        # Valid values:
+        # 
+        # - **Month**: month.
+        # 
+        # - **Year**: year.
+        self.period_unit = period_unit
+        # The promotion ID.
+        self.promotion_id = promotion_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+
+        if self.mobile_agent_package_ids is not None:
+            result['MobileAgentPackageIds'] = self.mobile_agent_package_ids
+
+        if self.paid_callback_url is not None:
+            result['PaidCallbackUrl'] = self.paid_callback_url
+
+        if self.period is not None:
+            result['Period'] = self.period
+
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+
+        if m.get('MobileAgentPackageIds') is not None:
+            self.mobile_agent_package_ids = m.get('MobileAgentPackageIds')
+
+        if m.get('PaidCallbackUrl') is not None:
+            self.paid_callback_url = m.get('PaidCallbackUrl')
+
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+
+        return self
+

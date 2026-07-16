@@ -15,11 +15,17 @@ class GetComputeSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The compute source details.
         self.compute_source_info = compute_source_info
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -92,19 +98,33 @@ class GetComputeSourceResponseBodyComputeSourceInfo(DaraModel):
         owner_name: str = None,
         type: str = None,
     ):
+        # Indicates whether a project is associated.
         self.bind_project = bind_project
+        # The ID of the associated project.
         self.bind_project_id = bind_project_id
+        # The name of the associated project.
         self.bind_project_name = bind_project_name
+        # The ID of the compute source creator.
         self.creator = creator
+        # The name of the compute source creator.
         self.creator_name = creator_name
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The creation timestamp.
         self.gmt_create = gmt_create
+        # The last modification timestamp.
         self.gmt_modified = gmt_modified
+        # The compute source ID.
         self.id = id
+        # The name of the compute source.
         self.name = name
+        # The ID of the compute source owner.
         self.owner = owner
+        # The name of the compute source owner.
         self.owner_name = owner_name
+        # The type of the compute source.
         self.type = type
 
     def validate(self):

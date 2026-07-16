@@ -14,19 +14,19 @@ class DescribeLoanTaskListRequest(DaraModel):
         page_size: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Import batch number.
+        # The import batch number.
         self.batch_no = batch_no
-        # Current page number. Default is: 1.
+        # The current page number. Default value: 1.
         self.current_page = current_page
-        # Task status.
+        # The task status.
         self.monitor_status = monitor_status
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

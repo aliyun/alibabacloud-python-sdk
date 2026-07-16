@@ -16,29 +16,29 @@ class DescribeDisposeAndPlaybookRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The page number. Pages start from page 1.
+        # The page number. The value must be greater than or equal to 1.
         self.current_page = current_page
         # The entity type. Valid values:
-        # 
-        # *   ip
-        # *   process
-        # *   file
+        # - ip: IP address
+        # - process: process
+        # - file: file
         self.entity_type = entity_type
+        # The entity UUID.
         self.entity_uuid = entity_uuid
-        # The UUID of the event.
+        # The event UUID.
         self.incident_uuid = incident_uuid
-        # The number of entries to return on each page. Maximum value: 100.
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
-        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
-        # 
-        # *   cn-hangzhou: Your assets reside in regions inside China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # The region in which the data management center of the threat analysis feature resides. Select the data management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland or Hong Kong (China).
+        # - ap-southeast-1: Your assets reside in regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type. Valid values:
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

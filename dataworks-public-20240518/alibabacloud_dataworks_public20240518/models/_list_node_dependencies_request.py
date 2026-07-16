@@ -12,21 +12,21 @@ class ListNodeDependenciesRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # The unique identifier of the Data Studio node.
+        # The ID of the node.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >Notice: 
+        # 
+        # The data type of this parameter is Long in SDKs earlier than V8.0.0, and is String in SDKs of V8.0.0 and later versions. **The change does not affect the normal use of the SDKs. The parameter is still returned as the type defined in the SDKs.** When you upgrade an SDK to a version later than V8.0.0, a compilation error may occur due to the type change. In this case, you must manually change the data type.
         # 
         # This parameter is required.
         self.id = id
-        # The unique identifier of the Data Studio node.
-        # 
-        # >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # The number of the page to return. The value of this parameter must be a positive integer. Default value: 1.
         self.page_number = page_number
-        # The page number, starting from 1. Default value: 1.
+        # The number of entries to return on each page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can go to the Workspace Management page in the [DataWorks console](https://workbench.data.aliyun.com/console) to obtain the workspace ID.
         # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # This parameter is used to specify the DataWorks workspace for the API call.
         # 
         # This parameter is required.
         self.project_id = project_id

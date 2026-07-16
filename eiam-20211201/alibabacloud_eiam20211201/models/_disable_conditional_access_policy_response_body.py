@@ -9,7 +9,7 @@ class DisableConditionalAccessPolicyResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

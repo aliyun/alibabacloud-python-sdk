@@ -13,9 +13,9 @@ class DescribeServiceListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeServiceListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeServiceListResponseBodyResultObject(DaraModel):
         service_code: str = None,
         service_name: str = None,
     ):
-        # Service code
+        # The service code.
         self.service_code = service_code
-        # Service name.
+        # The service name.
         self.service_name = service_name
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeApplicationParametersResponseBody(DaraModel):
         parameters: main_models.DescribeApplicationParametersResponseBodyParameters = None,
         request_id: str = None,
     ):
+        # The details of the parameter template.
         self.parameter_templates = parameter_templates
+        # The parameter details.
         self.parameters = parameters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,6 +63,7 @@ class DescribeApplicationParametersResponseBodyParameters(DaraModel):
         self,
         component_parameters: List[main_models.DescribeApplicationParametersResponseBodyParametersComponentParameters] = None,
     ):
+        # A list of subcomponents that contain lists of parameter details.
         self.component_parameters = component_parameters
 
     def validate(self):
@@ -97,8 +101,11 @@ class DescribeApplicationParametersResponseBodyParametersComponentParameters(Dar
         component_type: str = None,
         parameters: List[main_models.DescribeApplicationParametersResponseBodyParametersComponentParametersParameters] = None,
     ):
+        # The subcomponent ID or application ID.
         self.component_id = component_id
+        # The type of the subcomponent.
         self.component_type = component_type
+        # A list of parameter details.
         self.parameters = parameters
 
     def validate(self):
@@ -154,14 +161,23 @@ class DescribeApplicationParametersResponseBodyParametersComponentParametersPara
         type: str = None,
         value: str = None,
     ):
+        # The default value of the parameter.
         self.default = default
+        # The parameter description.
         self.description = description
+        # The parameter name.
         self.name = name
+        # Indicates whether the application needs to be restarted after you modify the parameter.
         self.need_restart = need_restart
+        # The regular expression for the parameter.
         self.pattern = pattern
+        # Indicates whether the parameter is read-only.
         self.read_only = read_only
+        # The status.
         self.status = status
+        # The parameter type.
         self.type = type
+        # The current value of the parameter.
         self.value = value
 
     def validate(self):
@@ -237,6 +253,7 @@ class DescribeApplicationParametersResponseBodyParameterTemplates(DaraModel):
         self,
         component_parameter_templates: List[main_models.DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplates] = None,
     ):
+        # A list of subcomponents that contain lists of parameter template details.
         self.component_parameter_templates = component_parameter_templates
 
     def validate(self):
@@ -274,8 +291,11 @@ class DescribeApplicationParametersResponseBodyParameterTemplatesComponentParame
         component_type: str = None,
         parameters: List[main_models.DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters] = None,
     ):
+        # The subcomponent ID or application ID.
         self.component_id = component_id
+        # The type of the subcomponent.
         self.component_type = component_type
+        # A list of parameter template details.
         self.parameters = parameters
 
     def validate(self):
@@ -329,12 +349,19 @@ class DescribeApplicationParametersResponseBodyParameterTemplatesComponentParame
         read_only: bool = None,
         type: str = None,
     ):
+        # The default value of the parameter.
         self.default = default
+        # The parameter description.
         self.description = description
+        # The parameter name.
         self.name = name
+        # Indicates whether the application needs to be restarted after you modify the parameter.
         self.need_restart = need_restart
+        # The regular expression for the parameter.
         self.pattern = pattern
+        # Indicates whether the parameter is read-only.
         self.read_only = read_only
+        # The parameter type.
         self.type = type
 
     def validate(self):

@@ -17,11 +17,17 @@ class GetSmartClipTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Task response
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique identifier of the request
         self.request_id = request_id
+        # Indicates whether the operation succeeded. true indicates success. false indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,16 @@ class GetSmartClipTaskResponseBodyData(DaraModel):
         status: str = None,
         sub_jobs: List[main_models.GetSmartClipTaskResponseBodyDataSubJobs] = None,
     ):
+        # Error message
         self.error_message = error_message
+        # Task status:
+        # PENDING: Pending
+        # RUNNING: Running
+        # SUCCESSED: Succeeded
+        # FAILED: Failed
+        # CANCELED: Canceled
         self.status = status
+        # List of subtasks
         self.sub_jobs = sub_jobs
 
     def validate(self):
@@ -136,10 +150,20 @@ class GetSmartClipTaskResponseBodyDataSubJobs(DaraModel):
         status: str = None,
         sub_job_id: str = None,
     ):
+        # Error message
         self.error_message = error_message
+        # File attributes
         self.file_attr = file_attr
+        # File key
         self.file_key = file_key
+        # Subtask status:
+        # PENDING: Pending
+        # RUNNING: Running
+        # SUCCESSED: Succeeded
+        # FAILED: Failed
+        # CANCELED: Canceled
         self.status = status
+        # Subtask ID
         self.sub_job_id = sub_job_id
 
     def validate(self):
@@ -198,11 +222,17 @@ class GetSmartClipTaskResponseBodyDataSubJobsFileAttr(DaraModel):
         tmp_url: str = None,
         width: int = None,
     ):
+        # Video duration in seconds
         self.duration = duration
+        # Video file size
         self.file_length = file_length
+        # Video file name
         self.file_name = file_name
+        # Video height
         self.height = height
+        # Temporary URL to access the video file. Expires in one hour.
         self.tmp_url = tmp_url
+        # Video width
         self.width = width
 
     def validate(self):

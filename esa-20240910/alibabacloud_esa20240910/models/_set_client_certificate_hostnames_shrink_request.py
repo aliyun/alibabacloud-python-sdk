@@ -11,13 +11,13 @@ class SetClientCertificateHostnamesShrinkRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The domain names to associate.
+        # The list of domain names to associate.
         # 
         # This parameter is required.
         self.hostnames_shrink = hostnames_shrink
-        # The ID of the client CA certificate.
+        # The client CA certificate ID.
         self.id = id
-        # The website ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List, Dict
+
+from alibabacloud_dm20151123 import models as main_models
 from darabonba.model import DaraModel
 
 class BatchSendMailRequest(DaraModel):
@@ -14,68 +17,122 @@ class BatchSendMailRequest(DaraModel):
         headers: str = None,
         ip_pool_id: str = None,
         owner_id: int = None,
+        receivers: List[main_models.BatchSendMailRequestReceivers] = None,
         receivers_name: str = None,
         reply_address: str = None,
         reply_address_alias: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag_name: str = None,
+        template_content: main_models.BatchSendMailRequestTemplateContent = None,
         template_name: str = None,
         un_subscribe_filter_level: str = None,
         un_subscribe_link_type: str = None,
     ):
-        # The sending address configured in the management console.
+        # The sender address configured in the management console.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # - 0: Random account
-        # - 1: Sending address
+        # Valid values:
+        # - 0: random account
+        # - 1: sender address.
         # 
         # This parameter is required.
         self.address_type = address_type
-        # - 1: Enable data tracking function
-        # - 0 (default): Disable data tracking function
+        # Valid values:
+        # - 1: Enables data tracking.
+        # - 0 (default): Disables data tracking.
         self.click_trace = click_trace
+        # Specifies whether to enable domain-level authentication.
+        # 
+        # - true
+        # 
+        # - false
+        # 
+        # Use this parameter only for domain-level authentication. Ignore it for sender address-level authentication.
+        # 
+        # 1. Create the address domain-auth-created-by-system@example.com in the console. Keep the prefix before @ unchanged and replace the suffix with your own domain name.
+        # 
+        # 2.
+        # 
+        # **API scenario**
+        # 
+        # Set AccountName to the domain name. The recipient sees domain-auth-created-by-system@example.com as the sender.
+        # 
+        # **SMTP scenario**
+        # 
+        # a. Call the ModifyPWByDomain operation to set the domain password.
+        # 
+        # b. Authenticate with the domain name and the configured password. Set the actual sender (mailfrom) to a custom address such as user@example.com. The recipient sees user@example.com as the sender.
         self.domain_auth = domain_auth
-        # Currently, the standard fields that can be added to the email header are Message-ID, List-Unsubscribe, and List-Unsubscribe-Post. Standard fields will overwrite the existing values in the email header, while non-standard fields must start with X-User- and will be appended to the email header. Currently, up to 10 headers can be passed in JSON format, and both standard and non-standard fields must comply with the syntax requirements for headers.
+        # The email header settings.
+        # 
+        # Both standard and non-standard fields must comply with the syntax requirements for headers defined in the standard. A maximum of 10 headers can be passed through the headers field when sending emails via API. Headers exceeding this limit are ignored. SMTP has no such limit.
+        # 
+        # 1. Standard fields
+        # 
+        # Message-ID, List-Unsubscribe, List-Unsubscribe-Post
+        # 
+        # Standard fields overwrite the original values in the email header.
+        # 
+        # 2. Non-standard fields
+        # 
+        # Case-insensitive.
+        # 
+        # a. Fields prefixed with X-User- (not pushed to EventBridge or Message Service (MNS). This restriction applies to API only. SMTP allows any custom fields.)
+        # 
+        # b. Fields prefixed with X-User-Notify- (pushed to EventBridge and Message Service (MNS). Both API and SMTP are supported.)
+        # 
+        # When pushed to EventBridge or MNS, these fields are included under the header field.
         self.headers = headers
-        # dedicated IP pool ID. Users who have purchased an dedicated IP can use this parameter to specify the outgoing IP for this send operation.
+        # The ID of the dedicated IP address pool. Users who have purchased dedicated IP addresses can use this parameter to specify the outbound IP address for this email sending.
         self.ip_pool_id = ip_pool_id
         self.owner_id = owner_id
-        # The name of the recipient list that has been created and uploaded with recipients. Note: The recipient list should not be deleted until at least 10 minutes after the task is triggered, otherwise it may cause sending failure.
+        # The recipient list. The number of recipients must not exceed 100. Use this parameter or ReceiversName. If both Receivers and ReceiversName are specified, ReceiversName takes precedence.
         # 
-        # This parameter is required.
+        # Example: [{"To":["Jackie@example.com"],"TemplateData":{"UserName":"Jackie"}},{"To":["Tom@example.com"],"TemplateData":{"UserName":"Tom"}}].
+        self.receivers = receivers
+        # The name of a pre-created recipient list that has recipients uploaded.
+        # 
+        # > **Note**
+        # 
+        # > The number of recipients in the list must not exceed the remaining daily quota. Otherwise, the email sending fails.
+        # 
+        # > Wait at least 10 minutes after triggering the task before deleting the recipient list. Otherwise, the email sending may fail.
         self.receivers_name = receivers_name
-        # Reply address
+        # The reply-to address.
         self.reply_address = reply_address
-        # Alias for the reply address
+        # The alias of the reply-to address.
         self.reply_address_alias = reply_address_alias
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Email tag name.
+        # The name of the email tag.
         self.tag_name = tag_name
-        # The name of the template that has been created and approved in advance.
-        # 
-        # This parameter is required.
+        # The custom email content. Directly specify the content without creating a template in advance. Use this parameter or TemplateName. If both TemplateContent and TemplateName are specified, TemplateName takes precedence.
+        self.template_content = template_content
+        # The name of a pre-created and approved template.
         self.template_name = template_name
-        # Filtering level. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # - disabled: No filtering
-        # - default: Use the default strategy, bulk addresses use sender address-level filtering
-        # - mailfrom: Sender address-level filtering
-        # - mailfrom_domain: Sender domain-level filtering
-        # - edm_id: Account-level filtering
+        # The filtering level. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
+        # - disabled: No filtering is applied.
+        # - default: Uses the default policy. Batch addresses use sender address-level filtering.
+        # - mailfrom: Sender address-level filtering.
+        # - mailfrom_domain: Sender domain-level filtering.
+        # - edm_id: Account-level filtering.
         self.un_subscribe_filter_level = un_subscribe_filter_level
-        # The type of generated unsubscribe link. Refer to the [Unsubscribe Function Link Generation and Filtering Mechanism](https://help.aliyun.com/document_detail/2689048.html) document.
-        # - disabled: Do not generate
-        # - default: Use the default strategy: Generate an unsubscribe link when a bulk-type sending address sends to specific domains, such as those containing keywords like "gmail", "yahoo",
-        # "google", "aol.com", "hotmail",
-        # "outlook", "ymail.com", etc.
-        # - zh-cn: Generate, for future content preparation
-        # - en-us: Generate, for future content preparation
+        # The type of the generated unsubscribe link. For more information, see [Unsubscribe link generation and filtering mechanism](https://help.aliyun.com/document_detail/2689048.html).
+        # - disabled: No unsubscribe link is generated.
+        # - default: Uses the default policy. An unsubscribe link is generated when a batch-type sender address sends emails to specific domains, such as domains containing keywords "gmail", "yahoo", "google", "aol.com", "hotmail", "outlook", or "ymail.com".
+        # 
+        # The display language is automatically determined based on the recipient\\"s browser settings.
         self.un_subscribe_link_type = un_subscribe_link_type
 
     def validate(self):
-        pass
+        if self.receivers:
+            for v1 in self.receivers:
+                 if v1:
+                    v1.validate()
+        if self.template_content:
+            self.template_content.validate()
 
     def to_map(self):
         result = dict()
@@ -103,6 +160,11 @@ class BatchSendMailRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        result['Receivers'] = []
+        if self.receivers is not None:
+            for k1 in self.receivers:
+                result['Receivers'].append(k1.to_map() if k1 else None)
+
         if self.receivers_name is not None:
             result['ReceiversName'] = self.receivers_name
 
@@ -120,6 +182,9 @@ class BatchSendMailRequest(DaraModel):
 
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
+
+        if self.template_content is not None:
+            result['TemplateContent'] = self.template_content.to_map()
 
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
@@ -155,6 +220,12 @@ class BatchSendMailRequest(DaraModel):
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
+        self.receivers = []
+        if m.get('Receivers') is not None:
+            for k1 in m.get('Receivers'):
+                temp_model = main_models.BatchSendMailRequestReceivers()
+                self.receivers.append(temp_model.from_map(k1))
+
         if m.get('ReceiversName') is not None:
             self.receivers_name = m.get('ReceiversName')
 
@@ -173,6 +244,10 @@ class BatchSendMailRequest(DaraModel):
         if m.get('TagName') is not None:
             self.tag_name = m.get('TagName')
 
+        if m.get('TemplateContent') is not None:
+            temp_model = main_models.BatchSendMailRequestTemplateContent()
+            self.template_content = temp_model.from_map(m.get('TemplateContent'))
+
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
 
@@ -181,6 +256,108 @@ class BatchSendMailRequest(DaraModel):
 
         if m.get('UnSubscribeLinkType') is not None:
             self.un_subscribe_link_type = m.get('UnSubscribeLinkType')
+
+        return self
+
+class BatchSendMailRequestTemplateContent(DaraModel):
+    def __init__(
+        self,
+        alias: str = None,
+        html_body: str = None,
+        subject: str = None,
+        text_body: str = None,
+    ):
+        # The display name of the sender.
+        self.alias = alias
+        # The HTML body of the email.
+        # 
+        # > **Note:** HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
+        # 
+        # The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
+        self.html_body = html_body
+        # The email subject.
+        self.subject = subject
+        # The plain text body of the email.
+        # 
+        # > **Note:** HtmlBody and TextBody are for different types of email content. You must specify at least one of them.
+        # 
+        # The new SDK uses Body for parameter passing with a limit of approximately 8 MB (Java 1.4.0 and later, Python3 1.4.0 and later, PHP 1.4.0 and later).
+        self.text_body = text_body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.alias is not None:
+            result['Alias'] = self.alias
+
+        if self.html_body is not None:
+            result['HtmlBody'] = self.html_body
+
+        if self.subject is not None:
+            result['Subject'] = self.subject
+
+        if self.text_body is not None:
+            result['TextBody'] = self.text_body
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Alias') is not None:
+            self.alias = m.get('Alias')
+
+        if m.get('HtmlBody') is not None:
+            self.html_body = m.get('HtmlBody')
+
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+
+        if m.get('TextBody') is not None:
+            self.text_body = m.get('TextBody')
+
+        return self
+
+
+
+class BatchSendMailRequestReceivers(DaraModel):
+    def __init__(
+        self,
+        template_data: Dict[str, str] = None,
+        to: List[str] = None,
+    ):
+        # The email template parameters. This is a JSON map data type.
+        self.template_data = template_data
+        # The recipient list. This is an array type.
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.template_data is not None:
+            result['TemplateData'] = self.template_data
+
+        if self.to is not None:
+            result['To'] = self.to
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateData') is not None:
+            self.template_data = m.get('TemplateData')
+
+        if m.get('To') is not None:
+            self.to = m.get('To')
 
         return self
 

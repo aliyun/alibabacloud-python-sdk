@@ -11,9 +11,14 @@ class UpdateDatasourceRequest(DaraModel):
         name: str = None,
         uri: str = None,
     ):
+        # The resource configuration.
         self.config = config
+        # The data source name.
+        # 
         # This parameter is required.
         self.name = name
+        # The resource URI.
+        # 
         # This parameter is required.
         self.uri = uri
 

@@ -12,9 +12,9 @@ class ActionIntegrationConfig(DaraModel):
         actions: List[str] = None,
         enabled: bool = None,
     ):
-        # 行动集成 ID 列表
+        # A list of actions to perform.
         self.actions = actions
-        # 是否启用行动集成
+        # Indicates whether action integration is enabled.
         self.enabled = enabled
 
     def validate(self):

@@ -15,13 +15,13 @@ class UpdateModelConnectionInput(DaraModel):
         model_info_configs: List[main_models.ModelInfoConfig] = None,
         provider_settings: main_models.ModelConnectionProviderSettings = None,
     ):
-        # 更新绑定的消费者API密钥列表
+        # A list of consumer API keys to associate with the model connection.
         self.consumer_api_keys = consumer_api_keys
-        # 更新后的描述信息
+        # A new description for the model connection.
         self.description = description
-        # 更新后的模型元数据配置列表
+        # A new list of model metadata configurations.
         self.model_info_configs = model_info_configs
-        # 更新后的模型提供商配置信息
+        # A new configuration for the model provider.
         self.provider_settings = provider_settings
 
     def validate(self):

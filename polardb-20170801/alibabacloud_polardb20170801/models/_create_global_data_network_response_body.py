@@ -11,9 +11,11 @@ class CreateGlobalDataNetworkResponseBody(DaraModel):
         network_id: str = None,
         request_id: str = None,
     ):
+        # The unique ID of the newly created synchronization channel.
         self.channel_id = channel_id
-        # GDN ID
+        # The unique ID of the newly created GDN.
         self.network_id = network_id
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

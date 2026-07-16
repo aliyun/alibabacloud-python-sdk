@@ -15,25 +15,27 @@ class SetNotifyConfigRequest(DaraModel):
         event_types: str = None,
         token: str = None,
     ):
-        # The ID of the AI agent.
+        # The ID of the AI Agent.
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
         self.audio_oss_path = audio_oss_path
-        # The URL for receiving callback notifications. By default, this parameter is left empty.
+        # The callback URL for receiving event notifications. This is not set by default.
         self.callback_url = callback_url
         self.enable_audio_recording = enable_audio_recording
-        # Specifies whether to enable event notifications.
+        # Specifies whether to enable or disable event notifications.
         # 
         # This parameter is required.
         self.enable_notify = enable_notify
-        # The event types. If you do not specify this parameter, all event types are selected.
+        # The event types. If you do not specify this parameter, all event types are subscribed to by default. Valid values:
         # 
-        # *   agent_start
-        # *   agent_stop
-        # *   error
+        # - agent_start
+        # 
+        # - agent_stop
+        # 
+        # - error
         self.event_types = event_types
-        # The authentication token for callback. The token is carried in the Authorization header of a callback request. By default, this parameter is left empty.
+        # An authentication token for event callbacks. The service includes this token in the `Authorization` header of each callback request.
         self.token = token
 
     def validate(self):

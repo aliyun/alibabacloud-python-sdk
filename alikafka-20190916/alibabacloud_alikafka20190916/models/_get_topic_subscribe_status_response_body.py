@@ -16,15 +16,15 @@ class GetTopicSubscribeStatusResponseBody(DaraModel):
         success: bool = None,
         topic_subscribe_status: main_models.GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus = None,
     ):
-        # The HTTP status code.
+        # HTTP return code.
         self.code = code
-        # The returned message.
+        # Return message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The subscription details.
+        # Subscription details
         self.topic_subscribe_status = topic_subscribe_status
 
     def validate(self):
@@ -79,9 +79,9 @@ class GetTopicSubscribeStatusResponseBodyTopicSubscribeStatus(DaraModel):
         consumer_groups: List[str] = None,
         topic: str = None,
     ):
-        # The groups that subscribe to the topic.
+        # List of Groups that subscribe to this topic.
         self.consumer_groups = consumer_groups
-        # The topic name.
+        # Topic name.
         self.topic = topic
 
     def validate(self):

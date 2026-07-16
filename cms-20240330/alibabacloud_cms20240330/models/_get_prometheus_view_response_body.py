@@ -13,7 +13,7 @@ class GetPrometheusViewResponseBody(DaraModel):
         prometheus_view: main_models.GetPrometheusViewResponseBodyPrometheusView = None,
         request_id: str = None,
     ):
-        # View instance.
+        # The view instance.
         self.prometheus_view = prometheus_view
         # Id of the request
         self.request_id = request_id
@@ -79,61 +79,63 @@ class GetPrometheusViewResponseBodyPrometheusView(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Password-free read policy (supports IP segments and VpcId).
+        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # authToken string.
+        # The authentication token string.
         self.auth_token = auth_token
-        # Instance creation time, using UTC+0 time, format is yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is in UTC+0 and in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
-        # Whether to enable password-free read.
+        # Indicates whether authentication-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to enable authToken.
+        # Indicates whether the authentication token is enabled.
         self.enable_auth_token = enable_auth_token
-        # Observability dashboard URL.
+        # The dashboard URL.
         self.folder_url = folder_url
-        # Bound managed Grafana instance ID.
+        # The instance ID of the attached managed Grafana instance.
         self.grafana_instance_id = grafana_instance_id
-        # Bound managed Grafana instance name.
+        # The name of the associated managed Grafana instance.
         self.grafana_instance_name = grafana_instance_name
-        # Public HTTP address.
+        # The public HTTP URL.
         self.http_api_inter_url = http_api_inter_url
+        # The internal HTTP URL.
         self.http_api_internal_url = http_api_internal_url
-        # Private HTTP address.
+        # The internal HTTP URL.
         self.http_api_intra_url = http_api_intra_url
-        # Instance type, fixed value prom-view.
+        # The instance type. The value is fixed as prom-view.
         self.instance_type = instance_type
-        # Payment type. Currently, the fixed value is FREE (free).
+        # The billing type. The value is currently fixed as FREE.
         self.payment_type = payment_type
-        # Product that the prom instance belongs to.
+        # The product to which the Prometheus instance belongs.
         self.product = product
-        # Prometheus instance list.
+        # The list of Prometheus instances.
         self.prometheus_instances = prometheus_instances
-        # Prometheus view ID.
+        # The Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
-        # Prometheus view name.
+        # The Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Remote read public URL.
+        # The public URL for remote read.
         self.remote_read_inter_url = remote_read_inter_url
+        # The internal endpoint for remote read.
         self.remote_read_internal_url = remote_read_internal_url
-        # Remote read intranet URL.
+        # The internal URL for remote read.
         self.remote_read_intra_url = remote_read_intra_url
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Fixed value: PrometheusView
+        # The resource type. The value is fixed as PrometheusView.
         self.resource_type = resource_type
-        # Backend data storage status
+        # The status of the backend data storage.
         self.status = status
-        # Supported authentication types.
+        # The supported authentication types.
         self.support_auth_types = support_auth_types
-        # Instance tag keys.
+        # The tag keys of the instance.
         self.tags = tags
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version.
+        # The version.
         self.version = version
-        # Workspace to which the environment belongs
+        # The workspace to which the environment belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -347,9 +349,9 @@ class GetPrometheusViewResponseBodyPrometheusViewTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # PagerDuty integration key.
+        # The integration key of PagerDuty.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -385,11 +387,11 @@ class GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances(DaraModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

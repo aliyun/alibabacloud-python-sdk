@@ -12,16 +12,16 @@ class InterruptElasticsearchTaskResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The error code. Only displayed if an exception is returned.
+        # The error code. This parameter is returned only when an exception occurs.
         self.code = code
-        # The error message. Only displayed if an exception is returned.
+        # The error message. This parameter is returned only when an exception occurs.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: interrupted change successfully
-        # *   false: interrupted change failed
+        # - true: The change is interrupted.
+        # - false: The change failed to be interrupted.
         self.result = result
 
     def validate(self):

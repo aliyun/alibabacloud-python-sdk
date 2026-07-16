@@ -10,10 +10,11 @@ class DeleteApiKeyRequest(DaraModel):
         api_key: str = None,
         instance_id: str = None,
     ):
-        # Api Key
+        # The API key to delete.
         # 
         # This parameter is required.
         self.api_key = api_key
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

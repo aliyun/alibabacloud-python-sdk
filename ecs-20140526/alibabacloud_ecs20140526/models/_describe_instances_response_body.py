@@ -18,7 +18,7 @@ class DescribeInstancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instances = instances
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The query token returned in this call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
@@ -26,9 +26,9 @@ class DescribeInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of instances queried.
+        # The total number of queried instances.
         # 
-        # >  If you specify the `MaxResults` and `NextToken` request parameters to perform a paged query, the value of the `TotalCount` response parameter is invalid.
+        # > When you use `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -1496,10 +1496,12 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
         http_endpoint: str = None,
         http_put_response_hop_limit: int = None,
         http_tokens: str = None,
+        instance_metadata_tags: str = None,
     ):
         self.http_endpoint = http_endpoint
         self.http_put_response_hop_limit = http_put_response_hop_limit
         self.http_tokens = http_tokens
+        self.instance_metadata_tags = instance_metadata_tags
 
     def validate(self):
         pass
@@ -1518,6 +1520,9 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
         if self.http_tokens is not None:
             result['HttpTokens'] = self.http_tokens
 
+        if self.instance_metadata_tags is not None:
+            result['InstanceMetadataTags'] = self.instance_metadata_tags
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1530,6 +1535,9 @@ class DescribeInstancesResponseBodyInstancesInstanceMetadataOptions(DaraModel):
 
         if m.get('HttpTokens') is not None:
             self.http_tokens = m.get('HttpTokens')
+
+        if m.get('InstanceMetadataTags') is not None:
+            self.instance_metadata_tags = m.get('InstanceMetadataTags')
 
         return self
 

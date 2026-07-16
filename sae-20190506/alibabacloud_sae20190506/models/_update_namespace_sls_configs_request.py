@@ -12,27 +12,33 @@ class UpdateNamespaceSlsConfigsRequest(DaraModel):
         sls_configs: str = None,
         sls_log_env_tags: str = None,
     ):
-        # The short ID of the namespace. No need to specify a region ID. We recommend configuring this parameter.
+        # The short ID of the namespace. You do not need to include the region. This parameter is recommended.
         self.name_space_short_id = name_space_short_id
-        # The namespace ID.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
-        # The logging configurations of Simple Log Service.
+        # The configuration for collecting logs to SLS.
         # 
-        # *   `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`: Simple Log Service resources automatically created by Serverless App Engine (SAE) are used.
-        # *   To use custom Simple Log Service resources, set this parameter to `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
+        # - To use an SLS resource that is automatically created by SAE: `[{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]`.
         # 
-        # Take note of the following subparameters:
+        # - To use a custom SLS resource: `[{"projectName":"test-sls","logType":"stdout","logDir":"","logstoreName":"sae","logtailName":""},{"projectName":"test","logDir":"/tmp/a.log","logstoreName":"sae","logtailName":""}]`.
         # 
-        # *   **projectName**: the name of the Simple Log Service project.
-        # *   **logDir**: the path in which logs are stored.
-        # *   **logType**: the log type. **stdout** indicates the standard output (stdout) logs of the container. You can specify only one stdout value for this parameter. If not specified, file logs are collected.
-        # *   **logstoreName**: the name of the Logstore in Simple Log Service.
-        # *   **logtailName**: the name of the Logtail in Simple Log Service. If not specified, a new Logtail is created.
+        # The parameters are described as follows:
         # 
-        # If logging configuration changes are not needed during job template deployment, specify **SlsConfigs** only in the first request. Omit this parameter in later requests. To stop using Simple Log Service, leave **SlsConfigs** empty.
+        # - `projectName`: The name of the SLS project.
         # 
-        # > Projects automatically created by SAE for job templates are deleted when their corresponding job templates are deleted. Therefore, you should not select an existing SAE-created project for log collection.
+        # - `logDir`: The log path.
+        # 
+        # - `logType`: The log type. A value of `stdout` specifies container standard output logs. You can specify only one `stdout` configuration. If you do not set this parameter, file logs are collected.
+        # 
+        # - `logstoreName`: The name of the SLS logstore.
+        # 
+        # - `logtailName`: The name of the Logtail. If you do not specify this parameter, a new Logtail is created.
+        # 
+        # If the SLS configuration remains the same across deployments, you can omit this parameter. To disable log collection to SLS, set the value of `SlsConfigs` to an empty string ("").
+        # 
+        # > SAE automatically deletes a project when you delete the task template used to create it. Therefore, when you select an existing project, do not select a project that was automatically created by SAE.
         self.sls_configs = sls_configs
+        # The SLS log tags.
         self.sls_log_env_tags = sls_log_env_tags
 
     def validate(self):

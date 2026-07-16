@@ -13,9 +13,9 @@ class DescribeAdvanceSearchLeftVariableListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAdvanceSearchLeftVariableListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -67,27 +67,27 @@ class DescribeAdvanceSearchLeftVariableListResponseBodyResultObject(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # Variable code
+        # The variable code.
         self.code = code
-        # Description.
+        # The description.
         self.description = description
-        # Display type and grouping label
+        # The display type and group label.
         self.display_type = display_type
-        # Variable return value type
+        # The return value type of the variable.
         self.field_rank = field_rank
-        # Field table sorting
+        # The field table sorting.
         self.field_type = field_type
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Parent node
+        # The parent node.
         self.parent_name = parent_name
-        # Data source
+        # The data source.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type
+        # The variable type.
         self.type = type
 
     def validate(self):

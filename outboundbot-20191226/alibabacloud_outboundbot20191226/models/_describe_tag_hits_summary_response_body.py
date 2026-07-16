@@ -18,12 +18,19 @@ class DescribeTagHitsSummaryResponseBody(DaraModel):
         tag_groups: List[main_models.DescribeTagHitsSummaryResponseBodyTagGroups] = None,
         tag_hits_list: List[main_models.DescribeTagHitsSummaryResponseBodyTagHitsList] = None,
     ):
+        # The response code. `OK` indicates a successful request.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # A list of tag groups.
         self.tag_groups = tag_groups
+        # A list of tag hit statistics.
         self.tag_hits_list = tag_hits_list
 
     def validate(self):
@@ -106,8 +113,11 @@ class DescribeTagHitsSummaryResponseBodyTagHitsList(DaraModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
+        # The hit count for the tag.
         self.hit_count = hit_count
+        # The tag group name.
         self.tag_group = tag_group
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -150,10 +160,13 @@ class DescribeTagHitsSummaryResponseBodyTagGroups(DaraModel):
         tag_group: str = None,
         tag_group_index: int = None,
     ):
-        # ID
+        # The ID of the tag group.
         self.id = id
+        # The script ID.
         self.script_id = script_id
+        # The tag group name.
         self.tag_group = tag_group
+        # The index of the tag group.
         self.tag_group_index = tag_group_index
 
     def validate(self):

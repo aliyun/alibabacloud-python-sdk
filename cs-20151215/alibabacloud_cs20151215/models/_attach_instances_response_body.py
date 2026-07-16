@@ -13,7 +13,7 @@ class AttachInstancesResponseBody(DaraModel):
         list: List[main_models.AttachInstancesResponseBodyList] = None,
         task_id: str = None,
     ):
-        # The details of the added nodes.
+        # The list of node addition information.
         self.list = list
         # The task ID.
         self.task_id = task_id
@@ -59,11 +59,11 @@ class AttachInstancesResponseBodyList(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
-        # The code that indicates the task result.
+        # The status code of the node addition result.
         self.code = code
-        # The ID of the ECS instance.
+        # The ECS instance ID.
         self.instance_id = instance_id
-        # Indicates whether the ECS instance is successfully added to the ACK cluster.
+        # The description of the node addition result.
         self.message = message
 
     def validate(self):

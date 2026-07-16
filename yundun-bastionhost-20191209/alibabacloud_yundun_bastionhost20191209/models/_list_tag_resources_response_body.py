@@ -14,13 +14,13 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token for starting the next query.
+        # The token to start the next query.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The information about Bastionhost instances and the tags bound to Bastionhost instances.
+        # A list of Bastionhost instances and their tags.
         # 
-        # The following information is included: instance ID, resource type, tag key, and tag value.
+        # This list includes the instance ID, resource type, tag key, and tag value.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -71,15 +71,15 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         # 
-        # The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
+        # The only valid value is INSTANCE, which indicates a Bastionhost instance.
         self.resource_type = resource_type
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

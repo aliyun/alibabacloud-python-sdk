@@ -17,14 +17,19 @@ class CreateUsersRequest(DaraModel):
         password_expire_days: str = None,
         users: List[main_models.CreateUsersRequestUsers] = None,
     ):
-        # The date on which the convenience users are automatically locked.
+        # The date and time when the system automatically locks the convenience user\\"s account. The value must be in the `yyyy-MM-dd HH:mm:ss` format.
         self.auto_lock_time = auto_lock_time
+        # The business channel.
         self.business_channel = business_channel
+        # Specifies whether to set the convenience user as a local administrator.
         self.is_local_admin = is_local_admin
-        # The initial password. If this parameter is left empty, an email for password reset is sent to the specified email address.
+        # The initial password. If you do not specify this parameter, the system sends a password reset email to the convenience user\\"s email address.
         self.password = password
+        # By default, a convenience user\\"s password does not expire. You can use this parameter to specify a password validity period of 30 to 365 days. After the password expires, the user must reset it to log in again.
+        # 
+        # > This feature is in invited preview. To use this feature, submit a ticket.
         self.password_expire_days = password_expire_days
-        # The information about the convenience user.
+        # Details about the convenience users.
         # 
         # This parameter is required.
         self.users = users
@@ -100,31 +105,34 @@ class CreateUsersRequestUsers(DaraModel):
         real_nick_name: str = None,
         remark: str = None,
     ):
-        # The email address of the convenience user. The email address is used to receive notifications about events such as desktop assignment. You must specify an email address or a mobile number to receive notifications.
+        # The email address of the convenience user. This email address is used for notifications, such as an alert when a cloud computer is assigned. You must specify either this parameter or the `Phone` parameter.
         self.email = email
-        # The username of the convenience user. The name can contain lowercase letters, digits, and underscores (_), and must be 3 to 24 characters in length.
+        # The user name. The user name must be 3 to 24 characters long and can contain lowercase letters, digits, and underscores (_).
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
         self.group_id_list = group_id_list
-        # The organization to which the convenience user belongs.
+        # The ID of the organization to which the convenience user belongs.
         self.org_id = org_id
-        # The type of the account ownership.
-        # 
-        # Valid values:
-        # 
-        # *   CreateFromManager: administrator-activated
-        # *   Normal: user-activated
+        # The account activation type.
         self.owner_type = owner_type
-        # The user password.
+        # The password for the convenience user.
         # 
-        # >  The password must be at least 10 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
+        # > The password must be at least 10 characters long and contain characters from at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (excluding spaces).
         self.password = password
-        # Mobile numbers are not supported on the international site (alibabacloud.com).
+        # <props="china">
+        # 
+        # The phone number of the convenience user. This phone number is used for notifications, such as a text message when a cloud computer is assigned. You must specify either this parameter or the `Email` parameter.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # Phone numbers are not supported on the international site.
         self.phone = phone
-        # The display name of the end user.
+        # The display name of the convenience user.
         self.real_nick_name = real_nick_name
-        # The remarks on the convenience user.
+        # A remark for the convenience user.
         self.remark = remark
 
     def validate(self):

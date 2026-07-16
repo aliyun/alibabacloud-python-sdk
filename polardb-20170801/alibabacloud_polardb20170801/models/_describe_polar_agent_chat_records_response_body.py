@@ -13,7 +13,9 @@ class DescribePolarAgentChatRecordsResponseBody(DaraModel):
         data: List[main_models.DescribePolarAgentChatRecordsResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The result set.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +61,15 @@ class DescribePolarAgentChatRecordsResponseBodyData(DaraModel):
         query_id: str = None,
         session_id: str = None,
     ):
+        # The answer.
         self.answer = answer
+        # The feedback type.
         self.feedback_type = feedback_type
+        # The session query. Obtain this value from the response of the API call to start a digital human.
         self.query = query
-        # Query ID。
+        # The query ID.
         self.query_id = query_id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

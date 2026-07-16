@@ -13,9 +13,9 @@ class DescribeChartListResponseBody(DaraModel):
         chart_list: List[main_models.DescribeChartListResponseBodyChartList] = None,
         request_id: str = None,
     ):
-        # The charts.
+        # The list of charts.
         self.chart_list = chart_list
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,40 +61,40 @@ class DescribeChartListResponseBodyChartList(DaraModel):
         chart_name: str = None,
         chart_type: str = None,
     ):
-        # The name of the business type. Valid values:
+        # The business type name. Valid values:
         # 
-        # *   Overall Operations Metrics
-        # *   Asset Operations Metrics
-        # *   Security Alert Operations Metrics
-        # *   Vulnerability Operations Metrics
-        # *   Baseline Operations Metrics
-        # *   Cloud Product Operations Metrics
-        # *   Honeypot Operations Metrics
+        # - Overall operation metrics
+        # - Asset operation metrics
+        # - Security alert operation metrics
+        # - Vulnerability operation metrics
+        # - Baseline operation metrics
+        # - Cloud service operation metrics
+        # - Cloud honeypot operation metrics.
         self.business_name = business_name
         # The business type. Valid values:
         # 
-        # *   INDEX_SECURITY_OVERALL_OPERATION
-        # *   INDEX_ASSET_OPERATION
-        # *   INDEX_SUSPICIOUS_OPERATION
-        # *   INDEX_VUL_OPERATION
-        # *   INDEX_BASELINE_CHECK_OPERATION
-        # *   INDEX_CLOUD_ASSET_OPERATION
-        # *   INDEX_HONEYPOT_RISK_OPERATION
+        # - INDEX_SECURITY_OVERALL_OPERATION
+        # - INDEX_ASSET_OPERATION
+        # - INDEX_SUSPICIOUS_OPERATION
+        # - INDEX_VUL_OPERATION
+        # - INDEX_BASELINE_CHECK_OPERATION
+        # - INDEX_CLOUD_ASSET_OPERATION
+        # - INDEX_HONEYPOT_RISK_OPERATION.
         self.business_type = business_type
-        # The ID of the chart.
+        # The chart ID.
         self.chart_id = chart_id
-        # The name of the chart.
+        # The chart name.
         self.chart_name = chart_name
-        # The type of the chart. Valid values:
+        # The chart type. Valid values:
         # 
-        # *   **text**
-        # *   **table**
-        # *   **gauge**
-        # *   **pie**
-        # *   **line**
-        # *   **bar**
-        # *   **timeBar**
-        # *   **timeLine**
+        # - **text**: text
+        # - **table**: table
+        # - **gauge**: gauge chart
+        # - **pie**: pie chart
+        # - **line**: line chart
+        # - **bar**: bar chart
+        # - **timeBar**: timeline bar chart
+        # - **timeLine**: timeline line chart.
         self.chart_type = chart_type
 
     def validate(self):

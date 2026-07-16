@@ -12,21 +12,25 @@ class DescribeAutomateResponseConfigFeatureRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The type of the automated response rule. Valid values:
+        # The type of automated response. Valid values:
         # 
-        # *   event
-        # *   alert
+        # - event: event
+        # 
+        # - alert: alert
         self.auto_response_type = auto_response_type
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of threat analysis is deployed. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Assets in the Chinese mainland and Hong Kong (China).
+        # 
+        # - ap-southeast-1: Assets outside China.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The user ID of the member. An administrator can use this parameter to switch to the perspective of the member.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The type of view. Valid values:
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all accounts that are managed by the administrator account.
         self.role_type = role_type
 
     def validate(self):

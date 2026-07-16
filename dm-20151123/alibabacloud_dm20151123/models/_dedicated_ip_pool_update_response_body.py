@@ -10,9 +10,9 @@ class DedicatedIpPoolUpdateResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # IP pool ID
+        # The ID of the IP pool.
         self.id = id
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

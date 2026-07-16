@@ -16,18 +16,19 @@ class ListTransitRouterVpcAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_attachments: List[main_models.ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments] = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # The token to retrieve the next page of results.
         # 
-        # *   If **NextToken** is returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # - If this parameter is empty, all results have been returned.
+        # 
+        # - If a value is returned for **NextToken**, it is the token to start the next query.
         self.next_token = next_token
-        # The ID of the region.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The information about the VPC connection.
+        # A list of VPC connections.
         self.transit_router_attachments = transit_router_attachments
 
     def validate(self):
@@ -105,57 +106,63 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         vpc_region_id: str = None,
         zone_mappings: List[main_models.ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMappings] = None,
     ):
-        # Indicates whether the Enterprise Edition transit router can automatically advertise routes to the VPC. Valid values:
+        # Specifies whether the Enterprise Edition transit router automatically advertises routes to the VPC.
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: Routes are not automatically advertised.
+        # 
+        # - **true**: Routes are automatically advertised.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The ID of the CEN instance.
         self.cen_id = cen_id
         # The billing method of the VPC connection.
         # 
-        # Only **POSTPAY** may be returned, which indicates the default pay-as-you-go billing method.
+        # The value is always **POSTPAY**, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
         # The time when the VPC connection was created.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time is in the `YYYY-MM-DDThh:mmZ` format and in UTC.
         self.creation_time = creation_time
+        # The cloud service to which the resource belongs.
         self.managed_service = managed_service
+        # A collection of feature attributes.
         self.options = options
-        # The entity that pays the fees of the network instance. Valid values:
+        # Specifies who pays for the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-        # *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+        # - **PayByCenOwner**: The account that owns the CEN instance pays the fees.
+        # 
+        # - **PayByResourceOwner**: The account that owns the network instance pays the fees.
         self.order_type = order_type
-        # The type of resource to which the transit router is connected.
+        # The type of resource to which the connection is attached.
         # 
-        # Only **VPC** may be returned, which indicates VPCs.
+        # The value is always **VPC**, which indicates a VPC.
         self.resource_type = resource_type
-        # The status of the VPC connection. Valid values:
+        # The status of the VPC connection.
         # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detaching**
+        # - **Attached**: The connection is established.
+        # 
+        # - **Attaching**: The connection is being created.
+        # 
+        # - **Detaching**: The connection is being deleted.
         self.status = status
-        # The tags.
+        # A list of tags.
         self.tags = tags
         # The description of the VPC connection.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The VPC connection ID.
+        # The ID of the VPC connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the VPC connection.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The description of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
-        # The features of the VPC connection.
+        # The feature attributes of the VPC connection. This parameter is deprecated. We recommend that you use the Options parameter instead.
         self.transit_router_vpcattachment_options = transit_router_vpcattachment_options
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The ID of the Alibaba Cloud account to which the VPC belongs.
+        # The ID of the account that owns the VPC.
         self.vpc_owner_id = vpc_owner_id
-        # The region ID of the VPC.
+        # The ID of the region where the VPC is deployed.
         self.vpc_region_id = vpc_region_id
-        # The primary and secondary zones, vSwitches, and ENIs of the VPC.
+        # The zone mappings of the VPC connection. This includes the vSwitches and elastic network interfaces (ENIs) in the associated VPC.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -313,11 +320,11 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsZoneMap
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the ENI created by the Enterprise Edition transit router in the vSwitch.
+        # The ID of the ENI that the Enterprise Edition transit router creates in the vSwitch.
         self.network_interface_id = network_interface_id
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The zone ID.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -395,7 +402,17 @@ class ListTransitRouterVpcAttachmentsResponseBodyTransitRouterAttachmentsOptions
         appliance_mode_support: str = None,
         ipv_6support: str = None,
     ):
+        # Specifies whether appliance mode is enabled.
+        # 
+        # - **disable** (default): Appliance mode is disabled.
+        # 
+        # - **enable**: Appliance mode is enabled.
         self.appliance_mode_support = appliance_mode_support
+        # Specifies whether IPv6 is enabled.
+        # 
+        # - **disable** (default): IPv6 is disabled.
+        # 
+        # - **enable**: IPv6 is enabled.
         self.ipv_6support = ipv_6support
 
     def validate(self):

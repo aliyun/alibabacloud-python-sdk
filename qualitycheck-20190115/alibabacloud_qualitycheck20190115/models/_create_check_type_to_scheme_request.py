@@ -10,8 +10,9 @@ class CreateCheckTypeToSchemeRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Request parameter in JSON format. For details, see the additional information about request parameters.
         self.json_str = json_str
 
     def validate(self):

@@ -17,13 +17,21 @@ class CreateDialogResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -96,7 +104,9 @@ class CreateDialogResponseBodyData(DaraModel):
         opening_remarks: str = None,
         session_id: str = None,
     ):
+        # The opening remarks.
         self.opening_remarks = opening_remarks
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):

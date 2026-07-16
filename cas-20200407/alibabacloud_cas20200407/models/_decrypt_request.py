@@ -16,27 +16,35 @@ class DecryptRequest(DaraModel):
     ):
         # The encryption algorithm. Valid values:
         # 
-        # *   **RSAES_OAEP_SHA_1**
-        # *   **RSAES_OAEP_SHA_256**
-        # *   **SM2PKE**
+        # - **RSAES_OAEP_SHA_1**
+        # 
+        # - **RSAES_OAEP_SHA_256**
+        # 
+        # - **SM2PKE**
         # 
         # This parameter is required.
         self.algorithm = algorithm
-        # The unique identifier of the certificate. You can call the [ListCert](https://help.aliyun.com/document_detail/455806.html) operation to query the identifier.
+        # The unique identifier of the certificate. Call [ListCert](https://help.aliyun.com/document_detail/455806.html) to obtain this parameter.
         # 
-        # *   If the certificate is an SSL certificate, the value of this parameter must be in the {Certificate ID}-cn-hangzhou format.
-        # *   If the certificate is a private certificate, the value of this parameter must be the value of the Identifier field for the private certificate.
+        # - The identifier of an SSL certificate is typically in the format {Certificate ID}-cn-hangzhou.
+        # 
+        # - For a private certificate authority (PCA) certificate, this is the value of the Identifier field of the private certificate.
         self.cert_identifier = cert_identifier
-        # The data that you want to decrypt. The value is encoded in Base64.
+        # The Base64-encoded data to decrypt.
         # 
         # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
+        # A custom identifier that serves as a unique key.
         self.custom_identifier = custom_identifier
-        # The value type of the Message parameter. Valid values:
+        # The message type. Valid values:
         # 
-        # *   RAW: The returned result is raw data encoded in UTF-8.
-        # *   Base64: The returned result is Base64-encoded data. This is the default value.
+        # - RAW: The response returns the plaintext in UTF-8 encoding.
+        # 
+        # - Base64 (default): The response returns the Base64-encoded plaintext.
         self.message_type = message_type
+        # The ID of the repository.
+        # 
+        # > Call [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) to obtain this ID.
         self.warehouse_id = warehouse_id
 
     def validate(self):

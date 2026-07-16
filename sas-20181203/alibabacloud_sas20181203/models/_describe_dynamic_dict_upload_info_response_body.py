@@ -15,19 +15,19 @@ class DescribeDynamicDictUploadInfoResponseBody(DaraModel):
         request_id: str = None,
         signature: str = None,
     ):
-        # The AccessKey ID that is used to access OSS.
+        # The AccessKey ID of OSS.
         self.accessid = accessid
-        # The validity period of the signature. The value is a UNIX timestamp.
+        # The expiration time of the OSS authorization, in timestamp format.
         self.expire = expire
-        # The OSS endpoint.
+        # The OSS domain name.
         self.host = host
-        # The name of the OSS object.
+        # The key of the OSS file name.
         self.key = key
         # The OSS security policy.
         self.policy = policy
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The signature that is calculated based on **AccessKeySecret** and **Policy**. When you call an OSS API operation, OSS uses the signature information to check the validity of the POST request.
+        # The signature information calculated based on **AccessKeySecret** and **Policy**. When you call an OSS API operation, OSS verifies this signature information to confirm the validity of the POST request.
         self.signature = signature
 
     def validate(self):

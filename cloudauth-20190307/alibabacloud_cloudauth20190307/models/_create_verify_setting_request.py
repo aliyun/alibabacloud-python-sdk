@@ -14,21 +14,21 @@ class CreateVerifySettingRequest(DaraModel):
         result_step: bool = None,
         solution: str = None,
     ):
-        # Verification scenario name, supporting Chinese, English, numbers, and hyphens (-), with a maximum of 20 characters.
+        # The name of the verification scenario.
         # 
         # This parameter is required.
         self.biz_name = biz_name
-        # Verification scenario identifier, supporting English letters, numbers, and hyphens (-), with a maximum of 20 characters.
+        # The identifier of the verification scenario.
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Whether to use the system\\"s default guide page.
+        # Specifies whether to use the default system guide page.
         self.guide_step = guide_step
-        # Whether to use the system\\"s default authorization page.
+        # Specifies whether to use the default system authorization page.
         self.privacy_step = privacy_step
-        # Whether to use the system\\"s default result page.
+        # Specifies whether to use the default system result page.
         self.result_step = result_step
-        # The name of the authentication solution to use, such as **RPBasic**, **RPBioOnly**, etc. For all supported authentication solutions, see [Authentication Solutions](https://help.aliyun.com/document_detail/127521.html).
+        # The name of the verification solution.
         # 
         # This parameter is required.
         self.solution = solution

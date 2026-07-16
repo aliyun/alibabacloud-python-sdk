@@ -13,14 +13,15 @@ class AddShortUrlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The status code of the request.
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - A value of `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error Code List](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
         # The details of the short URL.
         self.data = data
-        # The returned message.
+        # The message that describes the status.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,13 +75,13 @@ class AddShortUrlResponseBodyData(DaraModel):
         short_url: str = None,
         source_url: str = None,
     ):
-        # The time when the short URL expires.
+        # The expiration time of the short URL.
         # 
-        # > The value of **ExpireDate** is on the hour.
+        # > The value of **ExpireDate** is always on the hour.
         self.expire_date = expire_date
-        # The short URL.
+        # The generated short URL.
         self.short_url = short_url
-        # The source URL.
+        # The source URL that was shortened.
         self.source_url = source_url
 
     def validate(self):

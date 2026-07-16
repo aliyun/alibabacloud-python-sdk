@@ -10,8 +10,12 @@ class DescribePolarFsObjectsRequest(DaraModel):
         path: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # The absolute path of the directory.
+        # 
         # This parameter is required.
         self.path = path
+        # The PolarFs instance ID.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 

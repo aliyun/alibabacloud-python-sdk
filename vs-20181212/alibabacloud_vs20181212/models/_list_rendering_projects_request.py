@@ -14,11 +14,17 @@ class ListRenderingProjectsRequest(DaraModel):
         project_name: str = None,
         start_time: str = None,
     ):
+        # A parameter that specifies the time range to filter by. The time must be in UTC and follow the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # Page number. The first page is 1.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Project ID
         self.project_id = project_id
+        # Project name
         self.project_name = project_name
+        # Start time of the time range filter. Use ISO 8601 format in UTC, such as yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

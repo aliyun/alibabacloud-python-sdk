@@ -14,14 +14,15 @@ class UpdateCloudGtmGlobalAlertShrinkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - `zh-CN`: Chinese
+        # 
+        # - `en-US`: English
         self.accept_language = accept_language
-        # The alert configurations.
+        # A list of alert configurations.
         self.alert_config_shrink = alert_config_shrink
-        # The alert contact groups.
+        # A list of alert notification groups.
         self.alert_group_shrink = alert_group_shrink
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token to ensure request idempotence. This token must be unique for each request, contain only ASCII characters, and be no more than 64 characters in length.
         self.client_token = client_token
 
     def validate(self):

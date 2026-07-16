@@ -11,11 +11,11 @@ class QueryCustomizeFlowStrategyRequest(DaraModel):
         region_id: str = None,
         user_id: int = None,
     ):
-        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade Real Person), all others have been phased out.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
         self.product_type = product_type
-        # regionId
+        # The region ID.
         self.region_id = region_id
-        # User ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

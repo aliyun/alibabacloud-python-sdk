@@ -17,12 +17,25 @@ class DescribeModelServicesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The details of the model services.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of records to return on each page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -99,17 +112,37 @@ class DescribeModelServicesResponseBodyItems(DaraModel):
         status: str = None,
         vendor: str = None,
     ):
+        # The API key for the model service.
         self.api_key = api_key
+        # The base URL of the upstream service.
         self.base_url = base_url
+        # The time when the model service was created.
         self.gmt_created = gmt_created
+        # The cost in points per million input tokens.
         self.input_cost_points_per_million = input_cost_points_per_million
+        # The model category.
         self.model_category = model_category
+        # The model service ID.
         self.model_service_id = model_service_id
+        # The model service name.
         self.name = name
+        # The cost in points per million output tokens.
         self.output_cost_points_per_million = output_cost_points_per_million
+        # The protocol. Valid values:
+        # 
+        # - **OpenAI**
+        # 
+        # - **Anthropic**
+        # 
+        # - **bailian**: Alibaba Cloud Model Studio.
+        # 
+        # - **vLLM**
         self.protocol = protocol
+        # The cost in points per request.
         self.request_cost_points = request_cost_points
+        # The status of the model service.
         self.status = status
+        # The vendor of the model service.
         self.vendor = vendor
 
     def validate(self):

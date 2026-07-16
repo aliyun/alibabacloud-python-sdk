@@ -11,23 +11,28 @@ class ChangeDomainGroupRequest(DaraModel):
         group_id: str = None,
         lang: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the domain name.
+        # The domain name.<props="china"> Call [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain the domain name.
+        # <props="intl">Call [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         # The ID of the target domain name group.
         # 
-        # *   If you do not specify GroupId, the domain name belongs to the default group.
-        # *   If you specify an empty string "" for GroupId, the domain name belongs to the default group.
-        # *   If you set GroupId to defaultGroup, the domain name belongs to the default group.
-        # *   If you specify GroupId to another value and the value is verified existent, the value of GroupId for the target domain name is updated. If the value is verified inexistent, the value of GroupId for the target domain name is not updated.
+        # - If you do not specify GroupId, the domain name is moved to the default group.
+        # 
+        # - If GroupId is an empty string (""), the domain name is moved to the default group.
+        # 
+        # - If GroupId is defaultGroup, the domain name is moved to the default group.
+        # 
+        # - If GroupId is a different value, the system checks if the group exists. If the group exists, the domain name\\"s group is updated. If the group does not exist, the group is not updated.
         self.group_id = group_id
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
         # 
-        # Default value: en
+        # - en: English
+        # 
+        # Default: en.
         self.lang = lang
 
     def validate(self):

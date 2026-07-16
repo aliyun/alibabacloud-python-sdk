@@ -11,8 +11,12 @@ class CreateDirectoryRequest(DaraModel):
         create_command: main_models.CreateDirectoryRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,12 +56,31 @@ class CreateDirectoryRequestCreateCommand(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
+        # The menu tree category. Valid values:
+        # - tempCode: custom query
+        # - codeManage: code node
+        # - offlinePipeline: offline pipeline
+        # - offlinePipelineCustomPlugin: pipeline custom component
+        # - dataX: synchronization task
+        # - streamMeta: real-time meta table
+        # - streamCustomDataSource: real-time custom source
+        # - streamTemplate: real-time compute template
+        # - resourceManage: resource management
+        # - udfResource: offline function
+        # - streamFunction: real-time function.
+        # 
         # This parameter is required.
         self.category = category
+        # The parent directory of the new file directory.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The name of the new file directory.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

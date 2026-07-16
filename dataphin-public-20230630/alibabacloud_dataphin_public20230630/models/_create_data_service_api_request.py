@@ -13,8 +13,12 @@ class CreateDataServiceApiRequest(DaraModel):
         create_command: main_models.CreateDataServiceApiRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The request for creating an API.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -70,35 +74,87 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         update_rate: int = None,
         version: str = None,
     ):
+        # The group ID of the API.
+        # 
         # This parameter is required.
         self.api_group_id = api_group_id
+        # The group name of the API.
+        # 
         # This parameter is required.
         self.api_group_name = api_group_name
+        # The name of the API.
+        # 
         # This parameter is required.
         self.api_name = api_name
+        # The type of the API. Valid values:
+        # 
+        # - 3: datasource SQL mode.
+        # 
         # This parameter is required.
         self.api_type = api_type
+        # The protocol. Different gateway types support different protocols. For more information, see the documentation. Valid values:
+        # - 0: HTTP 
+        # - 1: HTTPS.
+        # 
         # This parameter is required.
         self.biz_protocol = biz_protocol
+        # The cache timeout period, in seconds.
         self.cache_timeout = cache_timeout
+        # The call mode of the API. Default value: 1. Valid values:
+        # 
+        # - 1: synchronous call
+        # - 2: asynchronous call.
         self.call_mode = call_mode
+        # The custom update frequency. This parameter is required when the update frequency is set to custom.
         self.custom_update_rate = custom_update_rate
+        # The description of the API.
         self.description = description
+        # The configuration of the operation-type API. This parameter is not required when creating a query-type API.
         self.dml_config = dml_config
+        # The execution timeout period for asynchronous API calls. This parameter takes effect only for asynchronous API calls and is required when the call mode is asynchronous.
         self.execution_timeout = execution_timeout
+        # The development mode of the API. Valid values:
+        # 
+        # - 0: Basic mode 
+        # - 1: Dev-Prod mode.
+        # 
         # This parameter is required.
         self.mode = mode
+        # The ID of the data service project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The request method of the API. Valid values:
+        # 
+        # - 0 (GET): Returns a single record. The query result is unique. 
+        # - 1 (LIST): Returns multiple records.
+        # - 2 (CREATE): Creates objects. Supports single or batch creation.
+        # - 3 (UPDATE): Updates objects. Supports single or batch updates.
+        # - 4 (DELETE): Deletes objects. Supports single or batch deletions.
+        # 
         # This parameter is required.
         self.request_type = request_type
+        # Specifies whether to return the SQL in the result.
         self.return_sql_switch = return_sql_switch
+        # The list of row-level permission IDs.
         self.row_permission_ids = row_permission_ids
+        # The details of the script API.
+        # 
         # This parameter is required.
         self.script_details = script_details
+        # The timeout period, in seconds.
+        # 
         # This parameter is required.
         self.timeout = timeout
+        # The update frequency. Default value: 1. Valid values:
+        # 
+        # - 0: custom
+        # - 1: day
+        # - 2: hour
+        # - 3: minute.
         self.update_rate = update_rate
+        # The version of the API.
+        # 
         # This parameter is required.
         self.version = version
 
@@ -253,15 +309,33 @@ class CreateDataServiceApiRequestCreateCommandScriptDetails(DaraModel):
         sort_priority: int = None,
         sql_mode: int = None,
     ):
+        # The ID of the datasource. This parameter is required when the API mode is direct datasource connection.
         self.datasource_id = datasource_id
+        # The data type on which the API is based. Valid values:
+        # - 1: datasource.
+        # 
         # This parameter is required.
         self.datasource_type = datasource_type
+        # Specifies whether to paginate the results. This parameter is required only when RequestType is set to List. Default value: false. Pagination is not supported in asynchronous call mode.
         self.is_paginated = is_paginated
+        # The SQL script.
+        # 
         # This parameter is required.
         self.script = script
+        # The list of request parameters for the script API.
         self.script_request_parameters = script_request_parameters
+        # The list of response parameters for the script API.
         self.script_response_parameters = script_response_parameters
+        # The sorting priority. This parameter takes effect only when the SQL mode is basic mode. Default value: 2. Valid values:
+        # 
+        # - 1: SQL script 
+        # - 2: OrderByList request parameter.
         self.sort_priority = sort_priority
+        # The SQL mode. Valid values:
+        # 
+        # - 1: basic mode
+        # - 2: advanced mode.
+        # 
         # This parameter is required.
         self.sql_mode = sql_mode
 
@@ -353,11 +427,34 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamet
         parameter_location: str = None,
         parameter_name: str = None,
     ):
+        # The example value.
         self.example_value = example_value
+        # The data type. Valid values:
+        # - "STRING"
+        # - "DOUBLE"
+        # - "INT"
+        # - "DATE"
+        # - "LONG"
+        # - "FLOAT"
+        # - "BOOLEAN"
+        # - "SHORT"
+        # - "BYTE"
+        # - "BIGDECIMAL"
+        # - "BINARY"
+        # - "ARRAY"
+        # - "Array(int)"
+        # - "Array(string)".
+        # 
         # This parameter is required.
         self.parameter_data_type = parameter_data_type
+        # The parameter description.
         self.parameter_description = parameter_description
+        # The location of the response parameter for operation-type APIs. This parameter must be set when the API is an operation-type API with batch data volume. Valid values:
+        # - success: the response data of a successful operation
+        # - failed: the response data of a failed operation.
         self.parameter_location = parameter_location
+        # The parameter name.
+        # 
         # This parameter is required.
         self.parameter_name = parameter_name
 
@@ -416,15 +513,43 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParamete
         parameter_name: str = None,
         parameter_value_type: str = None,
     ):
+        # The default value of the input parameter for operation-type APIs. This parameter takes effect when the parameter is not required. If not specified, the value is null.
         self.default_value = default_value
+        # The example value.
         self.example_value = example_value
+        # Specifies whether the parameter is required.
+        # 
         # This parameter is required.
         self.is_required_parameter = is_required_parameter
+        # The data type. Valid values:
+        # - "STRING"
+        # - "DOUBLE"
+        # - "INT"
+        # - "DATE"
+        # - "LONG"
+        # - "FLOAT"
+        # - "BOOLEAN"
+        # - "SHORT"
+        # - "BYTE"
+        # - "BIGDECIMAL"
+        # - "BINARY"
+        # - "ARRAY"
+        # - "Array(int)"
+        # - "Array(string)".
+        # 
         # This parameter is required.
         self.parameter_data_type = parameter_data_type
+        # The parameter description.
         self.parameter_description = parameter_description
+        # The parameter name.
+        # 
         # This parameter is required.
         self.parameter_name = parameter_name
+        # The value type of the parameter. Valid values:
+        # 
+        # - 1 (single value): A fixed value used for operators such as =, >=, <=, >, <, !=, and between. 
+        # - 2 (multiple values): The input parameter contains multiple values separated by commas (,). Used for In and Not In operators.
+        # 
         # This parameter is required.
         self.parameter_value_type = parameter_value_type
 
@@ -494,11 +619,44 @@ class CreateDataServiceApiRequestCreateCommandDmlConfig(DaraModel):
         parallel_num: int = None,
         transaction_type: int = None,
     ):
+        # The data volume per batch. Valid values:
+        # - When the data volume type is single record, this parameter cannot be set.
+        # - When the data volume type is batch:
+        #   - If the transaction processing mode is 1, this parameter cannot be set.
+        #   - If the transaction processing mode is 2, the value ranges from 1 to 1000000.
         self.batch_input_data_size = batch_input_data_size
+        # The data volume type. Valid values:
+        # - 1: single record
+        # - 2: batch.
         self.data_volume_type = data_volume_type
+        # The error handling method. Valid values:
+        # - 1: partial success allowed
+        # - 2: all must succeed
+        # 
+        # Parameter rules:
+        # - When the data volume type is single record, this parameter cannot be set.
+        # - When the data volume type is batch, the value is 1 or 2.
         self.error_handling_type = error_handling_type
+        # The maximum number of input records. Valid values:
+        # - When the data volume type is single record, this parameter cannot be set.
+        # - When the data volume type is batch, the value ranges from 1 to 1000000.
         self.max_input_data_size = max_input_data_size
+        # The degree of parallelism. Valid values:
+        # - When the data volume type is single record, this parameter cannot be set.
+        # - When the data volume type is batch:
+        #   - If the transaction processing mode is 1, this parameter cannot be set.
+        #   - If the transaction processing mode is 2, the value ranges from 1 to 5.
         self.parallel_num = parallel_num
+        # The transaction processing mode. Valid values:
+        # - 0: no transaction
+        # - 1: no batching
+        # - 2: batch processing
+        # 
+        # Parameter rules:
+        # - When the data volume type is single record, the transaction processing mode is 0.
+        # - When the data volume type is batch:
+        #   - If the error handling method is 1, the transaction processing mode is 1 or 2.
+        #   - If the error handling method is 2, the transaction processing mode can only be 1.
         self.transaction_type = transaction_type
 
     def validate(self):

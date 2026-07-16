@@ -167,15 +167,17 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The task ID.
         self.id = id
         # The instance generation mode. Valid values:
         # 
-        # *   T+1
-        # *   Immediately
+        # - T+1
+        # 
+        # - Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -191,8 +193,9 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -202,9 +205,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -212,8 +217,9 @@ class ListDownstreamTasksResponseBodyPagingInfoTasks(DaraModel):
         self.runtime_resource = runtime_resource
         # The scheduling dependency type. Valid values:
         # 
-        # *   Normal: same-cycle scheduling dependency
-        # *   CrossCycle: cross-cycle scheduling dependency
+        # - Normal: same-cycle scheduling dependency
+        # 
+        # - CrossCycle: cross-cycle scheduling dependency
         self.step_type = step_type
         # The timeout period of task running. Unit: seconds.
         self.timeout = timeout
@@ -408,9 +414,11 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -420,8 +428,9 @@ class ListDownstreamTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -556,8 +565,9 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasks(DaraModel):
     ):
         # The scheduling dependency type. Valid values:
         # 
-        # *   Normal: same-cycle scheduling dependency
-        # *   CrossCycle: cross-cycle scheduling dependency
+        # - Normal: same-cycle scheduling dependency
+        # 
+        # - CrossCycle: cross-cycle scheduling dependency
         self.dependency_type = dependency_type
         # The information about the task.
         self.task = task
@@ -628,15 +638,17 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The task ID.
         self.id = id
         # The instance generation mode. Valid values:
         # 
-        # *   T+1
-        # *   Immediately
+        # - T+1
+        # 
+        # - Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -654,9 +666,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTask(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -841,9 +855,11 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(DaraMo
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -851,8 +867,9 @@ class ListDownstreamTasksResponseBodyPagingInfoDownstreamTasksTaskTrigger(DaraMo
         self.timezone = timezone
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.type = type
 
     def validate(self):

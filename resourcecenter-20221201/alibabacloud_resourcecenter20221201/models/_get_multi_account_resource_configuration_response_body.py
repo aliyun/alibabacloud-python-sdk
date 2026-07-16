@@ -25,7 +25,7 @@ class GetMultiAccountResourceConfigurationResponseBody(DaraModel):
         tags: List[main_models.GetMultiAccountResourceConfigurationResponseBodyTags] = None,
         zone_id: str = None,
     ):
-        # The ID of the management account or member.
+        # The ID of the management account or member of the resource directory.
         self.account_id = account_id
         # The configurations of the resource.
         self.configuration = configuration
@@ -33,27 +33,27 @@ class GetMultiAccountResourceConfigurationResponseBody(DaraModel):
         self.create_time = create_time
         # The time when the resource expires.
         self.expire_time = expire_time
-        # The properties of the IP addresses.
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
-        # The ID of the region where the resource resides.
+        # The region ID of the resource.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of your Alibaba Cloud resource group.
+        # The ID of the resource group to which the resource belongs.
         self.resource_group_id = resource_group_id
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
-        # The resource name.
+        # The name of the resource.
         self.resource_name = resource_name
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
-        # The tags.
+        # The tags of the resource.
         self.tags = tags
-        # The zone ID.
+        # The zone ID of the resource.
         self.zone_id = zone_id
 
     def validate(self):
@@ -177,9 +177,9 @@ class GetMultiAccountResourceConfigurationResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -219,11 +219,10 @@ class GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes(DaraMo
         self.ip_address = ip_address
         # The network type. Valid values:
         # 
-        # - **Public**: Internet
-        # 
-        # - **Private**: internal network
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
-        # The version of the IP address.
+        # The version.
         self.version = version
 
     def validate(self):

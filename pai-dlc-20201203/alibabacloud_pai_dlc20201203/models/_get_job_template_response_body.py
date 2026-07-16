@@ -25,24 +25,37 @@ class GetJobTemplateResponseBody(DaraModel):
         versions: List[main_models.GetJobTemplateResponseBodyVersions] = None,
         workspace_id: str = None,
     ):
-        # 当前默认使用的版本号
+        # The default version of the job template.
         self.default_version = default_version
+        # A description of the job template.
         self.description = description
+        # The time the job template was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The time the job template was last modified.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
+        # A collection of user-defined key-value pairs.
         self.metadata = metadata
+        # The ID of the user who last modified the job template.
         self.modified_by = modified_by
-        # 本次请求的 ID，用于诊断和答疑。
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the job template.
         self.template_id = template_id
+        # The name of the job template.
         self.template_name = template_name
+        # The ID of the tenant that owns the job template.
         self.tenant_id = tenant_id
+        # The total number of versions returned. This value is 1 if a specific version is queried, or the total count if all versions are queried.
         self.total_count = total_count
+        # The ID of the user who created the job template.
         self.user_id = user_id
-        # 模板版本详情列表。查询单个版本时返回1个元素，查询所有版本时返回全部
+        # An array of template versions. This array contains only one version if a specific version is requested, or all versions if `all` is specified.
         self.versions = versions
+        # The ID of the workspace that contains the job template.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -160,13 +173,17 @@ class GetJobTemplateResponseBodyVersions(DaraModel):
         gmt_create_time: str = None,
         version: int = None,
     ):
-        # 字段约束规则。Key 为 JSONPath 表达式，Value 为约束类型
+        # The field constraint rules. The key is a JSONPath expression and the value is a constraint type.
         self.constraints = constraints
-        # 该版本的模板配置内容，JSON 格式
+        # The configuration of the version, in JSON format.
         self.content = content
+        # The ID of the user who created the version.
         self.created_by = created_by
+        # The time the version was created.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_create_time = gmt_create_time
+        # The version number.
         self.version = version
 
     def validate(self):

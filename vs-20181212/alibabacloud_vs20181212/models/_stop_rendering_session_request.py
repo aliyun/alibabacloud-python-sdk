@@ -11,9 +11,13 @@ class StopRenderingSessionRequest(DaraModel):
         project_id: str = None,
         session_id: str = None,
     ):
+        # Unique ID of the end customer. Specify either SessionId or ClientId.
         self.client_id = client_id
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Session ID. Specify either SessionId or ClientId.
         self.session_id = session_id
 
     def validate(self):

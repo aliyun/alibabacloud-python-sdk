@@ -23,53 +23,118 @@ class CreateSmsTemplateRequest(DaraModel):
         template_type: int = None,
         traffic_driving: str = None,
     ):
-        # If there is an applicable scenario, you can fill it in.
-        self.apply_scene_content = apply_scene_content
-        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
-        # - **0**: Verification code.
-        # - **1**: SMS notification.
-        # - **2**: Promotional message.
-        self.intl_type = intl_type
-        # Additional materials you can upload, such as business proof documents or screenshots, to help reviewers understand your business details.
+        # The business scenario.
         # 
-        # This parameter is optional; please fill it in according to actual needs.
+        # - If the associated signature\\"s use case is "Live App", `ApplySceneContent` must be an app URL that starts with `http://` or `https://`.
+        # 
+        # - This parameter is required if the associated signature\\"s use case is "Registered Trademark Name" or "organization name".
+        self.apply_scene_content = apply_scene_content
+        # The type of the template for international/Hong Kong, Macao, and Taiwan messages. This parameter is required when **TemplateType** is set to **3**. Valid values:
+        # 
+        # - **0**: notification message.
+        # 
+        # - **1**: promotional message.
+        # 
+        # - **2**: verification code.
+        self.intl_type = intl_type
+        # Additional information. You can upload supporting documents or business screenshots to help reviewers better understand your business scenario. If you are applying for a promotional message template (where `TemplateType` is `2`), you must upload user authorization materials. For more information, see [Specifications for Uploading User Authorization Materials](https://help.aliyun.com/document_detail/312341.html).
         self.more_data = more_data
         self.owner_id = owner_id
-        # The signature name that the template needs to be associated with. The associated SMS signature must have passed the review.
+        # The name of the signature to associate with the template. The signature must be an approved signature.
         # 
-        # This parameter is mandatory when the TemplateType parameter is **0**, **1**, or **2**.
+        # >Notice: 
         # 
-        # <notice>Associating a signature can expedite the review process. Note that this associated signature is unrelated to the signature selected when sending SMS messages.</notice>
+        # - This parameter is required if **TemplateType** is set to **0**, **1**, or **2**.
+        # 
+        # - Associating a signature can expedite the review process. The signature associated here is unrelated to the one you select when sending SMS messages.
         self.related_sign_name = related_sign_name
-        # Please describe the business scenario where you use SMS or provide an online link to the scenario, along with a complete example of the SMS (with variable contents filled), as complete information helps increase the template approval rate. Failure to follow guidelines or leaving this field blank may affect the approval of your template.
+        # Describe the business scenario for the SMS messages, or provide a URL for online scenarios. You must also provide a complete SMS example with actual values for any variables. Complete information increases the chance of template approval. Templates that do not provide this information as specified may be rejected.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Template content, up to 500 characters in length.
+        # The template content. The content must be 500 characters or less.
         # 
-        # Both the template content and variable content must comply with SMS specifications; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. For variable specifications, see [TemplateContent Variable Parameter Filling Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+        # The template content and variables must comply with the [SMS Template Specifications](https://help.aliyun.com/document_detail/463161.html). Templates that do not comply may be rejected. You can find common template examples on the [Apply for Template](https://dysms.console.aliyun.com/domestic/text/template/add) page. Using these examples can speed up the review process and increase the approval rate. For variable specifications, see [Variable Specifications for the TemplateContent Parameter](https://help.aliyun.com/document_detail/2806243.html).
         # 
         # This parameter is required.
         self.template_content = template_content
-        # Template name, up to 30 characters in length.
+        # The template name. The name must be 30 characters or less.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # Template variable rules.
+        # The rules for variables in the template. For instructions on how to define these rules, see [Sample Document](https://help.aliyun.com/document_detail/2806243.html).
         # 
-        # For filling in variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example).
+        # > - This parameter is required if the message template contains variables.
         self.template_rule = template_rule
-        # SMS type. Values:
+        # The SMS type. Valid values:
         # 
-        # - **0**: Verification code.
-        # - **1**: SMS notification.
-        # - **2**: Promotional message.
-        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
+        # - **0**: verification code.
         # 
-        # > Only enterprise-verified users can apply for promotional messages and international/Hong Kong, Macao, and Taiwan messages. For details on the differences between personal and enterprise user rights, please refer to [Usage Instructions](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # - **1**: notification message.
+        # 
+        # - **2**: promotional message.
+        # 
+        # - **3**: international/Hong Kong, Macao, and Taiwan messages.
+        # 
+        # > Only enterprise-verified users can apply for promotional messages or international/Hong Kong, Macao, and Taiwan messages. For more information about the differences in privileges between individual and enterprise users, see [Usage Notes](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
         # 
         # This parameter is required.
         self.template_type = template_type
+        # >Warning: 
+        # 
+        # To control the security of SMS content, messages that contain traffic-driving information, such as phone numbers and links, may be blocked by carriers, which can lead to delivery failures. To reduce this risk, we recommend that you avoid including such information in message templates.
+        # 
+        # 
+        # 
+        # A JSON string that contains a list of traffic-driving information.
+        # >Notice: The value must be a JSON array serialized into a string.
+        # 
+        # ### 1. Fields
+        # 
+        # {
+        # "trafficDrivingType":"traffic driving type",
+        # "trafficDrivingContent":"traffic driving content",
+        # "variableName":"variable name",
+        # "companyName":"organization name",
+        # "organizationCode":"unified social credit code",
+        # "icpNo":"ICP filing or license number",
+        # "icpPicOssKey":"OSS key of the ICP filing screenshot",
+        # "companyDifferentFromSignQuaReason":"Reason for the discrepancy between the organization name and the signature qualification"
+        # }
+        # 
+        # ### 2. Notes
+        # 
+        # - If the content is not a variable, do not pass the `variableName` parameter.
+        # 
+        # - If the organization name is different from the one in the signature qualification, pass the `companyDifferentFromSignQuaReason` parameter.
+        # 
+        # - If `trafficDrivingType` is set to `DOMAIN`, all parameters in this object are required.
+        # 
+        # - If `trafficDrivingType` is set to another value, pass the `trafficDrivingType`, `trafficDrivingContent`, `variableName` (if applicable), `companyName`, `organizationCode`, and `companyDifferentFromSignQuaReason` (if applicable) parameters.
+        # 
+        # ### 3. trafficDrivingType enum values
+        # 
+        # >Warning: 
+        # 
+        # Due to regulatory requirements, mobile phone numbers are not supported.
+        # 
+        # 
+        # 
+        # - DOMAIN: A domain link.
+        # 
+        # - FIXED_PHONE: Fixed-line phone.
+        # 
+        # - 400_PHONE: Phone number prefixed with 400.
+        # 
+        # - 800_PHONE: Phone number prefixed with 800.
+        # 
+        # - 95_PHONE: Phone number prefixed with 95.
+        # 
+        # - 96_PHONE: Phone number prefixed with 96.
+        # 
+        # - 1_PHONE: A 3- to 8-digit phone number that starts with 1.
+        # 
+        # - OTHER_PHONE: Other phone number.
         self.traffic_driving = traffic_driving
 
     def validate(self):

@@ -11,8 +11,12 @@ class ListSecurityIdentifyRecordsRequest(DaraModel):
         list_query: main_models.ListSecurityIdentifyRecordsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query conditions.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,16 +61,28 @@ class ListSecurityIdentifyRecordsRequestListQuery(DaraModel):
         table_catalog: str = None,
         table_name: str = None,
     ):
+        # The datasource environment identifier. This parameter is required only for datasource tables.
         self.datasource_env = datasource_env
+        # The datasource name. This parameter is required only for datasource tables.
         self.datasource_name = datasource_name
+        # The field name.
+        # 
         # This parameter is required.
         self.field_name = field_name
+        # Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
         self.is_datasource_table = is_datasource_table
+        # The search keyword. The search scope is the field name.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The table catalog. For datasource tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
+        # 
         # This parameter is required.
         self.table_catalog = table_catalog
+        # The table name.
+        # 
         # This parameter is required.
         self.table_name = table_name
 

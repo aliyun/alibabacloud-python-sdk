@@ -15,23 +15,24 @@ class ModifyDBClusterArchRequest(DaraModel):
         standby_az: str = None,
     ):
         self.auto_use_coupon = auto_use_coupon
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the hot standby storage cluster feature. Valid values:
+        # Specifies whether to enable a hot standby cluster. Valid values:
         # 
-        # *   **on**: enables hot standby storage cluster.
-        # *   **equal**: Enable a peer-to-peer cluster.
+        # - **on**: Enables a hot standby cluster.
+        # 
+        # - **equal**: Enables a peer cluster.
         self.hot_standby_cluster = hot_standby_cluster
         self.promotion_code = promotion_code
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+        # > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
         self.region_id = region_id
-        # The zone of the hot standby storage cluster. Valid values:
+        # The zone for the hot standby storage cluster. Valid values:
         # 
-        # *   **auto** (default): The zone is automatically selected.
+        # - **auto** (default): The system automatically selects a zone.
         # 
-        # >  You can use the default value when HotStandbyCluster is set to on. If HotStandbyCluster is set to equal, specify the zone of the hot standby storage cluster. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query information about zones.
+        # > The default value is valid only when \\`HotStandbyCluster\\` is set to \\`on\\`. A specific zone is required when \\`HotStandbyCluster\\` is set to \\`equal\\`. For more information about zones, see [DescribeZones](https://help.aliyun.com/document_detail/98041.html).
         self.standby_az = standby_az
 
     def validate(self):

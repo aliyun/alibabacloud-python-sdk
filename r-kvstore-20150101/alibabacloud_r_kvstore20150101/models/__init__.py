@@ -35,6 +35,9 @@ from ._create_global_security_ipgroup_response import CreateGlobalSecurityIPGrou
 from ._create_instance_request import CreateInstanceRequest
 from ._create_instance_response_body import CreateInstanceResponseBody
 from ._create_instance_response import CreateInstanceResponse
+from ._create_instance_multi_viprequest import CreateInstanceMultiVIPRequest
+from ._create_instance_multi_vipresponse_body import CreateInstanceMultiVIPResponseBody
+from ._create_instance_multi_vipresponse import CreateInstanceMultiVIPResponse
 from ._create_instances_request import CreateInstancesRequest
 from ._create_instances_response_body import CreateInstancesResponseBody
 from ._create_instances_response import CreateInstancesResponse
@@ -176,6 +179,9 @@ from ._describe_instance_auto_renewal_attribute_response import DescribeInstance
 from ._describe_instance_config_request import DescribeInstanceConfigRequest
 from ._describe_instance_config_response_body import DescribeInstanceConfigResponseBody
 from ._describe_instance_config_response import DescribeInstanceConfigResponse
+from ._describe_instance_multi_viprequest import DescribeInstanceMultiVIPRequest
+from ._describe_instance_multi_vipresponse_body import DescribeInstanceMultiVIPResponseBody
+from ._describe_instance_multi_vipresponse import DescribeInstanceMultiVIPResponse
 from ._describe_instance_sslrequest import DescribeInstanceSSLRequest
 from ._describe_instance_sslresponse_body import DescribeInstanceSSLResponseBody
 from ._describe_instance_sslresponse import DescribeInstanceSSLResponse
@@ -566,6 +572,7 @@ from ._describe_instance_attribute_response_body import DescribeInstanceAttribut
 from ._describe_instance_attribute_response_body import DescribeInstanceAttributeResponseBodyInstances
 from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem
 from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBodyItems
+from ._describe_instance_multi_vipresponse_body import DescribeInstanceMultiVIPResponseBodyMultiVIPList
 from ._describe_instances_request import DescribeInstancesRequestTag
 from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesKVStoreInstanceTagsTag
 from ._describe_instances_response_body import DescribeInstancesResponseBodyInstancesKVStoreInstanceTags
@@ -692,6 +699,9 @@ __all__ = [
     CreateInstanceRequest,
     CreateInstanceResponseBody,
     CreateInstanceResponse,
+    CreateInstanceMultiVIPRequest,
+    CreateInstanceMultiVIPResponseBody,
+    CreateInstanceMultiVIPResponse,
     CreateInstancesRequest,
     CreateInstancesResponseBody,
     CreateInstancesResponse,
@@ -833,6 +843,9 @@ __all__ = [
     DescribeInstanceConfigRequest,
     DescribeInstanceConfigResponseBody,
     DescribeInstanceConfigResponse,
+    DescribeInstanceMultiVIPRequest,
+    DescribeInstanceMultiVIPResponseBody,
+    DescribeInstanceMultiVIPResponse,
     DescribeInstanceSSLRequest,
     DescribeInstanceSSLResponseBody,
     DescribeInstanceSSLResponse,
@@ -1223,6 +1236,7 @@ __all__ = [
     DescribeInstanceAttributeResponseBodyInstances,
     DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem,
     DescribeInstanceAutoRenewalAttributeResponseBodyItems,
+    DescribeInstanceMultiVIPResponseBodyMultiVIPList,
     DescribeInstancesRequestTag,
     DescribeInstancesResponseBodyInstancesKVStoreInstanceTagsTag,
     DescribeInstancesResponseBodyInstancesKVStoreInstanceTags,

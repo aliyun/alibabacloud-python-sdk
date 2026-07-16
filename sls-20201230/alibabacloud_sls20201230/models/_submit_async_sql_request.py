@@ -10,6 +10,7 @@ class SubmitAsyncSqlRequest(DaraModel):
         self,
         body: main_models.SubmitAsyncSqlParams = None,
     ):
+        # The format of the response parameters. The value is \\`protobuf\\`.
         self.body = body
 
     def validate(self):

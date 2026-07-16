@@ -25,36 +25,38 @@ class GetImageResponseBody(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The accessibility of the image. Valid values:
+        # The visibility of the image. Valid values:
         # 
-        # *   PUBLIC: All members can access the workspace.
-        # *   PRIVATE: Only the creator can access the workspace.
+        # - PUBLIC: All members in the current workspace can perform operations on the image.
+        # 
+        # - PRIVATE: Only the creator can perform operations on the image.
         self.accessibility = accessibility
-        # The image description.
+        # The description of the image.
         self.description = description
-        # The time when the image is created, in UTC. The time follows the ISO 8601 standard.
+        # The time when the image was created. The time is in UTC and the format is ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the image was last modified. The time is in UTC and the format is ISO 8601.
         self.gmt_modified_time = gmt_modified_time
-        # The image address, which contains the version number.
+        # The URL of the image, including the version number.
         self.image_uri = image_uri
-        # The image tags, which are of the array data type. Each element in the array contains a key-value pair. The key of official tags is system.official and the tag value is true.
+        # A list of image labels. This is an array. Each item in the array contains a Key and a Value field.
+        # Official images have the following label: the key is system.official and the value is true.
         self.labels = labels
-        # The image name.
+        # The name of the image.
         self.name = name
         # The Alibaba Cloud account of the creator.
         self.parent_user_id = parent_user_id
         # The request ID.
         self.request_id = request_id
-        # The size of the image. Unit: GB.
+        # The size of the image in bytes.
         self.size = size
-        # 镜像来源 ID
+        # The ID of the image source.
         self.source_id = source_id
-        # 镜像来源类型
+        # The type of the image source.
         self.source_type = source_type
-        # The user ID of the image.
+        # The UID of the user who created the image.
         self.user_id = user_id
-        # The workspace ID.
+        # The ID of the workspace to which the image belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -169,9 +171,9 @@ class GetImageResponseBodyLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the label.
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

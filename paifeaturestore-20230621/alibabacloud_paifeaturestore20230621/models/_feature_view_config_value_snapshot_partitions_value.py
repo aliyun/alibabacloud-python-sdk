@@ -14,9 +14,13 @@ class FeatureViewConfigValueSnapshotPartitionsValue(DaraModel):
         start_value: str = None,
         end_value: str = None,
     ):
+        # The partition value.
         self.value = value
+        # An array of partition values.
         self.values = values
+        # The start value of the partition range.
         self.start_value = start_value
+        # The end value of the partition range.
         self.end_value = end_value
 
     def validate(self):

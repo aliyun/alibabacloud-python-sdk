@@ -15,11 +15,19 @@ class CompareSimilarByImageResponseBody(DaraModel):
         score: float = None,
         success: bool = None,
     ):
+        # The authentication response details.
         self.access_denied_detail = access_denied_detail
+        # The error code. Valid values:
+        # - 0: success.
+        # - Non-zero: failure.
         self.code = code
+        # The error message.
         self.msg = msg
+        # The request ID.
         self.request_id = request_id
+        # The image similarity score. Valid values: 0 to 1.
         self.score = score
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,12 +93,21 @@ class CompareSimilarByImageResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The action for the authentication request.
         self.auth_action = auth_action
+        # The authentication principal information.
         self.auth_principal_display_name = auth_principal_display_name
+        # The Alibaba Cloud account ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
+        # The encrypted diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # Valid values:
+        # - ImplicitDeny: no policy is matched.
+        # - ExplicitDeny: an explicit Deny policy is matched.
         self.no_permission_type = no_permission_type
+        # The type of the policy that caused the access denial.
         self.policy_type = policy_type
 
     def validate(self):

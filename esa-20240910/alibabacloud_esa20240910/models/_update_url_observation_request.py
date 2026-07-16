@@ -11,18 +11,18 @@ class UpdateUrlObservationRequest(DaraModel):
         sdk_type: str = None,
         site_id: int = None,
     ):
-        # The ID of the configuration. You can call the [ListUrlObservations](~~ListUrlObservations~~) operation to obtain the ID.
+        # The configuration ID. You can call the [ListUrlObservations](~~ListUrlObservations~~) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # SDK integration. Valid values:
+        # The SDK integration method. Valid values:
         # 
-        # *   **automatic** (Recommended)
-        # *   **manual**
+        # - **automatic**: automatic integration.
+        # - **manual**: manual integration.
         # 
         # This parameter is required.
         self.sdk_type = sdk_type
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

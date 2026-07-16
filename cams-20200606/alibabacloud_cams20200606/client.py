@@ -21,6 +21,9 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'ap-southeast-1': 'cams.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cams', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1033,6 +1036,96 @@ class Client(OpenApiClient):
     ) -> main_models.AddMarketingFlowResponse:
         runtime = RuntimeOptions()
         return await self.add_marketing_flow_with_options_async(request, runtime)
+
+    def archive_chatapp_template_with_options(
+        self,
+        tmp_req: main_models.ArchiveChatappTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveChatappTemplateResponse:
+        tmp_req.validate()
+        request = main_models.ArchiveChatappTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.template_list):
+            request.template_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_list, 'TemplateList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.archive_type):
+            query['ArchiveType'] = request.archive_type
+        if not DaraCore.is_null(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.template_list_shrink):
+            query['TemplateList'] = request.template_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveChatappTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveChatappTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def archive_chatapp_template_with_options_async(
+        self,
+        tmp_req: main_models.ArchiveChatappTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ArchiveChatappTemplateResponse:
+        tmp_req.validate()
+        request = main_models.ArchiveChatappTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.template_list):
+            request.template_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_list, 'TemplateList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.archive_type):
+            query['ArchiveType'] = request.archive_type
+        if not DaraCore.is_null(request.channel_type):
+            query['ChannelType'] = request.channel_type
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.template_list_shrink):
+            query['TemplateList'] = request.template_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ArchiveChatappTemplate',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ArchiveChatappTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def archive_chatapp_template(
+        self,
+        request: main_models.ArchiveChatappTemplateRequest,
+    ) -> main_models.ArchiveChatappTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.archive_chatapp_template_with_options(request, runtime)
+
+    async def archive_chatapp_template_async(
+        self,
+        request: main_models.ArchiveChatappTemplateRequest,
+    ) -> main_models.ArchiveChatappTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.archive_chatapp_template_with_options_async(request, runtime)
 
     def bind_dm_account_with_options(
         self,
@@ -4982,6 +5075,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_phone_message_qrdl_with_options_async(request, runtime)
 
+    def delete_whatsapp_user_name_with_options(
+        self,
+        request: main_models.DeleteWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWhatsappUserNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_whatsapp_user_name_with_options_async(
+        self,
+        request: main_models.DeleteWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWhatsappUserNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_whatsapp_user_name(
+        self,
+        request: main_models.DeleteWhatsappUserNameRequest,
+    ) -> main_models.DeleteWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return self.delete_whatsapp_user_name_with_options(request, runtime)
+
+    async def delete_whatsapp_user_name_async(
+        self,
+        request: main_models.DeleteWhatsappUserNameRequest,
+    ) -> main_models.DeleteWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_whatsapp_user_name_with_options_async(request, runtime)
+
     def deprecate_flow_with_options(
         self,
         request: main_models.DeprecateFlowRequest,
@@ -8535,6 +8702,154 @@ class Client(OpenApiClient):
     ) -> main_models.GetWhatsappHealthStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_whatsapp_health_status_with_options_async(request, runtime)
+
+    def get_whatsapp_user_name_with_options(
+        self,
+        request: main_models.GetWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWhatsappUserNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_whatsapp_user_name_with_options_async(
+        self,
+        request: main_models.GetWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWhatsappUserNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_whatsapp_user_name(
+        self,
+        request: main_models.GetWhatsappUserNameRequest,
+    ) -> main_models.GetWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return self.get_whatsapp_user_name_with_options(request, runtime)
+
+    async def get_whatsapp_user_name_async(
+        self,
+        request: main_models.GetWhatsappUserNameRequest,
+    ) -> main_models.GetWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return await self.get_whatsapp_user_name_with_options_async(request, runtime)
+
+    def get_whatsapp_user_name_suggestions_with_options(
+        self,
+        request: main_models.GetWhatsappUserNameSuggestionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhatsappUserNameSuggestionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWhatsappUserNameSuggestions',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWhatsappUserNameSuggestionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_whatsapp_user_name_suggestions_with_options_async(
+        self,
+        request: main_models.GetWhatsappUserNameSuggestionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWhatsappUserNameSuggestionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWhatsappUserNameSuggestions',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWhatsappUserNameSuggestionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_whatsapp_user_name_suggestions(
+        self,
+        request: main_models.GetWhatsappUserNameSuggestionsRequest,
+    ) -> main_models.GetWhatsappUserNameSuggestionsResponse:
+        runtime = RuntimeOptions()
+        return self.get_whatsapp_user_name_suggestions_with_options(request, runtime)
+
+    async def get_whatsapp_user_name_suggestions_async(
+        self,
+        request: main_models.GetWhatsappUserNameSuggestionsRequest,
+    ) -> main_models.GetWhatsappUserNameSuggestionsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_whatsapp_user_name_suggestions_with_options_async(request, runtime)
 
     def isv_get_app_id_with_options(
         self,
@@ -13874,6 +14189,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.send_chatapp_message_with_options_async(request, runtime)
 
+    def submit_verify_code_result_with_options(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        if not DaraCore.is_null(request.result):
+            query['Result'] = request.result
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVerifyCodeResult',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVerifyCodeResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_verify_code_result_with_options_async(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.message_id):
+            query['MessageId'] = request.message_id
+        if not DaraCore.is_null(request.result):
+            query['Result'] = request.result
+        if not DaraCore.is_null(request.to):
+            query['To'] = request.to
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVerifyCodeResult',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVerifyCodeResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_verify_code_result(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        runtime = RuntimeOptions()
+        return self.submit_verify_code_result_with_options(request, runtime)
+
+    async def submit_verify_code_result_async(
+        self,
+        request: main_models.SubmitVerifyCodeResultRequest,
+    ) -> main_models.SubmitVerifyCodeResultResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_verify_code_result_with_options_async(request, runtime)
+
     def sync_business_app_history_with_options(
         self,
         request: main_models.SyncBusinessAppHistoryRequest,
@@ -16139,6 +16532,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWabaMmlStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_waba_mml_status_with_options_async(request, runtime)
+
+    def update_whatsapp_user_name_with_options(
+        self,
+        request: main_models.UpdateWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.transfer_action):
+            query['TransferAction'] = request.transfer_action
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWhatsappUserNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_whatsapp_user_name_with_options_async(
+        self,
+        request: main_models.UpdateWhatsappUserNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWhatsappUserNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        if not DaraCore.is_null(request.transfer_action):
+            query['TransferAction'] = request.transfer_action
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWhatsappUserName',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWhatsappUserNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_whatsapp_user_name(
+        self,
+        request: main_models.UpdateWhatsappUserNameRequest,
+    ) -> main_models.UpdateWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return self.update_whatsapp_user_name_with_options(request, runtime)
+
+    async def update_whatsapp_user_name_async(
+        self,
+        request: main_models.UpdateWhatsappUserNameRequest,
+    ) -> main_models.UpdateWhatsappUserNameResponse:
+        runtime = RuntimeOptions()
+        return await self.update_whatsapp_user_name_with_options_async(request, runtime)
 
     def whatsapp_call_with_options(
         self,

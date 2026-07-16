@@ -11,13 +11,15 @@ class CreateCloudGtmAddressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The address ID. This ID uniquely identifies the address.
+        # The unique ID of the address.
         self.address_id = address_id
-        # Unique request identification code.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the address creation operation is successful:
-        # - true: Operation was successful
-        # - false: Operation was failed
+        # Indicates whether the address was created. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

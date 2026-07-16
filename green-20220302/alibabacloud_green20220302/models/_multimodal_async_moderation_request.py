@@ -10,7 +10,13 @@ class MultimodalAsyncModerationRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of moderation service. Valid values:
+        # 
+        # - post_text_image_detection: multimodal moderation for post text and images
+        # 
+        # - profile_text_image_detection: multimodal moderation for profile picture and nickname
         self.service = service
+        # The parameter set required by the moderation service. This value must be a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):

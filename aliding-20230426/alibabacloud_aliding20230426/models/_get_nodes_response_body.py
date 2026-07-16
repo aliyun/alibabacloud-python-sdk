@@ -14,7 +14,6 @@ class GetNodesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.nodes = nodes
-        # requestId
         self.request_id = request_id
 
     def validate(self):

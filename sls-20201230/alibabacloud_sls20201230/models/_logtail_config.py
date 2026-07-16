@@ -19,17 +19,37 @@ class LogtailConfig(DaraModel):
         output_detail: main_models.LogtailConfigOutputDetail = None,
         output_type: str = None,
     ):
+        # The name of the Logtail configuration. The name must be unique in the project to which the Logtail configuration belongs. After the Logtail configuration is created, you cannot change the name of the Logtail configuration. The name must meet the following requirements:
+        # 
+        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 2 to 128 characters in length.
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The time at which the Logtail configuration was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The detailed settings of the data source. For more information, see [inputDetail](https://help.aliyun.com/document_detail/29058.html).
+        # 
         # This parameter is required.
         self.input_detail = input_detail
+        # The type of the data source. Valid values:
+        # 
+        # *   **plugin**: Logs such as MySQL binary logs are collected by using Logtail plug-ins.
+        # *   **file**: Logs from text files are collected by using existing modes, including the full regex mode and delimiter mode.
+        # 
         # This parameter is required.
         self.input_type = input_type
+        # The time at which the Logtail configuration was last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.last_modify_time = last_modify_time
+        # The sample log.
         self.log_sample = log_sample
+        # The detailed settings of the data destination. For more information, see [outputDetail](https://help.aliyun.com/document_detail/29058.html).
+        # 
         # This parameter is required.
         self.output_detail = output_detail
+        # The type of the data destination. Set the value to LogService. Collected logs can be uploaded to only Simple Log Service.
+        # 
         # This parameter is required.
         self.output_type = output_type
 
@@ -105,11 +125,17 @@ class LogtailConfigOutputDetail(DaraModel):
         region: str = None,
         telemetry_type: str = None,
     ):
+        # The endpoint. For more information, see [Endpoints](https://help.aliyun.com/document_detail/29008.html).
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.logstore_name = logstore_name
+        # The ID of the region.
         self.region = region
+        # The type of observable data in the Logstore.
         self.telemetry_type = telemetry_type
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListTagKeysResponseBody(DaraModel):
         tag_keys: List[main_models.ListTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The returned page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of tags.
+        # An array of tag keys.
         self.tag_keys = tag_keys
-        # The total number of tags returned.
+        # The total number of tag keys.
         self.total_count = total_count
 
     def validate(self):
@@ -85,9 +85,9 @@ class ListTagKeysResponseBodyTagKeys(DaraModel):
         tag_count: int = None,
         tag_key: str = None,
     ):
-        # The total number of tag keys.
+        # The number of resources with this tag key.
         self.tag_count = tag_count
-        # The name of the tag key.
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):

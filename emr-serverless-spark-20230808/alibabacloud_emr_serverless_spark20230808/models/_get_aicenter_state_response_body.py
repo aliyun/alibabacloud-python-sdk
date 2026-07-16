@@ -10,7 +10,15 @@ class GetAICenterStateResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The state of the AI center. Valid values:
+        # 
+        # - Running
+        # 
+        # - inactive
+        # 
+        # - activating
         self.state = state
 
     def validate(self):

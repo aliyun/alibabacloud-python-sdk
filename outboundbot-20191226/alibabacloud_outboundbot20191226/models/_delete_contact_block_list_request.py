@@ -11,10 +11,15 @@ class DeleteContactBlockListRequest(DaraModel):
         instance_id: str = None,
         operator: str = None,
     ):
+        # Contact block list ID
+        # 
         # This parameter is required.
         self.contact_block_list_id = contact_block_list_id
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Operator information
         self.operator = operator
 
     def validate(self):

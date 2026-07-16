@@ -20,14 +20,23 @@ class ListFreshViewPointsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Business Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of return results
         self.max_results = max_results
+        # Fault description
         self.message = message
+        # Token for the next page
         self.next_token = next_token
+        # Request UUID
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -113,8 +122,11 @@ class ListFreshViewPointsResponseBodyData(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # Outlines
         self.outlines = outlines
+        # Generated perspective
         self.point = point
+        # Summary
         self.summary = summary
 
     def validate(self):
@@ -163,7 +175,9 @@ class ListFreshViewPointsResponseBodyDataOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outline = outline
+        # Outline summary
         self.summary = summary
 
     def validate(self):

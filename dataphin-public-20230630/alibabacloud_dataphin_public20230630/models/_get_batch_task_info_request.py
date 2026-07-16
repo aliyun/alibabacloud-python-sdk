@@ -13,12 +13,25 @@ class GetBatchTaskInfoRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # 
+        # - dev
+        # - prod
+        # 
+        # Default value: dev.
         self.env = env
+        # The node ID in the directory tree.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # Specifies whether to include all upstream nodes, including invalid dependencies. Default value: false.
         self.include_all_up_streams = include_all_up_streams
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the project to which the node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

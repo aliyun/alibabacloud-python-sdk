@@ -15,11 +15,17 @@ class GenerateUploadUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):
@@ -86,13 +92,21 @@ class GenerateUploadUrlResponseBodyData(DaraModel):
         signature: str = None,
         success: bool = None,
     ):
+        # OSS access ID
         self.access_id = access_id
+        # Time-to-live (TTL) in seconds
         self.expire = expire
+        # Upload folder path
         self.folder = folder
+        # Upload server URL
         self.host = host
+        # API message for the upload
         self.message = message
+        # Upload policy
         self.policy = policy
+        # Signature
         self.signature = signature
+        # Indicates whether the upload succeeded
         self.success = success
 
     def validate(self):

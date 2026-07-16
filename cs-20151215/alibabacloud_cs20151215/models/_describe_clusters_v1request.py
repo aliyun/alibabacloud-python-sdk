@@ -18,31 +18,39 @@ class DescribeClustersV1Request(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # After you set `cluster_type` to `ManagedKubernetes` and configure the `profile` parameter, you can further specify the edition of the cluster. Valid values:
+        # The cluster specification when `cluster_type` is set to `ManagedKubernetes` and `profile` is configured. Valid values:
         # 
-        # *   `ack.pro.small`: ACK Pro cluster.
-        # *   `ack.standard`: ACK Basic cluster. If you leave the parameter empty, ACK Basic cluster is selected.
+        # - `ack.standard`: Basic
+        # - `ack.pro.small`: Pro
+        # - `ack.pro.xlarge`: Pro XL
+        # - `ack.pro.2xlarge`: Pro 2XL
+        # - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
+        # 
+        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and Pod scheduling capabilities remain at a deterministic high level, suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # 
+        # For information about cluster management fees for Pro and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # The type of the instance.
-        # 
-        # *   `Kubernetes`: ACK dedicated cluster.
-        # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
-        # *   `ExternalKubernetes`: registered cluster
+        # The cluster type. Valid values:
+        # - `Kubernetes`: ACK dedicated cluster.
+        # - `ManagedKubernetes`: ACK managed cluster types, including ACK managed clusters (Pro and Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
+        # - `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
         # The cluster name.
         self.name = name
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
-        # If you set `cluster_type` to `ManagedKubernetes`, an ACK managed cluster is created. In this case, you can further specify the cluster edition. Valid values:
+        # When you set `cluster_type` to `ManagedKubernetes` (ACK managed cluster types), you can further specify the cluster subtype. Valid values:
+        # - `Default`: ACK managed cluster, including ACK cluster Pro and ACK cluster Basic.
         # 
-        # *   `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
-        # *   `Edge`: ACK Edge cluster. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
-        # *   `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
-        # *   `Lingjun`: ACK Lingjun Pro cluster.
+        # - `Edge`: ACK Edge cluster, including ACK Edge cluster Pro and ACK Edge cluster Basic.
+        # 
+        # - `Serverless`: ACK Serverless cluster, including ACK Serverless cluster Pro and ACK Serverless cluster Basic.
+        # 
+        # - `Lingjun`: ACK Lingjun cluster, available in Pro.
         self.profile = profile
-        # The region ID of the clusters. You can use this parameter to query all clusters in the specified region.
+        # The region of the cluster. Specify this parameter to filter clusters in the specified region.
         self.region_id = region_id
 
     def validate(self):

@@ -11,7 +11,6 @@ class CreateSubscribedCalendarResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.calendar_id = calendar_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

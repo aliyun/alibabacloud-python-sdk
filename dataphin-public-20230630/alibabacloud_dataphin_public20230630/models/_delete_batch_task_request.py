@@ -11,8 +11,12 @@ class DeleteBatchTaskRequest(DaraModel):
         delete_command: main_models.DeleteBatchTaskRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete request.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,10 +55,16 @@ class DeleteBatchTaskRequestDeleteCommand(DaraModel):
         file_id: int = None,
         project_id: int = None,
     ):
+        # The description of the delete operation.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The ID of the node in the folder.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The ID of the project to which the node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

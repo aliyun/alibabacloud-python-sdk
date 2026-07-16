@@ -14,11 +14,17 @@ class UpdateDocumentRequest(DaraModel):
         meta: Dict[str, Any] = None,
         title: str = None,
     ):
+        # Document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # Document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # Document metadata.
         self.meta = meta
+        # Document title.
         self.title = title
 
     def validate(self):

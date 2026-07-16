@@ -12,9 +12,15 @@ class CancelSubTaskRequest(DaraModel):
         sub_task_id: int = None,
         tab: str = None,
     ):
+        # Set the language type for requests and received messages. The default value is **zh**. Valid values:  
+        # - **zh**: Chinese  
+        # - **en**: English
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Subtask ID.
         self.sub_task_id = sub_task_id
+        # Scenario.
         self.tab = tab
 
     def validate(self):

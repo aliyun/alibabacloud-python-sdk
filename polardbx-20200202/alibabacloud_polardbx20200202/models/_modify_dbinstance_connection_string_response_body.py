@@ -13,9 +13,13 @@ class ModifyDBInstanceConnectionStringResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The new connection string information.
         self.data = data
+        # The response message. This is typically an error message.
         self.message = message
+        # The request ID. It is a unique identifier.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +70,13 @@ class ModifyDBInstanceConnectionStringResponseBodyData(DaraModel):
         dbinstance_net_type: str = None,
         port: str = None,
     ):
+        # The connection string.
         self.connection_string = connection_string
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The network type of the connection string.
         self.dbinstance_net_type = dbinstance_net_type
+        # The port number.
         self.port = port
 
     def validate(self):

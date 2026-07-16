@@ -16,10 +16,15 @@ class RunAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.RunAgentTaskResponseBodyTasks] = None,
     ):
+        # The status code of the operation.
         self.code = code
+        # The number of tasks.
         self.count = count
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -80,13 +85,45 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
         current_status: str = None,
         instance_id: str = None,
         running_at: str = None,
+        session_id: str = None,
         task_id: str = None,
         user_prompt: str = None,
     ):
+        # The current status of the task. Valid values:
+        # 
+        # PENDING: The task is being created.
+        # 
+        # RUNNING: The task is running.
+        # 
+        # COMPLETED: The task is completed.
+        # 
+        # FAILED: The task failed.
+        # 
+        # TIMEOUT: The task timed out.
+        # 
+        # CALL_FOR_USER: The task is waiting for user action.
+        # 
+        # PAUSING: The task is being paused.
+        # 
+        # PAUSED: The task is paused.
+        # 
+        # CANCELLING: The task is being canceled.
+        # 
+        # CANCELED: The task is canceled.
+        # 
+        # STOPPED: The task is stopped.
+        # 
+        # TIMEOUT: The task timed out.
         self.current_status = current_status
+        # The Mobile node ID.
         self.instance_id = instance_id
+        # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
+        # The session ID. Tasks with the same session ID share context.
+        self.session_id = session_id
+        # The task ID, which is globally unique.
         self.task_id = task_id
+        # The user instruction in natural language. The Agent performs operations based on this instruction.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -106,6 +143,9 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
         if self.running_at is not None:
             result['RunningAt'] = self.running_at
 
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -124,6 +164,9 @@ class RunAgentTaskResponseBodyTasks(DaraModel):
 
         if m.get('RunningAt') is not None:
             self.running_at = m.get('RunningAt')
+
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

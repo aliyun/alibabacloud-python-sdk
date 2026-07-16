@@ -22,17 +22,27 @@ class GetAppInstanceForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name to query.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

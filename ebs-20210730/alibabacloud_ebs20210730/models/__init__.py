@@ -64,15 +64,9 @@ from ._describe_dedicated_block_storage_clusters_response import DescribeDedicat
 from ._describe_diagnose_report_request import DescribeDiagnoseReportRequest
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBody
 from ._describe_diagnose_report_response import DescribeDiagnoseReportResponse
-from ._describe_disk_events_request import DescribeDiskEventsRequest
-from ._describe_disk_events_response_body import DescribeDiskEventsResponseBody
-from ._describe_disk_events_response import DescribeDiskEventsResponse
 from ._describe_disk_monitor_data_request import DescribeDiskMonitorDataRequest
 from ._describe_disk_monitor_data_response_body import DescribeDiskMonitorDataResponseBody
 from ._describe_disk_monitor_data_response import DescribeDiskMonitorDataResponse
-from ._describe_disk_monitor_data_list_request import DescribeDiskMonitorDataListRequest
-from ._describe_disk_monitor_data_list_response_body import DescribeDiskMonitorDataListResponseBody
-from ._describe_disk_monitor_data_list_response import DescribeDiskMonitorDataListResponse
 from ._describe_disk_replica_groups_request import DescribeDiskReplicaGroupsRequest
 from ._describe_disk_replica_groups_response_body import DescribeDiskReplicaGroupsResponseBody
 from ._describe_disk_replica_groups_response import DescribeDiskReplicaGroupsResponse
@@ -221,9 +215,7 @@ from ._describe_dedicated_block_storage_clusters_response_body import DescribeDe
 from ._describe_dedicated_block_storage_clusters_response_body import DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyReportsEvents
 from ._describe_diagnose_report_response_body import DescribeDiagnoseReportResponseBodyReports
-from ._describe_disk_events_response_body import DescribeDiskEventsResponseBodyDiskEvents
 from ._describe_disk_monitor_data_response_body import DescribeDiskMonitorDataResponseBodyMonitorData
-from ._describe_disk_monitor_data_list_response_body import DescribeDiskMonitorDataListResponseBodyMonitorData
 from ._describe_disk_replica_groups_request import DescribeDiskReplicaGroupsRequestTag
 from ._describe_disk_replica_groups_response_body import DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags
 from ._describe_disk_replica_groups_response_body import DescribeDiskReplicaGroupsResponseBodyReplicaGroups
@@ -332,15 +324,9 @@ __all__ = [
     DescribeDiagnoseReportRequest,
     DescribeDiagnoseReportResponseBody,
     DescribeDiagnoseReportResponse,
-    DescribeDiskEventsRequest,
-    DescribeDiskEventsResponseBody,
-    DescribeDiskEventsResponse,
     DescribeDiskMonitorDataRequest,
     DescribeDiskMonitorDataResponseBody,
     DescribeDiskMonitorDataResponse,
-    DescribeDiskMonitorDataListRequest,
-    DescribeDiskMonitorDataListResponseBody,
-    DescribeDiskMonitorDataListResponse,
     DescribeDiskReplicaGroupsRequest,
     DescribeDiskReplicaGroupsResponseBody,
     DescribeDiskReplicaGroupsResponse,
@@ -489,9 +475,7 @@ __all__ = [
     DescribeDedicatedBlockStorageClustersResponseBodyDedicatedBlockStorageClusters,
     DescribeDiagnoseReportResponseBodyReportsEvents,
     DescribeDiagnoseReportResponseBodyReports,
-    DescribeDiskEventsResponseBodyDiskEvents,
     DescribeDiskMonitorDataResponseBodyMonitorData,
-    DescribeDiskMonitorDataListResponseBodyMonitorData,
     DescribeDiskReplicaGroupsRequestTag,
     DescribeDiskReplicaGroupsResponseBodyReplicaGroupsTags,
     DescribeDiskReplicaGroupsResponseBodyReplicaGroups,

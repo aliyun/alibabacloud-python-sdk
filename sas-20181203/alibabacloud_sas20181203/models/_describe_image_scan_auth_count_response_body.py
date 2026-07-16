@@ -11,9 +11,9 @@ class DescribeImageScanAuthCountResponseBody(DaraModel):
         image_scan: main_models.DescribeImageScanAuthCountResponseBodyImageScan = None,
         request_id: str = None,
     ):
-        # The details about the quota for container image scan.
+        # The authorization details of image security scanning.
         self.image_scan = image_scan
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeImageScanAuthCountResponseBodyImageScan(DaraModel):
         instance_id: str = None,
         scan_count: int = None,
     ):
-        # The quota for container image scan.
+        # The total number of authorization quotas.
         self.image_scan_capacity = image_scan_capacity
-        # The instance ID of Security Center.
+        # The instance ID of the purchased Security Center instance.
         self.instance_id = instance_id
-        # The consumed quota for container image scan.
+        # The number of used authorization quotas.
         self.scan_count = scan_count
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetMediaProducingJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the media editing and production job.
+        # The ID of the media production job.
         self.job_id = job_id
 
     def validate(self):

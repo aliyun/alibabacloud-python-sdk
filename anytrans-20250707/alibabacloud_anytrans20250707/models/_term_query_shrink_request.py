@@ -14,14 +14,24 @@ class TermQueryShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters.
         self.ext_shrink = ext_shrink
+        # The translation model.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language.
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # The source text to search for intervention terms.
         self.text = text
+        # The ID of the Model Studio workspace used for the request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

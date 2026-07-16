@@ -17,11 +17,17 @@ class GetWorkspaceCodePublishSettingResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code that indicates the result of the request. A value of `200` indicates that the request was successful.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetWorkspaceCodePublishSettingResponseBodyData(DaraModel):
         lock_repo_branch: bool = None,
         repos: List[main_models.GetWorkspaceCodePublishSettingResponseBodyDataRepos] = None,
     ):
+        # The files and directories to exclude from the deployment.
         self.exclude = exclude
+        # Indicates whether the deployment branch is locked. If `true`, configurations submitted via the `workspaceCodePublish` API are ignored. If `false`, configurations submitted via the `workspaceCodePublish` API update the settings.
         self.lock_repo_branch = lock_repo_branch
+        # The Git repositories in the workspace.
         self.repos = repos
 
     def validate(self):
@@ -134,8 +143,11 @@ class GetWorkspaceCodePublishSettingResponseBodyDataRepos(DaraModel):
         path: str = None,
         repo: str = None,
     ):
+        # The name of the branch.
         self.branch = branch
+        # The path to the notebook file.
         self.path = path
+        # The name of the repository.
         self.repo = repo
 
     def validate(self):

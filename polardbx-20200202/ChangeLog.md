@@ -1,3 +1,56 @@
+2026-07-03 Version: 3.8.0
+- Support API CheckHealth.
+- Support API CreatePolardbxSupabaseInstance.
+- Support API CreateSupabaseNetType.
+- Support API DeletePolardbxSupabaseInstance.
+- Support API DeleteSupabaseNetType.
+- Support API DescribeSupabaseApiKey.
+- Support API DescribeSupabaseInstanceAttribute.
+- Support API DescribeSupabaseInstances.
+- Support API DescribeSupabaseIpWhitelist.
+- Support API ModifySupabaseDashboardPassword.
+- Support API ModifySupabaseSecurityIPList.
+- Support API RestartSupabaseInstance.
+
+
+2026-06-24 Version: 3.7.0
+- Support API AllocateMem0PublicConnection.
+- Support API ReleaseMem0PublicConnection.
+
+
+2026-06-23 Version: 3.6.0
+- Support API CreateGatewayConsumerForPolarDBX.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.AiGatewayEnabled.
+
+
+2026-06-18 Version: 3.5.0
+- Support API DescribeMem0SecurityIps.
+- Support API ModifyMem0SecurityIps.
+- Support API ResetMem0AccountPassword.
+- Update API CreateMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DeleteMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.DnStorageSpace.
+- Update API DescribeMem0Info: add response parameters Body.AccessDeniedDetail.
+
+
+2026-06-18 Version: 3.5.0
+- Support API DescribeMem0SecurityIps.
+- Support API ModifyMem0SecurityIps.
+- Support API ResetMem0AccountPassword.
+- Update API CreateMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DeleteMem0: add response parameters Body.AccessDeniedDetail.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.DnStorageSpace.
+- Update API DescribeMem0Info: add response parameters Body.AccessDeniedDetail.
+
+
+2026-06-09 Version: 3.4.2
+- Update API DescribeCdcVersionList: add request parameters InstanceName.
+
+
+2026-05-22 Version: 3.4.1
+- Update API DeleteSubCNInstance: add request parameters InstanceClusterName.
+
+
 2026-05-09 Version: 3.4.0
 - Support API CreateGdnStandbyMember.
 - Support API CreateSubCNInstance.

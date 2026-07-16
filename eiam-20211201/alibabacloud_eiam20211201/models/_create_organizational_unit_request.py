@@ -13,19 +13,19 @@ class CreateOrganizationalUnitRequest(DaraModel):
         organizational_unit_name: str = None,
         parent_id: str = None,
     ):
-        # The description of the organization. The value can be up to 256 characters in length.
+        # The description. The maximum length is 256 characters.
         self.description = description
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The external ID of the organization, which can be used to associate the organization with an external system. By default, the external ID is the organization ID. The value can be up to 64 characters in length.
+        # External ID of the organization, which is used for association with an external system. The default value is the organization ID. The maximum length is 64 characters.
         self.organizational_unit_external_id = organizational_unit_external_id
-        # The name of the organization. The name can be up to 64 characters in length.
+        # Organization name. The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.organizational_unit_name = organizational_unit_name
-        # The parent organization ID.
+        # Parent organization ID.
         # 
         # This parameter is required.
         self.parent_id = parent_id

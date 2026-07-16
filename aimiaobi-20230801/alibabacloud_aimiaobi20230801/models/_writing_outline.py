@@ -18,12 +18,19 @@ class WritingOutline(DaraModel):
         word_count: str = None,
         writing_tips: str = None,
     ):
+        # List of articles referenced in the outline
         self.articles = articles
+        # List of sub-outlines
         self.children = children
+        # Outline
         self.outline = outline
+        # Unique outline identifier
         self.outline_id = outline_id
+        # Outline writing search keyword list
         self.search_key_word_list = search_key_word_list
+        # Description of word count requirements, such as 1K words, 2K words, or no less than 500 words.
         self.word_count = word_count
+        # Outline writing requirements, writing tips
         self.writing_tips = writing_tips
 
     def validate(self):

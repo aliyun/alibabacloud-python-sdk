@@ -21,25 +21,25 @@ class IncidentStruct(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
-        # Content.
+        # The content of the event.
         self.content = content
-        # List of escalation policies.
+        # The list of escalation policies.
         self.escalations = escalations
-        # Incident ID.
+        # The unique ID of the event.
         self.incident_id = incident_id
-        # Associated incident contingency plan.
+        # The associated incident plan.
         self.incident_plan = incident_plan
-        # Associated resource details.
+        # The details of the associated resource.
         self.resource = resource
-        # Incident severity level.
+        # The severity level of the event.
         self.severity = severity
-        # Status.
+        # The current status.
         self.status = status
-        # Time.
+        # The timestamp.
         self.time = time
-        # Title.
+        # The title of the event.
         self.title = title
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

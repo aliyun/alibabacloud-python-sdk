@@ -22,16 +22,17 @@ class GetServiceTemplateParameterConstraintsRequest(DaraModel):
         template_name: str = None,
         trial_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client for each request. The token can contain only ASCII characters and cannot be more than 64 characters long.
         self.client_token = client_token
-        # The region ID of the service instance.
+        # The deployment region ID.
         # 
         # This parameter is required.
         self.deploy_region_id = deploy_region_id
-        # Specifies whether to enable the private connection. Valid values:
+        # Indicates whether PrivateLink is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: enabled
+        # 
+        # - false: disabled
         self.enable_private_vpc_connection = enable_private_vpc_connection
         # The configuration parameters of the service instance.
         self.parameters = parameters
@@ -47,16 +48,17 @@ class GetServiceTemplateParameterConstraintsRequest(DaraModel):
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
-        # The name of the specification package.
+        # The specification name.
         self.specification_name = specification_name
         # The template name.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The trial policy. Valid values:
+        # The usage type. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports a trial.
+        # 
+        # - NotTrial: The service does not support a trial.
         self.trial_type = trial_type
 
     def validate(self):
@@ -153,13 +155,13 @@ class GetServiceTemplateParameterConstraintsRequestParameters(DaraModel):
         parameter_key: str = None,
         parameter_value: str = None,
     ):
-        # The name of the parameter. If you do not specify Parameters, the parameters and values in the template are used.
+        # The name of the parameter. If you do not specify the name and value of the parameter, Resource Orchestration Service (ROS) uses the default value that is specified in the template.
         # 
-        # >  Parameters is an optional parameter. ParameterKey is required if you specify Parameters.
+        # > The Parameters parameter is optional. If you specify Parameters, ParameterKey is required.
         self.parameter_key = parameter_key
-        # The parameter value that is defined in the template.
+        # The value of the parameter that is defined in the template.
         # 
-        # >  Parameters is an optional parameter. ParameterValue is required if you specify Parameters.
+        # > The Parameters parameter is optional. If you specify Parameters, ParameterValue is required.
         self.parameter_value = parameter_value
 
     def validate(self):

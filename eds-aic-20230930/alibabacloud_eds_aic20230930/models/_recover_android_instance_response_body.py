@@ -15,9 +15,13 @@ class RecoverAndroidInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The number of restored instances.
         self.count = count
+        # The returned result objects.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The batch task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -72,7 +76,9 @@ class RecoverAndroidInstanceResponseBodyData(DaraModel):
         android_instance_id: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.android_instance_id = android_instance_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

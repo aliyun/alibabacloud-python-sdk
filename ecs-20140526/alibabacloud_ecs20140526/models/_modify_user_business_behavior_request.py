@@ -17,11 +17,16 @@ class ModifyUserBusinessBehaviorRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The key of the attribute to modify.
+        # 
         # This parameter is required.
         self.status_key = status_key
+        # The new value of the attribute.
+        # 
         # This parameter is required.
         self.status_value = status_value
 

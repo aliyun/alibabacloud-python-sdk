@@ -14,12 +14,17 @@ class DeleteAuditNoteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # status code
         self.code = code
+        # Deletion result. If deletion is successful, "SUCCESSED" is returned.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether this request was successful.
         self.success = success
 
     def validate(self):

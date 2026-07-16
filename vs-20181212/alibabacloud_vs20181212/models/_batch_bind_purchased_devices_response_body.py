@@ -13,7 +13,9 @@ class BatchBindPurchasedDevicesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchBindPurchasedDevicesResponseBodyResults] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -58,9 +60,13 @@ class BatchBindPurchasedDevicesResponseBodyResults(DaraModel):
         group_id: str = None,
         region: str = None,
     ):
+        # The ID of the device.
         self.device_id = device_id
+        # The error message for the device. This parameter is returned only when an error occurs.
         self.error = error
+        # Space ID.
         self.group_id = group_id
+        # The region.
         self.region = region
 
     def validate(self):

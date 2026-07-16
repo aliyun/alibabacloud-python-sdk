@@ -13,7 +13,9 @@ class ProductSaleInfoListResult(DaraModel):
         product_sale_infos: List[main_models.ProductSaleInfo] = None,
         request_id: str = None,
     ):
+        # Product sales information
         self.product_sale_infos = product_sale_infos
+        # The request ID of the API call
         self.request_id = request_id
 
     def validate(self):

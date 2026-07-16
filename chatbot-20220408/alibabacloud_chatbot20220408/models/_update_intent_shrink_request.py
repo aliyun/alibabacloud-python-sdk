@@ -12,10 +12,16 @@ class UpdateIntentShrinkRequest(DaraModel):
         intent_definition_shrink: str = None,
         intent_id: int = None,
     ):
+        # The key for the business space. If you omit this parameter, the system uses the default business space. You can find this key on the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The ID of the chatbot instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent definition object.
         self.intent_definition_shrink = intent_definition_shrink
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
 

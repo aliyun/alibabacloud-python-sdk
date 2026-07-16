@@ -13,13 +13,13 @@ class UntagResourcesRequest(DaraModel):
         tag_keys: str = None,
         body: str = None,
     ):
-        # Specifies whether to delete all parts. Default value: **false** . This parameter is valid only when **TagKeys** is not specified.
+        # Specifies whether to delete all tags. Default value: **false**. This parameter is valid only when **TagKeys** is empty.
         self.all = all
-        # The resource list that you want to delete.
+        # The list of resources to delete.
         self.resource_ids = resource_ids
-        # The type of the resource. Fixed to **INSTANCE** .
+        # The resource type. Set this to **INSTANCE**.
         self.resource_type = resource_type
-        # The list of tags that you want to delete. The list can contain up to 20 subitems.
+        # The list of tags to delete. A maximum of 20 items can be specified.
         self.tag_keys = tag_keys
         self.body = body
 

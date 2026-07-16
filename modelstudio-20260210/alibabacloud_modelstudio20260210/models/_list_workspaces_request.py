@@ -12,9 +12,12 @@ class ListWorkspacesRequest(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
         self.next_token = next_token
         self.workspace_id = workspace_id
+        # The keyword for fuzzy match by business workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

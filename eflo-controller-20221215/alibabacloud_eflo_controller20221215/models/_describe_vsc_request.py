@@ -9,7 +9,7 @@ class DescribeVscRequest(DaraModel):
         self,
         vsc_id: str = None,
     ):
-        # The VSC ID.
+        # The ID of the Vsc.
         # 
         # This parameter is required.
         self.vsc_id = vsc_id

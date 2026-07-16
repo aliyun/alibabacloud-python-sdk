@@ -13,12 +13,20 @@ class AddSkillGroupRequest(DaraModel):
         outer_group_name: str = None,
         outer_group_type: str = None,
     ):
+        # ID of the external department.
         self.outer_department_id = outer_department_id
+        # Type of the external department.
         self.outer_department_type = outer_department_type
+        # ID of the external skill group.
+        # 
         # This parameter is required.
         self.outer_group_id = outer_group_id
+        # Name of the external skill group.
+        # 
         # This parameter is required.
         self.outer_group_name = outer_group_name
+        # Type of the external skill group.
+        # 
         # This parameter is required.
         self.outer_group_type = outer_group_type
 

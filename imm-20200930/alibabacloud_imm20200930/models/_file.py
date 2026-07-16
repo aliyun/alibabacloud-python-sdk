@@ -95,224 +95,215 @@ class File(DaraModel):
         video_streams: List[main_models.VideoStream] = None,
         video_width: int = None,
     ):
-        # The origin allowed in cross-origin requests.
+        # The allowed origins for cross-origin requests.
         self.access_control_allow_origin = access_control_allow_origin
-        # The method to be used in the actual cross-origin request.
+        # The allowed methods for the cross-origin request.
         self.access_control_request_method = access_control_request_method
-        # The addresses.
+        # The address information.
         self.addresses = addresses
         # The album.
         self.album = album
-        # The singer.
+        # The album artist.
         self.album_artist = album_artist
         # The artist.
         self.artist = artist
-        # The audio covers.
+        # The cover images for the audio.
         self.audio_covers = audio_covers
-        # The list of audio streams.
+        # A list of audio streams.
         self.audio_streams = audio_streams
-        # The bitrate. Unit: bit/s.
+        # The bitrate, in bit/s.
         self.bitrate = bitrate
-        # The caching behavior of the web page when the object is downloaded.
+        # The web cache behavior that the browser should use when the object is downloaded.
         # 
-        # This parameter corresponds to the Cache-Control HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if the Cache-Control HTTP header is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.cache_control = cache_control
         # The composer.
         self.composer = composer
-        # The name of the object during the download.
+        # The name of the object when it is downloaded.
         # 
-        # This parameter corresponds to the Content-Disposition HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if the Content-Disposition HTTP header is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.content_disposition = content_disposition
-        # The content encoding format of the object when the object is downloaded.
+        # The content encoding format of the object when it is downloaded.
         # 
-        # This parameter corresponds to the Content-Encoding HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if the Content-Encoding HTTP header is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.content_encoding = content_encoding
         # The language of the object content.
         # 
-        # This parameter corresponds to the Content-Language HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if the Content-Language HTTP header is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.content_language = content_language
-        # The MD5 value.
+        # The MD5 hash of the object content.
         self.content_md_5 = content_md_5
-        # The Multipurpose Internet Mail Extensions (MIME) type of the file.
+        # The content type of the file (MIME type).
         self.content_type = content_type
-        # The RFC3339Nano timestamp when the metadata was created.
+        # The time when the metadata was created. The time is in the RFC3339Nano format.
         self.create_time = create_time
         # The cropping suggestions for the image.
         # 
-        # > Not supported.
+        # > This feature is not supported.
         self.cropping_suggestions = cropping_suggestions
-        # The custom ID of the file. When the cluster is indexed into the dataset, the custom ID is stored as the data attribute. You can map the custom ID to other data in your business system. Configure this parameter based on your business requirements. For example, you can associate a URI with an ID in your system. We recommend that you set this parameter to a globally unique value.
+        # The custom ID of the file, which you can use to associate the file with an ID in your business system. When the file is indexed into a dataset, this ID is stored as a metadata attribute. We recommend using a globally unique value.
         self.custom_id = custom_id
-        # The custom labels of the file. This parameter is optional. The parameter stores custom key-value labels, which can be used to filter data.
+        # Custom key-value labels for the file. This parameter is optional and can be used to store business-specific data and to filter queries.
         self.custom_labels = custom_labels
-        # The name of the dataset. You can obtain the name of the dataset from the response of the [CreateDataset](https://help.aliyun.com/document_detail/478160.html) operation.
+        # The dataset name. For more information, see [Create a dataset](https://help.aliyun.com/document_detail/478160.html).
         self.dataset_name = dataset_name
-        # The total duration of the video. Unit: seconds.
+        # The total duration of the video, in seconds.
         self.duration = duration
-        # The ETag of the object. ETags are used to identify the content of objects.
+        # An ETag is generated when an object is created. The ETag identifies the content of an object.
         self.etag = etag
-        # The original EXIF information about the image. The EXIF information is stored in the serialized JSON format. For more information, see [Query image information](https://help.aliyun.com/document_detail/44975.html).
+        # The original EXIF information of the image, stored as a serialized JSON object. For more information, see [Obtain image information](https://help.aliyun.com/document_detail/44975.html).
         self.exif = exif
-        # The document elements that match the current query content when you call the SemanticQuery operation for semantic search.
+        # A list of document fragments that match the current search content when you use the SemanticQuery API to perform a semantic search.
         self.elements = elements
-        # The number of persons.
+        # The number of figures.
         self.figure_count = figure_count
-        # The list of persons. The persons are detected via AI models.
+        # A list of figures detected by the AI model.
         self.figures = figures
-        # The RFC3339Nano timestamp when the file was accessed.
+        # The time when the file was last accessed. The time is in the RFC3339Nano format.
         self.file_access_time = file_access_time
-        # The RFC3339Nano timestamp when the file was created.
+        # The time when the file was created. The time is in the RFC3339Nano format.
         self.file_create_time = file_create_time
-        # The hash value of the file.
+        # The hash of the file.
         self.file_hash = file_hash
-        # The RFC3339Nano timestamp when the file was last modified.
+        # The time when the file was last modified. The time is in the RFC3339Nano format.
         self.file_modified_time = file_modified_time
-        # The name of the object. For an OSS object, the value of this parameter is the object name.
+        # The name of the file. For an OSS object, this parameter is the ObjectKey.
         self.filename = filename
         # The full name of the media format.
         self.format_long_name = format_long_name
         # The name of the media format.
         self.format_name = format_name
-        # The height of the image. Unit: pixels.
+        # The height of the image, in pixels (px).
         self.image_height = image_height
-        # The score of the image. The score is calculated by using AI models.
+        # The image score information, detected by an AI model.
         self.image_score = image_score
-        # The width of the image. Unit: pixels.
+        # The width of the image, in pixels (px).
         self.image_width = image_width
         # Summary and description of the file.
         # 
-        # > Not supported.
+        # > Currently not supported
         self.insights = insights
-        # The labels of the file. The labels are detected via AI models.
+        # A list of AI-detected labels for the file.
         self.labels = labels
-        # The language specified by using a BCP 47 language tag.
+        # The language in BCP 47 format.
         self.language = language
-        # The latitude and longitude.
+        # The GPS latitude and longitude.
         self.lat_long = lat_long
         # The media type of the file.
-        # 
-        # Valid values:
-        # 
-        # *   image
-        # *   other
-        # *   document
-        # *   archive
-        # *   audio
-        # *   video
         self.media_type = media_type
-        # The Optical Character Recognition (OCR) results.
+        # The OCR results.
         # 
-        # > Not supported.
+        # > This feature is not supported.
         self.ocrcontents = ocrcontents
         # The text detected in the image.
         self.ocrtexts = ocrtexts
-        # The CRC64 value.
+        # The CRC-64 value of the object.
         self.osscrc64 = osscrc64
-        # The delete marker of the object.
+        # The OSS delete marker.
         self.ossdelete_marker = ossdelete_marker
         # The expiration time of the OSS object.
         # 
-        # This parameter corresponds to the Expires HTTP header of the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if the Expires HTTP header is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.ossexpiration = ossexpiration
-        # The type of the OSS object. Set the value to `Normal`.
+        # The type of the OSS object. A common value is `Normal`.
         self.ossobject_type = ossobject_type
-        # The storage class of the OSS bucket.
+        # The storage class of the OSS object.
         self.ossstorage_class = ossstorage_class
-        # The tag of the object.
+        # The tags of the OSS object.
         # 
-        # For more information, see [Add tags to an object](https://help.aliyun.com/document_detail/106678.html).
+        # For more information, see [Object tagging](https://help.aliyun.com/document_detail/106678.html).
         self.osstagging = osstagging
-        # The number of OSS object tags.
+        # The number of tags on the OSS object.
         # 
-        # This parameter is available only if tags are added to the corresponding OSS object. For more information, see [Add tags to an object](https://help.aliyun.com/document_detail/106678.html).
+        # This parameter is returned only if tags are set for the OSS object. For more information, see [Object tagging](https://help.aliyun.com/document_detail/106678.html).
         self.osstagging_count = osstagging_count
-        # The URI of the OSS object. This parameter is available only if the value of the URI parameter is the URI of a file in Photo and Drive Service.
+        # The URI of the OSS file. This parameter is returned only if the URI is a PDS address.
         self.ossuri = ossuri
-        # The user metadata of the OSS object.
+        # The user-defined metadata of the OSS object.
         # 
-        # This parameter is available only if user metadata is configured for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
+        # This parameter is returned only if user-defined metadata is set for the OSS object. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.ossuser_meta = ossuser_meta
-        # The version of the object.
+        # The version ID of the OSS object.
         # 
-        # This parameter is available only if versioning is enabled for the bucket. For more information, see [Overview](https://help.aliyun.com/document_detail/109695.html).
+        # This parameter is returned only if versioning is enabled for the bucket. For more information, see [Overview of versioning](https://help.aliyun.com/document_detail/109695.html).
         self.ossversion_id = ossversion_id
         # The access control list (ACL) of the OSS object.
         self.object_acl = object_acl
         # The unique ID of the object.
         self.object_id = object_id
-        # The status of the object.
+        # File index status.
         self.object_status = object_status
-        # The type of the object. Set the value to **file**.
+        # The type of the object. The value is always **file**.
         self.object_type = object_type
-        # The image rotation angle. You can obtain the value from the exchangeable image file format (EXIF).
+        # The rotation value of the image, read from its EXIF data.
         # 
-        # If the EXIF metadata does not contain the image rotation angle, this parameter is not included in the response.
+        # This parameter is returned only if this value is available in the EXIF data.
         self.orientation = orientation
         # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
         # The number of pages.
         # 
-        # > Not supported.
+        # > This feature is not supported.
         self.page_count = page_count
         # The performer.
         self.performer = performer
-        # The time when the image was taken.
+        # The time when the photo was taken.
         self.produce_time = produce_time
         # The number of programs in the media container.
         self.program_count = program_count
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         self.project_name = project_name
-        # The reason why the file failed to run the index.
+        # The reason the file failed to be indexed.
         self.reason = reason
-        # The elements in the video segment, which are scene elements that you can extract from the video by using an AI model.
+        # A list of scene elements extracted from the video by the AI model during analysis.
         self.scene_elements = scene_elements
-        # The reasons for which the current file is included in the search results when you call the SemanticQuery operation for semantic search.
+        # Indicates why this file was returned when you use the SemanticQuery API to perform a semantic search.
         self.semantic_types = semantic_types
-        # The encryption method of the object.
+        # The encryption algorithm of the object.
         # 
-        # This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+        # This parameter is returned only if server-side encryption is enabled for the bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
         self.server_side_data_encryption = server_side_data_encryption
-        # The encryption method on the server side.
+        # The server-side encryption method.
         # 
-        # This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+        # This parameter is returned only if server-side encryption is enabled for the bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
         self.server_side_encryption = server_side_encryption
-        # The algorithm that is used to encrypt the file on the server side.
+        # The encryption algorithm used for server-side encryption with customer-provided keys.
         self.server_side_encryption_customer_algorithm = server_side_encryption_customer_algorithm
-        # The ID of the customer master key (CMK) managed by Key Management Service (KMS).
+        # The ID of the customer master key (CMK) that is managed by KMS.
         # 
-        # This parameter is available only if server encryption is configured for the OSS bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
+        # This parameter is returned only if server-side encryption is enabled for the bucket. For more information, see [Server-side encryption](https://help.aliyun.com/document_detail/31871.html).
         self.server_side_encryption_key_id = server_side_encryption_key_id
-        # The size of the object. Unit: bytes.
+        # The size of the file, in bytes.
         self.size = size
-        # The time of the first frame. Unit: seconds.
+        # The start time of the first frame, in seconds.
         self.start_time = start_time
         # The number of media streams in the media container.
         self.stream_count = stream_count
-        # The list of subtitle streams.
+        # A list of subtitle streams.
         self.subtitles = subtitles
-        # The time zone.
+        # The timezone.
         # 
-        # >  Not supported.
+        # > This feature is not supported.
         self.timezone = timezone
         # The title of the file.
         self.title = title
         # A reserved parameter.
         # 
-        # > Not supported.
+        # > This feature is not supported.
         self.travel_cluster_id = travel_cluster_id
-        # The URI of the file.
+        # The address of the file.
         # 
-        # The URI of an OSS object follows the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # An OSS URI must be in the `oss://${Bucket}/${Object}` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the full path to the object, including the file extension.
         # 
-        # The URI of a file in Photo and Drive Service follows the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # A PDS URI must be in the `pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision}` format.
         self.uri = uri
-        # The RFC3339Nano timestamp when the metadata was modified.
+        # The time when the metadata was last updated. The time is in the RFC3339Nano format.
         self.update_time = update_time
-        # The height of the video. Unit: pixels.
+        # The height of the video, in pixels (px).
         self.video_height = video_height
-        # The list of video streams.
+        # A list of video streams.
         self.video_streams = video_streams
-        # The width of the video. Unit: pixels.
+        # The width of the video, in pixels (px).
         self.video_width = video_width
 
     def validate(self):

@@ -10,11 +10,11 @@ class DescribeGtmInstanceAddressPoolRequest(DaraModel):
         addr_pool_id: str = None,
         lang: str = None,
     ):
-        # The ID of the address pool that you want to query.
+        # The ID of the address pool.
         # 
         # This parameter is required.
         self.addr_pool_id = addr_pool_id
-        # The language used by the user.
+        # The language.
         self.lang = lang
 
     def validate(self):

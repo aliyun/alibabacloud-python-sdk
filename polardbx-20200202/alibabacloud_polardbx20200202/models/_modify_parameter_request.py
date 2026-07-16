@@ -14,12 +14,22 @@ class ModifyParameterRequest(DaraModel):
         parameters: str = None,
         region_id: str = None,
     ):
+        # The client request token. You can set this parameter to any unique string.
         self.client_token = client_token
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The parameter type. Valid values:
+        # 
+        # - **compute**: compute layer parameters.
+        # - **storage**: storage layer parameters.
         self.param_level = param_level
         self.parameter_group_id = parameter_group_id
+        # A JSON-formatted string. MapKey specifies the parameter name, and MapValue specifies the parameter value. The modifiable parameters are dynamically added or removed. Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/196856.html) operation to query the available parameters. You can specify multiple parameters in a single request.
         self.parameters = parameters
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -17,32 +17,32 @@ class DescribeApisecMatchedHostsRequest(DaraModel):
         type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The domain name or IP address.
         self.matched_host = matched_host
-        # The page number. Default value: **1**.
+        # The page number to return in a paging query. Default value: **1**, which indicates the first page.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries per page in a paging query. Default value: **10**, which indicates 10 entries per page.
         self.page_size = page_size
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The detection type. Valid values:
-        # 
-        # *   **api**: API-related domain names
-        # *   **abnormal**: risk-related domain names
-        # *   **event**: security event-related domain names
+        # - **api**: the domain name list of API assets.
+        # - **abnormal**: the domain name list of risks.
+        # - **event**: the domain name list of security events.
         self.type = type
 
     def validate(self):

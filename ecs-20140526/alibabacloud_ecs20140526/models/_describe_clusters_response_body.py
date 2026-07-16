@@ -13,7 +13,9 @@ class DescribeClustersResponseBody(DaraModel):
         clusters: main_models.DescribeClustersResponseBodyClusters = None,
         request_id: str = None,
     ):
+        # An object that contains the list of clusters.
         self.clusters = clusters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

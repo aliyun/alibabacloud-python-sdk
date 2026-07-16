@@ -17,12 +17,17 @@ class ListTablesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListTablesResponseBodyPageResult(DaraModel):
         table_list: List[main_models.ListTablesResponseBodyPageResultTableList] = None,
         total_count: int = None,
     ):
+        # The list of tables.
         self.table_list = table_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -155,36 +162,71 @@ class ListTablesResponseBodyPageResultTableList(DaraModel):
         table_size_in_bytes: int = None,
         visit_count_30d: int = None,
     ):
+        # The asset inventory tags.
         self.asset_tag_list = asset_tag_list
+        # The ID of the business unit.
         self.biz_unit_id = biz_unit_id
+        # The name of the business unit.
         self.biz_unit_name = biz_unit_name
+        # The comment of the table.
         self.comment = comment
+        # The creation time.
         self.create_time = create_time
+        # The ID of the creator.
         self.creator = creator
+        # The ID of the data domain.
         self.data_domain_id = data_domain_id
+        # The name of the data domain.
         self.data_domain_name = data_domain_name
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The display name of the table.
         self.display_name = display_name
+        # The environment. Valid values:
+        # - dev
+        # - prod.
         self.env = env
+        # The file ID. This value is used to navigate to the ODM model.
         self.file_id = file_id
+        # The GUID of the table.
         self.guid = guid
+        # Indicates whether the project or business version to which the table belongs is in Basic mode.
         self.is_basic_mode = is_basic_mode
+        # Indicates whether the table is a partitioned table.
         self.is_partition_table = is_partition_table
+        # The time when the table DDL was last modified.
         self.last_ddl_time = last_ddl_time
+        # The time when the table data was last updated.
         self.last_dml_time = last_dml_time
+        # The time when the data was last viewed.
         self.last_query_time = last_query_time
+        # The lifecycle of the table, in days.
         self.life_cycle = life_cycle
+        # The name of the table.
         self.name = name
+        # The Dataphin user ID of the table owner. This value may be empty if the owner is not bound.
         self.owner = owner
+        # The ID of the parent model. This value is used to navigate to the ODM model.
         self.parent_model_id = parent_model_id
+        # The ID of the logical project.
         self.project_id = project_id
+        # The name of the logical project.
         self.project_name = project_name
+        # The security classification.
         self.security_level = security_level
+        # The abbreviation of the security classification name.
         self.security_level_abbreviation = security_level_abbreviation
+        # The name of the security classification.
         self.security_level_name = security_level_name
+        # The storage type. Valid values:
+        # - HIVE
+        # - MAX_COMPUTE.
         self.storage_type = storage_type
+        # The dynamic properties of the real-time meta table.
         self.stream_table_config = stream_table_config
+        # The total storage size of the table, in bytes.
         self.table_size_in_bytes = table_size_in_bytes
+        # The number of visits in the last 30 days.
         self.visit_count_30d = visit_count_30d
 
     def validate(self):
@@ -401,7 +443,9 @@ class ListTablesResponseBodyPageResultTableListStreamTableConfig(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
         self.key = key
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

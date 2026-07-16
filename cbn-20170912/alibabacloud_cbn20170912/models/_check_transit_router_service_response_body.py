@@ -12,8 +12,8 @@ class CheckTransitRouterServiceResponseBody(DaraModel):
     ):
         # Indicates whether the transit router feature is activated.
         # 
-        # *   **true**: activated
-        # *   If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
+        # - **true**: activated
+        # - If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
         self.enabled = enabled
         # The ID of the request.
         self.request_id = request_id

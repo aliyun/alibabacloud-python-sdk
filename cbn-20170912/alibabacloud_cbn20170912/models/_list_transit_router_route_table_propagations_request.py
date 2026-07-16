@@ -19,30 +19,35 @@ class ListTransitRouterRouteTablePropagationsRequest(DaraModel):
         transit_router_attachment_resource_type: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The number of entries to return on each page. Default value: **50**.
+        # The number of entries to return on each page. The default value is **50**.
         self.max_results = max_results
-        # The token that determines the start point of the query.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the route learning correlation. Valid values:
+        # The status of the route propagation.
         # 
-        # *   **Active**: available
-        # *   **Enabling**: being enabled
-        # *   **Disabling**: being disabled
+        # - **Active**: The propagation is active.
+        # 
+        # - **Enabling**: The propagation is being enabled.
+        # 
+        # - **Disabling**: The propagation is being disabled.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the network instance.
         self.transit_router_attachment_resource_id = transit_router_attachment_resource_id
-        # The type of the network instance. Valid values:
+        # The type of the network instance.
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **VBR**: virtual border router (VBR)
-        # *   **TR**: transit router
-        # *   **VPN**: VPN connection
+        # - **VPC**: a virtual private cloud (VPC).
+        # 
+        # - **VBR**: a virtual border router (VBR).
+        # 
+        # - **TR**: a transit router.
+        # 
+        # - **VPN**: a VPN connection.
         self.transit_router_attachment_resource_type = transit_router_attachment_resource_type
         # The ID of the route table of the Enterprise Edition transit router.
         # 

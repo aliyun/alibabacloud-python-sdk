@@ -12,17 +12,17 @@ class DescribeVerifyPersonasSexStatisticsRequest(DaraModel):
         service_code: str = None,
         time_range: str = None,
     ):
-        # Product Code.
+        # The product code.
         self.product_code = product_code
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Service type:
-        # - **antcloudauth**: Financial-grade real-person authentication.
-        # - **cloudauthst** (discontinued): Enhanced real-person authentication.
+        # The service type. Valid values:
+        # - **antcloudauth**: financial-grade ID Verification.
+        # - **cloudauthst** (discontinued): enhanced ID Verification.
         # 
         # This parameter is required.
         self.service_code = service_code
-        # Time range, the search range is for the previous N days, TimeRange of 1 indicates the previous 1 day.
+        # The time range. The search scope is the previous N days. For example, a value of 1 indicates the previous day.
         # 
         # This parameter is required.
         self.time_range = time_range

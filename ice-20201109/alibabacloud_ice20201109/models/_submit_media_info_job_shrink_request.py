@@ -12,15 +12,15 @@ class SubmitMediaInfoJobShrinkRequest(DaraModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
-        # The input of the job.
+        # The input for the job.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
         # The job name.
         self.name = name
-        # The scheduling parameters.
+        # The scheduling settings.
         self.schedule_config_shrink = schedule_config_shrink
-        # The user data.
+        # The custom user data.
         self.user_data = user_data
 
     def validate(self):

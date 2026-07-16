@@ -15,7 +15,6 @@ class CreateWorkspaceResponseBody(DaraModel):
     ):
         self.description = description
         self.name = name
-        # requestId
         self.request_id = request_id
         self.url = url
         self.workspace_id = workspace_id

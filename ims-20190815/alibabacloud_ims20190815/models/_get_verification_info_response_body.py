@@ -69,8 +69,9 @@ class GetVerificationInfoResponseBodySecurityPhoneDevice(DaraModel):
         self.phone_number = phone_number
         # The status of the mobile phone. Valid values:
         # 
-        # *   active: The mobile phone is activated.
-        # *   pending: The mobile phone is pending for activation.
+        # - active: The mobile phone is activated.
+        # 
+        # - pending: The mobile phone is pending for activation.
         self.status = status
 
     def validate(self):
@@ -115,8 +116,9 @@ class GetVerificationInfoResponseBodySecurityEmailDevice(DaraModel):
         self.email = email
         # The status of the email. Valid values:
         # 
-        # *   active: The email is activated.
-        # *   pending: The email is pending for activation.
+        # - active: The email is activated.
+        # 
+        # - pending: The email is pending for activation.
         self.status = status
 
     def validate(self):

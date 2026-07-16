@@ -14,16 +14,17 @@ class DescribeCloudGtmInstanceConfigFullInfoRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
-        self.accept_language = accept_language
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # - zh-CN: Chinese
         # 
-        # You can call the [ListCloudGtmInstanceConfigs](~~ListCloudGtmInstanceConfigs~~) operation to query the value of ConfigId for the access domain name.
+        # - en-US (default): English
+        self.accept_language = accept_language
+        # The client token that is used to ensure the idempotence of the request. Generate a unique token for each request. The token can contain a maximum of 64 ASCII characters.
+        self.client_token = client_token
+        # The ID of the instance configuration. You can configure both A and AAAA records for the same access domain name and Global Traffic Manager (GTM) instance. In this case, the GTM instance has two configurations. The ConfigId uniquely identifies an instance configuration.
+        # 
+        # For more information, see [ListCloudGtmInstanceConfigs](https://help.aliyun.com/document_detail/2797349.html).
         self.config_id = config_id
-        # The ID of the GTM 3.0 instance.
+        # The ID of the Global Traffic Manager 3.0 instance.
         self.instance_id = instance_id
 
     def validate(self):

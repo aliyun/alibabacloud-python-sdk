@@ -10,7 +10,17 @@ class DescribeVpcFirewallSummaryInfoRequest(DaraModel):
         lang: str = None,
         user_type: str = None,
     ):
+        # The language of the content. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The type of the user. Valid values:
+        # 
+        # **buy**: Paid user
+        # 
+        # **free**: Free user
         self.user_type = user_type
 
     def validate(self):

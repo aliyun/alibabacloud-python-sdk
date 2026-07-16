@@ -13,9 +13,9 @@ class ListUploadTasksResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.ListUploadTasksResponseBodyTasks] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The file upload tasks.
+        # The list of file upload tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -63,29 +63,28 @@ class ListUploadTasksResponseBodyTasks(DaraModel):
         upload_id: str = None,
         upload_task_name: str = None,
     ):
-        # The time when the task was created.
+        # The creation time in ISO 8601 format (for example, 2024-01-01T00:00:00+Z).
         self.create_time = create_time
-        # The error message returned when the file upload task failed.
+        # The error message returned when the file upload task fails.
         self.description = description
-        # The error code. Multiple error codes are separated by commas (,).
+        # The error code. Multiple error codes are separated by commas. Valid values:
         # 
-        # *   **InvalidUrl**: The URL format is incorrect.
-        # *   **InvalidDomain**: The domain ownership fails to be verified.
-        # *   **QuotaExcess**: The quota limit has been reached.
-        # *   **OtherErrors**: Other errors.
+        # - **InvalidUrl**: The URL format is invalid.
+        # - **InvalidDomain**: The domain name ownership verification failed.
+        # - **QuotaExcess**: The quota limit is exceeded.
+        # - **OtherErrors**: Other errors occurred.
         self.error_code = error_code
-        # The task status.
-        # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
+        # The task status. Valid values:
+        # - **Complete**: The task is complete.
+        # - **Refreshing**: The task is in progress.
+        # - **Failed**: The task failed.
         self.status = status
         # The task type. Valid values:
         # 
-        # *   **file**: purges the cache by file URL.
-        # *   **preload**: prefetches files.
-        # *   **directory**: purges the cache by directory.
-        # *   **ignoreparams**: purges the cache by URL with specified parameters ignored.
+        # - **file**: URL file purge.
+        # - **preload**: resource prefetch.
+        # - **directory**: directory purge.
+        # - **ignoreparams**: purge with parameters ignored.
         self.type = type
         # The ID of the file upload task.
         self.upload_id = upload_id

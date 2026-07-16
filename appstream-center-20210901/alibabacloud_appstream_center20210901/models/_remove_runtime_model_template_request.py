@@ -13,10 +13,16 @@ class RemoveRuntimeModelTemplateRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
+        # The model group ID.
+        # 
         # This parameter is required.
         self.model_template_id = model_template_id
+        # The list of Agent runtime IDs.
+        # 
         # This parameter is required.
         self.runtime_ids = runtime_ids
+        # The Agent runtime type.
+        # 
         # This parameter is required.
         self.runtime_type = runtime_type
 

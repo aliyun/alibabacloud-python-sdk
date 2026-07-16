@@ -11,11 +11,11 @@ class DeleteVerifyResultRequest(DaraModel):
         delete_type: str = None,
         transaction_id: str = None,
     ):
-        # Whether to depend on the query interface when deleting data
+        # Specifies whether the deletion depends on the query operation.
         self.delete_after_query = delete_after_query
-        # Type of data to be deleted
+        # The type of data to delete.
         self.delete_type = delete_type
-        # Unique identifier of the authentication request
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

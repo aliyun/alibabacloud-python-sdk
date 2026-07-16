@@ -24,7 +24,26 @@ class Client(OpenApiClient):
         super().__init__(config)
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
-            'cn-beijing-gov-1': 'imm-vpc.cn-beijing-gov-1.aliyuncs.com'
+            'cn-beijing-gov-1': 'imm-vpc.cn-beijing-gov-1.aliyuncs.com',
+            'us-west-1': 'imm.us-west-1.aliyuncs.com',
+            'us-east-1': 'imm.us-east-1.aliyuncs.com',
+            'eu-west-1': 'imm.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'imm.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'imm.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'imm.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'imm.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'imm.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'imm.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'imm.cn-north-2-gov-1.aliyuncs.com',
+            'cn-hongkong': 'imm.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'imm.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'imm.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'imm.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'imm.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'imm.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-2': 'imm.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'imm.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'imm.ap-south-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('imm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1707,13 +1726,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -1761,13 +1776,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -5129,11 +5140,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.credential_config):
             request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.inclusion_hints):
+            request.inclusion_hints_shrink = Utils.array_to_string_with_specified_style(tmp_req.inclusion_hints, 'InclusionHints', 'json')
         query = {}
         if not DaraCore.is_null(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
         if not DaraCore.is_null(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.inclusion_hints_shrink):
+            query['InclusionHints'] = request.inclusion_hints_shrink
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.source_uri):
@@ -5167,11 +5182,15 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.credential_config):
             request.credential_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.credential_config, 'CredentialConfig', 'json')
+        if not DaraCore.is_null(tmp_req.inclusion_hints):
+            request.inclusion_hints_shrink = Utils.array_to_string_with_specified_style(tmp_req.inclusion_hints, 'InclusionHints', 'json')
         query = {}
         if not DaraCore.is_null(request.aspect_ratios):
             query['AspectRatios'] = request.aspect_ratios
         if not DaraCore.is_null(request.credential_config_shrink):
             query['CredentialConfig'] = request.credential_config_shrink
+        if not DaraCore.is_null(request.inclusion_hints_shrink):
+            query['InclusionHints'] = request.inclusion_hints_shrink
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.source_uri):
@@ -9711,13 +9730,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):
@@ -9765,13 +9780,9 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateDatasetShrinkRequest()
         Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.dataset_config):
-            request.dataset_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_config, 'DatasetConfig', 'json')
         if not DaraCore.is_null(tmp_req.workflow_parameters):
             request.workflow_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.workflow_parameters, 'WorkflowParameters', 'json')
         query = {}
-        if not DaraCore.is_null(request.dataset_config_shrink):
-            query['DatasetConfig'] = request.dataset_config_shrink
         if not DaraCore.is_null(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
         if not DaraCore.is_null(request.dataset_max_entity_count):

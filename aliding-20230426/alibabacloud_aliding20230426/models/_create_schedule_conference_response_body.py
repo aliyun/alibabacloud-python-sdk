@@ -18,7 +18,6 @@ class CreateScheduleConferenceResponseBody(DaraModel):
         vendor_type: str = None,
     ):
         self.phones = phones
-        # requestId
         self.request_id = request_id
         self.room_code = room_code
         self.schedule_conference_id = schedule_conference_id

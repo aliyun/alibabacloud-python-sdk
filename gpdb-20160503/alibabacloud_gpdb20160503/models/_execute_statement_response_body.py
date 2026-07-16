@@ -20,26 +20,25 @@ class ExecuteStatementResponseBody(DaraModel):
         secret_arn: str = None,
         status: str = None,
     ):
-        # The time when the SQL statements were created.
+        # The creation time.
         self.created_at = created_at
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The returned results of the synchronous call.
+        # The result returned for synchronous calls.
         self.data = data
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The ID of the job for asynchronously executing the SQL statements.
+        # The task ID for asynchronous SQL execution.
         self.id = id
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The ARN of the access credential for the created Data API account.
+        # The access credential.
         self.secret_arn = secret_arn
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**
-        # *   **fail**
+        # The execution status of the API operation. Valid values:
+        # - **success**: The execution is successful.
+        # - **fail**: The execution failed.
         self.status = status
 
     def validate(self):
@@ -121,7 +120,7 @@ class ExecuteStatementResponseBodyData(DaraModel):
     ):
         self.column_metadata = column_metadata
         self.records = records
-        # The total number of entries returned.
+        # The total number of rows.
         self.total_num_rows = total_num_rows
 
     def validate(self):

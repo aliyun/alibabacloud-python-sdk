@@ -13,9 +13,9 @@ class GetVirusScanLatestTaskStatisticResponseBody(DaraModel):
         data: main_models.GetVirusScanLatestTaskStatisticResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the virus scan task.
+        # The custom result data.
         self.data = data
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -64,53 +64,50 @@ class GetVirusScanLatestTaskStatisticResponseBodyData(DaraModel):
         task_id: str = None,
         un_complete_machine: int = None,
     ):
-        # The number of machines on which the virus scan task is complete.
+        # The number of servers that completed the scan.
         self.complete_machine = complete_machine
-        # The name of the machine.
+        # The name of the server.
         self.machine_name = machine_name
-        # The progress of the virus scan task in percentage.
+        # The progress percentage of the scan task.
         self.progress = progress
-        # The highest risk level of the detected alerts. Valid values:
+        # The highest risk level of the alerts detected by the scan. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high-risk.
+        # - **medium**: medium-risk.
+        # - **low**: low-risk.
         self.risk_level = risk_level
-        # The number of safe machines that are detected.
+        # The number of servers on which no risks are detected.
         self.safe_machine = safe_machine
-        # The number of machines that are scanned.
+        # The number of servers scanned in this virus scan.
         self.scan_machine = scan_machine
-        # The paths of files that were scanned. This value is returned only when ScanType is set to user.
+        # The file paths specified for scanning when the scan type is user-defined.
         self.scan_path = scan_path
-        # The timestamp generated when the virus scan task was performed. Unit: milliseconds.
+        # The timestamp of the scan. Unit: milliseconds.
         self.scan_time = scan_time
-        # The type of the virus scan. Valid values:
-        # 
-        # *   **system**: automatic scan.
-        # *   **user**: custom scan.
+        # The scan type of this virus scan. Valid values:
+        # - **system**: automatic system scan.
+        # - **user**: user-defined scan.
         self.scan_type = scan_type
-        # The status of the virus scan task.
+        # The status of the scan task.
         # 
-        # **Valid values for a main task**:
+        # **Valid values for the main task:**
+        # - **0**: The task is pending.
+        # - **10**: The scan is in progress.
+        # - **100**: The scan is complete.
         # 
-        # *   **0**: The main task is to be started.
-        # *   **10**: The main task is running.
-        # *   **100**: The main task is complete.
-        # 
-        # **Valid values for a subtask**:
-        # 
-        # *   **0**: The subtask is to be started.
-        # *   **20**: The scan script is sent.
-        # *   **50**: The subtask is running.
-        # *   **100**: The subtask is complete.
+        # **Valid values for the subtask:**
+        # - **0**: The scan is pending.
+        # - **20**: The detection script is delivered.
+        # - **50**: The scan is running on the server.
+        # - **100**: The scan is complete.
         self.status = status
-        # The number of alerts that are detected.
+        # The number of security alerts detected by the scan.
         self.suspicious_count = suspicious_count
-        # The number of suspicious machines that are detected.
+        # The number of servers on which risks are detected.
         self.suspicious_machine = suspicious_machine
-        # The ID of the virus scan task.
+        # The ID of the scan task.
         self.task_id = task_id
-        # The number of machines on which the virus scan task was not complete or failed.
+        # The number of servers that have not completed the scan or failed the scan.
         self.un_complete_machine = un_complete_machine
 
     def validate(self):

@@ -12,19 +12,19 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_region_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group into which you want to change.
+        # The ID of the destination resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
-        # The resource ID.
+        # The ID of the resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.resource_region_id = resource_region_id
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):

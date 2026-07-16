@@ -11,10 +11,15 @@ class DeleteModelApiRequest(DaraModel):
         model_api_id: str = None,
         region_id: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The model API ID.
+        # 
         # This parameter is required.
         self.model_api_id = model_api_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

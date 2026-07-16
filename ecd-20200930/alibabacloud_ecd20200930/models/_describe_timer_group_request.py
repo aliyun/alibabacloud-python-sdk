@@ -14,7 +14,7 @@ class DescribeTimerGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):

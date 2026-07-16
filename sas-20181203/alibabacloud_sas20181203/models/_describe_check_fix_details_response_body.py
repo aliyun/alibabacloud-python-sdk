@@ -14,11 +14,11 @@ class DescribeCheckFixDetailsResponseBody(DaraModel):
         count: int = None,
         request_id: str = None,
     ):
-        # An array that consists of the parameters.
+        # The list of check item fix parameters.
         self.check_fix_details = check_fix_details
-        # The number of risk items that can be fixed.
+        # The number of check items that support fixing.
         self.count = count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -69,13 +69,13 @@ class DescribeCheckFixDetailsResponseBodyCheckFixDetails(DaraModel):
         check_item: str = None,
         rules: List[main_models.DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules] = None,
     ):
-        # The detailed description of the risk item.
+        # The detailed description of the check item.
         self.check_desc = check_desc
-        # The ID of the risk item.
+        # The ID of the check item.
         self.check_id = check_id
-        # The description of the risk item.
+        # The description of the check item.
         self.check_item = check_item
-        # An array consisting of the rules that are supported by the risk item.
+        # The list of rules supported by the check item.
         self.rules = rules
 
     def validate(self):
@@ -136,24 +136,24 @@ class DescribeCheckFixDetailsResponseBodyCheckFixDetailsRules(DaraModel):
         value: int = None,
         var_name: str = None,
     ):
-        # The ID of the risk item.
+        # The ID of the check item.
         self.check_id = check_id
         # The default value of the rule.
         self.default_value = default_value
         # Indicates whether the rule is optional. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes
+        # - **0**: no.
         self.optional = optional
-        # An array that consists of the rule parameters.
+        # The list of rule parameters.
         self.param_list = param_list
         # The description of the rule.
         self.rule_desc = rule_desc
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The specified value of the rule parameter.
+        # The configured value of the rule parameter.
         self.value = value
-        # The name of the variable.
+        # The variable name.
         self.var_name = var_name
 
     def validate(self):
@@ -239,7 +239,7 @@ class DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList(DaraModel
         rule_id: str = None,
         value: str = None,
     ):
-        # The options that can be selected for the rule parameter if the value of the ParamType parameter is 2.
+        # The options of the rule parameter when the parameter type is selection.
         self.enum_value = enum_value
         # The maximum value of the rule parameter.
         self.max_value = max_value
@@ -253,12 +253,12 @@ class DescribeCheckFixDetailsResponseBodyCheckFixDetailsRulesParamList(DaraModel
         self.param_name = param_name
         # The type of the rule parameter. Valid values:
         # 
-        # *   **1**: input
-        # *   **2**: selection
+        # - **1**: input
+        # - **2**: selection.
         self.param_type = param_type
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The specified value of the rule parameter.
+        # The configured value of the rule parameter.
         self.value = value
 
     def validate(self):

@@ -15,11 +15,11 @@ class ListPolicyClassesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # An array of policy template information.
+        # The policy template information.
         self.data = data
-        # The response message returned.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -72,9 +72,9 @@ class ListPolicyClassesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The templates.
+        # The list of policy templates.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

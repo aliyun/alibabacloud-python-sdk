@@ -13,10 +13,20 @@ class ListExternalServicesRequest(DaraModel):
         pai_workspace_id: str = None,
         source_type: str = None,
     ):
+        # Specifies whether to return only services that have not been imported.
         self.importable_only = importable_only
+        # The maximum number of entries to return. Valid range: (0, 100]. Default value: 10.
         self.limit = limit
+        # The API name for fuzzy match.
         self.name_like = name_like
+        # The workspace ID of the PAI-EAS service.
         self.pai_workspace_id = pai_workspace_id
+        # The service source type used to filter results. Valid values:
+        # - MSE_NACOS: services from MSE Nacos.
+        # - K8S: services from a Kubernetes cluster in Container Service.
+        # - FC3: services from Function Compute.
+        # - VIP: services from a fixed address.
+        # - DNS: services from a domain name.
         self.source_type = source_type
 
     def validate(self):

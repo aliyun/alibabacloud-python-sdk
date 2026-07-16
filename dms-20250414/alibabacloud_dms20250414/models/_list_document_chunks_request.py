@@ -15,13 +15,35 @@ class ListDocumentChunksRequest(DaraModel):
         sort_field_name: str = None,
         sort_order: str = None,
     ):
+        # A filter pattern. The operation returns only the chunks whose titles contain this pattern.
         self.chunk_title_pattern = chunk_title_pattern
+        # The name of the document.
         self.document_name = document_name
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. Omit this parameter to get the first page. If the response returns a `NextToken`, it indicates that more results are available. To get the next page, pass this `NextToken` value in the `NextToken` parameter of your next request. A null value for NextToken indicates that all results have been retrieved.
         self.next_token = next_token
+        # The sort field. Valid values:
+        # 
+        # - **id** (default): The chunk ID.
+        # 
+        # - **hits**: The number of hits.
+        # 
+        # - **modifyTime**: The modification time.
         self.sort_field_name = sort_field_name
+        # The sort order. Valid values:
+        # 
+        # - **ASC** (default): ascending order.
+        # 
+        # - **DESC**: descending order.
         self.sort_order = sort_order
 
     def validate(self):

@@ -15,24 +15,24 @@ class ListCustomResponseCodeRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID.
+        # Configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # Configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # *   global: global configurations.
-        # *   rule: rule configurations.
+        # - global: queries global configurations.
+        # - rule: queries rule configurations.
         self.config_type = config_type
-        # The page number. Default value: 1.
+        # Page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # Number of entries per page. Maximum value: 500. Default value: 500.
         self.page_size = page_size
-        # The rule name.
+        # Rule name.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

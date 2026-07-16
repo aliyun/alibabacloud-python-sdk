@@ -12,17 +12,17 @@ class DescribeIdcProbeListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
-        # Sets the page number from which to start displaying the query results. The default value is 1, indicating that the display starts from the first page.
+        # The page number of the page to return. Default value: 1, which indicates that the first page is returned.
         self.current_page = current_page
         # The name of the IDC.
         self.idc_name = idc_name
-        # Specifies the maximum number of data entries to display per page in a paginated query. The default number of data entries per page is 20, and if the PageSize parameter is empty, it will default to returning 20 data entries.
-        # > It is recommended that the PageSize value is not empty.
+        # The maximum number of entries per page when paging. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # Probe status. Values:
+        # The usage status of the probe. Valid values:
         # 
-        # - **0**: Enabled
-        # - **1**: Disabled
+        # - **0**: enabled
+        # - **1**: disabled.
         self.status = status
 
     def validate(self):

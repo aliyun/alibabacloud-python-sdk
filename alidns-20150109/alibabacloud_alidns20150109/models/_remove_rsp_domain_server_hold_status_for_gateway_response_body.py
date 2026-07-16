@@ -14,10 +14,15 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial. This field appears only when Resource Access Management (RAM) authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # Indicates whether you can retry the request if it fails. Valid values: `true` (retry allowed) and `false` (retry not allowed).
         self.recoverable_error = recoverable_error
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values: `true` (succeeded) and `false` (failed).
         self.success = success
 
     def validate(self):
@@ -75,7 +80,9 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBodyData(DaraModel):
         domain_name: str = None,
         server_hold_status: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The domain\\"s serverHold status.
         self.server_hold_status = server_hold_status
 
     def validate(self):
@@ -115,12 +122,23 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail(Da
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # The display name of the authorized entity.
         self.auth_principal_display_name = auth_principal_display_name
+        # The ID of the owner of the authorized entity.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The identity type.
         self.auth_principal_type = auth_principal_type
+        # The complete diagnostic information after encryption.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The reason why authorization failed. Valid values:
+        # 
+        # - ExplicitDeny: Access is explicitly denied.
+        # 
+        # - ImplicitDeny: Access is implicitly denied.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

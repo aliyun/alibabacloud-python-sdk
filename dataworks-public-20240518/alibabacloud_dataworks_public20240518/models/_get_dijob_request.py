@@ -12,15 +12,13 @@ class GetDIJobRequest(DaraModel):
         project_id: int = None,
         with_details: bool = None,
     ):
-        # This parameter is deprecated. Use the Id parameter instead.
+        # This field is deprecated. Use the `Id` field instead.
         self.dijob_id = dijob_id
-        # The ID of the synchronization task.
+        # The ID of the DI job.
         self.id = id
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
-        # 
-        # You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The DataWorks workspace ID. You can call the `ListProjects` operation to obtain the workspace ID.
         self.project_id = project_id
-        # Specifies whether to return detailed configuration information, including TransformationRules, TableMappings, and JobSettings. Valid values: true and false. Default value: true.
+        # Specifies whether to return the detailed configuration, including `TransformationRules`, `TableMappings`, and `JobSettings`. This configuration is returned by default.
         self.with_details = with_details
 
     def validate(self):

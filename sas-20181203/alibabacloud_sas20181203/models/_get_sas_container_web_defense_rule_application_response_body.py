@@ -13,9 +13,9 @@ class GetSasContainerWebDefenseRuleApplicationResponseBody(DaraModel):
         container_web_defense_app_list: List[main_models.GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseAppList] = None,
         request_id: str = None,
     ):
-        # The applications.
+        # The application list.
         self.container_web_defense_app_list = container_web_defense_app_list
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -66,18 +66,17 @@ class GetSasContainerWebDefenseRuleApplicationResponseBodyContainerWebDefenseApp
         # The user ID.
         self.ali_uid = ali_uid
         # The ID of the container cluster.
-        # 
-        # >  The IDs of clusters can be obtained by using the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The time when the application was created. Unit: milliseconds.
+        # The creation time of the application, in milliseconds.
         self.gmt_create = gmt_create
-        # The last modification time. Unit: milliseconds.
+        # The most recent modification time, in milliseconds.
         self.gmt_modified = gmt_modified
-        # The ID of the node.
+        # The ID of the current node.
         self.id = id
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
-        # The value of the application label.
+        # The application tag value.
         self.tag = tag
 
     def validate(self):

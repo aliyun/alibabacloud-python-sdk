@@ -14,8 +14,11 @@ class ListComponentIndicesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListComponentIndicesResponseBodyResult] = None,
     ):
+        # The response headers.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
+        # The details of the returned results.
         self.result = result
 
     def validate(self):
@@ -68,8 +71,11 @@ class ListComponentIndicesResponseBodyResult(DaraModel):
         content: main_models.ListComponentIndicesResponseBodyResultContent = None,
         name: str = None,
     ):
+        # The information about the index templates that reference this composable template.
         self.composed = composed
+        # The content of the composable template.
         self.content = content
+        # The name of the composable template.
         self.name = name
 
     def validate(self):
@@ -113,8 +119,11 @@ class ListComponentIndicesResponseBodyResultContent(DaraModel):
         template: main_models.ListComponentIndicesResponseBodyResultContentTemplate = None,
         version: int = None,
     ):
+        # The metadata, which is used to store information such as remarks.
         self.meta = meta
+        # The composable template object.
         self.template = template
+        # The version of the composable template.
         self.version = version
 
     def validate(self):
@@ -156,6 +165,7 @@ class ListComponentIndicesResponseBodyResultContentTemplate(DaraModel):
         self,
         settings: main_models.ListComponentIndicesResponseBodyResultContentTemplateSettings = None,
     ):
+        # The settings configuration of the template.
         self.settings = settings
 
     def validate(self):
@@ -185,6 +195,7 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettings(DaraModel):
         self,
         index: main_models.ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex = None,
     ):
+        # The index information.
         self.index = index
 
     def validate(self):
@@ -215,7 +226,12 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndex(DaraMod
         codec: str = None,
         lifecycle: main_models.ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycle = None,
     ):
+        # The index compression method. Valid values:
+        # 
+        # - LZ4: the default compression algorithm of Elasticsearch. It provides fast compression and decompression but a relatively lower compression ratio.
+        # - best_compression: uses the best_compression algorithm for compression, which provides a higher compression ratio.
         self.codec = codec
+        # The index lifecycle configuration.
         self.lifecycle = lifecycle
 
     def validate(self):
@@ -251,6 +267,7 @@ class ListComponentIndicesResponseBodyResultContentTemplateSettingsIndexLifecycl
         self,
         name: str = None,
     ):
+        # The name of the lifecycle policy.
         self.name = name
 
     def validate(self):
@@ -278,6 +295,7 @@ class ListComponentIndicesResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):

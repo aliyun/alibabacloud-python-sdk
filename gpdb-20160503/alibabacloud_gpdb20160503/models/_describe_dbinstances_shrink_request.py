@@ -25,47 +25,50 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
         tag: List[main_models.DescribeDBInstancesShrinkRequestTag] = None,
         vpc_id: str = None,
     ):
-        # The edition of the instance. Separate multiple values with commas (,).
+        # The instance edition. You can specify multiple editions. Separate multiple editions with a comma (,).
         self.dbinstance_categories_shrink = dbinstance_categories_shrink
-        # The description of the instance.
+        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The instance ID. Separate multiple values with commas (,).
+        # The instance IDs. Separate multiple IDs with commas (,).
         self.dbinstance_ids = dbinstance_ids
-        # The resource type of the instance. Separate multiple values with commas (,).
+        # The resource type of the instance. You can specify multiple resource types. Separate multiple resource types with a comma (,).
         self.dbinstance_modes_shrink = dbinstance_modes_shrink
         # The state of the instance.
         self.dbinstance_statuses_shrink = dbinstance_statuses_shrink
-        # This parameter is no longer used.
+        # This parameter is deprecated. Do not specify this parameter.
         self.instance_deploy_types_shrink = instance_deploy_types_shrink
-        # The network type of the instance. Valid values:
+        # The instance network type. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC).
-        # *   **Classic**: classic network.
+        # - **VPC**: VPC
         # 
-        # > If you do not specify this parameter, instances of all network types are returned.
+        # - **Classic**: classic network
+        # 
+        # > If you omit this parameter, the operation returns instances of all network types.
         self.instance_network_type = instance_network_type
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID.
+        # The region ID of the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The tags of the instance.
         self.tag = tag
-        # The VPC ID. You can use this parameter to filter instances that reside in the specified VPC.
+        # The VPC ID. You can specify this parameter to query instances in a VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -180,9 +183,9 @@ class DescribeDBInstancesShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
+        # The key of the tag.
         self.key = key
-        # The value of tag N.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

@@ -17,16 +17,27 @@ class SearchRecursionZonesShrinkRequest(DaraModel):
         remark: str = None,
         zone_name: str = None,
     ):
+        # The sort order. Valid values: `asc`: ascending. `desc`: descending.
         self.direction = direction
+        # The list of effective scopes.
         self.effective_scopes_shrink = effective_scopes_shrink
+        # The maximum number of entries to return. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The sort field. Valid values: `UpdateTime`: the update time of the zone. `RecordCount`: the number of DNS records.
         self.order_by = order_by
+        # The page number. Pages start at **1**. Default value: **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return per page. Valid values: 1 to 100. Default value: 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The remark for the zone. Fuzzy search is supported.
         self.remark = remark
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):

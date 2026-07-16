@@ -13,15 +13,15 @@ class SetOriginClientCertificateHostnamesRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The domain names to associate.
+        # The hostnames to associate with the certificate.
         # 
         # This parameter is required.
         self.hostnames = hostnames
-        # The certificate ID.
+        # The ID of the certificate.
         # 
         # This parameter is required.
         self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The ID of the site.
         # 
         # This parameter is required.
         self.site_id = site_id

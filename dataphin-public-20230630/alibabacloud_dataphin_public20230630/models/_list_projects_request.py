@@ -13,8 +13,12 @@ class ListProjectsRequest(DaraModel):
         list_query: main_models.ListProjectsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query conditions.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,11 +60,17 @@ class ListProjectsRequestListQuery(DaraModel):
         page_size: int = None,
         tag_list: List[str] = None,
     ):
+        # The environment identifier.
         self.env = env
+        # The keyword for fuzzy match.
         self.keyword = keyword
+        # The project mode.
         self.mode = mode
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The project tags.
         self.tag_list = tag_list
 
     def validate(self):

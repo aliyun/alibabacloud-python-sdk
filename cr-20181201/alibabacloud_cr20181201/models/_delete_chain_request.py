@@ -10,11 +10,11 @@ class DeleteChainRequest(DaraModel):
         chain_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the delivery pipeline.
+        # The delivery chain ID.
         # 
         # This parameter is required.
         self.chain_id = chain_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

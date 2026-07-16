@@ -15,12 +15,13 @@ class CreateFlowShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The categories of the Flow.
+        # The categories.
         # 
         # This parameter is required.
         self.categories_shrink = categories_shrink
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
+        # The URL of the WA Flow Endpoint
         self.endpoint_uri = endpoint_uri
         # The name of the Flow.
         # 

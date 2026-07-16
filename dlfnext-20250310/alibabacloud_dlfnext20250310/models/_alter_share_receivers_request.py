@@ -12,7 +12,9 @@ class AlterShareReceiversRequest(DaraModel):
         added_receivers: List[str] = None,
         removed_receivers: List[str] = None,
     ):
+        # The receivers to add.
         self.added_receivers = added_receivers
+        # The receivers to remove.
         self.removed_receivers = removed_receivers
 
     def validate(self):

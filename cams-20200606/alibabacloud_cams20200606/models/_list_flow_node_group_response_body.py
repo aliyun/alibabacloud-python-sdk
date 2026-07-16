@@ -17,11 +17,23 @@ class ListFlowNodeGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This field is returned only when RAM verification fails.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,6 +93,7 @@ class ListFlowNodeGroupResponseBodyData(DaraModel):
         self,
         model: List[main_models.ListFlowNodeGroupResponseBodyDataModel] = None,
     ):
+        # The request result data.
         self.model = model
 
     def validate(self):
@@ -117,7 +130,9 @@ class ListFlowNodeGroupResponseBodyDataModel(DaraModel):
         code: str = None,
         public_extend: str = None,
     ):
+        # The status code.
         self.code = code
+        # The public extension field.
         self.public_extend = public_extend
 
     def validate(self):

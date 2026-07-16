@@ -14,26 +14,25 @@ class DescribeUniBackupDatabaseRequest(DaraModel):
         query_type: str = None,
         uni_region_id: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates the first page.
         self.current_page = current_page
         # The type of the database. Valid values:
         # 
-        # *   **MYSQL**
-        # *   **MSSQL**
-        # *   **Oracle**
+        # - **MYSQL**
+        # - **MSSQL**
+        # - **Oracle**.
         self.database_type = database_type
-        # The name of the Elastic Compute Service (ECS) instance.
+        # The name of the ECS instance.
         self.instance_name = instance_name
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page by default.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The condition that is used to query the database. Valid values:
+        # The query type for the database. Valid values:
         # 
-        # *   **create**: newly created
-        # *   **restore**: restored
+        # - **create**: create
+        # - **restore**: restore.
         self.query_type = query_type
-        # The region ID of the server that hosts the database.
+        # The region ID of the database server.
         self.uni_region_id = uni_region_id
 
     def validate(self):

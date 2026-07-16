@@ -8,6 +8,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
     def __init__(
         self,
         api_name_like: str = None,
+        consumer_group_id: str = None,
         consumer_id: str = None,
         consumer_name_like: str = None,
         environment_id: str = None,
@@ -15,31 +16,36 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         parent_resource_id: str = None,
+        principal_type: str = None,
         resource_id: str = None,
         resource_type: str = None,
         resource_types: str = None,
     ):
         # The API name.
         self.api_name_like = api_name_like
+        # The consumer group ID. If specified, the authorization rules of the consumer group are queried.
+        self.consumer_group_id = consumer_group_id
         # The consumer ID.
         self.consumer_id = consumer_id
         # The consumer name.
         self.consumer_name_like = consumer_name_like
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether to group the results by API.
+        # Specifies whether to group results by API.
         self.group_by_api = group_by_api
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The parent resource ID.
         self.parent_resource_id = parent_resource_id
+        # The principal type. Valid values: Consumer or ConsumerGroup.
+        self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The resource types.
+        # The service source type.
         self.resource_types = resource_types
 
     def validate(self):
@@ -52,6 +58,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
             result = _map
         if self.api_name_like is not None:
             result['apiNameLike'] = self.api_name_like
+
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
 
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
@@ -74,6 +83,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         if self.parent_resource_id is not None:
             result['parentResourceId'] = self.parent_resource_id
 
+        if self.principal_type is not None:
+            result['principalType'] = self.principal_type
+
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
 
@@ -89,6 +101,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         m = m or dict()
         if m.get('apiNameLike') is not None:
             self.api_name_like = m.get('apiNameLike')
+
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
 
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
@@ -110,6 +125,9 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
 
         if m.get('parentResourceId') is not None:
             self.parent_resource_id = m.get('parentResourceId')
+
+        if m.get('principalType') is not None:
+            self.principal_type = m.get('principalType')
 
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')

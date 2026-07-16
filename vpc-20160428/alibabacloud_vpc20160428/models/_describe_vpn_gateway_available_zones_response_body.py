@@ -14,7 +14,7 @@ class DescribeVpnGatewayAvailableZonesResponseBody(DaraModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The zones.
+        # The list of zones.
         self.available_zone_id_list = available_zone_id_list
         # The region ID.
         self.region_id = region_id

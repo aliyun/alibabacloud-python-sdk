@@ -13,6 +13,7 @@ class DescribeCustomEndpointListResponseBody(DaraModel):
         data: main_models.DescribeCustomEndpointListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -51,7 +52,9 @@ class DescribeCustomEndpointListResponseBodyData(DaraModel):
         can_delete_count: int = None,
         endpoints: List[main_models.DescribeCustomEndpointListResponseBodyDataEndpoints] = None,
     ):
+        # Indicates whether the node can be deleted.
         self.can_delete_count = can_delete_count
+        # The details of the endpoints.
         self.endpoints = endpoints
 
     def validate(self):
@@ -105,15 +108,26 @@ class DescribeCustomEndpointListResponseBodyDataEndpoints(DaraModel):
     ):
         # [\\"pxc-i-vb1sqa7llp\\",\\"pxc-i-bemprx50ad\\"]
         self.cn_names = cn_names
+        # The endpoint of the instance.
         self.connection_string = connection_string
+        # The ID of the custom endpoint.
         self.custom_endpoint_id = custom_endpoint_id
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The name of the custom endpoint.
         self.name = name
+        # Indicates whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
         self.node_auto_enter = node_auto_enter
+        # To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY** and specify the **NodeId** parameter.
+        # >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
         self.node_role = node_role
+        # The port used to connect to the instance.
         self.port = port
+        # The status of the custom endpoint.
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) in which the endpoint resides.
         self.vpc_id = vpc_id
 
     def validate(self):

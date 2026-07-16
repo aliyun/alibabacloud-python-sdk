@@ -16,22 +16,23 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token used to start the next query.
         self.next_token = next_token
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid value:
         # 
-        # *   **DOMAIN**: domain name
+        # - **DOMAIN**: domain name
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # An array of tag key-value pairs.
         self.tag = tag
 
     def validate(self):
@@ -94,7 +95,7 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         self.key = key
-        # The key value.
+        # The tag value.
         self.value = value
 
     def validate(self):

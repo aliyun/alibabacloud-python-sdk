@@ -10,8 +10,12 @@ class WorkspaceCodePublishRequest(DaraModel):
         config: str = None,
         workspace_id: str = None,
     ):
+        # The configuration for the code deployment, specified as a JSON string. The `repos` array identifies the Git repositories in the workspace and specifies the branch to deploy. The `exclude` array lists directories to skip during the deployment.
+        # 
         # This parameter is required.
         self.config = config
+        # The workspace ID (numeric ID) for the code deployment.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -14,9 +14,13 @@ class CreateAINodesResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The IDs of the created DB nodes.
         self.dbnode_ids = dbnode_ids
+        # The ID of the order.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

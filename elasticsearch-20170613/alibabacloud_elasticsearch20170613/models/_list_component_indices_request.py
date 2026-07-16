@@ -11,8 +11,11 @@ class ListComponentIndicesRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
+        # The name of the composable template.
         self.name = name
+        # The page number for paging. Default value: 1.
         self.page = page
+        # The number of entries per page for paging. Default value: 10.
         self.size = size
 
     def validate(self):

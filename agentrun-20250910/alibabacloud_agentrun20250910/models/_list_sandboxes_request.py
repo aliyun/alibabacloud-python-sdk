@@ -14,13 +14,16 @@ class ListSandboxesRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # 当前页码，从1开始计数
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The pagination token for the next set of results. A non-empty value indicates that more data is available.
         self.next_token = next_token
         self.sandbox_id = sandbox_id
+        # Filters the results by status.
         self.status = status
-        # 按模板名称过滤
+        # Filters the results by template name.
         self.template_name = template_name
+        # Filters the results by template type.
         self.template_type = template_type
 
     def validate(self):

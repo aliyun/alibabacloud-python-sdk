@@ -16,28 +16,26 @@ class ListMachineAppsRequest(DaraModel):
         page_size: int = None,
         resource_directory_uid: int = None,
     ):
-        # The ID of the SAE application.
+        # The SAE application ID.
         self.app_id = app_id
-        # The name of the SAE application.
+        # The SAE application name.
         self.app_name = app_name
         # The region ID.
         self.app_region_id = app_region_id
-        # The edition of Security Center. Valid values:
-        # 
-        # *   **6**: Anti-virus.
-        # *   **5**: Advanced.
-        # *   **3**: Enterprise.
-        # *   **7**: Ultimate.
-        # *   **10**: Value-added Plan.
+        # The authorization version of the asset. Valid values:
+        # - **6**: Anti-virus Edition
+        # - **5**: Premium Edition
+        # - **3**: Enterprise Edition
+        # - **7**: Ultimate Edition
+        # - **10**: value-added service Edition.
         self.auth_version = auth_version
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
         # The UID of the resource directory.
         self.resource_directory_uid = resource_directory_uid

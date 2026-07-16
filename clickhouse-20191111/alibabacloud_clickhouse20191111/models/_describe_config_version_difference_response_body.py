@@ -11,9 +11,9 @@ class DescribeConfigVersionDifferenceResponseBody(DaraModel):
         old_config_xml: str = None,
         request_id: str = None,
     ):
-        # The values of the configuration parameters after the values of the configuration parameters are changed.
+        # The configuration parameters after the change.
         self.new_config_xml = new_config_xml
-        # The values of the configuration parameters before the values of the configuration parameters are changed.
+        # The configuration parameters before the change.
         self.old_config_xml = old_config_xml
         # The request ID.
         self.request_id = request_id

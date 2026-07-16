@@ -77,7 +77,8 @@ class Client(OpenApiClient):
             'me-east-1': 'ice.aliyuncs.com',
             'rus-west-1-pop': 'ice.aliyuncs.com',
             'us-east-1': 'ice.aliyuncs.com',
-            'us-west-1': 'ice.aliyuncs.com'
+            'us-west-1': 'ice.aliyuncs.com',
+            'cn-shanghai': 'ice.cn-shanghai.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)

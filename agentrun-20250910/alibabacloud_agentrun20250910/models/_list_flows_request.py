@@ -13,14 +13,15 @@ class ListFlowsRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
-        # 根据工作流名称进行模糊匹配过滤
+        # Filter by flow name
         self.flow_name = flow_name
-        # 当前页码，从1开始计数
+        # Page number
         self.page_number = page_number
-        # 每页返回的记录数量
+        # Page size
         self.page_size = page_size
-        # 根据工作空间ID进行过滤，用于资源隔离和权限管理
+        # Workspace ID
         self.workspace_id = workspace_id
+        # List of workspace IDs
         self.workspace_ids = workspace_ids
 
     def validate(self):

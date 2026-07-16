@@ -12,7 +12,9 @@ class AlertRuleLabelFilter(DaraModel):
         labels: Dict[str, str] = None,
         opt: str = None,
     ):
+        # The label filter.
         self.labels = labels
+        # The relationship operator between multiple labels.
         self.opt = opt
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListShardRecoveriesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListShardRecoveriesResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -68,36 +68,41 @@ class ListShardRecoveriesResponseBodyResult(DaraModel):
         translog_ops: int = None,
         translog_ops_percent: str = None,
     ):
-        # The data restoration progress.
+        # The data recovery progress.
         self.bytes_percent = bytes_percent
-        # The total amount of data that is restored.
+        # The total amount of data to be recovered.
         self.bytes_total = bytes_total
-        # The file execution progress.
+        # The file recovery progress.
         self.files_percent = files_percent
         # The total number of files.
         self.files_total = files_total
-        # The name of the index.
+        # The index name.
         self.index = index
         # The IP address of the source node.
         self.source_host = source_host
-        # The name of the source node.
+        # The source node.
         self.source_node = source_node
-        # The data restoration status. Valid values:
+        # The stage of the data recovery process. Valid values:
         # 
-        # *   done: Data restoration is complete.
-        # *   finalize: Data is being cleared.
-        # *   index: Index metadata is being read, and bytes are being copied from source to destination.
-        # *   init: Data restoration is not started.
-        # *   start: Data restoration is started.
-        # *   translog: Translogs are being redone.
+        # - done: Recovery is complete.
+        # 
+        # - finalize: Cleanup operations are in progress.
+        # 
+        # - index: Reading index metadata and copying bytes from the source to the target.
+        # 
+        # - init: Recovery has not started.
+        # 
+        # - start: Recovery is starting.
+        # 
+        # - translog: Replaying the transaction log.
         self.stage = stage
-        # The IP address of the destination node.
+        # The IP address of the target node.
         self.target_host = target_host
-        # The name of the destination node.
+        # The target node.
         self.target_node = target_node
-        # The number of translog operations to be restored.
+        # The number of translog operations to be recovered.
         self.translog_ops = translog_ops
-        # The restoration progress of translog operations.
+        # The progress of translog operation recovery.
         self.translog_ops_percent = translog_ops_percent
 
     def validate(self):

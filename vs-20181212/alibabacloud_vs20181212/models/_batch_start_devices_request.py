@@ -10,6 +10,8 @@ class BatchStartDevicesRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # Device ID. Separate multiple IDs with commas.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

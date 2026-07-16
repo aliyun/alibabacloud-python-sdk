@@ -13,9 +13,9 @@ class DescribeAnalysisColumnListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAnalysisColumnListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -62,17 +62,17 @@ class DescribeAnalysisColumnListResponseBodyResultObject(DaraModel):
         variable_title: str = None,
         variable_type: str = None,
     ):
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Whether it is a default column.
+        # Indicates whether the column is a default column.
         self.is_default = is_default
-        # Variable name.
+        # The variable name.
         self.variable_name = variable_name
-        # Variable title.
+        # The variable name.
         self.variable_title = variable_title
-        # Variable type.
+        # The variable type.
         self.variable_type = variable_type
 
     def validate(self):

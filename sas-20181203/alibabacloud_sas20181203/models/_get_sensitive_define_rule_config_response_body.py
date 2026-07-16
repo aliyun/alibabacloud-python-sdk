@@ -16,18 +16,17 @@ class GetSensitiveDefineRuleConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code returned by the API request.
         self.code = code
-        # The response parameters.
+        # The returned data details.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the query was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -85,18 +84,19 @@ class GetSensitiveDefineRuleConfigResponseBodyData(DaraModel):
         rule_tree: List[main_models.GetSensitiveDefineRuleConfigResponseBodyDataRuleTree] = None,
         selected_count: int = None,
     ):
-        # Indicates whether the new rule is enabled for automatic check only on agentless detection. Valid values:
+        # Indicates whether automatic check is enabled for new rules. This parameter takes effect only for agentless checks. Valid values:
         # 
-        # *   **0**: disabled.
-        # *   **1**: enabled.
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.enable_new_rule = enable_new_rule
         # The custom configuration ID.
         self.id = id
-        # The total number of check rules.
+        # The total number of check items.
         self.rule_count = rule_count
-        # The tree of the check rules.
+        # The check item rule tree.
         self.rule_tree = rule_tree
-        # The number of selected check rules.
+        # The number of selected check items.
         self.selected_count = selected_count
 
     def validate(self):
@@ -158,11 +158,11 @@ class GetSensitiveDefineRuleConfigResponseBodyDataRuleTree(DaraModel):
         class_name: str = None,
         rule_list: List[main_models.GetSensitiveDefineRuleConfigResponseBodyDataRuleTreeRuleList] = None,
     ):
-        # The category keyword of the check rule.
+        # The classification keyword of the check item.
         self.class_key = class_key
-        # The category name of the check rule.
+        # The classification name of the check item.
         self.class_name = class_name
-        # The list of check rules.
+        # The list of check item rules.
         self.rule_list = rule_list
 
     def validate(self):
@@ -212,14 +212,13 @@ class GetSensitiveDefineRuleConfigResponseBodyDataRuleTreeRuleList(DaraModel):
         rule_name: str = None,
         selected: bool = None,
     ):
-        # The keyword of the check rule.
+        # The rule keyword.
         self.rule_key = rule_key
-        # The name of the check rule.
+        # The rule name.
         self.rule_name = rule_name
-        # Indicates whether the check rule is selected. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the rule is selected. Valid values:
+        # - **true**: Selected.
+        # - **false**: Not selected.
         self.selected = selected
 
     def validate(self):

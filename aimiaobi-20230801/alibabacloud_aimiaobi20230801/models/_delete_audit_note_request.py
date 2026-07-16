@@ -10,7 +10,10 @@ class DeleteAuditNoteRequest(DaraModel):
         note_id: str = None,
         workspace_id: str = None,
     ):
+        # Rule library ID. If left blank, the default is used.
         self.note_id = note_id
+        # The unique identifier for an Alibaba Cloud Model Studio workspace: Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

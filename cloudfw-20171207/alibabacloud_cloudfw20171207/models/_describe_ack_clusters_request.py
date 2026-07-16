@@ -16,15 +16,26 @@ class DescribeAckClustersRequest(DaraModel):
         page_size: str = None,
         region_no: str = None,
     ):
+        # The ID of the ACK cluster.
         self.cluster_id = cluster_id
+        # The name of the ACK cluster.
         self.cluster_name = cluster_name
+        # The specification of the ACK cluster.
         self.cluster_spec = cluster_spec
+        # The status of the ACK cluster connector.
         self.connector_status = connector_status
+        # The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
         self.member_uid = member_uid
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region ID of the ACK cluster.
+        # 
         # This parameter is required.
         self.region_no = region_no
 

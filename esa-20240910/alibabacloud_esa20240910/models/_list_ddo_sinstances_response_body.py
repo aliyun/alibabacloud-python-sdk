@@ -17,12 +17,17 @@ class ListDDoSInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Instance details
         self.instance_info = instance_info
+        # Page number. Default: **1**.
         self.page_number = page_number
+        # Number of entries per page
         self.page_size = page_size
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Total number of entries
         self.total_count = total_count
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -94,12 +99,27 @@ class ListDDoSInstancesResponseBodyInstanceInfo(DaraModel):
         site_instance_id: str = None,
         status: str = None,
     ):
+        # Time when the instance was purchased
         self.create_time = create_time
+        # DDoS protection specification for the Chinese mainland
         self.ddo_sburstable_domestic_protection = ddo_sburstable_domestic_protection
+        # DDoS protection specification for regions outside the Chinese mainland
         self.ddo_sburstable_overseas_protection = ddo_sburstable_overseas_protection
+        # Instance ID
         self.instance_id = instance_id
+        # Scheduled release time
         self.reserve_release_time = reserve_release_time
+        # Associated site package instance ID
         self.site_instance_id = site_instance_id
+        # Instance status. Valid values:
+        # 
+        # - **online**: Normal service status.
+        # 
+        # - **offline**: Expired but not overdue. Instance is unavailable.
+        # 
+        # - **disable**: Released.
+        # 
+        # - **overdue**: Service suspended due to overdue payment.
         self.status = status
 
     def validate(self):

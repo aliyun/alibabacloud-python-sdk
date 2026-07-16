@@ -24,21 +24,20 @@ class SearchMultiAccountResourcesRequest(DaraModel):
         # 
         # Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the token to initiate another request and obtain the remaining entries.``
         self.next_token = next_token
-        # The scope of the accounts in which you want to search for resources. Valid values:
+        # The search scope. You can set the value to one of the following items:
         # 
-        # - The ID of a resource directory: Searches for resources in the management account and all its member accounts. For more information, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html).
-        # 
-        # - The ID of the Root folder: Searches for resources in all member accounts under the Root folder and its subfolders. For more information, see [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html).
-        # 
-        # - The ID of a folder: Searches for resources in all member accounts under the folder. For more information, see [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html).
-        # 
-        # - The ID of a member account: Searches for resources in the member account. For more information, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched. You can call the [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html) operation to obtain the ID.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a folder: Resources within all members in the folder are searched. You can call the [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html) operation to obtain the ID.
+        # *   ID of a member: Resources within the member are searched. You can call the [ListAccounts](https://help.aliyun.com/document_detail/160016.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.scope = scope
-        # The sorting parameters.
+        # The method that is used to sort the entries returned.
         self.sort_criterion = sort_criterion
 
     def validate(self):
@@ -102,17 +101,14 @@ class SearchMultiAccountResourcesRequestSortCriterion(DaraModel):
         key: str = None,
         order: str = None,
     ):
-        # The sort key.
+        # The attribute based on which the entries are sorted.
         # 
-        # Set this parameter to `CreateTime`, which means the results are sorted by resource creation time.
+        # The value CreateTime indicates the creation time of resources.
         self.key = key
-        # The sort order. Valid values:
+        # The order in which the entries are sorted. Valid values:
         # 
-        # - ASC: Ascending order.
-        # 
-        # - DESC: Descending order.
-        # 
-        # Default value: ASC.
+        # *   ASC: The entries are sorted in ascending order. This value is the default value.
+        # *   DESC: The entries are sorted in descending order.
         self.order = order
 
     def validate(self):
@@ -148,11 +144,11 @@ class SearchMultiAccountResourcesRequestFilter(DaraModel):
         match_type: str = None,
         value: List[str] = None,
     ):
-        # The key of the filter condition. For more information, see the "`Supported filter parameters`" section below.
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
-        # The matching method.
+        # The matching mode.
         # 
-        # Set this parameter to `Equals`, which means an exact match.
+        # The value Equals indicates an equal match.
         self.match_type = match_type
         # The values of the filter condition.
         self.value = value

@@ -13,8 +13,9 @@ class DescribeDBInstanceConfigResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned results.
         self.data = data
-        # Id of the request
+        # The ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +52,9 @@ class DescribeDBInstanceConfigResponseBodyData(DaraModel):
         dbinstance_id: str = None,
         params: List[main_models.DescribeDBInstanceConfigResponseBodyDataParams] = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The user parameters.
         self.params = params
 
     def validate(self):
@@ -100,13 +103,21 @@ class DescribeDBInstanceConfigResponseBodyDataParams(DaraModel):
         param_rely_rule: str = None,
         value: str = None,
     ):
+        # The parameter description.
         self.comment = comment
+        # The default value of the parameter.
         self.default_value = default_value
+        # Indicates whether the parameter takes effect dynamically (without requiring a restart).
         self.is_dynamic = is_dynamic
+        # Indicates whether the parameter can be modified by users.
         self.is_user_modifiable = is_user_modifiable
+        # The parameter name.
         self.name = name
+        # The valid values of the parameter.
         self.optional = optional
+        # The parameter dependencies.
         self.param_rely_rule = param_rely_rule
+        # The value of the parameter.
         self.value = value
 
     def validate(self):

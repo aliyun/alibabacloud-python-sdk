@@ -15,10 +15,13 @@ class ListApiKeysResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded.
         self.success = success
 
     def validate(self):
@@ -66,6 +69,7 @@ class ListApiKeysResponseBodyData(DaraModel):
         self,
         base_url: str = None,
         custom_key_list: List[main_models.ListApiKeysResponseBodyDataCustomKeyList] = None,
+        daily_token_quota: int = None,
         is_rate_limited: bool = None,
         page: int = None,
         page_size: int = None,
@@ -73,13 +77,22 @@ class ListApiKeysResponseBodyData(DaraModel):
         threshold_percent: int = None,
         total: int = None,
     ):
+        # The base URL for model calls.
         self.base_url = base_url
+        # The custom API key list.
         self.custom_key_list = custom_key_list
+        self.daily_token_quota = daily_token_quota
+        # Specifies if the system-generated key is rate-limited.
         self.is_rate_limited = is_rate_limited
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The system-generated key.
         self.system_api_key = system_api_key
+        # The alarm threshold percentage for the SystemApiKey. For example, a value of 80 indicates that an alarm is triggered when usage reaches 80% of the quota. The alarm clears when usage falls below this threshold.
         self.threshold_percent = threshold_percent
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -100,6 +113,9 @@ class ListApiKeysResponseBodyData(DaraModel):
         if self.custom_key_list is not None:
             for k1 in self.custom_key_list:
                 result['CustomKeyList'].append(k1.to_map() if k1 else None)
+
+        if self.daily_token_quota is not None:
+            result['DailyTokenQuota'] = self.daily_token_quota
 
         if self.is_rate_limited is not None:
             result['IsRateLimited'] = self.is_rate_limited
@@ -132,6 +148,9 @@ class ListApiKeysResponseBodyData(DaraModel):
                 temp_model = main_models.ListApiKeysResponseBodyDataCustomKeyList()
                 self.custom_key_list.append(temp_model.from_map(k1))
 
+        if m.get('DailyTokenQuota') is not None:
+            self.daily_token_quota = m.get('DailyTokenQuota')
+
         if m.get('IsRateLimited') is not None:
             self.is_rate_limited = m.get('IsRateLimited')
 
@@ -156,6 +175,7 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
     def __init__(
         self,
         api_key: str = None,
+        daily_token_quota: int = None,
         is_rate_limited: bool = None,
         key_name: str = None,
         limit_rate: float = None,
@@ -163,13 +183,26 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         threshold_percent: int = None,
         token_quota: int = None,
     ):
-        # API Key
+        # The API key.
         self.api_key = api_key
+        self.daily_token_quota = daily_token_quota
+        # Specifies if the API key is rate-limited.
         self.is_rate_limited = is_rate_limited
+        # The key name.
         self.key_name = key_name
+        # The limit, specified as a ratio in decimal format. This parameter is used when LimitType is ratio.
         self.limit_rate = limit_rate
+        # The limit type. Valid values:
+        # 
+        # - **fixed**: A fixed value.
+        # 
+        # - **ratio**: A percentage of the total quota.
+        # 
+        # - **auto**: The quota is allocated automatically.
         self.limit_type = limit_type
+        # The alarm threshold percentage. For example, a value of 80 indicates that an alarm is triggered when usage reaches 80% of the quota. The alarm clears when usage falls below this threshold.
         self.threshold_percent = threshold_percent
+        # The token quota.
         self.token_quota = token_quota
 
     def validate(self):
@@ -182,6 +215,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
             result = _map
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
+
+        if self.daily_token_quota is not None:
+            result['DailyTokenQuota'] = self.daily_token_quota
 
         if self.is_rate_limited is not None:
             result['IsRateLimited'] = self.is_rate_limited
@@ -207,6 +243,9 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
         m = m or dict()
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
+
+        if m.get('DailyTokenQuota') is not None:
+            self.daily_token_quota = m.get('DailyTokenQuota')
 
         if m.get('IsRateLimited') is not None:
             self.is_rate_limited = m.get('IsRateLimited')

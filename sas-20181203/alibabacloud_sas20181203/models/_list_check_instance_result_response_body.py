@@ -162,8 +162,9 @@ class ListCheckInstanceResultResponseBodyColumns(DaraModel):
         self.key = key
         # Indicates whether the search condition is used. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.search = search
         # The search key.
         self.search_key = search_key
@@ -171,8 +172,9 @@ class ListCheckInstanceResultResponseBodyColumns(DaraModel):
         self.show_name = show_name
         # The type of the check result for the instance. Valid values:
         # 
-        # *   **text**
-        # *   **link**
+        # - **text**
+        # 
+        # - **link**
         self.type = type
 
     def validate(self):
@@ -246,8 +248,9 @@ class ListCheckInstanceResultResponseBodyColumnsGrids(DaraModel):
         self.show_name = show_name
         # The format of the check result for the instance. Valid values:
         # 
-        # *   **text**
-        # *   **link**
+        # - **text**
+        # 
+        # - **link**
         self.type = type
 
     def validate(self):
@@ -306,11 +309,15 @@ class ListCheckInstanceResultResponseBodyBasicData(DaraModel):
         self.region_id = region_id
         # The states of check items. Multiple states are separated with commas (,). Valid values:
         # 
-        # *   **PASS**: passed
-        # *   **NOT_PASS**: failed
-        # *   **CHECKING**: being checked
-        # *   **NOT_CHECK**: not checked
-        # *   **WHITELIST**: added to the whitelist
+        # - **PASS**: passed
+        # 
+        # - **NOT_PASS**: failed
+        # 
+        # - **CHECKING**: being checked
+        # 
+        # - **NOT_CHECK**: not checked
+        # 
+        # - **WHITELIST**: added to the whitelist
         self.status = status
         # The exception message of the check item.
         self.status_message = status_message

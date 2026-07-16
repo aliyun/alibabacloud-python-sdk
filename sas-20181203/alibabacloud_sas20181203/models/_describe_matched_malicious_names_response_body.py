@@ -14,11 +14,11 @@ class DescribeMatchedMaliciousNamesResponseBody(DaraModel):
         data: List[main_models.DescribeMatchedMaliciousNamesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries returned on the current page in a paged query. If paging is not used, this value indicates the total number of entries.
         self.count = count
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -67,9 +67,9 @@ class DescribeMatchedMaliciousNamesResponseBodyData(DaraModel):
         display_name: str = None,
         key: str = None,
     ):
-        # The display name of the malicious image sample type.
+        # The display name of the malicious sample type.
         self.display_name = display_name
-        # The key of the malicious image sample type.
+        # The key of the malicious sample type.
         self.key = key
 
     def validate(self):

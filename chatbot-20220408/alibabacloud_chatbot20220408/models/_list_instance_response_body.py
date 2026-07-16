@@ -16,10 +16,15 @@ class ListInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of chatbots.
         self.instances = instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -85,12 +90,19 @@ class ListInstanceResponseBodyInstances(DaraModel):
         name: str = None,
         robot_type: str = None,
     ):
+        # The URL of the chatbot avatar.
         self.avatar = avatar
+        # The time when the chatbot was created. The time is in the UTC format.
         self.create_time = create_time
+        # The unique ID of the chatbot.
         self.instance_id = instance_id
+        # The remarks on the chatbot.
         self.introduction = introduction
+        # The language of the chatbot, such as zh-cn and en-us. For more information, see http\\://www\\.lingoes.net/en/translator/langcode.htm.
         self.language_code = language_code
+        # The name of the chatbot.
         self.name = name
+        # The type of the chatbot.
         self.robot_type = robot_type
 
     def validate(self):

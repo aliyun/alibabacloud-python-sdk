@@ -11,11 +11,11 @@ class CreateBasicEndpointResponseBody(DaraModel):
         endpoint_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the endpoint group.
+        # The endpoint group ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the endpoint.
+        # The endpoint ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.endpoint_id = endpoint_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

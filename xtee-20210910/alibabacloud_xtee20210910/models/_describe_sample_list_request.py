@@ -14,19 +14,19 @@ class DescribeSampleListRequest(DaraModel):
         sample_type: str = None,
         sample_value: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # Sets the language type for request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
-        # Sample type
+        # The sample type.
         self.sample_type = sample_type
-        # Sample data value.
+        # The sample data value.
         self.sample_value = sample_value
 
     def validate(self):

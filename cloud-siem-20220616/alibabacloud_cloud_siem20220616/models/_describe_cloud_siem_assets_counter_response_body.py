@@ -16,18 +16,19 @@ class DescribeCloudSiemAssetsCounterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code returned.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -92,12 +93,17 @@ class DescribeCloudSiemAssetsCounterResponseBodyData(DaraModel):
         self.asset_num = asset_num
         # The type of the asset. Valid values:
         # 
-        # *   ip
-        # *   domain
-        # *   url
-        # *   process
-        # *   file
-        # *   host
+        # - ip: IP address
+        # 
+        # - domain: domain name
+        # 
+        # - url: URL
+        # 
+        # - process: process
+        # 
+        # - file: file
+        # 
+        # - host: host
         self.asset_type = asset_type
 
     def validate(self):

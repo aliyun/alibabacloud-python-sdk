@@ -16,15 +16,15 @@ class ListVirtualResourceResponseBody(DaraModel):
         total_count: int = None,
         virtual_resources: List[main_models.ListVirtualResourceResponseBodyVirtualResources] = None,
     ):
-        # The page number.
+        # The page number of the returned list of virtual resource groups.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of virtual resource groups returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of virtual resource groups.
         self.total_count = total_count
-        # The virtual resource groups.
+        # The list of virtual resource groups.
         self.virtual_resources = virtual_resources
 
     def validate(self):

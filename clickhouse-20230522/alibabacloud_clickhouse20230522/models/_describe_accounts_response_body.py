@@ -60,9 +60,11 @@ class DescribeAccountsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -125,16 +127,19 @@ class DescribeAccountsResponseBodyDataAccounts(DaraModel):
         self.account = account
         # The type of the database account. Valid values:
         # 
-        # *   **1**: standard account
-        # *   **6**: privileged account
+        # - **1**: standard account
+        # 
+        # - **6**: privileged account
         self.account_type = account_type
         # The description.
         self.description = description
         # The state of the database account. Valid values:
         # 
-        # *   **0**: The database account is being created.
-        # *   **1**: The database account is in use.
-        # *   **3**: The database account is being deleted.
+        # - **0**: The database account is being created.
+        # 
+        # - **1**: The database account is in use.
+        # 
+        # - **3**: The database account is being deleted.
         self.status = status
 
     def validate(self):

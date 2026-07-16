@@ -14,11 +14,22 @@ class ModifyEngineMigrationRequest(DaraModel):
         source_dbinstance_name: str = None,
         swap_connection_string: str = None,
     ):
+        # The specific endpoints to switch. Set this parameter to a JSON string that contains the pairs of endpoints to swap.
+        # > This parameter takes effect only when SwapConnectionString is set to true.
         self.connection_strings = connection_strings
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The name of the new primary instance after the migration is complete.
         self.new_master_dbinstance_name = new_master_dbinstance_name
+        # The region ID.
         self.region_id = region_id
+        # The name of the source database instance.
         self.source_dbinstance_name = source_dbinstance_name
+        # Specifies whether to automatically swap connection strings. Valid values:
+        # 
+        # - true: The application does not need to modify its configuration. Connections are automatically directed to the new instance.
+        # 
+        # - false: You must manually update the application endpoint.
         self.swap_connection_string = swap_connection_string
 
     def validate(self):

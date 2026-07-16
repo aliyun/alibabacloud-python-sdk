@@ -11,11 +11,9 @@ class DescribeCensRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The page number.\\
-        # Default value: 1.
+        # The page number.<br>Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Default value: 50.
+        # The number of entries per page.<br>Default value: 50.
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 

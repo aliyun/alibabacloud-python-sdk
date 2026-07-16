@@ -22,21 +22,21 @@ class ListStoreViewsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   metricstore
+        # - metricstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   logstore
+        # - logstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.store_type = store_type
 
     def validate(self):

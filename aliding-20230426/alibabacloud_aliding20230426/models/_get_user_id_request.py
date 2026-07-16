@@ -12,7 +12,6 @@ class GetUserIdRequest(DaraModel):
         union_id: str = None,
     ):
         self.tenant_context = tenant_context
-        # unionId
         self.union_id = union_id
 
     def validate(self):

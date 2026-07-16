@@ -12,7 +12,9 @@ class JobInfo(DaraModel):
         id: str = None,
         properties: Dict[str, Any] = None,
     ):
+        # The job instance ID.
         self.id = id
+        # The job details.
         self.properties = properties
 
     def validate(self):

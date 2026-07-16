@@ -15,7 +15,6 @@ class QueryLinkResponseBody(DaraModel):
         result_content: main_models.QueryLinkResponseBodyResultContent = None,
         result_message: str = None,
     ):
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_content = result_content

@@ -27,15 +27,17 @@ class PublishEdgeContainerAppVersionShrinkRequest(DaraModel):
         self.percentage = percentage
         # The environment to which you want to release the version. Valid values:
         # 
-        # *   prod: the production environment.
-        # *   staging: the staging environment.
+        # - prod: the production environment.
+        # 
+        # - staging: the staging environment.
         # 
         # This parameter is required.
         self.publish_env = publish_env
         # Specifies how the version is released. Valid values:
         # 
-        # *   percentage: releases the version by percentage.
-        # *   region: releases the version by region.
+        # - percentage: releases the version by percentage.
+        # 
+        # - region: releases the version by region.
         # 
         # If you do not specify this parameter, the version is released by percentage by default.
         self.publish_type = publish_type

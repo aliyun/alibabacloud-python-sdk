@@ -10,8 +10,9 @@ class InitModelResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return Result
         self.result = result
 
     def validate(self):

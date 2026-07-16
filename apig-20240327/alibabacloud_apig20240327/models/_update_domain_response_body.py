@@ -13,13 +13,13 @@ class UpdateDomainResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response code.
         self.code = code
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID. You can use this value to trace the API call.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class UpdateDomainResponseBodyData(DaraModel):
         self,
         deploy_revision_id: str = None,
     ):
-        # The released version ID.
+        # The publish version ID.
         self.deploy_revision_id = deploy_revision_id
 
     def validate(self):

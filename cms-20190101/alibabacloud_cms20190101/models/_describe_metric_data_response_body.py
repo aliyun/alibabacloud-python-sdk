@@ -15,14 +15,17 @@ class DescribeMetricDataResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The monitoring data. The value includes the following fields:
         # 
-        # *   `timestamp`: the time when the alert was triggered.
-        # *   `userId`: the ID of the user for which the alert was triggered.
-        # *   `instanceId`: the ID of the instance for which the alert was triggered.
-        # *   `Minimum`, `Average`, and `Maximum`: the aggregation methods.
+        # - `timestamp`: the time when the alert was triggered.
+        # 
+        # - `userId`: the ID of the user for which the alert was triggered.
+        # 
+        # - `instanceId`: the ID of the instance for which the alert was triggered.
+        # 
+        # - `Minimum`, `Average`, and `Maximum`: the aggregation methods.
         self.datapoints = datapoints
         # The returned message.
         self.message = message

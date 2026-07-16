@@ -10,6 +10,8 @@ class DescribeVsCertificateDetailRequest(DaraModel):
         cert_name: str = None,
         owner_id: int = None,
     ):
+        # The certificate name.
+        # 
         # This parameter is required.
         self.cert_name = cert_name
         self.owner_id = owner_id

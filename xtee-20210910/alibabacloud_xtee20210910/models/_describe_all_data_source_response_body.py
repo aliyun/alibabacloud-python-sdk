@@ -13,9 +13,9 @@ class DescribeAllDataSourceResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAllDataSourceResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeAllDataSourceResponseBodyResultObject(DaraModel):
         event_name: str = None,
         id: int = None,
     ):
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Policy primary key ID
+        # The primary key ID of the policy.
         self.id = id
 
     def validate(self):

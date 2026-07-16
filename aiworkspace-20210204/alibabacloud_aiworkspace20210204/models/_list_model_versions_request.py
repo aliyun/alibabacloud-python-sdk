@@ -19,70 +19,94 @@ class ListModelVersionsRequest(DaraModel):
         source_type: str = None,
         version_name: str = None,
     ):
-        # The approval status based on which the model versions are queried. Valid values:
+        # The approval status. This parameter is used to filter the model version list. Valid values:
         # 
-        # *   Pending
-        # *   Approved
-        # *   Rejected
+        # - Pending: The model version is pending approval.
+        # 
+        # - Approved: The model version is approved for publishing.
+        # 
+        # - Rejected: The model version is rejected for publishing.
         self.approval_status = approval_status
-        # The model format used to filter model versions. Valid values:
+        # The model format. This parameter is used to filter the model version list. Valid values:
         # 
-        # *   OfflineModel
-        # *   SavedModel
-        # *   Keras H5
-        # *   Frozen Pb
-        # *   Caffe Prototxt
-        # *   TorchScript
-        # *   XGBoost
-        # *   PMML
-        # *   AlinkModel
-        # *   ONNX
+        # - OfflineModel
+        # 
+        # - SavedModel
+        # 
+        # - Keras H5
+        # 
+        # - Frozen Pb
+        # 
+        # - Caffe Prototxt
+        # 
+        # - TorchScript
+        # 
+        # - XGBoost
+        # 
+        # - PMML
+        # 
+        # - AlinkModel
+        # 
+        # - ONNX
         self.format_type = format_type
-        # The framework used to filter model versions.
+        # The model framework. This parameter is used to filter the model version list. Valid values:
         # 
-        # *   Pytorch -XGBoost
-        # *   Keras
-        # *   Caffe
-        # *   Alink
-        # *   Xflow
-        # *   TensorFlow
+        # - Pytorch
+        #   -XGBoost
+        # 
+        # - Keras
+        # 
+        # - Caffe
+        # 
+        # - Alink
+        # 
+        # - Xflow
+        # 
+        # - TensorFlow
         self.framework_type = framework_type
-        # The label. Model versions whose label key or label value contains a specific label are filtered.
+        # The label string. This parameter is used to filter the list. Model versions that have the specified string in the key or value of their labels are returned.
         self.label = label
-        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+        # The order in which to sort the entries in the paged query. The default value is ASC.
         # 
-        # *   ASC
-        # *   DESC
+        # - ASC: ascending order.
+        # 
+        # - DESC: descending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number of the model version list. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page for a paged query. The default value is 10.
         self.page_size = page_size
-        # The field used to sort the results. The GmtCreateTime field is used for sorting.
+        # The field to use for sorting in the paged query. Currently, the GmtCreateTime field is used for sorting.
         self.sort_by = sort_by
         # The source ID.
         # 
-        # *   If the source type is Custom, this field is not limited.
-        # *   If the source type is PAIFlow or TrainingService, the format is:
+        # - If the source type is Custom, this parameter is not restricted.
         # 
-        # <!---->
+        # - If the source is PAIFlow or TrainingService, the format is as follows:
         # 
-        #     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
+        # region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+        # ```
         # 
-        # Take note of the following parameters:
+        # where:
         # 
-        # *   region is the region ID.
-        # *   workspaceId is the ID of the workspace.
-        # *   kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
-        # *   id is a unique identifier.
+        # - region is the Alibaba Cloud region ID.
+        # 
+        # - workspaceId is the workspace ID.
+        # 
+        # - kind: the type. Valid values: PipelineRun (PAIFlow pipeline) and ServiceJob (training service).
+        # 
+        # - id: the unique identifier.
         self.source_id = source_id
-        # The source type used to filter model versions. Valid values:
+        # The source type of the model. This parameter is used to filter the model version list. Valid values:
         # 
-        # *   Custom (default)
-        # *   PAIFlow
-        # *   TrainingService
+        # - Custom (default): a custom model.
+        # 
+        # - PAIFlow: a model from a PAI pipeline.
+        # 
+        # - TrainingService: a model from a PAI training service.
         self.source_type = source_type
-        # The model version used to filter model versions.
+        # The model version name. This parameter is used to filter the model version list.
         self.version_name = version_name
 
     def validate(self):

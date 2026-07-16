@@ -22,47 +22,55 @@ class ExecJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The command that is used to start the image. The command must be an existing executable object in the container. Example:
+        # The startup command, which must be an executable that exists in the container. Example:
         # 
-        #     command:
-        #           - echo
-        #           - abc
-        #           - >
-        #           - file0
+        # ```
+        # command:
+        #       - echo
+        #       - abc
+        #       - >
+        #       - file0
+        # ```
         # 
-        # In this example, the Command parameter is set to `Command="echo", CommandArgs=["abc", ">", "file0"]`.
+        # Based on this example, `Command` is `echo` and `CommandArgs` is `["abc", ">", "file0"]`.
         self.command = command
-        # The parameters of the image startup command. The CommandArgs parameter specifies the parameters that are required for the **Command** parameter. The name must meet the following format requirements:
+        # The arguments for the **Command** parameter. The value must be a string that represents a JSON array. Format:
         # 
         # `["a","b"]`
         # 
-        # In the preceding example, the CommandArgs parameter is set to `CommandArgs=["abc", ">", "file0"]`. The data type of `["abc", ">", "file0"]` must be an array of strings in the JSON format. This parameter is optional.
+        # In the preceding example for the `Command` parameter, `CommandArgs` is `["abc", ">", "file0"]`. The JSON array `["abc", ">", "file0"]` must be converted to a string. This parameter is optional.
         self.command_args = command_args
-        # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Valid values:
+        # The container environment variables. You can specify custom environment variables or reference an existing ConfigMap. For more information about creating a ConfigMap, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html).
         # 
-        # *   Configure custom environment variables
+        # - Custom configuration
         # 
-        #     *   **name**: the name of the environment variable.
-        #     *   **value**: the value of the environment variable.
+        #   - **name**: The name of the environment variable.
         # 
-        # *   Reference ConfigMap
+        #   - **value**: The value of the environment variable.
         # 
-        #     *   **name**: the name of the environment variable. You can reference one or all keys. If you want to reference all keys, specify `sae-sys-configmap-all-<ConfigMap name>`. Example: `sae-sys-configmap-all-test1`.
-        #     *   **valueFrom**: the reference of the environment variable. Set the value to `configMapRef`.
-        #     *   **configMapId**: the ConfigMap ID.
-        #     *   **key**: the key. If you want to reference all keys, do not configure this parameter.
+        # - Reference a ConfigMap
+        # 
+        #   - **name**: The name of the environment variable. You can reference a single key or all keys. To reference all keys, use the `sae-sys-configmap-all-<ConfigMap name>` format. Example: `sae-sys-configmap-all-test1`.
+        # 
+        #   - **valueFrom**: The source of the environment variable. Set the value to `configMapRef`.
+        # 
+        #   - **configMapId**: The ID of the ConfigMap.
+        # 
+        #   - **key**: The key that you want to reference. If you want to reference all key-value pairs, do not specify this parameter.
         self.envs = envs
-        # The event ID. This is a user-defined parameter used for idempotency so that only one job is created for the same event ID.
+        # A customizable event ID that ensures idempotency. The system creates only one job for requests that have the same event ID.
         self.event_id = event_id
-        # The arguments in the JAR package. The arguments are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+        # Arguments for starting a job deployed from a JAR package. The default startup command is:
+        # `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`
         self.jar_start_args = jar_start_args
-        # The option settings in the JAR package. The settings are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArg`.
+        # Options for starting a job deployed from a JAR package. The default startup command is:
+        # `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArg`
         self.jar_start_options = jar_start_options
         # The number of concurrent instances.
         self.replicas = replicas
-        # The time at which the job is triggered. Format: `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
+        # The time to trigger the job, specified in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
         self.time = time
-        # The startup command of the WAR package. For information about how to configure the startup command, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
+        # The startup command for a job deployed from a WAR package. Configuration is the same as for an image-based deployment. For more information, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
         self.war_start_options = war_start_options
 
     def validate(self):

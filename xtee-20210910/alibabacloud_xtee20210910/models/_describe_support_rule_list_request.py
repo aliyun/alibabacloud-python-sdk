@@ -11,15 +11,15 @@ class DescribeSupportRuleListRequest(DaraModel):
         event_code: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

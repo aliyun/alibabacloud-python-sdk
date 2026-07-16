@@ -11,17 +11,23 @@ class BindInstanceDomainsRequest(DaraModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The domain names.
+        # A list of domain names.
         # 
-        # >  Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
+        # > Separate multiple domain names with a comma (,). You can specify up to 100 domain names.
         # 
         # This parameter is required.
         self.domain_names = domain_names
-        # The instance ID.
+        # The ID of the Alibaba Cloud DNS instance. You can call the [ListCloudGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-listcloudgtminstances) operation to obtain the ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language.
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # 
+        # - en: English
+        # 
+        # Default value: zh
         self.lang = lang
 
     def validate(self):

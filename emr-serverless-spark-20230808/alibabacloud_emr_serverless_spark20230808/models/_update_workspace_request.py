@@ -13,19 +13,30 @@ class UpdateWorkspaceRequest(DaraModel):
         cu: int = None,
         gpu: int = None,
         gpu_spec: List[str] = None,
+        ip_white_list: List[str] = None,
         resource_group_id: str = None,
         subscription: main_models.UpdateWorkspaceRequestSubscription = None,
         workspace_id: str = None,
         workspace_name: str = None,
         region_id: str = None,
     ):
+        # The resource cap for the workspace.
         self.cu = cu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU specifications.
         self.gpu_spec = gpu_spec
+        # The IP whitelist.
+        self.ip_white_list = ip_white_list
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Details for converting a pay-as-you-go workspace to a subscription plan.
         self.subscription = subscription
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -45,6 +56,9 @@ class UpdateWorkspaceRequest(DaraModel):
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
+
+        if self.ip_white_list is not None:
+            result['ipWhiteList'] = self.ip_white_list
 
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
@@ -73,6 +87,9 @@ class UpdateWorkspaceRequest(DaraModel):
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
+
+        if m.get('ipWhiteList') is not None:
+            self.ip_white_list = m.get('ipWhiteList')
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
@@ -103,12 +120,19 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         payment_duration_unit: str = None,
         queue: List[str] = None,
     ):
+        # Indicates whether to enable auto-renewal. Required for subscription plans.
         self.auto_renew = auto_renew
+        # The auto-renewal duration. Required for subscription plans.
         self.auto_renew_period = auto_renew_period
+        # The unit for the auto-renewal duration. Required for subscription plans.
         self.auto_renew_period_unit = auto_renew_period_unit
+        # A unique, case-sensitive token to ensure request idempotence.
         self.client_token = client_token
+        # The subscription duration. This parameter is required for subscription plans.
         self.duration = duration
+        # The unit of the subscription period.
         self.payment_duration_unit = payment_duration_unit
+        # The queues to convert to the subscription plan.
         self.queue = queue
 
     def validate(self):

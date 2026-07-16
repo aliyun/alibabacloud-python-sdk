@@ -12,28 +12,29 @@ class ResetHostAccountCredentialRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The type of the logon credential that you want to delete. Valid values:
+        # The type of logon credential to clear. Valid values:
         # 
-        # *   **Password**
-        # *   **PrivateKey**
+        # - **Password**: The password.
+        # 
+        # - **PrivateKey**: The SSH private key.
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # The ID of the host account for which the logon credential is to be deleted.
+        # The ID of the host account. The logon credential of this account will be cleared.
         # 
-        # >  You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to query the ID of the host account.
+        # > Call the [ListHostAccounts](https://help.aliyun.com/document_detail/204372.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.host_account_id = host_account_id
-        # The ID of the bastion host from which you want to delete the logon credential for the host account.
+        # The ID of the Bastionhost instance. The instance contains the host account.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host from which you want to delete the logon credential for the host account.
+        # The region ID of the Bastionhost instance.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For information about region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

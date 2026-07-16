@@ -15,10 +15,15 @@ class UpdateDatasetDocumentRequest(DaraModel):
         document: main_models.UpdateDatasetDocumentRequestDocument = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the dataset.
         self.dataset_id = dataset_id
+        # Name of the dataset.
         self.dataset_name = dataset_name
+        # The document to update.
+        # 
         # This parameter is required.
         self.document = document
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -73,13 +78,21 @@ class UpdateDatasetDocumentRequestDocument(DaraModel):
         tags: List[str] = None,
         title: str = None,
     ):
+        # UUID of the category
         self.category_uuid = category_uuid
+        # User-defined unique ID for the document.
         self.doc_id = doc_id
+        # Unique ID of the document in the system.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # Tags
         self.tags = tags
+        # Document title.
         self.title = title
 
     def validate(self):

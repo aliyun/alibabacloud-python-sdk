@@ -14,21 +14,25 @@ class CreateAuthorizationRuleRequest(DaraModel):
         instance_id: str = None,
         project_id: str = None,
     ):
-        # 授权资源范围，枚举值：global（Project下的所有资源）、custom（自定义资源范围）。
+        # The scope of authorized resources. Valid values:
+        # - global: all resources under the project.
+        # - custom: specified resources under the project.
         self.authorization_resource_scope = authorization_resource_scope
-        # 授权规则名称，长度限制最大64个字符。
+        # The name of the authorization rule. The name can be up to 64 characters in length.
         # 
         # This parameter is required.
         self.authorization_rule_name = authorization_rule_name
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # 授权规则备注描述，长度限制最大128个字符。
+        # The description of the authorization rule. The description can be up to 128 characters in length.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 授权规则关联的项目标识。
+        # The ID of the project associated with the authorization rule. If you are unsure which project to associate, you can associate the default project. The default project ID is iprj_system_default.
         # 
         # This parameter is required.
         self.project_id = project_id

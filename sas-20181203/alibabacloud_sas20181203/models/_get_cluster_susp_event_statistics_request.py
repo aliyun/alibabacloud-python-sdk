@@ -10,11 +10,10 @@ class GetClusterSuspEventStatisticsRequest(DaraModel):
         cluster_id: str = None,
         from_: str = None,
     ):
-        # The ID of the container cluster.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+        # The ID of the container cluster that you want to query.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The ID of the request source. Set the value to sas.
+        # The source of the request. Set this parameter to sas.
         self.from_ = from_
 
     def validate(self):

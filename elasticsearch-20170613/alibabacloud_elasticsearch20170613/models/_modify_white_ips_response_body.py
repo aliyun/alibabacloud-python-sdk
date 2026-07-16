@@ -10,7 +10,12 @@ class ModifyWhiteIpsResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result. Valid values:
+        # 
+        # - true: The whitelist is updated.
+        # - false: The whitelist failed to be updated.
         self.result = result
 
     def validate(self):

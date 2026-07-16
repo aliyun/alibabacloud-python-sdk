@@ -12,6 +12,8 @@ class DeleteContactsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the contact.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
         self.owner_id = owner_id

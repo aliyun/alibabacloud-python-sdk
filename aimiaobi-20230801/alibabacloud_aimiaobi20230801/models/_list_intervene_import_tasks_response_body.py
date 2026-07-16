@@ -17,11 +17,17 @@ class ListInterveneImportTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the request succeeded: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class ListInterveneImportTasksResponseBodyData(DaraModel):
         status_list: List[main_models.ListInterveneImportTasksResponseBodyDataStatusList] = None,
         total_size: int = None,
     ):
+        # Status code returned by the intervention service
         self.code = code
+        # Page number
         self.page_index = page_index
+        # Page size
         self.page_size = page_size
+        # Task status information
         self.status_list = status_list
+        # Total number of pages
         self.total_size = total_size
 
     def validate(self):
@@ -152,10 +163,15 @@ class ListInterveneImportTasksResponseBodyDataStatusList(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # Task message
         self.msg = msg
+        # Completion percentage
         self.percentage = percentage
+        # Task status
         self.status = status
+        # Task ID
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
 
     def validate(self):

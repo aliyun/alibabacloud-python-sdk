@@ -20,55 +20,56 @@ class ModifyAntiBruteForceRuleShrinkRequest(DaraModel):
         span: int = None,
         uuid_list: List[str] = None,
     ):
-        # Specifies whether to set the defense rule as the default rule. Valid values:
+        # Specifies whether the defense rule against brute-force attacks is set as the default policy in Settings. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: The rule is set as the default policy.
+        # 
+        # - **false**: The rule is not set as the default policy.
         self.default_rule = default_rule
-        # The threshold of logon failures that you specify. Valid values:
+        # The threshold for the number of logon failures. Valid values:
         # 
-        # *   **2**
-        # *   **3**
-        # *   **4**
-        # *   **5**
-        # *   **10**
-        # *   **50**
-        # *   **80**
-        # *   **100**
+        # - **2**: 2 times
+        # - **3**: 3 times
+        # - **4**: 4 times
+        # - **5**: 5 times
+        # - **10**: 10 times
+        # - **50**: 50 times
+        # - **80**: 80 times
+        # - **100**: 100 times.
         self.fail_count = fail_count
-        # The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
+        # The duration for which logon is prohibited, in minutes. Valid values:
         # 
-        # *   **5**
-        # *   **15**
-        # *   **30**
-        # *   **60**
-        # *   **120**
-        # *   **360**
-        # *   **720**
-        # *   **1440**
-        # *   **10080**
-        # *   **52560000**: permanent
+        # - **5**: 5 minutes
+        # - **15**: 15 minutes
+        # - **30**: 30 minutes
+        # - **60**: 1 hour
+        # - **120**: 2 hours
+        # - **360**: 6 hours
+        # - **720**: 12 hours
+        # - **1440**: 24 hours
+        # - **10080**: 7 days
+        # - **52560000**: permanent (100 years).
         self.forbidden_time = forbidden_time
-        # The ID of the defense rule.
+        # The ID of the defense rule against brute-force attacks.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the defense rule.
+        # The name of the defense rule against brute-force attacks.
         self.name = name
-        # The protocol types supported by the anti-brute force rule for interception.
+        # The protocol types that the defense rule against brute-force attacks supports for interception.
         self.protocol_type_shrink = protocol_type_shrink
         self.resource_owner_id = resource_owner_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The period of time during which logon failures from an account are measured. Unit: minutes. Valid values:
+        # The threshold for the period of time during which logon failures are counted, in minutes. Valid values:
         # 
-        # *   **1**
-        # *   **2**
-        # *   **5**
-        # *   **10**
-        # *   **15**
+        # - **1**: 1 minute
+        # - **2**: 2 minutes
+        # - **5**: 5 minutes
+        # - **10**: 10 minutes
+        # - **15**: 15 minutes.
         self.span = span
-        # An array consisting of the UUIDs of the servers to which the defense rule is applied.
+        # The list of servers to which the defense rule against brute-force attacks applies.
         self.uuid_list = uuid_list
 
     def validate(self):

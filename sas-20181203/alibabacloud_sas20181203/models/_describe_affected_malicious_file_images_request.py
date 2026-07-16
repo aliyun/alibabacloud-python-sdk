@@ -31,88 +31,78 @@ class DescribeAffectedMaliciousFileImagesRequest(DaraModel):
         scan_range: List[str] = None,
         status: str = None,
     ):
-        # The ID of the container cluster.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+        # The ID of the container cluster to query.
+        # > Call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
         # The name of the cluster.
         self.cluster_name = cluster_name
         # The ID of the container.
         self.container_id = container_id
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number of the current page when using paging. Minimum value: **1**. Default value: **1**.
         # 
         # This parameter is required.
         self.current_page = current_page
         # The name of the container image.
         self.image = image
-        # The image digest.
+        # The digest of the image.
         self.image_digest = image_digest
-        # The image layer.
+        # The layer of the image.
         self.image_layer = image_layer
-        # The tag that is added to the image.
+        # The tag of the image.
         self.image_tag = image_tag
-        # The language of the content within the request and the response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The severity level of the malicious image sample. Separate multiple severity levels with commas (,). Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # The severity levels. Separate multiple values with commas (,). Valid values:
+        # * **serious**: urgent
+        # * **suspicious**: suspicious
+        # * **remind**: reminder.
         self.levels = levels
-        # The MD5 hash value of the malicious image sample.
-        # 
-        # >  You can call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to query the MD5 hash values of malicious image samples.
+        # The MD5 hash of the malicious file.
+        # > Call the [DescribeGroupedMaliciousFiles](~~DescribeGroupedMaliciousFiles~~) operation to obtain the MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
         # The namespace.
         self.namespace = namespace
-        # The number of entries to return on each page. Default value: **20**.
+        # The maximum number of entries per page when using paging. Default value: **20**.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The pod.
         self.pod = pod
         # The ID of the image repository.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation to query the IDs of image repositories from the value of the **RepoId** response parameter.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry. You can obtain the image repository ID from the **RepoId** response parameter.
         self.repo_id = repo_id
-        # The ID of the container image.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/451339.html) operation to query the IDs of container images from the value of the **InstanceId** response parameter.
+        # The ID of the container image instance.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry. You can obtain the container image instance ID from the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
-        # 
-        # >  Fuzzy match is supported.
+        # > Fuzzy match is supported.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
-        # 
-        # >  Fuzzy match is supported.
+        # The namespace of the image repository.
+        # > Fuzzy match is supported.
         self.repo_namespace = repo_namespace
         # The region ID of the image repository. Valid values:
-        # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
-        # *   **ap-southeast-1**: Singapore
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
-        # *   **us-east-1**: US (Virginia)
-        # *   **us-west-1**: US (Silicon Valley)
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **eu-west-1**: UK (London)
+        # - **cn-beijing**: China (Beijing)
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # - **cn-hangzhou**: China (Hangzhou)
+        # - **cn-shanghai**: China (Shanghai)
+        # - **cn-shenzhen**: China (Shenzhen)
+        # - **cn-hongkong**: Hong Kong (China)
+        # - **ap-southeast-1**: Singapore
+        # - **ap-southeast-5**: Indonesia (Jakarta)
+        # - **us-east-1**: US (Virginia)
+        # - **us-west-1**: US (Silicon Valley)
+        # - **eu-central-1**: Germany (Frankfurt)
+        # - **eu-west-1**: UK (London).
         self.repo_region_id = repo_region_id
-        # The types of the assets that you want to scan.
+        # The collection of scan ranges.
         self.scan_range = scan_range
-        # The status of the malicious image sample. Valid values:
-        # 
-        # *   **0**: The malicious image sample is not handled.
-        # *   **1**: The malicious image sample is handled.
-        # *   **2**: The malicious image sample is being verified.
-        # *   **3**: The malicious image sample is added to the whitelist.
+        # The processing status of the malicious image sample. Valid values:
+        # - **0**: unhandled
+        # - **1**: handled
+        # - **2**: verifying
+        # - **3**: added to whitelist.
         self.status = status
 
     def validate(self):

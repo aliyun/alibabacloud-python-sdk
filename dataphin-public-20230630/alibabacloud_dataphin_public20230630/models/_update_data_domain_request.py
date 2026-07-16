@@ -11,8 +11,12 @@ class UpdateDataDomainRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateDataDomainRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update request.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -55,17 +59,29 @@ class UpdateDataDomainRequestUpdateCommand(DaraModel):
         name: str = None,
         parent_id: int = None,
     ):
+        # The abbreviation of the data domain.
+        # 
         # This parameter is required.
         self.abbreviation = abbreviation
+        # The ID of the data board.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The ID of the data domain.
+        # 
         # This parameter is required.
         self.data_domain_id = data_domain_id
+        # The description of the data domain.
         self.description = description
+        # The display name of the data domain.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code of the data domain.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the parent data domain.
         self.parent_id = parent_id
 
     def validate(self):

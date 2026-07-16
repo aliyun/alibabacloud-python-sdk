@@ -11,13 +11,13 @@ class DescribeRecommendSceneVariablesRequest(DaraModel):
         reg_id: str = None,
         sample_id: int = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region Code
+        # The region code.
         self.reg_id = reg_id
-        # Sample ID
+        # The ID of the data sample.
         # 
         # This parameter is required.
         self.sample_id = sample_id

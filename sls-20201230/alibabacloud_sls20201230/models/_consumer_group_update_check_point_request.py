@@ -26,8 +26,9 @@ class ConsumerGroupUpdateCheckPointRequest(DaraModel):
         self.consumer = consumer
         # Specifies whether to enable forceful updates. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.force_success = force_success
 
     def validate(self):

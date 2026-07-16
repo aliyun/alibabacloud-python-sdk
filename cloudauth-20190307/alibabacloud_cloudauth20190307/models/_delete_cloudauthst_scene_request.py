@@ -9,7 +9,7 @@ class DeleteCloudauthstSceneRequest(DaraModel):
         self,
         scene_id: str = None,
     ):
-        # ID of the scene to be deleted.
+        # The ID of the scene to be deleted.
         # 
         # This parameter is required.
         self.scene_id = scene_id

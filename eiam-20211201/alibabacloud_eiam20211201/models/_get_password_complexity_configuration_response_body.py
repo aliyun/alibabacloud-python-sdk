@@ -13,7 +13,7 @@ class GetPasswordComplexityConfigurationResponseBody(DaraModel):
         password_complexity_configuration: main_models.GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration = None,
         request_id: str = None,
     ):
-        # The password complexity configurations.
+        # The password complexity policy configuration.
         self.password_complexity_configuration = password_complexity_configuration
         # The request ID.
         self.request_id = request_id
@@ -54,11 +54,13 @@ class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurat
         password_complexity_rules: List[main_models.GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules] = None,
         password_min_length: int = None,
     ):
+        # Indicates whether logon with a weak password is disabled.
         self.disabled_weak_password_login = disabled_weak_password_login
+        # The time when the weak password logon restriction takes effect.
         self.disabled_weak_password_login_started_at = disabled_weak_password_login_started_at
-        # The password complexity rules.
+        # The list of password complexity rules.
         self.password_complexity_rules = password_complexity_rules
-        # The minimum number of characters in a password.
+        # The minimum password length.
         self.password_min_length = password_min_length
 
     def validate(self):
@@ -112,16 +114,23 @@ class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurat
         self,
         password_check_type: str = None,
     ):
-        # The type of the password check. Valid values:
+        # The password check type. Valid values:
         # 
-        # *   inclusion_upper_case: The password must contain uppercase letters.
-        # *   inclusion_lower_case: The password must contain lowercase letters.
-        # *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
-        # *   inclusion_number: The password must contain digits.
-        # *   exclusion_username: The password cannot contain a username.
-        # *   exclusion_email: The password cannot contain an email prefix.
-        # *   exclusion_phone_number: The password cannot contain a mobile number.
-        # *   exclusion_display_name: The password cannot contain a display name.
+        # - inclusion_upper_case: The password must contain uppercase letters.
+        # 
+        # - inclusion_lower_case: The password must contain lowercase letters.
+        # 
+        # - inclusion_special_case: The password must contain at least one of the following special characters: \\` @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] \\~ - _ . \\`.
+        # 
+        # - inclusion_number: The password must contain digits.
+        # 
+        # - exclusion_username: The password cannot contain the username.
+        # 
+        # - exclusion_email: The password cannot contain the email address.
+        # 
+        # - exclusion_phone_number: The password cannot contain the mobile number.
+        # 
+        # - exclusion_display_name: The password cannot contain the display name.
         self.password_check_type = password_check_type
 
     def validate(self):

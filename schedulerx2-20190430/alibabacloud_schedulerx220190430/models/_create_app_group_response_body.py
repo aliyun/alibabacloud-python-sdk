@@ -14,18 +14,19 @@ class CreateAppGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The information about the job group.
+        # Information about the created Application Group.
         self.data = data
-        # The error message that is returned only if the corresponding error occurs.
+        # The error message. Returned only when the request fails.
         self.message = message
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
-        # Indicates whether the application was created. Valid values:
+        # Indicates whether the Application Group was successfully created. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The Application Group was successfully created.
+        # 
+        # - **false**: The Application Group failed to be created.
         self.success = success
 
     def validate(self):
@@ -82,9 +83,9 @@ class CreateAppGroupResponseBodyData(DaraModel):
         app_group_id: int = None,
         app_key: str = None,
     ):
-        # The job group ID.
+        # The Application Group ID.
         self.app_group_id = app_group_id
-        # The AppKey for the application.
+        # The Application Key (AppKey).
         self.app_key = app_key
 
     def validate(self):

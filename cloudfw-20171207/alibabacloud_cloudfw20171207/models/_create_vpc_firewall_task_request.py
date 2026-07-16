@@ -12,9 +12,18 @@ class CreateVpcFirewallTaskRequest(DaraModel):
         priority: str = None,
         task_action: str = None,
     ):
+        # The content of the task.
         self.content = content
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The priority of the rule.
         self.priority = priority
+        # The name of the task.
+        # 
         # This parameter is required.
         self.task_action = task_action
 

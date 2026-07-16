@@ -155,18 +155,23 @@ class ListFunctionsResponseBodyPagingInfoFunctions(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Python2
-        # *   Python3
-        # *   Java8
-        # *   Java11
-        # *   Java17
+        # - Python2
+        # 
+        # - Python3
+        # 
+        # - Java8
+        # 
+        # - Java11
+        # 
+        # - Java17
         self.embedded_code_type = embedded_code_type
         # The nested resource type.
         # 
         # Valid values:
         # 
-        # *   File: General resource file.
-        # *   Embedded: Embedded resource.
+        # - File: General resource file.
+        # 
+        # - Embedded: Embedded resource.
         self.embedded_resource_type = embedded_resource_type
         # The example description.
         self.example_description = example_description
@@ -174,7 +179,7 @@ class ListFunctionsResponseBodyPagingInfoFunctions(DaraModel):
         self.file_resource = file_resource
         # The unique identifier of the UDF.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The modification time.
         self.modify_time = modify_time
@@ -196,12 +201,17 @@ class ListFunctionsResponseBodyPagingInfoFunctions(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Math: Mathematical operation functions
-        # *   Aggregate: Aggregation functions
-        # *   String: String processing functions
-        # *   Date: Date functions
-        # *   Analytic: Window functions
-        # *   Other: Other functions
+        # - Math: Mathematical operation functions
+        # 
+        # - Aggregate: Aggregation functions
+        # 
+        # - String: String processing functions
+        # 
+        # - Date: Date functions
+        # 
+        # - Analytic: Window functions
+        # 
+        # - Other: Other functions
         self.type = type
 
     def validate(self):
@@ -367,7 +377,7 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScript(DaraModel):
     ):
         # The ID of the script.
         # 
-        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The script path.
         self.path = path

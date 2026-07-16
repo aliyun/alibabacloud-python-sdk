@@ -13,17 +13,17 @@ class DeleteBasicAccelerateIpEndpointRelationResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The ID of the accelerated IP address of the basic GA instance.
+        # The accelerated IP address instance ID of the basic GA instance.
         self.accelerate_ip_id = accelerate_ip_id
         # The ID of the basic GA instance.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint that is associated with the basic GA instance.
+        # The endpoint ID of the basic GA instance.
         self.endpoint_id = endpoint_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the mapping between the accelerated IP address and endpoint.
+        # The attach status between the accelerated IP address and the endpoint of the basic GA instance.
         # 
-        # >  This parameter is not in use and empty.
+        # > This parameter is not currently in use.
         self.state = state
 
     def validate(self):

@@ -12,16 +12,17 @@ class EvaluateResourceResponseBody(DaraModel):
         engine_version: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the resources are sufficient in the region. Valid values:
+        # Indicates whether resources are available in the current region. Valid values:
         # 
-        # *   **1**: The resources are sufficient.
-        # *   **0**: The resources are insufficient.
+        # - **1**: Resources are sufficient.
+        # 
+        # - **0**: Resources are insufficient.
         self.dbinstance_available = dbinstance_available
-        # The database engine of the instance. Only MongoDB is returned.
+        # The database engine. The value is fixed to MongoDB.
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version.
         self.engine_version = engine_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

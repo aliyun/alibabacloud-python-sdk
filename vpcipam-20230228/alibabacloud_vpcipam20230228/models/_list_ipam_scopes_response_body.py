@@ -17,16 +17,17 @@ class ListIpamScopesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned on the current page.
         self.count = count
-        # The IPAM scopes.
+        # A list of IPAM scopes.
         self.ipam_scopes = ipam_scopes
-        # The number of entries per page.
+        # The maximum number of entries returned per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used for the next page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next page exists.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -110,40 +111,45 @@ class ListIpamScopesResponseBodyIpamScopes(DaraModel):
     ):
         # The time when the IPAM scope was created.
         self.create_time = create_time
-        # The ID of the IPAM.
+        # The instance ID of the IPAM.
         self.ipam_id = ipam_id
         # The description of the IPAM scope.
         self.ipam_scope_description = ipam_scope_description
-        # The ID of the IPAM scope.
+        # The instance ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
         # The name of the IPAM scope.
         self.ipam_scope_name = ipam_scope_name
         # The type of the IPAM scope. Valid values:
         # 
-        # *   **public**
-        # *   **private**
+        # - **public**: the public scope.
+        # 
+        # - **private**: the private scope.
         self.ipam_scope_type = ipam_scope_type
         # Indicates whether the scope is the default scope. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The scope is the default scope.
+        # 
+        # - **false**: The scope is not the default scope.
         self.is_default = is_default
-        # The Alibaba Cloud account that owns the IPAM scope.
+        # The ID of the Alibaba Cloud account to which the IPAM scope belongs.
         self.owner_id = owner_id
-        # The number of pools in the IPAM scope.
+        # The number of IPAM pools in the IPAM scope.
         self.pool_count = pool_count
-        # The region ID of the IPAM.
+        # The region ID of the IPAM scope.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group to which the IPAM scope belongs.
         self.resource_group_id = resource_group_id
         # The status of the IPAM scope. Valid values:
         # 
-        # *   **Creating**
-        # *   **Created**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Creating**: The IPAM scope is being created.
+        # 
+        # - **Created**: The IPAM scope is created.
+        # 
+        # - **Deleting**: The IPAM scope is being deleted.
+        # 
+        # - **Deleted**: The IPAM scope is deleted.
         self.status = status
-        # The tag list.
+        # The tags.
         self.tags = tags
 
     def validate(self):

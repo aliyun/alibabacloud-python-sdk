@@ -16,9 +16,12 @@ class DeleteVpcRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the VPC is located. Call the [DescribeRegions](~~DescribeRegions~~) operation to get the latest list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VPC to delete.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

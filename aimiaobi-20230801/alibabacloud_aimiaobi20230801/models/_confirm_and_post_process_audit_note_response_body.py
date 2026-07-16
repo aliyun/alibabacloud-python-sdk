@@ -14,12 +14,17 @@ class ConfirmAndPostProcessAuditNoteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # The task ID obtained after confirming the use of this parsing result. It is consistent with the input parameter, returned here for your convenience.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates if the request was successful
         self.success = success
 
     def validate(self):

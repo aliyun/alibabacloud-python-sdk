@@ -10,7 +10,6 @@ class CreateMeetingRoomGroupResponseBody(DaraModel):
         request_id: str = None,
         result: int = None,
     ):
-        # requestId
         self.request_id = request_id
         self.result = result
 

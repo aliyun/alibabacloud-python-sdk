@@ -135,8 +135,9 @@ class GetIDEEventDetailResponseBodyEventDetailTableModel(DaraModel):
         self.data_source_name = data_source_name
         # The environment in which the table is used. Valid values:
         # 
-        # *   DEV
-        # *   PROD
+        # - DEV
+        # 
+        # - PROD
         self.env = env
         # The lifecycle of the table. Unit: day.
         self.life_cycle = life_cycle
@@ -225,8 +226,9 @@ class GetIDEEventDetailResponseBodyEventDetailTableModelColumns(DaraModel):
         self.comment = comment
         # Indicates whether the column is a partition key column. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_partition_column = is_partition_column
 
     def validate(self):
@@ -362,12 +364,17 @@ class GetIDEEventDetailResponseBodyEventDetailDeletedFile(DaraModel):
         self.parent_file_id = parent_file_id
         # The module to which the file belongs. Valid values:
         # 
-        # *   NORMAL: The file is used for DataStudio.
-        # *   MANUAL: The file is used for a manually triggered node.
-        # *   MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # *   SKIP: The file is used for a dry-run node in DataStudio.
-        # *   ADHOCQUERY: The file is used for an ad hoc query.
-        # *   COMPONENT: The file is used for a script template.
+        # - NORMAL: The file is used for DataStudio.
+        # 
+        # - MANUAL: The file is used for a manually triggered node.
+        # 
+        # - MANUAL_BIZ: The file is used for a manually triggered workflow.
+        # 
+        # - SKIP: The file is used for a dry-run node in DataStudio.
+        # 
+        # - ADHOCQUERY: The file is used for an ad hoc query.
+        # 
+        # - COMPONENT: The file is used for a script template.
         self.use_type = use_type
 
     def validate(self):
@@ -493,12 +500,17 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFile(DaraModel):
         self.node_id = node_id
         # The module to which the file belongs. Valid values:
         # 
-        # *   NORMAL: The file is used for DataStudio.
-        # *   MANUAL: The file is used for a manually triggered node.
-        # *   MANUAL_BIZ: The file is used for a manually triggered workflow.
-        # *   SKIP: The file is used for a dry-run node in DataStudio.
-        # *   ADHOCQUERY: The file is used for an ad hoc query.
-        # *   COMPONENT: The file is used for a script template.
+        # - NORMAL: The file is used for DataStudio.
+        # 
+        # - MANUAL: The file is used for a manually triggered node.
+        # 
+        # - MANUAL_BIZ: The file is used for a manually triggered workflow.
+        # 
+        # - SKIP: The file is used for a dry-run node in DataStudio.
+        # 
+        # - ADHOCQUERY: The file is used for an ad hoc query.
+        # 
+        # - COMPONENT: The file is used for a script template.
         self.use_type = use_type
 
     def validate(self):
@@ -618,10 +630,13 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         self.dependent_node_id_list = dependent_node_id_list
         # The type of the cross-cycle scheduling dependency of the node. Valid values:
         # 
-        # *   SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
-        # *   CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
-        # *   USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
-        # *   NONE: No cross-cycle scheduling dependency type is selected for the node.
+        # - SELF: The instance generated for the node in the current cycle depends on the instance generated for the node in the previous cycle.
+        # 
+        # - CHILD: The instance generated for the node in the current cycle depends on the instances generated for the descendant nodes at the nearest level of the node in the previous cycle.
+        # 
+        # - USER_DEFINE: The instance generated for the node in the current cycle depends on the instances generated for one or more specified nodes in the previous cycle.
+        # 
+        # - NONE: No cross-cycle scheduling dependency type is selected for the node.
         self.dependent_type = dependent_type
         # The output information about the parent files on which the current file depends.
         self.input_list = input_list
@@ -633,9 +648,11 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         self.para_value = para_value
         # Indicates whether the node that corresponds to the file can be rerun. Valid values:
         # 
-        # *   ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
-        # *   FAILURE_ALLOWED: The node can be rerun only after it fails to run.
-        # *   ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
+        # - ALL_ALLOWED: The node can be rerun regardless of whether it is successfully run or fails to run.
+        # 
+        # - FAILURE_ALLOWED: The node can be rerun only after it fails to run.
+        # 
+        # - ALL_DENIED: The node cannot be rerun regardless of whether it is successfully run or fails to run.
         # 
         # This parameter corresponds to the Rerun parameter in the Schedule section of the Properties tab on the DataStudio page in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.rerun_mode = rerun_mode
@@ -643,10 +660,13 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration(Dar
         self.resource_group_id = resource_group_id
         # The scheduling type of the node. Valid values:
         # 
-        # *   NORMAL: The node is an auto triggered node.
-        # *   MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
-        # *   PAUSE: The node is a paused node.
-        # *   SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
+        # - NORMAL: The node is an auto triggered node.
+        # 
+        # - MANUAL: The node is a manually triggered node. Manually triggered nodes cannot be automatically triggered. They correspond to the nodes in the Manually Triggered Workflows pane.
+        # 
+        # - PAUSE: The node is a paused node.
+        # 
+        # - SKIP: The node is a dry-run node. Dry-run nodes are started as scheduled, but the system sets the status of the nodes to successful when it starts to run them.
         self.scheduler_type = scheduler_type
 
     def validate(self):
@@ -805,8 +825,9 @@ class GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInpu
         self.input = input
         # The mode of the configuration file dependency. Valid values:
         # 
-        # *   MANUAL: Scheduling dependencies are manually configured.
-        # *   AUTO: Scheduling dependencies are automatically parsed.
+        # - MANUAL: Scheduling dependencies are manually configured.
+        # 
+        # - AUTO: Scheduling dependencies are automatically parsed.
         self.parse_type = parse_type
 
     def validate(self):

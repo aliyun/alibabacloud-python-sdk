@@ -12,10 +12,16 @@ class SubmitCustomHotTopicBroadcastJobShrinkRequest(DaraModel):
         topics_shrink: str = None,
         workspace_id: str = None,
     ):
+        # The configuration for the news broadcast job.
+        # 
         # This parameter is required.
         self.hot_topic_broadcast_config_shrink = hot_topic_broadcast_config_shrink
+        # The version of the hot topic.
         self.hot_topic_version = hot_topic_version
+        # The topic filter.
         self.topics_shrink = topics_shrink
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

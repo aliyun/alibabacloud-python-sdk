@@ -32,19 +32,19 @@ class DescribeModelServiceResponseBody(DaraModel):
         self.description = description
         # The model name.
         self.model_name = model_name
-        # Model parameters.
+        # The model parameters.
         self.model_params = model_params
         # The model service ID.
         self.model_service_id = model_service_id
-        # The internal endpoint.
+        # The internal network connection string.
         self.private_connect_url = private_connect_url
-        # The public endpoint.
+        # The public network connection string.
         self.public_connect_url = public_connect_url
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # A comma-separated list of IP addresses and CIDR blocks allowed to connect.
+        # The list of IP addresses in the IP whitelist, separated by commas.
         self.security_ip_list = security_ip_list
-        # The status of the model service.
+        # The model service status.
         self.status = status
 
     def validate(self):

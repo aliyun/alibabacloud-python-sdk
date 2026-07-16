@@ -14,11 +14,19 @@ class OperateExecuteJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # The returned data.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -72,6 +80,7 @@ class OperateExecuteJobResponseBodyData(DaraModel):
         self,
         job_execution_id: str = None,
     ):
+        # The job execution ID.
         self.job_execution_id = job_execution_id
 
     def validate(self):

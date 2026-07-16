@@ -11,9 +11,9 @@ class ListTriggersRequest(DaraModel):
         next_token: str = None,
         prefix: str = None,
     ):
-        # The number of triggers returned.
+        # The number of triggers to return.
         self.limit = limit
-        # The token for the next page.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
         # The trigger name prefix.
         self.prefix = prefix

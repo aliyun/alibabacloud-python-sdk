@@ -18,53 +18,49 @@ class CreateLogtailPipelineConfigRequest(DaraModel):
         processors: List[Dict[str, Any]] = None,
         task: Dict[str, Any] = None,
     ):
-        # The aggregation plug-ins.
-        # 
-        # >  This parameter takes effect only when extended plug-ins are used. You can use only one aggregation plug-in.
+        # The list of aggregation plugins. >Notice: This parameter is valid only when you use extension processing plugins. You can use a maximum of one aggregation plugin.
         self.aggregators = aggregators
         # The name of the configuration.
         # 
-        # >  The name of the configuration must be unique in the project to which the configuration belongs. After the configuration is created, you cannot change the name of the configuration. The name must meet the following requirements:
-        # 
-        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        # 
-        # *   The name must start and end with a lowercase letter or a digit.
-        # 
-        # *   The name must be 2 to 128 characters in length.
+        # > The configuration name must be unique within the project and cannot be modified after the configuration is created. The name must follow these rules:
+        # >
+        # > - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # >
+        # > - It must start and end with a lowercase letter or a digit.
+        # >
+        # > - It must be 2 to 128 characters in length.
         # 
         # This parameter is required.
         self.config_name = config_name
-        # The output plug-ins.
-        # 
-        # >  You can configure only one output plug-in.
+        # The list of output plugins. >Notice: Currently, you can add only one flusher_sls plugin.
         # 
         # This parameter is required.
         self.flushers = flushers
-        # The global settings.
+        # The global configuration.
         self.global_ = global_
-        # The input plug-ins.
-        # 
-        # >  You can configure only one input plug-in.
+        # The list of input plugins. >Notice: Currently, you can configure only one input plugin.
         # 
         # This parameter is required.
         self.inputs = inputs
-        # The sample log. You can specify multiple sample logs.
+        # A sample log. Multiple log entries are supported.
         self.log_sample = log_sample
-        # The processing plug-ins.
+        # The list of processing plugins.
         # 
-        # >  Logtail plug-ins for data processing are classified into native plug-ins and extended plug-ins. For more information, see [Overview of Logtail plug-ins for data processing](https://help.aliyun.com/document_detail/64957.html).
+        # > Processing plugins are classified into native processing plugins and extension processing plugins. For more information, see [Processing plugins](https://help.aliyun.com/document_detail/64957.html).
         # 
-        # > 
+        # >Notice: 
         # 
-        # *   You can use native plug-ins only to collect text logs.
-        # 
-        # *   You cannot add native plug-ins and extended plug-ins at a time.
-        # 
-        # *   When you add native plug-ins, take note of the following items:
-        # 
-        #     *   You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
-        #     *   After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
+        # > - Native plugins can be used only to collect text logs.
+        # >
+        # > - You cannot add native plugins and extension plugins at the same time.
+        # >
+        # > - When you use native plugins, the following requirements must be met:
+        # >
+        # >   - The first processing plugin must be a regular expression-based parsing plugin, a separator-based parsing plugin, a JSON-based parsing plugin, an NGINX-based parsing plugin, an Apache-based parsing plugin, or an IIS-based parsing plugin.
+        # >
+        # >   - After the first processing plugin, you can add only one time parsing processing plugin, one filter plugin, and multiple data masking plugins.
         self.processors = processors
+        # The task configuration.
         self.task = task
 
     def validate(self):

@@ -17,13 +17,13 @@ class DescribeVpnRouteEntriesResponseBody(DaraModel):
         vpn_route_counts: main_models.DescribeVpnRouteEntriesResponseBodyVpnRouteCounts = None,
         vpn_route_entries: main_models.DescribeVpnRouteEntriesResponseBodyVpnRouteEntries = None,
     ):
-        # The page number of the returned page.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
         self.vpn_route_counts = vpn_route_counts
         self.vpn_route_entries = vpn_route_entries

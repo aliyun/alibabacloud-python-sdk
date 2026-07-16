@@ -25,26 +25,43 @@ class CreatePhysicalConnectionRequest(DaraModel):
         user_cidr: str = None,
         bandwidth: int = None,
     ):
+        # The access point ID. You can call the `DescribeAccessPoints` operation to obtain a list of available access points.
+        # 
         # This parameter is required.
         self.access_point_id = access_point_id
+        # The circuit code provided by the carrier.
         self.circuit_code = circuit_code
+        # A client-generated token that you can use to ensure the idempotency of the request. This token must be unique across requests, contain only ASCII characters, and be no more than 64 characters long.
         self.client_token = client_token
+        # The description of the physical connection. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
         self.description = description
+        # The carrier that provides the physical connection. Valid values: `CT` (China Telecom), `CU` (China Unicom), `CM` (China Mobile), `CO` (other Chinese carriers), and `AL` (Alibaba Cloud).
+        # 
         # This parameter is required.
         self.line_operator = line_operator
+        # The name of the physical connection. The name must be 2 to 128 characters long. It must start with a letter and can contain letters, digits, underscores (`_`), and hyphens (`-`).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The physical location of your on-premises data center.
+        # 
         # This parameter is required.
         self.peer_location = peer_location
+        # The port type of the physical connection. You cannot change this parameter after the physical connection is created. Valid values: `1000Base-LX` (1 Gbit/s), `10GBase-LR` (10 Gbit/s), and `40GBase-LR` (40 Gbit/s).
         self.port_type = port_type
+        # The ID of the redundant physical connection. The redundant physical connection must be in the `Allocated`, `Confirmed`, or `Enabled` state.
         self.redundant_physical_connection_id = redundant_physical_connection_id
+        # The ID of the region for the physical connection. You can call the `DescribeRegions` operation to obtain the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The type of the physical connection. Valid values: `VPC` and `VBR`. The default value is `VPC`. This parameter is available only to whitelisted users.
         self.type = type
+        # The user CIDR block. This parameter is required when `Type` is set to `VPC`. The CIDR block must be a private IPv4 block. Valid CIDR blocks include the following blocks and their subnets: `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
         self.user_cidr = user_cidr
+        # The bandwidth of the physical connection in Mbit/s. The value must be an integer that ranges from 1 to 10,240.
         self.bandwidth = bandwidth
 
     def validate(self):

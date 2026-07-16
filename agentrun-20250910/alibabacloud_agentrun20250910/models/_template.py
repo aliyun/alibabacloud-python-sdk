@@ -18,6 +18,7 @@ class Template(DaraModel):
         description: str = None,
         disk_size: int = None,
         enable_agent: bool = None,
+        enable_pre_stop: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         last_updated_at: str = None,
@@ -28,6 +29,7 @@ class Template(DaraModel):
         nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         oss_configuration: List[main_models.OssConfiguration] = None,
+        pre_stop_timeout_in_seconds: int = None,
         resource_name: str = None,
         sandbox_idle_timeout_in_seconds: str = None,
         sandbox_ttlin_seconds: str = None,
@@ -42,40 +44,77 @@ class Template(DaraModel):
         template_version: str = None,
         workspace_id: str = None,
     ):
+        # Indicates whether the data link can invoke APIs to create, stop, or delete sandbox instances
         self.allow_anonymous_manage = allow_anonymous_manage
+        # Custom image configuration
         self.container_configuration = container_configuration
+        # Number of CPU cores
+        # 
         # This parameter is required.
         self.cpu = cpu
+        # Creation Time
         self.created_at = created_at
+        # Authentication configuration
         self.credential_configuration = credential_configuration
+        # Description
         self.description = description
+        # Disk size
         self.disk_size = disk_size
+        # Sandbox Agent Toggle
         self.enable_agent = enable_agent
+        self.enable_pre_stop = enable_pre_stop
+        # Environment variable configuration for the agent runtime
         self.environment_variables = environment_variables
+        # Execution role
         self.execution_role_arn = execution_role_arn
+        # Update Time
         self.last_updated_at = last_updated_at
+        # Log configuration
         self.log_configuration = log_configuration
+        # MCP options
         self.mcp_options = mcp_options
+        # MCP server status
         self.mcp_state = mcp_state
+        # Memory specification
+        # 
         # This parameter is required.
         self.memory = memory
+        # NAS mount configuration item
         self.nas_config = nas_config
+        # Network configuration
         self.network_configuration = network_configuration
+        # OSS configuration
         self.oss_configuration = oss_configuration
+        self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
+        # Resource Name
         self.resource_name = resource_name
+        # Sandbox idle timeout
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
+        # Sandbox lifecycle time to live (deprecated)
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # Elasticity Status
         self.scaling_status = scaling_status
+        # Status
         self.status = status
+        # Status reason
         self.status_reason = status_reason
+        # Template ARN
         self.template_arn = template_arn
+        # Template Configuration (flexible object structure that varies based on templateType)
         self.template_configuration = template_configuration
+        # Template ID
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Template Name
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # templatetype
         self.template_type = template_type
+        # Template Version
         self.template_version = template_version
+        # Associated Space ID
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -129,6 +168,9 @@ class Template(DaraModel):
         if self.enable_agent is not None:
             result['enableAgent'] = self.enable_agent
 
+        if self.enable_pre_stop is not None:
+            result['enablePreStop'] = self.enable_pre_stop
+
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
 
@@ -160,6 +202,9 @@ class Template(DaraModel):
         if self.oss_configuration is not None:
             for k1 in self.oss_configuration:
                 result['ossConfiguration'].append(k1.to_map() if k1 else None)
+
+        if self.pre_stop_timeout_in_seconds is not None:
+            result['preStopTimeoutInSeconds'] = self.pre_stop_timeout_in_seconds
 
         if self.resource_name is not None:
             result['resourceName'] = self.resource_name
@@ -230,6 +275,9 @@ class Template(DaraModel):
         if m.get('enableAgent') is not None:
             self.enable_agent = m.get('enableAgent')
 
+        if m.get('enablePreStop') is not None:
+            self.enable_pre_stop = m.get('enablePreStop')
+
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
 
@@ -267,6 +315,9 @@ class Template(DaraModel):
             for k1 in m.get('ossConfiguration'):
                 temp_model = main_models.OssConfiguration()
                 self.oss_configuration.append(temp_model.from_map(k1))
+
+        if m.get('preStopTimeoutInSeconds') is not None:
+            self.pre_stop_timeout_in_seconds = m.get('preStopTimeoutInSeconds')
 
         if m.get('resourceName') is not None:
             self.resource_name = m.get('resourceName')
@@ -317,8 +368,11 @@ class TemplateMcpState(DaraModel):
         status: str = None,
         status_reason: str = None,
     ):
+        # Access Endpoint
         self.access_endpoint = access_endpoint
+        # MCP Status
         self.status = status
+        # Status reason
         self.status_reason = status_reason
 
     def validate(self):
@@ -359,7 +413,9 @@ class TemplateMcpOptions(DaraModel):
         enabled_tools: List[str] = None,
         transport: str = None,
     ):
+        # List of enabled tools
         self.enabled_tools = enabled_tools
+        # Transport type
         self.transport = transport
 
     def validate(self):

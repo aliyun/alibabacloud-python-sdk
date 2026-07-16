@@ -15,12 +15,18 @@ class DescribeVsDomainBpsDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Domain Names. If this parameter is empty, the system returns merged data for all accelerated Domain Names. Enter the accelerated Domain Names to query. Separate multiple Domain Names with commas.
         self.domain_name = domain_name
+        # The end time must be later than the start time. The date format follows ISO8601 notation and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The time granularity for query data. Supports 300, 3600, and 86400 seconds. If this parameter is not specified or the specified value is not supported, the system uses 300 seconds by default.
         self.interval = interval
+        # The English name of the carrier (ISP). Obtain this from the DescribeCdnRegionAndIsp interface. If not specified, the system queries all carriers (ISPs).
         self.isp_name_en = isp_name_en
+        # The English name of the region. Obtain this from the DescribeCdnRegionAndIsp interface. If not specified, the system queries all regions.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # The start time for data retrieval. The date format follows ISO8601 notation and uses UTC time. Format: YYYY-MM-DDThh:mm:ssZ. The minimum data granularity is 5 minutes. If not specified, the system reads data from the past 24 hours.
         self.start_time = start_time
 
     def validate(self):

@@ -19,13 +19,21 @@ class SchemeCheckType(DaraModel):
         source_score: int = None,
         task_flow_score_info_list: List[main_models.SchemeCheckTypeTaskFlowScoreInfoList] = None,
     ):
+        # Check item name
         self.check_name = check_name
+        # Quality inspection dimension ID
         self.check_type = check_type
+        # Is enabled
         self.enable = enable
+        # Quality inspection scheme ID
         self.scheme_id = scheme_id
+        # List of scoring items under the check item. See SchemeScoreInfo.
         self.scheme_score_info_list = scheme_score_info_list
+        # Final score
         self.score = score
+        # Original score
         self.source_score = source_score
+        # List of scoring items under the check item. See TaskFlowScoreInfo.
         self.task_flow_score_info_list = task_flow_score_info_list
 
     def validate(self):
@@ -115,9 +123,13 @@ class SchemeCheckTypeTaskFlowScoreInfoList(DaraModel):
         task_flow_name: str = None,
         task_flow_type: int = None,
     ):
+        # list of scoring items
         self.scheme_score_info_list = scheme_score_info_list
+        # Flow ID
         self.task_flow_id = task_flow_id
+        # flow name
         self.task_flow_name = task_flow_name
+        # \\"Flow version: 0: tree, 1: graph\\"
         self.task_flow_type = task_flow_type
 
     def validate(self):
@@ -178,13 +190,21 @@ class SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList(DaraModel):
         task_flow_id: int = None,
         task_flow_name: str = None,
     ):
+        # Rule Name
         self.name = name
+        # Rule ID
         self.rid = rid
+        # Agent score: default is 0, range [0, 100]
         self.score_num = score_num
+        # 0 – Points added or deducted after a rule is triggered
         self.score_num_type = score_num_type
+        # 0—score when a hit occurs at an edge zone
         self.score_rule_hit_type = score_rule_hit_type
+        # 1 for adding points, 3 for deducting points; default is 1
         self.score_type = score_type
+        # Flow ID
         self.task_flow_id = task_flow_id
+        # flow name
         self.task_flow_name = task_flow_name
 
     def validate(self):
@@ -261,13 +281,21 @@ class SchemeCheckTypeSchemeScoreInfoList(DaraModel):
         task_flow_id: int = None,
         task_flow_name: str = None,
     ):
+        # Rule Name
         self.name = name
+        # Rule ID
         self.rid = rid
+        # Agent rating: default 0, [0, 100]
         self.score_num = score_num
+        # 0 – Add or subtract points after triggering a rule
         self.score_num_type = score_num_type
+        # 0 – Score when hitting an edge zone
         self.score_rule_hit_type = score_rule_hit_type
+        # 1 for adding points, 3 for deducting points; default is 1
         self.score_type = score_type
+        # Flow ID
         self.task_flow_id = task_flow_id
+        # Flow name
         self.task_flow_name = task_flow_name
 
     def validate(self):

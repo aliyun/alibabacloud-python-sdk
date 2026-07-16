@@ -11,8 +11,11 @@ class SubFolder(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
+        # The folder ID.
         self.folder_id = folder_id
+        # The folder name.
         self.name = name
+        # The parent folder ID.
         self.parent_id = parent_id
 
     def validate(self):

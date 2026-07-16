@@ -20,23 +20,23 @@ class DescribeTemplatesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
         self.code = code
-        # The templates.
+        # The list of queried template information.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned when Code is `success`.
         self.message = message
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of rows per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         self.success = success
-        # The total number of templates.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -149,77 +149,48 @@ class DescribeTemplatesResponseBodyData(DaraModel):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.charge_type = charge_type
-        # The sizes of the data disks.
+        # The size and specification configurations of data cloud disks.
         self.data_disk_list = data_disk_list
-        # The default language of the template.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: English.
-        # *   zh-HK: Chinese, Traditional (Hong Kong, China).
-        # *   zh-CN: Simplified Chinese.
-        # *   ja-JP: Japanese.
+        # The default startup language configured in the template.
         self.default_language = default_language
         # The template description.
         self.description = description
-        # The time when the template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
+        # The creation time of the template (UTC).
         self.gmt_create = gmt_create
-        # The time when the template was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        # The last modification time of the template (UTC).
         self.gmt_modified = gmt_modified
         # The image ID.
         self.image_id = image_id
         # The image type.
-        # 
-        # Valid values:
-        # 
-        # *   User: a custom image.
-        # *   Shared: a shared image.
-        # *   System: a system image.
-        # *   Community: a community image.
         self.image_type = image_type
         self.period = period
         self.period_unit = period_unit
-        # The policy ID.
+        # The policy group ID.
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
-        # The service type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudDesktop: cloud computers.
+        # The product type.
         self.product_type = product_type
-        # The region-related settings.
+        # The region-specific configuration parameters.
         self.region_config_list = region_config_list
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags added to cloud computers. A tag is a key-value pair.
+        # The cloud computer tags in key-value format.
         self.resource_tag_list = resource_tag_list
-        # 区域配置管理
+        # The site configuration management.
         self.site_config_list = site_config_list
-        # The performance level (PL) of the system disk.
-        # 
-        # Valid value:
-        # 
-        # *   PL1: a PL1 Enterprise SSD (ESSD).
-        # *   PL0: a PL0 ESSD.
-        # *   AutoPL: an AutoPL SSD.
+        # The system cloud disk type.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system disk. Unit: GiB.
+        # The system cloud disk size. Unit: GiB.
         self.system_disk_size = system_disk_size
         # The template ID.
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
-        # The template type.
-        # 
-        # Valid values:
-        # 
-        # *   USER_TEMPLATE: custom templates.
-        # *   SYSTEM_TEMPLATE: system templates.
+        # The templatetype.
         self.template_type = template_type
-        # The ID of the scheduled task group.
+        # The scheduled task group ID.
         self.timer_group_id = timer_group_id
         self.user_duration = user_duration
 
@@ -440,9 +411,9 @@ class DescribeTemplatesResponseBodyDataSiteConfigList(DaraModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
-        # 应用管控策略ID
+        # The application control policy ID.
         self.app_rule_id = app_rule_id
-        # 站点名称。
+        # The site name.
         self.site_id = site_id
 
     def validate(self):
@@ -479,7 +450,7 @@ class DescribeTemplatesResponseBodyDataResourceTagList(DaraModel):
     ):
         # The tag key.
         self.key = key
-        # The property value.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -522,9 +493,9 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The number of vCPUs.
+        # The number of vCPUs included in the cloud computer instance type.
         self.cpu_count = cpu_count
-        # The GPU memory information. This parameter is supported only by Graphics cloud computer types.
+        # The GPU memory information. This field is displayed only when the instance type is a graphics-accelerated type.
         self.gpu_spec = gpu_spec
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
@@ -532,7 +503,7 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         self.office_site_id = office_site_id
         # The region ID.
         self.region_id = region_id
-        # The ID of the cloud computer type.
+        # The cloud computer instance type ID.
         self.resource_instance_type = resource_instance_type
         # The snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
@@ -540,7 +511,7 @@ class DescribeTemplatesResponseBodyDataRegionConfigList(DaraModel):
         self.subnet_id = subnet_id
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enable = volume_encryption_enable
-        # The ID of the Key Management Service (KMS) key that is used to encrypt the disk.
+        # The KMS key ID used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -623,15 +594,9 @@ class DescribeTemplatesResponseBodyDataDataDiskList(DaraModel):
         performance_level: str = None,
         size: str = None,
     ):
-        # The PL of the data disk.
-        # 
-        # Valid values:
-        # 
-        # *   PL1: a PL1 ESSD.
-        # *   PL0: a PL0 ESSD.
-        # *   AutoPL: an AutoPL SSD.
+        # The performance level of the data cloud disk.
         self.performance_level = performance_level
-        # The size of the data disk. Unit: GiB.
+        # The data cloud disk size. Unit: GiB.
         self.size = size
 
     def validate(self):

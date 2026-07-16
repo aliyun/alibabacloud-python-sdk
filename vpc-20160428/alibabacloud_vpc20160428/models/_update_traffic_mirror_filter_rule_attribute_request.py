@@ -27,18 +27,19 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(DaraModel):
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # > If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
         self.client_token = client_token
         # The new destination CIDR block of the inbound or outbound traffic.
         self.destination_cidr_block = destination_cidr_block
         # The new destination port range of the inbound or outbound traffic.
         # 
-        # >  If you set **Protocol** to **ICMP**, you cannot change the port range.
+        # > If you set **Protocol** to **ICMP**, you cannot change the port range.
         self.destination_port_range = destination_port_range
         # Specifies whether to check the request without performing the operation. Valid values:
         # 
-        # *   **true**: only checks the API request. The configuration of the inbound or outbound rule is not modified. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. This is the default value. If the request passes the check, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is modified.
+        # - **true**: only checks the API request. The configuration of the inbound or outbound rule is not modified. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # 
+        # - **false**: sends the request. This is the default value. If the request passes the check, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is modified.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -46,10 +47,13 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(DaraModel):
         self.priority = priority
         # The new protocol that is used by the traffic to be mirrored by the inbound or outbound rule. Valid values:
         # 
-        # *   **ALL**: all protocols
-        # *   **ICMP**: Internet Control Message Protocol (ICMP)
-        # *   **TCP**: TCP
-        # *   **UDP**: User Datagram Protocol (UDP)
+        # - **ALL**: all protocols
+        # 
+        # - **ICMP**: Internet Control Message Protocol (ICMP)
+        # 
+        # - **TCP**: TCP
+        # 
+        # - **UDP**: User Datagram Protocol (UDP)
         self.protocol = protocol
         # The ID of the region to which the mirrored traffic belongs.
         # 
@@ -61,14 +65,15 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new action of the inbound or outbound rule. Valid values:
         # 
-        # *   **accept**: accepts network traffic.
-        # *   **drop**: drops network traffic.
+        # - **accept**: accepts network traffic.
+        # 
+        # - **drop**: drops network traffic.
         self.rule_action = rule_action
         # The new source CIDR block of the inbound or outbound traffic.
         self.source_cidr_block = source_cidr_block
         # The new source port range of the inbound or outbound traffic.
         # 
-        # >  If you set **Protocol** to **ICMP**, you cannot change the port range.
+        # > If you set **Protocol** to **ICMP**, you cannot change the port range.
         self.source_port_range = source_port_range
         # The ID of the inbound or outbound rule.
         # 

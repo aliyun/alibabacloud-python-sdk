@@ -161,6 +161,7 @@ class SearchMediaClipByFaceResponseBodyMediaClipListOccurrencesInfos(DaraModel):
     ):
         # The end time of the clip. Unit: seconds. The value is of the Float type.
         self.end_time = end_time
+        # Expression.
         self.expression = expression
         # The start time of the clip. Unit: seconds. The value is of the Float type.
         self.start_time = start_time

@@ -14,29 +14,27 @@ class DescribeSiteMonitorISPCityListRequest(DaraModel):
         region_id: str = None,
         view_all: bool = None,
     ):
-        # The name or ID of the city.
+        # The name or ID of the city where the carrier detection point resides.
         # 
-        # > City names support fuzzy match.
+        # > Fuzzy match is supported for city names.
         self.city = city
         # Specifies whether to query IPv4 probes. Valid values:
-        # 
-        # *   true (default): IPv4 probes are queried.
-        # *   false: IPv4 probes are not queried.
+        # - true (default): Queries IPv4 probes.
+        # - false: Does not query IPv4 probes.
         self.ipv4 = ipv4
         # Specifies whether to query IPv6 probes. Valid values:
-        # 
-        # *   true (default): IPv6 probes are queried.
-        # *   false: IPv6 probes are not queried.
+        # - true (default): Queries IPv6 probes.
+        # - false: Does not query IPv6 probes.
         self.ipv6 = ipv6
-        # The name or ID of the carrier.
+        # The name or ID of the carrier detection point.
         # 
-        # > Carrier names support fuzzy match.
+        # > Fuzzy match is supported for carrier names.
         self.isp = isp
         self.region_id = region_id
         # Specifies whether to return all detection points. Valid values:
         # 
-        # *   true (default): returns all detection points.
-        # *   false: returns only available detection points.
+        # - true (default): Returns all detection points.
+        # - false: Returns only available detection points.
         self.view_all = view_all
 
     def validate(self):

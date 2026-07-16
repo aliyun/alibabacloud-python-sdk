@@ -14,14 +14,15 @@ class DescribeDBClusterParametersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The type of the parameter information to query. Valid values:
+        # The kernel parameters. Valid values:
         # 
-        # *   **Normal**: the information about the cluster parameters
-        # *   **MigrationFromRDS**: a comparison of parameters between the source RDS instance and the destination PolarDB cluster
+        # - **Normal**: The list of kernel parameters.
+        # 
+        # - **MigrationFromRDS**: Compares parameters with those of an ApsaraDB RDS instance.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

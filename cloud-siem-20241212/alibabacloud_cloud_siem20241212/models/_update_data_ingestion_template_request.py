@@ -15,12 +15,31 @@ class UpdateDataIngestionTemplateRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The status of data ingestion. Valid values:
+        # 
+        # - enabled: Enabled.
+        # 
+        # - disabled: Disabled.
         self.data_ingestion_status = data_ingestion_status
+        # The ID of the data ingestion template.
         self.data_ingestion_template_id = data_ingestion_template_id
+        # The name of the data source template.
         self.data_ingestion_template_name = data_ingestion_template_name
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The region where the Data Management center for threat analysis is located. Select a region for the management center based on the region of your asset. Valid values:
+        # 
+        # - cn-hangzhou: The asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The asset is outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter is used by an administrator to switch to the perspective of the member.
         self.role_for = role_for
 
     def validate(self):

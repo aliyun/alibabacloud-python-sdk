@@ -23,23 +23,23 @@ class CreateFigureClustersMergingTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.dataset_name = dataset_name
-        # The ID of the source group. You must specify either From or Froms, but not both.
+        # The ID of the source clustering group. You must specify a value for either \\`From\\` or \\`Froms\\`. You cannot specify values for both parameters.
         self.from_ = from_
-        # The IDs of source clustering groups. You must specify either From or Froms, but not both. You can specify up to 100 task IDs.
+        # A list of the IDs of the source clustering groups. You must specify a value for either \\`From\\` or \\`Froms\\`. You cannot specify values for both parameters. The list can contain up to 100 IDs.
         self.froms = froms
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The configuration of the notification message. For more information, click Notification. For more information about the format of an asynchronous notification message, see [Asynchronous notification messages](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # The name of the project. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The custom tags, which can be used to search for and filter asynchronous tasks.
+        # The custom tags. You can use custom tags to search for and filter asynchronous tasks.
         self.tags = tags
         # The ID of the destination clustering group.
         # 
         # This parameter is required.
         self.to = to
-        # The custom data, which is returned in an asynchronous notification and facilitates notification management. The maximum length is 2,048 bytes.
+        # The custom information. This information is returned in the asynchronous notification message to help you associate the message with your system. The value can be up to 2,048 bytes in length.
         self.user_data = user_data
 
     def validate(self):

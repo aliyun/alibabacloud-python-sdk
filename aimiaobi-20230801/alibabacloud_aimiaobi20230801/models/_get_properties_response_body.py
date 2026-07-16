@@ -17,11 +17,17 @@ class GetPropertiesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Whether successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -91,16 +97,27 @@ class GetPropertiesResponseBodyData(DaraModel):
         wanxiang_image_size_config: List[main_models.GetPropertiesResponseBodyDataWanxiangImageSizeConfig] = None,
         wanxiang_image_style_config: List[main_models.GetPropertiesResponseBodyDataWanxiangImageStyleConfig] = None,
     ):
+        # Call configuration
         self.chat_config = chat_config
+        # Console configuration
         self.console_config = console_config
+        # General configurations map
         self.general_config_map = general_config_map
+        # Intelligent search configuration
         self.intelligent_search_config = intelligent_search_config
+        # Miaosou configuration
         self.miaosou_config = miaosou_config
+        # Specified search source list
         self.search_source_list = search_source_list
+        # Search source dropdown list
         self.search_sources = search_sources
+        # Whether SLR is authorized
         self.slr_authorized = slr_authorized
+        # User configuration
         self.user_info = user_info
+        # Wanxiang images
         self.wanxiang_image_size_config = wanxiang_image_size_config
+        # Wanxiang image style configuration
         self.wanxiang_image_style_config = wanxiang_image_style_config
 
     def validate(self):
@@ -237,8 +254,11 @@ class GetPropertiesResponseBodyDataWanxiangImageStyleConfig(DaraModel):
         pic: str = None,
         value: str = None,
     ):
+        # Style name
         self.name = name
+        # Style image URL
         self.pic = pic
+        # Style code
         self.value = value
 
     def validate(self):
@@ -279,7 +299,9 @@ class GetPropertiesResponseBodyDataWanxiangImageSizeConfig(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # Image aspect ratio
         self.name = name
+        # Image size in pixels
         self.value = value
 
     def validate(self):
@@ -316,9 +338,13 @@ class GetPropertiesResponseBodyDataUserInfo(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # Unique identifier for the workspace
         self.agent_id = agent_id
+        # Unique identifier for the tenant
         self.tenant_id = tenant_id
+        # User ID
         self.user_id = user_id
+        # Username
         self.username = username
 
     def validate(self):
@@ -365,7 +391,9 @@ class GetPropertiesResponseBodyDataSearchSources(DaraModel):
         label: str = None,
         value: str = None,
     ):
+        # Search source name
         self.label = label
+        # Search source code
         self.value = value
 
     def validate(self):
@@ -401,8 +429,11 @@ class GetPropertiesResponseBodyDataSearchSourceList(DaraModel):
         dataset_name: str = None,
         name: str = None,
     ):
+        # Search source type: corresponds to (SystemSearch: system-built-in search, CustomSemanticSearch: custom semantic index search, ThirdSearch: third-party API search)
         self.code = code
+        # Unique identifier for the data source
         self.dataset_name = dataset_name
+        # Search source description
         self.name = name
 
     def validate(self):
@@ -444,8 +475,11 @@ class GetPropertiesResponseBodyDataMiaosouConfig(DaraModel):
         model_infos: List[main_models.GetPropertiesResponseBodyDataMiaosouConfigModelInfos] = None,
         use_doc_size: int = None,
     ):
+        # The number of active documents in the dataset.
         self.max_doc_size = max_doc_size
+        # Model list supported by intelligent search
         self.model_infos = model_infos
+        # Number of documents used in the dataset
         self.use_doc_size = use_doc_size
 
     def validate(self):
@@ -494,7 +528,9 @@ class GetPropertiesResponseBodyDataMiaosouConfigModelInfos(DaraModel):
         model_id: str = None,
         model_name: str = None,
     ):
+        # Model ID
         self.model_id = model_id
+        # Model name
         self.model_name = model_name
 
     def validate(self):
@@ -531,9 +567,13 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfig(DaraModel):
         search_samples: List[main_models.GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples] = None,
         search_sources: List[main_models.GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources] = None,
     ):
+        # Miaosou: Search source configuration
         self.copilot_precise_search_sources = copilot_precise_search_sources
+        # Homepage product description
         self.product_description = product_description
+        # Intelligent search recommendations
         self.search_samples = search_samples
+        # Search source list
         self.search_sources = search_sources
 
     def validate(self):
@@ -607,8 +647,11 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources(DaraMode
         dataset_name: str = None,
         name: str = None,
     ):
+        # Unique identifier for the dataset: code+datasetName
         self.code = code
+        # Unique identifier for the dataset: code+datasetName
         self.dataset_name = dataset_name
+        # Search source name: Chinese
         self.name = name
 
     def validate(self):
@@ -650,8 +693,11 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamples(DaraMode
         prompt: str = None,
         text: str = None,
     ):
+        # Article list
         self.articles = articles
+        # Prompt
         self.prompt = prompt
+        # Generated content
         self.text = text
 
     def validate(self):
@@ -702,9 +748,13 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSamplesArticles(
         title: str = None,
         url: str = None,
     ):
+        # Whether manually selected when passed from the frontend
         self.select = select
+        # Whether it is a starred article
         self.stared = stared
+        # Title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):
@@ -752,8 +802,11 @@ class GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSo
         dataset_name: str = None,
         name: str = None,
     ):
+        # Unique identifier for the dataset: code+datasetName
         self.code = code
+        # Unique identifier for the dataset: code+datasetName
         self.dataset_name = dataset_name
+        # Search source name: Chinese
         self.name = name
 
     def validate(self):
@@ -794,7 +847,9 @@ class GetPropertiesResponseBodyDataConsoleConfig(DaraModel):
         tip_content: str = None,
         title: str = None,
     ):
+        # Prompt content
         self.tip_content = tip_content
+        # Title
         self.title = title
 
     def validate(self):

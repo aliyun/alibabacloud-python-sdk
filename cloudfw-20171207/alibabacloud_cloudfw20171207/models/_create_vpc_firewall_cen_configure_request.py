@@ -20,59 +20,66 @@ class CreateVpcFirewallCenConfigureRequest(DaraModel):
         vpc_firewall_name: str = None,
         vpc_region: str = None,
     ):
-        # The ID of the CEN instance.
+        # The instance ID of the CEN instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # Specifies whether to enable the VPC firewall. Valid values:
+        # Settings for the virtual private cloud (VPC) firewall switch status. Valid values:
         # 
-        # *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
-        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. You can call the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to manually enable the VPC firewall.
+        # - **open** (default): The VPC firewall is automatically enabled after you create a VPC firewall.
+        # - **close**: The VPC firewall is not automatically enabled after you create a VPC firewall. You can invoke the [ModifyVpcFirewallCenSwitchStatus](https://help.aliyun.com/document_detail/345780.html) operation to enable the VPC firewall.
         # 
         # This parameter is required.
         self.firewall_switch = firewall_switch
-        # The CIDR block of the vSwitch that is automatically created for the VPC firewall. You must specify a CIDR block for the Cloud_Firewall_VSWITCH VPC that is automatically created for the VPC firewall for traffic redirection. The CIDR block does not conflict with your network plan. The subnet mask of the CIDR block must be less than or equal to 29 bits in length. The CIDR block of the vSwitch must be within the network segment of the VPC.
+        # The CIDR block of the vSwitch used by the firewall. Specify a CIDR block with a subnet mask of no more than 29 bits that does not conflict with your network planning. This CIDR block is allocated to the vSwitch during the procedure for automatic creation of the firewall security VPC (Cloud_Firewall_VSWITCH) for traffic redirection. The vSwitch CIDR block must be a subnet of the firewall VPC CIDR block.
         # 
-        # If you do not specify a value, the CIDR block 10.219.219.216/29 is automatically allocated.
+        # If you leave this parameter empty, the default CIDR block 10.219.219.216/29 is automatically assigned.
         # 
-        # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region.
+        # > This parameter takes effect only when you create a VPC firewall for the first time in the local region of the CEN instance.
         self.firewall_vswitch_cidr_block = firewall_vswitch_cidr_block
-        # The CIDR block of the VPC that is automatically created for the VPC firewall. You must specify a CIDR block for the Cloud_Firewall_VPC VPC that is automatically created for the VPC firewall for traffic redirection. The subnet mask of the CIDR block must be less than or equal to 28 bits in length.
+        # The CIDR block of the VPC used by the firewall. Specify a CIDR block with a subnet mask of no more than 28 bits. This CIDR block is allocated to the VPC that is created during the procedure to create a VPC firewall (Cloud_Firewall_VPC) for automatic creation of the firewall security VPC for traffic redirection.
         # 
-        # If you do not specify a value, the CIDR block 10.0.0.0/8 is automatically allocated.
+        # If you leave this parameter empty, the default CIDR block 10.0.0.0/8 is automatically assigned.
         # 
-        # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region.
+        # > This parameter takes effect only when a VPC firewall is created for the first time in the local region of the CEN instance.
         self.firewall_vpc_cidr_block = firewall_vpc_cidr_block
-        # The ID of the backup availability zone to which the firewall belongs. The firewall will automatically switch to the backup availability zone to continue running only if the primary availability zone service is unavailable.
-        # If this parameter is not filled, the backup availability zone for the firewall will be automatically assigned.
-        # > This parameter is only effective when creating a VPC firewall for the first time in this CEN region.
+        # The ID of the secondary zone of the firewall. The firewall performs an automatic switchover to the secondary zone to continue running only when the primary zone becomes unavailable.
+        # 
+        # If you leave this parameter empty, a default active secondary zone is automatically allocated.
+        # 
+        # 
+        # 
+        # > This parameter takes effect only when you create a VPC firewall for the first time in the local region of the CEN instance.
         self.firewall_vpc_standby_zone_id = firewall_vpc_standby_zone_id
-        # The ID of the zone to which the vSwitch belongs. If your service is latency-sensitive, you can specify the same zone for the vSwitch of the firewall and the vSwitch of your business VPC to minimize latency.
+        # The ID of the primary zone of the firewall. If your business is latency-sensitive, set this parameter to the same zone as the vSwitch of the business VPC to reduce latency.
         # 
-        # If you do not specify a value, a zone is automatically assigned for the vSwitch.
+        # If you leave this parameter empty, a default active zone is automatically allocated.
         # 
-        # >  This parameter takes effect only when you create a VPC firewall for the first time in the current CEN instance and region. For more information about zones that are supported by each region, see [Query zones](https://help.aliyun.com/document_detail/36064.html).
+        # 
+        # 
+        # > This parameter takes effect only when you create a VPC firewall for the first time in the local region of the CEN instance.
         self.firewall_vpc_zone_id = firewall_vpc_zone_id
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The ID of the VPC for which you want to create the VPC firewall.
+        # The instance ID of the VPC-connected instance for which you want to create a virtual private cloud (VPC) firewall.
         # 
         # This parameter is required.
         self.network_instance_id = network_instance_id
-        # The ID of the vSwitch that is used to associate with the elastic network interface (ENI) required by the VPC firewall.
+        # The ID of the vSwitch to which the Cloud Firewall interface belongs.
         self.v_switch_id = v_switch_id
-        # The instance name of the VPC firewall.
+        # The instance name of the virtual private cloud (VPC) firewall.
         # 
         # This parameter is required.
         self.vpc_firewall_name = vpc_firewall_name
-        # The ID of the region to which the VPC belongs.
+        # The region ID of the VPC for which you want to create a virtual private cloud (VPC) firewall.
         # 
-        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         # 
         # This parameter is required.
         self.vpc_region = vpc_region

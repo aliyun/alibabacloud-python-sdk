@@ -12,6 +12,7 @@ class GetVpcConfigResponseBody(DaraModel):
         self,
         trusted_vpcs: List[main_models.GetVpcConfigResponseBodyTrustedVpcs] = None,
     ):
+        # List of trusted VPCs.
         self.trusted_vpcs = trusted_vpcs
 
     def validate(self):
@@ -49,9 +50,11 @@ class GetVpcConfigResponseBodyTrustedVpcs(DaraModel):
         extended_options: Dict[str, str] = None,
         vpc_id: str = None,
     ):
+        # The time when the VPC was created, in UNIX timestamp milliseconds.
         self.created_at = created_at
+        # List of configuration items.
         self.extended_options = extended_options
-        # VPC ID。
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

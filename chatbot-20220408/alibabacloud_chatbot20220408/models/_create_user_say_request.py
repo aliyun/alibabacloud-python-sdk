@@ -14,9 +14,13 @@ class CreateUserSayRequest(DaraModel):
         instance_id: str = None,
         user_say_definition: main_models.CreateUserSayRequestUserSayDefinition = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # The ID of the chatbot instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The definition of the user say.
         self.user_say_definition = user_say_definition
 
     def validate(self):
@@ -60,10 +64,15 @@ class CreateUserSayRequestUserSayDefinition(DaraModel):
         intent_id: int = None,
         slot_infos: List[main_models.CreateUserSayRequestUserSayDefinitionSlotInfos] = None,
     ):
+        # The content of the user say.
+        # 
         # This parameter is required.
         self.content = content
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # An array of objects, each containing information about a slot.
         self.slot_infos = slot_infos
 
     def validate(self):
@@ -113,8 +122,11 @@ class CreateUserSayRequestUserSayDefinitionSlotInfos(DaraModel):
         slot_id: str = None,
         start_index: int = None,
     ):
+        # The zero-based end index of the slot in the user say content. This index is exclusive.
         self.end_index = end_index
+        # The ID of the slot.
         self.slot_id = slot_id
+        # The zero-based start index of the slot in the user say content.
         self.start_index = start_index
 
     def validate(self):

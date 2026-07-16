@@ -151,7 +151,9 @@ class ListOperationTaskResponseBodyOperationTasks(DaraModel):
         # The error message.
         self.error_msg = error_msg
         # Whether the instance is released:
+        # 
         # - true: Released
+        # 
         # - false: Not released
         self.instance_freed = instance_freed
         # The ID of the server instance.
@@ -162,50 +164,78 @@ class ListOperationTaskResponseBodyOperationTasks(DaraModel):
         self.region_id = region_id
         # The type of repair supported by the check item:
         # 
-        # - **1**：Supports repair and rollback operations
-        # - **2**：Supports repair but not rollback
-        # - **3**：Redirect to a third-party platform for operation
+        # - **1**:Supports repair and rollback operations
+        # 
+        # - **2**:Supports repair but not rollback
+        # 
+        # - **3**:Redirect to a third-party platform for operation
         self.repair_support_type = repair_support_type
         # The risk level of the detected alert. Values:
+        # 
         # - **high**: High risk.
-        #  - **medium**: Medium risk. 
+        # 
+        # - **medium**: Medium risk.
+        # 
         # - **low**: Low risk.
         self.risk_level = risk_level
         # The ID of the main task.
         self.root_task_id = root_task_id
         # The status of the task. Possible values:
         # 
-        # - **INIT**：Initialization
-        # - **FAIL**：Processing failed
-        # - **THROTTLING**：Repairing concurrently
-        # - **IN_BACKUP**：Backing up
-        # - **BACKED_UP**：Backed up
-        # - **BACKUP_FAIL**：Backup failed
-        # - **REPAIRING**：Repairing
-        # - **REPAIR_SUCCESS**：Repair succeeded
-        # - **REPAIR_FAIL**：Repair failed
-        # - **REPAIR_SUCCESS_VERIFYING**：Verifying repair success
-        # - **REPAIR_SUCCESS_UNVERIFIED**：Verification of repair success failed
-        # - **REPAIR_SUCCESS_VERIFIED**：Verification of repair success succeeded
-        # - **REPAIR_RE_EXECUTE**：Re-executing repair
-        # - **ROLL_BACKING**：Rolling back
-        # - **ROLL_BACKED**：Rolled back
-        # - **ROLL_BACK_FAIL**：Rollback failed
-        # - **ROLL_BACK_INIT**：Initiating rollback
-        # - **ROLL_BACK_VERIFYING**：Verifying rollback success
-        # - **ROLL_BACK_UNVERIFIED**：Verification of rollback success failed
-        # - **ROLL_BACK_VERIFIED**：Verification of rollback success succeeded
+        # - **INIT**:Initialization
+        # 
+        # - **FAIL**:Processing failed
+        # 
+        # - **THROTTLING**:Repairing concurrently
+        # 
+        # - **IN_BACKUP**:Backing up
+        # 
+        # - **BACKED_UP**:Backed up
+        # 
+        # - **BACKUP_FAIL**:Backup failed
+        # 
+        # - **REPAIRING**:Repairing
+        # 
+        # - **REPAIR_SUCCESS**:Repair succeeded
+        # 
+        # - **REPAIR_FAIL**:Repair failed
+        # 
+        # - **REPAIR_SUCCESS_VERIFYING**:Verifying repair success
+        # 
+        # - **REPAIR_SUCCESS_UNVERIFIED**:Verification of repair success failed
+        # 
+        # - **REPAIR_SUCCESS_VERIFIED**:Verification of repair success succeeded
+        # 
+        # - **REPAIR_RE_EXECUTE**:Re-executing repair
+        # 
+        # - **ROLL_BACKING**:Rolling back
+        # 
+        # - **ROLL_BACKED**:Rolled back
+        # 
+        # - **ROLL_BACK_FAIL**:Rollback failed
+        # 
+        # - **ROLL_BACK_INIT**:Initiating rollback
+        # 
+        # - **ROLL_BACK_VERIFYING**:Verifying rollback success
+        # 
+        # - **ROLL_BACK_UNVERIFIED**:Verification of rollback success failed
+        # 
+        # - **ROLL_BACK_VERIFIED**:Verification of rollback success succeeded
         self.status = status
         # The display status of the repair task.
         self.status_show_name = status_show_name
         # Whether rollback is supported:
+        # 
         # - true: Supported
+        # 
         # - false: Not supported
         self.support_roll_back = support_roll_back
         # The ID of the operation task.
         self.task_id = task_id
         # The type of the operation task being queried:
+        # 
         # - REPAIR: Repair
+        # 
         # - ROLLBACK: Rollback
         self.type = type
 

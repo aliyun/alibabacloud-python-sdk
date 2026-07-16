@@ -10,11 +10,11 @@ class GetRoutineCodeVersionRequest(DaraModel):
         code_version: str = None,
         name: str = None,
     ):
-        # The code version.
+        # The code version number.
         # 
         # This parameter is required.
         self.code_version = code_version
-        # The routine name.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name

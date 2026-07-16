@@ -16,7 +16,6 @@ class QueryCloudRecordTextResponseBody(DaraModel):
     ):
         self.has_more = has_more
         self.paragraph_list = paragraph_list
-        # requestId
         self.request_id = request_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class GetCustomResponseCodeRuleRequest(DaraModel):
         config_id: int = None,
         site_id: int = None,
     ):
+        # Configuration ID.
+        # 
         # This parameter is required.
         self.config_id = config_id
+        # Site ID. For more information, see [ListSites](https://help.aliyun.com/document_detail/2850189.html).
+        # 
         # This parameter is required.
         self.site_id = site_id
 

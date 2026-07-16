@@ -23,47 +23,46 @@ class DescribeCheckWarningsRequest(DaraModel):
         self.check_id = check_id
         # The type of the check item. Valid values:
         # 
-        # *   **hc.check.type.identity_auth**: identity authentication
-        # *   **hc.check.type.access_control**: access control
-        # *   **hc.check.type.network_service**: network and service
-        # *   **hc.check.type.service_conf**: service configuration
-        # *   **hc.check.type.file_rights**: file permission
-        # *   **hc.check.type.security_audit**: security audit
-        # *   **hc.check.type.attack_defense**: intrusion prevention
-        # *   **hc.check.type.others**: others
+        # - **hc.check.type.identity_auth**: identity authentication
+        # - **hc.check.type.access_control**: access control
+        # - **hc.check.type.network_service**: network and service
+        # - **hc.check.type.service_conf**: service configuration
+        # - **hc.check.type.file_rights**: file permission
+        # - **hc.check.type.security_audit**: security audit
+        # - **hc.check.type.attack_defense**: intrusion prevention
+        # - **hc.check.type.others**: others.
         self.check_type = check_type
-        # The name of the container.
+        # The container name.
         self.container_name = container_name
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of check items to display on each page in a paged query. Default value: **20**, which indicates that 20 check items are displayed on each page.
         self.page_size = page_size
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  To obtain the Alibaba Cloud account ID, call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The ID of the risk item. This parameter is required.
+        # The risk item ID. This parameter is required.
         # 
-        # >  To query the information about the risk items and check items of a server, you must specify the IDs of the risk items. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the IDs of risk items.
+        # > To query check item information for a specified risk item and a specified server, you must provide the risk item ID. You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to obtain this ID.
         self.risk_id = risk_id
-        # The status of the check item. Valid values:
+        # The risk detection status. Valid values:
         # 
-        # *   **1**: failed
-        # *   **2**: verifying
-        # *   **3**: passed
-        # *   **5**: expired
-        # *   **6**: ignored
+        # - **1**: failed
+        # - **2**: verifying
+        # - **3**: passed
+        # - **5**: expired
+        # - **6**: ignored.
         self.risk_status = risk_status
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the server on which the baseline check is performed.
+        # The ID of the server on which the baseline check is performed.
         # 
-        # > To query specified risk items and the check items of a specified server, you must provide the ID of the server on which the baseline check is performed. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to query the IDs of servers.
+        # > To query check item information for a specified risk item and a specified server, you must provide the ID of the server on which the baseline check is performed. You can call the [DescribeWarningMachines](~~DescribeWarningMachines~~) operation to obtain this ID.
         # 
         # This parameter is required.
         self.uuid = uuid

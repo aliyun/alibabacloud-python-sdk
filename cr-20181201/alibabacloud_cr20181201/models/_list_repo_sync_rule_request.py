@@ -27,9 +27,9 @@ class ListRepoSyncRuleRequest(DaraModel):
         self.page_size = page_size
         # The name of the image repository.
         self.repo_name = repo_name
-        # The ID of the destination instance.
+        # The ID of the target instance.
         self.target_instance_id = target_instance_id
-        # The region ID of the destination instance.
+        # The ID of the target region.
         self.target_region_id = target_region_id
 
     def validate(self):

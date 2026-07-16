@@ -14,7 +14,9 @@ class ListUnknownThreatDetectEventResponseBody(DaraModel):
         page_info: main_models.ListUnknownThreatDetectEventResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The returned data details.
         self.data = data
+        # The pagination information.
         self.page_info = page_info
         # Id of the request
         self.request_id = request_id
@@ -70,9 +72,13 @@ class ListUnknownThreatDetectEventResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The number of alerting events displayed on the current page in a paged query. This parameter is used for paging.
         self.count = count
+        # The page number of the current page in a paged query. This parameter is used for paging.
         self.current_page = current_page
+        # The maximum number of entries displayed on each page in a paged query. This parameter is used for paging.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -116,10 +122,13 @@ class ListUnknownThreatDetectEventResponseBodyPageInfo(DaraModel):
 class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
     def __init__(
         self,
+        analyze_desc: str = None,
+        analyze_result: str = None,
         cmd_chain: str = None,
         cmdline: str = None,
         count: int = None,
         first_time: int = None,
+        handle_type: str = None,
         hash_key: str = None,
         id: str = None,
         instance_name: str = None,
@@ -136,24 +145,50 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
+        self.analyze_desc = analyze_desc
+        self.analyze_result = analyze_result
+        # The process chain.
         self.cmd_chain = cmd_chain
+        # The process command line.
         self.cmdline = cmdline
+        # The number of occurrences.
         self.count = count
+        # The timestamp of the first occurrence.
         self.first_time = first_time
+        self.handle_type = handle_type
+        # The unique identifier of the file.
         self.hash_key = hash_key
+        # The event ID.
         self.id = id
+        # The instance name.
         self.instance_name = instance_name
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The private IP address.
         self.intranet_ip = intranet_ip
+        # The timestamp of the most recent occurrence.
         self.last_time = last_time
+        # The MD5 hash of the file.
         self.md_5 = md_5
+        # The parent command line.
         self.parent_cmdline = parent_cmdline
+        # The parent process ID.
         self.parent_pid = parent_pid
+        # The parent process path.
         self.parent_process_path = parent_process_path
+        # The process ID.
         self.pid = pid
+        # The process path.
         self.process_path = process_path
+        # The SHA-256 hash of the file.
         self.sha_256 = sha_256
+        # The event status. Valid values:
+        # 
+        # - **1**: Unhandled.
+        # - **2**: Blocked.
+        # - **3**: Ignored.
         self.status = status
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):
@@ -164,6 +199,12 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.analyze_desc is not None:
+            result['AnalyzeDesc'] = self.analyze_desc
+
+        if self.analyze_result is not None:
+            result['AnalyzeResult'] = self.analyze_result
+
         if self.cmd_chain is not None:
             result['CmdChain'] = self.cmd_chain
 
@@ -175,6 +216,9 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
         if self.first_time is not None:
             result['FirstTime'] = self.first_time
+
+        if self.handle_type is not None:
+            result['HandleType'] = self.handle_type
 
         if self.hash_key is not None:
             result['HashKey'] = self.hash_key
@@ -225,6 +269,12 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AnalyzeDesc') is not None:
+            self.analyze_desc = m.get('AnalyzeDesc')
+
+        if m.get('AnalyzeResult') is not None:
+            self.analyze_result = m.get('AnalyzeResult')
+
         if m.get('CmdChain') is not None:
             self.cmd_chain = m.get('CmdChain')
 
@@ -236,6 +286,9 @@ class ListUnknownThreatDetectEventResponseBodyData(DaraModel):
 
         if m.get('FirstTime') is not None:
             self.first_time = m.get('FirstTime')
+
+        if m.get('HandleType') is not None:
+            self.handle_type = m.get('HandleType')
 
         if m.get('HashKey') is not None:
             self.hash_key = m.get('HashKey')

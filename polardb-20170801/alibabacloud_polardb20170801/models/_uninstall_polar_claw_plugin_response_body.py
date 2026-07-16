@@ -15,13 +15,19 @@ class UninstallPolarClawPluginResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
+        # Indicates whether the operation was successful.
         self.ok = ok
+        # The plugin ID.
         self.plugin_id = plugin_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the gateway has been restarted.
         self.restarted = restarted
 
     def validate(self):

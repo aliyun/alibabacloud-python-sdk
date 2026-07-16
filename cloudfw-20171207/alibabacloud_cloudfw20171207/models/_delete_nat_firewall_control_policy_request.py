@@ -12,24 +12,24 @@ class DeleteNatFirewallControlPolicyRequest(DaraModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
-        # The UUID of the access control policy.
+        # The unique ID of the access control policy.
         # 
-        # To delete an access control policy, you must provide the ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+        # To delete a security access control policy, you must provide the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to obtain the ID.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The direction of the traffic to which the access control policy applies.
+        # The direction of traffic that the access control policy controls.
         # 
         # Valid values:
         # 
-        # *   **out**: outbound traffic
+        # - **out**: outbound traffic.
         # 
         # This parameter is required.
         self.direction = direction
-        # The language of the content within the response. Valid values:
+        # The language type of the response message. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
         # 

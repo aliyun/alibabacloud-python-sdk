@@ -23,31 +23,31 @@ class TransformerForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # Transformation operation.
+        # The transform operations.
         self.actions = actions
-        # Create Time.
+        # The time when the converter was created.
         self.create_time = create_time
-        # Description.
+        # The description.
         self.description = description
-        # Whether enabled.
+        # Indicates whether the converter is enabled.
         self.enable = enable
-        # Filter Setting.
+        # The filter settings.
         self.filter_setting = filter_setting
-        # Exit after matching processing.
+        # Indicates whether to exit after a match is processed.
         self.quit_after_match = quit_after_match
-        # Sort order.
+        # The sort ID.
         self.sort_id = sort_id
-        # transformer Id
+        # The transformer ID.
         self.transformer_id = transformer_id
-        # Name.
+        # The name.
         # 
         # This parameter is required.
         self.transformer_name = transformer_name
-        # Update Time.
+        # The time when the converter was last updated.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # workspace
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

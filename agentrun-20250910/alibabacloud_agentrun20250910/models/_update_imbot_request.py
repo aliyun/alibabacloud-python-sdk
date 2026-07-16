@@ -10,6 +10,8 @@ class UpdateIMBotRequest(DaraModel):
         self,
         body: main_models.UpdateIMBotInput = None,
     ):
+        # Contains the configuration details to update for the IM bot.
+        # 
         # This parameter is required.
         self.body = body
 

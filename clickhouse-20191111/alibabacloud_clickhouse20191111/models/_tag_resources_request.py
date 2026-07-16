@@ -21,20 +21,24 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **CLUSTER**.
+        # The resource type. The value must be **DBCLUSTER**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -114,9 +118,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the resource. You can add N tag keys. N is an integer. Valid values of N: **1 to 20**.
+        # The tag key. You can add up to **20** tag keys.
         self.key = key
-        # The value of the tag to add to the resource. You can add N tag values. N is an integer. Valid values of N: **1 to 20**.
+        # The value of the tag key. You can add up to **20** tag values.
         self.value = value
 
     def validate(self):

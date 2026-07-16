@@ -18,26 +18,39 @@ class GetWafRuleResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # Rule configuration.
+        # The rule configuration.
         self.config = config
-        # The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
+        # The ID of the WAF rule. You can call the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) operation to obtain the ID.
         self.id = id
-        # Rule name.
+        # The rule name.
         # 
         # This parameter is required.
         self.name = name
-        # WAF operation phase.
+        # The phase in which the WAF rule runs. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
+        # - ip_access_rule: IP access rule
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rule
         # 
         # This parameter is required.
         self.phase = phase
-        # The position of the rule in the rule set.
+        # The position of the rule in the ruleset.
         self.position = position
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ID.
         self.ruleset_id = ruleset_id
-        # Rule status.
+        # The rule status.
         self.status = status
-        # The last modified time of the rule.
+        # The time when the rule was last modified.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

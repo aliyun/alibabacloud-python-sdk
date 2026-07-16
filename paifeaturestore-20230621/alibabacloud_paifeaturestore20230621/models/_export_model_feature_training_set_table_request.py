@@ -16,10 +16,15 @@ class ExportModelFeatureTrainingSetTableRequest(DaraModel):
         real_time_partition_count_value: int = None,
         training_set_config: main_models.ExportModelFeatureTrainingSetTableRequestTrainingSetConfig = None,
     ):
+        # A map of feature view configurations.
         self.feature_view_config = feature_view_config
+        # The input configuration for the label table.
         self.label_input_config = label_input_config
+        # The polling interval for retrieving real-time features.
         self.real_time_iterate_interval = real_time_iterate_interval
+        # The number of days for partition statistics of the real-time feature view.
         self.real_time_partition_count_value = real_time_partition_count_value
+        # The configuration for the training set.
         self.training_set_config = training_set_config
 
     def validate(self):
@@ -85,6 +90,7 @@ class ExportModelFeatureTrainingSetTableRequestTrainingSetConfig(DaraModel):
         self,
         partitions: Dict[str, dict] = None,
     ):
+        # The list of partitions.
         self.partitions = partitions
 
     def validate(self):
@@ -113,7 +119,9 @@ class ExportModelFeatureTrainingSetTableRequestLabelInputConfig(DaraModel):
         event_time: str = None,
         partitions: Dict[str, dict] = None,
     ):
+        # The event time.
         self.event_time = event_time
+        # The list of partitions.
         self.partitions = partitions
 
     def validate(self):

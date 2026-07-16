@@ -14,10 +14,16 @@ class GrantDataServiceApiRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The grant command.
+        # 
         # This parameter is required.
         self.grant_command = grant_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -70,20 +76,40 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         reason: str = None,
         user_id: str = None,
     ):
+        # The API ID.
+        # 
         # This parameter is required.
         self.api_id = api_id
-        # AppID
+        # The application ID.
         self.app_id = app_id
+        # Specifies whether to request development environment permissions for operation-type APIs.
         self.apply_dev = apply_dev
+        # Specifies whether to request production environment permissions for operation-type APIs.
         self.apply_prod = apply_prod
+        # The list of authorization permission types. Valid values:
+        # - When the grantee is an application, the following permission types are supported. To grant delegation permissions, you must also grant usage permissions.
+        #   - USE: usage permission.
+        #   - DELEGATION: delegation permission.
+        # - When the grantee is an individual, only USE (usage) permission is supported.
+        # - If this parameter is not specified, the default value is USE (usage) permission.
         self.auth_types = auth_types
+        # The list of development environment permission fields for query-type APIs. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty. This parameter is not required for operation-type APIs.
         self.dev_field_list = dev_field_list
+        # The expiration date in the format of yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.expire_date = expire_date
+        # The authorization object type. Valid values:
+        # - APP: application.
+        # - USER: user.
         self.grantee_type = grantee_type
+        # The list of production environment permission fields for query-type APIs. This parameter is required in basic mode. This parameter is not required for operation-type APIs.
         self.prod_field_list = prod_field_list
+        # The reason for the authorization request.
+        # 
         # This parameter is required.
         self.reason = reason
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -188,6 +214,7 @@ class GrantDataServiceApiRequestGrantCommandProdFieldList(DaraModel):
         self,
         id: int = None,
     ):
+        # The API permission field ID.
         self.id = id
 
     def validate(self):
@@ -215,6 +242,7 @@ class GrantDataServiceApiRequestGrantCommandDevFieldList(DaraModel):
         self,
         id: int = None,
     ):
+        # The API permission field ID.
         self.id = id
 
     def validate(self):

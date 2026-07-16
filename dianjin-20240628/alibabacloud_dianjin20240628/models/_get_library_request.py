@@ -9,6 +9,8 @@ class GetLibraryRequest(DaraModel):
         self,
         library_id: str = None,
     ):
+        # The document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
 

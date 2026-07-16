@@ -11,12 +11,13 @@ class DeleteShortUrlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The status code of the request.
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - `OK` indicates the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

@@ -13,24 +13,29 @@ class EnableAutoTopicCreationRequest(DaraModel):
         region_id: str = None,
         update_partition: bool = None,
     ):
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The operation that you want to perform. Valid values:
+        # Currently only these three request parameters are supported:
         # 
-        # *   enable: enables the automatic topic creation feature.
-        # *   disable: disables the automatic topic creation feature.
-        # *   updatePartition: changes the number of partitions in topics that are automatically created.
+        # - enable: Enable automatic topic creation.
+        # 
+        # - disable: Disable automatic topic creation.
+        # 
+        # - updatePartition: Modify the number of partitions for automatic creation.
         self.operate = operate
-        # The changed number of partitions in topics that are automatically created.
+        # Adjust the default number of partitions for automatically created topics.
         # 
-        # This parameter takes effect only if you set Operate to updatePartition.
+        # > This value is passed only when the Operate value is updatePartition, or when UpdatePartition is true.
         self.partition_num = partition_num
-        # The region ID.
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # Modify the number of partitions for automatic creation.
+        # 
+        # > If this parameter is set to true, the Operate parameter must be updatePartition or left empty.
         self.update_partition = update_partition
 
     def validate(self):

@@ -13,7 +13,7 @@ class UpdateExtendfilesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.UpdateExtendfilesResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -59,11 +59,11 @@ class UpdateExtendfilesResponseBodyResult(DaraModel):
         name: str = None,
         source_type: str = None,
     ):
-        # The size of the driver file. Unit: byte.
+        # The size of the extension file. Unit: bytes.
         self.file_size = file_size
-        # The name of the driver file.
+        # The name of the extension file.
         self.name = name
-        # The source of the driver file. This parameter is fixed as ORIGIN, which indicates that the driver file is retained.
+        # The source of the extension file. Only ORIGIN (retained original extension file) is supported.
         self.source_type = source_type
 
     def validate(self):

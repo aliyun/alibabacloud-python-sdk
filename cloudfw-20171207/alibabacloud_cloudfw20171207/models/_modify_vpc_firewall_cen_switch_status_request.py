@@ -12,23 +12,25 @@ class ModifyVpcFirewallCenSwitchStatusRequest(DaraModel):
         member_uid: str = None,
         vpc_firewall_id: str = None,
     ):
-        # Specifies whether to enable the VPC firewall. Valid values:
+        # The status of the VPC firewall. Valid values:
         # 
-        # *   **open**: yes
-        # *   **close**: no
+        # - **open**: Enable.
+        # 
+        # - **close**: Disable.
         # 
         # This parameter is required.
         self.firewall_switch = firewall_switch
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the member account.
         self.member_uid = member_uid
         # The instance ID of the VPC firewall.
         # 
-        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance IDs of VPC firewalls.
+        # > You can call the [DescribeVpcFirewallCenList](https://help.aliyun.com/document_detail/345777.html) operation to query the instance ID of the VPC firewall.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

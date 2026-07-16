@@ -13,9 +13,9 @@ class ExportRecordResponseBody(DaraModel):
     ):
         # The name of the exported file.
         self.file_name = file_name
-        # The ID of the exported file.
+        # The ID of the export task.
         self.id = id
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request, used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

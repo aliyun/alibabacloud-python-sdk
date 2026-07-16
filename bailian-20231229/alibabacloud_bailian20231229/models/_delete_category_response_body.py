@@ -15,13 +15,19 @@ class DeleteCategoryResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
-        # data
+        # The data field returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class DeleteCategoryResponseBodyData(DaraModel):
         self,
         category_id: str = None,
     ):
+        # The ID of the deleted category.
         self.category_id = category_id
 
     def validate(self):

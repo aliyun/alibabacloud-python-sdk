@@ -18,35 +18,45 @@ class ExportImageRequest(DaraModel):
         resource_owner_id: int = None,
         role_name: str = None,
     ):
-        self.dry_run = dry_run
-        # The format in which you want to export the custom image. Valid values:
+        # Specifies whether to perform a dry run to check the request\\"s validity without actually exporting the image. Valid values:
         # 
-        # *   raw
-        # *   vhd
-        # *   qcow2
-        # *   vmdk
-        # *   vdi
+        # - `true`: Performs a dry run. If the check succeeds, the `DryRunOperation` error code is returned. If the check fails, an error is returned.
+        # - `false`: Sends a normal request. If the check succeeds, the image is exported.
+        # 
+        # Default value: false.
+        self.dry_run = dry_run
+        # The format of the exported image file. Valid values:
+        # 
+        # - raw.
+        # 
+        # - vhd.
+        # 
+        # - qcow2.
+        # 
+        # - vmdk.
+        # 
+        # - vdi.
         # 
         # Default value: raw.
         self.image_format = image_format
-        # The custom image ID.
+        # The ID of the custom image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The OSS bucket in which you want to store the exported custom image.
+        # The destination OSS bucket for the exported image.
         # 
         # This parameter is required.
         self.ossbucket = ossbucket
-        # The prefix for the name of the OSS object. The prefix must be 1 to 30 characters in length and can contain digits and letters.
+        # The prefix for the OSS object. The prefix must be 1 to 30 characters in length and can consist of letters and digits.
         self.ossprefix = ossprefix
         self.owner_id = owner_id
-        # The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the RAM role that you want to use to export the custom image.
+        # The name of the RAM role used to export the image.
         self.role_name = role_name
 
     def validate(self):

@@ -12,11 +12,17 @@ class GetHistoryListByBizTypeRequest(DaraModel):
         page: int = None,
         page_size: int = None,
     ):
+        # Unique business identifier. When bizType is LibraryChat, bizId is the document library ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # Business type. Supported values are LlmChat and LibraryChat.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Page number
         self.page = page
+        # Number of records per page
         self.page_size = page_size
 
     def validate(self):

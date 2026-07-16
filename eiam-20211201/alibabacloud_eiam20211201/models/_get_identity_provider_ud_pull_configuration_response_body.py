@@ -15,7 +15,7 @@ class GetIdentityProviderUdPullConfigurationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Inbound Synchronization Configuration Information
+        # The inbound synchronization configuration.
         self.ud_pull_configuration = ud_pull_configuration
 
     def validate(self):
@@ -59,32 +59,32 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfiguration(Dara
         pull_protected_rule: main_models.GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullProtectedRule = None,
         ud_sync_scope_config: main_models.GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyncScopeConfig = None,
     ):
-        # Group Synchronization Status
-        # Possible values:
+        # The group synchronization status. Valid values:
         # 
-        # Disabled: disabled
-        # 
-        # Enabled: enabled
+        # - disabled
+        # - enabled.
         self.group_sync_status = group_sync_status
-        # Identity provider ID
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # Incremental Callback Status: Whether to process incremental callback data from the IdP
+        # The incremental callback status, which specifies whether to process incremental callback data from the IdP. Valid values:
+        # 
+        # - disabled
+        # - enabled.
         self.incremental_callback_status = incremental_callback_status
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # LDAP Synchronization Side Related Configuration Information
+        # The LDAP synchronization configuration.
         self.ldap_ud_pull_config = ldap_ud_pull_config
-        # Scheduled sync configuration
+        # The periodic synchronization configuration.
         self.periodic_sync_config = periodic_sync_config
-        # Scheduled Validation Status: Whether to periodically validate data discrepancies between IDaaS and the Identity Provider. Possible values:
+        # The periodic verification status, which specifies whether to periodically verify data differences between IDaaS and the identity provider. Valid values:
         # 
-        # Disabled: disabled
-        # 
-        # Enabled: enabled
+        # - disabled
+        # - enabled.
         self.periodic_sync_status = periodic_sync_status
-        # Inbound Synchronization Protection Rule Configuration
+        # The inbound synchronization protection rule configuration.
         self.pull_protected_rule = pull_protected_rule
-        # Synchronization Scope Configuration Information
+        # The synchronization scope configuration.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -172,9 +172,9 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationUdSyn
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # Synchronization Source Node
+        # The list of source nodes for synchronization.
         self.source_scopes = source_scopes
-        # Synchronization Target Node
+        # The target node for synchronization.
         self.target_scope = target_scope
 
     def validate(self):
@@ -210,11 +210,11 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPullP
         organizational_unit_deleted_threshold: int = None,
         user_deleted_threshold: int = None,
     ):
-        # Group Deletion Threshold: If the number of deleted groups exceeds this value, the synchronization task will be terminated.
+        # The threshold for the number of deleted groups. If the number of deleted groups exceeds this value, the synchronization task is terminated.
         self.group_deleted_threshold = group_deleted_threshold
-        # Organization Deletion Threshold: If the number of deleted organizations exceeds this value, the synchronization task will be terminated.
+        # The threshold for the number of deleted organizational units. If the number of deleted organizational units exceeds this value, the synchronization task is terminated.
         self.organizational_unit_deleted_threshold = organizational_unit_deleted_threshold
-        # Account Deletion Threshold: If the number of deleted users exceeds this value, the synchronization task will be terminated.
+        # The threshold for the number of deleted accounts. If the number of deleted users exceeds this value, the synchronization task is terminated.
         self.user_deleted_threshold = user_deleted_threshold
 
     def validate(self):
@@ -256,11 +256,11 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationPerio
         periodic_sync_times: int = None,
         periodic_sync_type: str = None,
     ):
-        # Cron expression
+        # The cron expression.
         self.periodic_sync_cron = periodic_sync_cron
-        # Execution time slots, for example 3,5, meaning the task runs once between 03:00–04:00 and once between 05:00–06:00.
+        # The execution time points. For example, [3, 5] indicates that synchronization runs once between 3:00 and 4:00 and once between 5:00 and 6:00.
         self.periodic_sync_times = periodic_sync_times
-        # type
+        # The periodic synchronization type.
         self.periodic_sync_type = periodic_sync_type
 
     def validate(self):
@@ -305,17 +305,17 @@ class GetIdentityProviderUdPullConfigurationResponseBodyUdPullConfigurationLdapU
         user_object_class: str = None,
         user_object_class_custom_filter: str = None,
     ):
-        # Group Member Identifier
+        # The group member identifier attribute.
         self.group_member_attribute_name = group_member_attribute_name
-        # Group ObjectClass
+        # The group ObjectClass.
         self.group_object_class = group_object_class
-        # Group Custom Filter
+        # The custom filter for groups.
         self.group_object_class_custom_filter = group_object_class_custom_filter
-        # Organization ObjectClass
+        # The organizational unit ObjectClass.
         self.organization_unit_object_class = organization_unit_object_class
-        # User ObjectClass
+        # The user ObjectClass.
         self.user_object_class = user_object_class
-        # User ObjectClass Custom Filter
+        # The custom filter for users.
         self.user_object_class_custom_filter = user_object_class_custom_filter
 
     def validate(self):

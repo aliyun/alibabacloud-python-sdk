@@ -12,8 +12,11 @@ class QueryAlertRulesInput(DaraModel):
         pagination: main_models.Pagination = None,
         workspace: str = None,
     ):
+        # The filter criteria. Only alert rules that match these criteria are returned.
         self.filter = filter
+        # The pagination settings for the query. If omitted, the system returns the first page of results with the default page size.
         self.pagination = pagination
+        # The ID of the workspace that contains the alert rules.
         self.workspace = workspace
 
     def validate(self):

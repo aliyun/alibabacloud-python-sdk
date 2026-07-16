@@ -11,10 +11,16 @@ class DownloadScriptRecordingRequest(DaraModel):
         script_id: str = None,
         uuid: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Recording scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # Unique recording ID
+        # 
         # This parameter is required.
         self.uuid = uuid
 

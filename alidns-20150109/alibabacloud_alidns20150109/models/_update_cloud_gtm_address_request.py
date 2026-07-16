@@ -21,30 +21,35 @@ class UpdateCloudGtmAddressRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese
+        # 
+        # - en-US (default): English
         self.accept_language = accept_language
-        # The IP address or domain name.
+        # The updated IP address or domain name.
         self.address = address
-        # The ID of the address. This ID uniquely identifies the address.
+        # The unique ID of the address.
         # 
         # This parameter is required.
         self.address_id = address_id
-        # Address Attribution information.
+        # The attribution information of the address.
         self.attribute_info = attribute_info
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the value is unique among different requests. The value can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The new condition for determining the health state of the address. Valid values:
+        # The updated condition for determining the health status of the address:
         # 
-        # *   any_ok: The health check results of at least one health check template are normal.
-        # *   p30_ok: The health check results of at least 30% of health check templates are normal.
-        # *   p50_ok: The health check results of at least 50% of health check templates are normal.
-        # *   p70_ok: The health check results of at least 70% of health check templates are normal.
-        # *   all_ok: The health check results of all health check templates are normal.
+        # - any_ok: At least one probe is normal for all health check templates.
+        # 
+        # - p30_ok: At least 30% of the probes are normal for all health check templates.
+        # 
+        # - p50_ok: At least 50% of the probes are normal for all health check templates.
+        # 
+        # - p70_ok: At least 70% of the probes are normal for all health check templates.
+        # 
+        # - all_ok: All probes are normal for all health check templates.
         self.health_judgement = health_judgement
-        # The health check tasks.
+        # The list of health check tasks.
         self.health_tasks = health_tasks
-        # The name of the address.
+        # The updated name of the address.
         self.name = name
 
     def validate(self):
@@ -123,15 +128,17 @@ class UpdateCloudGtmAddressRequestHealthTasks(DaraModel):
         port: int = None,
         template_id: str = None,
     ):
-        # The service port of the address on which health check tasks are performed. If the ping protocol is used for health checks, the configuration of the service port is not supported.
+        # The service port of the target address for the health check. You cannot configure a service port if the health check uses the ping protocol.
         # 
-        # *   If you leave this parameter empty, the existing service port is deleted.
-        # *   If you specify this parameter, the existing service port is updated based on the value of this parameter.
+        # - If you leave this parameter empty, the currently configured port is deleted.
+        # 
+        # - If you specify a value for this parameter, the port is updated to the specified value.
         self.port = port
-        # The ID of the health check template that is associated with the address. This parameter is required if you specify a service port of the address for health check tasks.
+        # The ID of the health check template associated with the address. This parameter is required if you configure a health check port.
         # 
-        # *   If you leave this parameter empty, the associated health check template is disassociated from the address.
-        # *   If you specify this parameter, the associated health check template is updated based on the value of this parameter.
+        # - If you leave this parameter empty, the currently configured health check template is deleted.
+        # 
+        # - If you specify a value for this parameter, the health check template is updated to the specified value.
         self.template_id = template_id
 
     def validate(self):

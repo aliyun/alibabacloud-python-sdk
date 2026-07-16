@@ -21,20 +21,36 @@ class ETLConfiguration(DaraModel):
         sinks: List[main_models.ETLConfigurationSink] = None,
         to_time: int = None,
     ):
+        # The AccessKey ID that is required to read data from the source Logstore. This parameter is required. If you use a RAM role for authorization, set this parameter to an empty string.
         self.access_key_id = access_key_id
+        # The AccessKey secret that is required to read data from the source Logstore. This parameter is required. If you use a RAM role for authorization, set this parameter to an empty string.
         self.access_key_secret = access_key_secret
+        # The start time of the data transformation. The value is a UNIX timestamp. Unit: seconds. This parameter is required. To start the data transformation from the earliest log in the source Logstore, set this parameter to 0.
+        # 
         # This parameter is required.
         self.from_time = from_time
+        # The language of the data transformation script.
         self.lang = lang
+        # The name of the source Logstore.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # Advanced parameters.
         self.parameters = parameters
+        # The ARN of the RAM role that is authorized to read data from the source Logstore.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The data transformation script.
+        # 
         # This parameter is required.
         self.script = script
+        # The output destinations of the data transformation.
+        # 
         # This parameter is required.
         self.sinks = sinks
+        # The end time of the data transformation. The value is a UNIX timestamp. Unit: seconds. This parameter is required. To continuously perform the data transformation until you manually stop it, set this parameter to 0.
+        # 
         # This parameter is required.
         self.to_time = to_time
 

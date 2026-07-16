@@ -132,6 +132,10 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
         if not DaraCore.is_null(request.skip):
             query['skip'] = request.skip
         if not DaraCore.is_null(request.uid):
@@ -174,6 +178,10 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
         if not DaraCore.is_null(request.skip):
             query['skip'] = request.skip
         if not DaraCore.is_null(request.uid):

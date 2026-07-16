@@ -13,10 +13,24 @@ class DescribeGatewayListRequest(DaraModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
+        # The description of the gateway instance.
         self.gw_description = gw_description
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

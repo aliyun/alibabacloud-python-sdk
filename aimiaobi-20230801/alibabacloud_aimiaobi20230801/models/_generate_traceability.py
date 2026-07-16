@@ -12,6 +12,7 @@ class GenerateTraceability(DaraModel):
         self,
         news: List[main_models.GenerateTraceabilityNews] = None,
     ):
+        # The list of traceability news.
         self.news = news
 
     def validate(self):
@@ -54,12 +55,17 @@ class GenerateTraceabilityNews(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The index \\`n\\` that corresponds to the \\`[[n]]\\` marker in the original article. The index starts from 1.
         self.index = index
+        # The publish time.
         self.pub_time = pub_time
+        # The unique identity of the retrieval source.
         self.search_source = search_source
+        # The name of the retrieval source.
         self.search_source_name = search_source_name
+        # The title.
         self.title = title
-        # URL
+        # The URL.
         self.url = url
 
     def validate(self):

@@ -14,16 +14,16 @@ class AddTagsRequest(DaraModel):
         region_id: str = None,
         tag: List[main_models.AddTagsRequestTag] = None,
     ):
-        # The ID of the application group.
+        # The IDs of the application groups.
         # 
-        # Valid values of N: 1 to 20.
+        # The value of N can be from 1 to 20.
         # 
-        # For information about how to query the IDs of application groups, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/2513168.html).
+        # For information about how to obtain application group IDs, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/2513168.html).
         # 
         # This parameter is required.
         self.group_ids = group_ids
         self.region_id = region_id
-        # The tags.
+        # A list of tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -76,21 +76,21 @@ class AddTagsRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # Valid values of N: 1 to 3. A tag key can be 1 to 64 characters in length.
+        # The value of N can be from 1 to 3. The tag key must be 1 to 64 characters in length.
         # 
-        # You can create a tag key or specify an existing tag key. For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/2513189.html).
+        # Enter a new tag key or use an existing tag key from Cloud Monitor. For information about how to obtain tag keys, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/2513189.html).
         # 
-        # >  The tag key cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # > The tag key cannot start with `aliyun` or `acs:`. The `Tag.N.Key` and `Tag.N.Value` parameters must be specified together.
         # 
         # This parameter is required.
         self.key = key
         # The tag value.
         # 
-        # Valid values of N: 1 to 3. A tag value can be 1 to 64 characters in length.
+        # The value of N can be from 1 to 3. The tag value must be 1 to 64 characters in length.
         # 
-        # You can create a tag value or specify an existing tag value. For more information about how to obtain a tag value, see [DescribeTagValueList](https://help.aliyun.com/document_detail/2513188.html).
+        # Enter a new tag value or use an existing tag value from Cloud Monitor. For information about how to obtain tag values, see [DescribeTagValueList](https://help.aliyun.com/document_detail/2513188.html).
         # 
-        # >  The tag value cannot start with `aliyun` or `acs:`. The tag key (`Tag.N.Key`) and tag value (`Tag.N.Value`) must be specified at the same time.
+        # > The tag value cannot start with `aliyun` or `acs:`. The `Tag.N.Key` and `Tag.N.Value` parameters must be specified together.
         # 
         # This parameter is required.
         self.value = value

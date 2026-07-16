@@ -13,8 +13,11 @@ class ListImageAssociatedProjectsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array of project IDs for the associated workspaces.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

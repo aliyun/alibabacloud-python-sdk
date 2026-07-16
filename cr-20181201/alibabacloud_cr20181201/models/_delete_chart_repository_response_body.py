@@ -11,14 +11,15 @@ class DeleteChartRepositoryResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

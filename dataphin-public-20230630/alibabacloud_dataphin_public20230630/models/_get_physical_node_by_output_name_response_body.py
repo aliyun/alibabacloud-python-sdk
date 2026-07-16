@@ -15,11 +15,17 @@ class GetPhysicalNodeByOutputNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. OK indicates a successful request.
         self.code = code
+        # HTTP status code returned by the backend
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Node details
         self.node_info = node_info
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):
@@ -93,20 +99,56 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfo(DaraModel):
         status: str = None,
         trigger_config: str = None,
     ):
+        # Creation time
         self.create_time = create_time
+        # Node creator
         self.creator = creator
+        # Description
         self.description = description
+        # Node source
+        # - DATA_PROCESS: Code development
+        # - BLACK_BOX: Black box
+        # - ONE_ID: Extraction
+        # - PIPELINE: Pipeline
         self.from_ = from_
+        # Node ID
         self.id = id
+        # Last modified time
         self.last_modified_time = last_modified_time
+        # Node modifier
         self.modifier = modifier
+        # Name
         self.name = name
+        # Node subtype
+        # - MAX_COMPUTE_SQL
+        # - HIVE_SQL
+        # - SHELL
+        # - PYTHON
+        # - ONE_SERVICE_SQL
+        # - DATABASE_SQL, etc.
         self.operator_type = operator_type
+        # Node owner
         self.owner = owner
+        # Priority
+        # - HIGHEST
+        # - HIGH
+        # - MIDDLE
+        # - LOW
+        # - LOWEST
         self.priority = priority
+        # Project to which the node belongs
         self.project_info = project_info
+        # Scheduling period type
+        # - MINUTELY
+        # - HOURLY
+        # - DAILY
+        # - WEEKLY
+        # - MONTHLY
+        # - YEARLY
         self.schedule_type = schedule_type
+        # Node scheduling status
         self.status = status
+        # Trigger configuration, used to implement field dependencies on logical tables
         self.trigger_config = trigger_config
 
     def validate(self):
@@ -230,7 +272,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoProjectInfo(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # Project ID
         self.id = id
+        # Project name
         self.name = name
 
     def validate(self):
@@ -265,7 +309,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoOwner(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):
@@ -300,7 +346,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):
@@ -335,7 +383,9 @@ class GetPhysicalNodeByOutputNameResponseBodyNodeInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID
         self.id = id
+        # Username
         self.name = name
 
     def validate(self):

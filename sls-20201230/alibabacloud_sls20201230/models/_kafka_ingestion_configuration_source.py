@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, Any
+
 from darabonba.model import DaraModel
 
 class KafkaIngestionConfigurationSource(DaraModel):
@@ -12,11 +14,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         consumer_group: str = None,
         default_time_source: str = None,
         enable_sls_context: bool = None,
+        enable_vpc_nat: bool = None,
         encoding: str = None,
+        format: Dict[str, Any] = None,
         from_position: str = None,
         name_resolutions: str = None,
         parse_array: bool = None,
         processor_id: str = None,
+        security_groups: str = None,
         time_field: str = None,
         time_format: str = None,
         time_pattern: str = None,
@@ -24,30 +29,62 @@ class KafkaIngestionConfigurationSource(DaraModel):
         topics: str = None,
         value_type: str = None,
         vpc_id: str = None,
+        vswitch_id: str = None,
     ):
+        # A list of bootstrap servers for the Kafka cluster, formatted as `host1:port1,host2:port2`.
+        # 
         # This parameter is required.
         self.bootstrap_servers = bootstrap_servers
+        # The authentication and communication protocol settings in JSON format. For example, you can use this parameter to configure SASL authentication.
         self.communication = communication
+        # The ID of the Kafka consumer group.
         self.consumer_group = consumer_group
+        # The default time source to use if timestamp extraction from the log data fails. Valid values are `system` (the time of the ingestion server) and `kafka` (the timestamp from the Kafka message).
         self.default_time_source = default_time_source
+        # Specifies whether to add Simple Log Service (SLS) context fields, such as `__topic__` and `__partition__`, to each log entry.
         self.enable_sls_context = enable_sls_context
+        # Specifies whether to enable NAT for VPC connections. Set this to `true` if your Kafka cluster is in a VPC and requires NAT for access.
+        self.enable_vpc_nat = enable_vpc_nat
+        # The character encoding of the message. This parameter applies only when `valueType` is `text`.
+        # 
         # This parameter is required.
         self.encoding = encoding
+        # The data format configuration.
+        self.format = format
+        # The starting position for data consumption. Valid values: `earliest` and `latest`.
+        # 
         # This parameter is required.
         self.from_position = from_position
+        # Custom DNS resolutions in JSON format. Use this parameter to map hostnames to IP addresses.
         self.name_resolutions = name_resolutions
+        # Specifies whether to parse a message as a JSON array. If `true`, each element in the array becomes a separate log entry. This parameter applies only when `valueType` is `json`.
+        # 
         # This parameter is required.
         self.parse_array = parse_array
+        # The ID of the ingestion processor.
         self.processor_id = processor_id
+        # The ID of the security group to associate with the ingestion source. This parameter is required when connecting to a Kafka cluster in a VPC. Separate multiple IDs with a comma (`,`).
+        self.security_groups = security_groups
+        # The field that contains the log timestamp. This parameter applies only when `valueType` is `json`.
         self.time_field = time_field
+        # The format of the timestamp. For example, you can set this to `epoch` for a Unix timestamp.
         self.time_format = time_format
+        # The regular expression for extracting the timestamp from the field specified by `timeField`.
         self.time_pattern = time_pattern
+        # The time zone of the timestamp, such as `+0800`.
         self.time_zone = time_zone
+        # The Kafka topics to subscribe to. Separate multiple topics with a comma (`,`).
+        # 
         # This parameter is required.
         self.topics = topics
+        # The format of the message value. Valid values: `text` and `json`.
+        # 
         # This parameter is required.
         self.value_type = value_type
+        # The ID of the VPC that contains the Kafka cluster.
         self.vpc_id = vpc_id
+        # The ID of the VSwitch in the specified VPC. This parameter is required when connecting to a Kafka cluster in a VPC.
+        self.vswitch_id = vswitch_id
 
     def validate(self):
         pass
@@ -72,8 +109,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if self.enable_sls_context is not None:
             result['enableSlsContext'] = self.enable_sls_context
 
+        if self.enable_vpc_nat is not None:
+            result['enableVpcNat'] = self.enable_vpc_nat
+
         if self.encoding is not None:
             result['encoding'] = self.encoding
+
+        if self.format is not None:
+            result['format'] = self.format
 
         if self.from_position is not None:
             result['fromPosition'] = self.from_position
@@ -86,6 +129,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if self.processor_id is not None:
             result['processorId'] = self.processor_id
+
+        if self.security_groups is not None:
+            result['securityGroups'] = self.security_groups
 
         if self.time_field is not None:
             result['timeField'] = self.time_field
@@ -108,6 +154,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
 
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -127,8 +176,14 @@ class KafkaIngestionConfigurationSource(DaraModel):
         if m.get('enableSlsContext') is not None:
             self.enable_sls_context = m.get('enableSlsContext')
 
+        if m.get('enableVpcNat') is not None:
+            self.enable_vpc_nat = m.get('enableVpcNat')
+
         if m.get('encoding') is not None:
             self.encoding = m.get('encoding')
+
+        if m.get('format') is not None:
+            self.format = m.get('format')
 
         if m.get('fromPosition') is not None:
             self.from_position = m.get('fromPosition')
@@ -141,6 +196,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if m.get('processorId') is not None:
             self.processor_id = m.get('processorId')
+
+        if m.get('securityGroups') is not None:
+            self.security_groups = m.get('securityGroups')
 
         if m.get('timeField') is not None:
             self.time_field = m.get('timeField')
@@ -162,6 +220,9 @@ class KafkaIngestionConfigurationSource(DaraModel):
 
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
+
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
 
         return self
 

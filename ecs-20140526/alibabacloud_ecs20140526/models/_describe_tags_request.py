@@ -21,47 +21,47 @@ class DescribeTagsRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.DescribeTagsRequestTag] = None,
     ):
-        # > This parameter will be deprecated in the future. We recommend that you use other parameters to ensure future compatibility.
+        # > This parameter is about to be deprecated. To ensure compatibility, use other parameters.
         self.category = category
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the tag list.
         # 
-        # Page starts from page 1.
+        # Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # Valid values: 1 to 100.
+        # Maximum value: 100.
         # 
         # Default value: 50.
         self.page_size = page_size
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource to which the tags are added. If the resource is an instance, the value of this parameter is the ID of the instance.
+        # The ID of the resource to which the tag is attached. For example, if the resource type (ResourceType) is instance, the resource ID is the instance ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource to which the tags are added. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   instance: Elastic Compute Service (ECS) instance.
-        # *   disk: disk.
-        # *   snapshot: snapshot.
-        # *   image: image.
-        # *   securitygroup: security group.
-        # *   volume: storage volume.
-        # *   eni: elastic network interface (ENI).
-        # *   ddh: dedicated host.
-        # *   keypair: SSH key pair.
-        # *   launchtemplate: launch template.
-        # *   reservedinstance: reserved instance.
-        # *   snapshotpolicy: automatic snapshot policy.
+        # - instance: ECS instance.
+        # - disk: cloud disk.
+        # - snapshot: snapshot.
+        # - image: image.
+        # - securitygroup: security group.
+        # - volume: storage volume.
+        # - eni: network interface controller (NIC).
+        # - ddh: dedicated host.
+        # - keypair: SSH key pair.
+        # - launchtemplate: launch template.
+        # - reservedinstance: reserved instance.
+        # - snapshotpolicy: automatic snapshot policy.
         # 
-        # All values must be in lowercase letters.
+        # All valid values are in lowercase.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -152,9 +152,9 @@ class DescribeTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with acs: or aliyun. It cannot contain [http:// or https://.](http://https://。)
+        # The tag key of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
-        # The value of tag N of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain [http:// or https://.](http://https://。)
+        # The tag value of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

@@ -67,40 +67,45 @@ class ListImportedLogsByProdResponseBodyData(DaraModel):
         total_user_count: int = None,
         un_imported_user_count: int = None,
     ):
-        # Indicates whether the log is automatically added to the threat analysis feature within newly added accounts. Valid values:
+        # Indicates whether logs are automatically ingested for new accounts. Valid values:
         # 
-        # *   1: yes.
-        # *   0: no.
+        # - 1: Logs are automatically ingested.
+        # 
+        # - 0: Logs are not automatically ingested.
         self.auto_imported = auto_imported
-        # The code of the cloud service provider. Valid values:
+        # The multicloud code. Valid values:
         # 
-        # *   qcloud: Tencent Cloud.
-        # *   aliyun: Alibaba Cloud.
-        # *   hcloud: Huawei Cloud.
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # Indicates whether the log is added to the threat analysis feature. Valid values:
+        # Indicates whether the log is ingested. Valid values:
         # 
-        # *   1: yes.
-        # *   0: no.
+        # - 1: The log is ingested.
+        # 
+        # - 0: The log is not ingested.
         self.imported = imported
-        # The number of users who have added the log.
+        # The number of users who have ingested the log.
         self.imported_user_count = imported_user_count
         # The code of the log.
         self.log_code = log_code
         # The display code of the log.
         self.log_mds_code = log_mds_code
-        # The type of log. Valid values:
-        #  - 1: the log produced by other product
-        #  - 2: the predefined log
-        #  - 3: the custom log
+        # The log type. Valid values:
+        # 
+        # - 1: Ingested on the threat analysis side.
+        # 
+        # - 2: Predefined Simple Log Service log. -3: Custom Simple Log Service log.
         self.log_type = log_type
-        # The time when the log was last added.
+        # The time when the log was last ingested.
         self.modify_time = modify_time
-        # The code of the cloud service to which the log belongs.
+        # The code of the product to which the log belongs.
         self.prod_code = prod_code
-        # The total number of users who have the log.
+        # The total number of users for the log.
         self.total_user_count = total_user_count
-        # The number of users who have not added the log.
+        # The number of users who have not ingested the log.
         self.un_imported_user_count = un_imported_user_count
 
     def validate(self):

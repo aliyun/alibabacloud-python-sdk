@@ -12,10 +12,11 @@ class DescribeUserStatusRequest(DaraModel):
     ):
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese (default)
-        # *   **en_us**: English
+        # - **zh_cn**: The default value. Simplified Chinese.
+        # 
+        # - **en_us**: American English.
         self.lang = lang
 
     def validate(self):

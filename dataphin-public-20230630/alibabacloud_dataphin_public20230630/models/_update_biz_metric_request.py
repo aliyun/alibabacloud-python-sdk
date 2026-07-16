@@ -13,8 +13,12 @@ class UpdateBizMetricRequest(DaraModel):
         op_tenant_id: int = None,
         update_biz_metric_command: main_models.UpdateBizMetricRequestUpdateBizMetricCommand = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Update request
+        # 
         # This parameter is required.
         self.update_biz_metric_command = update_biz_metric_command
 
@@ -66,22 +70,39 @@ class UpdateBizMetricRequestUpdateBizMetricCommand(DaraModel):
         related_biz_metrics: List[main_models.UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics] = None,
         view_scope: main_models.UpdateBizMetricRequestUpdateBizMetricCommandViewScope = None,
     ):
+        # List of associated technical metrics. Enter the full name of the technical metric in the format of "TableFullName.MetricName", where "TableFullName" equals "AssetSource.TableName". A technical metric can only be associated with one business metric and cannot be associated repeatedly
         self.associated_tech_metric_full_names = associated_tech_metric_full_names
+        # Business owner. Enter the username of the owner account
         self.biz_owner_name = biz_owner_name
+        # List of catalog IDs
         self.catalog_ids = catalog_ids
+        # List of custom attributes. Enter the attribute code and attribute values for each
         self.custom_attribute = custom_attribute
+        # Description
         self.description = description
+        # Display name
         self.display_name = display_name
+        # Asset labels
         self.labels = labels
+        # Metric definition. To reference other business metrics, enclose the metric name in square brackets [ ]
         self.metric_definition = metric_definition
+        # This parameter is read only when the metric relationship diagram is enabled. Only a calculation expression composed of metric names selected from related business metrics is supported. Supported operators include +, -, *, /, (), %, and ∑. Each metric name must be enclosed in square brackets [ ]. If no operator is specified between two metrics, the system automatically fills in a placeholder. If no metric relationship expression is configured, the metric relationship diagram switch is automatically disabled
         self.metric_relation_diagram_expression = metric_relation_diagram_expression
+        # Metric relationship diagram switch. Valid values: true (enabled) and false (disabled). This can be enabled only when at least one related business metric exists. Otherwise, it is automatically disabled
         self.metric_relation_diagram_switch_open = metric_relation_diagram_switch_open
+        # Enter the name of the business metric to update
+        # 
         # This parameter is required.
         self.name = name
+        # The new name. Enter this when you need to modify the metric name
         self.new_name = new_name
+        # Content of the usage instructions. Only text format is supported
         self.operate_instruction_content = operate_instruction_content
+        # Specifies whether the usage instructions are enabled. Valid values: true (enabled) and false (disabled)
         self.operate_instruction_enabled = operate_instruction_enabled
+        # List of related business metrics
         self.related_biz_metrics = related_biz_metrics
+        # Visibility scope
         self.view_scope = view_scope
 
     def validate(self):
@@ -221,8 +242,11 @@ class UpdateBizMetricRequestUpdateBizMetricCommandViewScope(DaraModel):
         user_group_names: List[str] = None,
         user_names: List[str] = None,
     ):
+        # Visibility scope type. Valid values: ALL_USERS_CAN_VIEW (visible to all users), PART_USERS_CAN_VIEW (visible to specified users), and PART_USERS_CAN_NOT_VIEW (invisible to specified users)
         self.scope_type = scope_type
+        # Enter user group names. This parameter is read only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW
         self.user_group_names = user_group_names
+        # Enter the usernames of individual accounts. This parameter takes effect only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW
         self.user_names = user_names
 
     def validate(self):
@@ -263,7 +287,9 @@ class UpdateBizMetricRequestUpdateBizMetricCommandRelatedBizMetrics(DaraModel):
         name: str = None,
         relation_type: str = None,
     ):
+        # Business metric name
         self.name = name
+        # Correlation type. Valid values: POSITIVE (positive correlation), NEGATIVE (negative correlation), and OTHER (other)
         self.relation_type = relation_type
 
     def validate(self):
@@ -298,7 +324,9 @@ class UpdateBizMetricRequestUpdateBizMetricCommandCustomAttribute(DaraModel):
         code: str = None,
         values: List[str] = None,
     ):
+        # Custom attribute code
         self.code = code
+        # List of attribute values. 1. For custom input and single-select dropdown attributes, only the first value in the list is read. 2. For multi-select dropdown attributes, all values in the list are read. 3. For hyperlink attributes, the first value is used as the display text and the second value is used as the link URL.
         self.values = values
 
     def validate(self):

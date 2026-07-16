@@ -12,13 +12,19 @@ class BindInstance2VpcRequest(DaraModel):
         virtual_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance name.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The VPC name.
+        # 
         # This parameter is required.
         self.instance_vpc_name = instance_vpc_name
+        # The virtual switch ID.
+        # 
         # This parameter is required.
         self.virtual_switch_id = virtual_switch_id
-        # VPC ID
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

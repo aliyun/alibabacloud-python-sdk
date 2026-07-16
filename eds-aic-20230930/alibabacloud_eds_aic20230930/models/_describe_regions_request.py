@@ -12,15 +12,17 @@ class DescribeRegionsRequest(DaraModel):
     ):
         # The display language of the console. Valid values:
         # 
-        # *   cn: Simplified Chinese
-        # *   en: English
+        # - cn: Simplified Chinese
+        # 
+        # - en: English
         self.accept_language = accept_language
         # The sales mode.
         # 
         # Valid values:
         # 
-        # *   Instance: the instance group mode. [Default]
-        # *   Node: the matrix mode. [Whitelist required]
+        # - Instance: the instance group mode. [Default]
+        # 
+        # - Node: the matrix mode. [Whitelist required]
         self.sale_mode = sale_mode
 
     def validate(self):

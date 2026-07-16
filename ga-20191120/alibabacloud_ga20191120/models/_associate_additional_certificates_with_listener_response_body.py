@@ -10,7 +10,7 @@ class AssociateAdditionalCertificatesWithListenerResponseBody(DaraModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The listener ID.
+        # The listener instance ID.
         self.listener_id = listener_id
         # The request ID.
         self.request_id = request_id

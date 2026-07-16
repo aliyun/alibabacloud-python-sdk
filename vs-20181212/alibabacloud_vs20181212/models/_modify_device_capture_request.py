@@ -12,10 +12,24 @@ class ModifyDeviceCaptureRequest(DaraModel):
         owner_id: int = None,
         video: int = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Image capture control. Valid values:
+        # 
+        # - 0 (shutdown)
+        # 
+        # - 1 (enable)
         self.image = image
         self.owner_id = owner_id
+        # Video recording control. Valid values:
+        # 
+        # - 0 (shutdown)
+        # 
+        # - 1 (enable short recording)
+        # 
+        # - 2 (enable long recording)
         self.video = video
 
     def validate(self):

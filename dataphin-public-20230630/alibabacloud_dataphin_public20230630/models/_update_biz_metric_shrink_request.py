@@ -10,8 +10,12 @@ class UpdateBizMetricShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         update_biz_metric_command_shrink: str = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Update request
+        # 
         # This parameter is required.
         self.update_biz_metric_command_shrink = update_biz_metric_command_shrink
 

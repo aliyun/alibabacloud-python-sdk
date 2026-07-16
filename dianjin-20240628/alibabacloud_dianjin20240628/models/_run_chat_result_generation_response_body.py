@@ -19,13 +19,21 @@ class RunChatResultGenerationResponseBody(DaraModel):
         total_tokens: int = None,
         usage: main_models.RunChatResultGenerationResponseBodyUsage = None,
     ):
+        # Details of the model-generated content.
         self.choices = choices
+        # Creation time.
         self.created = created
+        # Request identifier.
         self.id = id
+        # Large Language Model (LLM) ID.
         self.model_id = model_id
+        # Request ID.
         self.request_id = request_id
+        # Timestamp.
         self.time = time
+        # Total tokens.
         self.total_tokens = total_tokens
+        # Usage.
         self.usage = usage
 
     def validate(self):
@@ -110,10 +118,15 @@ class RunChatResultGenerationResponseBodyUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of images. Returned by models such as wanx.
         self.image_count = image_count
+        # Image tokens. Returned by models such as qwen-vl.
         self.image_tokens = image_tokens
+        # Input tokens.
         self.input_tokens = input_tokens
+        # Output tokens.
         self.output_tokens = output_tokens
+        # Total tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -167,8 +180,17 @@ class RunChatResultGenerationResponseBodyChoices(DaraModel):
         index: int = None,
         message: main_models.RunChatResultGenerationResponseBodyChoicesMessage = None,
     ):
+        # Three possible values:
+        # 
+        # - null while generating;
+        # 
+        # - "stop" if generation ends due to a stop condition in the input parameters;
+        # 
+        # - "length" if generation ends because the output is too long.
         self.finish_reason = finish_reason
+        # Sequence number of the generated result. Default is 0.
         self.index = index
+        # Chat message.
         self.message = message
 
     def validate(self):
@@ -212,8 +234,11 @@ class RunChatResultGenerationResponseBodyChoicesMessage(DaraModel):
         role: str = None,
         tool_calls: List[Dict[str, Any]] = None,
     ):
+        # Message content.
         self.content = content
+        # Role.
         self.role = role
+        # List of tool calls.
         self.tool_calls = tool_calls
 
     def validate(self):

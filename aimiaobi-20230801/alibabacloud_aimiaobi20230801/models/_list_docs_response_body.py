@@ -20,14 +20,23 @@ class ListDocsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Return code.
         self.code = code
+        # List of returned data results.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Maximum number of results returned.
         self.max_results = max_results
+        # Return message.
         self.message = message
+        # Next page token.
         self.next_token = next_token
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -117,12 +126,19 @@ class ListDocsResponseBodyData(DaraModel):
         status: int = None,
         status_message: str = None,
     ):
+        # Document folder.
         self.category_id = category_id
+        # Creation time.
         self.create_time = create_time
+        # Document ID.
         self.doc_id = doc_id
+        # Document name.
         self.doc_name = doc_name
+        # Document type.
         self.doc_type = doc_type
+        # Status.
         self.status = status
+        # Status message.
         self.status_message = status_message
 
     def validate(self):

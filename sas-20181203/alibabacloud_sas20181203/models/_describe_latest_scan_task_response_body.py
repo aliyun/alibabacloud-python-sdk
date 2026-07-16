@@ -15,26 +15,22 @@ class DescribeLatestScanTaskResponseBody(DaraModel):
         target_info: str = None,
         uuids: List[str] = None,
     ):
-        # The timestamp when the last check was performed. Unit: milliseconds.
+        # The timestamp of the most recent scan, in milliseconds.
         self.last_check_time = last_check_time
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # The number of virus detection risks on the server.
+        # The number of virus risks detected on the server.
         self.risk_num = risk_num
-        # The applicable scope of the whitelist. The value of this parameter is in the JSON format and contains the following fields:
-        # 
-        # *   **type**: the type of the applicable scope. Valid values:
-        # 
-        #     *   **GroupId**: the ID of a server group
-        #     *   **Uuid**: the UUID of a server
-        # 
-        # *   **uuids**: the UUIDs of servers
-        # 
-        # *   **groupIds**: the IDs of server groups
-        # 
-        # >  If you leave this parameter empty, all servers are added to the whitelist. If you set the **type** field to **GroupId**, you must also specify the **groupIds** field. If you set the **type** field to **Uuid**, you must also specify the **uuids** field.
+        # The asset information scanned by the virus scan node. This parameter is expressed as a character string converted from a JSON array. The following fields are included:
+        # - **type**: The Asset Type on which the virus scan is executed. Valid values:
+        #     - **groupId**: server group.
+        #     - **uuid**: server.
+        # - **name**: The name of the server group or server.
+        # - **target**: The asset on which the virus scan is executed. The following describes the values of this field:
+        #     - If **type** is set to **groupId**, this field specifies the server group ID.
+        #     - If **type** is set to **uuid**, this field specifies the UUID of the server.
         self.target_info = target_info
-        # The UUIDs of the assets.
+        # The list of UUIDs of the assets.
         self.uuids = uuids
 
     def validate(self):

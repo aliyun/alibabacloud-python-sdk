@@ -12,11 +12,11 @@ class GetColumnResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The columns in the table.
+        # The column list.
         self.column = column
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request succeeded.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

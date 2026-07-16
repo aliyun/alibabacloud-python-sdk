@@ -12,19 +12,19 @@ class RemoveApplicationAccountFromUserRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # 应用账号Id
+        # The application account ID.
         # 
         # This parameter is required.
         self.application_account_id = application_account_id
-        # IDaaS的应用主键id
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 用户Id
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

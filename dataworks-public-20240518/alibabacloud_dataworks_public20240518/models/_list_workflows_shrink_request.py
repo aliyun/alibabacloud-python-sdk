@@ -20,8 +20,9 @@ class ListWorkflowsShrinkRequest(DaraModel):
     ):
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The IDs of the workflows. You can query multiple workflows at a time by workflow ID.
         self.ids_shrink = ids_shrink
@@ -39,18 +40,23 @@ class ListWorkflowsShrinkRequest(DaraModel):
         self.project_id = project_id
         # The field used for sorting. Fields such as TriggerTime and StartedTime are supported. The value of this parameter is in the Sort field + Sort by (Desc/Asc) format. By default, results are sorted in ascending order. Valid values:
         # 
-        # *   ModifyTime (Desc/Asc)
-        # *   CreateTime (Desc/Asc)
-        # *   Id (Desc/Asc)
+        # - ModifyTime (Desc/Asc)
+        # 
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Id (Desc/Asc)
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
+        # List of tags. A result is returned if it matches any one of the specified tags.
         self.tags_shrink = tags_shrink
         # The trigger type.
         # 
-        # *   Scheduler
-        # *   Manual
-        # *   TriggerWorkflow
+        # - Scheduler
+        # 
+        # - Manual
+        # 
+        # - TriggerWorkflow
         self.trigger_type = trigger_type
 
     def validate(self):

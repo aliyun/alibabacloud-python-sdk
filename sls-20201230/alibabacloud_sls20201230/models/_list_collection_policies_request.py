@@ -15,13 +15,19 @@ class ListCollectionPoliciesRequest(DaraModel):
         product_code: str = None,
         size: int = None,
     ):
+        # The destination project for centralized data shipping. Specify this parameter to query the number of rules that are configured to ship data to this project.
         self.central_project = central_project
+        # The code of the log type.
         self.data_code = data_code
+        # The instance ID. Specify this parameter to query rules that match a specific instance. If you use this parameter, you must also specify productCode and dataCode.
         self.instance_id = instance_id
+        # The row from which the query starts. Default value: 0.
         self.offset = offset
+        # The name of the collection rule.
         self.policy_name = policy_name
-        # The code of the service.
+        # The code of the Alibaba Cloud service.
         self.product_code = product_code
+        # The number of collection rules to return on each page. Default value: 50. Maximum value: 100.
         self.size = size
 
     def validate(self):

@@ -12,8 +12,11 @@ class GenerateCopilotResponseResponseBody(DaraModel):
         massage: str = None,
         request_id: str = None,
     ):
+        # Error code
         self.code = code
+        # Data returned by the LLM service, in string type. If it is a dict, you need to convert and parse it yourself
         self.data = data
+        # Error code description, empty if no error occurs
         self.massage = massage
         # Id of the request
         self.request_id = request_id

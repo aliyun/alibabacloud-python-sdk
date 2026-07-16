@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._keyword_suggest_info import KeywordSuggestInfo
+from ._module_price_map_value import ModulePriceMapValue
 from ._module_flight_item_list_best_price_item_flight_rule_infos_value import ModuleFlightItemListBestPriceItemFlightRuleInfosValue
 from ._module_flight_item_list_best_price_item_shopping_item_map_value import ModuleFlightItemListBestPriceItemShoppingItemMapValue
 from ._module_flight_item_list_best_price_item_sub_item_position_map_value import ModuleFlightItemListBestPriceItemSubItemPositionMapValue
@@ -61,6 +62,11 @@ from ._add_invoice_entity_request import AddInvoiceEntityRequest
 from ._add_invoice_entity_shrink_request import AddInvoiceEntityShrinkRequest
 from ._add_invoice_entity_response_body import AddInvoiceEntityResponseBody
 from ._add_invoice_entity_response import AddInvoiceEntityResponse
+from ._add_project_manager_headers import AddProjectManagerHeaders
+from ._add_project_manager_request import AddProjectManagerRequest
+from ._add_project_manager_shrink_request import AddProjectManagerShrinkRequest
+from ._add_project_manager_response_body import AddProjectManagerResponseBody
+from ._add_project_manager_response import AddProjectManagerResponse
 from ._address_get_headers import AddressGetHeaders
 from ._address_get_request import AddressGetRequest
 from ._address_get_response_body import AddressGetResponseBody
@@ -112,6 +118,15 @@ from ._base_city_info_search_headers import BaseCityInfoSearchHeaders
 from ._base_city_info_search_request import BaseCityInfoSearchRequest
 from ._base_city_info_search_response_body import BaseCityInfoSearchResponseBody
 from ._base_city_info_search_response import BaseCityInfoSearchResponse
+from ._batch_query_department_headers import BatchQueryDepartmentHeaders
+from ._batch_query_department_request import BatchQueryDepartmentRequest
+from ._batch_query_department_response_body import BatchQueryDepartmentResponseBody
+from ._batch_query_department_response import BatchQueryDepartmentResponse
+from ._batch_submit_pre_bill_headers import BatchSubmitPreBillHeaders
+from ._batch_submit_pre_bill_request import BatchSubmitPreBillRequest
+from ._batch_submit_pre_bill_shrink_request import BatchSubmitPreBillShrinkRequest
+from ._batch_submit_pre_bill_response_body import BatchSubmitPreBillResponseBody
+from ._batch_submit_pre_bill_response import BatchSubmitPreBillResponse
 from ._btrip_bill_info_adjust_headers import BtripBillInfoAdjustHeaders
 from ._btrip_bill_info_adjust_request import BtripBillInfoAdjustRequest
 from ._btrip_bill_info_adjust_response_body import BtripBillInfoAdjustResponseBody
@@ -160,6 +175,10 @@ from ._common_apply_sync_headers import CommonApplySyncHeaders
 from ._common_apply_sync_request import CommonApplySyncRequest
 from ._common_apply_sync_response_body import CommonApplySyncResponseBody
 from ._common_apply_sync_response import CommonApplySyncResponse
+from ._confirm_pre_bill_headers import ConfirmPreBillHeaders
+from ._confirm_pre_bill_request import ConfirmPreBillRequest
+from ._confirm_pre_bill_response_body import ConfirmPreBillResponseBody
+from ._confirm_pre_bill_response import ConfirmPreBillResponse
 from ._cooperator_flight_bill_settlement_query_headers import CooperatorFlightBillSettlementQueryHeaders
 from ._cooperator_flight_bill_settlement_query_request import CooperatorFlightBillSettlementQueryRequest
 from ._cooperator_flight_bill_settlement_query_response_body import CooperatorFlightBillSettlementQueryResponseBody
@@ -257,6 +276,10 @@ from ._estimated_price_query_headers import EstimatedPriceQueryHeaders
 from ._estimated_price_query_request import EstimatedPriceQueryRequest
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBody
 from ._estimated_price_query_response import EstimatedPriceQueryResponse
+from ._estimated_price_query_v2headers import EstimatedPriceQueryV2Headers
+from ._estimated_price_query_v2request import EstimatedPriceQueryV2Request
+from ._estimated_price_query_v2response_body import EstimatedPriceQueryV2ResponseBody
+from ._estimated_price_query_v2response import EstimatedPriceQueryV2Response
 from ._exceed_apply_sync_headers import ExceedApplySyncHeaders
 from ._exceed_apply_sync_request import ExceedApplySyncRequest
 from ._exceed_apply_sync_response_body import ExceedApplySyncResponseBody
@@ -714,6 +737,11 @@ from ._meal_apply_approve_headers import MealApplyApproveHeaders
 from ._meal_apply_approve_request import MealApplyApproveRequest
 from ._meal_apply_approve_response_body import MealApplyApproveResponseBody
 from ._meal_apply_approve_response import MealApplyApproveResponse
+from ._meal_apply_modify_headers import MealApplyModifyHeaders
+from ._meal_apply_modify_request import MealApplyModifyRequest
+from ._meal_apply_modify_shrink_request import MealApplyModifyShrinkRequest
+from ._meal_apply_modify_response_body import MealApplyModifyResponseBody
+from ._meal_apply_modify_response import MealApplyModifyResponse
 from ._meal_apply_query_headers import MealApplyQueryHeaders
 from ._meal_apply_query_request import MealApplyQueryRequest
 from ._meal_apply_query_response_body import MealApplyQueryResponseBody
@@ -743,6 +771,10 @@ from ._month_bill_split_get_request import MonthBillSplitGetRequest
 from ._month_bill_split_get_shrink_request import MonthBillSplitGetShrinkRequest
 from ._month_bill_split_get_response_body import MonthBillSplitGetResponseBody
 from ._month_bill_split_get_response import MonthBillSplitGetResponse
+from ._month_pre_bill_get_headers import MonthPreBillGetHeaders
+from ._month_pre_bill_get_request import MonthPreBillGetRequest
+from ._month_pre_bill_get_response_body import MonthPreBillGetResponseBody
+from ._month_pre_bill_get_response import MonthPreBillGetResponse
 from ._order_refund_detail_query_headers import OrderRefundDetailQueryHeaders
 from ._order_refund_detail_query_request import OrderRefundDetailQueryRequest
 from ._order_refund_detail_query_response_body import OrderRefundDetailQueryResponseBody
@@ -779,6 +811,11 @@ from ._query_reimbursement_order_headers import QueryReimbursementOrderHeaders
 from ._query_reimbursement_order_request import QueryReimbursementOrderRequest
 from ._query_reimbursement_order_response_body import QueryReimbursementOrderResponseBody
 from ._query_reimbursement_order_response import QueryReimbursementOrderResponse
+from ._remove_project_manager_headers import RemoveProjectManagerHeaders
+from ._remove_project_manager_request import RemoveProjectManagerRequest
+from ._remove_project_manager_shrink_request import RemoveProjectManagerShrinkRequest
+from ._remove_project_manager_response_body import RemoveProjectManagerResponseBody
+from ._remove_project_manager_response import RemoveProjectManagerResponse
 from ._sync_single_user_headers import SyncSingleUserHeaders
 from ._sync_single_user_request import SyncSingleUserRequest
 from ._sync_single_user_shrink_request import SyncSingleUserShrinkRequest
@@ -1026,6 +1063,8 @@ from ._add_employee_request import AddEmployeeRequestBaseLocationList
 from ._add_employee_request import AddEmployeeRequestCertList
 from ._add_invoice_entity_request import AddInvoiceEntityRequestEntities
 from ._add_invoice_entity_response_body import AddInvoiceEntityResponseBodyModule
+from ._add_project_manager_request import AddProjectManagerRequestOrgEntities
+from ._add_project_manager_response_body import AddProjectManagerResponseBodyModule
 from ._address_get_response_body import AddressGetResponseBodyModule
 from ._airport_search_response_body import AirportSearchResponseBodyModuleCities
 from ._airport_search_response_body import AirportSearchResponseBodyModule
@@ -1046,6 +1085,19 @@ from ._apply_add_request import ApplyAddRequestItinerarySetListItineraryTravelSt
 from ._apply_add_request import ApplyAddRequestItinerarySetList
 from ._apply_add_request import ApplyAddRequestTravelerList
 from ._apply_add_request import ApplyAddRequestTravelerStandardCarCitySet
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardBookAllowInfo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCarHelper
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCarTimeControl
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCityControlInfo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardCrossCityInfo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo
+from ._apply_add_request import ApplyAddRequestTravelerStandardCarStandard
 from ._apply_add_request import ApplyAddRequestTravelerStandardHotelCitys
 from ._apply_add_request import ApplyAddRequestTravelerStandardHotelIntlCitys
 from ._apply_add_request import ApplyAddRequestTravelerStandard
@@ -1075,6 +1127,19 @@ from ._apply_modify_request import ApplyModifyRequestItinerarySetListItineraryTr
 from ._apply_modify_request import ApplyModifyRequestItinerarySetList
 from ._apply_modify_request import ApplyModifyRequestTravelerList
 from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarCitySet
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardBookAllowInfo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCarHelper
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCarTimeControlTimeLimit
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCarTimeControl
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCityControlInfoCityInfos
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCityControlInfo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCrossCityInfoCrossCityList
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardCrossCityInfo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandardModifyDestinationInfo
+from ._apply_modify_request import ApplyModifyRequestTravelerStandardCarStandard
 from ._apply_modify_request import ApplyModifyRequestTravelerStandardHotelCitys
 from ._apply_modify_request import ApplyModifyRequestTravelerStandardHotelIntlCitys
 from ._apply_modify_request import ApplyModifyRequestTravelerStandard
@@ -1095,6 +1160,11 @@ from ._apply_query_response_body import ApplyQueryResponseBodyModuleTravelerList
 from ._apply_query_response_body import ApplyQueryResponseBodyModuleTravelerList
 from ._apply_query_response_body import ApplyQueryResponseBodyModule
 from ._base_city_info_search_response_body import BaseCityInfoSearchResponseBodyModule
+from ._batch_query_department_response_body import BatchQueryDepartmentResponseBodyModuleItems
+from ._batch_query_department_response_body import BatchQueryDepartmentResponseBodyModule
+from ._batch_submit_pre_bill_response_body import BatchSubmitPreBillResponseBodyModuleForbidUpdateDetail
+from ._batch_submit_pre_bill_response_body import BatchSubmitPreBillResponseBodyModule
+from ._car_apply_add_request import CarApplyAddRequestItineraryList
 from ._car_apply_add_request import CarApplyAddRequestTravelerStandardCarCitySet
 from ._car_apply_add_request import CarApplyAddRequestTravelerStandard
 from ._car_apply_query_response_body import CarApplyQueryResponseBodyApplyListApproverList
@@ -1120,6 +1190,8 @@ from ._channel_corp_create_response_body import ChannelCorpCreateResponseBodyMod
 from ._city_search_response_body import CitySearchResponseBodyModuleCities
 from ._city_search_response_body import CitySearchResponseBodyModule
 from ._common_apply_query_response_body import CommonApplyQueryResponseBodyModule
+from ._confirm_pre_bill_response_body import ConfirmPreBillResponseBodyModuleForbidUpdateDetail
+from ._confirm_pre_bill_response_body import ConfirmPreBillResponseBodyModule
 from ._cooperator_flight_bill_settlement_query_response_body import CooperatorFlightBillSettlementQueryResponseBodyModuleItems
 from ._cooperator_flight_bill_settlement_query_response_body import CooperatorFlightBillSettlementQueryResponseBodyModule
 from ._cooperator_hotel_bill_settlement_query_response_body import CooperatorHotelBillSettlementQueryResponseBodyModuleItems
@@ -1153,6 +1225,7 @@ from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBod
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModuleTrafficFee
 from ._estimated_price_query_response_body import EstimatedPriceQueryResponseBodyModule
+from ._estimated_price_query_v2response_body import EstimatedPriceQueryV2ResponseBodyModule
 from ._external_user_add_request import ExternalUserAddRequestCertRequestList
 from ._external_user_query_response_body import ExternalUserQueryResponseBodyModule
 from ._external_user_update_request import ExternalUserUpdateRequestCertRequestList
@@ -1533,6 +1606,9 @@ from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleR
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO
+from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice
+from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice
+from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRates
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRoomsRoomService
 from ._hotel_goods_query_response_body import HotelGoodsQueryResponseBodyModuleRooms
@@ -1556,6 +1632,8 @@ from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponse
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleBtripHotelCancelPolicyDTO
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleCancelInfo
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleHotelDetailInfo
+from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleHotelOnSitePriceDetailTotalOnSitePrice
+from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleHotelOnSitePriceDetail
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleHotelSaleOrderRoomInfos
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleInvoiceInfo
 from ._hotel_order_detail_info_response_body import HotelOrderDetailInfoResponseBodyModuleOccupantInfoListCostCenterInfoList
@@ -1589,6 +1667,7 @@ from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateRespon
 from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModuleRatePlanDaily
 from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList
 from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO
+from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModuleRatePlanInfoHourItemArrivalTimeInfo
 from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModuleRatePlanInfo
 from ._hotel_order_pre_validate_response_body import HotelOrderPreValidateResponseBodyModule
 from ._hotel_order_query_response_body import HotelOrderQueryResponseBodyModuleHotelInfo
@@ -1867,6 +1946,10 @@ from ._meal_apply_add_request import MealApplyAddRequestApplyUser
 from ._meal_apply_add_request import MealApplyAddRequestItineraryListCities
 from ._meal_apply_add_request import MealApplyAddRequestItineraryList
 from ._meal_apply_add_response_body import MealApplyAddResponseBodyModule
+from ._meal_apply_modify_request import MealApplyModifyRequestApplyUser
+from ._meal_apply_modify_request import MealApplyModifyRequestItineraryListCities
+from ._meal_apply_modify_request import MealApplyModifyRequestItineraryList
+from ._meal_apply_modify_response_body import MealApplyModifyResponseBodyModule
 from ._meal_apply_query_response_body import MealApplyQueryResponseBodyModuleApplyUser
 from ._meal_apply_query_response_body import MealApplyQueryResponseBodyModuleItineraryListCities
 from ._meal_apply_query_response_body import MealApplyQueryResponseBodyModuleItineraryList
@@ -1879,6 +1962,8 @@ from ._meal_order_list_query_response_body import MealOrderListQueryResponseBody
 from ._month_bill_get_response_body import MonthBillGetResponseBodyModuleMonthAccountBillDetail
 from ._month_bill_get_response_body import MonthBillGetResponseBodyModule
 from ._month_bill_split_get_response_body import MonthBillSplitGetResponseBodyModule
+from ._month_pre_bill_get_response_body import MonthPreBillGetResponseBodyModuleMonthAccountBillDetail
+from ._month_pre_bill_get_response_body import MonthPreBillGetResponseBodyModule
 from ._order_refund_detail_query_response_body import OrderRefundDetailQueryResponseBodyModuleRefundDetails
 from ._order_refund_detail_query_response_body import OrderRefundDetailQueryResponseBodyModule
 from ._query_compen_infos_for_op_response_body import QueryCompenInfosForOpResponseBodyModule
@@ -1891,6 +1976,8 @@ from ._query_reimbursement_order_response_body import QueryReimbursementOrderRes
 from ._query_reimbursement_order_response_body import QueryReimbursementOrderResponseBodyModuleItineraries
 from ._query_reimbursement_order_response_body import QueryReimbursementOrderResponseBodyModulePaymentInfos
 from ._query_reimbursement_order_response_body import QueryReimbursementOrderResponseBodyModule
+from ._remove_project_manager_request import RemoveProjectManagerRequestOrgEntities
+from ._remove_project_manager_response_body import RemoveProjectManagerResponseBodyModule
 from ._tbaccount_info_query_response_body import TBAccountInfoQueryResponseBodyModule
 from ._ticket_changing_apply_request import TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList
 from ._ticket_changing_apply_request import TicketChangingApplyRequestModifyFlightInfoList
@@ -2055,6 +2142,7 @@ from ._wait_apply_invoice_task_detail_query_response_body import WaitApplyInvoic
 
 __all__ = [
     KeywordSuggestInfo,
+    ModulePriceMapValue,
     ModuleFlightItemListBestPriceItemFlightRuleInfosValue,
     ModuleFlightItemListBestPriceItemShoppingItemMapValue,
     ModuleFlightItemListBestPriceItemSubItemPositionMapValue,
@@ -2113,6 +2201,11 @@ __all__ = [
     AddInvoiceEntityShrinkRequest,
     AddInvoiceEntityResponseBody,
     AddInvoiceEntityResponse,
+    AddProjectManagerHeaders,
+    AddProjectManagerRequest,
+    AddProjectManagerShrinkRequest,
+    AddProjectManagerResponseBody,
+    AddProjectManagerResponse,
     AddressGetHeaders,
     AddressGetRequest,
     AddressGetResponseBody,
@@ -2164,6 +2257,15 @@ __all__ = [
     BaseCityInfoSearchRequest,
     BaseCityInfoSearchResponseBody,
     BaseCityInfoSearchResponse,
+    BatchQueryDepartmentHeaders,
+    BatchQueryDepartmentRequest,
+    BatchQueryDepartmentResponseBody,
+    BatchQueryDepartmentResponse,
+    BatchSubmitPreBillHeaders,
+    BatchSubmitPreBillRequest,
+    BatchSubmitPreBillShrinkRequest,
+    BatchSubmitPreBillResponseBody,
+    BatchSubmitPreBillResponse,
     BtripBillInfoAdjustHeaders,
     BtripBillInfoAdjustRequest,
     BtripBillInfoAdjustResponseBody,
@@ -2212,6 +2314,10 @@ __all__ = [
     CommonApplySyncRequest,
     CommonApplySyncResponseBody,
     CommonApplySyncResponse,
+    ConfirmPreBillHeaders,
+    ConfirmPreBillRequest,
+    ConfirmPreBillResponseBody,
+    ConfirmPreBillResponse,
     CooperatorFlightBillSettlementQueryHeaders,
     CooperatorFlightBillSettlementQueryRequest,
     CooperatorFlightBillSettlementQueryResponseBody,
@@ -2309,6 +2415,10 @@ __all__ = [
     EstimatedPriceQueryRequest,
     EstimatedPriceQueryResponseBody,
     EstimatedPriceQueryResponse,
+    EstimatedPriceQueryV2Headers,
+    EstimatedPriceQueryV2Request,
+    EstimatedPriceQueryV2ResponseBody,
+    EstimatedPriceQueryV2Response,
     ExceedApplySyncHeaders,
     ExceedApplySyncRequest,
     ExceedApplySyncResponseBody,
@@ -2766,6 +2876,11 @@ __all__ = [
     MealApplyApproveRequest,
     MealApplyApproveResponseBody,
     MealApplyApproveResponse,
+    MealApplyModifyHeaders,
+    MealApplyModifyRequest,
+    MealApplyModifyShrinkRequest,
+    MealApplyModifyResponseBody,
+    MealApplyModifyResponse,
     MealApplyQueryHeaders,
     MealApplyQueryRequest,
     MealApplyQueryResponseBody,
@@ -2795,6 +2910,10 @@ __all__ = [
     MonthBillSplitGetShrinkRequest,
     MonthBillSplitGetResponseBody,
     MonthBillSplitGetResponse,
+    MonthPreBillGetHeaders,
+    MonthPreBillGetRequest,
+    MonthPreBillGetResponseBody,
+    MonthPreBillGetResponse,
     OrderRefundDetailQueryHeaders,
     OrderRefundDetailQueryRequest,
     OrderRefundDetailQueryResponseBody,
@@ -2831,6 +2950,11 @@ __all__ = [
     QueryReimbursementOrderRequest,
     QueryReimbursementOrderResponseBody,
     QueryReimbursementOrderResponse,
+    RemoveProjectManagerHeaders,
+    RemoveProjectManagerRequest,
+    RemoveProjectManagerShrinkRequest,
+    RemoveProjectManagerResponseBody,
+    RemoveProjectManagerResponse,
     SyncSingleUserHeaders,
     SyncSingleUserRequest,
     SyncSingleUserShrinkRequest,
@@ -3078,6 +3202,8 @@ __all__ = [
     AddEmployeeRequestCertList,
     AddInvoiceEntityRequestEntities,
     AddInvoiceEntityResponseBodyModule,
+    AddProjectManagerRequestOrgEntities,
+    AddProjectManagerResponseBodyModule,
     AddressGetResponseBodyModule,
     AirportSearchResponseBodyModuleCities,
     AirportSearchResponseBodyModule,
@@ -3098,6 +3224,19 @@ __all__ = [
     ApplyAddRequestItinerarySetList,
     ApplyAddRequestTravelerList,
     ApplyAddRequestTravelerStandardCarCitySet,
+    ApplyAddRequestTravelerStandardCarStandardBookAllowInfo,
+    ApplyAddRequestTravelerStandardCarStandardCarHelper,
+    ApplyAddRequestTravelerStandardCarStandardCarTimeControlTimeLimit,
+    ApplyAddRequestTravelerStandardCarStandardCarTimeControl,
+    ApplyAddRequestTravelerStandardCarStandardCityControlInfoCityInfos,
+    ApplyAddRequestTravelerStandardCarStandardCityControlInfo,
+    ApplyAddRequestTravelerStandardCarStandardCrossCityInfoCrossCityList,
+    ApplyAddRequestTravelerStandardCarStandardCrossCityInfo,
+    ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom,
+    ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo,
+    ApplyAddRequestTravelerStandardCarStandardElectronicFenceInfo,
+    ApplyAddRequestTravelerStandardCarStandardModifyDestinationInfo,
+    ApplyAddRequestTravelerStandardCarStandard,
     ApplyAddRequestTravelerStandardHotelCitys,
     ApplyAddRequestTravelerStandardHotelIntlCitys,
     ApplyAddRequestTravelerStandard,
@@ -3127,6 +3266,19 @@ __all__ = [
     ApplyModifyRequestItinerarySetList,
     ApplyModifyRequestTravelerList,
     ApplyModifyRequestTravelerStandardCarCitySet,
+    ApplyModifyRequestTravelerStandardCarStandardBookAllowInfo,
+    ApplyModifyRequestTravelerStandardCarStandardCarHelper,
+    ApplyModifyRequestTravelerStandardCarStandardCarTimeControlTimeLimit,
+    ApplyModifyRequestTravelerStandardCarStandardCarTimeControl,
+    ApplyModifyRequestTravelerStandardCarStandardCityControlInfoCityInfos,
+    ApplyModifyRequestTravelerStandardCarStandardCityControlInfo,
+    ApplyModifyRequestTravelerStandardCarStandardCrossCityInfoCrossCityList,
+    ApplyModifyRequestTravelerStandardCarStandardCrossCityInfo,
+    ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsFrom,
+    ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfoElectronicFenceLocationsTo,
+    ApplyModifyRequestTravelerStandardCarStandardElectronicFenceInfo,
+    ApplyModifyRequestTravelerStandardCarStandardModifyDestinationInfo,
+    ApplyModifyRequestTravelerStandardCarStandard,
     ApplyModifyRequestTravelerStandardHotelCitys,
     ApplyModifyRequestTravelerStandardHotelIntlCitys,
     ApplyModifyRequestTravelerStandard,
@@ -3147,6 +3299,11 @@ __all__ = [
     ApplyQueryResponseBodyModuleTravelerList,
     ApplyQueryResponseBodyModule,
     BaseCityInfoSearchResponseBodyModule,
+    BatchQueryDepartmentResponseBodyModuleItems,
+    BatchQueryDepartmentResponseBodyModule,
+    BatchSubmitPreBillResponseBodyModuleForbidUpdateDetail,
+    BatchSubmitPreBillResponseBodyModule,
+    CarApplyAddRequestItineraryList,
     CarApplyAddRequestTravelerStandardCarCitySet,
     CarApplyAddRequestTravelerStandard,
     CarApplyQueryResponseBodyApplyListApproverList,
@@ -3172,6 +3329,8 @@ __all__ = [
     CitySearchResponseBodyModuleCities,
     CitySearchResponseBodyModule,
     CommonApplyQueryResponseBodyModule,
+    ConfirmPreBillResponseBodyModuleForbidUpdateDetail,
+    ConfirmPreBillResponseBodyModule,
     CooperatorFlightBillSettlementQueryResponseBodyModuleItems,
     CooperatorFlightBillSettlementQueryResponseBodyModule,
     CooperatorHotelBillSettlementQueryResponseBodyModuleItems,
@@ -3205,6 +3364,7 @@ __all__ = [
     EstimatedPriceQueryResponseBodyModuleTrafficFeeBtripRoutes,
     EstimatedPriceQueryResponseBodyModuleTrafficFee,
     EstimatedPriceQueryResponseBodyModule,
+    EstimatedPriceQueryV2ResponseBodyModule,
     ExternalUserAddRequestCertRequestList,
     ExternalUserQueryResponseBodyModule,
     ExternalUserUpdateRequestCertRequestList,
@@ -3585,6 +3745,9 @@ __all__ = [
     HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDescDiscountDetail,
     HotelGoodsQueryResponseBodyModuleRoomsRatesDiscountDesc,
     HotelGoodsQueryResponseBodyModuleRoomsRatesHotelDetailRatePriceDTO,
+    HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailAvgOnsitePrice,
+    HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetailDailyOnsitePrice,
+    HotelGoodsQueryResponseBodyModuleRoomsRatesHotelOnsitePriceDetail,
     HotelGoodsQueryResponseBodyModuleRoomsRates,
     HotelGoodsQueryResponseBodyModuleRoomsRoomService,
     HotelGoodsQueryResponseBodyModuleRooms,
@@ -3608,6 +3771,8 @@ __all__ = [
     HotelOrderDetailInfoResponseBodyModuleBtripHotelCancelPolicyDTO,
     HotelOrderDetailInfoResponseBodyModuleCancelInfo,
     HotelOrderDetailInfoResponseBodyModuleHotelDetailInfo,
+    HotelOrderDetailInfoResponseBodyModuleHotelOnSitePriceDetailTotalOnSitePrice,
+    HotelOrderDetailInfoResponseBodyModuleHotelOnSitePriceDetail,
     HotelOrderDetailInfoResponseBodyModuleHotelSaleOrderRoomInfos,
     HotelOrderDetailInfoResponseBodyModuleInvoiceInfo,
     HotelOrderDetailInfoResponseBodyModuleOccupantInfoListCostCenterInfoList,
@@ -3641,6 +3806,7 @@ __all__ = [
     HotelOrderPreValidateResponseBodyModuleRatePlanDaily,
     HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTOBtripHotelCancelPolicyInfoDTOList,
     HotelOrderPreValidateResponseBodyModuleRatePlanInfoBtripHotelCancelPolicyDTO,
+    HotelOrderPreValidateResponseBodyModuleRatePlanInfoHourItemArrivalTimeInfo,
     HotelOrderPreValidateResponseBodyModuleRatePlanInfo,
     HotelOrderPreValidateResponseBodyModule,
     HotelOrderQueryResponseBodyModuleHotelInfo,
@@ -3919,6 +4085,10 @@ __all__ = [
     MealApplyAddRequestItineraryListCities,
     MealApplyAddRequestItineraryList,
     MealApplyAddResponseBodyModule,
+    MealApplyModifyRequestApplyUser,
+    MealApplyModifyRequestItineraryListCities,
+    MealApplyModifyRequestItineraryList,
+    MealApplyModifyResponseBodyModule,
     MealApplyQueryResponseBodyModuleApplyUser,
     MealApplyQueryResponseBodyModuleItineraryListCities,
     MealApplyQueryResponseBodyModuleItineraryList,
@@ -3931,6 +4101,8 @@ __all__ = [
     MonthBillGetResponseBodyModuleMonthAccountBillDetail,
     MonthBillGetResponseBodyModule,
     MonthBillSplitGetResponseBodyModule,
+    MonthPreBillGetResponseBodyModuleMonthAccountBillDetail,
+    MonthPreBillGetResponseBodyModule,
     OrderRefundDetailQueryResponseBodyModuleRefundDetails,
     OrderRefundDetailQueryResponseBodyModule,
     QueryCompenInfosForOpResponseBodyModule,
@@ -3943,6 +4115,8 @@ __all__ = [
     QueryReimbursementOrderResponseBodyModuleItineraries,
     QueryReimbursementOrderResponseBodyModulePaymentInfos,
     QueryReimbursementOrderResponseBodyModule,
+    RemoveProjectManagerRequestOrgEntities,
+    RemoveProjectManagerResponseBodyModule,
     TBAccountInfoQueryResponseBodyModule,
     TicketChangingApplyRequestModifyFlightInfoListPassengerInfoList,
     TicketChangingApplyRequestModifyFlightInfoList,

@@ -67,18 +67,23 @@ class ListDNADBResponseBodyDBList(DaraModel):
         self.description = description
         # The model of the media fingerprint library. Valid values:
         # 
-        # *   **Video**
-        # *   **Audio**
-        # *   **Image**
-        # *   **Text** (supported only in the China (Shanghai) region)
+        # - **Video**
+        # 
+        # - **Audio**
+        # 
+        # - **Image**
+        # 
+        # - **Text** (supported only in the China (Shanghai) region)
         self.model = model
         # The name of the media fingerprint library.
         self.name = name
-        # The state of the media fingerprint library. Default value: **offline**. ****Valid values:
+        # The state of the media fingerprint library. Default value: **offline**. \\*\\*\\*\\*Valid values:
         # 
-        # *   **offline**: The media fingerprint library is offline.
-        # *   **active**: The media fingerprint library is online.
-        # *   **deleted**: The media fingerprint library is deleted.
+        # - **offline**: The media fingerprint library is offline.
+        # 
+        # - **active**: The media fingerprint library is online.
+        # 
+        # - **deleted**: The media fingerprint library is deleted.
         self.status = status
 
     def validate(self):

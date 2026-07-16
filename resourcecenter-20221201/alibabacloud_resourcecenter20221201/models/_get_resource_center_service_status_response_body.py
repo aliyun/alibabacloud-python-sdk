@@ -11,19 +11,17 @@ class GetResourceCenterServiceStatusResponseBody(DaraModel):
         request_id: str = None,
         service_status: str = None,
     ):
-        # The initialization status. Valid values:
+        # The initialization status of the service. Valid values:
         # 
-        # - Pending
-        # 
-        # - Finished
+        # *   Pending: The service is being initialized.
+        # *   Finished: The service is initialized.
         self.initial_status = initial_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The service status. Valid values:
+        # The status of the service. Valid values:
         # 
-        # - Enabled
-        # 
-        # - Disabled
+        # *   Enabled: The service is activated.
+        # *   Disabled: The service is deactivated.
         self.service_status = service_status
 
     def validate(self):

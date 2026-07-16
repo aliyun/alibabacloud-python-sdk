@@ -13,10 +13,21 @@ class RequestWhatsappConversionApiResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
+        # The response code.
+        # 
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**
+        # - **false**.
         self.success = success
 
     def validate(self):

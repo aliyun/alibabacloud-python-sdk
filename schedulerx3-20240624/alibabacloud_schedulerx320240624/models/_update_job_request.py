@@ -37,33 +37,92 @@ class UpdateJobRequest(DaraModel):
         weight: int = None,
         xattrs: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The retry interval upon node failure.
         self.attempt_interval = attempt_interval
+        # The custom calendar.
         self.calendar = calendar
+        # The child node IDs, separated by commas.
         self.child_job_id = child_job_id
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The dependency strategy.
         self.dependent_strategy = dependent_strategy
+        # The node description.
         self.description = description
+        # The client blocking strategy. Valid values:
+        # - 1: serial execution on a single machine
+        # - 2: ignore subsequent scheduling
+        # - 3: override previous scheduling
         self.executor_block_strategy = executor_block_strategy
+        # The JobHandler name.
         self.job_handler = job_handler
+        # The node ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The maximum number of retry attempts upon node failure.
         self.max_attempt = max_attempt
+        # The maximum number of concurrent instances of the node.
+        # >The maximum number of instances that can run at the same time for the same node. A value of 1 indicates that repeated execution is not allowed. If the concurrency limit is exceeded, the current scheduling is skipped.
         self.max_concurrency = max_concurrency
+        # The node name.
         self.name = name
+        # The notification configuration.
         self.notice_config = notice_config
+        # The notification contact configuration.
         self.notice_contacts = notice_contacts
+        # The node parameters.
         self.parameters = parameters
+        # The execution priority of the node. Valid values:
+        # 
+        # - 1: low
+        # - 5: medium
+        # - 10: high
+        # - 15: very high
         self.priority = priority
+        # The routing policy. Valid values:
+        # 
+        # - 1: round robin
+        # - 2: random
+        # - 3: first
+        # - 4: last
+        # - 5: least frequently used
+        # - 6: least recently used
+        # - 7: consistent hashing
+        # - 8: shard broadcast
         self.route_strategy = route_strategy
+        # The script for non-BEAN nodes. Use this field to configure the script.
         self.script = script
+        # The scheduling start time.
         self.start_time = start_time
+        # The start time type.
         self.start_time_type = start_time_type
+        # The time expression. Set the time expression based on the selected time type.
+        # 
+        # - none: No value is required.
+        # - cron: Specify a standard cron expression. Online verification is supported.
+        # - api: No value is required.
+        # - fixed_rate: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - one_time: Specify a scheduling time in the yyyy-MM-dd HH:mm:ss format or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
+        # The time type. Valid values:
+        # 
+        # - -1: none
+        # - 1: cron
+        # - 3: fix_rate
+        # - 5: one_time
+        # - 100: api
         self.time_type = time_type
+        # The time zone.
+        # > By default, the time zone of the SchedulerX server is used.
         self.timezone = timezone
+        # The node weight.
         self.weight = weight
         self.xattrs = xattrs
 
@@ -254,7 +313,10 @@ class UpdateJobRequestNoticeContacts(DaraModel):
         contact_type: int = None,
         name: str = None,
     ):
+        # The contact type. 
+        # >Default configurations: 1.
         self.contact_type = contact_type
+        # The contact name.
         self.name = name
 
     def validate(self):
@@ -299,13 +361,42 @@ class UpdateJobRequestNoticeConfig(DaraModel):
     ):
         self.end_early = end_early
         self.end_early_enable = end_early_enable
+        # Specifies whether to enable the failure alerting switch. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.fail_enable = fail_enable
+        # The number of consecutive failures.
+        # > An alert is sent only when the number of consecutive failures exceeds the configured value.
         self.fail_limit_times = fail_limit_times
+        # Specifies whether to enable the no-available-machine alerting switch. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.miss_worker_enable = miss_worker_enable
+        # The notification channel. Valid values:
+        #  - sms: text message
+        #  - phone: phone call
+        # - mail: email
+        # - webhook: webhook
+        # > Separate multiple notification channels with commas.
         self.send_channel = send_channel
+        # Specifies whether to enable the success notification switch. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.success_notice = success_notice
+        # The node execution timeout period, in seconds.
         self.timeout = timeout
+        # Specifies whether to enable timeout alerting. Valid values:
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Disabled.
         self.timeout_enable = timeout_enable
+        # Specifies whether to enable the timeout termination switch for the current trigger. Valid values:
+        # 
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.timeout_kill_enable = timeout_kill_enable
 
     def validate(self):

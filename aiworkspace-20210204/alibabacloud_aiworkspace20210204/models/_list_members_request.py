@@ -13,21 +13,27 @@ class ListMembersRequest(DaraModel):
         roles: str = None,
         user_id: str = None,
     ):
-        # The member name. Fuzzy match is supported.
+        # Username. Fuzzy match is supported.
         self.member_name = member_name
-        # The page number of the workspace list. Pages start from page 1. Default value: 1.
+        # Page number. Pages start at 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20.
+        # Number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The roles that are used to filter members. Multiple roles are separated by commas (,). Valid values:
+        # Roles used to filter members. Separate multiple roles with commas (,). Valid values:
         # 
-        # *   PAI.AlgoDeveloper: algorithm developer
-        # *   PAI.AlgoOperator: algorithm O\\&M engineer
-        # *   PAI.LabelManager: labeling administrator
-        # *   PAI.MaxComputeDeveloper: MaxCompute developer
-        # *   PAI.WorkspaceAdmin: administrator
-        # *   PAI.WorkspaceGuest: guest
-        # *   PAI.WorkspaceOwner: owner
+        # - PAI.AlgoDeveloper: Algorithm developer
+        # 
+        # - PAI.AlgoOperator: Algorithm O\\&M engineer
+        # 
+        # - PAI.LabelManager: Annotation administrator
+        # 
+        # - PAI.MaxComputeDeveloper: MaxCompute developer
+        # 
+        # - PAI.WorkspaceAdmin: Workspace administrator
+        # 
+        # - PAI.WorkspaceGuest: Guest
+        # 
+        # - PAI.WorkspaceOwner: Workspace owner
         self.roles = roles
         self.user_id = user_id
 

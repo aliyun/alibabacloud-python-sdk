@@ -14,11 +14,15 @@ class GetAppPluginConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API status code or POP error code.
         self.code = code
+        # The additional information.
         self.message = message
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,14 +84,23 @@ class GetAppPluginConfigResponseBodyModule(DaraModel):
         plugin_name: str = None,
         user_id: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The primary key.
         self.id = id
+        # The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses related to com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
         self.plugin_config = plugin_config
+        # The description of the plugin.
         self.plugin_desc = plugin_desc
+        # The ID of the bound API gateway plugin.
         self.plugin_id = plugin_id
+        # The plugin name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
         self.plugin_name = plugin_name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

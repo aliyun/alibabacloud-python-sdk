@@ -14,9 +14,11 @@ class RunBookSmartCardResponseBody(DaraModel):
         payload: main_models.RunBookSmartCardResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
-        # Id of the request
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,7 +64,9 @@ class RunBookSmartCardResponseBodyPayload(DaraModel):
         output: main_models.RunBookSmartCardResponseBodyPayloadOutput = None,
         usage: main_models.RunBookSmartCardResponseBodyPayloadUsage = None,
     ):
+        # Output object.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -103,8 +107,11 @@ class RunBookSmartCardResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens.
         self.input_tokens = input_tokens
+        # Number of output tokens used.
         self.output_tokens = output_tokens
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -145,7 +152,9 @@ class RunBookSmartCardResponseBodyPayloadOutput(DaraModel):
         content: str = None,
         tags: List[str] = None,
     ):
+        # Card title.
         self.content = content
+        # Array of card tags.
         self.tags = tags
 
     def validate(self):
@@ -185,12 +194,19 @@ class RunBookSmartCardResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # Event type.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # Session ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # Trace ID.
         self.trace_id = trace_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class DeleteCustomTopicViewPointByIdRequest(DaraModel):
         agent_key: str = None,
         custom_view_point_id: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Custom viewpoint ID
+        # 
         # This parameter is required.
         self.custom_view_point_id = custom_view_point_id
 

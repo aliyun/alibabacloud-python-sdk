@@ -17,29 +17,35 @@ class SuspendJobResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # Whether the execution is successful.
         self.data = data
         # The error code returned. Valid values:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
+        # - The **ErrorCode** parameter is not returned if the request succeeds.
+        # 
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
         # The additional information that is returned. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - success: If the call is successful, **success** is returned.
+        # 
+        # - An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the job was executed. Valid values:
         # 
-        # *   **true**: The job was executed.
-        # *   **false**: The job failed to be executed.
+        # - **true**: The job was executed.
+        # 
+        # - **false**: The job failed to be executed.
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id

@@ -10,7 +10,7 @@ class DeleteDomainRequest(DaraModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the domain name.
+        # The domain name ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id

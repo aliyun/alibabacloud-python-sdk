@@ -29,8 +29,9 @@ class ListFileVersionsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -183,8 +184,9 @@ class ListFileVersionsResponseBodyDataFileVersions(DaraModel):
         self.file_version = file_version
         # Indicates whether this file version is the latest version in the production environment.
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_current_prod = is_current_prod
         # The scheduling configuration for this file version.
         self.node_content = node_content

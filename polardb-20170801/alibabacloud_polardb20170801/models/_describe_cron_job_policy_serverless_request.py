@@ -17,13 +17,28 @@ class DescribeCronJobPolicyServerlessRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the serverless cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the scheduled task.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of records to return on each page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

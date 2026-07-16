@@ -13,20 +13,20 @@ class DownloadVerifyRecordIntlRequest(DaraModel):
         param: str = None,
         product_type: str = None,
     ):
-        # Business type:
+        # The business type. Valid values:
         # - INVOKE_STATISTICS
-        # - INVOKE_RECORD
+        # - INVOKE_RECORD.
         self.biz_type = biz_type
-        # Query code.
+        # The query code.
         self.code = code
-        # Download mode:
+        # The download mode. Valid values:
         # 
-        # - **async**: Asynchronous
-        # - **sync**: Synchronous
+        # - **async**: asynchronous
+        # - **sync**: synchronous.
         self.download_mode = download_mode
-        # Parameters related to the export and download query task.
+        # The parameters for the export and download query task.
         self.param = param
-        # Product Code.
+        # The product code.
         self.product_type = product_type
 
     def validate(self):

@@ -20,17 +20,17 @@ class GetScheduledReportsResponseBody(DaraModel):
     ):
         # The response message.
         self.message = message
-        # The page number. Pages start from 1. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of reports returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The details of the report.
+        # A list of inspection reports.
         self.reports = reports
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of returned reports.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -110,19 +110,20 @@ class GetScheduledReportsResponseBodyReports(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The creation time of the task.
+        # The time when the report was created, in YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
-        # The end time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The inspection end time, in YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
         self.inspection_items = inspection_items
+        # The region ID.
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
-        # The start time of the inspection task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The inspection start time, in YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
-        # The status of the task.
+        # The status of the report.
         self.status = status
-        # The ID of the report.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

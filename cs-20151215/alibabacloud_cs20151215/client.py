@@ -52,7 +52,45 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'cs.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'cs.aliyuncs.com',
             'eu-west-1-oxs': 'cs.aliyuncs.com',
-            'rus-west-1-pop': 'cs.aliyuncs.com'
+            'rus-west-1-pop': 'cs.aliyuncs.com',
+            'us-west-1': 'cs.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'cs.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'cs.us-east-1.aliyuncs.com',
+            'na-south-1': 'cs.na-south-1.aliyuncs.com',
+            'me-east-1': 'cs.me-east-1.aliyuncs.com',
+            'me-central-1': 'cs.me-central-1.aliyuncs.com',
+            'eu-west-1': 'cs.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'cs.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'cs.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'cs.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'cs.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'cs.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'cs.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cs.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'cs.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cs.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'cs.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'cs.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'cs.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'cs.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'cs.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'cs.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'cs.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'cs.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'cs.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'cs.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'cs.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'cs.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'cs.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'cs.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'cs.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-5': 'cs.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'cs.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'cs.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'cs.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'cs.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'cs.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'cs.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4282,6 +4320,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_ids):
             query['instanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.node_ips):
+            query['nodeIps'] = request.node_ips
+        if not DaraCore.is_null(request.node_labels):
+            query['nodeLabels'] = request.node_labels
+        if not DaraCore.is_null(request.node_names):
+            query['nodeNames'] = request.node_names
         if not DaraCore.is_null(request.nodepool_id):
             query['nodepool_id'] = request.nodepool_id
         if not DaraCore.is_null(request.page_number):
@@ -4321,6 +4365,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_ids):
             query['instanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.node_ips):
+            query['nodeIps'] = request.node_ips
+        if not DaraCore.is_null(request.node_labels):
+            query['nodeLabels'] = request.node_labels
+        if not DaraCore.is_null(request.node_names):
+            query['nodeNames'] = request.node_names
         if not DaraCore.is_null(request.nodepool_id):
             query['nodepool_id'] = request.nodepool_id
         if not DaraCore.is_null(request.page_number):
@@ -9015,6 +9065,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not DaraCore.is_null(request.concurrency):
             body['concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not DaraCore.is_null(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not DaraCore.is_null(request.management):
@@ -9061,6 +9113,8 @@ class Client(OpenApiClient):
             body['auto_scaling'] = request.auto_scaling
         if not DaraCore.is_null(request.concurrency):
             body['concurrency'] = request.concurrency
+        if not DaraCore.is_null(request.eflo_node_group):
+            body['eflo_node_group'] = request.eflo_node_group
         if not DaraCore.is_null(request.kubernetes_config):
             body['kubernetes_config'] = request.kubernetes_config
         if not DaraCore.is_null(request.management):
@@ -10388,6 +10442,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.run_cluster_inspect_with_options_async(cluster_id, request, headers, runtime)
+
+    def run_node_operation_with_options(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunNodeOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation_action):
+            body['operationAction'] = request.operation_action
+        if not DaraCore.is_null(request.operation_args):
+            body['operationArgs'] = request.operation_args
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunNodeOperation',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/nodes/{DaraURL.percent_encode(node_name)}/operation',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunNodeOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_node_operation_with_options_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RunNodeOperationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation_action):
+            body['operationAction'] = request.operation_action
+        if not DaraCore.is_null(request.operation_args):
+            body['operationArgs'] = request.operation_args
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunNodeOperation',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/nodepools/{DaraURL.percent_encode(nodepool_id)}/nodes/{DaraURL.percent_encode(node_name)}/operation',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunNodeOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_node_operation(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+    ) -> main_models.RunNodeOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.run_node_operation_with_options(cluster_id, nodepool_id, node_name, request, headers, runtime)
+
+    async def run_node_operation_async(
+        self,
+        cluster_id: str,
+        nodepool_id: str,
+        node_name: str,
+        request: main_models.RunNodeOperationRequest,
+    ) -> main_models.RunNodeOperationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.run_node_operation_with_options_async(cluster_id, nodepool_id, node_name, request, headers, runtime)
 
     def scale_cluster_node_pool_with_options(
         self,
@@ -12277,6 +12423,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeClusterNodepoolResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.ignore_warning_check):
+            body['ignore_warning_check'] = request.ignore_warning_check
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.kubernetes_version):
@@ -12321,6 +12469,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeClusterNodepoolResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.ignore_warning_check):
+            body['ignore_warning_check'] = request.ignore_warning_check
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.kubernetes_version):

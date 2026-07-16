@@ -1,3 +1,36 @@
+2026-07-07 Version: 1.8.0
+- Support API CreateContact.
+- Support API DeleteContact.
+- Support API ListContacts.
+- Support API UpdateContact.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.CurrentJobs.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.MaxJobs.
+
+
+2026-06-25 Version: 1.7.2
+- Update API CreateCluster: add request parameters Source.
+- Update API GetCluster: add response parameters Body.Data.Source.
+- Update API ListClusters: add response parameters Body.Data.Records.$.Source.
+
+
+2026-05-28 Version: 1.7.1
+- Update API CreateExecutorGroup: add request parameters AutoScale.
+- Update API CreateExecutorGroup: add request parameters CmsWorkspaceId.
+- Update API CreateExecutorGroup: add request parameters IntegrationType.
+- Update API CreateExecutorGroup: add request parameters XAttrs.
+- Update API DeleteExecutorGroup: add request parameters Name.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.AutoScale.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.CmsWorkspaceId.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.IntegrationType.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.ResolvedWorkers.
+- Update API ListExecutorGroup: add response parameters Body.Data.Records.$.XAttrs.
+- Update API ListExecutors: add response parameters Body.Data.$.Status.
+- Update API UpdateExecutorGroup: add request parameters AutoScale.
+- Update API UpdateExecutorGroup: add request parameters CmsWorkspaceId.
+- Update API UpdateExecutorGroup: add request parameters Name.
+- Update API UpdateExecutorGroup: add request parameters XAttrs.
+
+
 2026-04-28 Version: 1.7.0
 - Support API ListExecutorGroup.
 

@@ -15,11 +15,17 @@ class CreateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response code. A value of `OK` indicates that the request was successful.
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message returned if the request fails.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success and `false` indicates failure.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,17 @@ class CreateInstanceResponseBodyData(DaraModel):
         resource_region_id: str = None,
         submit_time: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The ID of the region where the resource is located.
         self.resource_region_id = resource_region_id
+        # The time when the request was submitted.
         self.submit_time = submit_time
 
     def validate(self):

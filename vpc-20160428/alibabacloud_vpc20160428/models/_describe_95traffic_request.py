@@ -16,7 +16,9 @@ class Describe95TrafficRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The date in UTC+8. Format: year-month-day.
+        # The date to query, in UTC+8. Format: YYYY-MM-DD.
+        # 
+        # > You can query only data from last month or earlier.
         # 
         # This parameter is required.
         self.day = day
@@ -28,13 +30,13 @@ class Describe95TrafficRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Set the value to cbwp, which specifies Internet Shared Bandwidth.
+        # The resource type. Only **cbwp** is supported, which represents Internet Shared Bandwidth.
         # 
         # This parameter is required.
         self.resource_type = resource_type

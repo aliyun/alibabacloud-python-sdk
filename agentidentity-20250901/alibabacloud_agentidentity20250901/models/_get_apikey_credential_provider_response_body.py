@@ -49,12 +49,14 @@ class GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraModel)
         create_time: str = None,
         credential_provider_arn: str = None,
         description: str = None,
+        token_vault_name: str = None,
         update_time: str = None,
     ):
         self.apikey_credential_provider_name = apikey_credential_provider_name
         self.create_time = create_time
         self.credential_provider_arn = credential_provider_arn
         self.description = description
+        self.token_vault_name = token_vault_name
         self.update_time = update_time
 
     def validate(self):
@@ -77,6 +79,9 @@ class GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraModel)
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -95,6 +100,9 @@ class GetAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider(DaraModel)
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

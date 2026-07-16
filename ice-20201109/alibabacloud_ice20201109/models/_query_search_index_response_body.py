@@ -19,14 +19,17 @@ class QuerySearchIndexResponseBody(DaraModel):
         self.code = code
         # The state of the index. Valid values:
         # 
-        # *   active: the index is enabled.
-        # *   Deactive: the index is not enabled.
+        # - active: the index is enabled.
+        # 
+        # - Deactive: the index is not enabled.
         self.index_status = index_status
         # The category of the index. Valid values:
         # 
-        # *   mm: large visual model.
-        # *   face: face recognition.
-        # *   aiLabel: smart tagging.
+        # - mm: large visual model.
+        # 
+        # - face: face recognition.
+        # 
+        # - aiLabel: smart tagging.
         self.index_type = index_type
         # The total number of media assets.
         self.media_total = media_total
@@ -36,8 +39,9 @@ class QuerySearchIndexResponseBody(DaraModel):
         self.search_lib_name = search_lib_name
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

@@ -15,7 +15,7 @@ class AddDomainBackupResponseBody(DaraModel):
         self.domain_name = domain_name
         # The backup cycle.
         self.period_type = period_type
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

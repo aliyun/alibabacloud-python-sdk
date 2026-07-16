@@ -15,7 +15,7 @@ class ListContactRequest(DaraModel):
         self.current_page = current_page
         # The keyword used in the query. For example, you can specify a keyword in names, email addresses, and mobile phone numbers.
         self.keyword = keyword
-        # The number of contacts per page.
+        # The number of entries to return on each page. Default value: 20.
         self.show_size = show_size
 
     def validate(self):

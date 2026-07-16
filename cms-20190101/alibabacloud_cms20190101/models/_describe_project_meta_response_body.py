@@ -20,8 +20,7 @@ class DescribeProjectMetaResponseBody(DaraModel):
         total: str = None,
     ):
         # The status code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # >The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -32,9 +31,9 @@ class DescribeProjectMetaResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.resources = resources
-        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+        # Indicates whether the operation was successful. Valid values: true and false. The value true indicates success, and the value false indicates failure.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

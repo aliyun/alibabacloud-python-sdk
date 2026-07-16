@@ -13,10 +13,16 @@ class MoveMaterialFileRequest(DaraModel):
         directory_id: str = None,
         file_ids: List[str] = None,
     ):
+        # The application instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The folder ID.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
+        # The list of file IDs.
+        # 
         # This parameter is required.
         self.file_ids = file_ids
 

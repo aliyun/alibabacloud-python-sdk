@@ -17,17 +17,17 @@ class DescribeDomainResolveStatisticsSummaryResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **100**. Default value: **20**.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The statistics.
+        # The list of statistics.
         self.statistics = statistics
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -95,14 +95,15 @@ class DescribeDomainResolveStatisticsSummaryResponseBodyStatistics(DaraModel):
         domain_name: str = None,
         domain_type: str = None,
     ):
-        # The number of DNS requests.
+        # The number of requests.
         self.count = count
         # The domain name.
         self.domain_name = domain_name
-        # The type of the domain name. Valid values:
+        # The type of the domain name.
         # 
-        # *   PUBLIC: hosted public domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC: Authoritative domain name
+        # 
+        # - CACHE: Authoritative proxy domain name
         self.domain_type = domain_type
 
     def validate(self):

@@ -13,11 +13,11 @@ class DescribeUserSettingResponseBody(DaraModel):
         invalid_warning_keep_days: int = None,
         request_id: str = None,
     ):
-        # The severities of alerts. If this parameter is empty, no custom alerts are generated.
+        # The list of alert notification levels. If the list is empty, no alerts are generated for custom policies.
         self.alert_levels = alert_levels
-        # The number of days during which you want to retain invalid alerts.
+        # The number of days to retain invalid alerts.
         self.invalid_warning_keep_days = invalid_warning_keep_days
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

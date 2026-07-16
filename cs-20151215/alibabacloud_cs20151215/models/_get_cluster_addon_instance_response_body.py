@@ -14,20 +14,19 @@ class GetClusterAddonInstanceResponseBody(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # The custom configurations of the component.
+        # The custom parameter settings of the component.
         self.config = config
-        # The status of Simple Log Service.
+        # The logging feature status of the component.
         self.logging = logging
-        # The name of the component instance.
+        # The component instance name.
         self.name = name
-        # The status of the component. Valid values:
-        # 
-        # *   active: The component is installed.
-        # *   updating: The component is being modified.
-        # *   upgrading: The component is being updated.
-        # *   deleting: The component is being uninstalled.
+        # The component status. Valid values:
+        # - active: installed.
+        # - updating: being modified.
+        # - upgrading: being upgraded.
+        # - deleting: being uninstalled.
         self.state = state
-        # The version of the component instance.
+        # The component instance version.
         self.version = version
 
     def validate(self):
@@ -84,13 +83,21 @@ class GetClusterAddonInstanceResponseBodyLogging(DaraModel):
         log_project: str = None,
         logstore: str = None,
     ):
-        # Indicates whether Simple Log Service is supported by the component.
+        # Indicates whether the component supports the logging feature.
+        # 
+        # - true: Supported.
+        # 
+        # - false: Not supported.
         self.capable = capable
-        # Indicates whether Simple Log Service is enabled for the component.
+        # Indicates whether the logging feature is enabled for the component.
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Not enabled.
         self.enabled = enabled
-        # The Simple Log Service project that is used to collect logs for the component.
+        # The Log Service project used by the logging feature of the component.
         self.log_project = log_project
-        # The Simple Log Service Logstore that is used to collect logs for the component.
+        # The Log Service Logstore used by the logging feature of the component.
         self.logstore = logstore
 
     def validate(self):

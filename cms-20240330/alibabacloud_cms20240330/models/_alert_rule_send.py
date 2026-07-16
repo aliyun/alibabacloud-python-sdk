@@ -16,13 +16,14 @@ class AlertRuleSend(DaraModel):
         rca_config: main_models.AlertRuleRcaConfig = None,
         send_to_arms: bool = None,
     ):
-        # Alert Action Integration Configuration.
+        # The integrated alert action configuration.
         self.action = action
-        # Alert Notification Configuration.
+        # The alert notification configuration.
         self.notification = notification
+        # The list of notification policies. Each policy defines the notification method or policy name to use for a specific alert state, such as trigger or recovery.
         self.notify_strategies = notify_strategies
         self.rca_config = rca_config
-        # Whether to deliver alert events to ARMS Alert Management.
+        # Specifies whether to deliver alert events to Alert Management of Application Real-Time Monitoring Service (ARMS).
         self.send_to_arms = send_to_arms
 
     def validate(self):

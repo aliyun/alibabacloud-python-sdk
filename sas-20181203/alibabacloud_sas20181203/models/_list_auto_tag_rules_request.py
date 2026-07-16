@@ -11,13 +11,12 @@ class ListAutoTagRulesRequest(DaraModel):
         page_size: int = None,
         rule_name: str = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paging query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
 
     def validate(self):

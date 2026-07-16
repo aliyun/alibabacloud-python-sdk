@@ -17,12 +17,20 @@ class ListIndexFileDetailsResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error status code.
         self.code = code
+        # The data field returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -86,10 +94,15 @@ class ListIndexFileDetailsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of files in the knowledge base, sorted by file import time in descending order (consistent with the console).
         self.documents = documents
+        # The knowledge base ID.
         self.index_id = index_id
+        # The returned page number.
         self.page_number = page_number
+        # The returned number of entries per page.
         self.page_size = page_size
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -162,19 +175,38 @@ class ListIndexFileDetailsResponseBodyDataDocuments(DaraModel):
         status: str = None,
         separator: str = None,
     ):
+        # The custom chunking mode.
         self.chunk_mode = chunk_mode
+        # The segment length, which is the number of characters in each text chunk.
         self.chunk_size = chunk_size
+        # The error status code for file import.
         self.code = code
+        # The file format type. Valid values: pdf, docx, doc, txt, md, pptx, ppt, png, jpg, jpeg, bmp, gif, and EXCEL.
         self.document_type = document_type
+        # Indicates whether Excel file headers support concatenation.
         self.enable_headers = enable_headers
+        # The time when the file was imported to the knowledge base, in UNIX timestamp format.
         self.gmt_modified = gmt_modified
+        # The file ID.
         self.id = id
+        # The error message for file import.
         self.message = message
+        # The file name.
         self.name = name
+        # The overlap length between segments.
         self.overlap_size = overlap_size
+        # The file size, in bytes.
         self.size = size
+        # The category ID.
         self.source_id = source_id
+        # The file import status. Valid values:
+        # 
+        # - INSERT_ERROR: File import failed.
+        # - RUNNING: File import in progress.
+        # - DELETED: File deleted.
+        # - FINISH: File import succeeded.
         self.status = status
+        # The sentence separator.
         self.separator = separator
 
     def validate(self):

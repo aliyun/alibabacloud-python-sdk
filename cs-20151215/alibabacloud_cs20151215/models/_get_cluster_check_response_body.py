@@ -17,19 +17,19 @@ class GetClusterCheckResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the cluster check task.
+        # The check ID.
         self.check_id = check_id
-        # A list of check items.
+        # The check items.
         self.check_items = check_items
-        # The time when the cluster check task was created.
+        # The creation time.
         self.created_at = created_at
-        # The time when the cluster check task was completed.
+        # The completion time.
         self.finished_at = finished_at
-        # The message that indicates the status of the cluster check task.
+        # The check status message.
         self.message = message
-        # The status of the cluster check.
+        # The check status.
         self.status = status
-        # The check method.
+        # The check type.
         self.type = type
 
     def validate(self):

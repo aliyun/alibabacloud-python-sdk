@@ -9,6 +9,8 @@ class DeleteLlmTemplateRequest(DaraModel):
         self,
         llm_template_id: str = None,
     ):
+        # The ID of the model template.
+        # 
         # This parameter is required.
         self.llm_template_id = llm_template_id
 

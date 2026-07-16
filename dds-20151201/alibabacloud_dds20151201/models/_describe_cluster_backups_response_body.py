@@ -16,15 +16,15 @@ class DescribeClusterBackupsResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The cluster backup sets. A cluster backup file contains the backup sets of each node.
+        # The details of the cluster backup sets. A cluster backup contains the backup sets of all nodes.
         self.cluster_backups = cluster_backups
-        # The maximum number of entries returned.
+        # The maximum number of entries returned in this request.
         self.max_results = max_results
-        # The page number of the page returned.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -96,48 +96,66 @@ class DescribeClusterBackupsResponseBodyClusterBackups(DaraModel):
         is_avail: int = None,
         progress: str = None,
     ):
-        # The backup status. Valid values:
+        # The status of the attached log backup. Valid values:
         # 
-        # *   **init**: The backup is being initialized.
-        # *   **No_Need**: Log backup is not performed.
-        # *   **Running**: Log backup is being performed.
-        # *   **Ready**: Log backup is complete.
-        # *   **Failed**: Log backup failed.
+        # - **Init**: initialization.
         # 
-        # >  If the **ClusterBackupStatus** parameter is set to OK, full backup is successful. If you want to perform point-in-time-restoration on an instance for which log backup is enabled or to implement consistency restoration, make sure that log backup is complete.
+        # - **No_Need**: No attached log backup is available.
+        # 
+        # - **Running**: The attached log backup is in progress.
+        # 
+        # - **Ready**: The attached log backup is complete.
+        # 
+        # - **Failed**: The attached log backup failed.
+        # 
+        # > If the value of the **ClusterBackupStatus** parameter is OK, it only indicates that the full backup was successful. For a cluster instance for which log backup is enabled, the attached log backup must be complete before you can perform a point-in-time restore or ensure data consistency.
         self.attach_log_status = attach_log_status
+        # The time when the backup expires. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+        # 
+        # >Notice: 
+        # 
+        # A value of "9999-01-01T00:00:00Z" indicates that the backup is permanently retained.
         self.backup_expire_time = backup_expire_time
-        # The collection of the backup sets of each child node in a cluster backup set.
+        # The backup sets of each child node in the cluster backup.
         self.backups = backups
-        # The end of the time range within which the cluster backup is performed.
+        # The time when the cluster backup finished.
         self.cluster_backup_end_time = cluster_backup_end_time
-        # The backup set ID.
+        # The ID of the cluster backup.
         self.cluster_backup_id = cluster_backup_id
-        # The cluster backup mode.
+        # The mode of the cluster backup.
         self.cluster_backup_mode = cluster_backup_mode
-        # The size of the cluster backup set. Unit: bytes.
+        # The size of the cluster backup set, in bytes.
         self.cluster_backup_size = cluster_backup_size
-        # The beginning of the time range within which the cluster backup is performed.
+        # The time when the cluster backup started.
         self.cluster_backup_start_time = cluster_backup_start_time
-        # The status of the cluster backup set.
+        # The status of the cluster backup.
         self.cluster_backup_status = cluster_backup_status
-        # Version of the backuped instance.
+        # The database engine version of the instance when the backup was created. Valid values:
         # 
-        # *   **6.0**
-        # *   **5.0**
-        # *   **4.4**
-        # *   **4.2**
-        # *   **4.0**
-        # *   **3.4**
+        # - **7.0**
+        # 
+        # - **6.0**
+        # 
+        # - **5.0**
+        # 
+        # - **4.4**
+        # 
+        # - **4.2**
+        # 
+        # - **4.0**
+        # 
+        # - **3.4**
         self.engine_version = engine_version
-        # The additional information in the JSON format.
+        # The supplementary information. The value is a JSON-formatted string.
         self.extra_info = extra_info
-        # Indicates whether the cluster backup sets take effect. Valid values:
+        # Indicates whether the cluster backup set is valid. Valid values:
         # 
-        # *   **1**: The cluster backup sets take effect.
-        # *   **0**: The backup sets of child nodes are incomplete or fail.
+        # - **1**: The cluster backup set is valid.
+        # 
+        # - **0**: The backup sets of child nodes are not complete or have failed.
         self.is_avail = is_avail
-        # The progress of the backup task. Unit: %. The progress is returned only for running backup tasks.
+        # The backup progress in percentage.
+        # This parameter is returned only for backups that are in progress.
         self.progress = progress
 
     def validate(self):
@@ -248,7 +266,7 @@ class DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo(DaraModel):
         self,
         registry_from_history: str = None,
     ):
-        # Indicates whether the cluster backups are migrated from the historical backup sets. If the value of this parameter is **1**, the cluster backups are migrated from the historical backup sets.
+        # Indicates whether the backup set was migrated from a historical backup. A value of **1** indicates that the backup was migrated.
         self.registry_from_history = registry_from_history
 
     def validate(self):
@@ -286,33 +304,35 @@ class DescribeClusterBackupsResponseBodyClusterBackupsBackups(DaraModel):
         instance_name: str = None,
         is_avail: str = None,
     ):
-        # The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, an empty string is returned.
+        # The public URL from which you can download the backup file. If the backup file is unavailable for download, an empty string is returned.
         self.backup_download_url = backup_download_url
-        # The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the backup finished. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
+        # The ID of the backup.
         self.backup_id = backup_id
-        # The URL that is used to download the backup set over an internal network. If the backup set cannot be downloaded, null is returned.
+        # The internal URL from which you can download the backup file. If the backup file is unavailable for download, an empty string is returned.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The backup name.
+        # The name of the backup.
         self.backup_name = backup_name
-        # The size of the backup file. Unit: bytes.
+        # The size of the backup file, in bytes.
         self.backup_size = backup_size
-        # The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the backup started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The status of the backup task. Valid values:
+        # The backup status. Valid values:
         # 
-        # *   **Success**: The backup task is successful.
-        # *   **Failed**: The backup task failed.
+        # - **Success**: The backup is successful.
+        # 
+        # - **Failed**: The backup failed.
         self.backup_status = backup_status
-        # The information of the node associated with the backup.
+        # The information about the instance node that is associated with the backup.
         self.extra_info = extra_info
-        # The shard name.
+        # The name of the shard in the MongoDB cluster.
         self.instance_name = instance_name
         # Indicates whether the backup set is available. Valid values:
         # 
-        # *   **0**: unavailable
-        # *   **1**: available
+        # - **0**: unavailable.
+        # 
+        # - **1**: available.
         self.is_avail = is_avail
 
     def validate(self):
@@ -405,13 +425,13 @@ class DescribeClusterBackupsResponseBodyClusterBackupsBackupsExtraInfo(DaraModel
         node_type: str = None,
         storage_size: str = None,
     ):
-        # The instance type of the node.
+        # The specifications of the node.
         self.instance_class = instance_class
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The node type.
+        # The type of the node.
         self.node_type = node_type
-        # The storage capacity of the node. Unit: MB.
+        # The storage space of the node, in MB.
         self.storage_size = storage_size
 
     def validate(self):

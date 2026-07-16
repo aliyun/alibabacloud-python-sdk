@@ -17,29 +17,31 @@ class RestartInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         restart_time: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in the destination region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of pages to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return per page. Default value: 30. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30 (default)
+        # 
+        # - 50
+        # 
+        # - 100
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The scheduled restart time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # The scheduled restart time. The time must be in the yyyy-MM-ddTHH:mmZ format and in UTC.
         # 
-        # >  If this parameter is left empty or the time specified by this parameter is earlier than the current time, the cluster is immediately restarted.
+        # > If this parameter is empty or specifies a time earlier than the current time, the cluster is restarted immediately.
         self.restart_time = restart_time
 
     def validate(self):

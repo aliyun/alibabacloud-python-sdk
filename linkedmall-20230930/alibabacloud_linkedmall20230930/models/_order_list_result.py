@@ -14,8 +14,11 @@ class OrderListResult(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Collection of orders
         self.order_list = order_list
+        # The request ID for the API call
         self.request_id = request_id
+        # Total number of orders
         self.total = total
 
     def validate(self):

@@ -22,16 +22,27 @@ class ListDatasetsResponseBody(DaraModel):
         third_search_config: main_models.ListDatasetsResponseBodyThirdSearchConfig = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # Configuration and usage details for custom semantic search datasets that use uploaded files as data sources.
         self.custom_semantic_search_config = custom_semantic_search_config
+        # An array of dataset objects.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: `true` (success) and `false` (failure).
         self.success = success
+        # Configuration and usage details for API-integrated datasets.
         self.third_search_config = third_search_config
+        # The total number of datasets.
         self.total_count = total_count
 
     def validate(self):
@@ -134,7 +145,9 @@ class ListDatasetsResponseBodyThirdSearchConfig(DaraModel):
         dataset_quota: int = None,
         dataset_used_quota: int = None,
     ):
+        # The dataset quota.
         self.dataset_quota = dataset_quota
+        # The number of datasets created.
         self.dataset_used_quota = dataset_used_quota
 
     def validate(self):
@@ -177,15 +190,25 @@ class ListDatasetsResponseBodyData(DaraModel):
         doc_used_quota: int = None,
         search_dataset_enable: int = None,
     ):
+        # The dataset access level.
         self.access_level = access_level
+        # The administrators of the dataset.
         self.administrators = administrators
+        # The creation time.
         self.create_time = create_time
+        # The creator of the dataset.
         self.create_user = create_user
+        # The dataset description.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The number of documents uploaded to the dataset.
         self.doc_used_quota = doc_used_quota
+        # Indicates whether search is enabled for the dataset.
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):
@@ -276,7 +299,9 @@ class ListDatasetsResponseBodyDataAdministrators(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # The administrator user ID.
         self.user_id = user_id
+        # The administrator username.
         self.username = username
 
     def validate(self):
@@ -313,9 +338,13 @@ class ListDatasetsResponseBodyCustomSemanticSearchConfig(DaraModel):
         doc_quota: int = None,
         doc_used_quota: int = None,
     ):
+        # The dataset quota.
         self.dataset_quota = dataset_quota
+        # The number of datasets created.
         self.dataset_used_quota = dataset_used_quota
+        # The document quota.
         self.doc_quota = doc_quota
+        # The used document quota.
         self.doc_used_quota = doc_used_quota
 
     def validate(self):

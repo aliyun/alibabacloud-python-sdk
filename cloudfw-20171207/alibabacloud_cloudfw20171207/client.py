@@ -23,7 +23,31 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'central'
         self._endpoint_map = {
             'ap-southeast-1': 'cloudfw.ap-southeast-1.aliyuncs.com',
-            'cn-hangzhou': 'cloudfw.cn-hangzhou.aliyuncs.com'
+            'cn-hangzhou': 'cloudfw.cn-hangzhou.aliyuncs.com',
+            'us-west-1': 'cloudfw.aliyuncs.com',
+            'us-east-1': 'cloudfw.aliyuncs.com',
+            'me-east-1': 'cloudfw.aliyuncs.com',
+            'eu-west-1': 'cloudfw.aliyuncs.com',
+            'eu-central-1': 'cloudfw.aliyuncs.com',
+            'cn-zhangjiakou': 'cloudfw.aliyuncs.com',
+            'cn-wulanchabu': 'cloudfw.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-shenzhen': 'cloudfw.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-shanghai': 'cloudfw.aliyuncs.com',
+            'cn-qingdao': 'cloudfw.aliyuncs.com',
+            'cn-north-2-gov-1': 'cloudfw.aliyuncs.com',
+            'cn-huhehaote': 'cloudfw.aliyuncs.com',
+            'cn-hongkong': 'cloudfw.aliyuncs.com',
+            'cn-heyuan': 'cloudfw.aliyuncs.com',
+            'cn-hangzhou-finance': 'cloudfw.aliyuncs.com',
+            'cn-guangzhou': 'cloudfw.aliyuncs.com',
+            'cn-chengdu': 'cloudfw.aliyuncs.com',
+            'cn-beijing-finance-1': 'cloudfw.aliyuncs.com',
+            'cn-beijing': 'cloudfw.aliyuncs.com',
+            'ap-southeast-5': 'cloudfw.aliyuncs.com',
+            'ap-southeast-3': 'cloudfw.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'cloudfw.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudfw', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -128,10 +152,16 @@ class Client(OpenApiClient):
 
     def add_address_book_with_options(
         self,
-        request: main_models.AddAddressBookRequest,
+        tmp_req: main_models.AddAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AddAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AddAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_cluster_connector_id):
             query['AckClusterConnectorId'] = request.ack_cluster_connector_id
@@ -141,6 +171,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -178,10 +212,16 @@ class Client(OpenApiClient):
 
     async def add_address_book_with_options_async(
         self,
-        request: main_models.AddAddressBookRequest,
+        tmp_req: main_models.AddAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.AddAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.AddAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_cluster_connector_id):
             query['AckClusterConnectorId'] = request.ack_cluster_connector_id
@@ -191,6 +231,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -1831,6 +1875,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not DaraCore.is_null(request.fw_vswitch_zone_id):
+            query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.nat_gateway_id):
@@ -1879,6 +1925,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.firewall_switch):
             query['FirewallSwitch'] = request.firewall_switch
+        if not DaraCore.is_null(request.fw_vswitch_zone_id):
+            query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.nat_gateway_id):
@@ -4431,6 +4479,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
@@ -4467,6 +4519,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
@@ -5794,11 +5850,17 @@ class Client(OpenApiClient):
 
     def describe_address_book_with_options(
         self,
-        request: main_models.DescribeAddressBookRequest,
+        tmp_req: main_models.DescribeAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
         query = {}
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
         if not DaraCore.is_null(request.contain_port):
             query['ContainPort'] = request.contain_port
         if not DaraCore.is_null(request.current_page):
@@ -5834,11 +5896,17 @@ class Client(OpenApiClient):
 
     async def describe_address_book_with_options_async(
         self,
-        request: main_models.DescribeAddressBookRequest,
+        tmp_req: main_models.DescribeAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DescribeAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DescribeAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
         query = {}
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
         if not DaraCore.is_null(request.contain_port):
             query['ContainPort'] = request.contain_port
         if not DaraCore.is_null(request.current_page):
@@ -7444,6 +7512,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_firewall_drop_statistics_with_options_async(runtime)
 
+    def describe_firewall_drop_trend_with_options(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallDropTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallDropTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_drop_trend_with_options_async(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallDropTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallDropTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_drop_trend(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_firewall_drop_trend_with_options(request, runtime)
+
+    async def describe_firewall_drop_trend_async(
+        self,
+        request: main_models.DescribeFirewallDropTrendRequest,
+    ) -> main_models.DescribeFirewallDropTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_firewall_drop_trend_with_options_async(request, runtime)
+
     def describe_firewall_task_with_options(
         self,
         request: main_models.DescribeFirewallTaskRequest,
@@ -7529,6 +7675,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFirewallTaskResponse:
         runtime = RuntimeOptions()
         return await self.describe_firewall_task_with_options_async(request, runtime)
+
+    def describe_firewall_traffic_trend_with_options(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_firewall_traffic_trend_with_options_async(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFirewallTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_firewall_traffic_trend(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_firewall_traffic_trend_with_options(request, runtime)
+
+    async def describe_firewall_traffic_trend_async(
+        self,
+        request: main_models.DescribeFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_firewall_traffic_trend_with_options_async(request, runtime)
 
     def describe_firewall_vswitch_with_options(
         self,
@@ -7717,6 +7941,160 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeFirewallVswitchResourcesResponse:
         runtime = RuntimeOptions()
         return await self.describe_firewall_vswitch_resources_with_options_async(request, runtime)
+
+    def describe_ipsrules_with_options(
+        self,
+        request: main_models.DescribeIPSRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeIPSRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not DaraCore.is_null(request.attack_app_category):
+            query['AttackAppCategory'] = request.attack_app_category
+        if not DaraCore.is_null(request.attack_apps):
+            query['AttackApps'] = request.attack_apps
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.cve):
+            query['Cve'] = request.cve
+        if not DaraCore.is_null(request.default_action):
+            query['DefaultAction'] = request.default_action
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_modify):
+            query['QueryModify'] = request.query_modify
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_level):
+            query['RuleLevel'] = request.rule_level
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.sort):
+            query['Sort'] = request.sort
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeIPSRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeIPSRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ipsrules_with_options_async(
+        self,
+        request: main_models.DescribeIPSRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeIPSRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.attack_app):
+            query['AttackApp'] = request.attack_app
+        if not DaraCore.is_null(request.attack_app_category):
+            query['AttackAppCategory'] = request.attack_app_category
+        if not DaraCore.is_null(request.attack_apps):
+            query['AttackApps'] = request.attack_apps
+        if not DaraCore.is_null(request.attack_type):
+            query['AttackType'] = request.attack_type
+        if not DaraCore.is_null(request.cve):
+            query['Cve'] = request.cve
+        if not DaraCore.is_null(request.default_action):
+            query['DefaultAction'] = request.default_action
+        if not DaraCore.is_null(request.firewall_type):
+            query['FirewallType'] = request.firewall_type
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_modify):
+            query['QueryModify'] = request.query_modify
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not DaraCore.is_null(request.rule_level):
+            query['RuleLevel'] = request.rule_level
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.sort):
+            query['Sort'] = request.sort
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.vpc_firewall_id):
+            query['VpcFirewallId'] = request.vpc_firewall_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeIPSRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeIPSRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ipsrules(
+        self,
+        request: main_models.DescribeIPSRulesRequest,
+    ) -> main_models.DescribeIPSRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ipsrules_with_options(request, runtime)
+
+    async def describe_ipsrules_async(
+        self,
+        request: main_models.DescribeIPSRulesRequest,
+    ) -> main_models.DescribeIPSRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ipsrules_with_options_async(request, runtime)
 
     def describe_instance_members_with_options(
         self,
@@ -12678,6 +13056,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_policy_prior_used_with_options_async(request, runtime)
 
+    def describe_postpay_bill_with_options(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePostpayBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePostpayBill',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePostpayBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_postpay_bill_with_options_async(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePostpayBillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePostpayBill',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePostpayBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_postpay_bill(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+    ) -> main_models.DescribePostpayBillResponse:
+        runtime = RuntimeOptions()
+        return self.describe_postpay_bill_with_options(request, runtime)
+
+    async def describe_postpay_bill_async(
+        self,
+        request: main_models.DescribePostpayBillRequest,
+    ) -> main_models.DescribePostpayBillResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_postpay_bill_with_options_async(request, runtime)
+
     def describe_postpay_enabled_protection_with_options(
         self,
         request: main_models.DescribePostpayEnabledProtectionRequest,
@@ -13179,6 +13647,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePrefixListsResponse:
         runtime = RuntimeOptions()
         return await self.describe_prefix_lists_with_options_async(request, runtime)
+
+    def describe_prepay_bill_total_with_options(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_type):
+            query['BillType'] = request.bill_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayBillTotal',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayBillTotalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_prepay_bill_total_with_options_async(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bill_type):
+            query['BillType'] = request.bill_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePrepayBillTotal',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePrepayBillTotalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_prepay_bill_total(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        runtime = RuntimeOptions()
+        return self.describe_prepay_bill_total_with_options(request, runtime)
+
+    async def describe_prepay_bill_total_async(
+        self,
+        request: main_models.DescribePrepayBillTotalRequest,
+    ) -> main_models.DescribePrepayBillTotalResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_prepay_bill_total_with_options_async(request, runtime)
 
     def describe_private_dns_domain_name_list_with_options(
         self,
@@ -14820,6 +15378,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_sdl_event_statistic_with_options_async(request, runtime)
 
+    def describe_sdl_last_payload_with_options(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSdlLastPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSdlLastPayloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdl_last_payload_with_options_async(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dst_ip):
+            query['DstIp'] = request.dst_ip
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.sensitive_category):
+            query['SensitiveCategory'] = request.sensitive_category
+        if not DaraCore.is_null(request.src_ip):
+            query['SrcIp'] = request.src_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSdlLastPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSdlLastPayloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdl_last_payload(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sdl_last_payload_with_options(request, runtime)
+
+    async def describe_sdl_last_payload_async(
+        self,
+        request: main_models.DescribeSdlLastPayloadRequest,
+    ) -> main_models.DescribeSdlLastPayloadResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sdl_last_payload_with_options_async(request, runtime)
+
     def describe_sdl_statistic_with_options(
         self,
         request: main_models.DescribeSdlStatisticRequest,
@@ -16015,6 +16663,8 @@ class Client(OpenApiClient):
             query['RuleResult'] = request.rule_result
         if not DaraCore.is_null(request.rule_source):
             query['RuleSource'] = request.rule_source
+        if not DaraCore.is_null(request.rule_source_final):
+            query['RuleSourceFinal'] = request.rule_source_final
         if not DaraCore.is_null(request.source_code):
             query['SourceCode'] = request.source_code
         if not DaraCore.is_null(request.source_ip):
@@ -16123,6 +16773,8 @@ class Client(OpenApiClient):
             query['RuleResult'] = request.rule_result
         if not DaraCore.is_null(request.rule_source):
             query['RuleSource'] = request.rule_source
+        if not DaraCore.is_null(request.rule_source_final):
+            query['RuleSourceFinal'] = request.rule_source_final
         if not DaraCore.is_null(request.source_code):
             query['SourceCode'] = request.source_code
         if not DaraCore.is_null(request.source_ip):
@@ -18738,6 +19390,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_vpc_firewall_traffic_asset_list_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_traffic_trend_with_options(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_traffic_trend_with_options_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.peer_vpc_id):
+            query['PeerVpcId'] = request.peer_vpc_id
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficTrend',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_traffic_trend(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vpc_firewall_traffic_trend_with_options(request, runtime)
+
+    async def describe_vpc_firewall_traffic_trend_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficTrendRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficTrendResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vpc_firewall_traffic_trend_with_options_async(request, runtime)
+
     def describe_vpc_firewall_zone_with_options(
         self,
         request: main_models.DescribeVpcFirewallZoneRequest,
@@ -19440,10 +20186,16 @@ class Client(OpenApiClient):
 
     def modify_address_book_with_options(
         self,
-        request: main_models.ModifyAddressBookRequest,
+        tmp_req: main_models.ModifyAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_labels):
             query['AckLabels'] = request.ack_labels
@@ -19451,6 +20203,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -19490,10 +20246,16 @@ class Client(OpenApiClient):
 
     async def modify_address_book_with_options_async(
         self,
-        request: main_models.ModifyAddressBookRequest,
+        tmp_req: main_models.ModifyAddressBookRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyAddressBookResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyAddressBookShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.asset_member_uids):
+            request.asset_member_uids_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_member_uids, 'AssetMemberUids', 'json')
+        if not DaraCore.is_null(tmp_req.asset_region_resource_types):
+            request.asset_region_resource_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.asset_region_resource_types, 'AssetRegionResourceTypes', 'json')
         query = {}
         if not DaraCore.is_null(request.ack_labels):
             query['AckLabels'] = request.ack_labels
@@ -19501,6 +20263,10 @@ class Client(OpenApiClient):
             query['AckNamespaces'] = request.ack_namespaces
         if not DaraCore.is_null(request.address_list):
             query['AddressList'] = request.address_list
+        if not DaraCore.is_null(request.asset_member_uids_shrink):
+            query['AssetMemberUids'] = request.asset_member_uids_shrink
+        if not DaraCore.is_null(request.asset_region_resource_types_shrink):
+            query['AssetRegionResourceTypes'] = request.asset_region_resource_types_shrink
         if not DaraCore.is_null(request.auto_add_tag_ecs):
             query['AutoAddTagEcs'] = request.auto_add_tag_ecs
         if not DaraCore.is_null(request.description):
@@ -21496,23 +22262,25 @@ class Client(OpenApiClient):
 
     def modify_user_alarm_config_with_options(
         self,
-        request: main_models.ModifyUserAlarmConfigRequest,
+        tmp_req: main_models.ModifyUserAlarmConfigRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyUserAlarmConfigResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyUserAlarmConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_config):
+            request.contact_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_config, 'ContactConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.alarm_config):
             query['AlarmConfig'] = request.alarm_config
         if not DaraCore.is_null(request.alarm_lang):
             query['AlarmLang'] = request.alarm_lang
-        if not DaraCore.is_null(request.contact_config):
-            query['ContactConfig'] = request.contact_config
+        if not DaraCore.is_null(request.contact_config_shrink):
+            query['ContactConfig'] = request.contact_config_shrink
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not DaraCore.is_null(request.notify_config):
-            query['NotifyConfig'] = request.notify_config
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.use_default_contact):
@@ -21538,23 +22306,25 @@ class Client(OpenApiClient):
 
     async def modify_user_alarm_config_with_options_async(
         self,
-        request: main_models.ModifyUserAlarmConfigRequest,
+        tmp_req: main_models.ModifyUserAlarmConfigRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyUserAlarmConfigResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyUserAlarmConfigShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.contact_config):
+            request.contact_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.contact_config, 'ContactConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.alarm_config):
             query['AlarmConfig'] = request.alarm_config
         if not DaraCore.is_null(request.alarm_lang):
             query['AlarmLang'] = request.alarm_lang
-        if not DaraCore.is_null(request.contact_config):
-            query['ContactConfig'] = request.contact_config
+        if not DaraCore.is_null(request.contact_config_shrink):
+            query['ContactConfig'] = request.contact_config_shrink
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not DaraCore.is_null(request.notify_config):
-            query['NotifyConfig'] = request.notify_config
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.use_default_contact):

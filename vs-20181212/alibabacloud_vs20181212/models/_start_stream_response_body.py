@@ -11,8 +11,11 @@ class StartStreamResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

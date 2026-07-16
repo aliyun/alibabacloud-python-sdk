@@ -19,12 +19,19 @@ class ListRecursionZonesResponseBody(DaraModel):
         total_pages: int = None,
         zones: main_models.ListRecursionZonesResponseBodyZones = None,
     ):
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
+        # The token to start the next query.
         self.next_token = next_token
+        # The current page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The unique request ID.
         self.request_id = request_id
+        # The total number of addresses in the address list.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
         self.zones = zones
 

@@ -11,11 +11,11 @@ class ListAsyncInvokeConfigsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The function name. If you do not configure this parameter, the asynchronous invocation configurations of all functions are displayed.
+        # The name of the function. If you do not specify this parameter, the asynchronous invocation configurations of all functions are returned.
         self.function_name = function_name
-        # The maximum number of entries to be returned.
+        # The maximum number of results to return.
         self.limit = limit
-        # The paging information. This parameter specifies the start point of the query.
+        # The token that is used for paging.
         self.next_token = next_token
 
     def validate(self):

@@ -9,20 +9,22 @@ class ListEvaluationScoreHistoryRequest(DaraModel):
         self,
         account_id: int = None,
         end_date: str = None,
+        evaluation_domain: str = None,
         region_id: str = None,
         start_date: str = None,
     ):
-        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        # The ID of the member accounts. This parameter is applicable only to the multi-account detection pattern.
         self.account_id = account_id
-        # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The end date of the query. Format: YYYY-MM-DD.
         # 
-        # By default, the historical scores that were generated in the seven days before the current date are queried.
+        # By default, the historical scores from the last 7 days are returned.
         self.end_date = end_date
+        self.evaluation_domain = evaluation_domain
         # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The start date of the query. Format: YYYY-MM-DD.
         # 
-        # You can query the historical scores within the previous 180 days.
+        # You can query records from the last 180 days.
         self.start_date = start_date
 
     def validate(self):
@@ -39,6 +41,9 @@ class ListEvaluationScoreHistoryRequest(DaraModel):
         if self.end_date is not None:
             result['EndDate'] = self.end_date
 
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -54,6 +59,9 @@ class ListEvaluationScoreHistoryRequest(DaraModel):
 
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
+
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

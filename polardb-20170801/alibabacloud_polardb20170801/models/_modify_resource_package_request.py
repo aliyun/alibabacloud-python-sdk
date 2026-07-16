@@ -10,7 +10,10 @@ class ModifyResourcePackageRequest(DaraModel):
         auto_quota: bool = None,
         resource_package_id: str = None,
     ):
+        # Indicates whether to enable automatic quotas.
         self.auto_quota = auto_quota
+        # The ID of the cross-cloud resource plan.
+        # 
         # This parameter is required.
         self.resource_package_id = resource_package_id
 

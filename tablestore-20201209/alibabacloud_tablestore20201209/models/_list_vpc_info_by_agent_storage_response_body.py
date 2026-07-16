@@ -1,0 +1,154 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_tablestore20201209 import models as main_models
+from darabonba.model import DaraModel
+
+class ListVpcInfoByAgentStorageResponseBody(DaraModel):
+    def __init__(
+        self,
+        agent_storage_name: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        vpc_infos: List[main_models.ListVpcInfoByAgentStorageResponseBodyVpcInfos] = None,
+    ):
+        # The agent storage name.
+        self.agent_storage_name = agent_storage_name
+        # The page number.
+        self.page_num = page_num
+        # The number of entries per page.
+        self.page_size = page_size
+        # The request ID, which can be used for troubleshooting.
+        self.request_id = request_id
+        # The total number of VPCs.
+        self.total_count = total_count
+        # The VPC details.
+        self.vpc_infos = vpc_infos
+
+    def validate(self):
+        if self.vpc_infos:
+            for v1 in self.vpc_infos:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_storage_name is not None:
+            result['AgentStorageName'] = self.agent_storage_name
+
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        result['VpcInfos'] = []
+        if self.vpc_infos is not None:
+            for k1 in self.vpc_infos:
+                result['VpcInfos'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentStorageName') is not None:
+            self.agent_storage_name = m.get('AgentStorageName')
+
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        self.vpc_infos = []
+        if m.get('VpcInfos') is not None:
+            for k1 in m.get('VpcInfos'):
+                temp_model = main_models.ListVpcInfoByAgentStorageResponseBodyVpcInfos()
+                self.vpc_infos.append(temp_model.from_map(k1))
+
+        return self
+
+class ListVpcInfoByAgentStorageResponseBodyVpcInfos(DaraModel):
+    def __init__(
+        self,
+        agent_storage_vpc_name: str = None,
+        domain: str = None,
+        endpoint: str = None,
+        region_no: str = None,
+        vpc_id: str = None,
+    ):
+        # The VPC name.
+        self.agent_storage_vpc_name = agent_storage_vpc_name
+        # The VPC access address.
+        self.domain = domain
+        # The endpoint of the agent storage.
+        self.endpoint = endpoint
+        # The region ID.
+        self.region_no = region_no
+        # VPC ID
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_storage_vpc_name is not None:
+            result['AgentStorageVpcName'] = self.agent_storage_vpc_name
+
+        if self.domain is not None:
+            result['Domain'] = self.domain
+
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentStorageVpcName') is not None:
+            self.agent_storage_vpc_name = m.get('AgentStorageVpcName')
+
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+
+        return self
+

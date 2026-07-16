@@ -18,41 +18,41 @@ class DescribeSAGDeviceInfoResponseBody(DaraModel):
         version: str = None,
         vpn_state: str = None,
     ):
-        # The control status of the SAG device. Valid values:
+        # The control status of the Smart Access Gateway device. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Abnormal**: abnormal
+        # - **Normal**: Normal.
+        # - **Abnormal**: Abnormal.
         self.controller_state = controller_state
-        # The last time when the SAG device was connected to Alibaba Cloud.
+        # The most recent time when the Smart Access Gateway device connected to the controller.
         self.last_connected_controller_time = last_connected_controller_time
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the reset button of the SAG device is enabled. Valid values:
+        # Indicates whether the reset button of the Smart Access Gateway device is enabled. Valid values:
         # 
-        # *   **Enabled**: enabled
-        # *   **Disabled**: disabled
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.resettable_status = resettable_status
-        # The IP address of the SAG device.
+        # The service IP address of the Smart Access Gateway device.
         self.service_ip = service_ip
-        # The model of the SAG device. Valid values:
+        # The type of the Smart Access Gateway device. Valid values:
         # 
-        # *   **sag-100wm**
-        # *   **sag-1000**
+        # - **sag-100wm**.
+        # - **sag-1000**.
         self.smart_agtype = smart_agtype
-        # The time when the SAG device was started.
+        # The startup time of the Smart Access Gateway device.
         self.startup_time = startup_time
-        # Indicates whether the settings of the SAG device are synchronized to Alibaba Cloud. Valid values:
+        # The synchronization status between the local Smart Access Gateway device and the cloud. Valid values:
         # 
-        # *   **Synchronized**: synchronized
-        # *   **Unsynchronized**: unsynchronized
-        # *   **Synchronizing**: being synchronized
+        # - **Synchronized**: Synchronization is complete.
+        # - **Unsynchronized**: Not synchronized.
+        # - **Synchronizing**: Synchronization is in progress.
         self.syn_status = syn_status
-        # The version of the SAG device.
+        # The software version that runs on the Smart Access Gateway device.
         self.version = version
-        # The VPN connection status of the SAG device. Valid values:
+        # The VPN connection status of the Smart Access Gateway device. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **Abnormal**: abnormal
+        # - **Normal**: Normal.
+        # - **Abnormal**: Abnormal.
         self.vpn_state = vpn_state
 
     def validate(self):

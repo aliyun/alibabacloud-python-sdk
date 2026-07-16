@@ -15,9 +15,21 @@ class QueryTaskListResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The request status code. Valid values:
+        # 
+        # - **OK**: The request was successful.
+        # 
+        # - **isv.INVALID_PARAMETERS**: The specified parameter is invalid.
+        # 
+        # - **isp.SYSTEM_ERROR**: A system error occurred.
+        # 
+        # > For more information, see the "Error codes" section of this topic.
         self.code = code
+        # The response data.
         self.data = data
+        # The status code description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,8 +79,11 @@ class QueryTaskListResponseBodyData(DaraModel):
         page_no: int = None,
         total_count: int = None,
     ):
+        # The details of the tasks.
         self.data = data
+        # The current page number.
         self.page_no = page_no
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

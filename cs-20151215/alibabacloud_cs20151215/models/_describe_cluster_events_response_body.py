@@ -70,11 +70,11 @@ class DescribeClusterEventsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 50. Default value: 50.
+        # The maximum number of results returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -120,19 +120,36 @@ class DescribeClusterEventsResponseBodyEvents(DaraModel):
         time: str = None,
         type: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The description of the event.
+        # The event description.
         self.data = data
         # The event ID.
         self.event_id = event_id
         # The event source.
         self.source = source
-        # The subject related to the event.
+        # The object associated with the event.
         self.subject = subject
         # The time when the event started.
         self.time = time
-        # The type of event. Valid values:
+        # The event type. Valid values:
+        # 
+        # - cluster_create: creates a cluster.
+        # - cluster_scaleout: scales out a cluster.
+        # - cluster_attach: adds existing nodes.
+        # - cluster_delete: deletes a cluster.
+        # - cluster_upgrade: upgrades a cluster.
+        # - cluster_migrate: migrates a cluster.
+        # - cluster_node_delete: removes nodes.
+        # - cluster_node_drain: drains nodes.
+        # - cluster_modify: modifies a cluster.
+        # - cluster_configuration_modify: modifies cluster management configurations.
+        # - cluster_addon_install: installs a component.
+        # - cluster_addon_upgrade: upgrades a component.
+        # - cluster_addon_uninstall: uninstalls a component.
+        # - runtime_upgrade: upgrades the runtime.
+        # - nodepool_upgrade: upgrades a node pool.
+        # - nodepool_update: updates a node pool.
         self.type = type
 
     def validate(self):
@@ -200,37 +217,11 @@ class DescribeClusterEventsResponseBodyEventsData(DaraModel):
         message: str = None,
         reason: str = None,
     ):
-        # The severity level of the event.
-        # 
-        # Valid values:
-        # 
-        # *   warning
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   error
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   info
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The event level.
         self.level = level
-        # The details of the event.
+        # The event details.
         self.message = message
-        # The status of the event.
+        # The event status.
         self.reason = reason
 
     def validate(self):

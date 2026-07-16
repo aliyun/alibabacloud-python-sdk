@@ -11,7 +11,9 @@ class GetUserConfigResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.GetUserConfigResponseBodyUser = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The user.
         self.user = user
 
     def validate(self):
@@ -50,9 +52,21 @@ class GetUserConfigResponseBodyUser(DaraModel):
         upgrade_ctdr_version: str = None,
         upgrade_status: str = None,
     ):
+        # The current CTDR version.
         self.ctdr_version = ctdr_version
+        # The upgrade status. Valid values:
+        # 
+        # - pending: The upgrade is pending.
+        # 
+        # - upgrading: The upgrade is in progress.
+        # 
+        # - success: The upgrade is successful.
+        # 
+        # - failed: The upgrade failed.
         self.data_storage_version = data_storage_version
+        # The version of Log Management.
         self.upgrade_ctdr_version = upgrade_ctdr_version
+        # The target CTDR version for the upgrade.
         self.upgrade_status = upgrade_status
 
     def validate(self):

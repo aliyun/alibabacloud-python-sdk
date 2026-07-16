@@ -13,8 +13,12 @@ class UpdateStandardTemplateRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateStandardTemplateRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -59,18 +63,31 @@ class UpdateStandardTemplateRequestUpdateCommand(DaraModel):
         publish_info: main_models.UpdateStandardTemplateRequestUpdateCommandPublishInfo = None,
         version: int = None,
     ):
+        # The attribute configuration.
+        # 
         # This parameter is required.
         self.attributes_config = attributes_config
+        # The code of the standard template. The code must be globally unique. The code cannot be modified if the template is referenced.
+        # 
         # This parameter is required.
         self.code = code
+        # The configuration for automatic generation of standard codes.
         self.code_rule_config = code_rule_config
+        # The description of the standard template.
         self.description = description
+        # The ID of the standard template.
+        # 
         # This parameter is required.
         self.id = id
+        # The list of maintainers.
         self.maintainer_list = maintainer_list
+        # The name of the standard template.
+        # 
         # This parameter is required.
         self.name = name
+        # The publish information of the standard template.
         self.publish_info = publish_info
+        # The version number. If this parameter is left empty or set to -1, the latest version is used.
         self.version = version
 
     def validate(self):
@@ -154,6 +171,7 @@ class UpdateStandardTemplateRequestUpdateCommandPublishInfo(DaraModel):
         self,
         comment: str = None,
     ):
+        # The publish comment.
         self.comment = comment
 
     def validate(self):
@@ -182,7 +200,12 @@ class UpdateStandardTemplateRequestUpdateCommandCodeRuleConfig(DaraModel):
         auto_config: main_models.UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfig = None,
         generate_type: str = None,
     ):
+        # The automatic generation configuration for standard code rules. This parameter takes effect when the generation method is set to AUTO_GENERATE.
         self.auto_config = auto_config
+        # The standard code generation method. Valid values:
+        # - CUSTOMIZED: custom.
+        # - AUTO_GENERATE: automatically generated based on standard code rules.
+        # 
         # This parameter is required.
         self.generate_type = generate_type
 
@@ -220,8 +243,12 @@ class UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfig(DaraMod
         code_rule_list: List[main_models.UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRuleList] = None,
         need_strong_validate: bool = None,
     ):
+        # The standard code rules.
+        # 
         # This parameter is required.
         self.code_rule_list = code_rule_list
+        # Specifies whether strict validation is required.
+        # 
         # This parameter is required.
         self.need_strong_validate = need_strong_validate
 
@@ -267,11 +294,20 @@ class UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRule
         type: str = None,
         value: str = None,
     ):
+        # The auto-increment sequence configuration.
         self.auto_increment_sequence_config = auto_increment_sequence_config
+        # The position index of the code rule.
+        # 
         # This parameter is required.
         self.index = index
+        # The type of the code rule. Valid values:
+        # - FIXED_STRING: fixed string.
+        # - AUTO_INCREMENT: auto-increment sequence.
+        # - STANDARD_SET_CODE: standard set code.
+        # 
         # This parameter is required.
         self.type = type
+        # The format or value of the code rule.
         self.value = value
 
     def validate(self):
@@ -322,12 +358,20 @@ class UpdateStandardTemplateRequestUpdateCommandCodeRuleConfigAutoConfigCodeRule
         start_value: int = None,
         step: int = None,
     ):
+        # The number of digits.
+        # 
         # This parameter is required.
         self.digit = digit
+        # Specifies whether to pad with zeros.
+        # 
         # This parameter is required.
         self.need_padding_zero = need_padding_zero
+        # The start value.
+        # 
         # This parameter is required.
         self.start_value = start_value
+        # The step size.
+        # 
         # This parameter is required.
         self.step = step
 
@@ -374,6 +418,8 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfig(DaraModel):
         self,
         attribute_list: List[main_models.UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList] = None,
     ):
+        # The list of attributes.
+        # 
         # This parameter is required.
         self.attribute_list = attribute_list
 
@@ -416,12 +462,26 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeList(Da
         type: str = None,
         value_config: main_models.UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfig = None,
     ):
+        # The attribute code. This parameter is optional when a common attribute is referenced.
         self.code = code
+        # The description.
         self.description = description
+        # The attribute name. This parameter is optional when a common attribute is referenced.
         self.name = name
+        # The referenced attribute information.
         self.ref_attribute = ref_attribute
+        # Specifies whether the attribute is required. This parameter is optional when a common attribute is referenced.
         self.required = required
+        # The attribute type. This parameter is optional when a common attribute is referenced. Valid values:
+        # - BIZ_ATTRIBUTE: business attribute.
+        # - TECH_ATTRIBUTE: technical attribute.
+        # - MANAGEMENT_ATTRIBUTE: management attribute.
+        # - QUALITY_ATTRIBUTE: quality attribute.
+        # - MASTER_DATA_ATTRIBUTE: master data attribute.
+        # - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
+        # - SECURITY_ATTRIBUTE: security attribute.
         self.type = type
+        # The value configuration. This parameter is optional when a common attribute is referenced.
         self.value_config = value_config
 
     def validate(self):
@@ -494,12 +554,30 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListVal
         type: str = None,
         value_range: main_models.UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListValueConfigValueRange = None,
     ):
+        # The data type of the attribute value. Valid values:
+        # - STRING: string.
+        # - BIGINT: numeric.
+        # - DOUBLE: floating-point.
+        # - DATE: date, accurate to the day.
+        # - DATETIME: date, accurate to milliseconds.
+        # - BOOLEAN: Boolean.
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # The default value.
         self.default_value = default_value
+        # The length of the attribute value. If this parameter is left empty or set to -1, the length is not limited. Typically, only string types have a length limit for attribute values.
         self.length = length
+        # The attribute value type. Valid values:
+        # - CUSTOMIZED: custom input.
+        # - SINGLE_ENUM: single enumeration value.
+        # - MULTIPLE_ENUMS: multiple enumeration values.
+        # - RANGE: range value.
+        # 
         # This parameter is required.
         self.type = type
+        # The value range.
+        # 
         # This parameter is required.
         self.value_range = value_range
 
@@ -558,11 +636,29 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListVal
         value_constraint: str = None,
         value_list: List[str] = None,
     ):
+        # The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
+        # - BIZ_UNIT: data board.
+        # - PROJECT: project.
+        # - USER: user.
+        # - USER_GROUP: user group.
         self.dataphin_attribute_type = dataphin_attribute_type
+        # The value range. This parameter takes effect when the value source is set to LOOKUP_TABLE.
         self.lookup_table_reference = lookup_table_reference
+        # The value range. This parameter takes effect when the value source is set to MIN_MAX.
         self.min_max_value_config = min_max_value_config
+        # The value source. Valid values:
+        # - NONE: no constraint.
+        # - LIST: obtained from a list.
+        # - LOOKUP_TABLE: lookup table.
+        # - MIN_MAX: value between the minimum and maximum.
+        # - DATAPHIN_ATTRIBUTE: Dataphin system property.
+        # - BUILT_IN_DATA_TYPES: built-in data types.
+        # - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
+        # - BUILT_IN_DATA_LEVEL: built-in data security classification.
+        # 
         # This parameter is required.
         self.value_constraint = value_constraint
+        # The value range. This parameter takes effect when the value source is set to LIST.
         self.value_list = value_list
 
     def validate(self):
@@ -622,12 +718,20 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListVal
         max_value: str = None,
         min_value: str = None,
     ):
+        # Specifies whether the maximum value is included.
+        # 
         # This parameter is required.
         self.include_max_value = include_max_value
+        # Specifies whether the minimum value is included.
+        # 
         # This parameter is required.
         self.include_min_value = include_min_value
+        # The maximum value.
+        # 
         # This parameter is required.
         self.max_value = max_value
+        # The minimum value.
+        # 
         # This parameter is required.
         self.min_value = min_value
 
@@ -675,7 +779,10 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListVal
         column: str = None,
         lookup_table_id: int = None,
     ):
+        # The referenced lookup table field.
         self.column = column
+        # The ID of the lookup table.
+        # 
         # This parameter is required.
         self.lookup_table_id = lookup_table_id
 
@@ -711,8 +818,12 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRef
         attribute_from_info: main_models.UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfo = None,
         attribute_id: int = None,
     ):
+        # The attribute source.
+        # 
         # This parameter is required.
         self.attribute_from_info = attribute_from_info
+        # The attribute ID.
+        # 
         # This parameter is required.
         self.attribute_id = attribute_id
 
@@ -750,8 +861,14 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRef
         attribute_from: str = None,
         standard_reference: main_models.UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfoStandardReference = None,
     ):
+        # The attribute source. Valid values:
+        # - SYSTEM: system attribute.
+        # - CUSTOM: custom attribute.
+        # - STANDARD: standard.
+        # 
         # This parameter is required.
         self.attribute_from = attribute_from
+        # The corresponding standard. This parameter takes effect when the attribute source is set to STANDARD.
         self.standard_reference = standard_reference
 
     def validate(self):
@@ -788,8 +905,12 @@ class UpdateStandardTemplateRequestUpdateCommandAttributesConfigAttributeListRef
         standard_id: int = None,
         version: int = None,
     ):
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
+        # The version number.
+        # 
         # This parameter is required.
         self.version = version
 

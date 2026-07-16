@@ -9,10 +9,11 @@ class ListGatewayIntranetLinkedVpcPeerRequest(DaraModel):
         self,
         vpc_id: str = None,
     ):
-        # The ID of the associated VPC. To obtain the VPC ID, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
+        # The ID of the attached virtual private cloud (VPC). For more information, see [ListGatewayIntranetLinkedVpc](https://help.aliyun.com/document_detail/2621223.html).
         # 
-        # *   If you specify a VPC ID, only VPC peers corresponding to the ID are queried.
-        # *   Otherwise, all VPC peers are queried.
+        # - Specify a VPC ID to query only the VPC peers for that VPC.
+        # 
+        # - If you do not specify a VPC ID, all VPC peers are returned.
         self.vpc_id = vpc_id
 
     def validate(self):

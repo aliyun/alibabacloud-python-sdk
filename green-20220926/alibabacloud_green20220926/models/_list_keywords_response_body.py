@@ -144,6 +144,7 @@ class ListKeywordsResponseBodyDataItems(DaraModel):
         id: int = None,
         keyword_lib_id: str = None,
         keyword_md_5id: int = None,
+        properties: main_models.ListKeywordsResponseBodyDataItemsProperties = None,
         word: str = None,
     ):
         # Creation time.
@@ -156,11 +157,13 @@ class ListKeywordsResponseBodyDataItems(DaraModel):
         self.keyword_lib_id = keyword_lib_id
         # Keyword data ID.
         self.keyword_md_5id = keyword_md_5id
+        self.properties = properties
         # Keyword.
         self.word = word
 
     def validate(self):
-        pass
+        if self.properties:
+            self.properties.validate()
 
     def to_map(self):
         result = dict()
@@ -181,6 +184,9 @@ class ListKeywordsResponseBodyDataItems(DaraModel):
 
         if self.keyword_md_5id is not None:
             result['KeywordMd5Id'] = self.keyword_md_5id
+
+        if self.properties is not None:
+            result['Properties'] = self.properties.to_map()
 
         if self.word is not None:
             result['Word'] = self.word
@@ -204,8 +210,39 @@ class ListKeywordsResponseBodyDataItems(DaraModel):
         if m.get('KeywordMd5Id') is not None:
             self.keyword_md_5id = m.get('KeywordMd5Id')
 
+        if m.get('Properties') is not None:
+            temp_model = main_models.ListKeywordsResponseBodyDataItemsProperties()
+            self.properties = temp_model.from_map(m.get('Properties'))
+
         if m.get('Word') is not None:
             self.word = m.get('Word')
+
+        return self
+
+class ListKeywordsResponseBodyDataItemsProperties(DaraModel):
+    def __init__(
+        self,
+        attribute: str = None,
+    ):
+        self.attribute = attribute
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.attribute is not None:
+            result['Attribute'] = self.attribute
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attribute') is not None:
+            self.attribute = m.get('Attribute')
 
         return self
 

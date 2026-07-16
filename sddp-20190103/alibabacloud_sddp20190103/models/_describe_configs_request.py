@@ -9,10 +9,11 @@ class DescribeConfigsRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh_cn**: Chinese (Simplified). Default value.
+        # 
+        # - **en_us**: English (United States).
         self.lang = lang
 
     def validate(self):

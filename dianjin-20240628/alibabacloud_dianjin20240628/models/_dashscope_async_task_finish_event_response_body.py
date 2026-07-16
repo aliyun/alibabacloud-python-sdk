@@ -12,9 +12,13 @@ class DashscopeAsyncTaskFinishEventResponseBody(DaraModel):
         retry_able: bool = None,
         success: bool = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
+        # Indicates whether the operation can be retried
         self.retry_able = retry_able
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):

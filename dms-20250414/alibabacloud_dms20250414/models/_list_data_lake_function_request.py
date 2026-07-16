@@ -15,13 +15,27 @@ class ListDataLakeFunctionRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
         self.db_name = db_name
+        # A regular expression used to filter the returned function names.
         self.function_name_pattern = function_name_pattern
+        # The number of entries to return on each page. The maximum value is 100.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        # 
+        # - If **NextToken** is empty, there is no subsequent query.
+        # 
+        # - If **NextToken** has a value, it is the token for the next query.
         self.next_token = next_token
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

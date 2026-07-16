@@ -18,18 +18,37 @@ class CreateLogstashRequest(DaraModel):
         version: str = None,
         client_token: str = None,
     ):
+        # The name of the instance.
         self.description = description
+        # The network configuration.
+        # 
         # This parameter is required.
         self.network_config = network_config
+        # The number of nodes in the instance.
+        # 
         # This parameter is required.
         self.node_amount = node_amount
+        # The configuration of data nodes.
+        # 
         # This parameter is required.
         self.node_spec = node_spec
+        # The billing details of the subscription instance. This parameter is required when you create a subscription instance.
         self.payment_info = payment_info
+        # The billing method of the instance. Valid values:
+        # 
+        # - prepaid: subscription.
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # The instance version. Valid values:
+        # 
+        # - 6.7_with_X-Pack
+        # - 7.4_with_X-Pack.
+        # 
         # This parameter is required.
         self.version = version
+        # A unique token that is used to ensure the idempotence of the request. The client generates this value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -116,9 +135,19 @@ class CreateLogstashRequestPaymentInfo(DaraModel):
         is_auto_renew: bool = None,
         pricing_cycle: str = None,
     ):
+        # The auto-renewal epoch. Unit: months. This parameter is required when **isAutoRenew** is set to **true**. The valid values are the same as those on the buy page.
         self.auto_renew_duration = auto_renew_duration
+        # The subscription duration. You can purchase the instance on a monthly or yearly basis. Unit: 1 to 9 months, or 1 to 3 years.
         self.duration = duration
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.is_auto_renew = is_auto_renew
+        # The unit of the subscription duration. Valid values:
+        # 
+        # - Year: year.
+        # - Month: month.
         self.pricing_cycle = pricing_cycle
 
     def validate(self):
@@ -166,8 +195,15 @@ class CreateLogstashRequestNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The disk size of the node. Unit: GB.
         self.disk = disk
+        # The disk type of the node. Valid values:
+        # 
+        # - cloud_ssd
+        # - cloud_efficiency.
         self.disk_type = disk_type
+        # The node specifications. For more information about specifications, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 
@@ -211,11 +247,18 @@ class CreateLogstashRequestNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
+        # The network type. Currently, only VPC is supported.
         self.type = type
+        # The VPC ID.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
+        # The zone where the instance is deployed.
+        # 
         # This parameter is required.
         self.vs_area = vs_area
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.vswitch_id = vswitch_id
 

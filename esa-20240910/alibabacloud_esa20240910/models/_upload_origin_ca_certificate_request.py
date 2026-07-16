@@ -11,13 +11,13 @@ class UploadOriginCaCertificateRequest(DaraModel):
         name: str = None,
         site_id: int = None,
     ):
-        # The certificate content.
+        # The content of the CA certificate.
         # 
         # This parameter is required.
         self.certificate = certificate
-        # The certificate name.
+        # The name of the certificate.
         self.name = name
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to get this ID.
         # 
         # This parameter is required.
         self.site_id = site_id

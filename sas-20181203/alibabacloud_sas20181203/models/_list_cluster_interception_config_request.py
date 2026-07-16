@@ -13,22 +13,20 @@ class ListClusterInterceptionConfigRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # The status of the container firewall feature. Valid values:
-        # 
-        # *   **-1**: unknown
-        # *   **0**: abnormal
-        # *   **1**: normal
-        # *   **2**: normal to be confirmed
+        # The container firewall status of the cluster. Valid values:
+        # - **-1**: unknown
+        # - **0**: abnormal
+        # - **1**: normal
+        # - **2**: normal pending confirmation.
         self.cluster_cnnfstatus = cluster_cnnfstatus
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeContainerInstances](~~DescribeContainerInstances~~) operation to query the IDs of clusters.
+        # The ID of the container cluster.
+        # >You can call the [DescribeContainerInstances](~~DescribeContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The number of the page to return. Default value: 1.
+        # The page number of the page to return. Default value: 1, which indicates the first page.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: 20.
+        # The maximum number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

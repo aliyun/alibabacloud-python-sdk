@@ -15,12 +15,13 @@ class ListCustomizedVoicesRequest(DaraModel):
         self.page_no = page_no
         # The number of entries per page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
-        # *   The voice type. Valid values:
+        # - The voice type. Valid values:
         # 
-        #     *   Basic
-        #     *   Standard
+        #   - Basic
         # 
-        # *   If you do not specify this parameter, the default value Basic is used.
+        #   - Standard
+        # 
+        # - If you do not specify this parameter, the default value Basic is used.
         self.type = type
 
     def validate(self):

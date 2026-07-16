@@ -16,15 +16,15 @@ class DescribePdnsRequestStatisticsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The statistics on the DNS requests.
+        # The list of request statistics.
         self.data = data
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **20**. Valid values: **1 to 100**.
+        # The number of entries returned per page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,39 +100,39 @@ class DescribePdnsRequestStatisticsResponseBodyData(DaraModel):
         v_6http_count: int = None,
         v_6https_count: int = None,
     ):
-        # The total number of DoH requests, including the HTTP and HTTPS requests.
+        # The total number of DoH requests. This includes the total number of HTTP and HTTPS requests.
         self.doh_total_count = doh_total_count
         # The domain name.
         self.domain_name = domain_name
         # The number of HTTP requests.
         self.http_count = http_count
-        # The number of HTTPS requests. On the Traffic Analysis tab of the public DNS console, the value of this parameter includes the number of DNS over HTTPs (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
+        # The number of HTTPS requests. On the Traffic Analysis tab of the Public DNS console, this parameter includes the number of DNS over HTTPS (DoH) requests. Therefore, the number of DoH requests is not separately displayed in the console.
         self.https_count = https_count
         # The number of source IP addresses.
         self.ip_count = ip_count
-        # The current version does not support this parameter.
+        # This parameter is not supported in the current version.
         self.max_threat_level = max_threat_level
-        # The subdomain name.
+        # The subdomain.
         self.sub_domain = sub_domain
-        # The current version does not support this parameter.
+        # This parameter is not supported in the current version.
         self.threat_count = threat_count
-        # The current version does not support this parameter.
+        # This parameter is not supported in the current version.
         self.threat_info = threat_info
         # The total number of requests.
         self.total_count = total_count
         # The total number of UDP requests.
         self.udp_total_count = udp_total_count
-        # The number of IPv4-based requests.
+        # The number of IPv4 requests.
         self.v_4count = v_4count
-        # The number of IPv4-based HTTP requests.
+        # The number of IPv4 HTTP requests.
         self.v_4http_count = v_4http_count
-        # The number of IPv4-based HTTPS requests.
+        # The number of IPv4 HTTPS requests.
         self.v_4https_count = v_4https_count
-        # The number of IPv6-based requests.
+        # The number of IPv6 requests.
         self.v_6count = v_6count
-        # The number of IPv6-based HTTP requests.
+        # The number of IPv6 HTTP requests.
         self.v_6http_count = v_6http_count
-        # The number of IPv6-based HTTPS requests.
+        # The number of IPv6 HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):
@@ -265,9 +265,9 @@ class DescribePdnsRequestStatisticsResponseBodyDataThreatInfo(DaraModel):
         threat_level: str = None,
         threat_type: str = None,
     ):
-        # The current version does not support this parameter.
+        # This parameter is not supported in the current version.
         self.threat_level = threat_level
-        # The current version does not support this parameter.
+        # This parameter is not supported in the current version.
         self.threat_type = threat_type
 
     def validate(self):

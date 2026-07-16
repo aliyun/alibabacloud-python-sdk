@@ -22,17 +22,34 @@ class GetAppRecommendedCommoditiesResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The data table module. Valid values:
+        # 
+        # - ABTest: experiment data table
+        # 
+        # - ExperimentTool: experiment tool table
+        # 
+        # - DataDiagnosis: data modeling diagnostics
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +139,7 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
         self,
         commodities: List[main_models.GetAppRecommendedCommoditiesResponseBodyModuleCommodities] = None,
     ):
+        # The list of marketing commodities.
         self.commodities = commodities
 
     def validate(self):
@@ -155,21 +173,38 @@ class GetAppRecommendedCommoditiesResponseBodyModule(DaraModel):
 class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
     def __init__(
         self,
+        action_type: str = None,
         commodity_code: str = None,
+        description: str = None,
         extend: Dict[str, str] = None,
         order_type: str = None,
         priority: int = None,
         promotion_commodity_id: str = None,
+        recommend_type: str = None,
         redirect_url: str = None,
         status: str = None,
+        title: str = None,
     ):
+        self.action_type = action_type
+        # The commodity code. Applicable to both resource plans and marketing commodities.
         self.commodity_code = commodity_code
+        self.description = description
+        # The extension fields, such as unsupportedReason.
         self.extend = extend
+        # The order type. Valid values:
+        # - BUY: purchase.
+        # - UPGRADE: upgrade.
         self.order_type = order_type
+        # The sort priority. A smaller value indicates a higher priority.
         self.priority = priority
+        # The marketing commodity ID. Returned only for new purchases.
         self.promotion_commodity_id = promotion_commodity_id
+        self.recommend_type = recommend_type
+        # The redirect URL. Returned when redirection is required, such as for upgrades.
         self.redirect_url = redirect_url
+        # The commodity status.
         self.status = status
+        self.title = title
 
     def validate(self):
         pass
@@ -179,8 +214,14 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+
         if self.commodity_code is not None:
             result['CommodityCode'] = self.commodity_code
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.extend is not None:
             result['Extend'] = self.extend
@@ -194,18 +235,30 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         if self.promotion_commodity_id is not None:
             result['PromotionCommodityId'] = self.promotion_commodity_id
 
+        if self.recommend_type is not None:
+            result['RecommendType'] = self.recommend_type
+
         if self.redirect_url is not None:
             result['RedirectUrl'] = self.redirect_url
 
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.title is not None:
+            result['Title'] = self.title
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+
         if m.get('CommodityCode') is not None:
             self.commodity_code = m.get('CommodityCode')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
@@ -219,11 +272,17 @@ class GetAppRecommendedCommoditiesResponseBodyModuleCommodities(DaraModel):
         if m.get('PromotionCommodityId') is not None:
             self.promotion_commodity_id = m.get('PromotionCommodityId')
 
+        if m.get('RecommendType') is not None:
+            self.recommend_type = m.get('RecommendType')
+
         if m.get('RedirectUrl') is not None:
             self.redirect_url = m.get('RedirectUrl')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
 
         return self
 

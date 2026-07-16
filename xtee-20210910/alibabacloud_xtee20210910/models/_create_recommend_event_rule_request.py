@@ -14,19 +14,19 @@ class CreateRecommendEventRuleRequest(DaraModel):
         reg_id: str = None,
         task_id: int = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Strategy ID.
+        # The policy ID.
         self.recommend_rule_ids_str = recommend_rule_ids_str
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

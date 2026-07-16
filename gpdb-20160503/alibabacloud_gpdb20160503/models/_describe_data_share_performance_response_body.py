@@ -16,15 +16,15 @@ class DescribeDataSharePerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query.
+        # The end of the queried time range.
         self.end_time = end_time
-        # Details of data sharing performance metrics.
+        # The list of performance metrics.
         self.performance_keys = performance_keys
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The start time of the query.
+        # The start of the queried time range.
         self.start_time = start_time
 
     def validate(self):
@@ -88,7 +88,7 @@ class DescribeDataSharePerformanceResponseBodyPerformanceKeys(DaraModel):
     ):
         # The name of the performance metric.
         self.name = name
-        # Details of the performance metric.
+        # The details of the time series data for the metric.
         self.series = series
         # The unit of the performance metric.
         self.unit = unit
@@ -141,7 +141,7 @@ class DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries(DaraModel):
     ):
         # The name of the performance metric.
         self.name = name
-        # One or more values of the performance metric.
+        # The data points of the time series.
         self.values = values
 
     def validate(self):
@@ -183,7 +183,7 @@ class DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues(DaraMo
         self,
         point: List[str] = None,
     ):
-        # The value of the performance metric at a point in time.
+        # An array that contains the timestamp and the corresponding metric value.
         self.point = point
 
     def validate(self):

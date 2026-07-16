@@ -20,31 +20,37 @@ class DescribeInstanceSpecificationsResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: The request is invalid.
+        # 
+        # - **5xx**: A server error occurs.
         self.code = code
-        # The information about the instance types.
+        # The instance specifications.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - The **ErrorCode** parameter is not returned if the request is successful.
+        # 
+        # - The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the instance types were queried. Valid values:
+        # Indicates whether the instance specifications are obtained. Valid values:
         # 
-        # *   **true**: The instance types were queried.
-        # *   **false**: The instance types failed to be queried.
+        # - **true**: The instance specifications are obtained.
+        # 
+        # - **false**: The instance specifications fail to be obtained.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -121,20 +127,21 @@ class DescribeInstanceSpecificationsResponseBodyData(DaraModel):
         spec_info: str = None,
         version: int = None,
     ):
-        # The CPU specification of the instance type. Unit: millicore.
+        # The CPU specification. Unit: millicores.
         self.cpu = cpu
-        # Indicates whether the instance type is available. Valid values:
+        # Indicates whether the instance specification is available. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: available
+        # 
+        # - **false**: unavailable
         self.enable = enable
-        # The ID of the instance type.
+        # The ID of the instance specification.
         self.id = id
-        # The memory size of the instance type. Unit: MB.
+        # The memory specification. Unit: MB.
         self.memory = memory
-        # The name of the instance type.
+        # The name of the instance specification.
         self.spec_info = spec_info
-        # The version number of the instance type.
+        # The version of the instance specification.
         self.version = version
 
     def validate(self):

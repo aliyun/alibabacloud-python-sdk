@@ -11,8 +11,12 @@ class DeleteGeneratedContentRequest(DaraModel):
         id: int = None,
         region_id: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Unique identifier of the document
+        # 
         # This parameter is required.
         self.id = id
         self.region_id = region_id

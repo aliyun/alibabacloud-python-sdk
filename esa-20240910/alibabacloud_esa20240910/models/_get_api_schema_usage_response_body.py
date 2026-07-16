@@ -15,13 +15,13 @@ class GetApiSchemaUsageResponseBody(DaraModel):
         request_id: str = None,
         usages: List[main_models.GetApiSchemaUsageResponseBodyUsages] = None,
     ):
-        # The plan ID.
+        # The plan\\"s instance ID.
         self.instance_id = instance_id
-        # The number of files uploaded for schema verification in the plan instance of the website.
+        # The total count of API schema files uploaded to the plan instance.
         self.instance_usage = instance_usage
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Usage details for websites.
+        # The usage details for each site.
         self.usages = usages
 
     def validate(self):
@@ -77,11 +77,11 @@ class GetApiSchemaUsageResponseBodyUsages(DaraModel):
         name: str = None,
         usage: int = None,
     ):
-        # The website ID.
+        # The site ID.
         self.id = id
-        # The website name.
+        # The site name.
         self.name = name
-        # The number of files uploaded for the website.
+        # The number of API schema files uploaded for this site.
         self.usage = usage
 
     def validate(self):

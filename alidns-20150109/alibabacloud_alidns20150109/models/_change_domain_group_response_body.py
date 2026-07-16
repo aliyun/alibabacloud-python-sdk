@@ -13,7 +13,7 @@ class ChangeDomainGroupResponseBody(DaraModel):
     ):
         # The ID of the target domain name group.
         self.group_id = group_id
-        # The name of the destination domain name group.
+        # The name of the target domain name group.
         self.group_name = group_name
         # The request ID.
         self.request_id = request_id

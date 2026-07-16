@@ -98,6 +98,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def automatic_write_off_with_options(
+        self,
+        request: main_models.AutomaticWriteOffRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AutomaticWriteOffResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.automatic_write_off_amount):
+            query['AutomaticWriteOffAmount'] = request.automatic_write_off_amount
+        if not DaraCore.is_null(request.automatic_write_off_enabled):
+            query['AutomaticWriteOffEnabled'] = request.automatic_write_off_enabled
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AutomaticWriteOff',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AutomaticWriteOffResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def automatic_write_off_with_options_async(
+        self,
+        request: main_models.AutomaticWriteOffRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AutomaticWriteOffResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.automatic_write_off_amount):
+            query['AutomaticWriteOffAmount'] = request.automatic_write_off_amount
+        if not DaraCore.is_null(request.automatic_write_off_enabled):
+            query['AutomaticWriteOffEnabled'] = request.automatic_write_off_enabled
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AutomaticWriteOff',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AutomaticWriteOffResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def automatic_write_off(
+        self,
+        request: main_models.AutomaticWriteOffRequest,
+    ) -> main_models.AutomaticWriteOffResponse:
+        runtime = RuntimeOptions()
+        return self.automatic_write_off_with_options(request, runtime)
+
+    async def automatic_write_off_async(
+        self,
+        request: main_models.AutomaticWriteOffRequest,
+    ) -> main_models.AutomaticWriteOffResponse:
+        runtime = RuntimeOptions()
+        return await self.automatic_write_off_with_options_async(request, runtime)
+
     def cancel_coupon_with_options(
         self,
         request: main_models.CancelCouponRequest,
@@ -2721,6 +2803,96 @@ class Client(OpenApiClient):
     ) -> main_models.ProcessApprovalResponse:
         runtime = RuntimeOptions()
         return await self.process_approval_with_options_async(request, runtime)
+
+    def query_automatic_write_off_change_records_with_options(
+        self,
+        request: main_models.QueryAutomaticWriteOffChangeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAutomaticWriteOffChangeRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAutomaticWriteOffChangeRecords',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAutomaticWriteOffChangeRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_automatic_write_off_change_records_with_options_async(
+        self,
+        request: main_models.QueryAutomaticWriteOffChangeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAutomaticWriteOffChangeRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.customer_uid):
+            query['CustomerUid'] = request.customer_uid
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryAutomaticWriteOffChangeRecords',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryAutomaticWriteOffChangeRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_automatic_write_off_change_records(
+        self,
+        request: main_models.QueryAutomaticWriteOffChangeRecordsRequest,
+    ) -> main_models.QueryAutomaticWriteOffChangeRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.query_automatic_write_off_change_records_with_options(request, runtime)
+
+    async def query_automatic_write_off_change_records_async(
+        self,
+        request: main_models.QueryAutomaticWriteOffChangeRecordsRequest,
+    ) -> main_models.QueryAutomaticWriteOffChangeRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.query_automatic_write_off_change_records_with_options_async(request, runtime)
 
     def query_reversed_deduction_history_with_options(
         self,

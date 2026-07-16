@@ -18,42 +18,39 @@ class CreateDataQualityEvaluationTaskShrinkRequest(DaraModel):
         target_shrink: str = None,
         trigger_shrink: str = None,
     ):
-        # The list of monitoring rules that are associated with the monitor. If you configure the ID of a monitoring rule by using the DataQualityRule.Id parameter, the system associates the rule with a created monitor. If you do not configure the ID of a monitoring rule, the system creates a new monitoring rule by using other fields and associates the rule with a created monitor.
+        # The list of data quality rules associated with the data quality monitor. If DataQualityRule.Id is specified, the rule corresponding to that ID is associated with the newly created quality monitor. If not specified, a new rule is created from the other fields and associated with the newly created quality monitor.
         self.data_quality_rules_shrink = data_quality_rules_shrink
-        # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+        # The ID of the data source. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the ID of the data source.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The description of the monitor.
+        # The description of the quality monitoring task.
         self.description = description
-        # The hook.
+        # The hook settings.
         self.hooks_shrink = hooks_shrink
-        # The name of the monitor.
+        # The name of the quality monitoring task.
         # 
         # This parameter is required.
         self.name = name
-        # The configurations of alert notifications.
+        # The notification subscription configuration.
         self.notifications_shrink = notifications_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Management page to obtain the ID.
         # 
-        # You can use this parameter to specify the DataWorks workspace on which you want to perform the API operation.
+        # This parameter specifies the DataWorks workspace used by this API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
-        # 
-        # *   queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
-        # 
-        # *   sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
-        # 
-        #     *   HIVE_SQL
-        #     *   SPARK_SQL
+        # The extended configuration, a JSON-formatted string. This setting takes effect only for EMR-type data quality monitors.
+        # - queue: The YARN queue used when running EMR data quality validation. The default is the queue configured for the current project.
+        # - sqlEngine: The SQL engine used when running EMR data validation.
+        #     + HIVE_SQL
+        #     + SPARK_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the monitor.
+        # The data quality monitoring object.
         # 
         # This parameter is required.
         self.target_shrink = target_shrink
-        # The trigger configuration of the monitor.
+        # The trigger configuration of the data quality validation task.
         self.trigger_shrink = trigger_shrink
 
     def validate(self):

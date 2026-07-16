@@ -15,10 +15,13 @@ class ListImportableKMSSecretsForHostResponseBody(DaraModel):
         request_id: str = None,
         secrets: List[main_models.ListImportableKMSSecretsForHostResponseBodySecrets] = None,
     ):
+        # The value of the `MaxResults` parameter in the request. If the parameter was not specified, the default value of 20 is returned.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this field is empty, all results have been returned.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # A list of importable secrets.
         self.secrets = secrets
 
     def validate(self):
@@ -74,8 +77,13 @@ class ListImportableKMSSecretsForHostResponseBodySecrets(DaraModel):
         secret_type: str = None,
         tags: str = None,
     ):
+        # The name of the secret.
         self.secret_name = secret_name
+        # The type of the secret. Valid value:
+        # 
+        # - `ECS`: an ECS secret.
         self.secret_type = secret_type
+        # The tags associated with the secret.
         self.tags = tags
 
     def validate(self):

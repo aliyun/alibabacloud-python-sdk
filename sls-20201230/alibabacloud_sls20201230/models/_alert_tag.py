@@ -10,7 +10,9 @@ class AlertTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key name.
         self.key = key
+        # The key value.
         self.value = value
 
     def validate(self):

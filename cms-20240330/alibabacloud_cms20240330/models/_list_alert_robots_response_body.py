@@ -16,11 +16,15 @@ class ListAlertRobotsResponseBody(DaraModel):
         robots: List[main_models.ListAlertRobotsResponseBodyRobots] = None,
         total: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The chatbot ID.
         self.robots = robots
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -82,15 +86,22 @@ class ListAlertRobotsResponseBodyRobots(DaraModel):
         lang: str = None,
         name: str = None,
         robot_id: str = None,
+        robot_sign_key: str = None,
         type: str = None,
         url: str = None,
         workspace: str = None,
     ):
         self.digital_employee_name = digital_employee_name
+        # The language.
         self.lang = lang
+        # The chatbot name.
         self.name = name
+        # The unique ID of the chatbot.
         self.robot_id = robot_id
+        self.robot_sign_key = robot_sign_key
+        # The chatbot type.
         self.type = type
+        # The webhook URL of the chatbot.
         self.url = url
         self.workspace = workspace
 
@@ -113,6 +124,9 @@ class ListAlertRobotsResponseBodyRobots(DaraModel):
 
         if self.robot_id is not None:
             result['robotId'] = self.robot_id
+
+        if self.robot_sign_key is not None:
+            result['robotSignKey'] = self.robot_sign_key
 
         if self.type is not None:
             result['type'] = self.type
@@ -138,6 +152,9 @@ class ListAlertRobotsResponseBodyRobots(DaraModel):
 
         if m.get('robotId') is not None:
             self.robot_id = m.get('robotId')
+
+        if m.get('robotSignKey') is not None:
+            self.robot_sign_key = m.get('robotSignKey')
 
         if m.get('type') is not None:
             self.type = m.get('type')

@@ -12,7 +12,7 @@ class ListMachineNetworkInfoRequest(DaraModel):
         self,
         machine_hpn_info: List[main_models.ListMachineNetworkInfoRequestMachineHpnInfo] = None,
     ):
-        # hpn information of machine
+        # The information about the machine types.
         self.machine_hpn_info = machine_hpn_info
 
     def validate(self):
@@ -50,11 +50,11 @@ class ListMachineNetworkInfoRequestMachineHpnInfo(DaraModel):
         machine_type: str = None,
         region_id: str = None,
     ):
-        # hpn zone infomation
+        # The cluster ID.
         self.hpn_zone = hpn_zone
-        # The type of machine.
+        # The machine type.
         self.machine_type = machine_type
-        # The ID of the region in which the application is located.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from ._data_image_region_distribute_map_value import DataImageRegionDistributeMapValue
+from ._activate_edge_mobile_agent_request import ActivateEdgeMobileAgentRequest
+from ._activate_edge_mobile_agent_response_body import ActivateEdgeMobileAgentResponseBody
+from ._activate_edge_mobile_agent_response import ActivateEdgeMobileAgentResponse
 from ._attach_key_pair_request import AttachKeyPairRequest
 from ._attach_key_pair_response_body import AttachKeyPairResponseBody
 from ._attach_key_pair_response import AttachKeyPairResponse
@@ -42,12 +45,21 @@ from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequest
 from ._create_cloud_phone_node_shrink_request import CreateCloudPhoneNodeShrinkRequest
 from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBody
 from ._create_cloud_phone_node_response import CreateCloudPhoneNodeResponse
+from ._create_credit_package_request import CreateCreditPackageRequest
+from ._create_credit_package_response_body import CreateCreditPackageResponseBody
+from ._create_credit_package_response import CreateCreditPackageResponse
 from ._create_custom_image_request import CreateCustomImageRequest
 from ._create_custom_image_response_body import CreateCustomImageResponseBody
 from ._create_custom_image_response import CreateCustomImageResponse
+from ._create_edge_mobile_agent_package_request import CreateEdgeMobileAgentPackageRequest
+from ._create_edge_mobile_agent_package_response_body import CreateEdgeMobileAgentPackageResponseBody
+from ._create_edge_mobile_agent_package_response import CreateEdgeMobileAgentPackageResponse
 from ._create_key_pair_request import CreateKeyPairRequest
 from ._create_key_pair_response_body import CreateKeyPairResponseBody
 from ._create_key_pair_response import CreateKeyPairResponse
+from ._create_mobile_agent_package_request import CreateMobileAgentPackageRequest
+from ._create_mobile_agent_package_response_body import CreateMobileAgentPackageResponseBody
+from ._create_mobile_agent_package_response import CreateMobileAgentPackageResponse
 from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_shrink_request import CreatePolicyGroupShrinkRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
@@ -78,6 +90,9 @@ from ._delete_images_response import DeleteImagesResponse
 from ._delete_key_pairs_request import DeleteKeyPairsRequest
 from ._delete_key_pairs_response_body import DeleteKeyPairsResponseBody
 from ._delete_key_pairs_response import DeleteKeyPairsResponse
+from ._delete_mobile_agent_package_request import DeleteMobileAgentPackageRequest
+from ._delete_mobile_agent_package_response_body import DeleteMobileAgentPackageResponseBody
+from ._delete_mobile_agent_package_response import DeleteMobileAgentPackageResponse
 from ._delete_policy_group_request import DeletePolicyGroupRequest
 from ._delete_policy_group_response_body import DeletePolicyGroupResponseBody
 from ._delete_policy_group_response import DeletePolicyGroupResponse
@@ -105,9 +120,18 @@ from ._describe_buckets_response import DescribeBucketsResponse
 from ._describe_cloud_phone_nodes_request import DescribeCloudPhoneNodesRequest
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBody
 from ._describe_cloud_phone_nodes_response import DescribeCloudPhoneNodesResponse
+from ._describe_credit_detail_request import DescribeCreditDetailRequest
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBody
+from ._describe_credit_detail_response import DescribeCreditDetailResponse
+from ._describe_credit_package_request import DescribeCreditPackageRequest
+from ._describe_credit_package_response_body import DescribeCreditPackageResponseBody
+from ._describe_credit_package_response import DescribeCreditPackageResponse
 from ._describe_display_config_request import DescribeDisplayConfigRequest
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBody
 from ._describe_display_config_response import DescribeDisplayConfigResponse
+from ._describe_edge_mobile_agent_packages_request import DescribeEdgeMobileAgentPackagesRequest
+from ._describe_edge_mobile_agent_packages_response_body import DescribeEdgeMobileAgentPackagesResponseBody
+from ._describe_edge_mobile_agent_packages_response import DescribeEdgeMobileAgentPackagesResponse
 from ._describe_image_list_request import DescribeImageListRequest
 from ._describe_image_list_response_body import DescribeImageListResponseBody
 from ._describe_image_list_response import DescribeImageListResponse
@@ -129,6 +153,9 @@ from ._describe_metric_list_response import DescribeMetricListResponse
 from ._describe_metric_top_request import DescribeMetricTopRequest
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBody
 from ._describe_metric_top_response import DescribeMetricTopResponse
+from ._describe_mobile_agent_package_request import DescribeMobileAgentPackageRequest
+from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBody
+from ._describe_mobile_agent_package_response import DescribeMobileAgentPackageResponse
 from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
@@ -249,12 +276,18 @@ from ._recover_app_response import RecoverAppResponse
 from ._recovery_file_request import RecoveryFileRequest
 from ._recovery_file_response_body import RecoveryFileResponseBody
 from ._recovery_file_response import RecoveryFileResponse
+from ._refresh_auth_tokens_request import RefreshAuthTokensRequest
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBody
+from ._refresh_auth_tokens_response import RefreshAuthTokensResponse
 from ._renew_android_instance_groups_request import RenewAndroidInstanceGroupsRequest
 from ._renew_android_instance_groups_response_body import RenewAndroidInstanceGroupsResponseBody
 from ._renew_android_instance_groups_response import RenewAndroidInstanceGroupsResponse
 from ._renew_cloud_phone_nodes_request import RenewCloudPhoneNodesRequest
 from ._renew_cloud_phone_nodes_response_body import RenewCloudPhoneNodesResponseBody
 from ._renew_cloud_phone_nodes_response import RenewCloudPhoneNodesResponse
+from ._renew_mobile_agent_package_request import RenewMobileAgentPackageRequest
+from ._renew_mobile_agent_package_response_body import RenewMobileAgentPackageResponseBody
+from ._renew_mobile_agent_package_response import RenewMobileAgentPackageResponse
 from ._reset_android_instances_in_group_request import ResetAndroidInstancesInGroupRequest
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBody
 from ._reset_android_instances_in_group_response import ResetAndroidInstancesInGroupResponse
@@ -318,6 +351,7 @@ from ._update_instance_image_response import UpdateInstanceImageResponse
 from ._upgrade_android_instance_group_request import UpgradeAndroidInstanceGroupRequest
 from ._upgrade_android_instance_group_response_body import UpgradeAndroidInstanceGroupResponseBody
 from ._upgrade_android_instance_group_response import UpgradeAndroidInstanceGroupResponse
+from ._activate_edge_mobile_agent_response_body import ActivateEdgeMobileAgentResponseBodyData
 from ._attach_key_pair_response_body import AttachKeyPairResponseBodyData
 from ._backup_android_instance_response_body import BackupAndroidInstanceResponseBodyData
 from ._backup_app_response_body import BackupAppResponseBodyData
@@ -374,7 +408,11 @@ from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesRe
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelTags
 from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModel
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBodyDataDetails
+from ._describe_credit_detail_response_body import DescribeCreditDetailResponseBodyData
+from ._describe_credit_package_response_body import DescribeCreditPackageResponseBodyCreditsPackageInfos
 from ._describe_display_config_response_body import DescribeDisplayConfigResponseBodyDisplayConfigModel
+from ._describe_edge_mobile_agent_packages_response_body import DescribeEdgeMobileAgentPackagesResponseBodyPackages
 from ._describe_image_list_request import DescribeImageListRequestImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
 from ._describe_image_list_response_body import DescribeImageListResponseBodyData
@@ -394,6 +432,7 @@ from ._describe_metric_list_response_body import DescribeMetricListResponseBodyM
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelList
 from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModel
+from ._describe_mobile_agent_package_response_body import DescribeMobileAgentPackageResponseBodyPackageList
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModels
 from ._describe_spec_response_body import DescribeSpecResponseBodySpecInfoModel
 from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos
@@ -408,6 +447,7 @@ from ._import_key_pair_response_body import ImportKeyPairResponseBodyData
 from ._install_app_response_body import InstallAppResponseBodyChildTaskInfo
 from ._instance_healer_response_body import InstanceHealerResponseBodyInstanceHealerModel
 from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBodyData
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies
 from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules
 from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy
 from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources
@@ -428,9 +468,13 @@ from ._reboot_android_instances_in_group_response_body import RebootAndroidInsta
 from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
 from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyDataTokens
+from ._refresh_auth_tokens_response_body import RefreshAuthTokensResponseBodyData
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasksChildTasks
 from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBodyTasks
+from ._resume_agent_task_request import ResumeAgentTaskRequestClarificationAnswers
 from ._resume_agent_task_response_body import ResumeAgentTaskResponseBodyTasks
+from ._run_agent_task_request import RunAgentTaskRequestTargets
 from ._run_agent_task_response_body import RunAgentTaskResponseBodyTasks
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._run_sync_command_response_body import RunSyncCommandResponseBodyData
@@ -443,6 +487,9 @@ from ._update_instance_image_response_body import UpdateInstanceImageResponseBod
 
 __all__ = [
     DataImageRegionDistributeMapValue,
+    ActivateEdgeMobileAgentRequest,
+    ActivateEdgeMobileAgentResponseBody,
+    ActivateEdgeMobileAgentResponse,
     AttachKeyPairRequest,
     AttachKeyPairResponseBody,
     AttachKeyPairResponse,
@@ -482,12 +529,21 @@ __all__ = [
     CreateCloudPhoneNodeShrinkRequest,
     CreateCloudPhoneNodeResponseBody,
     CreateCloudPhoneNodeResponse,
+    CreateCreditPackageRequest,
+    CreateCreditPackageResponseBody,
+    CreateCreditPackageResponse,
     CreateCustomImageRequest,
     CreateCustomImageResponseBody,
     CreateCustomImageResponse,
+    CreateEdgeMobileAgentPackageRequest,
+    CreateEdgeMobileAgentPackageResponseBody,
+    CreateEdgeMobileAgentPackageResponse,
     CreateKeyPairRequest,
     CreateKeyPairResponseBody,
     CreateKeyPairResponse,
+    CreateMobileAgentPackageRequest,
+    CreateMobileAgentPackageResponseBody,
+    CreateMobileAgentPackageResponse,
     CreatePolicyGroupRequest,
     CreatePolicyGroupShrinkRequest,
     CreatePolicyGroupResponseBody,
@@ -518,6 +574,9 @@ __all__ = [
     DeleteKeyPairsRequest,
     DeleteKeyPairsResponseBody,
     DeleteKeyPairsResponse,
+    DeleteMobileAgentPackageRequest,
+    DeleteMobileAgentPackageResponseBody,
+    DeleteMobileAgentPackageResponse,
     DeletePolicyGroupRequest,
     DeletePolicyGroupResponseBody,
     DeletePolicyGroupResponse,
@@ -545,9 +604,18 @@ __all__ = [
     DescribeCloudPhoneNodesRequest,
     DescribeCloudPhoneNodesResponseBody,
     DescribeCloudPhoneNodesResponse,
+    DescribeCreditDetailRequest,
+    DescribeCreditDetailResponseBody,
+    DescribeCreditDetailResponse,
+    DescribeCreditPackageRequest,
+    DescribeCreditPackageResponseBody,
+    DescribeCreditPackageResponse,
     DescribeDisplayConfigRequest,
     DescribeDisplayConfigResponseBody,
     DescribeDisplayConfigResponse,
+    DescribeEdgeMobileAgentPackagesRequest,
+    DescribeEdgeMobileAgentPackagesResponseBody,
+    DescribeEdgeMobileAgentPackagesResponse,
     DescribeImageListRequest,
     DescribeImageListResponseBody,
     DescribeImageListResponse,
@@ -569,6 +637,9 @@ __all__ = [
     DescribeMetricTopRequest,
     DescribeMetricTopResponseBody,
     DescribeMetricTopResponse,
+    DescribeMobileAgentPackageRequest,
+    DescribeMobileAgentPackageResponseBody,
+    DescribeMobileAgentPackageResponse,
     DescribeRegionsRequest,
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
@@ -689,12 +760,18 @@ __all__ = [
     RecoveryFileRequest,
     RecoveryFileResponseBody,
     RecoveryFileResponse,
+    RefreshAuthTokensRequest,
+    RefreshAuthTokensResponseBody,
+    RefreshAuthTokensResponse,
     RenewAndroidInstanceGroupsRequest,
     RenewAndroidInstanceGroupsResponseBody,
     RenewAndroidInstanceGroupsResponse,
     RenewCloudPhoneNodesRequest,
     RenewCloudPhoneNodesResponseBody,
     RenewCloudPhoneNodesResponse,
+    RenewMobileAgentPackageRequest,
+    RenewMobileAgentPackageResponseBody,
+    RenewMobileAgentPackageResponse,
     ResetAndroidInstancesInGroupRequest,
     ResetAndroidInstancesInGroupResponseBody,
     ResetAndroidInstancesInGroupResponse,
@@ -758,6 +835,7 @@ __all__ = [
     UpgradeAndroidInstanceGroupRequest,
     UpgradeAndroidInstanceGroupResponseBody,
     UpgradeAndroidInstanceGroupResponse,
+    ActivateEdgeMobileAgentResponseBodyData,
     AttachKeyPairResponseBodyData,
     BackupAndroidInstanceResponseBodyData,
     BackupAppResponseBodyData,
@@ -814,7 +892,11 @@ __all__ = [
     DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo,
     DescribeCloudPhoneNodesResponseBodyNodeModelTags,
     DescribeCloudPhoneNodesResponseBodyNodeModel,
+    DescribeCreditDetailResponseBodyDataDetails,
+    DescribeCreditDetailResponseBodyData,
+    DescribeCreditPackageResponseBodyCreditsPackageInfos,
     DescribeDisplayConfigResponseBodyDisplayConfigModel,
+    DescribeEdgeMobileAgentPackagesResponseBodyPackages,
     DescribeImageListRequestImageBizTags,
     DescribeImageListResponseBodyDataImageBizTags,
     DescribeImageListResponseBodyData,
@@ -834,6 +916,7 @@ __all__ = [
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints,
     DescribeMetricTopResponseBodyMetricTotalModelMetricModelList,
     DescribeMetricTopResponseBodyMetricTotalModel,
+    DescribeMobileAgentPackageResponseBodyPackageList,
     DescribeRegionsResponseBodyRegionModels,
     DescribeSpecResponseBodySpecInfoModel,
     DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos,
@@ -848,6 +931,7 @@ __all__ = [
     InstallAppResponseBodyChildTaskInfo,
     InstanceHealerResponseBodyInstanceHealerModel,
     ListInstanceAdbAttributesResponseBodyData,
+    ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies,
     ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules,
     ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy,
     ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources,
@@ -868,9 +952,13 @@ __all__ = [
     RecoverAndroidInstanceResponseBodyData,
     RecoverAppResponseBodyData,
     RecoveryFileResponseBodyData,
+    RefreshAuthTokensResponseBodyDataTokens,
+    RefreshAuthTokensResponseBodyData,
     ResetAndroidInstancesInGroupResponseBodyTasksChildTasks,
     ResetAndroidInstancesInGroupResponseBodyTasks,
+    ResumeAgentTaskRequestClarificationAnswers,
     ResumeAgentTaskResponseBodyTasks,
+    RunAgentTaskRequestTargets,
     RunAgentTaskResponseBodyTasks,
     RunCommandResponseBodyRunCommandInfos,
     RunSyncCommandResponseBodyData,

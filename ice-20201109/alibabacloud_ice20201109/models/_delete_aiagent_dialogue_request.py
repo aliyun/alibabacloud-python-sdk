@@ -11,10 +11,11 @@ class DeleteAIAgentDialogueRequest(DaraModel):
         node_id: str = None,
         session_id: str = None,
     ):
-        # The ID of the dialog that you want to delete.
+        # The ID of the dialogue to delete.
         # 
         # This parameter is required.
         self.dialogue_id = dialogue_id
+        # The ID of the node to delete.
         self.node_id = node_id
         # The session ID.
         # 

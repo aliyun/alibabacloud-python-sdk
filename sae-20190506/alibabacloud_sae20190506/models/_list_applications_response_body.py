@@ -20,34 +20,34 @@ class ListApplicationsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
-        # The HTTP status code. Take note of the following rules:
+        # The API status or POP error code. Valid values:
         # 
-        # - **2xx**: The call was successful.
-        # - **3xx**: The call was redirected.
-        # - **4xx**: The call failed.
-        # - **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # - **3xx**: Redirection.
+        # - **4xx**: Request error.
+        # - **5xx**: Server error.
         self.code = code
         # The current page number.
         self.current_page = current_page
-        # The queried applications.
+        # The application list.
         self.data = data
-        # The returned error code. Valid values:
+        # The error code. Valid values:
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional message.
+        # The additional information about the call result.
         self.message = message
         # The page size.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the application list is retrieved. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: Retrieved.
+        # - **false**: Not retrieved.
         self.success = success
-        # The number of applications.
+        # The total number of applications.
         self.total_size = total_size
 
     def validate(self):
@@ -128,13 +128,13 @@ class ListApplicationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The queried applications.
+        # The application list.
         self.applications = applications
         # The current page number.
         self.current_page = current_page
-        # The number of records in each page.
+        # The page size.
         self.page_size = page_size
-        # The number of applications.
+        # The total number of applications.
         self.total_size = total_size
 
     def validate(self):
@@ -208,6 +208,7 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
         new_sae_version: str = None,
         package_url: str = None,
         programming_language: str = None,
+        rasp_enabled: bool = None,
         region_id: str = None,
         resource_type: str = None,
         running_instances: int = None,
@@ -216,84 +217,90 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
     ):
         # Indicates whether the application is being deleted. Valid values:
         # 
-        # *   **true**: The application is being deleted.
-        # *   **false**: The application is not being deleted.
+        # - **true**: The application is being deleted.
+        # - **false**: The application is not being deleted.
         self.app_deleting_status = app_deleting_status
-        # The description of the application.
+        # The application description.
         self.app_description = app_description
         # The application ID.
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The application type.
+        # The deployment type of the application.
         self.app_type = app_type
-        # The base app ID. Only gray-release applications have this property.
+        # The base application ID. This property exists only for canary release applications.
         self.base_app_id = base_app_id
-        # The gray-release application list of this application.
+        # The list of canary release applications for this application.
         self.children = children
-        # The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+        # The CPU required for each instance, in millicores. This value cannot be 0. Only the following defined specifications are supported:
         # 
-        # *   **500**
-        # *   **1000**
-        # *   **2000**
-        # *   **4000**
-        # *   **8000**
-        # *   **16000**
-        # *   **32000**
+        # - **500**
+        # - **1000**
+        # - **2000**
+        # - **4000**
+        # - **8000**
+        # - **16000**
+        # - **32000**
         self.cpu = cpu
-        # The disk size. Unit: GB.
+        # The disk storage size, in GB.
         self.disk_size = disk_size
-        # If the idle mode is enabled.
+        # Indicates whether idle mode is enabled.
         self.enable_idle = enable_idle
         # The image URL.
         self.image_url = image_url
         # The number of application instances.
         self.instances = instances
+        # Specifies whether the application is stateful.
         self.is_stateful = is_stateful
+        # The labels.
         self.labels = labels
-        # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+        # The memory required for each instance, in MB. This value cannot be 0. The memory has a one-to-one mapping with CPU. Only the following defined specifications are supported:
         # 
-        # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
-        # *   This parameter is set to **2048** if the Cpu parameter is set to 500, 1000, or 2000.
-        # *   This parameter is set to **4096** if the Cpu parameter is set to 1000, 2000, or 4000.
-        # *   This parameter is set to **8192** if the Cpu parameter is set to 2000, 4000, or 8000.
-        # *   This parameter is set to **12288** if the Cpu parameter is set to 12000.
-        # *   This parameter is set to **16384** if the Cpu parameter is set to 4000, 8000, or 16000.
-        # *   This parameter is set to **24576** if the Cpu parameter is set to 12000.
-        # *   This parameter is set to **32768** if the Cpu parameter is set to 16000.
-        # *   This parameter is set to **65536** if the Cpu parameter is set to 8000, 16000, or 32000.
-        # *   This parameter is set to **131072** if the Cpu parameter is set to 32000.
+        # - **1024**: corresponds to 500 and 1000 millicores of CPU.
+        # - **2048**: corresponds to 500, 1000, and 2000 millicores of CPU.
+        # - **4096**: corresponds to 1000, 2000, and 4000 millicores of CPU.
+        # - **8192**: corresponds to 2000, 4000, and 8000 millicores of CPU.
+        # - **12288**: corresponds to 12000 millicores of CPU.
+        # - **16384**: corresponds to 4000, 8000, and 16000 millicores of CPU.
+        # - **24576**: corresponds to 12000 millicores of CPU.
+        # - **32768**: corresponds to 16000 millicores of CPU.
+        # - **65536**: corresponds to 8000, 16000, and 32000 millicores of CPU.
+        # - **131072**: corresponds to 32000 millicores of CPU.
         self.mem = mem
-        # The application has enabled MSE or not.
+        # Indicates whether MSE microservice governance is enabled for the application.
         self.mse_enabled = mse_enabled
-        # The name space of MSE:
+        # The MSE microservice governance namespace.
         # 
-        # - default: the free edition.
-        # - sae-pro: the professional edition.
-        # - sae-ent: the enterprise eiditon.
+        # - default: Free Edition
+        # 
+        # - sae-pro: Professional Edition
+        # 
+        # - sae-ent: Enterprise Edition
         self.mse_namespace_id = mse_namespace_id
         # The namespace ID.
         self.namespace_id = namespace_id
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The application edition.
+        # The application version. Valid values:
         # 
-        # - lite: the lightweight edition.
-        # - std: the standard edition.
-        # - pro: the professional edition.
+        # - lite: Lite Edition
+        # - std: Standard Edition
+        # - pro: Professional Edition
         self.new_sae_version = new_sae_version
-        # The package URL.
+        # The deployment package URL.
         self.package_url = package_url
         # The programming language of the application.
         self.programming_language = programming_language
+        self.rasp_enabled = rasp_enabled
         # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
         # The number of running instances.
         self.running_instances = running_instances
-        # The tags of the application.
+        # The application tags.
         self.tags = tags
-        # VPC ID.
+        # VPC ID。
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -378,6 +385,9 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
 
         if self.programming_language is not None:
             result['ProgrammingLanguage'] = self.programming_language
+
+        if self.rasp_enabled is not None:
+            result['RaspEnabled'] = self.rasp_enabled
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -469,6 +479,9 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
         if m.get('ProgrammingLanguage') is not None:
             self.programming_language = m.get('ProgrammingLanguage')
 
+        if m.get('RaspEnabled') is not None:
+            self.rasp_enabled = m.get('RaspEnabled')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -495,9 +508,9 @@ class ListApplicationsResponseBodyDataApplicationsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -552,7 +565,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
         scale_rule_type: str = None,
         tags: List[main_models.ListApplicationsResponseBodyDataApplicationsChildrenTags] = None,
     ):
-        # If is deleting this application.
+        # Indicates whether the application is being deleted.
         self.app_deleting_status = app_deleting_status
         # The application description.
         self.app_description = app_description
@@ -560,42 +573,45 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
         self.app_id = app_id
         # The application name.
         self.app_name = app_name
-        # The way to deploy applications.
+        # The deployment type of the application.
         self.app_type = app_type
         # The base application ID.
         self.base_app_id = base_app_id
-        # The CPU sepcification.
+        # The CPU size.
         self.cpu = cpu
+        # Indicates whether idle mode is enabled.
         self.enable_idle = enable_idle
         # The number of instances.
         self.instances = instances
+        # Specifies whether the application is stateful.
         self.is_stateful = is_stateful
-        # The memory specification.
+        # The memory size.
         self.mem = mem
-        # If this application has enabled MSE.
+        # Indicates whether MSE microservice governance is enabled for the application.
         self.mse_enabled = mse_enabled
         # The namespace ID.
         self.namespace_id = namespace_id
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The application edition.
+        # The application version. Valid values:
         # 
-        # - lite: the lightweight edition.
-        # - std: the standard edition.
-        # - pro: the professional edition.
+        # - lite: Lite Edition
+        # - std: Standard Edition
+        # - pro: Professional Edition
         self.new_sae_version = new_sae_version
-        # The programming language of this application.
+        # The programming language of the application.
         self.programming_language = programming_language
         # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
-        # The number of instances in running state.
+        # The number of running instances.
         self.running_instances = running_instances
-        # If the scale rule is enabled.
+        # Indicates whether the elastic scaling policy is enabled.
         self.scale_rule_enabled = scale_rule_enabled
-        # The type of the scale rule.
+        # The type of the elastic scaling rule.
         self.scale_rule_type = scale_rule_type
-        # The application tag.
+        # The application tags.
         self.tags = tags
 
     def validate(self):

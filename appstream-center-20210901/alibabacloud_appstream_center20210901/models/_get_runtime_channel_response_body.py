@@ -14,8 +14,11 @@ class GetRuntimeChannelResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -62,6 +65,7 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
     def __init__(
         self,
         avatar_url: str = None,
+        channel_type: str = None,
         code: str = None,
         config: str = None,
         config_mode: str = None,
@@ -70,13 +74,29 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         risk_type: str = None,
         status: str = None,
     ):
+        # The URL of the channel avatar.
         self.avatar_url = avatar_url
+        # The channel type. Valid values:
+        # - System: a channel supported by the system.
+        # - Custom: a custom channel.
+        self.channel_type = channel_type
+        # The channel code.
         self.code = code
+        # The channel configuration JSON string.
+        # 
+        # Currently, only the simple configuration mode is supported. You must pass the AppKey and AppSecret parameters.
         self.config = config
+        # The configuration mode. Valid values:
+        # - Simple: simple configuration mode.
+        # - Custom: custom configuration mode.
         self.config_mode = config_mode
+        # The URL of the QR code configuration notification page. This parameter is returned only for the ENTERPRISE or ENTERPRISE_JVS platform.
         self.qr_code_notify_url = qr_code_notify_url
+        # The QR code configuration status. This parameter is returned only when the status is not in a final state.
         self.qr_code_status = qr_code_status
+        # The risk type. This parameter is returned only when **includeRiskInfo=true**.
         self.risk_type = risk_type
+        # The configuration status.
         self.status = status
 
     def validate(self):
@@ -89,6 +109,9 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
             result = _map
         if self.avatar_url is not None:
             result['AvatarUrl'] = self.avatar_url
+
+        if self.channel_type is not None:
+            result['ChannelType'] = self.channel_type
 
         if self.code is not None:
             result['Code'] = self.code
@@ -117,6 +140,9 @@ class GetRuntimeChannelResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('AvatarUrl') is not None:
             self.avatar_url = m.get('AvatarUrl')
+
+        if m.get('ChannelType') is not None:
+            self.channel_type = m.get('ChannelType')
 
         if m.get('Code') is not None:
             self.code = m.get('Code')

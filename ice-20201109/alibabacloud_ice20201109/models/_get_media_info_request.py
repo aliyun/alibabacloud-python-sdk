@@ -13,26 +13,29 @@ class GetMediaInfoRequest(DaraModel):
         output_type: str = None,
         return_detailed_info: str = None,
     ):
+        # The validity period of the signed URL, in seconds.
         self.auth_timeout = auth_timeout
-        # The input URL of the media asset in another service. The URL must be registered in the IMS content library and bound to the ID of the media asset in IMS.
+        # The address of the media asset to query. You must first register the media asset in the IMS media library and bind it to a `mediaId`.
         # 
-        # *   For a media asset from Object Storage Service (OSS), the URL may have one of the following formats:
+        # - Object Storage Service (OSS) URL. Two formats are supported:
         # 
-        # http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4 or
+        # `http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4`
         # 
-        # oss://example-bucket/example.mp4. The second format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
+        # `oss://example-bucket/example.mp4`. When you use this format, the OSS region defaults to the service endpoint region.
         self.input_url = input_url
-        # The ID of the media asset in IMS. If this parameter is left empty, the InputURL parameter must be specified.
+        # The ID of the media asset in Intelligent Media Services (IMS). If you omit this parameter, you must specify `InputURL`.
         self.media_id = media_id
-        # The type of the URL of the media asset to return in the response. Valid values:
+        # The type of URL to return for the media asset file.
         # 
-        # *   oss (default): an OSS URL.
-        # *   cdn: a CDN URL. A CDN URL is returned only if the media asset is imported from ApsaraVideo VOD and the relevant domain name is an accelerated domain name in ApsaraVideo VOD.
+        # - `oss`: Returns the OSS URL. This is the default value.
+        # 
+        # - `cdn`: Returns the Content Delivery Network (CDN) URL. A CDN URL is returned only if the media asset was imported from Video on Demand (VOD) and has a CDN domain name configured in VOD.
         self.output_type = output_type
-        # Specifies whether to return detailed information for specific media asset attributes. Supported attributes: AiRoughData.StandardSmartTagJob, which specifies whether to return detailed tag information if a tagging job has been submitted for the media asset. Valid values for the attribute:
+        # Whether to return detailed information for specific media asset fields. The only supported field is `AiRoughData.StandardSmartTagJob`, which specifies how the result of a tag analysis task is returned.
         # 
-        # *   false (default): The job result is returned as a URL.
-        # *   true: The job result is returned as text.
+        # - `false`: The task result is returned as a URL. This is the default value.
+        # 
+        # - `true`: The task result is returned as a string.
         self.return_detailed_info = return_detailed_info
 
     def validate(self):

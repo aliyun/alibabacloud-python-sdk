@@ -11,8 +11,9 @@ class GetCheckPointRequest(DaraModel):
     ):
         # The shard ID.
         # 
-        # *   If the specified shard does not exist, an empty list is returned.
-        # *   If no shard ID is specified, the checkpoints of all shards are returned.
+        # - If the specified shard does not exist, an empty list is returned.
+        # 
+        # - If no shard ID is specified, the checkpoints of all shards are returned.
         self.shard = shard
 
     def validate(self):

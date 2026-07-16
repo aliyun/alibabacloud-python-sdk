@@ -9,6 +9,7 @@ class CpuHighAgentStreamResponseRequest(DaraModel):
         self,
         llm_param_string: str = None,
     ):
+        # The input parameter for the CPU High Agent service. Refer to the standard LLM API input parameter dict, convert it to a string, and pass it in the llmParamString field.
         self.llm_param_string = llm_param_string
 
     def validate(self):

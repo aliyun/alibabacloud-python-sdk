@@ -16,11 +16,15 @@ class DescribeSyntheticProbeListResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The status code.
         self.code = code
-        # The queried detection points.
+        # The list of detection points.
         self.isp_city_list = isp_city_list
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values: true: The operation was successful. false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -98,26 +102,43 @@ class DescribeSyntheticProbeListResponseBodyIspCityList(DaraModel):
         region_cn: str = None,
         region_en: str = None,
     ):
+        # The name of the area in Chinese.
         self.area_cn = area_cn
+        # The name of the area in English.
         self.area_en = area_en
+        # The city ID.
         self.city = city
+        # The name of the city in Chinese.
         self.city_cn = city_cn
+        # The name of the city in English.
         self.city_en = city_en
+        # The country code.
         self.country = country
+        # The name of the country in Chinese.
         self.country_cn = country_cn
+        # The name of the country or region in English.
         self.country_en = country_en
+        # The number of IPv4 detection points in data centers.
         self.idc_v4probe_count = idc_v4probe_count
-        # The number of IPv6 nodes in data centers.
+        # The number of IDC IPv6 nodes.
         self.idc_v6probe_count = idc_v6probe_count
-        # The IP addresses of the monitored nodes.
+        # The list of node IP addresses.
         self.ip_pool = ip_pool
+        # The carrier ID.
         self.isp = isp
+        # The name of the carrier in Chinese.
         self.isp_cn = isp_cn
+        # The name of the carrier in English.
         self.isp_en = isp_en
+        # The number of last-mile detection points.
         self.lm_probe_count = lm_probe_count
+        # The number of mobile detection points.
         self.mb_probe_count = mb_probe_count
+        # The province code.
         self.region = region
+        # The name of the province in Chinese.
         self.region_cn = region_cn
+        # The name of the province in English.
         self.region_en = region_en
 
     def validate(self):

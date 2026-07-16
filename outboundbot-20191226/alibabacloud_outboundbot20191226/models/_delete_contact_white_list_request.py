@@ -11,10 +11,15 @@ class DeleteContactWhiteListRequest(DaraModel):
         instance_id: str = None,
         operator: str = None,
     ):
+        # Contact whitelist ID
+        # 
         # This parameter is required.
         self.contact_white_list_id = contact_white_list_id
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Operator information
         self.operator = operator
 
     def validate(self):

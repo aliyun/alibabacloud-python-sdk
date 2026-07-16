@@ -14,6 +14,7 @@ class DescribeSupportLinesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.record_lines = record_lines
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

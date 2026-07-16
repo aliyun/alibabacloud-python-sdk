@@ -12,10 +12,16 @@ class GetJobExecutionRequest(DaraModel):
         job_execution_id: str = None,
         mse_session_id: str = None,
     ):
+        # The name of the application.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The ID of the job execution.
+        # 
         # This parameter is required.
         self.job_execution_id = job_execution_id
         self.mse_session_id = mse_session_id

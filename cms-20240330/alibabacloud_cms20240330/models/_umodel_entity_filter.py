@@ -11,11 +11,11 @@ class UmodelEntityFilter(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # 过滤字段名
+        # The field name to filter on.
         self.field = field
-        # 过滤操作符，仅支持 = 或 !=
+        # The comparison operator to use. Supported operators include `=`, `>`, `<`, `!=`, `IN`, and `NOT IN`.
         self.operator = operator
-        # 过滤值
+        # The value to compare the field against.
         self.value = value
 
     def validate(self):

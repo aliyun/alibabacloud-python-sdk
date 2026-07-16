@@ -44,15 +44,19 @@ class ModifyHostRequest(DaraModel):
         self.network_domain_id = network_domain_id
         # The new operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
         # The preferred key exchange algorithm of the host. If you set OSType to Linux, you can modify this parameter. Valid values:
         # 
-        # *   **default**
-        # *   **diffie-hellman-group1-sha1**
-        # *   **diffie-hellman-group14-sha1**
-        # *   **diffie-hellman-group-exchange-sha1**
+        # - **default**
+        # 
+        # - **diffie-hellman-group1-sha1**
+        # 
+        # - **diffie-hellman-group14-sha1**
+        # 
+        # - **diffie-hellman-group-exchange-sha1**
         self.pref_kex = pref_kex
         # The region ID of the bastion host on which you want to modify the information about the host.
         # 

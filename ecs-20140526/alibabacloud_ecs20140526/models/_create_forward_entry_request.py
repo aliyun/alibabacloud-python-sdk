@@ -19,20 +19,34 @@ class CreateForwardEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The public IP address for the DNAT entry. This must be a public IP address of the NAT gateway associated with the DNAT table.
+        # 
         # This parameter is required.
         self.external_ip = external_ip
+        # The external port used for DNAT. Valid values: 1 to 65535.
+        # 
         # This parameter is required.
         self.external_port = external_port
+        # The ID of the DNAT table.
+        # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
+        # The private IP address to which traffic is forwarded.
+        # 
         # This parameter is required.
         self.internal_ip = internal_ip
+        # The internal port to which traffic is forwarded. Valid values: 1 to 65535.
+        # 
         # This parameter is required.
         self.internal_port = internal_port
+        # The protocol. Valid values: TCP, UDP, and Any. If you set this parameter to Any, the DNAT entry applies to all protocols.
+        # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the DNAT table is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to retrieve a list of available regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

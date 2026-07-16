@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'wss.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'wss.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('wss', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -51,6 +55,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.properties):
             request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.order_items):
             query['OrderItems'] = request.order_items
         if not DaraCore.is_null(request.order_type):
@@ -89,6 +95,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.properties):
             request.properties_shrink = Utils.array_to_string_with_specified_style(tmp_req.properties, 'Properties', 'json')
         query = {}
+        if not DaraCore.is_null(request.channel_cookie):
+            query['ChannelCookie'] = request.channel_cookie
         if not DaraCore.is_null(request.order_items):
             query['OrderItems'] = request.order_items
         if not DaraCore.is_null(request.order_type):

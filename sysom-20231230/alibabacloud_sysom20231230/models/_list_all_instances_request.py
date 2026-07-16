@@ -17,14 +17,24 @@ class ListAllInstancesRequest(DaraModel):
         plugin_id: str = None,
         region: str = None,
     ):
+        # Current page number.
         self.current = current
+        # List of filter information.
         self.filters = filters
+        # Instance type.
         self.instance_type = instance_type
+        # Management type.
         self.managed_type = managed_type
+        # Maximum number of records to retrieve at a time.
         self.max_results = max_results
+        # Pagination token.
+        # > If this parameter is not empty, more data is available.
         self.next_token = next_token
+        # Number of entries returned per page. Default value: pageSize=10.
         self.page_size = page_size
+        # Plugin ID.
         self.plugin_id = plugin_id
+        # Region ID.
         self.region = region
 
     def validate(self):

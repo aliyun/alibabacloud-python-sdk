@@ -15,16 +15,17 @@ class GenerateAIAgentCallResponseBody(DaraModel):
         token: str = None,
         user_id: str = None,
     ):
-        # The username of the AI agent in the Alibaba Real-Time Communication (ARTC) channel.
+        # The name of the agent in the Alibaba Real-time Communication (ARTC) channel.
         self.aiagent_user_id = aiagent_user_id
+        # The user ID of the avatar in the channel.
         self.avatar_user_id = avatar_user_id
-        # The ARTC channel ID.
+        # The ID of the ARTC channel.
         self.channel_id = channel_id
-        # The ID of the AI agent.
+        # The ID of the generated agent instance.
         self.instance_id = instance_id
         # The request ID.
         self.request_id = request_id
-        # The ARTC token of the client.
+        # The client-side ARTC token.
         self.token = token
         # The username in the ARTC channel.
         self.user_id = user_id

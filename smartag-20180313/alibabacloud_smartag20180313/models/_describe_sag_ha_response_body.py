@@ -15,17 +15,17 @@ class DescribeSagHaResponseBody(DaraModel):
         request_id: str = None,
         task_states: List[main_models.DescribeSagHaResponseBodyTaskStates] = None,
     ):
-        # The HA mode. Valid values:
+        # The high-availability (HA) pattern. Valid values:
         # 
-        # *   **NONE**: HA is disabled.
-        # *   **STATIC**: static HA is enabled.
-        # *   **DYNAMIC**: dynamic HA is enabled.
+        # - **NONE**: The HA feature is not enabled.
+        # - **STATIC**: static pattern.
+        # - **DYNAMIC**: dynamic schema.
         self.mode = mode
-        # The information about the port.
+        # The list of port information.
         self.ports = ports
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information about the query task.
+        # The list of query task information.
         self.task_states = task_states
 
     def validate(self):
@@ -93,21 +93,21 @@ class DescribeSagHaResponseBodyTaskStates(DaraModel):
     ):
         # The time when the query task was created.
         self.create_time = create_time
-        # The error code returned for a query task. The 200 error code indicates that the query task is successful.
+        # The error code. 200 indicates that the query task succeeded.
         self.error_code = error_code
-        # The error message returned for a query task. The Successful error message indicates that the query task is successful.
+        # The error message. "Successful" indicates that the query task succeeded.
         self.error_message = error_message
-        # The status of the query task. Valid values:
+        # The status of the asynchronous task. Valid values:
         # 
-        # *   **Initialized**: The query task has been initialized.
-        # *   **Offline**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will be dispatched after the SAG device is connected to Alibaba Cloud.
-        # *   **Succeed**: The query task has been dispatched.
-        # *   **Processing**: The query task is being dispatched.
-        # *   **VersionNotSupport**: The current version of the SAG device does not support query tasks.
-        # *   **BuildRequestError**: The SAG control system does not support query tasks.
-        # *   **HardwareError**: The query task failed to be dispatched due to device errors.
-        # *   **TaskNotExist**: The query task does not exist.
-        # *   **OfflineNotConfiged**: The query task is not dispatched because the SAG device is disconnected from Alibaba Cloud. The task will not be dispatched after the device is connected to Alibaba Cloud.
+        # - **Initialized**: The query task is initialized.
+        # - **Offline**: The Smart Access Gateway device is offline and the query task is not delivered. The task will be delivered after the device comes online.
+        # - **Succeed**: The query task is delivered.
+        # - **Processing**: The query task is being delivered.
+        # - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this operation.
+        # - **BuildRequestError**: The China Cloud Management Platform does not support this operation.
+        # - **HardwareError**: The query task failed to be delivered due to a device error.
+        # - **TaskNotExist**: The query task does not exist.
+        # - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task is not delivered. The task will not be delivered even after the device comes online.
         self.state = state
 
     def validate(self):
@@ -154,9 +154,9 @@ class DescribeSagHaResponseBodyPorts(DaraModel):
         port_name: str = None,
         virtual_ip: str = None,
     ):
-        # The name of the port.
+        # The port name.
         self.port_name = port_name
-        # The virtual IP address of the SAG device.
+        # The virtual IP address of the Smart Access Gateway.
         self.virtual_ip = virtual_ip
 
     def validate(self):

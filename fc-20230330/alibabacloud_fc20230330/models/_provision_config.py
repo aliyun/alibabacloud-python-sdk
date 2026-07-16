@@ -29,6 +29,7 @@ class ProvisionConfig(DaraModel):
         # 
         # *   When the scheduled policy **is ineffective**, both the target value and defaultTarget value are 1.
         self.always_allocate_cpu = always_allocate_cpu
+        # 是否始终分配GPU给函数实例。
         self.always_allocate_gpu = always_allocate_gpu
         # public
         self.current = current
@@ -36,10 +37,19 @@ class ProvisionConfig(DaraModel):
         self.current_error = current_error
         # public
         self.default_target = default_target
+        # 函数的资源描述
         self.function_arn = function_arn
         # public
         self.scheduled_actions = scheduled_actions
+        # 当前目标资源个数，如果存在指标追踪伸缩策略或定时策略，为策略计算的资源个数，否则为默认预留实例数。
+        # 
+        # 
+        # > 与 defaultTarget 有什么区别？\\
+        # > 假设配置预留实例数为1后，新增了定时伸缩策略，设置某个时间段内的预留实例数为5。
+        # > - 在定时伸缩策略**生效期间**，target 与 defaultTarget 分别为 5 和 1。
+        # >-  在定时伸缩策略**失效期间**，target 与 defaultTarget 都为 1。
         self.target = target
+        # 指标追踪伸缩策略配置。
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):

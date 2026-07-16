@@ -10,6 +10,7 @@ class UpdateCommandShrinkRequest(DaraModel):
         app_id: str = None,
         domain_code: str = None,
         domain_name: str = None,
+        reply_mode: str = None,
         tool_description: str = None,
         tool_examples_shrink: str = None,
         tool_id: str = None,
@@ -21,6 +22,7 @@ class UpdateCommandShrinkRequest(DaraModel):
         self.app_id = app_id
         self.domain_code = domain_code
         self.domain_name = domain_name
+        self.reply_mode = reply_mode
         # This parameter is required.
         self.tool_description = tool_description
         self.tool_examples_shrink = tool_examples_shrink
@@ -47,6 +49,9 @@ class UpdateCommandShrinkRequest(DaraModel):
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
+
+        if self.reply_mode is not None:
+            result['ReplyMode'] = self.reply_mode
 
         if self.tool_description is not None:
             result['ToolDescription'] = self.tool_description
@@ -78,6 +83,9 @@ class UpdateCommandShrinkRequest(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('ReplyMode') is not None:
+            self.reply_mode = m.get('ReplyMode')
 
         if m.get('ToolDescription') is not None:
             self.tool_description = m.get('ToolDescription')

@@ -17,21 +17,39 @@ class CreateClusterRequest(DaraModel):
         duration: int = None,
         engine_type: str = None,
         pricing_cycle: str = None,
+        source: str = None,
         tag: List[main_models.CreateClusterRequestTag] = None,
         v_switches: List[main_models.CreateClusterRequestVSwitches] = None,
         vpc_id: str = None,
     ):
+        # The billing type.
         self.charge_type = charge_type
+        # The name of the cluster.
+        # 
         # This parameter is required.
         self.cluster_name = cluster_name
+        # The cluster specification. Valid values:
+        # - scx.dev.x1
+        # - scx.small.x1
+        # - scx.small.x2
+        # - scx.medium.x1
+        # - scx.medium.x2.
         self.cluster_spec = cluster_spec
+        # The cluster type.
         self.cluster_type = cluster_type
+        # The duration.
         self.duration = duration
+        # The engine type. Valid values: xxljob.
         self.engine_type = engine_type
+        # The pricing cycle.
         self.pricing_cycle = pricing_cycle
+        # The source.
+        self.source = source
+        # The list of tags. A maximum of 20 tags are supported.
         self.tag = tag
+        # The information about the vSwitches.
         self.v_switches = v_switches
-        # VPC id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -69,6 +87,9 @@ class CreateClusterRequest(DaraModel):
 
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+
+        if self.source is not None:
+            result['Source'] = self.source
 
         result['Tag'] = []
         if self.tag is not None:
@@ -108,6 +129,9 @@ class CreateClusterRequest(DaraModel):
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
 
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+
         self.tag = []
         if m.get('Tag') is not None:
             for k1 in m.get('Tag'):
@@ -131,7 +155,9 @@ class CreateClusterRequestVSwitches(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):
@@ -166,7 +192,9 @@ class CreateClusterRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

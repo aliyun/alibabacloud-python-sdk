@@ -9,6 +9,7 @@ class GetAgentTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

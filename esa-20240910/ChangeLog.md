@@ -1,3 +1,96 @@
+2026-07-15 Version: 3.7.0
+- Support API AddUserBusinessForm.
+- Support API CheckSiteFeaturesMatchPlan.
+
+
+2026-07-15 Version: 3.7.0
+- Support API AddUserBusinessForm.
+- Support API CheckSiteFeaturesMatchPlan.
+
+
+2026-07-07 Version: 3.6.0
+- Support API DescribeSiteWafTimeSeriesData.
+- Support API DescribeSiteWafTopData.
+- Support API DescribeWafUsageData.
+- Support API PurchaseBotInstance.
+
+
+2026-07-07 Version: 3.6.0
+- Support API DescribeSiteWafTimeSeriesData.
+- Support API DescribeSiteWafTopData.
+- Support API DescribeWafUsageData.
+- Support API PurchaseBotInstance.
+
+
+2026-06-29 Version: 3.5.0
+- Support API DescribeDDoSOverseasAttackCount.
+- Support API GetDcvDelegation.
+
+
+2026-06-29 Version: 3.5.0
+- Support API DescribeDDoSOverseasAttackCount.
+- Support API GetDcvDelegation.
+
+
+2026-06-23 Version: 3.4.0
+- Support API DescribeDDoSBpsMax.
+- Support API DescribeDDoSEventMax.
+- Support API GetRoutineCodeVersionInfo.
+- Support API OpenEdgeContainer.
+
+
+2026-06-23 Version: 3.4.0
+- Support API DescribeDDoSBpsMax.
+- Support API DescribeDDoSEventMax.
+- Support API GetRoutineCodeVersionInfo.
+- Support API OpenEdgeContainer.
+
+
+2026-06-18 Version: 3.3.0
+- Support API DescribeBotPrice.
+- Support API DescribeCacheReservePrice.
+- Support API DescribeCacheReservePriceGap.
+- Support API DescribeRatePlanPriceGap.
+- Support API GetEdgeContainer.
+- Support API GetFailFile.
+- Support API ListCasCertificates.
+- Support API SubmitUploadTask.
+- Update API BatchCreateRecords: add request parameters RecordList.$.HttpPorts.
+- Update API BatchCreateRecords: add request parameters RecordList.$.HttpsPorts.
+- Update API BatchCreateRecords: add response parameters Body.RecordResultList.Failed.$.HttpPorts.
+- Update API BatchCreateRecords: add response parameters Body.RecordResultList.Failed.$.HttpsPorts.
+- Update API BatchCreateRecords: add response parameters Body.RecordResultList.Success.$.HttpPorts.
+- Update API BatchCreateRecords: add response parameters Body.RecordResultList.Success.$.HttpsPorts.
+- Update API CommitRoutineStagingCode: add request parameters DeployEnv.
+- Update API CreateRecord: add request parameters HttpPorts.
+- Update API CreateRecord: add request parameters HttpsPorts.
+- Update API CreateRoutineWithAssetsCodeVersion: add request parameters DeployEnv.
+- Update API GenerateTraceDiagnose: add request parameters Source.
+- Update API GetRecord: add response parameters Body.RecordModel.CustomPort.
+- Update API GetRecord: add response parameters Body.RecordModel.HttpPorts.
+- Update API GetRecord: add response parameters Body.RecordModel.HttpsPorts.
+- Update API ListRecords: add request parameters CustomPort.
+- Update API ListRecords: add response parameters Body.Records.$.CustomPort.
+- Update API ListRecords: add response parameters Body.Records.$.HttpPorts.
+- Update API ListRecords: add response parameters Body.Records.$.HttpsPorts.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.DeployEnv.
+- Update API ListRoutineCodeVersions: add response parameters Body.CodeVersions.$.HasEnvVars.
+- Update API ListUserRatePlanInstances: add response parameters Body.InstanceInfo.$.RenewalDuration.
+- Update API ListUserRatePlanInstances: add response parameters Body.InstanceInfo.$.RenewalStatus.
+- Update API UpdateRecord: add request parameters HttpPorts.
+- Update API UpdateRecord: add request parameters HttpsPorts.
+
+
+2026-05-22 Version: 3.2.2
+- Generated python 2024-09-10 for ESA.
+
+2026-05-22 Version: 3.2.1
+- Generated python 2024-09-10 for ESA.
+
+2026-05-21 Version: 3.2.0
+- Support API ListPostpaidRatePlanInstances.
+
+
 2026-05-20 Version: 3.1.0
 - Support API DescribeTraceDiagnoseReport.
 - Support API GenerateTraceDiagnose.

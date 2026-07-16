@@ -14,15 +14,25 @@ class GetHotspotAnalysisRequest(DaraModel):
         pid: int = None,
         table: str = None,
     ):
+        # The application type.
+        # 
         # This parameter is required.
         self.app_type = app_type
+        # The end time.
+        # 
         # This parameter is required.
         self.beg_end = beg_end
+        # The start time.
+        # 
         # This parameter is required.
         self.beg_start = beg_start
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance = instance
+        # The process ID (PID).
         self.pid = pid
+        # The name of the table to query.
         self.table = table
 
     def validate(self):

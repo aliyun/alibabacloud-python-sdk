@@ -16,18 +16,19 @@ class DescribeEventDisposeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -84,18 +85,21 @@ class DescribeEventDisposeResponseBodyData(DaraModel):
         remark: str = None,
         status: int = None,
     ):
-        # An array consisting of JSON objects that are configured for event handling.
+        # The JSON object of the event handling configuration.
         self.event_dispose = event_dispose
-        # The JSON object that is configured for an alert recipient.
+        # The JSON object of the alert recipient configuration.
         self.receiver_info = receiver_info
-        # The description of the event.
+        # The remarks on the event.
         self.remark = remark
         # The status of the event. Valid values:
         # 
-        # *   0: not handled
-        # *   1: handing
-        # *   5: handling failed
-        # *   10: handled
+        # - 0: unhandled
+        # 
+        # - 1: handling
+        # 
+        # - 5: failed
+        # 
+        # - 10: handled
         self.status = status
 
     def validate(self):
@@ -150,27 +154,29 @@ class DescribeEventDisposeResponseBodyDataReceiverInfo(DaraModel):
         receiver: str = None,
         status: int = None,
     ):
-        # The channel of the contact information. Valid values:
+        # The channel to send the notification. Valid values:
         # 
-        # *   message
-        # *   mail
+        # - message: text message
+        # 
+        # - mail: email
         self.channel = channel
-        # The creation time.
+        # The time when the record was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the record was last modified.
         self.gmt_modified = gmt_modified
-        # The ID of the recipient who receives the event handling result.
+        # The record ID of the recipient for the event handling result.
         self.id = id
-        # The UUID of the event.
+        # The globally unique UUID of the event.
         self.incident_uuid = incident_uuid
-        # The message title.
+        # The title of the message.
         self.message_title = message_title
         # The contact information of the recipient.
         self.receiver = receiver
-        # Indicates whether the message is sent. Valid values:
+        # The sending status of the notification. Valid values:
         # 
-        # *   0: not sent
-        # *   1: sent
+        # - 0: not sent
+        # 
+        # - 1: sent
         self.status = status
 
     def validate(self):

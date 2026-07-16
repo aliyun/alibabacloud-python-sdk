@@ -14,31 +14,37 @@ class UpdateSwimmingLaneEnableAttributeResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The interface status or POP error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: Redirection.
-        # *   **4xx**: Request error.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success
+        # 
+        # - **3xx**: Redirection
+        # 
+        # - **4xx**: Client error
+        # 
+        # - **5xx**: Server error
         self.code = code
-        # Error code. Valid values:
+        # The error code.
         # 
-        # *   If the request is successful, no **ErrorCode** fields are returned.
-        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The returned message.
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Whether the data is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The policy was deleted.
-        # *   **false**: The policy failed to be deleted.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID. You can use the trace ID to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):

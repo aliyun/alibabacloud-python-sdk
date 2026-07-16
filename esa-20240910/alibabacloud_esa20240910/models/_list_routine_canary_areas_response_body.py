@@ -12,9 +12,7 @@ class ListRoutineCanaryAreasResponseBody(DaraModel):
         canary_areas: List[str] = None,
         request_id: str = None,
     ):
-        # The regions for canary release.
         self.canary_areas = canary_areas
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

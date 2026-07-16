@@ -12,9 +12,13 @@ class UpdateJobScriptResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The response message.
         self.message = message
+        # The Request ID. Alibaba Cloud generates this unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. `true` indicates success, and `false` indicates failure.
         self.success = success
 
     def validate(self):

@@ -21,7 +21,24 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'emr-serverless-spark.us-west-1.aliyuncs.com',
+            'us-east-1': 'emr-serverless-spark.us-east-1.aliyuncs.com',
+            'na-south-1': 'emr-serverless-spark.na-south-1.aliyuncs.com',
+            'eu-central-1': 'emr-serverless-spark.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'emr-serverless-spark.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'emr-serverless-spark.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'emr-serverless-spark.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'emr-serverless-spark.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'emr-serverless-spark.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'emr-serverless-spark.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'emr-serverless-spark.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'emr-serverless-spark.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'emr-serverless-spark.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'emr-serverless-spark.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'emr-serverless-spark.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('emr-serverless-spark', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -372,6 +389,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.cancel_kyuubi_spark_application_with_options_async(workspace_id, kyuubi_service_id, application_id, request, headers, runtime)
+
+    def cancel_ray_job_with_options(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.CancelRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelRayJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob/{DaraURL.percent_encode(submission_id)}/cancel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelRayJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_ray_job_with_options_async(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.CancelRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelRayJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob/{DaraURL.percent_encode(submission_id)}/cancel',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelRayJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_ray_job(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.CancelRayJobRequest,
+    ) -> main_models.CancelRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.cancel_ray_job_with_options(workspace_id, submission_id, request, headers, runtime)
+
+    async def cancel_ray_job_async(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.CancelRayJobRequest,
+    ) -> main_models.CancelRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.cancel_ray_job_with_options_async(workspace_id, submission_id, request, headers, runtime)
 
     def change_resource_group_with_options(
         self,
@@ -2361,6 +2454,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_aicenter_state_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+    ) -> main_models.GetCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def get_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.GetCacheClusterRequest,
+    ) -> main_models.GetCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
+
     def get_cu_hours_with_options(
         self,
         workspace_id: str,
@@ -3024,6 +3197,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_ray_cluster_with_options_async(workspace_id, cluster_id, headers, runtime)
+
+    def get_ray_job_with_options(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.GetRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob/{DaraURL.percent_encode(submission_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ray_job_with_options_async(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.GetRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob/{DaraURL.percent_encode(submission_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ray_job(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.GetRayJobRequest,
+    ) -> main_models.GetRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ray_job_with_options(workspace_id, submission_id, request, headers, runtime)
+
+    async def get_ray_job_async(
+        self,
+        workspace_id: str,
+        submission_id: str,
+        request: main_models.GetRayJobRequest,
+    ) -> main_models.GetRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ray_job_with_options_async(workspace_id, submission_id, request, headers, runtime)
+
+    def get_ray_log_with_options(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayLog',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/log',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ray_log_with_options_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.path):
+            query['path'] = request.path
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayLog',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/log',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ray_log(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+    ) -> main_models.GetRayLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ray_log_with_options(workspace_id, instance_id, request, headers, runtime)
+
+    async def get_ray_log_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.GetRayLogRequest,
+    ) -> main_models.GetRayLogResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ray_log_with_options_async(workspace_id, instance_id, request, headers, runtime)
 
     def get_run_configuration_with_options(
         self,
@@ -4795,6 +5132,214 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_ray_cluster_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_ray_job_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ListRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayJobResponse:
+        tmp_req.validate()
+        request = main_models.ListRayJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_time):
+            request.submit_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_time, 'submitTime', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.submission_id):
+            query['submissionId'] = request.submission_id
+        if not DaraCore.is_null(request.submit_time_shrink):
+            query['submitTime'] = request.submit_time_shrink
+        if not DaraCore.is_null(request.task_biz_id):
+            query['taskBizId'] = request.task_biz_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ray_job_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ListRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayJobResponse:
+        tmp_req.validate()
+        request = main_models.ListRayJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.submit_time):
+            request.submit_time_shrink = Utils.array_to_string_with_specified_style(tmp_req.submit_time, 'submitTime', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.submission_id):
+            query['submissionId'] = request.submission_id
+        if not DaraCore.is_null(request.submit_time_shrink):
+            query['submitTime'] = request.submit_time_shrink
+        if not DaraCore.is_null(request.task_biz_id):
+            query['taskBizId'] = request.task_biz_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ray_job(
+        self,
+        workspace_id: str,
+        request: main_models.ListRayJobRequest,
+    ) -> main_models.ListRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ray_job_with_options(workspace_id, request, headers, runtime)
+
+    async def list_ray_job_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListRayJobRequest,
+    ) -> main_models.ListRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ray_job_with_options_async(workspace_id, request, headers, runtime)
+
+    def list_ray_logs_with_options(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.delimiter):
+            query['delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.marker):
+            query['marker'] = request.marker
+        if not DaraCore.is_null(request.max_keys):
+            query['maxKeys'] = request.max_keys
+        if not DaraCore.is_null(request.prefix):
+            query['prefix'] = request.prefix
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ray_logs_with_options_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bucket_name):
+            query['bucketName'] = request.bucket_name
+        if not DaraCore.is_null(request.delimiter):
+            query['delimiter'] = request.delimiter
+        if not DaraCore.is_null(request.marker):
+            query['marker'] = request.marker
+        if not DaraCore.is_null(request.max_keys):
+            query['maxKeys'] = request.max_keys
+        if not DaraCore.is_null(request.prefix):
+            query['prefix'] = request.prefix
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayLogs',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/interactive/v1/workspace/{DaraURL.percent_encode(workspace_id)}/ray/{DaraURL.percent_encode(instance_id)}/logs',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ray_logs(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+    ) -> main_models.ListRayLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ray_logs_with_options(workspace_id, instance_id, request, headers, runtime)
+
+    async def list_ray_logs_async(
+        self,
+        workspace_id: str,
+        instance_id: str,
+        request: main_models.ListRayLogsRequest,
+    ) -> main_models.ListRayLogsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ray_logs_with_options_async(workspace_id, instance_id, request, headers, runtime)
+
     def list_release_versions_with_options(
         self,
         request: main_models.ListReleaseVersionsRequest,
@@ -5455,6 +6000,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.refresh_livy_compute_token_with_options_async(workspace_biz_id, livy_compute_id, token_id, request, headers, runtime)
 
+    def start_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/start',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/start',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+    ) -> main_models.StartCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.start_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def start_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StartCacheClusterRequest,
+    ) -> main_models.StartCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.start_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
+
     def start_job_run_with_options(
         self,
         workspace_id: str,
@@ -6037,6 +6662,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.start_session_cluster_with_options_async(workspace_id, request, headers, runtime)
 
+    def stop_cache_cluster_with_options(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCacheClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_cache_cluster_with_options_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopCacheClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopCacheCluster',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cache/{DaraURL.percent_encode(cache_cluster_id)}/stop',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopCacheClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_cache_cluster(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+    ) -> main_models.StopCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_cache_cluster_with_options(cache_cluster_id, request, headers, runtime)
+
+    async def stop_cache_cluster_async(
+        self,
+        cache_cluster_id: str,
+        request: main_models.StopCacheClusterRequest,
+    ) -> main_models.StopCacheClusterResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_cache_cluster_with_options_async(cache_cluster_id, request, headers, runtime)
+
     def stop_kyuubi_service_with_options(
         self,
         workspace_id: str,
@@ -6366,6 +7071,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.stop_session_cluster_with_options_async(workspace_id, request, headers, runtime)
+
+    def submit_ray_job_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.SubmitRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitRayJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.active_deadline_seconds):
+            body['activeDeadlineSeconds'] = request.active_deadline_seconds
+        if not DaraCore.is_null(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.entrypoint):
+            body['entrypoint'] = request.entrypoint
+        if not DaraCore.is_null(request.entrypoint_memory):
+            body['entrypointMemory'] = request.entrypoint_memory
+        if not DaraCore.is_null(request.entrypoint_num_cpus):
+            body['entrypointNumCpus'] = request.entrypoint_num_cpus
+        if not DaraCore.is_null(request.entrypoint_num_gpus):
+            body['entrypointNumGpus'] = request.entrypoint_num_gpus
+        if not DaraCore.is_null(request.entrypoint_resources):
+            body['entrypointResources'] = request.entrypoint_resources
+        if not DaraCore.is_null(request.extra_param):
+            body['extraParam'] = request.extra_param
+        if not DaraCore.is_null(request.head_spec):
+            body['headSpec'] = request.head_spec
+        if not DaraCore.is_null(request.metadata_json):
+            body['metadataJson'] = request.metadata_json
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.network_service_name):
+            body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.runtime_env_json):
+            body['runtimeEnvJson'] = request.runtime_env_json
+        if not DaraCore.is_null(request.shutdown_after_job_finishes):
+            body['shutdownAfterJobFinishes'] = request.shutdown_after_job_finishes
+        if not DaraCore.is_null(request.submission_mode):
+            body['submissionMode'] = request.submission_mode
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.ttl_seconds_after_finished):
+            body['ttlSecondsAfterFinished'] = request.ttl_seconds_after_finished
+        if not DaraCore.is_null(request.volume_ids):
+            body['volumeIds'] = request.volume_ids
+        if not DaraCore.is_null(request.worker_spec):
+            body['workerSpec'] = request.worker_spec
+        if not DaraCore.is_null(request.working_dir):
+            body['workingDir'] = request.working_dir
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitRayJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_ray_job_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.SubmitRayJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitRayJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.active_deadline_seconds):
+            body['activeDeadlineSeconds'] = request.active_deadline_seconds
+        if not DaraCore.is_null(request.display_release_version):
+            body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.entrypoint):
+            body['entrypoint'] = request.entrypoint
+        if not DaraCore.is_null(request.entrypoint_memory):
+            body['entrypointMemory'] = request.entrypoint_memory
+        if not DaraCore.is_null(request.entrypoint_num_cpus):
+            body['entrypointNumCpus'] = request.entrypoint_num_cpus
+        if not DaraCore.is_null(request.entrypoint_num_gpus):
+            body['entrypointNumGpus'] = request.entrypoint_num_gpus
+        if not DaraCore.is_null(request.entrypoint_resources):
+            body['entrypointResources'] = request.entrypoint_resources
+        if not DaraCore.is_null(request.extra_param):
+            body['extraParam'] = request.extra_param
+        if not DaraCore.is_null(request.head_spec):
+            body['headSpec'] = request.head_spec
+        if not DaraCore.is_null(request.metadata_json):
+            body['metadataJson'] = request.metadata_json
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.network_service_name):
+            body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.runtime_env_json):
+            body['runtimeEnvJson'] = request.runtime_env_json
+        if not DaraCore.is_null(request.shutdown_after_job_finishes):
+            body['shutdownAfterJobFinishes'] = request.shutdown_after_job_finishes
+        if not DaraCore.is_null(request.submission_mode):
+            body['submissionMode'] = request.submission_mode
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
+        if not DaraCore.is_null(request.ttl_seconds_after_finished):
+            body['ttlSecondsAfterFinished'] = request.ttl_seconds_after_finished
+        if not DaraCore.is_null(request.volume_ids):
+            body['volumeIds'] = request.volume_ids
+        if not DaraCore.is_null(request.worker_spec):
+            body['workerSpec'] = request.worker_spec
+        if not DaraCore.is_null(request.working_dir):
+            body['workingDir'] = request.working_dir
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitRayJob',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/rayJob',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitRayJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_ray_job(
+        self,
+        workspace_id: str,
+        request: main_models.SubmitRayJobRequest,
+    ) -> main_models.SubmitRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.submit_ray_job_with_options(workspace_id, request, headers, runtime)
+
+    async def submit_ray_job_async(
+        self,
+        workspace_id: str,
+        request: main_models.SubmitRayJobRequest,
+    ) -> main_models.SubmitRayJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.submit_ray_job_with_options_async(workspace_id, request, headers, runtime)
 
     def terminate_sql_statement_with_options(
         self,
@@ -7136,6 +7997,8 @@ class Client(OpenApiClient):
             body['gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.ip_white_list):
+            body['ipWhiteList'] = request.ip_white_list
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.subscription):
@@ -7182,6 +8045,8 @@ class Client(OpenApiClient):
             body['gpu'] = request.gpu
         if not DaraCore.is_null(request.gpu_spec):
             body['gpuSpec'] = request.gpu_spec
+        if not DaraCore.is_null(request.ip_white_list):
+            body['ipWhiteList'] = request.ip_white_list
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.subscription):

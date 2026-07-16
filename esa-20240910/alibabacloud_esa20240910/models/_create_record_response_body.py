@@ -10,7 +10,7 @@ class CreateRecordResponseBody(DaraModel):
         record_id: int = None,
         request_id: str = None,
     ):
-        # The record ID.
+        # The ID of the created record.
         self.record_id = record_id
         # The request ID.
         self.request_id = request_id

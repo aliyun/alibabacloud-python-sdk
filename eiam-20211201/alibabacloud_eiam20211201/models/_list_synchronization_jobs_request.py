@@ -23,30 +23,49 @@ class ListSynchronizationJobsRequest(DaraModel):
         target_ids: List[str] = None,
         target_type: str = None,
     ):
-        # 同步方向[ingress,egress]
+        # Synchronization job direction. Valid values:
+        # 
+        # - ingress: inbound
+        # 
+        # - egress: outbound
         self.direction = direction
-        # 同步结束时间
+        # Synchronization end time in Unix timestamp format, in milliseconds.
         self.end_time = end_time
+        # Filter parameters
         self.filters = filters
-        # IDaaS EIAM实例的ID。
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # Number of rows per page for paginated queries. Maximum value: 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # Token for querying the next page. This parameter is not returned when there are no more pages.
         self.next_token = next_token
-        # 当前查询的列表页码，默认为1。
+        # Page number, starting from 1.
         self.page_number = page_number
-        # 当前查询的列表页码，默认为20。
+        # Page size. Maximum value: 100.
         self.page_size = page_size
-        # 同步开始时间
+        # Synchronization start time in Unix timestamp format, in milliseconds.
         self.start_time = start_time
-        # 同步状态[pending,running,suspending,failed,partial_success,success]
+        # Synchronization job status. Valid values:
+        # 
+        # - pending: initial state
+        # 
+        # - running: running
+        # 
+        # - failed: failed
+        # 
+        # - partial_success: partially succeeded
+        # 
+        # - success: succeeded
         self.status = status
-        # 同步目标ID
+        # List of synchronization target IDs. [idp_111XXXX,idp_222XXXX]
         self.target_ids = target_ids
-        # 同步目标类型[identity_provider,organizational_unit,application,user]
+        # Synchronization target type. Valid values:
+        # 
+        # - identity_provider: identity provider
+        # 
+        # - application: application
         self.target_type = target_type
 
     def validate(self):
@@ -149,7 +168,9 @@ class ListSynchronizationJobsRequestFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # Dynamic parameter name
         self.key = key
+        # Dynamic parameter values
         self.values = values
 
     def validate(self):

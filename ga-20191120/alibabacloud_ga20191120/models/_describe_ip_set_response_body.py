@@ -35,37 +35,45 @@ class DescribeIpSetResponseBody(DaraModel):
         self.ip_set_id = ip_set_id
         # The IP version. Valid values:
         # 
-        # *   **IPv4**
-        # *   **IPv6**
-        # *   **DUAL_STACK**
+        # - **IPv4**
+        # 
+        # - **IPv6**
+        # 
+        # - **DUAL_STACK**
         self.ip_version = ip_version
         # The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP) lines. This is the default value.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+        # - **BGP**: BGP (Multi-ISP) lines. This is the default value.
+        # 
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro lines.
         self.isp_type = isp_type
         # The ID of the request.
         self.request_id = request_id
         # The ID of the service that manages the instance.
         # 
-        # >  This parameter is returned only if the value of **ServiceManaged** is **true**.
+        # > This parameter is returned only if the value of **ServiceManaged** is **true**.
         self.service_id = service_id
         # Indicates whether the GA instance is managed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.service_managed = service_managed
         # The actions that users can perform on the managed instance.
         # 
-        # > *   This parameter is returned only if the value of **ServiceManaged** is **true**.
-        # >*   Users can perform only specific actions on a managed instance.
+        # > - This parameter is returned only if the value of **ServiceManaged** is **true**.
+        # >
+        # > - Users can perform only specific actions on a managed instance.
         self.service_managed_infos = service_managed_infos
         # The status of the acceleration region. Valid values:
         # 
-        # *   **init**: The acceleration region is being initialized.
-        # *   **active**: The acceleration region is in the running state.
-        # *   **updating**: The acceleration region is being configured.
-        # *   **deleting**: The GA instance is being deleted.
+        # - **init**: The acceleration region is being initialized.
+        # 
+        # - **active**: The acceleration region is in the running state.
+        # 
+        # - **updating**: The acceleration region is being configured.
+        # 
+        # - **deleting**: The GA instance is being deleted.
         self.state = state
 
     def validate(self):
@@ -171,29 +179,41 @@ class DescribeIpSetResponseBodyServiceManagedInfos(DaraModel):
     ):
         # The name of the action on the managed instance. Valid values:
         # 
-        # *   **Create**
-        # *   **Update**
-        # *   **Delete**
-        # *   **Associate**
-        # *   **UserUnmanaged**
-        # *   **CreateChild**
+        # - **Create**
+        # 
+        # - **Update**
+        # 
+        # - **Delete**
+        # 
+        # - **Associate**
+        # 
+        # - **UserUnmanaged**
+        # 
+        # - **CreateChild**
         self.action = action
         # The type of the child resource. Valid values:
         # 
-        # *   **Listener**: listener.
-        # *   **IpSet**: acceleration region.
-        # *   **EndpointGroup**: endpoint group.
-        # *   **ForwardingRule**: forwarding rule.
-        # *   **Endpoint**: endpoint.
-        # *   **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
-        # *   **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
+        # - **Listener**: listener.
         # 
-        # >  This parameter takes effect only if **Action** is set to **CreateChild**.
+        # - **IpSet**: acceleration region.
+        # 
+        # - **EndpointGroup**: endpoint group.
+        # 
+        # - **ForwardingRule**: forwarding rule.
+        # 
+        # - **Endpoint**: endpoint.
+        # 
+        # - **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
+        # 
+        # - **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
+        # 
+        # > This parameter takes effect only if **Action** is set to **CreateChild**.
         self.child_type = child_type
         # Indicates whether the specified actions are managed.
         # 
-        # *   **true**: The specified actions are managed, and users cannot perform the actions on the managed instance.
-        # *   **false**: The specified actions are not managed, and users can perform the actions on the managed instance.
+        # - **true**: The specified actions are managed, and users cannot perform the actions on the managed instance.
+        # 
+        # - **false**: The specified actions are not managed, and users can perform the actions on the managed instance.
         self.is_managed = is_managed
 
     def validate(self):

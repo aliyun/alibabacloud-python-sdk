@@ -13,10 +13,11 @@ class ReleaseInstanceRequest(DaraModel):
     ):
         # Specifies whether to immediately release the physical resources of the instance. Valid values:
         # 
-        # *   **true**: The physical resources of the instance are immediately released.
-        # *   **false**: The physical resources of the instance are retained for a period of time before they are released.
+        # - **true**: Immediately releases the physical resources of the instance.
+        # 
+        # - **false**: The physical resources of the instance are retained for a period of time before they are released.
         self.force_delete_instance = force_delete_instance
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

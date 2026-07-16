@@ -15,11 +15,15 @@ class DescribeSpotPriceHistoryResponseBody(DaraModel):
         request_id: str = None,
         spot_prices: main_models.DescribeSpotPriceHistoryResponseBodySpotPrices = None,
     ):
-        # The instance type of the spot instance.
+        # The currency unit of the price.
+        # 
+        # China site: CNY.
+        # 
+        # International site: USD.
         self.currency = currency
-        # The network type of the spot instance.
+        # The start row of the next page. Set the `Offset` parameter to this value to query the next page of data.
         self.next_offset = next_offset
-        # The instance type of the spot instance.
+        # The request ID.
         self.request_id = request_id
         self.spot_prices = spot_prices
 

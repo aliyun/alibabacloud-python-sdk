@@ -16,11 +16,15 @@ class ListNetworkZonesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of network zones.
         self.network_zones = network_zones
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The pagination token returned by this call.
         self.next_token = next_token
+        # The pagination token for the previous page.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -87,19 +91,21 @@ class ListNetworkZonesResponseBodyNetworkZones(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # IDaaS EIAM 网络区域描述
+        # The network zone description.
         self.description = description
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
-        # IDaaS EIAM 网络区域Id
+        # The network zone ID.
         self.network_zone_id = network_zone_id
-        # IDaaS EIAM 网络区域名称
+        # The network zone name.
         self.network_zone_name = network_zone_name
-        # IDaaS EIAM 网络区域类型
+        # The network zone type.
         self.network_zone_type = network_zone_type
-        # IDaaS EIAM 专有网络VpcId
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

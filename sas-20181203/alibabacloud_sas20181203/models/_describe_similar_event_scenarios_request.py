@@ -13,12 +13,11 @@ class DescribeSimilarEventScenariosRequest(DaraModel):
     ):
         self.resource_owner_id = resource_owner_id
         # The ID of the alert event.
-        # 
-        # >  You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to query the ID of the alert event.
+        # >You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.security_event_id = security_event_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

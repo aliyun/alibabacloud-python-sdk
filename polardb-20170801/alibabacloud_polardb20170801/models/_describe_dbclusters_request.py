@@ -32,61 +32,59 @@ class DescribeDBClustersRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeDBClustersRequestTag] = None,
     ):
-        # The endpoint of the cluster.
+        # The database endpoint.
         self.connection_string = connection_string
-        # The description of the cluster. Fuzzy match is supported.
+        # The cluster description. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
-        # The ID of the cluster. Separate multiple cluster IDs with commas (,).
+        # The cluster ID. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
-        # The state of the cluster that you want to query. For information about valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+        # The cluster status. For valid values, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
-        # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # The node ID. You can specify multiple node IDs, separated by commas (,).
         self.dbnode_ids = dbnode_ids
-        # The database engine that the cluster runs. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
+        # The database type. Valid values:
+        # * **MySQL**
+        # * **PostgreSQL**
+        # * **Oracle**
         self.dbtype = dbtype
-        # The database engine version of the cluster.
+        # The database engine version.
         self.dbversion = dbversion
-        # The query mode of the list. The value Simple indicates that the simple mode is used. In this mode, only the basic metadata information of the cluster is returned.
-        # 
-        # > If you do not specify this parameter, the detailed mode is used by default. Detailed information about the cluster is returned.
+        # The query mode for the list. Set the value to Simple to use the simple mode, which returns only basic metadata of clusters.
+        # > If you do not specify this parameter, the detailed mode is used by default, which returns detailed information about clusters.
         self.describe_type = describe_type
         # Specifies whether the cluster has expired. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.expired = expired
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30**, **50**, and **100**.
-        # 
+        #                               
         # Default value: **30**.
         self.page_size = page_size
-        # The billing method. Valid values:
+        # The billing method. Valid values: 
         # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # Filters clusters created in the last N days. Valid values: 0 to 15.
+        # Filters clusters created within the last N days. Valid values: 0 to 15.
         self.recent_creation_interval = recent_creation_interval
-        # Filters clusters that expire after N days. Valid values: 0 to 15.
+        # Filters clusters that expire within the next N days. Valid values: 0 to 15.
         self.recent_expiration_interval = recent_expiration_interval
-        # The region ID of the cluster.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags of the cluster.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -243,11 +241,11 @@ class DescribeDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can use tags to filter clusters. You can specify up to 20 tags. N specifies the serial number of each tag. The values that you specify for N must be unique and consecutive integers that start from 1. The value of Tag.N.Key is Tag.N.Value.
+        # The tag key. You can use tags to filter the cluster list. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer that starts from 1. The Tag.n.Key parameter is paired with the Tag.n.Value parameter.
         # 
         # > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.key = key
-        # The value of the tag.
+        # The tag value that corresponds to the tag key.
         # 
         # > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
         self.value = value

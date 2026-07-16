@@ -11,9 +11,13 @@ class DescribeDocRequest(DaraModel):
         knowledge_id: int = None,
         show_detail: bool = None,
     ):
+        # The key that identifies the workspace. If this parameter is omitted, the default workspace is used. You can find this key on the workspace management page of your root account.
         self.agent_key = agent_key
+        # The knowledge ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
+        # Specifies whether to return detailed information for paragraphs. true: Detailed information is returned. false: Detailed information is not returned (default).
         self.show_detail = show_detail
 
     def validate(self):

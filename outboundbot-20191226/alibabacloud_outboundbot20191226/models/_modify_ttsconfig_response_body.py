@@ -15,11 +15,17 @@ class ModifyTTSConfigResponseBody(DaraModel):
         success: bool = None,
         ttsconfig: main_models.ModifyTTSConfigResponseBodyTTSConfig = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # TTS configuration
         self.ttsconfig = ttsconfig
 
     def validate(self):
@@ -85,18 +91,23 @@ class ModifyTTSConfigResponseBodyTTSConfig(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # Instance ID
         self.instance_id = instance_id
-        # 语调
-        # [-500,500]之间整数。默认值为0。
+        # Pitch. An integer between -500 and 500. Default is 0.
         # 
-        # 大于0表示升高音高。
+        # A value greater than 0 raises pitch.
         # 
-        # 小于0表示降低音高。
+        # A value less than 0 lowers pitch.
         self.pitch_rate = pitch_rate
+        # Scenario ID
         self.script_id = script_id
+        # Speech rate
         self.speech_rate = speech_rate
+        # Configuration ID
         self.ttsconfig_id = ttsconfig_id
+        # Voice model
         self.voice = voice
+        # Volume
         self.volume = volume
 
     def validate(self):

@@ -14,11 +14,17 @@ class GetDeploymentsByIpRequest(DaraModel):
         src_ip: str = None,
         src_port: str = None,
     ):
+        # The destination IP address. This parameter is used to match the destination sink address of a job.
         self.dst_ip = dst_ip
+        # The destination port. Use this parameter with dstIp.
         self.dst_port = dst_port
+        # Specifies whether to exclude the job summary from the response. If you exclude the summary, only deployment information is returned. This improves performance.
         self.ignore_job_summary = ignore_job_summary
+        # Specifies whether to exclude resource configuration information. This reduces the size of the returned data.
         self.ignore_resource_setting = ignore_resource_setting
+        # The source IP address. This parameter is used to match the input source address of a job.
         self.src_ip = src_ip
+        # The source port. Use this parameter with srcIp for an exact match of the connection.
         self.src_port = src_port
 
     def validate(self):

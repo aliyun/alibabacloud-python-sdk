@@ -13,8 +13,11 @@ class DescribeUserRequest(DaraModel):
         end_user_id: str = None,
         require_extra_attributes: List[str] = None,
     ):
+        # Business type.
         self.business_channel = business_channel
+        # Username.
         self.end_user_id = end_user_id
+        # List of attributes to query.
         self.require_extra_attributes = require_extra_attributes
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateModelServiceResponseBody(DaraModel):
     ):
         # The model service ID.
         self.model_service_id = model_service_id
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

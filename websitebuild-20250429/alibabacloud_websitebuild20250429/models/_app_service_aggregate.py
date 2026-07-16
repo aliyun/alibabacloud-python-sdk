@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
@@ -14,8 +16,10 @@ class AppServiceAggregate(DaraModel):
         esp_biz_id: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        group: main_models.AppServiceGroup = None,
         instance_biz_id: str = None,
         name: str = None,
+        node_list: List[main_models.TreeNode] = None,
         operation_address: main_models.AppOperationAddress = None,
         profile: main_models.AppServiceProfile = None,
         service_type: str = None,
@@ -31,8 +35,10 @@ class AppServiceAggregate(DaraModel):
         self.esp_biz_id = esp_biz_id
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.group = group
         self.instance_biz_id = instance_biz_id
         self.name = name
+        self.node_list = node_list
         self.operation_address = operation_address
         self.profile = profile
         self.service_type = service_type
@@ -43,6 +49,12 @@ class AppServiceAggregate(DaraModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.group:
+            self.group.validate()
+        if self.node_list:
+            for v1 in self.node_list:
+                 if v1:
+                    v1.validate()
         if self.operation_address:
             self.operation_address.validate()
         if self.profile:
@@ -71,11 +83,19 @@ class AppServiceAggregate(DaraModel):
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
 
+        if self.group is not None:
+            result['Group'] = self.group.to_map()
+
         if self.instance_biz_id is not None:
             result['InstanceBizId'] = self.instance_biz_id
 
         if self.name is not None:
             result['Name'] = self.name
+
+        result['NodeList'] = []
+        if self.node_list is not None:
+            for k1 in self.node_list:
+                result['NodeList'].append(k1.to_map() if k1 else None)
 
         if self.operation_address is not None:
             result['OperationAddress'] = self.operation_address.to_map()
@@ -123,11 +143,21 @@ class AppServiceAggregate(DaraModel):
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
 
+        if m.get('Group') is not None:
+            temp_model = main_models.AppServiceGroup()
+            self.group = temp_model.from_map(m.get('Group'))
+
         if m.get('InstanceBizId') is not None:
             self.instance_biz_id = m.get('InstanceBizId')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        self.node_list = []
+        if m.get('NodeList') is not None:
+            for k1 in m.get('NodeList'):
+                temp_model = main_models.TreeNode()
+                self.node_list.append(temp_model.from_map(k1))
 
         if m.get('OperationAddress') is not None:
             temp_model = main_models.AppOperationAddress()

@@ -14,11 +14,11 @@ class ListDictsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListDictsResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The response headers.
         self.headers = headers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The request result.
         self.result = result
 
     def validate(self):
@@ -73,18 +73,19 @@ class ListDictsResponseBodyResult(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
-        # The link that is used to download the dictionary over the Internet. The link is valid for 90s.
+        # The publicly accessible download URL. The URL is valid for 90 seconds.
         self.download_url = download_url
-        # The size of the dictionary file. Unit: byte.
+        # The size of the dictionary file, in bytes.
         self.file_size = file_size
-        # The name of the dictionary file.
+        # The file name of the dictionary file.
         self.name = name
-        # The source type.
+        # A fixed value.
         self.source_type = source_type
         # The type of the IK dictionary. Valid values:
         # 
-        # *   MAIN: main dictionary
-        # *   STOP: stopword list
+        # - MAIN: main tokenization dictionary.
+        # 
+        # - STOP: stopword dictionary.
         self.type = type
 
     def validate(self):
@@ -136,7 +137,7 @@ class ListDictsResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The total number of records.
         self.x_total_count = x_total_count
 
     def validate(self):

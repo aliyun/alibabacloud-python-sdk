@@ -17,12 +17,23 @@ class ListAirflowVersionsResponseBody(DaraModel):
         root: List[str] = None,
         success: bool = None,
     ):
+        # The reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code for a failed request.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The version list.
         self.root = root
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

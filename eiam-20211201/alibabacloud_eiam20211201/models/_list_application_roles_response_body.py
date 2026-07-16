@@ -16,11 +16,15 @@ class ListApplicationRolesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of application roles.
         self.application_roles = application_roles
+        # The number of entries returned on each page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token used to start the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,13 +89,17 @@ class ListApplicationRolesResponseBodyApplicationRoles(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
-        # 应用角色的唯一标识
+        # The application role ID.
         self.application_role_id = application_role_id
-        # 应用角色名称
+        # The name of the application role.
         self.application_role_name = application_role_name
+        # The value of the application role.
         self.application_role_value = application_role_value
+        # The description of the application role.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

@@ -12,15 +12,15 @@ class ListActionTrackEventTypesRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries per page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # You can use this parameter to specify the query token.
         self.next_token = next_token
-        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        # The token that is used to retrieve the previous page of results.
         self.previous_token = previous_token
 
     def validate(self):

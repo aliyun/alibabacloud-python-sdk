@@ -28,30 +28,47 @@ class ListIpamPoolsRequest(DaraModel):
         source_ipam_pool_id: str = None,
         tags: List[main_models.ListIpamPoolsRequestTags] = None,
     ):
-        self.ip_version = ip_version
-        # The IDs of IPAM pools. Valid values of N: 1 to 100. A maximum of 100 IPAM pools can be queried at a time.
-        self.ipam_pool_ids = ipam_pool_ids
-        # The name of the IPAM pool. You can enter at most 20 names.
+        # The IP version. Valid values:
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # - **IPv4**
+        # 
+        # - **IPv6**
+        self.ip_version = ip_version
+        # A list of IPAM pool IDs. You can specify up to 100 IDs.
+        self.ipam_pool_ids = ipam_pool_ids
+        # The name of the IPAM pool.
+        # 
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_pool_name = ipam_pool_name
         # The ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
-        self.ipv_6isp = ipv_6isp
-        # Whether it is a shared pool.
-        self.is_shared = is_shared
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
-        self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The line type of the IPv6 CIDR block. This parameter is valid only for public IPv6 address pools. Valid values:
         # 
-        # *   If NextToken is empty, no next page exists.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - **BGP** (default): Alibaba Cloud BGP IPv6.
+        # 
+        # - **ChinaMobile**
+        # 
+        # - **ChinaUnicom**
+        # 
+        # - **ChinaTelecom**
+        # 
+        # > If your account is whitelisted for single-line bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+        self.ipv_6isp = ipv_6isp
+        # Specifies whether the address pool is a shared pool.
+        self.is_shared = is_shared
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+        self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Valid values:
+        # 
+        # - You do not need to specify this parameter for the first call.
+        # 
+        # - Set this parameter to the value of NextToken that was returned in the previous call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The effective region of the IPAM pool.
+        # The region where the IPAM pool is available.
         self.pool_region_id = pool_region_id
-        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the managed region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -61,7 +78,7 @@ class ListIpamPoolsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the source IPAM pool.
         self.source_ipam_pool_id = source_ipam_pool_id
-        # The tag information.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -194,13 +211,13 @@ class ListIpamPoolsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The key can be up to 64 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). The key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

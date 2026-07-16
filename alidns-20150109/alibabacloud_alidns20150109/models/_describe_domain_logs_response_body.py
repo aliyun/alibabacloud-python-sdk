@@ -17,13 +17,13 @@ class DescribeDomainLogsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domain_logs = domain_logs
-        # The page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of logs returned on the current page.
         self.page_size = page_size
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of logs.
         self.total_count = total_count
 
     def validate(self):

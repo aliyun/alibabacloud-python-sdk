@@ -20,49 +20,46 @@ class GetBasicAccelerateIpEndpointRelationResponseBody(DaraModel):
         request_id: str = None,
         state: str = None,
     ):
-        # The ID of the accelerated IP address.
+        # The accelerated IP address instance ID of the basic Global Accelerator (GA) instance.
         self.accelerate_ip_id = accelerate_ip_id
-        # The ID of the basic GA instance.
+        # The instance ID of the basic Global Accelerator (GA) instance.
         self.accelerator_id = accelerator_id
         # The address of the endpoint.
         self.endpoint_address = endpoint_address
-        # The ID of the endpoint.
+        # The endpoint ID of the basic Global Accelerator (GA) instance.
         self.endpoint_id = endpoint_id
-        # The name of the endpoint.
+        # The name of the endpoint of the basic Global Accelerator (GA) instance.
         self.endpoint_name = endpoint_name
         # The secondary address of the endpoint.
         # 
-        # This parameter is returned if the endpoint type is **ECS**, **ENI**, or **NLB**.
-        # 
-        # *   If the endpoint type is **ECS**, **EndpointSubAddress** returns the primary or secondary private IP address of the primary ENI.
-        # *   If the endpoint type is **ENI**, **EndpointSubAddress** returns the primary or secondary private IP address of the secondary ENI.
-        # *   If the endpoint type is **NLB**, **EndpointSubAddress** returns the primary private IP address of the NLB backend server.
+        # This parameter is returned when the endpoint type attached to the accelerated IP address is **ECS**, **ENI**, or **NLB**.
+        # - If the endpoint type is **ECS**, EndpointSubAddress is the secondary private IP address or the primary private IP address of the primary network interface controller (NIC).
+        # - If the endpoint type is **ENI**, EndpointSubAddress is the secondary private IP address or the primary private IP address of the secondary elastic network interface (ENI).
+        # - If the endpoint type is **NLB**, EndpointSubAddress is the primary private IP address of the NLB backend server.
         self.endpoint_sub_address = endpoint_sub_address
-        # The type of the secondary address of the endpoint.
+        # The type of the secondary address of the endpoint. Valid values:
+        # - **primary**: The secondary address type is the primary private IP address.
+        # - **secondary**: The secondary address type is the secondary private IP address.
         # 
-        # *   **primary**: a primary private IP address.
-        # *   **secondary**: a secondary private IP address.
-        # 
-        # This parameter is returned if the endpoint type is **ECS**, **ENI**, or **NLB**. If the endpoint type is set to **NLB**, **primary** is returned.
+        # This parameter is returned when the endpoint type bound to the accelerated IP address is **ECS**, **ENI**, or **NLB**. If the endpoint type is **NLB**, only **primary** is returned.
         self.endpoint_sub_address_type = endpoint_sub_address_type
-        # The type of endpoint. Valid values:
-        # 
-        # *   **ENI**: elastic network interface (ENI).
-        # *   **SLB**: Classic Load Balancer (CLB) instance.
-        # *   **ECS**: Elastic Compute Service (ECS) instance.
-        # *   **NLB**: Network Load Balancer (NLB) instance.
+        # The endpoint type. Valid values:
+        # - **ENI**: an Alibaba Cloud elastic network interface (ENI).
+        # - **SLB**: an Alibaba Cloud Classic Load Balancer (CLB) instance.
+        # - **ECS**: an Alibaba Cloud ECS instance.
+        # - **NLB**: an Alibaba Cloud Network Load Balancer (NLB) instance.
         self.endpoint_type = endpoint_type
-        # The ID of the zone where the endpoint is created.
+        # The zone ID of the endpoint.
         # 
-        # This parameter is returned only when the endpoint type is **NLB**.
+        # Currently, this parameter is returned only when the endpoint type bound to the accelerated IP address is **NLB**.
         self.endpoint_zone_id = endpoint_zone_id
-        # The accelerated IP address of the basic GA instance.
+        # The accelerated IP address of the basic Global Accelerator (GA) instance.
         self.ip_address = ip_address
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The association status between the accelerated IP address and endpoint.
+        # The status of the attachment between the accelerated IP address and the endpoint of the basic Global Accelerator (GA) instance.
         # 
-        # A value of **active** indicates that the accelerated IP address is associated with the endpoint.
+        # The value **active** indicates that the accelerated IP address is attached to the endpoint.
         self.state = state
 
     def validate(self):

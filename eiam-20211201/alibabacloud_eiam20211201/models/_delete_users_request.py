@@ -12,11 +12,11 @@ class DeleteUsersRequest(DaraModel):
         instance_id: str = None,
         user_ids: List[str] = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 账号ID列表
+        # A list of account IDs.
         # 
         # This parameter is required.
         self.user_ids = user_ids

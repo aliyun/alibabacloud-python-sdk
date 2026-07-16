@@ -12,9 +12,17 @@ class DescribeLocalAvailableRecoveryTimeResponseBody(DaraModel):
         recovery_end_time: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The start of the time range available for recovery.
+        # 
+        # > This is calculated based on level-1 backups and does not include level-2 backups.
         self.recovery_begin_time = recovery_begin_time
+        # The end of the time range available for recovery.
+        # 
+        # > This is calculated based on level-1 backups and does not include level-2 backups.
         self.recovery_end_time = recovery_end_time
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

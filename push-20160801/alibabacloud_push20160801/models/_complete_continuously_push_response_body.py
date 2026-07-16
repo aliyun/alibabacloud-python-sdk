@@ -10,7 +10,9 @@ class CompleteContinuouslyPushResponseBody(DaraModel):
         message_id: str = None,
         request_id: str = None,
     ):
+        # The message ID for the push request.
         self.message_id = message_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

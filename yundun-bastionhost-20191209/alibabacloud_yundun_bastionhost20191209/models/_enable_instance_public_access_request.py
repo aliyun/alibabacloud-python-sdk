@@ -10,13 +10,13 @@ class EnableInstancePublicAccessRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host.
+        # The ID of the Bastionhost instance.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the ID of the Bastionhost instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         self.region_id = region_id
 
     def validate(self):

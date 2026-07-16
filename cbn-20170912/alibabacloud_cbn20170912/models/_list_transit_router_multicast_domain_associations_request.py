@@ -24,14 +24,15 @@ class ListTransitRouterMulticastDomainAssociationsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # Generate a token from your client to ensure that it is unique among different requests. The ClientToken parameter can contain only ASCII characters.
         self.client_token = client_token
         # The number of entries to return on each page. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token that determines the start point of the next query. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # - If this is your first query and no next query is to be sent, ignore this parameter.
+        # 
+        # - If a next query is to be sent, set the value to the NextToken value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -41,13 +42,13 @@ class ListTransitRouterMulticastDomainAssociationsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of resource associated with the multicast domain.
         # 
-        # Valid value: **VPC**.
+        # The value is **VPC**.
         self.resource_type = resource_type
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the multicast domain.
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
-        # The IDs of vSwitches.
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

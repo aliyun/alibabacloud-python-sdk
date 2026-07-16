@@ -14,17 +14,17 @@ class ImportCertificateAdvanceRequest(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
-        # The certificate file to upload. Upload method: Upload the file by creating an InputStream.
+        # The certificate file to upload. Construct an InputStream to upload the file.
         # 
         # This parameter is required.
         self.certificate_file_object = certificate_file_object
-        # The description of the task.
+        # The description of the file.
         self.description = description
-        # The certificate file name. In a project workspace, certificate file names must be unique.
+        # The name of the certificate file. The name must be unique within a project.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the workspace to which the certificate file belongs.
+        # The ID of the project to which the certificate file belongs.
         # 
         # This parameter is required.
         self.project_id = project_id

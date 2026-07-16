@@ -16,15 +16,15 @@ class ListPrometheusViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Maximum number of records to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # Token for the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # List of Prometheus view instances.
+        # The list of Prometheus view instances.
         self.prometheus_views = prometheus_views
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Total number of instances
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -90,39 +90,42 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         prometheus_view_id: str = None,
         prometheus_view_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_type: str = None,
         status: str = None,
         user_id: str = None,
         version: str = None,
         workspace: str = None,
     ):
-        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
-        # Instance type:
-        # prom-view: new version aggregated view
-        # global-view: old version aggregated view
+        # The instance type:
+        # prom-view: aggregated view of the new version.
+        # global-view: aggregated view of the legacy version.
         self.instance_type = instance_type
-        # Payment type. Currently, the fixed value is FREE (free).
+        # The billing type. Currently, the fixed value is FREE.
         self.payment_type = payment_type
-        # Product that the prom instance belongs to (arms or cms).
+        # The product to which the Prometheus instance belongs (arms or cms).
         self.product = product
-        # Number of Prometheus instances in the view.
+        # The number of Prometheus instances included in the view.
         self.prometheus_instance_count = prometheus_instance_count
-        # Prometheus view ID.
+        # The Prometheus view ID.
         self.prometheus_view_id = prometheus_view_id
-        # Prometheus view name.
+        # The Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Fixed value: PrometheusView.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The fixed value: PrometheusView.
         self.resource_type = resource_type
-        # Backend data storage status.
+        # The backend data storage status.
         self.status = status
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version.
+        # The version.
         self.version = version
-        # Workspace that the prom instance belongs to.
+        # The workspace to which the Prometheus instance belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -156,6 +159,9 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
@@ -199,6 +205,9 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')

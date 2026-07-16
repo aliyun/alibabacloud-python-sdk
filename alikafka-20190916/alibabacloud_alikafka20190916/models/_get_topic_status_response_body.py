@@ -16,15 +16,15 @@ class GetTopicStatusResponseBody(DaraModel):
         success: bool = None,
         topic_status: main_models.GetTopicStatusResponseBodyTopicStatus = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # Status code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # Response message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
-        # The status information about messages in the topic.
+        # Topic status.
         self.topic_status = topic_status
 
     def validate(self):
@@ -80,10 +80,10 @@ class GetTopicStatusResponseBodyTopicStatus(DaraModel):
         offset_table: main_models.GetTopicStatusResponseBodyTopicStatusOffsetTable = None,
         total_count: int = None,
     ):
-        # The time when the last consumed message was generated.
+        # Generation time of the last consumed message. Unit: ms.
         self.last_time_stamp = last_time_stamp
         self.offset_table = offset_table
-        # The number of messages in the topic.
+        # Total number of messages.
         self.total_count = total_count
 
     def validate(self):

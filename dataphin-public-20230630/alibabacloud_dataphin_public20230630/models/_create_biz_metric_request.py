@@ -13,8 +13,12 @@ class CreateBizMetricRequest(DaraModel):
         create_biz_metric_command: main_models.CreateBizMetricRequestCreateBizMetricCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_biz_metric_command = create_biz_metric_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -65,21 +69,43 @@ class CreateBizMetricRequestCreateBizMetricCommand(DaraModel):
         related_biz_metrics: List[main_models.CreateBizMetricRequestCreateBizMetricCommandRelatedBizMetrics] = None,
         view_scope: main_models.CreateBizMetricRequestCreateBizMetricCommandViewScope = None,
     ):
+        # The list of full names of associated technical metrics. Enter the full name in the format of "OwnerTableFullName.MetricName", where "OwnerTableFullName" equals "AssetSource.OwnerTableName". A technical metric can be associated with only one business metric and cannot be associated repeatedly.
         self.associated_tech_metric_full_names = associated_tech_metric_full_names
+        # The name of the business owner. Enter the username of the owner account.
         self.biz_owner_name = biz_owner_name
+        # The IDs of the folders to which the metric belongs.
         self.catalog_ids = catalog_ids
+        # The custom attributes.
         self.custom_attribute = custom_attribute
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The asset labels.
         self.labels = labels
+        # The metric definition. To reference other business metrics, enclose the metric name in square brackets [ ].
         self.metric_definition = metric_definition
+        # This parameter is read only when the metric relationship diagram is enabled. Enter a calculation expression composed of metric names selected from the related business metrics. Supported operators include +, -, *, /, (, ), %, and ∑. Each metric name must be enclosed in square brackets [ ]. If no operator is specified between two metrics, the system automatically inserts a padding placeholder. If no metric relational expression is configured, the metric relationship diagram switch is automatically shutdown.
         self.metric_relation_diagram_expression = metric_relation_diagram_expression
+        # Specifies whether to enable the metric relationship diagram. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
+        # 
+        # This parameter can be set to true only when at least one related business metric exists. Otherwise, the diagram is automatically disabled.
         self.metric_relation_diagram_switch_open = metric_relation_diagram_switch_open
+        # The name of the business metric. The name must be unique within the tenant. The name can contain letters, digits, and the following special characters: -_/\\·#$^&*()%+=. The name can be up to 256 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The content of the operation instructions. Only text format is supported.
         self.operate_instruction_content = operate_instruction_content
+        # Specifies whether to enable the operation instructions. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.operate_instruction_enabled = operate_instruction_enabled
+        # The list of related business metrics. Enter the names of related business metrics and their relationships.
         self.related_biz_metrics = related_biz_metrics
+        # The visibility scope.
         self.view_scope = view_scope
 
     def validate(self):
@@ -213,8 +239,14 @@ class CreateBizMetricRequestCreateBizMetricCommandViewScope(DaraModel):
         user_group_names: List[str] = None,
         user_names: List[str] = None,
     ):
+        # The visibility scope type. Valid values:
+        # - ALL_USERS_CAN_VIEW: visible to all users.
+        # - PART_USERS_CAN_VIEW: visible to specified users.
+        # - PART_USERS_CAN_NOT_VIEW: not visible to specified users.
         self.scope_type = scope_type
+        # The names of user groups. This parameter is read only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
         self.user_group_names = user_group_names
+        # The usernames of individual accounts. This parameter takes effect only when the visibility scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
         self.user_names = user_names
 
     def validate(self):
@@ -255,7 +287,12 @@ class CreateBizMetricRequestCreateBizMetricCommandRelatedBizMetrics(DaraModel):
         name: str = None,
         relation_type: str = None,
     ):
+        # The metric name.
         self.name = name
+        # The relationship type. Valid values:
+        # - POSITIVE: positive correlation.
+        # - NEGATIVE: negative correlation.
+        # - OTHER: other.
         self.relation_type = relation_type
 
     def validate(self):
@@ -290,7 +327,9 @@ class CreateBizMetricRequestCreateBizMetricCommandCustomAttribute(DaraModel):
         code: str = None,
         values: List[str] = None,
     ):
+        # The code of the custom attribute.
         self.code = code
+        # The list of attribute values. 1. For custom input and single-select dropdown attributes, only the first value in the list is read. 2. For multi-select dropdown attributes, all values in the list are read. 3. For hyperlink attributes, the first value is used as the display text and the second value is used as the redirect link.
         self.values = values
 
     def validate(self):

@@ -18,10 +18,23 @@ class DescribeRouterInterfacesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The filters.
         self.filter = filter
         self.owner_id = owner_id
+        # The page number.
+        # 
+        # Page numbering starts from 1.
+        # 
+        # Default: 1.
         self.page_number = page_number
+        # The number of entries to return per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default: 10.
         self.page_size = page_size
+        # The ID of the region. You can call the `DescribeRegions` operation to get the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -97,7 +110,21 @@ class DescribeRouterInterfacesRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
+        # The filter key. Supported values:
+        # 
+        # - `RouterInterfaceId`: The ID of the router interface.
+        # 
+        # - `RouterId`: The ID of the router that the router interface is attached to.
+        # 
+        # - `RouterType`: The type of the router. Valid values: `VRouter` and `VBR`.
+        # 
+        # - `Status`: The status of the router interface.
+        # 
+        # - `Name`: The name of the router interface.
+        # 
+        # - `Role`: The role of the router interface. Valid values: `InitiatingSide` and `AcceptingSide`.
         self.key = key
+        # The values for the filter key. You can specify a maximum of 20 values.
         self.value = value
 
     def validate(self):

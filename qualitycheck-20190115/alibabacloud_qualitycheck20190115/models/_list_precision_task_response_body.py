@@ -19,13 +19,20 @@ class ListPrecisionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of **200** means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # Total number of items.
         self.count = count
         self.data = data
+        # Error details if the request failed. Returns successful if the request succeeded.
         self.message = message
+        # Current page number.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. If true, the request succeeded. If false or null, the request failed.
         self.success = success
 
     def validate(self):

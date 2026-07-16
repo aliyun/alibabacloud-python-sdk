@@ -14,11 +14,17 @@ class GetVersionResponseBody(DaraModel):
         success: bool = None,
         version: str = None,
     ):
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
+        # Version number
         self.version = version
 
     def validate(self):

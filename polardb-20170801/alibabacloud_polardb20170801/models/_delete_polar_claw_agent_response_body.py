@@ -14,11 +14,17 @@ class DeletePolarClawAgentResponseBody(DaraModel):
         removed_bindings: int = None,
         request_id: str = None,
     ):
+        # The ID of the deleted agent.
         self.agent_id = agent_id
+        # The application ID.
         self.application_id = application_id
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The number of automatically removed bindings.
         self.removed_bindings = removed_bindings
+        # **The request ID.**
         self.request_id = request_id
 
     def validate(self):

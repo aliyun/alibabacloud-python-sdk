@@ -22,8 +22,9 @@ class ListUpstreamTasksRequest(DaraModel):
         self.page_size = page_size
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
 
     def validate(self):

@@ -14,16 +14,46 @@ class UpdateRatePlanSpecRequest(DaraModel):
         target_plan_code: str = None,
         target_plan_name: str = None,
     ):
-        # Specifies whether to enable auto payment.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
+        # The billing type. Valid values:
+        # - PREPAY: Subscription.
+        # - POSTPAY: Pay-as-you-go.
         self.charge_type = charge_type
+        # The instance ID.
         self.instance_id = instance_id
-        # The specification update type. Valid values:
-        # 
-        # *   DOWNGRADE
-        # *   UPGRADE
+        # The type of specification change. Valid values:
+        # - UPGRADE: Upgrade.
         self.order_type = order_type
+        # The code of the target plan.
+        # 
+        # Alibaba Cloud China Website (www.aliyun.com)
+        # 
+        # - Free Edition: entranceplan
+        # - Basic Edition: basicplan
+        # - Standard Edition: standardplan
+        # - Premium Edition: advancedplan
+        # 
+        # Alibaba Cloud International Website (www.alibabacloud.com)
+        # 
+        # - Entrance: entranceplan
+        # - Pro: standardplan
+        # - Premium: advancedpla.
         self.target_plan_code = target_plan_code
+        # The name of the target plan.
+        # 
+        # Alibaba Cloud China Website (www.aliyun.com)
+        # 
+        # - Free Edition: entranceplan
+        # - Basic Edition: basic
+        # - Standard Edition: medium
+        # - Premium Edition: high
+        # 
+        # Alibaba Cloud International Website (www.alibabacloud.com)
+        # 
+        # - Entrance: entranceplan_intl
+        # - Pro: basicplan_intl
+        # - Premium: vipplan_intl.
         self.target_plan_name = target_plan_name
 
     def validate(self):

@@ -16,36 +16,36 @@ class CredentialSubmitIntlRequest(DaraModel):
         product_code: str = None,
         scene_code: str = None,
     ):
-        # Base64 encoding of the image. If you choose to upload the photo this way, please check the photo size and avoid uploading overly large photos.
+        # The Base64-encoded image. If you use this method to submit a photo, check the photo size and do not submit an excessively large photo.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
-        # Image URL, accessible via HTTP or HTTPS on the public network.
+        # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
-        # Credential type:
-        # - 02: Vehicle registration certificate
+        # The credential type. Valid values:
+        # - 02: vehicle registration certificate.
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # Whether to enable tampering detection
-        # - true: Enable
-        # - false: Disable
+        # Specifies whether to enable tampering detection. Valid values:
+        # - true: Enable.
+        # - false: Disable.
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # A unique business identifier defined on the merchant side, used for troubleshooting issues later. Supports a combination of letters and digits, with a maximum length of 32 characters. Ensure uniqueness.
+        # The merchant-side custom business unique identifier, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
-        # Extraction type:
+        # The extraction type. Valid values:
         # 
-        # - 0201: Thai vehicle registration certificate
+        # - 0201: Thailand vehicle registration certificate.
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # The product solution to be integrated. Value: CREDENTIAL_RECOGNITION.
+        # The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, digits, or underscores.
+        # The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
         # 
         # This parameter is required.
         self.scene_code = scene_code

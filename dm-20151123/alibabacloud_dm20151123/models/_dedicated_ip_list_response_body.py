@@ -17,17 +17,17 @@ class DedicatedIpListResponseBody(DaraModel):
         request_id: str = None,
         total_counts: int = None,
     ):
-        # Current page
+        # The current page number.
         self.current_page = current_page
-        # Whether there is a next page
+        # Indicates whether another page of results is available.
         self.has_more = has_more
-        # IP list
+        # The list of IPs.
         self.ips = ips
-        # Page size
+        # The page size.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total amount of purchased IP data
+        # The total number of purchased IPs.
         self.total_counts = total_counts
 
     def validate(self):
@@ -103,26 +103,43 @@ class DedicatedIpListResponseBodyIps(DaraModel):
         warmup_type: str = None,
         zone_id: str = None,
     ):
-        # Expiration time
+        # The expiration time.
         self.expired_time = expired_time
-        # IP ID, consistent with the purchased instance ID
+        # The ID of the IP address, which is the same as the ID of the purchased instance.
         self.id = id
-        # Purchased instance ID
+        # The ID of the purchased instance.
         self.instance_id = instance_id
-        # IP address
+        # The IP address.
         self.ip = ip
-        # Extended information
+        # Extended properties.
         self.ip_ext = ip_ext
-        # Name of the IP pool
+        # The name of the IP pool to which the IP belongs.
         self.ip_pool_name = ip_pool_name
-        # Purchase time
+        # The time when the IP was purchased.
         self.start_time = start_time
-        # IP status
+        # The status of the IP.
         self.status = status
-        # Warm-up status
+        # The warm-up status.
         self.warmup_status = warmup_status
-        # Warm-up method
+        # The warm-up method.
         self.warmup_type = warmup_type
+        # The ID of the zone where the IP address is located.
+        # 
+        # - ap-southeast-1a
+        # 
+        # - ap-southeast-1b
+        # 
+        # - cn-hangzhou-k
+        # 
+        # - cn-shanghai-l
+        # 
+        # - eu-central-1a
+        # 
+        # - eu-central-1b
+        # 
+        # - us-east-1a
+        # 
+        # - us-east-1b
         self.zone_id = zone_id
 
     def validate(self):
@@ -214,10 +231,11 @@ class DedicatedIpListResponseBodyIpsIpExt(DaraModel):
         has_send_mail: bool = None,
         last_warm_up_type_changed_time: str = None,
     ):
-        # Whether auto-renewal is enabled
+        # Indicates whether auto-renewal is enabled.
         self.auto_renewal = auto_renewal
-        # Whether an email has been sent
+        # Indicates whether an email has been sent.
         self.has_send_mail = has_send_mail
+        # The last time the warm-up status changed.
         self.last_warm_up_type_changed_time = last_warm_up_type_changed_time
 
     def validate(self):

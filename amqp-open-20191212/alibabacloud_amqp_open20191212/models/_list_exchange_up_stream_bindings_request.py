@@ -21,11 +21,11 @@ class ListExchangeUpStreamBindingsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+        # The token that marks the end of the current query. Pass this token in the next call to query the next page. This parameter is an empty string for the first query or when the last page is returned.
         self.next_token = next_token
-        # The virtual host (vhost) name.
+        # The vhost name.
         # 
         # This parameter is required.
         self.virtual_host = virtual_host

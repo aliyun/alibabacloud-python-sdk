@@ -15,10 +15,13 @@ class CreateApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -68,8 +71,11 @@ class CreateApiKeyResponseBodyData(DaraModel):
         custom_key_list: List[main_models.CreateApiKeyResponseBodyDataCustomKeyList] = None,
         system_api_key: str = None,
     ):
+        # The endpoint for model invocation.
         self.base_url = base_url
+        # The list of custom API keys.
         self.custom_key_list = custom_key_list
+        # The system-generated API key.
         self.system_api_key = system_api_key
 
     def validate(self):
@@ -116,16 +122,28 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
     def __init__(
         self,
         api_key: str = None,
+        daily_token_quota: int = None,
         key_name: str = None,
         limit_rate: float = None,
         limit_type: str = None,
         token_quota: int = None,
     ):
-        # Api Key
+        # The API key.
         self.api_key = api_key
+        self.daily_token_quota = daily_token_quota
+        # The API key name.
         self.key_name = key_name
+        # The quota ratio. This parameter takes effect only when **LimitType** is set to **ratio**.
         self.limit_rate = limit_rate
+        # The quota allocation method. Valid values:
+        # 
+        # - **fixed**: The quota is a fixed value.
+        # 
+        # - **ratio**: The quota is specified as a ratio of the total available resources.
+        # 
+        # - **auto**: The quota is automatically allocated.
         self.limit_type = limit_type
+        # The token quota for the API key.
         self.token_quota = token_quota
 
     def validate(self):
@@ -138,6 +156,9 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
             result = _map
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
+
+        if self.daily_token_quota is not None:
+            result['DailyTokenQuota'] = self.daily_token_quota
 
         if self.key_name is not None:
             result['KeyName'] = self.key_name
@@ -157,6 +178,9 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         m = m or dict()
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
+
+        if m.get('DailyTokenQuota') is not None:
+            self.daily_token_quota = m.get('DailyTokenQuota')
 
         if m.get('KeyName') is not None:
             self.key_name = m.get('KeyName')

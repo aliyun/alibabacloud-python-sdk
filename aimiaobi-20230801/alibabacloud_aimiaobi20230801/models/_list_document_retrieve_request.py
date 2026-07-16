@@ -22,19 +22,61 @@ class ListDocumentRetrieveRequest(DaraModel):
         word_size: str = None,
         workspace_id: str = None,
     ):
+        # Document type. Valid values: 0 (default): All types. 1: Government documents. 2: Important articles. 5: Policy interpretation. 6: Legal provisions. 7: Regulations and rules. 8: General Secretary.
         self.content_type = content_type
+        # Search scope. Valid values: 1: Title only. 0: Full text (title and content). Default is 0.
         self.element_scope = element_scope
+        # End date of issuance in yyyy-MM-dd format.
         self.end_date = end_date
+        # Maximum number of results to return.
         self.max_results = max_results
+        # Token for the next page of results.
         self.next_token = next_token
+        # Issuing agency.
         self.office = office
+        # Search condition.
         self.query = query
+        # Region. Enter a province or city, such as Jilin Province or Beijing Municipality.
         self.region = region
+        # Source. Valid values: 0: Internal (within your organization). 1: External (outside your organization).
         self.source = source
+        # Start date of issuance in yyyy-MM-dd format.
         self.start_date = start_date
+        # - Secondary classification of document type.
+        # 
+        #   - When the document type is an official document: -1: Other; 0: Resolution; 1: Decision; 2: Order; 3: Bulletin; 4: Public Notice; 5: Notice; 6: Opinion; 7: Notification; 8: Circular; 9: Report; 10: Request for Instructions; 11: Approval; 12: Motion; 13: Letter
+        # 
+        #   - 14: Summary
+        # 
+        #   - When the article type is important articles: 1: important commentary 2: important theory 3: other articles
+        # 
+        #   - When the document genre is rules and regulations: 3: Administrative regulations 4: Supervisory regulations 5: Local regulations 7: Departmental rules 8: Others 9: Party constitution and regulations
+        # 
+        #   - When the article genre is a legal provision: 1: Constitution 2: Law 6: Judicial Interpretation
         self.sub_content_type = sub_content_type
+        # Supported classifications:
+        # 
+        # | Level 1 category                                                        | Level 2 category                                                                                                                                                                                                                                  |
+        # | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        # | National defense and international cooperation                          | National defense. Foreign affairs. Military affairs. Work related to Hong Kong, Macao, Taiwan, and overseas Chinese.                                                                                                                              |
+        # | Comprehensive administration                                            | The 20th National Congress of the Communist Party of China. Government transparency and supervision. Joint administration. Party building. Conferences and proposals. Government document management. Other administrative matters.               |
+        # | State Council organizational structure                                  | State Council. General Office of the State Council. State Council agencies.                                                                                                                                                                       |
+        # | Administrative and market regulation                                    | Administrative regulation. Credit regulation. Product quality supervision. Work safety supervision. Market regulation.                                                                                                                            |
+        # | Economic management                                                     | National economy. Market economy. Economic system reform. State-owned asset supervision.                                                                                                                                                          |
+        # | Finance, banking, commerce, and customs                                 | Finance. Banking. Auditing. Commerce. Customs.                                                                                                                                                                                                    |
+        # | Personnel and social security                                           | Personnel work. Population and family planning. Work related to women and children. Poverty alleviation. Disaster reduction and relief. Public services. Social welfare and assistance. Preferential treatment and resettlement. Social security. |
+        # | Public security and social management                                   | Public security. Safety. Justice. Fire control. Ethnic affairs. Religion.                                                                                                                                                                         |
+        # | Science, education, culture, and sports                                 | Culture. Scientific and technological innovation. Education. Intellectual property. Press and publishing. Radio, television, and the Internet. Sports. Tourism.                                                                                   |
+        # | Healthcare                                                              | Health. Medical care. Veterinary medicine.                                                                                                                                                                                                        |
+        # | Urban-rural development and industrial growth                           | Urban and rural development. Industry. Transportation.                                                                                                                                                                                            |
+        # | Natural resources and environmental protection                          | Land and energy resources. Civil engineering. Meteorology. Environmental protection.                                                                                                                                                              |
+        # | Agriculture, forestry, water resources, fisheries, and animal husbandry | Agriculture. Forestry. Water resources. Fisheries. Animal husbandry.                                                                                                                                                                              |
+        # | Others                                                                  | Others.                                                                                                                                                                                                                                           |
         self.subject_classify = subject_classify
+        # Document number.
         self.word_size = word_size
+        # Unique identifier of the Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

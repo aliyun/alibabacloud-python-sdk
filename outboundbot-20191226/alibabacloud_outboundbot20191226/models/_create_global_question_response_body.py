@@ -14,11 +14,17 @@ class CreateGlobalQuestionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the request.
         self.code = code
+        # The ID of the global question.
         self.global_question_id = global_question_id
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

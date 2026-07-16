@@ -26,22 +26,39 @@ class ListMaterialDocumentsRequest(DaraModel):
         update_time_end: str = None,
         update_time_start: str = None,
     ):
+        # Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Full-text search of document content
         self.content = content
+        # Creation time - end range. Format: yyyy-MM-dd HH:mm:ss
         self.create_time_end = create_time_end
+        # Creation time - start range. Format: yyyy-MM-dd HH:mm:ss
         self.create_time_start = create_time_start
+        # Current page number.
         self.current = current
+        # Document type (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
         self.doc_type = doc_type
+        # Document type list (html: web page, plainText: plain text, image: image, pdf: pdf, word: word, excel: excel, csv: csv, jsonLine: jsonLine)
         self.doc_type_list = doc_type_list
+        # Generate a public URL for the file.
         self.generate_public_url = generate_public_url
+        # Material primary key ID.
         self.id = id
+        # Document keywords.
         self.keywords = keywords
+        # Supports comprehensive queries for title, content, and content.
         self.query = query
+        # Share property: 0: personal private, 1: shared within the workspace.
         self.share_attr = share_attr
+        # Number of items per page. Default is 10.
         self.size = size
+        # Performs a full-text search on material titles.
         self.title = title
+        # Update time - end range. Format: yyyy-MM-dd HH:mm:ss
         self.update_time_end = update_time_end
+        # Update time - start range. Format: yyyy-MM-dd HH:mm:ss
         self.update_time_start = update_time_start
 
     def validate(self):

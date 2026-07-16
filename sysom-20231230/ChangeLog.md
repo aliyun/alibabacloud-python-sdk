@@ -1,3 +1,26 @@
+2026-07-06 Version: 1.20.0
+- Support API UninstallAgentWithType.
+- Support API UpgradeAgentWithType.
+
+
+2026-07-06 Version: 1.20.0
+- Support API UninstallAgentWithType.
+- Support API UpgradeAgentWithType.
+
+
+2026-07-02 Version: 1.19.0
+- Support API InstallAgentWithType.
+
+
+2026-07-02 Version: 1.18.2
+- Update API GetListRecord: add request parameters analysisId.
+- Update API GetListRecord: add request parameters customId.
+
+
+2026-06-10 Version: 1.18.1
+- Update API CreateInstanceInspection: add request parameters body.metricSource.
+
+
 2026-05-13 Version: 1.18.0
 - Support API CreateClusterVpcEndpointConnection.
 

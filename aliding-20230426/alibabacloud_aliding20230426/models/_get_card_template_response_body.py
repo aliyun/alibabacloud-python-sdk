@@ -92,7 +92,6 @@ class GetCardTemplateResponseBodyCommonVariableList(DaraModel):
         type: str = None,
     ):
         self.description = description
-        # Id
         self.id = id
         self.if_private_filed = if_private_filed
         self.name = name

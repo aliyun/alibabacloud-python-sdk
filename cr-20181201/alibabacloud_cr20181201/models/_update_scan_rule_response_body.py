@@ -11,7 +11,7 @@ class UpdateScanRuleResponseBody(DaraModel):
         request_id: str = None,
         scan_rule_id: str = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
         # Request Id
         self.request_id = request_id

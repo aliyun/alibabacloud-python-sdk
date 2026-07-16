@@ -10,13 +10,19 @@ from darabonba.model import DaraModel
 class DescribeMem0InfoResponseBody(DaraModel):
     def __init__(
         self,
+        access_denied_detail: main_models.DescribeMem0InfoResponseBodyAccessDeniedDetail = None,
         data: main_models.DescribeMem0InfoResponseBodyData = None,
         request_id: str = None,
     ):
+        self.access_denied_detail = access_denied_detail
+        # Response data
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
         if self.data:
             self.data.validate()
 
@@ -25,6 +31,9 @@ class DescribeMem0InfoResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+
         if self.data is not None:
             result['Data'] = self.data.to_map()
 
@@ -35,6 +44,10 @@ class DescribeMem0InfoResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = main_models.DescribeMem0InfoResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
+
         if m.get('Data') is not None:
             temp_model = main_models.DescribeMem0InfoResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
@@ -49,6 +62,7 @@ class DescribeMem0InfoResponseBodyData(DaraModel):
         self,
         instance: main_models.DescribeMem0InfoResponseBodyDataInstance = None,
     ):
+        # Instance information
         self.instance = instance
 
     def validate(self):
@@ -88,17 +102,27 @@ class DescribeMem0InfoResponseBodyDataInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Instance specifications
         self.class_code = class_code
+        # Connection address list
         self.conn_addrs = conn_addrs
+        # The creation time.
         self.create_time = create_time
+        # Instance ID
         self.instance_id = instance_id
+        # Number of nodes
         self.node_count = node_count
+        # Region ID
         self.region_id = region_id
+        # Instance status
         self.status = status
+        # Storage type
         self.storage_type = storage_type
         # VPC ID
         self.vpcid = vpcid
+        # vSwitch ID
         self.v_switch_id = v_switch_id
+        # Zone ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -199,12 +223,17 @@ class DescribeMem0InfoResponseBodyDataInstanceConnAddrs(DaraModel):
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
+        # Connection address
         self.connection_string = connection_string
+        # Port
         self.port = port
+        # Connection address type
         self.type = type
         # VPC ID
         self.vpcid = vpcid
+        # vSwitch ID
         self.v_switch_id = v_switch_id
+        # VPC instance ID
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -254,6 +283,81 @@ class DescribeMem0InfoResponseBodyDataInstanceConnAddrs(DaraModel):
 
         if m.get('VpcInstanceId') is not None:
             self.vpc_instance_id = m.get('VpcInstanceId')
+
+        return self
+
+class DescribeMem0InfoResponseBodyAccessDeniedDetail(DaraModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
 
         return self
 

@@ -23,9 +23,11 @@ class ModifySecurityIpsRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The method that is used to modify the IP address whitelist. Valid values:
         # 
-        # *   **Cover**: overwrites the original IP address whitelist.
-        # *   **Append**: appends data to the IP address whitelist.
-        # *   **Delete**: deletes the IP address whitelist.
+        # - **Cover**: overwrites the original IP address whitelist.
+        # 
+        # - **Append**: appends data to the IP address whitelist.
+        # 
+        # - **Delete**: deletes the IP address whitelist.
         # 
         # Default value: **Cover**.
         self.modify_mode = modify_mode
@@ -41,8 +43,9 @@ class ModifySecurityIpsRequest(DaraModel):
         self.security_ip_group_name = security_ip_group_name
         # The IP addresses in the IP address whitelist. Separate multiple IP addresses with commas (,). You can add a maximum of 1,000 different IP addresses to the IP address whitelist. The entries in the IP address whitelist must be in one of the following formats:
         # 
-        # *   IP addresses, such as 127.0.0.1.
-        # *   CIDR blocks, such as 127.0.0.1/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        # - IP addresses, such as 127.0.0.1.
+        # 
+        # - CIDR blocks, such as 127.0.0.1/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         # 
         # This parameter is required.
         self.security_ips = security_ips

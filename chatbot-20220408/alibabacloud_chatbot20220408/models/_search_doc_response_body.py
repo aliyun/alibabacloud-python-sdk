@@ -16,11 +16,15 @@ class SearchDocResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of matching documents.
         self.doc_hits = doc_hits
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,26 +104,53 @@ class SearchDocResponseBodyDocHits(DaraModel):
         status: int = None,
         url: str = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The category ID.
         self.category_id = category_id
+        # The splitter for the document. Key: `Splitter`. Valid values:<br>• `paragraphSplitter` (default): Splits the document by paragraph.<br>• `treeSplitter`: Splits the document based on a rule-based hierarchy.<br><br>
+        # 
+        # The size of each document chunk. Key: `ChunkSize`. Default value: 500. Value range: [200, 800].
+        # 
+        # The patterns for the rule-based hierarchy. Key: `TreePatterns`. Default value: `[]`.
+        # 
+        # The source of the document title. Key: `TitleSource`. Valid values:<br>• `ocrTitle` (default): Uses the OCR-identified title.<br>• `docName`: Uses the document name as the title.<br><br>
         self.config = config
+        # The time the document was created (UTC).
         self.create_time = create_time
+        # The creator ID.
         self.create_user_id = create_user_id
+        # The name of the creator.
         self.create_user_name = create_user_name
+        # The document name.
         self.doc_name = doc_name
+        # A list of the document\\"s tags.
         self.doc_tags = doc_tags
+        # The knowledge\\"s effective status, calculated based on `StartDate` and `EndDate`. Valid values:<br>• 20: Active<br>• 21: Expired<br>• 22: Pending<br><br><br>
         self.effect_status = effect_status
+        # The time the knowledge expires (UTC).
         self.end_date = end_date
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
+        # The document metadata.
         self.meta = meta
+        # The time the document was last modified (UTC).
         self.modify_time = modify_time
+        # The modifier ID.
         self.modify_user_id = modify_user_id
+        # The name of the last modifier.
         self.modify_user_name = modify_user_name
+        # Indicates whether the task can be retried.<br>• `true`: The task can be retried.<br>• `false`: The task cannot be retried.<br><br>
         self.process_can_retry = process_can_retry
+        # The processing message for the task.
         self.process_message = process_message
+        # The task\\"s processing status. Valid values:<br>• -1: Queued<br>• 0: Succeeded<br>• 1: Parsing<br>• 2: Processing<br>• 3: Failed<br><br><br><br><br>
         self.process_status = process_status
+        # The time the knowledge takes effect (UTC).
         self.start_date = start_date
+        # The editing status of the document. Valid values:<br>• 1: Unpublished<br>• 2: Published<br>• 3: Updated but not published<br><br><br>
         self.status = status
+        # The OSS URL of the object.
         self.url = url
 
     def validate(self):
@@ -279,10 +310,15 @@ class SearchDocResponseBodyDocHitsDocTags(DaraModel):
         tag_id: int = None,
         tag_name: str = None,
     ):
+        # Indicates whether this is a default tag.
         self.default_tag = default_tag
+        # The tag group ID.
         self.group_id = group_id
+        # The tag group name.
         self.group_name = group_name
+        # The tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

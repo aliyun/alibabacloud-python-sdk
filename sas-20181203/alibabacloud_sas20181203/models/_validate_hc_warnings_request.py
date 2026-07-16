@@ -12,20 +12,22 @@ class ValidateHcWarningsRequest(DaraModel):
         status: int = None,
         uuids: str = None,
     ):
-        # The IDs of check items that you want to verify. Separate multiple IDs with commas (,).
-        # > You can use [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) to get IDs of check items.
+        # The IDs of the check items. Separate multiple check item IDs with commas (,).
+        # 
+        # > You can call the [DescribeCheckWarningSummary](https://help.aliyun.com/document_detail/116179.html) operation to obtain check item IDs.
         self.check_ids = check_ids
-        # The IDs of risk items that you want to verify. Separate multiple IDs with commas (,).
+        # The IDs of the risk items to verify. Separate multiple IDs with commas (,).
+        # >  You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this parameter.
         self.risk_ids = risk_ids
-        # The status of the check item that you want to verify.
+        # The status of the check item to verify. Valid values:
         # 
-        # *   1: failed
-        # *   3: passed
-        # *   5: expired
+        # - 1: not passed
+        # - 3: passed
+        # - 5: expired.
         self.status = status
-        # The UUIDs of the servers on which you want to verify the risk items. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the servers to verify. Separate multiple UUIDs with commas (,).
         # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain server UUIDs.
         self.uuids = uuids
 
     def validate(self):

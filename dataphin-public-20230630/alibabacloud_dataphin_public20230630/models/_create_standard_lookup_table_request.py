@@ -13,8 +13,12 @@ class CreateStandardLookupTableRequest(DaraModel):
         create_command: main_models.CreateStandardLookupTableRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,13 +60,21 @@ class CreateStandardLookupTableRequestCreateCommand(DaraModel):
         name: str = None,
         owner: str = None,
     ):
+        # The code of the lookup table.
+        # 
         # This parameter is required.
         self.code = code
+        # The description of the lookup table.
         self.description = description
+        # The directory to which the lookup table belongs.
         self.directory_reference = directory_reference
+        # The list of lookup table values.
         self.lookup_table_value_list = lookup_table_value_list
+        # The name of the lookup table.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the lookup table owner. Default value: the user ID of the caller.
         self.owner = owner
 
     def validate(self):
@@ -134,10 +146,16 @@ class CreateStandardLookupTableRequestCreateCommandLookupTableValueList(DaraMode
         name: str = None,
         value: str = None,
     ):
+        # The description of the code.
         self.description = description
+        # The English name of the code.
         self.english_name = english_name
+        # The code name.
+        # 
         # This parameter is required.
         self.name = name
+        # The code value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -184,6 +202,8 @@ class CreateStandardLookupTableRequestCreateCommandDirectoryReference(DaraModel)
         self,
         directory: str = None,
     ):
+        # The directory to which the lookup table belongs.
+        # 
         # This parameter is required.
         self.directory = directory
 

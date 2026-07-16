@@ -11,8 +11,11 @@ class CreateAppAssistantAgentSsoLoginRequest(DaraModel):
         platform_type: str = None,
         target_url: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The platform type.
         self.platform_type = platform_type
+        # The target URL.
         self.target_url = target_url
 
     def validate(self):

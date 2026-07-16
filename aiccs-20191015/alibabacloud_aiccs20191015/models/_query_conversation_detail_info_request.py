@@ -14,13 +14,19 @@ class QueryConversationDetailInfoRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
+        # The batch ID. This ID is returned by the [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) operation when you import callee data. You can view this ID on the **execution history** page by navigating to **call task management** > **details**.
+        # 
         # This parameter is required.
         self.batch_id = batch_id
+        # The detail ID. You can find this ID in the upper-left corner of the page by navigating to **call task management** > **details** > **execution history** > **completed** > **call details**, or get it by calling the [QueryAiCallDetailPage](https://help.aliyun.com/document_detail/2926853.html) operation.
+        # 
         # This parameter is required.
         self.detail_id = detail_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID. You can find this ID on the **call task management** page or get it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -14,8 +14,15 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to enable instance release protection. Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.dbinstance_release_protection = dbinstance_release_protection
         self.owner_account = owner_account
         self.owner_id = owner_id

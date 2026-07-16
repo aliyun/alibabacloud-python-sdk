@@ -10,8 +10,12 @@ class WithdrawScriptReviewRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

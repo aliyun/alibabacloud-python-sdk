@@ -290,8 +290,9 @@ class ListDataQualityScansResponseBodyPageInfoDataQualityScansTrigger(DaraModel)
         self.task_ids = task_ids
         # The trigger mode of the data quality monitor. Valid values:
         # 
-        # *   ByManual: Manually triggered. Default setting.
-        # *   BySchedule: Triggered by a scheduled task instance.
+        # - ByManual: Manually triggered. Default setting.
+        # 
+        # - BySchedule: Triggered by a scheduled task instance.
         self.type = type
 
     def validate(self):
@@ -415,7 +416,7 @@ class ListDataQualityScansResponseBodyPageInfoDataQualityScansHooks(DaraModel):
         self.condition = condition
         # The type of the hook. Valid values:
         # 
-        # *   BlockTaskInstance: Blocks the scheduling of the task instance.
+        # - BlockTaskInstance: Blocks the scheduling of the task instance.
         self.type = type
 
     def validate(self):
@@ -453,8 +454,9 @@ class ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource(Da
     ):
         # Workspace environment of the compute engine. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The name of the computing engine. Uniquely identifies the engine.
         self.name = name
@@ -504,9 +506,11 @@ class ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRun
     ):
         # The engine type. These settings are only supported for the EMR compute engine. Valid values:
         # 
-        # *   Hive: Hive SQL
-        # *   Spark: Spark SQL
-        # *   Kyuubi
+        # - Hive: Hive SQL
+        # 
+        # - Spark: Spark SQL
+        # 
+        # - Kyuubi
         self.engine = engine
         # Additional parameters for the Hive engine. Currently, only mapreduce.job.queuename is supported to set the queue.
         self.hive_conf = hive_conf

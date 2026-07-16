@@ -18,19 +18,19 @@ class ListWafRulesResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # Number of rules used in this WAF phase for the corresponding instance of the site.
+        # The number of rules used in the WAF phase for the instance associated with the site.
         self.instance_usage = instance_usage
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned list of rules.
+        # The list of rules returned.
         self.rules = rules
-        # Site usage.
+        # The site usage.
         self.site_usage = site_usage
-        # Total number of rules after filtering.
+        # The total number of rules after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -116,35 +116,51 @@ class ListWafRulesResponseBodyRules(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The action corresponding to the rule.
+        # The action associated with the rule. Valid values:
+        # - deny: Block.
+        # - monitor: Monitor.
+        # - js: JavaScript Challenge.
+        # - captcha: Slider challenge.
         self.action = action
-        # List of statistical objects for frequency control rules.
+        # The list of statistical objects for frequency control rules.
         self.characteristics_fields = characteristics_fields
-        # Rule configuration.
+        # The rule configuration.
         self.config = config
-        # List of fields for rule matching
+        # The list of matching fields for the rule.
         self.fields = fields
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Rule name.
+        # The rule name.
         self.name = name
-        # WAF phase.
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
+        # - ip_access_rule: IP access rule
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rule
         self.phase = phase
-        # Position order of the rule in the corresponding ruleset.
+        # The position of the rule in the corresponding ruleset.
         self.position = position
-        # Ruleset ID.
+        # The ruleset ID.
         self.ruleset_id = ruleset_id
-        # Skip attribute for whitelist rules.
+        # The skip property for whitelist rules.
         self.skip = skip
-        # Rule status.
+        # The rule status.
         self.status = status
-        # List of WAF phases to be skipped by whitelist rules.
+        # The list of WAF phases to skip for whitelist rules.
         self.tags = tags
-        # Configuration for the effective time of the rule.
+        # The effective period configuration of the rule.
         self.timer = timer
-        # Rule type.
+        # The rule type.
         self.type = type
-        # Modification time.
+        # The last modification time of the rule.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

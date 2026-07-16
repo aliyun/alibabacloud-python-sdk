@@ -12,9 +12,13 @@ class RefundReason(DaraModel):
         reason_tips: str = None,
         refund_desc_required: bool = None,
     ):
+        # Is upload credential required
         self.proof_required = proof_required
+        # Reason text ID
         self.reason_text_id = reason_text_id
+        # Reason text
         self.reason_tips = reason_tips
+        # Is a message required
         self.refund_desc_required = refund_desc_required
 
     def validate(self):

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._commercialize_fetch_request import CommercializeFetchRequest
+from ._commercialize_fetch_response import CommercializeFetchResponse
 from ._create_annual_doc_summary_task_request import CreateAnnualDocSummaryTaskRequest
 from ._create_annual_doc_summary_task_response_body import CreateAnnualDocSummaryTaskResponseBody
 from ._create_annual_doc_summary_task_response import CreateAnnualDocSummaryTaskResponse
@@ -106,6 +108,12 @@ from ._get_parse_result_response import GetParseResultResponse
 from ._get_quality_check_task_result_request import GetQualityCheckTaskResultRequest
 from ._get_quality_check_task_result_response_body import GetQualityCheckTaskResultResponseBody
 from ._get_quality_check_task_result_response import GetQualityCheckTaskResultResponse
+from ._get_report_response_request import GetReportResponseRequest
+from ._get_report_response_response_body import GetReportResponseResponseBody
+from ._get_report_response_response import GetReportResponseResponse
+from ._get_report_task_status_request import GetReportTaskStatusRequest
+from ._get_report_task_status_response_body import GetReportTaskStatusResponseBody
+from ._get_report_task_status_response import GetReportTaskStatusResponse
 from ._get_summary_task_result_request import GetSummaryTaskResultRequest
 from ._get_summary_task_result_response_body import GetSummaryTaskResultResponseBody
 from ._get_summary_task_result_response import GetSummaryTaskResultResponse
@@ -155,6 +163,9 @@ from ._recall_document_response import RecallDocumentResponse
 from ._recognize_intention_request import RecognizeIntentionRequest
 from ._recognize_intention_response_body import RecognizeIntentionResponseBody
 from ._recognize_intention_response import RecognizeIntentionResponse
+from ._retry_report_task_request import RetryReportTaskRequest
+from ._retry_report_task_response_body import RetryReportTaskResponseBody
+from ._retry_report_task_response import RetryReportTaskResponse
 from ._run_agent_request import RunAgentRequest
 from ._run_agent_response_body import RunAgentResponseBody
 from ._run_agent_response import RunAgentResponse
@@ -341,6 +352,8 @@ from ._update_qa_library_request import UpdateQaLibraryRequestParseQaResults
 from ._update_qa_library_response_body import UpdateQaLibraryResponseBodyData
 
 __all__ = [
+    CommercializeFetchRequest,
+    CommercializeFetchResponse,
     CreateAnnualDocSummaryTaskRequest,
     CreateAnnualDocSummaryTaskResponseBody,
     CreateAnnualDocSummaryTaskResponse,
@@ -445,6 +458,12 @@ __all__ = [
     GetQualityCheckTaskResultRequest,
     GetQualityCheckTaskResultResponseBody,
     GetQualityCheckTaskResultResponse,
+    GetReportResponseRequest,
+    GetReportResponseResponseBody,
+    GetReportResponseResponse,
+    GetReportTaskStatusRequest,
+    GetReportTaskStatusResponseBody,
+    GetReportTaskStatusResponse,
     GetSummaryTaskResultRequest,
     GetSummaryTaskResultResponseBody,
     GetSummaryTaskResultResponse,
@@ -494,6 +513,9 @@ __all__ = [
     RecognizeIntentionRequest,
     RecognizeIntentionResponseBody,
     RecognizeIntentionResponse,
+    RetryReportTaskRequest,
+    RetryReportTaskResponseBody,
+    RetryReportTaskResponse,
     RunAgentRequest,
     RunAgentResponseBody,
     RunAgentResponse,

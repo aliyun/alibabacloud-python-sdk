@@ -14,20 +14,21 @@ class DeleteNatFirewallControlPolicyBatchRequest(DaraModel):
         lang: str = None,
         nat_gateway_id: str = None,
     ):
-        # The UUIDs of access control policies.
+        # A list of access control list (ACL) UUIDs.
         # 
         # This parameter is required.
         self.acl_uuid_list = acl_uuid_list
-        # The direction of the traffic to which the access control policy applies. Valid values:
+        # The traffic direction for the access control policy. Valid value:
         # 
-        # *   **out**: outbound traffic
+        # - **out**: outbound traffic.
         self.direction = direction
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the NAT gateway.
+        # The ID of the NAT Gateway.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id

@@ -14,11 +14,17 @@ class CollectedNumberRequest(DaraModel):
         number: str = None,
     ):
         self.additional_context = additional_context
+        # The ID of the conversation.
+        # 
         # This parameter is required.
         self.conversation_id = conversation_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the instance owner.
         self.instance_owner_id = instance_owner_id
+        # The number entered by the user.
         self.number = number
 
     def validate(self):

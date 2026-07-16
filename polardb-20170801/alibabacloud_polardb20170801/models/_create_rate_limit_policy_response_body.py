@@ -11,9 +11,11 @@ class CreateRateLimitPolicyResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
+        # The policy ID.
         self.policy_id = policy_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

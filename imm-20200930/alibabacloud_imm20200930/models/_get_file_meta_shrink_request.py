@@ -20,11 +20,11 @@ class GetFileMetaShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The URI of the file. Make sure that the file is indexed****.
+        # The URI of the file. Make sure that the file is indexed\\*\\*\\*\\*.
         # 
-        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # Specify the OSS URI in the oss\\://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
         # 
-        # Specify the URI of the file in Photo and Drive Service in the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # Specify the URI of the file in Photo and Drive Service in the pds\\://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
         # 
         # This parameter is required.
         self.uri = uri

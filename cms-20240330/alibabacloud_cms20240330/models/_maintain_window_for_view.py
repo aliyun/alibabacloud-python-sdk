@@ -24,33 +24,33 @@ class MaintainWindowForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
-        # Creation time.
+        # The time when the policy was created.
         self.create_time = create_time
-        # Description.
+        # The description.
         self.description = description
-        # Effective time range.
+        # The effective time range.
         self.effect_time_range = effect_time_range
-        # Crontab expression.
+        # The crontab expression.
         self.effective = effective
-        # Whether enabled.
+        # Indicates whether the policy is enabled.
         self.enable = enable
-        # Effective end time.
+        # The end time of the effective period.
         self.end_time = end_time
-        # Filtering conditions.
+        # The filter conditions.
         self.filter_setting = filter_setting
-        # UUID
+        # The UUID.
         self.maintain_window_id = maintain_window_id
-        # Name.
+        # The name.
         # 
         # This parameter is required.
         self.maintain_window_name = maintain_window_name
-        # Effective start time.
+        # The start time of the effective period.
         self.start_time = start_time
-        # Update time.
+        # The last time the resource was updated.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # workspace
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -158,13 +158,13 @@ class MaintainWindowForViewEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # Effective days (Monday to Sunday).
+        # The days of the week when the policy is effective.
         self.day_in_week = day_in_week
-        # End time (in minutes).
+        # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
-        # Start time (in minutes).
+        # The start time in minutes.
         self.start_time_in_minute = start_time_in_minute
-        # Time Zone.
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):

@@ -100,12 +100,17 @@ class DescribeDBInstanceSwitchLogResponseBodyLogItems(DaraModel):
         self.node_id = node_id
         # The code that indicates the reason of a primary/secondary switchover. Valid values:
         # 
-        # *   USER_CONSOLE_OPERATION: The switchover is manually performed.
-        # *   OPERATION_AND_MAINTENANCE: Potential risks exist.
-        # *   MACHINE_DOWNTIME: The host is offline.
-        # *   PRIMARY_UNHEALTHY: An exception occurs on the primary node of the instance.
-        # *   SECONDARY_UNHEALTHY: An exception occurs on the secondary node of the instance.
-        # *   MULTIPLE_NODE_FAILURES: An exception occurs on multiple nodes of the instance.
+        # - USER_CONSOLE_OPERATION: The switchover is manually performed.
+        # 
+        # - OPERATION_AND_MAINTENANCE: Potential risks exist.
+        # 
+        # - MACHINE_DOWNTIME: The host is offline.
+        # 
+        # - PRIMARY_UNHEALTHY: An exception occurs on the primary node of the instance.
+        # 
+        # - SECONDARY_UNHEALTHY: An exception occurs on the secondary node of the instance.
+        # 
+        # - MULTIPLE_NODE_FAILURES: An exception occurs on multiple nodes of the instance.
         self.switch_code = switch_code
         # The switchover status. Valid values: **1** and **0**. The value 1 indicates a successful primary/secondary switchover and the value 0 indicates a failed primary/secondary switchover.
         self.switch_status = switch_status

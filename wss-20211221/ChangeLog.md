@@ -1,3 +1,12 @@
+2026-06-30 Version: 1.4.2
+- Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.TodayUsed.
+- Update API DescribeCreditUsageInfo: add response parameters Body.UsageInfoList.$.UsageInfo.TotalUsed.
+
+
+2026-06-03 Version: 1.4.1
+- Update API CreateMultiOrder: add request parameters ChannelCookie.
+
+
 2026-05-05 Version: 1.4.0
 - Support API DescribeCreditPackageAgents.
 - Support API DescribeCreditUsageInfo.

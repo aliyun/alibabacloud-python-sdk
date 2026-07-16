@@ -18,30 +18,30 @@ class ModifySiteMonitorRequest(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The URL or IP address that is monitored by the task.
+        # The URL or IP address of the monitoring task.
         self.address = address
-        # The ID of the alert rule. You can call the DescribeMetricRuleList operation to query the IDs of existing alert rules in CloudMonitor. For more information, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # The ID of the alert rule. The ID of an existing alert rule in CloudMonitor. You can call the DescribeMetricRuleList operation to query alert rule IDs. For more information, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         self.alert_ids = alert_ids
-        # The custom detection period. You can only select a time period from Monday to Sunday for detection.
+        # The custom monitoring schedule. You can select a specific time period from Monday to Sunday for monitoring.
         self.custom_schedule = custom_schedule
-        # The interval at which detection requests are sent. Valid values: 1, 5, and 15. Unit: minutes. Default value: 1.
+        # The monitoring frequency. Valid values: 1, 5, and 15. Unit: minutes. Default value: 1.
         self.interval = interval
-        # The unit of the metric.
+        # The unit of the monitoring metrics.
         # 
-        # Unit: milliseconds.
+        # Unit: milliseconds (ms).
         self.interval_unit = interval_unit
-        # The information of the detection points. The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values of the `city` field indicate Beijing, Hangzhou, and Qingdao.
+        # The detection point information. The value is in JSONArray format, for example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, where `city` corresponds to Beijing, Hangzhou, and Qingdao respectively.
         # 
-        # > You can call the DescribeSiteMonitorISPCityList operation to query the detection points. For more information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html). If you leave this parameter empty, the system randomly selects three detection points.
+        # > You can call the DescribeSiteMonitorISPCityList operation to query detection point information. For more information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html). If this parameter is left empty, the system randomly selects three detection points.
         self.isp_cities = isp_cities
-        # The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        # The advanced extended options for the protocol type of the monitoring task. Different protocol types correspond to different extended options.
         self.options_json = options_json
         self.region_id = region_id
-        # The ID of the site monitoring task.
+        # The ID of the monitoring task.
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The name of the site monitoring task. The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+        # The name of the monitoring task. The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
         self.task_name = task_name
 
     def validate(self):

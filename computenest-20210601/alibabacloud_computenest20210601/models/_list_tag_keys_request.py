@@ -11,7 +11,7 @@ class ListTagKeysRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token to start the next query.
         self.next_token = next_token
         # The region ID.
         # 
@@ -19,10 +19,13 @@ class ListTagKeysRequest(DaraModel):
         self.region_id = region_id
         # The resource type. Valid values:
         # 
-        # *   service: service
-        # *   serviceinstance: service instance
-        # *   artifact: artifact
-        # *   dataset: dataset
+        # - service: service.
+        # 
+        # - serviceinstance: service instance.
+        # 
+        # - artifact: artifact.
+        # 
+        # - dataset: dataset.
         # 
         # This parameter is required.
         self.resource_type = resource_type

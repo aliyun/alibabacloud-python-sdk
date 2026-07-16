@@ -15,11 +15,25 @@ class WhatsappCallResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The error description.
         self.message = message
+        # The returned result.
         self.model = model
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -79,6 +93,7 @@ class WhatsappCallResponseBodyModel(DaraModel):
         self,
         call_id: str = None,
     ):
+        # The unique identifier for each call.
         self.call_id = call_id
 
     def validate(self):

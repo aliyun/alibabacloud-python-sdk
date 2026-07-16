@@ -13,13 +13,13 @@ class FaceCrossCompareIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCrossCompareIntlResponseBodyResult = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Return message.
+        # The return message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -71,17 +71,17 @@ class FaceCrossCompareIntlResponseBodyResult(DaraModel):
         face_passed: str = None,
         transaction_id: str = None,
     ):
-        # A to B comparison score, range 0～100.
+        # The comparison score between A and B. Value range: 0 to 1.
         self.face_comparison_score_a2b = face_comparison_score_a2b
-        # B to C comparison score, range 0～100.
+        # The comparison score between B and C. Value range: 0 to 1.
         self.face_comparison_score_b2c = face_comparison_score_b2c
-        # C to A comparison score, range 0～100.
+        # The comparison score between C and A. Value range: 0 to 1.
         self.face_comparison_score_c2a = face_comparison_score_c2a
-        # Final verification result, values:
-        # - Y: Pass
-        # - N: Fail
+        # The final verification result. Valid values:
+        # - Y: Passed.
+        # - N: Not passed.
         self.face_passed = face_passed
-        # Unique identifier for the authentication request.
+        # The unique identifier of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):

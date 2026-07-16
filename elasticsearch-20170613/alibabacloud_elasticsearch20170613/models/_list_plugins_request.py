@@ -12,13 +12,13 @@ class ListPluginsRequest(DaraModel):
         size: int = None,
         source: str = None,
     ):
-        # SYSTEM
+        # The plugin name.
         self.name = name
-        # The ID of the request.
+        # The page number.
         self.page = page
-        # The header of the response.
+        # The number of records per page.
         self.size = size
-        # The total number of entries returned.
+        # The plugin source type. Only SYSTEM (system plugin) is supported.
         self.source = source
 
     def validate(self):

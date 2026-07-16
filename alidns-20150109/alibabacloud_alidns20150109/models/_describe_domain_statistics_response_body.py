@@ -13,7 +13,7 @@ class DescribeDomainStatisticsResponseBody(DaraModel):
         request_id: str = None,
         statistics: main_models.DescribeDomainStatisticsResponseBodyStatistics = None,
     ):
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         self.statistics = statistics
 

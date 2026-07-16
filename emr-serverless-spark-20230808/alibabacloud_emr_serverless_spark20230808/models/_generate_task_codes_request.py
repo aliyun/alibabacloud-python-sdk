@@ -11,10 +11,15 @@ class GenerateTaskCodesRequest(DaraModel):
         product_namespace: str = None,
         region_id: str = None,
     ):
+        # The number of codes to generate.
+        # 
         # This parameter is required.
         self.gen_num = gen_num
+        # The product namespace.
+        # 
         # This parameter is required.
         self.product_namespace = product_namespace
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

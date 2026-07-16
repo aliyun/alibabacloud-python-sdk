@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'appstream-center.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'appstream-center.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -132,6 +136,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.token_type):
             query['TokenType'] = request.token_type
         body = {}
+        if not DaraCore.is_null(request.account_type):
+            body['AccountType'] = request.account_type
+        if not DaraCore.is_null(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not DaraCore.is_null(request.ad_password):
+            body['AdPassword'] = request.ad_password
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
         if not DaraCore.is_null(request.end_user_id):
@@ -170,6 +180,12 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.token_type):
             query['TokenType'] = request.token_type
         body = {}
+        if not DaraCore.is_null(request.account_type):
+            body['AccountType'] = request.account_type
+        if not DaraCore.is_null(request.ad_domain):
+            body['AdDomain'] = request.ad_domain
+        if not DaraCore.is_null(request.ad_password):
+            body['AdPassword'] = request.ad_password
         if not DaraCore.is_null(request.auto_create_user):
             body['AutoCreateUser'] = request.auto_create_user
         if not DaraCore.is_null(request.end_user_id):

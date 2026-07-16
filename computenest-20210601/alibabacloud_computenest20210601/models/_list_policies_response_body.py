@@ -15,13 +15,13 @@ class ListPoliciesResponseBody(DaraModel):
         policies: List[main_models.ListPoliciesResponseBodyPolicies] = None,
         request_id: str = None,
     ):
-        # 分页大小。
+        # The number of entries returned per page.
         self.max_results = max_results
-        # Next Token
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # Permission policy list
+        # The list of access policies.
         self.policies = policies
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,16 +78,17 @@ class ListPoliciesResponseBodyPolicies(DaraModel):
         policy_name: str = None,
         policy_type: str = None,
     ):
-        # Permission policy description.
+        # The description of the access policy.
         self.description = description
-        # Policy content.
+        # The content of the policy.
         self.policy_document = policy_document
-        # Permission policy name.
+        # The name of the access policy.
         self.policy_name = policy_name
-        # Permission policy type.
+        # The type of the access policy.
         # 
-        # - Custom: Custom policy.
-        # - System: System policy.
+        # - Custom: A custom policy.
+        # 
+        # - System: A system policy.
         self.policy_type = policy_type
 
     def validate(self):

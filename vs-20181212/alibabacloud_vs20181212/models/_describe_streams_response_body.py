@@ -17,11 +17,17 @@ class DescribeStreamsResponseBody(DaraModel):
         streams: List[main_models.DescribeStreamsResponseBodyStreams] = None,
         total_count: int = None,
     ):
+        # Total number of pages.
         self.page_count = page_count
+        # Page number.
         self.page_num = page_num
+        # Number of items per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # List of streams.
         self.streams = streams
+        # Total number of streams.
         self.total_count = total_count
 
     def validate(self):
@@ -99,18 +105,35 @@ class DescribeStreamsResponseBodyStreams(DaraModel):
         status: str = None,
         width: int = None,
     ):
+        # Application that owns this stream.
         self.app = app
+        # Time when the stream was created.
         self.created_time = created_time
+        # Device ID of this stream.
         self.device_id = device_id
+        # Indicates whether the stream is enabled.
         self.enabled = enabled
+        # The ID of the group to which the stream belongs.
         self.group_id = group_id
+        # Video stream height in pixels.
         self.height = height
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
+        # Streaming domain for this stream.
         self.play_domain = play_domain
+        # Stream protocol.
         self.protocol = protocol
+        # Ingest domain for this stream.
         self.push_domain = push_domain
+        # Stream status. Valid values:
+        # 
+        # - on (online)
+        # 
+        # - off (offline)
         self.status = status
+        # Video stream width in pixels.
         self.width = width
 
     def validate(self):

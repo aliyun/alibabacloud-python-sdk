@@ -13,13 +13,13 @@ class Mobile3MetaVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.Mobile3MetaVerifyIntlResponseBodyResult = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Return message
+        # The return message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return result
+        # The verification result.
         self.result = result
 
     def validate(self):
@@ -69,25 +69,25 @@ class Mobile3MetaVerifyIntlResponseBodyResult(DaraModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
-        # Verification result code.
-        # - 1: Verification consistent
-        # - 2: Verification inconsistent
-        # - 3: No record found
+        # The verification result code. Valid values:
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # ISP name
+        # The carrier name. Valid values:
         # 
         # - CMCC: China Mobile
         # - CUCC: China Unicom
-        # - CTCC: China Telecom
+        # - CTCC: China Telecom.
         self.isp_name = isp_name
-        # Detailed verification results
+        # The detailed verification result. Valid values:
         # 
-        # - 101: Verification passed 
-        # - 201: Mobile number and name do not match, mobile number and ID number do not match 
-        # - 202: Mobile number and name match, but mobile number and ID number do not match 
-        # - 203: Mobile number and ID number match, but mobile number and name do not match 
-        # - 204: Other inconsistencies
-        # - 301: No record found
+        # - 101: Verification passed. 
+        # - 201: The phone number is inconsistent with the name, and the phone number is inconsistent with the ID card number. 
+        # - 202: The phone number is consistent with the name, but the phone number is inconsistent with the ID card number. 
+        # - 203: The phone number is consistent with the ID card number, but the phone number is inconsistent with the name. 
+        # - 204: Other inconsistency.
+        # - 301: No record found.
         self.sub_code = sub_code
 
     def validate(self):

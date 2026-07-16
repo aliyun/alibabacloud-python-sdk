@@ -19,8 +19,11 @@ class BatchStopApplicationsResponseBody(DaraModel):
         # The HTTP status code. Take note of the following rules:
         # 
         # - **2xx**: The call was successful.
+        # 
         # - **3xx**: The call was redirected.
+        # 
         # - **4xx**: The call failed.
+        # 
         # - **5xx**: A server error occurred.
         self.code = code
         # The ID of the change order.
@@ -28,18 +31,21 @@ class BatchStopApplicationsResponseBody(DaraModel):
         # The error code returned if the request failed. Take note of the following rules:
         # 
         # - The ErrorCode parameter is not returned if the request succeeds.
+        # 
         # - If the call fails, the ErrorCode parameter is returned. For more information, see the "Error codes" section of this topic.
         self.error_code = error_code
         # The ID of the trace. It can be used to query the details of a request.
         self.message = message
         # The returned message.
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # - **success** is returned when the request succeeds.
+        # 
+        # - An error code is returned when the request fails.
         self.request_id = request_id
         # Indicates whether the application is created. Valid values
         # 
         # - **true**
+        # 
         # - **false**
         self.success = success
         # The returned data.
@@ -110,8 +116,9 @@ class BatchStopApplicationsResponseBodyData(DaraModel):
     ):
         # The error code.
         # 
-        # *   If the request is successful, this parameter is not returned.****
-        # *   This parameter is returned only if the request failed.**** For more information, see the "**Error codes**" section in this topic.
+        # - If the request is successful, this parameter is not returned.\\*\\*\\*\\*
+        # 
+        # - This parameter is returned only if the request failed.\\*\\*\\*\\* For more information, see the "**Error codes**" section in this topic.
         self.change_order_id = change_order_id
 
     def validate(self):

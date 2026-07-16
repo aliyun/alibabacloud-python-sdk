@@ -10,7 +10,9 @@ class DeleteReservedNodePoolRequest(DaraModel):
         cluster_id: str = None,
         id: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The reserved node pool ID.
         self.id = id
 
     def validate(self):

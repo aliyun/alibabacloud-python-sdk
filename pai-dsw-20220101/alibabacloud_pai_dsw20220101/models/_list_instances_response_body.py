@@ -155,6 +155,7 @@ class ListInstancesResponseBodyInstances(DaraModel):
         service_config: main_models.ServiceConfig = None,
         status: str = None,
         tags: List[main_models.ListInstancesResponseBodyInstancesTags] = None,
+        tenant_id: str = None,
         terminal_url: str = None,
         user_id: str = None,
         user_name: str = None,
@@ -249,6 +250,7 @@ class ListInstancesResponseBodyInstances(DaraModel):
         self.status = status
         # The tags.
         self.tags = tags
+        self.tenant_id = tenant_id
         # The terminal URL.
         self.terminal_url = terminal_url
         # The user ID.
@@ -435,6 +437,9 @@ class ListInstancesResponseBodyInstances(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
 
@@ -599,6 +604,9 @@ class ListInstancesResponseBodyInstances(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.ListInstancesResponseBodyInstancesTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
 
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')

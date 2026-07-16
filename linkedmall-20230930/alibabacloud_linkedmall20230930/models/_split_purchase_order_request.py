@@ -10,6 +10,7 @@ class SplitPurchaseOrderRequest(DaraModel):
         self,
         body: main_models.PurchaseOrderRenderQuery = None,
     ):
+        # Input parameters for splitting and rendering a purchase order
         self.body = body
 
     def validate(self):

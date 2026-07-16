@@ -28,41 +28,42 @@ class GetArtifactLifecycleRuleResponseBody(DaraModel):
         scope: str = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether the lifecycle management rule is automatically executed.
+        # Specifies if the rule is executed automatically.
         self.auto = auto
-        # The return value.
+        # The return code.
         self.code = code
-        # The time when the lifecycle management rule was created.
+        # The creation time.
         self.create_time = create_time
-        # Indicates whether lifecycle management is enabled for the artifact.
+        # Specifies if lifecycle management is enabled.
         self.enable_delete_tag = enable_delete_tag
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The request succeeded.
+        # 
+        # - `false`: The request failed.
         self.is_success = is_success
-        # The time when the lifecycle management rule was last modified.
+        # The last modified time.
         self.modified_time = modified_time
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The time when the lifecycle management rule is next executed.
+        # The timestamp of the next scheduled execution.
         self.next_time = next_time
         self.policies = policies
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
         # The request ID.
         self.request_id = request_id
-        # The number of retained images.
+        # The number of image versions to retain.
         self.retention_tag_count = retention_tag_count
         # The rule ID.
         self.rule_id = rule_id
-        # The execution cycle of the lifecycle management rule.
+        # The execution schedule.
         self.schedule_time = schedule_time
-        # The deletion scope of artifacts.
+        # The scope of the rule.
         self.scope = scope
-        # The regular expression that indicates which image tags are retained.
+        # The regular expression that matches image tags to select versions for retention.
         self.tag_regexp = tag_regexp
 
     def validate(self):

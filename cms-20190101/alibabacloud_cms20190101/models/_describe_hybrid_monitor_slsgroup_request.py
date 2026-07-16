@@ -13,11 +13,11 @@ class DescribeHybridMonitorSLSGroupRequest(DaraModel):
         region_id: str = None,
         slsgroup_name: str = None,
     ):
-        # The keyword that is used to search for Logstore groups.
+        # The search keyword.
         self.keyword = keyword
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         # 

@@ -10,12 +10,11 @@ class DeleteInterceptionTargetResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the network objects are removed. Valid values:
-        # 
-        # *   **true**: The network objects are removed.
-        # *   **false**: The network objects fail to be removed.
+        # Indicates whether the network objects were deleted. Valid values:
+        # - **true**: The network objects were deleted.
+        # - **false**: The network objects failed to be deleted.
         self.result = result
 
     def validate(self):

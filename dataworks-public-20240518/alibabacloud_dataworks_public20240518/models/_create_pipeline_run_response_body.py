@@ -10,9 +10,9 @@ class CreatePipelineRunResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the process.
+        # The unique identifier of the publish process.
         self.id = id
-        # The request ID.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

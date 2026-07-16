@@ -15,7 +15,7 @@ class DescribeAccountAuthorityRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the database account.
+        # The database account name.
         self.account_name = account_name
         # The cluster ID.
         # 
@@ -23,7 +23,7 @@ class DescribeAccountAuthorityRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the latest region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

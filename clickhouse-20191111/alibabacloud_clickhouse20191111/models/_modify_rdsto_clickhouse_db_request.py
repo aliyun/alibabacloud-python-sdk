@@ -25,11 +25,11 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         resource_owner_id: int = None,
         skip_unsupported: bool = None,
     ):
-        # The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # The password of the ApsaraDB for ClickHouse database account.
         # 
         # This parameter is required.
         self.ck_password = ck_password
-        # The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # The database account of the ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.ck_user_name = ck_user_name
@@ -39,15 +39,15 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_cluster_id = db_cluster_id
-        # The maximum number of rows that can be synchronized per second.
+        # The maximum number of rows to sync per second.
         self.limit_upper = limit_upper
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the ApsaraDB RDS for MySQL instance.
+        # The instance ID of the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_id = rds_id
-        # The password of the account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # The password of the ApsaraDB RDS for MySQL database account.
         # 
         # This parameter is required.
         self.rds_password = rds_password
@@ -57,22 +57,23 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         # 
         # This parameter is required.
         self.rds_syn_db = rds_syn_db
-        # The table in the ApsaraDB RDS for MySQL instance.
+        # The tables in the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_syn_tables = rds_syn_tables
-        # The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # The database account of the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_user_name = rds_user_name
-        # The ID of the virtual private cloud (VPC) to which the ApsaraDB RDS for MySQL instance belongs.
+        # The VPC ID of the ApsaraDB RDS for MySQL instance.
         self.rds_vpc_id = rds_vpc_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to ignore databases that do not support synchronization. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Ignore the databases.
+        # 
+        # - **false**: Do not ignore the databases.
         # 
         # This parameter is required.
         self.skip_unsupported = skip_unsupported

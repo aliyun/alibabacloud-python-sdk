@@ -11,7 +11,7 @@ class GetInstanceControlConfigurationRequest(DaraModel):
         instance_id: str = None,
     ):
         self.element_name = element_name
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

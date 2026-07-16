@@ -19,16 +19,24 @@ class ChangeCloudPhoneNodeRequest(DaraModel):
         swap_size: int = None,
         up_bandwidth_limit: int = None,
     ):
+        # Indicates if automatic payment is enabled. Default: false.
         self.auto_pay = auto_pay
         self.display_config = display_config
+        # The downstream bandwidth limit, in Mbps.
         self.down_bandwidth_limit = down_bandwidth_limit
+        # The instance type.
         self.instance_type = instance_type
+        # The ID of the cloud phone matrix.
         self.node_id = node_id
+        # The number of cloud phone instances. Call the [](t2729804.xdita#)operation to query the minimum and maximum number of allowed instances.
         self.phone_count = phone_count
+        # The capacity of the internal storage, in GiB. Valid values: 10 to 4000. If you do not specify this parameter, the current capacity is retained.
         self.phone_data_volume = phone_data_volume
+        # The promotion ID.
         self.promotion_id = promotion_id
         self.share_data_volume = share_data_volume
         self.swap_size = swap_size
+        # The upstream bandwidth limit, in Mbps.
         self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):

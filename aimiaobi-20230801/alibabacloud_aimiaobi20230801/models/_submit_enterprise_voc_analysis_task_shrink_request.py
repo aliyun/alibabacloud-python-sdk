@@ -19,18 +19,32 @@ class SubmitEnterpriseVocAnalysisTaskShrinkRequest(DaraModel):
         task_type: str = None,
         workspace_id: str = None,
     ):
+        # The API key for integration access. For more information, see [Get an API key](https://help.aliyun.com/zh/model-studio/get-api-key?spm=a2c4g.11186623.help-menu-2400256.d_2_0_0.1cbdb0a8lsT1n3).
         self.api_key = api_key
+        # The content tags.
+        # 
         # This parameter is required.
         self.content_tags_shrink = content_tags_shrink
+        # The material content to be mined.
         self.contents_shrink = contents_shrink
+        # The key of the file.
         self.file_key = file_key
+        # The filter tags.
         self.filter_tags_shrink = filter_tags_shrink
+        # The material type. Valid values: \\`shortContent\\` (long or short comments, or tickets) and \\`dialogue\\` (dialogues).
         self.material_type = material_type
+        # The ID of the model.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # The content of the positive sample.
         self.positive_sample = positive_sample
+        # The key of the positive sample file.
         self.positive_sample_file_key = positive_sample_file_key
+        # The task type. Valid values: \\`lightAppSass\\` (invoked from a Software as a Service (SaaS) page) and \\`sdkBatchTask\\` (SDK batch task).
         self.task_type = task_type
+        # The ID of the Model Studio workspace. For more information, see [Get a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

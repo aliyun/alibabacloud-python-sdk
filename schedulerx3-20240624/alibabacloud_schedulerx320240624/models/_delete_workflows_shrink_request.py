@@ -12,11 +12,18 @@ class DeleteWorkflowsShrinkRequest(DaraModel):
         delete_jobs: bool = None,
         workflow_ids_shrink: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # If set to `true`, all jobs within the specified workflows are also deleted.
         self.delete_jobs = delete_jobs
+        # A list of workflow IDs to delete.
+        # 
         # This parameter is required.
         self.workflow_ids_shrink = workflow_ids_shrink
 

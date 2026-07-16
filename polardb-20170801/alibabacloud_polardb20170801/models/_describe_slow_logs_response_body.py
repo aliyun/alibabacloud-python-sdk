@@ -20,22 +20,22 @@ class DescribeSlowLogsResponseBody(DaraModel):
         start_time: str = None,
         total_record_count: int = None,
     ):
-        # The ID of cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The end date of the query.
+        # The end time of the query.
         self.end_time = end_time
-        # The type of the database engine.
+        # The database engine.
         self.engine = engine
         self.items = items
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of SQL statements that are returned on the current page.
+        # The number of SQL statements on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The start date of the query.
+        # The start time of the query.
         self.start_time = start_time
-        # The total number of returned entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

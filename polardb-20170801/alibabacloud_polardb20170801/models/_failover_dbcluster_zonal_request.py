@@ -17,15 +17,29 @@ class FailoverDBClusterZonalRequest(DaraModel):
         target_dbnode_id: str = None,
         target_zone_type: str = None,
     ):
+        # A client token to ensure the idempotence of the request. The client generates this token. It must be unique across requests. The token is case-sensitive and cannot exceed 64 ASCII characters.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Specifies whether to fail back to the original primary zone after a failover. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.roll_back_for_disaster = roll_back_for_disaster
+        # The ID of the node to promote to the primary node. If you do not specify this parameter, the system automatically selects a node. Call the DescribeDBClusters operation to query node information, such as node IDs.
         self.target_dbnode_id = target_dbnode_id
+        # The type of failover. Valid values:
+        # 
+        # - Primary: A primary/secondary failover within the primary zone.
+        # 
+        # - Standby: A switch to the hot standby storage cluster.
         self.target_zone_type = target_zone_type
 
     def validate(self):

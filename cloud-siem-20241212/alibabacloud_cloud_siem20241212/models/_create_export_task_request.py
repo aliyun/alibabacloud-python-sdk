@@ -13,10 +13,25 @@ class CreateExportTaskRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The parameters for the export task. The value is a JSON string that is generated based on the query conditions.
         self.export_task_parameter = export_task_parameter
+        # The type of data to export. Valid values:
+        # 
+        # - incident_list: event list.
         self.export_task_type = export_task_type
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center. Select a region based on where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: The Chinese mainland.
+        # 
+        # - ap-southeast-1: Regions outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can use this parameter to switch to the perspective of a member.
         self.role_for = role_for
 
     def validate(self):

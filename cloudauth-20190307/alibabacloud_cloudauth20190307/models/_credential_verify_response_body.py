@@ -15,13 +15,13 @@ class CredentialVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CredentialVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The response code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned result
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -76,32 +76,34 @@ class CredentialVerifyResponseBodyResultObject(DaraModel):
         verify_result: str = None,
         vl_result: main_models.CredentialVerifyResponseBodyResultObjectVlResult = None,
     ):
-        # Additional information in JSON format.
+        # The additional information in JSON format.
         self.material_info = material_info
-        # OCR recognition result.
+        # The OCR recognition result.
         self.ocr_info = ocr_info
-        # Risk result
+        # The risk result. Valid values:
         # 
-        # - **0**: Low risk
-        # - **1**: High risk
-        # - **2**: Suspicious
+        # - **0**: Low risk.
+        # - **1**: High risk.
+        # - **2**: Suspicious.
         self.result = result
-        # Risk score map.
+        # The risk score map.
         self.risk_score = risk_score
-        # Risk tags, separated by commas (,), including:
+        # The risk tags, separated by commas (,). Valid values:
         # 
-        # - **PS**: Image manipulation.
-        # - **SCREEN_PHOTO**: Screen recapture.
-        # - **SCREENSHOT**: Screenshot.
-        # - **WATERMARK**: Watermark.
-        # - **SAME_BACKGROUND**: Similar background.
-        # - **ORIGINAL_PHOTO**: Not the original image
+        # - PS: image manipulation.
+        # - SCREEN_PHOTO: screen recapture.
+        # - SCREENSHOT: screenshot.
+        # - WATERMARK: watermark.
+        # - COLOR_PRINT: color print copy.
+        # - WEB_IMAGE: web image.
+        # - SAME_FACE: similar face.
+        # - SAME_BACKGROUND: similar background.
         self.risk_tag = risk_tag
-        # Authority verification details.
+        # The authoritative verification details.
         self.verify_detail = verify_detail
-        # The verification result.
+        # The authoritative verification result.
         self.verify_result = verify_result
-        # Qwen interpretation.
+        # The Qwen interpretation.
         self.vl_result = vl_result
 
     def validate(self):
@@ -174,16 +176,12 @@ class CredentialVerifyResponseBodyResultObjectVlResult(DaraModel):
         success: bool = None,
         vl_content: str = None,
     ):
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the Qwen interpretation is successful. Valid values:
         # 
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
-        # Image understanding result:
-        # 
-        # - When PromptModel is DEFAULT, the output format refers to the example on the right.
-        # 
-        # - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
+        # The Qwen interpretation content.
         self.vl_content = vl_content
 
     def validate(self):

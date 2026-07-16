@@ -26,49 +26,49 @@ class DescribeScalingInstancesRequest(DaraModel):
         scaling_configuration_id: str = None,
         scaling_group_id: str = None,
     ):
-        # The instance creation method. Valid values:
+        # The method used to create the instance in the scaling group. Valid values: 
         # 
-        # *   AutoCreated: The ECS instances are created by Auto Scaling based on the instance configuration source.
-        # *   Attached: The ECS instances are manually added to the scaling group.
-        # *   Managed: The Alibaba Cloud-managed third-party instances are manually added to the scaling group.
+        # - AutoCreated: The ECS instance is created by automatic creation based on the instance configuration source in Auto Scaling. 
+        # - Attached: The ECS instance is not created by Auto Scaling but manually added to the scaling group.
+        # - Managed: The managed instance is not created by Auto Scaling but manually added to the scaling group.
         self.creation_type = creation_type
-        # The instance creation methods. If you specify this parameter, you cannot specify CreationType.
+        # The methods used to create instances in the scaling group. You can specify only one of this parameter and CreationType.
         self.creation_types = creation_types
-        # The health status of the ECS instance in the scaling group. If an ECS instance is not in the Running state, the instance is considered unhealthy. Valid values:
+        # The health check status of the ECS instance in the scaling group. ECS instances that are not in the Running state are considered unhealthy. Valid values: 
         # 
-        # *   Healthy
-        # *   Unhealthy
+        # - Healthy: The ECS instance is healthy. 
+        # - Unhealthy: The ECS instance is unhealthy. 
         # 
-        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and then releases the automatically created instances among the unhealthy instances.
+        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and releases the ECS instances created by automatic creation.
         # 
-        # Unhealthy ECS instances that are manually added to the scaling group are released based on the management mode of the lifecycles of the instances. If the lifecycles of the ECS instances are not managed by the scaling group, Auto Scaling removes the instances from the scaling group but does not release the instances. If the lifecycles of the ECS instances are managed by the scaling group, Auto Scaling removes the instances from the scaling group and releases the instances.
+        # Whether a manually added ECS instance is released depends on its managed state. If the instance lifecycle is not managed by the scaling group, the instance is only removed but not released. If the instance lifecycle is managed by the scaling group, the instance is removed and released.
         # 
-        # >  Make sure that you have sufficient balance within your Alibaba Cloud account. If your Alibaba Cloud account has an overdue payment, all pay-as-you-go ECS instances, including preemptible instances, may be stopped or even released. For information about how the status of ECS instances changes when you have an overdue payment in your Alibaba Cloud account, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
+        # > Make sure that your account has a sufficient available quota. If your account has an overdue payment, all pay-as-you-go ECS instances (including pay-as-you-go instances and spot instances) are stopped or even released. For information about how the status of ECS instances in a scaling group changes after an overdue payment occurs, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
         self.health_status = health_status
         # The IDs of the ECS instances.
         # 
-        # The IDs of inactive instances are not displayed in the query result, and no errors are returned.
+        # Invalid InstanceId values are ignored in the query results, and no error is returned.
         self.instance_ids = instance_ids
-        # The lifecycle status of the ECS instance in the scaling group. Valid values:
-        # 
-        # *   InService: The ECS instance is added to the scaling group and provides services as expected.
-        # *   Pending: The ECS instance is being added to the scaling group. When an ECS instance is being added to the scaling group, Auto Scaling also adds the instance to the backend server groups of the attached load balancers and adds the private IP address of the instance to the IP address whitelists of the attached ApsaraDB RDS instances.
-        # *   Pending:Wait: The ECS instance is waiting to be added to the scaling group. If a scale-out lifecycle hook is in effect, the ECS instance remains in the Pending:Wait state until the timeout period for the lifecycle hook expires.
-        # *   Protected: The ECS instance is protected. Protected ECS instances can continue to provide services as expected, but Auto Scaling does not manage the lifecycles of the ECS instances. You must manually manage the lifecycles of the ECS instances.
-        # *   Standby: The ECS instance is on standby. Standby ECS instances do not provide services as expected, and the weights of the ECS instances as backend servers are reset to zero. Auto Scaling does not manage the lifecycles of the ECS instances. Therefore, you must manually manage the lifecycles of the ECS instances.
-        # *   Stopped: The ECS instance is stopped. Stopped ECS instances no longer provide services.
-        # *   Removing: The ECS instance is being removed from the scaling group. When an ECS instance is being removed from the scaling group, Auto Scaling also removes the instance from the backend server groups of the attached load balancers and removes the private IP address of the instance from the IP address whitelists of the attached ApsaraDB RDS instances.
-        # *   Removing:Wait: The ECS instance is waiting to be removed from the scaling group. If a scale-in lifecycle hook is in effect, the ECS instance remains in the Removing:Wait state until the timeout period for the lifecycle hook expires.
+        # The lifecycle state of the ECS instance in the scaling group. Valid values:
+        #  
+        # - InService: The ECS instance is added to the scaling group and provides services in the Normal state. 
+        # - Pending: The ECS instance is being added to the scaling group. During this procedure, the ECS instance is added to the backend server group of the associated load balancing instance and to the access whitelist of the associated ApsaraDB RDS instance.
+        # - Pending:Wait: The ECS instance is waiting to be added to the scaling group. If a lifecycle hook that applies to scale-out activities is created for the scaling group, the ECS instance is suspended and waits for the lifecycle hook timeout to end.
+        # - Protected: The ECS instance is protected. The ECS instance provides services as expected, but Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
+        # - Standby: The ECS instance is in the standby state. The ECS instance does not provide services, the weight of SLB backend server is set to zero, and Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
+        # - Stopped: The ECS instance is stopped and does not provide services.
+        # - Removing: The ECS instance is being removed from the scaling group. During this procedure, the ECS instance is removed from the backend server group of the associated load balancing instance and from the access whitelist of the associated ApsaraDB RDS instance. 
+        # - Removing:Wait: The ECS instance is waiting to be removed from the scaling group. If a lifecycle hook that applies to scale-down activities is created for the scaling group, the ECS instance is suspended and waits for the lifecycle hook timeout to end.
         self.lifecycle_state = lifecycle_state
-        # The lifecycle status of the ECS instances in the scaling group. You can specify only one of LifecycleStates and LifecycleState at a time. We recommend that you specify this parameter.
+        # The lifecycle states of ECS instances in the scaling group. You can specify only one of this parameter and LifecycleState. We recommend that you use this parameter.
         self.lifecycle_states = lifecycle_states
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the ECS instance list. Minimum value: 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100.
+        # The number of entries per page in a paged query. Settings: Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -80,7 +80,7 @@ class DescribeScalingInstancesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
-        # The ID of the scaling configuration.
+        # The ID of the associated scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id

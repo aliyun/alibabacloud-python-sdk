@@ -14,9 +14,11 @@ class ListSyslogsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The object that contains the paginated list of logs.
         self.logs = logs
+        # The \\`NextToken\\` for the next page. To retrieve the next page of results, include this return value in the next request.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -81,23 +83,41 @@ class ListSyslogsResponseBodyLogs(DaraModel):
         time: str = None,
         topic: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The security domain of the client.
         self.domain = domain
+        # A standard field in Linux syslog.
         self.facility = facility
+        # The hostname of the client.
         self.hostname = hostname
+        # The IP address of the client.
         self.ip = ip
+        # The content of the syslog.
         self.msg = msg
+        # The node ID.
         self.node_id = node_id
+        # A standard field in Linux syslog.
         self.severity = severity
+        # The unique identifier of the machine.
         self.sn = sn
+        # The hostname of the syslog server.
         self.source = source
+        # A standard field in Linux syslog.
         self.syslogtag = syslogtag
+        # Tag: Hostname.
         self.tag_hostname = tag_hostname
+        # Tag: Package ID.
         self.tag_pack_id = tag_pack_id
+        # Tag: Path.
         self.tag_path = tag_path
+        # Tag: Receive time.
         self.tag_receive_time = tag_receive_time
+        # Tag: User-defined ID.
         self.tag_user_defined_id = tag_user_defined_id
+        # The time in UNIX format.
         self.time = time
+        # The topic. Valid values are \\`logserver\\` and \\`log2sls\\`. Note: Both are syslog servers. \\`logserver\\` collects data over TCP. \\`log2sls\\` collects data over UDP.
         self.topic = topic
 
     def validate(self):

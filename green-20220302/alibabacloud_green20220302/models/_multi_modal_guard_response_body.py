@@ -15,9 +15,13 @@ class MultiModalGuardResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,8 +71,11 @@ class MultiModalGuardResponseBodyData(DaraModel):
         detail: List[main_models.MultiModalGuardResponseBodyDataDetail] = None,
         suggestion: str = None,
     ):
+        # The data ID of the detection object.
         self.data_id = data_id
+        # The detection details.
         self.detail = detail
+        # The moderation suggestion. Valid values: -block: The content is non-compliant. -pass: The content is compliant.
         self.suggestion = suggestion
 
     def validate(self):
@@ -119,9 +126,13 @@ class MultiModalGuardResponseBodyDataDetail(DaraModel):
         suggestion: str = None,
         type: str = None,
     ):
+        # The risk level.
         self.level = level
+        # The detection results.
         self.result = result
+        # The moderation suggestion. Valid values: -**block**: The content is non-compliant. -**pass**: The content is compliant.
         self.suggestion = suggestion
+        # The type.
         self.type = type
 
     def validate(self):
@@ -179,10 +190,15 @@ class MultiModalGuardResponseBodyDataDetailResult(DaraModel):
         label: str = None,
         level: str = None,
     ):
+        # The confidence score. Valid values: 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
+        # The description of the label.
         self.description = description
+        # The extended information about the detection results.
         self.ext = ext
+        # The label.
         self.label = label
+        # The risk level.
         self.level = level
 
     def validate(self):

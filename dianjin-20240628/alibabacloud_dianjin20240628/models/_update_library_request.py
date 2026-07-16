@@ -13,10 +13,15 @@ class UpdateLibraryRequest(DaraModel):
         library_id: str = None,
         library_name: str = None,
     ):
+        # Document library description
         self.description = description
+        # Document library index configuration
         self.index_setting = index_setting
+        # Document library ID
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # Document library name
         self.library_name = library_name
 
     def validate(self):
@@ -70,12 +75,19 @@ class UpdateLibraryRequestIndexSetting(DaraModel):
         text_index_setting: main_models.UpdateLibraryRequestIndexSettingTextIndexSetting = None,
         vector_index_setting: main_models.UpdateLibraryRequestIndexSettingVectorIndexSetting = None,
     ):
+        # Chunking strategy
         self.chunk_strategy = chunk_strategy
+        # Model configuration
         self.model_config = model_config
+        # Prompt role style
         self.prompt_role_style = prompt_role_style
+        # Query enhancement
         self.query_enhancer = query_enhancer
+        # Retrieval strategy
         self.recall_strategy = recall_strategy
+        # Text index settings
         self.text_index_setting = text_index_setting
+        # Vector index settings
         self.vector_index_setting = vector_index_setting
 
     def validate(self):
@@ -160,10 +172,15 @@ class UpdateLibraryRequestIndexSettingVectorIndexSetting(DaraModel):
         rank_threshold: float = None,
         top_k: int = None,
     ):
+        # Vector index source. We recommend ADB
         self.category = category
+        # Text embedding model for vector indexing
         self.embedding_type = embedding_type
+        # Enable vector indexing
         self.enable = enable
+        # Vector index ranking threshold
         self.rank_threshold = rank_threshold
+        # Number of final summarized results from vector indexing
         self.top_k = top_k
 
     def validate(self):
@@ -220,11 +237,17 @@ class UpdateLibraryRequestIndexSettingTextIndexSetting(DaraModel):
         search_analyzer: str = None,
         top_k: int = None,
     ):
+        # Text index type
         self.category = category
+        # Enable text indexing
         self.enable = enable
+        # Text index analyzer: Standard, IkMaxWord, or IkSmart
         self.index_analyzer = index_analyzer
+        # Text index ranking threshold
         self.rank_threshold = rank_threshold
+        # Text index search analyzer: Standard, IkMaxWord, or IkSmart
         self.search_analyzer = search_analyzer
+        # Number of final summarized results from text indexing
         self.top_k = top_k
 
     def validate(self):
@@ -283,7 +306,9 @@ class UpdateLibraryRequestIndexSettingRecallStrategy(DaraModel):
         document_rank_type: str = None,
         limit: int = None,
     ):
+        # Merge and sort strategy
         self.document_rank_type = document_rank_type
+        # Number of results from two-way merge and summarization
         self.limit = limit
 
     def validate(self):
@@ -323,12 +348,19 @@ class UpdateLibraryRequestIndexSettingQueryEnhancer(DaraModel):
         local_knowledge_id: str = None,
         with_document_reference: bool = None,
     ):
+        # Multi-turn enhancement
         self.enable_follow_up = enable_follow_up
+        # Use Large Language Models (LLMs) to decompose queries
         self.enable_multi_query = enable_multi_query
+        # Use Large Language Models (LLMs) to answer queries
         self.enable_open_qa = enable_open_qa
+        # Rewrite queries using domain knowledge
         self.enable_query_rewrite = enable_query_rewrite
+        # Record session history
         self.enable_session = enable_session
+        # Document library ID used for query rewriting
         self.local_knowledge_id = local_knowledge_id
+        # Include document references in responses
         self.with_document_reference = with_document_reference
 
     def validate(self):
@@ -393,8 +425,9 @@ class UpdateLibraryRequestIndexSettingModelConfig(DaraModel):
         temperature: float = None,
         top_p: float = None,
     ):
+        # Temperature
         self.temperature = temperature
-        # topP
+        # Top P
         self.top_p = top_p
 
     def validate(self):
@@ -436,14 +469,23 @@ class UpdateLibraryRequestIndexSettingChunkStrategy(DaraModel):
         size: int = None,
         split: bool = None,
     ):
+        # Layout-based chunking
         self.doc_tree_split = doc_tree_split
+        # Layout-based chunking size
         self.doc_tree_split_size = doc_tree_split_size
+        # Enhance images
         self.enhance_graph = enhance_graph
+        # Enhance tables
         self.enhance_table = enhance_table
+        # Chunk overlap length
         self.overlap = overlap
+        # Split by sentence. Default is true
         self.sentence_split = sentence_split
+        # Average sentence-based chunking length
         self.sentence_split_size = sentence_split_size
+        # Fixed-length chunking size
         self.size = size
+        # Enable chunking
         self.split = split
 
     def validate(self):

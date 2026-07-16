@@ -11,9 +11,9 @@ class DescribeSampleInfoResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeSampleInfoResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -54,17 +54,17 @@ class DescribeSampleInfoResponseBodyResultObject(DaraModel):
         update_time: str = None,
         version: int = None,
     ):
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Sample tags.
+        # The sample tags.
         self.sample_tags = sample_tags
-        # Sample type
+        # The data sample type.
         self.sample_type = sample_type
-        # Sample value.
+        # The sample value.
         self.sample_value = sample_value
-        # Update time.
+        # The update time.
         self.update_time = update_time
-        # Version number.
+        # The version number.
         self.version = version
 
     def validate(self):

@@ -17,11 +17,15 @@ class VatInvoiceScanQueryResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The response data. This parameter is returned by the server. An empty value is returned if no result is found or an exception occurs.
         self.module = module
         # requestId
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
         # traceId
         self.trace_id = trace_id
@@ -87,10 +91,15 @@ class VatInvoiceScanQueryResponseBodyModule(DaraModel):
         total_page: int = None,
         total_size: int = None,
     ):
+        # The paginated results.
         self.items = items
+        # The page number of this request.
         self.page_no = page_no
+        # The page size of this request.
         self.page_size = page_size
+        # The total number of pages.
         self.total_page = total_page
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -151,6 +160,7 @@ class VatInvoiceScanQueryResponseBodyModuleItems(DaraModel):
         amount_with_tax: str = None,
         amount_without_tax: str = None,
         bill_date: str = None,
+        changed: bool = None,
         check_code: str = None,
         drawer: str = None,
         id: str = None,
@@ -185,42 +195,81 @@ class VatInvoiceScanQueryResponseBodyModuleItems(DaraModel):
         total_amount_in_words: str = None,
         xml_oss_url: str = None,
     ):
+        # The tax-inclusive amount.
         self.amount_with_tax = amount_with_tax
+        # The tax-exclusive amount.
         self.amount_without_tax = amount_without_tax
+        # The billing date.
         self.bill_date = bill_date
+        # Indicates whether the invoice has been reissued. Valid values:
+        # - true: Reissued.
+        # - false: Not reissued.
+        self.changed = changed
+        # The verification code.
         self.check_code = check_code
+        # The invoice issuer.
         self.drawer = drawer
+        # The primary key ID.
         self.id = id
+        # The invoice code.
         self.invoice_code = invoice_code
+        # The invoice date.
         self.invoice_day = invoice_day
+        # The invoice details.
         self.invoice_detail = invoice_detail
+        # The invoice line items.
         self.invoice_details = invoice_details
+        # The invoice region.
         self.invoice_location = invoice_location
+        # The invoice number.
         self.invoice_no = invoice_no
+        # The invoice subtask ID.
         self.invoice_sub_task_id = invoice_sub_task_id
+        # The invoice type.
         self.invoice_type = invoice_type
+        # The invoice type description.
         self.invoice_type_desc = invoice_type_desc
-        # 机器码
+        # The machine code.
         self.machine_code = machine_code
+        # The URL for the VAT invoice file in OFD format. This URL is available only for digitalized electronic invoicing and electronic general VAT invoices.
         self.ofd_oss_url = ofd_oss_url
+        # The URL for the VAT invoice file in image format.
         self.oss_url = oss_url
+        # The password area.
         self.password_area = password_area
+        # The URL for the VAT invoice file in PDF format. This URL is available only for digitalized electronic invoicing and electronic general VAT invoices.
         self.pdf_oss_url = pdf_oss_url
+        # The purchaser bank account information.
         self.purchaser_bank_account_info = purchaser_bank_account_info
+        # The purchaser contact information.
         self.purchaser_contact_info = purchaser_contact_info
+        # The purchaser name.
         self.purchaser_name = purchaser_name
+        # The purchaser tax number.
         self.purchaser_tax_no = purchaser_tax_no
+        # The payee.
         self.recipient = recipient
+        # The remarks.
         self.remarks = remarks
+        # The reviewer.
         self.reviewer = reviewer
+        # The seller bank account information.
         self.seller_bank_account_info = seller_bank_account_info
+        # The seller contact information.
         self.seller_contact_info = seller_contact_info
+        # The seller name.
         self.seller_name = seller_name
+        # The seller tax number.
         self.seller_tax_no = seller_tax_no
+        # The abbreviated verification code.
         self.smart_check_code = smart_check_code
+        # The tax amount.
         self.tax_amount = tax_amount
+        # The tax rate.
         self.tax_rate = tax_rate
+        # The total amount in words.
         self.total_amount_in_words = total_amount_in_words
+        # The URL for the VAT invoice file in XML format. This URL is available only for digitalized electronic invoicing.
         self.xml_oss_url = xml_oss_url
 
     def validate(self):
@@ -242,6 +291,9 @@ class VatInvoiceScanQueryResponseBodyModuleItems(DaraModel):
 
         if self.bill_date is not None:
             result['bill_date'] = self.bill_date
+
+        if self.changed is not None:
+            result['changed'] = self.changed
 
         if self.check_code is not None:
             result['check_code'] = self.check_code
@@ -356,6 +408,9 @@ class VatInvoiceScanQueryResponseBodyModuleItems(DaraModel):
 
         if m.get('bill_date') is not None:
             self.bill_date = m.get('bill_date')
+
+        if m.get('changed') is not None:
+            self.changed = m.get('changed')
 
         if m.get('check_code') is not None:
             self.check_code = m.get('check_code')
@@ -474,15 +529,23 @@ class VatInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails(DaraModel):
         unit: str = None,
         unit_price: str = None,
     ):
+        # The amount.
         self.amount = amount
-        # 行号
+        # The line number.
         self.index = index
+        # The name of the goods, taxable services, or service name.
         self.item_name = item_name
+        # The quantity.
         self.quantity = quantity
+        # The specification and model.
         self.specification = specification
+        # The tax amount.
         self.tax = tax
+        # The tax rate.
         self.tax_rate = tax_rate
+        # The unit of measurement.
         self.unit = unit
+        # The unit price.
         self.unit_price = unit_price
 
     def validate(self):

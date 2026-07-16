@@ -20,7 +20,6 @@ class HotelRoomInfoResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
         self.trace_id = trace_id

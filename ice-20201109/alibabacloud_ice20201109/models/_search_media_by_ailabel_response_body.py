@@ -121,18 +121,29 @@ class SearchMediaByAILabelResponseBodyMediaList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PrepareFail
-        # *   UploadFail
-        # *   Init
-        # *   UploadSucc
-        # *   Transcoding
-        # *   TranscodeFail
-        # *   Deleted
-        # *   Normal
-        # *   Uploading
-        # *   Preparing
-        # *   Blocked
-        # *   Checking
+        # - PrepareFail
+        # 
+        # - UploadFail
+        # 
+        # - Init
+        # 
+        # - UploadSucc
+        # 
+        # - Transcoding
+        # 
+        # - TranscodeFail
+        # 
+        # - Deleted
+        # 
+        # - Normal
+        # 
+        # - Uploading
+        # 
+        # - Preparing
+        # 
+        # - Blocked
+        # 
+        # - Checking
         self.status = status
         # The storage address.
         self.storage_location = storage_location

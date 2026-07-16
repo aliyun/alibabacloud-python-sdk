@@ -12,11 +12,18 @@ class ModifyGreetingConfigRequest(DaraModel):
         intent_trigger: str = None,
         source_type: str = None,
     ):
+        # The greeting words.
+        # 
         # This parameter is required.
         self.greeting_words = greeting_words
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent trigger.
         self.intent_trigger = intent_trigger
+        # The type.
+        # 
         # This parameter is required.
         self.source_type = source_type
 

@@ -13,7 +13,9 @@ class CheckModelFeatureFGFeatureResponseBody(DaraModel):
         fgcheck_results: List[main_models.CheckModelFeatureFGFeatureResponseBodyFGCheckResults] = None,
         request_id: str = None,
     ):
+        # The FG configuration check results.
         self.fgcheck_results = fgcheck_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,19 @@ class CheckModelFeatureFGFeatureResponseBodyFGCheckResults(DaraModel):
         rule_code: str = None,
         status: bool = None,
     ):
+        # The error message.
         self.message = message
+        # The rule code for the check.
+        # 
+        # - SeqSubEx—Are the sub-features of sequence features in the FG present in the model feature?
+        # 
+        # - LookupKeyEx—Does the lookup key feature of query features exist in the model feature?
+        # 
+        # - FGSetEx—Are all FG features present in the model feature?
+        # 
+        # - ModelSetEx—Are all model feature features present in the FG?
         self.rule_code = rule_code
+        # Whether the rule passes.
         self.status = status
 
     def validate(self):

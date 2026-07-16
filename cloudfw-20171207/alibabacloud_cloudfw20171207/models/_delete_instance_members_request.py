@@ -11,7 +11,7 @@ class DeleteInstanceMembersRequest(DaraModel):
         self,
         member_uids: List[int] = None,
     ):
-        # The UIDs of the members.
+        # The UIDs of the member accounts.
         # 
         # This parameter is required.
         self.member_uids = member_uids

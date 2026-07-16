@@ -13,12 +13,21 @@ class CreateDirectoryRequest(DaraModel):
         owner_id: int = None,
         parent_id: str = None,
     ):
+        # Folder description.
         self.description = description
+        # Space ID to which the folder belongs.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # Folder name.
+        # 
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # Parent folder ID.
+        # 
+        # > When you create a device space, the system automatically creates a root directory for that space. Use the [DescribeDirectories](https://next.api.aliyun.com/document/vs/2018-12-12/DescribeDirectories) API to query the corresponding root directory.
+        # 
         # This parameter is required.
         self.parent_id = parent_id
 

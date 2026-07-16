@@ -9,6 +9,7 @@ class GetYikeUserRequest(DaraModel):
         self,
         user_name: str = None,
     ):
+        # The user name of the sub-account.
         self.user_name = user_name
 
     def validate(self):

@@ -19,8 +19,9 @@ class DescribeMetricRuleTemplateListRequest(DaraModel):
     ):
         # Specifies whether to display the history of applying the alert templates to application groups. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.history = history
         # The keyword of the alert template name.
         self.keyword = keyword
@@ -28,13 +29,15 @@ class DescribeMetricRuleTemplateListRequest(DaraModel):
         self.name = name
         # The sorting order. Valid values:
         # 
-        # *   true (default): ascending order
-        # *   false: descending order
+        # - true (default): ascending order
+        # 
+        # - false: descending order
         self.order = order
         # The sorting basis. Valid values:
         # 
-        # *   gmtMotified: sorts alert templates by modification time
-        # *   gmtCreate (default): sorts alert templates by creation time
+        # - gmtMotified: sorts alert templates by modification time
+        # 
+        # - gmtCreate (default): sorts alert templates by creation time
         self.order_by = order_by
         # The page number.
         # 

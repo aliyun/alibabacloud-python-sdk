@@ -19,12 +19,19 @@ class DescribePackageDeductionsResponseBody(DaraModel):
         total_used_time: int = None,
         total_used_time_decimal: str = None,
     ):
+        # The deduction details.
         self.deductions = deductions
+        # The current page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of matching entries.
         self.total_count = total_count
+        # The total core-hours deducted for all matching entries.
         self.total_used_core_time = total_used_core_time
+        # The total usage duration of all matching entries, in seconds.
         self.total_used_time = total_used_time
         self.total_used_time_decimal = total_used_time_decimal
 
@@ -121,22 +128,35 @@ class DescribePackageDeductionsResponseBodyDeductions(DaraModel):
         used_time_decimal: str = None,
         used_time_with_scale: int = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The cloud computer ID.
         self.desktop_id = desktop_id
+        # The cloud computer name.
         self.desktop_name = desktop_name
+        # The desktop type.
         self.desktop_type = desktop_type
+        # The billing cycle end time.
         self.end_time = end_time
         self.group_resource_type = group_resource_type
         self.instance_id = instance_id
+        # The core-hour package state.
         self.instance_state = instance_state
         self.instance_type = instance_type
+        # The memory size, in MB.
         self.memory = memory
+        # The OS of the cloud computer.
         self.os_type = os_type
+        # The region ID.
         self.region_id = region_id
+        # The resource type.
         self.resource_type = resource_type
         self.session_id = session_id
+        # The billing cycle start time.
         self.sta_time = sta_time
+        # The deducted core-hours.
         self.used_core_time = used_core_time
+        # The usage duration, in seconds.
         self.used_time = used_time
         self.used_time_decimal = used_time_decimal
         self.used_time_with_scale = used_time_with_scale

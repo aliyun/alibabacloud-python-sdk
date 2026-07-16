@@ -14,7 +14,7 @@ class ChatappMigrationVerifiedRequest(DaraModel):
         resource_owner_id: int = None,
         verify_code: str = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
+        # The space ID of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

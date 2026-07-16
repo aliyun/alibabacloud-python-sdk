@@ -13,13 +13,22 @@ class ModifyBackupPolicyRequest(DaraModel):
         preferred_backup_time: str = None,
         region_id: str = None,
     ):
+        # The number of days to retain backups.
         self.backup_retention_period = backup_retention_period
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The backup cycle.
+        # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
+        # The backup time.
+        # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -10,8 +10,12 @@ class CreateStreamBatchJobMappingShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         stream_batch_job_mapping_create_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The stream-batch integrated node information.
+        # 
         # This parameter is required.
         self.stream_batch_job_mapping_create_command_shrink = stream_batch_job_mapping_create_command_shrink
 

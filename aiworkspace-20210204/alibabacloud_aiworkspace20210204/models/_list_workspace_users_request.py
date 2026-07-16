@@ -11,7 +11,7 @@ class ListWorkspaceUsersRequest(DaraModel):
         user_name: str = None,
     ):
         self.user_id = user_id
-        # The display names of users who can be added to the workspace as members.
+        # The display name of the user that can be added as a workspace member.
         self.user_name = user_name
 
     def validate(self):

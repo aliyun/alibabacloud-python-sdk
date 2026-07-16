@@ -24,33 +24,33 @@ class ListAppDomainRedirectRecordsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # Frontend application name.
+        # The frontend application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message, currently unused, please ignore
+        # The dynamic message. Currently not used. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # Error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Number of results per query.
+        # The number of entries per query.
         # 
-        # Range: 10~100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Returned object.
+        # The returned object.
         self.module = module
-        # 下一个查询开始的Token。没有下一个查询时为空。
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Whether it is processed synchronously
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -160,23 +160,23 @@ class ListAppDomainRedirectRecordsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Member name.
+        # The member name.
         self.data = data
-        # Next feature ID
+        # The next feature ID.
         self.next = next
-        # Whether there is a next page
+        # Indicates whether a next page exists.
         self.next_page = next_page
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Whether there is a previous page.
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # Apart from pagination limits, the server processes up to the most recent 1000 records. If the result exceeds 1000, **ResultLimit** is **true**, please narrow down the time range and search again; otherwise, **ResultLimit** is **false**.
+        # Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit** is **true**. Narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Total number of items.
+        # The total number of entries.
         self.total_item_num = total_item_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -265,11 +265,11 @@ class ListAppDomainRedirectRecordsResponseBodyModuleNext(DaraModel):
         source_domain: str = None,
         target_domain: str = None,
     ):
-        # Redirect record ID
+        # The redirect record ID.
         self.record_id = record_id
-        # Source domain
+        # The source domain name.
         self.source_domain = source_domain
-        # Target domain
+        # The destination domain name.
         self.target_domain = target_domain
 
     def validate(self):
@@ -311,11 +311,11 @@ class ListAppDomainRedirectRecordsResponseBodyModuleData(DaraModel):
         source_domain: str = None,
         target_domain: str = None,
     ):
-        # Redirect record ID
+        # The redirect record ID.
         self.record_id = record_id
-        # Source domain
+        # The source domain name.
         self.source_domain = source_domain
-        # 目标域名
+        # The destination domain name.
         self.target_domain = target_domain
 
     def validate(self):

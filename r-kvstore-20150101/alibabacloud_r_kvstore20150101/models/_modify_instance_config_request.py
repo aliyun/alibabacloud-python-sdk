@@ -21,40 +21,40 @@ class ModifyInstanceConfigRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # 需修改的实例参数，格式为JSON，修改后的值会覆盖原来的值。例如您只希望修改**maxmemory-policy**参数为**noeviction**，您可以传入`{"maxmemory-policy":"noeviction"}`。
-        # > 关于各参数的详细说明，请参见[参数说明](https://help.aliyun.com/document_detail/259681.html)。
+        # The instance parameters to modify, in JSON format. The new values overwrite the existing values. For example, if you want to set only the **maxmemory-policy** parameter to **noeviction**, pass in `{"maxmemory-policy":"noeviction"}`.
+        # > For more information about each parameter, see [Metric description](https://help.aliyun.com/document_detail/259681.html).
         self.config = config
-        # 实例ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # 哨兵兼容模式，适用于非集群实例。取值说明：
-        # * **no**（默认）：未开启
-        # * **yes**：开启
-        # > 更多信息请参见[Sentinel兼容模式](https://help.aliyun.com/document_detail/178911.html)。
+        # The Sentinel compatibility mode. This parameter applies to non-cluster instances. Valid values:
+        # * **no** (default): disabled.
+        # * **yes**: enabled.
+        # > For more information, see [Sentinel compatibility mode](https://help.aliyun.com/document_detail/178911.html).
         self.param_no_loose_sentinel_enabled = param_no_loose_sentinel_enabled
-        # 开启哨兵模式时，是否允许免密执行Sentinel相关命令，取值说明：
-        # * **no**（默认）：关闭。
-        # * **yes**：开启。开启后，可以在任意连接上免密执行Sentinel命令以及使用SENTINEL命令监听+switch-master通道。
+        # Specifies whether to allow password-free execution of Sentinel-related commands when Sentinel mode is enabled. Valid values:
+        # * **no** (default): disabled.
+        # * **yes**: enabled. After this parameter is enabled, you can run Sentinel commands without a password on any connection and use the SENTINEL command to listen on the +switch-master channel.
         self.param_no_loose_sentinel_password_free_access = param_no_loose_sentinel_password_free_access
-        # 启用哨兵模式及ParamNoLooseSentinelPasswordFreeAccess参数后，可通过本参数添加额外的免密命令列表（默认为空）。
-        # > * 设置后可在任意连接上无需密码执行对应命令，请谨慎操作。
-        # > * 命令需使用小写字母，多个命令以英文逗号(,)分隔。
+        # After Sentinel mode and the ParamNoLooseSentinelPasswordFreeAccess parameter are enabled, use this parameter to add additional password-free commands (empty by default).
+        # > * After this parameter is set, the specified commands can be run without a password on any connection. Proceed with caution.
+        # > * Commands must be in lowercase letters. Separate multiple commands with commas (,).
         self.param_no_loose_sentinel_password_free_commands = param_no_loose_sentinel_password_free_commands
-        # 同步模式：
-        # * **async**（默认）：异步
-        # * **semisync**：半同步
+        # The synchronization pattern. Valid values:
+        # * **async** (default): asynchronous
+        # * **semisync**: semi-synchronous.
         self.param_repl_mode = param_repl_mode
-        # 半同步模式的降级阈值。仅半同步支持配置该参数，单位为ms，取值范围为10~60000，默认为500。
-        # > * 当同步延迟超出该阈值时，同步模式会自动转为异步，当同步延迟消除后，同步模式会自动转换为半同步。
-        # > * 仅Tair企业版实例支持，该功能公测中。
+        # The degradation threshold for semi-synchronous mode. This parameter is supported only in semi-synchronous mode. Unit: ms. Valid values: 10 to 60000. Default value: 500.
+        # > * When the synchronization latency exceeds this threshold, the synchronous mode automatically transforms to asynchronous. When the latency is eliminated, the synchronous mode automatically transforms back to semi-synchronous.
+        # > * This parameter is supported only by Tair Enterprise instances. This feature is in public preview.
         self.param_semisync_repl_timeout = param_semisync_repl_timeout
-        # 哨兵兼容模式，适用于集群架构代理连接模式或读写分离架构的实例，取值说明：
-        # * **0**（默认）：未开启
-        # * **1**：开启
-        # > 更多信息请参见[Sentinel兼容模式](https://help.aliyun.com/document_detail/178911.html)。
+        # The Sentinel compatibility mode. This parameter applies to instances that use the proxy connection mode in cluster architecture or instances that use the read/write splitting architecture. Valid values:
+        # * **0** (default): disabled.
+        # * **1**: enabled.
+        # > For more information, see [Sentinel compatibility mode](https://help.aliyun.com/document_detail/178911.html).
         self.param_sentinel_compat_enable = param_sentinel_compat_enable
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

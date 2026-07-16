@@ -19,44 +19,46 @@ class CreateSiteMonitorRequest(DaraModel):
         task_type: str = None,
         vpc_config: str = None,
     ):
-        # The URL or IP address that is monitored by the task.
+        # The URL or IP address to monitor.
         # 
         # This parameter is required.
         self.address = address
+        # The group of detection points for the network probe task. \\`PC\\` indicates detection points on PCs. \\`MOBILE\\` indicates detection points on mobile devices. \\`FC\\` indicates detection points in a VPC. The default value is \\`PC\\`.
         self.agent_group = agent_group
         # The ID of the alert rule.
         # 
-        # For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # For more information, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         self.alert_ids = alert_ids
-        # The custom detection period. You can only select a time period from Monday to Sunday for detection.
+        # The custom detection schedule. Specify a time period and the days of the week for detection.
         self.custom_schedule = custom_schedule
-        # The interval at which detection requests are sent.
+        # The monitoring frequency in minutes.
         # 
-        # Valid values: 1, 5, 15, 30, and 60. Unit: minutes.
+        # Valid values: 1, 5, 15, 30, and 60.
         # 
-        # Default value: 1.
+        # Default: 1.
         self.interval = interval
-        # The information of the detection points. If you leave this parameter empty, the system randomly selects three detection points.
+        # The detection points. If you do not specify this parameter, the system randomly selects three detection points from different Internet Service Providers (ISPs).
         # 
-        # The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
+        # The value must be a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values correspond to Beijing, Hangzhou, and Qingdao.
         # 
-        # For information about how to obtain detection points, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
+        # For more information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
         self.isp_cities = isp_cities
-        # The extended options of the protocol that is used by the site monitoring task. The options vary based on the protocol.
+        # The advanced options for the specified protocol. The available options vary based on the protocol type.
         self.options_json = options_json
         self.region_id = region_id
-        # The name of the site monitoring task.
+        # The name of the monitoring task.
         # 
-        # The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+        # The name must be 4 to 100 characters long and can contain letters, digits, underscores (_), and Chinese characters.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The protocol that is used by the site monitoring task.
+        # The type of monitoring task.
         # 
-        # Valid values: HTTP, HTTPS, PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
+        # Valid protocols include HTTP(S), PING, TCP, UDP, DNS, SMTP, POP3, FTP, and WEBSOCKET.
         # 
         # This parameter is required.
         self.task_type = task_type
+        # The network information required to create a network probe task in a VPC. This must be a JSON object that contains the \\`vpcId\\`, \\`vswitchId\\`, \\`securityGroupId\\`, and \\`region\\` fields.
         self.vpc_config = vpc_config
 
     def validate(self):

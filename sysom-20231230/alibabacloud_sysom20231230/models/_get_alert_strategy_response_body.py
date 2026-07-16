@@ -15,8 +15,15 @@ class GetAlertStrategyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault message.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -73,13 +80,21 @@ class GetAlertStrategyResponseBodyData(DaraModel):
         uid: str = None,
         updated_at: int = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # Indicates whether the alert policy is enabled.
         self.enabled = enabled
+        # The alert policy ID.
         self.id = id
+        # The Kubernetes label.
         self.k_8s_label = k_8s_label
+        # The policy name.
         self.name = name
+        # The alert policy details.
         self.strategy = strategy
+        # The user ID.
         self.uid = uid
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):
@@ -153,8 +168,10 @@ class GetAlertStrategyResponseBodyDataStrategy(DaraModel):
         destinations: Any = None,
         items: Any = None,
     ):
+        # The collection of clusters for which alerts are received.
         self.clusters = clusters
         self.destinations = destinations
+        # 接收告警的异常项列表
         self.items = items
 
     def validate(self):

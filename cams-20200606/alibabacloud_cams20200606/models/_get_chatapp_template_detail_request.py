@@ -15,27 +15,27 @@ class GetChatappTemplateDetailRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The space ID of the user within the ISV account.
+        # The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
+        # The WabaId of the ISV customer.
         # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > This parameter is deprecated. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
+        # The ISV verification code, which is used to verify whether the sub-account is authorized by the ISV.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The language of the template. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
-        # The code of the message template.
+        # The code of the template.
         self.template_code = template_code
-        # Name of a template.
+        # The name of the template.
         self.template_name = template_name
-        # The type of the message template. Valid values:
+        # The templatetype.
         # 
-        # *   **WHATSAPP**
-        # *   **VIBER**
-        # *   LINE (developing)
+        # - **WHATSAPP**
+        # 
+        # - **VIBER**
         self.template_type = template_type
 
     def validate(self):

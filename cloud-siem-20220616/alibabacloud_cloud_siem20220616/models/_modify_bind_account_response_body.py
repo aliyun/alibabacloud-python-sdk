@@ -11,9 +11,9 @@ class ModifyBindAccountResponseBody(DaraModel):
         data: main_models.ModifyBindAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The return value of the request.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -49,7 +49,7 @@ class ModifyBindAccountResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of the accounts that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+        # The number of account bindings that are modified. A value of 1 indicates that the operation is successful. A value of 0 or less indicates that the operation failed.
         self.count = count
 
     def validate(self):

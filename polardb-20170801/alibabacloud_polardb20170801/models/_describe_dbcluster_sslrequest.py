@@ -10,17 +10,18 @@ class DescribeDBClusterSSLRequest(DaraModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pfs_instance_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # The cluster ID.
+        # >You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pfs_instance_id = pfs_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -41,6 +42,9 @@ class DescribeDBClusterSSLRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        if self.pfs_instance_id is not None:
+            result['PfsInstanceId'] = self.pfs_instance_id
+
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
 
@@ -59,6 +63,9 @@ class DescribeDBClusterSSLRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PfsInstanceId') is not None:
+            self.pfs_instance_id = m.get('PfsInstanceId')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

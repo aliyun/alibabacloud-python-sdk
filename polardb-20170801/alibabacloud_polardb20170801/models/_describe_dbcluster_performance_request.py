@@ -19,19 +19,33 @@ class DescribeDBClusterPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
+        # The granularity of the performance data. Valid values:
+        # 
+        # - 5
+        # 
+        # - 30
+        # 
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 1800
+        # 
+        # - 3600
+        # 
+        # - 86400
         self.interval = interval
         # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
-        # >  You can specify a maximum of five performance metrics.
+        # > Specify up to five performance metrics.
         # 
         # This parameter is required.
         self.key = key
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

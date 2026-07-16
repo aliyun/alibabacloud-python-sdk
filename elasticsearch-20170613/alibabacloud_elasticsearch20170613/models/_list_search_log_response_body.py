@@ -14,19 +14,11 @@ class ListSearchLogResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListSearchLogResponseBodyResult] = None,
     ):
-        # The level of the log. Valid values:
-        # 
-        # *   warn: warning log
-        # *   info: information log
-        # *   error: error log
-        # *   trace: trace logs
-        # *   debug: debug logs
-        # 
-        # The level information has been migrated to the contentCollection field.
+        # The response headers.
         self.headers = headers
-        # The list of logs returned by the request.
+        # The request ID.
         self.request_id = request_id
-        # The content of the log entry. Migrated to the contentCollection field.
+        # The list of logs returned by the request.
         self.result = result
 
     def validate(self):
@@ -82,14 +74,25 @@ class ListSearchLogResponseBodyResult(DaraModel):
         level: str = None,
         timestamp: int = None,
     ):
-        # The ID of the instance.
+        # The detailed log content. This field has been migrated to the contentCollection field.
         self.content = content
+        # The log details. Different log types return different content fields.
         self.content_collection = content_collection
-        # Details of the log entry. Different content fields are returned for different log types.
+        # The IP address of the node that generated the log.
         self.host = host
+        # The instance ID.
         self.instance_id = instance_id
-        # The timestamp when the log is generated. Unit: ms.
+        # The log level. Valid values:
+        # 
+        # - warn: warning log
+        # - info: information log
+        # - error: error log
+        # - trace: trace log
+        # - debug: debug log
+        # 
+        # The level information has been migrated to the contentCollection field.
         self.level = level
+        # The timestamp when the log was generated, in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -147,7 +150,7 @@ class ListSearchLogResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The IP address of the node that generates the log.
+        # The total number of records for the instance.
         self.x_total_count = x_total_count
 
     def validate(self):

@@ -18,12 +18,19 @@ class DescribePolarFsObjectsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
+        # The list of directory entries.
         self.items = items
+        # The maximum number of records that can be displayed on the current page.
         self.page_record_count = page_record_count
+        # The number of records per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
+        # The absolute path of the directory.
         self.path = path
+        # The PolarFs instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -103,15 +110,23 @@ class DescribePolarFsObjectsResponseBodyItems(DaraModel):
         path: str = None,
         type: str = None,
     ):
+        # The capacity.
         self.capacity = capacity
+        # The creation time.
         self.creation_time = creation_time
+        # The last modified time.
         self.last_modified = last_modified
+        # The real path of the symbolic link.
         self.link_target = link_target
+        # The file system permissions.
         self.mode = mode
+        # The number of links.
         self.nlink = nlink
         # Owner
         self.owner = owner
+        # The absolute path of the directory.
         self.path = path
+        # The file type.
         self.type = type
 
     def validate(self):

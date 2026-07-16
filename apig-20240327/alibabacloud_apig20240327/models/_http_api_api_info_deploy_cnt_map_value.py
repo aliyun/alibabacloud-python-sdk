@@ -12,7 +12,6 @@ class HttpApiApiInfoDeployCntMapValue(DaraModel):
     ):
         # deployedCnt
         self.deployed_cnt = deployed_cnt
-        # Cnt
         self.cnt = cnt
 
     def validate(self):
@@ -27,7 +26,7 @@ class HttpApiApiInfoDeployCntMapValue(DaraModel):
             result['deployedCnt'] = self.deployed_cnt
 
         if self.cnt is not None:
-            result['Cnt'] = self.cnt
+            result['cnt'] = self.cnt
 
         return result
 
@@ -36,8 +35,8 @@ class HttpApiApiInfoDeployCntMapValue(DaraModel):
         if m.get('deployedCnt') is not None:
             self.deployed_cnt = m.get('deployedCnt')
 
-        if m.get('Cnt') is not None:
-            self.cnt = m.get('Cnt')
+        if m.get('cnt') is not None:
+            self.cnt = m.get('cnt')
 
         return self
 

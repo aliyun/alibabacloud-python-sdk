@@ -17,17 +17,17 @@ class DescribeEventPageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -105,31 +105,31 @@ class DescribeEventPageListResponseBodyResultObject(DaraModel):
         template_type: str = None,
         user_count: int = None,
     ):
-        # Object
+        # The object.
         self.children = children
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event status.
+        # The event status.
         self.event_status = event_status
-        # Event type.
+        # The event type.
         self.event_type = event_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Database ID.
+        # The database ID.
         self.id = id
-        # Total number of rules.
+        # The total number of rules.
         self.rule_count = rule_count
-        # Template code
+        # The template code.
         self.template_code = template_code
-        # Template name.
+        # The template name.
         self.template_name = template_name
-        # Template type
+        # The template type.
         self.template_type = template_type
-        # Number of customer authorizations
+        # The number of authorized users.
         self.user_count = user_count
 
     def validate(self):
@@ -244,21 +244,21 @@ class DescribeEventPageListResponseBodyResultObjectChildren(DaraModel):
         id: int = None,
         rule_count: int = None,
     ):
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event status.
+        # The event status.
         self.event_status = event_status
-        # Event type.
+        # The event type.
         self.event_type = event_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Total number of rules.
+        # The total number of rules.
         self.rule_count = rule_count
 
     def validate(self):

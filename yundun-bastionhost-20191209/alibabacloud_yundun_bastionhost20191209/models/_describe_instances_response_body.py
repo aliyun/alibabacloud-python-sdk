@@ -14,11 +14,11 @@ class DescribeInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the bastion hosts returned.
+        # An array of Bastionhost instances.
         self.instances = instances
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates this unique ID for troubleshooting purposes.
         self.request_id = request_id
-        # The total number of bastion hosts that are queried.
+        # The total number of Bastionhost instances returned.
         self.total_count = total_count
 
     def validate(self):
@@ -83,56 +83,67 @@ class DescribeInstancesResponseBodyInstances(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
+        # The default bandwidth of the instance, in Mbit/s.
         self.band_width = band_width
-        # The remarks of the bastion host.
+        # The custom description of the Bastionhost instance.
         self.description = description
-        # The timestamp when the bastion host expires. Unit: milliseconds.
+        # The expiration time of the Bastionhost instance, specified as a timestamp in milliseconds.
         self.expire_time = expire_time
-        # The image version of the bastion host.
+        # The image version of the Bastionhost instance.
         self.image_version = image_version
-        # The bastion host ID.
+        # The ID of the Bastionhost instance.
         self.instance_id = instance_id
-        # The status of the bastion host. Valid values:
+        # The status of the Bastionhost instance. Valid values:
         # 
-        # *   **PENDING**: The bastion host is not initialized.
-        # *   **CREATING**: The bastion host is being created.
-        # *   **RUNNING**: The bastion host is running.
-        # *   **EXPIRED**: The bastion host expired.
-        # *   **CREATE_FAILED**: The bastion host fails to be created.
-        # *   **UPGRADING**: The configurations of the bastion host are being changed.
-        # *   **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
+        # - **PENDING**: Not initialized
+        # 
+        # - **CREATING**: The instance is being created.
+        # 
+        # - **RUNNING**: The instance is running.
+        # 
+        # - **EXPIRED**: The instance has expired.
+        # 
+        # - **CREATE_FAILED**: Instance creation failed.
+        # 
+        # - **UPGRADING**: The instance is being upgraded.
+        # 
+        # - **UPGRADE_FAILED**: Instance upgrade failed.
         self.instance_status = instance_status
-        # The public O\\&M address of the bastion host.
+        # The public domain name of the Bastionhost instance.
         self.internet_endpoint = internet_endpoint
-        # The private O\\&M address of the bastion host.
+        # The private domain name of the Bastionhost instance.
         self.intranet_endpoint = intranet_endpoint
-        # Indicates whether the bastion host runs an earlier version. Valid values:
+        # Indicates whether the Bastionhost instance is a legacy instance. Valid values:
         # 
-        # *   **true**: The bastion host runs V2 or V3.1.
-        # *   **false**: The bastion host runs V3.2.
+        # - **true**: The instance is of the V2 or V3.1 series.
+        # 
+        # - **false**: The instance is of the V3.2 series.
         self.legacy = legacy
-        # The license code of the bastion host.
+        # The license code of the Bastionhost instance.
         self.license_code = license_code
-        # The edition of the bastion host. Valid values:
+        # The edition of the Bastionhost instance. Valid values:
         # 
-        # *   **cloudbastion**: Basic Edition.
-        # *   **cloudbastion_ha**: Enterprise Edition.
+        # - **cloudbastion**: Basic Edition
+        # 
+        # - **cloudbastion_ha**: Enterprise Edition
         self.plan_code = plan_code
-        # Indicates whether the bastion host can be accessed from the Internet. Valid values:
+        # Indicates whether the Bastionhost instance is accessible over the Internet. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is accessible over the Internet.
+        # 
+        # - **false**: The instance is not accessible over the Internet.
         self.public_network_access = public_network_access
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         self.region_id = region_id
-        # The ID of the resource group to which the bastion host belongs.
+        # The ID of the resource group to which the Bastionhost instance belongs.
         self.resource_group_id = resource_group_id
+        # The ID of the standby vSwitch to which the Bastionhost instance is attached.
         self.slave_vswitch_id = slave_vswitch_id
-        # The timestamp when the bastion host is purchased or renewed. Unit: milliseconds.
+        # The purchase or renewal time of the Bastionhost instance, specified as a timestamp in milliseconds.
         self.start_time = start_time
-        # The ID of the virtual private cloud (VPC) to which the bastion host belongs.
+        # The ID of the VPC to which the Bastionhost instance is attached.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch to which the bastion host belongs.
+        # The ID of the vSwitch to which the Bastionhost instance is attached.
         self.vswitch_id = vswitch_id
 
     def validate(self):

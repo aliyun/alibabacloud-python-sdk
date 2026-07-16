@@ -19,13 +19,11 @@ class FuPointBillSettlementQueryResponseBody(DaraModel):
         trace_id: str = None,
     ):
         self.code = code
-        # module。
         self.module = module
         self.more_page = more_page
         self.request_id = request_id
         self.result_msg = result_msg
         self.success = success
-        # trace_id
         self.trace_id = trace_id
 
     def validate(self):
@@ -289,7 +287,6 @@ class FuPointBillSettlementQueryResponseBodyModuleItems(DaraModel):
         self.grant_num = grant_num
         self.index = index
         self.invoice_title = invoice_title
-        # Location
         self.location = location
         self.make_invoice = make_invoice
         self.mapping_company_code = mapping_company_code
@@ -315,7 +312,6 @@ class FuPointBillSettlementQueryResponseBodyModuleItems(DaraModel):
         self.settlement_time = settlement_time
         self.settlement_type = settlement_type
         self.show_sub_order_id = show_sub_order_id
-        # SIO
         self.sio = sio
         self.status = status
         self.status_desc = status_desc

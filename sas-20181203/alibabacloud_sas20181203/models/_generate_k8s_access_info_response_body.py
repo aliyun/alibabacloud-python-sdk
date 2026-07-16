@@ -11,9 +11,9 @@ class GenerateK8sAccessInfoResponseBody(DaraModel):
         data: main_models.GenerateK8sAccessInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,21 +58,24 @@ class GenerateK8sAccessInfoResponseBodyData(DaraModel):
         group_id: str = None,
         install_key: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The aliuid of the user.
         self.ali_uid = ali_uid
-        # The Simple Log Service Logstore that is used to store the audit logs.
+        # The SLS Logstore of the audit log.
         self.audit_log_store = audit_log_store
-        # The Simple Log Service project that is used to store the audit logs.
+        # The SLS project of the audit log.
         self.audit_project = audit_project
-        # The ID of the region in which the server is deployed.
+        # The region ID of the server.
         self.audit_region_id = audit_region_id
         # The cluster ID.
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # CPU architectures are divided into ARM architecture and x86 architecture.
+        # The CPU architecture, which can be ARM or x86. Valid values:
+        # - arm64
+        # 
+        # - x86
         self.cpu_arch = cpu_arch
-        # The expiration time. Unit: milliseconds.
+        # The expiration time, in milliseconds.
         self.expire_date = expire_date
         # The server group ID.
         self.group_id = group_id

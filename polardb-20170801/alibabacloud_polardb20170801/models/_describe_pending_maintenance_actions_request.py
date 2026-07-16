@@ -16,20 +16,21 @@ class DescribePendingMaintenanceActionsRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # Specifies whether to return the historical tasks. Valid values:
+        # Specifies whether to return historical tasks. Valid values:
         # 
-        # *   **0**: returns the current task.
-        # *   **1**: returns the historical tasks.
+        # - **0**: returns current tasks.
+        # 
+        # - **1**: returns historical tasks.
         # 
         # Default value: **0**.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

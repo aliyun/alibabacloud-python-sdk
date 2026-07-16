@@ -10,8 +10,15 @@ class HangupOperateRequest(DaraModel):
         call_id: str = None,
         immediate_hangup: bool = None,
     ):
+        # The call ID. Obtain this ID from the response of the [LlmSmartCall](https://help.aliyun.com/document_detail/2862828.html) or [LlmSmartCallEncrypt](https://help.aliyun.com/document_detail/2881065.html) operation.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # Specifies whether to hang up the call immediately. Valid values:
+        # 
+        # - true (default): Hangs up the call immediately.
+        # 
+        # - false: Hangs up the call after the current playback finishes.
         self.immediate_hangup = immediate_hangup
 
     def validate(self):

@@ -19,39 +19,37 @@ class CreateAclRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.CreateAclRequestTag] = None,
     ):
-        # The entries of IP addresses or CIDR blocks to add to the ACL.
+        # The access control policy group entries, which are IP address entries or CIDR block entries.
         # 
-        # You can add a maximum of 50 entries at a time.
+        # You can add up to 50 entries at a time.
         self.acl_entries = acl_entries
-        # The ACL name.
+        # The name of the access control policy group.
         # 
-        # The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.acl_name = acl_name
-        # The IP version of the ACL. Valid values:
-        # 
-        # *   **IPv4**
-        # *   **IPv6**
+        # The IP version of the access control policy group. Valid values:
+        # - **IPv4**
+        # - **IPv6**
         # 
         # This parameter is required.
         self.address_ipversion = address_ipversion
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
-        # Specifies whether to only precheck the request. Default value: false. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without creating the access control policy group. The system checks the required parameters, request format, and business limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a Normal request, passes the dry run, and returns an HTTP 2xx status code and directly performs the operation.
         self.dry_run = dry_run
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the ACL.
+        # The label information of the access control policy group.
         self.tag = tag
 
     def validate(self):
@@ -139,17 +137,17 @@ class CreateAclRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the ACL. The tag key cannot be an empty string.
+        # The label key of the access control policy group. Once specified, the label key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The label key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag keys.
+        # You can specify up to 20 label keys.
         self.key = key
-        # The tag value of the ACL. The tag value cannot be an empty string.
+        # The label value of the access control policy group. Once specified, the label value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The label value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag values.
+        # You can specify up to 20 label values.
         self.value = value
 
     def validate(self):
@@ -184,15 +182,15 @@ class CreateAclRequestAclEntries(DaraModel):
         entry: str = None,
         entry_description: str = None,
     ):
-        # The IP addresses (192.168.XX.XX) or CIDR blocks (10.0.XX.XX/24) that you want to add to the ACL.
+        # The access control policy group entry, which is an IP address entry (192.168.XX.XX) or a CIDR block entry (10.0.XX.XX/24).
         # 
-        # You can add a maximum of 50 entries at a time.
+        # You can add up to 50 entries at a time.
         self.entry = entry
-        # The description of the entry that you want to add to the ACL.
+        # The description of the access control policy group entry.
         # 
-        # You can add a maximum of 50 entries at a time.
+        # You can add descriptions for up to 50 entries at a time.
         # 
-        # The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
+        # The description must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), underscores (_), and Chinese characters.
         self.entry_description = entry_description
 
     def validate(self):

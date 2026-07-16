@@ -20,19 +20,39 @@ class RefundOrderCmd(DaraModel):
         leave_picture_lists: List[main_models.LeavePictureList] = None,
         order_line_id: str = None,
     ):
+        # Refund reason ID
+        # 
         # This parameter is required.
         self.apply_reason_text_id = apply_reason_text_id
+        # Refund reason text
         self.apply_reason_tips = apply_reason_tips
+        # Number of items to return
+        # 
         # This parameter is required.
         self.apply_refund_count = apply_refund_count
+        # Refund amount in cents
+        # 
         # This parameter is required.
         self.apply_refund_fee = apply_refund_fee
+        # Refund type
+        # 1: Refund only
+        # 3: Return and refund
+        # 
         # This parameter is required.
         self.biz_claim_type = biz_claim_type
+        # Item status
+        # 4: Not shipped
+        # 1: Not received
+        # 2: Received
+        # 
         # This parameter is required.
         self.goods_status = goods_status
+        # Customer message
         self.leave_message = leave_message
+        # Collection of images
         self.leave_picture_lists = leave_picture_lists
+        # Sub-distribution order ID
+        # 
         # This parameter is required.
         self.order_line_id = order_line_id
 

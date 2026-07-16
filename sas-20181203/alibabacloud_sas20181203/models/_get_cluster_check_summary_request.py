@@ -9,7 +9,7 @@ class GetClusterCheckSummaryRequest(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # ID of the queried cluster
+        # The ID of the cluster to query.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id

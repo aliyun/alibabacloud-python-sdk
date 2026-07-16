@@ -14,11 +14,11 @@ class ListBindingsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The bindings between the dataset and OSS buckets.
+        # The list of binding information between datasets and OSS buckets.
         self.bindings = bindings
-        # *   The pagination token that is used in the next request to retrieve a new page of results if the total number of results exceeds the value of the MaxResults parameter.
-        # *   The next request returns remaining results starting from the position marked by the NextToken parameter value.
-        # *   This parameter has a non-empty value only when not all bindings are returned.
+        # - The pagination token that is used when the total number of bindings exceeds the MaxResults value.
+        # - Use this value as the NextToken in the next request to return the remaining results.
+        # - This parameter has a value only when not all bindings are returned.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

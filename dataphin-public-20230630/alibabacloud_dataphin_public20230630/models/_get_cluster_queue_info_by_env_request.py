@@ -12,12 +12,20 @@ class GetClusterQueueInfoByEnvRequest(DaraModel):
         project_id: int = None,
         stream_batch_mode: str = None,
     ):
+        # The environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The stream-batch mode.
+        # 
         # This parameter is required.
         self.stream_batch_mode = stream_batch_mode
 

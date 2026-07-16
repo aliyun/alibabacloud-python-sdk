@@ -9,7 +9,7 @@ class ListAppVersionsRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The returned message.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id

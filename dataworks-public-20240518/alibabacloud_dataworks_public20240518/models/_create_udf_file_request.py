@@ -29,8 +29,9 @@ class CreateUdfFileRequest(DaraModel):
         self.cmd_description = cmd_description
         # Specifies whether to automatically create the directory if the specified path (FileFolderPath) does not exist. Valid values:
         # 
-        # *   true: Automatically creates the directory if it does not exist.
-        # *   false: The call fails if the directory does not exist.
+        # - true: Automatically creates the directory if it does not exist.
+        # 
+        # - false: The call fails if the directory does not exist.
         self.create_folder_if_not_exists = create_folder_if_not_exists
         # An example demonstrating how to call the function, corresponding to the example field in the Create Function form.
         self.example = example

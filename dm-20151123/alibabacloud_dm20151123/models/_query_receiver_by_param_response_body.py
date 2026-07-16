@@ -16,13 +16,13 @@ class QueryReceiverByParamResponseBody(DaraModel):
         total_count: int = None,
         data: main_models.QueryReceiverByParamResponseBodyData = None,
     ):
-        # Used for pagination. If there are more results, set this returned value to the NextStart in the next request.
+        # A token indicating that more results are available. To get the next page of results, include this token in the NextStart parameter of your next request.
         self.next_start = next_start
-        # Number of items displayed per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Total count
+        # The total count.
         self.total_count = total_count
         self.data = data
 

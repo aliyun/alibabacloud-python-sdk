@@ -11,9 +11,9 @@ class DescribeAssetSummaryResponseBody(DaraModel):
         assets_summary: main_models.DescribeAssetSummaryResponseBodyAssetsSummary = None,
         request_id: str = None,
     ):
-        # The statistical information about the assets.
+        # The asset statistics information.
         self.assets_summary = assets_summary
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,17 +51,15 @@ class DescribeAssetSummaryResponseBodyAssetsSummary(DaraModel):
         total_core_all_region: int = None,
         total_core_num: int = None,
     ):
-        # The total number of protected assets in all regions.
-        # 
-        # >  Security Center supports the Hangzhou and Singapore service centers, which separately correspond to the China and Outside China data management centers. In the Hangzhou service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the China data management center. In the Singapore service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the Outside China data management center. You can determine whether the current region is covered by the China data management center or by the Outside China data management center based on the endpoint of Security Center. For more information about the supported regions for each data management center, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html)
+        # The total number of assets across all regions.
+        # >Security Center uses independent service centers in the Chinese mainland and outside the Chinese mainland. You can check the endpoint to which you are connected to determine the current service region. For more information about the regions included in each service region, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html).
         self.total_asset_all_region = total_asset_all_region
-        # The total number of cores of protected assets in all regions.
-        # 
-        # >  Security Center supports the Hangzhou and Singapore service centers, which separately correspond to the China and Outside China data management centers. In the Hangzhou service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the China data management center. In the Singapore service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the Outside China data management center. You can determine whether the current region is covered by the China data management center or by the Outside China data management center based on the endpoint of Security Center. For more information about the supported regions for each data management center, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html)
+        # The total number of cores of assets across all regions.
+        # >Security Center uses independent service centers in the Chinese mainland and outside the Chinese mainland. You can check the endpoint to which you are connected to determine the current service region. For more information about the regions included in each service region, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html).
         self.total_core_all_region = total_core_all_region
-        # The total number of cores of protected assets in the current region.
+        # The total number of cores of assets in the current region.
         # 
-        # >  Security Center supports the Hangzhou and Singapore service centers, which separately correspond to the China and Outside China data management centers. In the Hangzhou service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the China data management center. In the Singapore service center, Security Center provides protection capabilities for assets that are deployed in the regions covered by the Outside China data management center. You can determine whether the current region is covered by the China data management center or by the Outside China data management center based on the endpoint of Security Center. For more information about the supported regions for each data management center, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html)
+        # >Security Center uses independent service centers in the Chinese mainland and outside the Chinese mainland. You can check the endpoint to which you are connected to determine the current service region. For more information about the regions included in each service region, see [What is Security Center?](https://help.aliyun.com/document_detail/42302.html).
         self.total_core_num = total_core_num
 
     def validate(self):

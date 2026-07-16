@@ -9,9 +9,9 @@ class DeleteClientCertificateRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The unique identifier of the client certificate or server certificate that you want to delete. The status of the certificate must be **REVOKE**.
+        # The unique identifier of the client or server-side certificate to delete. The certificate must be in the **REVOKE** state.
         # 
-        # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers and status of all client certificates and server certificates.
+        # > Call [ListClientCertificate](https://help.aliyun.com/document_detail/465990.html) to query the unique identifiers and current states of all client and server-side certificates.
         # 
         # This parameter is required.
         self.identifier = identifier

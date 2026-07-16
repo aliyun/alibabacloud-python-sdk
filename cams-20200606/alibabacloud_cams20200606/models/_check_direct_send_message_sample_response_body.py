@@ -15,11 +15,25 @@ class CheckDirectSendMessageSampleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of OK indicates that the request is successful.
+        # 
+        # - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -80,7 +94,17 @@ class CheckDirectSendMessageSampleResponseBodyData(DaraModel):
         category: str = None,
         success: bool = None,
     ):
+        # The WhatsApp template category. Valid values:
+        # 
+        # - **UTILITY**: transaction-related.
+        # 
+        # - **MARKETING**: marketing template.
         self.category = category
+        # Indicates whether the operation is successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):

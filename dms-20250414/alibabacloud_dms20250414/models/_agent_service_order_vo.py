@@ -21,18 +21,31 @@ class AgentServiceOrderVO(DaraModel):
         skill_plan_call_used: int = None,
         status: str = None,
     ):
+        # The agent service.
         self.agent_service = agent_service
+        # The deep research quota.
         self.deep_research_quota = deep_research_quota
+        # The quantity of deep research used.
         self.deep_research_used = deep_research_used
+        # The service expiration time, specified in UTC.
         self.expire_time = expire_time
+        # The order creation time, specified in UTC.
         self.gmt_create = gmt_create
+        # The order modification time, specified in UTC.
         self.gmt_modified = gmt_modified
+        # The model call quota.
         self.model_call_quota = model_call_quota
+        # The number of model calls used.
         self.model_call_used = model_call_used
+        # The order instance ID.
         self.order_instance_id = order_instance_id
+        # The number of services.
         self.service_num = service_num
+        # The skill plan call quota.
         self.skill_plan_call_quota = skill_plan_call_quota
+        # The number of skill plan calls used.
         self.skill_plan_call_used = skill_plan_call_used
+        # The order status.
         self.status = status
 
     def validate(self):

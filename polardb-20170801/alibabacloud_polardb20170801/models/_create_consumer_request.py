@@ -14,13 +14,21 @@ class CreateConsumerRequest(DaraModel):
         nick_name: str = None,
         region_id: str = None,
     ):
+        # The consumer group name.
         self.consumer_group_name = consumer_group_name
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The key type. The only supported value is ApiKey.
         self.key_type = key_type
+        # The user name.
+        # 
         # This parameter is required.
         self.name = name
+        # The user nickname.
         self.nick_name = nick_name
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -17,19 +17,19 @@ class CheckKMSAuthorizedRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/2319131.html) operation to query information about all clusters in the destination region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region IDs.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/2319134.html) operation to query information about the available regions of the destination account, including region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region in which the TDE key resides.
+        # The region where the transparent data encryption (TDE) key is located.
         self.tderegion = tderegion
 
     def validate(self):

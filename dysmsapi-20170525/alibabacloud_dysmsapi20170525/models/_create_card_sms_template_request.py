@@ -14,29 +14,33 @@ class CreateCardSmsTemplateRequest(DaraModel):
         template: Dict[str, Any] = None,
         template_name: str = None,
     ):
-        # The mobile phone manufacturer. Valid values:
+        # The vendors to which the template will be submitted. Valid values:
         # 
-        # *   **HuaWei**: HUAWEI
-        # *   **XiaoMi**: Xiaomi
-        # *   **OPPO**: OPPO
-        # *   **VIVO**: vivo
-        # *   **MEIZU**: MEIZU
+        # - **HuaWei**: Huawei
         # 
-        # > If this parameter is not specified, the system automatically specifies a supported mobile phone manufacturer.
+        # - **XiaoMi**: Xiaomi
+        # 
+        # - **OPPO**: OPPO
+        # 
+        # - **VIVO**: VIVO
+        # 
+        # - **MEIZU**: MEIZU
+        # 
+        # - **HONOR**: HONOR
+        # 
+        # > If you do not specify this parameter, the system automatically submits the template to all supported mobile phone vendors.
         self.factorys = factorys
-        # The description of the message template.
+        # A description of the template.
         self.memo = memo
-        # The content of the card message template.
+        # The content of the card SMS template.
         # 
-        # > 
-        # 
-        # *   For information about fields such as Template, ExtendInfo, TemplateContent, TmpCard, and Action, see [Parameters of card message templates](https://help.aliyun.com/document_detail/434929.html).
-        # 
-        # *   Message template content varies based on the template type. For more information, see [Sample message templates](https://help.aliyun.com/document_detail/435361.html).
+        # > - For more information about the `Template`, `ExtendInfo`, `TemplateContent`, `TmpCard`, and `Action` fields, see [Card SMS template parameters](https://help.aliyun.com/document_detail/434929.html).
+        # >
+        # > - The content structure varies based on the type of card SMS template. For more information, see [Card SMS template examples](https://help.aliyun.com/document_detail/435361.html).
         # 
         # This parameter is required.
         self.template = template
-        # The name of the card message template.
+        # The name of the card SMS template.
         # 
         # This parameter is required.
         self.template_name = template_name

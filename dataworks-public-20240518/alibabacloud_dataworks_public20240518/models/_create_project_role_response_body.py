@@ -10,7 +10,9 @@ class CreateProjectRoleResponseBody(DaraModel):
         code: str = None,
         request_id: str = None,
     ):
+        # The unique identifier of the role.
         self.code = code
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

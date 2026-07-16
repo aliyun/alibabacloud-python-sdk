@@ -19,7 +19,6 @@ class FlightListingSearchResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
         self.request_id = request_id
         self.success = success
@@ -900,7 +899,6 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListRefundRuleIte
         title: str = None,
     ):
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1239,9 +1237,7 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleIte
         refund_sub_contents: List[main_models.FlightListingSearchResponseBodyModuleFlightListFlightRuleListChangeRuleItemRefundSubItemsRefundSubContents] = None,
         title: str = None,
     ):
-        # isStruct : true
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.refund_sub_contents = refund_sub_contents
         self.title = title
@@ -1613,7 +1609,6 @@ class FlightListingSearchResponseBodyModuleFlightListFlightRuleListBaggageItemBa
         self.baggage_sub_content_visualizes = baggage_sub_content_visualizes
         self.extra_content_visualizes = extra_content_visualizes
         self.is_struct = is_struct
-        # PTC
         self.ptc = ptc
         self.title = title
 

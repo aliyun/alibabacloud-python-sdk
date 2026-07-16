@@ -24,13 +24,15 @@ class GetAiRtcAuthCodeListRequest(DaraModel):
         self.page_size = page_size
         # The status of the authorization code. Valid values:
         # 
-        # *   `1`: Activated
-        # *   `2`: Inactive
+        # - `1`: Activated
+        # 
+        # - `2`: Inactive
         self.status = status
         # The type of license. Valid values:
         # 
-        # *   `1`: Audio call
-        # *   `2`: Vision call
+        # - `1`: Audio call
+        # 
+        # - `2`: Vision call
         self.type = type
 
     def validate(self):

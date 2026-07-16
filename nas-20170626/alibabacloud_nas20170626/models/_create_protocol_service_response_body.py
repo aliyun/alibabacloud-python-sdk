@@ -10,7 +10,7 @@ class CreateProtocolServiceResponseBody(DaraModel):
         protocol_service_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the protocol service.
+        # The protocol service cluster ID.
         self.protocol_service_id = protocol_service_id
         # The request ID.
         self.request_id = request_id

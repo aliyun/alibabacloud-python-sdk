@@ -16,10 +16,23 @@ class DescribeVpcsResponseBody(DaraModel):
         total_count: int = None,
         vpcs: List[main_models.DescribeVpcsResponseBodyVpcs] = None,
     ):
+        # The page number of the returned page. The default value is 1.
         self.page_number = page_number
+        # The number of entries returned per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        #   **30**
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # A list of VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -89,16 +102,37 @@ class DescribeVpcsResponseBodyVpcs(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # Indicates whether the account is an Alibaba Finance Cloud account, an Alibaba Gov Cloud account, or a public cloud account.
         self.bid = bid
+        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The time when the VPC was created.
         self.gmt_create = gmt_create
+        # The time when the VPC was last modified.
         self.gmt_modified = gmt_modified
+        # Indicates whether the VPC is the default VPC. Valid values:
+        # 
+        # - **true**: The VPC is the default VPC.
+        # 
+        # - **false**: The VPC is not the default VPC.
         self.is_default = is_default
+        # The ID of the region to which the VPC belongs.
         self.region_no = region_no
+        # The status of the VPC. Valid values:
+        # 
+        # - `Pending`: The VPC is being configured.
+        # 
+        # - `Available`: The VPC is active.
         self.status = status
+        # A list of vSwitches.
         self.v_switchs = v_switchs
+        # The ID of the VPC.
+        # 
+        # > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the details of VPCs.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -201,13 +235,29 @@ class DescribeVpcsResponseBodyVpcsVSwitchs(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # The time when the vSwitch was created.
         self.gmt_create = gmt_create
+        # The time when the vSwitch was last modified.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # - **true**: The vSwitch is the default vSwitch.
+        # 
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
+        # The zone to which the vSwitch belongs.
         self.iz_no = iz_no
+        # The status of the vSwitch. Valid values:
+        # 
+        # - **Pending**: The vSwitch is being configured.
+        # 
+        # - **Available**: The vSwitch is active.
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):

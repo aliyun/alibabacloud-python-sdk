@@ -9,6 +9,8 @@ class DescribeDdosMaxBurstGbpsRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

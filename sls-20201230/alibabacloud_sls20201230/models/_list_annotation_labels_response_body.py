@@ -13,9 +13,9 @@ class ListAnnotationLabelsResponseBody(DaraModel):
         data: List[main_models.MLLabelParam] = None,
         total: int = None,
     ):
-        # The data returned.
+        # The list of annotation label table structs.
         self.data = data
-        # The total number of tags that meet the query conditions.
+        # The total number of entries that meet the query conditions.
         self.total = total
 
     def validate(self):

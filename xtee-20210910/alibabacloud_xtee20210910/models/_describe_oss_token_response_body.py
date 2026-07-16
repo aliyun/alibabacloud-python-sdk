@@ -15,19 +15,19 @@ class DescribeOssTokenResponseBody(DaraModel):
         signature: str = None,
         sts_token: str = None,
     ):
-        # AccessKeyId for OSS file upload.
+        # The AccessKey ID used to upload files to OSS.
         self.access_id = access_id
-        # Host address.
+        # The host address.
         self.host = host
-        # The Key required for file upload.
+        # The key required for file upload.
         self.key = key
-        # Permission policy for ossbucket.
+        # The access policy of the OSS bucket.
         self.policy = policy
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # OSS signature.
+        # The OSS signature.
         self.signature = signature
-        # Temporary identity credential.
+        # The temporary security credential.
         self.sts_token = sts_token
 
     def validate(self):

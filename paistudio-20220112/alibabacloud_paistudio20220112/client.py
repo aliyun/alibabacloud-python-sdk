@@ -2728,6 +2728,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_algorithms_with_options_async(request, headers, runtime)
 
+    def list_node_types_with_options(
+        self,
+        request: main_models.ListNodeTypesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeTypesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not DaraCore.is_null(request.gputype):
+            query['GPUType'] = request.gputype
+        if not DaraCore.is_null(request.node_types):
+            query['NodeTypes'] = request.node_types
+        if not DaraCore.is_null(request.quota_id):
+            query['QuotaId'] = request.quota_id
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeTypes',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodetypes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_node_types_with_options_async(
+        self,
+        request: main_models.ListNodeTypesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNodeTypesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerator_type):
+            query['AcceleratorType'] = request.accelerator_type
+        if not DaraCore.is_null(request.gputype):
+            query['GPUType'] = request.gputype
+        if not DaraCore.is_null(request.node_types):
+            query['NodeTypes'] = request.node_types
+        if not DaraCore.is_null(request.quota_id):
+            query['QuotaId'] = request.quota_id
+        if not DaraCore.is_null(request.resource_group_ids):
+            query['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNodeTypes',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodetypes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNodeTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_node_types(
+        self,
+        request: main_models.ListNodeTypesRequest,
+    ) -> main_models.ListNodeTypesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_node_types_with_options(request, headers, runtime)
+
+    async def list_node_types_async(
+        self,
+        request: main_models.ListNodeTypesRequest,
+    ) -> main_models.ListNodeTypesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_node_types_with_options_async(request, headers, runtime)
+
     def list_nodes_with_options(
         self,
         tmp_req: main_models.ListNodesRequest,

@@ -9,13 +9,13 @@ class GetAssetSelectionConfigRequest(DaraModel):
         self,
         business_type: str = None,
     ):
-        # The feature that is selected for the asset. Valid values:
+        # The business type of the asset selection. Valid values:
         # 
-        # *   **VIRUS_SCAN_CYCLE_CONFIG**: virus detection and removal
-        # *   **VIRUS_SCAN_ONCE_TASK**: one-time scan for viruses
-        # *   **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: a whitelist rule for alerts that are detected by using the agentless detection feature
-        # *   **AGENTLESS_VUL_WHITE_LIST_[ID]**: a whitelist rule for vulnerabilities that are detected by using the agentless detection feature
-        # *   **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protectioion
+        # - **VIRUS_SCAN_CYCLE_CONFIG**: trojan scan configuration
+        # - **VIRUS_SCAN_ONCE_TASK**: trojan scan one-time scan
+        # - **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: agentless detection alert whitelisting rule
+        # - **AGENTLESS_VUL_WHITE_LIST_[ID]**: agentless detection vulnerability whitelisting rule
+        # - **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protection.
         # 
         # This parameter is required.
         self.business_type = business_type

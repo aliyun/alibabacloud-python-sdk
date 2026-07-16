@@ -13,7 +13,9 @@ class ListIntegrationPolicyCollectorsResponseBody(DaraModel):
         collectors: List[main_models.ListIntegrationPolicyCollectorsResponseBodyCollectors] = None,
         request_id: str = None,
     ):
+        # The list of collectors.
         self.collectors = collectors
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,14 +65,23 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectors(DaraModel):
         version: str = None,
         workloads: List[main_models.ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads] = None,
     ):
+        # The add-on details.
         self.addon_meta = addon_meta
+        # The collector name.
         self.collector_name = collector_name
+        # The collector type.
         self.collector_type = collector_type
+        # The phase status.
         self.conditions = conditions
+        # Indicates whether the component is a managed component.
         self.managed = managed
+        # The name of the add-on release.
         self.release_name = release_name
+        # The collector status.
         self.state = state
+        # The component version.
         self.version = version
+        # The list of workloads.
         self.workloads = workloads
 
     def validate(self):
@@ -177,17 +188,29 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # The host IP address.
         self.host_ip = host_ip
+        # The IP address of the workload.
         self.ip = ip
+        # Indicates whether the component is a managed component.
         self.managed = managed
+        # The policy management information.
         self.managed_info = managed_info
+        # The details.
         self.message = message
+        # The workload name.
         self.name = name
+        # The workload namespace.
         self.namespace = namespace
+        # The kind of the parent reference.
         self.owner_reference_kind = owner_reference_kind
+        # The name of the parent reference.
         self.owner_reference_name = owner_reference_name
+        # The start time.
         self.start_time = start_time
+        # The status.
         self.status = status
+        # The workload version.
         self.version = version
 
     def validate(self):
@@ -284,7 +307,9 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo(
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -323,11 +348,17 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions(DaraModel)
         status: str = None,
         type: str = None,
     ):
+        # The time of the first transition.
         self.first_transition_time = first_transition_time
+        # The time of the last transition.
         self.last_transition_time = last_transition_time
+        # The details.
         self.message = message
+        # The reason for the failure.
         self.reason = reason
+        # The phase status.
         self.status = status
+        # The phase type.
         self.type = type
 
     def validate(self):

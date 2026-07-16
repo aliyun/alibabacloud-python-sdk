@@ -13,11 +13,18 @@ class CreateDataAgentKnowledgeBaseRequest(DaraModel):
         name: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The description of the knowledge base.
         self.description = description
+        # The ID of the source industry knowledge base.
         self.from_kb_uuid = from_kb_uuid
+        # The name of the knowledge base.
+        # 
         # This parameter is required.
         self.name = name
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

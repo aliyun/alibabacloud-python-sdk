@@ -18,12 +18,19 @@ class DescribePrivateDnsStatisticsResponseBody(DaraModel):
         private_dns_region_list: List[main_models.DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList] = None,
         request_id: str = None,
     ):
+        # The number of private DNS instances in an abnormal state.
         self.abnormal_private_dns_count = abnormal_private_dns_count
+        # The number of created private DNS instances.
         self.created_private_dns_count = created_private_dns_count
+        # The total number of configured domain names.
         self.domain_name_total_count = domain_name_total_count
+        # The number of configured domain names that were created within the specified time range.
         self.new_domain_name_total_count = new_domain_name_total_count
+        # The number of private DNS instances in a normal state.
         self.normal_private_dns_count = normal_private_dns_count
+        # A list of DNS regions.
         self.private_dns_region_list = private_dns_region_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -98,9 +105,13 @@ class DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList(DaraModel):
         private_dns_count: int = None,
         region_no: str = None,
     ):
+        # The number of configured domain names for private DNS in the region.
         self.domain_name_count = domain_name_count
+        # The number of configured domain names that were created in the region within the specified time range.
         self.new_domain_name_count = new_domain_name_count
+        # The number of private DNS instances in the region.
         self.private_dns_count = private_dns_count
+        # The region.
         self.region_no = region_no
 
     def validate(self):

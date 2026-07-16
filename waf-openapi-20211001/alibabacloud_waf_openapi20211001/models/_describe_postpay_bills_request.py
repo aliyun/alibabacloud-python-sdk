@@ -1,0 +1,109 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DescribePostpayBillsRequest(DaraModel):
+    def __init__(
+        self,
+        end_time: int = None,
+        instance_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        period_type: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        start_time: int = None,
+    ):
+        # The end time. The value is a UNIX timestamp (UTC). Unit: seconds.
+        self.end_time = end_time
+        # Instance ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The number of entries per page for a paged query.
+        self.max_results = max_results
+        # The pagination token for the next page. If a next page exists, this field has a return value.
+        # 
+        # > If this parameter has a return value, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        self.next_token = next_token
+        # The epoch type for billing information. Valid values:
+        # 
+        # - **hour**: Billing information is calculated on an hourly basis.
+        self.period_type = period_type
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The start time. The value is a UNIX timestamp (UTC). Unit: seconds.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
+        if self.period_type is not None:
+            result['PeriodType'] = self.period_type
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
+        if m.get('PeriodType') is not None:
+            self.period_type = m.get('PeriodType')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
+        return self
+

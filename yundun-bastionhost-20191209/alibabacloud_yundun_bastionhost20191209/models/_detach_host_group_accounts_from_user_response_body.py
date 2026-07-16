@@ -63,11 +63,15 @@ class DetachHostGroupAccountsFromUserResponseBodyResults(DaraModel):
     ):
         # The return code that indicates whether the call was successful. Valid values:
         # 
-        # *   **OK**: The call was successful.
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **OK**: The call was successful.
+        # 
+        # - **UNEXPECTED**: An unknown error occurred.
+        # 
+        # - **INVALID_ARGUMENT**: A request parameter is invalid.
+        # 
+        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        # 
+        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
         # The result of revoking permissions on the specified host accounts from the user.
         self.host_account_names = host_account_names
@@ -139,11 +143,15 @@ class DetachHostGroupAccountsFromUserResponseBodyResultsHostAccountNames(DaraMod
     ):
         # The return code that indicates whether permissions on the specified host account were revoked from the user. Valid values:
         # 
-        # *   **OK**: The call was successful.
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # - **OK**: The call was successful.
+        # 
+        # - **UNEXPECTED**: An unknown error occurred.
+        # 
+        # - **INVALID_ARGUMENT**: A request parameter is invalid.
+        # 
+        # - **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        # 
+        # - **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
         # The name of the host account.
         self.host_account_name = host_account_name

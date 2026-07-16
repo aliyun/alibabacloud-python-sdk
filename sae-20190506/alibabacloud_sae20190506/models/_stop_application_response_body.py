@@ -16,23 +16,39 @@ class StopApplicationResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status of the API call or a POP error code. Valid values:
+        # 
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The error code.
-        # 
-        # *   If the request is successful, this parameter is not returned.****
-        # *   This parameter is returned only if the request failed.**** For more information, see **Error codes** in this topic.
-        self.data = data
-        # Indicates whether the specified application is stopped. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        self.error_code = error_code
         # The returned data.
+        self.data = data
+        # The error code. Valid values:
+        # 
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        self.error_code = error_code
+        # The returned message. Valid values:
+        # 
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.message = message
-        # The ID of the trace. It can be used to query the details of a request.
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the application was stopped. Valid values:
+        # 
+        # - **true**: The application was stopped.
+        # 
+        # - **false**: The application failed to be stopped.
         self.success = success
-        # The ID of the change order.
+        # The ID of the call chain. Use this ID to query detailed information about the call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -98,12 +114,7 @@ class StopApplicationResponseBodyData(DaraModel):
         self,
         change_order_id: str = None,
     ):
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # The ID of the change order.
         self.change_order_id = change_order_id
 
     def validate(self):

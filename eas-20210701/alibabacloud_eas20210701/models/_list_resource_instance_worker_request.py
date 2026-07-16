@@ -16,16 +16,25 @@ class ListResourceInstanceWorkerRequest(DaraModel):
         status: str = None,
         worker_name: str = None,
     ):
+        # The sort order.
+        # 
+        # - Asc: ascending order.
+        # 
+        # - Desc: descending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of entries to return on each page. The default value is 100.
         self.page_size = page_size
+        # Indicates whether the health check passed.
         self.ready = ready
+        # The service name.
         self.service_name = service_name
+        # The field to sort by.
         self.sort = sort
+        # The status of the worker instance.
         self.status = status
-        # The worker name.
+        # The name of the worker instance.
         self.worker_name = worker_name
 
     def validate(self):

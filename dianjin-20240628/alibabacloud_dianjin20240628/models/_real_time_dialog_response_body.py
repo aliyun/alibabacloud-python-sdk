@@ -16,10 +16,15 @@ class RealTimeDialogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # An array of generated content. It can contain one or more choice objects.
         self.choices = choices
+        # The timestamp when this request was created.
         self.created = created
+        # The unique identifier for this call. Each chunk object has the same ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,9 +87,13 @@ class RealTimeDialogResponseBodyChoices(DaraModel):
         index: int = None,
         message: main_models.RealTimeDialogResponseBodyChoicesMessage = None,
     ):
+        # The incremental result returned for streaming responses. This is empty for non-streaming responses.
         self.delta = delta
+        # The value is \\`stop\\` if the session ends. The value is \\`null\\` if the session is in progress. If \\`success\\` is \\`false\\`, this parameter returns an error message.
         self.finish_reason = finish_reason
+        # The sequence number in the choices list.
         self.index = index
+        # The full result returned for non-streaming responses. This is empty for streaming responses.
         self.message = message
 
     def validate(self):
@@ -146,18 +155,29 @@ class RealTimeDialogResponseBodyChoicesMessage(DaraModel):
         self_directed_script_full_content: str = None,
         skip_current_recognize: bool = None,
     ):
+        # The analysis process.
         self.analysis_process = analysis_process
-        # time
+        # The time.
         self.call_time = call_time
+        # Hang up the dialog.
         self.hang_up_dialog = hang_up_dialog
+        # The intent code.
         self.intention_code = intention_code
+        # The intent name.
         self.intention_name = intention_name
+        # The intent script.
         self.intention_script = intention_script
+        # Specifies whether the conversation was interrupted.
         self.interrupt = interrupt
+        # The recommended intent.
         self.recommend_intention = recommend_intention
+        # The recommended script.
         self.recommend_script = recommend_script
+        # The script for the Q\\&A pair. This is incremental data. This is empty for streaming responses.
         self.self_directed_script = self_directed_script
+        # The script for the Q\\&A pair. This is the full data.
         self.self_directed_script_full_content = self_directed_script_full_content
+        # Specifies whether to skip the current recognition.
         self.skip_current_recognize = skip_current_recognize
 
     def validate(self):
@@ -262,18 +282,29 @@ class RealTimeDialogResponseBodyChoicesDelta(DaraModel):
         self_directed_script_full_content: str = None,
         skip_current_recognize: bool = None,
     ):
+        # The analysis process.
         self.analysis_process = analysis_process
-        # time
+        # The time.
         self.call_time = call_time
+        # Hangs up the dialog.
         self.hang_up_dialog = hang_up_dialog
+        # The intent code.
         self.intention_code = intention_code
+        # The intent name.
         self.intention_name = intention_name
+        # The intent script.
         self.intention_script = intention_script
+        # Specifies whether the conversation was interrupted.
         self.interrupt = interrupt
+        # The recommended intent.
         self.recommend_intention = recommend_intention
+        # The recommended script.
         self.recommend_script = recommend_script
+        # The script for the Q\\&A pair. This is incremental data.
         self.self_directed_script = self_directed_script
+        # The script for the Q\\&A pair. This is the full data.
         self.self_directed_script_full_content = self_directed_script_full_content
+        # Specifies whether to skip the current recognition.
         self.skip_current_recognize = skip_current_recognize
 
     def validate(self):

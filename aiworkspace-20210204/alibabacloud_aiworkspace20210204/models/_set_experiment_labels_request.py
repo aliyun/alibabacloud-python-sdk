@@ -12,7 +12,7 @@ class SetExperimentLabelsRequest(DaraModel):
         self,
         labels: List[main_models.LabelInfo] = None,
     ):
-        # The tags.
+        # A list of labels.
         self.labels = labels
 
     def validate(self):

@@ -9,7 +9,7 @@ class SetJobTemplateDefaultVersionRequest(DaraModel):
         self,
         version: int = None,
     ):
-        # 要设置为默认的模板版本号
+        # The version number to set as the default.
         # 
         # This parameter is required.
         self.version = version

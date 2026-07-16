@@ -11,8 +11,11 @@ class CreateProjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -19,40 +19,35 @@ class GetChatappTemplateMetricRequest(DaraModel):
         template_code: str = None,
         template_type: str = None,
     ):
-        # The space ID of the RAM user within the ISV account.
+        # The space ID or instance ID of the ISV sub-customer, which is also the channel ID. You can view it on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) interface.
         self.cust_space_id = cust_space_id
-        # The end of the time range to query.
+        # The end time of the query. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.end = end
-        # The granularity of the metric.
-        # 
-        # Valid values:
-        # 
-        # *   DAILY
-        # *   HALF_HOUR
+        # The metric granularity. Valid values:
+        # - DAILY: collects metrics on a daily basis.
+        # - HALF_HOUR: collects metrics every half hour.
         self.granularity = granularity
-        # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
+        # The ISV verification code, which is used to verify whether the RAM user is authorized by the ISV.
         self.isv_code = isv_code
-        # The template language.
+        # The template language. For more languages, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query.
+        # The start time of the query. This value is a timestamp in milliseconds.
         # 
         # This parameter is required.
         self.start = start
-        # The template code.
+        # The template code. You can view the template code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage** > **Template Design** page.
         # 
         # This parameter is required.
         self.template_code = template_code
-        # The template type. If you do not specify this parameter, the default value WHATSAPP is used.
+        # The templatetype. Valid values:
+        # - WHATSAPP
         # 
-        # Valid values:
-        # 
-        # *   VIBER
-        # *   WHATSAPP
+        # > If this parameter is not specified, the default value is WHATSAPP.
         self.template_type = template_type
 
     def validate(self):

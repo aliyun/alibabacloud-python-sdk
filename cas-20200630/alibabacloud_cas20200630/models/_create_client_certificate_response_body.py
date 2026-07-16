@@ -13,13 +13,13 @@ class CreateClientCertificateResponseBody(DaraModel):
         serial_number: str = None,
         x_509certificate: str = None,
     ):
-        # The certificate chain of the client certificate.
+        # The CA certificate chain.
         self.certificate_chain = certificate_chain
         # The unique identifier of the client certificate.
         self.identifier = identifier
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
-        # The serial number of the certificate.
+        # The certificate serial number.
         self.serial_number = serial_number
         # The content of the client certificate.
         self.x_509certificate = x_509certificate

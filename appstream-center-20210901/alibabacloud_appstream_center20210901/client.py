@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'appstream-center.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'appstream-center.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -126,6 +130,80 @@ class Client(OpenApiClient):
     ) -> main_models.ApproveOtaTaskResponse:
         runtime = RuntimeOptions()
         return await self.approve_ota_task_with_options_async(request, runtime)
+
+    def assign_wuying_server_private_addresses_with_options(
+        self,
+        request: main_models.AssignWuyingServerPrivateAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignWuyingServerPrivateAddressesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.secondary_private_ip_address_count):
+            body['SecondaryPrivateIpAddressCount'] = request.secondary_private_ip_address_count
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssignWuyingServerPrivateAddresses',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssignWuyingServerPrivateAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def assign_wuying_server_private_addresses_with_options_async(
+        self,
+        request: main_models.AssignWuyingServerPrivateAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignWuyingServerPrivateAddressesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.secondary_private_ip_address_count):
+            body['SecondaryPrivateIpAddressCount'] = request.secondary_private_ip_address_count
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssignWuyingServerPrivateAddresses',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssignWuyingServerPrivateAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def assign_wuying_server_private_addresses(
+        self,
+        request: main_models.AssignWuyingServerPrivateAddressesRequest,
+    ) -> main_models.AssignWuyingServerPrivateAddressesResponse:
+        runtime = RuntimeOptions()
+        return self.assign_wuying_server_private_addresses_with_options(request, runtime)
+
+    async def assign_wuying_server_private_addresses_async(
+        self,
+        request: main_models.AssignWuyingServerPrivateAddressesRequest,
+    ) -> main_models.AssignWuyingServerPrivateAddressesResponse:
+        runtime = RuntimeOptions()
+        return await self.assign_wuying_server_private_addresses_with_options_async(request, runtime)
 
     def authorize_instance_group_with_options(
         self,
@@ -1941,6 +2019,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.deliver_to_user_sls_with_options_async(request, runtime)
 
+    def describe_wuying_server_with_options(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWuyingServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWuyingServer',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_wuying_server_with_options_async(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWuyingServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWuyingServer',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_wuying_server(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+    ) -> main_models.DescribeWuyingServerResponse:
+        runtime = RuntimeOptions()
+        return self.describe_wuying_server_with_options(request, runtime)
+
+    async def describe_wuying_server_async(
+        self,
+        request: main_models.DescribeWuyingServerRequest,
+    ) -> main_models.DescribeWuyingServerResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_wuying_server_with_options_async(request, runtime)
+
     def describe_wuying_server_eip_info_with_options(
         self,
         request: main_models.DescribeWuyingServerEipInfoRequest,
@@ -3220,6 +3368,8 @@ class Client(OpenApiClient):
             query['HasRisk'] = request.has_risk
         if not DaraCore.is_null(request.include_risk_info):
             query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.management_status):
+            query['ManagementStatus'] = request.management_status
         if not DaraCore.is_null(request.model_configure):
             query['ModelConfigure'] = request.model_configure
         if not DaraCore.is_null(request.model_template_id):
@@ -3286,6 +3436,8 @@ class Client(OpenApiClient):
             query['HasRisk'] = request.has_risk
         if not DaraCore.is_null(request.include_risk_info):
             query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.management_status):
+            query['ManagementStatus'] = request.management_status
         if not DaraCore.is_null(request.model_configure):
             query['ModelConfigure'] = request.model_configure
         if not DaraCore.is_null(request.model_template_id):
@@ -3338,6 +3490,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.distro):
+            query['Distro'] = request.distro
         if not DaraCore.is_null(request.tag_list):
             query['TagList'] = request.tag_list
         body = {}
@@ -3408,6 +3562,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.distro):
+            query['Distro'] = request.distro
         if not DaraCore.is_null(request.tag_list):
             query['TagList'] = request.tag_list
         body = {}
@@ -3582,6 +3738,88 @@ class Client(OpenApiClient):
     ) -> main_models.ListLlmTemplatesResponse:
         runtime = RuntimeOptions()
         return await self.list_llm_templates_with_options_async(request, runtime)
+
+    def list_model_provider_endpoints_with_options(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderEndpoints',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderEndpointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_model_provider_endpoints_with_options_async(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.provider_name):
+            query['ProviderName'] = request.provider_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListModelProviderEndpoints',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListModelProviderEndpointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_model_provider_endpoints(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        runtime = RuntimeOptions()
+        return self.list_model_provider_endpoints_with_options(request, runtime)
+
+    async def list_model_provider_endpoints_async(
+        self,
+        request: main_models.ListModelProviderEndpointsRequest,
+    ) -> main_models.ListModelProviderEndpointsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_model_provider_endpoints_with_options_async(request, runtime)
 
     def list_model_provider_templates_with_options(
         self,
@@ -6266,6 +6504,80 @@ class Client(OpenApiClient):
     ) -> main_models.TagCloudResourcesResponse:
         runtime = RuntimeOptions()
         return await self.tag_cloud_resources_with_options_async(request, runtime)
+
+    def unassign_wuying_server_private_addresses_with_options(
+        self,
+        request: main_models.UnassignWuyingServerPrivateAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnassignWuyingServerPrivateAddressesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.private_ip_addresses):
+            body['PrivateIpAddresses'] = request.private_ip_addresses
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnassignWuyingServerPrivateAddresses',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnassignWuyingServerPrivateAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unassign_wuying_server_private_addresses_with_options_async(
+        self,
+        request: main_models.UnassignWuyingServerPrivateAddressesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnassignWuyingServerPrivateAddressesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.private_ip_addresses):
+            body['PrivateIpAddresses'] = request.private_ip_addresses
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnassignWuyingServerPrivateAddresses',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnassignWuyingServerPrivateAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unassign_wuying_server_private_addresses(
+        self,
+        request: main_models.UnassignWuyingServerPrivateAddressesRequest,
+    ) -> main_models.UnassignWuyingServerPrivateAddressesResponse:
+        runtime = RuntimeOptions()
+        return self.unassign_wuying_server_private_addresses_with_options(request, runtime)
+
+    async def unassign_wuying_server_private_addresses_async(
+        self,
+        request: main_models.UnassignWuyingServerPrivateAddressesRequest,
+    ) -> main_models.UnassignWuyingServerPrivateAddressesResponse:
+        runtime = RuntimeOptions()
+        return await self.unassign_wuying_server_private_addresses_with_options_async(request, runtime)
 
     def unbind_with_options(
         self,

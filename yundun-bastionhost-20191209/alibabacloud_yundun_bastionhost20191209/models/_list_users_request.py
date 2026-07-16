@@ -23,7 +23,7 @@ class ListUsersRequest(DaraModel):
         self.display_name = display_name
         # The ID of the bastion host whose users you want to query.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -31,37 +31,42 @@ class ListUsersRequest(DaraModel):
         self.mobile = mobile
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page.\\
+        # The number of entries per page.<br>
         # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host whose users you want to query.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The type of the user that you want to query. Valid values:
         # 
-        # *   **Local**: a local user.
-        # *   **Ram**: a Resource Access Management (RAM) user.
-        # *   **AD**: an Active Directory (AD)-authenticated user.
-        # *   **LDAP**: a Lightweight Directory Access Protocol (LDAP)-authenticated user.
+        # - **Local**: a local user.
+        # 
+        # - **Ram**: a Resource Access Management (RAM) user.
+        # 
+        # - **AD**: an Active Directory (AD)-authenticated user.
+        # 
+        # - **LDAP**: a Lightweight Directory Access Protocol (LDAP)-authenticated user.
         self.source = source
         # The unique ID of the user that you want to query. Only exact match is supported.
         # 
-        # >  This parameter uniquely identifies a RAM user of the bastion host. This parameter is valid if **Source** is set to **Ram**. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the **UserId** response parameter.
+        # > This parameter uniquely identifies a RAM user of the bastion host. This parameter is valid if **Source** is set to **Ram**. You can call the [ListUsers](https://help.aliyun.com/document_detail/28684.html) operation in RAM to obtain the unique ID of the user from the **UserId** response parameter.
         self.source_user_id = source_user_id
         # The ID of the user group to which the user you want to query belongs.
         # 
-        # >  You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the user group ID.
         self.user_group_id = user_group_id
         # The logon name of the user that you want to query. Only exact match is supported.
         self.user_name = user_name
         # The state of the user that you want to query. Valid values:
         # 
-        # *   **Normal**: The user is in normal state.
-        # *   **Frozen**: The user is locked.
-        # *   **Expired**: The user has expired.
+        # - **Normal**: The user is in normal state.
+        # 
+        # - **Frozen**: The user is locked.
+        # 
+        # - **Expired**: The user has expired.
         self.user_state = user_state
 
     def validate(self):

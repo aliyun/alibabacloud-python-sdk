@@ -11,15 +11,17 @@ class DescribeScreenScoreThreadRequest(DaraModel):
         source: int = None,
         start_time: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The end time as a timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Source of security score, default is Cloud Security Center if left empty. Enum values: 
-        # - 0:Cloud Security Center. 
-        # - 1:Yaochi Console.
+        # The source of the security score. If left empty, the default value is Security Center. Valid values:
+        # 
+        # 0: Security Center.
+        # 
+        # 1: Alibaba Cloud ApsaraDB console.
         self.source = source
-        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
+        # The start time as a timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time

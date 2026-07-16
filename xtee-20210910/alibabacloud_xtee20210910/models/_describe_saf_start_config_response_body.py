@@ -13,9 +13,9 @@ class DescribeSafStartConfigResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeSafStartConfigResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -54,13 +54,13 @@ class DescribeSafStartConfigResponseBodyResultObject(DaraModel):
         languages: List[str] = None,
         server_regions: List[str] = None,
     ):
-        # List of device types.
+        # The device type list.
         self.device_types = device_types
-        # Event codes.
+        # The event codes.
         self.event_codes = event_codes
-        # Configuration language details.
+        # The configuration language details.
         self.languages = languages
-        # Server region
+        # The server regions.
         self.server_regions = server_regions
 
     def validate(self):

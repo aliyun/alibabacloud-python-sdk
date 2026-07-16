@@ -16,10 +16,17 @@ class GetEmonMonitorDataResponseBody(DaraModel):
         result: List[main_models.GetEmonMonitorDataResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request status code.
         self.code = code
+        # The request result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,11 +91,17 @@ class GetEmonMonitorDataResponseBodyResult(DaraModel):
         summary: float = None,
         tags: Dict[str, Any] = None,
     ):
+        # The real-time metric monitoring data, in the format of `{timestamp:data}`.
         self.dps = dps
+        # The completeness of time series data points in the metric query result. A value of 1.0 indicates 100% completeness.
         self.integrity = integrity
+        # The timestamp when the request reaches the server. This parameter is used for troubleshooting.
         self.message_watermark = message_watermark
+        # The metric name.
         self.metric = metric
+        # If the queries contain wildcards, the result includes multiple matched time series datasets. The summary aggregates the values of these time series at each time point based on the aggregator type specified in the query. Currently, only avg is supported as the aggregation method.
         self.summary = summary
+        # The query tags.
         self.tags = tags
 
     def validate(self):

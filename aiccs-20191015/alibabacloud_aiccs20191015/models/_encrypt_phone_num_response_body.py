@@ -13,10 +13,15 @@ class EncryptPhoneNumResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A return value of 200 indicates that the Request Succeeded.
         self.code = code
+        # The ciphertext after encryption.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API Call Succeeded.
         self.success = success
 
     def validate(self):

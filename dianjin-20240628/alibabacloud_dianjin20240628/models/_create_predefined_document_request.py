@@ -15,9 +15,13 @@ class CreatePredefinedDocumentRequest(DaraModel):
         metadata: Dict[str, Any] = None,
         title: str = None,
     ):
+        # A list of document chunks.
         self.chunks = chunks
+        # The ID of the document library.
         self.library_id = library_id
+        # The metadata.
         self.metadata = metadata
+        # The title of the document.
         self.title = title
 
     def validate(self):
@@ -74,9 +78,13 @@ class CreatePredefinedDocumentRequestChunks(DaraModel):
         chunk_text: str = None,
         chunk_type: str = None,
     ):
+        # The metadata for the document chunk.
         self.chunk_meta = chunk_meta
+        # The order of the chunk. This parameter is optional.
         self.chunk_order = chunk_order
+        # The text content of the document chunk.
         self.chunk_text = chunk_text
+        # The type of the document chunk.
         self.chunk_type = chunk_type
 
     def validate(self):

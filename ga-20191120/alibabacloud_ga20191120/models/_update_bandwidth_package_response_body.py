@@ -12,7 +12,7 @@ class UpdateBandwidthPackageResponseBody(DaraModel):
         name: str = None,
         request_id: str = None,
     ):
-        # The bandwidth plan ID.
+        # The ID of the bandwidth plan.
         self.bandwidth_package = bandwidth_package
         # The description of the bandwidth plan.
         self.description = description

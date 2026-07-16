@@ -13,7 +13,6 @@ class GetSkillDetailResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.data = data
-        # RequestId
         self.request_id = request_id
 
     def validate(self):

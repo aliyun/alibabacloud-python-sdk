@@ -15,14 +15,15 @@ class PhoneNumberEncryptResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The status code of the request.
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+        # - The value OK indicates that the request was successful.
+        # 
+        # - For information about other error codes, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
         self.code = code
-        # Details about the returned entries.
+        # The array.
         self.data = data
-        # The returned message.
+        # The description of the returned status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -83,10 +84,13 @@ class PhoneNumberEncryptResponseBodyData(DaraModel):
     ):
         # The encrypted phone number.
         self.encrypted_number = encrypted_number
-        # The time when the phone number expires.
+        # The expiration time of the phone number.
         self.expire_time = expire_time
         # The original phone number.
         self.original_number = original_number
+        # The custom ID reserved for the caller when the request was initiated. This ID is eventually returned to the caller.
+        # 
+        # The value is of the string type. The maximum length is 64 characters.
         self.out_id = out_id
 
     def validate(self):

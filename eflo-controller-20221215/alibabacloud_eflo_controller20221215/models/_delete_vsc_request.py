@@ -12,7 +12,7 @@ class DeleteVscRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The ID of the VSC that you want to delete.
+        # The ID of the VSC to delete.
         # 
         # This parameter is required.
         self.vsc_id = vsc_id

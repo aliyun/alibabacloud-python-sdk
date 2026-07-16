@@ -10,11 +10,11 @@ class DescribeSoarSubscribedStrategyRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The page number. Pages start from page 1.
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         # 
         # This parameter is required.
         self.page_size = page_size

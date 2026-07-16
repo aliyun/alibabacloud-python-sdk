@@ -13,23 +13,22 @@ class ModifyCustomBlockRecordRequest(DaraModel):
         resource_owner_id: int = None,
         uuids: str = None,
     ):
-        # The IP address that you want to specify in the policy.
+        # The IP address blocked for brute-force attacks prevention.
         # 
         # This parameter is required.
         self.block_ip = block_ip
-        # The traffic direction that you want to specify in the policy. Valid values:
-        # 
-        # *   **in**: inbound
-        # *   **out**: outbound
+        # The direction in which the brute-force attacks blocking policy blocks the IP address on the server. Valid values:
+        # - **in**: inbound
+        # - **out**: outbound.
         # 
         # This parameter is required.
         self.bound = bound
-        # The expiration time of the policy.
+        # The expiration time of the blocking record.
         # 
         # This parameter is required.
         self.expire_time = expire_time
         self.resource_owner_id = resource_owner_id
-        # The UUIDs of servers.
+        # The list of servers.
         # 
         # This parameter is required.
         self.uuids = uuids

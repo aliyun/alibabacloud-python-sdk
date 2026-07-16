@@ -19,21 +19,21 @@ class ChatappSyncPhoneNumberResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The response code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the request is successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The phone numbers.
+        # The list of phone numbers.
         self.phone_numbers = phone_numbers
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
-        # 
-        # *   **true**: The call was successful.
-        # *   **false**: The call failed.
+        # Indicates whether the call is successful. Valid values:
+        # - **true**: The call is successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -113,58 +113,36 @@ class ChatappSyncPhoneNumberResponseBodyPhoneNumbers(DaraModel):
         verified_name: str = None,
     ):
         self.calling_configure = calling_configure
-        # The verification state of the phone number.
+        # The verification status. Valid values:
         # 
-        # Valid values:
-        # 
-        # *   REVOKED: The review application is revoked.
-        # *   MORE_INFORMATION_REQUESTED: More information needs to be provided.
-        # *   VERIFIED: The phone number passes the verification.
-        # *   REJECTED: The phone number fails to pass the verification.
+        # - REVOKED: The verification request is revoked.
+        # - MORE_INFORMATION_REQUESTED: More information is required.
+        # - VERIFIED: The verification is passed.
+        # - REJECTED: The verification is rejected.
         self.code_verification_status = code_verification_status
-        # Indicates whether it is a WhatsApp Official Business Account (OBA).
+        # Indicates whether the phone number is OBA-certified.
         self.is_official = is_official
-        # The number of phone numbers to which messages can be sent in a day.
+        # The messaging limit tier of the phone number.
         self.messaging_limit_tier = messaging_limit_tier
-        # The review status of the business display name.
+        # The name review status.
         self.name_status = name_status
-        # The review status of the new business display name.
+        # The review status of the new name.
         self.new_name_status = new_name_status
         # The phone number.
         self.phone_number = phone_number
         # The quality rating of the phone number.
-        # 
-        # Valid values:
-        # 
-        # *   RED
-        # *   YELLOW
-        # *   GREEN
         self.quality_rating = quality_rating
-        # The state of the phone number.
-        # 
-        # Valid values:
-        # 
-        # *   MIGRATED
-        # *   FLAGGED
-        # *   DISCONNECTED
-        # *   UNVERIFIED
-        # *   BANNED
-        # *   RATE_LIMITED
-        # *   PENDING
-        # *   CONNECTED
-        # *   UNKNOWN
-        # *   DELETED
-        # *   RESTRICTED
+        # The status of the phone number.
         self.status = status
-        # The callback URL to which status reports are sent by using HTTP callbacks.
+        # The callback URL for status reports.
         self.status_callback_url = status_callback_url
         # The status report queue.
         self.status_queue = status_queue
-        # The URL that receives the MO messages.
+        # The callback URL for upstream messages.
         self.up_callback_url = up_callback_url
-        # The mobile originated (MO) message queue.
+        # The upstream MSMQ.
         self.up_queue = up_queue
-        # The display name of the business to which the phone number belongs.
+        # The verified name of the phone number.
         self.verified_name = verified_name
 
     def validate(self):

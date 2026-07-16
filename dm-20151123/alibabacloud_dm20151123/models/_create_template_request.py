@@ -20,18 +20,28 @@ class CreateTemplateRequest(DaraModel):
         template_text: str = None,
         template_type: int = None,
     ):
+        # Deprecated. This parameter is retained for backward compatibility.
         self.from_type = from_type
         self.owner_id = owner_id
+        # Deprecated. This parameter is retained for backward compatibility.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Deprecated. This parameter is retained for backward compatibility.
         self.sms_content = sms_content
+        # Deprecated. This parameter is retained for backward compatibility.
         self.sms_type = sms_type
+        # The template name.
+        # 
         # This parameter is required.
         self.template_name = template_name
+        # The sender name.
         self.template_nick_name = template_nick_name
+        # The email subject.
         self.template_subject = template_subject
+        # The email HTML body.
         self.template_text = template_text
+        # The template type.
         self.template_type = template_type
 
     def validate(self):

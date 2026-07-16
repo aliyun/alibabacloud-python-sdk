@@ -16,13 +16,25 @@ class UnassociateEipAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The allocation ID of the EIP.
+        # 
         # This parameter is required.
         self.allocation_id = allocation_id
+        # This parameter is optional because the system automatically determines the instance ID from the provided `AllocationId`.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The type of the associated instance. Valid values:
+        # 
+        # - `EcsInstance`: An ECS instance. This is the default.
+        # - `SlbInstance`: A Classic Load Balancer (CLB) instance.
+        # - `Nat`: A NAT gateway.
+        # - `HaVip`: A high-availability virtual IP address (HaVip).
+        # - `NetworkInterface`: A secondary elastic network interface.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the EIP is located. To get the latest list of regions, call the `DescribeRegions` operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -10,8 +10,12 @@ class ConfirmAndPostProcessAuditNoteRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The TaskId obtained from the SubmitAuditNote interface. This is the unique identifier for the custom rule library task index. Store it securely when using it.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Alibaba Cloud Model Studio workspace unique identifier: Get [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

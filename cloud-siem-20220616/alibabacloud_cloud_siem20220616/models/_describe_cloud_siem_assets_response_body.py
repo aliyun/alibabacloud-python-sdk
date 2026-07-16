@@ -26,8 +26,9 @@ class DescribeCloudSiemAssetsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -140,40 +141,47 @@ class DescribeCloudSiemAssetsResponseBodyDataResponseData(DaraModel):
         incident_uuid: str = None,
         sub_user_id: int = None,
     ):
-        # The UUID of the alert associated with the event.
+        # The UUID of the alert that is associated with the event.
         self.alert_uuid = alert_uuid
-        # The ID of the Alibaba Cloud account in SIEM.
+        # The ID of the Alibaba Cloud account.
         self.aliuid = aliuid
         # The logical ID of the asset.
         self.asset_id = asset_id
-        # The display information of the asset is in the JSON format.
+        # The asset information, in a JSON array.
         self.asset_info = asset_info
-        # The name of the asset.
+        # The asset name.
         self.asset_name = asset_name
-        # The type of the asset. Valid values:
+        # The asset type. Valid values:
         # 
-        # *   ip
-        # *   domain
-        # *   url
-        # *   process
-        # *   file
-        # *   host
+        # - ip: IP address
+        # 
+        # - domain: domain name
+        # 
+        # - url: URL
+        # 
+        # - process: process
+        # 
+        # - file: file
+        # 
+        # - host: host
         self.asset_type = asset_type
-        # The cloud code of the entity. Valid values:
+        # The cloud service provider of the entity. Valid values:
         # 
-        # *   aliyun: Alibaba Cloud
-        # *   qcloud: Tencent Cloud
-        # *   hcloud: Huawei Cloud
+        # - aliyun: Alibaba Cloud
+        # 
+        # - qcloud: Tencent Cloud
+        # 
+        # - hcloud: Huawei Cloud
         self.cloud_code = cloud_code
         # The time when the asset was synchronized.
         self.gmt_create = gmt_create
         # The time when the asset was last updated.
         self.gmt_modified = gmt_modified
-        # The ID of the asset.
+        # The asset ID.
         self.id = id
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # The ID of the associated account to which the asset belongs.
+        # The ID of the linked account.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -277,11 +285,11 @@ class DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo(DaraModel):
         key_name: str = None,
         values: str = None,
     ):
-        # The attribute key.
+        # The key of the alert property.
         self.key = key
-        # The name of the key.
+        # The name of the alert property.
         self.key_name = key_name
-        # The value of the key.
+        # The value of the alert property.
         self.values = values
 
     def validate(self):
@@ -323,11 +331,11 @@ class DescribeCloudSiemAssetsResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # The page number of the returned page.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

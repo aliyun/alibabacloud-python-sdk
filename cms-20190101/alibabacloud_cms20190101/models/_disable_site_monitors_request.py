@@ -11,7 +11,7 @@ class DisableSiteMonitorsRequest(DaraModel):
         task_ids: str = None,
     ):
         self.region_id = region_id
-        # The ID of the site monitoring task. Separate multiple IDs with commas (,).
+        # The IDs of site monitoring tasks. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids

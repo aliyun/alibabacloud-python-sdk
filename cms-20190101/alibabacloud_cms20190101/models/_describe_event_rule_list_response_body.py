@@ -19,7 +19,7 @@ class DescribeEventRuleListResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         self.event_rules = event_rules
         # The error message returned.
@@ -28,8 +28,9 @@ class DescribeEventRuleListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of entries returned.
         self.total = total

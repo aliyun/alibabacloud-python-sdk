@@ -16,15 +16,15 @@ class ListServiceInstanceUpgradeHistoryResponseBody(DaraModel):
         total_count: int = None,
         upgrade_history: List[main_models.ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory] = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The upgrade history.
+        # The upgrade history records.
         self.upgrade_history = upgrade_history
 
     def validate(self):
@@ -91,25 +91,31 @@ class ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory(DaraModel):
         type: str = None,
         upgrade_history_id: str = None,
     ):
-        # The time when the update ended.
+        # The time when the upgrade ended.
         self.end_time = end_time
         # The version before the upgrade.
         self.from_version = from_version
-        # The upgrade result.
+        # The upgrade results.
         self.results = results
-        # The time when the update started.
+        # The time when the upgrade started.
         self.start_time = start_time
-        # The state of the update. Valid values:
+        # The status of the upgrade. Valid values:
         # 
-        # *   upgrading: The service instance is being upgraded.
-        # *   UpgradeSuccessful: The service instance is upgraded.
-        # *   UpgradeFailed: The service instance failed to be upgraded.
+        # - upgrading
+        # 
+        # - UpgradeSuccessful
+        # 
+        # - UpgradeFailed
         self.status = status
         # The version after the upgrade.
         self.to_version = to_version
-        # The update type.
+        # The type of upgrade. Valid values:
+        # 
+        # - Upgrade
+        # 
+        # - Rollback
         self.type = type
-        # The ID of the upgrade record.
+        # The ID of the upgrade history.
         self.upgrade_history_id = upgrade_history_id
 
     def validate(self):

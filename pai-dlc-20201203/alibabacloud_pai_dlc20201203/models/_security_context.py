@@ -14,10 +14,15 @@ class SecurityContext(DaraModel):
         run_as_user: int = None,
         seccomp_profile: main_models.SeccompProfile = None,
     ):
+        # The Linux capabilities configuration of the container.
         self.capabilities = capabilities
+        # Specifies whether to enable privileged mode. This option is available only for specific Lingjun AI Computing Service subscription user scenarios.
         self.privileged = privileged
+        # The GID of the user that runs the container.
         self.run_as_group = run_as_group
+        # The UID of the user that runs the container.
         self.run_as_user = run_as_user
+        # The Seccomp profile configuration.
         self.seccomp_profile = seccomp_profile
 
     def validate(self):

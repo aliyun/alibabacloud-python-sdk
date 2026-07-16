@@ -14,11 +14,11 @@ class CreateInstanceResponseBody(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The order ID. This parameter is returned only if `InstanceChargeType` is set to PrePaid.
+        # The order ID. This parameter is returned only when you create a subscription ECS instance (request parameter `InstanceChargeType=PrePaid`).
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The transaction price.
+        # The transaction price of the order.
         self.trade_price = trade_price
 
     def validate(self):

@@ -11,11 +11,13 @@ class SetGtmAccessModeRequest(DaraModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The desired access policy. Valid values:
+        # The access mode. Valid values:
         # 
-        # *   **AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.**
-        # *   **DEFAULT: specifies the primary address pool set.**
-        # *   **FAILOVER: specifies the secondary address pool set.
+        # - **AUTO**: Automatic switchover
+        # 
+        # - **DEFAULT**: The primary address pool collection
+        # 
+        # - **FAILOVER**: The secondary address pool collection
         # 
         # This parameter is required.
         self.access_mode = access_mode

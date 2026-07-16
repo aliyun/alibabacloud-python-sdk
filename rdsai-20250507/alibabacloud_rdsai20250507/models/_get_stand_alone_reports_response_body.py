@@ -20,17 +20,17 @@ class GetStandAloneReportsResponseBody(DaraModel):
     ):
         # The response message.
         self.message = message
-        # The page number. Pages start from 1. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of records on each page. Default value: 20. Maximum value: 100.
+        # The number of entries per page. The default value is 20 and the maximum value is 100.
         self.page_size = page_size
-        # The reports.
+        # A list of inspection reports.
         self.reports = reports
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # Indicates whether the request was successful.
         self.success = success
-        # The total number of records.
+        # The total number of entries across all pages.
         self.total_count = total_count
 
     def validate(self):
@@ -110,19 +110,20 @@ class GetStandAloneReportsResponseBodyReports(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The creation time of the inspection task.
+        # The time the inspection task was created.
         self.created_time = created_time
-        # The end time of the inspection. The time is in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The end time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
         self.end_time = end_time
         self.inspection_items = inspection_items
+        # The ID of the region.
         self.region_id = region_id
         self.report_language = report_language
         self.report_type = report_type
-        # The start time of the inspection. The time is in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The start time of the inspection. The time is in UTC and uses the `YYYY-MM-DDTHH:mm:ssZ` format.
         self.start_time = start_time
         # The status of the inspection task.
         self.status = status
-        # The ID of the inspection report.
+        # The ID of the inspection task.
         self.task_id = task_id
 
     def validate(self):

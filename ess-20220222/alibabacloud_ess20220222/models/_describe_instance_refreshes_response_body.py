@@ -16,13 +16,13 @@ class DescribeInstanceRefreshesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The instance refresh tasks.
+        # The list of instance refresh tasks.
         self.instance_refresh_tasks = instance_refresh_tasks
         # The maximum number of entries per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of instance refresh tasks.
         self.total_count = total_count
@@ -96,53 +96,57 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         skip_matching: bool = None,
         start_time: str = None,
         status: str = None,
+        strategy: str = None,
         total_need_update_capacity: int = None,
     ):
+        # The duration for which the task pauses when a checkpoint is reached. Unit: minutes.
         self.checkpoint_pause_time = checkpoint_pause_time
+        # The checkpoints for the refresh task. A checkpoint specifies that the task automatically pauses for CheckpointPauseTime minutes when the proportion of new instances reaches the specified value during the instance refresh.
         self.checkpoints = checkpoints
-        # The desired configurations of the instance refresh task.
+        # The desired configuration for the instance refresh.
         self.desired_configuration = desired_configuration
-        # The reason why the instance refresh task failed to be executed.
+        # The failure reason when the instance refresh task fails.
         self.detail = detail
         # The end time of the instance refresh task.
         self.end_time = end_time
-        # The refreshed number of instances in the scaling group.
+        # The capacity that has been refreshed.
         self.finished_update_capacity = finished_update_capacity
         # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
-        # The ratio by which the number of instances in the scaling group can exceed the upper limit for the number of instances in the scaling group during instance refresh.
+        # The maximum percentage by which the number of instances in the scaling group can exceed the scaling group capacity during the instance refresh.
         self.max_healthy_percentage = max_healthy_percentage
-        # The ratio of the number of instances that provide services to the total number of instances in the scaling group during instance refresh.
+        # The minimum percentage of instances that must remain in service in the scaling group during the instance refresh.
         self.min_healthy_percentage = min_healthy_percentage
         # The region ID of the scaling group.
         self.region_id = region_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # Indicates whether instances that match the desired scaling configuration are skipped.
+        # Indicates whether instances that already match the desired configuration are skipped.
         # 
-        # >  The system determines the match based on the ID of the desired scaling configuration rather than individual configuration items.
+        # > The system determines whether an instance matches based on the ID of the desired scaling configuration, not by comparing individual configuration items.
         # 
         # Valid values:
         # 
-        # *   true: Instances that match the desired scaling configuration are skipped. When you initiate an instance refresh task, the system checks the configurations of all instances. The refresh operation is skipped for instances created based on the desired scaling configuration.
-        # *   false: Instances that match the desired scaling configuration are not skipped. When an instance refresh task is initiated, all instances in the scaling group at the time of initiation are refreshed.
+        # - true: Skipped. When the instance refresh task starts, the system checks the configuration of each instance. Instances that were already created with the desired configuration are not refreshed.
+        # - false: Not skipped. After the instance refresh task starts, all instances in the scaling group are refreshed.
         self.skip_matching = skip_matching
         # The start time of the instance refresh task.
         self.start_time = start_time
-        # The status of the instance refresh task. Valid values:
-        # 
-        # *   Pending: The instance refresh task is created and is waiting to be scheduled.
-        # *   InProgress: The instance refresh task is being executed.
-        # *   Paused: The instance refresh task is suspended.
-        # *   Failed: The instance refresh task failed to be executed.
-        # *   Successful: The instance refresh task is successful.
-        # *   Cancelling: The instance refresh task is being canceled.
-        # *   Cancelled: The instance refresh task is canceled.
-        # *   RollbackInProgress: The instance refresh task is being rolled back.
-        # *   RollbackSuccessful: The instance refresh task is rolled back.
-        # *   RollbackFailed: The instance refresh task fails to be rolled back.
+        # The current status of the instance refresh task. Valid values:
+        # - Pending: The instance refresh task is created and waiting to be scheduled.
+        # - InProgress: The instance refresh task is in progress.
+        # - Paused: The instance refresh task is paused.
+        # - CheckpointPause: The instance refresh task is paused because the task progress reached a checkpoint (`Checkpoint.Percentage`).
+        # - Failed: The instance refresh task failed.
+        # - Successful: The instance refresh task succeeded.
+        # - Cancelling: The instance refresh task is being canceled.
+        # - Cancelled: The instance refresh task is canceled.
+        # - RollbackInProgress: The instance refresh task is being rolled back.
+        # - RollbackSuccessful: The instance refresh task is rolled back.
+        # - RollbackFailed: The rollback of the instance refresh task failed.
         self.status = status
-        # The total number of instances whose configurations are refreshed.
+        self.strategy = strategy
+        # The total capacity that needs to be refreshed.
         self.total_need_update_capacity = total_need_update_capacity
 
     def validate(self):
@@ -202,6 +206,9 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+
         if self.total_need_update_capacity is not None:
             result['TotalNeedUpdateCapacity'] = self.total_need_update_capacity
 
@@ -255,6 +262,9 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+
         if m.get('TotalNeedUpdateCapacity') is not None:
             self.total_need_update_capacity = m.get('TotalNeedUpdateCapacity')
 
@@ -270,11 +280,19 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         launch_template_version: str = None,
         scaling_configuration_id: str = None,
     ):
+        # The list of containers included in the instance.
         self.containers = containers
-        # The ID of the image file that provides the image resource for Auto Scaling to create instances.
+        # The ID of the image file used for automatic creation of instances.
         self.image_id = image_id
+        # The ID of the launch template from which the scaling group obtains launch configuration information.
         self.launch_template_id = launch_template_id
+        # The instance type information that overrides the launch template.
         self.launch_template_overrides = launch_template_overrides
+        # The version of the launch template. Valid values:
+        # 
+        # - A fixed template version number.
+        # - Default: always uses the default version of the template.
+        # - Latest: always uses the latest version of the template.
         self.launch_template_version = launch_template_version
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
@@ -351,6 +369,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         self,
         instance_type: str = None,
     ):
+        # The instance type that overrides the instance type specified in the launch template.
         self.instance_type = instance_type
 
     def validate(self):
@@ -382,10 +401,15 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         image: str = None,
         name: str = None,
     ):
+        # The arguments for the container startup commands.
         self.args = args
+        # The container startup commands.
         self.commands = commands
+        # The environment variable information.
         self.environment_vars = environment_vars
+        # The container image.
         self.image = image
+        # The custom container name.
         self.name = name
 
     def validate(self):
@@ -447,8 +471,11 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         key: str = None,
         value: str = None,
     ):
+        # >This parameter is not available for use.
         self.field_ref_field_path = field_ref_field_path
+        # The name of the environment variable.
         self.key = key
+        # The value of the environment variable.
         self.value = value
 
     def validate(self):
@@ -488,6 +515,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints(DaraM
         self,
         percentage: int = None,
     ):
+        # The percentage of new instances relative to the total instances in the scaling group. The task automatically pauses when this percentage is reached.
         self.percentage = percentage
 
     def validate(self):

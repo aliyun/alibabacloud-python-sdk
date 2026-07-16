@@ -15,14 +15,29 @@ class CreateSkillGroupRequest(DaraModel):
         instance_id: str = None,
         skill_group_name: str = None,
     ):
+        # Channel type of the skill group. Valid values:
+        # 
+        # - **1**: Hotline.
+        # - **2**: Online.
+        # - **3**: Ticket.
+        # 
         # This parameter is required.
         self.channel_type = channel_type
+        # Unique ID of the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # Department ID.
         self.department_id = department_id
+        # Skill group description.
         self.description = description
+        # External display name of the skill group.
         self.display_name = display_name
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group name.
+        # 
         # This parameter is required.
         self.skill_group_name = skill_group_name
 

@@ -12,10 +12,16 @@ class ListProjectMembersRequest(DaraModel):
         list_query: main_models.ListProjectMembersRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The request object.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -60,9 +66,13 @@ class ListProjectMembersRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The project environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The page number.
         self.page_no = page_no
+        # The number of records per page.
         self.page_size = page_size
 
     def validate(self):

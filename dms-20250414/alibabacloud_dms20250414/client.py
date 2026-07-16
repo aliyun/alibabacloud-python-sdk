@@ -22,7 +22,17 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'dms.us-west-1.aliyuncs.com',
+            'us-east-1': 'dms.us-east-1.aliyuncs.com',
+            'cn-shenzhen': 'dms.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'dms.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'dms.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'dms.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'dms.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'dms.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -775,6 +785,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -837,6 +849,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -877,6 +891,124 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.create_custom_agent_with_options_async(request, runtime)
+
+    def create_data_agent_accuracy_test_with_options(
+        self,
+        request: main_models.CreateDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dataset):
+            query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.desc):
+            query['Desc'] = request.desc
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.evaluation_prompt):
+            query['EvaluationPrompt'] = request.evaluation_prompt
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_concurrent):
+            query['MaxConcurrent'] = request.max_concurrent
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentAccuracyTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_accuracy_test_with_options_async(
+        self,
+        request: main_models.CreateDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dataset):
+            query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.desc):
+            query['Desc'] = request.desc
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.evaluation_prompt):
+            query['EvaluationPrompt'] = request.evaluation_prompt
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_concurrent):
+            query['MaxConcurrent'] = request.max_concurrent
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentAccuracyTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_accuracy_test(
+        self,
+        request: main_models.CreateDataAgentAccuracyTestRequest,
+    ) -> main_models.CreateDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_accuracy_test_with_options(request, runtime)
+
+    async def create_data_agent_accuracy_test_async(
+        self,
+        request: main_models.CreateDataAgentAccuracyTestRequest,
+    ) -> main_models.CreateDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_accuracy_test_with_options_async(request, runtime)
 
     def create_data_agent_knowledge_base_with_options(
         self,
@@ -1700,6 +1832,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
 
+    def delete_data_agent_accuracy_test_with_options(
+        self,
+        request: main_models.DeleteDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentAccuracyTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_accuracy_test_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentAccuracyTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_accuracy_test(
+        self,
+        request: main_models.DeleteDataAgentAccuracyTestRequest,
+    ) -> main_models.DeleteDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_accuracy_test_with_options(request, runtime)
+
+    async def delete_data_agent_accuracy_test_async(
+        self,
+        request: main_models.DeleteDataAgentAccuracyTestRequest,
+    ) -> main_models.DeleteDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_accuracy_test_with_options_async(request, runtime)
+
     def delete_data_agent_knowledge_base_with_options(
         self,
         request: main_models.DeleteDataAgentKnowledgeBaseRequest,
@@ -2445,6 +2659,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteFileUploadResponse:
         runtime = RuntimeOptions()
         return await self.delete_file_upload_with_options_async(request, runtime)
+
+    def delete_workspace_code_with_options(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.symlink):
+            query['Symlink'] = request.symlink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_code_with_options_async(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            query['Repo'] = request.repo
+        if not DaraCore.is_null(request.symlink):
+            query['Symlink'] = request.symlink
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace_code(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.delete_workspace_code_with_options(request, runtime)
+
+    async def delete_workspace_code_async(
+        self,
+        request: main_models.DeleteWorkspaceCodeRequest,
+    ) -> main_models.DeleteWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_workspace_code_with_options_async(request, runtime)
 
     def describe_custom_agent_with_options(
         self,
@@ -3964,6 +4260,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_notebook_task_status_with_options_async(request, runtime)
 
+    def get_sql_console_operation_log_with_options(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlConsoleOperationLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlConsoleOperationLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_console_operation_log_with_options_async(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.schema):
+            query['Schema'] = request.schema
+        if not DaraCore.is_null(request.sql_type):
+            query['SqlType'] = request.sql_type
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSqlConsoleOperationLog',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSqlConsoleOperationLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_console_operation_log(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        runtime = RuntimeOptions()
+        return self.get_sql_console_operation_log_with_options(request, runtime)
+
+    async def get_sql_console_operation_log_async(
+        self,
+        request: main_models.GetSqlConsoleOperationLogRequest,
+    ) -> main_models.GetSqlConsoleOperationLogResponse:
+        runtime = RuntimeOptions()
+        return await self.get_sql_console_operation_log_with_options_async(request, runtime)
+
+    def get_workspace_code_with_options(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_code_with_options_async(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.iac):
+            query['Iac'] = request.iac
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_code(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.get_workspace_code_with_options(request, runtime)
+
+    async def get_workspace_code_async(
+        self,
+        request: main_models.GetWorkspaceCodeRequest,
+    ) -> main_models.GetWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workspace_code_with_options_async(request, runtime)
+
     def get_workspace_code_publish_setting_with_options(
         self,
         request: main_models.GetWorkspaceCodePublishSettingRequest,
@@ -4350,6 +4822,296 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_custom_agent_with_options_async(request, runtime)
 
+    def list_data_agent_accuracy_test_instances_with_options(
+        self,
+        request: main_models.ListDataAgentAccuracyTestInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestInstances',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_accuracy_test_instances_with_options_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestInstances',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_accuracy_test_instances(
+        self,
+        request: main_models.ListDataAgentAccuracyTestInstancesRequest,
+    ) -> main_models.ListDataAgentAccuracyTestInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_accuracy_test_instances_with_options(request, runtime)
+
+    async def list_data_agent_accuracy_test_instances_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestInstancesRequest,
+    ) -> main_models.ListDataAgentAccuracyTestInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_accuracy_test_instances_with_options_async(request, runtime)
+
+    def list_data_agent_accuracy_test_results_with_options(
+        self,
+        request: main_models.ListDataAgentAccuracyTestResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.accuracy_test_result_id):
+            query['AccuracyTestResultId'] = request.accuracy_test_result_id
+        if not DaraCore.is_null(request.accuracy_test_subtask_id):
+            query['AccuracyTestSubtaskId'] = request.accuracy_test_subtask_id
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestResults',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_accuracy_test_results_with_options_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.accuracy_test_result_id):
+            query['AccuracyTestResultId'] = request.accuracy_test_result_id
+        if not DaraCore.is_null(request.accuracy_test_subtask_id):
+            query['AccuracyTestSubtaskId'] = request.accuracy_test_subtask_id
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestResults',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_accuracy_test_results(
+        self,
+        request: main_models.ListDataAgentAccuracyTestResultsRequest,
+    ) -> main_models.ListDataAgentAccuracyTestResultsResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_accuracy_test_results_with_options(request, runtime)
+
+    async def list_data_agent_accuracy_test_results_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestResultsRequest,
+    ) -> main_models.ListDataAgentAccuracyTestResultsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_accuracy_test_results_with_options_async(request, runtime)
+
+    def list_data_agent_accuracy_test_tasks_with_options(
+        self,
+        request: main_models.ListDataAgentAccuracyTestTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestTasks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_accuracy_test_tasks_with_options_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentAccuracyTestTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentAccuracyTestTasks',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentAccuracyTestTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_accuracy_test_tasks(
+        self,
+        request: main_models.ListDataAgentAccuracyTestTasksRequest,
+    ) -> main_models.ListDataAgentAccuracyTestTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_accuracy_test_tasks_with_options(request, runtime)
+
+    async def list_data_agent_accuracy_test_tasks_async(
+        self,
+        request: main_models.ListDataAgentAccuracyTestTasksRequest,
+    ) -> main_models.ListDataAgentAccuracyTestTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_accuracy_test_tasks_with_options_async(request, runtime)
+
     def list_data_agent_session_with_options(
         self,
         request: main_models.ListDataAgentSessionRequest,
@@ -4367,6 +5129,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_saved):
             query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -4413,6 +5177,8 @@ class Client(OpenApiClient):
             query['DMSUnit'] = request.dmsunit
         if not DaraCore.is_null(request.is_saved):
             query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -6188,6 +6954,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_knowledge_bases_with_options_async(request, runtime)
 
+    def list_workspace_code_with_options(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_code_with_options_async(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.path):
+            query['Path'] = request.path
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_code(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.list_workspace_code_with_options(request, runtime)
+
+    async def list_workspace_code_async(
+        self,
+        request: main_models.ListWorkspaceCodeRequest,
+    ) -> main_models.ListWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workspace_code_with_options_async(request, runtime)
+
     def modify_custom_agent_with_options(
         self,
         tmp_req: main_models.ModifyCustomAgentRequest,
@@ -6225,6 +7065,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -6289,6 +7131,8 @@ class Client(OpenApiClient):
             query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.related_session_id):
+            query['RelatedSessionId'] = request.related_session_id
         if not DaraCore.is_null(request.schedule_task_config_shrink):
             query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
         if not DaraCore.is_null(request.text_report_config):
@@ -6560,6 +7404,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_user_to_data_agent_workspace_with_options_async(request, runtime)
 
+    def retrieve_knowledge_base_with_options(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.hybrid_search):
+            body['HybridSearch'] = request.hybrid_search
+        if not DaraCore.is_null(request.hybrid_search_args):
+            body['HybridSearchArgs'] = request.hybrid_search_args
+        if not DaraCore.is_null(request.include_metadata_fields):
+            body['IncludeMetadataFields'] = request.include_metadata_fields
+        if not DaraCore.is_null(request.include_vector):
+            body['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.metrics):
+            body['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.offset):
+            body['Offset'] = request.offset
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.recall_window):
+            body['RecallWindow'] = request.recall_window
+        if not DaraCore.is_null(request.rerank_factor):
+            body['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retrieve_knowledge_base_with_options_async(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.hybrid_search):
+            body['HybridSearch'] = request.hybrid_search
+        if not DaraCore.is_null(request.hybrid_search_args):
+            body['HybridSearchArgs'] = request.hybrid_search_args
+        if not DaraCore.is_null(request.include_metadata_fields):
+            body['IncludeMetadataFields'] = request.include_metadata_fields
+        if not DaraCore.is_null(request.include_vector):
+            body['IncludeVector'] = request.include_vector
+        if not DaraCore.is_null(request.kb_uuid):
+            body['KbUuid'] = request.kb_uuid
+        if not DaraCore.is_null(request.metrics):
+            body['Metrics'] = request.metrics
+        if not DaraCore.is_null(request.offset):
+            body['Offset'] = request.offset
+        if not DaraCore.is_null(request.order_by):
+            body['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        if not DaraCore.is_null(request.recall_window):
+            body['RecallWindow'] = request.recall_window
+        if not DaraCore.is_null(request.rerank_factor):
+            body['RerankFactor'] = request.rerank_factor
+        if not DaraCore.is_null(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgeBase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retrieve_knowledge_base(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.retrieve_knowledge_base_with_options(request, runtime)
+
+    async def retrieve_knowledge_base_async(
+        self,
+        request: main_models.RetrieveKnowledgeBaseRequest,
+    ) -> main_models.RetrieveKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.retrieve_knowledge_base_with_options_async(request, runtime)
+
+    def save_workspace_code_with_options(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            body['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            body['Mtime'] = request.mtime
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            body['Repo'] = request.repo
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkspaceCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_workspace_code_with_options_async(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        if not DaraCore.is_null(request.force):
+            body['Force'] = request.force
+        if not DaraCore.is_null(request.iac):
+            body['Iac'] = request.iac
+        if not DaraCore.is_null(request.mtime):
+            body['Mtime'] = request.mtime
+        if not DaraCore.is_null(request.path):
+            body['Path'] = request.path
+        if not DaraCore.is_null(request.repo):
+            body['Repo'] = request.repo
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkspaceCode',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkspaceCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_workspace_code(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return self.save_workspace_code_with_options(request, runtime)
+
+    async def save_workspace_code_async(
+        self,
+        request: main_models.SaveWorkspaceCodeRequest,
+    ) -> main_models.SaveWorkspaceCodeResponse:
+        runtime = RuntimeOptions()
+        return await self.save_workspace_code_with_options_async(request, runtime)
+
     def send_chat_message_with_options(
         self,
         tmp_req: main_models.SendChatMessageRequest,
@@ -6574,6 +7634,8 @@ class Client(OpenApiClient):
             request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.task_config):
+            request.task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_config, 'TaskConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -6599,6 +7661,12 @@ class Client(OpenApiClient):
             query['SessionConfig'] = request.session_config_shrink
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_config_shrink):
+            query['TaskConfig'] = request.task_config_shrink
+        if not DaraCore.is_null(request.user_oss_bucket):
+            query['UserOssBucket'] = request.user_oss_bucket
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6632,6 +7700,8 @@ class Client(OpenApiClient):
             request.data_sources_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_sources, 'DataSources', 'json')
         if not DaraCore.is_null(tmp_req.session_config):
             request.session_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.session_config, 'SessionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.task_config):
+            request.task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_config, 'TaskConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
@@ -6657,6 +7727,12 @@ class Client(OpenApiClient):
             query['SessionConfig'] = request.session_config_shrink
         if not DaraCore.is_null(request.session_id):
             query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.task_config_shrink):
+            query['TaskConfig'] = request.task_config_shrink
+        if not DaraCore.is_null(request.user_oss_bucket):
+            query['UserOssBucket'] = request.user_oss_bucket
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6854,6 +7930,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_workspace_quota_with_options_async(request, runtime)
 
+    def start_data_agent_accuracy_test_task_with_options(
+        self,
+        request: main_models.StartDataAgentAccuracyTestTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartDataAgentAccuracyTestTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.csv_file):
+            query['CsvFile'] = request.csv_file
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartDataAgentAccuracyTestTask',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartDataAgentAccuracyTestTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_data_agent_accuracy_test_task_with_options_async(
+        self,
+        request: main_models.StartDataAgentAccuracyTestTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartDataAgentAccuracyTestTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.csv_file):
+            query['CsvFile'] = request.csv_file
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartDataAgentAccuracyTestTask',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartDataAgentAccuracyTestTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_data_agent_accuracy_test_task(
+        self,
+        request: main_models.StartDataAgentAccuracyTestTaskRequest,
+    ) -> main_models.StartDataAgentAccuracyTestTaskResponse:
+        runtime = RuntimeOptions()
+        return self.start_data_agent_accuracy_test_task_with_options(request, runtime)
+
+    async def start_data_agent_accuracy_test_task_async(
+        self,
+        request: main_models.StartDataAgentAccuracyTestTaskRequest,
+    ) -> main_models.StartDataAgentAccuracyTestTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.start_data_agent_accuracy_test_task_with_options_async(request, runtime)
+
+    def stop_data_agent_accuracy_test_task_with_options(
+        self,
+        request: main_models.StopDataAgentAccuracyTestTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopDataAgentAccuracyTestTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopDataAgentAccuracyTestTask',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopDataAgentAccuracyTestTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_data_agent_accuracy_test_task_with_options_async(
+        self,
+        request: main_models.StopDataAgentAccuracyTestTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopDataAgentAccuracyTestTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_task_id):
+            query['AccuracyTestTaskId'] = request.accuracy_test_task_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopDataAgentAccuracyTestTask',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopDataAgentAccuracyTestTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_data_agent_accuracy_test_task(
+        self,
+        request: main_models.StopDataAgentAccuracyTestTaskRequest,
+    ) -> main_models.StopDataAgentAccuracyTestTaskResponse:
+        runtime = RuntimeOptions()
+        return self.stop_data_agent_accuracy_test_task_with_options(request, runtime)
+
+    async def stop_data_agent_accuracy_test_task_async(
+        self,
+        request: main_models.StopDataAgentAccuracyTestTaskRequest,
+    ) -> main_models.StopDataAgentAccuracyTestTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_data_agent_accuracy_test_task_with_options_async(request, runtime)
+
     def update_airflow_with_options(
         self,
         tmp_req: main_models.UpdateAirflowRequest,
@@ -6983,6 +8223,124 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAirflowResponse:
         runtime = RuntimeOptions()
         return await self.update_airflow_with_options_async(request, runtime)
+
+    def update_data_agent_accuracy_test_with_options(
+        self,
+        request: main_models.UpdateDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.customer_agent_id):
+            query['CustomerAgentId'] = request.customer_agent_id
+        if not DaraCore.is_null(request.dataset):
+            query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.desc):
+            query['Desc'] = request.desc
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.evaluation_prompt):
+            query['EvaluationPrompt'] = request.evaluation_prompt
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.max_concurrent):
+            query['MaxConcurrent'] = request.max_concurrent
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentAccuracyTestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_agent_accuracy_test_with_options_async(
+        self,
+        request: main_models.UpdateDataAgentAccuracyTestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentAccuracyTestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accuracy_test_ins_id):
+            query['AccuracyTestInsId'] = request.accuracy_test_ins_id
+        if not DaraCore.is_null(request.customer_agent_id):
+            query['CustomerAgentId'] = request.customer_agent_id
+        if not DaraCore.is_null(request.dataset):
+            query['Dataset'] = request.dataset
+        if not DaraCore.is_null(request.desc):
+            query['Desc'] = request.desc
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.evaluation_prompt):
+            query['EvaluationPrompt'] = request.evaluation_prompt
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.max_concurrent):
+            query['MaxConcurrent'] = request.max_concurrent
+        if not DaraCore.is_null(request.mode):
+            query['Mode'] = request.mode
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.need_delete):
+            query['NeedDelete'] = request.need_delete
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentAccuracyTest',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentAccuracyTestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_agent_accuracy_test(
+        self,
+        request: main_models.UpdateDataAgentAccuracyTestRequest,
+    ) -> main_models.UpdateDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_agent_accuracy_test_with_options(request, runtime)
+
+    async def update_data_agent_accuracy_test_async(
+        self,
+        request: main_models.UpdateDataAgentAccuracyTestRequest,
+    ) -> main_models.UpdateDataAgentAccuracyTestResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_agent_accuracy_test_with_options_async(request, runtime)
 
     def update_data_agent_space_info_with_options(
         self,

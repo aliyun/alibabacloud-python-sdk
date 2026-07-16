@@ -13,6 +13,7 @@ class MoveUserOrgRequest(DaraModel):
         end_user_ids: List[str] = None,
         org_id: str = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The user IDs.
         # 

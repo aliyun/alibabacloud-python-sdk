@@ -16,12 +16,17 @@ class ListLLMConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of LLM configuration objects.
+        # 
         # This parameter is required.
         self.llmconfigs = llmconfigs
+        # The maximum number of results returned in this request.
         self.max_results = max_results
+        # The token for retrieving the next page of results. If this parameter is not returned, no more results are available. To retrieve the next page, pass this value in the `NextToken` parameter of a subsequent request.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -95,20 +100,35 @@ class ListLLMConfigsResponseBodyLLMConfigs(DaraModel):
         rps: int = None,
         workspace_id: str = None,
     ):
+        # The API key.
         self.api_key = api_key
+        # The base URL for API calls.
         self.base_url = base_url
+        # The batch size.
         self.batch_size = batch_size
+        # The embedding dimension. If this parameter is empty or set to 0, the system uses the model\\"s default dimension.
         self.embedding_dimension = embedding_dimension
+        # Specifies whether to enable the Fusion feature.
         self.enable_fusion = enable_fusion
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The LLM configuration ID.
         self.llmconfig_id = llmconfig_id
+        # The maximum number of tokens to process for a single input.
         self.max_tokens = max_tokens
+        # The model name.
         self.model = model
+        # The model type.
         self.model_type = model_type
+        # The name of the LLM configuration.
         self.name = name
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The maximum number of requests per second (RPS).
         self.rps = rps
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

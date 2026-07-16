@@ -11,8 +11,11 @@ class HotUpdateJobFailureInfo(DaraModel):
         message: str = None,
         reason: str = None,
     ):
+        # The error level.
         self.failure_severity = failure_severity
+        # The error message.
         self.message = message
+        # The error cause.
         self.reason = reason
 
     def validate(self):

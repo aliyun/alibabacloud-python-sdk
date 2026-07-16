@@ -75,16 +75,19 @@ class DescribeAssetRiskListResponseBodyAssetList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   **4**: IPv4
-        # *   **6**: IPv6
+        # - **4**: IPv4 address
+        # 
+        # - **6**: IPv6 address
         self.ip_version = ip_version
         # The reason for the risk.
         self.reason = reason
         # The risk level. Valid values:
         # 
-        # *   **low**
-        # *   **middle**
-        # *   **high**
+        # - **low**: low risk
+        # 
+        # - **middle**: medium risk
+        # 
+        # - **high**: high risk
         self.risk_level = risk_level
 
     def validate(self):

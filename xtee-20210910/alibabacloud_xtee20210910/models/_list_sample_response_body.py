@@ -20,14 +20,23 @@ class ListSampleResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Status code.
         self.code = code
+        # Current page number.
         self.current_page = current_page
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
+        # Total Number of Returned Items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -119,14 +128,23 @@ class ListSampleResponseBodyResultObject(DaraModel):
         upload_time: str = None,
         upload_user_name: str = None,
     ):
+        # File Name.
         self.file_name = file_name
+        # File Size. Unit: bytes.
         self.file_size = file_size
+        # Remarks.
         self.remark = remark
+        # Table Row Count.
         self.row_count = row_count
+        # Sample ID.
         self.sample_id = sample_id
+        # Sample Name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # File Upload Time.
         self.upload_time = upload_time
+        # Uploader.
         self.upload_user_name = upload_user_name
 
     def validate(self):

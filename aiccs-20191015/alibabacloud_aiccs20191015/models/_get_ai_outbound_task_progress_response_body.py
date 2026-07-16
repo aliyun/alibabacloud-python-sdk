@@ -14,10 +14,17 @@ class GetAiOutboundTaskProgressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Job progress.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -74,9 +81,15 @@ class GetAiOutboundTaskProgressResponseBodyData(DaraModel):
         task_progress: main_models.GetAiOutboundTaskProgressResponseBodyDataTaskProgress = None,
         type: int = None,
     ):
+        # Progress by outbound call dimension.
         self.callout_progress = callout_progress
+        # The job ID.
         self.task_id = task_id
+        # Job dimension progress.
         self.task_progress = task_progress
+        # Task Type. Valid values:  
+        # - **2**: Predictive.  
+        # - **3**: Automatic.
         self.type = type
 
     def validate(self):
@@ -139,18 +152,42 @@ class GetAiOutboundTaskProgressResponseBodyDataTaskProgress(DaraModel):
         waiting_call_count: int = None,
         waiting_recall_count: int = None,
     ):
+        # Number of jobs in calling status.
         self.calling_count = calling_count
+        # Number of connected jobs.
+        # 
+        # > Parameter specific to auto dialing.
         self.connect_count = connect_count
+        # Job connection rate.  
+        # > A parameter specific to automatic outbound calls.
         self.connect_rate = connect_rate
+        # Number of completed jobs.
         self.finish_count = finish_count
+        # Job completion rate.
         self.finish_rate = finish_rate
+        # Number of agent pickups.
+        # 
+        # > Parameter specific to predictive dialing.
         self.servicer_pickup_count = servicer_pickup_count
+        # Agent pickup rate.
+        # 
+        # > Exclusive parameter for predictive outbound calls.
         self.servicer_pickup_rate = servicer_pickup_rate
+        # Number of stopped jobs.
         self.terminate_count = terminate_count
+        # Total number of jobs.
         self.total_count = total_count
+        # Number of customer pickups.
+        # 
+        # > Parameter specific to predictive dialing.
         self.user_pickup_count = user_pickup_count
+        # Customer pickup rate.
+        # 
+        # > Exclusive parameter for predictive outbound calls.
         self.user_pickup_rate = user_pickup_rate
+        # Number of pending call jobs.
         self.waiting_call_count = waiting_call_count
+        # Number of jobs pending redial.
         self.waiting_recall_count = waiting_recall_count
 
     def validate(self):
@@ -258,14 +295,31 @@ class GetAiOutboundTaskProgressResponseBodyDataCalloutProgress(DaraModel):
         call_out_user_pickup_count: int = None,
         call_out_user_pickup_rate: float = None,
     ):
+        # Call loss count.  
+        # > A parameter specific to predictive outbound calls.
         self.call_loss_count = call_loss_count
+        # Call Loss Rate.  
+        # > A parameter exclusive to predictive outbound calls.
         self.call_loss_rate = call_loss_rate
+        # Number of successful outbound call connections.  
+        # > This parameter is specific to automatic outbound calls.
         self.call_out_connect_count = call_out_connect_count
+        # Outbound Call Connection Rate.  
+        # > A parameter exclusive to automated outbound calls.
         self.call_out_connect_rate = call_out_connect_rate
+        # Number of outbound calls.
         self.call_out_count = call_out_count
+        # Agent Pickup Count.  
+        # > A parameter exclusive to predictive outbound calls.
         self.call_out_servicer_pickup_count = call_out_servicer_pickup_count
+        # Agent pickup rate.  
+        # > A parameter specific to predictive outbound calls.
         self.call_out_servicer_pickup_rate = call_out_servicer_pickup_rate
+        # Customer Pickup Count.  
+        # > A parameter exclusive to predictive outbound calls.
         self.call_out_user_pickup_count = call_out_user_pickup_count
+        # Customer Pickup Rate.  
+        # > A parameter exclusive to predictive outbound calls.
         self.call_out_user_pickup_rate = call_out_user_pickup_rate
 
     def validate(self):

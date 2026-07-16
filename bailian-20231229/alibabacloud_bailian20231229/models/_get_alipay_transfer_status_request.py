@@ -10,7 +10,9 @@ class GetAlipayTransferStatusRequest(DaraModel):
         code: str = None,
         workspace_id: str = None,
     ):
+        # The tipping code returned by the Alipay tipping link request.
         self.code = code
+        # The Bailian workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

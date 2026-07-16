@@ -13,7 +13,7 @@ class CreateForwardingRulesResponseBody(DaraModel):
         forwarding_rules: List[main_models.CreateForwardingRulesResponseBodyForwardingRules] = None,
         request_id: str = None,
     ):
-        # The forwarding rules.
+        # The details of the forwarding rules.
         self.forwarding_rules = forwarding_rules
         # The request ID.
         self.request_id = request_id
@@ -57,7 +57,7 @@ class CreateForwardingRulesResponseBodyForwardingRules(DaraModel):
         self,
         forwarding_rule_id: str = None,
     ):
-        # The ID of the forwarding rule.
+        # The forwarding rule ID.
         self.forwarding_rule_id = forwarding_rule_id
 
     def validate(self):

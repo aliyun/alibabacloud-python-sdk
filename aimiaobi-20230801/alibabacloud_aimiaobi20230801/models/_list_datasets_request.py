@@ -19,16 +19,28 @@ class ListDatasetsRequest(DaraModel):
         start_time: str = None,
         workspace_id: str = None,
     ):
+        # A keyword within the dataset description to filter results.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset name. The name must be globally unique.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The end of the creation time range.
         self.end_time = end_time
+        # Specifies whether to return configuration and usage information. Default value: false.
         self.include_config = include_config
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # Specifies the dataset search setting.
         self.search_dataset_enable = search_dataset_enable
+        # The start of the creation time range.
         self.start_time = start_time
+        # The unique ID of the Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

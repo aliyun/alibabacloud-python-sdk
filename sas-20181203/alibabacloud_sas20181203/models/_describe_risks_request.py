@@ -13,20 +13,18 @@ class DescribeRisksRequest(DaraModel):
         risk_id: int = None,
         risk_name: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:  
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The maximum number of entries to return. Default value: 20.
+        # The maximum number of baselines to return. Default value: 20.
         self.limit = limit
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The baseline ID.
+        # The ID of the baseline.
         # 
-        # >  You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to query the baseline IDs.
+        # > You can call the [DescribeCheckWarningSummary](~~DescribeCheckWarningSummary~~) operation to obtain the baseline ID.
         self.risk_id = risk_id
         # The name of the baseline.
         self.risk_name = risk_name

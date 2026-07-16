@@ -21,17 +21,27 @@ class OrderProductResult(DaraModel):
         sku_id: str = None,
         sku_title: str = None,
     ):
+        # Indicates whether the product is available for sale
         self.can_sell = can_sell
+        # Additional product information
         self.features = features
+        # Reason for unavailability
         self.message = message
+        # Product price (unit: cent)
         self.price = price
+        # Product ID
         self.product_id = product_id
+        # Product image link
         self.product_pic_url = product_pic_url
+        # Product title
         self.product_title = product_title
+        # Purchaser ID
         self.purchaser_id = purchaser_id
+        # Quantity
         self.quantity = quantity
         # SKUID
         self.sku_id = sku_id
+        # SKU title
         self.sku_title = sku_title
 
     def validate(self):

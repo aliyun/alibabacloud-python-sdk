@@ -13,9 +13,13 @@ class CreateSourceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,6 +67,7 @@ class CreateSourceResponseBodyData(DaraModel):
         self,
         source_id: str = None,
     ):
+        # The source ID.
         self.source_id = source_id
 
     def validate(self):

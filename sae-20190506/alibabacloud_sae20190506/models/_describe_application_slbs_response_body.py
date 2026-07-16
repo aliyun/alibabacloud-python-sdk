@@ -18,29 +18,39 @@ class DescribeApplicationSlbsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the information about the SLB instances that are associated with an application was obtained successfully. Valid values:
-        # 
-        # *   **true**: indicates that the information was obtained successfully.
-        # *   **false**: indicates that the information failed to be obtained.
-        self.code = code
-        # The returned data.
-        self.data = data
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - `2xx`: The request is successful.
+        # 
+        # - `3xx`: The request is redirected.
+        # 
+        # - `4xx`: A client error occurs.
+        # 
+        # - `5xx`: A server error occurs.
+        self.code = code
+        # The returned result.
+        self.data = data
+        # The error code.
+        # 
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The ID of the trace. It can be used to query the details of a request.
-        self.message = message
         # The returned message.
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # - If the request is successful, `success` is returned.
+        # 
+        # - If the request fails, a specific error code is returned.
+        self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the configuration of the SLB instance was obtained. Valid values:
+        # 
+        # - `true`: The configuration was obtained.
+        # 
+        # - `false`: The configuration failed to be obtained.
         self.success = success
-        # The returned data.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -118,27 +128,31 @@ class DescribeApplicationSlbsResponseBodyData(DaraModel):
         intranet_slb_expired: bool = None,
         intranet_slb_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The configurations of the Internet-facing SLB instance.
         self.internet = internet
-        # The ID of the Internet-facing SLB instance.
+        # The public IP address.
         self.internet_ip = internet_ip
+        # The billing method of the Internet-facing SLB instance.
         self.internet_slb_charge_type = internet_slb_charge_type
+        # Indicates whether the Internet-facing SLB instance has expired.
         self.internet_slb_expired = internet_slb_expired
-        # Configurations of Internet-facing SLB instances.
+        # The ID of the Internet-facing SLB instance.
         self.internet_slb_id = internet_slb_id
         # The configurations of the internal-facing SLB instance.
         self.intranet = intranet
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # The private IP address.
         self.intranet_ip = intranet_ip
+        # The billing method of the internal-facing SLB instance.
         self.intranet_slb_charge_type = intranet_slb_charge_type
+        # Indicates whether the internal-facing SLB instance has expired.
         self.intranet_slb_expired = intranet_slb_expired
-        # The IP address of the internal-facing SLB instance.
+        # The ID of the internal-facing SLB instance.
         self.intranet_slb_id = intranet_slb_id
 
     def validate(self):
@@ -268,21 +282,38 @@ class DescribeApplicationSlbsResponseBodyDataIntranet(DaraModel):
         vserver_group_id: str = None,
     ):
         self.connection_drain_timeout = connection_drain_timeout
+        # The cookie that is configured on the server.
+        # 
+        # The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
+        # 
+        # > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `server`.
         self.cookie = cookie
+        # The cookie timeout period. Unit: seconds. Valid values: `1` to `86400`.
+        # 
+        # > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `insert`.
         self.cookie_timeout = cookie_timeout
-        # The timestamp when the canary release rule was created.
+        # The time when the rule was created. This value is a UNIX timestamp.
         self.create_time = create_time
         self.enable_connection_drain = enable_connection_drain
+        # The ID of the CA certificate for the HTTPS protocol.
         self.https_ca_cert_id = https_ca_cert_id
-        # The supported protocol.
+        # The ID of the certificate for the HTTPS protocol.
         self.https_cert_id = https_cert_id
-        # The IP address of the Internet-facing SLB instance.
+        # The listening port of the SLB instance.
         self.port = port
-        # The container port.
+        # The supported protocol.
         self.protocol = protocol
+        # Indicates whether session persistence is enabled.
         self.sticky_session = sticky_session
+        # The cookie handling method. Valid values:
+        # 
+        # - `insert`: inserts a cookie. When a client makes the first request, the SLB instance inserts a cookie into the response. The next request from the client contains the cookie, and the SLB instance forwards the request to the same backend server.
+        # 
+        # - `server`: rewrites a cookie. When the SLB instance detects a user-defined cookie, it rewrites the cookie. The next request from the client contains the new cookie, and the SLB instance forwards the request to the same backend server.
+        # 
+        # > This parameter is required when `StickySession` is set to `true`.
         self.sticky_session_type = sticky_session_type
-        # The port specified for the SLB listener.
+        # The container port.
         self.target_port = target_port
         self.vserver_group_id = vserver_group_id
 
@@ -396,21 +427,38 @@ class DescribeApplicationSlbsResponseBodyDataInternet(DaraModel):
         vserver_group_id: str = None,
     ):
         self.connection_drain_timeout = connection_drain_timeout
+        # The cookie that is configured on the server.
+        # 
+        # The cookie must be 1 to 200 characters in length and can contain only ASCII letters and digits. It cannot contain commas (,), semicolons (;), or spaces. It cannot start with a dollar sign ($).
+        # 
+        # > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `server`.
         self.cookie = cookie
+        # The cookie timeout period. Unit: seconds. Valid values: `1` to `86400`.
+        # 
+        # > This parameter is required when `StickySession` is set to `true` and `StickySessionType` is set to `insert`.
         self.cookie_timeout = cookie_timeout
-        # The timestamp when the canary release rule was created.
+        # The time when the rule was created. This value is a UNIX timestamp.
         self.create_time = create_time
         self.enable_connection_drain = enable_connection_drain
+        # The ID of the CA certificate for the HTTPS protocol.
         self.https_ca_cert_id = https_ca_cert_id
-        # The supported protocol.
+        # The ID of the certificate for the HTTPS protocol.
         self.https_cert_id = https_cert_id
-        # The ID of the internal-facing SLB instance.
+        # The listening port of the SLB instance.
         self.port = port
-        # The container port.
+        # The supported protocol.
         self.protocol = protocol
+        # Indicates whether session persistence is enabled.
         self.sticky_session = sticky_session
+        # The cookie handling method. Valid values:
+        # 
+        # - `insert`: inserts a cookie. When a client makes the first request, the SLB instance inserts a cookie into the response. The next request from the client contains the cookie, and the SLB instance forwards the request to the same backend server.
+        # 
+        # - `server`: rewrites a cookie. When the SLB instance detects a user-defined cookie, it rewrites the cookie. The next request from the client contains the new cookie, and the SLB instance forwards the request to the same backend server.
+        # 
+        # > This parameter is required when `StickySession` is set to `true`.
         self.sticky_session_type = sticky_session_type
-        # The port specified for the SLB listener.
+        # The container port.
         self.target_port = target_port
         self.vserver_group_id = vserver_group_id
 

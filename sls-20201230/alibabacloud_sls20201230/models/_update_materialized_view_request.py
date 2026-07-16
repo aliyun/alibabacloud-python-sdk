@@ -12,9 +12,13 @@ class UpdateMaterializedViewRequest(DaraModel):
         original_sql: str = None,
         ttl: int = None,
     ):
+        # The refresh interval of the materialized view, in minutes.
         self.agg_interval_mins = agg_interval_mins
+        # Specifies whether to automatically refresh the materialized view.
         self.enable = enable
+        # The new SQL query for the materialized view. Updating the query rebuilds the view.
         self.original_sql = original_sql
+        # The data retention period (TTL) of the materialized view, in days.
         self.ttl = ttl
 
     def validate(self):

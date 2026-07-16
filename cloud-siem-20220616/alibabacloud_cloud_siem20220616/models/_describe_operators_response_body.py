@@ -16,18 +16,19 @@ class DescribeOperatorsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -97,15 +98,15 @@ class DescribeOperatorsResponseBodyData(DaraModel):
         self.index = index
         # The operator.
         self.operator = operator
-        # The description of the operator in Chinese.
+        # The Chinese description of the operator.
         self.operator_desc_cn = operator_desc_cn
-        # The description of the operator in English.
+        # The English description of the operator.
         self.operator_desc_en = operator_desc_en
-        # The name of the operator.
+        # The display name of the operator.
         self.operator_name = operator_name
-        # The data types that are supported by the operator. The data types are separated by commas (,).
+        # The data types that the operator supports. Multiple data types are separated by commas.
         self.support_data_type = support_data_type
-        # The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. By default, this parameter is empty.
+        # The scenarios that the operator supports. Multiple scenarios are separated by commas, such as aggregation (AGGREGATE). The default value is empty.
         self.support_tag = support_tag
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListSystemRuleAggregationTypesResponseBody(DaraModel):
         aggregation_type_list: List[main_models.ListSystemRuleAggregationTypesResponseBodyAggregationTypeList] = None,
         request_id: str = None,
     ):
-        # An array that consists of the aggregation types.
+        # The list of rule aggregation types.
         self.aggregation_type_list = aggregation_type_list
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListSystemRuleAggregationTypesResponseBodyAggregationTypeList(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the aggregation type.
+        # The rule aggregation ID.
         self.id = id
-        # The name of the aggregation type.
+        # The rule aggregation name.
         self.name = name
 
     def validate(self):

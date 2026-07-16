@@ -14,20 +14,21 @@ class PutGroupMetricRuleResponseBody(DaraModel):
         result: main_models.PutGroupMetricRuleResponseBodyResult = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # >A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result of the request.
+        # The result of creating or modifying the alert rule.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):
@@ -81,7 +82,7 @@ class PutGroupMetricRuleResponseBodyResult(DaraModel):
         self,
         rule_id: str = None,
     ):
-        # The ID of the alert rule.
+        # The alert rule ID.
         self.rule_id = rule_id
 
     def validate(self):

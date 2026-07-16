@@ -10,9 +10,9 @@ class QueryGroupIdByGroupNameResponseBody(DaraModel):
         group_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the asset group.
+        # The ID of the group.
         self.group_id = group_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

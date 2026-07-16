@@ -17,12 +17,17 @@ class ListDataServiceAppsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code.
         self.code = code
+        # The list of all applications under the tenant.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceAppsResponseBodyData(DaraModel):
         app_list: List[main_models.ListDataServiceAppsResponseBodyDataAppList] = None,
         total_count: int = None,
     ):
+        # Application list.
         self.app_list = app_list
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -129,10 +136,15 @@ class ListDataServiceAppsResponseBodyDataAppList(DaraModel):
         is_member: bool = None,
         owner_list: List[main_models.ListDataServiceAppsResponseBodyDataAppListOwnerList] = None,
     ):
+        # Application group name.
         self.app_group = app_group
+        # Application ID.
         self.app_id = app_id
+        # Application name.
         self.app_name = app_name
+        # Indicates whether the current user has joined the application.
         self.is_member = is_member
+        # Owner list.
         self.owner_list = owner_list
 
     def validate(self):
@@ -193,7 +205,9 @@ class ListDataServiceAppsResponseBodyDataAppListOwnerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # User ID.
         self.id = id
+        # Username.
         self.name = name
 
     def validate(self):

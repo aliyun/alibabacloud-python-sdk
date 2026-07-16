@@ -15,11 +15,11 @@ class GetDashboardResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # The error code.
+        # The backend error code.
         self.error_code = error_code
         # The error message.
         self.message = message
@@ -88,7 +88,7 @@ class GetDashboardResponseBodyData(DaraModel):
         title: str = None,
         url: str = None,
     ):
-        # The instance ID.
+        # The unique identifier of the gateway.
         self.gateway_id = gateway_id
         # The dashboard name.
         self.name = name

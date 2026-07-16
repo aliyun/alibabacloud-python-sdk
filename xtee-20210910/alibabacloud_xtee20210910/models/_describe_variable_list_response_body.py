@@ -17,17 +17,17 @@ class DescribeVariableListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -109,39 +109,39 @@ class DescribeVariableListResponseBodyResultObject(DaraModel):
         type: str = None,
         user_id: int = None,
     ):
-        # Capacity.
+        # The capacity.
         self.capacity = capacity
-        # Variable definition ID.
+        # The variable definition ID.
         self.define_id = define_id
-        # Description information.
+        # The description.
         self.description = description
-        # Extended information.
+        # The extended information.
         self.extend_info = extend_info
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Remaining capacity.
+        # The remaining capacity.
         self.left_capacity = left_capacity
-        # Variable name
+        # The variable name.
         self.name = name
-        # Variable output type
+        # The output type of the variable.
         self.outputs_type = outputs_type
-        # Associated event ID.
+        # The associated event of the variable.
         self.ref_obj_id = ref_obj_id
-        # Associated event name.
+        # The name of the associated event of the variable.
         self.ref_obj_name = ref_obj_name
-        # Associated object type of the variable
+        # The association type of the variable.
         self.ref_obj_type = ref_obj_type
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # User ID to which the data belongs.
+        # The UID of the user who owns the data.
         self.user_id = user_id
 
     def validate(self):

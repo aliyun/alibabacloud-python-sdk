@@ -11,8 +11,12 @@ class ListSaasInfoRequest(DaraModel):
         saas_group_codes: str = None,
         saas_name: str = None,
     ):
+        # The key for the business space. If this parameter is omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The codes of the user\\"s SaaS permission groups. Separate multiple codes with a comma.
         self.saas_group_codes = saas_group_codes
+        # The username of the business user.
+        # 
         # This parameter is required.
         self.saas_name = saas_name
 

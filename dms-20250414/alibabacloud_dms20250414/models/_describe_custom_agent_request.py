@@ -10,7 +10,9 @@ class DescribeCustomAgentRequest(DaraModel):
         custom_agent_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

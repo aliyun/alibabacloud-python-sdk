@@ -16,12 +16,15 @@ class ListCloudAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of cloud accounts.
         self.cloud_accounts = cloud_accounts
-        # 分页查询时每页行数。
+        # The number of rows per page when paging is used.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token returned for the current call to indicate the starting position of the next page.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,30 +88,40 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         cloud_account_id: str = None,
         cloud_account_name: str = None,
         cloud_account_provider_name: str = None,
+        cloud_account_site: str = None,
         cloud_account_vendor_type: str = None,
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
         update_time: int = None,
     ):
-        # 云账号外部唯一ID
+        # The external unique identifier of the cloud account.
         self.cloud_account_external_id = cloud_account_external_id
-        # 云账号可用性
+        # The health status of the cloud account. Valid values:
+        # - healthy: Healthy.
+        # - unhealthy: Unhealthy.
+        # - unknown: Unknown.
         self.cloud_account_health = cloud_account_health
+        # The health check result of the cloud account.
         self.cloud_account_health_check_result = cloud_account_health_check_result
-        # 云账号ID
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # 云账号名称
+        # The cloud account name.
         self.cloud_account_name = cloud_account_name
-        # 云账号提供商名称
+        # The identity provider name.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # 云账号类别
+        self.cloud_account_site = cloud_account_site
+        # The cloud account type. Valid values:
+        # 
+        # - alibaba_cloud: Alibaba Cloud.
         self.cloud_account_vendor_type = cloud_account_vendor_type
+        # The time when the cloud account was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # 云账号描述
+        # The description of the cloud account.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the cloud account was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -137,6 +150,9 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
 
         if self.cloud_account_provider_name is not None:
             result['CloudAccountProviderName'] = self.cloud_account_provider_name
+
+        if self.cloud_account_site is not None:
+            result['CloudAccountSite'] = self.cloud_account_site
 
         if self.cloud_account_vendor_type is not None:
             result['CloudAccountVendorType'] = self.cloud_account_vendor_type
@@ -176,6 +192,9 @@ class ListCloudAccountsResponseBodyCloudAccounts(DaraModel):
         if m.get('CloudAccountProviderName') is not None:
             self.cloud_account_provider_name = m.get('CloudAccountProviderName')
 
+        if m.get('CloudAccountSite') is not None:
+            self.cloud_account_site = m.get('CloudAccountSite')
+
         if m.get('CloudAccountVendorType') is not None:
             self.cloud_account_vendor_type = m.get('CloudAccountVendorType')
 
@@ -200,8 +219,13 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResult(Da
         last_check_time: int = None,
         result: str = None,
     ):
+        # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
+        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
+        # The health check result of the cloud account. Valid values:
+        # - success: The health check succeeded.
+        # - failed: The health check failed.
         self.result = result
 
     def validate(self):
@@ -244,7 +268,9 @@ class ListCloudAccountsResponseBodyCloudAccountsCloudAccountHealthCheckResultErr
         error_code: str = None,
         error_message: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
 
     def validate(self):

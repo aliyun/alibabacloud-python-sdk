@@ -14,15 +14,27 @@ class ListScheduleTimesRequest(DaraModel):
         time_type: int = None,
         time_zone: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The name of the calendar to use for scheduling, such as a business day calendar.
         self.calendar = calendar
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The time expression, such as a cron expression.
+        # 
         # This parameter is required.
         self.time_expression = time_expression
+        # The time type. The only supported type is cron.
+        # 
+        # - 1: cron
+        # 
         # This parameter is required.
         self.time_type = time_type
+        # The time zone used to evaluate the time expression.
         self.time_zone = time_zone
 
     def validate(self):

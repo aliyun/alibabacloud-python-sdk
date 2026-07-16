@@ -19,7 +19,6 @@ class CreateWorkspaceDocResponseBody(DaraModel):
         self.dentry_uuid = dentry_uuid
         self.doc_key = doc_key
         self.node_id = node_id
-        # requestId
         self.request_id = request_id
         self.url = url
         self.vendor_request_id = vendor_request_id

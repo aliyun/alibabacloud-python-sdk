@@ -10,9 +10,9 @@ class DeleteAllCustomizeFlowStrategyRequest(DaraModel):
         region_id: str = None,
         user_id: int = None,
     ):
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # User ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

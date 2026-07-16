@@ -14,7 +14,7 @@ class DeleteNodeResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # true\\
+        # true<br>
         # false
         self.success = success
 

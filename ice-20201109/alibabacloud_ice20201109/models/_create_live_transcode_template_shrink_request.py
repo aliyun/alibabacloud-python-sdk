@@ -19,10 +19,13 @@ class CreateLiveTranscodeTemplateShrinkRequest(DaraModel):
         self.template_config_shrink = template_config_shrink
         # The type of the template. Valid values:
         # 
-        # *   normal
-        # *   narrow-band
-        # *   audio-only
-        # *   origin
+        # - normal
+        # 
+        # - narrow-band
+        # 
+        # - audio-only
+        # 
+        # - origin
         # 
         # This parameter is required.
         self.type = type

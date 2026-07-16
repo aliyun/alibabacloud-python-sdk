@@ -9,6 +9,7 @@ class ListEvaluationMetricDetailsRequest(DaraModel):
         self,
         account_id: int = None,
         date: str = None,
+        evaluation_domain: str = None,
         id: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -16,20 +17,27 @@ class ListEvaluationMetricDetailsRequest(DaraModel):
         scope: str = None,
         snapshot_id: str = None,
     ):
-        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        # The ID of the member account. This parameter is applicable only to the multi-account check pattern.
         self.account_id = account_id
+        # The date to query.
         self.date = date
-        # The ID of the check item.
+        self.evaluation_domain = evaluation_domain
+        # The ID of the check item for which you want to retrieve non-compliant resources.
         # 
-        # You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to query the ID of the check item.
+        # You can call the [ListEvaluationMetadata](https://help.aliyun.com/document_detail/2841889.html) operation to obtain the check item ID.
         self.id = id
-        # The maximum number of entries to return for a single request. Default value: 5.
+        # The maximum number of entries to return in a single request. Default value: 5.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token for the next query.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
+        # The scope of the governance maturity check. Valid values:
+        # 
+        # - Account (default): queries the check item details for the current account.
+        # - ResourceDirectory: queries the check item details for all member accounts in the resource directory. Before using this value, upgrade to multi-account governance maturity check.
         self.scope = scope
+        # The check snapshot ID.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -45,6 +53,9 @@ class ListEvaluationMetricDetailsRequest(DaraModel):
 
         if self.date is not None:
             result['Date'] = self.date
+
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
 
         if self.id is not None:
             result['Id'] = self.id
@@ -73,6 +84,9 @@ class ListEvaluationMetricDetailsRequest(DaraModel):
 
         if m.get('Date') is not None:
             self.date = m.get('Date')
+
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')

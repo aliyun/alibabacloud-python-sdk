@@ -14,29 +14,25 @@ class DescribeAccesskeyLeakListRequest(DaraModel):
         start_ts: int = None,
         status: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the current page in a paged query. Default value: **1**.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The number of entries to return on each page.\\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page for a paged query. The maximum value of PageSize is 100. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > Do not leave PageSize empty.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The AccessKey ID that you want to query. Only exact match is supported.
         self.query = query
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the ID.
+        # The ID of the member account in the resource directory (Alibaba Cloud account).
+        # > You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The beginning of the time range to query. You can query all AccessKey pair leaks that are detected later than this time point. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
+        # The discovery time of the leaked information that you want to query. All AccessKey leak information discovered after this point in time is returned. This parameter is a UNIX timestamp. Unit: milliseconds.
         self.start_ts = start_ts
-        # Specifies whether an AccessKey pair leak is handled. Valid values:
-        # 
-        # *   **pending**: unhandled
-        # *   **dealed**: handled
+        # The processing status of the leaked AccessKey information that you want to query. Valid values:
+        # - **pending**: unprocessed
+        # - **dealed**: processed.
         self.status = status
 
     def validate(self):

@@ -12,11 +12,18 @@ class UpdateAclCheckDetailStatusRequest(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
+        # The language.
         self.lang = lang
+        # The modified status.
+        # 
         # This parameter is required.
         self.status = status
+        # The ACL check task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique identifier ID of the ACL policy in the ACL check details.
+        # 
         # This parameter is required.
         self.uuid = uuid
 

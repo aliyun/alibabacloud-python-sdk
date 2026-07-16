@@ -14,9 +14,9 @@ class ListProjectResponseBody(DaraModel):
         projects: List[main_models.Project] = None,
         total: int = None,
     ):
-        # The number of returned projects on the current page.
+        # The number of projects returned on the current page.
         self.count = count
-        # The projects that meet the query conditions.
+        # The list of projects that meet the query conditions.
         self.projects = projects
         # The total number of projects that meet the query conditions.
         self.total = total

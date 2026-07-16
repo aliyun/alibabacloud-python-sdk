@@ -12,10 +12,13 @@ class BusinessCategoryBasicInfo(DaraModel):
         original_id: int = None,
         service_type: int = None,
     ):
+        # Business ID
         self.bid = bid
+        # Business name
         self.name = name
         # originalId
         self.original_id = original_id
+        # Service Type (ServiceCategory).
         self.service_type = service_type
 
     def validate(self):

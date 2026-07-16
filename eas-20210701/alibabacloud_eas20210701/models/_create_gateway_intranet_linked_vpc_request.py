@@ -12,11 +12,13 @@ class CreateGatewayIntranetLinkedVpcRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.account_id = account_id
+        # Specifies whether to enable authoritative DNS parsing. The default value is false.
         self.enable_authoritative_dns = enable_authoritative_dns
-        # The vSwitch ID.
+        # The ID of the virtual switch. For more information, see [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html).
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
+        # The ID of the virtual private cloud (VPC). For more information, see [DescribeVpcs](https://help.aliyun.com/document_detail/448581.html).
         self.vpc_id = vpc_id
 
     def validate(self):

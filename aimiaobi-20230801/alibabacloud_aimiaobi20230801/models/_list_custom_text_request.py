@@ -10,8 +10,11 @@ class ListCustomTextRequest(DaraModel):
         agent_key: str = None,
         commodity_code: str = None,
     ):
+        # Unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Commodity code.
         self.commodity_code = commodity_code
 
     def validate(self):

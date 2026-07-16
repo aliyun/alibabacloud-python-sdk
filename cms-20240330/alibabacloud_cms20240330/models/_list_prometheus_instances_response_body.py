@@ -16,15 +16,15 @@ class ListPrometheusInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Maximum number of records to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # Token for the next query.
+        # The token for the next query.
         self.next_token = next_token
-        # List of Prometheus instances.
+        # The list of Prometheus instances.
         self.prometheus_instances = prometheus_instances
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Total number of instances
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -90,6 +90,7 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         prometheus_instance_id: str = None,
         prometheus_instance_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_type: str = None,
         status: str = None,
         support_auth_types: List[str] = None,
@@ -97,37 +98,42 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Access type:
-        # readWrite, readOnly, httpReadOnly
+        # The access type. Valid values:
+        # - readWrite
+        # - readOnly
+        # - httpReadOnly
         self.access_type = access_type
-        # Instance creation time, using UTC+0 time, formatted as yyyy-MM-ddTHH:mmZ
+        # The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
         self.create_time = create_time
-        # Instance type.
+        # The instance type.
         self.instance_type = instance_type
-        # POSTPAY: Postpaid by metric.
-        # POSTPAY_GB: Postpaid by write volume.
-        # PREPAY: Prepaid.
-        # FREE: Free.
+        # The billing method. Valid values:
+        # - POSTPAY: pay-as-you-go by metric volume.
+        # - POSTPAY_GB: pay-as-you-go by write volume.
+        # - PREPAY: subscription.
+        # - FREE: free.
         self.payment_type = payment_type
-        # Product to which the prom instance belongs
+        # The product to which the Prometheus instance belongs.
         self.product = product
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Instance name.
+        # The instance name.
         self.prometheus_instance_name = prometheus_instance_name
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Resource type.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The resource type.
         self.resource_type = resource_type
-        # Backend data storage status
+        # The backend data storage status.
         self.status = status
-        # Supported authentication types.
+        # The supported authentication types.
         self.support_auth_types = support_auth_types
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # Version
+        # The version.
         self.version = version
-        # Workspace to which the Prometheus instance belongs
+        # The workspace to which the Prometheus instance belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -161,6 +167,9 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
@@ -207,6 +216,9 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')

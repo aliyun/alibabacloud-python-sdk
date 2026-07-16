@@ -10,7 +10,7 @@ class UpdateAgentRuntimeEndpointRequest(DaraModel):
         self,
         body: main_models.UpdateAgentRuntimeEndpointInput = None,
     ):
-        # 包含要更新的智能体运行时端点配置信息的请求体
+        # Update Agent Runtime Endpoint Input
         # 
         # This parameter is required.
         self.body = body

@@ -17,27 +17,27 @@ class PublicCreateImageScanTaskRequest(DaraModel):
         source_ip: str = None,
         tags: str = None,
     ):
-        # The SHA-256 value of the image digest. Separate multiple SHA-256 values with commas (,).
+        # The SHA256 digest values of the images. Separate multiple SHA256 values with commas (,).
         self.digests = digests
-        # The ID of the Container Registry instance in which the image repository is created. Separate multiple IDs with commas (,).
+        # The IDs of the Container Registry (ACR) instances. Separate multiple IDs with commas (,).
         self.instance_ids = instance_ids
-        # The region ID of the image. Separate multiple IDs with commas (,).
+        # The region IDs of the images. Separate multiple region IDs with commas (,).
         self.region_ids = region_ids
-        # The type of the image repository. Separate multiple types with commas (,). Valid values:
+        # The types of image registries. Separate multiple types with commas (,). Valid values:
         # 
-        # *   **acr**
-        # *   **harbor**
-        # *   **quay**
+        # - **acr**
+        # - **harbor**
+        # - **quay**.
         self.registry_types = registry_types
-        # The ID of the image repository. Separate multiple IDs with commas (,).
+        # The IDs of the image registries. Separate multiple IDs with commas (,).
         self.repo_ids = repo_ids
-        # The name of the image repository. Separate multiple names with commas (,).
+        # The names of the image registries. Separate multiple names with commas (,).
         self.repo_names = repo_names
-        # The namespace to which the image repository belongs. Separate multiple namespaces with commas (,).
+        # The namespaces of the image registries. Separate multiple namespaces with commas (,).
         self.repo_namespaces = repo_namespaces
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The tag that is added to the image. Separate multiple tags with commas (,).
+        # The tags of the images. Separate multiple tags with commas (,).
         self.tags = tags
 
     def validate(self):

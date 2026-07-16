@@ -13,9 +13,9 @@ class DescribeSafStartStepsResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeSafStartStepsResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeSafStartStepsResponseBodyResultObject(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # Step content
+        # The step content.
         self.content = content
-        # Step title
+        # The step title.
         self.id = id
-        # Type
+        # The type.
         self.type = type
 
     def validate(self):

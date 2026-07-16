@@ -15,16 +15,19 @@ class ModifyPhoneBusinessProfileResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The URL of the website.
-        self.code = code
-        # The ID of the request.
-        self.message = message
-        # The websites.
-        self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The request status code.
         # 
-        # *   **true**
-        # *   **false**
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        self.code = code
+        # The prompt message. A value is returned when an exception occurs.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

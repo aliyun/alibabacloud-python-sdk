@@ -15,19 +15,19 @@ class ConsumerAPIKey(DaraModel):
         masked_key: str = None,
         model_connection_id: str = None,
     ):
-        # 密钥是否启用，true表示启用，false表示禁用
+        # Specifies if the key is enabled (true) or disabled (false).
         self.active = active
-        # 消费者API密钥的唯一标识符
+        # The unique identifier of the consumer API key.
         self.consumer_api_key_id = consumer_api_key_id
-        # 消费者API密钥的创建时间，采用ISO 8601格式
+        # The creation time of the consumer API key, in ISO 8601 format.
         self.created_at = created_at
-        # 消费者API密钥的描述信息
+        # A user-defined description for the consumer API key.
         self.description = description
-        # 消费者API密钥最后一次更新的时间，采用ISO 8601格式
+        # The last update time of the consumer API key, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # API密钥的掩码展示形式，仅显示前后几位字符
+        # The masked API key, showing only the first and last few characters.
         self.masked_key = masked_key
-        # 关联的模型连接标识符
+        # The identifier of the associated model connection.
         self.model_connection_id = model_connection_id
 
     def validate(self):

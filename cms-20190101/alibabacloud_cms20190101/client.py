@@ -20,7 +20,52 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'metrics.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'metrics.us-east-1.aliyuncs.com',
+            'na-south-1': 'metrics.na-south-1.aliyuncs.com',
+            'me-east-1': 'metrics.me-east-1.aliyuncs.com',
+            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
+            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'metrics.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com',
+            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'metrics.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'metrics.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'metrics.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'metrics.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

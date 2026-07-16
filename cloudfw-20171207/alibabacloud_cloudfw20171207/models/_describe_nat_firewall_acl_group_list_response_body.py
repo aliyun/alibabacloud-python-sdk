@@ -13,7 +13,9 @@ class DescribeNatFirewallAclGroupListResponseBody(DaraModel):
         nat_firewalls: List[main_models.DescribeNatFirewallAclGroupListResponseBodyNatFirewalls] = None,
         request_id: str = None,
     ):
+        # The list of NAT firewalls.
         self.nat_firewalls = nat_firewalls
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,10 +61,15 @@ class DescribeNatFirewallAclGroupListResponseBodyNatFirewalls(DaraModel):
         nat_gateway_name: str = None,
         region_no: str = None,
     ):
+        # The number of policies in the access control policy group of the NAT firewall.
         self.acl_rule_count = acl_rule_count
+        # Indicates whether the NAT firewall is the default one.
         self.is_default = is_default
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):

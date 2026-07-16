@@ -17,11 +17,16 @@ class DescribeVsDomainReqBpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # Time interval between records, in seconds.
         self.data_interval = data_interval
+        # The domain name of the Visual Edge Computing Service.
         self.domain_name = domain_name
+        # End time.
         self.end_time = end_time
         self.req_bps_data_per_interval = req_bps_data_per_interval
+        # Request ID.
         self.request_id = request_id
+        # Start time.
         self.start_time = start_time
 
     def validate(self):

@@ -12,14 +12,20 @@ class UpdateWhitelistTemplateRequest(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
-        # RegionId
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The IP address whitelist. You can add up to 100 IP addresses, separated by commas.
+        # 
         # This parameter is required.
         self.security_iplist = security_iplist
+        # The whitelist template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The whitelist template name.
+        # 
         # This parameter is required.
         self.template_name = template_name
 

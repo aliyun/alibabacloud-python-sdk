@@ -15,11 +15,21 @@ class WorkspaceActionStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message that is returned if the request fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +92,14 @@ class WorkspaceActionStatusResponseBodyData(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
+        # The error message if the task fails.
         self.data = data
+        # The time when the task ended.
         self.end_time = end_time
+        # The time when the task started.
         self.start_time = start_time
+        # The status of the asynchronous task. Valid values: SUCCESS, ERROR, TIMEOUT, and CANCEL.
+        # 
         # This parameter is required.
         self.status = status
 

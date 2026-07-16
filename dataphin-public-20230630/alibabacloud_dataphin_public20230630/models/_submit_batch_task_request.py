@@ -13,8 +13,12 @@ class SubmitBatchTaskRequest(DaraModel):
         op_tenant_id: int = None,
         submit_command: main_models.SubmitBatchTaskRequestSubmitCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The submit request.
+        # 
         # This parameter is required.
         self.submit_command = submit_command
 
@@ -50,6 +54,7 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
     def __init__(
         self,
         code: str = None,
+        code_template_version: int = None,
         comment: str = None,
         cron_expression: str = None,
         custom_schedule_config: main_models.SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig = None,
@@ -59,6 +64,8 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         node_description: str = None,
         node_output_name_list: List[str] = None,
         node_status: int = None,
+        offline_code_template_id: str = None,
+        offline_code_template_params: List[main_models.SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams] = None,
         param_list: List[main_models.SubmitBatchTaskRequestSubmitCommandParamList] = None,
         priority: int = None,
         project_id: int = None,
@@ -67,32 +74,73 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         spark_client_info: main_models.SubmitBatchTaskRequestSubmitCommandSparkClientInfo = None,
         up_stream_list: List[main_models.SubmitBatchTaskRequestSubmitCommandUpStreamList] = None,
     ):
+        # The code of the node.
+        # 
         # This parameter is required.
         self.code = code
+        self.code_template_version = code_template_version
+        # The comment for the submit operation.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
         self.cron_expression = cron_expression
+        # The custom schedule interval configuration.
         self.custom_schedule_config = custom_schedule_config
+        # The execution engine for the node, such as for Python tasks. Valid values:
+        # - PYTHON2_7
+        # - PYTHON3_7
+        # - PYTHON3_11
         self.engine = engine
+        # The node ID in the directory tree.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The name of the batch task.
+        # 
         # This parameter is required.
         self.name = name
+        # The description of the node.
         self.node_description = node_description
+        # The list of node output names.
         self.node_output_name_list = node_output_name_list
+        # The node status. Valid values:
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         self.node_status = node_status
+        self.offline_code_template_id = offline_code_template_id
+        self.offline_code_template_params = offline_code_template_params
+        # The list of custom parameters.
         self.param_list = param_list
+        # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
+        # The ID of the project to which the node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The Python third-party packages that the node depends on.
         self.python_module_list = python_module_list
+        # The schedule period. Valid values:
+        # - YEARLY
+        # - MONTHLY
+        # - WEEKLY
+        # - DAILY
+        # - HOURLY
+        # - MINUTELY
         self.schedule_period = schedule_period
+        # The Spark client information.
         self.spark_client_info = spark_client_info
+        # The upstream dependencies.
         self.up_stream_list = up_stream_list
 
     def validate(self):
         if self.custom_schedule_config:
             self.custom_schedule_config.validate()
+        if self.offline_code_template_params:
+            for v1 in self.offline_code_template_params:
+                 if v1:
+                    v1.validate()
         if self.param_list:
             for v1 in self.param_list:
                  if v1:
@@ -111,6 +159,9 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
             result = _map
         if self.code is not None:
             result['Code'] = self.code
+
+        if self.code_template_version is not None:
+            result['CodeTemplateVersion'] = self.code_template_version
 
         if self.comment is not None:
             result['Comment'] = self.comment
@@ -138,6 +189,14 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
 
         if self.node_status is not None:
             result['NodeStatus'] = self.node_status
+
+        if self.offline_code_template_id is not None:
+            result['OfflineCodeTemplateId'] = self.offline_code_template_id
+
+        result['OfflineCodeTemplateParams'] = []
+        if self.offline_code_template_params is not None:
+            for k1 in self.offline_code_template_params:
+                result['OfflineCodeTemplateParams'].append(k1.to_map() if k1 else None)
 
         result['ParamList'] = []
         if self.param_list is not None:
@@ -171,6 +230,9 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
+        if m.get('CodeTemplateVersion') is not None:
+            self.code_template_version = m.get('CodeTemplateVersion')
+
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
 
@@ -198,6 +260,15 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
 
         if m.get('NodeStatus') is not None:
             self.node_status = m.get('NodeStatus')
+
+        if m.get('OfflineCodeTemplateId') is not None:
+            self.offline_code_template_id = m.get('OfflineCodeTemplateId')
+
+        self.offline_code_template_params = []
+        if m.get('OfflineCodeTemplateParams') is not None:
+            for k1 in m.get('OfflineCodeTemplateParams'):
+                temp_model = main_models.SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams()
+                self.offline_code_template_params.append(temp_model.from_map(k1))
 
         self.param_list = []
         if m.get('ParamList') is not None:
@@ -242,16 +313,33 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamList(DaraModel):
         source_node_output_name: str = None,
         source_table_name: str = None,
     ):
+        # The dependency period.
         self.depend_period = depend_period
+        # The dependency strategy. Valid values:
+        # - ALL: all
+        # - FIRST: first
+        # - LAST: last
+        # - NEAR: nearest
         self.depend_strategy = depend_strategy
+        # The dependent logical table fields.
         self.field_list = field_list
+        # The type of the upstream dependency node. Valid values:
+        # - PHYSICAL: physical node
+        # - LOGICAL: logical table dependency
         self.node_type = node_type
+        # The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
+        # 
         # This parameter is required.
         self.period_diff = period_diff
+        # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
+        # The ID of the upstream node.
         self.source_node_id = source_node_id
+        # The output name of the upstream node.
+        # 
         # This parameter is required.
         self.source_node_output_name = source_node_output_name
+        # The name of the input table.
         self.source_table_name = source_table_name
 
     def validate(self):
@@ -330,7 +418,14 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod(DaraModel):
         period_offset: int = None,
         period_type: str = None,
     ):
+        # The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
         self.period_offset = period_offset
+        # The dependency period type. Valid values:
+        # - CURRENT_PERIOD: current period
+        # - LAST_PERIOD: previous period
+        # - LAST_N_PERIOD: last N days
+        # - LAST_24_HOUR: last 24 hours
+        # 
         # This parameter is required.
         self.period_type = period_type
 
@@ -365,6 +460,8 @@ class SubmitBatchTaskRequestSubmitCommandSparkClientInfo(DaraModel):
         self,
         spark_client_version: str = None,
     ):
+        # The version name of the Spark client.
+        # 
         # This parameter is required.
         self.spark_client_version = spark_client_version
 
@@ -394,8 +491,12 @@ class SubmitBatchTaskRequestSubmitCommandParamList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The parameter name.
+        # 
         # This parameter is required.
         self.key = key
+        # The parameter value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -425,6 +526,57 @@ class SubmitBatchTaskRequestSubmitCommandParamList(DaraModel):
 
         return self
 
+class SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        encrypt_enabled: bool = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.description = description
+        self.encrypt_enabled = encrypt_enabled
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.encrypt_enabled is not None:
+            result['EncryptEnabled'] = self.encrypt_enabled
+
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('EncryptEnabled') is not None:
+            self.encrypt_enabled = m.get('EncryptEnabled')
+
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
 class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
     def __init__(
         self,
@@ -434,14 +586,32 @@ class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
         schedule_period: str = None,
         start_time: str = None,
     ):
+        # The end time in the format of HH:mm.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The custom interval.
+        # 
         # This parameter is required.
         self.interval = interval
+        # The interval unit. Valid values:
+        # - MINUTE: minute
+        # - HOUR: hour
+        # 
         # This parameter is required.
         self.interval_unit = interval_unit
+        # The schedule period. Valid values:
+        # - YEARLY
+        # - MONTHLY
+        # - WEEKLY
+        # - DAILY
+        # - HOURLY
+        # - MINUTELY
+        # 
         # This parameter is required.
         self.schedule_period = schedule_period
+        # The start time in the format of HH:mm.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -18,26 +18,23 @@ class QuerySearchLibResponseBody(DaraModel):
         status: str = None,
         success: str = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
+        # The index information.
         self.index_info = index_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The search library configuration.
         self.search_lib_config = search_lib_config
         # The name of the search library.
         self.search_lib_name = search_lib_name
         # The status of the search library.
-        # 
-        # Valid values:
-        # 
-        # *   normal
-        # *   deleting
-        # *   deleteFail
         self.status = status
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the call was successful.
         # 
-        # *   true
-        # *   false
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -111,8 +108,27 @@ class QuerySearchLibResponseBodyIndexInfo(DaraModel):
         index_status: str = None,
         index_type: str = None,
     ):
+        # The readiness status of the index. Valid values:
+        # 
+        # - Initializing: The index is being initialized.
+        # 
+        # - Normal: The index is ready.
+        # 
+        # - Fail: The index failed to be created.
         self.index_readiness = index_readiness
+        # The status of the index. Valid values:
+        # 
+        # - Active: The index is active.
+        # 
+        # - Deactive: The index is inactive.
         self.index_status = index_status
+        # The index type. Valid values:
+        # 
+        # - mm: Large language model (LLM).
+        # 
+        # - face: Face recognition.
+        # 
+        # - aiLabel: Smart tagging.
         self.index_type = index_type
 
     def validate(self):

@@ -11,24 +11,19 @@ class ListBindDataSourcesRequest(DaraModel):
         cloud_code: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The code of the cloud service provider.
-        # 
-        # Valid values:
-        # 
-        # *   qcloud
-        # *   hcloud
-        # *   aliyun
+        # The code of the multicloud environment.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of Threat Analysis is located. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
 
     def validate(self):

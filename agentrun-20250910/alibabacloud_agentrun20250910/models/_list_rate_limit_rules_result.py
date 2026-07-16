@@ -12,11 +12,11 @@ class ListRateLimitRulesResult(DaraModel):
         data: main_models.ListRateLimitRulesOutput = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型
+        # A value of `SUCCESS` indicates a successful request. If the request fails, an error code is returned.
         self.code = code
-        # 限流规则列表的详细信息
+        # Detailed information about the rate limit rules.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

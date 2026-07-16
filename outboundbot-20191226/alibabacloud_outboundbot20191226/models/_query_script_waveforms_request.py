@@ -11,10 +11,16 @@ class QueryScriptWaveformsRequest(DaraModel):
         script_content: str = None,
         script_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Scenario voice name
+        # 
         # This parameter is required.
         self.script_content = script_content
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

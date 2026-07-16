@@ -13,12 +13,19 @@ class DeletePolarClawChannelRequest(DaraModel):
         restart: bool = None,
         uninstall_plugin: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The plugin ID. This parameter is required if `UninstallPlugin` is set to `true`.
         self.plugin_id = plugin_id
+        # Specifies whether to restart the gateway after the channel is deleted. Default value: `true`.
         self.restart = restart
+        # Specifies whether to uninstall the channel plugin. Default value: `false`.
         self.uninstall_plugin = uninstall_plugin
 
     def validate(self):

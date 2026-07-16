@@ -93,9 +93,11 @@ class ListServiceVersionsResponseBodyVersions(DaraModel):
         self.build_time = build_time
         # Indicates whether the image is available. Valid values:
         # 
-        # *   true: The image is available.
-        # *   false: The image is unavailable.
-        # *   unknown: The availability of the image is unknown.
+        # - true: The image is available.
+        # 
+        # - false: The image is unavailable.
+        # 
+        # - unknown: The availability of the image is unknown.
         self.image_available = image_available
         # The image ID.
         self.image_id = image_id
@@ -105,9 +107,11 @@ class ListServiceVersionsResponseBodyVersions(DaraModel):
         self.service_config = service_config
         # Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
         # 
-        # *   true: EAS is activated.
-        # *   false: EAS is not activated.
-        # *   unknown: The activation of EAS is unknown.
+        # - true: EAS is activated.
+        # 
+        # - false: EAS is not activated.
+        # 
+        # - unknown: The activation of EAS is unknown.
         self.service_runnable = service_runnable
 
     def validate(self):

@@ -17,24 +17,33 @@ class ListAppVersionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Indicates whether the historical versions of the application were obtained. Valid values:
-        # 
-        # *   **true**: indicates that the historical versions of the application were obtained.
-        # *   **false**: indicates that the historical versions of the application could not be obtained.
-        self.code = code
-        # The information about the versions.
-        self.data = data
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The call is successful.
+        # 
+        # - **3xx**: The call is redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
+        self.code = code
+        # The version information.
+        self.data = data
+        # The error code.
+        # 
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The ID of the request.
+        # Additional information about the call.
         self.message = message
-        # The information about the versions.
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the historical versions of the application were successfully queried. Valid values:
+        # 
+        # - **true**: The query was successful.
+        # 
+        # - **false**: The query failed.
         self.success = success
 
     def validate(self):
@@ -104,24 +113,23 @@ class ListAppVersionsResponseBodyData(DaraModel):
         type: str = None,
         war_url: str = None,
     ):
-        # The URL of the code package. If you use the SAE console to upload the code package, take note of the following items:
+        # The download URL of the code package. If you uploaded the package using SAE, note the following:
         # 
-        # *   You cannot download the URL. You must call the GetPackageVersionAccessableUrl operation to obtain the URL. The obtained URL is valid for 10 minutes.
-        # *   SAE can retain the package up to 90 days. After 90 days, the URL cannot be returned or downloaded.
+        # - This URL is not a direct download link. You must call the GetPackageVersionAccessableUrl operation to obtain a downloadable URL that is valid for 10 minutes.
+        # 
+        # - SAE stores the package for a maximum of 90 days. After this period, the URL is not returned and the package cannot be downloaded.
         self.build_package_url = build_package_url
-        # The download link of the WAR or JAR package. This parameter is returned when the **Type** parameter is set to **url**.
+        # The time when the version was created.
         self.create_time = create_time
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # The version ID.
         self.id = id
-        # The deployment method of the application. Valid values:
+        # The application type. Valid values:
         # 
-        # *   **image**: indicates that the application is deployed by using an image.
-        # *   **url**: indicates that the application is deployed by using a code package.
+        # - **image**: The application is deployed using an image.
+        # 
+        # - **url**: The application is deployed using a code package.
         self.type = type
-        # The URL of the image.
+        # The URL of the WAR package.
         self.war_url = war_url
 
     def validate(self):

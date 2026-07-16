@@ -16,10 +16,17 @@ class ListPluginsInstancesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned result.
         self.data = data
+        # The description.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -87,14 +94,23 @@ class ListPluginsInstancesResponseBodyData(DaraModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The component instance name.
         self.instance_name = instance_name
+        # The instance tag.
         self.instance_tag = instance_tag
+        # The operating system name of the instance.
         self.os_name = os_name
+        # The private IP address.
         self.private_ip = private_ip
+        # The public IP address.
         self.public_ip = public_ip
+        # The region where the instance resides.
         self.region = region
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):
@@ -179,7 +195,9 @@ class ListPluginsInstancesResponseBodyDataInstanceTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

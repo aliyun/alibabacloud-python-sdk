@@ -15,31 +15,38 @@ class DescribeRecordStatisticsRequest(DaraModel):
         start_date: str = None,
     ):
         # The primary domain name.
+        # <props="china">For more information, see [DescribeDomains](https://help.aliyun.com/document_detail/29751.html).
+        # <props="intl">For more information, see [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The type of the domain name. The parameter value is not case-sensitive. Valid values:
+        # The type of the domain name. This parameter is not case-sensitive. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC (default): authoritative domain name
+        # 
+        # - CACHE: authoritative proxy domain name
         self.domain_type = domain_type
-        # The end date of the query. Specify the end date in the **YYYY-MM-DD** format.
+        # The end date of the query. The format is **YYYY-MM-DD**.
         # 
-        # The default value is the day when you query the data.
+        # The default value is the current date.
         self.end_date = end_date
-        # The language.
+        # The language of the return value. Valid values:
+        # 
+        # - zh (default): Chinese
+        # 
+        # - en: English
         self.lang = lang
-        # The hostname. If you want to resolve www.dns-exmaple.top, set Rr to www.
+        # The host record. For example, to resolve www\\.example.com, set this parameter to www.
         # 
         # This parameter is required.
         self.rr = rr
-        # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
+        # The start date of the query. The format is **YYYY-MM-DD**.
         # 
-        # You can only query the DNS records within the last 90 days.``
+        # The start date must be within the last 90 days.
         # 
-        # If the time range is less than or equal to seven days, data is returned on an hourly basis.````
+        # If the time range of the query is 7 days or less, data is returned by the hour.
         # 
-        # If the time range is greater than seven days, data is returned on a daily basis.````
+        # If the time range of the query is more than 7 days, data is returned by the day.
         # 
         # This parameter is required.
         self.start_date = start_date

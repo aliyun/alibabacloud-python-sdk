@@ -19,15 +19,17 @@ class UnTagDataAssetsShrinkRequest(DaraModel):
         self.data_asset_ids_shrink = data_asset_ids_shrink
         # The type of the data asset. Valid values:
         # 
-        # *   ACS::DataWorks::Table
-        # *   ACS::DataWorks::Task
+        # - ACS::DataWorks::Table
+        # 
+        # - ACS::DataWorks::Task
         # 
         # This parameter is required.
         self.data_asset_type = data_asset_type
         # The environment of the workspace to which the data asset belongs. Valid values:
         # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         self.env_type = env_type
         # The DataWorks workspace ID.
         self.project_id = project_id

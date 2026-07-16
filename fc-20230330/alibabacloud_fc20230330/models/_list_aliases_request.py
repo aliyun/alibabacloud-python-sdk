@@ -11,11 +11,11 @@ class ListAliasesRequest(DaraModel):
         next_token: str = None,
         prefix: str = None,
     ):
-        # The number of aliases returned.
+        # The number of aliases to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
-        # The alias prefix.
+        # The prefix of the alias name.
         self.prefix = prefix
 
     def validate(self):

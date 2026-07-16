@@ -23,35 +23,35 @@ class CreateHostAvailabilityRequest(DaraModel):
     ):
         self.alert_config = alert_config
         self.task_option = task_option
-        # None
+        # None.
         # 
         # This parameter is required.
         self.alert_config_escalation_list = alert_config_escalation_list
-        # The resources for which alerts are triggered.
+        # The alert trigger targets.
         self.alert_config_target_list = alert_config_target_list
         # The ID of the application group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ECS instances that are monitored. Valid values of N: 1 to 21.
+        # The list of ECS instances that initiate detection. Valid values of N: 1 to 21.
         # 
-        # > This parameter must be specified when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
+        # > Set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
         self.instance_list = instance_list
         self.region_id = region_id
-        # The name of the availability monitoring task. The name must be 4 to 100 characters in length, and can contain letters, digits, and underscores (_).
+        # The name of the availability monitoring task. The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
         # 
         # This parameter is required.
         self.task_name = task_name
-        # The range of instances that are monitored by the availability monitoring task. Valid values:
+        # The detection scope of the availability monitoring task. Valid values:
         # 
-        # *   GROUP: All ECS instances in the application group are monitored.
-        # *   GROUP_SPEC_INSTANCE: Specified ECS instances in the application group are monitored. The TaskScope parameter must be used in combination with the InstanceList parameter. The InstanceList parameter specifies the ECS instances to be monitored.
+        # - GROUP: uses all ECS instances in the current application group as detection probes.
+        # - GROUP_SPEC_INSTANCE: uses specified ECS instances in the current application group as detection probes. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set InstanceList to specify the ECS instances that initiate detection.
         self.task_scope = task_scope
-        # The monitoring type of the availability monitoring task. Valid values:
+        # The detection type of the availability monitoring task. Valid values:
         # 
-        # *   PING
-        # *   TELNET
-        # *   HTTP
+        # - PING
+        # - TELNET
+        # - HTTP.
         # 
         # This parameter is required.
         self.task_type = task_type
@@ -161,33 +161,33 @@ class CreateHostAvailabilityRequestAlertConfigTargetList(DaraModel):
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{Service name abbreviation}:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Fields:
+        # The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{AbbreviatedServiceName}:{regionId}:{userId}:/{ResourceType}/{ResourceName}/message`. Example: `acs:mns:ap-southeast-1:120886317861****:/queues/test123/message`. The following list describes the parameters:
         # 
-        # *   {Service name abbreviation}: the abbreviation of the service name. Set the value to Simple Message Queue (formerly MNS) (SMQ).
+        # - {AbbreviatedServiceName}: Only Simple Message Queue (formerly MNS) is supported.
         # 
-        # *   {userId}: the ID of the Alibaba Cloud account.
+        # - {userId}: The Alibaba Cloud account ID.
         # 
-        # *   {regionId}: the region ID of the SMQ queue or topic.
+        # - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or topic resides.
         # 
-        # *   {Resource type}: the type of the resource for which alerts are triggered. Valid values:
+        # - {ResourceType}: The type of the resource that accepts alerts. Valid values:
         # 
-        #     *   **queues**
-        #     *   **topics**
+        #   - **queues**: queue.
+        #   - **topics**: topic.
         # 
-        # *   {Resource name}: the resource name.
+        # - {ResourceName}: The name of the resource.
         # 
-        #     *   If the resource type is **queues**, the resource name is the queue name.
-        #     *   If the resource type is **topics**, the resource name is the topic name.
+        #   - If the resource type is **queues**, the resource name is the queue name.
+        #   - If the resource type is **topics**, the resource name is the topic name.
         self.arn = arn
-        # The ID of the resource for which alerts are triggered.
+        # The ID of the alert trigger target.
         self.id = id
-        # The parameters of the alert callback. The parameters are in the JSON format.
+        # The JSON-formatted parameters for the alert callback.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
-        # *   INFO
-        # *   WARN
-        # *   CRITICAL
+        # - INFO: information.
+        # - WARN: warning.
+        # - CRITICAL: critical.
         self.level = level
 
     def validate(self):
@@ -237,35 +237,35 @@ class CreateHostAvailabilityRequestAlertConfigEscalationList(DaraModel):
         times: int = None,
         value: str = None,
     ):
-        # The method used to calculate the metric values that trigger alerts. Valid values of N: 1 to 21. Valid values:
+        # The statistical method for the alert. Valid values of N: 1 to 21. The valid values vary based on the metric:
         # 
-        # *   HttpStatus: Value
-        # *   HttpLatency: Average
-        # *   TelnetStatus: Value
-        # *   TelnetLatency: Average
-        # *   PingLostRate: Average
+        # - HttpStatus: Value.
+        # - HttpLatency: Average.
+        # - TelnetStatus: Value.
+        # - TelnetLatency: Average.
+        # - PingLostRate: Average.
         # 
-        # > The value Value indicates the original value and is used for metrics such as status codes. The value Average indicates the average value and is used for metrics such as the latency and packet loss rate.
+        # > The statistical method for status code metrics is the raw value (Value). The statistical method for latency or packet loss rate metrics is the average value (Average).
         self.aggregate = aggregate
-        # The metric for which the alert feature is enabled. Valid values of N: 1 to 21. Valid values:
+        # The metric for the alert. Valid values of N: 1 to 21. Valid values:
         # 
-        # *   HttpStatus: HTTP status code
-        # *   HttpLatency: HTTP response time
-        # *   TelnetStatus: Telnet status code
-        # *   TelnetLatency: Telnet response time
-        # *   PingLostRate: Ping packet loss rate
+        # - HttpStatus: HTTP status code.
+        # - HttpLatency: HTTP latency.
+        # - TelnetStatus: Telnet status code.
+        # - TelnetLatency: Telnet latency.
+        # - PingLostRate: Ping packet loss rate.
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The comparison operator that is used in the alert rule. Valid values of N: 1 to 21. Valid values:
+        # The comparison operator for the alert rule. Valid values of N: 1 to 21. Valid values:
         # 
-        # *   `>`
-        # *   `>=`
-        # *   `<`
-        # *   `<=`
-        # *   `=`
+        # - `>`
+        # - `>=`
+        # - `<`
+        # - `<=`
+        # - `=`.
         self.operator = operator
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered. Valid values of N: 1 to 21.
+        # The number of alert retries. Valid values of N: 1 to 21.
         self.times = times
         # The alert threshold. Valid values of N: 1 to 21.
         self.value = value
@@ -327,43 +327,42 @@ class CreateHostAvailabilityRequestTaskOption(DaraModel):
         interval: int = None,
         telnet_or_ping_host: str = None,
     ):
-        # The header of the HTTP request. Format: `Parameter name:Parameter value`. Separate multiple parameters with carriage return characters. Example:
-        # 
-        #     params1:value1
-        #     params2:value2
+        # HTTP请求的Header。格式为`参数名:参数`，多个参数之间用回车符分隔，例如：
+        # ```
+        # params1:value1
+        # params2:value2
+        # ```
         self.http_header = http_header
-        # The HTTP request method. Valid values:
+        # 探测类型的方法。取值：
         # 
-        # *   GET
-        # *   POST
-        # *   HEAD
+        # - GET
+        # - POST
+        # - HEAD
         # 
-        # > This parameter must be specified when TaskType is set to HTTP.
+        # >如果任务的探测类型为HTTP，则需要设置该参数。
         self.http_method = http_method
-        # The method to trigger an alert. The alert can be triggered based on whether the specified alert rule is included in the response body. Valid values:
+        # 匹配HTTP响应内容的报警规则。取值：
+        # - true：如果HTTP响应内容包含设置的报警规则，则报警。
+        # - false：如果HTTP响应内容不包含设置的报警规则，则报警。
         # 
-        # *   true: If the HTTP response body includes the alert rule, an alert is triggered.
-        # *   false: If the HTTP response does not include the alert rule, an alert is triggered.
-        # 
-        # > This parameter must be specified when TaskType is set to HTTP.
+        # >如果任务的探测类型为HTTP，则该参数生效。
         self.http_negative = http_negative
-        # The content of the HTTP POST request.
+        # HTTP探测类型探测请求的Post内容。
         self.http_post_content = http_post_content
-        # The character set that is used in the HTTP response.
+        # HTTP探测类型的响应字符集。
         # 
-        # > Only UTF-8 is supported.
+        # > 仅支持UTF-8。
         self.http_response_charset = http_response_charset
-        # The response to the HTTP request.
+        # 匹配响应的内容。
         self.http_response_match_content = http_response_match_content
-        # The URI that you want to monitor. This parameter is required if the TaskType parameter is set to HTTP or Telnet.
+        # HTTP、Telnet探测类型的探测URI地址。
         self.http_uri = http_uri
-        # The interval at which detection requests are sent. Unit: seconds. Valid values: 15, 30, 60, 120, 300, 900, 1800, and 3600.
+        # 探测频率。单位：秒。取值：15、30、60、120、300、900、1800和3600。
         # 
-        # > This parameter is available only for the CloudMonitor agent V3.5.1 or later.
+        # > 仅3.5.1及以上版本的云监控插件支持该参数。
         self.interval = interval
-        # The domain name or IP address that you want to monitor.
-        # 
-        # >  This parameter is required if the TaskType parameter is set to PING.
+        # 探测的域名或地址。
+        # >如果探测任务类型为PING，则需要设置该参数。
         self.telnet_or_ping_host = telnet_or_ping_host
 
     def validate(self):
@@ -443,27 +442,36 @@ class CreateHostAvailabilityRequestAlertConfig(DaraModel):
         start_time: int = None,
         web_hook: str = None,
     ):
-        # The end of the time range during which the alert rule is effective. Valid values: 0 to 23.
+        # 报警生效的结束时间。取值范围：0~23。
         # 
-        # For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+        # 例如：`AlertConfig.StartTime`为0，`AlertConfig.EndTime`为22，表示报警生效时间为00:00:00至22:00:00。
         # 
-        # > Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+        # >如果报警不在生效时间内，则超过阈值也不会发送报警通知。
         self.end_time = end_time
-        # The alert notification methods. Valid values:
+        # 报警通知类型。取值：
         # 
-        # 0: Alert notifications are sent by using emails and DingTalk chatbots.
+        # <props="china">- 2：电话+短信+邮件+钉钉机器人。
+        # 
+        # <props="china">- 1：短信+邮件+钉钉机器人。
+        # 
+        # <props="china">- 0：邮件+钉钉机器人。
+        # 
+        # 
+        # <props="intl">0：邮件+钉钉机器人。
+        # 
+        # <props="partner">0：邮件+钉钉机器人。
         # 
         # This parameter is required.
         self.notify_type = notify_type
-        # The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds. Default value: 86400. The default value indicates one day.
+        # 通道沉默时间。单位：秒，默认值：86400（1天）。
         self.silence_time = silence_time
-        # The beginning of the time range during which the alert rule is effective. Valid values: 0 to 23.
+        # 报警生效的开始时间。取值范围：0~23。
         # 
-        # For example, if the `AlertConfig.StartTime` parameter is set to 0 and the `AlertConfig.EndTime` parameter is set to 22, the alert rule is effective from 00:00:00 to 22:00:00.
+        # 例如：`AlertConfig.StartTime`为0，`AlertConfig.EndTime`为22，表示报警生效时间为00:00:00至22:00:00。
         # 
-        # > Alert notifications are sent based on the specified threshold only if the alert rule is effective.
+        # >如果报警不在生效时间内，则超过阈值也不会发送报警通知。
         self.start_time = start_time
-        # The callback URL.
+        # URL回调地址。
         self.web_hook = web_hook
 
     def validate(self):

@@ -17,17 +17,17 @@ class ListVideoProcessingsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The configurations.
+        # The list of configurations.
         self.configs = configs
-        # The page number of the returned page.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -107,41 +107,39 @@ class ListVideoProcessingsResponseBodyConfigs(DaraModel):
     ):
         # The configuration ID.
         self.config_id = config_id
-        # The type of the configuration. Valid values:
-        # 
-        # *   global: global configuration.
-        # *   rule: rule configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # The custom end parameter for FLV files.
+        # The custom FLV end parameter.
         self.flv_seek_end = flv_seek_end
-        # The custom start parameter for FLV files.
+        # The custom FLV start parameter.
         self.flv_seek_start = flv_seek_start
-        # FLV seeking. Valid values:
-        # 
-        # *   by_byte: Seek by byte.
-        # *   by_time: Seek by time.
+        # The FLV seeking mode. Valid values:
+        # - by_byte: seek by byte.
+        # - by_time: seek by time.
         self.flv_video_seek_mode = flv_video_seek_mode
-        # Customize the mp4 end parameter.
+        # The custom MP4 end parameter.
         self.mp_4seek_end = mp_4seek_end
-        # Customize the mp4 start parameter.
+        # The custom MP4 start parameter.
         self.mp_4seek_start = mp_4seek_start
         # The rule content.
         self.rule = rule
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The rule switch. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
         # The rule name.
         self.rule_name = rule_name
-        # The order in which the rule is executed. The smaller the value, the higher the priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The version number of the website configurations.
+        # The version number of the site configuration.
         self.site_version = site_version
-        # Video seeking. Valid values:
+        # The audio seeking switch. Valid values:
         # 
-        # *   on
-        # *   off
+        # - on: enabled.
+        # 
+        # - off: disabled.
         self.video_seek_enable = video_seek_enable
 
     def validate(self):

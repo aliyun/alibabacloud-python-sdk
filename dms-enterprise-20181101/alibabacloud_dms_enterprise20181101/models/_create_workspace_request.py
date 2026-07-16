@@ -9,9 +9,9 @@ class CreateWorkspaceRequest(DaraModel):
         self,
         client_token: str = None,
         description: str = None,
-        region_id: str = None,
         vpc_id: str = None,
         workspace_name: str = None,
+        workspace_region: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -19,10 +19,6 @@ class CreateWorkspaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The region to which the workspace belongs.
-        # 
-        # This parameter is required.
-        self.region_id = region_id
         # The VPC ID.
         # 
         # This parameter is required.
@@ -31,6 +27,8 @@ class CreateWorkspaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.workspace_name = workspace_name
+        # This parameter is required.
+        self.workspace_region = workspace_region
 
     def validate(self):
         pass
@@ -46,14 +44,14 @@ class CreateWorkspaceRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
 
         if self.workspace_name is not None:
             result['WorkspaceName'] = self.workspace_name
+
+        if self.workspace_region is not None:
+            result['WorkspaceRegion'] = self.workspace_region
 
         return result
 
@@ -65,14 +63,14 @@ class CreateWorkspaceRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
 
         if m.get('WorkspaceName') is not None:
             self.workspace_name = m.get('WorkspaceName')
+
+        if m.get('WorkspaceRegion') is not None:
+            self.workspace_region = m.get('WorkspaceRegion')
 
         return self
 

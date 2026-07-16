@@ -18,39 +18,35 @@ class DescribeExposedStatisticsDetailRequest(DaraModel):
         statistics_type_instance_value: str = None,
         uuid: str = None,
     ):
-        # The search condition for components.
+        # The query condition.
         self.criteria = criteria
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The public IP address of the server or the cloud asset.
+        # The public IP address that is exposed on the Internet for the asset to query.
         self.exposure_ip = exposure_ip
-        # The instance ID of the asset.
+        # The instance ID of the asset to query.
         self.instance_id = instance_id
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Set PageSize to a non-empty value.
         self.page_size = page_size
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the ID.
+        # The Alibaba Cloud account ID of the member accounts in the resource folder.
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The type of the exposed asset. Valid values:
-        # 
-        # *   **exposureType**: gateway assets
-        # *   **exposurePort**: ports
-        # *   **exposureComponent**: system components
-        # *   **exposureIp**: IP addresses
+        # The type of statistics to query. Valid values:
+        # - **exposureType**: gateway assets exposed on the Internet.
+        # - **exposurePort**: ports exposed on the Internet.
+        # - **exposureComponent**: system components exposed on the Internet.
+        # - **exposureIp**: IP addresses exposed on the Internet.
         # 
         # This parameter is required.
         self.statistics_type = statistics_type
-        # The type of the gateway asset. This parameter is required when the **StatisticsType** parameter is set to **exposureType**. Valid values:
-        # 
-        # *   **SLB**: the public IP address of a Server Load Balancer (SLB) instance
-        # *   **DNAT**: the NAT gateway that connects to the Internet by using the DNAT feature
+        # The Asset Type of the gateway to query. This parameter takes effect only when **StatisticsType** is set to **exposureType**. Valid values:
+        # - **SLB**: public IP address of a load balancing SLB instance.
+        # - **DNAT**: NAT gateway that uses the DNAT feature to connect to the Internet.
         self.statistics_type_gateway_type = statistics_type_gateway_type
-        # The ID of the gateway asset. This parameter is required when the **StatisticsType** parameter is set to **exposureType**.
+        # The instance ID of the gateway to query. This parameter takes effect only when **StatisticsType** is set to **exposureType**.
         self.statistics_type_instance_value = statistics_type_instance_value
-        # The UUID of the server.
+        # The UUID of the server to query.
         self.uuid = uuid
 
     def validate(self):

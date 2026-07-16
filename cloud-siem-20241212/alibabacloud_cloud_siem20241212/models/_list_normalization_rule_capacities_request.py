@@ -17,12 +17,27 @@ class ListNormalizationRuleCapacitiesRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The token to start the next query. Leave this parameter empty for the first query. If the response is truncated, use the \\`NextToken\\` value from the previous response.
         self.next_token = next_token
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # A list of normalization rule IDs.
         self.normalization_rule_ids = normalization_rule_ids
+        # The region of the threat analysis Data Management Center. Select the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID that an administrator uses to switch to a member\\"s perspective.
         self.role_for = role_for
 
     def validate(self):

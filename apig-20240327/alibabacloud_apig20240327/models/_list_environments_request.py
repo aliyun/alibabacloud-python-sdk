@@ -16,21 +16,21 @@ class ListEnvironmentsRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # Environment alias, fuzzy search.
+        # The environment alias. Fuzzy match is supported.
         self.alias_like = alias_like
-        # Gateway ID, exact search.
+        # The gateway ID. Exact match is supported.
         self.gateway_id = gateway_id
-        # Gateway name, fuzzy search.
+        # The gateway name. Fuzzy match is supported.
         self.gateway_name_like = gateway_name_like
-        # The gateway type
+        # The gateway type.
         self.gateway_type = gateway_type
-        # Environment name, fuzzy search.
+        # The environment name. Fuzzy match is supported.
         self.name_like = name_like
-        # Page number, default is 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # Page size, default is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

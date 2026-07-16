@@ -20,15 +20,25 @@ class AppMaterialTask(DaraModel):
         task_param: str = None,
         task_type: str = None,
     ):
+        # The task completion time.
         self.complete_time = complete_time
+        # The display format of the completion time.
         self.complete_time_format = complete_time_format
+        # The failure reason.
         self.fail_reason = fail_reason
+        # The list of final files.
         self.final_file_urls = final_file_urls
+        # The task status.
         self.status = status
+        # The task substatus.
         self.sub_status = sub_status
+        # The submit time.
         self.submit_time = submit_time
+        # The task ID.
         self.task_id = task_id
+        # The task parameter.
         self.task_param = task_param
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

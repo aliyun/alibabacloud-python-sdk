@@ -13,8 +13,11 @@ class CancelFundAccountLowAvailableAmountAlarmResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # Indicates whether the operation is successful.
         self.data = data
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

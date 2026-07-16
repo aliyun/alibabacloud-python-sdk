@@ -16,9 +16,9 @@ class ListUsersForGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned. The maximum number of entries that can be returned per page is specified by PageSize.
+        # The total number of entries that match the query.
         self.total_count = total_count
-        # The information about accounts.
+        # The list of account objects.
         self.users = users
 
     def validate(self):
@@ -68,9 +68,21 @@ class ListUsersForGroupResponseBodyUsers(DaraModel):
         group_member_relation_source_type: str = None,
         user_id: str = None,
     ):
-        # Account membership source id
+        # The source ID of the group member relationship.
+        # 
+        # If the group is created in EIAM, the value of this parameter is the instance ID. For other types of groups, the value is the enterprise ID from the source. For example, if the group is imported from DingTalk, the value is the corpId of the DingTalk enterprise.
         self.group_member_relation_source_id = group_member_relation_source_id
-        # Account membership source type
+        # The source type of the group member relationship. Valid values:
+        # 
+        # build_in: The group is created in EIAM.
+        # 
+        # ding_talk: The group is imported from DingTalk.
+        # 
+        # ad: The group is imported from Active Directory (AD).
+        # 
+        # ldap: The group is imported from LDAP.
+        # 
+        # we_com: The group is imported from WeCom.
         self.group_member_relation_source_type = group_member_relation_source_type
         # The account ID.
         self.user_id = user_id

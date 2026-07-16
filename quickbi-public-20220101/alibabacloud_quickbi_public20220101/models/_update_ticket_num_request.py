@@ -16,7 +16,7 @@ class UpdateTicketNumRequest(DaraModel):
         self.ticket = ticket
         # The number of bills.
         # 
-        # *   Valid values: 1 to 99998. Recommended value: 1.
+        # - Valid values: 1 to 99998. Recommended value: 1.
         # 
         # This parameter is required.
         self.ticket_num = ticket_num

@@ -17,12 +17,17 @@ class GetSecuritySecretKeyResponseBody(DaraModel):
         security_secret_key_info: main_models.GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The security key details.
         self.security_secret_key_info = security_secret_key_info
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -94,18 +99,35 @@ class GetSecuritySecretKeyResponseBodySecuritySecretKeyInfo(DaraModel):
         sub_key_count: int = None,
         type: str = None,
     ):
+        # The algorithm type. Valid values: AES, DES, DESEDE, SM2, SM4, RSA, and FF1.
         self.algorithm_type = algorithm_type
+        # The alias of the algorithm type.
         self.algorithm_type_alias = algorithm_type_alias
+        # The description.
         self.description = description
+        # Indicates whether OpenAPI query is supported.
         self.enable_openapi_query = enable_openapi_query
+        # The generation method. Valid values:
+        # - SYSTEM_GENERATION: system-generated.
+        # - USER_GENERATION: user-generated.
         self.generation_type = generation_type
+        # The key ID.
         self.id = id
+        # Indicates whether only the owner can manage the key.
         self.is_owner_manage_only = is_owner_manage_only
+        # The key name.
         self.name = name
+        # The owner.
         self.owner = owner
+        # The owner name.
         self.owner_name = owner_name
+        # The key values.
         self.secret_key_list = secret_key_list
+        # The number of sub-keys.
         self.sub_key_count = sub_key_count
+        # The key type. Valid values:
+        # - HASH: hashing and masking.
+        # - ENCRYPT: encryption and decryption.
         self.type = type
 
     def validate(self):

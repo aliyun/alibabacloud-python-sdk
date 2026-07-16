@@ -11,14 +11,15 @@ class GetPlayInfoRequest(DaraModel):
         input_url: str = None,
         media_id: str = None,
     ):
+        # The validity period of the playback URL, in seconds. The value defaults to 3600, which is also the minimum.
         self.auth_timeout = auth_timeout
-        # The input URL that you specified for the media asset when you registered the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
+        # The InputURL used to register the media asset. For more information, see [RegisterMediaInfo](https://help.aliyun.com/document_detail/441152.html).
         # 
-        # >  You must specify at least one of the MediaId and InputURL parameters.
+        # > Specify at least one of MediaId and InputURL.
         self.input_url = input_url
-        # The ID of the media asset.
+        # The media asset ID.
         # 
-        # >  You must specify at least one of the MediaId and InputURL parameters.
+        # > Specify at least one of MediaId and InputURL.
         self.media_id = media_id
 
     def validate(self):

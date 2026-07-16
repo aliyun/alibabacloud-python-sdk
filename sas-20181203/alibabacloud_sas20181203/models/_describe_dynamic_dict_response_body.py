@@ -15,19 +15,19 @@ class DescribeDynamicDictResponseBody(DaraModel):
         request_id: str = None,
         upload_time: int = None,
     ):
-        # The number of weak password rules that are added.
+        # The number of weak password rules that have been added.
         self.count = count
-        # The name of the OSS object that contains custom weak passwords.
+        # The name of the weak password file in OSS.
         self.file_name = file_name
-        # The size of the OSS object. Unit: bytes.
+        # The file size, in bytes.
         self.file_size = file_size
         # The maximum number of weak password rules that can be added.
         self.limit = limit
-        # The IP address of the Object Storage Service (OSS) object.
+        # The OSS object URL.
         self.oss_url = oss_url
-        # The request ID.
+        # The unique identifier that Alibaba Cloud generated for the request.
         self.request_id = request_id
-        # The timestamp when the OSS object was uploaded. Unit: milliseconds.
+        # The upload timestamp, in milliseconds.
         self.upload_time = upload_time
 
     def validate(self):

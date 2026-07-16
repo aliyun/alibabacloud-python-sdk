@@ -29,7 +29,19 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'imagesearch.eu-central-1.aliyuncs.com',
+            'cn-shenzhen': 'imagesearch.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'imagesearch.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'imagesearch.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'imagesearch.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'imagesearch.cn-beijing.aliyuncs.com',
+            'ap-southeast-2': 'imagesearch.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'imagesearch.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'imagesearch.ap-south-1.aliyuncs.com',
+            'ap-northeast-1': 'imagesearch.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('imagesearch', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -70,11 +82,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -146,11 +160,13 @@ class Client(OpenApiClient):
             try:
                 _request = DaraRequest()
                 boundary = DaraForm.get_boundary()
+                tmp = str(form.get("host"))
+                host = f'{bucket_name}.{tmp}'
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': str(form.get("host")),
+                    'host': host,
                     'date': Utils.get_date_utcstring(),
                     'user-agent': Utils.get_user_agent('')
                 }
@@ -399,7 +415,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -480,7 +496,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -717,7 +733,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -738,7 +754,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -819,7 +835,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -840,7 +856,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -1333,6 +1349,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.increase_list_with_options_async(request, runtime)
 
+    def search_image_by_filter_with_options(
+        self,
+        request: main_models.SearchImageByFilterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchImageByFilterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.num):
+            body['Num'] = request.num
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchImageByFilter',
+            version = '2020-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchImageByFilterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_image_by_filter_with_options_async(
+        self,
+        request: main_models.SearchImageByFilterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchImageByFilterResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.filter):
+            body['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.num):
+            body['Num'] = request.num
+        if not DaraCore.is_null(request.start):
+            body['Start'] = request.start
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchImageByFilter',
+            version = '2020-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchImageByFilterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_image_by_filter(
+        self,
+        request: main_models.SearchImageByFilterRequest,
+    ) -> main_models.SearchImageByFilterResponse:
+        runtime = RuntimeOptions()
+        return self.search_image_by_filter_with_options(request, runtime)
+
+    async def search_image_by_filter_async(
+        self,
+        request: main_models.SearchImageByFilterRequest,
+    ) -> main_models.SearchImageByFilterResponse:
+        runtime = RuntimeOptions()
+        return await self.search_image_by_filter_with_options_async(request, runtime)
+
     def search_image_by_name_with_options(
         self,
         request: main_models.SearchImageByNameRequest,
@@ -1617,7 +1715,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -1698,7 +1796,7 @@ class Client(OpenApiClient):
                 content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type),
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),

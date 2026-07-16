@@ -17,34 +17,41 @@ class ModifyScheduledTaskRequest(DaraModel):
         start_time: str = None,
         time_range: str = None,
     ):
-        # The description of the new inspection configuration.
+        # The new description of the inspection configuration.
         self.description = description
-        # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # The new inspection frequency. Separate multiple values with a comma (,). The default value is DAILY. Valid values:
         # 
-        # *   DAILY
-        # *   Monday
-        # *   Tuesday
-        # *   Wednesday
-        # *   Thursday
-        # *   Friday
-        # *   Saturday
-        # *   Sunday
+        # - DAILY: Every day
         # 
-        # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend will use DAILY as the inspection frequency.
+        # - Monday: Every Monday
+        # 
+        # - Tuesday: Every Tuesday
+        # 
+        # - Wednesday: Every Wednesday
+        # 
+        # - Thursday: Every Thursday
+        # 
+        # - Friday: Every Friday
+        # 
+        # - Saturday: Every Saturday
+        # 
+        # - Sunday: Every Sunday
+        # 
+        # ### Note: `DAILY` overrides all other day-of-the-week settings. For example, if you specify `DAILY,Monday`, the system uses `DAILY` as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The new list of related instances. Separate multiple instances with commas (,).
+        # The new instance IDs to associate with the task. Separate multiple IDs with a comma (,).
         self.instance_ids = instance_ids
-        # The name of the new inspection configuration.
+        # The new name of the inspection configuration.
         self.name = name
         self.report_language = report_language
         # The ID of the scheduled inspection configuration.
         # 
         # This parameter is required.
         self.scheduled_id = scheduled_id
-        # The new execution time of the inspection task. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC.
+        # The new time to run the inspection task. The time must be in the `HH:mm:ssZ` format and in UTC.
         self.start_time = start_time
-        # The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+        # The inspection time range in hours. The default is 24, which means data from the last 24 hours is inspected. Valid values: 1 to 168. The maximum supported range is 7 days.
         self.time_range = time_range
 
     def validate(self):

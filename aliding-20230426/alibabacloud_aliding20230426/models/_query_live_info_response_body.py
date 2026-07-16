@@ -29,7 +29,6 @@ class QueryLiveInfoResponseBody(DaraModel):
         self.live_play_url = live_play_url
         self.live_status = live_status
         self.playback_duration = playback_duration
-        # requestId
         self.request_id = request_id
         self.start_time = start_time
         self.subscribe_count = subscribe_count

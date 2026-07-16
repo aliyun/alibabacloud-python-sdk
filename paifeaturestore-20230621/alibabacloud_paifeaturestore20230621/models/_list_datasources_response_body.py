@@ -14,8 +14,11 @@ class ListDatasourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of data sources.
         self.datasources = datasources
+        # The request ID.
         self.request_id = request_id
+        # The total count of data sources.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,27 @@ class ListDatasourcesResponseBodyDatasources(DaraModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        # The resource configuration.
         self.config = config
+        # The ID of the data source.
         self.datasource_id = datasource_id
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The last modified time.
         self.gmt_modified_time = gmt_modified_time
+        # The name of the data source.
         self.name = name
+        # The type of the data source.
+        # 
+        # - Hologres
+        # 
+        # - Redis
+        # 
+        # - MaxCompute
         self.type = type
+        # The resource URI.
         self.uri = uri
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

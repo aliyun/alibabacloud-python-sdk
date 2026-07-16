@@ -13,17 +13,21 @@ class ListBindingRelationsForFlowVersionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Channel type. Values:
+        # The channel type. Valid values:
+        # 
         # - INSTAGRAM
+        # 
         # - WHATSAPP
+        # 
         # - MESSENGER
         # 
+        # <props="intl">
         # 
-        # <props="intl">- VIBER
+        # - VIBER
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Process code. View the process code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) interface.
+        # The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         # 
         # This parameter is required.
         self.flow_code = flow_code

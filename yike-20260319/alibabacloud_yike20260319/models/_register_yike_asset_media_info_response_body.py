@@ -10,7 +10,9 @@ class RegisterYikeAssetMediaInfoResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
+        # The media asset ID.
         self.media_id = media_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

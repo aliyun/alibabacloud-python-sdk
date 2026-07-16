@@ -12,27 +12,29 @@ class CreateDatasetJobConfigRequest(DaraModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
-        # The configuration content. Format:
+        # The configuration content.
+        # The format is as follows:
         # 
-        # *   MultimodalIntelligentTag
+        # - MultimodalIntelligentTag
         # 
-        # { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+        # {
+        # "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx"
+        # }
         # 
-        # *   MultimodalSemanticIndex
+        # - MultimodalSemanticIndex
         # 
-        # { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+        # {
+        # "defaultModelId": "xxx",
+        # "defaultModelVersion":"1.0.0"
+        # }
         # 
         # This parameter is required.
         self.config = config
         # The configuration type.
         # 
-        # Valid values:
-        # 
-        # *   MultimodalIntelligentTag
-        # *   MultimodalSemanticIndex
-        # 
         # This parameter is required.
         self.config_type = config_type
+        # The name of the dataset version.
         self.dataset_version = dataset_version
         # The workspace ID.
         # 

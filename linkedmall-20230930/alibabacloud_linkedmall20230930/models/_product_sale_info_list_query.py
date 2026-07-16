@@ -13,9 +13,14 @@ class ProductSaleInfoListQuery(DaraModel):
         product_ids: List[str] = None,
         purchaser_id: str = None,
     ):
+        # Area code (recommended to use a five-level township/street-level address code)
         self.division_code = division_code
+        # Collection of product IDs to query, supporting batch queries of 1 to 10 items
+        # 
         # This parameter is required.
         self.product_ids = product_ids
+        # Purchaser ID
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
 

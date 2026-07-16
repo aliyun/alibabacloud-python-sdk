@@ -14,7 +14,7 @@ class ModifyHybridProxyClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The remarks.
+        # The remarks of the proxy cluster.
         # 
         # This parameter is required.
         self.remark = remark

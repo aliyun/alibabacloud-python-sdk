@@ -15,16 +15,50 @@ class PushMessageToiOSRequest(DaraModel):
         target_value: str = None,
         title: str = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The content of the message.
+        # 
         # This parameter is required.
         self.body = body
+        # The custom ID for the push Job. If JobKey is not empty, this field is included in the receipt log. For receipt logs, see [Receipt Logs](https://help.aliyun.com/document_detail/434651.html).
         self.job_key = job_key
+        # Whether to store the message offline. StoreOffline is set to false by default.
+        # 
+        # If stored, and the user is offline during the push, the message is sent again when the user comes online within the time-to-live (TTL). The default time-to-live (TTL) is 72 hours.
         self.store_offline = store_offline
+        # Push target. Valid values:
+        # 
+        # - **DEVICE**: Push by device
+        # 
+        # - **ACCOUNT**: Push by account
+        # 
+        # - **ALIAS**: Push by alias
+        # 
+        # - **TAG**: Push by tag
+        # 
+        # - **ALL**: Push to all devices
+        # 
         # This parameter is required.
         self.target = target
+        # Set based on Target. Separate multiple values with commas. If the limit is exceeded, push multiple times.
+        # 
+        # - Target=DEVICE. Example values: `deviceid111,deviceid1111` (supports up to 1,000).
+        # 
+        # - Target=ACCOUNT. Example values: `account111,account222` (supports up to 1,000).
+        # 
+        # - Target=ALIAS. Example values: `alias111,alias222` (supports up to 1,000).
+        # 
+        # - Target=TAG. Supports single and multiple tags. For format, see [Tag Format](https://help.aliyun.com/document_detail/434847.html).
+        # 
+        # - Target=ALL. Value is **all**.
+        # 
         # This parameter is required.
         self.target_value = target_value
+        # The title of the message.
+        # 
         # This parameter is required.
         self.title = title
 

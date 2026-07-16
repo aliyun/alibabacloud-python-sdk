@@ -16,10 +16,15 @@ class ListHotlineRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of Success indicates that the request succeeded.
         self.code = code
+        # Hotline session information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -83,10 +88,15 @@ class ListHotlineRecordResponseBodyData(DaraModel):
         start_time: int = None,
         url: str = None,
     ):
+        # Session ID. This corresponds to the acid in WebSocket after an inbound call.
         self.call_id = call_id
+        # Connection ID.
         self.connection_id = connection_id
+        # Recording end UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
+        # Recording start UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
+        # Recording file URL.
         self.url = url
 
     def validate(self):

@@ -10,14 +10,14 @@ class UpdateSeoBypassRequest(DaraModel):
         enable: str = None,
         site_id: int = None,
     ):
-        # Specifies whether to enable the feature. Valid values:
+        # The switch. Valid values:
         # 
-        # *   **on:**
-        # *   **off**
+        # - **on**: enabled.
+        # - **off**: disabled.
         # 
         # This parameter is required.
         self.enable = enable
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

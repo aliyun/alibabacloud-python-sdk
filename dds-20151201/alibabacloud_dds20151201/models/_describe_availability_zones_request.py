@@ -29,15 +29,17 @@ class DescribeAvailabilityZonesRequest(DaraModel):
     ):
         # The language of the returned **RegionName** and **ZoneName** parameter values. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.accept_language = accept_language
         # The instance type of the instance.
         self.dbinstance_class = dbinstance_class
         # The architecture of the instance. Valid values:
         # 
-        # *   **normal**: replica set instance
-        # *   **sharding**: sharded cluster instance
+        # - **normal**: replica set instance
+        # 
+        # - **sharding**: sharded cluster instance
         self.db_type = db_type
         # The database engine version of the instance.
         self.engine_version = engine_version
@@ -47,13 +49,15 @@ class DescribeAvailabilityZonesRequest(DaraModel):
         self.exclude_zone_id = exclude_zone_id
         # The billing method of the product. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid:** pay-as-you-go
+        # - **PrePaid**: subscription
+        # 
+        # - **PostPaid:** pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The architecture of the instance. Valid values:
         # 
-        # *   **sharding**: sharded cluster instance
-        # *   **replicate**: replica set or standalone instance
+        # - **sharding**: sharded cluster instance
+        # 
+        # - **replicate**: replica set or standalone instance
         self.instance_type = instance_type
         # The edition of the instance. High-Available Edition and Preview Edition (dbfs) are supported.
         self.mongo_type = mongo_type
@@ -65,14 +69,17 @@ class DescribeAvailabilityZonesRequest(DaraModel):
         self.region_id = region_id
         # The number of nodes in the instance.
         # 
-        # >  This parameter is available only for replica set instances.
+        # > This parameter is available only for replica set instances.
         # 
         # Valid values:
         # 
-        # *   1
-        # *   3
-        # *   5
-        # *   7
+        # - 1
+        # 
+        # - 3
+        # 
+        # - 5
+        # 
+        # - 7
         self.replication_factor = replication_factor
         # The ID of the resource group. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
@@ -80,19 +87,25 @@ class DescribeAvailabilityZonesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The storage type. Valid values:
         # 
-        # *   **cloud**: displays only zones available for instances that use cloud disks.
-        # *   **local**: only displays zones available for instances that use local disks instances.
-        # *   **default** or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
+        # - **cloud**: displays only zones available for instances that use cloud disks.
+        # 
+        # - **local**: only displays zones available for instances that use local disks instances.
+        # 
+        # - **default** or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
         self.storage_support = storage_support
         # The storage type. Valid values:
         # 
-        # *   **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
-        # *   **cloud_essd2**: PL2 ESSDs
-        # *   **cloud_essd3**: PL3 ESSDs
-        # *   **local_ssd**: local SSDs
+        # - **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
         # 
-        # > *   Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1** is used by default.
-        # > *   Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd** is used by default.
+        # - **cloud_essd2**: PL2 ESSDs
+        # 
+        # - **cloud_essd3**: PL3 ESSDs
+        # 
+        # - **local_ssd**: local SSDs
+        # 
+        # > * Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1** is used by default.
+        # >
+        # > * Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd** is used by default.
         self.storage_type = storage_type
         # The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available zones.
         self.zone_id = zone_id

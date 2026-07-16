@@ -13,10 +13,15 @@ class DebugCollectedNumberResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
+        # The next action that Voice Navigator performs.
         self.action = action
+        # The parameters for the next action.
         self.action_params = action_params
+        # Indicates whether the voice response can be interrupted.
         self.interruptible = interruptible
+        # The ID of the request.
         self.request_id = request_id
+        # The text that Voice Navigator plays to the user.
         self.text_response = text_response
 
     def validate(self):

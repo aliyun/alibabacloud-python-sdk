@@ -26,20 +26,20 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
-        # The email address to receive alerts.
+        # The email address for alerts.
         self.alert_email_address = alert_email_address
-        # The description of the workflow.
+        # The workflow description.
         self.description = description
         # The execution policy.
         # 
         # This parameter is required.
         self.execution_type = execution_type
         self.global_params_shrink = global_params_shrink
-        # The name of the workflow.
+        # The workflow name.
         # 
         # This parameter is required.
         self.name = name
-        # The code of the service.
+        # The product code.
         # 
         # This parameter is required.
         self.product_namespace = product_namespace
@@ -47,29 +47,29 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         self.publish = publish
         # The region ID.
         self.region_id = region_id
-        # The status of the workflow.
+        # The release state of the workflow.
         self.release_state = release_state
         # The resource queue.
         self.resource_queue = resource_queue
         # The number of retries.
         self.retry_times = retry_times
-        # The execution user.
+        # The user to run the workflow.
         self.run_as = run_as
-        # The scheduling settings.
+        # The scheduling configuration.
         self.schedule_shrink = schedule_shrink
         # The tags.
         self.tags_shrink = tags_shrink
-        # The descriptions of all nodes in the workflow.
+        # A JSON array of task definitions. This array contains the descriptive information for all tasks in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
-        # The node parallelism.
+        # The degree of concurrent execution for workflow nodes.
         self.task_parallelism = task_parallelism
-        # The dependencies of all nodes in the workflow. preTaskCode specifies the ID of an upstream node, and postTaskCode specifies the ID of a downstream node. The ID of each node is unique. If a node does not have an upstream node, set preTaskCode to 0.
+        # A JSON array that defines the dependencies between tasks in the workflow. \\`preTaskCode\\` specifies the upstream task ID, and \\`postTaskCode\\` specifies the downstream task ID. Each task must have a unique ID. For a task node without an upstream task, add a dependency and set \\`preTaskCode\\` to 0.
         # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
-        # The default timeout period of the workflow.
+        # The default timeout period for the workflow execution.
         self.timeout = timeout
 
     def validate(self):

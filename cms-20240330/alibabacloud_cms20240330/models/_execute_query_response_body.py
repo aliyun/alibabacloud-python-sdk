@@ -14,8 +14,11 @@ class ExecuteQueryResponseBody(DaraModel):
         meta: main_models.ExecuteQueryResponseBodyMeta = None,
         request_id: str = None,
     ):
+        # An array of log entries. Each object in the array represents a log entry.
         self.data = data
+        # Metadata about the query execution.
         self.meta = meta
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,9 +63,13 @@ class ExecuteQueryResponseBodyMeta(DaraModel):
         elapsed_millisecond: int = None,
         progress: str = None,
     ):
+        # The number of scanned or processed log entries.
         self.affected_rows = affected_rows
+        # The number of log entries returned.
         self.count = count
+        # The query execution time in milliseconds.
         self.elapsed_millisecond = elapsed_millisecond
+        # The query completion status. A value of `Complete` indicates that the query has finished.
         self.progress = progress
 
     def validate(self):

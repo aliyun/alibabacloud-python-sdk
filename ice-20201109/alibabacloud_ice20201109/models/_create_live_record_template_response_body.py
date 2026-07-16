@@ -10,9 +10,9 @@ class CreateLiveRecordTemplateResponseBody(DaraModel):
         request_id: str = None,
         template_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The template ID.
+        # The ID of the Live Record Template.
         self.template_id = template_id
 
     def validate(self):

@@ -15,11 +15,17 @@ class GetAsrConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.error_msg = error_msg
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,14 +93,22 @@ class GetAsrConfigResponseBodyData(DaraModel):
         engine_xufei: str = None,
         nls_service_type: str = None,
     ):
+        # The engine.
         self.app_key = app_key
+        # The ASR acoustic model ID.
         self.asr_acoustic_model_id = asr_acoustic_model_id
+        # The ASR hotword ID.
         self.asr_class_vocabulary_id = asr_class_vocabulary_id
+        # The ASR dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
+        # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
+        # The speech engine.
         self.engine = engine
+        # The iFLYTEK engine parameters.
         self.engine_xufei = engine_xufei
+        # NluServiceType
         self.nls_service_type = nls_service_type
 
     def validate(self):

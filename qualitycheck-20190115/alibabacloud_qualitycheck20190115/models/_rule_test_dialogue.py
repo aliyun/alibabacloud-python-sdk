@@ -15,9 +15,13 @@ class RuleTestDialogue(DaraModel):
         name: str = None,
         user_group: str = None,
     ):
+        # Content
         self.content = content
+        # Conversation ID
         self.id = id
+        # Conversation Name
         self.name = name
+        # group
         self.user_group = user_group
 
     def validate(self):
@@ -80,15 +84,25 @@ class RuleTestDialogueContent(DaraModel):
         speech_rate: int = None,
         words: str = None,
     ):
+        # Start Time in long
         self.begin = begin
+        # Start Time in long
         self.begin_time = begin_time
+        # Emotion energy value
         self.emotion_value = emotion_value
+        # End time in long
         self.end = end
+        # Hour, minute, second
         self.hour_min_sec = hour_min_sec
+        # Identity
         self.identity = identity
+        # Role
         self.role = role
+        # Silence duration
         self.silence_duration = silence_duration
+        # Speech rate
         self.speech_rate = speech_rate
+        # Dialogue
         self.words = words
 
     def validate(self):

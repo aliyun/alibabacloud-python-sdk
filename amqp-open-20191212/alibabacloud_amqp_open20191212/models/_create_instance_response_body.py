@@ -15,15 +15,15 @@ class CreateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
         # The ID of the created instance.
         self.data = data
-        # The returned message.
+        # A message providing additional details about the response.
         self.message = message
-        # The request ID. You can use the ID to troubleshoot issues. This parameter is a common parameter.
+        # The unique ID of the request. This is a common parameter used for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

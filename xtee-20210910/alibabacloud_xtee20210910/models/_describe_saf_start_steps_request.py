@@ -15,27 +15,25 @@ class DescribeSafStartStepsRequest(DaraModel):
         reg_id: str = None,
         server_region: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Whether the server is an Alibaba Cloud server
-        # 
-        # true or false
+        # Specifies whether the server is an Alibaba Cloud server. Valid values: true and false.
         self.aliyun_server = aliyun_server
-        # Used to receive a collection of strings from the frontend that POP cannot accept
+        # The string of device type collection passed from the frontend that cannot be received by POP.
         #      
-        # Device type
+        # The device type.
         self.device_types_str = device_types_str
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Language, parameters can be passed
+        # The language. Valid values:
         # - zh-CN: Chinese (default)
-        # - en-US: English
+        # - en-US: English.
         self.language = language
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Server region
+        # The region where the server resides.
         self.server_region = server_region
 
     def validate(self):

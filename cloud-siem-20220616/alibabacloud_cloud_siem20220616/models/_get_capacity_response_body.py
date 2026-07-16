@@ -11,9 +11,9 @@ class GetCapacityResponseBody(DaraModel):
         data: main_models.GetCapacityResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the storage capacity.
+        # Storage capacity details.
         self.data = data
-        # The request ID.
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,16 +53,19 @@ class GetCapacityResponseBodyData(DaraModel):
         preserved_capacity: int = None,
         used_capacity: float = None,
     ):
+        # Purchased quota for Agent-managed instances.
         self.agent_managed_asset_quota = agent_managed_asset_quota
+        # Used quota for Agent-managed instances.
         self.agent_managed_asset_used = agent_managed_asset_used
-        # Indicates whether the Logstores for the threat analysis feature exist on the user side. Valid values:
+        # Indicates whether the LogStore for threat analysis exists.
         # 
-        # *   true: The logs are in the normal state. The log analysis feature is available.
-        # *   false: The logs are being cleared. The log analysis feature is unavailable.
+        # - true: Logs are normal and log analysis is available.
+        # 
+        # - false: Logs are being cleaned up and log analysis is unavailable.
         self.exist_log_store = exist_log_store
-        # The purchased storage capacity of the threat analysis feature. Unit: GB.
+        # Purchased storage capacity for threat analysis, in GB.
         self.preserved_capacity = preserved_capacity
-        # The billable storage capacity of the threat analysis feature. Unit: GB.
+        # Current billable storage usage for threat analysis, in GB.
         self.used_capacity = used_capacity
 
     def validate(self):

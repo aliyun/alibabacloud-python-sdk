@@ -10,8 +10,12 @@ class UpdateRenderingInstanceConfigurationShrinkRequest(DaraModel):
         configuration_shrink: str = None,
         rendering_instance_id: str = None,
     ):
+        # The configuration content.
+        # 
         # This parameter is required.
         self.configuration_shrink = configuration_shrink
+        # The ID of the cloud application service instance.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

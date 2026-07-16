@@ -21,6 +21,12 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'governance.eu-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'governance.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-hangzhou': 'governance.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-1': 'governance.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('governance', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -407,6 +413,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.account_ids_shrink):
             query['AccountIds'] = request.account_ids_shrink
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_type):
@@ -445,6 +453,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.account_ids_shrink):
             query['AccountIds'] = request.account_ids_shrink
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.report_type):
@@ -883,6 +893,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListEvaluationMetadataResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.lens_code):
@@ -917,6 +929,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListEvaluationMetadataResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.lens_code):
@@ -969,6 +983,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.date):
             query['Date'] = request.date
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         if not DaraCore.is_null(request.max_results):
@@ -1011,6 +1027,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.date):
             query['Date'] = request.date
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.id):
             query['Id'] = request.id
         if not DaraCore.is_null(request.max_results):
@@ -1065,6 +1083,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.filters):
             query['Filters'] = request.filters
         if not DaraCore.is_null(request.lens_code):
@@ -1105,6 +1125,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.filters):
             query['Filters'] = request.filters
         if not DaraCore.is_null(request.lens_code):
@@ -1161,6 +1183,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.start_date):
@@ -1195,6 +1219,8 @@ class Client(OpenApiClient):
             query['AccountId'] = request.account_id
         if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.start_date):
@@ -1245,6 +1271,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.metric_ids_shrink):
             query['MetricIds'] = request.metric_ids_shrink
         if not DaraCore.is_null(request.region_id):
@@ -1283,6 +1311,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
+        if not DaraCore.is_null(request.evaluation_domain):
+            query['EvaluationDomain'] = request.evaluation_domain
         if not DaraCore.is_null(request.metric_ids_shrink):
             query['MetricIds'] = request.metric_ids_shrink
         if not DaraCore.is_null(request.region_id):

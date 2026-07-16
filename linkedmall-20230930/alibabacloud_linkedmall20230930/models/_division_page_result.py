@@ -13,7 +13,9 @@ class DivisionPageResult(DaraModel):
         division_list: List[main_models.Division] = None,
         request_id: str = None,
     ):
+        # Collection of regions
         self.division_list = division_list
+        # API request ID
         self.request_id = request_id
 
     def validate(self):

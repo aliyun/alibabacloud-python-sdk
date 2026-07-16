@@ -10,11 +10,11 @@ class DescribeAccessPointRequest(DaraModel):
         access_point_id: str = None,
         file_system_id: str = None,
     ):
-        # The ID of the access point.
+        # The access point ID.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
-        # The ID of the file system.
+        # The file system ID.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id

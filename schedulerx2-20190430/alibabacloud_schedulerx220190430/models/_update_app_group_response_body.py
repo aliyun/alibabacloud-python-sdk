@@ -21,6 +21,7 @@ class UpdateAppGroupResponseBody(DaraModel):
         # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
+        # 
         # - false: The request failed.
         self.success = success
 

@@ -20,27 +20,41 @@ class ModifyLogBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The advanced backup policies.
+        # 
+        # > - - This parameter is not supported for PolarDB for PostgreSQL (Oracle Compatible) or PolarDB for PostgreSQL.
+        # >
+        # > - - This parameter is supported only for clusters for which the BackupPolicyLevel parameter is set to Advanced.
         self.advanced_log_policies = advanced_log_policies
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in a specific region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # The destination region for cross-region log backups. For information about the regions that support cross-region backup, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        # 
+        # > - - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
         self.log_backup_another_region_region = log_backup_another_region_region
         # The retention period of cross-region log backups. Valid values:
         # 
-        # *   **0**: The cross-region backup feature is disabled.
-        # *   **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
-        # *   **-1**: The log backups are permanently retained.
+        # - **0**: Disables the cross-region log backup feature.
         # 
-        # >  When you create a cluster, the default value of this parameter is **0**.
+        # - **30 to 7300**: The retention period in days.
+        # 
+        # - **-1**: long-term retention.
+        # 
+        # > * * When you create a cluster, the default value of this parameter is **0**. This value disables the cross-region log backup feature.
+        # >
+        # > * - After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
         self.log_backup_another_region_retention_period = log_backup_another_region_retention_period
-        # The retention period of the log backups. Valid values:
+        # The retention period of log backups. Valid values:
         # 
-        # *   3 to 7300: The log backups are retained for 3 to 7,300 days.
-        # *   \\-1: The log backups are permanently retained.
+        # - 3 to 7300: The retention period in days.
+        # 
+        # - -1: long-term retention.
+        # 
+        # > * * After you enable the advanced backup feature, this parameter is no longer valid. Use the AdvancedLogPolicies parameter instead.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -136,14 +150,51 @@ class ModifyLogBackupPolicyRequestAdvancedLogPolicies(DaraModel):
         src_region: str = None,
         src_type: str = None,
     ):
+        # The operation type. Valid values:
+        # 
+        # - **CREATE**: Create
+        # 
+        # - **UPDATE**: Update
+        # 
+        # - **DELETE**: Delete
         self.action_type = action_type
+        # The destination region of the log backup policy.
         self.dest_region = dest_region
+        # The destination type of the backup policy. Valid values:
+        # 
+        # - **level1**: level-1 backup
+        # 
+        # - **level2**: level-2 backup
+        # 
+        # - **level2Cross**: level-2 cross-region backup
         self.dest_type = dest_type
+        # Specifies whether to enable log backup. Set the value to 1.
         self.enable_log_backup = enable_log_backup
+        # The retention period type for log backups. Valid values:
+        # 
+        # - **never**: The backups never expire.
+        # 
+        # - **delay**: The backups expire after a fixed number of days.
         self.log_retention_type = log_retention_type
+        # The number of days to retain the log backups. Valid values:
+        # 
+        # - 3 to 7300: The retention period in days.
+        # 
+        # - -1: long-term retention.
         self.log_retention_value = log_retention_value
+        # The ID of the log backup policy.
         self.policy_id = policy_id
+        # The source region of the log backup policy.
         self.src_region = src_region
+        # The source type of the log backup policy. Valid values:
+        # 
+        # - **db**: database cluster
+        # 
+        # - **level1**: level-1 backup
+        # 
+        # - **level2**: level-2 backup
+        # 
+        # - **level2Cross**: level-2 cross-region backup
         self.src_type = src_type
 
     def validate(self):

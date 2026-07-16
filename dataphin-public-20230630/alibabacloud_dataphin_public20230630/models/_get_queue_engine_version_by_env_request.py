@@ -14,16 +14,28 @@ class GetQueueEngineVersionByEnvRequest(DaraModel):
         queue_name: str = None,
         stream_batch_mode: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The queue name.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The stream-batch mode.
+        # 
         # This parameter is required.
         self.stream_batch_mode = stream_batch_mode
 

@@ -10,7 +10,9 @@ class GetAppInstanceForAdminRequest(DaraModel):
         biz_id: str = None,
         domain: str = None,
     ):
+        # The business instance ID.
         self.biz_id = biz_id
+        # The domain name.
         self.domain = domain
 
     def validate(self):

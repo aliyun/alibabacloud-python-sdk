@@ -12,9 +12,13 @@ class ListAIStaffChatEventsRequest(DaraModel):
         conversation_id: str = None,
         last_event_id: int = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # The chat ID. This parameter is optional. If not specified, the latest chat ID is used.
         self.chat_id = chat_id
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The ID of the last event, used for incremental retrieval.
         self.last_event_id = last_event_id
 
     def validate(self):

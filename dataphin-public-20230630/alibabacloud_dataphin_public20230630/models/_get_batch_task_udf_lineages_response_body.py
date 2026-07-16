@@ -17,11 +17,17 @@ class GetBatchTaskUdfLineagesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. The value OK indicates that the request was successful.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class GetBatchTaskUdfLineagesResponseBodyData(DaraModel):
         self,
         lineage_group_list: List[main_models.GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList] = None,
     ):
+        # The list of lineage groups.
         self.lineage_group_list = lineage_group_list
 
     def validate(self):
@@ -117,7 +124,9 @@ class GetBatchTaskUdfLineagesResponseBodyDataLineageGroupList(DaraModel):
         input_lineage_list: List[main_models.GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList] = None,
         output_lineage_list: List[main_models.GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList] = None,
     ):
+        # The collection of input lineage tables.
         self.input_lineage_list = input_lineage_list
+        # The collection of output lineage tables.
         self.output_lineage_list = output_lineage_list
 
     def validate(self):
@@ -181,19 +190,33 @@ class GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageList(D
         project_name: str = None,
         sub_type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The list of lineage columns.
         self.column_list = column_list
+        # The description.
         self.description = description
+        # The display name of the table.
         self.display_name = display_name
+        # The environment. Valid values: prod and dev.
         self.env = env
+        # Indicates whether the full table is selected.
         self.full_table = full_table
+        # The globally unique ID.
         self.guid = guid
+        # The table name.
         self.name = name
+        # The owner of the table.
         self.owner_name = owner_name
+        # The owner of the table.
         self.owner_user_id = owner_user_id
+        # The project to which the table belongs.
         self.project_id = project_id
+        # The project to which the table belongs.
         self.project_name = project_name
+        # The table subtype. For example, dim indicates a dimension logical table.
         self.sub_type = sub_type
 
     def validate(self):
@@ -312,11 +335,17 @@ class GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListOutputLineageListCo
         partition_key: bool = None,
         primary_key: bool = None,
     ):
+        # The data type.
         self.data_type = data_type
+        # The description.
         self.description = description
+        # The column ID.
         self.id = id
+        # The column name.
         self.name = name
+        # Indicates whether the column is a partition key.
         self.partition_key = partition_key
+        # Indicates whether the column is a primary key.
         self.primary_key = primary_key
 
     def validate(self):
@@ -387,19 +416,33 @@ class GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageList(Da
         project_name: str = None,
         sub_type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The list of lineage columns.
         self.column_list = column_list
+        # The description.
         self.description = description
+        # The display name of the table.
         self.display_name = display_name
+        # The environment. Valid values: prod and dev.
         self.env = env
+        # Indicates whether the full table is selected.
         self.full_table = full_table
+        # The globally unique ID.
         self.guid = guid
+        # The table name.
         self.name = name
+        # The owner of the table.
         self.owner_name = owner_name
+        # The owner of the table.
         self.owner_user_id = owner_user_id
+        # The project to which the table belongs.
         self.project_id = project_id
+        # The project to which the table belongs.
         self.project_name = project_name
+        # The table subtype. For example, dim indicates a dimension logical table.
         self.sub_type = sub_type
 
     def validate(self):
@@ -518,11 +561,17 @@ class GetBatchTaskUdfLineagesResponseBodyDataLineageGroupListInputLineageListCol
         partition_key: bool = None,
         primary_key: bool = None,
     ):
+        # The data type.
         self.data_type = data_type
+        # The description.
         self.description = description
+        # The column ID.
         self.id = id
+        # The column name.
         self.name = name
+        # Indicates whether the column is a partition key.
         self.partition_key = partition_key
+        # Indicates whether the column is a primary key.
         self.primary_key = primary_key
 
     def validate(self):

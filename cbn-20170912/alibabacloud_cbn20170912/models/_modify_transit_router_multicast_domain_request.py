@@ -19,16 +19,17 @@ class ModifyTransitRouterMulticastDomainRequest(DaraModel):
         transit_router_multicast_domain_id: str = None,
         transit_router_multicast_domain_name: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that ensures the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a unique token on your client for each request. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: Performs a dry run. The system checks the required parameters, request format, and service limits. If the check fails, an error message is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): Sends the request. If the request passes the check, the name and description of the multicast domain are modified.
         self.dry_run = dry_run
-        # Multicast domain feature.
+        # The feature options of the multicast domain.
         self.options = options
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36,7 +37,7 @@ class ModifyTransitRouterMulticastDomainRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the multicast domain.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters long. It cannot start with http\\:// or https\\://.
         self.transit_router_multicast_domain_description = transit_router_multicast_domain_description
         # The ID of the multicast domain.
         # 
@@ -44,7 +45,7 @@ class ModifyTransitRouterMulticastDomainRequest(DaraModel):
         self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
         # The new name of the multicast domain.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters long. It cannot start with http\\:// or https\\://.
         self.transit_router_multicast_domain_name = transit_router_multicast_domain_name
 
     def validate(self):
@@ -127,12 +128,15 @@ class ModifyTransitRouterMulticastDomainRequestOptions(DaraModel):
     def __init__(
         self,
         igmpv_2support: str = None,
+        strict_source_control: str = None,
     ):
-        # Indicates whether the IGMP feature is enabled for the multicast domain. Once enabled, hosts can dynamically join or leave multicast groups by using the IGMP protocol. Default value: **enable**.
+        # Specifies whether to enable the Internet Group Management Protocol (IGMP) feature for the multicast domain. When this feature is enabled, hosts can use IGMP to dynamically join or leave multicast groups. Set the value to **enable**.
         # 
-        # > *   The IGMP feature is in beta testing. To use it, contact your account manager.
-        # > *   The IGMP feature cannot be disabled after it is enabled.
+        # > - The IGMP feature is in public preview. To use this feature, contact your account manager.
+        # >
+        # > - You cannot disable the IGMP feature after it is enabled.
         self.igmpv_2support = igmpv_2support
+        self.strict_source_control = strict_source_control
 
     def validate(self):
         pass
@@ -145,12 +149,18 @@ class ModifyTransitRouterMulticastDomainRequestOptions(DaraModel):
         if self.igmpv_2support is not None:
             result['Igmpv2Support'] = self.igmpv_2support
 
+        if self.strict_source_control is not None:
+            result['StrictSourceControl'] = self.strict_source_control
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Igmpv2Support') is not None:
             self.igmpv_2support = m.get('Igmpv2Support')
+
+        if m.get('StrictSourceControl') is not None:
+            self.strict_source_control = m.get('StrictSourceControl')
 
         return self
 

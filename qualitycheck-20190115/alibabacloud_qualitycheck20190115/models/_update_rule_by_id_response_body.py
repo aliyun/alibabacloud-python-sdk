@@ -17,11 +17,16 @@ class UpdateRuleByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Provides error details on failure, and **successful** on success.
         self.message = message
         self.messages = messages
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success, false/null for failure.
         self.success = success
 
     def validate(self):

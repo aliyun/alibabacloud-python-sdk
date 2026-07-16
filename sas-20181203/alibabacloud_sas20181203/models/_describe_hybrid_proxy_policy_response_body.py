@@ -14,11 +14,11 @@ class DescribeHybridProxyPolicyResponseBody(DaraModel):
         policy_list: List[main_models.DescribeHybridProxyPolicyResponseBodyPolicyList] = None,
         request_id: str = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries returned on the current page in a paged query.
         self.count = count
-        # The data collection configurations of the proxy cluster.
+        # The list of data collection configurations for the proxy cluster.
         self.policy_list = policy_list
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -67,12 +67,12 @@ class DescribeHybridProxyPolicyResponseBodyPolicyList(DaraModel):
         info: List[main_models.DescribeHybridProxyPolicyResponseBodyPolicyListInfo] = None,
         policy_type: str = None,
     ):
-        # The information about the policy.
+        # The policy information.
         self.info = info
-        # The type of the policy. Valid values:
+        # The policy type. Valid values:
         # 
-        # *   **limitFrequency**
-        # *   **limitBandWidth**
+        # - **limitFrequency**: collection frequency control
+        # - **limitBandWidth**: collection bandwidth control.
         self.policy_type = policy_type
 
     def validate(self):
@@ -116,15 +116,15 @@ class DescribeHybridProxyPolicyResponseBodyPolicyListInfo(DaraModel):
         file_name: str = None,
         type: str = None,
     ):
-        # The value of the policy configurations.
+        # The specific value of the policy configuration.
         self.config = config
-        # The name of the file. After you configure a blocking policy, the blocked data is written to the file.
+        # The file to which the data intercepted by the proxy cluster policy is written.
         self.file_name = file_name
-        # The type of the policy that you configured. Valid values:
+        # The configured policy type. Valid values:
         # 
-        # *   **file**
-        # *   **net**
-        # *   **process**
+        # - **file**: file data collection
+        # - **net**: network data collection
+        # - **process**: process data collection.
         self.type = type
 
     def validate(self):

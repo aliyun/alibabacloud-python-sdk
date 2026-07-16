@@ -10,15 +10,14 @@ class DescribeClientConfSetupRequest(DaraModel):
         strategy_tag: str = None,
         strategy_tag_value: str = None,
     ):
-        # The tag that is added to the server.
+        # The resource tag of the client to query.
         # 
         # This parameter is required.
         self.strategy_tag = strategy_tag
-        # The value of the tag. Valid values:
-        # 
-        # *   major
-        # *   advanced
-        # *   basic
+        # The policy value. Valid values:
+        # - major
+        # - advanced
+        # - basic.
         # 
         # This parameter is required.
         self.strategy_tag_value = strategy_tag_value

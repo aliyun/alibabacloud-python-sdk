@@ -18,59 +18,60 @@ class BindAuthToMachineRequest(DaraModel):
         logical_exp: str = None,
         ntm_version: str = None,
         pre_bind_order_id: int = None,
+        resource_directory_account_id: int = None,
         un_bind: List[str] = None,
     ):
-        # The edition of Security Center that is authorized to scan the asset. Valid values:
-        # 
-        # *   **6**: Anti-virus
-        # *   **5**: Advanced
-        # *   **3**: Enterprise
-        # *   **7**: Ultimate
-        # *   **10**: Value-added Plan
+        # The authorization version of the asset. Valid values:
+        # - **6**: Anti-virus Edition
+        # - **5**: Advanced Edition
+        # - **3**: Enterprise Edition
+        # - **7**: Ultimate Edition
+        # - **10**: Value-added Service Edition.
         self.auth_version = auth_version
-        # Specifies whether to automatically bind servers to Security Center. Valid values:
+        # Specifies whether to enable automatic binding. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.auto_bind = auto_bind
-        # The UUIDs of the servers that you want to bind to Security Center.
+        # The UUIDs of the servers to bind.
         # 
-        # >  You must specify at least one of the **Bind** and **UnBind** parameters.
+        # > **Bind** and **UnBind** cannot both be empty.
         self.bind = bind
-        # Specifies whether to bind all servers to Security Center. Default value: **false**. Valid values:
+        # Specifies whether to bind all assets. Default value: **false**. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Bind all assets.
+        # - **false**: Do not bind all assets.
         self.bind_all = bind_all
-        # The search conditions that are used to filter servers. The value of this parameter is in the JSON format and is case-sensitive.
-        # 
-        # >  A search condition can be an instance ID, instance name, virtual private cloud (VPC) ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+        # The search conditions for assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
+        # > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
         self.criteria = criteria
-        # Specifies whether to specify servers for protection when you purchase Security Center. Valid values:
+        # Specifies whether this is a pre-binding operation. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: No.
+        # - **1**: Yes.
         # 
-        # >  If you specify servers, the servers are automatically added to Security Center for protection after the purchase order is complete.
+        # 
+        # > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
         self.is_pre_bind = is_pre_bind
-        # The logical relationship that you want to use to evaluate multiple search conditions. Default value: **OR**. Valid values:
-        # 
-        # *   **OR**
-        # *   **AND**
+        # The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
+        # - **OR**: The search conditions are evaluated with a logical OR.
+        # - **AND**: The search conditions are evaluated with a logical AND.
         self.logical_exp = logical_exp
-        # The edition of Security Center that you purchase in the order. Valid values:
+        # The order version associated with the pre-binding. Valid values:
         # 
-        # *   **level7**: Anti-virus
-        # *   **level3**: Advanced
-        # *   **level2**: Enterprise
-        # *   **level8**: Ultimate
-        # *   **level10**: Value-added Plan
+        # - **level7**: Anti-virus Edition
+        # - **level3**: Advanced Edition
+        # - **level2**: Enterprise Edition
+        # - **level8**: Ultimate Edition
+        # - **level10**: Value-added service only.
         self.ntm_version = ntm_version
-        # The ID of the order in which Security Center is purchased and servers are specified for protection.
+        # The order ID associated with the pre-binding.
         self.pre_bind_order_id = pre_bind_order_id
-        # The UUIDs of the servers that you want to unbind from Security Center.
-        # 
-        # >  You must specify at least one of the **Bind** and **UnBind** parameters.
+        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+        self.resource_directory_account_id = resource_directory_account_id
+        # The UUIDs of the servers to unbind.
+        # > **Bind** and **UnBind** cannot both be empty.
         self.un_bind = un_bind
 
     def validate(self):
@@ -108,6 +109,9 @@ class BindAuthToMachineRequest(DaraModel):
         if self.pre_bind_order_id is not None:
             result['PreBindOrderId'] = self.pre_bind_order_id
 
+        if self.resource_directory_account_id is not None:
+            result['ResourceDirectoryAccountId'] = self.resource_directory_account_id
+
         if self.un_bind is not None:
             result['UnBind'] = self.un_bind
 
@@ -141,6 +145,9 @@ class BindAuthToMachineRequest(DaraModel):
 
         if m.get('PreBindOrderId') is not None:
             self.pre_bind_order_id = m.get('PreBindOrderId')
+
+        if m.get('ResourceDirectoryAccountId') is not None:
+            self.resource_directory_account_id = m.get('ResourceDirectoryAccountId')
 
         if m.get('UnBind') is not None:
             self.un_bind = m.get('UnBind')

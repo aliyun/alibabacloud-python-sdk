@@ -11,7 +11,9 @@ class DescribeAclCheckQuotaResponseBody(DaraModel):
         quota: main_models.DescribeAclCheckQuotaResponseBodyQuota = None,
         request_id: str = None,
     ):
+        # The quota.
         self.quota = quota
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +52,13 @@ class DescribeAclCheckQuotaResponseBodyQuota(DaraModel):
         total_quota: int = None,
         update_time: str = None,
     ):
+        # The available quota.
         self.available_quota = available_quota
+        # The consumed quota.
         self.consumed_quota = consumed_quota
+        # The total quota.
         self.total_quota = total_quota
+        # The time when the quota was last updated. This value is a UNIX timestamp. Unit: seconds.
         self.update_time = update_time
 
     def validate(self):

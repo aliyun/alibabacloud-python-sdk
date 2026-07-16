@@ -14,38 +14,38 @@ class OperationSuspEventsRequest(DaraModel):
         suspicious_event_ids: str = None,
         warn_type: str = None,
     ):
-        # The ID of the request source.
+        # The request source identifier.
         # 
-        # Set the value to **sas**, which indicates that the request is sent from Security Center.
+        # Set this parameter to **sas**, which indicates a request from the Security Center client.
         self.from_ = from_
-        # The operation that you want to perform on alerts. Valid values:
+        # The operation to perform on the alert. Valid values:
         # 
-        # *   **deal**: quarantines the source file of the malicious process.
-        # *   **ignore**: ignores the alerts.
-        # *   **mark_mis_info**: marks the alerts as false positives by adding the alerts to the whitelist.
-        # *   **rm_mark_mis_info**: cancels false positives by removing the alerts from the whitelist.
-        # *   **offline_handled**: marks the alerts as handled.
+        # - **deal**: handles the alert (quarantine).
+        # - **ignore**: ignores the alert.
+        # - **mark_mis_info**: marks the alert as a false positive (adds it to the whitelist).
+        # - **rm_mark_mis_info**: unmarks the alert as a false positive (removes it from the whitelist).
+        # - **offline_handled**: marks the alert as handled.
         # 
         # This parameter is required.
         self.operation = operation
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The suboperation that you want to perform when you quarantine the source file of the malicious process. Valid values:
+        # The sub-operation type to perform when quarantining the alert event. Valid values:
         # 
-        # *   **killAndQuaraFileByPidAndMd5andPath**: terminates the process based on its process ID (PID) and quarantines the source file of the process.
-        # *   **quaraFileByMd5andPath**: quarantines the source file of the process.
-        # *   **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
+        # - **killAndQuaraFileByPidAndMd5andPath**: terminates the process by PID and quarantines the source file of the process.
+        # - **quaraFileByMd5andPath**: quarantines the source file of the process.
+        # - **killAndQuaraFileByMd5andPath**: terminates the process and quarantines the source file of the process.
         self.sub_operation = sub_operation
-        # The IDs of alert events.
+        # The list of alert event IDs.
         # 
-        # > You can call the [DescribeSuspEvents](~~DescribeSuspEvents~~) operation to obtain the IDs of alert events from the SecurityEventIds response parameter.
+        # > You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain alert event IDs from the SecurityEventIds response parameter.
         # 
         # This parameter is required.
         self.suspicious_event_ids = suspicious_event_ids
-        # The type of the exceptions. Valid values:
+        # The type of the exception event to handle. Valid values:
         # 
-        # *   **alarm**: alerts
-        # *   **null**: exceptions
+        # - **alarm**: alert.
+        # - **Empty**: exception.
         self.warn_type = warn_type
 
     def validate(self):

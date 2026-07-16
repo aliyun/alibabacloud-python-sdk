@@ -13,10 +13,15 @@ class DeleteDocsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Internal error code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

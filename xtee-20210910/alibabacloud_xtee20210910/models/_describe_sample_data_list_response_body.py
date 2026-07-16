@@ -17,17 +17,17 @@ class DescribeSampleDataListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -114,49 +114,49 @@ class DescribeSampleDataListResponseBodyResultObject(DaraModel):
         user_id: int = None,
         version: int = None,
     ):
-        # Classification type, binary or multi-class.
+        # The classification type, such as binary classification or multi-class classification.
         self.classification_type = classification_type
-        # Criterion value for sample data calculation
+        # The benchmark value used for sample data calculation.
         self.data_distributed = data_distributed
-        # First row of sample data. Used to define the values of each column.
+        # The first row of the sample data. This row defines the value of each column.
         self.data_title = data_title
-        # Deletion tag.
+        # The deletion tag.
         self.delete_tag = delete_tag
-        # Description information.
+        # The description.
         self.description = description
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Name
+        # The name.
         self.name = name
-        # Number of normal samples
+        # The number of normal samples.
         self.normal_size = normal_size
-        # Recall configuration
+        # The backtracking configuration.
         self.recall_config = recall_config
-        # Number of risk samples
+        # The number of risky samples.
         self.risk_size = risk_size
-        # Specified risk value
+        # The specified risk value.
         self.risk_value = risk_value
-        # Sample label details
+        # The sample label details.
         self.sample_label_detail = sample_label_detail
-        # Sample size
+        # The number of samples.
         self.sample_size = sample_size
-        # Scene code
+        # The scenario code.
         self.scene = scene
-        # Status.
+        # The status.
         self.status = status
-        # Storage path
+        # The storage path.
         self.store_path = store_path
-        # Storage type
+        # The storage type.
         self.store_type = store_type
-        # Whether recall is supported
+        # Indicates whether backtracking is supported.
         self.support_recall = support_recall
-        # User UID
+        # The user UID.
         self.user_id = user_id
-        # Version
+        # The version.
         self.version = version
 
     def validate(self):

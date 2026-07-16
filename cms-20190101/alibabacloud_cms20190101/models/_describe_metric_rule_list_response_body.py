@@ -18,20 +18,21 @@ class DescribeMetricRuleListResponseBody(DaraModel):
         total: str = None,
     ):
         self.alarms = alarms
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call is successful.
+        # >A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -147,6 +148,7 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(DaraModel):
         resources: str = None,
         rule_id: str = None,
         rule_name: str = None,
+        send_ok: bool = None,
         silence_time: int = None,
         source_type: str = None,
         webhook: str = None,
@@ -174,6 +176,8 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(DaraModel):
         self.resources = resources
         self.rule_id = rule_id
         self.rule_name = rule_name
+        # 是否关闭恢复告警。取值：true（是）、false（否）。
+        self.send_ok = send_ok
         self.silence_time = silence_time
         self.source_type = source_type
         self.webhook = webhook
@@ -262,6 +266,9 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(DaraModel):
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
 
+        if self.send_ok is not None:
+            result['SendOK'] = self.send_ok
+
         if self.silence_time is not None:
             result['SilenceTime'] = self.silence_time
 
@@ -347,6 +354,9 @@ class DescribeMetricRuleListResponseBodyAlarmsAlarm(DaraModel):
 
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
+
+        if m.get('SendOK') is not None:
+            self.send_ok = m.get('SendOK')
 
         if m.get('SilenceTime') is not None:
             self.silence_time = m.get('SilenceTime')

@@ -14,8 +14,12 @@ class ListFlowNodeGroupRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of records per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account

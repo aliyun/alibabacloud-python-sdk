@@ -15,23 +15,25 @@ class DescribeEventVariableListRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. The values are: - **zh**: Chinese - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # Create Type.
+        # The creation type.
         self.create_type = create_type
-        # Filter object.
+        # The filter object.
         self.filter_dto = filter_dto
-        # Associated event eventCode.
+        # The associated event code (eventCode).
         # 
         # This parameter is required.
         self.ref_obj_id = ref_obj_id
-        # Association Type.
+        # The association type.
         # 
         # This parameter is required.
         self.ref_obj_type = ref_obj_type
-        # Region Code.
+        # The region code.
         self.reg_id = reg_id
-        # type.
+        # The type.
         self.type = type
 
     def validate(self):

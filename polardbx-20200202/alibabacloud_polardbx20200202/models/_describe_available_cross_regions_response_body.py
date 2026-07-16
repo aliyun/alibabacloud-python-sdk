@@ -15,10 +15,13 @@ class DescribeAvailableCrossRegionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The parameter details.
         self.data = data
+        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -72,6 +75,7 @@ class DescribeAvailableCrossRegionsResponseBodyData(DaraModel):
         self,
         regions: List[str] = None,
     ):
+        # The instance ID.
         self.regions = regions
 
     def validate(self):

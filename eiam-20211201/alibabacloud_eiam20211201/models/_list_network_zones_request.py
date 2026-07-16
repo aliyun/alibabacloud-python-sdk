@@ -15,16 +15,17 @@ class ListNetworkZonesRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # 网络ID集合
+        # The collection of network zone IDs.
         self.network_zone_ids = network_zone_ids
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The pagination token.
         self.next_token = next_token
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

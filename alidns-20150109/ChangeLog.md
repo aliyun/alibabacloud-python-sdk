@@ -1,3 +1,27 @@
+2026-07-13 Version: 4.5.0
+- Support API CreateAtiAgentRegisterInfo.
+- Support API CreateAtiAgentRegisterInfoAcmeChallengeRecord.
+- Support API CreateAtiRegistrant.
+- Support API DeleteAtiAgentRegisterInfo.
+- Support API DeleteAtiRegistrant.
+- Support API DescribeAtiAgentRegisterInfo.
+- Support API DescribeAtiAlertSettings.
+- Support API DescribeAtiCertificate.
+- Support API DescribeAtiRegistrant.
+- Support API ListAtiAgentRegisterInfos.
+- Support API ListAtiChangeLogs.
+- Support API ListAtiRegistrants.
+- Support API RevokeAtiAgentRegisterInfo.
+- Support API RevokeAtiRegistrant.
+- Support API SearchAtiAgentRegisterInfoMarket.
+- Support API SubmitAtiAgentRegisterInfo.
+- Support API UpdateAtiAgentRegisterInfo.
+- Support API UpdateAtiAlertSettings.
+- Support API UpdateAtiRegistrant.
+- Support API VerifyAtiAgentDnsRecords.
+- Support API VerifyAtiAgentRegisterInfoAcmeChallengeRecord.
+
+
 2026-04-24 Version: 4.4.1
 - Generated python 2015-01-09 for Alidns.
 

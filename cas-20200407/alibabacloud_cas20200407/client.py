@@ -72,7 +72,13 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'cas.aliyuncs.com',
             'rus-west-1-pop': 'cas.aliyuncs.com',
             'us-east-1': 'cas.aliyuncs.com',
-            'us-west-1': 'cas.aliyuncs.com'
+            'us-west-1': 'cas.aliyuncs.com',
+            'me-east-1': 'cas.me-east-1.aliyuncs.com',
+            'eu-central-1': 'cas.eu-central-1.aliyuncs.com',
+            'ap-southeast-2': 'cas.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'cas.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'cas.ap-south-1.aliyuncs.com',
+            'ap-northeast-1': 'cas.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -4664,6 +4670,8 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(
@@ -4692,6 +4700,8 @@ class Client(OpenApiClient):
     ) -> main_models.RevokeCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_util_models.OpenApiRequest(

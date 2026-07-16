@@ -12,7 +12,9 @@ class ChangeNodeTypesRequest(DaraModel):
         node_ids: List[str] = None,
         node_type: str = None,
     ):
+        # A list of node IDs. You can specify a maximum of 10 nodes in a single request.
         self.node_ids = node_ids
+        # The node specifications.
         self.node_type = node_type
 
     def validate(self):

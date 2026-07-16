@@ -17,13 +17,19 @@ class CreateNetworkServiceRequest(DaraModel):
         vswitch_ids: List[str] = None,
         region_id: str = None,
     ):
+        # A token to ensure the idempotency of the request.
         self.client_token = client_token
+        # The name of the network service.
         self.name = name
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The type of the network service.
         self.type = type
-        # VPC id。
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # A list of vSwitch IDs.
         self.vswitch_ids = vswitch_ids
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

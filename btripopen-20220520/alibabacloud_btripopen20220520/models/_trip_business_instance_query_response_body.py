@@ -17,11 +17,9 @@ class TripBusinessInstanceQueryResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module。
         self.module = module
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -80,12 +78,14 @@ class TripBusinessInstanceQueryResponseBodyModule(DaraModel):
     def __init__(
         self,
         business_data: str = None,
+        business_form_data: str = None,
         creator: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
         status: str = None,
     ):
         self.business_data = business_data
+        self.business_form_data = business_form_data
         self.creator = creator
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
@@ -101,6 +101,9 @@ class TripBusinessInstanceQueryResponseBodyModule(DaraModel):
             result = _map
         if self.business_data is not None:
             result['business_data'] = self.business_data
+
+        if self.business_form_data is not None:
+            result['business_form_data'] = self.business_form_data
 
         if self.creator is not None:
             result['creator'] = self.creator
@@ -120,6 +123,9 @@ class TripBusinessInstanceQueryResponseBodyModule(DaraModel):
         m = m or dict()
         if m.get('business_data') is not None:
             self.business_data = m.get('business_data')
+
+        if m.get('business_form_data') is not None:
+            self.business_form_data = m.get('business_form_data')
 
         if m.get('creator') is not None:
             self.creator = m.get('creator')

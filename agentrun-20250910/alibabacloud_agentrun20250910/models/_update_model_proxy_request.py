@@ -10,6 +10,7 @@ class UpdateModelProxyRequest(DaraModel):
         self,
         body: main_models.UpdateModelProxyInput = None,
     ):
+        # The new configuration for the model proxy.
         self.body = body
 
     def validate(self):

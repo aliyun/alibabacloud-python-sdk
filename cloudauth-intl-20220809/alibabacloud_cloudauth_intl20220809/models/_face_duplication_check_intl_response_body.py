@@ -13,13 +13,13 @@ class FaceDuplicationCheckIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceDuplicationCheckIntlResponseBodyResult = None,
     ):
-        # Return code.
+        # The response code.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -78,37 +78,35 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # Returns the face library face ID and UserID when a duplicate face is detected.
+        # The face ID and UserID retrieved from the face library when a duplicate face is detected.
         self.duplicate_face = duplicate_face
+        # The related result information.
         self.ext_face_info = ext_face_info
-        # The estimated age of the face, which may not be returned if the prediction fails.
+        # The estimated age of the face. The prediction may fail and no value is returned in some cases.
         self.face_age = face_age
-        # Indicates whether the captured face involves a liveness attack, Y for an attack, N for no attack.
-        # Returned when silent liveness detection is enabled.
+        # Indicates whether the captured face involves a liveness attack. Valid values: Y (attack detected) and N (no attack detected). This field is returned when passive liveness detection is enabled.
         self.face_attack = face_attack
-        # The probability of a liveness attack detected by silent liveness detection. The value range is 0 to 100.
-        # Returned when silent liveness detection is enabled.
+        # The probability of a passive liveness detection attack. The value ranges from 0 to 100. This field is returned when passive liveness detection is enabled.
         self.face_attack_score = face_attack_score
-        # When the verification mode is 1 or 2, returns the 1:1 verification comparison score
-        # Comparison score range 0～100.
+        # The 1:1 face comparison score returned when the verification mode is 1 or 2. The value ranges from 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # The predicted gender of the face in the image, which may not be returned if the prediction fails.
-        # - M: Male
-        # - F: Female
+        # The predicted gender of the face image. The prediction may fail and no value is returned in some cases. Valid values:
+        # - M: Male.
+        # - F: Female.
         self.face_gender = face_gender
-        # Final authentication result, values:
-        # - Y: Passed
-        # - N: Not passed
+        # The final verification result. Valid values:
+        # - Y: Passed.
+        # - N: Not passed.
         self.face_passed = face_passed
-        # Returns the corresponding FACEID only when the customer sets auto-registration and the face registration is successful.
+        # The FACEID returned only when the customer has enabled automatic registration and the face is registered.
         self.face_registration_id = face_registration_id
-        # Face registration result 
-        # - 0- Failed 
-        # - 1- Succeeded
+        # The face registration result. Valid values: 
+        # - 0: Failed. 
+        # - 1: Succeeded.
         self.face_registration_result = face_registration_result
-        # Description of the authentication result. For more information, see ResultObject.SubCode error code description.
+        # The verification result description. For more information, refer to the ResultObject.SubCode error code description.
         self.sub_code = sub_code
-        # Unique identifier of the authentication request.
+        # The unique identifier of the verification request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -202,17 +200,34 @@ class FaceDuplicationCheckIntlResponseBodyResult(DaraModel):
 class FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo(DaraModel):
     def __init__(
         self,
+        face_attribute_info: str = None,
         face_quality_score: float = None,
         illumination_score: float = None,
         ka_occlusion_score: float = None,
         occlusion_score: float = None,
         sharpness_score: float = None,
+        target_face_quality_score: float = None,
+        target_illumination_score: float = None,
+        target_ka_occlusion_score: float = None,
+        target_occlusion_score: float = None,
+        target_sharpness_score: float = None,
     ):
+        self.face_attribute_info = face_attribute_info
+        # The overall quality score.
         self.face_quality_score = face_quality_score
+        # The illumination score.
         self.illumination_score = illumination_score
+        # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
+        # The occlusion score.
         self.occlusion_score = occlusion_score
+        # The sharpness score.
         self.sharpness_score = sharpness_score
+        self.target_face_quality_score = target_face_quality_score
+        self.target_illumination_score = target_illumination_score
+        self.target_ka_occlusion_score = target_ka_occlusion_score
+        self.target_occlusion_score = target_occlusion_score
+        self.target_sharpness_score = target_sharpness_score
 
     def validate(self):
         pass
@@ -222,6 +237,9 @@ class FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.face_attribute_info is not None:
+            result['FaceAttributeInfo'] = self.face_attribute_info
+
         if self.face_quality_score is not None:
             result['FaceQualityScore'] = self.face_quality_score
 
@@ -237,10 +255,28 @@ class FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo(DaraModel):
         if self.sharpness_score is not None:
             result['SharpnessScore'] = self.sharpness_score
 
+        if self.target_face_quality_score is not None:
+            result['TargetFaceQualityScore'] = self.target_face_quality_score
+
+        if self.target_illumination_score is not None:
+            result['TargetIlluminationScore'] = self.target_illumination_score
+
+        if self.target_ka_occlusion_score is not None:
+            result['TargetKaOcclusionScore'] = self.target_ka_occlusion_score
+
+        if self.target_occlusion_score is not None:
+            result['TargetOcclusionScore'] = self.target_occlusion_score
+
+        if self.target_sharpness_score is not None:
+            result['TargetSharpnessScore'] = self.target_sharpness_score
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FaceAttributeInfo') is not None:
+            self.face_attribute_info = m.get('FaceAttributeInfo')
+
         if m.get('FaceQualityScore') is not None:
             self.face_quality_score = m.get('FaceQualityScore')
 
@@ -255,6 +291,21 @@ class FaceDuplicationCheckIntlResponseBodyResultExtFaceInfo(DaraModel):
 
         if m.get('SharpnessScore') is not None:
             self.sharpness_score = m.get('SharpnessScore')
+
+        if m.get('TargetFaceQualityScore') is not None:
+            self.target_face_quality_score = m.get('TargetFaceQualityScore')
+
+        if m.get('TargetIlluminationScore') is not None:
+            self.target_illumination_score = m.get('TargetIlluminationScore')
+
+        if m.get('TargetKaOcclusionScore') is not None:
+            self.target_ka_occlusion_score = m.get('TargetKaOcclusionScore')
+
+        if m.get('TargetOcclusionScore') is not None:
+            self.target_occlusion_score = m.get('TargetOcclusionScore')
+
+        if m.get('TargetSharpnessScore') is not None:
+            self.target_sharpness_score = m.get('TargetSharpnessScore')
 
         return self
 

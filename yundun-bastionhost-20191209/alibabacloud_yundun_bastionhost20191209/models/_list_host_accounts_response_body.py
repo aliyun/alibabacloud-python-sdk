@@ -14,11 +14,11 @@ class ListHostAccountsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the queried host accounts.
+        # The list of the returned host accounts.
         self.host_accounts = host_accounts
         # The ID of the request.
         self.request_id = request_id
-        # The total number of host accounts that are queried.
+        # The total number of returned host accounts.
         self.total_count = total_count
 
     def validate(self):
@@ -75,12 +75,11 @@ class ListHostAccountsResponseBodyHostAccounts(DaraModel):
         protocol_name: str = None,
         rotation_mode: str = None,
     ):
-        # Indicates whether a password is configured for the host account.
+        # Indicates whether a password is set for the host account.<br> Valid values:
         # 
-        # Valid values:
+        # - **true**: A password is set.
         # 
-        # *   true: A password is configured for the host account.
-        # *   false: No passwords are configured for the host account.
+        # - **false**: No password is set.
         self.has_password = has_password
         # The ID of the host account.
         self.host_account_id = host_account_id
@@ -88,20 +87,33 @@ class ListHostAccountsResponseBodyHostAccounts(DaraModel):
         self.host_account_name = host_account_name
         # The ID of the host.
         self.host_id = host_id
-        # The ID of the shared key.
+        # The ID of the shared key of the host.
         self.host_share_key_id = host_share_key_id
-        # The name of the shared key.
+        # The name of the shared key of the host.
         self.host_share_key_name = host_share_key_name
-        # The fingerprint of the private key for the host account.
+        # The fingerprint of the private key of the host account.
         self.private_key_fingerprint = private_key_fingerprint
+        # The permission type of the account.
+        # 
+        # - **Privileged**: privileged account
+        # 
+        # - **Normal**: regular account
+        # 
+        # > This parameter is available only for Bastionhost instances of V3.2.47 or later.
         self.privilege_type = privilege_type
-        # The protocol that is used by the host.
+        # The protocol of the host account.<br> Valid values:
         # 
-        # Valid values:
+        # - SSH
         # 
-        # *   SSH
-        # *   RDP
+        # - RDP
         self.protocol_name = protocol_name
+        # The password change mode of the account.
+        # 
+        # - **Privileged**: The password is changed using a privileged account.
+        # 
+        # - **Self**: The password is changed without using a privileged account.
+        # 
+        # > This parameter is available only for Bastionhost instances of V3.2.47 or later.
         self.rotation_mode = rotation_mode
 
     def validate(self):

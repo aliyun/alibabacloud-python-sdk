@@ -66,9 +66,11 @@ class UpdateMultiUserInstancesResponseBodyResult(DaraModel):
         self.error_message = error_message
         # The Cloud Security Center instance ID purchased by the member account.
         self.instance_id = instance_id
-        # Update status. Values:  
-        # - **1**：Success 
-        # - **2**：Failure
+        # Update status. Values:
+        # 
+        # - **1**:Success
+        # 
+        # - **2**:Failure
         self.update_status = update_status
 
     def validate(self):

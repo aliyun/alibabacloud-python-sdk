@@ -13,12 +13,25 @@ class DescribePageDocumentsRequest(DaraModel):
         source_ip: str = None,
         tab_name: str = None,
     ):
+        # The language type. Valid values:
+        # - **en**: English.
+        # - **zh**: Chinese.
         self.lang = lang
+        # The page name. Valid values:
+        # - **overview**: overview page
+        # - **access**: access control page
+        # - **switch**: firewall page.
+        # 
         # This parameter is required.
         self.page_name = page_name
+        # The tracing code.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The name of the protected object in the access control policy.
+        # 
         # This parameter is required.
         self.tab_name = tab_name
 

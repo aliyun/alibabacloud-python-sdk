@@ -76,6 +76,9 @@ class ModifyVirtualBorderRouterAttributeRequest(DaraModel):
         self.min_rx_interval = min_rx_interval
         # The time interval to send BFD packets. Valid values: **200 to 1000**. Unit: milliseconds.
         self.min_tx_interval = min_tx_interval
+        # The MTU value supported by the VBR. Valid values: 1500 and 8500.
+        # 
+        # This value can be set only when the VBR is attached to an ECR. The value also affects all other VBRs and VPCs in the same ECR.
         self.mtu = mtu
         # The name of the VBR.
         # 

@@ -15,9 +15,9 @@ class UploadCsrRequest(DaraModel):
         # 
         # This parameter is required.
         self.csr = csr
-        # The private key content of the certificate in the PEM format.
+        # The content of the certificate\\"s private key in PEM format.
         self.key = key
-        # The name of the CSR.
+        # The name of the CSR. The name can be up to 50 characters long and can contain uppercase letters (A–Z), lowercase letters (a–z), digits (0–9), underscores (_), and hyphens (-).
         self.name = name
 
     def validate(self):

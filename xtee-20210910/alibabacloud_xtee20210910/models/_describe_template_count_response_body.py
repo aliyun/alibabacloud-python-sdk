@@ -11,9 +11,9 @@ class DescribeTemplateCountResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeTemplateCountResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeTemplateCountResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Template quantity limit.
+        # The template quantity limit.
         self.limit = limit
-        # Maximum count
+        # The maximum number of items.
         self.max_total_item = max_total_item
-        # Total count.
+        # The total number of items.
         self.total_item = total_item
 
     def validate(self):

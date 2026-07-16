@@ -17,11 +17,17 @@ class ListUserGroupMembersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListUserGroupMembersResponseBodyPageResult(DaraModel):
         member_list: List[main_models.ListUserGroupMembersResponseBodyPageResultMemberList] = None,
         total_count: int = None,
     ):
+        # The paged list.
         self.member_list = member_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -129,11 +137,17 @@ class ListUserGroupMembersResponseBodyPageResultMemberList(DaraModel):
         user_info: main_models.ListUserGroupMembersResponseBodyPageResultMemberListUserInfo = None,
         user_role: str = None,
     ):
+        # The user who added the member.
         self.creator = creator
+        # The time when the member was added to the user group.
         self.gmt_create = gmt_create
+        # The user group member ID.
         self.id = id
+        # The user group ID.
         self.user_group_id = user_group_id
+        # The user group member.
         self.user_info = user_info
+        # The role of the member in the user group.
         self.user_role = user_role
 
     def validate(self):
@@ -198,8 +212,11 @@ class ListUserGroupMembersResponseBodyPageResultMemberListUserInfo(DaraModel):
         display_name: str = None,
         id: str = None,
     ):
+        # The account name of the user.
         self.account_name = account_name
+        # The username.
         self.display_name = display_name
+        # The user ID.
         self.id = id
 
     def validate(self):
@@ -241,8 +258,11 @@ class ListUserGroupMembersResponseBodyPageResultMemberListCreator(DaraModel):
         display_name: str = None,
         id: str = None,
     ):
+        # The account name of the user.
         self.account_name = account_name
+        # The username.
         self.display_name = display_name
+        # The user ID.
         self.id = id
 
     def validate(self):

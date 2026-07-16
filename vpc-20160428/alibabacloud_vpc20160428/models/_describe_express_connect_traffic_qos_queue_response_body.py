@@ -13,7 +13,7 @@ class DescribeExpressConnectTrafficQosQueueResponseBody(DaraModel):
         queue_list: List[main_models.DescribeExpressConnectTrafficQosQueueResponseBodyQueueList] = None,
         request_id: str = None,
     ):
-        # The information about the QoS queues.
+        # The list of QoS queues.
         self.queue_list = queue_list
         # The request ID.
         self.request_id = request_id
@@ -64,40 +64,43 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueList(DaraModel):
         rule_list: List[main_models.DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList] = None,
         status: str = None,
     ):
-        # The percentage of bandwidth allocated to a QoS queue.
+        # The bandwidth percentage of the QoS queue.
         # 
-        # *   If QueueType is set to **Medium**, this parameter is returned. Valid values: **1** to **100**.
-        # *   If QueueType is set to **Default**, a value of - is returned.
+        # * When the QoS queue type is **Medium**, this field is required. Valid values: **1** to **100**.
+        # 
+        # * When the QoS queue type is **Default**, this field is "-".
         self.bandwidth_percent = bandwidth_percent
-        # The ID of the QoS policy.
+        # The QoS policy ID.
         self.qos_id = qos_id
         # The description of the QoS queue.
         # 
-        # The name must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
+        # The description must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
         self.queue_description = queue_description
-        # The ID of the QoS queue.
+        # The QoS queue ID.
         self.queue_id = queue_id
         # The name of the QoS queue.
         # 
         # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.queue_name = queue_name
-        # The priority of the QoS queue. Valid values:
+        # The type of the QoS queue. Valid values:
         # 
-        # *   **High**
-        # *   **Medium**
-        # *   **Default**
+        # - **High**: high-priority queue.
         # 
+        # - **Medium**: medium-priority queue.
         # 
+        # - **Default**: default-priority queue.
         # 
-        # >  You cannot create a QoS queue of the default priority.
+        # > The default-priority queue cannot be created.
         self.queue_type = queue_type
-        # The information about the QoS rules.
+        # The list of QoS rules.
         self.rule_list = rule_list
-        # The state of the QoS queue. Valid values:
+        # The status of the QoS queue. Valid values:
         # 
-        # *   **Normal**: The QoS queue is available.
-        # *   **Configuring**: The QoS queue is being configured.
-        # *   **Deleting**: The QoS queue is being deleted.
+        # - **Normal**: active.
+        # 
+        # - **Configuring**: being configured.
+        # 
+        # - **Deleting**: being deleted.
         self.status = status
 
     def validate(self):
@@ -190,95 +193,119 @@ class DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList(DaraMod
         src_port_range: str = None,
         status: str = None,
     ):
-        # The destination IPv4 CIDR block that matches the QoS rule traffic.
+        # The destination IP address IPv4 CIDR block that is used for traffic matching by the QoS rule.
         # 
-        # 
-        # 
-        # > If the parameter is unavailable, specify **SrcIPv6Cidr** or **DstIPv6Cidr**.
+        # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.dst_cidr = dst_cidr
-        # The destination IPv6 CIDR block that matches the QoS rule traffic.
+        # The destination IP address IPv6 CIDR block that is used for traffic matching by the QoS rule.
         # 
-        # 
-        # 
-        # > If the parameter is unavailable, specify **SrcCidr** or **DstCidr**.
+        # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
         self.dst_ipv_6cidr = dst_ipv_6cidr
-        # The range of destination ports that match the QoS rule traffic. Valid values: **0** to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number. Different protocols correspond to different ports. Valid values:
+        # The destination port range that is used for traffic matching by the QoS rule. Valid values: **0** to **65535**. A value of -1 indicates that no port is matched. Only a single port number is supported. The start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
         # 
-        # *   **ALL** (uneditable): -1/-1.
-        # *   **ICMP(IPv4)** (uneditable): -1/-1.
-        # *   **ICMPv6(IPv6)** (uneditable): -1/-1.
-        # *   **TCP** (editable): -1/-1.
-        # *   **UDP** (editable): -1/-1.
-        # *   **GRE** (uneditable): -1/-1.
-        # *   **SSH** (uneditable): 22/22.
-        # *   **Telnet** (uneditable): 23/23.
-        # *   **HTTP** (uneditable): 80/80.
-        # *   **HTTPS** (uneditable): 443/443.
-        # *   **MS SQL** (uneditable): 1443/1443.
-        # *   **Oracle** (uneditable): 1521/1521.
-        # *   **MySql** (uneditable): 3306/3306.
-        # *   **RDP** (uneditable): 3389/3389.
-        # *   **PostgreSQL** (uneditable): 5432/5432.
-        # *   **Redis** (uneditable): 6379/6379.
+        # - **ALL**: -1/-1, not editable.
+        # 
+        # - **ICMP(IPv4)**: -1/-1, not editable.
+        # 
+        # - **ICMPv6(IPv6)**: -1/-1, not editable.
+        # 
+        # - **TCP**: -1/-1, editable.
+        # 
+        # - **UDP**: -1/-1, editable.
+        # 
+        # - **GRE**: -1/-1, not editable.
+        # 
+        # - **SSH**: 22/22, not editable.
+        # 
+        # - **Telnet**: 23/23, not editable.
+        # 
+        # - **HTTP**: 80/80, not editable.
+        # 
+        # - **HTTPS**: 443/443, not editable.
+        # 
+        # - **MS SQL**: 1443/1443, not editable.
+        # 
+        # - **Oracle**: 1521/1521, not editable.
+        # 
+        # - **MySql**: 3306/3306, not editable.
+        # 
+        # - **RDP**: 3389/3389, not editable.
+        # 
+        # - **PostgreSQL**: 5432/5432, not editable.
+        # 
+        # - **Redis**: 6379/6379, not editable.
         self.dst_port_range = dst_port_range
-        # The DSCP value that matches the QoS rule traffic. Valid values: **0** to **63**. If no value is matched, the value is -1.
+        # The DSCP value that is used for traffic matching by the QoS rule. Valid values: **0** to **63**. A value of -1 indicates that no DSCP value is matched.
         self.match_dscp = match_dscp
-        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique in the same QoS policy.
+        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique within the same QoS policy.
         self.priority = priority
-        # The protocol of the QoS rule. Valid values:
+        # The protocol type of the QoS rule. Valid values:
         # 
-        # *   **ALL**
-        # *   **ICMP(IPv4)**
-        # *   **ICMPv6(IPv6)**
-        # *   **TCP**
-        # *   **UDP**
-        # *   **GRE**
-        # *   **SSH**
-        # *   **Telnet**
-        # *   **HTTP**
-        # *   **HTTPS**
-        # *   **MS SQL**
-        # *   **Oracle**
-        # *   **MySql**
-        # *   **RDP**
-        # *   **PostgreSQL**
-        # *   **Redis**
+        # - **ALL**
+        # 
+        # - **ICMP(IPv4)**
+        # 
+        # - **ICMPv6(IPv6)**
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
+        # 
+        # - **GRE**
+        # 
+        # - **SSH**
+        # 
+        # - **Telnet**
+        # 
+        # - **HTTP**
+        # 
+        # - **HTTPS**
+        # 
+        # - **MS SQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **MySql**
+        # 
+        # - **RDP**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Redis**.
         self.protocol = protocol
-        # The ID of the QoS policy.
+        # The QoS policy ID.
         self.qos_id = qos_id
-        # The ID of the QoS queue.
+        # The QoS queue ID.
         self.queue_id = queue_id
-        # The new DSCP value. Valid values: **0** to **63**. If you do not change the value, the value is -1.
+        # The new DSCP value to remark in the traffic. Valid values: **0** to **63**. A value of -1 indicates that the DSCP value is not modified.
         self.remarking_dscp = remarking_dscp
         # The description of the QoS rule.
         # 
-        # The name must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
+        # The description must be **0** to **256** characters in length and cannot start with `http://` or `https://`.
         self.rule_description = rule_description
-        # The ID of the QoS rule.
+        # The QoS rule ID.
         self.rule_id = rule_id
         # The name of the QoS rule.
         # 
         # The name must be **0** to **128** characters in length and cannot start with `http://` or `https://`.
         self.rule_name = rule_name
-        # The source IPv4 CIDR block that matches the QoS rule traffic.
+        # The source IPv4 CIDR block that is used for traffic matching by the QoS rule.
         # 
-        # 
-        # 
-        #  > If the parameter is unavailable, specify **SrcIPv6Cidr** or **DstIPv6Cidr**.
+        # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
         self.src_cidr = src_cidr
-        # The source IPv6 CIDR block that matches the QoS rule traffic.
+        # The source IPv6 CIDR block that is used for traffic matching by the QoS rule.
         # 
-        # 
-        # 
-        # > If the parameter is unavailable, specify **SrcCidr** or **DstCidr**.
+        # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
         self.src_ipv_6cidr = src_ipv_6cidr
-        # The range of source ports that match the QoS rule traffic. Valid values: **0** to **65535**. If the traffic does not match, the value is -1. You can specify only one port. The start port number must be the same as the end port number.
+        # The source port range that is used for traffic matching by the QoS rule. Valid values: **0** to **65535**. A value of -1 indicates that no port is matched. Only a single port number is supported. The start and end port numbers must be the same.
         self.src_port_range = src_port_range
         # The status of the QoS rule. Valid values:
         # 
-        # *   **Normal**: The QoS queue is available.
-        # *   **Configuring**: The QoS queue is being configured.
-        # *   **Deleting**: The QoS queue is being deleted.
+        # - **Normal**: active.
+        # 
+        # - **Configuring**: being configured.
+        # 
+        # - **Deleting**: being deleted.
         self.status = status
 
     def validate(self):

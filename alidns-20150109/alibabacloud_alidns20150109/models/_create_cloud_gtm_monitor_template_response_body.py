@@ -11,9 +11,15 @@ class CreateCloudGtmMonitorTemplateResponseBody(DaraModel):
         success: bool = None,
         template_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # The ID of the health check template. This ID uniquely identifies the health check template.
+        # The ID of the health check template. The ID is the unique identifier of the template.
         self.template_id = template_id
 
     def validate(self):

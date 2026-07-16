@@ -22,13 +22,19 @@ class CreateDatasetRequest(DaraModel):
         self.comment = comment
         # The data type. Valid values:
         # 
-        # *   COMMON: Common (Default)
-        # *   PIC
-        # *   TEXT
-        # *   TABLE
-        # *   VIDEO
-        # *   AUDIO
-        # *   INDEX
+        # - COMMON: Common (Default)
+        # 
+        # - PIC
+        # 
+        # - TEXT
+        # 
+        # - TABLE
+        # 
+        # - VIDEO
+        # 
+        # - AUDIO
+        # 
+        # - INDEX
         self.data_type = data_type
         # The initial version of the dataset.
         # 
@@ -46,20 +52,29 @@ class CreateDatasetRequest(DaraModel):
         self.project_id = project_id
         # The storage type. Currently supported values:
         # 
-        # *   OSS
-        # *   NAS: General-purpose NAS file systems
-        # *   EXTREMENAS: Extreme NAS file systems
-        # *   DLF_LANCE: Data Lake Formation
+        # - OSS
+        # 
+        # - NAS: General-purpose NAS file systems
+        # 
+        # - EXTREMENAS: Extreme NAS file systems
+        # 
+        # - DLF_LANCE: Data Lake Formation
         # 
         # Valid values:
         # 
-        # *   NAS: General-purpose NAS file systems
-        # *   MAXCOMPUTE: MaxCompute table
-        # *   CPFS: Cloud Parallel File Storage
-        # *   BMCPFS: CPFS for Lingjun
-        # *   EXTREMENAS: Extreme NAS file systems
-        # *   OSS: Object Storage Service
-        # *   DLF_LANCE: Data Lake Formation.
+        # - NAS: General-purpose NAS file systems
+        # 
+        # - MAXCOMPUTE: MaxCompute table
+        # 
+        # - CPFS: Cloud Parallel File Storage
+        # 
+        # - BMCPFS: CPFS for Lingjun
+        # 
+        # - EXTREMENAS: Extreme NAS file systems
+        # 
+        # - OSS: Object Storage Service
+        # 
+        # - DLF_LANCE: Data Lake Formation.
         # 
         # This parameter is required.
         self.storage_type = storage_type

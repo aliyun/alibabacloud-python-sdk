@@ -19,33 +19,31 @@ class DescribeImageBaselineItemListRequest(DaraModel):
         status: str = None,
         uuids: List[str] = None,
     ):
-        # The key of the baseline type.
+        # The key of the baseline category.
         self.baseline_class_key = baseline_class_key
         # The key of the baseline name.
         self.baseline_name_key = baseline_name_key
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
         # The UUID of the image.
         # 
         # This parameter is required.
         self.image_uuid = image_uuid
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The types of the assets that are scanned.
+        # The scan scope collection.
         self.scan_range = scan_range
-        # The status of the baseline risk item. Valid values:
-        # 
-        # *   **0**: unfixed
-        # *   **1**: fixed
-        # *   **2**: pending verification
-        # *   **3**: fixing failed
+        # The fix status of the baseline risk. Valid values:
+        # - **0**: unfixed
+        # - **1**: fixed
+        # - **2**: pending verification
+        # - **3**: fix failed.
         self.status = status
-        # The UUIDs of images.
+        # The list of image UUIDs.
         self.uuids = uuids
 
     def validate(self):

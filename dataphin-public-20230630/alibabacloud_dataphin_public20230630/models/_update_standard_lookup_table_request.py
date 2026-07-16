@@ -13,8 +13,12 @@ class UpdateStandardLookupTableRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateStandardLookupTableRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -57,15 +61,25 @@ class UpdateStandardLookupTableRequestUpdateCommand(DaraModel):
         name: str = None,
         owner: str = None,
     ):
+        # The lookup table code.
+        # 
         # This parameter is required.
         self.code = code
+        # The lookup table description.
         self.description = description
+        # The directory to which the lookup table belongs.
         self.directory_reference = directory_reference
+        # The lookup table ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The list of lookup table values.
         self.lookup_table_value_list = lookup_table_value_list
+        # The lookup table name.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the lookup table owner. Default value: the user ID of the caller.
         self.owner = owner
 
     def validate(self):
@@ -143,10 +157,16 @@ class UpdateStandardLookupTableRequestUpdateCommandLookupTableValueList(DaraMode
         name: str = None,
         value: str = None,
     ):
+        # The code description.
         self.description = description
+        # The English name of the code.
         self.english_name = english_name
+        # The code name.
+        # 
         # This parameter is required.
         self.name = name
+        # The code value.
+        # 
         # This parameter is required.
         self.value = value
 
@@ -193,6 +213,8 @@ class UpdateStandardLookupTableRequestUpdateCommandDirectoryReference(DaraModel)
         self,
         directory: str = None,
     ):
+        # The directory to which the lookup table belongs.
+        # 
         # This parameter is required.
         self.directory = directory
 

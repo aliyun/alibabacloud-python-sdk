@@ -19,16 +19,30 @@ class QueryAiCallTaskPageRequest(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The agent name. The system performs a fuzzy search based on this name.
         self.agent_name = agent_name
         self.application_code = application_code
         self.owner_id = owner_id
+        # The page number. The value must be greater than **0**. The default value is **1**.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.source = source
+        # The task status. Valid values:
+        # 
+        # - **INIT**: The task is initialized but has not started.
+        # 
+        # - **FAILED**: The task failed to start.
+        # 
+        # - **RUNNING**: The task is running.
+        # 
+        # - **STOPPED**: The task is stopped.
         self.status = status
+        # The unique ID of the task.
         self.task_id = task_id
+        # The task name. The system performs a fuzzy search based on this name.
         self.task_name = task_name
 
     def validate(self):

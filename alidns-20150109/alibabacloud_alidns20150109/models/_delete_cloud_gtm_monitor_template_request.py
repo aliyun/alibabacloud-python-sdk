@@ -11,14 +11,15 @@ class DeleteCloudGtmMonitorTemplateRequest(DaraModel):
         client_token: str = None,
         template_id: str = None,
     ):
-        # The language in which the returned results are displayed. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US (default): English.
         self.accept_language = accept_language
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that is used to ensure the idempotence of the request. This token must be unique for each request and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The ID of the health check template. This ID uniquely identifies a health check template.
+        # The unique ID of the health check template.
         # 
         # This parameter is required.
         self.template_id = template_id

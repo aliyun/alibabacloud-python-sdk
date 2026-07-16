@@ -17,17 +17,17 @@ class DescribePropertyUsageTopResponseBody(DaraModel):
     ):
         # The number of fingerprints.
         self.item_count = item_count
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # The statistical results.
+        # The collection of statistics results.
         self.top_statistic_items = top_statistic_items
-        # The type of the asset fingerprint. Valid value:
+        # The Asset Fingerprints type. Valid values:
         # 
-        # *   **port**: port
-        # *   **process**: process
-        # *   **software**: software
-        # *   **user**: account
-        # *   **sca**: middleware
+        # - **port**: port
+        # - **process**: process
+        # - **software**: software
+        # - **user**: account
+        # - **sca**: middleware.
         self.type = type
 
     def validate(self):
@@ -82,9 +82,9 @@ class DescribePropertyUsageTopResponseBodyTopStatisticItems(DaraModel):
         count: int = None,
         name: str = None,
     ):
-        # The quantity.
+        # The count.
         self.count = count
-        # The statistical item.
+        # The statistics item.
         self.name = name
 
     def validate(self):

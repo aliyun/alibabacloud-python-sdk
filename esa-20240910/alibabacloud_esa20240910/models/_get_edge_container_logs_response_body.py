@@ -12,7 +12,7 @@ class GetEdgeContainerLogsResponseBody(DaraModel):
         items: List[str] = None,
         request_id: str = None,
     ):
-        # The logs.
+        # The log list.
         self.items = items
         # The request ID.
         self.request_id = request_id

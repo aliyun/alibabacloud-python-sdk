@@ -10,8 +10,12 @@ class GetImageTranslateTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the image translation task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

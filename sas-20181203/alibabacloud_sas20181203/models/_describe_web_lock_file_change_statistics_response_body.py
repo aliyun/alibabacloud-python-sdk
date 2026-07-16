@@ -16,15 +16,15 @@ class DescribeWebLockFileChangeStatisticsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # An array consisting of the files that are changed.
+        # The list of web tamper-proofing events.
         self.list = list
-        # The number of entries returned per page.
+        # The maximum number of entries per page.
         self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of files that are attempted to change.
+        # The total number of web tamper-proofing events.
         self.total_count = total_count
 
     def validate(self):
@@ -87,7 +87,7 @@ class DescribeWebLockFileChangeStatisticsResponseBodyList(DaraModel):
     ):
         # The number of attempts.
         self.count = count
-        # The file path.
+        # The path of the file.
         self.file = file
 
     def validate(self):

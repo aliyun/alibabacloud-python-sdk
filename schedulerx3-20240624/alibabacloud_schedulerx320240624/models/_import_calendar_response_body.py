@@ -15,11 +15,19 @@ class ImportCalendarResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # The data returned by the call.
         self.data = data
+        # The error message.
         self.message = message
+        # The unique ID generated for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

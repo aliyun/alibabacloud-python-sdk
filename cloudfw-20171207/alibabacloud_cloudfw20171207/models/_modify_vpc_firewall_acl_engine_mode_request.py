@@ -11,9 +11,18 @@ class ModifyVpcFirewallAclEngineModeRequest(DaraModel):
         strict_mode: str = None,
         vpc_firewall_id: str = None,
     ):
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
+        # Specifies whether to enable strict mode.
+        # 
+        # - 1: strict mode
+        # 
+        # - 0: loose mode
+        # 
         # This parameter is required.
         self.strict_mode = strict_mode
+        # The instance ID of the VPC border firewall.
+        # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
 

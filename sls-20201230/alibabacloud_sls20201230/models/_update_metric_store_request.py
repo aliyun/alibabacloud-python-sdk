@@ -20,14 +20,16 @@ class UpdateMetricStoreRequest(DaraModel):
         self.append_meta = append_meta
         # Specifies whether to enable automatic sharding.
         self.auto_split = auto_split
+        # The retention period of data in the hot storage layer. Unit: days.
         self.hot_ttl = hot_ttl
+        # The retention period for the IA storage class. Unit: days.
         self.infrequent_access_ttl = infrequent_access_ttl
-        # The maximum number of shards into which existing shards can be automatically split. This parameter is valid only when you set the autoSplit parameter to true.
+        # The maximum number of shards for automatic sharding. This parameter is valid only when autoSplit is set to true.
         self.max_split_shard = max_split_shard
         # The type of the Metricstore.
         self.mode = mode
         self.sharding_policy = sharding_policy
-        # The retention period of the metric data. Unit: days.
+        # The data retention period. Unit: days.
         self.ttl = ttl
 
     def validate(self):

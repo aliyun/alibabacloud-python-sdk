@@ -15,9 +15,7 @@ class DescribeVscsResponseBody(DaraModel):
         vscs: List[main_models.DescribeVscsResponseBodyVscs] = None,
     ):
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
-        # VSC
         self.vscs = vscs
 
     def validate(self):
@@ -77,7 +75,6 @@ class DescribeVscsResponseBodyVscs(DaraModel):
         self.resource_group_id = resource_group_id
         self.status = status
         self.tags = tags
-        # VSC ID。
         self.vsc_id = vsc_id
         self.vsc_name = vsc_name
         self.vsc_type = vsc_type

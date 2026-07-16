@@ -42,8 +42,9 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         # 
         # Default values:
         # 
-        # *   If this parameter is not specified or if this parameter is set to a value less than 10, the default value is 10.
-        # *   If this parameter is set to a value greater than 500, the default value is 500.
+        # - If this parameter is not specified or if this parameter is set to a value less than 10, the default value is 10.
+        # 
+        # - If this parameter is set to a value greater than 500, the default value is 500.
         self.max_results = max_results
         # An array that consists of the IDs of the ENIs. You specify multiple ENI IDs. Valid values of N: 1 to 100.
         self.network_interface_id = network_interface_id
@@ -61,7 +62,7 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         # 
         # Default value: 1.
         # 
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_number = page_number
         # The number of entries per page.
         # 
@@ -69,7 +70,7 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         # 
         # Default value: 10.
         # 
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_size = page_size
         # The primary private IPv4 address of the ENI.
         self.primary_ip_address = primary_ip_address
@@ -87,18 +88,23 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the security group to which the secondary ENI belongs.
         # 
-        # *   To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
-        # *   To query the details of primary ENIs based on the ID of a security group, call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation and specify the `SecurityGroupId` parameter.
+        # - To query the details of secondary ENIs based on the ID of a security group, specify this parameter.
+        # 
+        # - To query the details of primary ENIs based on the ID of a security group, call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation and specify the `SecurityGroupId` parameter.
         self.security_group_id = security_group_id
         # Specifies whether the user of the ENI is an Alibaba Cloud service or a distributor.
         self.service_managed = service_managed
         # The state of the ENI. Valid values:
         # 
-        # *   Available: The ENI is available.
-        # *   Attaching: The ENI is being attached to an instance.
-        # *   InUse: The ENI is attached to an instance.
-        # *   Detaching: The ENI is being detached from an instance.
-        # *   Deleting: The ENI is being deleted.
+        # - Available: The ENI is available.
+        # 
+        # - Attaching: The ENI is being attached to an instance.
+        # 
+        # - InUse: The ENI is attached to an instance.
+        # 
+        # - Detaching: The ENI is being detached from an instance.
+        # 
+        # - Deleting: The ENI is being deleted.
         # 
         # This parameter is empty by default, which indicates that ENIs in all states are queried.
         self.status = status
@@ -106,8 +112,9 @@ class DescribeNetworkInterfacesRequest(DaraModel):
         self.tag = tag
         # The type of the ENI. Valid values:
         # 
-        # *   Primary
-        # *   Secondary
+        # - Primary
+        # 
+        # - Secondary
         # 
         # This parameter is empty by default, which indicates that both primary and secondary ENIs are queried.
         self.type = type

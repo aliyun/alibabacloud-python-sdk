@@ -1,3 +1,21 @@
+2026-07-02 Version: 6.4.0
+- Support API CreateInstanceMultiVIP.
+- Support API DescribeInstanceMultiVIP.
+- Update API CreateInstance: add request parameters MaintainEndTime.
+- Update API CreateInstance: add request parameters MaintainStartTime.
+- Update API CreateTairInstance: add request parameters MaintainEndTime.
+- Update API CreateTairInstance: add request parameters MaintainStartTime.
+- Update API DescribeInstances: add response parameters Body.Instances.$.QuotaCount.
+- Update API DescribeInstances: add response parameters Body.Instances.$.UsedCount.
+- Update API SwitchInstanceHA: add request parameters SourceNodeId.
+- Update API SwitchInstanceHA: add request parameters TargetNodeId.
+- Update API SwitchInstanceHA: add request parameters TargetShardName.
+- Update API TransformToEcs: add request parameters IsAcrossZone.
+- Update API TransformToEcs: add request parameters IzNo.
+- Update API TransformToEcs: add request parameters SecondaryIzNo.
+- Update API TransformToEcs: add request parameters VSwitchId.
+
+
 2026-05-13 Version: 6.3.0
 - Support API CreateTairSkvDdbTable.
 - Support API CreateTairSkvDdbWorkspace.

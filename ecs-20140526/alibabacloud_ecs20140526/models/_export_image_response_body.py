@@ -15,7 +15,7 @@ class ExportImageResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the task that is used to export the custom image.
+        # The ID of the image export task.
         self.task_id = task_id
 
     def validate(self):

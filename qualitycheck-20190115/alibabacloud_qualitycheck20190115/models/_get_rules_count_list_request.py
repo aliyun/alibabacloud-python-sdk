@@ -36,32 +36,57 @@ class GetRulesCountListRequest(DaraModel):
         update_start_time: str = None,
         update_user_id: int = None,
     ):
-        # baseMeAgentId
+        # Workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # Business name to which the rule belongs.
         self.business_name = business_name
+        # Broad business category.
         self.business_range = business_range
+        # Category name.
         self.category_name = category_name
+        # Whether to count the total number.
         self.count_total = count_total
+        # Rule creator ID. Same as CreateUserId. Use either one.
         self.create_empid = create_empid
+        # Rule creator ID. Same as CreateEmpid. Use either one.
         self.create_user_id = create_user_id
+        # Current page number.
         self.current_page = current_page
+        # Filter by creation time (start of range).
         self.end_time = end_time
+        # Rule updater ID. Same as UpdateUserId. Use either one.
         self.last_update_empid = last_update_empid
+        # Page number of the rule list.
         self.page_number = page_number
+        # Number of entries per page.
         self.page_size = page_size
+        # Required fields.
         self.require_infos = require_infos
+        # Search by rule ID.
         self.rid = rid
+        # Search by rule ID or rule name.
         self.rule_id_or_rule_name = rule_id_or_rule_name
+        # Scoring type.
         self.rule_score_single_type = rule_score_single_type
+        # Rule category.
         self.rule_type = rule_type
+        # Quality inspection scheme ID.
         self.scheme_id = scheme_id
+        # Source type.
         self.source_type = source_type
+        # Filter by creation time (end of range).
         self.start_time = start_time
+        # Rule status:
         self.status = status
+        # Type value of the rule category to which the rule belongs.
         self.type = type
+        # Name of the rule category to which the rule belongs.
         self.type_name = type_name
+        # Filter by update time (end of range).
         self.update_end_time = update_end_time
+        # Filter by update time (start of range).
         self.update_start_time = update_start_time
+        # Rule updater ID. Same as LastUpdateEmpid. Use either one.
         self.update_user_id = update_user_id
 
     def validate(self):

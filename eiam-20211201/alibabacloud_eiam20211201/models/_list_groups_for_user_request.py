@@ -16,9 +16,9 @@ class ListGroupsForUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size. Default value: 20. Maximum value: 100.
         self.page_size = page_size
         # The account ID.
         # 

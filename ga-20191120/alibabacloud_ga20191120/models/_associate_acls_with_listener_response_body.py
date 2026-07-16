@@ -13,11 +13,11 @@ class AssociateAclsWithListenerResponseBody(DaraModel):
         listener_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the ACL.
+        # The ID of the access control policy group.
         self.acl_ids = acl_ids
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

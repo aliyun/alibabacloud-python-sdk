@@ -12,9 +12,17 @@ class OperateRetryJobExecutionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Response Code.
         self.code = code
+        # Returns `success` for successful requests, and an error message for failed requests.
         self.message = message
+        # The unique Request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

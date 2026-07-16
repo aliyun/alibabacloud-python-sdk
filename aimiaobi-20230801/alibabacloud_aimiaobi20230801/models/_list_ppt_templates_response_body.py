@@ -22,16 +22,27 @@ class ListPptTemplatesResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page number.
         self.current = current
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results returned.
         self.max_results = max_results
+        # The error message.
         self.message = message
+        # The token used to retrieve the next page of results.
         self.next_token = next_token
+        # The unique ID of the request.
         self.request_id = request_id
+        # The number of entries per page. The default value is 10.
         self.size = size
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success and \\`false\\` indicates failure.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -128,8 +139,9 @@ class ListPptTemplatesResponseBodyData(DaraModel):
         cover_img: str = None,
         id: int = None,
     ):
+        # The template thumbnail.
         self.cover_img = cover_img
-        # ID
+        # The ID.
         self.id = id
 
     def validate(self):

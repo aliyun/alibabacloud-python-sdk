@@ -16,12 +16,19 @@ class ListK8sResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # - An array of k8s resources.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +89,9 @@ class ListK8sResourceResponseBodyData(DaraModel):
         resource_id: str = None,
         resource_name: str = None,
     ):
+        # The ID of the k8s resource.
         self.resource_id = resource_id
+        # The name of the k8s resource.
         self.resource_name = resource_name
 
     def validate(self):

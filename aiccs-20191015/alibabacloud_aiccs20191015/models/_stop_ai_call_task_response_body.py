@@ -14,11 +14,25 @@ class StopAiCallTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. A value of `OK` indicates that the request was successful.
         self.code = code
+        # Indicates whether the task was stopped successfully. Valid values:
+        # 
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: The operation failed.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

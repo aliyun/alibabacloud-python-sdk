@@ -14,12 +14,19 @@ class DescribeGdnInstancesRequest(DaraModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The message filter type.
         self.filter_type = filter_type
+        # The filter value for querying resources.
+        # 
+        # This parameter is used together with FilterKey.
         self.filter_value = filter_value
-        # GDN ID。
+        # The GDN ID.
         self.gdnid = gdnid
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

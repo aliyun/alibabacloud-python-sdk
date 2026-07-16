@@ -10,8 +10,9 @@ class ClearAIAgentVoiceprintRequest(DaraModel):
         registration_mode: str = None,
         voiceprint_id: str = None,
     ):
+        # The registration mode. The default is `Explicit`.
         self.registration_mode = registration_mode
-        # The unique identifier for the voiceprint.
+        # The unique identifier of the voiceprint to clear.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):

@@ -21,6 +21,8 @@ from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_function_input import CreateFunctionInput
 from ._create_layer_version_input import CreateLayerVersionInput
 from ._create_session_input import CreateSessionInput
+from ._create_timed_resident_resource_pool_application_input import CreateTimedResidentResourcePoolApplicationInput
+from ._create_timed_resident_resource_pool_application_output import CreateTimedResidentResourcePoolApplicationOutput
 from ._create_trigger_input import CreateTriggerInput
 from ._create_vpc_binding_input import CreateVpcBindingInput
 from ._custom_container_config import CustomContainerConfig
@@ -35,6 +37,7 @@ from ._describe_regions_output import DescribeRegionsOutput
 from ._destination import Destination
 from ._destination_config import DestinationConfig
 from ._elastic_config_status import ElasticConfigStatus
+from ._elastic_interval import ElasticInterval
 from ._equal_rule import EqualRule
 from ._error import Error
 from ._event_bridge_trigger_config import EventBridgeTriggerConfig
@@ -80,6 +83,7 @@ from ._list_scaling_configs_output import ListScalingConfigsOutput
 from ._list_sessions_output import ListSessionsOutput
 from ._list_tag_resources_output import ListTagResourcesOutput
 from ._list_tagged_resources_output import ListTaggedResourcesOutput
+from ._list_timed_resident_resource_pool_applications_output import ListTimedResidentResourcePoolApplicationsOutput
 from ._list_triggers_output import ListTriggersOutput
 from ._list_versions_output import ListVersionsOutput
 from ._list_vpc_bindings_output import ListVpcBindingsOutput
@@ -87,6 +91,7 @@ from ._log_config import LogConfig
 from ._mcpssesession_affinity_config import MCPSSESessionAffinityConfig
 from ._mcpstreamable_session_affinity_config import MCPStreamableSessionAffinityConfig
 from ._mnstopic_trigger_config import MNSTopicTriggerConfig
+from ._micro_sandbox_config import MicroSandboxConfig
 from ._nasconfig import NASConfig
 from ._nasmount_config import NASMountConfig
 from ._ossmount_config import OSSMountConfig
@@ -141,6 +146,8 @@ from ._tag_resource import TagResource
 from ._tag_resource_input import TagResourceInput
 from ._tag_resources_input import TagResourcesInput
 from ._target_tracking_policy import TargetTrackingPolicy
+from ._timed_pool_config import TimedPoolConfig
+from ._timed_resident_resource_pool_application import TimedResidentResourcePoolApplication
 from ._timer_trigger_config import TimerTriggerConfig
 from ._tracing_config import TracingConfig
 from ._trigger import Trigger
@@ -307,6 +314,8 @@ __all__ = [
     CreateFunctionInput,
     CreateLayerVersionInput,
     CreateSessionInput,
+    CreateTimedResidentResourcePoolApplicationInput,
+    CreateTimedResidentResourcePoolApplicationOutput,
     CreateTriggerInput,
     CreateVpcBindingInput,
     CustomContainerConfig,
@@ -321,6 +330,7 @@ __all__ = [
     Destination,
     DestinationConfig,
     ElasticConfigStatus,
+    ElasticInterval,
     EqualRule,
     Error,
     EventBridgeTriggerConfig,
@@ -366,6 +376,7 @@ __all__ = [
     ListSessionsOutput,
     ListTagResourcesOutput,
     ListTaggedResourcesOutput,
+    ListTimedResidentResourcePoolApplicationsOutput,
     ListTriggersOutput,
     ListVersionsOutput,
     ListVpcBindingsOutput,
@@ -373,6 +384,7 @@ __all__ = [
     MCPSSESessionAffinityConfig,
     MCPStreamableSessionAffinityConfig,
     MNSTopicTriggerConfig,
+    MicroSandboxConfig,
     NASConfig,
     NASMountConfig,
     OSSMountConfig,
@@ -427,6 +439,8 @@ __all__ = [
     TagResourceInput,
     TagResourcesInput,
     TargetTrackingPolicy,
+    TimedPoolConfig,
+    TimedResidentResourcePoolApplication,
     TimerTriggerConfig,
     TracingConfig,
     Trigger,

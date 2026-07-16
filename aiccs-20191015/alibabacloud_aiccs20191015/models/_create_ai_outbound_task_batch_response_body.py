@@ -13,10 +13,17 @@ class CreateAiOutboundTaskBatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request status code.
         self.code = code
+        # The version ID of the newly created job batch.
         self.data = data
+        # The status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

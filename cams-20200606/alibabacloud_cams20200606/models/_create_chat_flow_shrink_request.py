@@ -16,18 +16,28 @@ class CreateChatFlowShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         title: str = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
+        # The business tenant code. The default value is ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
+        # Business extension information. The default value is an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # Flow trigger type
+        # The trigger type for the flow. Valid values:
+        # 
+        # - TriggeredManually
+        # 
+        # - TriggeredByWhatsApp
+        # 
+        # - TriggeredByMessenger
+        # 
+        # - TriggeredByInstagram
+        # 
+        # - TriggeredByViber
         self.flow_trigger_type = flow_trigger_type
         self.owner_id = owner_id
-        # Flow remarks
+        # The remarks for the flow.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Flow title
+        # The title of the flow.
         self.title = title
 
     def validate(self):

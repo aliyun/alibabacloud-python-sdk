@@ -202,6 +202,7 @@ class QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent(DaraModel):
         push_content: str = None,
         qrcode_url: str = None,
         release_type: str = None,
+        reminder_period: str = None,
         rule_json_list: List[main_models.QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContentRuleJsonList] = None,
         silent_type: int = None,
         sync_mode: str = None,
@@ -254,6 +255,7 @@ class QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent(DaraModel):
         self.push_content = push_content
         self.qrcode_url = qrcode_url
         self.release_type = release_type
+        self.reminder_period = reminder_period
         self.rule_json_list = rule_json_list
         self.silent_type = silent_type
         self.sync_mode = sync_mode
@@ -402,6 +404,9 @@ class QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent(DaraModel):
 
         if self.release_type is not None:
             result['ReleaseType'] = self.release_type
+
+        if self.reminder_period is not None:
+            result['ReminderPeriod'] = self.reminder_period
 
         result['RuleJsonList'] = []
         if self.rule_json_list is not None:
@@ -563,6 +568,9 @@ class QueryMdsUpgradeTaskDetailResponseBodyResultContentDataContent(DaraModel):
 
         if m.get('ReleaseType') is not None:
             self.release_type = m.get('ReleaseType')
+
+        if m.get('ReminderPeriod') is not None:
+            self.reminder_period = m.get('ReminderPeriod')
 
         self.rule_json_list = []
         if m.get('RuleJsonList') is not None:

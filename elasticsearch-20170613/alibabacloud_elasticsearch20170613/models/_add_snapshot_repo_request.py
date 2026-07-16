@@ -9,6 +9,7 @@ class AddSnapshotRepoRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The cross-cluster backup information, which specifies the reference instance.
         self.body = body
 
     def validate(self):

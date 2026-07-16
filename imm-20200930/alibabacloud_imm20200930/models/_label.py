@@ -19,19 +19,21 @@ class Label(DaraModel):
         language: str = None,
         parent_label_name: str = None,
     ):
-        # The central value of the label. This value indicates the confidence that the label is the majority component of the image. Valid values: 0 to 1. A higher value indicates greater confidence.
+        # The centric score of the tag. This indicates whether the tag is the main subject in the image. The value ranges from 0 to 1. A higher value indicates higher confidence that the tag is the main subject of the image.
         self.centric_score = centric_score
+        # Event clips.
         self.clips = clips
+        # The tag alias.
         self.label_alias = label_alias
-        # The confidence level of the label. Valid values: 0 to 1. A higher value indicates greater confidence.
+        # The tag confidence level. The value ranges from 0 (lowest confidence) to 1 (highest confidence).
         self.label_confidence = label_confidence
-        # The label level. Valid values: 1, 2, and 3.
+        # The tag level. Valid values are 1, 2, and 3, representing first-level, second-level, and third-level tags, respectively.
         self.label_level = label_level
-        # The label name.
+        # The tag name.
         self.label_name = label_name
-        # The label language, which is represented as a BCP 47 language tag.
+        # The tag language, in BCP 47 format.
         self.language = language
-        # The name of the parent label.
+        # The parent tag name.
         self.parent_label_name = parent_label_name
 
     def validate(self):

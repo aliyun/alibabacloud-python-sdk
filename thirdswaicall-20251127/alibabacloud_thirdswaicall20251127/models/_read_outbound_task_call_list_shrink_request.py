@@ -7,6 +7,10 @@ from darabonba.model import DaraModel
 class ReadOutboundTaskCallListShrinkRequest(DaraModel):
     def __init__(
         self,
+        call_end_time_begin: int = None,
+        call_end_time_end: int = None,
+        call_start_time_begin: int = None,
+        call_start_time_end: int = None,
         current: int = None,
         customer_name_or_phone: str = None,
         display_status_list_shrink: str = None,
@@ -17,12 +21,15 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         task_id: str = None,
         user_id: str = None,
     ):
+        self.call_end_time_begin = call_end_time_begin
+        self.call_end_time_end = call_end_time_end
+        self.call_start_time_begin = call_start_time_begin
+        self.call_start_time_end = call_start_time_end
         self.current = current
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list_shrink = display_status_list_shrink
         self.label_tags_shrink = label_tags_shrink
         self.max_results = max_results
-        # nextToken
         self.next_token = next_token
         self.size = size
         self.task_id = task_id
@@ -36,6 +43,18 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.call_end_time_begin is not None:
+            result['CallEndTimeBegin'] = self.call_end_time_begin
+
+        if self.call_end_time_end is not None:
+            result['CallEndTimeEnd'] = self.call_end_time_end
+
+        if self.call_start_time_begin is not None:
+            result['CallStartTimeBegin'] = self.call_start_time_begin
+
+        if self.call_start_time_end is not None:
+            result['CallStartTimeEnd'] = self.call_start_time_end
+
         if self.current is not None:
             result['Current'] = self.current
 
@@ -67,6 +86,18 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CallEndTimeBegin') is not None:
+            self.call_end_time_begin = m.get('CallEndTimeBegin')
+
+        if m.get('CallEndTimeEnd') is not None:
+            self.call_end_time_end = m.get('CallEndTimeEnd')
+
+        if m.get('CallStartTimeBegin') is not None:
+            self.call_start_time_begin = m.get('CallStartTimeBegin')
+
+        if m.get('CallStartTimeEnd') is not None:
+            self.call_start_time_end = m.get('CallStartTimeEnd')
+
         if m.get('Current') is not None:
             self.current = m.get('Current')
 

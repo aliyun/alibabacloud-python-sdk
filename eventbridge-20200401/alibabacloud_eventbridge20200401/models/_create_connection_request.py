@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import Any, List
 
 from alibabacloud_eventbridge20200401 import models as main_models
 from darabonba.model import DaraModel
@@ -14,6 +14,8 @@ class CreateConnectionRequest(DaraModel):
         connection_name: str = None,
         description: str = None,
         network_parameters: main_models.CreateConnectionRequestNetworkParameters = None,
+        parameters: Any = None,
+        type: str = None,
     ):
         # The parameters that are configured for authentication.
         self.auth_parameters = auth_parameters
@@ -27,6 +29,10 @@ class CreateConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.network_parameters = network_parameters
+        # 数据源连接参数（JSON 对象），Type 为数据源类型时必填，Http 类型不需要。具体字段定义请调用 GetConnectionType 接口，参考返回结果中的 ParamsSchema
+        self.parameters = parameters
+        # 连接类型。可选值：MySQL、PostgreSQL、Elasticsearch、Http。数据源类型连接必填，不传默认为 Http。Http 类型用于 API Destination 等 HTTP 协议目标；数据源类型用于集成广场的数据连接
+        self.type = type
 
     def validate(self):
         if self.auth_parameters:
@@ -51,6 +57,12 @@ class CreateConnectionRequest(DaraModel):
         if self.network_parameters is not None:
             result['NetworkParameters'] = self.network_parameters.to_map()
 
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -68,6 +80,12 @@ class CreateConnectionRequest(DaraModel):
         if m.get('NetworkParameters') is not None:
             temp_model = main_models.CreateConnectionRequestNetworkParameters()
             self.network_parameters = temp_model.from_map(m.get('NetworkParameters'))
+
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

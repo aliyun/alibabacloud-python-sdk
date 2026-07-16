@@ -64,60 +64,65 @@ class Service(DaraModel):
         workload_type: str = None,
         workspace_id: str = None,
     ):
-        # The token that is used to access the service.
+        # The access token for the service.
         self.access_token = access_token
-        # The application service configuration.
+        # The application configuration for the service.
         self.app_config = app_config
-        # The name of the application service specification.
+        # The application specification name for the service.
         self.app_spec_name = app_spec_name
-        # The application service type.
+        # The application type of the service.
         self.app_type = app_type
-        # The application service version.
+        # The application version of the service.
         self.app_version = app_version
+        # Indicates whether auto scaling is enabled for the service.
         self.autoscaler_enabled = autoscaler_enabled
-        # The user ID (UID) of the Alibaba Cloud account that is used to create the service.
+        # The UID of the account that created the service.
         self.caller_uid = caller_uid
-        # The number of CPU cores that you applied for each instance.
+        # The number of CPU cores requested for each instance.
         self.cpu = cpu
-        # The time when the service was created. The time is displayed in the UTC RFC3339 format.
+        # The time when the service was created, in RFC 3339 format (UTC).
         self.create_time = create_time
+        # Indicates whether scheduled scaling is enabled for the service.
         self.cronscaler_enabled = cronscaler_enabled
-        # The version of the model that is running.
+        # The current version of the running model.
         self.current_version = current_version
-        # The additional information about the service.
+        # Additional information about the service.
         self.extra_data = extra_data
+        # The percentage of GPU computing power requested for each instance when GPU sharing is enabled.
         self.gpucore_percentage = gpucore_percentage
+        # The amount of GPU memory requested for each instance when GPU sharing is enabled.
         self.gpumemory = gpumemory
-        # The ID of the dedicated gateway for the service. This parameter is available only for services that are associated with dedicated gateways.
+        # The ID of the dedicated gateway for the service. This field is returned only for services that are bound to a dedicated gateway.
         self.gateway = gateway
-        # The number of GPUs that you applied for each instance.
+        # The number of GPUs requested for each instance.
         self.gpu = gpu
-        # The data image of the service.
+        # The image used by the service.
         self.image = image
+        # A breakdown of the instance count by resource type.
         self.instance_count_in_resource = instance_count_in_resource
-        # The public endpoint of the service. This parameter is returned only in the DescribeService API operation.
+        # The internet endpoint of the service. This field is returned only by the `DescribeService` operation.
         self.internet_endpoint = internet_endpoint
-        # The internal endpoint of the service. This parameter is returned only in the DescribeService API operation.
+        # The intranet endpoint of the service. This field is returned only by the `DescribeService` operation.
         self.intranet_endpoint = intranet_endpoint
-        # The labels.
+        # The labels of the service.
         self.labels = labels
         # The latest version of the service.
         self.latest_version = latest_version
-        # The memory size that you applied for each instance. Unit: MB.
+        # The amount of memory requested for each instance, in MB.
         self.memory = memory
-        # The service summary.
+        # A message that provides information about the service status.
         self.message = message
-        # The namespace in which the service resides.
+        # The namespace where the service is located.
         self.namespace = namespace
-        # The UID of the Alibaba Cloud account that is used to create the service.
+        # The UID of the primary account used to create the service.
         self.parent_uid = parent_uid
-        # The number of instances for the pending service.
+        # The number of pending instances for the service.
         self.pending_instance = pending_instance
-        # The quota ID for the service. This parameter is available only for services deployed by using Lingjun resource quotas.
+        # The quota ID of the service. This field is returned only for services that are deployed on a Lingjun resource quota.
         self.quota_id = quota_id
-        # The reason for which the service is in the current state.
+        # The reason for the service status.
         self.reason = reason
-        # The region in which the service resides.
+        # The region where the service is deployed.
         self.region = region
         # The request ID.
         self.request_id = request_id
@@ -125,68 +130,41 @@ class Service(DaraModel):
         self.resource = resource
         # The alias of the resource group to which the service belongs.
         self.resource_alias = resource_alias
+        # Indicates whether a burstable resource pool is enabled for the service.
         self.resource_burstable = resource_burstable
-        # The service role.
+        # The role of the service.
         self.role = role
-        # The additional attributes of the service role. This parameter is returned only in the DescribeService API operation.
+        # Additional attributes of the service role. This field is returned only by the `DescribeService` operation.
         self.role_attrs = role_attrs
-        # The number of instances for the running service.
+        # The number of running instances of the service.
         self.running_instance = running_instance
-        # The security lock of the service.
-        # 
-        # Valid values:
-        # 
-        # *   all: forbids all operations.
-        # *   dangerous: forbids the operation of deleting or stopping the service.
-        # *   none: forbids no operations.
+        # The safety lock status of the service.
         self.safety_lock = safety_lock
-        # The public endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
+        # The internet endpoint for synchronous requests to an asynchronous service. This field is returned only by the `DescribeService` operation.
         self.secondary_internet_endpoint = secondary_internet_endpoint
-        # The internal endpoint that is used in the asynchronization request of the service. This parameter is returned only in the DescribeService API operation.
+        # The intranet endpoint for synchronous requests to an asynchronous service. This field is returned only by the `DescribeService` operation.
         self.secondary_intranet_endpoint = secondary_intranet_endpoint
-        # The service configurations.
+        # The configuration of the service.
         self.service_config = service_config
         # The group to which the service belongs.
         self.service_group = service_group
         # The unique ID of the service.
         self.service_id = service_id
-        # The service name.
+        # The name of the service.
         self.service_name = service_name
-        # The service ID. ServiceUid has the same meaning as ServiceId, and the values of the two parameters are the same.
+        # The service ID. This value is the same as `ServiceId`.
         self.service_uid = service_uid
-        # The source from which the service deployment request is initiated.
+        # The deployment source of the service.
         self.source = source
-        # The service status.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # *   Deploying
-        # *   Stopped
-        # *   Failed
-        # *   Updating
-        # *   Stopping
-        # *   Waiting
-        # *   HotUpdate
-        # *   Starting
-        # *   DeleteFailed
-        # *   Running
-        # *   Scaling
-        # *   Pending
-        # *   Deleting
+        # The status of the service.
         self.status = status
         # The total number of instances for the service.
         self.total_instance = total_instance
-        # The traffic state.
-        # 
-        # Valid values:
-        # 
-        # *   standalone: independent traffic.
-        # *   grouping: grouped traffic.
+        # The traffic state of the service.
         self.traffic_state = traffic_state
-        # The time when the service was updated. The time is displayed in the UTC RFC3339 format.
+        # The time when the service was last updated, in RFC 3339 format (UTC).
         self.update_time = update_time
-        # The weight of the service in canary release.
+        # The traffic weight for the canary release of the service.
         self.weight = weight
         self.workload_type = workload_type
         # The ID of the workspace to which the service belongs.
@@ -541,9 +519,9 @@ class ServiceLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
-        # The label key.
+        # The key of the service label.
         self.label_key = label_key
-        # The label value.
+        # The value of the service label.
         self.label_value = label_value
 
     def validate(self):
@@ -579,8 +557,11 @@ class ServiceInstanceCountInResource(DaraModel):
         public: int = None,
         quota: int = None,
     ):
+        # The number of instances that use dedicated or self-managed resource groups.
         self.dedicated = dedicated
+        # The number of instances that use public resource groups.
         self.public = public
+        # The number of instances that use a Lingjun quota.
         self.quota = quota
 
     def validate(self):

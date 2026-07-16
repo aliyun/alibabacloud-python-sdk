@@ -11,10 +11,15 @@ class DeleteWhitelistTemplateRequest(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The whitelist template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # The name of the whitelist template.
         self.template_name = template_name
 
     def validate(self):

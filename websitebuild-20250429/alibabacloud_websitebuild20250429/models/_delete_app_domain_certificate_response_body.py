@@ -22,29 +22,29 @@ class DeleteAppDomainCertificateResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Details of permission check failure
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed. Values:
-        # - false: Not allowed to retry.
-        # - true: Allowed to retry.
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
-        # Application name. Allows a combination of numbers, letters, and hyphens (-). Must start with a letter, cannot end with a hyphen (-), and must not exceed 36 characters.
+        # The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter and cannot end with a hyphen (-). The name cannot exceed 36 characters in length.
         self.app_name = app_name
-        # Dynamic code, not in use, please ignore
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
-        # Dynamic message.
+        # The dynamic message.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message
+        # The error message.
         self.root_error_msg = root_error_msg
-        # Whether it is processed synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -134,7 +134,7 @@ class DeleteAppDomainCertificateResponseBodyModule(DaraModel):
         self,
         success: bool = None,
     ):
-        # Whether it was successful
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

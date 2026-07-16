@@ -15,27 +15,24 @@ class SetPasswordInitializationConfigurationRequest(DaraModel):
         password_initialization_status: str = None,
         password_initialization_type: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to enable forcible password change upon first logon. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
+        # The password forced update status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
-        # The methods for receiving password initialization notifications.
+        # The list of password initialization notification channels.
         self.password_initialization_notification_channels = password_initialization_notification_channels
-        # Specifies whether to enable password initialization. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
+        # The password initialization configuration status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         # 
         # This parameter is required.
         self.password_initialization_status = password_initialization_status
-        # The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Set the value to random.
-        # 
-        # *   random: A randomly generated password is used.
+        # The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Valid values:
+        # - random: Random.
         self.password_initialization_type = password_initialization_type
 
     def validate(self):

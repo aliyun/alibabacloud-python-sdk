@@ -22,6 +22,26 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'ververica.us-west-1.aliyuncs.com',
+            'us-east-1': 'ververica.us-east-1.aliyuncs.com',
+            'eu-west-1': 'ververica.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ververica.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'ververica.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'ververica.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'ververica.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ververica.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'ververica.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ververica.cn-qingdao.aliyuncs.com',
+            'cn-hongkong': 'ververica.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'ververica.cn-hangzhou.aliyuncs.com',
+            'cn-chengdu': 'ververica.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'ververica.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'ververica.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'ververica.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'ververica.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'ververica.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ververica', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -6604,6 +6624,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.StartSessionClusterHeaders()
         return await self.start_session_cluster_with_options_async(namespace, session_cluster_name, headers, runtime)
+
+    def start_sql_execution_with_options(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+        headers: main_models.StartSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartSqlExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_sql_execution_with_options_async(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+        headers: main_models.StartSqlExecutionHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartSqlExecutionResponse:
+        request.validate()
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.workspace):
+            real_headers['workspace'] = str(headers.workspace)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartSqlExecution',
+            version = '2022-07-18',
+            protocol = 'HTTPS',
+            pathname = f'/api/v2/namespaces/{DaraURL.percent_encode(namespace)}/sql-execution',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartSqlExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_sql_execution(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+    ) -> main_models.StartSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StartSqlExecutionHeaders()
+        return self.start_sql_execution_with_options(namespace, request, headers, runtime)
+
+    async def start_sql_execution_async(
+        self,
+        namespace: str,
+        request: main_models.StartSqlExecutionRequest,
+    ) -> main_models.StartSqlExecutionResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.StartSqlExecutionHeaders()
+        return await self.start_sql_execution_with_options_async(namespace, request, headers, runtime)
 
     def stop_apply_scheduled_plan_with_options(
         self,

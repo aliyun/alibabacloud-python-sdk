@@ -9,7 +9,7 @@ class DeleteMaliciousFileWhitelistConfigRequest(DaraModel):
         self,
         config_id: int = None,
     ):
-        # The ID of the alert whitelist rule of sensitive files that are detected by using the agentless detection feature. You can call the [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) operation to query the IDs of alert whitelist rules.
+        # The ID of the whitelist rule for agentless detection of sensitive file alerts. You can call [ListMaliciousFileWhitelistConfigs](~~ListMaliciousFileWhitelistConfigs~~) to obtain the ID.
         self.config_id = config_id
 
     def validate(self):

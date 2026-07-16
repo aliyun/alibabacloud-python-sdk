@@ -12,17 +12,17 @@ class DescribeParamByEventCodesRequest(DaraModel):
         parma: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for request and response, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code.
+        # The event code.
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # Query condition
+        # The query condition.
         self.parma = parma
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

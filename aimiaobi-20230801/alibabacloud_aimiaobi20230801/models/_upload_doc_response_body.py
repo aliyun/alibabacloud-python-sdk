@@ -17,12 +17,17 @@ class UploadDocResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Internal error code
         self.code = code
+        # Document information
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class UploadDocResponseBodyData(DaraModel):
         doc_ids: List[str] = None,
         existed_ids: List[str] = None,
     ):
+        # Array of successfully uploaded document IDs
         self.doc_ids = doc_ids
+        # Document IDs that could not be uploaded because they already exist
         self.existed_ids = existed_ids
 
     def validate(self):

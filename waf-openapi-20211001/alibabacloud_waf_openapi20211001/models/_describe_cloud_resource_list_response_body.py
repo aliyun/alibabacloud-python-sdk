@@ -16,10 +16,17 @@ class DescribeCloudResourceListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of resources that are added to WAF.
         self.cloud_resource_list = cloud_resource_list
+        # The number of entries returned on the current page.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
+        # 
+        # > If a value is returned for this parameter, it indicates that a next page is available. To retrieve the next page of data, include the returned **NextToken** in your next request. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -80,17 +87,46 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
         cloud_resource_id: str = None,
         port: int = None,
         protocol: str = None,
+        resource_domain: str = None,
         resource_instance_id: str = None,
         resource_manager_resource_group_id: str = None,
         resource_product: str = None,
         resource_region_id: str = None,
     ):
+        # The ID of the protected resource. WAF automatically generates this ID when you add the resource to WAF.
         self.cloud_resource_id = cloud_resource_id
+        # The port of the cloud service that is added to WAF.
         self.port = port
+        # The protocol type. Valid values:
+        # 
+        # - **http**: HTTP
+        # 
+        # - **https**: HTTPS
         self.protocol = protocol
+        self.resource_domain = resource_domain
+        # The ID of the resource instance that is added to WAF.
         self.resource_instance_id = resource_instance_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The cloud service to which the resource belongs. Valid values:
+        # 
+        # - **alb**: ALB.
+        # 
+        # - **mse**: MSE.
+        # 
+        # - **fc**: FC.
+        # 
+        # - **sae**: SAE.
+        # 
+        # - **ecs**: ECS.
+        # 
+        # - **clb4**: CLB that uses the TCP protocol.
+        # 
+        # - **clb7**: CLB that uses the HTTP or HTTPS protocol.
+        # 
+        # - **nlb**: NLB.
         self.resource_product = resource_product
+        # The ID of the region where the resource resides. For more information, see the "Regions and supported products" section in this topic.
         self.resource_region_id = resource_region_id
 
     def validate(self):
@@ -109,6 +145,9 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
 
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+
+        if self.resource_domain is not None:
+            result['ResourceDomain'] = self.resource_domain
 
         if self.resource_instance_id is not None:
             result['ResourceInstanceId'] = self.resource_instance_id
@@ -134,6 +173,9 @@ class DescribeCloudResourceListResponseBodyCloudResourceList(DaraModel):
 
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+
+        if m.get('ResourceDomain') is not None:
+            self.resource_domain = m.get('ResourceDomain')
 
         if m.get('ResourceInstanceId') is not None:
             self.resource_instance_id = m.get('ResourceInstanceId')

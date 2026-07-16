@@ -15,8 +15,11 @@ class ListDatasourceFeatureViewsResponseBody(DaraModel):
         total_usage_statistics: main_models.ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics = None,
         request_id: str = None,
     ):
+        # Feature view list.
         self.feature_views = feature_views
+        # Total count.
         self.total_count = total_count
+        # Overall usage statistics. Only displayed for feature views using FeatureDB.
         self.total_usage_statistics = total_usage_statistics
         # Id of the request
         self.request_id = request_id
@@ -77,8 +80,11 @@ class ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics(DaraModel):
         total_memory_usage: float = None,
         total_read_write_count: List[main_models.ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount] = None,
     ):
+        # Total disk usage.
         self.total_disk_usage = total_disk_usage
+        # Total memory usage.
         self.total_memory_usage = total_memory_usage
+        # Total read/write count statistics.
         self.total_read_write_count = total_read_write_count
 
     def validate(self):
@@ -128,8 +134,11 @@ class ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCo
         total_read_count: int = None,
         total_write_count: int = None,
     ):
+        # Date.
         self.date = date
+        # Total read count.
         self.total_read_count = total_read_count
+        # Total write count.
         self.total_write_count = total_write_count
 
     def validate(self):
@@ -176,13 +185,27 @@ class ListDatasourceFeatureViewsResponseBodyFeatureViews(DaraModel):
         type: str = None,
         usage_statistics: main_models.ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics = None,
     ):
+        # Feature view configuration. Only feature views using FeatureDB have values, showing number of shards and number of replicas.
         self.config = config
+        # Feature entity name.
         self.feature_entity_name = feature_entity_name
+        # Feature view ID.
         self.feature_view_id = feature_view_id
+        # Feature view name.
         self.name = name
+        # Project name.
         self.project_name = project_name
+        # Lifecycle. Unit: seconds.
         self.ttl = ttl
+        # Feature view type.
+        # 
+        # - Batch - offline feature
+        # 
+        # - Stream - real-time feature
+        # 
+        # - Sequence - sequence feature
         self.type = type
+        # Usage statistics. Only displayed for feature views using FeatureDB.
         self.usage_statistics = usage_statistics
 
     def validate(self):
@@ -257,9 +280,13 @@ class ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics(DaraMode
         read_write_count: List[main_models.ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount] = None,
         row_count: int = None,
     ):
+        # Disk usage.
         self.disk_usage = disk_usage
+        # Memory usage.
         self.memory_usage = memory_usage
+        # Read/write count statistics.
         self.read_write_count = read_write_count
+        # Row count.
         self.row_count = row_count
 
     def validate(self):
@@ -315,8 +342,11 @@ class ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWrite
         read_count: int = None,
         write_count: int = None,
     ):
+        # Date.
         self.date = date
+        # Read count.
         self.read_count = read_count
+        # Write count.
         self.write_count = write_count
 
     def validate(self):

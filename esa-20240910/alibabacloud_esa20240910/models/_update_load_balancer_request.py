@@ -26,45 +26,49 @@ class UpdateLoadBalancerRequest(DaraModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for fallback across pools.
+        # Configures origin-pull behavior across address pools.
         self.adaptive_routing = adaptive_routing
-        # List of default pool IDs.
+        # A list of default address pool IDs.
         self.default_pools = default_pools
-        # Detailed description of the load balancer, for easier management and identification.
+        # An optional description of the load balancer for easier identification and management.
         self.description = description
-        # Whether the load balancer is enabled.
+        # Specifies whether the load balancer is enabled.
         # 
-        # - true: Enabled.
-        # - false: Not enabled.
+        # - `true`: The load balancer is enabled.
+        # 
+        # - `false`: The load balancer is disabled.
         self.enabled = enabled
-        # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+        # The ID of the fallback address pool. Traffic is routed to this pool when all other address pools are unavailable.
         self.fallback_pool = fallback_pool
-        # Load balancer ID, which can be obtained by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) API.
+        # The ID of the load balancer. You can obtain this ID by calling the [ListLoadBalancers](https://help.aliyun.com/document_detail/2868897.html) API operation.
         # 
         # This parameter is required.
         self.id = id
-        # Monitor configuration for health checks.
+        # The health check monitor configuration.
         self.monitor = monitor
-        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+        # The configuration for weighted round-robin. This setting controls the weight of traffic distributed to different address pools.
         self.random_steering = random_steering
-        # Address pool corresponding to the primary region.
+        # A map of primary regions to their corresponding address pools.
         self.region_pools = region_pools
-        # Rule configuration list, used to define behavior overrides under specific conditions.
+        # A list of rules that define behavior overrides for specific conditions.
         self.rules = rules
-        # Session persistence, with possible values:
-        # - off: Not enabled.
-        # - ip: Session persistence by IP.
-        # - cookie: Session persistence by cookie.
+        # The method for session affinity, which ensures that requests from the same client are routed to the same origin server. Valid values:
+        # 
+        # - `off`: Disables session affinity.
+        # 
+        # - `ip`: Enables session affinity based on the client IP address.
+        # 
+        # - `cookie`: Enables session affinity based on a cookie.
         self.session_affinity = session_affinity
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the Site. You can obtain this ID by calling the [ListSites](~~ListSites~~) API operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Load balancing policy.
+        # The traffic steering policy, which determines how traffic is distributed among the address pools.
         self.steering_policy = steering_policy
-        # Address pool corresponding to the secondary region. When multiple secondary regions share the same address pool, the regions can be concatenated with commas as the key.
+        # A map of secondary regions to their corresponding address pools. To assign the same address pools to multiple secondary regions, combine their codes into a single, comma-separated key.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records, with a default of 30 and a range of 10-600.
+        # The Time to Live (TTL) for the DNS record, in seconds. The default is 30. The value must be between 10 and 600, inclusive.
         self.ttl = ttl
 
     def validate(self):
@@ -199,25 +203,31 @@ class UpdateLoadBalancerRequestRules(DaraModel):
         sequence: int = None,
         terminates: bool = None,
     ):
-        # Execute a specified response after matching the rule.
+        # The fixed response to return when the rule\\"s condition is met.
         self.fixed_response = fixed_response
-        # Modify the corresponding load balancing configuration after matching the rule. The fields in the configuration will override the corresponding fields in the load balancer configuration.
+        # The settings to override for requests that match this rule\\"s condition. These settings take precedence over the load balancer\\"s main configuration.
         self.overrides = overrides
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+        # The content of the rule, specified as a conditional expression to match user requests. This parameter is not required when you configure global settings. Use cases:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding global configurations. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether the rule is enabled. This parameter is not required when you configure global settings. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding global configurations.
+        # The name of the rule. This parameter is not required when you configure global settings.
         self.rule_name = rule_name
-        # The execution order of the rule. It can be left blank, in which case the rules will be executed in the order they appear in the list. If specified, it must be a positive integer, with higher values indicating higher priority.
+        # The execution priority of the rule. This parameter is optional. If you do not specify this parameter, rules are executed in the order they are listed. If specified, the value must be an integer greater than 0. A larger value indicates a higher priority.
         self.sequence = sequence
-        # Whether to terminate the execution of subsequent rules.
-        # - true: Yes.
-        # - false: No, default value.
+        # Specifies whether to stop processing subsequent rules after this rule is matched.
+        # 
+        # - `true`: Stop processing subsequent rules.
+        # 
+        # - `false`: Continue processing subsequent rules. This is the default value.
         self.terminates = terminates
 
     def validate(self):
@@ -286,13 +296,13 @@ class UpdateLoadBalancerRequestRulesFixedResponse(DaraModel):
         message_body: str = None,
         status_code: int = None,
     ):
-        # Content-Type field in the HTTP Header.
+        # The value of the `Content-Type` field in the HTTP response header.
         self.content_type = content_type
-        # Location field in the HTTP response.
+        # The value of the `Location` field in the HTTP response header. This is typically used for redirections.
         self.location = location
-        # Response body value.
+        # The content of the response body.
         self.message_body = message_body
-        # Response status code.
+        # The HTTP status code of the response.
         self.status_code = status_code
 
     def validate(self):
@@ -339,9 +349,9 @@ class UpdateLoadBalancerRequestRandomSteering(DaraModel):
         default_weight: int = None,
         pool_weights: Dict[str, int] = None,
     ):
-        # Default round-robin weight, used for all pools that do not have a separately specified weight. Value range: integers between 0-100.
+        # The default weight applied to all address pools that do not have a specific weight defined. The value must be an integer from 0 to 100, inclusive.
         self.default_weight = default_weight
-        # Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight factor. The weight factor represents the proportion of relative traffic distribution.
+        # A map of pool IDs to their corresponding weights. These weights determine the proportion of traffic routed to each backend server pool.
         self.pool_weights = pool_weights
 
     def validate(self):
@@ -386,31 +396,39 @@ class UpdateLoadBalancerRequestMonitor(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
-        # Number of consecutive failed probes required to consider the target unhealthy, such as 5.
+        # The number of consecutive failed health checks required to declare an origin server unhealthy. For example, `5`.
         self.consecutive_down = consecutive_down
-        # Number of consecutive successful probes required to consider the target healthy, such as 3.
+        # The number of consecutive successful health checks required to declare an origin server healthy. For example, `3`.
         self.consecutive_up = consecutive_up
-        # Expected status codes, such as 200,202, which indicate successful HTTP responses.
+        # The expected HTTP status codes that indicate a healthy response. For example, `200,202`.
         self.expected_codes = expected_codes
-        # Whether to follow redirects.
+        # Specifies whether the health check monitor follows HTTP redirections.
         # 
-        # - true: Yes.
-        # - false: No.
+        # - `true`: The monitor follows HTTP redirections.
+        # 
+        # - `false`: The monitor does not follow HTTP redirections.
         self.follow_redirects = follow_redirects
-        # Monitor request header configuration.
+        # The HTTP request headers to send with each health check.
         self.header = header
-        # Monitor interval, such as 60 seconds, which is the frequency of checks.
+        # The interval in seconds between each health check. For example, `60`.
         self.interval = interval
-        # Monitor request method, such as GET, which is a method in the HTTP protocol.
+        # The HTTP method to use for the health check. For example, `GET`.
         self.method = method
+        # The regions from which the health checks are performed. The default value is `Global`.
+        # 
+        # - `Global`: From probe locations worldwide.
+        # 
+        # - `ChineseMainland`: From probe locations within the Chinese mainland.
+        # 
+        # - `OutsideChineseMainland`: From probe locations outside the Chinese mainland.
         self.monitoring_region = monitoring_region
-        # Monitor check path, such as /healthcheck, which is the HTTP request path.
+        # The path on the origin server to request for the health check. For example, `/healthcheck`.
         self.path = path
-        # Origin server port.
+        # The port on the origin server to use for the health check.
         self.port = port
-        # Application health check timeout, in seconds, with a range of 1-10.
+        # The timeout for the health check, in seconds. The value must be between 1 and 10, inclusive.
         self.timeout = timeout
-        # Monitor protocol type, such as HTTP, used for health checks. When set to \\"off\\", no checks are performed.
+        # The protocol to use for the health check, such as `HTTP`. If you set this to `off`, no health check is performed.
         self.type = type
 
     def validate(self):
@@ -505,10 +523,11 @@ class UpdateLoadBalancerRequestAdaptiveRouting(DaraModel):
         failover_across_pools: bool = None,
         origin_level_retry: bool = None,
     ):
-        # Whether to fallback across pools.
+        # Specifies whether to perform origin-pull across address pools.
         # 
-        # - true: Yes.
-        # - false: No.
+        # - `true`: Enables origin-pull across address pools.
+        # 
+        # - `false`: Disables origin-pull across address pools.
         self.failover_across_pools = failover_across_pools
         self.origin_level_retry = origin_level_retry
 

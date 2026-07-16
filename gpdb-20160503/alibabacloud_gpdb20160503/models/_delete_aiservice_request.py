@@ -11,10 +11,18 @@ class DeleteAIServiceRequest(DaraModel):
         service_id: str = None,
         type: str = None,
     ):
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including the instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service type. Currently, only drama is supported.
+        # 
         # This parameter is required.
         self.type = type
 

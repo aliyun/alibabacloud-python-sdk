@@ -15,25 +15,25 @@ class ListOriginRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
+        # - global: Query global configurations.
+        # - rule: Query rule configurations.
         # 
-        # This parameter is optional; if not provided, it does not distinguish between global and rule configurations.
+        # This parameter is optional. If not specified, both global and rule configurations are returned without distinction.
         self.config_type = config_type
-        # Page number, defaulting to 1 if not provided.
+        # The page number for paginated queries. The value must be greater than or equal to 1. Default value: 1.
         self.page_number = page_number
-        # Number of items per page, with a maximum of 500. Defaults to 500 if not provided.
+        # The number of entries per page for paginated queries. Valid values: 1 to 500. Default value: 500.
         self.page_size = page_size
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) API operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
+        # The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

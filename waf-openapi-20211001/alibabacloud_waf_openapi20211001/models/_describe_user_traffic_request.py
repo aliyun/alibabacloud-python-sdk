@@ -15,13 +15,38 @@ class DescribeUserTrafficRequest(DaraModel):
         start_timestamp: int = None,
         type: str = None,
     ):
+        # The end of the time range to query.
         self.end_timestamp = end_timestamp
+        # Instance ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The time interval. Unit: seconds.
         self.interval = interval
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The beginning of the time range to query.
         self.start_timestamp = start_timestamp
+        # The type of real-time user traffic. Valid values:
+        # - bot: the number of bot management requests.
+        # - risk: the number of times risk identification is triggered.
+        # - custom_acl_captcha: the number of times the slider action of custom rules is triggered.
+        # - qps: the peak QPS.
+        # - apisec: the number of API security requests.
+        # - alb: the number of requests connected through ALB.
+        # - mse: the number of requests connected through MSE.
+        # - fc: the number of requests connected through Function Compute.
+        # - sae: the number of requests connected through Serverless App Engine.
+        # - apig: the number of requests connected through Cloud Native API Gateway.
+        # - nlb: the number of requests connected through NLB.
         self.type = type
 
     def validate(self):

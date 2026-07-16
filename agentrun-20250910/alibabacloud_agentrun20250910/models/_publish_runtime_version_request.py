@@ -10,6 +10,7 @@ class PublishRuntimeVersionRequest(DaraModel):
         self,
         body: main_models.PublishRuntimeVersionInput = None,
     ):
+        # The request body for publishing a version.
         self.body = body
 
     def validate(self):

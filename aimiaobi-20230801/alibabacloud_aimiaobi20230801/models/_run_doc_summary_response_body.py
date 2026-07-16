@@ -12,8 +12,11 @@ class RunDocSummaryResponseBody(DaraModel):
         payload: main_models.RunDocSummaryResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # response header
         self.header = header
+        # response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunDocSummaryResponseBodyPayload(DaraModel):
         output: main_models.RunDocSummaryResponseBodyPayloadOutput = None,
         usage: main_models.RunDocSummaryResponseBodyPayloadUsage = None,
     ):
+        # Outputs
         self.output = output
+        # LLM token usage information
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunDocSummaryResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Quantity of tokens used in the input
         self.input_tokens = input_tokens
+        # Number of output tokens
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunDocSummaryResponseBodyPayloadOutput(DaraModel):
         self,
         content: str = None,
     ):
+        # Summary content
         self.content = content
 
     def validate(self):
@@ -174,12 +183,19 @@ class RunDocSummaryResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # error code
         self.error_code = error_code
+        # error message
         self.error_message = error_message
+        # Type of management event
         self.event = event
+        # Description of the management event
         self.event_info = event_info
+        # session ID
         self.session_id = session_id
+        # Job ID
         self.task_id = task_id
+        # End-to-end trace ID
         self.trace_id = trace_id
 
     def validate(self):

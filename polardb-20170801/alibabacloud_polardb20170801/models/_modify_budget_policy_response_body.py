@@ -10,8 +10,9 @@ class ModifyBudgetPolicyResponseBody(DaraModel):
         gw_cluster_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

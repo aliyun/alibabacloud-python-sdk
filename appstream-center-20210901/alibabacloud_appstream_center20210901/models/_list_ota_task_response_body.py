@@ -16,15 +16,15 @@ class ListOtaTaskResponseBody(DaraModel):
         task_list: List[main_models.ListOtaTaskResponseBodyTaskList] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the query results to display.
         self.page_number = page_number
-        # The number of entries on each page.
+        # The number of query results per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The OTA update tasks.
+        # The list of over-the-air update tasks.
         self.task_list = task_list
-        # The total number of OTA update tasks.
+        # The total number of over-the-air update tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -90,19 +90,10 @@ class ListOtaTaskResponseBodyTaskList(DaraModel):
         # The OTA version.
         self.ota_version = ota_version
         # The task status.
-        # 
-        # Valid values:
-        # 
-        # *   FAILED
-        # *   RUNNING
-        # *   TERMINATED
-        # *   PART_FINISHED
-        # *   STANDBY
-        # *   FINISHED
         self.task_display_status = task_display_status
         # The task ID.
         self.task_id = task_id
-        # The start time of the OTA update task. The time follows the ISO 8601 standard.
+        # The task start time in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time

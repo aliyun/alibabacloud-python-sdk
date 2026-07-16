@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._cancel_translation_task_request import CancelTranslationTaskRequest
+from ._cancel_translation_task_response_body import CancelTranslationTaskResponseBody
+from ._cancel_translation_task_response import CancelTranslationTaskResponse
+from ._get_original_file_url_request import GetOriginalFileUrlRequest
+from ._get_original_file_url_response_body import GetOriginalFileUrlResponseBody
+from ._get_original_file_url_response import GetOriginalFileUrlResponse
+from ._get_translated_file_url_request import GetTranslatedFileUrlRequest
+from ._get_translated_file_url_response_body import GetTranslatedFileUrlResponseBody
+from ._get_translated_file_url_response import GetTranslatedFileUrlResponse
+from ._get_translation_task_request import GetTranslationTaskRequest
+from ._get_translation_task_response_body import GetTranslationTaskResponseBody
+from ._get_translation_task_response import GetTranslationTaskResponse
+from ._list_translation_tasks_request import ListTranslationTasksRequest
+from ._list_translation_tasks_response_body import ListTranslationTasksResponseBody
+from ._list_translation_tasks_response import ListTranslationTasksResponse
+from ._submit_translation_task_request import SubmitTranslationTaskRequest
+from ._submit_translation_task_shrink_request import SubmitTranslationTaskShrinkRequest
+from ._submit_translation_task_response_body import SubmitTranslationTaskResponseBody
+from ._submit_translation_task_response import SubmitTranslationTaskResponse
+from ._upload_translation_file_request import UploadTranslationFileRequest
+from ._upload_translation_file_advance_request import UploadTranslationFileAdvanceRequest
+from ._upload_translation_file_response_body import UploadTranslationFileResponseBody
+from ._upload_translation_file_response import UploadTranslationFileResponse
+from ._cancel_translation_task_response_body import CancelTranslationTaskResponseBodyData
+from ._get_original_file_url_response_body import GetOriginalFileUrlResponseBodyData
+from ._get_translated_file_url_response_body import GetTranslatedFileUrlResponseBodyData
+from ._get_translation_task_response_body import GetTranslationTaskResponseBodyDataConfig
+from ._get_translation_task_response_body import GetTranslationTaskResponseBodyDataExtractedTerms
+from ._get_translation_task_response_body import GetTranslationTaskResponseBodyData
+from ._list_translation_tasks_response_body import ListTranslationTasksResponseBodyDataList
+from ._list_translation_tasks_response_body import ListTranslationTasksResponseBodyData
+from ._submit_translation_task_request import SubmitTranslationTaskRequestConfig
+from ._submit_translation_task_request import SubmitTranslationTaskRequestCustomTerms
+from ._submit_translation_task_response_body import SubmitTranslationTaskResponseBodyData
+from ._upload_translation_file_response_body import UploadTranslationFileResponseBodyData
+
+__all__ = [
+    CancelTranslationTaskRequest,
+    CancelTranslationTaskResponseBody,
+    CancelTranslationTaskResponse,
+    GetOriginalFileUrlRequest,
+    GetOriginalFileUrlResponseBody,
+    GetOriginalFileUrlResponse,
+    GetTranslatedFileUrlRequest,
+    GetTranslatedFileUrlResponseBody,
+    GetTranslatedFileUrlResponse,
+    GetTranslationTaskRequest,
+    GetTranslationTaskResponseBody,
+    GetTranslationTaskResponse,
+    ListTranslationTasksRequest,
+    ListTranslationTasksResponseBody,
+    ListTranslationTasksResponse,
+    SubmitTranslationTaskRequest,
+    SubmitTranslationTaskShrinkRequest,
+    SubmitTranslationTaskResponseBody,
+    SubmitTranslationTaskResponse,
+    UploadTranslationFileRequest,
+    UploadTranslationFileAdvanceRequest,
+    UploadTranslationFileResponseBody,
+    UploadTranslationFileResponse,
+    CancelTranslationTaskResponseBodyData,
+    GetOriginalFileUrlResponseBodyData,
+    GetTranslatedFileUrlResponseBodyData,
+    GetTranslationTaskResponseBodyDataConfig,
+    GetTranslationTaskResponseBodyDataExtractedTerms,
+    GetTranslationTaskResponseBodyData,
+    ListTranslationTasksResponseBodyDataList,
+    ListTranslationTasksResponseBodyData,
+    SubmitTranslationTaskRequestConfig,
+    SubmitTranslationTaskRequestCustomTerms,
+    SubmitTranslationTaskResponseBodyData,
+    UploadTranslationFileResponseBodyData
+]

@@ -11,10 +11,15 @@ class SetFundAccountCreditAmountRequest(DaraModel):
         currency: str = None,
         fund_account_id: int = None,
     ):
+        # Credit limit
+        # 
         # This parameter is required.
         self.credit_amount = credit_amount
+        # Currency for the credit control limit. Currently, only CNY is supported in mainland China, and only USD is supported for international use.
+        # 
         # This parameter is required.
         self.currency = currency
+        # Fund account ID. If not specified, the account owned by the current account (owner) is used by default.
         self.fund_account_id = fund_account_id
 
     def validate(self):

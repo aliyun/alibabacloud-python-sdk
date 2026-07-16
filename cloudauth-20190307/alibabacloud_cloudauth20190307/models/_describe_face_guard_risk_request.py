@@ -12,15 +12,15 @@ class DescribeFaceGuardRiskRequest(DaraModel):
         outer_order_no: str = None,
         product_code: str = None,
     ):
-        # Authentication ID
+        # The authentication ID.
         self.biz_id = biz_id
-        # Risk identification - device token.
+        # The device token for risk identification.
         self.device_token = device_token
-        # This identifier is used for subsequent troubleshooting, and you need to ensure that this value is unique in your business.
+        # The identifier used for subsequent troubleshooting. Ensure that this value is unique within your business.
         # 
-        # Supports the use of English letters (including uppercase and lowercase) and numbers, with a maximum length of 32 characters.
+        # The value can contain letters (both uppercase and lowercase) and digits, with a maximum length of 32 characters.
         self.outer_order_no = outer_order_no
-        # Product code, fixed value: FACE_GUARD
+        # The product code. Set this to FACE_GUARD.
         self.product_code = product_code
 
     def validate(self):

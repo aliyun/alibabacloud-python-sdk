@@ -11,11 +11,11 @@ class CreateConsumerAPIKeyInput(DaraModel):
         description: str = None,
         model_connection_id: str = None,
     ):
-        # 用户自定义的完整API密钥；为空时由服务自动生成
+        # A custom API key. If omitted, the service generates one automatically.
         self.api_key = api_key
-        # 消费者API密钥的描述信息，用于说明该密钥的用途
+        # A description for the consumer API key.
         self.description = description
-        # 关联的模型连接标识符
+        # The identifier for the model connection.
         # 
         # This parameter is required.
         self.model_connection_id = model_connection_id

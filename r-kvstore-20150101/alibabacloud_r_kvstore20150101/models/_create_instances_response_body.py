@@ -15,9 +15,9 @@ class CreateInstancesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.instance_ids = instance_ids
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

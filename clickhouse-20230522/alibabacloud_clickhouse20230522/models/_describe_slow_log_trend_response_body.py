@@ -13,7 +13,7 @@ class DescribeSlowLogTrendResponseBody(DaraModel):
         data: main_models.DescribeSlowLogTrendResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The data returned.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -57,7 +57,7 @@ class DescribeSlowLogTrendResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The result sets.
+        # The result set.
         self.result_set = result_set
 
     def validate(self):
@@ -109,15 +109,15 @@ class DescribeSlowLogTrendResponseBodyDataResultSet(DaraModel):
         min_query_duration_ms: int = None,
         query_start_time: str = None,
     ):
-        # The average execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+        # The average execution duration, in milliseconds, of slow SQL queries within the time interval.
         self.avg_query_duration_ms = avg_query_duration_ms
-        # The total number of SQL queries within the specified time range.
+        # The number of slow SQL queries in the time interval.
         self.cnt = cnt
-        # The maximum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+        # The maximum execution duration, in milliseconds, of slow SQL queries within the time interval.
         self.max_query_duration_ms = max_query_duration_ms
-        # The minimum execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+        # The minimum execution duration, in milliseconds, of slow SQL queries within the time interval.
         self.min_query_duration_ms = min_query_duration_ms
-        # The beginning of the time range to query. The time is in the yyyy-MM-dd hh:mm:ss format. The time is displayed in UTC.
+        # The start of the time interval for the data point. The time is in UTC and uses the yyyy-MM-dd hh:mm:ss format.
         self.query_start_time = query_start_time
 
     def validate(self):

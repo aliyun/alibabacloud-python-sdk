@@ -9,7 +9,7 @@ class DescribeNetTestResultRequest(DaraModel):
         self,
         test_id: str = None,
     ):
-        # The ID of the test task. The unique identifier of a network test task.
+        # The ID of the test task.
         self.test_id = test_id
 
     def validate(self):

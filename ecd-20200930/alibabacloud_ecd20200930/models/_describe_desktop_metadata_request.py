@@ -11,6 +11,7 @@ class DescribeDesktopMetadataRequest(DaraModel):
         self,
         creation_time_start: str = None,
         desktop_ids: List[str] = None,
+        end_user_id: str = None,
         group_id: str = None,
         host_name: str = None,
         image_id: str = None,
@@ -23,18 +24,33 @@ class DescribeDesktopMetadataRequest(DaraModel):
         region_id: str = None,
         search_region_id: str = None,
     ):
+        # The creation time of the cloud computer. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
         self.creation_time_start = creation_time_start
+        # A list of cloud computer IDs.
         self.desktop_ids = desktop_ids
+        # The ID of the end user.
+        self.end_user_id = end_user_id
+        # The ID of the cloud computer share.
         self.group_id = group_id
+        # The hostname.
         self.host_name = host_name
+        # The ID of the image.
         self.image_id = image_id
+        # Specifies whether to include cloud computers in cloud computer shares in the response.
         self.include_desktop_group = include_desktop_group
+        # > This parameter is not yet available.
         self.keyword = keyword
+        # The maximum number of entries to return per page. Maximum: 100. Default: 10.
         self.max_results = max_results
+        # The token returned from the previous call to retrieve the next page of results.
         self.next_token = next_token
+        # The ID of the office network.
         self.office_site_id = office_site_id
+        # The start of the time range to query for operations. The time must be in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format and in UTC.
         self.operation_time_start = operation_time_start
+        # The region ID.
         self.region_id = region_id
+        # The ID of the region to search.
         self.search_region_id = search_region_id
 
     def validate(self):
@@ -50,6 +66,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if self.desktop_ids is not None:
             result['DesktopIds'] = self.desktop_ids
+
+        if self.end_user_id is not None:
+            result['EndUserId'] = self.end_user_id
 
         if self.group_id is not None:
             result['GroupId'] = self.group_id
@@ -93,6 +112,9 @@ class DescribeDesktopMetadataRequest(DaraModel):
 
         if m.get('DesktopIds') is not None:
             self.desktop_ids = m.get('DesktopIds')
+
+        if m.get('EndUserId') is not None:
+            self.end_user_id = m.get('EndUserId')
 
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')

@@ -19,17 +19,45 @@ class ListRenderingSessionsRequest(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
+        # Cloud application ID
         self.app_id = app_id
+        # Unique ID of the client.
         self.client_id = client_id
+        # Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # Page number, starting from 1
         self.page_number = page_number
+        # The number of rows per page set for paged queries.
         self.page_size = page_size
+        # Cloud application patch ID.
+        # 
+        # 1. When you enter origin, only sessions that started the original version of the app are filtered.
         self.patch_id = patch_id
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
+        # Session ID
         self.session_id = session_id
+        # Time range filter parameter. Represented in ISO8601 standard and must use UTC time, in the format yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
+        # Session state. Valid values:
+        # 
+        # 1. SessionStarting: The session is starting.
+        # 
+        # 2. SessionStartSuspended: Session startup is paused. Retry by initiating start again.
+        # 
+        # 3. SessionStarted: The session has started/is in use.
+        # 
+        # 4. SessionStartFailed: Session startup failed.
+        # 
+        # 5. SessionAbnormal: The session is abnormal after successful startup.
+        # 
+        # 6. SessionStopping: The session is stopping.
+        # 
+        # 7. SessionStopFailed: Session stop failed.
         self.state = state
 
     def validate(self):

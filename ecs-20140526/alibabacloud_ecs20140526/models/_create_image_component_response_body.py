@@ -10,7 +10,7 @@ class CreateImageComponentResponseBody(DaraModel):
         image_component_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the image component.
+        # The image component ID.
         self.image_component_id = image_component_id
         # The request ID.
         self.request_id = request_id

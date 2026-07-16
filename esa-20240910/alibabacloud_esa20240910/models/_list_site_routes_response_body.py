@@ -17,17 +17,17 @@ class ListSiteRoutesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The returned configurations.
+        # The configuration list in the response.
         self.configs = configs
-        # The page number of the returned page.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -105,38 +105,39 @@ class ListSiteRoutesResponseBodyConfigs(DaraModel):
         timeout: str = None,
     ):
         # The bypass mode. Valid values:
-        # 
-        # *   on
-        # *   off
+        # - on: Enabled.
+        # - off: Disabled.
         self.bypass = bypass
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
+        # - global: Queries global configurations.
+        # - rule: Queries rule configurations.
         self.config_type = config_type
+        # The CDN fallback. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.fallback = fallback
-        # The configuration mode. Specifies whether to check the image used by the instance supports hot migration. Valid values:
-        # 
-        # *   simple: Simple Mode
-        # *   custom: Custom Mode
+        # The configuration mode. Valid values:
+        # - simple: Simple mode.
+        # - custom: Custom mode.
         self.mode = mode
         # The route switch. Valid values:
-        # 
-        # *   on
-        # *   off
+        # - on: Enabled.
+        # - off: Disabled.
         self.route_enable = route_enable
         # The route name.
         self.route_name = route_name
-        # The function name.
+        # The Edge Routine name.
         self.routine_name = routine_name
         # The rule content.
         self.rule = rule
-        # The order in which the rule is executed.
+        # The execution order of the rule.
         self.sequence = sequence
-        # The version number of the website.
+        # The version number of the site.
         self.site_version = site_version
+        # The Edge Routine timeout period, in seconds.
         self.timeout = timeout
 
     def validate(self):

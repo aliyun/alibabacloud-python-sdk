@@ -18,12 +18,19 @@ class HiMarketOidcConfig(DaraModel):
         name: str = None,
         provider: str = None,
     ):
+        # The OAuth2 Authorization Code configuration.
         self.auth_code_config = auth_code_config
+        # Indicates whether the OIDC configuration is enabled.
         self.enabled = enabled
+        # The authorization type.
         self.grant_type = grant_type
+        # The identity field mapping configuration.
         self.identity_mapping = identity_mapping
+        # The provider logo URL.
         self.logo_url = logo_url
+        # The OIDC configuration name.
         self.name = name
+        # The OIDC provider name.
         self.provider = provider
 
     def validate(self):
@@ -95,9 +102,13 @@ class HiMarketOidcConfigIdentityMapping(DaraModel):
         user_id_field: str = None,
         user_name_field: str = None,
     ):
+        # The custom field mappings.
         self.custom_fields = custom_fields
+        # The identity field name that corresponds to the email address.
         self.email_field = email_field
+        # The identity field name that corresponds to the user ID.
         self.user_id_field = user_id_field
+        # The identity field name that corresponds to the username.
         self.user_name_field = user_name_field
 
     def validate(self):
@@ -151,14 +162,23 @@ class HiMarketOidcConfigAuthCodeConfig(DaraModel):
         token_endpoint: str = None,
         user_info_endpoint: str = None,
     ):
+        # The authorization endpoint URL.
         self.authorization_endpoint = authorization_endpoint
+        # The OAuth2 client ID.
         self.client_id = client_id
+        # The OAuth2 client secret.
         self.client_secret = client_secret
+        # The OIDC issuer URL.
         self.issuer = issuer
+        # The JWKS public key set URI.
         self.jwk_set_uri = jwk_set_uri
+        # The OAuth2 redirect URI.
         self.redirect_uri = redirect_uri
+        # The OAuth2 authorization scopes.
         self.scopes = scopes
+        # The token endpoint URL.
         self.token_endpoint = token_endpoint
+        # The UserInfo endpoint URL.
         self.user_info_endpoint = user_info_endpoint
 
     def validate(self):

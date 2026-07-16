@@ -20,34 +20,27 @@ class DescribeTemplatesRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The region that you can use to filter templates.
+        # The region filter condition for the template query. 
         # 
-        # >  If you specify this parameter, only templates that are created in the specified region are returned.
+        # > If this parameter is specified, region-specific configurations that do not match are excluded from the query results.
         self.biz_region_id = biz_region_id
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
+        # The cloud computer image ID. You can obtain the ID from the image management page. System images, custom images, and other image types are supported.
         self.image_id = image_id
-        # The keyword that you can use to search for the template. It can be the template ID or the template name. Fuzzy search is supported.
+        # The keyword. Fuzzy match is supported for the template ID and template name fields.
         self.keyword = keyword
-        # The page number.
+        # The page number of the current page in a paged query. This parameter is used for paging.
         self.page_number = page_number
-        # The number of entries per page.
+        # The maximum number of rows per page in a paged query. This parameter is used for paging.
         self.page_size = page_size
-        # The service type. Set the value to `CloudDesktop`.
-        # 
-        # *
+        # The product type. Set this parameter to `CloudDesktop`.
         self.product_type = product_type
-        # The IDs of the templates that you want to query.
+        # The list of template IDs to query.
         self.template_ids = template_ids
-        # The name of the template. You can search for template by name.
+        # The template name used for the query.
         self.template_name = template_name
-        # The type of the template that you want to query. If you leave this parameter empty, all types of templates are queried.
-        # 
-        # Valid values:
-        # 
-        # *   USER_TEMPLATE: custom templates.
-        # *   SYSTEM_TEMPLATE: system templates provided by Alibaba Cloud.
+        # The templatetype to query. If this parameter is not specified, templates of all types are queried.
         self.template_type = template_type
 
     def validate(self):

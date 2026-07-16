@@ -14,8 +14,11 @@ class DescribeVpcFirewallDropTrafficTrendResponseBody(DaraModel):
         drop_session_max: int = None,
         request_id: str = None,
     ):
+        # The list of returned data.
         self.data_list = data_list
+        # The maximum number of blocked connections.
         self.drop_session_max = drop_session_max
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,11 +71,17 @@ class DescribeVpcFirewallDropTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_session: int = None,
     ):
+        # The number of sessions blocked by the access control list (ACL).
         self.acl_drop = acl_drop
+        # The data timestamp. The value is a string in the YYYY-MM-DD HH:mm:ss format.
         self.data_time = data_time
+        # The number of blocked sessions.
         self.drop_session = drop_session
+        # The number of sessions blocked by the intrusion prevention system (IPS).
         self.ips_drop = ips_drop
+        # The data timestamp. This value is a UNIX timestamp. Unit: seconds.
         self.time = time
+        # The total number of sessions.
         self.total_session = total_session
 
     def validate(self):

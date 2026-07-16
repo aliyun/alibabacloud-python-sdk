@@ -32,7 +32,7 @@ class ModifyElasticityAssuranceRequest(DaraModel):
         self.owner_id = owner_id
         # The assurance schedules of the time-segmented elasticity assurance.
         # 
-        # >  Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
+        # > Time-segmented elasticity assurances are available only in specific regions and to specific users. To use time-segmented elasticity assurances, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl).
         self.recurrence_rules = recurrence_rules
         # The region ID of the elasticity assurance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
@@ -138,23 +138,27 @@ class ModifyElasticityAssuranceRequestRecurrenceRules(DaraModel):
         self.end_hour = end_hour
         # The type of the assurance schedule. Valid values:
         # 
-        # *   Daily
-        # *   Weekly
-        # *   Monthly
+        # - Daily
         # 
-        # >  If you specify this parameter, you must specify `RecurrenceType` and `RecurrenceValue`.
+        # - Weekly
+        # 
+        # - Monthly
+        # 
+        # > If you specify this parameter, you must specify `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_type = recurrence_type
         # The days of the week or month on which the capacity reservation of the time-segmented elasticity assurance takes effect or the interval, in number of days, at which the capacity reservation takes effect.
         # 
-        # *   If you set `RecurrenceType` to `Daily`, you can specify only one value. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
-        # *   If you set `RecurrenceType` to `Weekly`, you can specify multiple values. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
-        # *   If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. Example: `1-5`, which specifies that the capacity reservation takes effect every day from the first day up to the fifth day of each month.
+        # - If you set `RecurrenceType` to `Daily`, you can specify only one value. Valid values: 1 to 31. The value specifies that the capacity reservation takes effect every few days.
         # 
-        # >  If this parameter is specified, you must specify `RecurrenceType` and `RecurrenceValue`.
+        # - If you set `RecurrenceType` to `Weekly`, you can specify multiple values. Separate the values with commas (,). Valid values: 0, 1, 2, 3, 4, 5, and 6, which specify Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday, respectively. Example: `1,2`, which specifies that the capacity reservation takes effect on Monday and Tuesday.
+        # 
+        # - If you set `RecurrenceType` to `Monthly`, you can specify two values in the `A-B` format. Valid values of A and B: 1 to 31. B must be greater than or equal to A. Example: `1-5`, which specifies that the capacity reservation takes effect every day from the first day up to the fifth day of each month.
+        # 
+        # > If this parameter is specified, you must specify `RecurrenceType` and `RecurrenceValue`.
         self.recurrence_value = recurrence_value
         # The start time of the assurance period for the capacity reservation of the time-segmented elasticity assurance. Specify an on-the-hour point in time.
         # 
-        # >  You must specify both `StartHour` and `EndHour`. The EndHour value must be at least 4 hours later than the StartHour value.
+        # > You must specify both `StartHour` and `EndHour`. The EndHour value must be at least 4 hours later than the StartHour value.
         self.start_hour = start_hour
 
     def validate(self):
@@ -205,7 +209,7 @@ class ModifyElasticityAssuranceRequestPrivatePoolOptions(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The name of the elasticity assurance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the elasticity assurance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.name = name
 
     def validate(self):

@@ -95,9 +95,11 @@ class GetSnapshotJobResponseBodySnapshotJob(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Init: The job is submitted.
-        # *   Success: The job is successful.
-        # *   Fail: The job failed.
+        # - Init: The job is submitted.
+        # 
+        # - Success: The job is successful.
+        # 
+        # - Fail: The job failed.
         self.status = status
         # The time when the job was submitted.
         self.submit_time = submit_time
@@ -109,17 +111,21 @@ class GetSnapshotJobResponseBodySnapshotJob(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Console
-        # *   Workflow
-        # *   API
+        # - Console
+        # 
+        # - Workflow
+        # 
+        # - API
         self.trigger_source = trigger_source
         # Snapshot types
         # 
         # Valid values:
         # 
-        # *   WebVtt
-        # *   Sprite
-        # *   Normal
+        # - WebVtt
+        # 
+        # - Sprite
+        # 
+        # - Normal
         self.type = type
         # The user-defined parameters.
         self.user_data = user_data
@@ -266,8 +272,9 @@ class GetSnapshotJobResponseBodySnapshotJobOutput(DaraModel):
     ):
         # The output file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object
+        # 1. oss\\://bucket/object
+        # 
+        # 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object
         # 
         # In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS. If multiple static snapshots were captured, the object must contain the "{Count}" placeholder. In the case of a sprite, the object must contain the "{TileCount}" placeholder. The suffix of the WebVTT snapshot objects must be ".vtt".
         self.media = media
@@ -275,8 +282,9 @@ class GetSnapshotJobResponseBodySnapshotJobOutput(DaraModel):
         self.oss_file = oss_file
         # The type of the output file. Valid values:
         # 
-        # 1.  OSS: an OSS object.
-        # 2.  Media: a media asset.
+        # 1. OSS: an OSS object.
+        # 
+        # 2. Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -368,15 +376,17 @@ class GetSnapshotJobResponseBodySnapshotJobInput(DaraModel):
     ):
         # The input file. If Type is set to OSS, the URL of an OSS object is returned. If Type is set to Media, the ID of a media asset is returned. The URL of an OSS object can be in one of the following formats:
         # 
-        # 1.  oss://bucket/object
-        # 2.  http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
+        # 1. oss\\://bucket/object
+        # 
+        # 2. http(s)://bucket.oss-[RegionId].aliyuncs.com/object In the URL, bucket specifies an OSS bucket that resides in the same region as the job, and object specifies the object URL in OSS.
         self.media = media
         # The three key elements of OSS.
         self.oss_file = oss_file
         # The type of the input file. Valid values:
         # 
-        # 1.  OSS: an Object Storage Service (OSS) object.
-        # 2.  Media: a media asset.
+        # 1. OSS: an Object Storage Service (OSS) object.
+        # 
+        # 2. Media: a media asset.
         self.type = type
 
     def validate(self):

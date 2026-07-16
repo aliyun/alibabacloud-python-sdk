@@ -13,8 +13,11 @@ class MLDataParamAnnotationsValue(DaraModel):
         update_time: int = None,
         results: List[Dict[str, str]] = None,
     ):
+        # The Alibaba Cloud account ID of the annotator.
         self.annotated_by = annotated_by
+        # The update time. The value is a UNIX timestamp.
         self.update_time = update_time
+        # The annotation results.
         self.results = results
 
     def validate(self):

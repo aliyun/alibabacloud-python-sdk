@@ -16,18 +16,20 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         max_results: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_types: List[str] = None,
         result_category: str = None,
         retryable: bool = None,
         search_region_id: str = None,
         timer_result: str = None,
         timer_types: List[str] = None,
+        wuying_server_ids: List[str] = None,
     ):
-        # The ID of the batch in which the scheduled task is executed.
+        # The batch ID for a scheduled task execution.
         self.batch_id = batch_id
-        # The cloud computer IDs.
+        # A list of cloud desktop IDs.
         self.desktop_ids = desktop_ids
         self.display_result_name = display_result_name
-        # The ID of the scheduled task group.
+        # The scheduled task group ID.
         self.group_id = group_id
         # The number of entries per page.
         # 
@@ -35,35 +37,21 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token used to start the next query.
         self.next_token = next_token
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to list the regions available in Elastic Desktop Service.
         self.region_id = region_id
-        # The type of the execution result. You can specify this parameter to filter the execution results.
-        # 
-        # Valid values:
-        # 
-        # *   FAILED: The execution is successful.
-        # *   FAILED: The execution failed.
-        # *   RUNNING: The execution is in progress.
-        # *   SKIPPED: The execution is skipped.
+        self.resource_types = resource_types
+        # Filters the results by execution status. Valid values:
         self.result_category = result_category
         self.retryable = retryable
-        # The ID of the searched region. You can specify this parameter to filter cloud computers in specific regions.
+        # The ID of the region to filter by. Only records for cloud desktops in this region are returned.
         self.search_region_id = search_region_id
-        # The execution result of the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   CONNECTED_NOT_RUN: The cloud computer is connected, but the scheduled task is not executed.
-        # *   PAUSED: The scheduled task is suspended.
-        # *   COMPLETED: The scheduled task is executed.
-        # *   FAILED: The scheduled task failed to be executed.
-        # *   RUNNING: The scheduled task is being executed.
-        # *   TERMINATED: The scheduled task is stopped.
+        # The execution result of the scheduled task. Valid values:
         self.timer_result = timer_result
-        # The scheduled tasks.
+        # The types of scheduled tasks.
         self.timer_types = timer_types
+        self.wuying_server_ids = wuying_server_ids
 
     def validate(self):
         pass
@@ -94,6 +82,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+
         if self.result_category is not None:
             result['ResultCategory'] = self.result_category
 
@@ -108,6 +99,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
 
         if self.timer_types is not None:
             result['TimerTypes'] = self.timer_types
+
+        if self.wuying_server_ids is not None:
+            result['WuyingServerIds'] = self.wuying_server_ids
 
         return result
 
@@ -134,6 +128,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
+
         if m.get('ResultCategory') is not None:
             self.result_category = m.get('ResultCategory')
 
@@ -148,6 +145,9 @@ class DescribeGlobalTimerRecordsRequest(DaraModel):
 
         if m.get('TimerTypes') is not None:
             self.timer_types = m.get('TimerTypes')
+
+        if m.get('WuyingServerIds') is not None:
+            self.wuying_server_ids = m.get('WuyingServerIds')
 
         return self
 

@@ -15,13 +15,13 @@ class TextModerationPlusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The moderation results.
+        # The data that is returned.
         self.data = data
-        # The message that is returned in response to the request.
+        # A human-readable description of the error.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -82,28 +82,35 @@ class TextModerationPlusResponseBodyData(DaraModel):
         sensitive_result: List[main_models.TextModerationPlusResponseBodyDataSensitiveResult] = None,
         translated_content: str = None,
     ):
+        # The AccountId from the request.
         self.account_id = account_id
-        # The suggestion.
+        # The suggested actions.
         self.advice = advice
-        # The level of prompt attack
+        # The attack level.
         self.attack_level = attack_level
-        # The result of prompt attack detect
+        # The prompt attack detection results.
         self.attack_result = attack_result
-        # The id of data
+        # The ID of the data that was moderated.
+        # 
+        # > If you specify the \\`dataId\\` parameter in the request, the value of this parameter is returned.
         self.data_id = data_id
+        # The detected language.
         self.detected_language = detected_language
+        # The auxiliary information.
         self.ext = ext
+        # The ID of the manual review task.
         self.manual_task_id = manual_task_id
-        # The results.
+        # The moderation results.
         self.result = result
-        # Risk Level
+        # The risk level.
         self.risk_level = risk_level
         # The score.
         self.score = score
-        # The level of sensitivity data
+        # The sensitivity level.
         self.sensitive_level = sensitive_level
-        # The result of sensitivity data detect
+        # The sensitive data detection results.
         self.sensitive_result = sensitive_result
+        # The translated content.
         self.translated_content = translated_content
 
     def validate(self):
@@ -250,13 +257,13 @@ class TextModerationPlusResponseBodyDataSensitiveResult(DaraModel):
         sensitive_data: List[str] = None,
         sensitive_level: str = None,
     ):
-        # Description
+        # The description.
         self.description = description
-        # The label
+        # The label.
         self.label = label
-        # The sensitive data.
+        # The list of sensitive data.
         self.sensitive_data = sensitive_data
-        # The level of sensitivity data
+        # The sensitivity level.
         self.sensitive_level = sensitive_level
 
     def validate(self):
@@ -307,16 +314,17 @@ class TextModerationPlusResponseBodyDataResult(DaraModel):
         risk_positions: List[main_models.TextModerationPlusResponseBodyDataResultRiskPositions] = None,
         risk_words: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+        # The confidence score. The value ranges from 0 to 100. The value is accurate to two decimal places.
         self.confidence = confidence
-        # The custom term hit by the moderated content.
+        # The custom keywords that were hit.
         self.customized_hit = customized_hit
         # The description of the label.
         self.description = description
         # The label.
         self.label = label
+        # The position information of the risk words.
         self.risk_positions = risk_positions
-        # The term hit by the moderated content.
+        # The risk keywords that were hit.
         self.risk_words = risk_words
 
     def validate(self):
@@ -393,8 +401,11 @@ class TextModerationPlusResponseBodyDataResultRiskPositions(DaraModel):
         risk_word: str = None,
         start_pos: int = None,
     ):
+        # The end position of the non-compliant word.
         self.end_pos = end_pos
+        # The non-compliant word.
         self.risk_word = risk_word
+        # The start position of the non-compliant word.
         self.start_pos = start_pos
 
     def validate(self):
@@ -435,9 +446,9 @@ class TextModerationPlusResponseBodyDataResultCustomizedHit(DaraModel):
         key_words: str = None,
         lib_name: str = None,
     ):
-        # The terms that are hit. Multiple terms are separated by commas (,).
+        # The keywords that were hit, separated by commas.
         self.key_words = key_words
-        # The library name.
+        # The name of the keyword library.
         self.lib_name = lib_name
 
     def validate(self):
@@ -471,6 +482,7 @@ class TextModerationPlusResponseBodyDataExt(DaraModel):
         self,
         llm_content: main_models.TextModerationPlusResponseBodyDataExtLlmContent = None,
     ):
+        # The LLM output.
         self.llm_content = llm_content
 
     def validate(self):
@@ -500,6 +512,7 @@ class TextModerationPlusResponseBodyDataExtLlmContent(DaraModel):
         self,
         output_text: str = None,
     ):
+        # The output.
         self.output_text = output_text
 
     def validate(self):
@@ -530,13 +543,13 @@ class TextModerationPlusResponseBodyDataAttackResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The level of prompt attack
+        # The attack level.
         self.attack_level = attack_level
-        # The confidence
+        # The confidence score.
         self.confidence = confidence
-        # Description
+        # The description.
         self.description = description
-        # The label
+        # The label.
         self.label = label
 
     def validate(self):
@@ -584,11 +597,11 @@ class TextModerationPlusResponseBodyDataAdvice(DaraModel):
         hit_label: str = None,
         hit_lib_name: str = None,
     ):
-        # The answer.
+        # The suggested answer.
         self.answer = answer
-        # Hit Label
+        # The label that was hit.
         self.hit_label = hit_label
-        # Hit Library Name
+        # The name of the keyword library that was hit.
         self.hit_lib_name = hit_lib_name
 
     def validate(self):

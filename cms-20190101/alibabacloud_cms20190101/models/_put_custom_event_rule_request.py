@@ -19,37 +19,36 @@ class PutCustomEventRuleRequest(DaraModel):
         threshold: str = None,
         webhook: str = None,
     ):
-        # The alert contact group that receives alert notifications. Separate multiple contact groups with commas (,).
+        # The alert contact group. Separate multiple contact groups with commas (,).
         # 
         # This parameter is required.
         self.contact_groups = contact_groups
-        # The time period during which the alert rule is effective. Valid values: 00:00 to 23:59.
+        # The time period during which the alert rule is effective. Valid values: 00:00-23:59.
         self.effective_interval = effective_interval
-        # The subject of the alert notification email.
+        # The subject of the alert email.
         self.email_subject = email_subject
-        # The name of the custom event. For more information about how to obtain the event name, see [DescribeCustomEventAttribute](https://help.aliyun.com/document_detail/115262.html).
+        # The name of the custom event. For information about how to obtain the name, see [DescribeCustomEventAttribute](https://help.aliyun.com/document_detail/115262.html).
         # 
         # This parameter is required.
         self.event_name = event_name
-        # The ID of the application group. For more information about how to obtain the group ID, see [DescribeCustomEventAttribute](https://help.aliyun.com/document_detail/115262.html).
+        # The ID of the application group. For information about how to obtain the ID, see [DescribeCustomEventAttribute](https://help.aliyun.com/document_detail/115262.html).
         # 
-        # >  The value 0 indicates that the reported custom event does not belong to any application Group.
+        # > A value of 0 indicates that the reported custom event does not belong to any application group.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The level of the alert. Valid values:
-        # 
-        # *   CRITICAL: critical issue
-        # *   WARN: warning
-        # *   INFO: information
+        # The alert level. Valid values:
+        # - CRITICAL
+        # - WARN
+        # - INFO
         # 
         # This parameter is required.
         self.level = level
-        # The cycle that is used to aggregate monitoring data of the custom event. Unit: seconds. Set the value to an integral multiple of 60. Default value: 300.
+        # The aggregation period of the monitoring data for the custom event. Unit: seconds. The value must be 60 or a multiple of 60. Default value: 300.
         self.period = period
         # The ID of the alert rule.
         # 
-        # >  You can specify an existing ID to modify the corresponding alert rule or specify a new ID to create an alert rule.
+        # > If the alert rule ID already exists, the alert rule is modified. If the alert rule ID does not exist, an alert rule is created.
         # 
         # This parameter is required.
         self.rule_id = rule_id
@@ -61,7 +60,7 @@ class PutCustomEventRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.threshold = threshold
-        # The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+        # The callback URL to which a POST request is sent when an alert is triggered.
         self.webhook = webhook
 
     def validate(self):

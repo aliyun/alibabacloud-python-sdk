@@ -13,9 +13,9 @@ class DescribeRequestHitResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeRequestHitResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,21 +58,21 @@ class DescribeRequestHitResponseBodyResultObject(DaraModel):
         s_request_id: str = None,
         total_cost: int = None,
     ):
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Input parameters.
+        # The input parameters.
         self.inputs = inputs
-        # Output parameters
+        # The output parameters.
         self.outputs = outputs
-        # Timestamp of the request.
+        # The timestamp of the request.
         self.request_time = request_time
-        # Details of the executed rules.
+        # The details of the rules executed by the request.
         self.rule_hit_records = rule_hit_records
-        # Request ID
+        # The request ID.
         self.s_request_id = s_request_id
-        # Total amount of the request
+        # The total cost of the request.
         self.total_cost = total_cost
 
     def validate(self):
@@ -156,23 +156,26 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         rule_name: str = None,
         rule_snapshot_id: str = None,
         rule_status: str = None,
+        rule_type: str = None,
     ):
-        # Duration
+        # The time consumed.
         self.cost = cost
-        # Whether the rule was hit.
+        # Indicates whether the rule is hit.
         self.hit_successful = hit_successful
-        # Whether to show details
+        # Indicates whether to display details.
         self.is_show_detail = is_show_detail
-        # Order.
+        # The order.
         self.order = order
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Rule snapshot ID
+        # The rule snapshot ID.
         self.rule_snapshot_id = rule_snapshot_id
-        # Policy status
+        # The policy status.
         self.rule_status = rule_status
+        # The policy type.
+        self.rule_type = rule_type
 
     def validate(self):
         pass
@@ -206,6 +209,9 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
 
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -233,6 +239,9 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(DaraModel):
 
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
 
         return self
 

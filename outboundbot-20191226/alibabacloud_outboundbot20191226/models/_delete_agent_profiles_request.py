@@ -12,7 +12,9 @@ class DeleteAgentProfilesRequest(DaraModel):
         agent_profile_ids: List[str] = None,
         app_ip: str = None,
     ):
+        # Collection of agent profile IDs
         self.agent_profile_ids = agent_profile_ids
+        # app_ip (system field, optional)
         self.app_ip = app_ip
 
     def validate(self):

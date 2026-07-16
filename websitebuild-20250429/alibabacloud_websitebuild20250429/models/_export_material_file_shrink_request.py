@@ -10,8 +10,12 @@ class ExportMaterialFileShrinkRequest(DaraModel):
         biz_id: str = None,
         file_ids_shrink: str = None,
     ):
+        # The business instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The list of file IDs.
+        # 
         # This parameter is required.
         self.file_ids_shrink = file_ids_shrink
 

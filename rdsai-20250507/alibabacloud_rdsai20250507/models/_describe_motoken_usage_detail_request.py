@@ -17,18 +17,32 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         page_size: int = None,
         region: str = None,
         start_time: str = None,
+        usage_type: str = None,
     ):
+        # The API key used for the request.
         self.api_key = api_key
+        # The consumer associated with the API key.
         self.consumer_name = consumer_name
+        # The cursor-based pagination token. This parameter takes priority over Page. Leave this parameter empty for the first call. For subsequent calls, use the NextCursor value returned in the previous response.
         self.cursor = cursor
+        # The end time in ISO 8601 format (UTC).
         self.end_time = end_time
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The model that was called.
         self.model = model
+        # The page number. Minimum value: 1. Default value: 1.
         self.page = page
+        # The number of records per page.
         self.page_size = page_size
+        # The region in which the instance resides.
         self.region = region
+        # The start time in ISO 8601 format (UTC).
         self.start_time = start_time
+        # The type of usage to query.
+        self.usage_type = usage_type
 
     def validate(self):
         pass
@@ -68,6 +82,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.usage_type is not None:
+            result['UsageType'] = self.usage_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -101,6 +118,9 @@ class DescribeMOTokenUsageDetailRequest(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('UsageType') is not None:
+            self.usage_type = m.get('UsageType')
 
         return self
 

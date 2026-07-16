@@ -1086,6 +1086,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeZonesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cross_region):
+            query['CrossRegion'] = request.cross_region
+        if not DaraCore.is_null(request.cross_region_side):
+            query['CrossRegionSide'] = request.cross_region_side
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.region_id):
@@ -1118,6 +1122,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeZonesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cross_region):
+            query['CrossRegion'] = request.cross_region
+        if not DaraCore.is_null(request.cross_region_side):
+            query['CrossRegionSide'] = request.cross_region_side
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.region_id):

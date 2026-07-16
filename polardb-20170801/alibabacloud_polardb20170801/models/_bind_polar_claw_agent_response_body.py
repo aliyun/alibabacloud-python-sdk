@@ -16,15 +16,19 @@ class BindPolarClawAgentResponseBody(DaraModel):
         request_id: str = None,
         total_bindings: int = None,
     ):
-        # Agent ID
+        # The agent ID.
         self.agent_id = agent_id
+        # The application ID.
         self.application_id = application_id
+        # Details of the newly created binding.
         self.binding = binding
-        # 200
+        # The HTTP status code.
         self.code = code
-        # successful
+        # A message that indicates the request result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of global bindings after the operation.
         self.total_bindings = total_bindings
 
     def validate(self):
@@ -92,9 +96,11 @@ class BindPolarClawAgentResponseBodyBinding(DaraModel):
         agent_id: str = None,
         channel: str = None,
     ):
+        # The account ID.
         self.account_id = account_id
-        # Agent ID
+        # The agent ID.
         self.agent_id = agent_id
+        # The channel ID.
         self.channel = channel
 
     def validate(self):

@@ -12,9 +12,11 @@ class ListCodeInterpreterSessionResult(DaraModel):
         data: main_models.CodeInterpreterSessionListOut = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # The request status. A value of SUCCESS indicates that the request succeeded. Other values include error codes such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, and `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
+        # Contains the list of code interpreter sessions.
         self.data = data
+        # Unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

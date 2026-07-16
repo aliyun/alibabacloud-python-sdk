@@ -5,6 +5,9 @@ from __future__ import annotations
 from ._approve_ota_task_request import ApproveOtaTaskRequest
 from ._approve_ota_task_response_body import ApproveOtaTaskResponseBody
 from ._approve_ota_task_response import ApproveOtaTaskResponse
+from ._assign_wuying_server_private_addresses_request import AssignWuyingServerPrivateAddressesRequest
+from ._assign_wuying_server_private_addresses_response_body import AssignWuyingServerPrivateAddressesResponseBody
+from ._assign_wuying_server_private_addresses_response import AssignWuyingServerPrivateAddressesResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequest
 from ._authorize_instance_group_shrink_request import AuthorizeInstanceGroupShrinkRequest
 from ._authorize_instance_group_response_body import AuthorizeInstanceGroupResponseBody
@@ -64,6 +67,9 @@ from ._delete_wuying_server_response import DeleteWuyingServerResponse
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequest
 from ._deliver_to_user_sls_response_body import DeliverToUserSlsResponseBody
 from ._deliver_to_user_sls_response import DeliverToUserSlsResponse
+from ._describe_wuying_server_request import DescribeWuyingServerRequest
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
+from ._describe_wuying_server_response import DescribeWuyingServerResponse
 from ._describe_wuying_server_eip_info_request import DescribeWuyingServerEipInfoRequest
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBody
 from ._describe_wuying_server_eip_info_response import DescribeWuyingServerEipInfoResponse
@@ -116,6 +122,9 @@ from ._list_llm_templates_request import ListLlmTemplatesRequest
 from ._list_llm_templates_shrink_request import ListLlmTemplatesShrinkRequest
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBody
 from ._list_llm_templates_response import ListLlmTemplatesResponse
+from ._list_model_provider_endpoints_request import ListModelProviderEndpointsRequest
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBody
+from ._list_model_provider_endpoints_response import ListModelProviderEndpointsResponse
 from ._list_model_provider_templates_request import ListModelProviderTemplatesRequest
 from ._list_model_provider_templates_shrink_request import ListModelProviderTemplatesShrinkRequest
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBody
@@ -213,6 +222,9 @@ from ._stop_wuying_server_response import StopWuyingServerResponse
 from ._tag_cloud_resources_request import TagCloudResourcesRequest
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBody
 from ._tag_cloud_resources_response import TagCloudResourcesResponse
+from ._unassign_wuying_server_private_addresses_request import UnassignWuyingServerPrivateAddressesRequest
+from ._unassign_wuying_server_private_addresses_response_body import UnassignWuyingServerPrivateAddressesResponseBody
+from ._unassign_wuying_server_private_addresses_response import UnassignWuyingServerPrivateAddressesResponse
 from ._unbind_request import UnbindRequest
 from ._unbind_response_body import UnbindResponseBody
 from ._unbind_response import UnbindResponse
@@ -259,6 +271,8 @@ from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
 from ._delete_app_instances_response_body import DeleteAppInstancesResponseBodyDeleteAppInstanceModels
 from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
+from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
 from ._get_app_instance_group_response_body import GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods
@@ -310,6 +324,8 @@ from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
 from ._list_llm_templates_response_body import ListLlmTemplatesResponseBodyData
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyDataEndpoints
+from ._list_model_provider_endpoints_response_body import ListModelProviderEndpointsResponseBodyData
 from ._list_model_provider_templates_response_body import ListModelProviderTemplatesResponseBodyData
 from ._list_model_template_resource_group_response_body import ListModelTemplateResourceGroupResponseBodyData
 from ._list_model_templates_response_body import ListModelTemplatesResponseBodyData
@@ -323,6 +339,7 @@ from ._list_tag_cloud_resources_response_body import ListTagCloudResourcesRespon
 from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenantConfigModel
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListPrivateIpSets
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListSessions
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
@@ -363,6 +380,9 @@ __all__ = [
     ApproveOtaTaskRequest,
     ApproveOtaTaskResponseBody,
     ApproveOtaTaskResponse,
+    AssignWuyingServerPrivateAddressesRequest,
+    AssignWuyingServerPrivateAddressesResponseBody,
+    AssignWuyingServerPrivateAddressesResponse,
     AuthorizeInstanceGroupRequest,
     AuthorizeInstanceGroupShrinkRequest,
     AuthorizeInstanceGroupResponseBody,
@@ -422,6 +442,9 @@ __all__ = [
     DeliverToUserSlsRequest,
     DeliverToUserSlsResponseBody,
     DeliverToUserSlsResponse,
+    DescribeWuyingServerRequest,
+    DescribeWuyingServerResponseBody,
+    DescribeWuyingServerResponse,
     DescribeWuyingServerEipInfoRequest,
     DescribeWuyingServerEipInfoResponseBody,
     DescribeWuyingServerEipInfoResponse,
@@ -474,6 +497,9 @@ __all__ = [
     ListLlmTemplatesShrinkRequest,
     ListLlmTemplatesResponseBody,
     ListLlmTemplatesResponse,
+    ListModelProviderEndpointsRequest,
+    ListModelProviderEndpointsResponseBody,
+    ListModelProviderEndpointsResponse,
     ListModelProviderTemplatesRequest,
     ListModelProviderTemplatesShrinkRequest,
     ListModelProviderTemplatesResponseBody,
@@ -571,6 +597,9 @@ __all__ = [
     TagCloudResourcesRequest,
     TagCloudResourcesResponseBody,
     TagCloudResourcesResponse,
+    UnassignWuyingServerPrivateAddressesRequest,
+    UnassignWuyingServerPrivateAddressesResponseBody,
+    UnassignWuyingServerPrivateAddressesResponse,
     UnbindRequest,
     UnbindResponseBody,
     UnbindResponse,
@@ -617,6 +646,8 @@ __all__ = [
     CreateWuyingServerResponseBodyData,
     DeleteAppInstancesResponseBodyDeleteAppInstanceModels,
     DeliverToUserSlsRequestDeliveryScopes,
+    DescribeWuyingServerResponseBodyDataPrivateIpSets,
+    DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,
     GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods,
@@ -668,6 +699,8 @@ __all__ = [
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
     ListLlmTemplatesResponseBodyData,
+    ListModelProviderEndpointsResponseBodyDataEndpoints,
+    ListModelProviderEndpointsResponseBodyData,
     ListModelProviderTemplatesResponseBodyData,
     ListModelTemplateResourceGroupResponseBodyData,
     ListModelTemplatesResponseBodyData,
@@ -681,6 +714,7 @@ __all__ = [
     ListTenantConfigResponseBodyTenantConfigModel,
     ListWuyingServerResponseBodyWuyingServerListDataDisk,
     ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
+    ListWuyingServerResponseBodyWuyingServerListPrivateIpSets,
     ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
     ListWuyingServerResponseBodyWuyingServerListSessions,
     ListWuyingServerResponseBodyWuyingServerList,

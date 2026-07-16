@@ -17,11 +17,17 @@ class GetInstanceDownStreamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. OK indicates a successful request.
         self.code = code
+        # HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # Downstream instances and dependency relationships.
         self.instance_relation_list = instance_relation_list
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,12 +99,35 @@ class GetInstanceDownStreamResponseBodyInstanceRelationList(DaraModel):
         select_status: str = None,
         select_status_cause: str = None,
     ):
+        # Depth level.
         self.down_stream_depth = down_stream_depth
+        # Extended information of the node instance.
         self.extend_info = extend_info
+        # Field instance list.
         self.field_instance_list = field_instance_list
+        # Instance information.
         self.instance_info = instance_info
+        # Run status of the instance.
         self.run_status = run_status
+        # Selection status of the instance, primarily used for logical fields.
+        # - OPTIONAL: Optional.
+        # - SELECTED: Required.
+        # - DISABLE: Not selectable.
+        # - GROUP_SELECTED: Select all or deselect all.
         self.select_status = select_status
+        # Reason why the instance is selected.
+        # - PK_CHANGE
+        # - LOGIC_CHANGE
+        # - RELATION
+        # - BIZ_RELATIO
+        # - MV_RELATION
+        # - MODEL_REFRESH
+        # - FIELD_DELETED
+        # - FIELD_ADDED_NO_INSTANCE
+        # - PERMISSION_DENY
+        # - OUTSIDE_INCOMING
+        # - INSTANCE_STATUS
+        # - AFFECT_BY_UPSTREAM
         self.select_status_cause = select_status_cause
 
     def validate(self):
@@ -175,8 +204,11 @@ class GetInstanceDownStreamResponseBodyInstanceRelationListInstanceInfo(DaraMode
         name: str = None,
         type: str = None,
     ):
+        # Instance ID.
         self.id = id
+        # Instance name.
         self.name = name
+        # Node type.
         self.type = type
 
     def validate(self):
@@ -218,8 +250,11 @@ class GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList(Dar
         run_status: str = None,
         select_status: str = None,
     ):
+        # Field instance ID.
         self.field_instance_id = field_instance_id
+        # Run status.
         self.run_status = run_status
+        # Selection status of the instance.
         self.select_status = select_status
 
     def validate(self):

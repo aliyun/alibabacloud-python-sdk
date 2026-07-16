@@ -17,24 +17,23 @@ class ListGatewayRouteTableEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The destination CIDR block of the route entry in the gateway route table.
+        # The destination CIDR block of the route entry in the gateway route table that you want to query.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the gateway route table that you want to query.
+        # The ID of the gateway route table to query.
         # 
         # This parameter is required.
         self.gateway_route_table_id = gateway_route_table_id
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
+        # The pagination token. Valid values:
+        # - If this is the first query or no subsequent query exists, leave this parameter empty.
+        # - If a subsequent query exists, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway route table.
+        # The region ID of the gateway route table that you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

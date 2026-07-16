@@ -7,12 +7,14 @@ from darabonba.model import DaraModel
 class TransferInstanceClassRequest(DaraModel):
     def __init__(
         self,
+        database_count: int = None,
         dts_job_id: str = None,
         instance_class: str = None,
         order_type: str = None,
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        self.database_count = database_count
         # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # This parameter is required.
@@ -43,6 +45,9 @@ class TransferInstanceClassRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.database_count is not None:
+            result['DatabaseCount'] = self.database_count
+
         if self.dts_job_id is not None:
             result['DtsJobId'] = self.dts_job_id
 
@@ -62,6 +67,9 @@ class TransferInstanceClassRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatabaseCount') is not None:
+            self.database_count = m.get('DatabaseCount')
+
         if m.get('DtsJobId') is not None:
             self.dts_job_id = m.get('DtsJobId')
 

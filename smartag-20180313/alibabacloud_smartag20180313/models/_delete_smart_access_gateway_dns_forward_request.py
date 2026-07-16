@@ -12,7 +12,7 @@ class DeleteSmartAccessGatewayDnsForwardRequest(DaraModel):
         sag_ins_id: str = None,
         sag_sn: str = None,
     ):
-        # The ID of the instance.
+        # The ID of the DNS forwarding rule.
         # 
         # This parameter is required.
         self.instance_id = instance_id

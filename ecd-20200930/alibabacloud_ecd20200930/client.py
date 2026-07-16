@@ -22,6 +22,32 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'ecd.us-west-1.aliyuncs.com',
+            'us-east-1': 'ecd.us-east-1.aliyuncs.com',
+            'me-east-1': 'ecd.me-east-1.aliyuncs.com',
+            'me-central-1': 'ecd.me-central-1.aliyuncs.com',
+            'eu-west-1': 'ecd.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ecd.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'ecd.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'ecd.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'ecd.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'ecd.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'ecd.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ecd.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'ecd.cn-nanjing.aliyuncs.com',
+            'cn-hongkong': 'ecd.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou-finance': 'ecd.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'ecd.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'ecd.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'ecd.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'ecd.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'ecd.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'ecd.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'ecd.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'ecd.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'ecd.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -392,6 +418,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -434,6 +462,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -4870,6 +4900,8 @@ class Client(OpenApiClient):
             query['MonthDesktopSetting'] = request.month_desktop_setting
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.ou_path):
+            query['OuPath'] = request.ou_path
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -4892,6 +4924,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not DaraCore.is_null(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not DaraCore.is_null(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not DaraCore.is_null(request.subnet_id):
             query['SubnetId'] = request.subnet_id
         if not DaraCore.is_null(request.tag):
@@ -4982,6 +5016,8 @@ class Client(OpenApiClient):
             query['MonthDesktopSetting'] = request.month_desktop_setting
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.ou_path):
+            query['OuPath'] = request.ou_path
         if not DaraCore.is_null(request.period):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
@@ -5004,6 +5040,8 @@ class Client(OpenApiClient):
             query['SavingPlanId'] = request.saving_plan_id
         if not DaraCore.is_null(request.snapshot_policy_id):
             query['SnapshotPolicyId'] = request.snapshot_policy_id
+        if not DaraCore.is_null(request.sub_pay_type):
+            query['SubPayType'] = request.sub_pay_type
         if not DaraCore.is_null(request.subnet_id):
             query['SubnetId'] = request.subnet_id
         if not DaraCore.is_null(request.tag):
@@ -5724,6 +5762,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5774,6 +5814,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.reseller_owner_uid):
             query['ResellerOwnerUid'] = request.reseller_owner_uid
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11052,6 +11094,8 @@ class Client(OpenApiClient):
             query['CreationTimeStart'] = request.creation_time_start
         if not DaraCore.is_null(request.desktop_ids):
             query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.host_name):
@@ -11104,6 +11148,8 @@ class Client(OpenApiClient):
             query['CreationTimeStart'] = request.creation_time_start
         if not DaraCore.is_null(request.desktop_ids):
             query['DesktopIds'] = request.desktop_ids
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.group_id):
             query['GroupId'] = request.group_id
         if not DaraCore.is_null(request.host_name):
@@ -12487,96 +12533,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_flow_metric_with_options_async(request, runtime)
 
-    def describe_flow_statistic_with_options(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.desktop_id):
-            query['DesktopId'] = request.desktop_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeFlowStatistic',
-            version = '2020-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeFlowStatisticResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_flow_statistic_with_options_async(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.desktop_id):
-            query['DesktopId'] = request.desktop_id
-        if not DaraCore.is_null(request.office_site_id):
-            query['OfficeSiteId'] = request.office_site_id
-        if not DaraCore.is_null(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not DaraCore.is_null(request.page_size):
-            query['PageSize'] = request.page_size
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DescribeFlowStatistic',
-            version = '2020-09-30',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DescribeFlowStatisticResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_flow_statistic(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        runtime = RuntimeOptions()
-        return self.describe_flow_statistic_with_options(request, runtime)
-
-    async def describe_flow_statistic_async(
-        self,
-        request: main_models.DescribeFlowStatisticRequest,
-    ) -> main_models.DescribeFlowStatisticResponse:
-        runtime = RuntimeOptions()
-        return await self.describe_flow_statistic_with_options_async(request, runtime)
-
     def describe_forward_table_entries_with_options(
         self,
         request: main_models.DescribeForwardTableEntriesRequest,
@@ -12862,6 +12818,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeGlobalDesktopRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
@@ -12922,6 +12880,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeGlobalDesktopRecordsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.business_channel):
+            query['BusinessChannel'] = request.business_channel
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
@@ -13004,6 +12964,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.search_region_id):
             query['SearchRegionId'] = request.search_region_id
         if not DaraCore.is_null(request.timer_type):
@@ -13042,6 +13004,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.search_region_id):
             query['SearchRegionId'] = request.search_region_id
         if not DaraCore.is_null(request.timer_type):
@@ -13100,6 +13064,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.result_category):
             query['ResultCategory'] = request.result_category
         if not DaraCore.is_null(request.retryable):
@@ -13110,6 +13076,8 @@ class Client(OpenApiClient):
             query['TimerResult'] = request.timer_result
         if not DaraCore.is_null(request.timer_types):
             query['TimerTypes'] = request.timer_types
+        if not DaraCore.is_null(request.wuying_server_ids):
+            query['WuyingServerIds'] = request.wuying_server_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13150,6 +13118,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_types):
+            query['ResourceTypes'] = request.resource_types
         if not DaraCore.is_null(request.result_category):
             query['ResultCategory'] = request.result_category
         if not DaraCore.is_null(request.retryable):
@@ -13160,6 +13130,8 @@ class Client(OpenApiClient):
             query['TimerResult'] = request.timer_result
         if not DaraCore.is_null(request.timer_types):
             query['TimerTypes'] = request.timer_types
+        if not DaraCore.is_null(request.wuying_server_ids):
+            query['WuyingServerIds'] = request.wuying_server_ids
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14134,6 +14106,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14170,6 +14144,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -14982,6 +14958,8 @@ class Client(OpenApiClient):
             query['RecordType'] = request.record_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
@@ -15032,6 +15010,8 @@ class Client(OpenApiClient):
             query['RecordType'] = request.record_type
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         if not DaraCore.is_null(request.status):
@@ -21630,6 +21610,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_host_name):
             query['NewHostName'] = request.new_host_name
         if not DaraCore.is_null(request.region_id):
@@ -21662,6 +21644,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_host_name):
             query['NewHostName'] = request.new_host_name
         if not DaraCore.is_null(request.region_id):
@@ -21708,10 +21692,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_desktop_name):
             query['NewDesktopName'] = request.new_desktop_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_assign_mode):
+            query['UserAssignMode'] = request.user_assign_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21740,10 +21728,14 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not DaraCore.is_null(request.desktop_ids):
+            query['DesktopIds'] = request.desktop_ids
         if not DaraCore.is_null(request.new_desktop_name):
             query['NewDesktopName'] = request.new_desktop_name
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_assign_mode):
+            query['UserAssignMode'] = request.user_assign_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -24833,6 +24825,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_history_metric_distribution_with_options_async(request, runtime)
 
+    def query_history_usage_duration_rank_with_options(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryUsageDurationRank',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryUsageDurationRankResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_history_usage_duration_rank_with_options_async(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryHistoryUsageDurationRank',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryHistoryUsageDurationRankResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_history_usage_duration_rank(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        runtime = RuntimeOptions()
+        return self.query_history_usage_duration_rank_with_options(request, runtime)
+
+    async def query_history_usage_duration_rank_async(
+        self,
+        request: main_models.QueryHistoryUsageDurationRankRequest,
+    ) -> main_models.QueryHistoryUsageDurationRankResponse:
+        runtime = RuntimeOptions()
+        return await self.query_history_usage_duration_rank_with_options_async(request, runtime)
+
     def reboot_desktops_with_options(
         self,
         request: main_models.RebootDesktopsRequest,
@@ -25194,6 +25272,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):
@@ -25234,6 +25314,8 @@ class Client(OpenApiClient):
             query['DesktopGroupIds'] = request.desktop_group_ids
         if not DaraCore.is_null(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.org_id):
+            query['OrgId'] = request.org_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.simple_user_group_id):

@@ -16,19 +16,18 @@ class DeleteVSwitchRequest(DaraModel):
         v_switch_id: str = None,
     ):
         # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends the request directly without performing a dry run. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: Sends a check request without deleting the VSwitch. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): Sends a normal request. After the check succeeds, an HTTP 2xx status code is returned and the VSwitch is directly deleted.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the vSwitch.
+        # The region ID of the VSwitch to delete.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vSwitch that you want to delete.
+        # The ID of the VSwitch to delete.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

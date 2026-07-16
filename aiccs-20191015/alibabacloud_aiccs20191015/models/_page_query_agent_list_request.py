@@ -16,13 +16,18 @@ class PageQueryAgentListRequest(DaraModel):
         resource_owner_id: int = None,
         status: int = None,
     ):
+        # The unique identifier for the agent.
         self.agent_id = agent_id
+        # The name of the agent.
         self.agent_name = agent_name
         self.owner_id = owner_id
+        # The page number. Pages start from 1. The default value is 1.
         self.page_no = page_no
+        # The number of entries to return per page. The default value is 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The status of the agent.
         self.status = status
 
     def validate(self):

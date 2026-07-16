@@ -18,12 +18,30 @@ class HandleObjectScanEventRequest(DaraModel):
         rule_condition_list: List[main_models.HandleObjectScanEventRequestRuleConditionList] = None,
         status: int = None,
     ):
+        # Specifies the type for batch processing of similar alerts. Valid values:
+        # 
+        # - **sha256**: by file content
+        # - **eventName**: by alert name.
         self.batch_type = batch_type
+        # The event ID.
         self.event_id = event_id
+        # The list of event IDs.
         self.event_id_list = event_id_list
+        # The language of the content in the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
+        # The remarks.
         self.remark = remark
+        # The list of whitelist rules. This parameter takes effect only when the alert is whitelisted.
         self.rule_condition_list = rule_condition_list
+        # The target status. Valid values:
+        # 
+        # - **0**: Unhandled.
+        # - **1**: Manually handled.
+        # - **2**: Whitelisted.
+        # - **3**: Ignored.
+        # - **4**: Access denied.
         self.status = status
 
     def validate(self):
@@ -97,8 +115,22 @@ class HandleObjectScanEventRequestRuleConditionList(DaraModel):
         operate: str = None,
         value: str = None,
     ):
+        # The whitelist field. Valid values:
+        # 
+        # - **ossKey**: file path
+        # - **bucketName**: bucket name
+        # - **md5**: file MD5
+        # - **sha256**: file SHA-256.
         self.key = key
+        # The operator. Valid values:
+        # 
+        # - **contains**: Contains.
+        # - **not_contains**: Does not contain.
+        # - **str_equal**: Equals.
+        # - **str_not_equal**: Does not equal.
+        # - **regex**: Regular expression.
         self.operate = operate
+        # The value to match.
         self.value = value
 
     def validate(self):

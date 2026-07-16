@@ -13,7 +13,9 @@ class DescribeRdsVSwitchsResponseBody(DaraModel):
         request_id: str = None,
         v_switches: main_models.DescribeRdsVSwitchsResponseBodyVSwitches = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The vSwitch information.
         self.v_switches = v_switches
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeRdsVSwitchsResponseBodyVSwitches(DaraModel):
         self,
         v_switch: List[main_models.DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch] = None,
     ):
+        # The vSwitch information.
         self.v_switch = v_switch
 
     def validate(self):
@@ -94,16 +97,31 @@ class DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The user ID.
         self.ali_uid = ali_uid
+        # Identifies the cloud service type, such as Alibaba Finance Cloud, Alibaba Gov Cloud, or public cloud.
         self.bid = bid
+        # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # The time when the vSwitch was created.
         self.gmt_create = gmt_create
+        # The time when the vSwitch was last modified.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # - **true**: The vSwitch is the default vSwitch.
+        # 
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
+        # The ID of the zone to which the vSwitch belongs.
         self.iz_no = iz_no
+        # The ID of the region to which the vSwitch belongs.
         self.region_no = region_no
+        # The status of the vSwitch. Valid values: ***Pending***\\*: The vSwitch is being configured.\\* **Available**: The vSwitch is available.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):

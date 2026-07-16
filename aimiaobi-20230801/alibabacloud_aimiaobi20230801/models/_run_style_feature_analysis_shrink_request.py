@@ -11,8 +11,12 @@ class RunStyleFeatureAnalysisShrinkRequest(DaraModel):
         material_ids_shrink: str = None,
         workspace_id: str = None,
     ):
+        # A collection of custom content texts.
         self.contents_shrink = contents_shrink
+        # A collection of Material Library IDs.
         self.material_ids_shrink = material_ids_shrink
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. Get the [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -2780,6 +2780,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_signature_with_options_async(request, runtime)
 
+    def create_stage_model_with_options(
+        self,
+        request: main_models.CreateStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateStageModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_stage_model_with_options_async(
+        self,
+        request: main_models.CreateStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateStageModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_stage_model(
+        self,
+        request: main_models.CreateStageModelRequest,
+    ) -> main_models.CreateStageModelResponse:
+        runtime = RuntimeOptions()
+        return self.create_stage_model_with_options(request, runtime)
+
+    async def create_stage_model_async(
+        self,
+        request: main_models.CreateStageModelRequest,
+    ) -> main_models.CreateStageModelResponse:
+        runtime = RuntimeOptions()
+        return await self.create_stage_model_with_options_async(request, runtime)
+
     def create_traffic_control_with_options(
         self,
         request: main_models.CreateTrafficControlRequest,
@@ -4635,6 +4717,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSignatureResponse:
         runtime = RuntimeOptions()
         return await self.delete_signature_with_options_async(request, runtime)
+
+    def delete_stage_model_with_options(
+        self,
+        request: main_models.DeleteStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_model_id):
+            query['StageModelId'] = request.stage_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteStageModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_stage_model_with_options_async(
+        self,
+        request: main_models.DeleteStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_model_id):
+            query['StageModelId'] = request.stage_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteStageModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_stage_model(
+        self,
+        request: main_models.DeleteStageModelRequest,
+    ) -> main_models.DeleteStageModelResponse:
+        runtime = RuntimeOptions()
+        return self.delete_stage_model_with_options(request, runtime)
+
+    async def delete_stage_model_async(
+        self,
+        request: main_models.DeleteStageModelRequest,
+    ) -> main_models.DeleteStageModelResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_stage_model_with_options_async(request, runtime)
 
     def delete_traffic_control_with_options(
         self,
@@ -11750,6 +11906,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_signatures_by_api_with_options_async(request, runtime)
 
+    def describe_stage_models_with_options(
+        self,
+        request: main_models.DescribeStageModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStageModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeStageModels',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeStageModelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_stage_models_with_options_async(
+        self,
+        request: main_models.DescribeStageModelsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStageModelsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_name):
+            query['StageName'] = request.stage_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeStageModels',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeStageModelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_stage_models(
+        self,
+        request: main_models.DescribeStageModelsRequest,
+    ) -> main_models.DescribeStageModelsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_stage_models_with_options(request, runtime)
+
+    async def describe_stage_models_async(
+        self,
+        request: main_models.DescribeStageModelsRequest,
+    ) -> main_models.DescribeStageModelsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_stage_models_with_options_async(request, runtime)
+
     def describe_summary_data_with_options(
         self,
         request: main_models.DescribeSummaryDataRequest,
@@ -15615,6 +15857,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySignatureResponse:
         runtime = RuntimeOptions()
         return await self.modify_signature_with_options_async(request, runtime)
+
+    def modify_stage_model_with_options(
+        self,
+        request: main_models.ModifyStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_model_id):
+            query['StageModelId'] = request.stage_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyStageModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_stage_model_with_options_async(
+        self,
+        request: main_models.ModifyStageModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyStageModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.stage_alias):
+            query['StageAlias'] = request.stage_alias
+        if not DaraCore.is_null(request.stage_model_id):
+            query['StageModelId'] = request.stage_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyStageModel',
+            version = '2016-07-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyStageModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_stage_model(
+        self,
+        request: main_models.ModifyStageModelRequest,
+    ) -> main_models.ModifyStageModelResponse:
+        runtime = RuntimeOptions()
+        return self.modify_stage_model_with_options(request, runtime)
+
+    async def modify_stage_model_async(
+        self,
+        request: main_models.ModifyStageModelRequest,
+    ) -> main_models.ModifyStageModelResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_stage_model_with_options_async(request, runtime)
 
     def modify_traffic_control_with_options(
         self,

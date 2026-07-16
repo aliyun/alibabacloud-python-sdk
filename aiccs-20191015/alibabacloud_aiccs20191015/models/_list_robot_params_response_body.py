@@ -16,10 +16,17 @@ class ListRobotParamsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A value of 200 indicates that the request succeeded.
         self.code = code
+        # Parameter information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -81,8 +88,15 @@ class ListRobotParamsResponseBodyData(DaraModel):
         param_code: str = None,
         param_name: str = None,
     ):
+        # Indicates whether the parameter is required. Valid values:
+        # 
+        # - 0: Not required.
+        # 
+        # - 1: Required.
         self.is_empty = is_empty
+        # Parameter ID.
         self.param_code = param_code
+        # Parameter name.
         self.param_name = param_name
 
     def validate(self):

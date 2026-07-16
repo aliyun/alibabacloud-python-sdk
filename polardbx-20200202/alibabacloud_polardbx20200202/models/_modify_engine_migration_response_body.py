@@ -15,12 +15,17 @@ class ModifyEngineMigrationResponseBody(DaraModel):
         request_id: str = None,
         success_response: str = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The additional information. The value success is returned if the request succeeds. Otherwise, an error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success_response = success_response
 
     def validate(self):
@@ -81,7 +86,9 @@ class ModifyEngineMigrationResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

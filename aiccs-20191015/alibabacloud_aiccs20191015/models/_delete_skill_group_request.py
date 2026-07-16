@@ -10,7 +10,9 @@ class DeleteSkillGroupRequest(DaraModel):
         outer_group_id: str = None,
         outer_group_type: str = None,
     ):
+        # External skill group ID
         self.outer_group_id = outer_group_id
+        # External skill group type. Valid enumeration values are: 1: Hotline, 2: Online, 4: Ticket
         self.outer_group_type = outer_group_type
 
     def validate(self):

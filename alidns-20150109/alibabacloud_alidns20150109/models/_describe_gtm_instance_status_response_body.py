@@ -19,21 +19,23 @@ class DescribeGtmInstanceStatusResponseBody(DaraModel):
         self.addr_not_available_num = addr_not_available_num
         # The number of unavailable address pools.
         self.addr_pool_not_available_num = addr_pool_not_available_num
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The state of the instance. Valid values:
+        # The status of the instance. Valid values:
         # 
-        # *   ALLOW: The operation on the instance is allowed.
-        # *   DENY: The operation on the instance is not allowed.
+        # - ALLOW: Operations are allowed.
+        # 
+        # - DENY: Operations are denied.
         self.status = status
-        # The reasons why the instance is in the current state. Valid values:
+        # A list of reasons for the instance status. Valid values:
         # 
-        # *   INSTANCE_OPERATE_BLACK_LIST: The operation on the instance is not allowed.
-        # *   BETA_INSTANCE: The instance is in public preview.
+        # - INSTANCE_OPERATE_BLACK_LIST: The instance is in a blacklist.
+        # 
+        # - BETA_INSTANCE: The instance is in public preview.
         self.status_reason = status_reason
-        # The number of unavailable access policies.
+        # The number of access policies for which the active address pool is unavailable.
         self.strategy_not_available_num = strategy_not_available_num
-        # The number of access policies switched to the secondary address pool.
+        # The number of access policies that are switched to the failover address pool.
         self.switch_to_failover_strategy_num = switch_to_failover_strategy_num
 
     def validate(self):

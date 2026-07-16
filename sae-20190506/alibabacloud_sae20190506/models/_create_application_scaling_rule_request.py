@@ -21,135 +21,161 @@ class CreateApplicationScalingRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Specifies whether to enable idle mode for the application.
         self.enable_idle = enable_idle
-        # The percentage of the minimum number of available instances. Valid values:
+        # The minimum number of ready instances, specified as a percentage of the total number of instances. Valid values:
         # 
-        # *   **-1** (default value): The minimum number of available instances is not determined based on this parameter.
-        # *   **0 to 100**: The minimum number of available instances is calculated by using the following formula: Number of existing instances × Value of MinReadyInstanceRatio × 100%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5 and MinReadyInstanceRatio is set to 50, the minimum number of available instances is 3.
+        # - **-1**: Indicates that a percentage is not used. In this case, the value of `MinReadyInstances` is used.
         # 
-        # >  When **MinReadyInstance** and **MinReadyInstanceRatio** are passed at the same time and the **MinReadyInstanceRatio** value is not \\*\\*-1\\*\\*, the **MinReadyInstanceRatio** parameter takes precedence. **Note**When both **MinReadyInstance** and **MinReadyInstanceRatio** are specified and **MinReadyInstanceRatio** is set to a number from 0 to 100, the value of **MinReadyInstanceRatio** takes precedence.
+        # - **0\\~100**: A percentage. The result is rounded up. For example, if you set this parameter to 50 (%) and the application has 5 instances, the minimum number of ready instances is 3.
+        # 
+        # > If you specify both `MinReadyInstances` and a `MinReadyInstanceRatio` other than `-1`, `MinReadyInstanceRatio` takes precedence. For example, if `MinReadyInstances` is set to `5` and `MinReadyInstanceRatio` is set to `50`, the system uses `50` (%) to calculate the minimum number of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # The minimum number of available instances. Special values:
+        # The minimum number of ready instances. Valid values:
         # 
-        # *   If you set the value to **0**, business is interrupted when the application is updated.
-        # *   If you set this property to -1, the system calculates a recommended value as the minimum number of available instances by using the following formula: Recommended value = Number of existing instances × 25%. The calculation result is rounded up to the nearest integer. For example, if the number of existing instances is 5, the recommended value is calculated by using the following formula: 5 × 25% = 1.25. In this case, the minimum number of available instances is 2.
+        # - If you set this parameter to `0`, the application is interrupted during an update.
         # 
-        # >  To ensure business continuity, make sure that at least one instance is available during application deployment and rollback.
+        # - If you set this parameter to `-1`, the system sets the value to 25% of the current number of instances, rounded up. For example, if the application has 5 instances, the minimum number of ready instances is 2 (5 × 25% = 1.25, rounded up to 2).
+        # 
+        # > To ensure service continuity during a rolling deployment, we recommend setting the minimum number of ready instances to 1 or more.
         self.min_ready_instances = min_ready_instances
         # Specifies whether to enable the auto scaling policy. Valid values:
         # 
-        # *   **true**: The auto scaling policy is enabled.
-        # *   **false**: The auto scaling policy is disabled.
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.scaling_rule_enable = scaling_rule_enable
-        # The configurations of the metric-based auto scaling policy. This parameter is required if you set the ScalingRuleType parameter to metric.
+        # Configurations for the metric-based auto scaling policy. This parameter is required if `ScalingRuleType` is set to `metric` or `mix`.
         # 
-        # The following list describes the involved parameters:
+        # The parameter is a JSON string that contains the following fields:
         # 
-        # *   **maxReplicas**: the maximum number of instances in the application.
+        # - **maxReplicas**: The maximum number of application instances.
         # 
-        # *   **minReplicas**: the minimum number of instances in the application.
+        # - **minReplicas**: The minimum number of application instances.
         # 
-        # *   **metricType**: the metric that is used to trigger the auto scaling policy.
+        # - **metricType**: The metric that triggers the auto scaling policy. Valid values:
         # 
-        #     *   **CPU**: the CPU utilization.
-        #     *   **MEMORY**: the memory usage.
-        #     *   **QPS**: the average QPS within 1 minute per Java application instance.
-        #     *   **RT**: the average response time of all API operations within 1 minute in the Java application.
-        #     *   **tcpActiveConn**: the average number of active TCP connections within 30 seconds per instance.
-        #     *   **SLB_QPS**: the average QPS of the Internet-facing SLB instance within 15 seconds per instance.
-        #     *   **SLB_RT**: the average response time of the Internet-facing SLB instance within 15 seconds.
-        #     *   **INTRANET_SLB_QPS**: the average QPS of the internal-facing SLB instance within 15 seconds per instance.
-        #     *   **INTRANET_SLB_RT**: the average response time of the internal-facing SLB instance within 15 seconds.
+        #   - **CPU**: CPU utilization.
         # 
-        # *   **metricTargetAverageUtilization**: the limit on the metric that is specified by **metricType**. You can specify following limits:
+        #   - **MEMORY**: Memory utilization.
         # 
-        #     *   The limit on the CPU utilization. Unit: percentage.
-        #     *   The limit on the memory usage. Unit: percentage.
-        #     *   The limit on the QPS.
-        #     *   The limit on the response time. Unit: milliseconds.
-        #     *   The limit on the average number of active TCP connections per second.
-        #     *   The limit on the QPS of the Internet-facing SLB instance.
-        #     *   The limit on the response time of the Internet-facing SLB instance. Unit: milliseconds.
-        #     *   The limit on the QPS of the internal-facing SLB instance.
-        #     *   The limit on the response time of the internal-facing SLB instance. Unit: milliseconds.
+        #   - **QPS**: The average queries per second (QPS) per instance for a Java application over a 1-minute period.
         # 
-        # *   **slbId**: the ID of the SLB instance.
+        #   - **RT**: The average response time (RT) of all service interfaces for a Java application over a 1-minute period.
         # 
-        # *   **slbProject**: the Simple Log Service (SLS) project.
+        #   - **tcpActiveConn**: The average number of active TCP connections per instance over a 30-second period.
         # 
-        # *   **slbLogstore**: the SLS Logstore.
+        #   - **SLB_QPS**: The average QPS per instance for a public-facing SLB instance over a 15-second period.
         # 
-        # *   **vport**: the listener port of the SLB instance. HTTP and HTTPS are supported.
+        #   - **SLB_RT**: The average RT of a public-facing SLB instance over a 15-second period.
         # 
-        # *   **scaleUpRules**: the scale-out rules.
+        #   - **INTRANET_SLB_QPS**: The average QPS per instance for an internal-facing SLB instance over a 15-second period.
         # 
-        # *   **scaleDownRules**: the scale-in rule.
+        #   - **INTRANET_SLB_RT**: The average RT of an internal-facing SLB instance over a 15-second period.
         # 
-        # *   **step**: the scale-out or scale-in step size. This parameter specifies the maximum number of instances that can be added or removed per unit time.
+        # - **metricTargetAverageUtilization**: The target value for the metric specified by `metricType`. The unit of this value depends on `metricType`.
         # 
-        # *   **disabled**: specifies whether to disable the application scale-in. If you set this parameter to true, the application instances are never reduced. This prevents business risks during peak hours.
+        #   - Target CPU utilization, in percentage.
         # 
-        #     *   **true**: disables the application scale-in.
-        #     *   **false**: enables the application scale-in. Default value: false.
+        #   - Target memory utilization, in percentage.
         # 
-        # *   **stabilizationWindowSeconds**: the cooldown period during which the system is stable and does not perform scale-out or scale-in operations. Valid values: 0 to 3600. Unit: seconds. Default value: 0.
+        #   - Target QPS, in requests per second.
         # 
-        # >  NoteYou can specify one or more metrics as the trigger conditions of the auto scaling policy. If one of the values of the specified metrics is greater than or equal to the specified limit, the application is scaled out. The number of instances after the scale-out operation is less than or equal to the value of the specified maximum application instances. If the values of all specified metrics are less than the limits, the application is scaled in. The number of instances after the scale-in operation is greater than or equal to the value of the specified minimum application instances.
+        #   - Target response time, in milliseconds.
+        # 
+        #   - Average number of active TCP connections.
+        # 
+        #   - Target public-facing SLB QPS, in requests per second.
+        # 
+        #   - Target public-facing SLB response time, in milliseconds.
+        # 
+        #   - Target internal-facing SLB QPS, in requests per second.
+        # 
+        #   - Target internal-facing SLB response time, in milliseconds.
+        # 
+        # - **slbId**: The SLB instance ID.
+        # 
+        # - **slbProject**: The Log Service project.
+        # 
+        # - **slbLogstore**: The Log Service Logstore.
+        # 
+        # - **vport**: The SLB listener port. The HTTP and HTTPS protocols are supported.
+        # 
+        # - **scaleUpRules**: The rules to scale out the application.
+        # 
+        # - **scaleDownRules**: The rules to scale in the application.
+        # 
+        # - **step**: The step size for scaling out or scaling in. This is the maximum number of instances that can be added or removed in a single scaling activity.
+        # 
+        # - **disabled**: Specifies whether to prevent the application from scaling in. If set to `true`, the number of application instances is never reduced. This can prevent business risks caused by scaling in during peak hours.
+        # 
+        #   - **true**: Scale-in is disabled.
+        # 
+        #   - **false**: Scale-in is enabled. This is the default value.
+        # 
+        # - **stabilizationWindowSeconds**: The cooldown period for scaling out or scaling in, in seconds. Valid values: 0 to 3600. The default value is 0.
+        # 
+        # > You can configure one or more metrics. If you configure multiple metrics, the application scales out when any of the metrics meets or exceeds its target value, up to the specified maximum number of instances. The application scales in only when all metrics are below their target values, down to the specified minimum number of instances.
         self.scaling_rule_metric = scaling_rule_metric
-        # The name of the auto scaling policy. The name must be unique in an application, and can be up to 32 characters in length. It must start with a lowercase letter and can contain only lowercase letters, digits, and hyphens (-).
+        # The name of the auto scaling policy. The name must be unique within an application, start with a lowercase letter, and contain only lowercase letters, digits, and hyphens (-). The name can be up to 32 characters long.
         # 
-        # >  You cannot change the names of created auto scaling policies.
+        # > The policy name cannot be changed after creation.
         # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
-        # The configuration of the scheduled elasticity policy. This parameter is required if you select Scheduled Scaling Policy or Use SDK to Set.
+        # Configurations for the scheduled auto scaling policy. This parameter is required if `ScalingRuleType` is set to `timing` or if you use an SDK.
         # 
-        # The following table describes the parameters.
+        # The parameter is a JSON string that contains the following fields:
         # 
-        # *   **beginDate** and **endDate**: **beginDate** is the start date and **endDate** is the end date, which is used to configure the timing Auto Scaling policy. Valid values:
+        # - **beginDate** and **endDate**: The start and end dates of the policy\\"s effective period.
         # 
-        #     *   If both values are **null**, long-term execution is performed. This is the default value.
-        #     *   If the value is a specific date, for example, the **beginDate** is **2021-03-25** and the **endDate** is **2021-04-25**, the validity period is one month.
+        #   - If both fields are set to `null` (default), the policy is effective indefinitely.
         # 
-        # *   **period**: The period during which the timed Auto Scaling policy is executed. Valid values:
+        #   - If you specify a date range, for example, `beginDate` is `2021-03-25` and `endDate` is `2021-04-25`, the policy is effective for one month.
         # 
-        #     *   **\\* \\* \\***: The scheduled policy is executed at a specified time every day.
+        # - **period**: The recurrence rule for the scheduled auto scaling policy.
         # 
-        #     *   **\\* \\* Fri,Mon**: The scheduled policy is executed at the specified time on the specified number of days per week. You can select multiple time zones. The time zone is GMT +8. Valid values:
+        #   - **\\* \\* \\***: The policy is executed at a specified time every day.
         # 
-        #         *   **Sun**: Sunday
-        #         *   **Mon**: Monday
-        #         *   **Tue**: Tuesday
-        #         *   **Wed**: Wednesday
-        #         *   **Thu**: Thursday
-        #         *   **Fri**: Friday
-        #         *   **Sat**: Saturday
+        #   - **\\* \\* Fri,Mon**: The policy is executed at a specified time on specific days of the week. You can select multiple days. The time is in the GMT+8 time zone. Valid values:
         # 
-        #     *   **1,2,3,28,31 \\* \\***: The scheduled auto scaling policy is executed at a specified point in time on one or more dates of each month. Valid values: 1 to 31. If a month does not have the 31st day, the auto scaling policy is executed on the specified days other than the 31st day.
+        #     - **Sun**: Sunday
         # 
-        # *   **schedules**: the points in time at which the scheduled auto scaling policy is triggered and the number of application instances that are retained during the time periods. You can specify up to 20 points in time. The following list describes the involved parameters:
+        #     - **Mon**: Monday
         # 
-        #     *   **atTime**: the point in time at which the policy is triggered. **targetReplicas**: the number of application instances that you want to retain during the corresponding time period or the minimum number of available instances required for each deployment.****
+        #     - **Tue**: Tuesday
         # 
-        #     *   **Valid values: 1 to 50.** Valid values: 1 to 50.
+        #     - **Wed**: Wednesday
         # 
-        #         **
+        #     - **Thu**: Thursday
         # 
-        #         **Note**Make sure that at least one instance is available during the application deployment and rollback to prevent your business from being interrupted. If you set the value to **0**, business interruptions occur when the application is updated. If you set the value to **0**, business interruptions occur when the application is updated.
+        #     - **Fri**: Friday
+        # 
+        #     - **Sat**: Saturday
+        # 
+        #   - **1,2,3,28,31 \\* \\***: The policy is executed at a specified time on specific days of a month. You can select multiple days. The value can be from 1 to 31. If a month does not have the specified day, for example, the 31st, the policy is not executed on that day for that month.
+        # 
+        # - **schedules**: The trigger times and the corresponding target number of instances. You can specify a maximum of 20 schedules. The parameter includes the following fields:
+        # 
+        #   - **atTime**: The trigger time in `HH:mm` format. For example, `08:00`.
+        # 
+        #   - **targetReplicas**: The target number of application instances. Valid values: 1 to 50.
+        # 
+        #     > During a rolling deployment, we recommend that you set the minimum number of ready instances to 1 or more to prevent service interruptions. If you set the minimum number of ready instances to `0`, your application will be interrupted during an update.
         self.scaling_rule_timer = scaling_rule_timer
-        # The type of the auto scaling policy. Take note of the following rules:
+        # The type of the auto scaling policy. Valid values:
         # 
-        # *   **timing**: a scheduled auto scaling policy.
-        # *   **metric**: a metric-based auto scaling policy.
-        # *   **mix**: a hybrid auto scaling policy.
+        # - **timing**: scheduled auto scaling.
         # 
-        # > 
+        # - **metric**: metric-based auto scaling.
         # 
-        # *   If you set this parameter to timing, the ScalingRuleTimer parameter must be specified.
+        # - **mix**: mixed auto scaling.
         # 
-        # *   If you set this parameter to metric, the ScalingRuleMetric parameter must be specified.
-        # 
-        # *   If you set this parameter to mix, the ScalingRuleMetric parameter must be specified. You can specify the ScalingRuleTimer parameter based on your business requirements.
+        # > * If you set this parameter to `timing`, the `ScalingRuleTimer` parameter is required.
+        # >
+        # > * If you set this parameter to `metric`, the `ScalingRuleMetric` parameter is required.
+        # >
+        # > * If you set this parameter to `mix`, the `ScalingRuleMetric` parameter is required. You can also configure the `ScalingRuleTimer` parameter as needed.
         # 
         # This parameter is required.
         self.scaling_rule_type = scaling_rule_type

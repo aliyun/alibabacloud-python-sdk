@@ -13,10 +13,15 @@ class DescribeOnlineUserCountResponseBody(DaraModel):
         request_id: str = None,
         simple_assigned_user_count: int = None,
     ):
+        # The number of AD users who have been assigned a cloud desktop.
         self.ad_assigned_user_count = ad_assigned_user_count
+        # The number of users who have been assigned a cloud desktop.
         self.assigned_user_count = assigned_user_count
+        # The number of online users. Online users include convenience users and AD users.
         self.online_user_count = online_user_count
+        # The request ID.
         self.request_id = request_id
+        # The number of convenience users who have been assigned a cloud desktop.
         self.simple_assigned_user_count = simple_assigned_user_count
 
     def validate(self):

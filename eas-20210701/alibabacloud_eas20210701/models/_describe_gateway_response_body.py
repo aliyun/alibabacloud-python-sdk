@@ -29,8 +29,9 @@ class DescribeGatewayResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
-        # The time when the private gateway was created. The time is displayed in UTC.
+        # The time when the private gateway was created. The time is in Coordinated Universal Time (UTC).
         self.create_time = create_time
         # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
@@ -38,54 +39,29 @@ class DescribeGatewayResponseBody(DaraModel):
         self.gateway_id = gateway_id
         # The alias of the private gateway.
         self.gateway_name = gateway_name
-        # The instance type used by the private gateway.
-        # 
-        # Valid values:
-        # 
-        # *   8c16g
-        # *   4c8g
-        # *   2c4g
-        # *   16c32g
+        # The instance type of the private gateway.
         self.instance_type = instance_type
         # The public endpoint.
         self.internet_domain = internet_domain
-        # Indicates whether Internet access is enabled.
+        # Indicates whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # Indicates whether Internet access is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   Creating: Internet access is being enabled.
-        # *   Failed: Internet access failed to be enabled or deleted.
-        # *   Running: Internet access is running.
-        # *   Deleted: Internet access is deleted.
-        # *   Deleting: Internet access is being deleted.
+        # The status of public network access.
         self.internet_status = internet_status
-        # The internal endpoint.
+        # The private endpoint.
         self.intranet_domain = intranet_domain
         self.intranet_enabled = intranet_enabled
-        # Indicates whether it is the default private gateway.
+        # Indicates whether the gateway is the default private gateway.
         self.is_default = is_default
         self.labels = labels
-        # The number of nodes in the private gateway.
+        # The number of private gateway nodes.
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the HTTP to HTTPS redirection is enabled.
+        # Indicates whether HTTP to HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
         # The status of the private gateway.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # *   Stopped
-        # *   Failed
-        # *   Running
-        # *   Deleted
-        # *   Deleting
-        # *   Waiting
         self.status = status
-        # The time when the private gateway was updated. The time is displayed in UTC.
+        # The time when the private gateway was last updated. The time is in UTC.
         self.update_time = update_time
 
     def validate(self):

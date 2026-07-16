@@ -16,7 +16,6 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         cycle_duration: int = None,
         delay_time: int = None,
         domain_name: str = None,
-        format_config: bool = None,
         on_demand: int = None,
         owner_id: int = None,
         record_format: List[main_models.UpdateLiveRecordVodConfigRequestRecordFormat] = None,
@@ -45,7 +44,6 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        self.format_config = format_config
         # Specifies whether to enable on-demand recording. Valid values:
         # 
         # *   **0** (default): disables on-demand recording.
@@ -88,9 +86,6 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
-
-        if self.format_config is not None:
-            result['FormatConfig'] = self.format_config
 
         if self.on_demand is not None:
             result['OnDemand'] = self.on_demand
@@ -136,9 +131,6 @@ class UpdateLiveRecordVodConfigRequest(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
-
-        if m.get('FormatConfig') is not None:
-            self.format_config = m.get('FormatConfig')
 
         if m.get('OnDemand') is not None:
             self.on_demand = m.get('OnDemand')

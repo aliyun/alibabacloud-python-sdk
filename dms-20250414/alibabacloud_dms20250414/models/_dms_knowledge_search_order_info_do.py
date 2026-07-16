@@ -15,12 +15,19 @@ class DmsKnowledgeSearchOrderInfoDO(DaraModel):
         order_id: str = None,
         web_search_api_url: str = None,
     ):
+        # The UID of the Alibaba Cloud account.
         self.aliyun_account_uid = aliyun_account_uid
+        # The API key used for authentication.
         self.api_key = api_key
+        # The time when the entry was created.
         self.gmt_create = gmt_create
+        # The time when the entry was last modified.
         self.gmt_modified = gmt_modified
+        # The unique ID of the entry.
         self.id = id
+        # The unique ID of the order.
         self.order_id = order_id
+        # The endpoint URL for the web search API.
         self.web_search_api_url = web_search_api_url
 
     def validate(self):

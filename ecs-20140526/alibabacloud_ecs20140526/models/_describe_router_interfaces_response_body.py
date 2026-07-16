@@ -16,10 +16,15 @@ class DescribeRouterInterfacesResponseBody(DaraModel):
         router_interface_set: main_models.DescribeRouterInterfacesResponseBodyRouterInterfaceSet = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Details of the router interfaces.
         self.router_interface_set = router_interface_set
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

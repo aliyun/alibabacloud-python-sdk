@@ -50,46 +50,115 @@ class CreateApplicationRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of an existing model operator instance to associate. This parameter is effective only when ApplicationType is set to polarclaw.
         self.aidbcluster_id = aidbcluster_id
+        # The type of the application. Valid values:
+        # 
+        # - supabase: Creates a managed Supabase application.
+        # 
+        # - raycluster: Creates a managed Ray Cluster application.
+        # 
+        # - polarclaw: Creates a managed PolarClaw application.
+        # 
         # This parameter is required.
         self.application_type = application_type
+        # The CPU architecture. Valid value:
+        # 
+        # - x86
+        # 
         # This parameter is required.
         self.architecture = architecture
+        # The authentication service provider.
         self.auth_provider = auth_provider
+        # The configuration of the authentication provider.
         self.auth_provider_config = auth_provider_config
+        # Specifies whether to automatically create and bind an Elastic IP Address (EIP).
         self.auto_allocate_public_eip = auto_allocate_public_eip
+        # Specifies whether to automatically create a PolarFS cold storage instance. Valid values:
+        # 
+        # - false (default): Does not automatically create the instance.
+        # 
+        # - true: Automatically creates the instance.
         self.auto_create_polar_fs = auto_create_polar_fs
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # Specifies whether to automatically use a coupon. Valid values:
+        # 
+        # - true (default): Uses a coupon.
+        # 
+        # - false: Does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
+        # A list of custom child components for the application.
         self.components = components
+        # The ID of the PolarDB instance that the application depends on.
         self.dbcluster_id = dbcluster_id
+        # The description of the application.
         self.description = description
+        # The default value is `false`. If you set this parameter to `true`, the system only checks the parameters and resources without creating the actual resources.
         self.dry_run = dry_run
+        # A list of custom server-side endpoints. By default, a VPC Endpoint is created.
         self.endpoints = endpoints
+        # This parameter is required for knowledge applications.
         self.knowledge_application_spec = knowledge_application_spec
+        # This parameter is required for mem0 applications.
         self.mem_application_spec = mem_application_spec
+        # The model API. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_api = model_api
+        # The API key for the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
+        # The URL of the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
+        # The source of the model. Valid values:
+        # 
+        # - bailian: Alibaba Cloud Model Studio model.
+        # 
+        # - custom: A custom model.
+        # 
+        # - maas: PolarDB model operator.
         self.model_from = model_from
+        # The name of the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_name = model_name
+        # A list of parameters.
         self.parameters = parameters
+        # The billing method.
         self.pay_type = pay_type
+        # The subscription period type.
         self.period = period
+        # The ID of the PolarFileSystem (PolarFS) cold storage or high-performance instance. This parameter is empty by default. If you specify this parameter, the corresponding storage is mounted to the application.
+        # 
+        # This feature is currently supported only by the following applications:
+        # 
+        # - supabase
+        # 
+        # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
+        # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
+        # The region. The default value is the region of the instance.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The name of the IP address whitelist group. The default value is `default`.
         self.security_iparray_name = security_iparray_name
+        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
         self.security_iplist = security_iplist
+        # The type of the IP address.
         self.security_iptype = security_iptype
+        # The ID of the skill template.
         self.skill_template_id = skill_template_id
+        # The tag.
         self.tag = tag
+        # The target version.
         self.target_version = target_version
+        # The subscription duration.
         self.used_time = used_time
+        # The vSwitch. The default value is the current vSwitch in the primary zone of the instance.
         self.v_switch_id = v_switch_id
+        # The ID of the Virtual Private Cloud (VPC).
         self.vpc_id = vpc_id
+        # The zone. The default value is the primary zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -387,7 +456,9 @@ class CreateApplicationRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -422,7 +493,9 @@ class CreateApplicationRequestParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The name of the parameter.
         self.parameter_name = parameter_name
+        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -465,15 +538,25 @@ class CreateApplicationRequestMemApplicationSpec(DaraModel):
         reranker_model: str = None,
         shard: int = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        # The password.
         self.db_password = db_password
+        # The username.
         self.db_user = db_user
+        # This parameter is required for mem0 applications. It specifies the name of the embedder model, such as text-embedding-v4.
         self.embedder_model = embedder_model
+        # The vector dimensions.
         self.embedder_model_dimension = embedder_model_dimension
+        # The graph LLM.
         self.graph_llm_model = graph_llm_model
+        # This parameter is required for mem0 applications. It specifies the name of the large language model (LLM), such as qwen3-max.
         self.llm_model = llm_model
+        # The project name. This corresponds to the schema in the database where project data is stored.
         self.project_name = project_name
+        # This parameter is required for mem0 applications. It specifies the name of the reranker model, such as qwen3-rerank.
         self.reranker_model = reranker_model
+        # The number of sharded tables.
         self.shard = shard
 
     def validate(self):
@@ -557,8 +640,11 @@ class CreateApplicationRequestKnowledgeApplicationSpec(DaraModel):
         db_password: str = None,
         llm_model: str = None,
     ):
+        # The password for the dashboard.
         self.dashboard_password = dashboard_password
+        # The password.
         self.db_password = db_password
+        # This parameter is required for knowledge applications. It specifies the name of the LLM, such as qwen3-max.
         self.llm_model = llm_model
 
     def validate(self):
@@ -599,7 +685,9 @@ class CreateApplicationRequestEndpoints(DaraModel):
         description: str = None,
         endpoint_type: str = None,
     ):
+        # The description of the server-side endpoint.
         self.description = description
+        # The type of the server-side endpoint. This value is fixed to Primary.
         self.endpoint_type = endpoint_type
 
     def validate(self):
@@ -642,15 +730,41 @@ class CreateApplicationRequestComponents(DaraModel):
         security_iplist: str = None,
         security_iptype: str = None,
     ):
+        # The specifications of the child component.
         self.component_class = component_class
+        # The maximum number of child components with the same specifications. The default value is the value of ComponentReplica.
+        # 
+        # - This parameter is supported only for raycluster.
         self.component_max_replica = component_max_replica
+        # The number of replicas for the child component. The default value is 1.
         self.component_replica = component_replica
+        # The type of the child component.
+        # 
+        # For supabase, valid values are:
+        # 
+        # - gateway
+        # 
+        # - backend
+        # 
+        # For raycluster, valid values are:
+        # 
+        # - head
+        # 
+        # - worker
+        # 
+        # - gpuworker
         self.component_type = component_type
+        # The maximum number of component replicas for scaling.
         self.scale_max = scale_max
+        # The minimum number of component replicas for scaling.
         self.scale_min = scale_min
+        # The security groups for the child component. Separate multiple security group IDs with commas (,).
         self.security_groups = security_groups
+        # The name of the IP address whitelist group for the child component. The default value is default.
         self.security_iparray_name = security_iparray_name
+        # The IP address whitelist for the child component. Separate multiple IP addresses with commas (,).
         self.security_iplist = security_iplist
+        # The type of the IP address in the whitelist for the child component. The default value is ipv4.
         self.security_iptype = security_iptype
 
     def validate(self):

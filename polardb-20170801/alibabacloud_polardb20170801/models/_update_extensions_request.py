@@ -20,20 +20,30 @@ class UpdateExtensionsRequest(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
+        # A client token used to ensure the idempotence of the request. The client generates this value. Make sure that the value is unique for each request. The token is case-sensitive and cannot exceed 64 ASCII characters.
         self.client_token = client_token
+        # The name of the source instance.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.dbnames = dbnames
+        # The extensions to update. Separate multiple extensions with commas (,).
+        # 
         # This parameter is required.
         self.extensions = extensions
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.version = version
+        # The ID of the virtual private cloud (VPC) where the endpoint is located.
         self.vpc_id = vpc_id
 
     def validate(self):

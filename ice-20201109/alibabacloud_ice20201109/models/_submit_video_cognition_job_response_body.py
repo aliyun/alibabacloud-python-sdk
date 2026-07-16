@@ -10,9 +10,9 @@ class SubmitVideoCognitionJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The task ID.
+        # The ID of the job.
         self.job_id = job_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

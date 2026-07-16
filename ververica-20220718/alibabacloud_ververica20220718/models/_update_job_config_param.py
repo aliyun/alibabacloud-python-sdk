@@ -11,6 +11,7 @@ class UpdateJobConfigParam(DaraModel):
         self,
         new_flink_conf: Dict[str, Any] = None,
     ):
+        # The job parameter configuration.
         self.new_flink_conf = new_flink_conf
 
     def validate(self):

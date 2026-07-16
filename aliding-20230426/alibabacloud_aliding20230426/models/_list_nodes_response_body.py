@@ -16,7 +16,6 @@ class ListNodesResponseBody(DaraModel):
     ):
         self.next_token = next_token
         self.nodes = nodes
-        # requestId
         self.request_id = request_id
 
     def validate(self):

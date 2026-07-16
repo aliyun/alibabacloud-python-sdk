@@ -124,8 +124,10 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.scene_type):
-            query['scene_type'] = request.scene_type
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -154,8 +156,10 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.scene_type):
-            query['scene_type'] = request.scene_type
+        if not DaraCore.is_null(request.channel):
+            query['channel'] = request.channel
+        if not DaraCore.is_null(request.region):
+            query['region'] = request.region
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

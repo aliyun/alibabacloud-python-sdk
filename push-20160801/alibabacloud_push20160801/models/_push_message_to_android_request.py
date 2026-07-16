@@ -15,16 +15,50 @@ class PushMessageToAndroidRequest(DaraModel):
         target_value: str = None,
         title: str = None,
     ):
+        # The AppKey.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The content of the message.
+        # 
         # This parameter is required.
         self.body = body
+        # A custom ID for the push task. If \\`JobKey\\` is not empty, this field is included in the receipt logs. For more information, see [Receipt logs](https://help.aliyun.com/document_detail/434651.html).
         self.job_key = job_key
+        # Specifies whether to store the message offline. The default value is false.
+        # 
+        # If you store the message and the user is offline, the message is sent again when the user comes online within the time-to-live (TTL) period. The default TTL is 72 hours.
         self.store_offline = store_offline
+        # The push target. Valid values:
+        # 
+        # - **DEVICE**: Pushes messages to devices.
+        # 
+        # - **ACCOUNT**: Pushes messages to accounts.
+        # 
+        # - **ALIAS**: Pushes messages to aliases.
+        # 
+        # - **TAG**: Pushes messages to tags.
+        # 
+        # - **ALL**: Pushes messages to all devices.
+        # 
         # This parameter is required.
         self.target = target
+        # Set this parameter based on the value of \\`Target\\`. Use commas (,) to separate multiple values. If you exceed the limit, send the pushes in batches.
+        # 
+        # - If \\`Target\\` is set to \\`DEVICE\\`, specify device IDs. Example: `deviceid111,deviceid1111`. You can specify up to 1,000 device IDs.
+        # 
+        # - If \\`Target\\` is set to \\`ACCOUNT\\`, specify account IDs. Example: `account111,account222`. You can specify up to 1,000 account IDs.
+        # 
+        # - If \\`Target\\` is set to \\`ALIAS\\`, specify aliases. Example: `alias111,alias222`. You can specify up to 1,000 aliases.
+        # 
+        # - If \\`Target\\` is set to \\`TAG\\`, you can specify one or more tags. For more information about the format, see [Tag format](https://help.aliyun.com/document_detail/434847.html).
+        # 
+        # - If \\`Target\\` is set to \\`ALL\\`, set the value to **all**.
+        # 
         # This parameter is required.
         self.target_value = target_value
+        # The title of the message.
+        # 
         # This parameter is required.
         self.title = title
 

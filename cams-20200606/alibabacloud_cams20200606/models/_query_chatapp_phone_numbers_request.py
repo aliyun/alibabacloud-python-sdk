@@ -14,14 +14,14 @@ class QueryChatappPhoneNumbersRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # The space ID of the RAM user within the ISV account.
+        # The Space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
-        # The independent software vendor (ISV) verification code, which is used to verify whether the RAM user is authorized by the ISV account.
+        # The verification code of the Independent Software Vendor (ISV). This code is used to verify if the user is authorized by the ISV.
         self.isv_code = isv_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The state of the phone number.
+        # The status of the phone number.
         self.status = status
 
     def validate(self):

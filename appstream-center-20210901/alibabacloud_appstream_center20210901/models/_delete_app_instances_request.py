@@ -13,19 +13,15 @@ class DeleteAppInstancesRequest(DaraModel):
         app_instance_ids: List[str] = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group. You can call the [listAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the ID.
+        # The delivery group ID. You can call [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) to obtain this parameter.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The IDs of application instances.
+        # The list of application instance IDs.
         # 
         # This parameter is required.
         self.app_instance_ids = app_instance_ids
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

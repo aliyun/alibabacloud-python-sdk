@@ -12,12 +12,20 @@ class GetUdfByVersionRequest(DaraModel):
         project_id: int = None,
         version_id: int = None,
     ):
+        # The ID of the user-defined function.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The version number.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

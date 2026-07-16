@@ -18,18 +18,18 @@ class DescribeInternetDnsLogsResponseBody(DaraModel):
         total_page: int = None,
         total_size: int = None,
     ):
-        # Indicates whether the log query is precise.
+        # Indicates whether the DNS resolution log query is precise.
         self.complete = complete
-        # Current page number.
+        # The current page number.
         self.cur_page = cur_page
         self.logs = logs
-        # Page size for query.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Unique request identifier.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
-        # Total quantity.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

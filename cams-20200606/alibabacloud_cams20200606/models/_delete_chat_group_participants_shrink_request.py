@@ -16,13 +16,25 @@ class DeleteChatGroupParticipantsShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business number. You can obtain the business number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid value:
+        # 
+        # - **WHATSAPP**
+        # 
+        # > Currently, only the WhatsApp channel is supported.
         self.channel_type = channel_type
+        # The space ID of the ISV sub-customer or the instance ID. This ID is also the channel ID. You can find the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The group ID. You can obtain the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # A list of group members to remove.
         self.list_shrink = list_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

@@ -21,7 +21,7 @@ class GetMemberResponseBody(DaraModel):
         self.account_type = account_type
         # The display name of the member.
         self.display_name = display_name
-        # The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
+        # The time when the member was created. The time is in Coordinated Universal Time (UTC) and the format is ISO 8601.
         self.gmt_create_time = gmt_create_time
         # The member ID.
         self.member_id = member_id

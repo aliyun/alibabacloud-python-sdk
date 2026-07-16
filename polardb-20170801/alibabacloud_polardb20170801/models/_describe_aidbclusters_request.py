@@ -24,19 +24,65 @@ class DescribeAIDBClustersRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribeAIDBClustersRequestTag] = None,
     ):
+        # The node type. To specify multiple types, separate them with a comma. Valid values:
+        # 
+        # - **vnode**: a node managed by Kubernetes
+        # 
+        # - **container**: a container that you can log on to
+        # 
+        # - **maas**: model service
         self.ai_node_type = ai_node_type
+        # The cluster description. Fuzzy search is supported.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID. To specify multiple clusters, separate their IDs with a comma.
         self.dbcluster_ids = dbcluster_ids
+        # The cluster status. Valid values:
+        # 
+        # - **Creating**: The cluster is being created.
+        # 
+        # - **Running**: The cluster is running.
+        # 
+        # - **Deleting**: The cluster is being released.
+        # 
+        # - **Rebooting**: The cluster is restarting.
+        # 
+        # - **DBNodeCreating**: A node is being added.
+        # 
+        # - **DBNodeDeleting**: A node is being deleted.
+        # 
+        # - **ClassChanging**: The node specifications are being changed.
+        # 
+        # - **NetAddressCreating**: A network connection is being created.
+        # 
+        # - **NetAddressDeleting**: A network connection is being deleted.
+        # 
+        # - **NetAddressModifying**: A network connection is being modified.
+        # 
+        # - **Deleted**: The cluster is released.
+        # 
+        # * **ClassChanged**: Resources are being reclaimed after the upgrade or downgrade.
         self.dbcluster_status = dbcluster_status
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
         self.pay_type = pay_type
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # A list of tags.
         self.tag = tag
 
     def validate(self):
@@ -145,7 +191,9 @@ class DescribeAIDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. Use this parameter with `Tag.n.Value` to filter clusters by tag. You can specify up to 20 tag pairs. The index n must be a unique, consecutive integer starting from 1.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

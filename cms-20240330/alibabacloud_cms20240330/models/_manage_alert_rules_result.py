@@ -13,12 +13,19 @@ class ManageAlertRulesResult(DaraModel):
         alert_rule: main_models.AlertRuleV2 = None,
         deleted_count: int = None,
         deleted_uuid_list: List[str] = None,
+        updated_count: int = None,
+        updated_uuid_list: List[str] = None,
     ):
+        # The details of the created or updated alert rule.
         self.alert_rule = alert_rule
-        # 成功删除的规则数量
+        # The number of deleted alert rules.
         self.deleted_count = deleted_count
-        # 成功删除的规则 UUID 列表
+        # A list of UUIDs of deleted alert rules.
         self.deleted_uuid_list = deleted_uuid_list
+        # The number of updated alert rules.
+        self.updated_count = updated_count
+        # A list of UUIDs of updated alert rules.
+        self.updated_uuid_list = updated_uuid_list
 
     def validate(self):
         if self.alert_rule:
@@ -38,6 +45,12 @@ class ManageAlertRulesResult(DaraModel):
         if self.deleted_uuid_list is not None:
             result['deletedUuidList'] = self.deleted_uuid_list
 
+        if self.updated_count is not None:
+            result['updatedCount'] = self.updated_count
+
+        if self.updated_uuid_list is not None:
+            result['updatedUuidList'] = self.updated_uuid_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +64,12 @@ class ManageAlertRulesResult(DaraModel):
 
         if m.get('deletedUuidList') is not None:
             self.deleted_uuid_list = m.get('deletedUuidList')
+
+        if m.get('updatedCount') is not None:
+            self.updated_count = m.get('updatedCount')
+
+        if m.get('updatedUuidList') is not None:
+            self.updated_uuid_list = m.get('updatedUuidList')
 
         return self
 

@@ -15,13 +15,13 @@ class DeepfakeDetectIntlResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DeepfakeDetectIntlResponseBodyResultObject = None,
     ):
-        # Return code: 200 indicates a successful request, any other value indicates failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned result information.
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -72,22 +72,22 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
         risk_tag: str = None,
         transaction_id: str = None,
     ):
-        # Risk result:
+        # The risk result. Valid values:
         # 
-        # - **0**: Low risk
-        # - **1**: High risk
-        # - **2**: Suspicious
+        # - **0**: Low risk.
+        # - **1**: High risk.
+        # - **2**: Suspicious.
         self.result = result
-        # Risk score map.
+        # The risk score map.
         self.risk_score = risk_score
-        # Risk tags. Multiple tags are separated by commas (,). Includes:
+        # The risk labels. Multiple labels are separated by commas (,). Valid values:
         # 
-        # - **SuspectDeepForgery** Suspected deep forgery  
-        # - **SuspectPSFace** Suspected synthetic attack  
-        # - **SuspectWarterMark** Suspected watermark presence  
-        # - **SuspectTemple** Suspected template attack  
-        # - **SuspectAIGCFace**  Suspected generated face  
-        # - **SuspectRemake**  Suspected rephotographed face
+        # - **SuspectDeepForgery**: suspected depth forgery  
+        # - **SuspectPSFace**: suspected synthetic attack  
+        # - **SuspectWarterMark**: suspected watermark  
+        # - **SuspectTemple**: suspected template attack  
+        # - **SuspectAIGCFace**: suspected AIGC-generated face  
+        # - **SuspectRemake**: suspected recaptured face.
         self.risk_tag = risk_tag
         self.transaction_id = transaction_id
 

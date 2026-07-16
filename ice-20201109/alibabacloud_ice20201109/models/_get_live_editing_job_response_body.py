@@ -225,7 +225,7 @@ class GetLiveEditingJobResponseBodyLiveEditingJobOutputMediaConfig(DaraModel):
         self.height = height
         # The URL of the output file.
         self.media_url = media_url
-        # If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
+        # If OutputMediaTarget is set to vod-media, this parameter indicates the storage location of the media asset in ApsaraVideo VOD. The storage location is the path of the file in ApsaraVideo VOD, excluding the prefix http\\://. Example: outin-xxxxxx.oss-cn-shanghai.aliyuncs.com.
         self.storage_location = storage_location
         # The ID of the VOD transcoding template group. If VOD transcoding is not required, set the value to VOD_NO_TRANSCODE.
         self.vod_template_group_id = vod_template_group_id

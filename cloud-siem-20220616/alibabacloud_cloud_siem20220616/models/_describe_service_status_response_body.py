@@ -10,10 +10,11 @@ class DescribeServiceStatusResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the threat analysis feature is authorized to access the resource directory. Valid values:
+        # The return value.
         # 
-        # *   true
-        # *   false
+        # - true: The authorization is granted.
+        # 
+        # - false: The authorization is not granted.
         self.data = data
         # The request ID.
         self.request_id = request_id

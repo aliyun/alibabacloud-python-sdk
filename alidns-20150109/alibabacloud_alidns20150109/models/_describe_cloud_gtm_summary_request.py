@@ -11,8 +11,9 @@ class DescribeCloudGtmSummaryRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English.
         self.accept_language = accept_language
 
     def validate(self):

@@ -12,9 +12,13 @@ class ListPodsOfInstanceRequest(DaraModel):
         instance: str = None,
         page_size: int = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The current page number. Pages start from page 1.
         self.current = current
+        # The instance ID.
         self.instance = instance
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

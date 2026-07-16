@@ -17,11 +17,17 @@ class GetDeploymentsByNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code. This is returned only when the request fails.
         self.error_code = error_code
+        # The error message. This is returned only when the request fails.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is returned. Use the success parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

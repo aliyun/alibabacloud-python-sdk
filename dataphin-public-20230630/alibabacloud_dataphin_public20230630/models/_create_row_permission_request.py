@@ -13,8 +13,12 @@ class CreateRowPermissionRequest(DaraModel):
         create_row_permission_command: main_models.CreateRowPermissionRequestCreateRowPermissionCommand = None,
         op_tenant_id: int = None,
     ):
+        # Request command.
+        # 
         # This parameter is required.
         self.create_row_permission_command = create_row_permission_command
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -55,12 +59,19 @@ class CreateRowPermissionRequestCreateRowPermissionCommand(DaraModel):
         rules: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandRules] = None,
         tables: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandTables] = None,
     ):
+        # The mapping columns.
+        # 
         # This parameter is required.
         self.mapping_columns = mapping_columns
+        # The description of the row-level permission.
         self.row_permission_desc = row_permission_desc
+        # The name of the row-level permission.
+        # 
         # This parameter is required.
         self.row_permission_name = row_permission_name
+        # The rules.
         self.rules = rules
+        # The related tables.
         self.tables = tables
 
     def validate(self):
@@ -140,10 +151,16 @@ class CreateRowPermissionRequestCreateRowPermissionCommandTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
+        # The column of the table.
+        # 
         # This parameter is required.
         self.column_name = column_name
+        # The name of the mapping column.
+        # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
+        # The GUID of the table.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 
@@ -189,15 +206,25 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRules(DaraModel):
         status: int = None,
         user_mapping_list: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList] = None,
     ):
+        # The rule expressions.
+        # 
         # This parameter is required.
         self.expressions = expressions
+        # Specifies whether to delete the rule.
         self.is_delete = is_delete
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The scope type of the rule.
+        # 
         # This parameter is required.
         self.scope_type = scope_type
+        # The status of the rule.
+        # 
         # This parameter is required.
         self.status = status
+        # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -273,8 +300,12 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList(D
         account_type: str = None,
         accounts: List[main_models.CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts] = None,
     ):
+        # The type of the account bound to the rule.
+        # 
         # This parameter is required.
         self.account_type = account_type
+        # The accounts bound to the rule.
+        # 
         # This parameter is required.
         self.accounts = accounts
 
@@ -317,6 +348,8 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAc
         self,
         account_id: str = None,
     ):
+        # The ID of the account bound to the rule.
+        # 
         # This parameter is required.
         self.account_id = account_id
 
@@ -349,14 +382,24 @@ class CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions(DaraM
         type: str = None,
         values: List[str] = None,
     ):
+        # The name of the mapping column.
+        # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
+        # The operator of the expression.
+        # 
         # This parameter is required.
         self.operator = operator
+        # The sub-expressions.
+        # 
         # This parameter is required.
         self.sub_conditions = sub_conditions
+        # The type of the expression.
+        # 
         # This parameter is required.
         self.type = type
+        # The expression operation values.
+        # 
         # This parameter is required.
         self.values = values
 
@@ -411,9 +454,14 @@ class CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns(DaraMod
         column_name: str = None,
         column_type: str = None,
     ):
+        # The description of the mapping column.
         self.column_desc = column_desc
+        # The name of the mapping column.
+        # 
         # This parameter is required.
         self.column_name = column_name
+        # The type of the mapping column.
+        # 
         # This parameter is required.
         self.column_type = column_type
 

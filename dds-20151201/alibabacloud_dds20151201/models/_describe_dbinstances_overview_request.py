@@ -27,60 +27,72 @@ class DescribeDBInstancesOverviewRequest(DaraModel):
     ):
         # The billing method of the instance. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # - **PrePaid**: subscription
+        # 
+        # - **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
         # The database engine version of the instance. Valid values: **5.0**, **4.4**, **4.2**, **4.0**, and **3.4**.
         self.engine_version = engine_version
-        # The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
+        # The instance type. For more information about the instance types available for different instance architectures, see:
         # 
-        # *   [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
-        # *   [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
-        # *   [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+        # - [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
+        # 
+        # - [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
+        # 
+        # - [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+        # 
+        # <props="china">
+        # 
+        # > This parameter is not required for Serverless instances.
         self.instance_class = instance_class
-        # The ID of the instance for which you want to query the overview information.
+        # The ID of the instance whose overview you want to query.
         # 
-        # > 
-        # 
-        # *   If you do not specify this parameter, the overview information of all instances within this account is queried.
-        # 
-        # *   Separate the instance IDs with commas (,).
+        # > - If you do not specify this parameter, an overview of all instances in your Alibaba Cloud account is returned.
+        # >
+        # > - You can specify multiple instance IDs. Separate the IDs with commas (,).
         self.instance_ids = instance_ids
-        # The state of the instance. For more information about valid values, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.instance_status = instance_status
-        # The architecture of the instance. Valid values:
+        # The instance architecture. Valid values:
         # 
-        # *   **sharding**: sharded cluster instance
-        # *   **replicate**: replica set or standalone instance
+        # - **sharding**: sharded cluster instance
         # 
-        # > 
+        # - **replicate**: replica set or standalone instance
         # 
-        # *   To query the overview information of a sharded cluster instance, you must set the parameter to **sharding**.
+        # <props="china">
         # 
-        # *   If you do not specify this parameter, the overview information of all instances within this account is queried.
+        # - **serverless**: Serverless instance
+        # 
+        # 
+        # 
+        # 
+        # > * Set this parameter as needed. For example, to query the overview of a sharded cluster instance, set this parameter to **sharding**.
+        # >
+        # > * If you do not specify this parameter, an overview of all instances is returned.
         self.instance_type = instance_type
         # The network type of the instance. Valid values:
         # 
-        # *   **Classic**: classic network
-        # *   **VPC**: Virtual Private Cloud (VPC)
+        # - **Classic**: classic network
+        # 
+        # - **VPC**: virtual private cloud (VPC)
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) to query the latest region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For more information, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group. For more information about resource groups, see [View basic information about a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to display instance tags. Default value: False.
+        # Specifies whether to return instance tags. The default value is false.
         self.show_tags = show_tags
-        # The ID of the vSwitch to which the instance is connected.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC in which the instance is deployed.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

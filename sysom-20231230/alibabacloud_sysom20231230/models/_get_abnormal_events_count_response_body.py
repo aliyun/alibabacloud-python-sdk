@@ -14,8 +14,11 @@ class GetAbnormalEventsCountResponseBody(DaraModel):
         data: List[main_models.GetAbnormalEventsCountResponseBodyData] = None,
         message: str = None,
     ):
+        # Response code.
         self.code = code
+        # Response data.
         self.data = data
+        # When success is false, this value is not empty, indicating a business error message.
         self.message = message
 
     def validate(self):
@@ -65,8 +68,11 @@ class GetAbnormalEventsCountResponseBodyData(DaraModel):
         type: str = None,
         value: int = None,
     ):
+        # List of abnormal events.
         self.event_list = event_list
+        # Abnormal event type.
         self.type = type
+        # Count of abnormal event type.
         self.value = value
 
     def validate(self):

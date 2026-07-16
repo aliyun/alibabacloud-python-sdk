@@ -15,11 +15,17 @@ class GetLatestSubmitDetailResponseBody(DaraModel):
         submit_detail_result: main_models.GetLatestSubmitDetailResponseBodySubmitDetailResult = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The pending submit details.
         self.submit_detail_result = submit_detail_result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,10 +89,32 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResult(DaraModel):
         submit_status: str = None,
         tag: str = None,
     ):
+        # The submit record ID.
         self.id = id
+        # The publish status. Valid values: 
+        # - NOT_VERIFIED: not verified.
+        # - APPROVING: approval in progress.
+        # - APPROVE_FAILED: approval failed.
+        # - APPROVE_SUCCESS: approval succeeded.
+        # - APPROVE_REVOKED: approval revoked.
+        # - CHECKING: publish verification in progress.
+        # - CHECK_FAILED: publish verification failed.
+        # - CHECK_SUCCESS: publish verification succeeded.
+        # - PUBLISHING: publishing in progress.
+        # - FAILED: publish failed.
+        # - SUCCESS: publish succeeded.
         self.publish_status = publish_status
+        # The pending submit record object.
         self.release_object = release_object
+        # The submit status. Valid values: 
+        # 
+        # - TO_BE_PUBLISHED: pending.
+        # 
+        # - PUBLISHED: published.
+        # 
+        # - PUBLISHING: publishing.
         self.submit_status = submit_status
+        # The record tag.
         self.tag = tag
 
     def validate(self):
@@ -145,11 +173,17 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObject(DaraModel
         submit_comment: str = None,
         submit_object: main_models.GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObject = None,
     ):
+        # The change type. Valid values: CREATE, UPDATE, and DELETE.
         self.change_type = change_type
+        # The node ID.
         self.node_id = node_id
+        # The object version.
         self.object_version = object_version
+        # The project ID.
         self.project_id = project_id
+        # The submit comment.
         self.submit_comment = submit_comment
+        # The submit object.
         self.submit_object = submit_object
 
     def validate(self):
@@ -211,8 +245,11 @@ class GetLatestSubmitDetailResponseBodySubmitDetailResultReleaseObjectSubmitObje
         object_name: str = None,
         object_type: str = None,
     ):
+        # The object ID.
         self.object_id = object_id
+        # The object name.
         self.object_name = object_name
+        # The object type.
         self.object_type = object_type
 
     def validate(self):

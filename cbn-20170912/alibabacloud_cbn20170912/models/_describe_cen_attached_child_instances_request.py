@@ -27,9 +27,9 @@ class DescribeCenAttachedChildInstancesRequest(DaraModel):
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **VBR**: virtual border router (VBR)
-        # *   **CCN**: Cloud Connect Network (CCN) instance
+        # - **VPC**: virtual private cloud (VPC)
+        # - **VBR**: virtual border router (VBR)
+        # - **CCN**: Cloud Connect Network (CCN) instance
         self.child_instance_type = child_instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id

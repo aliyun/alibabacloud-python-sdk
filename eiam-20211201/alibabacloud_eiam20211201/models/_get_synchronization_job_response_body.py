@@ -59,8 +59,9 @@ class GetSynchronizationJobResponseBodySynchronizationJob(DaraModel):
     ):
         # The direction of the synchronization job. Valid values:
         # 
-        # *   ingress
-        # *   egress
+        # - ingress
+        # 
+        # - egress
         self.direction = direction
         # The end time of the synchronization. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
@@ -70,11 +71,15 @@ class GetSynchronizationJobResponseBodySynchronizationJob(DaraModel):
         self.start_time = start_time
         # The status of the synchronization job. Valid values:
         # 
-        # *   pending
-        # *   running
-        # *   failed
-        # *   partial_success
-        # *   success
+        # - pending
+        # 
+        # - running
+        # 
+        # - failed
+        # 
+        # - partial_success
+        # 
+        # - success
         self.status = status
         # The ID of the synchronization job.
         self.synchronization_job_id = synchronization_job_id
@@ -82,13 +87,15 @@ class GetSynchronizationJobResponseBodySynchronizationJob(DaraModel):
         self.target_id = target_id
         # The type of the synchronization destination. Valid values:
         # 
-        # *   identity_provider
-        # *   application
+        # - identity_provider
+        # 
+        # - application
         self.target_type = target_type
         # The trigger type of the synchronization. Valid values:
         # 
-        # *   auto
-        # *   manual
+        # - auto
+        # 
+        # - manual
         self.trigger_type = trigger_type
 
     def validate(self):

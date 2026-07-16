@@ -11,9 +11,9 @@ class ModifyBlackListStrategyRequest(DaraModel):
         black_list_strategy: main_models.ModifyBlackListStrategyRequestBlackListStrategy = None,
         region_id: str = None,
     ):
-        # Blacklist rule.
+        # The blacklist rule.
         self.black_list_strategy = black_list_strategy
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -53,26 +53,26 @@ class ModifyBlackListStrategyRequestBlackListStrategy(DaraModel):
         product_name: str = None,
         status: str = None,
     ):
-        # Blacklist string, with each blacklist entry separated by commas.
+        # The blacklist string. Separate multiple entries with commas (,).
         self.biz_content = biz_content
-        # List Type:
-        # - **mobile**: Mobile number blacklist
-        # - **ip**: IP blacklist
-        # - **identifyNum**: ID number blacklist
-        # - **bankCard**: Bank card blacklist
+        # The blacklist type. Valid values:
+        # - **mobile**: mobile number blacklist.
+        # - **ip**: IP blacklist.
+        # - **identifyNum**: ID card blacklist.
+        # - **bankCard**: bank card blacklist.
         self.biz_key = biz_key
-        # Rule ID:
-        # - **Empty**: Add a new rule
-        # - **Non-empty**: Modify an existing rule
+        # The rule ID. Valid values:
+        # - **Empty**: creates a rule.
+        # - **Not empty**: modifies a rule.
         self.id = id
-        # Product Name:
-        # - **id2meta**: ID card two-factor verification
-        # - **mobile3Meta**: Mobile number factor verification
-        # - **bankcardMeta**: Bank card factor verification
+        # The product name. Valid values:
+        # - **id2meta**: ID card two-element verification.
+        # - **mobile3Meta**: mobile number element verification.
+        # - **bankcardMeta**: bank card element verification.
         self.product_name = product_name
-        # Verification Status:
-        # - **1**: Verification passed
-        # - **2**: Verification failed
+        # The authentication status. Valid values:
+        # - **1**: Authentication passed.
+        # - **2**: Authentication failed.
         self.status = status
 
     def validate(self):

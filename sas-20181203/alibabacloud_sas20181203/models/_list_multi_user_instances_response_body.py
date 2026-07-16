@@ -109,8 +109,10 @@ class ListMultiUserInstancesResponseBodySaleInstanceList(DaraModel):
         self.image_scan_capacity = image_scan_capacity
         # Cloud Security Center instance ID purchased by the member account.
         self.instance_id = instance_id
-        # Instance purchase type. Values: 
+        # Instance purchase type. Values:
+        # 
         # - **0**: Self-purchased.
+        # 
         # - **1**: Allocated.
         self.instance_purchase_type = instance_purchase_type
         # Member account RASP (Runtime Application Self-Protection) usage.
@@ -119,8 +121,10 @@ class ListMultiUserInstancesResponseBodySaleInstanceList(DaraModel):
         self.sdk_capacity = sdk_capacity
         # Log storage capacity usage of the member account.
         self.sls_capacity = sls_capacity
-        # Status of the member account instance. Values: 
+        # Status of the member account instance. Values:
+        # 
         # - **1**: Active.
+        # 
         # - **2**: Inactive.
         self.status = status
         # Member account threat analysis capacity usage.
@@ -128,16 +132,25 @@ class ListMultiUserInstancesResponseBodySaleInstanceList(DaraModel):
         # Member account threat analysis and response log ingestion traffic usage.
         self.threat_analysis_flow = threat_analysis_flow
         # User type. Values:
-        # * **Administrator User**：1
-        # * **Regular User**：2
+        # 
+        # - **Administrator User**:1
+        # 
+        # - **Regular User**:2
         self.user_type = user_type
-        # Version of the Cloud Security Center for the member account. Values:  
-        # - **1**: Free Edition 
+        # Version of the Cloud Security Center for the member account. Values:
+        # 
+        # - **1**: Free Edition
+        # 
         # - **3**: Enterprise Edition
+        # 
         # - **5**: Advanced Edition
-        # - **6**: Anti-Virus Edition    
-        # - **7**: Flagship Edition   
-        # - **8**: Multiple Versions   
+        # 
+        # - **6**: Anti-Virus Edition
+        # 
+        # - **7**: Flagship Edition
+        # 
+        # - **8**: Multiple Versions
+        # 
         # - **10**: Only Purchased Value-Added Services
         self.version = version
         # Authorization usage statistics for the member account.
@@ -345,21 +358,31 @@ class ListMultiUserInstancesResponseBodySaleInstanceListVersionSummary(DaraModel
         version: int = None,
     ):
         # Authorization type consumed during binding, with values:
-        # - **ASSET**：Consumes the number of authorized instances
-        # - **CORE**：Consumes the number of authorized cores
-        # - **ASSET_AND_CORE**：Consumes both the number of authorized instances and cores.
+        # 
+        # - **ASSET**:Consumes the number of authorized instances
+        # 
+        # - **CORE**:Consumes the number of authorized cores
+        # 
+        # - **ASSET_AND_CORE**:Consumes both the number of authorized instances and cores.
         self.auth_bind_type = auth_bind_type
         # Usage of core authorization for the member account.
         self.core_count = core_count
         # Usage details of ECS authorizations for the member account.
         self.ecs_count = ecs_count
-        # Version of the Cloud Security Center for the member account. Values:  
-        # - **1**: Free Edition 
+        # Version of the Cloud Security Center for the member account. Values:
+        # 
+        # - **1**: Free Edition
+        # 
         # - **3**: Enterprise Edition
+        # 
         # - **5**: Advanced Edition
-        # - **6**: Anti-Virus Edition    
-        # - **7**: Flagship Edition   
-        # - **8**: Multiple Versions   
+        # 
+        # - **6**: Anti-Virus Edition
+        # 
+        # - **7**: Flagship Edition
+        # 
+        # - **8**: Multiple Versions
+        # 
         # - **10**: Value-Added Services Only
         self.version = version
 
@@ -929,8 +952,10 @@ class ListMultiUserInstancesResponseBodyDaInstance(DaraModel):
         # Cloud Security Center instance ID purchased by the administrator account.
         self.instance_id = instance_id
         # Instance purchase type. Values:
-        # - **0**：Self-purchased.
-        # - **1**：Allocated.
+        # 
+        # - **0**:Self-purchased.
+        # 
+        # - **1**:Allocated.
         self.instance_purchase_type = instance_purchase_type
         # Usage and allocation of administrator account RASP (Runtime Application Self-Protection) capacity.
         self.rasp_capacity = rasp_capacity
@@ -938,26 +963,37 @@ class ListMultiUserInstancesResponseBodyDaInstance(DaraModel):
         self.sdk_capacity = sdk_capacity
         # Usage and allocation of administrator account log storage capacity.
         self.sls_capacity = sls_capacity
-        # Administrator account instance status. Values: 
+        # Administrator account instance status. Values:
+        # 
         # - **1**: Active.
+        # 
         # - **2**: Inactive.
         self.status = status
         # Usage and allocation of administrator account threat analysis capacity.
         self.threat_analysis_capacity = threat_analysis_capacity
         # Usage and allocation of threat analysis and response log inbound traffic for the administrator account.
         self.threat_analysis_flow = threat_analysis_flow
-        # User type. Values: 
-        # * **Administrator User**: 1
-        # * **Regular User**: 2
+        # User type. Values:
+        # 
+        # - **Administrator User**: 1
+        # 
+        # - **Regular User**: 2
         self.user_type = user_type
-        # Purchased version of Cloud Security Center. Values:  
-        # - **1**：Free Edition 
-        # - **3**：Enterprise Edition
-        # - **5**：Advanced Edition
-        # - **6**：Anti-Virus Edition    
-        # - **7**：Flagship Edition   
-        # - **8**：Multiple Editions   
-        # - **10**：Value-Added Services Only
+        # Purchased version of Cloud Security Center. Values:
+        # 
+        # - **1**:Free Edition
+        # 
+        # - **3**:Enterprise Edition
+        # 
+        # - **5**:Advanced Edition
+        # 
+        # - **6**:Anti-Virus Edition
+        # 
+        # - **7**:Flagship Edition
+        # 
+        # - **8**:Multiple Editions
+        # 
+        # - **10**:Value-Added Services Only
         self.version = version
         # Authorization usage statistics for the administrator account.
         self.version_summary = version_summary
@@ -1172,22 +1208,32 @@ class ListMultiUserInstancesResponseBodyDaInstanceVersionSummary(DaraModel):
         ecs_count: main_models.ListMultiUserInstancesResponseBodyDaInstanceVersionSummaryEcsCount = None,
         version: int = None,
     ):
-        # The type of authorization consumed during binding. Values: 
+        # The type of authorization consumed during binding. Values:
+        # 
         # - ASSET: consumes the number of authorized instances
+        # 
         # - CORE: consumes the number of authorized cores
+        # 
         # - ASSET_AND_CORE: consumes both the number of authorized instances and cores
         self.auth_bind_type = auth_bind_type
         # Usage and allocation details of the core licenses for the administrator account.
         self.core_count = core_count
         # Usage and allocation details of the ECS instance licenses for the administrator account.
         self.ecs_count = ecs_count
-        # Purchased version of Cloud Security Center. Values:  
-        # - **1**: Free Edition 
+        # Purchased version of Cloud Security Center. Values:
+        # 
+        # - **1**: Free Edition
+        # 
         # - **3**: Enterprise Edition
+        # 
         # - **5**: Advanced Edition
-        # - **6**: Antivirus Edition    
-        # - **7**: Flagship Edition   
-        # - **8**: Multiple Editions   
+        # 
+        # - **6**: Antivirus Edition
+        # 
+        # - **7**: Flagship Edition
+        # 
+        # - **8**: Multiple Editions
+        # 
         # - **10**: Only Value-Added Services Purchased
         self.version = version
 

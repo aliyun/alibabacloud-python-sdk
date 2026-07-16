@@ -11,9 +11,14 @@ class SetPresetRequest(DaraModel):
         owner_id: int = None,
         preset_id: str = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # Preset ID.<br>
+        # Valid values: 1 to 7.<br>
+        # 
         # This parameter is required.
         self.preset_id = preset_id
 

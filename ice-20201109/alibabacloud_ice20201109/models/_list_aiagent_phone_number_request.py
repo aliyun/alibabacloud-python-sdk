@@ -12,9 +12,21 @@ class ListAIAgentPhoneNumberRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
+        # Phone number. Specify Number to directly query the corresponding phone number.
         self.number = number
+        # Page number. Default Value is 1.
         self.page_number = page_number
+        # Page size, indicating the number of records displayed per page. Default Value is 50, with a maximum value of 100.
         self.page_size = page_size
+        # Status of the target phone number to query.
+        # 
+        # - 1: "Activation in progress".
+        # 
+        # - 2: "Normal".
+        # 
+        # - 3: "Deactivation in progress".
+        # 
+        # - 4: "Deactivated".
         self.status = status
 
     def validate(self):

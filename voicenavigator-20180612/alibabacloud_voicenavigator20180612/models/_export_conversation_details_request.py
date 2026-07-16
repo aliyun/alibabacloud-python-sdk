@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class ExportConversationDetailsRequest(DaraModel):
     def __init__(
         self,
+        ab_test_id: str = None,
         begin_time_left_range: int = None,
         begin_time_right_range: int = None,
         calling_number: str = None,
@@ -19,12 +20,19 @@ class ExportConversationDetailsRequest(DaraModel):
         rounds_left_range: int = None,
         rounds_right_range: int = None,
     ):
+        self.ab_test_id = ab_test_id
+        # The left boundary of the start date range.
         self.begin_time_left_range = begin_time_left_range
+        # The right boundary of the start date range.
         self.begin_time_right_range = begin_time_right_range
+        # The calling number.
         self.calling_number = calling_number
         self.debug_conversation = debug_conversation
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The optional parameters.
         self.options = options
         self.result = result
         self.rounds_left_range = rounds_left_range
@@ -38,6 +46,9 @@ class ExportConversationDetailsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ab_test_id is not None:
+            result['AbTestId'] = self.ab_test_id
+
         if self.begin_time_left_range is not None:
             result['BeginTimeLeftRange'] = self.begin_time_left_range
 
@@ -69,6 +80,9 @@ class ExportConversationDetailsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbTestId') is not None:
+            self.ab_test_id = m.get('AbTestId')
+
         if m.get('BeginTimeLeftRange') is not None:
             self.begin_time_left_range = m.get('BeginTimeLeftRange')
 

@@ -12,7 +12,7 @@ class UpdateInstanceDescriptionRequest(DaraModel):
     ):
         # The new description of the instance.
         self.description = description
-        # The ID of the instance whose description you want to modify.
+        # The instance ID of the instance whose description you want to modify.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -12,10 +12,16 @@ class DescribeStatisticalDataRequest(DaraModel):
         instance_id: str = None,
         time_unit: str = None,
     ):
+        # The left boundary of the start time range.
         self.begin_time_left_range = begin_time_left_range
+        # The right boundary of the start time range.
         self.begin_time_right_range = begin_time_right_range
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The date unit.
+        # 
         # This parameter is required.
         self.time_unit = time_unit
 

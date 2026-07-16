@@ -17,12 +17,17 @@ class DescribeCostRulesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # A list of cost rules.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -96,14 +101,23 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
         model_service_id: str = None,
         output_cost_points_per_million: str = None,
     ):
+        # The cost in points per one million cached tokens.
         self.cache_cost_points_per_million = cache_cost_points_per_million
+        # The cost rule ID.
         self.cost_rule_id = cost_rule_id
+        # The time when the cost rule was created.
         self.gmt_created = gmt_created
+        # The time when the cost rule was last updated.
         self.gmt_modified = gmt_modified
+        # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
+        # The cost in points per one million input tokens.
         self.input_cost_points_per_million = input_cost_points_per_million
+        # The model name.
         self.model = model
+        # The model service ID.
         self.model_service_id = model_service_id
+        # The cost in points per one million output tokens.
         self.output_cost_points_per_million = output_cost_points_per_million
 
     def validate(self):

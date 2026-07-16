@@ -9,7 +9,7 @@ class GetEditingProjectMaterialsRequest(DaraModel):
         self,
         project_id: str = None,
     ):
-        # The ID of the online editing project.
+        # ID of the online editing project.
         # 
         # This parameter is required.
         self.project_id = project_id

@@ -15,9 +15,13 @@ class DescribeInternetTimeTopResponseBody(DaraModel):
         request_id: str = None,
         traffic_time: int = None,
     ):
+        # The number of entries returned.
         self.data_count = data_count
+        # The list of data entries.
         self.data_list = data_list
+        # The request ID.
         self.request_id = request_id
+        # The timestamp of the traffic data. Unit: seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -88,23 +92,41 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         total_pps: int = None,
         vpc_id: str = None,
     ):
+        # The public IP address.
         self.ip = ip
+        # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
+        # The inbound packet forwarding rate. Unit: pps.
         self.in_pps = in_pps
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The public IP address of the NAT gateway.
         self.nat_ip = nat_ip
+        # The number of new connections.
         self.new_conn = new_conn
+        # The outbound traffic. Unit: bit/s.
         self.out_bps = out_bps
+        # The outbound packet forwarding rate. Unit: pps.
         self.out_pps = out_pps
+        # The private IP address.
         self.private_ip = private_ip
+        # The region ID.
         self.region_no = region_no
+        # The ID of the asset instance.
         self.resource_instance_id = resource_instance_id
+        # The name of the asset.
         self.resource_instance_name = resource_instance_name
+        # The type of the public IP address.
         self.resource_type = resource_type
+        # The number of sessions.
         self.session_count = session_count
+        # The total bandwidth. Unit: bit/s.
         self.total_bps = total_bps
+        # The total number of packets.
         self.total_pps = total_pps
+        # The ID of the virtual private cloud (VPC) instance.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -11,9 +11,9 @@ class LogOffAllSessionsInAppInstanceGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The error code returned when an error occurs.
         self.code = code
-        # The error message.
+        # The error message returned when an error occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id

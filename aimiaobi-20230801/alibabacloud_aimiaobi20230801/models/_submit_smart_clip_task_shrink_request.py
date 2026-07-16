@@ -13,11 +13,18 @@ class SubmitSmartClipTaskShrinkRequest(DaraModel):
         output_config_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Video editing configuration.
         self.editing_config_shrink = editing_config_shrink
+        # Additional extended parameters. These parameters merge with InputConfig, OutputConfig, and EditingConfig.
         self.extend_param = extend_param
+        # Input configuration.
+        # 
         # This parameter is required.
         self.input_config_shrink = input_config_shrink
+        # Output configuration.
         self.output_config_shrink = output_config_shrink
+        # Alibaba Cloud Model Studio workspace ID. For more information, see [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

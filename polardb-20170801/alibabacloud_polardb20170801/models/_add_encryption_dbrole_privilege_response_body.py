@@ -10,8 +10,11 @@ class AddEncryptionDBRolePrivilegeResponseBody(DaraModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters in a destination region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

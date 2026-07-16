@@ -11,8 +11,11 @@ class UdfFunction(DaraModel):
         function_name: str = None,
         udf_artifact_name: str = None,
     ):
+        # The class name.
         self.class_name = class_name
+        # The function name.
         self.function_name = function_name
+        # The UDF artifact name.
         self.udf_artifact_name = udf_artifact_name
 
     def validate(self):

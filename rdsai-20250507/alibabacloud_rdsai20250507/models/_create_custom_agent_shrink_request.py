@@ -13,16 +13,16 @@ class CreateCustomAgentShrinkRequest(DaraModel):
         system_prompt: str = None,
         tools_shrink: str = None,
     ):
-        # The system prompts.
+        # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # The operation that you want to perform. Set the value to **CreateCustomAgent**.
+        # The name of the agent.
         self.name = name
         self.skill_ids_shrink = skill_ids_shrink
-        # The name of the dedicated agent.
+        # The system prompt.
         # 
         # This parameter is required.
         self.system_prompt = system_prompt
-        # Specifies whether to enable tools.
+        # The tool information.
         self.tools_shrink = tools_shrink
 
     def validate(self):

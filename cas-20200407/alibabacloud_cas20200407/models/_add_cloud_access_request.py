@@ -11,8 +11,31 @@ class AddCloudAccessRequest(DaraModel):
         secret_id: str = None,
         secret_key: str = None,
     ):
+        # The cloud service provider. This API supports multiple providers as detailed in the SecretKey parameter description. For example, to add credentials for Tencent Cloud, set this parameter to **Tencent**.
         self.cloud_name = cloud_name
+        # The Secret ID for accessing the cloud resource set.
         self.secret_id = secret_id
+        # The secret corresponding to the AccessKey. The value is determined by the `AkType` parameter as follows:
+        # 
+        # 1\\. If `AkType` is set to `primary`:
+        # 
+        # - **Tencent**: The SecretAccessKey of the primary account.
+        # 
+        # - **HUAWEI CLOUD**: The SecretAccessKey of the primary account.
+        # 
+        # - **Azure**: The ClientSecret.
+        # 
+        # - **AWS**: The SecretAccessKey of the primary account.
+        # 
+        # 2\\. If `AkType` is set to `sub`:
+        # 
+        # - **Tencent**: The SecretAccessKey of the sub-account.
+        # 
+        # - **HUAWEI CLOUD**: The SecretAccessKey of the sub-account.
+        # 
+        # - **Azure**: The ClientSecret.
+        # 
+        # - **AWS**: The SecretAccessKey of the sub-account.
         self.secret_key = secret_key
 
     def validate(self):

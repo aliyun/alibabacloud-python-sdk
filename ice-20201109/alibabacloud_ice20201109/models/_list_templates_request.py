@@ -19,40 +19,47 @@ class ListTemplatesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AliyunConsole
-        # *   WebSDK
-        # *   OpenAPI
+        # - AliyunConsole
+        # 
+        # - WebSDK
+        # 
+        # - OpenAPI
         self.create_source = create_source
         # The search keyword. You can use the template ID or title as the keyword to search for templates.
         self.keyword = keyword
-        # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
         # The sorting parameter. By default, the query results are sorted by creation time in descending order.
         # 
         # Valid values:
         # 
-        # *   CreationTime:Asc: sorted by creation time in ascending order.
-        # *   CreationTime:Desc: sorted by creation time in descending order.
+        # - CreationTime:Asc: sorted by creation time in ascending order.
+        # 
+        # - CreationTime:Desc: sorted by creation time in descending order.
         self.sort_type = sort_type
         # The template state.
         # 
         # Valid values:
         # 
-        # *   UploadFailed: Failed to upload the video.
-        # *   ProcessFailed: Failed to process the advanced template.
-        # *   Available: The template is available.
-        # *   Uploading: The video is being uploaded.
-        # *   Created: The template is created but not ready for use.
-        # *   Processing: The advanced template is being processed.
+        # - UploadFailed: Failed to upload the video.
+        # 
+        # - ProcessFailed: Failed to process the advanced template.
+        # 
+        # - Available: The template is available.
+        # 
+        # - Uploading: The video is being uploaded.
+        # 
+        # - Created: The template is created but not ready for use.
+        # 
+        # - Processing: The advanced template is being processed.
         self.status = status
         # The template type.
         # 
         # Valid values:
         # 
-        # *   Timeline
-        # *   VETemplate
+        # - Timeline
+        # 
+        # - VETemplate
         self.type = type
 
     def validate(self):

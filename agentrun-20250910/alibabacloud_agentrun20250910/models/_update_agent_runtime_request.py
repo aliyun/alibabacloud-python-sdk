@@ -10,7 +10,7 @@ class UpdateAgentRuntimeRequest(DaraModel):
         self,
         body: main_models.UpdateAgentRuntimeInput = None,
     ):
-        # 包含要更新的智能体运行时配置信息的请求体
+        # The input parameters for updating an agent runtime.
         # 
         # This parameter is required.
         self.body = body

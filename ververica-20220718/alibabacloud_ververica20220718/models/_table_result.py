@@ -14,8 +14,10 @@ class TableResult(DaraModel):
         row_updates: List[main_models.RowUpdate] = None,
         table_name: str = None,
     ):
+        # The ID of the collect sink operator.
         self.collect_sink_operator_id = collect_sink_operator_id
         self.row_updates = row_updates
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

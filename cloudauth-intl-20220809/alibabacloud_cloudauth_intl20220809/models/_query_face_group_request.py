@@ -14,12 +14,20 @@ class QueryFaceGroupRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
+        # The current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The code of the face library.
         self.group_code = group_code
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The name of the face library.
         self.name = name
+        # The token for the next query.
         self.next_token = next_token
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

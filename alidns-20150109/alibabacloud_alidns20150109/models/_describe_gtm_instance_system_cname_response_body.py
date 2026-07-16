@@ -10,9 +10,9 @@ class DescribeGtmInstanceSystemCnameResponseBody(DaraModel):
         request_id: str = None,
         system_cname: str = None,
     ):
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The CNAME record assigned by the system.
+        # The system-assigned CNAME domain name.
         self.system_cname = system_cname
 
     def validate(self):

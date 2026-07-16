@@ -16,14 +16,14 @@ class DescribePhysicalConnectionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page in a paged query. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
         self.physical_connection_set = physical_connection_set
         # The request ID.
         self.request_id = request_id
-        # The number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

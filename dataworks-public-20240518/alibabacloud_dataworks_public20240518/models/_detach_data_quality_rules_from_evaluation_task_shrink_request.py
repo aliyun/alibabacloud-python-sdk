@@ -11,15 +11,15 @@ class DetachDataQualityRulesFromEvaluationTaskShrinkRequest(DaraModel):
         data_quality_rule_ids_shrink: str = None,
         project_id: int = None,
     ):
-        # The ID of the data quality monitoring task that is associated with the rule.
+        # The ID of the associated data quality monitoring task.
         # 
         # This parameter is required.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
-        # The IDs of the monitoring rules.
+        # The list of data quality rule IDs.
         # 
         # This parameter is required.
         self.data_quality_rule_ids_shrink = data_quality_rule_ids_shrink
-        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id

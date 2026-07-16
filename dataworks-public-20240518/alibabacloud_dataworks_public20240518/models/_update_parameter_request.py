@@ -15,10 +15,15 @@ class UpdateParameterRequest(DaraModel):
         owner: str = None,
         properties: List[main_models.UpdateParameterRequestProperties] = None,
     ):
+        # The parameter description.
         self.description = description
+        # The parameter ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The owner\\"s account ID.
         self.owner = owner
+        # The parameter value configuration. This parameter is required for the production environment. If you specify the same environment multiple times, only the first configuration is used.
         self.properties = properties
 
     def validate(self):
@@ -73,7 +78,13 @@ class UpdateParameterRequestProperties(DaraModel):
         env_type: str = None,
         value: str = None,
     ):
+        # The project environment.
+        # 
+        # - `Prod`: the production environment
+        # 
+        # - `Dev`: the development environment
         self.env_type = env_type
+        # The parameter value.
         self.value = value
 
     def validate(self):

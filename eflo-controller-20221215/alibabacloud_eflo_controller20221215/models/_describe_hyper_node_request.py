@@ -9,6 +9,8 @@ class DescribeHyperNodeRequest(DaraModel):
         self,
         hyper_node_id: str = None,
     ):
+        # The ID of the hyper node.
+        # 
         # This parameter is required.
         self.hyper_node_id = hyper_node_id
 

@@ -15,13 +15,17 @@ class ModifyEncryptionDBRolePrivilegeRequest(DaraModel):
         role_privilege_config: str = None,
         role_privilege_name: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The role access policy.
         self.role_privilege_config = role_privilege_config
+        # The role permission name.
         self.role_privilege_name = role_privilege_name
 
     def validate(self):

@@ -17,14 +17,35 @@ class ListParametersShrinkRequest(DaraModel):
         sort_by: str = None,
         type: str = None,
     ):
+        # A list of parameter IDs.
         self.ids_shrink = ids_shrink
+        # A list of parameter names.
         self.names_shrink = names_shrink
+        # The account ID of the owner.
         self.owner = owner
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. Default: 20.
         self.page_size = page_size
+        # The workspace ID. Call the ListProjects operation to get the workspace ID.
         self.project_id = project_id
+        # The scope of the parameter. The default value is Project. Other values are not supported.
         self.scope = scope
+        # The field to sort the parameters by. Specify the value in the "FieldName SortOrder" format. The Asc sort order is optional. Supported values are:
+        # 
+        # - ModifyTime (Desc/Asc)
+        # 
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Name (Desc/Asc)
         self.sort_by = sort_by
+        # The type of the parameter. Valid values:
+        # 
+        # - PlainConstant: A plaintext constant.
+        # 
+        # - SecretConstant: A secret constant.
+        # 
+        # - Variable: A variable.
         self.type = type
 
     def validate(self):

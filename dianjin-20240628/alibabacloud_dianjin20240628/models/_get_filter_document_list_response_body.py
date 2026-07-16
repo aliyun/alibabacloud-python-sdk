@@ -19,13 +19,21 @@ class GetFilterDocumentListResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time spent on the request, in milliseconds.
         self.cost = cost
+        # Response data.
         self.data = data
+        # Data type.
         self.data_type = data_type
+        # Error code.
         self.err_code = err_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # Timestamp.
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetFilterDocumentListResponseBodyData(DaraModel):
         total_pages: int = None,
         total_records: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Number of records per page.
         self.page_size = page_size
+        # Records.
         self.records = records
+        # Total number of pages.
         self.total_pages = total_pages
+        # Total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -172,14 +185,23 @@ class GetFilterDocumentListResponseBodyDataRecords(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Document ID.
         self.doc_id = doc_id
+        # Document metadata.
         self.document_meta = document_meta
+        # File type.
         self.file_type = file_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Document library ID.
         self.library_id = library_id
+        # Document status. Valid values: WaitRefresh (waiting for refresh), InQueue (pending), FetchingData (retrieving data), Embedding (processing document), Error (failed), Completed (active), Null (unknown).
         self.status_code = status_code
+        # Document title.
         self.title = title
+        # Document URL.
         self.url = url
 
     def validate(self):

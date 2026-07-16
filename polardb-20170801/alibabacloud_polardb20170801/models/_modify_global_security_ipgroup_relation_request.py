@@ -17,11 +17,11 @@ class ModifyGlobalSecurityIPGroupRelationRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the IP whitelist template.
+        # The ID of the IP address whitelist template.
         # 
         # This parameter is required.
         self.global_security_group_id = global_security_group_id
@@ -31,7 +31,7 @@ class ModifyGlobalSecurityIPGroupRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

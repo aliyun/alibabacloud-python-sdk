@@ -66,11 +66,15 @@ class GetWorkflowTaskResponseBodyWorkflowTask(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Init: The task is being initialized.
-        # *   Failed: The task failed.
-        # *   Canceled: The task is canceled.
-        # *   Processing: The task is in progress.
-        # *   Succeed: The task is successful.
+        # - Init: The task is being initialized.
+        # 
+        # - Failed: The task failed.
+        # 
+        # - Canceled: The task is canceled.
+        # 
+        # - Processing: The task is in progress.
+        # 
+        # - Succeed: The task is successful.
         self.status = status
         # The ID of the workflow task.
         self.task_id = task_id
@@ -165,16 +169,19 @@ class GetWorkflowTaskResponseBodyWorkflowTaskWorkflow(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Active
-        # *   Inactive
+        # - Active
+        # 
+        # - Inactive
         self.status = status
         # The workflow type.
         # 
         # Valid values:
         # 
-        # *   Customize: custom workflow.
-        # *   System: system workflow.
-        # *   Common: user-created workflow.
+        # - Customize: custom workflow.
+        # 
+        # - System: system workflow.
+        # 
+        # - Common: user-created workflow.
         self.type = type
         # The workflow ID.
         self.workflow_id = workflow_id

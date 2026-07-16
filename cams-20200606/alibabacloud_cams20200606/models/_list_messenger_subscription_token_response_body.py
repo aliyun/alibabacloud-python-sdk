@@ -18,12 +18,27 @@ class ListMessengerSubscriptionTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request.
+        # 
+        # - A return value of OK indicates that the request was successful.
+        # 
+        # - For a list of other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The identifier for the next page. Pass this value to query the next page.
         self.next_page = next_page
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -105,18 +120,27 @@ class ListMessengerSubscriptionTokenResponseBodyData(DaraModel):
         topic_title: str = None,
         user_token_status: str = None,
     ):
+        # The time when the security token was created.
         self.creation_timestamp = creation_timestamp
+        # The custom audience ID.
         self.custom_audience_id = custom_audience_id
+        # The time when the application can send the next marketing message to the recipient.
         self.next_eligible_time = next_eligible_time
+        # The re-subscription status.
         self.notification_messages_reoptin = notification_messages_reoptin
+        # The customer\\"s time zone.
         self.notification_messages_timezone = notification_messages_timezone
+        # The page-scoped ID of the customer.
         self.notification_messages_token = notification_messages_token
+        # The page ID for Messenger.
         self.page_id = page_id
         # The customer\\"s Page-scoped ID (PSID)
         self.recipient_id = recipient_id
+        # The expiration time of the security token.
         self.token_expiry_timestamp = token_expiry_timestamp
         # The message\\"s title
         self.topic_title = topic_title
+        # The status of the security token.
         self.user_token_status = user_token_status
 
     def validate(self):

@@ -46,6 +46,9 @@ from ._create_ttsvoice_custom_response import CreateTTSVoiceCustomResponse
 from ._create_train_pic_avatar_request import CreateTrainPicAvatarRequest
 from ._create_train_pic_avatar_response_body import CreateTrainPicAvatarResponseBody
 from ._create_train_pic_avatar_response import CreateTrainPicAvatarResponse
+from ._delete_broadcast_sticker_request import DeleteBroadcastStickerRequest
+from ._delete_broadcast_sticker_response_body import DeleteBroadcastStickerResponseBody
+from ._delete_broadcast_sticker_response import DeleteBroadcastStickerResponse
 from ._get_broadcast_template_request import GetBroadcastTemplateRequest
 from ._get_broadcast_template_response_body import GetBroadcastTemplateResponseBody
 from ._get_broadcast_template_response import GetBroadcastTemplateResponse
@@ -145,6 +148,9 @@ __all__ = [
     CreateTrainPicAvatarRequest,
     CreateTrainPicAvatarResponseBody,
     CreateTrainPicAvatarResponse,
+    DeleteBroadcastStickerRequest,
+    DeleteBroadcastStickerResponseBody,
+    DeleteBroadcastStickerResponse,
     GetBroadcastTemplateRequest,
     GetBroadcastTemplateResponseBody,
     GetBroadcastTemplateResponse,

@@ -15,11 +15,17 @@ class FetchExportWordTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\`: successful. \\`false\\`: failed.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class FetchExportWordTaskResponseBodyData(DaraModel):
         file_url: str = None,
         task_stats: str = None,
     ):
+        # The file URL.
         self.file_url = file_url
+        # The status of the task.
         self.task_stats = task_stats
 
     def validate(self):

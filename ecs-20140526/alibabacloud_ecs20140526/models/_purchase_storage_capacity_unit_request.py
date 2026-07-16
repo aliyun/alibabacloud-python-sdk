@@ -47,15 +47,17 @@ class PurchaseStorageCapacityUnitRequest(DaraModel):
         self.owner_id = owner_id
         # The validity period of the SCU. Valid values:
         # 
-        # *   Valid values when PeriodUnit is set to Month: 1, 2, 3, and 6.
-        # *   Valid values when PeriodUnit is set to Year: 1, 3, and 5.
+        # - Valid values when PeriodUnit is set to Month: 1, 2, 3, and 6.
+        # 
+        # - Valid values when PeriodUnit is set to Year: 1, 3, and 5.
         # 
         # Default value: 1.
         self.period = period
         # The unit of the validity period of the SCU. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month
+        # 
+        # - Year
         # 
         # Default value: Month.
         self.period_unit = period_unit

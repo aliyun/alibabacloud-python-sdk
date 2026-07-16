@@ -10,8 +10,12 @@ class CheckDevicesRequest(DaraModel):
         app_key: int = None,
         device_ids: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identifier for each device in the push service. Each ID is 32 characters long and contains only digits and lowercase letters. Separate multiple IDs with commas. You can check up to 100 devices per request.
+        # 
         # This parameter is required.
         self.device_ids = device_ids
 

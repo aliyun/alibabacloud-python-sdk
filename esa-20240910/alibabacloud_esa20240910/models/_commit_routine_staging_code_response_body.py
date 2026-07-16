@@ -10,7 +10,7 @@ class CommitRoutineStagingCodeResponseBody(DaraModel):
         code_version: str = None,
         request_id: str = None,
     ):
-        # The version number of the newly generated code.
+        # The newly generated code version number.
         self.code_version = code_version
         # The request ID.
         self.request_id = request_id

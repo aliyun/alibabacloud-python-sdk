@@ -17,11 +17,17 @@ class GetBizEntityInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The business entity details.
         self.biz_entity_info = biz_entity_info
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class GetBizEntityInfoResponseBodyBizEntityInfo(DaraModel):
         data_domain_id: int = None,
         type: str = None,
     ):
+        # The business object.
         self.biz_object = biz_object
+        # The business process.
         self.biz_process = biz_process
+        # The ID of the business unit to which the business process belongs.
         self.biz_unit_id = biz_unit_id
+        # The ID of the data domain to which the business process belongs.
         self.data_domain_id = data_domain_id
+        # The business entity type. For more information, refer to the create business entity operation.
         self.type = type
 
     def validate(self):
@@ -164,25 +175,61 @@ class GetBizEntityInfoResponseBodyBizEntityInfoBizProcess(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The approval flow ID.
         self.approval_id = approval_id
+        # The approval status. Valid values:
+        # - INIT: Not submitted.
+        # - APPROVING: Pending approval.
+        # - AGREE: Approved.
+        # - REJECT: Rejected.
+        # - FAILED: Validation failed.
+        # - REVOKE: Withdrawn.
         self.approval_status = approval_status
+        # The list of business event activity IDs contained in the business flow activity. This parameter is valid only when the entity is a business flow activity.
         self.biz_event_entity_id_list = biz_event_entity_id_list
+        # The description of the business process.
         self.description = description
+        # The display name of the business process.
         self.display_name = display_name
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # Indicates whether the business process is depended on by other entities.
         self.has_dependent = has_dependent
+        # The business process ID.
         self.id = id
+        # The ID of the user who last modified the business object.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the business object.
         self.last_modifier_name = last_modifier_name
+        # The name of the business process.
         self.name = name
+        # The publish status. Valid values: 
+        # - SUBMITTED: Not published.
+        # - APPROVING: Pending approval.
+        # - PUBLISHED: Published.
+        # - REJECT: Publish failed.
         self.online_status = online_status
+        # The owner of the business object.
         self.owner_name = owner_name
+        # The owner of the business object.
         self.owner_user_id = owner_user_id
+        # The preceding business flow activities of the business flow activity.
         self.pre_biz_process_id_list = pre_biz_process_id_list
+        # The list of associated published business entity IDs.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
+        # The number of associated fact tables.
         self.ref_fact_table_count = ref_fact_table_count
+        # The status. Valid values:
+        # - DRAFT: Draft or not published.
+        # - SUBMITTING: Submitting.
+        # - SUBMITTED: Submitted.
+        # - DEVELOPING: Developing.
+        # - PUBLISHING: Publishing.
+        # - PUBLISHED: Published.
         self.status = status
+        # The type of the business process. For more information, refer to the create business entity operation.
         self.type = type
 
     def validate(self):
@@ -343,25 +390,61 @@ class GetBizEntityInfoResponseBodyBizEntityInfoBizObject(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The approval flow ID.
         self.approval_id = approval_id
+        # The approval status. Valid values:
+        # - INIT: Not submitted.
+        # - APPROVING: Pending approval.
+        # - AGREE: Approved.
+        # - REJECT: Rejected.
+        # - FAILED: Validation failed.
+        # - REVOKE: Withdrawn.
         self.approval_status = approval_status
+        # The list of child business objects of the business object.
         self.child_biz_entity_id_list = child_biz_entity_id_list
+        # The description of the business object.
         self.description = description
+        # The display name of the business object.
         self.display_name = display_name
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The business object ID.
         self.id = id
+        # The ID of the user who last modified the business object.
         self.last_modifier = last_modifier
+        # The name of the user who last modified the business object.
         self.last_modifier_name = last_modifier_name
+        # The code name of the business object.
         self.name = name
+        # The publish status. Valid values: 
+        # - SUBMITTED: Not published.
+        # - APPROVING: Pending approval.
+        # - PUBLISHED: Published.
+        # - REJECT: Publish failed.
         self.online_status = online_status
+        # The owner of the business object.
         self.owner_name = owner_name
+        # The owner of the business object.
         self.owner_user_id = owner_user_id
+        # The parent entity that the business object inherits from. Only common business objects support inheritance, and the parent entity must be a published business object.
         self.parent_id = parent_id
+        # The list of associated published business entity IDs.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
+        # The number of associated logical dimension tables.
         self.ref_dim_table_count = ref_dim_table_count
+        # The number of associated aggregate tables.
         self.ref_summary_table_count = ref_summary_table_count
+        # The status. Valid values:
+        # - DRAFT: Draft or not published.
+        # - SUBMITTING: Submitting.
+        # - SUBMITTED: Submitted.
+        # - DEVELOPING: Developing.
+        # - PUBLISHING: Publishing.
+        # - PUBLISHED: Published.
         self.status = status
+        # The object type of the business object. For more information, refer to the create business entity operation.
         self.type = type
 
     def validate(self):

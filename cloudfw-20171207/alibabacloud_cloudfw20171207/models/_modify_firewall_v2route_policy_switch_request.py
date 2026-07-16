@@ -13,24 +13,27 @@ class ModifyFirewallV2RoutePolicySwitchRequest(DaraModel):
         tr_firewall_route_policy_id: str = None,
         tr_firewall_route_policy_switch_status: str = None,
     ):
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The instance ID of the VPC boundary firewall.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # Specifies whether to restore the traffic redirection configurations. Valid values:
+        # Specifies whether to restore the traffic redirection configuration. Valid values:
         # 
-        # *   true: roll back
-        # *   false: withdraw
+        # - true: Rolls back the route.
+        # 
+        # - false: Revokes the route.
         self.should_recover = should_recover
-        # The ID of the routing policy.
+        # The ID of the routing policy for the firewall.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
-        # The status of the routing policy. Valid values:
+        # The status of the policy. Valid values:
         # 
-        # *   open: enabled
-        # *   close: disabled
+        # - open: Enables the policy.
+        # 
+        # - close: Disables the policy.
         self.tr_firewall_route_policy_switch_status = tr_firewall_route_policy_switch_status
 
     def validate(self):

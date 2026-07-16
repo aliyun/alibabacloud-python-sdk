@@ -22,21 +22,22 @@ class ListRulesRequest(DaraModel):
         self.instance_id = instance_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
+        # The number of entries per page.<br>
         # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The name of the authorization rule to query. Only exact match is supported.
         self.rule_name = rule_name
         # The state of the authorization rule to query.
         # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.rule_state = rule_state
 
     def validate(self):

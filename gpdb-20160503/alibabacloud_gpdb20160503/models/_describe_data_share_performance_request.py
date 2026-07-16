@@ -13,24 +13,25 @@ class DescribeDataSharePerformanceRequest(DaraModel):
         resource_group_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The end of the time range to query. The time must be later than the start time, in UTC, and in the *&#x79;**\\*\\*\\*\\***&#x64;*&#x54;*HH:mm*Z format.
         self.end_time = end_time
-        # The name of the performance metric. Separate multiple values with commas (,). Valid values:
+        # The name of the performance metric. To specify multiple metrics, separate the metric names with a comma (,). Valid values:
         # 
-        # *   **adbpg_datashare_topic_count**: the number of shared topics.
-        # *   **adbpg_datashare_data_size_mb**: the amount of data shared.
+        # - **adbpg_datashare_topic_count**: the number of shared topics.
+        # 
+        # - **adbpg_datashare_data_size_mb**: the size of shared data in MB.
         # 
         # This parameter is required.
         self.key = key
-        # The region ID of the instance.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the available region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # This parameter is no longer used.
+        # This parameter is deprecated.
         self.resource_group_id = resource_group_id
-        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The start of the time range to query. The time must be in UTC and in the *yyyy-MM-dd*T*HH:mm*Z format.
         self.start_time = start_time
 
     def validate(self):

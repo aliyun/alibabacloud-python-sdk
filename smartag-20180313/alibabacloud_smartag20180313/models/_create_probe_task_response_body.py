@@ -14,11 +14,11 @@ class CreateProbeTaskResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The ID of the probe task.
+        # The ID of the probe task that was created.
         self.data = data
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

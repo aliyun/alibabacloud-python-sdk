@@ -123,21 +123,13 @@ class ListAnalysisCoreIndexResponseBodyResultContentData(DaraModel):
         push_num: str = None,
         push_total_num: str = None,
     ):
-        # 0
         self.arrival_num = arrival_num
-        # 0
         self.arrival_rate = arrival_rate
-        # 0
         self.ignore_num = ignore_num
-        # 0
         self.ignore_rate = ignore_rate
-        # 0
         self.open_num = open_num
-        # 0
         self.open_rate = open_rate
-        # 0
         self.push_num = push_num
-        # 0
         self.push_total_num = push_total_num
 
     def validate(self):

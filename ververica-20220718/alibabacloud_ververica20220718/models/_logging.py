@@ -23,8 +23,9 @@ class Logging(DaraModel):
         self.log_reserve_policy = log_reserve_policy
         # The type of the system log template.
         # 
-        # *   default: The default template is used.
-        # *   oss: Logs are delivered to Object Storage Service (OSS).
+        # - default: The default template is used.
+        # 
+        # - oss: Logs are delivered to Object Storage Service (OSS).
         self.logging_profile = logging_profile
 
     def validate(self):

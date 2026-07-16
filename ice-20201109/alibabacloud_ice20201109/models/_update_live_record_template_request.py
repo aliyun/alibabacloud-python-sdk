@@ -78,32 +78,33 @@ class UpdateLiveRecordTemplateRequestRecordFormat(DaraModel):
     ):
         # The duration of the recording cycle. Unit: seconds If you do not specify this parameter, the default value 6 hours is used.
         # 
-        # > 
+        # >
         # 
-        # *   If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
+        # - If a live stream is interrupted during a recording cycle but is resumed within 3 minutes, the stream is recorded in the same recording before and after the interruption.
         # 
-        # *   If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
+        # - If a live stream is interrupted for more than 3 minutes, a new recording is generated. To change the default stream interruption time, submit a ticket.
         self.cycle_duration = cycle_duration
         # The format of recording files.
         # 
-        # >  If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
+        # > If you set this parameter to m3u8, you must also specify the SliceOssObjectPrefix and SliceDuration parameters.
         # 
         # This parameter is required.
         self.format = format
         # The name of the recording that is stored in Object Storage Service (OSS).
         # 
-        # *   The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
-        # *   The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
+        # - The name must be less than 256 bytes in length and can contain the {JobId}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+        # 
+        # - The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
         self.oss_object_prefix = oss_object_prefix
         # The duration of a single segment. Unit: seconds
         # 
-        # >  This parameter takes effect only if you set Format to m3u8.
+        # > This parameter takes effect only if you set Format to m3u8.
         # 
         # If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
         self.slice_duration = slice_duration
         # The name of the TS segment.
         # 
-        # >  This parameter is required only if you set Format to m3u8. By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
+        # > This parameter is required only if you set Format to m3u8. By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {JobId}, {UnixTimestamp}, and {Sequence} variables.
         # 
         # The segment name must contain the {UnixTimestamp} and {Sequence} variables.
         self.slice_oss_object_prefix = slice_oss_object_prefix

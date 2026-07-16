@@ -13,10 +13,13 @@ class AddFaceRecordResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.AddFaceRecordResponseBodyResult = None,
     ):
+        # The return code.
         self.code = code
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -67,7 +70,12 @@ class AddFaceRecordResponseBodyResult(DaraModel):
         ext_face_info: str = None,
         passed: str = None,
     ):
+        # The face result information.
         self.ext_face_info = ext_face_info
+        # Indicates whether the verification is passed. Valid values:
+        # 
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
 
     def validate(self):

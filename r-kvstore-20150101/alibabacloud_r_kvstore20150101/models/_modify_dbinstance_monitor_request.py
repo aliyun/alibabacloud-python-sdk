@@ -15,11 +15,11 @@ class ModifyDBInstanceMonitorRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The interval at which monitoring data is collected. Valid values: 5 and 60. Unit: seconds.
+        # This parameter is deprecated. The monitoring granularity is fixed at 60 seconds.
         # 
         # This parameter is required.
         self.interval = interval

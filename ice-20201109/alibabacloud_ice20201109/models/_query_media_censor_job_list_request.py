@@ -21,15 +21,17 @@ class QueryMediaCensorJobListRequest(DaraModel):
     ):
         # The end of the time range to query.
         # 
-        # *   Specify the time in the ISO 8601 standard. The time must be in UTC.
-        # *   Format: yyyy-MM-ddTHH:mm:ssZ.
+        # - Specify the time in the ISO 8601 standard. The time must be in UTC.
+        # 
+        # - Format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_of_job_created_time_range = end_of_job_created_time_range
         # The IDs of the content moderation jobs. You can obtain the ID of a content moderation job from the response parameters of the SubmitMediaCensorJob operation. Separate multiple IDs with commas (,).
         self.job_ids = job_ids
         # The number of entries per page.
         # 
-        # *   Default value: **30**.
-        # *   Valid values: **1 to 300**.
+        # - Default value: **30**.
+        # 
+        # - Valid values: **1 to 300**.
         self.maximum_page_size = maximum_page_size
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_page_token = next_page_token
@@ -41,16 +43,21 @@ class QueryMediaCensorJobListRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query.
         # 
-        # *   Specify the time in the ISO 8601 standard. The time must be in UTC.
-        # *   Format: yyyy-MM-ddTHH:mm:ssZ.
+        # - Specify the time in the ISO 8601 standard. The time must be in UTC.
+        # 
+        # - Format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_of_job_created_time_range = start_of_job_created_time_range
         # The state of the jobs that you want to query. Valid values:
         # 
-        # *   **All**: all jobs.
-        # *   **Queuing**: the jobs that are waiting in the queue.
-        # *   **Analysing**: the jobs that are in progress.
-        # *   **Fail**: failed jobs.
-        # *   **Success**: successful jobs.
+        # - **All**: all jobs.
+        # 
+        # - **Queuing**: the jobs that are waiting in the queue.
+        # 
+        # - **Analysing**: the jobs that are in progress.
+        # 
+        # - **Fail**: failed jobs.
+        # 
+        # - **Success**: successful jobs.
         self.state = state
 
     def validate(self):

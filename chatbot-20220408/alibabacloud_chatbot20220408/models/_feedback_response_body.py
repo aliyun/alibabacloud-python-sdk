@@ -11,8 +11,13 @@ class FeedbackResponseBody(DaraModel):
         message_id: str = None,
         request_id: str = None,
     ):
+        # The feedback rating.
+        # 
+        # Enumerated values: \\"good\\" (a positive rating) or \\"bad\\" (a negative rating).
         self.feedback = feedback
+        # The unique identifier of a single message within the session.
         self.message_id = message_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

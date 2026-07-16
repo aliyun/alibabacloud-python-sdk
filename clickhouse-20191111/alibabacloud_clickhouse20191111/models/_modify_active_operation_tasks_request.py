@@ -16,14 +16,23 @@ class ModifyActiveOperationTasksRequest(DaraModel):
         security_token: str = None,
         switch_time: str = None,
     ):
+        # The O\\&M task IDs. Separate multiple IDs with commas (,).
+        # 
         # This parameter is required.
         self.ids = ids
+        # Specifies whether to immediately execute the O\\&M task. Valid values:
+        # 
+        # - **1**: Execute immediately.
+        # 
+        # - **0**: Execute at the specified time.
         self.immediate_start = immediate_start
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The time to initiate the switch operation. The time is in UTC and the format is YYYY-MM-DDTHH:mm:ssZ.
+        # 
         # This parameter is required.
         self.switch_time = switch_time
 

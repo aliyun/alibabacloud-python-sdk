@@ -13,8 +13,11 @@ class UpdateKeystoresRequest(DaraModel):
         update: Dict[str, str] = None,
         force: str = None,
     ):
+        # Delete keystore configuration
         self.remove = remove
+        # Add or update keystore
         self.update = update
+        # Whether to force the change. false: non-forced, true: forced
         self.force = force
 
     def validate(self):

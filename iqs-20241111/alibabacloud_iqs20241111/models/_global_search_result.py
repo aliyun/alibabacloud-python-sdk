@@ -16,11 +16,15 @@ class GlobalSearchResult(DaraModel):
         scene_items: List[main_models.GlobalSceneItem] = None,
         search_information: main_models.GlobalSearchInformation = None,
     ):
+        # The list of web page content.
         self.page_items = page_items
+        # The query context.
         self.query_context = query_context
-        # requestId
+        # The request ID.
         self.request_id = request_id
+        # The scenario-specific vertical API recall results.
         self.scene_items = scene_items
+        # The search information.
         self.search_information = search_information
 
     def validate(self):

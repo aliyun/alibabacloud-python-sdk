@@ -13,9 +13,13 @@ class ReadPageBasicResponseBody(DaraModel):
         error_message: str = None,
         request_id: str = None,
     ):
+        # Parsing result of the target URL
         self.data = data
+        # Error code
         self.error_code = error_code
+        # Error message
         self.error_message = error_message
+        # Request ID. Provide this information when troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):

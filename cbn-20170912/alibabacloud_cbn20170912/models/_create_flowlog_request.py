@@ -33,70 +33,79 @@ class CreateFlowlogRequest(DaraModel):
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # Generate a value for this parameter from your client. Make sure that the value is unique for each request. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The description of the flow log.
         # 
-        # The description is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
         self.description = description
-        # The flow log name.
+        # The name of the flow log.
         # 
-        # The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
         self.flow_log_name = flow_log_name
-        # The time window for collecting log data. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
+        # The aggregation interval for the flow log. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
         self.interval = interval
-        # The strings that define the fields in the flow log.
+        # A custom string of log fields for the flow log.
         # 
-        # Format: `${Field 1}${Field 2}${Field 3}...{Field n}`
+        # The format is defined as:
+        # `${field 1}${field 2}${field 3}...${field n}`
         # 
-        # *   If you do not configure this parameter, all fields are included in the flow log.
-        # *   If you configure this parameter, start the string with `${srcaddr}${dstaddr}${bytes}` because `${srcaddr}${dstaddr}${bytes}` are required variables. For more information about the fields supported by flow logs, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
+        # - If you do not specify this parameter, all default fields are logged.
+        # 
+        # - If you specify this parameter, you must start the string with `${srcaddr}${dstaddr}${bytes}` because these are required parameters. For more information about all supported log fields, see [Configure a flow log](https://help.aliyun.com/document_detail/339822.html).
         self.log_format_string = log_format_string
-        # The Logstore that stores the captured traffic data.
+        # The Logstore that is used to store the captured traffic.
         # 
-        # *   If a Logstore is already created in the selected region, enter the name of the Logstore.
+        # - If you have already created a Logstore in the current region, enter the name of the Logstore.
         # 
-        # *   If no Logstores are created in the selected region, enter a name and the system automatically creates a Logstore. The name of the Logstore. The name must meet the following requirements:
+        # - If you have not created a Logstore in the current region, you can specify a custom name for the Logstore. The system automatically creates the Logstore.
+        #   The name of the Logstore must meet the following requirements:
         # 
-        #     *   The name must be unique in a project.
-        #     *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        #     *   The name must start and end with a lowercase letter or a digit.
-        #     *   The name must be 3 to 63 characters in length,
+        #   - The name must be unique within the same project.
+        # 
+        #   - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        #   - It must start and end with a lowercase letter or a digit.
+        # 
+        #   - It must be 3 to 63 characters in length.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The project that stores the captured traffic data.
+        # The project that is used to store the captured traffic.
         # 
-        # *   If a project is already created in the selected region, enter the name of the project.
+        # - If you have already created a project in the current region, enter the name of the project.
         # 
-        # *   If no projects are created in the selected region, enter a name and the system automatically creates a project.
+        # - If you have not created a project in the current region, you can specify a custom name for the project. The system automatically creates the project.
         # 
-        #     The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
+        #   A project name must be globally unique within an Alibaba Cloud region and cannot be modified after the project is created. The name must meet the following requirements:
         # 
-        #     *   The name must be globally unique.
-        #     *   The name can contain only lowercase letters, digits, and hyphens (-).
-        #     *   The name must start and end with a lowercase letter or a digit.
-        #     *   The name must be 3 to 63 characters in length,
+        #   - The name must be globally unique.
+        # 
+        #   - It can contain only lowercase letters, digits, and hyphens (-).
+        # 
+        #   - It must start and end with a lowercase letter or a digit.
+        # 
+        #   - It must be 3 to 63 characters in length.
         self.project_name = project_name
-        # The ID of the region where the flow log is deployed.
+        # The region ID of the flow log.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The tag.
         # 
-        # You can specify at most 20 tags.
+        # You can add up to 20 tags in each call.
         self.tag = tag
         # The ID of the VPC connection, VPN connection, VBR connection, ECR connection, or inter-region connection.
         # 
-        # If you create the flow log for a transfer router, skip this parameter.
+        # If you want to configure a flow log for a transit router instance, do not specify this parameter.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router.
+        # The ID of the transit router instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):
@@ -223,17 +232,17 @@ class CreateFlowlogRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys.
+        # The tag key.
         # 
-        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length. The tag keys cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
         # 
-        # You can specify at most 20 tag keys in each call.
+        # You can specify up to 20 tag keys.
         self.key = key
-        # The tag values.
+        # The tag value.
         # 
-        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
         # 
-        # Each key-value must be unique. You can specify at most 20 tag values in each call.
+        # Each tag key must have a unique tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

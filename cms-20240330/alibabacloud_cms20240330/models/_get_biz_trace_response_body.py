@@ -11,7 +11,9 @@ class GetBizTraceResponseBody(DaraModel):
         item: main_models.BizTraceConfig = None,
         request_id: str = None,
     ):
+        # The business trace.
         self.item = item
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

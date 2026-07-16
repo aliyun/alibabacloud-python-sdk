@@ -16,7 +16,7 @@ class ListEnrolledAccountsResponseBody(DaraModel):
     ):
         # The enrolled accounts.
         self.enrolled_accounts = enrolled_accounts
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -73,9 +73,9 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The account ID.
+        # The ID of the account.
         self.account_uid = account_uid
-        # The ID of the baseline that is implemented.
+        # The ID of the baseline that is applied.
         self.baseline_id = baseline_id
         # The creation time.
         self.create_time = create_time
@@ -83,16 +83,21 @@ class ListEnrolledAccountsResponseBodyEnrolledAccounts(DaraModel):
         self.display_name = display_name
         # The ID of the parent folder.
         self.folder_id = folder_id
-        # The ID of the settlement account.
+        # The ID of the billing account.
         self.payer_account_uid = payer_account_uid
-        # The creation status. Valid values:
+        # The enrollment status. Valid values:
         # 
-        # *   Pending: The account is pending to be created.
-        # *   Running: The account is being created.
-        # *   Finished: The account is created.
-        # *   Failed: The account fails to be created.
-        # *   Scheduling: The account is being scheduled.
-        # *   ScheduleFailed: The account fails to be scheduled.
+        # - Pending: The account is waiting to be enrolled.
+        # 
+        # - Running: The account is being enrolled.
+        # 
+        # - Finished: The account is enrolled.
+        # 
+        # - Failed: The account failed to be enrolled.
+        # 
+        # - Scheduling: The account is being scheduled.
+        # 
+        # - ScheduleFailed: The account failed to be scheduled.
         self.status = status
         # The update time.
         self.update_time = update_time

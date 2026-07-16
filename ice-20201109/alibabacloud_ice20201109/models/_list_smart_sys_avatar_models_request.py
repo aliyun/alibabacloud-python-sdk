@@ -11,10 +11,11 @@ class ListSmartSysAvatarModelsRequest(DaraModel):
         page_size: int = None,
         sdk_version: str = None,
     ):
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_no = page_no
-        # The number of entries per page. Default value: 10. Valid values: 1 to 100.
+        # The number of items to return on each page. The default value is 10. The maximum value is 100.
         self.page_size = page_size
+        # The SDK version.
         self.sdk_version = sdk_version
 
     def validate(self):

@@ -18,12 +18,19 @@ class MLLabelParam(DaraModel):
         settings: List[main_models.MLLabelParamSettings] = None,
         type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description of the tag table.
         self.description = description
+        # The unique identifier of the tag table.
         self.label_id = label_id
+        # The last modification time.
         self.last_modify_time = last_modify_time
+        # The name of the tag table.
         self.name = name
+        # The configurations of the tag tables.
         self.settings = settings
+        # The type of the tag table.
         self.type = type
 
     def validate(self):
@@ -98,9 +105,13 @@ class MLLabelParamSettings(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The details of the configuration.
         self.config = config
+        # The mode of the configuration.
         self.mode = mode
+        # The task type of the configuration.
         self.type = type
+        # The version number of the configuration.
         self.version = version
 
     def validate(self):

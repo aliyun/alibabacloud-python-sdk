@@ -16,13 +16,23 @@ class DescribeBatchTasksRequest(DaraModel):
         status: List[str] = None,
         task_type: str = None,
     ):
+        # The end time of the query range. Specify the time in UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
+        # The page number. The value must be a positive integer. The default is 1.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The start time of the query range. Specify the time in UTC format.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
+        # The task statuses.
+        # 
+        # > If you omit this parameter, the operation returns tasks of all statuses.
         self.status = status
+        # The type of the batch task.
         self.task_type = task_type
 
     def validate(self):

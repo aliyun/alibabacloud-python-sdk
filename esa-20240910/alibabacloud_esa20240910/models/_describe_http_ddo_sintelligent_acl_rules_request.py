@@ -12,10 +12,16 @@ class DescribeHttpDDoSIntelligentAclRulesRequest(DaraModel):
         rule_type: str = None,
         site_id: int = None,
     ):
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The rule type.
         self.rule_type = rule_type
+        # The site ID. To obtain the site ID, call the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

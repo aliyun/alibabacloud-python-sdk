@@ -11,21 +11,53 @@ class GetLastOnceTaskInfoRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The source of the task.
+        # The source that initiated the task.
         self.source = source
         # The name of the task. Valid values:
         # 
-        # *   **CLIENT_PROBLEM_CHECK**: client diagnosis task
-        # *   **CLIENT_DEV_OPS**: O\\&M task of Cloud Assistant
-        # *   **ASSETS_COLLECTION**: asset collection task
+        # - `CLIENT_PROBLEM_CHECK`: client troubleshooting task
+        # 
+        # - `CLIENT_DEV_OPS`: O\\&M task
+        # 
+        # - `ASSET_SECURITY_CHECK`: asset collection task
+        # 
+        # - `ASSETS_COLLECTION`: asset fingerprint collection task
+        # 
+        # - `IMAGE_SCAN`: container image scan task
+        # 
+        # - `AI_SECURITY_CHECK`: AI asset synchronization task
+        # 
+        # - `IDC_PROBE_SCAN`: IDC probe scan task
+        # 
+        # - `ATTACK_SURFACE_SCAN`: attack surface boundary asset scan task
+        # 
+        # - `ASSET_EXPOSURE_SCAN`: asset exposure scan task
+        # 
+        # - `VUL_CHECK_TASK`: vulnerability scan task
         # 
         # This parameter is required.
         self.task_name = task_name
         # The type of the task. Valid values:
         # 
-        # *   **CLIENT_PROBLEM_CHECK**: client diagnosis task
-        # *   **CLIENT_DEV_OPS**: O\\&M task of Cloud Assistant
-        # *   **ASSETS_COLLECTION**: asset collection task
+        # - `CLIENT_PROBLEM_CHECK`: client troubleshooting task
+        # 
+        # - `CLIENT_DEV_OPS`: O\\&M task
+        # 
+        # - `ASSET_SECURITY_CHECK`: asset collection task
+        # 
+        # - `ASSETS_COLLECTION`: asset fingerprint collection task
+        # 
+        # - `IMAGE_SCAN`: container image scan task
+        # 
+        # - `AI_SECURITY_CHECK`: AI asset synchronization task
+        # 
+        # - `IDC_PROBE_SCAN`: IDC probe scan task
+        # 
+        # - `ATTACK_SURFACE_SCAN`: attack surface boundary asset scan task
+        # 
+        # - `ASSET_EXPOSURE_SCAN`: asset exposure scan task
+        # 
+        # - `VUL_CHECK_TASK`: vulnerability scan task
         # 
         # This parameter is required.
         self.task_type = task_type

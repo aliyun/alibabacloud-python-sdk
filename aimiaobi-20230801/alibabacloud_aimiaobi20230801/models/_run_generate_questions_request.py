@@ -13,10 +13,16 @@ class RunGenerateQuestionsRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # Document ID
         self.doc_id = doc_id
+        # Name of the custom model
         self.model_name = model_name
+        # Document content to extract questions from. If this field is not empty, use this text. If it is empty, use the document identified by DocId.
         self.reference_content = reference_content
+        # Session ID
         self.session_id = session_id
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

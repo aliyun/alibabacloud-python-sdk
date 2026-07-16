@@ -14,10 +14,16 @@ class BindDmAccountShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account code.
+        # 
         # This parameter is required.
         self.account_code = account_code
+        # The SpaceId of the ISV sub-customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The extended attributes.
+        # 
         # This parameter is required.
         self.extend_attr_shrink = extend_attr_shrink
         self.owner_id = owner_id

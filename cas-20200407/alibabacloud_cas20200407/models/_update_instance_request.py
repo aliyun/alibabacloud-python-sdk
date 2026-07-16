@@ -26,21 +26,67 @@ class UpdateInstanceRequest(DaraModel):
         tags: List[main_models.UpdateInstanceRequestTags] = None,
         validation_method: str = None,
     ):
+        # Whether to enable automatic management.
+        # 
+        # - enable: enabled
+        # 
+        # - disable: disabled
         self.auto_reissue = auto_reissue
+        # The name of the instance. When issuing a certificate, this value serves as the default certificate name.
         self.certificate_name = certificate_name
+        # The city where the company or organization of the certificate requester is located. Required when generating a CSR for a DV certificate. Default value: Beijing.
         self.city = city
+        # The company information ID. Required for OV and EV certificates. Otherwise, you cannot call ApplyCertificate to request a certificate.
         self.company_id = company_id
+        # The list of contact IDs. You must specify at least one contact. Otherwise, you cannot call ApplyCertificate to request a certificate.
         self.contact_id_list = contact_id_list
+        # The country or region code of the certificate organization. For example, CN represents China, and US represents the United States. Required when generating a CSR for a DV certificate. Default value: CN.
         self.country_code = country_code
+        # The CSR content. You can generate a CSR using OpenSSL or Keytool. For more information, see [How to create a CSR file](https://help.aliyun.com/document_detail/42218.html).
         self.csr = csr
+        # The domain name to bind to the certificate. Requirements are as follows:
+        # 
+        # - Supports single domain names or wildcard domain names (for example, `*.aliyundoc.com`).
+        # 
+        # - Supports multiple domain names. Separate multiple domain names with commas (,). The first domain determines whether a free domain is included.
+        # 
+        # >Notice: 
+        # 
+        # If you bind multiple domain names to the certificate, this parameter is required. This parameter and the **Csr** parameter cannot both be empty. If you set both parameters, the system uses the **CN** field value from the **Csr** as the domain name for the certificate.
         self.domain = domain
+        # The CSR generation method. Default value: online.
+        # 
+        # - online: The system generates the CSR. The Csr field is ignored.
+        # 
+        # - upload: You upload the CSR. The Csr field is required.
         self.generate_csr_method = generate_csr_method
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The certificate algorithm. Default value: RSA_2048.
+        # 
+        # - **RSA_2048**
+        # 
+        # - **RSA_3072**
+        # 
+        # - **RSA_4096**
+        # 
+        # - **ECC_256**
+        # 
+        # - **SM2**
         self.key_algorithm = key_algorithm
+        # The province or region where the company is located. Required when generating a CSR for a DV certificate. Default value: Beijing.
         self.province = province
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # A list of tags.
         self.tags = tags
+        # The certificate validation method.
+        # 
+        # - DNS: DNS validation using TXT or CNAME records.
+        # 
+        # - HTTP: File-based validation.
         self.validation_method = validation_method
 
     def validate(self):
@@ -161,7 +207,13 @@ class UpdateInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key of the instance. Valid values for N: **1** to **20**. If you specify this value, it cannot be an empty string.
+        # 
+        # It can contain up to 64 characters. It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
         self.tag_key = tag_key
+        # The tag value of the instance. Valid values for N: **1** to **20**. If you specify this value, it can be an empty string.
+        # 
+        # It can contain up to 128 characters. It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

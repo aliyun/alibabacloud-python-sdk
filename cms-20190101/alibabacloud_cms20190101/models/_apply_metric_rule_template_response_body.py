@@ -18,7 +18,7 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -28,8 +28,9 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
         self.resource = resource
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -134,7 +135,7 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
@@ -144,8 +145,9 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         self.rule_name = rule_name
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

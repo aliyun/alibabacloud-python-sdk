@@ -11,11 +11,11 @@ class DescribeImageStatisticsResponseBody(DaraModel):
         request_id: str = None,
         risk_instance_count: int = None,
     ):
-        # The number of container images in your assets. Only Container Registry Enterprise Edition instances are counted.
+        # The number of container images in your assets. Only container images in Enterprise instances of Container Registry are counted.
         self.instance_count = instance_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of container images that have security risks. Only Container Registry Enterprise Edition instances are counted.
+        # The number of container images that have security risks in your assets. Only container images in Enterprise instances of Container Registry are counted.
         self.risk_instance_count = risk_instance_count
 
     def validate(self):

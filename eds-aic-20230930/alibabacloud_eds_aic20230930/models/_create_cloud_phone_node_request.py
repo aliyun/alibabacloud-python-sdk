@@ -15,6 +15,7 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         bandwidth_package_id: str = None,
         bandwidth_package_type: str = None,
         biz_region_id: str = None,
+        channel_cookie: str = None,
         charge_type: str = None,
         count: str = None,
         display_config: main_models.CreateCloudPhoneNodeRequestDisplayConfig = None,
@@ -43,84 +44,74 @@ class CreateCloudPhoneNodeRequest(DaraModel):
         use_template: str = None,
         v_switch_id: str = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   False (default): You must manually complete the payment in the Alibaba Cloud Expenses and Costs console.
-        # *   true: enables the auto-payment feature.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable the auto-renewal feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-renewal feature. In this case, the system automatically renews instances upon expiration.
-        # *   false (default): disables the auto-renewal feature. In this case, you need to manually renew instances upon expiration.
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
+        # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
         # The region ID.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The billing method. Only the subscription billing method is supported.
+        self.channel_cookie = channel_cookie
+        # The billing type. Only subscription is supported.
         self.charge_type = charge_type
-        # The number of cloud phone matrixes you want to purchase.
+        # The number of cloud phone matrices to purchase.
         self.count = count
+        # The display settings.
         self.display_config = display_config
+        # The downstream bandwidth throttling. Unit: Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
         # The image ID.
         self.image_id = image_id
-        # The instance specification.
-        # 
-        # Valid values:
-        # 
-        # *   ac.max: By default, this specification allows up to 25 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
-        # *   ac.plus: By default, this specification allows up to 40 instances. You can adjust this number by using PhoneCount (Value range: 4 to 40).
+        # The instance type.
+        # > To purchase more instance types, [contact pre-sales support](https://smartservice.console.aliyun.com/service/pre-sales-chat?spm=5176.6d6ecb63.0.0.729adda2VqVQx7).
         self.instance_type = instance_type
         self.is_single_img_disk = is_single_img_disk
         # The office network ID.
         self.network_id = network_id
+        # The network mapping information of the instance.
         self.network_info = network_info
+        # The network type of the instance.
         self.network_type = network_type
         # The name of the cloud phone matrix.
         self.node_name = node_name
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration. The unit is specified by `PeriodUnit`. Valid values:
+        # The subscription duration. The unit is specified by PeriodUnit.
         # 
-        # *   When `PeriodUnit` is set to **year**: 1.
-        # *   When `PeriodUnit` is set to **month**: 1, 2, 3, and 6.
+        # - If PeriodUnit is set to **year**, the value can only be 1.
+        # - If PeriodUnit is set to **month**, valid values are 1, 2, 3, and 6.
         self.period = period
         # The unit of the subscription duration.
-        # 
-        # Valid values:
-        # 
-        # *   Month (default)
-        # *   Year
         self.period_unit = period_unit
-        # The number of instances per cloud phone matrix.
+        # The number of cloud phone instances to create in a single matrix.
         self.phone_count = phone_count
+        # The size of the independent device storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
         self.promotion_id = promotion_id
-        # The resolution height. Unit: pixel.
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
-        # The resolution width. Unit: pixel.
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # The shared storage size Unit: GiB.
+        # The size of the shared device storage. Unit: GiB.
+        # 
+        # > The minimum value of the shared device storage must be greater than the number of instances in the matrix multiplied by 10 GiB.
         self.server_share_data_volume = server_share_data_volume
-        # The matrix specification.
-        # 
-        # Valid values:
-        # 
-        # *   cpm.gn6.gx1
+        # The specifications of the cloud phone matrix.
         # 
         # This parameter is required.
         self.server_type = server_type
+        # The streaming mode for instances in the cloud phone matrix. If this parameter is not specified, the default value is preemptive mode.
         self.stream_mode = stream_mode
         self.swap_size = swap_size
-        # The resource tags.
+        # The tags of the resource.
         self.tag = tag
+        # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
+        # Specifies whether to use a template during creation. Set this parameter to `Random` to use a random template from the template list. Alternatively, specify a template ID to use that template.
         self.use_template = use_template
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -154,6 +145,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
 
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
+
+        if self.channel_cookie is not None:
+            result['ChannelCookie'] = self.channel_cookie
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
@@ -256,6 +250,9 @@ class CreateCloudPhoneNodeRequest(DaraModel):
 
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
+
+        if m.get('ChannelCookie') is not None:
+            self.channel_cookie = m.get('ChannelCookie')
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
@@ -395,14 +392,32 @@ class CreateCloudPhoneNodeRequestNetworkInfo(DaraModel):
         pay_type: str = None,
         visible_type: str = None,
     ):
+        # The name of the bandwidth plan.
         self.bandwidth_package_name = bandwidth_package_name
+        # The private CIDR block.
         self.cidr_block = cidr_block
+        # The billable methods of the bandwidth plan. Valid values:
+        # 
+        # <props="china">
+        # 
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
+        # - **PayBy95**: pay-by-95th-percentile. IPv6 Internet bandwidth does not support pay-by-95th-percentile billing by default. To use this billing method, contact your account manager.
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **PayByBandwidth** (default): pay-by-bandwidth.
         self.internet_charge_type = internet_charge_type
+        # The ratio of IP addresses to instances.
         self.ip_ratio = ip_ratio
+        # The line type.
         self.isp = isp
+        # The maximum bandwidth of the bandwidth plan. Unit: Mbit/s. The total bandwidth of all instances that use this bandwidth plan is subject to this limit.
         self.limited_bandwidth = limited_bandwidth
         self.paid_callback_url = paid_callback_url
+        # The billing type.
         self.pay_type = pay_type
+        # The visibility scope.
         self.visible_type = visible_type
 
     def validate(self):
@@ -480,8 +495,11 @@ class CreateCloudPhoneNodeRequestDisplayConfig(DaraModel):
         fps: int = None,
         lock_resolution: str = None,
     ):
+        # The DPI. Valid values: 72 to 600.
         self.dpi = dpi
+        # > This parameter is not yet available for public use.
         self.fps = fps
+        # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution
 
     def validate(self):

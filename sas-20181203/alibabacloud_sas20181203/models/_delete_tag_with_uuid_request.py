@@ -10,13 +10,12 @@ class DeleteTagWithUuidRequest(DaraModel):
         tag_name: str = None,
         uuid_list: str = None,
     ):
-        # The name of the tag.
+        # The label name.
         # 
         # This parameter is required.
         self.tag_name = tag_name
-        # The UUIDs of servers.
-        # 
-        # > If the UuidList parameter is specified, Security Center removes the tag only from the servers whose UUIDs are specified by UuidList. If the UuidList parameter is not specified, Security Center removes the tag from all servers.
+        # The list of server UUIDs.
+        # > If UuidList is specified, Security Center deletes the label only from the servers included in UuidList. If UuidList is empty, Security Center deletes the label from all servers.
         self.uuid_list = uuid_list
 
     def validate(self):

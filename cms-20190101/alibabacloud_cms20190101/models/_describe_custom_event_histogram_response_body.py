@@ -18,7 +18,7 @@ class DescribeCustomEventHistogramResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         self.event_histograms = event_histograms
         # The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.

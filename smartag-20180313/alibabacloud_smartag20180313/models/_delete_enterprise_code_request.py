@@ -13,15 +13,15 @@ class DeleteEnterpriseCodeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client generates the value of this parameter. Ensure that the value is unique among different requests. The value can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The enterprise code that you want to delete.
+        # The enterprise code.
         # 
         # This parameter is required.
         self.enterprise_code = enterprise_code
-        # The ID of the region to which the enterprise code belongs.
+        # The region ID.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/69813.html) to query the regions supported by Smart Access Gateway and the corresponding region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

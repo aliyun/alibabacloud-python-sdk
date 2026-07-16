@@ -12,9 +12,21 @@ class DescribeFirewallTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
+        # The ID of the VPC instance.
         self.child_instance_id = child_instance_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The task ID.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # - **NAT**: NAT border task
+        # 
+        # - **VPC**: VPC border task
         self.task_type = task_type
 
     def validate(self):

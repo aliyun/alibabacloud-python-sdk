@@ -16,13 +16,13 @@ class ListEndpointGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configurations of the endpoint groups.
+        # The list of endpoint groups.
         self.endpoint_groups = endpoint_groups
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -112,89 +112,113 @@ class ListEndpointGroupsResponseBodyEndpointGroups(DaraModel):
         threshold_count: int = None,
         traffic_percentage: int = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         self.accelerator_id = accelerator_id
         # The description of the endpoint group.
         self.description = description
-        # The configurations of the endpoints in the endpoint group.
+        # A list of endpoint configurations.
         self.endpoint_configurations = endpoint_configurations
         # The ID of the endpoint group.
         self.endpoint_group_id = endpoint_group_id
-        # The endpoint group IP addresses.
+        # A list of public egress IP addresses of the endpoint group.
+        # 
+        # >Notice: 
+        # 
+        # For endpoint groups connected to private backend services, the console shows only the private source IP addresses, not the public ones. If the network connection type of a backend service changes (for example, from private to public), monitor the source IP addresses and update the backend service\\"s access control list (ACL).
         self.endpoint_group_ip_list = endpoint_group_ip_list
-        # The ID of the region where the endpoint group is created.
+        # The ID of the region where the endpoint group is deployed.
         self.endpoint_group_region = endpoint_group_region
         # The type of the endpoint group. Valid values:
         # 
-        # *   **default**: a default endpoint group
-        # *   **virtual:** a virtual endpoint group.
+        # - **default**: a default endpoint group.
+        # 
+        # - **virtual**: a virtual endpoint group.
         self.endpoint_group_type = endpoint_group_type
-        # The endpoint group IP addresses to be confirmed after the GA instance is upgraded.
+        # The list of new IP addresses in the endpoint group that require confirmation after a Global Accelerator instance is upgraded.
         self.endpoint_group_unconfirmed_ip_list = endpoint_group_unconfirmed_ip_list
+        # The IP protocol of the backend service. Valid values:
+        # 
+        # - **IPv4** (default): Connections to the backend service use IPv4.
+        # 
+        # - **IPv6**: Connections to the backend service use IPv6.
+        # 
+        # - **ProtocolAffinity**: The connection to the backend service uses the same IP protocol as the client request.
         self.endpoint_ip_version = endpoint_ip_version
+        # A list of private IP addresses of the endpoints.
         self.endpoint_private_ip_list = endpoint_private_ip_list
-        # The protocol version that is used by the backend service. Valid values:
+        # The version of the backend service protocol. Valid values:
         # 
-        # *   **HTTP1.1**
-        # *   **HTTP2**
+        # - **HTTP1.1**: HTTP/1.1
+        # 
+        # - **HTTP2**: HTTP/2
         self.endpoint_protocol_version = endpoint_protocol_version
-        # The protocol that is used by the backend server.
+        # The protocol of the backend service. Valid values:
         # 
-        # *   **HTTP**
-        # *   **HTTPS**
+        # - **HTTP**: HTTP
+        # 
+        # - **HTTPS**: HTTPS
         self.endpoint_request_protocol = endpoint_request_protocol
-        # The IDs of the forwarding rules that are associated with the endpoint group.
+        # The IDs of forwarding rules associated with the endpoint group.
         self.forwarding_rule_ids = forwarding_rule_ids
-        # Indicates whether the health check feature is enabled.
+        # Specifies whether to enable health checks.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Health checks are enabled.
+        # 
+        # - **false**: Health checks are disabled.
         self.health_check_enabled = health_check_enabled
+        # The domain name used for health checks.
         self.health_check_host = health_check_host
-        # The interval at which you want to perform health checks. Unit: seconds.
+        # The health check interval, in seconds.
         self.health_check_interval_seconds = health_check_interval_seconds
-        # The path that is used for health checks.
+        # The health check path.
         self.health_check_path = health_check_path
-        # The port that is used for health checks.
+        # The port used for health checks.
         self.health_check_port = health_check_port
-        # The protocol over which health check requests are sent. Valid values:
+        # The protocol used for health checks.
         # 
-        # *   **tcp** or **TCP**
-        # *   **http** or **HTTP**
-        # *   **https** or **HTTPS**
+        # - **tcp** or **TCP**: TCP
+        # 
+        # - **http** or **HTTP**: HTTP
+        # 
+        # - **https** or **HTTPS**: HTTPS
         self.health_check_protocol = health_check_protocol
         # The ID of the listener.
         self.listener_id = listener_id
         # The name of the endpoint group.
         self.name = name
-        # The port mapping.
+        # The port mappings.
         self.port_overrides = port_overrides
-        # The service that manages the instance.
+        # The ID of the service that manages the instance.
         # 
-        # >  This parameter takes effect only if the value of **Service managed** is **true**.
+        # > This parameter is returned only if **ServiceManaged** is **true**.
         self.service_id = service_id
-        # Indicates whether the GA instance is managed. Valid values:
+        # Specifies whether the instance is managed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is a managed instance.
+        # 
+        # - **false**: The instance is not a managed instance.
         self.service_managed = service_managed
-        # The actions that users can perform on the managed instance.
+        # The actions that you can perform on the managed instance.
         # 
-        # > -  This parameter takes effect only if the value of **ServiceManaged** is **true**.
-        # > -   Users can perform only specific actions on a managed instance.
+        # > - This parameter is returned only if **ServiceManaged** is **true**.
+        # >
+        # > - Your permissions to operate on a managed instance are restricted.
         self.service_managed_infos = service_managed_infos
-        # The status of the endpoint group. Valid values:
+        # The state of the endpoint group.
         # 
-        # *   **init:** The endpoint group is being initialized.
-        # *   **active:** The endpoint group is running normally.
-        # *   **updating:**The endpoint group is being updated.
-        # *   **deleteing:** The endpoint group is being deleted.
+        # - **init**: The endpoint group is initializing.
+        # 
+        # - **active**: The endpoint group is stable.
+        # 
+        # - **updating**: The endpoint group is updating.
+        # 
+        # - **deleting**: The endpoint group is deleting.
         self.state = state
-        # The tag of the endpoint group.
+        # The tags attached to the endpoint group.
         self.tags = tags
-        # The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
+        # The number of consecutive failed health checks required to mark an endpoint as unhealthy.
         self.threshold_count = threshold_count
-        # The value of the traffic distribution ratio. If a listener is associated with multiple endpoint groups, you can set this parameter to distribute different percentages of traffic to the endpoint groups.
+        # The percentage of traffic routed to the endpoint group. This parameter applies only if a listener is associated with multiple endpoint groups.
         self.traffic_percentage = traffic_percentage
 
     def validate(self):
@@ -435,9 +459,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the endpoint group.
+        # The tag key.
         self.key = key
-        # The tag value of the endpoint group.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -473,31 +497,43 @@ class ListEndpointGroupsResponseBodyEndpointGroupsServiceManagedInfos(DaraModel)
         child_type: str = None,
         is_managed: bool = None,
     ):
-        # The name of the action that was performed on the managed instance. Valid values:
+        # The name of the action on the managed instance. Valid values:
         # 
-        # *   **Create:** Create an instance.
-        # *   **Update:** Update the current instance.
-        # *   **Delete:** Delete the current instance.
-        # *   **Associate:** Reference the current instance.
-        # *   **UserUnmanaged:** Unmanage the instance.
-        # *   **CreateChild:** Create a child resource in the current instance.
+        # - **Create**: creates an instance.
+        # 
+        # - **Update**: updates the instance.
+        # 
+        # - **Delete**: deletes the instance.
+        # 
+        # - **Associate**: associates the instance with other resources.
+        # 
+        # - **UserUnmanaged**: Reverts the instance to an unmanaged state.
+        # 
+        # - **CreateChild**: creates a child resource for the instance.
         self.action = action
         # The type of the child resource. Valid values:
         # 
-        # *   **Listener:** listener.
-        # *   **IpSet:** acceleration region.
-        # *   **EndpointGroup:** endpoint group.
-        # *   **ForwardingRule:** forwarding rule.
-        # *   **Endpoint:** endpoint.
-        # *   **EndpointGroupDestination:** the protocol mapping of an endpoint group associated with a custom routing listener.
-        # *   **EndpointPolicy:** the traffic policy of an endpoint associated with a custom routing listener.
+        # - **Listener**: a listener.
         # 
-        # >  This parameter takes effect only if you set **Action** to **CreateChild**.
+        # - **IpSet**: an acceleration region.
+        # 
+        # - **EndpointGroup**: an endpoint group.
+        # 
+        # - **ForwardingRule**: a forwarding rule.
+        # 
+        # - **Endpoint**: an endpoint.
+        # 
+        # - **EndpointGroupDestination**: a protocol mapping for an endpoint group of a custom routing listener.
+        # 
+        # - **EndpointPolicy**: a traffic policy for an endpoint of a custom routing listener.
+        # 
+        # > This parameter is returned only if **Action** is set to **CreateChild**.
         self.child_type = child_type
-        # Indicates whether the specified actions are managed. Valid values:
+        # Specifies whether the action is managed. Valid values:
         # 
-        # *   **true**: The specified actions are managed, and users cannot perform the specified actions on the managed instance.
-        # *   **false**: The specified actions are not managed, and users can perform the specified actions on the managed instance.
+        # - **true**: The action is managed. You cannot perform the specified action on the managed instance.
+        # 
+        # - **false**: The action is not managed. You can perform the specified action on the managed instance.
         self.is_managed = is_managed
 
     def validate(self):
@@ -577,7 +613,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointPrivateIpList(DaraMode
         v_switch_id: str = None,
     ):
         self.cidr = cidr
+        # The private IP address.
         self.private_ip = private_ip
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -615,57 +653,75 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointPrivateIpList(DaraMode
 class ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations(DaraModel):
     def __init__(
         self,
+        api_keys: List[str] = None,
         enable_client_ippreservation: bool = None,
         enable_proxy_protocol: bool = None,
         endpoint: str = None,
         endpoint_id: str = None,
         probe_port: int = None,
         probe_protocol: str = None,
+        provider: str = None,
         sub_address: str = None,
         type: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
         weight: int = None,
     ):
-        # Indicates whether the client IP address preservation feature is enabled. Valid values:
+        # The API keys in the endpoint configuration.
+        self.api_keys = api_keys
+        # Specifies whether to preserve client IP addresses.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Client IP preservation is enabled.
+        # 
+        # - **false**: Client IP preservation is disabled.
         self.enable_client_ippreservation = enable_client_ippreservation
-        # Indicates whether the proxy protocol is used to preserve client IP addresses. Valid values:
+        # Specifies whether to use Proxy Protocol to preserve client IP addresses.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Proxy Protocol is enabled.
+        # 
+        # - **false**: Proxy Protocol is disabled.
         self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address or domain name of the endpoint.
+        # The endpoint\\"s IP address, domain name, or instance ID.
         self.endpoint = endpoint
         # The ID of the endpoint.
         self.endpoint_id = endpoint_id
-        # The port that is used to monitor latency.
+        # The port used for latency monitoring probes.
         self.probe_port = probe_port
-        # The protocol that is used to monitor latency.
+        # The protocol that is used for latency monitoring probes.
         # 
-        # *   **icmp**
-        # *   **tcp**
+        # - **icmp**: ICMP
+        # 
+        # - **tcp**: TCP
         self.probe_protocol = probe_protocol
-        # The private IP address of the ENI.
+        # The service provider.
+        self.provider = provider
+        # The private IP address of the elastic network interface.
         self.sub_address = sub_address
-        # The type of the endpoint. Valid values:
+        # The type of endpoint. Valid values:
         # 
-        # *   **Domain**: a custom domain name.
-        # *   **Ip**: a custom IP address.
-        # *   **IpTarget**: a custom private IP address.
-        # *   **PublicIp**: a public IP address provided by Alibaba Cloud.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance.
-        # *   **SLB**: a Server Load Balancer (SLB) instance.
-        # *   **ALB**: an Application Load Balancer (ALB) instance.
-        # *   **OSS**: an Object Storage Service (OSS) bucket.
-        # *   **ENI**: an elastic network interface (ENI).
-        # *   **NLB**: a Network Load Balancer (NLB) instance.
+        # - **Domain**: a custom domain name.
+        # 
+        # - **Ip**: a custom IP address.
+        # 
+        # - **IpTarget**: a custom private IP address.
+        # 
+        # - **PublicIp**: an Alibaba Cloud public IP address.
+        # 
+        # - **ECS**: an Alibaba Cloud ECS instance.
+        # 
+        # - **SLB**: an Alibaba Cloud SLB instance.
+        # 
+        # - **ALB**: an Alibaba Cloud ALB instance.
+        # 
+        # - **OSS**: an Alibaba Cloud OSS bucket.
+        # 
+        # - **ENI**: an Alibaba Cloud elastic network interface.
+        # 
+        # - **NLB**: an Alibaba Cloud NLB instance.
         self.type = type
-        # The IDs of vSwitches that are deployed in the VPC.
+        # A list of vSwitches in the VPC.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
         # The weight of the endpoint.
         self.weight = weight
@@ -678,6 +734,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations(DaraMod
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys
+
         if self.enable_client_ippreservation is not None:
             result['EnableClientIPPreservation'] = self.enable_client_ippreservation
 
@@ -695,6 +754,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations(DaraMod
 
         if self.probe_protocol is not None:
             result['ProbeProtocol'] = self.probe_protocol
+
+        if self.provider is not None:
+            result['Provider'] = self.provider
 
         if self.sub_address is not None:
             result['SubAddress'] = self.sub_address
@@ -715,6 +777,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations(DaraMod
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeys') is not None:
+            self.api_keys = m.get('ApiKeys')
+
         if m.get('EnableClientIPPreservation') is not None:
             self.enable_client_ippreservation = m.get('EnableClientIPPreservation')
 
@@ -732,6 +797,9 @@ class ListEndpointGroupsResponseBodyEndpointGroupsEndpointConfigurations(DaraMod
 
         if m.get('ProbeProtocol') is not None:
             self.probe_protocol = m.get('ProbeProtocol')
+
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
 
         if m.get('SubAddress') is not None:
             self.sub_address = m.get('SubAddress')

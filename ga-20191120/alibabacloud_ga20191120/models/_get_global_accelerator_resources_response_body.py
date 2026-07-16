@@ -13,8 +13,9 @@ class GetGlobalAcceleratorResourcesResponseBody(DaraModel):
         associated_resources: List[main_models.GetGlobalAcceleratorResourcesResponseBodyAssociatedResources] = None,
         request_id: str = None,
     ):
+        # List of linked instances.
         self.associated_resources = associated_resources
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -61,11 +62,27 @@ class GetGlobalAcceleratorResourcesResponseBodyAssociatedResources(DaraModel):
         associated_resource_type: str = None,
         state: str = None,
     ):
+        # Instance ID of Alibaba Cloud Global Accelerator (GA).
         self.accelerator_id = accelerator_id
+        # Association pattern:  
+        # - **Managed**: Managed mode, where GA restricts user operations based on management policies.  
+        # - **Associated** (default): Loose coupling association, where GA does not restrict user operations; WAF uses loose coupling.
         self.associated_mode = associated_mode
+        # ID of the linked instance.
         self.associated_resource_id = associated_resource_id
+        # Region ID of the linked instance.
         self.associated_resource_region_id = associated_resource_region_id
+        # Resource type of the linked instance.
         self.associated_resource_type = associated_resource_type
+        # Status of the association between the Alibaba Cloud Global Accelerator (GA) instance and other cloud product resources.  
+        # 
+        # - **active**: The resource is active.  
+        # 
+        # - **binding**: The resource is being attached.  
+        # 
+        # - **unBinding**: The resource is being detached.  
+        # 
+        # - **wafRelease**: The WAF instance has been released.
         self.state = state
 
     def validate(self):

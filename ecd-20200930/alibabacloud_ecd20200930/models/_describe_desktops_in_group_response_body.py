@@ -22,28 +22,27 @@ class DescribeDesktopsInGroupResponseBody(DaraModel):
         stoped_pre_paid_desktops_count: int = None,
         stopped_pre_paid_desktops_count: int = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
-        # If NextToken is empty, no next page exists.
+        # The token to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
-        # The number of subscription cloud computers that are in the Connected state.
+        # The number of connected subscription cloud desktops.
         self.online_pre_paid_desktops_count = online_pre_paid_desktops_count
-        # The subscription cloud computers.
+        # A list of subscription cloud desktops.
         self.paid_desktops = paid_desktops
-        # The total number of subscription cloud computers.
+        # The total number of subscription cloud desktops.
         self.paid_desktops_count = paid_desktops_count
-        # The pay-as-you-go cloud computers.
+        # A list of pay-as-you-go cloud desktops.
         self.post_paid_desktops = post_paid_desktops
-        # The total number of pay-as-you-go cloud computers.
+        # The total number of pay-as-you-go cloud desktops.
         self.post_paid_desktops_count = post_paid_desktops_count
-        # The total amount of bills for pay-as-you-go cloud computers.
+        # The total billed amount for the pay-as-you-go cloud desktops.
         self.post_paid_desktops_total_amount = post_paid_desktops_total_amount
         # The request ID.
         self.request_id = request_id
-        # The number of subscription cloud computers that are in the Running state.
+        # The number of running subscription cloud desktops.
         self.running_pre_paid_desktops_count = running_pre_paid_desktops_count
-        # The number of subscription cloud computers that are in the Stopped state.
+        # Deprecated. This parameter is misspelled. Use `StoppedPrePaidDesktopsCount` instead.
         self.stoped_pre_paid_desktops_count = stoped_pre_paid_desktops_count
-        # The number of subscription cloud computers that are in the Stopped state.
+        # The number of stopped subscription cloud desktops.
         self.stopped_pre_paid_desktops_count = stopped_pre_paid_desktops_count
 
     def validate(self):
@@ -171,217 +170,53 @@ class DescribeDesktopsInGroupResponseBodyPostPaidDesktops(DaraModel):
         reset_time: str = None,
         system_disk_size: int = None,
     ):
-        # The connection status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Unknown
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Connected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Disconnected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The connection status of the cloud desktop.
         self.connection_status = connection_status
-        # The retention period. Unit: milliseconds.
+        # The retention period of the cloud desktop, in milliseconds.
         self.create_duration = create_duration
-        # The time when the cloud computer was created.
+        # The creation time of the cloud desktop.
         self.create_time = create_time
-        # The ID of the cloud computer.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Stopped
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Starting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Rebuilding
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopping
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Expired
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleted
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Pending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
-        # The type of the disk.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DATA: data disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The disk type.
         self.disk_type = disk_type
-        # The ID of the authorized user.
+        # The ID of the authorized end user.
         self.end_user_id = end_user_id
-        # The IDs of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+        # The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
         self.end_user_ids = end_user_ids
-        # The username of the authorized user.
+        # The name of the authorized end user.
         self.end_user_name = end_user_name
-        # The usernames of the end users who are connected to the cloud computers in the cloud computer pool. If no end users are connected, no values are returned for this parameter.
+        # The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
         self.end_user_names = end_user_names
         # The image version.
         self.fota_version = fota_version
-        # The version of the GPU driver.
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The flag that is used to manage the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Updating: The configurations of the cloud computer are being updated.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NoFlag: No flags are attached to the cloud computer.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The management flag.
         self.management_flag = management_flag
-        # The flags that are used to manage the cloud computers.
+        # The management flags.
         self.management_flags = management_flags
-        # The IP address of the member NIC of the instance.
+        # The IP address of the secondary elastic network interface of the instance.
         self.member_eni_ip = member_eni_ip
-        # The OS.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the operating system.
         self.os_type = os_type
-        # The IP address of the primary NIC of the instance.
+        # The IP address of the primary network interface of the instance.
         self.primary_eni_ip = primary_eni_ip
-        # The protocol.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: HDX protocol
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ASP: ASP protocol provided by Alibaba Cloud
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The session protocol.
         self.protocol_type = protocol_type
-        # The time when the cloud computer was released.
+        # The release time of the cloud desktop.
         self.release_time = release_time
-        # The time when the cloud computer was reset.
+        # The time when the cloud desktop was last reset.
         self.reset_time = reset_time
-        # The system disk size. Unit: GiB.
+        # The size of the system disk, in GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -568,212 +403,49 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(DaraModel):
         reset_time: str = None,
         system_disk_size: int = None,
     ):
-        # The connection status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Unknown
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Connected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Disconnected
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The connection status of the cloud desktop.
         self.connection_status = connection_status
-        # The ID of the cloud computer.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The status of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Stopped
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Starting
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Rebuilding
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Running
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Stopping
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Expired
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Deleted
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Pending
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
-        # The type of the disk.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DATA: data disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The disk type.
         self.disk_type = disk_type
-        # The ID of the authorized user.
+        # The ID of the authorized end user.
         self.end_user_id = end_user_id
-        # The IDs of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
+        # The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
         self.end_user_ids = end_user_ids
-        # The username of the authorized user.
+        # The name of the authorized end user.
         self.end_user_name = end_user_name
-        # The usernames of the end users who are connected to the cloud computers in the cloud computer share. If no end users are connected, no values are returned for this parameter.
+        # The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
         self.end_user_names = end_user_names
+        # The expiration time of the subscription cloud desktop.
         self.expired_time = expired_time
         # The image version.
         self.fota_version = fota_version
-        # The version of the GPU driver.
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
         # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The flag that is used to manage the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   Updating: The configurations of the cloud computer are being updated.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   NoFlag: No flags are attached to the cloud computer.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The management flag.
         self.management_flag = management_flag
-        # The flags that are used to manage the cloud computers.
+        # The management flags.
         self.management_flags = management_flags
-        # The IP address of the member network interface controller (NIC) of the instance.
+        # The IP address of the secondary elastic network interface of the instance.
         self.member_eni_ip = member_eni_ip
-        # The OS.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the operating system.
         self.os_type = os_type
-        # The IP address of the primary NIC of the instance.
+        # The IP address of the primary network interface of the instance.
         self.primary_eni_ip = primary_eni_ip
-        # The protocol.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: High-definition Experience (HDX) protocol
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   ASP: Adaptive Streaming Protocol (ASP) protocol provided by Alibaba Cloud
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The session protocol.
         self.protocol_type = protocol_type
-        # The time when the cloud computer was reset.
+        # The time when the cloud desktop was last reset.
         self.reset_time = reset_time
-        # The system disk size. Unit: GiB.
+        # The size of the system disk, in GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

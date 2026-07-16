@@ -1,3 +1,10 @@
+2026-05-26 Version: 3.0.0
+- Support API ListInventoryJobs.
+- Support API SearchInventoryAsset.
+- Update API CreateWorkspace: add request parameters WorkspaceRegion.
+- Update API CreateWorkspace: delete request parameters RegionId.
+
+
 2026-05-06 Version: 2.8.0
 - Support API GetTableKnowledgeDetails.
 

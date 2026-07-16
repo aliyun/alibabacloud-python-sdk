@@ -17,11 +17,17 @@ class GetSupplementDagrunResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The list of dagruns.
         self.dagrun_list = dagrun_list
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -93,13 +99,28 @@ class GetSupplementDagrunResponseBodyDagrunList(DaraModel):
         status: str = None,
         supplement_id: str = None,
     ):
+        # The business date. The time format must conform to the partition format specified by the business unit.
         self.biz_date = biz_date
+        # The runtime duration, in seconds.
         self.duration = duration
+        # The execution end timestamp.
         self.end_execute_time = end_execute_time
         # Dagrun ID
         self.id = id
+        # The execution start timestamp.
         self.start_execute_time = start_execute_time
+        # The status of the data backfill instance workflow. Valid values:
+        # 
+        # - INIT: dagrun init.
+        # - CREATE_FAILED: dagrun creation failed.
+        # - CREATED: dagrun created.
+        # - READY: dagrun ready for exec.
+        # - RUNNING: dagrun running.
+        # - KILLED: dagrun stopped.
+        # - FAILED: dagrun failed.
+        # - SUCCESS: dagrun succeeded.
         self.status = status
+        # The ID of the data backfill instance workflow.
         self.supplement_id = supplement_id
 
     def validate(self):

@@ -22,9 +22,8 @@ class ExecuteSQLQueryRequest(DaraModel):
         self.expression = expression
         # The number of entries per page.
         # 
-        # - Valid values: 1 to 1000.
-        # 
-        # - Default value: 1000.
+        # *   Valid values: 1 to 1000.
+        # *   Default value: 1000.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token

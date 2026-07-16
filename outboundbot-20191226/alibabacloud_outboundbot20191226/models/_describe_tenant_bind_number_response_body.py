@@ -17,11 +17,17 @@ class DescribeTenantBindNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class DescribeTenantBindNumberResponseBodyData(DaraModel):
         self,
         list: List[main_models.DescribeTenantBindNumberResponseBodyDataList] = None,
     ):
+        # Job group description
         self.list = list
 
     def validate(self):
@@ -118,8 +125,11 @@ class DescribeTenantBindNumberResponseBodyDataList(DaraModel):
         instance_name: str = None,
         is_binding: bool = None,
     ):
+        # Instance ID
         self.instance_id = instance_id
+        # Instance name
         self.instance_name = instance_name
+        # Indicates whether the number is bound to the instance
         self.is_binding = is_binding
 
     def validate(self):

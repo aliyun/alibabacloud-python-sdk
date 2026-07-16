@@ -16,15 +16,25 @@ class StartSwitchDatabaseRequest(DaraModel):
         src_main_connect_string: str = None,
         src_main_port: str = None,
     ):
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The endpoint of the primary node of the target instance.
         self.dst_main_connect_string = dst_main_connect_string
+        # The port number of the target instance.
         self.dst_main_port = dst_main_port
+        # Specifies whether to modify the endpoint or port of the source or target instance.
         self.is_modify_endpoint = is_modify_endpoint
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the import task.
+        # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
+        # The endpoint of the primary node of the source instance, which is typically the internal or public endpoint of the instance.
         self.src_main_connect_string = src_main_connect_string
+        # The port number of the primary node of the source instance.
         self.src_main_port = src_main_port
 
     def validate(self):

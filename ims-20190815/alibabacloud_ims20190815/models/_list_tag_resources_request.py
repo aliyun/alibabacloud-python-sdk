@@ -35,7 +35,7 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_principal_name = resource_principal_name
         # The type of the resource. Valid value:
         # 
-        # *   user: a RAM user
+        # - user: a RAM user
         self.resource_type = resource_type
         # The tag value.
         # 

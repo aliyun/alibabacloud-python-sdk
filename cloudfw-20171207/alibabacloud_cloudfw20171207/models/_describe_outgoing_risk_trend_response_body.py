@@ -16,10 +16,15 @@ class DescribeOutgoingRiskTrendResponseBody(DaraModel):
         total_risk_domain: int = None,
         total_risk_ip: int = None,
     ):
+        # The list of returned data.
         self.data_list = data_list
+        # The time interval.
         self.interval = interval
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of threat domain names.
         self.total_risk_domain = total_risk_domain
+        # The total number of threat IP addresses.
         self.total_risk_ip = total_risk_ip
 
     def validate(self):
@@ -81,8 +86,11 @@ class DescribeOutgoingRiskTrendResponseBodyDataList(DaraModel):
         risk_ip: int = None,
         time: int = None,
     ):
+        # The number of threat domain names.
         self.risk_domain = risk_domain
+        # The number of threat IP addresses.
         self.risk_ip = risk_ip
+        # The timestamp.
         self.time = time
 
     def validate(self):

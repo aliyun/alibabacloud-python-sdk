@@ -10,9 +10,9 @@ class VoiceModerationCancelRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The type of moderation service. Valid values include \\`nickname_detection\\` for user nicknames. Other values are to be determined.
         self.service = service
-        # The parameters required by the moderation service. The value is a JSON string.
+        # The ID of the task that you want to cancel.
         self.service_parameters = service_parameters
 
     def validate(self):

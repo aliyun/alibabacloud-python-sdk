@@ -14,10 +14,15 @@ class DelRuleCategoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class DelRuleCategoryResponseBodyData(DaraModel):
         self,
         select: bool = None,
     ):
+        # Indicates whether to select a new rule category.
         self.select = select
 
     def validate(self):

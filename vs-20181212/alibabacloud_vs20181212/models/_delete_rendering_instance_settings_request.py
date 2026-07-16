@@ -12,7 +12,9 @@ class DeleteRenderingInstanceSettingsRequest(DaraModel):
         attribute_names: List[str] = None,
         rendering_instance_id: str = None,
     ):
+        # List of attribute names.
         self.attribute_names = attribute_names
+        # ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

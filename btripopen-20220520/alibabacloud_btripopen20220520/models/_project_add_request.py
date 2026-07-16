@@ -8,6 +8,7 @@ class ProjectAddRequest(DaraModel):
     def __init__(
         self,
         code: str = None,
+        has_manager: bool = None,
         project_name: str = None,
         third_part_cost_center_id: str = None,
         third_part_id: str = None,
@@ -15,6 +16,7 @@ class ProjectAddRequest(DaraModel):
     ):
         # This parameter is required.
         self.code = code
+        self.has_manager = has_manager
         # This parameter is required.
         self.project_name = project_name
         self.third_part_cost_center_id = third_part_cost_center_id
@@ -32,6 +34,9 @@ class ProjectAddRequest(DaraModel):
             result = _map
         if self.code is not None:
             result['code'] = self.code
+
+        if self.has_manager is not None:
+            result['has_manager'] = self.has_manager
 
         if self.project_name is not None:
             result['project_name'] = self.project_name
@@ -51,6 +56,9 @@ class ProjectAddRequest(DaraModel):
         m = m or dict()
         if m.get('code') is not None:
             self.code = m.get('code')
+
+        if m.get('has_manager') is not None:
+            self.has_manager = m.get('has_manager')
 
         if m.get('project_name') is not None:
             self.project_name = m.get('project_name')

@@ -25,10 +25,13 @@ class CreateDataAssetTagRequest(DaraModel):
         self.managers = managers
         # The type of the tag value. Valid values:
         # 
-        # *   Boolean
-        # *   Int
-        # *   String
-        # *   Double
+        # - Boolean
+        # 
+        # - Int
+        # 
+        # - String
+        # 
+        # - Double
         self.value_type = value_type
         # The tag values.
         self.values = values

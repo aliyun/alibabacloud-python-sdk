@@ -15,9 +15,17 @@ class GetAgentResponseBody(DaraModel):
         data: main_models.GetAgentResponseBodyData = None,
         message: str = None,
     ):
+        # Request ID, which can be used for end-to-end diagnostics
         self.request_id = request_id
+        # Status code
+        # - `code == Success` indicates the authorization is successful;
+        # - Other status codes indicate authorization failure. Check the `message` field for detailed error information when authorization fails;
         self.code = code
+        # Response data.
         self.data = data
+        # Error message
+        # - If `code == Success`, this field is empty;
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -72,13 +80,21 @@ class GetAgentResponseBodyData(DaraModel):
         updated_at: str = None,
         versions: List[main_models.GetAgentResponseBodyDataVersions] = None,
     ):
+        # Agent creation time
         self.created_at = created_at
+        # Agent description
         self.description = description
+        # Agent ID
         self.id = id
+        # Agent name
         self.name = name
+        # Supported architectures
         self.support_arch = support_arch
+        # Agent type
         self.type = type
+        # Update time
         self.updated_at = updated_at
+        # Agent version information
         self.versions = versions
 
     def validate(self):
@@ -161,11 +177,17 @@ class GetAgentResponseBodyDataVersions(DaraModel):
         upgrade_script: str = None,
         version: str = None,
     ):
+        # Agent version creation time
         self.created_at = created_at
+        # Installation script for this agent version
         self.install_script = install_script
+        # Uninstallation script for this agent version
         self.uninstall_script = uninstall_script
+        # Agent version update time
         self.updated_at = updated_at
+        # Upgrade script for this agent version
         self.upgrade_script = upgrade_script
+        # Agent version number
         self.version = version
 
     def validate(self):

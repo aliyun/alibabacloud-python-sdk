@@ -12,7 +12,7 @@ class GetQualificationOssInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 业务，非空
+        # The business type. When applying for a qualification or creating an authorization letter file, enter **dysms**.
         # 
         # This parameter is required.
         self.biz_type = biz_type

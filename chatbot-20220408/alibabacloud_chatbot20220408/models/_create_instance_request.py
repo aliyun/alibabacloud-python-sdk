@@ -13,10 +13,15 @@ class CreateInstanceRequest(DaraModel):
         name: str = None,
         robot_type: str = None,
     ):
+        # The key of the agent. If you omit this parameter, the default agent is used. You can find the key on the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # A description of the robot. The description can be up to 50 characters long.
         self.introduction = introduction
+        # The language of the robot, such as `zh-cn` or `en-us`. The language must be supported by the agent. If you omit this parameter, the agent\\"s default language is used.
         self.language_code = language_code
+        # The name of the robot. The maximum length is 50 characters.
         self.name = name
+        # The robot type. The default value is `scenario_im`.
         self.robot_type = robot_type
 
     def validate(self):

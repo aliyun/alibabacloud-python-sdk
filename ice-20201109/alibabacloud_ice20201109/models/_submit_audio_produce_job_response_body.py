@@ -14,16 +14,19 @@ class SubmitAudioProduceJobResponseBody(DaraModel):
     ):
         # The job ID.
         self.job_id = job_id
-        # The ID of the media asset.
+        # The media ID.
         self.media_id = media_id
         # The request ID.
         self.request_id = request_id
-        # The job state. Valid values:
+        # The job status.
         # 
-        # *   Created
-        # *   Executing
-        # *   Finished
-        # *   Failed
+        # - Created
+        # 
+        # - Executing
+        # 
+        # - Finished
+        # 
+        # - Failed
         self.state = state
 
     def validate(self):

@@ -15,12 +15,17 @@ class TextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The data object returned by the request.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A message that provides details about the response.
         self.message = message
-        # Id of the request
+        # The unique identifier for the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,8 +87,11 @@ class TextTranslateResponseBodyData(DaraModel):
         translation: str = None,
         usage: main_models.TextTranslateResponseBodyDataUsage = None,
     ):
+        # The detected source language.
         self.detected_lang = detected_lang
+        # The translated text.
         self.translation = translation
+        # Details about the Tokens consumed by the request.
         self.usage = usage
 
     def validate(self):
@@ -127,8 +135,11 @@ class TextTranslateResponseBodyDataUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of Tokens in the input text.
         self.input_tokens = input_tokens
+        # The number of Tokens in the output text.
         self.output_tokens = output_tokens
+        # The total number of Tokens consumed by the request.
         self.total_tokens = total_tokens
 
     def validate(self):

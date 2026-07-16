@@ -15,22 +15,28 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
         interval: int = None,
         out_protect_cnt: int = None,
         request_id: str = None,
+        total_alert_cnt: int = None,
+        total_pass_cnt: int = None,
         total_protect_cnt: int = None,
         trend_list: List[main_models.DescribeACLProtectTrendResponseBodyTrendList] = None,
     ):
-        # The number of internal requests that are blocked by the ACL feature.
+        # The number of inbound interceptions by Internet access control.
         self.in_protect_cnt = in_protect_cnt
         # This parameter is deprecated.
         self.inter_vpcprotect_cnt = inter_vpcprotect_cnt
-        # The interval for returning data. Unit: seconds.
+        # The step size of the returned data, in seconds. This indicates the interval between consecutive data points.
         self.interval = interval
-        # The number of external requests that are blocked by the ACL feature.
+        # The number of outbound interceptions by Internet access control.
         self.out_protect_cnt = out_protect_cnt
         # The request ID.
         self.request_id = request_id
-        # The total number of requests that are blocked by the ACL feature.
+        # The cumulative sum of AlertCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the entire time period.
+        self.total_alert_cnt = total_alert_cnt
+        # The cumulative sum of PassCnt across all time points within the query time range. This represents the total number of sessions that matched an ACL policy and were allowed during the entire time period.
+        self.total_pass_cnt = total_pass_cnt
+        # The total number of Internet access control interceptions.
         self.total_protect_cnt = total_protect_cnt
-        # The statistics on the requests that are blocked by the ACL feature.
+        # The list of Internet access control interception trend data.
         self.trend_list = trend_list
 
     def validate(self):
@@ -59,6 +65,12 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.total_alert_cnt is not None:
+            result['TotalAlertCnt'] = self.total_alert_cnt
+
+        if self.total_pass_cnt is not None:
+            result['TotalPassCnt'] = self.total_pass_cnt
+
         if self.total_protect_cnt is not None:
             result['TotalProtectCnt'] = self.total_protect_cnt
 
@@ -86,6 +98,12 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('TotalAlertCnt') is not None:
+            self.total_alert_cnt = m.get('TotalAlertCnt')
+
+        if m.get('TotalPassCnt') is not None:
+            self.total_pass_cnt = m.get('TotalPassCnt')
+
         if m.get('TotalProtectCnt') is not None:
             self.total_protect_cnt = m.get('TotalProtectCnt')
 
@@ -100,12 +118,18 @@ class DescribeACLProtectTrendResponseBody(DaraModel):
 class DescribeACLProtectTrendResponseBodyTrendList(DaraModel):
     def __init__(
         self,
+        alert_cnt: int = None,
+        pass_cnt: int = None,
         protect_cnt: int = None,
         time: int = None,
     ):
-        # The number of requests that are blocked by ACL on the current day.
+        # The total number of sessions that matched an ACL policy and triggered the monitor (alert) action during the time interval.
+        self.alert_cnt = alert_cnt
+        # The total number of sessions that matched an ACL policy and were allowed during the time interval.
+        self.pass_cnt = pass_cnt
+        # The number of Internet access control interceptions on the day.
         self.protect_cnt = protect_cnt
-        # The UNIX timestamp at midnight (00:00:00) of each day, which indicates the date of the current day. Unit: seconds.
+        # The timestamp of 00:00 of each day, in seconds. This indicates the date.
         self.time = time
 
     def validate(self):
@@ -116,6 +140,12 @@ class DescribeACLProtectTrendResponseBodyTrendList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.alert_cnt is not None:
+            result['AlertCnt'] = self.alert_cnt
+
+        if self.pass_cnt is not None:
+            result['PassCnt'] = self.pass_cnt
+
         if self.protect_cnt is not None:
             result['ProtectCnt'] = self.protect_cnt
 
@@ -126,6 +156,12 @@ class DescribeACLProtectTrendResponseBodyTrendList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlertCnt') is not None:
+            self.alert_cnt = m.get('AlertCnt')
+
+        if m.get('PassCnt') is not None:
+            self.pass_cnt = m.get('PassCnt')
+
         if m.get('ProtectCnt') is not None:
             self.protect_cnt = m.get('ProtectCnt')
 

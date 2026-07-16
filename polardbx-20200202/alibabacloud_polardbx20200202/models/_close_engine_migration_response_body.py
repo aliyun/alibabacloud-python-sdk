@@ -15,12 +15,17 @@ class CloseEngineMigrationResponseBody(DaraModel):
         request_id: str = None,
         success_response: str = None,
     ):
+        # The response code.
         self.code = code
+        # The new endpoint information.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message. This parameter is empty if the request is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success_response = success_response
 
     def validate(self):
@@ -81,7 +86,9 @@ class CloseEngineMigrationResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         task_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The backend task ID.
         self.task_id = task_id
 
     def validate(self):

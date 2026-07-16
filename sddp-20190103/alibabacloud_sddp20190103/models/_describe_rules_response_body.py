@@ -18,7 +18,7 @@ class DescribeRulesResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # The sensitive data detection rules.
+        # A list of sensitive data detection rules.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -113,97 +113,161 @@ class DescribeRulesResponseBodyItems(DaraModel):
         user_id: int = None,
         warn_level: int = None,
     ):
+        # The audit mode.
         self.audit_mode = audit_mode
-        # The content type of the sensitive data detection rule. Valid values:
+        # The type of content in the sensitive data detection rule. Valid values:
         # 
-        # *   **0**: keyword
-        # *   **2**: regular expression
+        # - **0**: keyword
+        # 
+        # - **2**: regular expression
         self.category = category
-        # The name of the content type of the sensitive data detection rule.
+        # The name of the content type for the sensitive data detection rule.
         self.category_name = category_name
-        # The content in the sensitive data detection rule.
+        # The content of the sensitive data detection rule.
         # 
-        # >  A built-in detection rule whose CustomType is 0 does not return the content of the rule.
+        # > The content of a built-in rule, for which CustomType is 0, is not returned.
         self.content = content
-        # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
+        # The content type. Valid values:
+        # 
+        # - **1**: SQL injection exploits
+        # 
+        # - **2**: SQL injection bypass attempts
+        # 
+        # - **3**: stored procedure abuse
+        # 
+        # - **4**: buffer overflows
+        # 
+        # - **5**: error-based SQL injections
         self.content_category = content_category
         # The type of the sensitive data detection rule.
         # 
-        # *   0: built-in rule
-        # *   1: custom rule
+        # - 0: built-in
+        # 
+        # - 1: custom
         self.custom_type = custom_type
         # The description of the sensitive data detection rule.
         self.description = description
-        # The display name of the account that is used to create the sensitive data detection rule.
+        # The display name of the user who created the sensitive data detection rule.
         self.display_name = display_name
-        # The time when the sensitive data detection rule is created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the sensitive data detection rule was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The time when the sensitive data detection rule is modified. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the sensitive data detection rule was last modified. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_modified = gmt_modified
-        # The parent group type of the rule.
+        # The parent group of the rule.
         self.group_id = group_id
-        # The number of times that the sensitive data detection rule is hit.
+        # The number of times the rule was hit.
         self.hit_total_count = hit_total_count
-        # The ID of the sensitive data detection rule.
+        # The unique ID of the sensitive data detection rule.
         self.id = id
-        # The username of the account that is used to create the sensitive data detection rule.
+        # The logon name of the user who created the sensitive data detection rule.
         self.login_name = login_name
-        # The key of the primary dimension.
+        # The primary dimension key.
         self.major_key = major_key
         # The match type. Valid values:
         # 
-        # *   **1**: rule-based match
-        # *   **2**: dictionary-based match
+        # - **1**: rule-based match
+        # 
+        # - **2**: dictionary-based match
         self.match_type = match_type
-        # The IDs of the models for sensitive data audit.
+        # A collection of model IDs for sensitive data auditing.
         self.model_rule_ids = model_rule_ids
         # The name of the sensitive data detection rule.
         self.name = name
-        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The name of the service to which the data asset belongs. Valid values:
+        # 
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
+        # 
+        # - **SELF_DB**
         self.product_code = product_code
-        # The ID of the service to which the sensitive data detection rule is applied. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The ID of the service to which the data asset belongs. Valid values:
+        # 
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADS
+        # 
+        # - **4**: OTS
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: SELF_DB
         self.product_id = product_id
-        # The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        # The sensitivity level ID of the sensitive data detection rule. Valid values:
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A. No sensitive data is detected.
+        # 
+        # - **2**: S1. Level 1 sensitive data.
+        # 
+        # - **3**: S2. Level 2 sensitive data.
+        # 
+        # - **4**: S3. Level 3 sensitive data.
+        # 
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The sensitivity level of data that hits the sensitive data detection rule. Valid values:
+        # The name of the sensitivity level for the sensitive data detection rule. Valid values:
         # 
-        # *   **N/A**: indicates that no sensitive data is detected.
-        # *   **S1**: indicates the low sensitivity level.
-        # *   **S2**: indicates the medium sensitivity level.
-        # *   **S3**: indicates the high sensitivity level.
-        # *   **S4**: indicates the highest sensitivity level.
+        # - **N/A**: No sensitive data is detected.
+        # 
+        # - **S1**: Level 1 sensitive data.
+        # 
+        # - **S2**: Level 2 sensitive data.
+        # 
+        # - **S3**: Level 3 sensitive data.
+        # 
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
         # The statistical expression.
         self.stat_express = stat_express
-        # The status of the sensitive data detection rule. Valid values:
+        # The detection status of the sensitive data detection rule. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # - **0**: disabled
+        # 
+        # - **1**: enabled
         self.status = status
-        # The data asset type that is supported by the sensitive data detection rule. Valid values:
+        # The type of data asset that the rule supports. Valid values:
         # 
-        # *   **0**: all data assets
-        # *   **1**: structured data assets
-        # *   **2**: unstructured data assets
+        # - **0**: all assets
+        # 
+        # - **1**: structured assets
+        # 
+        # - **2**: unstructured assets
         self.support_form = support_form
-        # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
-        self.target = target
-        # The IDs of the templates that are used to audit sensitive data.
-        self.template_rule_ids = template_rule_ids
-        self.threat_analysis_status = threat_analysis_status
-        # The ID of the account that is used to create the sensitive data detection rule.
-        self.user_id = user_id
-        # The severity level. Valid values:
+        # The name of the service to which the data asset belongs. Valid values:
         # 
-        # *   **1**: low
-        # *   **2**: medium
-        # *   **3**: high
+        # - **MaxCompute**
+        # 
+        # - **OSS**
+        # 
+        # - **ADS**
+        # 
+        # - **OTS**
+        # 
+        # - **RDS**
+        # 
+        # - **SELF_DB**
+        self.target = target
+        # A collection of template IDs for sensitive data auditing.
+        self.template_rule_ids = template_rule_ids
+        # The threat analysis mode status. Valid values: 0 (disabled), 1 (enabled).
+        self.threat_analysis_status = threat_analysis_status
+        # The ID of the user who created the sensitive data detection rule.
+        self.user_id = user_id
+        # The risk level.
+        # 
+        # - **1**: Low
+        # 
+        # - **2**: Medium
+        # 
+        # - **3**: High
         self.warn_level = warn_level
 
     def validate(self):

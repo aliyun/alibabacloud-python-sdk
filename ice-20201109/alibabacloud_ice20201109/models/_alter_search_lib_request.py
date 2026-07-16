@@ -10,7 +10,12 @@ class AlterSearchLibRequest(DaraModel):
         search_lib_config: str = None,
         search_lib_name: str = None,
     ):
+        # The configuration of the search library, in JSON string format. The fields include the following:
+        # 
+        # - faceGroupIds: The IDs of custom face recognition libraries. You can create these libraries by calling the CreateRecognitionLib operation. You can specify up to three library IDs, separated by commas (,).
         self.search_lib_config = search_lib_config
+        # The search library.
+        # 
         # This parameter is required.
         self.search_lib_name = search_lib_name
 

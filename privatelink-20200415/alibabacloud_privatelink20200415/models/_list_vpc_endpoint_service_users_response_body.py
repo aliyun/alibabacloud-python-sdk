@@ -21,8 +21,9 @@ class ListVpcEndpointServiceUsersResponseBody(DaraModel):
         self.max_results = max_results
         # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next requests are performed.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # - If no value is returned for **NextToken**, no next requests are performed.
+        # 
+        # - If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

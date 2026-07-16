@@ -11,15 +11,15 @@ class DeleteExchangeRequest(DaraModel):
         instance_id: str = None,
         virtual_host: str = None,
     ):
-        # The name of the exchange that you want to delete.
+        # The name of the exchange to delete.
         # 
         # This parameter is required.
         self.exchange_name = exchange_name
-        # The ID of the ApsaraMQ for RabbitMQ instance whose exchange you want to delete.
+        # The ID of the ApsaraMQ for RabbitMQ instance that contains the exchange.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The vhost to which the exchange that you want to delete belongs.
+        # The name of the vhost that contains the exchange.
         # 
         # This parameter is required.
         self.virtual_host = virtual_host

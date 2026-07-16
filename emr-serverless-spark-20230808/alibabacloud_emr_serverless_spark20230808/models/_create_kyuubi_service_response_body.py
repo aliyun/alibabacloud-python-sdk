@@ -11,7 +11,9 @@ class CreateKyuubiServiceResponseBody(DaraModel):
         data: main_models.CreateKyuubiServiceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -47,7 +49,7 @@ class CreateKyuubiServiceResponseBodyData(DaraModel):
         self,
         kyuubi_service_id: str = None,
     ):
-        # Kyuubi Service ID。
+        # The Kyuubi service ID.
         self.kyuubi_service_id = kyuubi_service_id
 
     def validate(self):

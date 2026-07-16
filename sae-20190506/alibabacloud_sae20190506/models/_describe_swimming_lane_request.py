@@ -11,11 +11,11 @@ class DescribeSwimmingLaneRequest(DaraModel):
         lane_id: int = None,
         namespace_id: str = None,
     ):
-        # The ID of the lane group.
+        # The lane group ID.
         self.group_id = group_id
-        # The ID of the lane.
+        # The swimming lane ID.
         self.lane_id = lane_id
-        # The ID of a namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

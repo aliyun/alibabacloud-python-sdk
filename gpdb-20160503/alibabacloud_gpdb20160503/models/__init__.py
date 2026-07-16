@@ -53,9 +53,16 @@ from ._create_aiservice_response import CreateAIServiceResponse
 from ._create_account_request import CreateAccountRequest
 from ._create_account_response_body import CreateAccountResponseBody
 from ._create_account_response import CreateAccountResponse
+from ._create_api_key_request import CreateApiKeyRequest
+from ._create_api_key_shrink_request import CreateApiKeyShrinkRequest
+from ._create_api_key_response_body import CreateApiKeyResponseBody
+from ._create_api_key_response import CreateApiKeyResponse
 from ._create_backup_request import CreateBackupRequest
 from ._create_backup_response_body import CreateBackupResponseBody
 from ._create_backup_response import CreateBackupResponse
+from ._create_branch_request import CreateBranchRequest
+from ._create_branch_response_body import CreateBranchResponseBody
+from ._create_branch_response import CreateBranchResponse
 from ._create_collection_request import CreateCollectionRequest
 from ._create_collection_shrink_request import CreateCollectionShrinkRequest
 from ._create_collection_response_body import CreateCollectionResponseBody
@@ -95,6 +102,9 @@ from ._create_index_response import CreateIndexResponse
 from ._create_jdbcdata_source_request import CreateJDBCDataSourceRequest
 from ._create_jdbcdata_source_response_body import CreateJDBCDataSourceResponseBody
 from ._create_jdbcdata_source_response import CreateJDBCDataSourceResponse
+from ._create_model_operator_api_key_request import CreateModelOperatorApiKeyRequest
+from ._create_model_operator_api_key_response_body import CreateModelOperatorApiKeyResponseBody
+from ._create_model_operator_api_key_response import CreateModelOperatorApiKeyResponse
 from ._create_model_service_request import CreateModelServiceRequest
 from ._create_model_service_shrink_request import CreateModelServiceShrinkRequest
 from ._create_model_service_response_body import CreateModelServiceResponseBody
@@ -105,6 +115,9 @@ from ._create_namespace_response import CreateNamespaceResponse
 from ._create_remote_adbdata_source_request import CreateRemoteADBDataSourceRequest
 from ._create_remote_adbdata_source_response_body import CreateRemoteADBDataSourceResponseBody
 from ._create_remote_adbdata_source_response import CreateRemoteADBDataSourceResponse
+from ._create_saas_service_request import CreateSaasServiceRequest
+from ._create_saas_service_response_body import CreateSaasServiceResponseBody
+from ._create_saas_service_response import CreateSaasServiceResponse
 from ._create_sample_data_request import CreateSampleDataRequest
 from ._create_sample_data_response_body import CreateSampleDataResponseBody
 from ._create_sample_data_response import CreateSampleDataResponse
@@ -114,6 +127,9 @@ from ._create_secret_response import CreateSecretResponse
 from ._create_service_linked_role_request import CreateServiceLinkedRoleRequest
 from ._create_service_linked_role_response_body import CreateServiceLinkedRoleResponseBody
 from ._create_service_linked_role_response import CreateServiceLinkedRoleResponse
+from ._create_snapshot_request import CreateSnapshotRequest
+from ._create_snapshot_response_body import CreateSnapshotResponseBody
+from ._create_snapshot_response import CreateSnapshotResponse
 from ._create_streaming_data_service_request import CreateStreamingDataServiceRequest
 from ._create_streaming_data_service_response_body import CreateStreamingDataServiceResponseBody
 from ._create_streaming_data_service_response import CreateStreamingDataServiceResponse
@@ -130,6 +146,9 @@ from ._create_supabase_project_response import CreateSupabaseProjectResponse
 from ._create_vector_index_request import CreateVectorIndexRequest
 from ._create_vector_index_response_body import CreateVectorIndexResponseBody
 from ._create_vector_index_response import CreateVectorIndexResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_response_body import CreateWorkspaceResponseBody
+from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_ainode_request import DeleteAINodeRequest
 from ._delete_ainode_response_body import DeleteAINodeResponseBody
 from ._delete_ainode_response import DeleteAINodeResponse
@@ -139,9 +158,15 @@ from ._delete_aiservice_response import DeleteAIServiceResponse
 from ._delete_account_request import DeleteAccountRequest
 from ._delete_account_response_body import DeleteAccountResponseBody
 from ._delete_account_response import DeleteAccountResponse
+from ._delete_api_key_request import DeleteApiKeyRequest
+from ._delete_api_key_response_body import DeleteApiKeyResponseBody
+from ._delete_api_key_response import DeleteApiKeyResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
+from ._delete_branch_request import DeleteBranchRequest
+from ._delete_branch_response_body import DeleteBranchResponseBody
+from ._delete_branch_response import DeleteBranchResponse
 from ._delete_chunks_request import DeleteChunksRequest
 from ._delete_chunks_shrink_request import DeleteChunksShrinkRequest
 from ._delete_chunks_response_body import DeleteChunksResponseBody
@@ -200,9 +225,15 @@ from ._delete_private_ragservice_response import DeletePrivateRAGServiceResponse
 from ._delete_remote_adbdata_source_request import DeleteRemoteADBDataSourceRequest
 from ._delete_remote_adbdata_source_response_body import DeleteRemoteADBDataSourceResponseBody
 from ._delete_remote_adbdata_source_response import DeleteRemoteADBDataSourceResponse
+from ._delete_saas_service_request import DeleteSaasServiceRequest
+from ._delete_saas_service_response_body import DeleteSaasServiceResponseBody
+from ._delete_saas_service_response import DeleteSaasServiceResponse
 from ._delete_secret_request import DeleteSecretRequest
 from ._delete_secret_response_body import DeleteSecretResponseBody
 from ._delete_secret_response import DeleteSecretResponse
+from ._delete_snapshot_request import DeleteSnapshotRequest
+from ._delete_snapshot_response_body import DeleteSnapshotResponseBody
+from ._delete_snapshot_response import DeleteSnapshotResponse
 from ._delete_streaming_data_service_request import DeleteStreamingDataServiceRequest
 from ._delete_streaming_data_service_response_body import DeleteStreamingDataServiceResponseBody
 from ._delete_streaming_data_service_response import DeleteStreamingDataServiceResponse
@@ -218,6 +249,9 @@ from ._delete_supabase_project_response import DeleteSupabaseProjectResponse
 from ._delete_vector_index_request import DeleteVectorIndexRequest
 from ._delete_vector_index_response_body import DeleteVectorIndexResponseBody
 from ._delete_vector_index_response import DeleteVectorIndexResponse
+from ._delete_workspace_request import DeleteWorkspaceRequest
+from ._delete_workspace_response_body import DeleteWorkspaceResponseBody
+from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._deploy_private_ragservice_request import DeployPrivateRAGServiceRequest
 from ._deploy_private_ragservice_response_body import DeployPrivateRAGServiceResponseBody
 from ._deploy_private_ragservice_response import DeployPrivateRAGServiceResponse
@@ -239,6 +273,9 @@ from ._describe_backup_job_response import DescribeBackupJobResponse
 from ._describe_backup_policy_request import DescribeBackupPolicyRequest
 from ._describe_backup_policy_response_body import DescribeBackupPolicyResponseBody
 from ._describe_backup_policy_response import DescribeBackupPolicyResponse
+from ._describe_branch_request import DescribeBranchRequest
+from ._describe_branch_response_body import DescribeBranchResponseBody
+from ._describe_branch_response import DescribeBranchResponse
 from ._describe_collection_request import DescribeCollectionRequest
 from ._describe_collection_response_body import DescribeCollectionResponseBody
 from ._describe_collection_response import DescribeCollectionResponse
@@ -366,6 +403,13 @@ from ._describe_jdbcdata_source_response import DescribeJDBCDataSourceResponse
 from ._describe_log_backups_request import DescribeLogBackupsRequest
 from ._describe_log_backups_response_body import DescribeLogBackupsResponseBody
 from ._describe_log_backups_response import DescribeLogBackupsResponse
+from ._describe_model_operator_api_key_request import DescribeModelOperatorApiKeyRequest
+from ._describe_model_operator_api_key_response_body import DescribeModelOperatorApiKeyResponseBody
+from ._describe_model_operator_api_key_response import DescribeModelOperatorApiKeyResponse
+from ._describe_model_operator_usage_request import DescribeModelOperatorUsageRequest
+from ._describe_model_operator_usage_shrink_request import DescribeModelOperatorUsageShrinkRequest
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBody
+from ._describe_model_operator_usage_response import DescribeModelOperatorUsageResponse
 from ._describe_model_service_request import DescribeModelServiceRequest
 from ._describe_model_service_response_body import DescribeModelServiceResponseBody
 from ._describe_model_service_response import DescribeModelServiceResponse
@@ -464,12 +508,24 @@ from ._execute_statement_response import ExecuteStatementResponse
 from ._get_account_request import GetAccountRequest
 from ._get_account_response_body import GetAccountResponseBody
 from ._get_account_response import GetAccountResponse
+from ._get_api_key_request import GetApiKeyRequest
+from ._get_api_key_response_body import GetApiKeyResponseBody
+from ._get_api_key_response import GetApiKeyResponse
+from ._get_branch_schema_request import GetBranchSchemaRequest
+from ._get_branch_schema_response_body import GetBranchSchemaResponseBody
+from ._get_branch_schema_response import GetBranchSchemaResponse
 from ._get_graph_ragjob_request import GetGraphRAGJobRequest
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBody
 from ._get_graph_ragjob_response import GetGraphRAGJobResponse
+from ._get_saas_service_request import GetSaasServiceRequest
+from ._get_saas_service_response_body import GetSaasServiceResponseBody
+from ._get_saas_service_response import GetSaasServiceResponse
 from ._get_secret_value_request import GetSecretValueRequest
 from ._get_secret_value_response_body import GetSecretValueResponseBody
 from ._get_secret_value_response import GetSecretValueResponse
+from ._get_service_access_info_request import GetServiceAccessInfoRequest
+from ._get_service_access_info_response_body import GetServiceAccessInfoResponseBody
+from ._get_service_access_info_response import GetServiceAccessInfoResponse
 from ._get_statement_result_request import GetStatementResultRequest
 from ._get_statement_result_response_body import GetStatementResultResponseBody
 from ._get_statement_result_response import GetStatementResultResponse
@@ -488,6 +544,9 @@ from ._get_upload_document_job_response import GetUploadDocumentJobResponse
 from ._get_upsert_collection_data_job_request import GetUpsertCollectionDataJobRequest
 from ._get_upsert_collection_data_job_response_body import GetUpsertCollectionDataJobResponseBody
 from ._get_upsert_collection_data_job_response import GetUpsertCollectionDataJobResponse
+from ._get_workspace_request import GetWorkspaceRequest
+from ._get_workspace_response_body import GetWorkspaceResponseBody
+from ._get_workspace_response import GetWorkspaceResponse
 from ._grant_collection_request import GrantCollectionRequest
 from ._grant_collection_response_body import GrantCollectionResponseBody
 from ._grant_collection_response import GrantCollectionResponse
@@ -503,9 +562,15 @@ from ._list_ainode_pools_response import ListAINodePoolsResponse
 from ._list_aiservices_request import ListAIServicesRequest
 from ._list_aiservices_response_body import ListAIServicesResponseBody
 from ._list_aiservices_response import ListAIServicesResponse
+from ._list_api_keys_request import ListApiKeysRequest
+from ._list_api_keys_response_body import ListApiKeysResponseBody
+from ._list_api_keys_response import ListApiKeysResponse
 from ._list_backup_jobs_request import ListBackupJobsRequest
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBody
 from ._list_backup_jobs_response import ListBackupJobsResponse
+from ._list_branches_request import ListBranchesRequest
+from ._list_branches_response_body import ListBranchesResponseBody
+from ._list_branches_response import ListBranchesResponse
 from ._list_chunks_request import ListChunksRequest
 from ._list_chunks_response_body import ListChunksResponseBody
 from ._list_chunks_response import ListChunksResponse
@@ -539,6 +604,12 @@ from ._list_instance_databases_response import ListInstanceDatabasesResponse
 from ._list_instance_extensions_request import ListInstanceExtensionsRequest
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBody
 from ._list_instance_extensions_response import ListInstanceExtensionsResponse
+from ._list_model_operator_api_keys_request import ListModelOperatorApiKeysRequest
+from ._list_model_operator_api_keys_response_body import ListModelOperatorApiKeysResponseBody
+from ._list_model_operator_api_keys_response import ListModelOperatorApiKeysResponse
+from ._list_model_operator_services_request import ListModelOperatorServicesRequest
+from ._list_model_operator_services_response_body import ListModelOperatorServicesResponseBody
+from ._list_model_operator_services_response import ListModelOperatorServicesResponse
 from ._list_model_services_request import ListModelServicesRequest
 from ._list_model_services_response_body import ListModelServicesResponseBody
 from ._list_model_services_response import ListModelServicesResponse
@@ -548,6 +619,9 @@ from ._list_namespaces_response import ListNamespacesResponse
 from ._list_remote_adbdata_sources_request import ListRemoteADBDataSourcesRequest
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBody
 from ._list_remote_adbdata_sources_response import ListRemoteADBDataSourcesResponse
+from ._list_saas_service_request import ListSaasServiceRequest
+from ._list_saas_service_response_body import ListSaasServiceResponseBody
+from ._list_saas_service_response import ListSaasServiceResponse
 from ._list_schemas_request import ListSchemasRequest
 from ._list_schemas_response_body import ListSchemasResponseBody
 from ._list_schemas_response import ListSchemasResponse
@@ -566,6 +640,9 @@ from ._list_streaming_data_sources_response import ListStreamingDataSourcesRespo
 from ._list_streaming_jobs_request import ListStreamingJobsRequest
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBody
 from ._list_streaming_jobs_response import ListStreamingJobsResponse
+from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequest
+from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBody
+from ._list_supabase_project_tags_response import ListSupabaseProjectTagsResponse
 from ._list_supabase_projects_request import ListSupabaseProjectsRequest
 from ._list_supabase_projects_response_body import ListSupabaseProjectsResponseBody
 from ._list_supabase_projects_response import ListSupabaseProjectsResponse
@@ -578,6 +655,9 @@ from ._list_tables_response import ListTablesResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_response_body import ListWorkspacesResponseBody
+from ._list_workspaces_response import ListWorkspacesResponse
 from ._modify_aiservice_security_ips_request import ModifyAIServiceSecurityIpsRequest
 from ._modify_aiservice_security_ips_response_body import ModifyAIServiceSecurityIpsResponseBody
 from ._modify_aiservice_security_ips_response import ModifyAIServiceSecurityIpsResponse
@@ -658,6 +738,12 @@ from ._modify_streaming_job_response import ModifyStreamingJobResponse
 from ._modify_supabase_auto_scale_policy_request import ModifySupabaseAutoScalePolicyRequest
 from ._modify_supabase_auto_scale_policy_response_body import ModifySupabaseAutoScalePolicyResponseBody
 from ._modify_supabase_auto_scale_policy_response import ModifySupabaseAutoScalePolicyResponse
+from ._modify_supabase_project_description_request import ModifySupabaseProjectDescriptionRequest
+from ._modify_supabase_project_description_response_body import ModifySupabaseProjectDescriptionResponseBody
+from ._modify_supabase_project_description_response import ModifySupabaseProjectDescriptionResponse
+from ._modify_supabase_project_resource_request import ModifySupabaseProjectResourceRequest
+from ._modify_supabase_project_resource_response_body import ModifySupabaseProjectResourceResponseBody
+from ._modify_supabase_project_resource_response import ModifySupabaseProjectResourceResponse
 from ._modify_supabase_project_security_ips_request import ModifySupabaseProjectSecurityIpsRequest
 from ._modify_supabase_project_security_ips_response_body import ModifySupabaseProjectSecurityIpsResponseBody
 from ._modify_supabase_project_security_ips_response import ModifySupabaseProjectSecurityIpsResponse
@@ -670,6 +756,9 @@ from ._pause_data_redistribute_response import PauseDataRedistributeResponse
 from ._pause_instance_request import PauseInstanceRequest
 from ._pause_instance_response_body import PauseInstanceResponseBody
 from ._pause_instance_response import PauseInstanceResponse
+from ._pause_saas_service_request import PauseSaasServiceRequest
+from ._pause_saas_service_response_body import PauseSaasServiceResponseBody
+from ._pause_saas_service_response import PauseSaasServiceResponse
 from ._pause_supabase_project_request import PauseSupabaseProjectRequest
 from ._pause_supabase_project_response_body import PauseSupabaseProjectResponseBody
 from ._pause_supabase_project_response import PauseSupabaseProjectResponse
@@ -699,6 +788,9 @@ from ._rerank_response import RerankResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
+from ._reset_branch_request import ResetBranchRequest
+from ._reset_branch_response_body import ResetBranchResponseBody
+from ._reset_branch_response import ResetBranchResponse
 from ._reset_imvmonitor_data_request import ResetIMVMonitorDataRequest
 from ._reset_imvmonitor_data_response_body import ResetIMVMonitorDataResponseBody
 from ._reset_imvmonitor_data_response import ResetIMVMonitorDataResponse
@@ -708,15 +800,30 @@ from ._reset_supabase_project_password_response import ResetSupabaseProjectPassw
 from ._restart_dbinstance_request import RestartDBInstanceRequest
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
 from ._restart_dbinstance_response import RestartDBInstanceResponse
+from ._restart_supabase_project_request import RestartSupabaseProjectRequest
+from ._restart_supabase_project_response_body import RestartSupabaseProjectResponseBody
+from ._restart_supabase_project_response import RestartSupabaseProjectResponse
+from ._restore_branch_request import RestoreBranchRequest
+from ._restore_branch_response_body import RestoreBranchResponseBody
+from ._restore_branch_response import RestoreBranchResponse
+from ._restore_snapshot_request import RestoreSnapshotRequest
+from ._restore_snapshot_response_body import RestoreSnapshotResponseBody
+from ._restore_snapshot_response import RestoreSnapshotResponse
 from ._resume_data_redistribute_request import ResumeDataRedistributeRequest
 from ._resume_data_redistribute_response_body import ResumeDataRedistributeResponseBody
 from ._resume_data_redistribute_response import ResumeDataRedistributeResponse
 from ._resume_instance_request import ResumeInstanceRequest
 from ._resume_instance_response_body import ResumeInstanceResponseBody
 from ._resume_instance_response import ResumeInstanceResponse
+from ._resume_saas_service_request import ResumeSaasServiceRequest
+from ._resume_saas_service_response_body import ResumeSaasServiceResponseBody
+from ._resume_saas_service_response import ResumeSaasServiceResponse
 from ._resume_supabase_project_request import ResumeSupabaseProjectRequest
 from ._resume_supabase_project_response_body import ResumeSupabaseProjectResponseBody
 from ._resume_supabase_project_response import ResumeSupabaseProjectResponse
+from ._set_as_default_branch_request import SetAsDefaultBranchRequest
+from ._set_as_default_branch_response_body import SetAsDefaultBranchResponseBody
+from ._set_as_default_branch_response import SetAsDefaultBranchResponse
 from ._set_dbinstance_plan_status_request import SetDBInstancePlanStatusRequest
 from ._set_dbinstance_plan_status_response_body import SetDBInstancePlanStatusResponseBody
 from ._set_dbinstance_plan_status_response import SetDBInstancePlanStatusResponse
@@ -730,6 +837,9 @@ from ._switch_dbinstance_net_type_response import SwitchDBInstanceNetTypeRespons
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
+from ._tag_supabase_project_request import TagSupabaseProjectRequest
+from ._tag_supabase_project_response_body import TagSupabaseProjectResponseBody
+from ._tag_supabase_project_response import TagSupabaseProjectResponse
 from ._text_embedding_request import TextEmbeddingRequest
 from ._text_embedding_shrink_request import TextEmbeddingShrinkRequest
 from ._text_embedding_response_body import TextEmbeddingResponseBody
@@ -744,6 +854,12 @@ from ._unload_sample_data_response import UnloadSampleDataResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._untag_supabase_project_request import UntagSupabaseProjectRequest
+from ._untag_supabase_project_response_body import UntagSupabaseProjectResponseBody
+from ._untag_supabase_project_response import UntagSupabaseProjectResponse
+from ._update_branch_request import UpdateBranchRequest
+from ._update_branch_response_body import UpdateBranchResponseBody
+from ._update_branch_response import UpdateBranchResponse
 from ._update_collection_data_metadata_request import UpdateCollectionDataMetadataRequest
 from ._update_collection_data_metadata_shrink_request import UpdateCollectionDataMetadataShrinkRequest
 from ._update_collection_data_metadata_response_body import UpdateCollectionDataMetadataResponseBody
@@ -824,6 +940,7 @@ from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBas
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage
 from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult
+from ._create_branch_request import CreateBranchRequestTag
 from ._create_collection_request import CreateCollectionRequestSparseVectorIndexConfig
 from ._create_collection_request import CreateCollectionRequestVectorIndexConfig
 from ._create_dbinstance_request import CreateDBInstanceRequestAINodeSpecInfos
@@ -839,6 +956,8 @@ from ._describe_available_resources_response_body import DescribeAvailableResour
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResourcesSupportedEngines
 from ._describe_available_resources_response_body import DescribeAvailableResourcesResponseBodyResources
+from ._describe_branch_response_body import DescribeBranchResponseBodyBranchTags
+from ._describe_branch_response_body import DescribeBranchResponseBodyBranch
 from ._describe_create_index_job_response_body import DescribeCreateIndexJobResponseBodyJob
 from ._describe_dbcluster_node_response_body import DescribeDBClusterNodeResponseBodyNodes
 from ._describe_dbcluster_performance_response_body import DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues
@@ -902,6 +1021,9 @@ from ._describe_health_status_response_body import DescribeHealthStatusResponseB
 from ._describe_health_status_response_body import DescribeHealthStatusResponseBodyStatus
 from ._describe_imvinfos_response_body import DescribeIMVInfosResponseBodyImvInfos
 from ._describe_log_backups_response_body import DescribeLogBackupsResponseBodyItems
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeysSeriesValues
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeysSeries
+from ._describe_model_operator_usage_response_body import DescribeModelOperatorUsageResponseBodyKeys
 from ._describe_modify_parameter_log_response_body import DescribeModifyParameterLogResponseBodyChangelogs
 from ._describe_parameters_response_body import DescribeParametersResponseBodyParameters
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch
@@ -929,6 +1051,7 @@ from ._execute_statement_response_body import ExecuteStatementResponseBodyDataCo
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecordsRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyDataRecords
 from ._execute_statement_response_body import ExecuteStatementResponseBodyData
+from ._get_api_key_response_body import GetApiKeyResponseBodyAuthServices
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyJob
 from ._get_graph_ragjob_response_body import GetGraphRAGJobResponseBodyUsage
 from ._get_statement_result_response_body import GetStatementResultResponseBodyDataColumnMetadata
@@ -940,12 +1063,21 @@ from ._get_upload_document_job_response_body import GetUploadDocumentJobResponse
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyJob
 from ._get_upload_document_job_response_body import GetUploadDocumentJobResponseBodyUsage
 from ._get_upsert_collection_data_job_response_body import GetUpsertCollectionDataJobResponseBodyJob
+from ._get_workspace_response_body import GetWorkspaceResponseBodyApikeysAuthServices
+from ._get_workspace_response_body import GetWorkspaceResponseBodyApikeys
+from ._get_workspace_response_body import GetWorkspaceResponseBodyServices
 from ._handle_active_sqlrecord_response_body import HandleActiveSQLRecordResponseBodyResults
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos
 from ._list_ainode_pools_response_body import ListAINodePoolsResponseBodyAINodePoolInfos
 from ._list_aiservices_response_body import ListAIServicesResponseBodyServices
+from ._list_api_keys_response_body import ListApiKeysResponseBodyItemsAuthServices
+from ._list_api_keys_response_body import ListApiKeysResponseBodyItems
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItemsBackupJob
 from ._list_backup_jobs_response_body import ListBackupJobsResponseBodyItems
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranchTagsTag
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranchTags
+from ._list_branches_response_body import ListBranchesResponseBodyBranchesBranch
+from ._list_branches_response_body import ListBranchesResponseBodyBranches
 from ._list_chunks_response_body import ListChunksResponseBodyChunksChunksVector
 from ._list_chunks_response_body import ListChunksResponseBodyChunksChunks
 from ._list_chunks_response_body import ListChunksResponseBodyChunks
@@ -962,10 +1094,13 @@ from ._list_indices_response_body import ListIndicesResponseBodyIndicesIndices
 from ._list_indices_response_body import ListIndicesResponseBodyIndices
 from ._list_instance_databases_response_body import ListInstanceDatabasesResponseBodyDatabases
 from ._list_instance_extensions_response_body import ListInstanceExtensionsResponseBodyItems
+from ._list_model_operator_api_keys_response_body import ListModelOperatorApiKeysResponseBodyApiKeys
+from ._list_model_operator_services_response_body import ListModelOperatorServicesResponseBodyServices
 from ._list_model_services_response_body import ListModelServicesResponseBodyModelServices
 from ._list_namespaces_response_body import ListNamespacesResponseBodyNamespaces
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources
 from ._list_remote_adbdata_sources_response_body import ListRemoteADBDataSourcesResponseBodyDataSourceItems
+from ._list_saas_service_response_body import ListSaasServiceResponseBodyItems
 from ._list_schemas_response_body import ListSchemasResponseBodySchemas
 from ._list_secrets_response_body import ListSecretsResponseBodySecretsSecrets
 from ._list_secrets_response_body import ListSecretsResponseBodySecrets
@@ -973,12 +1108,18 @@ from ._list_slow_sqlrecords_response_body import ListSlowSQLRecordsResponseBodyI
 from ._list_streaming_data_services_response_body import ListStreamingDataServicesResponseBodyServiceItems
 from ._list_streaming_data_sources_response_body import ListStreamingDataSourcesResponseBodyDataSourceItems
 from ._list_streaming_jobs_response_body import ListStreamingJobsResponseBodyJobItems
+from ._list_supabase_project_tags_request import ListSupabaseProjectTagsRequestTag
+from ._list_supabase_project_tags_response_body import ListSupabaseProjectTagsResponseBodyTagResources
 from ._list_supabase_projects_response_body import ListSupabaseProjectsResponseBodyItems
 from ._list_support_models_response_body import ListSupportModelsResponseBodyModelNames
 from ._list_tables_response_body import ListTablesResponseBodyTables
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeysAuthServices
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsApikeys
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItemsServices
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyItems
 from ._modify_dbresource_group_request import ModifyDBResourceGroupRequestResourceGroupItems
 from ._modify_remote_adbdata_source_response_body import ModifyRemoteADBDataSourceResponseBodyDataSourceItem
 from ._query_collection_data_request import QueryCollectionDataRequestRelationalTableFilter
@@ -1023,9 +1164,11 @@ from ._query_knowledge_bases_content_response_body import QueryKnowledgeBasesCon
 from ._rerank_response_body import RerankResponseBodyResultsResults
 from ._rerank_response_body import RerankResponseBodyResults
 from ._tag_resources_request import TagResourcesRequestTag
+from ._tag_supabase_project_request import TagSupabaseProjectRequestTag
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResultsEmbedding
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResultsResults
 from ._text_embedding_response_body import TextEmbeddingResponseBodyResults
+from ._update_branch_request import UpdateBranchRequestTag
 from ._upsert_chunks_request import UpsertChunksRequestTextChunks
 from ._upsert_collection_data_request import UpsertCollectionDataRequestRowsSparseVector
 from ._upsert_collection_data_request import UpsertCollectionDataRequestRows
@@ -1082,9 +1225,16 @@ __all__ = [
     CreateAccountRequest,
     CreateAccountResponseBody,
     CreateAccountResponse,
+    CreateApiKeyRequest,
+    CreateApiKeyShrinkRequest,
+    CreateApiKeyResponseBody,
+    CreateApiKeyResponse,
     CreateBackupRequest,
     CreateBackupResponseBody,
     CreateBackupResponse,
+    CreateBranchRequest,
+    CreateBranchResponseBody,
+    CreateBranchResponse,
     CreateCollectionRequest,
     CreateCollectionShrinkRequest,
     CreateCollectionResponseBody,
@@ -1124,6 +1274,9 @@ __all__ = [
     CreateJDBCDataSourceRequest,
     CreateJDBCDataSourceResponseBody,
     CreateJDBCDataSourceResponse,
+    CreateModelOperatorApiKeyRequest,
+    CreateModelOperatorApiKeyResponseBody,
+    CreateModelOperatorApiKeyResponse,
     CreateModelServiceRequest,
     CreateModelServiceShrinkRequest,
     CreateModelServiceResponseBody,
@@ -1134,6 +1287,9 @@ __all__ = [
     CreateRemoteADBDataSourceRequest,
     CreateRemoteADBDataSourceResponseBody,
     CreateRemoteADBDataSourceResponse,
+    CreateSaasServiceRequest,
+    CreateSaasServiceResponseBody,
+    CreateSaasServiceResponse,
     CreateSampleDataRequest,
     CreateSampleDataResponseBody,
     CreateSampleDataResponse,
@@ -1143,6 +1299,9 @@ __all__ = [
     CreateServiceLinkedRoleRequest,
     CreateServiceLinkedRoleResponseBody,
     CreateServiceLinkedRoleResponse,
+    CreateSnapshotRequest,
+    CreateSnapshotResponseBody,
+    CreateSnapshotResponse,
     CreateStreamingDataServiceRequest,
     CreateStreamingDataServiceResponseBody,
     CreateStreamingDataServiceResponse,
@@ -1159,6 +1318,9 @@ __all__ = [
     CreateVectorIndexRequest,
     CreateVectorIndexResponseBody,
     CreateVectorIndexResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceResponseBody,
+    CreateWorkspaceResponse,
     DeleteAINodeRequest,
     DeleteAINodeResponseBody,
     DeleteAINodeResponse,
@@ -1168,9 +1330,15 @@ __all__ = [
     DeleteAccountRequest,
     DeleteAccountResponseBody,
     DeleteAccountResponse,
+    DeleteApiKeyRequest,
+    DeleteApiKeyResponseBody,
+    DeleteApiKeyResponse,
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
+    DeleteBranchRequest,
+    DeleteBranchResponseBody,
+    DeleteBranchResponse,
     DeleteChunksRequest,
     DeleteChunksShrinkRequest,
     DeleteChunksResponseBody,
@@ -1229,9 +1397,15 @@ __all__ = [
     DeleteRemoteADBDataSourceRequest,
     DeleteRemoteADBDataSourceResponseBody,
     DeleteRemoteADBDataSourceResponse,
+    DeleteSaasServiceRequest,
+    DeleteSaasServiceResponseBody,
+    DeleteSaasServiceResponse,
     DeleteSecretRequest,
     DeleteSecretResponseBody,
     DeleteSecretResponse,
+    DeleteSnapshotRequest,
+    DeleteSnapshotResponseBody,
+    DeleteSnapshotResponse,
     DeleteStreamingDataServiceRequest,
     DeleteStreamingDataServiceResponseBody,
     DeleteStreamingDataServiceResponse,
@@ -1247,6 +1421,9 @@ __all__ = [
     DeleteVectorIndexRequest,
     DeleteVectorIndexResponseBody,
     DeleteVectorIndexResponse,
+    DeleteWorkspaceRequest,
+    DeleteWorkspaceResponseBody,
+    DeleteWorkspaceResponse,
     DeployPrivateRAGServiceRequest,
     DeployPrivateRAGServiceResponseBody,
     DeployPrivateRAGServiceResponse,
@@ -1268,6 +1445,9 @@ __all__ = [
     DescribeBackupPolicyRequest,
     DescribeBackupPolicyResponseBody,
     DescribeBackupPolicyResponse,
+    DescribeBranchRequest,
+    DescribeBranchResponseBody,
+    DescribeBranchResponse,
     DescribeCollectionRequest,
     DescribeCollectionResponseBody,
     DescribeCollectionResponse,
@@ -1395,6 +1575,13 @@ __all__ = [
     DescribeLogBackupsRequest,
     DescribeLogBackupsResponseBody,
     DescribeLogBackupsResponse,
+    DescribeModelOperatorApiKeyRequest,
+    DescribeModelOperatorApiKeyResponseBody,
+    DescribeModelOperatorApiKeyResponse,
+    DescribeModelOperatorUsageRequest,
+    DescribeModelOperatorUsageShrinkRequest,
+    DescribeModelOperatorUsageResponseBody,
+    DescribeModelOperatorUsageResponse,
     DescribeModelServiceRequest,
     DescribeModelServiceResponseBody,
     DescribeModelServiceResponse,
@@ -1493,12 +1680,24 @@ __all__ = [
     GetAccountRequest,
     GetAccountResponseBody,
     GetAccountResponse,
+    GetApiKeyRequest,
+    GetApiKeyResponseBody,
+    GetApiKeyResponse,
+    GetBranchSchemaRequest,
+    GetBranchSchemaResponseBody,
+    GetBranchSchemaResponse,
     GetGraphRAGJobRequest,
     GetGraphRAGJobResponseBody,
     GetGraphRAGJobResponse,
+    GetSaasServiceRequest,
+    GetSaasServiceResponseBody,
+    GetSaasServiceResponse,
     GetSecretValueRequest,
     GetSecretValueResponseBody,
     GetSecretValueResponse,
+    GetServiceAccessInfoRequest,
+    GetServiceAccessInfoResponseBody,
+    GetServiceAccessInfoResponse,
     GetStatementResultRequest,
     GetStatementResultResponseBody,
     GetStatementResultResponse,
@@ -1517,6 +1716,9 @@ __all__ = [
     GetUpsertCollectionDataJobRequest,
     GetUpsertCollectionDataJobResponseBody,
     GetUpsertCollectionDataJobResponse,
+    GetWorkspaceRequest,
+    GetWorkspaceResponseBody,
+    GetWorkspaceResponse,
     GrantCollectionRequest,
     GrantCollectionResponseBody,
     GrantCollectionResponse,
@@ -1532,9 +1734,15 @@ __all__ = [
     ListAIServicesRequest,
     ListAIServicesResponseBody,
     ListAIServicesResponse,
+    ListApiKeysRequest,
+    ListApiKeysResponseBody,
+    ListApiKeysResponse,
     ListBackupJobsRequest,
     ListBackupJobsResponseBody,
     ListBackupJobsResponse,
+    ListBranchesRequest,
+    ListBranchesResponseBody,
+    ListBranchesResponse,
     ListChunksRequest,
     ListChunksResponseBody,
     ListChunksResponse,
@@ -1568,6 +1776,12 @@ __all__ = [
     ListInstanceExtensionsRequest,
     ListInstanceExtensionsResponseBody,
     ListInstanceExtensionsResponse,
+    ListModelOperatorApiKeysRequest,
+    ListModelOperatorApiKeysResponseBody,
+    ListModelOperatorApiKeysResponse,
+    ListModelOperatorServicesRequest,
+    ListModelOperatorServicesResponseBody,
+    ListModelOperatorServicesResponse,
     ListModelServicesRequest,
     ListModelServicesResponseBody,
     ListModelServicesResponse,
@@ -1577,6 +1791,9 @@ __all__ = [
     ListRemoteADBDataSourcesRequest,
     ListRemoteADBDataSourcesResponseBody,
     ListRemoteADBDataSourcesResponse,
+    ListSaasServiceRequest,
+    ListSaasServiceResponseBody,
+    ListSaasServiceResponse,
     ListSchemasRequest,
     ListSchemasResponseBody,
     ListSchemasResponse,
@@ -1595,6 +1812,9 @@ __all__ = [
     ListStreamingJobsRequest,
     ListStreamingJobsResponseBody,
     ListStreamingJobsResponse,
+    ListSupabaseProjectTagsRequest,
+    ListSupabaseProjectTagsResponseBody,
+    ListSupabaseProjectTagsResponse,
     ListSupabaseProjectsRequest,
     ListSupabaseProjectsResponseBody,
     ListSupabaseProjectsResponse,
@@ -1607,6 +1827,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesResponseBody,
+    ListWorkspacesResponse,
     ModifyAIServiceSecurityIpsRequest,
     ModifyAIServiceSecurityIpsResponseBody,
     ModifyAIServiceSecurityIpsResponse,
@@ -1687,6 +1910,12 @@ __all__ = [
     ModifySupabaseAutoScalePolicyRequest,
     ModifySupabaseAutoScalePolicyResponseBody,
     ModifySupabaseAutoScalePolicyResponse,
+    ModifySupabaseProjectDescriptionRequest,
+    ModifySupabaseProjectDescriptionResponseBody,
+    ModifySupabaseProjectDescriptionResponse,
+    ModifySupabaseProjectResourceRequest,
+    ModifySupabaseProjectResourceResponseBody,
+    ModifySupabaseProjectResourceResponse,
     ModifySupabaseProjectSecurityIpsRequest,
     ModifySupabaseProjectSecurityIpsResponseBody,
     ModifySupabaseProjectSecurityIpsResponse,
@@ -1699,6 +1928,9 @@ __all__ = [
     PauseInstanceRequest,
     PauseInstanceResponseBody,
     PauseInstanceResponse,
+    PauseSaasServiceRequest,
+    PauseSaasServiceResponseBody,
+    PauseSaasServiceResponse,
     PauseSupabaseProjectRequest,
     PauseSupabaseProjectResponseBody,
     PauseSupabaseProjectResponse,
@@ -1728,6 +1960,9 @@ __all__ = [
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
+    ResetBranchRequest,
+    ResetBranchResponseBody,
+    ResetBranchResponse,
     ResetIMVMonitorDataRequest,
     ResetIMVMonitorDataResponseBody,
     ResetIMVMonitorDataResponse,
@@ -1737,15 +1972,30 @@ __all__ = [
     RestartDBInstanceRequest,
     RestartDBInstanceResponseBody,
     RestartDBInstanceResponse,
+    RestartSupabaseProjectRequest,
+    RestartSupabaseProjectResponseBody,
+    RestartSupabaseProjectResponse,
+    RestoreBranchRequest,
+    RestoreBranchResponseBody,
+    RestoreBranchResponse,
+    RestoreSnapshotRequest,
+    RestoreSnapshotResponseBody,
+    RestoreSnapshotResponse,
     ResumeDataRedistributeRequest,
     ResumeDataRedistributeResponseBody,
     ResumeDataRedistributeResponse,
     ResumeInstanceRequest,
     ResumeInstanceResponseBody,
     ResumeInstanceResponse,
+    ResumeSaasServiceRequest,
+    ResumeSaasServiceResponseBody,
+    ResumeSaasServiceResponse,
     ResumeSupabaseProjectRequest,
     ResumeSupabaseProjectResponseBody,
     ResumeSupabaseProjectResponse,
+    SetAsDefaultBranchRequest,
+    SetAsDefaultBranchResponseBody,
+    SetAsDefaultBranchResponse,
     SetDBInstancePlanStatusRequest,
     SetDBInstancePlanStatusResponseBody,
     SetDBInstancePlanStatusResponse,
@@ -1759,6 +2009,9 @@ __all__ = [
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
+    TagSupabaseProjectRequest,
+    TagSupabaseProjectResponseBody,
+    TagSupabaseProjectResponse,
     TextEmbeddingRequest,
     TextEmbeddingShrinkRequest,
     TextEmbeddingResponseBody,
@@ -1773,6 +2026,12 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UntagSupabaseProjectRequest,
+    UntagSupabaseProjectResponseBody,
+    UntagSupabaseProjectResponse,
+    UpdateBranchRequest,
+    UpdateBranchResponseBody,
+    UpdateBranchResponse,
     UpdateCollectionDataMetadataRequest,
     UpdateCollectionDataMetadataShrinkRequest,
     UpdateCollectionDataMetadataResponseBody,
@@ -1853,6 +2112,7 @@ __all__ = [
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultMatches,
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResultUsage,
     ChatWithKnowledgeBaseStreamResponseBodyMultiCollectionRecallResult,
+    CreateBranchRequestTag,
     CreateCollectionRequestSparseVectorIndexConfig,
     CreateCollectionRequestVectorIndexConfig,
     CreateDBInstanceRequestAINodeSpecInfos,
@@ -1868,6 +2128,8 @@ __all__ = [
     DescribeAvailableResourcesResponseBodyResourcesSupportedEnginesSupportedInstanceClasses,
     DescribeAvailableResourcesResponseBodyResourcesSupportedEngines,
     DescribeAvailableResourcesResponseBodyResources,
+    DescribeBranchResponseBodyBranchTags,
+    DescribeBranchResponseBodyBranch,
     DescribeCreateIndexJobResponseBodyJob,
     DescribeDBClusterNodeResponseBodyNodes,
     DescribeDBClusterPerformanceResponseBodyPerformanceKeysSeriesValues,
@@ -1931,6 +2193,9 @@ __all__ = [
     DescribeHealthStatusResponseBodyStatus,
     DescribeIMVInfosResponseBodyImvInfos,
     DescribeLogBackupsResponseBodyItems,
+    DescribeModelOperatorUsageResponseBodyKeysSeriesValues,
+    DescribeModelOperatorUsageResponseBodyKeysSeries,
+    DescribeModelOperatorUsageResponseBodyKeys,
     DescribeModifyParameterLogResponseBodyChangelogs,
     DescribeParametersResponseBodyParameters,
     DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch,
@@ -1958,6 +2223,7 @@ __all__ = [
     ExecuteStatementResponseBodyDataRecordsRecords,
     ExecuteStatementResponseBodyDataRecords,
     ExecuteStatementResponseBodyData,
+    GetApiKeyResponseBodyAuthServices,
     GetGraphRAGJobResponseBodyJob,
     GetGraphRAGJobResponseBodyUsage,
     GetStatementResultResponseBodyDataColumnMetadata,
@@ -1969,12 +2235,21 @@ __all__ = [
     GetUploadDocumentJobResponseBodyJob,
     GetUploadDocumentJobResponseBodyUsage,
     GetUpsertCollectionDataJobResponseBodyJob,
+    GetWorkspaceResponseBodyApikeysAuthServices,
+    GetWorkspaceResponseBodyApikeys,
+    GetWorkspaceResponseBodyServices,
     HandleActiveSQLRecordResponseBodyResults,
     ListAINodePoolsResponseBodyAINodePoolInfosAINodeInfos,
     ListAINodePoolsResponseBodyAINodePoolInfos,
     ListAIServicesResponseBodyServices,
+    ListApiKeysResponseBodyItemsAuthServices,
+    ListApiKeysResponseBodyItems,
     ListBackupJobsResponseBodyItemsBackupJob,
     ListBackupJobsResponseBodyItems,
+    ListBranchesResponseBodyBranchesBranchTagsTag,
+    ListBranchesResponseBodyBranchesBranchTags,
+    ListBranchesResponseBodyBranchesBranch,
+    ListBranchesResponseBodyBranches,
     ListChunksResponseBodyChunksChunksVector,
     ListChunksResponseBodyChunksChunks,
     ListChunksResponseBodyChunks,
@@ -1991,10 +2266,13 @@ __all__ = [
     ListIndicesResponseBodyIndices,
     ListInstanceDatabasesResponseBodyDatabases,
     ListInstanceExtensionsResponseBodyItems,
+    ListModelOperatorApiKeysResponseBodyApiKeys,
+    ListModelOperatorServicesResponseBodyServices,
     ListModelServicesResponseBodyModelServices,
     ListNamespacesResponseBodyNamespaces,
     ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources,
     ListRemoteADBDataSourcesResponseBodyDataSourceItems,
+    ListSaasServiceResponseBodyItems,
     ListSchemasResponseBodySchemas,
     ListSecretsResponseBodySecretsSecrets,
     ListSecretsResponseBodySecrets,
@@ -2002,12 +2280,18 @@ __all__ = [
     ListStreamingDataServicesResponseBodyServiceItems,
     ListStreamingDataSourcesResponseBodyDataSourceItems,
     ListStreamingJobsResponseBodyJobItems,
+    ListSupabaseProjectTagsRequestTag,
+    ListSupabaseProjectTagsResponseBodyTagResources,
     ListSupabaseProjectsResponseBodyItems,
     ListSupportModelsResponseBodyModelNames,
     ListTablesResponseBodyTables,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    ListWorkspacesResponseBodyItemsApikeysAuthServices,
+    ListWorkspacesResponseBodyItemsApikeys,
+    ListWorkspacesResponseBodyItemsServices,
+    ListWorkspacesResponseBodyItems,
     ModifyDBResourceGroupRequestResourceGroupItems,
     ModifyRemoteADBDataSourceResponseBodyDataSourceItem,
     QueryCollectionDataRequestRelationalTableFilter,
@@ -2052,9 +2336,11 @@ __all__ = [
     RerankResponseBodyResultsResults,
     RerankResponseBodyResults,
     TagResourcesRequestTag,
+    TagSupabaseProjectRequestTag,
     TextEmbeddingResponseBodyResultsResultsEmbedding,
     TextEmbeddingResponseBodyResultsResults,
     TextEmbeddingResponseBodyResults,
+    UpdateBranchRequestTag,
     UpsertChunksRequestTextChunks,
     UpsertCollectionDataRequestRowsSparseVector,
     UpsertCollectionDataRequestRows

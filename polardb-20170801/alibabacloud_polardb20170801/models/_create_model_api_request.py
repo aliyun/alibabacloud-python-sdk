@@ -18,20 +18,50 @@ class CreateModelApiRequest(DaraModel):
         region_id: str = None,
         route_rules: str = None,
     ):
+        # The model to which requests are forcibly routed.
         self.force_model = force_model
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The model API category. Valid values:
+        # 
+        # - **text**
+        # 
+        # - **embedding**
+        # 
+        # - **rerank**
+        # 
         # This parameter is required.
         self.model_category = model_category
+        # The model API name.
+        # 
         # This parameter is required.
         self.name = name
+        # The path prefix.
+        # 
         # This parameter is required.
         self.path_prefix = path_prefix
+        # The model API protocol. Valid values:
+        # 
+        # - **OpenAI**
+        # 
+        # - **Anthropic**
+        # 
+        # - **Model Studio**
+        # 
+        # - **vLLM**
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # Specifies whether to record input for billing.
         self.record_input = record_input
+        # Specifies whether to record output for billing.
         self.record_output = record_output
+        # The region ID.
         self.region_id = region_id
+        # A list of routing rules, provided as a JSON array string.
+        # 
         # This parameter is required.
         self.route_rules = route_rules
 

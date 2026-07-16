@@ -13,8 +13,11 @@ class MLDataParamPredictionsValue(DaraModel):
         update_time: int = None,
         results: List[Dict[str, str]] = None,
     ):
+        # The annotator.
         self.annotated_by = annotated_by
+        # The update time.
         self.update_time = update_time
+        # The results.
         self.results = results
 
     def validate(self):

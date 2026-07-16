@@ -13,15 +13,15 @@ class RefreshWebofficeTokenResponseBody(DaraModel):
         refresh_token_expired_time: str = None,
         request_id: str = None,
     ):
-        # Weboffice access token.
+        # The Weboffice access token.
         self.access_token = access_token
-        # Expiration time of the access token. The expiration period is 30 minutes.
+        # The expiration time of the access token. The access token expires in 30 minutes. Format: ISO 8601 UTC timestamp with millisecond precision.
         self.access_token_expired_time = access_token_expired_time
-        # Weboffice refresh token.
+        # The Weboffice refresh token.
         self.refresh_token = refresh_token
-        # Expiration time of the refresh token. The expiration period is 1 day.
+        # The expiration time of the refresh token. The refresh token expires in 1 day. Format: ISO 8601 UTC timestamp with millisecond precision.
         self.refresh_token_expired_time = refresh_token_expired_time
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

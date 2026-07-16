@@ -14,11 +14,17 @@ class OrderPageQuery(DaraModel):
         page_size: int = None,
         purchase_order_id: str = None,
     ):
+        # Collection of primary order IDs
         self.order_id_list = order_id_list
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Quantity per page
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Purchase order ID
         self.purchase_order_id = purchase_order_id
 
     def validate(self):

@@ -28,29 +28,53 @@ class CreateAiCallTaskShrinkRequest(DaraModel):
         task_start_time: int = None,
         virtual_number: str = None,
     ):
+        # The ID of a published agent.
         self.agent_id = agent_id
         self.application_code = application_code
+        # The list of callable days.
+        # 
         # This parameter is required.
         self.call_day_shrink = call_day_shrink
+        # The retry interval, in minutes. The maximum value is 720.
         self.call_retry_interval = call_retry_interval
+        # The failure reasons that trigger a retry.
         self.call_retry_reason_shrink = call_retry_reason_shrink
+        # The number of retries. The maximum value is 3.
         self.call_retry_times = call_retry_times
+        # The list of callable time periods.
+        # 
         # This parameter is required.
         self.call_time_shrink = call_time_shrink
         self.line_encoding = line_encoding
         self.line_phone_num = line_phone_num
+        # Specifies whether to enable retry. Valid values:
+        # 
+        # - `true`: Enables retry.
+        # 
+        # - `false` (default): Disables retry.
         self.miss_call_retry = miss_call_retry
         self.owner_id = owner_id
         self.phone_type = phone_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.source = source
+        # The startup mode. Valid values:
+        # 
+        # - `IMMEDIATE`: Starts the task immediately.
+        # 
+        # - `SCHEDULE`: Starts the task at a scheduled time.
+        # 
         # This parameter is required.
         self.start_type = start_type
+        # The task concurrency. The maximum value is 500.
         self.task_cps = task_cps
+        # The name of the task. It must be unique within an account.
+        # 
         # This parameter is required.
         self.task_name = task_name
+        # The scheduled start time for the task, specified as a timestamp in milliseconds. This parameter is required and applies only when `StartType` is set to `SCHEDULE`.
         self.task_start_time = task_start_time
+        # The service instance used for outbound calls.
         self.virtual_number = virtual_number
 
     def validate(self):

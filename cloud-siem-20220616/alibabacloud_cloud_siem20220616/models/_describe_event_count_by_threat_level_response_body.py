@@ -16,18 +16,19 @@ class DescribeEventCountByThreatLevelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # HTTP status code.
         self.code = code
-        # The data returned.
+        # Response data.
         self.data = data
-        # The returned message.
+        # Response message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,18 +89,21 @@ class DescribeEventCountByThreatLevelResponseBodyData(DaraModel):
         serious_level_event_num: int = None,
         undeal_event_num: int = None,
     ):
+        # Daily event statistics.
         self.event_daily_num = event_daily_num
-        # The total number of events.
+        # Total number of events.
         self.event_num = event_num
-        # The number of high-risk events.
+        # Number of high-risk events.
         self.high_level_event_num = high_level_event_num
+        # Number of informational events.
         self.info_level_event_num = info_level_event_num
-        # The number of low-risk events.
+        # Number of low-risk events.
         self.low_level_event_num = low_level_event_num
-        # The number of medium-risk events.
+        # Number of medium-risk events.
         self.medium_level_event_num = medium_level_event_num
+        # Number of critical events.
         self.serious_level_event_num = serious_level_event_num
-        # The number of unhandled events.
+        # Number of unhandled events.
         self.undeal_event_num = undeal_event_num
 
     def validate(self):
@@ -179,8 +183,11 @@ class DescribeEventCountByThreatLevelResponseBodyDataEventDailyNum(DaraModel):
         event_num: int = None,
         undeal_event_num: int = None,
     ):
+        # Date.
         self.date = date
+        # Total number of security events.
         self.event_num = event_num
+        # Number of unhandled security events.
         self.undeal_event_num = undeal_event_num
 
     def validate(self):

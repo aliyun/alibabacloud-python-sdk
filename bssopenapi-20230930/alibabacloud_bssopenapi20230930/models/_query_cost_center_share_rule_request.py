@@ -16,10 +16,15 @@ class QueryCostCenterShareRuleRequest(DaraModel):
         next_token: str = None,
         owner_account_id: int = None,
     ):
+        # The list of enterprises and accounts. If empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # Reserved field.
         self.max_results = max_results
+        # The primary marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # Reserved field.
         self.next_token = next_token
+        # The owner account ID of the cost center.
         self.owner_account_id = owner_account_id
 
     def validate(self):
@@ -80,7 +85,10 @@ class QueryCostCenterShareRuleRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accounts to access. If empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # The enterprise entity ID.
+        # 
         # This parameter is required.
         self.ec_id = ec_id
 

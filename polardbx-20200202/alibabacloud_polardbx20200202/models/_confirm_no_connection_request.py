@@ -11,9 +11,14 @@ class ConfirmNoConnectionRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The unique ID of the short-link task that identifies the task to be rolled back.
+        # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
 

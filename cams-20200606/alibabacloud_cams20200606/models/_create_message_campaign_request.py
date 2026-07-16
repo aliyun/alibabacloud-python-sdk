@@ -17,17 +17,29 @@ class CreateMessageCampaignRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Meta ad account ID.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
+        # The budget, in cents.
+        # 
         # This parameter is required.
         self.budget = budget
+        # The budget type.
+        # 
         # This parameter is required.
         self.budget_type = budget_type
+        # The space ID of an Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The budget name.
+        # 
         # This parameter is required.
         self.name = name
         self.owner_id = owner_id
+        # The Messenger Page ID.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

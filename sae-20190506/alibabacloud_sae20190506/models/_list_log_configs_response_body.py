@@ -18,29 +18,39 @@ class ListLogConfigsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the logging configurations of an application were obtained. Valid values:
-        # 
-        # *   **true**: indicates that the configurations were obtained.
-        # *   **false**: indicates that the configurations could not be obtained.
-        self.code = code
-        # The logging configurations.
-        self.data = data
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
+        self.code = code
+        # The information about the file logs.
+        self.data = data
+        # The error code.
+        # 
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** list in this topic.
         self.error_code = error_code
-        # The ID of the trace. It can be used to query the details of a request.
-        self.message = message
         # The returned message.
         # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
+        self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the list of application logs was obtained. Valid values:
+        # 
+        # - **true**: The list was obtained.
+        # 
+        # - **false**: The list failed to be obtained.
         self.success = success
-        # The logging configurations.
+        # The trace ID of the request. You can use the trace ID to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -109,16 +119,13 @@ class ListLogConfigsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The total number of returned entries.
+        # The page number.
         self.current_page = current_page
-        # The details of the logging configuration.
+        # The log configurations.
         self.log_configs = log_configs
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The number of entries returned on each page.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -179,21 +186,21 @@ class ListLogConfigsResponseBodyDataLogConfigs(DaraModel):
         sls_project: str = None,
         store_type: str = None,
     ):
-        # The path of logs.
+        # The name of the Simple Log Service configuration.
         self.config_name = config_name
-        # The storage type of logs.
+        # The time when the log configuration was created.
         self.create_time = create_time
-        # The path of the log file (log source).
+        # The path of the log file. This is the log source.
         self.log_dir = log_dir
-        # The ID of the region.
+        # The log type. Only **file_log** is supported.
         self.log_type = log_type
-        # The number of the returned page.
+        # The region ID.
         self.region_id = region_id
-        # The time when the configuration was created.
+        # The name of the Logstore in Simple Log Service.
         self.sls_log_store = sls_log_store
-        # The type of the log. Set this value to **file_log**.
+        # The ID of the Simple Log Service project.
         self.sls_project = sls_project
-        # The ID of the Log Service project.
+        # The storage class for Simple Log Service.
         self.store_type = store_type
 
     def validate(self):

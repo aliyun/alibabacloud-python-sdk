@@ -13,7 +13,7 @@ class GetSasContainerWebDefenseRuleCriteriaResponseBody(DaraModel):
         criteria_list: List[main_models.GetSasContainerWebDefenseRuleCriteriaResponseBodyCriteriaList] = None,
         request_id: str = None,
     ):
-        # The search conditions.
+        # The list of query criteria.
         self.criteria_list = criteria_list
         # The request ID.
         self.request_id = request_id
@@ -59,16 +59,14 @@ class GetSasContainerWebDefenseRuleCriteriaResponseBodyCriteriaList(DaraModel):
         type: str = None,
         values: str = None,
     ):
-        # The name of the search condition.
+        # The name of the query criterion.
         self.name = name
-        # The type of the search condition. Valid values:
-        # 
-        # *   **input**: You must manually enter the search condition.
-        # *   **select**: You must select a search condition from the **Values** drop-down list.
+        # The type of the query criterion. Valid values:
+        # - **input**: Input type. You must manually enter the query content when using this query criterion.
+        # - **select**: Selection type. You must select a value from the options list (the **Values** field) when using this query criterion.
         self.type = type
-        # The values of the search condition. This parameter is returned only if the value of **Type** is **select**.
-        # 
-        # >  If the value of **Type** is **input**, the value of this parameter is empty.
+        # The available options when **Type** (the type of the query criterion) is set to **select** (selection type).
+        # > When **Type** (the type of the query criterion) is set to **input** (input type), this parameter returns an empty value.
         self.values = values
 
     def validate(self):

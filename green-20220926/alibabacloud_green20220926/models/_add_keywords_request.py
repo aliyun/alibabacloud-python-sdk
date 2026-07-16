@@ -11,6 +11,7 @@ class AddKeywordsRequest(DaraModel):
         keywords_object: str = None,
         lib_id: str = None,
         region_id: str = None,
+        tenant_code: str = None,
     ):
         # The keywords to be added.
         self.keywords = keywords
@@ -20,6 +21,7 @@ class AddKeywordsRequest(DaraModel):
         self.lib_id = lib_id
         # Region ID
         self.region_id = region_id
+        self.tenant_code = tenant_code
 
     def validate(self):
         pass
@@ -41,6 +43,9 @@ class AddKeywordsRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.tenant_code is not None:
+            result['TenantCode'] = self.tenant_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +61,9 @@ class AddKeywordsRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('TenantCode') is not None:
+            self.tenant_code = m.get('TenantCode')
 
         return self
 

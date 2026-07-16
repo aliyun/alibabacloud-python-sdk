@@ -10,7 +10,7 @@ class ListClusterInspectReportsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The maximum number of returned results. Maximum value: 50.
+        # The maximum number of results to return. Maximum value: 50.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

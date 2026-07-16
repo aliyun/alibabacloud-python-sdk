@@ -13,18 +13,18 @@ class DescribeDomainListRequest(DaraModel):
         page_size: int = None,
         source_ip: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return in a paged query. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The type of the domain name that you want to query. Valid values:
+        # The type of the domain name to query. Valid values:
         # 
-        # *   **root**: root domain name
-        # *   **sub**: subdomain name
+        # - **root**: root domain name
+        # - **sub**: subdomain name.
         self.domain_type = domain_type
-        # The keyword that is used to query domain names. Fuzzy match is supported.
+        # The search keyword for the domain name to query. Fuzzy match is supported.
         self.fuzzy_domain = fuzzy_domain
-        # The number of entries to return on each page. Default value: **10**.
+        # The number of domain names to display on each page in a paged query. Default value: **10**, which indicates that 10 domain names are displayed on each page.
         self.page_size = page_size
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

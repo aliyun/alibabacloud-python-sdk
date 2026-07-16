@@ -15,24 +15,25 @@ class DescribeMetricListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > A value of 200 indicates that the call was successful.
         self.code = code
-        # The monitoring data.
+        # The list of monitoring data.
         self.datapoints = datapoints
         # The error message.
         self.message = message
-        # The paging token.
+        # The pagination cursor.
         self.next_token = next_token
-        # The interval at which the monitoring data is queried. Unit: seconds. Valid values: 60, 300, and 900.
+        # The statistical period. Unit: seconds. Valid values: 60, 300, and 900.
         self.period = period
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

@@ -14,8 +14,11 @@ class RunSearchGenerationResponseBody(DaraModel):
         payload: main_models.RunSearchGenerationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header.
         self.header = header
+        # Response body.
         self.payload = payload
+        # Unique request identifier.
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class RunSearchGenerationResponseBodyPayload(DaraModel):
         output: main_models.RunSearchGenerationResponseBodyPayloadOutput = None,
         usage: main_models.RunSearchGenerationResponseBodyPayloadUsage = None,
     ):
+        # Outputs.
         self.output = output
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -102,8 +107,11 @@ class RunSearchGenerationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # Total token count
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -144,7 +152,9 @@ class RunSearchGenerationResponseBodyPayloadOutput(DaraModel):
         agent_context: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContext = None,
         messages: List[main_models.RunSearchGenerationResponseBodyPayloadOutputMessages] = None,
     ):
+        # Context data.
         self.agent_context = agent_context
+        # List of messages in research mode.
         self.messages = messages
 
     def validate(self):
@@ -196,13 +206,33 @@ class RunSearchGenerationResponseBodyPayloadOutputMessages(DaraModel):
         search_query: str = None,
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult] = None,
     ):
+        # Indicates whether clarification is needed.
         self.clarifications = clarifications
+        # Generated text.
         self.content = content
+        # Indicates whether the current node has finished.
         self.generate_finished = generate_finished
+        # Node ID.
         self.id = id
+        # Node code:
+        # 
+        # - generateStartStatement
+        # 
+        # - generateSearchQueries
+        # 
+        # - multiSearch
+        # 
+        # - readSearchResult
+        # 
+        # - reflection
+        # 
+        # - generate
         self.node_code = node_code
+        # List of search queries.
         self.search_queries = search_queries
+        # Current node search query.
         self.search_query = search_query
+        # Search result.
         self.search_result = search_result
 
     def validate(self):
@@ -284,10 +314,15 @@ class RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResult(DaraModel
         texts: List[main_models.RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts] = None,
         videos: List[main_models.RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos] = None,
     ):
+        # List of audio results.
         self.audios = audios
+        # List of image searches.
         self.images = images
+        # Multimodal search query.
         self.multimodal_search_query = multimodal_search_query
+        # List of text searches.
         self.texts = texts
+        # List of video results.
         self.videos = videos
 
     def validate(self):
@@ -374,6 +409,7 @@ class RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultVideos(Dar
         self,
         media_id: str = None,
     ):
+        # ID.
         self.media_id = media_id
 
     def validate(self):
@@ -401,6 +437,7 @@ class RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultTexts(Dara
         self,
         doc_uuid: str = None,
     ):
+        # ID.
         self.doc_uuid = doc_uuid
 
     def validate(self):
@@ -428,6 +465,7 @@ class RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultImages(Dar
         self,
         media_id: str = None,
     ):
+        # ID.
         self.media_id = media_id
 
     def validate(self):
@@ -455,6 +493,7 @@ class RunSearchGenerationResponseBodyPayloadOutputMessagesSearchResultAudios(Dar
         self,
         media_id: str = None,
     ):
+        # ID.
         self.media_id = media_id
 
     def validate(self):
@@ -482,6 +521,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContext(DaraModel):
         self,
         biz_context: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext = None,
     ):
+        # Business context.
         self.biz_context = biz_context
 
     def validate(self):
@@ -522,17 +562,29 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext(DaraMod
         supplement_enable: bool = None,
         token_calculate: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate = None,
     ):
+        # Follow-up question.
         self.ask_user = ask_user
+        # List of recommended keywords for follow-up questions.
         self.ask_user_keywords = ask_user_keywords
+        # Current step in the task.
         self.current_step = current_step
+        # Generated content.
         self.generated_content = generated_content
+        # Model ID.
         self.model_id = model_id
+        # Next step: think, search, or generate.
         self.next_step = next_step
+        # Generation - list of recommendations.
         self.recommend_search_query_list = recommend_search_query_list
+        # Reasoning - list of query understanding keywords.
         self.search_keywords = search_keywords
+        # List of text search queries.
         self.search_query_list = search_query_list
+        # Reasoning - data type to supplement: searchQuery.
         self.supplement_data_type = supplement_data_type
+        # Reasoning - whether supplementation is needed.
         self.supplement_enable = supplement_enable
+        # Runtime performance statistics.
         self.token_calculate = token_calculate
 
     def validate(self):
@@ -635,10 +687,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCal
         time: float = None,
         total_tokens: int = None,
     ):
+        # First token time.
         self.first_token_time = first_token_time
+        # Average number of tokens output per second.
         self.output_avg_time = output_avg_time
+        # Search time cost.
         self.search_time = search_time
+        # Total time cost.
         self.time = time
+        # Total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -698,14 +755,23 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         timeline_result: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult = None,
         video_search_result: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult = None,
     ):
+        # Voice search result.
         self.audio_search_result = audio_search_result
+        # Clustering result.
         self.cluster_topic_result = cluster_topic_result
+        # Result of answering with original sentences.
         self.excerpt_result = excerpt_result
+        # Image search result.
         self.image_search_result = image_search_result
+        # News extraction result.
         self.news_element_result = news_element_result
+        # Summarized answer.
         self.text_generate_result = text_generate_result
+        # Text document search result.
         self.text_search_result = text_search_result
+        # Result of summarizing by time.
         self.timeline_result = timeline_result
+        # Video search result.
         self.video_search_result = video_search_result
 
     def validate(self):
@@ -807,6 +873,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self,
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResult] = None,
     ):
+        # List of search results.
         self.search_result = search_result
 
     def validate(self):
@@ -846,10 +913,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         traceability_id: str = None,
     ):
+        # Article.
         self.article = article
+        # List of matching segments.
         self.clip_infos = clip_infos
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
+        # Unique traceability identifier.
         self.traceability_id = traceability_id
 
     def validate(self):
@@ -916,10 +988,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start time of the segment.
         self.from_ = from_
+        # Confidence score. For reference only.
         self.score = score
+        # Corresponding text, such as ASR transcription.
         self.text = text
+        # End time.
         self.to = to
+        # Type. Example: asr.
         self.type = type
 
     def validate(self):
@@ -981,16 +1058,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Search source name.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # Tags.
         self.tags = tags
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -1084,12 +1172,19 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         text_generate: str = None,
         text_generate_multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaList] = None,
     ):
+        # Indicates whether the current agent has finished generating.
         self.generate_finished = generate_finished
+        # Traceability information.
         self.generate_traceability = generate_traceability
+        # List of multimodal search results.
         self.multimodal_search_result_list = multimodal_search_result_list
+        # Deep thinking content.
         self.reason_text_generate = reason_text_generate
+        # List of reference articles.
         self.reference_list = reference_list
+        # Text generation result.
         self.text_generate = text_generate
+        # List of accompanying images.
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
 
     def validate(self):
@@ -1184,8 +1279,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultTextGenerateMultimodalMediaListMultimodalMediaList] = None,
         start: int = None,
     ):
+        # End position.
         self.end = end
+        # List of multimodal data.
         self.multimodal_media_list = multimodal_media_list
+        # Start position.
         self.start = start
 
     def validate(self):
@@ -1236,9 +1334,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # Article.
         self.article = article
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
+        # Multimodal file type. Valid values: video, image.
         self.media_type = media_type
 
     def validate(self):
@@ -1291,11 +1393,17 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Search source name.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -1372,25 +1480,45 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         traceability_id: int = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # List of chunks.
         self.chunks = chunks
+        # Body.
         self.content = content
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Publication time. Format: yyyy-MM-dd HH:mm:ss.
         self.pub_time = pub_time
+        # Confidence score. For reference only.
         self.score = score
+        # Search source unique identifier. Same as searchSource.datasetName.
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Search source type. Same as searchSource.code.
         self.search_source_type = search_source_type
+        # Selection status.
         self.select = select
+        # Source.
         self.source = source
+        # Summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # Title.
         self.title = title
+        # Traceability ID.
         self.traceability_id = traceability_id
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -1533,7 +1661,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultListSearchResult] = None,
         timeline_date_str: str = None,
     ):
+        # List of search results.
         self.search_result = search_result
+        # Date string.
         self.timeline_date_str = timeline_date_str
 
     def validate(self):
@@ -1579,10 +1709,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # Article.
         self.article = article
+        # List of matching segments.
         self.clip_infos = clip_infos
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
+        # Multimodal file type. Valid values: video, image.
         self.media_type = media_type
 
     def validate(self):
@@ -1649,10 +1784,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start time.
         self.from_ = from_
+        # Confidence score. For reference only.
         self.score = score
+        # Corresponding text, such as ASR transcription.
         self.text = text
+        # End time.
         self.to = to
+        # Type. Example: asr.
         self.type = type
 
     def validate(self):
@@ -1709,11 +1849,17 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Search source name.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -1772,7 +1918,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         coordinates: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinates] = None,
         duplicate: float = None,
     ):
+        # Traceability location.
         self.coordinates = coordinates
+        # Relevance score.
         self.duplicate = duplicate
 
     def validate(self):
@@ -1815,7 +1963,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         generate_coordinate: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesGenerateCoordinate = None,
         news_coordinate: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceabilityCoordinatesNewsCoordinate = None,
     ):
+        # Coordinates of the generated document block.
         self.generate_coordinate = generate_coordinate
+        # Coordinates of the reference article.
         self.news_coordinate = news_coordinate
 
     def validate(self):
@@ -1857,9 +2007,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         y: int = None,
         z: int = None,
     ):
+        # Media asset type.
         self.media_type = media_type
+        # Number, starting from 1.
         self.x = x
+        # Start position.
         self.y = y
+        # End position.
         self.z = z
 
     def validate(self):
@@ -1907,8 +2061,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         y: int = None,
         z: int = None,
     ):
+        # Number, starting from 1.
         self.x = x
+        # Start position.
         self.y = y
+        # End position.
         self.z = z
 
     def validate(self):
@@ -1951,9 +2108,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         size: int = None,
         total: int = None,
     ):
+        # Current page.
         self.current = current
+        # The structure of the search result.
         self.search_result = search_result
+        # Current page size.
         self.size = size
+        # Total count.
         self.total = total
 
     def validate(self):
@@ -2022,21 +2183,37 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         traceability_id: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # Body.
         self.content = content
+        # Unique document business identifier.
         self.doc_id = doc_id
+        # System internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Publication time.
         self.pub_time = pub_time
+        # Data source unique identifier.
         self.search_source = search_source
+        # Data source description.
         self.search_source_name = search_source_name
+        # Data source type.
         self.search_source_type = search_source_type
+        # Summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # Title.
         self.title = title
+        # Unique traceability identifier.
         self.traceability_id = traceability_id
+        # URL.
         self.url = url
 
     def validate(self):
@@ -2161,13 +2338,25 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         text_generate: str = None,
         text_generate_multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaList] = None,
     ):
+        # Indicates whether the current agent has finished generating.
         self.generate_finished = generate_finished
+        # Detailedness of the response:
+        # 
+        # - concise: Concise (default)
+        # 
+        # - enhance: Enhanced
         self.generate_level = generate_level
+        # Traceability information.
         self.generate_traceability = generate_traceability
+        # List of multimodal search results.
         self.multimodal_search_result_list = multimodal_search_result_list
+        # Deep thinking content.
         self.reason_text_generate = reason_text_generate
+        # List of reference articles.
         self.reference_list = reference_list
+        # Text generation result.
         self.text_generate = text_generate
+        # List of accompanying images.
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
 
     def validate(self):
@@ -2268,8 +2457,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaList] = None,
         start: int = None,
     ):
+        # End position.
         self.end = end
+        # List of multimodal data.
         self.multimodal_media_list = multimodal_media_list
+        # Start position.
         self.start = start
 
     def validate(self):
@@ -2320,9 +2512,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # Article.
         self.article = article
+        # File URL.
         self.file_url = file_url
+        # Media asset ID.
         self.media_id = media_id
+        # Multimodal file type. Valid values: video, image.
         self.media_type = media_type
 
     def validate(self):
@@ -2375,11 +2571,17 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Search source name.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -2456,25 +2658,45 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         traceability_id: int = None,
         url: str = None,
     ):
+        # Category unique identifier
         self.category_uuid = category_uuid
+        # List of chunks.
         self.chunks = chunks
+        # Body.
         self.content = content
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Publication time. Format: yyyy-MM-dd HH:mm:ss.
         self.pub_time = pub_time
+        # Confidence score. For reference only.
         self.score = score
+        # Search source unique identifier. Same as searchSource.datasetName.
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Search source type. Same as searchSource.code.
         self.search_source_type = search_source_type
+        # Indicates whether it is a reference.
         self.select = select
+        # Source.
         self.source = source
+        # Summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # Title.
         self.title = title
+        # Traceability ID.
         self.traceability_id = traceability_id
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -2622,12 +2844,19 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         timeline_date_str: str = None,
         total: int = None,
     ):
+        # Current page.
         self.current = current
+        # Search query.
         self.search_query = search_query
+        # List of search results.
         self.search_result = search_result
+        # Search type.
         self.search_type = search_type
+        # Items per page.
         self.size = size
+        # Timeline date.
         self.timeline_date_str = timeline_date_str
+        # Total items.
         self.total = total
 
     def validate(self):
@@ -2703,10 +2932,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # Article.
         self.article = article
+        # List of matching segments.
         self.clip_infos = clip_infos
+        # File URL.
         self.file_url = file_url
+        # Media asset ID.
         self.media_id = media_id
+        # Multimodal file type. Valid values: video, image.
         self.media_type = media_type
 
     def validate(self):
@@ -2773,10 +3007,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start time.
         self.from_ = from_
+        # Confidence score. For reference only.
         self.score = score
+        # Corresponding text, such as ASR transcription.
         self.text = text
+        # End time.
         self.to = to
+        # Type. Example: asr.
         self.type = type
 
     def validate(self):
@@ -2833,11 +3072,17 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Search source name.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -2896,7 +3141,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         coordinates: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinates] = None,
         duplicate: float = None,
     ):
+        # List of traceability locations.
         self.coordinates = coordinates
+        # Overall traceability relevance.
         self.duplicate = duplicate
 
     def validate(self):
@@ -2939,7 +3186,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         generate_coordinate: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesGenerateCoordinate = None,
         news_coordinate: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceabilityCoordinatesNewsCoordinate = None,
     ):
+        # Coordinates of the generated document block.
         self.generate_coordinate = generate_coordinate
+        # Coordinates of the reference document block.
         self.news_coordinate = news_coordinate
 
     def validate(self):
@@ -2981,9 +3230,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         y: int = None,
         z: int = None,
     ):
+        # Media asset type.
         self.media_type = media_type
+        # Number, starting from 1.
         self.x = x
+        # Start position.
         self.y = y
+        # End position.
         self.z = z
 
     def validate(self):
@@ -3031,8 +3284,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         y: int = None,
         z: int = None,
     ):
+        # Number, starting from 1.
         self.x = x
+        # Start position.
         self.y = y
+        # End position.
         self.z = z
 
     def validate(self):
@@ -3074,8 +3330,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         news_element_article_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleList] = None,
         text_generate: str = None,
     ):
+        # Indicates whether the current agent has finished generating.
         self.generate_finished = generate_finished
+        # List of news extractions.
         self.news_element_article_list = news_element_article_list
+        # Generated text content.
         self.text_generate = text_generate
 
     def validate(self):
@@ -3125,8 +3384,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         news_element_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListNewsElementList] = None,
         text_generate: str = None,
     ):
+        # Article.
         self.article = article
+        # List of news items.
         self.news_element_list = news_element_list
+        # Generated text content.
         self.text_generate = text_generate
 
     def validate(self):
@@ -3180,9 +3442,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         people: str = None,
         time: str = None,
     ):
+        # Event.
         self.event = event
+        # Location.
         self.location = location
+        # People.
         self.people = people
+        # Time.
         self.time = time
 
     def validate(self):
@@ -3232,8 +3498,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         process_list: List[str] = None,
         result_list: List[str] = None,
     ):
+        # List of causes.
         self.cause_list = cause_list
+        # List of processes.
         self.process_list = process_list
+        # List of results.
         self.result_list = result_list
 
     def validate(self):
@@ -3289,22 +3558,39 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # Body.
         self.content = content
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Publication time. Format: yyyy-MM-dd HH:mm:ss.
         self.pub_time = pub_time
+        # Confidence score. For reference only.
         self.score = score
+        # Search source unique identifier. Same as searchSource.datasetName.
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Search source type. Same as searchSource.code.
         self.search_source_type = search_source_type
+        # Indicates whether it is a reference.
         self.select = select
+        # Summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -3428,6 +3714,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self,
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResult] = None,
     ):
+        # List of search results.
         self.search_result = search_result
 
     def validate(self):
@@ -3466,9 +3753,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         traceability_id: str = None,
     ):
+        # Article.
         self.article = article
+        # File URL.
         self.file_url = file_url
+        # Media data unique identifier.
         self.media_id = media_id
+        # Unique traceability identifier.
         self.traceability_id = traceability_id
 
     def validate(self):
@@ -3526,16 +3817,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Search source name.
         self.search_source_name = search_source_name
+        # Article summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -3627,10 +3929,19 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult] = None,
         text_generate: str = None,
     ):
+        # Indicates whether the current agent has finished generating.
         self.generate_finished = generate_finished
+        # Detailedness of the response:
+        # 
+        # - concise: Concise (default)
+        # 
+        # - enhance: Enhanced
         self.generate_level = generate_level
+        # Deep thinking content.
         self.reason_text_generate = reason_text_generate
+        # List of search results.
         self.search_result = search_result
+        # Generated text.
         self.text_generate = text_generate
 
     def validate(self):
@@ -3711,27 +4022,49 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         traceability_id: int = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # List of chunks.
         self.chunks = chunks
+        # Body.
         self.content = content
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Content answered with original sentences.
         self.excerpt = excerpt
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # List of multimodal information items.
         self.multimodal_medias = multimodal_medias
+        # Publication time. Format: yyyy-MM-dd HH:mm:ss.
         self.pub_time = pub_time
+        # Confidence score. For reference only.
         self.score = score
+        # Search source unique identifier. Same as searchSource.datasetName.
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Search source type. Same as searchSource.code.
         self.search_source_type = search_source_type
+        # Indicates whether it is a reference.
         self.select = select
+        # Summary.
         self.summary = summary
+        # Tag name.
         self.tags = tags
+        # List of accompanying images.
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
+        # Title.
         self.title = title
+        # Traceability ID.
         self.traceability_id = traceability_id
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -3905,9 +4238,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaListMultimodalMediaList] = None,
         start: int = None,
     ):
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # End position.
         self.end = end
+        # List of multimodal data.
         self.multimodal_media_list = multimodal_media_list
+        # Start position.
         self.start = start
 
     def validate(self):
@@ -3964,9 +4301,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # Article.
         self.article = article
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
+        # Multimodal file type. Valid values: video, image.
         self.media_type = media_type
 
     def validate(self):
@@ -4018,10 +4359,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Search source name.
         self.search_source_name = search_source_name
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -4075,8 +4421,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
+        # Multimodal file type. Valid values:
+        # 
+        # - video: video
+        # 
+        # - image: image
         self.media_type = media_type
 
     def validate(self):
@@ -4118,8 +4471,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         generate_finished: bool = None,
         text_generate: str = None,
     ):
+        # List of clusters.
         self.cluster_topics = cluster_topics
+        # Indicates whether the current agent has finished generating.
         self.generate_finished = generate_finished
+        # Text result.
         self.text_generate = text_generate
 
     def validate(self):
@@ -4171,10 +4527,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         topic: str = None,
         video_search_result: main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResult = None,
     ):
+        # Audio result
         self.audio_search_result = audio_search_result
+        # Image search result.
         self.image_search_result = image_search_result
+        # Document search results
         self.text_search_result = text_search_result
+        # Topic.
         self.topic = topic
+        # Video search results
         self.video_search_result = video_search_result
 
     def validate(self):
@@ -4240,9 +4601,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         size: int = None,
         total: int = None,
     ):
+        # The current page number.
         self.current = current
+        # Search results
         self.search_result = search_result
+        # Number of records per page
         self.size = size
+        # Total records
         self.total = total
 
     def validate(self):
@@ -4299,9 +4664,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         file_url: str = None,
         media_id: str = None,
     ):
+        # Article
         self.article = article
+        # A list of matching information.
         self.clip_infos = clip_infos
+        # The URL of the file.
         self.file_url = file_url
+        # Unique identifier for the multimodal data
         self.media_id = media_id
 
     def validate(self):
@@ -4362,10 +4731,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start time
         self.from_ = from_
+        # Reference confidence level
         self.score = score
+        # Corresponding text, such as ASR transcription results.
         self.text = text
+        # End time
         self.to = to
+        # Text type, such as ASR.
         self.type = type
 
     def validate(self):
@@ -4429,18 +4803,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Category
         self.category_uuid = category_uuid
+        # Document: a custom unique ID
         self.doc_id = doc_id
+        # The unique identifier of the internal document.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # The unique identifier of the dataset.
         self.search_source = search_source
+        # The name of the search source.
         self.search_source_name = search_source_name
+        # Dataset type
         self.search_source_type = search_source_type
+        # Summary
         self.summary = summary
+        # Tags
         self.tags = tags
+        # Title
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -4543,9 +4930,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         size: int = None,
         total: int = None,
     ):
+        # Current page number
         self.current = current
+        # Search results list
         self.search_result = search_result
+        # Number of records per page
         self.size = size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -4613,20 +5004,35 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Category unique identifier
         self.category_uuid = category_uuid
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # Unique identifier for internal documents.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # A list of multimodal information.
         self.multimodal_medias = multimodal_medias
+        # Publication time, in the format yyyy-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # The unique identifier of the search source. This is the same as searchSource.datasetName.
         self.search_source = search_source
+        # The name of the search source.
         self.search_source_name = search_source_name
+        # Search source type, same as searchSource.code.
         self.search_source_type = search_source_type
+        # Summary
         self.summary = summary
+        # Tags
         self.tags = tags
+        # Title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):
@@ -4748,8 +5154,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the file.
         self.file_url = file_url
+        # The unique ID of the multimodal data.
         self.media_id = media_id
+        # Multimodal data file type. Valid values:
+        # 
+        # - video: Video.
+        # 
+        # - image: Image.
         self.media_type = media_type
 
     def validate(self):
@@ -4792,9 +5205,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         size: int = None,
         total: int = None,
     ):
+        # Current page number.
         self.current = current
+        # List of search results.
         self.search_result = search_result
+        # Records per page.
         self.size = size
+        # Total records.
         self.total = total
 
     def validate(self):
@@ -4850,8 +5267,11 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         file_url: str = None,
         media_id: str = None,
     ):
+        # Article.
         self.article = article
+        # File URL.
         self.file_url = file_url
+        # Unique multimodal data identifier.
         self.media_id = media_id
 
     def validate(self):
@@ -4905,18 +5325,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # Custom unique document ID.
         self.doc_id = doc_id
+        # Internal unique document identifier.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Dataset unique identifier.
         self.search_source = search_source
+        # Search source name.
         self.search_source_name = search_source_name
+        # Dataset type.
         self.search_source_type = search_source_type
+        # Summary.
         self.summary = summary
+        # Tags.
         self.tags = tags
+        # Title.
         self.title = title
+        # Article URL.
         self.url = url
 
     def validate(self):
@@ -5019,9 +5452,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         size: int = None,
         total: int = None,
     ):
+        # Current page
         self.current = current
+        # Audio search results
         self.search_result = search_result
+        # Size
         self.size = size
+        # Total count
         self.total = total
 
     def validate(self):
@@ -5072,9 +5509,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         file_url: str = None,
         media_id: str = None,
     ):
+        # Corresponding document
         self.article = article
+        # List of matching information
         self.clip_infos = clip_infos
+        # URL
         self.file_url = file_url
+        # The ID.
         self.media_id = media_id
 
     def validate(self):
@@ -5135,10 +5576,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start position
         self.from_ = from_
+        # The threshold.
         self.score = score
+        # Text content
         self.text = text
+        # The end position.
         self.to = to
+        # Type
         self.type = type
 
     def validate(self):
@@ -5202,18 +5648,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Category identity
         self.category_uuid = category_uuid
+        # docId
         self.doc_id = doc_id
+        # docUuid
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # Unique identifier of the dataset
         self.search_source = search_source
+        # Search source
         self.search_source_name = search_source_name
+        # The type of the dataset.
         self.search_source_type = search_source_type
+        # Summary
         self.summary = summary
+        # Tag name
         self.tags = tags
+        # Title
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -5313,6 +5772,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self,
         search_result: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResult] = None,
     ):
+        # Voice search result.
         self.search_result = search_result
 
     def validate(self):
@@ -5352,10 +5812,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         media_id: str = None,
         traceability_id: str = None,
     ):
+        # Associated document.
         self.article = article
+        # List of matching segments.
         self.clip_infos = clip_infos
+        # URL.
         self.file_url = file_url
+        # ID.
         self.media_id = media_id
+        # Unique traceability identifier.
         self.traceability_id = traceability_id
 
     def validate(self):
@@ -5422,10 +5887,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         to: float = None,
         type: str = None,
     ):
+        # Start position.
         self.from_ = from_
+        # Threshold.
         self.score = score
+        # Text content.
         self.text = text
+        # End position.
         self.to = to
+        # Text type.
         self.type = type
 
     def validate(self):
@@ -5487,16 +5957,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         title: str = None,
         url: str = None,
     ):
+        # Unique category identifier.
         self.category_uuid = category_uuid
+        # ID.
         self.doc_id = doc_id
+        # UUID.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # Search source.
         self.search_source_name = search_source_name
+        # Summary.
         self.summary = summary
+        # List of tags.
         self.tags = tags
+        # Title.
         self.title = title
+        # URL.
         self.url = url
 
     def validate(self):
@@ -5592,14 +6073,23 @@ class RunSearchGenerationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
+        # SSE event.
         self.event = event
+        # Event description.
         self.event_info = event_info
+        # Source session ID.
         self.origin_session_id = origin_session_id
+        # Response time, in milliseconds (ms).
         self.response_time = response_time
+        # Conversation ID.
         self.session_id = session_id
+        # Task ID.
         self.task_id = task_id
+        # Full link ID.
         self.trace_id = trace_id
 
     def validate(self):

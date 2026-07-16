@@ -12,14 +12,15 @@ class UpdateEmbeddedStatusRequest(DaraModel):
     ):
         # Whether to enable the embedding feature for the work. Valid values:
         # 
-        # *   true: enables embedding.
-        # *   false: disables embedding.
+        # - true: enables embedding.
+        # 
+        # - false: disables embedding.
         # 
         # This parameter is required.
         self.third_part_auth_flag = third_part_auth_flag
         # The ID of the work.
         # 
-        # *   Batch modification is supported. Separate multiple values with commas (,).
+        # - Batch modification is supported. Separate multiple values with commas (,).
         # 
         # This parameter is required.
         self.works_id = works_id

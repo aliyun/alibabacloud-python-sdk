@@ -13,8 +13,11 @@ class CreateUserWafRulesetResponseBody(DaraModel):
         request_id: str = None,
         rule_ids: List[int] = None,
     ):
+        # The ID of the WAF ruleset.
         self.id = id
+        # The request ID.
         self.request_id = request_id
+        # The list of rule IDs in the WAF ruleset.
         self.rule_ids = rule_ids
 
     def validate(self):

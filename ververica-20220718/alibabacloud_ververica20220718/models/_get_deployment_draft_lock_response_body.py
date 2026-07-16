@@ -15,11 +15,21 @@ class GetDeploymentDraftLockResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the edit lock.
         self.data = data
+        # - An error code is returned if the request fails.
+        # 
+        # - This parameter is empty if the request succeeds.
         self.error_code = error_code
+        # - An error message is returned if the request fails.
+        # 
+        # - This parameter is empty if the request succeeds.
         self.error_message = error_message
+        # The HTTP status code. A value other than 200 indicates that the request failed.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

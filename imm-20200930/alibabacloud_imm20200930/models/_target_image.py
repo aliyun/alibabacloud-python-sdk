@@ -14,11 +14,11 @@ class TargetImage(DaraModel):
         snapshots: List[main_models.TargetImageSnapshots] = None,
         sprites: List[main_models.TargetImageSprites] = None,
     ):
-        # The animated images.
+        # Animations
         self.animations = animations
-        # The frames.
+        # Snapshots
         self.snapshots = snapshots
-        # The sprites.
+        # Sprites
         self.sprites = sprites
 
     def validate(self):
@@ -97,49 +97,33 @@ class TargetImageSprites(DaraModel):
         tile_width: int = None,
         uri: str = None,
     ):
-        # The format of the sprite. Valid values:
-        # 
-        # *   jpg
-        # *   png
+        # Image format
         # 
         # This parameter is required.
         self.format = format
-        # The time interval of frame capturing in seconds.
+        # Time interval between sprites, in seconds
         self.interval = interval
-        # The margin between the small images and the edges of the sprite. Default value: 2.
+        # Margin around the sprite grid, in pixels
         self.margin = margin
         self.mode = mode
-        # The number of small images in the sprite. The default value is 0, which indicates that frames are captured until the end of the video.
+        # Total number of sprites to generate
         self.number = number
-        # The padding between small images. Default value: 2.
+        # Padding between sprite tiles, in pixels
         self.pad = pad
-        # The height of individual small images. The default value is 1. The value can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: (1,4096).
-        # *   A decimal: the ratio relative to the height of the target video resolution. Valid values: (0,1].
+        # Output height after scaling, in pixels
         self.scale_height = scale_height
-        # The resizing mode. Valid values:
-        # 
-        # *   stretch: stretches the image to fill the entire space. This is the default value.
-        # *   crop: resizes and crops the image.
-        # *   fill: resizes the image and keeps the black border.
-        # *   fit: resizes the image and removes the black border.
+        # Scaling method
         self.scale_type = scale_type
-        # The width of individual small images. The default value is 1. The value can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: (1,4096).
-        # *   A decimal: the ratio relative to the width of the target video resolution. Valid values: (0,1].
+        # Output width after scaling, in pixels
         self.scale_width = scale_width
-        # The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+        # StartTime
         self.start_time = start_time
         self.threshold = threshold
-        # The number of small images in each column. Default value: 6.
+        # Height of each sprite tile, in pixels
         self.tile_height = tile_height
-        # The number of small images in each row. Default value: 6.
+        # Width of each sprite tile, in pixels
         self.tile_width = tile_width
-        # The URI of the sprite in Object Storage Service (OSS).
-        # 
-        # The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+        # URI
         # 
         # This parameter is required.
         self.uri = uri
@@ -256,43 +240,27 @@ class TargetImageSnapshots(DaraModel):
         uri: str = None,
         width: float = None,
     ):
-        # The format of the frame. Valid values:
-        # 
-        # *   jpg
-        # *   png
+        # Image format
         # 
         # This parameter is required.
         self.format = format
-        # The height of the frame image. By default, the image has the same height as the source video. The value of the parameter can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: [1,4096].
-        # *   A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+        # Output height, in pixels
         self.height = height
-        # The time interval of frame capturing in seconds.
+        # Time interval between snapshots, in seconds
         self.interval = interval
         self.mode = mode
-        # The number of frames. The default value is 0, which indicates that frames are captured until the end of the video.
+        # The sequence number of the snapshot.
         self.number = number
-        # The resizing mode. Valid values:
-        # 
-        # *   stretch: stretches the image to fill the entire space. This is the default value.
-        # *   crop: resizes and crops the image.
-        # *   fill: resizes the image and keeps the black border.
-        # *   fit: resizes the image and removes the black border.
+        # Scaling method
         self.scale_type = scale_type
-        # The time in seconds at which frame capturing starts. The default value is 0, which indicates that frame capturing starts at the beginning of the video.
+        # The start time of the snapshot.
         self.start_time = start_time
         self.threshold = threshold
-        # The OSS URI of the frame.
-        # 
-        # The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+        # OSS URI where snapshots are stored
         # 
         # This parameter is required.
         self.uri = uri
-        # The width of the frame image. By default, the image has the same width as the source video. The value of the parameter can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: [1,4096].
-        # *   A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+        # The width of the snapshot.
         self.width = width
 
     def validate(self):
@@ -382,43 +350,27 @@ class TargetImageAnimations(DaraModel):
         uri: str = None,
         width: float = None,
     ):
-        # The format of the animated image. Valid values:
-        # 
-        # *   gif
-        # *   webp
+        # Format
         # 
         # This parameter is required.
         self.format = format
-        # The frame rate of the animated image. You can use this parameter together with the Interval parameter to slow down the animation.
+        # Animation frame rate, in frames per second
         self.frame_rate = frame_rate
-        # The height of the animated image. By default, the animated image has the same height as the source video. The value of the parameter can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: [1,4096].
-        # *   A decimal: the ratio relative to the height of the target image resolution. Valid values: (0,1).
+        # Height
         self.height = height
-        # The time interval for extracting frames. Unit: seconds.
+        # Time interval between animation frames, in seconds
         self.interval = interval
-        # The number of extracted frames. The default value is 0, which indicates that frames are extracted until the end of the video.
+        # Total number of animation frames to generate
         self.number = number
-        # The resizing mode. Valid values:
-        # 
-        # *   stretch: stretches the image to fill the entire space. This is the default value.
-        # *   crop: resizes and crops the image.
-        # *   fill: resizes the image and keeps the black border.
-        # *   fit: resizes the image and removes the black border.
+        # Scaling method
         self.scale_type = scale_type
-        # The start time for extracting frames. Unit: seconds. Default value: 0.
+        # StartTime
         self.start_time = start_time
-        # The URI of the animated image.
-        # 
-        # The OSS URI follows the oss://bucket/object format, where bucket is the name of the bucket in the same region as the current project and object is the path of the object with the extension included.
+        # The URI of the animation.
         # 
         # This parameter is required.
         self.uri = uri
-        # The width of the animated image. By default, the animated image has the same width as the source video. The value of the parameter can be an integer or a decimal.
-        # 
-        # *   An integer: the number of pixels. Valid values: [1,4096].
-        # *   A decimal: the ratio relative to the width of the target image resolution. Valid values: (0,1).
+        # Output width, in pixels
         self.width = width
 
     def validate(self):

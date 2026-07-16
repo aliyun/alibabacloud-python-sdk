@@ -10,11 +10,11 @@ class DescribeGtmInstanceSystemCnameRequest(DaraModel):
         instance_id: str = None,
         lang: str = None,
     ):
-        # The ID of the Global Traffic Manager (GTM) instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language used by the user.
+        # The user language.
         self.lang = lang
 
     def validate(self):

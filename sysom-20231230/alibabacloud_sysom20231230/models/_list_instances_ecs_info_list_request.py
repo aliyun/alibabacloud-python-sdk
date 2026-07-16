@@ -13,11 +13,18 @@ class ListInstancesEcsInfoListRequest(DaraModel):
         plugin_id: str = None,
         region: str = None,
     ):
+        # The type of information to retrieve.
+        # 
         # This parameter is required.
         self.info_type = info_type
+        # Specifies the instance ID to filter and return the Agent installation status of the specified instance.
         self.instance_id = instance_id
+        # The management status of the instance.
         self.managed_type = managed_type
+        # Specifies the component ID to filter and return the instance information list for the corresponding component.
         self.plugin_id = plugin_id
+        # The region used to filter instances.
+        # 
         # This parameter is required.
         self.region = region
 

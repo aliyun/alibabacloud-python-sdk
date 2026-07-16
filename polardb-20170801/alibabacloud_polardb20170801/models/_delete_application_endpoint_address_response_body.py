@@ -11,8 +11,11 @@ class DeleteApplicationEndpointAddressResponseBody(DaraModel):
         endpoint_id: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The server-side endpoint ID.
         self.endpoint_id = endpoint_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

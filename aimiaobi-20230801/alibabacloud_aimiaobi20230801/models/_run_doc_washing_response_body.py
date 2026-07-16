@@ -13,8 +13,11 @@ class RunDocWashingResponseBody(DaraModel):
         payload: main_models.RunDocWashingResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Is the response package finished?
         self.end = end
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
         # Id of the request
         self.request_id = request_id
@@ -68,7 +71,9 @@ class RunDocWashingResponseBodyPayload(DaraModel):
         output: main_models.RunDocWashingResponseBodyPayloadOutput = None,
         usage: main_models.RunDocWashingResponseBodyPayloadUsage = None,
     ):
+        # Output
         self.output = output
+        # Token consumption
         self.usage = usage
 
     def validate(self):
@@ -109,8 +114,11 @@ class RunDocWashingResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens
         self.input_tokens = input_tokens
+        # Number of output tokens
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -150,6 +158,7 @@ class RunDocWashingResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Output content
         self.text = text
 
     def validate(self):
@@ -182,11 +191,17 @@ class RunDocWashingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Event type
         self.event = event
+        # Event description
         self.event_info = event_info
+        # Request ID
         self.request_id = request_id
+        # Session ID
         self.session_id = session_id
+        # Task ID
         self.task_id = task_id
+        # Full link ID
         self.trace_id = trace_id
 
     def validate(self):

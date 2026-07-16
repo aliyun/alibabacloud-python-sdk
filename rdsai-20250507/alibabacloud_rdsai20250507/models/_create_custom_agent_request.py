@@ -15,16 +15,16 @@ class CreateCustomAgentRequest(DaraModel):
         system_prompt: str = None,
         tools: List[str] = None,
     ):
-        # The system prompts.
+        # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # The operation that you want to perform. Set the value to **CreateCustomAgent**.
+        # The name of the agent.
         self.name = name
         self.skill_ids = skill_ids
-        # The name of the dedicated agent.
+        # The system prompt.
         # 
         # This parameter is required.
         self.system_prompt = system_prompt
-        # Specifies whether to enable tools.
+        # The tool information.
         self.tools = tools
 
     def validate(self):

@@ -16,13 +16,35 @@ class CreateInstanceRequest(DaraModel):
         nlu_service_type: str = None,
         resource_group_id: str = None,
     ):
+        # The list of calling numbers.
+        # 
+        # > This parameter is optional.
         self.calling_number = calling_number
+        # The description of the instance.
         self.instance_description = instance_description
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The maximum number of concurrent conversations for the instance.
+        # 
         # This parameter is required.
         self.max_concurrent_conversation = max_concurrent_conversation
+        # The service type.
+        # 
+        # > If you do not specify this parameter, the default value is Managed.
+        # 
+        # - DialogStudio: Conversation Engine 3.0.
+        # 
+        # - Authorized: A chatbot for the public cloud. This value is used when a public cloud customer purchases a private Intelligent Speech Interaction service and grants authorization. To grant authorization, go to Scenario Management, click Edit, and then select Custom Service in the Invoke Service section.
+        # 
+        # - Provided: A chatbot for on-premises deployment.
+        # 
+        # - Managed: The legacy outbound call canvas. This is the default public Intelligent Speech Interaction service for the outbound call product.
         self.nlu_service_type = nlu_service_type
+        # The ID of the resource group.
+        # 
+        # > You can call the ListResourceGroups operation to obtain this ID. For more information, see the Resource Management documentation at https\\://api.aliyun.com/document/ResourceManager/2020-03-31/ListResourceGroups
         self.resource_group_id = resource_group_id
 
     def validate(self):

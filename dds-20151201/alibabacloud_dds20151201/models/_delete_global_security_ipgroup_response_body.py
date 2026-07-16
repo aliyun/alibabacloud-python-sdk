@@ -9,7 +9,7 @@ class DeleteGlobalSecurityIPGroupResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique ID of the request. If the request fails, provide this ID for technical support to troubleshoot the failure.
+        # The ID of the request. If you encounter an issue, provide this request ID to our support staff for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

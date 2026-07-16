@@ -13,10 +13,20 @@ class ListDiagnosisRequest(DaraModel):
         service_name: str = None,
         status: str = None,
     ):
+        # Current page number
         self.current = current
+        # Page size
         self.page_size = page_size
+        # Diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
         self.params = params
+        # Diagnostic type
         self.service_name = service_name
+        # Execution status of the diagnostic task.
+        # Valid values:
+        # - **Ready**: Ready
+        # - **Running**: Running
+        # - **Success**: Execution succeeded
+        # - **Fail**: Execution failed
         self.status = status
 
     def validate(self):

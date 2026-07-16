@@ -11,15 +11,19 @@ class DescribeDohAccountStatisticsRequest(DaraModel):
         lang: str = None,
         start_date: str = None,
     ):
-        # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The end date of the query. The format is YYYY-MM-DD.
         # 
-        # The default value is the day when you perform the operation.
+        # The default value is the current date.
         self.end_date = end_date
-        # The language type.
-        self.lang = lang
-        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The language of the request and response. The default value is **zh**. Valid values:
         # 
-        # You can query only the DNS records of the latest 90 days.`The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        self.lang = lang
+        # The start date of the query. The format is YYYY-MM-DD.
+        # 
+        # You can query data from the last 90 days only.
         self.start_date = start_date
 
     def validate(self):

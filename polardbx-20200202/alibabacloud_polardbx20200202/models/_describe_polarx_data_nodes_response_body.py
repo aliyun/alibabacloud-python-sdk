@@ -16,10 +16,15 @@ class DescribePolarxDataNodesResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # The list of node information.
         self.dbinstance_data_nodes = dbinstance_data_nodes
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of nodes.
         self.total_number = total_number
 
     def validate(self):
@@ -81,8 +86,11 @@ class DescribePolarxDataNodesResponseBodyDBInstanceDataNodes(DaraModel):
         dbinstance_id: str = None,
         dbinstance_name: str = None,
     ):
+        # The description of the node instance.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
 
     def validate(self):

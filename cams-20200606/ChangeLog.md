@@ -1,3 +1,16 @@
+2026-07-14 Version: 5.3.0
+- Support API ArchiveChatappTemplate.
+- Support API DeleteWhatsappUserName.
+- Support API GetWhatsappUserName.
+- Support API GetWhatsappUserNameSuggestions.
+- Support API UpdateWhatsappUserName.
+- Update API SendChatappMassMessage: add request parameters SenderList.$.RecipientType.
+
+
+2026-06-22 Version: 5.2.0
+- Support API SubmitVerifyCodeResult.
+
+
 2026-05-07 Version: 5.1.1
 - Generated python 2020-06-06 for cams.
 

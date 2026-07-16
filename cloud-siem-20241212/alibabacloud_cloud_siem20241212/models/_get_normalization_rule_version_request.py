@@ -13,10 +13,23 @@ class GetNormalizationRuleVersionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
         self.role_for = role_for
 
     def validate(self):

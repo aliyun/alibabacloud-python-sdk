@@ -10,11 +10,13 @@ class UpdateCloudGtmAddressRemarkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Unique request identification code.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the modification operation was successful:
-        # - true: Operation was successful
-        # - false: Operation was failed
+        # Indicates whether the operation was successful.
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

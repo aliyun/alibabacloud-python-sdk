@@ -17,11 +17,17 @@ class DescribeMetaStatisticsPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Paginated list data.
         self.items = items
+        # Number of data entries per page.
         self.page_size = page_size
+        # The ID of this request.
         self.request_id = request_id
+        # Total number of pages.
         self.total_count = total_count
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,20 +106,50 @@ class DescribeMetaStatisticsPageListResponseBodyItems(DaraModel):
         total_count: int = None,
         unpassed_count: int = None,
     ):
-        # Api。
+        # API.
         self.api = api
+        # Name corresponding to the API:
+        # - **ID_CARD_2_META**: ID Card Two-Element Verification
+        # - **ID_PERIOD**: ID Card Validity Verification Period
+        # - **MOBILE_ONLINE_LENGTH**: Mobile Online Duration
+        # - **MOBILE_ONLINE_STATUS**: Mobile Online Status
+        # - **MOBILE_3_META_SIMPLE**: Mobile Number Three-Element Verification (Simple)
+        # - **MOBILE_3_META**: Mobile Number Three-Element Verification (Detailed)
+        # - **MOBILE_2_META**: Mobile Number Two-Element Verification
+        # - **BANK_CARD_N_META**: Bank Card Verification (Detailed)
+        # - **MOBILE_DETECT**: Number Detection
+        #  -**VEHICLE_N_META**: Vehicle Element Verification (Enhanced)
+        # - **VEHICLE_PENTA_INFO**: Vehicle Five-Element Information Recognition
+        # - **VEHICLE_LICENSE_INFO**: Vehicle Information Recognition
+        # - **VEHICLE_INSURE_DATE**: Vehicle Insurance Date Query
+        # - **VEHICLE_CHECK**: Vehicle Element Verification
         self.api_name = api_name
+        # Number of hits (billed).
         self.bill_count = bill_count
+        # Hit rate (%).
         self.bill_rate = bill_rate
+        # Number of successful mobile number queries (exclusive to Number Detection).
         self.charge_count = charge_count
+        # Date.
         self.date = date
+        # Carrier name:
+        # - **CMCC**: China Mobile
+        # - **CUCC**: China Unicom
+        # - **CTCC**: China Telecom
         self.isp_name = isp_name
+        # Number of calls with no record information.
         self.no_record_count = no_record_count
+        # Number of passed authentications.
         self.passed_count = passed_count
+        # Authentication pass rate (%).
         self.passed_rate = passed_rate
+        # Number of successful requests.
         self.success_count = success_count
+        # Call success rate (%).
         self.success_rate = success_rate
+        # Total number of entries.
         self.total_count = total_count
+        # Number of failed calls.
         self.unpassed_count = unpassed_count
 
     def validate(self):

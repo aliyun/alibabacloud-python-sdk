@@ -41,37 +41,94 @@ class DescribeDeviceResponseBody(DaraModel):
         username: str = None,
         vendor: str = None,
     ):
+        # Subscribed GB alarm method. Valid values:
+        # 
+        # - 0 (all)
+        # 
+        # - 5 (video alarm)
+        # 
+        # - 7 (other alarms)
+        # 
+        # > * An empty value means no subscription.
+        # >
+        # > * Multiple values are supported, separated by commas (,).
         self.alarm_method = alarm_method
         self.auto_directory = auto_directory
+        # Indicates whether device location subscription is enabled.
         self.auto_pos = auto_pos
+        # Automatically start the stream.
         self.auto_start = auto_start
+        # Channel synchronization time.
         self.channel_sync_time = channel_sync_time
+        # Device creation time.
         self.created_time = created_time
+        # Device description.
         self.description = description
+        # Directory information.
         self.directory = directory
+        # Directory ID.
         self.directory_id = directory_id
+        # Device serial number.
         self.dsn = dsn
+        # Whether the device is enabled.
         self.enabled = enabled
+        # GB device ID.
+        # 
+        # > This applies only to GB protocols.
         self.gb_id = gb_id
+        # Space ID to which the device belongs.
         self.group_id = group_id
+        # Device ID.
         self.id = id
+        # Device IP address.
         self.ip = ip
+        # Device latitude.
         self.latitude = latitude
+        # Device longitude.
         self.longitude = longitude
+        # Device name.
         self.name = name
+        # Other device parameters.
         self.params = params
+        # Parent device ID. For example, the platform ID to which a camera belongs.
         self.parent_id = parent_id
+        # Device password.
         self.password = password
+        # Device port.
         self.port = port
+        # Position subscription interval, in seconds.
         self.pos_interval = pos_interval
+        # Device registration protocol.
         self.protocol = protocol
+        # Device registration time.
         self.registered_time = registered_time
+        # Request ID.
         self.request_id = request_id
+        # Device stream statistics.
         self.stats = stats
+        # Device status. Valid values:
+        # 
+        # - on (online)
+        # 
+        # - off (offline)
+        # 
+        # - failed (locked)
+        # 
+        # - new (unregistered)
         self.status = status
+        # Device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform (platform)
+        # 
+        # - ied (intelligent device)
         self.type = type
+        # Stream URL on the device.
         self.url = url
+        # Device username.
         self.username = username
+        # Device vendor.
         self.vendor = vendor
 
     def validate(self):
@@ -294,10 +351,15 @@ class DescribeDeviceResponseBodyStats(DaraModel):
         online_num: int = None,
         stream_num: int = None,
     ):
+        # Number of channels.
         self.channel_num = channel_num
+        # Number of failed streams.
         self.failed_num = failed_num
+        # Number of offline streams.
         self.offline_num = offline_num
+        # Number of online streams.
         self.online_num = online_num
+        # Number of streams.
         self.stream_num = stream_num
 
     def validate(self):
@@ -354,11 +416,17 @@ class DescribeDeviceResponseBodyDirectory(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
+        # Directory creation time.
         self.created_time = created_time
+        # Directory description.
         self.description = description
+        # Space ID to which the directory belongs.
         self.group_id = group_id
+        # Directory ID.
         self.id = id
+        # Directory name.
         self.name = name
+        # Parent directory ID.
         self.parent_id = parent_id
 
     def validate(self):

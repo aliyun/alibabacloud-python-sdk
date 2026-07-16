@@ -14,6 +14,7 @@ class QueryDevicesByAccountResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.device_ids = device_ids
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

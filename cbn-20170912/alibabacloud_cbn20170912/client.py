@@ -20,7 +20,38 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'cbn.aliyuncs.com',
+            'us-east-1': 'cbn.aliyuncs.com',
+            'na-south-1': 'cbn.aliyuncs.com',
+            'me-central-1': 'cbn.aliyuncs.com',
+            'eu-west-1': 'cbn.aliyuncs.com',
+            'eu-central-1': 'cbn.aliyuncs.com',
+            'cn-zhangjiakou': 'cbn.aliyuncs.com',
+            'cn-wulanchabu': 'cbn.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cbn.aliyuncs.com',
+            'cn-shenzhen': 'cbn.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cbn.aliyuncs.com',
+            'cn-shanghai': 'cbn.aliyuncs.com',
+            'cn-qingdao': 'cbn.aliyuncs.com',
+            'cn-north-2-gov-1': 'cbn.aliyuncs.com',
+            'cn-huhehaote': 'cbn.aliyuncs.com',
+            'cn-hongkong': 'cbn.aliyuncs.com',
+            'cn-heyuan': 'cbn.aliyuncs.com',
+            'cn-hangzhou': 'cbn.aliyuncs.com',
+            'cn-guangzhou': 'cbn.aliyuncs.com',
+            'cn-chengdu': 'cbn.aliyuncs.com',
+            'cn-beijing-finance-1': 'cbn.aliyuncs.com',
+            'cn-beijing': 'cbn.aliyuncs.com',
+            'ap-southeast-6': 'cbn.aliyuncs.com',
+            'ap-southeast-5': 'cbn.aliyuncs.com',
+            'ap-southeast-3': 'cbn.aliyuncs.com',
+            'ap-southeast-2': 'cbn.aliyuncs.com',
+            'ap-southeast-1': 'cbn.aliyuncs.com',
+            'ap-south-1': 'cbn.aliyuncs.com',
+            'ap-northeast-1': 'cbn.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cbn', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

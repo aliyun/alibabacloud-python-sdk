@@ -13,10 +13,15 @@ class DeleteSkillGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Fault encoding
         self.code = code
+        # Data
         self.data = data
+        # Fault description
         self.message = message
+        # Request ID, used to trail the cause of an error
         self.request_id = request_id
+        # Indicates whether the API call succeeded
         self.success = success
 
     def validate(self):

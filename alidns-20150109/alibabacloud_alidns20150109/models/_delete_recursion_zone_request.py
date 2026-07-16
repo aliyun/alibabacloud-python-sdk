@@ -10,7 +10,11 @@ class DeleteRecursionZoneRequest(DaraModel):
         client_token: str = None,
         zone_id: str = None,
     ):
+        # A client token used to ensure the idempotence of the request.
+        # 
+        # Generate a unique value from your client for each request. The ClientToken parameter supports only ASCII characters.
         self.client_token = client_token
+        # The unique ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

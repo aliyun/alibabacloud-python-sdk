@@ -13,11 +13,17 @@ class ListIntentRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The unique key for the business space. If you omit this parameter, the default business space is used. You can find this key on the business management page of your main account.
         self.agent_key = agent_key
+        # The ID of the chatbot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent name.
         self.intent_name = intent_name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of intents per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

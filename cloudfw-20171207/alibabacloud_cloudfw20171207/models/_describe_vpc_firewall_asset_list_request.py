@@ -26,25 +26,46 @@ class DescribeVpcFirewallAssetListRequest(DaraModel):
         start_time: str = None,
         vpc_id: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The IP address of the asset.
         self.asset_ip = asset_ip
+        # The current page number.
         self.current_page = current_page
+        # The traffic direction.
         self.direction = direction
+        # The instance ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
+        # The name of the asset instance.
         self.ecs_instance_name = ecs_instance_name
+        # The end time. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The protocol type.
         self.ipprotocol = ipprotocol
+        # Specifies whether to collect statistics only on traffic that accesses AI services.
         self.is_aitraffic = is_aitraffic
+        # The language type of the request and response messages.
         self.lang = lang
+        # The sort order.
         self.order = order
+        # The number of entries per page.
         self.page_size = page_size
+        # The instance ID of the peer VPC instance.
         self.peer_vpc_id = peer_vpc_id
+        # The port number.
         self.port = port
+        # The risk level.
         self.risk_level = risk_level
+        # The sort method.
         self.sort = sort
+        # The start time. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The instance ID of the VPC-connected instance.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

@@ -18,41 +18,44 @@ class DescribeSystemEventCountRequest(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The end of the time range to query. Unit: milliseconds.
+        # The timestamp of the end time for the event query. Unit: milliseconds.
         self.end_time = end_time
-        # The type of the system event.
+        # The event type.
         # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `EventType`. The value of the EventType parameter indicates the types of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # Call the DescribeSystemEventMetaList operation to obtain the value of the `EventType` response parameter, which provides the event types for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         self.event_type = event_type
-        # The ID of the application group.
+        # The application group ID.
         self.group_id = group_id
-        # The level of the system event. Valid values:
+        # The event level. Valid values:
         # 
-        # *   Critical
-        # *   Warn
-        # *   Info
+        # - Critical: critical.
         # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Level`. The value of the Level parameter indicates the levels of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # - Warn: warning.
+        # 
+        # - Info: information.
+        # 
+        # Call the DescribeSystemEventMetaList operation to obtain the value of the `Level` response parameter, which provides the event levels for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         self.level = level
-        # The name of the system event.
+        # The event name.
         # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Name`. The value of the Name parameter indicates the names of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # Call the DescribeSystemEventMetaList operation to obtain the value of the `Name` response parameter, which provides the event names for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         self.name = name
-        # The name of the cloud service.
+        # The name of the Alibaba Cloud service.
         # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Product`. The value of the Product parameter indicates the names of all cloud services in which the system events of your Alibaba Cloud account occurred. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # Call the DescribeSystemEventMetaList operation to obtain the value of the `Product` response parameter, which provides the Alibaba Cloud service names for all events under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         self.product = product
         self.region_id = region_id
-        # The keywords that are used to search for the system event. Valid values:
+        # The keywords contained in the event content for searching. Valid values:
         # 
-        # *   If you want to search for the system event whose content contains a and b, set the value to `a and b`.
-        # *   If you want to search for the system event whose content contains a or b, set the value to `a or b`.
+        # - To search for event content that contains both a and b, search for `a and b`.
+        # 
+        # - To search for event content that contains either a or b, search for `a or b`.
         self.search_keywords = search_keywords
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The timestamp of the start time for the event query. Unit: milliseconds.
         self.start_time = start_time
-        # The status of the system event.
+        # The event status.
         # 
-        # You can call the DescribeSystemEventMetaList operation to obtain the value of the response parameter `Status`. The value of the Status parameter indicates the status of system events that occurred for all cloud services in your Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # Call the DescribeSystemEventMetaList operation to obtain the value of the `Status` response parameter, which provides the event statuses for all Alibaba Cloud services under the current Alibaba Cloud account. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         self.status = status
 
     def validate(self):

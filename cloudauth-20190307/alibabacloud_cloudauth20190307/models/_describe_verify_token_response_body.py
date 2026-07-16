@@ -13,13 +13,13 @@ class DescribeVerifyTokenResponseBody(DaraModel):
         verify_page_url: str = None,
         verify_token: str = None,
     ):
-        # OSS upload token information.
+        # The OSS upload token information.
         self.oss_upload_token = oss_upload_token
         # The ID of this request.
         self.request_id = request_id
-        # The entry link for the original H5 verification scheme, which has been discontinued and no longer supports new integrations. If you need to integrate an H5 verification scheme, it is recommended to use the [PC or mobile H5 web integration solution](https://help.aliyun.com/document_detail/173779.html) of financial-grade real-person authentication.
+        # The entry URL for the legacy H5 authentication scheme. This scheme has been discontinued and no longer accepts new integrations. If you need H5 authentication, use the [PC or mobile H5 web integration scheme](https://help.aliyun.com/document_detail/173779.html) of financial-grade ID Verification.
         self.verify_page_url = verify_page_url
-        # The token for this verification, used to link various interfaces in the verification request, valid for 30 minutes.
+        # The token for this authentication, which is used to connect the various operations in the authentication request. The token is valid for 30 minutes.
         self.verify_token = verify_token
 
     def validate(self):
@@ -73,15 +73,15 @@ class DescribeVerifyTokenResponseBodyOssUploadToken(DaraModel):
         secret: str = None,
         token: str = None,
     ):
-        # OSS file storage bucket.
+        # The OSS bucket for file storage.
         self.bucket = bucket
-        # Access endpoint.
+        # The endpoint.
         self.end_point = end_point
-        # Expiration time. Expressed in timestamp format, unit: milliseconds.
+        # The expiration time. The value is in UNIX timestamp format. Unit: milliseconds.
         self.expired = expired
         # The key required for file upload.
         self.key = key
-        # File storage path.
+        # The file storage path.
         self.path = path
         # The secret required for file upload.
         self.secret = secret

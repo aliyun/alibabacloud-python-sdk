@@ -23,10 +23,10 @@ class DescribeAccessRulesRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): General-purpose NAS file system.
+        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
         # *   extreme: Extreme NAS file system.
         self.file_system_type = file_system_type
-        # The page number.
+        # The number of the page to return.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number

@@ -16,29 +16,27 @@ class TextEmbeddingRequest(DaraModel):
         owner_id: int = None,
         region_id: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The number of embedding dimensions. The default value is the number of dimensions supported by the embedding algorithm.
+        # The vector dimensions. Default value: the dimensions supported by the embedding model.
         # 
         # > 
-        # 
-        # *   The text-embedding-v3 supports 1024, 768, and 512 dimensions. Default value: 1024.
+        # > - text-embedding-v3 supports 1024, 768, and 512 dimensions. Default value: 1024.
         self.dimension = dimension
-        # A list of text content to be embedded. The list length must not exceed 100.
+        # The list of text content to vectorize. The list can contain up to 100 entries.
         self.input = input
-        # The text embedding model. Valid values:
-        # 
-        # *   text-embedding-v1:1536 dimensions
-        # *   text-embedding-v2:1536 dimensions
-        # *   text-embedding-v3 (default):1024, 768, and 512 dimensions
-        # *   text2vec: 1024 dimensions
-        # *   m3e-base: 768 dimensions
-        # *   m3e-small: 512 dimensions
+        # The embedding model. Valid values:
+        # - text-embedding-v1: 1536 dimensions
+        # - text-embedding-v2: 1536 dimensions
+        # - text-embedding-v3 (default): 1024, 768, or 512 dimensions
+        # - text2vec (not recommended): 1024 dimensions
+        # - m3e-base (not recommended): 768 dimensions
+        # - m3e-small (not recommended): 512 dimensions
         self.model = model
         self.owner_id = owner_id
-        # The region ID of the cluster.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id

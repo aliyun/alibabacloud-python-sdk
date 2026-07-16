@@ -16,20 +16,22 @@ class GetPermissionShrinkRequest(DaraModel):
         resource: str = None,
         security_token: str = None,
     ):
-        # The accessibility. Valid values:
+        # The access type. Valid values:
         # 
-        # *   PUBLIC: All members in the workspace can access the workspace.
-        # *   PRIVATE: Only the creator can access the workspace.
+        # - PUBLIC: All members in the workspace can perform the operation.
+        # 
+        # - PRIVATE: Only the creator can perform the operation.
         self.accessibility = accessibility
         self.caller_type = caller_type
         self.caller_uid = caller_uid
-        # The UID of the Alibaba Cloud account that is used to create the workspace.
+        # The UID of the Alibaba Cloud account that created the workspace permission.
         self.creator = creator
         self.labels_shrink = labels_shrink
-        # The configuration. Separate multiple configurations with commas (,). Valid values:
+        # Optional configurations. Separate multiple configurations with commas (,). Valid values:
         # 
-        # *   ResourceEmpty: The Resource parameter is not configured.
-        # *   DisableRam: The RAM check is not performed.
+        # - ResourceEmpty: The resource is empty. This value is used if you do not set the Resource parameter.
+        # 
+        # - DisableRam: RAM verification is disabled.
         self.option = option
         # The resource.
         self.resource = resource

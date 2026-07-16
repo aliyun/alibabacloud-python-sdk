@@ -10,8 +10,12 @@ class DescribePolarClawTaskRequest(DaraModel):
         application_id: str = None,
         task_id: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The asynchronous task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

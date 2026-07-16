@@ -13,13 +13,13 @@ class Mobile2MetaVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Mobile2MetaVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result object.
+        # The result object.
         self.result_object = result_object
 
     def validate(self):
@@ -68,15 +68,15 @@ class Mobile2MetaVerifyResponseBodyResultObject(DaraModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
-        # Verification result:
-        # - 1: Consistent verification
-        # - 2: Inconsistent verification
-        # - 3: No record found
+        # The verification result. Valid values:
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # Operator name:
+        # The carrier name. Valid values:
         # - CMCC: China Mobile
         # - CUCC: China Unicom
-        # - CTCC: China Telecom
+        # - CTCC: China Telecom.
         self.isp_name = isp_name
 
     def validate(self):

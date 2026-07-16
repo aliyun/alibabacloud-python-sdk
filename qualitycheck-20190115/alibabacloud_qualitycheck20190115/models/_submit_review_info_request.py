@@ -10,8 +10,10 @@ class SubmitReviewInfoRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # The complete JSON string information. See the following details for specific content.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

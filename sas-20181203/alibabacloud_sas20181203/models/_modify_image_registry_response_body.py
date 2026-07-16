@@ -17,22 +17,23 @@ class ModifyImageRegistryResponseBody(DaraModel):
         success: bool = None,
         time_cost: int = None,
     ):
-        # The HTTP status code.
+        # The status code returned.
         self.code = code
-        # N/A
+        # The data returned. This parameter is not used.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The execution duration.
+        # The time consumed to call the API.
         self.time_cost = time_cost
 
     def validate(self):

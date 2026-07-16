@@ -15,11 +15,11 @@ class ListSecretsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Code of the request
+        # The response status code.
         self.code = code
-        # Data
+        # The list of key information.
         self.data = data
-        # message
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -72,13 +72,13 @@ class ListSecretsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # Array of secret details
+        # The list of key details.
         self.items = items
-        # Page number
+        # The page number.
         self.page_number = page_number
-        # Number of items per page
+        # The page size.
         self.page_size = page_size
-        # Total number of records matching the query
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -140,23 +140,26 @@ class ListSecretsResponseBodyDataItems(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
-        # Unix timestamp when the secret was created
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # Gateway type associated with the secret
+        # The gateway type.
         self.gateway_type = gateway_type
-        # KMS configuration object
+        # The KMS configuration information.
         self.kms_config = kms_config
-        # Name of the secret
+        # The key name.
         self.name = name
-        # Number of resources referencing this secret
+        # The resource count that references the current key.
         self.reference_count = reference_count
-        # Source of the ID
+        # The key ID.
         self.secret_id = secret_id
-        # Source of the secret
+        # The key source.
         self.secret_source = secret_source
-        # Current status of the secret
+        # The key status. Valid values:
+        # - ENABLE: Enabled.
+        # - DISABLE: Disabled.
+        # - DELETED: Deleted.
         self.status = status
-        # Unix timestamp when the secret was last updated
+        # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):

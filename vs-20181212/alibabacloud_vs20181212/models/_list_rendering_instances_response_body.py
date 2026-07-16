@@ -14,8 +14,11 @@ class ListRenderingInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of cloud application service instances
         self.rendering_instances = rendering_instances
+        # Request ID
         self.request_id = request_id
+        # Total number of cloud application service instances
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class ListRenderingInstancesResponseBodyRenderingInstances(DaraModel):
         rendering_spec: str = None,
         storage_size: int = None,
     ):
+        # Creation time of the cloud application service instance
         self.creation_time = creation_time
+        # ID of the cloud application service instance
         self.rendering_instance_id = rendering_instance_id
+        # Instance type of the cloud application service
         self.rendering_spec = rendering_spec
+        # Storage capacity, in GB
         self.storage_size = storage_size
 
     def validate(self):

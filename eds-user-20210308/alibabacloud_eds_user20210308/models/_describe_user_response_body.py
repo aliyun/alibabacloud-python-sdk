@@ -13,7 +13,9 @@ class DescribeUserResponseBody(DaraModel):
         request_id: str = None,
         user: main_models.DescribeUserResponseBodyUser = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # User information.
         self.user = user
 
     def validate(self):
@@ -61,18 +63,30 @@ class DescribeUserResponseBodyUser(DaraModel):
         status: int = None,
         wy_id: str = None,
     ):
+        # Mailbox.
         self.email = email
+        # Username.
         self.end_user_id = end_user_id
+        # Associated external user information.
         self.external_info = external_info
+        # Extension information.
         self.extras = extras
+        # Creation Time.
         self.gmt_create = gmt_create
         self.nick_name = nick_name
+        # List of organization IDs.
         self.org_ids = org_ids
+        # List of organizations.
         self.org_paths = org_paths
+        # Phone number.
         self.phone = phone
+        # User attributes.
         self.properties = properties
+        # Remarks.
         self.remark = remark
+        # User status.
         self.status = status
+        # Unique ID of the Wuying user.
         self.wy_id = wy_id
 
     def validate(self):
@@ -184,7 +198,9 @@ class DescribeUserResponseBodyUserProperties(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Attribute key.
         self.key = key
+        # Attribute value.
         self.value = value
 
     def validate(self):
@@ -221,9 +237,13 @@ class DescribeUserResponseBodyUserExternalInfo(DaraModel):
         job_number: str = None,
         sso_type: str = None,
     ):
+        # External User ID.
         self.external_id = external_id
+        # External information name.
         self.external_name = external_name
+        # Employee ID.
         self.job_number = job_number
+        # SSO logon type.
         self.sso_type = sso_type
 
     def validate(self):

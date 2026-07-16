@@ -14,7 +14,7 @@ class ResetDisksResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.operation_progress_set = operation_progress_set
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

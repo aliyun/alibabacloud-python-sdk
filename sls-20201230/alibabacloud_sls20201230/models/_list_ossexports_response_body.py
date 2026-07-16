@@ -14,8 +14,11 @@ class ListOSSExportsResponseBody(DaraModel):
         results: List[main_models.OSSExport] = None,
         total: int = None,
     ):
+        # The number of OSS shipping jobs returned.
         self.count = count
+        # The list of OSS shipping jobs.
         self.results = results
+        # The total number of OSS shipping jobs in the project.
         self.total = total
 
     def validate(self):

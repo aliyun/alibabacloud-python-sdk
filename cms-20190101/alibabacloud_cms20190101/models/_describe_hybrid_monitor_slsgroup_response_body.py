@@ -19,11 +19,11 @@ class DescribeHybridMonitorSLSGroupResponseBody(DaraModel):
         success: str = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > A value of 200 indicates success.
         self.code = code
-        # The queried Logstore groups.
+        # The list of Logstore groups.
         self.list = list
         # The error message.
         self.message = message
@@ -33,12 +33,12 @@ class DescribeHybridMonitorSLSGroupResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -120,17 +120,17 @@ class DescribeHybridMonitorSLSGroupResponseBodyList(DaraModel):
         slsgroup_name: str = None,
         update_time: str = None,
     ):
-        # The time when the Logstore group was created.
+        # The timestamp when the Logstore group was created.
         # 
         # Unit: milliseconds.
         self.create_time = create_time
-        # The configurations of the Logstore group.
+        # The configuration information of the Logstore group.
         self.slsgroup_config = slsgroup_config
         # The description of the Logstore group.
         self.slsgroup_description = slsgroup_description
         # The name of the Logstore group.
         self.slsgroup_name = slsgroup_name
-        # The time when the Logstore group was modified.
+        # The timestamp when the Logstore group was last modified.
         # 
         # Unit: milliseconds.
         self.update_time = update_time
@@ -199,11 +199,11 @@ class DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig(DaraModel):
         self.slslogstore = slslogstore
         # The Simple Log Service project.
         self.slsproject = slsproject
-        # The region ID.
+        # The region.
         self.slsregion = slsregion
         # The member ID.
         # 
-        # **Description** This parameter is returned when you call the operation by using an administrative account.
+        # > This parameter is returned only when you call this operation by using a management account.
         self.slsuser_id = slsuser_id
 
     def validate(self):

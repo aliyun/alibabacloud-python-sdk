@@ -11,10 +11,16 @@ class BindPhoneRequest(DaraModel):
         device_id: str = None,
         phone_number: str = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identity of the device, 32-bit, a combination of numbers and lowercase letters.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # Phone number.
+        # 
         # This parameter is required.
         self.phone_number = phone_number
 

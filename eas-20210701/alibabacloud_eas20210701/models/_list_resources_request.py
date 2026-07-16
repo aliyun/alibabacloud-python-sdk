@@ -17,41 +17,31 @@ class ListResourcesRequest(DaraModel):
         sort: str = None,
         usage_mode: str = None,
     ):
-        # The sorting order. Valid values:
+        # The sort order. Valid values:
         # 
-        # *   Desc
-        # *   Asc
+        # - `Desc`: descending order
+        # 
+        # - `Asc`: ascending order
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The ID of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the ID of the resource group.
+        # The resource group ID. The [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation returns this ID.
         self.resource_id = resource_id
-        # The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
+        # The resource group name. The [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation returns this name.
         self.resource_name = resource_name
         # The resource group status.
         self.resource_status = resource_status
-        # The type of the resource group. Valid values:
+        # The resource group type. Valid values:
         # 
-        # *   Dedicated: the dedicated resource group.
-        # *   SelfManaged: the self-managed resource group.
+        # - `Dedicated`: dedicated resource group
+        # 
+        # - `SelfManaged`: self-managed resource group
         self.resource_type = resource_type
-        # The condition by which the results are sorted. By default, the query results are sorted by the timestamp type in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   PrePaidInstanceCount
-        # *   CpuCount
-        # *   Memory
-        # *   CreateTime
-        # *   PostPaidInstanceCount
-        # *   MemoryUsed
-        # *   GpuCount
-        # *   GpuUsed
-        # *   CpuUsed
-        # *   ServiceCount
+        # The sort field. Timestamp fields are sorted in descending order by default.
         self.sort = sort
+        # The usage mode of the resource group. The default value is `inference`.
         self.usage_mode = usage_mode
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetNetworkDomainResponseBody(DaraModel):
         network_domain: main_models.GetNetworkDomainResponseBodyNetworkDomain = None,
         request_id: str = None,
     ):
-        # The detailed information about the network domain.
+        # The details of the network domain.
         self.network_domain = network_domain
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,23 +56,25 @@ class GetNetworkDomainResponseBodyNetworkDomain(DaraModel):
         network_domain_type: str = None,
         proxies: List[main_models.GetNetworkDomainResponseBodyNetworkDomainProxies] = None,
     ):
-        # The remarks of the network domain.
+        # The comment for the network domain.
         self.comment = comment
-        # Indicates whether the network domain is a built-in network domain.
+        # Specifies whether the network domain is built-in. Valid values:
         # 
-        # * **true**
-        # * **false**
+        # - **true**: Yes
+        # 
+        # - **false**: No
         self.default = default
-        # The network domain ID.
+        # The ID of the network domain.
         self.network_domain_id = network_domain_id
         # The name of the network domain.
         self.network_domain_name = network_domain_name
-        # The connection mode of the network domain. Valid values:
+        # The type of the network domain. Valid values:
         # 
-        # * Direct
-        # * Proxy
+        # - Direct: direct connection
+        # 
+        # - Proxy: proxy
         self.network_domain_type = network_domain_type
-        # The information about the proxy servers.
+        # A list of proxy servers.
         self.proxies = proxies
 
     def validate(self):
@@ -145,36 +147,45 @@ class GetNetworkDomainResponseBodyNetworkDomainProxies(DaraModel):
         proxy_type: str = None,
         user: str = None,
     ):
-        # The IP address of the proxy server.
+        # The address of the proxy server.
         self.address = address
-        # Indicates whether the proxy server has a password. Valid values:
+        # Specifies whether a password is set for the proxy server. Valid values:
         # 
-        # - **true**
-        # - **false**
+        # - **true**: A password is set.
+        # 
+        # - **false**: No password is set.
         self.has_password = has_password
         # The node type of the proxy server. Valid values:
-        # - **Master**: primary proxy server.
-        # - **Slave**: secondary proxy server.
+        # 
+        # - Master: primary proxy server
+        # 
+        # - Slave: secondary proxy server
         self.node_type = node_type
         # The port of the proxy server.
         self.port = port
-        # The status of the proxy server.
+        # The status of the proxy server. Valid values:
         # 
-        # - **Available**
-        # - **Unavailable**
+        # - **Available**: available
+        # 
+        # - **Unavailable**: unavailable
         self.proxy_state = proxy_state
-        # The error code that indicates the status of the proxy server.
+        # The error code that is returned if the proxy server is unavailable. Valid values:
         # 
-        # - **CHECK_PWD_FAILED**: The password is invalid.
-        # - **CHECK_PWD_TIMEOUT**: The password verification session timed out.
-        # - **CHECK_PWD_NETWORK_ERR**: A network error occurred.
-        # - **UNEXPECTED**: An unknown error occurred.
+        # - **CHECK_PWD_FAILED**: Incorrect password.
+        # 
+        # - **CHECK_PWD_TIMEOUT**: Password verification timeout.
+        # 
+        # - **CHECK_PWD_NETWORK_ERR**: Network error.
+        # 
+        # - **UNEXPECTED**: Unknown error.
         self.proxy_state_error_code = proxy_state_error_code
-        # The proxy type. Valid values:
+        # The proxy method. Valid values:
         # 
-        # - **SSHProxy**
-        # - **HTTPProxy**
-        # - **Socks5Proxy**
+        # - SSHProxy: SSH proxy
+        # 
+        # - HTTPProxy: HTTP proxy
+        # 
+        # - Socks5Proxy: SOCKS5 proxy
         self.proxy_type = proxy_type
         # The username of the proxy server.
         self.user = user

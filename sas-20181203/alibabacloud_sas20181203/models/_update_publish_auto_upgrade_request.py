@@ -11,8 +11,8 @@ class UpdatePublishAutoUpgradeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic upgrade. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: enabled
+        # - **0**: disabled.
         self.auto_upgrade = auto_upgrade
 
     def validate(self):

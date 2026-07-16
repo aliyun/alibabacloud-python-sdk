@@ -12,13 +12,16 @@ class ListLogstashPluginsRequest(DaraModel):
         size: int = None,
         source: str = None,
     ):
-        # USER
+        # The plugin name.
         self.name = name
-        # The ID of the request.
+        # The page number of the plugin list. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # The returned results.
+        # The number of entries per page in paging settings. Minimum value: 1. Maximum value: 200.
         self.size = size
-        # The description of the plug-in.
+        # The plugin source. Valid values:
+        # 
+        # - USER: custom plugin
+        # - SYSTEM: system preset plugin.
         self.source = source
 
     def validate(self):

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_hologram20220601.
 
-Created on 15/05/2026
+Created on 21/05/2026
 
 @author: Alibaba Cloud SDK
 """

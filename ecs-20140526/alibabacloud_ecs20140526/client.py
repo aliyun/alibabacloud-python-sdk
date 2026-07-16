@@ -56,7 +56,45 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'ecs.cn-zhangjiakou.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'ecs.cn-qingdao-nebula.aliyuncs.com',
             'eu-west-1-oxs': 'ecs.cn-shenzhen-cloudstone.aliyuncs.com',
-            'rus-west-1-pop': 'ecs.aliyuncs.com'
+            'rus-west-1-pop': 'ecs.aliyuncs.com',
+            'us-west-1': 'ecs.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'ecs.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'ecs.us-east-1.aliyuncs.com',
+            'na-south-1': 'ecs.na-south-1.aliyuncs.com',
+            'me-east-1': 'ecs.me-east-1.aliyuncs.com',
+            'me-central-1': 'ecs.me-central-1.aliyuncs.com',
+            'eu-west-2': 'ecs.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'ecs.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'ecs.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'ecs.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'ecs.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'ecs.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'ecs.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'ecs.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'ecs.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen': 'ecs.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'ecs.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'ecs.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'ecs.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'ecs.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'ecs.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'ecs.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'ecs.cn-heyuan.aliyuncs.com',
+            'cn-guangzhou': 'ecs.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'ecs.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'ecs.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'ecs.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'ecs.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'ecs.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'ecs.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'ecs.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'ecs.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'ecs.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'ecs.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'ecs.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'ecs.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'ecs.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'ecs.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3792,6 +3830,8 @@ class Client(OpenApiClient):
             query['EndTimeType'] = request.end_time_type
         if not DaraCore.is_null(request.instance_amount):
             query['InstanceAmount'] = request.instance_amount
+        if not DaraCore.is_null(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.owner_account):
@@ -3852,6 +3892,8 @@ class Client(OpenApiClient):
             query['EndTimeType'] = request.end_time_type
         if not DaraCore.is_null(request.instance_amount):
             query['InstanceAmount'] = request.instance_amount
+        if not DaraCore.is_null(request.instance_charge_type):
+            query['InstanceChargeType'] = request.instance_charge_type
         if not DaraCore.is_null(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.owner_account):
@@ -4164,6 +4206,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDeploymentSetResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.deployment_set_name):
@@ -4218,6 +4262,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateDeploymentSetResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.deployment_set_name):
@@ -7118,6 +7164,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_name):
             query['PlanWindowName'] = request.plan_window_name
         if not DaraCore.is_null(request.region_id):
@@ -7162,6 +7210,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_name):
             query['PlanWindowName'] = request.plan_window_name
         if not DaraCore.is_null(request.region_id):
@@ -17804,6 +17854,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
+        if not DaraCore.is_null(request.usable):
+            query['Usable'] = request.usable
         if not DaraCore.is_null(request.usage):
             query['Usage'] = request.usage
         req = open_api_util_models.OpenApiRequest(
@@ -17884,6 +17936,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
+        if not DaraCore.is_null(request.usable):
+            query['Usable'] = request.usable
         if not DaraCore.is_null(request.usage):
             query['Usage'] = request.usage
         req = open_api_util_models.OpenApiRequest(
@@ -30520,6 +30574,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDeploymentSetAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.deployment_set_name):
@@ -30562,6 +30618,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDeploymentSetAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.affinity):
+            query['Affinity'] = request.affinity
         if not DaraCore.is_null(request.deployment_set_id):
             query['DeploymentSetId'] = request.deployment_set_id
         if not DaraCore.is_null(request.deployment_set_name):
@@ -34314,6 +34372,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_id):
             query['PlanWindowId'] = request.plan_window_id
         if not DaraCore.is_null(request.plan_window_name):
@@ -34360,6 +34420,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
+        if not DaraCore.is_null(request.min_maintenance_interval):
+            query['MinMaintenanceInterval'] = request.min_maintenance_interval
         if not DaraCore.is_null(request.plan_window_id):
             query['PlanWindowId'] = request.plan_window_id
         if not DaraCore.is_null(request.plan_window_name):
@@ -36298,6 +36360,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyStorageSetAttributeResponse:
         runtime = RuntimeOptions()
         return await self.modify_storage_set_attribute_with_options_async(request, runtime)
+
+    def modify_system_event_attribute_with_options(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySystemEventAttribute',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySystemEventAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_system_event_attribute_with_options_async(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.not_before):
+            query['NotBefore'] = request.not_before
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySystemEventAttribute',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySystemEventAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_system_event_attribute(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_system_event_attribute_with_options(request, runtime)
+
+    async def modify_system_event_attribute_async(
+        self,
+        request: main_models.ModifySystemEventAttributeRequest,
+    ) -> main_models.ModifySystemEventAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_system_event_attribute_with_options_async(request, runtime)
 
     def modify_user_business_behavior_with_options(
         self,

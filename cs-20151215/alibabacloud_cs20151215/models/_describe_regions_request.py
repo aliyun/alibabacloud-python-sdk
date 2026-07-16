@@ -11,29 +11,11 @@ class DescribeRegionsRequest(DaraModel):
         cluster_type: str = None,
         profile: str = None,
     ):
-        # The language in which the results are returned.
-        # 
-        # Valid values:
-        # 
-        # *   zh-CN
-        # *   en-US
+        # Filters the results by language (Chinese or English).
         self.accept_language = accept_language
-        # The type of the cluster.
-        # 
-        # Valid values:
-        # 
-        # *   ExternalKubernetes: registered clusters.
-        # *   ManagedKubernetes: managed clusters.
-        # *   Kubernetes: dedicated clusters.
+        # The cluster type.
         self.cluster_type = cluster_type
-        # The subtype of the managed cluster.
-        # 
-        # Valid values:
-        # 
-        # *   Lingjun: ACK Lingjun clusters.
-        # *   Serverless: ACK serverless clusters.
-        # *   Default: ACK managed clusters.
-        # *   Edge: ACK Edge clusters.
+        # The subtype of managed clusters.
         self.profile = profile
 
     def validate(self):

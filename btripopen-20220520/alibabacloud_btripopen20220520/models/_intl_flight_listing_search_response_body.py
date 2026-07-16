@@ -326,7 +326,6 @@ class IntlFlightListingSearchResponseBodyModuleFlightItemListFlightJourneyInfosF
         self.dep_city_code = dep_city_code
         self.dep_city_name = dep_city_name
         self.dep_time = dep_time
-        # duration
         self.duration = duration
         self.flight_no = flight_no
         self.flight_share_info = flight_share_info

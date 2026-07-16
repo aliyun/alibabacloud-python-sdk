@@ -11,8 +11,11 @@ class ListAzureBlobIngestionRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The name of the logstore. If specified, the operation returns only tasks from this logstore.
         self.logstore = logstore
+        # The number of tasks to skip before returning results. Default: 0.
         self.offset = offset
+        # The number of tasks to return per page. Range: 0 to 500. Default: 100.
         self.size = size
 
     def validate(self):

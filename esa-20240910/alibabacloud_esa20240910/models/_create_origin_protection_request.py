@@ -10,8 +10,11 @@ class CreateOriginProtectionRequest(DaraModel):
         auto_confirm_iplist: str = None,
         site_id: int = None,
     ):
+        # Specifies whether to automatically enable the latest back-to-origin IP addresses list. Valid values:
+        # - off: Do not automatically enable.
+        # - on: Automatically enable.
         self.auto_confirm_iplist = auto_confirm_iplist
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation. The plan associated with the site must support the origin protection feature.
         # 
         # This parameter is required.
         self.site_id = site_id

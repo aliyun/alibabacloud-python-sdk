@@ -15,14 +15,24 @@ class UpdateFaqShrinkRequest(DaraModel):
         tag_id_list_shrink: str = None,
         title: str = None,
     ):
+        # The key for the business space. If this parameter is omitted, the default business space is used. You can find this key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the knowledge entry\\"s category.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The expiration date and time. The value must be in ISO 8601 format.
         self.end_date = end_date
+        # The ID of the knowledge entry.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
+        # The effective start date and time. The value must be in ISO 8601 format.
         self.start_date = start_date
+        # A list of tag IDs.
         self.tag_id_list_shrink = tag_id_list_shrink
+        # The knowledge title.
+        # 
         # This parameter is required.
         self.title = title
 

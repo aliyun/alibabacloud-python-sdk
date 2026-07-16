@@ -9,7 +9,7 @@ class DeleteDatasetVersionLabelsRequest(DaraModel):
         self,
         keys: str = None,
     ):
-        # The tag keys. Multiple tags are separated by commas (,).
+        # The keys of the version labels. Separate multiple keys with commas.
         # 
         # This parameter is required.
         self.keys = keys

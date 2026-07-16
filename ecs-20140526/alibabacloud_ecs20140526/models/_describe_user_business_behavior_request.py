@@ -16,9 +16,12 @@ class DescribeUserBusinessBehaviorRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region. Call the `DescribeRegions` operation to query the latest list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The key of the business attribute to query.
+        # 
         # This parameter is required.
         self.status_key = status_key
 

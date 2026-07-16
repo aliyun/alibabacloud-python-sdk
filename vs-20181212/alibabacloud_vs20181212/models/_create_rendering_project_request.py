@@ -12,9 +12,20 @@ class CreateRenderingProjectRequest(DaraModel):
         project_name: str = None,
         session_attribs: main_models.CreateRenderingProjectRequestSessionAttribs = None,
     ):
+        # The description of the project. The description can be 0 to 255 characters in length.
         self.description = description
+        # The custom name of the project. This name is the unique identifier for the project.
+        # The name must meet the following requirements:
+        # 
+        # 1. Be 1 to 128 characters in length.
+        # 
+        # 2. Contain only lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 3. Start and end with a letter or a digit.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The session properties.
         self.session_attribs = session_attribs
 
     def validate(self):
@@ -56,6 +67,11 @@ class CreateRenderingProjectRequestSessionAttribs(DaraModel):
         self,
         start_mode: str = None,
     ):
+        # The mode to start the cloud application service for the session. Valid values:
+        # 
+        # 1. Async: asynchronous
+        # 
+        # 2. Sync: synchronous
         self.start_mode = start_mode
 
     def validate(self):

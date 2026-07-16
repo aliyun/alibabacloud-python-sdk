@@ -10,9 +10,9 @@ class UpdateDnsGtmAccessStrategyResponseBody(DaraModel):
         request_id: str = None,
         strategy_id: str = None,
     ):
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The ID of the access policy.
+        # The ID of the policy.
         self.strategy_id = strategy_id
 
     def validate(self):

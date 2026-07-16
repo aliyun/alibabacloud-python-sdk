@@ -16,18 +16,21 @@ class CreateJobTemplateRequest(DaraModel):
         template_name: str = None,
         workspace_id: str = None,
     ):
-        # 字段约束规则。Key 为 JSONPath 表达式，Value 为约束类型：locked（锁定不可覆盖）、overridable（可覆盖）、required（必填）。
+        # The field constraint rules. The key is a JSONPath expression, and the value is a constraint type: `locked` (cannot be overridden), `overridable` (can be overridden), or `required` (must be specified).
         self.constraints = constraints
-        # 任务模板的配置内容，包含作业配置参数，以 JSON 格式传入。
+        # The configuration of the job template, which must be a JSON string containing the job configuration parameters.
         # 
         # This parameter is required.
         self.content = content
+        # The description of the job template.
         self.description = description
-        # 用户自定义的键值对元数据，用于存储模板的附加信息。
+        # User-defined key-value metadata.
         self.metadata = metadata
+        # The name of the job template.
+        # 
         # This parameter is required.
         self.template_name = template_name
-        # 工作空间 ID。如何获取工作空间 ID，请参见 ListWorkspaces。
+        # The ID of the workspace that contains the job template.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

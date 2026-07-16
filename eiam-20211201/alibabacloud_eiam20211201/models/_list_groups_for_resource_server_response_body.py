@@ -16,11 +16,15 @@ class ListGroupsForResourceServerResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of groups.
         self.groups = groups
+        # The number of entries returned on the current page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token to retrieve the next page of results. A null or empty value indicates that all results have been returned.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries that meet the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -82,11 +86,11 @@ class ListGroupsForResourceServerResponseBodyGroups(DaraModel):
         instance_id: str = None,
         resource_server_scopes: List[main_models.ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes] = None,
     ):
-        # 用户组的唯一标识
+        # The ID of the group.
         self.group_id = group_id
-        # 实例唯一标识
+        # The ID of the instance.
         self.instance_id = instance_id
-        # 资源服务Scope权限集合
+        # The list of authorized scopes.
         self.resource_server_scopes = resource_server_scopes
 
     def validate(self):
@@ -135,9 +139,9 @@ class ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes(DaraMode
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # ResourceServerScope唯一标识
+        # The ID of the scope.
         self.resource_server_scope_id = resource_server_scope_id
-        # ResourceServerScope名称
+        # The name of the scope.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

@@ -11,7 +11,7 @@ class CreateScanRuleResponseBody(DaraModel):
         request_id: str = None,
         scan_rule_id: str = None,
     ):
-        # The returned HTTP or HTTPS status code.
+        # The status code.
         self.code = code
         # Request Id
         self.request_id = request_id

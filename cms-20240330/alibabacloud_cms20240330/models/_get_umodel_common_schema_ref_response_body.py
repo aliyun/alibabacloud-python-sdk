@@ -12,6 +12,7 @@ class GetUmodelCommonSchemaRefResponseBody(DaraModel):
         self,
         common_schema_ref: List[main_models.GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef] = None,
     ):
+        # The referenced common Umodel Schema.
         self.common_schema_ref = common_schema_ref
 
     def validate(self):
@@ -48,7 +49,9 @@ class GetUmodelCommonSchemaRefResponseBodyCommonSchemaRef(DaraModel):
         group: str = None,
         version: str = None,
     ):
+        # The common Umodel Schema group.
         self.group = group
+        # The version.
         self.version = version
 
     def validate(self):

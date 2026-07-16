@@ -27,9 +27,9 @@ class AddDomainResponseBody(DaraModel):
         self.group_id = group_id
         # The name of the domain name group.
         self.group_name = group_name
-        # The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+        # The Punycode for the Chinese domain name. This parameter is returned only for Chinese domain names.
         self.puny_code = puny_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

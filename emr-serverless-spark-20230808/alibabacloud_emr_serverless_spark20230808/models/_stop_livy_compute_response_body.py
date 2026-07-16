@@ -11,8 +11,11 @@ class StopLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For more information about an error, see the message parameter.
         self.code = code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

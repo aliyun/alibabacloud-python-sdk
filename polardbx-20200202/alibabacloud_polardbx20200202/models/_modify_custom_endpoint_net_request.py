@@ -15,14 +15,23 @@ class ModifyCustomEndpointNetRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The connection prefix.
         self.conn_prefix = conn_prefix
+        # The ID of the custom endpoint.
+        # 
         # This parameter is required.
         self.custom_endpoint_id = custom_endpoint_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The public endpoint port.
         self.port = port
+        # The region in which the instance resides.
         self.region_id = region_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) in which the endpoint resides.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -18,50 +18,38 @@ class CreateScanRuleRequest(DaraModel):
         scan_type: str = None,
         trigger_type: str = None,
     ):
-        # The instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of namespaces.
-        # 
-        # *   When the scan scope is NAMESPACE, this parameter cannot be empty.
-        # *   If the scan scope is REPO, you must specify a unique Namespace for this parameter.
+        # The collection of namespaces.
+        # - If the scan scope is set to NAMESPACE, this parameter cannot be empty.
+        # - If the scan scope is set to REPO, this parameter must contain exactly one namespace.
         self.namespaces = namespaces
         # The list of repositories.
-        # 
-        # *   When the scan scope is NAMESPACE, this parameter must be empty.
-        # *   When the scan scope is REPO, this parameter cannot be empty.
+        # - If the scan scope is set to NAMESPACE, this parameter must be empty.
+        # - If the scan scope is set to REPO, this parameter cannot be empty.
         self.repo_names = repo_names
-        # The tag that triggers the scan matches the regular expression
+        # The regular expression used to match tags that trigger a scan.
         # 
         # This parameter is required.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
-        # The rule name
+        # The rule name.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The scan scope
-        # 
-        # Valid values:
-        # 
-        # *   NAMESPACE: namespace.
-        # *   REPO: repository.
+        # The scan scope.
         # 
         # This parameter is required.
         self.scan_scope = scan_scope
         # The scan type. Valid values:
         # 
-        # *   `VUL`: Products Cloud Security Scanner
-        # *   `SBOM`: Product Content Analysis
+        # - `VUL`: cloud native artifact vulnerability scanning.
+        # - `SBOM`: cloud native artifact content analysis.
         # 
-        # Default value: `VUL`
+        # Default value: `VUL`.
         self.scan_type = scan_type
-        # Trigger type
-        # 
-        # Valid values:
-        # 
-        # *   AUTO: automatically trigger.
-        # *   MANUAL: manually trigger.
+        # The trigger type.
         # 
         # This parameter is required.
         self.trigger_type = trigger_type

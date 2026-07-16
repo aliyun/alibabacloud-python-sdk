@@ -22,9 +22,11 @@ class ModifyInstanceMaintenanceAttributesRequest(DaraModel):
     ):
         # The maintenance action. Valid values:
         # 
-        # *   Stop: stops the instance.
-        # *   AutoRecover: automatically recovers the instance.
-        # *   AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
+        # - Stop: stops the instance.
+        # 
+        # - AutoRecover: automatically recovers the instance.
+        # 
+        # - AutoRedeploy: redeploys the instance, which may damage the data disks attached to the instance.
         self.action_on_maintenance = action_on_maintenance
         # The ID of instance N. Valid values of N: 1 to 100.
         self.instance_id = instance_id
@@ -32,8 +34,9 @@ class ModifyInstanceMaintenanceAttributesRequest(DaraModel):
         self.maintenance_window = maintenance_window
         # Specifies whether to send an event notification before maintenance. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.notify_on_maintenance = notify_on_maintenance

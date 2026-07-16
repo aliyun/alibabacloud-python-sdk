@@ -15,7 +15,7 @@ class DescribeIdcAssetCriteriaResponseBody(DaraModel):
     ):
         # The information about the asset search conditions.
         self.criteria_list = criteria_list
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,14 +59,14 @@ class DescribeIdcAssetCriteriaResponseBodyCriteriaList(DaraModel):
         type: str = None,
         values: str = None,
     ):
-        # The name of the search condition.
+        # The name of the corresponding search condition.
         self.name = name
         # The type of the search condition. Valid values:
         # 
-        # *   **input**: The search condition needs to be specified.
-        # *   **select**: The search condition is an option that can be selected from the drop-down list.
+        # - **input**: You must manually enter the search field.
+        # - **select**: You must select a child class of the search condition from the drop-down list.
         self.type = type
-        # The attribute values of the assets that match the keyword.
+        # The specific asset property values that correspond to the entered fuzzy match value.
         self.values = values
 
     def validate(self):

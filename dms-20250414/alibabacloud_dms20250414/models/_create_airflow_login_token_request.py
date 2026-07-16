@@ -9,7 +9,7 @@ class CreateAirflowLoginTokenRequest(DaraModel):
         self,
         airflow_id: str = None,
     ):
-        # The ID of the Airflow instance. You can view the instance ID on the [Airflow Instances](https://help.aliyun.com/document_detail/2881043.html) page.
+        # The ID of the Airflow instance. For more information, see [Airflow instances]().
         # 
         # This parameter is required.
         self.airflow_id = airflow_id

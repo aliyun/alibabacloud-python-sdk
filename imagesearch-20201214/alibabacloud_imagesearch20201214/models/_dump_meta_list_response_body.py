@@ -13,9 +13,9 @@ class DumpMetaListResponseBody(DaraModel):
         data: main_models.DumpMetaListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the task that is used to export metadata.
+        # The metadata export information.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +54,11 @@ class DumpMetaListResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # A list of tasks that are used to export metadata.
+        # The collection of metadata export tasks.
         self.dump_meta_list = dump_meta_list
-        # The number of the page to return.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries returned.
         self.page_size = page_size
         # The total number of tasks.
         self.total_count = total_count
@@ -120,26 +120,25 @@ class DumpMetaListResponseBodyDataDumpMetaList(DaraModel):
         utc_create: str = None,
         utc_modified: int = None,
     ):
-        # The error code returned.
+        # The error code. Valid values:
         # 
-        # *   A value of 0 indicates that the operation is successful.
-        # *   Values other than 0 indicate errors.
+        # - 0: Succeeded.
+        # - Non-zero: Failed.
         self.code = code
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The address where you can download the metadata. The address is valid for 2 hours.
+        # The URL for downloading the result. The URL is valid for two hours.
         self.meta_url = meta_url
-        # The error message returned.
+        # The error message.
         self.msg = msg
-        # The status of the export task.
-        # 
-        # *   PROCESSING: in progress
-        # *   FAIL: failed
-        # *   SUCCESS: successful
+        # The task status. Valid values:
+        # - PROCESSING: The task is being processed.
+        # - FAIL: The task failed.
+        # - SUCCESS: The task is completed.
         self.status = status
         # The time when the task was created. Unit: milliseconds.
         self.utc_create = utc_create
-        # The time when the task was updated. Unit: milliseconds.
+        # The time when the task was last updated. Unit: milliseconds.
         self.utc_modified = utc_modified
 
     def validate(self):

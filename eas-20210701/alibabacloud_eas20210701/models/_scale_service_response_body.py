@@ -10,7 +10,9 @@ class ScaleServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # A message indicating the result of the operation.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

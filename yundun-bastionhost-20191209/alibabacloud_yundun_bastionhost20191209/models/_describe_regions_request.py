@@ -10,11 +10,13 @@ class DescribeRegionsRequest(DaraModel):
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The natural language in which responses are returned. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh-CN**: Chinese. This is the default value.
-        # *   **en-US**: English.
-        # *   **ja**: Japanese.
+        # - **zh-CN** (default): Chinese
+        # 
+        # - **en-US**: English
+        # 
+        # - **ja**: Japanese
         self.accept_language = accept_language
         # The ID of the region.
         self.region_id = region_id

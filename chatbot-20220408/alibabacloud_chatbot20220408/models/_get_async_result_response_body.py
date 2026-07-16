@@ -11,8 +11,17 @@ class GetAsyncResultResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The task result, returned as a JSON-formatted string.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The task\\"s execution status. Valid values:
+        # 
+        # | Value   | Description                      |
+        # | ------- | -------------------------------- |
+        # | Success | The task completed successfully. |
+        # | Running | The task is running.             |
+        # | Fail    | The task failed.                 |
         self.status = status
 
     def validate(self):

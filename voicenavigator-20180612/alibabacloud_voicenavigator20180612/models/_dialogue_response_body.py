@@ -13,10 +13,15 @@ class DialogueResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
+        # The action to be performed.
         self.action = action
+        # The action parameters.
         self.action_params = action_params
+        # Indicates whether the IVR greeting can be interrupted.
         self.interruptible = interruptible
+        # The request ID.
         self.request_id = request_id
+        # The text to be broadcasted.
         self.text_response = text_response
 
     def validate(self):

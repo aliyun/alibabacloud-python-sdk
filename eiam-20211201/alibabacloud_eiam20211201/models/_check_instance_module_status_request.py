@@ -12,16 +12,17 @@ class CheckInstanceModuleStatusRequest(DaraModel):
         module_key: str = None,
         sub_feature_key: str = None,
     ):
-        # 二级模块标识
+        # The secondary module identifier.
         self.feature_key = feature_key
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 一级模块标识，必填
+        # The primary module identifier.
         # 
         # This parameter is required.
         self.module_key = module_key
+        # The tertiary module identifier.
         self.sub_feature_key = sub_feature_key
 
     def validate(self):

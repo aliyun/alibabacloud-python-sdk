@@ -10,26 +10,24 @@ class ModifyVulConfigRequest(DaraModel):
         config: str = None,
         type: str = None,
     ):
-        # Specifies whether to enable the vulnerability scan feature. Valid values:
+        # Specifies whether to enable or disable vulnerability detection. Valid values:
         # 
-        # *   **on**: enables the feature
-        # *   **off**: disables the feature
+        # - **on**: Enable vulnerability detection.
+        # - **off**: Disable vulnerability detection.
         # 
-        # > Valid values when you set the Type parameter to scanMode:
-        # 
-        # *   **real**: displays only easily exploitable vulnerabilities.
-        # 
-        # *   **all**: displays all vulnerabilities.
+        # > If the type is set to real risk, valid values:
+        # > - **real**: Real risk vulnerabilities.
+        # > - **all**: All vulnerabilities.
         self.config = config
-        # The type of the vulnerability. Valid values:
+        # The type of vulnerability to modify. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **emg**: urgent vulnerability
-        # *   **app**: application vulnerability
-        # *   **yum**: YUM and APT source configuration
-        # *   **scanMode**: easily exploitable vulnerability
+        # - **cve**: Linux vulnerability
+        # - **sys**: Windows vulnerability
+        # - **cms**: WebCMS vulnerability
+        # - **emg**: emergency vulnerability
+        # - **app**: application vulnerability
+        # - **yum**: YUM/APT source configuration
+        # - **scanMode**: real risk.
         self.type = type
 
     def validate(self):

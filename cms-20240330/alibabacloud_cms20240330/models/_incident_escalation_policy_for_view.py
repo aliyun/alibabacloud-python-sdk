@@ -24,19 +24,37 @@ class IncidentEscalationPolicyForView(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # Indicates whether the policy is enabled.
         self.enable = enable
+        # The list of escalation stages.
         self.escalation_stage_list = escalation_stage_list
+        # The name.
+        # 
         # This parameter is required.
         self.name = name
+        # The owner type.
+        # 
+        # - **USER**: User. This is the default value.
+        # 
+        # - **APP**: Application.
         self.owner_type = owner_type
+        # The region ID.
         self.region_id = region_id
+        # The source.
         self.source = source
+        # The source type of the synchronization policy.
         self.sync_from_type = sync_from_type
+        # The update time.
         self.update_time = update_time
+        # The user ID.
         self.user_id = user_id
+        # The globally unique identifier.
         self.uuid = uuid
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

@@ -11,13 +11,13 @@ class ListRunMetricsRequest(DaraModel):
         max_results: int = None,
         page_token: int = None,
     ):
-        # The metric key of the run.
+        # The key of the metric for the run.
         # 
         # This parameter is required.
         self.key = key
-        # The maximum number of entries in the request. Default value: 10.
+        # The maximum number of results to return. The default value is 10.
         self.max_results = max_results
-        # The pagination token, which starts from 0. Default value: 0.
+        # The paging token. The token starts from 0. The default value is 0.
         self.page_token = page_token
 
     def validate(self):

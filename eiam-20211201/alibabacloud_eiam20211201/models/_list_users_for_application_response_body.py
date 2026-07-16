@@ -14,11 +14,11 @@ class ListUsersForApplicationResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersForApplicationResponseBodyUsers] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
-        # The IDs of the accounts.
+        # The list of accounts.
         self.users = users
 
     def validate(self):
@@ -67,9 +67,9 @@ class ListUsersForApplicationResponseBodyUsers(DaraModel):
         application_roles: List[main_models.ListUsersForApplicationResponseBodyUsersApplicationRoles] = None,
         user_id: str = None,
     ):
-        # 应用角色列表。
+        # The list of application roles.
         self.application_roles = application_roles
-        # The ID of the account.
+        # The account ID.
         self.user_id = user_id
 
     def validate(self):
@@ -111,7 +111,7 @@ class ListUsersForApplicationResponseBodyUsersApplicationRoles(DaraModel):
         self,
         application_role_id: str = None,
     ):
-        # 应用角色标识。
+        # The application role ID.
         self.application_role_id = application_role_id
 
     def validate(self):

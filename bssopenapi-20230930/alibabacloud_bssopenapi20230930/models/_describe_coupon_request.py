@@ -28,24 +28,38 @@ class DescribeCouponRequest(DaraModel):
         product_code: str = None,
         status: str = None,
     ):
+        # The coupon ID.
         self.coupon_id = coupon_id
+        # The coupon code.
         self.coupon_no = coupon_no
         self.coupon_template_id_list = coupon_template_id_list
+        # The coupon type.
         self.coupon_type = coupon_type
+        # The current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The enterprise and account list. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # The effective end time.
         self.effective_end_time = effective_end_time
+        # The effective start time.
         self.effective_start_time = effective_start_time
+        # The expiration end time.
         self.expire_end_date = expire_end_date
+        # The expiration start time.
         self.expire_start_date = expire_start_date
         self.include_share = include_share
         self.max_results = max_results
+        # The primary campaign information.
         self.nbid = nbid
         self.next_token = next_token
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.product_code = product_code
+        # The status.
         self.status = status
 
     def validate(self):
@@ -178,8 +192,9 @@ class DescribeCouponRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
-        # This parameter is required.
+        # The enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):

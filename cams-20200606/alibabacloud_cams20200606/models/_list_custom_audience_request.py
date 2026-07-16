@@ -19,18 +19,28 @@ class ListCustomAudienceRequest(DaraModel):
         resource_owner_id: int = None,
         token_type: str = None,
     ):
+        # The Meta ad account ID.
         self.ad_account_id = ad_account_id
+        # The Space ID of the Independent Software Vendor (ISV) sub-customer or the instance ID of the direct customers. This is the channel ID. Find the ID on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The ID of the custom audience.
         self.custom_audience_id = custom_audience_id
+        # The name of the custom audience.
         self.custom_audience_name = custom_audience_name
         self.owner_id = owner_id
+        # The pagination settings.
+        # 
         # This parameter is required.
         self.page = page
+        # The Page ID for Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The token type.
         self.token_type = token_type
 
     def validate(self):
@@ -115,8 +125,12 @@ class ListCustomAudienceRequestPage(DaraModel):
         index: int = None,
         size: int = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.index = index
+        # The number of entries to return on each page.
+        # 
         # This parameter is required.
         self.size = size
 

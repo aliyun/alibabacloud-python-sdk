@@ -14,11 +14,11 @@ class ListCodeSourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The code sources.
+        # A list of code source configurations.
         self.code_sources = code_sources
         # The request ID.
         self.request_id = request_id
-        # The total number of code sources that meet the filter conditions.
+        # The total number of code source configurations that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):

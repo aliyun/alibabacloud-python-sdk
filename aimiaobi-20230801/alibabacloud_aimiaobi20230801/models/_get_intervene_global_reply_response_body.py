@@ -17,11 +17,17 @@ class GetInterveneGlobalReplyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -83,6 +89,7 @@ class GetInterveneGlobalReplyResponseBodyData(DaraModel):
         reply_messag_list: List[main_models.GetInterveneGlobalReplyResponseBodyDataReplyMessagList] = None,
     ):
         self.code = code
+        # Reply message list
         self.reply_messag_list = reply_messag_list
 
     def validate(self):
@@ -125,7 +132,9 @@ class GetInterveneGlobalReplyResponseBodyDataReplyMessagList(DaraModel):
         message: str = None,
         reply_type: str = None,
     ):
+        # Reply content
         self.message = message
+        # Reply type
         self.reply_type = reply_type
 
     def validate(self):

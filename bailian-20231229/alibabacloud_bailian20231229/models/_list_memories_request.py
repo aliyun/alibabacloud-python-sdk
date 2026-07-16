@@ -10,7 +10,11 @@ class ListMemoriesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The number of entries per page in a paged query. Valid values: 1 to 50.
+        # 
+        # Default value: 10.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
 
     def validate(self):

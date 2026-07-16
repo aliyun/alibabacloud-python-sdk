@@ -14,10 +14,14 @@ class DeleteNatGatewayRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the NAT gateway that you want to delete.
+        # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the NAT gateway is deployed.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

@@ -18,26 +18,35 @@ class ListChangeOrdersResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the list of change orders was obtained. Valid values:
+        # The HTTP status code or the POP error code. Valid values:
         # 
-        # *   **true**: indicates that the list was obtained.
-        # *   **false**: indicates that the list could not be obtained.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirect.
+        # 
+        # - **4xx**: Request error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The information about change orders.
+        # The information about the change orders.
         self.data = data
-        # The HTTP status code. Valid values:
+        # The error code.
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - This parameter is not returned on successful requests.
+        # 
+        # - Returned if the request fails. For more information, see the **error code** list in this topic.
         self.error_code = error_code
-        # The ID of the trace. It is used to query the details of a request.
+        # Additional information about the response.
         self.message = message
-        # The returned message.
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the list of change orders was retrieved. Valid values:
+        # 
+        # - **true**: The list was retrieved.
+        # 
+        # - **false**: The list could not be retrieved.
         self.success = success
-        # The information about change orders.
+        # The trace ID used to query request details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -106,16 +115,13 @@ class ListChangeOrdersResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The change orders.
-        self.change_order_list = change_order_list
-        # The total number of change orders.
-        self.current_page = current_page
-        # The error code.
-        # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
-        self.page_size = page_size
         # The list of change orders.
+        self.change_order_list = change_order_list
+        # The current page number.
+        self.current_page = current_page
+        # The page size.
+        self.page_size = page_size
+        # The total number of change orders.
         self.total_size = total_size
 
     def validate(self):
@@ -182,78 +188,97 @@ class ListChangeOrdersResponseBodyDataChangeOrderList(DaraModel):
         status: int = None,
         user_id: str = None,
     ):
-        # The number of entries returned on each page.
+        # The application ID.
         self.app_id = app_id
-        # The ID of the user who created the change order.
+        # The number of batches.
         self.batch_count = batch_count
-        # The ID of the group.
+        # The batch type. Valid values:
+        # 
+        # - **auto**: Automatic.
+        # 
+        # - **manual**: Manual.
         self.batch_type = batch_type
-        # The mode in which the release batches are determined. Valid values:
-        # 
-        # *   **auto**: SAE automatically determines the release batches.
-        # *   **manual**: You must manually determine the release batches.
+        # The change order ID.
         self.change_order_id = change_order_id
-        # The ID of the application.
+        # The description of the change type code (**CoTypeCode**).
         self.co_type = co_type
-        # The code of the change order. Valid values:
-        # 
-        # *   **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
-        # *   **CoUnbindSlb**: disassociates an SLB instance from the application.
-        # *   **CoCreateApp**: creates the application.
-        # *   **CoDeleteApp**: deletes the application.
-        # *   **CoDeploy**: deploys the application.
-        # *   **CoRestartApplication**: restarts the application.
-        # *   **CoRollback**: rolls back the application.
-        # *   **CoScaleIn**: scales in the application.
-        # *   **CoScaleOut**: scales out the application.
-        # *   **CoStartApplication**: starts the application.
-        # *   **CoStopApplication**: stops the application.
-        # *   **CoRescaleApplicationVertically**: modifies the instance type.
-        # *   **CoDeployHistroy**: rolls back the application to an earlier version.
-        # *   **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
-        # *   **CoUnbindNas**: disassociates a NAS file system from the application.
-        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
-        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
-        # *   **CoRestartInstances**: restarts the instance.
-        # *   **CoDeleteInstances**: deletes the instance.
-        # *   **CoScaleInAppWithInstances**: reduces the specified number of application instances.
-        self.co_type_code = co_type_code
-        # The ID of the user.
-        self.create_time = create_time
         # The code of the change type. Valid values:
         # 
-        # *   **CoBindSlb**: associates an SLB instance with the application.
-        # *   **CoUnbindSlb**: disassociates the SLB instance from the application.
-        # *   **CoCreateApp**: creates the application.
-        # *   **CoDeleteApp**: deletes the application.
-        # *   **CoDeploy**: deploys the application.
-        # *   **CoRestartApplication**: restarts the application.
-        # *   **CoRollback**: rolls back the application.
-        # *   **CoScaleIn**: scales in the application.
-        # *   **CoScaleOut**: scales out the application.
-        # *   **CoStart**: starts the application.
-        # *   **CoStop**: stops the application.
-        # *   **CoRescaleApplicationVertically**: modifies the instance specifications.
-        # *   **CoDeployHistroy**: rolls back the application to a historical version.
-        # *   **CoBindNas**: associates a NAS file system with the application.
-        # *   **CoUnbindNas**: disassociates the NAS file system from the application.
-        # *   **CoBatchStartApplication**: starts multiple applications concurrently.
-        # *   **CoBatchStopApplication**: stops multiple applications concurrently.
-        # *   **CoRestartInstances**: restarts the instances.
-        # *   **CoDeleteInstances**: deletes the instances.
-        # *   **CoScaleInAppWithInstances**: reduces the number of the specified application instances.
+        # - **CoBindSlb**: Bind an SLB instance.
+        # 
+        # - **CoUnbindSlb**: Unbind an SLB instance.
+        # 
+        # - **CoCreateApp**: Create an application.
+        # 
+        # - **CoDeleteApp**: Delete an application.
+        # 
+        # - **CoDeploy**: Deploy an application.
+        # 
+        # - **CoRestartApplication**: Restart an application.
+        # 
+        # - **CoRollback**: Roll back an application.
+        # 
+        # - **CoScaleIn**: Scale in an application.
+        # 
+        # - **CoScaleOut**: Scale out an application.
+        # 
+        # - **CoStartApplication**: Start an application.
+        # 
+        # - **CoStopApplication**: Stop an application.
+        # 
+        # - **CoRescaleApplicationVertically**: Change the instance type.
+        # 
+        # - **CoDeployHistroy**: Roll back to a previous version.
+        # 
+        # - **CoBindNas**: Bind a NAS file system.
+        # 
+        # - **CoUnbindNas**: Unbind a NAS file system.
+        # 
+        # - **CoBatchStartApplication**: Start multiple applications.
+        # 
+        # - **CoBatchStopApplication**: Stop multiple applications.
+        # 
+        # - **CoRestartInstances**: Restart instances.
+        # 
+        # - **CoDeleteInstances**: Delete instances.
+        # 
+        # - **CoScaleInAppWithInstances**: Scale in an application by specifying instances.
+        self.co_type_code = co_type_code
+        # The time the change order was created.
+        self.create_time = create_time
+        # The ID of the user who created the change order.
         self.create_user_id = create_user_id
-        # The change type, which corresponds to the **CoTypeCode** parameter.
+        # The description.
         self.description = description
-        # The time when the change order was created.
+        # The time the change order was completed.
         self.finish_time = finish_time
-        # The description about the application.
+        # The group ID.
         self.group_id = group_id
-        # The number of release batches.
-        self.source = source
-        # The time when the change order was completed.
-        self.status = status
         # The source of the change order.
+        self.source = source
+        # The status of the change order. Valid values:
+        # 
+        # - **0**: Preparing.
+        # 
+        # - **1**: In progress.
+        # 
+        # - **2**: Succeeded.
+        # 
+        # - **3**: Failed.
+        # 
+        # - **6**: Aborted.
+        # 
+        # - **8**: Paused for manual confirmation.
+        # 
+        # - **9**: Paused for automatic confirmation.
+        # 
+        # - **10**: Failed due to a system exception.
+        # 
+        # - **11**: Pending approval.
+        # 
+        # - **12**: Approved and pending execution.
+        self.status = status
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

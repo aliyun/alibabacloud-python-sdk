@@ -11,7 +11,7 @@ class DescribeAIAgentInstanceResponseBody(DaraModel):
         instance: main_models.DescribeAIAgentInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The information about the AI agent.
+        # Information about the AI agent instance.
         self.instance = instance
         # The request ID.
         self.request_id = request_id
@@ -58,20 +58,25 @@ class DescribeAIAgentInstanceResponseBodyInstance(DaraModel):
         template_config: main_models.AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The configuration of the AI agent.
         self.agent_config = agent_config
+        # Information about the call.
         self.call_info = call_info
-        # The URL of the call log file.
+        # The URL of the call log.
         self.call_log_url = call_log_url
+        # The creation time (UTC).
         self.gmt_create = gmt_create
+        # The modification time (UTC).
         self.gmt_modified = gmt_modified
-        # The runtime configurations of the AI agent.
+        # The runtime configuration of the AI agent.
         self.runtime_config = runtime_config
+        # The session ID for the conversation. This parameter is empty by default.
         self.session_id = session_id
-        # The state of the AI agent. Valid values: Finished and Executing.
+        # The status of the AI agent instance, such as `Finished` or `Executing`.
         self.status = status
-        # The template configurations of the AI agent.
+        # The AI agent template configuration.
         self.template_config = template_config
-        # The custom information.
+        # The user data.
         self.user_data = user_data
 
     def validate(self):

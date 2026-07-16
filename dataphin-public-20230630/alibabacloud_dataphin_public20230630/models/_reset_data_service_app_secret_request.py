@@ -11,8 +11,12 @@ class ResetDataServiceAppSecretRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.ResetDataServiceAppSecretRequestUpdateCommand = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Reset Data Service Application Key
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -51,9 +55,18 @@ class ResetDataServiceAppSecretRequestUpdateCommand(DaraModel):
         app_key: str = None,
         app_secret: str = None,
     ):
+        # Application ID
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The new application key, which must be globally unique and is used when calling APIs.
+        # The length is 8 to 128 English characters, and can contain digits, underscores (_), and hyphens (-).
+        # Customization is supported only when using Alibaba Cloud API Gateway or the built-in gateway. This configuration is ignored when using a dedicated cloud gateway.
         self.app_key = app_key
+        # The new application secret.
+        # If this parameter is left empty, the system automatically generates a new AppSecret value.
+        # The length is 8 to 127 English characters, and can contain digits, underscores (_), and hyphens (-).
+        # Customization is supported only when using Alibaba Cloud API Gateway or the built-in gateway. This configuration is ignored when using a dedicated cloud gateway.
         self.app_secret = app_secret
 
     def validate(self):

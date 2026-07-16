@@ -13,9 +13,9 @@ class ListDataTasksResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListDataTasksResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -61,15 +61,15 @@ class ListDataTasksResponseBodyResult(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The time when the site monitoring task was created.
+        # The time when the task was created.
         self.create_time = create_time
-        # The information of the target cluster.
+        # The destination cluster information.
         self.sink_cluster = sink_cluster
-        # The information about the source cluster.
+        # The source cluster information.
         self.source_cluster = source_cluster
-        # The status of the task.
+        # The task status.
         self.status = status
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -131,17 +131,17 @@ class ListDataTasksResponseBodyResultSourceCluster(DaraModel):
         settings: str = None,
         type: str = None,
     ):
-        # The type of the source cluster. Default value: elasticsearch.
+        # The source cluster type. Default value: elasticsearch.
         self.data_source_type = data_source_type
-        # The index whose data you want to migrate.
+        # The index to be migrated.
         self.index = index
         # The Mapping configuration of the cluster.
         self.mapping = mapping
-        # The routing field to index the table. It is set to the primary key by default.
+        # The routing field of the index. The primary key field is used by default.
         self.routing = routing
-        # The Settings of the cluster.
+        # The Settings configuration of the cluster.
         self.settings = settings
-        # The type of the destination index.
+        # The index type.
         self.type = type
 
     def validate(self):
@@ -205,19 +205,19 @@ class ListDataTasksResponseBodyResultSinkCluster(DaraModel):
         vpc_instance_id: str = None,
         vpc_instance_port: str = None,
     ):
-        # The type of the target cluster. Default value: elasticsearch.
+        # The destination cluster type. Default value: elasticsearch.
         self.data_source_type = data_source_type
-        # The public network access address of the target cluster.
+        # The public network access address of the destination cluster.
         self.endpoint = endpoint
-        # The target index.
+        # The destination index.
         self.index = index
-        # The type of the destination index.
+        # The index type.
         self.type = type
-        # The ID of the VPC to which the cluster belongs.
+        # The ID of the virtual private cloud (VPC) where the cluster resides.
         self.vpc_id = vpc_id
-        # The instance ID or Server Load Balancer (SLB) ID of the current cluster.
+        # The instance ID of the current cluster or the load balancing SLB (Server Load Balancer) instance ID.
         self.vpc_instance_id = vpc_instance_id
-        # The access port number of the cluster.
+        # The port number used to access the cluster.
         self.vpc_instance_port = vpc_instance_port
 
     def validate(self):

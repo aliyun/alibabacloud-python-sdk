@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._kopilot_chat_stream_request import KopilotChatStreamRequest
+from ._kopilot_chat_stream_response_body import KopilotChatStreamResponseBody
+from ._kopilot_chat_stream_response import KopilotChatStreamResponse
+from ._kopilot_feedback_request import KopilotFeedbackRequest
+from ._kopilot_feedback_response_body import KopilotFeedbackResponseBody
+from ._kopilot_feedback_response import KopilotFeedbackResponse
+from ._kopilot_list_conversation_chat_messages_request import KopilotListConversationChatMessagesRequest
+from ._kopilot_list_conversation_chat_messages_response_body import KopilotListConversationChatMessagesResponseBody
+from ._kopilot_list_conversation_chat_messages_response import KopilotListConversationChatMessagesResponse
+from ._kopilot_list_conversations_request import KopilotListConversationsRequest
+from ._kopilot_list_conversations_response_body import KopilotListConversationsResponseBody
+from ._kopilot_list_conversations_response import KopilotListConversationsResponse
+from ._kopilot_query_status_request import KopilotQueryStatusRequest
+from ._kopilot_query_status_response_body import KopilotQueryStatusResponseBody
+from ._kopilot_query_status_response import KopilotQueryStatusResponse
+from ._kopilot_list_conversation_chat_messages_response_body import KopilotListConversationChatMessagesResponseBodyDataMessages
+from ._kopilot_list_conversation_chat_messages_response_body import KopilotListConversationChatMessagesResponseBodyData
+from ._kopilot_list_conversations_response_body import KopilotListConversationsResponseBodyData
+from ._kopilot_query_status_response_body import KopilotQueryStatusResponseBodyData
+
+__all__ = [
+    KopilotChatStreamRequest,
+    KopilotChatStreamResponseBody,
+    KopilotChatStreamResponse,
+    KopilotFeedbackRequest,
+    KopilotFeedbackResponseBody,
+    KopilotFeedbackResponse,
+    KopilotListConversationChatMessagesRequest,
+    KopilotListConversationChatMessagesResponseBody,
+    KopilotListConversationChatMessagesResponse,
+    KopilotListConversationsRequest,
+    KopilotListConversationsResponseBody,
+    KopilotListConversationsResponse,
+    KopilotQueryStatusRequest,
+    KopilotQueryStatusResponseBody,
+    KopilotQueryStatusResponse,
+    KopilotListConversationChatMessagesResponseBodyDataMessages,
+    KopilotListConversationChatMessagesResponseBodyData,
+    KopilotListConversationsResponseBodyData,
+    KopilotQueryStatusResponseBodyData
+]

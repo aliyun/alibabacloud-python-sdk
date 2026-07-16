@@ -23,31 +23,31 @@ class DescribeCenRouteMapsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The region ID of the routing policy.
+        # The ID of the region where the routing policy is applied.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.cen_region_id = cen_region_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The routing policy ID.
+        # The ID of the routing policy.
         self.route_map_id = route_map_id
-        # The route table ID of the transit router with which the routing policy is associated.
+        # The ID of the route table of the transit router that is associated with the routing policy.
         self.transit_router_route_table_id = transit_router_route_table_id
         # The direction in which the routing policy is applied. Valid values:
         # 
-        # *   **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
+        # - **RegionIn**: Inbound. The routing policy is applied to routes that are advertised to the gateway of a region.
         # 
-        # For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
+        # For example, routes are advertised from network instances in the current region to the gateway of the current region, or routes from other regions are advertised to the gateway of the current region.
         # 
-        # *   **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
+        # - **RegionOut**: Outbound. The routing policy is applied to routes that are advertised from the gateway of a region.
         # 
-        # For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the current region, or to gateways deployed in other regions.
+        # For example, routes are advertised from the gateway of the current region to network instances in the current region, or to gateways in other regions.
         self.transmit_direction = transmit_direction
 
     def validate(self):

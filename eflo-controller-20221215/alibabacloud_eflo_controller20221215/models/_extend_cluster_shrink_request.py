@@ -14,17 +14,17 @@ class ExtendClusterShrinkRequest(DaraModel):
         v_switch_zone_id: str = None,
         vpd_subnets_shrink: str = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Whether to allow skipping failed node tasks, default value is False
+        # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # IP allocation combination policy: Each policy can only choose one type, and multiple policies can be combined
+        # The combined IP allocation policy. Each policy can use only one policy type, and multiple policies can be combined.
         self.ip_allocation_policy_shrink = ip_allocation_policy_shrink
-        # Node Groups
+        # The node groups.
         self.node_groups_shrink = node_groups_shrink
-        # VSwitch availability zone ID
+        # The zone ID of the vSwitch.
         self.v_switch_zone_id = v_switch_zone_id
-        # List of cluster subnets
+        # The list of cluster subnets.
         self.vpd_subnets_shrink = vpd_subnets_shrink
 
     def validate(self):

@@ -10,11 +10,11 @@ class DeleteSiteOriginClientCertificateRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # The certificate ID on ESA.
+        # The certificate ID.
         # 
         # This parameter is required.
         self.id = id
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

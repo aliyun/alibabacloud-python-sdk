@@ -12,19 +12,19 @@ class UpdateApplicationTokenExpirationTimeRequest(DaraModel):
         expiration_time: int = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS的应用资源TokenID。
+        # The application token ID.
         # 
         # This parameter is required.
         self.application_token_id = application_token_id
-        # 不填，默认1年后到期
+        # The expiration time.
         # 
         # This parameter is required.
         self.expiration_time = expiration_time
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

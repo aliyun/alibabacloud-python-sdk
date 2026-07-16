@@ -15,30 +15,35 @@ class QuerySmsSignResponseBody(DaraModel):
         sign_name: str = None,
         sign_status: int = None,
     ):
-        # The response code.
+        # The status code of the request.
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The date and time when the signature was created.
+        # The date and time when the SMS signature was created.
         self.create_date = create_date
-        # The returned message.
+        # The description of the status code.
         self.message = message
-        # The remarks of the review. Valid values:
+        # The review reason.
         # 
-        # *   If the signature is in the **Approved** or **Pending Approval** state, No Remarks is returned.
-        # *   If the signature is in the **Not Approved** state, the reason why the signature is rejected is returned.
+        # - If the review status is **Approved** or **Pending Review**, this parameter is empty.
+        # 
+        # - If the review status is **Rejected**, this parameter provides the reason for the rejection.
         self.reason = reason
         # The request ID.
         self.request_id = request_id
-        # The signature.
+        # The SMS signature.
         self.sign_name = sign_name
-        # The status of the signature. Valid values:
+        # The review status of the SMS signature. Valid values:
         # 
-        # *   **0**: The signature is pending approval.
-        # *   **1**: The signature is approved.
-        # *   **2**: The signature is rejected. The Reason parameter indicates the reason why the signature is rejected.
-        # *   **10**: The signature is cancelled.
+        # - **0**: Pending Review.
+        # 
+        # - **1**: Approved.
+        # 
+        # - **2**: Rejected. For details, see the `Reason` parameter.
+        # 
+        # - **10**: Canceled.
         self.sign_status = sign_status
 
     def validate(self):

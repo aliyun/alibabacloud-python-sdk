@@ -55,17 +55,14 @@ class DescribeClusterVulsResponseBodyVulRecords(DaraModel):
         vul_name: str = None,
         vul_type: str = None,
     ):
-        # The CVE list.
+        # The list of CVEs.
         self.cve_list = cve_list
-        # The severity level of the vulnerability.
-        # 
-        # Valid values:
-        # 
-        # *   nntf: low
-        # *   later: medium     
-        # *   asap: high
+        # The severity level of the vulnerability. Valid values:
+        # - nntf: low
+        # - later: medium
+        # - asap: high.
         self.necessity = necessity
-        # The number of nodes that have the vulnerability.
+        # The number of nodes that have this vulnerability.
         self.node_count = node_count
         # The node pool ID.
         self.nodepool_id = nodepool_id
@@ -75,16 +72,13 @@ class DescribeClusterVulsResponseBodyVulRecords(DaraModel):
         self.vul_alias_name = vul_alias_name
         # The name of the vulnerability.
         self.vul_name = vul_name
-        # The type of vulnerability.
-        # 
-        # Valid values:
-        # 
-        # *   app: application vulnerabilities
-        # *   sca: application vulnerabilities (software component analysis)
-        # *   cve: Linux vulnerabilities
-        # *   cms: Web-CMS vulnerabilities
-        # *   sys: Windows vulnerabilities
-        # *   emg:  emergency vulnerabilities
+        # The type of the vulnerability. Valid values:
+        # - app: application vulnerability
+        # - sca: application vulnerability (Software Composition Analysis)
+        # - cve: Linux vulnerability
+        # - cms: WebCMS vulnerability
+        # - sys: Windows vulnerability
+        # - emg: emergency vulnerability.
         self.vul_type = vul_type
 
     def validate(self):

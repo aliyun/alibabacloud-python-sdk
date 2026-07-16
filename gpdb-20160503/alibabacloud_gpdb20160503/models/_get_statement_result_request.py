@@ -14,24 +14,24 @@ class GetStatementResultRequest(DaraModel):
         region_id: str = None,
         secret_arn: str = None,
     ):
-        # Instance ID. Can be obtained by calling DescribeDBInstances.
+        # The instance ID. You can call DescribeDBInstances to obtain the ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Database name.
+        # The database name.
         self.database = database
-        # Task ID for asynchronous SQL execution.
+        # The task ID of the asynchronous SQL execution.
         # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
-        # Region ID where the instance is located.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Access credential. Created through the CreateSecret interface.
+        # The access credential. Created by calling the CreateSecret operation.
         # 
-        # > When accessing this interface with a sub-account, the sub-account must have the UseSecret or GetSecretValue permission for this SecretArn.
+        # > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
         # 
         # This parameter is required.
         self.secret_arn = secret_arn

@@ -13,11 +13,18 @@ class RunSearchSimilarArticlesShrinkRequest(DaraModel):
         url: str = None,
         workspace_id: str = None,
     ):
+        # Communication configuration parameters.
         self.chat_config_shrink = chat_config_shrink
+        # Document type.
         self.doc_type = doc_type
+        # Article title.
         self.title = title
+        # Article URL.
+        # 
         # This parameter is required.
         self.url = url
+        # Unique identifier of the Alibaba Cloud Model Studio workspace. To get this ID, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

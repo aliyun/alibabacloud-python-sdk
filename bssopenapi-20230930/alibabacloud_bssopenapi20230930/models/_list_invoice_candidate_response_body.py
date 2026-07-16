@@ -17,11 +17,17 @@ class ListInvoiceCandidateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The list of data entries.
         self.data = data
+        # The metadata of the response.
         self.metadata = metadata
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -107,26 +113,47 @@ class ListInvoiceCandidateResponseBodyData(DaraModel):
         total_amount: str = None,
         type: int = None,
     ):
+        # The accepted offset amount.
         self.accepted_offset_amount = accepted_offset_amount
+        # The account ID.
         self.account_id = account_id
+        # The account name.
         self.account_name = account_name
+        # The billing cycle.
         self.billing_cycle = billing_cycle
+        # The business document number.
         self.business_id = business_id
+        # The time when the business event occurred.
         self.business_time = business_time
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The commodity name.
         self.commodity_name = commodity_name
+        # The creation time.
         self.create_time = create_time
+        # The ID of the invoice candidate.
         self.id = id
+        # The invoice issuer.
         self.invoice_issuer = invoice_issuer
+        # The invoiceable amount.
         self.invoiceable_amount = invoiceable_amount
+        # The invoiced amount.
         self.invoiced_amount = invoiced_amount
+        # The offset amount.
         self.offset_amount = offset_amount
+        # The product code.
         self.product_code = product_code
+        # The product name.
         self.product_name = product_name
+        # The ID of the resource owner account.
         self.resource_owner_account_id = resource_owner_account_id
+        # The name of the resource owner account.
         self.resource_owner_account_name = resource_owner_account_name
+        # The status of the invoice candidate.
         self.status = status
+        # The total amount.
         self.total_amount = total_amount
+        # The type of the invoice candidate.
         self.type = type
 
     def validate(self):

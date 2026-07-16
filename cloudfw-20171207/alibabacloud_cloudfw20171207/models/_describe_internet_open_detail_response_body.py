@@ -14,8 +14,11 @@ class DescribeInternetOpenDetailResponseBody(DaraModel):
         page_info: main_models.DescribeInternetOpenDetailResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The list of returned data.
         self.data_list = data_list
+        # The pagination information.
         self.page_info = page_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,8 +71,11 @@ class DescribeInternetOpenDetailResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the returned page.
         self.current_page = current_page
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -129,26 +135,47 @@ class DescribeInternetOpenDetailResponseBodyDataList(DaraModel):
         traffic_percent_7day: str = None,
         unknown_reason: List[str] = None,
     ):
+        # The ID of the asset instance.
         self.assets_instance_id = assets_instance_id
+        # The instance name.
         self.assets_name = assets_name
+        # The asset type of the instance.
         self.assets_type = assets_type
+        # The ID of the details.
         self.id = id
+        # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
+        # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
+        # The port that is exposed to the Internet.
         self.port = port
+        # The security threat.
         self.prob_risk = prob_risk
+        # The description of the security threat.
         self.prob_risk_desc = prob_risk_desc
+        # The protocol type.
         self.protocol = protocol
+        # The public IP address.
         self.public_ip = public_ip
+        # The region ID of the instance.
         self.region_no = region_no
+        # The risk level.
         self.risk_level = risk_level
+        # The cause of the risk.
         self.risk_reason = risk_reason
+        # The application name.
         self.service_name = service_name
+        # The recommended policy level.
         self.suggest_level = suggest_level
+        # The total traffic.
         self.total_bytes = total_bytes
+        # The percentage of traffic in the last 24 hours.
         self.traffic_percent_1day = traffic_percent_1day
+        # The percentage of traffic in the last 30 days.
         self.traffic_percent_30day = traffic_percent_30day
+        # The percentage of traffic in the last 7 days.
         self.traffic_percent_7day = traffic_percent_7day
+        # The reason why the protocol is not detected when the protocol is identified as Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

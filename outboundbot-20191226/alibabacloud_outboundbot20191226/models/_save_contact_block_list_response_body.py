@@ -14,11 +14,17 @@ class SaveContactBlockListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The number of affected rows.
         self.affected_rows = affected_rows
+        # The status code of the API.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the API call.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

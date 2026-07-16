@@ -78,12 +78,39 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(DaraModel):
         # 
         # ErrorMessage: the error message of the main job.
         self.extend = extend
+        # Additional input.
+        # 
+        # - When JobType is Smart_Mix_Timeline_Organize or Screen_Media_Highlights_Timeline_Organize, the additional input is the material selection result.
+        # 
+        # - When JobType is Scene_Batch_Editing, the additional input is a list of video editing project IDs.
         self.extend_input = extend_input
+        # Additional outputs.
+        # 
+        # - When JobType is Smart_Mix_Media_Select or Screen_Media_Highlights_Media_Select, material selection results are additionally returned.
         self.extend_output = extend_output
         # The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
         self.input_config = input_config
         # The job ID.
         self.job_id = job_id
+        # Task Type:
+        # 
+        # - Script (Script-based automated video editing)
+        # 
+        # - Smart_Mix (Intelligent text-to-media matching for video editing)
+        # 
+        # - Sports_Highlights (Sporting event highlights compilation)
+        # 
+        # - Screen_Media_Highlights (High-energy multi-media mashup editing)
+        # 
+        # - Smart_Mix_Media_Select (Intelligent matching – Material selection)
+        # 
+        # - Smart_Mix_Timeline_Organize (Intelligent matching – Timeline orchestration)
+        # 
+        # - Screen_Media_Highlights_Media_Select (High-energy mashup – Material selection)
+        # 
+        # - Screen_Media_Highlights_Timeline_Organize (High-energy mashup – Timeline orchestration)
+        # 
+        # - Scene_Batch_Editing (Batch synthesis across multiple timelines)
         self.job_type = job_type
         # The time when the job was last modified.
         # 
@@ -222,6 +249,7 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJobSubJobList(DaraModel):
         project_id: str = None,
         status: str = None,
     ):
+        # The duration of the output video, in seconds (s).
         self.duration = duration
         # The error code that is returned if the subjob failed. This parameter is not returned if the subjob is successful.
         self.error_code = error_code

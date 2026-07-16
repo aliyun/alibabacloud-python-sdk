@@ -12,8 +12,11 @@ class GetAgentSessionArtifactMetaRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.GetAgentSessionArtifactMetaRequestParams = None,
     ):
+        # A client-provided ID that is echoed in the response.
         self.id = id
+        # The JSON-RPC version. The value is `2.0`.
         self.jsonrpc = jsonrpc
+        # The container for business parameters.
         self.params = params
 
     def validate(self):
@@ -56,7 +59,9 @@ class GetAgentSessionArtifactMetaRequestParams(DaraModel):
         artifact_path: str = None,
         session_id: str = None,
     ):
+        # The path of the artifact.
         self.artifact_path = artifact_path
+        # The ID of the session.
         self.session_id = session_id
 
     def validate(self):

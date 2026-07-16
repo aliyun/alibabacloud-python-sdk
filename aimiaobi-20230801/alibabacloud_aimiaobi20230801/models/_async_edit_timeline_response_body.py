@@ -15,12 +15,17 @@ class AsyncEditTimelineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -81,7 +86,9 @@ class AsyncEditTimelineResponseBodyData(DaraModel):
         message: str = None,
         task_id: str = None,
     ):
+        # Response message
         self.message = message
+        # Unique task ID
         self.task_id = task_id
 
     def validate(self):

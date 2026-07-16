@@ -13,9 +13,9 @@ class GetPasswordExpirationConfigurationResponseBody(DaraModel):
         password_expiration_configuration: main_models.GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfiguration = None,
         request_id: str = None,
     ):
-        # The password expiration configurations.
+        # The password expiration configuration.
         self.password_expiration_configuration = password_expiration_configuration
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,41 +58,37 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
         password_forced_update_duration: int = None,
         password_valid_max_day: int = None,
     ):
-        # The list of valid authentication IDs. The default is all ["ia_all"]
+        # The list of effective authentication source IDs. Default value: ["ia_all"].
         # 
-        # ia_all: All. If you fill in this value, you cannot fill in other values
-        # 
-        # ia_password: Account password login
-        # 
-        # ia_otp_sms: SMS verification code login method
-        # 
-        # ia_webauthn: WebAuthn authenticator login method
-        # 
-        # idp_xxx: Specific identity provider authentication method
+        # - ia_all: All authentication sources. If this value is specified, no other values can be specified.
+        # - ia_password: Account password logon.
+        # - ia_otp_sms: SMS verification code logon.
+        # - ia_webauthn: WebAuthn authenticator logon.
+        # - idp_xxx: Authentication method of a specific identity provider.
         self.effective_authentication_source_ids = effective_authentication_source_ids
         # The action to take when a password expires. Valid values:
         # 
-        # *   forbid_login: Prohibit the user from using the password to log on to IDaaS.
-        # *   force_update_password: Force the user to change the password.
-        # *   remind_update_password: Remind the user to change the password.
+        # - forbid_login: Forbid logon.
+        # - force_update_password: Force password change.
+        # - remind_update_password: Remind password change.
         self.password_expiration_action = password_expiration_action
-        # The methods for receiving password expiration notifications.
+        # The list of password expiration notification channels.
         self.password_expiration_notification_channels = password_expiration_notification_channels
-        # The number of days before the expiration date during which password expiration notifications are sent. Unit: day.
+        # The advance notice period before password expiration. Unit: days.
         self.password_expiration_notification_duration = password_expiration_notification_duration
-        # Indicates whether the password expiration notification feature is enabled. Valid values:
+        # The status of password expiration notification. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_expiration_notification_status = password_expiration_notification_status
-        # Indicates whether the password expiration feature is enabled. Valid values:
+        # The status of the password expiration configuration. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_expiration_status = password_expiration_status
-        # The number of days before which users must change the password to prevent password expiration. Unit: day.
+        # The grace period for forced password change after expiration. Unit: days.
         self.password_forced_update_duration = password_forced_update_duration
-        # The validity period of a password. Unit: day.
+        # The maximum validity period of a password. Unit: days.
         self.password_valid_max_day = password_valid_max_day
 
     def validate(self):

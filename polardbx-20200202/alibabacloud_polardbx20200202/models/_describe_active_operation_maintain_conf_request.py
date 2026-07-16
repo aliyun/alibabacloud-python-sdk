@@ -9,6 +9,8 @@ class DescribeActiveOperationMaintainConfRequest(DaraModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

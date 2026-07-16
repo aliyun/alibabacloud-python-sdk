@@ -26,25 +26,45 @@ class DescribeOutgoingDestinationRequest(DaraModel):
         start_time: str = None,
         tag_id: str = None,
     ):
+        # The policy coverage status.
         self.acl_coverage = acl_coverage
+        # The application name.
         self.application_name = application_name
+        # The category ID.
         self.category_id = category_id
+        # The number of the page to return.
         self.current_page = current_page
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Specifies whether to count only the traffic to AI services. The default value is false.
         self.is_aitraffic = is_aitraffic
+        # The language of the response message.
         self.lang = lang
+        # The sorting order.
         self.order = order
+        # The number of the page to return.
         self.page_size = page_size
+        # The port number.
         self.port = port
+        # The private IP address.
         self.private_ip = private_ip
+        # The public IP address.
         self.public_ip = public_ip
+        # The security policy for the outbound connection.
         self.security_suggest = security_suggest
+        # The field to use for sorting.
         self.sort = sort
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The tag ID.
         self.tag_id = tag_id
 
     def validate(self):

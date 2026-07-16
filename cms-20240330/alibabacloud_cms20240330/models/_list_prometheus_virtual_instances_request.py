@@ -13,9 +13,10 @@ class ListPrometheusVirtualInstancesRequest(DaraModel):
         tenant_id: str = None,
     ):
         self.max_results = max_results
-        # Optional cloud product
+        # The namespace of the cloud product. This parameter is optional.
         self.namespace = namespace
         self.next_token = next_token
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

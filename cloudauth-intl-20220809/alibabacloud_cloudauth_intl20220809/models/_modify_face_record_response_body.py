@@ -12,8 +12,11 @@ class ModifyFaceRecordResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The return code.
         self.code = code
+        # The result.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id

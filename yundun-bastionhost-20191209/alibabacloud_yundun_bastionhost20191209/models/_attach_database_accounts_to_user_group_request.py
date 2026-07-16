@@ -15,20 +15,22 @@ class AttachDatabaseAccountsToUserGroupRequest(DaraModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # An array that consists of the database objects.
+        # An array of database objects.
         # 
-        # >  You can specify up to 10 databases and 10 database accounts. The database accounts are not required. If you do not specify a database account, the user group is authorized to manage only the databases.
+        # > You can specify up to 10 databases and 10 database accounts. If you do not specify any database accounts, permissions are granted on the entire database.
         self.databases = databases
-        # The bastion host ID.
+        # The ID of the Bastionhost instance.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > Call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
+        # The ID of the user group to which to grant the permissions.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
 
@@ -84,9 +86,9 @@ class AttachDatabaseAccountsToUserGroupRequestDatabases(DaraModel):
         database_account_ids: List[str] = None,
         database_id: str = None,
     ):
-        # An array that consists of database account IDs.
+        # An array of database account IDs.
         self.database_account_ids = database_account_ids
-        # The ID of the database that you want to authorize the user group to manage.
+        # The ID of the database instance on which you want to grant permissions.
         self.database_id = database_id
 
     def validate(self):

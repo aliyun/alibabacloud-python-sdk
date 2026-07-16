@@ -10,7 +10,9 @@ class ListMemoryNodesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The pagination token returned from a previous request. If specified, the query results are paginated based on the previous request.
         self.next_token = next_token
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetClusterSuspEventStatisticsResponseBody(DaraModel):
         request_id: str = None,
         susp_statistics: main_models.GetClusterSuspEventStatisticsResponseBodySuspStatistics = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of alerts by risk level.
+        # The number of alerts by severity level.
         self.susp_statistics = susp_statistics
 
     def validate(self):
@@ -51,11 +51,11 @@ class GetClusterSuspEventStatisticsResponseBodySuspStatistics(DaraModel):
         serious: int = None,
         suspicious: int = None,
     ):
-        # The number of alerts whose Emergency level is Reminder.
+        # The number of alerts with the reminder severity level.
         self.remind = remind
-        # The number of alerts whose Emergency level is Urgent.
+        # The number of alerts with the urgent severity level.
         self.serious = serious
-        # The number of alerts whose Emergency level is Suspicious.
+        # The number of alerts with the suspicious severity level.
         self.suspicious = suspicious
 
     def validate(self):

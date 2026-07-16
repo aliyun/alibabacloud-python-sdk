@@ -10,8 +10,12 @@ class GetTopicByIdRequest(DaraModel):
         agent_key: str = None,
         id: str = None,
     ):
+        # Workspace unique identifier: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Data ID
+        # 
         # This parameter is required.
         self.id = id
 

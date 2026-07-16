@@ -7,58 +7,54 @@ from darabonba.model import DaraModel
 class ModifyDBClusterSSLRequest(DaraModel):
     def __init__(
         self,
+        connection_string: str = None,
         dbcluster_id: str = None,
         dbendpoint_id: str = None,
         net_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        pfs_instance_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sslauto_rotate: str = None,
         sslenabled: str = None,
     ):
-        # The ID of the cluster.
+        self.connection_string = connection_string
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the endpoint.
+        # The endpoint ID.
         # 
-        # > 
-        # 
-        # *   This parameter is required for PolarDB for MySQL clusters.
-        # 
-        # *   This parameter is not required for PolarDB for PostgreSQL or PolarDB for PostgreSQL (Compatible with Oracle) clusters. By default, SSL encryption is enabled for all endpoints of the clusters.
-        # 
-        # *   You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to view the details of the endpoint.
+        # >* If the cluster is a PolarDB for MySQL cluster, this parameter is required.
+        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
+        # >* You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/2319159.html) operation to query endpoint details.
         self.dbendpoint_id = dbendpoint_id
-        # The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
+        # The network type of the endpoint. The value must be the same as the network type of the endpoint specified by **DBEndpointId**. Valid values:
+        # * **Public**: public network
+        # * **Private**: private network
+        # * **Inner**: private network (classic network)
         # 
-        # *   **Public**
-        # *   **Private**
-        # *   **Inner**
-        # 
-        # > 
-        # 
-        # *   This parameter is required for a PolarDB for MySQL cluster.
-        # 
-        # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+        # >* If the cluster is a PolarDB for MySQL cluster, this parameter is required.
+        # >* If the cluster is a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster, you do not need to specify this parameter. SSL encryption is enabled for all endpoints by default.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.pfs_instance_id = pfs_instance_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether automatic rotation of SSL certificates is enabled.
+        # Specifies whether to enable automatic SSL certificate rotation. Valid values:
         # 
-        # *   **Enable**: The feature is enabled.
-        # *   **Disable**: The feature is disabled.
+        # - **Enable**: enables automatic SSL certificate rotation.
+        # 
+        # - **Disable**: disables automatic SSL certificate rotation.
         self.sslauto_rotate = sslauto_rotate
-        # The SSL encryption status. Valid values:
+        # The SSL status. Valid values:
+        # * **Disable**: shutdown SSL encryption.
+        # * **Enable**: enables SSL encryption.
+        # * **Update**: updates the CA certificate.
         # 
-        # *   **Disable**: SSL encryption is disabled.
-        # *   **Enable**: SSL encryption is enabled.
-        # *   **Update**: The SSL certificate is updated.
-        # 
-        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+        # > After you enable SSL encryption or update the CA certificate, you must download and configure the certificate. For details, see [Settings for SSL encryption](https://help.aliyun.com/document_detail/153182.html).
         self.sslenabled = sslenabled
 
     def validate(self):
@@ -69,6 +65,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -83,6 +82,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.pfs_instance_id is not None:
+            result['PfsInstanceId'] = self.pfs_instance_id
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -100,6 +102,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 
@@ -114,6 +119,9 @@ class ModifyDBClusterSSLRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PfsInstanceId') is not None:
+            self.pfs_instance_id = m.get('PfsInstanceId')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

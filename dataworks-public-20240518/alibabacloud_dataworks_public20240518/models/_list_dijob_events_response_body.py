@@ -152,11 +152,15 @@ class ListDIJobEventsResponseBodyPagingInfoDIJobEvent(DaraModel):
         self.status = status
         # The type of the alert event.
         # 
-        # *   Heartbeat
-        # *   Delay
-        # *   FailoverCount
-        # *   DdlReport
-        # *   ResourceUtilization
+        # - Heartbeat
+        # 
+        # - Delay
+        # 
+        # - FailoverCount
+        # 
+        # - DdlReport
+        # 
+        # - ResourceUtilization
         self.type = type
 
     def validate(self):

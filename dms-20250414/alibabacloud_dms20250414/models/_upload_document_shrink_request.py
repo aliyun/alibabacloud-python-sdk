@@ -20,20 +20,39 @@ class UploadDocumentShrinkRequest(DaraModel):
         vl_enhance: bool = None,
         zh_title_enhance: bool = None,
     ):
+        # The number of overlapping characters between adjacent chunks. This value cannot exceed `ChunkSize`. The default is 50.
         self.chunk_overlap = chunk_overlap
+        # The size of each document chunk. The default is 250, and the maximum is 2,048.
         self.chunk_size = chunk_size
+        # The description of the document.
         self.description = description
+        # The name of the document loader. The default is `ADBPGLoader`.
         self.document_loader_name = document_loader_name
+        # The name of the document.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
+        # The OSS location of the input file. Construct this path by appending the file name to the `UploadDir` value returned by the `DescribeKnowledgeBaseUploadSignature` operation.
+        # 
         # This parameter is required.
         self.location = location
+        # An array of strings used to split text.
+        # 
+        # > - This critical parameter affects data chunking results and is related to the splitter specified by `TextSplitterName`.
+        # >
+        # > - In most cases, you can omit this parameter. The service automatically assigns default separators based on `TextSplitterName`.
         self.separators_shrink = separators_shrink
+        # The splitter model to use. The default is `qwen3-8b`.
         self.splitter_model = splitter_model
+        # The name of the text splitter.
         self.text_splitter_name = text_splitter_name
+        # Specifies whether to enable visual-linguistic (VL) enhanced content recognition for complex documents. The default is false.
         self.vl_enhance = vl_enhance
+        # Specifies whether to enable title enhancement.
         self.zh_title_enhance = zh_title_enhance
 
     def validate(self):

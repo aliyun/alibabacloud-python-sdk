@@ -16,17 +16,27 @@ class StartAIAgentInstanceRequest(DaraModel):
         template_config: main_models.AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
-        # The ID of the AI agent created in the [IMS](https://ims.console.aliyun.com/ai/robot/list) console.
+        # The agent ID configured in the [IMS console](https://ims.console.aliyun.com/ai/robot/list).
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
+        # The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+        # 
+        # > This field is compatible with TemplateConfig. Fields in AgentConfig take precedence. If TemplateConfig contains fields not defined in AgentConfig, those fields are used. Use AgentConfig instead of TemplateConfig.
         self.agent_config = agent_config
-        # 同步聊天记录配置。
+        # The chat history synchronization configuration.
         self.chat_sync_config = chat_sync_config
+        # The configuration required for the agent at runtime.
+        # 
         # This parameter is required.
         self.runtime_config = runtime_config
+        # A unique identifier for the chat session. This parameter is optional.
         self.session_id = session_id
+        # The agent template configuration. Values you provide merge with the template configuration set in the console. If you omit this parameter, the agent uses its default configuration from the console.
+        # 
+        # > The agent template configuration. This field is deprecated. See the AgentConfig field.
         self.template_config = template_config
+        # User-defined data.
         self.user_data = user_data
 
     def validate(self):
@@ -102,9 +112,9 @@ class StartAIAgentInstanceRequestChatSyncConfig(DaraModel):
         imaiagent_id: str = None,
         receiver_id: str = None,
     ):
-        # IM的智能体Id。
+        # The IM agent ID.
         self.imaiagent_id = imaiagent_id
-        # 接收用户Id。
+        # The receiver user ID.
         self.receiver_id = receiver_id
 
     def validate(self):

@@ -21,34 +21,39 @@ class ListVpcEndpointConnectionsRequest(DaraModel):
     ):
         # The state of the endpoint connection. Valid values:
         # 
-        # *   **Pending**: The endpoint connection is being modified.
-        # *   **Connecting**: The endpoint connection is being established.
-        # *   **Connected**: The endpoint connection is established.
-        # *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-        # *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-        # *   **Deleting**: The connection is being deleted.
-        # *   **ServiceDeleted**: The corresponding endpoint service has been deleted.
+        # - **Pending**: The endpoint connection is being modified.
+        # 
+        # - **Connecting**: The endpoint connection is being established.
+        # 
+        # - **Connected**: The endpoint is connected to the endpoint service.
+        # 
+        # - **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+        # 
+        # - **Disconnected**: The endpoint is disconnected from the endpoint service.
+        # 
+        # - **Deleting**: The endpoint connection is being deleted.
+        # 
+        # - **ServiceDeleted**: The corresponding endpoint service is deleted.
         self.connection_status = connection_status
         # The endpoint ID.
         self.endpoint_id = endpoint_id
         # The ID of the Alibaba Cloud account to which the endpoint belongs.
         self.endpoint_owner_id = endpoint_owner_id
-        # The ID of the endpoint elastic network interface (ENI).
+        # The endpoint elastic network interface (ENI) ID.
         self.eni_id = eni_id
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   If a next request is to be performed, set the value to the value of **NextToken** that is returned from the last call.
+        # The token that is used for the next query. Valid values:
+        # - You do not need to specify this parameter for the first query or if no next query is to be sent.
+        # - If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last API call.
         self.next_token = next_token
-        # The region ID of the endpoint connection.
+        # The region ID of the endpoint connections that you want to query.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the replaced service resource in smooth migration scenarios.
+        # The ID of the service resource that is replaced in the smooth migration scenario.
         self.replaced_resource_id = replaced_resource_id
         # The ID of the resource group to which the endpoint belongs.
         self.resource_group_id = resource_group_id

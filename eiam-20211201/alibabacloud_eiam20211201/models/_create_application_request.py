@@ -21,34 +21,35 @@ class CreateApplicationRequest(DaraModel):
         logo_url: str = None,
         sso_type: str = None,
     ):
+        # The application identity type. Default value: application. Valid values:
+        # - application: application.
+        # - agent: agent.
         self.application_identity_type = application_identity_type
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.application_name = application_name
         self.application_owner = application_owner
-        # The type of the application source. Valid values:
-        # 
-        # *   urn:alibaba:idaas:app:source:template: application template
-        # *   urn:alibaba:idaas:app:source:standard: standard protocol
+        # The source from which the application is created. Valid values:
+        # - urn:alibaba:idaas:app:source:template: application template.
+        # - urn:alibaba:idaas:app:source:standard: standard protocol.
         # 
         # This parameter is required.
         self.application_source_type = application_source_type
-        # The ID of the application template. This parameter is required if you set the ApplicationSourceType parameter to urn:alibaba:idaas:app:source:template.
+        # The application template ID. This parameter is required when ApplicationSourceType is set to urn:alibaba:idaas:app:source:template.
         self.application_template_id = application_template_id
         self.custom_fields = custom_fields
-        # The description of the application.
+        # The application description.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The URL of the application logo.
         self.logo_url = logo_url
-        # The SSO protocol. Valid values:
-        # 
-        # *   saml2: the SAML 2.0 protocol.
-        # *   oidc: the OpenID Connect protocol.
+        # The single sign-on protocol. Valid values:
+        # - saml2: SAML 2.0 protocol.
+        # - oidc: OpenID Connect protocol.
         # 
         # This parameter is required.
         self.sso_type = sso_type

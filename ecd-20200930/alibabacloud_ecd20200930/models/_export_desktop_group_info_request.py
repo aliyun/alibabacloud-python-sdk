@@ -27,8 +27,9 @@ class ExportDesktopGroupInfoRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
+        # 
+        # - PrePaid: subscription.
         self.charge_type = charge_type
         # The IDs of the cloud computer shares.
         self.desktop_group_id = desktop_group_id

@@ -13,9 +13,9 @@ class GetIntegrationPolicyResponseBody(DaraModel):
         policy: main_models.GetIntegrationPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # Access policy.
+        # Integration policy.
         self.policy = policy
-        # ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +64,7 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
     ):
         # Bound resource information.
         self.bind_resource = bind_resource
-        # Cs umodel status
+        # UModel installation status in the container environment.
         self.cs_umodel_status = cs_umodel_status
         # Entity group.
         self.entity_group = entity_group
@@ -72,15 +72,15 @@ class GetIntegrationPolicyResponseBodyPolicy(DaraModel):
         self.managed_info = managed_info
         # Policy ID.
         self.policy_id = policy_id
-        # Rule name.
+        # Policy name.
         self.policy_name = policy_name
-        # Access policy type.
+        # Integration policy type.
         self.policy_type = policy_type
         # Region ID.
         self.region_id = region_id
         # Resource group ID.
         self.resource_group_id = resource_group_id
-        # Tag keys.
+        # Tags.
         self.tags = tags
         # User ID.
         self.user_id = user_id
@@ -284,7 +284,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroup(DaraModel):
         self.entity_group_name = entity_group_name
         # Entity rules.
         self.entity_rules = entity_rules
-        # For querying
+        # Used for query.
         self.query = query
         # Region ID.
         self.region_id = region_id
@@ -372,21 +372,21 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(DaraModel):
     ):
         # Annotations.
         self.annotations = annotations
-        # List of entity types.
+        # Entity type list.
         self.entity_types = entity_types
-        # List of field rules.
+        # Field rule list.
         self.field_rules = field_rules
-        # Instance ID.
+        # Instance IDs.
         self.instance_ids = instance_ids
-        # IP matching rule.
+        # IP match rule.
         self.ip_match_rule = ip_match_rule
         # Labels.
         self.labels = labels
-        # List of region IDs.
+        # Region ID list.
         self.region_ids = region_ids
         # Resource group ID.
         self.resource_group_id = resource_group_id
-        # Tag values.
+        # Tags.
         self.tags = tags
 
     def validate(self):
@@ -502,11 +502,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags(DaraModel
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to be performed.
+        # The operation to perform.
         self.op = op
-        # The tag key of the instance.
+        # Tag key of the instance.
         self.tag_key = tag_key
-        # List of tag values.
+        # Tag value list.
         self.tag_values = tag_values
 
     def validate(self):
@@ -548,11 +548,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels(DaraMod
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The operation to be performed.
+        # The operation to perform.
         self.op = op
-        # The tag key of the instance.
+        # Tag key of the instance.
         self.tag_key = tag_key
-        # List of tag values.
+        # Tag value list.
         self.tag_values = tag_values
 
     def validate(self):
@@ -593,9 +593,9 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule(Da
         ip_cidr: str = None,
         ip_field_key: str = None,
     ):
-        # IP segment.
+        # IP CIDR block.
         self.ip_cidr = ip_cidr
-        # Key for the IP field.
+        # Key of the IP field.
         self.ip_field_key = ip_field_key
 
     def validate(self):
@@ -631,11 +631,11 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(Dar
         field_values: List[str] = None,
         op: str = None,
     ):
-        # Unique identifier for the field.
+        # Unique identifier of the field.
         self.field_key = field_key
-        # Field content.
+        # Field values.
         self.field_values = field_values
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
 
     def validate(self):
@@ -677,7 +677,7 @@ class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(Da
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # Operation to be performed.
+        # The operation to perform.
         self.op = op
         # Tag key.
         self.tag_key = tag_key
@@ -728,7 +728,7 @@ class GetIntegrationPolicyResponseBodyPolicyBindResource(DaraModel):
         self.cluster_id = cluster_id
         # Cluster type.
         self.cluster_type = cluster_type
-        # VPC CIDR.
+        # VPC CIDR block.
         self.vpc_cidr = vpc_cidr
         # VPC ID.
         self.vpc_id = vpc_id

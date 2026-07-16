@@ -13,7 +13,9 @@ class GetCustomPrivacyPolicyResponseBody(DaraModel):
         custom_privacy_policy: main_models.GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy = None,
         request_id: str = None,
     ):
+        # The custom privacy policy.
         self.custom_privacy_policy = custom_privacy_policy
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,12 +57,21 @@ class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy(DaraModel):
         status: str = None,
         user_consent_type: str = None,
     ):
+        # The content details of the custom privacy policy.
         self.custom_privacy_policy_contents = custom_privacy_policy_contents
+        # The custom privacy policy ID.
         self.custom_privacy_policy_id = custom_privacy_policy_id
+        # The custom privacy policy name.
         self.custom_privacy_policy_name = custom_privacy_policy_name
+        # The language of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
         self.default_language_code = default_language_code
+        # The instance ID.
         self.instance_id = instance_id
+        # The status of the custom privacy policy. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
+        # The user consent type.
         self.user_consent_type = user_consent_type
 
     def validate(self):
@@ -134,8 +145,11 @@ class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyCo
         custom_privacy_policy_tip: str = None,
         language_code: str = None,
     ):
+        # The custom privacy policy items.
         self.custom_privacy_policy_items = custom_privacy_policy_items
+        # The tip for the custom privacy policy content.
         self.custom_privacy_policy_tip = custom_privacy_policy_tip
+        # The language of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
         self.language_code = language_code
 
     def validate(self):
@@ -184,7 +198,9 @@ class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicyCustomPrivacyPolicyCo
         custom_privacy_policy_item_name: str = None,
         custom_privacy_policy_item_url: str = None,
     ):
+        # The name of the custom privacy policy item.
         self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
+        # The URL of the custom privacy policy item. The URL must start with https://.
         self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
 
     def validate(self):

@@ -17,10 +17,10 @@ class DescribeGeographicRegionMembershipRequest(DaraModel):
     ):
         # The ID of the area that you want to query. Valid values:
         # 
-        # *   **china**: the Chinese mainland
-        # *   **asia-pacific**: Asia Pacific
-        # *   **europe**: Europe
-        # *   **north-america**: North America
+        # - **china**: the Chinese mainland
+        # - **asia-pacific**: Asia Pacific
+        # - **europe**: Europe
+        # - **north-america**: North America
         # 
         # This parameter is required.
         self.geographic_region_id = geographic_region_id

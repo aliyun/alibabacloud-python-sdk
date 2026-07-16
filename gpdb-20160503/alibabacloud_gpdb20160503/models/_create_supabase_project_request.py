@@ -11,6 +11,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         auto_scale: bool = None,
         client_token: str = None,
         disk_performance_level: str = None,
+        engine_version: str = None,
         pay_type: str = None,
         period: str = None,
         project_name: str = None,
@@ -25,68 +26,82 @@ class CreateSupabaseProjectRequest(DaraModel):
     ):
         # The password of the initial account.
         # 
-        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
-        # *   The password must be 8 to 32 characters in length.
+        # Password rules:
+        # 
+        # - The password must be 8 to 32 characters in length.
+        # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - Supported special characters include !@#$%^&*()_+-=.
         # 
         # This parameter is required.
         self.account_password = account_password
+        # Specifies whether to enable auto start/stop. If this parameter is not specified, the default value false is used.
         self.auto_scale = auto_scale
-        # The client token that is used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
+        # The idempotency token. Ensures that duplicate requests do not result in duplicate operations.
         self.client_token = client_token
-        # The performance level of Enterprise SSDs (ESSDs). Default value: PL0. Valid values:
+        # The performance level (PL) of the cloud disk. If this parameter is not specified, the default value PL0 is used.
         # 
-        # *   PL0
-        # *   PL1
+        # Valid values:
+        # 
+        # - PL0
+        # - PL1
+        # - PL2
+        # - PL3
         self.disk_performance_level = disk_performance_level
-        self.pay_type = pay_type
-        self.period = period
-        # The name of the Supabase project. The name must meet the following requirements:
+        # The DPI engine version. If this parameter is not specified, the default value PG15 is used. PG17 and later versions support the data sandbox (branch) feature.
         # 
-        # *   The name must be 1 to 128 characters in length.
-        # *   The name can contain only letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start with a letter or an underscore (_).
+        # Valid values:
+        # 
+        # - PG15: PostgreSQL 15.
+        # - PG17: PostgreSQL 17, which supports the data sandbox feature.
+        self.engine_version = engine_version
+        # The billing method. If this parameter is not specified, the default value Free is used.
+        # 
+        # Valid values:
+        # 
+        # - Free: free tier.
+        # - Postpaid: pay-as-you-go.
+        # - Prepaid: subscription.
+        self.pay_type = pay_type
+        # The unit of the subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value Month is used.
+        # 
+        # Valid values:
+        # 
+        # - Month: month.
+        # - Year: year.
+        self.period = period
+        # The name of the Supabase project.
+        # 
+        # Naming rules:
+        # 
+        # - The name must be 1 to 128 characters in length.
+        # - The name can contain letters, digits, hyphens (-), and underscores (_).
+        # - The name must start with a letter or an underscore (_).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The specifications of the Supabase project. Default value: 1C1G.
+        # The specifications of the Supabase project. The Free billing type uses free-tier specifications. For paid billing types, the specifications must match those available in the console.
         # 
         # This parameter is required.
         self.project_spec = project_spec
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # The region ID. Specifies the region in which to create the project.
         self.region_id = region_id
-        # The IP address whitelist.
-        # 
-        # A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create a project.
+        # The IP address whitelist. Separate multiple IP addresses or CIDR blocks with commas (,). If this parameter is not specified, the default value 0.0.0.0/0 is used.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist
-        # The storage size. Unit: GB. Default value: 1.
+        # The storage size. Unit: GB. If this parameter is not specified for non-Free billing types, the default value is 1 GB.
         self.storage_size = storage_size
+        # The subscription duration. This parameter takes effect only when PayType is set to PrePay. If this parameter is not specified, the default value is 1.
         self.used_time = used_time
-        # The vSwitch ID.
-        # 
-        # > 
-        # 
-        # *   **This parameter** must be specified.
-        # 
-        # *   The zone where the **vSwitch** resides must be the same as the zone that is specified by **ZoneId**.
+        # The vSwitch ID. This parameter is required. The zone of the vSwitch must be the same as the value of ZoneId.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
-        # 
-        # > 
-        # 
-        # *   You can call the [DescribeRdsVpcs](https://help.aliyun.com/document_detail/208327.html) operation to query the available VPC IDs.
-        # 
-        # *   This parameter must be specified.
+        # The ID of the virtual private cloud (VPC). This parameter is required.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The zone ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent zone list.
+        # The zone ID. The zone of the vSwitch specified by VSwitchId must be the same as this parameter value.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -110,6 +125,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if self.disk_performance_level is not None:
             result['DiskPerformanceLevel'] = self.disk_performance_level
+
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -159,6 +177,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if m.get('DiskPerformanceLevel') is not None:
             self.disk_performance_level = m.get('DiskPerformanceLevel')
+
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')

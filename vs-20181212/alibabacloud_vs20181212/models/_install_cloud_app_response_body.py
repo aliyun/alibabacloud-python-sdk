@@ -16,10 +16,15 @@ class InstallCloudAppResponseBody(DaraModel):
         success_instance_count: int = None,
         success_instances: List[main_models.InstallCloudAppResponseBodySuccessInstances] = None,
     ):
+        # Number of failed cloud application service instances
         self.failed_instance_count = failed_instance_count
+        # List of failed cloud application service instances
         self.failed_instances = failed_instances
+        # Request ID
         self.request_id = request_id
+        # Number of successful cloud application service instances
         self.success_instance_count = success_instance_count
+        # List of successful cloud application service instances
         self.success_instances = success_instances
 
     def validate(self):
@@ -88,6 +93,7 @@ class InstallCloudAppResponseBodySuccessInstances(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -117,8 +123,11 @@ class InstallCloudAppResponseBodyFailedInstances(DaraModel):
         err_message: str = None,
         rendering_instance_id: str = None,
     ):
+        # Failure error code
         self.err_code = err_code
+        # Failure reason message
         self.err_message = err_message
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

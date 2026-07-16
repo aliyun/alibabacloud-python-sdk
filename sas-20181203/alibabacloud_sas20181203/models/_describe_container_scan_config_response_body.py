@@ -12,7 +12,7 @@ class DescribeContainerScanConfigResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -62,15 +62,15 @@ class DescribeContainerScanConfigResponseBodyData(DaraModel):
         cluster_id: str = None,
         cluster_name: str = None,
     ):
-        # The total number of container applications in the cluster.
+        # The total number of applications in the cluster.
         self.all_count = all_count
-        # The names of the container applications.
+        # The container application name.
         self.app_names = app_names
-        # The number of selected container applications.
+        # The number of selected applications.
         self.choose_count = choose_count
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
 
     def validate(self):

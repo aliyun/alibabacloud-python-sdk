@@ -27,24 +27,43 @@ class GetRiskCountResponseBody(DaraModel):
         upload_certificate_not_notice_count: int = None,
         upload_certificate_will_expired_count: int = None,
     ):
+        # Number of expired Alibaba Cloud certificates.
         self.aliyun_asset_certificate_expired_count = aliyun_asset_certificate_expired_count
+        # Number of Alibaba Cloud certificates that will expire soon.
         self.aliyun_asset_certificate_will_expired_count = aliyun_asset_certificate_will_expired_count
+        # Number of expired paid certificates.
         self.buy_certificate_expire_count = buy_certificate_expire_count
+        # Number of paid certificates not deployed.
         self.buy_certificate_not_deployment_count = buy_certificate_not_deployment_count
+        # Number of paid certificates not managed.
         self.buy_certificate_not_trustee_count = buy_certificate_not_trustee_count
+        # Number of paid certificates that will expire soon.
         self.buy_certificate_will_expired_count = buy_certificate_will_expired_count
+        # Number of failed paid certificate orders.
         self.buy_checked_fail_count = buy_checked_fail_count
+        # Number of domains without monitoring configured.
         self.domain_asset_not_monitor_count = domain_asset_not_monitor_count
+        # Number of expired free certificates.
         self.free_certificate_expire_count = free_certificate_expire_count
+        # Number of free certificates not deployed.
         self.free_certificate_not_deployment_count = free_certificate_not_deployment_count
+        # Number of free certificates that will expire soon.
         self.free_certificate_will_expired_count = free_certificate_will_expired_count
+        # Number of failed free certificate orders.
         self.free_checked_fail_count = free_checked_fail_count
+        # Number of expired multicloud certificates.
         self.multi_cloud_asset_certificate_expired_count = multi_cloud_asset_certificate_expired_count
+        # Number of multicloud certificates that will expire soon.
         self.multi_cloud_asset_certificate_will_expired_count = multi_cloud_asset_certificate_will_expired_count
+        # The ID of this API call. Alibaba Cloud generates this unique identifier for each request. Use it to troubleshoot and locate issues.
         self.request_id = request_id
+        # Number of expired uploaded certificates.
         self.upload_certificate_expire_count = upload_certificate_expire_count
+        # Number of uploaded certificates not deployed.
         self.upload_certificate_not_deployment_count = upload_certificate_not_deployment_count
+        # Number of uploaded certificates without alerting configured.
         self.upload_certificate_not_notice_count = upload_certificate_not_notice_count
+        # Number of uploaded certificates that will expire soon.
         self.upload_certificate_will_expired_count = upload_certificate_will_expired_count
 
     def validate(self):

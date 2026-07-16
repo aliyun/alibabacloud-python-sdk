@@ -9,7 +9,7 @@ class GetTranscodeJobRequest(DaraModel):
         self,
         parent_job_id: str = None,
     ):
-        # The job ID.
+        # Job ID
         self.parent_job_id = parent_job_id
 
     def validate(self):

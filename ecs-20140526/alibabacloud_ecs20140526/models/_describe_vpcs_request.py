@@ -17,15 +17,21 @@ class DescribeVpcsRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        # Specifies whether the VPC is a default VPC. Set to `true` to query the default VPC, or `false` to query non-default VPCs.
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default: 10. Valid values: 1 to 50.
         self.page_size = page_size
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

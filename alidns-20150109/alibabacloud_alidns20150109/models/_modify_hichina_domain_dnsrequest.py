@@ -15,14 +15,15 @@ class ModifyHichinaDomainDNSRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the response. Valid values:
+        # The language of the return value. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
         # 
-        # Default value: en
+        # - en: English
+        # 
+        # Default: en
         self.lang = lang
-        # The IP address of the client.
+        # The client IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

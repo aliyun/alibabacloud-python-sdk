@@ -14,9 +14,9 @@ class DescribeClientEventsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The user events.
+        # The list of user events.
         self.events = events
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -89,72 +89,55 @@ class DescribeClientEventsResponseBodyEvents(DaraModel):
         status: str = None,
         terminal_info: main_models.DescribeClientEventsResponseBodyEventsTerminalInfo = None,
     ):
-        # The ID of the Alibaba Cloud account with which the event is associated.
+        # The ID of the Alibaba Cloud account associated with the event.
         self.ali_uid = ali_uid
-        # The number of bytes that are received.
+        # The number of bytes received.
         self.bytes_received = bytes_received
-        # The number of bytes that are sent.
+        # The number of bytes sent.
         self.bytes_send = bytes_send
         # The IP address of the client.
         self.client_ip = client_ip
-        # The OS that the client runs.
+        # The operating system of the client.
         self.client_os = client_os
         # The client version.
         self.client_version = client_version
-        # The description.
+        # The description of the event.
         self.description = description
-        # The desktop group ID.
+        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The desktop group name.
+        # The name of the desktop group.
         self.desktop_group_name = desktop_group_name
-        # The cloud desktop ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
         # The IP address of the cloud desktop.
         self.desktop_ip = desktop_ip
-        # The cloud desktop name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The ID of the directory to which the cloud desktop belongs.
+        # The ID of the cloud desktop\\"s directory.
         self.directory_id = directory_id
         # The directory type.
         self.directory_type = directory_type
-        # The information about the end user that connects to the cloud desktop from the EDS client. The information can be a RAM user ID or an AD username.
+        # The ID of the end user. The value can be the ID of a RAM user or the username of an AD user.
         self.end_user_id = end_user_id
         # The event ID.
         self.event_id = event_id
-        # The time when the event occurred.
+        # The time the event occurred.
         self.event_time = event_time
-        # The event type. Valid values:
+        # The event type.
         self.event_type = event_type
-        # The ID of the workspace to which the cloud desktop belongs.
+        # The ID of the cloud desktop\\"s office site.
         self.office_site_id = office_site_id
-        # The workspace name.
+        # The name of the office site.
         self.office_site_name = office_site_name
-        # The account type of the workspace.
-        # 
-        # Valid values:
-        # 
-        # *   SIMPLE: convenience account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   AD_CONNECTOR: enterprise AD account
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of account system for the office site.
         self.office_site_type = office_site_type
         # The region ID.
         self.region_id = region_id
-        # The status of the event. If you set the EventType parameter to `DESKTOP_DISCONNECT` or `GET_CONNECTION_TICKET`, this parameter is returned. Valid values:
+        # The status of the event. This parameter is returned for `DESKTOP_DISCONNECT` and `GET_CONNECTION_TICKET` events. Valid values:
         # 
-        # *   200\\. The value indicates that the request is successful.
-        # *   An error message. The value indicates that the request failed. Example: FailedToGetConnectionTicket.
+        # - `200`: Success.
+        # 
+        # - An error message, such as `FailedToGetConnectionTicket`.
         self.status = status
         self.terminal_info = terminal_info
 

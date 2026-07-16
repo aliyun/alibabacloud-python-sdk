@@ -10,7 +10,9 @@ class UnifiedSceneItem(DaraModel):
         detail: str = None,
         type: str = None,
     ):
+        # The result in JSON structure.
         self.detail = detail
+        # The type.
         self.type = type
 
     def validate(self):

@@ -14,9 +14,13 @@ class EffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
+        # The values 0 to 6 indicate Sunday to Saturday.
         self.day_in_week = day_in_week
+        # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
+        # The start time in minutes.
         self.start_time_in_minute = start_time_in_minute
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):

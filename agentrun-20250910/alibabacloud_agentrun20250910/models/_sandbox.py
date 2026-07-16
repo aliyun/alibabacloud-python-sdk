@@ -21,24 +21,35 @@ class Sandbox(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
-        # 沙箱创建时间
+        # Sandbox Creation Time
         # 
         # This parameter is required.
         self.created_at = created_at
+        # Sandbox stop time
         self.ended_at = ended_at
-        # 最后更新时间
+        # Last Update Time
         self.last_updated_at = last_updated_at
+        # Sandbox metadata
         self.metadata = metadata
+        # Sandbox resource ARN
         self.sandbox_arn = sandbox_arn
+        # Sandbox ID
+        # 
         # This parameter is required.
         self.sandbox_id = sandbox_id
+        # Sandbox lifecycle duration (deprecated)
         self.sandbox_idle_ttlin_seconds = sandbox_idle_ttlin_seconds
-        # 沙箱空闲超时时间（秒）
+        # Sandbox idle timeout (seconds)
         self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
+        # Status
+        # 
         # This parameter is required.
         self.status = status
+        # Template ID
+        # 
         # This parameter is required.
         self.template_id = template_id
+        # Template Name
         self.template_name = template_name
 
     def validate(self):

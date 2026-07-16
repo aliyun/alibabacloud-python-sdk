@@ -9,6 +9,7 @@ class RefundInstanceResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The unique ID generated for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

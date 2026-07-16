@@ -10,7 +10,7 @@ class DescribeProductResourceTagKeyListRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         self.region_id = region_id
 

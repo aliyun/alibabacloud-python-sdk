@@ -11,7 +11,7 @@ class DeleteAntiBruteForceRuleRequest(DaraModel):
         self,
         ids: List[int] = None,
     ):
-        # The IDs of the defense rules against brute-force attacks to delete.
+        # The IDs of the brute-force attacks defense rules that you want to delete.
         # 
         # This parameter is required.
         self.ids = ids

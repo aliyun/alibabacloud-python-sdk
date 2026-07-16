@@ -10,8 +10,11 @@ class ListScheduledPlanExecutedHistoryRequest(DaraModel):
         deployment_id: str = None,
         origin: str = None,
     ):
+        # The ID of the deployed job.
+        # 
         # This parameter is required.
         self.deployment_id = deployment_id
+        # The execution source.
         self.origin = origin
 
     def validate(self):

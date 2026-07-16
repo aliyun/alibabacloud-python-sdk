@@ -18,45 +18,42 @@ class ListServiceInstanceResourcesRequest(DaraModel):
         service_instance_resource_type: str = None,
         tag: List[main_models.ListServiceInstanceResourcesRequestTag] = None,
     ):
-        # The filter conditions. Vaild values:
+        # The filter conditions. Valid values:
         # 
-        # - ExpireTimeStart：
-        # Query start time for Subscription resource expiration.
-        # <notice>Notice Note: Only supports querying service instances on private deployments.>Notice: 
+        # - ExpireTimeStart: The start of the time range to query the expiration time of subscription resources.
+        #   >Notice: This parameter applies only to service instances in private deployments.
         # 
-        # - ExpireTimeEnd：Query end time for Subscription resource expiration.
-        # <notice>Notice Note: Only supports querying service instances on private deployments.>Notice: 
+        # - ExpireTimeEnd: The end of the time range to query the expiration time of subscription resources.
+        #   >Notice: This parameter applies only to service instances in private deployments.
         # 
-        # - PayType：The billing method of the read-only instance. 
-        # <notice>Notice Note: Only supports querying service instances on private deployments.<notice> 
+        # - PayType: The billing method.>Notice:  This parameter applies only to service instances in private deployments.
+        #   Valid values:
         # 
-        #    Valid values:
+        #   - Subscription: subscription.
         # 
-        #    - PayAsYouGo
+        #   - PayAsYouGo: pay-as-you-go.
         # 
-        #    - Subscription
+        # - ResourceARN: The Alibaba Cloud Resource Name (ARN) of the resource.
         # 
-        # - ResourceARN：The Alibaba Cloud Resource Name (ARN) of a resource.
+        # resource name (ARN).
         self.filters = filters
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
-        # 
-        # *   If **NextToken** is not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # The token that is used to retrieve the next page of results. Set this to the NextToken value from a previous API call.
         self.next_token = next_token
-        # The region ID. Valid values:
-        # 
-        # *   cn-hangzhou: China (Hangzhou).
-        # *   ap-southeast-1: Singapore.
+        # The region ID.
         self.region_id = region_id
         # The ID of the service instance.
         # 
         # This parameter is required.
         self.service_instance_id = service_instance_id
-        # Service Instance resource type，include AliyunResource and ContainerResource.
+        # The resource type of the service instance. Valid values:
+        # 
+        # - AliyunResource: an Alibaba Cloud resource.
+        # 
+        # - ContainerResource: a container group (pod) resource.
         self.service_instance_resource_type = service_instance_resource_type
-        # The tag key and value.
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -138,9 +135,9 @@ class ListServiceInstanceResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the resource tag.
         self.key = key
-        # The tag value.
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -175,13 +172,17 @@ class ListServiceInstanceResourcesRequestFilters(DaraModel):
         name: str = None,
         values: List[str] = None,
     ):
-        # Vaild values:
+        # The name of the filter. Valid values:
+        # 
         # - ExpireTimeStart
+        # 
         # - ExpireTimeEnd
+        # 
         # - PayType
+        # 
         # - ResourceARN
         self.name = name
-        # The value of the filter condition.
+        # The filter condition values.
         self.values = values
 
     def validate(self):

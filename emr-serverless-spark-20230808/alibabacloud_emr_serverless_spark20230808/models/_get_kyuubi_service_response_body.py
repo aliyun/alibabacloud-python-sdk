@@ -11,7 +11,9 @@ class GetKyuubiServiceResponseBody(DaraModel):
         data: main_models.GetKyuubiServiceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,22 +64,37 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
         start_time: str = None,
         state: str = None,
     ):
+        # The specifications of the Kyuubi service.
         self.compute_instance = compute_instance
+        # The timestamp when the service was created.
         self.create_time = create_time
+        # The UID of the creator.
         self.creator = creator
+        # The internal same-region endpoint.
         self.inner_endpoint = inner_endpoint
+        # The configuration of the Kyuubi service.
         self.kyuubi_configs = kyuubi_configs
+        # The Kyuubi service engine version.
         self.kyuubi_release_version = kyuubi_release_version
-        # Kyuubi Service ID。
+        # The ID of the Kyuubi service.
         self.kyuubi_service_id = kyuubi_service_id
+        # The name of the Kyuubi service.
         self.name = name
+        # The public domain name.
         self.public_endpoint = public_endpoint
+        # Indicates whether public network access is enabled.
         self.public_endpoint_enabled = public_endpoint_enabled
+        # The name of the queue.
         self.queue = queue
+        # The Spark engine version.
         self.release_version = release_version
+        # The number of high-availability (HA) replicas.
         self.replica = replica
+        # The Spark configuration.
         self.spark_configs = spark_configs
+        # The timestamp when the service was started.
         self.start_time = start_time
+        # The state of the Kyuubi service.
         self.state = state
 
     def validate(self):

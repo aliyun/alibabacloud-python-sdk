@@ -21,24 +21,27 @@ class ListPrometheusInstancesRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Specified list of regionIds to filter (comma-separated).
+        # The region IDs for filtering, separated by commas.
         self.filter_region_ids = filter_region_ids
-        # Maximum number of records to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # Query token.
+        # The query token.
         self.next_token = next_token
-        # List of instance IDs (comma-separated)
+        # The instance IDs, separated by commas.
         self.prometheus_instance_ids = prometheus_instance_ids
-        # Instance name (partial match supported)
+        # The instance name. Fuzzy match is supported.
         self.prometheus_instance_name = prometheus_instance_name
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource type of the instance.
+        # The resource type of the instance.
         self.resource_type = resource_type
-        # List of tags.
+        # The tags.
         self.tag = tag
-        # Instance version: V1 or V2
+        # The instance version. Valid values:
+        # - V1: V1 version.
+        # - V2: V2 version.
         self.version = version
+        # The workspace to which the instance belongs.
         self.workspace = workspace
 
     def validate(self):
@@ -129,9 +132,9 @@ class ListPrometheusInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

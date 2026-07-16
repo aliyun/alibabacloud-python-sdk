@@ -13,9 +13,9 @@ class ListAlternativeSnapshotReposResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListAlternativeSnapshotReposResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListAlternativeSnapshotReposResponseBodyResult(DaraModel):
         instance_id: str = None,
         repo_path: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The address of the repository.
+        # The repository address.
         self.repo_path = repo_path
 
     def validate(self):

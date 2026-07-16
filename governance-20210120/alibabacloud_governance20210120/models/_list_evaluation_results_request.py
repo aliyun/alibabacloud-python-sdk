@@ -11,6 +11,7 @@ class ListEvaluationResultsRequest(DaraModel):
     def __init__(
         self,
         account_id: int = None,
+        evaluation_domain: str = None,
         filters: List[main_models.ListEvaluationResultsRequestFilters] = None,
         lens_code: str = None,
         region_id: str = None,
@@ -18,15 +19,28 @@ class ListEvaluationResultsRequest(DaraModel):
         snapshot_id: str = None,
         topic_code: str = None,
     ):
-        # The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+        # Member account ID. This parameter is only applicable to multi-account evaluation mode.
         self.account_id = account_id
-        # The filter conditions.
+        self.evaluation_domain = evaluation_domain
+        # Filter conditions.
         self.filters = filters
+        # Special evaluation code. Valid values:
+        # 
+        # - basic (default): Basic model (governance maturity) evaluation.
+        # - ack: Container construction special evaluation.
+        # - ai: Machine learning special evaluation.
+        # - nis: Network service special evaluation.
         self.lens_code = lens_code
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
+        # Governance maturity evaluation scope. Valid values:
+        # 
+        # - Account (default): Performs single-account governance maturity evaluation, evaluating only the current account.
+        # - ResourceDirectory: Performs multi-account governance maturity evaluation, evaluating all member accounts in the resource directory. Before performing this operation, you must first upgrade to multi-account governance maturity evaluation.
         self.scope = scope
+        # Evaluation snapshot ID.
         self.snapshot_id = snapshot_id
+        # Governance topic code.
         self.topic_code = topic_code
 
     def validate(self):
@@ -42,6 +56,9 @@ class ListEvaluationResultsRequest(DaraModel):
             result = _map
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
 
         result['Filters'] = []
         if self.filters is not None:
@@ -69,6 +86,9 @@ class ListEvaluationResultsRequest(DaraModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
 
         self.filters = []
         if m.get('Filters') is not None:
@@ -99,13 +119,13 @@ class ListEvaluationResultsRequestFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the filter condition. Valid values:
+        # Filter condition key. Valid values:
         # 
-        # *   ResourceId: the resource ID.
-        # *   ResourceName: the name of the resource.
-        # *   ResourceType: the resource type.
+        # - ResourceId: Resource ID.
+        # - ResourceName: Resource name.
+        # - ResourceType: Resource type.
         self.key = key
-        # The list of filter condition values.
+        # List of filter condition values.
         self.values = values
 
     def validate(self):

@@ -20,17 +20,21 @@ class DescribePipelineResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The batch information.
         self.data = data
         # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - The **ErrorCode** parameter is not returned if the request succeeds.
+        # 
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
         # The message returned for the operation.
         self.message = message
@@ -38,8 +42,9 @@ class DescribePipelineResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the batch information was obtained. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The image failed to be found.
+        # - **true**: The information was queried.
+        # 
+        # - **false**: The image failed to be found.
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
@@ -126,17 +131,23 @@ class DescribePipelineResponseBodyData(DaraModel):
         self.pipeline_name = pipeline_name
         # The batch status. Valid values:
         # 
-        # *   **0**: The batch is prepared for processing.
-        # *   **1**: The task is being executed.
-        # *   **2**: successful
-        # *   **3**: The processing failed in this stage.
-        # *   **6**: The batch processing was terminated.
-        # *   **10**: The batch could not be processed due to a system exception.
+        # - **0**: The batch is prepared for processing.
+        # 
+        # - **1**: The task is being executed.
+        # 
+        # - **2**: successful
+        # 
+        # - **3**: The processing failed in this stage.
+        # 
+        # - **6**: The batch processing was terminated.
+        # 
+        # - **10**: The batch could not be processed due to a system exception.
         self.pipeline_status = pipeline_status
         # Indicates whether to start processing the next batch. Valid values:
         # 
-        # *   **false**: indicates that the next batch cannot be processed yet.
-        # *   **true**: indicates that the next batch can be processed now.
+        # - **false**: indicates that the next batch cannot be processed yet.
+        # 
+        # - **true**: indicates that the next batch can be processed now.
         self.show_batch = show_batch
         # The list of batch processing stages.
         self.stage_list = stage_list
@@ -222,8 +233,9 @@ class DescribePipelineResponseBodyDataStageList(DaraModel):
     ):
         # The execution type of the stage. Valid values:
         # 
-        # *   **0**: in sequence.
-        # *   **1**: in parallel.
+        # - **0**: in sequence.
+        # 
+        # - **1**: in parallel.
         self.executor_type = executor_type
         # The ID of the stage.
         self.stage_id = stage_id
@@ -231,11 +243,15 @@ class DescribePipelineResponseBodyDataStageList(DaraModel):
         self.stage_name = stage_name
         # The status of the batch processing stage. Valid values:
         # 
-        # *   **0**: The batch is prepared for this processing stage.
-        # *   **1**: The task is being executed.
-        # *   **2**: successful
-        # *   **3**: The processing failed in this stage.
-        # *   **6**: The processing stage was terminated.
+        # - **0**: The batch is prepared for this processing stage.
+        # 
+        # - **1**: The task is being executed.
+        # 
+        # - **2**: successful
+        # 
+        # - **3**: The processing failed in this stage.
+        # 
+        # - **6**: The processing stage was terminated.
         self.status = status
         # The list of task statuses.
         self.task_list = task_list
@@ -309,8 +325,9 @@ class DescribePipelineResponseBodyDataStageListTaskList(DaraModel):
         self.error_code = error_code
         # Indicates whether to execute the subsequent tasks when the task failed. Valid values:
         # 
-        # *   **0**: The subsequent tasks cannot be executed.
-        # *   **1**: The subsequent tasks can be executed.
+        # - **0**: The subsequent tasks cannot be executed.
+        # 
+        # - **1**: The subsequent tasks can be executed.
         self.error_ignore = error_ignore
         # The error message returned when the task could not be executed. If the task is successfully executed, this parameter is not returned.
         self.error_message = error_message
@@ -318,19 +335,25 @@ class DescribePipelineResponseBodyDataStageListTaskList(DaraModel):
         self.message = message
         # Indicates whether a running task can be manually skipped. Valid values:
         # 
-        # *   **true**: The running task can be skipped.
-        # *   **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
+        # - **true**: The running task can be skipped.
+        # 
+        # - **false**: The zone does not allow you to change the network type of an ApsaraDB for Redis instance from classic network to VPC.
         self.show_manual_ignore = show_manual_ignore
         # The ID of the stage.
         self.stage_id = stage_id
         # The task status. Valid values:
         # 
-        # *   **0**: The task is prepared for execution.
-        # *   **1**: The task is being executed.
-        # *   **2**: successful
-        # *   **3**: The task could not be executed.
-        # *   **5**: The task is pending retry.
-        # *   **6**: The task was terminated.
+        # - **0**: The task is prepared for execution.
+        # 
+        # - **1**: The task is being executed.
+        # 
+        # - **2**: successful
+        # 
+        # - **3**: The task could not be executed.
+        # 
+        # - **5**: The task is pending retry.
+        # 
+        # - **6**: The task was terminated.
         self.status = status
         # The ID of the task.
         self.task_id = task_id

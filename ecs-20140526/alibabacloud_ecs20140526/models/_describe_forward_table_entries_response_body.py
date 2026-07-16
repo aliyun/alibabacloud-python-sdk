@@ -16,10 +16,15 @@ class DescribeForwardTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The collection of DNAT entries.
         self.forward_table_entries = forward_table_entries
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

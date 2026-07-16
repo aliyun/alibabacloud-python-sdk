@@ -15,14 +15,24 @@ class Chart(DaraModel):
         title: str = None,
         type: str = None,
     ):
+        # The action.
+        # 
         # This parameter is required.
         self.action = action
+        # The display configuration of the chart.
+        # 
         # This parameter is required.
         self.display = display
+        # The query statement.
+        # 
         # This parameter is required.
         self.search = search
+        # The title of the chart.
+        # 
         # This parameter is required.
         self.title = title
+        # The type of the chart.
+        # 
         # This parameter is required.
         self.type = type
 

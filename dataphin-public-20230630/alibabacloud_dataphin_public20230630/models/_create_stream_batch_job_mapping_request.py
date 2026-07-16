@@ -11,8 +11,12 @@ class CreateStreamBatchJobMappingRequest(DaraModel):
         op_tenant_id: int = None,
         stream_batch_job_mapping_create_command: main_models.CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The stream-batch integrated node information.
+        # 
         # This parameter is required.
         self.stream_batch_job_mapping_create_command = stream_batch_job_mapping_create_command
 
@@ -58,23 +62,42 @@ class CreateStreamBatchJobMappingRequestStreamBatchJobMappingCreateCommand(DaraM
         queue_name: str = None,
         vvp_cluster_type: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The description.
         self.description = description
+        # The folder in which the node is generated.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The Flink DPI engine version.
+        # 
         # This parameter is required.
         self.engine_version = engine_version
+        # The environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The file name.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The file type.
+        # 
         # This parameter is required.
         self.file_type = file_type
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The queue name.
+        # 
         # This parameter is required.
         self.queue_name = queue_name
+        # The VVP cluster type. Valid values: SESSION and PREJOB. This parameter is specific to VVP. If not applicable, leave this parameter empty or do not pass it.
+        # 
         # This parameter is required.
         self.vvp_cluster_type = vvp_cluster_type
 

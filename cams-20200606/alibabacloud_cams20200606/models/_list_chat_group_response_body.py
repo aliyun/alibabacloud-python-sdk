@@ -17,11 +17,23 @@ class ListChatGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The prompt message. This parameter has a value when an exception is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,7 +94,9 @@ class ListChatGroupResponseBodyData(DaraModel):
         list: List[main_models.ListChatGroupResponseBodyDataList] = None,
         total: int = None,
     ):
+        # The group list.
         self.list = list
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -135,17 +149,29 @@ class ListChatGroupResponseBodyDataList(DaraModel):
         subject: str = None,
         total_participant_count: int = None,
     ):
+        # The business phone number.
         self.business_number = business_number
+        # The role of the bot in the group.
         self.business_role = business_role
+        # The description.
         self.description = description
+        # The update time.
         self.gmt_modifier = gmt_modifier
+        # The group ID.
         self.group_id = group_id
+        # The group link.
         self.group_link = group_link
+        # The group status.
         self.group_status = group_status
+        # The group type.
         self.group_type = group_type
+        # The invite link.
         self.invite_link = invite_link
+        # The group profile picture.
         self.profile_picture_file = profile_picture_file
+        # The group subject.
         self.subject = subject
+        # The number of group members.
         self.total_participant_count = total_participant_count
 
     def validate(self):

@@ -13,7 +13,9 @@ class ListParameterVersionsResponseBody(DaraModel):
         paging_info: main_models.ListParameterVersionsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListParameterVersionsResponseBodyPagingInfo(DaraModel):
         parameter_version: List[main_models.ListParameterVersionsResponseBodyPagingInfoParameterVersion] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of parameter versions.
         self.parameter_version = parameter_version
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -120,18 +126,37 @@ class ListParameterVersionsResponseBodyPagingInfoParameterVersion(DaraModel):
         type: str = None,
         version: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The ID of the creator.
         self.create_user = create_user
+        # The parameter description.
         self.description = description
+        # The parameter ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The ID of the modifier.
         self.modify_user = modify_user
+        # The parameter name.
         self.name = name
+        # The ID of the owner.
         self.owner = owner
+        # The workspace ID.
         self.project_id = project_id
+        # The environment-specific configurations of the parameter value.
         self.properties = properties
+        # The scope of the parameter.
         self.scope = scope
+        # The type of the parameter. Valid values:
+        # 
+        # - `PlainConstant`: a plaintext constant.
+        # 
+        # - `SecretConstant`: a secret constant.
+        # 
+        # - `Variable`: a variable.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -240,7 +265,13 @@ class ListParameterVersionsResponseBodyPagingInfoParameterVersionProperties(Dara
         env_type: str = None,
         value: str = None,
     ):
+        # The environment type. Valid values:
+        # 
+        # - `Prod`: production environment
+        # 
+        # - `Dev`: development environment
         self.env_type = env_type
+        # The parameter value.
         self.value = value
 
     def validate(self):

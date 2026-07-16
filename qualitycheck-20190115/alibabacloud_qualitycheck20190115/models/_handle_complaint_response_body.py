@@ -13,10 +13,15 @@ class HandleComplaintResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed. You can use this code to identify the cause of the error.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message. If the request is successful, **successful** is returned. If the request fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of **true** indicates success, and **false or null** indicates failure.
         self.success = success
 
     def validate(self):

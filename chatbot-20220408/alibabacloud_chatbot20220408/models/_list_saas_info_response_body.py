@@ -14,9 +14,11 @@ class ListSaasInfoResponseBody(DaraModel):
         request_id: str = None,
         saas_token: str = None,
     ):
+        # A list of SaaS integrations.
         self.data = data
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The SaaS integration token issued by Chatbot.
         self.saas_token = saas_token
 
     def validate(self):
@@ -68,10 +70,15 @@ class ListSaasInfoResponseBodyData(DaraModel):
         service_url: str = None,
         url: str = None,
     ):
+        # The unique identifier of the SaaS atomic page. Use this code to reference the page and query its information.
         self.code = code
+        # The English name of the atomic page.
         self.en_name = en_name
+        # The Chinese name of the atomic page.
         self.name = name
+        # The URL to embed the SaaS page in an iframe.
         self.service_url = service_url
+        # The URL of the atomic page.
         self.url = url
 
     def validate(self):

@@ -12,9 +12,13 @@ class UpdateDataAgentWorkspaceMemberRoleRequest(DaraModel):
         role_name: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The UID of the member whose role you want to change.
         self.member_id = member_id
+        # The role to assign to the member.
         self.role_name = role_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

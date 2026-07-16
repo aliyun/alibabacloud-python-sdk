@@ -14,8 +14,11 @@ class ListClusterTypeResponseBody(DaraModel):
         cluster_types: List[str] = None,
         request_id: str = None,
     ):
+        # A list of the detailed information about the cluster types.
         self.cluster_type_infos = cluster_type_infos
+        # A list of cluster types.
         self.cluster_types = cluster_types
+        # The request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,17 @@ class ListClusterTypeResponseBodyClusterTypeInfos(DaraModel):
         cluster_type: str = None,
         is_multi_az: bool = None,
     ):
+        # The cluster type.
+        # 
+        # - HYBRID: Capacity.
+        # 
+        # - SSD: Performance.
         self.cluster_type = cluster_type
+        # Indicates whether the cluster supports deployment in multiple availability zones (AZs).
+        # 
+        # - true: The cluster supports multi-zone deployment and provides zone-redundant storage.
+        # 
+        # - false: The cluster does not support multi-zone deployment and provides locally redundant storage.
         self.is_multi_az = is_multi_az
 
     def validate(self):

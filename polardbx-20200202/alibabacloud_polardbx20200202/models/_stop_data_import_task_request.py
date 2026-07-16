@@ -12,10 +12,15 @@ class StopDataImportTaskRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the integer data type. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: ***30*****50*****100**. Default value: **30**.
         self.page_size = page_size
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

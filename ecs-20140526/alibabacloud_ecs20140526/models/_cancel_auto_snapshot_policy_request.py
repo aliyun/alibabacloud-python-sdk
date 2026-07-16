@@ -17,12 +17,16 @@ class CancelAutoSnapshotPolicyRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the automatic snapshot policy that you want to cancel.
+        # - Default value: empty. If you use the default value, note the following items:
+        #   - If only one automatic snapshot policy is applied to the cloud disk, the automatic snapshot policy is canceled.
+        #   - If more than one automatic snapshot policy is applied to the cloud disk, the `OperationDenied.TooManyAutoSnapshotPolicies` error code is returned and the request fails. Specify the `autoSnapshotPolicyId` parameter to specify the ID of the automatic snapshot policy that you want to cancel.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The IDs of the disks for which you want to disable the automatic snapshot policy. To disable the automatic snapshot policy for multiple disks, you can set this parameter to a JSON array that consists of multiple disk IDs, such as ["dxxxxxxxxx", "dyyyyyyyyy", … "dzzzzzzzzz"]. Separate the disk IDs with commas (,).
+        # The IDs of the cloud disks. To cancel the automatic snapshot policy for multiple cloud disks, specify the cloud disk IDs in a JSON array in the format of "d-xxxxxxxxx", "d-yyyyyyyyy", … "d-zzzzzzzzz". Separate multiple cloud disk IDs with commas (,).
         # 
         # This parameter is required.
         self.disk_ids = disk_ids
-        # The region ID of the automatic snapshot policy and the disks. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the automatic snapshot policy and cloud disks. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

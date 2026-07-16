@@ -17,27 +17,27 @@ class ListKspmInstancesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # List of Kubernetes asset type information.
+        # The list of asset type information for Kubernetes assets.
         self.cloud_asset_types = cloud_asset_types
-        # Set the conditions for searching assets. This parameter is in JSON format, and case sensitivity should be noted when entering parameters. It includes the following fields:
+        # The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter. The following fields are included:
         # 
-        # - **name**: Search item
-        # - **value**: Value of the search item
-        # - **logicalExp**: The relationship between search items when multiple conditions are used. Values:
-        #     - **OR**: Indicates an **or** relationship between multiple conditions.
-        #     - **AND**: Indicates an **and** relationship between multiple conditions.
-        # > Supports using region, instance name, instance ID, alarm status, risk status, and tag search conditions.
+        # - **name**: the search item.
+        # - **value**: the value of the search item.
+        # - **logicalExp**: the logical relationship between multiple conditions. Valid values:
+        #     - **OR**: The conditions are in an OR relationship.
+        #     - **AND**: The conditions are in an AND relationship.
+        # > You can search by region, instance name, instance ID, alert status, risk status, or tag.
         self.criteria = criteria
-        # Set which page to start displaying the query results from. The default value is 1, indicating that the display starts from the first page.
+        # The page number of the page to return in the query results. Default value: 1, which indicates that the results are returned starting from page 1.
         self.current_page = current_page
-        # Set the logical relationship that takes effect between multiple search conditions. Values:
+        # The logical relationship between multiple search conditions. Valid values:
         # 
-        # - **OR**: Indicates an **or** relationship between multiple search conditions.
-        # - **AND**: Indicates an **and** relationship between multiple search conditions.
+        # - **OR**: The search conditions are in an OR relationship.
+        # - **AND**: The search conditions are in an AND relationship.
         self.logical_exp = logical_exp
-        # The maximum number of data entries displayed per page during pagination. The default value is 20.
+        # The maximum number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
-        # The ID of the region where the instance is located.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -105,8 +105,7 @@ class ListKspmInstancesRequestCloudAssetTypes(DaraModel):
         asset_type: int = None,
         vendor: int = None,
     ):
-        # Subtype of the product.
-        # Asset type-subtype. Values:
+        # The subtype of the asset. The value is in the format of asset type - subtype. Valid values:
         # 
         # - **0**: Workload
         #     *  **0**: Pod
@@ -135,9 +134,9 @@ class ListKspmInstancesRequestCloudAssetTypes(DaraModel):
         #     *  **0**: ConfigMap
         # - **8**: Policies
         #     *  **0**: LimitRanges
-        #     *  **1**: ResourceQuota
+        #     *  **1**: ResourceQuota.
         self.asset_sub_type = asset_sub_type
-        # Type of the asset. Values:
+        # The type of the asset. Valid values:
         # 
         # - **0**: Workload
         # - **1**: Service
@@ -147,9 +146,9 @@ class ListKspmInstancesRequestCloudAssetTypes(DaraModel):
         # - **5**: Container
         # - **6**: Network
         # - **7**: Configuration
-        # - **8**: Policies
+        # - **8**: Policies.
         self.asset_type = asset_type
-        # Vendor of the asset. The fixed value is **200**.
+        # The asset vendor. This parameter is fixed to **200**.
         self.vendor = vendor
 
     def validate(self):

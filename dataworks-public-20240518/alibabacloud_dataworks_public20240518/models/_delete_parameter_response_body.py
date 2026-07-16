@@ -10,7 +10,9 @@ class DeleteParameterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):

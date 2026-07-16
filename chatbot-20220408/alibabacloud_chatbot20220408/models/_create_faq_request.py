@@ -18,14 +18,24 @@ class CreateFaqRequest(DaraModel):
         tag_id_list: List[int] = None,
         title: str = None,
     ):
+        # The agent key. If omitted, the default agent is used. Find this key on the Agent Management page.
         self.agent_key = agent_key
+        # The ID of the knowledge category.
+        # 
         # This parameter is required.
         self.category_id = category_id
+        # The knowledge end time. The time is in UTC and in ISO 8601 format.
         self.end_date = end_date
+        # The content of the default solution. Required if the fallback feature is enabled.
         self.solution_content = solution_content
+        # The type of the default solution. Valid values: `0` (plain text) and `1` (rich text).
         self.solution_type = solution_type
+        # The knowledge start time. The time is in UTC and in ISO 8601 format.
         self.start_date = start_date
+        # A list of tag IDs to associate with the knowledge.
         self.tag_id_list = tag_id_list
+        # The knowledge title. Max length: 120 characters.
+        # 
         # This parameter is required.
         self.title = title
 

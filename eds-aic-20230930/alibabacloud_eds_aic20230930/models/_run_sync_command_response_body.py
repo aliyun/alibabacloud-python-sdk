@@ -14,8 +14,11 @@ class RunSyncCommandResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # An array of objects, where each object contains the execution result for a single instance.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,17 @@ class RunSyncCommandResponseBodyData(DaraModel):
         output: str = None,
         start_time: str = None,
     ):
+        # The time when command execution finished.
         self.finish_time = finish_time
+        # The ID of the instance on which the command was executed.
         self.instance_id = instance_id
+        # The invocation ID.
         self.invocation_id = invocation_id
+        # The command execution status.
         self.invocation_status = invocation_status
+        # The command output.
         self.output = output
+        # The time when command execution began.
         self.start_time = start_time
 
     def validate(self):

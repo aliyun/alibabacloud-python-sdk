@@ -20,17 +20,18 @@ class DescribeBackupPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The architecture of the instance. Valid values:
+        # The instance type.
         # 
-        # *   **sharding**: sharded cluster instance
-        # *   **replicate**: replica set or standalone instance
+        # - replicate: replica set instance
+        # 
+        # - sharding: sharded cluster instance
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The region ID of the instance.
+        # The region where the instance is located.
         self.src_region = src_region
 
     def validate(self):

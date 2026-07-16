@@ -17,13 +17,13 @@ class DescribeDomainRecordsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domain_records = domain_records
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of DNS records returned in this query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of DNS records.
         self.total_count = total_count
 
     def validate(self):

@@ -10,7 +10,9 @@ class HiMarketIcon(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The icon type.
         self.type = type
+        # The icon value.
         self.value = value
 
     def validate(self):

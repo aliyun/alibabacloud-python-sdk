@@ -1,3 +1,39 @@
+2026-06-09 Version: 8.2.0
+- Support API CreateNamespace.
+- Support API CreateTable.
+- Support API DeleteNamespace.
+- Support API DeleteTable.
+- Support API GetCatalog.
+- Support API GetNamespace.
+- Support API GetTable.
+- Support API ListCatalogs.
+- Support API ListNamespaces.
+- Support API ListTables.
+- Support API QueryEventHouse.
+- Support API UpdateNamespace.
+- Support API UpdateTable.
+- Update API CreateConnection: add request parameters Parameters.
+- Update API CreateConnection: add request parameters Type.
+- Update API GetConnection: add response parameters Body.Data.Connections.$.Parameters.
+- Update API GetConnection: add response parameters Body.Data.Connections.$.Type.
+- Update API ListConnections: add request parameters Type.
+- Update API ListConnections: add response parameters Body.Data.Connections.$.Parameters.
+- Update API ListConnections: add response parameters Body.Data.Connections.$.Type.
+- Update API UpdateConnection: add request parameters Parameters.
+- Update API UpdateConnection: add request parameters Type.
+
+
+2026-06-08 Version: 8.1.0
+- Support API AskLuma.
+- Support API CreateAgent.
+- Support API DeleteAgent.
+- Support API GetAgent.
+- Support API ListAgents.
+- Support API PollAskResult.
+- Support API QueryAskLumaLog.
+- Support API UpdateAgent.
+
+
 2026-05-08 Version: 8.0.10
 - Generated python 2020-04-01 for eventbridge.
 

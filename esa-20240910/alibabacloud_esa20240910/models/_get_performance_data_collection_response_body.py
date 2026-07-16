@@ -10,8 +10,11 @@ class GetPerformanceDataCollectionResponseBody(DaraModel):
         enable: str = None,
         request_id: str = None,
     ):
+        # Indicates whether quality data collection is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.enable = enable
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

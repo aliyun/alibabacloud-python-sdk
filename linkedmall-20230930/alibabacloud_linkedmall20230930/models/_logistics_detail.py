@@ -10,7 +10,9 @@ class LogisticsDetail(DaraModel):
         ocurr_time_str: str = None,
         standerd_desc: str = None,
     ):
+        # Time when the logistics event occurred
         self.ocurr_time_str = ocurr_time_str
+        # Description of the logistics event
         self.standerd_desc = standerd_desc
 
     def validate(self):

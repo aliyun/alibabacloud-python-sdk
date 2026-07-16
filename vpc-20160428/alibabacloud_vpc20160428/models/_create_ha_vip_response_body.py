@@ -11,11 +11,11 @@ class CreateHaVipResponseBody(DaraModel):
         ip_address: str = None,
         request_id: str = None,
     ):
-        # The ID of the HaVip.
+        # The ID of the HAVIP.
         self.ha_vip_id = ha_vip_id
-        # The IP address of the HaVip.
+        # The IP address of the HAVIP.
         self.ip_address = ip_address
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

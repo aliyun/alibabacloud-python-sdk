@@ -15,13 +15,22 @@ class RunDocSummaryRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # Purge the current cache
         self.clean_cache = clean_cache
+        # Document ID
         self.doc_id = doc_id
+        # Custom model name specified by the User
         self.model_name = model_name
+        # Custom requirements
         self.query = query
+        # Content to be summarized
         self.recommend_content = recommend_content
+        # Conversation ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Alibaba Cloud Model Studio workspace ID. For more information about how to obtain it, see [How to use a workspace](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

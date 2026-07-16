@@ -15,12 +15,19 @@ class QueryInspirationConsumeRecordsRequest(DaraModel):
         scene_name: str = None,
         start_time: str = None,
     ):
+        # The end time of the query.
         self.end_time = end_time
+        # The field used for sorting.
         self.order_column = order_column
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The scenario name.
         self.scene_name = scene_name
+        # The start time of the query.
         self.start_time = start_time
 
     def validate(self):

@@ -15,11 +15,17 @@ class ValidateUploadTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Template validation result.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Unique request identifier.
         self.request_id = request_id
+        # Operation status. Returns true on success. Returns false on failure.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class ValidateUploadTemplateResponseBodyData(DaraModel):
         dialogue_count: int = None,
         total_count: int = None,
     ):
+        # Number of comments.
         self.comment_count = comment_count
+        # Number of dialogues.
         self.dialogue_count = dialogue_count
+        # Total count.
         self.total_count = total_count
 
     def validate(self):

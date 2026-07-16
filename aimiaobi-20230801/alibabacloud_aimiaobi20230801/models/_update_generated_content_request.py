@@ -17,14 +17,23 @@ class UpdateGeneratedContentRequest(DaraModel):
         prompt: str = None,
         title: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The body of the article in rich text format.
         self.content = content
+        # The body of the article in plain text format.
         self.content_text = content_text
+        # The unique identifier of the document.
+        # 
         # This parameter is required.
         self.id = id
+        # The keywords.
         self.keywords = keywords
+        # The last prompt that was used to generate the content.
         self.prompt = prompt
+        # The title.
         self.title = title
 
     def validate(self):

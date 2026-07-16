@@ -13,9 +13,9 @@ class DescribeParameterGroupsResponseBody(DaraModel):
         parameter_groups: List[main_models.DescribeParameterGroupsResponseBodyParameterGroups] = None,
         request_id: str = None,
     ):
-        # The details of parameter templates.
+        # The list of parameter templates.
         self.parameter_groups = parameter_groups
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,14 +67,15 @@ class DescribeParameterGroupsResponseBodyParameterGroups(DaraModel):
     ):
         # The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
-        # The type of the engine.
+        # The type of the database engine.
         self.dbtype = dbtype
-        # The version of the database engine
+        # The version of the database engine.
         self.dbversion = dbversion
-        # Indicates whether to restart the cluster when this parameter template is applied. Valid values:
+        # Indicates whether a cluster restart is required for the parameter template to take effect. Valid values:
         # 
-        # *   **0**: A restart is not required.
-        # *   **1**: A restart is required.
+        # - **0**: A restart is not required.
+        # 
+        # - **1**: A restart is required.
         self.force_restart = force_restart
         # The number of parameters in the parameter template.
         self.parameter_counts = parameter_counts
@@ -86,9 +87,11 @@ class DescribeParameterGroupsResponseBodyParameterGroups(DaraModel):
         self.parameter_group_name = parameter_group_name
         # The type of the parameter template. Valid values:
         # 
-        # *   **0**: the default parameter template.
-        # *   **1**: a custom parameter template.
-        # *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+        # - **0**: system default template
+        # 
+        # - **1**: user-defined template
+        # 
+        # - **2**: automatic backup template (The system automatically backs up the previous parameter settings as a template after you apply a new template.)
         self.parameter_group_type = parameter_group_type
 
     def validate(self):

@@ -11,9 +11,14 @@ class ListHotlineRecordRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Session ID. This corresponds to the acid in WebSocket after an inbound call.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # Unique customer request ID. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

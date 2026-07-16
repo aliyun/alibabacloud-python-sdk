@@ -20,8 +20,9 @@ class GetDemonstrationForCustomizedVoiceJobResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -105,11 +106,11 @@ class GetDemonstrationForCustomizedVoiceJobResponseBodyDataDemonstrationList(Dar
         self.audio_id = audio_id
         # The URL of the sample audio.
         # 
-        # *   The value is an Object Storage Service (OSS) URL.
+        # - The value is an Object Storage Service (OSS) URL.
         # 
-        #     **
+        #   \\*\\*
         # 
-        #     **Note**: The URL expires in 12 hours.
+        #   **Note**: The URL expires in 12 hours.
         self.demo_audio = demo_audio
         # The text content to be read.
         self.text = text

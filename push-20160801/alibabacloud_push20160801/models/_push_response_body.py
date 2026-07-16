@@ -10,7 +10,9 @@ class PushResponseBody(DaraModel):
         message_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the message for a push.
         self.message_id = message_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -19,24 +19,22 @@ class CheckScaleOutBalancedResponseBody(DaraModel):
         total_count: int = None,
     ):
         # The check result. Valid values:
-        # 
-        # *   **400**: The cluster failed the check.
-        # *   **200**: The cluster passed the check.
+        # - **400**: The check failed.
+        # - **200**: The check succeeded.
         self.check_code = check_code
-        # The total number of returned pages.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # The number of entries per page. Valid values:
+        # - **30** (default)
+        # - **50**
+        # - **100**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.table_details = table_details
-        # The amount of time that is required for the migration and scale-out. Unit: minutes.
+        # The time required for the migration scale-out. Unit: minutes.
         self.time_duration = time_duration
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeActivationCodesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The queried activation codes.
+        # List of activation codes
         self.items = items
-        # The page number.
+        # Current page number
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # Number of records on the current page
         self.page_record_count = page_record_count
-        # The request ID.
+        # The unique ID generated for this request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # Total number of records
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -92,23 +92,23 @@ class DescribeActivationCodesResponseBodyItems(DaraModel):
         name: str = None,
         system_identifier: str = None,
     ):
-        # The time when the activation code takes effect.
+        # Effective period
         self.activate_at = activate_at
-        # The description of the activation code.
+        # Activation code description
         self.description = description
-        # The time when the activation code expires.
+        # Expiration time
         self.expire_at = expire_at
-        # The time when the activation code was generated.
+        # Creation time
         self.gmt_created = gmt_created
-        # The time when the activation code was updated.
+        # Update time
         self.gmt_modified = gmt_modified
-        # The activation code ID.
+        # Activation code ID
         self.id = id
-        # The media access control (MAC) address used in the generation of the activation code.
+        # MAC address
         self.mac_address = mac_address
-        # The name of the activation code.
+        # Activation code name
         self.name = name
-        # The unique identifier of the database.
+        # Unique identifier in the database
         self.system_identifier = system_identifier
 
     def validate(self):

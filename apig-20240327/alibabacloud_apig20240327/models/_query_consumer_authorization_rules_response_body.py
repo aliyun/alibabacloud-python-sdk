@@ -15,13 +15,13 @@ class QueryConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class QueryConsumerAuthorizationRulesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: str = None,
     ):
-        # The rules.
+        # The list of consumer rules.
         self.items = items
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -132,6 +132,8 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self,
         api_info: main_models.HttpApiApiInfo = None,
         consumer_authorization_rule_id: str = None,
+        consumer_group_id: str = None,
+        consumer_group_info: main_models.ConsumerGroupInfo = None,
         consumer_id: str = None,
         consumer_info: main_models.ConsumerInfo = None,
         create_timestamp: int = None,
@@ -141,34 +143,43 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         expire_status: str = None,
         expire_timestamp: int = None,
         gateway_info: main_models.GatewayInfo = None,
+        principal_type: str = None,
         resource_id: str = None,
         resource_info: main_models.QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo = None,
         resource_type: str = None,
         update_timestamp: int = None,
     ):
-        # The API details.
+        # The API information.
         self.api_info = api_info
-        # The rule ID.
+        # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # The consumer group ID. This field is returned for consumer group authorization rules.
+        self.consumer_group_id = consumer_group_id
+        # The consumer group information. This field is returned for consumer group authorization rules.
+        self.consumer_group_info = consumer_group_info
         # The consumer ID.
         self.consumer_id = consumer_id
         # The consumer information.
         self.consumer_info = consumer_info
         # The creation timestamp. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # The environment information.
+        # The environment context.
         self.environment_info = environment_info
-        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        # The expiration mode. Valid values:
+        # - LongTerm
+        # - ShortTerm
         self.expire_mode = expire_mode
-        # The rule status.
+        # The expiration status.
         self.expire_status = expire_status
-        # The time when the rule expires.
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
-        # The instance information.
+        # The gateway information.
         self.gateway_info = gateway_info
-        # The resource IDs.
+        # The principal type. Valid values: Consumer or ConsumerGroup.
+        self.principal_type = principal_type
+        # The resource ID.
         self.resource_id = resource_id
         # The resource information.
         self.resource_info = resource_info
@@ -180,6 +191,8 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
     def validate(self):
         if self.api_info:
             self.api_info.validate()
+        if self.consumer_group_info:
+            self.consumer_group_info.validate()
         if self.consumer_info:
             self.consumer_info.validate()
         if self.environment_info:
@@ -199,6 +212,12 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
 
         if self.consumer_authorization_rule_id is not None:
             result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
+
+        if self.consumer_group_id is not None:
+            result['consumerGroupId'] = self.consumer_group_id
+
+        if self.consumer_group_info is not None:
+            result['consumerGroupInfo'] = self.consumer_group_info.to_map()
 
         if self.consumer_id is not None:
             result['consumerId'] = self.consumer_id
@@ -227,6 +246,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         if self.gateway_info is not None:
             result['gatewayInfo'] = self.gateway_info.to_map()
 
+        if self.principal_type is not None:
+            result['principalType'] = self.principal_type
+
         if self.resource_id is not None:
             result['resourceId'] = self.resource_id
 
@@ -249,6 +271,13 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
 
         if m.get('consumerAuthorizationRuleId') is not None:
             self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
+
+        if m.get('consumerGroupId') is not None:
+            self.consumer_group_id = m.get('consumerGroupId')
+
+        if m.get('consumerGroupInfo') is not None:
+            temp_model = main_models.ConsumerGroupInfo()
+            self.consumer_group_info = temp_model.from_map(m.get('consumerGroupInfo'))
 
         if m.get('consumerId') is not None:
             self.consumer_id = m.get('consumerId')
@@ -280,6 +309,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
             temp_model = main_models.GatewayInfo()
             self.gateway_info = temp_model.from_map(m.get('gatewayInfo'))
 
+        if m.get('principalType') is not None:
+            self.principal_type = m.get('principalType')
+
         if m.get('resourceId') is not None:
             self.resource_id = m.get('resourceId')
 
@@ -301,9 +333,9 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItemsResourceInfo(DaraModel
         operation_info: main_models.HttpApiOperationInfo = None,
         route: main_models.HttpRoute = None,
     ):
-        # The operation information.
+        # The API operation information.
         self.operation_info = operation_info
-        # The route.
+        # The routing rule.
         self.route = route
 
     def validate(self):

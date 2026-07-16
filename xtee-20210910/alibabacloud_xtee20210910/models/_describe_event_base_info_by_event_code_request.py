@@ -12,15 +12,15 @@ class DescribeEventBaseInfoByEventCodeRequest(DaraModel):
         event_code: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

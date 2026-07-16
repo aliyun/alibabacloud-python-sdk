@@ -11,21 +11,21 @@ class Mobile2MetaVerifyRequest(DaraModel):
         param_type: str = None,
         user_name: str = None,
     ):
-        # Phone number:
-        # - When paramType is normal: input the plaintext phone number.
-        # - When paramType is md5: input the encrypted phone number.
+        # The mobile phone number. Valid values:
+        # - If ParamType is set to normal, pass in the mobile phone number in plaintext.
+        # - If ParamType is set to md5, pass in the MD5-encrypted mobile phone number.
         # 
         # This parameter is required.
         self.mobile = mobile
-        # Encryption method:
+        # The encryption method. Valid values:
         # - normal: plaintext without encryption
-        # - md5: MD5 encryption
+        # - md5: MD5 encryption.
         # 
         # This parameter is required.
         self.param_type = param_type
-        # Name:
-        # - When paramType is normal: input the plaintext name.
-        # - When paramType is md5: input the encrypted name.
+        # The name. Valid values:
+        # - If ParamType is set to normal, pass in the name in plaintext.
+        # - If ParamType is set to md5, pass in the MD5-encrypted name.
         # 
         # This parameter is required.
         self.user_name = user_name

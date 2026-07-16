@@ -20,23 +20,23 @@ class DescribePageFaceVerifyDataResponseBody(DaraModel):
         total_count: str = None,
         total_page: str = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # List of returned data.
+        # The list of returned data.
         self.items = items
-        # Return message.
+        # The return message.
         self.message = message
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Whether the response was successful.
+        # Indicates whether the response is successful.
         self.success = success
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -125,17 +125,17 @@ class DescribePageFaceVerifyDataResponseBodyItems(DaraModel):
         success_count: str = None,
         total_count: str = None,
     ):
-        # Date.
+        # The date.
         self.date = date
-        # Product scheme code, please refer to the financial-grade real-person help documentation.
+        # The product solution code. For more information, refer to the financial-grade ID Verification documentation.
         self.product_code = product_code
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Scene name.
+        # The scene name.
         self.scene_name = scene_name
-        # Number of successful calls.
+        # The number of successful calls.
         self.success_count = success_count
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

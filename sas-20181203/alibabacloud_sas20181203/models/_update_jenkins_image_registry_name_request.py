@@ -11,13 +11,12 @@ class UpdateJenkinsImageRegistryNameRequest(DaraModel):
         registry_name: str = None,
         source_ip: str = None,
     ):
-        # The ID of the image repository.
-        # 
-        # > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+        # The image repository ID.
+        # >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
         self.registry_id = registry_id
-        # The name of the image repository.
+        # The image repository name.
         self.registry_name = registry_name
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

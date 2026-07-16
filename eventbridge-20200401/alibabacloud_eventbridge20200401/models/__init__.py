@@ -4,16 +4,24 @@ from __future__ import annotations
 
 from ._agent import Agent
 from ._agui_message import AguiMessage
+from ._ask_luma_log_entry import AskLumaLogEntry
+from ._ask_luma_result import AskLumaResult
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParameters
 from ._catalog import Catalog
 from ._column import Column
+from ._constraints import Constraints
+from ._content import Content
 from ._conversation import Conversation
 from ._dash_scope_transform_parameters import DashScopeTransformParameters
 from ._embedding_transform_parameters import EmbeddingTransformParameters
 from ._event_table_query_histogram import EventTableQueryHistogram
+from ._execution_result import ExecutionResult
 from ._metadata import Metadata
 from ._namespace import Namespace
+from ._query_ask_luma_log_result import QueryAskLumaLogResult
+from ._query_attachment import QueryAttachment
 from ._row import Row
+from ._schema_column import SchemaColumn
 from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
@@ -27,9 +35,16 @@ from ._source_postgre_sqlparameters import SourcePostgreSQLParameters
 from ._source_rabbit_mqmeta_parameters import SourceRabbitMQMetaParameters
 from ._source_rabbit_mqmsg_sync_parameters import SourceRabbitMQMsgSyncParameters
 from ._table import Table
+from ._ask_luma_request import AskLumaRequest
+from ._ask_luma_response_body import AskLumaResponseBody
+from ._ask_luma_response import AskLumaResponse
 from ._check_service_linked_role_for_product_request import CheckServiceLinkedRoleForProductRequest
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBody
 from ._check_service_linked_role_for_product_response import CheckServiceLinkedRoleForProductResponse
+from ._create_agent_request import CreateAgentRequest
+from ._create_agent_shrink_request import CreateAgentShrinkRequest
+from ._create_agent_response_body import CreateAgentResponseBody
+from ._create_agent_response import CreateAgentResponse
 from ._create_api_destination_request import CreateApiDestinationRequest
 from ._create_api_destination_shrink_request import CreateApiDestinationShrinkRequest
 from ._create_api_destination_response_body import CreateApiDestinationResponseBody
@@ -49,6 +64,9 @@ from ._create_event_streaming_request import CreateEventStreamingRequest
 from ._create_event_streaming_shrink_request import CreateEventStreamingShrinkRequest
 from ._create_event_streaming_response_body import CreateEventStreamingResponseBody
 from ._create_event_streaming_response import CreateEventStreamingResponse
+from ._create_namespace_request import CreateNamespaceRequest
+from ._create_namespace_response_body import CreateNamespaceResponseBody
+from ._create_namespace_response import CreateNamespaceResponse
 from ._create_rule_request import CreateRuleRequest
 from ._create_rule_shrink_request import CreateRuleShrinkRequest
 from ._create_rule_response_body import CreateRuleResponseBody
@@ -56,6 +74,13 @@ from ._create_rule_response import CreateRuleResponse
 from ._create_service_linked_role_for_product_request import CreateServiceLinkedRoleForProductRequest
 from ._create_service_linked_role_for_product_response_body import CreateServiceLinkedRoleForProductResponseBody
 from ._create_service_linked_role_for_product_response import CreateServiceLinkedRoleForProductResponse
+from ._create_table_request import CreateTableRequest
+from ._create_table_shrink_request import CreateTableShrinkRequest
+from ._create_table_response_body import CreateTableResponseBody
+from ._create_table_response import CreateTableResponse
+from ._delete_agent_request import DeleteAgentRequest
+from ._delete_agent_response_body import DeleteAgentResponseBody
+from ._delete_agent_response import DeleteAgentResponse
 from ._delete_api_destination_request import DeleteApiDestinationRequest
 from ._delete_api_destination_response_body import DeleteApiDestinationResponseBody
 from ._delete_api_destination_response import DeleteApiDestinationResponse
@@ -71,9 +96,15 @@ from ._delete_event_source_response import DeleteEventSourceResponse
 from ._delete_event_streaming_request import DeleteEventStreamingRequest
 from ._delete_event_streaming_response_body import DeleteEventStreamingResponseBody
 from ._delete_event_streaming_response import DeleteEventStreamingResponse
+from ._delete_namespace_request import DeleteNamespaceRequest
+from ._delete_namespace_response_body import DeleteNamespaceResponseBody
+from ._delete_namespace_response import DeleteNamespaceResponse
 from ._delete_rule_request import DeleteRuleRequest
 from ._delete_rule_response_body import DeleteRuleResponseBody
 from ._delete_rule_response import DeleteRuleResponse
+from ._delete_table_request import DeleteTableRequest
+from ._delete_table_response_body import DeleteTableResponseBody
+from ._delete_table_response import DeleteTableResponse
 from ._delete_targets_request import DeleteTargetsRequest
 from ._delete_targets_shrink_request import DeleteTargetsShrinkRequest
 from ._delete_targets_response_body import DeleteTargetsResponseBody
@@ -92,9 +123,15 @@ from ._event_center_query_events_request import EventCenterQueryEventsRequest
 from ._event_center_query_events_shrink_request import EventCenterQueryEventsShrinkRequest
 from ._event_center_query_events_response_body import EventCenterQueryEventsResponseBody
 from ._event_center_query_events_response import EventCenterQueryEventsResponse
+from ._get_agent_request import GetAgentRequest
+from ._get_agent_response_body import GetAgentResponseBody
+from ._get_agent_response import GetAgentResponse
 from ._get_api_destination_request import GetApiDestinationRequest
 from ._get_api_destination_response_body import GetApiDestinationResponseBody
 from ._get_api_destination_response import GetApiDestinationResponse
+from ._get_catalog_request import GetCatalogRequest
+from ._get_catalog_response_body import GetCatalogResponseBody
+from ._get_catalog_response import GetCatalogResponse
 from ._get_connection_request import GetConnectionRequest
 from ._get_connection_response_body import GetConnectionResponseBody
 from ._get_connection_response import GetConnectionResponse
@@ -104,14 +141,26 @@ from ._get_event_bus_response import GetEventBusResponse
 from ._get_event_streaming_request import GetEventStreamingRequest
 from ._get_event_streaming_response_body import GetEventStreamingResponseBody
 from ._get_event_streaming_response import GetEventStreamingResponse
+from ._get_namespace_request import GetNamespaceRequest
+from ._get_namespace_response_body import GetNamespaceResponseBody
+from ._get_namespace_response import GetNamespaceResponse
 from ._get_rule_request import GetRuleRequest
 from ._get_rule_response_body import GetRuleResponseBody
 from ._get_rule_response import GetRuleResponse
+from ._get_table_request import GetTableRequest
+from ._get_table_response_body import GetTableResponseBody
+from ._get_table_response import GetTableResponse
+from ._list_agents_request import ListAgentsRequest
+from ._list_agents_response_body import ListAgentsResponseBody
+from ._list_agents_response import ListAgentsResponse
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBody
 from ._list_aliyun_official_event_sources_response import ListAliyunOfficialEventSourcesResponse
 from ._list_api_destinations_request import ListApiDestinationsRequest
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBody
 from ._list_api_destinations_response import ListApiDestinationsResponse
+from ._list_catalogs_request import ListCatalogsRequest
+from ._list_catalogs_response_body import ListCatalogsResponseBody
+from ._list_catalogs_response import ListCatalogsResponse
 from ._list_connections_request import ListConnectionsRequest
 from ._list_connections_response_body import ListConnectionsResponseBody
 from ._list_connections_response import ListConnectionsResponse
@@ -121,9 +170,15 @@ from ._list_event_buses_response import ListEventBusesResponse
 from ._list_event_streamings_request import ListEventStreamingsRequest
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBody
 from ._list_event_streamings_response import ListEventStreamingsResponse
+from ._list_namespaces_request import ListNamespacesRequest
+from ._list_namespaces_response_body import ListNamespacesResponseBody
+from ._list_namespaces_response import ListNamespacesResponse
 from ._list_rules_request import ListRulesRequest
 from ._list_rules_response_body import ListRulesResponseBody
 from ._list_rules_response import ListRulesResponse
+from ._list_tables_request import ListTablesRequest
+from ._list_tables_response_body import ListTablesResponseBody
+from ._list_tables_response import ListTablesResponse
 from ._list_targets_request import ListTargetsRequest
 from ._list_targets_response_body import ListTargetsResponseBody
 from ._list_targets_response import ListTargetsResponse
@@ -133,13 +188,22 @@ from ._list_user_defined_event_sources_response import ListUserDefinedEventSourc
 from ._pause_event_streaming_request import PauseEventStreamingRequest
 from ._pause_event_streaming_response_body import PauseEventStreamingResponseBody
 from ._pause_event_streaming_response import PauseEventStreamingResponse
+from ._poll_ask_result_request import PollAskResultRequest
+from ._poll_ask_result_response_body import PollAskResultResponseBody
+from ._poll_ask_result_response import PollAskResultResponse
 from ._put_targets_request import PutTargetsRequest
 from ._put_targets_shrink_request import PutTargetsShrinkRequest
 from ._put_targets_response_body import PutTargetsResponseBody
 from ._put_targets_response import PutTargetsResponse
+from ._query_ask_luma_log_request import QueryAskLumaLogRequest
+from ._query_ask_luma_log_response_body import QueryAskLumaLogResponseBody
+from ._query_ask_luma_log_response import QueryAskLumaLogResponse
 from ._query_event_request import QueryEventRequest
 from ._query_event_response_body import QueryEventResponseBody
 from ._query_event_response import QueryEventResponse
+from ._query_event_house_request import QueryEventHouseRequest
+from ._query_event_house_response_body import QueryEventHouseResponseBody
+from ._query_event_house_response import QueryEventHouseResponse
 from ._query_event_traces_request import QueryEventTracesRequest
 from ._query_event_traces_response_body import QueryEventTracesResponseBody
 from ._query_event_traces_response import QueryEventTracesResponse
@@ -159,6 +223,10 @@ from ._test_event_source_config_request import TestEventSourceConfigRequest
 from ._test_event_source_config_shrink_request import TestEventSourceConfigShrinkRequest
 from ._test_event_source_config_response_body import TestEventSourceConfigResponseBody
 from ._test_event_source_config_response import TestEventSourceConfigResponse
+from ._update_agent_request import UpdateAgentRequest
+from ._update_agent_shrink_request import UpdateAgentShrinkRequest
+from ._update_agent_response_body import UpdateAgentResponseBody
+from ._update_agent_response import UpdateAgentResponse
 from ._update_api_destination_request import UpdateApiDestinationRequest
 from ._update_api_destination_shrink_request import UpdateApiDestinationShrinkRequest
 from ._update_api_destination_response_body import UpdateApiDestinationResponseBody
@@ -181,9 +249,16 @@ from ._update_event_streaming_response import UpdateEventStreamingResponse
 from ._update_event_streaming_business_option_request import UpdateEventStreamingBusinessOptionRequest
 from ._update_event_streaming_business_option_response_body import UpdateEventStreamingBusinessOptionResponseBody
 from ._update_event_streaming_business_option_response import UpdateEventStreamingBusinessOptionResponse
+from ._update_namespace_request import UpdateNamespaceRequest
+from ._update_namespace_response_body import UpdateNamespaceResponseBody
+from ._update_namespace_response import UpdateNamespaceResponse
 from ._update_rule_request import UpdateRuleRequest
 from ._update_rule_response_body import UpdateRuleResponseBody
 from ._update_rule_response import UpdateRuleResponse
+from ._update_table_request import UpdateTableRequest
+from ._update_table_shrink_request import UpdateTableShrinkRequest
+from ._update_table_response_body import UpdateTableResponseBody
+from ._update_table_response import UpdateTableResponse
 from ._agui_message import AguiMessageMetadataAttachments
 from ._agui_message import AguiMessageMetadata
 from ._agui_message import AguiMessageToolCallsFunction
@@ -214,6 +289,9 @@ from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersRou
 from ._table import TableColumns
 from ._table import TableRetentionPolicy
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBodyData
+from ._create_agent_request import CreateAgentRequestMetadataAttachments
+from ._create_agent_request import CreateAgentRequestMetadata
+from ._create_agent_response_body import CreateAgentResponseBodyData
 from ._create_api_destination_request import CreateApiDestinationRequestHttpApiParameters
 from ._create_api_destination_response_body import CreateApiDestinationResponseBodyDate
 from ._create_connection_request import CreateConnectionRequestAuthParametersApiKeyAuthParameters
@@ -395,11 +473,15 @@ from ._create_event_streaming_request import CreateEventStreamingRequestTags
 from ._create_event_streaming_request import CreateEventStreamingRequestTransforms
 from ._create_event_streaming_shrink_request import CreateEventStreamingShrinkRequestTags
 from ._create_event_streaming_response_body import CreateEventStreamingResponseBodyData
+from ._create_namespace_response_body import CreateNamespaceResponseBodyData
 from ._create_rule_request import CreateRuleRequestEventTargetsConcurrentConfig
 from ._create_rule_request import CreateRuleRequestEventTargetsDeadLetterQueue
 from ._create_rule_request import CreateRuleRequestEventTargetsParamList
 from ._create_rule_request import CreateRuleRequestEventTargets
 from ._create_rule_response_body import CreateRuleResponseBodyData
+from ._create_table_request import CreateTableRequestColumns
+from ._create_table_request import CreateTableRequestRetentionPolicy
+from ._create_table_response_body import CreateTableResponseBodyData
 from ._delete_targets_response_body import DeleteTargetsResponseBodyDataErrorEntries
 from ._delete_targets_response_body import DeleteTargetsResponseBodyData
 from ._discover_event_source_request import DiscoverEventSourceRequestSourceMySQLParameters
@@ -578,12 +660,14 @@ from ._get_rule_response_body import GetRuleResponseBodyDataTargetsDeadLetterQue
 from ._get_rule_response_body import GetRuleResponseBodyDataTargetsParamList
 from ._get_rule_response_body import GetRuleResponseBodyDataTargets
 from ._get_rule_response_body import GetRuleResponseBodyData
+from ._list_agents_response_body import ListAgentsResponseBodyData
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList
 from ._list_aliyun_official_event_sources_response_body import ListAliyunOfficialEventSourcesResponseBodyData
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBodyDataApiDestinationsHttpApiParameters
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBodyDataApiDestinations
 from ._list_api_destinations_response_body import ListApiDestinationsResponseBodyData
+from ._list_catalogs_response_body import ListCatalogsResponseBodyData
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters
 from ._list_connections_response_body import ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters
@@ -731,9 +815,11 @@ from ._list_event_streamings_response_body import ListEventStreamingsResponseBod
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsTransforms
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamings
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyData
+from ._list_namespaces_response_body import ListNamespacesResponseBodyData
 from ._list_rules_response_body import ListRulesResponseBodyDataRulesTargets
 from ._list_rules_response_body import ListRulesResponseBodyDataRules
 from ._list_rules_response_body import ListRulesResponseBodyData
+from ._list_tables_response_body import ListTablesResponseBodyData
 from ._list_targets_response_body import ListTargetsResponseBodyDataTargetsConcurrentConfig
 from ._list_targets_response_body import ListTargetsResponseBodyDataTargetsParamList
 from ._list_targets_response_body import ListTargetsResponseBodyDataTargets
@@ -754,6 +840,7 @@ from ._put_targets_request import PutTargetsRequestTargetsParamList
 from ._put_targets_request import PutTargetsRequestTargets
 from ._put_targets_response_body import PutTargetsResponseBodyDataErrorEntries
 from ._put_targets_response_body import PutTargetsResponseBodyData
+from ._query_event_house_response_body import QueryEventHouseResponseBodyData
 from ._query_event_traces_response_body import QueryEventTracesResponseBodyData
 from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEventIdResponseBodyDataEvents
 from ._query_traced_event_by_event_id_response_body import QueryTracedEventByEventIdResponseBodyData
@@ -762,6 +849,9 @@ from ._query_traced_events_response_body import QueryTracedEventsResponseBodyDat
 from ._test_event_pattern_response_body import TestEventPatternResponseBodyData
 from ._test_event_source_config_request import TestEventSourceConfigRequestSourceMySQLParameters
 from ._test_event_source_config_response_body import TestEventSourceConfigResponseBodyData
+from ._update_agent_request import UpdateAgentRequestMetadataAttachments
+from ._update_agent_request import UpdateAgentRequestMetadata
+from ._update_agent_response_body import UpdateAgentResponseBodyData
 from ._update_api_destination_request import UpdateApiDestinationRequestHttpApiParameters
 from ._update_connection_request import UpdateConnectionRequestAuthParametersApiKeyAuthParameters
 from ._update_connection_request import UpdateConnectionRequestAuthParametersBasicAuthParameters
@@ -938,20 +1028,36 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestSourceSo
 from ._update_event_streaming_request import UpdateEventStreamingRequestSourceSourceSLSParameters
 from ._update_event_streaming_request import UpdateEventStreamingRequestSource
 from ._update_event_streaming_request import UpdateEventStreamingRequestTransforms
+from ._update_namespace_response_body import UpdateNamespaceResponseBodyData
+from ._update_table_request import UpdateTableRequestAddColumn
+from ._update_table_request import UpdateTableRequestDeleteColumn
+from ._update_table_request import UpdateTableRequestRenameColumn
+from ._update_table_request import UpdateTableRequestUpdateColumnComment
+from ._update_table_request import UpdateTableRequestUpdateColumnType
+from ._update_table_request import UpdateTableRequestUpdateRetentionPolicy
+from ._update_table_response_body import UpdateTableResponseBodyData
 
 __all__ = [
     Agent,
     AguiMessage,
+    AskLumaLogEntry,
+    AskLumaResult,
     BaiLianAgentTransformParameters,
     Catalog,
     Column,
+    Constraints,
+    Content,
     Conversation,
     DashScopeTransformParameters,
     EmbeddingTransformParameters,
     EventTableQueryHistogram,
+    ExecutionResult,
     Metadata,
     Namespace,
+    QueryAskLumaLogResult,
+    QueryAttachment,
     Row,
+    SchemaColumn,
     SinkApiDestinationParameters,
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
@@ -965,9 +1071,16 @@ __all__ = [
     SourceRabbitMQMetaParameters,
     SourceRabbitMQMsgSyncParameters,
     Table,
+    AskLumaRequest,
+    AskLumaResponseBody,
+    AskLumaResponse,
     CheckServiceLinkedRoleForProductRequest,
     CheckServiceLinkedRoleForProductResponseBody,
     CheckServiceLinkedRoleForProductResponse,
+    CreateAgentRequest,
+    CreateAgentShrinkRequest,
+    CreateAgentResponseBody,
+    CreateAgentResponse,
     CreateApiDestinationRequest,
     CreateApiDestinationShrinkRequest,
     CreateApiDestinationResponseBody,
@@ -987,6 +1100,9 @@ __all__ = [
     CreateEventStreamingShrinkRequest,
     CreateEventStreamingResponseBody,
     CreateEventStreamingResponse,
+    CreateNamespaceRequest,
+    CreateNamespaceResponseBody,
+    CreateNamespaceResponse,
     CreateRuleRequest,
     CreateRuleShrinkRequest,
     CreateRuleResponseBody,
@@ -994,6 +1110,13 @@ __all__ = [
     CreateServiceLinkedRoleForProductRequest,
     CreateServiceLinkedRoleForProductResponseBody,
     CreateServiceLinkedRoleForProductResponse,
+    CreateTableRequest,
+    CreateTableShrinkRequest,
+    CreateTableResponseBody,
+    CreateTableResponse,
+    DeleteAgentRequest,
+    DeleteAgentResponseBody,
+    DeleteAgentResponse,
     DeleteApiDestinationRequest,
     DeleteApiDestinationResponseBody,
     DeleteApiDestinationResponse,
@@ -1009,9 +1132,15 @@ __all__ = [
     DeleteEventStreamingRequest,
     DeleteEventStreamingResponseBody,
     DeleteEventStreamingResponse,
+    DeleteNamespaceRequest,
+    DeleteNamespaceResponseBody,
+    DeleteNamespaceResponse,
     DeleteRuleRequest,
     DeleteRuleResponseBody,
     DeleteRuleResponse,
+    DeleteTableRequest,
+    DeleteTableResponseBody,
+    DeleteTableResponse,
     DeleteTargetsRequest,
     DeleteTargetsShrinkRequest,
     DeleteTargetsResponseBody,
@@ -1030,9 +1159,15 @@ __all__ = [
     EventCenterQueryEventsShrinkRequest,
     EventCenterQueryEventsResponseBody,
     EventCenterQueryEventsResponse,
+    GetAgentRequest,
+    GetAgentResponseBody,
+    GetAgentResponse,
     GetApiDestinationRequest,
     GetApiDestinationResponseBody,
     GetApiDestinationResponse,
+    GetCatalogRequest,
+    GetCatalogResponseBody,
+    GetCatalogResponse,
     GetConnectionRequest,
     GetConnectionResponseBody,
     GetConnectionResponse,
@@ -1042,14 +1177,26 @@ __all__ = [
     GetEventStreamingRequest,
     GetEventStreamingResponseBody,
     GetEventStreamingResponse,
+    GetNamespaceRequest,
+    GetNamespaceResponseBody,
+    GetNamespaceResponse,
     GetRuleRequest,
     GetRuleResponseBody,
     GetRuleResponse,
+    GetTableRequest,
+    GetTableResponseBody,
+    GetTableResponse,
+    ListAgentsRequest,
+    ListAgentsResponseBody,
+    ListAgentsResponse,
     ListAliyunOfficialEventSourcesResponseBody,
     ListAliyunOfficialEventSourcesResponse,
     ListApiDestinationsRequest,
     ListApiDestinationsResponseBody,
     ListApiDestinationsResponse,
+    ListCatalogsRequest,
+    ListCatalogsResponseBody,
+    ListCatalogsResponse,
     ListConnectionsRequest,
     ListConnectionsResponseBody,
     ListConnectionsResponse,
@@ -1059,9 +1206,15 @@ __all__ = [
     ListEventStreamingsRequest,
     ListEventStreamingsResponseBody,
     ListEventStreamingsResponse,
+    ListNamespacesRequest,
+    ListNamespacesResponseBody,
+    ListNamespacesResponse,
     ListRulesRequest,
     ListRulesResponseBody,
     ListRulesResponse,
+    ListTablesRequest,
+    ListTablesResponseBody,
+    ListTablesResponse,
     ListTargetsRequest,
     ListTargetsResponseBody,
     ListTargetsResponse,
@@ -1071,13 +1224,22 @@ __all__ = [
     PauseEventStreamingRequest,
     PauseEventStreamingResponseBody,
     PauseEventStreamingResponse,
+    PollAskResultRequest,
+    PollAskResultResponseBody,
+    PollAskResultResponse,
     PutTargetsRequest,
     PutTargetsShrinkRequest,
     PutTargetsResponseBody,
     PutTargetsResponse,
+    QueryAskLumaLogRequest,
+    QueryAskLumaLogResponseBody,
+    QueryAskLumaLogResponse,
     QueryEventRequest,
     QueryEventResponseBody,
     QueryEventResponse,
+    QueryEventHouseRequest,
+    QueryEventHouseResponseBody,
+    QueryEventHouseResponse,
     QueryEventTracesRequest,
     QueryEventTracesResponseBody,
     QueryEventTracesResponse,
@@ -1097,6 +1259,10 @@ __all__ = [
     TestEventSourceConfigShrinkRequest,
     TestEventSourceConfigResponseBody,
     TestEventSourceConfigResponse,
+    UpdateAgentRequest,
+    UpdateAgentShrinkRequest,
+    UpdateAgentResponseBody,
+    UpdateAgentResponse,
     UpdateApiDestinationRequest,
     UpdateApiDestinationShrinkRequest,
     UpdateApiDestinationResponseBody,
@@ -1119,9 +1285,16 @@ __all__ = [
     UpdateEventStreamingBusinessOptionRequest,
     UpdateEventStreamingBusinessOptionResponseBody,
     UpdateEventStreamingBusinessOptionResponse,
+    UpdateNamespaceRequest,
+    UpdateNamespaceResponseBody,
+    UpdateNamespaceResponse,
     UpdateRuleRequest,
     UpdateRuleResponseBody,
     UpdateRuleResponse,
+    UpdateTableRequest,
+    UpdateTableShrinkRequest,
+    UpdateTableResponseBody,
+    UpdateTableResponse,
     AguiMessageMetadataAttachments,
     AguiMessageMetadata,
     AguiMessageToolCallsFunction,
@@ -1152,6 +1325,9 @@ __all__ = [
     TableColumns,
     TableRetentionPolicy,
     CheckServiceLinkedRoleForProductResponseBodyData,
+    CreateAgentRequestMetadataAttachments,
+    CreateAgentRequestMetadata,
+    CreateAgentResponseBodyData,
     CreateApiDestinationRequestHttpApiParameters,
     CreateApiDestinationResponseBodyDate,
     CreateConnectionRequestAuthParametersApiKeyAuthParameters,
@@ -1333,11 +1509,15 @@ __all__ = [
     CreateEventStreamingRequestTransforms,
     CreateEventStreamingShrinkRequestTags,
     CreateEventStreamingResponseBodyData,
+    CreateNamespaceResponseBodyData,
     CreateRuleRequestEventTargetsConcurrentConfig,
     CreateRuleRequestEventTargetsDeadLetterQueue,
     CreateRuleRequestEventTargetsParamList,
     CreateRuleRequestEventTargets,
     CreateRuleResponseBodyData,
+    CreateTableRequestColumns,
+    CreateTableRequestRetentionPolicy,
+    CreateTableResponseBodyData,
     DeleteTargetsResponseBodyDataErrorEntries,
     DeleteTargetsResponseBodyData,
     DiscoverEventSourceRequestSourceMySQLParameters,
@@ -1516,12 +1696,14 @@ __all__ = [
     GetRuleResponseBodyDataTargetsParamList,
     GetRuleResponseBodyDataTargets,
     GetRuleResponseBodyData,
+    ListAgentsResponseBodyData,
     ListAliyunOfficialEventSourcesResponseBodyDataEventSourceListEventTypes,
     ListAliyunOfficialEventSourcesResponseBodyDataEventSourceList,
     ListAliyunOfficialEventSourcesResponseBodyData,
     ListApiDestinationsResponseBodyDataApiDestinationsHttpApiParameters,
     ListApiDestinationsResponseBodyDataApiDestinations,
     ListApiDestinationsResponseBodyData,
+    ListCatalogsResponseBodyData,
     ListConnectionsResponseBodyDataConnectionsAuthParametersApiKeyAuthParameters,
     ListConnectionsResponseBodyDataConnectionsAuthParametersBasicAuthParameters,
     ListConnectionsResponseBodyDataConnectionsAuthParametersOAuthParametersClientParameters,
@@ -1669,9 +1851,11 @@ __all__ = [
     ListEventStreamingsResponseBodyDataEventStreamingsTransforms,
     ListEventStreamingsResponseBodyDataEventStreamings,
     ListEventStreamingsResponseBodyData,
+    ListNamespacesResponseBodyData,
     ListRulesResponseBodyDataRulesTargets,
     ListRulesResponseBodyDataRules,
     ListRulesResponseBodyData,
+    ListTablesResponseBodyData,
     ListTargetsResponseBodyDataTargetsConcurrentConfig,
     ListTargetsResponseBodyDataTargetsParamList,
     ListTargetsResponseBodyDataTargets,
@@ -1692,6 +1876,7 @@ __all__ = [
     PutTargetsRequestTargets,
     PutTargetsResponseBodyDataErrorEntries,
     PutTargetsResponseBodyData,
+    QueryEventHouseResponseBodyData,
     QueryEventTracesResponseBodyData,
     QueryTracedEventByEventIdResponseBodyDataEvents,
     QueryTracedEventByEventIdResponseBodyData,
@@ -1700,6 +1885,9 @@ __all__ = [
     TestEventPatternResponseBodyData,
     TestEventSourceConfigRequestSourceMySQLParameters,
     TestEventSourceConfigResponseBodyData,
+    UpdateAgentRequestMetadataAttachments,
+    UpdateAgentRequestMetadata,
+    UpdateAgentResponseBodyData,
     UpdateApiDestinationRequestHttpApiParameters,
     UpdateConnectionRequestAuthParametersApiKeyAuthParameters,
     UpdateConnectionRequestAuthParametersBasicAuthParameters,
@@ -1875,5 +2063,13 @@ __all__ = [
     UpdateEventStreamingRequestSourceSourceRocketMQParameters,
     UpdateEventStreamingRequestSourceSourceSLSParameters,
     UpdateEventStreamingRequestSource,
-    UpdateEventStreamingRequestTransforms
+    UpdateEventStreamingRequestTransforms,
+    UpdateNamespaceResponseBodyData,
+    UpdateTableRequestAddColumn,
+    UpdateTableRequestDeleteColumn,
+    UpdateTableRequestRenameColumn,
+    UpdateTableRequestUpdateColumnComment,
+    UpdateTableRequestUpdateColumnType,
+    UpdateTableRequestUpdateRetentionPolicy,
+    UpdateTableResponseBodyData
 ]

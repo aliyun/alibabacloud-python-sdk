@@ -21,8 +21,9 @@ class ExecuteAdhocWorkflowInstanceRequest(DaraModel):
         self.biz_date = biz_date
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The name of the workflow instance.
         # 
@@ -400,10 +401,13 @@ class ExecuteAdhocWorkflowInstanceRequestTasksOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   System
-        # *   Constant
-        # *   NodeOutput
-        # *   PassThrough
+        # - System
+        # 
+        # - Constant
+        # 
+        # - NodeOutput
+        # 
+        # - PassThrough
         self.type = type
         # The value of the variable.
         self.value = value

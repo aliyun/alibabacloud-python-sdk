@@ -14,8 +14,11 @@ class DescribeUserIPSWhitelistResponseBody(DaraModel):
         request_id: str = None,
         whitelists: List[main_models.DescribeUserIPSWhitelistResponseBodyWhitelists] = None,
     ):
+        # The list of IPv6 whitelists for the IPS on the Internet Border.
         self.ipv_6whitelists = ipv_6whitelists
+        # The request ID.
         self.request_id = request_id
+        # The list of IPv4 whitelists for the IPS on the Internet Border.
         self.whitelists = whitelists
 
     def validate(self):
@@ -76,10 +79,19 @@ class DescribeUserIPSWhitelistResponseBodyWhitelists(DaraModel):
         white_list_value: List[str] = None,
         white_type: int = None,
     ):
+        # The direction of IPv4 traffic on the Internet Border.
         self.direction = direction
+        # The type of address in the IPv4 whitelist for the Internet.
         self.list_type = list_type
+        # The value of the IPv4 whitelist on the Internet Border.
+        # 
+        # - If the whitelist type is `custom input`: the name of the address book.
+        # 
+        # - If the whitelist type is `address book reference`: an IPv4 address.
         self.list_value = list_value
+        # The list of IPv4 whitelists for the Internet.
         self.white_list_value = white_list_value
+        # The type of source or destination for which the IPv4 whitelist on the Internet Border takes effect.
         self.white_type = white_type
 
     def validate(self):
@@ -135,10 +147,19 @@ class DescribeUserIPSWhitelistResponseBodyIpv6Whitelists(DaraModel):
         white_list_value: List[str] = None,
         white_type: int = None,
     ):
+        # The direction of IPv6 traffic on the Internet Border.
         self.direction = direction
+        # The type of address in the IPv6 whitelist for the Internet.
         self.list_type = list_type
+        # The value of the IPv6 whitelist on the Internet Border.
+        # 
+        # - If the whitelist type is `custom input`: the name of the address book.
+        # 
+        # - If the whitelist type is `address book reference`: an IPv6 address.
         self.list_value = list_value
+        # The list of IPv6 whitelists for the Internet.
         self.white_list_value = white_list_value
+        # The type of source or destination for which the IPv6 whitelist on the Internet Border takes effect.
         self.white_type = white_type
 
     def validate(self):

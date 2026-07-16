@@ -22,30 +22,23 @@ class ContextualFile(DaraModel):
     ):
         # The Multipurpose Internet Mail Extensions (MIME) type of the file.
         self.content_type = content_type
-        # Name of the dataset
+        # The dataset name.
         self.dataset_name = dataset_name
-        # Elements
+        # Elements.
         self.elements = elements
-        # Media type of the current file
-        # 
-        # Valid values:
-        # 
-        # *   image
-        # *   other
-        # *   document
-        # *   archive
-        # *   audio
-        # *   video
+        # The media type of the file.
         self.media_type = media_type
-        # The URI of the OSS object. This parameter is available only if the value of the URI parameter is the URI of a file in Photo and Drive Service.
+        # The URI path of the OSS file. This parameter is used only when the URI is a PDS address.
         self.ossuri = ossuri
-        # The identifier of the corresponding file that exists in the dataset.
+        # The identifier of the file in the dataset.
         self.object_id = object_id
-        # User ID
+        # The user ID.
         self.owner_id = owner_id
-        # Name of the project
+        # The project name.
         self.project_name = project_name
-        # URI of the file. Specify the OSS URI in the oss://${bucketname}/${objectname} format, where ${bucketname} is the name of the bucket in the same region as the current project and ${objectname} is the path of the object. The URI of a file in Photo and Drive Service follows the pds://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision} format.
+        # The URI of the file.
+        # The format of an OSS URI is oss\\://${bucketname}/${objectname}. ${bucketname} is the name of an OSS bucket in the same region as the current project. ${objectname} is the file path.
+        # The format of a PDS URI is pds\\://domains/${domain}/drives/${drive}/files/${file}/revisions/${revision}.
         self.uri = uri
 
     def validate(self):

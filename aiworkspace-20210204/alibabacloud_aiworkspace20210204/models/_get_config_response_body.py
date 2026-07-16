@@ -19,28 +19,37 @@ class GetConfigResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The category of the configuration item. Valid values:
+        # The classification of the configuration item. The following classifications are supported:
         # 
-        # *   CommonResourceConfig
-        # *   DLCAutoRecycle
-        # *   DLCPriorityConfig
-        # *   DSWPriorityConfig
-        # *   QuotaMaximumDuration
-        # *   CommonTagConfig
+        # - CommonResourceConfig: common resource configurations
+        # 
+        # - DLCAutoRecycle: automatic DLC resource recycling
+        # 
+        # - DLCPriorityConfig: DLC priority settings
+        # 
+        # - DSWPriorityConfig: DSW priority settings
+        # 
+        # - QuotaMaximumDuration: the maximum runtime of a DLC task for a quota
+        # 
+        # - CommonTagConfig: tag settings
         self.category_name = category_name
-        # The key of the configuration item. Valid values:
+        # The key of the configuration item. The following keys are supported:
         # 
-        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
-        # *   priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
-        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
-        # *   predefinedTags: Predefined tags of the workspace. Created resources must include tags.
+        # - tempStoragePath: the temporary storage path. This key applies only when CategoryName is CommonResourceConfig.
+        # 
+        # - isAutoRecycle: the automatic recycling configuration. This key applies only when CategoryName is DLCAutoRecycle.
+        # 
+        # - priorityConfig: the priority configuration. This key applies only when CategoryName is DLCPriorityConfig or DSWPriorityConfig.
+        # 
+        # - quotaMaximumDuration: the maximum runtime of a DLC task for a quota. This key applies only when CategoryName is QuotaMaximumDuration.
+        # 
+        # - predefinedTags: the predefined tags for the workspace. Resources that you create must have tags.
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        # The tags of the configuration item.
+        # The list of tags for the configuration item.
         self.labels = labels
         # The request ID.
         self.request_id = request_id
@@ -123,9 +132,9 @@ class GetConfigResponseBodyLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

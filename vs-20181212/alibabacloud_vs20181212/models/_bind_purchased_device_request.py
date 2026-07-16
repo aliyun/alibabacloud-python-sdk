@@ -12,11 +12,17 @@ class BindPurchasedDeviceRequest(DaraModel):
         owner_id: int = None,
         region: str = None,
     ):
+        # The device ID.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The space ID.
+        # 
         # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id
+        # The region to which the space belongs.
+        # 
         # This parameter is required.
         self.region = region
 

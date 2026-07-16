@@ -27,7 +27,9 @@ class ListClusterCheckResultRequest(DaraModel):
         # Page number for the current page in a paginated query. The default value is **1**.
         self.current_page = current_page
         # Language type for requests and responses. The default value is **zh**. Values:
+        # 
         # - **zh**: Chinese
+        # 
         # - **en**: English
         # 
         # This parameter is required.
@@ -39,6 +41,7 @@ class ListClusterCheckResultRequest(DaraModel):
         # Custom sorting type. Values:
         # 
         # - **RISK_LEVEL**: Risk level.
+        # 
         # - **STATUS**: Check item status.
         self.sort_type = sort_type
         # List of check item statuses.

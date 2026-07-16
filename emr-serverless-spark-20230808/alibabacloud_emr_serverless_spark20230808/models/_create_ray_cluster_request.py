@@ -19,13 +19,20 @@ class CreateRayClusterRequest(DaraModel):
         volume_ids: List[str] = None,
         worker_spec: List[main_models.CreateRayClusterRequestWorkerSpec] = None,
     ):
+        # The description of the cluster.
         self.description = description
+        # The version of the Ray engine.
         self.display_release_version = display_release_version
+        # Additional parameters. The value must be in JSON format.
         self.extra_param = extra_param
+        # The parameters for the head node of the Ray cluster.
         self.head_spec = head_spec
+        # The name of the Ray cluster. The name must be 1 to 64 characters in length.
         self.name = name
+        # The name of the network connection.
         self.network_service_name = network_service_name
         self.volume_ids = volume_ids
+        # The parameters for the worker nodes of the Ray cluster. You can specify up to 50 worker groups.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -114,14 +121,22 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         replica: int = None,
         worker_type: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
         self.gpu_spec = gpu_spec
+        # The name of the worker group.
         self.group_name = group_name
+        # The maximum number of worker nodes for automatic scaling. The minimum value is 1.
         self.max_replica = max_replica
+        # The memory size, in GiB.
         self.memory = memory
+        # The minimum number of worker nodes for automatic scaling. The minimum value is 1. This value must be less than or equal to maxReplica.
         self.min_replica = min_replica
+        # The queue name.
         self.queue_name = queue_name
+        # The number of worker nodes. The minimum value is 1.
         self.replica = replica
+        # The worker type.
         self.worker_type = worker_type
 
     def validate(self):
@@ -202,11 +217,16 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
         memory: str = None,
         queue_name: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # Specifies whether to enable automatic scaling for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         self.gpu_spec = gpu_spec
+        # The idle timeout period in seconds for worker nodes when automatic scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
+        # The memory size, in GiB.
         self.memory = memory
+        # The queue name.
         self.queue_name = queue_name
 
     def validate(self):

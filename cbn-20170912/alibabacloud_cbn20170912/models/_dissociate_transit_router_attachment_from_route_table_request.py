@@ -16,16 +16,17 @@ class DissociateTransitRouterAttachmentFromRouteTableRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that ensures the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # Generate a unique token on your client. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run to check information such as the permissions and the instance status. Default values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **false** (default): performs a dry run and sends the request.
-        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the request passes the check, the network instance connection is dissociated from the route table.
+        # 
+        # - **true**: Sends a dry run request to check the required parameters, request format, and permissions. An error message is returned if the request fails the dry run. The corresponding request ID is returned if the request passes the dry run.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id

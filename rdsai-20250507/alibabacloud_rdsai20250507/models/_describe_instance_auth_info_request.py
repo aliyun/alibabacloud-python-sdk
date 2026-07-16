@@ -10,9 +10,9 @@ class DescribeInstanceAuthInfoRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The region ID.
+        # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The operation that you want to perform. Set the value to **DescribeInstanceAuthInfo**.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

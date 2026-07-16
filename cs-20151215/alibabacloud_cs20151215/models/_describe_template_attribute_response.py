@@ -72,31 +72,33 @@ class DescribeTemplateAttributeResponseBody(DaraModel):
         created: str = None,
         updated: str = None,
     ):
-        # The ID of the template. When you update a template, a new template ID is generated.
+        # 编排模板ID，每次变更都会有一个模板ID。
         self.id = id
-        # The access control policy of the template.
+        # 编排模板的访问权限，取值：
+        # 
+        # - `private`：私有。
+        # - `public`：公共。
+        # - `shared`：可共享。
         self.acl = acl
-        # The name of the template.
+        # 编排模板名称。
         self.name = name
-        # The template content in the YAML format.
+        # 编排模板YAML内容。
         self.template = template
-        # The type of template. The value can be a custom value.
+        # 模板类型。
         # 
-        # *   If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
-        # *   If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. Container Service for Swarm is deprecated.
-        # *   If the value of the parameter is not `kubernetes`, the template is not displayed on the Templates page in the console. We recommend that you set the parameter to `kubernetes`.
+        # - 当取值为kubernetes时将在控制台的编排模板页面展示该模板。
         # 
-        # Default value: `kubernetes`.
+        # - 该参数不填写或者取值为其他值时，控制台的编排模板页面将不会展示该模板。
         self.template_type = template_type
-        # The description of the template.
+        # 编排模板描述信息。
         self.description = description
-        # The label of the template.
+        # 部署模板的标签。
         self.tags = tags
-        # The unique ID of the template. The value remains unchanged after the template is updated.
+        # 编排模板唯一ID，不随模板更新而改变。
         self.template_with_hist_id = template_with_hist_id
-        # The time when the template was created.
+        # 编排模板创建时间。
         self.created = created
-        # The time when the template was updated.
+        # 编排模板更新时间。
         self.updated = updated
 
     def validate(self):

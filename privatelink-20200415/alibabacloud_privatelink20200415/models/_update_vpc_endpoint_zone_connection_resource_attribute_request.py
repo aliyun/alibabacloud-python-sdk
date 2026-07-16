@@ -24,8 +24,9 @@ class UpdateVpcEndpointZoneConnectionResourceAttributeRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The endpoint ID.
         # 
@@ -39,8 +40,9 @@ class UpdateVpcEndpointZoneConnectionResourceAttributeRequest(DaraModel):
         self.region_id = region_id
         # The resource allocation mode. You can change the resource allocation mode only if the endpoint connection is in the **Disconnected** state. Valid values:
         # 
-        # *   **Auto**: automatically and randomly allocates service resources. In this mode, the specified service resource is deleted.
-        # *   **Manual**: manually allocates service resources. If you set the value to Manual, you must also specify the **ResourceId** and **ResourceType** parameters.
+        # - **Auto**: automatically and randomly allocates service resources. In this mode, the specified service resource is deleted.
+        # 
+        # - **Manual**: manually allocates service resources. If you set the value to Manual, you must also specify the **ResourceId** and **ResourceType** parameters.
         self.resource_allocate_mode = resource_allocate_mode
         # The ID of the service resource that you want to manually allocate or migrate in the zone where the endpoint connection is deployed.
         # 
@@ -48,15 +50,17 @@ class UpdateVpcEndpointZoneConnectionResourceAttributeRequest(DaraModel):
         self.resource_id = resource_id
         # The migration mode of the service resource. Valid values:
         # 
-        # *   **Graceful**: smooth migration. Service resources in the zone are smoothly migrated.
-        # *   **Force**: forced migration. Service resources in the zone are forcefully migrated.
+        # - **Graceful**: smooth migration. Service resources in the zone are smoothly migrated.
         # 
-        # >  You need to specify this parameter only if you want to migrate service resources and the endpoint connection is in the **Connected** state. If you specify this parameter, you must also specify the **ResourceId** and **ResourceType** parameters.
+        # - **Force**: forced migration. Service resources in the zone are forcefully migrated.
+        # 
+        # > You need to specify this parameter only if you want to migrate service resources and the endpoint connection is in the **Connected** state. If you specify this parameter, you must also specify the **ResourceId** and **ResourceType** parameters.
         self.resource_replace_mode = resource_replace_mode
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: a CLB instance that supports PrivateLink. In addition, the CLB instance is deployed in a VPC.
-        # *   **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
+        # - **slb**: a CLB instance that supports PrivateLink. In addition, the CLB instance is deployed in a VPC.
+        # 
+        # - **alb**: an Application Load Balancer (ALB) instance that supports PrivateLink. In addition, the ALB instance is deployed in a VPC.
         # 
         # > If **ResourceAllocateMode** is set to **Mannual**, or **ResourceReplaceMode** is set, this parameter is required.
         self.resource_type = resource_type

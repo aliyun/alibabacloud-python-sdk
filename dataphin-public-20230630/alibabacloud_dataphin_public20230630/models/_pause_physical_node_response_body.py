@@ -17,11 +17,17 @@ class PausePhysicalNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The results of the pause scheduling operations on the nodes.
         self.node_operate_result_list = node_operate_result_list
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,8 +95,11 @@ class PausePhysicalNodeResponseBodyNodeOperateResultList(DaraModel):
         node_id: str = None,
         status: str = None,
     ):
+        # The error message returned when the operation fails.
         self.error_message = error_message
+        # The node ID.
         self.node_id = node_id
+        # The operation result.
         self.status = status
 
     def validate(self):

@@ -14,8 +14,15 @@ class ListAlertItemsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault message.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id

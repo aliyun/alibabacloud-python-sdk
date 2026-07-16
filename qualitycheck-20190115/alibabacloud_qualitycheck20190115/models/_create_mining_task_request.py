@@ -13,10 +13,15 @@ class CreateMiningTaskRequest(DaraModel):
         param: str = None,
         task_type: str = None,
     ):
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Webhook address
         self.callback_url = callback_url
+        # File path
         self.file_path = file_path
+        # Task parameters
         self.param = param
+        # Task type
         self.task_type = task_type
 
     def validate(self):

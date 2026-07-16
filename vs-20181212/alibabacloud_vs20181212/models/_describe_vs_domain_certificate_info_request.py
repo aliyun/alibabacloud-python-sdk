@@ -10,6 +10,8 @@ class DescribeVsDomainCertificateInfoRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id

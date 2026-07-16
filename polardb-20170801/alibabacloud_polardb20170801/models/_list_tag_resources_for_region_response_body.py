@@ -14,7 +14,9 @@ class ListTagResourcesForRegionResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: main_models.ListTagResourcesForRegionResponseBodyTagResources = None,
     ):
+        # If the response does not return all results, this parameter is returned. You can use this token in the next request to continue the query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
         self.tag_resources = tag_resources
 

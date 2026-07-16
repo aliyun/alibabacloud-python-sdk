@@ -13,7 +13,7 @@ class RebootAndroidInstancesInGroupResponseBody(DaraModel):
         request_id: str = None,
         tasks: main_models.RebootAndroidInstancesInGroupResponseBodyTasks = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.tasks = tasks
 

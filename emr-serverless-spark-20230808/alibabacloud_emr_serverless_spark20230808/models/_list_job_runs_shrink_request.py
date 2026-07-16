@@ -24,34 +24,37 @@ class ListJobRunsShrinkRequest(DaraModel):
         states_shrink: str = None,
         tags_shrink: str = None,
     ):
+        # The Spark configurations.
         self.application_configs = application_configs
-        # The ID of the user who created the job.
+        # The UID of the user who created the job.
         self.creator = creator
-        # The range of end time.
+        # The time range when the job run ended.
         self.end_time_shrink = end_time_shrink
+        # Specifies whether the job is a workflow task.
         self.is_workflow = is_workflow
-        # The job run ID.
+        # The deployment ID of the streaming job.
         self.job_run_deployment_id = job_run_deployment_id
-        # The job ID.
+        # The job run ID.
         self.job_run_id = job_run_id
-        # The maximum number of entries to return.
+        # The maximum number of entries to return. The maximum value is 100.
         self.max_results = max_results
-        # The minimum running duration of the job. Unit: ms.
+        # The minimum runtime of the job run, in milliseconds.
         self.min_duration = min_duration
         # The job name.
         self.name = name
-        # The pagination token that is used in the request to retrieve a new page of results.
+        # The token that specifies the position from which to start the next read.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
-        # The name of the resource queue on which the Spark jobs run.
+        # The ID of the resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
+        # The runtime configurations.
         self.runtime_configs = runtime_configs
-        # The range of start time.
+        # The time range when the job run started.
         self.start_time_shrink = start_time_shrink
-        # The job states.
+        # The job run states.
         self.states_shrink = states_shrink
-        # The tags of the job.
+        # The list of tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):

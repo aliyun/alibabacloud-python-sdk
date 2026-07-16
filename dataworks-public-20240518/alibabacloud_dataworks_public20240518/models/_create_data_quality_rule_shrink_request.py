@@ -18,32 +18,31 @@ class CreateDataQualityRuleShrinkRequest(DaraModel):
         target_shrink: str = None,
         template_code: str = None,
     ):
-        # The check settings for sample data.
+        # The sample check settings.
         self.checking_config_shrink = checking_config_shrink
-        # The description of the rule. The description can be up to 500 characters in length.
+        # The description of the rule. The maximum length is 500 characters.
         self.description = description
-        # Specifies whether to enable the monitoring rule.
+        # Specifies whether to enable the data quality rule.
         self.enabled = enabled
-        # The operations that you can perform after the rule-based check fails.
+        # The list of issue handlers for the data quality rule check.
         self.error_handlers_shrink = error_handlers_shrink
         # The name of the rule.
         # 
         # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sampling settings.
+        # The settings required for sample collection.
         self.sampling_config_shrink = sampling_config_shrink
-        # The strength of the rule. Valid values:
-        # 
-        # *   Normal
-        # *   High
+        # The severity of the rule for the business (corresponding to the strong/weak rule on the page). Valid values:
+        # - Normal
+        # - High
         self.severity = severity
-        # The monitored object of the rule.
+        # The object monitored by the rule.
         self.target_shrink = target_shrink
-        # The ID of the template used by the rule.
+        # The unique identifier of the rule template that the rule references.
         self.template_code = template_code
 
     def validate(self):

@@ -15,18 +15,40 @@ class DescribeFlowMetricRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # End Time. Supported formats:
+        # 
+        # - UNIX timestamp: the number of milliseconds elapsed since January 1, 1970.
+        # 
+        # - Format: YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The instance ID, which can be either a cloud computr ID or a premium public bandwidth plan ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The instance type. You can select either cloud computer type or premium public bandwidth type. If you select cloud computer type, the `InstanceId` and `MetricType` must be filled in with a cloud computer ID and its corresponding traffic type. The same applies to premium public bandwidth.
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # The type of monitoring metric. Supports monitoring data for inbound and outbound bandwidth of cloud computers, as well as inbound and outbound bandwidth for public network access of premium public bandwidth.
+        # 
         # This parameter is required.
         self.metric_type = metric_type
+        # The statistic period of monitoring data. Unit: seconds.
+        # 
         # This parameter is required.
         self.period = period
+        # The Region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain the list of Regions supported by Elastic Desktop Service (EDS).
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Start Time. Supported formats:
+        # 
+        # - UNIX timestamp: the number of milliseconds elapsed since January 1, 1970.
+        # 
+        # - Format: YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

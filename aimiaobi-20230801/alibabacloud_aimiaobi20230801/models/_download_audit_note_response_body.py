@@ -14,12 +14,17 @@ class DownloadAuditNoteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Download link for the destination rule library.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

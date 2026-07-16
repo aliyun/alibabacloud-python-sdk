@@ -14,8 +14,11 @@ class DescribeNetworkInstanceRelationListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the network instances.
         self.network_instance_list = network_instance_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -69,12 +72,19 @@ class DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceList(DaraMod
         peer_network_instance_list: List[main_models.DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetworkInstanceList] = None,
         region_no: str = None,
     ):
+        # The associated CEN instance.
         self.associated_cen = associated_cen
+        # The connection type.
         self.connect_type = connect_type
+        # The ID of the network instance.
         self.network_instance_id = network_instance_id
+        # The name of the network instance.
         self.network_instance_name = network_instance_name
+        # The type of the network instance.
         self.network_instance_type = network_instance_type
+        # The list of peer network instances.
         self.peer_network_instance_list = peer_network_instance_list
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):
@@ -159,10 +169,15 @@ class DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetw
         network_instance_type: str = None,
         region_no: str = None,
     ):
+        # The associated CEN instance.
         self.associated_cen = associated_cen
+        # The ID of the network instance.
         self.network_instance_id = network_instance_id
+        # The name of the network instance.
         self.network_instance_name = network_instance_name
+        # The type of the network instance.
         self.network_instance_type = network_instance_type
+        # The region.
         self.region_no = region_no
 
     def validate(self):
@@ -226,10 +241,19 @@ class DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListPeerNetw
         cen_name: str = None,
         transit_router_type: str = None,
     ):
+        # The ID of the network instance connection.
         self.attachment_id = attachment_id
+        # The name of the network instance connection.
         self.attachment_name = attachment_name
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The name of the CEN instance.
         self.cen_name = cen_name
+        # The version of the transit router. Valid values:
+        # 
+        # - **Basic**: Basic Edition transit router.
+        # 
+        # - **Enterprise**: Enterprise Edition transit router.
         self.transit_router_type = transit_router_type
 
     def validate(self):
@@ -285,10 +309,19 @@ class DescribeNetworkInstanceRelationListResponseBodyNetworkInstanceListAssociat
         cen_name: str = None,
         transit_router_type: str = None,
     ):
+        # The ID of the network instance connection.
         self.attachment_id = attachment_id
+        # The name of the network instance connection.
         self.attachment_name = attachment_name
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The name of the CEN instance.
         self.cen_name = cen_name
+        # The type of the transit router. Valid values:
+        # 
+        # - **Basic**: Basic Edition transit router.
+        # 
+        # - **Enterprise**: Enterprise Edition transit router.
         self.transit_router_type = transit_router_type
 
     def validate(self):

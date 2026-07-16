@@ -12,14 +12,15 @@ class ModifyInstanceAntiBruteForceRuleRequest(DaraModel):
         source_ip: str = None,
         uuid: str = None,
     ):
-        # The ID of the defense rule.
+        # The ID of the anti-brute-force attacks rule.
         # 
         # This parameter is required.
         self.new_rule_id = new_rule_id
         self.resource_owner_id = resource_owner_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUID of the server for which you want to modify the defense rule. You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/141932.html) operation to query the UUIDs of servers.
+        # The UUID of the server for which you want to modify the anti-brute-force attacks rule.
+        # You can invoke the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUID of the server.
         # 
         # This parameter is required.
         self.uuid = uuid

@@ -18,7 +18,7 @@ class GetStorageDomainRoutingRuleResponseBody(DaraModel):
         rule_id: str = None,
         success: bool = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
         # The creation time.
         self.create_time = create_time
@@ -30,7 +30,7 @@ class GetStorageDomainRoutingRuleResponseBody(DaraModel):
         self.routes = routes
         # The rule ID.
         self.rule_id = rule_id
-        # Indicates whether the request is successful.
+        # The request status identifier.
         self.success = success
 
     def validate(self):

@@ -20,7 +20,42 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'vpcipam.us-west-1.aliyuncs.com',
+            'us-east-1': 'vpcipam.us-east-1.aliyuncs.com',
+            'me-east-1': 'vpcipam.me-east-1.aliyuncs.com',
+            'me-central-1': 'vpcipam.me-central-1.aliyuncs.com',
+            'eu-west-1': 'vpcipam.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'vpcipam.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'vpcipam.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'vpcipam.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'vpcipam.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'vpcipam.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'vpcipam.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'vpcipam.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'vpcipam.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'vpcipam.cn-qingdao.aliyuncs.com',
+            'cn-nanjing': 'vpcipam.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'vpcipam.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'vpcipam.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'vpcipam.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'vpcipam.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'vpcipam.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'vpcipam.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'vpcipam.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'vpcipam.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'vpcipam.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'vpcipam.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'vpcipam.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'vpcipam.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'vpcipam.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'vpcipam.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'vpcipam.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'vpcipam.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'vpcipam.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'vpcipam.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vpcipam', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

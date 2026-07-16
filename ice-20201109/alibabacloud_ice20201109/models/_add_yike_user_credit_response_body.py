@@ -11,8 +11,17 @@ class AddYikeUserCreditResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The error code returned if the operation fails. The following value is supported:
+        # 
+        # - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: The credit balance of the main account is insufficient.
         self.error_code = error_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.result = result
 
     def validate(self):

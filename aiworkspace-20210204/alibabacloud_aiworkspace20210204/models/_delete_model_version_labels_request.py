@@ -9,7 +9,7 @@ class DeleteModelVersionLabelsRequest(DaraModel):
         self,
         label_keys: str = None,
     ):
-        # The key of the tag to be deleted. Separate multiple tag keys with commas (,).
+        # The keys of the labels that you want to delete. Separate multiple keys with commas (,).
         self.label_keys = label_keys
 
     def validate(self):

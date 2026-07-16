@@ -18,18 +18,19 @@ class PutMetricRuleTargetsResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
-        # The failed data.
+        # The list of failures.
         self.fail_data = fail_data
-        # The error message returned.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):

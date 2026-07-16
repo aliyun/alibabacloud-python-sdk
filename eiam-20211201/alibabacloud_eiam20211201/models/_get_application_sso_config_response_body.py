@@ -13,9 +13,9 @@ class GetApplicationSsoConfigResponseBody(DaraModel):
         application_sso_config: main_models.GetApplicationSsoConfigResponseBodyApplicationSsoConfig = None,
         request_id: str = None,
     ):
-        # The single sign-on (SSO) configuration information of the application.
+        # The SSO configuration of the application.
         self.application_sso_config = application_sso_config
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,23 +56,25 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfig(DaraModel):
         saml_sso_config: main_models.GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig = None,
         sso_status: str = None,
     ):
-        # The initial SSO method. Valid values:
+        # The SSO initiation method. Valid values:
         # 
-        # *   only_app_init_sso: Only application-initiated SSO is allowed. This method is selected by default when the SSO protocol of the application is an OIDC protocol. If this method is selected when the SSO protocol of the application is SAML, the InitLoginUrl parameter is required.
-        # *   idaas_or_app_init_sso: IDaaS-initiated SSO and application-initiated SSO are allowed. This method is selected by default when the SSO protocol of the application is SAML. If this method is selected when the SSO protocol of the application is an OIDC protocol, the InitLoginUrl parameter is required.
+        # - only_app_init_sso: SSO is initiated only by the application. This is the default value for OIDC applications. If this method is used for a SAML application, you must specify InitLoginUrl.
+        # 
+        # - idaas_or_app_init_sso: SSO can be initiated by the IDaaS console or the application. This is the default value for SAML applications. If this method is used for an OIDC application, you must specify InitLoginUrl.
         self.init_login_type = init_login_type
-        # The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
+        # The URL that triggers SSO. This parameter is required when InitLoginType for an OIDC application is set to idaas_or_app_init_sso. This parameter is also required when InitLoginType for a SAML application is set to only_app_init_sso.
         self.init_login_url = init_login_url
-        # The Open ID Connect (OIDC)-based SSO configuration attributes of the application. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The SSO configuration parameters for the application that uses OpenID Connect (OIDC). This parameter is returned only when the application uses OIDC for SSO.
         self.oidc_sso_config = oidc_sso_config
         # The configuration of the metadata endpoint provided by the application.
         self.protocol_endpoint_domain = protocol_endpoint_domain
-        # The Security Assertion Markup Language (SAML)-based SSO configuration attributes of the application. This parameter is returned only if the SSO protocol of the application is SAML 2.0.
+        # The SSO configuration parameters for the application that uses Security Assertion Markup Language (SAML) 2.0. This parameter is returned only when the application uses SAML 2.0 for SSO.
         self.saml_sso_config = saml_sso_config
-        # The SSO feature status of the application. Valid values:
+        # The status of the SSO feature for the application. Valid values:
         # 
-        # *   enabled: The feature is enabled.
-        # *   disabled: The feature is disabled.
+        # - enabled: Enabled.
+        # 
+        # - disabled: Disabled.
         self.sso_status = sso_status
 
     def validate(self):
@@ -148,38 +150,43 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfig(DaraM
         sp_entity_id: str = None,
         sp_sso_acs_url: str = None,
     ):
-        # Whether the Assertion needs a signature. ResponseSigned and AssertionSigned cannot be false at the same time.
+        # Indicates whether the assertion needs to be signed. ResponseSigned and AssertionSigned cannot both be false.
         # 
-        # true: signature is required.
-        # false: signature is not required.
+        # - true: The assertion must be signed.
+        # 
+        # - false: The assertion does not need to be signed.
         self.assertion_signed = assertion_signed
-        # The additional user attributes in the SAML assertion.
+        # The configuration of additional user attributes in the SAML assertion.
         self.attribute_statements = attribute_statements
-        # The default value of the RelayState attribute. If the SSO request is initiated in EIAM, the RelayState attribute in the SAML response is set to this default value.
+        # The default value of RelayState. If the SSO is initiated by EIAM, the RelayState in the SAML response is set to this value.
         self.default_relay_state = default_relay_state
-        # The custom issuer ID.
+        # The EntityID of the identity provider (IdP) in the SAML protocol.
         self.id_pentity_id = id_pentity_id
-        # The Format attribute of the NameID element in the SAML assertion. Valid values:
+        # The format of the NameID in the SAML protocol. Valid values:
         # 
-        # *   urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: No format is specified. How to resolve the NameID element depends on the application.
-        # *   urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: The NameID element must be an email address.
-        # *   urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: The NameID element must be persistent.
-        # *   urn:oasis:names:tc:SAML:2.0:nameid-format:transient: The NameID element must be transient.
+        # - urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified: Unspecified. The application determines how to parse the NameID.
+        # 
+        # - urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress: Email address format.
+        # 
+        # - urn:oasis:names:tc:SAML:2.0:nameid-format:persistent: Persistent NameID.
+        # 
+        # - urn:oasis:names:tc:SAML:2.0:nameid-format:transient: Transient NameID.
         self.name_id_format = name_id_format
-        # The expression that is used to generate the value of NameID in the SAML assertion.
+        # The expression used to generate the value of the NameID in the SAML assertion.
         self.name_id_value_expression = name_id_value_expression
-        # Optional RelayState. The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+        # The optional RelayState values. The display names of multiple redirect URLs are shown on the application card in the application portal. After a user clicks a URL and completes the SSO, the user is redirected to the URL. You must specify a default redirect URL before you can specify optional RelayState values.
         self.optional_relay_states = optional_relay_states
-        # Whether the response needs to be signed. ResponseSigned and AssertionSigned cannot be false at the same time.
+        # Indicates whether the response needs to be signed. ResponseSigned and AssertionSigned cannot both be false.
         # 
-        # true: signature is required.
-        # false: signature is not required.
+        # - true: The response must be signed.
+        # 
+        # - false: The response does not need to be signed.
         self.response_signed = response_signed
-        # The algorithm that is used to calculate the signature for the SAML assertion.
+        # The signature algorithm for the SAML assertion.
         self.signature_algorithm = signature_algorithm
-        # The entity ID of the application in SAML. The application assumes the role of service provider.
+        # The SAML EntityID of the application (service provider).
         self.sp_entity_id = sp_entity_id
-        # The Assertion Consumer Service (ACS) URL of the application in SAML. The application assumes the role of service provider.
+        # The SAML assertion consumer service (ACS) URL of the application (service provider).
         self.sp_sso_acs_url = sp_sso_acs_url
 
     def validate(self):
@@ -285,9 +292,9 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigOption
         display_name: str = None,
         relay_state: str = None,
     ):
-        # The display name of the RelayState
+        # The display name of the RelayState.
         self.display_name = display_name
-        # RelayState.The user will see the display names of multiple optional redirect addresses in the application card of the application portal. After the user clicks and completes SSO, they will automatically jump to the corresponding address. This field can only be filled in after the default redirect address is filled in.
+        # The optional RelayState value. The display names of multiple redirect URLs are shown on the application card in the application portal. After a user clicks a URL and completes the SSO, the user is redirected to the URL.
         self.relay_state = relay_state
 
     def validate(self):
@@ -322,9 +329,9 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigSamlSsoConfigAttrib
         attribute_name: str = None,
         attribute_value_expression: str = None,
     ):
-        # The attribute name.
+        # The name of the attribute in the SAML assertion.
         self.attribute_name = attribute_name
-        # The expression that is used to generate the value of the attribute.
+        # The expression used to generate the value of the attribute in the SAML assertion.
         self.attribute_value_expression = attribute_value_expression
 
     def validate(self):
@@ -367,25 +374,25 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigProtocolEndpointDom
         saml_meta_endpoint: str = None,
         saml_sso_endpoint: str = None,
     ):
-        # The OAuth2.0 authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OAuth 2.0 authorization endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oauth_2authorization_endpoint = oauth_2authorization_endpoint
-        # The OAuth2.0 device authorization endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OAuth 2.0 device authorization endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oauth_2device_authorization_endpoint = oauth_2device_authorization_endpoint
-        # The OAuth2.0 token revocation endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OAuth 2.0 token revocation endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oauth_2revoke_endpoint = oauth_2revoke_endpoint
-        # The OAuth2.0 token endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OAuth 2.0 token endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oauth_2token_endpoint = oauth_2token_endpoint
-        # The OIDC UserInfo endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OIDC userinfo endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oauth_2userinfo_endpoint = oauth_2userinfo_endpoint
-        # The information about the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OIDC issuer. This parameter is returned only when the application uses OIDC for SSO.
         self.oidc_issuer = oidc_issuer
-        # The JSON Web Key Set (JWKS) URL of the OIDC issuer. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The JSON Web Key Set (JWKS) endpoint for OIDC. This parameter is returned only when the application uses OIDC for SSO.
         self.oidc_jwks_endpoint = oidc_jwks_endpoint
-        # The OIDC relying party (RP)-initiated logout endpoint. This parameter is returned only when the SSO protocol of the application is an OIDC protocol.
+        # The OIDC Relying Party (RP)-initiated logout endpoint. This parameter is returned only when the application uses OIDC for SSO.
         self.oidc_logout_endpoint = oidc_logout_endpoint
-        # The metadata URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+        # The metadata endpoint for the SAML protocol. This parameter is returned only when the application uses SAML 2.0 for SSO.
         self.saml_meta_endpoint = saml_meta_endpoint
-        # The request receiving URL of the SAML protocol. This parameter is returned only when the SSO protocol of the application is SAML 2.0.
+        # The endpoint that receives AuthnRequest requests for the SAML protocol. This parameter is returned only when the application uses SAML 2.0 for SSO.
         self.saml_sso_endpoint = saml_sso_endpoint
 
     def validate(self):
@@ -482,36 +489,37 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig(DaraM
         response_types: List[str] = None,
         subject_id_expression: str = None,
     ):
-        # The validity period of the issued access token. Unit: seconds. Default value: 1200.
+        # The validity period of the access token. Unit: seconds. Default value: 1200 (20 minutes).
         self.access_token_effective_time = access_token_effective_time
+        # Indicates whether the application is allowed to make requests to the IDaaS EIAM authorization server as a public client. This feature is supported only for the authorization code and device code grant types. Default value: false.
         self.allowed_public_client = allowed_public_client
-        # The validity period of the issued code. Unit: seconds. Default value: 60.
+        # The validity period of the authorization code. Unit: seconds. Default value: 60 (1 minute).
         self.code_effective_time = code_effective_time
-        # The custom claims that are returned for the ID token.
+        # The custom claims that are returned in the ID token.
         self.custom_claims = custom_claims
-        # The scopes of user attributes that can be returned for the UserInfo endpoint or ID token.
+        # The OIDC-compliant scope parameter. This parameter specifies the scope of user attributes that can be returned by the userinfo endpoint or included in the ID token.
         self.grant_scopes = grant_scopes
-        # The list of grant types that are supported for OIDC protocols.
+        # The list of OIDC grant types that are supported.
         self.grant_types = grant_types
-        # The validity period of the issued ID token. Unit: seconds. Default value: 300.
+        # The validity period of the ID token. Unit: seconds. Default value: 300 (5 minutes).
         self.id_token_effective_time = id_token_effective_time
-        # The ID of the identity authentication source in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+        # The ID of the authentication source for password-based logon. This parameter is valid only if GrantTypes for the OIDC application is set to password.
         self.password_authentication_source_id = password_authentication_source_id
-        # Indicates whether time-based one-time password (TOTP) authentication is required in password mode. This parameter is returned only when the value of the GrantTypes parameter includes the password mode.
+        # Indicates whether Time-based One-Time Password (TOTP) multi-factor authentication (MFA) is required for password-based logon. This parameter is valid only if GrantTypes for the OIDC application is set to password.
         self.password_totp_mfa_required = password_totp_mfa_required
-        # The algorithms that are used to calculate the code challenge for PKCE.
+        # The algorithm used to calculate the code challenge in PKCE.
         self.pkce_challenge_methods = pkce_challenge_methods
-        # Indicates whether the SSO of the application requires Proof Key for Code Exchange (PKCE) (RFC 7636).
+        # Indicates whether Proof Key for Code Exchange (PKCE) is required for the application SSO. For more information, see RFC 7636.
         self.pkce_required = pkce_required
-        # The list of logout redirect URIs that are supported by the application.
+        # The list of post-logout redirect URIs.
         self.post_logout_redirect_uris = post_logout_redirect_uris
-        # The list of redirect URIs that are supported by the application.
+        # The list of redirect URIs that the application supports.
         self.redirect_uris = redirect_uris
-        # The validity period of the issued refresh token. Unit: seconds. Default value: 86400.
+        # The validity period of the refresh token. Unit: seconds. Default value: 86400 (1 day).
         self.refresh_token_effective = refresh_token_effective
-        # The response types that are supported by the application. This parameter is returned when the value of the GrantTypes parameter includes the implicit mode.
+        # The response type that the application supports. This parameter is returned only if OidcSsoConfig.GrantTypes is set to implicit.
         self.response_types = response_types
-        # The custom expression that is used to generate the subject ID returned for the ID token.
+        # The expression used to generate the value of the sub claim in the ID token.
         self.subject_id_expression = subject_id_expression
 
     def validate(self):
@@ -638,9 +646,9 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustom
         claim_name: str = None,
         claim_value_expression: str = None,
     ):
-        # The claim name.
+        # The name of the claim.
         self.claim_name = claim_name
-        # The expression that is used to generate the value of the claim.
+        # The expression used to generate the value of the claim.
         self.claim_value_expression = claim_value_expression
 
     def validate(self):

@@ -17,11 +17,25 @@ class ListPageAdAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, refer to [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -90,9 +104,13 @@ class ListPageAdAccountResponseBodyData(DaraModel):
         currency: str = None,
         page_id: str = None,
     ):
+        # The Meta ad account ID.
         self.ad_account_id = ad_account_id
+        # The name of the ad account.
         self.ad_account_name = ad_account_name
+        # The currency.
         self.currency = currency
+        # The PageId of Messenger.
         self.page_id = page_id
 
     def validate(self):

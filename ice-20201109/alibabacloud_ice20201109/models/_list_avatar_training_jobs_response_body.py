@@ -20,8 +20,9 @@ class ListAvatarTrainingJobsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -126,16 +127,19 @@ class ListAvatarTrainingJobsResponseBodyDataAvatarTrainingJobList(DaraModel):
         self.avatar_name = avatar_name
         # The type of the digital human.
         self.avatar_type = avatar_type
-        # *   The time when the job was created.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the job was created.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # *   The time when the first training was initiated.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the first training was initiated.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.first_training_time = first_training_time
         # The ID of the digital human training job.
         self.job_id = job_id
-        # *   The time when the last training was initiated.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the last training was initiated.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.last_training_time = last_training_time
         # The status description.
         self.message = message

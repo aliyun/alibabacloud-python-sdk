@@ -10,13 +10,17 @@ class GetAccountRequest(DaraModel):
         account_name: str = None,
         dbinstance_id: str = None,
     ):
-        # The name of the database account.
+        # The name of the initial account. The name must meet the following requirements:
+        # 
+        # - The name can contain lowercase letters, digits, and underscores (_).
+        # - The name must start with a lowercase letter and end with a lowercase letter or digit.
+        # - The name cannot start with gp.
+        # - The name must be 2 to 16 characters in length.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The instance ID.
-        # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a specific region.
+        # >You can specify up to 30 instance IDs for batch operations. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

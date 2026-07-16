@@ -18,13 +18,29 @@ class ListOrdersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned for the current request. Default value: 10.
         self.max_results = max_results
+        # A pagination token. If the query results are not returned in a single call, this token is returned. Use this token in a subsequent call to retrieve the remaining results.
         self.next_token = next_token
+        # The list of orders.
+        # 
         # This parameter is required.
         self.order_list = order_list
+        # The page number of the returned page. Default value: 1.
         self.page_number = page_number
+        # The number of entries returned per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -105,15 +121,71 @@ class ListOrdersResponseBodyOrderList(DaraModel):
         produce_code: str = None,
         region: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
+        # The billing method of the instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
         self.charge_type = charge_type
+        # The commodity code. Valid values:
+        # 
+        # - polardb_sub: subscription in the Chinese mainland.
+        # 
+        # - polardb_sub_intl: subscription in Hong Kong (China) and regions outside China.
+        # 
+        # - polardb_payg: pay-as-you-go in the Chinese mainland.
+        # 
+        # - polardb_payg_intl: pay-as-you-go in Hong Kong (China) and regions outside China.
+        # 
+        # - polardb_sub_jushita: Jushita subscription.
+        # 
+        # - polardb_payg_jushita: Jushita pay-as-you-go.
+        # 
+        # - polardb_sub_cainiao: Cainiao subscription.
+        # 
+        # - polardb_payg_cainiao: Cainiao pay-as-you-go.
+        # 
+        # > * If you use an Alibaba Cloud account for the China site, you can view only the commodity codes for the Chinese mainland.
+        # >
+        # > * If you use an Alibaba Cloud international site account, you can view only the commodity codes for regions outside the Chinese mainland.
+        # >
+        # > * If you use a Jushita account, you can view only the commodity codes for Jushita.
+        # >
+        # > * If you use a Cainiao account, you can view only the commodity codes for Cainiao.
         self.commodity_code = commodity_code
+        # The time when the order was created.
         self.created_time = created_time
+        # The cluster ID.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # The status of the order.
+        # 
+        # - **pending**: The task is waiting to start.
+        # 
+        # - **create**: The order is placed and is being processed.
+        # 
+        # - **fail**: The instance failed to be created.
+        # 
+        # - **cancel**: The order is canceled.
+        # 
+        # - **success**: The instance is created.
         self.order_status = order_status
+        # The type of the order. Valid values:
+        # 
+        # - BUY: The instance is purchased.
+        # 
+        # - UPGRADE: The instance configuration is changed.
+        # 
+        # - RENEW: The subscription is renewed.
+        # 
+        # - CONVERT: The billing method is changed.
         self.order_type = order_type
+        # The product code.
         self.produce_code = produce_code
+        # The region information
         self.region = region
 
     def validate(self):

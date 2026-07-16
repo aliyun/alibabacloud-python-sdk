@@ -17,11 +17,17 @@ class DescribePurchasedDevicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of devices.
         self.devices = devices
+        # The total number of pages.
         self.page_count = page_count
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of devices.
         self.total_count = total_count
 
     def validate(self):
@@ -98,17 +104,41 @@ class DescribePurchasedDevicesResponseBodyDevices(DaraModel):
         type: str = None,
         vendor: str = None,
     ):
+        # The time the device was created.
         self.created_time = created_time
+        # The device description.
         self.description = description
+        # The ID of the group to which the device belongs.
         self.group_id = group_id
+        # Group name.
         self.group_name = group_name
+        # The device ID.
         self.id = id
+        # The device name.
         self.name = name
+        # The order ID.
         self.order_id = order_id
+        # The region to which the space belongs. This is the service center.
         self.region = region
+        # The device registration code.
         self.register_code = register_code
+        # The device subtype. Valid values:
+        # 
+        # - bullet (bullet camera)
+        # 
+        # - dome (dome camera)
+        # 
+        # - ptz (PTZ camera)
         self.sub_type = sub_type
+        # The device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform (platform)
+        # 
+        # - ied (intelligent edge device)
         self.type = type
+        # The device vendor.
         self.vendor = vendor
 
     def validate(self):

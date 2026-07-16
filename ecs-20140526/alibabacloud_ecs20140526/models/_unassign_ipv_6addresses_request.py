@@ -18,17 +18,17 @@ class UnassignIpv6AddressesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # IPv6 address N to unassign. Valid values of N: 1 to 10.
+        # One or more IPv6 addresses to unassign. Valid values of N: 1 to 10.
         self.ipv_6address = ipv_6address
-        # IPv6 prefix N to unassign. Valid values of N: 1 to 10.
+        # One or more IPv6 prefixes to unassign. Valid values of N: 1 to 10.
         self.ipv_6prefix = ipv_6prefix
-        # The ID of the ENI.
+        # The ID of the network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the ENI. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -18,17 +18,25 @@ class DeleteNetworkChannelRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        # The name of the channel.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # A client token that ensures request idempotence. The client generates this token. It must be unique across requests. The token is case-sensitive and can contain up to 64 ASCII characters.
         self.client_token = client_token
+        # The name of the target instance.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the virtual private cloud (VPC) where the endpoint is located.
         self.vpc_id = vpc_id
 
     def validate(self):

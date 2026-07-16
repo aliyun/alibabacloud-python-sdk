@@ -18,16 +18,61 @@ class ListGeneratedContentsRequest(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
+        # Workspace ID: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Content domain (content category)
+        # 
+        # - media: Media writing
+        # 
+        # - government: Government document writing
+        # 
+        # - office: Office writing
+        # 
+        # - market: Marketing writing
+        # 
+        # - custom: Custom writing
+        # 
+        # - commentGenerate: Opinion generation
         self.content_domain = content_domain
+        # Page number
         self.current = current
+        # Data type filter
+        # 
+        # - plainText: Plain text
+        # 
+        # - richText: Rich text
+        # 
+        # - html: HTML
+        # 
+        # - pdf: PDF
+        # 
+        # - word: Word
+        # 
+        # - excel: Excel
+        # 
+        # - csv: CSV
+        # 
+        # - image: Image
+        # 
+        # - video: Video
+        # 
+        # - audio: Audio
         self.data_type = data_type
+        # End time
         self.end_time = end_time
+        # Search keyword: Supports fuzzy search on titles and content
         self.query = query
+        # Items per page. Default is 10.
         self.size = size
+        # Start time
         self.start_time = start_time
+        # Task ID
+        # 
+        # > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId for multiple tasks, those tasks belong to the same conversation.
         self.task_id = task_id
+        # Title text
         self.title = title
 
     def validate(self):

@@ -12,9 +12,16 @@ class ListSearchTaskDialoguesRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The number of the page to return.
         self.page_number = page_number
+        # The number of results to return.
         self.page_size = page_size
+        # The unique ID of the task.
+        # 
+        # > You do not need to specify this parameter. The system generates it automatically. If you specify the same TaskId for multiple tasks, they are grouped into the same conversation.
         self.task_id = task_id
+        # The unique ID of the Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

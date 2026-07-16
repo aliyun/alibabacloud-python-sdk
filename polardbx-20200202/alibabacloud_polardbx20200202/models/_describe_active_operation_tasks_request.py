@@ -20,18 +20,46 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         status: int = None,
         task_type: str = None,
     ):
+        # Specifies whether cancellation is allowed. Valid values:
+        # - **-1**: All O&M events can be canceled.
+        # - **0**: Not allowed. 
+        # - **1**: Allowed.
         self.allow_cancel = allow_cancel
+        # Specifies whether the time can be modified. Valid values:
+        # 
+        # - **-1**: The time of all O&M events can be modified.
+        # - **0**: Not allowed. 
+        # - **1**: Allowed.
         self.allow_change = allow_change
+        # The change level. Default value: all. Valid values:
+        # 
+        # - **all**: All levels of exception recovery and system O&M.
+        # - **S0**: Exception recovery.
+        # - **S1**: System O&M.
         self.change_level = change_level
+        # The database type. Set this parameter to polarx.
         self.db_type = db_type
+        # The instance name. Default value: empty string.
         self.ins_name = ins_name
+        # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 25.
         self.page_size = page_size
+        # The product name. Default value: polarx.
         self.product_id = product_id
+        # The region.
         self.region = region
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The task status. Valid values:
+        # 
+        # - **-1**: All pending and running tasks.  
+        # - **3**: Pending. 
+        # - **4**: Running.
         self.status = status
+        # The task type. A value of all indicates that all tasks of the user are queried. Set this parameter to all.
         self.task_type = task_type
 
     def validate(self):

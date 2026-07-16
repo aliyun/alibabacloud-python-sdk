@@ -61,8 +61,9 @@ class DetectAudioForCustomizedVoiceJobResponseBodyData(DaraModel):
     ):
         # Indicates whether the audio file passes the check. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.pass_ = pass_
         # The reason returned if the audio file failed to pass the check.
         self.reason = reason

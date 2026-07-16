@@ -13,12 +13,13 @@ class DedicatedIpPoolListRequest(DaraModel):
         page_size: int = None,
         pool_id: str = None,
     ):
+        # Specifies whether to return all entries.
         self.all = all
-        # Search keyword for the name
+        # The keyword to search for IP pools by name.
         self.keyword = keyword
-        # Page index, starting from 1
+        # The page number to return, starting from 1.
         self.page_index = page_index
-        # Number of items per page
+        # The number of entries per page.
         self.page_size = page_size
         self.pool_id = pool_id
 

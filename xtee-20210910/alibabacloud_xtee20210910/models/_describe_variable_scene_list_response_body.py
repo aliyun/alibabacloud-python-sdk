@@ -17,17 +17,17 @@ class DescribeVariableSceneListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,25 +102,25 @@ class DescribeVariableSceneListResponseBodyResultObject(DaraModel):
         last_modified_operator: str = None,
         status: str = None,
     ):
-        # Business category identifier.
+        # The business category identifier.
         self.biz_type = biz_type
-        # Configuration key.
+        # The configuration item key.
         self.config_key = config_key
-        # Configuration value.
+        # The configuration item value.
         self.config_value = config_value
-        # Created by.
+        # The creator.
         self.creator = creator
-        # Description information.
+        # The description.
         self.description = description
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID of the configuration.
+        # The primary key ID of the configuration item.
         self.id = id
-        # Last modified by.
+        # The last modifier.
         self.last_modified_operator = last_modified_operator
-        # Status.
+        # The status.
         self.status = status
 
     def validate(self):

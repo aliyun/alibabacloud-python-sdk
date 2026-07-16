@@ -14,6 +14,8 @@ class DescribeLocalAvailableRecoveryTimeRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

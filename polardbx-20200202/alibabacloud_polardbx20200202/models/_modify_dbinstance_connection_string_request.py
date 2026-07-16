@@ -13,14 +13,24 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         new_prefix: str = None,
         region_id: str = None,
     ):
+        # The original connection string.
+        # 
         # This parameter is required.
         self.connection_string = connection_string
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The new port number.
+        # 
         # This parameter is required.
         self.new_port = new_port
+        # The new connection string prefix.
+        # 
         # This parameter is required.
         self.new_prefix = new_prefix
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -18,13 +18,25 @@ class ListProjectsRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # The project name to filter by.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - `Asc`: ascending order.
+        # 
+        # - `Desc`: descending order.
         self.order = order
+        # The Alibaba Cloud account ID of the project owner.
         self.owner = owner
+        # The page number. Starts from 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # An array of project IDs to filter by.
         self.project_ids = project_ids
+        # The field to sort the results by.
         self.sort_by = sort_by
+        # The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to get this ID.
         self.workspace_id = workspace_id
 
     def validate(self):

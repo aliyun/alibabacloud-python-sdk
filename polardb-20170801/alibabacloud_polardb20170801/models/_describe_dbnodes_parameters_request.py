@@ -18,7 +18,7 @@ class DescribeDBNodesParametersRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The node ID. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # The ID of the node. You can specify multiple node IDs. Separate the IDs with a comma (,).
         # 
         # This parameter is required.
         self.dbnode_ids = dbnode_ids

@@ -13,10 +13,13 @@ class SkipCurrentStepResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data.
         self.data = data
+        # The return message. This parameter is empty when the request succeeds. When the request fails, exception information such as error codes is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -64,6 +67,7 @@ class SkipCurrentStepResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The Slink task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

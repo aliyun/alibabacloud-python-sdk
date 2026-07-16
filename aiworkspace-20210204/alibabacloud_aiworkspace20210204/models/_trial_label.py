@@ -13,15 +13,15 @@ class TrialLabel(DaraModel):
         trial_id: str = None,
         value: str = None,
     ):
-        # Create time
+        # The time the label was created, in UTC and following the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
-        # Modified time
+        # The time the label was last modified, in UTC and following the ISO 8601 standard.
         self.gmt_modified_time = gmt_modified_time
-        # Key of Trial Label
+        # The key of the label.
         self.key = key
-        # trl-v0fw9a0sd8f9af
+        # The ID of the associated trial.
         self.trial_id = trial_id
-        # Value of Trial Label
+        # The value of the label.
         self.value = value
 
     def validate(self):

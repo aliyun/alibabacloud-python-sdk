@@ -10,7 +10,7 @@ class CreateVpcBindingRequest(DaraModel):
         self,
         body: main_models.CreateVpcBindingInput = None,
     ):
-        # The VPC binding configurations.
+        # The VPC binding configuration.
         # 
         # This parameter is required.
         self.body = body

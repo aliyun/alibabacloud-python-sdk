@@ -12,23 +12,25 @@ class ModifyPartitionNumRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The number of partitions that you want to add to the topic.
+        # Number of partitions to add.
         # 
-        # *   The value must be an integer that is greater than 0.
-        # *   To reduce the risk of data skew, we recommend that you set the value to a multiple of 6.
-        # *   The number of total partitions ranges from 1 to 360.
+        # - Must be greater than 0.
+        # 
+        # - It is recommended that the number of partitions is a multiple of 6 to reduce the risk of data skew.
+        # 
+        # - The total number of partitions is limited to 1-360.
         # 
         # This parameter is required.
         self.add_partition_num = add_partition_num
-        # The instance ID.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the instance.
+        # Region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The topic name.
+        # Topic name.
         # 
         # This parameter is required.
         self.topic = topic

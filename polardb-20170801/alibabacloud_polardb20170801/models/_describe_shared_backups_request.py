@@ -20,17 +20,40 @@ class DescribeSharedBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         share_type: str = None,
     ):
+        # The backup set ID.
         self.backup_id = backup_id
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The database type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
+        # 
+        # To specify multiple types, separate them with a comma.
         self.dbtype = dbtype
+        # The database version.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0. Default value: **1**.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 30 to 100. Default value: **30**.
         self.page_size = page_size
+        # The region ID.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The share type. Valid values:
+        # 
+        # - **ShareIncoming**: backups shared with you.
+        # 
+        # - **ShareOutgoing**: backups you shared.
+        # 
         # This parameter is required.
         self.share_type = share_type
 

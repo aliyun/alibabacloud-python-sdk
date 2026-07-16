@@ -16,11 +16,13 @@ class UpdateMetaCollectionRequest(DaraModel):
     ):
         # The collection administrator IDs. This parameter is available only for data albums. The administrator must be an account within the same tenant.
         self.administrators = administrators
+        # Updated collection description
         self.description = description
         # The collection ID.
         # 
         # This parameter is required.
         self.id = id
+        # Updated collection name
         self.name = name
 
     def validate(self):

@@ -25,20 +25,35 @@ class SubmitMaterialTaskResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
+        # The application name. The application with this name is queried.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The error code. The ErrorCode field is not returned if the request is successful. The ErrorCode field is returned if the request fails. For more information, see the error codes in this topic.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The root error code.
         self.root_error_code = root_error_code
+        # The root error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request was successful.
         self.success = success
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -146,6 +161,7 @@ class SubmitMaterialTaskResponseBodyModule(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -1085,6 +1085,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_train_pic_avatar_with_options_async(request, headers, runtime)
 
+    def delete_broadcast_sticker_with_options(
+        self,
+        sticker_id: str,
+        request: main_models.DeleteBroadcastStickerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBroadcastStickerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBroadcastSticker',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/broadcast/materials/stickers/{DaraURL.percent_encode(sticker_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBroadcastStickerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_broadcast_sticker_with_options_async(
+        self,
+        sticker_id: str,
+        request: main_models.DeleteBroadcastStickerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBroadcastStickerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteBroadcastSticker',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/broadcast/materials/stickers/{DaraURL.percent_encode(sticker_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteBroadcastStickerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_broadcast_sticker(
+        self,
+        sticker_id: str,
+        request: main_models.DeleteBroadcastStickerRequest,
+    ) -> main_models.DeleteBroadcastStickerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_broadcast_sticker_with_options(sticker_id, request, headers, runtime)
+
+    async def delete_broadcast_sticker_async(
+        self,
+        sticker_id: str,
+        request: main_models.DeleteBroadcastStickerRequest,
+    ) -> main_models.DeleteBroadcastStickerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_broadcast_sticker_with_options_async(sticker_id, request, headers, runtime)
+
     def get_broadcast_template_with_options(
         self,
         request: main_models.GetBroadcastTemplateRequest,

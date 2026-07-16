@@ -83,8 +83,9 @@ class ListRulesResponseBodyRules(DaraModel):
         self.rule_name = rule_name
         # The state of the authorization rule.
         # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.rule_state = rule_state
 
     def validate(self):

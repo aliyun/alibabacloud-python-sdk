@@ -13,11 +13,10 @@ class UpdateJenkinsImageRegistryPersistenceDayRequest(DaraModel):
     ):
         # The retention period. Unit: days.
         self.persistence_day = persistence_day
-        # The ID of the image repository.
-        # 
-        # > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+        # The image repository ID.
+        # >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
         self.registry_id = registry_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

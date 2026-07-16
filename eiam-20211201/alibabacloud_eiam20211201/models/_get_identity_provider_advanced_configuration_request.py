@@ -10,11 +10,11 @@ class GetIdentityProviderAdvancedConfigurationRequest(DaraModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # Identity provider ID
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM的实例id
+        # Instance ID
         # 
         # This parameter is required.
         self.instance_id = instance_id

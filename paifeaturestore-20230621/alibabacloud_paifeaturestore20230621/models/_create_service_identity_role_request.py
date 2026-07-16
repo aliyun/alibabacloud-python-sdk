@@ -9,6 +9,8 @@ class CreateServiceIdentityRoleRequest(DaraModel):
         self,
         role_name: str = None,
     ):
+        # The name of the service account role.
+        # 
         # This parameter is required.
         self.role_name = role_name
 

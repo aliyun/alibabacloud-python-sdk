@@ -20,38 +20,43 @@ class DescribeTablesRequest(DaraModel):
         service_region_id: str = None,
         template_id: int = None,
     ):
-        # The page number of the page to return. Default value: 1.
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
-        # The ID of the data asset to which the table belongs. You can call the [DescribeInstances](~~DescribeInstances~~) operation to obtain the ID of the data asset.
+        # The ID of the instance to which the data asset table belongs. Call the [DescribeInstances](~~DescribeInstances~~) operation to obtain this ID.
         self.instance_id = instance_id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
-        # The search keyword. Fuzzy match is supported. For example, if you specify test, all tables whose names contain test are retrieved.
+        # The search keyword. Fuzzy search is supported. For example, if you enter test, all results that contain test are returned.
         self.name = name
-        # The ID of the package to which the table belongs. You can call the [DescribePackages](~~DescribePackages~~) operation to obtain the ID of the package.
+        # The ID of the package to which the data asset table belongs. Call the [DescribePackages](~~DescribePackages~~) operation to obtain this ID.
         self.package_id = package_id
-        # The number of entries to return on each page. Default value: 10.
+        # The maximum number of entries to return on each page. Default value: 10.
         self.page_size = page_size
-        # The name of the service to which the table belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which Data Security Center (DSC) can scan for sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
+        # The name of the product to which the data asset table belongs. Valid values include MaxCompute, OSS, ADS, OTS, and RDS. For more information about the supported products, see [Data asset types that support sensitive data detection](https://help.aliyun.com/document_detail/212906.html).
         self.product_code = product_code
-        # The ID of the service to which the table belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain the ID of the service.
+        # The ID of the product to which the data asset table belongs. Call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain this ID.
         self.product_id = product_id
-        # The sensitivity level of the table. Each sensitivity level ID corresponds to a sensitivity level name. Valid values:
+        # The ID of the risk level for the data asset table. Each risk level ID corresponds to a risk level name. Valid values:
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A. No sensitive data is detected.
+        # 
+        # - **2**: S1. Level 1 sensitive data.
+        # 
+        # - **3**: S2. Level 2 sensitive data.
+        # 
+        # - **4**: S3. Level 3 sensitive data.
+        # 
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The ID of the sensitive data detection rule that the table hits. You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the ID of the sensitive data detection rule.
+        # The ID of the sensitive data detection rule that the data asset table hits. Call the [DescribeRules](~~DescribeRules~~) operation to obtain this ID.
         self.rule_id = rule_id
-        # The region in which DSC is activated. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
+        # The region where Data Security Center is available. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
         self.service_region_id = service_region_id
-        # The ID of the industry-specific rule template.
+        # The ID of the industry-specific template.
         self.template_id = template_id
 
     def validate(self):

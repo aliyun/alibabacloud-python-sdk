@@ -12,9 +12,17 @@ class HangupOperateResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The status code. A value of \\"OK\\" indicates that the request was successful.
         self.code = code
+        # The status message.
         self.mesage = mesage
+        # The request ID.
         self.request_id = request_id
+        # The result of the operation. Valid values:
+        # 
+        # - **true**: The hang-up was successful.
+        # 
+        # - **false**: The hang-up operation failed.
         self.result = result
 
     def validate(self):

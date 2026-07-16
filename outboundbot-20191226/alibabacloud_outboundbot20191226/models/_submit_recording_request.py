@@ -12,11 +12,18 @@ class SubmitRecordingRequest(DaraModel):
         resource_recording: str = None,
         task_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Script recording data
+        # 
         # This parameter is required.
         self.merged_recording = merged_recording
+        # Script recording data
         self.resource_recording = resource_recording
+        # Task ID
+        # 
         # This parameter is required.
         self.task_id = task_id
 

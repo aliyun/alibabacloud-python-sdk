@@ -9,7 +9,9 @@ class GetEdgeContainerAppResourceCapacityRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) API operation to obtain the application ID.
+        # 
+        # >Notice: If ListEdgeContainerApps returns an empty list, call CreateEdgeContainerApp first to create an application and use the returned AppId.</notice>
         # 
         # This parameter is required.
         self.app_id = app_id

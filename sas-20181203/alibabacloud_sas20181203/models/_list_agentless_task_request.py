@@ -23,49 +23,49 @@ class ListAgentlessTaskRequest(DaraModel):
         task_id: str = None,
         uuid: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paged query. Paging starts from page 1.
         self.current_page = current_page
-        # The end timestamp of the task.
+        # The timestamp of the end time.
         self.end_time = end_time
-        # The public IP address of the asset that you want to query.
+        # The public IP address of the asset to query.
         self.internet_ip = internet_ip
-        # The private IP address of the asset that you want to query.
+        # The private IP address of the asset to query.
         self.intranet_ip = intranet_ip
-        # The language type. Valid values:
+        # The language type. Valid values:  
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The name of the instance.
         self.machine_name = machine_name
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paged query. Paging is performed based on this value.
         self.page_size = page_size
-        # Specifies whether to query main tasks. Valid values:
+        # Specifies whether to query the root task list. Valid values:
         # 
-        # *   **true**: queries main tasks.
-        # *   **false**: queries subtasks.
+        # - **true**: Root tasks.
+        # - **false**: Subtasks.
         self.root_task = root_task
-        # The ID of the main task.
+        # The ID of the root task.
         self.root_task_id = root_task_id
-        # The start timestamp of the task.
+        # The timestamp of the start time.
         self.start_time = start_time
-        # The status of the detection task.
+        # The detection status. Valid values:
         # 
-        # *   **1**: The detection task is in progress.
-        # *   **2**: The detection task is complete.
-        # *   **3**: The detection task fails.
-        # *   **4**: The detection task times out.
+        # - **1**: Detecting.
+        # - **2**: Completed.
+        # - **3**: Failed.
+        # - **4**: Timed out.
         self.status = status
-        # The name of the asset that you want to detect.
+        # The name of the detection target.
         self.target_name = target_name
-        # The type of the asset that you want to detect. Valid values:
+        # The scan object type. Valid values:
         # 
-        # *   **1**: snapshot
-        # *   **2**: image
+        # - **1**: snapshot 
+        # - **2**: image.
         self.target_type = target_type
-        # The ID of the main task. If you want to query subtasks of a main task, you must specify this parameter.
+        # The ID of the root task. Specify this parameter to query the subtask list of a root task.
         self.task_id = task_id
-        # The UUID of the server.
+        # The UUID of the server to query.
         self.uuid = uuid
 
     def validate(self):

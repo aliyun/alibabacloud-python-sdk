@@ -11,8 +11,11 @@ class CreateCostCenterRuleShrinkRequest(DaraModel):
         filter_expression_shrink: str = None,
         nbid: str = None,
     ):
+        # Financial unit ID
         self.cost_center_id = cost_center_id
+        # Rule expression
         self.filter_expression_shrink = filter_expression_shrink
+        # First-level marketplace ID. If left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
 
     def validate(self):

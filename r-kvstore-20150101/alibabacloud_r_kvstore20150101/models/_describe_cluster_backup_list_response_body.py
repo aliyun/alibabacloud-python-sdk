@@ -143,6 +143,7 @@ class DescribeClusterBackupListResponseBodyClusterBackups(DaraModel):
         # *   RUNNING
         # *   Failed
         self.cluster_backup_status = cluster_backup_status
+        # The time-to-live (TTL) of the backup set, in the format yyyy-MM-ddTHH:mmZ (UTC time).
         self.expect_expire_time = expect_expire_time
         # Indicates whether the backup set is valid. A value of 0 indicates that shard-level backups failed or have not been completed.
         self.is_avail = is_avail

@@ -39,105 +39,173 @@ class GetCacheRuleResponseBody(DaraModel):
         user_geo: str = None,
         user_language: str = None,
     ):
-        # Enable caching on the specified ports. Value range: 8880, 2052, 2082, 2086, 2095, 2053, 2083, 2087, 2096.
+        # - Additional ports on which caching is enabled.
+        # 
+        # - Valid values: `8880`, `2052`, `2082`, `2086`, `2095`, `2053`, `2083`, `2087`, `2096`.
+        # 
+        # - Separate multiple ports with commas.
         self.additional_cacheable_ports = additional_cacheable_ports
-        # Browser cache mode. Value range:
-        # - no_cache: Do not cache.
-        # - follow_origin: Follow origin cache policy.
-        # - override_origin: Override origin cache policy.
+        # The browser cache mode. Valid values:
+        # 
+        # - `no_cache`: Does not cache content.
+        # 
+        # - `follow_origin`: Follows the origin cache policy.
+        # 
+        # - `override_origin`: Overrides the origin cache policy.
         self.browser_cache_mode = browser_cache_mode
-        # Browser cache expiration time, in seconds.
+        # The browser cache TTL, in seconds.
         self.browser_cache_ttl = browser_cache_ttl
-        # Set bypass cache mode. Value range:
+        # Specifies whether to cache requests or bypass the cache. Valid values:
         # 
-        # - cache_all: Cache all requests.
-        # - bypass_all: Bypass cache for all requests.
+        # - `cache_all`: Caches all requests.
+        # 
+        # - `bypass_all`: Bypasses the cache for all requests.
         self.bypass_cache = bypass_cache
-        # Cache deception defense. Used to defend against web cache deception attacks. Only the verified cache content will be cached. Value range:
+        # Specifies whether to enable Cache Deception Armor. This feature helps mitigate web cache deception attacks by ensuring that only validated content is cached. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.cache_deception_armor = cache_deception_armor
-        # Cache reserve eligibility. Used to control whether user requests bypass the cache reserve node when returning to the origin. Value range:
+        # The eligibility for cache reserve. This controls whether a request bypasses the cache reserve node during an origin fetch. Valid values:
         # 
-        # - bypass_cache_reserve: Requests bypass the cache reserve.
-        # - eligible_for_cache_reserve: Eligible for cache reserve.
+        # - `bypass_cache_reserve`: The request bypasses the cache reserve.
+        # 
+        # - `eligible_for_cache_reserve`: The request is eligible for cache reserve.
         self.cache_reserve_eligibility = cache_reserve_eligibility
-        # When generating the cache key, check if the cookie exists. If it does, add the cookie name (cookie names are case-insensitive) to the cache key. Supports multiple cookie names, separated by spaces.
+        # Specifies cookies whose presence is checked when generating a cache key. If a specified cookie exists in the request, its name (case-insensitive) is added to the cache key. Separate multiple cookie names with spaces. Cookie names can contain the following characters:
+        # 
+        # - Symbols: ! # $ % & \\" \\* + - . ^ _ | \\~
+        # 
+        # - Digits: 0-9
+        # 
+        # - Letters: lowercase English letters a-z
         self.check_presence_cookie = check_presence_cookie
-        # When generating the cache key, check if the header exists. If it does, add the header name (header names are case-insensitive) to the cache key. Supports multiple header names, separated by spaces.
+        # Specifies headers whose presence is checked when generating a cache key. If a specified header exists in the request, its name (case-insensitive) is added to the cache key. Separate multiple header names with spaces. Header names can contain the following characters:
+        # 
+        # - Symbols: ! # $ % & \\" \\* + - . ^ _ | \\~
+        # 
+        # - Digits: 0-9
+        # 
+        # - Letters: lowercase English letters a-z
         self.check_presence_header = check_presence_header
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # - global: Query global configuration;
-        # - rule: Query rule configuration;
+        # Indicates whether the response contains a global or a rule configuration. Valid values:
+        # 
+        # - `global`: A global configuration.
+        # 
+        # - `rule`: A rule configuration.
         self.config_type = config_type
-        # Edge cache mode. Value range:
-        # - follow_origin: Follow origin cache policy (if exists), otherwise use the default cache policy.
-        # - no_cache: Do not cache.
-        # - override_origin: Override origin cache policy.
-        # - follow_origin_bypass: Follow origin cache policy (if exists), otherwise do not cache.
+        # The edge cache mode. Valid values:
+        # 
+        # - `follow_origin`: Uses the origin server\\"s cache policy. If none is provided, the default policy applies.
+        # 
+        # - `no_cache`: Does not cache content.
+        # 
+        # - `override_origin`: Overrides the origin cache policy.
+        # 
+        # - `follow_origin_bypass`: Uses the origin server\\"s cache policy. If none is provided, content is not cached.
+        # 
+        # - `follow_origin_override`: Uses the origin server\\"s cache policy. If none is provided, a custom cache TTL applies.
         self.edge_cache_mode = edge_cache_mode
-        # Edge cache expiration time, in seconds.
+        # The edge cache TTL, in seconds.
         self.edge_cache_ttl = edge_cache_ttl
-        # Status code cache expiration time, in seconds.
+        # The status code cache TTL, in seconds.
+        # 
+        # - Set the cache TTL for a specific status code. For example, `404=10` specifies that responses with a 404 status code are cached for 10 seconds.
+        # 
+        # - Set the cache TTL for status code classes, such as 4xx and 5xx. For example, `4xx=10` specifies that all responses with a 4xx status code are cached for 10 seconds.
+        # 
+        # - Separate multiple entries with commas.
         self.edge_status_code_cache_ttl = edge_status_code_cache_ttl
-        # When generating the cache key, include the specified cookie names and their values. Supports multiple values, separated by spaces.
+        # Specifies the cookies to include in the cache key. Both the cookie names (case-insensitive) and their values are added to the key. Separate multiple cookie names with spaces. Cookie names can contain the following characters:
+        # 
+        # - Symbols: ! # $ % & \\" \\* + - . ^ _ | \\~
+        # 
+        # - Digits: 0-9
+        # 
+        # - Letters: lowercase English letters a-z
         self.include_cookie = include_cookie
-        # When generating the cache key, include the specified header names and their values. Supports multiple values, separated by spaces.
+        # Specifies the headers to include in the cache key. Both the header names (case-insensitive) and their values are added to the key. Separate multiple header names with spaces. Header names can contain the following characters:
+        # 
+        # - Symbols: ! # $ % & \\" \\* + - . ^ _ | \\~
+        # 
+        # - Digits: 0-9
+        # 
+        # - Letters: lowercase English letters a-z
         self.include_header = include_header
+        # The mode for handling the body content when generating a cache key for POST requests. Valid values:
+        # 
+        # - `md5`: Calculates the MD5 hash of the body content and adds the hash to the cache key.
+        # 
+        # - `ignore`: Ignores the body content in the cache key.
         self.post_body_cache_key = post_body_cache_key
+        # The size limit (in KB) of the body content for POST caching. The value is an integer from 1 to 8. A null or empty value defaults to 8 KB.
         self.post_body_size_limit = post_body_size_limit
+        # Specifies whether to enable the POST cache feature.
         self.post_cache = post_cache
-        # The query strings to be retained or deleted, supporting multiple values separated by spaces.
+        # Specifies the query strings to include in or exclude from the cache key. Separate multiple query strings with spaces.
         self.query_string = query_string
-        # The processing mode for query strings when generating cache keys. Value range:
+        # The mode for handling query strings when generating a cache key. Valid values:
         # 
-        # - ignore_all: Ignore all.
-        # - exclude_query_string: Exclude specified query strings.
-        # - reserve_all: Default, reserve all.
-        # - include_query_string: Include specified query strings.
+        # - `ignore_all`: Ignores all query strings.
+        # 
+        # - `exclude_query_string`: Excludes specified query strings.
+        # 
+        # - `reserve_all`: Retains all query strings. This is the default value.
+        # 
+        # - `include_query_string`: Includes specified query strings.
         self.query_string_mode = query_string_mode
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which is a conditional expression used to match user requests. This parameter applies only to rule configurations.
+        # 
+        # - To match all incoming requests, use `true`.
+        # 
+        # - To match specific requests, use a custom expression, such as `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether the rule is enabled. This parameter applies only to rule configurations. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding a global configuration.
+        # The name of the rule. This parameter applies only to rule configurations.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Serve stale cache. When enabled, the node can still use the cached expired files to respond to user requests even if the origin server is unavailable. Value range:
+        # Specifies whether to serve stale content. If enabled, edge nodes serve stale (expired) content from the cache when the origin server is unavailable. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.serve_stale = serve_stale
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, this indicates the configuration version. The default is 0.
         self.site_version = site_version
-        # Query string sorting. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to sort query strings before generating the cache key. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.sort_query_string_for_cache = sort_query_string_for_cache
-        # When generating the cache key, include the client device type. Value range:
+        # Specifies whether to include the client\\"s device type in the cache key. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.user_device_type = user_device_type
-        # When generating the cache key, include the client\\"s geographic location. Value range:
+        # Specifies whether to include the client\\"s geographic location in the cache key. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.user_geo = user_geo
-        # When generating the cache key, include the client\\"s language type. Value range:
+        # Specifies whether to include the client\\"s language in the cache key. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.user_language = user_language
 
     def validate(self):

@@ -12,9 +12,22 @@ class OperateAppServiceForPartnerRequest(DaraModel):
         operate_event: str = None,
         service_type: str = None,
     ):
+        # The business ID.
         self.biz_id = biz_id
+        # Other extended information in JSON format for future parameter expansion.
         self.extend = extend
+        # The operation event. Valid values:
+        # SERVICE_FINISH: the service is completed.
         self.operate_event = operate_event
+        # The service type.
+        # 
+        # Valid values:
+        # 
+        # - private: deployment under the user account.
+        # 
+        # - managed: hosted under the service provider account.
+        # 
+        # - operation: Alibaba Cloud Managed Services.
         self.service_type = service_type
 
     def validate(self):

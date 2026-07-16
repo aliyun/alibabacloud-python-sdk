@@ -17,11 +17,17 @@ class GetDeploymentsByLabelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the deployed jobs.
         self.data = data
+        # The error code. This parameter is returned only if the request fails.
         self.error_code = error_code
+        # The error message. This parameter is returned only if the request fails.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is returned for a successful request. To determine whether an API call is successful, check the \\`success\\` parameter.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

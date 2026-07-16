@@ -14,9 +14,9 @@ class DescribeApisecRulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The policies.
+        # The list of rules.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -70,28 +70,37 @@ class DescribeApisecRulesResponseBodyData(DaraModel):
         type: str = None,
         update_time: int = None,
     ):
-        # The ID of the policy.
+        # The ID of the rule.
         self.id = id
-        # The details of the policy. The value is a string that consists of multiple parameters in the JSON format.
+        # The details of the rule. The value is a string that is converted from a JSON object.
         self.rule = rule
-        # The status of the policy. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: enabled
+        # 
+        # - **0**: disabled
         self.status = status
-        # The type of the policy. Valid values:
+        # The type of the rule. Valid values:
         # 
-        # *   **risk**: risk detection
-        # *   **event**: security event
-        # *   **sensitive_word**: sensitive data
-        # *   **auth_flag**: authentication credential
-        # *   **api_tag**: business purpose
-        # *   **desensitization**: data masking
-        # *   **whitelist**: whitelist
-        # *   **recognition**: API recognition
-        # *   **offline_api**: lifecycle management
+        # - **risk**: threat detection
+        # 
+        # - **event**: security event
+        # 
+        # - **sensitive_word**: sensitive data
+        # 
+        # - **auth_flag**: authentication credential
+        # 
+        # - **api_tag**: business purpose
+        # 
+        # - **desensitization**: data masking
+        # 
+        # - **whitelist**: whitelist
+        # 
+        # - **recognition**: API.
+        # 
+        # - **offline_api**: lifecycle management
         self.type = type
-        # The time when the policy was updated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The time when the rule was updated. This value is a UNIX timestamp. Unit: seconds.
         self.update_time = update_time
 
     def validate(self):

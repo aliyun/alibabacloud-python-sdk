@@ -14,11 +14,17 @@ class CarApplyAddResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The internal approval form ID in the business travel system.
         self.module = module
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The log trace ID.
         self.trace_id = trace_id
 
     def validate(self):

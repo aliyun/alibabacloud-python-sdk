@@ -11,14 +11,13 @@ class DescribeVulWhitelistRequest(DaraModel):
         lang: str = None,
         page_size: int = None,
     ):
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number in paging. Pages start from page 1. Default value: 1.
         self.current_page = current_page
         # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: 10.
+        # The number of entries per page in paging. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

@@ -10,9 +10,9 @@ class GetApiSchemaUsageRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # The site ID. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
-        # The version of the website.
+        # The site version.
         self.site_version = site_version
 
     def validate(self):

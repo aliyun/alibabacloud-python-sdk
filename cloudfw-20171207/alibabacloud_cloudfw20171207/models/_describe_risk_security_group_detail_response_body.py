@@ -16,10 +16,15 @@ class DescribeRiskSecurityGroupDetailResponseBody(DaraModel):
         risk_sg_detail: List[main_models.DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetail] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The details of the risk security group.
         self.risk_sg_detail = risk_sg_detail
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,21 @@ class DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetail(DaraModel):
         rule_info: List[main_models.DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailRuleInfo] = None,
         vpc_id: str = None,
     ):
+        # The number of associated ECS instances.
         self.ecs_count = ecs_count
+        # The ECS information.
         self.ecs_info = ecs_info
+        # The ID of the security group instance.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The region ID.
         self.region_no = region_no
+        # The risk level of the rule.
         self.risk_level = risk_level
+        # The information about the risk security group rule.
         self.rule_info = rule_info
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -184,11 +197,17 @@ class DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailRuleInfo(DaraModel)
         rule_uuid: str = None,
         suggestion: str = None,
     ):
+        # The description of the rule.
         self.description = description
+        # The risk level of the rule.
         self.risk_level = risk_level
+        # The name of the rule.
         self.rule_name = rule_name
+        # The status of the rule.
         self.rule_status = rule_status
+        # The UUID of the rule.
         self.rule_uuid = rule_uuid
+        # The optimization suggestion.
         self.suggestion = suggestion
 
     def validate(self):
@@ -249,9 +268,13 @@ class DescribeRiskSecurityGroupDetailResponseBodyRiskSgDetailEcsInfo(DaraModel):
         private_ip: str = None,
         public_ip: str = None,
     ):
+        # The ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
+        # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
+        # The private IP address of the ECS instance.
         self.private_ip = private_ip
+        # The public IP address of the ECS instance.
         self.public_ip = public_ip
 
     def validate(self):

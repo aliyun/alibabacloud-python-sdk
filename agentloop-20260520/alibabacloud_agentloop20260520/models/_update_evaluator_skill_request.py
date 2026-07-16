@@ -1,0 +1,142 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_agentloop20260520 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateEvaluatorSkillRequest(DaraModel):
+    def __init__(
+        self,
+        agent_space: str = None,
+        description: str = None,
+        display_name: str = None,
+        enable: bool = None,
+        files: List[main_models.UpdateEvaluatorSkillRequestFiles] = None,
+        client_token: str = None,
+    ):
+        # The AgentSpace name.
+        # 
+        # This parameter is required.
+        self.agent_space = agent_space
+        # The description of the skill.
+        self.description = description
+        # The display name of the skill.
+        self.display_name = display_name
+        # Specifies whether to enable the skill.
+        self.enable = enable
+        # The list of skill files. When provided, the skill file content is updated.
+        self.files = files
+        # The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
+        self.client_token = client_token
+
+    def validate(self):
+        if self.files:
+            for v1 in self.files:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.agent_space is not None:
+            result['agentSpace'] = self.agent_space
+
+        if self.description is not None:
+            result['description'] = self.description
+
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+
+        if self.enable is not None:
+            result['enable'] = self.enable
+
+        result['files'] = []
+        if self.files is not None:
+            for k1 in self.files:
+                result['files'].append(k1.to_map() if k1 else None)
+
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentSpace') is not None:
+            self.agent_space = m.get('agentSpace')
+
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+
+        self.files = []
+        if m.get('files') is not None:
+            for k1 in m.get('files'):
+                temp_model = main_models.UpdateEvaluatorSkillRequestFiles()
+                self.files.append(temp_model.from_map(k1))
+
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+
+        return self
+
+class UpdateEvaluatorSkillRequestFiles(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+        name: str = None,
+        remark: str = None,
+    ):
+        # The skill file content.
+        # 
+        # This parameter is required.
+        self.content = content
+        # The skill file name.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The file remark.
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['content'] = self.content
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.remark is not None:
+            result['remark'] = self.remark
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('remark') is not None:
+            self.remark = m.get('remark')
+
+        return self
+

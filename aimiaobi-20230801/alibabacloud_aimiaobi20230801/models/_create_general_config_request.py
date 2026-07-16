@@ -11,10 +11,32 @@ class CreateGeneralConfigRequest(DaraModel):
         config_value: str = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the configuration item. Supported keys include the following:
+        # 
+        # - MiaoSou text search threshold (double): searchGenerate.searchTextMinScore
+        # 
+        # - MiaoSou image search threshold (double): searchGenerate.searchImageMinScore
+        # 
+        # - MiaoSou video search threshold (double): searchGenerate.searchVideoMinScore
+        # 
+        # - MiaoSou audio search threshold (double): searchGenerate.searchAudioMinScore
+        # 
+        # - MiaoSou Q\\&A search general answer summary prompt template (string): searchGenerate.sumQaAgentPrompt
+        # 
+        # - MiaoSou Q\\&A search general answer summary prompt template with text and images (string): searchGenerate.sumQaAgentVlPrompt
+        # 
+        # - MiaoSou Q\\&A search deep answer summary prompt template (string): searchGenerate.sumQaEnhanceAgentPrompt
+        # 
+        # - MiaoSou Q\\&A search deep answer summary prompt template with text and images (string): searchGenerate.sumQaEnhanceAgentVlPrompt
+        # 
         # This parameter is required.
         self.config_key = config_key
+        # Value of the configuration item
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # Unique identifier of the Model Studio workspace. [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

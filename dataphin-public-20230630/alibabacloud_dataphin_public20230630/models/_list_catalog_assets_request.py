@@ -11,8 +11,12 @@ class ListCatalogAssetsRequest(DaraModel):
         list_catalog_assets_query: main_models.ListCatalogAssetsRequestListCatalogAssetsQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query parameters.
+        # 
         # This parameter is required.
         self.list_catalog_assets_query = list_catalog_assets_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -54,11 +58,24 @@ class ListCatalogAssetsRequestListCatalogAssetsQuery(DaraModel):
         page_size: int = None,
         query_mode: str = None,
     ):
+        # The asset type. Default value: TABLE. Valid values:
+        # - TABLE: table, including views and materialized views.
+        # - INDEX: technical metric.
+        # - BIZ_INDEX: business metric.
+        # - API: API.
+        # - PAGE: dashboard.
         self.asset_type = asset_type
+        # The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If this parameter is not specified, all assets are queried.
         self.keyword = keyword
+        # The asset name. Used when queryMode is set to EXACT_MATCH. If this parameter is not specified, all assets are queried.
         self.name = name
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The page size. Default value: 10.
         self.page_size = page_size
+        # The query type. Determines whether to use name for exact matching or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
+        # - EXACT_MATCH: exact match.
+        # - ASSET_SEARCH: fuzzy search.
         self.query_mode = query_mode
 
     def validate(self):

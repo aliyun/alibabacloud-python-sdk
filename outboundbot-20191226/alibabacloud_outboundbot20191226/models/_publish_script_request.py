@@ -11,10 +11,16 @@ class PublishScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # A description of the publication.
+        # 
         # This parameter is required.
         self.description = description
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the scenario to publish.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

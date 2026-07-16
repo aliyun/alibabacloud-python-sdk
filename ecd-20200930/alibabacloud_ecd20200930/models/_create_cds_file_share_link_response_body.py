@@ -26,21 +26,21 @@ class CreateCdsFileShareLinkResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.success = success
 
     def validate(self):

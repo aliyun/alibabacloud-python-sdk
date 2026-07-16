@@ -13,7 +13,7 @@ class ListOrganizationalUnitParentsResponseBody(DaraModel):
         parents: List[main_models.ListOrganizationalUnitParentsResponseBodyParents] = None,
         request_id: str = None,
     ):
-        # The parent organizations.
+        # The list of parent organizations.
         self.parents = parents
         # The request ID.
         self.request_id = request_id

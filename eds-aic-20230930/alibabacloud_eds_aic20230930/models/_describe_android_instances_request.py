@@ -34,71 +34,52 @@ class DescribeAndroidInstancesRequest(DaraModel):
         status: str = None,
         tag: List[main_models.DescribeAndroidInstancesRequestTag] = None,
     ):
-        # The IDs of the instances.
+        # The list of instance IDs.
         self.android_instance_ids = android_instance_ids
-        # The name of the instance.
+        # The instance name.
         self.android_instance_name = android_instance_name
+        # The application management policy ID.
         self.app_manage_policy_id = app_manage_policy_id
+        # The user ID assigned to the instance, which is the China Wuying convenience account ID.
         self.authorized_user_id = authorized_user_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
+        # <props="china">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones of different editions (Instance Edition/Matrix Edition).
+        # 
+        # <props="intl">The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) to query the list of regions that support purchasing cloud phones..
         self.biz_region_id = biz_region_id
-        # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
+        # The billing type.
         self.charge_type = charge_type
-        # The ID of the instance group.
+        # The instance group ID.
         self.instance_group_id = instance_group_id
-        # The IDs of the instance groups.
+        # The list of instance group IDs.
         self.instance_group_ids = instance_group_ids
-        # The name of the instance group.
+        # The instance group name.
         self.instance_group_name = instance_group_name
         self.instance_version = instance_version
         # The ID of the bound key pair.
         self.key_pair_id = key_pair_id
-        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 100.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+        # The pagination token that indicates the position from which to start reading. Leave this parameter empty to start reading from the beginning.
         self.next_token = next_token
-        # The ID of the node.
+        # <props="china">The matrix ID.
+        # <props="intl">This parameter is not publicly available..
         self.node_id = node_id
-        # The name of the node.
+        # <props="china">The name of the matrix.
+        # <props="intl">This parameter is not publicly available..
         self.node_name = node_name
+        # The cloud phone network ID.
         self.office_site_ids = office_site_ids
+        # The private IP address of the instance.
         self.private_ip_address = private_ip_address
+        # The public network rate limiting rule group ID. The rate limiting rule for instances in the basic shared network.
         self.qos_rule_ids = qos_rule_ids
         # The sales mode.
-        # 
-        # Valid values:
-        # 
-        # *   Instance: the standard mode.
-        # *   Node: the node mode.
         self.sale_mode = sale_mode
         self.sort_key = sort_key
         self.sort_type = sort_type
-        # The state of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   BACKUPING: The instance is being backed up.
-        # *   STARTING: The instance is being started.
-        # *   RUNNING: The instance group is available.
-        # *   DELETING: The instance is being deleted.
-        # *   BACKUP_FAILED: The backup operation failed.
-        # *   DELETED: The instance is deleted.
-        # *   FAILED: The instance failed to be created.
-        # *   STOPPED: The instance is stopped.
-        # *   RECOVERING: The instance has an ongoing file recovery task.
-        # *   UNAVAILABLE: The instance has an exception.
-        # *   REBOOTING: The instance is being restarted.
-        # *   RESETTING: The instance is being reset.
-        # *   STOPPING: The instance is being stopped.
-        # *   RECOVER_FAILED: The file recovery task failed.
-        # *   CREATING: The instance is being created.
+        # The instance status.
         self.status = status
-        # The tags of the resources.
+        # The tags of the resource.
         self.tag = tag
 
     def validate(self):
@@ -267,9 +248,9 @@ class DescribeAndroidInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

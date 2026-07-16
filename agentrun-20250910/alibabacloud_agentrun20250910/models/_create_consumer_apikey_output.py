@@ -16,21 +16,21 @@ class CreateConsumerAPIKeyOutput(DaraModel):
         masked_key: str = None,
         model_connection_id: str = None,
     ):
-        # 密钥是否启用
+        # Indicates whether the consumer API key is active.
         self.active = active
-        # 完整的API密钥明文，仅在创建时返回一次，请妥善保存
+        # The complete plaintext API key. This key is returned only upon creation and cannot be retrieved again. Store it securely.
         self.api_key = api_key
-        # 消费者API密钥的唯一标识符
+        # The unique identifier of the consumer API key.
         self.consumer_api_key_id = consumer_api_key_id
-        # 创建时间，采用ISO 8601格式
+        # The creation time, in ISO 8601 format.
         self.created_at = created_at
-        # 消费者API密钥的描述信息
+        # A description of the consumer API key.
         self.description = description
-        # 更新时间，采用ISO 8601格式
+        # The last update time, in ISO 8601 format.
         self.last_updated_at = last_updated_at
-        # API密钥的掩码展示形式
+        # A masked version of the API key for display purposes.
         self.masked_key = masked_key
-        # 关联的模型连接标识符
+        # The associated model connection identifier.
         self.model_connection_id = model_connection_id
 
     def validate(self):

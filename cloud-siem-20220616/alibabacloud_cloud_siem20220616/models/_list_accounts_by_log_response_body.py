@@ -13,7 +13,7 @@ class ListAccountsByLogResponseBody(DaraModel):
         data: List[main_models.ListAccountsByLogResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The return value of the request.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -63,19 +63,21 @@ class ListAccountsByLogResponseBodyData(DaraModel):
         prod_code: str = None,
         sub_user_id: int = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The name of the cloud account.
+        # The name of the Alibaba Cloud account.
         self.account_name = account_name
-        # Indicates whether the account is added. Valid values: -1: yes -0: no
+        # Indicates whether the account has been added. Valid values:
+        # -1: The account has been added.
+        # -0: The account has not been added.
         self.imported = imported
-        # The code of the log.
+        # The log code.
         self.log_code = log_code
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
         self.main_user_id = main_user_id
-        # The code of the service.
+        # The code of the product that corresponds to the log.
         self.prod_code = prod_code
-        # The ID of the Alibaba Cloud account for which the threat analysis feature is enabled.
+        # The ID of the Alibaba Cloud account that is used for Threat Analysis.
         self.sub_user_id = sub_user_id
 
     def validate(self):

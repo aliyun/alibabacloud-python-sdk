@@ -10,6 +10,8 @@ class DescribeParentPlatformRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # The ID of the parent platform.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

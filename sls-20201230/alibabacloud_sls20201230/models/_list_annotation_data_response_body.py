@@ -13,9 +13,9 @@ class ListAnnotationDataResponseBody(DaraModel):
         data: List[main_models.MLDataParam] = None,
         total: int = None,
     ):
-        # The data returned.
+        # The list of data records.
         self.data = data
-        # The total number of entries returned.
+        # The total number of records.
         self.total = total
 
     def validate(self):

@@ -17,12 +17,17 @@ class ListVpcInfoByVpcResponseBody(DaraModel):
         vpc_id: str = None,
         vpc_infos: List[main_models.ListVpcInfoByVpcResponseBodyVpcInfos] = None,
     ):
+        # The page number.
         self.page_num = page_num
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of VPCs.
         self.total_count = total_count
-        # VPC ID
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The details of the VPCs.
         self.vpc_infos = vpc_infos
 
     def validate(self):
@@ -92,10 +97,15 @@ class ListVpcInfoByVpcResponseBodyVpcInfos(DaraModel):
         instance_vpc_name: str = None,
         region_no: str = None,
     ):
+        # The VPC endpoint.
         self.domain = domain
+        # The endpoint of the instance.
         self.endpoint = endpoint
+        # The name of the instance.
         self.instance_name = instance_name
+        # The name of the VPC.
         self.instance_vpc_name = instance_vpc_name
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):

@@ -10,6 +10,8 @@ class ListSelectionProductSaleInfosRequest(DaraModel):
         self,
         body: main_models.ProductSaleInfoListQuery = None,
     ):
+        # Parameters for querying product sales information in batches
+        # 
         # This parameter is required.
         self.body = body
 

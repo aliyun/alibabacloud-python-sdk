@@ -9,9 +9,8 @@ class DeleteInstallCodeRequest(DaraModel):
         self,
         captcha_code: str = None,
     ):
-        # The installation command.
-        # 
-        # >  You can call the [DescribeInstallCodes](~~DescribeInstallCodes~~) operation to query installation commands.
+        # The installation code.
+        # >You can call the [DescribeInstallCodes](~~DescribeInstallCodes~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.captcha_code = captcha_code

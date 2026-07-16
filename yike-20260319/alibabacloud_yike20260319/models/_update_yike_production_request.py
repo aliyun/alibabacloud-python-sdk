@@ -10,8 +10,11 @@ class UpdateYikeProductionRequest(DaraModel):
         production_id: str = None,
         title: str = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.production_id = production_id
+        # The project title.
         self.title = title
 
     def validate(self):

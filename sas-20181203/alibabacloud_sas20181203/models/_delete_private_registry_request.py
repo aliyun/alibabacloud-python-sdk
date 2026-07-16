@@ -9,9 +9,8 @@ class DeletePrivateRegistryRequest(DaraModel):
         self,
         registry_id: int = None,
     ):
-        # The ID of the image repository.
-        # 
-        # > You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to query the IDs of image repositories.
+        # The image repository ID.
+        # >Call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.registry_id = registry_id

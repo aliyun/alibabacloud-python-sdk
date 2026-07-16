@@ -15,19 +15,19 @@ class DescribeEventUploadPolicyResponseBody(DaraModel):
         signature: str = None,
         sts_token: str = None,
     ):
-        # ID for accessing OSS
+        # The AccessKey ID used to access OSS.
         self.access_id = access_id
-        # OSS host.
+        # The OSS host.
         self.host = host
-        # The Key required for file upload.
+        # The key required for file upload.
         self.key = key
-        # OSS security policy
+        # The OSS security policy.
         self.policy = policy
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Signature data.
+        # The signature data.
         self.signature = signature
-        # Temporary identity credential.
+        # The temporary security token.
         self.sts_token = sts_token
 
     def validate(self):

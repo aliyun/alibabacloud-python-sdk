@@ -22,23 +22,56 @@ class CreateFileProtectClientRuleRequest(DaraModel):
         status: int = None,
         switch_id: str = None,
     ):
+        # The alert notification level. Valid values:
+        # 
+        # - 0: no alert
+        # - 1: reminder
+        # - 2: suspicious
+        # - 3: high-risk.
         self.alert_level = alert_level
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The list of excluded users.
         self.exclude_users = exclude_users
+        # The list of operations performed on files.
+        # 
         # This parameter is required.
         self.file_ops = file_ops
+        # The list of monitored file paths. Wildcards are supported.
+        # 
         # This parameter is required.
         self.file_paths = file_paths
+        # The list of monitored file types.
         self.file_types = file_types
+        # The operating system type. Valid values:
+        # 
+        # - **windows**: Windows.
+        # - **linux**: Linux.
         self.platform = platform
+        # The list of process monitoring paths. Wildcards are supported.
+        # 
         # This parameter is required.
         self.proc_paths = proc_paths
+        # The action to take when the policy is hit. Valid values:
+        # 
+        # - **monitor**: Alert.
+        # - **block**: Block.
+        # - **pass**: Allow.
+        # 
         # This parameter is required.
         self.rule_action = rule_action
+        # The name of the rule.
+        # 
         # This parameter is required.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # 
+        # - **0**: Disabled.
+        # - **1**: Enabled.
+        # 
         # This parameter is required.
         self.status = status
+        # The switch ID associated with the rule.
         self.switch_id = switch_id
 
     def validate(self):

@@ -15,12 +15,20 @@ class SubmitLongTextTranslateTaskShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # A container for extended parameters that control translation features.
         self.ext_shrink = ext_shrink
+        # The format of the source text.
         self.format = format
+        # The translation model.
         self.scene = scene
+        # The language code of the source language.
         self.source_language = source_language
+        # The language code of the target language.
         self.target_language = target_language
+        # The long source text to translate.
         self.text = text
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

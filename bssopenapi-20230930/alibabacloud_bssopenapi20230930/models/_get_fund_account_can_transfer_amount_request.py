@@ -10,8 +10,11 @@ class GetFundAccountCanTransferAmountRequest(DaraModel):
         currency: str = None,
         fund_account_id: str = None,
     ):
+        # Currency
+        # 
         # This parameter is required.
         self.currency = currency
+        # Transfer source account ID. If not specified, the account ID owned by the current account is used by default.
         self.fund_account_id = fund_account_id
 
     def validate(self):

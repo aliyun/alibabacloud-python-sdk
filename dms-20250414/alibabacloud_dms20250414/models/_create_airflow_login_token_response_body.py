@@ -16,27 +16,29 @@ class CreateAirflowLoginTokenResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. The status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
-        # The result of the site monitoring task.
+        # The returned data.
         self.data = data
-        # The error code returned if the call failed. Variable description:
+        # The error code.
         # 
-        # *   If the request was successful, this parameter is not returned.
-        # *   This parameter is returned only if the request failed.
+        # - If the request is successful, this parameter is not returned.
         # 
-        # For more information, see the "Error codes" section in this topic.
+        # - If the request fails, this parameter is returned.
+        # 
+        # For more information, see the error codes in this topic.
         self.error_code = error_code
-        # The description of the error code.
+        # The error code description.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: The request was successful.
+        # 
+        # - False: The request failed.
         self.success = success
 
     def validate(self):
@@ -103,7 +105,7 @@ class CreateAirflowLoginTokenResponseBodyData(DaraModel):
         host: str = None,
         token: str = None,
     ):
-        # The endpoint that is used to access the Airflow instance.
+        # The endpoint of the Airflow instance.
         self.host = host
         # The generated token.
         self.token = token

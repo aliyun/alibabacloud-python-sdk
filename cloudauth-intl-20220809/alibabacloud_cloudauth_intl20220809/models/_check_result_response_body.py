@@ -13,13 +13,13 @@ class CheckResultResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CheckResultResponseBodyResult = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Return message.
+        # The return message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -75,30 +75,30 @@ class CheckResultResponseBodyResult(DaraModel):
         passed: str = None,
         sub_code: str = None,
     ):
-        # Authentication result.
+        # The verification result.
         self.ekyc_result = ekyc_result
-        # Extended basic information.
+        # The extended basic information.
         self.ext_basic_info = ext_basic_info
-        # Face information.
+        # The face information.
         self.ext_face_info = ext_face_info
-        # ID information.
+        # The ID information.
         self.ext_id_info = ext_id_info
-        # Extended information, in JSON string format.
+        # The extended information, in JSON string format.
         self.ext_info = ext_info
-        # Risk information.
+        # The risk information.
         self.ext_risk_info = ext_risk_info
-        # Detailed verification results from the data source (example using Indonesian data sources):
-        # - **govId, fullName, dob**: A comparison score of 1.0 indicates complete consistency with the official data source; less than 1.0 indicates inconsistency. 
-        # - **selfiePhoto**: A comparison score greater than 0.8 indicates consistency with the official data source; less than or equal to 0.8 indicates inconsistency. 
-        # - **liveness**: A score higher than 0.95 indicates a risk of liveness detection. 
-        # - **imgManipulationScore**: A score higher than 0.95 indicates a risk of image manipulation.
+        # The data source verification details are described as follows (using the Indonesian data source as an example):
+        # - **govId, fullName, dob**: A comparison score equal to 1.0 indicates a complete match with the official data source. A score lower than 1.0 indicates a mismatch. 
+        # - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source. A score equal to or lower than 0.8 indicates a mismatch. 
+        # - **liveness**: A score higher than 0.95 indicates a liveness detection risk. 
+        # - **imgManipulationScore**: A score higher than 0.95 indicates an image tampering risk.
         self.ext_source_info = ext_source_info
-        # Whether the authentication is passed.
+        # Indicates whether the verification is passed. Valid values:
         # 
-        # - Y: Passed
-        # - N: Not passed
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
-        # Sub-result code.
+        # The sub-result code.
         self.sub_code = sub_code
 
     def validate(self):

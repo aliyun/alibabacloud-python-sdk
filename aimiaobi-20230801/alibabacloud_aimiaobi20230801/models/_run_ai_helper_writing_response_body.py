@@ -18,19 +18,19 @@ class RunAiHelperWritingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务处理结果状态码
+        # The business status code.
         self.code = code
-        # 流式响应的头部信息，包含事件类型、状态码等元数据
+        # The Server-Sent Events (SSE) response header.
         self.header = header
-        # HTTP响应状态码
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # 业务处理结果描述信息
+        # The returned message.
         self.message = message
-        # 包含写作输出内容和Token使用量统计
+        # The response payload.
         self.payload = payload
-        # 本次API请求的唯一标识
+        # The request ID.
         self.request_id = request_id
-        # 请求是否处理成功
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -100,9 +100,9 @@ class RunAiHelperWritingResponseBodyPayload(DaraModel):
         output: main_models.RunAiHelperWritingResponseBodyPayloadOutput = None,
         usage: main_models.RunAiHelperWritingResponseBodyPayloadUsage = None,
     ):
-        # AI生成的写作内容
+        # The output content.
         self.output = output
-        # 本次请求的Token消耗统计
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -143,11 +143,11 @@ class RunAiHelperWritingResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
-        # 输入内容消耗的Token数量
+        # The number of input tokens.
         self.input_tokens = input_tokens
-        # 生成内容消耗的Token数量
+        # The number of output tokens.
         self.output_tokens = output_tokens
-        # 输入和输出Token的总和
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -188,9 +188,9 @@ class RunAiHelperWritingResponseBodyPayloadOutput(DaraModel):
         text: str = None,
         writing_params: Dict[str, str] = None,
     ):
-        # AI生成的文章内容，流式返回时为增量文本
+        # The generated text.
         self.text = text
-        # 返回的写作参数键值对
+        # The writing parameters for the AI-assisted writing.
         self.writing_params = writing_params
 
     def validate(self):
@@ -230,19 +230,19 @@ class RunAiHelperWritingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
-        # 请求错误时的错误码
+        # The error code.
         self.error_code = error_code
-        # 请求错误时的详细错误信息
+        # The error message.
         self.error_message = error_message
-        # SSE事件类型，如：result-generated(生成结果)、task-finished(任务完成)
+        # The event type.
         self.event = event
-        # 当前写作会话的唯一标识
+        # The session ID.
         self.session_id = session_id
-        # HTTP状态码
+        # The status code.
         self.status_code = status_code
-        # 写作任务的唯一标识
+        # The task ID.
         self.task_id = task_id
-        # 用于问题排查的链路追踪标识
+        # Trace ID
         self.trace_id = trace_id
 
     def validate(self):

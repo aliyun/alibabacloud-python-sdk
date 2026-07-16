@@ -10,12 +10,12 @@ class AddConnectableClusterResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The following information is returned:
+        # The result. Valid values:
         # 
-        # *   true: The configuration is successful.
-        # *   false: The configuration failed.
+        # - true: The configuration succeeded.
+        # - false: The configuration failed.
         self.result = result
 
     def validate(self):

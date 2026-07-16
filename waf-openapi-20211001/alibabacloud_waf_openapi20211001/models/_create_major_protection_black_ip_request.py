@@ -20,7 +20,7 @@ class CreateMajorProtectionBlackIpRequest(DaraModel):
         self.description = description
         # The timestamp after which the IP address blacklist becomes invalid. Unit: seconds.
         # 
-        # >  If you set the parameter to **0**, the IP address blacklist is always valid.
+        # > If you set this parameter to **0**, the IP address blacklist is permanently valid.
         # 
         # This parameter is required.
         self.expired_time = expired_time
@@ -28,22 +28,23 @@ class CreateMajorProtectionBlackIpRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+        # The IP address blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 addresses are supported. Separate multiple IP addresses with commas (,). For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region ID of the WAF instance. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP address blacklist rule for major event protection.
+        # The ID of the IP address blacklist rule for critical event protection.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The ID of the IP address blacklist rule template for major event protection.
+        # The ID of the protection template for critical event protection.
         # 
         # This parameter is required.
         self.template_id = template_id

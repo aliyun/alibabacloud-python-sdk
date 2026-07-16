@@ -16,7 +16,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The retention period for the backup data. Valid values: 7 to 730. Unit: days.
+        # The number of days to retain data backups. Valid values: 7 to 730.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
@@ -24,21 +24,27 @@ class ModifyBackupPolicyRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The day of a week when the system regularly backs up data. If you specify multiple days of a week, separate them with commas (,). Valid values:
+        # The backup cycle. If you specify multiple values, separate them with commas. Valid values:
         # 
-        # *   **Monday**
-        # *   **Tuesday**
-        # *   **Wednesday**
-        # *   **Thursday**
-        # *   **Friday**
-        # *   **Saturday**
-        # *   **Sunday**
+        # - **Monday**
+        # 
+        # - **Tuesday**
+        # 
+        # - **Wednesday**
+        # 
+        # - **Thursday**
+        # 
+        # - **Friday**
+        # 
+        # - **Saturday**
+        # 
+        # - **Sunday**
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # The backup time in UTC. The format is HH:mmZ-HH:mmZ.
         # 
-        # For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+        # Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC. This corresponds to 08:00 to 09:00 UTC+8.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time

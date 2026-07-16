@@ -14,17 +14,17 @@ class DescribeOssPolicyResponseBody(DaraModel):
         signature: str = None,
         request_id: str = None,
     ):
-        # accessId, a parameter used in OSS SDK uploads, corresponding to OSSAccessKeyId
+        # The access ID. This parameter corresponds to OSSAccessKeyId when you use the OSS SDK for upload.
         self.access_id = access_id
-        # OSS host ID.
+        # The host ID of OSS.
         self.host = host
-        # Key required for file upload.
+        # The key required for file upload.
         self.key = key
-        # OSS security policy
+        # The OSS security policy.
         self.policy = policy
-        # Signature data.
+        # The signature data.
         self.signature = signature
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

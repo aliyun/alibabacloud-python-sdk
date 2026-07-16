@@ -10,8 +10,11 @@ class UpdateUserGroupShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         update_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The command to edit the user group.
         self.update_command_shrink = update_command_shrink
 
     def validate(self):

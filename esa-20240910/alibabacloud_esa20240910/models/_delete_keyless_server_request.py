@@ -10,10 +10,12 @@ class DeleteKeylessServerRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
-        # Keyless server ID。
+        # The keyless server ID.
         # 
         # This parameter is required.
         self.id = id
+        # The ID of the site, which you can get by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

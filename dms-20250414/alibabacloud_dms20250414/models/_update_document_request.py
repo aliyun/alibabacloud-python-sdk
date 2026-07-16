@@ -11,10 +11,16 @@ class UpdateDocumentRequest(DaraModel):
         kb_uuid: str = None,
         new_description: str = None,
     ):
+        # The document name.
+        # 
         # This parameter is required.
         self.document_name = document_name
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
+        # The new document description.
+        # 
         # This parameter is required.
         self.new_description = new_description
 

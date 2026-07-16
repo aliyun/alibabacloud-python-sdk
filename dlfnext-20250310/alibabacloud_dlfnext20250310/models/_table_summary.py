@@ -36,38 +36,54 @@ class TableSummary(DaraModel):
         unaccessed_std_partition_count_30d: int = None,
         updated_at: int = None,
     ):
-        # Latest snapshot storage size
+        # The timestamp, in milliseconds, indicating when the table was created.
         self.created_at = created_at
-        # Database name
+        # The name of the database.
         self.database_name = database_name
+        # The generation date of the storage summary.
         self.generated_date = generated_date
+        # The timestamp, in milliseconds, indicating when the table data was last accessed.
         self.last_access_time = last_access_time
         self.last_requester = last_requester
+        # The total size of data files in the Archive storage class, in bytes.
         self.obj_type_archive_size = obj_type_archive_size
+        # The total size of data files in the Cold Archive storage class, in bytes.
         self.obj_type_cold_archive_size = obj_type_cold_archive_size
+        # The total size of data files in the Infrequent Access storage class, in bytes.
         self.obj_type_ia_size = obj_type_ia_size
+        # The total size of data files in the Standard storage class, in bytes.
         self.obj_type_standard_size = obj_type_standard_size
-        # Creation timestamp in milliseconds
+        # The total number of partitions in the table.
         self.partition_count = partition_count
+        # The storage location of the table.
         self.path = path
+        # The storage action parameters.
         self.storage_action_params = storage_action_params
         self.storage_action_timestamp = storage_action_timestamp
+        # The storage class.
         self.storage_class = storage_class
-        # Table name
+        # The name of the table.
         self.table_name = table_name
         self.top_requester = top_requester
+        # Total file access count.
         self.total_file_access_num = total_file_access_num
+        # Total file access count over the last 30 days.
         self.total_file_access_num_30d = total_file_access_num_30d
+        # Total file access count over the last 7 days.
         self.total_file_access_num_7d = total_file_access_num_7d
-        # 30-day access count
+        # The total number of files in the table.
         self.total_file_count = total_file_count
+        # The total storage capacity of the table, in bytes.
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        # The total number of metadata files.
         self.total_meta_file_count = total_meta_file_count
+        # The total size of metadata files, in bytes.
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
-        # Creation timestamp in milliseconds
+        # The number of Standard or Infrequent Access partitions unaccessed in the last 180 days.
         self.unaccessed_std_ia_partition_count_180d = unaccessed_std_ia_partition_count_180d
-        # Creation timestamp in milliseconds
+        # The number of Standard partitions unaccessed in the last 30 days.
         self.unaccessed_std_partition_count_30d = unaccessed_std_partition_count_30d
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

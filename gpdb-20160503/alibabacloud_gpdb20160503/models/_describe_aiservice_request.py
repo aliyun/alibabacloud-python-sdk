@@ -11,10 +11,17 @@ class DescribeAIServiceRequest(DaraModel):
         service_id: str = None,
         type: str = None,
     ):
+        # The instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The service ID.
+        # 
         # This parameter is required.
         self.service_id = service_id
+        # The service type. Currently, only drama is supported.
+        # 
         # This parameter is required.
         self.type = type
 

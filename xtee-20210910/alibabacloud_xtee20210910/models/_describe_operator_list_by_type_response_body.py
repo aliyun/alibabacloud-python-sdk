@@ -13,9 +13,9 @@ class DescribeOperatorListByTypeResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeOperatorListByTypeResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeOperatorListByTypeResponseBodyResultObject(DaraModel):
         field_type: str = None,
         operators: List[main_models.DescribeOperatorListByTypeResponseBodyResultObjectOperators] = None,
     ):
-        # Return value type
+        # The return value type.
         self.field_type = field_type
-        # Operator list
+        # The list of operators.
         self.operators = operators
 
     def validate(self):
@@ -104,11 +104,11 @@ class DescribeOperatorListByTypeResponseBodyResultObjectOperators(DaraModel):
         has_right_variable: bool = None,
         name: str = None,
     ):
-        # Operator code
+        # The operator code.
         self.code = code
-        # Whether it contains a right variable
+        # Indicates whether the operator has a right variable.
         self.has_right_variable = has_right_variable
-        # Operator name
+        # The operator name.
         self.name = name
 
     def validate(self):

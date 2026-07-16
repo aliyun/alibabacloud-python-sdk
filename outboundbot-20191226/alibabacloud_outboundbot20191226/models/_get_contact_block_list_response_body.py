@@ -17,11 +17,17 @@ class GetContactBlockListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The list of blocked contacts.
         self.contact_blocklist_list = contact_blocklist_list
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class GetContactBlockListResponseBodyContactBlocklistList(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The data array.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -147,13 +157,21 @@ class GetContactBlockListResponseBodyContactBlocklistListList(DaraModel):
         phone_number: str = None,
         remark: str = None,
     ):
+        # The unique key of the entry in the do-not-call list.
         self.contact_block_list_id = contact_block_list_id
+        # The time when the entry was created.
         self.creation_time = creation_time
+        # The user who created the entry.
         self.creator = creator
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the contact.
         self.name = name
+        # The operator.
         self.operator = operator
+        # The mobile phone number.
         self.phone_number = phone_number
+        # The remarks.
         self.remark = remark
 
     def validate(self):

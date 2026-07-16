@@ -18,39 +18,47 @@ class ListResourceGroupsShrinkRequest(DaraModel):
         sort_by: str = None,
         statuses_shrink: str = None,
     ):
-        # Alibaba Cloud Resource Group ID
+        # The Alibaba Cloud resource group ID.
         self.aliyun_resource_group_id = aliyun_resource_group_id
-        # Alibaba Cloud tag list
+        # The list of Alibaba Cloud tags.
         self.aliyun_resource_tags_shrink = aliyun_resource_tags_shrink
-        # The name of a resource group, which is used for fuzzy match.
+        # The name of the resource group. Fuzzy search is supported.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The billing method of resource groups. Valid values:
+        # The billing method of the resource group. Valid values include:
         # 
-        # *   PrePaid
-        # *   PostPaid
+        # - `PrePaid`: subscription.
+        # 
+        # - `PostPaid`: pay-as-you-go.
         self.payment_type = payment_type
-        # The ID of the DataWorks workspace.
+        # The ID of the workspace.
         self.project_id = project_id
-        # The types of resource groups to query. If you do not configure this parameter, only serverless resource groups are returned by default.
+        # The types of the resource groups to query. **If this parameter is not specified, general-purpose resource groups are queried by default.**
         self.resource_group_types_shrink = resource_group_types_shrink
-        # The list of fields used for sorting. Fields such as TriggerTime and StartedTime are supported. You must configure this parameter in the Sorting field + Sort by (Desc/Asc). By default, results are sorted in ascending order. Valid values:
+        # The sorting criterion for the results. The format is `FieldName SortOrder`. `SortOrder` can be `Asc` (ascending) or `Desc` (descending). If you do not specify `SortOrder`, the default is `Asc`. The following fields are supported:
         # 
-        # *   Id (Desc/Asc): the resource group ID
-        # *   Name (Desc/Asc): the name of the resource group
-        # *   Remark (Desc/Asc): the remarks of the resource group
-        # *   Type (Desc/Asc): the type of the resource group
-        # *   Status (Desc/Asc): the status of the resource group
-        # *   Spec (Desc/Asc): the specifications of the resource group
-        # *   CreateUser (Desc/Asc): the creator of the resource group
-        # *   CreateTime (Desc/Asc): the time when the resource group is created
+        # - `Id`: Resource group ID
         # 
-        # Default value: CreateTime Asc
+        # - `Name`: Resource group name
+        # 
+        # - `Remark`: Resource group remarks
+        # 
+        # - `Type`: Resource group type
+        # 
+        # - `Status`: Resource group status
+        # 
+        # - `Spec`: Resource group specifications
+        # 
+        # - `CreateUser`: The user who created the resource group
+        # 
+        # - `CreateTime`: The time when the resource group was created
+        # 
+        # Default value: `CreateTime Asc`
         self.sort_by = sort_by
-        # The statuses of resource groups.
+        # The statuses of the resource groups to query.
         self.statuses_shrink = statuses_shrink
 
     def validate(self):

@@ -18,18 +18,19 @@ class DescribeRiskCheckItemResultRequest(DaraModel):
         self.current_page = current_page
         # The ID of the check item.
         # 
-        # >  For more information about the IDs and details of the check items that can be used in configuration assessment, see [DescribeRiskCheckResult](https://help.aliyun.com/document_detail/113520.html).
+        # > For more information about the IDs and details of the check items that can be used in configuration assessment, see [DescribeRiskCheckResult](https://help.aliyun.com/document_detail/113520.html).
         # 
         # This parameter is required.
         self.item_id = item_id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
         # The source IP address of the request.

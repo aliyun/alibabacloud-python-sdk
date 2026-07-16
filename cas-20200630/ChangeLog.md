@@ -1,3 +1,8 @@
+2026-06-16 Version: 2.1.0
+- Support API GetCaInstanceCrlAddress.
+- Update API DescribeCACertificate: add response parameters Body.Certificate.CertMaxTime.
+
+
 2026-05-18 Version: 2.0.2
 - Update API CreateExternalCACertificate: add request parameters CertMaxTime.
 - Update API CreateSubCACertificate: add request parameters CertMaxTime.

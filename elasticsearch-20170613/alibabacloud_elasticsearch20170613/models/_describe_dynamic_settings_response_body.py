@@ -11,6 +11,7 @@ class DescribeDynamicSettingsResponseBody(DaraModel):
         result: str = None,
     ):
         self.request_id = request_id
+        # Id of the request
         self.result = result
 
     def validate(self):

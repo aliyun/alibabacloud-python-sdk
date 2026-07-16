@@ -11,8 +11,11 @@ class CheckTaskGroupNameRequest(DaraModel):
         reg_id: str = None,
         task_group_name: str = None,
     ):
+        # Language of error messages returned by the API. Valid values: zh: Chinese, en: English. Default value: en.
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Task group name.
         self.task_group_name = task_group_name
 
     def validate(self):

@@ -10,38 +10,41 @@ from darabonba.model import DaraModel
 class ListDataAssetsRequest(DaraModel):
     def __init__(
         self,
+        asset_domain_id: int = None,
+        category_uuid: str = None,
         data_asset_ids: List[str] = None,
         data_asset_type: str = None,
         env_type: str = None,
+        name: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: int = None,
         tags: List[main_models.ListDataAssetsRequestTags] = None,
     ):
-        # The data asset IDs.
+        self.asset_domain_id = asset_domain_id
+        self.category_uuid = category_uuid
+        # The list of unique data asset IDs.
         self.data_asset_ids = data_asset_ids
-        # The type of the data asset. Valid values:
+        # The Asset Type of the data asset. Valid values:
         # 
-        # *   ACS::DataWorks::Table
-        # *   ACS::DataWorks::Task
+        # - ACS::DataWorks::Table: table.
+        # 
+        # - ACS::DataWorks::Task: scheduling node.
         self.data_asset_type = data_asset_type
-        # The environment of the workspace to which the data asset belongs. Valid values:
-        # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # The workspace environment to which the data asset belongs. Valid values:
+        # - Dev: development environment.
+        # - Prod: production environment.
         self.env_type = env_type
+        self.name = name
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
         self.page_size = page_size
-        # The DataWorks workspace ID.
+        # The workspace ID.
         self.project_id = project_id
-        # The tags that are added to data assets. This parameter specifies a filter condition.
-        # 
-        # *   You can specify multiple tags, which are in the logical OR relation. For example, you can query the data assets that contain one of the following tags: `["key1:v1", "key2:v1", "key3:v1"]`.
-        # *   If you do not configure this parameter, tag-based filtering is not performed.
-        # 
-        # This parameter is required.
+        # The list of tags associated with data assets. Tags are used as query filters:
+        # - Multiple values have an OR relationship. For example, `["key1:v1", "key2:v1", "key3:v1"]` queries data assets that contain any of the specified tags.
+        # - If this parameter is not specified or is left empty, no tag-based filtering is applied.
         self.tags = tags
 
     def validate(self):
@@ -55,6 +58,12 @@ class ListDataAssetsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.asset_domain_id is not None:
+            result['AssetDomainId'] = self.asset_domain_id
+
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.data_asset_ids is not None:
             result['DataAssetIds'] = self.data_asset_ids
 
@@ -63,6 +72,9 @@ class ListDataAssetsRequest(DaraModel):
 
         if self.env_type is not None:
             result['EnvType'] = self.env_type
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -82,6 +94,12 @@ class ListDataAssetsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AssetDomainId') is not None:
+            self.asset_domain_id = m.get('AssetDomainId')
+
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DataAssetIds') is not None:
             self.data_asset_ids = m.get('DataAssetIds')
 
@@ -90,6 +108,9 @@ class ListDataAssetsRequest(DaraModel):
 
         if m.get('EnvType') is not None:
             self.env_type = m.get('EnvType')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
@@ -114,11 +135,9 @@ class ListDataAssetsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The custom tag key.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, and the following characters: `-@#*<>|[]()+=&%$!~`. It cannot start with `dw:`.
-        # 
-        # This parameter is required.
+        # The tag key can be up to 64 characters in length, cannot start with `dw:`, and supports only letters, digits, and the following special characters: `-@#*<>|[]()+=&%$!~`.
         self.key = key
         # The tag value.
         self.value = value

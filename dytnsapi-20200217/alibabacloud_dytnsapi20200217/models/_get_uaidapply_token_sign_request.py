@@ -19,20 +19,51 @@ class GetUAIDApplyTokenSignRequest(DaraModel):
         resource_owner_id: int = None,
         time: str = None,
     ):
+        # The authorization code.
+        # 
+        # > To obtain this authorization code, navigate to **Tag Plaza** in the [**Phone Number Verification Service**](https://dytns.console.aliyun.com/analysis/square) console, select a tag, and submit an application. You receive the code after your application is approved.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The mobile carrier. Valid values:
+        # 
+        # - **CM**: China Mobile
+        # 
+        # - **CU**: China Unicom
+        # 
+        # - **CT**: China Telecom
+        # 
         # This parameter is required.
         self.carrier = carrier
+        # The client type. Valid values:
+        # 
+        # - `30100`: Android
+        # 
+        # - `30300`: iOS
+        # 
+        # - `20200`: H5
+        # 
+        # - `10010`: Web
+        # 
         # This parameter is required.
         self.client_type = client_type
         self.format = format
+        # The external ID.
+        # 
+        # > For China Mobile (CM), this parameter corresponds to `traceId` and `msgId`. The values of `OutId`, `traceId`, and `msgId` must be the same.
+        # 
         # This parameter is required.
         self.out_id = out_id
         self.owner_id = owner_id
+        # This parameter is required if the carrier is China Telecom (CT). For details, see the China Telecom documentation.
         self.param_key = param_key
+        # This parameter is required if the carrier is China Telecom (CT). For details, see the China Telecom documentation.
         self.param_str = param_str
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The event timestamp, accurate to the millisecond.<br>
+        # Format: `yyyyMMddHHmmssSSS`.<br>
+        # 
         # This parameter is required.
         self.time = time
 

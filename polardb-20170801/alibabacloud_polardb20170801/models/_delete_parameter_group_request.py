@@ -19,18 +19,17 @@ class DeleteParameterGroupRequest(DaraModel):
         self.owner_id = owner_id
         # The parameter template ID.
         # 
-        #  
-        # >  You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to view parameter template IDs.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID.
-        #  
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

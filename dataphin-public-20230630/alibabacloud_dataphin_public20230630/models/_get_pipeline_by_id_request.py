@@ -12,10 +12,16 @@ class GetPipelineByIdRequest(DaraModel):
         op_tenant_id: int = None,
         query_id: main_models.GetPipelineByIdRequestQueryId = None,
     ):
+        # The request context information.
+        # 
         # This parameter is required.
         self.context = context
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID used to query the pipeline task.
+        # 
         # This parameter is required.
         self.query_id = query_id
 
@@ -63,8 +69,11 @@ class GetPipelineByIdRequestQueryId(DaraModel):
         node_id: str = None,
         pipeline_id: int = None,
     ):
+        # Supports querying by the integration task file ID (fileId).
         self.file_id = file_id
+        # Supports querying by the integration task scheduling node ID (nodeId).
         self.node_id = node_id
+        # Supports querying by the integration pipeline primary key (pipelineId).
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -105,8 +114,14 @@ class GetPipelineByIdRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operating environment. Valid values:
+        # - DEV: the development environment.
+        # - PROD: the production environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The ID of the project to which the integration pipeline task belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

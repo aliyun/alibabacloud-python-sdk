@@ -13,10 +13,11 @@ class DescribeJVSInstanceRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # A list of instance IDs.
         self.instance_ids = instance_ids
-        # 分页大小，最大值100，默认值10
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 分页游标，首次查询无需传入
+        # The pagination token from a previous request to retrieve the next page of results. Omit this parameter for the first request.
         self.next_token = next_token
 
     def validate(self):

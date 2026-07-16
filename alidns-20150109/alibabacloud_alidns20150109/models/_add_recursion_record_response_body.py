@@ -11,8 +11,15 @@ class AddRecursionRecordResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the DNS record.
         self.record_id = record_id
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

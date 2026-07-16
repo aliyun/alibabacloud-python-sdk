@@ -16,15 +16,15 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The O\\&M tasks.
+        # The list of O\\&M tasks.
         self.items = items
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The number of returned task records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -110,61 +110,91 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # N/A
-        self.allow_cancel = allow_cancel
-        # Indicates whether the modification operation is allowed.
+        # Indicates whether the task can be canceled.
         # 
-        # *   **0**: The modification operation is not allowed.
-        # *   **1**: The modification operation is allowed.
+        # - **1**: The task can be canceled.
+        # 
+        # - **0**: The task cannot be canceled.
+        self.allow_cancel = allow_cancel
+        # Indicates whether the time can be changed.
+        # 
+        # - **1**: The time can be changed.
+        # 
+        # - **0**: The time cannot be changed.
         self.allow_change = allow_change
-        # The change level of the O\\&M task.
+        # The code of the event level.
+        # 
+        # - **S1**: system O\\&M.
+        # 
+        # - **S0**: threat fixing.
         self.change_level = change_level
-        # N/A
+        # The event level in English.
         self.change_level_en = change_level_en
-        # The task type in English.
+        # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The time when the task was created.
+        # The time when the task was created. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.created_time = created_time
-        # N/A
+        # The current zone.
         self.current_avz = current_avz
-        # The type of the database engine.
+        # The database engine type.
         self.db_type = db_type
-        # The version of the database engine.
+        # The database engine version number.
         self.db_version = db_version
-        # The end time of the O\\&M task.
+        # The latest time to which the task execution time can be postponed. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.deadline = deadline
         # The task ID.
         self.id = id
-        # N/A
+        # The impact of the event in English.
         self.impact_en = impact_en
-        # N/A
+        # The impact of the event in Chinese.
         self.impact_zh = impact_zh
-        # The description of the instance.
+        # The alias or description of the instance.
         self.ins_comment = ins_comment
-        # The ID of the node.
+        # The instance name.
         self.ins_name = ins_name
-        # The time when the task is modified. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the task was modified. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
+        # The preparation time required between the start time of the O\\&M task and the switchover time. The time is in the *HH:mm:ss* format.
         self.prepare_interval = prepare_interval
-        # The region of the instance.
+        # The ID of the region where the pending event is located.
         self.region = region
-        # The result information. The value of this parameter can be ignored.
+        # The information about the execution result.
         self.result_info = result_info
-        # The start time of the task. The time follows the ISO 8601 standard in the *yyyy-mm-dd* T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the task was executed. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # N/A
+        # The task status.
+        # 
+        # - **3**: pending.
+        # 
+        # - **4**: running.
+        # 
+        # - **5**: successful.
+        # 
+        # - **6**: failed.
+        # 
+        # - **7**: canceled.
         self.status = status
-        # The subinstances.
+        # The list of child instances.
         self.sub_ins_names = sub_ins_names
-        # The switchover point in time in which disconnection may occur. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the switchover was initiated. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.switch_time = switch_time
+        # The task parameters.
         self.task_params = task_params
-        # The task type.
+        # The task type. Valid values:
+        # 
+        # - **rds_apsaradb_ha**: primary-secondary node switchover.
+        # 
+        # - **rds_apsaradb_transfer**: instance migration.
+        # 
+        # - **rds_apsaradb_upgrade**: minor version upgrade.
+        # 
+        # - **rds_apsaradb_maxscale**: proxy minor version upgrade.
+        # 
+        # - **all**: all task types.
         self.task_type = task_type
-        # N/A
+        # The reason for the task in English.
         self.task_type_en = task_type_en
-        # The task type in Chinese.
+        # The reason for the task in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

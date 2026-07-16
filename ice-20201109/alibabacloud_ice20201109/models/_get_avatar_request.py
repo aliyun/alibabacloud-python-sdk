@@ -9,7 +9,7 @@ class GetAvatarRequest(DaraModel):
         self,
         avatar_id: str = None,
     ):
-        # *   The ID of the digital human.
+        # - The ID of the digital human.
         # 
         # This parameter is required.
         self.avatar_id = avatar_id

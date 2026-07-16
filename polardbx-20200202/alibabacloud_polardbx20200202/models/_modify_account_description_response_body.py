@@ -11,8 +11,11 @@ class ModifyAccountDescriptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The additional information returned by the API. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

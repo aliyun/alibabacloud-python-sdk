@@ -17,16 +17,27 @@ class MaxComputeExport(DaraModel):
         schedule_id: str = None,
         status: str = None,
     ):
+        # The setting of the MaxCompute data shipping job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The creation time.
         self.create_time = create_time
+        # job description
         self.description = description
+        # job displayName
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The last modification time.
         self.last_modified_time = last_modified_time
+        # job name
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the MaxCompute data shipping job.
         self.schedule_id = schedule_id
+        # The status of the MaxCompute data shipping job.
         self.status = status
 
     def validate(self):

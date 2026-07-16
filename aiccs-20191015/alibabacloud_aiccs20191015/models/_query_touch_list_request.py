@@ -29,25 +29,46 @@ class QueryTouchListRequest(DaraModel):
         touch_id: List[int] = None,
         touch_type: List[int] = None,
     ):
+        # List of session IDs for term query.
         self.channel_id = channel_id
+        # Channel Type.
         self.channel_type = channel_type
+        # The right boundary of the time range for session end. The value is a UNIX timestamp in milliseconds.
         self.close_time_end = close_time_end
+        # The left boundary of the time range for session end. The value is a UNIX timestamp in milliseconds.
         self.close_time_start = close_time_start
+        # Current page. The value must be greater than **0**. Default Value: **1**.
         self.current_page = current_page
+        # Satisfaction level.
         self.evaluation_level = evaluation_level
+        # Satisfaction score.
         self.evaluation_score = evaluation_score
+        # Evaluation status.
         self.evaluation_status = evaluation_status
+        # The right boundary of the time range for session start. The value is a UNIX timestamp in milliseconds.
         self.first_time_end = first_time_end
+        # The left boundary of the time range for session start. UNIX timestamp format (unit: ms).
         self.first_time_start = first_time_start
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of membership IDs to query.
         self.member_id = member_id
+        # A list of membership names to query.
         self.member_name = member_name
+        # Number of entries per page. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # List of inbound skill group IDs.
         self.queue_id = queue_id
+        # A list of service agent IDs to query.
         self.servicer_id = servicer_id
+        # List of service agent names to query.
         self.servicer_name = servicer_name
+        # List of touch IDs for term query.
         self.touch_id = touch_id
+        # Touch type.
         self.touch_type = touch_type
 
     def validate(self):

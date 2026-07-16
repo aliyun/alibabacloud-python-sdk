@@ -11,16 +11,17 @@ class SetGtmMonitorStatusRequest(DaraModel):
         monitor_config_id: str = None,
         status: str = None,
     ):
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The health check ID.
+        # The health check configuration ID.
         # 
         # This parameter is required.
         self.monitor_config_id = monitor_config_id
-        # Specifies whether health check is enabled for the address pool. Valid values:
+        # The enabling status. Valid values:
         # 
-        # *   **OPEN**: Enabled
-        # *   **CLOSE**: Disabled
+        # - **OPEN**: Enable
+        # 
+        # - **CLOSE**: Disable
         # 
         # This parameter is required.
         self.status = status

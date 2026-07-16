@@ -31,91 +31,59 @@ class DescribePriceRequest(DaraModel):
         self.amount = amount
         # The maximum public bandwidth. Unit: Mbit/s.
         # 
-        # *   Valid values if you set InternetChargeType to PayByBandwidth: 10 to 1000.
-        # *   Valid values if you set InternetChargeType to InternetChargeType: 10 to 200.
+        # - Valid values if you set InternetChargeType to PayByBandwidth: 10 to 1000.
+        # 
+        # - Valid values if you set InternetChargeType to InternetChargeType: 10 to 200.
         self.bandwidth = bandwidth
         # The type of hourly plan if you use the Monthly Subscription billing method. If you set `ResourceType` to `DesktopMonthPackage`, you must specify this parameter.
-        # 
-        # Valid values:
-        # 
-        # *   120: the 120-hour computing plan.
-        # *   250: the 250-hour computing plan.
         self.duration = duration
         # The number of cloud computer shares. Default value: 1.
         # 
-        # >  This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
+        # > This parameter takes effect only if you set `ResourceType` to `DesktopGroup`.
         self.group_desktop_count = group_desktop_count
         # The specifications of the resource.
         # 
-        # *   This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
-        # *   If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
-        # *   If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
+        # - This parameter is required if you set `ResourceType` to `Desktop`. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the available cloud computer types that correspond to the value of `DesktopTypeId`.
+        # 
+        # - If you set `ResourceType` to `DesktopGroup`, set the value of this parameter to `large`.
+        # 
+        # - If you set `ResourceType` to `Bandwidth`, you can leave this parameter empty.
         self.instance_type = instance_type
         # The metering method for network traffic.
-        # 
-        # Valid values:
-        # 
-        # *   PayByTraffic: You are charged for the actually consumed traffic.
-        # *   PayByBandwidth: You are charged by a fixed bandwidth.
         self.internet_charge_type = internet_charge_type
         # The OS type.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # *   Windows (default)
         self.os_type = os_type
         # The subscription duration. The valid values of this parameter vary based on the value of `PeriodUnit`.
         # 
-        # *   If you set `PeriodUnit` to `Hour`, set the value of this parameter to 1.
-        # *   If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
-        # *   If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
+        # - If you set `PeriodUnit` to `Hour`, set the value of this parameter to 1.
+        # 
+        # - If you set `PeriodUnit` to `Month`, set the value of this parameter to 1, 2, 3, or 6.
+        # 
+        # - If you set `PeriodUnit` to `Year`, set the value of this parameter to 1, 2, or 3.
         # 
         # Default value: 1.
         self.period = period
         # The billing cycle.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # *   Hour (default)
         self.period_unit = period_unit
         # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by EDS.
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the regions supported by EDS.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # User ID of the resource owner in resale mode. This parameter is not required in non-resale mode.
         self.reseller_owner_uid = reseller_owner_uid
         # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # *   DesktopMonthPackage: monthly subscription cloud computers that use hourly limit plans.
-        # *   Desktop (default): pay-as-you-go cloud computers/monthly subscription cloud computers that use unlimited plans.
-        # *   Bandwidth: premium bandwidth plans.
-        # *   DesktopGroup: cloud computer shares.
         self.resource_type = resource_type
         # The category of the system disk.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_efficiency: the ultra disk
-        # *   cloud_auto: the standard SSD.
-        # *   cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
         self.root_disk_category = root_disk_category
+        # Performance level of the system disk. You can configure the disk performance level when the cloud desktop instance type is graphics-optimized or high clock speed. For differences among performance levels of disks, see [](t583241.xdita#).
         self.root_disk_performance_level = root_disk_performance_level
         # The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
         self.root_disk_size_gib = root_disk_size_gib
         # The category of the data disk.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_efficiency: the ultra disk
-        # *   cloud_auto: the standard SSD.
-        # *   cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
         self.user_disk_category = user_disk_category
+        # Performance level of the data disk. You can specify the disk performance level when the WUYING Workspace instance type is set to graphics-optimized or high clock speed. For differences between performance levels of disks, see [](t583241.xdita#).
         self.user_disk_performance_level = user_disk_performance_level
         # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib

@@ -14,9 +14,13 @@ class UpdateLabelTableRequest(DaraModel):
         fields: List[main_models.UpdateLabelTableRequestFields] = None,
         name: str = None,
     ):
+        # The ID of the data source for the label table.
         self.datasource_id = datasource_id
+        # The fields to modify.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The name of the label table.
         self.name = name
 
     def validate(self):
@@ -62,14 +66,22 @@ class UpdateLabelTableRequest(DaraModel):
 class UpdateLabelTableRequestFields(DaraModel):
     def __init__(
         self,
+        aligned_entity_name: str = None,
         attributes: List[str] = None,
         name: str = None,
         type: str = None,
     ):
+        self.aligned_entity_name = aligned_entity_name
+        # The field\\"s attributes.
+        # 
         # This parameter is required.
         self.attributes = attributes
+        # The name of the field.
+        # 
         # This parameter is required.
         self.name = name
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -81,6 +93,9 @@ class UpdateLabelTableRequestFields(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aligned_entity_name is not None:
+            result['AlignedEntityName'] = self.aligned_entity_name
+
         if self.attributes is not None:
             result['Attributes'] = self.attributes
 
@@ -94,6 +109,9 @@ class UpdateLabelTableRequestFields(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignedEntityName') is not None:
+            self.aligned_entity_name = m.get('AlignedEntityName')
+
         if m.get('Attributes') is not None:
             self.attributes = m.get('Attributes')
 

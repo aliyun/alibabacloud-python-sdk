@@ -14,12 +14,25 @@ class ListDataLakeDatabaseRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the catalog. To find the catelog name, go to the [Data Lake console](https://dlf.console.aliyun.com/cn-hangzhou/metadata/catalog?spm=a2c4g.11186623.0.0.5a225658pT4Dkr).
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The number of entries to return on each page. The maximum value is 100.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. Valid values:
+        # 
+        # - If **NextToken** is empty, no more results are available.
+        # 
+        # - If **NextToken** has a value, it is the token for the next query.
         self.next_token = next_token
+        # A keyword to search for database names.
         self.search_key = search_key
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

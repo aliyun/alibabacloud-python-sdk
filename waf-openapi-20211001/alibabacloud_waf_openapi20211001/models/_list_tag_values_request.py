@@ -14,9 +14,9 @@ class ListTagValuesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  Obtain the ID of the WAF instance by calling the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -24,18 +24,19 @@ class ListTagValuesRequest(DaraModel):
         # 
         # This parameter is required.
         self.key = key
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token for the next query.
         self.next_token = next_token
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # The resource type. Fixed value: ALIYUN::WAF::DEFENSERESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type

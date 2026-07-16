@@ -17,11 +17,17 @@ class GetDocClusterTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\`: The request was successful. \\`false\\`: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetDocClusterTaskResponseBodyData(DaraModel):
         status: str = None,
         topics: List[main_models.GetDocClusterTaskResponseBodyDataTopics] = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The status of the task. Valid values: PENDING (to be executed), RUNNING (executing), SUCCESSED (successful), SUSPENDED (paused), FAILED (failed), and CANCELED (canceled).
         self.status = status
+        # A list of clustering topics.
         self.topics = topics
 
     def validate(self):
@@ -134,8 +143,11 @@ class GetDocClusterTaskResponseBodyDataTopics(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # A list of document IDs for the clustering topic.
         self.doc_ids = doc_ids
+        # The summary of the clustering topic.
         self.summary = summary
+        # The name of the clustering topic.
         self.title = title
 
     def validate(self):

@@ -12,12 +12,19 @@ class ListApiPluginsRequest(DaraModel):
         page_size: int = None,
         uuids_json: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Number of entries per page
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # API plugin unique identifiers
         self.uuids_json = uuids_json
 
     def validate(self):

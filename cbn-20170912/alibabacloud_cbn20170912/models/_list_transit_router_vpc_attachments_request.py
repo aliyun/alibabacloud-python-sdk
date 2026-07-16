@@ -25,43 +25,47 @@ class ListTransitRouterVpcAttachmentsRequest(DaraModel):
         transit_router_id: str = None,
         vpc_id: str = None,
     ):
-        # The IDs of the CEN instances.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of entries to return on each page. The default value is **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # - If this is your first query or no more results are available, you do not need to specify this parameter.
+        # 
+        # - For subsequent queries, set this parameter to the `NextToken` value from the previous response.
         self.next_token = next_token
-        # The entity that pays the fees of the network instance. Valid values:
+        # The entity that pays for the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-        # *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+        # - **PayByCenOwner**: The fees are paid by the account that owns the CEN instance.
+        # 
+        # - **PayByResourceOwner**: The fees are paid by the account that owns the network instance.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Enterprise Edition transit router.
+        # The ID of the region where the Enterprise Edition transit router is deployed.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether the network instance is attached to the CEN instance. Valid values:
+        # The status of the VPC connection. Valid values:
         # 
-        # *   **Attaching**: being attached to the CEN instance.
-        # *   **Attached**: attached to the CEN instance.
-        # *   **Detaching**: being detached from the CEN instance.
+        # - **Attaching**: The VPC connection is being created.
+        # 
+        # - **Attached**: The VPC connection is created.
+        # 
+        # - **Detaching**: The VPC connection is being deleted.
         self.status = status
-        # The information about the tags.
+        # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags.
         self.tag = tag
         # The ID of the VPC connection.
         self.transit_router_attachment_id = transit_router_attachment_id
         # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -178,15 +182,11 @@ class ListTransitRouterVpcAttachmentsRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-        # 
-        # You can specify at most 20 tag keys.
+        # The tag key must be 1 to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
-        # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # The tag value can be 0 to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

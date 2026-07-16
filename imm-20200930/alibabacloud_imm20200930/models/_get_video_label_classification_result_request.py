@@ -11,15 +11,15 @@ class GetVideoLabelClassificationResultRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The name of the project. For more information, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [CreateProject](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The task ID, which is obtained from response parameters of [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
+        # The task ID. For information about how to obtain the task ID, see the response parameters of [CreateVideoLabelClassificationTask](https://help.aliyun.com/document_detail/478223.html).
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The type of the task. Valid values:
+        # The task type.
         # 
         # This parameter is required.
         self.task_type = task_type

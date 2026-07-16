@@ -16,11 +16,17 @@ class SubmitDeepWriteTaskRequest(DaraModel):
         instructions: str = None,
         workspace_id: str = None,
     ):
+        # The agent orchestration options.
         self.agent_orchestration = agent_orchestration
+        # A list of attachments.
         self.files = files
+        # The user\\"s question.
+        # 
         # This parameter is required.
         self.input = input
+        # The instructions.
         self.instructions = instructions
+        # [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -85,8 +91,11 @@ class SubmitDeepWriteTaskRequestFiles(DaraModel):
         file_key: str = None,
         file_name: str = None,
     ):
+        # A description of the attachment.
         self.file_description = file_description
+        # The Object Storage Service (OSS) address of the attachment.
         self.file_key = file_key
+        # The name of the attachment.
         self.file_name = file_name
 
     def validate(self):
@@ -128,8 +137,11 @@ class SubmitDeepWriteTaskRequestAgentOrchestration(DaraModel):
         data_collector_agent: main_models.SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent = None,
         reporter_agent: main_models.SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent = None,
     ):
+        # The data analysis agent.
         self.data_analyst_agent = data_analyst_agent
+        # The data collection agent.
         self.data_collector_agent = data_collector_agent
+        # The reporter agent.
         self.reporter_agent = reporter_agent
 
     def validate(self):
@@ -178,7 +190,9 @@ class SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent(DaraModel):
         enable_citation: bool = None,
         name: str = None,
     ):
+        # Specifies whether to enable citations.
         self.enable_citation = enable_citation
+        # The name.
         self.name = name
 
     def validate(self):
@@ -212,6 +226,7 @@ class SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent(DaraModel):
         self,
         name: str = None,
     ):
+        # The name.
         self.name = name
 
     def validate(self):
@@ -240,7 +255,9 @@ class SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent(DaraModel):
         enable_search: bool = None,
         name: str = None,
     ):
+        # Specifies whether to enable retrieval.
         self.enable_search = enable_search
+        # The name.
         self.name = name
 
     def validate(self):

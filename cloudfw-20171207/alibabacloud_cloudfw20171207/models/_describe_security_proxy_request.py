@@ -18,15 +18,37 @@ class DescribeSecurityProxyRequest(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The language type for the request and response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The UID of the member accounts of the current Alibaba Cloud account.
         self.member_uid = member_uid
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The page number of the current page.
         self.page_no = page_no
+        # The maximum number of entries per page in a paged query. Maximum value: 50.
         self.page_size = page_size
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
+        # The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
         self.proxy_name = proxy_name
+        # The region ID of the VPC.
         self.region_no = region_no
+        # The status of Cloud Firewall. Valid values:
+        # 
+        # - **configuring**: Being created.
+        # - **deleting**: Being deleted.
+        # - **normal**: Normal.
+        # - **abnormal**: Abnormal.
+        # - **opening**: Being enabled.
+        # - **closing**: Being disabled.
+        # - **closed**: Disabled.
         self.status = status
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
 
     def validate(self):

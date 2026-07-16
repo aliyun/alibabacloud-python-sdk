@@ -15,11 +15,17 @@ class SubmitDocTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID, used to trace the API call.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class SubmitDocTranslateTaskResponseBodyData(DaraModel):
         task_id: str = None,
         tracking_data: str = None,
     ):
+        # The task status.
         self.status = status
+        # The document translation task ID.
         self.task_id = task_id
+        # User-defined passthrough data. The translation service returns this data without processing it. This is useful for analytics tracking.
         self.tracking_data = tracking_data
 
     def validate(self):

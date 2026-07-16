@@ -13,6 +13,8 @@ class ListFeatureViewOnlineFeaturesRequest(DaraModel):
         join_ids: List[str] = None,
     ):
         self.config = config
+        # The join IDs used to retrieve online features.
+        # 
         # This parameter is required.
         self.join_ids = join_ids
 

@@ -29,7 +29,33 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'cloudauth.aliyuncs.com',
+            'us-east-1': 'cloudauth.aliyuncs.com',
+            'me-east-1': 'cloudauth.aliyuncs.com',
+            'eu-west-1': 'cloudauth.aliyuncs.com',
+            'eu-central-1': 'cloudauth.aliyuncs.com',
+            'cn-zhangjiakou': 'cloudauth.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cloudauth.aliyuncs.com',
+            'cn-shenzhen': 'cloudauth.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cloudauth.aliyuncs.com',
+            'cn-shanghai': 'cloudauth.aliyuncs.com',
+            'cn-qingdao': 'cloudauth.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'cloudauth.aliyuncs.com',
+            'cn-huhehaote': 'cloudauth.aliyuncs.com',
+            'cn-hongkong': 'cloudauth.aliyuncs.com',
+            'cn-hangzhou-finance': 'cloudauth.aliyuncs.com',
+            'cn-hangzhou': 'cloudauth.aliyuncs.com',
+            'cn-chengdu': 'cloudauth.aliyuncs.com',
+            'cn-beijing': 'cloudauth.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'cloudauth.aliyuncs.com',
+            'ap-southeast-3': 'cloudauth.aliyuncs.com',
+            'ap-southeast-2': 'cloudauth.aliyuncs.com',
+            'ap-southeast-1': 'cloudauth.aliyuncs.com',
+            'ap-south-1': 'cloudauth.aliyuncs.com',
+            'ap-northeast-1': 'cloudauth.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudauth', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1370,6 +1396,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
+        if not DaraCore.is_null(request.whitelist_type):
+            query['WhitelistType'] = request.whitelist_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1412,6 +1440,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
+        if not DaraCore.is_null(request.whitelist_type):
+            query['WhitelistType'] = request.whitelist_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5564,6 +5594,8 @@ class Client(OpenApiClient):
             query['ValidEndDate'] = request.valid_end_date
         if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
+        if not DaraCore.is_null(request.whitelist_type):
+            query['WhitelistType'] = request.whitelist_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5612,6 +5644,8 @@ class Client(OpenApiClient):
             query['ValidEndDate'] = request.valid_end_date
         if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
+        if not DaraCore.is_null(request.whitelist_type):
+            query['WhitelistType'] = request.whitelist_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6332,6 +6366,8 @@ class Client(OpenApiClient):
             body['Crop'] = request.crop
         if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
         if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
         if not DaraCore.is_null(request.identify_num):
@@ -6370,6 +6406,8 @@ class Client(OpenApiClient):
             body['Crop'] = request.crop
         if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
+        if not DaraCore.is_null(request.face_picture):
+            body['FacePicture'] = request.face_picture
         if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
         if not DaraCore.is_null(request.identify_num):
@@ -7100,6 +7138,8 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_beauty):
+            query['EnableBeauty'] = request.enable_beauty
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):
@@ -7206,6 +7246,8 @@ class Client(OpenApiClient):
             query['CertifyUrlStyle'] = request.certify_url_style
         if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
+        if not DaraCore.is_null(request.enable_beauty):
+            query['EnableBeauty'] = request.enable_beauty
         if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
         if not DaraCore.is_null(request.face_contrast_picture_url):

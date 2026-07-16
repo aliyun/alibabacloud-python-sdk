@@ -14,19 +14,17 @@ class ModifyAccessKeyLeakDealRequest(DaraModel):
         remark: str = None,
         type: str = None,
     ):
-        # The ID of the AccessKey pair leak.
-        # 
-        # > You can call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to query the ID. You must specify at least one of the Id and **IdList** parameters.
+        # The ID of the AccessKey pair leak record.
+        # >Call the [DescribeAccesskeyLeakList](~~DescribeAccesskeyLeakList~~) operation to obtain this parameter. This parameter and the **IdList** parameter cannot both be empty.
         self.id = id
-        # The IDs of AccessKey pair leaks.
+        # The IDs of the AccessKey pair leak records.
         self.id_list = id_list
-        # The remarks that are added.
+        # The remarks for handling the AccessKey pair leak record.
         self.remark = remark
-        # The method to handle the AccessKey pair leak. Valid values:
-        # 
-        # *   **manual**: manually handle
-        # *   **disable**: disable
-        # *   **add-whitelist**: add to the whitelist
+        # The method to handle the AccessKey pair leak information. Valid values:
+        # - **manual**: Manual handling.
+        # - **disable**: Disable.
+        # - **add-whitelist**: Add to whitelist.
         # 
         # This parameter is required.
         self.type = type

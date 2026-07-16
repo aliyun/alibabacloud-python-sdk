@@ -11,9 +11,14 @@ class RunExpandContentRequest(DaraModel):
         prompt: str = None,
         workspace_id: str = None,
     ):
+        # Content to expand.
+        # 
         # This parameter is required.
         self.content = content
+        # Custom prompt.
         self.prompt = prompt
+        # Alibaba Cloud Model Studio workspace unique identifier. Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

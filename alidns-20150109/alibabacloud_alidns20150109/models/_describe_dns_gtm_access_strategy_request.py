@@ -10,9 +10,9 @@ class DescribeDnsGtmAccessStrategyRequest(DaraModel):
         lang: str = None,
         strategy_id: str = None,
     ):
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of some returned parameters. The default value is en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The ID of the access policy.
+        # The ID of the access policy. For more information, see [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html).
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

@@ -15,12 +15,19 @@ class ListFilePushStatusesRequest(DaraModel):
         rendering_instance_id: str = None,
         start_time: str = None,
     ):
+        # A time range filter parameter. Specify the value in ISO8601 format using UTC time: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
+        # The file ID, which uniquely identifies a file.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The page number of the results to return. Pages start from 1.Default value: 1.
         self.page_number = page_number
+        # The number of entries per page in a paged query. Valid values: 1 to 100.Default value: 10.
         self.page_size = page_size
+        # The cloud application service instance ID. Use this parameter to query files installed on a specific instance.
         self.rendering_instance_id = rendering_instance_id
+        # A time range filter parameter. Specify the value in ISO8601 format using UTC time: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
 
     def validate(self):

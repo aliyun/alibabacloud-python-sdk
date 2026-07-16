@@ -17,11 +17,17 @@ class ListAnnotationMissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded. true: succeeded. false: failed.
         self.success = success
 
     def validate(self):
@@ -87,12 +93,19 @@ class ListAnnotationMissionResponseBodyData(DaraModel):
         total_count: int = None,
         total_page_count: int = None,
     ):
+        # Annotation mission list
         self.annotation_mission_list = annotation_mission_list
+        # Additional information. Returns success for normal requests. Returns a specific error code for abnormal requests.
         self.message = message
+        # Page number
         self.page_index = page_index
+        # Number of entries per page
         self.page_size = page_size
+        # Indicates whether the call succeeded. true: succeeded. false: failed.
         self.success = success
+        # Total count
         self.total_count = total_count
+        # Total number of pages
         self.total_page_count = total_page_count
 
     def validate(self):
@@ -181,23 +194,71 @@ class ListAnnotationMissionResponseBodyDataAnnotationMissionList(DaraModel):
         session_finish_count: int = None,
         session_total_count: int = None,
     ):
+        # Annotation data source type. 1: Outbound call. 2: Navigation.
         self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        # Annotation debug data source list
+        # 
+        # > The response includes an extra 0. Valid responses are [0,1], [0,2], or [0,1,2].
         self.annotation_mission_debug_data_source_list = annotation_mission_debug_data_source_list
+        # Mission ID
         self.annotation_mission_id = annotation_mission_id
+        # Mission name
         self.annotation_mission_name = annotation_mission_name
+        # Annotation status
+        # 
+        # - 1: In progress
+        # 
+        # - 2: Completed
+        # 
+        # - 3: Closed
         self.annotation_status = annotation_status
+        # End time of the conversation time query condition for the annotation mission
         self.conversation_time_end_filter = conversation_time_end_filter
+        # Start time of the conversation time query condition for the annotation mission
         self.conversation_time_start_filter = conversation_time_start_filter
+        # Creation time
         self.create_time = create_time
+        # Indicates whether to exclude call records already annotated in other missions
         self.exclude_other_mission_session = exclude_other_mission_session
+        # Completion time of the annotation mission
         self.finish_time = finish_time
+        # Instance ID
         self.instance_id = instance_id
+        # Maximum sampling count limit
         self.sampling_count = sampling_count
+        # Sampling description
         self.sampling_description = sampling_description
+        # Sampling rate
         self.sampling_rate = sampling_rate
+        # Sampling type
         self.sampling_type = sampling_type
+        # List of session end reason types used when creating the mission
+        # 
+        # - 1: Normal completion
+        # 
+        # - 2: Bot hangup after rejection
+        # 
+        # - 3: Hangup due to silence timeout
+        # 
+        # - 4: User hangup after rejection
+        # 
+        # - 5: User hangup without reason
+        # 
+        # - 6: Transfer to agent after intent match
+        # 
+        # - 7: Transfer to agent after rejection
+        # 
+        # - 8: No interaction from user side
+        # 
+        # - 9: System exception interruption
+        # 
+        # - 10: Transfer to IVR after intent match
+        # 
+        # - 11: Transfer to IVR after rejection
         self.session_end_reason_filter_list = session_end_reason_filter_list
+        # Number of completed sessions in the annotation mission
         self.session_finish_count = session_finish_count
+        # Total number of sessions in the annotation mission
         self.session_total_count = session_total_count
 
     def validate(self):

@@ -11,9 +11,9 @@ class ModifyHostInfoRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The name of the host.
+        # The host name.
         self.host_name = host_name
-        # The ID of the instance. Only hosts not on Alibaba Cloud are supported.
+        # The instance ID. Only non-Alibaba Cloud hosts are supported.
         # 
         # This parameter is required.
         self.instance_id = instance_id

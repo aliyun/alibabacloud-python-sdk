@@ -10,10 +10,11 @@ class GetVpcIpamServiceStatusResponseBody(DaraModel):
         enabled: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether IPAM is activated.
+        # Indicates whether the IPAM service is enabled.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The service is enabled.
+        # 
+        # - **false**: The service is not enabled.
         self.enabled = enabled
         # The request ID.
         self.request_id = request_id

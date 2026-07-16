@@ -21,7 +21,7 @@ class AllocatePublicIpAddressRequest(DaraModel):
         self.instance_id = instance_id
         # The static public IP address that you want to assign to the instance. This parameter is empty by default, which indicates that a static public IP address is randomly assigned by the system.
         # 
-        # >  Only users in the whitelist can specify this parameter.
+        # > Only users in the whitelist can specify this parameter.
         self.ip_address = ip_address
         self.owner_account = owner_account
         self.owner_id = owner_id

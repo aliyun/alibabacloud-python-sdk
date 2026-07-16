@@ -14,11 +14,11 @@ class DescribePostpayTrafficDetailResponseBody(DaraModel):
         total_count: int = None,
         traffic_list: List[main_models.DescribePostpayTrafficDetailResponseBodyTrafficList] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of traffic statistics entries.
         self.total_count = total_count
-        # The statistics on traffic.
+        # The traffic statistics list.
         self.traffic_list = traffic_list
 
     def validate(self):
@@ -75,29 +75,30 @@ class DescribePostpayTrafficDetailResponseBodyTrafficList(DaraModel):
         traffic_day: str = None,
         traffic_type: str = None,
     ):
-        # The inbound network throughput, which indicates the total number of bytes that are received Unit: bytes.
+        # The inbound network throughput (total bytes). Unit: bytes.
         self.in_bytes = in_bytes
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.instance_id = instance_id
-        # The asset type. This value takes effect only for the Internet firewall.
+        # The asset type. This value takes effect only for Internet border traffic.
         self.instance_type = instance_type
-        # The outbound network throughput, which indicates the total number of bytes that are sent. Unit: bytes.
+        # The outbound network throughput (total bytes). Unit: bytes.
         self.out_bytes = out_bytes
-        # Protection duration. Unit: hours.
+        # The protection duration. Unit: hours.
         self.protection_duration = protection_duration
         # The region ID.
         self.region_no = region_no
-        # The resource ID. The resource ID for the Internet firewall is the public IP address that is protected the Internet firewall, and the resource ID for a NAT firewall is the instance ID of the NAT firewall.
+        # The resource ID. For Internet border traffic, this is the public IP address of the asset. For NAT border traffic, this is the firewall instance ID of the asset.
         self.resource_id = resource_id
-        # The total inbound and outbound network throughput, which indicates the total number of bytes that are received and sent. Unit: bytes.
+        # The total network throughput in both inbound and outbound directions (total bytes sent and received). Unit: bytes.
         self.total_bytes = total_bytes
-        # The date on which the statistics are collected.
+        # The date of the traffic statistics.
         self.traffic_day = traffic_day
-        # The traffic type. Valid values:
-        # 
-        # *   **EIP_TRAFFIC**: traffic for the Internet firewall
-        # *   **NatGateway_TRAFFIC**: traffic for NAT firewalls
-        # *   **VPC_TRAFFIC**: traffic for VPC firewalls
+        # The type of traffic boundary for statistics. Valid values:
+        #           
+        # - **EIP_TRAFFIC**: Internet border traffic.
+        #   
+        # - **NatGateway_TRAFFIC**: NAT border traffic.
+        # - **VPC_TRAFFIC**: VPC border traffic.
         self.traffic_type = traffic_type
 
     def validate(self):

@@ -13,21 +13,21 @@ class DescribeRuleBarChartRequest(DaraModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Query start time, accurate to milliseconds (ms).
+        # The start time of the query. Unit: milliseconds (ms).
         # 
         # This parameter is required.
         self.begin_time = begin_time
-        # End time, accurate to milliseconds (ms).
+        # The end time of the query. Unit: milliseconds (ms).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Event codes, separated by commas (,).
+        # The event codes. Separate multiple event codes with commas (,).
         self.event_codes = event_codes
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

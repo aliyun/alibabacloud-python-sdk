@@ -1,3 +1,37 @@
+2026-07-02 Version: 5.4.1
+- Generated python 2019-10-15 for aiccs.
+
+2026-06-18 Version: 5.4.0
+- Support API GetAudioNoteUploadUrl.
+- Support API SubmitAudioNote.
+- Update API UpdateModelApplication: add request parameters DtmfSendMaxCount.
+- Update API UpdateModelApplication: add request parameters DtmfSendWaitTimeout.
+- Update API UpdateModelApplication: add request parameters EnableDtmfSend.
+- Update API UpdateModelApplication: add request parameters MutePushMode.
+
+
+2026-05-29 Version: 5.3.1
+- Update API ListAvailableTts: add request parameters VoiceType.
+- Update API ListAvailableTts: add response parameters Body.Data.$.VoiceType.
+
+
+2026-05-28 Version: 5.3.0
+- Support API AddModelApplication.
+- Support API UpdateModelApplication.
+
+
+2026-05-27 Version: 5.2.0
+- Support API AddInboundNumber.
+- Support API AddLargeModel.
+- Support API TestLargeModel.
+- Support API UpdateLargeModel.
+
+
+2026-05-25 Version: 5.1.0
+- Support API LlmFullDuplexCallOperate.
+- Support API LlmSmartCallFullDuplex.
+
+
 2026-05-18 Version: 5.0.0
 - Update API PageQueryAgentListNew: update request parameters AgentId' type has changed.
 - Update API PageQueryAgentListNew: update request parameters AgentId' format has changed.

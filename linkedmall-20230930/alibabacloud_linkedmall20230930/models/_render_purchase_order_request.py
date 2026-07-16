@@ -10,6 +10,8 @@ class RenderPurchaseOrderRequest(DaraModel):
         self,
         body: main_models.PurchaseOrderRenderQuery = None,
     ):
+        # Render purchase order
+        # 
         # This parameter is required.
         self.body = body
 

@@ -14,10 +14,11 @@ class UninstallAppResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # A list of subtasks.
         self.child_task_info = child_task_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -67,8 +68,11 @@ class UninstallAppResponseBodyChildTaskInfo(DaraModel):
         child_task_id: str = None,
         instance_id: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The subtask ID.
         self.child_task_id = child_task_id
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

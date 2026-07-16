@@ -89,8 +89,9 @@ class SetDesktopGroupScaleTimerRequestScaleTimerInfos(DaraModel):
         # 
         # Valid values:
         # 
-        # *   0: depth-first
-        # *   1: breadth first.
+        # - 0: depth-first
+        # 
+        # - 1: breadth first.
         self.load_policy = load_policy
         # One option for the auto scaling policy. This option specifies the maximum number of cloud computers that you can create in the cloud computer pool. Valid values: 0 to 200.
         self.max_res_amount = max_res_amount
@@ -106,37 +107,37 @@ class SetDesktopGroupScaleTimerRequestScaleTimerInfos(DaraModel):
         # 
         # Valid values:
         # 
-        # *   drop
+        # - drop
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   normal
+        # - normal
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   peak
+        # - peak
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   rise
+        # - rise
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.type = type
 
     def validate(self):

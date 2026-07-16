@@ -41,7 +41,6 @@ class CreateEventResponseBody(DaraModel):
         self.organizer = organizer
         self.recurrence = recurrence
         self.reminders = reminders
-        # requestId
         self.request_id = request_id
         self.rich_text_description = rich_text_description
         self.start = start

@@ -14,14 +14,23 @@ class ModifyIpsRulesRequest(DaraModel):
         rules: str = None,
         source_ip: str = None,
     ):
+        # The type of the Cloud Firewall.
         self.firewall_type = firewall_type
+        # The language of the request and response.
         self.lang = lang
+        # The action of the rule.
+        # 
         # This parameter is required.
         self.rule_action = rule_action
+        # The type of the rule.
+        # 
         # This parameter is required.
         self.rule_type = rule_type
+        # The list of rules.
+        # 
         # This parameter is required.
         self.rules = rules
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

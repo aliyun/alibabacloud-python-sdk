@@ -16,10 +16,19 @@ class ListInstanceStatusResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed error message.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -81,8 +90,17 @@ class ListInstanceStatusResponseBodyData(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # The instance ID.
         self.instance = instance
+        # The region ID.
         self.region = region
+        # The running status of the instance. Valid values:
+        # - **Running**: running.
+        # - **Offline**: offline.
+        # 
+        # 
+        # 
+        # > An instance in the Offline status indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance is not running.
         self.status = status
 
     def validate(self):

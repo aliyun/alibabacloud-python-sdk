@@ -10,7 +10,9 @@ class GetAIAgentConcurrencyResponseBody(DaraModel):
         active_count: int = None,
         request_id: str = None,
     ):
+        # The number of active concurrent calls.
         self.active_count = active_count
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

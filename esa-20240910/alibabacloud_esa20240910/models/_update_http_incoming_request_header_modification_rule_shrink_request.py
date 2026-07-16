@@ -15,27 +15,25 @@ class UpdateHttpIncomingRequestHeaderModificationRuleShrinkRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+        # Configuration ID. Can be obtained by calling the ListHttpIncomingRequestHeaderModificationRules API.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # The configurations of modifying request headers. You can add, delete, or modify a request header.
+        # Modify request headers. Three operation types are supported: add, delete, and modify.
         self.request_header_modification_shrink = request_header_modification_shrink
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
-        # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example, (http.host eq "video.example.com"): Match the specified request.
+        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
-        # 
-        # *   on
-        # *   off
+        # Rule switch. This parameter does not need to be set when adding a global configuration. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configurations.
+        # Rule name. This parameter does not need to be set when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
+        # Rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
         # 
         # This parameter is required.
         self.site_id = site_id

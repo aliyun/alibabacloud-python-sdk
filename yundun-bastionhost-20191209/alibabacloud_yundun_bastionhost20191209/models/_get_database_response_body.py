@@ -63,8 +63,9 @@ class GetDatabaseResponseBodyDatabase(DaraModel):
     ):
         # The address type of the database. Valid values:
         # 
-        # *   Public
-        # *   Private
+        # - Public
+        # 
+        # - Private
         self.active_address_type = active_address_type
         # The remarks of the database.
         self.comment = comment
@@ -80,18 +81,23 @@ class GetDatabaseResponseBodyDatabase(DaraModel):
         self.database_public_address = database_public_address
         # The database engine. Valid values:
         # 
-        # *   **mysql**
-        # *   **sqlserver**
-        # *   **postgresql**
-        # *   **oracle**
+        # - **mysql**
+        # 
+        # - **sqlserver**
+        # 
+        # - **postgresql**
+        # 
+        # - **oracle**
         self.database_type = database_type
         # The ID of the network domain to which the database belongs.
         self.network_domain_id = network_domain_id
         # The database type. Valid values:
         # 
-        # *   **Local**: on-premises database.
-        # *   **Rds**: ApsaraDB RDS instance.
-        # *   **PolarDB**: PolarDB cluster.
+        # - **Local**: on-premises database.
+        # 
+        # - **Rds**: ApsaraDB RDS instance.
+        # 
+        # - **PolarDB**: PolarDB cluster.
         self.source = source
         # The ID of the ApsaraDB RDS instance or PolarDB cluster.
         # 
@@ -101,8 +107,9 @@ class GetDatabaseResponseBodyDatabase(DaraModel):
         self.source_instance_region_id = source_instance_region_id
         # The status of the database. Valid values:
         # 
-        # *   **Normal**
-        # *   **Release**
+        # - **Normal**
+        # 
+        # - **Release**
         self.source_instance_state = source_instance_state
 
     def validate(self):

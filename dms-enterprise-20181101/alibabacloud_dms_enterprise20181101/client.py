@@ -6146,12 +6146,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not DaraCore.is_null(request.workspace_name):
             query['WorkspaceName'] = request.workspace_name
+        if not DaraCore.is_null(request.workspace_region):
+            query['WorkspaceRegion'] = request.workspace_region
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
@@ -6184,12 +6184,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not DaraCore.is_null(request.workspace_name):
             query['WorkspaceName'] = request.workspace_name
+        if not DaraCore.is_null(request.workspace_region):
+            query['WorkspaceRegion'] = request.workspace_region
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
@@ -18469,6 +18469,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
+    def list_inventory_jobs_with_options(
+        self,
+        request: main_models.ListInventoryJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInventoryJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInventoryJobs',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInventoryJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_inventory_jobs_with_options_async(
+        self,
+        request: main_models.ListInventoryJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInventoryJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInventoryJobs',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInventoryJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_inventory_jobs(
+        self,
+        request: main_models.ListInventoryJobsRequest,
+    ) -> main_models.ListInventoryJobsResponse:
+        runtime = RuntimeOptions()
+        return self.list_inventory_jobs_with_options(request, runtime)
+
+    async def list_inventory_jobs_async(
+        self,
+        request: main_models.ListInventoryJobsRequest,
+    ) -> main_models.ListInventoryJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_inventory_jobs_with_options_async(request, runtime)
+
     def list_lh_task_flow_and_scenario_with_options(
         self,
         request: main_models.ListLhTaskFlowAndScenarioRequest,
@@ -24396,6 +24486,96 @@ class Client(OpenApiClient):
     ) -> main_models.SearchDatabaseResponse:
         runtime = RuntimeOptions()
         return await self.search_database_with_options_async(request, runtime)
+
+    def search_inventory_asset_with_options(
+        self,
+        request: main_models.SearchInventoryAssetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchInventoryAssetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchInventoryAsset',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchInventoryAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_inventory_asset_with_options_async(
+        self,
+        request: main_models.SearchInventoryAssetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchInventoryAssetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.offset):
+            query['Offset'] = request.offset
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.size):
+            query['Size'] = request.size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchInventoryAsset',
+            version = '2018-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchInventoryAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_inventory_asset(
+        self,
+        request: main_models.SearchInventoryAssetRequest,
+    ) -> main_models.SearchInventoryAssetResponse:
+        runtime = RuntimeOptions()
+        return self.search_inventory_asset_with_options(request, runtime)
+
+    async def search_inventory_asset_async(
+        self,
+        request: main_models.SearchInventoryAssetRequest,
+    ) -> main_models.SearchInventoryAssetResponse:
+        runtime = RuntimeOptions()
+        return await self.search_inventory_asset_with_options_async(request, runtime)
 
     def search_inventory_knowledge_with_options(
         self,

@@ -14,11 +14,25 @@ class ListDataSourceTemplatesShrinkRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The list of data source template IDs.
         self.data_source_template_ids_shrink = data_source_template_ids_shrink
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region of the Data Management center for threat analysis. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can switch to the perspective of the member.
         self.role_for = role_for
 
     def validate(self):

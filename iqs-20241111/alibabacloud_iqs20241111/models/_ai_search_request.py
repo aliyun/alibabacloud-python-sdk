@@ -13,11 +13,17 @@ class AiSearchRequest(DaraModel):
         session_id: str = None,
         time_range: str = None,
     ):
+        # The industry. After you specify an industry, only content from websites within the specified industry is recalled. Separate multiple industries with commas.
         self.industry = industry
+        # The page number. Pages start from 1.
         self.page = page
+        # The query to search for.
+        # 
         # This parameter is required.
         self.query = query
+        # The time range for filtering web page publication dates.
         self.session_id = session_id
+        # The session ID for multi-turn interactions.
         self.time_range = time_range
 
     def validate(self):

@@ -11,7 +11,9 @@ class CreateCollectorResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateCollectorResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateCollectorResponseBodyResult(DaraModel):
         self,
         res_id: str = None,
     ):
+        # The ID of the collector that is created.
         self.res_id = res_id
 
     def validate(self):

@@ -19,13 +19,21 @@ class GetDialogDetailResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Processing time in milliseconds
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the operation succeeded
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetDialogDetailResponseBodyData(DaraModel):
         total_dialog_turns: int = None,
         valid_dialog_turns: int = None,
     ):
+        # List of dialogue details
         self.dialogue_list = dialogue_list
+        # Session time
         self.gmt_create = gmt_create
+        # Session status
         self.status = status
+        # Total conversation rounds. Each round counts one exchange between AI and the customer. Multiple consecutive messages from either side count as one round. If the last message is from the AI and is not a hang-up, subtract one from the total round count.
         self.total_dialog_turns = total_dialog_turns
+        # Valid conversation rounds. Each valid round counts one question-and-answer pair between AI and the customer. This differs from the total round count method.
         self.valid_dialog_turns = valid_dialog_turns
 
     def validate(self):
@@ -174,16 +187,35 @@ class GetDialogDetailResponseBodyDataDialogueList(DaraModel):
         role: str = None,
         type: str = None,
     ):
+        # Dialogue content
         self.content = content
+        # Customer ID
         self.customer_id = customer_id
+        # Agent ID
         self.customer_service_id = customer_service_id
+        # Agent type:
+        # 
+        # - 0: Bot
+        # 
+        # - 1: Human
         self.customer_service_type = customer_service_type
+        # Indicates whether the session ended with this message
         self.hang_up_dialog = hang_up_dialog
+        # Unique identifier for this message. Assigned internally. May be empty. Use recordId instead.
         self.id = id
+        # Intent code
         self.intent_code = intent_code
+        # Intent name
         self.intent_name = intent_name
+        # Unique identifier for this message. Assigned internally. String type.
         self.record_id = record_id
+        # Role:
+        # 
+        # - 0: Customer
+        # 
+        # - 1: Agent
         self.role = role
+        # Content type: text, audio, or image. Only text is supported.
         self.type = type
 
     def validate(self):

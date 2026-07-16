@@ -11,15 +11,15 @@ class SwitchToOnlineRequest(DaraModel):
         event_id: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The event ID to switch to.
+        # The ID of the event to switch to.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

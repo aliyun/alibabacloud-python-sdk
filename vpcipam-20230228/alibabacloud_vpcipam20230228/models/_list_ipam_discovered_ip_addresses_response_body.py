@@ -17,11 +17,21 @@ class ListIpamDiscoveredIpAddressesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on the current page.
         self.count = count
+        # Details of the used IP addresses.
         self.ipam_discovered_ip_addresses = ipam_discovered_ip_addresses
+        # The maximum number of entries to return per page. Valid values: 1 to 200. Default value: 100.
         self.max_results = max_results
+        # The pagination token. Use this token in a subsequent request to retrieve the next page of results. Valid values:
+        # 
+        # - Empty: All results have been returned.
+        # 
+        # - If **NextToken** has a value, it is the token for the next page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -93,12 +103,21 @@ class ListIpamDiscoveredIpAddressesResponseBodyIpamDiscoveredIpAddresses(DaraMod
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The IP address in use.
         self.ip_address = ip_address
+        # The IP version. Valid value:
+        # 
+        # - **IPv4**: Indicates the IPv4 protocol.
         self.ip_version = ip_version
+        # The resource ID.
         self.resource_id = resource_id
+        # The ID of the region in which the resource resides.
         self.resource_region_id = resource_region_id
+        # The cloud service to which the resource belongs.
         self.resource_service_type = resource_service_type
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

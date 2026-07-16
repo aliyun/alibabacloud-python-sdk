@@ -13,7 +13,9 @@ class DescribeParametersResponseBody(DaraModel):
         data: main_models.DescribeParametersResponseBodyData = None,
         request_id: str = None,
     ):
+        # The parameter details.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,14 @@ class DescribeParametersResponseBodyData(DaraModel):
         engine_version: str = None,
         running_parameters: List[main_models.DescribeParametersResponseBodyDataRunningParameters] = None,
     ):
+        # The list of original parameters.
         self.config_parameters = config_parameters
         self.dbinstance_id = dbinstance_id
+        # The engine. Default value: polarx.
         self.engine = engine
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
+        # The list of running parameter details.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -127,8 +133,11 @@ class DescribeParametersResponseBodyDataRunningParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The parameter description.
         self.parameter_description = parameter_description
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -170,8 +179,11 @@ class DescribeParametersResponseBodyDataConfigParameters(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
+        # The parameter description.
         self.parameter_description = parameter_description
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
 
     def validate(self):

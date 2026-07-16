@@ -11,9 +11,9 @@ class GetOssBucketScanStatisticResponseBody(DaraModel):
         data: main_models.GetOssBucketScanStatisticResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request. The China Chinese system generates a unique identifier for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,31 +61,31 @@ class GetOssBucketScanStatisticResponseBodyData(DaraModel):
         total_bucket: int = None,
         total_object: int = None,
     ):
-        # The expiration time of the purchased quota.
+        # The timestamp when the authorization expires.
         self.expire_time = expire_time
-        # The number of high-risk objects.
+        # The number of high-risk files.
         self.high_risk = high_risk
-        # The number of low-risk objects.
+        # The number of low-risk files.
         self.low_risk = low_risk
-        # The number of medium-risk objects.
+        # The number of medium-risk files.
         self.medium_risk = medium_risk
-        # The number of buckets that are not checked.
+        # The number of buckets that have not been scanned.
         self.no_scan_bucket = no_scan_bucket
-        # Postpaid usage count.
+        # The number of pay-as-you-go invocations used.
         self.post_pay_invoke_count = post_pay_invoke_count
-        # Prepaid authorized count.
+        # The number of prepaid authorization times.
         self.pre_pay_auth_count = pre_pay_auth_count
-        # Prepaid usage count.
+        # The number of prepaid invocations used.
         self.pre_pay_invoke_count = pre_pay_invoke_count
-        # The remaining quota.
+        # The remaining number of authorizations.
         self.remain_auth = remain_auth
-        # The number of buckets in which at-risk objects exist.
+        # The number of buckets that contain risky files.
         self.risk_bucket = risk_bucket
-        # The number of objects that are checked.
+        # The number of scanned files.
         self.scan_object = scan_object
         # The total number of buckets.
         self.total_bucket = total_bucket
-        # The total number of objects in the bucket.
+        # The total number of files in the buckets.
         self.total_object = total_object
 
     def validate(self):

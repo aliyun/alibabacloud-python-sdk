@@ -17,11 +17,17 @@ class GetDatasetDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Business data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the operation succeeded. true means success. false means failure.
         self.success = success
 
     def validate(self):
@@ -97,22 +103,39 @@ class GetDatasetDocumentResponseBodyData(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Category UUID
         self.category_uuid = category_uuid
+        # Content of the article.
         self.content = content
+        # Whether this record is indexed in the multimodal index library.
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
+        # User-side unique ID of the document.
         self.doc_id = doc_id
+        # Document type. For example, video or image.
         self.doc_type = doc_type
+        # Unique ID of the document in the document system.
         self.doc_uuid = doc_uuid
+        # Extension field 1
         self.extend_1 = extend_1
+        # Extension field 2
         self.extend_2 = extend_2
+        # Extension field 3
         self.extend_3 = extend_3
+        # Dictionary information.
         self.metadata = metadata
+        # Publication time in yyyy-MM-dd HH:mm:ss format.
         self.pub_time = pub_time
+        # Source of the document.
         self.source_from = source_from
+        # Document status. 100 means success. 0 means failure. 1 means indexing or queued.
         self.status = status
+        # Summary of the article.
         self.summary = summary
+        # Tags.
         self.tags = tags
+        # Title of the document.
         self.title = title
+        # URL of the article.
         self.url = url
 
     def validate(self):
@@ -241,9 +264,13 @@ class GetDatasetDocumentResponseBodyDataMetadata(DaraModel):
         text: str = None,
         video_shots: List[main_models.GetDatasetDocumentResponseBodyDataMetadataVideoShots] = None,
     ):
+        # ASR results.
         self.asr_sentences = asr_sentences
+        # Key-value structure metadata
         self.key_values = key_values
+        # Metadata for the document dimension.
         self.text = text
+        # Video sharding information.
         self.video_shots = video_shots
 
     def validate(self):
@@ -317,8 +344,11 @@ class GetDatasetDocumentResponseBodyDataMetadataVideoShots(DaraModel):
         start_time: int = None,
         text: str = None,
     ):
+        # End time of the video shard in milliseconds.
         self.end_time = end_time
+        # Start time of the video shard in milliseconds.
         self.start_time = start_time
+        # Content of the video shard.
         self.text = text
 
     def validate(self):
@@ -359,7 +389,9 @@ class GetDatasetDocumentResponseBodyDataMetadataKeyValues(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Parameter Name
         self.key = key
+        # Parameter value
         self.value = value
 
     def validate(self):
@@ -395,8 +427,11 @@ class GetDatasetDocumentResponseBodyDataMetadataAsrSentences(DaraModel):
         start_time: int = None,
         text: str = None,
     ):
+        # End time in milliseconds.
         self.end_time = end_time
+        # Start time in milliseconds.
         self.start_time = start_time
+        # ASR text content.
         self.text = text
 
     def validate(self):

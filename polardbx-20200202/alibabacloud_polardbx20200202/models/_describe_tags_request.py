@@ -11,9 +11,13 @@ class DescribeTagsRequest(DaraModel):
         region_id: str = None,
         tag_key: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):

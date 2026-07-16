@@ -11,10 +11,16 @@ class OperateDisableWorkflowsShrinkRequest(DaraModel):
         cluster_id: str = None,
         workflow_ids_shrink: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # A list of workflow IDs.
+        # 
         # This parameter is required.
         self.workflow_ids_shrink = workflow_ids_shrink
 

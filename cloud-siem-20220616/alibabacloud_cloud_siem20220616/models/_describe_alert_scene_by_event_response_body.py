@@ -16,18 +16,19 @@ class DescribeAlertSceneByEventResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,19 +94,19 @@ class DescribeAlertSceneByEventResponseBodyData(DaraModel):
         alert_type_id: str = None,
         targets: List[main_models.DescribeAlertSceneByEventResponseBodyDataTargets] = None,
     ):
-        # The alert name. The display name of the alert name varies based on the language of the system, such as Chinese and English.
+        # The display name of the alert. The value varies based on the language settings.
         self.alert_name = alert_name
-        # The ID of the alert name.
+        # The identifier of the alert name.
         self.alert_name_id = alert_name_id
-        # The alert title. The display name of the alert title varies based on the language of the system, such as Chinese and English.
+        # The display title of the alert. The value varies based on the language settings.
         self.alert_tile = alert_tile
-        # The ID of the alert title.
+        # The identifier of the alert title.
         self.alert_tile_id = alert_tile_id
-        # The alert type. The display name of the alert type varies based on the language of the system, such as Chinese and English.
+        # The display name of the alert type. The value varies based on the language settings.
         self.alert_type = alert_type
-        # The ID of the alert type.
+        # The identifier of the alert type.
         self.alert_type_id = alert_type_id
-        # The objects that can be added to the whitelist.
+        # The objects to be whitelisted.
         self.targets = targets
 
     def validate(self):
@@ -180,13 +181,13 @@ class DescribeAlertSceneByEventResponseBodyDataTargets(DaraModel):
         value: str = None,
         values: List[str] = None,
     ):
-        # The display name of the entity attribute field that can be added to the whitelist.
+        # The display name of the entity property field that can be whitelisted.
         self.name = name
-        # The entity attribute field that can be added to the whitelist.
+        # The field of the entity property that can be whitelisted.
         self.type = type
-        # The right operand that is displayed by default in the whitelist rule.
+        # The default right operand displayed for the whitelisting rule.
         self.value = value
-        # The supported right operands of the whitelist rule.
+        # The available right operands for the whitelisting rule.
         self.values = values
 
     def validate(self):

@@ -11,10 +11,16 @@ class CreateBeebotIntentShrinkRequest(DaraModel):
         intent_definition_shrink: str = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The description of the intent.
+        # 
         # This parameter is required.
         self.intent_definition_shrink = intent_definition_shrink
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

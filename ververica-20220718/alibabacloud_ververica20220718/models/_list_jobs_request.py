@@ -13,21 +13,15 @@ class ListJobsRequest(DaraModel):
         sort_name: str = None,
         sort_order: str = None,
     ):
-        # The deployment ID.
+        # The ID of the deployment.
         # 
         # This parameter is required.
         self.deployment_id = deployment_id
-        # The page number. Minimum value: 1. Default value: 1.
+        # The page number to return. Minimum value: 1. Default value: 1.
         self.page_index = page_index
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Maximum value: 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
-        # The collation.
-        # 
-        # Valid values:
-        # 
-        # *   gmt_create
-        # *   job_id
-        # *   status
+        # The field to sort the results by.
         self.sort_name = sort_name
         self.sort_order = sort_order
 

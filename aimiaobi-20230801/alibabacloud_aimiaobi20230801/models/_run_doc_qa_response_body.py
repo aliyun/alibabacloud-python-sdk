@@ -14,8 +14,11 @@ class RunDocQaResponseBody(DaraModel):
         payload: main_models.RunDocQaResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # response header
         self.header = header
+        # response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class RunDocQaResponseBodyPayload(DaraModel):
         output: main_models.RunDocQaResponseBodyPayloadOutput = None,
         usage: main_models.RunDocQaResponseBodyPayloadUsage = None,
     ):
+        # Outputs
         self.output = output
+        # token usage
         self.usage = usage
 
     def validate(self):
@@ -102,8 +107,11 @@ class RunDocQaResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Quantity of input tokens
         self.input_tokens = input_tokens
+        # Number of tokens used in the output
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -148,11 +156,17 @@ class RunDocQaResponseBodyPayloadOutput(DaraModel):
         recommends: List[main_models.RunDocQaResponseBodyPayloadOutputRecommends] = None,
         references: List[main_models.RunDocQaResponseBodyPayloadOutputReferences] = None,
     ):
+        # Content of the response
         self.content = content
+        # Response content after intervention
         self.intervene_content = intervene_content
+        # Indicates whether the request is rejected
         self.is_reject = is_reject
+        # List of multimodal resource information
         self.media_url_list = media_url_list
+        # Array of recommended content
         self.recommends = recommends
+        # Array of sources for the response content
         self.references = references
 
     def validate(self):
@@ -240,10 +254,15 @@ class RunDocQaResponseBodyPayloadOutputReferences(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Published At
         self.pub_time = pub_time
+        # Source
         self.source = source
+        # Source docId
         self.source_doc_id = source_doc_id
+        # Title of the associated content
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):
@@ -296,7 +315,9 @@ class RunDocQaResponseBodyPayloadOutputRecommends(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Title of the recommended content
         self.title = title
+        # URL of the recommended content
         self.url = url
 
     def validate(self):
@@ -332,8 +353,11 @@ class RunDocQaResponseBodyPayloadOutputMediaUrlList(DaraModel):
         file_url: str = None,
         media_type: str = None,
     ):
+        # Array of related video time information
         self.clip_infos = clip_infos
+        # File URL
         self.file_url = file_url
+        # Media asset type
         self.media_type = media_type
 
     def validate(self):
@@ -382,7 +406,9 @@ class RunDocQaResponseBodyPayloadOutputMediaUrlListClipInfos(DaraModel):
         from_: float = None,
         to: float = None,
     ):
+        # Start time of the video segment
         self.from_ = from_
+        # End time of the video segment
         self.to = to
 
     def validate(self):
@@ -422,12 +448,19 @@ class RunDocQaResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # error code
         self.error_code = error_code
+        # error message
         self.error_message = error_message
+        # management event
         self.event = event
+        # Description of the management event
         self.event_info = event_info
+        # Session ID
         self.session_id = session_id
+        # Job ID
         self.task_id = task_id
+        # End-to-end trace ID
         self.trace_id = trace_id
 
     def validate(self):

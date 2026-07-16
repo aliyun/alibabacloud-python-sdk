@@ -16,17 +16,17 @@ class ListBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the backup.
+        # The backups.
         self.backups = backups
-        # The maximum number of records returned in this request.
+        # The maximum number of entries returned on the current page.
         self.max_results = max_results
-        # Indicates the read position returned by the current call. An empty value means all data has been read.
+        # The token that is used to retrieve the next page of results. If this parameter is empty, all results have been returned.
         # 
         # This parameter is required.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
-        # Total data count under the current request conditions (optional; not returned by default).
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -98,34 +98,39 @@ class ListBackupsResponseBodyBackups(DaraModel):
     ):
         # The backup ID.
         self.backup_id = backup_id
-        # The backup mode. Valid values:
+        # The backup mode. The return value is:
         # 
-        # *   **Manual**: manual backup
+        # - **Manual**: The backup is created manually.
         self.backup_mode = backup_mode
-        # The creation time.
+        # The time when the backup was created.
         self.create_time = create_time
-        # The description of the backup task.
+        # The description of the backup.
         self.description = description
-        # The end time of the backup task.
+        # The time when the backup ended.
         self.end_time = end_time
-        # The update time.
+        # The time when the backup was last updated.
         self.modified_time = modified_time
-        # Retention Days. Resources will be cleared upon expiration. Defaults to no expiration if left blank.
+        # The retention period in days. Backups are deleted after the retention period expires. By default, this parameter is empty, which means that the backups do not expire.
         self.retention_days = retention_days
-        # The ID of the service instance.
+        # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The start time of the backup task.
+        # The time when the backup started.
         self.start_time = start_time
-        # The status of the backup task. Valid values:
+        # The status.
         # 
-        # *   Creating
-        # *   Created
-        # *   CreateFailed
-        # *   Deleting
-        # *   Deleted
-        # *   DeleteFailed
+        # - Creating: The backup is being created.
+        # 
+        # - Created: The backup is created.
+        # 
+        # - CreateFailed: The backup failed to be created.
+        # 
+        # - Deleting: The backup is being deleted.
+        # 
+        # - Deleted: The backup is deleted.
+        # 
+        # - DeleteFailed: The backup failed to be deleted.
         self.status = status
-        # The description of the service instance deployment information.
+        # The details of the status.
         self.status_detail = status_detail
 
     def validate(self):

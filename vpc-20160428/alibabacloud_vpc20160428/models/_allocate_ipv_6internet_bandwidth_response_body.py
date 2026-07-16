@@ -11,7 +11,7 @@ class AllocateIpv6InternetBandwidthResponseBody(DaraModel):
         ipv_6address_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Internet bandwidth that you purchased for the IPv6 gateway.
+        # The instance ID of the Internet bandwidth associated with the IPv6 gateway after Internet bandwidth is allocated.
         self.internet_bandwidth_id = internet_bandwidth_id
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id

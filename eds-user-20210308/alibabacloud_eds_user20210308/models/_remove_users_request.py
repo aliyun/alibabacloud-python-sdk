@@ -12,6 +12,7 @@ class RemoveUsersRequest(DaraModel):
         business_channel: str = None,
         users: List[str] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The usernames of the convenience users that you want to remove.
         # 

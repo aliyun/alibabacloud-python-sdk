@@ -13,17 +13,17 @@ class DescribeEventVariableTemplateListRequest(DaraModel):
         template_code: str = None,
         type: str = None,
     ):
-        # Sets the language type for the request and response messages. The default value is **zh**. Values: 
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Input parameters, separated by commas.
+        # The input parameters. Separate multiple values with commas (,).
         self.inputs = inputs
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Template code.
+        # The template code.
         self.template_code = template_code
-        # Template type.
+        # The templatetype.
         self.type = type
 
     def validate(self):

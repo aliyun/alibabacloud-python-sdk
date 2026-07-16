@@ -16,19 +16,19 @@ class DescribeCustomizedDictUploadInfoResponseBody(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
-        # The AccessKey ID that is required to access the OSS object.
+        # The AccessKey ID required to access the file.
         self.accessid = accessid
-        # The time when the OSS signature expires. This value is a UNIX timestamp.
+        # The expiration time of the authentication, in timestamp format.
         self.expire = expire
-        # The OSS endpoint.
+        # The OSS domain name.
         self.host = host
-        # The key of the OSS object.
+        # The OSS file key.
         self.key = key
-        # The policy of the OSS bucket.
+        # The bucket policy of the OSS bucket.
         self.policy = policy
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this identifier to troubleshoot issues.
         self.request_id = request_id
-        # The security token.
+        # The Security Token Service (STS) token.
         self.security_token = security_token
         # The OSS signature.
         self.signature = signature

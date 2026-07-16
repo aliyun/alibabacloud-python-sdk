@@ -28,26 +28,81 @@ class QueryAiCallDetailPageShrinkRequest(DaraModel):
         status: int = None,
         task_id: str = None,
     ):
+        # The batch ID. You can find this ID by clicking Details on the **Call Task Management** page.
         self.batch_id = batch_id
+        # The call result. Valid values:
+        # 
+        # - CALL_FORWARDING: Call Forwarding.
+        # 
+        # - INCOMING_CALL_BARRED: Incoming Call Barred.
+        # 
+        # - CALL_REJECTED: Call Rejected.
+        # 
+        # - ANSWERED: Answered.
+        # 
+        # - USER_BUSY: User Busy.
+        # 
+        # - POWERED_OFF: Powered Off.
+        # 
+        # - NO_USER_RESPONSE: No User Response.
+        # 
+        # - OPERATOR_BLOCK: Operator Block.
+        # 
+        # - OTHERS: Others.
+        # 
+        # - SUSPEND: Suspend.
+        # 
+        # - CANCEL: Canceled by the caller.
+        # 
+        # - INVALID_NUMBER: Invalid Number.
+        # 
+        # - UNAVAILABLE: Unavailable.
+        # 
+        # - NETWORK_BUSY: Network Busy.
+        # 
+        # - NO_ANSWER: No Answer.
         self.call_result = call_result
+        # The called number.
         self.called_number = called_number
+        # A list of up to 100 detail IDs.
         self.detail_ids_shrink = detail_ids_shrink
+        # The encryption method. Valid values: 0 (None), 1 (MD5), 2 (SHA256), and 3 (SM3).
         self.encryption_type = encryption_type
+        # The end of the call time range. This value is a timestamp in milliseconds.
         self.end_calling_time = end_calling_time
+        # The end of the import time range. This value is a timestamp in milliseconds.
         self.end_imported_time = end_imported_time
+        # The major intent. You can find this intent by clicking Agent Details on the [Communication Agent Management](https://aiccs.console.aliyun.com/agent/customize) page.
         self.major_intent = major_intent
+        # The maximum conversation duration, in minutes.
         self.max_conversation_duration = max_conversation_duration
+        # The minimum conversation duration, in minutes.
         self.min_conversation_duration = min_conversation_duration
+        # A custom ID provided by the caller. This ID is returned in the receipt message for request tracking.
         self.out_id = out_id
         self.owner_id = owner_id
+        # The page number. The value must be greater than **0**. The default value is **1**.
         self.page_no = page_no
+        # The number of entries per page. The default value is **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The start of the call time range. This value is a timestamp in milliseconds.
         self.start_calling_time = start_calling_time
+        # The start of the import time range. This value is a timestamp in milliseconds.
         self.start_imported_time = start_imported_time
+        # The task status. Valid values:
+        # 
+        # - 0: Pending.
+        # 
+        # - 1: Completed.
+        # 
+        # - 2: Failed.
+        # 
         # This parameter is required.
         self.status = status
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

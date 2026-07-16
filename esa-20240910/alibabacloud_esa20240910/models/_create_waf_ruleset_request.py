@@ -12,17 +12,33 @@ class CreateWafRulesetRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Ruleset name.
+        # The name of the WAF ruleset.
         self.name = name
-        # WAF operation phase.
+        # The WAF rule execution phase. Valid values:
+        # 
+        # - http_whitelist
+        # 
+        # - http_custom
+        # 
+        # - http_managed
+        # 
+        # - http_anti_scan
+        # 
+        # - http_ratelimit
+        # 
+        # - ip_access_rule
+        # 
+        # - http_bot
+        # 
+        # - http_security_level_rule
         # 
         # This parameter is required.
         self.phase = phase
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. To get this ID, call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
+        # The site configuration version. This parameter applies only if versioning is enabled for the site. The default is 0.
         self.site_version = site_version
 
     def validate(self):

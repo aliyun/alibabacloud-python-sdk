@@ -12,7 +12,9 @@ class UpdateMemoryRequest(DaraModel):
         metadata: Dict[str, Any] = None,
         text: str = None,
     ):
+        # The metadata of the Memory.
         self.metadata = metadata
+        # The new text for the Memory.
         self.text = text
 
     def validate(self):

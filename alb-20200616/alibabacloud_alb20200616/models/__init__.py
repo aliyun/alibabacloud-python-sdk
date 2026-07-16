@@ -275,6 +275,7 @@ from ._create_listener_request import CreateListenerRequestTag
 from ._create_listener_request import CreateListenerRequestXForwardedForConfig
 from ._create_load_balancer_request import CreateLoadBalancerRequestLoadBalancerBillingConfig
 from ._create_load_balancer_request import CreateLoadBalancerRequestModificationProtectionConfig
+from ._create_load_balancer_request import CreateLoadBalancerRequestSecurityGroupIds
 from ._create_load_balancer_request import CreateLoadBalancerRequestTag
 from ._create_load_balancer_request import CreateLoadBalancerRequestZoneMappings
 from ._create_rule_request import CreateRuleRequestRuleActionsCorsConfig
@@ -806,6 +807,7 @@ __all__ = [
     CreateListenerRequestXForwardedForConfig,
     CreateLoadBalancerRequestLoadBalancerBillingConfig,
     CreateLoadBalancerRequestModificationProtectionConfig,
+    CreateLoadBalancerRequestSecurityGroupIds,
     CreateLoadBalancerRequestTag,
     CreateLoadBalancerRequestZoneMappings,
     CreateRuleRequestRuleActionsCorsConfig,

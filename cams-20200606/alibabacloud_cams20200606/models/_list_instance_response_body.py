@@ -18,12 +18,27 @@ class ListInstanceResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see the [Error Code List](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # An array of objects, each representing an instance.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
+        # 
+        # - **true**: The call succeeded.
+        # 
+        # - **false**: The call failed.
         self.success = success
+        # The total number of entries that match the specified criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -108,19 +123,33 @@ class ListInstanceResponseBodyData(DaraModel):
         state: str = None,
         submit_time: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # The contact email address.
         self.contact_mail = contact_mail
+        # The country ID.
         self.country_id = country_id
+        # The customer space ID.
         self.cust_space_id = cust_space_id
+        # The ID of the associated Facebook Business Manager account.
         self.facebook_bm_id = facebook_bm_id
+        # The instance description.
         self.instance_description = instance_description
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The ISV terms.
         self.isv_terms = isv_terms
+        # The office address.
         self.office_address = office_address
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The ID of the region where the resource is located.
         self.resource_region_id = resource_region_id
+        # The state of the instance.
         self.state = state
+        # The time when the instance was submitted.
         self.submit_time = submit_time
 
     def validate(self):

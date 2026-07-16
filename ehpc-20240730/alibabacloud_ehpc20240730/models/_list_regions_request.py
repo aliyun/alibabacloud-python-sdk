@@ -12,9 +12,25 @@ class ListRegionsRequest(DaraModel):
         next_token: str = None,
         spec_code: str = None,
     ):
+        # The language of the response. The default value is zh-CN. Valid values:
+        # 
+        # - zh-CN (default): Chinese.
+        # 
+        # - en-US: English.
         self.accept_language = accept_language
+        # The maximum number of entries to return on each page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The product name. The default value is Next. Valid values:
+        # 
+        # - Next: The E-HPC Cluster product, formerly known as E-HPC NEXT.
+        # 
+        # - Instant: The E-HPC Instant product.
         self.spec_code = spec_code
 
     def validate(self):

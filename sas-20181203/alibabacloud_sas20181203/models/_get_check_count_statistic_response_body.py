@@ -56,9 +56,11 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTO(DaraModel):
         self.check_count_statistic_items = check_count_statistic_items
         # The type of the statistics. Valid values:
         # 
-        # *   **user**: the top five users that are granted excessive permissions.
-        # *   **role**: the top five roles that are granted excessive permissions.
-        # *   **instance**: the top five cloud services on which risks are detected.
+        # - **user**: the top five users that are granted excessive permissions.
+        # 
+        # - **role**: the top five roles that are granted excessive permissions.
+        # 
+        # - **instance**: the top five cloud services on which risks are detected.
         self.statistic_type = statistic_type
 
     def validate(self):
@@ -116,7 +118,7 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         vendor_show_name: str = None,
         vpc_instance_id: str = None,
     ):
-        # 检查项展示名称
+        # Check item display name
         self.check_show_name = check_show_name
         # The number of the CPU cores used by the host instance.
         self.cores = cores
@@ -128,67 +130,101 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         self.instance_sub_type = instance_sub_type
         # The asset subtype of the cloud service. Valid values:
         # 
-        # *   If **InstanceTypeName** is set to **ECS**, this parameter supports the following valid values:
+        # - If **InstanceTypeName** is set to **ECS**, this parameter supports the following valid values:
         # 
-        #     *   **INSTANCE**
-        #     *   **DISK**
-        #     *   **SECURITY_GROUP**
+        #   - **INSTANCE**
         # 
-        # *   If **InstanceTypeName** is set to **ACR**, this parameter supports the following valid values:
+        #   - **DISK**
         # 
-        #     *   **REPOSITORY_ENTERPRISE**
-        #     *   **REPOSITORY_PERSON**
+        #   - **SECURITY_GROUP**
         # 
-        # *   If **InstanceTypeName** is set to **RAM**, this parameter supports the following valid values:
+        # - If **InstanceTypeName** is set to **ACR**, this parameter supports the following valid values:
         # 
-        #     *   **ALIAS**
-        #     *   **USER**
-        #     *   **POLICY**
-        #     *   **GROUP**
+        #   - **REPOSITORY_ENTERPRISE**
         # 
-        # *   If **InstanceTypeName** is set to **WAF**, this parameter supports the following valid value:
+        #   - **REPOSITORY_PERSON**
         # 
-        #     *   **DOMAIN**
+        # - If **InstanceTypeName** is set to **RAM**, this parameter supports the following valid values:
         # 
-        # *   If **InstanceTypeName** is set to other values, this parameter supports the following valid values:
+        #   - **ALIAS**
         # 
-        #     *   **INSTANCE**
+        #   - **USER**
+        # 
+        #   - **POLICY**
+        # 
+        #   - **GROUP**
+        # 
+        # - If **InstanceTypeName** is set to **WAF**, this parameter supports the following valid value:
+        # 
+        #   - **DOMAIN**
+        # 
+        # - If **InstanceTypeName** is set to other values, this parameter supports the following valid values:
+        # 
+        #   - **INSTANCE**
         self.instance_sub_type_name = instance_sub_type_name
         # The asset type. Valid values:
         # 
-        # *   **0**: Elastic Compute Service (ECS) instance.
-        # *   **1**: Server Load Balancer (SLB) instance.
-        # *   **2**: NAT gateway.
-        # *   **3**: ApsaraDB RDS instance.
-        # *   **4**: ApsaraDB for MongoDB (MongoDB) instance.
-        # *   **5**: Tair (Redis OSS-compatible) (Tair) instance.
-        # *   **6**: container image.
-        # *   **7**: container.
+        # - **0**: Elastic Compute Service (ECS) instance.
+        # 
+        # - **1**: Server Load Balancer (SLB) instance.
+        # 
+        # - **2**: NAT gateway.
+        # 
+        # - **3**: ApsaraDB RDS instance.
+        # 
+        # - **4**: ApsaraDB for MongoDB (MongoDB) instance.
+        # 
+        # - **5**: Tair (Redis OSS-compatible) (Tair) instance.
+        # 
+        # - **6**: container image.
+        # 
+        # - **7**: container.
         self.instance_type = instance_type
         # The asset type of the cloud service. Valid values:
         # 
-        # *   **ECS**: ECS.
-        # *   **SLB**: SLB.
-        # *   **RDS**: ApsaraDB RDS.
-        # *   **MONGODB**: ApsaraDB for MongoDB.
-        # *   **KVSTORE**: Tair.
-        # *   **ACR**: Container Registry.
-        # *   **CSK**: Container Service for Kubernetes (ACK).
-        # *   **VPC**: Virtual Private Cloud (VPC).
-        # *   **ACTIONTRAIL**: ActionTrail.
-        # *   **CDN**: Alibaba Cloud CDN (CDN).
-        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service).
-        # *   **RDC**: Alibaba Cloud DevOps.
-        # *   **RAM**: Resource Access Management (RAM).
-        # *   **DDOS**: Anti-DDoS.
-        # *   **WAF**: Web Application Firewall (WAF).
-        # *   **OSS**: Object Storage Service (OSS).
-        # *   **POLARDB**: PolarDB.
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
-        # *   **MSE**: Microservices Engine (MSE).
-        # *   **NAS**: File Storage NAS (NAS).
-        # *   **SDDP**: Sensitive Data Discovery and Protection (SDDP).
-        # *   **EIP**: Elastic IP Address (EIP).
+        # - **ECS**: ECS.
+        # 
+        # - **SLB**: SLB.
+        # 
+        # - **RDS**: ApsaraDB RDS.
+        # 
+        # - **MONGODB**: ApsaraDB for MongoDB.
+        # 
+        # - **KVSTORE**: Tair.
+        # 
+        # - **ACR**: Container Registry.
+        # 
+        # - **CSK**: Container Service for Kubernetes (ACK).
+        # 
+        # - **VPC**: Virtual Private Cloud (VPC).
+        # 
+        # - **ACTIONTRAIL**: ActionTrail.
+        # 
+        # - **CDN**: Alibaba Cloud CDN (CDN).
+        # 
+        # - **CAS**: Certificate Management Service (formerly SSL Certificates Service).
+        # 
+        # - **RDC**: Alibaba Cloud DevOps.
+        # 
+        # - **RAM**: Resource Access Management (RAM).
+        # 
+        # - **DDOS**: Anti-DDoS.
+        # 
+        # - **WAF**: Web Application Firewall (WAF).
+        # 
+        # - **OSS**: Object Storage Service (OSS).
+        # 
+        # - **POLARDB**: PolarDB.
+        # 
+        # - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
+        # 
+        # - **MSE**: Microservices Engine (MSE).
+        # 
+        # - **NAS**: File Storage NAS (NAS).
+        # 
+        # - **SDDP**: Sensitive Data Discovery and Protection (SDDP).
+        # 
+        # - **EIP**: Elastic IP Address (EIP).
         self.instance_type_name = instance_type_name
         # The public IP address of the host instance.
         self.internet_ip = internet_ip
@@ -204,12 +240,15 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         self.uuid = uuid
         # The cloud service provider. Valid values:
         # 
-        # *   **ALIYUN**: Alibaba Cloud.
-        # *   **TENCENT**: Tencent Cloud.
-        # *   **MICROSOFT**: Microsoft Azure.
-        # *   **AWS**: AWS.
+        # - **ALIYUN**: Alibaba Cloud.
+        # 
+        # - **TENCENT**: Tencent Cloud.
+        # 
+        # - **MICROSOFT**: Microsoft Azure.
+        # 
+        # - **AWS**: AWS.
         self.vendor = vendor
-        # 厂商名称
+        # Vendor name
         self.vendor_show_name = vendor_show_name
         # The ID of the VPC to which the host instance belongs.
         self.vpc_instance_id = vpc_instance_id

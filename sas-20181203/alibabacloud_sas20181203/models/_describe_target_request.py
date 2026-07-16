@@ -10,14 +10,14 @@ class DescribeTargetRequest(DaraModel):
         config: str = None,
         type: str = None,
     ):
-        # The type of the vulnerability. Valid values:
+        # The vulnerability type. Valid values:
         # 
-        # *   **cms**: Web CMS vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cve**: Linux software vulnerability
-        # *   **emg**: urgent vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cve**: Linux software vulnerability
+        # - **emg**: emergency vulnerability.
         self.config = config
-        # The type of the query. Set the value to vul.
+        # The query type. Set this parameter to vul.
         self.type = type
 
     def validate(self):

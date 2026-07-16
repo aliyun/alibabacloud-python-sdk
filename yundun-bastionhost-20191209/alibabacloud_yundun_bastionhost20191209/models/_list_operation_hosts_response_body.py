@@ -14,11 +14,11 @@ class ListOperationHostsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The hosts returned.
+        # A list of the hosts.
         self.hosts = hosts
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of hosts returned.
+        # The total number of hosts.
         self.total_count = total_count
 
     def validate(self):
@@ -75,37 +75,41 @@ class ListOperationHostsResponseBodyHosts(DaraModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The address type of the host. Valid values:
+        # The address type of the host.
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**: The public endpoint is used.
+        # 
+        # - **Private**: The private endpoint is used.
         self.active_address_type = active_address_type
-        # The remarks of the host.
+        # The comments on the host.
         self.comment = comment
-        # The host ID.
+        # The ID of the host.
         self.host_id = host_id
-        # The host name.
+        # The name of the host.
         self.host_name = host_name
-        # The private IP address of the host.
+        # The private address of the host.
         self.host_private_address = host_private_address
-        # The public IP address of the host.
+        # The public address of the host.
         self.host_public_address = host_public_address
-        # The host OS.
+        # The operating system of the host.
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
-        # The host type. Valid values:
+        # The source of the host.
         # 
-        # *   **Local**: on-premises host.
-        # *   **Ecs**: Elastic Compute Service (ECS) instance.
+        # - **Local**: a local host
+        # 
+        # - **Ecs**: an ECS instance
         self.source = source
-        # The ECS instance ID.
+        # The ID of the ECS instance.
         self.source_instance_id = source_instance_id
-        # The host status. Valid values:
+        # The state of the host.
         # 
-        # *   **Normal**
-        # *   **Release**
+        # - **Normal**: The host is running.
+        # 
+        # - **Release**: The host is released.
         self.source_instance_state = source_instance_state
 
     def validate(self):

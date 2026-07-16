@@ -10,7 +10,9 @@ class UpdateIntentResponseBody(DaraModel):
         intent_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the updated intent.
         self.intent_id = intent_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

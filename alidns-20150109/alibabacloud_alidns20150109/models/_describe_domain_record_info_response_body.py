@@ -24,7 +24,7 @@ class DescribeDomainRecordInfoResponseBody(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The ID of the domain name.
+        # The domain ID.
         self.domain_id = domain_id
         # The domain name.
         self.domain_name = domain_name
@@ -32,31 +32,31 @@ class DescribeDomainRecordInfoResponseBody(DaraModel):
         self.group_id = group_id
         # The name of the domain name group.
         self.group_name = group_name
-        # The DNS resolution line.
+        # The resolution line.
         self.line = line
-        # The lock state of the DNS record. Valid values: **true and false**.
+        # The lock status of the DNS record. Valid values: true and **false**.
         self.locked = locked
-        # The priority of the mail exchanger (MX) record.
+        # The priority of the MX record.
         self.priority = priority
-        # The Punycode for the domain name. This parameter is returned only for Chinese domain names.
+        # The Punycode for the Chinese domain name.
         self.puny_code = puny_code
         # The hostname.
         self.rr = rr
         # The ID of the DNS record.
         self.record_id = record_id
-        # The description of your DNS record.
+        # The remarks for the DNS record.
         self.remark = remark
         # The request ID.
         self.request_id = request_id
         # The status of the DNS record. Valid values:
         # 
-        # Enable: enabled
+        # Enable: The DNS record is enabled.
         # 
-        # Disable: disabled
+        # Disable: The DNS record is paused.
         self.status = status
-        # The time for which the DNS record is cached in a local DNS system.
+        # The time to live (TTL). This specifies the duration for which the DNS record is cached on a local DNS server.
         self.ttl = ttl
-        # The type of the DNS record.
+        # The record type.
         self.type = type
         # The record value.
         self.value = value

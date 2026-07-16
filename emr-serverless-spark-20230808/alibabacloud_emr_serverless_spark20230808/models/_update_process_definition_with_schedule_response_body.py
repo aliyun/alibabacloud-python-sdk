@@ -16,15 +16,15 @@ class UpdateProcessDefinitionWithScheduleResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The code that is returned by the backend server.
+        # The return code from the backend API.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # Indicates whether the request failed.
+        # The number of failed operations.
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The description of the returned code.
+        # The detailed description that corresponds to the return code.
         self.msg = msg
         # The request ID.
         self.request_id = request_id
@@ -112,39 +112,39 @@ class UpdateProcessDefinitionWithScheduleResponseBodyData(DaraModel):
         version: int = None,
         version_hash_code: str = None,
     ):
-        # The email address to receive alerts.
+        # The email address for alerts.
         self.alert_email_address = alert_email_address
         # The workspace ID.
         self.biz_id = biz_id
-        # The workflow ID.
+        # The workflow definition ID.
         self.code = code
-        # The time when the workflow was created.
+        # The time when the workflow definition was created.
         self.create_time = create_time
-        # The CRON expression that is used for scheduling.
+        # The cron expression for scheduling.
         self.crontab = crontab
-        # The node description.
+        # The description of the workflow definition.
         self.description = description
-        # The end of the end time range.
+        # The end time of the schedule.
         self.end_time = end_time
         # The execution policy.
         self.execution_type = execution_type
-        # The serial number of the workflow.
+        # The workflow definition number.
         self.id = id
-        # The name of the workflow.
+        # The name of the workflow definition.
         self.name = name
         # The name of the project to which the workflow belongs.
         self.project_name = project_name
-        # The status of the workflow.
+        # The release state of the workflow.
         self.release_state = release_state
-        # The start time of the scheduling.
+        # The start time of the schedule.
         self.start_time = start_time
-        # The ID of the time zone.
+        # The time zone ID.
         self.timezone_id = timezone_id
-        # The time when the workflow was updated.
+        # The time when the workflow definition was updated.
         self.update_time = update_time
-        # The ID of the user that is used to initiate a scheduling.
+        # The ID of the user who scheduled the workflow.
         self.user_id = user_id
-        # The name of the user that is used to initiate a scheduling.
+        # The name of the user who scheduled the workflow.
         self.user_name = user_name
         # The version number.
         self.version = version

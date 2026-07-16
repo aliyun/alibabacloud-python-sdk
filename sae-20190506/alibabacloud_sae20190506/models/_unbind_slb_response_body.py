@@ -18,31 +18,37 @@ class UnbindSlbResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
-        self.code = code
-        # The returned result.
-        self.data = data
-        # The error code. Valid values:
+        # - **2xx**: success
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - **3xx**: redirection
+        # 
+        # - **4xx**: request error
+        # 
+        # - **5xx**: server error
+        self.code = code
+        # The response data.
+        self.data = data
+        # The returned error code.
+        # 
+        # - This parameter is left empty if the request is successful.
+        # 
+        # - If the request fails, this parameter contains an error code. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The returned message. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request succeeds, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the internal-facing or Internet-facing SLB instance was disassociated. Valid values:
+        # Indicates whether the operation was successful.
         # 
-        # *   **true**: The SLB instance was disassociated.
-        # *   **false**: The SLB instance failed to be disassociated.
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: The operation failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID of the request. You can use this ID to query call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class UnbindSlbResponseBodyData(DaraModel):
         self,
         change_order_id: str = None,
     ):
-        # The ID of the change order. The ID can be used to query the status of the change task.
+        # The change order ID. You can use this ID to query the status of the task.
         self.change_order_id = change_order_id
 
     def validate(self):

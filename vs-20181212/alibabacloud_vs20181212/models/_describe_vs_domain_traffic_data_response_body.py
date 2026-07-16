@@ -17,10 +17,15 @@ class DescribeVsDomainTrafficDataResponseBody(DaraModel):
         start_time: str = None,
         traffic_data_per_interval: main_models.DescribeVsDomainTrafficDataResponseBodyTrafficDataPerInterval = None,
     ):
+        # The time interval, in seconds.
         self.data_interval = data_interval
+        # The domain name of the Visual Edge Computing Service.
         self.domain_name = domain_name
+        # The end time.
         self.end_time = end_time
+        # The request ID for this task.
         self.request_id = request_id
+        # The start time.
         self.start_time = start_time
         self.traffic_data_per_interval = traffic_data_per_interval
 

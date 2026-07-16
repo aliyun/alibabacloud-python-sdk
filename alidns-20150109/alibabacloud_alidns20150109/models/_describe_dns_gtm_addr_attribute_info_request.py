@@ -11,17 +11,19 @@ class DescribeDnsGtmAddrAttributeInfoRequest(DaraModel):
         lang: str = None,
         type: str = None,
     ):
-        # The addresses.
+        # The list of addresses.
         # 
         # This parameter is required.
         self.addrs = addrs
-        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The type of addresses. Valid values:
+        # The address type:
         # 
-        # *   IPV4: IPv4 address
-        # *   IPv6: IPv6 address
-        # *   DOMAIN: domain name
+        # - IPV4: IPv4 address
+        # 
+        # - IPV6: IPv6 address
+        # 
+        # - DOMAIN: domain name
         # 
         # This parameter is required.
         self.type = type

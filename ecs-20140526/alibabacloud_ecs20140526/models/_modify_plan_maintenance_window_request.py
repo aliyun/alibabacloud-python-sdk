@@ -11,6 +11,7 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
     def __init__(
         self,
         enable: bool = None,
+        min_maintenance_interval: int = None,
         plan_window_id: str = None,
         plan_window_name: str = None,
         region_id: str = None,
@@ -18,14 +19,24 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
         target_resource: main_models.ModifyPlanMaintenanceWindowRequestTargetResource = None,
         time_period: main_models.ModifyPlanMaintenanceWindowRequestTimePeriod = None,
     ):
+        # Specifies whether to enable or disable the O&M window. Leave this parameter empty if no modification is needed.
         self.enable = enable
+        self.min_maintenance_interval = min_maintenance_interval
+        # The ID of the O&M window to modify. This parameter is required.
+        # 
         # This parameter is required.
         self.plan_window_id = plan_window_id
+        # The name of the O&M window. Leave this parameter empty if no modification is needed.
         self.plan_window_name = plan_window_name
+        # The region ID of the instance. You can call DescribeRegions to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The supported O&M actions. Leave this parameter empty if no modification is needed.
         self.support_maintenance_action = support_maintenance_action
+        # The resource to which the O&M window applies. Leave this parameter empty if no modification is needed.
         self.target_resource = target_resource
+        # The recurring cycle of the O&M window. Leave this parameter empty if no modification is needed.
         self.time_period = time_period
 
     def validate(self):
@@ -41,6 +52,9 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
             result = _map
         if self.enable is not None:
             result['Enable'] = self.enable
+
+        if self.min_maintenance_interval is not None:
+            result['MinMaintenanceInterval'] = self.min_maintenance_interval
 
         if self.plan_window_id is not None:
             result['PlanWindowId'] = self.plan_window_id
@@ -66,6 +80,9 @@ class ModifyPlanMaintenanceWindowRequest(DaraModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+
+        if m.get('MinMaintenanceInterval') is not None:
+            self.min_maintenance_interval = m.get('MinMaintenanceInterval')
 
         if m.get('PlanWindowId') is not None:
             self.plan_window_id = m.get('PlanWindowId')
@@ -95,7 +112,9 @@ class ModifyPlanMaintenanceWindowRequestTimePeriod(DaraModel):
         period_unit: str = None,
         range_list: List[main_models.ModifyPlanMaintenanceWindowRequestTimePeriodRangeList] = None,
     ):
+        # The cycle type. Valid values: Daily and Weekly.
         self.period_unit = period_unit
+        # The time ranges of the O&M window recurring cycle (UTC time zone).
         self.range_list = range_list
 
     def validate(self):
@@ -138,7 +157,17 @@ class ModifyPlanMaintenanceWindowRequestTimePeriodRangeList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end time of the O&M window.
+        # 
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Daily, the format is 22:00.
+        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.end_time = end_time
+        # The start time of the O&M window.
+        # 
+        # - If PeriodUnit is set to Weekly, the format is Monday,22:00. Monday can be replaced with Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday.
+        # - If PeriodUnit is set to Daily, the format is 22:00.
+        # - The comma delimiter separates two parts. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, which currently supports only 00.
         self.start_time = start_time
 
     def validate(self):
@@ -174,8 +203,11 @@ class ModifyPlanMaintenanceWindowRequestTargetResource(DaraModel):
         scope: str = None,
         tags: List[main_models.ModifyPlanMaintenanceWindowRequestTargetResourceTags] = None,
     ):
+        # The ID of the resource group to which the O&M window applies. This parameter is required only when Scope is set to ResourceGroup.
         self.resource_group_id = resource_group_id
+        # The resource type for the O&M window configuration.
         self.scope = scope
+        # The tags to which the O&M window applies. This parameter is required only when Scope is set to Tag.
         self.tags = tags
 
     def validate(self):
@@ -224,7 +256,9 @@ class ModifyPlanMaintenanceWindowRequestTargetResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag to which the O&M window applies.
         self.key = key
+        # The value of the tag to which the O&M window applies.
         self.value = value
 
     def validate(self):

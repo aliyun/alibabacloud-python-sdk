@@ -11,9 +11,9 @@ class DestinationConfig(DaraModel):
         on_failure: main_models.Destination = None,
         on_success: main_models.Destination = None,
     ):
-        # The destination struct of a failed callback.
+        # Structure that defines the destination for failed invocations.
         self.on_failure = on_failure
-        # The destination struct of a successful callback.
+        # Structure that defines the destination for successful invocations.
         self.on_success = on_success
 
     def validate(self):

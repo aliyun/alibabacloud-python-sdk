@@ -10,6 +10,7 @@ class CreateScheduledPlanRequest(DaraModel):
         self,
         body: main_models.ScheduledPlan = None,
     ):
+        # This data structure represents the scheduled plan to be created.
         self.body = body
 
     def validate(self):

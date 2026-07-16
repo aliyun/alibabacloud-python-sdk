@@ -17,13 +17,21 @@ class DescribeGroupExecutingInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Execution information
         self.executing_info = executing_info
+        # Task group ID
         self.group_id = group_id
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Instance ID
         self.instance_id = instance_id
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -108,19 +116,39 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfo(DaraModel):
         transfer_by_intent_num: int = None,
         transfer_by_no_answer: int = None,
     ):
+        # Average talk time
         self.avg_talk_time = avg_talk_time
+        # Number of failed calls
         self.call_failed_num = call_failed_num
+        # Number of outbound calls
         self.call_num = call_num
+        # Deprecated
         self.creator_name = creator_name
+        # Call duration distribution
         self.duration_distribution = duration_distribution
+        # End time
         self.end_time = end_time
+        # Number of completed executions
         self.finished_num = finished_num
+        # Number of calls hung up by customers
         self.hang_up_by_client_num = hang_up_by_client_num
+        # Execution progress
         self.jobs_progress = jobs_progress
+        # Number of calls with no interaction
         self.no_interaction_num = no_interaction_num
+        # Start time
         self.start_time = start_time
+        # Distribution of conversation rounds
+        # 
+        # - total: total number of conversation rounds involved
+        # 
+        # - number: specific round number
+        # 
+        # > * Example: {"total":"5","5":"1"} means 5 conversation rounds were involved, and 1 call had 5 user turns.
         self.talk_turns_distribution = talk_turns_distribution
+        # Intent recognition
         self.transfer_by_intent_num = transfer_by_intent_num
+        # No answer
         self.transfer_by_no_answer = transfer_by_no_answer
 
     def validate(self):
@@ -235,13 +263,21 @@ class DescribeGroupExecutingInfoResponseBodyExecutingInfoJobsProgress(DaraModel)
         total_jobs: int = None,
         total_not_answered_num: int = None,
     ):
+        # Number of canceled tasks
         self.cancelled_num = cancelled_num
+        # Number of executing jobs
         self.executing_num = executing_num
+        # Number of failed tasks
         self.failed_num = failed_num
+        # Number of paused tasks
         self.paused_num = paused_num
+        # Number of tasks being scheduled
         self.scheduling_num = scheduling_num
+        # Total number of completed tasks
         self.total_completed_num = total_completed_num
+        # Total number of jobs
         self.total_jobs = total_jobs
+        # Number of unanswered calls
         self.total_not_answered_num = total_not_answered_num
 
     def validate(self):

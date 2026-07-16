@@ -17,17 +17,29 @@ class UpdateInstanceRequest(DaraModel):
         isv_terms: str = None,
         office_address: str = None,
     ):
+        # The contact email address.
         self.contact_mail = contact_mail
+        # The country code.
+        # 
+        # > For a list of country codes, see [Country Codes](https://help.aliyun.com/document_detail/608210.html).
         self.country_id = country_id
-        # fb bmId
+        # The Facebook Business Manager ID.
         self.facebook_bm_id = facebook_bm_id
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # Specifies whether to enable automatic audit confirmation.
         self.is_confirm_audit = is_confirm_audit
+        # The URL of the Independent Software Vendor (ISV) agreement file.
         self.isv_terms = isv_terms
+        # The company address.
         self.office_address = office_address
 
     def validate(self):

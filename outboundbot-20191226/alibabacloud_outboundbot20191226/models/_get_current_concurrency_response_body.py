@@ -16,13 +16,21 @@ class GetCurrentConcurrencyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Current concurrency
         self.current_concurrency = current_concurrency
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Instance ID
         self.instance_id = instance_id
+        # Maximum concurrency
         self.max_concurrent_conversation = max_concurrent_conversation
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):

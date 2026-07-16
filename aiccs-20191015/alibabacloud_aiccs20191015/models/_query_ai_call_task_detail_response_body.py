@@ -17,11 +17,21 @@ class QueryAiCallTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The access denial details. This parameter is returned only if RAM validation fails.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message. This parameter is returned only if the call fails.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -100,25 +110,48 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
+        # The ID of the deployed agent.
         self.agent_id = agent_id
+        # The name of the agent.
         self.agent_name = agent_name
         self.application_code = application_code
         self.application_name = application_name
+        # The days of the week on which calls are permitted.
         self.call_days = call_days
+        # The allowed call time windows.
         self.call_times = call_times
+        # The caller ID.
         self.caller_number = caller_number
+        # The number of concurrent tasks.
         self.concurrent_count = concurrent_count
         self.line_encoding = line_encoding
         self.line_phone_num = line_phone_num
         self.phone_type = phone_type
+        # The actual start time of the task. This value is a Unix timestamp in milliseconds.
         self.real_start_time = real_start_time
+        # The number of retries.
         self.retry_count = retry_count
+        # Indicates whether call retry is enabled. Valid values:
+        # 
+        # - `true`
+        # 
+        # - `false`
         self.retry_enable = retry_enable
+        # The retry interval. Unit: minutes.
         self.retry_interval = retry_interval
+        # The reasons for which a failed call can be retried.
         self.retry_reasons = retry_reasons
+        # The scheduled start time of the task. This value is a Unix timestamp in milliseconds.
         self.start_time = start_time
+        # The start mode. Valid values:
+        # 
+        # - `IMMEDIATE`: The task starts immediately.
+        # 
+        # - `SCHEDULE`: The task starts at a scheduled time.
         self.start_type = start_type
+        # The ID of the task.
         self.task_id = task_id
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):
@@ -269,7 +302,9 @@ class QueryAiCallTaskDetailResponseBodyDataCallTimes(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The end of the time window.
         self.end_time = end_time
+        # The beginning of the time window.
         self.start_time = start_time
 
     def validate(self):

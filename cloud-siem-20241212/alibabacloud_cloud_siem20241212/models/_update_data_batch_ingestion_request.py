@@ -18,13 +18,37 @@ class UpdateDataBatchIngestionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # Specifies whether to automatically discover new users.
+        # 
+        # - enabled: Enables the feature.
+        # 
+        # - disabled: Disables the feature.
         self.auto_scan_new = auto_scan_new
+        # The mode for batch data ingestion. Valid values:
+        # 
+        # - full
+        # 
+        # - increment
         self.data_batch_ingestion_mode = data_batch_ingestion_mode
+        # The list of ingestion policy IDs.
         self.data_ingestion_ids = data_ingestion_ids
+        # Specifies whether to automatically discover new Logstores.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The list of user IDs for batch data ingestion.
         self.log_user_ids = log_user_ids
+        # The region of the Data Management hub for threat analysis. Select a region for the management hub based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of the member whose perspective the administrator wants to switch to.
         self.role_for = role_for
 
     def validate(self):

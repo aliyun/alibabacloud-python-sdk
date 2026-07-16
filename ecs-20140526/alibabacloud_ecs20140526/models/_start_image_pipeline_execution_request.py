@@ -36,7 +36,7 @@ class StartImagePipelineExecutionRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tags.
         self.tag = tag
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.template_tag = template_tag
 
     def validate(self):
@@ -130,9 +130,9 @@ class StartImagePipelineExecutionRequestTemplateTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.key = key
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.value = value
 
     def validate(self):

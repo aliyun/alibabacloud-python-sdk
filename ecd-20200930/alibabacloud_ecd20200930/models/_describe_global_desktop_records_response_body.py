@@ -16,9 +16,9 @@ class DescribeGlobalDesktopRecordsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The session details.
+        # A list of sessions.
         self.sessions = sessions
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,66 +91,71 @@ class DescribeGlobalDesktopRecordsResponseBodySessions(DaraModel):
         total_connection_time: int = None,
         up_time: int = None,
     ):
-        # The connection status of the cloud desktop.
+        # The connection status.
         self.connection_status = connection_status
         # The number of vCPUs.
         self.cpu = cpu
-        # The ID of the cloud computer share.
+        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer share.
+        # The name of the desktop group.
         self.desktop_group_name = desktop_group_name
-        # The cloud computer IDs.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The cloud computer name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # 桌面状态
+        # The desktop status.
         self.desktop_status = desktop_status
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The list of assigned terminal user IDs.
+        # A list of assigned end user IDs.
         self.end_user_ids = end_user_ids
-        # The size of the GPU memory.
+        # The GPU memory size.
         self.gpu_spec = gpu_spec
-        # The duration of the last connection to the cloud computer. Unit: seconds
+        # The duration of the last connection, in seconds.
         self.latest_connection_time = latest_connection_time
-        # The memory of the cloud computer. Unit: MiB.
+        # The memory size of the cloud desktop, in MiB.
         self.memory = memory
-        # The office network ID.
+        # The ID of the office site.
         self.office_site_id = office_site_id
-        # The office network name.
+        # The name of the office site.
         self.office_site_name = office_site_name
+        # The office site type.
         self.office_site_type = office_site_type
-        # The OS type. Valid values:
+        # The operating system type. Valid values:
         # 
-        # *   Windows
-        # *   Linux
+        # - `Windows`
+        # 
+        # - `Linux`
         self.os_type = os_type
-        # The specific model of the operating system.
+        # The operating system version.
         self.platform = platform
-        # Protocol type.
+        # The protocol type. Valid values:
         # 
-        # *   HDX
-        # *   ASP
+        # - `HDX`
+        # 
+        # - `ASP`
         self.protocol_type = protocol_type
-        # The ID of the region where the instance resides.
+        # The ID of the region.
         self.region_id = region_id
-        # The name of the enterprise resource group.
+        # A list of resource groups.
         self.resource_groups = resource_groups
-        # The idle duration of the session. Unit: minutes.
+        # The idle duration of the session, in minutes.
         self.session_idle_time = session_idle_time
-        # The session details.
+        # A list of sessions.
         self.sessions = sessions
-        # The time when the status of the cloud computer was changed.
+        # The time when the cloud desktop status changed.
         self.status_change_time = status_change_time
-        # The billing method of the cloud computer. Valid values:
+        # The billing method for the cloud desktop. Valid values:
         # 
-        # *   prePaid: The monthly purchase is unlimited.
-        # *   postPaid: pay-as-you-go
-        # *   monthPackage: monthly duration.
+        # - `prePaid`: Subscription.
+        # 
+        # - `postPaid`: Pay-as-you-go.
+        # 
+        # - `monthPackage`: Monthly usage package.
         self.sub_pay_type = sub_pay_type
-        # The total connection duration. Unit: seconds
+        # The total connection duration, in seconds.
         self.total_connection_time = total_connection_time
-        # The startup duration of the cloud computer. Unit: seconds
+        # The cloud desktop uptime, in seconds.
         self.up_time = up_time
 
     def validate(self):
@@ -346,9 +351,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsSessions(DaraModel):
         end_user_id: str = None,
         establishment_time: str = None,
     ):
-        # The end user ID.
+        # The ID of the end user.
         self.end_user_id = end_user_id
-        # The time when the session was created.
+        # The time the session was created.
         self.establishment_time = establishment_time
 
     def validate(self):
@@ -383,9 +388,9 @@ class DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups(DaraModel):
         resource_group_id: str = None,
         resource_group_name: str = None,
     ):
-        # The ID of the enterprise resource group.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The queried resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
 
     def validate(self):

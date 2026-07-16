@@ -20,23 +20,23 @@ class IncidentMemberStruct(DaraModel):
         time: int = None,
         user_id: int = None,
     ):
-        # Acknowledgement Information Structure.
+        # The structure of the confirmation information.
         self.acknowledge = acknowledge
-        # Contact ID.
+        # The ID of the contact.
         self.contact_id = contact_id
-        # Contact list.
+        # A list of contacts.
         self.contacts = contacts
-        # Escalation phase information.
+        # Information about the escalation stage.
         self.escalation = escalation
-        # Incident ID.
+        # The ID of the event.
         self.incident_id = incident_id
-        # Event Member ID.
+        # The ID of the event member.
         self.incident_member_id = incident_member_id
-        # Schedule group.
+        # The scheduling group.
         self.schedule_group = schedule_group
-        # Time.
+        # The time.
         self.time = time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -130,9 +130,9 @@ class IncidentMemberStructScheduleGroup(DaraModel):
         contact_id: str = None,
         name: str = None,
     ):
-        # Contact ID.
+        # The ID of the contact.
         self.contact_id = contact_id
-        # Name.
+        # The name.
         self.name = name
 
     def validate(self):
@@ -170,15 +170,15 @@ class IncidentMemberStructEscalation(DaraModel):
         stage_index: str = None,
         title: str = None,
     ):
-        # Description.
+        # The description.
         self.description = description
-        # Event Escalation ID.
+        # The ID of the event escalation.
         self.incident_escalation_id = incident_escalation_id
-        # Name.
+        # The name.
         self.name = name
-        # Escalation phase index.
+        # The index of the escalation stage.
         self.stage_index = stage_index
-        # Title.
+        # The title.
         self.title = title
 
     def validate(self):
@@ -231,9 +231,9 @@ class IncidentMemberStructContacts(DaraModel):
         channel: str = None,
         contact_mask: str = None,
     ):
-        # Channel.
+        # The channel.
         self.channel = channel
-        # Contact ID (masked).
+        # The masked ID of the contact.
         self.contact_mask = contact_mask
 
     def validate(self):
@@ -268,9 +268,9 @@ class IncidentMemberStructAcknowledge(DaraModel):
         break_level: str = None,
         verify_time: int = None,
     ):
-        # Acknowledgement level.
+        # The confirmation level.
         self.break_level = break_level
-        # Verification time.
+        # The verification time.
         self.verify_time = verify_time
 
     def validate(self):

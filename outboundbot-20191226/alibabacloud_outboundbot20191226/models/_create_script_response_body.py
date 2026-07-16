@@ -15,11 +15,17 @@ class CreateScriptResponseBody(DaraModel):
         script: main_models.CreateScriptResponseBodyScript = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Script information
         self.script = script
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -90,17 +96,51 @@ class CreateScriptResponseBodyScript(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # Script debug status
         self.debug_status = debug_status
+        # Industry
         self.industry = industry
+        # Is debug draft
         self.is_debug_drafted = is_debug_drafted
+        # Is draft
         self.is_drafted = is_drafted
+        # NLU access method (applicable only to Large Language Model (LLM) scenarios). Enumeration: Managed - Access using an Alibaba public account. This field is empty for non-LLM scenarios.
         self.nlu_access_type = nlu_access_type
+        # NLU engine (applicable only to Large Language Model (LLM) scenarios). Enumeration: Prompts - Large Language Model (LLM) scenario. This field is empty for non-LLM scenarios.
         self.nlu_engine = nlu_engine
+        # Scenario
         self.scene = scene
+        # Script description
         self.script_description = script_description
+        # Script ID
         self.script_id = script_id
+        # Script name
         self.script_name = script_name
+        # Job status. Valid values:
+        # 
+        # - **DRAFTED**: Draft.
+        # 
+        # - **INITIALIZE_IN_PROGRESS**: Initializing.
+        # 
+        # - **PUBLISHED**: Published.
+        # 
+        # - **PUBLISH_IN_PROGRESS**: Publishing.
+        # 
+        # - **ROLLBACK_IN_PROGRESS**: Rolling back.
+        # 
+        # - **EXAMINE_IN_PROGRESS**: Pending review.
+        # 
+        # - **PUBLISHED_AND_EXAMINE_IN_PROGRESS**: Published and pending review.
+        # 
+        # - **PUBLISH_FAILED**: Publish failed.
+        # 
+        # - **ROLLBACK_FAILED**: Rollback failed.
+        # 
+        # - **IMPORT_IN_PROGRESS**: Importing.
+        # 
+        # - **IMPORT_FAILED**: Import failed.
         self.status = status
+        # Script update time (unit: milliseconds)
         self.update_time = update_time
 
     def validate(self):

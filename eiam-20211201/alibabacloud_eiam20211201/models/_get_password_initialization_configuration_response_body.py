@@ -13,7 +13,7 @@ class GetPasswordInitializationConfigurationResponseBody(DaraModel):
         password_initialization_configuration: main_models.GetPasswordInitializationConfigurationResponseBodyPasswordInitializationConfiguration = None,
         request_id: str = None,
     ):
-        # The password initialization configurations.
+        # The password initialization configuration.
         self.password_initialization_configuration = password_initialization_configuration
         # The request ID.
         self.request_id = request_id
@@ -54,21 +54,21 @@ class GetPasswordInitializationConfigurationResponseBodyPasswordInitializationCo
         password_initialization_status: str = None,
         password_initialization_type: str = None,
     ):
-        # Indicates whether forcible password change upon first logon is enabled. Valid values:
+        # The status of forced password update. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
-        # The methods for receiving password initialization notifications.
+        # The list of password initialization notification channels.
         self.password_initialization_notification_channels = password_initialization_notification_channels
-        # Indicates whether the password initialization feature is enabled. Valid values:
+        # The status of the password initialization configuration. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_initialization_status = password_initialization_status
-        # The password initialization method. Set the value to random.
+        # The password initialization method. Valid values:
         # 
-        # *   random: A randomly generated password is used.
+        # - random: Random.
         self.password_initialization_type = password_initialization_type
 
     def validate(self):

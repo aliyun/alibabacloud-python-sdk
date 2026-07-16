@@ -15,13 +15,13 @@ class ListRateLimitRulesOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # 限流规则列表
+        # The list of rate-limiting rules.
         self.items = items
-        # 当前页码
+        # The current page number.
         self.page_number = page_number
-        # 每页记录数
+        # The number of entries per page.
         self.page_size = page_size
-        # 符合条件的限流规则总数
+        # The total number of matching rate-limiting rules.
         self.total = total
 
     def validate(self):

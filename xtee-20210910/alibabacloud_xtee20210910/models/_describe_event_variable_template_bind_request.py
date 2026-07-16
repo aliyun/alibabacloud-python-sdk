@@ -13,19 +13,19 @@ class DescribeEventVariableTemplateBindRequest(DaraModel):
         template_code: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages. Default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Input parameters, separated by commas if multiple.
+        # The input parameters. Separate multiple values with commas (,).
         # 
         # This parameter is required.
         self.inputs = inputs
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Template code.
+        # The template code.
         self.template_code = template_code
-        # Type
+        # The type.
         # 
         # This parameter is required.
         self.type = type

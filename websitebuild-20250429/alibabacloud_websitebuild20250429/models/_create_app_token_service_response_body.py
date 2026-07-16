@@ -22,17 +22,27 @@ class CreateAppTokenServiceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic code. This parameter is not in use. Ignore this parameter.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # Indicates whether the operation is successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +132,7 @@ class CreateAppTokenServiceResponseBodyModule(DaraModel):
         self,
         ext_info: str = None,
     ):
+        # The migration extension information (optional).
         self.ext_info = ext_info
 
     def validate(self):

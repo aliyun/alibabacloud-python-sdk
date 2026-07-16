@@ -9,7 +9,7 @@ class DescribeDefaultKeyInfoRequest(DaraModel):
         self,
         source_ip: str = None,
     ):
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

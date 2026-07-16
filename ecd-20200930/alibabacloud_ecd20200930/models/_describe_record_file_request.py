@@ -17,21 +17,54 @@ class DescribeRecordFileRequest(DaraModel):
         page_size: int = None,
         record_type: str = None,
         region_id: str = None,
+        resource_type: str = None,
         start_time: str = None,
         status: int = None,
     ):
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
+        # The end of the time range to query.
         self.end_time = end_time
+        # The ID of the end user.
         self.end_user_id = end_user_id
+        # The name of the recording file.
         self.file_name = file_name
+        # The sorting basis. If you do not specify this parameter, the results are sorted by screen recording start time in descending order. Valid value:
+        # 
+        # - `startTime`: the start time of a screen recording.
         self.order_by = order_by
+        # The sorting order. Valid values:
+        # 
+        # - `asc`: ascending
+        # 
+        # - `desc`: descending
         self.order_sort = order_sort
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The type of the screen recording. Valid values:
+        # 
+        # - `alltime`: full-time recording
+        # 
+        # - `period`: recording at intervals
+        # 
+        # - `event`: event-triggered recording
+        # 
+        # - `session`: session-based recording
         self.record_type = record_type
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that are supported by Elastic Desktop Service.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        self.resource_type = resource_type
+        # The beginning of the time range to query.
         self.start_time = start_time
+        # The status of the screen recording file. Valid values:
+        # 
+        # - `0`: The file is uploaded.
+        # 
+        # - `1`: The file is being uploaded.
         self.status = status
 
     def validate(self):
@@ -72,6 +105,9 @@ class DescribeRecordFileRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
@@ -111,6 +147,9 @@ class DescribeRecordFileRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

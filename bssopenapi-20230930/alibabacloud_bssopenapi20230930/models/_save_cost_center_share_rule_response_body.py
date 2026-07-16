@@ -13,8 +13,11 @@ class SaveCostCenterShareRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The metadata of the response.
         self.metadata = metadata
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

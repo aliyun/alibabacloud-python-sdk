@@ -16,17 +16,21 @@ class GetChatFlowMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Status code.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # Returned data object.
+        # The returned data object.
         self.data = data
-        # Error message.
+        # The error message.
         self.message = message
-        # Unique request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

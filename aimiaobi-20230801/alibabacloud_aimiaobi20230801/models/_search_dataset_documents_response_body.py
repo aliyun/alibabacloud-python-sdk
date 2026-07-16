@@ -17,11 +17,17 @@ class SearchDatasetDocumentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The status message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded (`true`) or failed (`false`).
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class SearchDatasetDocumentsResponseBodyData(DaraModel):
         self,
         documents: List[main_models.SearchDatasetDocumentsResponseBodyDataDocuments] = None,
     ):
+        # The document list.
         self.documents = documents
 
     def validate(self):
@@ -135,25 +142,45 @@ class SearchDatasetDocumentsResponseBodyDataDocuments(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The unique identifier for the category.
         self.category_uuid = category_uuid
+        # The content of the relevant chunk. This field is returned only in `chunk` mode.
         self.chunk = chunk
+        # A list of relevant chunks from the document. This field is returned only in `document` mode.
         self.chunk_infos = chunk_infos
+        # The content of the document.
         self.content = content
+        # The user-defined unique ID for the document.
         self.doc_id = doc_id
+        # The document type.
         self.doc_type = doc_type
+        # The unique system ID of the document.
         self.doc_uuid = doc_uuid
+        # Custom extension field 1.
         self.extend_1 = extend_1
+        # Custom extension field 2.
         self.extend_2 = extend_2
+        # Custom extension field 3.
         self.extend_3 = extend_3
+        # The publication time, in `yyyy-MM-dd HH:mm:ss` format.
         self.pub_time = pub_time
+        # The relevance score.
         self.score = score
+        # The unique identifier for the dataset.
         self.search_source = search_source
+        # The name of the dataset.
         self.search_source_name = search_source_name
+        # The dataset type.
         self.search_source_type = search_source_type
+        # The source of the document.
         self.source_from = source_from
+        # The summary of the document.
         self.summary = summary
+        # A list of tags.
         self.tags = tags
+        # The title of the document.
         self.title = title
+        # The URL of the document.
         self.url = url
 
     def validate(self):
@@ -304,7 +331,9 @@ class SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos(DaraModel):
         chunk: str = None,
         score: float = None,
     ):
+        # The content of the chunk.
         self.chunk = chunk
+        # The relevance score of the chunk.
         self.score = score
 
     def validate(self):

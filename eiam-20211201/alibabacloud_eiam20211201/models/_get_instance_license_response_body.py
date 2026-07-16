@@ -11,9 +11,9 @@ class GetInstanceLicenseResponseBody(DaraModel):
         license: main_models.GetInstanceLicenseResponseBodyLicense = None,
         request_id: str = None,
     ):
-        # Returned result.
+        # The license details.
         self.license = license
-        # Request ID
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,28 +60,29 @@ class GetInstanceLicenseResponseBodyLicense(DaraModel):
         start_time: int = None,
         user_quota: int = None,
     ):
-        # Edition of the License
+        # The license edition.
         self.edition = edition
-        # End date of the validity period of the License, timestamp
+        # The UNIX timestamp indicating the end of the license validity period.
         self.end_time = end_time
+        # The details of the instance license.
         self.instance_license_detail = instance_license_detail
-        # Payment type of the License
+        # The billing method for the license.
         self.license_charge_type = license_charge_type
-        # Detailed configuration JSON string of the License
+        # The detailed configurations of the license, formatted as a JSON string.
         self.license_config_json = license_config_json
-        # Creation time of the License, timestamp
+        # The UNIX timestamp indicating when the license was created.
         self.license_create_time = license_create_time
-        # Unique identifier of the License
+        # The unique identifier for the license.
         self.license_id = license_id
-        # Status of the License
+        # The license status.
         self.license_status = license_status
-        # Purchase channel of the License
+        # The channel used to purchase the license.
         self.purchase_channel = purchase_channel
-        # Unique external product identifier corresponding to the License
+        # The unique identifier of the external service associated with the license.
         self.purchase_instance_id = purchase_instance_id
-        # Start date of the validity period of the License, timestamp
+        # The UNIX timestamp indicating the start of the license validity period.
         self.start_time = start_time
-        # User quota of the License
+        # The user quota included with the license.
         self.user_quota = user_quota
 
     def validate(self):
@@ -183,12 +184,19 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         prepaid_active_user_number: int = None,
         user_quota: int = None,
     ):
+        # The status of the license for the Conditional Access feature.
         self.conditional_access_policy_license_status = conditional_access_policy_license_status
+        # The status of the license for machine-to-machine (M2M) applications.
         self.m_2m_application_license_status = m_2m_application_license_status
+        # The quota for machine-to-machine (M2M) applications.
         self.m_2m_application_quota = m_2m_application_quota
+        # The machine identity status.
         self.mim_application_license_status = mim_application_license_status
+        # The quota for network access endpoints.
         self.network_access_endpoint_quota = network_access_endpoint_quota
+        # The number of active subscription accounts.
         self.prepaid_active_user_number = prepaid_active_user_number
+        # The user quota included with the license.
         self.user_quota = user_quota
 
     def validate(self):

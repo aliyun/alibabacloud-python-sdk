@@ -14,8 +14,11 @@ class ListRenderingSessionsResponseBody(DaraModel):
         sessions: List[main_models.ListRenderingSessionsResponseBodySessions] = None,
         total_count: int = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Session list
         self.sessions = sessions
+        # Total number of matching sessions
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,17 @@ class ListRenderingSessionsResponseBodySessions(DaraModel):
         session_id: str = None,
         start_time: str = None,
     ):
+        # Cloud application ID
         self.app_id = app_id
+        # Client ID
         self.client_id = client_id
+        # Cloud application patch ID. An empty value indicates the original version.
         self.patch_id = patch_id
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
+        # Session ID
         self.session_id = session_id
+        # Start time
         self.start_time = start_time
 
     def validate(self):

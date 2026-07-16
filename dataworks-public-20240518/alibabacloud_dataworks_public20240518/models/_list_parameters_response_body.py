@@ -13,7 +13,9 @@ class ListParametersResponseBody(DaraModel):
         paging_info: main_models.ListParametersResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class ListParametersResponseBodyPagingInfo(DaraModel):
         parameters: List[main_models.ListParametersResponseBodyPagingInfoParameters] = None,
         total_count: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # A list of parameters.
         self.parameters = parameters
+        # The total number of parameters.
         self.total_count = total_count
 
     def validate(self):
@@ -120,18 +126,37 @@ class ListParametersResponseBodyPagingInfoParameters(DaraModel):
         type: str = None,
         version: int = None,
     ):
+        # The time when the parameter was created. This value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The Alibaba Cloud account ID of the creator.
         self.create_user = create_user
+        # The parameter description.
         self.description = description
+        # The parameter ID.
         self.id = id
+        # The time when the parameter was last modified. This value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
+        # The Alibaba Cloud account ID of the user who last modified the parameter.
         self.modify_user = modify_user
+        # The parameter name.
         self.name = name
+        # The Alibaba Cloud account ID of the owner.
         self.owner = owner
+        # The workspace ID.
         self.project_id = project_id
+        # The environment-specific values for the parameter.
         self.properties = properties
+        # The parameter scope.
         self.scope = scope
+        # The parameter type. Valid values:
+        # 
+        # - `PlainConstant`: a plaintext constant
+        # 
+        # - `SecretConstant`: an encrypted constant
+        # 
+        # - `Variable`: a variable
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -240,7 +265,13 @@ class ListParametersResponseBodyPagingInfoParametersProperties(DaraModel):
         env_type: str = None,
         value: str = None,
     ):
+        # The environment type. Valid values:
+        # 
+        # - `Prod`: production environment
+        # 
+        # - `Dev`: development environment
         self.env_type = env_type
+        # The parameter value.
         self.value = value
 
     def validate(self):

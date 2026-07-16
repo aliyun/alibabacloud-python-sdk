@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Any
 
 from alibabacloud_eventbridge20200401 import models as main_models
 from darabonba.model import DaraModel
@@ -136,6 +136,8 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         gmt_create: int = None,
         id: int = None,
         network_parameters: main_models.ListConnectionsResponseBodyDataConnectionsNetworkParameters = None,
+        parameters: Any = None,
+        type: str = None,
     ):
         # The parameters that are returned for authentication.
         self.auth_parameters = auth_parameters
@@ -149,6 +151,10 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         self.id = id
         # The parameters that are returned for the network.
         self.network_parameters = network_parameters
+        # 数据源连接参数（JSON 对象）。仅数据源类型连接返回，Http 类型为空。字段定义参考 GetConnectionType 返回的 ParamsSchema
+        self.parameters = parameters
+        # 连接类型。可选值：Http、MySQL、PostgreSQL、Elasticsearch
+        self.type = type
 
     def validate(self):
         if self.auth_parameters:
@@ -179,6 +185,12 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         if self.network_parameters is not None:
             result['NetworkParameters'] = self.network_parameters.to_map()
 
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
+
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -202,6 +214,12 @@ class ListConnectionsResponseBodyDataConnections(DaraModel):
         if m.get('NetworkParameters') is not None:
             temp_model = main_models.ListConnectionsResponseBodyDataConnectionsNetworkParameters()
             self.network_parameters = temp_model.from_map(m.get('NetworkParameters'))
+
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

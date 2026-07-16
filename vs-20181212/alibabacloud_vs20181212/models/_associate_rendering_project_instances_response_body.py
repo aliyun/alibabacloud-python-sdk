@@ -16,10 +16,15 @@ class AssociateRenderingProjectInstancesResponseBody(DaraModel):
         success_instance_count: str = None,
         success_instances: List[main_models.AssociateRenderingProjectInstancesResponseBodySuccessInstances] = None,
     ):
+        # Number of failed cloud application service instances
         self.failed_instance_count = failed_instance_count
+        # List of instances that failed to associate
         self.failed_instances = failed_instances
+        # Request ID.
         self.request_id = request_id
+        # Number of successful cloud application service instances
         self.success_instance_count = success_instance_count
+        # List of successfully associated instances
         self.success_instances = success_instances
 
     def validate(self):
@@ -89,7 +94,9 @@ class AssociateRenderingProjectInstancesResponseBodySuccessInstances(DaraModel):
         message: str = None,
         rendering_instance_id: str = None,
     ):
+        # Description
         self.message = message
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):
@@ -118,15 +125,15 @@ class AssociateRenderingProjectInstancesResponseBodySuccessInstances(DaraModel):
 
         return self
 
-
-
 class AssociateRenderingProjectInstancesResponseBodyFailedInstances(DaraModel):
     def __init__(
         self,
         message: str = None,
         rendering_instance_id: str = None,
     ):
+        # Failure reason
         self.message = message
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

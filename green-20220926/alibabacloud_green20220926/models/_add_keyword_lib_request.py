@@ -10,7 +10,9 @@ class AddKeywordLibRequest(DaraModel):
         keywords: str = None,
         keywords_object: str = None,
         lib_name: str = None,
+        properties: str = None,
         region_id: str = None,
+        tenant_code: str = None,
     ):
         # Keywords, with multiple keywords separated by \\n.
         self.keywords = keywords
@@ -18,8 +20,10 @@ class AddKeywordLibRequest(DaraModel):
         self.keywords_object = keywords_object
         # The name of the keyword library.
         self.lib_name = lib_name
+        self.properties = properties
         # Region ID
         self.region_id = region_id
+        self.tenant_code = tenant_code
 
     def validate(self):
         pass
@@ -38,8 +42,14 @@ class AddKeywordLibRequest(DaraModel):
         if self.lib_name is not None:
             result['LibName'] = self.lib_name
 
+        if self.properties is not None:
+            result['Properties'] = self.properties
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.tenant_code is not None:
+            result['TenantCode'] = self.tenant_code
 
         return result
 
@@ -54,8 +64,14 @@ class AddKeywordLibRequest(DaraModel):
         if m.get('LibName') is not None:
             self.lib_name = m.get('LibName')
 
+        if m.get('Properties') is not None:
+            self.properties = m.get('Properties')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('TenantCode') is not None:
+            self.tenant_code = m.get('TenantCode')
 
         return self
 

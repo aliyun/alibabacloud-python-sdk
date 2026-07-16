@@ -11,9 +11,9 @@ class OpenNASServiceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The details about the failed permission verification.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The order ID.
+        # The order ID for enabling the service.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

@@ -17,36 +17,37 @@ class UpdateCompressionRuleRequest(DaraModel):
         site_id: int = None,
         zstd: str = None,
     ):
-        # Brotli compression. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Brotli compression. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.brotli = brotli
-        # Configuration ID. It can be obtained by calling the [ListCompressionRules](~~ListCompressionRules~~) interface.
+        # The configuration ID. You can call the [ListCompressionRules](~~ListCompressionRules~~) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Gzip compression. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Gzip compression. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.gzip = gzip
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Zstd compression. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # Zstd compression. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.zstd = zstd
 
     def validate(self):

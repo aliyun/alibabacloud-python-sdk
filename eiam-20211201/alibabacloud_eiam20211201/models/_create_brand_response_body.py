@@ -10,7 +10,9 @@ class CreateBrandResponseBody(DaraModel):
         brand_id: str = None,
         request_id: str = None,
     ):
+        # The brand ID.
         self.brand_id = brand_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

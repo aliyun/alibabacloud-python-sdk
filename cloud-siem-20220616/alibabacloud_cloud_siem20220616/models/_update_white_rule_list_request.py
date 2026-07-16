@@ -14,18 +14,25 @@ class UpdateWhiteRuleListRequest(DaraModel):
         role_type: int = None,
         white_rule_id: int = None,
     ):
-        # The alert whitelist rule. The value is a JSON object.
+        # The alert whitelist rule. This is a JSON object.
         # 
         # This parameter is required.
         self.expression = expression
-        # The UUID of the event.
+        # The global unique ID of the event.
         self.incident_uuid = incident_uuid
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region of the Data Management center for threat analysis. Select a region for the Data Management center based on the region of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
         self.role_for = role_for
+        # The view type.
+        # 
+        # - 0: The view of the current Alibaba Cloud account.
+        # 
+        # - 1: The view of all accounts that belong to the enterprise.
         self.role_type = role_type
         # The unique ID of the whitelist rule.
         # 

@@ -9,7 +9,7 @@ class CreateInstanceTrialLicenseRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # IDaaS EIAM的实例id
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

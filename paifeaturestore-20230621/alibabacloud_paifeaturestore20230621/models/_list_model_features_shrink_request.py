@@ -16,13 +16,29 @@ class ListModelFeaturesShrinkRequest(DaraModel):
         project_id: str = None,
         sort_by: str = None,
     ):
+        # The IDs of the model features.
         self.model_feature_ids_shrink = model_feature_ids_shrink
+        # The name of the model feature.
         self.name = name
+        # The sort order.
+        # 
+        # - `ASC`: ascending order.
+        # 
+        # - `DESC`: descending order.
         self.order = order
+        # The Alibaba Cloud account ID of the user who creates the model feature.
         self.owner = owner
+        # The page number. The value must be a positive integer. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The project ID. You can call the `ListProjects` API to obtain the project ID.
         self.project_id = project_id
+        # The field by which to sort the results.
+        # 
+        # - `GmtCreateTime`: the creation time.
+        # 
+        # - `GmtModifiedTime`: the update time.
         self.sort_by = sort_by
 
     def validate(self):

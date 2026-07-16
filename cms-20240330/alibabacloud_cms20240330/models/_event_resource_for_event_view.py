@@ -13,7 +13,9 @@ class EventResourceForEventView(DaraModel):
         entity: main_models.EventResourceForEventViewEntity = None,
         tags: Dict[str, Any] = None,
     ):
+        # The resource entity.
         self.entity = entity
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -52,9 +54,13 @@ class EventResourceForEventViewEntity(DaraModel):
         entity_type: str = None,
         prop: Dict[str, Any] = None,
     ):
+        # The product domain to which the resource belongs.
         self.domain = domain
+        # The instance ID.
         self.entity_id = entity_id
+        # The specific type of the resource.
         self.entity_type = entity_type
+        # Extra properties of the resource.
         self.prop = prop
 
     def validate(self):

@@ -48,91 +48,122 @@ class DescribeEndpointGroupResponseBody(DaraModel):
         threshold_count: int = None,
         traffic_percentage: int = None,
     ):
-        # The ID of the GA instance.
+        # The Global Accelerator instance ID.
         self.accelerator_id = accelerator_id
+        # The custom header fields to record in access logs.
         self.access_log_record_customized_header_list = access_log_record_customized_header_list
-        self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
-        # Indicates the binding status between the Simple Log Service project and the endpoint group. Valid values:
+        # Specifies whether to record custom header fields in access logs. Valid values:
         # 
-        # *   **on:** The endpoint group is bound to the Simple Log Service project.
-        # *   **off:** The endpoint group is not bound to the Simple Log Service project.
-        # *   **binding:** The endpoint group is being bound to the Simple Log Service project.
-        # *   **unbinding:** The endpoint group is being unbound from the Simple Log Service project.
+        # - **true**: Yes.
+        # 
+        # - **false** (default): No.
+        # 
+        # > You can set this parameter to **true** only when **EnableAccessLog** is set to **true**.
+        self.access_log_record_customized_headers_enabled = access_log_record_customized_headers_enabled
+        # The status of the access log configuration. Valid values:
+        # 
+        # - **on**: The access log is configured.
+        # 
+        # - **off**: The access log is not configured.
+        # 
+        # - **binding**: The access log is being configured.
+        # 
+        # - **unbinding**: The access log configuration is being removed.
         self.access_log_switch = access_log_switch
         # The description of the endpoint group.
         self.description = description
-        # Indicates whether the access log feature is enabled. Valid values:
+        # Indicates whether access logging is enabled.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Access logging is enabled.
+        # 
+        # - **false**: Access logging is disabled.
         self.enable_access_log = enable_access_log
-        # The configurations of endpoints in the endpoint group.
+        # The endpoint configurations.
         self.endpoint_configurations = endpoint_configurations
-        # The ID of the endpoint group.
+        # The endpoint group ID.
         self.endpoint_group_id = endpoint_group_id
-        # The active endpoint IP addresses of the endpoint group.
+        # The list of active IP addresses of the endpoints in the endpoint group.
+        # >Notice: For an endpoint group configured for back-to-source from a private network, the console displays only the private back-to-source IP addresses and not the public IP addresses. If the network connection type for the backend service of the endpoint group changes (for example, from a private network to a public network, or to a mix of private and public networks), you must monitor the changes in the back-to-source IP addresses and update the access control list (ACL) of the backend service accordingly.
         self.endpoint_group_ip_list = endpoint_group_ip_list
-        # The ID of the region where the endpoint group is deployed.
+        # The region ID where the endpoint group is deployed.
         self.endpoint_group_region = endpoint_group_region
-        # The type of endpoint group. Valid values:
+        # The type of the endpoint group. Valid values:
         # 
-        # *   **default**: a default endpoint group
-        # *   **virtual**: a virtual endpoint group
+        # - **default**: A default endpoint group.
+        # 
+        # - **virtual**: A virtual endpoint group.
         self.endpoint_group_type = endpoint_group_type
-        # The endpoint group IP addresses to be confirmed. After the GA instance is upgraded, the IP addresses that are added to the endpoint group need to be confirmed.
+        # A list of endpoint IP addresses pending confirmation after a Global Accelerator instance upgrade.
         self.endpoint_group_unconfirmed_ip_list = endpoint_group_unconfirmed_ip_list
+        # The IP version used to connect to the backend service. Valid values:
+        # 
+        # - **IPv4** (default): Global Accelerator connects to the backend service using IPv4.
+        # 
+        # - **IPv6**: Global Accelerator connects to the backend service using IPv6.
+        # 
+        # - **ProtocolAffinity**: Global Accelerator connects to the backend service using the same IP version as the client request.
         self.endpoint_ip_version = endpoint_ip_version
+        # The private IP addresses of the endpoints.
         self.endpoint_private_ip_list = endpoint_private_ip_list
-        # The version of the protocol that is used by the backend service.
+        # The version of the backend service protocol. Valid values:
         # 
-        # *   **HTTP1.1**
-        # *   **HTTP2**
+        # - **HTTP1.1**
+        # 
+        # - **HTTP2**
         self.endpoint_protocol_version = endpoint_protocol_version
-        # The protocol that is used by the backend service.
+        # The protocol used by the backend service. Valid values:
         # 
-        # *   **HTTP**
-        # *   **HTTPS**
+        # - **HTTP**
+        # 
+        # - **HTTPS**
         self.endpoint_request_protocol = endpoint_request_protocol
-        # The ID of the forwarding rule that is associated with the endpoint group.
+        # The IDs of the associated forwarding rules.
         self.forwarding_rule_ids = forwarding_rule_ids
-        # Indicates whether the health check feature is enabled. Valid values:
+        # Indicates whether health checks are enabled.
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: Health checks are enabled.
+        # 
+        # - **false**: Health checks are disabled.
         self.health_check_enabled = health_check_enabled
+        # The domain name used for health checks.
         self.health_check_host = health_check_host
-        # The interval between two consecutive health checks. Unit: seconds.
+        # The health check interval, in seconds.
         self.health_check_interval_seconds = health_check_interval_seconds
-        # The path to which health check probes are sent.
+        # The path for health check probes.
         self.health_check_path = health_check_path
-        # The port that is used for health checks.
+        # The port used for health checks.
         self.health_check_port = health_check_port
-        # The protocol over which health check requests are sent. Valid values:
+        # The protocol used for health checks.
         # 
-        # *   **tcp** or **TCP**
-        # *   **http** or **HTTP**
-        # *   **https** or **HTTPS**
+        # - **tcp** or **TCP**: TCP
+        # 
+        # - **http** or **HTTP**: HTTP
+        # 
+        # - **https** or **HTTPS**: HTTPS
         self.health_check_protocol = health_check_protocol
-        # The ID of the listener.
+        # The listener ID.
         self.listener_id = listener_id
         # The name of the endpoint group.
         self.name = name
-        # The mappings between ports.
+        # The port mapping configuration.
         self.port_overrides = port_overrides
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the service that manages the GA instance.
+        # The ID of the service that manages the instance.
         # 
-        # >  This parameter takes effect only if **ServiceManaged** is set to **True**.
+        # > This parameter is returned only if **ServiceManaged** is set to **True**.
         self.service_id = service_id
-        # Indicates whether the instance is managed.
+        # Indicates whether the instance is a managed instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The instance is a managed instance.
+        # 
+        # - **false**: The instance is not a managed instance.
         self.service_managed = service_managed
-        # The actions that users can perform on the managed instance.
-        # >*   This parameter takes effect only if the value of **ServiceManaged** is **true**.
-        # >*   Users can perform only specific actions on a managed instance.
+        # A list of management states for actions that can be performed on the instance.
+        # 
+        # > - This parameter is returned only if **ServiceManaged** is set to **True**.
+        # >
+        # > - When an instance is managed, some operations may be restricted.
         self.service_managed_infos = service_managed_infos
         # The name of the Logstore.
         self.sls_log_store_name = sls_log_store_name
@@ -140,18 +171,21 @@ class DescribeEndpointGroupResponseBody(DaraModel):
         self.sls_project_name = sls_project_name
         # The region of the Log Service project.
         self.sls_region = sls_region
-        # The status of the endpoint group. Valid values:
+        # The status of the endpoint group.
         # 
-        # *   **init**: The endpoint group is being initialized.
-        # *   **active**: The endpoint group is running as expected.
-        # *   **updating**: The endpoint group is being updated.
-        # *   **deleting**: The endpoint group is being deleted.
+        # - **init**: The endpoint group is being initialized.
+        # 
+        # - **active**: The endpoint group is active.
+        # 
+        # - **updating**: The endpoint group is being updated.
+        # 
+        # - **deleting**: The endpoint group is being deleted.
         self.state = state
-        # The tag of the endpoint group.
+        # A list of tags attached to the endpoint group.
         self.tags = tags
-        # The number of consecutive failed health checks that must occur before an endpoint is considered unhealthy.
+        # The number of consecutive failed health checks before an endpoint is marked as unhealthy.
         self.threshold_count = threshold_count
-        # The traffic ratio of the endpoint group when the specified listener is associated with multiple endpoint groups.
+        # The percentage of traffic that is distributed to the endpoint group. This parameter is returned only when a listener is associated with multiple endpoint groups.
         self.traffic_percentage = traffic_percentage
 
     def validate(self):
@@ -440,9 +474,9 @@ class DescribeEndpointGroupResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the endpoint group.
+        # The tag key.
         self.key = key
-        # The tag value of the endpoint group.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -478,31 +512,43 @@ class DescribeEndpointGroupResponseBodyServiceManagedInfos(DaraModel):
         child_type: str = None,
         is_managed: bool = None,
     ):
-        # The name of the action on the managed instance.
+        # The name of the action on the managed instance. Valid values:
         # 
-        # *   **Create**
-        # *   **Update**
-        # *   **Delete**
-        # *   **Associate**
-        # *   **UserUnmanaged**
-        # *   **CreateChild**
+        # - **Create**: Create an instance.
+        # 
+        # - **Update**: Update the instance.
+        # 
+        # - **Delete**: Delete the instance.
+        # 
+        # - **Associate**: Associate the instance.
+        # 
+        # - **UserUnmanaged**: Releases the instance from service management.
+        # 
+        # - **CreateChild**: Create a child resource.
         self.action = action
-        # The type of the child resource.
+        # The type of the child resource. Valid values:
         # 
-        # *   **Listener:** listener.
-        # *   **IpSet:** acceleration region.
-        # *   **EndpointGroup:** endpoint group.
-        # *   **ForwardingRule:** forwarding rule.
-        # *   **Endpoint:** endpoint.
-        # *   **EndpointGroupDestination:** protocol mapping of an endpoint group associated with a custom routing listener.
-        # *   **EndpointPolicy:** traffic policy of an endpoint associated with a custom routing listener.
+        # - **Listener**: A listener.
         # 
-        # >  This parameter takes effect only if the value of **Action** is **CreateChild**.
+        # - **IpSet**: An acceleration region.
+        # 
+        # - **EndpointGroup**: An endpoint group.
+        # 
+        # - **ForwardingRule**: A forwarding rule.
+        # 
+        # - **Endpoint**: An endpoint.
+        # 
+        # - **EndpointGroupDestination**: A protocol mapping for an endpoint group of a custom routing listener.
+        # 
+        # - **EndpointPolicy**: A traffic policy for an endpoint of a custom routing listener.
+        # 
+        # > This parameter is valid only when **Action** is set to **CreateChild**.
         self.child_type = child_type
-        # Indicates whether the specified actions are managed.
+        # Indicates whether the action is managed. Valid values:
         # 
-        # *   **true:** The specified actions are managed. Users cannot perform the specified actions on the managed instance.****
-        # *   **false:** The specified actions are not managed. Users can perform the specified actions on the managed instance.
+        # - **true**: The action is managed. You cannot perform this action on the instance.
+        # 
+        # - **false**: The action is not managed. You can perform this action on the instance.
         self.is_managed = is_managed
 
     def validate(self):
@@ -582,7 +628,9 @@ class DescribeEndpointGroupResponseBodyEndpointPrivateIpList(DaraModel):
         v_switch_id: str = None,
     ):
         self.cidr = cidr
+        # The private IP address.
         self.private_ip = private_ip
+        # The VSwitch ID in the VPC.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -620,49 +668,70 @@ class DescribeEndpointGroupResponseBodyEndpointPrivateIpList(DaraModel):
 class DescribeEndpointGroupResponseBodyEndpointConfigurations(DaraModel):
     def __init__(
         self,
+        api_keys: List[str] = None,
         enable_client_ippreservation: bool = None,
         enable_proxy_protocol: bool = None,
         endpoint: str = None,
         probe_port: int = None,
         probe_protocol: str = None,
+        provider: str = None,
         sub_address: str = None,
         type: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
         weight: int = None,
     ):
-        # Indicates whether the client IP address preservation feature is enabled. Valid values:
+        # The API keys for the endpoint configuration.
+        self.api_keys = api_keys
+        # Indicates whether client IP preservation is enabled by using the automatic method.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.enable_client_ippreservation = enable_client_ippreservation
-        # Indicates whether the proxy protocol is used to preserve client IP addresses.
-        self.enable_proxy_protocol = enable_proxy_protocol
-        # The IP address, domain name, or ID of the endpoint.
-        self.endpoint = endpoint
-        # The port that is used to monitor latency.
-        self.probe_port = probe_port
-        # The protocol that is used to monitor latency. Valid values:
+        # Indicates whether client IP preservation is enabled using the Proxy Protocol.
         # 
-        # *   **tcp**
-        # *   **icmp**
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
+        self.enable_proxy_protocol = enable_proxy_protocol
+        # The IP address, domain name, or instance ID of the endpoint.
+        self.endpoint = endpoint
+        # The port used for latency probing.
+        self.probe_port = probe_port
+        # The protocol for latency probing. Valid values:
+        # 
+        # - **tcp**: TCP
+        # 
+        # - **icmp**: ICMP
         self.probe_protocol = probe_protocol
-        # The private IP address of the ENI.
+        # The provider of the endpoint configuration.
+        self.provider = provider
+        # The private IP address of the elastic network interface.
         self.sub_address = sub_address
         # The type of the endpoint. Valid values:
         # 
-        # *   **Domain**: a custom domain name.
-        # *   **Ip**: a custom IP address.
-        # *   **IpTarget**: a custom private IP address.
-        # *   **PublicIp**: a public IP address provided by Alibaba Cloud.
-        # *   **ECS**: an Elastic Compute Service (ECS) instance.
-        # *   **SLB**: a Server Load Balancer (SLB) instance.
-        # *   **ALB** an Application Load Balancer (ALB) instance.
-        # *   **OSS**: an Object Storage Service (OSS) bucket.
-        # *   **ENI**: an elastic network interface (ENI).
-        # *   **NLB**: a Network Load Balancer (NLB) instance.
+        # - **Domain**: A custom domain name.
+        # 
+        # - **Ip**: A custom IP address.
+        # 
+        # - **IpTarget**: A custom private IP address.
+        # 
+        # - **PublicIp**: An Alibaba Cloud public IP address.
+        # 
+        # - **ECS**: An ECS instance.
+        # 
+        # - **SLB**: An SLB instance.
+        # 
+        # - **ALB**: An ALB instance.
+        # 
+        # - **OSS**: An OSS instance.
+        # 
+        # - **ENI**: An elastic network interface.
+        # 
+        # - **NLB**: An NLB instance.
         self.type = type
-        # The IDs of vSwitches that are deployed in the VPC.
+        # A list of VSwitch IDs.
         self.v_switch_ids = v_switch_ids
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -677,6 +746,9 @@ class DescribeEndpointGroupResponseBodyEndpointConfigurations(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys
+
         if self.enable_client_ippreservation is not None:
             result['EnableClientIPPreservation'] = self.enable_client_ippreservation
 
@@ -691,6 +763,9 @@ class DescribeEndpointGroupResponseBodyEndpointConfigurations(DaraModel):
 
         if self.probe_protocol is not None:
             result['ProbeProtocol'] = self.probe_protocol
+
+        if self.provider is not None:
+            result['Provider'] = self.provider
 
         if self.sub_address is not None:
             result['SubAddress'] = self.sub_address
@@ -711,6 +786,9 @@ class DescribeEndpointGroupResponseBodyEndpointConfigurations(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApiKeys') is not None:
+            self.api_keys = m.get('ApiKeys')
+
         if m.get('EnableClientIPPreservation') is not None:
             self.enable_client_ippreservation = m.get('EnableClientIPPreservation')
 
@@ -725,6 +803,9 @@ class DescribeEndpointGroupResponseBodyEndpointConfigurations(DaraModel):
 
         if m.get('ProbeProtocol') is not None:
             self.probe_protocol = m.get('ProbeProtocol')
+
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
 
         if m.get('SubAddress') is not None:
             self.sub_address = m.get('SubAddress')

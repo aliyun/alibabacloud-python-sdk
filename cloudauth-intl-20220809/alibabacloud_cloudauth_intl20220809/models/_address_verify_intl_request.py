@@ -19,39 +19,39 @@ class AddressVerifyIntlRequest(DaraModel):
         text: str = None,
         verify_type: str = None,
     ):
-        # Verification address type:
-        # - “0”: Text address
-        # - “1”: Latitude and longitude
+        # The type of the address to verify. Valid values:
+        # - "0": text address
+        # - "1": coordinates (longitude and latitude).
         # 
         # This parameter is required.
         self.address_type = address_type
-        # Default city
+        # The default city.
         self.default_city = default_city
-        # Country name, currently only supports: China
+        # The country name. Currently, only China is supported.
         # 
         # This parameter is required.
         self.default_country = default_country
-        # Default district
+        # The default district.
         self.default_district = default_district
-        # Default province
+        # The default province.
         self.default_province = default_province
-        # Latitude.
+        # The latitude.
         self.latitude = latitude
-        # Longitude.
+        # The longitude.
         self.longitude = longitude
-        # Supports Chinese mobile phone numbers.
+        # Chinese mainland phone numbers are supported.
         # 
         # This parameter is required.
         self.mobile = mobile
-        # Fixed value: ADD_VERIFY_PRO
+        # Fixed value: ADD_VERIFY_PRO.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Detailed address text content
+        # The detailed address in text format.
         self.text = text
-        # Address verification method:
-        # - HOME: Home address verification
-        # - WORK: Work address verification
+        # The address verification method. Valid values:
+        # - HOME: home address verification
+        # - WORK: work address verification.
         # 
         # This parameter is required.
         self.verify_type = verify_type

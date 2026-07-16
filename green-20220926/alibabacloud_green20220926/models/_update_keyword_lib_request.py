@@ -10,6 +10,7 @@ class UpdateKeywordLibRequest(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
         region_id: str = None,
+        tenant_code: str = None,
     ):
         # Library ID.
         self.lib_id = lib_id
@@ -17,6 +18,7 @@ class UpdateKeywordLibRequest(DaraModel):
         self.lib_name = lib_name
         # Region ID.
         self.region_id = region_id
+        self.tenant_code = tenant_code
 
     def validate(self):
         pass
@@ -35,6 +37,9 @@ class UpdateKeywordLibRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.tenant_code is not None:
+            result['TenantCode'] = self.tenant_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +52,9 @@ class UpdateKeywordLibRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('TenantCode') is not None:
+            self.tenant_code = m.get('TenantCode')
 
         return self
 

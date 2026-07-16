@@ -14,8 +14,9 @@ class GetObjectScanEventRequest(DaraModel):
         self.event_id = event_id
         # The language of the content in the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

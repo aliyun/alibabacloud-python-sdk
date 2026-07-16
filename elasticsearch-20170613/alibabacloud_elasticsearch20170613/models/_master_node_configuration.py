@@ -12,12 +12,22 @@ class MasterNodeConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The number of dedicated master nodes.
+        # 
         # This parameter is required.
         self.amount = amount
+        # The storage space of dedicated master nodes. Unit: GB.
+        # 
         # This parameter is required.
         self.disk = disk
+        # The storage type of dedicated master nodes. Valid values:
+        # - cloud_ssd: standard SSD
+        # - cloud_essd (default): Enterprise SSD (ESSD).
+        # 
         # This parameter is required.
         self.disk_type = disk_type
+        # The node specifications of dedicated master nodes. For more information, see [Product specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 

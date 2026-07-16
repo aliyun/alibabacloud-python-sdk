@@ -12,7 +12,10 @@ class DeleteAuditTermsRequest(DaraModel):
         id_list: List[int] = None,
         workspace_id: str = None,
     ):
+        # List of rule IDs for user logon audit terms to delete.
         self.id_list = id_list
+        # Unique identifier for the Alibaba Cloud Model Studio workspace. Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

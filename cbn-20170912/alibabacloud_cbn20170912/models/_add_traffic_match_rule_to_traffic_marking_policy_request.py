@@ -23,12 +23,12 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequest(DaraModel):
         # 
         # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request.
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -140,15 +140,15 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(DaraMode
         # 
         # You can specify at most two port numbers for this parameter. Take note of the following rules:
         # 
-        # *   If you enter only one port number, such as 1, packets whose destination port is 1 are considered a match. A value of -1 specifies all destination ports.
-        # *   If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 are considered a match.
-        # *   If you enter two port numbers and one of them is -1, the other port must also be -1. In this case, packets are considered a match regardless of the destination port.
+        # - If you enter only one port number, such as 1, packets whose destination port is 1 are considered a match. A value of -1 specifies all destination ports.
+        # - If you enter two port numbers, such as 1 and 200, packets whose destination ports fall into 1 and 200 are considered a match.
+        # - If you enter two port numbers and one of them is -1, the other port must also be -1. In this case, packets are considered a match regardless of the destination port.
         self.dst_port_range = dst_port_range
         # The Differentiated Services Code Point (DSCP) value that is used to match packets. Valid values: **0** to **63**.
         # 
         # Packets that carry the specified DSCP value are considered a match. If you do not specify a DSCP value, packets are considered a match regardless of the DSCP value.
         # 
-        # >  The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
+        # > The DSCP value that you specify for this parameter is the DSCP value that packets carry before they are transmitted over the inter-region connection.
         self.match_dscp = match_dscp
         # The protocol that is used to match packets.
         # 
@@ -156,18 +156,18 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(DaraMode
         # 
         # **Some protocols use a specific port. Click to view protocols and ports.**
         # 
-        # *   If the protocol is **ICMP**, set the destination port to **-1**.
-        # *   If the protocol is **GRE**, set the destination port to **-1**.
-        # *   If the protocol is **SSH**, set the destination port to **22**.
-        # *   If the protocol is **Telnet**, set the destination port to **23**.
-        # *   If the protocol is **HTTP**, set the destination port to **80**.
-        # *   If the protocol is **HTTPS**, set the destination port to **443**.
-        # *   If the protocol is **MS SQL**, set the destination port to **1443**.
-        # *   If the protocol is **Oracle**, set the destination port to **1521**.
-        # *   If the protocol is **Mysql**, set the destination port to **3306**.
-        # *   If the protocol is **RDP**, set the destination port to **3389**.
-        # *   If the protocol is **Postgre SQL**, set the destination port to **5432**.
-        # *   If the protocol is **Redis**, set the destination port to **6379**.
+        # - If the protocol is **ICMP**, set the destination port to **-1**.
+        # - If the protocol is **GRE**, set the destination port to **-1**.
+        # - If the protocol is **SSH**, set the destination port to **22**.
+        # - If the protocol is **Telnet**, set the destination port to **23**.
+        # - If the protocol is **HTTP**, set the destination port to **80**.
+        # - If the protocol is **HTTPS**, set the destination port to **443**.
+        # - If the protocol is **MS SQL**, set the destination port to **1443**.
+        # - If the protocol is **Oracle**, set the destination port to **1521**.
+        # - If the protocol is **Mysql**, set the destination port to **3306**.
+        # - If the protocol is **RDP**, set the destination port to **3389**.
+        # - If the protocol is **Postgre SQL**, set the destination port to **5432**.
+        # - If the protocol is **Redis**, set the destination port to **6379**.
         self.protocol = protocol
         # The source CIDR block that is used to match packets.
         # 
@@ -179,17 +179,17 @@ class AddTrafficMatchRuleToTrafficMarkingPolicyRequestTrafficMatchRules(DaraMode
         # 
         # You can enter at most two port numbers. Take note of the following rules:
         # 
-        # *   If you enter only one port number, such as 1, packets whose source port is 1 are considered a match. A value of -1 specifies all source ports.
-        # *   If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 are considered a match.
-        # *   If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
+        # - If you enter only one port number, such as 1, packets whose source port is 1 are considered a match. A value of -1 specifies all source ports.
+        # - If you enter two port numbers, such as 1 and 200, packets whose source ports fall into 1 and 200 are considered a match.
+        # - If you enter two port numbers and one of them is -1, the other port number must also be -1. In this case, packets are considered a match regardless of the source port.
         self.src_port_range = src_port_range
         # The description of the traffic classification rule.
         # 
-        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+        # This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
         self.traffic_match_rule_description = traffic_match_rule_description
         # The name of the traffic classification rule.
         # 
-        # The name is optional. If you enter a name, it must be 1 to 128 characters in length, and cannot start with http:// or https://.
+        # The name is optional. If you enter a name, it must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
         self.traffic_match_rule_name = traffic_match_rule_name
 
     def validate(self):

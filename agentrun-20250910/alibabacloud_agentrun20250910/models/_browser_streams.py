@@ -11,7 +11,9 @@ class BrowserStreams(DaraModel):
         automation_stream: main_models.BrowserAutomationStream = None,
         live_view_stream: main_models.BrowserLiveViewStream = None,
     ):
+        # automation stream
         self.automation_stream = automation_stream
+        # real-time view stream
         self.live_view_stream = live_view_stream
 
     def validate(self):

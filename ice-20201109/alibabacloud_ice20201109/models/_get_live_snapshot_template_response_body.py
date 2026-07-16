@@ -37,8 +37,9 @@ class GetLiveSnapshotTemplateResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   system
-        # *   custom
+        # - system
+        # 
+        # - custom
         self.type = type
 
     def validate(self):

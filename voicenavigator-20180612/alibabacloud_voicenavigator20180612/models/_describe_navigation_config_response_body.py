@@ -13,9 +13,13 @@ class DescribeNavigationConfigResponseBody(DaraModel):
         silence_timeout_config: main_models.DescribeNavigationConfigResponseBodySilenceTimeoutConfig = None,
         unrecognizing_config: main_models.DescribeNavigationConfigResponseBodyUnrecognizingConfig = None,
     ):
+        # The greeting configuration.
         self.greeting_config = greeting_config
+        # The request ID.
         self.request_id = request_id
+        # The silence timeout configuration.
         self.silence_timeout_config = silence_timeout_config
+        # The configuration for handling unrecognized input.
         self.unrecognizing_config = unrecognizing_config
 
     def validate(self):
@@ -73,10 +77,15 @@ class DescribeNavigationConfigResponseBodyUnrecognizingConfig(DaraModel):
         prompt: str = None,
         threshold: int = None,
     ):
+        # The action to take when the number of unrecognized inputs reaches the threshold. Valid values: `TransferToAgent`, `TransferToIVR`, `RedirectToPage`, or `HangUp`.
         self.final_action = final_action
+        # Parameters for the final action, such as a redirection target.
         self.final_action_params = final_action_params
+        # The prompt that is played when the unrecognized input threshold is reached.
         self.final_prompt = final_prompt
+        # The prompt that is played when user input is not recognized.
         self.prompt = prompt
+        # The maximum number of times the user\\"s input is not recognized.
         self.threshold = threshold
 
     def validate(self):
@@ -135,14 +144,21 @@ class DescribeNavigationConfigResponseBodySilenceTimeoutConfig(DaraModel):
         threshold: int = None,
         timeout: int = None,
     ):
+        # The action to perform after the final silence prompt is played. Valid values: `TransferToAgent`, `TransferToIVR`, `RedirectToPage`, or `HangUp`.
         self.final_action = final_action
+        # Parameters for the final action, such as a redirection target.
         self.final_action_params = final_action_params
+        # The prompt that is played when the silence timeout threshold is reached.
         self.final_prompt = final_prompt
         # ""
         self.intent_trigger = intent_trigger
+        # The prompt that is played when a silence timeout occurs.
         self.prompt = prompt
+        # The source of the configuration.
         self.source_type = source_type
+        # The maximum number of silence timeouts.
         self.threshold = threshold
+        # The duration of the silence timeout.
         self.timeout = timeout
 
     def validate(self):
@@ -216,8 +232,11 @@ class DescribeNavigationConfigResponseBodyGreetingConfig(DaraModel):
         intent_trigger: str = None,
         source_type: str = None,
     ):
+        # The greeting message.
         self.greeting_words = greeting_words
+        # The intent trigger.
         self.intent_trigger = intent_trigger
+        # The source of the configuration.
         self.source_type = source_type
 
     def validate(self):

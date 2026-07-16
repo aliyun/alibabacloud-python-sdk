@@ -12,13 +12,13 @@ class SubmitSportsHighlightsJobRequest(DaraModel):
         output_config: str = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client-generated token to ensure request idempotency.
         self.client_token = client_token
-        # The input configurations.
+        # The input configuration. For more information, see [input configuration parameters](~~2843158#5cbc796a9cuu8~~).
         self.input_config = input_config
-        # The output configurations.
+        # The output configuration. For more information, see [output configuration parameters](~~2843158#b7dad99fe5q0r~~).
         self.output_config = output_config
-        # The user-defined data.
+        # The user data, containing business and callback configurations. For more information about the structure, see [user data configuration](https://help.aliyun.com/document_detail/357745.html).
         self.user_data = user_data
 
     def validate(self):

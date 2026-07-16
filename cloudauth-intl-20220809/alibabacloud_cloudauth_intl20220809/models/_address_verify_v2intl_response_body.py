@@ -13,13 +13,13 @@ class AddressVerifyV2IntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.AddressVerifyV2IntlResponseBodyResult = None,
     ):
-        # [Return Code](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i4#ae60001a3804w)
+        # The response code.
         self.code = code
-        # Detailed description of the return code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Result object
+        # The verification result.
         self.result = result
 
     def validate(self):
@@ -70,29 +70,17 @@ class AddressVerifyV2IntlResponseBodyResult(DaraModel):
         transaction_id: str = None,
     ):
         # The verification result. Valid values:
-        # 
-        # - **1**: Passed (billed)
-        # - **2**: Failed (The device is in a prohibited region) (billed)
-        # - **3**: Unknown (billed)
+        # - 1: Passed.
+        # - 2: Failed (the device is in a prohibited region). 
+        # - 3: Unable to determine.
         self.biz_code = biz_code
-        # Verification details, including：
+        # The verification details, which include:
         # 
-        # - **DistanceRange**：Position rang：[DistanceRange description](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i27#ee274c08976er)。
-        # > If the input phone number or address is empty, or if no carrier information is found, this field will not be returned.
-        # 
-        # - **IspName**: The carrier name:
-        #    - **CMCC**: China Mobile
-        #    - **CTCC**: China Telecom
-        #    - **CUCC**: China Unicom
-        # > This parameter is not returned if the mobile phone number or address is empty in the request, or if carrier information is not found.
-        # 
-        # - **PhoneStatus**: The status of the mobile phone:
-        #   - **0**: Abnormal
-        #   - **1**: Normal
-        # 
-        # > This parameter is not returned if the mobile phone number is empty in the request.
+        # - distanceRange: the location range.   
+        # - ispName: the ISP name.     
+        # - phoneStatus: the phone status. A value of 0 indicates abnormal. A value of 1 indicates Normal. Otherwise, the status is unknown.
         self.detail = detail
-        # The transaction ID
+        # The authentication ID.
         self.transaction_id = transaction_id
 
     def validate(self):

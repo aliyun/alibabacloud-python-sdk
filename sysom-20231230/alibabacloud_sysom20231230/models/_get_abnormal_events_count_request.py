@@ -16,13 +16,21 @@ class GetAbnormalEventsCountRequest(DaraModel):
         show_pod: int = None,
         start: float = None,
     ):
+        # Cluster ID.
         self.cluster = cluster
+        # End time.
         self.end = end
+        # Instance ID.
         self.instance = instance
+        # Level of abnormal events.
         self.level = level
+        # The namespace where the Pod resides.
         self.namespace = namespace
+        # Pod name.
         self.pod = pod
+        # Whether to display Pod abnormal events.
         self.show_pod = show_pod
+        # Start time.
         self.start = start
 
     def validate(self):

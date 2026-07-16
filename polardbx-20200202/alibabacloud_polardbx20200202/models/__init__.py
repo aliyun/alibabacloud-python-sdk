@@ -11,6 +11,9 @@ from ._allocate_cold_data_volume_response import AllocateColdDataVolumeResponse
 from ._allocate_instance_public_connection_request import AllocateInstancePublicConnectionRequest
 from ._allocate_instance_public_connection_response_body import AllocateInstancePublicConnectionResponseBody
 from ._allocate_instance_public_connection_response import AllocateInstancePublicConnectionResponse
+from ._allocate_mem_0public_connection_request import AllocateMem0PublicConnectionRequest
+from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBody
+from ._allocate_mem_0public_connection_response import AllocateMem0PublicConnectionResponse
 from ._attach_columnar_instance_request import AttachColumnarInstanceRequest
 from ._attach_columnar_instance_response_body import AttachColumnarInstanceResponseBody
 from ._attach_columnar_instance_response import AttachColumnarInstanceResponse
@@ -23,6 +26,9 @@ from ._change_resource_group_response import ChangeResourceGroupResponse
 from ._check_cloud_resource_authorized_request import CheckCloudResourceAuthorizedRequest
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBody
 from ._check_cloud_resource_authorized_response import CheckCloudResourceAuthorizedResponse
+from ._check_health_request import CheckHealthRequest
+from ._check_health_response_body import CheckHealthResponseBody
+from ._check_health_response import CheckHealthResponse
 from ._check_sql_audit_sls_status_request import CheckSqlAuditSlsStatusRequest
 from ._check_sql_audit_sls_status_response_body import CheckSqlAuditSlsStatusResponseBody
 from ._check_sql_audit_sls_status_response import CheckSqlAuditSlsStatusResponse
@@ -51,6 +57,9 @@ from ._create_dbinstance_response import CreateDBInstanceResponse
 from ._create_data_import_task_request import CreateDataImportTaskRequest
 from ._create_data_import_task_response_body import CreateDataImportTaskResponseBody
 from ._create_data_import_task_response import CreateDataImportTaskResponse
+from ._create_gateway_consumer_for_polar_dbxrequest import CreateGatewayConsumerForPolarDBXRequest
+from ._create_gateway_consumer_for_polar_dbxresponse_body import CreateGatewayConsumerForPolarDBXResponseBody
+from ._create_gateway_consumer_for_polar_dbxresponse import CreateGatewayConsumerForPolarDBXResponse
 from ._create_gdn_instance_request import CreateGdnInstanceRequest
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBody
 from ._create_gdn_instance_response import CreateGdnInstanceResponse
@@ -60,6 +69,9 @@ from ._create_gdn_standby_member_response import CreateGdnStandbyMemberResponse
 from ._create_mem_0request import CreateMem0Request
 from ._create_mem_0response_body import CreateMem0ResponseBody
 from ._create_mem_0response import CreateMem0Response
+from ._create_polardbx_supabase_instance_request import CreatePolardbxSupabaseInstanceRequest
+from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBody
+from ._create_polardbx_supabase_instance_response import CreatePolardbxSupabaseInstanceResponse
 from ._create_rpl_inspection_task_request import CreateRplInspectionTaskRequest
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBody
 from ._create_rpl_inspection_task_response import CreateRplInspectionTaskResponse
@@ -75,6 +87,9 @@ from ._create_structure_import_task_response import CreateStructureImportTaskRes
 from ._create_sub_cninstance_request import CreateSubCNInstanceRequest
 from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBody
 from ._create_sub_cninstance_response import CreateSubCNInstanceResponse
+from ._create_supabase_net_type_request import CreateSupabaseNetTypeRequest
+from ._create_supabase_net_type_response_body import CreateSupabaseNetTypeResponseBody
+from ._create_supabase_net_type_response import CreateSupabaseNetTypeResponse
 from ._create_super_account_request import CreateSuperAccountRequest
 from ._create_super_account_response_body import CreateSuperAccountResponseBody
 from ._create_super_account_response import CreateSuperAccountResponse
@@ -102,9 +117,15 @@ from ._delete_gdn_instance_response import DeleteGdnInstanceResponse
 from ._delete_mem_0request import DeleteMem0Request
 from ._delete_mem_0response_body import DeleteMem0ResponseBody
 from ._delete_mem_0response import DeleteMem0Response
+from ._delete_polardbx_supabase_instance_request import DeletePolardbxSupabaseInstanceRequest
+from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBody
+from ._delete_polardbx_supabase_instance_response import DeletePolardbxSupabaseInstanceResponse
 from ._delete_sub_cninstance_request import DeleteSubCNInstanceRequest
 from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBody
 from ._delete_sub_cninstance_response import DeleteSubCNInstanceResponse
+from ._delete_supabase_net_type_request import DeleteSupabaseNetTypeRequest
+from ._delete_supabase_net_type_response_body import DeleteSupabaseNetTypeResponseBody
+from ._delete_supabase_net_type_response import DeleteSupabaseNetTypeResponse
 from ._describe_account_list_request import DescribeAccountListRequest
 from ._describe_account_list_response_body import DescribeAccountListResponseBody
 from ._describe_account_list_response import DescribeAccountListResponse
@@ -222,6 +243,9 @@ from ._describe_gdn_instances_response import DescribeGdnInstancesResponse
 from ._describe_mem_0info_request import DescribeMem0InfoRequest
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBody
 from ._describe_mem_0info_response import DescribeMem0InfoResponse
+from ._describe_mem_0security_ips_request import DescribeMem0SecurityIpsRequest
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBody
+from ._describe_mem_0security_ips_response import DescribeMem0SecurityIpsResponse
 from ._describe_open_backup_set_request import DescribeOpenBackupSetRequest
 from ._describe_open_backup_set_response_body import DescribeOpenBackupSetResponseBody
 from ._describe_open_backup_set_response import DescribeOpenBackupSetResponse
@@ -272,6 +296,18 @@ from ._describe_storage_pool_info_response import DescribeStoragePoolInfoRespons
 from ._describe_structure_import_task_info_request import DescribeStructureImportTaskInfoRequest
 from ._describe_structure_import_task_info_response_body import DescribeStructureImportTaskInfoResponseBody
 from ._describe_structure_import_task_info_response import DescribeStructureImportTaskInfoResponse
+from ._describe_supabase_api_key_request import DescribeSupabaseApiKeyRequest
+from ._describe_supabase_api_key_response_body import DescribeSupabaseApiKeyResponseBody
+from ._describe_supabase_api_key_response import DescribeSupabaseApiKeyResponse
+from ._describe_supabase_instance_attribute_request import DescribeSupabaseInstanceAttributeRequest
+from ._describe_supabase_instance_attribute_response_body import DescribeSupabaseInstanceAttributeResponseBody
+from ._describe_supabase_instance_attribute_response import DescribeSupabaseInstanceAttributeResponse
+from ._describe_supabase_instances_request import DescribeSupabaseInstancesRequest
+from ._describe_supabase_instances_response_body import DescribeSupabaseInstancesResponseBody
+from ._describe_supabase_instances_response import DescribeSupabaseInstancesResponse
+from ._describe_supabase_ip_whitelist_request import DescribeSupabaseIpWhitelistRequest
+from ._describe_supabase_ip_whitelist_response_body import DescribeSupabaseIpWhitelistResponseBody
+from ._describe_supabase_ip_whitelist_response import DescribeSupabaseIpWhitelistResponse
 from ._describe_tags_request import DescribeTagsRequest
 from ._describe_tags_response_body import DescribeTagsResponseBody
 from ._describe_tags_response import DescribeTagsResponse
@@ -350,12 +386,21 @@ from ._modify_database_description_response import ModifyDatabaseDescriptionResp
 from ._modify_engine_migration_request import ModifyEngineMigrationRequest
 from ._modify_engine_migration_response_body import ModifyEngineMigrationResponseBody
 from ._modify_engine_migration_response import ModifyEngineMigrationResponse
+from ._modify_mem_0security_ips_request import ModifyMem0SecurityIpsRequest
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBody
+from ._modify_mem_0security_ips_response import ModifyMem0SecurityIpsResponse
 from ._modify_parameter_request import ModifyParameterRequest
 from ._modify_parameter_response_body import ModifyParameterResponseBody
 from ._modify_parameter_response import ModifyParameterResponse
 from ._modify_security_ips_request import ModifySecurityIpsRequest
 from ._modify_security_ips_response_body import ModifySecurityIpsResponseBody
 from ._modify_security_ips_response import ModifySecurityIpsResponse
+from ._modify_supabase_dashboard_password_request import ModifySupabaseDashboardPasswordRequest
+from ._modify_supabase_dashboard_password_response_body import ModifySupabaseDashboardPasswordResponseBody
+from ._modify_supabase_dashboard_password_response import ModifySupabaseDashboardPasswordResponse
+from ._modify_supabase_security_iplist_request import ModifySupabaseSecurityIPListRequest
+from ._modify_supabase_security_iplist_response_body import ModifySupabaseSecurityIPListResponseBody
+from ._modify_supabase_security_iplist_response import ModifySupabaseSecurityIPListResponse
 from ._pre_check_sql_flashback_task_request import PreCheckSqlFlashbackTaskRequest
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBody
 from ._pre_check_sql_flashback_task_response import PreCheckSqlFlashbackTaskResponse
@@ -368,18 +413,27 @@ from ._release_cold_data_volume_response import ReleaseColdDataVolumeResponse
 from ._release_instance_public_connection_request import ReleaseInstancePublicConnectionRequest
 from ._release_instance_public_connection_response_body import ReleaseInstancePublicConnectionResponseBody
 from ._release_instance_public_connection_response import ReleaseInstancePublicConnectionResponse
+from ._release_mem_0public_connection_request import ReleaseMem0PublicConnectionRequest
+from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBody
+from ._release_mem_0public_connection_response import ReleaseMem0PublicConnectionResponse
 from ._reset_account_password_request import ResetAccountPasswordRequest
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
 from ._reset_account_password_response import ResetAccountPasswordResponse
 from ._reset_account_password_restrict_request import ResetAccountPasswordRestrictRequest
 from ._reset_account_password_restrict_response_body import ResetAccountPasswordRestrictResponseBody
 from ._reset_account_password_restrict_response import ResetAccountPasswordRestrictResponse
+from ._reset_mem_0account_password_request import ResetMem0AccountPasswordRequest
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBody
+from ._reset_mem_0account_password_response import ResetMem0AccountPasswordResponse
 from ._restart_dbinstance_request import RestartDBInstanceRequest
 from ._restart_dbinstance_response_body import RestartDBInstanceResponseBody
 from ._restart_dbinstance_response import RestartDBInstanceResponse
 from ._restart_data_import_task_request import RestartDataImportTaskRequest
 from ._restart_data_import_task_response_body import RestartDataImportTaskResponseBody
 from ._restart_data_import_task_response import RestartDataImportTaskResponse
+from ._restart_supabase_instance_request import RestartSupabaseInstanceRequest
+from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBody
+from ._restart_supabase_instance_response import RestartSupabaseInstanceResponse
 from ._restore_dbinstance_request import RestoreDBInstanceRequest
 from ._restore_dbinstance_response_body import RestoreDBInstanceResponseBody
 from ._restore_dbinstance_response import RestoreDBInstanceResponse
@@ -431,6 +485,7 @@ from ._upgrade_columnar_version_response import UpgradeColumnarVersionResponse
 from ._upgrade_dbinstance_kernel_version_request import UpgradeDBInstanceKernelVersionRequest
 from ._upgrade_dbinstance_kernel_version_response_body import UpgradeDBInstanceKernelVersionResponseBody
 from ._upgrade_dbinstance_kernel_version_response import UpgradeDBInstanceKernelVersionResponse
+from ._allocate_mem_0public_connection_response_body import AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail
 from ._check_cloud_resource_authorized_response_body import CheckCloudResourceAuthorizedResponseBodyData
 from ._close_engine_migration_response_body import CloseEngineMigrationResponseBodyData
 from ._confirm_no_connection_response_body import ConfirmNoConnectionResponseBodyData
@@ -438,14 +493,24 @@ from ._create_backup_response_body import CreateBackupResponseBodyData
 from ._create_custom_endpoint_response_body import CreateCustomEndpointResponseBodyData
 from ._create_data_import_task_response_body import CreateDataImportTaskResponseBodyData
 from ._create_gdn_instance_response_body import CreateGdnInstanceResponseBodyData
+from ._create_mem_0response_body import CreateMem0ResponseBodyAccessDeniedDetail
 from ._create_mem_0response_body import CreateMem0ResponseBodyData
+from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail
+from ._create_polardbx_supabase_instance_response_body import CreatePolardbxSupabaseInstanceResponseBodyData
 from ._create_rpl_inspection_task_response_body import CreateRplInspectionTaskResponseBodyData
 from ._create_sqlevaluate_task_response_body import CreateSQLEvaluateTaskResponseBodyData
 from ._create_structure_import_task_response_body import CreateStructureImportTaskResponseBodyData
 from ._create_sub_cninstance_response_body import CreateSubCNInstanceResponseBodyData
+from ._create_supabase_net_type_response_body import CreateSupabaseNetTypeResponseBodyAccessDeniedDetail
+from ._create_supabase_net_type_response_body import CreateSupabaseNetTypeResponseBodyData
 from ._delete_gdn_instance_response_body import DeleteGdnInstanceResponseBodyData
+from ._delete_mem_0response_body import DeleteMem0ResponseBodyAccessDeniedDetail
 from ._delete_mem_0response_body import DeleteMem0ResponseBodyData
+from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail
+from ._delete_polardbx_supabase_instance_response_body import DeletePolardbxSupabaseInstanceResponseBodyData
 from ._delete_sub_cninstance_response_body import DeleteSubCNInstanceResponseBodyData
+from ._delete_supabase_net_type_response_body import DeleteSupabaseNetTypeResponseBodyAccessDeniedDetail
+from ._delete_supabase_net_type_response_body import DeleteSupabaseNetTypeResponseBodyData
 from ._describe_account_list_response_body import DescribeAccountListResponseBodyData
 from ._describe_active_operation_maintain_conf_response_body import DescribeActiveOperationMaintainConfResponseBodyConfig
 from ._describe_active_operation_tasks_response_body import DescribeActiveOperationTasksResponseBodyItems
@@ -519,9 +584,13 @@ from ._describe_events_response_body import DescribeEventsResponseBodyEventItems
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyDataGdnInstanceList
 from ._describe_gdn_instances_response_body import DescribeGdnInstancesResponseBodyData
+from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyAccessDeniedDetail
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstanceConnAddrs
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyDataInstance
 from ._describe_mem_0info_response_body import DescribeMem0InfoResponseBodyData
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyAccessDeniedDetail
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyDataGroups
+from ._describe_mem_0security_ips_response_body import DescribeMem0SecurityIpsResponseBodyData
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyDataParameterGroups
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyData
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyDataParameters
@@ -553,6 +622,18 @@ from ._describe_storage_pool_info_response_body import DescribeStoragePoolInfoRe
 from ._describe_storage_pool_info_response_body import DescribeStoragePoolInfoResponseBodyData
 from ._describe_structure_import_task_info_response_body import DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult
 from ._describe_structure_import_task_info_response_body import DescribeStructureImportTaskInfoResponseBodyData
+from ._describe_supabase_api_key_response_body import DescribeSupabaseApiKeyResponseBodyAccessDeniedDetail
+from ._describe_supabase_api_key_response_body import DescribeSupabaseApiKeyResponseBodyData
+from ._describe_supabase_instance_attribute_response_body import DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail
+from ._describe_supabase_instance_attribute_response_body import DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs
+from ._describe_supabase_instance_attribute_response_body import DescribeSupabaseInstanceAttributeResponseBodyDataNodes
+from ._describe_supabase_instance_attribute_response_body import DescribeSupabaseInstanceAttributeResponseBodyData
+from ._describe_supabase_instances_response_body import DescribeSupabaseInstancesResponseBodyAccessDeniedDetail
+from ._describe_supabase_instances_response_body import DescribeSupabaseInstancesResponseBodyDataInstances
+from ._describe_supabase_instances_response_body import DescribeSupabaseInstancesResponseBodyData
+from ._describe_supabase_ip_whitelist_response_body import DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail
+from ._describe_supabase_ip_whitelist_response_body import DescribeSupabaseIpWhitelistResponseBodyDataGroupItems
+from ._describe_supabase_ip_whitelist_response_body import DescribeSupabaseIpWhitelistResponseBodyData
 from ._describe_tags_response_body import DescribeTagsResponseBodyTagInfos
 from ._describe_tasks_response_body import DescribeTasksResponseBodyItems
 from ._describe_transform_status_response_body import DescribeTransformStatusResponseBodyData
@@ -564,9 +645,20 @@ from ._modify_cdc_class_response_body import ModifyCdcClassResponseBodyData
 from ._modify_columnar_class_response_body import ModifyColumnarClassResponseBodyData
 from ._modify_dbinstance_connection_string_response_body import ModifyDBInstanceConnectionStringResponseBodyData
 from ._modify_engine_migration_response_body import ModifyEngineMigrationResponseBodyData
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail
+from ._modify_mem_0security_ips_response_body import ModifyMem0SecurityIpsResponseBodyData
+from ._modify_supabase_dashboard_password_response_body import ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail
+from ._modify_supabase_dashboard_password_response_body import ModifySupabaseDashboardPasswordResponseBodyData
+from ._modify_supabase_security_iplist_response_body import ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail
+from ._modify_supabase_security_iplist_response_body import ModifySupabaseSecurityIPListResponseBodyData
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyDataCheckResult
 from ._pre_check_sql_flashback_task_response_body import PreCheckSqlFlashbackTaskResponseBodyData
 from ._refresh_import_meta_response_body import RefreshImportMetaResponseBodyData
+from ._release_mem_0public_connection_response_body import ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyAccessDeniedDetail
+from ._reset_mem_0account_password_response_body import ResetMem0AccountPasswordResponseBodyData
+from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBodyAccessDeniedDetail
+from ._restart_supabase_instance_response_body import RestartSupabaseInstanceResponseBodyData
 from ._skip_current_step_response_body import SkipCurrentStepResponseBodyData
 from ._start_switch_database_response_body import StartSwitchDatabaseResponseBodyData
 from ._submit_sql_flashback_task_response_body import SubmitSqlFlashbackTaskResponseBodyData
@@ -591,6 +683,9 @@ __all__ = [
     AllocateInstancePublicConnectionRequest,
     AllocateInstancePublicConnectionResponseBody,
     AllocateInstancePublicConnectionResponse,
+    AllocateMem0PublicConnectionRequest,
+    AllocateMem0PublicConnectionResponseBody,
+    AllocateMem0PublicConnectionResponse,
     AttachColumnarInstanceRequest,
     AttachColumnarInstanceResponseBody,
     AttachColumnarInstanceResponse,
@@ -603,6 +698,9 @@ __all__ = [
     CheckCloudResourceAuthorizedRequest,
     CheckCloudResourceAuthorizedResponseBody,
     CheckCloudResourceAuthorizedResponse,
+    CheckHealthRequest,
+    CheckHealthResponseBody,
+    CheckHealthResponse,
     CheckSqlAuditSlsStatusRequest,
     CheckSqlAuditSlsStatusResponseBody,
     CheckSqlAuditSlsStatusResponse,
@@ -631,6 +729,9 @@ __all__ = [
     CreateDataImportTaskRequest,
     CreateDataImportTaskResponseBody,
     CreateDataImportTaskResponse,
+    CreateGatewayConsumerForPolarDBXRequest,
+    CreateGatewayConsumerForPolarDBXResponseBody,
+    CreateGatewayConsumerForPolarDBXResponse,
     CreateGdnInstanceRequest,
     CreateGdnInstanceResponseBody,
     CreateGdnInstanceResponse,
@@ -640,6 +741,9 @@ __all__ = [
     CreateMem0Request,
     CreateMem0ResponseBody,
     CreateMem0Response,
+    CreatePolardbxSupabaseInstanceRequest,
+    CreatePolardbxSupabaseInstanceResponseBody,
+    CreatePolardbxSupabaseInstanceResponse,
     CreateRplInspectionTaskRequest,
     CreateRplInspectionTaskResponseBody,
     CreateRplInspectionTaskResponse,
@@ -655,6 +759,9 @@ __all__ = [
     CreateSubCNInstanceRequest,
     CreateSubCNInstanceResponseBody,
     CreateSubCNInstanceResponse,
+    CreateSupabaseNetTypeRequest,
+    CreateSupabaseNetTypeResponseBody,
+    CreateSupabaseNetTypeResponse,
     CreateSuperAccountRequest,
     CreateSuperAccountResponseBody,
     CreateSuperAccountResponse,
@@ -682,9 +789,15 @@ __all__ = [
     DeleteMem0Request,
     DeleteMem0ResponseBody,
     DeleteMem0Response,
+    DeletePolardbxSupabaseInstanceRequest,
+    DeletePolardbxSupabaseInstanceResponseBody,
+    DeletePolardbxSupabaseInstanceResponse,
     DeleteSubCNInstanceRequest,
     DeleteSubCNInstanceResponseBody,
     DeleteSubCNInstanceResponse,
+    DeleteSupabaseNetTypeRequest,
+    DeleteSupabaseNetTypeResponseBody,
+    DeleteSupabaseNetTypeResponse,
     DescribeAccountListRequest,
     DescribeAccountListResponseBody,
     DescribeAccountListResponse,
@@ -802,6 +915,9 @@ __all__ = [
     DescribeMem0InfoRequest,
     DescribeMem0InfoResponseBody,
     DescribeMem0InfoResponse,
+    DescribeMem0SecurityIpsRequest,
+    DescribeMem0SecurityIpsResponseBody,
+    DescribeMem0SecurityIpsResponse,
     DescribeOpenBackupSetRequest,
     DescribeOpenBackupSetResponseBody,
     DescribeOpenBackupSetResponse,
@@ -852,6 +968,18 @@ __all__ = [
     DescribeStructureImportTaskInfoRequest,
     DescribeStructureImportTaskInfoResponseBody,
     DescribeStructureImportTaskInfoResponse,
+    DescribeSupabaseApiKeyRequest,
+    DescribeSupabaseApiKeyResponseBody,
+    DescribeSupabaseApiKeyResponse,
+    DescribeSupabaseInstanceAttributeRequest,
+    DescribeSupabaseInstanceAttributeResponseBody,
+    DescribeSupabaseInstanceAttributeResponse,
+    DescribeSupabaseInstancesRequest,
+    DescribeSupabaseInstancesResponseBody,
+    DescribeSupabaseInstancesResponse,
+    DescribeSupabaseIpWhitelistRequest,
+    DescribeSupabaseIpWhitelistResponseBody,
+    DescribeSupabaseIpWhitelistResponse,
     DescribeTagsRequest,
     DescribeTagsResponseBody,
     DescribeTagsResponse,
@@ -930,12 +1058,21 @@ __all__ = [
     ModifyEngineMigrationRequest,
     ModifyEngineMigrationResponseBody,
     ModifyEngineMigrationResponse,
+    ModifyMem0SecurityIpsRequest,
+    ModifyMem0SecurityIpsResponseBody,
+    ModifyMem0SecurityIpsResponse,
     ModifyParameterRequest,
     ModifyParameterResponseBody,
     ModifyParameterResponse,
     ModifySecurityIpsRequest,
     ModifySecurityIpsResponseBody,
     ModifySecurityIpsResponse,
+    ModifySupabaseDashboardPasswordRequest,
+    ModifySupabaseDashboardPasswordResponseBody,
+    ModifySupabaseDashboardPasswordResponse,
+    ModifySupabaseSecurityIPListRequest,
+    ModifySupabaseSecurityIPListResponseBody,
+    ModifySupabaseSecurityIPListResponse,
     PreCheckSqlFlashbackTaskRequest,
     PreCheckSqlFlashbackTaskResponseBody,
     PreCheckSqlFlashbackTaskResponse,
@@ -948,18 +1085,27 @@ __all__ = [
     ReleaseInstancePublicConnectionRequest,
     ReleaseInstancePublicConnectionResponseBody,
     ReleaseInstancePublicConnectionResponse,
+    ReleaseMem0PublicConnectionRequest,
+    ReleaseMem0PublicConnectionResponseBody,
+    ReleaseMem0PublicConnectionResponse,
     ResetAccountPasswordRequest,
     ResetAccountPasswordResponseBody,
     ResetAccountPasswordResponse,
     ResetAccountPasswordRestrictRequest,
     ResetAccountPasswordRestrictResponseBody,
     ResetAccountPasswordRestrictResponse,
+    ResetMem0AccountPasswordRequest,
+    ResetMem0AccountPasswordResponseBody,
+    ResetMem0AccountPasswordResponse,
     RestartDBInstanceRequest,
     RestartDBInstanceResponseBody,
     RestartDBInstanceResponse,
     RestartDataImportTaskRequest,
     RestartDataImportTaskResponseBody,
     RestartDataImportTaskResponse,
+    RestartSupabaseInstanceRequest,
+    RestartSupabaseInstanceResponseBody,
+    RestartSupabaseInstanceResponse,
     RestoreDBInstanceRequest,
     RestoreDBInstanceResponseBody,
     RestoreDBInstanceResponse,
@@ -1011,6 +1157,7 @@ __all__ = [
     UpgradeDBInstanceKernelVersionRequest,
     UpgradeDBInstanceKernelVersionResponseBody,
     UpgradeDBInstanceKernelVersionResponse,
+    AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail,
     CheckCloudResourceAuthorizedResponseBodyData,
     CloseEngineMigrationResponseBodyData,
     ConfirmNoConnectionResponseBodyData,
@@ -1018,14 +1165,24 @@ __all__ = [
     CreateCustomEndpointResponseBodyData,
     CreateDataImportTaskResponseBodyData,
     CreateGdnInstanceResponseBodyData,
+    CreateMem0ResponseBodyAccessDeniedDetail,
     CreateMem0ResponseBodyData,
+    CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail,
+    CreatePolardbxSupabaseInstanceResponseBodyData,
     CreateRplInspectionTaskResponseBodyData,
     CreateSQLEvaluateTaskResponseBodyData,
     CreateStructureImportTaskResponseBodyData,
     CreateSubCNInstanceResponseBodyData,
+    CreateSupabaseNetTypeResponseBodyAccessDeniedDetail,
+    CreateSupabaseNetTypeResponseBodyData,
     DeleteGdnInstanceResponseBodyData,
+    DeleteMem0ResponseBodyAccessDeniedDetail,
     DeleteMem0ResponseBodyData,
+    DeletePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail,
+    DeletePolardbxSupabaseInstanceResponseBodyData,
     DeleteSubCNInstanceResponseBodyData,
+    DeleteSupabaseNetTypeResponseBodyAccessDeniedDetail,
+    DeleteSupabaseNetTypeResponseBodyData,
     DescribeAccountListResponseBodyData,
     DescribeActiveOperationMaintainConfResponseBodyConfig,
     DescribeActiveOperationTasksResponseBodyItems,
@@ -1099,9 +1256,13 @@ __all__ = [
     DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList,
     DescribeGdnInstancesResponseBodyDataGdnInstanceList,
     DescribeGdnInstancesResponseBodyData,
+    DescribeMem0InfoResponseBodyAccessDeniedDetail,
     DescribeMem0InfoResponseBodyDataInstanceConnAddrs,
     DescribeMem0InfoResponseBodyDataInstance,
     DescribeMem0InfoResponseBodyData,
+    DescribeMem0SecurityIpsResponseBodyAccessDeniedDetail,
+    DescribeMem0SecurityIpsResponseBodyDataGroups,
+    DescribeMem0SecurityIpsResponseBodyData,
     DescribeParameterGroupsResponseBodyDataParameterGroups,
     DescribeParameterGroupsResponseBodyData,
     DescribeParameterTemplatesResponseBodyDataParameters,
@@ -1133,6 +1294,18 @@ __all__ = [
     DescribeStoragePoolInfoResponseBodyData,
     DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult,
     DescribeStructureImportTaskInfoResponseBodyData,
+    DescribeSupabaseApiKeyResponseBodyAccessDeniedDetail,
+    DescribeSupabaseApiKeyResponseBodyData,
+    DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail,
+    DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs,
+    DescribeSupabaseInstanceAttributeResponseBodyDataNodes,
+    DescribeSupabaseInstanceAttributeResponseBodyData,
+    DescribeSupabaseInstancesResponseBodyAccessDeniedDetail,
+    DescribeSupabaseInstancesResponseBodyDataInstances,
+    DescribeSupabaseInstancesResponseBodyData,
+    DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail,
+    DescribeSupabaseIpWhitelistResponseBodyDataGroupItems,
+    DescribeSupabaseIpWhitelistResponseBodyData,
     DescribeTagsResponseBodyTagInfos,
     DescribeTasksResponseBodyItems,
     DescribeTransformStatusResponseBodyData,
@@ -1144,9 +1317,20 @@ __all__ = [
     ModifyColumnarClassResponseBodyData,
     ModifyDBInstanceConnectionStringResponseBodyData,
     ModifyEngineMigrationResponseBodyData,
+    ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail,
+    ModifyMem0SecurityIpsResponseBodyData,
+    ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail,
+    ModifySupabaseDashboardPasswordResponseBodyData,
+    ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail,
+    ModifySupabaseSecurityIPListResponseBodyData,
     PreCheckSqlFlashbackTaskResponseBodyDataCheckResult,
     PreCheckSqlFlashbackTaskResponseBodyData,
     RefreshImportMetaResponseBodyData,
+    ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail,
+    ResetMem0AccountPasswordResponseBodyAccessDeniedDetail,
+    ResetMem0AccountPasswordResponseBodyData,
+    RestartSupabaseInstanceResponseBodyAccessDeniedDetail,
+    RestartSupabaseInstanceResponseBodyData,
     SkipCurrentStepResponseBodyData,
     StartSwitchDatabaseResponseBodyData,
     SubmitSqlFlashbackTaskResponseBodyData,

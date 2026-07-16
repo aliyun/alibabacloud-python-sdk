@@ -11,10 +11,17 @@ class ListWafUsageOfRulesRequest(DaraModel):
         phase: str = None,
         site_id: int = None,
     ):
+        # The WAF instance ID.
+        # 
+        # If this parameter is left empty, the API returns an empty result. We recommend that you always specify this parameter.
         self.instance_id = instance_id
-        # Name of the WAF operation phase.
+        # The phase in which the WAF rule runs. This parameter is required.
+        # 
+        # Common values: http_custom, http_ratelimit, http_anti_scan, http_bot, http_managed, http_whitelist, and http_threat_intelligence.
+        # 
+        # > Note: This parameter is required on the server side. If this parameter is not specified, the API returns InvalidParameter (400).
         self.phase = phase
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         self.site_id = site_id
 
     def validate(self):

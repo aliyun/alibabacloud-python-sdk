@@ -12,10 +12,13 @@ class SubmitReviewInfoV4ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. Use this field to identify failure causes.
         self.code = code
+        # Error details if the request failed. Returns **successful** if the request succeeded.
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. true = success, false or null = failure
         self.success = success
 
     def validate(self):

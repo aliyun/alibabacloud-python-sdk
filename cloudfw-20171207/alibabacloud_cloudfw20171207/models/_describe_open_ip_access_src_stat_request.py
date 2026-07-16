@@ -13,10 +13,15 @@ class DescribeOpenIpAccessSrcStatRequest(DaraModel):
         page_size: str = None,
         source_ip: str = None,
     ):
+        # The page number.
         self.current_page = current_page
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The language of the response.
         self.lang = lang
+        # The number of the page to return.
         self.page_size = page_size
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

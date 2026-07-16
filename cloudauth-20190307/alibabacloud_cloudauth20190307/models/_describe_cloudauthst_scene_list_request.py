@@ -9,7 +9,7 @@ class DescribeCloudauthstSceneListRequest(DaraModel):
         self,
         product_code: str = None,
     ):
-        # Product Code
+        # The commodity code.
         self.product_code = product_code
 
     def validate(self):

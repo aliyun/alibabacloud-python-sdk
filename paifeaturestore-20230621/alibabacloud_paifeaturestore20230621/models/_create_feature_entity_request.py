@@ -12,11 +12,18 @@ class CreateFeatureEntityRequest(DaraModel):
         parent_feature_entity_id: str = None,
         project_id: str = None,
     ):
+        # The join key that links feature views to the feature entity.
+        # 
         # This parameter is required.
         self.join_id = join_id
+        # The feature entity name.
+        # 
         # This parameter is required.
         self.name = name
+        # The parent feature entity ID.
         self.parent_feature_entity_id = parent_feature_entity_id
+        # The project ID. To get this ID, call the ListInstances operation.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

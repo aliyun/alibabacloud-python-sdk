@@ -13,21 +13,21 @@ class GetWorkFlowRequest(DaraModel):
         region_id: str = None,
         workflow_id: int = None,
     ):
-        # The ID of the application group.
+        # The application group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The ID of the namespace.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace.
+        # The namespace source.
         self.namespace_source = namespace_source
-        # The region information.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the workflow.
+        # The workflow ID.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id

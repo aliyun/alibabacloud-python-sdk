@@ -10,12 +10,13 @@ class DescribeAuditPolicyResponseBody(DaraModel):
         log_audit_status: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the log audit feature is enabled. Valid values:
+        # The status of the audit log.
         # 
-        # *   Enable
-        # *   Disabled
+        # - Enable: The audit log is enabled.
         # 
-        # Default value: Disabled.
+        # - Disabled: The audit log is disabled.
+        # 
+        # The default value is Disabled.
         self.log_audit_status = log_audit_status
         # The request ID.
         self.request_id = request_id

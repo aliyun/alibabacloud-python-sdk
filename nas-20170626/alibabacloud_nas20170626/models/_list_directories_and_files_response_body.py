@@ -14,9 +14,9 @@ class ListDirectoriesAndFilesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The details about the files or directories.
+        # The list of directory and file entries.
         self.entries = entries
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token. If the response is truncated, include this token in the next request to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -80,79 +80,83 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         storage_type: str = None,
         type: str = None,
     ):
-        # The time when the file was queried.
+        # The last access time (atime) of the file.
         # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This parameter is returned only when `Type` is `File`.
         self.atime = atime
-        # The time when the raw data was modified.
+        # The metadata change time (ctime) of the file.
         # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This parameter is returned only when `Type` is `File`.
         self.ctime = ctime
-        # The ID of the directory or file.
+        # The ID of the file or directory.
         self.file_id = file_id
-        # Indicates whether the directory contains files stored in the Archive storage class.
+        # Specifies whether the directory contains any archive files.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is Directory.
+        # This parameter is returned only when `Type` is `Directory`.
         # 
         # Valid values:
         # 
-        # *   true: The directory contains files stored in the Archive storage class.
-        # *   false: The directory does not contain files stored in the Archive storage class.
+        # - `true`: Yes
+        # 
+        # - `false`: No
         self.has_archive_file = has_archive_file
-        # Indicates whether the directory contains files stored in the IA storage class.
+        # Specifies whether the directory contains any infrequent access files.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is Directory.
+        # This parameter is returned only when `Type` is `Directory`.
         # 
         # Valid values:
         # 
-        # *   true: The directory contains files stored in the IA storage class.
-        # *   false: The directory does not contain files stored in the IA storage class.
+        # - `true`: Yes
+        # 
+        # - `false`: No
         self.has_infrequent_access_file = has_infrequent_access_file
-        # The file or directory inode.
+        # The inode of the file or directory.
         self.inode = inode
-        # The time when the file was modified.
+        # The last modification time (mtime) of the file.
         # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This parameter is returned only when `Type` is `File`.
         self.mtime = mtime
         # The name of the file or directory.
         self.name = name
         self.offline_duration = offline_duration
         self.offline_unchanged_duration = offline_unchanged_duration
-        # The ID of the portable account. This parameter is returned and valid only if the value of the ProtocolType parameter is SMB and RAM-based access control is enabled.
+        # The owner of the file or directory. This parameter is returned only when `ProtocolType` is `SMB` and access control is enabled.
         self.owner = owner
-        # The time when the last data retrieval task was run.
+        # The last data retrieval time.
         # 
-        # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
+        # The time is in the ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This parameter is returned only when `Type` is `File`.
         self.retrieve_time = retrieve_time
-        # The size of the file.
+        # The size of the file, in bytes.
         # 
-        # Unit: bytes.
+        # This parameter is returned only when `Type` is `File`.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This value is returned and is meaningful only when Type is File.
         self.size = size
-        # The storage class.
+        # The storage class of the file.
         # 
-        # This parameter is returned and valid only if the value of the Type parameter is File.
+        # This parameter is returned only when `Type` is `File`.
         # 
         # Valid values:
         # 
-        # *   InfrequentAccess: the IA storage class.
-        # *   Archive: the Archive storage class.
+        # - `InfrequentAccess`
+        # 
+        # - `Archive`
         self.storage_type = storage_type
-        # The type of the query result.
+        # The type of the entry.
         # 
         # Valid values:
         # 
-        # *   File
-        # *   Directory
+        # - `File`: a file
+        # 
+        # - `Directory`: a directory
         self.type = type
 
     def validate(self):

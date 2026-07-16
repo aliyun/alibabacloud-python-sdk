@@ -10,8 +10,12 @@ class GetWhitelistTemplateRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the whitelist template.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

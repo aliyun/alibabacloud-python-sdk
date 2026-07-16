@@ -12,9 +12,13 @@ class DeleteDataSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. **200** indicates success. Other values indicate failure. The caller can determine the cause of failure based on this field.
         self.code = code
+        # Error details if an error occurs, or **successful** if the operation succeeds.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. The caller can determine if the request was successful based on this field: **true** indicates success, and **false/null** indicates failure.
         self.success = success
 
     def validate(self):

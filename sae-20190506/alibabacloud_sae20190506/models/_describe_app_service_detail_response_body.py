@@ -18,30 +18,35 @@ class DescribeAppServiceDetailResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The status of the API call or a POP error code. Valid values:
         # 
-        # - **2xx**: indicates that the call was successful.
-        # - **3xx**: indicates that the call was redirected.
-        # - **4xx**: indicates that the call failed.
-        # - **5xx**: indicates that a server error occurred.
+        # - **2xx**: success.
+        # 
+        # - **3xx**: redirection.
+        # 
+        # - **4xx**: client error.
+        # 
+        # - **5xx**: server error.
         self.code = code
-        # The data that is returned.
+        # The returned data.
         self.data = data
-        # The returned error code. Valid values:
+        # The error code.
         # 
-        # - If the call is successful, the **ErrorCode** parameter is not returned.
-        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - If the request is successful, the **ErrorCode** field is not returned.
+        # 
+        # - If the request fails, the **ErrorCode** field is returned. For more information, see the list of **error codes** in this topic.
         self.error_code = error_code
-        # The returned information.
+        # The additional information returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the meta data was obtained. Valid values:
+        # Indicates whether the metadata was obtained. Valid values:
         # 
-        # *   **true**: The metadata was obtained.
-        # *   **false**: The metadata failed to be obtained.
+        # - **true**: The metadata was obtained.
+        # 
+        # - **false**: The metadata failed to be obtained.
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The call chain ID. Use this ID for a term query of call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -120,30 +125,31 @@ class DescribeAppServiceDetailResponseBodyData(DaraModel):
     ):
         # The name of the Dubbo application.
         self.dubbo_application_name = dubbo_application_name
-        # The name of the application.
+        # The application name.
         self.edas_app_name = edas_app_name
-        # The group to which the service belongs. You can create a custom group.
+        # The service group. This is a custom parameter.
         self.group = group
-        # The metadata. Example: `{side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}`.
+        # The metadata. Example: `{side: "provider", port: "18081", preserved: {register: {source: "SPRING_CLOUD"}},…}`
         self.metadata = metadata
-        # The methods.
+        # The list of methods.
         self.methods = methods
-        # The name of the service.
+        # The service name.
         self.service_name = service_name
-        # The port used by the service.
+        # The ports used by the service.
         self.service_ports = service_ports
         # The protocol used by the service.
         self.service_protocol = service_protocol
-        # The tag of the service.
+        # The tags of the service.
         self.service_tags = service_tags
-        # The type of the service. Valid values:
+        # The service type. Valid values:
         # 
-        # *   **dubbo**
-        # *   **springCloud**
+        # - **dubbo**
+        # 
+        # - **springCloud**
         self.service_type = service_type
         # The name of the Spring Cloud application.
         self.spring_application_name = spring_application_name
-        # The version of the service. You can create a custom version.
+        # The service version. This is a custom parameter.
         self.version = version
 
     def validate(self):
@@ -256,28 +262,23 @@ class DescribeAppServiceDetailResponseBodyDataMethods(DaraModel):
     ):
         # The class to which the method belongs.
         self.method_controller = method_controller
-        # The name of the method.
+        # The method name.
         self.name = name
         # The details of the method.
         self.name_detail = name_detail
-        # The definition of the parameter.
+        # The parameter definitions.
         self.parameter_definitions = parameter_definitions
         # The details of the parameters.
         self.parameter_details = parameter_details
-        # The types of the parameters.
+        # The parameter types.
         self.parameter_types = parameter_types
-        # The request paths. Format:
-        # 
-        # `/path`
+        # The request paths.
         self.paths = paths
-        # The request methods. Valid values:
-        # 
-        # *   **GET**
-        # *   **ALL**
+        # The request methods.
         self.request_methods = request_methods
-        # The details of the response.
+        # The details of the returned data.
         self.return_details = return_details
-        # The data format of the response.
+        # The return type.
         self.return_type = return_type
 
     def validate(self):
@@ -371,9 +372,9 @@ class DescribeAppServiceDetailResponseBodyDataMethodsParameterDefinitions(DaraMo
     ):
         # The description of the parameter.
         self.description = description
-        # The name of the parameter.
+        # The parameter name.
         self.name = name
-        # The type of the parameter.
+        # The parameter type.
         self.type = type
 
     def validate(self):

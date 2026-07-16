@@ -84,9 +84,11 @@ class ListSystemClientRulesResponseBodyRuleList(DaraModel):
         self.description = description
         # The type of the OS. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
-        # *   **all**: all types
+        # - **windows**: Windows
+        # 
+        # - **linux**: Linux
+        # 
+        # - **all**: all types
         self.platform = platform
         # An array that consists of policies.
         self.policies = policies
@@ -96,18 +98,21 @@ class ListSystemClientRulesResponseBodyRuleList(DaraModel):
         self.rule_name = rule_name
         # The type of the system defense rule. Valid values:
         # 
-        # *   **1**: alihips, process-specific defense
-        # *   **2**: alinet, network-specific defense
+        # - **1**: alihips, process-specific defense
+        # 
+        # - **2**: alinet, network-specific defense
         self.rule_type = rule_type
         # The status of the system defense rule. Valid values:
         # 
-        # *   **online**: enabled
-        # *   **offline**: disabled
+        # - **online**: enabled
+        # 
+        # - **offline**: disabled
         self.status = status
         # Whether the current rule switch takes effect. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: enabled
+        # 
+        # - **false**: disabled
         self.switch_enable = switch_enable
         # The switch ID of the system defense rule.
         self.switch_id = switch_id

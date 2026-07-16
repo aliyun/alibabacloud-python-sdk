@@ -13,11 +13,17 @@ class BatchResumeVsStreamRequest(DaraModel):
         live_stream_type: str = None,
         owner_id: int = None,
     ):
+        # The name of the stream in the AppName/StreamName format. To specify multiple streams, separate the stream names with commas.
+        # 
         # This parameter is required.
         self.channel = channel
         self.control_stream_action = control_stream_action
+        # The accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The type of live stream. Only publisher is supported, which indicates that the stream is ingested by a streamer.
+        # 
         # This parameter is required.
         self.live_stream_type = live_stream_type
         self.owner_id = owner_id

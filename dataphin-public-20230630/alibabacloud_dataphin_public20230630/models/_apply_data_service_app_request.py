@@ -12,10 +12,16 @@ class ApplyDataServiceAppRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The apply command.
+        # 
         # This parameter is required.
         self.apply_command = apply_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -64,8 +70,12 @@ class ApplyDataServiceAppRequestApplyCommand(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # The expiration date in the format of yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.expire_date = expire_date
+        # The reason for the application.
+        # 
         # This parameter is required.
         self.reason = reason
 

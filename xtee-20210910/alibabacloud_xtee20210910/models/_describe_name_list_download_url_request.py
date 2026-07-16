@@ -11,13 +11,13 @@ class DescribeNameListDownloadUrlRequest(DaraModel):
         reg_id: str = None,
         variable_id: int = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Variable ID.
+        # The variable ID.
         # 
         # This parameter is required.
         self.variable_id = variable_id

@@ -22,55 +22,114 @@ class UpdateSmsTemplateShrinkRequest(DaraModel):
         template_type: int = None,
         traffic_driving: str = None,
     ):
-        # Application scenarios, instructions as follows:
-        # - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
-        # - For launched apps, provide the app store display link with HTTP or HTTPS, ensuring the app is online.
-        # - For public accounts or mini-programs, enter the full name of the public account or mini-program, ensuring they are online.
-        # - For e-commerce platform stores, applicable only to enterprise users, enter the display link of the e-commerce store with HTTP or HTTPS.
+        # The business scenario.
+        # 
+        # - If the associated SMS signature\\"s business scenario is "Live App", the `ApplySceneContent` parameter must be an app URL starting with `http://` or `https://`.
+        # 
+        # - The `ApplySceneContent` parameter is required if the associated SMS signature\\"s business scenario is "Registered Trademark" or "Name of Enterprise or Public Institution".
         self.apply_scene_content = apply_scene_content
-        # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
-        # - **0**: Verification code.
-        # - **1**: SMS notification.
-        # - **2**: Promotional SMS.
+        # The type of the international/regional template. This parameter is required when the **TemplateType** parameter is set to **3**. Valid values:
+        # 
+        # - **0**: SMS notification.
+        # 
+        # - **1**: promotional SMS.
+        # 
+        # - **2**: verification code.
         self.intl_type = intl_type
-        # Additional information, such as uploading business proof documents or screenshots, to help reviewers understand your business details. Optional and can be left unset.
+        # Additional materials, such as supporting documents or business screenshots, to help reviewers understand your business. If `TemplateType` is set to `2` (promotional SMS), you must upload proof of user authorization. For more information, see [Upload specifications for user authorization materials](https://help.aliyun.com/document_detail/312341.html).
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
-        # SMS signature associated with the template during the application.
+        # The SMS signature associated with the template.
         self.related_sign_name = related_sign_name
-        # Explanation for the SMS template application, which serves as a reference for template review.
+        # Describe your business scenario, including a URL if applicable. You must also provide a complete SMS message example with populated variables. Providing this information as required is critical for template approval.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Template Code of an unapproved template.
+        # The code of the rejected SMS template. You can find the template code on the [Messages in Chinese Mainland > Template Management](https://dysms.console.aliyun.com/domestic/text/template) tab in the console or by calling the [QuerySmsTemplateList](~~QuerySmsTemplateList~~) operation.
         # 
         # This parameter is required.
         self.template_code = template_code
-        # Template content, up to 500 characters in length.
+        # The new template content, up to 500 characters long.
         # 
-        # Both the template content and variable content must comply with SMS regulations; otherwise, the template will fail the review. You can also view common template examples on the template application page. Using sample templates can enhance review efficiency and success rates. Variable specifications can be found in [TemplateContent Parameter Variable Specifications](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+        # The template content and its variables must comply with [SMS template specifications](https://help.aliyun.com/document_detail/463161.html) to be approved. To increase the approval rate and efficiency, refer to the common examples on the [Apply for Template](https://dysms.console.aliyun.com/domestic/text/template/add) page. For more information about variable specifications, see [TemplateContent parameter variable specifications](https://help.aliyun.com/document_detail/2806243.html).
         # 
         # This parameter is required.
         self.template_content = template_content
-        # Template name, up to 30 characters in length.
+        # The name of the SMS template, up to 30 characters long. You can find the names of rejected templates on the [Messages in Chinese Mainland > Template Management](https://dysms.console.aliyun.com/domestic/text/template) tab in the console or by calling the [QuerySmsTemplateList](~~QuerySmsTemplateList~~) operation.
         # 
         # This parameter is required.
         self.template_name = template_name
-        # Template variable rules.
-        # 
-        # For guidance on filling variable rules, refer to the [Sample Documentation](https://help.aliyun.com/zh/sms/templaterule-template-variable-parameter-filling-example?spm).
+        # The rules for the variables in the template. For details on how to define these rules, see the [example document](https://help.aliyun.com/document_detail/2806243.html).
         self.template_rule = template_rule
-        # SMS type. Values:
+        # The SMS type. Valid values:
         # 
-        # - **0**: Verification code.
+        # - **0**: verification code.
+        # 
         # - **1**: SMS notification.
-        # - **2**: Promotional SMS.
-        # - **3**: International/Hong Kong, Macao, and Taiwan messages.
         # 
-        # > Only enterprise-certified users can apply for promotional SMS and international/Hong Kong, Macao, and Taiwan messages. Details on differences between personal and enterprise user rights are available in [Usage Guidelines](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
+        # - **2**: promotional SMS.
+        # 
+        # - **3**: international/regional message.
+        # 
+        # > Only enterprise-verified users can apply for promotional SMS and international/regional messages. For more information about the differences between personal and enterprise accounts, see [Usage notes](https://help.aliyun.com/zh/sms/user-guide/usage-notes?spm=a2c4g.11186623.0.0.67447f576NJnE8).
         # 
         # This parameter is required.
         self.template_type = template_type
+        # >Warning: 
+        # 
+        # To manage SMS content security, messages that contain traffic-driving information such as phone numbers and URLs may be blocked by carriers, which can cause delivery failures. We recommend that you avoid including such information in your SMS templates to prevent delivery failures.
+        # 
+        # 
+        # 
+        # A JSON string that contains a list of traffic-driving information.
+        # >Notice: The value must be in the JSON format. Convert the value to a string before you pass it in.
+        # 
+        # ### 1. Fields
+        # 
+        # {
+        # "trafficDrivingType":"Traffic-driving type",
+        # "trafficDrivingContent":"Traffic-driving content",
+        # "variableName":"variable name",
+        # "companyName":"Name of the enterprise or public institution",
+        # "organizationCode":"Unified Social Credit Code",
+        # "icpNo":"ICP filing/permit number",
+        # "icpPicOssKey":"OSS key of the ICP filing screenshot",
+        # "companyDifferentFromSignQuaReason":"The reason why the name of the enterprise or public institution is different from that in the SMS signature qualification"
+        # }
+        # 
+        # ### 2. Notes
+        # 
+        # - If the content is not a variable, do not pass the `variableName` field.
+        # 
+        # - If the name of the enterprise or public institution is different from that in the SMS signature qualification, provide the `companyDifferentFromSignQuaReason` field.
+        # 
+        # - If `trafficDrivingType` is set to `DOMAIN`, you must provide all the fields.
+        # 
+        # - For `trafficDrivingType` values other than `DOMAIN`, the `trafficDrivingType`, `trafficDrivingContent`, `companyName`, and `organizationCode` fields are required. The `variableName` and `companyDifferentFromSignQuaReason` fields are optional.
+        # 
+        # ### 3. TrafficDrivingType enumeration
+        # 
+        # >Warning: 
+        # 
+        # Due to regulatory requirements, mobile numbers are not supported.
+        # 
+        # 
+        # 
+        # - `DOMAIN`: A domain name.
+        # 
+        # - `FIXED_PHONE`: A fixed-line phone number.
+        # 
+        # - `400_PHONE`: A phone number that starts with 400.
+        # 
+        # - `800_PHONE`: A phone number that starts with 800.
+        # 
+        # - `95_PHONE`: A phone number that starts with 95.
+        # 
+        # - `96_PHONE`: A phone number that starts with 96.
+        # 
+        # - `1_PHONE`: A 3-digit to 8-digit phone number that starts with 1.
+        # 
+        # - `OTHER_PHONE`: Another type of phone number.
         self.traffic_driving = traffic_driving
 
     def validate(self):

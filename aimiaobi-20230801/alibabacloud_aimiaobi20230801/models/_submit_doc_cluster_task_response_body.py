@@ -15,11 +15,17 @@ class SubmitDocClusterTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class SubmitDocClusterTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The unique ID of the task.
         self.task_id = task_id
 
     def validate(self):

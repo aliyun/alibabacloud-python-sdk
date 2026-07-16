@@ -22,6 +22,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         endpoint_list: List[main_models.DescribeAIDBClusterAttributeResponseBodyEndpointList] = None,
         expire_time: str = None,
         expired: bool = None,
+        gateway_id: str = None,
         internal_ip: str = None,
         kvcache_instance_id: str = None,
         kube_cluster_id: str = None,
@@ -35,42 +36,117 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         request_id: str = None,
         run_type: str = None,
         storage_type: str = None,
+        time_slices_info: main_models.DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo = None,
+        time_slices_type: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
+        vnode_kubernetes_config: main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig = None,
         volumes: List[main_models.DescribeAIDBClusterAttributeResponseBodyVolumes] = None,
         zone_id: str = None,
         zone_ids: str = None,
     ):
+        # The node type. Valid values:
+        # - vnode: ACK-managed
+        # - container: loginable container
+        # - maas: model service
         self.ai_node_type = ai_node_type
+        # The API key.
         self.api_key = api_key
+        # The cluster creation time.
         self.creation_time = creation_time
+        # The cluster description. Fuzzy match is supported.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The cluster status. Valid values:
+        # 
+        # - **Creating**: being created
+        # - **Running**: running
+        # - **Deleting**: being released
+        # - **DBNodeCreating**: adding a node
+        # - **DBNodeDeleting**: deleting a node
+        # - **ClassChanging**: changing node specifications 
+        # - **Deleted**: released
         self.dbcluster_status = dbcluster_status
+        # The node details.
         self.dbnodes = dbnodes
+        # The cluster version. Valid values:
+        # 
+        # **1.0**
+        # 
+        # **2.0**
+        # 
+        # **3.0**
         self.dbversion = dbversion
+        # The security group ID.
         self.ecs_security_group_id = ecs_security_group_id
+        # The list of network connection addresses of the instance.
         self.endpoint_list = endpoint_list
+        # The cluster expiration time.
+        # 
+        # > This parameter returns a value only for clusters whose billing method is **Prepaid** (subscription). An empty value is returned for **Postpaid** (pay-as-you-go) clusters.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.expired = expired
+        self.gateway_id = gateway_id
+        # The internal IP address.
         self.internal_ip = internal_ip
+        # The KVCache instance ID.
         self.kvcache_instance_id = kvcache_instance_id
+        # The ACK cluster ID.
         self.kube_cluster_id = kube_cluster_id
+        # The instance lock mode. The value **lock** indicates that the instance is automatically expired or has an overdue payment.
         self.lock_mode = lock_mode
+        # The maximum number of requests per minute.
         self.max_qpm = max_qpm
+        # The model name.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The public IP address.
         self.public_ip = public_ip
+        # The region ID.
         self.region_id = region_id
         # Id of the request
         self.request_id = request_id
+        # The architecture type. Valid values:
+        # - container: AI container
+        # - ainode: AI node
         self.run_type = run_type
+        # Valid values for Enterprise Edition storage type:
+        # - **PSL5**
+        # - **PSL4**
+        # 
+        # Valid values for Standard Edition storage type:
+        # - **ESSDPL0**
+        # - **ESSDPL1**
+        # - **ESSDPL2**
+        # - **ESSDPL3**
+        # - **ESSDAUTOPL**
         self.storage_type = storage_type
+        self.time_slices_info = time_slices_info
+        self.time_slices_type = time_slices_type
+        # The VPC ID specified for the zone switchover.
         self.vpcid = vpcid
+        # The vSwitch ID.
+        # 
+        # > If VPCId is specified, VSwitchId is required.
         self.v_switch_id = v_switch_id
+        self.vnode_kubernetes_config = vnode_kubernetes_config
+        # The list of data cloud disks.
         self.volumes = volumes
+        # The zone ID of the PolarDB cluster node.
         self.zone_id = zone_id
+        # The zone IDs.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -82,6 +158,10 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
             for v1 in self.endpoint_list:
                  if v1:
                     v1.validate()
+        if self.time_slices_info:
+            self.time_slices_info.validate()
+        if self.vnode_kubernetes_config:
+            self.vnode_kubernetes_config.validate()
         if self.volumes:
             for v1 in self.volumes:
                  if v1:
@@ -132,6 +212,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if self.expired is not None:
             result['Expired'] = self.expired
 
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
+
         if self.internal_ip is not None:
             result['InternalIp'] = self.internal_ip
 
@@ -171,11 +254,20 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
 
+        if self.time_slices_info is not None:
+            result['TimeSlicesInfo'] = self.time_slices_info.to_map()
+
+        if self.time_slices_type is not None:
+            result['TimeSlicesType'] = self.time_slices_type
+
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+
+        if self.vnode_kubernetes_config is not None:
+            result['VnodeKubernetesConfig'] = self.vnode_kubernetes_config.to_map()
 
         result['Volumes'] = []
         if self.volumes is not None:
@@ -234,6 +326,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
 
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
+
         if m.get('InternalIp') is not None:
             self.internal_ip = m.get('InternalIp')
 
@@ -273,11 +368,22 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
 
+        if m.get('TimeSlicesInfo') is not None:
+            temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo()
+            self.time_slices_info = temp_model.from_map(m.get('TimeSlicesInfo'))
+
+        if m.get('TimeSlicesType') is not None:
+            self.time_slices_type = m.get('TimeSlicesType')
+
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VnodeKubernetesConfig') is not None:
+            temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig()
+            self.vnode_kubernetes_config = temp_model.from_map(m.get('VnodeKubernetesConfig'))
 
         self.volumes = []
         if m.get('Volumes') is not None:
@@ -302,10 +408,15 @@ class DescribeAIDBClusterAttributeResponseBodyVolumes(DaraModel):
         storage_category: str = None,
         storage_type: str = None,
     ):
+        # The mount path inside the container.
         self.mount_path = mount_path
+        # The cloud disk name.
         self.name = name
+        # The storage size.
         self.size_gb = size_gb
+        # The storage type.
         self.storage_category = storage_category
+        # The storage class.
         self.storage_type = storage_type
 
     def validate(self):
@@ -352,11 +463,212 @@ class DescribeAIDBClusterAttributeResponseBodyVolumes(DaraModel):
 
         return self
 
+class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfig(DaraModel):
+    def __init__(
+        self,
+        labels: List[main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels] = None,
+        taints: List[main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints] = None,
+    ):
+        self.labels = labels
+        self.taints = taints
+
+    def validate(self):
+        if self.labels:
+            for v1 in self.labels:
+                 if v1:
+                    v1.validate()
+        if self.taints:
+            for v1 in self.taints:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['Labels'] = []
+        if self.labels is not None:
+            for k1 in self.labels:
+                result['Labels'].append(k1.to_map() if k1 else None)
+
+        result['Taints'] = []
+        if self.taints is not None:
+            for k1 in self.taints:
+                result['Taints'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k1 in m.get('Labels'):
+                temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels()
+                self.labels.append(temp_model.from_map(k1))
+
+        self.taints = []
+        if m.get('Taints') is not None:
+            for k1 in m.get('Taints'):
+                temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints()
+                self.taints.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints(DaraModel):
+    def __init__(
+        self,
+        effect: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.effect = effect
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.effect is not None:
+            result['Effect'] = self.effect
+
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Effect') is not None:
+            self.effect = m.get('Effect')
+
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigLabels(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfo(DaraModel):
+    def __init__(
+        self,
+        time_slices: List[main_models.DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices] = None,
+    ):
+        self.time_slices = time_slices
+
+    def validate(self):
+        if self.time_slices:
+            for v1 in self.time_slices:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['TimeSlices'] = []
+        if self.time_slices is not None:
+            for k1 in self.time_slices:
+                result['TimeSlices'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.time_slices = []
+        if m.get('TimeSlices') is not None:
+            for k1 in m.get('TimeSlices'):
+                temp_model = main_models.DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices()
+                self.time_slices.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeAIDBClusterAttributeResponseBodyTimeSlicesInfoTimeSlices(DaraModel):
+    def __init__(
+        self,
+        begin_time: str = None,
+        end_time: str = None,
+    ):
+        self.begin_time = begin_time
+        self.end_time = end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+
+        return self
+
 class DescribeAIDBClusterAttributeResponseBodyEndpointList(DaraModel):
     def __init__(
         self,
         net_info_items: List[main_models.DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems] = None,
     ):
+        # The list of network information of the instance.
         self.net_info_items = net_info_items
 
     def validate(self):
@@ -394,8 +706,14 @@ class DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems(DaraModel
         net_type: str = None,
         port: str = None,
     ):
+        # The database connection address.
         self.connection_string = connection_string
+        # The network type of the connection string. Valid values:
+        # * **Public**: public endpoint
+        # * **Private**: private endpoint
+        # * **Inner**: private endpoint (classic network)
         self.net_type = net_type
+        # The port number.
         self.port = port
 
     def validate(self):
@@ -449,20 +767,45 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodes(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The list of data cloud disks.
         self.child_volumes = child_volumes
+        # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
+        # The creation time.
         self.creation_time = creation_time
+        # The cluster specifications.
         self.dbnode_class = dbnode_class
+        # The node description.
         self.dbnode_description = dbnode_description
+        # The node ID.
         self.dbnode_id = dbnode_id
+        # The node status. Valid values:
+        # * **Creating**: being created 
+        # * **Running**: running 
+        # * **Deleting**: being deleted  
+        # * **Rebooting**: being restarted  
+        # * **DBNodeCreating**: adding a node  
+        # * **DBNodeDeleting**: deleting a node 
+        # * **ClassChanging**: changing node specifications  
+        # * **MinorVersionUpgrading**: upgrading the minor version
+        # * **Maintaining**: under maintenance  
+        # * **Switching**: being switched
         self.dbnode_status = dbnode_status
+        # The number of GPU cards.
         self.gpu = gpu
+        # The private IP address.
         self.link_ip = link_ip
+        # The memory size of the node. Unit: MB.
         self.memory_size = memory_size
+        # The public IP address.
         self.public_ip = public_ip
+        # The Kubernetes virtual node ID.
         self.vnode_id = vnode_id
+        # The VPC ID.
         self.vpcid = vpcid
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -586,10 +929,15 @@ class DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes(DaraModel):
         storage_category: str = None,
         storage_type: str = None,
     ):
+        # The actual mount path.
         self.mount_path = mount_path
+        # The cloud disk name.
         self.name = name
+        # The storage size.
         self.size_gb = size_gb
+        # The storage type.
         self.storage_category = storage_category
+        # The storage class.
         self.storage_type = storage_type
 
     def validate(self):

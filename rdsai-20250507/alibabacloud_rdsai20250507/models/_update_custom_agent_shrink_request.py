@@ -14,18 +14,18 @@ class UpdateCustomAgentShrinkRequest(DaraModel):
         system_prompt: str = None,
         tools_shrink: str = None,
     ):
-        # The operation that you want to perform. Set the value to **UpdateCustomAgent**.
+        # The agent ID.
         # 
         # This parameter is required.
         self.custom_agent_id = custom_agent_id
-        # The system prompts.
+        # Specifies whether to enable tools.
         self.enable_tools = enable_tools
-        # The ID of the agent.
+        # The name of the custom agent.
         self.name = name
         self.skill_ids_shrink = skill_ids_shrink
-        # The name of the agent.
+        # The system prompt.
         self.system_prompt = system_prompt
-        # Specifies whether to enable tools.
+        # The tools that the custom agent can use.
         self.tools_shrink = tools_shrink
 
     def validate(self):

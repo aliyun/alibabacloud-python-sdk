@@ -14,12 +14,7 @@ class UpdateProjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # Specifies whether to enable the recycle bin feature.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable the recycle bin.
         self.recycle_bin_enabled = recycle_bin_enabled
 
     def validate(self):

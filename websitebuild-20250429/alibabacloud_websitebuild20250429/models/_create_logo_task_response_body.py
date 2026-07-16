@@ -13,11 +13,15 @@ class CreateLogoTaskResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The task ID returned when the call is successful. Keep this ID safe. This ID is required when you query the creation status.
         self.task_id = task_id
 
     def validate(self):

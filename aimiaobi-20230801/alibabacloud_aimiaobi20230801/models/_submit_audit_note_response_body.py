@@ -14,12 +14,17 @@ class SubmitAuditNoteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Task ID of this rule library submission. Use this ID in later API calls.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):

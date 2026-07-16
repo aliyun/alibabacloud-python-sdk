@@ -15,9 +15,13 @@ class DescribeConfiguredDomainNamesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of domain names.
         self.domain_names = domain_names
+        # The application module.
         self.module = module
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,9 +78,13 @@ class DescribeConfiguredDomainNamesResponseBodyDomainNames(DaraModel):
         is_malicious: bool = None,
         operation_time: int = None,
     ):
+        # The comment.
         self.comment = comment
+        # The domain name.
         self.domain_name = domain_name
+        # Indicates whether the domain name is malicious. Valid values: `0` (not malicious) and `1` (malicious).
         self.is_malicious = is_malicious
+        # The time of the operation, specified as a Unix timestamp in seconds. Example: `1672502400`.
         self.operation_time = operation_time
 
     def validate(self):

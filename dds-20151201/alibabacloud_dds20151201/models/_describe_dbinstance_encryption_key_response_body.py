@@ -27,8 +27,9 @@ class DescribeDBInstanceEncryptionKeyResponseBody(DaraModel):
         self.encryption_key = encryption_key
         # Indicates whether the key for the instance is enabled. Valid values:
         # 
-        # *   **Enabled**
-        # *   **Disabled**
+        # - **Enabled**
+        # 
+        # - **Disabled**
         self.encryption_key_status = encryption_key_status
         # The purpose of the key for the instance.
         self.key_usage = key_usage

@@ -10,9 +10,9 @@ class ModifyAppKeyResponseBody(DaraModel):
         request_id: str = None,
         data: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned data object.
+        # The returned data object.
         self.data = data
 
     def validate(self):

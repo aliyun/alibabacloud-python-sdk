@@ -19,22 +19,38 @@ class DialogueRequest(DaraModel):
         task_id: str = None,
         utterance: str = None,
     ):
+        # Action to perform for outbound calls. Hangup ends the call.
         self.action_key = action_key
+        # Parameters required to perform the action. (Deprecated)
         self.action_params = action_params
+        # Call ID
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # Call type, typically Outbound
+        # 
         # This parameter is required.
         self.call_type = call_type
+        # Called number
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # Calling number
+        # 
         # This parameter is required.
         self.calling_number = calling_number
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Scenario ID
         self.scenario_id = scenario_id
-        # 场景id
+        # Scenario ID
         self.script_id = script_id
+        # Task ID
         self.task_id = task_id
+        # User utterance
+        # 
         # This parameter is required.
         self.utterance = utterance
 

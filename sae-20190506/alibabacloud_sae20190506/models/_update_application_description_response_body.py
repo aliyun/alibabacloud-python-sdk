@@ -16,27 +16,33 @@ class UpdateApplicationDescriptionResponseBody(DaraModel):
     ):
         # The HTTP status code or the error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The error code returned if the call failed. Value values:
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - If the request was successful, **ErrorCode** is not returned.
+        # 
+        # - If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
         # The message returned. The following limits are imposed on the ID:
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   An error code is returned when a request failed.
+        # - If the request was successful, **success** is returned.
+        # 
+        # - An error code is returned when a request failed.
         self.message = message
         # Request ID.
         self.request_id = request_id
         # Indicates whether the application was deployed. Valid values:
         # 
-        # *   **true**: The application was deployed.
-        # *   **false**: The application failed to be deployed.
+        # - **true**: The application was deployed.
+        # 
+        # - **false**: The application failed to be deployed.
         self.success = success
         # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id

@@ -17,27 +17,27 @@ class CreateFieldRequest(DaraModel):
         title: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Field classification.
+        # The field classification.
         self.classify = classify
-        # Description information.
+        # The description.
         self.description = description
-        # Enum data.
+        # The enumeration data.
         self.enum_data = enum_data
-        # Field name.
+        # The field name.
         self.name = name
-        # Region code.
+        # The region ID.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Business source.
+        # The business source.
         self.source = source
-        # Title.
+        # The title.
         self.title = title
-        # Field type.
+        # The field type.
         self.type = type
 
     def validate(self):

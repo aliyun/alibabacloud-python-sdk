@@ -1,3 +1,10 @@
+2026-05-21 Version: 1.4.3
+- Update API CreateApplicationVersion: add request parameters ToolConfig.
+- Update API GetApplication: add response parameters Body.Data.DraftVersion.ToolConfig.
+- Update API GetApplication: add response parameters Body.Data.PublishedVersion.ToolConfig.
+- Update API UpdateApplicationVersion: add request parameters ToolConfig.
+
+
 2026-05-20 Version: 1.4.2
 - Update API CreateApplicationVersion: add request parameters TranscriberConfig.CorrectionRules.
 - Update API CreateApplicationVersion: add request parameters TranscriberConfig.CustomizationId.

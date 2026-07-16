@@ -12,12 +12,19 @@ class DescribeComponentPropetiesRequest(DaraModel):
         region_id: str = None,
         storage_type: str = None,
     ):
+        # The commodity code.
+        # 
         # This parameter is required.
         self.commodity_code = commodity_code
+        # The resource group ID.
+        # 
         # This parameter is required.
         self.component_name = component_name
+        # The region in which the instance resides. > You can call the [describeregions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The storage type.
         self.storage_type = storage_type
 
     def validate(self):

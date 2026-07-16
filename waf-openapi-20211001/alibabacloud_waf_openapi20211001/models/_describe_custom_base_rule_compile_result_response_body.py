@@ -10,7 +10,15 @@ class DescribeCustomBaseRuleCompileResultResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The compilation result. Valid values:
+        # 
+        # - **success**: The rule is successfully compiled.
+        # 
+        # - **compiling**: The rule is being compiled.
+        # 
+        # - **failed**: The rule failed to be compiled.
         self.result = result
 
     def validate(self):

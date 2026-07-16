@@ -13,8 +13,12 @@ class DeleteQualitySchedulesRequest(DaraModel):
         delete_command: main_models.DeleteQualitySchedulesRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,8 @@ class DeleteQualitySchedulesRequestDeleteCommand(DaraModel):
         self,
         schedule_id_list: List[int] = None,
     ):
+        # The IDs of the scheduling objects.
+        # 
         # This parameter is required.
         self.schedule_id_list = schedule_id_list
 

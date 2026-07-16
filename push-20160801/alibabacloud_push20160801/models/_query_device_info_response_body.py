@@ -11,7 +11,9 @@ class QueryDeviceInfoResponseBody(DaraModel):
         device_info: main_models.QueryDeviceInfoResponseBodyDeviceInfo = None,
         request_id: str = None,
     ):
+        # Device details.
         self.device_info = device_info
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,17 +60,29 @@ class QueryDeviceInfoResponseBodyDeviceInfo(DaraModel):
         push_enabled: bool = None,
         tags: str = None,
     ):
+        # Account attached to the device.
         self.account = account
+        # Alias attached to the device.
         self.alias = alias
+        # Device brand.
         self.brand = brand
+        # Device ID.
         self.device_id = device_id
+        # Device token.
         self.device_token = device_token
+        # Device type.
         self.device_type = device_type
+        # Last online time.
         self.last_online_time = last_online_time
+        # Device model.
         self.model = model
+        # Is online.
         self.online = online
+        # Phone number.
         self.phone_number = phone_number
+        # Is push feature enabled.
         self.push_enabled = push_enabled
+        # Tags attached to the device.
         self.tags = tags
 
     def validate(self):

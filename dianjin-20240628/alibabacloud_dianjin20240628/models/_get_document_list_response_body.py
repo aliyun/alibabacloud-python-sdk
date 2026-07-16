@@ -19,13 +19,21 @@ class GetDocumentListResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetDocumentListResponseBodyData(DaraModel):
         total_pages: int = None,
         total_records: int = None,
     ):
+        # The current page number. This is a paging parameter.
         self.current_page = current_page
+        # The number of entries per page. This is a paging parameter.
         self.page_size = page_size
+        # The records.
         self.records = records
+        # The total number of pages. This is a paging parameter.
         self.total_pages = total_pages
+        # The total number of records.
         self.total_records = total_records
 
     def validate(self):
@@ -172,14 +185,23 @@ class GetDocumentListResponseBodyDataRecords(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The document ID.
         self.doc_id = doc_id
+        # The document metadata.
         self.document_meta = document_meta
+        # The document type.
         self.file_type = file_type
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the library to which the document belongs.
         self.library_id = library_id
+        # The document status. Valid values: WaitRefresh (waiting for refresh), InQueue (pending), FetchingData (retrieving data), Embedding (processing document), Error (error), Completed (available), and Null (unknown).
         self.status_code = status_code
+        # The document title.
         self.title = title
+        # The document URL. This field will be deprecated. The value is empty. To get the document URL, use the GetDocumentUrl operation.
         self.url = url
 
     def validate(self):

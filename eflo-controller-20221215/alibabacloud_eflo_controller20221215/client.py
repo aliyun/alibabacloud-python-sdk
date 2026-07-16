@@ -21,6 +21,26 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'me-east-1': 'eflo-controller.me-east-1.aliyuncs.com',
+            'eu-central-1': 'eflo-controller.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'eflo-controller.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'eflo-controller.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'eflo-controller.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'eflo-controller.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'eflo-controller.cn-shanghai.aliyuncs.com',
+            'cn-huhehaote': 'eflo-controller.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'eflo-controller.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'eflo-controller.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou': 'eflo-controller.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'eflo-controller.cn-guangzhou.aliyuncs.com',
+            'cn-beijing': 'eflo-controller.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'eflo-controller.ap-sourtheast-8.aliyuncs.com',
+            'ap-southeast-7': 'eflo-controller.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-3': 'eflo-controller.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'eflo-controller.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'eflo-controller.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('eflo-controller', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4802,10 +4822,14 @@ class Client(OpenApiClient):
 
     def update_node_group_with_options(
         self,
-        request: main_models.UpdateNodeGroupRequest,
+        tmp_req: main_models.UpdateNodeGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateNodeGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateNodeGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.system_disk):
+            request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         body = {}
         if not DaraCore.is_null(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
@@ -4821,6 +4845,8 @@ class Client(OpenApiClient):
             body['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.ram_role_name):
             body['RamRoleName'] = request.ram_role_name
+        if not DaraCore.is_null(request.system_disk_shrink):
+            body['SystemDisk'] = request.system_disk_shrink
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(
@@ -4844,10 +4870,14 @@ class Client(OpenApiClient):
 
     async def update_node_group_with_options_async(
         self,
-        request: main_models.UpdateNodeGroupRequest,
+        tmp_req: main_models.UpdateNodeGroupRequest,
         runtime: RuntimeOptions,
     ) -> main_models.UpdateNodeGroupResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.UpdateNodeGroupShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.system_disk):
+            request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         body = {}
         if not DaraCore.is_null(request.file_system_mount_enabled):
             body['FileSystemMountEnabled'] = request.file_system_mount_enabled
@@ -4863,6 +4893,8 @@ class Client(OpenApiClient):
             body['NodeGroupId'] = request.node_group_id
         if not DaraCore.is_null(request.ram_role_name):
             body['RamRoleName'] = request.ram_role_name
+        if not DaraCore.is_null(request.system_disk_shrink):
+            body['SystemDisk'] = request.system_disk_shrink
         if not DaraCore.is_null(request.user_data):
             body['UserData'] = request.user_data
         req = open_api_util_models.OpenApiRequest(

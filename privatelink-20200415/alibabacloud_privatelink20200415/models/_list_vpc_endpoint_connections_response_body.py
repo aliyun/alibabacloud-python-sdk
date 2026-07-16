@@ -16,18 +16,17 @@ class ListVpcEndpointConnectionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The endpoint connections.
+        # The information about the endpoint connections.
         self.connections = connections
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If no value is returned for **NextToken**, no next requests are performed.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # The token that is used for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is to be sent.
+        # - If a value of **NextToken** is returned, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned in the endpoint connection list.
         self.total_count = total_count
 
     def validate(self):
@@ -99,39 +98,51 @@ class ListVpcEndpointConnectionsResponseBodyConnections(DaraModel):
         traffic_control_mode: str = None,
         zones: List[main_models.ListVpcEndpointConnectionsResponseBodyConnectionsZones] = None,
     ):
-        # The bandwidth of the endpoint connection. Valid values: **1024 to 10240**. Unit: Mbit/s.
+        # The bandwidth of the endpoint connection. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The state of the endpoint connection. Valid values:
         # 
-        # *   **Pending**: The connection is being modified.
-        # *   **Connecting**: The connection is being established.
-        # *   **Connected**: The connection is established.
-        # *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-        # *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-        # *   **Deleting**: The connection is being deleted.
-        # *   **ServiceDeleted**: The corresponding endpoint service has been deleted.
+        # - **Pending**: The endpoint connection is being modified.
+        # 
+        # - **Connecting**: The endpoint connection is being established.
+        # 
+        # - **Connected**: The endpoint is connected to the endpoint service.
+        # 
+        # - **Disconnecting**: The endpoint is being disconnected from the endpoint service.
+        # 
+        # - **Disconnected**: The endpoint is disconnected from the endpoint service.
+        # 
+        # - **Deleting**: The endpoint connection is being deleted.
+        # 
+        # - **ServiceDeleted**: The corresponding endpoint service is deleted.
         self.connection_status = connection_status
         # The endpoint ID.
         self.endpoint_id = endpoint_id
         # The ID of the Alibaba Cloud account to which the endpoint belongs.
         self.endpoint_owner_id = endpoint_owner_id
+        # The region ID of the endpoint.
         self.endpoint_region_id = endpoint_region_id
         # The ID of the virtual private cloud (VPC) to which the endpoint belongs.
         self.endpoint_vpc_id = endpoint_vpc_id
-        # The time when the endpoint connection was modified.
+        # The time when the connection was modified.
         self.modified_time = modified_time
         # The ID of the resource group to which the endpoint belongs.
         self.resource_group_id = resource_group_id
         # Indicates whether the endpoint and the endpoint service belong to the same Alibaba Cloud account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.resource_owner = resource_owner
         # The endpoint service ID.
         self.service_id = service_id
+        # The region ID of the endpoint service.
         self.service_region_id = service_region_id
+        # - Scalability: automatic scaling. In this mode, the bandwidth configured for the endpoint connection does not take effect.
+        # 
+        # - BandwidthLimit: the bandwidth limit of the endpoint connection. The bandwidth limit is the value of Bandwidth.
         self.traffic_control_mode = traffic_control_mode
-        # The zones.
+        # The zone information.
         self.zones = zones
 
     def validate(self):
@@ -248,29 +259,28 @@ class ListVpcEndpointConnectionsResponseBodyConnectionsZones(DaraModel):
     ):
         # The endpoint ENI ID.
         self.eni_id = eni_id
-        # The ID of the replaced endpoint ENI in smooth migration scenarios.
+        # The ID of the endpoint ENI that is replaced in the smooth migration scenario.
         self.replaced_eni_id = replaced_eni_id
-        # The ID of the replaced service resource in smooth migration scenarios.
+        # The ID of the service resource that is replaced in the smooth migration scenario.
         self.replaced_resource_id = replaced_resource_id
         # The service resource ID.
         self.resource_id = resource_id
-        # The ID of the vSwitch to which the endpoint belongs.
+        # The vSwitch to which the endpoint belongs.
         self.v_switch_id = v_switch_id
         # The domain name of the zone.
         self.zone_domain = zone_domain
         # The zone ID.
         self.zone_id = zone_id
         # The state of the zone. Valid values:
-        # 
-        # *   **Creating**: The zone is being created.
-        # *   **Wait**: The zone is to be connected.
-        # *   **Connected**: The zone is connected.
-        # *   **Deleting**: The zone is being deleted.
-        # *   **Disconnecting**: The zone is being disconnected.
-        # *   **Disconnected**: The zone is disconnected.
-        # *   **Connecting**: The zone is being connected.
-        # *   **Migrating**: The zone is being migrated.
-        # *   **Migrated**: The zone is migrated.
+        # - **Creating**: The zone is being created.
+        # - **Wait**: The zone is waiting to be connected.
+        # - **Connected**: The zone is connected.
+        # - **Deleting**: The zone is being deleted.
+        # - **Disconnecting**: The zone is being disconnected.
+        # - **Disconnected**: The zone is disconnected.
+        # - **Connecting**: The zone is being connected.
+        # - **Migrating**: The zone is being migrated.
+        # - **Migrated**: The zone is migrated.
         self.zone_status = zone_status
 
     def validate(self):

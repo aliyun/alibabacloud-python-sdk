@@ -17,11 +17,17 @@ class TermQueryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class TermQueryResponseBodyData(DaraModel):
         fail_count: int = None,
         terms: List[main_models.TermQueryResponseBodyDataTerms] = None,
     ):
+        # The number of items that failed processing.
         self.fail_count = fail_count
+        # A list of identified intervention terms.
         self.terms = terms
 
     def validate(self):
@@ -126,8 +134,11 @@ class TermQueryResponseBodyDataTerms(DaraModel):
         term_id: str = None,
         tgt: str = None,
     ):
+        # The term in the source language.
         self.src = src
+        # The ID of the intervention term.
         self.term_id = term_id
+        # The translated term in the target language.
         self.tgt = tgt
 
     def validate(self):

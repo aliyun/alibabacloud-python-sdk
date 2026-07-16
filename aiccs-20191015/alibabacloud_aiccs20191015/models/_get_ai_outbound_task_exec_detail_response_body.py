@@ -16,10 +16,17 @@ class GetAiOutboundTaskExecDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # List of task executions.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API was invoked successfully.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -77,10 +84,15 @@ class GetAiOutboundTaskExecDetailResponseBodyData(DaraModel):
         page_size: int = None,
         total_results: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Indicates whether a next page exists.
         self.has_next_page = has_next_page
+        # List of outbound call executions.
         self.list = list
+        # Page size.
         self.page_size = page_size
+        # Total number of jobs.
         self.total_results = total_results
 
     def validate(self):
@@ -148,14 +160,29 @@ class GetAiOutboundTaskExecDetailResponseBodyDataList(DaraModel):
         status: int = None,
         status_desc: int = None,
     ):
+        # Job batch.
         self.batch_version = batch_version
+        # Custom business information
         self.biz_data = biz_data
+        # The number of outbound calls.
         self.call_count = call_count
+        # The activity ID associated with this outbound call.
         self.case_id = case_id
+        # Number import time. UNIX timestamp format, unit: milliseconds.
         self.create_time = create_time
+        # Result of the last outbound call.
         self.last_call_result = last_call_result
+        # Outbound phone number.
         self.phone_num = phone_num
+        # Execution status. Valid values:
+        # 
+        # - **1**: Pending call.
+        # - **2**: Calling.
+        # - **3**: Completed.
+        # - **4**: Stopped.
+        # - **5**: Pending retry.
         self.status = status
+        # Execution status description.
         self.status_desc = status_desc
 
     def validate(self):

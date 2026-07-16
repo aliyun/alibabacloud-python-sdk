@@ -11,8 +11,11 @@ class GetAccessTokenRequest(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name of the agent runtime.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

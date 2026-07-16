@@ -13,11 +13,17 @@ class ListAppsRequest(DaraModel):
         page_size: int = None,
         title: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The page number.
         self.page_num = page_num
+        # The page size.
         self.page_size = page_size
+        # The title.
         self.title = title
 
     def validate(self):

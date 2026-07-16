@@ -10,7 +10,13 @@ class DeleteIpsPrivateAssocRequest(DaraModel):
         lang: str = None,
         resource_id: str = None,
     ):
+        # The language of the request and response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The instance ID.
         self.resource_id = resource_id
 
     def validate(self):

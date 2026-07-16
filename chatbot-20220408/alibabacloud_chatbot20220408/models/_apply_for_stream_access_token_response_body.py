@@ -12,10 +12,13 @@ class ApplyForStreamAccessTokenResponseBody(DaraModel):
         request_id: str = None,
         stream_secret: str = None,
     ):
+        # Request token for the service.
         self.access_token = access_token
+        # Channel ID
         self.channel_id = channel_id
         # Id of the request
         self.request_id = request_id
+        # Key of the workspace, used to add signature to stream requests
         self.stream_secret = stream_secret
 
     def validate(self):

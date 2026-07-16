@@ -27,48 +27,50 @@ class ListAppInstancesResponseBody(DaraModel):
         result_limit: bool = None,
         root_error_code: str = None,
         root_error_msg: str = None,
+        start_position: str = None,
         synchro: bool = None,
         total_page_num: int = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Current page number.
+        # The current page number.
         self.current_page_num = current_page_num
-        # Query result.
+        # The request result.
         self.data = data
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic message, not in use, please ignore
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
-        # 返回错误参数
+        # The error arguments returned.
         self.error_args = error_args
-        # The number of results per query.
+        # The maximum number of results per query.
         # 
-        # Value range: 10~100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Whether there is a next page.
+        # Indicates whether a next page exists.
         self.next_page = next_page
-        # The token for the next query. It is empty when there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Whether there is a previous page
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # For the current query, apart from pagination limits, the server processes up to the most recent 1000 records. If the result exceeds 1000 records, **ResultLimit** is **true**, please narrow down the time range and search again; otherwise, **ResultLimit** is **false**.
+        # In addition to pagination limits, the server processes a maximum of 1,000 recent records per query. If the results exceed 1,000 records, **ResultLimit** is **true**, and you must narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Error message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        self.start_position = start_position
+        # The reserved parameter.
         self.synchro = synchro
-        # Total number of pages.
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -135,6 +137,9 @@ class ListAppInstancesResponseBody(DaraModel):
         if self.root_error_msg is not None:
             result['RootErrorMsg'] = self.root_error_msg
 
+        if self.start_position is not None:
+            result['StartPosition'] = self.start_position
+
         if self.synchro is not None:
             result['Synchro'] = self.synchro
 
@@ -198,6 +203,9 @@ class ListAppInstancesResponseBody(DaraModel):
 
         if m.get('RootErrorMsg') is not None:
             self.root_error_msg = m.get('RootErrorMsg')
+
+        if m.get('StartPosition') is not None:
+            self.start_position = m.get('StartPosition')
 
         if m.get('Synchro') is not None:
             self.synchro = m.get('Synchro')

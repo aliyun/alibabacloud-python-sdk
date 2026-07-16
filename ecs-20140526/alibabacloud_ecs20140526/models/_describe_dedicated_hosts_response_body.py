@@ -18,13 +18,13 @@ class DescribeDedicatedHostsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.dedicated_hosts = dedicated_hosts
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. If the return value of this parameter is empty when you specify MaxResults and NextToken for a paged query, no more results are to be returned.
+        # The token used to retrieve the next page of results. An empty value indicates that no more results are available.
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of dedicated hosts.
         self.total_count = total_count

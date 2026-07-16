@@ -10,6 +10,7 @@ class ListConnectionsRequest(DaraModel):
         connection_name_prefix: str = None,
         max_results: int = None,
         next_token: str = None,
+        type: str = None,
     ):
         # The key word that you specify to query connections. Connections can be queried by prefixes.
         self.connection_name_prefix = connection_name_prefix
@@ -21,6 +22,8 @@ class ListConnectionsRequest(DaraModel):
         # 
         # *   Default value: 0.
         self.next_token = next_token
+        # 按连接类型过滤查询结果。可选值：Http、MySQL、PostgreSQL、Elasticsearch。不传则返回所有类型
+        self.type = type
 
     def validate(self):
         pass
@@ -39,6 +42,9 @@ class ListConnectionsRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        if self.type is not None:
+            result['Type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -51,6 +57,9 @@ class ListConnectionsRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 

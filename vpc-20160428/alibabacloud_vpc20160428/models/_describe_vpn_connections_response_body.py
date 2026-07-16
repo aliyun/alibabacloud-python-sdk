@@ -18,7 +18,7 @@ class DescribeVpnConnectionsResponseBody(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page for paging queries.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -141,126 +141,35 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(DaraModel):
         vpn_connection_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # 转发路由器实例所属的云企业网实例ID。
         self.attach_instance_id = attach_instance_id
-        # IPsec连接绑定的资源类型。
-        # 
-        # - **CEN**：表示IPsec连接已绑定云企业网实例下的转发路由器实例。
-        # - **NO_ASSOCIATED**：表示IPsec连接未绑定任何资源。
-        # - **VPNGW**：表示IPsec连接绑定了VPN网关实例。
         self.attach_type = attach_type
-        # 创建IPsec连接的时间戳。单位：毫秒。
-        # 
-        # 时间戳的格式采用Unix时间戳，表示从格林威治时间1970年01月01日00时00分00秒至创建IPsec连接时的总时长。
         self.create_time = create_time
-        # IPsec连接是否绑定了跨账号的转发路由器实例。
-        # 
-        # - **true**：是。
-        # - **false**：否。
         self.cross_account_authorized = cross_account_authorized
-        # IPsec连接关联的用户网关的实例ID。
         self.customer_gateway_id = customer_gateway_id
-        # IPsec连接的配置是否立即生效。
-        # 
-        # - **true**：是，配置变更完成后触发重连。
-        # - **false**：否，有流量时触发重连。
         self.effect_immediately = effect_immediately
-        # IPsec连接是否已开启DPD（对等体存活检测）功能。
-        # 
-        # - **true**：开启DPD功能。
-        # 
-        #     IPsec发起端会发送DPD报文用来检测对端的设备是否存活，如果在设定时间内未收到正确回应则认为对端已经断线，IPsec将删除ISAKMP SA和相应的IPsec SA，安全隧道同样也会被删除。
-        # 
-        # - **false**：不开启DPD功能，IPsec发起端不会发送DPD探测报文。
         self.enable_dpd = enable_dpd
-        # IPsec连接是否已开启NAT穿越功能。
-        # 
-        # - **true**：开启NAT穿越功能。
-        # 
-        #    开启后，IKE协商过程会删除对UDP端口号的验证过程，同时实现对VPN隧道中NAT网关设备的发现功能。
-        # 
-        # - **false**：不开启NAT穿越功能。
         self.enable_nat_traversal = enable_nat_traversal
-        # 隧道BGP的开启状态。
-        # 
-        # - **true**：已开启。
-        # - **false**：未开启。
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # 第一阶段协商的配置。
         self.ike_config = ike_config
-        # IPsec连接的网关IP地址。
-        # 
-        # > 仅IPsec连接绑定转发路由器实例时会返回当前参数。
         self.internet_ip = internet_ip
-        # 第二阶段协商的配置。
         self.ipsec_config = ipsec_config
-        # IPsec连接阿里云侧的网段。
-        # 
-        # 在多个网段的情况下，网段之间使用半角逗号（,）分隔。
         self.local_subnet = local_subnet
-        # IPsec连接的名称。
         self.name = name
-        # IPsec连接的网络类型。
-        # 
-        # - **public**：公网，表示IPsec连接通过公网建立加密通信通道。
-        # - **private**：私网，表示IPsec连接通过私网建立加密通信通道。
         self.network_type = network_type
-        # 对端的CA证书。
         self.remote_ca_certificate = remote_ca_certificate
-        # 本地数据中心侧的网段。
-        # 
-        # 在多个网段的情况下，网段之间使用半角逗号（,）分隔。
         self.remote_subnet = remote_subnet
-        # IPsec连接所属的资源组ID。
-        # 
-        # 您可以调用[ListResourceGroups](https://help.aliyun.com/document_detail/158855.html)接口查询资源组信息。
         self.resource_group_id = resource_group_id
-        # IPsec连接的带宽规格。单位：**Mbps**。
         self.spec = spec
-        # IPsec连接与转发路由器实例的绑定状态。
-        # 
-        # - **active**：IPsec连接已与VPN网关实例绑定，状态正常。
-        # - **init**：IPsec连接未绑定任何资源，IPsec连接初始化。
-        # - **attaching**：IPsec连接与转发路由器实例绑定中。
-        # - **attached**：IPsec连接已与转发路由器实例绑定。
-        # - **detaching**：IPsec连接与转发路由器实例解绑中。
-        # - **financialLocked**：欠费锁定。
-        # - **provisioning**：资源准备中。
-        # - **updating**：更新中。
-        # - **upgrading**：升级中。
-        # - **deleted**：已删除。
         self.state = state
-        # IPsec连接的状态。
-        # 
-        # - **ike_sa_not_established**：第一阶段协商失败。
-        # 
-        # - **ike_sa_established**：第一阶段协商成功。
-        # 
-        # - **ipsec_sa_not_established**：第二阶段协商失败。
-        # 
-        # - **ipsec_sa_established**：第二阶段协商成功。
         self.status = status
-        # IPsec连接绑定的标签列表。
         self.tag = tag
-        # IPsec连接绑定的转发路由器实例ID。
         self.transit_router_id = transit_router_id
-        # 转发路由器实例的名称。
         self.transit_router_name = transit_router_name
-        # 用于说明VPN单条隧道的带宽规格，取值：
-        # Standard（默认值）：标准型，默认带宽1Gbps
-        # Large（大型）：大型，默认带宽3Gbps
         self.tunnel_bandwidth = tunnel_bandwidth
-        # IPsec连接的隧道配置信息。
-        # 
-        # 仅查询双隧道模式的IPsec连接会返回**TunnelOptionsSpecification**数组下的参数。
         self.tunnel_options_specification = tunnel_options_specification
-        # IPsec连接的健康检查配置。
         self.vco_health_check = vco_health_check
-        # IPsec连接BGP路由协议的配置。
         self.vpn_bgp_config = vpn_bgp_config
-        # IPsec连接的ID。
         self.vpn_connection_id = vpn_connection_id
-        # VPN网关的实例ID。
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):
@@ -485,23 +394,12 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig(
         status: str = None,
         tunnel_cidr: str = None,
     ):
-        # BGP路由协议的认证密钥。
         self.auth_key = auth_key
-        # 阿里云侧自治系统号。
         self.local_asn = local_asn
-        # 阿里云侧BGP地址。
         self.local_bgp_ip = local_bgp_ip
-        # 对端自治系统号。
         self.peer_asn = peer_asn
-        # 对端BGP地址。
         self.peer_bgp_ip = peer_bgp_ip
-        # BGP路由协议的协商状态。
-        # 
-        # - **success**：正常。
-        # 
-        # - **false**：异常。
         self.status = status
-        # IPsec连接BGP网段。该网段是一个在169.254.0.0/16内的子网掩码长度为30的网段。
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -571,29 +469,12 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthChec
         sip: str = None,
         status: str = None,
     ):
-        # 目的IP地址。
         self.dip = dip
-        # 健康检查的开启状态。
-        # 
-        # - **true**：已开启。
-        # 
-        # - **false**：未开启。
         self.enable = enable
-        # 健康检查的时间间隔。单位：秒。
         self.interval = interval
-        # 健康检查失败时是否撤销已发布的路由。
-        # 
-        # - **revoke_route**：撤销路由。
-        # - **reserve_route**：不撤销路由。
         self.policy = policy
-        # 健康检查的重试发包次数。
         self.retry = retry
-        # 源IP地址。
         self.sip = sip
-        # 健康检查状态。
-        # 
-        # - **success**：正常。
-        # - **failed**：异常。
         self.status = status
 
     def validate(self):
@@ -705,59 +586,19 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         tunnel_ipsec_config: main_models.DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
-        # 隧道关联的用户网关ID。
         self.customer_gateway_id = customer_gateway_id
-        # 隧道是否已开启DPD（对等体存活检测）功能。
-        # - **false**：未开启。
-        # - **true**：已开启。
         self.enable_dpd = enable_dpd
-        # 隧道是否已开启NAT穿越功能。
-        # 
-        # - **false**：未开启。
-        # - **true**：已开启。
         self.enable_nat_traversal = enable_nat_traversal
-        # 隧道的IP地址。
         self.internet_ip = internet_ip
-        # 隧道对端的CA证书。
-        # 
-        # 仅VPN网关实例的类型为国密型时才会返回当前参数。
         self.remote_ca_certificate = remote_ca_certificate
-        # 隧道的角色。
-        # 
-        # - **master**：表示当前隧道为主隧道。
-        # - **slave**：表示当前隧道为备隧道。
         self.role = role
-        # 隧道的状态。
-        # 
-        # - **active**：状态正常。
-        # - **updating**：更新中。
-        # - **deleting**：删除中。
         self.state = state
-        # IPsec连接的状态。
-        # 
-        # - **ike_sa_not_established**：第一阶段协商失败。
-        # 
-        # - **ike_sa_established**：第一阶段协商成功。
-        # 
-        # - **ipsec_sa_not_established**：第二阶段协商失败。
-        # 
-        # - **ipsec_sa_established**：第二阶段协商成功。
         self.status = status
-        # 隧道的BGP配置信息。
         self.tunnel_bgp_config = tunnel_bgp_config
-        # 隧道ID。
         self.tunnel_id = tunnel_id
-        # 第一阶段协商的配置。
         self.tunnel_ike_config = tunnel_ike_config
-        # 隧道的创建顺序。
-        # - **1**：第一条隧道。
-        # - **2**：第二条隧道。
-        # 
-        # > 仅IPsec连接绑定转发路由器时会返回该参数。
         self.tunnel_index = tunnel_index
-        # 第二阶段协商的配置。
         self.tunnel_ipsec_config = tunnel_ipsec_config
-        # 隧道部署的可用区。
         self.zone_no = zone_no
 
     def validate(self):
@@ -874,13 +715,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         ipsec_lifetime: str = None,
         ipsec_pfs: str = None,
     ):
-        # IPsec阶段认证算法。
         self.ipsec_auth_alg = ipsec_auth_alg
-        # IPsec阶段加密算法。
         self.ipsec_enc_alg = ipsec_enc_alg
-        # IPsec阶段生存时间。单位：秒。
         self.ipsec_lifetime = ipsec_lifetime
-        # IPsec阶段DH分组。
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -934,26 +771,14 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         psk: str = None,
         remote_id: str = None,
     ):
-        # IKE阶段认证算法。
         self.ike_auth_alg = ike_auth_alg
-        # IKE阶段加密算法。
         self.ike_enc_alg = ike_enc_alg
-        # IKE阶段生存时间。单位：秒。
         self.ike_lifetime = ike_lifetime
-        # IKE协商模式。
-        # 
-        # - **main**：主模式，协商过程安全性高。
-        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
         self.ike_mode = ike_mode
-        # IKE阶段DH分组。
         self.ike_pfs = ike_pfs
-        # IKE协议版本。
         self.ike_version = ike_version
-        # 隧道本端（阿里云侧）的标识。
         self.local_id = local_id
-        # 预共享密钥。
         self.psk = psk
-        # 隧道对端的标识。
         self.remote_id = remote_id
 
     def validate(self):
@@ -1034,20 +859,11 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # BGP的协商状态。
-        # 
-        # - **success**：正常。
-        # - **failed**：异常。
         self.bgp_status = bgp_status
-        # 隧道本端（阿里云侧）的自治系统号。
         self.local_asn = local_asn
-        # 隧道本端（阿里云侧）的BGP地址。
         self.local_bgp_ip = local_bgp_ip
-        # 隧道对端的自治系统号。
         self.peer_asn = peer_asn
-        # 隧道对端的BGP地址。
         self.peer_bgp_ip = peer_bgp_ip
-        # 隧道的BGP网段。
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -1141,9 +957,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag(DaraMo
         key: str = None,
         value: str = None,
     ):
-        # 标签键。
         self.key = key
-        # 标签值。
         self.value = value
 
     def validate(self):
@@ -1180,13 +994,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig(D
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # IPsec阶段认证算法。
         self.ipsec_auth_alg = ipsec_auth_alg
-        # IPsec阶段加密算法。
         self.ipsec_enc_alg = ipsec_enc_alg
-        # IPsec阶段生存时间。单位：秒。
         self.ipsec_lifetime = ipsec_lifetime
-        # IPsec阶段DH分组。
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -1240,31 +1050,14 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig(Dar
         psk: str = None,
         remote_id: str = None,
     ):
-        # IKE阶段认证算法。
         self.ike_auth_alg = ike_auth_alg
-        # IKE阶段加密算法。
         self.ike_enc_alg = ike_enc_alg
-        # IKE阶段生存时间。单位：秒。
         self.ike_lifetime = ike_lifetime
-        # IKE阶段协商模式。
-        # 
-        # - **main**：主模式，协商过程安全性高。
-        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
         self.ike_mode = ike_mode
-        # IKE阶段DH分组。
         self.ike_pfs = ike_pfs
-        # IKE协议版本。
-        # 
-        # - **ikev1**
-        # - **ikev2**
-        # 
-        # 相对于IKEv1版本，IKEv2版本简化了SA的协商过程并且对于多网段的场景提供了更好的支持。
         self.ike_version = ike_version
-        # IPsec连接对端本地数据中心侧的标识。
         self.local_id = local_id
-        # 预共享密钥。
         self.psk = psk
-        # IPsec连接阿里云侧的标识。
         self.remote_id = remote_id
 
     def validate(self):

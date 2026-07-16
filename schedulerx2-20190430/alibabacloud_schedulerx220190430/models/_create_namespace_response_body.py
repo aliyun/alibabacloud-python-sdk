@@ -14,18 +14,19 @@ class CreateNamespaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The information about the namespace.
+        # The namespace information.
         self.data = data
-        # The error message that is returned only if the corresponding error occurs.
+        # The error message returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the application was created. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The namespace was successfully created.
+        # 
+        # - **false**: The namespace failed to be created.
         self.success = success
 
     def validate(self):
@@ -79,7 +80,7 @@ class CreateNamespaceResponseBodyData(DaraModel):
         self,
         namespace_uid: str = None,
     ):
-        # The UID of the namespace.
+        # The namespace UID.
         self.namespace_uid = namespace_uid
 
     def validate(self):

@@ -65,14 +65,15 @@ class GetVulWhitelistResponseBodyVulWhitelist(DaraModel):
         self.reason = reason
         # The application scope of the rule. The value is a JSON string that contains the following fields:
         # 
-        # *   **type**: the type of the assets to which the rule is applied. Valid values:
+        # - **type**: the type of the assets to which the rule is applied. Valid values:
         # 
-        #     *   **Uuid**: server
-        #     *   **GroupId**: server group
+        #   - **Uuid**: server
         # 
-        # *   **groupIds**: the ID of the server group
+        #   - **GroupId**: server group
         # 
-        # *   **uuids**: the UUID of the server
+        # - **groupIds**: the ID of the server group
+        # 
+        # - **uuids**: the UUID of the server
         # 
         # > If this parameter is empty, the rule is applied to all types of assets.
         self.target = target
@@ -80,17 +81,21 @@ class GetVulWhitelistResponseBodyVulWhitelist(DaraModel):
         self.type = type
         # The information about the vulnerability that is added to the whitelist. The value is a JSON string that contains the following fields:
         # 
-        # *   **Name**: the name of the vulnerability.
+        # - **Name**: the name of the vulnerability.
         # 
-        # *   **Type**: the type of the vulnerability. Valid values:
+        # - **Type**: the type of the vulnerability. Valid values:
         # 
-        #     *   **cve**: Linux software vulnerability
-        #     *   **sys**: Windows system vulnerability
-        #     *   **cms**: Web-CMS vulnerability
-        #     *   **app**: application vulnerability
-        #     *   **emg**: urgent vulnerabilities
+        #   - **cve**: Linux software vulnerability
         # 
-        # *   **AliasName**: the alias of the vulnerability.
+        #   - **sys**: Windows system vulnerability
+        # 
+        #   - **cms**: Web-CMS vulnerability
+        # 
+        #   - **app**: application vulnerability
+        # 
+        #   - **emg**: urgent vulnerabilities
+        # 
+        # - **AliasName**: the alias of the vulnerability.
         self.whitelist = whitelist
 
     def validate(self):

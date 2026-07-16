@@ -11,10 +11,15 @@ class GetDataServiceApiDocumentRequest(DaraModel):
         op_tenant_id: int = None,
         version_id: str = None,
     ):
+        # The API ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The version.
         self.version_id = version_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class DeleteDatabaseAccountRequest(DaraModel):
     ):
         # The ID of the database account that you want to delete.
         # 
-        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
         # 
         # This parameter is required.
         self.database_account_id = database_account_id

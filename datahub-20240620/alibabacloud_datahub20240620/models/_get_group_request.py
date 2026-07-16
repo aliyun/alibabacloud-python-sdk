@@ -10,8 +10,12 @@ class GetGroupRequest(DaraModel):
         group_name: str = None,
         project_name: str = None,
     ):
+        # The consumer group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
 

@@ -10,7 +10,7 @@ class CreateAccountFactoryBaselineResponseBody(DaraModel):
         baseline_id: str = None,
         request_id: str = None,
     ):
-        # The baseline ID.
+        # The ID of the baseline.
         self.baseline_id = baseline_id
         # The request ID.
         self.request_id = request_id

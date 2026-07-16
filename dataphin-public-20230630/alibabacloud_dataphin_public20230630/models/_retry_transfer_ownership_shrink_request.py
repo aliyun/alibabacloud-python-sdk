@@ -10,8 +10,11 @@ class RetryTransferOwnershipShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         privilege_transfer_record_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The transfer information.
         self.privilege_transfer_record_shrink = privilege_transfer_record_shrink
 
     def validate(self):

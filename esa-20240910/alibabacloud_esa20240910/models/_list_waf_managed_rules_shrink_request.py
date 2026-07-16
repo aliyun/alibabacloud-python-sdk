@@ -18,37 +18,46 @@ class ListWafManagedRulesShrinkRequest(DaraModel):
         query_args_shrink: str = None,
         site_id: int = None,
     ):
-        # Attack type of the vulnerability protection event. Values:
+        # The attack type of the vulnerability prevention event. Valid values:
         # - SQL injection
-        # - Cross-site scripting
-        # - Code execution
+        # - cross-site scripting (XSS)
+        # - code execute
         # - CRLF
-        # - Local file inclusion
-        # - Remote file inclusion
-        # - Webshell
-        # - Cross-site request forgery
-        # - Other
+        # - local file inclusion (LFI)
+        # - remote file inclusion (RFI)
+        # - webshell
+        # - cross-site request forgery
+        # - Others
         # - SEMA
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # ID of the WAF rule.
+        # The ID of the WAF rule.
         self.id = id
+        # The WAF instance ID.
         self.instance_id = instance_id
-        # Language type, which will be used to return the response. Value range:
+        # The language type. The response is returned in the specified language. Valid values:
         # 
         # - **en**: English.
         # - **zh**: Chinese.
         self.language = language
+        # The managed ruleset configuration in JSON string format.
+        # 
+        # Contains the AttackType, ProtectionLevel, Action, and ManagedRules subfields. When ProtectionLevel is set to -1 (custom mode), specify the status and action for each rule through the ManagedRules array.
         self.managed_ruleset_shrink = managed_ruleset_shrink
-        # Query page number.
+        # The page number.
         self.page_number = page_number
-        # Query page size.
+        # The page size.
         self.page_size = page_size
+        # The currently saved protection level, which represents the existing configuration state in the database.
+        # 
+        # Valid values: -1 (custom mode), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+        # 
+        # Difference from ManagedRuleset.ProtectionLevel: this parameter indicates the currently effective configuration, while ManagedRuleset.ProtectionLevel indicates the target value being passed in.
         self.protection_level = protection_level
-        # Query conditions.
+        # The query conditions.
         self.query_args_shrink = query_args_shrink
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):

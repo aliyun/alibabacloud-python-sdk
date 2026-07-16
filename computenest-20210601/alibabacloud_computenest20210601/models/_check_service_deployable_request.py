@@ -15,9 +15,9 @@ class CheckServiceDeployableRequest(DaraModel):
         template_name: str = None,
         trial_type: str = None,
     ):
-        # Total amount of postpaid.
+        # The total pay-as-you-go amount.
         self.post_paid_amount = post_paid_amount
-        # Total amount of prepayment.
+        # The total upfront payment amount.
         self.pre_paid_amount = pre_paid_amount
         # The region ID.
         self.region_id = region_id
@@ -27,11 +27,13 @@ class CheckServiceDeployableRequest(DaraModel):
         self.service_id = service_id
         # The service version.
         self.service_version = service_version
+        # The template name.
         self.template_name = template_name
-        # The trial type of the service instance. Valid values:
+        # The trial type. Valid values:
         # 
-        # *   **Trial**: Trials are supported.
-        # *   **NotTrial**: Trials are not supported.
+        # - Trial: The service supports trial use.
+        # 
+        # - NotTrial: The service does not support trial use.
         self.trial_type = trial_type
 
     def validate(self):

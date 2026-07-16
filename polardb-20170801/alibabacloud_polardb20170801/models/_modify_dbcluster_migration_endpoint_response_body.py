@@ -11,9 +11,13 @@ class ModifyDBClusterMigrationEndpointResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to view information about all clusters in the destination region, including the cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

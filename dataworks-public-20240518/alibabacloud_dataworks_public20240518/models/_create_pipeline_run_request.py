@@ -9,27 +9,40 @@ from darabonba.model import DaraModel
 class CreatePipelineRunRequest(DaraModel):
     def __init__(
         self,
+        auto_run_until_stage: str = None,
         description: str = None,
         object_ids: List[str] = None,
         project_id: int = None,
+        run_mode: str = None,
         type: str = None,
     ):
-        # The description of the process.
-        self.description = description
-        # The IDs of entities to which you want to apply the process.
+        # The code of the stage in the publish process. This parameter takes effect only when RunMode is set to Auto. After the publish process is created, it automatically runs to the specified stage.
         # 
-        # >  A process can be applied to only a single entity and its child entities. If you specify multiple entities in the array, the process is applied only to the first entity in the array and its child entities. Make sure that the array in your request contains only one element. Extra elements will be ignored.
+        # >Notice: The specified stage is automatically completed. For example, if you set this parameter to DEV, the automatic run stops after the DEV stage reaches the desired state.
+        self.auto_run_until_stage = auto_run_until_stage
+        # The description of the publish process.
+        self.description = description
+        # The list of entity IDs that you want to publish in this publish process.
+        # >Notice: Only a single entity and its child entities can be published at a time. Only the first entity in this array and its child entities are published. Make sure that the length of this array is 1. Entities beyond the first one are ignored.
         # 
         # This parameter is required.
         self.object_ids = object_ids
-        # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID. You must configure this parameter to specify the DataWorks workspace to which the API operation is applied.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the workspace configuration page to obtain the workspace ID.
+        # This parameter specifies the DataWorks workspace for this API call.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Specifies whether to deploy or undeploy the entity. Valid values:
+        # The run mode of the publish process. Default value: Normal. If you set this parameter to Auto, the publish process is automatically driven to the specified stage. This parameter is used together with the AutoRunUntilStage parameter.
         # 
-        # *   Online: deploys the entity.
-        # *   Offline: undeploys the entity.
+        # Valid values:
+        # - Normal
+        # - Auto
+        self.run_mode = run_mode
+        # Specifies whether the publish process is used to bring an entity online or offline.
+        # 
+        # - Online: online
+        # 
+        # - Offline: offline
         # 
         # This parameter is required.
         self.type = type
@@ -42,6 +55,9 @@ class CreatePipelineRunRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_run_until_stage is not None:
+            result['AutoRunUntilStage'] = self.auto_run_until_stage
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -51,6 +67,9 @@ class CreatePipelineRunRequest(DaraModel):
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
 
+        if self.run_mode is not None:
+            result['RunMode'] = self.run_mode
+
         if self.type is not None:
             result['Type'] = self.type
 
@@ -58,6 +77,9 @@ class CreatePipelineRunRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRunUntilStage') is not None:
+            self.auto_run_until_stage = m.get('AutoRunUntilStage')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
@@ -66,6 +88,9 @@ class CreatePipelineRunRequest(DaraModel):
 
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+
+        if m.get('RunMode') is not None:
+            self.run_mode = m.get('RunMode')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')

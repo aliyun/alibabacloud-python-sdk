@@ -13,8 +13,12 @@ class ListUserGroupMembersRequest(DaraModel):
         list_query: main_models.ListUserGroupMembersRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query parameters.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -55,12 +59,19 @@ class ListUserGroupMembersRequestListQuery(DaraModel):
         user_group_id: str = None,
         user_id_list: List[str] = None,
     ):
+        # The username keyword.
         self.keyword = keyword
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of records per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The user group ID.
         self.user_group_id = user_group_id
+        # The user ID.
         self.user_id_list = user_id_list
 
     def validate(self):

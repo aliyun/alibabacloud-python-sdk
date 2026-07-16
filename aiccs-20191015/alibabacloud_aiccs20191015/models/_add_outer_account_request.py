@@ -18,17 +18,29 @@ class AddOuterAccountRequest(DaraModel):
         outer_group_type: str = None,
         real_name: str = None,
     ):
+        # Profile picture.
         self.avatar = avatar
+        # Extension field, in JSON string format.
         self.ext = ext
+        # External Account ID.
+        # 
         # This parameter is required.
         self.outer_account_id = outer_account_id
+        # External account name.
         self.outer_account_name = outer_account_name
+        # External account type.
+        # 
         # This parameter is required.
         self.outer_account_type = outer_account_type
+        # External department ID.
         self.outer_department_id = outer_department_id
+        # External department type: Invalid department type.
         self.outer_department_type = outer_department_type
+        # List of external skill group IDs. Separate multiple IDs with commas (,).
         self.outer_group_ids = outer_group_ids
+        # Skill group type.
         self.outer_group_type = outer_group_type
+        # Real name of the account.
         self.real_name = real_name
 
     def validate(self):

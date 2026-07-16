@@ -15,9 +15,13 @@ class DescribeSqlFlashbackTaskListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned by the request.
         self.data = data
+        # The description of the request result.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API request was successful.
         self.success = success
 
     def validate(self):
@@ -65,6 +69,7 @@ class DescribeSqlFlashbackTaskListResponseBodyData(DaraModel):
         self,
         sql_flashback_tasks: List[main_models.DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks] = None,
     ):
+        # The flashback task objects.
         self.sql_flashback_tasks = sql_flashback_tasks
 
     def validate(self):
@@ -117,23 +122,50 @@ class DescribeSqlFlashbackTaskListResponseBodyDataSqlFlashbackTasks(DaraModel):
         table_name: str = None,
         trace_id: str = None,
     ):
+        # The name of the database on which the flashback task was performed.
         self.db_name = db_name
+        # The download URL of the result file.
         self.download_url = download_url
+        # The expiration time of the download URL. Unit: ms.
         self.expire_time = expire_time
+        # The creation time of the flashback task in the database. Unit: ms.
         self.gmt_create = gmt_create
+        # The last modification time of the flashback task in the database. Unit: ms.
         self.gmt_modified = gmt_modified
+        # The primary key ID.
         self.id = id
+        # The instance ID of the PolarDB-X instance.
         self.inst_id = inst_id
+        # The execution progress of the flashback task. Value range: 1 to 100.
         self.recall_progress = recall_progress
+        # The SQL flashback restoration type. Valid values: 
+        # 
+        # - **1**: Image-based restoration.
+        # - **2**: Reverse restoration.
         self.recall_restore_type = recall_restore_type
+        # The status of the data recall task. Valid values:
+        # 
+        # - **1**: In progress.
+        # - **2**: Completed.
         self.recall_status = recall_status
+        # The recall type. Valid values:
+        # 
+        # - **0**: exact match.
+        # - **1**: fuzzy match.
         self.recall_type = recall_type
+        # The end time specified when the SQL flashback task was submitted. Unit: ms.
         self.search_end_time = search_end_time
+        # The start time specified when the SQL flashback task was submitted. Unit: ms.
         self.search_start_time = search_start_time
+        # The number of recovered data rows.
         self.sql_counter = sql_counter
+        # The primary key value involved in the SQL statement.
         self.sql_pk = sql_pk
+        # The type of the SQL statement. Valid values: INSERT, UPDATE, and DELETE. Multiple types are separated by commas (,).
         self.sql_type = sql_type
+        # The name of the table to which the data belongs.
         self.table_name = table_name
+        # The trace_id of the SQL statement.
         self.trace_id = trace_id
 
     def validate(self):

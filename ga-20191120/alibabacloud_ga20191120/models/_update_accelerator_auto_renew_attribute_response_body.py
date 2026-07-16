@@ -10,9 +10,9 @@ class UpdateAcceleratorAutoRenewAttributeResponseBody(DaraModel):
         accelerator_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         self.accelerator_id = accelerator_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

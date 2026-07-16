@@ -13,9 +13,9 @@ class ShrinkClusterShrinkRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Specifies whether to skip failed nodes. The default value is False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The node groups.
+        # The information about the node groups.
         self.node_groups_shrink = node_groups_shrink
 
     def validate(self):

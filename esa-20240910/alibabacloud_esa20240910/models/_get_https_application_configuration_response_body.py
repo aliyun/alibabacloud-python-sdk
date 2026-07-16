@@ -29,76 +29,103 @@ class GetHttpsApplicationConfigurationResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Alt-Svc feature switch. Default is disabled. Possible values:
+        # Specifies whether to enable the Alt-Svc feature, which is disabled by default. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.alt_svc = alt_svc
-        # Whether the Alt-Svc header includes the clear parameter. Default is disabled. Possible values:
+        # Specifies whether to include the `clear` parameter in the Alt-Svc header, which is disabled by default. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.alt_svc_clear = alt_svc_clear
-        # Alt-Svc validity period in seconds. The default is 86400 seconds.
+        # The Alt-Svc max-age, in seconds. Default: `86400`.
         self.alt_svc_ma = alt_svc_ma
-        # Whether the Alt-Svc header includes the persist parameter. Default is disabled. Possible values:
+        # Specifies whether to include the `persist` parameter in the Alt-Svc header, which is disabled by default. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.alt_svc_persist = alt_svc_persist
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Possible values:
+        # The configuration type. You can query for a global or rule configuration based on this parameter. Valid values:
         # 
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # - `global`: a global configuration.
+        # 
+        # - `rule`: a rule configuration.
         self.config_type = config_type
-        # Whether to enable HSTS. Default is disabled. Possible values:
+        # Specifies whether to enable HSTS, which is disabled by default. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.hsts = hsts
-        # Whether to include subdomains in HSTS, default is off. Value range:
-        # - on: enabled. 
-        # - off: disabled.
+        # Specifies whether to include subdomains in the HSTS policy, which is disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.hsts_include_subdomains = hsts_include_subdomains
-        # HSTS expiration time in seconds.
+        # The value of the `max-age` directive for HSTS, in seconds.
         self.hsts_max_age = hsts_max_age
-        # Whether to enable HSTS preload, default is off. Value range:
+        # Specifies whether to enable HSTS preload, which is disabled by default. Valid values:
         # 
-        # - on: enabled.
-        # - off: disabled.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.hsts_preload = hsts_preload
-        # Whether to enable forced HTTPS. Default is disabled. Possible values:
+        # Specifies whether to enable force HTTPS, which is disabled by default. Valid values:
         # 
-        # - on: Enable.
-        # - off: Disable.
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https_force = https_force
-        # Status code for forced HTTPS redirection. Possible values:
+        # The status code for the force HTTPS redirect. Valid values:
         # 
-        # - 301
-        # - 302
-        # - 307
-        # - 308
+        # - `301`
+        # 
+        # - `302`
+        # 
+        # - `307`
+        # 
+        # - `308`
         self.https_force_code = https_force_code
+        # Specifies whether to deny TLS handshakes that lack an SNI, which is disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https_no_sni_deny = https_no_sni_deny
+        # Specifies whether to enable SNI verification, which is disabled by default. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.https_sni_verify = https_sni_verify
+        # The SNI allowlist. Separate multiple values with a space.
         self.https_sni_whitelist = https_sni_whitelist
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Rule content, using conditional expressions to match user requests. This parameter does not need to be set when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true.
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq "video.example.com")
+        # The conditional expression used to match user requests. This parameter is not required for a global configuration. There are two scenarios:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression, such as `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter does not need to be set when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the rule. This parameter is not required for a global configuration. Valid values:
+        # 
+        # - `on`: Enabled.
+        # 
+        # - `off`: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter does not need to be set when adding a global configuration.
+        # The rule name. This parameter is not required for a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site for which the configuration takes effect. The default is version 0.
+        # The version number of the site configuration. For sites with configuration versioning enabled, this parameter specifies the applicable site version. The default is version `0`.
         self.site_version = site_version
 
     def validate(self):

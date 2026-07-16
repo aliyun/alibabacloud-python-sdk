@@ -12,9 +12,13 @@ class CreateYikeAssetUploadResponseBody(DaraModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
+        # The OSS URL of the file, without authentication.
         self.file_url = file_url
+        # The request ID.
         self.request_id = request_id
+        # The upload address.
         self.upload_address = upload_address
+        # The upload credential.
         self.upload_auth = upload_auth
 
     def validate(self):

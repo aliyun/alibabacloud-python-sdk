@@ -15,15 +15,26 @@ class SubmitDocTranslateTaskShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extension parameters that control translation features.
         self.ext_shrink = ext_shrink
+        # The format for the translation.
         self.format = format
+        # The translation model.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language code.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language code.
         self.target_language = target_language
+        # The URL of the document to translate.
+        # 
         # This parameter is required.
         self.text = text
+        # The ID of the Model Studio workspace for the current request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

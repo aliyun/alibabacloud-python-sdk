@@ -14,10 +14,15 @@ class AddUserToDataAgentWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned struct.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -76,11 +81,17 @@ class AddUserToDataAgentWorkspaceResponseBodyData(DaraModel):
         total_task_number: int = None,
         user_name: str = None,
     ):
+        # The time when the user joined the workspace. This is a UNIX timestamp in seconds.
         self.join_time = join_time
+        # The Alibaba Cloud UID of the user.
         self.member_id = member_id
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
+        # The number of tasks that the user is running in the workspace.
         self.running_task_number = running_task_number
+        # The total number of tasks that the user initiated in the workspace.
         self.total_task_number = total_task_number
+        # The RAM username.
         self.user_name = user_name
 
     def validate(self):

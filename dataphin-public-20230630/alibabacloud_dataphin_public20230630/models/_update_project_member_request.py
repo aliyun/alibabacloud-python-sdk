@@ -14,10 +14,16 @@ class UpdateProjectMemberRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateProjectMemberRequestUpdateCommand = None,
     ):
+        # The project ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -61,8 +67,12 @@ class UpdateProjectMemberRequestUpdateCommand(DaraModel):
         env: str = None,
         user_list: List[main_models.UpdateProjectMemberRequestUpdateCommandUserList] = None,
     ):
+        # The environment identifier.
+        # 
         # This parameter is required.
         self.env = env
+        # The list of user members.
+        # 
         # This parameter is required.
         self.user_list = user_list
 
@@ -106,8 +116,12 @@ class UpdateProjectMemberRequestUpdateCommandUserList(DaraModel):
         role_list: List[int] = None,
         user_id: str = None,
     ):
+        # The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
+        # 
         # This parameter is required.
         self.role_list = role_list
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

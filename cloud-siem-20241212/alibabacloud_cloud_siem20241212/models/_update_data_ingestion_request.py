@@ -15,12 +15,31 @@ class UpdateDataIngestionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
+        # The data ingestion mode. Valid values:
+        # 
+        # - realtime
+        # 
+        # - scan
         self.data_ingestion_mode = data_ingestion_mode
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
+        # The region of the Data Management center for threat analysis. Select the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: The assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can perform operations on behalf of this member.
         self.role_for = role_for
 
     def validate(self):

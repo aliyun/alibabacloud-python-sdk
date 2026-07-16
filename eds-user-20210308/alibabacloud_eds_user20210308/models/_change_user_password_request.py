@@ -11,8 +11,11 @@ class ChangeUserPasswordRequest(DaraModel):
         end_user_id: str = None,
         new_password: str = None,
     ):
+        # Channel
         self.business_channel = business_channel
+        # The username of the convenience account whose password is to be modified.
         self.end_user_id = end_user_id
+        # The new password for the user.
         self.new_password = new_password
 
     def validate(self):

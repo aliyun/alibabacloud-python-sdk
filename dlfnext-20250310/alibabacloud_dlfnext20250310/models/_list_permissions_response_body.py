@@ -13,7 +13,9 @@ class ListPermissionsResponseBody(DaraModel):
         next_page_token: str = None,
         permissions: List[main_models.Permission] = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
+        # The permissions.
         self.permissions = permissions
 
     def validate(self):

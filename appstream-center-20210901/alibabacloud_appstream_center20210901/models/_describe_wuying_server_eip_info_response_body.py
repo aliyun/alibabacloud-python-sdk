@@ -11,7 +11,7 @@ class DescribeWuyingServerEipInfoResponseBody(DaraModel):
         eip_info_model: main_models.DescribeWuyingServerEipInfoResponseBodyEipInfoModel = None,
         request_id: str = None,
     ):
-        # The information about the associated EIP.
+        # The EIP information.
         self.eip_info_model = eip_info_model
         # Id of the request
         self.request_id = request_id
@@ -55,7 +55,7 @@ class DescribeWuyingServerEipInfoResponseBodyEipInfoModel(DaraModel):
         self.eip_id = eip_id
         # The public IP address.
         self.ip_address = ip_address
-        # The ID of the elastic network interface (ENI).
+        # The network interface controller (NIC) ID.
         self.network_interface_id = network_interface_id
         # The port range.
         self.server_port_range = server_port_range

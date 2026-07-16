@@ -12,19 +12,35 @@ class CreateTaskGroupRequest(DaraModel):
         sample_ids: str = None,
         scenes: str = None,
         service_codes: str = None,
+        service_list: str = None,
         service_names: str = None,
         tab: str = None,
         task_group_name: str = None,
         type: str = None,
     ):
+        # The language of the error message returned by the operation. Valid values:
+        # - zh: Chinese.
+        # - en: English.
+        # 
+        # Default value: en.
         self.lang = lang
+        # The region code.
         self.reg_id = reg_id
+        # The sample IDs.
         self.sample_ids = sample_ids
+        # The scenarios corresponding to the service.
         self.scenes = scenes
+        # The service codes.
         self.service_codes = service_codes
+        # The service list.
+        self.service_list = service_list
+        # The list of service names for per-application statistics.
         self.service_names = service_names
+        # The scenario.
         self.tab = tab
+        # The task group name.
         self.task_group_name = task_group_name
+        # The access type.
         self.type = type
 
     def validate(self):
@@ -49,6 +65,9 @@ class CreateTaskGroupRequest(DaraModel):
 
         if self.service_codes is not None:
             result['ServiceCodes'] = self.service_codes
+
+        if self.service_list is not None:
+            result['ServiceList'] = self.service_list
 
         if self.service_names is not None:
             result['ServiceNames'] = self.service_names
@@ -80,6 +99,9 @@ class CreateTaskGroupRequest(DaraModel):
 
         if m.get('ServiceCodes') is not None:
             self.service_codes = m.get('ServiceCodes')
+
+        if m.get('ServiceList') is not None:
+            self.service_list = m.get('ServiceList')
 
         if m.get('ServiceNames') is not None:
             self.service_names = m.get('ServiceNames')

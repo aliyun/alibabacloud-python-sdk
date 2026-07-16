@@ -66,60 +66,156 @@ class Elasticsearch(DaraModel):
         zone_count: int = None,
         zone_infos: List[main_models.ZoneInfo] = None,
     ):
+        # Indicates whether the new dedicated master node is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.advanced_dedicate_master = advanced_dedicate_master
+        # The advanced settings.
         self.advanced_setting = advanced_setting
+        # The Aliws dictionary configuration.
         self.aliws_dicts = aliws_dicts
+        # The client node configuration.
         self.client_node_configuration = client_node_configuration
+        # The time when the instance was created.
         self.created_at = created_at
+        # Indicates whether the instance contains data nodes. Valid values:
+        # 
+        # - true: The instance contains data nodes.
+        # - false: The instance does not contain data nodes.
         self.data_node = data_node
+        # Indicates whether the instance contains legacy dedicated master nodes (deprecated).
         self.dedicate_master = dedicate_master
+        # The instance name.
         self.description = description
+        # The IK dictionary configuration.
         self.dict_list = dict_list
+        # The private network access address of the Elasticsearch instance.
         self.domain = domain
+        # The elastic data node configuration.
         self.elastic_data_node_configuration = elastic_data_node_configuration
+        # Indicates whether private network access to Kibana is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_kibana_private_network = enable_kibana_private_network
+        # Indicates whether public network access to Kibana is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_kibana_public_network = enable_kibana_public_network
+        # Indicates whether the public network address of the instance is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_public = enable_public
+        # The time when the instance expires. For pay-as-you-go instances, the default value is 100 years.
         self.end_time = end_time
+        # The YML file configuration of the instance.
         self.es_config = es_config
+        # The private network access whitelist configuration of the instance (deprecated).
         self.es_ipwhitelist = es_ipwhitelist
+        # The instance version.
         self.es_version = es_version
+        # The extension parameter settings of the instance.
         self.extend_configs = extend_configs
+        # Indicates whether client nodes are enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.have_client_node = have_client_node
+        # Indicates whether elastic data nodes are enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.have_elastic_data_node = have_elastic_data_node
+        # Indicates whether the instance contains Kibana nodes. Valid values:
+        # 
+        # - true: The instance contains Kibana nodes.
+        # - false: The instance does not contain Kibana nodes.
         self.have_kibana = have_kibana
+        # The IK hot dictionary configuration.
         self.ik_hot_dicts = ik_hot_dicts
+        # The instance ID.
         self.instance_id = instance_id
+        # The Kibana node configuration.
         self.kibana_configuration = kibana_configuration
+        # The public network access address of Kibana.
         self.kibana_domain = kibana_domain
+        # The public network access whitelist configuration of Kibana.
         self.kibana_ipwhitelist = kibana_ipwhitelist
+        # The public network access port of Kibana.
         self.kibana_port = kibana_port
+        # The private network access address of Kibana.
         self.kibana_private_domain = kibana_private_domain
+        # The IP whitelist configuration for private network access to Kibana.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
+        # The private network access port of Kibana.
         self.kibana_private_port = kibana_private_port
+        # The access protocol for Kibana. Valid values: HTTP and HTTPS.
         self.kibana_protocol = kibana_protocol
+        # The dedicated master node configuration.
         self.master_configuration = master_configuration
+        # The network configuration of the instance.
         self.network_config = network_config
+        # The number of data nodes in the instance.
         self.node_amount = node_amount
+        # The data node configuration.
         self.node_spec = node_spec
+        # The billing method of the instance. Valid values:
+        # 
+        # - prepaid: subscription.
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
+        # The private network access port of the instance.
         self.port = port
+        # The private network address access whitelist configuration of the instance.
         self.private_network_ip_white_list = private_network_ip_white_list
+        # The instance edition. Valid values:
+        # 
+        # - logEnhancement: Advanced Edition.
+        # - generalBusiness: general commercial edition.
         self.product_type = product_type
+        # The access protocol of the instance. Valid values: HTTP and HTTPS.
         self.protocol = protocol
+        # The public network access address of the Elasticsearch instance.
         self.public_domain = public_domain
+        # The public network access whitelist configuration of the instance.
         self.public_ip_whitelist = public_ip_whitelist
+        # The public network access port of the Elasticsearch instance.
         self.public_port = public_port
+        # The high availability configuration of the instance.
         self.read_write_policy = read_write_policy
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
+        # Indicates whether the instance is in the Elasticsearch service VPC. Valid values:
+        # 
+        # - true: The instance is in the service VPC.
+        # - false: The instance is not in the service VPC.
         self.service_vpc = service_vpc
+        # The status of the instance. Valid values:
+        # 
+        # - active: Normal.
+        # - activating: Taking effect.
+        # - inactive: Frozen.
+        # - invalid: Expired.
         self.status = status
+        # The synonym dictionary configuration of the instance.
         self.synonyms_dicts = synonyms_dicts
+        # The instance tags.
         self.tags = tags
+        # The time when the instance was last updated.
         self.updated_at = updated_at
+        # Indicates whether warm data nodes are enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
         self.warm_node = warm_node
+        # The warm data node configuration.
         self.warm_node_configuration = warm_node_configuration
+        # The number of zones for the instance.
         self.zone_count = zone_count
+        # The zone information of the instance.
         self.zone_infos = zone_infos
 
     def validate(self):
@@ -551,6 +647,7 @@ class ElasticsearchAdvancedSetting(DaraModel):
         self,
         gc_name: str = None,
     ):
+        # GC垃圾回收器名称。支持CMS和G1。
         self.gc_name = gc_name
 
     def validate(self):

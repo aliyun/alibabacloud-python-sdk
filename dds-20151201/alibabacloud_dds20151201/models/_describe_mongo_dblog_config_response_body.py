@@ -22,43 +22,51 @@ class DescribeMongoDBLogConfigResponseBody(DaraModel):
         used_storage_for_trail: int = None,
         user_project_name: str = None,
     ):
-        # Indicates whether to enable the audit log feature.
+        # Indicates whether the audit log feature is enabled for the ApsaraDB for MongoDB instance.
         # 
-        # *   **true**: The audit log feature is enabled.
-        # *   **false**: The audit log feature is disabled.
+        # - **true**: Enabled.
+        # 
+        # - **false**: Disabled.
         self.enable_audit = enable_audit
+        # The retention period of hot storage for the V2_Standard (DAS Enterprise Edition (NoSQL-compatible)) version of audit logs. Unit: days.
         self.hot_ttl_for_v2standard = hot_ttl_for_v2standard
-        # Indicates whether a rule to distribute logs to Logtail is created. For more information, see [Logtail overview](https://help.aliyun.com/document_detail/28979.html). Valid values:
+        # Indicates whether a rule is created to ship audit logs to Logtail. For more information about Logtail, see [What is Logtail?](https://help.aliyun.com/document_detail/28979.html). Valid values:
         # 
-        # *   **1**: A rule to distribute logs to Logtail is created.
-        # *   **0** or **null**: A rule to distribute logs to Logtail is not created.
+        # - **1**: A rule is created.
+        # 
+        # - **0** or **null**: No rule is created.
         self.is_etl_meta_exist = is_etl_meta_exist
-        # Indicates whether a project exists in the current region. Valid values:
+        # Indicates whether a Simple Log Service project for audit logs exists in the current region. Valid values:
         # 
-        # *   **1**: A logging project exists in the current region.
-        # *   **0** or **null**: A logging project does not exist in the current region.
+        # - **1**: The project exists.
+        # 
+        # - **0** or **null**: The project does not exist.
         self.is_user_project_logstore_exist = is_user_project_logstore_exist
-        # The maximum storage capacity for the formal edition of the audit log feature. If the value is -1, no maximum storage capacity is set.
+        # The maximum storage capacity for the official version of audit logs. A value of -1 indicates that no upper limit is set.
         self.preserve_storage_for_standard = preserve_storage_for_standard
-        # The maximum storage capacity for the free trial edition of the audit log feature. Unit: bytes. You can set the maximum storage capacity to 107,374,182,400 bytes.
+        # The maximum storage capacity for the free trial version of audit logs. Unit: bytes. The maximum value is 107374182400 bytes.
         self.preserve_storage_for_trail = preserve_storage_for_trail
         # The request ID.
         self.request_id = request_id
-        # The type of the audit log feature. Valid values:
+        # The version of the audit log feature.
         # 
-        # *   **Trail**: the free trial edition
-        # *   **Standard**: the official edition
+        # - **Trial**: Free trial version.
+        # 
+        # - **Standard**: Official version.
+        # 
+        # - **V2_Standard**: DAS Enterprise Edition (NoSQL-compatible) version.
         self.service_type = service_type
-        # The retention period for the official edition of the audit log feature. Valid values: 1 to 365. Unit: day.
+        # The retention period of audit logs for the official version. The value ranges from 1 to 365. Unit: days.
         self.ttl_for_standard = ttl_for_standard
-        # The retention period for the free trial edition of the audit log feature.
+        # The retention period of audit logs for the free trial version. Unit: days.
         self.ttl_for_trail = ttl_for_trail
+        # The retention period of cold storage for the V2_Standard (DAS Enterprise Edition (NoSQL-compatible)) version of audit logs. Unit: days.
         self.ttl_for_v2standard = ttl_for_v2standard
-        # The used storage capacity for the formal edition of the audit log feature. Unit: bytes.
+        # The storage capacity that is used by audit logs for the official version. Unit: bytes.
         self.used_storage_for_standard = used_storage_for_standard
-        # The used storage capacity for the free trial edition of the audit log feature. Unit: bytes.
+        # The storage capacity that is used by audit logs for the free trial version. Unit: bytes.
         self.used_storage_for_trail = used_storage_for_trail
-        # The name of the project.
+        # The name of the Simple Log Service project for the audit logs.
         self.user_project_name = user_project_name
 
     def validate(self):

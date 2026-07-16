@@ -12,7 +12,7 @@ class ModifySnapshotCategoryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the archive task. You can call the DescribeTasks operation to query the status and progress of the archive task.
+        # The archive task ID. You can call the DescribeTasks operation to query the status and progress of the task.
         self.task_id = task_id
 
     def validate(self):

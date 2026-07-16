@@ -22,8 +22,9 @@ class ListChatappTemplateResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - A value of OK indicates that the call is successful.
+        # 
+        # - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The message templates.
         self.list_template = list_template
@@ -31,10 +32,6 @@ class ListChatappTemplateResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
         self.success = success
         # The total number of returned entries.
         self.total = total
@@ -117,28 +114,41 @@ class ListChatappTemplateResponseBodyListTemplate(DaraModel):
     ):
         # The review state of the template. Valid values:
         # 
-        # *   **pass**: The template is approved.
-        # *   **fail**: The template is rejected.
-        # *   **auditing**: The template is being reviewed.
-        # *   **unaudit**: The review is suspended.
+        # - **pass**: The template is approved.
+        # 
+        # - **fail**: The template is rejected.
+        # 
+        # - **auditing**: The template is being reviewed.
+        # 
+        # - **unaudit**: The review is suspended.
         self.audit_status = audit_status
         # The category of the WhatsApp message template. Valid values:
         # 
-        # *   **UTILITY**
-        # *   **MARKETING**
-        # *   **AUTHENTICATION**
+        # - **UTILITY**
+        # 
+        # - **MARKETING**
+        # 
+        # - **AUTHENTICATION**
         # 
         # The category of the Viber template. Valid values:
         # 
-        # *   **text**: template that contains only text
-        # *   **image**: template that contains only images
-        # *   **text_image_button**: template that contains text, images, and buttons
-        # *   **text_button**: template that contains text and buttons
-        # *   **document**: template that contains only documents
-        # *   **video**: template that contains only videos
-        # *   **text_video**: template that contains text and videos
-        # *   **text_video_button**: template that contains text, videos, and buttons
-        # *   **text_image**: template that contains text and images
+        # - **text**: template that contains only text
+        # 
+        # - **image**: template that contains only images
+        # 
+        # - **text_image_button**: template that contains text, images, and buttons
+        # 
+        # - **text_button**: template that contains text and buttons
+        # 
+        # - **document**: template that contains only documents
+        # 
+        # - **video**: template that contains only videos
+        # 
+        # - **text_video**: template that contains text and videos
+        # 
+        # - **text_video_button**: template that contains text, videos, and buttons
+        # 
+        # - **text_image**: template that contains text and images
         self.category = category
         # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language

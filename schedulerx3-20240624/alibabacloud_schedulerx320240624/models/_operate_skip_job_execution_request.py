@@ -11,10 +11,15 @@ class OperateSkipJobExecutionRequest(DaraModel):
         cluster_id: str = None,
         job_execution_id: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The job execution ID.
         self.job_execution_id = job_execution_id
 
     def validate(self):

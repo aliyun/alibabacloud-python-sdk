@@ -13,8 +13,12 @@ class SaveContactWhiteListRequest(DaraModel):
         contact_white_lists_json: str = None,
         instance_id: str = None,
     ):
+        # The contact whitelist. This parameter is deprecated.
         self.contact_white_list_list = contact_white_list_list
+        # The whitelist. This parameter is required.
         self.contact_white_lists_json = contact_white_lists_json
+        # The instance ID. This parameter is required.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -9,7 +9,7 @@ class DeleteFaceGroupRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id

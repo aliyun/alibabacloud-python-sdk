@@ -19,48 +19,51 @@ class DescribeRecordResolveStatisticsSummaryRequest(DaraModel):
         start_date: str = None,
         threshold: int = None,
     ):
-        # The order in which the returned entries are sorted. Valid values:
+        # The sorting direction. Valid values:
         # 
-        # *   DESC (default): descending order
-        # *   ASC: ascending order
+        # - DESC: descending order (default)
+        # 
+        # - ASC: ascending order
         self.direction = direction
         # The domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The type of the domain name. The parameter value is not case-sensitive. Valid values:
+        # The type of the domain name. This parameter is not case-sensitive. Valid values:
         # 
-        # *   PUBLIC (default): hosted public domain name
-        # *   CACHE: cache-accelerated domain name
+        # - PUBLIC: an authoritative domain name (default)
+        # 
+        # - CACHE: an authoritative proxy domain name
         self.domain_type = domain_type
-        # The end date of the time range to be queried. Specify the time in the yyyy-MM-dd format, such as 2023-03-13.
+        # The end date. Specify the date in the YYYY-MM-DD format. For example: 2023-03-13.
         self.end_date = end_date
-        # The keyword. Keyword is used together with SearchMode.
+        # The keyword. This parameter is used with SearchMode.
         self.keyword = keyword
         # The language. Valid values: zh, en, and ja.
         self.lang = lang
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 1000.
+        # The number of entries to return on each page. The maximum value is 1000 and the minimum value is 1.
         self.page_size = page_size
         # The search mode of the keyword. Valid values:
         # 
-        # *   LIKE (default): fuzzy search
-        # *   EXACT: exact search
+        # - LIKE: fuzzy search (default)
+        # 
+        # - EXACT: exact match
         self.search_mode = search_mode
-        # The start date of the time range to be queried. Specify the time in the yyyy-MM-dd format, such as 2023-03-01.
+        # The start date. Specify the date in the YYYY-MM-DD format. For example: 2023-03-01.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The threshold for the number of Domain Name System (DNS) requests. You can query the subdomain names at the specified quantity level of DNS requests and query the number of DNS requests for each subdomain name.
+        # The resolution count threshold. This parameter lets you query subdomains based on their resolution counts.
         # 
-        # If you do not specify this parameter, the data about the subdomain names that have DNS requests is obtained.
+        # If you do not specify this parameter, data for subdomains with a resolution count greater than 0 is returned.
         # 
-        # If you set this parameter to a value less than 0, the data about all subdomain names is obtained.
+        # If you specify a value less than 0, all data is returned.
         # 
-        # If you set this parameter to 0, the data about the subdomain names that do not have DNS requests is obtained.
+        # If you specify 0, data for subdomains with a resolution count of 0 is returned.
         # 
-        # If you set this parameter to a value greater than 0, the data about the subdomain names whose number of DNS requests is less than or equal to the value of this parameter is obtained.
+        # If you specify a value greater than 0, data for subdomains with a resolution count less than or equal to the specified value is returned.
         self.threshold = threshold
 
     def validate(self):

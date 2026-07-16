@@ -16,12 +16,15 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of authorization resources.
         self.authorization_resources = authorization_resources
-        # 分页查询时每页行数。
+        # The number of entries per page in the paged query. This is the paging size.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The pagination token returned in this call. Use this token for the next page query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -86,17 +89,18 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         cloud_account_id: str = None,
         instance_id: str = None,
     ):
-        # 资源实体标识
+        # The resource entity ID associated with the authorization resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # 资源实体类型，枚举类型：asset（资产）、credential（凭据）、cloud_identity_role（云账号角色）
+        # The resource entity type associated with the authorization resource. Valid values:
+        # - cloud_account_role: cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
-        # 授权资源标识
+        # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
-        # 授权规则标识
+        # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # 云账号ID。
+        # The cloud account ID to which the resource entity associated with the authorization resource belongs.
         self.cloud_account_id = cloud_account_id
-        # 实例ID
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

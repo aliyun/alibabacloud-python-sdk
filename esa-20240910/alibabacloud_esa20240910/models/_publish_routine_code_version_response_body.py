@@ -10,7 +10,7 @@ class PublishRoutineCodeVersionResponseBody(DaraModel):
         code_version: str = None,
         request_id: str = None,
     ):
-        # The code version.
+        # The code version number.
         self.code_version = code_version
         # The request ID.
         self.request_id = request_id

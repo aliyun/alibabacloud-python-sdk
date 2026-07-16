@@ -16,10 +16,17 @@ class GetHotlineGroupDetailReportResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Status code. A return value of "Success" indicates that the request succeeded.
         self.code = code
+        # Query result data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API was invoked successfully. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -77,10 +84,15 @@ class GetHotlineGroupDetailReportResponseBodyData(DaraModel):
         rows: List[Dict[str, Any]] = None,
         total: int = None,
     ):
+        # Description of returned columns.
         self.columns = columns
+        # Current page.
         self.page = page
+        # Number of records per page.
         self.page_size = page_size
+        # Returned data results.
         self.rows = rows
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -141,7 +153,9 @@ class GetHotlineGroupDetailReportResponseBodyDataColumns(DaraModel):
         key: str = None,
         title: str = None,
     ):
+        # Metric.
         self.key = key
+        # Metric description.
         self.title = title
 
     def validate(self):

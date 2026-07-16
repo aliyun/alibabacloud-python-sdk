@@ -142,6 +142,7 @@ class GetSmsTemplateListResponseBodyDataList(DaraModel):
         gmt_create: str = None,
         sign_name: str = None,
         template_code: str = None,
+        template_content: str = None,
         template_name: str = None,
         template_tag: List[main_models.GetSmsTemplateListResponseBodyDataListTemplateTag] = None,
         template_type: int = None,
@@ -156,6 +157,8 @@ class GetSmsTemplateListResponseBodyDataList(DaraModel):
         self.sign_name = sign_name
         # 模板code
         self.template_code = template_code
+        # 模板内容
+        self.template_content = template_content
         # 模板名称
         self.template_name = template_name
         # 模板标签
@@ -190,6 +193,9 @@ class GetSmsTemplateListResponseBodyDataList(DaraModel):
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
 
+        if self.template_content is not None:
+            result['TemplateContent'] = self.template_content
+
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
 
@@ -222,6 +228,9 @@ class GetSmsTemplateListResponseBodyDataList(DaraModel):
 
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
+
+        if m.get('TemplateContent') is not None:
+            self.template_content = m.get('TemplateContent')
 
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')

@@ -23,8 +23,9 @@ class ListTagResourcesRequest(DaraModel):
         self.client_token = client_token
         # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # *   If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
-        # *   If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
+        # - If this is your first request or no next requests are to be sent, you do not need to specify this parameter.
+        # 
+        # - If a next request is to be sent, you must specify the token that is obtained from the previous request as the value of **NextToken**.
         self.next_token = next_token
         # The ID of the region where the resource resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
         # 
@@ -34,8 +35,9 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
-        # *   **vpcendpoint**: endpoint
-        # *   **vpcendpointservice**: endpoint service
+        # - **vpcendpoint**: endpoint
+        # 
+        # - **vpcendpointservice**: endpoint service
         # 
         # This parameter is required.
         self.resource_type = resource_type

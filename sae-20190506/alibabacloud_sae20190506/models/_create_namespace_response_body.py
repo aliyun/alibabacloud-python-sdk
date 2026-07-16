@@ -16,19 +16,35 @@ class CreateNamespaceResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # bucketPath
+        # The HTTP status code or a POP error code. Valid values:
+        # 
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The information about a namespace.
+        # The information about the namespace.
         self.data = data
-        # http://sae_pop_pre/#vpc
+        # The error code.
+        # 
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The ID of the namespace.
+        # The additional information returned.
         self.message = message
-        # The description of the custom namespace.
+        # The request ID.
         self.request_id = request_id
-        # mountDir
+        # Indicates whether the namespace was successfully created. Valid values:
+        # 
+        # - **true**: The namespace was created.
+        # 
+        # - **false**: The namespace failed to be created.
         self.success = success
-        # The name of the namespace.
+        # The trace ID. You can use the trace ID to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -99,31 +115,21 @@ class CreateNamespaceResponseBodyData(DaraModel):
         namespace_name: str = None,
         region_id: str = None,
     ):
-        # Indicates whether the SAE built-in registry is enabled:
+        # Indicates whether the built-in service registry of SAE is enabled.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.enable_micro_registration = enable_micro_registration
-        # Indicates whether the namespace was created. Valid values:
-        # 
-        # *   **true**: The instance was created.
-        # *   **false**: The call failed to be created.
+        # The short-format namespace ID.
         self.name_space_short_id = name_space_short_id
-        # The short ID of the namespace.
+        # The description of the namespace.
         self.namespace_description = namespace_description
-        # The error code returned. Take note of the following rules:
-        # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
-        # Null
+        # The name of the namespace.
         self.namespace_name = namespace_name
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # The region where the namespace resides.
         self.region_id = region_id
 
     def validate(self):

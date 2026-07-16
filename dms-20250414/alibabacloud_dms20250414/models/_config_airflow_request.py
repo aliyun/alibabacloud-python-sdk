@@ -13,10 +13,16 @@ class ConfigAirflowRequest(DaraModel):
         custom_airflow_cfg: List[str] = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the Airflow instance.
+        # 
         # This parameter is required.
         self.airflow_id = airflow_id
+        # The list of custom Airflow configurations.
+        # 
         # This parameter is required.
         self.custom_airflow_cfg = custom_airflow_cfg
+        # The DMS workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -14,15 +14,15 @@ class CreateNodeGroupRequest(DaraModel):
         node_group: main_models.CreateNodeGroupRequestNodeGroup = None,
         node_unit: Dict[str, Any] = None,
     ):
-        # Cluster ID
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # Node ID.
+        # The node ID.
         # 
         # This parameter is required.
         self.node_group = node_group
-        # Node information
+        # The node information.
         self.node_unit = node_unit
 
     def validate(self):
@@ -75,36 +75,38 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         user_data: str = None,
         virtual_gpu_enabled: bool = None,
     ):
-        # Availability Zone
+        # The zone.
         # 
         # This parameter is required.
         self.az = az
-        # Whether file storage mounting is supported
+        # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # Image ID.
+        # The image ID.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # Key pair name.
+        # The key pair name.
         self.key_pair_name = key_pair_name
-        # Password
+        # The logon password.
         self.login_password = login_password
-        # Machine type
+        # The machine type.
         # 
         # This parameter is required.
         self.machine_type = machine_type
-        # Node group description
+        # The node group description.
         self.node_group_description = node_group_description
-        # Node group name
+        # The node group name.
         # 
         # This parameter is required.
         self.node_group_name = node_group_name
+        # The RAM role name of the node. You can call the RAM API ListRoles to query the RAM roles you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
+        # > Note: Clearing an existing role is not currently supported.
         self.ram_role_name = ram_role_name
-        # Details of the node system disk configuration.
+        # The system disk configuration of the node.
         self.system_disk = system_disk
-        # User-defined data
+        # A custom executable shell script that must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # Whether to enable gpu virtualization or not
+        # Specifies whether GPU virtualization splitting is enabled.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -202,15 +204,15 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # Disk type. Value range:
+        # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: ESSD cloud disk.
+        #  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
         self.category = category
-        # When creating an ESSD cloud disk as a system disk, set the performance level of the cloud disk. Value range:
-        # - PL0: Maximum random read/write IOPS per disk 10,000.
-        # - PL1: Maximum random read/write IOPS per disk 50,000.
+        # The performance level (PL) of the ESSD cloud disk used as the system disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
-        # Unit: GB.
+        # The disk size. Unit: GB.
         self.size = size
 
     def validate(self):

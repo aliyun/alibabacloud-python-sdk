@@ -15,6 +15,7 @@ class CustomDomain(DaraModel):
         cors_config: main_models.CORSConfig = None,
         created_time: str = None,
         domain_name: str = None,
+        is_e2b: bool = None,
         last_modified_time: str = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
@@ -22,30 +23,32 @@ class CustomDomain(DaraModel):
         tls_config: main_models.TLSConfig = None,
         waf_config: main_models.WAFConfig = None,
     ):
-        # The ID of your Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account (primary account).
         self.account_id = account_id
-        # The version of the Function Compute API.
+        # The API version of Function Compute.
         self.api_version = api_version
-        # The configuration of permission authentication.
+        # The authentication configuration.
         self.auth_config = auth_config
-        # The configuration of the HTTPS certificate.
+        # The HTTPS certificate configuration.
         self.cert_config = cert_config
+        # The cross-origin resource sharing (CORS) configuration.
         self.cors_config = cors_config
-        # The time when the custom domain name was created.
+        # The time when the custom domain was created.
         self.created_time = created_time
         # The domain name.
         self.domain_name = domain_name
-        # The time when the custom domain name was last updated.
+        self.is_e2b = is_e2b
+        # The time when the custom domain was last modified.
         self.last_modified_time = last_modified_time
-        # The protocol type that is supported by the custom domain name. Valid values: HTTP HTTPS HTTP,HTTPS
+        # The protocols that are supported by the domain name. Valid values: HTTP (HTTP only), HTTPS (HTTPS only), and HTTP,HTTPS (both HTTP and HTTPS).
         self.protocol = protocol
-        # The route table that maps paths to functions when the function is invoked by using the custom domain name.
+        # The route table that maps paths to functions.
         self.route_config = route_config
-        # The number of added subdomains.
+        # The number of subdomains.
         self.subdomain_count = subdomain_count
-        # The Transport Layer Security (TLS) configuration.
+        # The TLS configuration.
         self.tls_config = tls_config
-        # The Web Application Firewall (WAF) configuration.
+        # The Web Application Firewall (WAF) aconfiguration.
         self.waf_config = waf_config
 
     def validate(self):
@@ -87,6 +90,9 @@ class CustomDomain(DaraModel):
 
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
+
+        if self.is_e2b is not None:
+            result['isE2B'] = self.is_e2b
 
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
@@ -133,6 +139,9 @@ class CustomDomain(DaraModel):
 
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')
+
+        if m.get('isE2B') is not None:
+            self.is_e2b = m.get('isE2B')
 
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')

@@ -1,3 +1,40 @@
+2026-07-02 Version: 4.5.2
+- Update API CreateSkill: add request parameters SkillDisplayName.
+- Update API GetSkill: add response parameters Body.Locales.
+- Update API GetSkill: add response parameters Body.SkillDisplayName.
+- Update API ListPublicSkills: add response parameters Body.Skills.$.Locales.
+- Update API ListPublicSkills: add response parameters Body.Skills.$.SkillDisplayName.
+- Update API ListSkills: add response parameters Body.Skills.$.Locales.
+- Update API ListSkills: add response parameters Body.Skills.$.SkillDisplayName.
+- Update API UpdateSkill: add request parameters SkillDisplayName.
+
+
+2026-06-12 Version: 4.5.1
+- Update API GenerateServicePolicy: add request parameters Parameters.
+
+
+2026-06-10 Version: 4.5.0
+- Support API CreateSkill.
+- Support API CreateSkillFileDetect.
+- Support API CreateSkillHubConfig.
+- Support API CreateSkillSpace.
+- Support API DeleteSkill.
+- Support API DeleteSkillSpace.
+- Support API GetSkill.
+- Support API GetSkillFileDetectResult.
+- Support API GetSkillHubConfig.
+- Support API GetSkillSpace.
+- Support API ListPublicSkills.
+- Support API ListSkillFiles.
+- Support API ListSkillSpaces.
+- Support API ListSkills.
+- Support API UpdateSkill.
+
+
+2026-06-04 Version: 4.4.0
+- Support API RenewServiceInstance.
+
+
 2026-03-16 Version: 4.3.3
 - Update API CheckServiceDeployable: add response parameters Body.CheckResults.$.Skippable.
 

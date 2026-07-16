@@ -11,13 +11,13 @@ class UpdatePolicyRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # Policy configuration
+        # The policy configuration.
         # 
         # This parameter is required.
         self.config = config
-        # Description
+        # The description of the policy.
         self.description = description
-        # Policy name
+        # The Policy Name.
         # 
         # This parameter is required.
         self.name = name

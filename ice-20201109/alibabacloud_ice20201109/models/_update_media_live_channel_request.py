@@ -137,8 +137,9 @@ class UpdateMediaLiveChannelRequestVideoSettings(DaraModel):
         # 
         # Valid values:
         # 
-        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
-        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+        # - For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # 
+        # - For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.height = height
         # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
         # 
@@ -150,8 +151,9 @@ class UpdateMediaLiveChannelRequestVideoSettings(DaraModel):
         self.video_codec_setting = video_codec_setting
         # The video transcoding method. Valid values:
         # 
-        # *   NORMAL: regular transcoding
-        # *   NBHD: Narrowband HD™ transcoding
+        # - NORMAL: regular transcoding
+        # 
+        # - NBHD: Narrowband HD™ transcoding
         # 
         # If not specified, regular transcoding is used by default.
         self.video_codec_type = video_codec_type
@@ -159,8 +161,9 @@ class UpdateMediaLiveChannelRequestVideoSettings(DaraModel):
         # 
         # Valid values:
         # 
-        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
-        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+        # - For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # 
+        # - For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
         self.width = width
 
     def validate(self):
@@ -552,9 +555,11 @@ class UpdateMediaLiveChannelRequestOutputGroupsOutputs(DaraModel):
         self.media_package_output_setting = media_package_output_setting
         # The media type of the output. Valid values:
         # 
-        # *   0: Audio and Video
-        # *   1: Audio If you set the value to 1, you cannot reference VideoSettings.
-        # *   2: Video. If you set the value to 2, you cannot reference AudioSettings.
+        # - 0: Audio and Video
+        # 
+        # - 1: Audio If you set the value to 1, you cannot reference VideoSettings.
+        # 
+        # - 2: Video. If you set the value to 2, you cannot reference AudioSettings.
         self.media_type = media_type
         # The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
         # 
@@ -702,11 +707,15 @@ class UpdateMediaLiveChannelRequestInputAttachments(DaraModel):
         self.input_id = input_id
         # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
         # 
-        # *   Unicode letters
-        # *   Digits (0-9)
-        # *   Underscore (_)
-        # *   Hyphen (-)
-        # *   Space (a space cannot be at the beginning or end)
+        # - Unicode letters
+        # 
+        # - Digits (0-9)
+        # 
+        # - Underscore (_)
+        # 
+        # - Hyphen (-)
+        # 
+        # - Space (a space cannot be at the beginning or end)
         self.language_name = language_name
 
     def validate(self):
@@ -930,11 +939,15 @@ class UpdateMediaLiveChannelRequestAudioSettings(DaraModel):
         self.language_code = language_code
         # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
         # 
-        # *   Unicode letters
-        # *   Digits (0-9)
-        # *   Underscore (_)
-        # *   Hyphen (-)
-        # *   Space (a space cannot be at the beginning or end)
+        # - Unicode letters
+        # 
+        # - Digits (0-9)
+        # 
+        # - Underscore (_)
+        # 
+        # - Hyphen (-)
+        # 
+        # - Space (a space cannot be at the beginning or end)
         self.language_name = language_name
         # The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
         # 

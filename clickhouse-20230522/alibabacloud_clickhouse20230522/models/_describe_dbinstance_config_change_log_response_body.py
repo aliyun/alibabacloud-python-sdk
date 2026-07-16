@@ -13,6 +13,7 @@ class DescribeDBInstanceConfigChangeLogResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceConfigChangeLogResponseBodyData = None,
         request_id: str = None,
     ):
+        # The result set.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -51,7 +52,9 @@ class DescribeDBInstanceConfigChangeLogResponseBodyData(DaraModel):
         dbinstance_id: str = None,
         param_change_logs: List[main_models.DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs] = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The parameter change records.
         self.param_change_logs = param_change_logs
 
     def validate(self):
@@ -99,12 +102,22 @@ class DescribeDBInstanceConfigChangeLogResponseBodyDataParamChangeLogs(DaraModel
         new_value: str = None,
         old_value: str = None,
     ):
+        # Indicates whether the configuration takes effect:
+        # 
+        # - true: The execution plan takes effect.
+        # - false: The execution plan does not take effect.
         self.applied = applied
+        # The time when the change was created.
         self.gmt_created = gmt_created
+        # The time when the change was modified.
         self.gmt_modified = gmt_modified
+        # The operation ID.
         self.id = id
+        # The name of the parameter.
         self.name = name
+        # The new parameter value.
         self.new_value = new_value
+        # The old parameter value.
         self.old_value = old_value
 
     def validate(self):

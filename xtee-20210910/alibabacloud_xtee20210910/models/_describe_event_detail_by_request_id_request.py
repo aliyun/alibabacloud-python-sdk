@@ -13,19 +13,19 @@ class DescribeEventDetailByRequestIdRequest(DaraModel):
         reg_id: str = None,
         s_request_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event execution time
+        # The event execution time.
         self.event_time = event_time
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Request ID.
+        # The request ID.
         # 
         # This parameter is required.
         self.s_request_id = s_request_id

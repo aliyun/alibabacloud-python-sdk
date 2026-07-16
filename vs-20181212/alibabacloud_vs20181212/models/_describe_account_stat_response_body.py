@@ -14,12 +14,17 @@ class DescribeAccountStatResponseBody(DaraModel):
         template_limit: int = None,
         template_num: int = None,
     ):
+        # The maximum number of device spaces.
         self.group_limit = group_limit
+        # Number of device groups in the current region.
         self.group_num = group_num
-        # ID
+        # Alibaba Cloud account ID.
         self.id = id
+        # Request ID.
         self.request_id = request_id
+        # Maximum number of templates.
         self.template_limit = template_limit
+        # Current number of templates.
         self.template_num = template_num
 
     def validate(self):

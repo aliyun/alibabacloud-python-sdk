@@ -16,10 +16,15 @@ class DescribePolarClawChannelsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # A list of PolarClaw channel objects.
         self.channels = channels
+        # The returned status code.
         self.code = code
+        # The response message. A value of `successful` indicates that the request succeeded.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,10 +88,15 @@ class DescribePolarClawChannelsResponseBodyChannels(DaraModel):
         default_account_id: str = None,
         enabled: bool = None,
     ):
+        # A list of account objects for the channel.
         self.accounts = accounts
+        # The channel ID.
         self.channel_id = channel_id
+        # Indicates whether the channel is configured.
         self.configured = configured
+        # The default account ID for the channel.
         self.default_account_id = default_account_id
+        # Indicates whether the channel is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -152,12 +162,19 @@ class DescribePolarClawChannelsResponseBodyChannelsAccounts(DaraModel):
         last_inbound_at: int = None,
         last_outbound_at: int = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # Indicates whether the account is configured.
         self.configured = configured
+        # Indicates whether the account is connected.
         self.connected = connected
+        # Indicates whether the account is enabled.
         self.enabled = enabled
+        # A list of issues related to the account.
         self.issues = issues
+        # The timestamp (in milliseconds) of the last inbound message.
         self.last_inbound_at = last_inbound_at
+        # The timestamp (in milliseconds) of the last outbound message.
         self.last_outbound_at = last_outbound_at
 
     def validate(self):

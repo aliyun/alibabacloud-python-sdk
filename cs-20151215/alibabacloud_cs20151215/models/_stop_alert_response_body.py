@@ -10,12 +10,11 @@ class StopAlertResponseBody(DaraModel):
         msg: str = None,
         status: bool = None,
     ):
-        # The error message returned if the call fails.
+        # The message returned when the execution fails.
         self.msg = msg
-        # The operation result. Valid values:
-        # 
-        # *   True: The operation is successful.
-        # *   False: The operation failed.
+        # The execution result status. Valid values:
+        # - True: The execution is successful.
+        # - False: The execution failed.
         self.status = status
 
     def validate(self):

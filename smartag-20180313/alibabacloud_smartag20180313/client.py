@@ -21,6 +21,18 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'smartag.eu-central-1.aliyuncs.com',
+            'cn-shanghai-finance-1': 'smartag.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'smartag.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'smartag.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'smartag.cn-hangzhou.aliyuncs.com',
+            'ap-southeast-5': 'smartag.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'smartag.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'smartag.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'smartag.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'smartag.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('smartag', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1047,6 +1059,88 @@ class Client(OpenApiClient):
     ) -> main_models.AssociateSmartAGWithApplicationBandwidthPackageResponse:
         runtime = RuntimeOptions()
         return await self.associate_smart_agwith_application_bandwidth_package_with_options_async(request, runtime)
+
+    def attach_ccn_instance_to_cen_with_options(
+        self,
+        request: main_models.AttachCcnInstanceToCenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachCcnInstanceToCenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ccn_id):
+            query['CcnId'] = request.ccn_id
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.subnet):
+            query['Subnet'] = request.subnet
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachCcnInstanceToCen',
+            version = '2018-03-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachCcnInstanceToCenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_ccn_instance_to_cen_with_options_async(
+        self,
+        request: main_models.AttachCcnInstanceToCenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachCcnInstanceToCenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ccn_id):
+            query['CcnId'] = request.ccn_id
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.subnet):
+            query['Subnet'] = request.subnet
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AttachCcnInstanceToCen',
+            version = '2018-03-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AttachCcnInstanceToCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_ccn_instance_to_cen(
+        self,
+        request: main_models.AttachCcnInstanceToCenRequest,
+    ) -> main_models.AttachCcnInstanceToCenResponse:
+        runtime = RuntimeOptions()
+        return self.attach_ccn_instance_to_cen_with_options(request, runtime)
+
+    async def attach_ccn_instance_to_cen_async(
+        self,
+        request: main_models.AttachCcnInstanceToCenRequest,
+    ) -> main_models.AttachCcnInstanceToCenResponse:
+        runtime = RuntimeOptions()
+        return await self.attach_ccn_instance_to_cen_with_options_async(request, runtime)
 
     def bind_serial_number_with_options(
         self,
@@ -10163,6 +10257,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeUserOnlineClientsResponse:
         runtime = RuntimeOptions()
         return await self.describe_user_online_clients_with_options_async(request, runtime)
+
+    def detach_ccn_instance_from_cen_with_options(
+        self,
+        request: main_models.DetachCcnInstanceFromCenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachCcnInstanceFromCenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ccn_id):
+            query['CcnId'] = request.ccn_id
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachCcnInstanceFromCen',
+            version = '2018-03-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachCcnInstanceFromCenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_ccn_instance_from_cen_with_options_async(
+        self,
+        request: main_models.DetachCcnInstanceFromCenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachCcnInstanceFromCenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ccn_id):
+            query['CcnId'] = request.ccn_id
+        if not DaraCore.is_null(request.cen_id):
+            query['CenId'] = request.cen_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DetachCcnInstanceFromCen',
+            version = '2018-03-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DetachCcnInstanceFromCenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_ccn_instance_from_cen(
+        self,
+        request: main_models.DetachCcnInstanceFromCenRequest,
+    ) -> main_models.DetachCcnInstanceFromCenResponse:
+        runtime = RuntimeOptions()
+        return self.detach_ccn_instance_from_cen_with_options(request, runtime)
+
+    async def detach_ccn_instance_from_cen_async(
+        self,
+        request: main_models.DetachCcnInstanceFromCenRequest,
+    ) -> main_models.DetachCcnInstanceFromCenResponse:
+        runtime = RuntimeOptions()
+        return await self.detach_ccn_instance_from_cen_with_options_async(request, runtime)
 
     def diagnose_smart_access_gateway_with_options(
         self,

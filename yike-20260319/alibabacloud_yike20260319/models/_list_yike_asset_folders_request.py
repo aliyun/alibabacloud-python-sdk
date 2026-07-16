@@ -11,8 +11,11 @@ class ListYikeAssetFoldersRequest(DaraModel):
         page_size: int = None,
         production_id: str = None,
     ):
+        # The current page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The project ID. If this parameter is not specified, the default project is queried.
         self.production_id = production_id
 
     def validate(self):

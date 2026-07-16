@@ -18,7 +18,7 @@ class ImportImageResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The image import task ID.
+        # The ID of the image import task.
         self.task_id = task_id
 
     def validate(self):

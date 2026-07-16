@@ -1,3 +1,34 @@
+2026-07-16 Version: 2.14.0
+- Support API AddChunk.
+
+
+2026-06-18 Version: 2.13.1
+- Update API AddTable: add request parameters TableDesc.
+- Update API DescribeFile: add response parameters Body.Data.ParseErrorMessage.
+- Update API ListFile: add response parameters Body.Data.FileList.$.ParseErrorMessage.
+
+
+2026-06-10 Version: 2.13.0
+- Support API DeleteFiles.
+
+
+2026-06-03 Version: 2.12.0
+- Support API DeleteConnector.
+- Support API UpdateConnector.
+- Update API AddFilesFromAuthorizedOss: add request parameters FileDetails.$.Parser.
+- Update API AddFilesFromAuthorizedOss: add request parameters FileDetails.$.ParserConfig.
+
+
+2026-05-21 Version: 2.11.1
+- Generated python 2023-12-29 for bailian.
+
+2026-05-21 Version: 2.11.0
+- Support API AddConnector.
+- Support API GetConnector.
+- Update API ListCategory: add request parameters ConnectorId.
+- Update API ListFile: add request parameters FileIds.
+
+
 2026-05-20 Version: 2.10.1
 - Update API Retrieve: add request parameters Extra.
 - Update API SubmitIndexAddDocumentsJob: add request parameters Extra.

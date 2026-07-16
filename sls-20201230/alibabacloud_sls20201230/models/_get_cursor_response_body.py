@@ -9,7 +9,7 @@ class GetCursorResponseBody(DaraModel):
         self,
         cursor: str = None,
     ):
-        # The value of the cursor.
+        # The cursor value.
         self.cursor = cursor
 
     def validate(self):

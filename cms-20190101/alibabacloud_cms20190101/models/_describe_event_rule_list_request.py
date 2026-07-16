@@ -19,6 +19,7 @@ class DescribeEventRuleListRequest(DaraModel):
         # Specifies whether to enable the event-triggered alert rule. Valid values:
         # 
         # - true (default)
+        # 
         # - false
         self.is_enable = is_enable
         # The prefix in the name of the event-triggered alert rule.

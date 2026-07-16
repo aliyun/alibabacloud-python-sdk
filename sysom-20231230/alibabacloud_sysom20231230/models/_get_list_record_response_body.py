@@ -16,11 +16,15 @@ class GetListRecordResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The description of the status code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -84,10 +88,15 @@ class GetListRecordResponseBodyData(DaraModel):
         failed_log: str = None,
         status: str = None,
     ):
+        # The AI analysis ID.
         self.analysis_id = analysis_id
+        # The analysis time.
         self.analysis_time = analysis_time
+        # The analysis parameters of the AI job analysis.
         self.arguments = arguments
+        # The failure log of the analysis.
         self.failed_log = failed_log
+        # The analysis status.
         self.status = status
 
     def validate(self):

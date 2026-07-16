@@ -18,14 +18,29 @@ class ElectZookeeperLeaderRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to disable writes.
         self.disable_write = disable_write
+        # The time to perform the leader switchover.
         self.elect_time = elect_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
+        # The region ID.
+        # 
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

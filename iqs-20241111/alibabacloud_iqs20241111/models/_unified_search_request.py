@@ -10,6 +10,7 @@ class UnifiedSearchRequest(DaraModel):
         self,
         body: main_models.UnifiedSearchInput = None,
     ):
+        # The search request parameters.
         self.body = body
 
     def validate(self):

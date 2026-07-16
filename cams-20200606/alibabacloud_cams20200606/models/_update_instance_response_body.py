@@ -15,11 +15,25 @@ class UpdateInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details about why access was denied.
         self.access_denied_detail = access_denied_detail
+        # The status code of the response.
+        # 
+        # - `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data object.
         self.data = data
+        # The response message. If the request fails, this field contains error details.
         self.message = message
+        # The request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,12 +99,19 @@ class UpdateInstanceResponseBodyData(DaraModel):
         resource_region_id: str = None,
         submit_time: str = None,
     ):
+        # The channel type.
         self.channel_type = channel_type
+        # The description.
         self.description = description
+        # The instance description.
         self.instance_description = instance_description
+        # The instance ID.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The ID of the region where the instance is located.
         self.resource_region_id = resource_region_id
+        # The time when the instance information was submitted.
         self.submit_time = submit_time
 
     def validate(self):

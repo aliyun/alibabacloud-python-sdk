@@ -18,15 +18,15 @@ class DescribeLogAnalysisResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.analyses = analyses
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The page number.
+        # The page number of the log analysis entries.
         self.page_number = page_number
-        # The number of log dump entries returned per page.
+        # The number of log analysis entries on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of log dump entries in the region.
+        # The total number of log analysis entries in the region.
         self.total_count = total_count
 
     def validate(self):

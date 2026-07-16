@@ -13,9 +13,9 @@ class DescribeCustVariableConfigListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeCustVariableConfigListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeCustVariableConfigListResponseBodyResultObject(DaraModel):
         config_key: str = None,
         config_value: str = None,
     ):
-        # Configuration key
+        # The key of the configuration item.
         self.config_key = config_key
-        # Configuration value
+        # The value of the configuration item.
         self.config_value = config_value
 
     def validate(self):

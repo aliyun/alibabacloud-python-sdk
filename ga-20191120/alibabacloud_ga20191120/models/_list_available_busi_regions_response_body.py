@@ -62,15 +62,17 @@ class ListAvailableBusiRegionsResponseBodyRegions(DaraModel):
     ):
         # Indicates whether the region is in the Chinese mainland. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.china_mainland = china_mainland
         # The name of the region.
         self.local_name = local_name
         # Indicates whether it is a point of presence (PoP) of Alibaba Cloud. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.pop = pop
         # The ID of the region.
         self.region_id = region_id

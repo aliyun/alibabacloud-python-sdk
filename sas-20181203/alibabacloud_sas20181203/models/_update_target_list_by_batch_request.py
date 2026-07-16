@@ -17,7 +17,7 @@ class UpdateTargetListByBatchRequest(DaraModel):
         # 
         # This parameter is required.
         self.batch_id = batch_id
-        # The operations on assets.
+        # The list of asset operations.
         # 
         # This parameter is required.
         self.operation_list = operation_list
@@ -65,17 +65,15 @@ class UpdateTargetListByBatchRequestOperationList(DaraModel):
         vpc_instance_id: str = None,
     ):
         # The ID of the server group.
-        # 
-        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+        # > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the server group ID.
         self.group_id = group_id
         # The operation type. Valid values:
         # 
-        # *   **add**: the add operation.
-        # *   **del**: the remove operation.
+        # - **add**: increase.
+        # - **del**: delete.
         self.operation = operation
         # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
         # The ID of the VPC-connected instance.
         self.vpc_instance_id = vpc_instance_id

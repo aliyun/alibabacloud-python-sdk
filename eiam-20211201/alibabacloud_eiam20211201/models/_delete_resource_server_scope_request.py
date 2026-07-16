@@ -11,15 +11,15 @@ class DeleteResourceServerScopeRequest(DaraModel):
         instance_id: str = None,
         resource_server_scope_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer下Scope唯一标识。
+        # The scope permission ID under the ResourceServer.
         # 
         # This parameter is required.
         self.resource_server_scope_id = resource_server_scope_id

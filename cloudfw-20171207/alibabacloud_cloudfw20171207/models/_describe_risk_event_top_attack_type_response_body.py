@@ -15,9 +15,13 @@ class DescribeRiskEventTopAttackTypeResponseBody(DaraModel):
         total_attack_cnt: int = None,
         total_protect_cnt: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of the top attack types.
         self.top_attack_type_list = top_attack_type_list
+        # The total number of attacks.
         self.total_attack_cnt = total_attack_cnt
+        # The total number of protection triggers.
         self.total_protect_cnt = total_protect_cnt
 
     def validate(self):
@@ -73,8 +77,39 @@ class DescribeRiskEventTopAttackTypeResponseBodyTopAttackTypeList(DaraModel):
         attack_type: int = None,
         protect_cnt: int = None,
     ):
+        # The number of attacks.
         self.attack_cnt = attack_cnt
+        # The attack type of the intrusion prevention event. Valid values:
+        # 
+        # - **1**: abnormal connection
+        # 
+        # - **2**: command execution
+        # 
+        # - **3**: brute-force attack
+        # 
+        # - **4**: scan
+        # 
+        # - **5**: other
+        # 
+        # - **6**: information leakage
+        # 
+        # - **7**: DoS attack
+        # 
+        # - **8**: overflow attack
+        # 
+        # - **9**: web attack
+        # 
+        # - **10**: trojan and backdoor
+        # 
+        # - **11**: virus and worm
+        # 
+        # - **12**: cryptomining
+        # 
+        # - **13**: reverse shell
+        # 
+        # > By default, this API queries for all attack types.
         self.attack_type = attack_type
+        # The number of protection triggers.
         self.protect_cnt = protect_cnt
 
     def validate(self):

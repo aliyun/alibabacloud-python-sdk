@@ -11,8 +11,12 @@ class DeleteCostCenterRuleShrinkRequest(DaraModel):
         filter_expression_shrink: str = None,
         nbid: str = None,
     ):
+        # Financial unit ID.
         self.cost_center_id = cost_center_id
+        # Rule expression.
+        # **This field does not need to be entered during the delete operation.**
         self.filter_expression_shrink = filter_expression_shrink
+        # Level-1 marketplace ID. If empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):

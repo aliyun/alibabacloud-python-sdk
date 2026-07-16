@@ -62,12 +62,17 @@ class ListFilesRequest(DaraModel):
         self.project_identifier = project_identifier
         # The functional module to which the file belongs. Valid values:
         # 
-        # *   NORMAL: Data Studio
-        # *   MANUAL: Manually triggered node
-        # *   MANUAL_BIZ: Manually triggered workflow
-        # *   SKIP: Dry-run scheduling in Data Studio
-        # *   ADHOCQUERY: Ad hoc query
-        # *   COMPONENT: Component management
+        # - NORMAL: Data Studio
+        # 
+        # - MANUAL: Manually triggered node
+        # 
+        # - MANUAL_BIZ: Manually triggered workflow
+        # 
+        # - SKIP: Dry-run scheduling in Data Studio
+        # 
+        # - ADHOCQUERY: Ad hoc query
+        # 
+        # - COMPONENT: Component management
         self.use_type = use_type
 
     def validate(self):

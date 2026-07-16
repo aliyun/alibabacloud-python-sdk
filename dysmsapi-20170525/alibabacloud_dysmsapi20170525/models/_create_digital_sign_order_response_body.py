@@ -16,11 +16,33 @@ class CreateDigitalSignOrderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This parameter is returned only if the RAM user is not authorized.
         self.access_denied_detail = access_denied_detail
+        # The status code.
+        # 
+        # - If the request is successful, `OK` is returned.
+        # 
+        # - For more information about other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # The returned data.
+        # 
+        # - `signName`: The name of the signature.
+        # 
+        # - `signOrderId`: The ID of the signature order.
+        # 
+        # - `signCode`: The code of the signature.
+        # 
+        # - `signId`: The ID of the signature.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

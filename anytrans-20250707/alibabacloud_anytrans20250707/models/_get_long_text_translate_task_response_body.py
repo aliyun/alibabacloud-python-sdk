@@ -15,11 +15,17 @@ class GetLongTextTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID, used to trace the API call.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class GetLongTextTranslateTaskResponseBodyData(DaraModel):
         translation: str = None,
         usage: main_models.GetLongTextTranslateTaskResponseBodyDataUsage = None,
     ):
+        # The translation result.
         self.translation = translation
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -118,8 +126,11 @@ class GetLongTextTranslateTaskResponseBodyDataUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):

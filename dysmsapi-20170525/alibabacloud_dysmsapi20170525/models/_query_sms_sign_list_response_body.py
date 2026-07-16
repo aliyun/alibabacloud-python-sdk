@@ -18,20 +18,21 @@ class QuerySmsSignListResponseBody(DaraModel):
         sms_sign_list: List[main_models.QuerySmsSignListResponseBodySmsSignList] = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code. Valid values:
+        #  
+        # - OK: The request was successful.
         # 
-        # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
         # The page number. Default value: **1**.
         self.current_page = current_page
-        # The returned message.
+        # The description of the status code.
         self.message = message
-        # The number of signatures per page. Valid values: **1 to 50**.
+        # The number of signatures to return on each page. Default value: **10**. Valid values: **1 to 50**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried message signatures.
+        # The list of returned results.
         self.sms_sign_list = sms_sign_list
         # The total number of signatures.
         self.total_count = total_count
@@ -114,32 +115,45 @@ class QuerySmsSignListResponseBodySmsSignList(DaraModel):
         trademark_id: int = None,
         authorization_letter_audit_pass: bool = None,
     ):
+        # The APP-ICP filing entity ID.
         self.app_icp_record_id = app_icp_record_id
-        # The approval status of the signature. Valid values:
+        # The audit status of the signature. Valid values:
         # 
-        # *   **AUDIT_STATE_INIT**: The signature is pending approval.
-        # *   **AUDIT_STATE_PASS**: The signature is approved.
-        # *   **AUDIT_STATE_NOT_PASS**: The signature is rejected. You can view the reason in the Reason response parameter.
-        # *   **AUDIT_STATE_CANCEL**: The approval is canceled.
+        # - **AUDIT_STATE_INIT**: under review.
+        # 
+        # - **AUDIT_STATE_PASS**: approved.
+        # 
+        # - **AUDIT_STATE_NOT_PASS**: rejected. You can view the rejection reason in the Reason response parameter.
+        # 
+        # - **AUDIT_STATE_CANCEL**: review canceled.
         self.audit_status = audit_status
+        # The ID of the letter of authorization.
         self.authorization_letter_id = authorization_letter_id
-        # The type of the signature scenario. The return value ends with "type". Valid values:
+        # The scenario type of the signature. Valid values:
         # 
-        # *   Verification code type
-        # *   General-purpose type
+        # - Verification code.
+        # 
+        # - General-purpose.
         self.business_type = business_type
-        # The time when the signature was created. Format: yyyy-MM-dd HH:mm:ss.
+        # The time when the SMS signature was created. The format is yyyy-MM-dd HH:mm:ss.
         self.create_date = create_date
-        # The ticket ID.
-        self.order_id = order_id
-        # The approval remarks.
+        # The order ID.
         # 
-        # *   If the value of AuditStatus is **AUDIT_STATE_PASS** or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
-        # *   If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the signature is rejected is returned.
+        # This parameter is used by auditors when querying the audit. You must provide this order ID if you need to expedite the audit.
+        self.order_id = order_id
+        # The audit remarks.
+        # 
+        # - If the audit status is **approved** or **under review**, the Reason parameter is displayed as "No audit remarks".
+        # 
+        # - If the audit status is **rejected**, the Reason parameter displays the specific reason for the rejection.
         self.reason = reason
-        # The name of the signature.
+        # The signature name.
         self.sign_name = sign_name
+        # The trademark entity ID.
         self.trademark_id = trademark_id
+        # The audit status of the letter of authorization. Valid values:
+        # - true: approved.
+        # - false: not approved (includes all statuses other than approved).
         self.authorization_letter_audit_pass = authorization_letter_audit_pass
 
     def validate(self):
@@ -225,11 +239,11 @@ class QuerySmsSignListResponseBodySmsSignListReason(DaraModel):
         reject_info: str = None,
         reject_sub_info: str = None,
     ):
-        # The time when the signature was rejected. Format: yyyy-MM-dd HH:mm:ss.
+        # The time when the signature was rejected. The format is yyyy-MM-dd HH:mm:ss.
         self.reject_date = reject_date
-        # The reason why the signature was rejected.
+        # The reason for the rejection.
         self.reject_info = reject_info
-        # The remarks about the rejection.
+        # The remarks for the rejection.
         self.reject_sub_info = reject_sub_info
 
     def validate(self):

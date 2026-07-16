@@ -11,16 +11,17 @@ class SetDnsGtmMonitorStatusRequest(DaraModel):
         monitor_config_id: str = None,
         status: str = None,
     ):
-        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Valid values: en, zh, and ja. The default value is en.
         self.lang = lang
-        # The ID of the health check task.
+        # The ID of the health check configuration. You can call the [DescribeDnsGtmInstanceAddressPool](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstanceaddresspool) operation to obtain the ID.
         # 
         # This parameter is required.
         self.monitor_config_id = monitor_config_id
-        # Specifies whether to enable the health check feature. Valid values:
+        # The status to set for the health check. Valid values:
         # 
-        # *   OPEN: enables the health check feature.
-        # *   CLOSE: disables the health check feature.
+        # - OPEN: Enables the health check.
+        # 
+        # - CLOSE: Disables the health check.
         # 
         # This parameter is required.
         self.status = status

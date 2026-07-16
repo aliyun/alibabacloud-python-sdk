@@ -12,21 +12,29 @@ class DetachVscFromFilesystemsRequest(DaraModel):
         self,
         client_token: str = None,
         resource_ids: List[main_models.DetachVscFromFilesystemsRequestResourceIds] = None,
+        role_chain: List[main_models.DetachVscFromFilesystemsRequestRoleChain] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests.
         # 
-        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
         self.client_token = client_token
-        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # The ID information of the file system and virtual storage channel. A maximum of 10 entries can be specified per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The role chain.
+        # > This parameter is required only for cross-account scenarios.
+        self.role_chain = role_chain
 
     def validate(self):
         if self.resource_ids:
             for v1 in self.resource_ids:
+                 if v1:
+                    v1.validate()
+        if self.role_chain:
+            for v1 in self.role_chain:
                  if v1:
                     v1.validate()
 
@@ -43,6 +51,11 @@ class DetachVscFromFilesystemsRequest(DaraModel):
             for k1 in self.resource_ids:
                 result['ResourceIds'].append(k1.to_map() if k1 else None)
 
+        result['RoleChain'] = []
+        if self.role_chain is not None:
+            for k1 in self.role_chain:
+                result['RoleChain'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +69,58 @@ class DetachVscFromFilesystemsRequest(DaraModel):
                 temp_model = main_models.DetachVscFromFilesystemsRequestResourceIds()
                 self.resource_ids.append(temp_model.from_map(k1))
 
+        self.role_chain = []
+        if m.get('RoleChain') is not None:
+            for k1 in m.get('RoleChain'):
+                temp_model = main_models.DetachVscFromFilesystemsRequestRoleChain()
+                self.role_chain.append(temp_model.from_map(k1))
+
+        return self
+
+class DetachVscFromFilesystemsRequestRoleChain(DaraModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        role_arn: str = None,
+        role_type: str = None,
+    ):
+        # The UID of the Alibaba Cloud account on whose behalf the service assumes the role.
+        self.assume_role_for = assume_role_for
+        # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
+        self.role_arn = role_arn
+        # The role type. Valid values: service and user.
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+
         return self
 
 class DetachVscFromFilesystemsRequestResourceIds(DaraModel):
@@ -64,9 +129,9 @@ class DetachVscFromFilesystemsRequestResourceIds(DaraModel):
         file_system_id: str = None,
         vsc_id: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The ID of the virtual storage channel.
+        # The virtual storage channel ID.
         self.vsc_id = vsc_id
 
     def validate(self):

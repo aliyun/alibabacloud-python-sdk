@@ -22,21 +22,33 @@ class CreateNetworkChannelRequest(DaraModel):
         target_port: str = None,
         vpc_id: str = None,
     ):
+        # The name of the network channel. The name must consist of lowercase letters, digits, and underscores (_). It must start and end with a letter or a digit. The name can be up to 64 characters long.
+        # 
         # This parameter is required.
         self.channel_name = channel_name
+        # A client token that ensures the request is idempotent. The client generates this token. The token must be unique for each request. It is case-sensitive and can be up to 64 ASCII characters long.
         self.client_token = client_token
+        # The name of the source instance.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The notes.
         self.notes = notes
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the destination instance.
         self.target_dbcluster_id = target_dbcluster_id
+        # The IP address of the destination instance.
         self.target_ip = target_ip
+        # The port of the destination instance.
         self.target_port = target_port
+        # The ID of the virtual private cloud (VPC) where the endpoint is located.
         self.vpc_id = vpc_id
 
     def validate(self):

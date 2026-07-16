@@ -8,11 +8,14 @@ class ListS3IngestionsRequest(DaraModel):
     def __init__(
         self,
         logstore: str = None,
-        offset: str = None,
-        size: str = None,
+        offset: int = None,
+        size: int = None,
     ):
+        # The name of the Logstore.
         self.logstore = logstore
+        # The starting position of the results to return. The default value is 0.
         self.offset = offset
+        # The number of rows per page for a paged query.
         self.size = size
 
     def validate(self):

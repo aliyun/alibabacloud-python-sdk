@@ -13,7 +13,9 @@ class ListIcebergNamespaceDetailsResponseBody(DaraModel):
         namespace_details: List[main_models.Namespace] = None,
         next_page_token: str = None,
     ):
+        # The namespaces.
         self.namespace_details = namespace_details
+        # The token for the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_page_token = next_page_token
 
     def validate(self):

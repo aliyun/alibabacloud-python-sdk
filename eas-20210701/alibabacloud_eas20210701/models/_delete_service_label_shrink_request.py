@@ -10,8 +10,9 @@ class DeleteServiceLabelShrinkRequest(DaraModel):
         keys_shrink: str = None,
         label_keys_shrink: str = None,
     ):
-        # The service tags that you want to delete.
+        # The keys of the service labels that you want to delete. This parameter is deprecated. Use the LabelKeys parameter instead.
         self.keys_shrink = keys_shrink
+        # The keys of the service labels that you want to delete.
         self.label_keys_shrink = label_keys_shrink
 
     def validate(self):

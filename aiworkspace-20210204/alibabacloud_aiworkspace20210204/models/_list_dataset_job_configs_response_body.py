@@ -14,7 +14,7 @@ class ListDatasetJobConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The dataset job configurations.
+        # A list of dataset job configurations.
         self.dataset_job_configs = dataset_job_configs
         # The request ID.
         self.request_id = request_id

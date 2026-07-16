@@ -10,9 +10,9 @@ class DescribeExistSceneResponseBody(DaraModel):
         request_id: str = None,
         data: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Data object
+        # The data object.
         self.data = data
 
     def validate(self):

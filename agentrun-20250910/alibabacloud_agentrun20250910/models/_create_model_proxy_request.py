@@ -10,6 +10,7 @@ class CreateModelProxyRequest(DaraModel):
         self,
         body: main_models.CreateModelProxyInput = None,
     ):
+        # The configuration for the Model Proxy.
         self.body = body
 
     def validate(self):

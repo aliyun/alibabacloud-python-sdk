@@ -14,10 +14,14 @@ class ConnectRouterInterfaceRequest(DaraModel):
         router_interface_id: str = None,
     ):
         self.owner_id = owner_id
+        # The ID of the region where the router interface is located.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the initiator router interface.
+        # 
         # This parameter is required.
         self.router_interface_id = router_interface_id
 

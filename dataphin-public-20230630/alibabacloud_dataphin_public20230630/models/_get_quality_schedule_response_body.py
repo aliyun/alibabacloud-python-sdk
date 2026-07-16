@@ -17,12 +17,17 @@ class GetQualityScheduleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The details of the schedule object.
         self.quality_schedule_info = quality_schedule_info
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,23 +104,63 @@ class GetQualityScheduleResponseBodyQualityScheduleInfo(DaraModel):
         validate_partition_type: str = None,
         watch_id: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The user ID of the creator.
         self.creator = creator
+        # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
+        # The ID of the schedule object.
         self.id = id
+        # Indicates whether the schedule object is referenced by a rule.
         self.is_ref_by_rule = is_ref_by_rule
+        # The user ID of the last modifier.
         self.modifier = modifier
+        # The modification time.
         self.modify_time = modify_time
+        # The name of the schedule object.
         self.name = name
+        # The custom partition expression.
         self.partition_expression = partition_expression
+        # The partition type. Valid values:
+        # - EVERY_DAY: every day.
+        # - PRE_DAY: yesterday.
+        # - TODAY: today.
+        # - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+        # - CUSTOM: custom.
         self.partition_type = partition_type
+        # The interval type for timed scheduling. Valid values:
+        # - DAILY: day.
+        # - WEEKLY: week.
+        # - MONTHLY: month.
+        # - HOURLY: hour.
+        # - MINUTELY: minute.
         self.period_schedule_interval_type = period_schedule_interval_type
+        # The interval values for timed scheduling.
         self.period_schedule_param_list = period_schedule_param_list
+        # The trigger type for fixed task triggers. Valid values:
+        # - ALL_TASKS_FINISHED: triggered when all tasks are finished.
+        # - ONE_TASKS_FINISHED: triggered when one task is finished.
+        # - PRE_ONE_TASKS_START: triggered when the previous task starts.
         self.static_task_trigger_type = static_task_trigger_type
+        # The list of trigger nodes for trigger-based scheduling.
         self.trigger_node_list = trigger_node_list
+        # The trigger type for trigger-based scheduling. Valid values:
+        # - STATIC_TASK_TRIGGER: fixed task trigger.
+        # - CODE_CHECK_TRIGGER: code check trigger.
         self.trigger_type = trigger_type
+        # The schedule type. Valid values:
+        # - PERIOD_SCHEDULE: timed scheduling.
+        # - MANUAL_SCHEDULE: manual trigger.
+        # - CODE_CHECK_TRIGGER: code check trigger.
+        # - STATIC_TASK_TRIGGER: fixed task trigger.
+        # - DEPENDENCY_SCHEDULE: dependency scheduling.
         self.type = type
+        # The validation scope. Valid values:
+        # - TASK_REFERRED_PARTITION: partition updated by the task.
+        # - USER_DEFINED_PARTITION: custom partition.
         self.validate_partition_type = validate_partition_type
+        # The ID of the monitored object.
         self.watch_id = watch_id
 
     def validate(self):

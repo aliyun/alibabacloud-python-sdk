@@ -28,18 +28,29 @@ class UnifiedPageItem(DaraModel):
     ):
         self.correlation_tag = correlation_tag
         self.host_authority_score = host_authority_score
+        # The site logo.
         self.host_logo = host_logo
+        # The site name.
         self.hostname = hostname
+        # The images in the search result URL. A maximum of three images are returned.
         self.images = images
+        # The full URL that the search result points to.
         self.link = link
+        # The full text of the searched web page.
         self.main_text = main_text
+        # The Markdown content.
         self.markdown_text = markdown_text
+        # The time when the web page was published, in ISO time format.
         self.published_time = published_time
+        # The rerank score.
         self.rerank_score = rerank_score
         self.rich_main_body = rich_main_body
+        # The text summary.
         self.snippet = snippet
+        # The enhanced summary, which contains 400 or more characters.
         self.summary = summary
         self.tags = tags
+        # The full URL that the search result points to.
         self.title = title
         self.website_authority_score = website_authority_score
 

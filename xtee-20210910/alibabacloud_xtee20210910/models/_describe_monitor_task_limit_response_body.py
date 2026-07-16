@@ -11,9 +11,9 @@ class DescribeMonitorTaskLimitResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeMonitorTaskLimitResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeMonitorTaskLimitResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Whether the maximum limit has been reached
+        # Indicates whether the maximum number is reached.
         self.limit = limit
-        # Maximum number of items
+        # The maximum number of items.
         self.max_total_item = max_total_item
-        # Total number of items
+        # The total number of items.
         self.total_item = total_item
 
     def validate(self):

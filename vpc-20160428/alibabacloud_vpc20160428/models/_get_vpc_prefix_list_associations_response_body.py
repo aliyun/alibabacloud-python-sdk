@@ -16,18 +16,17 @@ class GetVpcPrefixListAssociationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries.
+        # The number of entries returned.
         self.count = count
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no subsequent query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The information about the network instances that are associated with the prefix list.
+        # The association information of the prefix list.
         self.prefix_list_association = prefix_list_association
         # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -95,13 +94,13 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(DaraModel):
         resource_uid: str = None,
         status: str = None,
     ):
-        # List of CIDR addresses where the prefix list is effective in the currently associated resources.
+        # The list of CIDR blocks in the prefix list that are effective for the associated resource.
         self.cidr_list = cidr_list
-        # The ID of the Alibaba Cloud account to which the prefix list belongs.
+        # The ID of the Alibaba Cloud account that owns the prefix list.
         self.owner_id = owner_id
-        # The prefix list ID.
+        # The instance ID of the prefix list.
         self.prefix_list_id = prefix_list_id
-        # The reason why the association failed.
+        # The reason for the association failure.
         self.reason = reason
         # The region ID of the prefix list.
         self.region_id = region_id
@@ -109,19 +108,19 @@ class GetVpcPrefixListAssociationsResponseBodyPrefixListAssociation(DaraModel):
         self.resource_id = resource_id
         # The type of the associated resource. Valid values:
         # 
-        # *   **vpcRouteTable**: virtual private cloud (VPC) route table.
-        # *   **trRouteTable**: route table of a transit router.
+        # - **vpcRouteTable**: VPC route table.
+        # - **trRouteTable**: transit router route table.
         self.resource_type = resource_type
-        # The ID of the Alibaba Cloud account to which the resource associated with the prefix list belongs.
+        # The ID of the Alibaba Cloud account that owns the resource associated with the prefix list.
         self.resource_uid = resource_uid
-        # The status of the prefix list. Valid values:
+        # The association status of the prefix list. Valid values:
         # 
-        # *   **Created**
-        # *   **ModifyFailed**
-        # *   **Creating**
-        # *   **Modifying**
-        # *   **Deleting**
-        # *   **Deleted**
+        # - **Created**: The association is created.
+        # - **ModifyFailed**: The association is not updated to the latest version.
+        # - **Creating**: The association is being created.
+        # - **Modifying**: The association is being modified.
+        # - **Deleting**: The association is being deleted.
+        # - **Deleted**: The association is deleted.
         self.status = status
 
     def validate(self):

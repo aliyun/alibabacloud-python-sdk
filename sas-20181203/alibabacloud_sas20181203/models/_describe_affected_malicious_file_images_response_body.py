@@ -14,11 +14,11 @@ class DescribeAffectedMaliciousFileImagesResponseBody(DaraModel):
         page_info: main_models.DescribeAffectedMaliciousFileImagesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array consisting of the images that have malicious image samples.
+        # The list of images in which malicious samples are detected.
         self.affected_malicious_file_images_response = affected_malicious_file_images_response
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeAffectedMaliciousFileImagesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of images that have malicious image samples returned on the current page.
+        # The number of images with malicious samples returned on the current page.
         self.count = count
-        # The page number of the returned page. Pages start from page **1**. Default value: **1**.
+        # The page number of the current page when using paging. Minimum value: **1**. Default value: **1**.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**.
+        # The maximum number of entries per page when using paging. Default value: **20**.
         self.page_size = page_size
-        # The total number of images that have malicious image samples.
+        # The total number of images in which malicious samples are detected.
         self.total_count = total_count
 
     def validate(self):
@@ -160,71 +160,69 @@ class DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImages
         self.cluster_name = cluster_name
         # The ID of the container.
         self.container_id = container_id
-        # The image digest.
+        # The digest of the image.
         self.digest = digest
-        # The URL to download the malicious image sample.
+        # The download URL of the malicious sample.
         self.download_url = download_url
-        # The path to the image file.
+        # The file path of the image.
         self.file_path = file_path
         # The timestamp of the first scan.
         self.first_scan_timestamp = first_scan_timestamp
-        # The text that is highlighted.
+        # The highlighted text.
         self.high_light = high_light
-        # The ID of alert event.
+        # The ID of the alert event.
         self.id = id
         # The name of the image.
         self.image = image
         # The UUID of the image.
         self.image_uuid = image_uuid
-        # The name of the ECS instance.
+        # The name of the server instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The timestamp of the last scan.
+        # The timestamp of the latest scan.
         self.latest_scan_timestamp = latest_scan_timestamp
-        # The timestamp of the last verification.
+        # The timestamp of the latest verification.
         self.latest_verify_timestamp = latest_verify_timestamp
-        # The image layer.
+        # The layer of the image.
         self.layer = layer
-        # The severity of the malicious image sample. Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # The severity level of the malicious image sample. Valid values:
+        # - **serious**: urgent
+        # - **suspicious**: suspicious
+        # - **remind**: reminder.
         self.level = level
-        # The MD5 hash value of the malicious image sample.
+        # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.namespace = namespace
         # The pod.
         self.pod = pod
         # The ID of the image repository.
         self.repo_id = repo_id
-        # The ID of the container image.
+        # The instance ID of the container image.
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
         self.repo_name = repo_name
         # The region ID of the image repository.
         self.repo_region_id = repo_region_id
-        # The handling status of the malicious image sample. Valid values:
-        # 
-        # *   **0**: unhandled
-        # *   **1**: handled
-        # *   **2**: verifying
-        # *   **3**: added to the whitelist
+        # The processing status of the malicious image sample. Valid values:
+        # - **0**: unhandled
+        # - **1**: handled
+        # - **2**: verifying
+        # - **3**: added to whitelist.
         self.status = status
-        # The tag that is added to the image.
+        # The tag of the image.
         self.tag = tag
-        # The ID of the task object.
+        # The ID of the scan target.
         self.target_id = target_id
-        # The name of the task object.
+        # The name of the scan target.
         self.target_name = target_name
-        # The object type. Valid value:
+        # The object type of the scan target. Valid values:
         # 
-        # *   **ECS_IMAGE**
-        # *   **ECS_SNAPSHOT**
+        # - **ECS_IMAGE**: image.
+        # - **ECS_SNAPSHOT**: snapshot.
         self.target_type = target_type
         # The UUID of the server.
         self.uuid = uuid

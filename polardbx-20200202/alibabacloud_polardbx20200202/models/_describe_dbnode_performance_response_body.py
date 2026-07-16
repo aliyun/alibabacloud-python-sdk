@@ -16,10 +16,14 @@ class DescribeDBNodePerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The end of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
         self.end_time = end_time
         self.performance_keys = performance_keys
+        # The request ID.
         self.request_id = request_id
+        # The beginning of the time range to query. The time is in the YYYY-MM-ddTHH:mm:ssZ format (UTC).
         self.start_time = start_time
 
     def validate(self):

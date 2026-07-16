@@ -10,6 +10,7 @@ class AuditTTSVoiceRequest(DaraModel):
         access_key: str = None,
         app_key: str = None,
         engine: str = None,
+        ext_params: str = None,
         instance_id: str = None,
         pitch_rate: str = None,
         secret_key: str = None,
@@ -18,19 +19,35 @@ class AuditTTSVoiceRequest(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # The AccessKey ID of the namespace.
         self.access_key = access_key
+        # The AppKey of the third-party voice configuration.
         self.app_key = app_key
+        # The TTS engine.
         self.engine = engine
+        # The extended parameters.
+        self.ext_params = ext_params
+        # The navigation instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.pitch_rate = pitch_rate
+        # The AccessKey secret.
         self.secret_key = secret_key
+        # The speech rate.
+        # 
         # This parameter is required.
         self.speech_rate = speech_rate
+        # The preview text.
+        # 
         # This parameter is required.
         self.text = text
+        # The voice.
+        # 
         # This parameter is required.
         self.voice = voice
+        # The volume.
+        # 
         # This parameter is required.
         self.volume = volume
 
@@ -50,6 +67,9 @@ class AuditTTSVoiceRequest(DaraModel):
 
         if self.engine is not None:
             result['Engine'] = self.engine
+
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -84,6 +104,9 @@ class AuditTTSVoiceRequest(DaraModel):
 
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

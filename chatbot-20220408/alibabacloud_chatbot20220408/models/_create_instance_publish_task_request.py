@@ -10,7 +10,9 @@ class CreateInstancePublishTaskRequest(DaraModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
+        # The key for the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The unique instance ID of the robot.
         self.instance_id = instance_id
 
     def validate(self):

@@ -23,21 +23,37 @@ class ListInstancesWithEcsInfoShrinkRequest(DaraModel):
         resource_group_id_name: str = None,
         resource_group_name: str = None,
     ):
+        # The page number for pagination. This parameter specifies the current page.
         self.current = current
+        # Filters instances by health status.
         self.health_status = health_status
+        # Specifies an instance ID to filter the Agent installation status of the specified instance.
         self.instance_id = instance_id
+        # Filters instances by instance name or instance ID. Fuzzy match is supported.
         self.instance_id_name = instance_id_name
+        # The name of the component instance.
         self.instance_name = instance_name
+        # Filters instances by instance tag.
         self.instance_tag_shrink = instance_tag_shrink
+        # Filters instances by management status.
         self.is_managed = is_managed
+        # Filters instances by operating system name.
         self.os_name = os_name
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Filters instances by private IP address.
         self.private_ip = private_ip
+        # Filters instances by public IP address.
         self.public_ip = public_ip
+        # Filters instances by region.
+        # 
         # This parameter is required.
         self.region = region
+        # Filters instances by resource group ID.
         self.resource_group_id = resource_group_id
+        # Filters instances by resource group name or resource group ID. Fuzzy match is supported.
         self.resource_group_id_name = resource_group_id_name
+        # Filters instances by resource group name.
         self.resource_group_name = resource_group_name
 
     def validate(self):

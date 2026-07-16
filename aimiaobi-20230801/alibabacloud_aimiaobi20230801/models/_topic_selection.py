@@ -14,8 +14,11 @@ class TopicSelection(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # A list of topic outlines.
         self.outlines = outlines
+        # The perspective of the topic.
         self.point = point
+        # The summary of the topic.
         self.summary = summary
 
     def validate(self):
@@ -64,7 +67,9 @@ class TopicSelectionOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # The topic outline.
         self.outline = outline
+        # The summary of the outline.
         self.summary = summary
 
     def validate(self):

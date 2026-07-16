@@ -13,13 +13,42 @@ class UploadFileRequest(DaraModel):
         origin_url: str = None,
         target_path: str = None,
     ):
+        # The description of the file.
         self.description = description
+        # A custom file name. The name must be unique and serves as a unique identifier for the file. The name must meet the following requirements:
+        # 
+        # 1. It must be 8 to 255 characters in length.
+        # 
+        # 2. It can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 3. The first and last characters must be a letter or a digit.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The MD5 hash of the file. This is used to verify the integrity of the file.
+        # 
         # This parameter is required.
         self.md_5 = md_5
+        # The download URL of the file.
+        # 
         # This parameter is required.
         self.origin_url = origin_url
+        # The destination path on the service instance. This must be an absolute path to a file. You cannot specify only a folder. The parent folder of the destination path is restricted to the following locations:
+        # 
+        # 1. /data/local
+        # 
+        # 2. /data/user
+        # 
+        # 3. /data/data
+        # 
+        # 4. /data/cache
+        # 
+        # 5. /data/tmp
+        # 
+        # 6. /data/storage
+        # 
+        # 7. /data/media/0
+        # 
         # This parameter is required.
         self.target_path = target_path
 

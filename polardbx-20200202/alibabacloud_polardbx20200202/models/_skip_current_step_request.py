@@ -11,8 +11,11 @@ class SkipCurrentStepRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
+        # The current operation step of the task.
         self.current_step = current_step
+        # The region where the instance is located.
         self.region_id = region_id
+        # The import task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

@@ -15,11 +15,23 @@ class ListHotNewsWithTypeRequest(DaraModel):
         news_types: List[str] = None,
         size: int = None,
     ):
+        # The unique identifier of the business space: [AgentKey](https://help.aliyun.com/document_detail/3027170.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The current page number.
         self.current = current
+        # The news category. Valid values:
+        # - society: social current affairs.
+        # - person: people news.
+        # - government: government affairs.
         self.news_type = news_type
+        # The list of news categories for multi-selection. Valid values:
+        # - society: social current affairs.
+        # - person: people news.
+        # - government: government affairs.
         self.news_types = news_types
+        # The number of records per page.
         self.size = size
 
     def validate(self):

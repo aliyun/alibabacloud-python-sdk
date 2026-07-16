@@ -20,16 +20,16 @@ class DescribeCenPrivateZoneRoutesResponseBody(DaraModel):
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The IP address of the DNS server used by PrivateZone.
+        # The IP addresses of the DNS servers for the PrivateZone service.
         self.private_zone_dns_servers = private_zone_dns_servers
         self.private_zone_infos = private_zone_infos
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

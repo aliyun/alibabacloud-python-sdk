@@ -31,52 +31,84 @@ class UpdateSmsQualificationShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 经办人身份证有效期，格式示例2023-01-01~2033-01-01
+        # Validity period of the administrator ID card. Format: YYYY-MM-DD~YYYY-MM-DD.
+        # > When the certificate validity period is long-term, the end date can be set to 2099-12-31.
         self.admin_idcard_exp_date = admin_idcard_exp_date
-        # 经办人身份证照片国徽面
+        # Photo of the front of the administrator\\"s ID card (national emblem side). Only jpg, png, gif, and jpeg image formats are supported, and the image must not exceed 5 MB. Please provide the path of the file uploaded to OSS. The file name to be uploaded must not contain Chinese characters or special characters. For upload operations, see [Upload Files via OSS](https://help.aliyun.com/document_detail/2833114.html).
+        # 
+        # >Notice: 
+        # No stamp is required for color originals of the certificate. If you upload a photocopy or black-and-white photo, you must affix the enterprise red seal to the photocopy and take a photo to upload.
         self.admin_idcard_front_face = admin_idcard_front_face
-        # 经办人身份证号码
+        # Administrator\\"s ID number.
         self.admin_idcard_no = admin_idcard_no
-        # 经办人身份证照片人像面
+        # Photo of the back of the administrator\\"s ID card (portrait side). Only jpg, png, gif, and jpeg image formats are supported, and the image must not exceed 5 MB. Please provide the path of the file uploaded to OSS. The file name to be uploaded must not contain Chinese characters or special characters. For upload operations, see [Upload Files via OSS](https://help.aliyun.com/document_detail/2833114.html).
+        # 
+        # >Notice: 
+        #  No stamp is required for color originals of the certificate. If you upload a photocopy or black-and-white photo, you must affix the enterprise red seal to the photocopy and take a photo to upload.
         self.admin_idcard_pic = admin_idcard_pic
-        # 管理员身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+        # Administrator ID card type. Valid values:
+        # 
+        # - identityCard: ID card.
+        # - passport: Passport.
+        # - homeReturnPermit: Mainland Travel Permit for Hong Kong and Macao Residents.
+        # - TaiwanCompatriotPermit: Mainland Travel Permit for Taiwan Residents.
+        # - residencePermit: Residence Permit for Hong Kong, Macao, and Taiwan Residents.
+        # - other: Other.
         self.admin_idcard_type = admin_idcard_type
-        # 经办人姓名
+        # Administrator name.
+        # 
+        # > The administrator (also known as the operator) refers to the person who logs in to the Alibaba Cloud account and manages the SMS service. Generally, this is the operations personnel who manages qualifications, signatures, and templates and sends SMS messages under this Alibaba Cloud account, and whose phone number can receive verification codes. The administrator is not necessarily the administrator of this Alibaba Cloud account. The administrator can be the same person as the enterprise\\"s legal representative.
         self.admin_name = admin_name
-        # 经办人手机号码
+        # Administrator\\"s mobile phone number. Format: +/+86/0086/86 prefix or a phone number without any prefix, for example, 1390000****.
         # 
         # This parameter is required.
         self.admin_phone_no = admin_phone_no
-        # 企业证件信息
+        # Enterprise business license information. This parameter is required when the purpose of the qualification to be modified is for use by others.
         self.business_license_pics_shrink = business_license_pics_shrink
-        # 企业营业时间开始和结束字符串，格式示例2023-01-01~2033-01-01
+        # Validity period of the business license. Format: YYYY-MM-DD~YYYY-MM-DD.
+        # > When the certificate validity period is long-term, the end date can be set to 2099-12-31.
         self.bussiness_license_exp_date = bussiness_license_exp_date
-        # 手机号验证码
+        # Phone verification code. Please call the [RequiredPhoneCode](~~RequiredPhoneCode~~) API and pass in the **administrator\\"s phone number**, then enter the SMS verification code you receive here.
+        # 
+        # > You can use [ValidPhoneCode](~~ValidPhoneCode~~) to verify whether the SMS verification code is correct before passing it in.
         # 
         # This parameter is required.
         self.certify_code = certify_code
-        # 公司名称
+        # Enterprise name. Supported symbols are only the middle dot `·`, the Chinese symbols `【】（）`, the English symbols `()`, and the `space`. Other symbols or pure numbers are not allowed. The length must not exceed 150 characters.
         self.company_name = company_name
-        # 法人身份证号码
+        # Legal person\\"s ID number.
         self.legal_person_idcard_no = legal_person_idcard_no
-        # 法人身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+        # Legal person ID card type. Valid values:
+        # 
+        # - identityCard: ID card.
+        # - passport: Passport.
+        # - homeReturnPermit: Mainland Travel Permit for Hong Kong and Macao Residents.
+        # - TaiwanCompatriotPermit: Mainland Travel Permit for Taiwan Residents.
+        # - residencePermit: Residence Permit for Hong Kong, Macao, and Taiwan Residents.
+        # - other: Other.
         self.legal_person_idcard_type = legal_person_idcard_type
-        # 法人身份证照片人像面
+        # Photo of the back of the legal representative\\"s ID card (portrait side). Only jpg, png, gif, and jpeg image formats are supported, and the image must not exceed 5 MB. Please provide the path of the file uploaded to OSS. The file name to be uploaded must not contain Chinese characters or special characters. For upload operations, see [Upload Files via OSS](https://help.aliyun.com/document_detail/2833114.html).
+        # > The system will use the legal person name and ID number you provide for verification. If the verification fails, you need to upload a photo of the legal representative\\"s ID card.
         self.legal_person_id_card_back_side = legal_person_id_card_back_side
-        # 法人身份证有效期，格式示例2023-01-01~2033-01-01
+        # Validity period of the legal person ID card. Format: YYYY-MM-DD~YYYY-MM-DD.
+        # > When the certificate validity period is long-term, the end date can be set to 2099-12-31.
         self.legal_person_id_card_eff_time = legal_person_id_card_eff_time
-        # 法人身份照片证国徽面
+        # Photo of the front of the legal representative\\"s ID card (national emblem side). Only jpg, png, gif, and jpeg image formats are supported, and the image must not exceed 5 MB. Please provide the path of the file uploaded to OSS. The file name to be uploaded must not contain Chinese characters or special characters. For upload operations, see [Upload Files via OSS](https://help.aliyun.com/document_detail/2833114.html).
+        # > The system will use the legal person name and ID number you provide for verification. If the verification fails, you need to upload a photo of the legal representative\\"s ID card.
         self.legal_person_id_card_front_side = legal_person_id_card_front_side
-        # 法人姓名
+        # Name of the legal representative.
+        # 
+        # > - If there is no legal representative information on the organization\\"s certificate, but there is information about a person in charge / chief representative or similar, please prepare the ID card photo of the corresponding person in charge or chief representative listed on the certificate.
+        # > - If there is no legal representative information on the organization\\"s certificate, and there is no information about any person in charge, please prepare the name and ID card photo of the main business contact person.
         self.legal_person_name = legal_person_name
-        # 工单ID
+        # The review order ID. You can obtain the qualifications and their corresponding review order IDs under the current account by calling [Query Qualification List](~~QuerySmsQualificationRecord~~).
         # 
         # This parameter is required.
         self.order_id = order_id
-        # 更多资料
+        # Additional materials. If you have other supporting or supplementary materials, photos, etc., you can upload them here.
         self.other_files_shrink = other_files_shrink
         self.owner_id = owner_id
-        # 资质组ID
+        # The qualification ID, that is, the ID returned when you [apply for SMS qualification](~~SubmitSmsQualification~~). You can obtain the qualification IDs under the current account by calling [Query Qualification List](~~QuerySmsQualificationRecord~~).
         # 
         # This parameter is required.
         self.qualification_group_id = qualification_group_id

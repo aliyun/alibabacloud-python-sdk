@@ -17,12 +17,17 @@ class GetDataSourceDependenciesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The dependency records.
         self.dependency_list = dependency_list
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -91,9 +96,13 @@ class GetDataSourceDependenciesResponseBodyDependencyList(DaraModel):
         type: str = None,
         type_code: str = None,
     ):
+        # The ID of the dependency record.
         self.id = id
+        # The name of the dependency record.
         self.name = name
+        # The type of the dependency record.
         self.type = type
+        # The type code of the dependency record.
         self.type_code = type_code
 
     def validate(self):

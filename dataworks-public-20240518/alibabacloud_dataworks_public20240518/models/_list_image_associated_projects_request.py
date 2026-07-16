@@ -9,6 +9,8 @@ class ListImageAssociatedProjectsRequest(DaraModel):
         self,
         id: str = None,
     ):
+        # The ID of the image.
+        # 
         # This parameter is required.
         self.id = id
 

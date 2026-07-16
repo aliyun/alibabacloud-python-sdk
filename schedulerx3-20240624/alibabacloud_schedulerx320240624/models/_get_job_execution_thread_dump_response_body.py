@@ -14,11 +14,15 @@ class GetJobExecutionThreadDumpResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
-        # -
+        # - The returned data object.
         self.data = data
+        # The response message.
         self.message = message
+        # A unique identifier for the request. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -72,6 +76,7 @@ class GetJobExecutionThreadDumpResponseBodyData(DaraModel):
         self,
         dump: str = None,
     ):
+        # The thread dump.
         self.dump = dump
 
     def validate(self):

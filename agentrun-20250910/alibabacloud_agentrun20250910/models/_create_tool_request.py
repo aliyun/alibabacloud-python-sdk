@@ -10,7 +10,7 @@ class CreateToolRequest(DaraModel):
         self,
         body: main_models.CreateToolInputV2 = None,
     ):
-        # 创建工具的请求参数，包含工具的所有配置信息
+        # The request body.
         self.body = body
 
     def validate(self):

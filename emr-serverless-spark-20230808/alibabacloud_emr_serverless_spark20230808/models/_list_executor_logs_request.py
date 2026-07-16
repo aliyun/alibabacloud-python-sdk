@@ -12,9 +12,13 @@ class ListExecutorLogsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The type of log. Only logs of this type are returned.
         self.log_type = log_type
+        # The maximum number of results to return per page. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token. This is the `nextToken` from a previously truncated response.
         self.next_token = next_token
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

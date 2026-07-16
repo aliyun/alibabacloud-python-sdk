@@ -10,7 +10,7 @@ class AddEntriesToAclResponseBody(DaraModel):
         acl_id: str = None,
         request_id: str = None,
     ):
-        # The ACL ID.
+        # The ID of the access control policy group.
         self.acl_id = acl_id
         # The request ID.
         self.request_id = request_id

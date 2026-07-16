@@ -14,12 +14,17 @@ class CreateAIDBClusterDatasetResponseBody(DaraModel):
         path: str = None,
         request_id: str = None,
     ):
+        # The ID of the PolarDB database cluster.
         self.dbcluster_id = dbcluster_id
+        # The dataset management service ID.
         self.data_service_id = data_service_id
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The path to the dataset.
         self.path = path
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

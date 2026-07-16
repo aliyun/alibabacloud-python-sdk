@@ -40,6 +40,7 @@ class ModelVersion(DaraModel):
         self.approval_status = approval_status
         # The compression configuration.
         self.compression_spec = compression_spec
+        # 蒸馏配置。
         self.distillation_spec = distillation_spec
         # The evaluation configuration.
         self.evaluation_spec = evaluation_spec
@@ -268,7 +269,9 @@ class ModelVersionLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签的key
         self.key = key
+        # 标签的value
         self.value = value
 
     def validate(self):

@@ -16,14 +16,23 @@ class SearchMediaByMultimodalRequest(DaraModel):
         text: str = None,
         utc_create: str = None,
     ):
+        # Custom filters. A JSON string. Supported backing fields include integer field intField1 and string fields strField1 and strField2. Only one matching condition can be applied per field, and filters across different fields are combined with a logical AND relationship.
+        # 
+        # - Exact match example: {"intField1":12,"strField1":"abc"}
+        # 
+        # - Multi-value match example: {"intField1":[12,13],"strField1":["abc","cd"]}
+        # 
+        # - Range match example: {"intField1":{"gte":12,"lte":13}}
         self.custom_filters = custom_filters
         # The type of the media assets.
         # 
         # Valid values:
         # 
-        # *   image
-        # *   video (default)
+        # - image
+        # 
+        # - video (default)
         self.media_type = media_type
+        # Namespace.
         self.namespace = namespace
         # The page number. Default value: 1.
         self.page_no = page_no
@@ -33,6 +42,9 @@ class SearchMediaByMultimodalRequest(DaraModel):
         self.search_lib_name = search_lib_name
         # The content that you want to query. You can describe the content in natural language.
         self.text = text
+        # Creation time, in milliseconds UNIX timestamp. gte indicates greater than or equal to, and lte indicates less than or equal to.
+        # 
+        # - Range example: {"gte":1761205662998,"lte":1771205662998}
         self.utc_create = utc_create
 
     def validate(self):

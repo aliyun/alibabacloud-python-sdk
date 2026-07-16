@@ -14,8 +14,11 @@ class AuthDiagnosisRequest(DaraModel):
         auto_install_agent: bool = None,
         instances: List[main_models.AuthDiagnosisRequestInstances] = None,
     ):
+        # Specifies whether to enable automatic creation of the service-linked role.
         self.auto_create_role = auto_create_role
+        # Specifies whether to automatically install the agent.
         self.auto_install_agent = auto_install_agent
+        # The list of instances to authorize for diagnostics.
         self.instances = instances
 
     def validate(self):
@@ -66,7 +69,9 @@ class AuthDiagnosisRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
+        # The instance ID.
         self.instance = instance
+        # The region ID.
         self.region = region
 
     def validate(self):

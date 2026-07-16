@@ -10,13 +10,12 @@ class DescribeExposedInstanceCriteriaRequest(DaraModel):
         resource_directory_account_id: str = None,
         value: str = None,
     ):
-        # The ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+        # The ID of the member account in the resource directory.
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The value of the search condition. Fuzzy match is supported.
+        # The value of the query condition. Fuzzy match is supported.
         # 
-        # >  You can specify the name, ID, public IP address, private IP address, component, port, or IP address of an exposed asset.
+        # > This parameter supports queries by asset name, asset ID, public IP address of the asset, private IP address of the asset, exposed component, exposed port, or exposed IP address.
         self.value = value
 
     def validate(self):

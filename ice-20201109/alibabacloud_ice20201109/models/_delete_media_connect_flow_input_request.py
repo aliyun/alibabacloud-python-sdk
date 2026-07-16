@@ -14,6 +14,7 @@ class DeleteMediaConnectFlowInputRequest(DaraModel):
         # 
         # This parameter is required.
         self.flow_id = flow_id
+        # Input name. Required when primary/standby input is enabled for the instance.
         self.input_name = input_name
 
     def validate(self):

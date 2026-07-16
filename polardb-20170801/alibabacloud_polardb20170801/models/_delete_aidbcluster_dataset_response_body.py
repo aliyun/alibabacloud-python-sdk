@@ -11,9 +11,11 @@ class DeleteAIDBClusterDatasetResponseBody(DaraModel):
         dataset_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the Data Service instance.
         self.data_service_id = data_service_id
+        # The dataset ID.
         self.dataset_id = dataset_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

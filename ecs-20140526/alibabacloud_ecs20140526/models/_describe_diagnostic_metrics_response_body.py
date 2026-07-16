@@ -86,9 +86,11 @@ class DescribeDiagnosticMetricsResponseBodyMetrics(DaraModel):
         self.resource_type = resource_type
         # The operating system type supported by the diagnostic metric. Valid values:
         # 
-        # *   Windows
-        # *   Linux
-        # *   All: Windows and Linux
+        # - Windows
+        # 
+        # - Linux
+        # 
+        # - All: Windows and Linux
         self.supported_operating_system = supported_operating_system
 
     def validate(self):

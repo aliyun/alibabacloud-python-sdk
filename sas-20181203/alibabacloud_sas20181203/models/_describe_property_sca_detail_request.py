@@ -34,108 +34,100 @@ class DescribePropertyScaDetailRequest(DaraModel):
         user: str = None,
         uuid: str = None,
     ):
-        # The type of the asset fingerprint that you want to query. Default value: **sca**. Valid values:
+        # The type of Asset Fingerprints to query. Default value: **sca**. Valid values:
         # 
-        # *   **sca**: middleware
-        # *   **sca_database**: database
-        # *   **sca_web**: web service
+        # - **sca**: middleware
+        # - **sca_database**: database
+        # - **sca_web**: web service
         # 
-        # >  If you do not specify this parameter, the default value **sca** is used, which indicates that middleware fingerprints are queried.
+        # > If this parameter is not set, the default value **sca** is used, which queries Asset Fingerprints information of the middleware type.
         self.biz = biz
-        # The type of the middleware, database, or web service that you want to query. Valid values:
-        # 
-        # *   **system_service**: system service
-        # *   **software_library**: software library
-        # *   **docker_component**: container component
-        # *   **database**: database
-        # *   **web_container**: web container
-        # *   **jar**: JAR package
-        # *   **web_framework**: web framework
+        # The type of middleware, database, or web service to query. Valid values:  
+        # - **system_service**: system service
+        # - **software_library**: software library
+        # - **docker_component**: container component
+        # - **database**: database
+        # - **web_container**: web container
+        # - **jar**: JAR package
+        # - **web_framework**: web framework.
         self.biz_type = biz_type
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return in the query results. Default value: **1**, which indicates that the results are displayed starting from page 1.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The name of the middleware, database, or web service.
-        # 
-        # >  This parameter is deprecated. You can ignore it.
+        # > This parameter is deprecated. You do not need to specify this parameter.
         self.name = name
-        # The value of NextToken that is returned when the NextToken method is used. You do not need to specify this parameter for the first request.
+        # The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
+        # 
+        # > Do not specify this parameter for the first call. The response includes the NextToken value for the second call. Each subsequent response contains the NextToken value for the next call.
         self.next_token = next_token
-        # The number of entries to return on each page. Default value: **10**.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # Sets the number of Asset Fingerprints entries per page in a paged query. Default value: **10**, which indicates that 10 Asset Fingerprints entries are displayed per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The PID.
+        # The process ID.
         self.pid = pid
-        # The port that the process monitors.
+        # The port on which the process listens.
         self.port = port
-        # The timestamp when the process ends. Unit: milliseconds.
+        # The end of the time range for querying the process start timestamp. Unit: seconds.
         self.process_started_end = process_started_end
-        # The timestamp when the process starts. Unit: milliseconds.
+        # The start of the time range for querying the process start timestamp. Unit: seconds.
         self.process_started_start = process_started_start
-        # The search condition, such as a server name or a server IP address.
-        # 
-        # >  Fuzzy match is supported.
+        # The search condition (server name or IP address).
+        # > Fuzzy match is supported.
         self.remark = remark
-        # The name of the asset fingerprint that you want to query.
+        # The name of the Asset Fingerprints entry to query.
         self.sca_name = sca_name
-        # The name of the process.
+        # The process name.
         self.sca_name_pattern = sca_name_pattern
         # The version of the middleware, database, or web service.
         self.sca_version = sca_version
-        # 搜索条件列表
+        # The list of search criteria.
         self.search_criteria_list = search_criteria_list
-        # The search keyword. You must specify this parameter based on the value of the **SearchItem** parameter.
+        # The content to query. Depending on the value of **SearchItem**, you need to enter different query content:
+        # - If **SearchItem** is set to **name**, enter the name of the asset fingerprint as the query condition.
+        # - If **SearchItem** is set to **type**, select the type of asset fingerprint to query. Valid values:   
+        #     - **system_service**: system service
+        #     - **software_library**: software library
+        #     - **docker_component**: container component
+        #     - **database**: database
+        #     - **web_container**: web container
+        #     - **jar**: JAR package
+        #     - **web_framework**: web framework  
         # 
-        # *   If the **SearchItem** parameter is set to **name**, you must enter the name of an asset fingerprint.
-        # 
-        # *   If the **SearchItem** parameter is set to **type**, you must enter the type of an asset fingerprint. Valid values:
-        # 
-        #     *   **system_service**: system service
-        #     *   **software_library**: software library
-        #     *   **docker_component**: container component
-        #     *   **database**: database
-        #     *   **web_container**: web container
-        #     *   **jar**: JAR package
-        #     *   **web_framework**: web framework
-        # 
-        # >  You must specify both the **SearchItem** and **SearchInfo** parameters before you can query the asset fingerprints based on the specified name or type.
+        # > The **SearchItem** and **SearchInfo** parameters must be used together. Setting only one of them has no effect. By setting both parameters, you can view all data for asset fingerprints of a specified name or type.
         self.search_info = search_info
-        # The keyword of the subquery. You must specify this parameter based on the value of the **SearchItemSub** parameter.
+        # The content of the sub-query condition. Depending on the value of **SearchItemSub**, you need to enter different query content:
+        # - If **SearchItemSub** is set to **port**, enter the port as the sub-query condition.
+        # - If **SearchItemSub** is set to **pid**, enter the process ID as the sub-query condition.
+        # - If **SearchItemSub** is set to **version**, enter the middleware, database, or web service version as the sub-query condition.
+        # - If **SearchItemSub** is set to **user**, enter the username as the sub-query condition.
         # 
-        # *   If the **SearchItemSub** parameter is set to **port**, you must enter a port number.
-        # *   If the **SearchItemSub** parameter is set to **pid**, you must enter a process ID (PID).
-        # *   If the **SearchItemSub** parameter is set to **version**, you must enter the version of a database, middleware, or web service.
-        # *   If the **SearchItemSub** parameter is set to **user**, you must enter a username.
-        # 
-        # >  The subquery is used to search for data of a specified database, middleware, or web service.
+        # > Sub-query conditions help you search for the data list of a specific middleware, database, or web service.
         self.search_info_sub = search_info_sub
-        # The type of the search condition. Valid values:
+        # The type of query condition. Valid values:
+        # - **name**: the name of the middleware, database, or web service.
+        # - **type**: the type of the middleware, database, or web service.
         # 
-        # *   **name**: the name of a database, middleware, or web service
-        # *   **type**: the type of a database, middleware, or web service
-        # 
-        # >  You must specify both the **SearchItem** and **SearchInfo** parameters before you can query the asset fingerprints based on the specified name or type.
+        # > The **SearchItem** and **SearchInfo** parameters must be used together. Setting only one of them has no effect. By setting both parameters, you can view all data for asset fingerprints of a specified name or type.
         self.search_item = search_item
-        # The type of the subquery. Valid values:
-        # 
-        # *   **port**
-        # *   **pid**
-        # *   **version**
-        # *   **user**
+        # The type of sub-query condition. Valid values:
+        # - **port**: port
+        # - **pid**: process ID
+        # - **version**: version
+        # - **user**: user.
         self.search_item_sub = search_item_sub
-        # Specifies whether to use the NextToken method to retrieve a new page of results. If you set UseNextToken to true, the value of TotalCount is not returned. Valid values:
+        # Specifies whether to use the NextToken method to retrieve asset list data. If this parameter is used, TotalCount is no longer returned. Valid values:
         # 
-        # - **true**: The NextToken method is used.
-        # - **false**: The NextToken method is not used.
+        # - **true**: Use the NextToken method.
+        # - **false**: Do not use the NextToken method.
         self.use_next_token = use_next_token
-        # The user who runs the process.
+        # The user that runs the process.
         self.user = user
-        # The UUID of the server on which the middleware, database, or web service is run.
+        # The UUID of the server on which the middleware, database, or web service is deployed.
         self.uuid = uuid
 
     def validate(self):
@@ -304,9 +296,9 @@ class DescribePropertyScaDetailRequestSearchCriteriaList(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # 搜索条件名称
+        # The name of the search criterion.
         self.name = name
-        # 搜索条件过滤值
+        # The filter value of the search criterion.
         self.value = value
 
     def validate(self):

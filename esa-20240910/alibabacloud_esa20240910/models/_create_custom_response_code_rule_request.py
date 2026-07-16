@@ -16,33 +16,31 @@ class CreateCustomResponseCodeRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Response page.
+        # The response page.
         # 
         # This parameter is required.
         self.page_id = page_id
-        # Response code.
+        # The response code.
         # 
         # This parameter is required.
         self.return_code = return_code
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
-        # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example: (http.host eq "video.example.com"): Match the specified request.
+        # The rule content. Conditional expressions are used to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # The rule name. You do not need to set this parameter when you add global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call [ListSites](https://help.aliyun.com/document_detail/2850189.html) to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version on which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

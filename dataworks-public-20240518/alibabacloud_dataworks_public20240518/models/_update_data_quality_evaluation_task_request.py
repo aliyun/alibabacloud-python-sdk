@@ -22,38 +22,36 @@ class UpdateDataQualityEvaluationTaskRequest(DaraModel):
         target: main_models.UpdateDataQualityEvaluationTaskRequestTarget = None,
         trigger: main_models.UpdateDataQualityEvaluationTaskRequestTrigger = None,
     ):
-        # The list of monitoring rules that are associated with the monitor.
+        # List of data quality rules associated with the data quality monitoring.
         self.data_quality_rules = data_quality_rules
-        # The data source ID. You can call the [ListDataSources](https://help.aliyun.com/document_detail/211431.html) operation to query the ID.
+        # Data source ID. You can call [ListDataSources](https://help.aliyun.com/document_detail/211431.html) to obtain the data source ID.
         self.data_source_id = data_source_id
-        # The description of the monitor.
+        # Description of the quality monitoring task
         self.description = description
-        # The hook.
+        # Callback settings
         self.hooks = hooks
-        # The ID of the monitor.
+        # Data quality monitoring ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the monitor.
+        # Name of the quality monitoring task
         self.name = name
-        # The configurations of alert notifications.
+        # Notification subscription configuration
         self.notifications = notifications
-        # The ID of the DataWorks workspace.
+        # Workspace ID
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The extended configurations in JSON-formatted strings. You can use this parameter only for monitors that are used to monitor the quality of E-MapReduce (EMR) data.
+        # Extended configuration. A JSON-formatted string. Takes effect only for EMR-type data quality monitoring.
         # 
-        # *   queue: The Yarn queue used when a monitor checks the quality of EMR data. By default, the queue configured for the current workspace is used.
-        # 
-        # *   sqlEngine: The SQL engine used when a monitor checks the quality of EMR data.
-        # 
-        #     *   HIVE_SQL
-        #     *   SPARK_SQL
+        # - queue: The YARN queue used when executing EMR data quality validation. Defaults to the queue configured for the current project.
+        # - sqlEngine: The SQL engine used when executing EMR data validation.
+        #   + HIVE_SQL
+        #   + SPARK_SQL
         self.runtime_conf = runtime_conf
-        # The monitored object of the data quality monitoring task.
+        # Data quality monitoring object
         self.target = target
-        # The trigger configuration of the monitor.
+        # Trigger configuration of the data quality validation task
         self.trigger = trigger
 
     def validate(self):
@@ -168,12 +166,11 @@ class UpdateDataQualityEvaluationTaskRequestTrigger(DaraModel):
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # The IDs of scheduling tasks. This parameter is valid only if you set Type to ByScheduledTaskInstance.
+        # List of scheduling task IDs. Valid when Type is ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger type of the monitor. Valid values:
-        # 
-        # *   ByScheduledTaskInstance: The monitor is triggered by the associated scheduling tasks.
-        # *   ByManual: The monitor is manually triggered.
+        # Trigger type of the quality monitoring task.
+        # - ByScheduledTaskInstance: Triggered by an associated scheduling task.
+        # - ByManual: Triggered manually.
         self.type = type
 
     def validate(self):
@@ -209,19 +206,18 @@ class UpdateDataQualityEvaluationTaskRequestTarget(DaraModel):
         partition_spec: str = None,
         table_guid: str = None,
     ):
-        # The type of the database to which the table belongs. Valid values:
-        # 
-        # *   maxcompute
-        # *   hologres
-        # *   cdh
-        # *   analyticdb_for_mysql
-        # *   starrocks
-        # *   emr
-        # *   analyticdb_for_postgresql
+        # Database type to which the table belongs
+        # - maxcompute
+        # - hologres
+        # - cdh
+        # - analyticdb_for_mysql
+        # - starrocks
+        # - emr
+        # - analyticdb_for_postgresql
         self.database_type = database_type
-        # The configuration of the partitioned table.
+        # Partition settings of the partitioned table
         self.partition_spec = partition_spec
-        # The ID of the table in Data Map.
+        # Unique ID of the table in Data Map
         self.table_guid = table_guid
 
     def validate(self):
@@ -262,12 +258,12 @@ class UpdateDataQualityEvaluationTaskRequestNotifications(DaraModel):
         condition: str = None,
         notifications: List[main_models.UpdateDataQualityEvaluationTaskRequestNotificationsNotifications] = None,
     ):
-        # The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
+        # Notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two types of condition expressions are supported:
         # 
-        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # - Specify a single group of rule severity type and rule validation status, such as `${severity} == "High" AND ${status} == "Critical"`. This means the condition is met when any executed rule with severity High has a validation result of Critical.
+        # - Specify multiple groups of rule severity type and rule validation status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means the condition is met when any executed rule satisfies one of the following: severity High with validation result Critical, severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the condition expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
         self.condition = condition
-        # The configurations of the alert notification.
+        # Notification settings
         self.notifications = notifications
 
     def validate(self):
@@ -310,9 +306,9 @@ class UpdateDataQualityEvaluationTaskRequestNotificationsNotifications(DaraModel
         notification_channels: List[main_models.UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification methods.
+        # Notification method
         self.notification_channels = notification_channels
-        # The configurations of alert recipients.
+        # Alert recipient settings
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -365,21 +361,13 @@ class UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The additional parameters that are required when alerts are sent. The parameters are JSON-formatted strings. The following keys are supported:
+        # Additional parameter settings when sending alerts. JSON format. The supported keys are as follows:
         # 
-        # *   atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
+        # - atAll: Whether to @all members in the group when sending DingTalk alerts. Takes effect when ReceiverType is DingdingUrl.
         self.extension = extension
-        # The type of the alert recipient.
-        # 
-        # Valid values:
-        # 
-        # *   WebhookUrl
-        # *   FeishuUrl
-        # *   DingdingUrl
-        # *   WeixinUrl
-        # *   AliUid
+        # Alert recipient type
         self.receiver_type = receiver_type
-        # The alert recipient.
+        # Alert recipients
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -419,7 +407,7 @@ class UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificati
         self,
         channels: List[str] = None,
     ):
-        # The alert notification methods.
+        # Notification method
         self.channels = channels
 
     def validate(self):
@@ -448,14 +436,14 @@ class UpdateDataQualityEvaluationTaskRequestHooks(DaraModel):
         condition: str = None,
         type: str = None,
     ):
-        # The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
+        # Hook trigger condition. When this condition is met, the hook action is triggered. Currently, only two types of condition expressions are supported:
         # 
-        # *   Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
-        # *   Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+        # - Specify a single group of rule severity type and rule validation status, such as `${severity} == "High" AND ${status} == "Critical"`. This means the condition is met when any executed rule with severity High has a validation result of Critical.
+        # - Specify multiple groups of rule severity type and rule validation status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. This means the condition is met when any executed rule satisfies one of the following: severity High with validation result Critical, severity Normal with validation result Critical, or severity Normal with validation result Error. The severity enum in the condition expression is consistent with the severity enum in DataQualityRule, and the status enum is consistent with the status in DataQualityResult.
         self.condition = condition
-        # The hook type. Valid values:
+        # Hook actions executed after data quality validation completes.
         # 
-        # *   BlockTaskInstance: Blocks the running of scheduling tasks.
+        # - BlockTaskInstance: Block the scheduling task.
         self.type = type
 
     def validate(self):
@@ -497,26 +485,25 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRules(DaraModel):
         severity: str = None,
         template_code: str = None,
     ):
-        # The check settings for sample data.
+        # Sample validation settings
         self.checking_config = checking_config
-        # The description of the rule.
+        # Description of the data quality rule.
         self.description = description
-        # Specifies whether to enable the rule.
+        # Whether the data quality rule is enabled.
         self.enabled = enabled
-        # The operations that you can perform after the rule-based check fails.
+        # Quality rule validation issue handler
         self.error_handlers = error_handlers
-        # The rule ID. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to query the ID of the monitoring rule.
+        # ID of the validation rule. You can call the [ListQualityRules](https://help.aliyun.com/document_detail/173995.html) operation to obtain the rule ID.
         self.id = id
-        # The name of the monitoring rule.
+        # Name of the data quality rule.
         self.name = name
-        # The parameters required for sampling.
+        # Parameters required for sample collection
         self.sampling_config = sampling_config
-        # The strength of the rule. Valid values:
-        # 
-        # *   Normal
-        # *   High
+        # Severity level of the rule for the business (corresponds to strong/weak rules on the page). Optional enum values:
+        # - Normal
+        # - High
         self.severity = severity
-        # The ID of the template used by the rule.
+        # Unique identifier of the rule template referenced by the rule.
         self.template_code = template_code
 
     def validate(self):
@@ -609,29 +596,28 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig(DaraM
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The metrics used for sampling. Valid values:
-        # 
-        # *   Count: the number of rows in the table.
-        # *   Min: the minimum value of the field.
-        # *   Max: the maximum value of the field.
-        # *   Avg: the average value of the field.
-        # *   DistinctCount: the number of unique values of the field after deduplication.
-        # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
-        # *   DuplicatedCount: the number of duplicated values of the field.
-        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-        # *   TableSize: the table size.
-        # *   NullValueCount: the number of rows in which the field value is null.
-        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
-        # *   GroupCount: the field value and the number of rows for each field value.
-        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+        # Name of the sampling metric
+        # - Count: Number of rows in the table
+        # - Min: Minimum value of the field
+        # - Max: Maximum value of the field
+        # - Avg: Average value of the field
+        # - DistinctCount: Number of distinct values of the field
+        # - DistinctPercent: Ratio of the number of distinct field values to the total number of rows
+        # - DuplicatedCount: Number of duplicate values of the field
+        # - DuplicatedPercent: Ratio of the number of duplicate field values to the total number of rows
+        # - TableSize: Size of the table
+        # - NullValueCount: Number of rows where the field is null
+        # - NullValuePercent: Proportion of rows where the field is null
+        # - GroupCount: After aggregating by field value, each value and its corresponding number of rows
+        # - CountNotIn: Number of rows whose enum values do not match
+        # - CountDistinctNotIn: Number of distinct values whose enum values do not match
+        # - UserDefinedSql: Sample collection via custom SQL
         self.metric = metric
-        # The parameters required for sampling.
+        # Parameters required for sample collection
         self.metric_parameters = metric_parameters
-        # The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+        # Conditions for further filtering of data not of concern during sampling. Maximum 16777215 characters.
         self.sampling_filter = sampling_filter
-        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+        # Runtime parameter setting statements to be inserted and executed before the actual sampling statement. Maximum 1000 characters. Currently only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -678,11 +664,11 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesErrorHandlers(DaraMo
         error_data_filter: str = None,
         type: str = None,
     ):
-        # The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
+        # For custom SQL rules, the user must specify the SQL to filter problematic data.
         self.error_data_filter = error_data_filter
-        # The type of the operation. Valid values:
+        # Handler type:
         # 
-        # *   SaveErrorData
+        # - SaveErrorData: Retain problematic data
         self.type = type
 
     def validate(self):
@@ -718,17 +704,17 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfig(DaraM
         thresholds: main_models.UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # The method that is used to query the referenced samples. To obtain specific types of thresholds, you must query reference values. In this example, an expression is used to specify the query method of referenced samples.
+        # Some threshold types require querying reference samples and then aggregating their values to derive the comparison threshold. An expression is used here to indicate how the reference samples are queried.
         self.referenced_samples_filter = referenced_samples_filter
-        # The threshold settings.
+        # Validation threshold settings.
         self.thresholds = thresholds
-        # The threshold calculation method. Valid values:
+        # Threshold calculation method
         # 
-        # *   Fluctation
-        # *   Auto
-        # *   FluctationDiscreate
-        # *   Average
-        # *   Fixed
+        # - Fluctation: Fluctuation range validation
+        # - Auto: Intelligent threshold validation
+        # - FluctationDiscreate: Discrete value fluctuation range validation
+        # - Average: Mean fluctuation range validation
+        # - Fixed: Fixed value validation
         self.type = type
 
     def validate(self):
@@ -772,11 +758,11 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         expected: main_models.UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsExpected = None,
         warned: main_models.UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsWarned = None,
     ):
-        # The threshold settings for critical alerts.
+        # Threshold settings for critical warnings
         self.critical = critical
-        # The expected threshold setting.
+        # Expected threshold settings
         self.expected = expected
-        # The threshold settings for normal alerts.
+        # Threshold settings for normal warnings
         self.warned = warned
 
     def validate(self):
@@ -826,26 +812,25 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # The threshold expression.
+        # Threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+        # Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01
+        # - Fluctuation drops below 0.01: $checkValue < -0.01
+        # - Absolute fluctuation rate: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # Comparison operator
+        # - \\>
+        # - \\>=
+        # - \\<
+        # - \\<=
+        # - !=
+        # - =
         self.operator = operator
-        # The threshold value.
+        # Threshold value
         self.value = value
 
     def validate(self):
@@ -887,26 +872,25 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # The threshold expression.
+        # Threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+        # Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01
+        # - Fluctuation drops below 0.01: $checkValue < -0.01
+        # - Absolute fluctuation rate: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # Comparison operator
+        # - \\>
+        # - \\>=
+        # - <
+        # - <=
+        # - !=
+        # - =
         self.operator = operator
-        # The threshold value.
+        # Threshold value
         self.value = value
 
     def validate(self):
@@ -948,26 +932,25 @@ class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresh
         operator: str = None,
         value: str = None,
     ):
-        # The threshold expression.
+        # Threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Examples:
+        # Fluctuation-type rules must use an expression to represent the fluctuation threshold. For example:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01
+        # - Fluctuation drops below 0.01: $checkValue < -0.01
+        # - Absolute fluctuation rate: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # Fixed-value-type rules can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # Comparison operator
+        # - \\>
+        # - \\>=
+        # - <
+        # - <=
+        # - !=
+        # - =
         self.operator = operator
-        # The threshold value.
+        # Threshold value.
         self.value = value
 
     def validate(self):

@@ -9,6 +9,7 @@ class RestartDBInstanceRequest(DaraModel):
         self,
         dbinstance_id: str = None,
         node_id: str = None,
+        node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -19,14 +20,20 @@ class RestartDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the shard or mongos node in the sharded cluster instance.
+        # The ID of a shard or Mongos node in a sharded cluster instance.
         # 
-        # > The sharded cluster instance is restarted if you do not specify this parameter.
+        # > If you do not specify this parameter for a sharded cluster instance, the entire instance is restarted.
         self.node_id = node_id
+        self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The time to restart the instance. Valid values:
+        # 
+        # - 0: The instance is restarted immediately.
+        # 
+        # - 1: The instance is restarted within the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):
@@ -42,6 +49,9 @@ class RestartDBInstanceRequest(DaraModel):
 
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -67,6 +77,9 @@ class RestartDBInstanceRequest(DaraModel):
 
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

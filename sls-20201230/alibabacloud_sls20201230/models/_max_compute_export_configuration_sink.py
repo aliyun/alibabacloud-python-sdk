@@ -24,26 +24,61 @@ class MaxComputeExportConfigurationSink(DaraModel):
         time_format_type: str = None,
         time_zone: str = None,
     ):
+        # Specifies the minimum time granularity between two data shipping jobs. Unit: seconds. Valid values:
+        # 
+        # *   1800 (default)
+        # *   3600
         self.buffer_interval = buffer_interval
+        # The fields that you want to ship.
+        # 
         # This parameter is required.
         self.fields = fields
+        # Specifies whether to filter the invalid content.
+        # 
+        # *   true (default)
+        # *   false
         self.filter_invalid = filter_invalid
+        # The AccessKey ID used to write data to MaxCompute.
         self.odps_access_key_id = odps_access_key_id
+        # The AccessKey secret used to write data to MaxCompute.
         self.odps_access_secret = odps_access_secret
+        # The endpoint of MaxCompute.
+        # 
+        # *   ⚠️Note: The endpoint of MaxCompute must be the same as that of the Simple Log Service project.
+        # 
         # This parameter is required.
         self.odps_endpoint = odps_endpoint
+        # The name of the MaxCompute project.
+        # 
         # This parameter is required.
         self.odps_project = odps_project
+        # The Resource Access Management (RAM) role the data shipping job assumes to write data to MaxCompute.
+        # 
         # This parameter is required.
         self.odps_rolearn = odps_rolearn
+        # The name of the MaxCompute table.
+        # 
         # This parameter is required.
         self.odps_table = odps_table
+        # The Tunnel endpoint of MaxCompute.
+        # 
+        # *   ⚠️Note: The Tunnel endpoint of MaxCompute must be the same as that of the Simple Log Service project.
         self.odps_tunnel_endpoint = odps_tunnel_endpoint
+        # The partition key columns that you want to ship.
+        # 
         # This parameter is required.
         self.partition_column = partition_column
+        # The time partition format.
+        # 
         # This parameter is required.
         self.partition_time_format = partition_time_format
+        # The time partition type. Valid values:
+        # 
+        # *   StrfTimeFormat (default)
+        # *   JavaSimpleDateFormat
         self.time_format_type = time_format_type
+        # The time zone.
+        # 
         # This parameter is required.
         self.time_zone = time_zone
 

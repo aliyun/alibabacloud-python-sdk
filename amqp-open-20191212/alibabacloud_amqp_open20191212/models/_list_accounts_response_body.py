@@ -16,7 +16,7 @@ class ListAccountsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the call is successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned data.
         self.data = data
@@ -24,7 +24,7 @@ class ListAccountsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

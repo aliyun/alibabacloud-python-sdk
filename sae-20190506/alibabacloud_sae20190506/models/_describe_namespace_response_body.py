@@ -18,29 +18,35 @@ class DescribeNamespaceResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The information about the namespace.
         self.data = data
         # The error code returned. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        # - The **ErrorCode** parameter is not returned if the request succeeds.
+        # 
+        # - The **ErrorCode** parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
         # The additional information that is returned. Valid values:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - success: If the call is successful, **success** is returned.
+        # 
+        # - An error code: If the call fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the information about the namespace was queried successfully. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The image failed to be found.
+        # - **true**: The information was queried.
+        # 
+        # - **false**: The image failed to be found.
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
@@ -115,8 +121,9 @@ class DescribeNamespaceResponseBodyData(DaraModel):
     ):
         # Indicates whether the SAE built-in registry is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.enable_micro_registration = enable_micro_registration
         # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id

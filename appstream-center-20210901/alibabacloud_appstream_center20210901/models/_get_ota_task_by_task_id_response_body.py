@@ -14,17 +14,17 @@ class GetOtaTaskByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         task_start_time: str = None,
     ):
-        # The error code.
+        # The error code returned if the request failed.
         self.code = code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The OTA version.
         self.ota_version = ota_version
-        # The version description.
+        # The version description that describes the content of the over-the-air update.
         self.release_note = release_note
         # The request ID.
         self.request_id = request_id
-        # The execution time of the OTA update task. The time follows the ISO 8601 standard.
+        # The task execution time in ISO 8601 format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.task_start_time = task_start_time

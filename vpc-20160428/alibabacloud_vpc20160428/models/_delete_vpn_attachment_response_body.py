@@ -12,16 +12,16 @@ class DeleteVpnAttachmentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned by the current operation. **200** indicates that the operation is successful.
+        # The status code returned by the current task. A value of **200** indicates that the task is successful.
         self.code = code
-        # The information returned by the current operation.
+        # The message returned by the current task.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the current operation is successful.
+        # Indicates whether the current task is successfully executed.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The task is successfully executed.
+        # - **false**: The task failed to be executed.
         self.success = success
 
     def validate(self):

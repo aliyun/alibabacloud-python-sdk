@@ -12,6 +12,7 @@ class DeleteUserPropertyValueRequest(DaraModel):
         property_value_id: int = None,
         user_id: int = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
         # 

@@ -18,34 +18,41 @@ class ModifyParametersRequest(DaraModel):
         resource_owner_id: int = None,
         switch_mode: str = None,
     ):
-        # The role of the instance. Valid values:
+        # The type of the node. Valid values:
         # 
-        # *   **db**: a shard node.
-        # *   **cs**: a Configserver node.
-        # *   **mongos**: a mongos node.
+        # - **db**: shard node.
+        # 
+        # - **cs**: Configserver node.
+        # 
+        # - **mongos**: mongos node.
         self.character_type = character_type
         # The instance ID.
         # 
-        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the NodeId parameter.
+        # > If this parameter is a sharded cluster instance ID, you must also specify the NodeId parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the mongos or shard node in the specified sharded cluster instance.
+        # The ID of the mongos or shard node in the sharded cluster instance.
         # 
-        # >  This parameter is valid only when DBInstanceId is set to the ID of a sharded cluster instance.
+        # > This parameter is active only when the DBInstanceId parameter is set to a sharded cluster instance ID.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The instance parameters that you want to modify and their values. Specify this parameter in a JSON string. Sample format: {"ParameterName1":"ParameterValue1","ParameterName2":"ParameterValue2"}.
+        # The parameters and their new values. The value must be a JSON string. Example: {"ParameterName1":"ParameterValue1","ParameterName2":"ParameterValue2"}.
         # 
-        # >  You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query a list of default parameter templates.
+        # > Call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the list of default parameter templates.
         # 
         # This parameter is required.
         self.parameters = parameters
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the most recent region list.
+        # The region ID of the instance. To query the latest region list, call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The time to apply the parameter modifications. Valid values:
+        # 
+        # - 0: Immediately.
+        # 
+        # - 1: During the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):

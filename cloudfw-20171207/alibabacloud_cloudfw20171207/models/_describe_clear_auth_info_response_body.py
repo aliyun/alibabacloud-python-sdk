@@ -11,8 +11,11 @@ class DescribeClearAuthInfoResponseBody(DaraModel):
         left_times: int = None,
         request_id: str = None,
     ):
+        # The UNIX timestamp when the authorization expires.
         self.end_time = end_time
+        # The number of remaining clears.
         self.left_times = left_times
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

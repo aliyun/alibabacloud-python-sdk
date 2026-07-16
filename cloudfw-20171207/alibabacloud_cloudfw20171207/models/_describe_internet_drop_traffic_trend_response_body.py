@@ -16,10 +16,15 @@ class DescribeInternetDropTrafficTrendResponseBody(DaraModel):
         request_id: str = None,
         ring_ratio_average: str = None,
     ):
+        # The data list.
         self.data_list = data_list
+        # The peak number of dropped sessions in the specified period.
         self.drop_session_max = drop_session_max
+        # The average drop ratio for the entire query period, expressed as a percentage.
         self.ratio_average = ratio_average
+        # The request ID.
         self.request_id = request_id
+        # The average drop ratio from the previous cycle, expressed as a percentage.
         self.ring_ratio_average = ring_ratio_average
 
     def validate(self):
@@ -89,16 +94,27 @@ class DescribeInternetDropTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_session: int = None,
     ):
+        # The number of sessions dropped by access control list (ACL) rules.
         self.acl_drop = acl_drop
+        # The current time point. The time is in the `YYYY-MM-DD HH:mm:ss` format.
         self.data_time = data_time
+        # The ratio of dropped sessions to total sessions for this data point.
         self.drop_ratio = drop_ratio
+        # The number of dropped sessions for the corresponding data point in the previous cycle.
         self.drop_ring = drop_ring
+        # The drop ratio for the corresponding data point in the previous cycle.
         self.drop_ring_ratio = drop_ring_ratio
+        # The number of dropped sessions.
         self.drop_session = drop_session
+        # The number of sessions dropped by the intrusion prevention system (IPS).
         self.ips_drop = ips_drop
+        # The corresponding time point in the previous cycle. The time is in the `YYYY-MM-DD HH:mm:ss` format.
         self.ring_data_time = ring_data_time
+        # The timestamp for the corresponding data point in the previous cycle. This value is a Unix timestamp that represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.ring_time = ring_time
+        # The timestamp.
         self.time = time
+        # The total number of sessions.
         self.total_session = total_session
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListKibanaPluginsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListKibanaPluginsResponseBodyResult] = None,
     ):
-        # The request header.
+        # The request headers.
         self.headers = headers
         # The request ID.
         self.request_id = request_id
-        # The information about the plug-ins.
+        # The plugin information returned by the current request.
         self.result = result
 
     def validate(self):
@@ -73,15 +73,15 @@ class ListKibanaPluginsResponseBodyResult(DaraModel):
         specification_url: str = None,
         state: str = None,
     ):
-        # The description of the plug-in.
+        # The plugin description.
         self.description = description
-        # The name of the plug-in.
+        # The plugin name.
         self.name = name
-        # The source of the plug-in.
+        # The source of the plugin.
         self.source = source
-        # The URL of the introduction to the plug-in. The value null is supported.
+        # The URL of the plugin introduction. The value can be null.
         self.specification_url = specification_url
-        # The installation status of the plug-in.
+        # The installation status of the plugin.
         self.state = state
 
     def validate(self):

@@ -97,6 +97,7 @@ class DescribeAppsResponseBodyData(DaraModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        # The application type.
         self.app_type = app_type
         # Region id.
         self.biz_region_id = biz_region_id
@@ -112,12 +113,17 @@ class DescribeAppsResponseBodyData(DaraModel):
         # 
         # Valid values:
         # 
-        # *   INSTALLFAILED: The application failed to be installed.
-        # *   UNINSTALLING: The application is being uninstalled.
-        # *   INSTALLING: The application is being installed.
-        # *   UNINSTALLED: The application is uninstalled.
-        # *   INSTALLED: The application is installed.
-        # *   UNINSTALLFAILED: The application failed to be uninstalled.
+        # - INSTALLFAILED: The application failed to be installed.
+        # 
+        # - UNINSTALLING: The application is being uninstalled.
+        # 
+        # - INSTALLING: The application is being installed.
+        # 
+        # - UNINSTALLED: The application is uninstalled.
+        # 
+        # - INSTALLED: The application is installed.
+        # 
+        # - UNINSTALLFAILED: The application failed to be uninstalled.
         self.installation_status = installation_status
         # The list of instance groups where the application is installed.
         self.instance_group_list = instance_group_list
@@ -129,9 +135,11 @@ class DescribeAppsResponseBodyData(DaraModel):
         # 
         # Valid values:
         # 
-        # *   FAILED: The application failed to be created.
-        # *   NORMAL: The application is available.
-        # *   CREATING: The application is being created.
+        # - FAILED: The application failed to be created.
+        # 
+        # - NORMAL: The application is available.
+        # 
+        # - CREATING: The application is being created.
         self.status = status
 
     def validate(self):

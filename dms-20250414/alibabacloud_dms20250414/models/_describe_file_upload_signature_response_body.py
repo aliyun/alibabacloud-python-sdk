@@ -14,11 +14,18 @@ class DescribeFileUploadSignatureResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return struct
         self.data = data
+        # Error code
         self.error_code = error_code
+        # Error message returned when the invocation fails
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded. The return value is as follows:
+        # 
+        # - **true**: The request succeeded.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -79,13 +86,21 @@ class DescribeFileUploadSignatureResponseBodyData(DaraModel):
         upload_dir: str = None,
         upload_host: str = None,
     ):
+        # Parameter set that specifies the derived key
         self.oss_credential = oss_credential
+        # Time of the request, formatted according to the ISO 8601 date and time standard
         self.oss_date = oss_date
+        # STS token used for uploading to OSS, valid for 1 hour
         self.oss_security_token = oss_security_token
+        # Description information used for signature authentication
         self.oss_signature = oss_signature
+        # Specifies the version and algorithm of the signature
         self.oss_signature_version = oss_signature_version
+        # Permission constraints and conditions for file upload
         self.policy = policy
+        # Path for file upload
         self.upload_dir = upload_dir
+        # Target address for file upload
         self.upload_host = upload_host
 
     def validate(self):

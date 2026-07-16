@@ -2087,6 +2087,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cainstance_status_with_options_async(request, runtime)
 
+    def get_ca_instance_crl_address_with_options(
+        self,
+        request: main_models.GetCaInstanceCrlAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCaInstanceCrlAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ca_identifier):
+            query['CaIdentifier'] = request.ca_identifier
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCaInstanceCrlAddress',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCaInstanceCrlAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ca_instance_crl_address_with_options_async(
+        self,
+        request: main_models.GetCaInstanceCrlAddressRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCaInstanceCrlAddressResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ca_identifier):
+            query['CaIdentifier'] = request.ca_identifier
+        if not DaraCore.is_null(request.uuid):
+            query['Uuid'] = request.uuid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCaInstanceCrlAddress',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCaInstanceCrlAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ca_instance_crl_address(
+        self,
+        request: main_models.GetCaInstanceCrlAddressRequest,
+    ) -> main_models.GetCaInstanceCrlAddressResponse:
+        runtime = RuntimeOptions()
+        return self.get_ca_instance_crl_address_with_options(request, runtime)
+
+    async def get_ca_instance_crl_address_async(
+        self,
+        request: main_models.GetCaInstanceCrlAddressRequest,
+    ) -> main_models.GetCaInstanceCrlAddressResponse:
+        runtime = RuntimeOptions()
+        return await self.get_ca_instance_crl_address_with_options_async(request, runtime)
+
     def list_all_end_entity_instance_with_options(
         self,
         request: main_models.ListAllEndEntityInstanceRequest,

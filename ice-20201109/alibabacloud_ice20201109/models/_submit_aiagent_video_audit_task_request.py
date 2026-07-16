@@ -112,7 +112,7 @@ class SubmitAIAgentVideoAuditTaskRequestInput(DaraModel):
         self.media = media
         # The type of the input file. Valid values:
         # 
-        # *   OSS: an OSS object.
+        # - OSS: an OSS object.
         self.type = type
 
     def validate(self):

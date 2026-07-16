@@ -11,8 +11,14 @@ class DescribeVsDomainConfigsRequest(DaraModel):
         function_names: str = None,
         owner_id: int = None,
     ):
+        # Your accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # List of feature names.
+        # 
+        # > Supports multiple values separated by commas (,).
+        # 
         # This parameter is required.
         self.function_names = function_names
         self.owner_id = owner_id

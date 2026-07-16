@@ -22,17 +22,29 @@ class GetAppTokenServiceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The application module.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The root error message.
         self.root_error_msg = root_error_msg
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -123,6 +135,7 @@ class GetAppTokenServiceResponseBodyModule(DaraModel):
         extend: str = None,
         status: str = None,
     ):
+        # The extended information.
         self.extend = extend
         # trial,draft,live,refunded,expired,released
         self.status = status

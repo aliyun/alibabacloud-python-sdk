@@ -125,8 +125,9 @@ class DescribeRiskCheckResultResponseBodyList(DaraModel):
         self.remaining_time = remaining_time
         # Indicates whether the risks that are detected based on the check item can be fixed. Valid values:
         # 
-        # *   **enabled**: yes
-        # *   **disabled**: no
+        # - **enabled**: yes
+        # 
+        # - **disabled**: no
         self.repair_status = repair_status
         # The type of the affected assets.
         self.risk_assert_type = risk_assert_type
@@ -134,25 +135,33 @@ class DescribeRiskCheckResultResponseBodyList(DaraModel):
         self.risk_item_resources = risk_item_resources
         # The risk level of the check item. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**
+        # 
+        # - **medium**
+        # 
+        # - **low**
         self.risk_level = risk_level
         # The sequence number in the check results. The check items are sorted based on the sequence number.
         self.sort = sort
         # Indicates whether the check item is supported by the edition of Security Center that you purchase. Valid values:
         # 
-        # *   **enabled**: yes
-        # *   **disable**: no
+        # - **enabled**: yes
+        # 
+        # - **disable**: no
         self.start_status = start_status
         # The status of the check results. Valid values:
         # 
-        # *   **pass**
-        # *   **failed**
-        # *   **running**
-        # *   **waiting**
-        # *   **ignored**
-        # *   **falsePositive**
+        # - **pass**
+        # 
+        # - **failed**
+        # 
+        # - **running**
+        # 
+        # - **waiting**
+        # 
+        # - **ignored**
+        # 
+        # - **falsePositive**
         self.status = status
         # The ID of the check task.
         self.task_id = task_id
@@ -160,12 +169,17 @@ class DescribeRiskCheckResultResponseBodyList(DaraModel):
         self.title = title
         # The type of the check item. Valid values:
         # 
-        # *   Identity authentication and permissions
-        # *   Network access control
-        # *   Log audit
-        # *   Data security
-        # *   Monitoring and alerting
-        # *   Basic security protection
+        # - Identity authentication and permissions
+        # 
+        # - Network access control
+        # 
+        # - Log audit
+        # 
+        # - Data security
+        # 
+        # - Monitoring and alerting
+        # 
+        # - Basic security protection
         self.type = type
 
     def validate(self):
@@ -284,10 +298,13 @@ class DescribeRiskCheckResultResponseBodyListRiskItemResources(DaraModel):
         self.content_resource = content_resource
         # The title in the details. Valid values:
         # 
-        # *   **bestPractice**: description
-        # *   **influence**: risk
-        # *   **suggestion**: solution
-        # *   **helpResource**: reference
+        # - **bestPractice**: description
+        # 
+        # - **influence**: risk
+        # 
+        # - **suggestion**: solution
+        # 
+        # - **helpResource**: reference
         self.resource_name = resource_name
 
     def validate(self):

@@ -17,11 +17,17 @@ class GetProjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The project details.
         self.project_info = project_info
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,24 +105,45 @@ class GetProjectResponseBodyProjectInfo(DaraModel):
         type: str = None,
         white_lists: List[main_models.GetProjectResponseBodyProjectInfoWhiteLists] = None,
     ):
+        # The dependent data module display name.
         self.biz_unit_display_name = biz_unit_display_name
+        # The dependent data module ID.
         self.biz_unit_id = biz_unit_id
+        # The compute source ID.
         self.compute_source_id = compute_source_id
+        # The compute source name.
         self.compute_source_name = compute_source_name
+        # The project description.
         self.description = description
+        # The project display name.
         self.display_name = display_name
+        # The environment.
         self.env = env
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The project ID.
         self.id = id
+        # The project mode. Valid values:
+        # - BASIC
+        # - DEV_PROD
         self.mode = mode
+        # The project name.
         self.name = name
+        # The project tag.
         self.name_space_tag = name_space_tag
+        # The project owner ID.
         self.owner = owner
+        # The project owner.
         self.owner_name = owner_name
+        # The stream compute source ID.
         self.stream_compute_source_id = stream_compute_source_id
+        # The stream compute source name.
         self.stream_compute_source_name = stream_compute_source_name
+        # The project type.
         self.type = type
+        # The whitelists.
         self.white_lists = white_lists
 
     def validate(self):
@@ -262,9 +289,11 @@ class GetProjectResponseBodyProjectInfoWhiteLists(DaraModel):
         ip: str = None,
         port: str = None,
     ):
+        # The whitelist description.
         self.description = description
-        # ip
+        # The IP address.
         self.ip = ip
+        # The port.
         self.port = port
 
     def validate(self):

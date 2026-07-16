@@ -150,6 +150,7 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
         flight_order_insure_list: List[main_models.IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrderFlightOrderInsureList] = None,
         flight_order_ticket_list: List[main_models.IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrderFlightOrderTicketList] = None,
         flight_segment_list: List[main_models.IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrderFlightSegmentList] = None,
+        itinerary_id: str = None,
         mix_pay: bool = None,
         order_create_time: str = None,
         order_id: str = None,
@@ -163,6 +164,7 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
         person_pay_price: int = None,
         service_fee: int = None,
         third_part_apply_id: str = None,
+        thirdpart_itinerary_id: str = None,
         trip_type: int = None,
     ):
         self.apply_id = apply_id
@@ -173,6 +175,7 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
         self.flight_order_insure_list = flight_order_insure_list
         self.flight_order_ticket_list = flight_order_ticket_list
         self.flight_segment_list = flight_segment_list
+        self.itinerary_id = itinerary_id
         self.mix_pay = mix_pay
         self.order_create_time = order_create_time
         self.order_id = order_id
@@ -186,6 +189,7 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
         self.person_pay_price = person_pay_price
         self.service_fee = service_fee
         self.third_part_apply_id = third_part_apply_id
+        self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.trip_type = trip_type
 
     def validate(self):
@@ -243,6 +247,9 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
             for k1 in self.flight_segment_list:
                 result['flight_segment_list'].append(k1.to_map() if k1 else None)
 
+        if self.itinerary_id is not None:
+            result['itinerary_id'] = self.itinerary_id
+
         if self.mix_pay is not None:
             result['mix_pay'] = self.mix_pay
 
@@ -283,6 +290,9 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
 
         if self.third_part_apply_id is not None:
             result['third_part_apply_id'] = self.third_part_apply_id
+
+        if self.thirdpart_itinerary_id is not None:
+            result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
 
         if self.trip_type is not None:
             result['trip_type'] = self.trip_type
@@ -325,6 +335,9 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
                 temp_model = main_models.IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrderFlightSegmentList()
                 self.flight_segment_list.append(temp_model.from_map(k1))
 
+        if m.get('itinerary_id') is not None:
+            self.itinerary_id = m.get('itinerary_id')
+
         if m.get('mix_pay') is not None:
             self.mix_pay = m.get('mix_pay')
 
@@ -366,6 +379,9 @@ class IFlightOrderDetailQueryResponseBodyModuleFlightSaleOrder(DaraModel):
 
         if m.get('third_part_apply_id') is not None:
             self.third_part_apply_id = m.get('third_part_apply_id')
+
+        if m.get('thirdpart_itinerary_id') is not None:
+            self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
 
         if m.get('trip_type') is not None:
             self.trip_type = m.get('trip_type')

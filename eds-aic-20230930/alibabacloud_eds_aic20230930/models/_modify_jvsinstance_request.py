@@ -15,9 +15,13 @@ class ModifyJVSInstanceRequest(DaraModel):
         instance_ids: List[str] = None,
         instance_name: str = None,
     ):
+        # Specifies whether to apply the configuration to all instances.
         self.apply_to_all = apply_to_all
+        # The credit limit configuration. New configurations overwrite existing ones.
         self.credit_config = credit_config
+        # A list of instance IDs.
         self.instance_ids = instance_ids
+        # The new instance name.
         self.instance_name = instance_name
 
     def validate(self):
@@ -72,7 +76,9 @@ class ModifyJVSInstanceRequestCreditConfig(DaraModel):
         credit_limit: int = None,
         limit_period: str = None,
     ):
+        # The credit limit.
         self.credit_limit = credit_limit
+        # The credit limit period.
         self.limit_period = limit_period
 
     def validate(self):

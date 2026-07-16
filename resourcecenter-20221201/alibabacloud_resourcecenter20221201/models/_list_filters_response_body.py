@@ -14,8 +14,11 @@ class ListFiltersResponseBody(DaraModel):
         filters: List[main_models.ListFiltersResponseBodyFilters] = None,
         request_id: str = None,
     ):
+        # The name of the default filter.
         self.default_filter_name = default_filter_name
+        # The configurations of the filter.
         self.filters = filters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,8 +67,11 @@ class ListFiltersResponseBodyFilters(DaraModel):
         filter_configuration: str = None,
         filter_name: str = None,
     ):
+        # The configurations of the filter.
+        # 
         # This parameter is required.
         self.filter_configuration = filter_configuration
+        # The name of the filter.
         self.filter_name = filter_name
 
     def validate(self):

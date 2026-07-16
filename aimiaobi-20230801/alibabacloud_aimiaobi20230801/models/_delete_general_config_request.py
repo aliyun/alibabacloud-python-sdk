@@ -10,8 +10,12 @@ class DeleteGeneralConfigRequest(DaraModel):
         config_key: str = None,
         workspace_id: str = None,
     ):
+        # Unique identifier of the configuration.
+        # 
         # This parameter is required.
         self.config_key = config_key
+        # Unique identifier of the Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

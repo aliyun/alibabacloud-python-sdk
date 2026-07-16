@@ -15,11 +15,17 @@ class CreateDeploymentTargetV2ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the deployment target.
         self.data = data
+        # If success is false, this parameter is not empty and indicates the error code. If success is true, this parameter is empty.
         self.error_code = error_code
+        # If success is false, this parameter is not empty and indicates the error message. If success is true, this parameter is empty.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is returned. Use the success parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

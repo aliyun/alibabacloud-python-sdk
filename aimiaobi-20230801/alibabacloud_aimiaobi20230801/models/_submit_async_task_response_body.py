@@ -17,11 +17,17 @@ class SubmitAsyncTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class SubmitAsyncTaskResponseBodyData(DaraModel):
         task_intermediate_result: Any = None,
         task_name: str = None,
     ):
+        # The unique task ID.
         self.task_id = task_id
+        # The intermediate result.
         self.task_intermediate_result = task_intermediate_result
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

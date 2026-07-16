@@ -19,13 +19,21 @@ class ListRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of 200 means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # The total number of entries.
         self.count = count
+        # The rule list.
         self.data = data
+        # Details about an error if the request failed. If the request succeeded, the value is successful.
         self.message = message
+        # The page number of the rule list.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
         self.success = success
 
     def validate(self):
@@ -110,13 +118,25 @@ class ListRulesResponseBodyData(DaraModel):
         type: int = None,
         type_name: str = None,
     ):
+        # The names of business categories associated with the rule.
         self.business_category_name_list = business_category_name_list
+        # Comments for the rule.
         self.comments = comments
+        # The time when the rule was created.
         self.create_time = create_time
+        # The rule name.
         self.name = name
+        # The rule ID.
         self.rid = rid
+        # The rule category. Valid values:
+        # 
+        # - 1: Custom rule
+        # 
+        # - 0: System-provided rule
         self.rule_type = rule_type
+        # The type value of the rule\\"s rule type.
         self.type = type
+        # The name of the rule\\"s rule type.
         self.type_name = type_name
 
     def validate(self):

@@ -12,7 +12,7 @@ class GetClientCertificateHostnamesRequest(DaraModel):
     ):
         # The certificate ID.
         self.id = id
-        # The website ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

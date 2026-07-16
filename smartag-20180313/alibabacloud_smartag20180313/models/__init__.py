@@ -32,6 +32,9 @@ from ._associate_qos_response import AssociateQosResponse
 from ._associate_smart_agwith_application_bandwidth_package_request import AssociateSmartAGWithApplicationBandwidthPackageRequest
 from ._associate_smart_agwith_application_bandwidth_package_response_body import AssociateSmartAGWithApplicationBandwidthPackageResponseBody
 from ._associate_smart_agwith_application_bandwidth_package_response import AssociateSmartAGWithApplicationBandwidthPackageResponse
+from ._attach_ccn_instance_to_cen_request import AttachCcnInstanceToCenRequest
+from ._attach_ccn_instance_to_cen_response_body import AttachCcnInstanceToCenResponseBody
+from ._attach_ccn_instance_to_cen_response import AttachCcnInstanceToCenResponse
 from ._bind_serial_number_request import BindSerialNumberRequest
 from ._bind_serial_number_response_body import BindSerialNumberResponseBody
 from ._bind_serial_number_response import BindSerialNumberResponse
@@ -308,6 +311,9 @@ from ._describe_user_online_client_statistics_response import DescribeUserOnline
 from ._describe_user_online_clients_request import DescribeUserOnlineClientsRequest
 from ._describe_user_online_clients_response_body import DescribeUserOnlineClientsResponseBody
 from ._describe_user_online_clients_response import DescribeUserOnlineClientsResponse
+from ._detach_ccn_instance_from_cen_request import DetachCcnInstanceFromCenRequest
+from ._detach_ccn_instance_from_cen_response_body import DetachCcnInstanceFromCenResponseBody
+from ._detach_ccn_instance_from_cen_response import DetachCcnInstanceFromCenResponse
 from ._diagnose_smart_access_gateway_request import DiagnoseSmartAccessGatewayRequest
 from ._diagnose_smart_access_gateway_response_body import DiagnoseSmartAccessGatewayResponseBody
 from ._diagnose_smart_access_gateway_response import DiagnoseSmartAccessGatewayResponse
@@ -779,6 +785,9 @@ __all__ = [
     AssociateSmartAGWithApplicationBandwidthPackageRequest,
     AssociateSmartAGWithApplicationBandwidthPackageResponseBody,
     AssociateSmartAGWithApplicationBandwidthPackageResponse,
+    AttachCcnInstanceToCenRequest,
+    AttachCcnInstanceToCenResponseBody,
+    AttachCcnInstanceToCenResponse,
     BindSerialNumberRequest,
     BindSerialNumberResponseBody,
     BindSerialNumberResponse,
@@ -1055,6 +1064,9 @@ __all__ = [
     DescribeUserOnlineClientsRequest,
     DescribeUserOnlineClientsResponseBody,
     DescribeUserOnlineClientsResponse,
+    DetachCcnInstanceFromCenRequest,
+    DetachCcnInstanceFromCenResponseBody,
+    DetachCcnInstanceFromCenResponse,
     DiagnoseSmartAccessGatewayRequest,
     DiagnoseSmartAccessGatewayResponseBody,
     DiagnoseSmartAccessGatewayResponse,

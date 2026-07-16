@@ -17,11 +17,17 @@ class GetAgentInstanceConfigResponseBody(DaraModel):
         gray_configs: List[main_models.AgentInstanceConfigGrayConfigs] = None,
         last_modify_time: int = None,
     ):
+        # The owner of the configuration for the process.
         self.attributes = attributes
+        # The default configuration.
         self.config = config
+        # The type of the process-level configuration.
         self.config_type = config_type
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The canary release configurations.
         self.gray_configs = gray_configs
+        # The time when the configuration was last modified.
         self.last_modify_time = last_modify_time
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeExpressionVariableFunctionListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeExpressionVariableFunctionListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -64,21 +64,21 @@ class DescribeExpressionVariableFunctionListResponseBodyResultObject(DaraModel):
         return_types: str = None,
         value: str = None,
     ):
-        # Description information.
+        # The description.
         self.description = description
-        # Function name
+        # The function name.
         self.key = key
-        # Maximum number of parameters
+        # The maximum number of input parameters.
         self.max_param_size = max_param_size
-        # Minimum number of parameters
+        # The minimum number of input parameters.
         self.min_param_size = min_param_size
-        # Parameter types
+        # The input parameter types.
         self.param_types = param_types
-        # Whether it is directly invoked
+        # Indicates whether the function is directly invoked.
         self.redirect = redirect
-        # Method return types
+        # The return type of the method.
         self.return_types = return_types
-        # Function value
+        # The function value.
         self.value = value
 
     def validate(self):

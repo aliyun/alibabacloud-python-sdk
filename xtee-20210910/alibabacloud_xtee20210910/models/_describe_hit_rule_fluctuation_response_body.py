@@ -17,17 +17,17 @@ class DescribeHitRuleFluctuationResponseBody(DaraModel):
         result_object: List[main_models.DescribeHitRuleFluctuationResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -99,19 +99,19 @@ class DescribeHitRuleFluctuationResponseBodyResultObject(DaraModel):
         within_three_day_num: str = None,
         yesterday_num: int = None,
     ):
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Today\\"s count
+        # The number of hits today.
         self.today_num = today_num
-        # Count within seven days
+        # The number of hits in the last seven days.
         self.within_seven_day_num = within_seven_day_num
-        # Count within thirty days
+        # The number of hits in the last thirty days.
         self.within_thirty_day_num = within_thirty_day_num
-        # Count within three days
+        # The number of hits in the last three days.
         self.within_three_day_num = within_three_day_num
-        # Yesterday\\"s count
+        # The number of hits yesterday.
         self.yesterday_num = yesterday_num
 
     def validate(self):

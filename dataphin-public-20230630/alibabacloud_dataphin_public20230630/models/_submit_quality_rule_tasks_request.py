@@ -13,8 +13,12 @@ class SubmitQualityRuleTasksRequest(DaraModel):
         op_tenant_id: int = None,
         submit_command: main_models.SubmitQualityRuleTasksRequestSubmitCommand = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Submit command
+        # 
         # This parameter is required.
         self.submit_command = submit_command
 
@@ -56,12 +60,20 @@ class SubmitQualityRuleTasksRequestSubmitCommand(DaraModel):
         schedule_id: int = None,
         watch_rule_id_list: List[main_models.SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList] = None,
     ):
+        # Business date, format: yyyy-MM-dd
         self.biz_date = biz_date
+        # Whether it is a test run: true for test run, false for formal run.
+        # 
         # This parameter is required.
         self.is_test_run = is_test_run
+        # Partition expression - custom expression
         self.partition_expression = partition_expression
+        # Source of the test run partition expression: SCHEDULE for existing schedule, CUSTOM for custom.
         self.partition_expression_from = partition_expression_from
+        # Existing schedule ID
         self.schedule_id = schedule_id
+        # Monitoring object and rule IDs
+        # 
         # This parameter is required.
         self.watch_rule_id_list = watch_rule_id_list
 
@@ -129,8 +141,12 @@ class SubmitQualityRuleTasksRequestSubmitCommandWatchRuleIdList(DaraModel):
         rule_id: int = None,
         watch_id: int = None,
     ):
+        # Rule ID
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # Monitoring object ID
+        # 
         # This parameter is required.
         self.watch_id = watch_id
 

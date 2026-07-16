@@ -11,15 +11,15 @@ class ObtainApplicationClientSecretRequest(DaraModel):
         instance_id: str = None,
         secret_id: str = None,
     ):
-        # The ID of the application whose client key you want to query.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The client key ID of the application.
+        # The client secret ID of the application.
         # 
         # This parameter is required.
         self.secret_id = secret_id

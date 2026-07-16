@@ -16,11 +16,15 @@ class DescribeMetricMetaListResponseBody(DaraModel):
         resources: List[main_models.DescribeMetricMetaListResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The metric configuration information of the resources.
         self.resources = resources
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,16 +94,36 @@ class DescribeMetricMetaListResponseBodyResources(DaraModel):
         type: str = None,
         unit: str = None,
     ):
+        # The description.
         self.description = description
+        # The dimension description.
         self.dimension_description = dimension_description
+        # The resource filtering dimensions of CloudMonitor Basic.
         self.dimensions = dimensions
+        # The CloudMonitor labels. This parameter is returned only when metaFormat is set to CMS.
         self.labels = labels
+        # The metadata source. CMS indicates CloudMonitor Basic monitoring metrics. PROM_BASIC indicates Prometheus CloudMonitor basic monitoring metrics.
+        # 
+        # Sample value:
+        # CMS
+        # Valid values:
+        # CMS
+        # PROM_BASIC.
         self.meta_format = meta_format
+        # The metric name.
         self.metric_name = metric_name
+        # The namespace.
         self.namespace = namespace
+        # The period.
         self.periods = periods
+        # The statistical method of the metric. Example values:
+        # - Maximum: the maximum value.
+        # - Minimum: the minimum value.
+        # - Average: the average value.
         self.statistics = statistics
+        # The metric type.
         self.type = type
+        # The unit.
         self.unit = unit
 
     def validate(self):
@@ -195,6 +219,7 @@ class DescribeMetricMetaListResponseBodyResourcesDimensionDescription(DaraModel)
         self,
         name: str = None,
     ):
+        # The name.
         self.name = name
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetApplicationGrantScopeResponseBody(DaraModel):
         application_grant_scope: main_models.GetApplicationGrantScopeResponseBodyApplicationGrantScope = None,
         request_id: str = None,
     ):
-        # The permissions of the Developer API feature.
+        # The authorization scope.
         self.application_grant_scope = application_grant_scope
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class GetApplicationGrantScopeResponseBodyApplicationGrantScope(DaraModel):
         self,
         grant_scopes: List[str] = None,
     ):
-        # The permissions of the Developer API feature.
+        # The collection of API authorization scopes.
         self.grant_scopes = grant_scopes
 
     def validate(self):

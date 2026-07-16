@@ -13,12 +13,17 @@ class UpdateLgfRequest(DaraModel):
         lgf_definition: main_models.UpdateLgfRequestLgfDefinition = None,
         lgf_id: int = None,
     ):
+        # The key for the business space. If omitted, the default business space is used. You can get the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The bot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The LGF definition.
+        # 
         # This parameter is required.
         self.lgf_definition = lgf_definition
-        # LGF ID
+        # The LGF ID.
         # 
         # This parameter is required.
         self.lgf_id = lgf_id
@@ -69,8 +74,12 @@ class UpdateLgfRequestLgfDefinition(DaraModel):
         intent_id: int = None,
         rule_text: str = None,
     ):
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The LGF configuration.
+        # 
         # This parameter is required.
         self.rule_text = rule_text
 

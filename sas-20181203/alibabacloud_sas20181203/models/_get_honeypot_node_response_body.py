@@ -29,8 +29,9 @@ class GetHoneypotNodeResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -104,8 +105,9 @@ class GetHoneypotNodeResponseBodyHoneypotNode(DaraModel):
     ):
         # Indicates whether a honeypot is allowed to access the Internet. Valid values:
         # 
-        # *   **true**: The honeypot is allowed to access the Internet.
-        # *   **false**: The honeypot is not allowed to access the Internet.
+        # - **true**: The honeypot is allowed to access the Internet.
+        # 
+        # - **false**: The honeypot is not allowed to access the Internet.
         self.allow_honeypot_access_internet = allow_honeypot_access_internet
         # The time when the management node was created.
         self.create_time = create_time
@@ -129,16 +131,21 @@ class GetHoneypotNodeResponseBodyHoneypotNode(DaraModel):
         self.security_group_probe_ip_list = security_group_probe_ip_list
         # The status of the management node. Valid values:
         # 
-        # *   **0**: preparing
-        # *   **1**: normal
-        # *   **2**: abnormal
-        # *   **4**: starting
-        # *   **5**: upgrading
+        # - **0**: preparing
+        # 
+        # - **1**: normal
+        # 
+        # - **2**: abnormal
+        # 
+        # - **4**: starting
+        # 
+        # - **5**: upgrading
         self.total_status = total_status
         # Indicates whether the management node can be upgraded. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.upgrade_available = upgrade_available
 
     def validate(self):

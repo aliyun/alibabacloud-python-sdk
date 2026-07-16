@@ -15,11 +15,21 @@ class ListModelServicesRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
+        # The model type. Valid values:
+        # 
+        # - `system`: A built-in model.
+        # 
+        # - `deployment`: A model from a custom deployment.
+        # 
         # This parameter is required.
         self.model_type = model_type
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The cloud provider. Currently, only Alibaba Cloud is supported.
         self.provider = provider
+        # The provider type.
         self.provider_type = provider_type
         self.workspace_id = workspace_id
         self.workspace_ids = workspace_ids

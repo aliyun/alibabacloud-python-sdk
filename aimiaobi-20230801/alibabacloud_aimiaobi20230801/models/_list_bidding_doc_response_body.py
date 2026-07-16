@@ -23,18 +23,29 @@ class ListBiddingDocResponseBody(DaraModel):
         total: int = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Current page number
         self.current = current
+        # Returned data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Deprecated
         self.max_results = max_results
+        # Error description
         self.message = message
+        # Deprecated
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Number of items per page
         self.size = size
+        # Whether the operation was successful: true for success, false for failure.
         self.success = success
+        # Total records
         self.total = total
+        # Deprecated
         self.total_count = total_count
 
     def validate(self):
@@ -140,10 +151,15 @@ class ListBiddingDocResponseBodyData(DaraModel):
         task_status: int = None,
         task_step: str = None,
     ):
+        # Creation time - start range, format: yyyy-MM-dd HH:mm:ss
         self.create_time_start = create_time_start
+        # Task ID.
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
+        # Task status
         self.task_status = task_status
+        # Task step
         self.task_step = task_step
 
     def validate(self):

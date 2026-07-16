@@ -15,13 +15,19 @@ class EnablePolarClawPluginResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # The ID of the application.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
+        # Indicates whether the request was successful.
         self.ok = ok
+        # The ID of the plugin that was enabled.
         self.plugin_id = plugin_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
 
     def validate(self):

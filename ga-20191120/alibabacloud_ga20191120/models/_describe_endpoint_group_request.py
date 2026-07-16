@@ -10,11 +10,11 @@ class DescribeEndpointGroupRequest(DaraModel):
         endpoint_group_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the endpoint group that you want to query.
+        # The ID of the endpoint group.
         # 
         # This parameter is required.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the region where your Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

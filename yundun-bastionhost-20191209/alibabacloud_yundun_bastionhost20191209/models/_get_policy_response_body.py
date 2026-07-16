@@ -59,15 +59,15 @@ class GetPolicyResponseBodyPolicy(DaraModel):
         priority: int = None,
         protocol_config: main_models.GetPolicyResponseBodyPolicyProtocolConfig = None,
     ):
-        # The details of the logon period restrictions.
+        # The time-based access control settings.
         self.access_time_range_config = access_time_range_config
-        # The O\\&M approval setting.
+        # The O\\&M approval settings.
         self.approval_config = approval_config
-        # The details of the command policy.
+        # The command control policy.
         self.command_config = command_config
-        # The description of the control policy.
+        # The remarks on the policy.
         self.comment = comment
-        # The access control settings on source IP addresses.
+        # The source IP address-based access control settings.
         self.ipacl_config = ipacl_config
         # The ID of the control policy.
         self.policy_id = policy_id
@@ -75,7 +75,7 @@ class GetPolicyResponseBodyPolicy(DaraModel):
         self.policy_name = policy_name
         # The priority of the control policy. A smaller value indicates a higher priority.
         self.priority = priority
-        # The details of protocol control.
+        # The protocol control settings.
         self.protocol_config = protocol_config
 
     def validate(self):
@@ -166,9 +166,9 @@ class GetPolicyResponseBodyPolicyProtocolConfig(DaraModel):
         rdp: main_models.GetPolicyResponseBodyPolicyProtocolConfigRDP = None,
         ssh: main_models.GetPolicyResponseBodyPolicyProtocolConfigSSH = None,
     ):
-        # The configuration details of Remote Desktop Protocol (RDP) options.
+        # The RDP security settings.
         self.rdp = rdp
-        # The configuration details of SSH and SSH File Transfer Protocol (SFTP) options.
+        # The SSH and SFTP security settings.
         self.ssh = ssh
 
     def validate(self):
@@ -223,54 +223,64 @@ class GetPolicyResponseBodyPolicyProtocolConfigSSH(DaraModel):
         self.allow_tcp_forwarding = allow_tcp_forwarding
         # Indicates whether remote command execution is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.exec_command = exec_command
-        # Indicates whether the SFTP channel option is enabled. Valid values:
+        # Indicates whether the SFTP channel is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftpchannel = sftpchannel
-        # Indicates whether file downloading is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether file downloads over SFTP are enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftpdownload_file = sftpdownload_file
-        # Indicates whether folder creation is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether directory creation over SFTP is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftpmkdir = sftpmkdir
-        # Indicates whether file deletion is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether file deletion over SFTP is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftpremove_file = sftpremove_file
-        # Indicates whether file renaming is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether file renaming over SFTP is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftprename_file = sftprename_file
-        # Indicates whether folder deletion is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether directory deletion over SFTP is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftprmdir = sftprmdir
-        # Indicates whether file uploading is enabled in SFTP-based O\\&M. Valid values:
+        # Indicates whether file uploads over SFTP are enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sftpupload_file = sftpupload_file
-        # Indicates whether the SSH channel option is enabled. Valid values:
+        # Indicates whether the SSH channel is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.sshchannel = sshchannel
         self.tcp_forwarding = tcp_forwarding
         # Indicates whether X11 forwarding is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.x_11forwarding = x_11forwarding
 
     def validate(self):
@@ -375,27 +385,31 @@ class GetPolicyResponseBodyPolicyProtocolConfigRDP(DaraModel):
         disk_redirection_upload: str = None,
         record_keyboard: str = None,
     ):
-        # Indicates whether downloading from the clipboard is enabled. Valid values:
+        # Indicates whether clipboard download is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.clipboard_download = clipboard_download
-        # Indicates whether file uploading from the clipboard is enabled. Valid values:
+        # Indicates whether clipboard upload is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.clipboard_upload = clipboard_upload
-        # Indicates whether driver mapping is enabled. Valid values:
+        # Indicates whether drive redirection and printer mapping are enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.disk_redirection = disk_redirection
         self.disk_redirection_download = disk_redirection_download
         self.disk_redirection_upload = disk_redirection_upload
         # Indicates whether keyboard recording is enabled. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - `Enable`
+        # 
+        # - `Disable`
         self.record_keyboard = record_keyboard
 
     def validate(self):
@@ -454,12 +468,13 @@ class GetPolicyResponseBodyPolicyIPAclConfig(DaraModel):
         acl_type: str = None,
         ips: List[str] = None,
     ):
-        # The mode of access control on source IP addresses. Valid values:
+        # The source IP address-based access control mode. Valid values:
         # 
-        # *   white: whitelist mode.
-        # *   black: blacklist mode.
+        # - `white`: allowlist.
+        # 
+        # - `black`: denylist.
         self.acl_type = acl_type
-        # The IP addresses from which logons are not allowed.
+        # The IP addresses in the ACL.
         self.ips = ips
 
     def validate(self):
@@ -494,9 +509,9 @@ class GetPolicyResponseBodyPolicyCommandConfig(DaraModel):
         approval: main_models.GetPolicyResponseBodyPolicyCommandConfigApproval = None,
         deny: main_models.GetPolicyResponseBodyPolicyCommandConfigDeny = None,
     ):
-        # The details of the command approval settings.
+        # The command approval settings.
         self.approval = approval
-        # The details of the command control setting.
+        # The command control settings.
         self.deny = deny
 
     def validate(self):
@@ -536,12 +551,13 @@ class GetPolicyResponseBodyPolicyCommandConfigDeny(DaraModel):
         acl_type: str = None,
         commands: List[str] = None,
     ):
-        # The type of command control. Valid values:
+        # The command control mode. Valid values:
         # 
-        # *   white: whitelist mode.
-        # *   black: blacklist mode.
+        # - `white`: allowlist.
+        # 
+        # - `black`: denylist.
         self.acl_type = acl_type
-        # An array of controlled commands.
+        # The commands in the list.
         self.commands = commands
 
     def validate(self):
@@ -575,7 +591,7 @@ class GetPolicyResponseBodyPolicyCommandConfigApproval(DaraModel):
         self,
         commands: List[str] = None,
     ):
-        # An array of commands that can be run only after approval.
+        # The commands that require approval.
         self.commands = commands
 
     def validate(self):
@@ -603,10 +619,11 @@ class GetPolicyResponseBodyPolicyApprovalConfig(DaraModel):
         self,
         switch_status: str = None,
     ):
-        # Indicates whether O\\&M approval is enabled in the control policy. Valid values:
+        # Indicates whether O\\&M approval is enabled. Valid values:
         # 
-        # *   **On**: O\\&M approval is enabled.
-        # *   **Off**: O\\&M approval is disabled.
+        # - **On**: O\\&M approval is enabled.
+        # 
+        # - **Off**: O\\&M approval is disabled.
         self.switch_status = switch_status
 
     def validate(self):
@@ -634,7 +651,7 @@ class GetPolicyResponseBodyPolicyAccessTimeRangeConfig(DaraModel):
         self,
         effective_time: List[main_models.GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime] = None,
     ):
-        # The details of the periods during which logons are allowed.
+        # The allowed access time slots.
         self.effective_time = effective_time
 
     def validate(self):
@@ -671,9 +688,9 @@ class GetPolicyResponseBodyPolicyAccessTimeRangeConfigEffectiveTime(DaraModel):
         days: List[str] = None,
         hours: List[str] = None,
     ):
-        # The days of a week on which logons are allowed.
+        # The days of the week when access is allowed.
         self.days = days
-        # The time periods during which logons are allowed.
+        # The hours of the day when access is allowed.
         self.hours = hours
 
     def validate(self):

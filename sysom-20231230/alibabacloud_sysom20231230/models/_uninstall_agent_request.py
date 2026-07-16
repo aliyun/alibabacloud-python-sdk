@@ -14,10 +14,16 @@ class UninstallAgentRequest(DaraModel):
         agent_version: str = None,
         instances: List[main_models.UninstallAgentRequestInstances] = None,
     ):
+        # The ID of the component to uninstall.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The version of the component to uninstall.
+        # 
         # This parameter is required.
         self.agent_version = agent_version
+        # The list of instances from which to uninstall the component.
+        # 
         # This parameter is required.
         self.instances = instances
 
@@ -67,8 +73,12 @@ class UninstallAgentRequestInstances(DaraModel):
         instance: str = None,
         region: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance = instance
+        # The region ID.
+        # 
         # This parameter is required.
         self.region = region
 

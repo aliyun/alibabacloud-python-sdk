@@ -14,25 +14,25 @@ class DescribeDynamicTagRuleListRequest(DaraModel):
         tag_region_id: str = None,
         tag_value: str = None,
     ):
-        # The ID of the tag rule.
+        # The ID of the dynamic tag rule.
         self.dynamic_tag_rule_id = dynamic_tag_rule_id
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value: 1. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Minimum value: 1. Default value: 30.
+        # Start value: 1. Default value: 30.
         self.page_size = page_size
         # The tag key.
         # 
         # For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
         self.tag_key = tag_key
-        # The ID of the region to which the tags belong.
+        # The region ID of the tag.
         self.tag_region_id = tag_region_id
         # The tag value.
         # 
-        # For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
+        # For more information about how to obtain a tag value, see [DescribeTagValueList](https://help.aliyun.com/document_detail/145557.html).
         self.tag_value = tag_value
 
     def validate(self):

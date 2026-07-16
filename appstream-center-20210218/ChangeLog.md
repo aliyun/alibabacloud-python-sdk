@@ -1,3 +1,12 @@
+2026-07-09 Version: 1.1.3
+- Update API GetAuthCode: add request parameters AdPassword.
+
+
+2026-07-08 Version: 1.1.2
+- Update API GetAuthCode: add request parameters AccountType.
+- Update API GetAuthCode: add request parameters AdDomain.
+
+
 2026-04-09 Version: 1.1.1
 - Update API GetAuthCode: add request parameters TokenType.
 

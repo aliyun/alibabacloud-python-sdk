@@ -17,22 +17,21 @@ class ListOperationProcessDetailRequest(DaraModel):
         status_codes: List[int] = None,
         task_ids: List[str] = None,
     ):
-        # The page number. Default value: 1.
+        # The page number in a paged query. Default value: 1.
         self.current_page = current_page
-        # The end of the time range to query. Unit: milliseconds.
+        # The query end time based on the task completion time, in milliseconds.
         self.end_time = end_time
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The number of entries per page.
         self.page_size = page_size
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The query start time based on the task creation time, in milliseconds.
         self.start_time = start_time
-        # The subtask status codes.
+        # The list of operation subtask status codes.
         self.status_codes = status_codes
-        # The IDs of operation tasks.
+        # The list of operation task IDs.
         self.task_ids = task_ids
 
     def validate(self):

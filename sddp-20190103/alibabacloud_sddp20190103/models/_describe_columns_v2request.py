@@ -22,60 +22,76 @@ class DescribeColumnsV2Request(DaraModel):
         table_id: str = None,
         table_name: str = None,
     ):
-        # When performing a paginated query, sets the current page number. Default value: **1**.
+        # The page number. Default value: **1**.
         self.current_page = current_page
-        # Engine type. Values:
-        # - **MySQL**.
-        # - **MariaDB**.
-        # - **Oracle**.
-        # - **PostgreSQL**.
-        # - **SQLServer**.
-        self.engine_type = engine_type
-        # ID of the asset instance to which the column data in the data asset table belongs.
+        # The type of the database engine. Valid values:
         # 
-        # > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the asset instance to which the column data in the data asset table belongs. The asset instance ID can be obtained by calling the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) interface.
+        # - **MySQL**
+        # 
+        # - **MariaDB**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
+        self.engine_type = engine_type
+        # The ID of the data asset instance to which the data in the column belongs.
+        # 
+        # > Query data in columns of a data asset table based on the ID of the data asset instance. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset instance, call the [DescribeInstances](https://help.aliyun.com/document_detail/141708.html) operation.
         self.instance_id = instance_id
-        # Name of the asset instance to which the column data in the data asset table belongs.
+        # The name of the data asset instance to which the data in the column belongs.
         self.instance_name = instance_name
-        # Sets the language type for requests and received messages, default is **zh_cn**.
-        # Values:
+        # The language of the request and response. Default value: **zh_cn**.
+        # Valid values:
         # 
         # - **zh_cn**: Simplified Chinese
-        # - **en_us**: English (United States)
+        # 
+        # - **en_us**: English
         self.lang = lang
-        # Search keyword, supports fuzzy matching.
+        # The keyword for the search. Fuzzy match is supported.
         # 
-        # For example, entering **test** will search for all data information containing **test** in the search items.
+        # For example, if you enter **test**, all data that contains **test** is returned.
         self.name = name
-        # When performing a paginated query, sets the maximum number of data asset instances displayed per page. Default value: **10**.
+        # The maximum number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # Product name to which the column data in the data asset table belongs. Values: **MaxCompute, OSS, ADS, OTS, RDS**, etc.
+        # The name of the product to which the data in the column of the data asset table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
-        # Risk level ID of the sensitive data recognition rule. Values:
-        # - **1**: N/A.
-        # - **2**: S1.
-        # - **3**: S2.
-        # - **4**: S3.
-        # - **5**: S4.
-        self.risk_level_id = risk_level_id
-        # Unique identifier ID of the sensitive data recognition rule hit by the column data in the asset table.
+        # The ID of the risk level for the sensitive data detection rule. Valid values:
         # 
-        # > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the sensitive data recognition rule hit by the column data in the asset table. The sensitive data recognition rule ID can be obtained by calling the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) interface.
+        # - **1**: N/A
+        # 
+        # - **2**: S1
+        # 
+        # - **3**: S2
+        # 
+        # - **4**: S3
+        # 
+        # - **5**: S4
+        self.risk_level_id = risk_level_id
+        # The unique ID of the sensitive data detection rule that is hit by the data in the column.
+        # 
+        # > Query data in columns of a data asset table based on the ID of the sensitive data detection rule that is hit. The data asset table must be authorized in Data Security Center. To obtain the ID of the sensitive data detection rule, call the [DescribeRules](https://help.aliyun.com/document_detail/141389.html) operation.
         self.rule_id = rule_id
-        # Name of the sensitive data recognition rule hit by the column data in the data asset table.
+        # The name of the sensitive data detection rule that is hit by the data in the column.
         self.rule_name = rule_name
-        # Sensitive level name. Values:
-        # - **N/A**: No sensitive data detected.
+        # The name of the sensitivity level. Valid values:
+        # 
+        # - **N/A**: No sensitive data is detected.
+        # 
         # - **S1**: Level 1 sensitive data.
+        # 
         # - **S2**: Level 2 sensitive data.
+        # 
         # - **S3**: Level 3 sensitive data.
+        # 
         # - **S4**: Level 4 sensitive data.
         self.sens_level_name = sens_level_name
-        # Unique identifier ID of the asset table to which the column in MaxCompute, RDS, etc., belongs.
+        # The unique ID of the data asset table that contains the column. The table can be in a data asset such as MaxCompute or RDS.
         # 
-        # > Query the data in the columns of the data assets authorized by the Data Security Center based on the ID of the asset table. The asset table ID can be obtained by calling the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) interface.
+        # > Query data in columns of a data asset table by the table ID. The data asset table must be authorized in Data Security Center. To obtain the ID of the data asset table, call the [DescribeTables](https://help.aliyun.com/document_detail/141709.html) operation.
         self.table_id = table_id
-        # Name of the data asset table.
+        # The name of the data asset table.
         self.table_name = table_name
 
     def validate(self):

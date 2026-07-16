@@ -16,20 +16,20 @@ class UpdateConversationalAutomationShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The commands.
+        # The list of commands.
         self.commands_shrink = commands_shrink
-        # The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # Specifies whether to enable the welcoming message.
+        # Specifies whether to enable the welcome message.
         self.enable_welcome_message = enable_welcome_message
         self.owner_id = owner_id
-        # The phone number of the enterprise.
+        # The business phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # The opening remarks.
+        # The list of conversation starters.
         self.prompts_shrink = prompts_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

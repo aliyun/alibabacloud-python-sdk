@@ -16,32 +16,29 @@ class DescribeOnceTaskRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
         # The timestamp when the root task ends. Unit: milliseconds.
         self.end_time_query = end_time_query
-        # The number of entries to return on each page. Default value: **20**.
+        # The number of client tasks per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # The ID of the root task.
-        # 
-        # > You must specify at least one of the **TaskType** and **RootTaskId** parameters.
+        # The root task ID.
+        # > **TaskType** and **RootTaskId** cannot both be empty.
         self.root_task_id = root_task_id
-        # The source of the task. Valid values include the following values:
-        # 
-        # *   **schedule**: automatic scheduling of Cloud Security Scanner.
-        # *   **console**: one-click detection in the Cloud Security Scanner console.
+        # The node source. Valid values include but are not limited to:
+        # - **schedule**: automatic scheduling of vulnerability scanning
+        # - **console**: one-click detection from the vulnerability scanning console
         self.source = source
         # The timestamp when the root task starts. Unit: milliseconds.
         self.start_time_query = start_time_query
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
-        # The type of the task. Valid values:
-        # 
-        # *   **CLIENT_PROBLEM_CHECK**: a task of the Security Center agent
-        # *   **CLIENT_DEV_OPS**: an O\\&M task of Cloud Assistant
-        # *   **ASSET_SECURITY_CHECK**: a task of asset information collection
-        # 
-        # > You must specify at least one of the **TaskType** and **RootTaskId** parameters.
+        # The node type. Valid values:
+        # - **VUL_CHECK_TASK**: vulnerability scanning node
+        # - **CLIENT_PROBLEM_CHECK**: client node
+        # - **CLIENT_DEV_OPS**: cloud O&M node
+        # - **ASSET_SECURITY_CHECK**: asset information collection node
+        # > **TaskType** and **RootTaskId** cannot both be empty.
         self.task_type = task_type
 
     def validate(self):

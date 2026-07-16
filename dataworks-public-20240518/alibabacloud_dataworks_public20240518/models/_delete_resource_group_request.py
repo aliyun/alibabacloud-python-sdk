@@ -9,7 +9,7 @@ class DeleteResourceGroupRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The ID of the resource group.
+        # The unique identifier of the resource group.
         # 
         # This parameter is required.
         self.id = id

@@ -10,6 +10,7 @@ class OmniAnswerRequest(DaraModel):
         self,
         body: main_models.OmniSearchQuery = None,
     ):
+        # Search information
         self.body = body
 
     def validate(self):

@@ -15,10 +15,16 @@ class UpdateRspDomainServerProhibitStatusForGatewayRequest(DaraModel):
         delete_status_list: List[main_models.UpdateRspDomainServerProhibitStatusForGatewayRequestDeleteStatusList] = None,
         domain_name: str = None,
     ):
+        # A collection of domain name statuses to add.
         self.add_status_list = add_status_list
+        # A parameter that ensures idempotence.
+        # 
         # This parameter is required.
         self.client_token = client_token
+        # A collection of domain name statuses to delete.
         self.delete_status_list = delete_status_list
+        # The domain name whose serverHold status you want to change.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
 
@@ -83,7 +89,9 @@ class UpdateRspDomainServerProhibitStatusForGatewayRequestDeleteStatusList(DaraM
         status: str = None,
         status_msg: str = None,
     ):
+        # The domain name status.
         self.status = status
+        # The description of the status.
         self.status_msg = status_msg
 
     def validate(self):
@@ -118,7 +126,9 @@ class UpdateRspDomainServerProhibitStatusForGatewayRequestAddStatusList(DaraMode
         status: str = None,
         status_msg: str = None,
     ):
+        # The domain name status.
         self.status = status
+        # The description of the status.
         self.status_msg = status_msg
 
     def validate(self):

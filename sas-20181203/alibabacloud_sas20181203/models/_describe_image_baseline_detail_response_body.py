@@ -11,7 +11,7 @@ class DescribeImageBaselineDetailResponseBody(DaraModel):
         baseline_detail: main_models.DescribeImageBaselineDetailResponseBodyBaselineDetail = None,
         request_id: str = None,
     ):
-        # The details about the image baseline.
+        # The image baseline details.
         self.baseline_detail = baseline_detail
         # The ID of the request.
         self.request_id = request_id
@@ -57,27 +57,29 @@ class DescribeImageBaselineDetailResponseBodyBaselineDetail(DaraModel):
         prompt: str = None,
         result_id: str = None,
     ):
-        # The suggestion for the management of the risk item.
+        # The remediation suggestion for the baseline check risk item.
         self.advice = advice
-        # The alias of the baseline type.
+        # The alias of the baseline classification.
         self.baseline_class_alias = baseline_class_alias
-        # The alias of the baseline check item.
+        # The alias of the baseline sub-item.
         self.baseline_item_alias = baseline_item_alias
-        # The key of the baseline check item.
+        # The key of the baseline sub-item.
         self.baseline_item_key = baseline_item_key
-        # The alias of the baseline.
+        # The alias of the baseline name.
         self.baseline_name_alias = baseline_name_alias
-        # The description of the risk item.
+        # The description of the baseline risk item.
         self.description = description
-        # The risk level of the baseline check item. Valid values:
+        # The risk level of the check item. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: High risk level.
+        # 
+        # - **medium**: Medium risk level.
+        # 
+        # - **low**: Low risk level.
         self.level = level
-        # The issue that is detected by using the baseline.
+        # The baseline issue prompt.
         self.prompt = prompt
-        # The ID of the asynchronous request.
+        # The asynchronous request ID.
         self.result_id = result_id
 
     def validate(self):

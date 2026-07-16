@@ -17,29 +17,29 @@ class ListBindInfoRequest(DaraModel):
         user_id_list: List[str] = None,
         wy_id_list: List[str] = None,
     ):
-        # The app IDs. You can specify 1 to 100 IDs.
+        # The list of application IDs. You can specify 1 to 100 IDs.
         # 
-        # >  If you specify this parameter, only the bindings of the specified apps are returned.
+        # > If you specify this parameter, only the binding information of the specified applications is returned.
         self.app_id_list = app_id_list
-        # The IDs of the delivery groups. You can specify 1 to 100 IDs.
+        # The list of delivery group IDs. You can specify 1 to 100 IDs.
         # 
-        # >  If you specify this parameter, only the bindings of the specified delivery groups are returned.
+        # > If you specify this parameter, only the binding information of the specified delivery groups is returned.
         self.app_instance_group_id_list = app_instance_group_id_list
-        # The IDs of app instances. You can specify 1 to 100 IDs.
+        # The list of application instance IDs. You can specify 1 to 100 IDs.
         # 
-        # >  If you specify this parameter, only the bindings of the specified app instances are returned.
+        # > If you specify this parameter, only the binding information of the specified application instances is returned.
         self.app_instance_id_list = app_instance_id_list
-        # The page number. Default value: `1`. We recommend that you specify this parameter.
+        # The page number of the query results to display. Default value: `1`. Specify this parameter.
         self.page_number = page_number
-        # The number of entries per page. The value cannot be greater than `100`. Default value: `20`. We recommend that you specify this parameter.
+        # The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
         self.page_size = page_size
-        # The user IDs. You can specify 1 to 100 IDs.
+        # The list of user IDs. You can specify 1 to 100 IDs.
         # 
-        # >  If you specify this parameter, only the bindings of the specified users are returned.
+        # > If you specify this parameter, only the binding information of the specified users is returned.
         self.user_id_list = user_id_list
-        # The IDs of the Alibaba Cloud Workspace users. You can specify 1 to 100 IDs.
+        # The list of WUYING user IDs. You can specify 1 to 100 IDs.
         # 
-        # >  If you specify this parameter, only the bindings of the specified Alibaba Cloud Workspace users are returned.
+        # > If you specify this parameter, only the binding information of the specified WUYING users is returned.
         self.wy_id_list = wy_id_list
 
     def validate(self):

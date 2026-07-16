@@ -17,14 +17,14 @@ class GetStatementResultResponseBody(DaraModel):
     ):
         # The result of the asynchronous call.
         self.data = data
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # API execution status, with values as follows:
+        # The execution status of the API operation. Valid values:
         # 
-        # - **false**: Execution failed.
-        # - **true**: Execution succeeded.
+        # - **false**: Failed.
+        # - **true**: Succeeded.
         self.status = status
 
     def validate(self):
@@ -76,7 +76,7 @@ class GetStatementResultResponseBodyData(DaraModel):
     ):
         self.column_metadata = column_metadata
         self.records = records
-        # Total number of entries.
+        # The total number of rows.
         self.total_num_rows = total_num_rows
 
     def validate(self):

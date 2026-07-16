@@ -11,9 +11,9 @@ class DescribePdnsUserInfoResponseBody(DaraModel):
         request_id: str = None,
         user_info: main_models.DescribePdnsUserInfoResponseBodyUserInfo = None,
     ):
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The information about the user.
+        # The user information.
         self.user_info = user_info
 
     def validate(self):
@@ -56,21 +56,21 @@ class DescribePdnsUserInfoResponseBodyUserInfo(DaraModel):
         statistic_switch_status: str = None,
         stopped_service: str = None,
     ):
-        # The enabled access security types.
+        # The enabled secure access type. INSECURE indicates non-encrypted access. SECURE indicates encrypted access.
         self.available_access_security_type = available_access_security_type
-        # The enabled public recursive DNS service.
+        # The public recursive DNS services that are enabled.
         self.available_service = available_service
-        # The configuration ID of the users in public recursive DNS.
+        # The ID of the dedicated configuration for public recursive DNS.
         self.pdns_id = pdns_id
-        # The SecretKey configured for a UDP-based CIDR block.
+        # The SecretKey for configuring the UDP access IP address segment.
         self.secret_key = secret_key
         # The type of the public recursive DNS service.
         self.service_type = service_type
         # The status of the public recursive DNS service.
         self.state = state
-        # The status of the traffic analysis switch for the user in public recursive DNS service.
+        # The status of the switch for public recursive DNS traffic analysis.
         self.statistic_switch_status = statistic_switch_status
-        # The disabled public recursive DNS service.
+        # The public recursive DNS services that are shut down.
         self.stopped_service = stopped_service
 
     def validate(self):

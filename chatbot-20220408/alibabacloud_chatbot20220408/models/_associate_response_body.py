@@ -15,9 +15,13 @@ class AssociateResponseBody(DaraModel):
         request_id: str = None,
         session_id: str = None,
     ):
+        # A list of suggested FAQs.
         self.associate = associate
+        # The response message ID.
         self.message_id = message_id
+        # The request ID.
         self.request_id = request_id
+        # The session ID.
         self.session_id = session_id
 
     def validate(self):
@@ -74,7 +78,9 @@ class AssociateResponseBodyAssociate(DaraModel):
         meta: str = None,
         title: str = None,
     ):
+        # Additional information.
         self.meta = meta
+        # The title of the suggested FAQ.
         self.title = title
 
     def validate(self):

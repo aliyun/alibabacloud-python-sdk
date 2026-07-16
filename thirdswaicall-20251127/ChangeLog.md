@@ -1,3 +1,13 @@
+2026-07-13 Version: 1.1.2
+- Update API QueryTaskConcurrency: add request parameters ApplicationCode.
+- Update API ReadOutboundTaskCallList: add request parameters CallEndTimeBegin.
+- Update API ReadOutboundTaskCallList: add request parameters CallEndTimeEnd.
+- Update API ReadOutboundTaskCallList: add request parameters CallStartTimeBegin.
+- Update API ReadOutboundTaskCallList: add request parameters CallStartTimeEnd.
+- Update API ReadOutboundTaskCallList: add response parameters Body.Records.$.BillingDuration.
+- Update API ReadOutboundTaskCallList: add response parameters Body.Records.$.Remark.
+
+
 2026-05-12 Version: 1.1.1
 - Update API QueryTaskConcurrency: add response parameters Body.Data.AvailableConcurrency.
 - Update API QueryTaskConcurrency: add response parameters Body.Data.MaxConcurrency.

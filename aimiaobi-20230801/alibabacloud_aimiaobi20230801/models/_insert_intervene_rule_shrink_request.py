@@ -10,8 +10,11 @@ class InsertInterveneRuleShrinkRequest(DaraModel):
         agent_key: str = None,
         intervene_rule_config_shrink: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Intervention rule configuration
         self.intervene_rule_config_shrink = intervene_rule_config_shrink
 
     def validate(self):

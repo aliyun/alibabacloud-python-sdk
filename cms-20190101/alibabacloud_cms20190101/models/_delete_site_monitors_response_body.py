@@ -16,15 +16,15 @@ class DeleteSiteMonitorsResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > The value 200 indicates success.
         self.code = code
-        # The information about the site monitoring tasks that were deleted.
+        # The number of affected rows.
         self.data = data
-        # The returned message. If the call was successful, the value success is returned. If the call failed, an error message such as `TaskId not found` is returned.
+        # The returned message. If the request is successful, a success message is returned. If the request fails, the failure reason is returned, such as `TaskId not found`.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. The value true indicates success. The value false indicates failure.
+        # Indicates whether the operation is successful. The value true indicates success. The value false indicates failure.
         self.success = success
 
     def validate(self):
@@ -78,7 +78,7 @@ class DeleteSiteMonitorsResponseBodyData(DaraModel):
         self,
         count: int = None,
     ):
-        # The number of the site monitoring tasks that were deleted.
+        # The number of affected rows.
         self.count = count
 
     def validate(self):

@@ -21,19 +21,31 @@ class ModifyRouterInterfaceAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         router_interface_id: str = None,
     ):
+        # The new description of the router interface. The description must be 2 to 256 characters long and cannot start with `http://` or `https://`.
         self.description = description
+        # The source IP address used for the health check.
         self.health_check_source_ip = health_check_source_ip
+        # The destination IP address used for the health check.
         self.health_check_target_ip = health_check_target_ip
+        # The new name of the router interface. The name must be 2 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.name = name
+        # The ID of the opposite router interface.
         self.opposite_interface_id = opposite_interface_id
+        # The ID of the Alibaba Cloud account that owns the opposite router interface.
         self.opposite_interface_owner_id = opposite_interface_owner_id
+        # The ID of the opposite router.
         self.opposite_router_id = opposite_router_id
+        # The type of the opposite router. Valid values: `VRouter` and `VBR`. The default value is `VRouter`.
         self.opposite_router_type = opposite_router_type
         self.owner_id = owner_id
+        # The ID of the region where the router interface is deployed.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the router interface that you want to modify.
+        # 
         # This parameter is required.
         self.router_interface_id = router_interface_id
 

@@ -14,7 +14,7 @@ class DescribeSensitiveRequestLogResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The access logs.
+        # The list of access logs.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -75,26 +75,27 @@ class DescribeSensitiveRequestLogResponseBodyData(DaraModel):
         sensitive_list: str = None,
         trace_id: str = None,
     ):
+        # The account of the request.
         self.account = account
-        # The API.
+        # The API operation.
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
         # The IP address.
         self.client_ip = client_ip
-        # The number of sensitive data records involved in cross-border data transfer.
+        # The number of outbound sensitive data entries.
         self.count = count
-        # The domain name of the API.
+        # The domain name to which the API operation belongs.
         self.matched_host = matched_host
-        # IP region, formatted as a region code.
+        # The region to which the IP address belongs, in region identifier code format.
         self.remote_country_id = remote_country_id
-        # The time when the request was initiated. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The request time, in UNIX timestamp (UTC) format. Unit: seconds.
         self.request_time = request_time
-        # The details of sensitive data. The value is a string that consists of a JSON struct. The JSON struct contains key-value pairs. In a key-value pair, a key indicates the identifier of a sensitive data type, including built-in and custom types, and a value indicates specific sensitive data.
+        # The sensitive data information. The value is a JSON string constructed from a series of parameters. The key of the JSON object is the sensitive data type identifier, which can be built-in or custom. The value is a list of sensitive data entries.
         # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_list = sensitive_list
-        # The trace ID.
+        # The log ID.
         self.trace_id = trace_id
 
     def validate(self):

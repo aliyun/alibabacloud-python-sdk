@@ -14,15 +14,17 @@ class DescribeVpcZoneRequest(DaraModel):
     ):
         # The environment. Valid values:
         # 
-        # *   **VPC**
-        # *   **TransitRouter**
-        self.environment = environment
-        # The language of the content within the request and response. Valid values:
+        # - **VPC**: VPC
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **TransitRouter**: Transit Router
+        self.environment = environment
+        # The language of the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The UID of the member in Cloud Firewall.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
         # The region ID.
         # 

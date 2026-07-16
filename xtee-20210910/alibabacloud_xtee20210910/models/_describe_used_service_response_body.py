@@ -13,9 +13,9 @@ class DescribeUsedServiceResponseBody(DaraModel):
         request_id: str = None,
         records: List[main_models.DescribeUsedServiceResponseBodyRecords] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Record details
+        # The record details.
         self.records = records
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeUsedServiceResponseBodyRecords(DaraModel):
         name: str = None,
         service_code: str = None,
     ):
-        # English name
+        # The English name.
         self.en_name = en_name
-        # Service name
+        # The service name.
         self.name = name
-        # Service code
+        # The service code.
         self.service_code = service_code
 
     def validate(self):

@@ -10,9 +10,9 @@ class ModifyBlackListStrategyShrinkRequest(DaraModel):
         black_list_strategy_shrink: str = None,
         region_id: str = None,
     ):
-        # Blacklist rule.
+        # The blacklist rule.
         self.black_list_strategy_shrink = black_list_strategy_shrink
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

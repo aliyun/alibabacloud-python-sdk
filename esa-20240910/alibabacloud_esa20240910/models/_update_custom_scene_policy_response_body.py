@@ -18,26 +18,29 @@ class UpdateCustomScenePolicyResponseBody(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
-        # The time when the policy expires.
+        # The end time of the policy.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
         self.end_time = end_time
-        # The policy name.
+        # The name of the policy.
         self.name = name
-        # The IDs of websites associated.
+        # A list of associated site IDs.
+        # 
+        # > This parameter is deprecated. We recommend that you use the `SiteIds` parameter instead.
         self.objects = objects
-        # The policy ID.
+        # The ID of the policy.
         self.policy_id = policy_id
         # The request ID.
         self.request_id = request_id
+        # The associated site IDs. Multiple IDs are separated by a comma (,).
         self.site_ids = site_ids
-        # The time when the policy takes effect.
+        # The start time of the policy.
         # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time is in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
         self.start_time = start_time
-        # The name of the policy template. Valid value:
+        # The name of the template. Valid value:
         # 
-        # *   **promotion**: major events.
+        # - **promotion**: major promotion
         self.template = template
 
     def validate(self):

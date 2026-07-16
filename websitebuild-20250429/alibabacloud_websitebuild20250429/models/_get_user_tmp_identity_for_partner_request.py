@@ -13,10 +13,16 @@ class GetUserTmpIdentityForPartnerRequest(DaraModel):
         service_linked_role: str = None,
         user_id: str = None,
     ):
+        # The purpose of the authorization.
         self.auth_purpose = auth_purpose
+        # The business ID of the customer.
         self.biz_id = biz_id
+        # Specifies whether fuzzy match is supported for port numbers. Set this parameter to **1** to enable fuzzy match. Other values or an empty value indicate that fuzzy match is not supported.
         self.extend = extend
+        # The service-linked role.
+        # > For information about the service-linked roles supported by ApsaraDB RDS, see [Service-linked roles](https://help.aliyun.com/document_detail/342840.html).
         self.service_linked_role = service_linked_role
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeTagsTrendResponseBody(DaraModel):
         result_object: main_models.DescribeTagsTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeTagsTrendResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeTagsTrendResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeTagsTrendResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # xaxis returned data
+        # The x-axis data.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeTagsTrendResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # X-axis data
+        # The x-axis data.
         self.data = data
 
     def validate(self):
@@ -164,9 +164,9 @@ class DescribeTagsTrendResponseBodyResultObjectSeries(DaraModel):
         data: List[main_models.DescribeTagsTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
-        # Category name.
+        # The category name.
         self.name = name
 
     def validate(self):
@@ -211,7 +211,7 @@ class DescribeTagsTrendResponseBodyResultObjectSeriesData(DaraModel):
     ):
         # The number of items in this category.
         self.num = num
-        # Proportion
+        # The proportion.
         self.scale = scale
 
     def validate(self):

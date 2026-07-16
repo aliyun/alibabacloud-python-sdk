@@ -12,18 +12,20 @@ class RemoveUserFromDesktopGroupRequest(DaraModel):
         desktop_group_id: str = None,
         desktop_group_ids: List[str] = None,
         end_user_ids: List[str] = None,
+        org_id: str = None,
         region_id: str = None,
         simple_user_group_id: str = None,
         user_group_name: str = None,
         user_ou_path: str = None,
     ):
-        # The ID of the cloud computer share.
+        # The ID of the shared cloud desktop from which you revoke the user’s permission.
         self.desktop_group_id = desktop_group_id
-        # The IDs of the cloud computer shares.
+        # A list of shared desktop group IDs.
         self.desktop_group_ids = desktop_group_ids
-        # The IDs of the authorized users that you want to remove.
+        # The list of authorized users to remove.
         self.end_user_ids = end_user_ids
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        self.org_id = org_id
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -47,6 +49,9 @@ class RemoveUserFromDesktopGroupRequest(DaraModel):
 
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
+
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -72,6 +77,9 @@ class RemoveUserFromDesktopGroupRequest(DaraModel):
 
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
+
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

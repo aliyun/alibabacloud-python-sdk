@@ -10,7 +10,7 @@ class GetApplicationProvisioningConfigRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id

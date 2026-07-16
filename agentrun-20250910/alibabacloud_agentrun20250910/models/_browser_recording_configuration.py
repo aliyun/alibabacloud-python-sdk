@@ -11,7 +11,9 @@ class BrowserRecordingConfiguration(DaraModel):
         enabled: bool = None,
         oss_location: main_models.BrowserOssLocation = None,
     ):
+        # Is recording enabled
         self.enabled = enabled
+        # OSS storage location
         self.oss_location = oss_location
 
     def validate(self):

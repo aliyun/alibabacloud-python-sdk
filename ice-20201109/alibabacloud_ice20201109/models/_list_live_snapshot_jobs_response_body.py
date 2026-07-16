@@ -21,13 +21,13 @@ class ListLiveSnapshotJobsResponseBody(DaraModel):
         self.job_list = job_list
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of jobs to return per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The sorting order of the jobs by creation time.
+        # The sort order for the job list. For example, "desc" indicates descending order.
         self.sort_by = sort_by
-        # The total number of entries returned.
+        # The total number of jobs found.
         self.total_count = total_count
 
     def validate(self):
@@ -100,27 +100,21 @@ class ListLiveSnapshotJobsResponseBodyJobList(DaraModel):
         template_name: str = None,
         time_interval: int = None,
     ):
-        # The time when the template was created.
+        # The creation time of the job.
         self.create_time = create_time
         # The job ID.
         self.job_id = job_id
-        # The name of the job.
+        # The job name.
         self.job_name = job_name
-        # The output information.
+        # Details of the snapshot output.
         self.snapshot_output = snapshot_output
-        # The state of the job.
-        # 
-        # Valid values:
-        # 
-        # *   init: The job is not started.
-        # *   paused: The job is paused.
-        # *   started: The job is in progress.
+        # The job status.
         self.status = status
         # The template ID.
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
-        # The interval between two adjacent snapshots. Unit: seconds.
+        # The interval between snapshots, in seconds.
         self.time_interval = time_interval
 
     def validate(self):
@@ -194,11 +188,11 @@ class ListLiveSnapshotJobsResponseBodyJobListSnapshotOutput(DaraModel):
         endpoint: str = None,
         storage_type: str = None,
     ):
-        # The bucket of the output endpoint. If the storage type is set to oss, the OSS bucket is returned.
+        # The name of the OSS Bucket.
         self.bucket = bucket
-        # The output endpoint. If the storage type is set to oss, the Object Storage Service (OSS) domain name is returned.
+        # The domain name of the OSS endpoint.
         self.endpoint = endpoint
-        # The storage type. The value can only be oss.
+        # The storage type. Only Object Storage Service (OSS) is supported.
         self.storage_type = storage_type
 
     def validate(self):

@@ -21,42 +21,52 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries to return on each page. Valid values:**1** to **50**. Default value: **50**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - If this is the first query or no next query exists, you do not need to set this parameter.
+        # 
+        # - If a next query exists, set the value to the **NextToken** value returned in the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the resource.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. You can specify up to 20 resource IDs.
+        # The IDs of the resources. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Valid values:
+        # The type of the resource. Valid values:
+        # - **VPC**: VPC instance.
+        # - **VSWITCH**: vSwitch instance.
+        # - **ROUTETABLE**: route table instance.
+        # - **EIP**: Elastic IP Address (EIP) instance.
+        # - **VPNGATEWAY**: VPN gateway instance.
+        # - **NATGATEWAY**: NAT gateway instance.
+        # - **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan instance.
+        # - **PREFIXLIST**: prefix list instance.
+        # - **PUBLICIPADDRESSPOOL**: IP address pool instance.
+        # - **IPV4GATEWAY**: IPv4 gateway instance.
+        # - **IPV6GATEWAY**: IPv6 gateway instance.
+        # - **NETWORKACL**: network ACL instance.
+        # - **TRAFFICMIRRORFILTER**: traffic mirroring filter instance.
+        # - **TRAFFICMIRRORSESSION**: traffic mirroring session instance.
+        # - **FLOWLOG**: flow log instance.
+        # - **HAVIP**: high-availability virtual IP address (HAVIP) instance.
+        # - **DHCPOPTIONSSET**: DHCP options set instance.
+        # - **GATEWAYENDPOINT**: gateway endpoint instance.
+        # - **IPV6ADDRESS**: IPv6 address instance.
         # 
-        # *   **VPC**
-        # *   **VSWITCH**
-        # *   **ROUTETABLE**
-        # *   **EIP**
-        # *   **VpnGateway**
-        # *   **NATGATEWAY**
-        # *   **COMMONBANDWIDTHPACKAGE**: EIP bandwidth plan
+        # > The resource type value is case-insensitive.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag value. You can specify up to 20 tag values. It can be an empty string.
-        # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
-        # 
-        # >  You must specify at least one of **ResourceId.N** and **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
+        # The tag information.
         self.tag = tag
 
     def validate(self):
@@ -147,17 +157,17 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The key of the tag. You can specify up to 20 tag keys.
         # 
-        # The key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+        # > You must specify at least one of the **ResourceId.N** and **Tag.N** (**Tag.N.Key** and **Tag.N.Value**) parameters.
         self.key = key
-        # The value of the tag that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The value of the tag. You can specify up to 20 tag values.
         # 
-        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         # 
-        # >  Specify at least one of the **ResourceId.N** and **Tag.N** parameters (**Tag.N.Key** and **Tag.N.Value**).
+        # > You must specify at least one of the **ResourceId.N** and **Tag.N** (**Tag.N.Key** and **Tag.N.Value**) parameters.
         self.value = value
 
     def validate(self):

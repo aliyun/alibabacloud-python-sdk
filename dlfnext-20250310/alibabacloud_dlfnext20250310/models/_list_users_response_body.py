@@ -13,7 +13,9 @@ class ListUsersResponseBody(DaraModel):
         next_page_token: str = None,
         users: List[main_models.User] = None,
     ):
+        # The pagination token used to retrieve the next page of results. A null value indicates that this is the last page of results.
         self.next_page_token = next_page_token
+        # The users.
         self.users = users
 
     def validate(self):

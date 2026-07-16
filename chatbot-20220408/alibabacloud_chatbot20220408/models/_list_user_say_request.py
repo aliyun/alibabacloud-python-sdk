@@ -14,13 +14,21 @@ class ListUserSayRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # The keywords used to filter user says. The query returns only user says that contain these keywords.
         self.content = content
+        # The ID of the bot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The page number. The default value is 1.
         self.page_number = page_number
+        # The number of entries per page. The default value is 10. The maximum value is 1000.
         self.page_size = page_size
 
     def validate(self):

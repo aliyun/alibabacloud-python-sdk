@@ -15,11 +15,17 @@ class DescribeScriptVoiceConfigResponseBody(DaraModel):
         script_voice_config: main_models.DescribeScriptVoiceConfigResponseBodyScriptVoiceConfig = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The details of the script voice configuration.
         self.script_voice_config = script_voice_config
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -85,12 +91,23 @@ class DescribeScriptVoiceConfigResponseBodyScriptVoiceConfig(DaraModel):
         source: str = None,
         type: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The script content.
         self.script_content = script_content
+        # The ID of the script.
         self.script_id = script_id
+        # The ID of the script voice configuration.
         self.script_voice_config_id = script_voice_config_id
+        # The script waveform relation data. Returned only when `Type` is `WAVEFORM`.
         self.script_waveform_relation = script_waveform_relation
+        # The source of the script.
         self.source = source
+        # The type of the voice configuration. Valid values:
+        # 
+        # - `WAVEFORM`: A recording.
+        # 
+        # - `TTS`: Text-to-speech.
         self.type = type
 
     def validate(self):

@@ -10,8 +10,9 @@ class CreateCostRuleResponseBody(DaraModel):
         cost_rule_id: str = None,
         request_id: str = None,
     ):
+        # The cost rule ID.
         self.cost_rule_id = cost_rule_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

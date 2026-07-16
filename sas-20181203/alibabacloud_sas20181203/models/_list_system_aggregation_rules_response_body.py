@@ -14,11 +14,11 @@ class ListSystemAggregationRulesResponseBody(DaraModel):
         page_info: main_models.ListSystemAggregationRulesResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the details about the aggregation types.
+        # The result list.
         self.aggregation_list = aggregation_list
-        # The pagination information.
+        # The pagination information of the query result.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListSystemAggregationRulesResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -117,11 +117,11 @@ class ListSystemAggregationRulesResponseBodyAggregationList(DaraModel):
         name: str = None,
         rule_count: int = None,
     ):
-        # The ID of the aggregation type.
+        # The ID of the rule cluster.
         self.id = id
-        # The name of the aggregation type.
+        # The name of the rule cluster.
         self.name = name
-        # The number of rules that are of the aggregation type.
+        # The number of rules in the cluster.
         self.rule_count = rule_count
 
     def validate(self):

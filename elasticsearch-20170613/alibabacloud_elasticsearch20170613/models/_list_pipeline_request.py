@@ -11,11 +11,11 @@ class ListPipelineRequest(DaraModel):
         pipeline_id: str = None,
         size: int = None,
     ):
-        # The header of the response.
+        # The page number of the current page for a paged query. Valid values: 1 to 200. Default value: 1.
         self.page = page
-        # The ID of the request.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The total number of returned entries.
+        # The number of pipelines per page for a paged query. Valid values: 1 to 200.
         self.size = size
 
     def validate(self):

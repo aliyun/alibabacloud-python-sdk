@@ -17,11 +17,21 @@ class QueryAiCallTaskPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The details of the tasks.
         self.data = data
+        # The error message. This parameter is returned only if the call fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +94,13 @@ class QueryAiCallTaskPageResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The tasks.
         self.list = list
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -161,27 +175,47 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
         total_call_count: int = None,
         total_count: int = None,
     ):
+        # The agent ID.
         self.agent_id = agent_id
+        # The agent name.
         self.agent_name = agent_name
         self.application_code = application_code
         self.application_name = application_name
+        # The number of calls in progress.
         self.calling_count = calling_count
+        # The completion rate of the task.
         self.complete_rate = complete_rate
+        # The number of concurrent tasks.
         self.concurrent_count = concurrent_count
+        # The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The number of calls made on the current day.
         self.day_call_count = day_call_count
+        # The connection rate of the current day. This is the number of connected calls on the current day divided by the total number of calls on the current day (`DayCallCount`).
         self.day_connect_rate = day_connect_rate
+        # The number of data entries imported on the current day.
         self.day_import_count = day_import_count
+        # The total number of failed tasks.
         self.failed_count = failed_count
+        # The historical connection rate. This is the historical number of connected calls divided by the total number of calls (`TotalCallCount`).
         self.history_connect_rate = history_connect_rate
+        # The time when the task actually starts. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.real_start_time = real_start_time
+        # The reason why the task failed to start.
         self.start_failed_reason = start_failed_reason
+        # The time when the task is scheduled to start. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
+        # The status of the task.
         self.status = status
+        # The total number of successful tasks.
         self.succeed_count = succeed_count
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The total number of calls.
         self.total_call_count = total_call_count
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):

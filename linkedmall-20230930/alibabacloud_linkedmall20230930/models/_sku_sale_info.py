@@ -20,18 +20,29 @@ class SkuSaleInfo(DaraModel):
         sku_status: str = None,
         title: str = None,
     ):
+        # Reason for not being sellable
         self.can_not_sell_reason = can_not_sell_reason
+        # Indicates whether the SKU is sellable
         self.can_sell = can_sell
+        # Area code
         self.division_code = division_code
+        # Blur inventory availability
         self.fuzzy_quantity = fuzzy_quantity
+        # Strikethrough price, in cents
         self.mark_price = mark_price
+        # Distributor purchase price, in cents
         self.price = price
+        # Product ID
         self.product_id = product_id
+        # Available inventory
         self.quantity = quantity
+        # Shop ID
         self.shop_id = shop_id
         # skuId
         self.sku_id = sku_id
+        # SKU control status
         self.sku_status = sku_status
+        # SKU title
         self.title = title
 
     def validate(self):

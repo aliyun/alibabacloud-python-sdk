@@ -38,68 +38,79 @@ class CreateWuyingServerRequest(DaraModel):
         virtual_node_pool_id: str = None,
         wuying_server_name: str = None,
     ):
-        # Quantity.
+        # The number of workstations to create.
         self.amount = amount
-        # Auto payment.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Auto-renewal.
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
-        # bandwidth value, the NetworkStrategyType is valid for DirectIp. Unit: Mbps, range 2~100
+        # The bandwidth value. This parameter takes effect only when NetworkStrategyType is set to DirectIp. Unit: Mbit/s. Valid values: 2 to 100.
         self.bandwidth = bandwidth
-        # Region.
+        # The region ID.
         self.biz_region_id = biz_region_id
         # The billing method.
-        # 
-        # Valid values:
-        # 
-        # *   PrePaid: subscription
         self.charge_type = charge_type
-        # The list of data disks.
+        # The list of data cloud disks.
         self.data_disk = data_disk
+        # The hostname. The following limits apply:
+        # 
+        # - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive periods or hyphens are not allowed.
+        # 
+        # - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+        # 
+        # - Linux workstations:
+        # 
+        #   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment separated by a period can contain uppercase and lowercase letters, digits, and hyphens (-).
+        # 
+        #   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the ECS instance ID is `i-123abc****`, the hostname is `k8s-i-123abc****`.
+        # 
+        # - When you create multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` format to assign sequential hostnames. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+        # 
+        #   - `name_prefix`: the prefix of the hostname.
+        # 
+        #   - `[begin_number,bits]`: the sequential number in the hostname.
+        # 
+        #     - `begin_number`: the starting number. Valid values: 0 to 999999. Default value: 0. If the value is invalid, 0 is used.
+        # 
+        #     - `bits`: the number of digits. Valid values: 1 to 6. Default value: 6. If the value is invalid, 6 is used.
+        # 
+        #   - `name_suffix`: the suffix of the hostname.
         self.host_name = host_name
-        # Idempotence token to ensure operation uniqueness
+        # The idempotence token that ensures the uniqueness of the operation.
         self.idempotence_token = idempotence_token
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
         self.max_price = max_price
-        # The type of the network policy (in invitational preview).
+        # The network policy type (in invitational preview).
         self.network_strategy_type = network_strategy_type
-        # The office network IDs.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # Workstation login password.
+        # The logon password of the workstation.
         self.password = password
-        # The subscription period.
+        # The subscription duration.
         self.period = period
-        # The time unit.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
+        # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The ID of the discount.
+        # The promotion ID.
         # 
-        # >  If PromotionId is set, it will try to apply the corresponding discount.
+        # 
+        # > If PromotionId is specified, the corresponding discount is applied.
         self.promotion_id = promotion_id
         self.saving_plan_id = saving_plan_id
-        # Workstation specifications.
+        # The workstation instance type.
         self.server_instance_type = server_instance_type
         self.server_port_range = server_port_range
         self.sub_pay_type = sub_pay_type
-        # The system disk category.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_auto.
+        # The type of the system cloud disk.
         self.system_disk_category = system_disk_category
-        # The performance level (PL) of the system disk.
+        # The performance level of the system cloud disk.
         self.system_disk_performance_level = system_disk_performance_level
-        # The size of the system disk. Unit: GB.
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
-        # The list of office network vSwitches.
+        # The list of vSwitches in the office network.
         self.v_switch_ids = v_switch_ids
         self.virtual_node_pool_id = virtual_node_pool_id
-        # The name of the workstation. The numeric suffix is automatically added when multiple workstations are created.
+        # The workstation name. When you create multiple workstations, a numeric suffix is automatically appended.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -293,15 +304,11 @@ class CreateWuyingServerRequestDataDisk(DaraModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The data disk category.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_auto.
+        # The type of the data cloud disk.
         self.data_disk_category = data_disk_category
-        # The PL of the data disk.
+        # The performance level of the data cloud disk.
         self.data_disk_performance_level = data_disk_performance_level
-        # The data disk size.
+        # The size of the data cloud disk.
         self.data_disk_size = data_disk_size
 
     def validate(self):

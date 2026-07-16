@@ -10,11 +10,13 @@ class GetCAInstanceStatusRequest(DaraModel):
         identifier: str = None,
         instance_id: str = None,
     ):
-        # The unique identifier of the certificate.
-        self.identifier = identifier
-        # The ID of the private CA instance.
+        # The unique identifier of the client certificate or server-side certificate to query.
         # 
-        # >  After you purchase a private CA instance by using the [SSL Certificates Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist), you can click **Details** for the private CA instance on the **Private Certificates** page to query the ID of the private CA instance.
+        # > Call [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) to query the unique identifiers of all client certificates and server-side certificates.
+        self.identifier = identifier
+        # The ID of the private CA instance to query.
+        # 
+        # > After you purchase a private CA instance in the [CAS console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist), you can go to the **Private Certificates** page and view the **details** of the instance to obtain its ID.
         self.instance_id = instance_id
 
     def validate(self):

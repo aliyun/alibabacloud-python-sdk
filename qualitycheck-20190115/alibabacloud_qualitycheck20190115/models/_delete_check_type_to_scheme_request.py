@@ -10,7 +10,9 @@ class DeleteCheckTypeToSchemeRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # A JSON string that contains the custom parameters for the operation. For more information, see the **jsonStr properties** section below.
         self.json_str = json_str
 
     def validate(self):

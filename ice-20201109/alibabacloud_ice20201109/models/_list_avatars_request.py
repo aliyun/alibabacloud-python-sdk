@@ -11,14 +11,17 @@ class ListAvatarsRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # *   The type of the digital human.
-        # *   2DAvatar
+        # - The type of the digital human.
+        # 
+        # - 2DAvatar
         self.avatar_type = avatar_type
-        # *   The page number.
-        # *   Default value: 1.
+        # - The page number.
+        # 
+        # - Default value: 1.
         self.page_no = page_no
-        # *   The number of entries per page.
-        # *   Default value: 10.
+        # - The number of entries per page.
+        # 
+        # - Default value: 10.
         self.page_size = page_size
 
     def validate(self):

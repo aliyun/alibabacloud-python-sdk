@@ -20,31 +20,47 @@ class SubmitSmarttagJobRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
-        # The video description. The description can contain letters, digits, and hyphens (-) and cannot start with a special character. The description can be up to 1 KB in length.
+        # The description of the video content can contain Chinese characters, English letters, digits, and hyphens (-). It cannot start with a special character and must not exceed 1 KB.
         self.content = content
-        # This parameter is discontinued.
+        # Deprecated.
         self.content_addr = content_addr
-        # This parameter is discontinued.
+        # Deprecated.
         self.content_type = content_type
-        # The job input.
+        # The input file for the job.
         self.input = input
-        # The URL for receiving callbacks. Set the value to an HTTP URL or an HTTPS URL.
+        # The callback URL. Only HTTP and HTTPS URLs are supported.
         self.notify_url = notify_url
-        # The additional request parameters. The value is a JSON string. Example: {"needAsrData":true, "needOcrData":false}. The following parameters are supported:
+        # Additional request parameters, specified as a JSON string. For example: `{"needAsrData":true, "needOcrData":false}`.
         # 
-        # *   needAsrData: specifies whether to query the automatic speech recognition (ASR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
-        # *   needOcrData: specifies whether to query the optical character recognition (OCR) data. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
-        # *   needMetaData: specifies whether to query the metadata. The value is of the BOOLEAN type. Default value: false. Valid values: true and false.
-        # *   nlpParams: the input parameters of the natural language processing (NLP) operator. The value is a JSON object. This parameter is empty by default, which indicates that the NLP operator is not used. For more information, see the "nlpParams" section of this topic.
+        # - `needAsrData`: Specifies whether to include the raw Automatic Speech Recognition (ASR) results in the analysis output. The default is `false`.
+        # 
+        # - `needOcrData`: Specifies whether to include the raw Optical Character Recognition (OCR) results in the analysis output. The default is `false`.
+        # 
+        # - `needMetaData`: Specifies whether to include metadata in the analysis output. The default is `false`.
+        # 
+        # - `nlpParams`: A JSON object that specifies the input parameters for the Natural Language Processing (NLP) operator. If left empty, the operator is not used. For details, see the `nlpParams` table below.
         self.params = params
         # The scheduling configurations.
         self.schedule_config = schedule_config
+        # Dynamic parameters for the job, which temporarily override or supplement the base template specified by `TemplateId`. The service merges the dynamic and template parameters to generate the final configuration for the current job and validates it before execution.
+        # 
+        # - Merge rules:
+        # 
+        # 1. Values in the request override corresponding values in the template.
+        # 
+        # 2. Fields in the request that do not exist in the template are added to the configuration.
+        # 
+        # - Currently supported dynamic fields:
+        # 
+        # 1. `FaceCategoryIds`: A list of face library IDs for recognition, separated by commas (,). You can include both system and custom library IDs.
+        # 
+        # - Note: These dynamic parameters affect only the current job and do not modify the template itself.
         self.template_config = template_config
-        # The ID of the template that specifies the analysis algorithms. For more information about template operations, see [Configure templates](https://help.aliyun.com/document_detail/445702.html).
+        # The ID of the template that specifies the analysis algorithms to use.
         self.template_id = template_id
-        # The video title. The title can contain letters, digits, and hyphens (-) and cannot start with a special character. The title can be up to 256 bytes in length.
+        # The video title can contain Chinese characters, English letters, digits, and hyphens (-). It cannot start with a special character and must not exceed 256 bytes.
         self.title = title
-        # The data to be passed through Simple Message Queue (SMQ, formerly MNS) during callbacks. The data can be up to 1 KB in length. For more information about how to specify an SMQ queue for receiving callbacks, see UpdatePipeline.
+        # Custom data to include in the callback. If you use Message Service (MNS) for callbacks, this data is included in the message. The maximum length is 1 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -138,9 +154,11 @@ class SubmitSmarttagJobRequestScheduleConfig(DaraModel):
         pipeline_id: str = None,
         priority: str = None,
     ):
-        # The ID of the ApsaraVideo Media Processing (MPS) queue to which you want to submit the smart tagging job. The MPS queue is bound to an SMQ queue. This parameter specifies the default MPS queue. By default, an MPS queue can process a maximum of two concurrent smart tagging jobs. To increase the limit, submit a ticket.
+        # The ID of the pipeline. Pipelines separate business workloads and bind message notifications.
+        # 
+        # If you do not specify this parameter, the default pipeline is used. The default pipeline has a concurrency of 2. To increase the concurrency, submit a ticket.
         self.pipeline_id = pipeline_id
-        # The job priority. This parameter is not implemented. You can leave this parameter empty or enter a random value.
+        # The priority of the job. This feature is not yet implemented. You can leave this parameter empty or specify any value.
         self.priority = priority
 
     def validate(self):
@@ -175,17 +193,19 @@ class SubmitSmarttagJobRequestInput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # If Type is set to OSS, specify an OSS path. Example: OSS://test-bucket/video/202208/test.mp4.
+        # - If you set the `Type` parameter to `OSS`, specify the OSS URL of the media file. Example: `OSS://test-bucket/video/202208/test.mp4`.
         # 
-        # If Type is set to Media, specify a media asset ID. Example: c5c62d8f0361337cab312dce8e77dc6d.
+        # - If you set the `Type` parameter to `Media`, specify the media ID. Example: `c5c62d8f0361337cab312dce8e77dc6d`.
         # 
-        # If Type is set to URL, specify an HTTP URL. Example: https://zc-test.oss-cn-shanghai.aliyuncs.com/test/unknowFace.mp4.
+        # - If you set the `Type` parameter to `URL`, specify the HTTP or HTTPS URL of the media file. Example: `https://zc-test.oss-cn-shanghai.aliyuncs.com/test/unknowFace.mp4`.
         self.media = media
-        # The media type. Valid values:
+        # The type of the input media file. Valid values:
         # 
-        # *   OSS
-        # *   Media
-        # *   URL
+        # - OSS
+        # 
+        # - Media
+        # 
+        # - URL
         self.type = type
 
     def validate(self):

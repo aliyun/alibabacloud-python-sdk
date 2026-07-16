@@ -10,8 +10,11 @@ class CreateYikeProductionRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The title of the Yike production.
+        # 
         # This parameter is required.
         self.title = title
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

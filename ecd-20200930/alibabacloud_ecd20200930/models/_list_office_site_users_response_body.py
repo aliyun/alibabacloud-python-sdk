@@ -14,12 +14,12 @@ class ListOfficeSiteUsersResponseBody(DaraModel):
         request_id: str = None,
         users: List[main_models.ListOfficeSiteUsersResponseBodyUsers] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token to start the next query. If this parameter is empty, all results have been returned.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The usernames of the AD accounts.\\
-        # If the only Administrator and Guest users exist in the enterprise AD directory, an empty User array is returned.
+        # An array that consists of the AD accounts.<br>
+        # If the enterprise AD contains only the Administrator and Guest users, an empty Users array is returned.<br>
         self.users = users
 
     def validate(self):

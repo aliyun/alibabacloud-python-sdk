@@ -13,9 +13,9 @@ class DescribeVerifyPersonasProvinceStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Query result.
+        # The query result.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObject(DaraModel
         all_user_cnt: int = None,
         items: List[main_models.DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems] = None,
     ):
-        # Total number of devices.
+        # The total number of devices.
         self.all_user_cnt = all_user_cnt
-        # Data items.
+        # The data items.
         self.items = items
 
     def validate(self):
@@ -98,11 +98,11 @@ class DescribeVerifyPersonasProvinceStatisticsResponseBodyResultObjectItems(Dara
         province_name: str = None,
         province_rate: str = None,
     ):
-        # Total number of devices in the province.
+        # The total number of devices in the province.
         self.province_cnt = province_cnt
-        # Province name.
+        # The province name.
         self.province_name = province_name
-        # Percentage of the total for this province.
+        # The percentage of the province relative to the total.
         self.province_rate = province_rate
 
     def validate(self):

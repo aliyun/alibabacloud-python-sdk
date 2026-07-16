@@ -8,10 +8,12 @@ class CreateWorkspaceInput(DaraModel):
     def __init__(
         self,
         description: str = None,
+        enable_preset_model: bool = None,
         name: str = None,
         resource_group_id: str = None,
     ):
         self.description = description
+        self.enable_preset_model = enable_preset_model
         self.name = name
         self.resource_group_id = resource_group_id
 
@@ -26,6 +28,9 @@ class CreateWorkspaceInput(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.enable_preset_model is not None:
+            result['enablePresetModel'] = self.enable_preset_model
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -38,6 +43,9 @@ class CreateWorkspaceInput(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('enablePresetModel') is not None:
+            self.enable_preset_model = m.get('enablePresetModel')
 
         if m.get('name') is not None:
             self.name = m.get('name')

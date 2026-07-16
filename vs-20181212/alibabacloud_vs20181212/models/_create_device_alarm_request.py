@@ -17,20 +17,45 @@ class CreateDeviceAlarmRequest(DaraModel):
         start_time: int = None,
         sub_alarm: int = None,
     ):
+        # The Alarm Metric. Valid values:
+        # 
+        # - 0: other
+        # - 1: motion detection alerting
+        # - 2: intelligent alerting
+        # - 3: switch alerting
+        # - 4: video loss alerting.
+        # 
         # This parameter is required.
         self.alarm = alarm
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The end time. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The expiration time of the media upload URL. Unit: seconds. Default value: 60.
         self.expire = expire
+        # The device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The media object type. Valid values:
+        # - 0: none
+        # - 1: JPEG image
+        # - 2: video
+        # - 3: GIF image.
+        # 
         # This parameter is required.
         self.object_type = object_type
         self.owner_id = owner_id
+        # The start time. Unit: milliseconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The alert subtype.
+        # 
         # This parameter is required.
         self.sub_alarm = sub_alarm
 

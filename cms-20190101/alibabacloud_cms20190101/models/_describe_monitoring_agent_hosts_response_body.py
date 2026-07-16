@@ -20,27 +20,28 @@ class DescribeMonitoringAgentHostsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the call is successful.
+        # > A status code of 200 indicates a successful response.
         self.code = code
         self.hosts = hosts
         # The error message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of returned pages.
+        # The number of pages.
         self.page_total = page_total
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries.
         self.total = total
 
     def validate(self):

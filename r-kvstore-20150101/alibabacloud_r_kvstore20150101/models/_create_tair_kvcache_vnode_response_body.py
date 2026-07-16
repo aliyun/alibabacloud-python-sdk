@@ -16,21 +16,21 @@ class CreateTairKVCacheVNodeResponseBody(DaraModel):
         vk_name: str = None,
         zone_id: str = None,
     ):
-        # The ID of the Tair VNode instance.
+        # The instance ID of the virtual node.
         self.instance_id = instance_id
-        # The ID of the VNode.
+        # The ID of the virtual node.
         self.node_id = node_id
         # The order ID.
         self.order_id = order_id
-        # The ID of the region where the instance resides.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the VCluster.
+        # The ID of the virtual cluster.
         self.vcluster_id = vcluster_id
-        # The ID of the VCluster instance.
+        # The instance ID of the virtual cluster.
         self.vk_name = vk_name
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

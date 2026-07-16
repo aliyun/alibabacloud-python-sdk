@@ -40,38 +40,81 @@ class SearchProductsRequest(DaraModel):
         tax_rate: str = None,
         trade_mode_and_credit: str = None,
     ):
+        # Brand name
         self.brand_name = brand_name
+        # Collection of category IDs
         self.category_ids = category_ids
+        # Creation end time
         self.create_end_time = create_end_time
+        # Creation start time
         self.create_start_time = create_start_time
+        # Upper limit of distribution purchase price
         self.distribution_high_price = distribution_high_price
+        # Upper limit of distribution premium rate
         self.distribution_high_price_ratio = distribution_high_price_ratio
+        # Lower limit of distribution purchase price
         self.distribution_low_price = distribution_low_price
+        # Lower limit of distribution premium rate
         self.distribution_low_price_ratio = distribution_low_price_ratio
+        # Upper limit of strikethrough price
         self.high_mark_price = high_mark_price
+        # Upper limit of suggested retail price
         self.high_price = high_price
+        # Whether the product is in inventory
         self.in_group = in_group
+        # End time of the product’s entry period.
         self.in_group_end_time = in_group_end_time
+        # Inventory start time
         self.in_group_start_time = in_group_start_time
+        # Inventory risk level
         self.inventory_risk_level = inventory_risk_level
+        # LM product ID
         self.lm_item_id = lm_item_id
+        # Lower limit of strikethrough price
         self.low_mark_price = low_mark_price
+        # Lower limit of suggested retail price
         self.low_price = low_price
+        # Modification end time
         self.modify_end_time = modify_end_time
+        # Modification start time
         self.modify_start_time = modify_start_time
+        # Sort field
+        # 
+        # > - Used in combination with the sort direction field
         self.order_by = order_by
+        # Sort direction
+        # 
+        # > - Used in combination with the sort field
         self.order_direction = order_direction
+        # Page number
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Page size
+        # 
+        # > - Maximum of 20 items per page
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Source platform
         self.platform = platform
+        # Product ID
         self.product_id = product_id
+        # Product name
         self.product_name = product_name
+        # Product status
         self.product_status = product_status
+        # Purchaser ID
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
+        # Tax rate
+        # 
+        # > - Supports combining multiple tax rate enumeration values as request parameters. Use commas to separate them, for example: Rate0,Rate1.
+        # >
+        # > - HasRate cannot be combined with other enumeration values as request parameters.
         self.tax_rate = tax_rate
+        # Sales pattern
         self.trade_mode_and_credit = trade_mode_and_credit
 
     def validate(self):

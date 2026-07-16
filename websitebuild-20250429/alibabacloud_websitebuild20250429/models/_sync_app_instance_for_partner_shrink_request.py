@@ -13,10 +13,15 @@ class SyncAppInstanceForPartnerShrinkRequest(DaraModel):
         source_biz_id: str = None,
         source_type: str = None,
     ):
+        # The website instance object data.
         self.app_instance_shrink = app_instance_shrink
+        # The type of the system event. Valid values: CREATE, UPDATE, and COMPLETE.
         self.event_type = event_type
+        # The employee ID of the operator.
         self.operator = operator
+        # The source business ID.
         self.source_biz_id = source_biz_id
+        # The source. Set this parameter to MARKET_CLOUD_DREAM.
         self.source_type = source_type
 
     def validate(self):

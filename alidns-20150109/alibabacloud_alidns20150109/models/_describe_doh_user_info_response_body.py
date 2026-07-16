@@ -12,13 +12,13 @@ class DescribeDohUserInfoResponseBody(DaraModel):
         request_id: str = None,
         sub_domain_count: int = None,
     ):
-        # The number of accessed domains.
+        # The number of added domain names.
         self.domain_count = domain_count
-        # The ID of the Alibaba Cloud public DNS user.
+        # The ID of the Public DNS user.
         self.pdns_id = pdns_id
         # The ID of the request.
         self.request_id = request_id
-        # The number of accessed subdomains.
+        # The number of added subdomains.
         self.sub_domain_count = sub_domain_count
 
     def validate(self):

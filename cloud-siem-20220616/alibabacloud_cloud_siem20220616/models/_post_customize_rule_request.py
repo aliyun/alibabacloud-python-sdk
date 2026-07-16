@@ -29,63 +29,71 @@ class PostCustomizeRuleRequest(DaraModel):
         rule_threshold: str = None,
         threat_level: str = None,
     ):
-        # The risk type.
+        # The threat type.
         self.alert_type = alert_type
-        # The internal code of the risk type.
+        # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
-        # att&ck.
+        # The ATT\\&CK technique.
         self.att_ck = att_ck
-        # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
+        # The extended information for event generation. This parameter is returned only when EventTransferType is set to allToSingle. The value indicates the length and unit of the alert aggregation window.
         self.event_transfer_ext = event_transfer_ext
-        # Specifies whether to convert an alert to an event. Valid values:
+        # Specifies whether to convert alerts into events. Valid values:
         # 
-        # *   0: no
-        # *   1: yes
+        # - 0: no
+        # 
+        # - 1: yes
         self.event_transfer_switch = event_transfer_switch
         # The event generation method. Valid values:
         # 
-        # *   default: The default method is used.
-        # *   singleToSingle: The system generates an event for each alert.
-        # *   allToSingle: The system generates an event for alerts within a period of time.
+        # - default: the default method
+        # 
+        # - singleToSingle: An event is generated for each alert.
+        # 
+        # - allToSingle: An event is generated for all alerts in a period.
         self.event_transfer_type = event_transfer_type
-        # The ID of the rule.
+        # The ID of the custom rule.
         self.id = id
         # The log source of the rule.
         self.log_source = log_source
-        # The internal code of the log source.
+        # The Medusa code of the log source.
         self.log_source_mds = log_source_mds
         # The log type of the rule.
         self.log_type = log_type
-        # The internal code of the log type.
+        # The Medusa code of the log type.
         self.log_type_mds = log_type_mds
-        # The window length of the rule.
+        # The length of the rule window.
         self.query_cycle = query_cycle
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the data management center of Threat Analysis is located. Select the region where your assets are located. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: assets in the Chinese mainland and China (Hong Kong)
+        # 
+        # - ap-southeast-1: assets outside China
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The user ID that is used to switch the administrator\\"s perspective to a member\\"s perspective.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type.
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all accounts that are managed by the administrator.
         self.role_type = role_type
-        # The query condition of the rule. The value is in the JSON format.
+        # The query condition of the rule. The value is a JSON string.
         self.rule_condition = rule_condition
         # The description of the rule.
         self.rule_desc = rule_desc
-        # The log aggregation field of the rule. The value is a JSON string.
+        # The fields that are used to group logs. The value is a JSON array.
         self.rule_group = rule_group
         # The name of the rule.
         self.rule_name = rule_name
-        # The threshold configuration of the rule. The value is in the JSON format.
+        # The threshold configuration of the rule. The value is a JSON string.
         self.rule_threshold = rule_threshold
-        # The risk level. Valid values:
+        # The threat level. Valid values:
         # 
-        # *   serious: high
-        # *   suspicious: medium
-        # *   remind: low
+        # - serious: high
+        # 
+        # - suspicious: medium
+        # 
+        # - remind: low
         self.threat_level = threat_level
 
     def validate(self):

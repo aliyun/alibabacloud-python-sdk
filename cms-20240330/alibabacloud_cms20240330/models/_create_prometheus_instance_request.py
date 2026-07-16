@@ -18,43 +18,46 @@ class CreatePrometheusInstanceRequest(DaraModel):
         enable_auth_token: bool = None,
         payment_type: str = None,
         prometheus_instance_name: str = None,
+        resource_group_id: str = None,
         status: str = None,
         storage_duration: int = None,
         tags: List[main_models.CreatePrometheusInstanceRequestTags] = None,
         workspace: str = None,
     ):
-        # The number of days to automatically archive and save after the storage expires, 0 means no archiving. The range of archiving days is as follows:
-        # * V1: 60~365 days.
-        # * V2: 60~3650 days (3650 indicates permanent storage).
+        # The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. Valid values for the archive duration:
+        # * V1: 60 to 365 days.
+        # * V2: 60 to 3650 days (3650 indicates permanent retention).
         self.archive_duration = archive_duration
-        # Password-free read policy (supports IP segments and VpcId).
+        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # Password-free write policy.
+        # The authentication-free write policy.
         self.auth_free_write_policy = auth_free_write_policy
-        # Whether to enable password-free read (only supported in V2 version).
+        # Specifies whether to enable authentication-free read. This parameter is supported only for V2 instances.
         self.enable_auth_free_read = enable_auth_free_read
-        # Whether to enable password-free write (only supported in V2 version).
+        # Specifies whether to enable authentication-free write. This parameter is supported only for V2 instances.
         self.enable_auth_free_write = enable_auth_free_write
-        # Whether to enable authorization Token (only supported in V1 version).
+        # Specifies whether to enable the authorization token. This parameter is supported only for V1 instances.
         self.enable_auth_token = enable_auth_token
-        # Billing method:
-        # * POSTPAY: Postpaid by metric reporting volume.
-        # * POSTPAY_GB: Postpaid by metric write volume.
-        # Note, if left blank, the user\\"s default billing method configuration will be used. If the user has not configured a default, the system defaults to billing by metric reporting volume.
+        # The billable methods. Valid values:
+        # * POSTPAY: pay-as-you-go by metric reporting volume.
+        # * POSTPAY_GB: pay-as-you-go by metric write volume.
+        # If this parameter is left empty, the default billing method configured by the user is used. If the user has not configured a default billing method, the system uses pay-as-you-go by metric reporting volume.
         self.payment_type = payment_type
-        # Instance name.
+        # The instance name.
         # 
         # This parameter is required.
         self.prometheus_instance_name = prometheus_instance_name
-        # Instance status.
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The instance status.
         self.status = status
-        # Storage duration (days):
-        # * By write volume: 90, 180.
-        # * By metric reporting volume: 15, 30, 60, 90, 180.
+        # The storage duration (in days):
+        # * By write volume: 90 or 180.
+        # * By metric reporting volume: 15, 30, 60, 90, or 180.
         self.storage_duration = storage_duration
-        # Tag values.
+        # The tags.
         self.tags = tags
-        # Belonging workspace, default value: default-cms-{userId}-{regionId}.
+        # The workspace to which the instance belongs. Default value: default-cms-{userId}-{regionId}.
         self.workspace = workspace
 
     def validate(self):
@@ -91,6 +94,9 @@ class CreatePrometheusInstanceRequest(DaraModel):
 
         if self.prometheus_instance_name is not None:
             result['prometheusInstanceName'] = self.prometheus_instance_name
+
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
 
         if self.status is not None:
             result['status'] = self.status
@@ -134,6 +140,9 @@ class CreatePrometheusInstanceRequest(DaraModel):
         if m.get('prometheusInstanceName') is not None:
             self.prometheus_instance_name = m.get('prometheusInstanceName')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('status') is not None:
             self.status = m.get('status')
 
@@ -157,9 +166,9 @@ class CreatePrometheusInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
+        # The tag key.
         self.key = key
-        # Tag value.
+        # The tag value.
         self.value = value
 
     def validate(self):

@@ -10,12 +10,12 @@ class CancelLogstashDeletionResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the cluster is restored. Valid values:
+        # Indicates whether the instance is successfully resumed. Valid values:
         # 
-        # *   true: The cluster is restored.
-        # *   false: The cluster is not restored.
+        # - true: The instance is successfully resumed.
+        # - false: The instance failed to be resumed.
         self.result = result
 
     def validate(self):

@@ -1,3 +1,21 @@
+2026-07-15 Version: 3.5.0
+- Support API MultiModalAgentSSE.
+
+
+2026-07-07 Version: 3.4.1
+- Generated python 2022-03-02 for Green.
+
+2026-06-30 Version: 3.4.0
+- Support API MultiModalGuardWs.
+- Update API ManualModerationResult: add response parameters Body.Data.ReviewCount.
+- Update API VideoModerationResult: add response parameters Body.Data.AudioResult.SliceDetails.$.Result.
+
+
+2026-05-22 Version: 3.3.0
+- Support API MultiModalGuardAsync.
+- Support API MultiModalGuardAsyncResult.
+
+
 2026-05-13 Version: 3.2.4
 - Update API VideoModerationResult: add response parameters Body.Data.FrameResult.Frames.$.Results.$.VlContent.
 

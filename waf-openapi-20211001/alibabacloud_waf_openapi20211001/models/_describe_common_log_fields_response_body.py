@@ -14,8 +14,11 @@ class DescribeCommonLogFieldsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of log fields returned.
         self.log_field_list = log_field_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of log fields returned.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,31 @@ class DescribeCommonLogFieldsResponseBodyLogFieldList(DaraModel):
         log_key: str = None,
         status: bool = None,
     ):
+        # Indicates whether the log field is a default field.
+        # 
+        # - **true**: The log field is a default field.
+        # 
+        # - **false**: The log field is not a default field.
         self.is_default = is_default
+        # Indicates whether the log field is required.
+        # 
+        # - **true**: The log field is required.
+        # 
+        # - **false**: The log field is not required.
         self.is_required = is_required
+        # The name of the log field.
+        # 
+        # > For more information about the log fields, see [**Log field descriptions**](https://help.aliyun.com/zh/waf/web-application-firewall-3-0/user-guide/fields-in-logs?spm=openapi-amp.newDocPublishment.0.0.ccef281fNAb0XR).
         self.log_key = log_key
+        # The status of the log field. Valid values:
+        # 
+        # - **0**: offline.
+        # 
+        # - **1**: online or in use.
+        # 
+        # - **2**: about to be unpublished.
+        # 
+        # - **3**: about to be published.
         self.status = status
 
     def validate(self):

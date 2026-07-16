@@ -50,46 +50,115 @@ class CreateApplicationShrinkRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of an existing model operator instance to associate. This parameter is effective only when ApplicationType is set to polarclaw.
         self.aidbcluster_id = aidbcluster_id
+        # The type of the application. Valid values:
+        # 
+        # - supabase: Creates a managed Supabase application.
+        # 
+        # - raycluster: Creates a managed Ray Cluster application.
+        # 
+        # - polarclaw: Creates a managed PolarClaw application.
+        # 
         # This parameter is required.
         self.application_type = application_type
+        # The CPU architecture. Valid value:
+        # 
+        # - x86
+        # 
         # This parameter is required.
         self.architecture = architecture
+        # The authentication service provider.
         self.auth_provider = auth_provider
+        # The configuration of the authentication provider.
         self.auth_provider_config = auth_provider_config
+        # Specifies whether to automatically create and bind an Elastic IP Address (EIP).
         self.auto_allocate_public_eip = auto_allocate_public_eip
+        # Specifies whether to automatically create a PolarFS cold storage instance. Valid values:
+        # 
+        # - false (default): Does not automatically create the instance.
+        # 
+        # - true: Automatically creates the instance.
         self.auto_create_polar_fs = auto_create_polar_fs
+        # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
+        # Specifies whether to automatically use a coupon. Valid values:
+        # 
+        # - true (default): Uses a coupon.
+        # 
+        # - false: Does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
+        # A list of custom child components for the application.
         self.components_shrink = components_shrink
+        # The ID of the PolarDB instance that the application depends on.
         self.dbcluster_id = dbcluster_id
+        # The description of the application.
         self.description = description
+        # The default value is `false`. If you set this parameter to `true`, the system only checks the parameters and resources without creating the actual resources.
         self.dry_run = dry_run
+        # A list of custom server-side endpoints. By default, a VPC Endpoint is created.
         self.endpoints_shrink = endpoints_shrink
+        # This parameter is required for knowledge applications.
         self.knowledge_application_spec_shrink = knowledge_application_spec_shrink
+        # This parameter is required for mem0 applications.
         self.mem_application_spec_shrink = mem_application_spec_shrink
+        # The model API. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_api = model_api
+        # The API key for the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_api_key = model_api_key
+        # The URL of the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_base_url = model_base_url
+        # The source of the model. Valid values:
+        # 
+        # - bailian: Alibaba Cloud Model Studio model.
+        # 
+        # - custom: A custom model.
+        # 
+        # - maas: PolarDB model operator.
         self.model_from = model_from
+        # The name of the model. This parameter is effective only when ApplicationType is set to polarclaw.
         self.model_name = model_name
+        # A list of parameters.
         self.parameters_shrink = parameters_shrink
+        # The billing method.
         self.pay_type = pay_type
+        # The subscription period type.
         self.period = period
+        # The ID of the PolarFileSystem (PolarFS) cold storage or high-performance instance. This parameter is empty by default. If you specify this parameter, the corresponding storage is mounted to the application.
+        # 
+        # This feature is currently supported only by the following applications:
+        # 
+        # - supabase
+        # 
+        # - raycluster
         self.polar_fsinstance_id = polar_fsinstance_id
+        # The coupon code. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
+        # The region. The default value is the region of the instance.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ID of the security group.
         self.security_group_id = security_group_id
+        # The name of the IP address whitelist group. The default value is `default`.
         self.security_iparray_name = security_iparray_name
+        # The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
         self.security_iplist = security_iplist
+        # The type of the IP address.
         self.security_iptype = security_iptype
+        # The ID of the skill template.
         self.skill_template_id = skill_template_id
+        # The tag.
         self.tag = tag
+        # The target version.
         self.target_version = target_version
+        # The subscription duration.
         self.used_time = used_time
+        # The vSwitch. The default value is the current vSwitch in the primary zone of the instance.
         self.v_switch_id = v_switch_id
+        # The ID of the Virtual Private Cloud (VPC).
         self.vpc_id = vpc_id
+        # The zone. The default value is the primary zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -354,7 +423,9 @@ class CreateApplicationShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):

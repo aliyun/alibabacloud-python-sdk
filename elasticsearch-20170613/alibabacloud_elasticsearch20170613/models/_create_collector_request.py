@@ -20,22 +20,42 @@ class CreateCollectorRequest(DaraModel):
         vpc_id: str = None,
         client_token: str = None,
     ):
+        # The collection paths of fileBeat. This parameter is required only when the collector is deployed on ECS instances.
         self.collector_paths = collector_paths
+        # The configuration file information of the collector.
+        # 
         # This parameter is required.
         self.configs = configs
+        # Specifies whether to perform only a dry run without performing the actual request. This parameter is used only when you create or update a collector. Valid values:
+        # 
+        # - true: performs only a dry run without creating or updating the collector.
+        # - false: performs a dry run and sends the request.
+        # 
         # This parameter is required.
         self.dry_run = dry_run
+        # The extended configurations of the collector.
+        # 
         # This parameter is required.
         self.extend_configs = extend_configs
+        # The name of the collector. The name must be 1 to 30 characters in length, start with an uppercase or lowercase letter, and can contain letters, digits, underscores (_), or hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the collector. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
+        # 
         # This parameter is required.
         self.res_type = res_type
+        # The version of the collector. Valid values:
+        # - ECS-based deployment: 6.8.5_with_community
+        # - ACK-based deployment: 6.8.13_with_community.
+        # 
         # This parameter is required.
         self.res_version = res_version
+        # The ID of the virtual private cloud (VPC) where the collector resides.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The ID of the created crawer.
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -120,8 +140,12 @@ class CreateCollectorRequestConfigs(DaraModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The file content.
+        # 
         # This parameter is required.
         self.content = content
+        # The file name.
+        # 
         # This parameter is required.
         self.file_name = file_name
 

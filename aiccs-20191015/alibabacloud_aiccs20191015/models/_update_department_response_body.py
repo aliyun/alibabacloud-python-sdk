@@ -14,11 +14,21 @@ class UpdateDepartmentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates that the request succeeded.
         self.code = code
+        # Indicates whether the operation succeeded. Valid values:  
+        # - **true**: Succeeded  
+        # - **false**: Failed.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API was invoked successfully. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

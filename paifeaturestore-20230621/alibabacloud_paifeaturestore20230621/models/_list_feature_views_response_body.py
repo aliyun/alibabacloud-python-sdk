@@ -14,8 +14,11 @@ class ListFeatureViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The feature view list.
         self.feature_views = feature_views
+        # The request ID.
         self.request_id = request_id
+        # The total count of feature views.
         self.total_count = total_count
 
     def validate(self):
@@ -76,19 +79,37 @@ class ListFeatureViewsResponseBodyFeatureViews(DaraModel):
         type: str = None,
         write_to_feature_db: bool = None,
     ):
+        # The feature entity name.
         self.feature_entity_name = feature_entity_name
+        # The feature view ID.
         self.feature_view_id = feature_view_id
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
+        # The feature view name.
         self.name = name
+        # The ID of the Alibaba Cloud account that created the feature view.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The ID of the data source for the registered table.
         self.register_datasource_id = register_datasource_id
+        # The name of the data source for the registered table.
         self.register_datasource_name = register_datasource_name
+        # The registered table name.
         self.register_table = register_table
+        # The TTL (Time to Live) of features in the feature view, in seconds.
         self.ttl = ttl
+        # The type of the feature view. Valid values:
+        # 
+        # ● Batch feature
+        # 
+        # ● Stream feature
         self.type = type
+        # Indicates whether data is written to the online feature store.
         self.write_to_feature_db = write_to_feature_db
 
     def validate(self):

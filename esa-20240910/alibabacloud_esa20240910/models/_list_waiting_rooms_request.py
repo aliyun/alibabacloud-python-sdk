@@ -10,11 +10,11 @@ class ListWaitingRoomsRequest(DaraModel):
         site_id: int = None,
         waiting_room_id: str = None,
     ):
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The ID of the waiting room. Specify this parameter to query the information about a specific waiting room.
+        # The waiting room ID. Specify this parameter to query the details of a specific waiting room.
         self.waiting_room_id = waiting_room_id
 
     def validate(self):

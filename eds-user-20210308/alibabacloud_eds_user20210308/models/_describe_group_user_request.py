@@ -17,6 +17,7 @@ class DescribeGroupUserRequest(DaraModel):
     ):
         # >  This parameter is not available for public use.
         self.biz_type = biz_type
+        # Channel
         self.business_channel = business_channel
         # The fuzzy search string that matches the username (EndUserId) and email address (Email) of the regular user.
         self.filter = filter

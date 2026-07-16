@@ -10,8 +10,11 @@ class InsertInterveneGlobalReplyShrinkRequest(DaraModel):
         agent_key: str = None,
         reply_messag_list_shrink: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # List of reply content
         self.reply_messag_list_shrink = reply_messag_list_shrink
 
     def validate(self):

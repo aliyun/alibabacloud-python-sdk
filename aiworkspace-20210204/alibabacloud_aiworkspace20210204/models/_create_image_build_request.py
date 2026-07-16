@@ -22,29 +22,39 @@ class CreateImageBuildRequest(DaraModel):
         user_vpc: main_models.CreateImageBuildRequestUserVpc = None,
         workspace_id: str = None,
     ):
+        # An idempotence token.
         self.client_token = client_token
-        # 镜像构建的可见性，可能值： - PUBLIC：当前工作空间所有成员都可以操作。 - PRIVATE：只有创建者可以操作。
+        # The visibility of the image.
+        # 
+        # - **PUBLIC**: The image is public.
+        # 
+        # - **PRIVATE**: The image is private.
         self.accessibility = accessibility
-        # 构建配置，指定待构建的 Dockerfile 文件内容。
+        # **The build configuration. Specify the content of the Dockerfile to be built.**
         # 
         # This parameter is required.
         self.build_config = build_config
+        # The metadata of the image.
+        # 
         # This parameter is required.
         self.image = image
+        # The name of the image build task.
         self.image_build_job_name = image_build_job_name
-        # 是否覆盖更新 ACR 镜像仓库中已存在的镜像 tag。
+        # Specifies whether to overwrite an existing image version in the image repository.
         self.overwrite_image_tag = overwrite_image_tag
-        # 代表region的资源属性字段
+        # The region ID.
         self.region_id = region_id
-        # 构建任务运行资源
+        # The resources used to run the task.
         # 
         # This parameter is required.
         self.resource = resource
+        # **The configuration of the target image repository.**
+        # 
         # This parameter is required.
         self.target_registry = target_registry
-        # 用户专有网络信息。使用企业版 ACR 实例时，此参数必填，指定在用户 ACR 实例的访问控制里已添加的专有网络。
+        # The information about the user\\"s virtual private cloud (VPC). This parameter is required when you use the public resource group.
         self.user_vpc = user_vpc
-        # 镜像构建所属的工作空间ID。
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -152,15 +162,21 @@ class CreateImageBuildRequestUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # 默认路由网卡出口
+        # The default route.
+        # 
+        # - eth1: Indicates that the user\\"s elastic network interface (ENI) is used to access the external network through a private gateway. For more information, see [Configure a Distribution Switch (DSW) instance to access the Internet through a private NAT gateway](https://help.aliyun.com/zh/pai/user-guide/configure-a-dsw-instance-to-access-the-internet-through-a-private-nat-gateway?spm=a2c4g.11186623.0.0.3b3965f6SZWm85).
         self.default_route = default_route
-        # 扩展网段
+        # The extended CIDR blocks.
+        # 
+        # - If you do not specify a vSwitch ID, you can leave this parameter empty. The system automatically obtains all CIDR blocks of the VPC.
+        # 
+        # - If you specify a vSwitch ID, you must specify this parameter. For best results, include all CIDR blocks of the VPC.
         self.extended_cidrs = extended_cidrs
-        # 安全组 ID
+        # The security group ID. This parameter is required when you configure a VPC.
         self.security_group_id = security_group_id
-        # 交换机 ID
+        # The vSwitch ID. This parameter is optional.
         self.switch_id = switch_id
-        # 专有网络 ID
+        # The VPC ID. If the build task needs to access your ACR Enterprise Edition instance, specify a VPC that is in the access control list of the instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -213,7 +229,10 @@ class CreateImageBuildRequestTargetRegistry(DaraModel):
         instance_id: str = None,
         type: str = None,
     ):
+        # The ID of the image repository instance. This parameter is required when you use ACR as the image repository.
         self.instance_id = instance_id
+        # The type of the target image repository. Only ACR Enterprise Edition is supported.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -251,10 +270,13 @@ class CreateImageBuildRequestResource(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # 后付费资源规格
+        # The instance type of the pay-as-you-go resource. This parameter is required when you use the public resource group.
         self.ecs_spec = ecs_spec
+        # The resource configuration. Specify this parameter when you use subscription resources. Leave it empty when you use the public resource group.
         self.resource_config = resource_config
+        # The resource quota ID. This parameter applies only to subscription resources. Do not set this parameter for pay-as-you-go resources.
         self.resource_id = resource_id
+        # The type of the subscription resource. Currently, only Lingjun resources are supported. Specify this parameter when you use subscription resources.
         self.resource_type = resource_type
 
     def validate(self):
@@ -303,7 +325,9 @@ class CreateImageBuildRequestResourceResourceConfig(DaraModel):
         cpu: str = None,
         memory: str = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # The memory size.
         self.memory = memory
 
     def validate(self):
@@ -340,10 +364,22 @@ class CreateImageBuildRequestImage(DaraModel):
         name: str = None,
         uri: str = None,
     ):
+        # The description of the image.
         self.description = description
+        # The image labels.
         self.labels = labels
+        # The name of the image. The name must meet the following requirements:
+        # 
+        # - The name must be 1 to 50 characters in length.
+        # 
+        # - The name can contain lowercase letters, digits, and hyphens (-). It must start with a letter.
+        # 
+        # - The name must be unique within the same workspace.
+        # 
         # This parameter is required.
         self.name = name
+        # The image URL.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -399,7 +435,9 @@ class CreateImageBuildRequestImageLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the image label.
         self.key = key
+        # The value of the image label.
         self.value = value
 
     def validate(self):
@@ -435,12 +473,19 @@ class CreateImageBuildRequestBuildConfig(DaraModel):
         dockerfile: str = None,
         registry_auths: Dict[str, Any] = None,
     ):
+        # The build type. The following types are supported:
+        # 
+        # - **PackageInstallation**: Installs software packages based on a specified image.
+        # 
+        # - **CustomDockerfile**: Builds an image based on a custom Dockerfile.
+        # 
         # This parameter is required.
         self.build_type = build_type
-        # Dockerfile文件内容
+        # The content of the Dockerfile to be built.
         # 
         # This parameter is required.
         self.dockerfile = dockerfile
+        # The authentication information for the private image repository. You can specify the authentication information for an ACR image repository that does not belong to you. The format is \\`{"user_registry_domain":{"Auth":"base64 encoded auth"}}\\`.
         self.registry_auths = registry_auths
 
     def validate(self):

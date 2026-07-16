@@ -10,8 +10,12 @@ class GetQualityProjectDetailRequest(DaraModel):
         instance_id: str = None,
         project_id: int = None,
     ):
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the console of Artificial Intelligence Cloud Call Service.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The quality inspection job ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

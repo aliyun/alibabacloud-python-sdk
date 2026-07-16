@@ -13,10 +13,13 @@ class DescribeWhitelistIpsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -65,7 +68,9 @@ class DescribeWhitelistIpsResponseBodyData(DaraModel):
         domain: str = None,
         ip_whitelist: str = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The list of IP addresses and CIDR blocks on the whitelist.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):

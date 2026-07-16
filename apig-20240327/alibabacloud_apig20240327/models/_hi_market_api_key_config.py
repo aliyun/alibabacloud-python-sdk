@@ -14,8 +14,11 @@ class HiMarketApiKeyConfig(DaraModel):
         key: str = None,
         source: str = None,
     ):
+        # The list of credentials.
         self.credentials = credentials
+        # The name of the location from which the API key is extracted.
         self.key = key
+        # The source type of the API key.
         self.source = source
 
     def validate(self):
@@ -64,7 +67,9 @@ class HiMarketApiKeyConfigCredentials(DaraModel):
         api_key: str = None,
         mode: str = None,
     ):
+        # The API key value.
         self.api_key = api_key
+        # The generation mode.
         self.mode = mode
 
     def validate(self):

@@ -16,9 +16,9 @@ class DescribeWhiteRuleListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The status code of the request.
         self.code = code
-        # The data returned.
+        # The return value.
         self.data = data
         # The returned message.
         self.message = message
@@ -26,8 +26,9 @@ class DescribeWhiteRuleListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -151,24 +152,25 @@ class DescribeWhiteRuleListResponseBodyDataResponseData(DaraModel):
         self.alert_type_id = alert_type_id
         # The UUID of the alert.
         self.alert_uuid = alert_uuid
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
         self.aliuid = aliuid
-        # The conditions in the rule. The value is a JSON array.
+        # The rule conditions, which are in the JSON array format.
         self.expression = expression
-        # The time when the whitelist rule was created.
+        # The time when the rule was created.
         self.gmt_create = gmt_create
-        # The time when the whitelist rule was modified.
+        # The time when the rule was last modified.
         self.gmt_modified = gmt_modified
-        # The ID of the whitelist rule.
+        # The unique ID of the whitelist rule.
         self.id = id
         # The UUID of the event.
         self.incident_uuid = incident_uuid
-        # The status of the whitelist rule. Valid values:
+        # The status of the rule. Valid values:
         # 
-        # *   1: enabled.
-        # *   0: disabled.
+        # - 1: enabled
+        # 
+        # - 0: disabled
         self.status = status
-        # The ID of the Alibaba Cloud account that is used to create the whitelist rule.
+        # The ID of the Alibaba Cloud account that is used to create the rule.
         self.sub_aliuid = sub_aliuid
 
     def validate(self):
@@ -271,9 +273,9 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpression(DaraModel):
         conditions: List[main_models.DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions] = None,
         logic: str = None,
     ):
-        # The rule conditions.
+        # The array of rule conditions.
         self.conditions = conditions
-        # The logical relationships among the rule conditions.
+        # The logical relation for the conditions.
         self.logic = logic
 
     def validate(self):
@@ -319,25 +321,31 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditions(Dara
         operator: str = None,
         right: main_models.DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight = None,
     ):
-        # Indicates whether the result is inverted. Valid values:
+        # Indicates whether to negate the result. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The result is negated.
+        # 
+        # - false: The result is not negated.
         self.is_not = is_not
-        # The ID of the rule condition.
+        # The condition ID.
         self.item_id = item_id
-        # The left operand of the rule condition.
+        # The left operand of the condition.
         self.left = left
-        # The logical operator of the rule condition. Valid values:
+        # The operator. Valid values:
         # 
-        # *   `=`: equals to.
-        # *   `<>`: does not equal to.
-        # *   `in`: contains.
-        # *   `not in`: does not contain.
-        # *   `REGEXP`: matches a regular expression.
-        # *   `NOT REGEXP`: does not match a regular expression.
+        # - `=`: equals
+        # 
+        # - `<>`: does not equal
+        # 
+        # - `in`: includes
+        # 
+        # - `not in`: does not include
+        # 
+        # - `REGEXP`: matches a regular expression
+        # 
+        # - `NOT REGEXP`: does not match a regular expression
         self.operator = operator
-        # The right operand of the rule condition.
+        # The right operand.
         self.right = right
 
     def validate(self):
@@ -398,18 +406,19 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsRight
         type: str = None,
         value: str = None,
     ):
-        # Indicates whether the right operand is a constant or a runtime variable that is obtained from the runtime context. Valid values:
+        # Specifies whether the right operand is a constant or a runtime variable. A runtime variable obtains a value from the runtime context. Valid values:
         # 
-        # *   true: runtime variable.
-        # *   false: constant.
+        # - true: runtime variable
+        # 
+        # - false: constant
         self.is_var = is_var
-        # The remarks on the right operand.
+        # The remarks.
         self.modifier = modifier
-        # The key-value pair information of the remarks.
+        # The key-value pair for the remarks.
         self.modifier_param = modifier_param
-        # The data type of the right operand.
+        # The data type.
         self.type = type
-        # The right operand.
+        # The value of the right operand.
         self.value = value
 
     def validate(self):
@@ -467,17 +476,19 @@ class DescribeWhiteRuleListResponseBodyDataResponseDataExpressionConditionsLeft(
     ):
         # Indicates whether the left operand is a variable. Valid values:
         # 
-        # *   true: variable.
-        # *   false: constant.
-        self.is_var = is_var
-        # The remarks on the right operand.
-        self.modifier = modifier
-        # The key-value pair information of the remarks.
-        self.modifier_param = modifier_param
-        # Indicates whether the left operand is a constant. Valid values:
+        # - true: variable
         # 
-        # *   true
-        # *   false
+        # - false: constant
+        self.is_var = is_var
+        # The remarks.
+        self.modifier = modifier
+        # The key-value pair for the remarks.
+        self.modifier_param = modifier_param
+        # Specifies whether the value is a constant. Valid values:
+        # 
+        # - true: The value is a constant.
+        # 
+        # - false: The value is not a constant.
         self.type = type
         # The variable of the left operand.
         self.value = value
@@ -535,9 +546,9 @@ class DescribeWhiteRuleListResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

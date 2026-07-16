@@ -11,10 +11,23 @@ class UpdateDepartmentRequest(DaraModel):
         department_name: str = None,
         instance_id: str = None,
     ):
+        # The department ID.
+        # 
+        # You can invoke the [GetAllDepartment](https://help.aliyun.com/document_detail/2717975.html) API and view the **DepartmentId** field in the response to obtain the department ID.
+        # 
+        # > This parameter does not support updates.
+        # 
         # This parameter is required.
         self.department_id = department_id
+        # The department name.
+        # 
+        # > This parameter supports updates.
+        # 
         # This parameter is required.
         self.department_name = department_name
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

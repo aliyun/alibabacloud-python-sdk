@@ -10,7 +10,7 @@ class UpdateFlowDraftRequest(DaraModel):
         self,
         body: main_models.UpdateFlowDraftInput = None,
     ):
-        # 包含要更新的工作流草稿配置信息的请求体
+        # Input parameters for updating flow draft
         # 
         # This parameter is required.
         self.body = body

@@ -21,12 +21,13 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries to return on each page. Valid values: 1 to 50. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - You do not need to specify this parameter for the first query.
+        # 
+        # - For a subsequent query, set this parameter to the NextToken value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -40,13 +41,15 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # *   **IPAM**
-        # *   **IPAMSCOPE**
-        # *   **IPAMPOOL**
+        # - **IPAM**: IPAM
+        # 
+        # - **IPAMSCOPE**: IPAM scope
+        # 
+        # - **IPAMPOOL**: IPAM address pool
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag list.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -137,17 +140,17 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It must start with a letter or a Chinese character and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         # 
-        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
+        # > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         # 
-        # >  You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value**.
+        # > You must specify **ResourceId.N** or **Tag.N** (**Tag.N.Key** and **Tag.N.Value**).
         self.value = value
 
     def validate(self):

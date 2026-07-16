@@ -20,16 +20,28 @@ class CreateDeliveryTaskRequest(DaraModel):
         task_description: str = None,
         task_name: str = None,
     ):
+        # The ID of the Prometheus instance that serves as the data source.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # A map of key-value pairs to attach as additional labels to all delivered metrics.
         self.external_labels = external_labels
+        # The label conditions for filtering metrics. The key is the label name and the value is the value to match. The filtering behavior is controlled by `labelFiltersType`.
         self.label_filters = label_filters
+        # The mode for applying the label filters.
         self.label_filters_type = label_filters_type
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # An array of delivery destination objects.
+        # 
         # This parameter is required.
         self.sink_list = sink_list
+        # An array of resource tags.
         self.tags = tags
+        # The task description.
         self.task_description = task_description
+        # The name of the task. The name can contain Chinese characters, English letters, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -124,7 +136,9 @@ class CreateDeliveryTaskRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the resource tag.
         self.key = key
+        # The value of the resource tag.
         self.value = value
 
     def validate(self):
@@ -159,7 +173,10 @@ class CreateDeliveryTaskRequestSinkList(DaraModel):
         sink_configs: Dict[str, str] = None,
         sink_type: str = None,
     ):
+        # The configuration for the sink, specified as key-value pairs. The valid keys and values depend on the value of `sinkType`.
         self.sink_configs = sink_configs
+        # The type of the delivery destination (sink).
+        # 
         # This parameter is required.
         self.sink_type = sink_type
 

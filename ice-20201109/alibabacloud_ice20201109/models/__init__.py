@@ -1589,6 +1589,7 @@ from ._get_package_job_response_body import GetPackageJobResponseBodyPackageJob
 from ._get_pipeline_response_body import GetPipelineResponseBodyPipeline
 from ._get_play_info_response_body import GetPlayInfoResponseBodyMediaBase
 from ._get_play_info_response_body import GetPlayInfoResponseBodyPlayInfoList
+from ._get_project_export_job_response_body import GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList
 from ._get_project_export_job_response_body import GetProjectExportJobResponseBodyProjectExportJobExportResult
 from ._get_project_export_job_response_body import GetProjectExportJobResponseBodyProjectExportJob
 from ._get_public_media_info_response_body import GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData
@@ -3715,6 +3716,7 @@ __all__ = [
     GetPipelineResponseBodyPipeline,
     GetPlayInfoResponseBodyMediaBase,
     GetPlayInfoResponseBodyPlayInfoList,
+    GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList,
     GetProjectExportJobResponseBodyProjectExportJobExportResult,
     GetProjectExportJobResponseBodyProjectExportJob,
     GetPublicMediaInfoResponseBodyMediaInfoDynamicMetaData,

@@ -20,10 +20,13 @@ class CreateLiveTranscodeTemplateRequest(DaraModel):
         self.template_config = template_config
         # The type of the template. Valid values:
         # 
-        # *   normal
-        # *   narrow-band
-        # *   audio-only
-        # *   origin
+        # - normal
+        # 
+        # - narrow-band
+        # 
+        # - audio-only
+        # 
+        # - origin
         # 
         # This parameter is required.
         self.type = type
@@ -119,8 +122,9 @@ class CreateLiveTranscodeTemplateRequestTemplateConfigVideoParams(DaraModel):
         self.bitrate = bitrate
         # The encoding type. Valid values:
         # 
-        # *   H.264
-        # *   H.265
+        # - H.264
+        # 
+        # - H.265
         self.codec = codec
         # The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
         self.fps = fps
@@ -208,15 +212,19 @@ class CreateLiveTranscodeTemplateRequestTemplateConfigAudioParams(DaraModel):
         self.channels = channels
         # The audio codec. Valid values:
         # 
-        # *   AAC
-        # *   MP3
+        # - AAC
+        # 
+        # - MP3
         self.codec = codec
         # The audio codec profile. Valid values when the Codec parameter is set to AAC:
         # 
-        # *   aac_low
-        # *   aac_he
-        # *   aac_he_v2
-        # *   aac_ld
+        # - aac_low
+        # 
+        # - aac_he
+        # 
+        # - aac_he_v2
+        # 
+        # - aac_ld
         self.profile = profile
         # The audio sampling rate. Valid values: 22050 to 96000.
         # 

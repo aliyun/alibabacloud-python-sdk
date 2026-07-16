@@ -18,19 +18,19 @@ class GetAiRtcLicenseInfoListResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code returned.
+        # The error code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # An array of AiRtcLicenseInfoDTO objects, each representing a license batch.
+        # The list of license batch details.
         self.license_info_list = license_info_list
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # The total number of entries returned.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

@@ -15,10 +15,24 @@ class ModifyDBNodeDescriptionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view information about all clusters in the destination region, including cluster IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the node. The name must meet the following requirements:
+        # 
+        # - It cannot start with http\\:// or https\\://.
+        # 
+        # - It must be 2 to 256 characters in length.
+        # 
         # This parameter is required.
         self.dbnode_description = dbnode_description
+        # The ID of the cluster node.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to view the details of all clusters that belong to your account, including node IDs.
+        # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account

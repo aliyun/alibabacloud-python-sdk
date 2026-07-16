@@ -10,8 +10,12 @@ class QueryDeviceInfoRequest(DaraModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # AppKey information.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identity of the device in the push system. Query only one at a time.
+        # 
         # This parameter is required.
         self.device_id = device_id
 

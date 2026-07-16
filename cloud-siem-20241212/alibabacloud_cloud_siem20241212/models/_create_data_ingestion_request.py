@@ -23,20 +23,51 @@ class CreateDataIngestionRequest(DaraModel):
         stream_job_id: str = None,
         update_time: int = None,
     ):
+        # The number of associated security capabilities.
         self.capacity_count = capacity_count
+        # The data ingestion mode. Valid values:
+        # 
+        # - realtime
+        # 
+        # - scan
         self.data_ingestion_mode = data_ingestion_mode
+        # The error code for the data ingestion status.
         self.data_ingestion_state_code = data_ingestion_state_code
+        # The data ingestion type. Valid values:
+        # 
+        # - preset
+        # 
+        # - custom
         self.data_ingestion_type = data_ingestion_type
+        # Specifies whether the data source can be edited.
         self.data_source_editable = data_source_editable
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # Specifies whether the normalization rule can be edited.
         self.normalization_rule_editable = normalization_rule_editable
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The product ID.
         self.product_id = product_id
+        # The region where the Data Management hub for threat analysis is located. Select a region for the management hub based on the region of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator can use this parameter to assume the permissions of the specified member.
         self.role_for = role_for
+        # The ID of the data source for the scan mode.
         self.scan_data_source_id = scan_data_source_id
+        # The ID of the stream job.
         self.stream_job_id = stream_job_id
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

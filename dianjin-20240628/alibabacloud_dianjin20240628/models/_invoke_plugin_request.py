@@ -12,7 +12,9 @@ class InvokePluginRequest(DaraModel):
         params: Dict[str, Any] = None,
         plugin_id: str = None,
     ):
+        # Request parameters.
         self.params = params
+        # The plugin ID.
         self.plugin_id = plugin_id
 
     def validate(self):

@@ -11,8 +11,11 @@ class DescribeRatePlanPriceRequest(DaraModel):
         period: int = None,
         plan_name: str = None,
     ):
+        # The number of plans.
         self.amount = amount
+        # The purchase duration, in months.
         self.period = period
+        # The plan name.
         self.plan_name = plan_name
 
     def validate(self):

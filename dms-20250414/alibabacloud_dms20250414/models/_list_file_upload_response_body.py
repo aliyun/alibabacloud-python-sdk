@@ -16,11 +16,19 @@ class ListFileUploadResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of file objects.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -93,19 +101,33 @@ class ListFileUploadResponseBodyData(DaraModel):
         session_id: str = None,
         upload_location: str = None,
     ):
+        # The ID of the Alibaba Cloud master account.
         self.aliyun_parent_uid = aliyun_parent_uid
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
+        # The public download link.
         self.download_link = download_link
+        # The file category.
         self.file_category = file_category
+        # The file source.
         self.file_from = file_from
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The file size, in bytes.
         self.file_size = file_size
+        # The file extension.
         self.file_type = file_type
+        # The time when the file was created.
         self.gmt_created = gmt_created
+        # The internal download link.
         self.intranet_download_link = intranet_download_link
+        # The region.
         self.region = region
+        # The session ID.
         self.session_id = session_id
+        # The upload path.
         self.upload_location = upload_location
 
     def validate(self):

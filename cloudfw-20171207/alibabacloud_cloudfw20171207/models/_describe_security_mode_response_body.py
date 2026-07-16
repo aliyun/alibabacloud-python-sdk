@@ -11,8 +11,15 @@ class DescribeSecurityModeResponseBody(DaraModel):
         request_id: str = None,
         security_mode: int = None,
     ):
+        # The application module.
         self.module = module
+        # The request ID.
         self.request_id = request_id
+        # The security mode. Valid values:
+        # 
+        # **0**: disabled.
+        # 
+        # **1**: enabled.
         self.security_mode = security_mode
 
     def validate(self):

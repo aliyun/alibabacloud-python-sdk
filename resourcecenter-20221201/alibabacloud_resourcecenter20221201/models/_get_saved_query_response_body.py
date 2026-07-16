@@ -58,13 +58,13 @@ class GetSavedQueryResponseBodySavedQuery(DaraModel):
         self.create_time = create_time
         # The description of the template.
         self.description = description
-        # The expression of the template.
+        # The query statement in the template.
         self.expression = expression
         # The name of the template.
         self.name = name
-        # The ID of the template.
+        # The template ID.
         self.query_id = query_id
-        # The time when the template was last updated. The time is displayed in UTC.
+        # The time when the template was updated. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

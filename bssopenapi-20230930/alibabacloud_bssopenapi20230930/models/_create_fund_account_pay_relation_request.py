@@ -14,10 +14,15 @@ class CreateFundAccountPayRelationRequest(DaraModel):
         fund_account_id: str = None,
         nbid: str = None,
     ):
+        # List of enterprises and accounts.
+        # 
         # This parameter is required.
         self.ec_id_account_ids = ec_id_account_ids
+        # Fund account ID.
+        # 
         # This parameter is required.
         self.fund_account_id = fund_account_id
+        # Primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):
@@ -66,8 +71,11 @@ class CreateFundAccountPayRelationRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # List of Alibaba Cloud accounts for delegated payment.
+        # 
         # This parameter is required.
         self.account_ids = account_ids
+        # Enterprise entity ID.
         self.ec_id = ec_id
 
     def validate(self):

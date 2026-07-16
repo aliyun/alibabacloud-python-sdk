@@ -11,9 +11,15 @@ class FinishHotlineServiceRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Agent account name, which is the phone number or mailbox entered during account registration. It is unique within the instance.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it in the <b>Instance Management</b> section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -9,6 +9,7 @@ class RescaleJobParam(DaraModel):
         self,
         job_parallelism: int = None,
     ):
+        # The parallelism.
         self.job_parallelism = job_parallelism
 
     def validate(self):

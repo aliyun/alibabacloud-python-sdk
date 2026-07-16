@@ -12,9 +12,21 @@ class DisableDataIngestionRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center for threat analysis. Select the region of the management center based on the region where your asset is located. Valid values:
+        # 
+        # - cn-hangzhou: Your asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your asset is outside China.
         self.region_id = region_id
+        # The user ID of the member account that the administrator wants to switch to.
         self.role_for = role_for
 
     def validate(self):

@@ -15,13 +15,13 @@ class CredentialProductVerifyV2ResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CredentialProductVerifyV2ResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result object.
+        # The result object.
         self.result_object = result_object
 
     def validate(self):
@@ -72,18 +72,19 @@ class CredentialProductVerifyV2ResponseBodyResultObject(DaraModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
-        # Additional information in JSON format.
+        # The additional information in JSON format.
         self.material_info = material_info
-        # - 0: Low risk
-        # - 1: High risk
-        # - 2: Suspicious
+        # Valid values:
+        # - 0: low risk
+        # - 1: high risk
+        # - 2: suspicious.
         self.result = result
-        # Map of risk scores.
+        # The risk score map.
         self.risk_score = risk_score
-        # Risk tags, separated by commas, including:
-        # - PS: Image has been photoshopped
-        # - LOW_QUALITY_PRODUCT: Low quality (low clarity)
-        # - SAME_BACKGROUND: Similar background
+        # The risk labels. Multiple labels are separated by commas. Valid values:
+        # - PS: image manipulation
+        # - LOW_QUALITY_PRODUCT: low quality (low clarity)
+        # - SAME_BACKGROUND: similar image.
         self.risk_tag = risk_tag
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetTenantCheckAvailableResponseBody(DaraModel):
         data: main_models.GetTenantCheckAvailableResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -50,13 +50,15 @@ class GetTenantCheckAvailableResponseBodyData(DaraModel):
         next_scan_time: int = None,
         status: int = None,
     ):
-        # The timestamp when you can submit a quick scan task.
+        # The timestamp of the next time when a one-click scan can be submitted.
         self.next_scan_time = next_scan_time
-        # The status of the quick scan task. Enumerated values:
+        # The current status of the one-click scan. Valid values:
         # 
-        # *   0: You can submit a quick scan task.
-        # *   1: The current task is not complete. You cannot submit a quick scan task.
-        # *   2: The free quota for this week is exhausted. You must wait for the next free scan period.
+        # - 0: The one-click scan can be submitted.
+        # 
+        # - 1: The current task is not complete. The scan cannot be submitted.
+        # 
+        # - 2: The free scan quota for this week has been used. Wait until the next free scan time.
         self.status = status
 
     def validate(self):

@@ -17,11 +17,17 @@ class QueryJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # HTTP status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Job data.
         self.jobs = jobs
+        # Response message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class QueryJobsResponseBodyJobs(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Job array.
         self.list = list
+        # Page number.
         self.page_number = page_number
+        # Page size.
         self.page_size = page_size
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -153,19 +163,81 @@ class QueryJobsResponseBodyJobsList(DaraModel):
         tag_hits: List[main_models.QueryJobsResponseBodyJobsListTagHits] = None,
         tasks: List[main_models.QueryJobsResponseBodyJobsListTasks] = None,
     ):
+        # Caller number list.
         self.calling_numbers = calling_numbers
+        # Contact information. This parameter is deprecated.
+        # 
+        # > Use the DescribeJob operation instead.
         self.contacts = contacts
+        # Business data. Shows tag collection status for Large Language Model (LLM) scenarios.
+        # 
+        # > Keys TenantId and ServiceId are system parameters.
         self.extras = extras
+        # Failure reason.
+        # 
+        # - Unknown
+        # 
+        # - NoAnswer
+        # 
+        # - InvalidStrategy
+        # 
+        # - TimeUp
+        # 
+        # - NoStrategy
+        # 
+        # - CallFailed
+        # 
+        # - PerDayCallCountLimit
+        # 
+        # - ContactBlockList
+        # 
+        # - EmptyNumber
+        # 
+        # - JobPerDayCallCountLimit
+        # 
+        # - VerificationCancelled
+        # 
+        # - ContactSuspended
+        # 
+        # - InArrears
+        # 
+        # - OutOfService
         self.failure_reason = failure_reason
+        # Task ID.
         self.job_group_id = job_group_id
+        # Job ID.
         self.job_id = job_id
+        # Priority.
         self.priority = priority
+        # Associated business ID.
         self.reference_id = reference_id
+        # Scenario ID. This parameter is deprecated.
         self.scenario_id = scenario_id
+        # Job status.
+        # 
+        # - Scheduling (0)
+        # 
+        # - Executing (1)
+        # 
+        # - Succeeded (2)
+        # 
+        # - Paused (3)
+        # 
+        # - Failed (4)
+        # 
+        # - Cancelled (5)
+        # 
+        # - Drafted (6)
         self.status = status
+        # Strategy ID.
         self.strategy_id = strategy_id
+        # Conversation summary. This field is deprecated.
         self.summary = summary
+        # Tags hit in small model scenarios.
         self.tag_hits = tag_hits
+        # Call list. This parameter is deprecated.
+        # 
+        # > Use the searchTask operation instead.
         self.tasks = tasks
 
     def validate(self):
@@ -327,18 +399,97 @@ class QueryJobsResponseBodyJobsListTasks(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # Actual call time.
         self.actual_time = actual_time
+        # Summary. This field is deprecated.
         self.brief = brief
+        # SIP call ID.
         self.call_id = call_id
+        # Callee number.
         self.called_number = called_number
+        # Caller number.
         self.calling_number = calling_number
+        # Chatbot ID.
         self.chatbot_id = chatbot_id
+        # Contact information.
         self.contact = contact
+        # Call duration in seconds.
         self.duration = duration
+        # Job ID.
         self.job_id = job_id
+        # Scheduled call time.
         self.planed_time = planed_time
+        # Scenario ID.
         self.scenario_id = scenario_id
+        # The status of the task. Valid values are described below. Note that the Succeeded status is subdivided by reason. The generic Succeeded: 1 (Connected) status is no longer returned, and a specific success reason is provided instead.
+        # 
+        # - Executing: 0 (Calling).
+        # 
+        # - Succeeded: 1 (Connected).
+        # 
+        # - NoAnswer: 2 (Not connected – No answer).
+        # 
+        # - NotExist: 3 (Not connected – Nonexistent number).
+        # 
+        # - Busy: 4 (Not connected – Line busy).
+        # 
+        # - Cancelled: 5 (Not dialed – Task stopped).
+        # 
+        # - Failed: 6 (Failed).
+        # 
+        # - NotConnected: 7 (Not connected – Unreachable).
+        # 
+        # - PoweredOff: 8 (Not connected – Powered off).
+        # 
+        # - OutOfService: 9 (Not connected – Service suspended).
+        # 
+        # - InArrears: 10 (Not connected – Account has an overdue payment).
+        # 
+        # - EmptyNumber: 11 (Not dialed – Invalid number).
+        # 
+        # - PerDayCallCountLimit: 12 (Not dialed – Daily call limit exceeded).
+        # 
+        # - ContactBlockList: 13 (Not dialed – Number on blocklist).
+        # 
+        # - CallerNotRegistered: 14 (Not dialed – Caller ID not registered).
+        # 
+        # - Terminated: 15 (Not dialed – Terminated).
+        # 
+        # - VerificationCancelled: 16 (Not dialed – Canceled due to pre-call validation failure).
+        # 
+        # - OutOfServiceNoCall: 17 (Not dialed – Service suspended).
+        # 
+        # - InArrearsNoCall: 18 (Not dialed – Account has an overdue payment).
+        # 
+        # - CallingNumberNotExist: 19 (Not dialed – Caller ID does not exist).
+        # 
+        # - SucceededFinish: 20 (Connected – Completed normally).
+        # 
+        # - SucceededChatbotHangUpAfterNoAnswer: 21 (Connected – Bot hung up due to unrecognized input).
+        # 
+        # - SucceededChatbotHangUpAfterSilence: 22 (Connected – Bot hung up due to a silence timeout).
+        # 
+        # - SucceededClientHangUpAfterNoAnswer: 23 (Connected – User hung up due to unrecognized input).
+        # 
+        # - SucceededClientHangUp: 24 (Connected – User hung up).
+        # 
+        # - SucceededTransferByIntent: 25 (Connected – Transferred to an agent based on an intent match).
+        # 
+        # - SucceededTransferAfterNoAnswer: 26 (Connected – Transferred to an agent due to unrecognized input).
+        # 
+        # - SucceededInoInterAction: 27 (Connected – No user interaction).
+        # 
+        # - SucceededError: 28 (Connected – Call interrupted by a system error).
+        # 
+        # - SucceededSpecialInterceptVoiceAssistant: 29 (Connected – Intercepted by a voice assistant).
+        # 
+        # - SucceededSpecialInterceptExtensionNumberTransfer: 30 (Connected – Intercepted due to an extension transfer).
+        # 
+        # - SucceededSpecialInterceptCustomSpecialIntercept: 31 (Connected – Intercepted by a custom rule).
+        # 
+        # - HighRiskSipCode: 32 (Not dialed – High-risk number).
         self.status = status
+        # Call ID.
         self.task_id = task_id
 
     def validate(self):
@@ -447,13 +598,21 @@ class QueryJobsResponseBodyJobsListTasksContact(DaraModel):
         role: str = None,
         state: str = None,
     ):
+        # Contact ID.
         self.contact_id = contact_id
+        # Contact name.
         self.contact_name = contact_name
+        # Honorific.
         self.honorific = honorific
+        # Job ID.
         self.job_id = job_id
+        # Contact phone number.
         self.phone_number = phone_number
+        # Business association ID.
         self.reference_id = reference_id
+        # Role.
         self.role = role
+        # Status.
         self.state = state
 
     def validate(self):
@@ -524,7 +683,9 @@ class QueryJobsResponseBodyJobsListTagHits(DaraModel):
         tag_group: str = None,
         tag_name: str = None,
     ):
+        # Tag group name.
         self.tag_group = tag_group
+        # Tag name.
         self.tag_name = tag_name
 
     def validate(self):
@@ -565,13 +726,21 @@ class QueryJobsResponseBodyJobsListSummary(DaraModel):
         summary_name: str = None,
         task_id: str = None,
     ):
+        # Category.
         self.category = category
+        # Content.
         self.content = content
+        # Call record ID.
         self.conversation_detail_id = conversation_detail_id
+        # Task ID.
         self.group_id = group_id
+        # Job ID.
         self.job_id = job_id
+        # Summary ID.
         self.summary_id = summary_id
+        # Summary name.
         self.summary_name = summary_name
+        # Call ID.
         self.task_id = task_id
 
     def validate(self):
@@ -642,7 +811,9 @@ class QueryJobsResponseBodyJobsListExtras(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Business data key.
         self.key = key
+        # Business data value.
         self.value = value
 
     def validate(self):
@@ -683,13 +854,29 @@ class QueryJobsResponseBodyJobsListContacts(DaraModel):
         role: str = None,
         state: str = None,
     ):
+        # Contact ID.
         self.contact_id = contact_id
+        # Contact name.
         self.contact_name = contact_name
+        # Honorific.
         self.honorific = honorific
+        # Job ID.
         self.job_id = job_id
+        # Phone number.
         self.phone_number = phone_number
+        # Associated business ID.
         self.reference_id = reference_id
+        # Role.
         self.role = role
+        # Status.
+        # 
+        # - Available
+        # 
+        # - WrongNumber
+        # 
+        # - DoesNotExist
+        # 
+        # - Suspended
         self.state = state
 
     def validate(self):

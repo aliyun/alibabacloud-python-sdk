@@ -17,12 +17,17 @@ class ListDataServiceApiCallStatisticsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Backend error details.
         self.message = message
+        # Paginated query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceApiCallStatisticsResponseBodyPageResult(DaraModel):
         call_statistics_list: List[main_models.ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList] = None,
         total_count: int = None,
     ):
+        # API call statistics list.
         self.call_statistics_list = call_statistics_list
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -138,19 +145,33 @@ class ListDataServiceApiCallStatisticsResponseBodyPageResultCallStatisticsList(D
         project_name: str = None,
         sql_id: int = None,
     ):
+        # API ID.
         self.api_id = api_id
+        # API name.
         self.api_name = api_name
+        # Authorized application names.
         self.app_name_list = app_name_list
+        # Number of authorized applications.
         self.authorized_app_count = authorized_app_count
+        # Average response time, in milliseconds.
         self.avg_response_time = avg_response_time
+        # Number of calls.
         self.call_count = call_count
+        # Creator.
         self.creator = creator
+        # Number of call errors.
         self.error_count = error_count
+        # Error rate.
         self.error_rate = error_rate
+        # Last call time. Format: yyyy-MM-dd HH:mm:ss.
         self.last_call_time = last_call_time
+        # Offline percentage.
         self.offline_rate = offline_rate
+        # Data service project ID.
         self.project_id = project_id
+        # Data service project.
         self.project_name = project_name
+        # SQL table primary key.
         self.sql_id = sql_id
 
     def validate(self):

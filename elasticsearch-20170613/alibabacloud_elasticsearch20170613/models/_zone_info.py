@@ -10,7 +10,12 @@ class ZoneInfo(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
+        # The zone status. Valid values:
+        # 
+        # - ISOLATION: offline
+        # - NORMAL: Normal.
         self.status = status
+        # The zone ID, which uniquely identifies the zone.
         self.zone_id = zone_id
 
     def validate(self):

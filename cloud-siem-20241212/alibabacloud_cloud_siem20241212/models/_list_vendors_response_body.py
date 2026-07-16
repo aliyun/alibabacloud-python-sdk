@@ -16,10 +16,15 @@ class ListVendorsResponseBody(DaraModel):
         total_count: int = None,
         vendors: List[main_models.ListVendorsResponseBodyVendors] = None,
     ):
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If this is your first query or if no next page exists, you do not need to specify this parameter. If a next page exists, set the value to the NextToken value that is returned in the last response.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
+        # The vendors.
         self.vendors = vendors
 
     def validate(self):
@@ -83,10 +88,19 @@ class ListVendorsResponseBodyVendors(DaraModel):
         vendor_name: str = None,
         vendor_type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The update time.
         self.update_time = update_time
+        # The vendor ID.
         self.vendor_id = vendor_id
+        # The vendor name.
         self.vendor_name = vendor_name
+        # The vendor type. Valid values:
+        # 
+        # - preset
+        # 
+        # - custom
         self.vendor_type = vendor_type
 
     def validate(self):

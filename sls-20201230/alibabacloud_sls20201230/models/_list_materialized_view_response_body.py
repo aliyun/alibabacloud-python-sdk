@@ -13,8 +13,11 @@ class ListMaterializedViewResponseBody(DaraModel):
         materialized_views: List[str] = None,
         total: int = None,
     ):
+        # The number of materialized views returned on the current page.
         self.count = count
+        # A list of materialized views.
         self.materialized_views = materialized_views
+        # The total number of materialized views that match the query.
         self.total = total
 
     def validate(self):

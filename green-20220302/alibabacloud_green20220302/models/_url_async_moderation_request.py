@@ -10,9 +10,9 @@ class UrlAsyncModerationRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # Service name: URL threat detection
         self.service = service
-        # The parameters required by the moderation service. The value is a JSON string.
+        # The parameter set for the content moderation object. This parameter is a JSON string. For more information, see the description of ServiceParameters.
         self.service_parameters = service_parameters
 
     def validate(self):

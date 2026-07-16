@@ -10,9 +10,9 @@ class DeleteDataTaskResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # The returned result.
         self.result = result
 
     def validate(self):

@@ -10,7 +10,9 @@ class DescribeUserBusinessBehaviorResponseBody(DaraModel):
         request_id: str = None,
         status_value: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The value of the business attribute.
         self.status_value = status_value
 
     def validate(self):

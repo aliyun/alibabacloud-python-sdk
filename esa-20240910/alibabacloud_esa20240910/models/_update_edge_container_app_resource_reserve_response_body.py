@@ -16,15 +16,15 @@ class UpdateEdgeContainerAppResourceReserveResponseBody(DaraModel):
         request_id: str = None,
         reserve_set: List[main_models.UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet] = None,
     ):
-        # The end time of the reservation. The input time is UTC. It takes +8 hours to enter Beijing time. For example, if the current time is 2006-01-02 06:04:05, you need to enter "2006-01-02T14:04:05Z".
+        # The reservation end time. This parameter uses UTC time. To convert from UTC+8, add 8 hours. For example, if the current time is 2006-01-02 06:04:05 in UTC+8, enter "2006-01-02T14:04:05Z".
         self.duration_time = duration_time
-        # Whether to enable resource reservation.
+        # Specifies whether to enable resource reservation.
         self.enable = enable
-        # Enable Permanent Incremental Backup
+        # Indicates whether reservation is permanently enabled.
         self.forever = forever
         # The request ID.
         self.request_id = request_id
-        # Reserved resource list.
+        # The list of reserved resources.
         self.reserve_set = reserve_set
 
     def validate(self):
@@ -86,55 +86,54 @@ class UpdateEdgeContainerAppResourceReserveResponseBodyReserveSet(DaraModel):
         region: str = None,
         replicas: int = None,
     ):
-        # The ISP. The following types are supported. You do not need to enter the ISP in regions outside the Chinese mainland:
+        # The Internet service provider (ISP). The following ISPs are supported. You do not need to specify an ISP for special administrative regions or areas outside China:
         # 
-        # *   China Mobile: cmcc
-        # *   China Telecom: chinanet
-        # *   China Unicom: unicom
+        # - China Mobile: cmcc
+        # - China Telecom: chinanet
+        # - China Unicom: unicom.
         self.isp = isp
-        # Information about the region. The Chinese mainland supports the input of regions and special administrative regions, and the regions outside the Chinese mainland support the input of countries. The following is the corresponding parameter mapping:
+        # The region information. For the Chinese mainland, you can specify a major region. For special administrative regions and areas outside China, you can specify a country or region. The following list shows the parameter mappings:
         # 
         # Chinese mainland:
         # 
-        # *   East China: huadong
-        # *   South China: huanan
-        # *   Central China: huazhong
-        # *   North China: huabei
-        # *   Northwest China: xibei
-        # *   Southwest China: xinan
-        # *   Northeast China: dongbei
+        # - East China: huadong
+        # - South China: huanan
+        # - Central China: huazhong
+        # - North China: huabei
+        # - Northwest China: xibei
+        # - Southwest China: xinan
+        # - Northeast China: dongbei
         # 
-        # Special Administrative Regions and overseas:
-        # 
-        # *   Taiwan, China: tw
-        # *   Macau, China: mo
-        # *   Hong Kong, China: hk
-        # *   Japan: jp
-        # *   United States: us
-        # *   Thailand: th
-        # *   Korea: kr
-        # *   Russia: ru
-        # *   Singapore: sg
-        # *   France: fr
-        # *   Spain: es
-        # *   Italy: it
-        # *   Sweden: se
-        # *   UAE: ae
-        # *   Indonesia: id
-        # *   Chile: cl
-        # *   Philippines: ph
-        # *   Malaysia: my
-        # *   Vietnam: vn
-        # *   Argentina: AR
-        # *   Australia: au
-        # *   Brazil: br
-        # *   Colombia: co
-        # *   Germany: de
-        # *   UK: GB
-        # *   Peru: pe
-        # *   Saudi Arabia: sa
-        # *   Netherlands: nl
-        # *   South Africa: za
+        # Special administrative regions and outside China:
+        # - Taiwan (China): tw
+        # - Macao (China): mo
+        # - Hong Kong (China): hk
+        # - Japan: jp
+        # - United States: us
+        # - Thailand: th
+        # - South Korea: kr
+        # - Russia: ru
+        # - Singapore: sg
+        # - France: fr
+        # - Spain: es
+        # - Italy: it
+        # - Sweden: se
+        # - United Arab Emirates: ae
+        # - Indonesia: id
+        # - Chile: cl
+        # - Philippines: ph
+        # - Malaysia: my
+        # - Vietnam: vn
+        # - Argentina: ar
+        # - Australia: au
+        # - Brazil: br
+        # - Colombia: co
+        # - Germany: de
+        # - United Kingdom: gb
+        # - Peru: pe
+        # - Saudi Arabia: sa
+        # - Netherlands: nl
+        # - South Africa: za.
         self.region = region
         # The number of container replicas.
         self.replicas = replicas

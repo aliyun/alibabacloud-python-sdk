@@ -15,13 +15,13 @@ class UpdateConnectionRequest(DaraModel):
         models: List[main_models.UpdateConnectionRequestModels] = None,
         secrets: Dict[str, str] = None,
     ):
-        # The connection configuration. The connection configuration is in the key-value format. The keys configured for different connection types are different. For more information, see the supplementary description of the request parameters in CreateConnection.
+        # The configuration of the connection, specified as key-value pairs. The keys in the Configs parameter vary based on the connection type. For more information, see the request parameters in the CreateConnection topic.
         self.configs = configs
-        # The connection description.
+        # The description of the connection.
         self.description = description
-        # The models.
+        # A list of model information.
         self.models = models
-        # The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+        # Key-value pairs that require encryption, such as database logon passwords and keys for model connections.
         self.secrets = secrets
 
     def validate(self):
@@ -84,14 +84,17 @@ class UpdateConnectionRequestModels(DaraModel):
         self.model = model
         # The model type. Valid values:
         # 
-        # *   LLM
-        # *   Embedding
-        # *   ReRank
+        # - LLM
+        # 
+        # - Embedding
+        # 
+        # - ReRank
         self.model_type = model_type
         # Indicates whether tool calling is supported. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Tool calling is supported.
+        # 
+        # - false: Tool calling is not supported.
         self.tool_call = tool_call
 
     def validate(self):

@@ -10,8 +10,12 @@ class QueryMaterialFileDetailRequest(DaraModel):
         biz_id: str = None,
         file_id: str = None,
     ):
+        # The application instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
 

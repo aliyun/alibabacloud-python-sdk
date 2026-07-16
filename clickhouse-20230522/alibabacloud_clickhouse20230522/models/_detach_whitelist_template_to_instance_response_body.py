@@ -13,8 +13,9 @@ class DetachWhitelistTemplateToInstanceResponseBody(DaraModel):
         data: main_models.DetachWhitelistTemplateToInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
-        # Request ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,8 +53,11 @@ class DetachWhitelistTemplateToInstanceResponseBodyData(DaraModel):
         detach_successed_list: List[main_models.DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList] = None,
         status: str = None,
     ):
+        # A list of instances that failed to detach.
         self.detach_fail_list = detach_fail_list
+        # A list of successfully detached instances.
         self.detach_successed_list = detach_successed_list
+        # The status of the operation. A value of `ok` indicates success.
         self.status = status
 
     def validate(self):
@@ -111,7 +115,9 @@ class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedList(DaraM
         dbinstance_id: str = None,
         templates: List[main_models.DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTemplates] = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # A list of whitelist templates.
         self.templates = templates
 
     def validate(self):
@@ -156,9 +162,13 @@ class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTempla
         template_id: str = None,
         template_name: str = None,
     ):
+        # A list of associated instances.
         self.db_instances = db_instances
+        # The IP whitelist.
         self.security_iplist = security_iplist
+        # The whitelist template ID.
         self.template_id = template_id
+        # The whitelist template name.
         self.template_name = template_name
 
     def validate(self):
@@ -212,6 +222,7 @@ class DetachWhitelistTemplateToInstanceResponseBodyDataDetachSuccessedListTempla
         self,
         dbinstance_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -240,7 +251,9 @@ class DetachWhitelistTemplateToInstanceResponseBodyDataDetachFailList(DaraModel)
         dbinstance_id: str = None,
         reason: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The reason the detach operation failed.
         self.reason = reason
 
     def validate(self):

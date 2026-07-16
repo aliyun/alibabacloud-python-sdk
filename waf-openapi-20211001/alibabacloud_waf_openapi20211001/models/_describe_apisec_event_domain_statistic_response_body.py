@@ -14,9 +14,9 @@ class DescribeApisecEventDomainStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The response parameters.
+        # The returned data.
         self.data = data
-        # Id of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -74,11 +74,11 @@ class DescribeApisecEventDomainStatisticResponseBodyData(DaraModel):
         self.api_count = api_count
         # The domain name.
         self.domain = domain
-        # The number of high-risk security events.
+        # The number of high-risk events.
         self.high = high
-        # The number of low-risk security events.
+        # The number of low-risk events.
         self.low = low
-        # The number of medium-risk security events.
+        # The number of medium-risk events.
         self.medium = medium
 
     def validate(self):

@@ -11,8 +11,12 @@ class UpdateAdHocFileRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateAdHocFileRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update request.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -51,10 +55,16 @@ class UpdateAdHocFileRequestUpdateCommand(DaraModel):
         file_id: int = None,
         project_id: int = None,
     ):
+        # The file content.
+        # 
         # This parameter is required.
         self.content = content
+        # The file ID.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

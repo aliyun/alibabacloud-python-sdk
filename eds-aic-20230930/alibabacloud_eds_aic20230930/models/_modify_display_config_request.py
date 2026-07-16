@@ -13,7 +13,9 @@ class ModifyDisplayConfigRequest(DaraModel):
         android_instance_ids: List[str] = None,
         display_config: main_models.ModifyDisplayConfigRequestDisplayConfig = None,
     ):
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
+        # The display settings.
         self.display_config = display_config
 
     def validate(self):
@@ -53,10 +55,15 @@ class ModifyDisplayConfigRequestDisplayConfig(DaraModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # The dots per inch (DPI). Valid values: 72 to 600.
         self.dpi = dpi
+        # > This parameter is not publicly available.
         self.fps = fps
+        # Specifies whether to lock the resolution.
         self.lock_resolution = lock_resolution
+        # The resolution height, in pixels.
         self.resolution_height = resolution_height
+        # The resolution width, in pixels.
         self.resolution_width = resolution_width
 
     def validate(self):

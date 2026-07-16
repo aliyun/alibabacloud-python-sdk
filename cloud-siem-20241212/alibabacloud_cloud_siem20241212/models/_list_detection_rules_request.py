@@ -32,27 +32,91 @@ class ListDetectionRulesRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The ATT\\&CK technique of the alert.
         self.alert_att_ck = alert_att_ck
+        # The threat level of the alert. Valid values:
+        # 
+        # - 5: critical.
+        # 
+        # - 4: important.
+        # 
+        # - 3: medium.
+        # 
+        # - 2: low.
+        # 
+        # - 1: informational.
         self.alert_level = alert_level
+        # The alert tactic phase.
         self.alert_tactic_id = alert_tactic_id
+        # The alert type.
         self.alert_type = alert_type
+        # The type of the detection rule expression.
         self.detection_expression_type = detection_expression_type
+        # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
+        # The list of detection rule IDs.
         self.detection_rule_ids = detection_rule_ids
+        # The name of the detection rule.
         self.detection_rule_name = detection_rule_name
+        # The status of the detection rule.
         self.detection_rule_status = detection_rule_status
+        # The type of the detection rule. Valid values:
+        # 
+        # - preset: a built-in detection rule.
+        # 
+        # - custom: a custom detection rule.
+        # 
+        # - custom_template: a rule template.
         self.detection_rule_type = detection_rule_type
+        # The event aggregation type. Valid values:
+        # 
+        # - none: No events are generated.
+        # 
+        # - graph_compute: graph computing (supported by predefined rules).
+        # 
+        # - expert: expert rule.
+        # 
+        # - passthrough: alert passthrough (one-to-one).
+        # 
+        # - window: aggregation of similar alerts (by window).
         self.incident_aggregation_type = incident_aggregation_type
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The ID of the log normalization category.
         self.log_category_id = log_category_id
+        # The ID of the log normalization schema.
         self.log_schema_id = log_schema_id
+        # The maximum number of data entries to read.
         self.max_results = max_results
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # - **asc**: ascending order. This is the default value.
+        # 
+        # - **desc**: descending order.
         self.order_direction = order_direction
+        # The field to sort by. Valid values:
+        # 
+        # - GmtCreate: the creation time.
+        # 
+        # - GmtModified: the update time.
         self.order_field_name = order_field_name
+        # The pagination parameter. This specifies the current page number.
         self.page_number = page_number
+        # The pagination parameter. This specifies the number of entries per page.
         self.page_size = page_size
+        # The region where the Data Management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
+        # The user ID that the administrator uses to switch to the perspective of another member.
         self.role_for = role_for
 
     def validate(self):

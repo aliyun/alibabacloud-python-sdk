@@ -13,7 +13,7 @@ class CreateMemberResponseBody(DaraModel):
         members: List[main_models.CreateMemberResponseBodyMembers] = None,
         request_id: str = None,
     ):
-        # The returned members.
+        # The list of members.
         self.members = members
         # The request ID.
         self.request_id = request_id

@@ -16,14 +16,14 @@ class AttachKeyPairResponseBody(DaraModel):
         results: main_models.AttachKeyPairResponseBodyResults = None,
         total_count: str = None,
     ):
-        # The number of instances to which the SSH key pair fails to be bound.
+        # The number of instances to which the key pair failed to be bound.
         self.fail_count = fail_count
-        # The name of the SSH key pair.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The request ID.
         self.request_id = request_id
         self.results = results
-        # The total number of instances to which the SSH key pair is bound.
+        # The total number of instances to which the key pair is bound.
         self.total_count = total_count
 
     def validate(self):

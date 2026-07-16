@@ -16,14 +16,24 @@ class GenerateImageTaskRequest(DaraModel):
         size: str = None,
         style: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The task ID of the article. If you do not have one, you can assign a universally unique identifier (UUID).
+        # 
         # This parameter is required.
         self.article_task_id = article_task_id
+        # The content of the paragraphs.
+        # 
         # This parameter is required.
         self.paragraph_list = paragraph_list
+        # The size of the image to generate.
+        # 
         # This parameter is required.
         self.size = size
+        # The style.
+        # 
         # This parameter is required.
         self.style = style
 
@@ -87,11 +97,31 @@ class GenerateImageTaskRequestParagraphList(DaraModel):
         task_id: str = None,
         task_status: str = None,
     ):
+        # The content of the paragraph.
+        # 
         # This parameter is required.
         self.content = content
+        # The paragraph ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The unique ID of the task.
+        # 
+        # > By default, you do not need to specify this parameter. The system automatically generates a task ID. If you specify the same TaskId for subsequent tasks, these tasks are considered part of the same conversation group.
         self.task_id = task_id
+        # The current status of the task.
+        # 
+        # - PENDING: The task is in the queue.
+        # 
+        # - RUNNING: The task is in progress.
+        # 
+        # - SUSPENDED: The task is suspended.
+        # 
+        # - SUCCEEDED: The task was successful.
+        # 
+        # - FAILED: The task failed.
+        # 
+        # - UNKNOWN: The task does not exist or its status is unknown.
         self.task_status = task_status
 
     def validate(self):

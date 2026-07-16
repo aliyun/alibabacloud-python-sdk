@@ -15,11 +15,17 @@ class QuerySyncStatusByAliUidResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # System status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned when the request fails.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -87,14 +93,23 @@ class QuerySyncStatusByAliUidResponseBodyData(DaraModel):
         latest_success_time: str = None,
         status: str = None,
     ):
+        # Alibaba Cloud account ID.
         self.ali_uid = ali_uid
+        # The enterprise ID.
         self.corp_id = corp_id
+        # Creation Time.
         self.gmt_created = gmt_created
+        # The updated at time.
         self.gmt_modified = gmt_modified
+        # Auto increment ID.
         self.id = id
+        # The latest start time.
         self.latest_begin_time = latest_begin_time
+        # The latest end time, regardless of whether the operation succeeded or failed.
         self.latest_end_time = latest_end_time
+        # The latest success time.
         self.latest_success_time = latest_success_time
+        # The user synchronization status.
         self.status = status
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeUserBuyStatusResponseBody(DaraModel):
         data: main_models.DescribeUserBuyStatusResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response parameters.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,31 +60,37 @@ class DescribeUserBuyStatusResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # Indicates whether the logon Alibaba Cloud account can be used to place orders for the threat analysis feature, such as purchase, upgrade, and specifications change orders. Valid values:
+        # Indicates whether the current account can perform operations on threat analysis orders. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The account can purchase, upgrade, or downgrade threat analysis.
+        # 
+        # - false: The account cannot perform operations on threat analysis orders.
         self.can_buy = can_buy
-        # The log storage capacity that is purchased for the threat analysis feature. Unit: GB.
+        # The purchased capacity of Simple Log Service (SLS) for threat analysis. Unit: GB.
         self.capacity = capacity
-        # The number of days before the expiration time of the threat analysis feature.
+        # The number of days before threat analysis expires.
         self.duration_days = duration_days
-        # The timestamp when the threat analysis feature expires. Unit: milliseconds.
+        # The expiration time of threat analysis. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that purchased threat analysis.
         self.main_user_id = main_user_id
-        # The username of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The name of the Alibaba Cloud account that purchased threat analysis.
         self.main_user_name = main_user_name
-        # The ID of the management account of the resource directory.
+        # The ID of the master account of the resource directory.
         self.master_user_id = master_user_id
-        # The display name of the management account of the resource directory.
+        # The display name of the master account of the resource directory.
         self.master_user_name = master_user_name
+        # The type of the current order.
+        # 
+        # - 0: The order includes threat analysis traffic and capacity.
+        # 
+        # - 1: The order includes only threat analysis capacity.
         self.rd_order = rd_order
-        # The instance ID of Security Center.
+        # The ID of the Security Center instance.
         self.sas_instance_id = sas_instance_id
-        # The ID of the logon Alibaba Cloud account.
+        # The ID of the currently logged-on Alibaba Cloud account.
         self.sub_user_id = sub_user_id
-        # The username of the logon Alibaba Cloud account.
+        # The name of the currently logged-on Alibaba Cloud account.
         self.sub_user_name = sub_user_name
 
     def validate(self):

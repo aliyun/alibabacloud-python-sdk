@@ -11,13 +11,15 @@ class UpdateCredentialProviderDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # 认证令牌提供商ID。
+        # The ID of the credential provider.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # 描述。
+        # A description of the credential provider.
+        # 
+        # > The description can be up to 128 characters long.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

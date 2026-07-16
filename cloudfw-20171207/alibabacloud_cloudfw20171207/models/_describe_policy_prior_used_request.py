@@ -12,28 +12,31 @@ class DescribePolicyPriorUsedRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The direction of the traffic to which the access control policy applies.
+        # The traffic direction of the access control policy.
         # 
         # Valid values:
         # 
-        # *   **in**: inbound.
-        # *   **out**: outbound.
+        # - **in**: Inbound traffic
+        # 
+        # - **out**: Outbound traffic
         # 
         # This parameter is required.
         self.direction = direction
-        # The IP version of the asset that is protected by Cloud Firewall.
+        # The IP version for assets protected by Cloud Firewall.
         # 
         # Valid values:
         # 
-        # *   **4** (default): IPv4.
-        # *   **6**: IPv6.
+        # - **4** (Default): IPv4
+        # 
+        # - **6**: IPv6
         self.ip_version = ip_version
-        # The language of the content within the request and response.
+        # The language of the request and response.
         # 
         # Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (Default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The source IP address of the request.
         self.source_ip = source_ip

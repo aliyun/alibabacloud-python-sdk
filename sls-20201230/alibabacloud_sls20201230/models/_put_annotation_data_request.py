@@ -16,7 +16,7 @@ class PutAnnotationDataRequest(DaraModel):
     ):
         # The unique identifier of the data.
         self.annotationdata_id = annotationdata_id
-        # The data structure of the request.
+        # The data struct.
         self.ml_data_param = ml_data_param
         # The raw log data.
         self.raw_log = raw_log

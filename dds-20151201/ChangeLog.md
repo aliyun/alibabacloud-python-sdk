@@ -1,3 +1,14 @@
+2026-07-15 Version: 9.4.1
+- Update API CreateNode: add request parameters SearchDBInstanceClass.
+- Update API CreateNode: add request parameters SearchNodeCount.
+- Update API CreateNode: add request parameters SearchStorage.
+- Update API DescribeClusterRecoverTime: add request parameters OnlyDbTableRecovery.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.AIGatewayEnabled.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardSearchNodes.
+- Update API DescribeInstanceRecoverTime: add request parameters OnlyDbTableRecovery.
+- Update API RestartDBInstance: add request parameters NodeType.
+
+
 2026-04-13 Version: 9.4.0
 - Support API DescribeBinlogFiles.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ColdDataEnabled.

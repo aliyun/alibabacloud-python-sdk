@@ -18,41 +18,41 @@ class DescribeRenewalPriceRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The synchronized expiration date. If you specify this parameter, the price for renewing a specified instance to the specified synchronized expiration date is queried. Valid values: 1 to 28.
+        # The unified expiration date. After you specify this parameter, the price for renewing the instance to the unified expiration date is returned. Valid values: 1 to 28.
         # 
-        # For information about how to synchronize the expiration dates of instances, see [Synchronize the expiration dates of instances](https://help.aliyun.com/document_detail/108486.html).
+        # For more information about the unified expiration date feature, see [Settings for instance expires](https://help.aliyun.com/document_detail/108486.html).
         # 
-        # > The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the `ExpectedRenewDay` parameter are mutually exclusive.
+        # > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
         self.expected_renew_day = expected_renew_day
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The renewal period. Valid values:
+        # The renewal duration. Valid values:
         # 
-        # *   Valid values when the `PriceUnit` parameter is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
-        # *   Valid values when the `PriceUnit` parameter is set to `Year`: 1, 2, 3.
+        # - When `PriceUnit` is set to `Month`: 1 to 9.
+        # - When `PriceUnit` is set to `Year`: 1 to 3.
         # 
         # Default value: 1.
         # 
-        # > The renewal period-related parameter pair (`Period` and `PeriodUnit`) and the `ExpectedRenewDay` parameter are mutually exclusive.
+        # > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
         self.period = period
-        # The unit of the renewal period. Valid values:
+        # The unit of the renewal duration. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month: the renewal duration is measured in months.
+        # - Year: the renewal duration is measured in years.
         # 
         # Default value: Month.
         self.price_unit = price_unit
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource. If the `ResourceType` parameter is set to`  instance `, the value of the `ResourceId` parameter is the ID of the specified instance.``
+        # The ID of the resource whose renewal price you want to query. When `ResourceType` is set to `instance`, `ResourceId` is equivalent to `InstanceId`.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to instance.
+        # The type of the resource whose renewal price you want to query. Valid values: instance.
         # 
         # Default value: instance.
         self.resource_type = resource_type

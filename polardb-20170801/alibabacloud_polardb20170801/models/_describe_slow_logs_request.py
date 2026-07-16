@@ -19,31 +19,31 @@ class DescribeSlowLogsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
-        # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+        # The end date of the query range. The end date cannot be earlier than the start date, and the interval between the start and end dates cannot exceed 31 days. Specify the date in `yyyy-MM-ddZ` format. The time is in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from 1.
+        # The page number.
         # 
-        # Default value: 1.
+        # The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 30 to 100. Default value: 30.
+        # The number of logs to return on each page. Valid values: 30 to 100. The default value is 30.
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+        # The start date of the query range. The date can be up to 31 days in the past. Specify the date in `yyyy-MM-ddZ` format. The time is in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

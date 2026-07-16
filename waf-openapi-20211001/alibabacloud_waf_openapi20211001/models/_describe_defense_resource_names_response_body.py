@@ -13,7 +13,7 @@ class DescribeDefenseResourceNamesResponseBody(DaraModel):
         resources: List[str] = None,
         total_count: int = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The names of the protected objects.
         self.resources = resources

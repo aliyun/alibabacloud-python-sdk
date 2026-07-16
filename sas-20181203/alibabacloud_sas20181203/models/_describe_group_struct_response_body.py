@@ -22,23 +22,22 @@ class DescribeGroupStructResponseBody(DaraModel):
         # The parent node of the group.
         self.group_father = group_father
         # The type of the server group. Valid values:
-        # 
-        # *   **0**: the default group
-        # *   **1**: other groups
+        # - **0**: default group
+        # - **1**: other group.
         self.group_flag = group_flag
-        # The ID of the server group.
+        # The ID of the asset group.
         self.group_id = group_id
-        # The sequence number.
+        # The sort order number.
         self.group_index = group_index
         # The level of the application group.
         self.group_level = group_level
         # The name of the server group.
         self.group_name = group_name
-        # An array that consists of child groups.
+        # The collection of child groups.
         self.groups = groups
-        # The number of servers in the group.
+        # The number of servers.
         self.machine_num = machine_num
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

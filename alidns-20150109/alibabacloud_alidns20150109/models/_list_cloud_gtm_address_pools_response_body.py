@@ -17,16 +17,17 @@ class ListCloudGtmAddressPoolsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The address pools.
         self.address_pools = address_pools
-        # Current page number, starting at **1**, default is **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # Unique request identification code.
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries in the address pool.
+        # The total number of address pools.
         self.total_items = total_items
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

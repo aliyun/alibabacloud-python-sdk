@@ -15,13 +15,13 @@ class ImageModerationResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code. The status code 200 indicates that the request was successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The moderation results.
+        # The results of the image content moderation.
         self.data = data
-        # The message that is returned in response to the request.
+        # The message returned for the request.
         self.msg = msg
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -74,17 +74,19 @@ class ImageModerationResponseBodyData(DaraModel):
         result: List[main_models.ImageModerationResponseBodyDataResult] = None,
         risk_level: str = None,
     ):
+        # The AccountId specified in the request.
         self.account_id = account_id
-        # The ID of the moderated object.
+        # The data ID of the detected object.
         # 
-        # >  If you specify the dataId parameter in the request, the value of the dataId parameter is returned in the response.
+        # > If you specify the dataId parameter in the request, the corresponding dataId is returned.
         self.data_id = data_id
-        # Auxiliary reference information.
+        # Auxiliary reference information for the image.
         self.ext = ext
+        # The ID of the manual review task.
         self.manual_task_id = manual_task_id
-        # The results of image moderation parameters such as the label parameter and the confidence parameter, which are an array structure.
+        # The results of the image moderation, including the threat labels and confidence levels. The value is an array.
         self.result = result
-        # Risk Level.
+        # The threat level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -156,13 +158,13 @@ class ImageModerationResponseBodyDataResult(DaraModel):
         label: str = None,
         risk_level: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        # The confidence level. The value ranges from 0 to 100, with two decimal places retained. Some labels do not have a confidence level.
         self.confidence = confidence
-        # The description of the result.
+        # The description.
         self.description = description
-        # The labels returned after the image moderation. Multiple risk labels and the corresponding scores of confidence levels may be returned for an image.
+        # The label returned after the image content is moderated. Multiple labels and scores may be returned for a single image.
         self.label = label
-        # Risk Level
+        # The threat level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -216,22 +218,23 @@ class ImageModerationResponseBodyDataExt(DaraModel):
         text_in_image: main_models.ImageModerationResponseBodyDataExtTextInImage = None,
         vl_content: main_models.ImageModerationResponseBodyDataExtVlContent = None,
     ):
+        # The detection information for the implicit AIGC identity in the image.
         self.aigc_data = aigc_data
-        # If a custom image library is hit, information about the hit custom image library is returned.
+        # A list of hits from the custom image library.
         self.custom_image = custom_image
-        # The returned face attribute information
+        # The facial attribute detection results.
         self.face_data = face_data
-        # Logo information.
+        # The identity information.
         self.logo_data = logo_data
-        # Returns the text information in the recognized image.
+        # The results of optical character recognition (OCR).
         self.ocr_result = ocr_result
-        # Person information list.
+        # A list of public figures.
         self.public_figure = public_figure
-        # The result of image recognition.
+        # The results of image object recognition.
         self.recognition = recognition
-        # Returns the text information in the hit image.
+        # The text information that is hit in the image.
         self.text_in_image = text_in_image
-        # the vl output content
+        # The output content.
         self.vl_content = vl_content
 
     def validate(self):
@@ -369,7 +372,7 @@ class ImageModerationResponseBodyDataExtVlContent(DaraModel):
         self,
         output_text: str = None,
     ):
-        # the vl output content
+        # The output content.
         self.output_text = output_text
 
     def validate(self):
@@ -399,11 +402,11 @@ class ImageModerationResponseBodyDataExtTextInImage(DaraModel):
         ocr_result: List[main_models.ImageModerationResponseBodyDataExtTextInImageOcrResult] = None,
         risk_word: List[str] = None,
     ):
-        # When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
+        # If a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
         self.custom_text = custom_text
-        # Returns the text information in the recognized image.
+        # Each line of text recognized in the image.
         self.ocr_result = ocr_result
-        # The risk words that are hit. Multiple words are separated by commas (,).
+        # The hit threat keywords.
         self.risk_word = risk_word
 
     def validate(self):
@@ -461,9 +464,9 @@ class ImageModerationResponseBodyDataExtTextInImageOcrResult(DaraModel):
         location: main_models.ImageModerationResponseBodyDataExtTextInImageOcrResultLocation = None,
         text: str = None,
     ):
-        # Location information.
+        # The coordinates of the text line.
         self.location = location
-        # The text information in the recognized image.
+        # The text.
         self.text = text
 
     def validate(self):
@@ -502,13 +505,13 @@ class ImageModerationResponseBodyDataExtTextInImageOcrResultLocation(DaraModel):
         x: int = None,
         y: int = None,
     ):
-        # The height of the text area, in pixels.
+        # The height of the text area. Unit: pixel.
         self.h = h
-        # The width of the text area, in pixels.
+        # The width of the text area. Unit: pixel.
         self.w = w
-        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the text area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.x = x
-        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the text area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.y = y
 
     def validate(self):
@@ -556,11 +559,11 @@ class ImageModerationResponseBodyDataExtTextInImageCustomText(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # Custom words, multiple words separated by commas.
+        # The custom words. Separate multiple words with commas.
         self.key_words = key_words
-        # Custom library ID.
+        # The custom library ID.
         self.lib_id = lib_id
-        # Custom library name.
+        # The name of the custom library.
         self.lib_name = lib_name
 
     def validate(self):
@@ -601,9 +604,9 @@ class ImageModerationResponseBodyDataExtRecognition(DaraModel):
         classification: str = None,
         confidence: float = None,
     ):
-        # The category of image recognition.
+        # The category of the recognized object in the image.
         self.classification = classification
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        # The confidence level. The value ranges from 0 to 100, with two decimal places retained. No confidence level is returned when the value is nonLabel.
         self.confidence = confidence
 
     def validate(self):
@@ -639,11 +642,11 @@ class ImageModerationResponseBodyDataExtPublicFigure(DaraModel):
         figure_name: str = None,
         location: List[main_models.ImageModerationResponseBodyDataExtPublicFigureLocation] = None,
     ):
-        # Identified person coding information.
+        # The ID of the detected public figure.
         self.figure_id = figure_id
-        # Identified person name information.
+        # The name of the detected public figure.
         self.figure_name = figure_name
-        # the data array of location info
+        # The location of the identity.
         self.location = location
 
     def validate(self):
@@ -694,13 +697,13 @@ class ImageModerationResponseBodyDataExtPublicFigureLocation(DaraModel):
         x: int = None,
         y: int = None,
     ):
-        # The height
+        # The height of the detected area. Unit: pixel.
         self.h = h
-        # The weight
+        # The width of the detected area. Unit: pixel.
         self.w = w
-        # X coordinate
+        # The distance from the upper-left corner of the detected area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.x = x
-        # Y coordinate
+        # The distance from the upper-left corner of the detected area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.y = y
 
     def validate(self):
@@ -747,9 +750,9 @@ class ImageModerationResponseBodyDataExtOcrResult(DaraModel):
         location: main_models.ImageModerationResponseBodyDataExtOcrResultLocation = None,
         text: str = None,
     ):
-        # Location information.
+        # The coordinates of the text line.
         self.location = location
-        # The text information in the recognized image.
+        # A single line of recognized text.
         self.text = text
 
     def validate(self):
@@ -788,13 +791,13 @@ class ImageModerationResponseBodyDataExtOcrResultLocation(DaraModel):
         x: int = None,
         y: int = None,
     ):
-        # The height of the text area, in pixels.
+        # The height of the text area. Unit: pixel.
         self.h = h
-        # The width of the text area, in pixels.
+        # The width of the text area. Unit: pixel.
         self.w = w
-        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the text area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.x = x
-        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the text area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.y = y
 
     def validate(self):
@@ -841,9 +844,9 @@ class ImageModerationResponseBodyDataExtLogoData(DaraModel):
         location: main_models.ImageModerationResponseBodyDataExtLogoDataLocation = None,
         logo: List[main_models.ImageModerationResponseBodyDataExtLogoDataLogo] = None,
     ):
-        # Location information.
+        # The location of the logo.
         self.location = location
-        # Logo information.
+        # The identity information.
         self.logo = logo
 
     def validate(self):
@@ -890,11 +893,11 @@ class ImageModerationResponseBodyDataExtLogoDataLogo(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+        # The confidence score. The value ranges from 0 to 100, with two decimal places retained.
         self.confidence = confidence
-        # Logo category.
+        # The identity category.
         self.label = label
-        # Logo name.
+        # The identity name.
         self.name = name
 
     def validate(self):
@@ -937,13 +940,13 @@ class ImageModerationResponseBodyDataExtLogoDataLocation(DaraModel):
         x: int = None,
         y: int = None,
     ):
-        # The height of the text area, in pixels.
+        # The height of the detected area. Unit: pixel.
         self.h = h
-        # The width of the text area, in pixels.
+        # The width of the detected area. Unit: pixel.
         self.w = w
-        # The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the detected area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.x = x
-        # The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+        # The distance from the upper-left corner of the detected area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.y = y
 
     def validate(self):
@@ -999,33 +1002,33 @@ class ImageModerationResponseBodyDataExtFaceData(DaraModel):
         quality: main_models.ImageModerationResponseBodyDataExtFaceDataQuality = None,
         smile: float = None,
     ):
-        # The age recognition result.
+        # The detected age.
         self.age = age
-        # Indicates whether the recognition result of bangs is available.
+        # The detection result for bangs.
         self.bang = bang
-        # The gender recognition result.
+        # The gender detection result.
         self.gender = gender
-        # The recognition result of whether to wear glasses.
+        # Indicates whether the person is wearing glasses. Valid values:
         # 
-        # - None: No glasses.
+        # - None: The person is not wearing glasses.
         # 
-        # - Wear: Wear glasses.
+        # - Common: The person is wearing regular glasses.
         # 
-        # - Sunglass: Wear sunglasses.
+        # - Sunglass: The person is wearing sunglasses.
         self.glasses = glasses
-        # The hairstyle recognition result.
+        # The hairstyle detection result.
         self.hairstyle = hairstyle
-        # The recognition result of whether to wear a hat.
+        # The result of hat detection.
         self.hat = hat
         # The location of the face.
         self.location = location
-        # The recognition result of whether to wear a mask.
+        # The result of mask detection.
         self.mask = mask
-        # The identification result of whether there is a beard.
+        # The result of mustache detection.
         self.mustache = mustache
-        # The quality information of the face image.
+        # The quality of the face image.
         self.quality = quality
-        # The smiling degree of the face.
+        # The degree of the smile. The value ranges from 0 to 100. A higher score indicates a wider smile.
         self.smile = smile
 
     def validate(self):
@@ -1140,19 +1143,25 @@ class ImageModerationResponseBodyDataExtFaceDataQuality(DaraModel):
         roll: float = None,
         yaw: float = None,
     ):
-        # The blur of the face image. Valid values: 0 to 100. The higher the score, the more fuzzy it is.
-        # Recommended values: 0 to 25.
+        # The blurriness of the face image. The value ranges from 0 to 100. A higher score indicates a blurrier image.
+        # 
+        # A value from 0 to 25 is recommended.
         self.blur = blur
-        # The integrity of the human face. Recommended values:80 to 100.
+        # The integrity of the face. The value ranges from 0 to 100. A higher score indicates a more complete face.
+        # 
+        # A value from 80 to 100 is recommended.
         self.integrity = integrity
-        # The head-up or head-down angle of the face.
-        # Recommended values:-30 to 30.
+        # The pitch angle of the face.
+        # 
+        # A value from -30 to 30 is recommended.
         self.pitch = pitch
-        # The plane rotation angle of the face.
-        # Recommended values:-30 to 30.
+        # The roll angle of the face.
+        # 
+        # A value from -30 to 30 is recommended.
         self.roll = roll
-        # The left and right shaking angle of the human face.
-        # Recommended values:-30 to 30.
+        # The yaw angle of the face.
+        # 
+        # A value from -30 to 30 is recommended.
         self.yaw = yaw
 
     def validate(self):
@@ -1205,13 +1214,13 @@ class ImageModerationResponseBodyDataExtFaceDataMustache(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the result of the beard. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the mustache detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # The identification result of whether there is a beard.Valid values:
+        # Indicates whether a mustache is present. Valid values:
         # 
-        # - Has:have a beard.
+        # - Has: A mustache is present.
         # 
-        # - None:No beard.
+        # - None: No mustache is present.
         self.value = value
 
     def validate(self):
@@ -1246,13 +1255,13 @@ class ImageModerationResponseBodyDataExtFaceDataMask(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the result of wearing the mask. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the mask detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # The recognition result of whether to wear a mask. Valid values:
+        # Indicates whether a mask is worn. Valid values:
         # 
-        # - Wear a mask.
+        # - Wear: A mask is worn.
         # 
-        #  - None: No mask.
+        # - None: No mask is worn.
         self.value = value
 
     def validate(self):
@@ -1289,13 +1298,13 @@ class ImageModerationResponseBodyDataExtFaceDataLocation(DaraModel):
         x: int = None,
         y: int = None,
     ):
-        # The height of the face area. Unit: pixels.
+        # The height of the face area. Unit: pixel.
         self.h = h
-        # The width of the face area. Unit: pixels.
+        # The width of the face area. Unit: pixel.
         self.w = w
-        # The distance from the upper-left corner of the face area to the y-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+        # The distance from the upper-left corner of the face area to the y-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.x = x
-        # The distance from the upper-left corner of the face area to the x-axis with the upper-left corner of the image as the coordinate origin. Unit: pixels.
+        # The distance from the upper-left corner of the face area to the x-axis. The origin is the upper-left corner of the image. Unit: pixel.
         self.y = y
 
     def validate(self):
@@ -1342,13 +1351,13 @@ class ImageModerationResponseBodyDataExtFaceDataHat(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the result of wearing the hat. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the hat detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # The recognition result of whether to wear the hat. Valid values:
+        # Indicates whether a hat is detected. Valid values:
         # 
-        # - Wear: Wear a hat.
+        # - Wear: A hat is worn.
         # 
-        # - None: No hat.
+        # - None: No hat is worn.
         self.value = value
 
     def validate(self):
@@ -1383,15 +1392,15 @@ class ImageModerationResponseBodyDataExtFaceDataHairstyle(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the hairstyle recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the hairstyle detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # The hairstyle recognition result. Valid values:
+        # The detected hairstyle. Valid values:
         # 
-        # - Bald: bald head.
+        # - Bald: bald
         # 
-        # - Long: Long hair.
+        # - Long: long hair
         # 
-        # - Short: Short hair.
+        # - Short: short hair
         self.value = value
 
     def validate(self):
@@ -1426,13 +1435,13 @@ class ImageModerationResponseBodyDataExtFaceDataGender(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the gender recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the gender detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # The gender recognition result. Valid values:
+        # The detected gender. Valid values:
         # 
-        # - Male
+        # - Male: male
         # 
-        # - FeMale
+        # - FeMale: female
         self.value = value
 
     def validate(self):
@@ -1467,9 +1476,13 @@ class ImageModerationResponseBodyDataExtFaceDataBang(DaraModel):
         confidence: float = None,
         value: str = None,
     ):
-        # The confidence level of the bang recognition result. Valid values: 0 to 100. A higher value indicates a more credible result.
+        # The confidence level of the bangs detection. The value ranges from 0 to 100. A higher value indicates a more reliable result.
         self.confidence = confidence
-        # Indicates whether the recognition result of bangs is available.
+        # The detection result for bangs. Valid values:
+        # 
+        # - Has: The person has bangs.
+        # 
+        # - None: The person does not have bangs.
         self.value = value
 
     def validate(self):
@@ -1505,11 +1518,11 @@ class ImageModerationResponseBodyDataExtCustomImage(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # The image ID.
+        # The ID of the hit custom image.
         self.image_id = image_id
-        # The image library ID.
+        # The ID of the hit custom image library.
         self.lib_id = lib_id
-        # The image library name.
+        # The name of the hit custom image library.
         self.lib_name = lib_name
 
     def validate(self):
@@ -1549,6 +1562,7 @@ class ImageModerationResponseBodyDataExtAigcData(DaraModel):
         self,
         aigc: main_models.ImageModerationResponseBodyDataExtAigcDataAIGC = None,
     ):
+        # The detection information for the implicit AIGC identity.
         self.aigc = aigc
 
     def validate(self):
@@ -1584,12 +1598,29 @@ class ImageModerationResponseBodyDataExtAigcDataAIGC(DaraModel):
         reserved_code_1: str = None,
         reserved_code_2: str = None,
     ):
+        # The code or name of the service provider, which identifies the content producer.
         self.content_producer = content_producer
+        # The name, ID, or code of the propagation platform. For services that provide AI-generated content, this can be the same as the value of ContentProducer.
         self.content_propagator = content_propagator
+        # Indicates whether the content is generated by artificial intelligence (AI). Valid values:
+        # 
+        # - 1: The content is generated by AI.
+        # 
+        # - 2: (For distribution platforms only) The content may be generated by AI.
+        # 
+        # - 3: (For distribution platforms only) The content is suspected to be generated by AI.
         self.label = label
+        # The content production ID. This is a unique ID used on the production platform to trace the source of synthesized content.
         self.produce_id = produce_id
+        # The content propagation ID. This is a unique ID that the propagation platform assigns to the distributed synthetic content.
         self.propagate_id = propagate_id
+        # A reserved field.
+        # 
+        # This field can store information that the generative service provider uses for security protection to ensure the integrity of content and identities. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify key information.
         self.reserved_code_1 = reserved_code_1
+        # A reserved field.
+        # 
+        # This field can be used by content distribution service providers for security protection to ensure the integrity of content and identities. A hashing mechanism based on ContentProducer and ProduceID can be used to securely store and verify key information.
         self.reserved_code_2 = reserved_code_2
 
     def validate(self):

@@ -21,15 +21,25 @@ class ListBeebotIntentLgfResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The internal request ID.
         self.beebot_request_id = beebot_request_id
+        # The API status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of LGFs.
         self.lgfs = lgfs
+        # The message returned by the API.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -123,10 +133,15 @@ class ListBeebotIntentLgfResponseBodyLgfs(DaraModel):
         modify_time: str = None,
         rule_text: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The intent ID.
         self.intent_id = intent_id
+        # The ID of the utterance template.
         self.lgf_id = lgf_id
+        # The time when the template was last modified.
         self.modify_time = modify_time
+        # The content of the utterance template.
         self.rule_text = rule_text
 
     def validate(self):

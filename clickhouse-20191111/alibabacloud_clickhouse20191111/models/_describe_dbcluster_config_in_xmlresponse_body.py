@@ -10,7 +10,7 @@ class DescribeDBClusterConfigInXMLResponseBody(DaraModel):
         config: str = None,
         request_id: str = None,
     ):
-        # The values of the configuration parameters.
+        # The configuration parameters.
         self.config = config
         # The request ID.
         self.request_id = request_id

@@ -12,9 +12,13 @@ class EnableWhatsappROIMetricResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The value OK indicates that the request was successful.
+        # The request status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message

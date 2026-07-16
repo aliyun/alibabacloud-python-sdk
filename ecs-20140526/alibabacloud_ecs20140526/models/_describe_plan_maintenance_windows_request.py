@@ -17,14 +17,23 @@ class DescribePlanMaintenanceWindowsRequest(DaraModel):
         target_resource_group_id: str = None,
         target_resource_tags: main_models.DescribePlanMaintenanceWindowsRequestTargetResourceTags = None,
     ):
+        # Specifies whether the window is enabled or disabled.
         self.enable = enable
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
         self.max_results = max_results
+        # The pagination token. Set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
+        # The ID of the O&M window.
         self.plan_window_id = plan_window_id
+        # The name of the O&M window.
         self.plan_window_name = plan_window_name
+        # The region ID of the instance. You can call DescribeRegions to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which the O&M window applies.
         self.target_resource_group_id = target_resource_group_id
+        # The tags to which the O&M window applies.
         self.target_resource_tags = target_resource_tags
 
     def validate(self):
@@ -97,7 +106,9 @@ class DescribePlanMaintenanceWindowsRequestTargetResourceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag to which the window applies.
         self.key = key
+        # The value of the tag to which the window applies.
         self.value = value
 
     def validate(self):

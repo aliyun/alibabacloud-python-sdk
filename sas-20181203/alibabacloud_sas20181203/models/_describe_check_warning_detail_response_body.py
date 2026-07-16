@@ -21,37 +21,32 @@ class DescribeCheckWarningDetailResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
-        # The suggestion for the management of the risk item.
+        # The hardening suggestion for the baseline check risk item.
         self.advice = advice
-        # List of asset details to check.
+        # The list of checked asset details.
         self.check_detail_asset_info = check_detail_asset_info
-        # Detection content details.
+        # The details of the check content.
         self.check_detail_columns = check_detail_columns
         # The ID of the check item.
         self.check_id = check_id
-        # The additional information about the risk item.
+        # The supplementary description of the baseline check risk item.
         self.description = description
         # The name of the check item.
         self.item = item
         # The risk level of the check item. Valid values:
         # 
-        # *   **high**: The item is a high-risk item and is highlighted in red.
-        # *   **medium**: The item is a medium-risk item and is highlighted in orange.
-        # *   **low**: The item is a low-risk item and is highlighted in gray.
-        self.level = level
-        # The prompt for the risk item.
-        self.prompt = prompt
-        # The ID of the request, which is used to locate and troubleshoot issues.
-        self.request_id = request_id
-        # The type of the check item. Valid values:
+        # - **high**: High risk, highlighted in red.
         # 
-        # *   **hc_exploit**: unauthorized access
-        # *   **hc_djbh**: classified protection compliance
-        # *   **hc_best_secruity**: best security practice
-        # *   **hc_container**: container security
-        # *   **hc_custom**: custom baseline
-        # *   **cis**: Center for Internet Security (CIS) compliance
-        # *   **weak_password**: weak password
+        # - **medium**: Medium risk, highlighted in orange.
+        # 
+        # - **low**: Low risk, highlighted in gray.
+        self.level = level
+        # The check prompt for the baseline check risk item.
+        self.prompt = prompt
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+        self.request_id = request_id
+        # The type of the baseline check item.
+        # > You can call the [DescribeRiskType](~~DescribeRiskType~~) operation to view all baseline types.
         self.type = type
 
     def validate(self):
@@ -144,15 +139,15 @@ class DescribeCheckWarningDetailResponseBodyCheckDetailColumns(DaraModel):
         show_name: str = None,
         type: str = None,
     ):
-        # Detection content list.
+        # The list of check content.
         self.grids = grids
-        # Key to detect content.
+        # The key of the check content.
         self.key = key
-        # The detection content key corresponds to the display name.
+        # The display name that corresponds to the key of the check content.
         self.show_name = show_name
-        # Display type. Value:
-        # - **grid**: Detection grid
-        # - **text**: text
+        # The display type. Valid values:
+        # - **grid**: grid
+        # - **text**: text.
         self.type = type
 
     def validate(self):
@@ -208,13 +203,13 @@ class DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids(DaraModel):
         show_name: str = None,
         type: str = None,
     ):
-        # Key to detect content.
+        # The key of the check content.
         self.key = key
-        # The detection content key corresponds to the display name.
+        # The display name that corresponds to the key of the check content.
         self.show_name = show_name
-        # Display type. Value:
-        # - **grid**: Detection grid
-        # - **text**: text
+        # The display type. Valid values:
+        # - **grid**: grid
+        # - **text**: text.
         self.type = type
 
     def validate(self):

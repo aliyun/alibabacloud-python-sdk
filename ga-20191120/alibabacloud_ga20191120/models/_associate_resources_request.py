@@ -15,15 +15,29 @@ class AssociateResourcesRequest(DaraModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
+        # Alibaba Cloud Global Accelerator (GA) instance ID.
+        # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # Association pattern:  
+        # - **Managed**: Managed mode. GA restricts user operations based on management policies. Currently, no resources use this type.  
+        # - **Associated** (default): Loose coupling association. GA does not restrict user operations. WAF uses loose coupling.
         self.associated_mode = associated_mode
+        # Resource ID of the linked instance.
         self.associated_resource_id = associated_resource_id
+        # Region of the linked instance.
+        # 
         # This parameter is required.
         self.associated_resource_region_id = associated_resource_region_id
+        # Resource type of the linked instance.
+        # 
         # This parameter is required.
         self.associated_resource_type = associated_resource_type
+        # Indicates whether to perform a dry run of the request. Valid values:  
+        # - **true**: Sends a dry run request without associating resources. Checks include required parameters, request format, and business restrictions. If the check fails, an error is returned. If the check passes, an HTTP 2xx status code is returned.  
+        # - **false** (Default Value): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the endpoint group is created immediately.
         self.dry_run = dry_run
+        # Region ID of the basic Alibaba Cloud Global Accelerator (GA) instance. Valid value: **cn-hangzhou** only.
         self.region_id = region_id
 
     def validate(self):

@@ -13,17 +13,25 @@ class CreateDownloadJobRequest(DaraModel):
         display_name: str = None,
         name: str = None,
     ):
-        # 下载配置
+        # The download configuration.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # 任务描述
+        # The description of the log download task.
         self.description = description
-        # 任务显示名称
+        # The display name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # 代表资源名称的资源属性字段
+        # The name of the job. The name must meet the following requirements:
+        # 
+        # The job name must be unique within a project.
+        # 
+        # - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - It must start and end with a lowercase letter or a digit.
+        # 
+        # - The name must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
@@ -79,27 +87,29 @@ class CreateDownloadJobRequestConfiguration(DaraModel):
         sink: main_models.CreateDownloadJobRequestConfigurationSink = None,
         to_time: int = None,
     ):
+        # Specifies whether to allow the download of incomplete results. Valid values: \\`true\\` and \\`false\\`.
+        # 
         # This parameter is required.
         self.allow_in_complete = allow_in_complete
-        # 起点时间戳（精确到秒）
+        # The start time. This is a UNIX timestamp that is accurate to the second.
         # 
         # This parameter is required.
         self.from_time = from_time
-        # 源logstore
+        # The source Logstore.
         # 
         # This parameter is required.
         self.logstore = logstore
-        # 是否启用powerSql
+        # Specifies whether to enable PowerSQL. Valid values: \\`true\\` and \\`false\\`.
         self.power_sql = power_sql
-        # 查询语句
+        # The search statement.
         # 
         # This parameter is required.
         self.query = query
-        # 导出配置
+        # The export configuration.
         # 
         # This parameter is required.
         self.sink = sink
-        # 结束时间戳（精确到秒）
+        # The end time. This is a UNIX timestamp that is accurate to the second.
         # 
         # This parameter is required.
         self.to_time = to_time
@@ -172,19 +182,22 @@ class CreateDownloadJobRequestConfigurationSink(DaraModel):
         role_arn: str = None,
         type: str = None,
     ):
-        # 对象存储桶
+        # The destination Object Storage Service (OSS) bucket.
         self.bucket = bucket
-        # 压缩格式
+        # The compression format of the file. Valid values: \\`zstd\\`, \\`lz4\\`, \\`gzip\\`, and \\`none\\`.
         # 
         # This parameter is required.
         self.compression_type = compression_type
-        # 下载文件格式
+        # The format of the downloaded file. Valid values: \\`csv\\` and \\`json\\`.
         # 
         # This parameter is required.
         self.content_type = content_type
+        # The prefix of the path in the destination OSS bucket.
         self.prefix = prefix
-        # 下载使用roleArn
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role to use for the download.
         self.role_arn = role_arn
+        # The type of the destination. Set the value to \\`AliyunOSS\\`.
+        # 
         # This parameter is required.
         self.type = type
 

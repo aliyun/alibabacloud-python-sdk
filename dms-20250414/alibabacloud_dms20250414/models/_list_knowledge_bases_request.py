@@ -15,12 +15,32 @@ class ListKnowledgeBasesRequest(DaraModel):
         sort_order: str = None,
         tag: str = None,
     ):
+        # The filter conditions for the knowledge bases, specified as a JSON string. The only supported key is `state`. Valid values are `0` and `1`.
         self.filters = filters
+        # The maximum number of entries to return on each page. Use this parameter with the `NextToken` parameter to implement pagination.
         self.max_results = max_results
+        # A keyword to search for in the names of knowledge bases.
         self.name_pattern = name_pattern
+        # The token used to retrieve the next page of results. Valid values:
+        # 
+        # - Omit this parameter for the first request.
+        # 
+        # - If the previous response returned a **NextToken** value, use it to retrieve the next page of results.
         self.next_token = next_token
+        # The sort field. Valid values:
+        # 
+        # - `id`: Sorts by knowledge base ID. This is the default.
+        # 
+        # - `name`: Sorts by knowledge base name.
         self.sort_field_name = sort_field_name
+        # The sort order. Valid values:
+        # 
+        # - **ASC**: Ascending order. This is the default.
+        # 
+        # - **DESC**: Descending order.
         self.sort_order = sort_order
+        # The tag of the knowledge base. In DataAgent, this is the space ID.
+        # 
         # This parameter is required.
         self.tag = tag
 

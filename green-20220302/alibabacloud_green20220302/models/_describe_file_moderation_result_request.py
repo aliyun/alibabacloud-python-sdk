@@ -10,11 +10,11 @@ class DescribeFileModerationResultRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The service for enhanced file moderation.
         self.service = service
-        # The parameters required by the moderation service. The value is a JSON string.
+        # The parameters for the moderation service, specified as a JSON string.
         # 
-        # *   taskId: required. The URL of the object that you want to moderate. Make sure that the URL can be accessed over the Internet.
+        # - taskId: Required. The URL of the object to moderate. The URL must be accessible over the public network.
         self.service_parameters = service_parameters
 
     def validate(self):

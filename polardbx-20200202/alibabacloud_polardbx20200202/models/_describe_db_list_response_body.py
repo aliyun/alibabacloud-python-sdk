@@ -15,9 +15,13 @@ class DescribeDbListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of databases.
         self.data = data
+        # The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -75,10 +79,15 @@ class DescribeDbListResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         dbname: str = None,
     ):
+        # The list of accounts.
         self.accounts = accounts
+        # The character set.
         self.character_set_name = character_set_name
+        # The database description.
         self.dbdescription = dbdescription
+        # The instance name.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.dbname = dbname
 
     def validate(self):
@@ -139,7 +148,9 @@ class DescribeDbListResponseBodyDataAccounts(DaraModel):
         account_name: str = None,
         account_privilege: str = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The account privilege.
         self.account_privilege = account_privilege
 
     def validate(self):

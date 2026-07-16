@@ -17,17 +17,17 @@ class ListCacheReserveInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The cache reserve instances.
+        # A list of cache reserve instances.
         self.instance_info = instance_info
-        # Page number. Default value: **1**.
+        # The page number of the returned data.
         self.page_number = page_number
-        # Page size, default **500**, range: **1~500**.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
-        # Total pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,25 +100,28 @@ class ListCacheReserveInstancesResponseBodyInstanceInfo(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # Cache reserve capacity. Unit: GB.
+        # The cache reserve capacity, in GB.
         self.cache_reserve_capacity = cache_reserve_capacity
-        # Cache reserve usage region.
+        # The region where the cache reserve instance is used.
         self.cache_reserve_region = cache_reserve_region
         self.charge_type = charge_type
-        # Instance purchase time.
+        # The time when the instance was created.
         self.create_time = create_time
-        # Duration of the instance purchase, unit: months.
+        # The purchase duration of the instance, in months.
         self.duration = duration
-        # Instance expiration time.
+        # The expiration time of the instance.
         self.expire_time = expire_time
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # The status of the cache reserve instance. Valid values:
+        # The status of the instance. Valid values:
         # 
-        # *   **online**: The instance is in service.
-        # *   **offline**: The instance has expired within an allowable period. In this state, it is unavailable.
-        # *   **disable**: The instance has been released.
-        # *   **overdue**: The instance has been stopped due to overdue payments.
+        # - **online**: The instance is running normally.
+        # 
+        # - **offline**: The instance has expired and is unavailable but remains within the grace period.
+        # 
+        # - **disable**: The instance is disabled.
+        # 
+        # - **overdue**: The instance is suspended due to an overdue payment.
         self.status = status
 
     def validate(self):

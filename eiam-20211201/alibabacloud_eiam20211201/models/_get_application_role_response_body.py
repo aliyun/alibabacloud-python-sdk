@@ -11,7 +11,9 @@ class GetApplicationRoleResponseBody(DaraModel):
         application_role: main_models.GetApplicationRoleResponseBodyApplicationRole = None,
         request_id: str = None,
     ):
+        # The application role information.
         self.application_role = application_role
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,17 +54,17 @@ class GetApplicationRoleResponseBodyApplicationRole(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # 应用唯一标识
+        # The application ID.
         self.application_id = application_id
-        # 应用角色的唯一标识
+        # The application role ID.
         self.application_role_id = application_role_id
-        # 应用角色名称
+        # The application role name.
         self.application_role_name = application_role_name
-        # 应用角色值
+        # The application role value.
         self.application_role_value = application_role_value
-        # 应用角色描述
+        # The application role description.
         self.description = description
-        # EIAM 实例唯一标识
+        # The instance ID.
         self.instance_id = instance_id
 
     def validate(self):

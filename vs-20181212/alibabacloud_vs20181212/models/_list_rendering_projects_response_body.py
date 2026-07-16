@@ -14,8 +14,11 @@ class ListRenderingProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Project list
         self.projects = projects
+        # Request ID
         self.request_id = request_id
+        # Total number of matching projects
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,17 @@ class ListRenderingProjectsResponseBodyProjects(DaraModel):
         session_attribs: main_models.ListRenderingProjectsResponseBodyProjectsSessionAttribs = None,
         update_time: str = None,
     ):
+        # Project creation time
         self.creation_time = creation_time
+        # Project description
         self.description = description
+        # Project ID
         self.project_id = project_id
+        # Project name
         self.project_name = project_name
+        # Project session attributes
         self.session_attribs = session_attribs
+        # Last update time
         self.update_time = update_time
 
     def validate(self):
@@ -132,6 +141,7 @@ class ListRenderingProjectsResponseBodyProjectsSessionAttribs(DaraModel):
         self,
         start_mode: str = None,
     ):
+        # Startup mode
         self.start_mode = start_mode
 
     def validate(self):

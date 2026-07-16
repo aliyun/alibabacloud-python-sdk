@@ -16,17 +16,21 @@ class DeleteFlowVersionResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # Status code.
+        # The status code.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Content of the returned data.
+        # The response content.
         self.response = response
-        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):

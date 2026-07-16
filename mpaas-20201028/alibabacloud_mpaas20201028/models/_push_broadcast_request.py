@@ -39,6 +39,7 @@ class PushBroadcastRequest(DaraModel):
         un_bind_end_time: int = None,
         un_bind_period: int = None,
         un_bind_start_time: int = None,
+        vendor_template: str = None,
         workspace_id: str = None,
     ):
         self.android_channel = android_channel
@@ -76,6 +77,7 @@ class PushBroadcastRequest(DaraModel):
         self.un_bind_end_time = un_bind_end_time
         self.un_bind_period = un_bind_period
         self.un_bind_start_time = un_bind_start_time
+        self.vendor_template = vendor_template
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -177,6 +179,9 @@ class PushBroadcastRequest(DaraModel):
         if self.un_bind_start_time is not None:
             result['UnBindStartTime'] = self.un_bind_start_time
 
+        if self.vendor_template is not None:
+            result['VendorTemplate'] = self.vendor_template
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -273,6 +278,9 @@ class PushBroadcastRequest(DaraModel):
 
         if m.get('UnBindStartTime') is not None:
             self.un_bind_start_time = m.get('UnBindStartTime')
+
+        if m.get('VendorTemplate') is not None:
+            self.vendor_template = m.get('VendorTemplate')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

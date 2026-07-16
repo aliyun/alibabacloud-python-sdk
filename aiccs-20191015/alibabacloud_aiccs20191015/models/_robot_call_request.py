@@ -18,17 +18,34 @@ class RobotCallRequest(DaraModel):
         resource_owner_id: int = None,
         robot_id: int = None,
     ):
+        # Called number.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # Outbound caller number. View it in the Voice Service [Real Number Management](https://dyvmsnext.console.aliyun.com/number/list/normal) interface.
+        # 
         # This parameter is required.
         self.called_show_number = called_show_number
+        # Whether to enable the number status detection identity. Valid values:  
+        # 
+        # - **false** (Default Value): Disable.  
+        # - **true**: Enable.  
+        # > When enabled, the reason for unanswered calls will be recorded.
         self.early_media_asr = early_media_asr
+        # An ID reserved for the caller. This ID will be returned to the caller through the receipt message. It must be 1 to 15 bytes in length.
         self.out_id = out_id
         self.owner_id = owner_id
+        # Parameter list for the robot, in JSON format. The total length must not exceed 512 bytes. You can view the parameters in [Script Management](https://aiccs.console.aliyun.com/patter/list) > **Details** > **Input Parameters**, or by using the [ListRobotParams](https://help.aliyun.com/document_detail/2717999.html) API.
         self.params = params
+        # Whether to record the call. Valid values:
+        # 
+        # - **false** (default): Do not record.
+        # - **true**: Record.
         self.record_flag = record_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Robot ID, which is the script ID. View the reviewed and approved script ID in the [Script Management](https://aiccs.console.aliyun.com/patter/list) interface.
+        # 
         # This parameter is required.
         self.robot_id = robot_id
 

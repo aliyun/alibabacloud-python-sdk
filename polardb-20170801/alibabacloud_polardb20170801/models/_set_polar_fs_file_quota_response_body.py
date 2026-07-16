@@ -10,8 +10,9 @@ class SetPolarFsFileQuotaResponseBody(DaraModel):
         polar_fs_instance_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the PolarFS instance.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

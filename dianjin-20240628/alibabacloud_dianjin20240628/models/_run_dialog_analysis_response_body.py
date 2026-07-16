@@ -19,13 +19,21 @@ class RunDialogAnalysisResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed, in milliseconds.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -97,6 +105,7 @@ class RunDialogAnalysisResponseBodyData(DaraModel):
         self,
         dialog_analysis_resp_list: List[main_models.RunDialogAnalysisResponseBodyDataDialogAnalysisRespList] = None,
     ):
+        # The list of session analysis results.
         self.dialog_analysis_resp_list = dialog_analysis_resp_list
 
     def validate(self):
@@ -136,10 +145,15 @@ class RunDialogAnalysisResponseBodyDataDialogAnalysisRespList(DaraModel):
         session_id: str = None,
         status: str = None,
     ):
+        # The result of the session analysis.
         self.analysis_resp = analysis_resp
+        # The list of failed nodes.
         self.fail_node = fail_node
+        # The time when the session was created.
         self.gmt_create = gmt_create
+        # The session ID.
         self.session_id = session_id
+        # The execution status of the session analysis task.
         self.status = status
 
     def validate(self):
@@ -198,11 +212,17 @@ class RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisResp(DaraMo
         dialog_sop: str = None,
         dialog_summary: str = None,
     ):
+        # The session execution plan.
         self.dialog_exec_plan = dialog_exec_plan
+        # The list of session labels.
         self.dialog_labels = dialog_labels
+        # The session open analysis.
         self.dialog_open_analysis = dialog_open_analysis
+        # The session process analysis.
         self.dialog_process_analysis = dialog_process_analysis
+        # The session SOP.
         self.dialog_sop = dialog_sop
+        # The session summary.
         self.dialog_summary = dialog_summary
 
     def validate(self):
@@ -269,7 +289,9 @@ class RunDialogAnalysisResponseBodyDataDialogAnalysisRespListAnalysisRespDialogL
         name: str = None,
         value: str = None,
     ):
+        # The label name.
         self.name = name
+        # The tag value.
         self.value = value
 
     def validate(self):

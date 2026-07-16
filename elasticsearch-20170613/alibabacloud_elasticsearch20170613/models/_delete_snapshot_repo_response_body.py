@@ -10,12 +10,12 @@ class DeleteSnapshotRepoResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: reference warehouse deleted successfully
-        # *   false: reference warehouse deleted successfully failed
+        # - true: The reference repository is deleted.
+        # - false: The reference repository failed to be deleted.
         self.result = result
 
     def validate(self):

@@ -16,11 +16,19 @@ class ListDataCenterTableResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned in the response.
         self.data = data
+        # The code that indicates the result of the request. If the request fails, an error code is returned.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -78,10 +86,15 @@ class ListDataCenterTableResponseBodyData(DaraModel):
         total_elements: int = None,
         total_pages: int = None,
     ):
+        # A list of the data tables.
         self.content = content
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_elements = total_elements
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -150,15 +163,35 @@ class ListDataCenterTableResponseBodyDataContent(DaraModel):
         table_id: str = None,
         table_name: str = None,
     ):
+        # The database name.
+        # 
+        # - If `ImportType` is `FILE`, this parameter returns the file name.
         self.database_name = database_name
+        # The time when the data table description was last updated.
         self.desc_update_time = desc_update_time
+        # The ID of the DMS database.
+        # 
+        # - This parameter is not returned if `ImportType` is `FILE`.
         self.dms_db_id = dms_db_id
+        # The ID of the DMS instance that hosts the database.
+        # 
+        # - This parameter is not returned if `ImportType` is `FILE`.
         self.dms_instance_id = dms_instance_id
+        # The time when the data table was created.
         self.gmt_created = gmt_created
+        # The import type. Valid value:
+        # 
+        # - **FILE**: The data is imported from a file.
         self.import_type = import_type
+        # The instance name.
+        # 
+        # - If `ImportType` is `FILE`, this parameter returns the file ID.
         self.instance_name = instance_name
+        # The description of the data table.
         self.table_desc = table_desc
+        # The ID of the data table.
         self.table_id = table_id
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

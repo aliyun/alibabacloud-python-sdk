@@ -11,9 +11,14 @@ class ListTongyiConversationLogsRequest(DaraModel):
         robot_instance_id: str = None,
         session_id: str = None,
     ):
+        # The key for the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your root account.
         self.agent_key = agent_key
+        # The ID of the chatbot instance.
+        # 
         # This parameter is required.
         self.robot_instance_id = robot_instance_id
+        # The ID of the session.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

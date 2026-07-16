@@ -15,12 +15,20 @@ class CreateLabelTableRequest(DaraModel):
         name: str = None,
         project_id: str = None,
     ):
+        # The ID of the data source that contains the label table. Call the ListDatasources operation to obtain this ID.
+        # 
         # This parameter is required.
         self.datasource_id = datasource_id
+        # The field list.
+        # 
         # This parameter is required.
         self.fields = fields
+        # The name of the label table.
+        # 
         # This parameter is required.
         self.name = name
+        # The project ID. Call the ListProjects operation to obtain this ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -73,14 +81,32 @@ class CreateLabelTableRequest(DaraModel):
 class CreateLabelTableRequestFields(DaraModel):
     def __init__(
         self,
+        aligned_entity_name: str = None,
         attributes: List[str] = None,
         name: str = None,
         type: str = None,
     ):
+        self.aligned_entity_name = aligned_entity_name
+        # The field attributes. Valid values include:
+        # 
+        # ● `Partition`: A partition field.
+        # 
+        # ● `FeatureField`: A feature field.
+        # 
+        # ● `FeatureGenerationReserveField`: A reserved field for Feature Generation (FG).
+        # 
+        # ● `EventTime`: The event time.
+        # 
+        # ● `LabelField`: A label field.
+        # 
         # This parameter is required.
         self.attributes = attributes
+        # The name of the field.
+        # 
         # This parameter is required.
         self.name = name
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -92,6 +118,9 @@ class CreateLabelTableRequestFields(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aligned_entity_name is not None:
+            result['AlignedEntityName'] = self.aligned_entity_name
+
         if self.attributes is not None:
             result['Attributes'] = self.attributes
 
@@ -105,6 +134,9 @@ class CreateLabelTableRequestFields(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AlignedEntityName') is not None:
+            self.aligned_entity_name = m.get('AlignedEntityName')
+
         if m.get('Attributes') is not None:
             self.attributes = m.get('Attributes')
 

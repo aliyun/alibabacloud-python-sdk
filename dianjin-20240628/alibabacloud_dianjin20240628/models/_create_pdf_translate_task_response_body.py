@@ -16,13 +16,21 @@ class CreatePdfTranslateTaskResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Response time in milliseconds
         self.cost = cost
+        # Response data. Returns the task ID. Use this ID to query the task status and result.
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):

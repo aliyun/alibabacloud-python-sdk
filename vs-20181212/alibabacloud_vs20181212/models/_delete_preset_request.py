@@ -11,9 +11,13 @@ class DeletePresetRequest(DaraModel):
         owner_id: int = None,
         preset_id: str = None,
     ):
+        # The device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The preset ID.
+        # 
         # This parameter is required.
         self.preset_id = preset_id
 

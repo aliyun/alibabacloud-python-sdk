@@ -11,10 +11,15 @@ class DeleteBudgetPolicyRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the cost budget policy.
+        # 
         # This parameter is required.
         self.budget_policy_id = budget_policy_id
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

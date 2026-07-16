@@ -14,14 +14,15 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no more results are returned.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The resources to which the tags are added.
+        # The details of the resources and their tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -76,9 +77,11 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # *   **IPAM**
-        # *   **IPAMSCOPE**
-        # *   **IPAMPOOL**
+        # - **IPAM**: IPAM
+        # 
+        # - **IPAMSCOPE**: IPAM scope
+        # 
+        # - **IPAMPOOL**: IPAM address pool
         self.resource_type = resource_type
         # The tag key.
         self.tag_key = tag_key

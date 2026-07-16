@@ -20,21 +20,23 @@ class UpdateCloudGtmInstanceConfigAlertRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
-        self.accept_language = accept_language
-        # The alert configurations.
-        self.alert_config = alert_config
-        # The alert contact groups.
-        self.alert_group = alert_group
-        # The alert configuration mode of the instance. Valid values:
+        # - zh-CN: Chinese
         # 
-        # *   global: global alert configuration
-        # *   instance_config: custom alert configuration
+        # - en-US: English
+        self.accept_language = accept_language
+        # A list of alert configurations.
+        self.alert_config = alert_config
+        # A list of alert notification groups.
+        self.alert_group = alert_group
+        # The alert configuration mode for the instance. Valid values:
+        # 
+        # - global: The instance inherits the global alert configuration.
+        # 
+        # - instance_config: The instance uses a custom alert configuration.
         self.alert_mode = alert_mode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that ensures the idempotence of the request. The client must generate a unique value for this parameter. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The configuration ID of the access domain name. Two configuration IDs exist when an A record and an AAAA record are configured for the access domain name that is bound to the GTM instance. This ID uniquely identifies a configuration.
+        # The ID of the domain name instance configuration. A GTM instance can have two configurations for the same access domain name if you configure both A and AAAA records. The ConfigId uniquely identifies a configuration.
         self.config_id = config_id
         # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
@@ -111,29 +113,35 @@ class UpdateCloudGtmInstanceConfigAlertRequestAlertConfig(DaraModel):
         notice_type: str = None,
         sms_notice: bool = None,
     ):
-        # Specifies whether to configure DingTalk notifications. Valid values:
+        # Specifies whether to enable DingTalk notifications. Valid values:
         # 
-        # *   true: configures DingTalk notifications. DingTalk notifications are sent when alerts are triggered.
-        # *   false: does not configure DingTalk notifications.
+        # - true: Enabled. When an alert is triggered, a DingTalk message is sent.
+        # 
+        # - false: Disabled.
         self.dingtalk_notice = dingtalk_notice
-        # Specifies whether to configure email notifications. Valid values:
+        # Specifies whether to enable email notifications. Valid values:
         # 
-        # *   true: configures email notifications. Emails are sent when alerts are triggered.
-        # *   false: does not configure email notifications.
+        # - true: Enabled. When an alert is triggered, an email is sent.
+        # 
+        # - false: Disabled.
         self.email_notice = email_notice
-        # The type of the alert event. Valid values:
+        # The type of alert event. Valid values:
         # 
-        # *   addr_alert: The address is unavailable.
-        # *   addr_resume: The address becomes available.
-        # *   addr_pool_unavailable: The address pool is unavailable.
-        # *   addr_pool_available: The address pool becomes available.
+        # - addr_alert: The address is unavailable.
+        # 
+        # - addr_resume: The address has recovered.
+        # 
+        # - addr_pool_unavailable: The address pool is unavailable.
+        # 
+        # - addr_pool_available: The address pool has recovered.
         self.notice_type = notice_type
-        # Specifies whether to configure text message notifications. Valid values:
+        # Specifies whether to enable text message notifications. Valid values:
         # 
-        # *   true: configures text message notifications. Text messages are sent when alerts are triggered.
-        # *   false: does not configure text message notifications.
+        # - true: Enabled. When an alert is triggered, a text message is sent.
         # 
-        # Only the China site (aliyun.com) supports text message notifications.
+        # - false: Disabled.
+        # 
+        # Note: Text message notifications are supported only on the China site (aliyun.com).
         self.sms_notice = sms_notice
 
     def validate(self):

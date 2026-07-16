@@ -12,16 +12,21 @@ class CreateSAMLProviderRequest(DaraModel):
         encoded_samlmetadata_document: str = None,
         samlprovider_name: str = None,
     ):
+        # The supported signature algorithm. Valid values:
+        # 
+        # - rsa-sha256
+        # 
+        # - rsa-sha1 (default)
         self.authn_sign_algo = authn_sign_algo
-        # The description.
+        # The IdP escription.
         self.description = description
-        # The metadata file which is Base64-encoded.
+        # The metadata file, which is Base64-encoded.
         # 
         # The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
         self.encoded_samlmetadata_document = encoded_samlmetadata_document
-        # The name of the IdP.
+        # The IdP name.
         # 
-        # The name can be up to 128 characters in length. The name can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
+        # It can be up to 128 characters in length, and can contain letters, digits, `periods (.), hyphens (-), and underscores (_)`. The name cannot start or end with `periods (.), hyphens (-), or underscores (_)`.
         # 
         # This parameter is required.
         self.samlprovider_name = samlprovider_name

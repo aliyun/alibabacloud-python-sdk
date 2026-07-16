@@ -22,36 +22,24 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeCloudPhoneNodesRequestTags] = None,
     ):
+        # The ID of the bandwidth plan instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The region ID.
         self.biz_region_id = biz_region_id
         # The billing method. Only the subscription billing method is supported.
         self.charge_type = charge_type
-        # The maximum number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If a query doesn\\"t return all results, the response includes a NextToken value for pagination. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next query. If a query does not return all results, NextToken is not empty. Use the returned NextToken in your next query to continue.
         self.next_token = next_token
-        # The matrix IDs.
+        # A list of Cloud Phone matrix IDs.
         self.node_ids = node_ids
-        # The matrix name.
+        # The name of the Cloud Phone matrix.
         self.node_name = node_name
         self.node_name_list = node_name_list
-        # The matrix specification.
-        # 
-        # Valid values:
-        # 
-        # *   cpm.gn6.gx1
+        # The instance type of the Cloud Phone matrix.
         self.server_type = server_type
-        # The matrix status.
-        # 
-        # Valid values:
-        # 
-        # *   FAILED: The matrix failed to be created.
-        # *   RUNNING: The matrix is available.
-        # *   DELETING: The matrix is being deleted.
-        # *   NODE_READY: The matrix is ready, and cloud phone instances are being created.
-        # *   DELETED: The matrix is deleted.
-        # *   CREATING: The matrix is being created.
+        # The status of the Cloud Phone matrix.
         self.status = status
         self.tags = tags
 

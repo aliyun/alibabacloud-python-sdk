@@ -376,9 +376,6 @@ from ._describe_ecd_report_tasks_response import DescribeEcdReportTasksResponse
 from ._describe_flow_metric_request import DescribeFlowMetricRequest
 from ._describe_flow_metric_response_body import DescribeFlowMetricResponseBody
 from ._describe_flow_metric_response import DescribeFlowMetricResponse
-from ._describe_flow_statistic_request import DescribeFlowStatisticRequest
-from ._describe_flow_statistic_response_body import DescribeFlowStatisticResponseBody
-from ._describe_flow_statistic_response import DescribeFlowStatisticResponse
 from ._describe_forward_table_entries_request import DescribeForwardTableEntriesRequest
 from ._describe_forward_table_entries_response_body import DescribeForwardTableEntriesResponseBody
 from ._describe_forward_table_entries_response import DescribeForwardTableEntriesResponse
@@ -759,6 +756,9 @@ from ._query_history_avg_metric_list_response import QueryHistoryAvgMetricListRe
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequest
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBody
 from ._query_history_metric_distribution_response import QueryHistoryMetricDistributionResponse
+from ._query_history_usage_duration_rank_request import QueryHistoryUsageDurationRankRequest
+from ._query_history_usage_duration_rank_response_body import QueryHistoryUsageDurationRankResponseBody
+from ._query_history_usage_duration_rank_response import QueryHistoryUsageDurationRankResponse
 from ._reboot_desktops_request import RebootDesktopsRequest
 from ._reboot_desktops_response_body import RebootDesktopsResponseBody
 from ._reboot_desktops_response import RebootDesktopsResponse
@@ -916,6 +916,7 @@ from ._create_desktops_shrink_request import CreateDesktopsShrinkRequestTag
 from ._create_desktops_shrink_request import CreateDesktopsShrinkRequestUserCommands
 from ._create_drive_response_body import CreateDriveResponseBodyDrive
 from ._create_ecd_report_task_request import CreateEcdReportTaskRequestFilterList
+from ._create_network_package_request import CreateNetworkPackageRequestTag
 from ._create_office_site_accelerator_request import CreateOfficeSiteAcceleratorRequestAccelerateRegion
 from ._create_policy_group_request import CreatePolicyGroupRequestAuthorizeAccessPolicyRule
 from ._create_policy_group_request import CreatePolicyGroupRequestAuthorizeSecurityPolicyRule
@@ -990,7 +991,6 @@ from ._describe_directories_response_body import DescribeDirectoriesResponseBody
 from ._describe_drives_response_body import DescribeDrivesResponseBodyDrivesDesktopGroups
 from ._describe_drives_response_body import DescribeDrivesResponseBodyDrives
 from ._describe_ecd_report_tasks_response_body import DescribeEcdReportTasksResponseBodyExportTaskList
-from ._describe_flow_statistic_response_body import DescribeFlowStatisticResponseBodyDesktopFlowStatistic
 from ._describe_forward_table_entries_response_body import DescribeForwardTableEntriesResponseBodyForwardTableEntries
 from ._describe_fota_pending_desktops_response_body import DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions
 from ._describe_fota_pending_desktops_response_body import DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops
@@ -1019,6 +1019,8 @@ from ._describe_nasfile_systems_response_body import DescribeNASFileSystemsRespo
 from ._describe_nasfile_systems_response_body import DescribeNASFileSystemsResponseBodyFileSystems
 from ._describe_nat_gateways_response_body import DescribeNatGatewaysResponseBodyNatGatewaysIpLists
 from ._describe_nat_gateways_response_body import DescribeNatGatewaysResponseBodyNatGateways
+from ._describe_network_packages_request import DescribeNetworkPackagesRequestTag
+from ._describe_network_packages_response_body import DescribeNetworkPackagesResponseBodyNetworkPackagesTags
 from ._describe_network_packages_response_body import DescribeNetworkPackagesResponseBodyNetworkPackages
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesADConnectors
 from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSitesLogs
@@ -1148,6 +1150,7 @@ from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricL
 from ._query_history_avg_metric_list_response_body import QueryHistoryAvgMetricListResponseBodyAvgMetricList
 from ._query_history_metric_distribution_request import QueryHistoryMetricDistributionRequestRanges
 from ._query_history_metric_distribution_response_body import QueryHistoryMetricDistributionResponseBodyDistributionList
+from ._query_history_usage_duration_rank_response_body import QueryHistoryUsageDurationRankResponseBodyUsageDurationList
 from ._rebuild_desktops_response_body import RebuildDesktopsResponseBodyRebuildResults
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberListCdsIdentity
 from ._remove_file_permission_request import RemoveFilePermissionRequestMemberList
@@ -1535,9 +1538,6 @@ __all__ = [
     DescribeFlowMetricRequest,
     DescribeFlowMetricResponseBody,
     DescribeFlowMetricResponse,
-    DescribeFlowStatisticRequest,
-    DescribeFlowStatisticResponseBody,
-    DescribeFlowStatisticResponse,
     DescribeForwardTableEntriesRequest,
     DescribeForwardTableEntriesResponseBody,
     DescribeForwardTableEntriesResponse,
@@ -1918,6 +1918,9 @@ __all__ = [
     QueryHistoryMetricDistributionRequest,
     QueryHistoryMetricDistributionResponseBody,
     QueryHistoryMetricDistributionResponse,
+    QueryHistoryUsageDurationRankRequest,
+    QueryHistoryUsageDurationRankResponseBody,
+    QueryHistoryUsageDurationRankResponse,
     RebootDesktopsRequest,
     RebootDesktopsResponseBody,
     RebootDesktopsResponse,
@@ -2075,6 +2078,7 @@ __all__ = [
     CreateDesktopsShrinkRequestUserCommands,
     CreateDriveResponseBodyDrive,
     CreateEcdReportTaskRequestFilterList,
+    CreateNetworkPackageRequestTag,
     CreateOfficeSiteAcceleratorRequestAccelerateRegion,
     CreatePolicyGroupRequestAuthorizeAccessPolicyRule,
     CreatePolicyGroupRequestAuthorizeSecurityPolicyRule,
@@ -2149,7 +2153,6 @@ __all__ = [
     DescribeDrivesResponseBodyDrivesDesktopGroups,
     DescribeDrivesResponseBodyDrives,
     DescribeEcdReportTasksResponseBodyExportTaskList,
-    DescribeFlowStatisticResponseBodyDesktopFlowStatistic,
     DescribeForwardTableEntriesResponseBodyForwardTableEntries,
     DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions,
     DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops,
@@ -2178,6 +2181,8 @@ __all__ = [
     DescribeNASFileSystemsResponseBodyFileSystems,
     DescribeNatGatewaysResponseBodyNatGatewaysIpLists,
     DescribeNatGatewaysResponseBodyNatGateways,
+    DescribeNetworkPackagesRequestTag,
+    DescribeNetworkPackagesResponseBodyNetworkPackagesTags,
     DescribeNetworkPackagesResponseBodyNetworkPackages,
     DescribeOfficeSitesResponseBodyOfficeSitesADConnectors,
     DescribeOfficeSitesResponseBodyOfficeSitesLogs,
@@ -2307,6 +2312,7 @@ __all__ = [
     QueryHistoryAvgMetricListResponseBodyAvgMetricList,
     QueryHistoryMetricDistributionRequestRanges,
     QueryHistoryMetricDistributionResponseBodyDistributionList,
+    QueryHistoryUsageDurationRankResponseBodyUsageDurationList,
     RebuildDesktopsResponseBodyRebuildResults,
     RemoveFilePermissionRequestMemberListCdsIdentity,
     RemoveFilePermissionRequestMemberList,

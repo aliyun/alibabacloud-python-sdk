@@ -14,10 +14,15 @@ class CreatePostPayInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The returned results.
         self.data = data
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -72,7 +77,9 @@ class CreatePostPayInstanceResponseBodyData(DaraModel):
         instance_id: str = None,
         order_id: int = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):

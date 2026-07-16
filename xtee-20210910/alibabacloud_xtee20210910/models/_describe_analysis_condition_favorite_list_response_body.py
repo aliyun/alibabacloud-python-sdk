@@ -13,9 +13,9 @@ class DescribeAnalysisConditionFavoriteListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAnalysisConditionFavoriteListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -65,23 +65,23 @@ class DescribeAnalysisConditionFavoriteListResponseBodyResultObject(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Event start timestamp.
+        # The event start timestamp.
         self.event_begin_time = event_begin_time
-        # Event codes.
+        # The event code.
         self.event_codes = event_codes
-        # Event end time.
+        # The event end timestamp.
         self.event_end_time = event_end_time
-        # Field name.
+        # The field name.
         self.field_name = field_name
-        # Field value.
+        # The field value.
         self.field_value = field_value
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Condition name
+        # The condition name.
         self.name = name
-        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+        # The type. Valid values: BASIC: basic query. ADVANCE: advanced query. BATCH: batch query.
         self.type = type
 
     def validate(self):

@@ -12,6 +12,8 @@ class UpdateSyncQualityCheckDataRequest(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # jsonStr is a JSON string that contains all Custom Parameters for this API. For details, see **jsonStr property description** below.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

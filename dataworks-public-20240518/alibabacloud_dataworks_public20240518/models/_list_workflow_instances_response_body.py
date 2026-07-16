@@ -13,9 +13,9 @@ class ListWorkflowInstancesResponseBody(DaraModel):
         paging_info: main_models.ListWorkflowInstancesResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # Pagination information.
+        # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. Used for locating logs and troubleshooting issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListWorkflowInstancesResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The workflow instances.
+        # The list of workflow instances.
         self.workflow_instances = workflow_instances
 
     def validate(self):
@@ -132,54 +132,69 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances(DaraModel):
         workflow_parameters: str = None,
         workflow_task_instance_id: int = None,
     ):
+        # The business date.
         self.biz_date = biz_date
         # The creation time.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the instance.
         self.create_user = create_user
-        # The environment of the workspace. Valid values:
+        # The project environment.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod (production)
+        # 
+        # - Dev (development)
         self.env_type = env_type
         # The time when the instance finished running.
         self.finished_time = finished_time
-        # The workflow instance ID.
+        # The unique identifier of the workflow instance.
         self.id = id
         # The modification time.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who last modified the instance.
         self.modify_user = modify_user
-        # The name of the workflow instance.
+        # The name.
         self.name = name
         # The account ID of the workflow owner.
         self.owner = owner
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The time when the instance started to run.
+        # The time when the instance started running.
         self.started_time = started_time
-        # The status of the workflow instance. Valid values:
+        # The running status of the workflow instance.
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
+        # - NotRun: Not run
+        # 
+        # - Running: Running
+        # 
+        # - WaitTime: Waiting for TriggerTime
+        # 
+        # - CheckingCondition: Checking branch conditions
+        # 
+        # - WaitResource: Waiting for resources
+        # 
+        # - Failure: Failed
+        # 
+        # - Success: Succeeded
+        # 
+        # - Checking: Submitted for Data Quality check
         self.status = status
-        # The task tag.
+        # The task tags.
         self.tags = tags
-        # The type of the workflow instance. Valid values:
+        # The type of the workflow instance.
         # 
-        # *   Normal: Scheduled execution
-        # *   Manual: Manually triggered node
-        # *   SmokeTest: Smoke test
-        # *   SupplementData: Data backfill
-        # *   ManualWorkflow: Manually triggered workflow
-        # *   TriggerWorkflow: Triggered Workflow
+        # - Normal: Periodic scheduling
+        # 
+        # - Manual: Manual task
+        # 
+        # - SmokeTest: Testing
+        # 
+        # - SupplementData: Backfill data
+        # 
+        # - ManualWorkflow: Manual workflow
+        # 
+        # - TriggerWorkflow: Trigger-based workflow
         self.type = type
+        # The unified workflow instance ID. All workflow instances within the same business date of a single trigger share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The ID of the workflow to which the instance belongs.
         self.workflow_id = workflow_id
@@ -330,9 +345,9 @@ class ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstancesTags(DaraModel
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The tag key.
         self.key = key
-        # The value of a tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

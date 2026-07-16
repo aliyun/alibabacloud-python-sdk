@@ -17,14 +17,17 @@ class ListCustomPrivacyPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of custom terms.
         self.custom_privacy_policies = custom_privacy_policies
-        # 分页查询时每页行数。
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The pagination token returned by this call.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -95,17 +98,17 @@ class ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies(DaraModel):
         status: str = None,
         user_consent_type: str = None,
     ):
-        # 自定义条款Id
+        # The custom term ID.
         self.custom_privacy_policy_id = custom_privacy_policy_id
-        # 自定义条款名称
+        # The custom term name.
         self.custom_privacy_policy_name = custom_privacy_policy_name
-        # 若显示语言未配置时，门户侧展示默认语言展示条款。
+        # The default language term entry. The value is obtained from the LanguageCode field returned by the ListLanguages operation.
         self.default_language_code = default_language_code
-        # 实例id
+        # The instance ID.
         self.instance_id = instance_id
-        # 自定义条款状态
+        # The custom term status.
         self.status = status
-        # 自定义条款同意类型，是默认同意，还是用户勾选同意
+        # The consent type of the custom term.
         self.user_consent_type = user_consent_type
 
     def validate(self):

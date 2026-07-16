@@ -17,25 +17,25 @@ class CreateSampleRequest(DaraModel):
         sample_values: str = None,
         upload_type: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # OSS client uploaded file name
+        # The name of the file uploaded by the OSS client.
         self.client_file_name = client_file_name
-        # OSS client address
+        # The OSS client address.
         self.client_path = client_path
-        # File type
+        # The file type.
         self.file_type = file_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Sample tag
+        # The label of the data sample.
         self.sample_tag = sample_tag
-        # Sample type
+        # The type of the data sample.
         self.sample_type = sample_type
-        # Sample values
+        # The values of the data sample.
         self.sample_values = sample_values
-        # Upload type
+        # The upload type.
         self.upload_type = upload_type
 
     def validate(self):

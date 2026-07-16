@@ -13,6 +13,8 @@ class GetFolderHeaders(DaraModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # Workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 

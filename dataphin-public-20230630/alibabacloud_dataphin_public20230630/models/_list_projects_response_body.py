@@ -17,12 +17,17 @@ class ListProjectsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListProjectsResponseBodyPageResult(DaraModel):
         project_list: List[main_models.ListProjectsResponseBodyPageResultProjectList] = None,
         total_count: int = None,
     ):
+        # The paginated list of projects.
         self.project_list = project_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -140,21 +147,37 @@ class ListProjectsResponseBodyPageResultProjectList(DaraModel):
         realtime_data_source_name: str = None,
         type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The compute source ID.
         self.data_source_id = data_source_id
+        # The name of the compute source.
         self.data_source_name = data_source_name
+        # The description.
         self.description = description
+        # The display name of the project.
         self.display_name = display_name
+        # The environment identifier.
         self.env = env
+        # The time when the project was created, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
+        # The time when the project was last modified, in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modified = gmt_modified
+        # The project ID.
         self.id = id
+        # The project mode.
         self.mode = mode
+        # The project name.
         self.name = name
+        # The project owner.
         self.owner = owner
+        # The project owner.
         self.owner_name = owner_name
+        # The real-time compute source ID.
         self.realtime_data_source_id = realtime_data_source_id
+        # The name of the real-time compute source.
         self.realtime_data_source_name = realtime_data_source_name
+        # The project type.
         self.type = type
 
     def validate(self):

@@ -15,12 +15,17 @@ class SubmitDeepWriteTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The task response object.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,7 +86,9 @@ class SubmitDeepWriteTaskResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The status of the task.
         self.status = status
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

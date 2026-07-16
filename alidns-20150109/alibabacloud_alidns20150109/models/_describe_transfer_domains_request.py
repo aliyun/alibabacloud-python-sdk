@@ -15,22 +15,31 @@ class DescribeTransferDomainsRequest(DaraModel):
         target_user_id: int = None,
         transfer_type: str = None,
     ):
-        # Specifies the domain name for which you want to view the transfer record.
+        # The domain name. Use this parameter to query the transfer records of a specific domain name.
         self.domain_name = domain_name
-        # The user ID from which the domain name was transferred to the current account.
+        # The ID of the source account. Use this parameter to query the list of domain names transferred from this account to the current account.
         self.from_user_id = from_user_id
-        # The language.
-        self.lang = lang
-        # The page number. Pages start from page 1. Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
-        self.page_size = page_size
-        # The user ID to which the domain name was transferred from the current account.
-        self.target_user_id = target_user_id
-        # The transfer type. Valid values:
+        # The language of the response.
         # 
-        # *   IN: The domain name was transferred to the current account.
-        # *   OUT: The domain name was transferred from the current account.
+        # Valid values:
+        # 
+        # zh: Chinese
+        # 
+        # en: English
+        # 
+        # The default value is zh.
+        self.lang = lang
+        # The page number. The value starts from 1. The default value is 1.
+        self.page_number = page_number
+        # The number of entries per page. The maximum value is 100. The default value is 20.
+        self.page_size = page_size
+        # The ID of the destination account. Use this parameter to query the list of domain names transferred from the current account to this account.
+        self.target_user_id = target_user_id
+        # The type of transfer. Valid values:
+        # 
+        # - IN: The list of domain names transferred to the current account.
+        # 
+        # - OUT: The list of domain names transferred from the current account.
         # 
         # This parameter is required.
         self.transfer_type = transfer_type

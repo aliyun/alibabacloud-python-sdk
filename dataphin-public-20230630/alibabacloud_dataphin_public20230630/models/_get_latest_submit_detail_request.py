@@ -11,8 +11,12 @@ class GetLatestSubmitDetailRequest(DaraModel):
         op_tenant_id: int = None,
         submit_detail_query: main_models.GetLatestSubmitDetailRequestSubmitDetailQuery = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The pending submit query request.
+        # 
         # This parameter is required.
         self.submit_detail_query = submit_detail_query
 
@@ -50,8 +54,12 @@ class GetLatestSubmitDetailRequestSubmitDetailQuery(DaraModel):
         object_id: str = None,
         object_type: str = None,
     ):
+        # The object ID.
+        # 
         # This parameter is required.
         self.object_id = object_id
+        # The object type.
+        # 
         # This parameter is required.
         self.object_type = object_type
 

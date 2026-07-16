@@ -12,6 +12,8 @@ class Project(DaraModel):
         create_time: str = None,
         data_redundancy_type: str = None,
         description: str = None,
+        internal_endpoint: str = None,
+        internet_endpoint: str = None,
         last_modify_time: str = None,
         owner: str = None,
         project_name: str = None,
@@ -21,18 +23,36 @@ class Project(DaraModel):
         resource_group_id: str = None,
         status: str = None,
     ):
+        # The time when the project was created.
         self.create_time = create_time
+        # The data redundancy type.
         self.data_redundancy_type = data_redundancy_type
+        # The description of the project.
+        # 
         # This parameter is required.
         self.description = description
+        self.internal_endpoint = internal_endpoint
+        self.internet_endpoint = internet_endpoint
+        # The time when the project was last modified.
         self.last_modify_time = last_modify_time
+        # The Alibaba Cloud account to which the project belongs.
         self.owner = owner
+        # The name of the project, which is used as part of the host. The project name is globally unique within an Alibaba Cloud region and cannot be modified after creation.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The project quota.
         self.quota = quota
+        # Indicates whether the recycle bin is enabled.
         self.recycle_bin_enabled = recycle_bin_enabled
+        # The region to which the project belongs.
         self.region = region
+        # The ID of the resource group to which the project belongs.
         self.resource_group_id = resource_group_id
+        # The status of the project. Valid values:
+        # 
+        # - Normal: Normal.
+        # - Disable: Disabled.
         self.status = status
 
     def validate(self):
@@ -51,6 +71,12 @@ class Project(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.internal_endpoint is not None:
+            result['internalEndpoint'] = self.internal_endpoint
+
+        if self.internet_endpoint is not None:
+            result['internetEndpoint'] = self.internet_endpoint
 
         if self.last_modify_time is not None:
             result['lastModifyTime'] = self.last_modify_time
@@ -88,6 +114,12 @@ class Project(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('internalEndpoint') is not None:
+            self.internal_endpoint = m.get('internalEndpoint')
+
+        if m.get('internetEndpoint') is not None:
+            self.internet_endpoint = m.get('internetEndpoint')
 
         if m.get('lastModifyTime') is not None:
             self.last_modify_time = m.get('lastModifyTime')

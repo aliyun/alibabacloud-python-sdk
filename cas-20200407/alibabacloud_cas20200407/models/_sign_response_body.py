@@ -10,9 +10,9 @@ class SignResponseBody(DaraModel):
         request_id: str = None,
         signature: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The signature.
+        # The Base64-encoded signature.
         self.signature = signature
 
     def validate(self):

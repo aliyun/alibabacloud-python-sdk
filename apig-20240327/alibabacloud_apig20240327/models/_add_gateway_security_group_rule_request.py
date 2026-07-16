@@ -13,7 +13,7 @@ class AddGatewaySecurityGroupRuleRequest(DaraModel):
         port_ranges: List[str] = None,
         security_group_id: str = None,
     ):
-        # The description of security group rule N.
+        # The description of the security group rule.
         self.description = description
         # The port ranges.
         self.port_ranges = port_ranges

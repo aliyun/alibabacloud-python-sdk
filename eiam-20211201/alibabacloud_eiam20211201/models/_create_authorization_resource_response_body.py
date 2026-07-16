@@ -10,7 +10,9 @@ class CreateAuthorizationResourceResponseBody(DaraModel):
         authorization_resource_id: str = None,
         request_id: str = None,
     ):
+        # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

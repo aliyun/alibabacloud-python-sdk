@@ -10,7 +10,9 @@ class DescribePrivateDnsStatisticsRequest(DaraModel):
         domain_name_created_end_time: int = None,
         domain_name_created_start_time: int = None,
     ):
+        # The end of the domain name creation time. The value is a UNIX timestamp.
         self.domain_name_created_end_time = domain_name_created_end_time
+        # The start of the domain name creation time. The value is a UNIX timestamp.
         self.domain_name_created_start_time = domain_name_created_start_time
 
     def validate(self):

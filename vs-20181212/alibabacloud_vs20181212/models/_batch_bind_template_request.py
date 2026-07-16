@@ -14,13 +14,25 @@ class BatchBindTemplateRequest(DaraModel):
         replace: bool = None,
         template_id: str = None,
     ):
+        # Apply to all streams within the scope. Default value: false.
         self.apply_all = apply_all
+        # Instance ID. Separate multiple values with commas.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Instance type. Valid values:
+        # 
+        # - group (space)
+        # 
+        # - stream (stream)
+        # 
         # This parameter is required.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # Replace existing bindings. Default value: false.
         self.replace = replace
+        # Template ID.
+        # 
         # This parameter is required.
         self.template_id = template_id
 

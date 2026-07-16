@@ -13,13 +13,22 @@ class UpdateJobScriptRequest(DaraModel):
         script_content: str = None,
         version_description: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The script content.
         self.script_content = script_content
+        # The description of the script version.
+        # 
         # This parameter is required.
         self.version_description = version_description
 

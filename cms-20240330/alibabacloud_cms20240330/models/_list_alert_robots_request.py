@@ -16,10 +16,15 @@ class ListAlertRobotsRequest(DaraModel):
         types: List[str] = None,
         workspace: str = None,
     ):
+        # The chatbot name. Prefix fuzzy match is supported.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        # The chatbot ID.
         self.robot_ids = robot_ids
+        # The chatbot type.
         self.types = types
         self.workspace = workspace
 

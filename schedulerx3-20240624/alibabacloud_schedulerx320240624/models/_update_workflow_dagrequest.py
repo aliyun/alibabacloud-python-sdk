@@ -16,13 +16,22 @@ class UpdateWorkflowDAGRequest(DaraModel):
         dag_version: str = None,
         workflow_id: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The directed acyclic graph (DAG) of the workflow.
+        # 
         # This parameter is required.
         self.dag = dag
+        # The version of the DAG. To obtain this value, call the [ListDAGVersions](https://help.aliyun.com/document_detail/465989.html) operation.
         self.dag_version = dag_version
+        # The workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 
@@ -78,7 +87,9 @@ class UpdateWorkflowDAGRequestDag(DaraModel):
         edges: List[main_models.UpdateWorkflowDAGRequestDagEdges] = None,
         nodes: List[main_models.UpdateWorkflowDAGRequestDagNodes] = None,
     ):
+        # A list of edges in the workflow.
         self.edges = edges
+        # A list of nodes in the workflow.
         self.nodes = nodes
 
     def validate(self):
@@ -131,8 +142,11 @@ class UpdateWorkflowDAGRequestDagNodes(DaraModel):
         coordinate: main_models.UpdateWorkflowDAGRequestDagNodesCoordinate = None,
         id: int = None,
     ):
+        # The logical expression of the node.
         self.content = content
+        # The coordinates of the node.
         self.coordinate = coordinate
+        # The job ID.
         self.id = id
 
     def validate(self):
@@ -177,9 +191,13 @@ class UpdateWorkflowDAGRequestDagNodesCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Optional. The height of the node.
         self.height = height
+        # Optional. The width of the node.
         self.width = width
+        # The x-coordinate.
         self.x = x
+        # The y-coordinate.
         self.y = y
 
     def validate(self):
@@ -226,7 +244,9 @@ class UpdateWorkflowDAGRequestDagEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
+        # The job ID of the source node.
         self.source = source
+        # The job ID of the target node.
         self.target = target
 
     def validate(self):

@@ -15,12 +15,17 @@ class GetAuditNoteProcessingStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -85,11 +90,17 @@ class GetAuditNoteProcessingStatusResponseBodyData(DaraModel):
         task_id: str = None,
         update_time: int = None,
     ):
+        # OSS path where the parsed rule library is stored
         self.file_key = file_key
+        # Size of the rule library file, in bytes
         self.file_size = file_size
+        # Name of the parsed rule library
         self.note_name = note_name
+        # Task status. Valid values: PENDING, RUNNING, SUCCESSED, or FAILED
         self.status = status
+        # Task ID. Unique identifier for this task.
         self.task_id = task_id
+        # Update time
         self.update_time = update_time
 
     def validate(self):

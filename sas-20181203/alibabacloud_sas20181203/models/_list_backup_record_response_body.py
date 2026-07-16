@@ -14,11 +14,11 @@ class ListBackupRecordResponseBody(DaraModel):
         page_info: main_models.ListBackupRecordResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The details of the backup record.
+        # The list of backup records.
         self.backup_record_list = backup_record_list
         # The pagination information.
         self.page_info = page_info
-        # The request ID, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListBackupRecordResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paged query.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -138,27 +138,26 @@ class ListBackupRecordResponseBodyBackupRecordList(DaraModel):
         region_id: str = None,
         uuid: str = None,
     ):
-        # The timestamp when the backup task ended. Unit: milliseconds.
+        # The backup end time. The value is a timestamp in milliseconds.
         self.backup_end_time = backup_end_time
         # The backup task ID.
         self.backup_job_id = backup_job_id
         # The backup plan ID.
         self.backup_plan_id = backup_plan_id
-        # The timestamp when the backup task started. Unit: milliseconds.
+        # The backup start time. The value is a timestamp in milliseconds.
         self.backup_start_time = backup_start_time
-        # The backup task status. Valid value:
-        # 
-        # *   **BACKUP_COMPLETE**: The backup task is successful.
-        # *   **BACKUP_FAILED**: The backup task failed.
-        # *   **PARTIAL_COMPLETE**: The backup task is partially successful.
+        # The backup task status. Valid values:
+        # - **BACKUP_COMPLETE**: backup succeeded
+        # - **BACKUP_FAILED**: backup failed
+        # - **PARTIAL_COMPLETE**: partial backup succeeded.
         self.backup_status = backup_status
-        # The ID of the anti-ransomware agent.
+        # The anti-ransomware client ID.
         self.client_id = client_id
         # The error code of the backup task.
         self.error_code = error_code
-        # The error message of the backup task.
+        # The error details of the backup task.
         self.error_message = error_message
-        # The instance ID of the server.
+        # The ID of the server instance.
         self.instance_id = instance_id
         # The instance name of the asset.
         self.instance_name = instance_name
@@ -168,9 +167,9 @@ class ListBackupRecordResponseBodyBackupRecordList(DaraModel):
         self.intranet_ip = intranet_ip
         # The IP address of the server.
         self.ip = ip
-        # The ID of the region in which the backup is stored.
+        # The region ID of the backup service.
         self.region_id = region_id
-        # The UUID of the server whose data is backed up based on the anti-ransomware policy.
+        # The UUID of the server backed up by database anti-ransomware.
         self.uuid = uuid
 
     def validate(self):

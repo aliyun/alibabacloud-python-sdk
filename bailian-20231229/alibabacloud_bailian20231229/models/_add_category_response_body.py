@@ -15,12 +15,21 @@ class AddCategoryResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The HTTP status code returned.
         self.status = status
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,7 +92,9 @@ class AddCategoryResponseBodyData(DaraModel):
         category_id: str = None,
         category_name: str = None,
     ):
+        # The ID of the category. Save this ID for future API calls that use this category.
         self.category_id = category_id
+        # The name of the category.
         self.category_name = category_name
 
     def validate(self):

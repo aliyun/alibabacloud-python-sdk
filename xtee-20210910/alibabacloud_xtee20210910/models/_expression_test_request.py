@@ -15,27 +15,27 @@ class ExpressionTestRequest(DaraModel):
         reg_id: str = None,
         scene: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Test expression.
+        # The test expression.
         # 
         # This parameter is required.
         self.expression = expression
-        # Calculation expression variable
+        # The calculation expression variable.
         # 
         # This parameter is required.
         self.expression_variable = expression_variable
-        # Associated variable ID
+        # The associated variable ID.
         self.expression_variable_ids = expression_variable_ids
-        # Variable ID
+        # The variable ID.
         self.id = id
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Scene
+        # The scenario.
         # 
         # This parameter is required.
         self.scene = scene

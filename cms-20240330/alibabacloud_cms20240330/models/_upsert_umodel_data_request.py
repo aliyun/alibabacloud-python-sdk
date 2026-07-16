@@ -12,9 +12,9 @@ class UpsertUmodelDataRequest(DaraModel):
         elements: List[Any] = None,
         method: str = None,
     ):
-        # Element content
+        # The content of the element.
         self.elements = elements
-        # Method
+        # The method.
         self.method = method
 
     def validate(self):

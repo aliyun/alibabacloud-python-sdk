@@ -60,8 +60,9 @@ class CreateAccessKeyResponseBodyAccessKey(DaraModel):
         self.create_date = create_date
         # The status of the AccessKey pair. Valid values:
         # 
-        # *   Active
-        # *   Inactive
+        # - Active
+        # 
+        # - Inactive
         self.status = status
 
     def validate(self):

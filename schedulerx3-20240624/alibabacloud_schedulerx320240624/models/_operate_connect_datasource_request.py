@@ -12,12 +12,20 @@ class OperateConnectDatasourceRequest(DaraModel):
         password: str = None,
         type: int = None,
     ):
+        # Cluster ID
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Connection parameters of the data source
+        # 
         # This parameter is required.
         self.connection_params = connection_params
+        # Password of the database user.
+        # 
         # This parameter is required.
         self.password = password
+        # Type of the data source.
+        # 
         # This parameter is required.
         self.type = type
 

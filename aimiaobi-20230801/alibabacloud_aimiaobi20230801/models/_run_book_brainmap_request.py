@@ -16,15 +16,25 @@ class RunBookBrainmapRequest(DaraModel):
         word_number: int = None,
         workspace_id: str = None,
     ):
+        # Specifies whether to clear the cache. The default is `false`.
         self.clean_cache = clean_cache
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # The number of nodes on the second level of the mind map.
         self.node_number = node_number
+        # A prompt with additional instructions.
         self.prompt = prompt
         self.response_format = response_format
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The number of words per node.
         self.word_number = word_number
+        # The unique identifier for the Model Studio workspace. For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

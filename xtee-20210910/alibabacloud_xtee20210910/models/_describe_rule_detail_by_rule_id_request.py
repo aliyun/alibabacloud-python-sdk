@@ -13,17 +13,17 @@ class DescribeRuleDetailByRuleIdRequest(DaraModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # Sets the language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Primary key ID of the policy.
+        # The primary key ID of the policy.
         self.console_rule_id = console_rule_id
-        # Region code.
+        # The region ID.
         self.reg_id = reg_id
-        # Policy ID.
+        # The policy ID.
         self.rule_id = rule_id
-        # Primary key ID of the policy version.
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):

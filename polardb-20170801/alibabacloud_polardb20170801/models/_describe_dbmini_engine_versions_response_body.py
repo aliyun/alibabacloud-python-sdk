@@ -13,8 +13,9 @@ class DescribeDBMiniEngineVersionsResponseBody(DaraModel):
         dbrevision_version_list: List[main_models.DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList] = None,
         request_id: str = None,
     ):
+        # A list of information about the versions available for an upgrade.
         self.dbrevision_version_list = dbrevision_version_list
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,9 +60,21 @@ class DescribeDBMiniEngineVersionsResponseBodyDBRevisionVersionList(DaraModel):
         revision_version_code: str = None,
         revision_version_name: str = None,
     ):
+        # The release notes of the version.
         self.release_note = release_note
+        # The release state of the database version. Valid values:
+        # 
+        # - **Stable**: The version is stable.
+        # 
+        # - **Old**: The version is outdated. Upgrading to this version is not recommended.
+        # 
+        # - **HighRisk**: The version has a critical bug. Upgrading to this version is not recommended.
+        # 
+        # - **Beta**: The version is a beta version.
         self.release_type = release_type
+        # The code of the database engine revision version. Use this code to specify the target version for an upgrade.
         self.revision_version_code = revision_version_code
+        # The number of the database engine revision version.
         self.revision_version_name = revision_version_name
 
     def validate(self):

@@ -20,14 +20,23 @@ class AiNetworkSearchConfig(DaraModel):
         search_from: List[main_models.AiNetworkConfigSearchEngine] = None,
         search_rewrite: main_models.AiNetworkSearchConfigSearchRewrite = None,
     ):
+        # Specifies whether the plug-in feature is enabled by default.
         self.default_enable = default_enable
+        # The default search language code.
         self.default_lang = default_lang
+        # Specifies whether to add reference sources in the answer.
         self.need_reference = need_reference
+        # The plug-in running status.
         self.plugin_status = plugin_status
+        # The format template for reference content. The template must contain at least one %s placeholder.
         self.reference_format = reference_format
+        # The reference location.
         self.reference_location = reference_location
+        # The search engine configuration.
         self.search_engine_config = search_engine_config
+        # The list of search engines (multi-engine configuration).
         self.search_from = search_from
+        # The search term rewriting configuration.
         self.search_rewrite = search_rewrite
 
     def validate(self):
@@ -124,10 +133,15 @@ class AiNetworkSearchConfigSearchRewrite(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
+        # Specifies whether to enable search query rewriting.
         self.enable = enable
+        # The maximum number of search queries after rewriting.
         self.max_count = max_count
+        # The name of the model used for rewriting.
         self.model_name = model_name
+        # The ID of the rewriting service.
         self.service_id = service_id
+        # The timeout period for the rewriting request, in milliseconds.
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):

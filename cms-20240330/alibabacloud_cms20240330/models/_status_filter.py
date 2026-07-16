@@ -9,6 +9,7 @@ class StatusFilter(DaraModel):
         self,
         eq: str = None,
     ):
+        # Filters the results to include only resources with the specified status.
         self.eq = eq
 
     def validate(self):

@@ -17,11 +17,17 @@ class GetGeneratedContentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. true indicates success. false indicates failure.
         self.success = success
 
     def validate(self):
@@ -96,21 +102,37 @@ class GetGeneratedContentResponseBodyData(DaraModel):
         update_user: str = None,
         uuid: str = None,
     ):
+        # Rich text content
         self.content = content
+        # Content generation domain. Valid values: media (news) and government (government services)
         self.content_domain = content_domain
+        # Plain text content
         self.content_text = content_text
+        # Creation time
         self.create_time = create_time
+        # Creator
         self.create_user = create_user
+        # Device ID
         self.device_id = device_id
+        # Document ID
         self.id = id
+        # List of words to ignore during content audit (JSON string)
         self.ignore_content_audit_words = ignore_content_audit_words
+        # Keywords
         self.keyword_list = keyword_list
+        # Keywords (string format)
         self.keywords = keywords
+        # Last prompt used to generate this content
         self.prompt = prompt
+        # Session task ID
         self.task_id = task_id
+        # Title
         self.title = title
+        # Update time
         self.update_time = update_time
+        # Updater
         self.update_user = update_user
+        # UUID for traceability
         self.uuid = uuid
 
     def validate(self):

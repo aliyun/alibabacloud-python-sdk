@@ -15,18 +15,19 @@ class ModifyDBDescriptionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The description of the database. The description must meet the following requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must be 2 to 256 characters in length.
+        # - Cannot start with `http://` or `https://`.
+        # 
+        # - Must be 2 to 256 characters in length.
         # 
         # This parameter is required.
         self.dbdescription = dbdescription
-        # The name of the database.
+        # The database name.
         # 
         # This parameter is required.
         self.dbname = dbname

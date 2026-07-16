@@ -10,9 +10,9 @@ class ImportCertificateResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The ID of the certificate file, which is the unique identifier of the certificate file.
+        # The unique ID of the certificate file.
         self.id = id
-        # The request ID. Used to locate logs and troubleshoot issues.
+        # The ID of the request. This ID is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

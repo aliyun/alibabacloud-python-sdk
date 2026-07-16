@@ -25,7 +25,7 @@ class ModifyDesktopTimerRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies whether to use the `DesktopTimers`** parameter. Set the value to `true`**.
+        # Specifies whether to use the `DesktopTimers`\\*\\* parameter. Set the value to `true`\\*\\*.
         self.use_desktop_timers = use_desktop_timers
 
     def validate(self):
@@ -95,21 +95,21 @@ class ModifyDesktopTimerRequestDesktopTimers(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
+        # - true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false: does not forcibly execute the scheduled task.
+        # - false: does not forcibly execute the scheduled task.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.enforce = enforce
         # The interval at which the scheduled task is executed. Unit: minutes.
         self.interval = interval
@@ -117,125 +117,125 @@ class ModifyDesktopTimerRequestDesktopTimers(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Hibernate: hibernates the cloud computers.
+        # - Hibernate: hibernates the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Shutdown: stops the cloud computers.
+        # - Shutdown: stops the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.operation_type = operation_type
         # The reset type of the cloud computers.
         # 
         # Valid values:
         # 
-        # *   RESET_TYPE_SYSTE: resets the system disk.
+        # - RESET_TYPE_SYSTE: resets the system disk.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   RESET_TYPE_BOTH: resets data and user disks.
+        # - RESET_TYPE_BOTH: resets data and user disks.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.reset_type = reset_type
         # The type of the scheduled task.
         # 
         # Valid values:
         # 
-        # *   NoOperationDisconnect: Disconnects the cloud computers without performing operations on the cloud computers.
+        # - NoOperationDisconnect: Disconnects the cloud computers without performing operations on the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   LogoutShutdown: Stops the cloud computers when end users log out Alibaba Cloud Workspace clients.
+        # - LogoutShutdown: Stops the cloud computers when end users log out Alibaba Cloud Workspace clients.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   NoConnect: Disconnects the cloud computers when end users perform one of the actions that is specified by the OperationType parameter.
+        # - NoConnect: Disconnects the cloud computers when end users perform one of the actions that is specified by the OperationType parameter.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   TimerBoot: Starts the cloud computers on schedule.
+        # - TimerBoot: Starts the cloud computers on schedule.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   TimerReset: Resets the cloud computers on schedule.
+        # - TimerReset: Resets the cloud computers on schedule.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   LoginAutoConnect: automatically connects to the cloud computers when end users log on to Alibaba Cloud Workspace clients.
+        # - LoginAutoConnect: automatically connects to the cloud computers when end users log on to Alibaba Cloud Workspace clients.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   NoOperationShutdown: Stops the cloud computers without performing operations on the cloud computers.
+        # - NoOperationShutdown: Stops the cloud computers without performing operations on the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   TimerShutdown: Stops the cloud computers on schedule.
+        # - TimerShutdown: Stops the cloud computers on schedule.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   NoOperationReboot: Restarts the cloud computers without performing operations on the cloud computers.
+        # - NoOperationReboot: Restarts the cloud computers without performing operations on the cloud computers.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   TimerReboot: Restarts the cloud computers on schedule.
+        # - TimerReboot: Restarts the cloud computers on schedule.
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.timer_type = timer_type
 
     def validate(self):

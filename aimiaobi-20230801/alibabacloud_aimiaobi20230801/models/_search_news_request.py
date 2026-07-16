@@ -17,13 +17,21 @@ class SearchNewsRequest(DaraModel):
         query: str = None,
         search_sources: List[str] = None,
     ):
+        # The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/3027170.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Specifies whether to filter out results with empty content.
         self.filter_not_null = filter_not_null
+        # Specifies whether to include the full text of the article.
         self.include_content = include_content
+        # The page number. The default value is 1.
         self.page = page
+        # The number of records to return on each page. The default value is 10.
         self.page_size = page_size
+        # The search query.
         self.query = query
+        # A list of search sources.
         self.search_sources = search_sources
 
     def validate(self):

@@ -20,31 +20,33 @@ class ListVpcEndpointServicesByEndUserRequest(DaraModel):
         service_type: str = None,
         tag: List[main_models.ListVpcEndpointServicesByEndUserRequestTag] = None,
     ):
-        # The number of entries per page. Valid values: **1** to **1000**. Default value: **50**.
+        # The number of entries to return on each page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token.
         # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   If a next request is to be performed, set the value to the value of **NextToken** that is returned from the last call.
+        # - If this is your first request, do not specify this parameter.
+        # 
+        # - If more results are available, set this parameter to the **NextToken** value from the previous response to retrieve the next page.
         self.next_token = next_token
-        # The region ID of the endpoint.
+        # The region ID.
         # 
-        # You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the endpoint service that you want to query.
+        # The ID of the endpoint service.
         self.service_id = service_id
-        # The name of the endpoint service that you want to query.
+        # The name of the endpoint service.
         self.service_name = service_name
+        # The region ID of the endpoint service.
         self.service_region_id = service_region_id
         # The type of the endpoint service.
         # 
-        # Set the value to **Interface**. You can specify CLB and ALB instances as service resources for the endpoint service.
+        # Only **Interface** is supported. An interface endpoint allows you to use Application Load Balancers (ALBs), Classic Load Balancers (CLBs), and Network Load Balancers (NLBs) as service resources.
         self.service_type = service_type
-        # The tags.
+        # A list of tags to filter resources. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -129,13 +131,13 @@ class ListVpcEndpointServicesByEndUserRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The key of the tag. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The value of the tag. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

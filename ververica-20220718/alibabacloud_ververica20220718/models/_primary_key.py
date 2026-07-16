@@ -14,8 +14,12 @@ class PrimaryKey(DaraModel):
         constraint_type: str = None,
         enforced: bool = None,
     ):
+        # The primary key column group.
+        # 
         # This parameter is required.
         self.columns = columns
+        # The constraint name.
+        # 
         # This parameter is required.
         self.constraint_name = constraint_name
         # This parameter is required.

@@ -14,30 +14,30 @@ class GrantInstanceToVbrShrinkRequest(DaraModel):
         vbr_owner_uid: int = None,
         vbr_region_no: str = None,
     ):
-        # The VBRs that need to acquire permissions on the VPC. Valid values:
+        # The scope of VBR instances that accept the authorization. Valid values:
         # 
-        # *   **All**: Permissions on the VPC are granted to all VBRs that belong to the specified region and Alibaba Cloud account. In this case, you can leave **VbrInstanceIds** empty.
-        # *   **Specify**: Permissions on the VPC are granted to the specified VBRs. **VbrInstanceIds** must be assigned a value.
+        # - **All**: Grants authorization of the VPC instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds** parameter can be left empty.
+        # - **Specify**: Grants authorization of the VPC instance to the specified VBR instances. In this case, the **VbrInstanceIds** parameter is required.
         # 
         # This parameter is required.
         self.grant_type = grant_type
-        # The ID of the VPC.
+        # The ID of the VPC instance for which authorization is to be granted.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region where the VPC is deployed.
+        # The region ID of the VPC instance for which authorization is to be granted.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about the VBRs.
+        # The list of VBR instances to be granted authorization.
         self.vbr_instance_ids_shrink = vbr_instance_ids_shrink
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The Alibaba Cloud account ID that owns the VBR instance to be granted authorization.
         # 
         # This parameter is required.
         self.vbr_owner_uid = vbr_owner_uid
-        # The ID of the region where the VBR is deployed.
+        # The region ID of the VBR instance to be granted authorization.
         # 
         # This parameter is required.
         self.vbr_region_no = vbr_region_no

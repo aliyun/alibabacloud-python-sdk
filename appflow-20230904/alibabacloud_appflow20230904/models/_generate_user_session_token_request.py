@@ -15,20 +15,20 @@ class GenerateUserSessionTokenRequest(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # AI Assistant ID
+        # RDS Copilot ID
         self.chatbot_id = chatbot_id
-        # Expiration Time, in seconds, default 24 hours
+        # Time-to-live (TTL) in seconds. Default is 24 hours.
         self.expire_second = expire_second
         self.extra_info = extra_info
         # Integration ID
         self.integrate_id = integrate_id
-        # User Avatar (URL)
+        # Profile picture (URL)
         self.user_avatar = user_avatar
         # User ID
         # 
         # This parameter is required.
         self.user_id = user_id
-        # User Nickname
+        # Nickname
         self.user_name = user_name
 
     def validate(self):

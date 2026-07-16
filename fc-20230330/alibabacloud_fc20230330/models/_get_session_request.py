@@ -9,7 +9,7 @@ class GetSessionRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # The function alias or version associated with the queried session ID.
+        # The function alias or version associated with the session ID to query.
         self.qualifier = qualifier
 
     def validate(self):

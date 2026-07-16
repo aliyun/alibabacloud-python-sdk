@@ -13,15 +13,17 @@ class UpdateNamespaceShrinkRequest(DaraModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
-        # Specifies whether to automatically create a repository when an image is pushed to the namespace.
+        # Whether to automatically create a repository when an image is pushed.
         self.auto_create_repo = auto_create_repo
+        # The default configuration for automatically created repositories.
         self.default_repo_configuration_shrink = default_repo_configuration_shrink
-        # The default type of the repository. Valid values:
+        # The default type for automatically created repositories. This parameter applies only if `AutoCreateRepo` is set to `true`. Valid values:
         # 
-        # *   `PUBLIC`: The repository is a public repository.
-        # *   `PRIVATE`: The repository is a private repository.
+        # - `PUBLIC`: a public repository
+        # 
+        # - `PRIVATE`: a private repository
         self.default_repo_type = default_repo_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

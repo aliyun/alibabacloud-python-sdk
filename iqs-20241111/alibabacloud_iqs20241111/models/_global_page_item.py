@@ -11,9 +11,14 @@ class GlobalPageItem(DaraModel):
         snippet: str = None,
         title: str = None,
     ):
+        # The full URL that the search result points to.
+        # 
         # This parameter is required.
         self.link = link
+        # The description excerpt of the search result in text format.
         self.snippet = snippet
+        # The title of the search result in plain text.
+        # 
         # This parameter is required.
         self.title = title
 

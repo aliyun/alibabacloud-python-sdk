@@ -21,45 +21,49 @@ class EnrollAccountShrinkRequest(DaraModel):
         resell_account_type: str = None,
         tag_shrink: str = None,
     ):
-        # The prefix for the account name of the member.
+        # The prefix for the account name.
         # 
-        # *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
-        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+        # - If you are creating a new resource account, this parameter is required.
+        # 
+        # - If you are enrolling an existing account, this parameter is not required.
         self.account_name_prefix = account_name_prefix
-        # The account ID.
+        # The ID of the account to enroll.
         # 
-        # *   If the account baseline is applied to an account that is newly created, you do not need to configure this parameter.
-        # *   If the account baseline is applied to an existing account, you must configure this parameter.
+        # - If you are creating a new resource account, this parameter is not required.
+        # 
+        # - If you are enrolling an existing account, this parameter is required.
         self.account_uid = account_uid
-        # The baseline ID.
-        # 
-        # If this parameter is left empty, the default baseline is used.
+        # The ID of the baseline. If you leave this parameter empty, the default baseline is used.
         self.baseline_id = baseline_id
-        # The array that contains baseline items.
+        # The baseline items.
         # 
-        # If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
+        # If you specify this parameter, the baseline item configurations are merged with the configurations of the baseline specified by `BaselineId`. For duplicate baseline items, the configurations in this parameter take precedence. We recommend that you leave this parameter empty and use `BaselineId` to apply baseline configurations.
         self.baseline_items = baseline_items
         # The display name of the account.
         # 
-        # *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
-        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+        # - If you are creating a new resource account, this parameter is required.
+        # 
+        # - If you are enrolling an existing account, this parameter is not required.
         self.display_name = display_name
         # The ID of the parent folder.
         # 
-        # *   If the account baseline is applied to an account that is newly created, you need to specify a parent folder. If you do not configure this parameter, the account is created in the Root folder.
-        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+        # - If you are creating a new resource account and do not specify this parameter, the account is created in the Root folder.
+        # 
+        # - If you are enrolling an existing account, this parameter is not required.
         self.folder_id = folder_id
         # The ID of the billing account.
         # 
-        # *   If the account baseline is applied to an account that is newly created, you need to specify a billing account. If you do not configure this parameter, the self-pay settlement method is used for the account.
-        # *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+        # - If you are creating a new resource account and do not specify this parameter, the self-pay settlement method is used.
+        # 
+        # - If you are enrolling an existing account, this parameter is not required.
         self.payer_account_uid = payer_account_uid
         # The region ID.
         self.region_id = region_id
         # The identity type of the member. Valid values:
         # 
-        # *   resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
-        # *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+        # - resell (default): The member is a reseller account. A reseller relationship is automatically established between the member and the reseller. The management account of the resource directory is used as the billing account of the member.
+        # 
+        # - non_resell: The member is a non-reseller account. The member is not associated with a reseller and can directly purchase Alibaba Cloud resources. The member is used as its own billing account.
         # 
         # > This parameter is available only for resellers at the international site (alibabacloud.com).
         self.resell_account_type = resell_account_type
@@ -160,10 +164,11 @@ class EnrollAccountShrinkRequestBaselineItems(DaraModel):
         self.config = config
         # The name of the baseline item.
         self.name = name
-        # Whether to skip the baseline item. Valid values:
+        # Specifies whether to skip the baseline item. Valid values:
         # 
-        # *   false: The baseline item is not skipped.
-        # *   true: The baseline item is skipped.
+        # - false (default): does not skip the baseline item.
+        # 
+        # - true: skips the baseline item.
         self.skip = skip
         # The version of the baseline item.
         self.version = version

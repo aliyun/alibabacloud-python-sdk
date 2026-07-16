@@ -29,45 +29,45 @@ class CreateAggTaskGroupRequest(DaraModel):
         override_if_exists: bool = None,
     ):
         # Aggregation task group configuration.
-        # Currently, only the “RecordingRuleYaml” format is supported, which must comply with the format requirements of open-source Prometheus RecordingRules.
+        # Currently only the "RecordingRuleYaml" format is supported, which must conform to the RecordingRule format requirements of open-source Prometheus.
         # 
         # This parameter is required.
         self.agg_task_group_config = agg_task_group_config
-        # Aggregation task group configuration type, default is “RecordingRuleYaml” (open-source Prometheus RecordingRule format).
+        # Aggregation task group configuration type. Default: "RecordingRuleYaml" (open-source Prometheus RecordingRule format).
         self.agg_task_group_config_type = agg_task_group_config_type
         # Aggregation task group name.
         # 
         # This parameter is required.
         self.agg_task_group_name = agg_task_group_name
-        # When the scheduling mode is selected as “Cron”, this is the specific scheduling expression. For example, “0/1 * * * *” means starting from 0 minutes and scheduling every 1 minute.
+        # The specific scheduling expression when the scheduling mode is set to "Cron". For example, "0/1 * * * *" means scheduling every 1 minute starting from minute 0.
         self.cron_expr = cron_expr
-        # Fixed delay time for scheduling, in seconds, default is 30.
+        # Fixed delay time for scheduling. Unit: seconds. Default: 30.
         self.delay = delay
-        # Description of the aggregation task group.
+        # Aggregation task group description.
         self.description = description
-        # The second-level timestamp corresponding to the start time of the schedule.
+        # Second-level timestamp corresponding to the scheduling start time.
         self.from_time = from_time
-        # Maximum number of retries for executing the aggregation task, default is 20.
+        # Maximum number of retries for executing aggregation tasks. Default: 20.
         self.max_retries = max_retries
-        # Maximum retry time for executing the aggregation task, in seconds, default is 600.
+        # Maximum retry duration for executing aggregation tasks. Unit: seconds. Default: 600.
         self.max_run_time_in_seconds = max_run_time_in_seconds
-        # Pre-check configuration, no configuration by default. The input string needs to be correctly parsed as JSON.
+        # Pre-check configuration. Not configured by default. The input string must be valid JSON.
         self.precheck_string = precheck_string
-        # Scheduling mode, either “Cron” or “FixedRate”, default is “FixedRate”.
+        # Scheduling mode. "Cron" or "FixedRate". Default: "FixedRate".
         self.schedule_mode = schedule_mode
-        # Scheduling time expression, recommended “@s” or “@m”, indicating the alignment granularity of the scheduling time window, default is “@m”.
+        # Scheduling time expression. "@s" or "@m" is recommended, indicating the granularity of scheduling time window alignment. Default: "@m".
         self.schedule_time_expr = schedule_time_expr
-        # Status of the aggregation task group, either “Running” or “Stopped”. Default is Running.
+        # Aggregation task group status. "Running" or "Stopped". Default: Running.
         self.status = status
         # Resource group tags.
         self.tags = tags
-        # The target Prometheus instance ID of the aggregation task group.
+        # Target Prometheus instance ID of the aggregation task group.
         # 
         # This parameter is required.
         self.target_prometheus_id = target_prometheus_id
-        # The second-level timestamp corresponding to the end time of the schedule, 0 indicates that the scheduling does not stop.
+        # Second-level timestamp corresponding to the scheduling end time. 0 means scheduling will not stop.
         self.to_time = to_time
-        # Whether to overwrite and update if a resource with the same name exists when creating an aggregation task group.
+        # Whether to override and update when a resource with the same name exists during aggregation task group creation.
         self.override_if_exists = override_if_exists
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListApplicationsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The applications that the EIAM account can access.
+        # The list of applications that the account is authorized to access.
         self.applications = applications
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of the returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -69,19 +69,21 @@ class ListApplicationsForUserResponseBodyApplications(DaraModel):
         has_direct_authorization: bool = None,
         has_inherit_authorization: bool = None,
     ):
-        # The ID of the application that the EIAM account can access.
+        # The application ID.
         self.application_id = application_id
-        # 应用角色列表。
+        # The list of application roles.
         self.application_roles = application_roles
-        # Indicates whether the EIAM account has direct permissions on the application. Valid values:
+        # Indicates whether a direct authorization exists. Valid values:
         # 
-        # *   true: The EIAM account has direct permissions on the application.
-        # *   false: The EIAM account does not have direct permissions on the application.
+        # - true: A direct authorization record exists between the application and the account.
+        # 
+        # - false: No direct authorization record exists between the application and the account.
         self.has_direct_authorization = has_direct_authorization
-        # Indicates whether the EIAM account has inherited permissions on the application. Valid values:
+        # Indicates whether an inherited authorization exists. Valid values:
         # 
-        # *   true: A parent organization or an organization to which the EIAM account belongs has direct permissions on the application.
-        # *   false: A parent organization or an organization to which the EIAM account belongs does not have direct permissions on the application.
+        # - true: A direct authorization record exists between the application and a parent organization or a group to which the account belongs.
+        # 
+        # - false: No direct authorization record exists between the application and any of the parent organizations or groups to which the account belongs.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):
@@ -137,11 +139,11 @@ class ListApplicationsForUserResponseBodyApplicationsApplicationRoles(DaraModel)
         has_direct_authorization: bool = None,
         has_inherit_authorization: bool = None,
     ):
-        # 应用角色标识。
+        # The ID of the application role.
         self.application_role_id = application_role_id
-        # 直接分配给当前用户的权限，视为直接授权。
+        # Indicates whether the role is directly assigned to the user.
         self.has_direct_authorization = has_direct_authorization
-        # 通过用户隶属的组织、组获取的权限，视为继承权限。
+        # Indicates whether the role is inherited from an organization or a group to which the user belongs.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):

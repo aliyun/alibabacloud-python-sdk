@@ -20,26 +20,27 @@ class DeleteNatIpRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without deleting the NAT IP address. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): sends a Normal request. After the request passes the check, a 2xx HTTP status code is returned and the NAT IP address is deleted.
         self.dry_run = dry_run
-        # The IP prefix address to be deleted.
+        # The IP prefix to delete.
         self.ipv_4prefix = ipv_4prefix
-        # The ID of the NAT gateway instance to which the IP prefix to be deleted belongs. Required when deleting an IP prefix.
+        # The instance ID of the NAT gateway to which the IP prefix belongs. This parameter is required when you delete an IP prefix.
         self.nat_gateway_id = nat_gateway_id
-        # The ID of the NAT IP address that you want to delete.
+        # The instance ID of the NAT IP address that you want to delete.
         self.nat_ip_id = nat_ip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the NAT gateway to which the NAT IP address that you want to delete belongs.
+        # The region ID of the NAT gateway to which the NAT IP address belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

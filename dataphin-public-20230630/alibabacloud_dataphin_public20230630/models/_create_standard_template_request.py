@@ -13,8 +13,12 @@ class CreateStandardTemplateRequest(DaraModel):
         create_command: main_models.CreateStandardTemplateRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # Create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,15 +61,25 @@ class CreateStandardTemplateRequestCreateCommand(DaraModel):
         name: str = None,
         publish_info: main_models.CreateStandardTemplateRequestCreateCommandPublishInfo = None,
     ):
+        # Attribute configuration.
+        # 
         # This parameter is required.
         self.attributes_config = attributes_config
+        # Standard template code. Globally unique. Cannot be modified when referenced.
+        # 
         # This parameter is required.
         self.code = code
+        # Standard code auto-generation rule configuration.
         self.code_rule_config = code_rule_config
+        # Standard template description.
         self.description = description
+        # Maintainers.
         self.maintainer_list = maintainer_list
+        # Standard template name.
+        # 
         # This parameter is required.
         self.name = name
+        # Standard template publish information.
         self.publish_info = publish_info
 
     def validate(self):
@@ -137,6 +151,7 @@ class CreateStandardTemplateRequestCreateCommandPublishInfo(DaraModel):
         self,
         comment: str = None,
     ):
+        # Publish comment.
         self.comment = comment
 
     def validate(self):
@@ -165,7 +180,10 @@ class CreateStandardTemplateRequestCreateCommandCodeRuleConfig(DaraModel):
         auto_config: main_models.CreateStandardTemplateRequestCreateCommandCodeRuleConfigAutoConfig = None,
         generate_type: str = None,
     ):
+        # Standard code rule auto-generation configuration. Effective when the generation method is AUTO_GENERATE.
         self.auto_config = auto_config
+        # Standard code generation method. Valid values: CUSTOMIZED (custom) and AUTO_GENERATE (auto-generate based on standard code rules).
+        # 
         # This parameter is required.
         self.generate_type = generate_type
 
@@ -203,8 +221,12 @@ class CreateStandardTemplateRequestCreateCommandCodeRuleConfigAutoConfig(DaraMod
         code_rule_list: List[main_models.CreateStandardTemplateRequestCreateCommandCodeRuleConfigAutoConfigCodeRuleList] = None,
         need_strong_validate: bool = None,
     ):
+        # Standard code rules.
+        # 
         # This parameter is required.
         self.code_rule_list = code_rule_list
+        # Specifies whether to enable strict validation.
+        # 
         # This parameter is required.
         self.need_strong_validate = need_strong_validate
 
@@ -250,11 +272,17 @@ class CreateStandardTemplateRequestCreateCommandCodeRuleConfigAutoConfigCodeRule
         type: str = None,
         value: str = None,
     ):
+        # Auto-increment sequence configuration.
         self.auto_increment_sequence_config = auto_increment_sequence_config
+        # Code rule position index.
+        # 
         # This parameter is required.
         self.index = index
+        # Code rule type. Valid values: FIXED_STRING (fixed string), AUTO_INCREMENT (auto-increment sequence), and STANDARD_SET_CODE (standard set code).
+        # 
         # This parameter is required.
         self.type = type
+        # Code rule format or value.
         self.value = value
 
     def validate(self):
@@ -305,12 +333,20 @@ class CreateStandardTemplateRequestCreateCommandCodeRuleConfigAutoConfigCodeRule
         start_value: int = None,
         step: int = None,
     ):
+        # Number of digits.
+        # 
         # This parameter is required.
         self.digit = digit
+        # Specifies whether to pad with zeros.
+        # 
         # This parameter is required.
         self.need_padding_zero = need_padding_zero
+        # Start value.
+        # 
         # This parameter is required.
         self.start_value = start_value
+        # Step.
+        # 
         # This parameter is required.
         self.step = step
 
@@ -357,6 +393,8 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfig(DaraModel):
         self,
         attribute_list: List[main_models.CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeList] = None,
     ):
+        # Attribute list.
+        # 
         # This parameter is required.
         self.attribute_list = attribute_list
 
@@ -399,12 +437,19 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeList(Da
         type: str = None,
         value_config: main_models.CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListValueConfig = None,
     ):
+        # Attribute code. Not required when referencing a public attribute.
         self.code = code
+        # Description.
         self.description = description
+        # Attribute name. Not required when referencing a public attribute.
         self.name = name
+        # Referenced attribute information.
         self.ref_attribute = ref_attribute
+        # Specifies whether the attribute is required. Not required when referencing a public attribute.
         self.required = required
+        # Attribute type. Valid values: BIZ_ATTRIBUTE (business attribute), TECH_ATTRIBUTE (technical attribute), MANAGEMENT_ATTRIBUTE (management attribute), QUALITY_ATTRIBUTE (quality attribute), MASTER_DATA_ATTRIBUTE (master data attribute), LIFECYCLE_ATTRIBUTE (lifecycle attribute), and SECURITY_ATTRIBUTE (security attribute). Not required when referencing a public attribute.
         self.type = type
+        # Value configuration. Not required when referencing a public attribute.
         self.value_config = value_config
 
     def validate(self):
@@ -477,12 +522,20 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListVal
         type: str = None,
         value_range: main_models.CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListValueConfigValueRange = None,
     ):
+        # Data type of the attribute value. Valid values: STRING (string), BIGINT (numeric), DOUBLE (floating point), DATE (date with day precision), DATETIME (date with millisecond precision), and BOOLEAN (boolean).
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # Default value.
         self.default_value = default_value
+        # Attribute value length. An empty value or -1 indicates no length limit. Usually only the string type has a length limit for attribute values.
         self.length = length
+        # Attribute value type. Valid values: CUSTOMIZED (custom input), SINGLE_ENUM (single enumeration value), MULTIPLE_ENUMS (multiple enumeration values), and RANGE (range value).
+        # 
         # This parameter is required.
         self.type = type
+        # Value range.
+        # 
         # This parameter is required.
         self.value_range = value_range
 
@@ -541,11 +594,17 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListVal
         value_constraint: str = None,
         value_list: List[str] = None,
     ):
+        # Dataphin attribute type. Effective when the value source is DATAPHIN_ATTRIBUTE. Valid values: BIZ_UNIT (data domain), PROJECT (project), USER (user), and USER_GROUP (user group).
         self.dataphin_attribute_type = dataphin_attribute_type
+        # Lookup table reference. Effective when the value source is LOOKUP_TABLE.
         self.lookup_table_reference = lookup_table_reference
+        # Min-max value configuration. Effective when the value source is MIN_MAX.
         self.min_max_value_config = min_max_value_config
+        # Value source. Valid values: NONE (no constraint), LIST (from a list), LOOKUP_TABLE (lookup table), MIN_MAX (between minimum and maximum values), DATAPHIN_ATTRIBUTE (Dataphin system attribute), BUILT_IN_DATA_TYPES (built-in data types), BUILT_IN_DATA_CLASSIFICATION (built-in data classification), and BUILT_IN_DATA_LEVEL (built-in data security level).
+        # 
         # This parameter is required.
         self.value_constraint = value_constraint
+        # Value list. Effective when the value source is LIST.
         self.value_list = value_list
 
     def validate(self):
@@ -605,12 +664,20 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListVal
         max_value: str = None,
         min_value: str = None,
     ):
+        # Specifies whether to include the maximum value.
+        # 
         # This parameter is required.
         self.include_max_value = include_max_value
+        # Specifies whether to include the minimum value.
+        # 
         # This parameter is required.
         self.include_min_value = include_min_value
+        # Maximum value.
+        # 
         # This parameter is required.
         self.max_value = max_value
+        # Minimum value.
+        # 
         # This parameter is required.
         self.min_value = min_value
 
@@ -658,7 +725,10 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListVal
         column: str = None,
         lookup_table_id: int = None,
     ):
+        # Referenced lookup table column.
         self.column = column
+        # Lookup table ID.
+        # 
         # This parameter is required.
         self.lookup_table_id = lookup_table_id
 
@@ -694,8 +764,12 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListRef
         attribute_from_info: main_models.CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfo = None,
         attribute_id: int = None,
     ):
+        # Attribute source.
+        # 
         # This parameter is required.
         self.attribute_from_info = attribute_from_info
+        # Attribute ID.
+        # 
         # This parameter is required.
         self.attribute_id = attribute_id
 
@@ -733,8 +807,11 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListRef
         attribute_from: str = None,
         standard_reference: main_models.CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListRefAttributeAttributeFromInfoStandardReference = None,
     ):
+        # Attribute source type. Valid values: SYSTEM (system attribute), CUSTOM (custom attribute), and STANDARD (standard).
+        # 
         # This parameter is required.
         self.attribute_from = attribute_from
+        # Standard reference. Effective when the attribute source is STANDARD.
         self.standard_reference = standard_reference
 
     def validate(self):
@@ -771,8 +848,12 @@ class CreateStandardTemplateRequestCreateCommandAttributesConfigAttributeListRef
         standard_id: int = None,
         version: int = None,
     ):
+        # Standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
+        # Version number.
+        # 
         # This parameter is required.
         self.version = version
 

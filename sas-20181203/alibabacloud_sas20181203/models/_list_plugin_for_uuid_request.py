@@ -12,11 +12,10 @@ class ListPluginForUuidRequest(DaraModel):
         types: List[str] = None,
         uuid: str = None,
     ):
-        # The plug-in types.
+        # The list of plugin types.
         self.types = types
         # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.uuid = uuid

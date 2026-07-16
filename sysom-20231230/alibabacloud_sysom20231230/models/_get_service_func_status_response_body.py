@@ -13,8 +13,15 @@ class GetServiceFuncStatusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -64,6 +71,7 @@ class GetServiceFuncStatusResponseBodyData(DaraModel):
         self,
         args: main_models.GetServiceFuncStatusResponseBodyDataArgs = None,
     ):
+        # The configuration parameters.
         self.args = args
 
     def validate(self):
@@ -99,12 +107,19 @@ class GetServiceFuncStatusResponseBodyDataArgs(DaraModel):
         mem: str = None,
         system_profiling: str = None,
     ):
+        # The configuration process.
         self.add_cmd = add_cmd
+        # The ONCPU tracing switch.
         self.cpu = cpu
+        # The storage path.
         self.java_store_path = java_store_path
+        # The lock tracing switch.
         self.locks = locks
+        # The tracing cycle.
         self.loop = loop
+        # The memory tracing switch.
         self.mem = mem
+        # The system profiling switch.
         self.system_profiling = system_profiling
 
     def validate(self):

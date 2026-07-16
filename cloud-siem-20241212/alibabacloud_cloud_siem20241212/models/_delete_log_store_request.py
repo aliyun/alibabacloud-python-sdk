@@ -15,12 +15,27 @@ class DeleteLogStoreRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
+        # The user ID for data ingestion.
         self.log_user_id = log_user_id
+        # The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: if your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: if your assets are outside China.
         self.region_id = region_id
+        # The user ID of the member whose perspective the administrator wants to switch to.
         self.role_for = role_for
 
     def validate(self):

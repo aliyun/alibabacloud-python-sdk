@@ -13,13 +13,21 @@ class CreateDSEntityValueShrinkRequest(DaraModel):
         instance_id: str = None,
         synonyms_shrink: str = None,
     ):
+        # The business space key. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The entity value (or regular expression).
+        # 
         # This parameter is required.
         self.content = content
+        # The entity ID.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The robot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A list of synonyms for the entity value.
         self.synonyms_shrink = synonyms_shrink
 
     def validate(self):

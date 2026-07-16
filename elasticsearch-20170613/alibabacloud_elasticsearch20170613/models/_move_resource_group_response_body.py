@@ -13,7 +13,7 @@ class MoveResourceGroupResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.MoveResourceGroupResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -69,51 +69,51 @@ class MoveResourceGroupResponseBodyResult(DaraModel):
         synonyms_dicts: List[main_models.MoveResourceGroupResponseBodyResultSynonymsDicts] = None,
         updated_at: str = None,
     ):
-        # The time when the cluster was created.
+        # The time when the instance was created.
         self.created_at = created_at
-        # The name of the cluster.
+        # The instance name.
         self.description = description
-        # The configurations of IK dictionaries.
+        # The IK dictionary configuration.
         self.dict_list = dict_list
-        # The internal endpoint of the cluster.
+        # The internal endpoint of the instance.
         self.domain = domain
-        # The version of the cluster.
+        # The instance version.
         self.es_version = es_version
-        # The ID of the cluster.
+        # The instance ID.
         self.instance_id = instance_id
-        # The configurations of Kibana nodes.
+        # The configuration of Kibana nodes.
         self.kibana_configuration = kibana_configuration
-        # The public endpoint of the Kibana console of the cluster.
+        # The public network access address for Kibana.
         self.kibana_domain = kibana_domain
-        # The port number that is used to access the Kibana console of the cluster over the Internet.
+        # The public port for Kibana.
         self.kibana_port = kibana_port
-        # The configurations of dedicated master nodes.
+        # The configuration of master nodes.
         self.master_configuration = master_configuration
-        # The network configurations.
+        # The network configuration.
         self.network_config = network_config
-        # The number of data nodes in the cluster.
+        # The number of data nodes of the instance.
         self.node_amount = node_amount
-        # The configurations of data nodes.
+        # The configuration of data nodes.
         self.node_spec = node_spec
-        # The billing method of the cluster. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # *   prepaid: subscription
-        # *   postpaid: pay-as-you-go
+        # - prepaid: subscription.
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
-        # The public endpoint of the cluster.
+        # The public network access address.
         self.public_domain = public_domain
-        # The port number that is used to access the cluster over the Internet.
+        # The public port.
         self.public_port = public_port
-        # The status of the cluster. Valid values:
+        # The status of the instance. Valid values:
         # 
-        # *   active: The cluster is normal.
-        # *   activating: The cluster is being activated.
-        # *   Inactive: The cluster is frozen.
-        # *   invalid: The cluster is valid.
+        # - active: Normal.
+        # - activating: Taking effect.
+        # - inactive: Frozen.
+        # - invalid: Expired.
         self.status = status
-        # The configurations of synonym dictionaries.
+        # The synonym dictionary configuration.
         self.synonyms_dicts = synonyms_dicts
-        # The time when the cluster was last updated.
+        # The time when the instance was last updated.
         self.updated_at = updated_at
 
     def validate(self):
@@ -285,17 +285,17 @@ class MoveResourceGroupResponseBodyResultSynonymsDicts(DaraModel):
         self.file_size = file_size
         # The name of the dictionary file.
         self.name = name
-        # The type of the source of the dictionary file. Valid values:
+        # The source type. Valid values:
         # 
-        # *   OSS: Object Storage Service (OSS). You must make sure that the ACL of the related OSS bucket is public read.
-        # *   ORIGIN: previously uploaded dictionary.
+        # - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+        # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
-        # The type of the dictionary. Valid values:
+        # The dictionary type. Valid values:
         # 
-        # *   STOP: stopword list
-        # *   MAIN: main dictionary
-        # *   SYNONYMS: synonym dictionary
-        # *   ALI_WS: Alibaba Cloud dictionary
+        # - STOP: stopword.
+        # - MAIN: main dictionary.
+        # - SYNONYMS: synonym dictionary.
+        # - ALI_WS: Alibaba dictionary.
         self.type = type
 
     def validate(self):
@@ -343,11 +343,11 @@ class MoveResourceGroupResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage capacity. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The storage type.
+        # The storage type of the node.
         self.disk_type = disk_type
-        # The specification category.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -390,13 +390,13 @@ class MoveResourceGroupResponseBodyResultNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type. Only the VPC is supported.
+        # The network type. Only VPC is supported.
         self.type = type
-        # The ID of the virtual private cloud (VPC).
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
-        # The zone where the cluster resides.
+        # The zone where the instance resides.
         self.vs_area = vs_area
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -447,11 +447,11 @@ class MoveResourceGroupResponseBodyResultMasterConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage capacity. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The storage type.
+        # The storage type of the node.
         self.disk_type = disk_type
-        # The specification category.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -502,11 +502,11 @@ class MoveResourceGroupResponseBodyResultKibanaConfiguration(DaraModel):
     ):
         # The number of nodes.
         self.amount = amount
-        # The storage capacity. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The storage type.
+        # The storage type of the node.
         self.disk_type = disk_type
-        # The specification category.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -559,17 +559,17 @@ class MoveResourceGroupResponseBodyResultDictList(DaraModel):
         self.file_size = file_size
         # The name of the dictionary file.
         self.name = name
-        # The type of the source of the dictionary file. Valid values:
+        # The source type. Valid values:
         # 
-        # *   OSS: Object Storage Service (OSS). You must make sure that the access control list (ACL) of the related OSS bucket is public read.
-        # *   ORIGIN: previously uploaded dictionary.
+        # - OSS: OSS open storage. Make sure that the OSS bucket has public-read permission.
+        # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
-        # The type of the dictionary. Valid values:
+        # The dictionary type. Valid values:
         # 
-        # *   STOP: stopword list
-        # *   MAIN: main dictionary
-        # *   SYNONYMS: synonym dictionary
-        # *   ALI_WS: Alibaba Cloud dictionary
+        # - STOP: stopword.
+        # - MAIN: main dictionary.
+        # - SYNONYMS: synonym dictionary.
+        # - ALI_WS: Alibaba dictionary.
         self.type = type
 
     def validate(self):

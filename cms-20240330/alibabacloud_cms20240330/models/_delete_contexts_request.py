@@ -10,7 +10,9 @@ class DeleteContextsRequest(DaraModel):
         context_ids: str = None,
         filter: str = None,
     ):
+        # A comma-separated list of context IDs.
         self.context_ids = context_ids
+        # The filter condition, specified as a JSON string in the query. The syntax is the same as the `filter` parameter of the `SearchContext` operation.
         self.filter = filter
 
     def validate(self):

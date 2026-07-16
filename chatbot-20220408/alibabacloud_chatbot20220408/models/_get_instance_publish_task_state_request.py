@@ -11,8 +11,11 @@ class GetInstancePublishTaskStateRequest(DaraModel):
         id: int = None,
         instance_id: str = None,
     ):
+        # The key for the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The task ID.
         self.id = id
+        # The unique identifier of the bot instance.
         self.instance_id = instance_id
 
     def validate(self):

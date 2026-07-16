@@ -33,11 +33,15 @@ class AddMediaConnectFlowOutputRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   RTMP-PUSH
-        # *   SRT-Caller
-        # *   RTMP-PULL
-        # *   SRT-Listener
-        # *   Flow
+        # - RTMP-PUSH
+        # 
+        # - SRT-Caller
+        # 
+        # - RTMP-PULL
+        # 
+        # - SRT-Listener
+        # 
+        # - Flow
         # 
         # This parameter is required.
         self.output_protocol = output_protocol

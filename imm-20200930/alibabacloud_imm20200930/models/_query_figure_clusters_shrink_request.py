@@ -34,8 +34,9 @@ class QueryFigureClustersShrinkRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   asc: ascending order.
-        # *   desc: descending order.
+        # - asc: ascending order.
+        # 
+        # - desc: descending order.
         self.order = order
         # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
         # 
@@ -45,15 +46,23 @@ class QueryFigureClustersShrinkRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ImageCount: the number of images.
-        # *   VideoCount: the number of videos.
-        # *   ProjectName: the name of the project.
-        # *   DatasetName: the name of the dataset.
-        # *   CreateTime: the point in time when the group is created.
-        # *   UpdateTime: the most recent point in time when the group is updated.
-        # *   Gender: the gender.
-        # *   FaceCount: the number of faces.
-        # *   GroupName: the name of the group.
+        # - ImageCount: the number of images.
+        # 
+        # - VideoCount: the number of videos.
+        # 
+        # - ProjectName: the name of the project.
+        # 
+        # - DatasetName: the name of the dataset.
+        # 
+        # - CreateTime: the point in time when the group is created.
+        # 
+        # - UpdateTime: the most recent point in time when the group is updated.
+        # 
+        # - Gender: the gender.
+        # 
+        # - FaceCount: the number of faces.
+        # 
+        # - GroupName: the name of the group.
         self.sort = sort
         # The time range within which the face group was last updated.
         self.update_time_range_shrink = update_time_range_shrink

@@ -18,19 +18,19 @@ class DescribeMetaListResponseBody(DaraModel):
         total_page_count: str = None,
         total_record_count: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The details of databases and tables that can be restored.
+        # The details of recoverable databases and tables.
         self.items = items
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of records on the current page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned pages.
+        # The total number of pages.
         self.total_page_count = total_page_count
-        # The total number of entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -104,10 +104,11 @@ class DescribeMetaListResponseBodyItems(DaraModel):
         size: List[int] = None,
         tables: List[str] = None,
     ):
-        # The name of the database that can be restored.
+        # The name of the database that can be recovered.
         self.database = database
+        # The size of the database or table, in bytes.
         self.size = size
-        # The name of the table that can be restored.
+        # The names of the tables that can be recovered.
         self.tables = tables
 
     def validate(self):

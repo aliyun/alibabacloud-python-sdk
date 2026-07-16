@@ -10,8 +10,12 @@ class ListApiByAppShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         page_query_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The paged query parameters.
+        # 
         # This parameter is required.
         self.page_query_shrink = page_query_shrink
 

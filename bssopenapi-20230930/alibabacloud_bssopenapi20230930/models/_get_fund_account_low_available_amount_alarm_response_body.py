@@ -14,9 +14,13 @@ class GetFundAccountLowAvailableAmountAlarmResponseBody(DaraModel):
         request_id: str = None,
         threshold_amount: str = None,
     ):
+        # Whether the alert is enabled
         self.alarm_enabled = alarm_enabled
+        # Response structure metadata
         self.metadata = metadata
+        # Request ID
         self.request_id = request_id
+        # Alert threshold
         self.threshold_amount = threshold_amount
 
     def validate(self):

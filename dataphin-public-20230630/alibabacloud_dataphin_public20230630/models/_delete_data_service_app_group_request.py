@@ -10,8 +10,12 @@ class DeleteDataServiceAppGroupRequest(DaraModel):
         group_id: int = None,
         op_tenant_id: int = None,
     ):
+        # The group ID.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

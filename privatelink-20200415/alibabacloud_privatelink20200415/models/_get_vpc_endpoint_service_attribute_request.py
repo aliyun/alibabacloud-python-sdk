@@ -10,13 +10,13 @@ class GetVpcEndpointServiceAttributeRequest(DaraModel):
         region_id: str = None,
         service_id: str = None,
     ):
-        # The region ID of the endpoint service.
+        # The ID of the region where the endpoint service is located.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The endpoint service ID.
+        # The ID of the endpoint service.
         # 
         # This parameter is required.
         self.service_id = service_id

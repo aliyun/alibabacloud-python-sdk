@@ -10,8 +10,12 @@ class WorkspaceActionStatusRequest(DaraModel):
         key: str = None,
         workspace_id: str = None,
     ):
+        # The unique key that identifies the asynchronous task. You can obtain this key from the response of an operation, such as a deployment.
+        # 
         # This parameter is required.
         self.key = key
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

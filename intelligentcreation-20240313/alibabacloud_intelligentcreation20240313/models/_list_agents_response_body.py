@@ -69,9 +69,12 @@ class ListAgentsResponseBody(DaraModel):
 class ListAgentsResponseBodyList(DaraModel):
     def __init__(
         self,
+        agent_icon_url: str = None,
         agent_id: str = None,
         agent_name: str = None,
         agent_scene: str = None,
+        character_age_stage: str = None,
+        character_name: str = None,
         characters_description: str = None,
         enable_interaction: int = None,
         industry: str = None,
@@ -82,9 +85,12 @@ class ListAgentsResponseBodyList(DaraModel):
         text_style: str = None,
         viewer: str = None,
     ):
+        self.agent_icon_url = agent_icon_url
         self.agent_id = agent_id
         self.agent_name = agent_name
         self.agent_scene = agent_scene
+        self.character_age_stage = character_age_stage
+        self.character_name = character_name
         self.characters_description = characters_description
         self.enable_interaction = enable_interaction
         self.industry = industry
@@ -103,6 +109,9 @@ class ListAgentsResponseBodyList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agent_icon_url is not None:
+            result['agentIconUrl'] = self.agent_icon_url
+
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
@@ -111,6 +120,12 @@ class ListAgentsResponseBodyList(DaraModel):
 
         if self.agent_scene is not None:
             result['agentScene'] = self.agent_scene
+
+        if self.character_age_stage is not None:
+            result['characterAgeStage'] = self.character_age_stage
+
+        if self.character_name is not None:
+            result['characterName'] = self.character_name
 
         if self.characters_description is not None:
             result['charactersDescription'] = self.characters_description
@@ -143,6 +158,9 @@ class ListAgentsResponseBodyList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('agentIconUrl') is not None:
+            self.agent_icon_url = m.get('agentIconUrl')
+
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
@@ -151,6 +169,12 @@ class ListAgentsResponseBodyList(DaraModel):
 
         if m.get('agentScene') is not None:
             self.agent_scene = m.get('agentScene')
+
+        if m.get('characterAgeStage') is not None:
+            self.character_age_stage = m.get('characterAgeStage')
+
+        if m.get('characterName') is not None:
+            self.character_name = m.get('characterName')
 
         if m.get('charactersDescription') is not None:
             self.characters_description = m.get('charactersDescription')

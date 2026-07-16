@@ -11,7 +11,9 @@ class GetCloudAccountRoleResponseBody(DaraModel):
         cloud_account_role: main_models.GetCloudAccountRoleResponseBodyCloudAccountRole = None,
         request_id: str = None,
     ):
+        # The cloud role details.
         self.cloud_account_role = cloud_account_role
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,28 +61,40 @@ class GetCloudAccountRoleResponseBodyCloudAccountRole(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 云账号ID
+        # The cloud account ID.
         self.cloud_account_id = cloud_account_id
-        # 云账号角色外部唯一ID
+        # The cloud role identifier.
         self.cloud_account_role_external_id = cloud_account_role_external_id
-        # 云账号角色可用性
+        # The cloud role health status. Valid values:
+        # - healthy: healthy.
+        # - unhealthy: unhealthy.
+        # - unknown: unknown.
         self.cloud_account_role_health = cloud_account_role_health
-        # 云账号角色验证结果
+        # The cloud role health check result.
         self.cloud_account_role_health_check_result = cloud_account_role_health_check_result
-        # 云账号角色ID
+        # The cloud role ID.
         self.cloud_account_role_id = cloud_account_role_id
-        # 云账号名称
+        # The cloud role name.
         self.cloud_account_role_name = cloud_account_role_name
-        # 云账号角色用途
+        # The cloud role type. The specific format depends on the cloud account type. Valid values:
+        # 
+        # - role: applicable to Alibaba Cloud accounts.
         self.cloud_account_role_type = cloud_account_role_type
-        # 云账号角色类型
+        # The cloud role usage type. Valid values:
+        # - system: system.
+        # - user: user.
         self.cloud_account_role_usage_type = cloud_account_role_usage_type
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The cloud role description.
         self.description = description
-        # IDaaS EIAM 实例Id
+        # The instance ID.
         self.instance_id = instance_id
-        # 云账号角色状态
+        # The cloud role status. Valid values:
+        # - enabled: enabled.
+        # - disable: disabled.
         self.status = status
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -184,11 +198,15 @@ class GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheck
         last_check_time: int = None,
         result: str = None,
     ):
-        # 错误原因
+        # The error reason. This field is returned when the health check status is unhealthy.
         self.error_reason = error_reason
-        # 检测时间
+        # The time of the last health check. The value is a UNIX timestamp in milliseconds.
         self.last_check_time = last_check_time
-        # 结果
+        # The cloud role health check result. Valid values:
+        # 
+        # - success: succeeded.
+        # 
+        # - failed: failed.
         self.result = result
 
     def validate(self):
@@ -231,9 +249,9 @@ class GetCloudAccountRoleResponseBodyCloudAccountRoleCloudAccountRoleHealthCheck
         error_code: str = None,
         error_message: str = None,
     ):
-        # 错误码
+        # The error code.
         self.error_code = error_code
-        # 错误信息
+        # The error description.
         self.error_message = error_message
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeAuthRulePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total items
+        # The total number of entries.
         self.total_item = total_item
-        # Total pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,25 +102,25 @@ class DescribeAuthRulePageListResponseBodyResultObject(DaraModel):
         status: str = None,
         version: int = None,
     ):
-        # Console rule ID.
+        # The console rule ID.
         self.console_rule_id = console_rule_id
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Policy primary key ID
+        # The primary key ID of the policy.
         self.id = id
-        # Memo
+        # The remarks.
         self.memo = memo
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Policy version primary key ID
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
-        # Status.
+        # The status.
         self.status = status
-        # Version number
+        # The version number.
         self.version = version
 
     def validate(self):

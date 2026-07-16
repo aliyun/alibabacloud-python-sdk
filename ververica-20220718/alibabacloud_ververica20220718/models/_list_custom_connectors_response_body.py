@@ -19,11 +19,13 @@ class ListCustomConnectorsResponseBody(DaraModel):
     ):
         # If the value of success was true, the list of custom connectors in the namespace was returned. If the value of success was false, a null value was returned.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error code was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error message was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_message = error_message
         # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
         self.http_code = http_code

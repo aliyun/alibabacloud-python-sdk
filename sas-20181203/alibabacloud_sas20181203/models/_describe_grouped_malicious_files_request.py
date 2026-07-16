@@ -26,15 +26,14 @@ class DescribeGroupedMaliciousFilesRequest(DaraModel):
         repo_region_id: str = None,
         scan_range: List[str] = None,
     ):
-        # The cluster ID of the container on which the malicious image sample is detected.
+        # The cluster ID of the server for which you want to query exception events.
         self.cluster_id = cluster_id
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number of the page to return. Minimum value: **1**. Default value: **1**, which indicates that the first page is returned.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The name of the malicious image sample that you want to query.
-        # 
-        # >  Fuzzy match is supported.
+        # The name of the malicious file that you want to query.
+        # > Fuzzy match is supported.
         self.fuzzy_malicious_name = fuzzy_malicious_name
         # The image digest.
         self.image_digest = image_digest
@@ -42,55 +41,48 @@ class DescribeGroupedMaliciousFilesRequest(DaraModel):
         self.image_layer = image_layer
         # The image tag.
         self.image_tag = image_tag
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The severity of the malicious image sample that you want to query. You can enter multiple severities. Separate the severities with commas (,). Valid values:
-        # 
-        # *   **serious**
-        # *   **suspicious**
-        # *   **remind**
+        # The severity levels of the malicious samples in container images that you want to query. Separate multiple values with commas (,). Valid values:
+        # - **serious**: urgent
+        # - **suspicious**: suspicious
+        # - **remind**: reminder.
         self.levels = levels
-        # The MD5 hash value of the malicious image sample.
+        # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
-        # The number of entries to return on each page. Default value: **20**.
+        # The maximum number of entries per page in a paging query. Default value: **20**.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The ID of the image repository.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation to query the IDs of image repositories from the value of the **RepoId** response parameter.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the value of the **RepoId** response parameter.
         self.repo_id = repo_id
-        # The ID of the container image.
-        # 
-        # >  You can call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation to query the IDs of container images from the value of the **InstanceId** response parameter.
+        # The instance ID of the container image.
+        # > Call the [ListRepository](https://help.aliyun.com/document_detail/145293.html) operation of Container Registry to obtain the value of the **InstanceId** response parameter.
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
-        # 
-        # >  Fuzzy match is supported.
+        # > Fuzzy match is supported.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
-        # 
-        # >  Fuzzy match is supported.
+        # The namespace of the image repository.
+        # > Fuzzy match is supported.
         self.repo_namespace = repo_namespace
         # The region ID of the image repository. Valid values:
-        # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
-        # *   **ap-southeast-1**: Singapore
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
-        # *   **us-east-1**: US (Virginia)
-        # *   **us-west-1**: US (Silicon Valley)
-        # *   **eu-central-1**: Germany (Frankfurt)
-        # *   **eu-west-1**: UK (London)
+        # - **cn-beijing**: China (Beijing)
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # - **cn-hangzhou**: China (Hangzhou)
+        # - **cn-shanghai**: China (Shanghai)
+        # - **cn-shenzhen**: China (Shenzhen)
+        # - **cn-hongkong**: Hong Kong (China)
+        # - **ap-southeast-1**: Singapore
+        # - **ap-southeast-5**: Indonesia (Jakarta)
+        # - **us-east-1**: US (Virginia)
+        # - **us-west-1**: US (Silicon Valley)
+        # - **eu-central-1**: Germany (Frankfurt)
+        # - **eu-west-1**: UK (London).
         self.repo_region_id = repo_region_id
-        # The types of the assets that you want to scan.
+        # The collection of scan ranges.
         self.scan_range = scan_range
 
     def validate(self):

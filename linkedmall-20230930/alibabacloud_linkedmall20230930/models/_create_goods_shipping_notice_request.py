@@ -10,6 +10,8 @@ class CreateGoodsShippingNoticeRequest(DaraModel):
         self,
         body: main_models.GoodsShippingNoticeCreateCmd = None,
     ):
+        # Submit shipping notice information.
+        # 
         # This parameter is required.
         self.body = body
 

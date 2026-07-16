@@ -71,331 +71,143 @@ class ModifyPolicyGroupRequest(DaraModel):
         watermark_type: str = None,
         wy_assistant: str = None,
     ):
-        # Specifies whether end users have the administrator permissions.
+        # Specifies whether a user has administrative permissions after logging on to the cloud computer.
         # 
-        # >  This parameter is in invitational preview for specific users and not available to the public.
+        # > This feature is available only for invitational preview. It is not publicly available.
         self.admin_access = admin_access
-        # Specifies whether to enable the anti-screenshot feature.
-        # 
-        # Valid values:
-        # 
-        # *   off (default)
-        # *   on
+        # Specifies whether to enable screen capture prevention.
         self.app_content_protection = app_content_protection
-        # The client IP address whitelists.
+        # The client IP address whitelist.
         self.authorize_access_policy_rule = authorize_access_policy_rule
-        # The security group rules.
+        # A list of security group rules.
         self.authorize_security_policy_rule = authorize_security_policy_rule
-        # Specifies whether to enable the webcam redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on (default)
+        # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
+        # A list of logon method control rules.
         self.client_type = client_type
-        # The permissions on the clipboard.
-        # 
-        # Valid values:
-        # 
-        # *   read: specifies one-way transfer. You can copy files only from local devices to cloud computers.
-        # *   readwrite: specifies two-way transfer You can copy files between local devices and cloud computers.
-        # *   write: specifies one-way transfer. You can only copy files from cloud computers to local devices.
-        # *   off: disables both one-way and two-way transfer. Files cannot be copied between local devices and cloud computers.
+        # The clipboard redirection policy.
         self.clipboard = clipboard
         # The device redirection rules.
         self.device_redirects = device_redirects
-        # The custom peripheral rules.
+        # The custom peripheral device rules.
         self.device_rules = device_rules
-        # Specifies whether the access control for domain names is enabled. Domain names support wildcards (\\*). Separate multiple domain names with commas (,).
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # The domain names that can be accessed. Wildcard characters (\\*) are supported. Separate multiple domain names with commas.
         self.domain_list = domain_list
-        # The domain resolution rules.
+        # The details of the domain name resolution policy.
         self.domain_resolve_rule = domain_resolve_rule
-        # The type of the domain name resolution rule.
-        # 
-        # Valid values:
-        # 
-        # *   OFF
-        # *   ON
+        # The type of domain name resolution policy.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # Specifies whether to turn on the Contact Administrator for Help switch.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to allow users to request assistance from the administrator.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # Specifies whether to turn on the User Stream Collaboration switch.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable stream collaboration between users.
         self.end_user_group_coordinate = end_user_group_coordinate
-        # Specifies whether to enable the Image Quality Control feature for Graphic-based cloud computers. If you have high requirements on the performance and user experience in scenarios such as professional design, we recommend that you enable this feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable the image quality policy for graphics cloud desktops. Enabling this policy improves performance and user experience in professional design scenarios.
         self.gpu_acceleration = gpu_acceleration
-        # Specifies whether to allow web client access.
+        # The policy for access from web clients.
         # 
-        # >  We recommend that you specify the ClientType-related parameters to control the Alibaba Cloud Workspace client type for cloud computer connection.``
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # > Use the `ClientType` parameter to manage logon methods.
         self.html_5access = html_5access
-        # The file transfer feature on the web client.
-        # 
-        # Valid values:
-        # 
-        # *   all: Files can be uploaded and downloaded between local computers and the web client.
-        # *   download: Files on the web client can be downloaded to local computers.
-        # *   upload: Files on local computers can be uploaded to the web client.
-        # *   off (default): Files cannot be transferred between the web client and local computers.
+        # The policy for file transfers from web clients.
         self.html_5file_transfer = html_5file_transfer
-        # The protocol for network communication.
-        # 
-        # Valid values:
-        # 
-        # *   TCP (default): TCP
-        # *   BOTH: TCP and UDP
+        # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
-        # The permissions on local disk mapping.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only. Local disk mapping is available on cloud computers. However, you can only read (copy) local files but cannot modify the files.
-        # *   readwrite: read and write. Local disk mapping is available on cloud computers. You can read (copy) and write (modify) local files.
-        # *   off (default): no permissions. Local disk mapping is unavailable on cloud computers.
+        # The local disk mapping policy.
         self.local_drive = local_drive
-        # The maximum retry period for reconnecting to cloud computers when the cloud computers are disconnected due to none-human reasons. Valid values: 30 to 7200. Unit: seconds.
+        # The maximum amount of time that the client can attempt to reconnect to the cloud computer after an unexpected disconnection. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
         # The name of the cloud computer policy.
         self.name = name
         # Specifies whether to enable network redirection.
         # 
-        # >  This parameter is in invitational preview for specific users and not available to the public.
-        # 
-        # Valid values:
-        # 
-        # *   off (default)
-        # *   on
+        # > This feature is available only for invitational preview. It is not publicly available.
         self.net_redirect = net_redirect
         # The ID of the cloud computer policy.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
-        # The cloud computer preemption feature.
+        # The policy for preemptible logon.
         # 
-        # >  To ensure user experience and data security, when a cloud computer is used by an end user, other end users cannot connect to the cloud computer. By default, this parameter is set to `off`, which cannot be modified.
-        # 
-        # Valid values:
-        # 
-        # *   off (default): Multiple end users cannot connect to the same cloud computer at the same time.
+        # > To ensure the user experience and data security of the current user, other users cannot preempt the cloud computer. This parameter is set to `off` by default and cannot be changed.
         self.preempt_login = preempt_login
-        # The usernames that are allowed to connect to the cloud computer in use. You can specify up to five usernames.
+        # The usernames of users who can preempt the logon of a cloud computer. You can specify up to five usernames.
         # 
-        # >  To ensure user experience and data security, other end users cannot connect to the cloud computer that is used by an end user.
+        # > To ensure the user experience and data security of the current user, other users cannot preempt the cloud computer.
         self.preempt_login_user = preempt_login_user
-        # The printer redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # The printer redirection policy.
         self.printer_redirection = printer_redirection
-        # Specifies whether to enable the custom screen recording feature.
-        # 
-        # Valid values:
-        # 
-        # *   off (default)
-        # *   on
+        # Specifies whether to enable custom screen recording.
         self.record_content = record_content
-        # The duration in which the custom screen recording is valid. Default value: 30. Unit: days.
+        # The expiration time of custom screen recording files. The default value is 30. Unit: days.
         self.record_content_expires = record_content_expires
-        # Specifies whether to enable the screen recording feature.
-        # 
-        # Valid values:
-        # 
-        # *   byaction_cmd_ft: enables the operation-triggered screen recording upon command execution and file transfer.
-        # *   ALLTIME: enables the whole-process screen recording. That is, the recording starts when cloud computers are connected and ends when the cloud computers are disconnected.
-        # *   session: enables the screen recording for session lifecycle listening.
-        # *   PERIOD: enables the interval-based screen recording. You must specify an interval between the start time and end time of this type of recording.
-        # *   byaction_commands: enables the operation-triggered screen recording upon command execution.
-        # *   OFF: disables the screen recording feature.
-        # *   byaction_file_transfer: enables the operation-triggered screen recording upon file transfer.
+        # Specifies whether to enable screen recording.
         self.recording = recording
-        # Specifies whether to record the audio files generated from cloud computers.
-        # 
-        # Valid values:
-        # 
-        # *   off: records only video files.
-        # *   on: records video and audio files.
+        # Specifies whether to record audio from the cloud computer.
         self.recording_audio = recording_audio
-        # The file length of the screen recording. Unit: minutes. Screen recording files are split based on the specified file length and uploaded to Object Storage Service (OSS) buckets. When a screen recording file reaches 300 MB in size, the system preferentially performs rolling update for the file.
-        # 
-        # Valid values:
-        # 
-        # *   10
-        # *   20
-        # *   30
-        # *   60
+        # The duration for viewing a screen recording file. Unit: minutes. The recorded files are automatically split into chunks and uploaded to a bucket based on the specified duration. When a file reaches 300 MB, it is overwritten on a rolling basis.
         self.recording_duration = recording_duration
-        # The time when the screen recording stops. Specify the value in the HH:MM:SS format. The value is meaningful only when you set `Recording` to `PERIOD`.
+        # The end time of the screen recording. The time is in the HH:MM:SS format. This parameter is valid only when \\`Recording\\` is set to \\`PERIOD\\`.
         self.recording_end_time = recording_end_time
-        # The retention period of the screen recording file. Valid values: 1 to 180. Unit: days.
+        # The retention period of screen recording files. Valid values: 1 to 180. Unit: days.
         self.recording_expires = recording_expires
-        # The frame rate of screen recording. Unit: fps.
-        # 
-        # Valid values:
-        # 
-        # *   2
-        # *   5
-        # *   10
-        # *   15
+        # The frame rate for screen recording. Unit: frames per second (fps).
         self.recording_fps = recording_fps
-        # The time when the screen recording starts. Specify the value in the HH:MM:SS format. The value is meaningful only when you set the `Recording` parameter to `PERIOD`.
+        # The start time of the screen recording. The time is in the HH:MM:SS format. This parameter is valid only when \\`Recording\\` is set to \\`PERIOD\\`.
         self.recording_start_time = recording_start_time
-        # Specifies whether to enable the screen recording notification feature after end users log on to the Alibaba Cloud Workspace client.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to send a notification to the client when a screen recording starts.
         self.recording_user_notify = recording_user_notify
-        # The notification content of screen recording. By default, this parameter is left empty.
+        # The content of the screen recording notification. This parameter is optional.
         self.recording_user_notify_message = recording_user_notify_message
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The ID of the region. Call [DescribeRegions](~~DescribeRegions~~) to query the regions that WUYING Workspace supports.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The permissions on keyboard and mouse control during remote assistance.
-        # 
-        # Valid values:
-        # 
-        # *   optionalControl: By default, you are not granted the permissions. You can apply for the permissions.
-        # *   fullControl: You are granted the full permissions.
-        # *   disableControl: You are not granted the permissions.
+        # The remote assistance policy for keyboard and mouse control.
         self.remote_coordinate = remote_coordinate
-        # The client IP address whitelists that you want to delete.
+        # The client IP address whitelist to delete.
         self.revoke_access_policy_rule = revoke_access_policy_rule
-        # The security group rules that you want to delete.
+        # The security group rules to delete.
         self.revoke_security_policy_rule = revoke_security_policy_rule
-        # The effective scope of the policy.
-        # 
-        # Valid values:
-        # 
-        # *   IP: The policy takes effect based on the IP address.
-        # *   GLOBAL: The policy takes effect globally.
+        # The scope of the policy.
         self.scope = scope
-        # This parameter is required when the `Scope` parameter is set to `IP`.````
+        # The value of the scope. This parameter is valid only when \\`Scope\\` is set to \\`IP\\`.
         self.scope_value = scope_value
-        # Specifies whether to enable the USB redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # The USB redirection policy.
         self.usb_redirect = usb_redirect
         # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
-        # The multimedia redirection feature.
+        # Specifies whether to enable multimedia redirection.
         self.video_redirect = video_redirect
         # The image display quality.
-        # 
-        # Valid values:
-        # 
-        # *   high: high-definition (HD)
-        # *   low: smoothness
-        # *   lossless: no quality loss
-        # *   medium (default): scenario-specific adaptation
         self.visual_quality = visual_quality
-        # The watermarking feature.
-        # 
-        # Valid values:
-        # 
-        # *   blind: Invisible watermarks are applied.
-        # *   off: The watermarking feature is disabled.
-        # *   on: Visible watermarks are applied.
+        # The watermark policy.
         self.watermark = watermark
-        # Specifies whether to enable the anti-screen photo feature for invisible watermarks.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable the screen capture prevention watermark feature.
         self.watermark_anti_cam = watermark_anti_cam
-        # The font color in red, green, and blue (RGB) of the watermark. Valid values: 0 to 16777215.
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # The watermark rotation. Valid values: -10 to -30.
+        # The angle of the watermark. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
-        # The watermark font size. Valid values: 10 to 20.
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
-        # The watermark font style.
-        # 
-        # Valid values:
-        # 
-        # *   plain
-        # *   bold
+        # The font style of the watermark.
         self.watermark_font_style = watermark_font_style
-        # The watermark enhancement feature.
-        # 
-        # Valid values:
-        # 
-        # *   high
-        # *   low
-        # *   medium
+        # The strength of the blind watermark.
         self.watermark_power = watermark_power
         # The number of watermark rows.
         # 
-        # >  This parameter is not available for public use.
+        # > This parameter is not yet available.
         self.watermark_row_amount = watermark_row_amount
-        # Specifies whether to enable the security priority feature for invisible watermarks.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # The security priority rule for watermarks.
         self.watermark_security = watermark_security
-        # The watermark transparency.
-        # 
-        # Valid values:
-        # 
-        # *   LIGHT (default)
-        # *   DARK
-        # *   MIDDLE
+        # The transparency of the watermark.
         self.watermark_transparency = watermark_transparency
-        # The watermark opacity. A larger value indicates more opaque watermarks. Valid values: 10 to 100.
+        # The transparency of the watermark. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
-        # The watermark content. You can select up to three items as the watermark content. Separate multiple items with commas (,).
+        # The type of watermark. You can specify up to three types. Separate them with commas.
         # 
-        # >  If you set this parameter to `Custom`, you must specify `WatermarkCustomText`.
-        # 
-        # Valid values:
-        # 
-        # *   EndUserId: the username
-        # *   Custom: the custom text
-        # *   DesktopIp: the IP address of the cloud computer
-        # *   ClientIp: the IP address of the Alibaba Cloud Workspace client
-        # *   HostName: the rightmost 15 digits of the cloud computer ID
-        # *   ClientTime: the current time displayed on the cloud computer
+        # > If you set this parameter to `Custom`, you must also specify the custom text in the `WatermarkCustomText` parameter.
         self.watermark_type = watermark_type
-        # Specifies whether to display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
-        # 
-        # Valid values:
-        # 
-        # *   off: does not display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
-        # *   on: displays the Xiaoying AI Assistant entry in the DesktopAssistant menu.
+        # Specifies whether to display the entry for Alibaba Cloud AI Assistant in the floating bar of the cloud computer.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -863,29 +675,19 @@ class ModifyPolicyGroupRequestUsbSupplyRedirectRule(DaraModel):
         usb_rule_type: int = None,
         vendor_id: str = None,
     ):
-        # The rule description.
+        # The description of the rule.
         self.description = description
-        # The device class. This parameter is required when `usbRuleType` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
+        # The device class. This parameter is required when \\`UsbRuleType\\` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
         self.device_class = device_class
-        # The device subclass. This parameter is required when `usbRuleType` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
+        # The device subclass. This parameter is required when \\`UsbRuleType\\` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
         self.device_subclass = device_subclass
         # The product ID (PID).
         self.product_id = product_id
-        # Specifies whether to allow USB redirection.
-        # 
-        # Valid values:
-        # 
-        # *   1: allows USB redirection.
-        # *   2: forbids USB redirection.
+        # The USB redirection type.
         self.usb_redirect_type = usb_redirect_type
-        # The type of the USB redirection rule.
-        # 
-        # Valid values:
-        # 
-        # *   1: by device class
-        # *   2: by device vendor
+        # The type of USB redirection rule.
         self.usb_rule_type = usb_rule_type
-        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID (VID). For more information, see [Valid USB Vendor IDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -955,44 +757,29 @@ class ModifyPolicyGroupRequestRevokeSecurityPolicyRule(DaraModel):
         priority: str = None,
         type: str = None,
     ):
-        # The object of the security group rule that you want to delete. The value is an IPv4 CIDR block.
+        # The destination IPv4 address range to delete. Specify the value in CIDR notation.
         self.cidr_ip = cidr_ip
-        # The description of the security group rule that you want to delete.
+        # The description of the security group rule to delete.
         self.description = description
-        # The protocol type of the security group rule that you want to delete.
-        # 
-        # Valid values:
-        # 
-        # *   TCP
-        # *   UDP
-        # *   ALL
-        # *   GRE
-        # *   ICMP
+        # The protocol type of the security group rule to delete.
         self.ip_protocol = ip_protocol
-        # The authorization of the security group rule that you want to delete.
-        # 
-        # Valid values:
-        # 
-        # *   drop: denies all access requests. If no messages of access denied are returned, the requests timed out or failed.
-        # *   accept (default): accepts all requests.
+        # The policy of the security group rule to delete.
         self.policy = policy
-        # The port range of the security group rule that you want to delete. The value range of this parameter varies based on the value of the IpProtocol parameter.
+        # The port range of the security group rule to delete. The value of this parameter depends on the \\`IpProtocol\\` parameter:
         # 
-        # *   If the IpProtocol parameter is set to TCP or UDP, the port range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # *   If the IpProtocol parameter is set to ICMP, set the value to -1/-1.
-        # *   If the IpProtocol parameter is set to GRE, set the value to -1/-1.
-        # *   If the IpProtocol parameter is set to ALL, set the value to -1/-1.
+        # - If the protocol is TCP or UDP, the port range is 1 to 65535. Use a forward slash (/) to separate the start and end port numbers. For example: 1/200.
         # 
-        # For more information about the common ports applied in EDS, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+        # - If the protocol is ICMP, the port range is -1/-1.
+        # 
+        # - If the protocol is GRE, the port range is -1/-1.
+        # 
+        # - If IpProtocol is set to all, the port range is -1/-1.
+        # 
+        # For more information about common ports, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
-        # The priority of the security group rule that you want to delete. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
+        # The priority of the security group rule to delete. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
         self.priority = priority
-        # The direction of the security group rule that you want to delete.
-        # 
-        # Valid values:
-        # 
-        # *   outflow: outbound
-        # *   inflow: inbound
+        # The direction of the security group rule to delete.
         self.type = type
 
     def validate(self):
@@ -1057,9 +844,9 @@ class ModifyPolicyGroupRequestRevokeAccessPolicyRule(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client CIDR block that you want to delete. Specify an IPv4 CIDR block.
+        # The client IP address range to delete. Specify the value in CIDR notation.
         self.cidr_ip = cidr_ip
-        # The description of the client IP address whitelist that you want to delete.
+        # The description of the client IP address whitelist to delete.
         self.description = description
 
     def validate(self):
@@ -1095,16 +882,11 @@ class ModifyPolicyGroupRequestDomainResolveRule(DaraModel):
         domain: str = None,
         policy: str = None,
     ):
-        # The policy description.
+        # The description of the policy.
         self.description = description
         # The domain name.
         self.domain = domain
         # The resolution policy.
-        # 
-        # Valid values:
-        # 
-        # *   allow
-        # *   block
         self.policy = policy
 
     def validate(self):
@@ -1150,37 +932,18 @@ class ModifyPolicyGroupRequestDeviceRules(DaraModel):
         platforms: str = None,
         redirect_type: str = None,
     ):
-        # The device name.
+        # The name of the device.
         self.device_name = device_name
         # The product ID (PID).
         self.device_pid = device_pid
-        # The peripheral type.
-        # 
-        # Valid values:
-        # 
-        # *   usbKey: UKeys
-        # *   other: other peripheral devices.
-        # *   graphicsTablet: graphics tablets.
-        # *   printer: printers.
-        # *   cardReader: card readers.
-        # *   scanner: scanners.
-        # *   storage: storage devices.
-        # *   camera: web cameras.
-        # *   adb: Android Debug Bridge (ADB) device
-        # *   networkInterfaceCard: NIC devices.
+        # The type of peripheral device.
         self.device_type = device_type
-        # The vendor ID (VID). For more information, see [Valid USB VIDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+        # The vendor ID (VID). For more information, see [Valid USB Vendor IDs](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
         # The link optimization command.
         self.opt_command = opt_command
         self.platforms = platforms
         # The redirection type.
-        # 
-        # Valid values:
-        # 
-        # *   deviceRedirect: device redirection
-        # *   usbRedirect: USB redirection.
-        # *   off: redirection disabled
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1245,22 +1008,9 @@ class ModifyPolicyGroupRequestDeviceRedirects(DaraModel):
         device_type: str = None,
         redirect_type: str = None,
     ):
-        # The peripheral type.
-        # 
-        # Valid values:
-        # 
-        # *   printer
-        # *   scanner
-        # *   camera
-        # *   adb: the Android Debug Bridge (ADB) device
+        # The type of peripheral device.
         self.device_type = device_type
         # The redirection type.
-        # 
-        # Valid values:
-        # 
-        # *   deviceRedirect: device redirection
-        # *   usbRedirect: USB redirection
-        # *   off: redirection disabled
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1295,26 +1045,13 @@ class ModifyPolicyGroupRequestClientType(DaraModel):
         client_type: str = None,
         status: str = None,
     ):
-        # The type of the Alibaba Cloud Workspace client.
+        # The type of client.
         # 
-        # >  If you do not specify the `ClientType` parameter, all types of the client are allowed by default.
-        # 
-        # Valid values:
-        # 
-        # *   html5: web client
-        # *   android: Android client
-        # *   windows: Windows client
-        # *   ios: iOS client
-        # *   macos: macOS client
+        # > If you do not specify this parameter, logons from all client types are allowed by default.
         self.client_type = client_type
-        # Specifies whether to allow end users to use a specific type of the client to connect to cloud computers.
+        # Specifies whether to allow logons from this client type.
         # 
-        # >  If you do not specify the `ClientType` parameter, all types of the client are allowed by default.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # > If you do not specify this parameter, logons from all client types are allowed by default.
         self.status = status
 
     def validate(self):
@@ -1354,44 +1091,29 @@ class ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule(DaraModel):
         priority: str = None,
         type: str = None,
     ):
-        # The object to which the security group rule applies. The value is an IPv4 CIDR block.
+        # The destination IPv4 address range. Specify the value in CIDR notation.
         self.cidr_ip = cidr_ip
         # The description of the security group rule.
         self.description = description
         # The protocol type of the security group rule.
-        # 
-        # Valid values:
-        # 
-        # *   UDP: the User Datagram Protocol (UDP) protocol.
-        # *   TCP: the Transmission Control Protocol (TCP) protocol.
-        # *   ALL: all protocols.
-        # *   GRE: the Generic Routing Encapsulation (GRE) protocol.
-        # *   ICMP: the Internet Control Message Protocol (ICMP) for (IPv4)
         self.ip_protocol = ip_protocol
-        # The authorization of the security group rule.
-        # 
-        # Valid values:
-        # 
-        # *   drop: denies all access requests. If no messages of access denied are returned, the requests timed out or failed.
-        # *   accept: accepts all requests.
+        # The policy of the security group rule.
         self.policy = policy
-        # The port range of the security group rule. The value range of this parameter varies based on the value of the IpProtocol parameter.
+        # The port range of the security group rule. The value of this parameter depends on the \\`IpProtocol\\` parameter:
         # 
-        # *   If the IpProtocol parameter is set to TCP or UDP, the port range is 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
-        # *   If the IpProtocol parameter is set to ICMP, set the value to -1/-1.
-        # *   If the IpProtocol parameter is set to GRE, set the value to -1/-1.
-        # *   If the IpProtocol parameter is set to ALL, set the value to -1/-1.
+        # - If the protocol is TCP or UDP, the port range is 1 to 65535. Use a forward slash (/) to separate the start and end port numbers. For example: 1/200.
         # 
-        # For more information about the common ports applied in EDS, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
+        # - If the protocol is ICMP, the port range is -1/-1.
+        # 
+        # - If the protocol is GRE, the port range is -1/-1.
+        # 
+        # - If IpProtocol is set to all, the port range is -1/-1.
+        # 
+        # For more information about common ports, see [Common ports](https://help.aliyun.com/document_detail/40724.html).
         self.port_range = port_range
-        # The priority of the security group rule. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1
+        # The priority of the security group rule. A smaller value indicates a higher priority. Valid values: 1 to 60. Default value: 1.
         self.priority = priority
         # The direction of the security group rule.
-        # 
-        # Valid values:
-        # 
-        # *   outflow: outbound
-        # *   inflow: inbound
         self.type = type
 
     def validate(self):
@@ -1456,7 +1178,7 @@ class ModifyPolicyGroupRequestAuthorizeAccessPolicyRule(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The client CIDR block. Specify an IPv4 CIDR block.
+        # The client IP address range. Specify the value in CIDR notation.
         # 
         # This parameter is required.
         self.cidr_ip = cidr_ip

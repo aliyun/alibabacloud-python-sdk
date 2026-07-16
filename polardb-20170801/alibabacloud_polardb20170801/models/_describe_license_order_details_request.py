@@ -13,7 +13,7 @@ class DescribeLicenseOrderDetailsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Alibaba Cloud order ID (or virtual order ID).
+        # The ID of the Alibaba Cloud order or virtual order.
         # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id

@@ -14,12 +14,19 @@ class ListHotlineRecordDetailRequest(DaraModel):
         instance_id: str = None,
         page_size: int = None,
     ):
+        # A unique ID for the customer request. Used for idempotency validation and can be generated using UUID.
         self.client_token = client_token
+        # The start time when the hotline call ends. The value is a UNIX timestamp in milliseconds.
         self.close_time_end = close_time_end
+        # The end time when the hotline call ends. The value is a UNIX timestamp in milliseconds.
         self.close_time_start = close_time_start
+        # Current page number. Default value: **1**.
         self.current_page = current_page
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. Default value: **100**.
         self.page_size = page_size
 
     def validate(self):

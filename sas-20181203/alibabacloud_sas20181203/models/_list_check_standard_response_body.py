@@ -64,11 +64,15 @@ class ListCheckStandardResponseBodyStandards(DaraModel):
     ):
         # The cloud service provider that uses the standard. Valid values:
         # 
-        # *   **0**: Alibaba Cloud.
-        # *   **3**: Tencent Cloud.
-        # *   **4**: Huawei Cloud.
-        # *   **5**: Microsoft Azure.
-        # *   **7**: AWS.
+        # - **0**: Alibaba Cloud.
+        # 
+        # - **3**: Tencent Cloud.
+        # 
+        # - **4**: Huawei Cloud.
+        # 
+        # - **5**: Microsoft Azure.
+        # 
+        # - **7**: AWS.
         self.bind_vendor = bind_vendor
         # The ID of the standard.
         self.id = id

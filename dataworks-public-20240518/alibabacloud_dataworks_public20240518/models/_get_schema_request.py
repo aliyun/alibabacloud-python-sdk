@@ -13,7 +13,7 @@ class GetSchemaRequest(DaraModel):
         # 
         # The format is `${EntityType}:${Instance ID or escaped URL}:${Catalog ID}:${Database name}:${Schema name}</code>`. Use empty strings as placeholders for missing levels.
         # 
-        # >  For the MaxCompute type, use an empty string as the placeholder for the instance ID level. The database name is the MaxCompute project name, and the project must have the three-level model enabled.
+        # > For the MaxCompute type, use an empty string as the placeholder for the instance ID level. The database name is the MaxCompute project name, and the project must have the three-level model enabled.
         # 
         # Examples:
         # 
@@ -21,11 +21,10 @@ class GetSchemaRequest(DaraModel):
         # 
         # `holo-schema:instance_id::database_name:schema_name`
         # 
-        # > \\
-        # `instance_id`: The Hologres instance ID\\
-        # . `database_name`: The database name\\
-        # . `database_name`: The MaxCompute project name\\
-        # . `schema_name`: The schema name.
+        # > <br>`instance_id`: The Hologres instance ID<br>
+        # > . `database_name`: The database name<br>
+        # > . `database_name`: The MaxCompute project name<br>
+        # > . `schema_name`: The schema name.
         # 
         # This parameter is required.
         self.id = id

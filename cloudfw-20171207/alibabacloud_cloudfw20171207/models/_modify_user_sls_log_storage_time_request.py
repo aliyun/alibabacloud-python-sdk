@@ -12,10 +12,16 @@ class ModifyUserSlsLogStorageTimeRequest(DaraModel):
         sls_region_id: str = None,
         storage_time: int = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The log version.
         self.log_version = log_version
+        # The region ID of Log Service (SLS).
         self.sls_region_id = sls_region_id
+        # The retention period, in days.
+        # 
         # This parameter is required.
         self.storage_time = storage_time
 

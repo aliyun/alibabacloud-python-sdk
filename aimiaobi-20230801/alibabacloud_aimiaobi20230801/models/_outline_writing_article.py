@@ -16,13 +16,21 @@ class OutlineWritingArticle(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Content
         self.content = content
+        # The leaf outline this material belongs to
         self.outline = outline
+        # The primary outline this material belongs to
         self.primary_outline = primary_outline
+        # Publish time
         self.pub_time = pub_time
+        # Retrieval source encoding
         self.search_source = search_source
+        # Retrieval name
         self.search_source_name = search_source_name
+        # News title
         self.title = title
+        # News URL
         self.url = url
 
     def validate(self):

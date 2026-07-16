@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListHttpApiRoutesRequest(DaraModel):
     def __init__(
         self,
+        backend_service_name: str = None,
         consumer_authorization_rule_id: str = None,
         deploy_statuses: str = None,
         domain_id: str = None,
@@ -22,43 +23,35 @@ class ListHttpApiRoutesRequest(DaraModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
-        # The string that is used to filter routes based on consumer authentication rules. Only authorized APIs are returned.
+        # The backend service name. You can use this name to filter routes.
+        self.backend_service_name = backend_service_name
+        # Filters the API list by a specific consumer authorization rule ID. The response only includes authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The deployment state of the route.
-        # 
-        # Enumerated values:
-        # 
-        # *   Deploying: The route is being deployed.
-        # *   DeployedWithChanges: The route is deployed and modified.
-        # *   Undeploying: The route is being undeployed.
-        # *   NotDeployed: The route is not deployed.
-        # *   Deployed: The route is deployed.
-        # *   UndeployFailed: The route failed to be undeployed.
-        # *   DeployFailed: The route failed to be deployed.
+        # The deployment status of the route.
         self.deploy_statuses = deploy_statuses
-        # Specifies to filter routes by domain ID.
+        # Filters route information by domain name ID.
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
-        # Whether to filter for deployment scenario
+        # Specifies whether the request is for a deployment scenario.
         self.for_deploy = for_deploy
-        # The ID of the Cloud-native API Gateway instance.
+        # The cloud-native API gateway ID.
         self.gateway_id = gateway_id
         # The route name.
         self.name = name
-        # The route name keyword for a fuzzy search.
+        # Fuzzy match by route name.
         self.name_like = name_like
-        # The page number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number, starting from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The page size. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The route path keyword for a fuzzy search.
+        # Fuzzy match by route path.
         self.path_like = path_like
-        # The consumer authorization information in the response.
+        # Includes consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # The authentication rules of the specified consumer in each route returned.
+        # Includes the authorization rule list of the specified consumer ID for each route in the response.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # The mounting information of the specified plug-in in each route returned.
+        # Includes the mount information of the specified plug-in ID for each route in the response.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):
@@ -69,6 +62,9 @@ class ListHttpApiRoutesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.backend_service_name is not None:
+            result['backendServiceName'] = self.backend_service_name
+
         if self.consumer_authorization_rule_id is not None:
             result['consumerAuthorizationRuleId'] = self.consumer_authorization_rule_id
 
@@ -115,6 +111,9 @@ class ListHttpApiRoutesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('backendServiceName') is not None:
+            self.backend_service_name = m.get('backendServiceName')
+
         if m.get('consumerAuthorizationRuleId') is not None:
             self.consumer_authorization_rule_id = m.get('consumerAuthorizationRuleId')
 

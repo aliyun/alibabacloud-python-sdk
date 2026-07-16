@@ -20,34 +20,35 @@ class CreateRewriteUrlRuleRequest(DaraModel):
     ):
         # The query string after rewriting.
         self.query_string = query_string
-        # Query string rewrite type. Value range:
+        # The query string rewrite type. Valid values:
         # 
         # - static: static mode.
         # - dynamic: dynamic mode.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # URI rewrite type. Value range:
+        # The URI rewrite type. Valid values:
         # 
         # - static: static mode.
         # - dynamic: dynamic mode.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: set the value to true
-        # - Match specific requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses conditional expressions to match user requests. This parameter does not need to be set when adding global configurations. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: enable.
-        # - off: disable.
+        # The rule switch. This parameter does not need to be set when adding global configurations. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter does not need to be set when adding global configurations.
         self.rule_name = rule_name
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # The target URI after rewriting.
+        # The destination URI after rewriting.
         self.uri = uri
 
     def validate(self):

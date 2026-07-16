@@ -15,12 +15,19 @@ class PrepayResource(DaraModel):
         instance_id: str = None,
         instance_status: str = None,
     ):
+        # The catalog ID.
         self.catalog_id = catalog_id
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The number of CUs.
         self.cu = cu
+        # The time when the subscription expires.
         self.expire_time = expire_time
+        # The time when the resources are purchased.
         self.gmt_create = gmt_create
+        # The instance ID of computing resource.
         self.instance_id = instance_id
+        # The status of the computing resource.
         self.instance_status = instance_status
 
     def validate(self):

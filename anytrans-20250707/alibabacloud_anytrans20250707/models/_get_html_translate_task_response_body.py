@@ -15,11 +15,17 @@ class GetHtmlTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The operation status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code returned by the server.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The ID of the request. Use this ID to trace the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class GetHtmlTranslateTaskResponseBodyData(DaraModel):
         translation: str = None,
         usage: main_models.GetHtmlTranslateTaskResponseBodyDataUsage = None,
     ):
+        # Translation Result
         self.translation = translation
+        # Details about token usage.
         self.usage = usage
 
     def validate(self):
@@ -118,8 +126,11 @@ class GetHtmlTranslateTaskResponseBodyDataUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens in the input.
         self.input_tokens = input_tokens
+        # The number of tokens in the output.
         self.output_tokens = output_tokens
+        # The total number of tokens for the request.
         self.total_tokens = total_tokens
 
     def validate(self):

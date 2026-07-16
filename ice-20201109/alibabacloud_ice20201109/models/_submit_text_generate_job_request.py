@@ -13,24 +13,39 @@ class SubmitTextGenerateJobRequest(DaraModel):
         type: str = None,
         user_data: str = None,
     ):
-        # The job description, which can be up to 1,024 bytes in length and must be encoded in UTF-8.
+        # The job description, with a maximum length of 1,024 bytes (UTF-8 encoded).
         self.description = description
-        # The text generation configurations, including keywords and the requirements for the word count and number of output copies.
+        # The generation configuration, in JSON format.
+        # 
+        # If `Type` is set to `Title` or `MarketingCopy`, specify the following fields:
+        # 
+        # - `keywords`: The keywords used to generate the title or marketing copy. This parameter is required.
+        # 
+        # - `textLength`: The target length of the generated text, in characters. Valid values: 5 to 1,000. The actual length of the output is less than or equal to this value. This parameter is required.
+        # 
+        # - `targetCount`: The number of copy variations to generate. Valid values: 1 to 1,000. This parameter is required.
+        # 
+        # If `Type` is set to `StoryboardScript`, specify the following field:
+        # 
+        # - `originText`: The original text used to generate the storyboard script. This parameter is required.
         self.generate_config = generate_config
         # The job title.
         # 
-        # The job title can be up to 128 bytes in length.
+        # \\- The maximum length is 128 bytes.
         # 
-        # The value must be encoded in UTF-8.
+        # \\- UTF-8 encoding is required.
         self.title = title
         # The job type.
         # 
-        # Valid values:
+        # **Valid values:**
         # 
-        # *   MarketingCopy: the marketing copy.
-        # *   Title: the short video title.
+        # - `MarketingCopy`: Generates marketing copy.
+        # 
+        # - `Title`: Generates a short video title.
+        # 
+        # - `StoryboardScript`: Generates a storyboard script from text.
         self.type = type
-        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+        # The custom settings in JSON format. The maximum length is 512 bytes. You can use this parameter to specify a [custom callback address](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):

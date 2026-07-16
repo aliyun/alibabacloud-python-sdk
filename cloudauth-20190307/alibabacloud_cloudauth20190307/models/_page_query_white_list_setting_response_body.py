@@ -20,23 +20,23 @@ class PageQueryWhiteListSettingResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Return code, **200** indicates a successful API response.
+        # The response code. **200** indicates that the request was successful.
         self.code = code
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Return message.
+        # The response message.
         self.message = message
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Request result
+        # The request result.
         self.result_object = result_object
-        # Whether the response was successful.
+        # Indicates whether the request was successful.
         self.success = success
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -130,31 +130,31 @@ class PageQueryWhiteListSettingResponseBodyResultObject(DaraModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
-        # ID number.
+        # The certificate number.
         self.cert_no = cert_no
-        # Unique identifier for real person authentication.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Whitelist ID.
+        # The whitelist ID.
         self.id = id
-        # Remark information.
+        # The remarks.
         self.remark = remark
-        # Authentication scene ID.
+        # The verification scenario ID.
         self.scene_id = scene_id
-        # ServiceCode of the real person cloud product
+        # The ServiceCode of the ID Verification cloud service.
         self.service_code = service_code
-        # Status:
+        # The status. Valid values:
         # 
-        # - DELETE: Deleted
-        # - VALID: Not deleted and within the validity period, valid
-        # - INVALID: Not deleted but outside the validity period, invalid
+        # - DELETE: Deleted.
+        # - VALID: Not deleted and within the validity period (valid).
+        # - INVALID: Not deleted but outside the validity period (invalid).
         self.status = status
-        # End date of validity
+        # The end date of the validity period.
         self.valid_end_date = valid_end_date
-        # Start date of validity
+        # The start date of the validity period.
         self.valid_start_date = valid_start_date
 
     def validate(self):

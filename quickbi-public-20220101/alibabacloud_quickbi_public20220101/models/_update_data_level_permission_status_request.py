@@ -11,12 +11,24 @@ class UpdateDataLevelPermissionStatusRequest(DaraModel):
         is_open: int = None,
         rule_type: str = None,
     ):
-        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # The ID of the dataset.
         # 
         # This parameter is required.
         self.cube_id = cube_id
+        # The status of the permission switch. Valid values:
+        # 
+        # - 1: On
+        # 
+        # - 0: Off
+        # 
         # This parameter is required.
         self.is_open = is_open
+        # The type of data-level permission. Valid values:
+        # 
+        # - ROW_LEVEL: Row-level permission
+        # 
+        # - COLUMN_LEVEL: Column-level permission
+        # 
         # This parameter is required.
         self.rule_type = rule_type
 

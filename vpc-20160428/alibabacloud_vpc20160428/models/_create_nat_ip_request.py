@@ -24,44 +24,49 @@ class CreateNatIpRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): sends a Normal request. If the request passes the check, a 2xx HTTP status code is returned and the NAT IP address is created.
         self.dry_run = dry_run
-        # The created IP prefix address segment must be within the reserved network segment of the switch where the NAT is located, and the reserved network segment cannot be occupied. The IP prefix mask must be /28.
+        # The IP prefix CIDR block to create.
+        # 
+        # The IP prefix CIDR block must be within the reserved CIDR block of the vSwitch where the NAT gateway resides, and the reserved CIDR block must not be in use. The prefix mask must be /28.
         self.ipv_4prefix = ipv_4prefix
-        # The number of automatically assigned IP prefixes. These are randomly allocated from the unassigned reserved segments of the switch where the NAT is located. Value range: 1 to 10.
+        # The number of IP prefixes to automatically assign.
+        # 
+        # The IP prefixes are randomly assigned from unallocated reserved CIDR blocks of the vSwitch where the NAT gateway resides. Valid values: 1 to 10.
         self.ipv_4prefix_count = ipv_4prefix_count
-        # The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
+        # The instance ID of the VPC NAT gateway to which the NAT IP address belongs.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The NAT IP address that you want to create.
+        # The NAT IP address to create.
         # 
-        # If you do not specify an IP address, the system randomly allocates an IP address from the specified CIDR block.
+        # If you do not specify this parameter, the system randomly assigns an IP address from the NAT CIDR block.
         self.nat_ip = nat_ip
-        # The CIDR block to which the NAT IP address belongs.
+        # The NAT CIDR block from which the NAT IP address is created.
         # 
         # This parameter is required.
         self.nat_ip_cidr = nat_ip_cidr
         # The description of the NAT IP address.
         # 
-        # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
         self.nat_ip_description = nat_ip_description
         # The name of the NAT IP address.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.nat_ip_name = nat_ip_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the NAT gateway to which the NAT IP address that you want to create belongs.
+        # The region ID of the NAT gateway instance to which the NAT IP address belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent list of regions.
+        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

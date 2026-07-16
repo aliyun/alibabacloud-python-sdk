@@ -43,152 +43,165 @@ class CreateOfficeConversionTaskRequest(DaraModel):
         trim_policy: main_models.TrimPolicy = None,
         user_data: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**
+        # **If you do not have special requirements, leave this parameter empty.**
         # 
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The chained authorization configuration. This parameter is not required. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The ending page for document conversion. The default value is -1, which converts the file until the last page of the file.
+        # The end page for the document conversion. The default value is -1, which indicates that all pages from the start page to the last page are converted.
         # 
-        # > 
-        # 
-        # *   If the source is a spreadsheet file, specify the index number of the corresponding sheet instead.
-        # 
-        # *   If you convert a large number of pages within the document, we recommend that you split the pages into several document conversion tasks to prevent conversion timeouts.
-        # 
-        # *   This parameter takes effect only when you convert the file into an image. It does not take effect when you convert the file into a PDF or TXT file.
+        # > - If the source file is a spreadsheet, you must specify the worksheet number (\\`SheetIndex\\`).
+        # >
+        # > - If the document has many pages, we recommend that you convert them in batches. Otherwise, the conversion may time out.
+        # >
+        # > - This parameter takes effect only when you convert the document to images. It does not take effect when you convert the document to a PDF file or a text file.
         self.end_page = end_page
-        # Specifies whether to return only the first resulting image when you convert a spreadsheet document to images. The number of rows and the number of columns in the first image are determined by the automatic splitting process. Valid values:
+        # When you convert a spreadsheet document to images, specifies whether to return only the first image of the conversion result. The number of rows and columns in the image is the result of automatic splitting. Valid values:
         # 
-        # *   false (default): does not return only the first resulting image. All the resulting images are returned.
-        # *   true: returns only the first resulting image. A thumbnail is generated.
+        # - false (default): No. All images are returned.
         # 
-        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
+        # - true: Yes. Only the first image is returned. This is used to extract a thumbnail.
+        # 
+        # > This parameter takes effect only if you set the **LongPicture** parameter to `true`.
         self.first_page = first_page
-        # Specifies whether to convert all rows of a spreadsheet document to one single image or a single-page PDF document when you convert the table document to an image or a PDF document. Valid values:
+        # When you convert a spreadsheet document to images or a PDF file, specifies whether to render all rows on a single image or PDF page. Valid values:
         # 
-        # *   false (default): converts all rows of the document to multiple images or a multi-page PDF document. This is the default value.
-        # *   true: converts all rows of the document to one single image or a single-page PDF document.
+        # - false (default): No. The content is rendered on multiple images or PDF pages.
+        # 
+        # - true: Yes. The content is rendered on a single image or PDF page.
         self.fit_to_height = fit_to_height
-        # Specifies whether to convert all columns of a spreadsheet document to one single image or a single-page PDF document when you convert the spreadsheet file to an image or a PDF document. Valid values:
+        # When you convert a spreadsheet document to images or a PDF file, specifies whether to render all columns on a single image or PDF page. Valid values:
         # 
-        # *   false (default): converts all columns of the document to multiple images or a multi-page PDF document.
-        # *   true: converts all columns of the document to one single image or a single-page PDF document.
+        # - false (default): No. The content is rendered on multiple images or PDF pages.
+        # 
+        # - true: Yes. The content is rendered on a single image or PDF page.
         self.fit_to_width = fit_to_width
-        # Specifies whether to retain line feeds in the output file when a document is converted to a text file. Valid values:
+        # When you convert a document to text, specifies whether to keep the line feeds in the document. Valid values:
         # 
-        # *   false (default): does not retain the line feeds.
-        # *   true: retains the line feeds.
+        # - false (default): No. Line feeds are not kept.
+        # 
+        # - true: Yes. Line feeds are kept.
         self.hold_line_feed = hold_line_feed
-        # The dots per inch (DPI) of output images. Valid values: 96 to 600. Default value: 96.
+        # The DPI of the output image. Valid values: 96 to 600. The default value is 96.
         self.image_dpi = image_dpi
-        # Specifies whether to convert the document to a long image. Valid values:
+        # When you convert a document to images, specifies whether to convert it into a long image. Valid values:
         # 
-        # *   false (default): does not convert the document to a long image.
-        # *   true: converts the document to a long image.
+        # - false (default): No. The document is converted into multiple images.
         # 
-        # >  You can convert up to 20 pages of a document into a long image. If you convert more than 20 pages to a long image, an error may occur.
+        # - true: Yes. The document is converted into a long image.
+        # 
+        # > You can combine a maximum of 20 pages into a long image. If the number of pages exceeds this limit, the conversion task may fail.
         self.long_picture = long_picture
-        # Specifies whether to convert the document to a long text file. Valid values:
+        # When you convert a document to text, specifies whether to convert it into a long text file. Valid values:
         # 
-        # *   false (default): does not convert the document to a long text file. Each page of the document is converted to a text file.
-        # *   true: converts the entire document to a long text file.
+        # - false (default): No. Each page of the document is converted into a separate text file.
+        # 
+        # - true: Yes. All content is placed in a single text file.
         self.long_text = long_text
-        # The maximum number of spreadsheet columns to be converted to an image. By default, all columns within the spreadsheet file are converted.
+        # The maximum number of columns to convert when you convert a spreadsheet document to images. By default, all columns are converted.
         # 
-        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
+        # > This parameter takes effect only when you set **LongPicture** to `true`.
         self.max_sheet_column = max_sheet_column
-        # The maximum number of spreadsheet rows to be converted to an image. By default, all rows within the spreadsheet file are converted.
+        # The maximum number of rows to convert when you convert a spreadsheet document to images. By default, all rows are converted.
         # 
-        # >  This parameter takes effect only when the **LongPicture** parameter is set to `true`.
+        # > This parameter takes effect only when you set **LongPicture** to `true`.
         self.max_sheet_row = max_sheet_row
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The message notification configuration. For more information, click Notification. For more information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The numbers of pages to be converted. This parameter takes precedence over the StartPage and EndPage parameters. The value of this parameter can be in different formats:
+        # The page numbers to convert. This parameter has a higher priority than the \\`StartPage\\` and \\`EndPage\\` parameters. The format is as follows:
         # 
-        # *   If you specify pages separately by page number, separate page numbers with commas (,). Example: 1,2
-        # *   If you specify consecutive pages by using a page range, connect the starting and ending page numbers with a hyphen (-). Example: 1,2-4,7
+        # - Separate multiple page numbers with commas (,), for example, 1,2.
+        # 
+        # - Specify a range of consecutive pages with a hyphen (-), for example, 1,2-4,7.
         self.pages = pages
-        # Specifies whether to place sheets of paper horizontally for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # When you convert a spreadsheet document to images, specifies whether to place the paper horizontally. The output image is similar to a printed page. Valid values:
         # 
-        # *   false (default): does not place sheets of paper horizontally. Paper sheets are placed vertically.
-        # *   true: places sheets of paper horizontally.
+        # - false (default): No. The paper is placed vertically.
+        # 
+        # - true: Yes. The paper is placed horizontally.
         self.paper_horizontal = paper_horizontal
-        # The paper size for converting a spreadsheet document to images. Conversion to images is similar to printing the content on a sheet of paper. Valid values:
+        # The paper size for converting a spreadsheet document to images. The output image is similar to a printed page. Valid values:
         # 
-        # *   A0
-        # *   A2
-        # *   A4 (default)
+        # - A0
         # 
-        # >  This parameter takes effect only when the **FitToHeight** and **FitToWidth** parameters are specified.
+        # - A2
+        # 
+        # - A4 (default)
+        # 
+        # > This parameter takes effect only when you use it with the **FitToHeight** and **FitToWidth** parameters.
         self.paper_size = paper_size
-        # The password that protects the source document. To convert a password-protected document, specify this parameter.
+        # The password to open the document. Set this parameter if you want to convert a password-protected document.
         self.password = password
-        # The name of the project.[](~~478153~~)
+        # The project name. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The quality of the output file. Valid values: 0 to 100. A smaller value indicates lower quality and better conversion performance. By default, the system specifies an appropriate value that provides an optimal balance between the quality and conversion performance based on the document content.
+        # The quality of the converted file. Valid values: 0 to 100. A value of 0 indicates the lowest quality and the best performance. A value of 100 indicates the highest quality and the poorest performance. By default, the system sets an appropriate value based on the document content to balance quality and performance.
         self.quality = quality
-        # The percentage scale relative to the source document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
+        # The scaling ratio of the document. Valid values: 20 to 199. The default value is 100, which indicates that the document is not scaled.
         # 
-        # > A value that is less than 100 indicates a size reduction. A value that is greater than 100 indicates an enlargement.
+        # > A value less than 100 indicates that the document is scaled down. A value greater than 100 indicates that the document is scaled up.
         self.scale_percentage = scale_percentage
-        # The number of sheets to be converted to an image. By default, all sheets within the spreadsheet file are converted.
+        # The number of worksheets to convert to images in the spreadsheet document. By default, all worksheets are converted.
         self.sheet_count = sheet_count
-        # The index number of the sheet to be converted to an image. The value ranges from 1 to the index number of the last sheet. By default, the conversion starts from the first sheet.
+        # The number of the worksheet to convert to images in the spreadsheet document. Valid values: 1 to the number of the last worksheet. The default value is 1.
         self.sheet_index = sheet_index
-        # Specifies whether to display comments in resulting images when a text document is converted to images. Valid values:
+        # When you convert a word processor document to images, specifies whether to show comments. Valid values:
         # 
-        # *   false (default): does not display comments in resulting images.
-        # *   true: displays comments in resulting images.
+        # - false (default): No. Comments are not shown.
+        # 
+        # - true: Yes. Comments are shown.
         self.show_comments = show_comments
-        # The name extension of the source file. By default, the type of the source file is determined based on the name extension of the source object in OSS. If the object in OSS does not have a name extension, you can specify this parameter. Valid values:
+        # The extension type of the source data. By default, the type of the source data is determined by the extension of the OSS object. If the OSS object does not have an extension, you can set this parameter. Valid values:
         # 
-        # *   Text documents: doc, docx, wps, wpss, docm, dotm, dot, dotx, and html
-        # *   Presentation documents: pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
-        # *   Spreadsheet documents: xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
-        # *   PDF documents: pdf
+        # - Word processor documents (Word): doc, docx, wps, wpss, docm, dotm, dot, and dotx
+        # 
+        # - Presentation documents (PowerPoint): pptx, ppt, pot, potx, pps, ppsx, dps, dpt, pptm, potm, ppsm, and dpss
+        # 
+        # - Spreadsheet documents (Excel): xls, xlt, et, ett, xlsx, xltx, csv, xlsb, xlsm, xltm, and ets
+        # 
+        # - PDF documents: pdf
         self.source_type = source_type
-        # The URI of the source file.
+        # The storage address of the source data.
         # 
-        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # The OSS address must be in the oss\\://${Bucket}/${Object} format. \\`${Bucket}\\` is the name of the OSS bucket that is in the same region as the current project. \\`${Object}\\` is the full path of the file, including the file name extension.
         self.source_uri = source_uri
-        # The list of images. The sequence of image URIs in the list determines the order in which they are converted. (**This parameter is not officially available and is not recommended.**)
+        # A list of input images. The images are converted in the order of their URIs in the list. (**This parameter is not yet published. Do not use it.**)
         self.sources = sources
-        # The starting page for document conversion. Default value: 1.
+        # The start page for the document conversion. The default value is 1.
         # 
-        # > 
-        # 
-        # *   If the document is a spreadsheet file, specify the index number of the corresponding sheet instead.
-        # 
-        # *   This parameter takes effect only when you convert the file to an image format. It does not take effect when you convert the file into a PDF or TXT file.
+        # > - If the source file is a spreadsheet, you must specify the worksheet number.
+        # >
+        # > - This parameter takes effect only when you convert the document to images. It does not take effect when you convert the document to a PDF file or a text file.
         self.start_page = start_page
-        # The custom tags in dictionary format. You can use the custom tags to search for the task.
+        # The custom tags. The value is a dictionary. You can use tags to search for tasks.
         self.tags = tags
-        # The format of the output file. Valid values:
+        # The type of the output file. Valid values:
         # 
-        # *   png: a PNG image.
-        # *   jpg: a JPG image.
-        # *   pdf: a PDF file.
-        # *   txt: a TXT file. You can specify this value to extract the text content of the source document. Only presentation, text, or spreadsheet documents can be converted to a TXT file. If the source document is a spreadsheet, only one TXT is created and sheet-related parameters do not take effect.
+        # - png: Converts the document to PNG images.
+        # 
+        # - jpg: Converts the document to JPG images.
+        # 
+        # - pdf: Converts the document to a PDF file.
+        # 
+        # - txt: Converts the document to a text-only file. This is mainly used to extract text content from the file. This option is supported only for presentation documents, word processor documents, and spreadsheet documents. When you convert a spreadsheet document, a single txt file is generated, and settings for sheet-related variables do not take effect.
         # 
         # This parameter is required.
         self.target_type = target_type
-        # The address template of the output file.
+        # The template for the output address of the converted document.
         # 
-        # Specify the value in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI template](https://help.aliyun.com/document_detail/465762.html).
+        # The address must be in the `oss://{bucket}/{tags.custom}/{dirname}/{barename}.{autoext}` format. For more information, see [TargetURI templates](https://help.aliyun.com/document_detail/465762.html).
         # 
-        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+        # > Specify either this parameter or \\`TargetURIPrefix\\`.
         self.target_uri = target_uri
-        # The prefix of the storage address of the output file.
+        # The prefix of the storage address for the output file after document conversion.
         # 
-        # Specify the prefix in the `oss://${Bucket}/${Prefix}/` format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Prefix}` is the prefix of the output file.
+        # The prefix must be in the `oss://${Bucket}/${Prefix}/` format. \\`${Bucket}\\` is the name of the OSS bucket that is in the same region as the current project. \\`${Prefix}\\` is the prefix of the storage address for the output file.
         # 
-        # >  Specify at least one of the TargetURI and TargetURIPrefix parameters.
+        # > Specify either this parameter or \\`TargetURI\\`.
         self.target_uriprefix = target_uriprefix
-        # The trim policy for converting a spreadsheet file. Empty rows and columns may generate blank spaces in the output file if no appropriate trim policy is specified.
+        # The trimming policy for spreadsheet conversion. For example, if a spreadsheet contains many empty rows and columns, a large amount of white space may be generated if no trimming policy is specified.
         self.trim_policy = trim_policy
-        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum information length is 2,048 bytes.
+        # The custom information. This information is returned in the asynchronous notification message to help you associate the notification with your services. The value can be up to 2,048 bytes in length.
         self.user_data = user_data
 
     def validate(self):
@@ -420,18 +433,21 @@ class CreateOfficeConversionTaskRequestSources(DaraModel):
         rotate: int = None,
         uri: str = None,
     ):
-        # The rotation angle. Valid values:
+        # The rotation angle of the image. Valid values:
         # 
-        # *   0 (default)
-        # *   90
-        # *   180
-        # *   270
+        # - 0 (default)
+        # 
+        # - 90
+        # 
+        # - 180
+        # 
+        # - 270
         self.rotate = rotate
-        # The OSS URI of the input image.
+        # The OSS address of the source image.
         # 
-        # The URI must be in the oss://${Bucket}/${Object} format. ${Bucket} specifies the name of the OSS bucket that is in the same region as the current project. ${Object} specifies the full path of the file that contains the file name extension.
+        # The OSS address must be in the oss\\://${Bucket}/${Object} format. ${Bucket} is the name of the OSS bucket that is in the same region as the current project. ${Object} is the full path of the file, including the file name extension.
         # 
-        # The operation supports the following image formats: JPG, JP2, PNG, TIFF, WebP, BMP, and SVG.
+        # Supported image formats: jpg, jp2, png, tiff, webp, bmp, and svg.
         self.uri = uri
 
     def validate(self):

@@ -9,7 +9,7 @@ class PutProjectTransferAccelerationRequest(DaraModel):
         self,
         enabled: bool = None,
     ):
-        # Whether to enable transfer acceleration.
+        # Specifies whether to enable transfer acceleration.
         # 
         # This parameter is required.
         self.enabled = enabled

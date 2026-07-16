@@ -15,10 +15,16 @@ class UpdateDatasetShrinkRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.access_level = access_level
+        # The configurations for a third-party search dataset.
         self.dataset_config_shrink = dataset_config_shrink
+        # The description of the dataset.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # Specifies whether to enable search for the dataset.
         self.search_dataset_enable = search_dataset_enable
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId]().
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

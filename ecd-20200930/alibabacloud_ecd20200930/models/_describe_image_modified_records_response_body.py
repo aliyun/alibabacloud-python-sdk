@@ -15,13 +15,13 @@ class DescribeImageModifiedRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The image change records.
+        # Collection of image modification records.
         self.image_modified_records = image_modified_records
-        # If the NextToken parameter is empty, no next page exists.
+        # Token for the next page of results. An empty NextToken means no more results.
         self.next_token = next_token
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
-        # The total number of image modification records.
+        # Total number of image modification records.
         self.total_count = total_count
 
     def validate(self):
@@ -81,26 +81,18 @@ class DescribeImageModifiedRecordsResponseBodyImageModifiedRecords(DaraModel):
         status: int = None,
         update_time: str = None,
     ):
-        # The ID of the original image.
+        # ID of the original image before modification.
         self.image_id = image_id
-        # The name of the original image.
+        # Name of the original image before modification.
         self.image_name = image_name
-        # The ID of the new image after the image was modified.
+        # ID of the new image after modification.
         self.new_image_id = new_image_id
-        # The name of the new image after the image was modified.
+        # Name of the new image after modification.
         self.new_image_name = new_image_name
         self.reason = reason
-        # The status of the image modification.
-        # 
-        # Valid values:
-        # 
-        # *   0: The image is being modified.
-        # 
-        # *   1: The image is successfully modified.
-        # 
-        # *   2: The image fails to be modified.
+        # Status of the image modification.
         self.status = status
-        # The time when the image was last modified.
+        # Time when the image was last modified.
         self.update_time = update_time
 
     def validate(self):

@@ -9,6 +9,9 @@ class DescribeBucketsRequest(DaraModel):
         self,
         file_type: str = None,
     ):
+        # The type of the OSS file.
+        # 
+        # > This parameter is not yet available.
         self.file_type = file_type
 
     def validate(self):

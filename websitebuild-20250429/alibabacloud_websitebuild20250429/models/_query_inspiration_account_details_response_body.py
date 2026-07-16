@@ -22,17 +22,29 @@ class QueryInspirationAccountDetailsResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether a retry is allowed. Valid values:
+        # - false: Not allowed.
+        # - true: Allowed.
         self.allow_retry = allow_retry
+        # The application name. The application with this name is queried.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -130,14 +142,23 @@ class QueryInspirationAccountDetailsResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The query results.
         self.data = data
+        # The decision weight.
         self.next = next
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # Indicates whether the result set exceeds the server-side limit of 1,000 records (excluding pagination). If the results exceed 1,000 records, **ResultLimit** is **true**. Narrow the time range and search again. If the results do not exceed 1,000 records, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -224,18 +245,29 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
         self,
         acquisition_time: str = None,
         balance: int = None,
+        balance_str: str = None,
         end_date: str = None,
         expired: bool = None,
         init_quota: int = None,
+        init_quota_str: str = None,
         source_type: str = None,
         source_type_name: str = None,
     ):
+        # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
+        # The remaining balance (initQuota - used).
         self.balance = balance
+        self.balance_str = balance_str
+        # The time when the quota expires.
         self.end_date = end_date
+        # Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
         self.expired = expired
+        # The quantity acquired (initial quota).
         self.init_quota = init_quota
+        self.init_quota_str = init_quota_str
+        # The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
+        # The display name of the source type.
         self.source_type_name = source_type_name
 
     def validate(self):
@@ -252,6 +284,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
         if self.balance is not None:
             result['Balance'] = self.balance
 
+        if self.balance_str is not None:
+            result['BalanceStr'] = self.balance_str
+
         if self.end_date is not None:
             result['EndDate'] = self.end_date
 
@@ -260,6 +295,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
 
         if self.init_quota is not None:
             result['InitQuota'] = self.init_quota
+
+        if self.init_quota_str is not None:
+            result['InitQuotaStr'] = self.init_quota_str
 
         if self.source_type is not None:
             result['SourceType'] = self.source_type
@@ -277,6 +315,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
         if m.get('Balance') is not None:
             self.balance = m.get('Balance')
 
+        if m.get('BalanceStr') is not None:
+            self.balance_str = m.get('BalanceStr')
+
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
 
@@ -285,6 +326,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleNext(DaraModel):
 
         if m.get('InitQuota') is not None:
             self.init_quota = m.get('InitQuota')
+
+        if m.get('InitQuotaStr') is not None:
+            self.init_quota_str = m.get('InitQuotaStr')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
@@ -299,19 +343,30 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         self,
         acquisition_time: str = None,
         balance: int = None,
+        balance_str: str = None,
         end_date: str = None,
         expired: bool = None,
         init_quota: int = None,
+        init_quota_str: str = None,
         source_type: str = None,
         source_type_name: str = None,
         status: str = None,
     ):
+        # The time when the inspiration points were acquired.
         self.acquisition_time = acquisition_time
+        # The remaining balance (initQuota - used).
         self.balance = balance
+        self.balance_str = balance_str
+        # The time when the quota expires.
         self.end_date = end_date
+        # Indicates whether the quota has expired (endDate is earlier than the current time). The frontend uses this flag to gray out expired entries.
         self.expired = expired
+        # The quantity acquired (initial quota).
         self.init_quota = init_quota
+        self.init_quota_str = init_quota_str
+        # The source type code, such as FREE_TRIAL_GIFT, INSTANCE_GIFT, UPGRADE_GRANT, or PURCHASED.
         self.source_type = source_type
+        # The display name of the source type.
         self.source_type_name = source_type_name
         self.status = status
 
@@ -329,6 +384,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         if self.balance is not None:
             result['Balance'] = self.balance
 
+        if self.balance_str is not None:
+            result['BalanceStr'] = self.balance_str
+
         if self.end_date is not None:
             result['EndDate'] = self.end_date
 
@@ -337,6 +395,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
 
         if self.init_quota is not None:
             result['InitQuota'] = self.init_quota
+
+        if self.init_quota_str is not None:
+            result['InitQuotaStr'] = self.init_quota_str
 
         if self.source_type is not None:
             result['SourceType'] = self.source_type
@@ -357,6 +418,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
         if m.get('Balance') is not None:
             self.balance = m.get('Balance')
 
+        if m.get('BalanceStr') is not None:
+            self.balance_str = m.get('BalanceStr')
+
         if m.get('EndDate') is not None:
             self.end_date = m.get('EndDate')
 
@@ -365,6 +429,9 @@ class QueryInspirationAccountDetailsResponseBodyModuleData(DaraModel):
 
         if m.get('InitQuota') is not None:
             self.init_quota = m.get('InitQuota')
+
+        if m.get('InitQuotaStr') is not None:
+            self.init_quota_str = m.get('InitQuotaStr')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')

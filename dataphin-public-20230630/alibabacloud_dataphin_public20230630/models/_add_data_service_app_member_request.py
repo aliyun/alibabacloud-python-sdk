@@ -13,8 +13,12 @@ class AddDataServiceAppMemberRequest(DaraModel):
         add_command: main_models.AddDataServiceAppMemberRequestAddCommand = None,
         op_tenant_id: int = None,
     ):
+        # The regular member to add to the data service application.
+        # 
         # This parameter is required.
         self.add_command = add_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,8 +56,12 @@ class AddDataServiceAppMemberRequestAddCommand(DaraModel):
         app_id: int = None,
         member_list: List[main_models.AddDataServiceAppMemberRequestAddCommandMemberList] = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The list of members.
+        # 
         # This parameter is required.
         self.member_list = member_list
 
@@ -99,8 +107,12 @@ class AddDataServiceAppMemberRequestAddCommandMemberList(DaraModel):
         effective_end: str = None,
         user_id: str = None,
     ):
+        # The authorization expiration time.
+        # 
         # This parameter is required.
         self.effective_end = effective_end
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

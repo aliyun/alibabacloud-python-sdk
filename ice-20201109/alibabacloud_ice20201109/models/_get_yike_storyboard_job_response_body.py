@@ -14,10 +14,21 @@ class GetYikeStoryboardJobResponseBody(DaraModel):
         job_status: str = None,
         request_id: str = None,
     ):
+        # The storyboard job ID. You can obtain this ID from the response parameters of the [SubmitStoryboardJob](https://help.aliyun.com/document_detail/461964.html) operation.
         self.job_id = job_id
+        # A JSON object that contains the parameters for the job. The structure of this object varies based on the AI algorithm.
         self.job_params = job_params
+        # The job result.
         self.job_result = job_result
+        # The job status. Valid values:
+        # 
+        # - **Succeeded**: The job completed successfully.
+        # 
+        # - **Failed**: The job failed to complete.
+        # 
+        # - **Running**: The job is in progress.
         self.job_status = job_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,11 +90,17 @@ class GetYikeStoryboardJobResponseBodyJobResult(DaraModel):
         success_storyboard_ids: str = None,
         success_storyboard_list: str = None,
     ):
+        # A list of IDs for storyboards that encountered an exception.
         self.exception_storyboard_ids = exception_storyboard_ids
+        # A list of shots that failed to generate.
         self.failure_shot_list = failure_shot_list
+        # The downloadable OSS URL.
         self.output_url = output_url
+        # Detailed information about each storyboard in the job.
         self.storyboard_info_list = storyboard_info_list
+        # A comma-separated list of successful storyboard IDs.
         self.success_storyboard_ids = success_storyboard_ids
+        # A list of IDs for successful storyboards.
         self.success_storyboard_list = success_storyboard_list
 
     def validate(self):
@@ -151,16 +168,31 @@ class GetYikeStoryboardJobResponseBodyJobParams(DaraModel):
         title: str = None,
         video_model: str = None,
     ):
+        # The aspect ratio of the video.
         self.aspect_ratio = aspect_ratio
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The model parameters.
         self.model_params = model_params
+        # The narration voice.
         self.narration_voice_id = narration_voice_id
+        # The resolution of the generated video.
         self.resolution = resolution
+        # The shot generation mode.
         self.shot_prompt_mode = shot_prompt_mode
+        # The shot splitting mode.
         self.shot_split_mode = shot_split_mode
+        # The source type.
         self.source_type = source_type
+        # The style ID.
         self.style_id = style_id
+        # The job title.
+        # 
+        # \\- Maximum length: 128 bytes.
+        # 
+        # \\- UTF-8 encoding.
         self.title = title
+        # The video model.
         self.video_model = video_model
 
     def validate(self):

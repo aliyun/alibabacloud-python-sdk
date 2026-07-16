@@ -11,15 +11,16 @@ class CreateBasicAcceleratorResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the basic GA instance.
+        # The instance ID of the basic Alibaba Cloud Global Accelerator (GA) instance.
         self.accelerator_id = accelerator_id
         # The order ID.
         # 
-        # This parameter is returned only if ChargeType is set to PREPAY.
+        # This parameter is returned only when ChargeType is set to PREPAY (upfront).
         # 
-        # If **AutoPay** is set to **false**, go to [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment after an order is generated.
+        # If **AutoPay** is set to **false**, which means automatic payment of the bill is not enabled, go to the <props="china">[Order Center](https://usercenter2.aliyun.com/order/list)
+        # <props="intl">[Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

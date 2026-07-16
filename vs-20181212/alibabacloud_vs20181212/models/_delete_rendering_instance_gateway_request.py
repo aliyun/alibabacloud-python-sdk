@@ -9,6 +9,7 @@ class DeleteRenderingInstanceGatewayRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

@@ -14,32 +14,30 @@ class DescribeImageBuildRiskListRequest(DaraModel):
         page_size: int = None,
         risk_level: str = None,
     ):
-        # The **rule name** or **type name** of the risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the name. Optional parameters:
-        # 
-        # *   If **CriteriaType** is set to **RiskKeyName**, you must specify a **rule name** for this parameter.
-        # *   If **CriteriaType** is set to**RiskClassName**, you must specify a **type name** for this parameter.
+        # The **rule name** or **category name** of the build risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value. Valid values:
+        # - If **CriteriaType** is set to **RiskKeyName**, the value is the **rule name** of the build risk.
+        # - If **CriteriaType** is set to **RiskClassName**, the value is the **category name** of the build risk.
         self.criteria = criteria
-        # The query type.of the risk. Valid values:
-        # 
-        # *   **RiskKeyName**: the rule name of the risk
-        # *   **RiskClassName**: the type name of the risk
+        # The query type of the build risk. Valid values:
+        # - **RiskKeyName**: build risk rule name.
+        # - **RiskClassName**: build risk category name.
         self.criteria_type = criteria_type
-        # The page number. Default value: **1**.
+        # The page number of the current page when paging is used. Default value: **1**.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the content in the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page when paging is used. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: High.
+        # 
+        # - **medium**: Medium.
+        # 
+        # - **low**: Low.
         self.risk_level = risk_level
 
     def validate(self):

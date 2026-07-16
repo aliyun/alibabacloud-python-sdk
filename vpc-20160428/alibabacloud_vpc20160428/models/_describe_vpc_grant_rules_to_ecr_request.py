@@ -24,29 +24,31 @@ class DescribeVpcGrantRulesToEcrRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.DescribeVpcGrantRulesToEcrRequestTags] = None,
     ):
-        # The ID of the ECR that you want to query.
+        # The ID of the Express Connect Router.
         self.ecr_instance_id = ecr_instance_id
-        # The ID of the Alibaba Cloud account to which the ECR belongs.
+        # The ID of the Alibaba Cloud account (main account) that owns the Express Connect Router.
         # 
-        # > If you want to connect to a network instance that belongs to a different account, this parameter is required.
+        # > This parameter is required when querying a cross-account network instance.
         self.ecr_owner_id = ecr_owner_id
         # The ID of the network instance.
         self.instance_id = instance_id
-        # The type of instance. Valid values:
+        # The type of instance whose authorization rules you want to query. Valid values:
         # 
-        # *   **VBR**: queries the permissions that are granted to a VBR.
-        # *   **VPC**: queries the permissions that are granted from a VPC.
+        # - **VBR**: Set the value to **VBR** to query the Virtual Private Cloud (VPC) instances authorized to connect to the specified virtual border router (VBR).
+        # 
+        # - **VPC**: Set the value to **VPC** to query the VBRs to which the specified VPC has granted authorization.
         self.instance_type = instance_type
-        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **100**.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token used to retrieve the next page of results. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   If a value is returned for NextToken, you must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - Omit this parameter for the first request.
+        # 
+        # - For subsequent requests, set this to the **NextToken** value from the previous response.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the network instance that you want to query.
+        # The ID of the region where the network instance is located.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -54,7 +56,7 @@ class DescribeVpcGrantRulesToEcrRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag.
+        # The tags. You can specify up to 20 tags.
         self.tags = tags
 
     def validate(self):
@@ -163,13 +165,13 @@ class DescribeVpcGrantRulesToEcrRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can enter a maximum of 20 tag values. The tag value can be an empty string.
+        # The tag value. The tag value can be an empty string.
         # 
-        # The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

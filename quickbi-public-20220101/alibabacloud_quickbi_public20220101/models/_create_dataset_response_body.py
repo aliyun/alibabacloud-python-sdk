@@ -11,8 +11,19 @@ class CreateDatasetResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result of the operation. Valid values:
+        # 
+        # - true: The request is successful.
+        # 
+        # - false: The request fails.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # 
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

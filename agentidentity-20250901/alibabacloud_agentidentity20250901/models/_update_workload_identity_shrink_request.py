@@ -11,12 +11,14 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
         description: str = None,
         identity_provider_name: str = None,
         role_arn: str = None,
+        session_binding_enabled: str = None,
         workload_identity_name: str = None,
     ):
         self.allowed_resource_oauth2_return_urls_shrink = allowed_resource_oauth2_return_urls_shrink
         self.description = description
         self.identity_provider_name = identity_provider_name
         self.role_arn = role_arn
+        self.session_binding_enabled = session_binding_enabled
         self.workload_identity_name = workload_identity_name
 
     def validate(self):
@@ -39,6 +41,9 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
         if self.role_arn is not None:
             result['RoleArn'] = self.role_arn
 
+        if self.session_binding_enabled is not None:
+            result['SessionBindingEnabled'] = self.session_binding_enabled
+
         if self.workload_identity_name is not None:
             result['WorkloadIdentityName'] = self.workload_identity_name
 
@@ -57,6 +62,9 @@ class UpdateWorkloadIdentityShrinkRequest(DaraModel):
 
         if m.get('RoleArn') is not None:
             self.role_arn = m.get('RoleArn')
+
+        if m.get('SessionBindingEnabled') is not None:
+            self.session_binding_enabled = m.get('SessionBindingEnabled')
 
         if m.get('WorkloadIdentityName') is not None:
             self.workload_identity_name = m.get('WorkloadIdentityName')

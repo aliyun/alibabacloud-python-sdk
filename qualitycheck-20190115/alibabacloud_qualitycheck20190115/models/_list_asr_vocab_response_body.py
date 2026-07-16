@@ -16,10 +16,14 @@ class ListAsrVocabResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates that the request was successful. Other values indicate that the request failed. You can use this field to determine the cause of the failure.
         self.code = code
         self.data = data
+        # The error details if the request fails. If the request is successful, the value is **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Use this field to determine if the request was successful. A value of true indicates success. A value of **false** or **null** indicates failure.
         self.success = success
 
     def validate(self):

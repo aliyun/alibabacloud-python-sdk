@@ -10,11 +10,11 @@ class DescribeEventTotalCountReportRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # Sets the language type for requests and responses. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Region code
+        # Region ID.
         self.reg_id = reg_id
 
     def validate(self):

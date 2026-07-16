@@ -13,8 +13,12 @@ class CreateBizUnitRequest(DaraModel):
         create_command: main_models.CreateBizUnitRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -56,14 +60,38 @@ class CreateBizUnitRequestCreateCommand(DaraModel):
         mode: str = None,
         name: str = None,
     ):
+        # The list of data domain architects.
+        # 
         # This parameter is required.
         self.biz_unit_account_list = biz_unit_account_list
+        # The description of the business object. The description can be up to 128 characters in length.
         self.description = description
+        # The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The preset icon. Valid values:
+        # - icon-e-commerce: E-commerce.
+        # - icon-finance: Finance.
+        # - con-cloud-computing: Cloud computing.
+        # - icon-advertisement: Advertising and marketing.
+        # - icon-logistics: Logistics.
+        # - icon-entertainment: Entertainment.
+        # - icon-traffic: Travel.
+        # - icon-health: Health.
+        # - icon-social-contact: Social and communication.
+        # - con-dining: Dining.
+        # - icon-education: Education.
+        # - icon-environment: Environment.
+        # 
         # This parameter is required.
         self.icon = icon
+        # The production mode. Valid values:
+        # - BASIC: single-environment mode.
+        # - DEV_PROD: development/production dual-environment mode.
         self.mode = mode
+        # The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+        # 
         # This parameter is required.
         self.name = name
 
@@ -130,6 +158,8 @@ class CreateBizUnitRequestCreateCommandBizUnitAccountList(DaraModel):
         self,
         user_id: str = None,
     ):
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

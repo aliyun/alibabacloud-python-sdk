@@ -17,14 +17,17 @@ class BatchGetExpressionFieldsRequest(DaraModel):
         plan_name_en: str = None,
         site_id: int = None,
     ):
-        # List of expressions.
+        # The list of expressions.
         self.expressions = expressions
+        # The plan instance ID.
         self.instance_id = instance_id
+        # The type of the expression.
         self.kind = kind
-        # WAF Phase
+        # The WAF phase.
         self.phase = phase
+        # The plan name (in English).
         self.plan_name_en = plan_name_en
-        # Site ID
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):
@@ -91,7 +94,7 @@ class BatchGetExpressionFieldsRequestExpressions(DaraModel):
         expression: str = None,
         id: int = None,
     ):
-        # Content of the expression.
+        # The content of the expression.
         self.expression = expression
         # The sequence number of the expression.
         self.id = id

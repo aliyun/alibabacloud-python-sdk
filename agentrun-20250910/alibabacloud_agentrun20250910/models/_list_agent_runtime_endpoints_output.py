@@ -15,9 +15,13 @@ class ListAgentRuntimeEndpointsOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # List of projects
         self.items = items
+        # Page number
         self.page_number = page_number
+        # Page size
         self.page_size = page_size
+        # Total number
         self.total = total
 
     def validate(self):

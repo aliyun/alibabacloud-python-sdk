@@ -11,20 +11,22 @@ class UpdateDnsCacheDomainRemarkRequest(DaraModel):
         lang: str = None,
         remark: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name.<props="china">Call [DescribeDomains](https://help.aliyun.com/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) to obtain the domain name.
+        # <props="intl">Call [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
         # 
-        # Default: **zh**
+        # - **en**: English
+        # 
+        # Default value: **zh**.
         self.lang = lang
-        # The remarks. The remarks can be up to 50 characters in length and can contain only letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The remark. The remark can be up to 50 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
-        # Delete the original remarks when it is empty.
+        # Leave this parameter empty to delete the existing remark.
         self.remark = remark
 
     def validate(self):

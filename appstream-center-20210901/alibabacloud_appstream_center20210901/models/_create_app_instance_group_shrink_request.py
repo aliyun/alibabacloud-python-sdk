@@ -38,110 +38,77 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         users: List[str] = None,
         video_policy_shrink: str = None,
     ):
-        # The image ID of the application. To obtain the image ID, log on to the [App Streaming console](https://appstreaming.console.aliyun.com/). In the left-side navigation pane, choose **Maintenance** > **Custom Images** or Maintenance > **System Images**.
+        # The application image ID. You can obtain the ID from the **O&M** > **Custom Images** or **System Images** page in the [WUYING Cloud Application console](https://appstreaming.console.aliyun.com/).
         # 
         # This parameter is required.
         self.app_center_image_id = app_center_image_id
         # The name of the delivery group.
         self.app_instance_group_name = app_instance_group_name
-        # Package type.
+        # The package type.
         self.app_package_type = app_package_type
-        # Policy ID.
+        # The policy ID.
         self.app_policy_id = app_policy_id
-        # The authentication mode of the delivery group.
+        # The authorization mode of the delivery group.
         self.auth_mode = auth_mode
         # Specifies whether to enable automatic payment.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false: manual payment. This is the default value.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false: manual payment. This is the default value.
         self.auto_renew = auto_renew
-        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-        # 
-        # Valid values:
-        # 
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-hangzhou: China (Hangzhou)
+        # The region ID of the delivery group. For information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # The sales mode.
         # 
-        # Valid value:
-        # 
-        # *   Node: by resource
-        # 
         # This parameter is required.
         self.charge_resource_mode = charge_resource_mode
         # The billing method.
         # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
-        # 
         # This parameter is required.
         self.charge_type = charge_type
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The network settings.
+        # The network configuration.
         # 
-        # >  If you want to use this parameter, submit a ticket.
+        # > To use this parameter, submit a ticket.
         self.network_shrink = network_shrink
         # The node pool object.
         self.node_pool_shrink = node_pool_shrink
-        # The subscription duration of resources. This parameter is required if you set `ChargeType` to `PrePaid`. The unit of this parameter is specified by `PeriodUnit`.
+        # The subscription duration of the resource when `ChargeType` is set to `PrePaid`. This parameter is required. The unit is specified by `PeriodUnit`.
         # 
-        # *   Valid value if you set `PeriodUnit` to `Week`:
+        # - If `PeriodUnit` is set to `Week`, valid values:
         # 
-        #     *   1
+        #    - 1
         # 
-        # *   Valid values if you set `PeriodUnit` to `Month`:
+        # - If `PeriodUnit` is set to `Month`, valid values:
         # 
-        #     *   1
-        #     *   2
-        #     *   3
-        #     *   6
+        #    - 1
+        #    - 2
+        #    - 3
+        #    - 6
         # 
-        # *   Valid values if you set `PeriodUnit` to `Year`:
+        # - If `PeriodUnit` is set to `Year`, valid values:
         # 
-        #     *   1
-        #     *   2
-        #     *   3
+        #    - 1
+        #    - 2
+        #    - 3
         # 
-        # >  If you set `ChargeType` to `PostPaid`, set this parameter to 1.
+        # > If `ChargeType` is set to `PostPaid`, set this parameter to 1.
         # 
         # This parameter is required.
         self.period = period
-        # The unit of the subscription duration. This parameter is available if you set `ChargeType` to `PrePaid`.
+        # The unit of the subscription duration when `ChargeType` is set to `PrePaid`.
         # 
-        # >  The value of this parameter is case-insensitive. For example, `Week` is valid and `week` is invalid. If you specify an invalid value combination for Period and PeriodUnit, such as `2 Week`, the operation can still be called. However, an error occurs when you place the order.
+        # > This parameter is case-sensitive. For example, `Week` is valid, but `week` is invalid.
+        # If the request parameters do not match the valid combinations, such as `2 Week`, the API call succeeds but an error occurs during the order placement.
         # 
-        # >  If you set `ChargeType` to `PostPaid`, set this parameter to `Month`.
-        # 
-        # Valid values:
-        # 
-        # *   Month
-        # *   Year
-        # *   Week
+        # > If `ChargeType` is set to `PostPaid`, set this parameter to `Month`.
         # 
         # This parameter is required.
         self.period_unit = period_unit
-        # The ID of the pre-open application.
+        # The pre-opened application ID.
         self.pre_open_app_id = pre_open_app_id
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type
@@ -151,23 +118,23 @@ class CreateAppInstanceGroupShrinkRequest(DaraModel):
         self.runtime_policy_shrink = runtime_policy_shrink
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The period of time during which the application can be recycled. The recycling period is the period of time between the time when the end user disconnects from the application and the time when processes exit the application. If you do not want to recycle the application, set this parameter to `-1`. Valid values:-1 and 3 to 300. The value must be an integer. Default value: `15`. Unit: minutes.
+        # The application recycling timeout period, in minutes. After an end user disconnects from a cloud application for a period of time, the cloud application process exits. This period is the application recycling timeout. Set this parameter to `-1` if you do not want the application to be recycled. Valid values: -1 and 3 to 300 (integer). Default value: `15`.
         # 
         # This parameter is required.
         self.session_timeout = session_timeout
         # The storage policy.
         self.storage_policy_shrink = storage_policy_shrink
-        # Payment method subtype.
+        # The billing method subtype.
         self.sub_pay_type = sub_pay_type
-        # The custom policy.
+        # The user-defined policy.
         self.user_define_policy_shrink = user_define_policy_shrink
-        # List of authorized user group IDs.
+        # The list of authorized user group IDs.
         self.user_group_ids = user_group_ids
-        # The information about the user that you want to add to the assigned user list of the delivery group. This parameter is required if you configure `Users`.
+        # The user information of the users to be added to the delivery group. This field is required if the `Users` parameter is specified.
         self.user_info_shrink = user_info_shrink
-        # The users that you want to add to the assigned user list of the delivery group.
+        # The list of usernames to be added to the delivery group as assigned users.
         self.users = users
-        # Display policy.
+        # The display policy.
         self.video_policy_shrink = video_policy_shrink
 
     def validate(self):

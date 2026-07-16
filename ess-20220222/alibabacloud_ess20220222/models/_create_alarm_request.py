@@ -32,7 +32,7 @@ class CreateAlarmRequest(DaraModel):
     ):
         # The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
         self.alarm_actions = alarm_actions
-        # The operator that you want to use to compare the metric value and the threshold. Valid Values:
+        # The operator that you want to use to compare the metric value and the threshold. Valid values:
         # 
         # *   If the metric value is greater than or equal to the threshold, set the value to >=.
         # *   If the metric value is less than or equal to the metric threshold, set the value to <=.
@@ -62,7 +62,7 @@ class CreateAlarmRequest(DaraModel):
         self.effective = effective
         # The number of consecutive times that the threshold must be reached before a scaling rule is executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before the scaling rule is executed.
         # 
-        # Default value: 3
+        # Default value: 3.
         self.evaluation_count = evaluation_count
         # The information about the multi-metric alert rules.
         self.expressions = expressions
@@ -109,15 +109,15 @@ class CreateAlarmRequest(DaraModel):
         # 
         # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid Values:
+        # The metric type. Valid values:
         # 
-        # *   system: a system metric of CloudMonitor.
-        # *   custom: a custom metric that is reported to CloudMonitor.
+        # *   system: system metrics of CloudMonitor.
+        # *   custom: custom metrics that are reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
         self.owner_id = owner_id
-        # The statistical period of the metric data. Unit: seconds. Valid Values:
+        # The statistical period of the metric data. Unit: seconds. Valid values:
         # 
         # *   15
         # *   60
@@ -125,7 +125,7 @@ class CreateAlarmRequest(DaraModel):
         # *   300
         # *   900
         # 
-        # > You can set this parameter to 15 seconds only for scaling groups of the ECS type.
+        # >  You can set this parameter to 15 seconds only for scaling groups of the ECS type.
         # 
         # Default value: 300.
         self.period = period
@@ -138,7 +138,7 @@ class CreateAlarmRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The statistical method of the metric data. Valid Values:
+        # The statistical method of the metric data. Valid values:
         # 
         # *   Average: calculates the average value of the metric data.
         # *   Minimum: calculates the minimum value of the metric data.
@@ -426,10 +426,9 @@ class CreateAlarmRequestDimensions(DaraModel):
         # *   If you set MetricType to system, this parameter has the following valid values:
         # 
         #     *   user_id: the ID of your Alibaba Cloud account.
-        #     *   scaling_group: the scaling group that is monitored by the event-triggered task.
+        #     *   scaling_group: the scaling group that you want to monitor by using the event-triggered task.
         #     *   device: the NIC type.
         #     *   state: the status of the TCP connection.
-        #     *   rulePool: the specified server group for the ALB qps metric.
         self.dimension_key = dimension_key
         # The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
         # 
@@ -441,17 +440,15 @@ class CreateAlarmRequestDimensions(DaraModel):
         # 
         #     *   scaling_group: The system specifies the value.
         # 
-        #     *   device:
+        #     *   device: You can set this parameter to eth0 or eth1.
         # 
-        #         *   eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
-        #         *   eth1: For classic network instances, eth1 represents the Internet network interface controller.
+        #         *   For instances of the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in VPCs.
+        #         *   For instances of the classic network type, eth1 specifies the public NIC.
         # 
-        #     *   state:
+        #     *   state: You can set this parameter to TCP_TOTAL or ESTABLISHED.
         # 
         #         *   TCP_TOTAL specifies the total number of TCP connections.
-        #         *   ESTABLISHED indicates the number of TCP connections that are established.
-        # 
-        #     *   rulePool: the ID of the ALB server group. Example: sgp-xxxxx.
+        #         *   ESTABLISHED specifies the number of TCP connections that are established.
         self.dimension_value = dimension_value
 
     def validate(self):

@@ -15,13 +15,23 @@ class ListDialoguesRequest(DaraModel):
         start_time: str = None,
         task_id: str = None,
     ):
+        # Unique identifier for the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Page number of the current page.
         self.current = current
+        # Generation type. Valid values: 1 (creation) and 2 (intelligent search). Default value: 2.
         self.dialogue_type = dialogue_type
+        # End time.
         self.end_time = end_time
+        # Number of items per page. Default value: 10.
         self.size = size
+        # Start time.
         self.start_time = start_time
+        # Unique identifier for the task.
+        # 
+        # > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId in later tasks, those tasks belong to the same conversation group.
         self.task_id = task_id
 
     def validate(self):

@@ -14,18 +14,18 @@ class GenerateWebofficeTokenResponseBody(DaraModel):
         request_id: str = None,
         weboffice_url: str = None,
     ):
-        # Weboffice access token.
+        # The Weboffice access credential.
         self.access_token = access_token
-        # Expiration time of the access token. The expiration time is 30 minutes.
+        # The expiration time of the access credential. The credential expires in 30 minutes. Format: YYYY-MM-DDTHH:mm:ss.
         self.access_token_expired_time = access_token_expired_time
-        # Weboffice refresh token.
+        # The Weboffice refresh credential.
         self.refresh_token = refresh_token
-        # Expiration time of the refresh token. The expiration time is 1 day.
+        # The expiration time of the refresh credential. The credential expires in 1 day. Format: YYYY-MM-DDTHH:mm:ss.
         self.refresh_token_expired_time = refresh_token_expired_time
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Weboffice entry URL. Used for online preview or editing of documents.
-        # > Cannot be opened directly in a browser; it needs to be used with the Weboffice JS-SDK and access token (AccessToken) to preview or edit documents. For more information, see [Getting Started](https://help.aliyun.com/document_detail/468066.html).
+        # The Weboffice entry URL for previewing or editing documents online.
+        # > This URL cannot be opened directly in a browser. You must use it together with the Weboffice JS-SDK and the access credential (AccessToken) to preview or edit documents. For more information, see [Getting Started](https://help.aliyun.com/document_detail/468066.html).
         self.weboffice_url = weboffice_url
 
     def validate(self):

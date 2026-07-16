@@ -11,7 +11,10 @@ class SkuQueryParam(DaraModel):
         product_id: str = None,
         sku_id: str = None,
     ):
+        # Quantity
         self.buy_amount = buy_amount
+        # Product ID
+        # 
         # This parameter is required.
         self.product_id = product_id
         # skuid

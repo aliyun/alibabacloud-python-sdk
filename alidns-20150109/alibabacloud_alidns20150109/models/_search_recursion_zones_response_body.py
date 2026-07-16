@@ -19,12 +19,19 @@ class SearchRecursionZonesResponseBody(DaraModel):
         total_pages: int = None,
         zones: main_models.SearchRecursionZonesResponseBodyZones = None,
     ):
+        # The maximum number of items to return for this request.
         self.max_results = max_results
+        # A pagination token used to retrieve the next page of results.
         self.next_token = next_token
+        # The page number. Pages start from **1**. The default is **1**.
         self.page_number = page_number
+        # The number of items returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of items.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
         self.zones = zones
 

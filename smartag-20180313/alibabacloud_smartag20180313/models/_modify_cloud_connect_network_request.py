@@ -30,8 +30,9 @@ class ModifyCloudConnectNetworkRequest(DaraModel):
         self.description = description
         # Specifies whether to allow the SAG instances associated with the same CCN instance to communicate with each other.
         # 
-        # *   **enable**: yes
-        # *   **disable**: no
+        # - **enable**: yes
+        # 
+        # - **disable**: no
         self.interworking_status = interworking_status
         # The name of the CCN instance.
         # 

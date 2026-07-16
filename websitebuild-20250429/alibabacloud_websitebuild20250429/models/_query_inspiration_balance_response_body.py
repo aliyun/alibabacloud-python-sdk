@@ -22,17 +22,28 @@ class QueryInspirationBalanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether the request can be retried.
         self.allow_retry = allow_retry
+        # The application name. The system queries the application with this name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -121,12 +132,21 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
     def __init__(
         self,
         remaining: int = None,
+        remaining_str: str = None,
         total_quota: int = None,
+        total_quota_str: str = None,
         total_used: int = None,
+        total_used_str: str = None,
     ):
+        # The remaining amount, calculated as totalQuota minus totalUsed.
         self.remaining = remaining
+        self.remaining_str = remaining_str
+        # The total quota, which is the sum of initQuota values across all valid accounts.
         self.total_quota = total_quota
+        self.total_quota_str = total_quota_str
+        # The total consumed amount, which is the sum of used values across all valid accounts.
         self.total_used = total_used
+        self.total_used_str = total_used_str
 
     def validate(self):
         pass
@@ -139,11 +159,20 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
         if self.remaining is not None:
             result['Remaining'] = self.remaining
 
+        if self.remaining_str is not None:
+            result['RemainingStr'] = self.remaining_str
+
         if self.total_quota is not None:
             result['TotalQuota'] = self.total_quota
 
+        if self.total_quota_str is not None:
+            result['TotalQuotaStr'] = self.total_quota_str
+
         if self.total_used is not None:
             result['TotalUsed'] = self.total_used
+
+        if self.total_used_str is not None:
+            result['TotalUsedStr'] = self.total_used_str
 
         return result
 
@@ -152,11 +181,20 @@ class QueryInspirationBalanceResponseBodyModule(DaraModel):
         if m.get('Remaining') is not None:
             self.remaining = m.get('Remaining')
 
+        if m.get('RemainingStr') is not None:
+            self.remaining_str = m.get('RemainingStr')
+
         if m.get('TotalQuota') is not None:
             self.total_quota = m.get('TotalQuota')
 
+        if m.get('TotalQuotaStr') is not None:
+            self.total_quota_str = m.get('TotalQuotaStr')
+
         if m.get('TotalUsed') is not None:
             self.total_used = m.get('TotalUsed')
+
+        if m.get('TotalUsedStr') is not None:
+            self.total_used_str = m.get('TotalUsedStr')
 
         return self
 

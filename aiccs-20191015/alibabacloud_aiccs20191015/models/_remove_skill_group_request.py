@@ -11,9 +11,17 @@ class RemoveSkillGroupRequest(DaraModel):
         instance_id: str = None,
         skill_group_id: str = None,
     ):
+        # Unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.  
+        # 
+        # You can invoke the [QuerySkillGroups](https://help.aliyun.com/zh/aiccs/developer-reference/api-aiccs-2019-10-15-queryskillgroups) API and check the **SkillGroupId** field in the response to obtain the skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

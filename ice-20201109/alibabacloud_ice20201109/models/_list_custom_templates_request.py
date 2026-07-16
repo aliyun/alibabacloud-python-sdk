@@ -15,57 +15,75 @@ class ListCustomTemplatesRequest(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
-        # The template name.
+        # The name of the template.
         self.name = name
-        # The order in which the entries are sorted. Valid values:
+        # The sort order of the results. Valid values:
         # 
-        # *   CreateTimeDesc: sorted by creation time in descending order.
-        # *   CreateTimeAsc: sorted by creation time in ascending order.
+        # - `CreationTime:Desc`: Sorts the results by Creation Time in descending order.
+        # 
+        # - `CreationTime:Asc`: Sorts the results by Creation Time in ascending order.
         self.order_by = order_by
-        # The page number.
+        # The page number of the results to return.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The subtype ID of the template.
+        # The subtype of the template. This parameter applies only when `Type` is set to 1, 2, 7, or 9.
         # 
-        # *   Valid values for transcoding templates:
+        # - Transcoding Template subtypes:
         # 
-        #     *   1 (Normal): regular template.
-        #     *   2 (AudioTranscode): audio transcoding template.
-        #     *   3 (Remux): container format conversion template.
-        #     *   4 (NarrowBandV1): Narrowband HD 1.0 template.
-        #     *   5 (NarrowBandV2): Narrowband HD 2.0 template.
+        #   - 1: Normal (`Normal`)
         # 
-        # *   Valid values for snapshot templates:
+        #   - 2: Audio-only (`AudioTranscode`)
         # 
-        #     *   1 (Normal): regular template.
-        #     *   2 (Sprite): sprite template.
-        #     *   3 (WebVtt): WebVTT template.
+        #   - 3: Remuxing (`Remux`)
         # 
-        # *   Valid values for AI-assisted content moderation templates:
+        #   - 4: Narrowband HD 1.0 (`NarrowBandV1`)
         # 
-        #     *   1 (Video): video moderation template.
-        #     *   2 (Audio): audio moderation template.
-        #     *   3 (Image): image moderation template.
+        #   - 5: Narrowband HD 2.0 (`NarrowBandV2`)
         # 
-        # *   Valid values for AI-assisted intelligent erasure templates:
+        # - Screenshot Template subtypes:
         # 
-        #     *   1 (VideoDelogo): logo erasure template.
-        #     *   2 (VideoDetext): subtitle erasure template.
+        #   - 1: Normal (`Normal`)
+        # 
+        #   - 2: Sprite Image (`Sprite`)
+        # 
+        #   - 3: WebVTT (`WebVtt`)
+        # 
+        # - AI Content Moderation subtypes:
+        # 
+        #   - 1: Video moderation (`Video`)
+        # 
+        #   - 2: Audio moderation (`Audio`)
+        # 
+        #   - 3: Image moderation (`Image`)
+        # 
+        # - AI-powered Object Removal subtypes:
+        # 
+        #   - 1: Logo Removal (`VideoDelogo`)
+        # 
+        #   - 2: Text Removal (`VideoDetext`)
         self.subtype = subtype
-        # The template ID.
+        # The ID of the template.
         self.template_id = template_id
-        # The template type. Valid values:
+        # The type of the template. Valid values:
         # 
-        # *   1: transcoding template.
-        # *   2: snapshot template.
-        # *   3: animated image template.
-        # *   4\\. image watermark template.
-        # *   5: text watermark template.
-        # *   6: subtitle template.
-        # *   7: AI-assisted content moderation template.
-        # *   8: AI-assisted intelligent thumbnail template.
-        # *   9: AI-assisted intelligent erasure template.
+        # - 1: Transcoding Template
+        # 
+        # - 2: Screenshot Template
+        # 
+        # - 3: Animated GIF Template
+        # 
+        # - 4: Image Watermark Template
+        # 
+        # - 5: Text Watermark Template
+        # 
+        # - 6: Subtitle Template
+        # 
+        # - 7: AI Content Moderation
+        # 
+        # - 8: AI-powered Smart Cover
+        # 
+        # - 9: AI-powered Object Removal
         # 
         # This parameter is required.
         self.type = type

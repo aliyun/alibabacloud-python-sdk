@@ -13,9 +13,14 @@ class SetClientCaCertificateHostnamesRequest(DaraModel):
         id: str = None,
         site_id: int = None,
     ):
+        # A list of hostnames.
+        # 
         # This parameter is required.
         self.hostnames = hostnames
+        # The client CA certificate ID.
         self.id = id
+        # The site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

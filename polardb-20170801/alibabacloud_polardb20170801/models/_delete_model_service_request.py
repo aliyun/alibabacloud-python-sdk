@@ -11,10 +11,15 @@ class DeleteModelServiceRequest(DaraModel):
         model_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The name of the model.
+        # 
         # This parameter is required.
         self.model_name = model_name
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

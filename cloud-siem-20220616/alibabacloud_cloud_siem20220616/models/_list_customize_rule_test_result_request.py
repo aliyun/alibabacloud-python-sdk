@@ -18,30 +18,41 @@ class ListCustomizeRuleTestResultRequest(DaraModel):
         start_time: int = None,
         verify_type: str = None,
     ):
-        # The page number. Pages start from page 1.
+        # The page number. The value must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
+        # The ID of the custom rule. You can obtain the rule ID from the rule list.
         self.detection_rule_id = detection_rule_id
+        # The end time.
         self.end_time = end_time
-        # The ID of the rule.
+        # The ID of the custom rule.
         self.id = id
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. The maximum value is 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of Threat Analysis is located. Select a region based on the region where your assets are deployed. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: assets in the Chinese mainland and China (Hong Kong)
+        # 
+        # - ap-southeast-1: assets outside China
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The user ID of a member. This parameter is used by an administrator to switch to the perspective of the member.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The type of the view.
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all accounts that belong to the enterprise.
         self.role_type = role_type
+        # The start time.
         self.start_time = start_time
+        # The verification result for the accuracy of alert fields based on the alert template.
+        # 
+        # - true: The verification is passed. Alerts that are generated for enabled rules can be synchronized to the product.
+        # 
+        # - false: The verification failed. Alerts cannot be synchronized to the product.
         self.verify_type = verify_type
 
     def validate(self):

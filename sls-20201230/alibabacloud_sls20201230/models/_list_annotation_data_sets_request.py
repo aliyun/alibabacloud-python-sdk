@@ -10,9 +10,9 @@ class ListAnnotationDataSetsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
-        # The line from which the query starts.
+        # The line from which to start the query.
         self.offset = offset
-        # The number of entries per page.
+        # The number of entries to return on each page for a paged query.
         self.size = size
 
     def validate(self):

@@ -22,9 +22,11 @@ class CreateMetaCollectionRequest(DaraModel):
         self.parent_id = parent_id
         # The collection name.
         # 
-        # *   Category
-        # *   Album
-        # *   AlbumCategory: Album subcategory.
+        # - Category
+        # 
+        # - Album
+        # 
+        # - AlbumCategory: Album subcategory.
         # 
         # This parameter is required.
         self.type = type

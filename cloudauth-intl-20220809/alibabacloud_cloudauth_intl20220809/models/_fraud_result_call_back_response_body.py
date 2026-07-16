@@ -12,15 +12,15 @@ class FraudResultCallBackResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Return message
+        # The return message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the call was successful.
-        # - **true**: Call succeeded.
-        # - **false**: Call failed.
+        # Indicates whether the call is successful. Valid values:
+        # - **true**: The call is successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

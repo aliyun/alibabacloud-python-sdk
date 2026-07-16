@@ -28,8 +28,9 @@ class ListMetaCollectionsRequest(DaraModel):
         self.name = name
         # The sort order. Valid values:
         # 
-        # *   Asc (default): Ascending order
-        # *   Desc
+        # - Asc (default): Ascending order
+        # 
+        # - Desc
         self.order = order
         # The page number. Default: 1.
         self.page_number = page_number
@@ -39,17 +40,23 @@ class ListMetaCollectionsRequest(DaraModel):
         self.parent_id = parent_id
         # The sort field. Valid values:
         # 
-        # *   Id (default)
-        # *   Name
-        # *   CreateUser: Creator ID
-        # *   CreateTime: Creation time
-        # *   ModifyTime: Modification time
+        # - Id (default)
+        # 
+        # - Name
+        # 
+        # - CreateUser: Creator ID
+        # 
+        # - CreateTime: Creation time
+        # 
+        # - ModifyTime: Modification time
         self.sort_by = sort_by
         # The collection type. Valid values:
         # 
-        # *   Category
-        # *   Album
-        # *   AlbumCategory: Album subcategory
+        # - Category
+        # 
+        # - Album
+        # 
+        # - AlbumCategory: Album subcategory
         # 
         # This parameter is required.
         self.type = type

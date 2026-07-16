@@ -13,13 +13,13 @@ class Id2MetaVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.Id2MetaVerifyIntlResponseBodyResult = None,
     ):
-        # [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/ok4bwxwmu1n94o76?spm=a2c63.p38356.0.i54#942707fca218x).
+        # The return code.
         self.code = code
-        # The detailed description of the response code.
+        # The return message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Return result
+        # The verification result.
         self.result = result
 
     def validate(self):
@@ -67,13 +67,10 @@ class Id2MetaVerifyIntlResponseBodyResult(DaraModel):
         self,
         biz_code: str = None,
     ):
-        # The verification result:
-        # 
-        # - 1: The information is consistent. This result is billable.
-        # 
-        # - 2: The information is inconsistent. This result is billable.
-        # 
-        # - 3: No record is found. This result is not billable.
+        # The verification result code. Valid values:
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
 
     def validate(self):

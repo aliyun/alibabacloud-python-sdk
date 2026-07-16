@@ -11,8 +11,18 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         page_size: str = None,
         region_id: str = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

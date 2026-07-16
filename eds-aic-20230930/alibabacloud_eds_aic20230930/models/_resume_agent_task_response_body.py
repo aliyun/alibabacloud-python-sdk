@@ -15,9 +15,13 @@ class ResumeAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.ResumeAgentTaskResponseBodyTasks] = None,
     ):
+        # The API status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -75,10 +79,23 @@ class ResumeAgentTaskResponseBodyTasks(DaraModel):
         resuming_at: str = None,
         task_id: str = None,
     ):
+        # The current status of the task. Valid values:
+        # 
+        # - PENDING: The task is being created.
+        # - RUNNING: The task is running.
+        # - COMPLETED: The task is completed.
+        # - FAILED: The task has failed.
+        # - TIMEOUT: The task has timed out.
+        # - PAUSING: The task is being paused.
+        # - PAUSED: The task is paused.
         self.current_status = current_status
+        # The reason why the task failed to resume.
         self.failed_reason = failed_reason
+        # The Mobile node ID.
         self.instance_id = instance_id
+        # The time when the task is resumed, in ISO 8601 format.
         self.resuming_at = resuming_at
+        # The task ID, which is globally unique.
         self.task_id = task_id
 
     def validate(self):

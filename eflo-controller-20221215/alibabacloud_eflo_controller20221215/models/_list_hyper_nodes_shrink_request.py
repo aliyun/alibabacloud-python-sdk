@@ -24,18 +24,37 @@ class ListHyperNodesShrinkRequest(DaraModel):
         tags: List[main_models.ListHyperNodesShrinkRequestTags] = None,
         zone_id: str = None,
     ):
+        # The name of the cluster.
         self.cluster_name = cluster_name
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The cluster number.
         self.hpn_zone = hpn_zone
+        # The ID of the node.
         self.hyper_node_id = hyper_node_id
+        # The list of node IDs.
         self.hyper_node_ids_shrink = hyper_node_ids_shrink
+        # The machine type.
         self.machine_type = machine_type
+        # The number of entries to return on each page. The maximum value is 100.
+        # 
+        # Default values:
+        # 
+        # • If you do not specify this parameter or you specify a value that is less than 20, the default value is 20.
+        # 
+        # • If you specify a value that is greater than 100, the default value is 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. Set this parameter to the NextToken value that is returned from a previous call.
         self.next_token = next_token
+        # The name of the node group.
         self.node_group_name = node_group_name
+        # The state of the node. If you do not specify this parameter, nodes in all states are returned. Valid values: Extending, UnusedNodeStopped, UnusedNodeStopping, Unused, Using, ReleaseLocking, Operating, Cutting, ClusterNodeStopped, UnusedNodeRecovering, ClusterNodeStopping, ClusterNodeRecovering, and Replacing.
         self.operating_states_shrink = operating_states_shrink
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags.
         self.tags = tags
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -144,7 +163,9 @@ class ListHyperNodesShrinkRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

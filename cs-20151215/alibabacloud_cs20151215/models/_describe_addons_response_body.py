@@ -13,9 +13,9 @@ class DescribeAddonsResponseBody(DaraModel):
         component_groups: List[main_models.DescribeAddonsResponseBodyComponentGroups] = None,
         standard_components: Dict[str, main_models.StandardComponentsValue] = None,
     ):
-        # The list of the returned components.
+        # The list of component groups.
         self.component_groups = component_groups
-        # Standard components.
+        # The standard components.
         self.standard_components = standard_components
 
     def validate(self):
@@ -69,7 +69,7 @@ class DescribeAddonsResponseBodyComponentGroups(DaraModel):
     ):
         # The name of the component group.
         self.group_name = group_name
-        # The names of the components in the component group.
+        # The component names included in this group.
         self.items = items
 
     def validate(self):
@@ -111,7 +111,7 @@ class DescribeAddonsResponseBodyComponentGroupsItems(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the component.
+        # The component name.
         self.name = name
 
     def validate(self):

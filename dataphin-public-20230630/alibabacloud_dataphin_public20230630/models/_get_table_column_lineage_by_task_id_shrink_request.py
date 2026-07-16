@@ -10,8 +10,12 @@ class GetTableColumnLineageByTaskIdShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         table_column_lineage_by_task_id_query_shrink: str = None,
     ):
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Data structure for querying table column lineage.
+        # 
         # This parameter is required.
         self.table_column_lineage_by_task_id_query_shrink = table_column_lineage_by_task_id_query_shrink
 

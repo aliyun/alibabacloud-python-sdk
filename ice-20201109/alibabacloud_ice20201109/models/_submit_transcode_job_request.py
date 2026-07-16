@@ -17,21 +17,21 @@ class SubmitTranscodeJobRequest(DaraModel):
         schedule_config: main_models.SubmitTranscodeJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The idempotence key. Ensures request idempotence.
         self.client_token = client_token
-        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+        # The input group for the job. A single input creates a transcoding job. Multiple inputs create a media merging job.
         # 
         # This parameter is required.
         self.input_group = input_group
         # The job name.
         self.name = name
-        # The output group of the job.
+        # The output group for the job.
         # 
         # This parameter is required.
         self.output_group = output_group
-        # The scheduling information about the job.
+        # The job scheduling information.
         self.schedule_config = schedule_config
-        # The custom settings. The value must be in the JSON format and can be up to 512 bytes in length. You can specify a [custom callback URL](https://help.aliyun.com/document_detail/451631.html).
+        # Custom settings in JSON format. The length is limited to 512 bytes. Supports [custom webhook address configuration](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):
@@ -110,9 +110,9 @@ class SubmitTranscodeJobRequestScheduleConfig(DaraModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
-        # The ID of the MPS queue to which the job was submitted.
+        # The MPS queue ID.
         self.pipeline_id = pipeline_id
-        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+        # The job priority. A larger number indicates a higher priority. Valid values: 1 to 10.
         self.priority = priority
 
     def validate(self):
@@ -147,7 +147,7 @@ class SubmitTranscodeJobRequestOutputGroup(DaraModel):
         output: main_models.SubmitTranscodeJobRequestOutputGroupOutput = None,
         process_config: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfig = None,
     ):
-        # The output file configuration.
+        # The output media configuration.
         # 
         # This parameter is required.
         self.output = output
@@ -197,15 +197,15 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfig(DaraModel):
         text_watermarks: List[main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks] = None,
         transcode: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode = None,
     ):
-        # The multi-input stream merge configuration.
+        # The configuration for merging multiple inputs.
         self.combine_configs = combine_configs
-        # The encryption settings.
+        # The encryption configuration.
         self.encryption = encryption
-        # The watermark configuration of an image.
+        # The image watermark configuration.
         self.image_watermarks = image_watermarks
-        # The subtitle configuration.
+        # The subtitle burn-in configuration.
         self.subtitles = subtitles
-        # The configurations of the text watermark.
+        # The text watermark configuration.
         self.text_watermarks = text_watermarks
         # The transcoding configuration.
         # 
@@ -309,7 +309,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode(DaraModel):
         overwrite_params: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
         self.overwrite_params = overwrite_params
         # The template ID.
         # 
@@ -355,11 +355,11 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParams(
     ):
         # The audio settings.
         self.audio = audio
-        # The encapsulation format settings.
+        # The container format settings.
         self.container = container
-        # The encapsulation settings.
+        # The multiplexing settings.
         self.mux_config = mux_config
-        # The conditional transcoding configurations.
+        # The conditional transcoding parameters.
         self.trans_config = trans_config
         # The video settings.
         self.video = video
@@ -444,46 +444,49 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsV
         scan_mode: str = None,
         width: str = None,
     ):
-        # The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+        # The maximum bitrate for adaptive bitrate streaming (ABR). This applies only to narrow-high 1. Valid values: [10, 50000]. Unit: Kbps.
         self.abr_max = abr_max
-        # The average video bitrate. Valid values: [10,50000]. Unit: Kbit/s.
+        # The average video bitrate. Valid values: [10, 50000]. Unit: Kbps.
         self.bitrate = bitrate
-        # The buffer size. Valid values: [1000,128000]. Default value: 6000. Unit: KB.
+        # The buffer size. Valid values: [1000, 128000]. Default value: 6000. Unit: Kb.
         self.bufsize = bufsize
         # The encoding format.
         self.codec = codec
-        # The constant rate factor (CRF). Valid values: [0,51]. Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # The constant rate factor (CRF), which controls the trade-off between quality and bitrate. Valid values: [0, 51]. Default values: 23 for H.264 and 26 for H.265.
         # 
-        # >  If this parameter is specified, the setting of the bitrate becomes invalid.
+        # > If you set Crf, the Bitrate setting is ignored.
         self.crf = crf
-        # The method of video cropping. Valid values:
+        # The video cropping method. Two options are available:
         # 
-        # *   border: automatically detects and removes black bars.
-        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+        # - Automatically detect and crop black bars. Set this to border.
+        # 
+        # - Custom cropping. Format: width:height:left:top. Example: 1280:800:0:140
         self.crop = crop
-        # The frame rate. Valid values:(0,60]. Default value: the frame rate of the input file.
+        # The frame rate. Valid values: (0, 60]. Default value: The frame rate of the input file.
         # 
-        # >  The value is 60 if the frame rate of the input file exceeds 60.
+        # > If the frame rate of the input file exceeds 60, the system uses 60.
         self.fps = fps
-        # The maximum number of frames between keyframes. Valid values: [1,1080000]. Default value: 250.
+        # The maximum number of frames between keyframes. Valid values: [1, 1080000]. Default value: 250.
         self.gop = gop
-        # The height of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original height of the video.
+        # The height. Valid values: [128, 4096]. Unit: px. Default value: The original video height.
         self.height = height
-        # Specifies whether to enable the auto-rotate screen feature.
+        # Specifies whether to enable automatic rotation for portrait or landscape videos (also known as long-side/short-side mode).
         self.long_short_mode = long_short_mode
-        # The maximum bitrate of the video. Valid values: [10,50000]. Unit: Kbit/s.
+        # The peak video bitrate. Valid values: [10, 50000]. Unit: Kbps.
         self.maxrate = maxrate
-        # The black bars added to the video. Format: width:height:left:top. Example: 1280:800:0:140.
+        # The padding configuration for black bars. Format: width:height:left:top. Example: 1280:800:0:140
         self.pad = pad
-        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+        # The video color format. Valid values include yuv420p and yuvj420p.
         self.pix_fmt = pix_fmt
-        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+        # The video encoder preset. Only H.264 supports this parameter. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
         self.preset = preset
         # The encoding profile. Valid values: baseline, main, and high.
         # 
-        # *   baseline: applicable to mobile devices.
-        # *   main: applicable to standard-definition devices.
-        # *   high: applicable to high-definition devices.
+        # - baseline: For mobile devices.
+        # 
+        # - main: For standard-resolution devices.
+        # 
+        # - high: For high-resolution devices.
         # 
         # Default value: high.
         self.profile = profile
@@ -491,7 +494,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsV
         self.remove = remove
         # The scan mode. Valid values: interlaced and progressive.
         self.scan_mode = scan_mode
-        # The width of the video. Valid values: [128,4096]. Unit: pixels. Default value: the original width of the video.
+        # The width. Valid values: [128, 4096]. Unit: px. Default value: The original video width.
         self.width = width
 
     def validate(self):
@@ -628,62 +631,71 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsT
         is_check_video_bitrate_fail: str = None,
         trans_mode: str = None,
     ):
-        # The method that is used to adjust the resolution. This parameter takes effect only if both the Width and Height parameters are specified. You can use this parameter together with the LongShortMode parameter.
+        # The method used to adjust the display aspect ratio. This parameter takes effect only when both Width and Height are specified. You can use it with LongShortMode.
         # 
         # Valid values: rescale, crop, pad, and none.
         # 
         # Default value: none.
         self.adj_dar_method = adj_dar_method
-        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # Specifies whether to check the audio bitrate. IsCheckAudioBitrate and IsCheckAudioBitrateFail are mutually exclusive. IsCheckAudioBitrateFail has higher priority.
         # 
-        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the bitrate of the input audio is used for transcoding.
-        # *   false: does not check the video resolution.
+        # - true: Check the bitrate. If the input audio bitrate is lower than the output setting, transcode at the input bitrate.
+        # 
+        # - false: Do not check the bitrate.
         # 
         # Default value:
         # 
-        # *   If this parameter is not specified and the codec of the output audio is different from that of the input audio, the default value is false.
-        # *   If this parameter is not specified and the codec of the output audio is the same as that of the input audio, the default value is true.
-        self.is_check_audio_bitrate = is_check_audio_bitrate
-        # Specifies whether to check the audio bitrate. You can specify only one of the IsCheckAudioBitrate and IsCheckAudioBitrateFail parameters. The priority of the IsCheckAudioBitrateFail parameter is higher. Valid values:
+        # - Empty and the codec differs from the input source: false.
         # 
-        # *   true: checks the video resolution. If the bitrate of the input audio is less than that of the output audio, the transcoding job fails.
-        # *   false: does not check the video resolution.
+        # - Empty and the codec matches the input source: true.
+        self.is_check_audio_bitrate = is_check_audio_bitrate
+        # Specifies whether to check the audio bitrate. IsCheckAudioBitrate and IsCheckAudioBitrateFail are mutually exclusive. IsCheckAudioBitrateFail has higher priority.
+        # 
+        # - true: Check the bitrate. If the input audio bitrate is lower than the output setting, return a failure.
+        # 
+        # - false: Do not check the bitrate.
         # 
         # Default value: false.
         self.is_check_audio_bitrate_fail = is_check_audio_bitrate_fail
-        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # Specifies whether to check the video resolution. IsCheckReso and IsCheckResoFail are mutually exclusive. IsCheckResoFail has higher priority.
         # 
-        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the resolution of the input video is used for transcoding.
-        # *   false: does not check the video resolution.
+        # - true: Check the resolution. If the input video resolution (width or height) is smaller than the output setting, transcode at the input resolution.
+        # 
+        # - false: Do not check the resolution.
         # 
         # Default value: false.
         self.is_check_reso = is_check_reso
-        # Specifies whether to check the video resolution. You can specify only one of the IsCheckReso and IsCheckResoFail parameters. The priority of the IsCheckResoFail parameter is higher. Valid values:
+        # Specifies whether to check the video resolution. IsCheckReso and IsCheckResoFail are mutually exclusive. IsCheckResoFail has higher priority.
         # 
-        # *   true: checks the video resolution. If the width or height of the input video is less than that of the output video, the transcoding job fails.
-        # *   false: does not check the video resolution.
+        # - true: Check the resolution. If the input video resolution (width or height) is smaller than the output setting, return a failure.
+        # 
+        # - false: Do not check the resolution.
         # 
         # Default value: false.
         self.is_check_reso_fail = is_check_reso_fail
-        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # Specifies whether to check the video bitrate. IsCheckVideoBitrate and IsCheckVideoBitrateFail are mutually exclusive. IsCheckVideoBitrateFail has higher priority.
         # 
-        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the bitrate of the input video is used for transcoding.
-        # *   false: does not check the video resolution.
+        # - true: Check the bitrate. If the input video bitrate is lower than the output setting, transcode at the input bitrate.
+        # 
+        # - false: Do not check the bitrate.
         # 
         # Default value: false.
         self.is_check_video_bitrate = is_check_video_bitrate
-        # Specifies whether to check the video bitrate. You can specify only one of the IsCheckVideoBitrate and IsCheckVideoBitrateFail parameters. The priority of the IsCheckVideoBitrateFail parameter is higher. Valid values:
+        # Specifies whether to check the video bitrate. IsCheckVideoBitrate and IsCheckVideoBitrateFail are mutually exclusive. IsCheckVideoBitrateFail has higher priority.
         # 
-        # *   true: checks the video resolution. If the bitrate of the input video is less than that of the output video, the transcoding job fails.
-        # *   false: does not check the video resolution.
+        # - true: Check the bitrate. If the input video bitrate is lower than the output setting, return a failure.
+        # 
+        # - false: Do not check the bitrate.
         # 
         # Default value: false.
         self.is_check_video_bitrate_fail = is_check_video_bitrate_fail
         # The video transcoding mode. Valid values:
         # 
-        # *   onepass: You can set this parameter to onepass if the Bitrate parameter is set to ABR. The encoding speed of this mode is faster than that of the twopass mode.
-        # *   twopass: You can set this parameter to twopass if the Bitrate parameter is set to VBR. The encoding speed of this mode is slower than that of the onepass mode.
-        # *   CBR: the constant bitrate mode.
+        # - onepass: Used for adaptive bitrate (ABR) streaming. Encoding is faster than twopass.
+        # 
+        # - twopass: Used for variable bitrate (VBR) streaming. Encoding is slower than onepass.
+        # 
+        # - CBR: Constant bitrate mode.
         # 
         # Default value: onepass.
         self.trans_mode = trans_mode
@@ -786,9 +798,9 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsM
         duration: str = None,
         force_seg_time: str = None,
     ):
-        # The segment length.
+        # The segment duration.
         self.duration = duration
-        # The forced segmentation point in time.
+        # The forced segment time points.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -856,19 +868,19 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsA
         samplerate: str = None,
         volume: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsAudioVolume = None,
     ):
-        # The audio bitrate of the output file. Valid values: [8,1000]. Unit: Kbit/s. Default value: 128.
+        # The audio bitrate of the output file. Valid values: [8, 1000]. Unit: Kbps. Default value: 128.
         self.bitrate = bitrate
         # The number of sound channels. Default value: 2.
         self.channels = channels
         # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
         self.codec = codec
-        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
+        # The audio encoding profile. When Codec is AAC, valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
         self.profile = profile
         # Specifies whether to delete the audio stream.
         self.remove = remove
-        # The sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. Default value: 44100. Unit: Hz.
+        # The sample rate. Default value: 44100. Valid values: 22050, 32000, 44100, 48000, and 96000. Unit: Hz.
         self.samplerate = samplerate
-        # The volume configurations.
+        # The volume control.
         self.volume = volume
 
     def validate(self):
@@ -937,13 +949,13 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscodeOverwriteParamsA
         method: str = None,
         true_peak: str = None,
     ):
-        # The output volume.
+        # The target loudness level.
         self.integrated_loudness_target = integrated_loudness_target
-        # The volume range.
+        # The loudness range.
         self.loudness_range_target = loudness_range_target
-        # The volume adjustment method. Valid values:
+        # The volume adjustment method.
         self.method = method
-        # The peak volume.
+        # The true peak volume.
         self.true_peak = true_peak
 
     def validate(self):
@@ -990,7 +1002,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks(DaraModel)
         overwrite_params: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
         self.overwrite_params = overwrite_params
         # The template ID.
         # 
@@ -1039,40 +1051,45 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarksOverwritePa
         left: str = None,
         top: str = None,
     ):
-        # Specifies whether to the font size based on the output video dimensions. true / false, default: false
+        # Adjusts the font size based on the output video size. Valid values: true or false. Default: false.
         self.adaptive = adaptive
-        # The outline color of the text watermark. Default value: black. For more information, see BorderColor.
+        # The outline color. Default: Black. For more values, see BorderColor.
         self.border_color = border_color
-        # The outline width of the text watermark.
+        # The outline width.
         # 
-        # *   Default value: 0.
-        # *   Valid values: (0,4096].
+        # - Default: 0
+        # 
+        # - Valid values: (0, 4096]
         self.border_width = border_width
-        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+        # The watermark text. It does not need to be Base64 encoded. The string must be UTF-8 encoded.
         self.content = content
-        # The transparency of the text.
+        # The font transparency.
         # 
-        # *   Valid values: (0,1].
-        # *   Default value: 1.
+        # - Valid values: (0, 1]
+        # 
+        # - Default: 1.0
         self.font_alpha = font_alpha
-        # The color of the text.
+        # The color.
         self.font_color = font_color
-        # The font of the text. Default value: SimSun.
+        # The font. Default: SimSun.
         self.font_name = font_name
-        # The size of the text.
+        # The font size.
         # 
-        # *   Default value: 16.
-        # *   Valid values: (4,120).
+        # - Default value: 16
+        # 
+        # - Valid values: (4, 120)
         self.font_size = font_size
-        # The left margin of the text watermark.
+        # The left margin of the text.
         # 
-        # *   Default value: 0.
-        # *   Valid values: [0,4096].
+        # - Default: 0
+        # 
+        # - Valid values: [0, 4096]
         self.left = left
         # The top margin of the text.
         # 
-        # *   Default value: 0.
-        # *   Valid values: [0,4096].
+        # - Default: 0
+        # 
+        # - Valid values: [0, 4096]
         self.top = top
 
     def validate(self):
@@ -1155,7 +1172,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles(DaraModel):
         overwrite_params: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
         self.overwrite_params = overwrite_params
         # The template ID.
         # 
@@ -1201,7 +1218,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParams(
         self.char_enc = char_enc
         # The subtitle file.
         self.file = file
-        # The format of the subtitle file.
+        # The subtitle file format.
         self.format = format
 
     def validate(self):
@@ -1244,15 +1261,17 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitlesOverwriteParamsF
         media: str = None,
         type: str = None,
     ):
-        # The media object.
+        # The media value:
         # 
-        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
+        # 
+        # - If Type is Media, this is a media asset ID.
         self.media = media
-        # The type of the media object. Valid values:
+        # The media object type. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: An OSS file.
+        # 
+        # - Media: A media asset ID.
         self.type = type
 
     def validate(self):
@@ -1287,7 +1306,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks(DaraModel
         overwrite_params: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # Parameters to overwrite. If you specify these, they replace the corresponding parameters in the template.
         self.overwrite_params = overwrite_params
         # The template ID.
         # 
@@ -1333,66 +1352,75 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         timeline: main_models.SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
-        # The horizontal offset of the watermark relative to the output video. Default value: 0.
+        # The horizontal offset of the image watermark relative to the output video. Default value: 0.
         # 
-        # The following value types are supported:
+        # Values can be one of the following:
         # 
-        # *   Integer: the pixel value of the horizontal offset.
+        # - Integer: The offset in pixels.
         # 
-        #     *   Valid values: [8,4096].
-        #     *   Unit: pixels.
+        #   - Valid values: [8, 4096]
         # 
-        # *   Decimal: the ratio of the horizontal offset to the width of the output video.
+        #   - Unit: px
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - Decimal: The ratio of the horizontal offset to the output video width.
+        # 
+        #   - Valid values: (0, 1)
+        # 
+        #   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
         self.dx = dx
-        # The vertical offset of the watermark relative to the output video. Default value: 0.
+        # The vertical offset of the image watermark relative to the output video. Default value: 0.
         # 
-        # The following value types are supported:
+        # Values can be one of the following:
         # 
-        # *   Integer: the pixel value of the horizontal offset.
+        # - Integer: The offset in pixels.
         # 
-        #     *   Valid values: [8,4096].
-        #     *   Unit: pixels.
+        #   - Valid values: [8, 4096]
         # 
-        # *   Decimal: the ratio of the vertical offset to the height of the output video.
+        #   - Unit: px
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - Decimal: The ratio of the vertical offset to the output video height.
+        # 
+        #   - Valid values: (0, 1)
+        # 
+        #   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
         self.dy = dy
         # The watermark image file.
         self.file = file
-        # The height of the watermark image in the output video. The following value types are supported:
+        # The height of the image watermark on the output video. Values can be one of the following:
         # 
-        # *   Integer: the pixel value of the watermark height.
+        # - Integer: The pixel height of the watermark image.
         # 
-        #     *   Valid values: [8,4096].
-        #     *   Unit: pixels.
+        #   - Valid values: [8, 4096]
         # 
-        # *   Decimal: the ratio of the watermark height to the height of the output video.
+        #   - Unit: px
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - Decimal: The ratio of the watermark height to the output video height.
+        # 
+        #   - Valid values: (0, 1)
+        # 
+        #   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
         self.height = height
         # The position of the watermark.
         # 
-        # *   Valid values: TopRight, TopLeft, BottomRight, and BottomLeft.
-        # *   Default value: TopRight.
+        # - Valid values: TopRight (top-right), TopLeft (top-left), BottomRight (bottom-right), and BottomLeft (bottom-left).
+        # 
+        # - Default value: TopRight.
         self.refer_pos = refer_pos
-        # The time settings of the dynamic watermark.
+        # The display time settings for a dynamic watermark.
         self.timeline = timeline
-        # The width of the watermark in the output video. The following value types are supported:
+        # The width of the image watermark on the output video. Values can be one of the following:
         # 
-        # *   Integer: the pixel value of the watermark width.
+        # - Integer: The pixel width of the watermark image.
         # 
-        #     *   Valid values: [8,4096].
-        #     *   Unit: pixels.
+        #   - Valid values: [8, 4096]
         # 
-        # *   Decimal: the ratio of the watermark width to the width of the output video.
+        #   - Unit: px
         # 
-        #     *   Valid values: (0,1).
-        #     *   The decimal number can be accurate to four decimal places, such as 0.9999. Excessive digits are automatically discarded.
+        # - Decimal: The ratio of the watermark width to the output video width.
+        # 
+        #   - Valid values: (0, 1)
+        # 
+        #   - Up to four decimal places are supported, such as 0.9999. Extra digits are automatically discarded.
         self.width = width
 
     def validate(self):
@@ -1462,16 +1490,19 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         duration: str = None,
         start: str = None,
     ):
-        # The time range in which the watermark is displayed.
+        # The duration of the watermark.
         # 
-        # *   Valid values: integers and ToEND.
-        # *   Default value: ToEND.
+        # - Valid values: [number, ToEND]
+        # 
+        # - Default value: ToEND
         self.duration = duration
-        # The beginning of the time range in which the watermark is displayed.
+        # The start time of the watermark.
         # 
-        # *   Unit: seconds.
-        # *   Value values: integers.
-        # *   Default value: 0.
+        # - Unit: seconds
+        # 
+        # - Valid values: numbers
+        # 
+        # - Default value: 0
         self.start = start
 
     def validate(self):
@@ -1506,15 +1537,17 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarksOverwriteP
         media: str = None,
         type: str = None,
     ):
-        # The media object.
+        # The media value:
         # 
-        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
+        # 
+        # - If Type is Media, this is a media asset ID.
         self.media = media
-        # The type of the media object. Valid values:
+        # The media object type. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: An OSS file.
+        # 
+        # - Media: A media asset ID.
         self.type = type
 
     def validate(self):
@@ -1551,19 +1584,21 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigEncryption(DaraModel):
         encrypt_type: str = None,
         key_service_type: str = None,
     ):
-        # The ciphertext of HTTP Live Streaming (HLS) encryption.
+        # The ciphertext of the key for standard encryption.
         self.cipher_text = cipher_text
-        # The address of the decryption service for HLS encryption.
+        # The decryption service endpoint for standard encryption.
         self.decrypt_key_uri = decrypt_key_uri
-        # Specifies the encryption type. Valid values:
+        # The encryption type. Valid values:
         # 
-        # *   PrivateEncryption: Alibaba Cloud proprietary cryptography
-        # *   HLSEncryption: HTTP Live Streaming (HLS) encryption
+        # - PrivateEncryption: Alibaba Cloud proprietary cryptography.
+        # 
+        # - HLSEncryption: HLS standard encryption.
         self.encrypt_type = encrypt_type
-        # The key service type for HLS encryption. Valid values:
+        # The key service type for standard encryption. Valid values:
         # 
-        # *   KMS
-        # *   Base64
+        # - KMS
+        # 
+        # - Base64
         self.key_service_type = key_service_type
 
     def validate(self):
@@ -1616,9 +1651,9 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs(DaraModel)
         # 
         # This parameter is required.
         self.audio_index = audio_index
-        # The duration of the input stream. The default value is the duration of the video.
+        # The duration of the input stream. Default: The video duration.
         self.duration = duration
-        # The start time of the input stream. Default value: 0.
+        # The start time of the input stream. Default: 0.
         self.start = start
         # The video stream index.
         # 
@@ -1670,34 +1705,39 @@ class SubmitTranscodeJobRequestOutputGroupOutput(DaraModel):
         output_url: str = None,
         type: str = None,
     ):
-        # The media object.
+        # The media value:
         # 
-        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
         # 
-        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the IMS console.
+        # > You must add the OSS bucket in the URL to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before you use it.
         # 
-        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # - If Type is Media, this is a media asset ID.
         # 
         # This parameter is required.
         self.media = media
-        # The URL of the output stream.\\
-        # This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an output.\\
-        # Supported placeholders:
+        # The output stream path:<br>
+        # This parameter takes effect only when Type is Media. It lets you select a specific file from the media asset as the output.<br>
+        # Valid placeholders:<br><br>
         # 
-        # *   {MediaId}: the ID of the media asset.
-        # *   {JobId}: the ID of the transcoding subjob.
-        # *   {MediaBucket}: the bucket to which the media asset belongs.
-        # *   {ExtName}: the file suffix, which uses the output format of the transcoding template.
-        # *   {DestMd5}: the MD5 value of the transcoded output file.\\
-        #     Notes:
+        # - {MediaId}: The media asset ID.
         # 
-        # 1.  This parameter must contain the {MediaId} and {JobId} placeholders.
-        # 2.  The output bucket is the same as the bucket to which the media asset belongs.
+        # - {JobId}: The sub-job ID.
+        # 
+        # - {MediaBucket}: The bucket where the media asset resides.
+        # 
+        # - {ExtName}: The file extension. This is the output format specified in the transcoding template.
+        # 
+        # - {DestMd5}: The MD5 hash of the transcoded output file.
+        # 
+        # > 1. You must include both {MediaId} and {JobId} in this parameter.
+        # >
+        # > 2. The output bucket must be the same as the bucket where the media asset resides.
         self.output_url = output_url
-        # The type of the media object. Valid values:
+        # The media object type. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: An OSS file.
+        # 
+        # - Media: A media asset ID.
         # 
         # This parameter is required.
         self.type = type
@@ -1741,25 +1781,27 @@ class SubmitTranscodeJobRequestInputGroup(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The URL of the input stream.
+        # The input stream path:
         # 
-        # *   This parameter takes effect only when Type is set to Media. You can select a specific file within the media asset as an input.
-        # *   The system checks whether the input URL exists within the media asset.
+        # - This parameter takes effect only when Type is Media. It lets you select a specific file from the media asset as the input.
+        # 
+        # - The system checks whether the input URL exists in the media asset.
         self.input_url = input_url
-        # The media object.
+        # The media value:
         # 
-        # *   If Type is set to OSS, set this parameter to the URL of an OSS object. Both the OSS and HTTP protocols are supported.
+        # - If Type is OSS, this is a URL that supports the OSS or HTTP protocol.
         # 
-        # >  Before you use the OSS bucket in the URL, you must add the bucket on the [Storage Management](https://help.aliyun.com/document_detail/609918.html) page of the Intelligent Media Services (IMS) console.
+        # > You must add the OSS bucket in the URL to IMS [storage management](https://help.aliyun.com/document_detail/609918.html) before you use it.
         # 
-        # *   If Type is set to Media, set this parameter to the ID of a media asset.
+        # - If Type is Media, this is a media asset ID.
         # 
         # This parameter is required.
         self.media = media
-        # The type of the media object. Valid values:
+        # The media object type. Valid values:
         # 
-        # *   OSS: an Object Storage Service (OSS) object.
-        # *   Media: a media asset.
+        # - OSS: An OSS file.
+        # 
+        # - Media: A media asset ID.
         # 
         # This parameter is required.
         self.type = type

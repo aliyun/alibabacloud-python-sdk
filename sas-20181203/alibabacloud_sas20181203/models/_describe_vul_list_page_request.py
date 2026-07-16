@@ -30,9 +30,11 @@ class DescribeVulListPageRequest(DaraModel):
         self.vul_name_like = vul_name_like
         # The type of the vulnerabilities. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability.
-        # *   **sys**: Windows system vulnerability.
-        # *   **app**: Application vulnerability that is detected by using web scanner.
+        # - **cve**: Linux software vulnerability.
+        # 
+        # - **sys**: Windows system vulnerability.
+        # 
+        # - **app**: Application vulnerability that is detected by using web scanner.
         self.vul_type = vul_type
 
     def validate(self):

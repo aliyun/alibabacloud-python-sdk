@@ -16,34 +16,29 @@ class CreateCustomRoutingEndpointGroupDestinationsRequest(DaraModel):
         endpoint_group_id: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The mapping configuration of the endpoint group.
+        # The mapping configurations of the endpoint group.
         # 
-        # You need to specify the backend service ports and protocols for the endpoint group. The ports are mapped to listener ports.
+        # Specify the service port ranges and protocol types of the backend services for the endpoint group. The specified information is mapped to the associated listener port ranges.
         # 
-        # You can specify up to 20 mappings in each call.
+        # You can specify up to 20 port ranges and protocol types in a single invoke of this operation.
         # 
         # This parameter is required.
         self.destination_configurations = destination_configurations
-        # The endpoint group ID.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business limitations without actually creating the mapping configurations create an endpoint group. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the mapping configurations create an endpoint group are created.
         self.dry_run = dry_run
-        # The mappings of the endpoint group.
-        # 
-        # You need to specify the backend service ports and protocols for the endpoint group. The ports are mapped to listener ports.
-        # 
-        # You can specify up to 20 mappings in each call.
+        # The endpoint group ID.
         # 
         # This parameter is required.
         self.endpoint_group_id = endpoint_group_id
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
-        # 
-        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -107,25 +102,31 @@ class CreateCustomRoutingEndpointGroupDestinationsRequestDestinationConfiguratio
         protocols: List[str] = None,
         to_port: int = None,
     ):
-        # The last port of the backend service port range.
+        # The start port of the backend service port range for the endpoint group.
         # 
-        # Valid values: **1** to **65499**. The value of **FromPort** must be equal to or smaller than the value of **ToPort**.
+        # Valid values: **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
         # 
-        # You can specify up to 20 last ports in each call.
+        # You can specify up to 20 start ports in a single request.
         # 
         # This parameter is required.
         self.from_port = from_port
-        # The backend service protocol of the endpoint group. Valid values:
+        # The protocol types of the backend services for the endpoint group. Valid values:
         # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **TCP+UDP: the TCP and UDP protocols.**
+        # - **TCP**: TCP protocol.
         # 
-        # You can specify up to four backend service protocols for each endpoint group mapping.
+        # - **UDP**: UDP protocol.
+        # 
+        # - **TCP,UDP**: TCP and UDP protocols.
+        # 
+        # The Terms of Service apply to the selected protocols.
         # 
         # This parameter is required.
         self.protocols = protocols
-        # The response parameters.
+        # The end port of the backend service port range for the endpoint group.
+        # 
+        # Valid values: **1** to **65499**. The value of **FromPort** must be less than or equal to the value of **ToPort**.
+        # 
+        # You can specify up to 20 end ports in a single request.
         # 
         # This parameter is required.
         self.to_port = to_port

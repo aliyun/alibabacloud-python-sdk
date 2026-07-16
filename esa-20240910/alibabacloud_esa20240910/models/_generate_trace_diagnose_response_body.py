@@ -11,8 +11,11 @@ class GenerateTraceDiagnoseResponseBody(DaraModel):
         tip: str = None,
         url: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A diagnostic message.
         self.tip = tip
+        # The generated diagnostic link.
         self.url = url
 
     def validate(self):

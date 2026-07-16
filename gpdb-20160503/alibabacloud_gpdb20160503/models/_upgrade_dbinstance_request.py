@@ -24,65 +24,74 @@ class UpgradeDBInstanceRequest(DaraModel):
         storage_size: str = None,
         upgrade_type: int = None,
     ):
+        # The Serverless cache storage capacity. Unit: GB.
+        # > This parameter is required only for Serverless Pro instances.
         self.cache_storage_size = cache_storage_size
-        # This parameter is no longer used.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.dbinstance_class = dbinstance_class
-        # This parameter is no longer used.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.dbinstance_group_count = dbinstance_group_count
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in the specified region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The specifications of each compute node. For information about the supported specifications, see [Instance specifications](https://help.aliyun.com/document_detail/35406.html).
+        # The specifications of segment nodes. For information about supported node specifications, see [Instance specifications](https://help.aliyun.com/document_detail/35406.html).
         # 
-        # > This parameter is available only for instances in elastic storage mode.
+        # > This parameter is supported only for elastic storage mode instances.
         self.instance_spec = instance_spec
-        # This parameter is no longer used.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.master_node_num = master_node_num
         self.owner_id = owner_id
-        # This parameter is no longer used.
+        # This parameter is deprecated. You do not need to specify this parameter.
         self.pay_type = pay_type
-        # The region ID of the instance.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query available region IDs.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group to which the instance belongs. For information about how to obtain the resource group ID, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The performance level of Enterprise SSDs (ESSDs). Valid values:
+        # The performance level (PL) of the cloud disk. Valid values:
         # 
-        # *   **pl0**
-        # *   **pl1**
-        # *   **pl2**
+        # - **pl0**: PL0.
+        # - **pl1**: PL1.
+        # - **pl2**: PL2.
         self.seg_disk_performance_level = seg_disk_performance_level
-        # The number of compute nodes. The number of compute nodes varies based on the instance resource type and edition.
+        # The number of segment nodes. The supported number of nodes varies based on the instance resource type and instance edition:
         # 
-        # *   Valid values for High-availability Edition instances in elastic storage mode: 4 to 512, in 4 increments.
-        # *   Valid values for High-performance Edition instances in elastic storage mode: 2 to 512, in 2 increments.
-        # *   Valid values for instances in manual Serverless mode: 2 to 512, in 2 increments.
+        # - Elastic storage mode, High-availability Edition: Valid values: 4 to 512. The value must be a multiple of 4.
+        # - Elastic storage mode, <props="china">Basic Edition (formerly High-performance Edition)<props="intl">High-performance Edition: Valid values: 2 to 512. The value must be a multiple of 2.
+        # - Serverless manual scheduling mode: Valid values: 2 to 512. The value must be a multiple of 2.
         self.seg_node_num = seg_node_num
-        # The disk storage type of the instance after the change. The disk storage type can be changed only to ESSD. Set the value to **cloud_essd**.
+        # The cloud disk storage type after the change. Currently, only ESSD cloud disks are supported. Set the value to **cloud_essd**.
         self.seg_storage_type = seg_storage_type
+        # - Serverless instances:
+        # The compute resource threshold. Valid values: 8 to 32. The value must be a multiple of 8. Unit: ACU. Default value: 32.
+        # 
+        # - Serverless Pro instances: The reserved compute resources. Valid values: 16 to 1024. Unit: ACU. Default value: 16. The step size varies based on the value range:
+        #   - 16 to 32: step size of 4.
+        #   - 32 to 64: step size of 8.
+        #   - 64 to 128: step size of 16.
+        #   - 128 to 256: step size of 32.
+        #   - Greater than 256: step size of 64.
+        # > This parameter is required only for Serverless automatic scheduling mode and Serverless Pro instances.
         self.serverless_resource = serverless_resource
-        # The storage capacity of each compute node. Unit: GB. Valid values: 50 to 6000, in 50 increments.
+        # The storage capacity of segment nodes. Unit: GB. Valid values: 50 to <props="china">8000<props="intl">6000. The value must be a multiple of 50.
         # 
-        # >  This parameter is available only for instances in elastic storage mode.
+        # > This parameter is supported only for elastic storage mode instances.
         self.storage_size = storage_size
-        # The type of the instance configuration change. Valid values:
+        # The type of the specification change. Valid values:
         # 
-        # *   **0** (default): changes the number of compute nodes.
-        # *   **1**: changes the specifications and storage capacity of each compute node.
-        # *   **2**: changes the number of coordinator nodes.
-        # *   **3**: changes the disk storage type and ESSD performance level of the instance.
+        # - **0** (default): Changes the number of segment nodes. SegNodeNum is required. Other parameters do not take effect.
+        # - **1**: Changes the segment node specifications and instance storage capacity. InstanceSpec is required. StorageSize is optional and must be greater than or equal to the current instance storage capacity.
+        # - **2**: Changes the number of master nodes. MasterNodeNum is required. Other parameters do not take effect.
+        # - **3**: Changes the cloud disk storage type and performance level (PL). SegDiskPerformanceLevel and SegStorageType are required. Other parameters do not take effect.
         # 
-        # > 
-        # 
-        # *   The supported changes to compute node configurations vary based on the instance resource type. For more information, see the "Usage notes" section of the [Change compute node configurations](https://help.aliyun.com/document_detail/50956.html) topic.
-        # 
-        # *   After you specify a change type, only the corresponding parameters take effect. For example, if you set **UpgradeType** to 0, the parameter that is used to change the number of compute nodes takes effect, but the parameter that is used to change the number of coordinator nodes does not.
-        # *   The number of coordinator nodes can be changed only on the China site (aliyun.com).
-        # *   The disk storage type can be changed only from ultra disks to ESSDs.
+        # > - Different instance resource types support different Upgrade/Downgrade operations for compute nodes. For more information, see [Precautions](https://help.aliyun.com/document_detail/50956.html).
+        # - After you select a specification change type, only the corresponding parameters take effect. Other parameters do not take effect. For example, if **UpgradeType** is set to 0 and you specify both the number of segment nodes and the number of master nodes, only the number of segment nodes is changed.
+        # - Changing the number of master nodes is supported only on the China site (aliyun.com).
+        # - You can change the cloud disk storage type only from standard SSD to ESSD cloud disk.
         self.upgrade_type = upgrade_type
 
     def validate(self):

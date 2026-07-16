@@ -16,15 +16,15 @@ class ListManagedRulesGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of managed rule group information.
+        # The list of managed rule groups.
         self.managed_rules_groups = managed_rules_groups
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records after filtering.
+        # The total number of records after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -85,9 +85,9 @@ class ListManagedRulesGroupsResponseBodyManagedRulesGroups(DaraModel):
         name: str = None,
         rule_count: int = None,
     ):
-        # Name of the managed rule group.
+        # The name of the managed rule group.
         self.name = name
-        # Number of rules within the managed rule group.
+        # The number of rules in the managed rule group.
         self.rule_count = rule_count
 
     def validate(self):

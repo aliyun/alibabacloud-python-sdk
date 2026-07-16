@@ -10,11 +10,11 @@ class QuerySmartqPermissionByCubeIdRequest(DaraModel):
         cube_id: str = None,
         user_id: str = None,
     ):
-        # Dataset ID.
+        # The ID of the dataset.
         # 
         # This parameter is required.
         self.cube_id = cube_id
-        # User ID.
+        # The ID of the user.
         # 
         # This parameter is required.
         self.user_id = user_id

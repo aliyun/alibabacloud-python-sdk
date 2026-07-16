@@ -14,14 +14,24 @@ class CreateIntentRequest(DaraModel):
         script_id: str = None,
         utterances: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A description of the intent.
         self.intent_description = intent_description
+        # The name of the intent. This name must be unique within the script.
+        # 
         # This parameter is required.
         self.intent_name = intent_name
+        # A JSON-formatted string containing an array of keywords that help identify the intent.
         self.keywords = keywords
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # A JSON-formatted string containing an array of sample utterances that trigger this intent.
+        # 
         # This parameter is required.
         self.utterances = utterances
 

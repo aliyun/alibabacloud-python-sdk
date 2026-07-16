@@ -36,38 +36,47 @@ class CreateDBInstanceRequest(DaraModel):
     ):
         # The backup set ID.
         self.backup_set_id = backup_set_id
+        # The edition of the instance. Valid value:
+        # 
+        # - `enterprise`: Enterprise Edition
         self.category = category
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token. Make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-provided token to ensure request idempotence. It must be unique across requests, contain only ASCII characters, and not exceed 64 characters in length.
         self.client_token = client_token
-        # The cluster description.
+        # The description of the instance.
         self.dbinstance_description = dbinstance_description
+        # The time zone of the database, which must be an IANA time zone identifier.
         self.dbtime_zone = dbtime_zone
-        # The deployment status of the cluster.
+        # The deployment mode of the instance.
         self.deploy_schema = deploy_schema
         # The engine type.
         self.engine = engine
         # The engine version.
         self.engine_version = engine_version
-        # The configurations of multi-zone deployment.
+        # The multi-zone configuration.
         self.multi_zone = multi_zone
+        # The number of nodes. Valid values: 2 to 16. This parameter is required when you configure an elastic scaling range by using the `NodeScaleMin` and `NodeScaleMax` parameters.
         self.node_count = node_count
+        # The maximum number of nodes for serverless elastic scaling. Valid values: 4 to 32. The value must be greater than the `NodeScaleMin` parameter.
         self.node_scale_max = node_scale_max
+        # The minimum number of nodes for serverless elastic scaling. Valid values: 4 to 32.
         self.node_scale_min = node_scale_min
-        # The region ID
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The maximum capacity for auto scaling.
+        # This parameter is deprecated. Use the `NodeCount`, `NodeScaleMin`, and `NodeScaleMax` parameters to configure elastic scaling.
         self.scale_max = scale_max
-        # The minimum capacity for auto scaling.
+        # This parameter is deprecated. Use the `NodeCount`, `NodeScaleMin`, and `NodeScaleMax` parameters to configure elastic scaling.
         self.scale_min = scale_min
-        # The cluster ID.
+        # The ID of the source instance. This parameter is required when restoring from a backup.
         self.source_dbinstance_id = source_dbinstance_id
         self.storage_quota = storage_quota
         self.storage_type = storage_type
+        # The tags to add to the instance.
         self.tags = tags
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
@@ -249,7 +258,9 @@ class CreateDBInstanceRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):

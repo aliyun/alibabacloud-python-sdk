@@ -10,12 +10,12 @@ class UpdateDiagnosisSettingsResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result. Valid values:
         # 
-        # *   true: update successfully
-        # *   false: update failed
+        # - true: The update was successful.
+        # - false: The update failed.
         self.result = result
 
     def validate(self):

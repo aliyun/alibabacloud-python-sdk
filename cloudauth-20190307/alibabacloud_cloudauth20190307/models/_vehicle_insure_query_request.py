@@ -12,24 +12,24 @@ class VehicleInsureQueryRequest(DaraModel):
         vehicle_type: str = None,
         vin: str = None,
     ):
-        # Parameter type:
+        # The parameter type. Valid values:
         # 
-        # - **normal**: Unencrypted.
-        # - **md5**: MD5 encrypted.
+        # - **normal**: not encrypted.
+        # - **md5**: MD5-encrypted.
         self.param_type = param_type
-        # License plate number
+        # The license plate number.
         # > 
-        # > - When `paramType` is set to `normal`, enter the plain text.
-        # > - When `paramType` is set to `md5`, enter the plain text of all but the last two characters of the license plate + the MD5 encryption (32 lowercase characters) of the last two characters of the license plate.
+        # > - If ParamType is set to normal, enter the plaintext value.
+        # > - If ParamType is set to md5, enter the plaintext of the license plate number excluding the last two characters, concatenated with the MD5-encrypted value of the last two characters (32-bit lowercase MD5).
         self.vehicle_num = vehicle_num
-        # Driver\\"s license vehicle type.
+        # The vehicle type on the driving license.
         self.vehicle_type = vehicle_type
-        # Vehicle identification code, i.e., the vehicle VIN
+        # The vehicle identification number (VIN).
         # 
         # 
         # > 
-        # > - When `paramType` is set to `normal`, enter the plain text.
-        # > - When `paramType` is set to `md5`, enter the plain text of all but the last four characters of the VIN + the MD5 encryption (32 lowercase characters) of the last four characters of the VIN.
+        # > - If ParamType is set to normal, enter the plaintext value.
+        # > - If ParamType is set to md5, enter the plaintext of the VIN excluding the last 4 characters, concatenated with the MD5-encrypted value of the last 4 characters (32-bit lowercase MD5).
         self.vin = vin
 
     def validate(self):

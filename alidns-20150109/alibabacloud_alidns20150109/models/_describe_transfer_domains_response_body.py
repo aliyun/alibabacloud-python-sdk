@@ -17,13 +17,13 @@ class DescribeTransferDomainsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domain_transfers = domain_transfers
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries per page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

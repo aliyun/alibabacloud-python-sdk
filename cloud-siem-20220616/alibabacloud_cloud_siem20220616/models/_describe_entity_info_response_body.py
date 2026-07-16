@@ -16,18 +16,19 @@ class DescribeEntityInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -86,18 +87,23 @@ class DescribeEntityInfoResponseBodyData(DaraModel):
     ):
         # The logical ID of the entity.
         self.entity_id = entity_id
-        # The information about the entry.
+        # The information about the entity.
         self.entity_info = entity_info
         # The type of the entity. Valid values:
         # 
-        # *   ip
-        # *   domain
-        # *   url
-        # *   process
-        # *   file
-        # *   host
+        # - ip: IP address
+        # 
+        # - domain: domain name
+        # 
+        # - url: URL
+        # 
+        # - process: process
+        # 
+        # - file: file
+        # 
+        # - host: host
         self.entity_type = entity_type
-        # The information about the risk Intelligence.
+        # The threat intelligence information.
         self.tip_info = tip_info
 
     def validate(self):

@@ -16,14 +16,15 @@ class DescribeRegionsRequest(DaraModel):
     ):
         # The language of the values of the returned **RegionName** and **ZoneName** parameters. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (default)
+        # 
+        # - **en**
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  If you do not specify this parameter, all supported regions are queried.
+        # > If you do not specify this parameter, all supported regions are queried.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

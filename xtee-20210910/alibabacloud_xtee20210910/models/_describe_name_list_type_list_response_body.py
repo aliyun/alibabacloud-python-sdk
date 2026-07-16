@@ -13,9 +13,9 @@ class DescribeNameListTypeListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeNameListTypeListResponseBodyResultObject] = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeNameListTypeListResponseBodyResultObject(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Match Key.
+        # The matching key.
         self.key = key
-        # Variable value
+        # The variable value.
         self.value = value
 
     def validate(self):

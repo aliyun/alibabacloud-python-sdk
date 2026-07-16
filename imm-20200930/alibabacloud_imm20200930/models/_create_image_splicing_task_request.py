@@ -26,60 +26,63 @@ class CreateImageSplicingTaskRequest(DaraModel):
         target_uri: str = None,
         user_data: str = None,
     ):
-        # The width or height with which the input images must align. Valid values: 1 to 4096. Unit: px.
+        # The alignment value, in pixels, for the width or height of the images to be stitched. The value can range from 1 to 4096.
         # 
-        # *   If you set **Direction** to `vertical`, this parameter specifies the width with which the input images must align.
-        # *   If you set **Direction** to `horizontal`, this parameter specifies the height with which the input images must align.
+        # - If you set **Direction** to `vertical`, this parameter specifies the width alignment.
         # 
-        # >  If you do not specify this parameter, the width or height of the first input image is used.
+        # - If you set **Direction** to `horizontal`, this parameter specifies the height alignment.
+        # 
+        # > If you do not specify this parameter, the width or height of the first image is used for alignment by default.
         self.align = align
-        # The padding color of the spaces specified by `Padding` and `Margin`. Colors encoded in the `#FFFFFF` format and colors that are related to preset keywords such as `red` and `alpha` are supported.
+        # The fill color for the areas specified by `Padding` and `Margin`. The value can be in the `#FFFFFF` format or a keyword such as `red` or `alpha`.
         self.background_color = background_color
-        # The authorization chain settings. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The chained authorization configuration. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config = credential_config
-        # The splicing method. Valid values:
+        # The image stitching method. Valid values:
         # 
-        # *   vertical (default): All input images are vertically aligned and have the same width.
-        # *   horizontal: All input images are horizontally aligned and have the same height.
+        # - vertical (default): Stitches images vertically. The widths of all images must be the same.
+        # 
+        # - horizontal: Stitches images horizontally. The heights of all images must be the same.
         self.direction = direction
         # The compression format of the output image. Valid values:
         # 
-        # *   jpg (default)
-        # *   png
-        # *   webp
+        # - jpg (default)
+        # 
+        # - png
+        # 
+        # - webp
         self.image_format = image_format
-        # The empty space or border around the edges of the output image. Default value: 0. Unit: px.
+        # The blank margin, in pixels, of the stitched image. The default value is 0.
         self.margin = margin
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The message notification configuration. For information about the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         self.notification = notification
-        # The space between component images in the output image. Default value: 0. Unit: px.
+        # The space, in pixels, between sub-images in the stitched image. The default value is 0.
         self.padding = padding
-        # The name of the project. You can obtain the name of the project from the response of the [CreateProject](https://help.aliyun.com/document_detail/478153.html) operation.
+        # The project name. For more information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The compression quality of the output image. This parameter takes effect only for JPG and WebP images. Valid values: 0 to 100. Default value: 80.
+        # The compression quality of the output image. This parameter is valid only for JPG and WebP images. The value range is 0 to 100. The default value is 80.
         self.quality = quality
-        # The scaling mode of the input images that are vertically or horizontally aligned. Valid values:
+        # The scaling method used when the width or height of an image is aligned. Valid values:
         # 
-        # *   fit (default): Input images are scaled proportionally, and black edges are not retained.
-        # *   stretch: Input images are stretched to fill the space.
-        # *   horizon: Input images are horizontally stretched.
-        # *   vertical: Input images are vertically stretched.
+        # - fit (default): Scales the image without adding black bars. Only proportional scaling is supported.
+        # 
+        # - stretch: Stretches the image to fill the space.
         self.scale_type = scale_type
-        # The input images. The images are sliced in the order of the input image URIs.
+        # The list of input images. The images are stitched in the order of their URIs in the list.
         # 
         # This parameter is required.
         self.sources = sources
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # Custom tags used to search for and filter asynchronous tasks.
         self.tags = tags
-        # The OSS bucket in which you want to store the output image.
+        # The OSS URI where the output image is stored.
         # 
-        # Specify the value in the oss://${bucketname}/${objectname} format. ${bucketname} specifies the name of the OSS bucket that resides in the same region as the current project. ${objectname} specifies the path to the output image.
+        # The URI must be in the oss\\://${bucketname}/${objectname} format. ${bucketname} is the name of the OSS bucket that is in the same region as the project. ${objectname} is the path of the file, including the file name.
         # 
         # This parameter is required.
         self.target_uri = target_uri
-        # The user data, which is returned as asynchronous notifications to help manage notifications within your system. The maximum length of the user data is 2,048 bytes.
+        # The custom information. This information is returned in the asynchronous notification message. Use this information to associate the notification message with your system. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):
@@ -206,18 +209,21 @@ class CreateImageSplicingTaskRequestSources(DaraModel):
         rotate: int = None,
         uri: str = None,
     ):
-        # The rotation angle. Valid values:
+        # The rotation angle of the image. Valid values:
         # 
-        # *   0 (default)
-        # *   90
-        # *   180
-        # *   270
+        # - 0 (default)
+        # 
+        # - 90
+        # 
+        # - 180
+        # 
+        # - 270
         self.rotate = rotate
-        # The Object Storage Service (OSS) bucket in which you store the input images.
+        # The OSS URI of the source image.
         # 
-        # Specify the value in the oss://${Bucket}/${Object} format. `${Bucket}` specifies the name of the OSS bucket that resides in the same region as the current project. `${Object}` specifies the complete path to the input images that have an extension.
+        # The URI must be in the oss\\://${Bucket}/${Object} format. `${Bucket}` is the name of the OSS bucket that is in the same region as the project. `${Object}` is the full path of the file, including the file name extension.
         # 
-        # The following image formats are supported: jpg and png.
+        # Supported image formats: JPG and PNG.
         # 
         # This parameter is required.
         self.uri = uri

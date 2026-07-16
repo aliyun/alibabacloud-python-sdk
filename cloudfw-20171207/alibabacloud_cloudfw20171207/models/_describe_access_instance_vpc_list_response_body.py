@@ -16,10 +16,15 @@ class DescribeAccessInstanceVpcListResponseBody(DaraModel):
         total_count: int = None,
         vpc_list: List[main_models.DescribeAccessInstanceVpcListResponseBodyVpcList] = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of VPCs.
         self.vpc_list = vpc_list
 
     def validate(self):
@@ -81,8 +86,11 @@ class DescribeAccessInstanceVpcListResponseBodyVpcList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # Indicates whether the VPC is managed by Cloud Firewall.
         self.firewall_vpc = firewall_vpc
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
+        # The name of the VPC instance.
         self.vpc_name = vpc_name
 
     def validate(self):

@@ -16,14 +16,19 @@ class ModifyVRouterAttributeRequest(DaraModel):
         vrouter_id: str = None,
         vrouter_name: str = None,
     ):
+        # The description of the virtual router. The description must be 2 to 256 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the virtual router is deployed. You can call the `DescribeRegions` operation to obtain the most recent list of regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VRouter to modify.
+        # 
         # This parameter is required.
         self.vrouter_id = vrouter_id
+        # The name of the virtual router. The name must be 2 to 128 characters long and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         self.vrouter_name = vrouter_name
 
     def validate(self):

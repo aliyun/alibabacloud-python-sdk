@@ -11,7 +11,6 @@ class GetMineWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace: main_models.GetMineWorkspaceResponseBodyWorkspace = None,
     ):
-        # requestId
         self.request_id = request_id
         self.workspace = workspace
 

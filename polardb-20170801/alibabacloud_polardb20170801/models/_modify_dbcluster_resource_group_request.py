@@ -25,7 +25,7 @@ class ModifyDBClusterResourceGroupRequest(DaraModel):
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the original resource group.
+        # The original resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

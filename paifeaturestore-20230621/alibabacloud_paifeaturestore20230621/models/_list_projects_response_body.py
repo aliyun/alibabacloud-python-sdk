@@ -14,8 +14,11 @@ class ListProjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of projects.
         self.projects = projects
+        # The request ID.
         self.request_id = request_id
+        # The total number of projects.
         self.total_count = total_count
 
     def validate(self):
@@ -79,22 +82,39 @@ class ListProjectsResponseBodyProjects(DaraModel):
         project_id: str = None,
         workspace_id: str = None,
     ):
+        # The project description.
         self.description = description
+        # The number of feature entities.
         self.feature_entity_count = feature_entity_count
+        # The number of feature views.
         self.feature_view_count = feature_view_count
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The modification time.
         self.gmt_modified_time = gmt_modified_time
+        # The number of models.
         self.model_count = model_count
+        # The project name.
         self.name = name
+        # The offline data source ID.
         self.offline_datasource_id = offline_datasource_id
+        # The offline data source name.
         self.offline_datasource_name = offline_datasource_name
+        # The offline data source type.
         self.offline_datasource_type = offline_datasource_type
+        # The offline data lifecycle, in days.
         self.offline_lifecycle = offline_lifecycle
+        # The online data source ID.
         self.online_datasource_id = online_datasource_id
+        # The online data source name.
         self.online_datasource_name = online_datasource_name
+        # The online data source type.
         self.online_datasource_type = online_datasource_type
+        # The project owner.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

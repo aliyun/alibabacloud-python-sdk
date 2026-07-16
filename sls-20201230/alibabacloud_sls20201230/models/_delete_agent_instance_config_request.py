@@ -11,6 +11,7 @@ class DeleteAgentInstanceConfigRequest(DaraModel):
         self,
         attributes: Dict[str, str] = None,
     ):
+        # The process to which the configuration applies.
         self.attributes = attributes
 
     def validate(self):

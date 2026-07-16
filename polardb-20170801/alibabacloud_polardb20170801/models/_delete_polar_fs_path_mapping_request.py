@@ -14,9 +14,14 @@ class DeletePolarFsPathMappingRequest(DaraModel):
         dbcluster_id: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # The list of bucket-path mappings to delete.
         self.custom_bucket_path_list = custom_bucket_path_list
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the PolarFS instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 
@@ -66,7 +71,9 @@ class DeletePolarFsPathMappingRequestCustomBucketPathList(DaraModel):
         bucket: str = None,
         path: str = None,
     ):
+        # The name of the bucket.
         self.bucket = bucket
+        # The path in the bucket.
         self.path = path
 
     def validate(self):

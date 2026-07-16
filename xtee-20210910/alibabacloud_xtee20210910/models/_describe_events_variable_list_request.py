@@ -14,21 +14,21 @@ class DescribeEventsVariableListRequest(DaraModel):
         reg_id: str = None,
         scene: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code.
+        # The event code.
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # Filter object
+        # The filter object.
         self.filter_dto = filter_dto
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Applicable scene code
+        # The applicable scenario code.
         # 
         # This parameter is required.
         self.scene = scene

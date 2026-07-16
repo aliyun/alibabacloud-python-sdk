@@ -17,12 +17,17 @@ class GetDataServiceAppAuthorizedUsersResponseBody(DaraModel):
         success: bool = None,
         user_list: List[main_models.GetDataServiceAppAuthorizedUsersResponseBodyUserList] = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of users.
         self.user_list = user_list
 
     def validate(self):
@@ -89,7 +94,9 @@ class GetDataServiceAppAuthorizedUsersResponseBodyUserList(DaraModel):
         display_name: str = None,
         id: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The user ID.
         self.id = id
 
     def validate(self):

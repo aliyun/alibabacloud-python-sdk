@@ -9,7 +9,7 @@ class DeleteProjectResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The Request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

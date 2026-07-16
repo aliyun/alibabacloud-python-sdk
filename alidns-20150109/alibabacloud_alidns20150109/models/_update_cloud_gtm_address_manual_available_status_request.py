@@ -15,24 +15,27 @@ class UpdateCloudGtmAddressManualAvailableStatusRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese
+        # 
+        # - en-US (Default): English
         self.accept_language = accept_language
-        # The ID of the address. This ID uniquely identifies the address.
+        # The unique ID of the address.
         # 
         # This parameter is required.
         self.address_id = address_id
-        # The failover mode that is used when address exceptions are identified. Valid values:
+        # The failover method for the address. Valid values:
         # 
-        # *   auto: the automatic mode. The system determines whether to return an address based on health check results. If the address fails health checks, the system does not return the address. If the address passes health checks, the system returns the address.
-        # *   manual: the manual mode. If an address is in the unavailable state, the address is not returned for DNS requests even if the address passes health checks. If an address is in the available state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
+        # - auto: Automatic. The address status is determined by health check results. If a health check fails, DNS resolution stops. If it succeeds, DNS resolution resumes.
+        # 
+        # - manual: Manual. You control the address status. If set to abnormal, DNS resolution stops and does not resume even if health checks succeed. If set to normal, DNS resolution resumes. If a health check fails, an alert is triggered but resolution does not stop.
         self.available_mode = available_mode
-        # The client token that is used to ensure the idempotence of the request. You can specify a custom value for this parameter, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token that is used to ensure the idempotence of the request. Make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The availability state of the address when AvailableMode is set to manual. Valid values:
+        # The availability status of the address. This parameter takes effect only when AvailableMode is set to manual. Valid values:
         # 
-        # *   available: The address is normal. In this state, the address is returned for DNS requests even if an alert is triggered when the address fails health checks.
-        # *   unavailable: The address is abnormal. In this state, the address is not returned for DNS requests even if the address passes health checks.
+        # - available: Normal. The address is available. If a health check fails, an alert is triggered but DNS resolution continues.
+        # 
+        # - unavailable: Abnormal. DNS resolution for the address is stopped. It does not resume even if health checks succeed.
         self.manual_available_status = manual_available_status
 
     def validate(self):

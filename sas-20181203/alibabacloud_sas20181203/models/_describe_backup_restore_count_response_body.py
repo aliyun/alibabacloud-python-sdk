@@ -11,9 +11,9 @@ class DescribeBackupRestoreCountResponseBody(DaraModel):
         backup_restore_count: main_models.DescribeBackupRestoreCountResponseBodyBackupRestoreCount = None,
         request_id: str = None,
     ):
-        # The statistics of restoration tasks.
+        # The statistics of anti-ransomware restoration tasks.
         self.backup_restore_count = backup_restore_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeBackupRestoreCountResponseBodyBackupRestoreCount(DaraModel):
         recovering: int = None,
         total: int = None,
     ):
-        # The number of the restoration tasks that are in the **being restored** state.
+        # The number of tasks in the **Restoring** state.
         self.recovering = recovering
-        # The total number of the restoration tasks that you create.
+        # The total number of restoration tasks that have been created.
         self.total = total
 
     def validate(self):

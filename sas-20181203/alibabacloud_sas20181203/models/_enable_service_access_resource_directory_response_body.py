@@ -9,7 +9,7 @@ class EnableServiceAccessResourceDirectoryResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

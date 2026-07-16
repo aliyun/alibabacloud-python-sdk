@@ -11,8 +11,11 @@ class DescribeSecurityProxyResourcesRequest(DaraModel):
         member_uid: int = None,
         nat_gateway_id: str = None,
     ):
+        # The language of the response.
         self.lang = lang
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):

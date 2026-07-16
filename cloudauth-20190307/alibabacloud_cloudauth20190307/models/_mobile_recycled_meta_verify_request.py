@@ -11,10 +11,20 @@ class MobileRecycledMetaVerifyRequest(DaraModel):
         param_type: str = None,
         register_date: str = None,
     ):
+        # The phone number. Valid values:
+        # - If ParamType is set to normal, pass in the phone number in plaintext.
+        # - If ParamType is set to md5, pass in the MD5-encrypted phone number.
+        # 
         # This parameter is required.
         self.mobile = mobile
+        # The encryption method. Valid values:
+        # - normal: plaintext without encryption
+        # - md5: MD5 encryption.
+        # 
         # This parameter is required.
         self.param_type = param_type
+        # The registration date in the format YYYYMMDD. For example, 19800101 indicates January 1, 1980.
+        # 
         # This parameter is required.
         self.register_date = register_date
 

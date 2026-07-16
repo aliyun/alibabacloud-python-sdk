@@ -12,9 +12,16 @@ class GetEmonGrafanaDashboardsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the Grafana dashboard list is retrieved. Valid values:
+        # 
+        # - true: succeeded.
+        # - false: failed.
         self.success = success
 
     def validate(self):

@@ -10,7 +10,7 @@ class PublishFlowVersionRequest(DaraModel):
         self,
         body: main_models.PublishFlowVersionInput = None,
     ):
-        # 包含版本描述等信息的请求体
+        # The input parameters for publishing a workflow version.
         self.body = body
 
     def validate(self):

@@ -30,25 +30,54 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The specification code for the gateway instance.
         self.class_code = class_code
+        # The time when the gateway instance was created.
         self.create_time = create_time
         self.current_version = current_version
+        # The database type.
         self.db_type = db_type
+        # A list of endpoints for the gateway instance.
         self.endpoints = endpoints
+        # The time when the subscription for the gateway instance expires.
+        # 
+        # This parameter is empty for pay-as-you-go instances.
         self.expire_time = expire_time
+        # Indicates whether the subscription for the gateway instance has expired. Valid values:
+        # 
+        # - true
+        # 
+        # - false
         self.expired = expired
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
+        # The description of the gateway instance.
         self.gw_description = gw_description
         self.latest_version = latest_version
+        # The time when the gateway instance was last modified.
         self.modify_time = modify_time
+        # The billing method of the gateway instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # 
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The ID of the region.
         self.region_id = region_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
         self.running_version = running_version
+        # A list of IP whitelists for the gateway instance.
         self.security_iparrays = security_iparrays
+        # The status of the gateway instance. Valid values:
+        # 
+        # - **CREATE**: The gateway instance is being created.
+        # 
+        # - **ACTIVATION**: The gateway instance is running.
         self.status = status
+        # The ID of the VSwitch where the gateway instance is deployed.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC where the gateway instance is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -203,8 +232,11 @@ class DescribeGatewayAttributeResponseBodySecurityIPArrays(DaraModel):
         security_iparray_tag: str = None,
         security_iplist: str = None,
     ):
+        # The name of the IP whitelist. The default value is `default`.
         self.security_iparray_name = security_iparray_name
+        # The tag of the IP whitelist.
         self.security_iparray_tag = security_iparray_tag
+        # A comma-separated list of IP addresses in the IP whitelist.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -250,12 +282,23 @@ class DescribeGatewayAttributeResponseBodyEndpoints(DaraModel):
         tunnel_id: str = None,
         vpc_id: str = None,
     ):
+        # The endpoint address.
         self.address = address
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
+        # The ID of the gateway instance.
         self.gw_cluster_id = gw_cluster_id
+        # The network type of the endpoint. Valid values:
+        # 
+        # - **Private**: VPC endpoint.
+        # 
+        # - **Public**: public endpoint.
         self.net_type = net_type
+        # The port number.
         self.port = port
+        # The tunnel ID.
         self.tunnel_id = tunnel_id
+        # The ID of the VPC to which the endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

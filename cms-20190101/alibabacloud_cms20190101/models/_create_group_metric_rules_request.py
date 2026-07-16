@@ -16,10 +16,11 @@ class CreateGroupMetricRulesRequest(DaraModel):
     ):
         # The ID of the application group.
         # 
-        # For information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         # 
         # This parameter is required.
         self.group_id = group_id
+        # The list of metric-based alert rules for the application group.
         self.group_metric_rules = group_metric_rules
         self.region_id = region_id
 
@@ -86,197 +87,94 @@ class CreateGroupMetricRulesRequestGroupMetricRules(DaraModel):
         webhook: str = None,
     ):
         self.escalations = escalations
-        # The name of the cloud service. Valid values of N: 1 to 200. Valid value:
+        # The abbreviation of the Alibaba Cloud service name.
         # 
-        # *   PolarDB: PolarDB
-        # *   NewBGPDDoS: Anti-DDoS Pro
-        # *   IoTDevice: IoT Platform
-        # *   DRDS: Distributed Relational Database Service (DRDS)
-        # *   VS: Video Surveillance System
-        # *   AMQP: Alibaba Cloud Message Queue for AMQP
-        # *   ADS: AnalyticDB
-        # *   APIGateway: API Gateway
-        # *   InternetSharedBandwidth: EIP Bandwidth Plan
-        # *   CDN: Alibaba Cloud Content Delivery Network (CDN)
-        # *   CEN: Cloud Enterprise Network (CEN)
-        # *   DCDN: Dynamic Route for CDN (DCDN)
-        # *   DDoS: Anti-DDoS
-        # *   ECS: Elastic Compute Service (ECS)
-        # *   DirectMail: Direct Mail
-        # *   Elasticsearch: Elasticsearch
-        # *   EMR: E-MapReduce (EMR)
-        # *   ESS: Auto Scaling
-        # *   FunctionCompute: Function Compute
-        # *   RealtimeCompute: Realtime Compute for Apache Flink
-        # *   GlobalAcceleration: Global Accelerator (GA)
-        # *   Hbase: ApsaraDB for HBase
-        # *   TSDB: Time Series Database (TSDB)
-        # *   IPv6trans: IPv6 Translation Service
-        # *   Kafka: Message Queue for Apache Kafka
-        # *   Kubernetes: Container Service for Kubernetes (ACK)
-        # *   KVstore: ApsaraDB for Redis
-        # *   MNS: Message Service (MNS)
-        # *   MongoDB: ApsaraDB for MongoDB
-        # *   MQ: Message Queue
-        # *   NAT: NAT Gateway
-        # *   OpenAd: Open Ad
-        # *   OpenSearch: Open Search
-        # *   OSS: Object Storage Service (OSS)
-        # *   PCDN: P2P CDN
-        # *   petadata: HybridDB for MySQL
-        # *   RDS: ApsaraDB RDS
-        # *   SCDN: Secure CDN
-        # *   SLB: Server Load Balancer (SLB)
-        # *   SLS: Log Service
-        # *   VideoLive: ApsaraVideo Live
-        # *   VOD: ApsaraVideo VOD
-        # *   EIP: Elastic IP Address (EIP)
-        # *   VPN: VPN Gateway
-        # *   AIRec: Artificial Intelligence Recommendation
-        # *   GPDB: AnalyticDB for PostgreSQL
-        # *   DBS: Database Backup (DBS)
-        # *   SAG: Smart Access Gateway (SAG)
-        # *   Memcache: ApsaraDB for Memcache
-        # *   IOT_EDGE: Link IoT Edge
-        # *   OCS: ApsaraDB for Memcache (previous version)
-        # *   VPC: Express Connect
-        # *   EHPC: Elastic High Performance Computing (E-HPC)
-        # *   MPS: ApsaraVideo Media Processing
-        # *   ENS: Edge Node Service (ENS)
-        # *   MaxCompute_Prepay: MaxCompute
-        # *   IoT_Kubernetes: Edge Application Hosting
-        # *   CMS: CloudMonitor
-        # *   batchcomputenew: Batch Compute
-        # *   HBaseUE: ApsaraDB for HBase Performance-enhanced Edition
-        # *   UIS: Ultimate Internet Service (UIS)
-        # *   nls: Intelligent Speech Interaction
-        # *   ots: Tablestore
-        # *   NAS: File Storage NAS
-        # *   ECI: Elastic Container Instance (ECI)
-        # *   OpenAPI: OpenAPI Explorer
-        # *   pvtzpost: Alibaba Cloud DNS PrivateZone
-        # *   blinkonk8s: Flink on Kubernetes
-        # *   FunctionFlow: Serverless Workflow (SWF)
-        # *   SMC: Server Migration Center (SMC)
-        # *   ddosbgp: Anti-DDoS Origin
-        # *   baas: Blockchain as a Service
-        # *   privatelink: PrivateLink
-        # *   cds: ApsaraDB for Cassandra
-        # *   DDH: Dedicated Host
-        # *   RocketMQ: Message Queue for Apache RocketMQ
-        # *   ECC: Express Cloud Connect
-        # *   hbaseserverless: ApsaraDB for HBase Serverless Edition
-        # *   mns_tmp: Message Service
-        # *   hdr: Hybrid Disaster Recovery (HDR)
-        # *   hbr: Hybrid Backup Recovery (HBR)
-        # *   ADB: AnalyticDB for MySQL V3.0
-        # *   tag: Tag Service
-        # *   GDB: Graph Database
-        # *   WAF: Web Application Firewall (WAF)
-        # *   hcs_sgw: Cloud Storage Gateway (CSG)
-        # *   ipv6gateway: IPv6 Gateway
-        # *   RDS_SAR: ApsaraDB Exclusive Host Group
-        # *   learn: Machine Learning Platform for AI
-        # *   ROS: Resource Orchestration Service (ROS)
-        # *   OOS: Operation Orchestration Service (OOS)
-        # *   bds: Data Synchronization for HBase
-        # *   cfw: Cloud Firewall
-        # *   ddosDip: Anti-DDoS Premium
-        # *   datahub: DataHub
-        # *   hologres: Hologres
-        # *   ExpressConnect: Express Connect
-        # *   dbfs: Database File System (DBFS)
-        # *   clickhouse: ApsaraDB for ClickHouse
-        # *   k8s: Container Service for Kubernetes (ACK)
-        # *   DTS: Data Transmission Service (DTS)
-        # *   AnycastEIP: Anycast Elastic IP Address
-        # *   Lindorm: ApsaraDB for Lindorm
-        # *   config: Cloud Config
-        # *   spark: Databricks DataInsight (DDI)
-        # *   serverless: Serverless App Engine (SAE)
-        # *   alb: Application Load Balancer (ALB)
-        # *   oceanbase: ApsaraDB for OceanBase
-        # *   KMS: Key Management Service (KMS)
-        # *   lvwang: Content Moderation
-        # *   LinkVisual: LinkVisual
-        # *   tair: ApsaraDB for Redis Enhanced Edition (Tair)
-        # *   dlf: Data Lake Formation (DLF)
-        # *   networkmonitor: Site Monitoring
-        # *   pnc: Physical Network Change
-        # *   AIS: Alibaba Cloud Infrastructure
-        # *   cloudgame: Cloud Gaming Platform
-        # *   RTC: Real-Time Communication
-        # *   cloudbox: CloudBox
-        # *   actiontrail: ActionTrail
-        # *   cc: Cloud Connector
-        # *   disk: Elastic Block Storage (EBS)
-        # *   easygene: Genomics Computing Platform
-        # *   cloudphone: Elastic Cloud Phone
-        # *   BMS: Bare Metal Management Service
-        # *   swas: Simple Application Server
-        # *   AvailabilityMonitoring: Availability Monitoring of CloudMonitor
+        # Valid values of N: 1 to 200.
+        # 
+        # For information about how to obtain the abbreviation, see the `metricCategory` tag in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         # 
         # This parameter is required.
         self.category = category
-        # The alert contact groups. Valid values of N: 1 to 200.
+        # The alert contact group.
         # 
-        # For information about how to obtain alert contact groups, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
+        # Valid values of N: 1 to 200.
+        # 
+        # For information about how to obtain the alert contact group, see [DescribeContactGroupList](https://help.aliyun.com/document_detail/114922.html).
         self.contact_groups = contact_groups
-        # The dimension of the alert rule. Valid values of N: 1 to 200.
+        # The monitoring dimensions of the specified resource.
         # 
-        # Set the value to a set of key-value pairs, for example, `userId:120886317861****` or `instanceId:i-m5e1qg6uo38rztr4****`.
+        # The value is a collection of `key:value` pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-2ze2d6j5uhg20x47****"}`.
         self.dimensions = dimensions
-        # The time period during which the alert rule is effective. Valid values of N: 1 to 200.
+        # The effective period of the alert rule. Valid values of N: 1 to 200.
         self.effective_interval = effective_interval
-        # The subject of the alert notification email. Valid values of N: 1 to 200.
+        # The subject of the alert notification email.
+        # 
+        # Valid values of N: 1 to 200.
         self.email_subject = email_subject
-        # The interval at which CloudMonitor checks whether the alert rule is triggered. Valid values of N: 1 to 200.
+        # The detection period of the alert rule.
         # 
-        # Unit: seconds. The default value is the lowest frequency at which the metric is polled.
+        # Valid values of N: 1 to 200.
         # 
-        # >  We recommend that you set the interval to the data aggregation period. If the interval is shorter than the data aggregation period, alerts cannot be triggered due to insufficient data.
+        # Unit: seconds. The default value is the minimum reporting period of the metric.
+        # 
+        # > Keep the detection period of the alert rule consistent with the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
         self.interval = interval
+        # The tag keys of the alert rule.
         self.labels = labels
-        # The name of the metric. Valid values of N: 1 to 200.
+        # The name of the metric.
         # 
-        # For information about how to obtain the name of a metric, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # Valid values of N: 1 to 200.
+        # 
+        # For information about how to obtain the metric name, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The namespace of the cloud service. Valid values of N: 1 to 200.
+        # The namespace of the Alibaba Cloud service.
         # 
-        # For information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # Valid values of N: 1 to 200.
+        # 
+        # For information about how to obtain the namespace of an Alibaba Cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The method that is used to handle alerts when no monitoring data is found. Valid values of N: 1 to 200. Valid value:
+        # The processing method when no monitoring data is found. Valid values:
+        # - KEEP_LAST_STATE (default): No action is performed.
+        # - INSUFFICIENT_DATA: An alert whose content is "Insufficient Data" is triggered.
+        # - OK: The status is considered normal.
         # 
-        # *   KEEP_LAST_STATE (default value): No operation is performed.
-        # *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
-        # *   OK: The alert rule has no active alerts.
+        # Valid values of N: 1 to 200.
         self.no_data_policy = no_data_policy
         # The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
         self.no_effective_interval = no_effective_interval
-        self.options = options
-        # The aggregation period of the metric data. Valid values of N: 1 to 200.
+        # The advanced settings.
         # 
-        # Set the `Period` parameter to an integral multiple of 60. Unit: seconds. Default value: 300.
+        # Format: {"key1":"value1","key2":"value2"}. For example, {"NotSendOK":true} specifies whether to send an alert recovery notification. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default).
+        self.options = options
+        # The reporting period of monitoring data.
+        # 
+        # Valid values of N: 1 to 200. 
+        # 
+        # The value of `Period` must be 60 or a multiple of 60. Unit: seconds. Default value: 300.
         self.period = period
-        # The ID of the alert rule. Valid values of N: 1 to 200.
+        # The ID of the alert rule.
+        # 
+        # Valid values of N: 1 to 200.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the alert rule. Valid values of N: 1 to 200.
+        # The name of the alert rule.
+        # 
+        # Valid values of N: 1 to 200.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met. Valid values of N: 1 to 200.
+        # The mute period of the alert notification. Valid values of N: 1 to 200.
         # 
         # Unit: seconds. Default value: 86400. Minimum value: 3600.
         self.silence_time = silence_time
-        # The callback URL. Valid values of N: 1 to 200.
+        # The callback URL to which an alert notification is sent. Valid values of N: 1 to 200.
         # 
-        # The callback URL must be accessible over the Internet. CloudMonitor pushes an alert notification to the specified callback URL by sending an HTTP POST request. Only the HTTP protocol is supported.
+        # Enter a publicly accessible URL. CloudMonitor sends alert information to this URL by using POST requests. Only the HTTP protocol is supported.
         self.webhook = webhook
 
     def validate(self):
@@ -418,11 +316,11 @@ class CreateGroupMetricRulesRequestGroupMetricRulesLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the alert rule. The specified tag is contained in alert notifications.
+        # The tag key of the alert rule. The tag is included in alert notifications.
         # 
         # Valid values of N: 1 to 200.
         self.key = key
-        # The tag value of the alert rule. The specified tag is contained in alert notifications.
+        # The tag value of the alert rule. The tag is included in alert notifications.
         # 
         # Valid values of N: 1 to 200.
         self.value = value
@@ -514,31 +412,45 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 警告级别阈值比较符。取值：
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # - GreaterThanThreshold: greater than the threshold
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold
-        # - LessThanThreshold: less than the threshold
-        # - NotEqualToThreshold: not equal to the threshold
-        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # - LessThanYesterday: less than the metric value at the same time yesterday
-        # - GreaterThanLastWeek: greater than the metric value at the same time last week
-        # - LessThanLastWeek: less than the metric value at the same time last week
-        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。 
+        # - GreaterThanThreshold：大于。 
+        # - LessThanOrEqualToThreshold：小于等于。 
+        # - LessThanThreshold：小于。 
+        # - NotEqualToThreshold：不等于。 
+        # - GreaterThanYesterday：同比昨天时间上涨。 
+        # - LessThanYesterday：同比昨天时间下降。 
+        # - GreaterThanLastWeek：同比上周同一时间上涨。 
+        # - LessThanLastWeek：同比上周同一时间下降。 
+        # - GreaterThanLastPeriod：环比上周期上涨。 
+        # - LessThanLastPeriod：环比上周期下降。 
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical methods for Warn-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 警告级别报警统计方法。
         # 
-        # - Average: the average value
-        # - Minimum: the minimum value
-        # - Maximum: the maximum value
+        # N的取值范围：1~200。
+        # 
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.statistics = statistics
-        # The threshold for Warn-level alerts. Valid values of N: 1 to 200.
+        # 警告级别报警阈值。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered. Valid values of N: 1 to 200.
+        # 发送警告报警通知需要监控指标达到报警阈值的次数。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.times = times
 
     def validate(self):
@@ -601,31 +513,45 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 普通级别阈值比较符。取值：
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # - GreaterThanThreshold: greater than the threshold
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold
-        # - LessThanThreshold: less than the threshold
-        # - NotEqualToThreshold: not equal to the threshold
-        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # - LessThanYesterday: less than the metric value at the same time yesterday
-        # - GreaterThanLastWeek: greater than the metric value at the same time last week
-        # - LessThanLastWeek: less than the metric value at the same time last week
-        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。 
+        # - GreaterThanThreshold：大于。 
+        # - LessThanOrEqualToThreshold：小于等于。 
+        # - LessThanThreshold：小于。 
+        # - NotEqualToThreshold：不等于。 
+        # - GreaterThanYesterday：同比昨天时间上涨。 
+        # - LessThanYesterday：同比昨天时间下降。 
+        # - GreaterThanLastWeek：同比上周同一时间上涨。 
+        # - LessThanLastWeek：同比上周同一时间下降。 
+        # - GreaterThanLastPeriod：环比上周期上涨。 
+        # - LessThanLastPeriod：环比上周期下降。 
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical methods for Info-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 普通级别报警统计方法。
         # 
-        # - Average: the average value
-        # - Minimum: the minimum value
-        # - Maximum: the maximum value
+        # N的取值范围：1~200。
+        # 
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.statistics = statistics
-        # The threshold for Info-level alerts. Valid values of N: 1 to 200.
+        # 普通级别报警阈值。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered. Valid values of N: 1 to 200.
+        # 发送普通报警通知需要监控指标达到报警阈值的次数。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.times = times
 
     def validate(self):
@@ -688,31 +614,45 @@ class CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical(DaraModel
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values of N: 1 to 200. Valid value: 
+        # 紧急级别阈值比较符。取值：
         # 
-        # - GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # - GreaterThanThreshold: greater than the threshold
-        # - LessThanOrEqualToThreshold: less than or equal to the threshold
-        # - LessThanThreshold: less than the threshold
-        # - NotEqualToThreshold: not equal to the threshold
-        # - GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # - LessThanYesterday: less than the metric value at the same time yesterday
-        # - GreaterThanLastWeek: greater than the metric value at the same time last week
-        # - LessThanLastWeek: less than the metric value at the same time last week
-        # - GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # - LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。 
+        # - GreaterThanThreshold：大于。 
+        # - LessThanOrEqualToThreshold：小于等于。 
+        # - LessThanThreshold：小于。 
+        # - NotEqualToThreshold：不等于。 
+        # - GreaterThanYesterday：同比昨天时间上涨。 
+        # - LessThanYesterday：同比昨天时间下降。 
+        # - GreaterThanLastWeek：同比上周同一时间上涨。 
+        # - LessThanLastWeek：同比上周同一时间下降。 
+        # - GreaterThanLastPeriod：环比上周期上涨。 
+        # - LessThanLastPeriod：环比上周期下降。 
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.comparison_operator = comparison_operator
         self.n = n
         self.pre_condition = pre_condition
-        # The statistical methods for Critical-level alerts. Separate multiple statistical methods with commas (,). Valid values of N: 1 to 200. Valid value: 
+        # 紧急级别报警统计方法。
         # 
-        # - Average: the average value
-        # - Minimum: the minimum value
-        # - Maximum: the maximum value
+        # N的取值范围：1~200。
+        # 
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.statistics = statistics
-        # The threshold for Critical-level alerts. Valid values of N: 1 to 200.
+        # 触发紧急级别报警通知的阈值。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered. Valid values of N: 1 to 200.
+        # 发送紧急报警通知需要监控指标达到报警阈值的次数。
+        # 
+        # N的取值范围：1~200。
+        # 
+        # > 报警级别Critical（严重）、Warn（警告）或Info（信息）至少设置一个，且该报警级别中的参数Statistics、ComparisonOperator、Threshold和Times必须同时设置。
         self.times = times
 
     def validate(self):

@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class AsyncCreateClipsTaskShrinkRequest(DaraModel):
     def __init__(
         self,
+        adapt_mode: str = None,
+        alignment: str = None,
         close_music: bool = None,
         close_subtitle: bool = None,
         close_voice: bool = None,
@@ -26,34 +28,63 @@ class AsyncCreateClipsTaskShrinkRequest(DaraModel):
         stickers_shrink: str = None,
         subtitle_font_size: int = None,
         task_id: str = None,
+        text_width: str = None,
         voice_style: str = None,
         voice_volume: int = None,
         width: int = None,
         workspace_id: str = None,
     ):
+        self.adapt_mode = adapt_mode
+        self.alignment = alignment
+        # Specifies whether to disable the background music.
         self.close_music = close_music
+        # Specifies whether to disable the subtitles.
         self.close_subtitle = close_subtitle
+        # Specifies whether to disable the narration voice.
         self.close_voice = close_voice
+        # The URL of the closing credits video.
         self.closing_credits_url = closing_credits_url
+        # The array of animated text elements.
         self.color_words_shrink = color_words_shrink
+        # The AppKey of CosyVoice.
         self.cosy_voice_app_key = cosy_voice_app_key
+        # The token of CosyVoice.
         self.cosy_voice_token = cosy_voice_token
+        # The voice tone of CosyVoice.
         self.custom_voice_style = custom_voice_style
+        # The URL of the custom audio track.
         self.custom_voice_url = custom_voice_url
+        # The volume of the custom audio track.
         self.custom_voice_volume = custom_voice_volume
+        # The height of the video.
         self.height = height
+        # The list of high-definition video structures.
         self.high_def_source_videos_shrink = high_def_source_videos_shrink
+        # The type of recommended music.
         self.music_style = music_style
+        # The URL of the background music.
         self.music_url = music_url
+        # The volume of the background music.
         self.music_volume = music_volume
+        # The URL of the opening credits video.
         self.opening_credits_url = opening_credits_url
+        # The array of sticker structures.
         self.stickers_shrink = stickers_shrink
+        # The font size of the subtitles.
         self.subtitle_font_size = subtitle_font_size
+        # The unique ID of the task.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        self.text_width = text_width
+        # The type of narration voice.
         self.voice_style = voice_style
+        # The volume of the narration voice.
         self.voice_volume = voice_volume
+        # The width of the video.
         self.width = width
+        # The [Bailian workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -65,6 +96,12 @@ class AsyncCreateClipsTaskShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adapt_mode is not None:
+            result['AdaptMode'] = self.adapt_mode
+
+        if self.alignment is not None:
+            result['Alignment'] = self.alignment
+
         if self.close_music is not None:
             result['CloseMusic'] = self.close_music
 
@@ -122,6 +159,9 @@ class AsyncCreateClipsTaskShrinkRequest(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.text_width is not None:
+            result['TextWidth'] = self.text_width
+
         if self.voice_style is not None:
             result['VoiceStyle'] = self.voice_style
 
@@ -138,6 +178,12 @@ class AsyncCreateClipsTaskShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdaptMode') is not None:
+            self.adapt_mode = m.get('AdaptMode')
+
+        if m.get('Alignment') is not None:
+            self.alignment = m.get('Alignment')
+
         if m.get('CloseMusic') is not None:
             self.close_music = m.get('CloseMusic')
 
@@ -194,6 +240,9 @@ class AsyncCreateClipsTaskShrinkRequest(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TextWidth') is not None:
+            self.text_width = m.get('TextWidth')
 
         if m.get('VoiceStyle') is not None:
             self.voice_style = m.get('VoiceStyle')

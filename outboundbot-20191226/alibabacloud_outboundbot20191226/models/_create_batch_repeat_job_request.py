@@ -24,22 +24,43 @@ class CreateBatchRepeatJobRequest(DaraModel):
         source_group_id: str = None,
         strategy_json: str = None,
     ):
+        # Calling number
         self.calling_number = calling_number
+        # Job group description
         self.description = description
+        # Job group status
         self.filter_status = filter_status
+        # Configuration parameters for flash SMS push, in JSON format, including configuration information for third-party flash SMS.
+        # 
+        # - Template ID: Flash SMS template ID.
+        # 
+        # - Config ID: Flash SMS configuration ID.
         self.flash_sms_extras = flash_sms_extras
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Minimum concurrency
         self.min_concurrency = min_concurrency
+        # Job name
+        # 
         # This parameter is required.
         self.name = name
+        # Job priority
         self.priority = priority
+        # Redial calling number list
         self.recall_calling_number = recall_calling_number
+        # Redial policy JSON
         self.recall_strategy_json = recall_strategy_json
+        # Ringing duration
         self.ringing_duration = ringing_duration
+        # Script ID
         self.script_id = script_id
+        # Job group ID
+        # 
         # This parameter is required.
         self.source_group_id = source_group_id
+        # Job execution policy
         self.strategy_json = strategy_json
 
     def validate(self):

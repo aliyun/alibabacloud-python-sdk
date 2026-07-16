@@ -21,8 +21,9 @@ class ResetDiskRequest(DaraModel):
         self.disk_id = disk_id
         # Specifies whether to check the validity of the request without actually making the request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and resource state limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, the rollback operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and resource state limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, the rollback operation is performed.
         # 
         # Default value: false
         self.dry_run = dry_run

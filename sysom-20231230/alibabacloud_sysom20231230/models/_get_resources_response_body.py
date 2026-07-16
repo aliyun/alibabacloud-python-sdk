@@ -13,9 +13,17 @@ class GetResourcesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,8 +73,11 @@ class GetResourcesResponseBodyData(DaraModel):
         unit: str = None,
         usage: float = None,
     ):
+        # The total number of resources.
         self.total = total
+        # The unit.
         self.unit = unit
+        # The resource usage.
         self.usage = usage
 
     def validate(self):

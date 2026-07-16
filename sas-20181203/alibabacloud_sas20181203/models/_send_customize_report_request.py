@@ -9,9 +9,8 @@ class SendCustomizeReportRequest(DaraModel):
         self,
         report_id: int = None,
     ):
-        # The ID of the security report.
-        # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # The report ID.
+        # >Call [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) to obtain this parameter.
         # 
         # This parameter is required.
         self.report_id = report_id

@@ -54,11 +54,11 @@ class ListAllProdsResponseBodyData(DaraModel):
         prod_list: List[main_models.ListAllProdsResponseBodyDataProdList] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.current_page = current_page
         # The number of entries per page.
         self.page_size = page_size
-        # The cloud services.
+        # The list of products.
         self.prod_list = prod_list
         # The total number of logs.
         self.total_count = total_count
@@ -118,19 +118,21 @@ class ListAllProdsResponseBodyDataProdList(DaraModel):
         prod_code: str = None,
         total_log_count: int = None,
     ):
-        # The code of the cloud service provider. Valid values:
+        # The multicloud code. Valid values:
         # 
-        # *   qcloud: Tencent Cloud.
-        # *   aliyun: Alibaba Cloud.
-        # *   hcloud: Huawei Cloud.
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The number of logs within the cloud service that are added to the threat analysis feature.
+        # The number of ingested logs for the product.
         self.imported_log_count = imported_log_count
-        # The time when the logs within the cloud service were last added to the threat analysis feature.
+        # The time when logs were last ingested for the product.
         self.modify_time = modify_time
-        # The code of the cloud service.
+        # The code of the cloud product.
         self.prod_code = prod_code
-        # The total number of logs within the cloud service.
+        # The total number of logs for the product.
         self.total_log_count = total_log_count
 
     def validate(self):

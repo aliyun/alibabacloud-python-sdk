@@ -15,7 +15,7 @@ class ListConsumerAuthorizationRulesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The response data.
         self.data = data
@@ -76,9 +76,9 @@ class ListConsumerAuthorizationRulesResponseBodyData(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -146,21 +146,23 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
     ):
         # The API information.
         self.api_info = api_info
-        # The ID of the consumer authorization rule.
+        # The consumer authorization rule ID.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
         # The consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
-        # The deployment status of the API in the current environment.
+        # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
-        # The environment information.
+        # The environment context.
         self.environment_info = environment_info
-        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        # The expiration mode. Valid values:
+        # - LongTerm
+        # - ShortTerm
         self.expire_mode = expire_mode
-        # The rule status.
+        # The expiration status.
         self.expire_status = expire_status
-        # The time when the rule expires.
+        # The expiration time.
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info

@@ -13,9 +13,9 @@ class QueryChatappBindWabaRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The space ID of the user under the ISV account.
+        # The space ID of the ISV sub-customer.
         self.cust_space_id = cust_space_id
-        # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
+        # The ISV verification code, used to verify that the sub-account is authorized.
         self.isv_code = isv_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

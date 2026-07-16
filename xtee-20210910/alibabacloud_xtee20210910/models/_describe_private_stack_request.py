@@ -9,7 +9,7 @@ class DescribePrivateStackRequest(DaraModel):
         self,
         reg_id: str = None,
     ):
-        # Region Code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

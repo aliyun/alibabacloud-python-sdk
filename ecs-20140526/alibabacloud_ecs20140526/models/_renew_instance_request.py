@@ -23,7 +23,7 @@ class RenewInstanceRequest(DaraModel):
         # 
         # To use this parameter, you must [specify a unified expiration date for the ECS instance](~~63396#694cb636c0rp6~~). The value of this parameter must be the same as the specified unified expiration date. Otherwise, the call fails.
         # 
-        # >  You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
+        # > You must specify the renewal period-related parameter pair (`Period` and `PeriodUnit`) or `ExpectedRenewDay`, but not both.
         self.expected_renew_day = expected_renew_day
         # The ID of the instance that you want to renew.
         # 

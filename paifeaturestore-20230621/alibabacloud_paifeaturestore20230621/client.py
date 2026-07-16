@@ -21,7 +21,19 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'paifeaturestore.us-west-1.aliyuncs.com',
+            'us-east-1': 'paifeaturestore.us-east-1.aliyuncs.com',
+            'eu-central-1': 'paifeaturestore.eu-central-1.aliyuncs.com',
+            'cn-shenzhen': 'paifeaturestore.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'paifeaturestore.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'paifeaturestore.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'paifeaturestore.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'paifeaturestore.cn-beijing.aliyuncs.com',
+            'ap-southeast-5': 'paifeaturestore.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-1': 'paifeaturestore.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('paifeaturestore', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

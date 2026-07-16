@@ -11,9 +11,11 @@ class CreateModelServiceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The model service ID.
         self.model_service_id = model_service_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status of the model service.
         self.status = status
 
     def validate(self):

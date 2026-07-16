@@ -19,13 +19,21 @@ class GetDialogLogResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The processing time.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -102,11 +110,17 @@ class GetDialogLogResponseBodyData(DaraModel):
         model_cost_time: int = None,
         recall_list: str = None,
     ):
+        # The analysis process. This field has a value if the analysis process is enabled during the real-time conversation.
         self.analysis_process = analysis_process
+        # The `conversationList` field records the conversation content.
         self.conversation_list = conversation_list
+        # The list of hit intents.
         self.hit_intention_list = hit_intention_list
+        # The intent list.
         self.intention_list = intention_list
+        # The model processing time, in milliseconds.
         self.model_cost_time = model_cost_time
+        # The recall list.
         self.recall_list = recall_list
 
     def validate(self):
@@ -183,8 +197,11 @@ class GetDialogLogResponseBodyDataIntentionList(DaraModel):
         intention_name: str = None,
         intention_script: str = None,
     ):
+        # The `description` field provides a detailed description of the user\\"s intent.
         self.description = description
+        # The intent name.
         self.intention_name = intention_name
+        # The `intentionScript` field contains the service agent\\"s reply script for the user\\"s intent.
         self.intention_script = intention_script
 
     def validate(self):
@@ -226,8 +243,11 @@ class GetDialogLogResponseBodyDataHitIntentionList(DaraModel):
         intention_name: str = None,
         intention_script: str = None,
     ):
+        # A description of the customer\\"s intent.
         self.description = description
+        # The intent name.
         self.intention_name = intention_name
+        # The scripted reply based on the customer\\"s intent.
         self.intention_script = intention_script
 
     def validate(self):

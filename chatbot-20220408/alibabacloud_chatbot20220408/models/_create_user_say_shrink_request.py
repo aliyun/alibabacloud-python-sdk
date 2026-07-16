@@ -11,9 +11,13 @@ class CreateUserSayShrinkRequest(DaraModel):
         instance_id: str = None,
         user_say_definition_shrink: str = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # The ID of the chatbot instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The definition of the user say.
         self.user_say_definition_shrink = user_say_definition_shrink
 
     def validate(self):

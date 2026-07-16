@@ -12,15 +12,15 @@ class ReleasePublicIpAddressRequest(DaraModel):
         public_ip_address: str = None,
         region_id: str = None,
     ):
-        # > This parameter is unavailable.
+        # > This parameter is not yet available.
         self.dry_run = dry_run
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The public IP address of the instance.
         # 
         # This parameter is required.
         self.public_ip_address = public_ip_address
-        # The region ID of the instance.
+        # The ID of the region where the instance is located.
         self.region_id = region_id
 
     def validate(self):

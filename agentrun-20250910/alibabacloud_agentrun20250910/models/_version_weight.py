@@ -10,9 +10,9 @@ class VersionWeight(DaraModel):
         version: str = None,
         weight: float = None,
     ):
-        # 智能体运行时版本号
+        # Agent runtime version number
         self.version = version
-        # 流量权重比例（0.0-1.0）
+        # Traffic weight ratio (0.0–1.0)
         self.weight = weight
 
     def validate(self):

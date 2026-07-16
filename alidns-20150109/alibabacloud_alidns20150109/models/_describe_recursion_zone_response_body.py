@@ -26,20 +26,37 @@ class DescribeRecursionZoneResponseBody(DaraModel):
         zone_id: str = None,
         zone_name: str = None,
     ):
+        # The time when the zone was created.
         self.create_time = create_time
+        # The UNIX timestamp that indicates when the zone was created.
         self.create_timestamp = create_timestamp
+        # The ID of the creator.
         self.creator = creator
+        # The subtype of the creator.
         self.creator_sub_type = creator_sub_type
+        # The type of the creator.
         self.creator_type = creator_type
         self.effective_scopes = effective_scopes
+        # Indicates whether recursive proxy for subdomains is enabled. Valid values:
+        # 
+        # zone: Disabled. If a non-existent subdomain is requested, an NXDOMAIN response is returned to indicate that the subdomain does not exist.
+        # record: Enabled. If a non-existent subdomain is requested, the system queries the forwarding and recursion modules in sequence. The final query result is used to respond to the DNS request.
         self.proxy_pattern = proxy_pattern
+        # The number of DNS records in the zone.
         self.record_count = record_count
+        # The remarks.
         self.remark = remark
+        # The unique ID of the request.
         self.request_id = request_id
+        # The time when the zone was last updated.
         self.update_time = update_time
+        # The UNIX timestamp that indicates when the zone was last updated.
         self.update_timestamp = update_timestamp
+        # The user ID.
         self.user_id = user_id
+        # The zone ID. This is the unique identifier of the zone.
         self.zone_id = zone_id
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):

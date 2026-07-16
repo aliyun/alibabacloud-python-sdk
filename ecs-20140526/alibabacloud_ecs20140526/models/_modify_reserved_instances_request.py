@@ -112,16 +112,17 @@ class ModifyReservedInstancesRequestConfiguration(DaraModel):
         self.instance_amount = instance_amount
         # The instance types that the new reserved instance can match.
         # 
-        # >  The supported instance types are continuously updated. For information about the instance types supported by reserved instances, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
+        # > The supported instance types are continuously updated. For information about the instance types supported by reserved instances, see [Overview of reserved instances](~~100370#3c1b682051vt4~~).
         self.instance_type = instance_type
         # The name of the new reserved instance.
         # 
-        # The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.reserved_instance_name = reserved_instance_name
         # The scope level of the new reserved instance. Valid values:
         # 
-        # *   Region
-        # *   Zone
+        # - Region
+        # 
+        # - Zone
         # 
         # Default value: Region.
         self.scope = scope

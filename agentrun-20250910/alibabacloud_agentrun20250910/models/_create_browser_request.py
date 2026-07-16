@@ -10,6 +10,8 @@ class CreateBrowserRequest(DaraModel):
         self,
         body: main_models.CreateBrowserInput = None,
     ):
+        # Request body for creation parameters
+        # 
         # This parameter is required.
         self.body = body
 

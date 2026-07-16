@@ -14,17 +14,19 @@ class UpdateCloudGtmAddressPoolEnableStatusRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
-        self.accept_language = accept_language
-        # The ID of the address pool. This ID uniquely identifies the address pool.
-        self.address_pool_id = address_pool_id
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The enabling state of the address pool. Valid values:
+        # - zh-CN: Chinese
         # 
-        # *   enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
-        # *   disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
+        # - en-US (default): English
+        self.accept_language = accept_language
+        # The unique ID of the address pool.
+        self.address_pool_id = address_pool_id
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The client token can contain only ASCII characters and must be no more than 64 characters in length.
+        self.client_token = client_token
+        # The enabled status of the address pool:
+        # 
+        # - enable: Enables the address pool. If the health check is normal, the address pool is included in DNS resolution.
+        # 
+        # - disable: Disables the address pool. The address pool is not included in DNS resolution, regardless of its health check status.
         self.enable_status = enable_status
 
     def validate(self):

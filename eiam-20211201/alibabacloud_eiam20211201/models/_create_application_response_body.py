@@ -10,9 +10,9 @@ class CreateApplicationResponseBody(DaraModel):
         application_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

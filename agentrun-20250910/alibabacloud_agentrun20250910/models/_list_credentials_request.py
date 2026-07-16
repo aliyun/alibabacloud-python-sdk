@@ -17,17 +17,23 @@ class ListCredentialsRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
-        # credentialAuthType
+        # Filters the results by credential type.
         self.credential_auth_type = credential_auth_type
-        # credentialName
+        # Filters the results by credential name.
         self.credential_name = credential_name
-        # credentialSourceType
+        # Filters the results by credential source type.
         self.credential_source_type = credential_source_type
+        # Filters the results based on the credential\\"s enabled status.
         self.enabled = enabled
+        # The page number of the results to return.
         self.page_number = page_number
+        # The number of credentials to return per page.
         self.page_size = page_size
+        # Filters the results by provider.
         self.provider = provider
+        # Unique identifier of the workspace
         self.workspace_id = workspace_id
+        # Multiple workspace identifiers
         self.workspace_ids = workspace_ids
 
     def validate(self):

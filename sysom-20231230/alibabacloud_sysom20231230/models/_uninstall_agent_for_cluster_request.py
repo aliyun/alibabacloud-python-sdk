@@ -11,8 +11,13 @@ class UninstallAgentForClusterRequest(DaraModel):
         agent_version: str = None,
         cluster_id: str = None,
     ):
+        # The component ID.
         self.agent_id = agent_id
+        # The component version.
         self.agent_version = agent_version
+        # The cluster ID.
+        # 
+        # > This parameter must be set to the ID of an ACK cluster.
         self.cluster_id = cluster_id
 
     def validate(self):

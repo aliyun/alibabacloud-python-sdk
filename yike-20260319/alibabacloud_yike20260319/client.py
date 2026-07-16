@@ -20,7 +20,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'yike.cn-shanghai.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('yike', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -710,6 +713,150 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_yike_asset_media_infos_with_options_async(request, runtime)
 
+    def get_image_generation_job_with_options(
+        self,
+        request: main_models.GetImageGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_generation_job_with_options_async(
+        self,
+        request: main_models.GetImageGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetImageGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetImageGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetImageGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_generation_job(
+        self,
+        request: main_models.GetImageGenerationJobRequest,
+    ) -> main_models.GetImageGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_image_generation_job_with_options(request, runtime)
+
+    async def get_image_generation_job_async(
+        self,
+        request: main_models.GetImageGenerationJobRequest,
+    ) -> main_models.GetImageGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_image_generation_job_with_options_async(request, runtime)
+
+    def get_video_generation_job_with_options(
+        self,
+        request: main_models.GetVideoGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_generation_job_with_options_async(
+        self,
+        request: main_models.GetVideoGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_generation_job(
+        self,
+        request: main_models.GetVideoGenerationJobRequest,
+    ) -> main_models.GetVideoGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_generation_job_with_options(request, runtime)
+
+    async def get_video_generation_job_async(
+        self,
+        request: main_models.GetVideoGenerationJobRequest,
+    ) -> main_models.GetVideoGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_generation_job_with_options_async(request, runtime)
+
     def get_yike_aiapp_job_with_options(
         self,
         request: main_models.GetYikeAIAppJobRequest,
@@ -919,6 +1066,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetYikeAssetMediaInfoResponse:
         runtime = RuntimeOptions()
         return await self.get_yike_asset_media_info_with_options_async(request, runtime)
+
+    def get_yike_project_export_job_with_options(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yike_project_export_job_with_options_async(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYikeProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yike_project_export_job(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_yike_project_export_job_with_options(request, runtime)
+
+    async def get_yike_project_export_job_async(
+        self,
+        request: main_models.GetYikeProjectExportJobRequest,
+    ) -> main_models.GetYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yike_project_export_job_with_options_async(request, runtime)
 
     def get_yike_prompt_expansion_voice_fix_job_with_options(
         self,
@@ -1956,6 +2173,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.sub_yike_user_credit_with_options_async(request, runtime)
 
+    def submit_image_generation_job_with_options(
+        self,
+        request: main_models.SubmitImageGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitImageGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            query['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.n):
+            query['N'] = request.n
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitImageGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitImageGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_image_generation_job_with_options_async(
+        self,
+        request: main_models.SubmitImageGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitImageGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            query['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.n):
+            query['N'] = request.n
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitImageGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitImageGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_image_generation_job(
+        self,
+        request: main_models.SubmitImageGenerationJobRequest,
+    ) -> main_models.SubmitImageGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_image_generation_job_with_options(request, runtime)
+
+    async def submit_image_generation_job_async(
+        self,
+        request: main_models.SubmitImageGenerationJobRequest,
+    ) -> main_models.SubmitImageGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_image_generation_job_with_options_async(request, runtime)
+
+    def submit_video_generation_job_with_options(
+        self,
+        request: main_models.SubmitVideoGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            query['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.n):
+            query['N'] = request.n
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoGenerationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_generation_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoGenerationJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoGenerationJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aspect_ratio):
+            query['AspectRatio'] = request.aspect_ratio
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.duration):
+            query['Duration'] = request.duration
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.job_parameters):
+            query['JobParameters'] = request.job_parameters
+        if not DaraCore.is_null(request.job_type):
+            query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.n):
+            query['N'] = request.n
+        if not DaraCore.is_null(request.resolution):
+            query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.scene):
+            query['Scene'] = request.scene
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoGenerationJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoGenerationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_generation_job(
+        self,
+        request: main_models.SubmitVideoGenerationJobRequest,
+    ) -> main_models.SubmitVideoGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_generation_job_with_options(request, runtime)
+
+    async def submit_video_generation_job_async(
+        self,
+        request: main_models.SubmitVideoGenerationJobRequest,
+    ) -> main_models.SubmitVideoGenerationJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_generation_job_with_options_async(request, runtime)
+
     def submit_yike_aiapp_job_with_options(
         self,
         request: main_models.SubmitYikeAIAppJobRequest,
@@ -2112,6 +2545,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_yike_avatar_narrator_job_with_options_async(request, runtime)
 
+    def submit_yike_project_export_job_with_options(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.export_type):
+            query['ExportType'] = request.export_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeProjectExportJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_project_export_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.export_type):
+            query['ExportType'] = request.export_type
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeProjectExportJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeProjectExportJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_project_export_job(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_project_export_job_with_options(request, runtime)
+
+    async def submit_yike_project_export_job_async(
+        self,
+        request: main_models.SubmitYikeProjectExportJobRequest,
+    ) -> main_models.SubmitYikeProjectExportJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_project_export_job_with_options_async(request, runtime)
+
     def submit_yike_prompt_expansion_voice_fix_job_with_options(
         self,
         request: main_models.SubmitYikePromptExpansionVoiceFixJobRequest,
@@ -2203,8 +2714,12 @@ class Client(OpenApiClient):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
             query['NarrationVoiceId'] = request.narration_voice_id
+        if not DaraCore.is_null(request.need_caption):
+            query['NeedCaption'] = request.need_caption
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.shot_prompt_lang):
+            query['ShotPromptLang'] = request.shot_prompt_lang
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
         if not DaraCore.is_null(request.skip_failure_shot):
@@ -2261,8 +2776,12 @@ class Client(OpenApiClient):
             query['ModelParams'] = request.model_params
         if not DaraCore.is_null(request.narration_voice_id):
             query['NarrationVoiceId'] = request.narration_voice_id
+        if not DaraCore.is_null(request.need_caption):
+            query['NeedCaption'] = request.need_caption
         if not DaraCore.is_null(request.resolution):
             query['Resolution'] = request.resolution
+        if not DaraCore.is_null(request.shot_prompt_lang):
+            query['ShotPromptLang'] = request.shot_prompt_lang
         if not DaraCore.is_null(request.shot_prompt_mode):
             query['ShotPromptMode'] = request.shot_prompt_mode
         if not DaraCore.is_null(request.skip_failure_shot):
@@ -2315,6 +2834,80 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitYikeStoryboardJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_yike_storyboard_job_with_options_async(request, runtime)
+
+    def submit_yike_video_clone_job_with_options(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVideoCloneJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVideoCloneJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_yike_video_clone_job_with_options_async(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.job_params):
+            body['JobParams'] = request.job_params
+        if not DaraCore.is_null(request.user_data):
+            body['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitYikeVideoCloneJob',
+            version = '2026-03-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitYikeVideoCloneJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_yike_video_clone_job(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_yike_video_clone_job_with_options(request, runtime)
+
+    async def submit_yike_video_clone_job_async(
+        self,
+        request: main_models.SubmitYikeVideoCloneJobRequest,
+    ) -> main_models.SubmitYikeVideoCloneJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_yike_video_clone_job_with_options_async(request, runtime)
 
     def submit_yike_voice_narrator_job_with_options(
         self,

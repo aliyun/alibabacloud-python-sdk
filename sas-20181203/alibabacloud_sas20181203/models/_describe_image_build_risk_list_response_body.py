@@ -16,18 +16,17 @@ class DescribeImageBuildRiskListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The detailed information about the error code.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +81,9 @@ class DescribeImageBuildRiskListResponseBodyData(DaraModel):
         list: List[main_models.DescribeImageBuildRiskListResponseBodyDataList] = None,
         page_info: main_models.DescribeImageBuildRiskListResponseBodyDataPageInfo = None,
     ):
-        # The risks.
+        # The summary list of build risks.
         self.list = list
-        # The pagination information.
+        # The paging parameters.
         self.page_info = page_info
 
     def validate(self):
@@ -131,11 +130,10 @@ class DescribeImageBuildRiskListResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number. Default value: **1**.
+        # The page number of the current page when paging is used. Default value: **1**.
         self.current_page = current_page
-        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page when paging is used. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -187,23 +185,25 @@ class DescribeImageBuildRiskListResponseBodyDataList(DaraModel):
     ):
         # The number of affected images.
         self.count = count
-        # The timestamp generated when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan. Unit: milliseconds.
         self.first_scan_time = first_scan_time
-        # The timestamp generated when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the most recent scan. Unit: milliseconds.
         self.last_scan_time = last_scan_time
-        # The type key of the risk.
+        # The key of the build risk rule category.
         self.risk_class = risk_class
-        # The type name of the risk.
+        # The category name of the build risk rule.
         self.risk_class_name = risk_class_name
-        # The key of the risk. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value of **RiskKey**.
+        # The key of the build risk rule. You can call the [DescribeImageBuildRiskList](~~~~) operation to obtain the value of **RiskKey**.
         self.risk_key = risk_key
-        # The rule name of the risk.
+        # The name of the build risk rule.
         self.risk_key_name = risk_key_name
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: High.
+        # 
+        # - **medium**: Medium.
+        # 
+        # - **low**: Low.
         self.risk_level = risk_level
         # The number of unprocessed images.
         self.unprocessed_num = unprocessed_num

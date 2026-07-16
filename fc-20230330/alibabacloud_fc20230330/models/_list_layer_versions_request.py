@@ -10,9 +10,9 @@ class ListLayerVersionsRequest(DaraModel):
         limit: int = None,
         start_version: str = None,
     ):
-        # The number of versions to be returned.
+        # The number of versions to return.
         self.limit = limit
-        # The initial version of the layer.
+        # The version from which to start the query.
         self.start_version = start_version
 
     def validate(self):

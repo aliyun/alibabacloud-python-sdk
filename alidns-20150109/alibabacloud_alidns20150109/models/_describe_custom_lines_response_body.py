@@ -17,7 +17,7 @@ class DescribeCustomLinesResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The custom lines.
+        # The list of custom lines.
         self.custom_lines = custom_lines
         # The page number.
         self.page_number = page_number
@@ -27,7 +27,7 @@ class DescribeCustomLinesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of custom lines.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -100,8 +100,9 @@ class DescribeCustomLinesResponseBodyCustomLines(DaraModel):
         self.code = code
         # The unique ID of the custom line.
         self.id = id
+        # The list of IP address range. Use a hyphen (-) to separate the start and end IP address ranges. Enter one range per line. You can specify 1 to 50 lines. For a single IP address, enter it as IP1-IP1. IP address ranges cannot overlap.
         self.ip_segment_list = ip_segment_list
-        # The name of the custom line.
+        # The name of the line.
         self.name = name
 
     def validate(self):
@@ -156,7 +157,9 @@ class DescribeCustomLinesResponseBodyCustomLinesIpSegmentList(DaraModel):
         end_ip: str = None,
         start_ip: str = None,
     ):
+        # The end IP address.
         self.end_ip = end_ip
+        # The start IP address.
         self.start_ip = start_ip
 
     def validate(self):

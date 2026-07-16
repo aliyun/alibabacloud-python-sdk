@@ -13,7 +13,9 @@ class DescribeSlowLogTrendResponseBody(DaraModel):
         request_id: str = None,
         slow_log_trend: main_models.DescribeSlowLogTrendResponseBodySlowLogTrend = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result set of the slow SQL queries.
         self.slow_log_trend = slow_log_trend
 
     def validate(self):
@@ -54,8 +56,11 @@ class DescribeSlowLogTrendResponseBodySlowLogTrend(DaraModel):
         table_schema: main_models.DescribeSlowLogTrendResponseBodySlowLogTrendTableSchema = None,
     ):
         self.data = data
+        # The number of rows in the result set.
         self.rows = rows
+        # The minimum number of rows that are returned before the \\`LIMIT\\` clause is applied.
         self.rows_before_limit_at_least = rows_before_limit_at_least
+        # The statistics of the query results.
         self.statistics = statistics
         self.table_schema = table_schema
 
@@ -188,8 +193,11 @@ class DescribeSlowLogTrendResponseBodySlowLogTrendStatistics(DaraModel):
         elapsed_time: float = None,
         rows_read: int = None,
     ):
+        # The amount of data read. Unit: bytes.
         self.bytes_read = bytes_read
+        # The query execution duration. Unit: seconds.
         self.elapsed_time = elapsed_time
+        # The number of rows read.
         self.rows_read = rows_read
 
     def validate(self):

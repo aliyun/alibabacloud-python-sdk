@@ -13,6 +13,7 @@ class ListImageLibResponseBody(DaraModel):
         code: int = None,
         http_status_code: int = None,
         lib_list: List[main_models.ListImageLibResponseBodyLibList] = None,
+        max_lib_count: int = None,
         msg: str = None,
         request_id: str = None,
         success: bool = None,
@@ -23,6 +24,7 @@ class ListImageLibResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # List of image library information.
         self.lib_list = lib_list
+        self.max_lib_count = max_lib_count
         # Further description of the error code.
         self.msg = msg
         # ID assigned by the backend to uniquely identify a request. Can be used for troubleshooting.
@@ -52,6 +54,9 @@ class ListImageLibResponseBody(DaraModel):
             for k1 in self.lib_list:
                 result['LibList'].append(k1.to_map() if k1 else None)
 
+        if self.max_lib_count is not None:
+            result['MaxLibCount'] = self.max_lib_count
+
         if self.msg is not None:
             result['Msg'] = self.msg
 
@@ -76,6 +81,9 @@ class ListImageLibResponseBody(DaraModel):
             for k1 in m.get('LibList'):
                 temp_model = main_models.ListImageLibResponseBodyLibList()
                 self.lib_list.append(temp_model.from_map(k1))
+
+        if m.get('MaxLibCount') is not None:
+            self.max_lib_count = m.get('MaxLibCount')
 
         if m.get('Msg') is not None:
             self.msg = m.get('Msg')

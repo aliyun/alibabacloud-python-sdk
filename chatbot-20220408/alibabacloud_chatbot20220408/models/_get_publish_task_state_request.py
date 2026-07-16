@@ -10,7 +10,9 @@ class GetPublishTaskStateRequest(DaraModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # The key that identifies the business space. If omitted, the default business space is used. You can get the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The publish task ID.
         self.id = id
 
     def validate(self):

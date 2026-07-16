@@ -14,9 +14,12 @@ class AddAddressRecoverSuspendShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The audit record.
         self.audit_record_shrink = audit_record_shrink
+        # The customer space ID.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request type.
         self.request_type = request_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -21,13 +21,13 @@ class DescribeCustomLineResponseBody(DaraModel):
         self.code = code
         # The domain name.
         self.domain_name = domain_name
-        # The ID/Name of the custom line.
+        # The ID of the custom line.
         self.id = id
-        # The CIDR blocks. Separate IP addresses with a hyphen (-). Enter a CIDR block in each row. You can enter 1 to 50 CIDR blocks at a time. If a CIDR block contains only one IP address, enter the IP address in the format of IP1-IP1. Different CIDR blocks cannot be overlapped.
+        # The list of IP address segments. Use a hyphen (-) to separate the start and end IP addresses. Each line represents one segment. You can specify from 1 to 50 segments. For a single IP address, use the format IP1-IP1. IP address segments cannot overlap.
         self.ip_segment_list = ip_segment_list
         # The name of the custom line.
         self.name = name
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeCustomLineResponseBodyIpSegmentList(DaraModel):
         end_ip: str = None,
         start_ip: str = None,
     ):
-        # The end IP address of the CIDR block.
+        # The end IP address of the segment.
         self.end_ip = end_ip
-        # The start IP address of the CIDR block.
+        # The start IP address of the segment.
         self.start_ip = start_ip
 
     def validate(self):

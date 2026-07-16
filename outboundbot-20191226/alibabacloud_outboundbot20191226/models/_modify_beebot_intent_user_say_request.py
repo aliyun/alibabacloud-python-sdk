@@ -13,12 +13,20 @@ class ModifyBeebotIntentUserSayRequest(DaraModel):
         user_say_definition: main_models.ModifyBeebotIntentUserSayRequestUserSayDefinition = None,
         user_say_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # The definition of the user utterance.
+        # 
         # This parameter is required.
         self.user_say_definition = user_say_definition
+        # The user utterance ID.
+        # 
         # This parameter is required.
         self.user_say_id = user_say_id
 
@@ -68,8 +76,12 @@ class ModifyBeebotIntentUserSayRequestUserSayDefinition(DaraModel):
         content: str = None,
         intent_id: int = None,
     ):
+        # The content of the user utterance.
+        # 
         # This parameter is required.
         self.content = content
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
 

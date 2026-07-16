@@ -13,9 +13,9 @@ class DescribeParamByEventCodesResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeParamByEventCodesResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeParamByEventCodesResponseBodyResultObject(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Name
+        # The name.
         self.name = name
 
     def validate(self):

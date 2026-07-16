@@ -13,7 +13,7 @@ class ModifyClusterNodePoolResponseBody(DaraModel):
     ):
         # The node pool ID.
         self.nodepool_id = nodepool_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The task ID.
         self.task_id = task_id

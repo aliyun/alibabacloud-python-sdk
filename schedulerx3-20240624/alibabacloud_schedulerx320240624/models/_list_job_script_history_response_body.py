@@ -17,13 +17,23 @@ class ListJobScriptHistoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of `200` indicates that the request was successful.
         self.code = code
-        # -
+        # - The response data.
         self.data = data
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The response message.
+        # 
         # This parameter is required.
         self.message = message
+        # A unique ID for the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,9 +95,11 @@ class ListJobScriptHistoryResponseBodyData(DaraModel):
         records: List[main_models.ListJobScriptHistoryResponseBodyDataRecords] = None,
         total: str = None,
     ):
+        # The token to retrieve the next page of results. If this parameter is empty, no more data is available.
         self.next_token = next_token
-        # -
+        # - A list of script history records.
         self.records = records
+        # The total count of entries.
         self.total = total
 
     def validate(self):
@@ -138,9 +150,13 @@ class ListJobScriptHistoryResponseBodyDataRecords(DaraModel):
         script_content: str = None,
         version_description: str = None,
     ):
+        # The timestamp when the script version was created.
         self.create_time = create_time
+        # The creator of the script version.
         self.creator = creator
+        # The content of the script.
         self.script_content = script_content
+        # The script version description.
         self.version_description = version_description
 
     def validate(self):

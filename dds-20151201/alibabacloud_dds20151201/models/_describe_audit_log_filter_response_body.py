@@ -13,13 +13,19 @@ class DescribeAuditLogFilterResponseBody(DaraModel):
     ):
         # The type of the audit log entries. Valid values:
         # 
-        # *   **admin**: O\\&M and management operations
-        # *   **slow**: slow query logs
-        # *   **query**: query operations
-        # *   **insert**: insert operations
-        # *   **update**: update operations
-        # *   **delete**: delete operations
-        # *   **command**: protocol commands such as the aggregate method
+        # - **admin**: O\\&M and management operations
+        # 
+        # - **slow**: slow query logs
+        # 
+        # - **query**: query operations
+        # 
+        # - **insert**: insert operations
+        # 
+        # - **update**: update operations
+        # 
+        # - **delete**: delete operations
+        # 
+        # - **command**: protocol commands such as the aggregate method
         self.filter = filter
         # The ID of the request.
         self.request_id = request_id

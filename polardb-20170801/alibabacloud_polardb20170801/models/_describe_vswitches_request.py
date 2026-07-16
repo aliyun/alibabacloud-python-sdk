@@ -20,28 +20,28 @@ class DescribeVSwitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The dedicated cluster ID.
+        # The ID of the dedicated cluster.
         # 
-        # >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
+        # > Specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
         self.dedicated_host_group_id = dedicated_host_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Default value: 1.
+        # The page number of the list. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50. The default value is 50.
+        # The number of entries to return on each page for a paged query. The maximum value is 50. The default value is 50.
         self.page_size = page_size
-        # The ID of the region where the vSwitch is deployed.
+        # The region ID of the vSwitch.
         self.region_id = region_id
         # The ID of the resource group to which the vSwitch belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the virtual private type (VPC) to which the vSwitch belongs.
+        # The ID of the virtual private cloud (VPC) to which the vSwitch belongs.
         # 
-        # >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
+        # > Specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs.
+        # The zone ID of the vSwitch.
         self.zone_id = zone_id
 
     def validate(self):

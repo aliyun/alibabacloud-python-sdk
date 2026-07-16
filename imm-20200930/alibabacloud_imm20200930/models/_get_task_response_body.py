@@ -26,37 +26,40 @@ class GetTaskResponseBody(DaraModel):
     ):
         # The error code of the task.
         self.code = code
-        # The end time of the task.
+        # The time when the task ended. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.end_time = end_time
         # The event ID.
         self.event_id = event_id
         # The error message of the task.
         self.message = message
-        # The task progress. Valid values: 0 to 100. Unit: %.
+        # The task progress. Valid values: 0 to 100. Unit: percent (%).
         # 
-        # >  This parameter is valid only if the task is in the `Running` state.``
+        # > -  The GetTask operation does not support this parameter.
+        # > -  This parameter is meaningful only when the task status `State` is `Running`.
         self.progress = progress
         # The project name.
         self.project_name = project_name
         # The request ID.
         self.request_id = request_id
-        # The start time of the task.
+        # The time when the task started. The value is a UTC timestamp in ISO 8601 format with millisecond precision.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The running status of the task. Valid values:
         # 
-        # *   RUNNING: The task is running.
-        # *   Succeeded: The task is successful.
-        # *   Failed: The task failed.
+        # - Running: The task is running.
+        # 
+        # - Succeeded: The task is completed.
+        # 
+        # - Failed: The task failed.
         self.status = status
-        # The tags. This parameter is returned only if you specified Tags when you created the task.
+        # The task tags. These are the tags that the user passed in when creating the task.
         self.tags = tags
         # The task ID.
         self.task_id = task_id
-        # The initial request parameters used to create the task.
+        # The original request parameters used to create the task.
         self.task_request_definition = task_request_definition
-        # The type of the task. For more information, see [Task types](https://help.aliyun.com/document_detail/2743993.html).
+        # The type of the task. For valid values, see [Task type list](https://help.aliyun.com/document_detail/2743993.html).
         self.task_type = task_type
-        # The user data of the task.
+        # The custom information specified by the user.
         self.user_data = user_data
 
     def validate(self):

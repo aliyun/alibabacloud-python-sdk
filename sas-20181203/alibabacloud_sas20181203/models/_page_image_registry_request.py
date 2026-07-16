@@ -16,15 +16,15 @@ class PageImageRegistryRequest(DaraModel):
         registry_type_not_in_list: List[str] = None,
         source_ip: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: 20.
+        # The maximum number of entries per page in a paged query. Default value: 20.
         self.page_size = page_size
-        # The name of the image repository. Fuzzy match is supported.
+        # The image repository name. Fuzzy match is supported.
         self.registry_name_like = registry_name_like
-        # The types of image repositories.
+        # The list of image repository types to include.
         self.registry_type_in_list = registry_type_in_list
-        # The types of excluded image repositories.
+        # The list of image repository types to exclude.
         self.registry_type_not_in_list = registry_type_not_in_list
         # The source IP address of the request.
         self.source_ip = source_ip

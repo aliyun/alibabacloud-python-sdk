@@ -17,14 +17,23 @@ class ListTraceTasksRequest(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The client IP address.
         self.client_ip = client_ip
+        # The diagnose ID.
         self.diagnose_id = diagnose_id
+        # The domain name to diagnose.
         self.domain_name = domain_name
+        # The end time. Time zone: UTC/GMT.
         self.end_time = end_time
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The page size. Valid values: any integer from 1 to 1000.
         self.page_size = page_size
+        # The start time. Time zone: UTC/GMT.
         self.start_time = start_time
+        # The diagnostic task ID.
         self.task_id = task_id
+        # The diagnostic trace ID.
         self.trace_id = trace_id
 
     def validate(self):

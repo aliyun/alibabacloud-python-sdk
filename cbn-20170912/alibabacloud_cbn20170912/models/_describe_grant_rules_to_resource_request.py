@@ -17,30 +17,35 @@ class DescribeGrantRulesToResourceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # *   If you do not specify a value for **MaxResults**, entries are returned in one response. After you send the request, the value of **MaxResults** includes all entries.
-        # *   If you specify a value for **MaxResults**, entries are returned in batches. The value of **MaxResults** indicates the total number of entries returned per batch. Valid values: **1** to **100**. After you send the request, the value of **MaxResults** indicates the number of entries returned in the current response. We recommend that you set **MaxResults** to **20**.
-        self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If you omit this parameter, all entries are returned in a single response. In this case, the **MaxResults** field in the response indicates the total number of entries.
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of the **NextToken** parameter.
+        # - If you specify the **MaxResults** parameter, the query is paginated. **MaxResults** sets the number of entries per page. The value must be an integer from **1** to **100**. The **MaxResults** value in the response indicates the number of entries on the current page. The recommended value for this parameter is **20**.
+        self.max_results = max_results
+        # The token used to retrieve the next page of results. Valid values:
+        # 
+        # - Omit this parameter for the first request.
+        # 
+        # - For subsequent requests, set this parameter to the **NextToken** value from the previous response.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The type of network instance. Valid values:
+        # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: virtual private cloud (VPC)
-        # *   **ExpressConnect**: virtual border router (VBR)
-        # *   **VPN**: IPsec-VPN connection
-        # *   **ECR**: Express Connect Router (ECR)
+        # - **VPC**: a Virtual Private Cloud (VPC) instance.
+        # 
+        # - **ExpressConnect**: a Virtual Border Router (VBR) instance.
+        # 
+        # - **VPN**: an IPsec connection.
+        # 
+        # - **ECR**: an ExpressConnect Router (ECR) instance.
         # 
         # This parameter is required.
         self.product_type = product_type
         # The region ID of the network instance.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
         self.region_id = region_id
-        # The network instance ID.
+        # The ID of the network instance.
         # 
         # This parameter is required.
         self.resource_id = resource_id

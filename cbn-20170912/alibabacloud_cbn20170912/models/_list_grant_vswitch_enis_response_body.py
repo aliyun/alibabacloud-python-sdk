@@ -16,17 +16,19 @@ class ListGrantVSwitchEnisResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The information about the ENI.
+        # A list of ENI information.
         self.grant_vswitch_enis = grant_vswitch_enis
-        # The total number of entries returned.
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         # 
-        # > If MaxResults and NextToken are sued to query results by page, ignore this parameter.
+        # >Notice: 
+        # 
+        # This parameter is invalid if you use MaxResults and NextToken to perform a paged query.
         self.total_count = total_count
 
     def validate(self):
@@ -92,24 +94,25 @@ class ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ENI description.
+        # The description of the ENI.
         self.description = description
-        # The ENI ID.
+        # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # The ENI name.
+        # The name of the ENI.
         self.network_interface_name = network_interface_name
         # The primary private IPv4 address of the ENI.
         self.primary_ip_address = primary_ip_address
-        # Indicates whether the ENI is created by a transit router. Valid values:
+        # Indicates whether the ENI is created by a transit router.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The ENI is created by a transit router.
         # 
-        # ENIs that are created by transit routers cannot be used as multicast sources or members.
+        # - **false**: The ENI is not created by a transit router.
+        # 
+        # ENIs created by transit routers cannot be used as multicast sources or members.
         self.transit_router_flag = transit_router_flag
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

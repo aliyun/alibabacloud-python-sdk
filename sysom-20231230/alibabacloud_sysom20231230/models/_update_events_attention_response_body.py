@@ -13,9 +13,15 @@ class UpdateEventsAttentionResponseBody(DaraModel):
         data: main_models.UpdateEventsAttentionResponseBodyData = None,
         message: str = None,
     ):
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
+        # The status code. Valid values:
+        # - Success: The authorization is successful.
+        # - Other values: The authorization failed. Check the message field for the detailed fault information.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -63,6 +69,7 @@ class UpdateEventsAttentionResponseBodyData(DaraModel):
         self,
         mode: int = None,
     ):
+        # The updated attention level value.
         self.mode = mode
 
     def validate(self):

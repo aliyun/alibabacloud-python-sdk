@@ -16,13 +16,34 @@ class DescribePhoneNumberAnalysisRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The authorization code.
+        # 
+        # > Log on to the [Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), go to the **My Applications** page, and obtain the authorization ID, which is the authorization code.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The phone number to be queried.
+        # 
         # This parameter is required.
         self.input_number = input_number
+        # The encryption method of the phone number. Valid values:
+        # 
+        # - **NORMAL**: no encryption
+        # 
+        # - **MD5**
+        # 
+        # - **SHA256**
         self.mask = mask
+        # The type of the phone number. Valid values:
+        # 
+        # - **0**: mobile phone number
+        # 
+        # - **1**: mobile IMEI number
         self.number_type = number_type
         self.owner_id = owner_id
+        # The score threshold of the phone number. Valid values: **0 to 100**.
+        # 
+        # >Notice: Whether the specified score threshold is accepted is determined by the server. When the specified score threshold is not accepted, the data entered in this field is invalid.
         self.rate = rate
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

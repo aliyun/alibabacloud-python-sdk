@@ -16,8 +16,9 @@ class AddDomainGroupRequest(DaraModel):
         self.group_name = group_name
         # The language of the response. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # 
+        # - en: English
         # 
         # Default value: en.
         self.lang = lang

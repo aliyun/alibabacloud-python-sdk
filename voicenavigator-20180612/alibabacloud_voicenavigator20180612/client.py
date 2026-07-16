@@ -21,6 +21,10 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'voicenavigator.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'voicenavigator.cn-hangzhou.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('voicenavigator', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -143,6 +147,8 @@ class Client(OpenApiClient):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pitch_rate):
@@ -189,6 +195,8 @@ class Client(OpenApiClient):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.engine):
             query['Engine'] = request.engine
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pitch_rate):
@@ -585,6 +593,8 @@ class Client(OpenApiClient):
             query['InitialContext'] = request.initial_context
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.should_use_sand_box):
+            query['ShouldUseSandBox'] = request.should_use_sand_box
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -621,6 +631,8 @@ class Client(OpenApiClient):
             query['InitialContext'] = request.initial_context
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.should_use_sand_box):
+            query['ShouldUseSandBox'] = request.should_use_sand_box
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1739,6 +1751,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportConversationDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ab_test_id):
+            query['AbTestId'] = request.ab_test_id
         if not DaraCore.is_null(request.begin_time_left_range):
             query['BeginTimeLeftRange'] = request.begin_time_left_range
         if not DaraCore.is_null(request.begin_time_right_range):
@@ -1783,6 +1797,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportConversationDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ab_test_id):
+            query['AbTestId'] = request.ab_test_id
         if not DaraCore.is_null(request.begin_time_left_range):
             query['BeginTimeLeftRange'] = request.begin_time_left_range
         if not DaraCore.is_null(request.begin_time_right_range):
@@ -2785,6 +2801,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_xunfei):
             query['EngineXunfei'] = request.engine_xunfei
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.nls_service_type):
@@ -2833,6 +2851,8 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not DaraCore.is_null(request.engine_xunfei):
             query['EngineXunfei'] = request.engine_xunfei
+        if not DaraCore.is_null(request.ext_params):
+            query['ExtParams'] = request.ext_params
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.nls_service_type):

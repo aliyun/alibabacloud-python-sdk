@@ -13,10 +13,19 @@ class DeleteDeploymentDraftResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # - If \\`success\\` is \\`false\\`, an error code is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_code = error_code
+        # - If \\`success\\` is \\`false\\`, an error message is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_message = error_message
+        # The HTTP status code. A value other than 200 indicates that the request failed.
         self.http_code = http_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

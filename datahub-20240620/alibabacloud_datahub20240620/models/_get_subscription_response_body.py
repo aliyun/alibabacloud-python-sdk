@@ -20,17 +20,33 @@ class GetSubscriptionResponseBody(DaraModel):
         type: str = None,
         update_time: int = None,
     ):
+        # The name of the application to which the subscription belongs.
         self.application = application
+        # The description of the subscription.
         self.comment = comment
+        # The creation time.
         self.create_time = create_time
+        # The creator of the subscription.
         self.creator = creator
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The status of the subscription. Valid values:
+        # - 0: offline.
+        # - 1: online.
         self.state = state
+        # The subscription ID.
         self.subscription_id = subscription_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The topic name.
         self.topic_name = topic_name
+        # The type of the subscription. Valid values:
+        # - USER: created by a user.
+        # - SYSTEM: created by the system.
         self.type = type
+        # The last update time.
         self.update_time = update_time
 
     def validate(self):

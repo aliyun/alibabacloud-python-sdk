@@ -11,9 +11,14 @@ class TaskPreparingRequest(DaraModel):
         instance_owner_id: int = None,
         job_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the account that owns the instance.
         self.instance_owner_id = instance_owner_id
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
 

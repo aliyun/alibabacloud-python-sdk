@@ -12,9 +12,13 @@ class DeleteTaskAssignRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. **200** means the operation succeeded. Any other value means the operation failed. Use this field to identify the cause of failure.
         self.code = code
+        # The error details if the operation failed. If the operation succeeded, the value is successful.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
         self.success = success
 
     def validate(self):

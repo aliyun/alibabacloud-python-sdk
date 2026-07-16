@@ -10,8 +10,14 @@ class UpdatePerformanceDataCollectionRequest(DaraModel):
         enable: str = None,
         site_id: int = None,
     ):
+        # Specifies whether to enable quality data collection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The site ID. You can obtain the ID by calling the [ListSites](~~ListSites~~) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

@@ -13,7 +13,7 @@ class DescribeActiveOperationTaskRegionResponseBody(DaraModel):
         region_list: List[main_models.DescribeActiveOperationTaskRegionResponseBodyRegionList] = None,
         request_id: str = None,
     ):
-        # The region ID.
+        # The list of regions.
         self.region_list = region_list
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class DescribeActiveOperationTaskRegionResponseBodyRegionList(DaraModel):
         count: int = None,
         region: str = None,
     ):
-        # The total number of tasks.
+        # The number of tasks.
         self.count = count
-        # The region ID of the instance.
+        # The region ID.
         self.region = region
 
     def validate(self):

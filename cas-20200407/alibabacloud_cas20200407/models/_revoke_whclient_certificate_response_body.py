@@ -9,7 +9,7 @@ class RevokeWHClientCertificateResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

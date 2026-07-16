@@ -10,7 +10,10 @@ class DeleteFaqRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # The business space key. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # The unique identifier for the knowledge item.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

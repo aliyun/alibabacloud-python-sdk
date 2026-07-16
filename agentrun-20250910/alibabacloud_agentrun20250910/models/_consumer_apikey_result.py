@@ -12,11 +12,11 @@ class ConsumerAPIKeyResult(DaraModel):
         data: main_models.ConsumerAPIKey = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # `SUCCESS` indicates that the request was successful. If the request fails, this field returns an error type, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
-        # 消费者API密钥的详细信息
+        # Details of the consumer API key.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # A unique request ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

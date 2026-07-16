@@ -10,10 +10,11 @@ class DescribeAuthResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the SIEM system is granted the required permissions. Valid values:
+        # Indicates whether the permissions are granted.
         # 
-        # *   true
-        # *   false
+        # - true: The permissions are granted.
+        # 
+        # - false: The permissions are not granted.
         self.data = data
         # The request ID.
         self.request_id = request_id

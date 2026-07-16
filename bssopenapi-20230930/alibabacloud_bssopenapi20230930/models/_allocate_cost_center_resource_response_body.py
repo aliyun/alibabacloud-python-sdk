@@ -15,10 +15,15 @@ class AllocateCostCenterResourceResponseBody(DaraModel):
         owner_account_id: int = None,
         request_id: str = None,
     ):
+        # The cost center ID.
         self.cost_center_id = cost_center_id
+        # Indicates whether the operation was successful.
         self.is_success = is_success
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The owner of the cost center.
         self.owner_account_id = owner_account_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

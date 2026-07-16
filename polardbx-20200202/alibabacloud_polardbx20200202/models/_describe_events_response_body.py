@@ -16,10 +16,15 @@ class DescribeEventsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The event items.
         self.event_items = event_items
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of pages.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -89,16 +94,27 @@ class DescribeEventsResponseBodyEventItems(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The event ID.
         self.event_id = event_id
+        # The event name.
         self.event_name = event_name
+        # The supplementary information.
         self.event_payload = event_payload
+        # The reason.
         self.event_reason = event_reason
+        # The record time.
         self.event_record_time = event_record_time
+        # The event time.
         self.event_time = event_time
+        # The event type.
         self.event_type = event_type
+        # The event user type.
         self.event_user_type = event_user_type
+        # The region ID.
         self.region_id = region_id
+        # The resource name.
         self.resource_name = resource_name
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

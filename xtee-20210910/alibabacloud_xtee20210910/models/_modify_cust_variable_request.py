@@ -17,31 +17,31 @@ class ModifyCustVariableRequest(DaraModel):
         outputs: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Data version.
+        # The data version.
         # 
         # This parameter is required.
         self.data_version = data_version
-        # Description information.
+        # The description.
         self.description = description
-        # Event code.
+        # The event code.
         self.event_codes = event_codes
-        # Variable ID
+        # The variable ID.
         # 
         # This parameter is required.
         self.id = id
-        # Variable name
+        # The variable name.
         # 
         # This parameter is required.
         self.name = name
-        # Output
+        # The output.
         self.outputs = outputs
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

@@ -14,42 +14,39 @@ class OperateCommonTargetConfigRequest(DaraModel):
         target_type: str = None,
         type: str = None,
     ):
-        # The type of the image. Valid values:
-        # 
-        # *   **repoName**: the name of the image repository
-        # *   **repoNamespace**: the namespace of the image repository
+        # The target type of the image switch. Valid values:
+        # - **repoName**: repository name.
+        # - **repoNamespace**: repository namespace name.
         self.field_name = field_name
-        # The name of the image repository or the namespace of the image repository.
+        # The repository name or repository namespace name.
         self.field_value = field_value
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The configuration of proactive defense for your server. The value includes the following fields:
+        # The parameters for configuring proactive defense on servers. The following parameters are included:
         # 
-        # *   **targetType**: specifies the dimension from which you manage proactive defense. UUIDs are supported. Set the value to **uuid**.
-        # *   **target**: specifies the UUID of the server for which you want to configure proactive defense.
-        # *   **flag**: specifies whether to enable or disable proactive defense for your server. Valid values are **add** and **del**. The value add indicates that proactive defense will be enabled for your server. The value del indicates that proactive defense will be disabled for your server.
+        # - **targetType**: the dimension of the defense configuration. Currently, only the UUID dimension is supported. Fixed value: **uuid**.
+        # - **target**: the UUID of the server for which you want to configure proactive defense.
+        # - **flag**: specifies whether to enable or disable proactive defense for the server. Valid values: **add** (enable) and **del** (disable).
         # 
         # This parameter is required.
         self.target_operations = target_operations
-        # The dimension based on which the asset is selected. Valid values:
-        # 
-        # *   **uuid**: the UUID of the server
-        # *   **Cluster**: the ID of the cluster
-        # *   **image_repo**: the name of the image repository
+        # The Asset Type of the target. Valid values:
+        # - **uuid**: server UUID.
+        # - **Cluster**: cluster ID.
+        # - **image_repo**: image repository name.
         self.target_type = target_type
-        # The type of the feature. Valid values:
-        # 
-        # *   **alidetect-scan-enable**: local file detection
-        # *   **ACTION-TRIAL-PERMISSION**: data delivery to ActionTrail
-        # *   **alidetect**: local file detection engine
-        # *   **container_prevent_escape**: container escape prevention
-        # *   **image_repo**: repository image scan
-        # *   **proc_filter_switch**: log filtering
-        # *   **agentless**: agentless detection
-        # *   **rasp**: application protection
-        # *   **sensitiveFile**: sensitive file detection
-        # *   **aliscriptengine**: in-depth detection engine
-        # *   **containerNetwork**: container network visualization
+        # The switch type. Valid values:
+        # - **alidetect-scan-enable**: local file detection that performs detection only locally.
+        # - **ACTION-TRIAL-PERMISSION**: ActionTrail data delivery.
+        # - **alidetect**: local file detection engine.
+        # - **container_prevent_escape**: container escape prevention.
+        # - **image_repo**: repository image scanning.
+        # - **proc_filter_switch**: log filtering.
+        # - **agentless**: agentless detection.
+        # - **rasp**: application protection.
+        # - **sensitiveFile**: sensitive information scanning.
+        # - **aliscriptengine**: deep detection engine.
+        # - **containerNetwork**: container visualization.
         # 
         # This parameter is required.
         self.type = type

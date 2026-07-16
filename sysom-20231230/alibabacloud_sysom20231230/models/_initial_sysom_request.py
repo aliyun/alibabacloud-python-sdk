@@ -10,7 +10,9 @@ class InitialSysomRequest(DaraModel):
         check_only: bool = None,
         source: str = None,
     ):
+        # Specifies whether to only check whether the service-linked role exists.
         self.check_only = check_only
+        # The source. Set this parameter to console.
         self.source = source
 
     def validate(self):

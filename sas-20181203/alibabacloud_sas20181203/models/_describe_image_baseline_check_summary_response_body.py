@@ -14,11 +14,11 @@ class DescribeImageBaselineCheckSummaryResponseBody(DaraModel):
         page_info: main_models.DescribeImageBaselineCheckSummaryResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the check results of image baselines.
+        # The details of the image baseline check list.
         self.baseline_result_summary = baseline_result_summary
-        # The pagination information.
+        # The paging information displayed on the page in a paged query.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeImageBaselineCheckSummaryResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paged query.
         self.count = count
-        # The page number of the returned page.
+        # The current page number in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**.
+        # The number of image baseline check results per page in a paged query. Default value: **20**, which indicates that 20 image baseline check results are displayed per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -134,36 +134,37 @@ class DescribeImageBaselineCheckSummaryResponseBodyBaselineResultSummary(DaraMod
         middle_risk_image: int = None,
         status: int = None,
     ):
-        # The category of the baseline.
+        # The baseline category.
         self.baseline_class_alias = baseline_class_alias
         # The keyword of the baseline category.
         self.baseline_class_key = baseline_class_key
-        # The name of the baseline.
+        # The baseline name.
         self.baseline_name_alias = baseline_name_alias
         # The keyword of the baseline name.
         self.baseline_name_key = baseline_name_key
-        # The severity of the image baseline. Valid values:
+        # The risk level of the baseline. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: high risk
+        # 
+        # - **medium**: medium risk
+        # 
+        # - **low**: low risk.
         self.baseline_name_level = baseline_name_level
-        # The timestamp generated when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan, in milliseconds.
         self.first_scan_time = first_scan_time
-        # The number of images on which **high** baseline risks are detected.
+        # The number of images with a **high** risk level that have baseline risk issues.
         self.high_risk_image = high_risk_image
-        # The timestamp generated when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the most recent scan, in milliseconds.
         self.last_scan_time = last_scan_time
-        # The number of images on which **low** baseline risks are detected.
+        # The number of images with a **low** risk level that have baseline risk issues.
         self.low_risk_image = low_risk_image
-        # The number of images on which **medium** baseline risks are detected.
+        # The number of images with a **medium** risk level that have baseline risk issues.
         self.middle_risk_image = middle_risk_image
-        # The status of the baseline risks. Valid values:
-        # 
-        # *   **0**: unfixed
-        # *   **1**: fixed
-        # *   **2**: pending verification
-        # *   **3**: fixing failed
+        # The fix status of the baseline risk. Valid values:
+        # - **0**: Unfixed.
+        # - **1**: Fixed.
+        # - **2**: Pending verification.
+        # - **3**: Fix failed.
         self.status = status
 
     def validate(self):

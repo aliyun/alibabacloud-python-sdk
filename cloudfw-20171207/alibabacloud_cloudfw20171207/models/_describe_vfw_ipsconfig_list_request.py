@@ -12,11 +12,17 @@ class DescribeVfwIPSConfigListRequest(DaraModel):
         page_size: int = None,
         vpc_firewall_id: str = None,
     ):
+        # The language type.
         self.lang = lang
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

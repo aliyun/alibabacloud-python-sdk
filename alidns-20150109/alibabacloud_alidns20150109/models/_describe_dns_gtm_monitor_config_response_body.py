@@ -23,9 +23,9 @@ class DescribeDnsGtmMonitorConfigResponseBody(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the health check configuration was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the configuration was created.
         self.create_time = create_time
-        # The time when the health check configuration was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the configuration was created.
         self.create_timestamp = create_timestamp
         # The number of consecutive failures.
         self.evaluation_count = evaluation_count
@@ -34,68 +34,75 @@ class DescribeDnsGtmMonitorConfigResponseBody(DaraModel):
         self.isp_city_nodes = isp_city_nodes
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # The extended information. The required parameters vary based on the value of ProtocolType.
+        # The extended information. The parameters vary by protocol.
         # 
-        # *   HTTP or HTTPS
+        # - For HTTP and HTTPS:
         # 
-        #     *   port: the port that you want to check
+        #   - port: The health check port.
         # 
-        #     *   host: the host settings
+        #   - host: The Host header.
         # 
-        #     *   path: the URL path
+        #   - path: The URL path.
         # 
-        #     *   code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value.
+        #   - code: The expected HTTP status code.
         # 
-        #     *   failureRate: the failure rate
+        #   - failureRate: The failure rate.
         # 
-        #     *   sni: specifies whether to enable server name indication (SNI). This parameter is available only when ProtocolType is set to HTTPS. Valid values:
+        #   - sni: Specifies whether to enable Server Name Indication (SNI). This parameter is valid only when the protocol is set to HTTPS.
         # 
-        #         *   true: enables SNI.
-        #         *   false: disables SNI.
+        #     - true: enables SNI.
         # 
-        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
+        #     - false: disables SNI.
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - nodeType: The type of the monitoring node for the health check when the address pool type is DOMAIN.
         # 
-        # *   PING:
+        #     - IPV4
         # 
-        #     *   failureRate: the failure rate
+        #     - IPV6
         # 
-        #     *   packetNum: the number of ping packets
+        # - For PING:
         # 
-        #     *   packetLossRate: the loss rate of ping packets
+        #   - failureRate: The failure rate.
         # 
-        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
+        #   - packetNum: The number of ping packets.
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - packetLossRate: The packet loss rate.
         # 
-        # *   TCP
+        #   - nodeType: The type of the monitoring node for the health check when the address pool type is DOMAIN.
         # 
-        #     *   port: the port that you want to check
+        #     - IPV4
         # 
-        #     *   failureRate: the failure rate
+        #     - IPV6
         # 
-        #     *   nodeType: the type of the node for monitoring when the address pool type is domain name. Valid values:
+        # - For TCP:
         # 
-        #         *   IPV4
-        #         *   IPV6
+        #   - port: The health check port.
+        # 
+        #   - failureRate: The failure rate.
+        # 
+        #   - nodeType: The type of the monitoring node for the health check when the address pool type is DOMAIN.
+        # 
+        #     - IPV4
+        # 
+        #     - IPV6
         self.monitor_extend_info = monitor_extend_info
         # The health check protocol. Valid values:
         # 
-        # *   HTTP
-        # *   HTTPS
-        # *   PING
-        # *   TCP
+        # - HTTP
+        # 
+        # - HTTPS
+        # 
+        # - PING
+        # 
+        # - TCP
         self.protocol_type = protocol_type
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
         # The timeout period. Unit: milliseconds.
         self.timeout = timeout
-        # The time when the health check configuration was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The time when the configuration was last updated.
         self.update_time = update_time
-        # The time when the health check configuration was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the configuration was last updated.
         self.update_timestamp = update_timestamp
 
     def validate(self):

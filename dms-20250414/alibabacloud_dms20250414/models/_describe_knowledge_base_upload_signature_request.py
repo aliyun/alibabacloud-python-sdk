@@ -9,6 +9,8 @@ class DescribeKnowledgeBaseUploadSignatureRequest(DaraModel):
         self,
         kb_uuid: str = None,
     ):
+        # The knowledge base ID.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
 

@@ -67,10 +67,15 @@ class GetSqlInstanceResponseBody(DaraModel):
         update_time: int = None,
         use_as_default: bool = None,
     ):
+        # The value is group1. This is an internal parameter that you can ignore.
         self.name = name
+        # The maximum number of CUs that the Dedicated SQL version can use. A CU is a compute core that can be used for parallel processing when the Dedicated SQL version is running.
         self.cu = cu
+        # The time when the configuration for the Dedicated SQL version was created. This is a UNIX timestamp.
         self.create_time = create_time
+        # The time when the configuration for the Dedicated SQL version was updated. This is a UNIX timestamp.
         self.update_time = update_time
+        # Indicates whether the Dedicated SQL version is enabled by default for the project. If this parameter is set to true, all query and analysis operations in the project, such as alerts and dashboards, use the Dedicated SQL version.
         self.use_as_default = use_as_default
 
     def validate(self):

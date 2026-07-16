@@ -17,17 +17,17 @@ class ListOriginRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response body configuration.
+        # The configurations in the response.
         self.configs = configs
-        # Current page number.
+        # The current page number, same as the PageNumber request parameter.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -115,60 +115,74 @@ class ListOriginRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule configurations. Value range:
-        # - global: Query global configuration.
-        # - rule: Query rule configuration.
+        # The configuration type. You can query global or rule configurations based on this parameter. Valid values:
+        # 
+        # - global: Query global configurations.
+        # - rule: Query rule configurations.
         self.config_type = config_type
-        # Rewrite the DNS resolution record for the origin request.
+        # The rewritten DNS resolution record for back-to-origin requests.
         self.dns_record = dns_record
+        # The back-to-origin 302 redirect follow switch. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302enable = follow_302enable
+        # The maximum number of 302 redirect follows. Valid values: 1 to 5.
         self.follow_302max_tries = follow_302max_tries
+        # The switch for retaining original request parameters. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302retain_args = follow_302retain_args
+        # The switch for retaining original request headers. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.follow_302retain_header = follow_302retain_header
+        # The back-to-origin host after 302 redirect modification.
         self.follow_302target_host = follow_302target_host
-        # HOST carried in the origin request.
+        # The HOST carried in the back-to-origin request.
         self.origin_host = origin_host
-        # The port of the origin server to access when using the HTTP protocol for origin requests.
+        # The origin server port accessed when using the HTTP protocol for back-to-origin.
         self.origin_http_port = origin_http_port
-        # The port of the origin server to access when using the HTTPS protocol for origin requests.
+        # The origin server port accessed when using the HTTPS protocol for back-to-origin.
         self.origin_https_port = origin_https_port
-        # mTLS switch. Value range:
+        # The mTLS switch. Valid values:
         # - on: Enable.
         # - off: Disable.
         self.origin_mtls = origin_mtls
+        # The origin server read timeout period, in seconds.
         self.origin_read_timeout = origin_read_timeout
-        # Protocol used for the origin request. Value range:
-        # - http: Use HTTP protocol for origin.
-        # - https: Use HTTPS protocol for origin.
-        # - follow: Follow the client\\"s protocol for origin.
+        # The protocol used for back-to-origin requests. Valid values:
+        # - http: Use the HTTP protocol for back-to-origin.
+        # - https: Use the HTTPS protocol for back-to-origin.
+        # - follow: Follow the client protocol for back-to-origin.
         self.origin_scheme = origin_scheme
-        # SNI carried in the back-to-origin request.
+        # The SNI carried in the back-to-origin request.
         self.origin_sni = origin_sni
-        # Origin certificate verification switch. Value range:
+        # The origin server certificate verification switch. Valid values:
         # - on: Enable.
         # - off: Disable.
         self.origin_verify = origin_verify
-        # Use range slicing to download files from the origin. Value range:
-        # - on: Enable
-        # - off: Disable
-        # - force: Force
+        # Use range-based slicing for back-to-origin file downloads. Valid values:
+        # - on: Enable.
+        # - off: Disable.
+        # - force: Force enable.
         self.range = range
+        # The range chunk size.
         self.range_chunk_size = range_chunk_size
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enabled.
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: Enable.
+        # - off: Disable.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, this parameter can specify the version of the site for which the configuration is effective, defaulting to version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

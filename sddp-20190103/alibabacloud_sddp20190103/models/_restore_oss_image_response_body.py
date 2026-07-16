@@ -10,7 +10,9 @@ class RestoreOssImageResponseBody(DaraModel):
         request_id: str = None,
         restored_image_key: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The storage path of the restored image in the bucket.
         self.restored_image_key = restored_image_key
 
     def validate(self):

@@ -15,11 +15,17 @@ class GetDocTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP response code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The unique identifier for the request.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -83,10 +89,15 @@ class GetDocTranslateTaskResponseBodyData(DaraModel):
         task_id: str = None,
         translate_file_url: str = None,
     ):
+        # The character count.
         self.characters_count = characters_count
+        # The page count.
         self.page_count = page_count
+        # The translation status. Valid values:
         self.status = status
+        # The document translation task ID.
         self.task_id = task_id
+        # The translation result URL.
         self.translate_file_url = translate_file_url
 
     def validate(self):

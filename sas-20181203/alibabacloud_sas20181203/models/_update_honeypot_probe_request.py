@@ -16,24 +16,23 @@ class UpdateHoneypotProbeRequest(DaraModel):
         probe_id: str = None,
         service_ip_list: List[str] = None,
     ):
-        # Specifies whether address resolution protocol (ARP) is enabled for the check type.
+        # The ARP check type.
         self.arp = arp
-        # The name of the probe.
+        # The probe name.
         self.display_name = display_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # Specifies whether ping is enabled for the check type.
+        # The ping detection type.
         self.ping = ping
-        # The ID of the probe.
-        # 
-        # > You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to query the IDs of probes.
+        # The probe ID.
+        # >You can call the [ListHoneypotProbe](~~ListHoneypotProbe~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.probe_id = probe_id
-        # The IP addresses that are monitored.
+        # The list of listening IP addresses.
         self.service_ip_list = service_ip_list
 
     def validate(self):

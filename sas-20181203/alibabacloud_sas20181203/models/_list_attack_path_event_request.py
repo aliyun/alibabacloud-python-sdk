@@ -20,28 +20,28 @@ class ListAttackPathEventRequest(DaraModel):
         risk_level_list: List[str] = None,
         start_time: int = None,
     ):
-        # List of cloud product assets in the attack path.
+        # The list of cloud service assets in the attack path.
         self.attack_path_asset_list = attack_path_asset_list
-        # Specifies from which page of the returned results the query results should be displayed. The default value is 1, indicating that the display starts from the first page.
+        # The page number of the results to return. Default value: 1, which indicates the first page.
         self.current_page = current_page
-        # Timestamp of the end time. Unit: milliseconds.
+        # The end time as a timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # Sets the language type for requests and received messages, with the default being **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The maximum number of data entries displayed per page in a paginated query. The default value is **20**.
+        # The maximum number of entries per page in a paged query. Default value: **20**.
         self.page_size = page_size
-        # Description of the path name.
-        # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path name description.
+        # The path name description.
+        # > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path name descriptions.
         self.path_name_desc = path_name_desc
-        # Path type.
-        # > You can call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query the path type.
+        # The path type.
+        # > Call [ListAvailableAttackPath](~~ListAvailableAttackPath~~) to query path types.
         self.path_type = path_type
-        # List of risk level information.
+        # The list of risk levels.
         self.risk_level_list = risk_level_list
-        # Timestamp of the start time. Unit: milliseconds.
+        # The start time as a timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -128,20 +128,20 @@ class ListAttackPathEventRequestAttackPathAssetList(DaraModel):
         node_type: str = None,
         vendor: int = None,
     ):
-        # Subtype of the cloud product asset.
+        # The subtype of the cloud service asset.
         # 
-        # > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the subtype of the cloud product asset.
+        # > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the subtypes of cloud service assets.
         self.asset_sub_type = asset_sub_type
-        # Type of the cloud product asset.
+        # The type of the cloud service asset.
         # 
-        # > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the type of the cloud product asset.
+        # > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the types of cloud service assets.
         self.asset_type = asset_type
-        # Node type, values:
-        # - **start**: start point.
-        # - **end**: end point.
+        # The node type. Valid values:
+        # - **start**: start node.
+        # - **end**: end node.
         self.node_type = node_type
-        # Vendor of the cloud product asset.
-        # > You can call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the vendor of the cloud product asset.
+        # The vendor of the cloud service asset.
+        # > Call [ListSupportAttackPathAsset](~~ListSupportAttackPathAsset~~) to query the vendors of cloud service assets.
         self.vendor = vendor
 
     def validate(self):

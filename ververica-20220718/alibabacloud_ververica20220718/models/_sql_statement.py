@@ -13,10 +13,15 @@ class SqlStatement(DaraModel):
         status_state: str = None,
         type: str = None,
     ):
+        # The index of the SQL statement.
         self.index = index
+        # The message returned for the SQL statement.
         self.message = message
+        # The SQL script content.
         self.sql_script = sql_script
+        # The status of the SQL statement.
         self.status_state = status_state
+        # The type of the SQL statement.
         self.type = type
 
     def validate(self):

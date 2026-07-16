@@ -15,13 +15,13 @@ class ListPolicyGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position up to which data has been read in the current call. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The policies.
+        # The policy information.
         self.policy_group_model = policy_group_model
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -73,6 +73,7 @@ class ListPolicyGroupsResponseBody(DaraModel):
 class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
     def __init__(
         self,
+        access_policies: List[main_models.ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies] = None,
         camera_redirect: str = None,
         clipboard: str = None,
         gmt_create: str = None,
@@ -87,61 +88,39 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         session_resolution_width: int = None,
         watermark: main_models.ListPolicyGroupsResponseBodyPolicyGroupModelWatermark = None,
     ):
-        # Specifies whether to enable the webcam redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        self.access_policies = access_policies
+        # Indicates whether local camera redirection is enabled.
         self.camera_redirect = camera_redirect
-        # The read/write permissions on the clipboard.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: read and write.
-        # *   off: read/write disabled.
+        # The clipboard permission.
         self.clipboard = clipboard
-        # The time when the policy was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The file transfer policy of the HTML5 client.
-        # 
-        # Valid values:
-        # 
-        # *   all: File upload and download are supported.
-        # *   download: Only file download is supported.
-        # *   upload: Only file upload is supported.
-        # *   off: File upload or download is forbidden.
+        # The file transfer policy for the HTML5 client.
         self.html_5file_transfer = html_5file_transfer
-        # The read/write permissions on the on-premises drive.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: ready and write.
-        # *   off: read/write denied.
+        # The local disk mapping permission.
         self.local_drive = local_drive
-        # Identifies whether the resolution is locked.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # The locked resolution.
         self.lock_resolution = lock_resolution
-        # The network redirection policy.
+        # The network redirection settings.
         self.net_redirect_policy = net_redirect_policy
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The name of the policy.
+        # The policy name.
         self.policy_group_name = policy_group_name
+        # The resources associated with the policy.
         self.policy_related_resources = policy_related_resources
         # The height of the resolution.
         self.session_resolution_height = session_resolution_height
         # The width of the resolution.
         self.session_resolution_width = session_resolution_width
+        # The screen watermark settings.
         self.watermark = watermark
 
     def validate(self):
+        if self.access_policies:
+            for v1 in self.access_policies:
+                 if v1:
+                    v1.validate()
         if self.net_redirect_policy:
             self.net_redirect_policy.validate()
         if self.policy_related_resources:
@@ -154,6 +133,11 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['AccessPolicies'] = []
+        if self.access_policies is not None:
+            for k1 in self.access_policies:
+                result['AccessPolicies'].append(k1.to_map() if k1 else None)
+
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
 
@@ -197,6 +181,12 @@ class ListPolicyGroupsResponseBodyPolicyGroupModel(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.access_policies = []
+        if m.get('AccessPolicies') is not None:
+            for k1 in m.get('AccessPolicies'):
+                temp_model = main_models.ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies()
+                self.access_policies.append(temp_model.from_map(k1))
+
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
 
@@ -251,11 +241,17 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelWatermark(DaraModel):
         watermark_transparency_value: int = None,
         watermark_types: List[str] = None,
     ):
+        # The watermark font color. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
+        # The custom watermark content. The value can be up to 10 characters in length and does not support emoji characters.
         self.watermark_custom_text = watermark_custom_text
+        # The watermark font size. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
+        # The screen watermark switch.
         self.watermark_switch = watermark_switch
+        # The watermark opacity. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
+        # The screen watermark content.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -314,7 +310,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources(DaraMod
         android_instance_group_ids: List[str] = None,
         cloud_phone_matrix_ids: List[str] = None,
     ):
+        # The list of instance group IDs.
         self.android_instance_group_ids = android_instance_group_ids
+        # The list of matrix IDs.
         self.cloud_phone_matrix_ids = cloud_phone_matrix_ids
 
     def validate(self):
@@ -355,35 +353,21 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy(DaraModel):
         proxy_user_name: str = None,
         rules: List[main_models.ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules] = None,
     ):
-        # Indicates whether a custom proxy is manually configured.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Indicates whether a transparent proxy is manually configured.
         self.custom_proxy = custom_proxy
-        # The IPv4 address of the custom proxy.
+        # The proxy IP address of the transparent proxy. The value must be in IPv4 format.
         self.host_addr = host_addr
-        # Indicates whether the network redirection feature is enabled. When this feature is enabled, network traffic is automatically redirected to the on-premises network by default.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Indicates whether network redirection is enabled. After this feature is enabled, traffic is redirected to the client-side network by default.
         self.net_redirect = net_redirect
-        # The port of the custom proxy. Valid values: 1 to 65535.
+        # The port of the transparent proxy. Valid values: 1 to 65535.
         self.port = port
-        # The password of the proxy. The password must be 1 to 256 in length and cannot contain Chinese character or space characters.
+        # The proxy password. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
         self.proxy_password = proxy_password
-        # The type of the proxy protocol.
-        # 
-        # Valid values:
-        # 
-        # *   socks5.
+        # The proxy protocol type.
         self.proxy_type = proxy_type
-        # The username of the proxy. The name must be 1 to 256 in length and cannot contain Chinese character or space characters.
+        # The proxy username. The value must be 1 to 256 characters in length and cannot contain Chinese characters or whitespace characters.
         self.proxy_user_name = proxy_user_name
-        # The proxy rules.
+        # The list of proxy rules.
         self.rules = rules
 
     def validate(self):
@@ -462,14 +446,9 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules(DaraMod
         rule_type: str = None,
         target: str = None,
     ):
-        # The type of the rule.
-        # 
-        # Valid values:
-        # 
-        # *   prc: an application package name.
-        # *   domain: a domain name.
+        # The rule type.
         self.rule_type = rule_type
-        # The name of the application package or domain name.
+        # The application package name or domain name.
         self.target = target
 
     def validate(self):
@@ -495,6 +474,65 @@ class ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules(DaraMod
 
         if m.get('Target') is not None:
             self.target = m.get('Target')
+
+        return self
+
+class ListPolicyGroupsResponseBodyPolicyGroupModelAccessPolicies(DaraModel):
+    def __init__(
+        self,
+        access_policy_rule_id: int = None,
+        cidr_ip: str = None,
+        description: str = None,
+        policy: str = None,
+        priority: int = None,
+    ):
+        self.access_policy_rule_id = access_policy_rule_id
+        self.cidr_ip = cidr_ip
+        self.description = description
+        self.policy = policy
+        self.priority = priority
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_policy_rule_id is not None:
+            result['AccessPolicyRuleId'] = self.access_policy_rule_id
+
+        if self.cidr_ip is not None:
+            result['CidrIp'] = self.cidr_ip
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.policy is not None:
+            result['Policy'] = self.policy
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPolicyRuleId') is not None:
+            self.access_policy_rule_id = m.get('AccessPolicyRuleId')
+
+        if m.get('CidrIp') is not None:
+            self.cidr_ip = m.get('CidrIp')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         return self
 

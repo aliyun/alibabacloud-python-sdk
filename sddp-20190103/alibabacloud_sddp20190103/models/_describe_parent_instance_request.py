@@ -20,66 +20,103 @@ class DescribeParentInstanceRequest(DaraModel):
         resource_type: int = None,
         service_region_id: str = None,
     ):
-        # Authorization status of the data asset instance.
-        # - **0**: Unauthorized
-        # - **1**: Authorized
+        # The authorization status of the data asset instance.
+        # 
+        # - **0**: Unauthorized.
+        # 
+        # - **1**: Authorized.
         self.auth_status = auth_status
-        # Connection status of the instance or the database under the instance. Values:
-        # - **-3**: Database not created
-        # - **-2**: Released
-        # - **-1**: Not connected
-        # - **2**: Connectivity test in progress
-        # - **3**: Connected
-        # - **4**: Connection failed
+        # The connection status of the instance or a database in the instance. Valid values:
+        # 
+        # - **-3**: The database is not created.
+        # 
+        # - **-2**: Released.
+        # 
+        # - **-1**: Not connected.
+        # 
+        # - **2**: Testing connectivity.
+        # 
+        # - **3**: Connected.
+        # 
+        # - **4**: Connection failed.
         self.check_status = check_status
-        # Instance status.
-        # - **Running**: Running
-        # - **Released**: Released
-        # - **DatabaseNotCreated**: Database not created
+        # The instance status.
+        # 
+        # - **Running**: Running.
+        # 
+        # - **Released**: Released.
+        # 
+        # - **DatabaseNotCreated**: Database not created.
         self.cluster_status = cluster_status
-        # When performing a paginated query, set the current page number. Default value: **1**.
+        # The number of the page to return for a paged query. Default value: **1**.
         self.current_page = current_page
-        # Database name.
+        # The name of the database.
         self.db_name = db_name
-        # Engine type. Values:
-        # - **MySQL**
-        # - **MariaDB**
-        # - **Oracle**
-        # - **PostgreSQL**
-        # - **SQLServer**
+        # The type of the database engine. Valid values:
+        # 
+        # - **MySQL**.
+        # 
+        # - **MariaDB**.
+        # 
+        # - **Oracle**.
+        # 
+        # - **PostgreSQL**.
+        # 
+        # - **SQLServer**.
         self.engine_type = engine_type
-        # The instance ID to which the data in the data asset table belongs.
+        # The ID of the data asset instance.
         self.instance_id = instance_id
-        # Language type for request and response messages. Values:
-        # - **zh_cn**: Default, Simplified Chinese
-        # - **en_us**: English (US)
+        # The language of the content within the request and response. Valid values:
+        # 
+        # - **zh_cn**: Simplified Chinese. This is the default value.
+        # 
+        # - **en_us**: U.S. English.
         self.lang = lang
-        # Member account ID.
+        # The ID of the member account.
         self.member_account = member_account
-        # When performing a paginated query, set the number of rows per page. Default value: 10.
+        # The number of entries to return on each page for a paged query. Default value: 10.
         self.page_size = page_size
-        # The product type. Valid values:
+        # This parameter is required. The type of the product. Valid values:
+        # 
         # - **1**: MaxCompute
+        # 
         # - **2**: OSS
+        # 
         # - **3**: ADB-MYSQL
+        # 
         # - **4**: TableStore
+        # 
         # - **5**: RDS
-        # - **6**: SelfDB
+        # 
+        # - **6**: Self-managed database
+        # 
         # - **7**: PolarDB-X
+        # 
         # - **8**: PolarDB
+        # 
         # - **9**: ADB-PG
+        # 
         # - **10**: OceanBase
+        # 
         # - **11**: MongoDB
+        # 
         # - **25**: Redis
         self.resource_type = resource_type
-        # The region where the asset is located. Values:
-        # - **cn-beijing**: China (Beijing)
-        # - **cn-zhangjiakou**: China (Zhangjiakou)
-        # - **cn-huhehaote**: China (Hohhot)
-        # - **cn-hangzhou**: China (Hangzhou)
-        # - **cn-shanghai**: China (Shanghai)
-        # - **cn-shenzhen**: China (Shenzhen)
-        # - **cn-hongkong**:  China (Hong Kong)
+        # The region where the asset resides. Valid values:
+        # 
+        # - **cn-beijing**: China (Beijing).
+        # 
+        # - **cn-zhangjiakou**: China (Zhangjiakou).
+        # 
+        # - **cn-huhehaote**: China (Hohhot).
+        # 
+        # - **cn-hangzhou**: China (Hangzhou).
+        # 
+        # - **cn-shanghai**: China (Shanghai).
+        # 
+        # - **cn-shenzhen**: China (Shenzhen).
+        # 
+        # - **cn-hongkong**: China (Hong Kong).
         self.service_region_id = service_region_id
 
     def validate(self):

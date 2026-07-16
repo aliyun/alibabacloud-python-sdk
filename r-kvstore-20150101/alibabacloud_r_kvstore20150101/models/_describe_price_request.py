@@ -103,6 +103,8 @@ class DescribePriceRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) API to query it.
+        # > The values passed for this parameter and the ZoneId parameter must be different.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
         # The number of data shards in the cloud-native cluster instance.

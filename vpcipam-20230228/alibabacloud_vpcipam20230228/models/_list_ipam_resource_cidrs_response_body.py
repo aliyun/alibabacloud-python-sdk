@@ -17,20 +17,19 @@ class ListIpamResourceCidrsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned per page.
         self.count = count
-        # The list of resources in the IPAM pool.
+        # The list of resource information.
         self.ipam_resource_cidrs = ipam_resource_cidrs
-        # The number of entries per page.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # The pagination token. Valid values:
+        # - If **NextToken** is empty, no more results exist.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries returned under the current query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -107,6 +106,7 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(DaraModel):
         overlap_detail: List[main_models.ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail] = None,
         overlap_status: str = None,
         resource_id: str = None,
+        resource_name: str = None,
         resource_owner_id: int = None,
         resource_region_id: str = None,
         resource_type: str = None,
@@ -114,61 +114,64 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
         # The CIDR block of the resource.
         self.cidr = cidr
         # The compliance status of the resource.
         # 
-        # *   **Compliant**
-        # *   **Noncompliant**
-        # *   **Ignored** Ignored resources are not monitored.
-        # *   **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM does not monitor whether the CIDR block of the resource meets the allocation rules of the IP address pool.
+        # - **Compliant**: The CIDR block of the managed resource complies with the allocation rules of the IPAM pool.
+        # - **Noncompliant**: The CIDR block of the managed resource does not comply with one or more allocation rules of the IPAM pool.
+        # - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance.
+        # - **Unmanaged**: The resource does not have a CIDR block allocated from an IPAM pool. IPAM does not monitor whether the CIDR block of the resource complies with the allocation rules of the pool, but monitors the CIDR block for overlap.
         self.compliance_status = compliance_status
+        # The details of the resource IP address count.
         self.ip_count_detail = ip_count_detail
-        # The IP usage that is displayed in decimal form.
+        # The IP utilization rate, expressed as a decimal.
         self.ip_usage = ip_usage
-        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # The instance ID of the IPAM pool CIDR allocation.
         self.ipam_allocation_id = ipam_allocation_id
-        # The ID of the IPAM.
+        # The instance ID of the IPAM.
         self.ipam_id = ipam_id
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
-        # The ID of the IPAM scope.
+        # The instance ID of the IPAM scope.
         self.ipam_scope_id = ipam_scope_id
         # The management status of the resource.
         # 
-        # *   **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM is monitoring whether the allocated CIDR block overlaps with other CIDR blocks and whether the allocated CIDR block meets the allocation rules.
-        # *   **Unmanaged**: The resource does not have a CIDR block allocated from the IPAM pool. IPAM is monitoring whether the resource has CIDR blocks that meet the allocation rules. Monitor whether CIDR blocks overlap with each other.
-        # *   **Ignored**: The resource is not monitored. Ignored resources are not monitored. If you ignore a resource, CIDR blocks allocated to the resource are returned to the IPAM pool and will not be automatically allocated to the resource (if automatic allocation rules are specified).
+        # - **Managed**: The resource has a CIDR block allocated from an IPAM pool. IPAM monitors the resource for potential CIDR overlap and compliance with pool allocation rules.
+        # - **Unmanaged**: The resource does not have a CIDR block allocated from an IPAM pool. IPAM monitors the resource for potential CIDRs that comply with pool allocation rules and monitors CIDRs for overlap.
+        # - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance. When a resource is ignored, any space allocated to it from an IPAM pool is returned to the pool, and the resource is not re-imported through automatic import (if an automatic import allocation rule is configured for the pool).
         self.management_status = management_status
-        # List of resources that overlap with the current resource.
+        # The list of resources that overlap with the current resource.
         self.overlap_detail = overlap_detail
-        # The overlapping status of the resource.
+        # The overlap status of the resource.
         # 
-        # *   **Nonoverlapping**
-        # *   **Overlapping**
-        # *   **Ignored** Ignored resources are not monitored.
+        # - **Nonoverlapping**: The CIDR block of the resource does not overlap with other CIDR blocks within the same scope.
+        # - **Overlapping**: The CIDR block of the resource overlaps with another CIDR block within the same scope.
+        # - **Ignored**: The resource has been excluded from monitoring. Ignored resources are not evaluated for overlap or allocation rule compliance.
         self.overlap_status = overlap_status
         # The resource ID.
         self.resource_id = resource_id
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The resource name.
+        self.resource_name = resource_name
+        # The Alibaba Cloud account ID of the resource ownership.
         self.resource_owner_id = resource_owner_id
-        # The effective region ID of the resource.
+        # The ID of the region where the resource takes effect.
         self.resource_region_id = resource_region_id
-        # The type of resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   **VPC**
-        # *   **VSwitch**
+        # - **VPC**: The resource type is VPC.
+        # - **VSwitch**: The resource type is vSwitch.
         self.resource_type = resource_type
         # The source CIDR block.
         self.source_cidr = source_cidr
         # The status of the resource in the IPAM pool. Valid values:
         # 
-        # *   **Created**
-        # *   **Deleted**
+        # - **Created**: created.
+        # - **Deleted**: deleted.
         self.status = status
-        # The VPC ID.
+        # The instance ID of the VPC-connected instance to which the resource belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -224,6 +227,9 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(DaraModel):
 
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
 
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
@@ -290,6 +296,9 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrs(DaraModel):
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
 
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
 
@@ -317,11 +326,11 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrsOverlapDetail(DaraModel)
         overlap_resource_id: str = None,
         overlap_resource_region: str = None,
     ):
-        # The CIDR that overlaps with the current resource.
+        # The CIDR block of the resource that overlaps with the current resource.
         self.overlap_resource_cidr = overlap_resource_cidr
-        # Instance ID that overlaps with the current resource.
+        # The instance ID of the resource that overlaps with the current resource.
         self.overlap_resource_id = overlap_resource_id
-        # The region of instance that overlaps with the current resource.
+        # The region of the instance that overlaps with the current resource.
         self.overlap_resource_region = overlap_resource_region
 
     def validate(self):
@@ -363,8 +372,11 @@ class ListIpamResourceCidrsResponseBodyIpamResourceCidrsIpCountDetail(DaraModel)
         total_ip_count: str = None,
         used_ip_count: str = None,
     ):
+        # The number of available IP addresses.
         self.free_ip_count = free_ip_count
+        # The total number of IP addresses.
         self.total_ip_count = total_ip_count
+        # The number of allocated IP addresses.
         self.used_ip_count = used_ip_count
 
     def validate(self):

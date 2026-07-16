@@ -10,11 +10,11 @@ class GetDomainRequest(DaraModel):
         domain_id: str = None,
         instance_id: str = None,
     ):
-        # Domain ID.
+        # The ID of the domain name.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

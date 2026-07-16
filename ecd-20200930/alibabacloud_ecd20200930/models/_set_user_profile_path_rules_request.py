@@ -15,41 +15,10 @@ class SetUserProfilePathRulesRequest(DaraModel):
         user_profile_path_rule: List[main_models.SetUserProfilePathRulesRequestUserProfilePathRule] = None,
         user_profile_rule_type: str = None,
     ):
-        # The desktop group ID.
         self.desktop_group_id = desktop_group_id
-        # The region ID.
-        # 
         # This parameter is required.
         self.region_id = region_id
-        # The directories that you want to configure in the blacklist and whitelist.
         self.user_profile_path_rule = user_profile_path_rule
-        # The directory type that you want to configure.
-        # 
-        # Valid values:
-        # 
-        # *   Both_Default_DesktopGroup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DesktopGroup
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Default
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.user_profile_rule_type = user_profile_rule_type
 
     def validate(self):
@@ -104,9 +73,7 @@ class SetUserProfilePathRulesRequestUserProfilePathRule(DaraModel):
         black_path: main_models.SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath = None,
         white_paths: List[main_models.SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths] = None,
     ):
-        # The directory in the blacklist.
         self.black_path = black_path
-        # The directories that you want to configure in the whitelist.
         self.white_paths = white_paths
 
     def validate(self):
@@ -152,27 +119,7 @@ class SetUserProfilePathRulesRequestUserProfilePathRuleWhitePaths(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # The whitelist path.
         self.path = path
-        # The path type.
-        # 
-        # Valid values:
-        # 
-        # *   file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   folder
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.type = type
 
     def validate(self):
@@ -207,27 +154,7 @@ class SetUserProfilePathRulesRequestUserProfilePathRuleBlackPath(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # The blacklist path.
         self.path = path
-        # The path type.
-        # 
-        # Valid values:
-        # 
-        # *   file
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   folder
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.type = type
 
     def validate(self):

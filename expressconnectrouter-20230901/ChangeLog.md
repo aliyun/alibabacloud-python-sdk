@@ -1,3 +1,12 @@
+2026-06-04 Version: 4.1.3
+- Update API CreateExpressConnectRouterAssociation: add request parameters Tag.
+- Update API DescribeExpressConnectRouterAssociation: add request parameters Tag.
+- Update API DescribeExpressConnectRouterAssociation: add response parameters Body.AssociationList.$.Tags.
+- Update API DescribeExpressConnectRouterAssociation: add response parameters Body.AssociationList.$.TransitRouterName.
+- Update API DescribeExpressConnectRouterAssociation: add response parameters Body.AssociationList.$.VpcName.
+- Update API DescribeExpressConnectRouterChildInstance: add response parameters Body.ChildInstanceList.$.ChildInstanceName.
+
+
 2025-10-28 Version: 4.1.2
 - Update API CreateFlowLog: add request parameters TargetSlsRegionId.
 

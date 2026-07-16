@@ -22,6 +22,7 @@ class GetRepoTagScanSummaryResponseBody(DaraModel):
         self.high_severity = high_severity
         # The number of high-severity vulnerabilities.
         self.is_success = is_success
+        # Number of low-severity vulnerabilities
         self.low_severity = low_severity
         # Indicates whether the request is successful. Valid values:
         # 

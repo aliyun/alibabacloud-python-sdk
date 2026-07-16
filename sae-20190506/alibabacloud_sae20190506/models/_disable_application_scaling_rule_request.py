@@ -10,11 +10,11 @@ class DisableApplicationScalingRuleRequest(DaraModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # timer-0800-2100
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the request.
+        # The name of the Auto Scaling policy.
         # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name

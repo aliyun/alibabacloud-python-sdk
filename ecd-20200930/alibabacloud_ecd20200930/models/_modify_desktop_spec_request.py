@@ -22,91 +22,36 @@ class ModifyDesktopSpecRequest(DaraModel):
         user_disk_performance_level: str = None,
         user_disk_size_gib: int = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Default value: true. Valid values:
-        # 
-        # *   true: enables the auto-payment feature.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     Make sure that you have sufficient balance in your Alibaba Cloud account. Otherwise, an exception occurs on your order.
-        # 
-        #     <!-- -->
-        # 
-        # *   false: disables the auto-payment feature. In this case, an order is generated, and no payment is automatically made.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     You can log on to the Elastic Desktop Service console and complete the payment based on the order ID on the Orders page.
-        # 
-        #     <!-- -->
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The ID of a cloud computer.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The destination instance type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the instance types supported by cloud computers.
+        # The new desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the supported desktop types.
         # 
         # This parameter is required.
         self.desktop_type = desktop_type
-        # The ID of the promotional activity.
+        # The promotion ID.
         self.promotion_id = promotion_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to obtain a list of regions that Elastic Desktop Service supports.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.reseller_owner_uid = reseller_owner_uid
-        # The array of resource specification templates.
+        # A list of resource specification templates.
         self.resource_specs = resource_specs
         # The resource type.
         # 
-        # > This parameter is optional for non-subscribed cloud computers.
+        # > This parameter is required only for cloud desktops that use the subscription billing method.
         self.resource_type = resource_type
-        # The size of the new system disk. Unit: GiB. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
+        # The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
         self.root_disk_size_gib = root_disk_size_gib
-        # The performance level (PL) of the data disk. Default value: PL0.
-        # 
-        # Valid values:
-        # 
-        # *   PL1
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL0
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL3
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL2
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The performance level of the data disk.
         self.user_disk_performance_level = user_disk_performance_level
-        # The destination data disk size. Unit: GiB.
+        # The new size of the data disk, in GiB.
         # 
-        # *   The data disk size of a non-graphical cloud computer ranges from 20 to 1020 GiB and must be a multiple of 10.
-        # *   The data disk size of a graphical cloud computer ranges from 40 to 1020 GiB and must be a multiple of 10.
+        # - For non-graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 20 to 1,020.
+        # 
+        # - For graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 40 to 1,020.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):
@@ -204,11 +149,11 @@ class ModifyDesktopSpecRequestResourceSpecs(DaraModel):
         root_disk_size_gib: int = None,
         user_disk_size_gib: int = None,
     ):
-        # The ID of the cloud computer.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The target size of the system disk. Valid values: 80-500 GiB. The value must be a multiple of 10.
+        # The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
         self.root_disk_size_gib = root_disk_size_gib
-        # The target size of the data disk. Valid values: 80-500 GiB. The value must be a multiple of 10.
+        # The new size of the data disk, in GiB. The value must be a multiple of 10 in the range of 20 to 2,040.
         self.user_disk_size_gib = user_disk_size_gib
 
     def validate(self):

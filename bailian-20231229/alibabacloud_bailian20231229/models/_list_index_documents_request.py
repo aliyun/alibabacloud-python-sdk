@@ -14,25 +14,32 @@ class ListIndexDocumentsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The names of the queried documents. The default value is null, which means the names are not used to filter the results.
+        # Filters the returned file list by file name (without the file extension). Default value: empty, which means no filtering by file name.
         self.document_name = document_name
-        # The import status of the documents to be queried. Valid values:
+        # Filters the returned file list by file import status. Valid values:
+        # - INSERT_ERROR: failed to import to the index.
+        # - RUNNING: index building in progress.
+        # - DELETED: deleted.
+        # - FINISH: index building succeeded.
+        # - PARSE_FAILED: parsing failed.
+        # - DOC_PARSING: parsing in progress.
         # 
-        # *   INSERT_ERROR
-        # *   RUNNING
-        # *   DELETED
-        # *   FINISH
-        # 
-        # The default value is null, which means the import status is not used to filter the results.
+        # Default value: empty, which means no filtering by file import status.
         self.document_status = document_status
+        # Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
+        # - true: Performs fuzzy matching on the returned file list based on the file name.
+        # - false: Performs exact matching on the returned file list based on the file name.
+        # 
+        # Default value: false.
         self.enable_name_like = enable_name_like
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         # 
         # This parameter is required.
         self.index_id = index_id
-        # The page numbers of the pages to return. Pages start from page 1. Default value: 1.
+        # The page number. Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of documents displayed on each page. No maximum value. Default value: 10.
+        # The number of files to display per page in a paged query. No maximum limit.
+        # Default value: 10.
         self.page_size = page_size
 
     def validate(self):

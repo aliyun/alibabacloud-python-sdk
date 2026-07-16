@@ -19,15 +19,15 @@ class DescribeDohSubDomainStatisticsSummaryResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The statistics list.
+        # The list of statistics.
         self.statistics = statistics
-        # Total number of entries returned.
+        # The total number of entries.
         self.total_items = total_items
-        # Total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -109,15 +109,15 @@ class DescribeDohSubDomainStatisticsSummaryResponseBodyStatistics(DaraModel):
         self.ip_count = ip_count
         # The subdomain.
         self.sub_domain = sub_domain
-        # Total number of requests.
+        # The total number of requests.
         self.total_count = total_count
-        # The number of IPv4-based HTTP requests.
+        # The number of IPv4 HTTP requests.
         self.v_4http_count = v_4http_count
-        # The number of IPv4-based HTTPS requests.
+        # The number of IPv4 HTTPS requests.
         self.v_4https_count = v_4https_count
-        # The number of IPv6-based HTTP requests.
+        # The number of IPv6 HTTP requests.
         self.v_6http_count = v_6http_count
-        # The number of IPv6-based HTTPS requests.
+        # The number of IPv6 HTTPS requests.
         self.v_6https_count = v_6https_count
 
     def validate(self):

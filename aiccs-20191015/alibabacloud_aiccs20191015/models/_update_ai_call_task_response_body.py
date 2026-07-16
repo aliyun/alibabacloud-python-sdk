@@ -14,11 +14,25 @@ class UpdateAiCallTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # Indicates whether the task was updated successfully. Valid values:
+        # 
+        # - **true**: The update is successful.
+        # 
+        # - **false**: The update failed.
         self.data = data
+        # The error message that is returned when an error occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - **true**: Successful.
+        # 
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

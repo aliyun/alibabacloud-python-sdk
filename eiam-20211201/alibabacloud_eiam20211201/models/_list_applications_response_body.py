@@ -14,11 +14,11 @@ class ListApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the applications.
+        # The list of application information.
         self.applications = applications
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of the returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,59 +85,61 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The application creation type.
         self.application_creation_type = application_creation_type
-        # The ID of the application.
+        # The application ID.
         self.application_id = application_id
+        # The application identity type.
         self.application_identity_type = application_identity_type
-        # The name of the application.
+        # The application name.
         self.application_name = application_name
-        # The origin of the application. Valid values:
-        # 
-        # *   urn:alibaba:idaas:app:source:template: The application is created based on a template.
-        # *   urn:alibaba:idaas: The application is created based on the standard protocol.
+        # The application creation source. Valid values:
+        # - urn:alibaba:idaas:app:source:template: Application template.
+        # - urn:alibaba:idaas:app:source:standard: Standard protocol.
         self.application_source_type = application_source_type
         # The application template ID.
         self.application_template_id = application_template_id
         # The client ID of the application.
         self.client_id = client_id
-        # The time when the application was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the application was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The description of the application.
+        # The application description.
         self.description = description
-        # The features that are supported by the application. The value is a JSON array. Valid values:
-        # 
-        # *   sso: The application supports SSO.
-        # *   slo: The application supports SLO.
-        # *   provision: The application supports account synchronization.
-        # *   api_invoke: The application supports custom APIs.
-        # *   m2m_client: The application supports M2M Client.
-        # *   resource_server: The application supports Resource Server.
-        # *   other: undertake.
+        # The features supported by the application, returned as a JSON array string. Valid values:
+        # - sso: Single sign-on.
+        # - slo: Single logout.
+        # - provision: Account synchronization.
+        # - api_invoke: API access. 
+        # - m2m_client: M2M Client capability.
+        # - resource_server: API service capability.
+        # - other: Fallback.
         self.features = features
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The URL of the application icon.
+        # The URL of the application logo.
         self.logo_url = logo_url
-        # The service code of the cloud service that manages the application template.
+        # The ServiceCode of the Alibaba Cloud service that manages the application template.
         self.managed_service_code = managed_service_code
+        # The unique identifier of the ResourceServer.
         self.resource_server_identifier = resource_server_identifier
+        # The resource server source type.
         self.resource_server_source_type = resource_server_source_type
+        # The resource server status.
         self.resource_server_status = resource_server_status
-        # Indicates whether the application template is managed by a cloud service.
+        # Indicates whether the application template is managed by an Alibaba Cloud service.
         self.service_managed = service_managed
-        # The type of the single sign-on (SSO) protocol. Valid values:
-        # 
-        # *   saml2: the Security Assertion Markup Language (SAML) 2.0 protocol.
-        # *   oidc: the OpenID Connect (OIDC) protocol.
-        # *   oauth2/m2m: the OAuth2.0  protocol M2M.
+        # The single sign-on (SSO) logon protocol. Valid values:
+        # - saml2: SAML 2.0 protocol.
+        # - oidc: OpenID Connect protocol.
+        # - oauth2/m2m: OAuth 2.0 protocol.
+        # - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols.
         self.sso_type = sso_type
-        # The status of the application. Valid values:
-        # 
-        # *   enabled: The application is enabled.
-        # *   disabled: The application is disabled.
-        # *   deleted: The application is deleted.
+        # The application status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
+        # - deleted: Soft deleted.
         self.status = status
-        # The time when the application was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

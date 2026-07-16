@@ -36,32 +36,57 @@ class ListRulesV4Request(DaraModel):
         update_start_time: str = None,
         update_user_id: int = None,
     ):
-        # baseMeAgentId
+        # Workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # Name of the business that owns the rule.
         self.business_name = business_name
+        # Top-level business category.
         self.business_range = business_range
+        # Category name.
         self.category_name = category_name
+        # Whether to count the total number of items.
         self.count_total = count_total
+        # ID of the rule creator. Same as CreateUserId. Specify one only.
         self.create_empid = create_empid
+        # ID of the rule creator. Same as CreateEmpId. Specify one only.
         self.create_user_id = create_user_id
+        # Current page number.
         self.current_page = current_page
+        # Filter by creation time (right boundary).
         self.end_time = end_time
+        # ID of the rule updater. Same as UpdateUserId. Specify one only.
         self.last_update_empid = last_update_empid
+        # Current page number.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Required fields.
         self.require_infos = require_infos
+        # Search by rule ID.
         self.rid = rid
+        # Search by rule ID or rule name.
         self.rule_id_or_rule_name = rule_id_or_rule_name
+        # Scoring type.
         self.rule_score_single_type = rule_score_single_type
+        # Rule category.
         self.rule_type = rule_type
+        # Quality inspection scheme ID.
         self.scheme_id = scheme_id
+        # Source type.
         self.source_type = source_type
+        # Filter by creation time (left boundary).
         self.start_time = start_time
+        # Rule status.
         self.status = status
+        # Type value of the rule category that the rule belongs to.
         self.type = type
+        # Name of the rule category that the rule belongs to.
         self.type_name = type_name
+        # Filter by update time (right boundary).
         self.update_end_time = update_end_time
+        # Filter by update time (left boundary).
         self.update_start_time = update_start_time
+        # ID of the rule updater. Same as LastUpdateEmpId. Specify one only.
         self.update_user_id = update_user_id
 
     def validate(self):

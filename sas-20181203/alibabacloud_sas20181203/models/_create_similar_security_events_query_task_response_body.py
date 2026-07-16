@@ -11,9 +11,9 @@ class CreateSimilarSecurityEventsQueryTaskResponseBody(DaraModel):
         create_similar_security_events_query_task_response: main_models.CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse = None,
         request_id: str = None,
     ):
-        # The information about the task that queries alert events of the same alert type.
+        # The response for creating a task to query similar alert events.
         self.create_similar_security_events_query_task_response = create_similar_security_events_query_task_response
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -50,15 +50,15 @@ class CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEvent
         status: str = None,
         task_id: int = None,
     ):
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
-        # *   **New**: The task is created.
-        # *   **RetrievingData**: Data is being retrieved.
-        # *   **DataRetrieved**: Data is retrieved.
-        # *   **Processing**: The task is running.
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
-        # *   **PartialFailed**: The task partially failed.
+        # - **New**: The task is created.
+        # - **RetrievingData**: Data is being retrieved.
+        # - **DataRetrieved**: Data is retrieved.
+        # - **Processing**: The task is being processed.
+        # - **Success**: The task is successful.
+        # - **Failed**: The task failed.
+        # - **PartialFailed**: The task partially failed.
         self.status = status
         # The ID of the task.
         self.task_id = task_id

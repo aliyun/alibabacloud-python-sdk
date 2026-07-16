@@ -11,10 +11,16 @@ class DescribeGlobalQuestionRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The ID of the global question.
+        # 
         # This parameter is required.
         self.global_question_id = global_question_id
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the script.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

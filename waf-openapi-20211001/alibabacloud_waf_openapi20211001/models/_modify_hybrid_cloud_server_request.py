@@ -20,17 +20,17 @@ class ModifyHybridCloudServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.continents = continents
-        # The name of the node.
+        # The node name.
         # 
         # This parameter is required.
         self.custom_name = custom_name
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the node.
+        # The node ID.
         # 
         # This parameter is required.
         self.mid = mid
@@ -42,12 +42,13 @@ class ModifyHybridCloudServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_code = region_code
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListQuotasResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned quotas.
+        # The list of resource quotas.
         self.quotas = quotas
         # The request ID.
         self.request_id = request_id
-        # The number of quotas that meet the filter conditions.
+        # The number of resource quotas that meet the filter condition.
         self.total_count = total_count
 
     def validate(self):
@@ -72,27 +72,29 @@ class ListQuotasResponseBodyQuotas(DaraModel):
         quota_type: str = None,
         specs: List[main_models.ListQuotasResponseBodyQuotasSpecs] = None,
     ):
-        # The alias of the quota.
+        # The alias of the resource quota.
         self.display_name = display_name
         # The quota ID.
         self.id = id
         # The billing method. Valid values:
         # 
-        # *   isolate: subscription
-        # *   share: pay-as-you-go
+        # - isolate: subscription.
+        # 
+        # - share: pay-as-you-go.
         self.mode = mode
         # The quota name.
         self.name = name
-        # The product code. Valid values:
+        # The product name. Valid values:
         # 
-        # *   PAI_isolate: CPU subscription resource groups of PAI
-        # *   PAI_share: GPU pay-as-you-go resource groups of PAI
+        # - PAI_isolate: a subscription PAI resource group (PAI CPU).
+        # 
+        # - PAI_share: a pay-as-you-go PAI resource group (PAI GPU).
         self.product_code = product_code
-        # The quota type. Valid value:
+        # The type of the resource quota. Valid value:
         # 
-        # PAI: indicates GPU resource groups of MaxCompute.
+        # PAI: a GPU resource group cluster of MaxCompute.
         self.quota_type = quota_type
-        # The quota specifications.
+        # The list of specification descriptions.
         self.specs = specs
 
     def validate(self):
@@ -168,7 +170,7 @@ class ListQuotasResponseBodyQuotasSpecs(DaraModel):
     ):
         # The specification name.
         self.name = name
-        # The specification type. The parameter can be left empty.
+        # The type. This parameter can be empty.
         self.type = type
         # The specification value.
         self.value = value

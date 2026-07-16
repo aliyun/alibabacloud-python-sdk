@@ -11,7 +11,6 @@ class CreateScenegroupResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.open_conversation_id = open_conversation_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

@@ -9,6 +9,7 @@ class DeleteAgentInstanceConfigShrinkRequest(DaraModel):
         self,
         attributes_shrink: str = None,
     ):
+        # The process to which the configuration applies.
         self.attributes_shrink = attributes_shrink
 
     def validate(self):

@@ -24,7 +24,7 @@ class DataIngestion(DaraModel):
         tags: Dict[str, Any] = None,
         update_time: str = None,
     ):
-        # The templates.
+        # A list of processing templates.
         self.actions = actions
         # The time when the task was created.
         self.create_time = create_time
@@ -32,29 +32,33 @@ class DataIngestion(DaraModel):
         self.error = error
         # The unique ID of the data ingestion.
         self.id = id
-        # The information about the data source.
+        # The data source information.
         self.input = input
-        # The task execution location.
+        # The task execution position.
         self.marker = marker
         # The notification for task completion.
         self.notification = notification
         # The scanning phase.
         self.phase = phase
-        # The service-linked role.
+        # The service authorization role.
         self.service_role = service_role
-        # The status of the batch processing task.
+        # The state of the batch processing task:
         # 
-        # *   Ready: The task is created.
-        # *   Running: The task is running.
-        # *   Failed: The task fails and cannot be automatically recovered.
-        # *   Suspended: The task is suspended.
-        # *   Succeeded: The task is successful.
+        # - Ready: The task is ready. A newly created task is in the Ready state.
+        # 
+        # - Running: The task is running. This is the state of a task that is executing normally.
+        # 
+        # - Failed: The task failed. An error occurred during task execution, and the task cannot be automatically recovered.
+        # 
+        # - Suspended: The task is paused.
+        # 
+        # - Succeeded: The task is complete.
         self.state = state
-        # The statistical information.
+        # The statistics information.
         self.statistic = statistic
         # The task tags.
         self.tags = tags
-        # The time when the task was updated.
+        # The time when the task was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -173,11 +177,11 @@ class DataIngestionStatistic(DaraModel):
         submit_failure: int = None,
         submit_success: int = None,
     ):
-        # The number of files that are skipped.
+        # The number of skipped files.
         self.skip_files = skip_files
-        # The number of files that fail to be submitted.
+        # The number of failed submissions.
         self.submit_failure = submit_failure
-        # The number of files that are submitted.
+        # The number of successful submissions.
         self.submit_success = submit_success
 
     def validate(self):
@@ -220,13 +224,13 @@ class DataIngestionNotification(DaraModel):
         rocket_mq: main_models.RocketMQ = None,
         topic: str = None,
     ):
-        # The Simple Message Queue (SMQ) endpoint.
+        # The MNS Endpoint.
         self.endpoint = endpoint
         # MNS
         self.mns = mns
         # RocketMQ
         self.rocket_mq = rocket_mq
-        # The SMQ topic.
+        # The MNS topic.
         self.topic = topic
 
     def validate(self):
@@ -279,9 +283,9 @@ class DataIngestionActions(DaraModel):
         name: str = None,
         parameters: List[str] = None,
     ):
-        # The on-error policy that is used to quickly troubleshoot an error.
+        # The configuration of the fast-fail policy for data processing.
         self.fast_fail_policy = fast_fail_policy
-        # The name of the template.
+        # The template name.
         self.name = name
         # The template parameters.
         self.parameters = parameters

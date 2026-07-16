@@ -10,6 +10,7 @@ class UpdateDeploymentTargetV2Request(DaraModel):
         self,
         body: main_models.Resource = None,
     ):
+        # The deployment target resource.
         self.body = body
 
     def validate(self):

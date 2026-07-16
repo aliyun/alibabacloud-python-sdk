@@ -13,8 +13,9 @@ class ListServiceInstanceFaultInjectionInfoResponseBody(DaraModel):
         fault_info_list: List[main_models.ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList] = None,
         request_id: str = None,
     ):
+        # A list of injected faults.
         self.fault_info_list = fault_info_list
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,8 +59,31 @@ class ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList(DaraModel):
         fault_status: main_models.ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus = None,
         fault_type: str = None,
     ):
+        # The parameters for each fault type.
+        # 
+        # 1. CpuFullloadTask (CPU full load fault)
+        #    `{ "FaultType": "CpuFullloadTask", "FaultArgs": { "FaultAction": "fullload", "CpuPercent": 50 } }`
+        # 
+        # 2. MemLoadTask (Memory load fault)
+        #    `{ "FaultType": "MemLoadTask", "FaultArgs": { "FaultAction": "load", "MemPercent": 80 } }`
+        # 
+        # 3. NetworkTask (Network fault)
+        #    3.a. NetworkDelayAction (Network delay)
+        #    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "delay", "Time": 3000, "Offset": 100 } }`
+        #    3.b. NetworkCorruptAction (Network packet corruption)
+        #    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "corrupt", "Percent": 50 } }`
+        #    3.c. NetworkLossAction (Network packet loss)
+        #    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "loss", "Percent": 30 } }`
+        # 
+        # 4. DiskBurnTask (Disk read/write fault)
+        #    `{ "FaultType": "DiskBurnTask", "FaultArgs": { "FaultAction": "burn", "Read": true, "Write": true, "Size": 100 } }`
+        # 
+        # 5. DiskFillTask (Disk fill fault)
+        #    `{ "FaultType": "DiskFillTask", "FaultArgs": { "FaultAction": "fill", "Percent": 80 } }`
         self.fault_args = fault_args
+        # The fault status.
         self.fault_status = fault_status
+        # The fault type. Valid values:CpuFullloadTask: a CPU full load fault.MemLoadTask: a memory load fault.NetworkTask: a network fault.DiskBurnTask: a disk read/write fault.DiskFillTask: a disk fill fault.
         self.fault_type = fault_type
 
     def validate(self):
@@ -102,7 +126,15 @@ class ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus(
         fault_status: str = None,
         fault_status_message: str = None,
     ):
+        # The status of the fault. Valid values:
+        # 
+        # 1. FaultNotInjected: The task was created, but the fault was not successfully injected.
+        # 
+        # 2. FaultInjectedSuccess: The fault was successfully injected.
+        # 
+        # 3. FaultInjectedFailure: The fault injection failed. The failure may be caused by parameter errors or system issues.
         self.fault_status = fault_status
+        # The description of the fault injection.
         self.fault_status_message = fault_status_message
 
     def validate(self):

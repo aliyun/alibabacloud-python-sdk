@@ -12,17 +12,17 @@ class FraudResultCallBackRequest(DaraModel):
         result_code: str = None,
         verify_deploy_env: str = None,
     ):
-        # Unique identifier for real-person authentication, corresponding to Ant\\"s verifyId.
+        # The unique identifier for identity verification, which corresponds to the verifyId of Ant.
         self.certify_id = certify_id
-        # Extended parameters, in JSON string format.
+        # The extended parameters, in JSON string format.
         self.ext_params = ext_params
-        # Whether the anti-fraud check passed
-        # - PASS (Passed)
-        # - REJECT (Rejected)
+        # Indicates whether the anti-spoofing check is passed. Valid values:
+        # - PASS: Passed.
+        # - REJECT: Not passed.
         self.result_code = result_code
-        # Environment routing parameter
-        # - staging (Staging environment)
-        # - production (Production environment)
+        # The environment routing parameter. Valid values:
+        # - staging: staging environment
+        # - production: production environment.
         self.verify_deploy_env = verify_deploy_env
 
     def validate(self):

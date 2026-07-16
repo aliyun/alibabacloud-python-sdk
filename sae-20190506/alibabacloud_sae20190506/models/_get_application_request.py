@@ -11,9 +11,9 @@ class GetApplicationRequest(DaraModel):
         app_name: str = None,
         namespace_id: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The ID of the namespace.
         self.namespace_id = namespace_id

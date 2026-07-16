@@ -15,11 +15,15 @@ class DescribeRenewalPriceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The business information. This is an additional parameter.
+        # Additional business information, provided as a JSON string.
         self.business_info = business_info
-        # The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
+        # Specifies whether to use a coupon. Valid values:
+        # 
+        # - **default** or **null** (default): Use a coupon.
+        # 
+        # - **youhuiquan_promotion_option_id_for_blank**: Do not use a coupon.
         self.coupon_no = coupon_no
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

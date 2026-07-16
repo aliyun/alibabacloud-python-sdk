@@ -13,9 +13,9 @@ class DescribeHitRuleListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeHitRuleListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Response object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeHitRuleListResponseBodyResultObject(DaraModel):
         hit_count: int = None,
         rule_name: str = None,
     ):
-        # Number of hits.
+        # The number of hits.
         self.hit_count = hit_count
-        # Strategy name
+        # The policy name.
         self.rule_name = rule_name
 
     def validate(self):

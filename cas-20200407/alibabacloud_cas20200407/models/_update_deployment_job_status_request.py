@@ -14,13 +14,15 @@ class UpdateDeploymentJobStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_id = job_id
-        # The desired status.
+        # The desired status of the deployment task.
         # 
         # Valid values:
         # 
-        # *   pending
-        # *   scheduling
-        # *   editing
+        # - pending
+        # 
+        # - scheduling
+        # 
+        # - editing
         # 
         # This parameter is required.
         self.status = status

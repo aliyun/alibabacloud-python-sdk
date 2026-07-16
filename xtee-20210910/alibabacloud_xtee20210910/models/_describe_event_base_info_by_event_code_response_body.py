@@ -13,9 +13,9 @@ class DescribeEventBaseInfoByEventCodeResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeEventBaseInfoByEventCodeResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -60,25 +60,25 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObject(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # Business version number
+        # The business version number.
         self.biz_version = biz_version
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event status.
+        # The event status.
         self.event_stauts = event_stauts
-        # Field list.
+        # The field list.
         self.input_fields = input_fields
-        # Memo.
+        # The remarks.
         self.memo = memo
-        # Policy Information
+        # The policy information.
         self.rule_details = rule_details
-        # Operation template code
+        # The operation template code.
         self.template_code = template_code
-        # Template name
+        # The template name.
         self.template_name = template_name
-        # Template type.
+        # The templatetype.
         self.template_type = template_type
 
     def validate(self):
@@ -184,21 +184,21 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObjectRuleDetails(DaraMo
         rule_name: str = None,
         rule_status: str = None,
     ):
-        # Policy Execution Logic
+        # The policy execution logic.
         self.logic_expression = logic_expression
-        # Memo
+        # The remarks.
         self.memo = memo
-        # Rule Actions
+        # The rule actions.
         self.rule_actions = rule_actions
-        # Policy Type
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # Event Expressions.
+        # The event expressions.
         self.rule_expressions = rule_expressions
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy Name
+        # The policy name.
         self.rule_name = rule_name
-        # Policy Status
+        # The policy status.
         self.rule_status = rule_status
 
     def validate(self):
@@ -273,17 +273,17 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields(DaraMo
         field_type: str = None,
         title: str = None,
     ):
-        # Field description.
+        # The field description.
         self.description = description
-        # Field code
+        # The field code.
         self.field_code = field_code
-        # Field ranking
+        # The field sort order.
         self.field_rank = field_rank
-        # Field source.
+        # The source of the field.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Field name.
+        # The field name.
         self.title = title
 
     def validate(self):

@@ -30,9 +30,11 @@ class ListDataQualityScansRequest(DaraModel):
         self.project_id = project_id
         # The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
         # 
-        # *   ModifyTime (Desc/Asc)
-        # *   CreateTime (Desc/Asc)
-        # *   Id (Desc/Asc)
+        # - ModifyTime (Desc/Asc)
+        # 
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Id (Desc/Asc)
         self.sort_by = sort_by
         # Fuzzy match for the monitored table name.
         self.table = table

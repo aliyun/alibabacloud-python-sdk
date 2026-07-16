@@ -14,12 +14,20 @@ class ListSubscriptionsRequest(DaraModel):
         skip: int = None,
         topic_name: str = None,
     ):
+        # The keyword used to filter results in a paged query.
         self.keyword = keyword
+        # The maximum number of records to return for a paged query.
         self.max_results = max_results
+        # The pagination token. If NextToken is empty, paged query starts from the beginning. Otherwise, paged query starts from the end of the previous query indicated by the token.
         self.next_token = next_token
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The number of records to skip in a paged query.
         self.skip = skip
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

@@ -16,17 +16,21 @@ class DeleteChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details, this field is returned only when RAM verification fails.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Unique request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Response data
+        # The response data.
         self.response = response
-        # Whether the call was successful.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

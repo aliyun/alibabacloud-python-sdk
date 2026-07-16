@@ -17,17 +17,17 @@ class DescribeRiskLineChartResponseBody(DaraModel):
         result_object: main_models.DescribeRiskLineChartResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeRiskLineChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeRiskLineChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeRiskLineChartResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # Details of xaxis node.
+        # The details of the xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeRiskLineChartResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # Returns x-axis data points
+        # The data of the X-axis.
         self.data = data
 
     def validate(self):
@@ -164,9 +164,9 @@ class DescribeRiskLineChartResponseBodyResultObjectSeries(DaraModel):
         data: List[str] = None,
         name: str = None,
     ):
-        # Line chart data
+        # The data of the line chart.
         self.data = data
-        # Title of the line segment in the line chart
+        # The title of the line segment in the line chart.
         self.name = name
 
     def validate(self):

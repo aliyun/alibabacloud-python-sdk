@@ -14,6 +14,7 @@ class DescribeVsUpPeakPublishStreamDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.describe_vs_up_peak_publish_stream_datas = describe_vs_up_peak_publish_stream_datas
+        # ID of the request.
         self.request_id = request_id
 
     def validate(self):

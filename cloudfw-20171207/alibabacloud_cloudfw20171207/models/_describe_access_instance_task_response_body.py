@@ -19,13 +19,21 @@ class DescribeAccessInstanceTaskResponseBody(DaraModel):
         task_status: str = None,
         task_steps: List[main_models.DescribeAccessInstanceTaskResponseBodyTaskSteps] = None,
     ):
+        # Indicates whether the task exists.
         self.is_found = is_found
+        # The request ID.
         self.request_id = request_id
+        # The time when the task was completed.
         self.task_finish_timestamp = task_finish_timestamp
+        # The task ID.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # The time when the task was created.
         self.task_start_timestamp = task_start_timestamp
+        # The task status.
         self.task_status = task_status
+        # The steps of the task.
         self.task_steps = task_steps
 
     def validate(self):
@@ -105,8 +113,11 @@ class DescribeAccessInstanceTaskResponseBodyTaskSteps(DaraModel):
         step_progress: str = None,
         step_status: str = None,
     ):
+        # The name of the step.
         self.step_name = step_name
+        # The progress of the step.
         self.step_progress = step_progress
+        # The status of the step.
         self.step_status = step_status
 
     def validate(self):

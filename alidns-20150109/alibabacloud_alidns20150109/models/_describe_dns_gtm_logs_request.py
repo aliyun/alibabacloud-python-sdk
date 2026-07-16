@@ -15,21 +15,21 @@ class DescribeDnsGtmLogsRequest(DaraModel):
         page_size: int = None,
         start_timestamp: int = None,
     ):
-        # The timestamp that specifies the end of the time range to query.
+        # The end of the time range to query. This is a UNIX timestamp.
         self.end_timestamp = end_timestamp
-        # The ID of the instance.
+        # The instance ID. Call the [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+        # The keyword. The search is performed in the \\`%KeyWord%\\` pattern and is not case-sensitive.
         self.keyword = keyword
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of some returned parameters. The default value is en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
+        # The number of entries to return on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The timestamp that specifies the beginning of the time range to query.
+        # The start of the time range to query. This is a UNIX timestamp.
         self.start_timestamp = start_timestamp
 
     def validate(self):

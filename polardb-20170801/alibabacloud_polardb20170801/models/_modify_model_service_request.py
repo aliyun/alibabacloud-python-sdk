@@ -19,21 +19,45 @@ class ModifyModelServiceRequest(DaraModel):
         region_id: str = None,
         request_cost_points: str = None,
     ):
+        # The API key for the model service.
         self.api_key = api_key
+        # The address of the upstream service.
         self.base_url = base_url
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The cost in points per million input tokens.
         self.input_cost_points_per_million = input_cost_points_per_million
+        # The model category.
+        # 
         # This parameter is required.
         self.model_category = model_category
+        # The ID of the model service.
+        # 
         # This parameter is required.
         self.model_service_id = model_service_id
+        # The name of the model service.
+        # 
         # This parameter is required.
         self.name = name
+        # The cost in points per million output tokens.
         self.output_cost_points_per_million = output_cost_points_per_million
+        # The protocol type. Valid values:
+        # 
+        # - **openai**
+        # 
+        # - **anthropic**
+        # 
+        # - **bailian**
+        # 
+        # - **vllm**
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The region ID.
         self.region_id = region_id
+        # The cost in points per request.
         self.request_cost_points = request_cost_points
 
     def validate(self):

@@ -15,16 +15,17 @@ class DescribeTrFirewallsV2RouteListRequest(DaraModel):
     ):
         # The page number. Default value: 1.
         self.current_page = current_page
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The instance ID of the VPC firewall for the transit router.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The ID of the routing policy.
+        # The ID of the firewall routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):

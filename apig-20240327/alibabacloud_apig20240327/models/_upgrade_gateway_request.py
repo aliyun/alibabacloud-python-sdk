@@ -9,7 +9,7 @@ class UpgradeGatewayRequest(DaraModel):
         self,
         version: str = None,
     ):
-        # The destination instance version.
+        # The gateway version.
         self.version = version
 
     def validate(self):

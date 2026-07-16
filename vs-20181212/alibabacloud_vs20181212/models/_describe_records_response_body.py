@@ -18,12 +18,29 @@ class DescribeRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The start time to query the next record.
+        # 
+        # > Applies only to snapshot queries.
         self.next_start_time = next_start_time
+        # The total number of pages.
+        # 
+        # > Applies only to recording queries.
         self.page_count = page_count
+        # The page number.
+        # 
+        # > Applies only to recording queries.
         self.page_num = page_num
+        # The page size.
+        # 
+        # > Applies only to recording queries.
         self.page_size = page_size
+        # The list of stored records.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The total number of stored records.
+        # 
+        # > Applies only to recording queries.
         self.total_count = total_count
 
     def validate(self):
@@ -107,18 +124,45 @@ class DescribeRecordsResponseBodyRecords(DaraModel):
         url: str = None,
         width: int = None,
     ):
+        # The end time of the stored record.
         self.end_time = end_time
+        # The format of the stored file. Valid values:
+        # 
+        # - mp4
+        # 
+        # - flv
+        # 
+        # - hls
+        # 
+        # - jpg
         self.file_format = file_format
+        # The height.
         self.height = height
+        # The ID of the stored record.
+        # 
+        # > Applies only to recording queries.
         self.id = id
+        # The bucket where the file is stored.
         self.oss_bucket = oss_bucket
+        # The OSS endpoint.
         self.oss_endpoint = oss_endpoint
+        # The object of the stored file.
         self.oss_object = oss_object
+        # The start time of the stored record.
         self.start_time = start_time
+        # The stream ID.
         self.stream_id = stream_id
+        # The template ID.
         self.template_id = template_id
+        # The type of the stored record. Valid values:
+        # 
+        # - record
+        # 
+        # - snapshot
         self.type = type
+        # The URL of the stored file.
         self.url = url
+        # The width.
         self.width = width
 
     def validate(self):

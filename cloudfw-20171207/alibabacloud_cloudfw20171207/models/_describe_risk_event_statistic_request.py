@@ -17,13 +17,50 @@ class DescribeRiskEventStatisticRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The attacked application.
         self.attack_app = attack_app
+        # The attack type of the intrusion prevention event. Valid values:
+        # 
+        # - **1**: anomalous connection
+        # 
+        # - **2**: command execution
+        # 
+        # - **3**: brute-force attack
+        # 
+        # - **4**: scanning
+        # 
+        # - **5**: other
+        # 
+        # - **6**: information leakage
+        # 
+        # - **7**: DoS attack
+        # 
+        # - **8**: overflow attack
+        # 
+        # - **9**: web attack
+        # 
+        # - **10**: trojan backdoor
+        # 
+        # - **11**: virus and worm
+        # 
+        # - **12**: mining
+        # 
+        # - **13**: reverse shell
+        # 
+        # > If you do not specify this parameter, all attack types are queried.
         self.attack_type = attack_type
+        # The edition of Cloud Firewall.
         self.buy_version = buy_version
+        # The end time. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -16,15 +16,26 @@ class ModifyDBClusterVpcRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to switch existing endpoints. Valid values:
+        # 
+        # - **NONE**: Does not switch existing endpoints.
+        # 
+        # - **ALL**: Switches all existing endpoints.
+        # 
         # This parameter is required.
         self.existed_endpoint_switch_type = existed_endpoint_switch_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
+        # The ID of the virtual switch.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
 

@@ -16,13 +16,21 @@ class ServiceHealthCheck(DaraModel):
         timeout: int = None,
         unhealthy_threshold: int = None,
     ):
+        # Specifies whether to enable the health check.
         self.enable = enable
+        # The healthy threshold for the health check.
         self.healthy_threshold = healthy_threshold
+        # The health check domain name. This parameter is optional when the health check protocol is HTTP.
         self.http_host = http_host
+        # The health check path. This parameter is required when the health check protocol is HTTP.
         self.http_path = http_path
+        # The health check interval.
         self.interval = interval
+        # The health check protocol. Valid values: TCP, HTTP, and GRPC.
         self.protocol = protocol
+        # The health check response timeout period.
         self.timeout = timeout
+        # The unhealthy threshold for the health check.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):

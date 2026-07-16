@@ -13,7 +13,7 @@ class DescribeProdCountResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,16 +56,21 @@ class DescribeProdCountResponseBodyData(DaraModel):
         qcloud_imported_count: int = None,
         qcloud_prod_count: int = None,
     ):
+        # The number of automatically connected Alibaba Cloud products.
         self.aliyun_imported_count = aliyun_imported_count
-        # The number of Alibaba Cloud services.
+        # The number of Alibaba Cloud products.
         self.aliyun_prod_count = aliyun_prod_count
+        # The number of automatically connected Huawei Cloud products.
         self.hcloud_imported_count = hcloud_imported_count
-        # The number of Huawei Cloud services.
+        # The number of Huawei Cloud products.
         self.hcloud_prod_count = hcloud_prod_count
+        # The number of automatically connected IDC products.
         self.idc_imported_count = idc_imported_count
+        # The number of IDC products.
         self.idc_prod_count = idc_prod_count
+        # The number of automatically connected Tencent Cloud products.
         self.qcloud_imported_count = qcloud_imported_count
-        # The number of Tencent Cloud services.
+        # The number of Tencent Cloud products.
         self.qcloud_prod_count = qcloud_prod_count
 
     def validate(self):

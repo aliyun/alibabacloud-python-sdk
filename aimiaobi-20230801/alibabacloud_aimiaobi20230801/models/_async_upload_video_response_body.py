@@ -17,12 +17,17 @@ class AsyncUploadVideoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code returned for the request.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class AsyncUploadVideoResponseBodyData(DaraModel):
         task_id: str = None,
         video_infos: List[main_models.AsyncUploadVideoResponseBodyDataVideoInfos] = None,
     ):
+        # The task ID.
         self.task_id = task_id
+        # Information about the videos.
         self.video_infos = video_infos
 
     def validate(self):
@@ -128,9 +135,13 @@ class AsyncUploadVideoResponseBodyDataVideoInfos(DaraModel):
         video_name: str = None,
         video_url: str = None,
     ):
+        # Additional information about the video.
         self.video_extra_info = video_extra_info
+        # The video ID.
         self.video_id = video_id
+        # The name of the video.
         self.video_name = video_name
+        # The video URL.
         self.video_url = video_url
 
     def validate(self):

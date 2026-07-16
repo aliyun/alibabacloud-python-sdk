@@ -10,6 +10,7 @@ class ListAppInstancesRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        biz_ids: List[str] = None,
         end_time_begin: str = None,
         end_time_end: str = None,
         extend: str = None,
@@ -22,31 +23,32 @@ class ListAppInstancesRequest(DaraModel):
         query: str = None,
         status_list: List[str] = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # End time start
+        self.biz_ids = biz_ids
+        # The start of the expiration time range.
         self.end_time_begin = end_time_begin
-        # End time end
+        # The end of the expiration time range.
         self.end_time_end = end_time_end
-        # Extended information
+        # The extended information.
         self.extend = extend
-        # Number of results per query.
+        # The maximum number of results per query.
         # 
-        # Range: 10~100. Default value: 20.
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
-        # Token for the next query. It will be empty if there is no next query.
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
-        # Order column
+        # The field used for sorting.
         self.order_column = order_column
-        # Order type ASC|DESC
+        # The sort type. Valid values: ASC and DESC.
         self.order_type = order_type
-        # Page number, default is 1
+        # The page number. Default value: 1.
         self.page_num = page_num
-        # Page size, default is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Query parameter
+        # The query parameter.
         self.query = query
-        # Status range
+        # The status range.
         self.status_list = status_list
 
     def validate(self):
@@ -59,6 +61,9 @@ class ListAppInstancesRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.biz_ids is not None:
+            result['BizIds'] = self.biz_ids
 
         if self.end_time_begin is not None:
             result['EndTimeBegin'] = self.end_time_begin
@@ -99,6 +104,9 @@ class ListAppInstancesRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('BizIds') is not None:
+            self.biz_ids = m.get('BizIds')
 
         if m.get('EndTimeBegin') is not None:
             self.end_time_begin = m.get('EndTimeBegin')

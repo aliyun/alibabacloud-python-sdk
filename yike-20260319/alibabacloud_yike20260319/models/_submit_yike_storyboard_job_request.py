@@ -13,7 +13,9 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         keep_origin_dialogue: bool = None,
         model_params: str = None,
         narration_voice_id: str = None,
+        need_caption: bool = None,
         resolution: str = None,
+        shot_prompt_lang: str = None,
         shot_prompt_mode: str = None,
         shot_split_mode: str = None,
         skip_failure_shot: bool = None,
@@ -23,20 +25,100 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         user_data: str = None,
         video_model: str = None,
     ):
+        # The aspect ratio of the output video. Valid values:
+        # - 16:9
+        # - 9:16
+        # - 4:3
+        # - 3:4
         self.aspect_ratio = aspect_ratio
+        # The execution mode for storyboard generation. Valid values:
+        # - FullPipeline: full pipeline generation, which includes storyboard generation and shot video generation.
+        # - StoryboardOnly: generates only the storyboard.
         self.exec_mode = exec_mode
+        # The OSS URL of the file. The URL must point to a file with a .txt or .doc extension.
         self.file_url = file_url
+        # Specifies whether to retain the original dialogue during final video composition. Default value: True.
         self.keep_origin_dialogue = keep_origin_dialogue
+        # The model parameters in JSON format.
+        # 
+        # "AudioEnable": false disables audio.
         self.model_params = model_params
+        # The narration voice ID. Valid values:
+        # - sys_GracefulPoisedWoman: mature graceful female
+        # - sys_ElderlyWistfulWoman: wistful elderly female
+        # - sys_SweetBrightGirl: sweet bright girl
+        # - sys_YoungGracefulWoman: gentle graceful female
+        # - sys_MaturePoisedWoman: poised mature female
+        # - sys_MatureWiseWoman: elegant wise female
+        # - sys_CalmDeepMale: calm deep male
+        # - sys_SereneIntellect: serene intellectual male
+        # - sys_MajesticBaritone: majestic baritone male
+        # - sys_GravellySoulful: gravelly soulful male
+        # - sys_ClassicYoungMan: classic narrator male
+        # - sys_WiseYoungMan: wise narrator male
+        # - sys_ClassicYoungWoman: classic narrator female
+        # - sys_IntellectualYoungWoman: intellectual narrator female
+        # - sys_GentleYoungMan: gentle narrator male
+        # - sys_thoughtfulBoy: thoughtful boy
+        # - sys_RichBassMale: rich bass male
+        # - sys_ClassicMiddleAgedWoman: classic middle-aged narrator female
         self.narration_voice_id = narration_voice_id
+        self.need_caption = need_caption
+        # The resolution of the output video. Valid values:
+        # - 720P
+        # - 1080P
+        # - 2K
+        # - 4K
         self.resolution = resolution
+        self.shot_prompt_lang = shot_prompt_lang
+        # The storyboard shot generation mode. Valid values:
+        # - multi: multi-reference video generation
+        # - default: image-to-video generation
         self.shot_prompt_mode = shot_prompt_mode
+        # The shot split mode. Valid values:
+        # - firstPersonNarration: narration commentary mode
         self.shot_split_mode = shot_split_mode
+        # Specifies whether to skip failed shots. Default value: True.
         self.skip_failure_shot = skip_failure_shot
+        # The type of the material source. Valid values:
+        # - Novel: novel
         self.source_type = source_type
+        # The storyboard style ID. Valid values:
+        # - RealisticPhotographyPro: realistic photography Pro
+        # - RealisticGuzhuangPro: realistic ancient costume Pro
+        # - RealisticXianxiaPro: realistic Xianxia Pro
+        # - RealisticWesternPro: Western realistic Pro
+        # - RealisticPhotography: realistic photography
+        # - RealisticGuzhuang: realistic ancient costume
+        # - RealisticXianxia: realistic Xianxia
+        # - RealisticWasteland: realistic wasteland
+        # - RealisticEra: realistic vintage
+        # - GuofengAnime: 2D Chinese-style anime
+        # - GuofengAnime3D: 3D Chinese-style anime
+        # - AncientRomanceAnime: anime ancient romance
+        # - PostApocalypticAnime: anime post-apocalyptic
+        # - Cartoon3D: 3D cartoon
+        # - Photorealistic3D: photorealistic 3D rendering
+        # - SciFiRealism: sci-fi realism
+        # - Chibi3D: 3D chibi
+        # - ShojoManga: Japanese manga
+        # - NewPeriodAnime: new era Japanese anime
+        # - FairyTale2D: 2D fairy tale
+        # - Wasteland2D: 2D wasteland
+        # - InkWuxia: ink wash Wuxia
+        # - ShadiaoMeme: panda head meme style
+        # - Chibi2D: 2D chibi
+        # - Ghibli: Ghibli
+        # - SciFiComic: cyberpunk
+        # - AmericanSuperhero: American superhero
         self.style_id = style_id
+        # The task title. If not specified, a default title is automatically generated based on the date. The title cannot exceed 128 bytes in length and must be UTF-8 encoded.
         self.title = title
+        # The custom settings in JSON format. Fields include:
+        # - NotifyAddress: the callback URL for task completion. MNS callbacks and HTTP callbacks are supported.
         self.user_data = user_data
+        # The video model. Valid values:
+        # - wan2.6-r2v-flash
         self.video_model = video_model
 
     def validate(self):
@@ -65,8 +147,14 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         if self.narration_voice_id is not None:
             result['NarrationVoiceId'] = self.narration_voice_id
 
+        if self.need_caption is not None:
+            result['NeedCaption'] = self.need_caption
+
         if self.resolution is not None:
             result['Resolution'] = self.resolution
+
+        if self.shot_prompt_lang is not None:
+            result['ShotPromptLang'] = self.shot_prompt_lang
 
         if self.shot_prompt_mode is not None:
             result['ShotPromptMode'] = self.shot_prompt_mode
@@ -114,8 +202,14 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         if m.get('NarrationVoiceId') is not None:
             self.narration_voice_id = m.get('NarrationVoiceId')
 
+        if m.get('NeedCaption') is not None:
+            self.need_caption = m.get('NeedCaption')
+
         if m.get('Resolution') is not None:
             self.resolution = m.get('Resolution')
+
+        if m.get('ShotPromptLang') is not None:
+            self.shot_prompt_lang = m.get('ShotPromptLang')
 
         if m.get('ShotPromptMode') is not None:
             self.shot_prompt_mode = m.get('ShotPromptMode')

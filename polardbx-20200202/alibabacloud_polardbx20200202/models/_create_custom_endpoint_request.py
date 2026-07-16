@@ -16,18 +16,33 @@ class CreateCustomEndpointRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The name of the access control instance. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name can contain digits, underscores (_), and hyphens (-).
+        # 
         # This parameter is required.
         self.name = name
+        # Specifies whether a node automatically joins the cluster and starts providing services after the node is added or recovered.
+        # 
         # This parameter is required.
         self.node_auto_enter = node_auto_enter
+        # The IDs of the monitored nodes when RemindUnit (object type) is set to NODE (node). Separate multiple IDs with commas (,). A maximum of 50 nodes can be monitored per rule.
+        # 
         # This parameter is required.
         self.node_ids = node_ids
+        # To query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY** and specify the **NodeId** parameter.
+        # >  In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
         self.node_role = node_role
+        # The region in which the instance resides.
         self.region_id = region_id
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC) in which the endpoint resides.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

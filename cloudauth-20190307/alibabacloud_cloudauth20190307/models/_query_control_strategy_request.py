@@ -10,9 +10,9 @@ class QueryControlStrategyRequest(DaraModel):
         product_type: str = None,
         region_id: str = None,
     ):
-        # Product type, currently only supports ANT_CLOUD_AUTH (financial-grade real person), all others have been phased out.
+        # The product type. Currently, only ANT_CLOUD_AUTH (financial-grade ID Verification) is supported. All other product types have been discontinued.
         self.product_type = product_type
-        # Region ID
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

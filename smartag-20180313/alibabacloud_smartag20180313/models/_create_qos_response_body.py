@@ -11,11 +11,11 @@ class CreateQosResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the QoS policy.
+        # The instance ID of the QoS policy.
         self.qos_id = qos_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the QoS policy belongs.
+        # The ID of the resource group to which the QoS policy instance belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):

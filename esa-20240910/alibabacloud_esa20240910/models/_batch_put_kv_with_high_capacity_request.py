@@ -10,11 +10,17 @@ class BatchPutKvWithHighCapacityRequest(DaraModel):
         namespace: str = None,
         url: str = None,
     ):
-        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # The namespace name specified when you called [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The download URL of the key-value pairs that you want to configure. This parameter is automatically filled in when you use the SDK to call the operation.
+        # A publicly accessible HTTP(S) URL that points to a JSON file containing the key-value pairs to be batch set. The server actively downloads the content from this URL.
+        # 
+        # - If you use an SDK, the SDK automatically uploads the file and generates the URL.
+        # 
+        # - In non-SDK scenarios, upload the JSON payload to any publicly accessible HTTP service and specify the URL.
+        # 
+        # The file content pointed to by the URL must be in the following JSON format: {"Namespace":"<namespace name>","KvList":[{"Key":"<key>","Value":"<value>"},...]}.If the URL content does not match this format, the API silently returns an empty SuccessKeys array.
         # 
         # This parameter is required.
         self.url = url

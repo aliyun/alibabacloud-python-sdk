@@ -19,21 +19,21 @@ class QueryVerifyInvokeSatisticResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response code, **200** indicates a successful response.
+        # The response code. **200** indicates a successful response.
         self.code = code
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # List of returned data.
+        # The list of returned data.
         self.items = items
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Whether the response was successful.
+        # Indicates whether the response is successful.
         self.success = success
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -112,9 +112,9 @@ class QueryVerifyInvokeSatisticResponseBodyItems(DaraModel):
         data: List[main_models.QueryVerifyInvokeSatisticResponseBodyItemsData] = None,
         statistics_date: str = None,
     ):
-        # List of statistical data.
+        # The list of statistics data.
         self.data = data
-        # Statistics date.
+        # The statistics date.
         self.statistics_date = statistics_date
 
     def validate(self):
@@ -157,9 +157,9 @@ class QueryVerifyInvokeSatisticResponseBodyItemsData(DaraModel):
         statistics_count: str = None,
         statistics_type: str = None,
     ):
-        # Number of occurrences of the statistic.
+        # The count of the statistical value.
         self.statistics_count = statistics_count
-        # ProductCode。
+        # The product code.
         self.statistics_type = statistics_type
 
     def validate(self):

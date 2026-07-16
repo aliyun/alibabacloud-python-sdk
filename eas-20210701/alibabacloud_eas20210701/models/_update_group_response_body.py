@@ -7,9 +7,12 @@ from darabonba.model import DaraModel
 class UpdateGroupResponseBody(DaraModel):
     def __init__(
         self,
+        message: str = None,
         request_id: str = None,
     ):
-        # Id of the request
+        # The response message.
+        self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20,6 +23,9 @@ class UpdateGroupResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.message is not None:
+            result['Message'] = self.message
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -27,6 +33,9 @@ class UpdateGroupResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

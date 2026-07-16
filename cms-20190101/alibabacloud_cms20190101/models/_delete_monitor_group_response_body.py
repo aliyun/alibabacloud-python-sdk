@@ -18,7 +18,7 @@ class DeleteMonitorGroupResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > The status code 200 indicates that the call was successful.
         self.code = code
         # The deleted application group.
         self.group = group

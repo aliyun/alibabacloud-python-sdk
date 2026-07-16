@@ -39,70 +39,72 @@ class DescDomainResponseBody(DaraModel):
         tl_domain_name: str = None,
         tracef_record: str = None,
     ):
-        # CNAME verification flag, 0 for success, 1 for failure.
+        # The CNAME verification status. Valid values: `0` (Success), `1` (Failure).
         self.cname_auth_status = cname_auth_status
-        # Indicates whether the CNAME host record has been modified, 1 for modified (reverting to the original value also counts as modification), 0 for not modified.
+        # Indicates if the CNAME host record has been modified. A value of `1` indicates a change, including reverting to the original value. A value of `0` indicates no change.
         self.cname_confirm_status = cname_confirm_status
-        # Custom part of the CNAME host record
+        # The CNAME host record.
         self.cname_record = cname_record
-        # Creation time
+        # The time the domain name was created.
         self.create_time = create_time
-        # Whether it is the default domain,
+        # Indicates if this is the default domain name.
         # 
-        # Value: 0 No (this field is deprecated)
+        # This parameter is deprecated and always returns `0` (No).
         self.default_domain = default_domain
-        # DKIM verification flag, indicating whether the DKIM record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
+        # The DKIM verification status. Valid values: `0` (Verified), `1` (Not verified).
         self.dkim_auth_status = dkim_auth_status
-        # DKIM public key value, the value that users need to set for the DKIM record in DNS
+        # The public key for the DKIM record.
         self.dkim_public_key = dkim_public_key
-        # DKIM host record, the key that the user needs to set in the DNS for the DKIM record
+        # The DKIM host record.
         self.dkim_rr = dkim_rr
+        # The length of the DKIM RSA key, such as `1024` or `2048`.
         self.dkim_rsa_length = dkim_rsa_length
-        # DMARC verification flag, indicating whether the DMARC record set by the user in DNS has passed validation, 0: Passed, 1: Not passed
+        # The DMARC verification status. Valid values: `0` (Verified), `1` (Not verified).
         self.dmarc_auth_status = dmarc_auth_status
-        # DMARC host record value
+        # The DMARC host record.
         self.dmarc_host_record = dmarc_host_record
-        # DMARC record value
+        # The DMARC record value.
         self.dmarc_record = dmarc_record
-        # DMARC record value resolved through the public domain name
+        # The DMARC record value resolved from public DNS.
         self.dns_dmarc = dns_dmarc
-        # MX record value resolved from the public network domain
+        # The MX record value resolved from public DNS.
         self.dns_mx = dns_mx
-        # SPF record value resolved from the public network domain
+        # The SPF record value resolved from public DNS.
         self.dns_spf = dns_spf
-        # Ownership record value resolved from the public network domain
+        # The ownership record value resolved from public DNS.
         self.dns_txt = dns_txt
-        # Domain ID
+        # The domain ID.
         self.domain_id = domain_id
-        # Domain name
+        # The domain name.
         self.domain_name = domain_name
-        # Domain status. Indicates whether the verification was successful, with values:
+        # The verification status of the domain name. Valid values:
         # 
-        # - **0**: Available, verified successfully
-        # - **1**: Unavailable, verification failed
+        # - **0**: Available. The domain name is verified.
+        # 
+        # - **1**: Unavailable. The domain name failed verification.
         self.domain_status = domain_status
-        # Ownership record provided by the email push console
+        # The required value for the domain ownership verification record, from the Direct Mail console.
         self.domain_type = domain_type
         self.domain_version = domain_version
-        # Host record
+        # The host record for domain ownership verification.
         self.host_record = host_record
-        # Filing status. **1** indicates filed, **0** indicates not filed.
+        # The ICP filing status. **1** indicates the filing is complete. **0** indicates no filing is found.
         self.icp_status = icp_status
-        # MX verification flag, 0 for success, 1 for failure.
+        # The MX verification status. Valid values: `0` (Success), `1` (Failure).
         self.mx_auth_status = mx_auth_status
-        # MX record value provided by the email push console
+        # The MX record value from the Direct Mail console.
         self.mx_record = mx_record
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # SPF verification flag, 0 for success, 1 for failure.
+        # The SPF verification status. Valid values: `0` (Success), `1` (Failure).
         self.spf_auth_status = spf_auth_status
-        # SPF record value provided by the email push console
+        # The SPF record value from the Direct Mail console.
         self.spf_record = spf_record
-        # SPF record. Previously, the SPF display content needed to be calculated by the calling end based on the spfRecord in the response. The new field spfRecordV2 replaces spfRecord, and the calling end can directly display this field after obtaining it;
+        # The complete SPF record. This parameter replaces `SpfRecord`. You can directly use the value of `SpfRecordV2` without constructing it from the value of `SpfRecord`.
         self.spf_record_v2 = spf_record_v2
-        # Primary domain
+        # The root domain.
         self.tl_domain_name = tl_domain_name
-        # CNAME record value provided by the email push console
+        # The CNAME record value from the Direct Mail console.
         self.tracef_record = tracef_record
 
     def validate(self):

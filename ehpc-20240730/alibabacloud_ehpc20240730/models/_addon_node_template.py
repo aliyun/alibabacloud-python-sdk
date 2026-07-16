@@ -28,26 +28,89 @@ class AddonNodeTemplate(DaraModel):
         spot_strategy: str = None,
         system_disk: main_models.AddonNodeTemplateSystemDisk = None,
     ):
+        # Specifies whether to enable auto-renewal for the reserved instance. This parameter takes effect only when InstanceChargeType is set to PrePaid. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: false.
         self.auto_renew = auto_renew
+        # The auto-renewal period. Valid values:
+        # 
+        # *   Valid values when PeriodUnit is set to Week: 1, 2, and 3
+        # *   Valid values when PeriodUnit is set to Month: 1, 2, 3, 6, 12, 24, 36, 48, and 60
+        # 
+        # Default value: 1.
         self.auto_renew_period = auto_renew_period
+        # The data disks.
+        # 
+        # >  You can specify up to 16 data disks.
         self.data_disks = data_disks
+        # The protection period for the preemptible instance. Unit: hours. Default value: 1. Valid values:
+        # 
+        # *   1: After a preemptible instance is created, Alibaba Cloud ensures that the instance is not automatically released within one hour. After the one-hour protection period ends, the system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # *   0: After a preemptible instance is created, Alibaba Cloud does not ensure that the instance runs for one hour. The system compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # 
+        # Alibaba Cloud sends an ECS system event to notify you five minutes before the instance is released. Preemptible instances are billed by second. We recommend that you specify an appropriate protection period based on your business requirements.
         self.duration = duration
+        # Specifies whether to enable hyper-threading for the node. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_ht = enable_ht
+        # The ID of the image to be used for instance booting. You can call the [DescribeImages](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeimages?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX) operation to query the available image resources.
+        # 
         # This parameter is required.
         self.image_id = image_id
+        # The billing method. Valid values:
+        # 
+        # *   Prepaid: subscription
+        # *   PostPaid: pay-as-you-go
+        # 
+        # Default value: PostPaid.
+        # 
+        # If you set this parameter to PrePaid, you must make sure that your account supports payment by balance or credit. Otherwise, the InvalidPayMethod error message will be returned.
         self.instance_charge_type = instance_charge_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The ECS instance type.
+        # 
+        # *   To select an appropriate instance type, you can see [Instance families](https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX) or call the [DescribeInstanceTypes](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeinstancetypes?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX) operation to learn the performance data about instance types.
+        # *   To query the inventory of instance types in specified region or zone, you can call the [DescribeAvailableResource](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeavailableresource?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX) operation.
+        # 
         # This parameter is required.
         self.instance_type = instance_type
+        # OsName
+        # 
         # This parameter is required.
         self.os_name = os_name
+        # OsNameEN
+        # 
         # This parameter is required.
         self.os_name_en = os_name_en
+        # The subscription period of the instance. The unit is specified by the PeriodUnit parameter. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the subscription duration of the instance must be no longer than that of the dedicated host. Valid values:
+        # 
+        # *   Valid values when PeriodUnit is set to Week: 1, 2, 3, and 4
+        # *   Valid values when PeriodUnit is set to Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60
         self.period = period
+        # The unit of the subscription period. Valid values:
+        # 
+        # *   Week
+        # *   Month (default)
         self.period_unit = period_unit
+        # The IP address of the virtual private cloud (VPC) in which the ECS instance is deployed.
         self.private_ip_address = private_ip_address
+        # The maximum hourly price of the preemptible instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit. A maximum of three decimal places can be specified.
         self.spot_price_limit = spot_price_limit
+        # The bidding policy for the pay-as-you-go instance. This parameter is valid only when InstanceChargeType is set to PostPaid. Valid values:
+        # 
+        # *   NoSpot: The instance is created as a pay-as-you-go instance.
+        # *   SpotWithPriceLimit: The instance is created as a preemptible instance with a user-defined maximum hourly price.
+        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+        # 
+        # Default value: NoSpot.
         self.spot_strategy = spot_strategy
+        # The system disk configurations of the node.
         self.system_disk = system_disk
 
     def validate(self):
@@ -184,8 +247,34 @@ class AddonNodeTemplateSystemDisk(DaraModel):
         level: str = None,
         size: int = None,
     ):
+        # The category of the system disk. Valid values:
+        # 
+        # *   cloud_efficiency: utra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: enterprise SSD (ESSD)
+        # *   cloud: basic disk
         self.category = category
+        # The performance level of the ESSD that is used as the system disk. Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10000 random read/write IOPS.
+        # *   PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   PL2: A single ESSD can deliver up to 100000 random read/write IOPS.
+        # *   PL3: A single ESSD can deliver up to 1000000 random read/write IOPS. For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/zh/ecs/user-guide/essds?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX).
         self.level = level
+        # The disk size. Unit: GiB. Valid values:
+        # 
+        # *   cloud_efficiency: 40 to 32,768
+        # 
+        # *   cloud_ssd: 40 to 32,768
+        # 
+        # *   Valid values when Category is set to cloud_essd depends on the value of the DataDisk.N.PerformanceLevel parameter. Specifically:
+        # 
+        #     *   PL0: 40 to 65,536
+        #     *   PL1: 40 to 65,536
+        #     *   PL2: 461 to 65,536
+        #     *   PL3: 1,261 to 65,536
+        # 
+        # *   cloud: 40 to 500
         self.size = size
 
     def validate(self):
@@ -230,9 +319,38 @@ class AddonNodeTemplateDataDisks(DaraModel):
         level: str = None,
         size: int = None,
     ):
+        # The disk category. Valid values:
+        # 
+        # *   cloud_efficiency: utra disk
+        # *   cloud_ssd: standard SSD
+        # *   cloud_essd: ESSD
         self.category = category
+        # Specifies whether to release data disk N when the instance is released. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # Default value: true.
         self.delete_with_instance = delete_with_instance
+        # The performance level of the ESSD to be used as the data disk. Valid values:
+        # 
+        # *   PL0: A single ESSD can deliver up to 10000 random read/write IOPS.
+        # *   PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # *   PL2: A single ESSD can deliver up to 100000 random read/write IOPS.
+        # *   PL3: A single ESSD can deliver up to 1000000 random read/write IOPS. For more information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/zh/ecs/user-guide/essds?spm=api-workbench.API%20Document.0.0.7e5caef0GBcMYX).
         self.level = level
+        # The disk size. Valid values of N: 1 to 16. Unit: GiB. Valid values:
+        # 
+        # *   cloud_efficiency: 40 to 32,768
+        # 
+        # *   cloud_ssd: 40 to 32,768
+        # 
+        # *   Valid values when Category is set to cloud_essd depends on the value of the DataDisk.N.PerformanceLevel parameter. Specifically:
+        # 
+        #     *   PL0: 40 to 65,536
+        #     *   PL1: 40 to 65,536
+        #     *   PL2: 461 to 65,536
+        #     *   PL3: 1,261 to 65,536
         self.size = size
 
     def validate(self):

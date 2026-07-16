@@ -21,14 +21,40 @@ class CreateDatasetRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.access_level = access_level
+        # The dataset search configuration.
         self.dataset_config = dataset_config
+        # The description of the dataset. This is the display name in the console. Use a human-readable name.
         self.dataset_description = dataset_description
+        # The name of the dataset. The name must be globally unique.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The type of the dataset. Valid values:
+        # 
+        # - CustomSemanticSearch: A custom semantic index. This is the default value. Upload documents to build the dataset.
+        # 
+        # - ThirdSearch: A third-party search source (API). Configure your own search API.
         self.dataset_type = dataset_type
+        # Dataset index configuration.
         self.document_handle_config = document_handle_config
+        # The invocation method. Currently, only portal is supported, which indicates an invocation from the console.
+        # 
+        # - If left empty: When DatasetType is ThirdSearch, datasetConfig.SearchSourceConfigs (third-party API definition) is required.
+        # 
+        # - If set to portal: When DatasetType is ThirdSearch, the system initializes a SearchSourceConfigs (third-party API demo) example by default for your reference.
         self.invoke_type = invoke_type
+        # The dataset search switch. Valid values:
+        # 
+        # - 0: Disabled for all.
+        # 
+        # - 1: Visible only to Miao Search.
+        # 
+        # - 2: Visible only to Miao Bi.
+        # 
+        # - 3: Visible to both Miao Search and Miao Bi. This is the default value.
         self.search_dataset_enable = search_dataset_enable
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -110,6 +136,11 @@ class CreateDatasetRequestDocumentHandleConfig(DaraModel):
         self,
         disable_handle_multimodal_media: bool = None,
     ):
+        # Disables the processing logic for multimedia files.
+        # 
+        # - true: Disables multimodal (image and video) indexing. Only text is indexed and searched.
+        # 
+        # - false: Enables multimodal (text, image, and video) indexing. This setting takes effect only after you activate ApsaraVideo and grant authorization in system administration. If you set this to false but authorization is not granted, image and video indexing is automatically skipped. This is the default value.
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
 
     def validate(self):
@@ -138,7 +169,9 @@ class CreateDatasetRequestDatasetConfig(DaraModel):
         search_source_config: main_models.CreateDatasetRequestDatasetConfigSearchSourceConfig = None,
         search_source_configs: List[main_models.CreateDatasetRequestDatasetConfigSearchSourceConfigs] = None,
     ):
+        # Dataset configuration items.
         self.search_source_config = search_source_config
+        # Third-party search: API definition.
         self.search_source_configs = search_source_configs
 
     def validate(self):
@@ -186,9 +219,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigs(DaraModel):
         search_source_response_config: main_models.CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfig = None,
         size: int = None,
     ):
+        # A searchable keyword used to verify availability.
         self.demo_query = demo_query
+        # API request configuration.
         self.search_source_request_config = search_source_request_config
+        # API response configuration.
         self.search_source_response_config = search_source_response_config
+        # The default limit on the number of data entries for requests and responses.
         self.size = size
 
     def validate(self):
@@ -239,6 +276,7 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         self,
         jq_nodes: List[main_models.CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseConfigJqNodes] = None,
     ):
+        # Node configuration.
         self.jq_nodes = jq_nodes
 
     def validate(self):
@@ -277,9 +315,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # Child node configuration.
         self.jq_nodes = jq_nodes
+        # The node key.
         self.key = key
+        # The node path.
         self.path = path
+        # The data type of the node. Valid values: string, number, list, object, and base.
         self.type = type
 
     def validate(self):
@@ -336,9 +378,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # Child node configuration.
         self.jq_nodes = jq_nodes
+        # The node key.
         self.key = key
+        # The path.
         self.path = path
+        # The type.
         self.type = type
 
     def validate(self):
@@ -394,8 +440,11 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceResponseCo
         path: str = None,
         type: str = None,
     ):
+        # The node key.
         self.key = key
+        # The node path.
         self.path = path
+        # The type.
         self.type = type
 
     def validate(self):
@@ -442,13 +491,21 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         socket_timeout: int = None,
         url: str = None,
     ):
+        # The request body.
         self.body = body
+        # The connection timeout period, in milliseconds.
         self.connect_timeout = connect_timeout
+        # The HTTP request headers.
         self.headers = headers
+        # The request method.
         self.method = method
+        # The request path parameters.
         self.params = params
+        # Specifies whether to enable path parameters.
         self.path_params_enable = path_params_enable
+        # The read timeout period, in milliseconds.
         self.socket_timeout = socket_timeout
+        # The API URL.
         self.url = url
 
     def validate(self):
@@ -538,9 +595,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         value_format: str = None,
         value_type: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
+        # This parameter is valid only when ValueType is set to time.
         self.value_format = value_format
+        # The data type of the parameter value. The default value is string.
         self.value_type = value_type
 
     def validate(self):
@@ -589,9 +650,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestCon
         value_format: str = None,
         value_type: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The parameter value.
         self.value = value
+        # This parameter is valid only when ValueType is set to time.
         self.value_format = value_format
+        # The data type of the parameter value. The default value is string.
         self.value_type = value_type
 
     def validate(self):
@@ -640,9 +705,13 @@ class CreateDatasetRequestDatasetConfigSearchSourceConfig(DaraModel):
         tag_generate_enable: bool = None,
         tag_search_enable: bool = None,
     ):
+        # Specifies whether the metadata key-value pairs are used in generation. The default value is true.
         self.metadata_key_value_generate_enable = metadata_key_value_generate_enable
+        # Specifies whether the metadata key-value pairs are used in searches. The default value is true.
         self.metadata_key_value_search_enable = metadata_key_value_search_enable
+        # Specifies whether tags are used in generation. The default value is true.
         self.tag_generate_enable = tag_generate_enable
+        # Specifies whether tags are used in searches. The default value is true.
         self.tag_search_enable = tag_search_enable
 
     def validate(self):

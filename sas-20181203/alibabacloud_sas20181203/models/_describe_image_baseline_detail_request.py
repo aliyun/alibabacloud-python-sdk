@@ -11,14 +11,14 @@ class DescribeImageBaselineDetailRequest(DaraModel):
         image_uuid: str = None,
         lang: str = None,
     ):
-        # The information about the baseline.
+        # The baseline data information.
         self.baseline_item_key = baseline_item_key
         # The UUID of the image.
         self.image_uuid = image_uuid
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

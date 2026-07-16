@@ -13,11 +13,11 @@ class DescribeUploadTokenResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message for the request.
         self.msg = msg
         # The request ID.
         self.request_id = request_id
@@ -74,21 +74,21 @@ class DescribeUploadTokenResponseBodyData(DaraModel):
         oss_internet_end_point: str = None,
         security_token: str = None,
     ):
-        # The AccessKey ID.
+        # The AccessKey ID of the temporary credential for file upload.
         self.access_key_id = access_key_id
-        # The AccessKey secret.
+        # The temporary authorization secret.
         self.access_key_secret = access_key_secret
         # The bucket name.
         self.bucket_name = bucket_name
-        # The time when the file sharing link expires.
+        # The expiration time.
         self.expiration = expiration
         # The file prefix.
         self.file_name_prefix = file_name_prefix
-        # the oss intranet point.
+        # The internal endpoint of OSS.
         self.oss_internal_end_point = oss_internal_end_point
-        # the oss internet point.
+        # The Internet endpoint of OSS.
         self.oss_internet_end_point = oss_internet_end_point
-        # The security token.
+        # The security token of the temporary credential for file upload.
         self.security_token = security_token
 
     def validate(self):

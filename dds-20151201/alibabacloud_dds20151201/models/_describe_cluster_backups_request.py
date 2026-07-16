@@ -23,46 +23,53 @@ class DescribeClusterBackupsRequest(DaraModel):
         src_region: str = None,
         start_time: str = None,
     ):
-        # The ID of the cluster backup set.
+        # The ID of the cluster backup.
         self.backup_id = backup_id
+        # The ID of the backup job.
         self.backup_job_id = backup_job_id
         # The ID of the instance.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region where cross-region backups reside.
+        # The region where the geo-redundant backup resides.
         # 
-        # >  This parameter is required if you want to query cross-region backups.
+        # > This parameter is required when you query geo-redundant backups.
         self.dest_region = dest_region
-        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
-        self.end_time = end_time
-        # Specifies whether to query information about child nodes in the cluster backup. Valid values:
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
-        # *   **true**: The system returns only the basic information of the cluster backup.
-        # *   **false** (default): The system returns the backup information of all child nodes.
+        # > This parameter is invalid if you specify the BackupId parameter.
+        self.end_time = end_time
+        # Specifies whether to query the information about the child nodes in the cluster backup. Valid values:
+        # 
+        # - **true**: Returns only the basic information about the cluster backup, not the backup information about all child nodes.
+        # 
+        # - **false** (Default): Returns the backup information about all child nodes.
         self.is_only_get_cluster_back_up = is_only_get_cluster_back_up
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**. The page number must be a positive integer.
+        # The number of the page to return. The value must be a positive integer. Default value: **1**.
         self.page_no = page_no
         # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region ID of the instance.
+        # The region where the instance resides.
         # 
-        # > 
-        # 
-        # *   This parameter is required if you want to query the backup sets of a released instance.
-        # 
-        # *   This parameter is required if you want to query cross-region backups.
+        # > - This parameter is required when you query the backup sets of a released instance.
+        # >
+        # > - This parameter is required when you query geo-redundant backups.
         self.src_region = src_region
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in Coordinated Universal Time (UTC).
+        # 
+        # > This parameter is invalid if you specify the BackupId parameter.
         self.start_time = start_time
 
     def validate(self):

@@ -18,24 +18,24 @@ class DeleteChatappTemplateRequest(DaraModel):
         template_name: str = None,
         template_type: str = None,
     ):
-        # The space ID of the RAM user within the ISV account.
+        # The Space ID of the ISV sub-customer or the instance ID of the direct customer.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+        # The WhatsApp Business Account (WABA) ID of the Independent Software Vendor (ISV) customer.
         # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # > This parameter is deprecated. Use CustSpaceId instead.
         self.cust_waba_id = cust_waba_id
-        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+        # The ISV verification code, which is used to verify whether the user is authorized by the ISV.
         self.isv_code = isv_code
-        # The template language.
+        # The language.
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The template code.
+        # The code of the template.
         self.template_code = template_code
-        # The template name.
+        # The name of the template.
         self.template_name = template_name
-        # The template type. This parameter is required if you delete a template in a language.
+        # The type of the template. This parameter is required when you delete a template for a specific language.
         self.template_type = template_type
 
     def validate(self):

@@ -14,16 +14,14 @@ class DescribeTagValueListRequest(DaraModel):
     ):
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Starts from 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
-        # 
-        # Valid values: 1 to 100. Default value: 50.
         self.page_size = page_size
         self.region_id = region_id
         # The tag key.
         # 
-        # For more information about how to obtain a tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
+        # For more information about how to obtain the tag key, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145558.html).
         # 
         # This parameter is required.
         self.tag_key = tag_key

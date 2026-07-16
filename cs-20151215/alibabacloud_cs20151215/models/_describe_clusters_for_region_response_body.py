@@ -13,9 +13,9 @@ class DescribeClustersForRegionResponseBody(DaraModel):
         clusters: List[main_models.DescribeClustersForRegionResponseBodyClusters] = None,
         page_info: main_models.DescribeClustersForRegionResponseBodyPageInfo = None,
     ):
-        # The information about the queried clusters.
+        # The list of cluster details.
         self.clusters = clusters
-        # The pagination details.
+        # The pagination information.
         self.page_info = page_info
 
     def validate(self):
@@ -62,11 +62,11 @@ class DescribeClustersForRegionResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of pages.
+        # The page number.
         self.page_number = page_number
-        # The number of records on each page.
+        # The number of records per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -130,90 +130,92 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
-        # The domain name of the cluster.
+        # The local domain name of the cluster.
         self.cluster_domain = cluster_domain
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The types of ACK managed clusters:
+        # The specification of the cluster. Valid values:
         # 
-        # *   ack.pro.small: ACK Pro cluster
-        # *   ack.standard: ACK Basic cluster
+        # - `ack.standard`: Basic
+        # - `ack.pro.small`: Pro
+        # - `ack.pro.xlarge`: Pro XL
+        # - `ack.pro.2xlarge`: Pro 2XL
+        # - `ack.pro.4xlarge`: Pro 4XL (contact customer service to add your account to the whitelist)
+        # 
+        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and Pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # 
+        # For information about cluster management fees for Pro and Provisioned Control Plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # The type of the cluster. Valid values:
-        # 
-        # *   Kubernetes: ACK dedicated cluster
-        # *   ManagedKubernetes: ACK managed clusters. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless Basic clusters, ACK Serverless Pro clusters, ACK Edge Basic clusters, ACK Edge Pro clusters, and ACK Lingjun Pro clusters.
-        # *   ExternalKubernetes: registered cluster
+        # The cluster type. Valid values:
+        # - Kubernetes: ACK dedicated cluster.
+        # - ManagedKubernetes: ACK managed cluster types, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
+        # - ExternalKubernetes: registered cluster.
         self.cluster_type = cluster_type
-        # The CIDR block of pods in the cluster.
+        # The pod CIDR block of the cluster.
         self.container_cidr = container_cidr
-        # The time at which the instance is created.
+        # The time when the cluster was created.
         self.created = created
-        # The current Kubernetes version of the cluster.
+        # The current version of the cluster.
         self.current_version = current_version
-        # Specifies whether to enable cluster deletion protection. If you enable this option, the cluster cannot be deleted in the console or by calling API operations. You can obtain the terminal ID by calling one of the following operations:
-        # 
-        # *   true: enables deletion protection for the cluster. This way, the cluster cannot be deleted in the ACK console or by calling API operations.
-        # *   false: disables deletion protection for the cluster. This way, the cluster can be deleted in the ACK console or by calling API operations.
+        # Indicates whether deletion protection is enabled for the cluster. Deletion protection prevents the cluster from being accidentally deleted in the console or by calling API operations. Valid values:
+        # - true: Deletion protection is enabled. The cluster cannot be deleted in the console or by calling API operations.
+        # - false: Deletion protection is not enabled. The cluster can be deleted in the console or by calling API operations.
         self.deletion_protection = deletion_protection
-        # The initial Kubernetes version of the cluster.
+        # The initial version of the cluster.
         self.init_version = init_version
         # The IP protocol stack of the cluster.
         self.ip_stack = ip_stack
-        # The name of the cluster.
+        # The cluster name.
         self.name = name
-        # The Kubernetes version to which the cluster can be updated.
+        # The version to which the cluster can be upgraded.
         self.next_version = next_version
-        # The subtype of the clusters. Valid values:
-        # 
-        # *   Default: ACK managed clusters. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
-        # *   Edge: ACK Edge clusters. ACK Edge clusters include ACK Edge Basic clusters and ACK Edge Pro clusters.
-        # *   Serverless: ACK Serverless clusters. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
-        # *   Lingjun: ACK Lingjun Pro clusters.
+        # The cluster subtype. Valid values:
+        # - Default: ACK managed cluster, including ACK Pro and ACK Basic.
+        # - Edge: ACK Edge cluster, including ACK Edge Pro and ACK Edge Basic.
+        # - Serverless: ACK Serverless cluster, including ACK Serverless Pro and ACK Serverless Basic.
+        # - LingJun: ACK Lingjun cluster, available in Pro.
         self.profile = profile
         # The kube-proxy mode of the cluster.
-        # 
-        # Valid value:
-        # 
-        # *   iptables: iptables.
-        # *   ipvs: ipvs.
         self.proxy_mode = proxy_mode
         # The region ID.
         self.region_id = region_id
-        # The ID of the cluster resource group.
+        # The resource group ID of the cluster.
         self.resource_group_id = resource_group_id
-        # The ID of the security group of the cluster.
+        # The security group ID of the cluster.
         self.security_group_id = security_group_id
-        # The CIDR block of the service network.
+        # The service CIDR block.
         # 
         # This parameter is required.
         self.service_cidr = service_cidr
-        # The number of nodes in the ACK cluster.
+        # The number of nodes in the cluster.
         self.size = size
-        # The status of the cluster. Valid values:
+        # The running state of the cluster. Valid values:
         # 
-        # *   initial: The cluster is being created.
-        # *   failed: The cluster failed to be created.
-        # *   running: The cluster is running.
-        # *   Upgrading: The cluster is being updated.
-        # *   scaling: The cluster is being scaled.
-        # *   waiting: The cluster is waiting for connection requests.
-        # *   disconnected: The cluster is disconnected.
-        # *   inactive: The cluster is inactive.
-        # *   unavailable: The cluster is unavailable.
-        # *   deleting: The cluster is being deleted.
-        # *   deleted: The ACK cluster is deleted.
-        # *   delete_failed: The cluster failed to be deleted.
+        # - `initial`: The cluster is being created.
+        # - `failed`: The cluster failed to be created.
+        # - `running`: The cluster is running.
+        # - `updating`: The cluster is being updated.
+        # - `upgrading`: The cluster is being upgraded.
+        # - `removing`: Nodes are being removed.
+        # - `draining`: Nodes are being drained.
+        # - `scaling`: The cluster is being scaled.
+        # - `inactive`: The cluster is inactive.
+        # - `unavailable`: The cluster is unavailable.
+        # - `deleting`: The cluster is being deleted.
+        # - `deleted`: The cluster has been deleted.
+        # - `delete_failed`: The cluster failed to be deleted.
+        # - `waiting`: The cluster is in the accessed state, waiting to be connected.
+        # - `disconnected`: The cluster is disconnected.
         self.state = state
         # The list of cluster tags.
         self.tags = tags
         # The time zone.
         self.timezone = timezone
-        # The time when the cluster was updated.
+        # The time when the cluster was last updated.
         self.updated = updated
-        # The ID of the virtual private cloud (VPC) to which the cluster belongs.
+        # The VPC ID of the cluster.
         self.vpc_id = vpc_id
-        # The list of vSwitches on the control plane of the cluster.
+        # The list of vSwitches for the cluster control plane.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):

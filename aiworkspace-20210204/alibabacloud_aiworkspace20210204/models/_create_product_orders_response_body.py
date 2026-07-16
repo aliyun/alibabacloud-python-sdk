@@ -17,9 +17,9 @@ class CreateProductOrdersResponseBody(DaraModel):
     ):
         # The ID of the product purchase request.
         self.buy_product_request_id = buy_product_request_id
-        # The returned message.
+        # The message returned for the purchase.
         self.message = message
-        # The purchase order ID.
+        # The ID of the purchase order.
         self.order_id = order_id
         self.product_ids = product_ids
         # The request ID.

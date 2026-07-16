@@ -11,7 +11,6 @@ class SaveContentResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
-        # requestId
         self.request_id = request_id
         self.result = result
         self.success = success

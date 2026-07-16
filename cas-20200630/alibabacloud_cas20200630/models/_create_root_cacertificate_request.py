@@ -22,48 +22,61 @@ class CreateRootCACertificateRequest(DaraModel):
         tags: List[main_models.CreateRootCACertificateRequestTags] = None,
         years: int = None,
     ):
-        # The key algorithm of the root CA certificate. The key algorithm is in the `<Encryption algorithm>_<Key length>` format. Valid values:
+        # The key algorithm of the root CA certificate. The key algorithm is in the `<encryption algorithm>_<key length>` format. Valid values:
         # 
-        # *   **RSA_1024**: The signature algorithm is Sha256WithRSA.
-        # *   **RSA_2048**: The signature algorithm is Sha256WithRSA.
-        # *   **RSA_4096**: The signature algorithm is Sha256WithRSA.
-        # *   **ECC_256**: The signature algorithm is Sha256WithECDSA.
-        # *   **ECC_384**: The signature algorithm is Sha256WithECDSA.
-        # *   **ECC_512**: The signature algorithm is Sha256WithECDSA.
-        # *   **SM2_256**: The signature algorithm is SM3WithSM2.
+        # - **RSA_1024**: The corresponding signature algorithm is Sha256WithRSA.
         # 
-        # The encryption algorithm of the root CA certificate must be consistent with the **encryption algorithm** of the private root CA instance that you purchase. For example, if the **encryption algorithm** of the private root CA instance that you purchase is **RSA**, the key algorithm of the root CA certificate must be **RSA_1024**, **RSA_2048**, or **RSA_4096**.
+        # - **RSA_2048**: The corresponding signature algorithm is Sha256WithRSA.
+        # 
+        # - **RSA_4096**: The corresponding signature algorithm is Sha256WithRSA.
+        # 
+        # - **ECC_256**: The corresponding signature algorithm is Sha256WithECDSA.
+        # 
+        # - **ECC_384**: The corresponding signature algorithm is Sha256WithECDSA.
+        # 
+        # - **ECC_512**: The corresponding signature algorithm is Sha256WithECDSA.
+        # 
+        # - **SM2_256**: The corresponding signature algorithm is SM3WithSM2.
+        # 
+        # The encryption algorithm of the root CA certificate must be the same as the **Certificate Algorithm** of the private root CA that you purchased. For example, if you set **Certificate Algorithm** to **RSA** when you purchase a private root CA, the key algorithm of the root CA certificate must be **RSA_1024**, **RSA_2048**, or **RSA_4096**.
         self.algorithm = algorithm
+        # A client token to ensure the idempotence of the request.
+        # 
+        # Generate a unique value for this parameter from your client. The token supports only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # The common name or abbreviation of the organization. The value can contain letters.
+        # The common name or abbreviation of the organization. Supports Chinese characters and letters.
         # 
         # This parameter is required.
         self.common_name = common_name
-        # The code of the country or region in which the organization is located. You can enter an alpha-2 code. For example, you can use **CN** to indicate China and use **US** to indicate the United States.
+        # The two-letter uppercase code of the country or region where the organization is located. For example, **CN** indicates China and **US** indicates the United States.
         # 
-        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+        # For more information about country codes, see the **Country codes** section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
-        # The name of the city in which the organization is located. The value can contain letters.
+        # The name of the city where the organization is located. Supports Chinese characters and letters.
         # 
         # This parameter is required.
         self.locality = locality
-        # The name of the organization that is associated with the root CA certificate. You can enter the name of your enterprise or company. The value can contain letters.
+        # The name of the organization for the root CA certificate. This is typically your company or enterprise name. Supports Chinese characters and letters.
         # 
         # This parameter is required.
         self.organization = organization
-        # The name of the department or branch in the organization. The value can contain letters.
+        # The name of the department or branch in the organization. Supports Chinese characters and letters.
         # 
         # This parameter is required.
         self.organization_unit = organization_unit
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The name of the province, municipality, or autonomous region in which the organization is located. The value can contain letters.
+        # <props="intl">The name of the province or state where the organization is located. Supports Chinese characters and letters.
         # 
         # This parameter is required.
         self.state = state
+        # A list of tags.
         self.tags = tags
         # The validity period of the root CA certificate. Unit: years.
         # 
-        # >  We recommend that you set this parameter to a value from 5 to 10.
+        # > Set the validity period to 5 to 10 years.
         # 
         # This parameter is required.
         self.years = years
@@ -162,7 +175,9 @@ class CreateRootCACertificateRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

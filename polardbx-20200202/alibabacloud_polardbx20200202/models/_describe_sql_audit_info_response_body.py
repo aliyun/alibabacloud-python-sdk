@@ -11,7 +11,9 @@ class DescribeSqlAuditInfoResponseBody(DaraModel):
         data: main_models.DescribeSqlAuditInfoResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned result set.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,11 @@ class DescribeSqlAuditInfoResponseBodyData(DaraModel):
         slslog_store: str = None,
         slsproject: str = None,
     ):
+        # Indicates whether the SQL audit feature is enabled.
         self.is_enabled = is_enabled
+        # The name of the Simple Log Service Logstore.
         self.slslog_store = slslog_store
+        # The name of the Simple Log Service project.
         self.slsproject = slsproject
 
     def validate(self):

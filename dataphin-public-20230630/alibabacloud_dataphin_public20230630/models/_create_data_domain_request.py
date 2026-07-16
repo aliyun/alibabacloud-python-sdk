@@ -11,8 +11,12 @@ class CreateDataDomainRequest(DaraModel):
         create_command: main_models.CreateDataDomainRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -54,15 +58,25 @@ class CreateDataDomainRequestCreateCommand(DaraModel):
         name: str = None,
         parent_id: int = None,
     ):
+        # The abbreviation of the data domain.
+        # 
         # This parameter is required.
         self.abbreviation = abbreviation
+        # The ID of the data unit to which the data domain belongs.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The description of the data domain.
         self.description = description
+        # The display name of the data domain.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code of the data domain.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the parent data domain.
         self.parent_id = parent_id
 
     def validate(self):

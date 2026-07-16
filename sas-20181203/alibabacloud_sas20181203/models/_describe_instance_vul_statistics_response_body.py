@@ -11,9 +11,9 @@ class DescribeInstanceVulStatisticsResponseBody(DaraModel):
         request_id: str = None,
         vul_stat: main_models.DescribeInstanceVulStatisticsResponseBodyVulStat = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The statistics of the vulnerabilities.
+        # The vulnerability statistics information.
         self.vul_stat = vul_stat
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeInstanceVulStatisticsResponseBodyVulStat(DaraModel):
         later_count: str = None,
         nntf_count: str = None,
     ):
-        # The number of high-risk vulnerabilities.
+        # The number of high-priority vulnerabilities.
         self.asap_count = asap_count
-        # The number of medium-risk vulnerabilities.
+        # The number of medium-priority vulnerabilities.
         self.later_count = later_count
-        # The number of low-risk vulnerabilities.
+        # The number of low-priority vulnerabilities.
         self.nntf_count = nntf_count
 
     def validate(self):

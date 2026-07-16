@@ -13,6 +13,11 @@ class SetUserSsoSettingsRequest(DaraModel):
         sso_enabled: bool = None,
         sso_login_with_domain: bool = None,
     ):
+        # The supported signature algorithm. Valid values:
+        # 
+        # - rsa-sha256
+        # 
+        # - rsa-sha1 (default)
         self.authn_sign_algo = authn_sign_algo
         # The auxiliary domain name.
         self.auxiliary_domain = auxiliary_domain
@@ -22,15 +27,17 @@ class SetUserSsoSettingsRequest(DaraModel):
         self.metadata_document = metadata_document
         # Specifies whether to enable SSO for the RAM user. Valid values:
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.sso_enabled = sso_enabled
-        # Specifies whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
+        # Specifies whether the SAML SSO requires a domain name in the `<saml:NameID>` element of the SAML response. If yes, the username specified by the IdP for SSO must have a domain name as the suffix.
         # 
-        # *   If the value of the parameter is `true`, the `<saml:NameID>` element **must** be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
-        # *   If the value of the parameter is `false`, the `<saml:NameID>` element **must** be in the `username` format and **cannot** contain the `domain` suffix.
+        # - If the value of the parameter is `true`, the `<saml:NameID>` element **must** be in the `username@domain` format. You can set `domain` to the default domain name or the configured domain alias.
         # 
-        # Set the value to the default `true`.
+        # - If the value of the parameter is `false`, the `<saml:NameID>` element **must** be in the `username` format and **cannot** contain the `domain` suffix.
+        # 
+        # The default value is `true`.
         self.sso_login_with_domain = sso_login_with_domain
 
     def validate(self):

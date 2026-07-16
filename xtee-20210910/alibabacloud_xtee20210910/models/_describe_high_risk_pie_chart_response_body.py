@@ -17,17 +17,17 @@ class DescribeHighRiskPieChartResponseBody(DaraModel):
         result_object: main_models.DescribeHighRiskPieChartResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,13 +90,13 @@ class DescribeHighRiskPieChartResponseBodyResultObject(DaraModel):
         high_risk_mobile_city: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity = None,
         high_risk_mobile_province: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince = None,
     ):
-        # High-risk IP city
+        # The city to which the high-risk IP address belongs.
         self.high_risk_ipcity = high_risk_ipcity
-        # High-risk IP归属province
+        # The province to which the high-risk IP address belongs.
         self.high_risk_ipprovince = high_risk_ipprovince
-        # High-risk mobile phone归属city
+        # The city to which the high-risk phone number belongs.
         self.high_risk_mobile_city = high_risk_mobile_city
-        # High-risk mobile phone\\"s province of origin
+        # The province to which the high-risk phone number belongs.
         self.high_risk_mobile_province = high_risk_mobile_province
 
     def validate(self):
@@ -155,11 +155,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince(Dar
         grid: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid = None,
         series: List[main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeries] = None,
     ):
-        # Indicator, default true
+        # The identifier. Default value: true.
         self.animation = animation
-        # Belongs to grid.
+        # The grid to which the chart belongs.
         self.grid = grid
-        # Chart data
+        # The chart data.
         self.series = series
 
     def validate(self):
@@ -212,11 +212,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeri
         name: str = None,
         rose_type: str = None,
     ):
-        # High-risk position data.
+        # The high-risk location data.
         self.data = data
-        # Display title
+        # The display title.
         self.name = name
-        # Chart identifier, default false
+        # The chart identifier. Default value: false.
         self.rose_type = rose_type
 
     def validate(self):
@@ -265,9 +265,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeri
         name: str = None,
         value: str = None,
     ):
-        # Field name
+        # The field name.
         self.name = name
-        # Data value
+        # The data value.
         self.value = value
 
     def validate(self):
@@ -301,7 +301,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid
         self,
         show: bool = None,
     ):
-        # Chart flag, default is false
+        # The chart identifier. Default value: false.
         self.show = show
 
     def validate(self):
@@ -331,11 +331,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity(DaraMod
         grid: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid = None,
         series: List[main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries] = None,
     ):
-        # Chart flag, default is true
+        # The chart identifier. Default value: true.
         self.animation = animation
-        # Belongs to grid.
+        # The grid to which the chart belongs.
         self.grid = grid
-        # Chart data
+        # The chart data.
         self.series = series
 
     def validate(self):
@@ -388,11 +388,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries(D
         name: str = None,
         rose_type: str = None,
     ):
-        # Returned data object
+        # The response data object.
         self.data = data
-        # Field name
+        # The field name.
         self.name = name
-        # Chart flag, default is false
+        # The chart identifier. Default value: false.
         self.rose_type = rose_type
 
     def validate(self):
@@ -441,9 +441,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeriesDa
         name: str = None,
         value: str = None,
     ):
-        # Field name
+        # The field name.
         self.name = name
-        # Data value
+        # The data value.
         self.value = value
 
     def validate(self):
@@ -477,7 +477,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid(Dar
         self,
         show: bool = None,
     ):
-        # Chart flag, default is false
+        # The chart identifier. Default value: false.
         self.show = show
 
     def validate(self):
@@ -507,11 +507,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince(DaraMod
         grid: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid = None,
         series: List[main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries] = None,
     ):
-        # Chart identifier, default is true
+        # The chart identifier. Default value: true.
         self.animation = animation
-        # Belonging grid.
+        # The grid to which the chart belongs.
         self.grid = grid
-        # Chart data
+        # The chart data.
         self.series = series
 
     def validate(self):
@@ -564,11 +564,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries(D
         name: str = None,
         rose_type: str = None,
     ):
-        # Returned data object
+        # The response data object.
         self.data = data
-        # Field name
+        # The field name.
         self.name = name
-        # Chart identifier, default is false
+        # The chart identifier. Default value: false.
         self.rose_type = rose_type
 
     def validate(self):
@@ -617,9 +617,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeriesDa
         name: str = None,
         value: str = None,
     ):
-        # Variable name
+        # The variable name.
         self.name = name
-        # Data value
+        # The data value.
         self.value = value
 
     def validate(self):
@@ -653,7 +653,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid(Dar
         self,
         show: bool = None,
     ):
-        # Chart identifier, default is false
+        # The chart identifier. Default value: false.
         self.show = show
 
     def validate(self):
@@ -683,11 +683,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity(DaraModel):
         grid: main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid = None,
         series: List[main_models.DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries] = None,
     ):
-        # Chart flag, default true
+        # The chart identifier. Default value: true.
         self.animation = animation
-        # Belonging grid.
+        # The grid to which the chart belongs.
         self.grid = grid
-        # Chart data
+        # The chart data.
         self.series = series
 
     def validate(self):
@@ -740,11 +740,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries(DaraM
         name: str = None,
         rose_type: str = None,
     ):
-        # Returned data object
+        # The response data object.
         self.data = data
-        # Field name
+        # The field name.
         self.name = name
-        # Chart identifier, default is false
+        # The chart identifier. Default value: false.
         self.rose_type = rose_type
 
     def validate(self):
@@ -793,9 +793,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesData(D
         name: str = None,
         value: str = None,
     ):
-        # Field name
+        # The field name.
         self.name = name
-        # Data value
+        # The data value.
         self.value = value
 
     def validate(self):
@@ -829,7 +829,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid(DaraMod
         self,
         show: bool = None,
     ):
-        # Chart flag, default false
+        # The chart identifier. Default value: false.
         self.show = show
 
     def validate(self):

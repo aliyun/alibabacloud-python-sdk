@@ -10,12 +10,11 @@ class DescribeCustomizedStrategyTargetsRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requests and responses. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

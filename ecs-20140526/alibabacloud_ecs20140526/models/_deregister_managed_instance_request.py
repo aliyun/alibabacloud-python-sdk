@@ -15,6 +15,7 @@ class DeregisterManagedInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Ensures the idempotence of the request. Generate a unique value for this parameter from your client to guarantee that the value is unique across different requests. **ClientToken** supports only ASCII characters and must not exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The managed instance ID.
         # 

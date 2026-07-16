@@ -14,28 +14,23 @@ class DescribeVpcHoneyPotListRequest(DaraModel):
         vpc_name: str = None,
         vpc_region_id: str = None,
     ):
-        # The number of the page to return.
+        # The page number. Pages start from page 1.
         self.current_page = current_page
-        # Specifies whether the cloud honeypot feature is enabled for the VPCs. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
+        # Specifies whether the VPCs to query have cloud honeypot enabled. Valid values:
+        # - **true**: enabled
+        # - **false**: disabled
         self.honey_pot_existence = honey_pot_existence
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # > We recommend that you specify this parameter.
         self.page_size = page_size
-        # The ID of the VPC on which the honeypot is deployed.
-        # 
-        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the IDs of VPCs.
+        # The ID of the VPC in which the honeypot instance that you want to query resides.
+        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the VPC ID.
         self.vpc_id = vpc_id
-        # The name of the VPC.
-        # 
-        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the names of VPCs.
+        # The name of the VPC in which the honeypot instance that you want to query resides.
+        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the VPC name.
         self.vpc_name = vpc_name
-        # The region ID of the VPC.
-        # 
-        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the region IDs of VPCs.
+        # The region ID of the VPC in which the honeypot instance that you want to query resides.
+        # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to obtain the region ID of the VPC.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

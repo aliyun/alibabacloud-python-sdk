@@ -9,6 +9,7 @@ class GetYikeStoryboardJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
+        # The storyboard job ID.
         self.job_id = job_id
 
     def validate(self):

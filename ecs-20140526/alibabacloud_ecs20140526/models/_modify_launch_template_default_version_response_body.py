@@ -12,7 +12,7 @@ class ModifyLaunchTemplateDefaultVersionResponseBody(DaraModel):
     ):
         # The ID of the launch template. For more information, see [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
         self.launch_template_id = launch_template_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

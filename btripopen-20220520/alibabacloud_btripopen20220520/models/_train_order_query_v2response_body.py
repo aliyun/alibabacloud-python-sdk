@@ -20,10 +20,8 @@ class TrainOrderQueryV2ResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -455,7 +453,6 @@ class TrainOrderQueryV2ResponseBodyModuleTrainOrderInfoTrainInfoList(DaraModel):
         self.from_city_ad_code = from_city_ad_code
         self.from_city_name = from_city_name
         self.from_station_name = from_station_name
-        # itemId
         self.item_id = item_id
         self.run_time = run_time
         self.sub_from_city_ad_code = sub_from_city_ad_code

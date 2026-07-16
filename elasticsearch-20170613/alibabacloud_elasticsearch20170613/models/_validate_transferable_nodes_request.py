@@ -13,7 +13,15 @@ class ValidateTransferableNodesRequest(DaraModel):
         body: List[main_models.ValidateTransferableNodesRequestBody] = None,
         node_type: str = None,
     ):
+        # The request body.
         self.body = body
+        # The node type. Valid values:
+        # 
+        # - WORKER: hot node
+        # - WORKER_WARM: warm node
+        # 
+        # > COORDINATING (client node) and KIBANA (Kibana node) are not supported.
+        # 
         # This parameter is required.
         self.node_type = node_type
 
@@ -58,8 +66,11 @@ class ValidateTransferableNodesRequestBody(DaraModel):
         port: int = None,
         zone_id: str = None,
     ):
+        # The IP address of the node.
         self.host = host
+        # The access port number of the node.
         self.port = port
+        # The zone ID of the instance node. For example, the ID of Zone C in the China (Shanghai) region is cn-shanghai-c.
         self.zone_id = zone_id
 
     def validate(self):

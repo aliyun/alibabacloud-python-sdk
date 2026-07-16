@@ -10,7 +10,7 @@ class PutConcurrencyConfigRequest(DaraModel):
         self,
         body: main_models.PutConcurrencyInput = None,
     ):
-        # The concurrency configurations.
+        # The concurrency configuration of the function.
         # 
         # This parameter is required.
         self.body = body

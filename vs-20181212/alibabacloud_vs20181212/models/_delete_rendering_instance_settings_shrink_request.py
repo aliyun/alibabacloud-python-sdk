@@ -10,7 +10,9 @@ class DeleteRenderingInstanceSettingsShrinkRequest(DaraModel):
         attribute_names_shrink: str = None,
         rendering_instance_id: str = None,
     ):
+        # List of attribute names.
         self.attribute_names_shrink = attribute_names_shrink
+        # ID of the cloud application service instance.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

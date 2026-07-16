@@ -17,10 +17,17 @@ class UpdateApplicationVswitchesRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
+        # Indicates whether to deploy the application immediately. Valid values:
+        # 
+        # - **true**: Deploys the application immediately. This is the default.
+        # 
+        # - **false**: The application is not deployed.
         self.deploy = deploy
+        # The minimum percentage of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
+        # The minimum number of ready instances.
         self.min_ready_instances = min_ready_instances
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

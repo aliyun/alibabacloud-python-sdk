@@ -18,13 +18,21 @@ class ListAllEndEntityInstanceResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
+        # The page number of the instance list.
         self.current_page = current_page
+        # The list of instances.
         self.list = list
+        # The maximum number of entries returned in this call.
         self.max_results = max_results
+        # The token that you can use to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The total number of pages.
         self.page_count = page_count
+        # The request ID.
         self.request_id = request_id
+        # The maximum number of entries displayed on each page of a paged query.
         self.show_size = show_size
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):

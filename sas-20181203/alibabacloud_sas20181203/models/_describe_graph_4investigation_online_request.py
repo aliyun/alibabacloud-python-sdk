@@ -13,20 +13,20 @@ class DescribeGraph4InvestigationOnlineRequest(DaraModel):
         namespace: str = None,
         vertex_id: str = None,
     ):
-        # The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID, with the value path being: data.SuspEvents[index].UniqueInfo.
+        # The ID of the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the alert event ID. The value is in the data.SuspEvents[index].UniqueInfo path.
         self.anomaly_id = anomaly_id
-        # The UUID of the alert event asset. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID, with the value path being: data.SuspEvents[index].Uuid.
+        # The UUID of the asset associated with the alert event. You can call [DescribeSuspEvents](~~DescribeSuspEvents~~) to obtain the asset UUID. The value is in the data.SuspEvents[index].Uuid path.
         self.anomaly_uuid = anomaly_uuid
-        # Sets the language type for the request and response messages. The default is **zh**. Values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # The namespace of the graph, which is fixed as: hundun_dc_online.
+        # The namespace of the graph. Set this parameter to hundun_dc_online.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # Vertex ID. This does not need to be proactively provided.
+        # The vertex ID. You do not need to specify this parameter.
         self.vertex_id = vertex_id
 
     def validate(self):

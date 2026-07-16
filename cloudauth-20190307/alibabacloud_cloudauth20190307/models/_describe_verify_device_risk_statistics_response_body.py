@@ -13,9 +13,9 @@ class DescribeVerifyDeviceRiskStatisticsResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject = None,
     ):
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Authentication result.
+        # The verification result.
         self.result_object = result_object
 
     def validate(self):
@@ -57,19 +57,19 @@ class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObject(DaraModel):
         simulator_rate: str = None,
         virtual_video_rate: str = None,
     ):
-        # Suspected fake face percentage: total number of suspected fake faces / total number of risks.
+        # The suspected fake face percentage: total number of suspected fake faces / total number of risks.
         self.face_attack_rate = face_attack_rate
-        # Total number of suspected fake identities.
+        # The total number of suspected fake identities.
         self.id_fake_rate = id_fake_rate
-        # Data items in the response.
+        # The data items in the response.
         self.items = items
-        # Number of risks.
+        # The number of risks.
         self.risk_count = risk_count
-        # Root percentage: total number of root / total number of risks.
+        # The root percentage: total number of rooted devices / total number of risks.
         self.root_rate = root_rate
-        # Simulator percentage: total number of simulators / total number of risks.
+        # The emulator percentage: total number of emulators / total number of risks.
         self.simulator_rate = simulator_rate
-        # Virtual video percentage: total number of virtual videos / total number of risks.
+        # The virtual video percentage: total number of virtual videos / total number of risks.
         self.virtual_video_rate = virtual_video_rate
 
     def validate(self):
@@ -144,13 +144,13 @@ class DescribeVerifyDeviceRiskStatisticsResponseBodyResultObjectItems(DaraModel)
         device_risk_rate: str = None,
         identity_risk_rate: str = None,
     ):
-        # Daily call count.
+        # The number of daily transactions.
         self.daily_call_count = daily_call_count
-        # Date.
+        # The date.
         self.date = date
-        # Abnormal device risk ratio.
+        # The abnormal device risk ratio.
         self.device_risk_rate = device_risk_rate
-        # Abnormal identity risk ratio.
+        # The abnormal identity risk ratio.
         self.identity_risk_rate = identity_risk_rate
 
     def validate(self):

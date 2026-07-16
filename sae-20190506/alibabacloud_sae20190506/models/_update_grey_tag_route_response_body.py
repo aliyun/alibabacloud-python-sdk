@@ -18,28 +18,33 @@ class UpdateGreyTagRouteResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
-        self.code = code
-        # The information about the canary release rule.
-        self.data = data
-        # The error code. Valid values:
+        # - **2xx**: The request is successful.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
+        self.code = code
+        # The grey tag route information.
+        self.data = data
+        # The error code.
+        # 
+        # - The **ErrorCode** parameter is not returned for successful requests.
+        # 
+        # - The **ErrorCode** parameter is returned for failed requests. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message.
+        # Additional information about the call result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the information of the change order was queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID. You can use this ID to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -105,7 +110,7 @@ class UpdateGreyTagRouteResponseBodyData(DaraModel):
         self,
         grey_tag_route_id: int = None,
     ):
-        # The ID of the canary release rule. The ID is globally unique.
+        # The globally unique grey tag route ID.
         self.grey_tag_route_id = grey_tag_route_id
 
     def validate(self):

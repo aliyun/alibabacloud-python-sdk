@@ -19,26 +19,38 @@ class FlowRebindPhoneRequest(DaraModel):
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
-        # Message channel code
+        # The message channel code, which is the channel ID. You can view the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
         # 
         # This parameter is required.
         self.channel_code = channel_code
-        # Message channel type
+        # The message channel type. Valid values:
+        # 
+        # - INSTAGRAM
+        # 
+        # - WHATSAPP
+        # 
+        # - MESSENGER
+        # 
+        # <props="intl">- VIBER
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Flow code.
+        # The flow code. You can view it on the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         # 
         # This parameter is required.
         self.flow_code = flow_code
-        # Flow version
+        # The flow version. On the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the flow builder canvas and view the flow version.
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # Phone numbers or PageIds under the channel instance, etc.
+        # The list of phone numbers, PageIds, or AccountIds<props="intl">, or ServiceIds under the channel instance.
         self.phone_numbers = phone_numbers
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # WABA account ID, or PageId for other channel types, etc.
+        # The WABA account ID, PageId, or AccountId<props="intl">, or ServiceId.
+        # 
+        # - If ChannelType is set to WHATSAPP, specify the WABA account ID. You can view the WABA account ID on the Channel Management > Manage > WABA Management page.
+        # 
+        # - If ChannelType is not set to WHATSAPP, specify the PageId for MESSENGER, the AccountId for INSTAGRAM<props="intl">, or the ServiceId for VIBER.
         # 
         # This parameter is required.
         self.waba_id = waba_id

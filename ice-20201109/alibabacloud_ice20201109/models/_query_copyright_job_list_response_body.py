@@ -203,8 +203,9 @@ class QueryCopyrightJobListResponseBodyDataOutput(DaraModel):
         self.media = media
         # The type of the output file. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: an OSS object.
+        # 
+        # - Media: a media asset.
         self.type = type
 
     def validate(self):
@@ -243,8 +244,9 @@ class QueryCopyrightJobListResponseBodyDataInput(DaraModel):
         self.media = media
         # The type of the input file. Valid values:
         # 
-        # 1.  OSS: an Object Storage Service (OSS) object.
-        # 2.  Media: a media asset.
+        # 1. OSS: an Object Storage Service (OSS) object.
+        # 
+        # 2. Media: a media asset.
         self.type = type
 
     def validate(self):

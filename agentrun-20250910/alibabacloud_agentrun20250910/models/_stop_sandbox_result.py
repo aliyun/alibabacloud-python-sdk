@@ -12,8 +12,11 @@ class StopSandboxResult(DaraModel):
         data: main_models.Sandbox = None,
         request_id: str = None,
     ):
+        # Result code
         self.code = code
+        # Details of the code interpreter, including all configuration and status information of the interpreter
         self.data = data
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

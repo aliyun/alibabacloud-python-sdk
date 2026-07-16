@@ -18,19 +18,19 @@ class ListUserRoutinesResponseBody(DaraModel):
         total_count: int = None,
         used_routine_number: int = None,
     ):
-        # The page number. Pages start from page 1. Default value: 1.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The maximum number of functions supported by the billing plan.
+        # The Routine quota for the current plan.
         self.quota_routine_number = quota_routine_number
         # The request ID.
         self.request_id = request_id
-        # The functions.
+        # The list of Routines.
         self.routines = routines
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
-        # The number of functions that were already created.
+        # The number of Routines already created.
         self.used_routine_number = used_routine_number
 
     def validate(self):
@@ -106,15 +106,15 @@ class ListUserRoutinesResponseBodyRoutines(DaraModel):
         has_assets: bool = None,
         routine_name: str = None,
     ):
-        # The time when the function was created.
+        # The time when the Edge Routine was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
-        # The default record name to access.
+        # The default access record associated with the Routine.
         self.default_related_record = default_related_record
-        # The function description.
+        # The Routine description.
         self.description = description
-        # Specifies whether to include the Assets file tag.
+        # Indicates whether the Routine contains asset files.
         self.has_assets = has_assets
-        # The function name.
+        # The Routine name.
         self.routine_name = routine_name
 
     def validate(self):

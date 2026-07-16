@@ -17,17 +17,17 @@ class DescribeSceneRulePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Number of items per page in the returned results. Default value: 20, minimum value: 1, maximum value: 50.
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # Request ID, which is unique for each request, facilitating subsequent troubleshooting
+        # The request ID. Each request has a unique ID for troubleshooting purposes.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -112,45 +112,48 @@ class DescribeSceneRulePageListResponseBodyResultObject(DaraModel):
         template_id: int = None,
         version: int = None,
     ):
-        # Service authorization type
+        # The service authorization type.
         self.auth_type = auth_type
-        # Audit object
+        # The audit object.
         self.console_audit = console_audit
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type. Valid values:
+        # - BYPASS: bypass event.
+        # - SHUNT: shunt event.
+        # - MAIN: main event.
         self.event_type = event_type
-        # External rule name
+        # The customer-facing policy name.
         self.external_rule_name = external_rule_name
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Primary key ID of the rule
+        # The primary key ID of the policy.
         self.id = id
-        # Main rule ID
+        # The main policy ID.
         self.main_rule_id = main_rule_id
-        # Strategy priority, where a higher number indicates a higher priority.
+        # The policy priority. A larger value indicates a higher priority.
         self.priority = priority
-        # Rule Auth type
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # Strategy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Strategy description
+        # The policy description.
         self.rule_memo = rule_memo
-        # Strategy name
+        # The policy name.
         self.rule_name = rule_name
-        # Strategy status
+        # The policy status.
         self.rule_status = rule_status
-        # Rule type
+        # The rule type.
         self.rule_type = rule_type
-        # Primary key ID of the rule version
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
-        # Template ID
+        # The template ID.
         self.template_id = template_id
-        # Version number
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -309,37 +312,37 @@ class DescribeSceneRulePageListResponseBodyResultObjectConsoleAudit(DaraModel):
         relation_name: str = None,
         relation_type: str = None,
     ):
-        # Initiator account ID
+        # The account ID of the applicant.
         self.apply_user_id = apply_user_id
-        # Initiator account name
+        # The account name of the applicant.
         self.apply_user_name = apply_user_name
-        # Approval comments
+        # The approval comment.
         self.audit_msg = audit_msg
-        # Final approver ID
+        # The ID of the final approver.
         self.audit_real_user_id = audit_real_user_id
-        # Approver account name
+        # The account name of the approver.
         self.audit_real_user_name = audit_real_user_name
-        # Approval application remarks
+        # The remark for the approval request.
         self.audit_remark = audit_remark
-        # Status
+        # The approval status.
         self.audit_status = audit_status
-        # Approval time
+        # The approval time.
         self.audit_time = audit_time
-        # Designated auditor account IDs (comma-separated for multiple)
+        # The account IDs of the designated reviewers. Multiple IDs are separated by commas (,).
         self.audit_user_id = audit_user_id
-        # Designated auditor account names (comma-separated for multiple)
+        # The account names of the designated reviewers. Multiple names are separated by commas (,).
         self.audit_user_name = audit_user_name
-        # Creation time in UTC
+        # The creation time in UTC.
         self.gmt_create = gmt_create
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Information about other related parties (in JSON format)
+        # The information about other associated persons in JSON format.
         self.relation_ext = relation_ext
-        # 审批关联的事务ID
+        # The transaction ID associated with the approval.
         self.relation_id = relation_id
-        # The name of the associated transaction (can be null)
+        # The transaction name associated with the approval. This parameter can be empty.
         self.relation_name = relation_name
-        # 审批的类型（如rule代表策略的审批）
+        # The approval type. For example, rule indicates a policy approval.
         self.relation_type = relation_type
 
     def validate(self):

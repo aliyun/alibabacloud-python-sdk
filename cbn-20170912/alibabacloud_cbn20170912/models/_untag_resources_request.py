@@ -19,16 +19,54 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags. Valid values:
+        # 
+        # - **true**: Yes
+        # - **false** (default): No
+        # 
+        # > This parameter takes effect only when the **TagKey.N** parameter is empty.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
+        # 
+        # This parameter is not required when the resource type is Cen or BandwidthPackage. For all other resource types, this parameter is required.
         self.region_id = region_id
+        # Resource ID. The value of **N** ranges from **1** to **50**.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Resource type. Valid values:
+        # 
+        # **Cen**: Cloud Enterprise Network (CEN).
+        # 
+        # **BandwidthPackage**: Bandwidth package.
+        # 
+        # **TransitRouter**: Transit router.
+        # 
+        # **TransitRouterVpcAttachment**: VPC attachment.
+        # 
+        # **TransitRouterVbrAttachment**: VBR attachment.
+        # 
+        # **TransitRouterPeerAttachment**: Inter-region attachment.
+        # 
+        # **TransitRouterVpnAttachment**: VPN attachment.
+        # 
+        # **TransitRouterRouteTable**: Route table.
+        # 
+        # **Flowlog**: Flow log.
+        # 
+        # **TransitRouterMulticastDomain**: Multicast domain.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # Tag key.
+        # 
+        # A tag key can contain up to 64 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # 
+        # If you specify multiple tag keys, the logical relation among these tag keys is **OR**. Valid values of **N**: **1** to **20**.
         self.tag_key = tag_key
 
     def validate(self):

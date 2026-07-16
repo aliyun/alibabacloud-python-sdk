@@ -16,9 +16,9 @@ class GetClusterInspectConfigResponseBody(DaraModel):
     ):
         # The list of disabled inspection items.
         self.disabled_check_items = disabled_check_items
-        # Specifies whether to enable inspection.
+        # Indicates whether inspection is enabled.
         self.enabled = enabled
-        # The inspection schedule defined through the RFC5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
+        # The inspection cycle defined by using the RFC 5545 Recurrence Rule syntax. You must specify BYHOUR and BYMINUTE. Only FREQ=DAILY is supported. COUNT and UNTIL are not supported.
         self.recurrence = recurrence
         # The request ID.
         self.request_id = request_id

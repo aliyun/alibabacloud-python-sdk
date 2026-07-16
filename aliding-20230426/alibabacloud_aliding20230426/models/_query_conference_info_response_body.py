@@ -12,7 +12,6 @@ class QueryConferenceInfoResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.conf_info = conf_info
-        # requestId
         self.request_id = request_id
 
     def validate(self):

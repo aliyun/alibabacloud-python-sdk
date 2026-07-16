@@ -26,8 +26,9 @@ class GetJobInfoResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the job details were obtained. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -137,11 +138,15 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
         self.description = description
         # The execution mode of the job. Valid values:
         # 
-        # *   **Stand-alone operation**: standalone
-        # *   **Broadcast run**: broadcast
-        # *   **Visual MapReduce**: parallel
-        # *   **MapReduce**: batch
-        # *   **Shard run**: sharding
+        # - **Stand-alone operation**: standalone
+        # 
+        # - **Broadcast run**: broadcast
+        # 
+        # - **Visual MapReduce**: parallel
+        # 
+        # - **MapReduce**: batch
+        # 
+        # - **Shard run**: sharding
         self.execute_mode = execute_mode
         # The full path used to upload files to Object Storage Service (OSS).
         # 
@@ -165,8 +170,9 @@ class GetJobInfoResponseBodyDataJobConfigInfo(DaraModel):
         self.parameters = parameters
         # Indicates whether the job was enabled. Valid values:
         # 
-        # *   **1**: The job was enabled and could be triggered.
-        # *   **0**: The job was disabled and could not be triggered.
+        # - **1**: The job was enabled and could be triggered.
+        # 
+        # - **0**: The job was disabled and could not be triggered.
         self.status = status
         # The time configurations.
         self.time_config = time_config
@@ -311,18 +317,25 @@ class GetJobInfoResponseBodyDataJobConfigInfoTimeConfig(DaraModel):
         self.data_offset = data_offset
         # The time expression specified based on the value of TimeType:
         # 
-        # *   If TimeType is set to **100** (api), no time expression is required.
-        # *   If TimeType is set to **3** (fix_rate), this parameter value indicates the specific and fixed frequency. For example, if the value is 30, the system triggers a job every 30 seconds.
-        # *   If TimeType is set to **1** (cron), this parameter value indicates the standard CRON expression used to specify the time when to schedule the job.
-        # *   If TimeType is set to **4** (second_delay), this parameter value indicates the fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
+        # - If TimeType is set to **100** (api), no time expression is required.
+        # 
+        # - If TimeType is set to **3** (fix_rate), this parameter value indicates the specific and fixed frequency. For example, if the value is 30, the system triggers a job every 30 seconds.
+        # 
+        # - If TimeType is set to **1** (cron), this parameter value indicates the standard CRON expression used to specify the time when to schedule the job.
+        # 
+        # - If TimeType is set to **4** (second_delay), this parameter value indicates the fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
         self.time_expression = time_expression
         # The time type. Valid values:
         # 
-        # *   **1**: cron
-        # *   **3**: fix_rate
-        # *   **4**: second_delay
-        # *   **5**: one_time
-        # *   **100**: api
+        # - **1**: cron
+        # 
+        # - **3**: fix_rate
+        # 
+        # - **4**: second_delay
+        # 
+        # - **5**: one_time
+        # 
+        # - **100**: api
         self.time_type = time_type
 
     def validate(self):
@@ -496,8 +509,9 @@ class GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig(DaraMod
     ):
         # Indicates whether the Failure alarm switch was turned on. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.fail_enable = fail_enable
         # Indicates whether the No machine alarm available switch was turned on.
         self.miss_worker_enable = miss_worker_enable
@@ -507,8 +521,9 @@ class GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfoMonitorConfig(DaraMod
         self.timeout = timeout
         # Indicates whether the Timeout alarm switch was turned on. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.timeout_enable = timeout_enable
         # Indicates whether the Timeout termination switch was turned on. The switch is turned off by default.
         self.timeout_kill_enable = timeout_kill_enable

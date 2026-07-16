@@ -12,6 +12,7 @@ class GetCollectionPolicyResponseBody(DaraModel):
         self,
         collection_policy: main_models.GetCollectionPolicyResponseBodyCollectionPolicy = None,
     ):
+        # The details of the rule.
         self.collection_policy = collection_policy
 
     def validate(self):
@@ -51,16 +52,27 @@ class GetCollectionPolicyResponseBodyCollectionPolicy(DaraModel):
         product_code: str = None,
         resource_directory: main_models.GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory = None,
     ):
+        # The configuration for centralized shipping.
         self.centralize_config = centralize_config
+        # Indicates whether centralized storage is enabled.
         self.centralize_enabled = centralize_enabled
+        # The code for the log type.
         self.data_code = data_code
+        # The configuration that is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. Otherwise, this parameter is empty.
         self.data_config = data_config
+        # Indicates whether the rule is enabled.
         self.enabled = enabled
+        # Indicates whether the rule is a built-in rule. Built-in rules cannot be modified or deleted.
         self.internal_policy = internal_policy
+        # The configuration of the collection rule.
         self.policy_config = policy_config
+        # The name of the rule.
         self.policy_name = policy_name
+        # The ID of the Alibaba Cloud account to which the rule belongs. If the rule is created by a resource directory administrator or a delegated administrator, this parameter specifies the ID of the administrator\\"s Alibaba Cloud account.
         self.policy_uid = policy_uid
+        # The code of the product.
         self.product_code = product_code
+        # The configuration of the resource directory. This parameter is empty if no configuration is specified.
         self.resource_directory = resource_directory
 
     def validate(self):
@@ -160,7 +172,9 @@ class GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory(DaraModel
         account_group_type: str = None,
         members: List[str] = None,
     ):
+        # The mode for selecting accounts in the resource directory. Valid values: \\`all\\` and \\`custom\\`.
         self.account_group_type = account_group_type
+        # The member accounts. This parameter is returned only when \\`accountGroupType\\` is set to \\`custom\\`.
         self.members = members
 
     def validate(self):
@@ -197,9 +211,13 @@ class GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig(DaraModel):
         resource_mode: str = None,
         resource_tags: Dict[str, Any] = None,
     ):
+        # The instance IDs.
         self.instance_ids = instance_ids
+        # The regions where the instances reside. Wildcard characters are supported.
         self.regions = regions
+        # The collection pattern for resources.
         self.resource_mode = resource_mode
+        # The resource tags.
         self.resource_tags = resource_tags
 
     def validate(self):
@@ -246,7 +264,9 @@ class GetCollectionPolicyResponseBodyCollectionPolicyDataConfig(DaraModel):
         data_project: str = None,
         data_region: str = None,
     ):
+        # This parameter is valid only for global log types, such as when \\`productCode\\` is \\`sls\\`. If this parameter is left empty, logs are collected to the default project of the account in the specified \\`dataRegion\\`.
         self.data_project = data_project
+        # This parameter is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. This parameter specifies the region to which global logs are collected during the initial configuration.
         self.data_region = data_region
 
     def validate(self):
@@ -283,9 +303,13 @@ class GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig(DaraModel)
         dest_region: str = None,
         dest_ttl: int = None,
     ):
+        # The destination Logstore for centralized shipping.
         self.dest_logstore = dest_logstore
+        # The destination project for centralized shipping.
         self.dest_project = dest_project
+        # The destination region for centralized shipping.
         self.dest_region = dest_region
+        # The retention period of the destination Logstore. Unit: days.
         self.dest_ttl = dest_ttl
 
     def validate(self):

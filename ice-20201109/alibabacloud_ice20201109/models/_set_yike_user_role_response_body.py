@@ -10,7 +10,13 @@ class SetYikeUserRoleResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
+        # 
+        # - true: Success
+        # 
+        # - false: Failure
         self.result = result
 
     def validate(self):

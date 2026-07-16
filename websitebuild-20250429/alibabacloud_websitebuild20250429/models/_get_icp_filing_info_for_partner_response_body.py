@@ -11,6 +11,7 @@ class GetIcpFilingInfoForPartnerResponseBody(DaraModel):
         data: main_models.GetIcpFilingInfoForPartnerResponseBodyData = None,
         request_id: str = None,
     ):
+        # The request result.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -50,8 +51,11 @@ class GetIcpFilingInfoForPartnerResponseBodyData(DaraModel):
         recorded: bool = None,
         site_record_number: str = None,
     ):
+        # The ICP filing number associated with the domain name. Both entity ICP filing numbers and website ICP filing numbers are supported.
         self.icp_number = icp_number
+        # Indicates whether the domain name has an ICP filing.
         self.recorded = recorded
+        # The website ICP filing number associated with the domain name.
         self.site_record_number = site_record_number
 
     def validate(self):

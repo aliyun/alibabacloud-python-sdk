@@ -13,9 +13,9 @@ class DescribeSasPmAgentListResponseBody(DaraModel):
         request_id: str = None,
         sas_pm_agent_list: List[main_models.DescribeSasPmAgentListResponseBodySasPmAgentList] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the information about servers.
+        # The query result list.
         self.sas_pm_agent_list = sas_pm_agent_list
 
     def validate(self):
@@ -63,34 +63,30 @@ class DescribeSasPmAgentListResponseBodySasPmAgentList(DaraModel):
         monitor_install_status: int = None,
         uuid: str = None,
     ):
-        # The ID of Cloud Assistant.
+        # The globally unique ID of Cloud Assistant.
         self.aliyun_assist_id = aliyun_assist_id
-        # The ID of the CloudMonitor agent.
+        # The globally unique ID of CloudMonitor.
         self.aliyun_monitor_id = aliyun_monitor_id
-        # The installation result of Cloud Assistant. Valid values:
-        # 
-        # *   **0**: SUCCESS
-        # *   **1**: MISSING_PARAM
-        # *   **2**: UNKNOWN_SYSTEM
-        # *   **3**: DOWNLOAD_FAILED
-        # *   **4**: INSTALL_FAILED
+        # The installation execution result of Cloud Assistant. Valid values:
+        # - **0**: SUCCESS
+        # - **1**: MISSING_PARAM
+        # - **2**: UNKNOWN_SYSTEM
+        # - **3**: DOWNLOAD_FAILED
+        # - **4**: INSTALL_FAILED.
         self.assist_install_result = assist_install_result
-        # The status of Cloud Assistant. Valid values:
-        # 
-        # *   **0**: installing
-        # *   **1**: installed
-        # *   **2**: installation failed
-        # *   **3**: installation timed out
+        # The installation status of Cloud Assistant. Valid values:
+        # - **0**: Installing.
+        # - **1**: Installed.
+        # - **2**: Installation failed.
+        # - **3**: Installation timed out.
         self.assist_install_status = assist_install_status
-        # The installation result of the CloudMonitor agent. Valid values:
-        # 
-        # *   **0**: failed
-        # *   **1**: successful
+        # The installation execution result of CloudMonitor. Valid values:
+        # - **0**: Failed.
+        # - **1**: Succeeded.
         self.monitor_install_result = monitor_install_result
-        # The status of the CloudMonitor agent. Valid values:
-        # 
-        # *   **0**: installation failed
-        # *   **1**: installed
+        # The installation status of CloudMonitor. Valid values:
+        # - **0**: Failed.
+        # - **1**: Succeeded.
         self.monitor_install_status = monitor_install_status
         # The UUID of the server.
         self.uuid = uuid

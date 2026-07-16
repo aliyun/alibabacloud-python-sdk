@@ -16,28 +16,29 @@ class CreateSM2CertRequest(DaraModel):
         sign_certificate: str = None,
         sign_private_key: str = None,
     ):
-        # The name of the SM certificate.
+        # The certificate name.
         self.cert_name = cert_name
-        # The content of the SM certificate.
+        # The content of the SM encryption certificate.
         self.encrypt_certificate = encrypt_certificate
-        # The private key of the SM certificate.
+        # The private key content of the SM encryption certificate.
         self.encrypt_private_key = encrypt_private_key
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The content of the signing certificate for the SM certificate.
+        # The signing certificate content of the SM certificate.
         self.sign_certificate = sign_certificate
-        # The private key of the signing certificate for the SM certificate.
+        # The private key content of the SM signing certificate.
         self.sign_private_key = sign_private_key
 
     def validate(self):

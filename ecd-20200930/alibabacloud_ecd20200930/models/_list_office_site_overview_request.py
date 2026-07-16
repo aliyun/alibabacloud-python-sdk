@@ -20,8 +20,9 @@ class ListOfficeSiteOverviewRequest(DaraModel):
         self.force_refresh = force_refresh
         # The number of entries to return on each page.
         # 
-        # *   Valid values: 1 to 100
-        # *   Default value: 10
+        # - Valid values: 1 to 100
+        # 
+        # - Default value: 10
         self.max_results = max_results
         # The token that determines the start point of the next query. If this is your first query or no next query is to be sent, skip this parameter. If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
@@ -31,9 +32,11 @@ class ListOfficeSiteOverviewRequest(DaraModel):
         # 
         # Default values:
         # 
-        # *   1 (default): queries non-pooled cloud computers in the office network.
-        # *   2: queries pooled cloud computers in the office network.
-        # *   3: queries all cloud computers in the office network.
+        # - 1 (default): queries non-pooled cloud computers in the office network.
+        # 
+        # - 2: queries pooled cloud computers in the office network.
+        # 
+        # - 3: queries all cloud computers in the office network.
         self.query_range = query_range
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
         # 

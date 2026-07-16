@@ -9,9 +9,9 @@ class DescribeClientCertificateRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The unique identifier of the client certificate or the server certificate that you want to query.
+        # The unique identifier of the client certificate or server-side certificate to query.
         # 
-        # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+        # > Call [ListClientCertificate](https://help.aliyun.com/document_detail/465990.html) to query the unique identifiers of all client certificates and server-side certificates.
         # 
         # This parameter is required.
         self.identifier = identifier

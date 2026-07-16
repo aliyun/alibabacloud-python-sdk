@@ -94,61 +94,87 @@ class ListUsersResponseBodyUsers(DaraModel):
         self.email = email
         # This parameter is required if LanguageStatus is set to Custom. Valid values:
         # 
-        # *   **zh-cn**: simplified Chinese.
-        # *   **en**: English.
+        # - **zh-cn**: simplified Chinese.
+        # 
+        # - **en**: English.
         self.language = language
         # Indicates whether notifications are sent in the language specified in the global settings or a custom language.
         # 
-        # *   **Global**
-        # *   **Custom**
+        # - **Global**
+        # 
+        # - **Custom**
         self.language_status = language_status
         # The mobile phone number of the user.
         self.mobile = mobile
         # The location where the mobile phone number of the user is registered. Valid values:
         # 
-        # *   **CN**: the Chinese mainland, whose international dialing code is +86.
-        # *   **HK**: Hong Kong (China), whose international dialing code is +852.
-        # *   **MO**: Macao (China), whose international dialing code is +853.
-        # *   **TW**: Taiwan (China), whose international dialing code is +886.
-        # *   **RU**: Russia, whose international dialing code is +7.
-        # *   **SG**: Singapore, whose international dialing code is +65.
-        # *   **MY**: Malaysia, whose international dialing code is +60.
-        # *   **ID**: Indonesia, whose international dialing code is +62.
-        # *   **DE**: Germany, whose international dialing code is +49.
-        # *   **AU**: Australia, whose international dialing code is +61.
-        # *   **US**: US, whose international dialing code is +1.
-        # *   **AE**: United Arab Emirates, whose international dialing code is +971.
-        # *   **JP:** Japan, whose international dialing code is +81.
-        # *   **GB**: UK, whose international dialing code is +44.
-        # *   **IN**: India, whose international dialing code is +91.
-        # *   **KR**: Republic of Korea, whose international dialing code is +82.
-        # *   **PH**: Philippines, whose international dialing code is +63.
-        # *   **CH**: Switzerland, whose international dialing code is +41.
-        # *   **SE**: Sweden, whose international dialing code is +46.
+        # - **CN**: the Chinese mainland, whose international dialing code is +86.
+        # 
+        # - **HK**: Hong Kong (China), whose international dialing code is +852.
+        # 
+        # - **MO**: Macao (China), whose international dialing code is +853.
+        # 
+        # - **TW**: Taiwan (China), whose international dialing code is +886.
+        # 
+        # - **RU**: Russia, whose international dialing code is +7.
+        # 
+        # - **SG**: Singapore, whose international dialing code is +65.
+        # 
+        # - **MY**: Malaysia, whose international dialing code is +60.
+        # 
+        # - **ID**: Indonesia, whose international dialing code is +62.
+        # 
+        # - **DE**: Germany, whose international dialing code is +49.
+        # 
+        # - **AU**: Australia, whose international dialing code is +61.
+        # 
+        # - **US**: US, whose international dialing code is +1.
+        # 
+        # - **AE**: United Arab Emirates, whose international dialing code is +971.
+        # 
+        # - **JP:** Japan, whose international dialing code is +81.
+        # 
+        # - **GB**: UK, whose international dialing code is +44.
+        # 
+        # - **IN**: India, whose international dialing code is +91.
+        # 
+        # - **KR**: Republic of Korea, whose international dialing code is +82.
+        # 
+        # - **PH**: Philippines, whose international dialing code is +63.
+        # 
+        # - **CH**: Switzerland, whose international dialing code is +41.
+        # 
+        # - **SE**: Sweden, whose international dialing code is +46.
         self.mobile_country_code = mobile_country_code
         # Indicates whether password reset is required upon the next logon. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.need_reset_password = need_reset_password
         # The type of the user. Valid values:
         # 
-        # *   **Local**: a local user.
-        # *   **Ram**: a RAM user.
-        # *   **AD**: an AD-authenticated user.
-        # *   **LDAP**: an LDAP-authenticated user.
+        # - **Local**: a local user.
+        # 
+        # - **Ram**: a RAM user.
+        # 
+        # - **AD**: an AD-authenticated user.
+        # 
+        # - **LDAP**: an LDAP-authenticated user.
         self.source = source
         # The unique ID of the user.
         # 
-        # >  This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if **Source** is set to **Ram**. No value is returned for this parameter if **Source** is set to **Local**.
+        # > This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if **Source** is set to **Ram**. No value is returned for this parameter if **Source** is set to **Local**.
         self.source_user_id = source_user_id
         # An array of the enabled two-factor authentication methods.
         self.two_factor_methods = two_factor_methods
         # Indicates whether two-factor authentication is enabled for the user. Valid values:
         # 
-        # *   **Global**: The global setting applies.
-        # *   **Disable**: Two-factor authentication is disabled.
-        # *   **Enable**: Two-factor authentication is enabled. The user-specific setting for the authentication method applies.
+        # - **Global**: The global setting applies.
+        # 
+        # - **Disable**: Two-factor authentication is disabled.
+        # 
+        # - **Enable**: Two-factor authentication is enabled. The user-specific setting for the authentication method applies.
         self.two_factor_status = two_factor_status
         # The user ID.
         self.user_id = user_id

@@ -14,17 +14,17 @@ class ListMultiAccountResourceGroupsRequest(DaraModel):
         next_token: str = None,
         resource_group_ids: List[str] = None,
     ):
-        # The ID of the management account or a member in the resource directory.
+        # The ID of the management account or member of the resource directory.
         # 
         # This parameter is required.
         self.account_id = account_id
-        # The number of entries to return on each page.
+        # The maximum number of entries to return on each page.
         # 
         # Maximum value: 100. Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The resource group IDs.
+        # The IDs of resource groups.
         self.resource_group_ids = resource_group_ids
 
     def validate(self):

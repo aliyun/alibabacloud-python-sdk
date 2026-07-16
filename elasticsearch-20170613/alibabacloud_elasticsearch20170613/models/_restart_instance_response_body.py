@@ -13,9 +13,9 @@ class RestartInstanceResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.RestartInstanceResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -71,43 +71,43 @@ class RestartInstanceResponseBodyResult(DaraModel):
     ):
         # The time when the instance was created.
         self.created_at = created_at
-        # The name of the instance.
+        # The instance name.
         self.description = description
-        # The configuration of the IK dictionaries.
+        # The IK dictionary configuration.
         self.dict_list = dict_list
-        # The intranet access address of the instance.
+        # The internal endpoint of the instance.
         self.domain = domain
-        # The version of the instance.
+        # The instance version.
         self.es_version = es_version
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The configuration of Kibana nodes.
+        # The Kibana node configuration.
         self.kibana_configuration = kibana_configuration
-        # The public network access address of Kibana.
+        # The Kibana public network access address.
         self.kibana_domain = kibana_domain
-        # The public port of the Kibana network.
+        # The public port of Kibana.
         self.kibana_port = kibana_port
-        # The configuration of dedicated master nodes.
+        # The master node configuration.
         self.master_configuration = master_configuration
         # The network configuration.
         self.network_config = network_config
-        # The number of data nodes.
+        # The number of data nodes in the instance.
         self.node_amount = node_amount
-        # The configuration of data nodes.
+        # The data node configuration.
         self.node_spec = node_spec
-        # The billing method of the created ECS instance.
+        # The billing method of the instance.
         # 
-        # Valid values: prepaid and postpaid.
+        # Valid values: prepaid (subscription) and postpaid (pay-as-you-go).
         self.payment_type = payment_type
         # The public network access address.
         self.public_domain = public_domain
-        # The public network port.
+        # The public port.
         self.public_port = public_port
-        # The state of the cluster.
+        # The status of the instance.
         # 
-        # Supported: active (normal), activating (initializing), inactive (blocked), and invalid (expired).
+        # Valid values: active, activating, inactive, and invalid.
         self.status = status
-        # The configuration of the synonym dictionaries.
+        # The synonym dictionary configuration.
         self.synonyms_dicts = synonyms_dicts
         # The time when the instance was last updated.
         self.updated_at = updated_at
@@ -277,22 +277,22 @@ class RestartInstanceResponseBodyResultSynonymsDicts(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
-        # The size of the Dictionary File. Unit: bytes.
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
         # The name of the dictionary file.
         self.name = name
         # The source type. Valid values:
         # 
-        # *   OSS:OSS open storage (the OSS storage space must be publicly readable.)
-        # *   ORIGIN: open-source Elasticsearch
-        # *   UPLOAD
+        # - OSS: Object Storage Service (OSS). The OSS bucket must have public-read permissions.
+        # - ORIGIN: open-source Elasticsearch
+        # - UPLOAD: uploaded file.
         self.source_type = source_type
-        # The type of the dictionary. Valid values:
+        # The dictionary type. Valid values:
         # 
-        # *   STOP: The STOP word.
-        # *   MAIN: MAIN Dictionary
-        # *   SYNONYMS: SYNONYMS
-        # *   ALI_WS: an Alibaba Dictionary.
+        # - STOP: stopword dictionary
+        # - MAIN: main dictionary
+        # - SYNONYMS: synonym dictionary
+        # - ALI_WS: Alibaba dictionary.
         self.type = type
 
     def validate(self):
@@ -340,11 +340,11 @@ class RestartInstanceResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage space size per data node. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The storage type of the node. Valid values: cloud_ssd and cloud_efficiency.
+        # The storage type of the node.
         self.disk_type = disk_type
-        # The specification of data nodes.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -389,11 +389,11 @@ class RestartInstanceResponseBodyResultNetworkConfig(DaraModel):
     ):
         # The network type. Only Virtual Private Cloud (VPC) is supported.
         self.type = type
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The zone where the instance is deployed.
         self.vs_area = vs_area
-        # The ID of the vSwitch associated with the specified VPC.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -442,13 +442,13 @@ class RestartInstanceResponseBodyResultMasterConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes in the cluster.
+        # The number of nodes.
         self.amount = amount
-        # The size of the node storage space. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
-        # The storage type of the node. This tool only supports cloud_ssd (cloud SSD) disks.
+        # The storage type of the node. Only cloud_ssd (standard SSD) is supported.
         self.disk_type = disk_type
-        # The node specifications of the cluster.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -497,13 +497,13 @@ class RestartInstanceResponseBodyResultKibanaConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of performance metrics.
+        # The number of nodes.
         self.amount = amount
-        # The size of the node storage space. Unit: GB.
+        # The storage size of the node. Unit: GB.
         self.disk = disk
         # The storage type of the node.
         self.disk_type = disk_type
-        # The specification of data nodes.
+        # The node specifications.
         self.spec = spec
 
     def validate(self):
@@ -552,22 +552,22 @@ class RestartInstanceResponseBodyResultDictList(DaraModel):
         source_type: str = None,
         type: str = None,
     ):
-        # The size of the Dictionary File. Unit: bytes.
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
         # The name of the dictionary file.
         self.name = name
         # The source type. Valid values:
         # 
-        # *   OSS: OSS open storage (need to ensure that OSS storage space is public readable.)
-        # *   ORIGIN: Open source Elasticsearch
-        # *   UPLOAD: Uploaded files
+        # - OSS: Object Storage Service (OSS). The OSS bucket must have public-read permissions.
+        # - ORIGIN: open-source Elasticsearch
+        # - UPLOAD: uploaded file.
         self.source_type = source_type
-        # The type of the dictionary. Valid values:
+        # The dictionary type. Valid values:
         # 
-        # *   STOP: The STOP word.
-        # *   MAIN: MAIN Dictionary
-        # *   SYNONYMS: SYNONYMS
-        # *   ALI_WS: an Alibaba Dictionary.
+        # - STOP: stopword dictionary
+        # - MAIN: main dictionary
+        # - SYNONYMS: synonym dictionary
+        # - ALI_WS: Alibaba dictionary.
         self.type = type
 
     def validate(self):

@@ -16,23 +16,23 @@ class DescribeMarkPageRequest(DaraModel):
         reg_id: str = None,
         task_log_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Order direction.
+        # The sort order.
         self.direction = direction
-        # Whether to paginate.
+        # Specifies whether to enable paging.
         self.is_page = is_page
-        # Sorting condition.
+        # The sort condition.
         self.order = order
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region ID.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_log_id = task_log_id
 
     def validate(self):

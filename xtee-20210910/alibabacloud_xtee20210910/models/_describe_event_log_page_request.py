@@ -38,67 +38,67 @@ class DescribeEventLogPageRequest(DaraModel):
         user_agent_prp: str = None,
         user_name_type_lrp: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Account ID (request_param.accountId), up to 50 characters, supports “*” and “?” wildcards.
+        # The account ID (request_param.accountId). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
         self.account_id_prp = account_id_prp
-        # Start timestamp of the log. Unit: milliseconds.
+        # The start timestamp of the log. Unit: milliseconds.
         self.begin_time = begin_time
-        # Full-text match 1, cannot exceed 30 characters.
+        # The first full-text match condition. The value can be up to 30 characters in length.
         self.condition_1al = condition_1al
-        # Full-text match 2, cannot exceed 30 characters.
+        # The second full-text match condition. The value can be up to 30 characters in length.
         self.condition_2al = condition_2al
-        # Full-text match 3, cannot exceed 30 characters.
+        # The third full-text match condition. The value can be up to 30 characters in length.
         self.condition_3al = condition_3al
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Device type (request_param.deviceType), examples: 1. PC, 2. MOBILE.
+        # The device type (request_param.deviceType). Example values: 1: PC. 2: MOBILE.
         self.device_type_lrp = device_type_lrp
-        # Email (request_param.email), up to 100 characters, supports “*” and “?” wildcards.
+        # The email address (request_param.email). The value can be up to 100 characters in length and supports the "\\*" and "?" wildcards.
         self.email_prp = email_prp
-        # End time, accurate to milliseconds (ms).
+        # The end time. Unit: milliseconds.
         self.end_time = end_time
-        # Login failure reason (-request_param.failReason).
+        # The logon failure reason (-request_param.failReason).
         self.fail_reason_lrp = fail_reason_lrp
-        # IP (request_param.ip), up to 20 characters, supports “*” and “?” wildcards.
+        # The IP address (request_param.ip). The value can be up to 20 characters in length and supports the "\\*" and "?" wildcards.
         self.ip_prp = ip_prp
-        # Login success indicator (request_param.loginResult).
+        # The logon success flag (request_param.loginResult).
         self.login_result_arp = login_result_arp
-        # Login verification method (-request_param.loginType).
+        # The logon authentication method (-request_param.loginType).
         self.login_type_lrp = login_type_lrp
-        # Device MAC address (-request_param.mac), up to 30 characters, supports “*” and “?” wildcards.
+        # The device MAC address (-request_param.mac). The value can be up to 30 characters in length and supports the "\\*" and "?" wildcards.
         self.mac_prp = mac_prp
-        # Phone number (supports MD5 request_param.mobile/request_param.mobileMd5), up to 30 characters, supports “*” and “?” wildcards, searchable by mobile and mobileMd5 fields.
+        # The phone number (supports MD5: request_param.mobile/request_param.mobileMd5). The value can be up to 30 characters in length and supports the "\\*" and "?" wildcards. The search is performed based on the mobile and mobileMd5 fields.
         self.mobile_prp = mobile_prp
-        # Account nickname (request_param.nickName), up to 50 characters, supports “*” and “?” wildcards.
+        # The account nickname (request_param.nickName). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
         self.nick_name_prp = nick_name_prp
-        # Operation source (request_param.operateSource), examples: 1. PC, 2. H5, 3. App.
+        # The operation source (request_param.operateSource). Example values: 1: PC. 2: H5. 3: App.
         self.operate_source_lrp = operate_source_lrp
-        # Number of items per page, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Referer (-request_param.refer), up to 50 characters, supports “*” and “?” wildcards.
+        # The referer (-request_param.refer). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
         self.refer_prp = refer_prp
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Account registration IP (request_param.registerIp), up to 20 characters, supports “*” and “?” wildcards.
+        # The account registration IP address (request_param.registerIp). The value can be up to 20 characters in length and supports the "\\*" and "?" wildcards.
         self.register_ip_prp = register_ip_prp
-        # Request ID.
+        # The request ID.
         self.req_id_pbs = req_id_pbs
-        # End value of the score range (score), only non-negative integers are allowed, and the right interval must be greater than the left interval, with both intervals being closed.
+        # The end value of the score range (score). Only non-negative integers are allowed. The end value must be greater than the start value. Both boundaries are inclusive.
         self.score_ebs = score_ebs
-        # Starting value of the score range (score), only non-negative integers are allowed, the right interval must be greater than the left interval, both intervals are inclusive.
+        # The start value of the score range (score). Only non-negative integers are allowed. The end value must be greater than the start value. Both boundaries are inclusive.
         self.score_sbs = score_sbs
-        # Event name (instance_id).
+        # The event name (instance_id).
         self.service_abs = service_abs
-        # Risk tags (tags), data source DescribeTagsList.
+        # The risk label (tags). The data is obtained from DescribeTagsList.
         self.tags_lbs = tags_lbs
-        # Device ID (device_info.umid).
+        # The device ID (device_info.umid).
         self.umid_pdi = umid_pdi
-        # User agent (-request_param.userAgent), up to 50 characters, supports “*” and “?” wildcards.
+        # The user agent (-request_param.userAgent). The value can be up to 50 characters in length and supports the "\\*" and "?" wildcards.
         self.user_agent_prp = user_agent_prp
-        # Username type, login scenario (-request_param.userNameType).
+        # The account name type for the logon scenario (-request_param.userNameType).
         self.user_name_type_lrp = user_name_type_lrp
 
     def validate(self):

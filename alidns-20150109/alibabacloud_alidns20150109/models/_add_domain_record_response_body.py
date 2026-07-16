@@ -12,7 +12,7 @@ class AddDomainRecordResponseBody(DaraModel):
     ):
         # The ID of the DNS record.
         self.record_id = record_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

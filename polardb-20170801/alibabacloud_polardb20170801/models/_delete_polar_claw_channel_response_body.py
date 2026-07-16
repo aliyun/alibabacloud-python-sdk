@@ -17,14 +17,23 @@ class DeletePolarClawChannelResponseBody(DaraModel):
         request_id: str = None,
         restarted: bool = None,
     ):
+        # **The application ID.**
         self.application_id = application_id
+        # The ID of the deleted channel.
         self.channel_id = channel_id
+        # The response status code.
         self.code = code
+        # The returned message.
         self.message = message
+        # Indicates whether the request was successful.
         self.ok = ok
+        # The ID of the uninstalled plugin.
         self.plugin_id = plugin_id
+        # Indicates whether the channel plugin was uninstalled.
         self.plugin_uninstalled = plugin_uninstalled
+        # **The request ID.**
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
 
     def validate(self):

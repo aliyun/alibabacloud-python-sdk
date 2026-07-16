@@ -12,11 +12,11 @@ class UpgradeVersionByUuidsRequest(DaraModel):
         upgrade_version: str = None,
         uuid_list: List[str] = None,
     ):
-        # The version to which you want to upgrade the client.
+        # The target version to which you want to upgrade.
         # 
         # This parameter is required.
         self.upgrade_version = upgrade_version
-        # The UUIDs of the assets on which you want to run the detection task.
+        # The list of UUIDs of the assets to be checked.
         # 
         # This parameter is required.
         self.uuid_list = uuid_list

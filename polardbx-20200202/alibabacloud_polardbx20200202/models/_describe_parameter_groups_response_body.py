@@ -13,6 +13,7 @@ class DescribeParameterGroupsResponseBody(DaraModel):
         data: main_models.DescribeParameterGroupsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The instance details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -51,7 +52,9 @@ class DescribeParameterGroupsResponseBodyData(DaraModel):
         parameter_groups: List[main_models.DescribeParameterGroupsResponseBodyDataParameterGroups] = None,
         request_id: str = None,
     ):
+        # The parameter template name.
         self.parameter_groups = parameter_groups
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -104,17 +107,33 @@ class DescribeParameterGroupsResponseBodyDataParameterGroups(DaraModel):
         parameter_group_type: str = None,
         series: str = None,
     ):
+        # Indicates whether a forced restart of CN is required.
         self.cn_force_restart = cn_force_restart
+        # The number of CN parameters.
         self.cn_param_count = cn_param_count
+        # The database type.
         self.db_type = db_type
+        # The database engine version.
         self.db_version = db_version
+        # Indicates whether a forced restart of DN is required.
         self.dn_force_restart = dn_force_restart
+        # The number of DN parameters.
         self.dn_param_count = dn_param_count
+        # The time when the account was created.
         self.gmt_created = gmt_created
+        # The modification time, in timestamp format.
         self.gmt_modified = gmt_modified
+        # The parameter template ID.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates in the specified region, including the parameter template ID.
         self.parameter_group_id = parameter_group_id
+        # The parameter template name.
         self.parameter_group_name = parameter_group_name
+        # The parameter templatetype.
         self.parameter_group_type = parameter_group_type
+        # The instance edition. Valid values:
+        # 
+        # - **enterprise**: Enterprise Edition.
+        # - **standard**: Standard Edition.
         self.series = series
 
     def validate(self):

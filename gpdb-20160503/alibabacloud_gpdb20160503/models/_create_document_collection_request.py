@@ -39,82 +39,96 @@ class CreateDocumentCollectionRequest(DaraModel):
         support_sparse: bool = None,
         vector_index_config: main_models.CreateDocumentCollectionRequestVectorIndexConfig = None,
     ):
-        self.algorithm = algorithm
-        # The name of the document collection that you want to create.
+        # The vector index algorithm.
         # 
-        # > The name must comply with PostgreSQL object naming restrictions.
+        # Valid values:
+        # - hnswflat: HNSW index without quantization compression (default).
+        # - novam: graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendations.
+        # - novad: partitioned index with RaBitQ quantization, suitable for large-scale low-cost retrieval scenarios.
+        self.algorithm = algorithm
+        # The name of the knowledge base to create.
+        # 
+        # > The name must comply with PostgreSQL object naming conventions.
         # 
         # This parameter is required.
         self.collection = collection
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The vector dimensions. The default value is the dimension supported by the embedding model.
         self.dimension = dimension
-        # The vectorization algorithm.
+        # The embedding model. Default value: text-embedding-v3.
         # 
-        # >  Supported algorithms:
-        # 
-        # *   text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
-        # 
-        # *   text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
-        # 
-        # *   text2vec: the algorithm that produces 1024-dimensional vectors.
-        # 
-        # *   m3e-base: the algorithm that produces 768-dimensional vectors.
-        # 
-        # *   m3e-small: the algorithm that produces 512-dimensional vectors.
-        # 
-        # *   clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
-        # 
-        # *   clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
-        # 
-        # *   clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
-        # 
-        # *   clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
-        # 
-        # *   clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
-        # 
-        # *   clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
-        # 
-        # *   clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
-        # 
-        # *   clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
-        # 
-        # *   clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
+        # > Supported models:
+        # > - text-embedding-v3 (recommended, default): 1024, 768, or 512 dimensions
+        # > - multimodal-embedding-v1 (recommended): 1024 dimensions, multimodal embedding model
+        # > - text-embedding-v1: 1536 dimensions
+        # > - text-embedding-v2: 1536 dimensions
+        # > - text2vec (not recommended): 1024 dimensions
+        # > - m3e-base (not recommended): 768 dimensions
+        # > - m3e-small (not recommended): 512 dimensions
+        # > - clip-vit-b-32 (not recommended): CLIP ViT-B/32 model, 512 dimensions, image embedding model
+        # > - clip-vit-b-16 (not recommended): CLIP ViT-B/16 model, 512 dimensions, image embedding model
+        # > - clip-vit-l-14 (not recommended): CLIP ViT-L/14 model, 768 dimensions, image embedding model
+        # > - clip-vit-l-14-336px (not recommended): CLIP ViT-L/14@336px model, 768 dimensions, image embedding model
+        # > - clip-rn50 (not recommended): CLIP RN50 model, 1024 dimensions, image embedding model
+        # > - clip-rn101 (not recommended): CLIP RN101 model, 512 dimensions, image embedding model
+        # > - clip-rn50x4 (not recommended): CLIP RN50x4 model, 640 dimensions, image embedding model
+        # > - clip-rn50x16 (not recommended): CLIP RN50x16 model, 768 dimensions, image embedding model
+        # > - clip-rn50x64 (not recommended): CLIP RN50x64 model, 1024 dimensions, image embedding model
         self.embedding_model = embedding_model
+        # Specifies whether to enable knowledge graph construction. Default value: false.
+        # 
+        # > Before using this parameter, upgrade the instance to a version that supports the graph engine. (During the public preview, submit a ticket to upgrade the version.)
         self.enable_graph = enable_graph
+        # The list of entity types.
+        # 
+        # > This parameter is required when knowledge graph construction is enabled.
         self.entity_types = entity_types
-        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # Specifies whether to use mmap to build the HNSW index. Default value: 0. If data does not need to be deleted and you require high upload performance, set this parameter to 1.
         # 
-        # > 
+        # Valid values:
+        # - 0: uses segment-page storage to build the index. This mode uses shared_buffer in PostgreSQL as cache and supports delete and update operations.
+        # - 1: uses mmap to build the index. This mode does not support delete or update operations.
         # 
-        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
-        # 
-        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+        # >Notice: Only version 6.0 supports the ExternalStorage parameter. Version 7.0 does not support this parameter.
         self.external_storage = external_storage
-        # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+        # The fields used for full-text retrieval. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
         self.full_text_retrieval_fields = full_text_retrieval_fields
+        # The candidate set size when building an index with the HNSW algorithm. The value must be >= 2*HNSW_M.
+        # 
+        # > Valid values:
+        # >- AnalyticDB for PostgreSQL 6.0 instances: 40 to 4000.
+        # >- AnalyticDB for PostgreSQL 7.0 instances: 4 to 1000. Default value: 64.
         self.hnsw_ef_construction = hnsw_ef_construction
-        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # The maximum number of neighbors in the HNSW algorithm. This value is automatically set based on the vector dimensions. Manual configuration is generally not required.
         # 
-        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # > Valid values:
+        # >- AnalyticDB for PostgreSQL 6.0 instances: 1 to 1000.
+        # >- AnalyticDB for PostgreSQL 7.0 instances: 2 to 100. Default value: 16.
         # 
-        # *   If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
-        # 
-        # *   If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
-        # 
-        # *   If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
-        # 
-        # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+        # > Recommended values based on vector dimensions:
+        # >- 384 or fewer: 16
+        # >- Greater than 384 and up to 768: 32
+        # >- Greater than 768 and up to 1024: 64
+        # >- Greater than 1024: 128
         self.hnsw_m = hnsw_m
+        # The LLM model name. Valid values:
+        # - knowledge-extract-standard: default value.
+        # - knowledge-extract-mini
+        # > This parameter takes effect only when knowledge graph construction is enabled.
         self.llmmodel = llmmodel
+        # The language used for knowledge graph construction. Valid values:
+        # - Simplified Chinese: Simplified Chinese. Default value.
+        # - English: English.
+        # > This parameter takes effect only when knowledge graph construction is enabled.
         self.language = language
-        # The name of the manager account that has the rds_superuser permission.
+        # The name of the management account that has the rds_superuser permission.
         # 
-        # > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+        # > You can create an account in the console by navigating to Account Management, or by calling the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) operation.
         # 
         # This parameter is required.
         self.manager_account = manager_account
@@ -122,43 +136,49 @@ class CreateDocumentCollectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.manager_account_password = manager_account_password
-        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # The metadata of vector data, in the format of a JSON string representing a MAP. The key represents the field name, and the value represents the data type.
         # 
         # > Supported data types:
-        # > - For information about data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+        # > - For the list of data types, see [Data types](https://help.aliyun.com/document_detail/424383.html).
         # > - The money type is not supported.
         # 
-        # >Warning: The fields id, vector, doc_name, content, loader_metadata, source, and to_tsvector are reserved and should not be used.
+        # >Warning: The following fields are reserved and cannot be used: id, vector, doc_name, content, loader_metadata, source, and to_tsvector.
         self.metadata = metadata
+        # The scalar index fields. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
         self.metadata_indices = metadata_indices
-        # The method that is used to create vector indexes.
+        # The distance metric used for building vector indexes.
         # 
         # Valid values:
-        # 
-        # *   **l2**: Euclidean distance.
-        # *   **ip**: inner product distance.
-        # *   **cosine** (default): cosine similarity.
+        # - **l2**: Euclidean distance.
+        # - **ip**: inner product distance.
+        # - **cosine** (default): cosine similarity.
         self.metrics = metrics
-        # The name of the namespace. Default value: public.
+        # The namespace. Default value: public.
         # 
-        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        # > You can create a namespace by calling the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation and query the list of namespaces by calling the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation.
         self.namespace = namespace
         self.owner_id = owner_id
-        # The analyzer that is used for full-text search. Default value: zh_cn.
+        # The tokenizer used for full-text retrieval. Default value: zh_cn.
         self.parser = parser
-        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
-        # 
-        # *   0: no.
-        # *   1 (default): yes.
+        # Specifies whether to enable Product Quantization (PQ) algorithm acceleration for the index. We recommend enabling this feature when the data volume exceeds 500,000. Valid values:
+        # - 0: disabled.
+        # - 1: enabled (default).
         self.pq_enable = pq_enable
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The list of relationship edge types.
+        # 
+        # > This parameter is required when knowledge graph construction is enabled.
         self.relationship_types = relationship_types
+        # The metadata fields used for building sparse vectors. Separate multiple fields with commas (,). The fields must be keys defined in Metadata.
         self.sparse_retrieval_fields = sparse_retrieval_fields
+        # The sparse vector index configuration. If specified, a sparse vector index is created.
         self.sparse_vector_index_config = sparse_vector_index_config
+        # Specifies whether to support sparse vectors. Default value: false.
         self.support_sparse = support_sparse
+        # The dense vector index configuration.
         self.vector_index_config = vector_index_config
 
     def validate(self):
@@ -354,7 +374,9 @@ class CreateDocumentCollectionRequestVectorIndexConfig(DaraModel):
         nlist: int = None,
         rabitq_bits: int = None,
     ):
+        # The Novad list count (number of partitions). Valid values: 2 to 1073741824. Default value: 256.
         self.nlist = nlist
+        # The number of RaBitQ compression bits. Valid values: 1 to 8. Default value: 3.
         self.rabitq_bits = rabitq_bits
 
     def validate(self):
@@ -390,8 +412,27 @@ class CreateDocumentCollectionRequestSparseVectorIndexConfig(DaraModel):
         hnsw_ef_construction: int = None,
         hnsw_m: int = None,
     ):
+        # The vector index algorithm.
+        # 
+        # Valid values:
+        # - hnswflat: HNSW index without quantization compression (default).
+        # - novam: graph index without quantization compression, suitable for high-performance scenarios such as real-time recommendations.
         self.algorithm = algorithm
+        # The candidate set size when building an index with the HNSW algorithm. Valid values: 4 to 1000. Default value: 64.
+        # 
+        # > This parameter is required only for AnalyticDB for PostgreSQL 7.0 instances, and the value must be >= 2*HNSW_M.
         self.hnsw_ef_construction = hnsw_ef_construction
+        # The maximum number of neighbors in the HNSW algorithm. This value is automatically set based on the vector dimensions. Manual configuration is generally not required.
+        # 
+        # > Valid values:
+        # >- AnalyticDB for PostgreSQL 6.0 instances: 1 to 1000.
+        # >- AnalyticDB for PostgreSQL 7.0 instances: 2 to 100. Default value: 16.
+        # 
+        # > Recommended values based on vector dimensions:
+        # >- 384 or fewer: 16
+        # >- Greater than 384 and up to 768: 32
+        # >- Greater than 768 and up to 1024: 64
+        # >- Greater than 1024: 128
         self.hnsw_m = hnsw_m
 
     def validate(self):

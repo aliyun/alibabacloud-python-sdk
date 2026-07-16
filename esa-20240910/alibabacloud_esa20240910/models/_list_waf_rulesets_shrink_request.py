@@ -14,17 +14,25 @@ class ListWafRulesetsShrinkRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Page number, specifying the current page number for paginated queries.
+        # The page number. Specifies the current page number for paging queries.
         self.page_number = page_number
-        # Page size, specifying the number of records per page for paginated queries.
+        # The page size. Specifies the number of records per page for paging queries.
         self.page_size = page_size
-        # WAF operation phase, specifying the rule set phase to query.
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: frequency control rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rules
         self.phase = phase
-        # Query parameters, passed in JSON format, containing various filtering conditions.
+        # The query parameters, passed in JSON format, including various filter conditions.
         self.query_args_shrink = query_args_shrink
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         self.site_id = site_id
-        # Site version.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):

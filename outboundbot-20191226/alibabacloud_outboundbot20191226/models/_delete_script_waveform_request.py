@@ -11,10 +11,16 @@ class DeleteScriptWaveformRequest(DaraModel):
         script_id: str = None,
         script_waveform_id: str = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Scenario ID
+        # 
         # This parameter is required.
         self.script_id = script_id
+        # Deleted recording ID
+        # 
         # This parameter is required.
         self.script_waveform_id = script_waveform_id
 

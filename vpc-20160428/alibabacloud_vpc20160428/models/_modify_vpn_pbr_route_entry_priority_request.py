@@ -23,9 +23,9 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         # The new priority of the policy-based route. Valid values: **1** to **100**.
         # 
@@ -43,9 +43,9 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         # 
         # A smaller value indicates a higher priority.
         self.priority = priority
-        # The ID of the region where the VPN gateway is created.
+        # The region ID of the VPN gateway instance.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -59,11 +59,11 @@ class ModifyVpnPbrRouteEntryPriorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_source = route_source
-        # The ID of the VPN gateway.
+        # The ID of the VPN gateway instance.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
-        # The weight of the policy-based route. Valid values:
+        # The weight of the policy-based route.
         # 
         # This parameter is required.
         self.weight = weight

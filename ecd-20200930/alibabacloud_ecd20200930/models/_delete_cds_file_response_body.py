@@ -19,8 +19,9 @@ class DeleteCdsFileResponseBody(DaraModel):
         # 
         # Valid value:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.data = data
         # Error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
@@ -30,8 +31,9 @@ class DeleteCdsFileResponseBody(DaraModel):
         # 
         # Valid value:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

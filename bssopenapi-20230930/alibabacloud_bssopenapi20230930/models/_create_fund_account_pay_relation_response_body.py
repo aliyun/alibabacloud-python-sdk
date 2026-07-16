@@ -14,8 +14,11 @@ class CreateFundAccountPayRelationResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # Data list.
         self.data = data
+        # Response metadata.
         self.metadata = metadata
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,10 +70,15 @@ class CreateFundAccountPayRelationResponseBodyData(DaraModel):
         result_code: str = None,
         result_message: str = None,
     ):
+        # AccountId of the user who pays with the account.
         self.account_id = account_id
+        # Name of the user who pays with the account.
         self.account_name = account_name
+        # Account ID.
         self.fund_account_id = fund_account_id
+        # Result code.
         self.result_code = result_code
+        # Result message.
         self.result_message = result_message
 
     def validate(self):

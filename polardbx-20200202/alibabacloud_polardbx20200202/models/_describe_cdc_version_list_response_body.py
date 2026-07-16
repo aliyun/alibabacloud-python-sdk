@@ -13,6 +13,7 @@ class DescribeCdcVersionListResponseBody(DaraModel):
         data: main_models.DescribeCdcVersionListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -50,6 +51,7 @@ class DescribeCdcVersionListResponseBodyData(DaraModel):
         self,
         version_list: List[str] = None,
     ):
+        # The ID of the associated legacy project. You can ignore this parameter.
         self.version_list = version_list
 
     def validate(self):

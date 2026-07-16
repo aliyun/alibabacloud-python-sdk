@@ -18,9 +18,13 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
     ):
         # The language in which the returned results are displayed. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
+        # - **zh-CN**: Chinese.
+        # - **en-US** (default): English.
         self.accept_language = accept_language
+        # The VPN gateway type. Valid values:
+        # - **Traditional**: Returns zone information for creating traditional VPN gateways.
+        # - **Enhanced.SiteToSite**: Returns zone information for creating enhanced site-to-cloud VPN gateways.
+        # - **Default value**: Returns zone information for creating all types of VPN gateways.
         self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31,20 +35,19 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The bandwidth specification.
+        # - If the IPsec-VPN connection is associated with a VPN gateway instance, this parameter specifies the bandwidth specification of the VPN gateway instance.
+        # - If the IPsec-VPN connection is associated with a transit router, this parameter specifies the expected bandwidth specification that the IPsec-VPN connection can support.
         # 
-        # *   If an IPsec-VPN connection can be associated with the VPN gateway, this parameter specifies the bandwidth specification of the VPN gateway.
-        # *   In scenarios where an IPsec-VPN connection can be associated with a transit router. This parameter specifies the bandwidth specification supported by an IPsec-VPN connection.
+        # Different bandwidth specifications may affect the zone information returned. Valid values:
         # 
-        # Different bandwidth specifications may affect returned zone information. Valid values:
-        # 
-        # *   **5M**
-        # *   **10M**
-        # *   **20M**
-        # *   **50M**
-        # *   **100M**
-        # *   **200M**
-        # *   **500M**
-        # *   **1000M**
+        # - **5M**
+        # - **10M**
+        # - **20M**
+        # - **50M**
+        # - **100M**
+        # - **200M**
+        # - **500M**
+        # - **1000M**.
         # 
         # This parameter is required.
         self.spec = spec

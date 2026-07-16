@@ -12,9 +12,17 @@ class DescribeUnprotectedVulnTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The end time. Use a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The start time. Use a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

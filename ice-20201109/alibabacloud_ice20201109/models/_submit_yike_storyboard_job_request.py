@@ -22,19 +22,39 @@ class SubmitYikeStoryboardJobRequest(DaraModel):
         user_data: str = None,
         video_model: str = None,
     ):
+        # The aspect ratio of the output video.
         self.aspect_ratio = aspect_ratio
+        # The storyboard generation execution mode.
+        # 
+        # - `FullPipeline`: Executes the full generation pipeline, including both storyboard creation and shot video generation.
+        # 
+        # - `StoryboardOnly`: Generates only the storyboard.
         self.exec_mode = exec_mode
+        # The OSS address of the file.
         self.file_url = file_url
+        # Parameters for the model, in JSON format.
         self.model_params = model_params
+        # The narration voice ID.
         self.narration_voice_id = narration_voice_id
+        # The resolution of the output video.
         self.resolution = resolution
+        # The storyboard shot generation mode.
         self.shot_prompt_mode = shot_prompt_mode
+        # The shot split mode.
         self.shot_split_mode = shot_split_mode
+        # Specifies whether to skip a failed shot. The default value is `true`.
         self.skip_failure_shot = skip_failure_shot
+        # The source type.
         self.source_type = source_type
+        # The storyboard style ID.
         self.style_id = style_id
+        # The job title. It must be a UTF-8 encoded string of up to 128 bytes. If you do not specify a title, the system generates a default one based on the date.
         self.title = title
+        # Custom settings in JSON format. This parameter can contain the following field:
+        # 
+        # - The `NotifyAddress` field specifies the callback URL that is invoked when the job is complete. Both MNS and HTTP callbacks are supported.
         self.user_data = user_data
+        # The video model.
         self.video_model = video_model
 
     def validate(self):

@@ -15,35 +15,33 @@ class UnTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the resource. Valid values:
+        # Specifies whether to remove all tags from the resources. This parameter is valid only when \\`TagKey\\` is not specified. The default value is false. Valid values:
         # 
-        # *   true: All tags are removed from the resource.
-        # *   false (default): The specified tags are removed from the resource.
+        # - true
+        # 
+        # - false
         self.all = all
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID.
-        # 
-        # You can remove tags from up to 50 resources at a time.
+        # The resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # *   service: service
-        # *   serviceinstance: service instance
-        # *   artifact: artifact
-        # *   dataset: dataset
+        # - service: A service.
+        # 
+        # - serviceinstance: A service instance.
+        # 
+        # - artifact: An artifact.
+        # 
+        # - dataset: A dataset.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag keys.
-        # 
-        # You can specify a maximum of 20 tag keys.
-        # 
-        # > If you set the `All` parameter to `true`, you do not need to specify tag keys.
+        # The tag keys of the resources.
         self.tag_key = tag_key
 
     def validate(self):

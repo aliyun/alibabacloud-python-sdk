@@ -10,7 +10,9 @@ class CreateParameterResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The parameter ID.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

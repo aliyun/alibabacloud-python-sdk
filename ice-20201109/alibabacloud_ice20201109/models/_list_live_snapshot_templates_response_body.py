@@ -17,17 +17,17 @@ class ListLiveSnapshotTemplatesResponseBody(DaraModel):
         template_list: List[main_models.ListLiveSnapshotTemplatesResponseBodyTemplateList] = None,
         total_count: int = None,
     ):
-        # The number of the returned page.
+        # The page number.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The sorting order of the results by creation time.
+        # The sort order.
         self.sort_by = sort_by
-        # The list of the templates.
+        # The list of templates.
         self.template_list = template_list
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -97,20 +97,15 @@ class ListLiveSnapshotTemplatesResponseBodyTemplateList(DaraModel):
         time_interval: int = None,
         type: str = None,
     ):
-        # The time when the job was created.
+        # The time when the template was created. The time format is UTC.
         self.create_time = create_time
-        # The template ID.
+        # The ID of the template.
         self.template_id = template_id
-        # The template name.
+        # The name of the template.
         self.template_name = template_name
-        # The interval between two adjacent snapshots. Unit: seconds.
+        # The snapshot interval in seconds.
         self.time_interval = time_interval
         # The type of the template.
-        # 
-        # Valid values:
-        # 
-        # *   system
-        # *   custom
         self.type = type
 
     def validate(self):

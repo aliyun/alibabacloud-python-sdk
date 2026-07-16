@@ -23,31 +23,42 @@ class UpdateMcpServerRequest(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
+        # The list of assembled sources. This parameter is required when type is AssemblyMCP.
         self.assembled_sources = assembled_sources
-        # The backend service configurations for the route.
+        # The backend service configuration of the route.
         self.backend_config = backend_config
-        # Specifies the type of source for MCP server creation.
+        # The creation source type. Valid values:
+        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
+        # - ApiGatewayProxyMcpHosting: gateway-managed MCP direct proxy.
+        # - ApiGatewayAssembly: gateway MCP assembly.
+        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
+        # - NacosMcpHosting: gateway-managed Nacos-synced MCP direct proxy.
         self.create_from_type = create_from_type
         # The description.
         self.description = description
-        # The domain IDs.
+        # The domain name IDs.
         self.domain_ids = domain_ids
-        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
+        # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
-        # The gray MCP server configurations
+        # The list of canary release MCP server route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
-        # The MCP server configuration
+        # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
-        # Specifies if MCP observability is enabled. Default value: false.
+        # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The service protocol. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP.
+        # The protocol type. Valid values:
+        # - HTTP: HTTP protocol.
+        # - HTTPS: HTTPS protocol.
+        # - SSE: Server-Sent Events protocol.
+        # - StreamableHTTP: streamable HTTP protocol.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The MCP server type. Valid values: RealMCP and AssemblyMCP.
+        # The MCP server type filter. Valid values:
+        # - RealMCP
+        # - AssemblyMCP
         # 
         # This parameter is required.
         self.type = type
@@ -170,9 +181,9 @@ class UpdateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
-        # The converted mcp server spec yaml
+        # The MCP server configuration. This parameter is mutually exclusive with swaggerConfig.
         self.mcp_server_spec = mcp_server_spec
-        # The raw swagger/openapi document
+        # The Swagger document for HTTP-to-MCP conversion. The document must comply with the OpenAPI 3.0 specification.
         self.swagger_config = swagger_config
 
     def validate(self):
@@ -208,11 +219,11 @@ class UpdateMcpServerRequestGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
-        # The backend configuration
+        # The backend configuration.
         self.backend_config = backend_config
-        # The route match rules
+        # The route match rule.
         self.match = match
-        # The route ID
+        # The route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -258,9 +269,9 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
     ):
-        # The backend scene
+        # The backend scenario.
         self.scene = scene
-        # The list of backend services
+        # The list of backend services.
         self.services = services
 
     def validate(self):
@@ -306,15 +317,15 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(DaraModel)
         version: str = None,
         weight: int = None,
     ):
-        # The service port
+        # The service port.
         self.port = port
-        # The service protocol
+        # The service protocol.
         self.protocol = protocol
-        # The service ID
+        # The service ID.
         self.service_id = service_id
-        # The service version
+        # The version number.
         self.version = version
-        # The service weight
+        # The weight.
         self.weight = weight
 
     def validate(self):
@@ -415,19 +426,18 @@ class UpdateMcpServerRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port (omit for dynamic ports).
+        # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # 
-        # *   TCP
-        # *   HTTP
-        # *   DUBBO
+        # - TCP
+        # - HTTP
+        # - DUBBO
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The traffic weight percentage.
+        # The percentage value of the traffic ratio.
         self.weight = weight
 
     def validate(self):
@@ -481,11 +491,11 @@ class UpdateMcpServerRequestAssembledSources(DaraModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # The MCP server ID.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The name of the MCP server.
+        # The MCP server name.
         self.mcp_server_name = mcp_server_name
-        # The MCP tools.
+        # The list of MCP tools.
         self.tools = tools
 
     def validate(self):

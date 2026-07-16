@@ -14,10 +14,15 @@ class ListModelTemplateResourceGroupRequest(DaraModel):
         page_size: int = None,
         resource_group_ids: List[str] = None,
     ):
+        # The ID of the model group.
+        # 
         # This parameter is required.
         self.model_template_id = model_template_id
+        # The page number. Pages start from page 1. Both 0 and 1 return the same result.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The list of resource group IDs.
         self.resource_group_ids = resource_group_ids
 
     def validate(self):

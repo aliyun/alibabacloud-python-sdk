@@ -16,10 +16,15 @@ class AiTokenRateLimitConfig(DaraModel):
         redis_config: main_models.AiPolicyRedisConfig = None,
         rules: List[main_models.AiTokenRateLimitConfigRule] = None,
     ):
+        # Specifies whether to enable global (API-level) throttling rules. Default value: false.
         self.enable_global_rules = enable_global_rules
+        # The list of global throttling rules. Only the LimitByGlobal type is allowed.
         self.global_rules = global_rules
+        # The running status of the plugin.
         self.plugin_status = plugin_status
+        # The Redis configuration.
         self.redis_config = redis_config
+        # The list of throttling rules.
         self.rules = rules
 
     def validate(self):

@@ -9,6 +9,8 @@ class GetYikeUserCreditRequest(DaraModel):
         self,
         yike_user_id: str = None,
     ):
+        # The user ID of the Yike sub-account.
+        # 
         # This parameter is required.
         self.yike_user_id = yike_user_id
 

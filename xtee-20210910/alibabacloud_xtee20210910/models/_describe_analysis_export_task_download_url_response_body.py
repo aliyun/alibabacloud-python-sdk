@@ -13,7 +13,7 @@ class DescribeAnalysisExportTaskDownloadUrlResponseBody(DaraModel):
     ):
         # Request ID.
         self.request_id = request_id
-        # Returned object
+        # Response object.
         self.result_object = result_object
 
     def validate(self):
@@ -53,7 +53,7 @@ class DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject(DaraModel):
     ):
         # Download URL.
         self.download_file_url = download_file_url
-        # Download execution time
+        # Download execution time.
         self.execute_time = execute_time
         # Task status.
         self.status = status

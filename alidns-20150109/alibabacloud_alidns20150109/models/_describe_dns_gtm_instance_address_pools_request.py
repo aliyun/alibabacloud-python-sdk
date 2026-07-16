@@ -12,15 +12,15 @@ class DescribeDnsGtmInstanceAddressPoolsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the instance.
+        # The instance ID. For more information, see [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describednsgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Valid values: en, zh, and ja. The default value is en.
         self.lang = lang
-        # The number of the page to return. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
+        # The number of entries to return on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
 
     def validate(self):

@@ -20,15 +20,15 @@ class DescribeUniBackupStatisticsResponseBody(DaraModel):
     ):
         # The number of protected database instances.
         self.protected_database_count = protected_database_count
-        # The regions of the database instances.
+        # The list of regions in which database instances can be configured.
         self.region_count_list = region_count_list
-        # The request ID.
+        # The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of the restoration tasks that are running.
+        # The number of tasks that are being restored.
         self.restoring_task_count = restoring_task_count
-        # The total number of database instances that can be restored.
+        # The number of recoverable database instances.
         self.total_recoverable_count = total_recoverable_count
-        # The total number of the restoration tasks.
+        # The total number of restoration records.
         self.total_restore_task_count = total_restore_task_count
         # The number of unprotected database instances.
         self.unprotected_database_count = unprotected_database_count
@@ -105,7 +105,7 @@ class DescribeUniBackupStatisticsResponseBodyRegionCountList(DaraModel):
     ):
         # The number of database instances that are automatically scanned.
         self.automatic_count = automatic_count
-        # The ID of the region in which the database instance resides.
+        # The region ID of the database instance.
         self.region_id = region_id
 
     def validate(self):

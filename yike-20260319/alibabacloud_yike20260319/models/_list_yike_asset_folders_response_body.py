@@ -16,11 +16,15 @@ class ListYikeAssetFoldersResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The folder list.
         self.folder_list = folder_list
+        # The maximum number of results.
         self.max_results = max_results
+        # The token for the next page.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The total number of folders.
         self.total = total
 
     def validate(self):
@@ -85,11 +89,17 @@ class ListYikeAssetFoldersResponseBodyFolderList(DaraModel):
         production_id: str = None,
         workspace_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The folder ID.
         self.folder_id = folder_id
+        # The folder name.
         self.folder_name = folder_name
+        # Indicates whether the folder is the default folder.
         self.is_default = is_default
+        # The project ID.
         self.production_id = production_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

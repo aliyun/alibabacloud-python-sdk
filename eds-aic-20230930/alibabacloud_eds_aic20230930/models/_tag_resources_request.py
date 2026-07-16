@@ -14,10 +14,16 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # The list of cloud phone IDs. The list can contain 1 to 50 IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. The value must be \\`ALIYUN::ACP::INSTANCE\\`.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tags. The list can contain 1 to 20 tags.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -67,7 +73,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The key can be up to 128 characters in length. It cannot be an empty string. The key cannot start with \\`aliyun\\` or \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
         self.key = key
+        # The tag value. The value can be up to 128 characters in length and can be an empty string. The value cannot start with \\`acs:\\` and cannot contain \\`http\\://\\` or \\`https\\://\\`.
         self.value = value
 
     def validate(self):

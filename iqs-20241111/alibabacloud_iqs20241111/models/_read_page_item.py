@@ -15,12 +15,28 @@ class ReadPageItem(DaraModel):
         status_code: int = None,
         text: str = None,
     ):
+        # The error related to the target URL.
         self.error_message = error_message
+        # The readable HTML of the target URL.
         self.html = html
+        # The Markdown content of the target URL.
         self.markdown = markdown
+        # The raw HTML of the target URL.
         self.raw_html = raw_html
         self.screenshot = screenshot
+        # 1. If the request to the target site succeeds, the HTTP status code of the target URL is returned.
+        # 
+        # 2. If the request to the target site fails, a custom error code is returned:
+        # 
+        #     2.1 4030: The target site has security restrictions, such as robots.txt or security policies.
+        #     
+        #     2.2 4080: The request timed out.
+        #     
+        #     2.3 4290: The rate limiting policy of the site was triggered.
+        #     
+        #     2.4 5010: An unknown exception occurred.
         self.status_code = status_code
+        # The text content of the target URL.
         self.text = text
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeOutgoingDestinationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about the destination addresses.
         self.dst_list = dst_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -77,20 +80,35 @@ class DescribeOutgoingDestinationResponseBodyDstList(DaraModel):
         session_count: int = None,
         tag_list: List[main_models.DescribeOutgoingDestinationResponseBodyDstListTagList] = None,
     ):
+        # The recommended Access Control List (ACL) details.
         self.acl_recommend_detail = acl_recommend_detail
+        # The policy status.
         self.acl_status = acl_status
+        # The business to which the domain name belongs.
         self.business = business
+        # The category ID.
         self.category_id = category_id
+        # The category name of the service.
         self.category_name = category_name
+        # The destination domain name.
         self.dst_domain = dst_domain
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The destination type.
         self.dst_type = dst_type
+        # The group name.
         self.group_name = group_name
+        # Indicates whether a recommended ACL exists.
         self.has_acl_recommend = has_acl_recommend
+        # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
+        # Indicates whether the destination is manually marked as normal.
         self.is_mark_normal = is_mark_normal
+        # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
+        # The number of sessions.
         self.session_count = session_count
+        # The list of tags.
         self.tag_list = tag_list
 
     def validate(self):
@@ -213,9 +231,13 @@ class DescribeOutgoingDestinationResponseBodyDstListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # The risk assessment level.
         self.risk_level = risk_level
+        # The tag description.
         self.tag_describe = tag_describe
+        # The tag ID.
         self.tag_id = tag_id
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

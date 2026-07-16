@@ -14,11 +14,11 @@ class DescribeExcludeSystemPathResponseBody(DaraModel):
         page_info: main_models.DescribeExcludeSystemPathResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array consisting of the directories that are excluded.
+        # The list of system excluded directories.
         self.exclude_paths = exclude_paths
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeExcludeSystemPathResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of system excluded directories on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in the paged query when paging is used.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of system excluded folders returned per page in the paged query when paging is used.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of system excluded directories.
         self.total_count = total_count
 
     def validate(self):
@@ -126,11 +126,10 @@ class DescribeExcludeSystemPathResponseBodyExcludePaths(DaraModel):
         path: str = None,
     ):
         # The operating system of the server. Valid values:
-        # 
-        # *   **linux**: Linux
-        # *   **windows**: Windows
+        # - **linux**: Linux.
+        # - **windows**: Windows.
         self.os = os
-        # The absolute path to the directory.
+        # The absolute path of the directory.
         self.path = path
 
     def validate(self):

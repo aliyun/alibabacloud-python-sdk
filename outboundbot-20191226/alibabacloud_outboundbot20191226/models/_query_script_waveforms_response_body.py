@@ -17,11 +17,19 @@ class QueryScriptWaveformsResponseBody(DaraModel):
         script_waveforms: List[main_models.QueryScriptWaveformsResponseBodyScriptWaveforms] = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Recording list of scenario voices
+        # 
+        # > Recording data is returned only when the voice type is recording. It is not returned when the voice is speech synthesis.
         self.script_waveforms = script_waveforms
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -91,10 +99,15 @@ class QueryScriptWaveformsResponseBodyScriptWaveforms(DaraModel):
         script_id: str = None,
         script_waveform_id: str = None,
     ):
+        # File key in OSS
         self.file_id = file_id
+        # Recording file name
         self.file_name = file_name
+        # Scenario voice name
         self.script_content = script_content
+        # Scenario ID
         self.script_id = script_id
+        # Scenario voice recording ID
         self.script_waveform_id = script_waveform_id
 
     def validate(self):

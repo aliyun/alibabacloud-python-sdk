@@ -10,8 +10,12 @@ class DeleteUserGroupRequest(DaraModel):
         op_tenant_id: int = None,
         user_group_id: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The user group ID.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
 

@@ -15,8 +15,9 @@ class PutMonitoringConfigRequest(DaraModel):
         self.auto_install = auto_install
         # Specifies whether to automatically install the CloudMonitor agent on new ECS instances. Valid values:
         # 
-        # *   true (default): The CloudMonitor agent is automatically installed on new ECS instances.
-        # *   false: The CloudMonitor agent is not automatically installed on new ECS instances.
+        # - true (default): The CloudMonitor agent is automatically installed on new ECS instances.
+        # 
+        # - false: The CloudMonitor agent is not automatically installed on new ECS instances.
         self.enable_install_agent_new_ecs = enable_install_agent_new_ecs
         self.region_id = region_id
 

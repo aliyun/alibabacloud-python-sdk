@@ -10,7 +10,7 @@ class CreateProtocolMountTargetResponseBody(DaraModel):
         export_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the export directory for the protocol service.
+        # The ID of the protocol service export directory.
         self.export_id = export_id
         # The request ID.
         self.request_id = request_id

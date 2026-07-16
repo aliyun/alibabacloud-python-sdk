@@ -13,10 +13,19 @@ class ListModelProvidersRequest(DaraModel):
         page_size: str = None,
         provider: str = None,
     ):
+        # The name of the model to filter by.
         self.model_name = model_name
+        # The model type to filter by. Valid values:
+        # 
+        # - `system`: A system model.
+        # 
+        # - `deployment`: A custom deployment model.
         self.model_type = model_type
+        # The page number to retrieve.
         self.page_number = page_number
+        # The number of results to return per page.
         self.page_size = page_size
+        # The cloud provider. To specify Alibaba Cloud, use the value \\"Aliyun\\".
         self.provider = provider
 
     def validate(self):

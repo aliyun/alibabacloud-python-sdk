@@ -10,7 +10,9 @@ class CreateIpsPrivateAssocRequest(DaraModel):
         lang: str = None,
         resource_id: str = None,
     ):
+        # The language of the request and response messages.
         self.lang = lang
+        # The instance ID.
         self.resource_id = resource_id
 
     def validate(self):

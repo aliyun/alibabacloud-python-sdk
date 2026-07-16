@@ -14,8 +14,15 @@ class DescribeDBClusterVersionZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # Specifies whether to return information about the latest version or a list of upgradable versions. Valid values:
+        # 
+        # - LATEST_VERSION: Queries information about the latest version.
+        # 
+        # - AVAILABLE_VERSION: Queries the list of upgradable versions.
         self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id

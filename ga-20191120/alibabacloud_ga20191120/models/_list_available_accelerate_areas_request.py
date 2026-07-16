@@ -11,10 +11,15 @@ class ListAvailableAccelerateAreasRequest(DaraModel):
         access_mode: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance.
         self.accelerator_id = accelerator_id
+        # The access mode of the acceleration area. Valid values:
+        # 
+        # - anycast: queries the supported anycast acceleration areas.
+        # 
+        # - Other values: queries the supported non-anycast acceleration areas.
         self.access_mode = access_mode
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The ID of the region where the Global Accelerator instance is deployed. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

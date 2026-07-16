@@ -15,11 +15,17 @@ class ExportScriptResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the request.
         self.code = code
+        # The signed URL that you can use to download the script. This parameter is returned only for legacy canvases.
         self.download_params = download_params
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,9 @@ class ExportScriptResponseBodyDownloadParams(DaraModel):
         self,
         signature_url: str = None,
     ):
+        # The download URL. This parameter is returned only for legacy canvases.
+        # 
+        # > **For modern canvases**: After the scenario is exported, call the **ListDownloadTasks** operation to obtain the \\`TaskId\\` (for example, \\`5d352db754fe430xxxxxxx\\`) and \\`FileId\\` (for example, \\`5d000f3f6eae4228b2731427xxxxxx\\`). Then, call the **CreateDownloadUrl** operation to obtain the download URL.
         self.signature_url = signature_url
 
     def validate(self):

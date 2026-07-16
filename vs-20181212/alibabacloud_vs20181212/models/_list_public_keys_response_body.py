@@ -16,10 +16,15 @@ class ListPublicKeysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The page number of the returned list.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # A list of public keys.
         self.public_keys = public_keys
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -84,11 +89,21 @@ class ListPublicKeysResponseBodyPublicKeys(DaraModel):
         key_type: str = None,
         upload_time: str = None,
     ):
+        # The content of the public key. The content is encoded in Base64 format by default.
         self.content = content
+        # The description of the public key.
         self.description = description
+        # The public key group.
         self.key_group = key_group
+        # The name of the public key.
         self.key_name = key_name
+        # The type of the public key. Valid values:
+        # 
+        # - **adb**: ADB key
+        # 
+        # - **ssh**: SSH key
         self.key_type = key_type
+        # The time when the public key was uploaded.
         self.upload_time = upload_time
 
     def validate(self):

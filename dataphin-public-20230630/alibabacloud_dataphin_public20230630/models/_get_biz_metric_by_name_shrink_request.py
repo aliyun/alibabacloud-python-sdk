@@ -10,8 +10,12 @@ class GetBizMetricByNameShrinkRequest(DaraModel):
         biz_metric_by_name_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # Query request.
+        # 
         # This parameter is required.
         self.biz_metric_by_name_query_shrink = biz_metric_by_name_query_shrink
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

@@ -15,9 +15,13 @@ class RunTopicSelectionMergeResponseBody(DaraModel):
         payload: main_models.RunTopicSelectionMergeResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether the response packet is complete
         self.end = end
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +73,9 @@ class RunTopicSelectionMergeResponseBodyPayload(DaraModel):
         output: main_models.RunTopicSelectionMergeResponseBodyPayloadOutput = None,
         usage: main_models.RunTopicSelectionMergeResponseBodyPayloadUsage = None,
     ):
+        # Output
         self.output = output
+        # Token usage
         self.usage = usage
 
     def validate(self):
@@ -111,9 +117,13 @@ class RunTopicSelectionMergeResponseBodyPayloadUsage(DaraModel):
         token_map: Dict[str, int] = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens
         self.input_tokens = input_tokens
+        # Number of output tokens used
         self.output_tokens = output_tokens
+        # Detailed token consumption
         self.token_map = token_map
+        # Total number of tokens used in this call
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -160,7 +170,9 @@ class RunTopicSelectionMergeResponseBodyPayloadOutput(DaraModel):
         text: str = None,
         topic: main_models.TopicSelection = None,
     ):
+        # Text generation result
         self.text = text
+        # Merged topic selection object
         self.topic = topic
 
     def validate(self):
@@ -203,13 +215,21 @@ class RunTopicSelectionMergeResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Error message
         self.error_message = error_message
+        # SSE event. Values: task-started, task-finished, or task-failed
         self.event = event
+        # Parent session ID
         self.origin_session_id = origin_session_id
+        # Session ID
         self.session_id = session_id
+        # HTTP status code
         self.status_code = status_code
+        # Task ID
         self.task_id = task_id
+        # End-to-end trace ID
         self.trace_id = trace_id
 
     def validate(self):

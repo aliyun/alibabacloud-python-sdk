@@ -15,12 +15,13 @@ class DescribeBackupTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the backup task.
+        # The backup job ID.
         self.backup_job_id = backup_job_id
         # The backup mode. Valid values:
         # 
-        # *   **Automated**
-        # *   **Manual**
+        # - **Automated**: An automatic backup.
+        # 
+        # - **Manual**: A manual backup.
         self.backup_mode = backup_mode
         # The cluster ID.
         # 

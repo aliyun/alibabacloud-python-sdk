@@ -23,64 +23,79 @@ class DescribeDataLimitsRequest(DaraModel):
         service_region_id: str = None,
         start_time: int = None,
     ):
-        # Specifies whether to enable the security audit feature. Valid values:
+        # The audit status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Auditing enabled.
+        # 
+        # - **0**: Auditing disabled.
         self.audit_status = audit_status
-        # The data detection status. Valid values:
+        # The connectivity test status. Valid values:
         # 
-        # *   **0**: The data detection is ready.
-        # *   **1**: The data detection is running.
-        # *   **2**: The connectivity test is in progress.
-        # *   **3**: The connectivity test passed.
-        # *   **4**: The connectivity test failed.
+        # - **0**: Ready.
+        # 
+        # - **1**: Running.
+        # 
+        # - **2**: Connectivity test in progress.
+        # 
+        # - **3**: Connectivity test passed.
+        # 
+        # - **4**: Connectivity test failed.
         self.check_status = check_status
-        # The number of the page to return.
+        # The page number to return.
         self.current_page = current_page
-        # Specifies whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # The data masking status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.datamask_status = datamask_status
-        # Specifies whether DSC has the data detection permissions on the data asset. Valid values:
+        # The sensitive data detection status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.enable = enable
-        # The end of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
-        # The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
+        # The type of the database engine. Examples: **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
         self.engine_type = engine_type
         # This parameter is deprecated.
         self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The ID of the member.
+        # The ID of the member account.
         self.member_account = member_account
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The parent ID of the data asset to be queried. Valid values:
+        # The ID of the parent asset to which the data asset belongs. Valid values:
         # 
-        # *   The name or ID of the MaxCompute project.
-        # *   The name or ID of the OSS bucket.
-        # *   The name or ID of the ApsaraDB RDS instance or database.
+        # - The name or ID of a MaxCompute project.
+        # 
+        # - The name or ID of an OSS bucket.
+        # 
+        # - The name or ID of an RDS instance or database.
         self.parent_id = parent_id
-        # The type of the service to which the data asset belongs. This parameter is required. Valid values:
+        # The type of service to which the data asset belongs. Data assets can be instances, databases, or buckets. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: Object Storage Service (OSS)
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
-        # *   **6**: self-managed database
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: AnalyticDB for MySQL
+        # 
+        # - **4**: Tablestore
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: A self-managed database
         self.resource_type = resource_type
-        # The region in which the data asset resides.
+        # The ID of the region where the data asset is located.
         self.service_region_id = service_region_id
-        # The beginning of the time range to query The value is a UNIX timestamp. Unit: milliseconds.
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

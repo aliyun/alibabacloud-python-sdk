@@ -17,13 +17,11 @@ class BatchEnrollAccountsRequest(DaraModel):
     ):
         # The resource accounts.
         self.accounts = accounts
-        # The baseline ID.
-        # 
-        # If this parameter is left empty, the default baseline is used.
+        # The ID of the baseline. If you leave this parameter empty, the default baseline is used.
         self.baseline_id = baseline_id
         # The baseline items.
         # 
-        # If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
+        # If you specify this parameter, the baseline item configurations are merged with the configurations of the baseline specified by `BaselineId`. For duplicate baseline items, the configurations in this parameter take precedence. We recommend that you leave this parameter empty and use `BaselineId` to apply baseline configurations.
         self.baseline_items = baseline_items
         # The region ID.
         self.region_id = region_id
@@ -97,8 +95,9 @@ class BatchEnrollAccountsRequestBaselineItems(DaraModel):
         self.name = name
         # Specifies whether to skip the baseline item. Valid values:
         # 
-        # *   false
-        # *   true
+        # - false (default): does not skip the baseline item.
+        # 
+        # - true: skips the baseline item.
         self.skip = skip
         # The version of the baseline item.
         self.version = version
@@ -148,7 +147,7 @@ class BatchEnrollAccountsRequestAccounts(DaraModel):
         self,
         account_uid: int = None,
     ):
-        # The account ID. This parameter is required.
+        # The ID of the account to enroll. This parameter is required.
         self.account_uid = account_uid
 
     def validate(self):

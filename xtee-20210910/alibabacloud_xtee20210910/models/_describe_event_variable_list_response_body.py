@@ -13,9 +13,9 @@ class DescribeEventVariableListResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeEventVariableListResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object.
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -64,33 +64,33 @@ class DescribeEventVariableListResponseBodyResultObject(DaraModel):
         third_variables: Dict[str, Any] = None,
         velocity_variables: List[main_models.DescribeEventVariableListResponseBodyResultObjectVelocityVariables] = None,
     ):
-        # Action variable.
+        # The action variables.
         self.actions = actions
-        # Device variable.
+        # The device variables.
         self.device_variables = device_variables
-        # Custom variable.
+        # The custom variables.
         self.expression_variables = expression_variables
-        # Favorite variables.
+        # The favorite variables.
         self.favorite_variables = favorite_variables
-        # Intermediate variable return object.
+        # The intermediate variable response object.
         self.middle_variables = middle_variables
-        # An array of model variables.
+        # The model variables.
         self.model_variables = model_variables
-        # List of name variables.
+        # The list variables.
         self.name_list = name_list
-        # List of available functions for the original variable.
+        # The list of available functions for native variables.
         self.native_variable_functions = native_variable_functions
-        # List of event fields.
+        # The list of event fields.
         self.native_variables = native_variables
-        # An array of custom query variables.
+        # The custom query variables.
         self.query_variables = query_variables
-        # Custom variables (custom variables, cumulative variables, custom system variables).
+        # The custom variables (custom variables, cumulative variables, and custom system variables).
         self.self_variables = self_variables
-        # System variables.
+        # The system variables.
         self.sys_variables = sys_variables
-        # Other related variables.
+        # The other variables.
         self.third_variables = third_variables
-        # An array of accumulated variables.
+        # The custom cumulative variables.
         self.velocity_variables = velocity_variables
 
     def validate(self):
@@ -336,27 +336,27 @@ class DescribeEventVariableListResponseBodyResultObjectVelocityVariables(DaraMod
         x_label: str = None,
         y_label: str = None,
     ):
-        # The code of the variable.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # The definition ID of the variable. This field is not returned for this type of variable.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # The description of the variable.
+        # The variable description.
         self.description = description
-        # The display type and grouping label.
+        # The display type and group label.
         self.display_type = display_type
         # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
         # The favorite flag.
         self.favorite_flag = favorite_flag
-        # The detailed information of the field in the field pool. This field is not returned for this type of variable.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # The field rank.
+        # The field sort order.
         self.field_rank = field_rank
-        # The source of the field. This field is not returned for this type of variable.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # The type of the field.
+        # The field type.
         self.field_type = field_type
         # The primary key ID.
         self.id = id
@@ -364,9 +364,9 @@ class DescribeEventVariableListResponseBodyResultObjectVelocityVariables(DaraMod
         self.input_field_type = input_field_type
         # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Multiple input parameters separated by commas. This field is not returned for this type of variable.
+        # The input parameters, separated by commas if multiple. This field is not returned for this type of variable.
         self.inputs = inputs
-        # The name of the variable.
+        # The variable name.
         self.name = name
         # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
@@ -376,15 +376,15 @@ class DescribeEventVariableListResponseBodyResultObjectVelocityVariables(DaraMod
         self.parent_name = parent_name
         # The source type.
         self.source_type = source_type
-        # The title of the variable.
+        # The title.
         self.title = title
-        # The type of the variable.
+        # The variable type.
         self.type = type
         # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # The X label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # The Y label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -561,7 +561,7 @@ class DescribeEventVariableListResponseBodyResultObjectVelocityVariablesVariable
         self,
         iv: str = None,
     ):
-        # The IV value. This field is not returned for this type of variable.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -650,55 +650,55 @@ class DescribeEventVariableListResponseBodyResultObjectSysVariables(DaraModel):
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # ID of the bound variable definition.
+        # The bound variable definition ID.
         self.define_id = define_id
-        # Description of the variable.
+        # The variable description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Calculate the expression display value. This type of variable does not return this field.
+        # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Input type of the parameter. This field is not returned for this type of variable.
+        # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Variable value input.
+        # The variable value input.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Outlier value. This field is not returned for this type of variable.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent name.
+        # The parent name.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This field is not returned for this type of variable.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -875,7 +875,7 @@ class DescribeEventVariableListResponseBodyResultObjectSysVariablesVariableVeloc
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -904,9 +904,9 @@ class DescribeEventVariableListResponseBodyResultObjectSysVariablesOutputThresho
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -964,55 +964,55 @@ class DescribeEventVariableListResponseBodyResultObjectSelfVariables(DaraModel):
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID. Only returned for custom system variables.
+        # The variable definition ID. This field is returned only for custom system variables.
         self.define_id = define_id
-        # Description of the variable.
+        # The variable description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Expression name.
+        # The expression name.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Variable ID.
+        # The variable ID.
         self.id = id
         # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input parameters. Only returned when custom system variables are defined.
+        # The input parameters. This field is returned only for custom system variables.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Anomaly value. Returned when the variable is a custom variable (type= EXPRESSION).
+        # The outlier value. This field is returned when the variable is a custom variable (type=EXPRESSION).
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned currently.
+        # The parent node. This field is not currently returned.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This field is not returned for this type of variable.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -1189,7 +1189,7 @@ class DescribeEventVariableListResponseBodyResultObjectSelfVariablesVariableVelo
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -1218,9 +1218,9 @@ class DescribeEventVariableListResponseBodyResultObjectSelfVariablesOutputThresh
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -1278,27 +1278,27 @@ class DescribeEventVariableListResponseBodyResultObjectQueryVariables(DaraModel)
         x_label: str = None,
         y_label: str = None,
     ):
-        # The code of the query variable.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # The definition ID of the query variable. This field is not returned for this type of variable.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # The description of the query variable.
+        # The description.
         self.description = description
-        # The display type and grouping label.
+        # The display type and group label.
         self.display_type = display_type
         # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
         # The favorite flag.
         self.favorite_flag = favorite_flag
-        # The detailed information of the field in the field pool. This field is not returned for this type of variable.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # The field rank.
+        # The field sort order.
         self.field_rank = field_rank
-        # The source of the field. This field is not returned for this type of variable.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # The type of the field.
+        # The field type.
         self.field_type = field_type
         # The primary key ID of the query variable.
         self.id = id
@@ -1306,9 +1306,9 @@ class DescribeEventVariableListResponseBodyResultObjectQueryVariables(DaraModel)
         self.input_field_type = input_field_type
         # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Multiple input parameters separated by commas. This field is not returned for this type of variable.
+        # The input parameters, separated by commas if multiple. This field is not returned for this type of variable.
         self.inputs = inputs
-        # The name of the query variable.
+        # The variable name.
         self.name = name
         # The outlier value.
         self.outlier = outlier
@@ -1318,15 +1318,15 @@ class DescribeEventVariableListResponseBodyResultObjectQueryVariables(DaraModel)
         self.parent_name = parent_name
         # The source type.
         self.source_type = source_type
-        # The title of the query variable. The title of the query variable.
+        # The title.
         self.title = title
-        # The type of the query variable.
+        # The variable type.
         self.type = type
         # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # The X label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # The Y label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -1503,7 +1503,7 @@ class DescribeEventVariableListResponseBodyResultObjectQueryVariablesVariableVel
         self,
         iv: str = None,
     ):
-        # The IV value. This field is not returned for this type of variable.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -1592,55 +1592,55 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariables(DaraModel
         x_label: str = None,
         y_label: str = None,
     ):
-        # variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format.
+        # The data distribution display in JSON format.
         self.data_display = data_display
-        # Associated variable definition ID.
+        # The associated variable definition ID.
         self.define_id = define_id
-        # Variable description.
+        # The variable description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Calculate expression display value.
+        # The display value of the calculation expression.
         self.expression_title = expression_title
-        # Favorite Identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Field pool field details.
+        # The field pool field details.
         self.field_detail = field_detail
-        # Field Sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Variable source.
+        # The variable source.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Variable ID.
+        # The variable ID.
         self.id = id
-        # Input field type, indicating the type of input parameters, mainly used for function categorization.
+        # The input field type, which indicates the input parameter type and is mainly used for function classification.
         self.input_field_type = input_field_type
-        # Required parameters.
+        # The required parameter.
         self.input_required = input_required
-        # Input of the variable. Event field is not present.
+        # The input of the variable. This field is not returned for event fields.
         self.inputs = inputs
-        # variable name.
+        # The variable name.
         self.name = name
-        # outlier.
+        # The outlier value.
         self.outlier = outlier
-        # Output score threshold.
+        # The output score threshold.
         self.output_threshold = output_threshold
-        # Parent name.
+        # The parent name.
         self.parent_name = parent_name
-        # Variable source type.
+        # The variable source type.
         self.source_type = source_type
-        # Variable name.
+        # The variable name.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable indicator information.
+        # The variable metric information.
         self.variable_velocity = variable_velocity
-        # x label.
+        # The X-axis label.
         self.x_label = x_label
-        # y label.
+        # The Y-axis label.
         self.y_label = y_label
 
     def validate(self):
@@ -1817,7 +1817,7 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariablesVariableVe
         self,
         iv: str = None,
     ):
-        # iv value.
+        # The information value (IV).
         self.iv = iv
 
     def validate(self):
@@ -1846,9 +1846,9 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariablesOutputThre
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -1906,55 +1906,55 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctions(D
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID. This type of variable does not return this field.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # Description information.
+        # The description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Calculate the expression display value. This field is not returned for this type of variable.
+        # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Variable return type.
+        # The variable return value type.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
         # The input type of the parameter.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input field. This type of variable does not return this field.
+        # The input fields. This field is not returned for this type of variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Exception value. This type of variable does not return this field.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned for this type of variable.
+        # The parent node. This field is not returned for this type of variable.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Variable title.
+        # The variable title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This type of variable does not return this field.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -2131,7 +2131,7 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsVa
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -2160,9 +2160,9 @@ class DescribeEventVariableListResponseBodyResultObjectNativeVariableFunctionsOu
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -2220,55 +2220,55 @@ class DescribeEventVariableListResponseBodyResultObjectNameList(DaraModel):
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not currently returned.
+        # The data distribution display in JSON format. This field is not currently returned.
         self.data_display = data_display
-        # Variable definition ID. This type of variable does not return this field.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # Description information.
+        # The description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Calculate the expression display value. This type of variable does not return this field.
+        # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type. This field is not returned for this type of variable.
+        # The field type. This field is not returned for this type of variable.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Input type of the parameter. This field is not returned for this type of variable.
+        # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input parameters. This field is not returned for this type of variable.
+        # The input parameters. This field is not returned for this type of variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Outlier value. This field is not returned for this type of variable.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned currently.
+        # The parent node. This field is not currently returned.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This field is not returned for this type of variable.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -2445,7 +2445,7 @@ class DescribeEventVariableListResponseBodyResultObjectNameListVariableVelocity(
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -2474,9 +2474,9 @@ class DescribeEventVariableListResponseBodyResultObjectNameListOutputThreshold(D
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -2534,27 +2534,27 @@ class DescribeEventVariableListResponseBodyResultObjectModelVariables(DaraModel)
         x_label: str = None,
         y_label: str = None,
     ):
-        # The code of the model variable.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # The definition ID of the model variable. This field is not returned for this type of variable.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # The description of the model variable.
+        # The variable description.
         self.description = description
-        # The display type and grouping label.
+        # The display type and group label.
         self.display_type = display_type
         # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
         # The favorite flag.
         self.favorite_flag = favorite_flag
-        # The detailed information of the field in the field pool. This field is not returned for this type of variable.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # The field rank.
+        # The field sort order.
         self.field_rank = field_rank
-        # The source of the field. This field is not returned for this type of variable.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # The type of the field.
+        # The field type.
         self.field_type = field_type
         # The primary key ID of the model variable.
         self.id = id
@@ -2562,9 +2562,9 @@ class DescribeEventVariableListResponseBodyResultObjectModelVariables(DaraModel)
         self.input_field_type = input_field_type
         # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Multiple input parameters separated by commas. This field is not returned for this type of variable.
+        # The input parameters, separated by commas if multiple. This field is not returned for this type of variable.
         self.inputs = inputs
-        # The name of the model variable.
+        # The variable name.
         self.name = name
         # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
@@ -2574,15 +2574,15 @@ class DescribeEventVariableListResponseBodyResultObjectModelVariables(DaraModel)
         self.parent_name = parent_name
         # The source type.
         self.source_type = source_type
-        # The title of the model variable.
+        # The title.
         self.title = title
-        # The type of the model variable.
+        # The variable type.
         self.type = type
         # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # The X label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # The Y label. This field is not returned for this type of variable.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -2759,7 +2759,7 @@ class DescribeEventVariableListResponseBodyResultObjectModelVariablesVariableVel
         self,
         iv: str = None,
     ):
-        # The IV value. This field is not returned for this type of variable.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -2848,55 +2848,55 @@ class DescribeEventVariableListResponseBodyResultObjectMiddleVariables(DaraModel
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID.
+        # The variable definition ID.
         self.define_id = define_id
-        # Variable description.
+        # The variable description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Calculate the display value of the expression. This type of variable does not return this field.
+        # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Variable source.
+        # The variable source.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Input field type, indicating the type of input parameters, mainly used for function classification. This type of variable does not return this field.
+        # The input field type, which indicates the input parameter type and is mainly used for function classification. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input of the variable.
+        # The input of the variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Outlier value. This field is not returned for this type of variable.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned for this type of variable.
+        # The parent node. This field is not returned for this type of variable.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This type of variable does not return this field.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -3073,7 +3073,7 @@ class DescribeEventVariableListResponseBodyResultObjectMiddleVariablesVariableVe
         self,
         iv: str = None,
     ):
-        # id value. This type of variable does not return this field.
+        # The ID value. This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -3102,9 +3102,9 @@ class DescribeEventVariableListResponseBodyResultObjectMiddleVariablesOutputThre
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -3162,55 +3162,55 @@ class DescribeEventVariableListResponseBodyResultObjectFavoriteVariables(DaraMod
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID.
+        # The variable definition ID.
         self.define_id = define_id
-        # Description of the variable.
+        # The variable description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Expression display value. This type of variable does not return this field.
+        # The expression display value. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Input type of the parameter. This field is not returned for this type of variable.
+        # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
-        # Required parameter. This field is not returned for this type of variable.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input parameters should be separated by commas. Some variables may not have this field.
+        # The input parameters, separated by commas if multiple. Some variables do not have this field.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Anomaly value. This field is not returned for this type of variable.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned for this type of variable.
+        # The parent node. This field is not returned for this type of variable.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This field is not returned for this type of variable.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -3387,7 +3387,7 @@ class DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesVariable
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -3416,9 +3416,9 @@ class DescribeEventVariableListResponseBodyResultObjectFavoriteVariablesOutputTh
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -3476,37 +3476,37 @@ class DescribeEventVariableListResponseBodyResultObjectExpressionVariables(DaraM
         x_label: str = None,
         y_label: str = None,
     ):
-        # The code of the variable.
+        # The variable code.
         self.code = code
-        # Data distribution display, in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # The definition ID of the variable. This field is not returned for this type of variable.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # The description of the variable.
+        # The variable description.
         self.description = description
-        # The display type and grouping label.
+        # The display type and group label.
         self.display_type = display_type
         # The display value of the calculation expression.
         self.expression_title = expression_title
         # The favorite flag.
         self.favorite_flag = favorite_flag
-        # The detailed information of the field in the field pool. This field is not returned for this type of variable.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # The field rank.
+        # The field sort order.
         self.field_rank = field_rank
-        # The source of the field. This field is not returned for this type of variable.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # The input type of the variable.
+        # The variable input type.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
         # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
         # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Multiple input parameters separated by commas. This field is not returned for this type of variable.
+        # The input parameters, separated by commas if multiple. This field is not returned for this type of variable.
         self.inputs = inputs
-        # The name of the variable.
+        # The variable name.
         self.name = name
         # The outlier value.
         self.outlier = outlier
@@ -3516,15 +3516,15 @@ class DescribeEventVariableListResponseBodyResultObjectExpressionVariables(DaraM
         self.parent_name = parent_name
         # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # The type of the variable.
+        # The variable type.
         self.type = type
         # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # The X label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # The Y label. This field is not returned for this type of variable.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -3701,7 +3701,7 @@ class DescribeEventVariableListResponseBodyResultObjectExpressionVariablesVariab
         self,
         iv: str = None,
     ):
-        # The IV value. This field is not returned for this type of variable.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -3790,55 +3790,55 @@ class DescribeEventVariableListResponseBodyResultObjectDeviceVariables(DaraModel
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID. This type of variable does not return this field.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # Description information.
+        # The description.
         self.description = description
-        # The display type and grouping label.
+        # The display type and group label.
         self.display_type = display_type
         # The display value of the calculation expression. This field is not returned for this type of variable.
         self.expression_title = expression_title
         # The favorite flag.
         self.favorite_flag = favorite_flag
-        # The detailed information of the field in the field pool. This field is not returned for this type of variable.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # The field rank.
+        # The field sort order.
         self.field_rank = field_rank
-        # The source of the field. This field is not returned for this type of variable.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type.
+        # The field type.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
         # The input type of the parameter. This field is not returned for this type of variable.
         self.input_field_type = input_field_type
         # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input for the variable. This field is not returned for this type of variable.
+        # The input of the variable. This field is not returned for this type of variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
         # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
         # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned for this type of variable.
+        # The parent node. This field is not returned for this type of variable.
         self.parent_name = parent_name
         # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
         # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # The X label. This field is not returned for this type of variable.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # The Y label. This field is not returned for this type of variable.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -4015,7 +4015,7 @@ class DescribeEventVariableListResponseBodyResultObjectDeviceVariablesVariableVe
         self,
         iv: str = None,
     ):
-        # The IV value. This field is not returned for this type of variable.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -4044,7 +4044,7 @@ class DescribeEventVariableListResponseBodyResultObjectDeviceVariablesOutputThre
         max_value: float = None,
         min_value: float = None,
     ):
-        # The minimum value.
+        # The maximum value.
         self.max_value = max_value
         # The minimum value.
         self.min_value = min_value
@@ -4104,55 +4104,55 @@ class DescribeEventVariableListResponseBodyResultObjectActions(DaraModel):
         x_label: str = None,
         y_label: str = None,
     ):
-        # Variable code.
+        # The variable code.
         self.code = code
-        # Data distribution display in JSON format. This field is not returned for this type of variable.
+        # The data distribution display in JSON format. This field is not returned for this type of variable.
         self.data_display = data_display
-        # Variable definition ID. This type of variable does not return this field.
+        # The variable definition ID. This field is not returned for this type of variable.
         self.define_id = define_id
-        # Description information.
+        # The description.
         self.description = description
-        # Display type and group label.
+        # The display type and group label.
         self.display_type = display_type
-        # Expression display. This type of variable does not return this field.
+        # The expression display. This field is not returned for this type of variable.
         self.expression_title = expression_title
-        # Favorite identifier.
+        # The favorite flag.
         self.favorite_flag = favorite_flag
-        # Details of the field pool. This type of variable does not return this field.
+        # The field pool field details. This field is not returned for this type of variable.
         self.field_detail = field_detail
-        # Field sorting.
+        # The field sort order.
         self.field_rank = field_rank
-        # Source of the field. This type of variable does not return this field.
+        # The field source. This field is not returned for this type of variable.
         self.field_source = field_source
-        # Field type. This field is not returned for this type of variable.
+        # The field type. This field is not returned for this type of variable.
         self.field_type = field_type
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Input type of the parameter.
+        # The input type of the parameter.
         self.input_field_type = input_field_type
-        # Required parameter. This type of variable does not return this field.
+        # The required parameter. This field is not returned for this type of variable.
         self.input_required = input_required
-        # Input parameters. This field is not returned for this type of variable.
+        # The input parameters. This field is not returned for this type of variable.
         self.inputs = inputs
-        # Variable name.
+        # The variable name.
         self.name = name
-        # Anomaly value. This field is not returned for this type of variable.
+        # The outlier value. This field is not returned for this type of variable.
         self.outlier = outlier
-        # Output value threshold.
+        # The output value threshold.
         self.output_threshold = output_threshold
-        # Parent node. This field is not returned for this type of variable.
+        # The parent node. This field is not returned for this type of variable.
         self.parent_name = parent_name
-        # Source type.
+        # The source type.
         self.source_type = source_type
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
-        # Variable metric information. This field is not returned for this type of variable.
+        # The variable metric information. This field is not returned for this type of variable.
         self.variable_velocity = variable_velocity
-        # x label. This type of variable does not return this field.
+        # The X-axis label. This field is not returned for this type of variable.
         self.x_label = x_label
-        # y label. This type of variable does not return this field.
+        # The Y-axis label. This field is not returned for this type of variable.
         self.y_label = y_label
 
     def validate(self):
@@ -4329,7 +4329,7 @@ class DescribeEventVariableListResponseBodyResultObjectActionsVariableVelocity(D
         self,
         iv: str = None,
     ):
-        # iv value. This type of variable does not return this field.
+        # The information value (IV). This field is not returned for this type of variable.
         self.iv = iv
 
     def validate(self):
@@ -4358,9 +4358,9 @@ class DescribeEventVariableListResponseBodyResultObjectActionsOutputThreshold(Da
         max_value: float = None,
         min_value: float = None,
     ):
-        # Maximum value.
+        # The maximum value.
         self.max_value = max_value
-        # Minimum value.
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):

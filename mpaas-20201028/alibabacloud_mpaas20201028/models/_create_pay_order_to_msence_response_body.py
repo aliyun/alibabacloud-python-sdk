@@ -15,7 +15,6 @@ class CreatePayOrderToMsenceResponseBody(DaraModel):
         success: bool = None,
     ):
         self.mpaas_order_create_response = mpaas_order_create_response
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_msg = result_msg

@@ -14,10 +14,13 @@ class CancelActiveOperationTasksRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The IDs of the O\\&M events to cancel. Separate multiple IDs with commas (,).
+        # 
         # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

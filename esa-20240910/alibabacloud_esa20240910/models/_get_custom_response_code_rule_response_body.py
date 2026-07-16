@@ -18,15 +18,37 @@ class GetCustomResponseCodeRuleResponseBody(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
+        # Configuration ID.
         self.config_id = config_id
+        # The configuration type. Valid values:
+        # 
+        # - global: Global configuration.
+        # 
+        # - rule: Rule configuration.
         self.config_type = config_type
+        # The response page.
         self.page_id = page_id
+        # Request ID.
         self.request_id = request_id
+        # The response code.
         self.return_code = return_code
+        # The rule content. Use conditional expressions to match user requests. Do not set this parameter when adding a global configuration. There are two scenarios:
+        # 
+        # - Match all incoming requests: Set the value to true.
+        # 
+        # - Match specific requests: Set the value to a custom expression, such as (http.host eq "video.example.com").
         self.rule = rule
+        # The rule switch. Do not set this parameter when adding a global configuration. Valid values:
+        # 
+        # - on: Enable.
+        # 
+        # - off: Disable.
         self.rule_enable = rule_enable
+        # The rule name. Do not set this parameter when adding a global configuration.
         self.rule_name = rule_name
+        # The rule execution order. A smaller value indicates higher execution priority.
         self.sequence = sequence
+        # The version number of the site configuration. For sites with version control enabled, use this parameter to specify the site version where the configuration takes effect. The default is version 0.
         self.site_version = site_version
 
     def validate(self):

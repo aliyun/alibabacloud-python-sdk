@@ -16,23 +16,23 @@ class DescribeGroupPageRequest(DaraModel):
         task_id: str = None,
         time_type: str = None,
     ):
-        # Sets the language type for requests and responses, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Order.
+        # The sort order.
         self.direction = direction
-        # Sorting condition.
+        # The sort condition.
         self.order = order
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Time type.
+        # The time type.
         self.time_type = time_type
 
     def validate(self):

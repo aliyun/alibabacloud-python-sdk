@@ -16,10 +16,15 @@ class DescribeNatGatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details of the NAT gateways.
         self.nat_gateways = nat_gateways
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The unique ID of the request.
         self.request_id = request_id
+        # The total number of entries that match the query.
         self.total_count = total_count
 
     def validate(self):

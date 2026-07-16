@@ -14,12 +14,36 @@ class RunVideoScriptGenerateRequest(DaraModel):
         use_search: bool = None,
         workspace_id: str = None,
     ):
+        # The language of the generated script.
+        # Recommended values:
+        # 
+        # zh-CN: Chinese
+        # 
+        # en-US: English
+        # 
+        # The default is Chinese.
         self.language = language
+        # The prompt for the video script.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The length of the script. Valid values:
+        # 
+        # 20\\~75: 10 to 15 seconds of normal speaking time.
+        # 
+        # 75\\~150: 15 to 30 seconds of normal speaking time.
+        # 
+        # 150\\~300: Approximately 30 to 60 seconds of normal speaking time.
+        # 
+        # \\>=300: 60 seconds or more of normal speaking time.
         self.script_length = script_length
+        # The number of scripts to generate. The default is 1. You can generate a maximum of three scripts at a time.
+        # If you specify multiple scripts, the results are returned in parallel streams. The client distinguishes between the streams using different session IDs.
         self.script_number = script_number
+        # Specifies whether to use an internet search. If you set this to true, the system performs intention recognition and then searches the internet for relevant reference materials.
         self.use_search = use_search
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

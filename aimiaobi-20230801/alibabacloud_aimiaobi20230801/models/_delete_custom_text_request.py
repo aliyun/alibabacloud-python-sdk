@@ -11,9 +11,14 @@ class DeleteCustomTextRequest(DaraModel):
         commodity_code: str = None,
         id: int = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The commodity code.
         self.commodity_code = commodity_code
+        # The primary key ID.
+        # 
         # This parameter is required.
         self.id = id
 

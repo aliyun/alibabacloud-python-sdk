@@ -16,14 +16,15 @@ class JobStartParameters(DaraModel):
         resource_queue_name: str = None,
         restore_strategy: main_models.DeploymentRestoreStrategy = None,
     ):
-        # The deployment ID.
+        # Job ID
         self.deployment_id = deployment_id
+        # Job instance ID
         self.job_id = job_id
-        # The variables.
+        # Job variables
         self.local_variables = local_variables
-        # The queue in which the deployment is running.
+        # Resource queue for job execution
         self.resource_queue_name = resource_queue_name
-        # The configuration of the start offset of the deployment.
+        # Job start offset settings
         self.restore_strategy = restore_strategy
 
     def validate(self):

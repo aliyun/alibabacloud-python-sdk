@@ -12,11 +12,18 @@ class ExpireLoginTokenRequest(DaraModel):
         office_site_id: str = None,
         session_id: str = None,
     ):
+        # The logon username.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The logon token.
+        # 
         # This parameter is required.
         self.login_token = login_token
+        # The ID of the workspace. This parameter is required if you log on using a workspace ID. You can leave this parameter empty if you log on using an organization ID.
         self.office_site_id = office_site_id
+        # The ID of the logon session.
+        # 
         # This parameter is required.
         self.session_id = session_id
 

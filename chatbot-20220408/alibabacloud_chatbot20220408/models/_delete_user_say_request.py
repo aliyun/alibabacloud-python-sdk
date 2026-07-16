@@ -12,11 +12,18 @@ class DeleteUserSayRequest(DaraModel):
         intent_id: int = None,
         user_say_id: int = None,
     ):
+        # The key of the business space. If omitted, the default business space is used. You can obtain the key from the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The instance ID of the bot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The ID of the user say.
+        # 
         # This parameter is required.
         self.user_say_id = user_say_id
 

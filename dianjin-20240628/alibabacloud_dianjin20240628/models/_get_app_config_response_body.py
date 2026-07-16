@@ -19,13 +19,21 @@ class GetAppConfigResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed
         self.cost = cost
+        # Returned data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Is successful
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -102,11 +110,17 @@ class GetAppConfigResponseBodyData(DaraModel):
         text_index_category_list: List[str] = None,
         vector_index_category_list: List[str] = None,
     ):
+        # Embedding type list
         self.embedding_type_list = embedding_type_list
+        # Frontend configuration
         self.frontend_config = frontend_config
+        # Document library status list
         self.library_document_status_list = library_document_status_list
+        # Large Language Model (LLM) type list
         self.llm_helper_type_list = llm_helper_type_list
+        # Text index category list
         self.text_index_category_list = text_index_category_list
+        # Vector index category list
         self.vector_index_category_list = vector_index_category_list
 
     def validate(self):

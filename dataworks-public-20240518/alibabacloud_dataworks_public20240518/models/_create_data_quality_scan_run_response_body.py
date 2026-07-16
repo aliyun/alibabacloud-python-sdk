@@ -10,7 +10,7 @@ class CreateDataQualityScanRunResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # The RunId that was successfully triggered.
+        # The run ID.
         self.id = id
         # The request ID.
         self.request_id = request_id

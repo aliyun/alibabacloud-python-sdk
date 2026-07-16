@@ -14,11 +14,17 @@ class ListInstancesRequest(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The current page number. This field exists when pagination is used.
         self.current = current
+        # The ECS instance ID used to filter results.
         self.instance = instance
+        # The number of entries per page. Default value: 20. Valid values: 1 to 100.
         self.page_size = page_size
+        # Filters instances by region.
         self.region = region
+        # Filters instances by status.
         self.status = status
 
     def validate(self):

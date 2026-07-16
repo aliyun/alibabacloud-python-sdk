@@ -14,31 +14,37 @@ class CreateDatasetJobRequest(DaraModel):
         job_spec: str = None,
         workspace_id: str = None,
     ):
-        # The dataset version.
+        # The name of the dataset version.
         self.dataset_version = dataset_version
-        # The job description.
+        # The description.
         self.description = description
-        # The job action.
+        # The task operation.
         # 
-        # Valid values:
+        # - SemanticIndex: semantic index
         # 
-        # *   SemanticIndex
-        # *   IntelligentTag
-        # *   FileMetaExport
+        # - IntelligentTag: intelligent tagging
+        # 
+        # - FileMetaExport: metadata export
+        # 
+        # - FileMetaBuild: build and update metadata
+        # 
+        # - IntelligentTagRevert: revoke intelligent tagging
+        # 
+        # - FileMetaImport: metadata import
         # 
         # This parameter is required.
         self.job_action = job_action
-        # The job mode.
+        # The task type.
         # 
-        # Valid values:
+        # - Full (default): forces the processing of all metadata. This task takes a long time to execute.
         # 
-        # *   Full: full mode.
+        # - Increment: processes only changed or unsuccessfully processed metadata. The SemanticIndex and IntelligentTag tasks support Increment and Full. Other tasks support only Full.
         self.job_mode = job_mode
-        # The job configuration.
+        # The task details.
         # 
         # This parameter is required.
         self.job_spec = job_spec
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

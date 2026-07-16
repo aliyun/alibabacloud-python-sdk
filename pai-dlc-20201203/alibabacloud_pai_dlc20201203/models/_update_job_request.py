@@ -15,17 +15,18 @@ class UpdateJobRequest(DaraModel):
         job_specs: List[main_models.JobSpec] = None,
         priority: int = None,
     ):
-        # The job visibility. Valid values:
+        # The job\\"s visibility. You can only increase, not decrease, the visibility. Valid value:
         # 
-        # *   PUBLIC: The job is visible to all members in the workspace.
-        # *   PRIVATE: The job is visible only to you and the administrator of the workspace.
+        # - `PUBLIC`: The job is visible to all users in the workspace.
         self.accessibility = accessibility
         self.description = description
+        # The job specifications.
         self.job_specs = job_specs
-        # The job priority. Valid values: 1 to 9.
+        # The priority of the job. Valid values range from 1 to 9:
         # 
-        # *   1: the lowest priority.
-        # *   9: the highest priority.
+        # - 1 indicates the lowest priority.
+        # 
+        # - 9 indicates the highest priority.
         self.priority = priority
 
     def validate(self):

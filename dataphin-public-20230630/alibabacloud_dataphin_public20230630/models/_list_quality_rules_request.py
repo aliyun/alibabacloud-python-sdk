@@ -13,7 +13,10 @@ class ListQualityRulesRequest(DaraModel):
         list_query: main_models.ListQualityRulesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -59,15 +62,54 @@ class ListQualityRulesRequestListQuery(DaraModel):
         test_run_task_validate_result_list: List[str] = None,
         watch_id: int = None,
     ):
+        # The rule type. Valid values:
+        # - CONSISTENT: consistency.
+        # - EFFECTIVE: validity.
+        # - TIMELINESE: timeliness.
+        # - ACCURATE: accuracy.
+        # - UNIQUENESS: uniqueness.
+        # - COMPLETENESS: completeness.
+        # - STABILITY: stability.
+        # - CUSTOM: custom.
         self.catalog_list = catalog_list
+        # The search keyword for filtering. Supports searching by rule name and validation object.
         self.keyword = keyword
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The rule strength. Valid values:
+        # - STRONG: strong.
+        # - WEAK: weak.
         self.rule_strength_list = rule_strength_list
+        # The rule effective status. Valid values:
+        # - ENABLE: enabled.
+        # - DISABLE: disabled.
         self.status_list = status_list
+        # The rule template.
         self.template_id_list = template_id_list
+        # The task status. Valid values:
+        # - NOT_RUN: not executed.
+        # - WAITING: waiting.
+        # - RUNNING: executing.
+        # - SUCCESS: execution succeeded.
+        # - FAILED: execution failed.
+        # - CANCEL: canceled.
+        # - TIMEOUT: timed out.
+        # - OFFLINE: offline.
         self.test_run_task_status_list = test_run_task_status_list
+        # The trial run validation result. Valid values:
+        # - NOT_RUN: not executed.
+        # - WAITING: waiting for execution.
+        # - RUNNING: executing.
+        # - PASS: passed.
+        # - NOT_PASS: not passed.
+        # - FAILED: execution failed.
+        # - OFFLINE: offline. The task needs to be restarted.
+        # - CANCEL: task canceled.
+        # - TIMEOUT: task timed out.
         self.test_run_task_validate_result_list = test_run_task_validate_result_list
+        # The monitoring ID.
         self.watch_id = watch_id
 
     def validate(self):

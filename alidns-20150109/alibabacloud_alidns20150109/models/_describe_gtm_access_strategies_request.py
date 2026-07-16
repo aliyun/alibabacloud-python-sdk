@@ -12,13 +12,13 @@ class DescribeGtmAccessStrategiesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The ID of the GTM instance whose access policies you want to query.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The language used by the user.
+        # The language of the response.
         self.lang = lang
-        # The number of the page to return.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

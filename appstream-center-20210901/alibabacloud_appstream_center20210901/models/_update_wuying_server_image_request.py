@@ -15,7 +15,7 @@ class UpdateWuyingServerImageRequest(DaraModel):
         self.image_id = image_id
         # The product type. Set this parameter to WuyingServer.
         self.product_type = product_type
-        # The ID of the workstation.
+        # The workstation ID.
         self.wuying_server_id = wuying_server_id
 
     def validate(self):

@@ -14,18 +14,18 @@ class UpdateImageEventOperationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code returned by the API request.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The status of the request response. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class UpdateImageEventOperationResponseBodyData(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the alert handling rule, which is the same as the value of the Id request parameter.
+        # The ID of the alert handling rule, which is the same as the alert handling rule ID in the request parameters.
         self.id = id
 
     def validate(self):

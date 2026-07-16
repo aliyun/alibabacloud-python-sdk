@@ -43,20 +43,23 @@ class CreateOpaStrategyNewRequest(DaraModel):
         self.label = label
         # Specifies whether the rule supports malicious Internet images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.malicious_image = malicious_image
         # The action that is performed when the rule is hit. Valid values:
         # 
-        # *   **1**: trigger alerts
-        # *   **2**: block
-        # *   **3**: allow
+        # - **1**: trigger alerts
+        # 
+        # - **2**: block
+        # 
+        # - **3**: allow
         self.rule_action = rule_action
         # The application scope of the rule.
         self.scopes = scopes
         # The rule ID.
         # 
-        # >  You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
+        # > You can call the [ListOpaClusterStrategyNew](https://help.aliyun.com/document_detail/2623574.html) operation to query the rule ID.
         # 
         # > This parameter is invalid when you create a rule.
         self.strategy_id = strategy_id
@@ -64,12 +67,13 @@ class CreateOpaStrategyNewRequest(DaraModel):
         self.strategy_name = strategy_name
         # The ID of the rule template.
         # 
-        # >  You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
+        # > You can call the [GetOpaStrategyTemplateSummary](https://help.aliyun.com/document_detail/2539952.html) operation to query the ID of the rule template.
         self.strategy_template_id = strategy_template_id
         # Specifies whether the rule supports unscanned images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.un_scaned_image = un_scaned_image
         # The whitelist.
         self.white_list = white_list
@@ -197,12 +201,13 @@ class CreateOpaStrategyNewRequestScopes(DaraModel):
         self.ack_policy_instance_id = ack_policy_instance_id
         # Specifies whether to include all namespaces. Valid values:
         # 
-        # *   **1**: includes all namespaces.
-        # *   **0**: does not include all namespaces.
+        # - **1**: includes all namespaces.
+        # 
+        # - **0**: does not include all namespaces.
         self.all_namespace = all_namespace
         # The ID of the cluster that is specified in the rule.
         # 
-        # >  You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/421736.html) operation to query the cluster ID.
         self.cluster_id = cluster_id
         # The namespaces.
         # 
@@ -396,13 +401,15 @@ class CreateOpaStrategyNewRequestAlarmDetailVulRiskClass(DaraModel):
     ):
         # The ID of the vulnerability types. Valid values:
         # 
-        # *   **cve**: system vulnerability
-        # *   **app**: application vulnerability
+        # - **cve**: system vulnerability
+        # 
+        # - **app**: application vulnerability
         self.id = id
         # The name of the vulnerability. Valid values:
         # 
-        # *   **system vulnerability**
-        # *   **application vulnerability**
+        # - **system vulnerability**
+        # 
+        # - **application vulnerability**
         self.name = name
 
     def validate(self):
@@ -439,11 +446,11 @@ class CreateOpaStrategyNewRequestAlarmDetailVulItem(DaraModel):
     ):
         # The ID of the vulnerability.
         # 
-        # >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
+        # > You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the ID.
         self.id = id
         # The name of the vulnerability.
         # 
-        # >  You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
+        # > You can call the [DescribeVulListPage](https://help.aliyun.com/document_detail/471928.html) operation to query the name.
         self.name = name
 
     def validate(self):
@@ -525,11 +532,11 @@ class CreateOpaStrategyNewRequestAlarmDetailSensitiveFileItem(DaraModel):
     ):
         # The ID of the sensitive files.
         # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
         self.id = id
         # The name of the sensitive files.
         # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
         self.name = name
 
     def validate(self):
@@ -611,11 +618,11 @@ class CreateOpaStrategyNewRequestAlarmDetailMaliciousFileItem(DaraModel):
     ):
         # The ID of the malicious sample.
         # 
-        # >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
+        # > You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the ID.
         self.id = id
         # The name of the malicious sample.
         # 
-        # >  You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
+        # > You can call the [DescribeMatchedMaliciousNames](~~DescribeMatchedMaliciousNames~~) operation to query the name.
         self.name = name
 
     def validate(self):
@@ -697,11 +704,11 @@ class CreateOpaStrategyNewRequestAlarmDetailBuildRiskItem(DaraModel):
     ):
         # The ID of the image build risk.
         # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
         self.id = id
         # The name of the image build risk.
         # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
         self.name = name
 
     def validate(self):
@@ -783,11 +790,11 @@ class CreateOpaStrategyNewRequestAlarmDetailBaselineItem(DaraModel):
     ):
         # The ID of the baseline check item.
         # 
-        # >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
+        # > You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the ID.
         self.id = id
         # The name of the baseline check item.
         # 
-        # >  You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
+        # > You can call the [GetOpaClusterBaseLineList](https://help.aliyun.com/document_detail/2539883.html) operation to query the name.
         self.name = name
 
     def validate(self):

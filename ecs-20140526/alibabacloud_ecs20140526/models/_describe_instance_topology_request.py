@@ -13,11 +13,8 @@ class DescribeInstanceTopologyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of one or more ECS instances. You can specify a maximum of 100 instance IDs.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # The region ID of the ECS instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
-        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

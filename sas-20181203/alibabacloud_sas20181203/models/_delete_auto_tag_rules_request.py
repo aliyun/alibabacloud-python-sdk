@@ -9,9 +9,8 @@ class DeleteAutoTagRulesRequest(DaraModel):
         self,
         rule_id_list: str = None,
     ):
-        # The ID of the asset auto-tagging rule. Separate multiple IDs with commas (,).
-        # 
-        # >  You can call the [ListAutoTagRules](~~ListAutoTagRules~~) operation to query the ID.
+        # The IDs of the rules. Separate multiple IDs with commas (,).
+        # > Call the [ListAutoTagRules](~~ListAutoTagRules~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.rule_id_list = rule_id_list

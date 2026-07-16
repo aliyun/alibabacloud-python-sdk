@@ -41,71 +41,67 @@ class Instance(DaraModel):
         total_processes: int = None,
         zone: str = None,
     ):
+        # The creation time of the instance.
         self.create_time = create_time
         # The current hourly price of the spot instance.
         self.current_amount = current_amount
+        # Indicates whether the instance is removed from active service rotation.
         self.detached = detached
-        # The IP address of the instance in the user-created VPC.
+        # The IP address of the instance in your VPC.
         self.external_ip = external_ip
-        # The port number of the instance in the user-created VPC.
+        # The port number of the instance in your VPC.
         self.external_instance_port = external_instance_port
-        # The IP address of the host where the instance resides.
+        # The IP address of the instance\\"s host.
         self.host_ip = host_ip
-        # The name of the host where the instance resides.
+        # The name of the instance\\"s host.
         self.host_name = host_name
         # The internal IP address of the instance.
         self.inner_ip = inner_ip
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
         # The network port of the instance.
         self.instance_port = instance_port
-        # The instance specification.
+        # The instance type.
         self.instance_type = instance_type
+        # Indicates whether the instance is running the latest version.
         self.is_latest = is_latest
+        # Indicates whether the instance is a replica.
         self.is_replica = is_replica
         # Indicates whether the instance is a spot instance.
         self.is_spot = is_spot
-        # Indicates whether the instance is isolated.
+        # Indicates whether the instance accepts traffic.
         self.isolated = isolated
-        # The last state of the instance.
+        # The status of the instance when it last exited.
         self.last_state = last_state
         # The namespace of the instance.
         self.namespace = namespace
-        # The original hourly price of the spot instance before a discount is used.
+        # The original price of the spot instance before discounts.
         self.original_amount = original_amount
-        # The number of processes that have started for the instance.
+        # The number of processes that have started in the instance.
         self.ready_processes = ready_processes
-        # The reason for which the instance is in the current state.
+        # The identifier for the current status of the instance.
         self.reason = reason
+        # The name of the replica.
         self.replica_name = replica_name
-        # The type of the resource group to which the instance belongs. Valid values: PublicResource and PrivateResource.
+        # The type of the resource group to which the instance belongs. Valid values include PublicResource and PrivateResource.
         self.resource_type = resource_type
-        # The number of times for which the instance is restarted.
+        # The number of times the instance has been restarted.
         self.restart_count = restart_count
-        # The service role of the instance. Valid values: Queue, DataLoader, and Standard.
+        # The server role of the instance. Valid values include Queue, DataLoader, and Standard.
         self.role = role
-        # The time when the instance was started. This parameter is deprecated. StartTime is used instead.
+        # The start time of the instance. (Deprecated. Use StartTime instead.)
         self.start_at = start_at
-        # The time when the instance was started.
+        # The start time of the instance.
         self.start_time = start_time
-        # The current state of the instance.
-        # 
-        # Valid values:
-        # 
-        # *   Terminating
-        # *   Succeeded
-        # *   Unknown
-        # *   Failed
-        # *   Running
-        # *   Pending
+        # The status of the instance.
         self.status = status
-        # The IP address of the host in the VPC.
+        # The IP address of the host in the dedicated network.
         self.tenant_host_ip = tenant_host_ip
-        # The IP address of the instance in the VPC.
+        # The IP address of the instance in the dedicated network.
         self.tenant_instance_ip = tenant_instance_ip
-        # The total number of processes that the instance contains.
+        # The total number of processes for the instance.
         self.total_processes = total_processes
-        # The zone to which the instance belongs.
+        # The zone where the instance is located.
         self.zone = zone
 
     def validate(self):

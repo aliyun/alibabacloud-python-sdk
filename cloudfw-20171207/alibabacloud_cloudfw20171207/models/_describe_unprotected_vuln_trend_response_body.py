@@ -18,12 +18,19 @@ class DescribeUnprotectedVulnTrendResponseBody(DaraModel):
         request_id: str = None,
         start_time: int = None,
     ):
+        # The number of protected vulnerabilities.
         self.cur_protected_cnt = cur_protected_cnt
+        # The number of unprotected vulnerabilities.
         self.cur_unprotected_cnt = cur_unprotected_cnt
+        # The list of returned data.
         self.data_list = data_list
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The time interval.
         self.interval = interval
+        # The request ID.
         self.request_id = request_id
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -97,8 +104,11 @@ class DescribeUnprotectedVulnTrendResponseBodyDataList(DaraModel):
         time: int = None,
         unprotected_vuln_cnt: int = None,
     ):
+        # The number of protected vulnerabilities.
         self.protected_vuln_cnt = protected_vuln_cnt
+        # The timestamp of the vulnerability scan.
         self.time = time
+        # The number of unprotected vulnerabilities.
         self.unprotected_vuln_cnt = unprotected_vuln_cnt
 
     def validate(self):

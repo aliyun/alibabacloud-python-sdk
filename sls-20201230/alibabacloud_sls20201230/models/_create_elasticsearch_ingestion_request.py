@@ -14,13 +14,21 @@ class CreateElasticsearchIngestionRequest(DaraModel):
         name: str = None,
         schedule: main_models.Schedule = None,
     ):
+        # The configuration for the ES or OpenSearch import job.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The description of the job.
         self.description = description
+        # The display name of the job.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The unique identifier of the ES or OpenSearch import job.
+        # 
         # This parameter is required.
         self.name = name
+        # The schedule structure.
         self.schedule = schedule
 
     def validate(self):

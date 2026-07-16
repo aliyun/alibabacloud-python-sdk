@@ -12,11 +12,18 @@ class GetBotSessionDataRequest(DaraModel):
         robot_instance_id: str = None,
         start_time: str = None,
     ):
+        # The key for the workspace. If you omit this parameter, the operation uses the default workspace. You can find the key on the business management page of your main account.
         self.agent_key = agent_key
+        # The end time for the query. The format must be `yyyyMMdd`. For example: `20240605`.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the bot instance.
+        # 
         # This parameter is required.
         self.robot_instance_id = robot_instance_id
+        # The start time for the query. The format must be `yyyyMMdd`. For example: `20240505`.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

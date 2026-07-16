@@ -13,13 +13,13 @@ class CreatePolicyAttachmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreatePolicyAttachmentResponseBodyData(DaraModel):
         self,
         policy_attachment_id: str = None,
     ):
-        # Policy Mount ID
+        # The policy attachment ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):

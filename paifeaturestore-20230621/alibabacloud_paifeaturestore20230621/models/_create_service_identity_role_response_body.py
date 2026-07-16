@@ -11,8 +11,11 @@ class CreateServiceIdentityRoleResponseBody(DaraModel):
         request_id: str = None,
         role_name: str = None,
     ):
+        # The error code.
         self.code = code
+        # The request ID.
         self.request_id = request_id
+        # The name of the service account role.
         self.role_name = role_name
 
     def validate(self):

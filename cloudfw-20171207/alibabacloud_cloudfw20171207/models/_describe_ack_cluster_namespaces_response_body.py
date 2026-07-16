@@ -12,7 +12,9 @@ class DescribeAckClusterNamespacesResponseBody(DaraModel):
         ack_namespaces: List[str] = None,
         request_id: str = None,
     ):
+        # The list of ACK cluster namespaces.
         self.ack_namespaces = ack_namespaces
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

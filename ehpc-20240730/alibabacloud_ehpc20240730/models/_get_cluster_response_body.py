@@ -34,79 +34,93 @@ class GetClusterResponseBody(DaraModel):
         scheduler_spec: main_models.GetClusterResponseBodySchedulerSpec = None,
         security_group_id: str = None,
     ):
-        # The E-HPC Util version.
+        # The E-HPC Util version used by the cluster.
         self.client_version = client_version
-        # The cluster type. Valid values:
+        # The cluster series. Valid values:
         # 
-        # *   Standard
-        # *   Serverless
+        # - Standard
+        # 
+        # - Serverless
         self.cluster_category = cluster_category
-        # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The cluster creation time. The time follows the ISO 8601 standard and is in UTC+0. The format is yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.cluster_create_time = cluster_create_time
-        # The post-processing script of the cluster.
+        # The cluster post-processing script.
         self.cluster_custom_configuration = cluster_custom_configuration
-        # The cluster ID.
+        # The E-HPC cluster ID.
         self.cluster_id = cluster_id
         # The deployment type of the cluster. Valid values:
         # 
-        # *   Integrated: The cluster is deployed on a public cloud.
-        # *   Hybrid: The cluster is deployed on a hybrid cloud.
-        # *   Custom: The cluster is a custom cluster.
+        # - Integrated: Public cloud
+        # 
+        # - Hybrid: Hybrid cloud
+        # 
+        # - Custom: Custom cluster
         self.cluster_mode = cluster_mode
-        # The time when the cluster was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time is displayed in UTC. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
+        # The cluster modification time. The time follows the ISO 8601 standard and is in UTC+0. The format is yyyy-MM-ddTHH:mmZ. For more information, see [ISO 8601](https://help.aliyun.com/document_detail/25696.html).
         self.cluster_modify_time = cluster_modify_time
-        # The cluster name.
+        # The E-HPC cluster name.
         self.cluster_name = cluster_name
-        # The cluster state. Valid values:
+        # The cluster status. Valid values:
         # 
-        # *   uninit: The cluster is being installed.
-        # *   creating: The cluster is being created.
-        # *   initing: The cluster is being initialized.
-        # *   running: The cluster is running.
-        # *   exception: The cluster has run into an exception.
-        # *   raleasing: The cluster is being released.
-        # *   stopping: The cluster is being stopped.
-        # *   stopped: The cluster is stopped.
-        # *   pending: The cluster is waiting to be configured.
+        # - uninit: Installing
+        # 
+        # - creating: Creating
+        # 
+        # - initing: Initializing
+        # 
+        # - running: Running
+        # 
+        # - exception: Abnormal
+        # 
+        # - releasing: Releasing
+        # 
+        # - stopping: Stopping
+        # 
+        # - stopped: Stopped
+        # 
+        # - pending: Pending configuration
         self.cluster_status = cluster_status
-        # The ID of the vSwitch used by the cluster.
+        # The virtual switch ID used by the cluster.
         self.cluster_vswitch_id = cluster_vswitch_id
-        # The ID of the virtual private cloud (VPC) used by the cluster.
+        # The Virtual Private Cloud (VPC) ID used by the cluster.
         self.cluster_vpc_id = cluster_vpc_id
-        # Indicates whether deletion protection is enabled for the cluster. Valid values:
+        # Indicates whether delete protection is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enable delete protection.
+        # 
+        # - false: Do not enable delete protection.
         self.delete_protection = delete_protection
-        # The E-HPC version.
+        # The E-HPC product version number.
         self.ehpc_version = ehpc_version
-        # Indicates whether automatic scale-in is enabled for the cluster. Valid values:
+        # Indicates whether auto scale-in is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enable
+        # 
+        # - false: Disable
         self.enable_scale_in = enable_scale_in
-        # Indicates whether automatic scale-out is enabled for the cluster. Valid values:
+        # Indicates whether auto scale-out is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enable
+        # 
+        # - false: Disable
         self.enable_scale_out = enable_scale_out
-        # The interval at which the cluster is automatically scaled out.
+        # The interval for cluster auto scale-out.
         self.grow_interval = grow_interval
-        # The idle duration of the compute nodes allowed by the cluster.
+        # The idle time of the cluster\\"s compute nodes.
         self.idle_interval = idle_interval
-        # The management node configurations.
+        # The cluster control plane node configuration.
         self.manager = manager
-        # The maximum total number of vCPUs that can be used by all compute nodes managed by the cluster.
+        # The total number of cores of compute nodes the cluster can manage.
         self.max_core_count = max_core_count
-        # The maximum number of compute nodes that the cluster can manage.
+        # The number of compute nodes the cluster can manage.
         self.max_count = max_count
-        # The monitoring details of the cluster.
+        # The cluster monitoring details.
         self.monitor_spec = monitor_spec
         # The request ID.
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The scheduler specifications of the cluster.
+        # The cluster scheduling details.
         self.scheduler_spec = scheduler_spec
         # The security group ID.
         self.security_group_id = security_group_id
@@ -295,8 +309,9 @@ class GetClusterResponseBodySchedulerSpec(DaraModel):
         self.enable_power_saving = enable_power_saving
         # Indicates whether the topology awareness feature is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enable
+        # 
+        # - false: Disable
         self.enable_topology_awareness = enable_topology_awareness
 
     def validate(self):
@@ -330,10 +345,11 @@ class GetClusterResponseBodyMonitorSpec(DaraModel):
         self,
         enable_compute_load_monitor: bool = None,
     ):
-        # Indicates whether the monitoring component of compute nodes is enabled for the cluster. Valid values:
+        # Indicates whether the monitoring component for compute nodes is enabled for the cluster. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Enable
+        # 
+        # - false: Disable
         self.enable_compute_load_monitor = enable_compute_load_monitor
 
     def validate(self):
@@ -364,13 +380,13 @@ class GetClusterResponseBodyManager(DaraModel):
         manager_node: main_models.GetClusterResponseBodyManagerManagerNode = None,
         scheduler: main_models.GetClusterResponseBodyManagerScheduler = None,
     ):
-        # The configurations of the domain name resolution service.
+        # The domain name resolution service configuration.
         self.dns = dns
-        # The information about the domain account service.
+        # The domain account service information.
         self.directory_service = directory_service
-        # The configurations of the management node.
+        # The control plane node configuration.
         self.manager_node = manager_node
-        # The information about the scheduler.
+        # The scheduler service information.
         self.scheduler = scheduler
 
     def validate(self):
@@ -429,23 +445,33 @@ class GetClusterResponseBodyManagerScheduler(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The scheduler state. Valid values:
+        # The scheduler service status. Valid values:
         # 
-        # *   uninit: The scheduler is being installed.
-        # *   initing: The scheduler is being initialized.
-        # *   running: The scheduler is running.
-        # *   exception: The scheduler has run into an exception.
-        # *   releasing: The scheduler is being released.
-        # *   stopped: The scheduler is stopped.
-        # *   pending: The scheduler is waiting to be configured.
+        # - uninit: Installing
+        # 
+        # - initing: Initializing
+        # 
+        # - running: Running
+        # 
+        # - exception: Abnormal
+        # 
+        # - releasing: Releasing
+        # 
+        # - stopped: Stopped
+        # 
+        # - pending: Pending configuration
         self.status = status
         # The scheduler type. Valid values:
         # 
-        # *   SLURM
-        # *   PBS
-        # *   OPENGRIDSCHEDULER
-        # *   LSF_PLUGIN
-        # *   PBS_PLUGIN
+        # - SLURM
+        # 
+        # - PBS
+        # 
+        # - OPENGRIDSCHEDULER
+        # 
+        # - LSF_PLUGIN
+        # 
+        # - PBS_PLUGIN
         self.type = type
         # The scheduler version.
         self.version = version
@@ -504,17 +530,18 @@ class GetClusterResponseBodyManagerManagerNode(DaraModel):
         self.auto_renew_period = auto_renew_period
         self.duration = duration
         self.enable_ht = enable_ht
-        # The expiration time of the management node.
+        # The expiration time of the control plane node.
         self.expired_time = expired_time
         self.image_id = image_id
-        # The instance billing method of the management node. Valid values:
+        # The billing method of the control plane node instance. Valid values:
         # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
+        # - PostPaid: Pay-as-you-go
+        # 
+        # - PrePaid: Subscription
         self.instance_charge_type = instance_charge_type
-        # The instance ID of the management node.
+        # The control plane node instance ID.
         self.instance_id = instance_id
-        # The instance type of the management node.
+        # The control plane node instance type.
         self.instance_type = instance_type
         self.period = period
         self.period_unit = period_unit
@@ -672,19 +699,25 @@ class GetClusterResponseBodyManagerDirectoryService(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The state of the domain account service. Valid values:
+        # The domain account service status. Valid values:
         # 
-        # *   uninit: The service is being installed.
-        # *   initing: The service is being initialized.
-        # *   running: The service is running.
-        # *   exception: The service has run into an exception.
-        # *   releasing: The service is being released.
-        # *   stopped: The service is stopped.
-        # *   pending: The service is waiting to be configured.
+        # - uninit: Installing
+        # 
+        # - initing: Initializing
+        # 
+        # - running: Running
+        # 
+        # - exception: Abnormal
+        # 
+        # - releasing: Releasing
+        # 
+        # - stopped: Stopped
+        # 
+        # - pending: Pending configuration
         self.status = status
-        # The type of the domain account.
+        # The domain account type.
         self.type = type
-        # The version of the domain account service.
+        # The domain account version.
         self.version = version
 
     def validate(self):
@@ -726,19 +759,25 @@ class GetClusterResponseBodyManagerDNS(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The state of the domain name resolution service. Valid values:
+        # The domain name resolution service status. Valid values:
         # 
-        # *   uninit: The service is being installed.
-        # *   initing: The service is being initialized.
-        # *   running: The service is running.
-        # *   exception: The service has run into an exception.
-        # *   releasing: The service is being released.
-        # *   stopped: The service is stopped.
-        # *   pending: The service is waiting to be configured.
+        # - uninit: Installing
+        # 
+        # - initing: Initializing
+        # 
+        # - running: Running
+        # 
+        # - exception: Abnormal
+        # 
+        # - releasing: Releasing
+        # 
+        # - stopped: Stopped
+        # 
+        # - pending: Pending configuration
         self.status = status
-        # The resolution type.
+        # The domain name resolution type.
         self.type = type
-        # The version of the resolution service.
+        # The domain name resolution version.
         self.version = version
 
     def validate(self):
@@ -779,9 +818,9 @@ class GetClusterResponseBodyClusterCustomConfiguration(DaraModel):
         args: str = None,
         script: str = None,
     ):
-        # The arguments that are used to run the script after the scrip is installed.
+        # The runtime parameters of the post-installation script.
         self.args = args
-        # The URL that is used to download the post-processing script.
+        # The download URL of the post-processing script.
         self.script = script
 
     def validate(self):

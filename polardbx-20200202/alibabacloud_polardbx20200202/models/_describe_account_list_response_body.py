@@ -15,9 +15,13 @@ class DescribeAccountListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data struct.
         self.data = data
+        # The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -77,12 +81,22 @@ class DescribeAccountListResponseBodyData(DaraModel):
         dbname: str = None,
         gmt_created: str = None,
     ):
+        # The description of the account.
         self.account_description = account_description
+        # The name of the account.
         self.account_name = account_name
+        # The permissions granted to the account.
         self.account_privilege = account_privilege
+        # The type of the account.
+        # 
+        # - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+        # - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
         self.account_type = account_type
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The database to which the account is granted permissions.
         self.dbname = dbname
+        # The time when the account was created.
         self.gmt_created = gmt_created
 
     def validate(self):

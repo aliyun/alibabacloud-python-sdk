@@ -10,11 +10,11 @@ class DeleteMetricRuleBlackListRequest(DaraModel):
         id: str = None,
         region_id: str = None,
     ):
-        # The IDs of the blacklist policies. Separate multiple IDs with commas (,). You can specify up to 50 IDs.
+        # The ID of the alert blacklist policy. Separate multiple IDs with commas (,). You can specify up to 50 IDs.
         # 
-        # For more information about how to obtain the ID of a blacklist policy, see [DescribeMetricRuleBlackList](https://help.aliyun.com/document_detail/457257.html).
+        # For information about how to obtain the ID of an alert blacklist policy, see [DescribeMetricRuleBlackList](https://help.aliyun.com/document_detail/457257.html).
         # 
-        # >  You can also set this parameter to a JSON array. Example: `["a9ad2ac2-3ed9-11ed-b878-0242ac12****","5cb8a9a4-198f-4651-a353-f8b28788****"]`.
+        # > This parameter also supports JSON Array format, for example: `["a9ad2ac2-3ed9-11ed-b878-0242ac12****","5cb8a9a4-198f-4651-a353-f8b28788****"]`.
         # 
         # This parameter is required.
         self.id = id

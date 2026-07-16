@@ -16,25 +16,31 @@ class ListWafRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Query page number, used for pagination.
+        # The page number for pagination.
         self.page_number = page_number
-        # Query page size, used for pagination.
+        # The page size for pagination.
         self.page_size = page_size
-        # WAF rule type. Values:
-        # 
-        # - http_anti_scan: Scan protection
-        # - http_bot: Bots
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rule
+        # - http_custom: custom rule
+        # - http_managed: managed rule
+        # - http_anti_scan: scan protection rule
+        # - http_ratelimit: frequency control rule
+        # - ip_access_rule: IP access rule
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rule
         # 
         # This parameter is required.
         self.phase = phase
-        # Query filter conditions.
+        # The query filter conditions.
         self.query_args = query_args
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.ruleset_id = ruleset_id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Site version.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is 0.
         self.site_version = site_version
 
     def validate(self):
@@ -106,19 +112,19 @@ class ListWafRulesRequestQueryArgs(DaraModel):
         order_by: str = None,
         status: str = None,
     ):
-        # Fuzzy search for values in IP access control.
+        # The value in IP access control for fuzzy match.
         self.config_value_like = config_value_like
-        # Whether to reverse the sorting result.
+        # Specifies whether to reverse the sort order.
         self.desc = desc
-        # Exact query for WAF rule ID.
+        # The WAF rule ID for exact match.
         self.id = id
-        # Fuzzy query for WAF rule ID or name.
+        # The WAF rule ID or name for fuzzy match.
         self.id_name_like = id_name_like
-        # Fuzzy query for WAF rule name.
+        # The WAF rule name for fuzzy match.
         self.name_like = name_like
-        # Sort the returned list by the specified column.
+        # Sorts the returned list by a specified column.
         self.order_by = order_by
-        # Exact query for WAF rule status.
+        # The WAF rule status for exact match.
         self.status = status
 
     def validate(self):

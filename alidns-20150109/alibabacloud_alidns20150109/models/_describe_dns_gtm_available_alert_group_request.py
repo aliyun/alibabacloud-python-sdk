@@ -9,7 +9,7 @@ class DescribeDnsGtmAvailableAlertGroupRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
 
     def validate(self):

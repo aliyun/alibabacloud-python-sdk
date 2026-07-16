@@ -16,10 +16,15 @@ class GetModelFeatureFGFeatureResponseBody(DaraModel):
         reserves: List[str] = None,
         sequence_features: List[main_models.GetModelFeatureFGFeatureResponseBodySequenceFeatures] = None,
     ):
+        # The information about the lookup features.
         self.lookup_features = lookup_features
+        # The information about the raw features.
         self.raw_features = raw_features
+        # The ID of the request.
         self.request_id = request_id
+        # The reserved fields.
         self.reserves = reserves
+        # The information about the sequence features.
         self.sequence_features = sequence_features
 
     def validate(self):
@@ -101,10 +106,15 @@ class GetModelFeatureFGFeatureResponseBodySequenceFeatures(DaraModel):
         sequence_length: int = None,
         sub_features: List[main_models.GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures] = None,
     ):
+        # The separator for feature attributes.
         self.attribute_delim = attribute_delim
+        # The name of the sequence feature.
         self.feature_name = feature_name
+        # The separator for the sequence feature.
         self.sequence_delim = sequence_delim
+        # The maximum length of the sequence feature.
         self.sequence_length = sequence_length
+        # A list of sub-features for the sequence feature.
         self.sub_features = sub_features
 
     def validate(self):
@@ -169,11 +179,33 @@ class GetModelFeatureFGFeatureResponseBodySequenceFeaturesSubFeatures(DaraModel)
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The domain of the original feature.
+        # 
+        # - User: The user side.
+        # 
+        # - Item: The item side.
+        # 
+        # - Context: The context.
         self.feature_domain = feature_domain
+        # The name of the generated feature.
         self.feature_name = feature_name
+        # The type of the FG feature.
+        # 
+        # - IdFeature: The primary key.
+        # 
+        # - RawFeature: The raw feature.
         self.feature_type = feature_type
+        # The name of the original feature.
         self.input_feature_name = input_feature_name
+        # The value type of the feature.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
         self.value_type = value_type
 
     def validate(self):
@@ -236,11 +268,33 @@ class GetModelFeatureFGFeatureResponseBodyRawFeatures(DaraModel):
         input_feature_name: str = None,
         value_type: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The domain of the original feature.
+        # 
+        # - User: The user side.
+        # 
+        # - Item: The item side.
+        # 
+        # - Context: The context.
         self.feature_domain = feature_domain
+        # The name of the generated feature.
         self.feature_name = feature_name
+        # The type of the raw FG feature.
+        # 
+        # - IdFeature: The primary key.
+        # 
+        # - RawFeature: The raw feature.
         self.feature_type = feature_type
+        # The name of the original feature.
         self.input_feature_name = input_feature_name
+        # The value type of the feature.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
         self.value_type = value_type
 
     def validate(self):
@@ -304,12 +358,37 @@ class GetModelFeatureFGFeatureResponseBodyLookupFeatures(DaraModel):
         map_feature_name: str = None,
         value_type: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The name of the generated feature.
         self.feature_name = feature_name
+        # The domain of the key feature.
+        # 
+        # - User: The user side.
+        # 
+        # - Item: The item side.
+        # 
+        # - Context: The context.
         self.key_feature_domain = key_feature_domain
+        # The name of the key feature.
         self.key_feature_name = key_feature_name
+        # The domain of the map feature.
+        # 
+        # - User: The user side.
+        # 
+        # - Item: The item side.
+        # 
+        # - Context: The context.
         self.map_feature_domain = map_feature_domain
+        # The name of the map feature.
         self.map_feature_name = map_feature_name
+        # The value type of the feature.
+        # 
+        # - INTEGER
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
         self.value_type = value_type
 
     def validate(self):

@@ -11,12 +11,15 @@ class DescribeSupportLinesRequest(DaraModel):
         lang: str = None,
         user_client_ip: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The client IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

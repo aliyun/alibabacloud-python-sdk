@@ -14,7 +14,9 @@ class RunDocSmartCardResponseBody(DaraModel):
         payload: main_models.RunDocSmartCardResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # The response header.
         self.header = header
+        # The response body.
         self.payload = payload
         # Id of the request
         self.request_id = request_id
@@ -62,7 +64,9 @@ class RunDocSmartCardResponseBodyPayload(DaraModel):
         output: main_models.RunDocSmartCardResponseBodyPayloadOutput = None,
         usage: main_models.RunDocSmartCardResponseBodyPayloadUsage = None,
     ):
+        # The output object.
         self.output = output
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -103,8 +107,11 @@ class RunDocSmartCardResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens used for the input.
         self.input_tokens = input_tokens
+        # The number of tokens for the output.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -145,7 +152,9 @@ class RunDocSmartCardResponseBodyPayloadOutput(DaraModel):
         content: str = None,
         tags: List[str] = None,
     ):
+        # The title of the card.
         self.content = content
+        # An array of card tags.
         self.tags = tags
 
     def validate(self):
@@ -185,12 +194,19 @@ class RunDocSmartCardResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The event type.
         self.event = event
+        # The event description.
         self.event_info = event_info
+        # The unique ID of the session.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

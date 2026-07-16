@@ -16,14 +16,23 @@ class UpdateSolutionRequest(DaraModel):
         solution_id: int = None,
         tag_id_list: List[int] = None,
     ):
+        # The agent key. If you omit this parameter, the default agent is used. You can obtain the key on the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The content of the solution.
+        # 
         # This parameter is required.
         self.content = content
+        # The content type. Valid values: 0 for plain text and 1 for rich text.
         self.content_type = content_type
+        # A list of perspective codes.
+        # 
         # This parameter is required.
         self.perspective_codes = perspective_codes
+        # The ID of the solution.
+        # 
         # This parameter is required.
         self.solution_id = solution_id
+        # A list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):

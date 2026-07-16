@@ -9,7 +9,7 @@ class UpdateProjectResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request. It is used to locate logs and troubleshoot problems.
+        # The Request ID. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

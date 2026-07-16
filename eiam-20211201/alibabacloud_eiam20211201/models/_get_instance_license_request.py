@@ -9,7 +9,7 @@ class GetInstanceLicenseRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
-        # Instance ID
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

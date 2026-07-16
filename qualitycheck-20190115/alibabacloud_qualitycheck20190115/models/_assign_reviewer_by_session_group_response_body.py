@@ -17,11 +17,16 @@ class AssignReviewerBySessionGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of 200 indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns successful if the request succeeded.
         self.message = message
         self.messages = messages
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
         self.success = success
 
     def validate(self):

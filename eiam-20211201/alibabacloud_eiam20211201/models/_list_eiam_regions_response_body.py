@@ -13,7 +13,7 @@ class ListEiamRegionsResponseBody(DaraModel):
         regions: List[main_models.ListEiamRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The region list.
+        # The list of regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class ListEiamRegionsResponseBodyRegions(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # The region name.
+        # The name of the region.
         self.local_name = local_name
-        # The ID of the region in which the instance resides.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

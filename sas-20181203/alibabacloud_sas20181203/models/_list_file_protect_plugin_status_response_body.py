@@ -129,8 +129,9 @@ class ListFileProtectPluginStatusResponseBodyData(DaraModel):
         self.client_version = client_version
         # The returned code after you install the Security Center agent. Valid values:
         # 
-        # 1.  0: The installation is successful.
-        # 2.  \\-2: The kernel does not support the installation.
+        # 1. 0: The installation is successful.
+        # 
+        # 2. -2: The kernel does not support the installation.
         self.install_code = install_code
         # The returned message after you install the Security Center agent.
         self.install_message = install_message
@@ -144,13 +145,15 @@ class ListFileProtectPluginStatusResponseBodyData(DaraModel):
         self.intranet_ip = intranet_ip
         # Indicates whether the Security Center agent is online. Valid value:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.online = online
         # The type of the operating system. Valid values:
         # 
-        # *   **windows**: Windows
-        # *   **linux**: Linux
+        # - **windows**: Windows
+        # 
+        # - **linux**: Linux
         self.platform = platform
         # Indicates whether the core file monitoring file is supported.
         self.support_file = support_file

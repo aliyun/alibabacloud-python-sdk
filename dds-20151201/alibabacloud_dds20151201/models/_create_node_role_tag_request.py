@@ -14,12 +14,17 @@ class CreateNodeRoleTagRequest(DaraModel):
         resource_owner_id: int = None,
         shard_list: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the shard node.
+        # 
+        # > - This parameter applies only to sharded cluster instances.
         self.shard_list = shard_list
 
     def validate(self):

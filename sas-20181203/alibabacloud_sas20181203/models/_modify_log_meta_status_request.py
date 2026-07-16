@@ -13,26 +13,22 @@ class ModifyLogMetaStatusRequest(DaraModel):
         resource_directory_account_id: int = None,
         status: str = None,
     ):
-        # The ID of the request source. Set the value to **sas**.
+        # The request source identifier. Set this parameter to **sas**.
         self.from_ = from_
-        # The name of the dedicated Logstore in which logs are stored.
-        # 
-        # >  You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to query the names of Logstores.
+        # The name of the dedicated Logstore where logs are stored.
+        # >You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.log_store = log_store
-        # The name of the project.
-        # 
-        # >  You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to query the names of projects.
+        # The project name.
+        # > You can call the [DescribeLogMeta](~~DescribeLogMeta~~) operation to obtain this parameter.
         self.project = project
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the member account in the resource directory (Alibaba Cloud account).
+        # >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The status of the log analysis feature. Valid values:
-        # 
-        # *   **enabled**
-        # *   **disabled**
+        # The status to which you want to change the log. Valid values:
+        # - **enabled**: enabled
+        # - **disabled**: disabled.
         # 
         # This parameter is required.
         self.status = status

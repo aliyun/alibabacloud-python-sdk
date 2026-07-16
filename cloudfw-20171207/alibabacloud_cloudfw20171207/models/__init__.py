@@ -6,6 +6,7 @@ from ._add_acl_backup_data_request import AddAclBackupDataRequest
 from ._add_acl_backup_data_response_body import AddAclBackupDataResponseBody
 from ._add_acl_backup_data_response import AddAclBackupDataResponse
 from ._add_address_book_request import AddAddressBookRequest
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequest
 from ._add_address_book_response_body import AddAddressBookResponseBody
 from ._add_address_book_response import AddAddressBookResponse
 from ._add_control_policy_request import AddControlPolicyRequest
@@ -207,6 +208,7 @@ from ._describe_acl_whitelist_request import DescribeAclWhitelistRequest
 from ._describe_acl_whitelist_response_body import DescribeAclWhitelistResponseBody
 from ._describe_acl_whitelist_response import DescribeAclWhitelistResponse
 from ._describe_address_book_request import DescribeAddressBookRequest
+from ._describe_address_book_shrink_request import DescribeAddressBookShrinkRequest
 from ._describe_address_book_response_body import DescribeAddressBookResponseBody
 from ._describe_address_book_response import DescribeAddressBookResponse
 from ._describe_asset_list_request import DescribeAssetListRequest
@@ -263,15 +265,24 @@ from ._describe_download_task_type_response_body import DescribeDownloadTaskType
 from ._describe_download_task_type_response import DescribeDownloadTaskTypeResponse
 from ._describe_firewall_drop_statistics_response_body import DescribeFirewallDropStatisticsResponseBody
 from ._describe_firewall_drop_statistics_response import DescribeFirewallDropStatisticsResponse
+from ._describe_firewall_drop_trend_request import DescribeFirewallDropTrendRequest
+from ._describe_firewall_drop_trend_response_body import DescribeFirewallDropTrendResponseBody
+from ._describe_firewall_drop_trend_response import DescribeFirewallDropTrendResponse
 from ._describe_firewall_task_request import DescribeFirewallTaskRequest
 from ._describe_firewall_task_response_body import DescribeFirewallTaskResponseBody
 from ._describe_firewall_task_response import DescribeFirewallTaskResponse
+from ._describe_firewall_traffic_trend_request import DescribeFirewallTrafficTrendRequest
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBody
+from ._describe_firewall_traffic_trend_response import DescribeFirewallTrafficTrendResponse
 from ._describe_firewall_vswitch_request import DescribeFirewallVSwitchRequest
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBody
 from ._describe_firewall_vswitch_response import DescribeFirewallVSwitchResponse
 from ._describe_firewall_vswitch_resources_request import DescribeFirewallVswitchResourcesRequest
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBody
 from ._describe_firewall_vswitch_resources_response import DescribeFirewallVswitchResourcesResponse
+from ._describe_ipsrules_request import DescribeIPSRulesRequest
+from ._describe_ipsrules_response_body import DescribeIPSRulesResponseBody
+from ._describe_ipsrules_response import DescribeIPSRulesResponse
 from ._describe_instance_members_request import DescribeInstanceMembersRequest
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBody
 from ._describe_instance_members_response import DescribeInstanceMembersResponse
@@ -427,6 +438,9 @@ from ._describe_policy_advanced_config_response import DescribePolicyAdvancedCon
 from ._describe_policy_prior_used_request import DescribePolicyPriorUsedRequest
 from ._describe_policy_prior_used_response_body import DescribePolicyPriorUsedResponseBody
 from ._describe_policy_prior_used_response import DescribePolicyPriorUsedResponse
+from ._describe_postpay_bill_request import DescribePostpayBillRequest
+from ._describe_postpay_bill_response_body import DescribePostpayBillResponseBody
+from ._describe_postpay_bill_response import DescribePostpayBillResponse
 from ._describe_postpay_enabled_protection_request import DescribePostpayEnabledProtectionRequest
 from ._describe_postpay_enabled_protection_response_body import DescribePostpayEnabledProtectionResponseBody
 from ._describe_postpay_enabled_protection_response import DescribePostpayEnabledProtectionResponse
@@ -448,6 +462,9 @@ from ._describe_postpay_user_vpc_status_response import DescribePostpayUserVpcSt
 from ._describe_prefix_lists_request import DescribePrefixListsRequest
 from ._describe_prefix_lists_response_body import DescribePrefixListsResponseBody
 from ._describe_prefix_lists_response import DescribePrefixListsResponse
+from ._describe_prepay_bill_total_request import DescribePrepayBillTotalRequest
+from ._describe_prepay_bill_total_response_body import DescribePrepayBillTotalResponseBody
+from ._describe_prepay_bill_total_response import DescribePrepayBillTotalResponse
 from ._describe_private_dns_domain_name_list_request import DescribePrivateDnsDomainNameListRequest
 from ._describe_private_dns_domain_name_list_response_body import DescribePrivateDnsDomainNameListResponseBody
 from ._describe_private_dns_domain_name_list_response import DescribePrivateDnsDomainNameListResponse
@@ -502,6 +519,9 @@ from ._describe_sdl_event_sd_list_response import DescribeSdlEventSdListResponse
 from ._describe_sdl_event_statistic_request import DescribeSdlEventStatisticRequest
 from ._describe_sdl_event_statistic_response_body import DescribeSdlEventStatisticResponseBody
 from ._describe_sdl_event_statistic_response import DescribeSdlEventStatisticResponse
+from ._describe_sdl_last_payload_request import DescribeSdlLastPayloadRequest
+from ._describe_sdl_last_payload_response_body import DescribeSdlLastPayloadResponseBody
+from ._describe_sdl_last_payload_response import DescribeSdlLastPayloadResponse
 from ._describe_sdl_statistic_request import DescribeSdlStatisticRequest
 from ._describe_sdl_statistic_response_body import DescribeSdlStatisticResponseBody
 from ._describe_sdl_statistic_response import DescribeSdlStatisticResponse
@@ -630,6 +650,9 @@ from ._describe_vpc_firewall_summary_info_response import DescribeVpcFirewallSum
 from ._describe_vpc_firewall_traffic_asset_list_request import DescribeVpcFirewallTrafficAssetListRequest
 from ._describe_vpc_firewall_traffic_asset_list_response_body import DescribeVpcFirewallTrafficAssetListResponseBody
 from ._describe_vpc_firewall_traffic_asset_list_response import DescribeVpcFirewallTrafficAssetListResponse
+from ._describe_vpc_firewall_traffic_trend_request import DescribeVpcFirewallTrafficTrendRequest
+from ._describe_vpc_firewall_traffic_trend_response_body import DescribeVpcFirewallTrafficTrendResponseBody
+from ._describe_vpc_firewall_traffic_trend_response import DescribeVpcFirewallTrafficTrendResponse
 from ._describe_vpc_firewall_zone_request import DescribeVpcFirewallZoneRequest
 from ._describe_vpc_firewall_zone_response_body import DescribeVpcFirewallZoneResponseBody
 from ._describe_vpc_firewall_zone_response import DescribeVpcFirewallZoneResponse
@@ -655,6 +678,7 @@ from ._list_tls_inspect_cacertificates_request import ListTlsInspectCACertificat
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBody
 from ._list_tls_inspect_cacertificates_response import ListTlsInspectCACertificatesResponse
 from ._modify_address_book_request import ModifyAddressBookRequest
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequest
 from ._modify_address_book_response_body import ModifyAddressBookResponseBody
 from ._modify_address_book_response import ModifyAddressBookResponse
 from ._modify_cfw_instance_request import ModifyCfwInstanceRequest
@@ -722,6 +746,7 @@ from ._modify_tr_firewall_v2route_policy_scope_shrink_request import ModifyTrFir
 from ._modify_tr_firewall_v2route_policy_scope_response_body import ModifyTrFirewallV2RoutePolicyScopeResponseBody
 from ._modify_tr_firewall_v2route_policy_scope_response import ModifyTrFirewallV2RoutePolicyScopeResponse
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequest
+from ._modify_user_alarm_config_shrink_request import ModifyUserAlarmConfigShrinkRequest
 from ._modify_user_alarm_config_response_body import ModifyUserAlarmConfigResponseBody
 from ._modify_user_alarm_config_response import ModifyUserAlarmConfigResponse
 from ._modify_user_ipswhitelist_request import ModifyUserIPSWhitelistRequest
@@ -815,7 +840,13 @@ from ._use_acl_backup_data_request import UseAclBackupDataRequest
 from ._use_acl_backup_data_response_body import UseAclBackupDataResponseBody
 from ._use_acl_backup_data_response import UseAclBackupDataResponse
 from ._add_address_book_request import AddAddressBookRequestAckLabels
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypesResourceType
+from ._add_address_book_request import AddAddressBookRequestAssetRegionResourceTypes
 from ._add_address_book_request import AddAddressBookRequestTagList
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequestAckLabels
+from ._add_address_book_shrink_request import AddAddressBookShrinkRequestTagList
 from ._add_instance_members_request import AddInstanceMembersRequestMembers
 from ._create_ack_cluster_connector_response_body import CreateAckClusterConnectorResponseBodyAckClusterConnector
 from ._create_security_proxy_request import CreateSecurityProxyRequestNatRouteEntryList
@@ -843,6 +874,10 @@ from ._describe_acl_checks_response_body import DescribeAclChecksResponseBodyChe
 from ._describe_acl_checks_response_body import DescribeAclChecksResponseBodyCheckRecords
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAckLabels
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAddresses
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv4
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv6
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceType
+from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsTagList
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAcls
 from ._describe_asset_list_response_body import DescribeAssetListResponseBodyAssets
@@ -865,11 +900,15 @@ from ._describe_dns_firewall_policy_response_body import DescribeDnsFirewallPoli
 from ._describe_domain_resolve_response_body import DescribeDomainResolveResponseBodyResolveResult
 from ._describe_download_task_response_body import DescribeDownloadTaskResponseBodyTasks
 from ._describe_download_task_type_response_body import DescribeDownloadTaskTypeResponseBodyTaskTypeArray
+from ._describe_firewall_drop_trend_response_body import DescribeFirewallDropTrendResponseBodyDataList
 from ._describe_firewall_task_response_body import DescribeFirewallTaskResponseBodyTaskSteps
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBodyDataList
+from ._describe_firewall_traffic_trend_response_body import DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBodyVswitchListFirewallList
 from ._describe_firewall_vswitch_response_body import DescribeFirewallVSwitchResponseBodyVswitchList
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList
 from ._describe_firewall_vswitch_resources_response_body import DescribeFirewallVswitchResourcesResponseBodyVswitchList
+from ._describe_ipsrules_response_body import DescribeIPSRulesResponseBodyRules
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBodyMembers
 from ._describe_instance_members_response_body import DescribeInstanceMembersResponseBodyPageInfo
 from ._describe_instance_rd_accounts_response_body import DescribeInstanceRdAccountsResponseBodyAccounts
@@ -940,8 +979,10 @@ from ._describe_outgoing_risk_trend_response_body import DescribeOutgoingRiskTre
 from ._describe_outgoing_tag_response_body import DescribeOutgoingTagResponseBodyTagList
 from ._describe_page_documents_response_body import DescribePageDocumentsResponseBodyDocs
 from ._describe_page_documents_response_body import DescribePageDocumentsResponseBodyMore
+from ._describe_postpay_bill_response_body import DescribePostpayBillResponseBodyBillList
 from ._describe_postpay_traffic_detail_response_body import DescribePostpayTrafficDetailResponseBodyTrafficList
 from ._describe_prefix_lists_response_body import DescribePrefixListsResponseBodyPrefixList
+from ._describe_prepay_bill_total_response_body import DescribePrepayBillTotalResponseBodyBillList
 from ._describe_private_dns_endpoint_list_response_body import DescribePrivateDnsEndpointListResponseBodyAccessInstanceList
 from ._describe_private_dns_statistics_response_body import DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList
 from ._describe_region_info_response_body import DescribeRegionInfoResponseBodyDataList
@@ -993,7 +1034,6 @@ from ._describe_unprotected_vuln_trend_response_body import DescribeUnprotectedV
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyAlarmConfig
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyContactConfig
 from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyDefaultContact
-from ._describe_user_alarm_config_response_body import DescribeUserAlarmConfigResponseBodyNotifyConfig
 from ._describe_user_ipswhitelist_response_body import DescribeUserIPSWhitelistResponseBodyIpv6Whitelists
 from ._describe_user_ipswhitelist_response_body import DescribeUserIPSWhitelistResponseBodyWhitelists
 from ._describe_vfw_ipsconfig_list_response_body import DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList
@@ -1039,6 +1079,7 @@ from ._describe_vpc_firewall_precheck_detail_response_body import DescribeVpcFir
 from ._describe_vpc_firewall_precheck_detail_response_body import DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups
 from ._describe_vpc_firewall_precheck_detail_response_body import DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail
 from ._describe_vpc_firewall_traffic_asset_list_response_body import DescribeVpcFirewallTrafficAssetListResponseBodyDataList
+from ._describe_vpc_firewall_traffic_trend_response_body import DescribeVpcFirewallTrafficTrendResponseBodyDataList
 from ._describe_vpc_firewall_zone_response_body import DescribeVpcFirewallZoneResponseBodyZoneList
 from ._describe_vpc_list_lite_response_body import DescribeVpcListLiteResponseBodyVpcList
 from ._describe_vpc_zone_response_body import DescribeVpcZoneResponseBodyZoneList
@@ -1046,7 +1087,13 @@ from ._describe_vulnerability_protected_list_response_body import DescribeVulner
 from ._describe_vulnerability_protected_list_response_body import DescribeVulnerabilityProtectedListResponseBodyVulnList
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBodyCertificates
 from ._modify_address_book_request import ModifyAddressBookRequestAckLabels
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceType
+from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypes
 from ._modify_address_book_request import ModifyAddressBookRequestTagList
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequestAckLabels
+from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequestTagList
 from ._modify_cfw_instance_request import ModifyCfwInstanceRequestUpdateList
 from ._modify_instance_member_attributes_request import ModifyInstanceMemberAttributesRequestMembers
 from ._modify_threat_intelligence_switch_request import ModifyThreatIntelligenceSwitchRequestCategoryList
@@ -1054,7 +1101,7 @@ from ._modify_tr_firewall_v2route_policy_scope_request import ModifyTrFirewallV2
 from ._modify_tr_firewall_v2route_policy_scope_request import ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestAlarmConfig
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestContactConfig
-from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestNotifyConfig
+from ._modify_user_alarm_config_shrink_request import ModifyUserAlarmConfigShrinkRequestAlarmConfig
 from ._put_enable_fw_switch_response_body import PutEnableFwSwitchResponseBodyAbnormalResourceStatusList
 from ._update_ack_cluster_connector_response_body import UpdateAckClusterConnectorResponseBodyAckClusterConnector
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList
@@ -1067,6 +1114,7 @@ __all__ = [
     AddAclBackupDataResponseBody,
     AddAclBackupDataResponse,
     AddAddressBookRequest,
+    AddAddressBookShrinkRequest,
     AddAddressBookResponseBody,
     AddAddressBookResponse,
     AddControlPolicyRequest,
@@ -1268,6 +1316,7 @@ __all__ = [
     DescribeAclWhitelistResponseBody,
     DescribeAclWhitelistResponse,
     DescribeAddressBookRequest,
+    DescribeAddressBookShrinkRequest,
     DescribeAddressBookResponseBody,
     DescribeAddressBookResponse,
     DescribeAssetListRequest,
@@ -1324,15 +1373,24 @@ __all__ = [
     DescribeDownloadTaskTypeResponse,
     DescribeFirewallDropStatisticsResponseBody,
     DescribeFirewallDropStatisticsResponse,
+    DescribeFirewallDropTrendRequest,
+    DescribeFirewallDropTrendResponseBody,
+    DescribeFirewallDropTrendResponse,
     DescribeFirewallTaskRequest,
     DescribeFirewallTaskResponseBody,
     DescribeFirewallTaskResponse,
+    DescribeFirewallTrafficTrendRequest,
+    DescribeFirewallTrafficTrendResponseBody,
+    DescribeFirewallTrafficTrendResponse,
     DescribeFirewallVSwitchRequest,
     DescribeFirewallVSwitchResponseBody,
     DescribeFirewallVSwitchResponse,
     DescribeFirewallVswitchResourcesRequest,
     DescribeFirewallVswitchResourcesResponseBody,
     DescribeFirewallVswitchResourcesResponse,
+    DescribeIPSRulesRequest,
+    DescribeIPSRulesResponseBody,
+    DescribeIPSRulesResponse,
     DescribeInstanceMembersRequest,
     DescribeInstanceMembersResponseBody,
     DescribeInstanceMembersResponse,
@@ -1488,6 +1546,9 @@ __all__ = [
     DescribePolicyPriorUsedRequest,
     DescribePolicyPriorUsedResponseBody,
     DescribePolicyPriorUsedResponse,
+    DescribePostpayBillRequest,
+    DescribePostpayBillResponseBody,
+    DescribePostpayBillResponse,
     DescribePostpayEnabledProtectionRequest,
     DescribePostpayEnabledProtectionResponseBody,
     DescribePostpayEnabledProtectionResponse,
@@ -1509,6 +1570,9 @@ __all__ = [
     DescribePrefixListsRequest,
     DescribePrefixListsResponseBody,
     DescribePrefixListsResponse,
+    DescribePrepayBillTotalRequest,
+    DescribePrepayBillTotalResponseBody,
+    DescribePrepayBillTotalResponse,
     DescribePrivateDnsDomainNameListRequest,
     DescribePrivateDnsDomainNameListResponseBody,
     DescribePrivateDnsDomainNameListResponse,
@@ -1563,6 +1627,9 @@ __all__ = [
     DescribeSdlEventStatisticRequest,
     DescribeSdlEventStatisticResponseBody,
     DescribeSdlEventStatisticResponse,
+    DescribeSdlLastPayloadRequest,
+    DescribeSdlLastPayloadResponseBody,
+    DescribeSdlLastPayloadResponse,
     DescribeSdlStatisticRequest,
     DescribeSdlStatisticResponseBody,
     DescribeSdlStatisticResponse,
@@ -1691,6 +1758,9 @@ __all__ = [
     DescribeVpcFirewallTrafficAssetListRequest,
     DescribeVpcFirewallTrafficAssetListResponseBody,
     DescribeVpcFirewallTrafficAssetListResponse,
+    DescribeVpcFirewallTrafficTrendRequest,
+    DescribeVpcFirewallTrafficTrendResponseBody,
+    DescribeVpcFirewallTrafficTrendResponse,
     DescribeVpcFirewallZoneRequest,
     DescribeVpcFirewallZoneResponseBody,
     DescribeVpcFirewallZoneResponse,
@@ -1716,6 +1786,7 @@ __all__ = [
     ListTlsInspectCACertificatesResponseBody,
     ListTlsInspectCACertificatesResponse,
     ModifyAddressBookRequest,
+    ModifyAddressBookShrinkRequest,
     ModifyAddressBookResponseBody,
     ModifyAddressBookResponse,
     ModifyCfwInstanceRequest,
@@ -1783,6 +1854,7 @@ __all__ = [
     ModifyTrFirewallV2RoutePolicyScopeResponseBody,
     ModifyTrFirewallV2RoutePolicyScopeResponse,
     ModifyUserAlarmConfigRequest,
+    ModifyUserAlarmConfigShrinkRequest,
     ModifyUserAlarmConfigResponseBody,
     ModifyUserAlarmConfigResponse,
     ModifyUserIPSWhitelistRequest,
@@ -1876,7 +1948,13 @@ __all__ = [
     UseAclBackupDataResponseBody,
     UseAclBackupDataResponse,
     AddAddressBookRequestAckLabels,
+    AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4,
+    AddAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6,
+    AddAddressBookRequestAssetRegionResourceTypesResourceType,
+    AddAddressBookRequestAssetRegionResourceTypes,
     AddAddressBookRequestTagList,
+    AddAddressBookShrinkRequestAckLabels,
+    AddAddressBookShrinkRequestTagList,
     AddInstanceMembersRequestMembers,
     CreateAckClusterConnectorResponseBodyAckClusterConnector,
     CreateSecurityProxyRequestNatRouteEntryList,
@@ -1904,6 +1982,10 @@ __all__ = [
     DescribeAclChecksResponseBodyCheckRecords,
     DescribeAddressBookResponseBodyAclsAckLabels,
     DescribeAddressBookResponseBodyAclsAddresses,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv4,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceTypeIpv6,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypesResourceType,
+    DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes,
     DescribeAddressBookResponseBodyAclsTagList,
     DescribeAddressBookResponseBodyAcls,
     DescribeAssetListResponseBodyAssets,
@@ -1926,11 +2008,15 @@ __all__ = [
     DescribeDomainResolveResponseBodyResolveResult,
     DescribeDownloadTaskResponseBodyTasks,
     DescribeDownloadTaskTypeResponseBodyTaskTypeArray,
+    DescribeFirewallDropTrendResponseBodyDataList,
     DescribeFirewallTaskResponseBodyTaskSteps,
+    DescribeFirewallTrafficTrendResponseBodyDataList,
+    DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps,
     DescribeFirewallVSwitchResponseBodyVswitchListFirewallList,
     DescribeFirewallVSwitchResponseBodyVswitchList,
     DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList,
     DescribeFirewallVswitchResourcesResponseBodyVswitchList,
+    DescribeIPSRulesResponseBodyRules,
     DescribeInstanceMembersResponseBodyMembers,
     DescribeInstanceMembersResponseBodyPageInfo,
     DescribeInstanceRdAccountsResponseBodyAccounts,
@@ -2001,8 +2087,10 @@ __all__ = [
     DescribeOutgoingTagResponseBodyTagList,
     DescribePageDocumentsResponseBodyDocs,
     DescribePageDocumentsResponseBodyMore,
+    DescribePostpayBillResponseBodyBillList,
     DescribePostpayTrafficDetailResponseBodyTrafficList,
     DescribePrefixListsResponseBodyPrefixList,
+    DescribePrepayBillTotalResponseBodyBillList,
     DescribePrivateDnsEndpointListResponseBodyAccessInstanceList,
     DescribePrivateDnsStatisticsResponseBodyPrivateDnsRegionList,
     DescribeRegionInfoResponseBodyDataList,
@@ -2054,7 +2142,6 @@ __all__ = [
     DescribeUserAlarmConfigResponseBodyAlarmConfig,
     DescribeUserAlarmConfigResponseBodyContactConfig,
     DescribeUserAlarmConfigResponseBodyDefaultContact,
-    DescribeUserAlarmConfigResponseBodyNotifyConfig,
     DescribeUserIPSWhitelistResponseBodyIpv6Whitelists,
     DescribeUserIPSWhitelistResponseBodyWhitelists,
     DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList,
@@ -2100,6 +2187,7 @@ __all__ = [
     DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityGroups,
     DescribeVpcFirewallPrecheckDetailResponseBodyPrecheckDetail,
     DescribeVpcFirewallTrafficAssetListResponseBodyDataList,
+    DescribeVpcFirewallTrafficTrendResponseBodyDataList,
     DescribeVpcFirewallZoneResponseBodyZoneList,
     DescribeVpcListLiteResponseBodyVpcList,
     DescribeVpcZoneResponseBodyZoneList,
@@ -2107,7 +2195,13 @@ __all__ = [
     DescribeVulnerabilityProtectedListResponseBodyVulnList,
     ListTlsInspectCACertificatesResponseBodyCertificates,
     ModifyAddressBookRequestAckLabels,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6,
+    ModifyAddressBookRequestAssetRegionResourceTypesResourceType,
+    ModifyAddressBookRequestAssetRegionResourceTypes,
     ModifyAddressBookRequestTagList,
+    ModifyAddressBookShrinkRequestAckLabels,
+    ModifyAddressBookShrinkRequestTagList,
     ModifyCfwInstanceRequestUpdateList,
     ModifyInstanceMemberAttributesRequestMembers,
     ModifyThreatIntelligenceSwitchRequestCategoryList,
@@ -2115,7 +2209,7 @@ __all__ = [
     ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList,
     ModifyUserAlarmConfigRequestAlarmConfig,
     ModifyUserAlarmConfigRequestContactConfig,
-    ModifyUserAlarmConfigRequestNotifyConfig,
+    ModifyUserAlarmConfigShrinkRequestAlarmConfig,
     PutEnableFwSwitchResponseBodyAbnormalResourceStatusList,
     UpdateAckClusterConnectorResponseBodyAckClusterConnector,
     UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList,

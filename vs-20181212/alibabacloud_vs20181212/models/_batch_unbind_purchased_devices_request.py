@@ -10,6 +10,8 @@ class BatchUnbindPurchasedDevicesRequest(DaraModel):
         device_id: str = None,
         owner_id: int = None,
     ):
+        # Device ID. Separate multiple IDs with commas.
+        # 
         # This parameter is required.
         self.device_id = device_id
         self.owner_id = owner_id

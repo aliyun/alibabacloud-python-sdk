@@ -15,14 +15,23 @@ class ListDataLakeTablebaseInfoRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database where the table is located.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The page number of the list for a paged query.
         self.page = page
+        # The number of rows on each page for a paged query.
         self.rows = rows
+        # The keyword used to search for table names.
         self.search_key = search_key
+        # The tenant ID. Call the GetUserActiveTenant operation to get the value of this parameter.
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

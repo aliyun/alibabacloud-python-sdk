@@ -57,7 +57,7 @@ class DescribeSecurityIPListResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The details about the whitelists.
+        # The whitelist groups.
         self.group_items = group_items
 
     def validate(self):
@@ -109,11 +109,11 @@ class DescribeSecurityIPListResponseBodyDataGroupItems(DaraModel):
         security_iptype: str = None,
         whitelist_net_type: str = None,
     ):
-        # The name of the whitelist.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The tag of the whitelist.
+        # The group tag.
         self.group_tag = group_tag
-        # The IP addresses and CIDR blocks in the whitelist.
+        # The IP addresses in the whitelist group.
         self.security_iplist = security_iplist
         # The IP address type.
         self.security_iptype = security_iptype

@@ -25,19 +25,33 @@ class ListInstanceHistoryEventsRequest(DaraModel):
         page: int = None,
         size: int = None,
     ):
+        # The request body parameters.
         self.body = body
+        # The end time for querying by event creation time. Specify a timestamp in milliseconds.
         self.event_create_end_time = event_create_end_time
+        # The start time for querying by event creation time. Specify a timestamp in milliseconds.
         self.event_create_start_time = event_create_start_time
+        # The lifecycle status of the event.
         self.event_cycle_status = event_cycle_status
+        # The end time for querying by event execution time. Specify a timestamp in milliseconds.
         self.event_execute_end_time = event_execute_end_time
+        # The start time for querying by event execution time. Specify a timestamp in milliseconds.
         self.event_execute_start_time = event_execute_start_time
+        # The end time for querying by event completion time. Specify a timestamp in milliseconds.
         self.event_finash_end_time = event_finash_end_time
+        # The start time for querying by event completion time. Specify a timestamp in milliseconds.
         self.event_finash_start_time = event_finash_start_time
+        # The event level.
         self.event_level = event_level
+        # The event type.
         self.event_type = event_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address of the node that triggered the event.
         self.node_ip = node_ip
+        # The starting document offset. The value must be a non-negative integer. Default value: 0.
         self.page = page
+        # The number of events to return. The value must be a non-negative integer. Default value: 10.
         self.size = size
 
     def validate(self):
@@ -152,7 +166,16 @@ class ListInstanceHistoryEventsRequestBody(DaraModel):
         desc: bool = None,
         sort_field: str = None,
     ):
+        # Specifies whether to sort in descending order. Valid values:
+        # 
+        # - true (default): Yes.
+        # - false: No.
         self.desc = desc
+        # The field by which the results are sorted. Valid values:
+        # 
+        # - event_time: event creation time
+        # - event_execute_start_time: event execution time
+        # - event_execute_finish_time: event completion time.
         self.sort_field = sort_field
 
     def validate(self):

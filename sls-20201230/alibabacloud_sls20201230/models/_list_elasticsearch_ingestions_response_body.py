@@ -14,8 +14,11 @@ class ListElasticsearchIngestionsResponseBody(DaraModel):
         results: List[main_models.ESIngestion] = None,
         total: int = None,
     ):
+        # The number of Elasticsearch/OpenSearch import jobs returned in the current request.
         self.count = count
+        # The list of Elasticsearch/OpenSearch import jobs.
         self.results = results
+        # The total number of Elasticsearch/OpenSearch import jobs in the project.
         self.total = total
 
     def validate(self):

@@ -21,27 +21,27 @@ class TagResourcesForExpressConnectRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the resource is deployed.
+        # The region ID of the resource to which you want to create and bind tags.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify up to 20 resource IDs.
+        # The resource ID. You can specify up to 20 resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **PHYSICALCONNECTION**: Express Connect circuit.
-        # *   **VIRTUALBORDERROUTER**: virtual border router (VBR).
-        # *   **ROUTERINTERFACE**: router interface.
+        # The resource type. Valid values:
+        # - **PHYSICALCONNECTION**: Express Connect circuit instance.
+        # - **VIRTUALBORDERROUTER**: Virtual Border Router.
+        # - **ROUTERINTERFACE**: VBR uplink.
+        # - **TRAFFICQOS**: QoS policy.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags to add to the resource.
+        # The list of resource tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -122,13 +122,13 @@ class TagResourcesForExpressConnectRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

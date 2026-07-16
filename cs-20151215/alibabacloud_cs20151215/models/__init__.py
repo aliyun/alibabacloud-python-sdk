@@ -305,6 +305,9 @@ from ._run_cluster_check_response import RunClusterCheckResponse
 from ._run_cluster_inspect_request import RunClusterInspectRequest
 from ._run_cluster_inspect_response_body import RunClusterInspectResponseBody
 from ._run_cluster_inspect_response import RunClusterInspectResponse
+from ._run_node_operation_request import RunNodeOperationRequest
+from ._run_node_operation_response_body import RunNodeOperationResponseBody
+from ._run_node_operation_response import RunNodeOperationResponse
 from ._scale_cluster_node_pool_request import ScaleClusterNodePoolRequest
 from ._scale_cluster_node_pool_response_body import ScaleClusterNodePoolResponseBody
 from ._scale_cluster_node_pool_response import ScaleClusterNodePoolResponse
@@ -596,6 +599,7 @@ from ._modify_cluster_request import ModifyClusterRequestOperationPolicyClusterA
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicy
 from ._modify_cluster_request import ModifyClusterRequestSystemEventsLogging
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestAutoScaling
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestEfloNodeGroup
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestKubernetesConfig
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestManagementAutoRepairPolicy
 from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestManagementAutoUpgradePolicy
@@ -924,6 +928,9 @@ __all__ = [
     RunClusterInspectRequest,
     RunClusterInspectResponseBody,
     RunClusterInspectResponse,
+    RunNodeOperationRequest,
+    RunNodeOperationResponseBody,
+    RunNodeOperationResponse,
     ScaleClusterNodePoolRequest,
     ScaleClusterNodePoolResponseBody,
     ScaleClusterNodePoolResponse,
@@ -1215,6 +1222,7 @@ __all__ = [
     ModifyClusterRequestOperationPolicy,
     ModifyClusterRequestSystemEventsLogging,
     ModifyClusterNodePoolRequestAutoScaling,
+    ModifyClusterNodePoolRequestEfloNodeGroup,
     ModifyClusterNodePoolRequestKubernetesConfig,
     ModifyClusterNodePoolRequestManagementAutoRepairPolicy,
     ModifyClusterNodePoolRequestManagementAutoUpgradePolicy,

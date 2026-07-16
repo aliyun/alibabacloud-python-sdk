@@ -9,9 +9,11 @@ class ListOAuth2CredentialProvidersRequest(DaraModel):
         self,
         max_results: int = None,
         next_token: str = None,
+        token_vault_name: str = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
+        self.token_vault_name = token_vault_name
 
     def validate(self):
         pass
@@ -27,6 +29,9 @@ class ListOAuth2CredentialProvidersRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        if self.token_vault_name is not None:
+            result['TokenVaultName'] = self.token_vault_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -36,6 +41,9 @@ class ListOAuth2CredentialProvidersRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('TokenVaultName') is not None:
+            self.token_vault_name = m.get('TokenVaultName')
 
         return self
 

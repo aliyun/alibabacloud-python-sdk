@@ -14,11 +14,11 @@ class DescribeDBInstancesOverviewResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The information of instances.
+        # A list of instance details.
         self.dbinstances = dbinstances
         # The request ID.
         self.request_id = request_id
-        # The number of instances in the query results.
+        # The number of instances returned.
         self.total_count = total_count
 
     def validate(self):
@@ -90,95 +90,115 @@ class DescribeDBInstancesOverviewResponseBodyDBInstances(DaraModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
-        # The read and write throughput consumed by the instance.
+        # The read/write throughput of the instance.
         # 
-        # > 
-        # 
-        # *   This parameter is returned when the instance is a serverless instance.
-        # 
-        # *   Serverless instances are available only in the China site (aliyun.com).
+        # > - This parameter is returned only for Serverless instances.
+        # >
+        # > - Serverless instances are available only on the China site (aliyun.com).
         self.capacity_unit = capacity_unit
         # The billing method of the instance. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
-        self.charge_type = charge_type
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        self.creation_time = creation_time
-        # The instance type. The instance type varies based on the instance architecture. For more information about instance types supported by different instance architectures, see the following references:
+        # - **PrePaid**: subscription
         # 
-        # *   [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
-        # *   [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
-        # *   [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+        # - **PostPaid**: pay-as-you-go
+        self.charge_type = charge_type
+        # The time when the instance was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is in UTC.
+        self.creation_time = creation_time
+        # The instance type. For more information about the instance types available for different instance architectures, see:
+        # 
+        # - [Standalone instance types](https://help.aliyun.com/document_detail/311407.html)
+        # 
+        # - [Replica set instance types](https://help.aliyun.com/document_detail/311410.html)
+        # 
+        # - [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html)
+        # 
+        # <props="china">
+        # 
+        # > This parameter is not required for Serverless instances.
         self.dbinstance_class = dbinstance_class
         # The description of the instance.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The state of the instance. For more information about valid values, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
+        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.dbinstance_status = dbinstance_status
-        # The storage space of the instance. Unit: GB.
+        # The storage capacity of the instance, in GB.
         self.dbinstance_storage = dbinstance_storage
-        # The architecture of the instance. Valid values:
+        # The instance architecture. Valid values:
         # 
-        # *   **sharding**: sharded cluster instance
-        # *   **replicate**: replica set or standalone instance
+        # - **sharding**: sharded cluster instance
+        # 
+        # - **replicate**: replica set or standalone instance
+        # 
+        # <props="china">
+        # 
+        # - **serverless**: Serverless instance
         self.dbinstance_type = dbinstance_type
-        # The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the data of the instance was destroyed. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.destroy_time = destroy_time
-        # The database engine of the instance. Set the value to **MongoDB**.
+        # The database engine. The value is **MongoDB**.
         self.engine = engine
         # The database engine version of the instance.
         self.engine_version = engine_version
-        # The time when the instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The expiration time of the subscription instance. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is in UTC.
         self.expire_time = expire_time
-        # The kind code of the instance. Valid values:
+        # The instance edition. Valid values:
         # 
-        # *   **0**: physical machine
-        # *   **1**: Elastic Compute Service (ECS) instance
-        # *   **2**: Docker cluster
-        # *   **18**: Kubernetes cluster
+        # - **0**: physical server
+        # 
+        # - **1**: ECS
+        # 
+        # - **2**: DOCKER
+        # 
+        # - **18**: instance on the new Kubernetes-based architecture
         self.kind_code = kind_code
-        # The date when the last downgrade operation was performed.
+        # The time when the instance was last downgraded.
         self.last_downgrade_time = last_downgrade_time
-        # Indicates whether the instance is locked. Valid values:
+        # The lock mode of the instance.
         # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
-        # *   **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
+        # - **Unlock**: The instance is not locked.
+        # 
+        # - **ManualLock**: The instance is manually locked.
+        # 
+        # - **LockByExpiration**: The instance is automatically locked after it expires.
+        # 
+        # - **LockByRestoration**: The instance is automatically locked before a rollback.
+        # 
+        # - **LockByDiskQuota**: The instance is automatically locked after its storage space is exhausted.
+        # 
+        # - **Released**: The instance is released. You cannot unlock a released instance. You can only restore the data of the instance to a new instance. The restoration may take a long time.
         self.lock_mode = lock_mode
         # The details of the mongos nodes.
         # 
-        # >  This parameter is returned when the instance is a sharded cluster instance.
+        # > This parameter is returned only for sharded cluster instances.
         self.mongos_list = mongos_list
         # The network type of the instance. Valid values:
         # 
-        # *   **Classic**
-        # *   **VPC**
+        # - **Classic**: classic network
+        # 
+        # - **VPC**: virtual private cloud (VPC)
         self.network_type = network_type
         # The region ID of the instance.
         self.region_id = region_id
         # The number of nodes in the instance.
         # 
-        # >  This parameter is returned when the instance is a replica set instance.
+        # > This parameter is returned only for replica set instances.
         self.replication_factor = replication_factor
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The details of the shard nodes.
         # 
-        # >  This parameter is returned when the instance is a sharded cluster instance.
+        # > This parameter is returned only for sharded cluster instances.
         self.shard_list = shard_list
-        # The tags to add to the instance.
+        # The tags of the instance.
         self.tags = tags
-        # Indicates whether password-free access over VPC is enabled. Valid values:
+        # Indicates whether password-free access over a VPC is enabled. Valid values:
         # 
-        # *   **Open**: Password-free access over VPC is enabled.
-        # *   **Close**: Password-free access over VPC is disabled.
+        # - **Open**: enabled
+        # 
+        # - **Close**: disabled
         self.vpc_auth_mode = vpc_auth_mode
-        # The zone ID of the instance.
+        # The zone of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -377,17 +397,21 @@ class DescribeDBInstancesOverviewResponseBodyDBInstancesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Valid values of N: **1** to **20**.
+        # The tag key.
         # 
-        # *   The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # *   It can be up to 64 characters in length.
-        # *   It cannot be an empty string.
+        # - The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+        # 
+        # - The key can be up to 64 characters in length.
+        # 
+        # - The key cannot be an empty string.
         self.key = key
-        # The tag value. Valid values of N: **1** to **20**.
+        # The tag value.
         # 
-        # *   The value cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
-        # *   The value can be up to 128 characters in length.
-        # *   The value can be an empty string.
+        # - The value cannot start with `aliyun`, `acs`:, `http://`, or `https://`.
+        # 
+        # - The value can be up to 128 characters in length.
+        # 
+        # - The value can be an empty string.
         self.value = value
 
     def validate(self):
@@ -431,9 +455,9 @@ class DescribeDBInstancesOverviewResponseBodyDBInstancesShardList(DaraModel):
         self.node_description = node_description
         # The ID of the shard node.
         self.node_id = node_id
-        # The storage space of the shard node. Unit: GB.
+        # The storage capacity of the shard node, in GB.
         self.node_storage = node_storage
-        # The number of read-only nodes in the shard node. Valid values: **0** to **5**.
+        # The number of read-only nodes in the shard. Valid values: **0** to **5**.
         self.readonly_replicas = readonly_replicas
 
     def validate(self):

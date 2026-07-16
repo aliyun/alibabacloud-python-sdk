@@ -12,8 +12,11 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         has_config: int = None,
         request_id: str = None,
     ):
+        # The configuration information.
         self.config = config
+        # Indicates whether a configuration has been set. Valid values:1: Yes0: NoThe value of this parameter is 0 for the first query.
         self.has_config = has_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +64,27 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
+        # The time when the configuration was created.
         self.created_time = created_time
+        # The day of the cycle.
+        # 
+        # - If CycleType is set to Month, this parameter returns a number from 1 to 28 that indicates the day of the month. Multiple days are separated by commas (,).
+        # 
+        # - If CycleType is set to Week, this parameter returns a number from 1 to 7 that indicates the day of the week. Multiple days are separated by commas (,).
         self.cycle_time = cycle_time
+        # The cycle type. Valid values:
+        # 
+        # - Month: monthly
+        # 
+        # - Week: weekly
         self.cycle_type = cycle_type
+        # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
+        # The time when the configuration was last modified.
         self.modified_time = modified_time
+        # Indicates whether the configuration is enabled. Valid values:1: Enabled2: Disabled
         self.status = status
 
     def validate(self):

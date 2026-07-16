@@ -170,24 +170,41 @@ class DescribeDeploymentJobStatusResponseBodyProductWorkerCount(DaraModel):
         self.count = count
         # The name of the cloud service. Valid values:
         # 
-        # *   **SLB**: Classic Load Balancer (CLB). This value is supported only at the China site (aliyun.com).
-        # *   **LIVE**: ApsaraVideo Live. This value is supported only at the China site (aliyun.com).
-        # *   **webHosting**: Cloud Web Hosting. This value is supported only at the China site (aliyun.com).
-        # *   **VOD**: ApsaraVideo VOD. This value is supported only at the China site (aliyun.com).
-        # *   **CR**: Container Registry. This value is supported only at the China site (aliyun.com).
-        # *   **DCDN**: Dynamic Content Delivery Network (DCDN).
-        # *   **DDOS**: Anti-DDoS.
-        # *   **CDN**: Alibaba Cloud CDN (CDN).
-        # *   **ALB**: Application Load Balancer (ALB).
-        # *   **APIGateway**: API Gateway.
-        # *   **FC**: Function Compute.
-        # *   **GA**: Global Accelerator (GA).
-        # *   **MSE**: Microservices Engine (MSE).
-        # *   **NLB**: Network Load Balancer (NLB).
-        # *   **OSS**: Object Storage Service (OSS).
-        # *   **SAE**: Serverless App Engine (SAE).
-        # *   **TencentCDN**: Tencent Cloud Content Delivery Network (CDN).
-        # *   **WAF**: Web Application Firewall (WAF).
+        # - **SLB**: Classic Load Balancer (CLB). This value is supported only at the China site (aliyun.com).
+        # 
+        # - **LIVE**: ApsaraVideo Live. This value is supported only at the China site (aliyun.com).
+        # 
+        # - **webHosting**: Cloud Web Hosting. This value is supported only at the China site (aliyun.com).
+        # 
+        # - **VOD**: ApsaraVideo VOD. This value is supported only at the China site (aliyun.com).
+        # 
+        # - **CR**: Container Registry. This value is supported only at the China site (aliyun.com).
+        # 
+        # - **DCDN**: Dynamic Content Delivery Network (DCDN).
+        # 
+        # - **DDOS**: Anti-DDoS.
+        # 
+        # - **CDN**: Alibaba Cloud CDN (CDN).
+        # 
+        # - **ALB**: Application Load Balancer (ALB).
+        # 
+        # - **APIGateway**: API Gateway.
+        # 
+        # - **FC**: Function Compute.
+        # 
+        # - **GA**: Global Accelerator (GA).
+        # 
+        # - **MSE**: Microservices Engine (MSE).
+        # 
+        # - **NLB**: Network Load Balancer (NLB).
+        # 
+        # - **OSS**: Object Storage Service (OSS).
+        # 
+        # - **SAE**: Serverless App Engine (SAE).
+        # 
+        # - **TencentCDN**: Tencent Cloud Content Delivery Network (CDN).
+        # 
+        # - **WAF**: Web Application Firewall (WAF).
         self.product_name = product_name
 
     def validate(self):

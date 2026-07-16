@@ -10,7 +10,9 @@ class GoodsShippingNoticeCreateResult(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # API request requestId
         self.request_id = request_id
+        # Return result of submitting logistics information
         self.result = result
 
     def validate(self):

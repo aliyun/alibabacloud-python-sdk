@@ -17,12 +17,24 @@ class ModifyDBNodeConfigRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The name of the node configuration.
+        # 
         # This parameter is required.
         self.config_name = config_name
+        # The configuration of the node.
+        # 
         # This parameter is required.
         self.config_value = config_value
+        # The cluster ID.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters in your account, including the cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the cluster node.
+        # 
+        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters in your account, including the node ID.
+        # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account

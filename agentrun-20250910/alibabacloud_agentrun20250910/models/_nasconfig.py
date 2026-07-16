@@ -14,8 +14,11 @@ class NASConfig(DaraModel):
         mount_points: List[main_models.NASMountConfig] = None,
         user_id: int = None,
     ):
+        # The group ID for file system access.
         self.group_id = group_id
+        # A list of mount point configurations.
         self.mount_points = mount_points
+        # The user ID for file system access.
         self.user_id = user_id
 
     def validate(self):

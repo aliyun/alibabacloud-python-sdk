@@ -13,7 +13,9 @@ class ModuleDataPropertiesValue(DaraModel):
         code: str = None,
         values: List[main_models.ModuleDataPropertiesValueValues] = None,
     ):
+        # Property code, such as "aliyun_commodity_agreement"
         self.code = code
+        # Property value list
         self.values = values
 
     def validate(self):

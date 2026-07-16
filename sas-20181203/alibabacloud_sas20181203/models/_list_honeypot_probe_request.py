@@ -14,36 +14,33 @@ class ListHoneypotProbeRequest(DaraModel):
         probe_status: str = None,
         probe_type: str = None,
     ):
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number of the page to return. Minimum value: **1**. Default value: **1**.
         self.current_page = current_page
         # The name of the probe.
         self.display_name = display_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to return on each page in a paged query. Default value: 20. If you leave this parameter empty, 20 entries are returned per page during paging.
+        # > Do not leave PageSize empty.
         self.page_size = page_size
-        # The status of the probe. Valid values:
-        # 
-        # *   **installed**: installed
-        # *   **install_failed**: installation failed
-        # *   **online**: online
-        # *   **offline**: offline
-        # *   **unnormal**: abnormal
-        # *   **unprobe**: unauthorized
-        # *   **uninstalling**: being uninstalled
-        # *   **uninstalled**: uninstalled
-        # *   **uninstall_failed**: uninstallation failed
-        # *   **not_exist**: not installed
+        # The probe status. Valid values:
+        # - **installed**: Installation succeeded.
+        # - **install_failed**: Installation failed.
+        # - **online**: Normal.
+        # - **offline**: Offline.
+        # - **unnormal**: Service exception.
+        # - **unprobe**: Unauthorized.
+        # - **uninstalling**: Uninstalling.
+        # - **uninstalled**: Uninstallation succeeded.
+        # - **uninstall_failed**: Uninstallation failed.
+        # - **not_exist**: Not installed.
         self.probe_status = probe_status
-        # The type of the probe. Valid values:
+        # The probe type. Valid values:
         # 
-        # *   **host_probe**: host probe
-        # *   **vpc_black_hole_probe**: VPC probe
+        # - **host_probe**: host probe
+        # - **vpc_black_hole_probe**: VPC blackhole probe.
         self.probe_type = probe_type
 
     def validate(self):

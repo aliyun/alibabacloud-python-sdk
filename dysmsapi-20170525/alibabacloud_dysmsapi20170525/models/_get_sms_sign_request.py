@@ -15,10 +15,10 @@ class GetSmsSignRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Signature name. Must be an SMS signature already applied for by this account.
+        # The signature name. The signature must be applied for by your account.
         # 
-        # - Obtain from the return parameters after calling the [CreateSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmssign?spm) API.
-        # - View the signature on the [Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page.
+        # - After you call the [CreateSmsSign](https://help.aliyun.com/document_detail/2807427.html) operation, obtain the signature name from the response.
+        # - View the signature on the [Signatures](https://dysms.console.aliyun.com/domestic/text/sign) page.
         # 
         # This parameter is required.
         self.sign_name = sign_name

@@ -16,11 +16,11 @@ class ClearSagRouteableAddressRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the SAG instance belongs.
+        # The region ID of the Smart Access Gateway instance.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance.
+        # The instance ID of the Smart Access Gateway instance.
         # 
         # This parameter is required.
         self.sag_id = sag_id

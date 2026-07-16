@@ -13,9 +13,9 @@ class GetServiceResponseBody(DaraModel):
         request_id: str = None,
         service: main_models.GetServiceResponseBodyService = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Service object.
+        # The service object.
         self.service = service
 
     def validate(self):
@@ -63,29 +63,31 @@ class GetServiceResponseBodyService(DaraModel):
         tags: List[main_models.GetServiceResponseBodyServiceTags] = None,
         workspace: str = None,
     ):
-        # Extended information.
+        # The extended information.
         self.attributes = attributes
-        # Creation time
+        # The time when the service was created.
         self.create_time = create_time
-        # Description, only valid when serviceType=RUM.
+        # The description. This parameter is valid only when serviceType is set to RUM.
         self.description = description
-        # Display name, only valid when serviceType=RUM.
+        # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # Legacy ARMS application ID
+        # The ID of the ARMS application that is compatible with earlier versions.
         self.pid = pid
-        # Region ID
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Service name
+        # The service name.
         self.service_name = service_name
-        # Service status, only valid when serviceType=RUM.
+        # The service status. This parameter is valid only when serviceType is set to RUM.
         self.service_status = service_status
-        # Service type.
+        # The service type.
         self.service_type = service_type
+        # The array of tags.
         self.tags = tags
-        # Workspace name
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):
@@ -194,7 +196,9 @@ class GetServiceResponseBodyServiceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

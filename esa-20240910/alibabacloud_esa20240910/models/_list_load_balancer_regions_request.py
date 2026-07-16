@@ -10,9 +10,9 @@ class ListLoadBalancerRegionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

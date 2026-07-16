@@ -10,9 +10,9 @@ class CreateWafRulesetResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # Ruleset ID.
+        # The ruleset ID.
         self.id = id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

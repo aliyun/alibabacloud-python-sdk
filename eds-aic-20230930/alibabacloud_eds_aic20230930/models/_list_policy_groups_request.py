@@ -15,14 +15,15 @@ class ListPolicyGroupsRequest(DaraModel):
         policy_group_name: str = None,
         policy_type: str = None,
     ):
-        # The maximum number of entries per page. Value range: 1 to 100. Default value: 20.
+        # The maximum number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+        # The pagination token that marks the position from which to start reading. Leave this parameter empty to read from the beginning.
         self.next_token = next_token
-        # The IDs of the policies.
+        # The list of policy IDs.
         self.policy_group_ids = policy_group_ids
-        # The name of the policy.
+        # The policy name.
         self.policy_group_name = policy_group_name
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

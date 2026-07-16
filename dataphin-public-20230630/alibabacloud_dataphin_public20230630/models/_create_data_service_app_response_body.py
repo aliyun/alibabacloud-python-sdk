@@ -14,12 +14,17 @@ class CreateDataServiceAppResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code returned by the backend.
         self.code = code
+        # The application ID.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

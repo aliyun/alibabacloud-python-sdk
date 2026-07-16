@@ -17,12 +17,17 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The list of slow log details.
         self.items = items
+        # The page number of the current query.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
         # Id of the request
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,31 +118,60 @@ class DescribeSlowLogRecordsResponseBodyItems(DaraModel):
         trx_id: str = None,
         wt: str = None,
     ):
+        # The compute node name. This field is available only for CN.
         self.cnname = cnname
+        # The database name.
         self.dbname = dbname
+        # The extension field. This field is available only for CN.
         self.extension = extension
+        # Indicates whether the execution failed. This field is available only for CN.
         self.fail = fail
+        # The number of rows fetched. This field is available only for CN.
         self.frows = frows
+        # The name and address of the client that connects to the database.
         self.host_address = host_address
+        # The instance name. This field is available only for DN.
         self.ins_name = ins_name
+        # Indicates whether the Prepare mode is used. This field is available only for CN.
         self.is_bind = is_bind
+        # The lock duration. Unit: milliseconds (ms). This field is available only for DN.
         self.lock_time_ms = lock_time_ms
+        # The parameters in Prepare mode. This field is available only for CN.
         self.params = params
+        # The number of rows scanned. This field is available only for DN.
         self.parse_row_counts = parse_row_counts
+        # The timestamp in the YYYY-MM-ddTHH:mm.ss.SSSZ format (UTC).
+        # 
+        # - In CN slow logs, this field indicates the execution start time.
+        # - In DN slow logs, this field indicates the execution end time.
         self.query_start_time = query_start_time
+        # The execution duration of the SQL statement. Unit: seconds.
         self.query_time = query_time
+        # The execution duration of the SQL statement. Unit: milliseconds (ms).
         self.query_time_ms = query_time_ms
+        # The number of rows returned. This field is available only for DN.
         self.return_row_counts = return_row_counts
+        # The number of rows affected or returned. This field is available only for CN.
         self.rows = rows
+        # The number of physical SQL statements. This field is available only for CN.
         self.scnt = scnt
+        # The unique identifier of the SQL statement in slow query log statistics.
         self.sqlhash = sqlhash
+        # The SQL statement.
         self.sqltext = sqltext
+        # The SQL type. This field is available only for CN.
         self.sql_type = sql_type
+        # The kernel template ID. This field is available only for CN.
         self.template_id = template_id
+        # Indicates whether the SQL statement is too long. This field is available only for CN.
         self.too_long = too_long
+        # The trace ID. This field is available only for CN.
         self.trace_id = trace_id
+        # The transaction policy. This field is available only for CN.
         self.transaction_policy = transaction_policy
+        # The transaction ID. This field is available only for CN.
         self.trx_id = trx_id
+        # The workload type. This field is available only for CN.
         self.wt = wt
 
     def validate(self):

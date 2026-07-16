@@ -18,17 +18,51 @@ class ModifyDomainCertRequest(DaraModel):
         region_id: str = None,
         tlsversion: str = None,
     ):
+        # The ID of the certificate.
+        # 
         # This parameter is required.
         self.cert_id = cert_id
+        # The type of the cipher suite. Valid values:
+        # 
+        # - **1**: all cipher suites.
+        # 
+        # - **2**: strong cipher suites.
+        # 
+        # - **99**: custom cipher suites.
         self.cipher_suite = cipher_suite
+        # The custom cipher suites. This parameter is available only when you set **CipherSuite** to **99**.
         self.custom_ciphers = custom_ciphers
+        # The domain name that is added to WAF in CNAME record mode.
+        # 
         # This parameter is required.
         self.domain = domain
+        # Indicates whether to enable TLS 1.3. Valid values:
+        # 
+        # - **true**: TLS 1.3 is enabled.
+        # 
+        # - **false**: TLS 1.3 is disabled.
         self.enable_tlsv_3 = enable_tlsv_3
+        # The ID of the WAF instance.
+        # 
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The region where the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Transport Layer Security (TLS) version. Valid values:
+        # 
+        # - **tlsv1**
+        # 
+        # - **tlsv1.1**
+        # 
+        # - **tlsv1.2**
         self.tlsversion = tlsversion
 
     def validate(self):

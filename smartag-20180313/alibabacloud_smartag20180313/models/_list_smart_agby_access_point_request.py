@@ -37,8 +37,9 @@ class ListSmartAGByAccessPointRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The status of the SAG instance. Valid values:
         # 
-        # *   **Active**: The SAG device is connected to Alibaba Cloud.
-        # *   **offline**: The SAG device is disconnected from Alibaba Cloud.
+        # - **Active**: The SAG device is connected to Alibaba Cloud.
+        # 
+        # - **offline**: The SAG device is disconnected from Alibaba Cloud.
         self.smart_agstatus = smart_agstatus
 
     def validate(self):

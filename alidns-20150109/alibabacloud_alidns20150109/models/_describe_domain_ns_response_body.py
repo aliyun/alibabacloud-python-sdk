@@ -17,15 +17,15 @@ class DescribeDomainNsResponseBody(DaraModel):
         include_ali_dns: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether all the name servers are Alibaba Cloud DNS servers.
+        # Indicates whether all name servers are Alibaba Cloud DNS servers.
         self.all_ali_dns = all_ali_dns
-        # The cause code of the detection failure.
+        # The error code returned if the detection fails.
         self.detect_failed_reason_code = detect_failed_reason_code
         self.dns_servers = dns_servers
         self.expect_dns_servers = expect_dns_servers
-        # Indicates whether the name servers include Alibaba Cloud DNS servers.
+        # Indicates whether the list of name servers includes Alibaba Cloud DNS servers.
         self.include_ali_dns = include_ali_dns
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

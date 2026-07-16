@@ -10,9 +10,9 @@ class CreateUmodelResponseBody(DaraModel):
         request_id: str = None,
         workspace: str = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Workspace name
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

@@ -10,11 +10,11 @@ class EnableApplicationResourceServerRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

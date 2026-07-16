@@ -15,9 +15,13 @@ class ListLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. See the message parameter for failure details.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +69,7 @@ class ListLivyComputeTokenResponseBodyData(DaraModel):
         self,
         tokens: List[main_models.ListLivyComputeTokenResponseBodyDataTokens] = None,
     ):
+        # The list of tokens.
         self.tokens = tokens
 
     def validate(self):
@@ -106,13 +111,19 @@ class ListLivyComputeTokenResponseBodyDataTokens(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
+        # The time when the token was created.
         self.create_time = create_time
+        # The user who created the token.
         self.createdby = createdby
+        # The time when the token expires.
         self.expire_time = expire_time
+        # The time when the token was last used.
         self.last_used_time = last_used_time
+        # The token name.
         self.name = name
+        # The token content.
         self.token = token
-        # Token ID。
+        # The token ID.
         self.token_id = token_id
 
     def validate(self):

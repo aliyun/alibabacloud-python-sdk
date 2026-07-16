@@ -12,9 +12,13 @@ class HiMarketDomain(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The domain name address.
         self.domain = domain
+        # The network type.
         self.network_type = network_type
+        # The port.
         self.port = port
+        # The access protocol.
         self.protocol = protocol
 
     def validate(self):

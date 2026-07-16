@@ -12,9 +12,13 @@ class AddUserToDataAgentWorkspaceRequest(DaraModel):
         role_name: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The Alibaba Cloud UID of the user.
         self.member_id = member_id
+        # The name of the user\\"s role in the workspace.
         self.role_name = role_name
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

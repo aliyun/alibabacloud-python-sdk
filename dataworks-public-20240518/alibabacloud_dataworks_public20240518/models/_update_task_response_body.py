@@ -10,9 +10,9 @@ class UpdateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The request ID, used for locating logs and troubleshooting issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

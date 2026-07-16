@@ -15,14 +15,17 @@ class ListEngineVersionMetadataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # *   If the value of success was true, the engine versions that are supported by Realtime Compute for Apache Flink were returned.
-        # *   If the value of success was false, a null value was returned.
+        # - If the value of success was true, the engine versions that are supported by Realtime Compute for Apache Flink were returned.
+        # 
+        # - If the value of success was false, a null value was returned.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error code was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error message was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_message = error_message
         # The value was fixed to 200.
         self.http_code = http_code

@@ -19,13 +19,20 @@ class ListTaskAssignRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
         self.code = code
+        # Total number of entries.
         self.count = count
         self.data = data
+        # Error details if an error occurs. "successful" if the request succeeds.
         self.message = message
+        # Current page number.
         self.page_number = page_number
+        # Number of entries per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: true for success, false/null for failure.
         self.success = success
 
     def validate(self):

@@ -40,18 +40,19 @@ class DescribeCenAttachedChildInstanceAttributeResponseBody(DaraModel):
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
+        # - **VPC**: VPC
+        # - **VBR**: VBR
+        # - **CCN**: CCN instance
         self.child_instance_type = child_instance_type
+        # The cloud service that the network instance belongs to. Its standard code is only returned when the VPC is connected to the transit router. For self-managed VPCs, no code is returned.
         self.managed_service = managed_service
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the network instance is attached to the CEN instance.
         # 
-        # *   **Attaching**: The network instance is being attached to the CEN instance.
-        # *   **Attached**: The network instance is attached to the CEN instance.
-        # *   **Detaching**: The network instance is being detached from the CEN instance.
+        # - **Attaching**: The network instance is being attached to the CEN instance.
+        # - **Attached**: The network instance is attached to the CEN instance.
+        # - **Detaching**: The network instance is being detached from the CEN instance.
         self.status = status
 
     def validate(self):

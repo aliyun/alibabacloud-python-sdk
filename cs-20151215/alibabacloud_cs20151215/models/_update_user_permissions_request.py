@@ -13,13 +13,13 @@ class UpdateUserPermissionsRequest(DaraModel):
         body: List[main_models.UpdateUserPermissionsRequestBody] = None,
         mode: str = None,
     ):
-        # The request body.
+        # The request body parameters.
         self.body = body
-        # The authorization method. Valid values:
+        # The authorization mode. Valid values:
         # 
-        # *   `apply`: The global update mode. Overwrites all existing permissions of the RAM user or RAM role on the cluster. You must specify all the permissions you want to grant to the RAM user or RAM role in the request parameters when you call this operation.
-        # *   `delete`: The deletion mode. Revokes only the cluster permissions specified in the request, preserving other existing permissions of the RAM user or RAM role.
-        # *   `patch`: The incremental mode. Adds only the cluster permissions specified in the request, preserving other existing permissions of the RAM user or RAM role.
+        # - `apply`: full update. A full update overwrites all existing cluster permissions of the target RAM user or RAM role. The request must include all permission configurations that you want to grant to the target RAM user or RAM role.
+        # - `delete`: delete permissions. Only the cluster authorization information included in the request is deleted. Other cluster Resource Access Management (RAM) user or RAM role are not affected.
+        # - `patch`: add permissions. Only the cluster authorization information included in the request is added. Other cluster Resource Access Management (RAM) user or RAM role are not affected.
         # 
         # Default value: `apply`.
         self.mode = mode
@@ -68,35 +68,42 @@ class UpdateUserPermissionsRequestBody(DaraModel):
         role_name: str = None,
         role_type: str = None,
     ):
-        # The ID of the cluster on which you want to grant permissions to the RAM role or RAM role.
+        # The ID of the target cluster for authorization.
         # 
-        # *   Set this parameter to an empty string if `role_type` is set to `all-clusters`.
+        # If the `role_type` parameter is set to `all-clusters`, you do not need to specify this parameter.
         self.cluster = cluster
-        # Specifies whether to assign a custom role to the RAM user or RAM role. If you want to assign a custom role to the RAM user or RAM role, set `role_name` to the name of the custom role.
+        # Specifies whether the authorization is a custom authorization (the `role_name` uses a custom ClusterRole name).
+        # 
+        # - true: The authorized role is a custom cluster role.
+        # 
+        # - false: The authorized role is a cluster preset role.
         self.is_custom = is_custom
-        # Specifies whether to use a RAM role to grant permissions.
+        # Specifies whether the authorization is for a RAM role.
+        # 
+        # - true: The authorization is for a RAM role.
+        # 
+        # - false: The authorization is for a Resource Access Management (RAM) user.
         self.is_ram_role = is_ram_role
-        # The namespace that you want to authorize the RAM user or RAM role to manage. This parameter is required only if you set role_type to namespace.
+        # The namespace name. This parameter is empty by default for cluster-level authorization.
         self.namespace = namespace
-        # The predefined role name. Valid values:
+        # The name of the preset role. Valid values:
         # 
-        # *   `admin`: administrator
-        # *   `admin-view`: read-only administrator
-        # *   `ops`: O\\&M engineer
-        # *   `dev`: developer
-        # *   `restricted`: restricted user
-        # *   Custom role
+        # - `admin`: administrator.
+        # - `admin-view`: read-only administrator.
+        # - `ops`: O&M engineer.
+        # - `dev`: developer.
+        # - `restricted`: restricted user.
+        # - A custom ClusterRole name.
         # 
-        # Note:
         # 
-        # *   You cannot grant **namespace-level** permissions to the `admin`, `admin-view`, and `ops` roles.
-        # *   You cannot grant **all cluster-level** permissions to the `admin-view` role.
+        # > - `admin`, `admin-view`, `ops`: These roles cannot be granted at the **namespace** level.
+        # > - `admin-view`: This role cannot be granted at the **all-clusters** level.
         self.role_name = role_name
         # The authorization type. Valid values:
         # 
-        # *   `cluster`: authorizes the RAM user or RAM role to manage the specified clusters.
-        # *   `namespace`: authorizes the RAM user or RAM role to manage the specified namespaces.
-        # *   `all-clusters`: authorizes the RAM user or RAM role to manage all clusters.
+        # - `cluster`: cluster level.
+        # - `namespace`: namespace level.
+        # - `all-clusters`: all-clusters level.
         self.role_type = role_type
 
     def validate(self):

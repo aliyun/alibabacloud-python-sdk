@@ -12,8 +12,9 @@ class ModifyImageFixCycleConfigResponseBody(DaraModel):
     ):
         # Indicates whether the configurations of the scheduled image fix are modified.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.data = data
         # The request ID.
         self.request_id = request_id

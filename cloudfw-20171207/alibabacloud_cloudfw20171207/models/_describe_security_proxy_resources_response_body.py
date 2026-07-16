@@ -13,7 +13,9 @@ class DescribeSecurityProxyResourcesResponseBody(DaraModel):
         request_id: str = None,
         resource_list: List[main_models.DescribeSecurityProxyResourcesResponseBodyResourceList] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of resources.
         self.resource_list = resource_list
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeSecurityProxyResourcesResponseBodyResourceList(DaraModel):
         region_no: str = None,
         vpc_list: List[main_models.DescribeSecurityProxyResourcesResponseBodyResourceListVpcList] = None,
     ):
+        # The region ID.
         self.region_no = region_no
+        # The list of VPCs.
         self.vpc_list = vpc_list
 
     def validate(self):
@@ -102,10 +106,15 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The list of NAT gateways.
         self.nat_gateways = nat_gateways
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -169,10 +178,15 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGateways(D
         nat_route_entry_list: List[main_models.DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNatRouteEntryList] = None,
         status: str = None,
     ):
+        # The status of the NAT Gateway.
         self.detail = detail
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The list of NAT route tables.
         self.nat_route_entry_list = nat_route_entry_list
+        # The status of the NAT Gateway.
         self.status = status
 
     def validate(self):
@@ -235,9 +249,13 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNa
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
+        # The destination CIDR block.
         self.destination_cidr = destination_cidr
+        # The ID of the next hop.
         self.next_hop_id = next_hop_id
+        # The network type of the next hop.
         self.next_hop_type = next_hop_type
+        # The ID of the route table.
         self.route_table_id = route_table_id
 
     def validate(self):

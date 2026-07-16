@@ -12,15 +12,15 @@ class DescribeSampleInfoRequest(DaraModel):
         reg_id: str = None,
         versions: int = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Version number.
+        # The version number.
         self.versions = versions
 
     def validate(self):

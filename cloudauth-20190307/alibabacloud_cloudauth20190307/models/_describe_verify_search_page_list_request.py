@@ -30,65 +30,65 @@ class DescribeVerifySearchPageListRequest(DaraModel):
         sub_codes: str = None,
         virtual_video: int = None,
     ):
-        # ID number.
+        # The ID card number.
         self.cert_no = cert_no
-        # Authentication ID.
+        # The certification ID.
         self.certify_id = certify_id
-        # Current page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # End time of the query. Format is Unix timestamp, in milliseconds.
+        # The query end time. The format is a Unix timestamp in milliseconds.
         self.end_date = end_date
-        # Whether there is a device risk (pass true if root = 1 or simulator = 1 or virtual_video = 1).
+        # Specifies whether there is a device risk. Setting this parameter to true indicates that root = 1, simulator = 1, or virtual_video = 1.
         self.has_device_risk = has_device_risk
-        # Model for liveness detection.
+        # The liveness detection model.
         self.model = model
-        # Unique identifier for the customer request.
+        # The unique identifier for the customer request.
         self.outer_order_no = outer_order_no
-        # Number of items per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Whether the authentication passed:
-        # - **T**: Passed
-        # - **F**: Not passed
+        # Specifies whether the authentication passed:
+        # - **T**: Passed.
+        # - **F**: Failed.
         self.passed = passed
-        # Product code.
+        # The product code.
         self.product_code = product_code
-        # Business scenario risk
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The business scenario risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_biz_scenario = risk_biz_scenario
-        # Device risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The device risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_device = risk_device
-        # DeviceToken risk:
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The DeviceToken risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_device_token = risk_device_token
-        # General risk
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The generic risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_generic = risk_generic
-        # Large model mining risk
-        # - **0**: No risk
-        # - **1**: Risk present
+        # The large model mining risk:
+        # - **0**: No risk.
+        # - **1**: Risk detected.
         self.risk_model_mining = risk_model_mining
-        # Whether it is rooted (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
+        # Specifies whether the device is rooted. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the identity tag risk type.
         self.root = root
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Whether it is a simulator (pass 1 if selected, otherwise do not pass; corresponds to device label risk type).
+        # Specifies whether the device is a simulator. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the device tag risk type.
         self.simulator = simulator
-        # Start time of the query.
+        # The query start time.
         self.start_date = start_date
-        # Result Code. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+        # The result code. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
         self.sub_code = sub_code
-        # Comma-separated Result Codes. For detailed values, please refer to: [SubCode Explanation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
+        # Comma-separated result codes. For details, see [SubCode Description](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/error-code-person-verify?spm=a2c4g.11186623.0.0.6015566ebArcFw#d88910e172fgg).
         self.sub_codes = sub_codes
-        # Whether it is a virtual adaptation (pass 1 if selected, otherwise do not pass; corresponds to behavior label risk type).
+        # Specifies whether virtual video is used. Set to 1 if selected; otherwise, do not pass this parameter. This parameter corresponds to the behavior tag risk type.
         self.virtual_video = virtual_video
 
     def validate(self):

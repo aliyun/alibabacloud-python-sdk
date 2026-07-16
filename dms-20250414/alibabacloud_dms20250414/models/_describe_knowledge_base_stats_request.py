@@ -9,6 +9,8 @@ class DescribeKnowledgeBaseStatsRequest(DaraModel):
         self,
         kb_uuid: str = None,
     ):
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
 

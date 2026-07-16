@@ -16,32 +16,29 @@ class GetClusterInspectReportDetailRequest(DaraModel):
         target_type: str = None,
     ):
         # The category of the inspection item. Valid values:
-        # 
-        # *   security: Security compliance
-        # *   performance: Performance efficiency
-        # *   stability: Business stability
-        # *   limitation: Service limits
-        # *   cost: Cost optimization
+        # - security: security and compliance
+        # - performance: performance and efficiency 
+        # - stability: business stability
+        # - limitation: service limits 
+        # - cost: cost optimization.
         self.category = category
-        # Inspection results filtering. If this parameter is set to true, only abnormal inspection items are returned.
+        # Specifies whether to filter check items. If set to true, only abnormal check items with result=true are returned.
         self.enable_filter = enable_filter
-        # The query language.
-        # 
-        # *   zh_CN
-        # *   en_US
+        # The query language. Valid values:
+        # - zh_CN
+        # - en_US.
         self.language = language
         # The level of the inspection item. Valid values:
-        # 
-        # *   advice: Suggestions
-        # *   warning: Low severity
-        # *   error: Medium severity
-        # *   critical: High severity
+        # - advice: suggestion
+        # - warning: low-risk
+        # - error: medium-risk
+        # - critical: high-risk.
         self.level = level
         # The maximum number of entries per page. Maximum value: 50.
         self.max_results = max_results
-        # The token that is used to display the returned tags on multiple pages.
+        # The pagination token.
         self.next_token = next_token
-        # The type of the inspection object. Only items that meet the targetType parameter are returned.
+        # The object type of the inspection target. Only check items that match the specified targetType are returned.
         self.target_type = target_type
 
     def validate(self):

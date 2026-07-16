@@ -17,15 +17,21 @@ class DescribeNatGatewaysRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        # The ID of the nat gateway.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default: 1.
         self.page_number = page_number
+        # The number of entries per page. The valid range is 1 to 100. Default: 10.
         self.page_size = page_size
+        # The ID of the region to which the nat gateways belong. Call the DescribeRegions operation to obtain the latest region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the VPC to which the nat gateway belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

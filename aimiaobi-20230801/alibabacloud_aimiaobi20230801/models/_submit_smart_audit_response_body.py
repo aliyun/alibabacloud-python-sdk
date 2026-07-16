@@ -15,12 +15,17 @@ class SubmitSmartAuditResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code
         self.code = code
+        # Task response object
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class SubmitSmartAuditResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

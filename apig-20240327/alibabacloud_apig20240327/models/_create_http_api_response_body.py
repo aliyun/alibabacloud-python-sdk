@@ -13,13 +13,13 @@ class CreateHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # API for testing
+        # The status code.
         self.code = code
-        # A protocol.
+        # The API information.
         self.data = data
-        # The protocol list for API access.
+        # The response message.
         self.message = message
-        # The API description.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -70,7 +70,7 @@ class CreateHttpApiResponseBodyData(DaraModel):
     ):
         # HTTP API ID。
         self.http_api_id = http_api_id
-        # The API base path, which must start with a forward slash (/).
+        # The API name.
         self.name = name
 
     def validate(self):

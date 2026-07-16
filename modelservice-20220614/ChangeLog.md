@@ -1,3 +1,23 @@
+2026-06-16 Version: 4.0.1
+- Update API GetUser: add response parameters Body.DashscopeHost.
+
+
+2026-06-10 Version: 4.0.0
+- Update API GetUser: update response parameters Body.ApiKeys' type has changed.
+
+
+2026-06-05 Version: 3.0.1
+- Update API GetUser: add response parameters Body.AnthropicHost.
+- Update API GetUser: add response parameters Body.ApiKeys.
+
+
+2026-06-02 Version: 3.0.0
+- Update API GetUser: add request parameters channel.
+- Update API GetUser: add request parameters region.
+- Update API GetUser: add response parameters Body.InnerToken.
+- Update API GetUser: delete request parameters scene_type.
+
+
 2026-05-19 Version: 2.0.0
 - Update API GetUser: add request parameters scene_type.
 - Update API GetUser: delete request parameters SceneType.

@@ -13,8 +13,12 @@ class ListDataDomainsRequest(DaraModel):
         list_query: main_models.ListDataDomainsRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The query request.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,8 +57,11 @@ class ListDataDomainsRequestListQuery(DaraModel):
         keyword: str = None,
         parent_id_list: List[int] = None,
     ):
+        # The IDs of the business units to which the data domains belong.
         self.biz_unit_id_list = biz_unit_id_list
+        # The search keyword. You can search by data domain name, code, or description.
         self.keyword = keyword
+        # The IDs of the parent data domains.
         self.parent_id_list = parent_id_list
 
     def validate(self):

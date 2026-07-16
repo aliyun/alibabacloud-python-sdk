@@ -10,14 +10,12 @@ class DescribeVulNumStatisticsRequest(DaraModel):
         from_: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The source of the request.
-        # 
-        # *   If you want to query Security Center-related data, set the value to **sas**.
-        # *   If you want to query Server Guard-related data, you do not need to specify this parameter.
+        # The request source.
+        # * When querying Security Center data, set this parameter to **sas**.
+        # * When querying Server Guard data, you do not need to set this parameter.
         self.from_ = from_
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The member account ID in the resource directory (Alibaba Cloud account).
+        # >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

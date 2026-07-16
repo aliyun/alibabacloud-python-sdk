@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict
+
 from darabonba.model import DaraModel
 
 class ListGroupsRequest(DaraModel):
     def __init__(
         self,
         filter: str = None,
+        labels: Dict[str, str] = None,
         order: str = None,
         page_number: str = None,
         page_size: str = None,
@@ -15,14 +18,19 @@ class ListGroupsRequest(DaraModel):
         traffic_mode: str = None,
         workspace_id: str = None,
     ):
-        # The name of the filter that is used to filter out unwanted service groups. Fuzzy match is supported.
+        # The filter name. Fuzzy match is supported.
         self.filter = filter
+        # The user-defined labels.
+        self.labels = labels
+        # The sort order of the results.
         self.order = order
-        # The page number. Default value: 1.
+        # The current page number of the service group list. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of service groups to display on each page in a paged query. Settings for paging default to 100.
         self.page_size = page_size
+        # The field by which to sort the results.
         self.sort = sort
+        # The traffic allocation method used to filter service groups.
         self.traffic_mode = traffic_mode
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -37,6 +45,9 @@ class ListGroupsRequest(DaraModel):
             result = _map
         if self.filter is not None:
             result['Filter'] = self.filter
+
+        if self.labels is not None:
+            result['Labels'] = self.labels
 
         if self.order is not None:
             result['Order'] = self.order
@@ -62,6 +73,9 @@ class ListGroupsRequest(DaraModel):
         m = m or dict()
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
 
         if m.get('Order') is not None:
             self.order = m.get('Order')

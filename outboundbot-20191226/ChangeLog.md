@@ -1,3 +1,32 @@
+2026-06-25 Version: 2.1.4
+- Update API DescribeTTSDemo: add request parameters ExtParams.
+
+
+2026-06-25 Version: 2.1.4
+- Update API DescribeTTSDemo: add request parameters ExtParams.
+
+
+2026-06-11 Version: 2.1.3
+- Generated python 2019-12-26 for OutboundBot.
+
+2026-06-10 Version: 2.1.2
+- Update API DownloadRecording: add request parameters SwapChannels.
+
+
+2026-06-03 Version: 2.1.1
+- Generated python 2019-12-26 for OutboundBot.
+
+2026-06-03 Version: 2.1.0
+- Support API CreateTenantKey.
+- Support API GetPublicKey.
+- Support API ListScriptVariables.
+
+
+2026-06-02 Version: 2.0.2
+- Update API DescribeJob: add response parameters Body.Job.Tasks.$.TotalDuration.
+- Update API QueryJobsWithResult: add response parameters Body.Jobs.List.$.LatestTask.HangUpDirection.
+
+
 2026-02-05 Version: 2.0.1
 - Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.AvgTalkTime.
 - Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.DurationDistribution.

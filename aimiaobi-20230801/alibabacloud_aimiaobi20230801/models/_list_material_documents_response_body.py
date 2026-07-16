@@ -20,14 +20,23 @@ class ListMaterialDocumentsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Status code.
         self.code = code
+        # Current page number.
         self.current = current
+        # List object.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
+        # Unique request identity.
         self.request_id = request_id
+        # Number of records per page.
         self.size = size
+        # Is successful: true for success, false for failure.
         self.success = success
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -133,28 +142,51 @@ class ListMaterialDocumentsResponseBodyData(DaraModel):
         update_user_name: str = None,
         url: str = None,
     ):
+        # Author.
         self.author = author
+        # Creation time.
         self.create_time = create_time
+        # Creator user ID.
         self.create_user = create_user
+        # Creator username.
         self.create_user_name = create_user_name
+        # Document tags used for categorization. Separate keywords with commas.
         self.doc_keywords = doc_keywords
+        # Document type: pdf, word, url, or image.
         self.doc_type = doc_type
+        # URL uploaded by an external customer, used only for record keeping.
         self.external_url = external_url
+        # Media file properties.
         self.file_attr = file_attr
+        # Unique file identity.
         self.file_key = file_key
+        # Web page content.
         self.html_content = html_content
+        # Primary key.
         self.id = id
+        # Publish time. Format: yyyy-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # Temporary public URL.
         self.public_url = public_url
+        # Public property, stored by bit. The first bit indicates if it is shared within the workspace, the second bit indicates if it is shared within the tenant, and the third bit indicates if it is shared system-wide.
         self.share_attr = share_attr
+        # Document source: user_upload, search, or viewpoint.
         self.src_from = src_from
+        # Document summary.
         self.summary = summary
+        # Parsed text content. This is empty for images.
         self.text_content = text_content
+        # Base64 thumbnail for image document types.
         self.thumbnail_in_base_64 = thumbnail_in_base_64
+        # Document title.
         self.title = title
+        # Modification time.
         self.update_time = update_time
+        # Modifier user ID.
         self.update_user = update_user
+        # The name of the user who updated the document.
         self.update_user_name = update_user_name
+        # URL for internal document storage. Supports multiple protocols (http\\://, file://, ftp\\://). This URL is saved to internal storage when a customer uploads a file, stored long-term, and deleted upon expiration.
         self.url = url
 
     def validate(self):
@@ -321,11 +353,17 @@ class ListMaterialDocumentsResponseBodyDataFileAttr(DaraModel):
         mime_type: str = None,
         width: int = None,
     ):
+        # Duration.
         self.duration = duration
+        # File content length.
         self.file_length = file_length
+        # File name.
         self.file_name = file_name
+        # Video height.
         self.height = height
+        # File MIME type.
         self.mime_type = mime_type
+        # Video width.
         self.width = width
 
     def validate(self):

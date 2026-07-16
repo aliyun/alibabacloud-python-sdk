@@ -14,8 +14,11 @@ class ListImagesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The pagination information.
         self.paging_info = paging_info
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -60,9 +63,13 @@ class ListImagesResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of image details.
         self.image_list = image_list
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -142,33 +149,101 @@ class ListImagesResponseBodyPagingInfoImageList(DaraModel):
         supported: main_models.ListImagesResponseBodyPagingInfoImageListSupported = None,
         version: str = None,
     ):
+        # The accessibility:
+        # 
+        # - Public: Visible to all members.
+        # 
+        # - Private: Visible only to the creator.
         self.accessibility = accessibility
+        # The VPC ID associated with the ACR instance.
         self.acr_associated_vpc_id = acr_associated_vpc_id
         # ACR Endpoint
         self.acr_endpoint = acr_endpoint
+        # The ACR instance ID.
         self.acr_instance_id = acr_instance_id
+        # The image build configuration.
         self.build_config = build_config
+        # The creation time, represented as a 64-bit timestamp.
         self.created_time = created_time
+        # The ID of the creator.
         self.creator = creator
+        # The image description.
         self.description = description
+        # Indicates whether synchronization with MaxCompute is enabled.
         self.enable_sync_max_compute = enable_sync_max_compute
+        # The image ID.
         self.id = id
+        # The image tag.
         self.image_tag = image_tag
+        # The image URI.
         self.image_uri = image_uri
+        # The image VPC URI.
         self.image_vpc_uri = image_vpc_uri
+        # Indicates whether the image is the default image.
         self.is_default = is_default
+        # The last modification time, represented as a 64-bit timestamp.
         self.last_modified_time = last_modified_time
+        # The ID of the modifier.
         self.modifier = modifier
+        # The image name.
         self.name = name
+        # The namespace.
         self.namespace = namespace
+        # Indicates whether the image is an official image.
         self.official = official
+        # The image ID assigned by the provider.
         self.provider_image_id = provider_image_id
+        # The image provider type:
+        # 
+        # - ACR: ACR image repository.
+        # 
+        # - DataWorks: DataWorks official image.
         self.provider_type = provider_type
+        # The publish stage:
+        # 
+        # - Untest: Not tested.
+        # 
+        # - Testing: Being tested.
+        # 
+        # - TestFailed: Test failed.
+        # 
+        # - Unpublished: Not published.
+        # 
+        # - Publishing: Being published.
+        # 
+        # - Published: Published.
+        # 
+        # - PublishFailed: Publish failed.
+        # 
+        # - Building: Being built.
+        # 
+        # - BuildSuccess: Build succeeded.
+        # 
+        # - BuildFailed: Build failed.
+        # 
+        # - Accelerating: Being accelerated.
+        # 
+        # - AccelerateSuccess: Acceleration succeeded.
+        # 
+        # - AccelerateFailed: Acceleration failed.
         self.publish_stage = publish_stage
+        # The repository name.
         self.repository_name = repository_name
+        # The image size.
         self.size = size
+        # The image status:
+        # 
+        # - Disabled: The image is disabled.
+        # 
+        # - Expired: The image has expired.
+        # 
+        # - Available: The image is available.
+        # 
+        # - ReadOnly: The image is read-only.
         self.status = status
+        # The supported modules and task types.
         self.supported = supported
+        # The image version.
         self.version = version
 
     def validate(self):
@@ -358,7 +433,11 @@ class ListImagesResponseBodyPagingInfoImageListSupported(DaraModel):
         module: str = None,
         task_types: List[str] = None,
     ):
+        # The supported module:
+        # 
+        # - Scheduler: Scheduling.
         self.module = module
+        # The list of supported task types.
         self.task_types = task_types
 
     def validate(self):
@@ -393,7 +472,9 @@ class ListImagesResponseBodyPagingInfoImageListBuildConfig(DaraModel):
         build_type: str = None,
         package_installation_scripts: List[main_models.ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScripts] = None,
     ):
+        # The build type.
         self.build_type = build_type
+        # The list of pre-installation scripts.
         self.package_installation_scripts = package_installation_scripts
 
     def validate(self):
@@ -436,7 +517,9 @@ class ListImagesResponseBodyPagingInfoImageListBuildConfigPackageInstallationScr
         content: str = None,
         type: str = None,
     ):
+        # The script content. If the content specifies package names, separate them with commas (,).
         self.content = content
+        # The script type.
         self.type = type
 
     def validate(self):

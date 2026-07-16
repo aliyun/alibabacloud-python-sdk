@@ -27,39 +27,38 @@ class DescribeImageListWithBaselineNameRequest(DaraModel):
         repo_namespace: str = None,
         scan_range: List[str] = None,
     ):
-        # The name of the image baseline.
+        # The name of the image baseline check result.
         # 
         # This parameter is required.
         self.baseline_name_key = baseline_name_key
-        # The ID of the container cluster.
-        # 
-        # >  You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of container clusters.
+        # The ID of the container cluster to query.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The name of the cluster.
+        # The cluster name.
         self.cluster_name = cluster_name
-        # The ID of the container.
+        # The container ID.
         self.container_id = container_id
-        # The search condition for the image baseline.
+        # The query condition for the baseline.
         self.criteria = criteria
-        # The type of the search condition. Valid values:
+        # The query type for the baseline. Valid values:
         # 
-        # *   **BaselineNameAlias**: baseline name
-        # *   **BaselineClassAlias**: baseline category
+        # - **BaselineNameAlias**: baseline name
+        # - **BaselineClassAlias**: baseline category.
         self.criteria_type = criteria_type
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The name of the image to which the container belongs.
+        # The container image name.
         self.image = image
-        # The SHA-256 value of the image digest.
+        # The SHA256 value of the image digest.
         self.image_digest = image_digest
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The namespace.
         self.namespace = namespace
-        # The number of entries to return on each page. Default value: **10**.
+        # Settings for paged query paging. The number of image baseline check result details to display per page. Default value: **10**, which indicates that 10 image baseline check result details are displayed per page.
         self.page_size = page_size
         # The pod.
         self.pod = pod
@@ -67,9 +66,9 @@ class DescribeImageListWithBaselineNameRequest(DaraModel):
         self.repo_instance_id = repo_instance_id
         # The name of the image repository.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The namespace of the image repository.
         self.repo_namespace = repo_namespace
-        # The types of the assets that you want to scan.
+        # The collection of scan ranges.
         self.scan_range = scan_range
 
     def validate(self):

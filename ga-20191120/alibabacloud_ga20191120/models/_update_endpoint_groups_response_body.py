@@ -14,7 +14,7 @@ class UpdateEndpointGroupsResponseBody(DaraModel):
     ):
         # The IDs of the endpoint groups.
         self.endpoint_group_ids = endpoint_group_ids
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

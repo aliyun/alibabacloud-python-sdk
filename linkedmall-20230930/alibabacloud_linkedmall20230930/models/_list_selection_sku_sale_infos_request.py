@@ -10,6 +10,8 @@ class ListSelectionSkuSaleInfosRequest(DaraModel):
         self,
         body: main_models.SkuSaleInfoListQuery = None,
     ):
+        # Parameters for querying SKU sales information in batch
+        # 
         # This parameter is required.
         self.body = body
 

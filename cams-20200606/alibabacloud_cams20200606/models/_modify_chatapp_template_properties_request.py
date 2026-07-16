@@ -17,17 +17,29 @@ class ModifyChatappTemplatePropertiesRequest(DaraModel):
         template_code: str = None,
         template_type: str = None,
     ):
+        # Specifies whether sending is allowed.
         self.allow_send = allow_send
+        # Specifies whether to block sending after the Utility template category is changed.
         self.category_change_paused = category_change_paused
+        # The space ID of the ISV sub-customer or the instance ID of the direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The template language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
         # This parameter is required.
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The template code.
+        # 
         # This parameter is required.
         self.template_code = template_code
+        # The templatetype.
+        # 
+        # - **WHATSAPP**
+        # 
         # This parameter is required.
         self.template_type = template_type
 

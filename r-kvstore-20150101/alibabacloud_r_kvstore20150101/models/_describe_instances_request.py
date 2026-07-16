@@ -38,100 +38,86 @@ class DescribeInstancesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The architecture of the instance. Valid values:
-        # 
-        # *   **cluster**: cluster architecture
-        # *   **standard**: standard architecture
-        # *   **rwsplit**: read/write splitting architecture
+        # The architecture type. Valid values:
+        # * **cluster**: cluster.
+        # * **standard**: standard.
+        # * **rwsplit**: read/write splitting.
         self.architecture_type = architecture_type
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid**: pay-as-you-go
+        # The billing method. Valid values:
+        # * **PrePaid**: subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
         # The edition of the instance. Valid values:
-        # 
-        # *   **Community**: Redis Open-Source Edition
-        # *   **Enterprise**: Tair (Enterprise Edition)
+        # * **Community**: ApsaraDB for Redis Community Edition.
+        # * **Enterprise**: Tair Enhanced Edition.
         self.edition_type = edition_type
-        # The database engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
-        # 
-        # Enumerated values:
-        # 
-        # *   1.0
-        # *   2.8
-        # *   4.0
-        # *   5.0
-        # *   6.0
-        # *   7.0
+        # The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
-        # Specifies whether the instance has expired. Valid values:
+        # The expiration status of the instance. Valid values:
         # 
-        # *   **true**: The instance has expired.
-        # *   **false**: The instance has not expired.
+        # * **true**: expired.
+        # * **false**: not expired.
         self.expired = expired
-        # Specifies whether to return the child instances of distributed instances. Valid values:
-        # 
-        # *   **true**: Only child instances are returned.
-        # *   **false**: Child instances are not returned.
+        # Specifies whether to filter child instances of distributed instances from the returned instance list. Valid values:
+        # * **true**: returns only child instance information.
+        # * **false**: does not return child instance information.
         self.global_instance = global_instance
-        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
+        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
-        # The IDs of the instances that you want to query.
-        # 
-        # >  If you want to specify multiple instance IDs, separate the instance IDs with commas (,). You can specify a maximum of 30 instance IDs in a single request.
+        # The IDs of the instances to query.
+        # > To specify multiple instance IDs, separate them with commas (,). A maximum of 30 instance IDs can be specified in a single request.
         self.instance_ids = instance_ids
-        # The state of the instance. Valid values:
+        # The status of the instance. Valid values:
+        # * **Normal**: normal.
+        # * **Creating**: being created.
+        # * **Changing**: being changed.
+        # * **Inactive**: disabled.
+        # * **Flushing**: being flushed.
+        # * **Released**: released.
+        # * **Transforming**: being transformed.
+        # * **Migrating**: being migrated.
+        # * **BackupRecovering**: being restored from a backup.
+        # * **MinorVersionUpgrading**: minor version being upgraded.
+        # * **NetworkModifying**: network type being changed.
+        # * **SSLModifying**: SSL being changed.
+        # * **MajorVersionUpgrading**: major version being upgraded. The instance can be accessed normally.
         # 
-        # *   **Normal**: The instance is normal.
-        # *   **Creating**: The instance is being created.
-        # *   **Changing**: The configurations of the instance are being changed.
-        # *   **Inactive**: The instance is disabled.
-        # *   **Flushing**: The instance is being released.
-        # *   **Released**: The instance is released.
-        # *   **Transforming**: The billing method of the instance is being changed.
-        # *   **Unavailable**: The instance is suspended.
-        # *   **Error**: The instance failed to be created.
-        # *   **Migrating**: The instance is being migrated.
-        # *   **BackupRecovering**: The instance is being restored from a backup.
-        # *   **MinorVersionUpgrading**: The minor version of the instance is being updated.
-        # *   **NetworkModifying**: The network type of the instance is being changed.
-        # *   **SSLModifying**: The SSL certificate of the instance is being changed.
-        # *   **MajorVersionUpgrading**: The major version of the instance is being upgraded. The instance remains accessible during the upgrade.
-        # 
-        # > For more information about instance states, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+        # > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
-        # The database engine. Valid values:
-        # 
-        # *   **Tair**: Tair (Enterprise Edition)
-        # *   **Redis**: Redis Open-Source Edition
-        # *   **Memcache**
+        # The category of the instance. Valid values:
+        # * **Tair**: Tair (Enhanced Edition)
+        # * **Redis**: ApsaraDB for Redis Community Edition
+        # * **Memcache**
         self.instance_type = instance_type
-        # The network type. Valid values:
-        # 
-        # *   **CLASSIC**
-        # *   **VPC**
+        # The network type of the instance. Valid values:
+        # * **CLASSIC**: classic network.
+        # * **VPC**: virtual private cloud (VPC).
         self.network_type = network_type
+        # The node type. Valid values:
+        # * **MASTER_SLAVE**: high availability (dual-replica)
+        # * **STAND_ALONE**: single replica
+        # * **double**: dual-replica
+        # * **single**: single replica
+        # > For cloud-native instances, select **MASTER_SLAVE** or **STAND_ALONE**. For classic instances, select **double** or **single**.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number of the instance list. Pages start from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **30**.
+        # The maximum number of entries per page. Maximum value: **50**. Default value: **30**.
         self.page_size = page_size
-        # The private IP address of the instance.
+        # The private IP address of the VPC.
         self.private_ip = private_ip
         # The region ID of the instance.
         # 
-        # > When you call this operation and specify the **Tag** parameter, you must also specify this parameter.
+        # > When calling this API, if the **Tag** parameter is specified, this parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
-        # 
-        # > You can query resource group IDs by using the Tair (Redis OSS-compatible) console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # The ID of the resource group.
+        # > You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) API or use the console to obtain the list of resource group IDs. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The keyword used for fuzzy search. The keyword can be based on an instance name or an instance ID.
+        # The keyword used for fuzzy search by instance name or instance ID.
         self.search_key = search_key
         self.security_token = security_token
         # The tags of the instance.
@@ -140,7 +126,7 @@ class DescribeInstancesRequest(DaraModel):
         self.v_switch_id = v_switch_id
         # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -333,11 +319,10 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. A tag is a key-value pair.
-        # 
-        # >  A maximum of five key-value pairs can be specified at a time.
+        # The key of the tag. The tag key and value together form a key-value pair.
+        # > A maximum of 5 tag key-value pairs can be specified at a time.
         self.key = key
-        # The tag value.
+        # The value of the tag. The tag value and key together form a key-value pair.
         self.value = value
 
     def validate(self):

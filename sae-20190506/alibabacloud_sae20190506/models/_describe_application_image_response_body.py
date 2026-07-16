@@ -18,31 +18,37 @@ class DescribeApplicationImageResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client-side error occurred.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
-        # The information about the image of the application.
+        # The application image information.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is left empty if the request is successful.
+        # 
+        # - This parameter returns an error code if the request fails. For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - **success** is returned if the request is successful.
+        # 
+        # - An error code is returned if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the information about the image was obtained. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The information was obtained.
-        # *   **false**: The information failed to be obtained.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -121,15 +127,15 @@ class DescribeApplicationImageResponseBodyData(DaraModel):
         self.logo = logo
         # The region ID.
         self.region_id = region_id
-        # The name of the repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the image repository belongs.
+        # The image namespace.
         self.repo_namespace = repo_namespace
-        # The type of the repository. Only Container Registry is supported.
+        # The image repository type. Currently, only Container Registry is supported.
         self.repo_origin_type = repo_origin_type
-        # The tag of the image.
+        # The image tag.
         self.repo_tag = repo_tag
-        # This parameter is reserved.
+        # A reserved field.
         self.repo_type = repo_type
 
     def validate(self):

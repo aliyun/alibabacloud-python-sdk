@@ -13,8 +13,21 @@ class OperateUnknownThreatDetectMachineRequest(DaraModel):
         status: str = None,
         uuid_list: List[str] = None,
     ):
+        # The operation type. Valid values:
+        # 
+        # - **restart_study**: Restarts the learning process.
+        # 
+        # - **increment_study**: Starts incremental learning.
+        # 
+        # - **change_status**: Changes the status.
         self.operate_type = operate_type
+        # The target status. This parameter applies only when `OperateType` is set to `change_status`. Valid values:
+        # 
+        # - **monitoring**: Monitoring mode.
+        # 
+        # - **blocking**: Blocking mode.
         self.status = status
+        # A list of server UUIDs.
         self.uuid_list = uuid_list
 
     def validate(self):

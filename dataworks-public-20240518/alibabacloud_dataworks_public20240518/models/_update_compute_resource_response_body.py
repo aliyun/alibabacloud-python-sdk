@@ -12,6 +12,11 @@ class UpdateComputeResourceResponseBody(DaraModel):
     ):
         # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the computing resource was modified successfully:
+        # 
+        # - true: Yes
+        # 
+        # - false: No
         self.success = success
 
     def validate(self):

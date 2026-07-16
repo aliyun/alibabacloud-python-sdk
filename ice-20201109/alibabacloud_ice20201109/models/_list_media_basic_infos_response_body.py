@@ -16,15 +16,15 @@ class ListMediaBasicInfosResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned in the query.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The media assets that meet the specified conditions.
+        # The list of matching media assets.
         self.media_infos = media_infos
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The token for retrieving the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of matching entries.
         self.total_count = total_count
 
     def validate(self):
@@ -86,11 +86,11 @@ class ListMediaBasicInfosResponseBodyMediaInfos(DaraModel):
         media_basic_info: main_models.ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
-        # FileInfos
+        # A list of file information objects.
         self.file_info_list = file_info_list
-        # BasicInfo
+        # The basic information about the media asset.
         self.media_basic_info = media_basic_info
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
 
     def validate(self):
@@ -162,45 +162,45 @@ class ListMediaBasicInfosResponseBodyMediaInfosMediaBasicInfo(DaraModel):
         upload_source: str = None,
         user_data: str = None,
     ):
-        # The service to which the media asset belongs.
+        # The associated business.
         self.biz = biz
-        # The business type of the media asset.
+        # The business type.
         self.business_type = business_type
         # The category ID.
         self.cate_id = cate_id
         # The category of the media asset.
         self.category = category
-        # The thumbnail URL of the media asset.
+        # The cover URL.
         self.cover_url = cover_url
-        # The time when the media asset was created.
+        # The time the media asset was created.
         self.create_time = create_time
-        # The time when the media asset was deleted.
+        # The time the media asset was deleted.
         self.deleted_time = deleted_time
         # The description of the media asset.
         self.description = description
-        # The URL of the media asset in another service.
+        # The source URL of the media asset.
         self.input_url = input_url
-        # The ID of the media asset.
+        # The media asset ID.
         self.media_id = media_id
-        # The tags of the media asset.
+        # Tags associated with the media asset.
         self.media_tags = media_tags
-        # The type of the media asset.
+        # The media type.
         self.media_type = media_type
-        # The time when the media asset was last modified.
+        # The time the media asset was last modified.
         self.modified_time = modified_time
-        # The custom ID of the media asset. The ID is a string that contains 6 to 64 characters. Only letters, digits, hyphens (-), and underscores (_) are supported. The ID is unique among users.
+        # A user-defined ID that must be unique within your account. The ID must be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_).
         self.reference_id = reference_id
-        # The snapshots of the media asset.
+        # Information about the snapshots.
         self.snapshots = snapshots
         # The source of the media asset.
         self.source = source
-        # The sprite.
+        # Information about the image sprites.
         self.sprite_images = sprite_images
         # The status of the media asset.
         self.status = status
         # The title of the media asset.
         self.title = title
-        # The transcoding status of the media asset.
+        # The transcoding status.
         self.transcode_status = transcode_status
         # The upload source of the media asset.
         self.upload_source = upload_source
@@ -358,7 +358,7 @@ class ListMediaBasicInfosResponseBodyMediaInfosFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
-        # The basic information of the file, including the duration and size.
+        # Basic information about the file, such as its duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -400,31 +400,31 @@ class ListMediaBasicInfosResponseBodyMediaInfosFileInfoListFileBasicInfo(DaraMod
         region: str = None,
         width: str = None,
     ):
-        # The bitrate.
+        # The bitrate of the file, in Kbit/s.
         self.bitrate = bitrate
-        # The time when the file was created.
+        # The time the file was created.
         self.create_time = create_time
-        # The duration.
+        # The duration of the file, in seconds.
         self.duration = duration
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The file size. Unit: bytes.
+        # The size of the file, in bytes.
         self.file_size = file_size
-        # The file status.
+        # The status of the file.
         self.file_status = file_status
-        # The file type.
+        # The type of the file.
         self.file_type = file_type
-        # The OSS URL of the file.
+        # The Object Storage Service (OSS) URL of the file.
         self.file_url = file_url
         # The container format.
         self.format_name = format_name
-        # The height.
+        # The height of the video, in pixels.
         self.height = height
-        # The time when the file was last modified.
+        # The time the file was last modified.
         self.modified_time = modified_time
-        # The region in which the file resides.
+        # The region where the file is stored.
         self.region = region
-        # The width.
+        # The width of the video, in pixels.
         self.width = width
 
     def validate(self):

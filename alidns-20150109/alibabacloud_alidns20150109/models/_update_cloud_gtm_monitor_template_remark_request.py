@@ -14,14 +14,15 @@ class UpdateCloudGtmMonitorTemplateRemarkRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US: English
+        # - zh-CN: Chinese
+        # 
+        # - en-US: English
         self.accept_language = accept_language
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique token for each request. The token can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
-        # The new description of the template. If you do not specify this parameter, the original description is deleted.
+        # The updated remarks. To delete the remarks, leave this parameter empty.
         self.remark = remark
-        # The ID of the health check template. This ID uniquely identifies a health check template.
+        # The unique ID of the health check template.
         # 
         # This parameter is required.
         self.template_id = template_id

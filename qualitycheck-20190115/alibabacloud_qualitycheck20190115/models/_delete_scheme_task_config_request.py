@@ -10,8 +10,9 @@ class DeleteSchemeTaskConfigRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The workspace ID.
         self.base_me_agent_id = base_me_agent_id
+        # A JSON object that contains the request parameters. For more information, see the parameter details.
         self.json_str = json_str
 
     def validate(self):

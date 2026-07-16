@@ -15,21 +15,21 @@ class ModifyOfficeSiteMfaEnabledRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
         # This parameter is required.
         self.mfa_enabled = mfa_enabled

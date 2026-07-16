@@ -13,9 +13,13 @@ class InitAuthVerifyResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.InitAuthVerifyResponseBodyResult = None,
     ):
+        # The response code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The result.
         self.result = result
 
     def validate(self):
@@ -63,6 +67,8 @@ class InitAuthVerifyResponseBodyResult(DaraModel):
         self,
         certify_id: str = None,
     ):
+        # The verification request ID, which is the unique identifier of the verification service authentication request.
+        # You must pass in the verification request ID when querying the authentication result.
         self.certify_id = certify_id
 
     def validate(self):

@@ -16,14 +16,14 @@ class DescribeAclsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.code = code
         self.kafka_acl_list = kafka_acl_list
         # The returned message.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

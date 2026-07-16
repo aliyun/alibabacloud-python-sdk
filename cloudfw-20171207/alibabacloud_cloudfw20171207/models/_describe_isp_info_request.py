@@ -11,9 +11,13 @@ class DescribeIspInfoRequest(DaraModel):
         source_code: str = None,
         source_ip: str = None,
     ):
+        # The language of the response message.
         self.lang = lang
+        # The source tracking code.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

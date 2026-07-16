@@ -10,8 +10,12 @@ class SetDdosMaxBurstGbpsRequest(DaraModel):
         instance_id: str = None,
         max_burst_gbps: str = None,
     ):
+        # The ID of the instance. You can call the [ListUserRatePlanInstances](https://help.aliyun.com/document_detail/2852398.html) operation to obtain the instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum burstable protection bandwidth for the DDoS instance in mainland China. The unit is Gbps.
+        # 
         # This parameter is required.
         self.max_burst_gbps = max_burst_gbps
 

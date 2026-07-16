@@ -13,7 +13,9 @@ class WorkspaceFilterSetting(DaraModel):
         tag_selector: main_models.FilterSetting = None,
         workspace_uuids: List[str] = None,
     ):
+        # The tag filter.
         self.tag_selector = tag_selector
+        # A list of workspace UUIDs.
         self.workspace_uuids = workspace_uuids
 
     def validate(self):

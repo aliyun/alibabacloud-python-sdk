@@ -11,10 +11,11 @@ class ListMembersRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

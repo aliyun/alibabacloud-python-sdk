@@ -17,17 +17,17 @@ class CreatePluginAttachmentRequest(DaraModel):
         plugin_config: str = None,
         plugin_id: str = None,
     ):
-        # The attachment IDs.
+        # The list of mount point IDs.
         self.attach_resource_ids = attach_resource_ids
-        # The type of the resource to which the plug-in is attached. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
+        # The resource type to which the plug-in is mounted. Valid values: GatewayRoute, Gateway, GatewayDomain, HttpApi, and Operation.
         self.attach_resource_type = attach_resource_type
         # Specifies whether to enable the plug-in. Default value: false.
         self.enable = enable
         # The environment ID.
         self.environment_id = environment_id
-        # The instance ID.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The Base64-encoded configurations of the plug-in.
+        # The Base64-encoded content of the original plug-in configuration.
         self.plugin_config = plugin_config
         # The plug-in ID.
         self.plugin_id = plugin_id

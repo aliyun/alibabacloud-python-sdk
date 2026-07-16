@@ -16,15 +16,15 @@ class DescribeInstanceSourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.current_page = current_page
-        # The assets.
+        # A list of assets.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of assets.
         self.total_count = total_count
 
     def validate(self):
@@ -108,88 +108,107 @@ class DescribeInstanceSourcesResponseBodyItems(DaraModel):
         tenant_name: str = None,
         user_name: str = None,
     ):
-        # Indicates whether the security audit feature is enabled. Valid values:
+        # The audit authorization status. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Authorized.
+        # 
+        # - **0**: Unauthorized.
         self.audit_status = audit_status
-        # Indicates whether the automatic scan feature is enabled to detect sensitive data. Valid values:
+        # Indicates whether automatic scanning for sensitive data is enabled. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.auto_scan = auto_scan
-        # Indicates whether the username and password can be changed. Valid values:
+        # Indicates whether the username and password can be modified. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.can_modify_user_name = can_modify_user_name
-        # The data detection status. Valid values:
+        # The data check status. Valid values:
         # 
-        # *   **0**: The data detection is ready.
-        # *   **1**: The data detection is running.
-        # *   **2**: The connectivity test is in progress.
-        # *   **3**: The connectivity test passed.
-        # *   **4**: The connectivity test failed.
+        # - **0**: Ready.
+        # 
+        # - **1**: Running.
+        # 
+        # - **2**: Connectivity test in progress.
+        # 
+        # - **3**: Connectivity test passed.
+        # 
+        # - **4**: Connectivity test failed.
         self.check_status = check_status
-        # Indicates whether DSC has the data de-identification permissions on the data asset. Valid values:
+        # The status of data masking authorization. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.datamask_status = datamask_status
-        # The name of the database to which the data asset belongs.
+        # The name of the database to which the asset belongs.
         self.db_name = db_name
-        # Indicates whether sensitive data detection is enabled for the data asset. Valid values:
+        # Indicates whether sensitive data detection is enabled for the asset. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: Enabled.
+        # 
+        # - **0**: Disabled.
         self.enable = enable
-        # The engine type. Valid values:
+        # The database engine type. Valid values:
         # 
-        # *   **MySQL**
-        # *   **MariaDB**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **MariaDB**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
         self.engine_type = engine_type
         # The reason for the failure.
         self.error_message = error_message
-        # The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the asset was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The unique ID of the data asset.
+        # The unique ID of the asset.
         self.id = id
         # The description of the instance.
         self.instance_description = instance_description
-        # The ID of the instance
+        # The instance ID.
         self.instance_id = instance_id
-        # The storage space size of the instance. This parameter is valid only if the value of the ProductId parameter is 2. Unit: bytes.
+        # The size of the instance. This parameter is valid only for OSS assets. Unit: bytes.
         self.instance_size = instance_size
-        # The time when the data asset was last modified. Unit: milliseconds.
+        # The timestamp when the asset was last modified. Unit: milliseconds.
         self.last_modify_time = last_modify_time
-        # The ID of the account that is last used to modify the data asset.
+        # The ID of the account that last modified the asset.
         self.last_modify_user_id = last_modify_user_id
-        # The retention period of raw logs. Unit: days.
+        # The storage duration of raw logs. Unit: days.
         self.log_store_day = log_store_day
-        # Indicates whether the password is used. Valid values:
+        # The status of the password. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: In use.
+        # 
+        # - **0**: Not in use.
         self.password_status = password_status
-        # The ID of the service to which the asset belongs. Valid values:
+        # The product type ID. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: OSS
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: OTS
-        # *   **5**: ApsaraDB RDS
-        # *   **6**: self-managed databases
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADS
+        # 
+        # - **4**: OTS
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: SELF_DB
         self.product_id = product_id
-        # The ID of the region where the instance resides.
+        # The region ID.
         self.region_id = region_id
         # The name of the region.
         self.region_name = region_name
-        # The number of sensitive data samples. Valid values: **0**, **5**, and **10**. Unit: data entries.
+        # The sensitive data sampling size. Valid values: **0**, **5**, and **10**. Unit: number of entries.
         self.sampling_size = sampling_size
-        # The ID of the tenant.
+        # The tenant ID.
         self.tenant_id = tenant_id
         # The name of the tenant.
         self.tenant_name = tenant_name

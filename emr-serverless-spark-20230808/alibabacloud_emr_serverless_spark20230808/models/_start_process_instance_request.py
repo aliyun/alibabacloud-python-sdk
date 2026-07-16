@@ -23,23 +23,23 @@ class StartProcessInstanceRequest(DaraModel):
         self.comments = comments
         self.email = email
         self.interval = interval
-        # Specifies whether to run the workflow in the production environment.
+        # Specifies whether the workflow runs in a production environment.
         self.is_prod = is_prod
-        # The workflow ID.
+        # The workflow definition ID.
         # 
         # This parameter is required.
         self.process_definition_code = process_definition_code
-        # The code of the service.
+        # The product code.
         # 
         # This parameter is required.
         self.product_namespace = product_namespace
         # The region ID.
         self.region_id = region_id
-        # The queue on which the workflow runs.
+        # The runtime queue.
         self.runtime_queue = runtime_queue
         # The hash code of the version.
         self.version_hash_code = version_hash_code
-        # The version number of the workflow.
+        # The version number of the workflow definition.
         self.version_number = version_number
 
     def validate(self):

@@ -18,15 +18,26 @@ class TextTranslateRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation behavior
         self.ext = ext
+        # text format
         self.format = format
+        # Model type
         self.scene = scene
+        # Source language code
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # Target Language Code
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # Text to be translated
+        # 
         # This parameter is required.
         self.text = text
+        # Workspace ID
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -102,15 +113,24 @@ class TextTranslateRequestExt(DaraModel):
         terminologies: List[main_models.TextTranslateRequestExtTerminologies] = None,
         text_transform: main_models.TextTranslateRequestExtTextTransform = None,
     ):
+        # Expert agent
         self.agent = agent
+        # Translation Behavior Control
         self.config = config
+        # Domain hint
         self.domain_hint = domain_hint
+        # List of Translation Examples
         self.examples = examples
         self.lang_detect = lang_detect
+        # Extended parameter configuration (bizUserld: A business-level user ID that distinguishes between different business users. It implements "user-based isolation" for terminology intervention so that interventions for one user do not affect others. bizType: A business scenario type or identifier that distinguishes between different scenarios. It implements "scenario-based isolation" for terminology intervention so that interventions for one scenario do not affect others.)
         self.param_map = param_map
+        # Prefix Configuration
         self.prefix = prefix
+        # Sensitive word list
         self.sensitives = sensitives
+        # Translation terminology
         self.terminologies = terminologies
+        # Translated Text Conversion
         self.text_transform = text_transform
 
     def validate(self):
@@ -217,8 +237,11 @@ class TextTranslateRequestExtTextTransform(DaraModel):
         to_title: bool = None,
         to_upper: bool = None,
     ):
+        # Convert to lowercase
         self.to_lower = to_lower
+        # First letter capitalized
         self.to_title = to_title
+        # Convert to uppercase
         self.to_upper = to_upper
 
     def validate(self):
@@ -259,7 +282,9 @@ class TextTranslateRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # Source text
         self.src = src
+        # Target text
         self.tgt = tgt
 
     def validate(self):
@@ -294,7 +319,9 @@ class TextTranslateRequestExtExamples(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # Source text
         self.src = src
+        # Target text
         self.tgt = tgt
 
     def validate(self):
@@ -328,6 +355,7 @@ class TextTranslateRequestExtConfig(DaraModel):
         self,
         skip_csi_check: bool = None,
     ):
+        # Whether to skip the Green Web check. (To use this option, you must first complete the process to disable Green Web before making the API call.)
         self.skip_csi_check = skip_csi_check
 
     def validate(self):

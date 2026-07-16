@@ -17,16 +17,26 @@ class FlowUnbindPhoneRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Message channel type
+        # The message channel type. Valid values:
+        # 
+        # - INSTAGRAM
+        # 
+        # - WHATSAPP
+        # 
+        # - MESSENGER
+        # 
+        # <props="intl">
+        # 
+        # - VIBER
         self.channel_type = channel_type
-        # Flow code.
+        # The flow code. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         # 
         # This parameter is required.
         self.flow_code = flow_code
-        # Flow version
+        # The flow version. In the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), click the flow name to go to the orchestration canvas and view the flow version.
         self.flow_version = flow_version
         self.owner_id = owner_id
-        # Phone numbers or PageIds under the channel instance, etc.
+        # A list of phone numbers, Page IDs, Account IDs, or Service IDs for the channel instance.
         self.phone_numbers = phone_numbers
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -14,10 +14,16 @@ class ApplyDataServiceApiRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The apply command.
+        # 
         # This parameter is required.
         self.apply_command = apply_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -69,18 +75,40 @@ class ApplyDataServiceApiRequestApplyCommand(DaraModel):
         prod_field_list: List[main_models.ApplyDataServiceApiRequestApplyCommandProdFieldList] = None,
         reason: str = None,
     ):
+        # The API ID.
+        # 
         # This parameter is required.
         self.api_id = api_id
-        # AppId
+        # The application ID.
         self.app_id = app_id
+        # Specifies whether to apply for permissions on operation-type APIs in the development environment.
         self.apply_dev = apply_dev
+        # Specifies whether to apply for permissions on operation-type APIs in the production environment.
         self.apply_prod = apply_prod
+        # The application type. Valid values:
+        # 
+        # - APP: application.
+        # - USER: individual account.
         self.apply_type = apply_type
+        # The list of permission types.
+        # 
+        # - When the principal is an application, the following permission types are supported. To apply for delegation permissions, you must also apply for usage permissions.
+        # 
+        #   - USE: usage permission.
+        #   - DELEGATION: delegation permission.
+        # - When the principal is an individual, only USE (usage) permission is supported.
+        # - If this parameter is not specified, the default value is USE (usage) permission.
         self.auth_types = auth_types
+        # The list of permission fields for query-type APIs in the development environment. This parameter is required in dev-prod mode. DevFieldList and ProdFieldList cannot both be empty.
         self.dev_field_list = dev_field_list
+        # The expiration date in the format of yyyy-MM-dd.
+        # 
         # This parameter is required.
         self.expire_date = expire_date
+        # The list of permission fields for query-type APIs in the production environment. This parameter is required in basic mode.
         self.prod_field_list = prod_field_list
+        # The reason for the application.
+        # 
         # This parameter is required.
         self.reason = reason
 
@@ -180,6 +208,7 @@ class ApplyDataServiceApiRequestApplyCommandProdFieldList(DaraModel):
         self,
         id: int = None,
     ):
+        # The API permission field ID.
         self.id = id
 
     def validate(self):
@@ -207,6 +236,7 @@ class ApplyDataServiceApiRequestApplyCommandDevFieldList(DaraModel):
         self,
         id: int = None,
     ):
+        # The API permission field ID.
         self.id = id
 
     def validate(self):

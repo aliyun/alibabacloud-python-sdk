@@ -12,15 +12,15 @@ class UpdateWafRulesetRequest(DaraModel):
         site_version: int = None,
         status: str = None,
     ):
-        # ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+        # The WAF ruleset ID. You can obtain this ID by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) API.
         # 
         # This parameter is required.
         self.id = id
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The ID of the site. You can obtain this ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
         self.site_id = site_id
-        # Site version.
+        # The version number of the site configuration. For a site with configuration version management enabled, this parameter specifies the version to update. The default value is 0.
         self.site_version = site_version
-        # The target status to change for the ruleset.
+        # The target status of the ruleset.
         self.status = status
 
     def validate(self):

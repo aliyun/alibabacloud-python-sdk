@@ -15,12 +15,21 @@ class ExecuteSqlStatementResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of executing the SQL statement to query the metadata.
+        # The result of the SQL statement execution for metadata.
         self.data = data
+        # - If \\`success\\` is \\`false\\`, an error code is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_code = error_code
+        # - If \\`success\\` is \\`false\\`, an error message is returned.
+        # 
+        # - If \\`success\\` is \\`true\\`, this parameter is empty.
         self.error_message = error_message
+        # The status code. The value is always 200. Use the \\`success\\` parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -32,110 +32,50 @@ class DescribeDesktopTypesRequest(DaraModel):
         support_min_session_count: int = None,
         zone_id: str = None,
     ):
-        # Applicable Scope of specifications. Default value: `Public`
+        # The scope of the instance types to query. Default value: `Public`.
         self.applied_scope = applied_scope
         self.business_channel = business_channel
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The ID of the cloud computer share you want to modify. If this parameter is provided, the response will include compatibility information for the specified specification.
+        # The ID of the desktop group to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified group.
         self.desktop_group_id_for_modify = desktop_group_id_for_modify
-        # The ID of the cloud computer when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer is included in the response.
+        # The ID of the WUYING Workspace to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified workspace.
         self.desktop_id_for_modify = desktop_id_for_modify
         self.desktop_scenario = desktop_scenario
-        # The specification ID.
+        # The ID of the instance type.
         # 
-        # >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
-        # 
-        # Valid values:
-        # 
-        # *   eds.enterprise_office.4c8g
-        # *   eds.hf.4c8g
-        # *   ecd.basic.large
-        # *   ecd.advanced.large
-        # *   eds.enterprise_office.8c16g
-        # *   ecd.basic.small
-        # *   ecd.graphics.2xlarge
-        # *   eds.hf.8c16g
-        # *   eds.hf.12c24g
-        # *   eds.general.8c16g
-        # *   eds.general.16c32g
-        # *   ecd.advanced.xlarge
-        # *   eds.graphics.16c1t4
-        # *   ecd.graphics.xlarge
-        # *   ecd.performance.2xlarge
-        # *   eds.general.8c32g
-        # *   eds.general.2c2g
-        # *   eds.general.2c4g
-        # *   eds.graphics.24c1t4
-        # *   eds.general.4c8g
-        # *   eds.enterprise_office.2c4g
-        # *   eds.general.4c16g
-        # *   eds.general.2c8g
+        # > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
         self.desktop_type_id = desktop_type_id
-        # The specification IDs.
+        # An array of instance type IDs.
         self.desktop_type_id_list = desktop_type_id_list
-        # The number of GPUs.
+        # The number of vGPUs.
         self.gpu_count = gpu_count
         # The GPU driver type.
-        # 
-        # Valid values:
-        # 
-        # *   T4
-        # *   A10
-        # *   G28
-        # *   G39
         self.gpu_driver_type = gpu_driver_type
-        # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The name of the specification family.
+        # The instance type family.
         # 
-        # >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all specification families will be queried.
-        # 
-        # Valid values:
-        # 
-        # *   ecd.advanced
-        # *   eds.graphics
-        # *   ecd.basic
-        # *   eds.enterprise_office
-        # *   eds.hf
-        # *   ecd.graphics
-        # *   eds.general
-        # *   ecd.performance
+        # > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
         self.instance_type_family = instance_type_family
-        # The memory size. Unit: MiB.
+        # The memory size, in MiB.
         self.memory_size = memory_size
         self.office_site_id = office_site_id
-        # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   Memory: sorts by memory size.
-        # *   Cpu: sorts by the number of vCPUs.
+        # The property by which to sort the results. If you omit this parameter, the results are sorted by creation time in descending order.
         self.order_by = order_by
         # The order type.
         self.order_type = order_type
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that Elastic Desktop Service supports.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The sales mode of the specification.
-        # 
-        # Valid values:
-        # 
-        # *   MonthPackage: the monthly subscription mode.
-        # *   FastBuy: the quick purchase mode.
+        # The billing method of the instance types.
         self.scope = scope
         self.scope_set = scope_set
-        # The sorting order.
-        # 
-        # Valid values:
-        # 
-        # *   ASC (default): the ascending order.
-        # *   DESC: the descending order.
+        # The sort order.
         self.sort_type = sort_type
-        # The number of sessions supported by the specification.
+        # Filters for instance types that support at least the specified number of concurrent sessions. This parameter applies only to multi-session instance types.
         self.support_min_session_count = support_min_session_count
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.zone_id = zone_id
 
     def validate(self):

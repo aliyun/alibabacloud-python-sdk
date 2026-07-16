@@ -21,36 +21,25 @@ class DescribeImageListRequest(DaraModel):
         status: str = None,
         system_type: str = None,
     ):
+        # An array of tag objects.
         self.image_biz_tags = image_biz_tags
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The name of the image.
+        # The image name.
         self.image_name = image_name
-        # Image package type.
+        # > This parameter is not yet available.
         self.image_package_type = image_package_type
-        # The type of the image.
-        # 
-        # Valid values:
-        # 
-        # *   User: custom images.
-        # *   System: system images.
+        # The image type.
         # 
         # This parameter is required.
         self.image_type = image_type
+        # The instance type.
         self.instance_type = instance_type
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The maximum number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
+        # The token that specifies the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # The state of the image.
-        # 
-        # Valid values:
-        # 
-        # *   AVAILABLE: The image is available.
-        # *   DELETE: The image is deleted.
-        # *   INIT: The image is being initialized.
-        # *   CREATE_FAILED: The image failed to be created.
-        # *   CREATING: The image is being created.
+        # The status of the image.
         self.status = status
         self.system_type = system_type
 
@@ -142,7 +131,9 @@ class DescribeImageListRequestImageBizTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

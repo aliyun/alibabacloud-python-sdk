@@ -10,7 +10,9 @@ class CancelPublishTaskRequest(DaraModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can find the key on the Business Management page of your master account.
         self.agent_key = agent_key
+        # The ID of the publish task.
         self.id = id
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeRuleListByEventCodesListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeRuleListByEventCodesListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeRuleListByEventCodesListResponseBodyResultObject(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
 
     def validate(self):

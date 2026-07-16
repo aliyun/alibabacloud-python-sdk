@@ -28,7 +28,7 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         self.child_instance_id = child_instance_id
         # The ID of the region where the network instance is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # For more information, see [](t2264556.xdita#).
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
@@ -36,17 +36,19 @@ class DescribePublishedRouteEntriesRequest(DaraModel):
         self.child_instance_route_table_id = child_instance_route_table_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: Cloud Connect Network (CCN) instance
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **VBR**: virtual border router.
+        # 
+        # - **CCN**: Cloud Connect Network.
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
         # The destination CIDR block of the route that you want to query.
         self.destination_cidr_block = destination_cidr_block
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: **10**. Valid values: **1** to **50**.
+        # The number of entries per page. Default value: **10**. Valid values: **1** to **500**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

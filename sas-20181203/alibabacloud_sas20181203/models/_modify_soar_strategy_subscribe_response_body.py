@@ -9,7 +9,7 @@ class ModifySoarStrategySubscribeResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

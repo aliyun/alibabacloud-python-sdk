@@ -13,13 +13,13 @@ class GetPolicyAttachmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The response code.
         self.code = code
-        # Response data.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -73,19 +73,19 @@ class GetPolicyAttachmentResponseBodyData(DaraModel):
         policy_attachment_id: str = None,
         policy_id: str = None,
     ):
-        # Attached Resource ID
+        # The ID of the attached resource.
         self.attach_resource_id = attach_resource_id
-        # Attached resource type, HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, Domain
+        # The type of the attached resource. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
         self.attach_resource_type = attach_resource_type
-        # Policy attachment configuration
+        # The configuration of the attached policy.
         self.config = config
-        # Environment ID
+        # The environment ID.
         self.environment_id = environment_id
-        # Gateway Instance ID
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # Policy Attachment ID
+        # The policy attachment ID.
         self.policy_attachment_id = policy_attachment_id
-        # Policy ID
+        # The policy ID.
         self.policy_id = policy_id
 
     def validate(self):

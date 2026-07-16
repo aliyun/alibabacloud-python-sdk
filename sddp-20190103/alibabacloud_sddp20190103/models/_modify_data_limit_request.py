@@ -27,83 +27,103 @@ class ModifyDataLimitRequest(DaraModel):
         v_switch_id_list: List[str] = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to enable the security audit feature. Valid values:
+        # Specifies whether to enable auditing. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Disable auditing.
+        # 
+        # - **1**: Enable auditing.
         self.audit_status = audit_status
-        # Specifies whether to automatically trigger a re-scan after a rule is modified. Valid values:
+        # Specifies whether to automatically trigger a rescan when a rule is changed. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # - **0**: Do not automatically trigger a rescan.
         # 
-        # > When a re-scan is triggered, DSC scans all data in your data asset.
+        # - **1**: Automatically trigger a rescan.
+        # 
+        # > If a rescan is automatically triggered, a full scan is performed on the data asset.
         self.auto_scan = auto_scan
-        # The database engine that is run by the instance. Valid values:
+        # The type of the database. Valid values:
         # 
-        # *   **MySQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **SQLServer**
         self.engine_type = engine_type
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The unique ID of the data asset for which you want to modify configuration items.
+        # The unique ID of the data asset.
         # 
-        # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+        # > Call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
         # 
         # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh**: Chinese (default)
+        # 
+        # - **en**: English
         self.lang = lang
-        # The retention period of raw logs after you enable the security audit feature. Unit: days. Valid values:
+        # The retention period of raw logs after auditing is enabled. Unit: days. Valid values:
         # 
-        # *   **30**
-        # *   **90**
-        # *   **180**
-        # *   **365**
+        # - **30**
+        # 
+        # - **90**
+        # 
+        # - **180**
+        # 
+        # - **365**
         self.log_store_day = log_store_day
-        # Specifies whether to change the username and password that are used to log on to the ApsaraDB RDS database. Valid values:
+        # Specifies whether to modify the username and password that are used to connect to the database. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Modify the username and password.
+        # 
+        # - **false**: Do not modify the username and password.
         self.modify_password = modify_password
-        # The password used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+        # The password for the ApsaraDB RDS database.
         self.password = password
-        # The port that is used to connect to the database.
+        # The port used to connect to the database.
         self.port = port
-        # The name of the service to which the data asset belongs. Valid values:
+        # The service to which the data asset belongs. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: Object Storage Service (OSS)
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore
-        # *   **5**: ApsaraDB RDS
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADS
+        # 
+        # - **4**: OTS
+        # 
+        # - **5**: RDS
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The number of sensitive data samples tht are collected after sensitive data detection is enabled. Valid values:
+        # The number of sensitive data samples to return. This parameter takes effect only after data detection is enabled. Valid values:
         # 
-        # *   **0**
-        # *   **5**
-        # *   **10**
+        # - **0**
+        # 
+        # - **5**
+        # 
+        # - **10**
         self.sampling_size = sampling_size
-        # The security group that is used by PrivateLink when you install the DSC agent.
+        # The security groups for agent-based auditing that uses PrivateLink.
         self.security_group_id_list = security_group_id_list
-        # The region in which the data asset resides. Valid values:
+        # The ID of the region in which the data asset is located. Valid values:
         # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-zhangjiakou**: China (Zhangjiakou)
-        # *   **cn-huhehaote**: China (Hohhot)
-        # *   **cn-hangzhou**: China (Hangzhou)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **cn-hongkong**: China (Hong Kong)
+        # - **cn-beijing**: China (Beijing)
+        # 
+        # - **cn-zhangjiakou**: China (Zhangjiakou)
+        # 
+        # - **cn-huhehaote**: China (Hohhot)
+        # 
+        # - **cn-hangzhou**: China (Hangzhou)
+        # 
+        # - **cn-shanghai**: China (Shanghai)
+        # 
+        # - **cn-shenzhen**: China (Shenzhen)
+        # 
+        # - **cn-hongkong**: China (Hong Kong)
         self.service_region_id = service_region_id
-        # The username used to log on to the ApsaraDB RDS database that you authorize DSC to access.
+        # The username for the ApsaraDB RDS database.
         self.user_name = user_name
-        # The vSwitch that is used by PrivateLink when you install the DSC agent.
+        # The vSwitches for agent-based auditing that uses PrivateLink.
         self.v_switch_id_list = v_switch_id_list
         # The ID of the virtual private cloud (VPC) to which the data asset belongs.
         self.vpc_id = vpc_id

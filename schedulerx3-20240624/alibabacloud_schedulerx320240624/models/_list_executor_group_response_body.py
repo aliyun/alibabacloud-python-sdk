@@ -24,7 +24,6 @@ class ListExecutorGroupResponseBody(DaraModel):
         # This parameter is required.
         self.message = message
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -96,7 +95,6 @@ class ListExecutorGroupResponseBodyData(DaraModel):
     ):
         self.page_number = page_number
         self.page_size = page_size
-        # -
         self.records = records
         self.total = total
 
@@ -151,25 +149,39 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         self,
         api_key: str = None,
         auth_type: str = None,
+        auto_scale: bool = None,
         cite_list: List[main_models.ListExecutorGroupResponseBodyDataRecordsCiteList] = None,
+        cms_workspace_id: str = None,
+        current_jobs: int = None,
         description: str = None,
+        integration_type: str = None,
+        max_jobs: int = None,
         name: str = None,
         network: str = None,
         protocol: str = None,
+        resolved_workers: str = None,
         worker_id: int = None,
         worker_type: str = None,
         workers: str = None,
+        xattrs: str = None,
     ):
         self.api_key = api_key
         self.auth_type = auth_type
+        self.auto_scale = auto_scale
         self.cite_list = cite_list
+        self.cms_workspace_id = cms_workspace_id
+        self.current_jobs = current_jobs
         self.description = description
+        self.integration_type = integration_type
+        self.max_jobs = max_jobs
         self.name = name
         self.network = network
         self.protocol = protocol
+        self.resolved_workers = resolved_workers
         self.worker_id = worker_id
         self.worker_type = worker_type
         self.workers = workers
+        self.xattrs = xattrs
 
     def validate(self):
         if self.cite_list:
@@ -188,13 +200,28 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
 
+        if self.auto_scale is not None:
+            result['AutoScale'] = self.auto_scale
+
         result['CiteList'] = []
         if self.cite_list is not None:
             for k1 in self.cite_list:
                 result['CiteList'].append(k1.to_map() if k1 else None)
 
+        if self.cms_workspace_id is not None:
+            result['CmsWorkspaceId'] = self.cms_workspace_id
+
+        if self.current_jobs is not None:
+            result['CurrentJobs'] = self.current_jobs
+
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.integration_type is not None:
+            result['IntegrationType'] = self.integration_type
+
+        if self.max_jobs is not None:
+            result['MaxJobs'] = self.max_jobs
 
         if self.name is not None:
             result['Name'] = self.name
@@ -205,6 +232,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if self.protocol is not None:
             result['Protocol'] = self.protocol
 
+        if self.resolved_workers is not None:
+            result['ResolvedWorkers'] = self.resolved_workers
+
         if self.worker_id is not None:
             result['WorkerId'] = self.worker_id
 
@@ -213,6 +243,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
 
         if self.workers is not None:
             result['Workers'] = self.workers
+
+        if self.xattrs is not None:
+            result['XAttrs'] = self.xattrs
 
         return result
 
@@ -224,14 +257,29 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
 
+        if m.get('AutoScale') is not None:
+            self.auto_scale = m.get('AutoScale')
+
         self.cite_list = []
         if m.get('CiteList') is not None:
             for k1 in m.get('CiteList'):
                 temp_model = main_models.ListExecutorGroupResponseBodyDataRecordsCiteList()
                 self.cite_list.append(temp_model.from_map(k1))
 
+        if m.get('CmsWorkspaceId') is not None:
+            self.cms_workspace_id = m.get('CmsWorkspaceId')
+
+        if m.get('CurrentJobs') is not None:
+            self.current_jobs = m.get('CurrentJobs')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('IntegrationType') is not None:
+            self.integration_type = m.get('IntegrationType')
+
+        if m.get('MaxJobs') is not None:
+            self.max_jobs = m.get('MaxJobs')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -242,6 +290,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
 
+        if m.get('ResolvedWorkers') is not None:
+            self.resolved_workers = m.get('ResolvedWorkers')
+
         if m.get('WorkerId') is not None:
             self.worker_id = m.get('WorkerId')
 
@@ -250,6 +301,9 @@ class ListExecutorGroupResponseBodyDataRecords(DaraModel):
 
         if m.get('Workers') is not None:
             self.workers = m.get('Workers')
+
+        if m.get('XAttrs') is not None:
+            self.xattrs = m.get('XAttrs')
 
         return self
 

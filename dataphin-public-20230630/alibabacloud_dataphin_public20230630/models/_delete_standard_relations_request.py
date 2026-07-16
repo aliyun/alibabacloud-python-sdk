@@ -13,8 +13,12 @@ class DeleteStandardRelationsRequest(DaraModel):
         delete_command: main_models.DeleteStandardRelationsRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -53,10 +57,16 @@ class DeleteStandardRelationsRequestDeleteCommand(DaraModel):
         standard_id: int = None,
         standard_ref_list: List[main_models.DeleteStandardRelationsRequestDeleteCommandStandardRefList] = None,
     ):
+        # The standard association type: RELATIVE.
+        # 
         # This parameter is required.
         self.relation_type = relation_type
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
+        # The list of referenced standards.
+        # 
         # This parameter is required.
         self.standard_ref_list = standard_ref_list
 
@@ -105,6 +115,8 @@ class DeleteStandardRelationsRequestDeleteCommandStandardRefList(DaraModel):
         self,
         standard_id: int = None,
     ):
+        # The standard ID.
+        # 
         # This parameter is required.
         self.standard_id = standard_id
 

@@ -29,40 +29,74 @@ class ScheduledSQLConfiguration(DaraModel):
         to_time: int = None,
         to_time_expr: str = None,
     ):
+        # The data format. Valid values: log2log, log2metric, and metric2metric.
+        # 
         # This parameter is required.
         self.data_format = data_format
+        # The endpoint.
+        # 
         # This parameter is required.
         self.dest_endpoint = dest_endpoint
+        # The destination Logstore.
+        # 
         # This parameter is required.
         self.dest_logstore = dest_logstore
+        # The destination project.
+        # 
         # This parameter is required.
         self.dest_project = dest_project
+        # The ARN of the RAM role that is assumed to write data to the destination Logstore.
+        # 
         # This parameter is required.
         self.dest_role_arn = dest_role_arn
         self.force_complete = force_complete
+        # The start time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # 
         # This parameter is required.
         self.from_time = from_time
+        # The start time of the SQL time window.
+        # 
         # This parameter is required.
         self.from_time_expr = from_time_expr
         self.max_concurrency = max_concurrency
+        # The maximum number of SQL timeouts allowed. Valid values: 1 to 100.
+        # 
         # This parameter is required.
         self.max_retries = max_retries
+        # The maximum timeout period of SQL analysis. Unit: seconds. Valid values: 60 to 1800.
+        # 
         # This parameter is required.
         self.max_run_time_in_seconds = max_run_time_in_seconds
+        # The SQL configurations. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # 
         # This parameter is required.
         self.parameters = parameters
+        # The type of the resource pool. The value enhanced specifies an enhanced resource pool.
+        # 
         # This parameter is required.
         self.resource_pool = resource_pool
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is assigned to the Scheduled SQL job.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The query statement of the Scheduled SQL job.
+        # 
         # This parameter is required.
         self.script = script
+        # The source Logstore.
+        # 
         # This parameter is required.
         self.source_logstore = source_logstore
+        # The type of the query statement.
+        # 
         # This parameter is required.
         self.sql_type = sql_type
+        # The end time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+        # 
         # This parameter is required.
         self.to_time = to_time
+        # The end time of the SQL time window.
+        # 
         # This parameter is required.
         self.to_time_expr = to_time_expr
 

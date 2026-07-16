@@ -14,6 +14,7 @@ class DescribeAvailableResourceResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.available_zones = available_zones
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

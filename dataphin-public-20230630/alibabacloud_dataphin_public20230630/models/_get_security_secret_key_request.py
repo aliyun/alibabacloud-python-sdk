@@ -10,8 +10,12 @@ class GetSecuritySecretKeyRequest(DaraModel):
         name: str = None,
         op_tenant_id: int = None,
     ):
+        # The key name.
+        # 
         # This parameter is required.
         self.name = name
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

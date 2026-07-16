@@ -17,8 +17,9 @@ class ListLogStoresRequest(DaraModel):
         self.logstore_name = logstore_name
         # The type of the Logstore. Valid values: standard and query.
         # 
-        # *   **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
-        # *   **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
+        # - **standard**: Standard Logstore. This type of Logstore supports the log analysis feature and is suitable for scenarios such as real-time monitoring and interactive analysis. You can also use this type of Logstore to build a comprehensive observability system.
+        # 
+        # - **query**: Query Logstore. This type of Logstore supports high-performance queries. The index traffic fee of a Query Logstore is approximately half that of a Standard Logstore. Query Logstores do not support SQL analysis. Query Logstores are suitable for scenarios in which the volume of data is large, the log retention period is long, or log analysis is not required. Log retention periods of weeks or months are considered long.
         self.mode = mode
         # The line from which the query starts. Default value: 0.
         self.offset = offset
@@ -26,8 +27,9 @@ class ListLogStoresRequest(DaraModel):
         self.size = size
         # The type of the data that you want to query. Valid values:
         # 
-        # *   None: logs
-        # *   Metrics: metrics
+        # - None: logs
+        # 
+        # - Metrics: metrics
         self.telemetry_type = telemetry_type
 
     def validate(self):

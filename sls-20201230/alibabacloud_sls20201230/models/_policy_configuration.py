@@ -11,8 +11,11 @@ class PolicyConfiguration(DaraModel):
         alert_policy_id: str = None,
         repeat_interval: str = None,
     ):
+        # The action policy.
         self.action_policy_id = action_policy_id
+        # The alert policy.
         self.alert_policy_id = alert_policy_id
+        # The repeat interval.
         self.repeat_interval = repeat_interval
 
     def validate(self):

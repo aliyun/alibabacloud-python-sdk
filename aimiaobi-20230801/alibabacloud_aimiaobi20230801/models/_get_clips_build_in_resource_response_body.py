@@ -17,12 +17,17 @@ class GetClipsBuildInResourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true means the request was successful. A value of false means the request failed.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class GetClipsBuildInResourceResponseBodyData(DaraModel):
         resource_list: List[str] = None,
         resource_type: int = None,
     ):
+        # The list of resources.
         self.resource_list = resource_list
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

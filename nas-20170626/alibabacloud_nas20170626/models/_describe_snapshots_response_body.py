@@ -16,14 +16,14 @@ class DescribeSnapshotsResponseBody(DaraModel):
         snapshots: main_models.DescribeSnapshotsResponseBodySnapshots = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the snapshot list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.snapshots = snapshots
-        # The total number of snapshots returned.
+        # The total number of snapshots.
         self.total_count = total_count
 
     def validate(self):

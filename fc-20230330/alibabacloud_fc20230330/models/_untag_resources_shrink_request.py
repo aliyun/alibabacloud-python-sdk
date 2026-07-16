@@ -12,9 +12,9 @@ class UntagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_key_shrink: str = None,
     ):
-        # Specifies whether to delete all tags.
+        # Specifies whether to remove all tags.
         self.all = all
-        # The resource identifiers.
+        # A list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id_shrink = resource_id_shrink
@@ -22,7 +22,7 @@ class UntagResourcesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag to remove. You can specify a maximum of 50 tags.
+        # The keys of the tags to remove. You can specify up to 50 tag keys.
         self.tag_key_shrink = tag_key_shrink
 
     def validate(self):

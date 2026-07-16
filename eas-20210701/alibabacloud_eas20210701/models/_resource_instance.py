@@ -42,17 +42,17 @@ class ResourceInstance(DaraModel):
         self.arch = arch
         # Indicates whether auto-renewal is enabled for the instance.
         self.auto_renewal = auto_renewal
-        # The billing method of the instance.
+        # The billing method for the instance.
         self.charge_type = charge_type
         # The time when the instance was created.
         self.create_time = create_time
         # The time when the instance expires.
         self.expired_time = expired_time
-        # The number of CPU cores for the instance.
+        # The number of CPUs for the instance.
         self.instance_cpu_count = instance_cpu_count
         # The number of GPUs for the instance.
         self.instance_gpu_count = instance_gpu_count
-        # The GPU memory size of the instance.
+        # The VRAM size of the instance.
         self.instance_gpu_memory = instance_gpu_memory
         # The instance ID.
         self.instance_id = instance_id
@@ -62,38 +62,35 @@ class ResourceInstance(DaraModel):
         self.instance_memory = instance_memory
         # The instance name.
         self.instance_name = instance_name
+        # The lifecycle phase of the instance.
         self.instance_phase = instance_phase
-        # The instance status.
-        # 
-        # Valid values:
-        # 
-        # *   Ready-SchedulingDisabled
-        # *   Ready
-        # *   NotReady
+        # The status of the instance.
         self.instance_status = instance_status
         # The system disk size of the instance.
         self.instance_system_disk_size = instance_system_disk_size
-        # The IP address of the instance in the VPC.
+        # The IP address of the instance in a dedicated network.
         self.instance_tenant_ip = instance_tenant_ip
         # The instance type.
         self.instance_type = instance_type
-        # The number of CPU cores used by the instance.
+        # The number of CPUs in use.
         self.instance_used_cpu = instance_used_cpu
-        # The number of GPUs used by the instance.
+        # The number of GPUs in use.
         self.instance_used_gpu = instance_used_gpu
-        # The size of the GPU memory used by the instance.
+        # The amount of VRAM in use.
         self.instance_used_gpu_memory = instance_used_gpu_memory
-        # The size of the memory used by the instance.
+        # The amount of memory in use.
         self.instance_used_memory = instance_used_memory
-        # The instance tags.
+        # The labels of the instance.
         self.labels = labels
+        # The operator who performed the last cordon.
         self.last_cordon_operator = last_cordon_operator
+        # The reason for the last cordon.
         self.last_cordon_reason = last_cordon_reason
-        # The region ID of the instance.
+        # The region of the instance.
         self.region = region
         # The ID of the resource group to which the instance belongs.
         self.resource_id = resource_id
-        # The ID of the zone to which the instance belongs.
+        # The zone of the instance.
         self.zone = zone
 
     def validate(self):
@@ -280,17 +277,15 @@ class ResourceInstance(DaraModel):
 
         return self
 
-
-
 class ResourceInstanceLabels(DaraModel):
     def __init__(
         self,
         label_key: str = None,
         label_value: str = None,
     ):
-        # The tag key of the instance.
+        # The label key.
         self.label_key = label_key
-        # The tag value of the instance.
+        # The label value.
         self.label_value = label_value
 
     def validate(self):

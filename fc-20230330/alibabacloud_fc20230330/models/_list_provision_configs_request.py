@@ -11,11 +11,11 @@ class ListProvisionConfigsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
+        # The name of the function. If you do not specify this parameter, the provisioned configurations for all functions are returned.
         self.function_name = function_name
-        # Number of provisioned configurations to return.
+        # The number of provisioned configurations to return.
         self.limit = limit
-        # A pagination token.
+        # The token to start the next page of results.
         self.next_token = next_token
 
     def validate(self):

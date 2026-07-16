@@ -14,11 +14,11 @@ class ListAgentlessRiskUuidResponseBody(DaraModel):
         page_info: main_models.ListAgentlessRiskUuidResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The information about the hosts.
+        # The list of servers.
         self.list = list
-        # The pagination information.
+        # The paging information for the query.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class ListAgentlessRiskUuidResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page when using paging.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries per page when using paging.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -125,9 +125,9 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
         uuid: str = None,
         vul_count: int = None,
     ):
-        # The number of baseline risks.
+        # The number of baseline risk items.
         self.baseline_count = baseline_count
-        # The instance ID of the asset.
+        # The ID of the asset instance.
         self.instance_id = instance_id
         # The instance name of the asset.
         self.instance_name = instance_name
@@ -137,11 +137,11 @@ class ListAgentlessRiskUuidResponseBodyList(DaraModel):
         self.intranet_ip = intranet_ip
         # The number of malicious samples.
         self.malicious_count = malicious_count
-        # The timestamp of the detection. Unit: milliseconds.
+        # The timestamp of the scan. Unit: milliseconds.
         self.scan_time = scan_time
-        # The ID of the asset that is detected.
+        # The ID of the scan target.
         self.target_id = target_id
-        # The name of the asset that is detected.
+        # The name of the scan target.
         self.target_name = target_name
         # The UUID of the server.
         self.uuid = uuid

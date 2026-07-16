@@ -10,8 +10,14 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskRequest(DaraModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Unique ID of the task.
+        # 
+        # > The system generates a TaskId by default. If you specify the same TaskId for multiple tasks, those tasks belong to the same conversation group.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

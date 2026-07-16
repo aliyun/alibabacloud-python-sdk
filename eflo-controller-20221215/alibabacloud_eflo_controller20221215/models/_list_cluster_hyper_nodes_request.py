@@ -17,12 +17,25 @@ class ListClusterHyperNodesRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.ListClusterHyperNodesRequestTags] = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The number of entries to return on each page. The maximum value is 100.
+        # 
+        # Default value:
+        # 
+        # • If this parameter is not set or is set to a value less than 20, the default value is 20.
+        # 
+        # • If this parameter is set to a value greater than 100, the default value is 100.
         self.max_results = max_results
+        # The token used to start the query. Set this parameter to the NextToken value returned from a previous call.
         self.next_token = next_token
+        # The node group ID.
         self.node_group_id = node_group_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -89,7 +102,9 @@ class ListClusterHyperNodesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

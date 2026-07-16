@@ -10,8 +10,14 @@ class GetCustomHotTopicBroadcastJobRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the task.
+        # 
+        # > Tasks that use the same TaskId belong to the same conversation group.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -18,8 +18,9 @@ class ListPartitionsRequest(DaraModel):
         self.name = name
         # The sort order. Default: Asc. Valid values:
         # 
-        # *   Asc: Ascending order.
-        # *   Desc: Descending order.
+        # - Asc: Ascending order.
+        # 
+        # - Desc: Descending order.
         self.order = order
         # The page number. Default: 1.
         self.page_number = page_number
@@ -27,11 +28,15 @@ class ListPartitionsRequest(DaraModel):
         self.page_size = page_size
         # The sort field. Default value: CreateTime. Valid values:
         # 
-        # *   CreateTime: Creation time. Supported only for MaxCompute tables.
-        # *   ModifyTime: Modification time. Supported only for MaxCompute tables.
-        # *   Name: Name. Used for HMS-type tables.
-        # *   RecordCount: Record count. Supported only for MaxCompute tables.
-        # *   DataSize: Storage size. Supported only for MaxCompute tables.
+        # - CreateTime: Creation time. Supported only for MaxCompute tables.
+        # 
+        # - ModifyTime: Modification time. Supported only for MaxCompute tables.
+        # 
+        # - Name: Name. Used for HMS-type tables.
+        # 
+        # - RecordCount: Record count. Supported only for MaxCompute tables.
+        # 
+        # - DataSize: Storage size. Supported only for MaxCompute tables.
         self.sort_by = sort_by
         # The ID of the data table.You can refer to the ListTables API response and [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
         # 

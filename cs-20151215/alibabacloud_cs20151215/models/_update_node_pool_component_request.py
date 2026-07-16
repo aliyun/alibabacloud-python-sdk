@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict
+from typing import List, Dict, Any
 
 from alibabacloud_cs20151215 import models as main_models
 from darabonba.model import DaraModel
@@ -17,17 +17,17 @@ class UpdateNodePoolComponentRequest(DaraModel):
         rolling_policy: main_models.UpdateNodePoolComponentRequestRollingPolicy = None,
         version: str = None,
     ):
-        # The configuration details for the component update.
+        # The node component configuration.
         self.config = config
-        # Specifies whether to disable rolling updates. Default: false. If set to false, nodes will be rolled automatically to apply the new configuration.
+        # Specifies whether to disable rolling updates. Default value: false. When set to false, updating the baseline configuration triggers a rolling update of nodes.
         self.disable_rolling = disable_rolling
         # The name of the node component.
         self.name = name
-        # A list of specific nodes to be rolled. If not specified, all nodes in the node pool will be updated.
+        # The list of nodes to be included in the rolling update. By default, all nodes are included.
         self.node_names = node_names
         # The rolling update configuration.
         self.rolling_policy = rolling_policy
-        # The version of the node component to be updated to.
+        # The version of the node component.
         self.version = version
 
     def validate(self):
@@ -92,11 +92,11 @@ class UpdateNodePoolComponentRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
-        # The time interval between update batches, in seconds.
+        # The interval between batches during the upgrade, in seconds.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that can be updated concurrently. Default: 1.
+        # The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
         self.max_parallelism = max_parallelism
-        # The automatic pause strategy during the update process. Valid values: NotPause, FirstBatchPause, EveryBatchPause.
+        # The automatic pause policy during the node upgrade process.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -134,9 +134,9 @@ class UpdateNodePoolComponentRequestRollingPolicy(DaraModel):
 class UpdateNodePoolComponentRequestConfig(DaraModel):
     def __init__(
         self,
-        custom_config: Dict[str, str] = None,
+        custom_config: Dict[str, Any] = None,
     ):
-        # Custom configuration parameters for the component.
+        # The custom configuration of the component.
         self.custom_config = custom_config
 
     def validate(self):

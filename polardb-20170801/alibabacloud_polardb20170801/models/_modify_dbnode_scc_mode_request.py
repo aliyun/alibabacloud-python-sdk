@@ -15,15 +15,19 @@ class ModifyDBNodeSccModeRequest(DaraModel):
         resource_owner_id: int = None,
         scc_mode: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The node ID.
+        # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # SCC
+        # The SCC mode to set for the node.
         # 
         # This parameter is required.
         self.scc_mode = scc_mode

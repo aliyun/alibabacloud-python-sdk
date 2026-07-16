@@ -7971,6 +7971,8 @@ class Client(OpenApiClient):
             body['UnBindPeriod'] = request.un_bind_period
         if not DaraCore.is_null(request.un_bind_start_time):
             body['UnBindStartTime'] = request.un_bind_start_time
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8065,6 +8067,8 @@ class Client(OpenApiClient):
             body['UnBindPeriod'] = request.un_bind_period
         if not DaraCore.is_null(request.un_bind_start_time):
             body['UnBindStartTime'] = request.un_bind_start_time
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8159,6 +8163,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8239,6 +8245,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8559,6 +8567,8 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8657,6 +8667,8 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8761,6 +8773,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -8851,6 +8865,8 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.vendor_template):
+            body['VendorTemplate'] = request.vendor_template
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -11275,8 +11291,16 @@ class Client(OpenApiClient):
             body['BizOrderId'] = request.biz_order_id
         if not DaraCore.is_null(request.biz_order_status):
             body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.cp_extra):
+            body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.item_id):
+            body['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.item_title):
+            body['ItemTitle'] = request.item_title
         if not DaraCore.is_null(request.mini_program_id):
             body['MiniProgramId'] = request.mini_program_id
         if not DaraCore.is_null(request.open_uid):
@@ -11321,8 +11345,16 @@ class Client(OpenApiClient):
             body['BizOrderId'] = request.biz_order_id
         if not DaraCore.is_null(request.biz_order_status):
             body['BizOrderStatus'] = request.biz_order_status
+        if not DaraCore.is_null(request.client_type):
+            body['ClientType'] = request.client_type
+        if not DaraCore.is_null(request.cp_extra):
+            body['CpExtra'] = request.cp_extra
         if not DaraCore.is_null(request.custom_id):
             body['CustomId'] = request.custom_id
+        if not DaraCore.is_null(request.item_id):
+            body['ItemId'] = request.item_id
+        if not DaraCore.is_null(request.item_title):
+            body['ItemTitle'] = request.item_title
         if not DaraCore.is_null(request.mini_program_id):
             body['MiniProgramId'] = request.mini_program_id
         if not DaraCore.is_null(request.open_uid):

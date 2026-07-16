@@ -18,15 +18,22 @@ class QueryTaskListShrinkRequest(DaraModel):
         task_name: str = None,
         task_type_shrink: str = None,
     ):
+        # The current page number.
         self.current_page = current_page
         self.owner_id = owner_id
+        # The page size. Maximum value: 1000.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task statuses.
         self.result_shrink = result_shrink
+        # The tag ID. You can call the [QueryTagListPage](~~QueryTagListPage~~) operation to query tag IDs.
         self.tag_id = tag_id
+        # The task ID. You can call the DescribeTasks operation to query the list of task IDs.
         self.task_id = task_id
+        # The task name.
         self.task_name = task_name
+        # An array of task types.
         self.task_type_shrink = task_type_shrink
 
     def validate(self):

@@ -19,12 +19,9 @@ class FlightListingSearchV2ResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -196,12 +193,14 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemList(DaraModel):
 class FlightListingSearchV2ResponseBodyModuleFlightItemListItemList(DaraModel):
     def __init__(
         self,
+        code_type: str = None,
         flight_rule_infos: Dict[str, main_models.ModuleFlightItemListItemListFlightRuleInfosValue] = None,
         item_id: str = None,
         shopping_item_map: Dict[str, main_models.ModuleFlightItemListItemListShoppingItemMapValue] = None,
         sub_item_position_map: Dict[str, List[main_models.ModuleFlightItemListItemListSubItemPositionMapValue]] = None,
         sub_items: List[main_models.FlightListingSearchV2ResponseBodyModuleFlightItemListItemListSubItems] = None,
     ):
+        self.code_type = code_type
         self.flight_rule_infos = flight_rule_infos
         self.item_id = item_id
         self.shopping_item_map = shopping_item_map
@@ -232,6 +231,9 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.code_type is not None:
+            result['code_type'] = self.code_type
+
         result['flight_rule_infos'] = {}
         if self.flight_rule_infos is not None:
             for k1, v1 in self.flight_rule_infos.items():
@@ -262,6 +264,9 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListItemList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('code_type') is not None:
+            self.code_type = m.get('code_type')
+
         self.flight_rule_infos = {}
         if m.get('flight_rule_infos') is not None:
             for k1, v1 in m.get('flight_rule_infos').items():
@@ -504,7 +509,6 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFli
         self.dep_city_code = dep_city_code
         self.dep_city_name = dep_city_name
         self.dep_time = dep_time
-        # duration
         self.duration = duration
         self.extra_info = extra_info
         self.flight_no = flight_no
@@ -1109,12 +1113,14 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListFlightJourneyInfosFli
 class FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem(DaraModel):
     def __init__(
         self,
+        code_type: str = None,
         flight_rule_infos: Dict[str, main_models.ModuleFlightItemListBestPriceItemFlightRuleInfosValue] = None,
         item_id: str = None,
         shopping_item_map: Dict[str, main_models.ModuleFlightItemListBestPriceItemShoppingItemMapValue] = None,
         sub_item_position_map: Dict[str, List[main_models.ModuleFlightItemListBestPriceItemSubItemPositionMapValue]] = None,
         sub_items: List[main_models.FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItemSubItems] = None,
     ):
+        self.code_type = code_type
         self.flight_rule_infos = flight_rule_infos
         self.item_id = item_id
         self.shopping_item_map = shopping_item_map
@@ -1145,6 +1151,9 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem(DaraMod
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.code_type is not None:
+            result['code_type'] = self.code_type
+
         result['flight_rule_infos'] = {}
         if self.flight_rule_infos is not None:
             for k1, v1 in self.flight_rule_infos.items():
@@ -1175,6 +1184,9 @@ class FlightListingSearchV2ResponseBodyModuleFlightItemListBestPriceItem(DaraMod
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('code_type') is not None:
+            self.code_type = m.get('code_type')
+
         self.flight_rule_infos = {}
         if m.get('flight_rule_infos') is not None:
             for k1, v1 in m.get('flight_rule_infos').items():

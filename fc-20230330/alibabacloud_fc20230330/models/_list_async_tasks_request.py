@@ -17,42 +17,53 @@ class ListAsyncTasksRequest(DaraModel):
         started_time_end: int = None,
         status: str = None,
     ):
-        # Specifies whether to return input parameters of the asynchronous tasks. Valid values:
+        # Specifies whether to return the input parameters of the asynchronous task.
         # 
-        # *   true: returns the `invocationPayload` parameter in the response.
-        # *   false: does not return the `invocationPayload` parameter in the response.
+        # - true: If this parameter is set to true, the `invocationPayload` field is returned.
         # 
-        # >  The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
+        # - false: If this parameter is set to false, the `invocationPayload` field is not returned.
+        # 
+        # > The `invocationPayload` field specifies the input parameters of the function for the asynchronous task.
         self.include_payload = include_payload
-        # The number of asynchronous tasks to return. The default value is 20. Valid values: [1,100].
+        # The number of asynchronous tasks to return. The default value is 20. The value must be in the range of [1, 100].
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token to return more results. You do not need to provide this parameter for the first query. Obtain the token for a subsequent query from the response to the previous query.
         self.next_token = next_token
-        # The ID prefix of asynchronous tasks. If this parameter is specified, a list of asynchronous tasks whose IDs match the prefix is returned.
+        # The prefix of the asynchronous task ID. The system returns a list of asynchronous tasks that match the prefix.
         self.prefix = prefix
         # The version or alias of the function.
         self.qualifier = qualifier
-        # The order in which the returned asynchronous tasks are sorted.
+        # The sorting order of the returned asynchronous tasks.
         # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # - asc: ascending order
+        # 
+        # - desc: descending order
         self.sort_order_by_time = sort_order_by_time
-        # The start time of the period during which the asynchronous tasks are initiated.
+        # The start of the time range when the asynchronous task was started.
         self.started_time_begin = started_time_begin
-        # The end time of the period during which the asynchronous tasks are initiated.
+        # The end of the time range when the asynchronous task was started.
         self.started_time_end = started_time_end
-        # The state of asynchronous tasks. The following items list the states of an asynchronous task:
+        # The execution status of the asynchronous task.
         # 
-        # *   Enqueued: The asynchronous invocation is enqueued and waiting to be executed.
-        # *   Dequeued: The asynchronous invocation is dequeued and waiting to be triggered.
-        # *   Running: The invocation is being executed.
-        # *   Succeeded: The invocation is successful.
-        # *   Failed: The invocation fails.
-        # *   Stopped: The invocation is terminated.
-        # *   Stopping: The invocation is being terminated.
-        # *   Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period of messages expires.
-        # *   Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
-        # *   Retrying: The asynchronous invocation is being retried due to an execution error.
+        # - Enqueued: The asynchronous message is enqueued and waits for processing.
+        # 
+        # - Dequeued: The asynchronous message is dequeued and waits to be triggered.
+        # 
+        # - Running: The invocation is in progress.
+        # 
+        # - Succeeded: The invocation succeeded.
+        # 
+        # - Failed: The invocation failed.
+        # 
+        # - Stopped: The invocation was stopped.
+        # 
+        # - Stopping: The invocation is being stopped.
+        # 
+        # - Expired: The task was discarded because its configured maximum queuing duration was exceeded. The task was not executed.
+        # 
+        # - Invalid: The execution is invalid because the function was deleted or for other reasons. The task was not executed.
+        # 
+        # - Retrying: The asynchronous invocation is being retried because of an execution error.
         self.status = status
 
     def validate(self):

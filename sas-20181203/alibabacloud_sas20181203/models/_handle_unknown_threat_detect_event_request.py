@@ -12,7 +12,13 @@ class HandleUnknownThreatDetectEventRequest(DaraModel):
         event_id_list: List[str] = None,
         status: int = None,
     ):
+        # The list of event IDs.
         self.event_id_list = event_id_list
+        # The event handling status. Valid values:
+        # 
+        # - **1**: Unhandled.
+        # - **2**: Blocked.
+        # - **3**: Ignored.
         self.status = status
 
     def validate(self):

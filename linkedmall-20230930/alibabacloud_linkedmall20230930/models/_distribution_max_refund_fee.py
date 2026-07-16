@@ -10,7 +10,9 @@ class DistributionMaxRefundFee(DaraModel):
         max_refund_fee: int = None,
         min_refund_fee: int = None,
     ):
+        # Maximum refundable amount for this order
         self.max_refund_fee = max_refund_fee
+        # Minimum refundable amount for this order
         self.min_refund_fee = min_refund_fee
 
     def validate(self):

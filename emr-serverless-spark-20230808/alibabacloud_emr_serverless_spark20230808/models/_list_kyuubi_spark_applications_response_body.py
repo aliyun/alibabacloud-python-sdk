@@ -16,15 +16,15 @@ class ListKyuubiSparkApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the applications.
+        # A list of application details.
         self.applications = applications
-        # The maximum number of entries returned.
+        # The maximum number of records returned.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -99,35 +99,39 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         vcore_seconds: int = None,
         web_ui: str = None,
     ):
-        # The ID of the application that is submitted by using a Kyuubi gateway.
+        # The ID of the Spark application submitted by Kyuubi.
         self.application_id = application_id
-        # The name of the Spark application that is submitted by using a Kyuubi gateway.
+        # The name of the Spark application submitted by Kyuubi.
         self.application_name = application_name
-        # The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
+        # The number of CUs consumed during the task lifecycle. This is an estimated value. The final amount is subject to your bill.
         self.cu_hours = cu_hours
         # The time when the task ended.
         self.end_time = end_time
+        # The exit code.
         self.exit_reason = exit_reason
         self.kyuubi_service_id = kyuubi_service_id
+        # The status of the last task execution in the session.
         self.latest_sql_statement_status = latest_sql_statement_status
-        # The total amount of memory allocated to the job multiplied by the running duration (seconds).
+        # The total memory allocated to the task in MB, multiplied by the number of seconds the task ran.
         self.mb_seconds = mb_seconds
         self.priority = priority
-        # The name of the resource queue on which the Spark jobs run.
+        # The name of the resource queue where the Spark task runs.
         self.resource_queue_id = resource_queue_id
         self.run_log = run_log
         # The time when the task started.
         self.start_time = start_time
         # The status of the Spark application.
         # 
-        # *   STARTING
-        # *   RUNNING
-        # *   TERMINATED
+        # - STARTING: The application is starting.
+        # 
+        # - RUNNING: The application is running.
+        # 
+        # - TERMINATED: The application is terminated.
         self.state = state
         self.tags = tags
-        # The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
+        # The total vCores allocated to the task, multiplied by the number of seconds the task ran.
         self.vcore_seconds = vcore_seconds
-        # The URL of the web UI for the Spark application.
+        # The URL of the Spark application UI.
         self.web_ui = web_ui
 
     def validate(self):

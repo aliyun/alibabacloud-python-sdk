@@ -13,13 +13,22 @@ class CreateCalendarRequest(DaraModel):
         months: str = None,
         year: int = None,
     ):
+        # The name of the calendar.
+        # 
         # This parameter is required.
         self.calendar_name = calendar_name
+        # A client token to ensure request idempotence. Generate a unique value for this parameter on your client. The token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the Request ID as the client token. The Request ID may be different for each request.
         self.client_token = client_token
+        # The Cluster ID. You can call the [ListClusters](https://help.aliyun.com/document_detail/28147.html) operation to query Cluster IDs.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The days of each month, specified in a JSON array.
+        # 
         # This parameter is required.
         self.months = months
+        # The year.
+        # 
         # This parameter is required.
         self.year = year
 

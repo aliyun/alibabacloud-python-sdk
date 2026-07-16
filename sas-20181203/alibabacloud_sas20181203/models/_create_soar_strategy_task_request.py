@@ -13,43 +13,39 @@ class CreateSoarStrategyTaskRequest(DaraModel):
         strategy_task_params: str = None,
         strategy_task_plan_exe_time: int = None,
     ):
-        # The ID of the policy.
-        # 
-        # >  You can call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain the ID.
+        # The policy ID.
+        # >Call the [DescribeSoarSubscribedStrategy](~~DescribeSoarSubscribedStrategy~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id
-        # The name of the policy. Set the value to Automated Batch Vulnerability Fixing Policy for Multiple Servers.
+        # The policy name. Fixed value: Automated Batch Vulnerability Fix Policy.
         # 
         # This parameter is required.
         self.strategy_name = strategy_name
-        # The name of.the policy task.
+        # The name of the policy task.
         # 
         # This parameter is required.
         self.strategy_task_name = strategy_task_name
-        # The parameters of the policy task. The value is a JSON array.
+        # The parameter information of the policy. A string in JSONArray format with the following items:
         # 
-        # Vulnerability-related parameters:
+        # Vulnerability configuration item. Valid values:
+        # - name: vluList
+        # - associationProperty: sasAllVul
+        # - value: basic information about the vulnerability
         # 
-        # *   name: vluList
-        # *   associationProperty: sasAllVul
-        # *   value: basic vulnerability information
+        # Snapshot configuration item. Valid values:
+        # - name: snapshotConfig
+        # - associationProperty: snapshotConfig
+        # - value: storage time information
         # 
-        # Snapshot-related parameters:
-        # 
-        # *   name: snapshotConfig
-        # *   associationProperty: snapshotConfig
-        # *   value: retention period
-        # 
-        # Notification-related parameters:
-        # 
-        # *   name: notifyConfig
-        # *   associationProperty: notifyConfig
-        # *   value: email or DingTalk configuration information
+        # Notification configuration. Valid values:
+        # - name: notifyConfig
+        # - associationProperty: notifyConfig
+        # - value: email or DingTalk configuration information.
         # 
         # This parameter is required.
         self.strategy_task_params = strategy_task_params
-        # The timestamp when the task is scheduled to start. Unit: milliseconds.
+        # The planned execution timestamp of the policy task. Unit: milliseconds.
         self.strategy_task_plan_exe_time = strategy_task_plan_exe_time
 
     def validate(self):

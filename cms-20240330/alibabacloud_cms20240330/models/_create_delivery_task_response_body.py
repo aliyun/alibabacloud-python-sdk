@@ -10,8 +10,9 @@ class CreateDeliveryTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Id of the request
+        # The unique ID for the request.
         self.request_id = request_id
+        # The ID of the delivery task.
         self.task_id = task_id
 
     def validate(self):

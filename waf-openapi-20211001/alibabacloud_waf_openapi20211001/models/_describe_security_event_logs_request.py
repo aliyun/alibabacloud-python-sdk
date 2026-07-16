@@ -17,28 +17,29 @@ class DescribeSecurityEventLogsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+        # The filter conditions. A logical AND relationship exists between multiple filter conditions.
         # 
         # This parameter is required.
         self.filter = filter
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number. Default value: **1**.
+        # The page number to return for a paged query. The default value is **1**, which indicates the first page.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **100**.
+        # The number of entries to return on each page for a paged query. The maximum value is **100**.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -101,9 +102,9 @@ class DescribeSecurityEventLogsRequestFilter(DaraModel):
         conditions: List[main_models.DescribeSecurityEventLogsRequestFilterConditions] = None,
         date_range: main_models.DescribeSecurityEventLogsRequestFilterDateRange = None,
     ):
-        # The filter conditions. Each object describes a filter condition.
+        # A list of filter conditions. Each node describes a filter condition.
         self.conditions = conditions
-        # The time range for the query.
+        # The time range to query.
         # 
         # This parameter is required.
         self.date_range = date_range
@@ -155,7 +156,9 @@ class DescribeSecurityEventLogsRequestFilterDateRange(DaraModel):
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start of the time range to query. The time range cannot exceed the last 30 days. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # > The start time must be within the last 30 days from the current time.
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -193,11 +196,11 @@ class DescribeSecurityEventLogsRequestFilterConditions(DaraModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields. For more information, see the **Supported field names** section below.
+        # The name of the field to filter. This operation supports all fields.
         self.key = key
-        # The operator. For more information, see the **Supported operators** section below.
+        # The operator.
         self.op_value = op_value
-        # The field content.
+        # The filter value.
         self.values = values
 
     def validate(self):

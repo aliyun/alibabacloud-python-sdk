@@ -13,10 +13,15 @@ class OneMetaKnowledgeBaseChunk(DaraModel):
         doc_name: str = None,
         id: str = None,
     ):
+        # The time when the chunk was last modified.
         self.chunk_mtime = chunk_mtime
+        # The title of the chunk.
         self.chunk_title = chunk_title
+        # The content of the chunk.
         self.content = content
+        # The name of the document.
         self.doc_name = doc_name
+        # The unique identifier for the chunk.
         self.id = id
 
     def validate(self):

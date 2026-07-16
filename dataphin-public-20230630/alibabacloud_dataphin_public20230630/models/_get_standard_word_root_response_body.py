@@ -15,12 +15,17 @@ class GetStandardWordRootResponseBody(DaraModel):
         success: bool = None,
         word_root_info: main_models.GetStandardWordRootResponseBodyWordRootInfo = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The word root details.
         self.word_root_info = word_root_info
 
     def validate(self):
@@ -89,15 +94,25 @@ class GetStandardWordRootResponseBodyWordRootInfo(DaraModel):
         modify_time: str = None,
         name: str = None,
     ):
+        # The abbreviation of the word root.
         self.abbreviation = abbreviation
+        # The creation time.
         self.create_time = create_time
+        # The user ID of the creator.
         self.creator = creator
+        # The username of the creator.
         self.creator_name = creator_name
+        # The description of the word root.
         self.description = description
+        # The full name of the word root.
         self.full_name = full_name
+        # The user ID of the last modifier.
         self.last_modifier = last_modifier
+        # The username of the last modifier.
         self.last_modifier_name = last_modifier_name
+        # The modification time.
         self.modify_time = modify_time
+        # The name of the word root.
         self.name = name
 
     def validate(self):

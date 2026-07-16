@@ -22,22 +22,33 @@ class DescribeRecursionRecordResponseBody(DaraModel):
         weight: int = None,
         zone_id: str = None,
     ):
+        # The time when the record was created.
         self.create_time = create_time
+        # The timestamp that indicates when the record was created.
         self.create_timestamp = create_timestamp
+        # The priority of the Mail Exchange (MX) record.
         self.priority = priority
-        # record ID
+        # The record ID.
         self.record_id = record_id
+        # The remarks.
         self.remark = remark
+        # The request ID.
         self.request_id = request_id
+        # The host record.
         self.rr = rr
-        # ttl
+        # The Time to Live (TTL).
         self.ttl = ttl
+        # The type of the DNS record.
         self.type = type
+        # The time when the record was last updated.
         self.update_time = update_time
+        # The timestamp that indicates when the record was last updated.
         self.update_timestamp = update_timestamp
+        # The value of the DNS record.
         self.value = value
+        # The weight.
         self.weight = weight
-        # zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

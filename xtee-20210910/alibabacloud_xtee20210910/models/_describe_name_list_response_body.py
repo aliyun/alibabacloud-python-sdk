@@ -17,17 +17,17 @@ class DescribeNameListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned objects.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,19 +99,19 @@ class DescribeNameListResponseBodyResultObject(DaraModel):
         value: str = None,
         variable_id: int = None,
     ):
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Name list content ID.
+        # The name list content ID.
         self.id = id
-        # Variable identifier.
+        # The variable identifier.
         self.identifier = identifier
-        # Title.
+        # The title.
         self.title = title
-        # Value.
+        # The value.
         self.value = value
-        # Variable ID.
+        # The variable ID.
         self.variable_id = variable_id
 
     def validate(self):

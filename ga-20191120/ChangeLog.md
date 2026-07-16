@@ -1,3 +1,7 @@
+2026-06-30 Version: 3.0.2
+- Update API ListEndpointGroups: add request parameters EndpointGroupRegion.
+
+
 2026-01-14 Version: 3.0.0
 - Support API AssociateResources.
 - Support API DisassociateResources.

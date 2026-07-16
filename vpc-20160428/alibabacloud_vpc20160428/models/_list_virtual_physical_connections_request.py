@@ -23,45 +23,47 @@ class ListVirtualPhysicalConnectionsRequest(DaraModel):
         virtual_physical_connection_statuses: List[str] = None,
         vlan_ids: List[str] = None,
     ):
-        # Specifies whether the hosted connection is accepted by the tenant. Valid values:
+        # Indicates whether the tenant has accepted the virtual physical connection. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The connection has been accepted.
+        # 
+        # - **false**: The connection has not been accepted.
         self.is_confirmed = is_confirmed
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token used to retrieve the next page of results. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - Leave this parameter empty for the first request.
+        # 
+        # - For subsequent requests, set this parameter to the `NextToken` value returned from the previous request.
         self.next_token = next_token
-        # The ID of the Express Connect circuit over which the hosted connections are created.
-        # 
-        # Express Connect circuits in this topic refer to Express Connect circuits over which hosted connections are created.
+        # The ID of the physical connection associated with the virtual physical connection.
         self.physical_connection_id = physical_connection_id
-        # The region ID of the hosted connection.
+        # The ID of the region where the virtual physical connection is located.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the latest list of regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the hosted connection belongs.
+        # The ID of the resource group to which the virtual physical connection belongs.
         self.resource_group_id = resource_group_id
-        # The tag list.
+        # The list of tags.
         self.tags = tags
-        # The information about the Alibaba Cloud account that owns the hosted connection.
+        # The Alibaba Cloud accounts that own the virtual physical connections.
         self.virtual_physical_connection_ali_uids = virtual_physical_connection_ali_uids
-        # The business status of the hosted connection. Valid values:
+        # The business status of the virtual physical connection. Valid values:
         # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
+        # - **Normal**: The connection is operating normally.
+        # 
+        # - **FinancialLocked**: The connection is locked due to an overdue payment.
+        # 
+        # - **SecurityLocked**: The connection is locked for security reasons.
         self.virtual_physical_connection_business_status = virtual_physical_connection_business_status
-        # The information about the hosted connection.
+        # The IDs of the virtual physical connections.
         self.virtual_physical_connection_ids = virtual_physical_connection_ids
-        # The business status of the hosted connection.
+        # The business statuses of the virtual physical connections.
         self.virtual_physical_connection_statuses = virtual_physical_connection_statuses
-        # The VLAN ID of the hosted connection.
+        # The VLAN IDs of the virtual physical connections.
         self.vlan_ids = vlan_ids
 
     def validate(self):
@@ -164,13 +166,13 @@ class ListVirtualPhysicalConnectionsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
         # 
-        # It can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
         # 
-        # It can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

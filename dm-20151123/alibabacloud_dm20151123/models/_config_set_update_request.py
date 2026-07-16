@@ -13,10 +13,14 @@ class ConfigSetUpdateRequest(DaraModel):
         is_public_channel_backoff: bool = None,
         name: str = None,
     ):
+        # A description for the configuration set, up to 50 characters long.
         self.description = description
+        # Configuration set ID. Required.
         self.id = id
+        # Associated IP pool ID. Optional.
         self.ip_pool_id = ip_pool_id
         self.is_public_channel_backoff = is_public_channel_backoff
+        # Configuration set name. Required. Up to 50 characters. The name must be unique.
         self.name = name
 
     def validate(self):

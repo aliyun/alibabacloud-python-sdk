@@ -18,16 +18,17 @@ class ListVpcEndpointServicesByEndUserResponseBody(DaraModel):
     ):
         # The number of entries returned per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used to retrieve the next page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next requests are performed.
-        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
+        # - If this parameter is empty, all results have been returned.
+        # 
+        # - If a value is returned, use it in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about endpoint services.
+        # The endpoint services.
         self.services = services
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -100,45 +101,60 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(DaraModel):
         zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
-        # The protocol. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **IPv4**
-        # *   **DualStack**
+        # - **IPv4**: The service supports IPv4.
+        # 
+        # - **DualStack**: The service supports both IPv4 and IPv6 (dual stack).
         self.address_ip_version = address_ip_version
+        # Specifies whether connection requests are automatically accepted. Valid values:
+        # 
+        # - **true**: Connection requests are automatically accepted.
+        # 
+        # - **false**: Connection requests must be manually accepted.
         self.auto_accept_enabled = auto_accept_enabled
         # The payer. Valid values:
         # 
-        # *   **Endpoint**: the service consumer
-        # *   **EndpointService**: the service provider
+        # - **Endpoint**: the service consumer.
+        # 
+        # - **EndpointService**: the service provider.
         self.payer = payer
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The domain name of the endpoint service that can be associated with the endpoint.
+        # The domain name of the endpoint service.
         self.service_domain = service_domain
-        # The ID of the endpoint service that can be associated with the endpoint.
+        # The ID of the endpoint service.
         self.service_id = service_id
-        # The name of the endpoint service that can be associated with the endpoint.
+        # The name of the endpoint service.
         self.service_name = service_name
-        # The type of the service resource. Valid values:
+        # The service resource type.
         # 
-        # *   **slb**: Classic Load Balancer (CLB) instance
-        # *   **alb**: Application Load Balancer (ALB) instance
-        # *   **nlb**: Network Load Balancer (NLB) instance
+        # - **slb**: A Classic Load Balancer (CLB) instance.
+        # 
+        # - **alb**: An Application Load Balancer (ALB) instance.
+        # 
+        # - **nlb**: A Network Load Balancer (NLB) instance.
         self.service_resource_type = service_resource_type
-        # Indicates whether IPv6 is enabled. Valid values:
+        # Specifies whether the endpoint service supports IPv6. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The endpoint service supports IPv6.
+        # 
+        # - **false**: The endpoint service does not support IPv6.
         self.service_support_ipv_6 = service_support_ipv_6
         # The type of the endpoint service.
         # 
-        # Only **Interface** is returned, which indicates an interface endpoint. You can specify **CLB** and **ALB** instances as service resources.
+        # The value is always **Interface**. This indicates an interface endpoint where you can add service resources such as Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
         self.service_type = service_type
-        # The list of tags.
+        # A list of tags.
         self.tags = tags
         self.vpc_endpoint_policy_supported = vpc_endpoint_policy_supported
+        # Specifies whether zone affinity is enabled. Valid values:
+        # 
+        # - **true**: Zone affinity is enabled.
+        # 
+        # - **false**: Zone affinity is disabled.
         self.zone_affinity_enabled = zone_affinity_enabled
-        # The zones of the endpoint service that can be associated with the endpoint.
+        # The zones where the endpoint service is available.
         self.zones = zones
 
     def validate(self):
@@ -253,9 +269,9 @@ class ListVpcEndpointServicesByEndUserResponseBodyServicesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

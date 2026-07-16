@@ -13,20 +13,19 @@ class DescribeImageVulWhiteListRequest(DaraModel):
         page_size: int = None,
         source: str = None,
     ):
-        # The alias of the vulnerability that you want to query.
+        # The alias of the vulnerability to query.
         self.alias_name = alias_name
-        # The number of the page to return.
+        # The page number of the current page in a paged query. Paging is used to display results.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries per page in a paged query. Paging is used to display results. Default value: 20.
         self.page_size = page_size
         # The source of the whitelist. Valid values:
-        # - **image**
-        # - **agentless**
+        # - **image**: image
+        # - **agentless**: agentless.
         self.source = source
 
     def validate(self):

@@ -15,13 +15,13 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBody(DaraModel):
         policy_id: str = None,
         request_id: str = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Custom scraping job rules
+        # The custom scrape job rules.
         self.custom_scrape_job_rules = custom_scrape_job_rules
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # ID of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -85,27 +85,27 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules(
         namespace: str = None,
         scrape_configs: List[main_models.ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs] = None,
     ):
-        # Addon name.
+        # The add-on name.
         self.addon_name = addon_name
-        # Addon Release name
+        # The name of the add-on release.
         self.addon_release_name = addon_release_name
-        # Addon version
+        # The add-on version.
         self.addon_version = addon_version
-        # Configuration yaml
+        # The configuration YAML file.
         self.config_yaml = config_yaml
-        # Enable status
+        # The enabled status.
         self.enable_status = enable_status
-        # Encrypt yaml
+        # Indicates whether the YAML file is encrypted.
         self.encrypt_yaml = encrypt_yaml
-        # Matched pod count
+        # The number of matched pods.
         self.matched_pod_count = matched_pod_count
-        # Detailed information.
+        # The details.
         self.message = message
-        # Service name.
+        # The service name.
         self.name = name
-        # Namespace
+        # The namespace.
         self.namespace = namespace
-        # Custom configurations
+        # The custom configurations.
         self.scrape_configs = scrape_configs
 
     def validate(self):
@@ -207,19 +207,19 @@ class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesS
         scrape_timeout: str = None,
         service_discovery_configs: List[str] = None,
     ):
-        # Scraping job name
+        # The scrape job name.
         self.job_name = job_name
-        # Detailed information.
+        # The details.
         self.message = message
-        # Metrics path
+        # The scrape path.
         self.metrics_path = metrics_path
-        # Call method.
+        # The invocation method.
         self.scheme = scheme
-        # Scrape interval
+        # The scrape interval.
         self.scrape_interval = scrape_interval
-        # Scrape timeout
+        # The scrape timeout period.
         self.scrape_timeout = scrape_timeout
-        # Service discovery configuration
+        # The service discovery configurations.
         self.service_discovery_configs = service_discovery_configs
 
     def validate(self):

@@ -9,6 +9,7 @@ class ApplyForStreamAccessTokenRequest(DaraModel):
         self,
         agent_key: str = None,
     ):
+        # Workspace key. If not set, the default workspace is accessed. The key value can be obtained from the Alibaba Cloud account workspace Management page.
         self.agent_key = agent_key
 
     def validate(self):

@@ -28,91 +28,101 @@ class CreateVpnGatewayRequest(DaraModel):
         vpc_id: str = None,
         vpn_type: str = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
+        # Specifies whether to automatically pay the bill for the VPN gateway. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: automatically pays the bill for the VPN gateway.
         # 
-        # > To create a VPN gateway, we recommend that you enable automatic payment. If you disable automatic payment, you must manually pay the bill to create the VPN gateway.
+        # - **false** (default): does not automatically pay the bill for the VPN gateway.
+        # 
+        # > To successfully create a VPN gateway instance, enable automatic payment. If you disable automatic payment, you must manually pay the bill to create the VPN gateway instance.
         self.auto_pay = auto_pay
-        # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
+        # The bandwidth specification of the VPN gateway. Unit: Mbit/s.
         # 
-        # *   If you want to create a public VPN gateway, valid values are **10**, **100**, **200**, **500**, and **1000**.
-        # *   If you want to create a private VPN gateway, valid values are **200** and **1000**.
+        # <props="china">- If you want to create a public VPN gateway, valid values are **5**, **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
+        # <props="china">- If you want to create a private VPN gateway, valid values are **200** and **1000**.
+        # <props="intl">- If you want to create a public VPN gateway, valid values are **10**, **100**, **200**, **500**, and **1000**.
+        # <props="intl">- If you want to create a private VPN gateway, valid values are **200** and **1000**.
         # 
-        # >  The maximum bandwidth supported by VPN gateways in some regions is 500 Mbit/s. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
+        # >The maximum bandwidth specification supported by VPN gateways in some regions is 500 Mbit/s. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The second vSwitch with which you want to associate the VPN gateway.
+        # The second vSwitch associated with the VPN VPC-connected instance.
         # 
-        # *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required.
-        # *   You need to specify two vSwitches in different zones in the virtual private cloud (VPC) that is associated with the VPN gateway to implement disaster recovery across zones.
-        # *   For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch.
+        # - If the current region supports dual-tunnel IPsec-VPN connections, this parameter is required.
+        # - You must specify two vSwitches in different zones within the VPC associated with the VPN VPC-connected instance to implement zone-level disaster recovery for IPsec-VPN connections.
+        # - For regions that support only one zone, zone-level disaster recovery is not supported. Specify two different vSwitches in the same zone to achieve high availability for IPsec-VPN connections. You can also specify the same vSwitch.
         # 
-        # For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
+        # For information about the regions and zones that support dual-tunnel IPsec-VPN connections, see [Upgrade an IPsec-VPN connection to dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # Specifies whether to enable IPsec-VPN for the VPN gateway. Valid values:
+        # Specifies whether to enable the IPsec-VPN feature. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): enables the IPsec-VPN feature.
+        # 
+        # - **false**: disables the IPsec-VPN feature.
         self.enable_ipsec = enable_ipsec
-        # Specifies whether to enable SSL-VPN. Valid values:
+        # Specifies whether to enable the SSL-VPN feature. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: enables the SSL-VPN feature.
+        # 
+        # - **false** (default): disables the SSL-VPN feature.
         self.enable_ssl = enable_ssl
-        # The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
+        # <props="china">The billing method of the VPN gateway. Set the value to **PREPAY**, which specifies the subscription billing method.
+        # <props="intl">The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
+        # <props="partner">The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
+        # 
+        # <props="china">This parameter is required when you create a VPN gateway.
         self.instance_charge_type = instance_charge_type
         # The name of the VPN gateway. The default value is the ID of the VPN gateway.
         # 
-        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
+        # The name must be 2 to 100 characters in length. It cannot start with `http://` or `https://`. It must start with an uppercase or lowercase letter and can contain uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
         self.name = name
         # The network type of the VPN gateway. Valid values:
         # 
-        # *   **public** (default)
-        # *   **private**
+        # - **public** (default): public VPN gateway.
+        # - **private**: private VPN gateway.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Unit: month. Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # 
+        # <props="china">
+        # > This parameter is required if **InstanceChargeType** is set to **PREPAY**..
         self.period = period
-        # The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the VPN gateway belongs.
         # 
-        # *   You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
+        # - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
+        # - If you do not specify a resource group ID, the VPN gateway belongs to the default resource group after it is created.
+        # - After the VPN gateway is created, if you create SSL servers, SSL client certificates, IPsec servers, or IPsec-VPN connections (when the IPsec-VPN connection is associated with the VPN gateway) under the VPN gateway, these resources belong to the same resource group as the VPN gateway. The resource group of these resources cannot be modified.
         # 
-        # *   If you do not specify a resource group ID, the VPN gateway belongs to the default resource group.
-        # 
-        # *   After the VPN gateway is created, the following resources also belong to the resource group and you cannot change the resource group: SSL servers, SSL client certificates, IPsec servers, and IPsec-VPN connections.
-        # 
-        #     If you move the VPN gateway to a new resource group, the preceding resources are also moved to the new resource group.
+        #   If you change the resource group of the VPN gateway, the resource group of the preceding resources is also changed.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
+        # The maximum number of clients that can be simultaneously connected. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
         self.ssl_connections = ssl_connections
-        # The vSwitch with which you want to associate the VPN gateway.
+        # The vSwitch associated with the VPN gateway instance. 
         # 
-        # *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required. You must specify a vSwitch and specify **DisasterRecoveryVSwitchId**.
-        # *   If you call this operation in a region that supports the IPsec-VPN connections in single-tunnel mode and do not specify a vSwitch, the system automatically specifies a vSwitch.
+        # - In regions that support dual-tunnel IPsec-VPN connections, this parameter is required. You must specify a vSwitch and also specify the **DisasterRecoveryVSwitchId** parameter.
+        # - In regions that support only single-tunnel IPsec-VPN connections, if you do not specify a vSwitch, the system automatically selects a vSwitch from the VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) where you want to create the VPN gateway.
+        # The ID of the VPC-connected instance to which the VPN gateway belongs.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
         # The type of the VPN gateway. Valid values:
-        # 
-        # Set the value to **Normal** (default), which specifies a standard NAT gateway.
+        # - **Normal** (default): standard.
+        # <props="china">- **NationalStandard**: Chinese SM-based..
         self.vpn_type = vpn_type
 
     def validate(self):

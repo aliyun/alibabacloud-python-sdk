@@ -17,17 +17,17 @@ class FigureClusterForReq(DaraModel):
         name: str = None,
         object_id: str = None,
     ):
-        # The cover image.
+        # The cover of the cluster.
         self.cover = cover
         # The custom ID.
         self.custom_id = custom_id
-        # The custom labels. You can search for the cluster by label.
+        # A key-value map of custom labels that can be used to search for the figure cluster.
         self.custom_labels = custom_labels
-        # The version of the metadata lock. A metadata lock version can be obtained by using a get or list operation. If you include the MetaLockVersion parameter in a request to update the cluster, the server checks consistency between the MetaLockVersion parameter value sent in the request and the one on the server side and updates the cluster only when they are consistent. This parameter is used to prevent update conflicts in concurrent scenarios. The initial version is 0. The version is automatically increased by 1 after each successful update.
+        # The metadata lock version. This parameter enables optimistic locking to prevent conflicting updates during high concurrency. To ensure data consistency, pass the current MetaLockVersion value when updating a figure cluster. You can retrieve this value from a Get or List operation. The service proceeds with the update only if the provided version matches the system\\"s current version. The initial value is 0 and is incremented by 1 after each successful update.
         self.meta_lock_version = meta_lock_version
-        # The name of the cluster.
+        # The cluster name.
         self.name = name
-        # The ID of the face cluster.
+        # The object ID of the cluster.
         self.object_id = object_id
 
     def validate(self):
@@ -87,7 +87,7 @@ class FigureClusterForReqCover(DaraModel):
         self,
         figures: List[main_models.FigureClusterForReqCoverFigures] = None,
     ):
-        # The persons.
+        # The figure list.
         self.figures = figures
 
     def validate(self):
@@ -123,7 +123,7 @@ class FigureClusterForReqCoverFigures(DaraModel):
         self,
         figure_id: str = None,
     ):
-        # The person ID.
+        # The figure ID.
         self.figure_id = figure_id
 
     def validate(self):

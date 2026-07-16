@@ -29,103 +29,133 @@ class CreateAcceleratorRequest(DaraModel):
         spec: str = None,
         tag: List[main_models.CreateAcceleratorRequestTag] = None,
     ):
-        # Specifies whether to enable automatic payment. Default value: false. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false:** disables automatic payment. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
-        # *   **true:** enables automatic payment. Payments are automatically completed.
+        # - **false** (default): Disables automatic payment. After an order is generated, go to the Order Hub to complete the payment.
+        # 
+        # - **true**: Enables automatic payment. The system automatically completes the payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the GA instance. Default value: false. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # *   **true:** enables auto-renewal.
-        # *   **false:** disables auto-renewal.
+        # - **true**: Yes.
+        # 
+        # - **false** (default): No.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. Unit: months.
+        # The auto-renewal duration. Unit: month.
         # 
         # Valid values: **1** to **12**. Default value: **1**.
         # 
-        # >  This parameter takes effect only when **AutoRenew** is set to **true**.
+        # > This parameter is valid only when **AutoRenew** is set to **true**.
         self.auto_renew_duration = auto_renew_duration
-        # Specifies whether to automatically use coupons when making payments. Default value: false. Valid values:
+        # Specifies whether to automatically apply coupons to your bills. Valid values:
         # 
-        # *   **true:** automatically pays bill by using coupons.
-        # *   **false:** does not automatically pay bills by using coupons.
+        # - **true**: Yes.
         # 
-        # >  This parameter takes effect only when **AutoPay** is set to **true**.
+        # - **false** (default): No.
+        # 
+        # > This parameter is valid only when **AutoPay** is set to **true**.
         self.auto_use_coupon = auto_use_coupon
+        # The bandwidth of the standard GA instance. Unit: **Mbps**.
+        # 
+        # Valid values: 200 to 5000.
+        # 
+        # > This parameter is required and valid only when the access mode of the acceleration area is Anycast.
         self.bandwidth = bandwidth
         # The bandwidth billing method.
         # 
-        # *   **BandwidthPackage:** billed based on bandwidth plans.
-        # *   **CDT:** billed based on data transfer.
-        # *   **CDT95:** billed based on the 95th percentile bandwidth. The billing is managed by Cloud Data Transfer (CDT). This bandwidth billing method is not available by default. Contact your Alibaba Cloud account manager for more information.
+        # - **BandwidthPackage**: Billed by bandwidth plan.
+        # 
+        # - **CDT**: Billed by data transfer.
         self.bandwidth_billing_type = bandwidth_billing_type
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # Generate a parameter value from your client to make sure that the value is unique among different requests. The ClientToken parameter can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true:** performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: Performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The subscription duration of the GA instance.
+        # The subscription duration.
         # 
-        # *   If the **PricingCycle** parameter is set to **Month**, the valid values for the **Duration** parameter are **1** to **9**.
-        # *   If the **PricingCycle** parameter is set to **Year**, the valid values for the **Duration** parameter are **1** to **3**.
+        # - If **PricingCycle** is set to **Month**, the valid values for **Duration** are **1** to **9**.
         # 
-        # >  If the **InstanceChargeType** parameter is set to **PREPAY**, you must configure this parameter.
+        # - If **PricingCycle** is set to **Year**, the valid values for **Duration** are **1** to **3**.
+        # 
+        # > This parameter is required if **InstanceChargeType** (the billing method of the GA instance) is set to **PREPAY** (subscription).
         self.duration = duration
         # The billing method of the GA instance.
         # 
-        # *   PREPAY (default): subscription
-        # *   POSTPAY: pay-as-you-go
+        # - PREPAY (default): subscription.
+        # 
+        # - POSTPAY: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
         # The configurations of the acceleration area.
         self.ip_set_config = ip_set_config
         # The name of the GA instance.
         # 
-        # The name must be 2 to 128 characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length, start with a letter, and can contain digits, underscores (_), and hyphens (-).
         self.name = name
-        # The billing cycle of the GA instance. Valid values:
+        # The billing cycle. Valid values:
         # 
-        # *   **Month:** billed on a monthly basis.
-        # *   **Year:** billed on an annual basis.
+        # - **Month**: Billed by month.
         # 
-        # >  If the **InstanceChargeType** parameter is set to **PREPAY**, you must configure this parameter.
+        # - **Year**: Billed by year.
+        # 
+        # > This parameter is required if **InstanceChargeType** (the billing method of the GA instance) is set to **PREPAY** (subscription).
         self.pricing_cycle = pricing_cycle
         # The coupon code.
+        # 
+        # > This parameter is available only on the Alibaba Cloud International Website (www\\.alibabacloud.com).
         self.promotion_option_no = promotion_option_no
-        # The ID of the region in which to create the GA instance. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the standard GA instance belongs.
         self.resource_group_id = resource_group_id
-        # The type of the GA instance. Valid values:
+        # The instance type of the GA instance. Valid values:
         # 
-        # *   **1**: Small Ⅰ.
-        # *   **2**: Small Ⅱ.
-        # *   **3**: Small Ⅲ.
-        # *   **5**: Medium Ⅰ.
-        # *   **8**: Medium Ⅱ.
-        # *   **10**: Medium Ⅲ.
-        # *   **20**: Large Ⅰ.
-        # *   **30**: Large Ⅱ.
-        # *   **40**: Large Ⅲ.
-        # *   **50**: Large IV.
-        # *   **60**: Large V.
-        # *   **70**: Large VI.
-        # *   **80**: Large VII.
-        # *   **90**: Large VIII.
-        # *   **100**: Super Large Ⅰ.
-        # *   **200**: Super Large Ⅱ.
+        # - **1**: Small I
         # 
-        # > *   GA instances Large III and above are not available by default. To use these instances, contact your Alibaba Cloud account manager.
-        # >*   If the **InstanceChargeType** parameter is set to **PREPAY**, you must configure this parameter.
+        # - **2**: Small II
         # 
-        # Different specifications provide different capabilities. For more information, see [Instance type](https://help.aliyun.com/document_detail/153127.html).
+        # - **3**: Small III
+        # 
+        # - **5**: Medium I
+        # 
+        # - **8**: Medium II
+        # 
+        # - **10**: Medium III
+        # 
+        # - **20**: Large I
+        # 
+        # - **30**: Large II
+        # 
+        # - **40**: Large III
+        # 
+        # - **50**: Large IV
+        # 
+        # - **60**: Large V
+        # 
+        # - **70**: Large VI
+        # 
+        # - **80**: Large VII
+        # 
+        # - **90**: Large VIII
+        # 
+        # - **100**: Super Large I
+        # 
+        # - **200**: Super Large II
+        # 
+        # > * Currently, the Large III and higher instance types are available only to users on the whitelist. To use these instance types, contact your account manager.
+        # >
+        # > * This parameter is required if **InstanceChargeType** (the billing method of the GA instance) is set to **PREPAY** (subscription).
+        # 
+        # The definitions of different instance types are different. For more information, see [Instance types](https://help.aliyun.com/document_detail/153127.html).
         self.spec = spec
         # The tags of the GA instance.
         self.tag = tag
@@ -271,13 +301,13 @@ class CreateAcceleratorRequestTag(DaraModel):
     ):
         # The tag key of the GA instance. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag keys.
         self.key = key
-        # The tag value of the GA instance. The tag value cannot be an empty string.
+        # The tag value of the GA instance. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
         # You can specify up to 20 tag values.
         self.value = value
@@ -315,8 +345,9 @@ class CreateAcceleratorRequestIpSetConfig(DaraModel):
     ):
         # The access mode of the acceleration area. Valid values:
         # 
-        # *   **UserDefine:** custom nearby access mode. You can select acceleration areas and regions based on your business requirements. GA allocates a separate EIP to each acceleration region.
-        # *   **Anycast:** automatic nearby access mode. You do not need to specify an acceleration area. GA allocates an Anycast EIP to multiple regions across the globe. Users can connect to the nearest access point of the Alibaba Cloud global transmission network by sending requests to the Anycast EIP.
+        # - **UserDefine**: Custom nearby access mode. Select acceleration areas and regions as needed. Global Accelerator provides a separate elastic IP address (EIP) for each acceleration region.
+        # 
+        # - **Anycast**: Automatic nearby access mode. You do not need to configure an acceleration area. Global Accelerator provides an Anycast EIP for multiple regions. Users connect to the nearest access point of the Alibaba Cloud network using the Anycast EIP.
         self.access_mode = access_mode
 
     def validate(self):

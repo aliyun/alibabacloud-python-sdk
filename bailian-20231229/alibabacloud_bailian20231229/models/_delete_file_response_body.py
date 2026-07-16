@@ -15,12 +15,21 @@ class DeleteFileResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error status code.
         self.code = code
+        # The business data field of the API response.
         self.data = data
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The status code returned by the API.
         self.status = status
+        # Indicates whether the API call succeeded. Valid values:
+        # 
+        # - true: Succeeded.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -80,6 +89,7 @@ class DeleteFileResponseBodyData(DaraModel):
         self,
         file_id: str = None,
     ):
+        # The file ID.
         self.file_id = file_id
 
     def validate(self):

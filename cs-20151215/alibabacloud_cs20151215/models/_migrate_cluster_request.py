@@ -10,9 +10,9 @@ class MigrateClusterRequest(DaraModel):
         oss_bucket_endpoint: str = None,
         oss_bucket_name: str = None,
     ):
-        # The endpoint of the OSS bucket.
+        # The bucket endpoint.
         self.oss_bucket_endpoint = oss_bucket_endpoint
-        # The name of the Object Storage Service (OSS) bucket.
+        # The bucket name.
         self.oss_bucket_name = oss_bucket_name
 
     def validate(self):

@@ -11,7 +11,7 @@ class GetImageModerationResultRequest(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The name of the project.
+        # The project name.
         # 
         # This parameter is required.
         self.project_name = project_name
@@ -19,7 +19,7 @@ class GetImageModerationResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The type of the task.
+        # The task type.
         # 
         # This parameter is required.
         self.task_type = task_type

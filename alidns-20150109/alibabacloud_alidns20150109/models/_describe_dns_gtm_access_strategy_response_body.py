@@ -37,88 +37,102 @@ class DescribeDnsGtmAccessStrategyResponseBody(DaraModel):
         strategy_mode: str = None,
         strategy_name: str = None,
     ):
-        # The primary/secondary switchover policy for address pool groups. Valid values:
+        # The switchover policy for the address pool group. Valid values:
         # 
-        # *   AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
-        # *   DEFAULT: uses the primary address pool group.
-        # *   FAILOVER: uses the secondary address pool group.
+        # - AUTO: automatic switchover.
+        # 
+        # - DEFAULT: the primary address pool group.
+        # 
+        # - FAILOVER: the secondary address pool group.
         self.access_mode = access_mode
         # The time when the access policy was created.
         self.create_time = create_time
-        # The timestamp that indicates when the access policy was created.
+        # The time when the access policy was created. This value is a UNIX timestamp.
         self.create_timestamp = create_timestamp
         # The status of the primary address pool group. Valid values:
         # 
-        # *   AVAILABLE: available
-        # *   NOT_AVAILABLE: unavailable
+        # - AVAILABLE
+        # 
+        # - NOT_AVAILABLE
         self.default_addr_pool_group_status = default_addr_pool_group_status
         # The type of the primary address pool. Valid values:
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         self.default_addr_pool_type = default_addr_pool_type
         self.default_addr_pools = default_addr_pools
         # The number of available addresses in the primary address pool.
         self.default_available_addr_num = default_available_addr_num
-        # Indicates whether scheduling optimization for latency resolution was enabled for the primary address pool group. Valid values:
+        # Indicates whether latency-based scheduling is enabled for the primary address pool group. Valid values:
         # 
-        # *   OPEN: enabled
-        # *   CLOSE: disabled
+        # - OPEN: enabled.
+        # 
+        # - CLOSE: disabled.
         self.default_latency_optimization = default_latency_optimization
-        # The load balancing policy of the primary address pool group. Valid values:
+        # The load balancing policy for the primary address pool group. Valid values:
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: returns all addresses.
+        # 
+        # - RATIO: returns addresses by weight.
         self.default_lba_strategy = default_lba_strategy
-        # The maximum number of addresses returned from the primary address pool group.
+        # The maximum number of addresses that can be returned from the primary address pool group.
         self.default_max_return_addr_num = default_max_return_addr_num
         # The minimum number of available addresses in the primary address pool group.
         self.default_min_available_addr_num = default_min_available_addr_num
-        # The type of the active address pool group. Valid values:
+        # The type of the address pool group that is currently in effect. Valid values:
         # 
-        # *   DEFAULT: the primary address pool group
-        # *   FAILOVER: the secondary address pool group
+        # - DEFAULT: the primary address pool group.
+        # 
+        # - FAILOVER: the secondary address pool group.
         self.effective_addr_pool_group_type = effective_addr_pool_group_type
         # The status of the secondary address pool group. Valid values:
         # 
-        # *   AVAILABLE: available
-        # *   NOT_AVAILABLE: unavailable
+        # - AVAILABLE
+        # 
+        # - NOT_AVAILABLE
         self.failover_addr_pool_group_status = failover_addr_pool_group_status
         # The type of the secondary address pool. Valid values:
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         self.failover_addr_pool_type = failover_addr_pool_type
         self.failover_addr_pools = failover_addr_pools
         # The number of available addresses in the secondary address pool.
         self.failover_available_addr_num = failover_available_addr_num
-        # Indicates whether scheduling optimization for latency resolution was enabled for the secondary address pool group. Valid values:
+        # Indicates whether latency-based scheduling is enabled for the secondary address pool group. Valid values:
         # 
-        # *   OPEN: enabled
-        # *   CLOSE: disabled
+        # - OPEN: enabled.
+        # 
+        # - CLOSE: disabled.
         self.failover_latency_optimization = failover_latency_optimization
-        # The load balancing policy of the secondary address pool group. Valid values:
+        # The load balancing policy for the secondary address pool group. Valid values:
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: returns all addresses.
+        # 
+        # - RATIO: returns addresses by weight.
         self.failover_lba_strategy = failover_lba_strategy
-        # The maximum number of addresses returned from the secondary address pool group.
+        # The maximum number of addresses that can be returned from the secondary address pool group.
         self.failover_max_return_addr_num = failover_max_return_addr_num
         # The minimum number of available addresses in the secondary address pool group.
         self.failover_min_available_addr_num = failover_min_available_addr_num
-        # The ID of the associated instance.
+        # The ID of the associated Global Traffic Manager (GTM) instance.
         self.instance_id = instance_id
         self.lines = lines
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
         # The ID of the access policy.
         self.strategy_id = strategy_id
         # The type of the access policy. Valid values:
         # 
-        # *   GEO: geographical location-based
-        # *   LATENCY: latency-based
+        # - GEO: a geolocation-based access policy.
+        # 
+        # - LATENCY: a latency-based access policy.
         self.strategy_mode = strategy_mode
         # The name of the access policy.
         self.strategy_name = strategy_name

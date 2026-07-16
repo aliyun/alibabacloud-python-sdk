@@ -15,13 +15,22 @@ class DeleteEnhancedVpnGatewayRequest(DaraModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
+        # The client token used to ensure the idempotence of the request.<br> You can generate this token by using your client, but you must ensure that it is unique for each request. The token can contain only ASCII characters and must not exceed 64 characters in length.<br>
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the enhanced VPN gateway is deployed.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the enhanced VPN gateway.
+        # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id
 

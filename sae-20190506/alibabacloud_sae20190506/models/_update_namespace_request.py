@@ -15,8 +15,9 @@ class UpdateNamespaceRequest(DaraModel):
     ):
         # Indicates whether to enable SAE built-in registry:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         # 
         # If you set this parameter to true, a shared registry is created for the namespace. The registry cannot be disabled after it is created.
         self.enable_micro_registration = enable_micro_registration

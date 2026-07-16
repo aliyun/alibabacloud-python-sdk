@@ -16,19 +16,25 @@ class ListAuthorizationResourcesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # 过滤条件
+        # The filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of entries per page.
+        # 
+        # - Default value: 20.
+        # 
+        # - Maximum value: 100.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token that identifies the start position of the next page.
+        # 
+        # - If you do not specify this parameter, the query starts from the first page.
         self.next_token = next_token
 
     def validate(self):
@@ -89,9 +95,13 @@ class ListAuthorizationResourcesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # 过滤条件名称。
+        # The name of the filter field. Valid values:
+        # 
+        # - AuthorizationResourceEntityType: the resource entity type associated with the authorization resource.
+        # 
+        # - AuthorizationResourceEntityId: the resource entity ID associated with the authorization resource.
         self.name = name
-        # 过滤条件值。
+        # The values of the filter field.
         self.value = value
 
     def validate(self):

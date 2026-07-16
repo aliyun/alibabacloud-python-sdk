@@ -14,15 +14,29 @@ class ModifyPrivateDnsEndpointRequest(DaraModel):
         region_no: str = None,
         standby_dns: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
+        # The name of the private instance.
+        # 
         # This parameter is required.
         self.access_instance_name = access_instance_name
+        # The primary DNS server.
         self.primary_dns = primary_dns
+        # The private DNS type. Valid values:
+        # 
+        # - **PrivateZone**
+        # 
+        # - **Custom**
+        # 
         # This parameter is required.
         self.private_dns_type = private_dns_type
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The secondary DNS server.
         self.standby_dns = standby_dns
 
     def validate(self):

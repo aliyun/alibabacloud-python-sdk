@@ -71,11 +71,15 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRun(DaraModel):
         self.scan = scan
         # The current running status.
         # 
-        # *   Pass
-        # *   Running
-        # *   Error
-        # *   Warn
-        # *   Fail
+        # - Pass
+        # 
+        # - Running
+        # 
+        # - Error
+        # 
+        # - Warn
+        # 
+        # - Fail
         self.status = status
 
     def validate(self):
@@ -344,8 +348,9 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger(DaraModel):
         self.task_ids = task_ids
         # The trigger method of the data quality monitor.
         # 
-        # *   ByManual
-        # *   BySchedule
+        # - ByManual
+        # 
+        # - BySchedule
         self.type = type
 
     def validate(self):
@@ -465,11 +470,11 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks(DaraModel):
     ):
         # The hook trigger condition. Currently, only one type of expression syntax is supported:
         # 
-        # *   Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
+        # - Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
         self.condition = condition
         # The type of the hook.
         # 
-        # *   BlockTaskInstance
+        # - BlockTaskInstance
         self.type = type
 
     def validate(self):
@@ -507,8 +512,9 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource(Dar
     ):
         # The workspace environment to which the compute engine belongs.
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The name of the computing resource, which corresponds to the Name attribute in the ComputeResource data structure of the computing resource API.
         self.name = name
@@ -558,9 +564,11 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRunt
     ):
         # The type of the compute engine. Only EMR compute engines support these settings.
         # 
-        # *   Hive
-        # *   Spark
-        # *   Kyuubi
+        # - Hive
+        # 
+        # - Spark
+        # 
+        # - Kyuubi
         self.engine = engine
         # Additional parameters for the Hive engine. Currently, only mapreduce.job.queuename is supported to specify the queue.
         self.hive_conf = hive_conf
@@ -618,11 +626,15 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunResults(DaraModel):
         self.sample = sample
         # The validation result status.
         # 
-        # *   Pass
-        # *   Running
-        # *   Error
-        # *   Warn
-        # *   Fail
+        # - Pass
+        # 
+        # - Running
+        # 
+        # - Error
+        # 
+        # - Warn
+        # 
+        # - Fail
         self.status = status
 
     def validate(self):
@@ -690,10 +702,13 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails(DaraMode
         self.reference_value = reference_value
         # The final comparison result status.
         # 
-        # *   Pass
-        # *   Error
-        # *   Warn
-        # *   Fail
+        # - Pass
+        # 
+        # - Error
+        # 
+        # - Warn
+        # 
+        # - Fail
         self.status = status
 
     def validate(self):

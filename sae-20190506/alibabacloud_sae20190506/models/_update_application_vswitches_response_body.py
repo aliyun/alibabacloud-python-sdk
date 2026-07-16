@@ -16,29 +16,35 @@ class UpdateApplicationVswitchesResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: The request is invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the request was successful, this parameter is not returned.****
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error code** section of this topic.
+        # - This parameter is not returned for successful requests.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned. Valid values:
+        # The returned message. Valid values:
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of applications was obtained. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The applications were obtained.
-        # *   **false**: The applications failed to be queried.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID. You can use this ID to trace the request.
         self.trace_id = trace_id
 
     def validate(self):

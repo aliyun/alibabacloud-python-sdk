@@ -10,7 +10,9 @@ class DeleteInstanceRequest(DaraModel):
         agent_key: str = None,
         instance_id: str = None,
     ):
+        # The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The unique ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):

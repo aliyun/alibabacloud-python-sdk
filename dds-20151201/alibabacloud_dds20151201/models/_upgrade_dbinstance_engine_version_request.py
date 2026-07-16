@@ -21,7 +21,7 @@ class UpgradeDBInstanceEngineVersionRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The database version to which you want to upgrade. Valid values: **3.4**, **4.0**, and **4.2**.
         # 
-        # >  This database version must be later than the current database version of the instance.
+        # > This database version must be later than the current database version of the instance.
         # 
         # This parameter is required.
         self.engine_version = engine_version
@@ -31,8 +31,9 @@ class UpgradeDBInstanceEngineVersionRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The time when to perform the upgrade. Valid values:
         # 
-        # *   **0**: immediately performs the upgrade.
-        # *   **1**: performs the upgrade during the maintenance window.
+        # - **0**: immediately performs the upgrade.
+        # 
+        # - **1**: performs the upgrade during the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):

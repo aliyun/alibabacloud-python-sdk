@@ -11,15 +11,15 @@ class DescribeQueryVariableDetailRequest(DaraModel):
         id: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Variable ID
+        # The variable ID.
         # 
         # This parameter is required.
         self.id = id
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

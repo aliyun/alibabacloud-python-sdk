@@ -10,11 +10,11 @@ class DescribeAnalysisExportTaskDownloadUrlRequest(DaraModel):
         lang: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # Sets the language type for request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Region code
+        # Region ID.
         # 
         # This parameter is required.
         self.reg_id = reg_id

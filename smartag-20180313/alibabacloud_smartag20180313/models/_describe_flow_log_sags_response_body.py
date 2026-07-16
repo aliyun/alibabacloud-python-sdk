@@ -20,7 +20,7 @@ class DescribeFlowLogSagsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries on the current page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sags = sags
         # The total number of entries.

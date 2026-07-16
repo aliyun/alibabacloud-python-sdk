@@ -77,6 +77,7 @@ class ListDigitalEmployeesResponseBody(DaraModel):
 class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
     def __init__(
         self,
+        attributes: Dict[str, str] = None,
         create_time: str = None,
         default_rule: str = None,
         description: str = None,
@@ -89,6 +90,7 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
+        self.attributes = attributes
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         self.default_rule = default_rule
@@ -116,6 +118,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attributes is not None:
+            result['attributes'] = self.attributes
+
         if self.create_time is not None:
             result['createTime'] = self.create_time
 
@@ -155,6 +160,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attributes') is not None:
+            self.attributes = m.get('attributes')
+
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
 

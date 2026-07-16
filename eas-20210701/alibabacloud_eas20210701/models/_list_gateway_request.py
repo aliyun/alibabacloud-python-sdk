@@ -22,22 +22,29 @@ class ListGatewayRequest(DaraModel):
         sort: str = None,
         status: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
-        # The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
+        # The ID of the private gateway. You can obtain the ID from the private_gateway_id field in the response of the ListResources operation.
         self.gateway_id = gateway_id
-        # The private gateway alias.
+        # The alias of the private gateway.
         self.gateway_name = gateway_name
+        # The type of the gateway.
         self.gateway_type = gateway_type
+        # Specifies whether to enable access over the public network.
         self.internet_enabled = internet_enabled
+        # Filter by tag.
         self.label = label
+        # The sort order.
         self.order = order
-        # The page number. Default value: 1.
+        # The page number of the gateway list to return. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of gateways to return on each page. The default value is 100.
         self.page_size = page_size
-        # The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        # The ID of the resource group. You can obtain the ID from the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
+        # The field to sort by.
         self.sort = sort
+        # The status of the gateway.
         self.status = status
 
     def validate(self):

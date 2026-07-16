@@ -10,7 +10,9 @@ class GetAsyncSqlRequest(DaraModel):
         line: int = None,
         offset: int = None,
     ):
+        # The number of results to return per page. The maximum value is 1000.
         self.line = line
+        # The offset for paginated results.
         self.offset = offset
 
     def validate(self):

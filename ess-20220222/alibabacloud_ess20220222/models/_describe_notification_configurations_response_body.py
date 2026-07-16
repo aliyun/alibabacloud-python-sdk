@@ -61,6 +61,7 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
+        # The codec of the notification message content.
         self.message_encoding = message_encoding
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
         # 

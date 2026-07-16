@@ -15,12 +15,19 @@ class PrometheusManagedInstance(DaraModel):
         status: str = None,
         workspace: str = None,
     ):
+        # The time when the instance was created.
         self.create_time = create_time
+        # The type of the instance.
         self.instance_type = instance_type
+        # The ID of the Prometheus instance that is associated with Real User Monitoring (RUM).
         self.prometheus_instance_id = prometheus_instance_id
+        # The name of the Prometheus instance that is associated with RUM.
         self.prometheus_instance_name = prometheus_instance_name
+        # The ID of the Alibaba Cloud region.
         self.region_id = region_id
+        # The status of the instance.
         self.status = status
+        # The Cloud Monitor 2.0 workspace.
         self.workspace = workspace
 
     def validate(self):

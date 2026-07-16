@@ -13,8 +13,12 @@ class CreateComputeSourceRequest(DaraModel):
         create_command: main_models.CreateComputeSourceRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -54,11 +58,18 @@ class CreateComputeSourceRequestCreateCommand(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The connection configuration items.
+        # 
         # This parameter is required.
         self.config_list = config_list
+        # The description.
         self.description = description
+        # The name of the compute source.
+        # 
         # This parameter is required.
         self.name = name
+        # The type of the compute source.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -114,8 +125,12 @@ class CreateComputeSourceRequestCreateCommandConfigList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
+        # 
         # This parameter is required.
         self.key = key
+        # The value of the configuration item.
+        # 
         # This parameter is required.
         self.value = value
 

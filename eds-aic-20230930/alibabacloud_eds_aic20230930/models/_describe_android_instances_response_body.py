@@ -15,13 +15,13 @@ class DescribeAndroidInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The cloud phone instances.
+        # The instance information.
         self.instance_model = instance_model
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The pagination token that indicates the position to which the current call has read. An empty value indicates that all data has been read.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -87,6 +87,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         bind_user_id: str = None,
         biz_image_type: str = None,
         biz_tags: List[main_models.DescribeAndroidInstancesResponseBodyInstanceModelBizTags] = None,
+        channel: str = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[main_models.DescribeAndroidInstancesResponseBodyInstanceModelDisks] = None,
@@ -106,6 +107,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         network_interface_ipv_6address: str = None,
         network_type: str = None,
         office_site_id: str = None,
+        package_id: str = None,
         persistent_app_instance_id: str = None,
         phone_data_info: main_models.DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo = None,
         policy_group_id: str = None,
@@ -125,93 +127,111 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the instance group.
+        # The ID of the instance group to which the instance belongs.
         self.android_instance_group_id = android_instance_group_id
-        # The name of the instance group.
+        # The instance group name.
         self.android_instance_group_name = android_instance_group_name
-        # The ID of the instance.
+        # The instance ID.
         self.android_instance_id = android_instance_id
-        # The name of the instance.
+        # The instance name.
         self.android_instance_name = android_instance_name
-        # The state of the instance.
+        # The instance status.
         self.android_instance_status = android_instance_status
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the physical instance.
+        # The physical instance ID.
         self.app_instance_id = app_instance_id
+        # The application management policy information. This corresponds to the blacklists and whitelists management of application management policies in the console.
         self.app_manage_policy = app_manage_policy
-        # The ID of the user to whom the instance is assigned.
+        # The assigned user.
         self.authorized_user_id = authorized_user_id
+        # The bandwidth package ID.
         self.bandwidth_package_id = bandwidth_package_id
+        # The bandwidth type.
         self.bandwidth_package_type = bandwidth_package_type
-        # The ID of the bound user.
+        # The bound user.
         self.bind_user_id = bind_user_id
         self.biz_image_type = biz_image_type
+        # The tag array.
         self.biz_tags = biz_tags
-        # The billing method of the instance.
+        self.channel = channel
+        # The billing type of the instance.
         self.charge_type = charge_type
-        # The number of vCPUs.
+        # The number of CPU cores.
         self.cpu = cpu
-        # The disks.
+        # The disk information.
         self.disks = disks
+        # The display settings.
         self.display_config = display_config
+        # The downstream bandwidth throttling. Unit: Mbit/s.
         self.down_bandwidth_limit = down_bandwidth_limit
-        # The cause of the instance data backup failure or restoration failure.
+        # The error reason for instance data backup failure or recovery failure.
         self.error_code = error_code
-        # The time when the instance was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the subscription instance group expires.
+        # The expiration time of the subscription instance group.
         self.gmt_expired = gmt_expired
-        # The time when the instance was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The image ID.
         self.image_id = image_id
-        # The version of the image.
+        # The image version.
         self.image_version = image_version
-        # The type of the instance.
+        # The instance type.
         self.instance_type = instance_type
         self.internet_status = internet_status
-        # The ID of the key pair.
+        # The key pair ID.
         self.key_pair_id = key_pair_id
         # The memory size.
         self.memory = memory
-        # The IP address of the ENI.
+        # The IP address of the network interface.
         self.network_interface_ip = network_interface_ip
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.network_interface_ipv_6address = network_interface_ipv_6address
+        # The network type of the instance.
         self.network_type = network_type
-        # The office network ID.
+        # The network ID. This corresponds to the network selected during creation in the console (basic shared network or advanced shared network).
         self.office_site_id = office_site_id
-        # The ID of the persistent session.
+        self.package_id = package_id
+        # The persistent session ID.
         self.persistent_app_instance_id = persistent_app_instance_id
+        # <props="china">The independent device storage information of the cloud phone matrix edition instance.
+        # <props="intl">This parameter is not publicly available..
         self.phone_data_info = phone_data_info
-        # The ID of the policy.
+        # The policy group ID.
         self.policy_group_id = policy_group_id
         # The public IP address.
         self.public_ip_address = public_ip_address
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.public_ipv_6address = public_ipv_6address
+        # The public network rate limiting rule ID (applies only to premium bandwidth).
         self.qos_rule_id = qos_rule_id
-        # The progress of instance data backup or restoration.
+        # The progress of instance data backup or recovery.
         self.rate = rate
-        # The region ID of the instance.
+        # The region ID.
         self.region_id = region_id
         # The rendering type.
         self.rendering_type = rendering_type
+        # <props="china">The matrix status.
+        # <props="intl">This parameter is not publicly available..
         self.server_status = server_status
+        # <props="china">The cloud phone matrix specification.
+        # <props="intl">This parameter is not publicly available..
         self.server_type = server_type
-        # The session status.
-        # 
-        # Valid values:
-        # 
-        # *   disConnect: The session is disconnected.
-        # *   connect: The session is connected.
+        # The session connection status.
         self.session_status = session_status
+        # <props="china">The streaming mode of instances in the cloud phone matrix.
+        # <props="intl">This parameter is not publicly available..
         self.stream_mode = stream_mode
+        # The Android system version.
         self.system_version = system_version
-        # The tags.
+        # The list of tags.
         self.tags = tags
+        # The upstream bandwidth throttling. Unit: Mbit/s.
         self.up_bandwidth_limit = up_bandwidth_limit
+        # The vSwitch ID in the VPC.
         self.v_switch_id = v_switch_id
+        # The zone ID to which the instance belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -283,6 +303,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
             for k1 in self.biz_tags:
                 result['BizTags'].append(k1.to_map() if k1 else None)
 
+        if self.channel is not None:
+            result['Channel'] = self.channel
+
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
@@ -341,6 +364,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
 
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
+
+        if self.package_id is not None:
+            result['PackageId'] = self.package_id
 
         if self.persistent_app_instance_id is not None:
             result['PersistentAppInstanceId'] = self.persistent_app_instance_id
@@ -448,6 +474,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
                 temp_model = main_models.DescribeAndroidInstancesResponseBodyInstanceModelBizTags()
                 self.biz_tags.append(temp_model.from_map(k1))
 
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
@@ -508,6 +537,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(DaraModel):
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
+
+        if m.get('PackageId') is not None:
+            self.package_id = m.get('PackageId')
 
         if m.get('PersistentAppInstanceId') is not None:
             self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
@@ -575,9 +607,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -612,7 +644,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo(DaraModel):
         phone_data_id: str = None,
         phone_data_volume: int = None,
     ):
+        # The independent device storage ID.
         self.phone_data_id = phone_data_id
+        # The capacity of the independent device storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
 
     def validate(self):
@@ -650,10 +684,15 @@ class DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig(DaraModel):
         resolution_height: int = None,
         resolution_width: int = None,
     ):
+        # DPI。
         self.dpi = dpi
+        # The frame rate.
         self.fps = fps
+        # Indicates whether the resolution is locked.
         self.lock_resolution = lock_resolution
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
 
     def validate(self):
@@ -708,7 +747,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModelDisks(DaraModel):
     ):
         # The disk size. Unit: GB.
         self.disk_size = disk_size
-        # The type of the disk.
+        # The disk type.
         self.disk_type = disk_type
 
     def validate(self):
@@ -743,7 +782,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelBizTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -778,7 +819,9 @@ class DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy(DaraModel
         app_manage_policy_id: str = None,
         app_manage_policy_name: str = None,
     ):
+        # The application management policy ID.
         self.app_manage_policy_id = app_manage_policy_id
+        # The name of the application management policy.
         self.app_manage_policy_name = app_manage_policy_name
 
     def validate(self):

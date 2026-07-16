@@ -16,10 +16,14 @@ class RefundRenderResult(DaraModel):
         refund_reason_list: List[main_models.RefundReason] = None,
         request_id: str = None,
     ):
+        # The return methods supported for the order.
         self.biz_claim_type = biz_claim_type
         self.max_refund_fee_data = max_refund_fee_data
+        # The ID of the sub-distribution order.
         self.order_line_id = order_line_id
+        # A collection of refund reasons.
         self.refund_reason_list = refund_reason_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

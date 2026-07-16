@@ -21,16 +21,48 @@ class CreateDatabaseZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the account that is authorized to access the database.
         self.account_name = account_name
+        # The permissions of the account. Valid values:
+        # 
+        # - ReadWrite: read and write permissions.
+        # 
+        # - ReadOnly: read-only permissions.
+        # 
+        # - DMLOnly: DML permissions only.
+        # 
+        # - DDLOnly: DDL permissions only.
+        # 
+        # - ReadIndex: read-only and index permissions.
+        # 
+        # If you do not specify this parameter, the default value is ReadWrite.
         self.account_privilege = account_privilege
+        # The character set.
+        # 
         # This parameter is required.
         self.character_set_name = character_set_name
+        # A client token to ensure request idempotence. The client generates this token. The token must be unique across requests. It is case-sensitive and can be up to 64 ASCII characters long.
         self.client_token = client_token
+        # The locale setting. This specifies the collation for the new database.
         self.collate = collate
+        # The locale setting. This specifies the character classification for the database.
         self.ctype = ctype
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The description of the database. The description must meet the following requirements:
+        # 
+        # - It cannot start with `http://` or `https://`.
+        # 
+        # - It must be 2 to 256 characters in length.
         self.dbdescription = dbdescription
+        # The name of the database. The name must meet the following requirements:
+        # 
+        # - It must consist of lowercase letters, digits, hyphens (-), and underscores (_).
+        # 
+        # - It must start with a letter and end with a letter or a digit. The name can be up to 64 characters long.
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account

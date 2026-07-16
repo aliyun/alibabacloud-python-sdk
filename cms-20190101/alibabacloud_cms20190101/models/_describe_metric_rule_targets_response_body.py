@@ -16,18 +16,19 @@ class DescribeMetricRuleTargetsResponseBody(DaraModel):
         success: bool = None,
         targets: main_models.DescribeMetricRuleTargetsResponseBodyTargets = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
         self.targets = targets
 

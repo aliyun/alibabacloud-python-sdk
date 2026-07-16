@@ -30,57 +30,99 @@ class CreateOriginRuleRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # Rewrite the DNS resolution record for the origin request.
+        # Overrides the DNS Record for Origin requests.
         self.dns_record = dns_record
+        # Specifies whether to follow 302 redirects from the Origin. Valid values:
+        # 
+        # - `on`: Enables following redirects.
+        # 
+        # - `off`: Disables following redirects.
         self.follow_302enable = follow_302enable
+        # The maximum number of 302 redirects to follow. Valid range: 1 to 5.
         self.follow_302max_tries = follow_302max_tries
+        # Specifies whether to retain the original request parameters when following a 302 redirect. Valid values:
+        # 
+        # - `on`: Retains the request parameters.
+        # 
+        # - `off`: Does not retain the request parameters.
         self.follow_302retain_args = follow_302retain_args
+        # Specifies whether to retain the original request header when following a 302 redirect. Valid values:
+        # 
+        # - `on`: Retains the request header.
+        # 
+        # - `off`: Does not retain the request header.
         self.follow_302retain_header = follow_302retain_header
+        # The Origin `Host` header to use after a 302 redirect.
         self.follow_302target_host = follow_302target_host
-        # The HOST carried in the origin request.
+        # The `Host` header to use in Origin requests.
         self.origin_host = origin_host
-        # Port of the origin server when using the HTTP protocol for origin requests.
+        # The Origin Port to use for HTTP Origin requests.
         self.origin_http_port = origin_http_port
-        # Port of the origin server when using the HTTPS protocol for origin requests.
+        # The Origin Port to use for HTTPS Origin requests.
         self.origin_https_port = origin_https_port
-        # mTLS switch. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable mutual Transport Layer Security (mTLS) for Origin connections. Valid values:
+        # 
+        # - `on`: Enables mTLS.
+        # 
+        # - `off`: Disables mTLS.
         self.origin_mtls = origin_mtls
+        # The Origin read timeout in seconds.
         self.origin_read_timeout = origin_read_timeout
-        # Protocol used for the origin request. Possible values:
-        # - http: Use HTTP protocol for origin requests.
-        # - https: Use HTTPS protocol for origin requests.
-        # - follow: Follow the client\\"s protocol for origin requests.
+        # The protocol for Origin requests. Valid values:
+        # 
+        # - `http`: Uses the HTTP protocol.
+        # 
+        # - `https`: Uses the HTTPS protocol.
+        # 
+        # - `follow`: Uses the same protocol as the client request.
         self.origin_scheme = origin_scheme
-        # SNI carried in the origin request.
+        # The Server Name Indication (SNI) to use in Origin requests.
         self.origin_sni = origin_sni
-        # Origin certificate verification switch. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable Origin Certificate Verification. Valid values:
+        # 
+        # - `on`: Enables verification.
+        # 
+        # - `off`: Disables verification.
         self.origin_verify = origin_verify
-        # Use range chunking for origin downloads. Possible values:
-        # - on: Enable
-        # - off: Disable
-        # - force: Force
+        # Specifies whether to use range requests to download files from the Origin. Valid values:
+        # 
+        # - `on`: Enables range requests.
+        # 
+        # - `off`: Disables range requests.
+        # 
+        # - `force`: Forces range requests.
         self.range = range
+        # The size of each chunk for range requests. Valid values:
+        # 
+        # - `512KB`
+        # 
+        # - `1MB`
+        # 
+        # - `2MB`
+        # 
+        # - `4MB`
         self.range_chunk_size = range_chunk_size
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding global configurations. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The content of the rule, a Conditional Expression that matches user requests. Not required when creating a Global Configuration. There are two scenarios:
+        # 
+        # - To match all incoming requests, set the value to `true`.
+        # 
+        # - To match specific requests, set the value to a custom expression. Example: `(http.host eq "video.example.com")`.
         self.rule = rule
-        # Rule switch. This parameter is not required when adding global configurations. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Specifies whether to enable the rule. Not required when creating a Global Configuration. Valid values:
+        # 
+        # - `on`: Enables the rule.
+        # 
+        # - `off`: Disables the rule.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding global configurations.
+        # The rule name. Not required when creating a Global Configuration.
         self.rule_name = rule_name
+        # The priority of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The ID of the site. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the version of the site where the configuration takes effect. The default is version 0.
+        # For sites with version management enabled, this specifies the version to which the configuration applies. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

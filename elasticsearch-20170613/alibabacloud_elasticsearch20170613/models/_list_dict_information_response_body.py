@@ -11,7 +11,9 @@ class ListDictInformationResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListDictInformationResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -49,8 +51,15 @@ class ListDictInformationResponseBodyResult(DaraModel):
         oss_object: main_models.ListDictInformationResponseBodyResultOssObject = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The details of the OSS file.
         self.oss_object = oss_object
+        # The dictionary type. Valid values:
+        # 
+        # - MAIN: primary tokenization dictionary
+        # 
+        # - STOP: stopword dictionary.
         self.type = type
 
     def validate(self):
@@ -94,8 +103,11 @@ class ListDictInformationResponseBodyResultOssObject(DaraModel):
         etag: str = None,
         key: str = None,
     ):
+        # The name of the OSS bucket where the file is stored.
         self.bucket_name = bucket_name
+        # The MD5 checksum (ETag) of the OSS file, in uppercase.
         self.etag = etag
+        # The storage path of the dictionary file in the OSS bucket.
         self.key = key
 
     def validate(self):

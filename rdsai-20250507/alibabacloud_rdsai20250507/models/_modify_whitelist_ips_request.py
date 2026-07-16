@@ -10,7 +10,9 @@ class ModifyWhitelistIpsRequest(DaraModel):
         instance_id: str = None,
         ip_whitelist: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP whitelist. Before you modify the IP whitelist, call the DescribeInstanceIpWhitelist operation to query the existing IP whitelist of the instance.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):

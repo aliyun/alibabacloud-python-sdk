@@ -15,10 +15,13 @@ class DescribeSystemPropertyTemplatesResponseBody(DaraModel):
         system_property_template_model: List[main_models.DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel] = None,
         total_count: int = None,
     ):
+        # The token used to start the next query. An empty value indicates that all results have been returned.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The list of property template objects.
         self.system_property_template_model = system_property_template_model
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -77,11 +80,17 @@ class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel(Dar
         template_id: str = None,
         template_name: str = None,
     ):
+        # Indicates whether preset system properties can be automatically generated.
         self.enable_auto = enable_auto
+        # The URL path of the property template file.
         self.file_path = file_path
+        # The template status.
         self.status = status
+        # The system property template information.
         self.system_property_info = system_property_info
+        # The property template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
 
     def validate(self):
@@ -142,7 +151,9 @@ class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSyst
         custom_property_infos: List[main_models.DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos] = None,
         ro_product_device: str = None,
     ):
+        # The custom property information.
         self.custom_property_infos = custom_property_infos
+        # > This parameter is not yet available for use.
         self.ro_product_device = ro_product_device
 
     def validate(self):
@@ -185,7 +196,9 @@ class DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSyst
         property_name: str = None,
         property_value: str = None,
     ):
+        # The property name.
         self.property_name = property_name
+        # The property value.
         self.property_value = property_value
 
     def validate(self):

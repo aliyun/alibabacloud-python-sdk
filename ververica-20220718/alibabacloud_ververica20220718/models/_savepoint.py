@@ -41,9 +41,11 @@ class Savepoint(DaraModel):
         self.savepoint_location = savepoint_location
         # The method that is used to create a savepoint.
         # 
-        # *   `USER_REQUEST`: The savepoint is manually created.
-        # *   `STOP_WITH_SAVEPOINT`: The savepoint is created when you cancel the deployment.
-        # *   `RETAINED_CHECKPOINT`: The savepoint is created based on the returned checkpoint.
+        # - `USER_REQUEST`: The savepoint is manually created.
+        # 
+        # - `STOP_WITH_SAVEPOINT`: The savepoint is created when you cancel the deployment.
+        # 
+        # - `RETAINED_CHECKPOINT`: The savepoint is created based on the returned checkpoint.
         self.savepoint_origin = savepoint_origin
         # The status of the savepoint.
         self.status = status

@@ -8,6 +8,7 @@ class ModifyPlanMaintenanceWindowShrinkRequest(DaraModel):
     def __init__(
         self,
         enable: bool = None,
+        min_maintenance_interval: int = None,
         plan_window_id: str = None,
         plan_window_name: str = None,
         region_id: str = None,
@@ -15,14 +16,24 @@ class ModifyPlanMaintenanceWindowShrinkRequest(DaraModel):
         target_resource_shrink: str = None,
         time_period_shrink: str = None,
     ):
+        # Specifies whether to enable or disable the O&M window. Leave this parameter empty if no modification is needed.
         self.enable = enable
+        self.min_maintenance_interval = min_maintenance_interval
+        # The ID of the O&M window to modify. This parameter is required.
+        # 
         # This parameter is required.
         self.plan_window_id = plan_window_id
+        # The name of the O&M window. Leave this parameter empty if no modification is needed.
         self.plan_window_name = plan_window_name
+        # The region ID of the instance. You can call DescribeRegions to query the most recent region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The supported O&M actions. Leave this parameter empty if no modification is needed.
         self.support_maintenance_action = support_maintenance_action
+        # The resource to which the O&M window applies. Leave this parameter empty if no modification is needed.
         self.target_resource_shrink = target_resource_shrink
+        # The recurring cycle of the O&M window. Leave this parameter empty if no modification is needed.
         self.time_period_shrink = time_period_shrink
 
     def validate(self):
@@ -35,6 +46,9 @@ class ModifyPlanMaintenanceWindowShrinkRequest(DaraModel):
             result = _map
         if self.enable is not None:
             result['Enable'] = self.enable
+
+        if self.min_maintenance_interval is not None:
+            result['MinMaintenanceInterval'] = self.min_maintenance_interval
 
         if self.plan_window_id is not None:
             result['PlanWindowId'] = self.plan_window_id
@@ -60,6 +74,9 @@ class ModifyPlanMaintenanceWindowShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('Enable') is not None:
             self.enable = m.get('Enable')
+
+        if m.get('MinMaintenanceInterval') is not None:
+            self.min_maintenance_interval = m.get('MinMaintenanceInterval')
 
         if m.get('PlanWindowId') is not None:
             self.plan_window_id = m.get('PlanWindowId')

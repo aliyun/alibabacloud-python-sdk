@@ -14,23 +14,24 @@ class CreateRepoTagScanTaskRequest(DaraModel):
         scan_type: str = None,
         tag: str = None,
     ):
-        # The digest of the image.
+        # The image digest.
         self.digest = digest
-        # The ID of the Container Registry instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # The type of the scanning engine.
+        # The scan engine type:
         # 
-        # *   `SAS_SCAN_SERVICE`: Security Center scan engine (paid service)
-        # *   `ACR_SCAN_SERVICE`: Container Registry scan engine
+        # - `SAS_SCAN_SERVICE`: The cloud security scan engine. This is a paid service.
+        # 
+        # - `ACR_SCAN_SERVICE`: The ACR scan engine.
         self.scan_service = scan_service
         self.scan_type = scan_type
-        # The image version.
+        # The image tag.
         # 
         # This parameter is required.
         self.tag = tag

@@ -13,17 +13,21 @@ class ModifyReportTaskStatusRequest(DaraModel):
     ):
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. Default value: **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Simplified Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese
+        # 
+        # - **en_us**: English
         self.lang = lang
-        # Specifies the status of the report task. Valid values:
+        # The status to set for the report task. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # - **0**: Disable
         # 
-        # > This parameter is required.
+        # - **1**: Enable
+        # 
+        # >Notice: 
+        # 
+        # This parameter is required.
         self.report_task_status = report_task_status
 
     def validate(self):

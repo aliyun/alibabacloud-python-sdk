@@ -14,9 +14,16 @@ class PausePhysicalNodeRequest(DaraModel):
         op_tenant_id: int = None,
         pause_command: main_models.PausePhysicalNodeRequestPauseCommand = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment 
+        # - PROD (default): production environment.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The pause scheduling request.
+        # 
         # This parameter is required.
         self.pause_command = pause_command
 
@@ -60,8 +67,12 @@ class PausePhysicalNodeRequestPauseCommand(DaraModel):
         node_id_list: List[str] = None,
         project_id: int = None,
     ):
+        # The list of node IDs.
+        # 
         # This parameter is required.
         self.node_id_list = node_id_list
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

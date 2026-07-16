@@ -30,6 +30,7 @@ class CreateDesktopsRequest(DaraModel):
         hostname: str = None,
         month_desktop_setting: main_models.CreateDesktopsRequestMonthDesktopSetting = None,
         office_site_id: str = None,
+        ou_path: str = None,
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
@@ -41,6 +42,7 @@ class CreateDesktopsRequest(DaraModel):
         resource_group_id: str = None,
         saving_plan_id: str = None,
         snapshot_policy_id: str = None,
+        sub_pay_type: str = None,
         subnet_id: str = None,
         tag: List[main_models.CreateDesktopsRequestTag] = None,
         timer_group_id: str = None,
@@ -51,168 +53,122 @@ class CreateDesktopsRequest(DaraModel):
         volume_encryption_key: str = None,
         vpc_id: str = None,
     ):
-        # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: 1.
+        # The number of cloud desktops to create. Valid values: 1 to 300. Default value: 1.
         self.amount = amount
+        # The application control policy ID.
         self.app_rule_id = app_rule_id
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. This parameter takes effect only when the ChargeType parameter is set to PrePaid.
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when `ChargeType` is set to `PrePaid`.
         self.auto_renew = auto_renew
-        # The ID of the cloud computer template.
+        # The cloud desktop template ID. If no template ID is specified, you can create a cloud desktop by specifying the required fields.
         self.bundle_id = bundle_id
-        # The cloud computer templates.
+        # The list of cloud desktop templates.
         self.bundle_models = bundle_models
+        # > This field is not available for use.
         self.channel_cookie = channel_cookie
-        # The billing method of the cloud computers.
-        # 
-        # Default value: PostPaid. Valid values:
-        # 
-        # *   Postpaid: pay-as-you-go
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PrePaid: subscription
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The billing method of the cloud desktop.
         self.charge_type = charge_type
-        # The input parameters used when no templates are used.
+        # The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleId parameter is specified.
         self.desktop_attachment = desktop_attachment
-        # The private IP address of the cloud computer.
+        # The private IP address of the cloud desktop.
         self.desktop_member_ip = desktop_member_ip
-        # The name of the cloud computer. The name must meet the following requirements:
+        # The cloud desktop name. The naming rules are as follows:
         # 
-        # *   The name must be 1 to 64 characters in length.
-        # *   The name must start with a letter but cannot start with `http://` or `https://`.
-        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # - The name can be up to 64 characters in length.
+        # - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+        # - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
         self.desktop_name = desktop_name
-        # Specifies whether to automatically add suffixes to the names of cloud computers when you create multiple cloud computers at the same time.
-        # 
-        # Default value: true. Valid values:
-        # 
-        # *   true
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   False
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies whether to automatically append a suffix to the cloud desktop name when you create multiple cloud desktops in a batch.
         self.desktop_name_suffix = desktop_name_suffix
-        # The details of the scheduled task on cloud computers.
+        # The scheduled task details of the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
         self.desktop_timers = desktop_timers
-        # >  This parameter is not publicly available.
+        # > This parameter is not available for use.
         self.directory_id = directory_id
-        # The IDs of the end users to which you want to assign the cloud computers. You can specify 1 to 100 IDs.
+        # The list of authorized user IDs to add to the cloud desktops. You can specify 1 to 100 user IDs.
         self.end_user_id = end_user_id
+        # The extended information in JSON string format. This parameter is available only for internal customers.
         self.extend_info = extend_info
-        # The ID of the cloud computer pool.
+        # The cloud desktop pool ID.
         self.group_id = group_id
-        # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+        # The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
         # 
-        # The hostnames must meet the following requirements:
+        # The naming rules for the hostname are as follows:
         # 
-        # *   The hostnames must be 2 to 15 characters in length.
-        # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # - The hostname must be 2 to 15 characters in length.
+        # - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
         # 
-        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
         # 
-        # *   `name_prefix`: the prefix of the hostname.
-        # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
-        # *   `name_suffix`: the suffix of the hostname.
+        # - `name_prefix`: the prefix of the hostname.
+        # - `[begin_number,bits]`: the sequential number in the hostname. `begin_number` is the starting number. Valid values: 0 to 999999. Default value: 0. `bits` is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # - `name_suffix`: the suffix of the hostname.
         self.hostname = hostname
-        # > This parameter is not publicly available.
+        # The purchase parameters for the monthly hourly package.
         self.month_desktop_setting = month_desktop_setting
         # The office network ID.
         self.office_site_id = office_site_id
-        # The subscription duration of the cloud desktop that you want to create. The unit is specified by the `PeriodUnit` parameter. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
+        # The OU path. If specified, the cloud desktop is added to the corresponding organizational unit (OU) in Active Directory (AD).
+        self.ou_path = ou_path
+        # The subscription duration of the resource. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`.
         # 
-        # *   Valid values if the `PeriodUnit` parameter is set to `Month`:
+        # - If `PeriodUnit` is set to `Month`, valid values of this parameter:
         # 
-        #     *   1
-        #     *   2
-        #     *   3
-        #     *   6
+        #      - 1
+        #     -  2
+        #     - 3
+        #     - 6
         # 
-        # *   Valid values if the `PeriodUnit` parameter is set to `Year`:
+        # - If `PeriodUnit` is set to `Year`, valid values of this parameter:
         # 
-        #     *   1
-        #     *   2
-        #     *   3
-        #     *   4
-        #     *   5
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
         # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The ID of the sales promotion.
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The additional parameters for a specific purchase type.
         self.purchase_options = purchase_options
+        # The public network rate limiting rule ID.
         self.qos_rule_id = qos_rule_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The user ID for resource ownership in reseller pattern. This parameter is not required in non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
-        # The ID of the resource group.
+        # The WUYING resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the saving plan.
+        # > This field is not available for use.
         self.saving_plan_id = saving_plan_id
-        # The ID of the auto-snapshot policy.
+        # The WUYING automatic snapshot policy ID.
         self.snapshot_policy_id = snapshot_policy_id
+        self.sub_pay_type = sub_pay_type
+        # The subnet ID.
         self.subnet_id = subnet_id
-        # The tags that you want to add to the cloud desktop.
+        # The tags.
         self.tag = tag
-        # The ID of the timer group.
+        # The scheduled task group ID.
         self.timer_group_id = timer_group_id
-        # How the cloud computers are assigned.
+        # The cloud desktop assignment mode.
         # 
-        # >  If you do not specify the `EndUserId` parameter, the cloud computers are not assigned to end users after the cloud computers are created.
-        # 
-        # Default value: ALL. Valid values:
-        # 
-        # *   ALL: If you specify the EndUserId parameter, the cloud computers are assigned to all specified end users after the cloud computers are created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PER_USER: If you specify the EndUserId parameter, the cloud computers are evenly assigned to the specified end users after the cloud computers are created.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     In this case, you must make sure that the value of the Amount parameter can be divided by the N value of the EndUserId.N parameter that you specify.
-        # 
-        #     <!-- -->
+        # > If `EndUserId` is not specified, the created cloud desktops are not assigned to any user.
         self.user_assign_mode = user_assign_mode
-        # Details about the custom command scripts.
+        # The custom command script data.
         self.user_commands = user_commands
-        # >  This parameter is not publicly available.
+        # > This parameter is not available for use.
         self.user_name = user_name
-        # Specifies whether to enable disk encryption.
+        # Specifies whether to enable cloud disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that you want to use when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain a list of KMS keys.
+        # The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
-        # >  This parameter is not publicly available.
+        # > This parameter is not available for use.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -308,6 +264,9 @@ class CreateDesktopsRequest(DaraModel):
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
 
+        if self.ou_path is not None:
+            result['OuPath'] = self.ou_path
+
         if self.period is not None:
             result['Period'] = self.period
 
@@ -340,6 +299,9 @@ class CreateDesktopsRequest(DaraModel):
 
         if self.snapshot_policy_id is not None:
             result['SnapshotPolicyId'] = self.snapshot_policy_id
+
+        if self.sub_pay_type is not None:
+            result['SubPayType'] = self.sub_pay_type
 
         if self.subnet_id is not None:
             result['SubnetId'] = self.subnet_id
@@ -444,6 +406,9 @@ class CreateDesktopsRequest(DaraModel):
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
 
+        if m.get('OuPath') is not None:
+            self.ou_path = m.get('OuPath')
+
         if m.get('Period') is not None:
             self.period = m.get('Period')
 
@@ -477,6 +442,9 @@ class CreateDesktopsRequest(DaraModel):
 
         if m.get('SnapshotPolicyId') is not None:
             self.snapshot_policy_id = m.get('SnapshotPolicyId')
+
+        if m.get('SubPayType') is not None:
+            self.sub_pay_type = m.get('SubPayType')
 
         if m.get('SubnetId') is not None:
             self.subnet_id = m.get('SubnetId')
@@ -522,53 +490,9 @@ class CreateDesktopsRequestUserCommands(DaraModel):
     ):
         # The command content.
         self.content = content
-        # The encoding mode of the command content.
-        # 
-        # Valid values:
-        # 
-        # *   Base64: encodes the command content in Base64.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PlainText: does not encode the command content.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The encoding method of the command content (CommandContent).
         self.content_encoding = content_encoding
         # The language type of the command.
-        # 
-        # Valid values:
-        # 
-        # *   RunPowerShellScript: PowerShell commands (applicable to Windows cloud computers).
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   RunShellScript: shell commands (applicable to Linux cloud computers).
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   RunBatScript: batch commands (applicable to Windows cloud computers).
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.content_type = content_type
 
     def validate(self):
@@ -609,9 +533,9 @@ class CreateDesktopsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify 1 to 20 keys for a tag.
+        # The tag key. You can specify 1 to 20 tag keys.
         self.key = key
-        # The value of the tag. You can specify 1 to 20 values for a tag.
+        # The tag value. You can specify 1 to 20 tag values.
         self.value = value
 
     def validate(self):
@@ -645,6 +569,7 @@ class CreateDesktopsRequestPurchaseOptions(DaraModel):
         self,
         monthly_credits: int = None,
     ):
+        # The monthly credit package for purchasing Agent resources. Valid values: 200, 1600, and 4000.
         self.monthly_credits = monthly_credits
 
     def validate(self):
@@ -674,11 +599,11 @@ class CreateDesktopsRequestMonthDesktopSetting(DaraModel):
         desktop_id: str = None,
         use_duration: int = None,
     ):
-        # > This parameter is not publicly available.
+        # > This field is not available for use.
         self.buyer_id = buyer_id
-        # > This parameter is not publicly available.
+        # > This field is not available for use.
         self.desktop_id = desktop_id
-        # > This parameter is not publicly available.
+        # The package option when purchasing a monthly hourly package. Valid values: 120, 250, and 360.
         self.use_duration = use_duration
 
     def validate(self):
@@ -724,73 +649,19 @@ class CreateDesktopsRequestDesktopTimers(DaraModel):
         reset_type: str = None,
         timer_type: str = None,
     ):
-        # Specifies whether to allow the end user to configure the scheduled task.
+        # Specifies whether to allow end users to configure scheduled tasks.
         self.allow_client_setting = allow_client_setting
-        # The cron expression for the scheduled task.
+        # The cron expression of the scheduled task.
         # 
-        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
+        # >Notice: Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set the value to 0 0 16 ? * 1,2,3,4,5,6,7.</notice>
         self.cron_expression = cron_expression
-        # Specifies whether to forcibly execute the scheduled task.
-        # 
-        # Valid values:
-        # 
-        # *   true: forcibly executes the scheduled task regardless of the status and connection of the cloud computers.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   false: does not forcibly execute the scheduled task.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies whether to forcefully execute the task.
         self.enforce = enforce
-        # The interval at which cloud computers are created. Unit: minutes.
+        # The time interval, in minutes.
         self.interval = interval
-        # The operations that scheduled tasks support. This parameter is valid only when TimerType is set to NoConnect.
-        # 
-        # Valid values:
-        # 
-        # *   Hibernate: hibernates the cloud computers.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Shutdown: stops the cloud computers.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The operation type of the scheduled task. Currently, only the disconnection scheduled task is supported.
         self.operation_type = operation_type
-        # The reset type of the cloud computers.
-        # 
-        # Valid values:
-        # 
-        # *   RESET_TYPE_SYSTEM: resets the system disks.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   RESET_TYPE_BOTH: resets the system disks and data disks.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The reset type of the cloud desktop.
         self.reset_type = reset_type
         # The type of the scheduled task.
         self.timer_type = timer_type
@@ -864,40 +735,35 @@ class CreateDesktopsRequestDesktopAttachment(DaraModel):
         system_disk_per_level: str = None,
         system_disk_size: int = None,
     ):
-        # The category of the data disk. Valid values:
-        # 
-        # *   cloud_auto: SSD
-        # *   cloud_essd: ESSD
+        # The data cloud disk type. The system cloud disk type must be the same as the data cloud disk type. Valid values:
+        # - cloud_auto: standard SSD ultra cloud disk
+        # - cloud_essd: ESSD cloud disk
         self.data_disk_category = data_disk_category
-        # The performance level of the data disk. Valid values:
-        # 
-        # - PL0 (default)
+        # The performance level (PL) of the ESSD cloud disk. This parameter is required when an ESSD cloud disk is selected. Valid values:
+        # - PL0
         # - PL1
         self.data_disk_per_level = data_disk_per_level
-        # The size of the data disk. Unit: GiB.
+        # The user cloud disk capacity. Valid values: 40 to 2040 GiB, in increments of 10 GiB.
         self.data_disk_size = data_disk_size
-        # The default display language:
-        # 
-        # - zh-CN: Simplified Chinese
-        # - zh-HK: Traditional Chinese
-        # - en-US: English
-        # - ja-JP: Japanese
+        # The language. Valid values:
+        # - zh-CN
+        # - zh-HK
+        # - en-US
+        # - ja-JP
         self.default_language = default_language
-        # The desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the IDs of supported desktop types.
+        # The cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs.
         self.desktop_type = desktop_type
-        # The ID of the image.
+        # The image ID.
         self.image_id = image_id
-        # The category of the system disk. Valid values:
-        # 
-        # *   cloud_auto: SSD
-        # *   cloud_essd: ESSD
+        # The system cloud disk type. The system cloud disk type must be the same as the data cloud disk type. Valid values:
+        # - cloud_auto: standard SSD ultra cloud disk
+        # - cloud_essd: ESSD cloud disk
         self.system_disk_category = system_disk_category
-        # The performance level of the system disk. Valid values:
-        # 
-        # - PL0 (default)
+        # The performance level (PL) of the ESSD cloud disk. This parameter is required when an ESSD cloud disk is selected. Valid values:
+        # - PL0
         # - PL1
         self.system_disk_per_level = system_disk_per_level
-        # The size of the system disk. Unit: GiB.
+        # The system cloud disk capacity. Valid values: 60 to 500 GiB, in increments of 10 GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -979,34 +845,34 @@ class CreateDesktopsRequestBundleModels(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The number of cloud computers that you want to create. Valid values: 1 to 300. Default value: null.
+        # The number of cloud desktops to create. Valid values: 1 to 300. Default value: 0.
         self.amount = amount
-        # The ID of a cloud computer template.
+        # The cloud desktop template ID.
         self.bundle_id = bundle_id
-        # The name of the cloud computer. The name must meet the following requirements:
+        # The cloud desktop name. The naming rules are as follows:
         # 
-        # *   The name must be 1 to 64 characters in length.
-        # *   The name must start with a letter but cannot start with `http://` or `https://`.
-        # *   The name can only contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # - The name can be up to 64 characters in length.
+        # - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+        # - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
         self.desktop_name = desktop_name
-        # The IDs of the end users to whom the cloud computer are assigned.
+        # The list of users to whom the cloud desktops are assigned.
         self.end_user_ids = end_user_ids
-        # The custom hostnames of the cloud computers. This parameter is valid only if the office network is an AD office network and the operating system type of the cloud computers is Windows.
+        # The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
         # 
-        # The hostnames must meet the following requirements:
+        # The naming rules for the hostname are as follows:
         # 
-        # *   The hostnames must be 2 to 15 characters in length.
-        # *   The hostnames can contain only letters, digits, and hyphens (-). The hostnames cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
+        # - The hostname must be 2 to 15 characters in length.
+        # - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
         # 
-        # When you create multiple cloud computers, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the cloud computers. For example, if you set the value of the Hostname parameter to ecd-[1,4]-test, the hostname of the first cloud computer is ecd-0001-test, the hostname of the second cloud computer is ecd-0002-test, and so on.
+        # When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
         # 
-        # *   `name_prefix`: the prefix of the hostname.
-        # *   `[begin_number,bits]`: the sequential number in the hostname. The `begin_number` value is the starting digit. Valid values of begin_number: 0 to 999999. Default value: 0. The `bits` value is the number of digits. Valid values: 1 to 6. Default value: 6.
-        # *   `name_suffix`: the suffix of the hostname.
+        # - `name_prefix`: the prefix of the hostname.
+        # - `[begin_number,bits]`: the sequential number in the hostname. `begin_number` is the starting number. Valid values: 0 to 999999. Default value: 0. `bits` is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # - `name_suffix`: the suffix of the hostname.
         self.hostname = hostname
-        # Specifies whether to enable disk encryption.
+        # Specifies whether to enable cloud disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+        # The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):

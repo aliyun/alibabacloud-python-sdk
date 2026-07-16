@@ -19,21 +19,21 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         storage_policy: main_models.ModifyBrowserInstanceGroupRequestStoragePolicy = None,
         timers: List[main_models.ModifyBrowserInstanceGroupRequestTimers] = None,
     ):
-        # The browser settings.
+        # The browser configuration.
         self.browser_config = browser_config
-        # The ID of the cloud browser to be modified.
+        # The ID of the cloud browser to modify.
         # 
         # This parameter is required.
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
         self.max_amount = max_amount
-        # The network configurations.
+        # The network configuration.
         self.network = network
         # The access policy.
         self.policy = policy
         self.storage_policy = storage_policy
-        # The timer.
+        # The timers.
         self.timers = timers
 
     def validate(self):
@@ -126,11 +126,7 @@ class ModifyBrowserInstanceGroupRequestTimers(DaraModel):
     ):
         # The interval.
         self.interval = interval
-        # The timer type:
-        # 
-        # Valid value:
-        # 
-        # *   SESSION_TIMEOUT: Defines the timeout period before a disconnected session is terminated.
+        # The timer type.
         self.timer_type = timer_type
 
     def validate(self):
@@ -230,29 +226,22 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         video_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyVideoPolicy = None,
         watermark_policy: main_models.ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy = None,
     ):
-        # The settings related to clipboard control.
+        # The clipboard policy settings.
         self.clipboard_policy = clipboard_policy
-        # Defines what happens to a session when a user disconnects.
-        # 
-        # Valid values:
-        # 
-        # *   customTime: The session will be terminated after a custom-defined timeout.
-        # *   persistent: The session will never be automatically terminated..
+        # The data retention policy for sessions after disconnection.
         self.disconnect_keep_session = disconnect_keep_session
-        # The session persistence duration.
+        # The session retention duration after disconnection.
         self.disconnect_keep_session_time = disconnect_keep_session_time
         self.file_manager = file_manager
-        # The file transfer policy on the web client.
+        # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
+        # The policy for disconnecting sessions after no operation.
         self.no_operation_disconnect = no_operation_disconnect
+        # The idle timeout period before disconnection, in seconds.
         self.no_operation_disconnect_time = no_operation_disconnect_time
-        # The ID of the policy.
+        # The policy ID.
         self.policy_id = policy_id
         # The policy version.
-        # 
-        # Valid value:
-        # 
-        # *   Center: center policy
         self.policy_version = policy_version
         # The display policy.
         self.video_policy = video_policy
@@ -354,13 +343,8 @@ class ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy(DaraModel):
         watermark_types: List[str] = None,
     ):
         # Specifies whether to enable the watermark.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.watermark_switch = watermark_switch
-        # The watermark types.
+        # The list of watermark types.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -440,43 +424,17 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         text_clipboard_write_size_unit: str = None,
     ):
         # The clipboard policy.
-        # 
-        # Valid values:
-        # 
-        # *   read: Allows copying from the local device to the cloud browser.
-        # *   readwrite: Allows copying in both directions.
-        # *   write: Allows copying from the cloud browser to the local device.
-        # *   off: Blocks copying in both directions.
         self.clipboard = clipboard
-        # The maximum number of characters allowed when copying from the clipboard.
+        # The maximum length for clipboard read operations.
         self.clipboard_read_limit = clipboard_read_limit
         # The clipboard control scope.
-        # 
-        # Valid values:
-        # 
-        # *   grained: fine-grained control
-        # *   global: global control
         self.clipboard_scope = clipboard_scope
         self.clipboard_size_unit = clipboard_size_unit
-        # The maximum number of characters allowed when copying to the clipboard.
+        # The maximum length for clipboard write operations.
         self.clipboard_write_limit = clipboard_write_limit
         # The file clipboard policy.
-        # 
-        # Valid values:
-        # 
-        # *   read: Allows copying from the local device to the cloud browser.
-        # *   readwrite: Allows copying in both directions.
-        # *   write: Allows copying from the cloud browser to the local device.
-        # *   off: Blocks copying in both directions.
         self.file_clipboard = file_clipboard
         # The rich text clipboard policy.
-        # 
-        # Valid values:
-        # 
-        # *   read: Allows copying from the local device to the cloud browser.
-        # *   readwrite: Allows copying in both directions.
-        # *   write: Allows copying from the cloud browser to the local device.
-        # *   off: Blocks copying in both directions.
         self.rich_text_clipboard = rich_text_clipboard
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
@@ -485,13 +443,6 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
-        # 
-        # Valid values:
-        # 
-        # *   read: Allows copying from the local device to the cloud browser.
-        # *   readwrite: Allows copying in both directions.
-        # *   write: Allows copying from the cloud browser to the local device.
-        # *   off: Blocks copying in both directions.
         self.text_clipboard = text_clipboard
         self.text_clipboard_read_limit = text_clipboard_read_limit
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
@@ -628,15 +579,11 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         restricted_urls: List[main_models.ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs] = None,
         restricted_urls_file_path: str = None,
     ):
-        # The type of the access control list.
-        # 
-        # Valid value:
-        # 
-        # *   ALLOW_LIST: The whitelist.
+        # The access restriction type.
         self.access_restriction = access_restriction
-        # The domain names to be removed.
+        # The list of domain names to remove.
         self.remove_restricted_urlids = remove_restricted_urlids
-        # The domain restriction configurations.
+        # The restricted domain name configurations.
         self.restricted_urls = restricted_urls
         self.restricted_urls_file_path = restricted_urls_file_path
 
@@ -692,9 +639,9 @@ class ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs(DaraModel):
         restricted_urlid: str = None,
         url: str = None,
     ):
-        # The ID of the domain name. This parameter is required only when you want to modify the domain restriction configuration.
+        # The ID of the domain name configuration. This parameter is required only for modification.
         self.restricted_urlid = restricted_urlid
-        # The restricted domain name.
+        # The domain name.
         self.url = url
 
     def validate(self):
@@ -733,15 +680,15 @@ class ModifyBrowserInstanceGroupRequestBrowserConfig(DaraModel):
         homepage: str = None,
         remove_bookmarks: List[str] = None,
     ):
-        # The bookmark.
+        # The bookmarks.
         self.bookmarks = bookmarks
         self.bookmarks_file_path = bookmarks_file_path
-        # The startup parameter.
+        # The startup parameters.
         self.browser_param = browser_param
         self.cookies_sync = cookies_sync
-        # The home page.
+        # The homepage.
         self.homepage = homepage
-        # The removed bookmarks.
+        # The list of bookmarks to remove.
         self.remove_bookmarks = remove_bookmarks
 
     def validate(self):
@@ -810,15 +757,15 @@ class ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks(DaraModel):
         bookmark_name: str = None,
         bookmark_url: str = None,
     ):
-        # The folder where the bookmark is located.
+        # The folder to which the bookmark belongs.
         self.bookmark_folder = bookmark_folder
-        # The ID of the bookmark. This parameter needs to be specified only to modify the bookmark.
+        # The bookmark ID. This parameter is required only for modification.
         self.bookmark_id = bookmark_id
-        # The name of the bookmark.
+        # The bookmark name.
         # 
         # This parameter is required.
         self.bookmark_name = bookmark_name
-        # The URL of the bookmark.
+        # The bookmark URL.
         # 
         # This parameter is required.
         self.bookmark_url = bookmark_url

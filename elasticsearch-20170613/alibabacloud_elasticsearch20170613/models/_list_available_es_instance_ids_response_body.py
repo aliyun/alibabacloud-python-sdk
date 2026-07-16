@@ -13,9 +13,9 @@ class ListAvailableEsInstanceIdsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListAvailableEsInstanceIdsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -60,13 +60,13 @@ class ListAvailableEsInstanceIdsResponseBodyResult(DaraModel):
         es_instance_id: str = None,
         kibana_endpoint: str = None,
     ):
-        # The name of the Elasticsearch cluster.
+        # The name of the Elasticsearch instance.
         self.description = description
-        # The address that is used to access the Elasticsearch cluster over the Internet.
+        # The public network access address of the Elasticsearch instance.
         self.endpoint = endpoint
-        # The ID of the Elasticsearch cluster.
+        # The Elasticsearch instance ID.
         self.es_instance_id = es_instance_id
-        # The address that is used to access the Kibana console of the Elasticsearch cluster over the Internet.
+        # The public network access address of Kibana.
         self.kibana_endpoint = kibana_endpoint
 
     def validate(self):

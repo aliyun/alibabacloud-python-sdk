@@ -11,8 +11,12 @@ class QueryMaterialDirectoryTreeRequest(DaraModel):
         hidden_public: bool = None,
         root: bool = None,
     ):
+        # The application instance ID.
         self.biz_id = biz_id
+        # Specifies whether to hide shared folders.
         self.hidden_public = hidden_public
+        # Specifies whether to request the first-level root folder.
+        # 
         # This parameter is required.
         self.root = root
 

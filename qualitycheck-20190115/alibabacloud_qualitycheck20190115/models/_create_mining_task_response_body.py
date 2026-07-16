@@ -15,12 +15,17 @@ class CreateMiningTaskResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Result code. A value of **200** indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details if the call failed. Returns successful if the call succeeded.
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):
@@ -80,6 +85,7 @@ class CreateMiningTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

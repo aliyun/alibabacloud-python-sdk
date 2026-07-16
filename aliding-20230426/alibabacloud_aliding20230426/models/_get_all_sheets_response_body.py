@@ -13,7 +13,6 @@ class GetAllSheetsResponseBody(DaraModel):
         request_id: str = None,
         value: List[main_models.GetAllSheetsResponseBodyValue] = None,
     ):
-        # requestId
         self.request_id = request_id
         self.value = value
 

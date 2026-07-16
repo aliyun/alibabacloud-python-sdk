@@ -13,10 +13,13 @@ class SwitchGdnMemberRoleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data struct.
         self.data = data
+        # The additional information returned. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -64,6 +67,7 @@ class SwitchGdnMemberRoleResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -11,8 +11,11 @@ class UpdateClusterRequest(DaraModel):
         cluster_name: str = None,
         ip_whitelist: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The cluster name.
         self.cluster_name = cluster_name
         self.ip_whitelist = ip_whitelist
 

@@ -1,3 +1,12 @@
+2026-06-24 Version: 0.4.1
+- Update API GenerateEvaluationReport: add request parameters EvaluationDomain.
+- Update API ListEvaluationMetadata: add request parameters EvaluationDomain.
+- Update API ListEvaluationMetricDetails: add request parameters EvaluationDomain.
+- Update API ListEvaluationResults: add request parameters EvaluationDomain.
+- Update API ListEvaluationScoreHistory: add request parameters EvaluationDomain.
+- Update API RunEvaluation: add request parameters EvaluationDomain.
+
+
 2026-03-13 Version: 0.4.0
 - Support API GenerateEvaluationReport.
 

@@ -16,10 +16,15 @@ class ListUpgradeItemsResponseBody(DaraModel):
         total_count: int = None,
         upgrade_items: List[main_models.ListUpgradeItemsResponseBodyUpgradeItems] = None,
     ):
+        # The maximum number of entries returned on the current page.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If the value is not empty, more results are available.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of upgrade items.
         self.upgrade_items = upgrade_items
 
     def validate(self):
@@ -79,6 +84,7 @@ class ListUpgradeItemsResponseBodyUpgradeItems(DaraModel):
         self,
         upgrade_item_id: str = None,
     ):
+        # The ID of the upgrade item.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

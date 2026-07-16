@@ -12,10 +12,9 @@ class GetSpareIpResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The status of the secondary IP address. Valid values:
-        # 
-        # *   **active:** The secondary IP address is available.
-        # *   **inuse:** The secondary IP address is in use.
+        # The status of the CNAME spare IP address. Valid values:
+        # - **active**: active.
+        # - **inuse**: in use.
         self.state = state
 
     def validate(self):

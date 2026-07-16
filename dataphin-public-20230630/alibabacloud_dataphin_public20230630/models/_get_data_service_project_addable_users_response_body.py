@@ -17,12 +17,17 @@ class GetDataServiceProjectAddableUsersResponseBody(DaraModel):
         success: bool = None,
         user_list: List[main_models.GetDataServiceProjectAddableUsersResponseBodyUserList] = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The list of project members.
         self.user_list = user_list
 
     def validate(self):
@@ -90,8 +95,11 @@ class GetDataServiceProjectAddableUsersResponseBodyUserList(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
+        # The username of the user.
         self.account_name = account_name
+        # The nickname of the user.
         self.display_name = display_name
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -17,14 +17,17 @@ class ListApplicationsForNetworkZoneResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of applications.
         self.applications = applications
-        # 分页查询时每页行数。
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The pagination token returned by this call.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -92,11 +95,11 @@ class ListApplicationsForNetworkZoneResponseBodyApplications(DaraModel):
         application_name: str = None,
         instance_id: str = None,
     ):
-        # IDaaS EIAM 应用Id
+        # The application ID.
         self.application_id = application_id
-        # IDaaS EIAM 应用名称
+        # The application name.
         self.application_name = application_name
-        # IDaaS EIAM 实例Id
+        # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
 
     def validate(self):

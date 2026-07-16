@@ -23,7 +23,7 @@ class DescribeResourceByTagsResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.resources = resources
-        # The total number of resources returned.
+        # The total number of resources.
         self.total_count = total_count
 
     def validate(self):

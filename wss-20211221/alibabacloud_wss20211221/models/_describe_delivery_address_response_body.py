@@ -14,8 +14,13 @@ class DescribeDeliveryAddressResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The address list.
         self.addresses = addresses
+        # The request ID. Alibaba Cloud generates this unique identifier for each request.
         self.request_id = request_id
+        # The total count of addresses.
+        # 
+        # > Up to 20 addresses are supported.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +76,23 @@ class DescribeDeliveryAddressResponseBodyAddresses(DaraModel):
         province: main_models.DescribeDeliveryAddressResponseBodyAddressesProvince = None,
         town: main_models.DescribeDeliveryAddressResponseBodyAddressesTown = None,
     ):
+        # The area.
         self.area = area
+        # The city.
         self.city = city
+        # The contact name.
         self.contacts = contacts
+        # Indicates whether this is the default address.
         self.default_address = default_address
+        # The detailed address, which should include the street name and house number.
         self.detail = detail
+        # The mobile number.
         self.mobile = mobile
+        # The postal code.
         self.postal_code = postal_code
+        # The province.
         self.province = province
+        # The town.
         self.town = town
 
     def validate(self):
@@ -166,7 +180,9 @@ class DescribeDeliveryAddressResponseBodyAddressesTown(DaraModel):
         town_id: int = None,
         town_name: str = None,
     ):
+        # The town ID.
         self.town_id = town_id
+        # The town name.
         self.town_name = town_name
 
     def validate(self):
@@ -201,7 +217,11 @@ class DescribeDeliveryAddressResponseBodyAddressesProvince(DaraModel):
         province_id: int = None,
         province_name: str = None,
     ):
+        # The province ID. For more information, see [China regions, countries and territories codes](https://help.aliyun.com/document_detail/167926.html).
+        # 
+        # For example, **110000** represents Beijing and **120000** represents Tianjin.
         self.province_id = province_id
+        # The province name.
         self.province_name = province_name
 
     def validate(self):
@@ -236,7 +256,9 @@ class DescribeDeliveryAddressResponseBodyAddressesCity(DaraModel):
         city_id: int = None,
         city_name: str = None,
     ):
+        # The city ID.
         self.city_id = city_id
+        # The city name.
         self.city_name = city_name
 
     def validate(self):
@@ -271,7 +293,9 @@ class DescribeDeliveryAddressResponseBodyAddressesArea(DaraModel):
         area_id: int = None,
         area_name: str = None,
     ):
+        # The area ID.
         self.area_id = area_id
+        # The area name.
         self.area_name = area_name
 
     def validate(self):

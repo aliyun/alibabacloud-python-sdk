@@ -19,16 +19,31 @@ class DescTemplateResponseBody(DaraModel):
         template_text: str = None,
         template_type: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # Deprecated. Retained for backward compatibility.
         self.remark = remark
+        # The request ID.
         self.request_id = request_id
+        # Deprecated. Retained for backward compatibility.
         self.sms_content = sms_content
+        # Deprecated. Retained for backward compatibility.
         self.sms_type = sms_type
+        # The template name.
         self.template_name = template_name
+        # Deprecated. Retained for backward compatibility.
         self.template_nick_name = template_nick_name
+        # The template status. Valid values:
+        # - 0: draft.
+        # - 1: pending review.
+        # - 2: approved.
+        # - 3: rejected.
         self.template_status = template_status
+        # The template subject, which is used to compose the email subject.
         self.template_subject = template_subject
+        # The template content.
         self.template_text = template_text
+        # Deprecated. Retained for backward compatibility.
         self.template_type = template_type
 
     def validate(self):

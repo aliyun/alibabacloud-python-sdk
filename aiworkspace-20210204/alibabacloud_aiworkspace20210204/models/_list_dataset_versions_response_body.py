@@ -16,15 +16,15 @@ class ListDatasetVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The dataset versions.
+        # The list of dataset versions.
         self.dataset_versions = dataset_versions
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # The number of dataset versions that meet the filter conditions.
+        # The number of resources that match the filter conditions.
         self.total_count = total_count
 
     def validate(self):

@@ -18,14 +18,37 @@ class UpdateLifecyclePolicyRequest(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.UpdateLifecyclePolicyRequestTransitRules] = None,
     ):
+        # The description of the lifecycle policy.
+        # 
+        # The description must be 3 to 64 characters long and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # > This parameter is supported only for CPFS for AI file systems.
         self.description = description
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The ID of the lifecycle policy.
+        # 
+        # > This parameter is required for CPFS for AI file systems.
+        # 
         # This parameter is required.
         self.lifecycle_policy_id = lifecycle_policy_id
+        # The absolute paths of the directories to which the lifecycle policy applies.
         self.paths = paths
+        # The retrieval rule for files. You can specify only one retrieval rule.
+        # 
+        # > This parameter is supported only for CPFS for AI file systems.
         self.retrieve_rules = retrieve_rules
+        # The storage tier.
+        # 
+        # - `InfrequentAccess`: The Infrequent Access storage tier. This is the default value.
+        # 
+        # - `Archive`: The Archive storage tier.
         self.storage_type = storage_type
+        # The transition rule for files. You can specify only one transition rule.
+        # 
+        # > This parameter is supported only for CPFS for AI file systems when `LifecyclePolicyType` is set to `Auto`.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -107,7 +130,17 @@ class UpdateLifecyclePolicyRequestTransitRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
+        # The rule attribute.
+        # 
+        # Valid value:
+        # 
+        # - `Atime`: The last access time of a file.
         self.attribute = attribute
+        # The rule threshold.
+        # 
+        # Valid value:
+        # 
+        # - If `Attribute` is set to `Atime`, this parameter specifies the number of days since a file was last accessed. The value must be between 1 and 365.
         self.threshold = threshold
 
     def validate(self):
@@ -142,7 +175,17 @@ class UpdateLifecyclePolicyRequestRetrieveRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
+        # The rule attribute. Valid value:
+        # 
+        # - `RetrieveType`: The retrieval method.
         self.attribute = attribute
+        # The retrieval method. Valid values:
+        # 
+        # - If `Attribute` is set to `RetrieveType`:
+        # 
+        #   - `AfterVisit`: Retrieves data on a best-effort basis after a file is accessed. This value is valid only when `LifecyclePolicyType` is `Auto`.
+        # 
+        #   - `All`: Retrieves all data. This value is valid only when `LifecyclePolicyType` is `OnDemand`.
         self.threshold = threshold
 
     def validate(self):

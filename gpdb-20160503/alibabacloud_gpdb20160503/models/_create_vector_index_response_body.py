@@ -11,13 +11,15 @@ class CreateVectorIndexResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Detailed information returned by the API.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # API execution status. Value description:
-        # - **success**: Execution succeeded.
-        # - **fail**: Execution failed.
+        # The status of the request. Valid values:
+        # 
+        # - **success**: The request was successful.
+        # 
+        # - **fail**: The request failed.
         self.status = status
 
     def validate(self):

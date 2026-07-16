@@ -18,17 +18,29 @@ class InvokeActionShrinkRequest(DaraModel):
         query_shrink: str = None,
         stream: bool = None,
     ):
+        # The action ID.
+        # 
         # This parameter is required.
         self.action_id = action_id
+        # The action version.
         self.action_version = action_version
+        # The authentication information for the action.
         self.auth_config_shrink = auth_config_shrink
+        # The request body for the action.
         self.body_shrink = body_shrink
+        # The connector ID.
+        # 
         # This parameter is required.
         self.connector_id = connector_id
+        # The connector version.
         self.connector_version = connector_version
+        # The request header parameters for the action.
         self.headers_shrink = headers_shrink
+        # The path parameters for the action.
         self.path_shrink = path_shrink
+        # The query parameters for the action.
         self.query_shrink = query_shrink
+        # Specifies whether to use streaming output.
         self.stream = stream
 
     def validate(self):

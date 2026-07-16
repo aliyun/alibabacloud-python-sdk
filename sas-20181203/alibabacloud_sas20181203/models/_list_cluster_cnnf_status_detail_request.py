@@ -11,7 +11,7 @@ class ListClusterCnnfStatusDetailRequest(DaraModel):
         self,
         cluster_ids: List[str] = None,
     ):
-        # An array that consists of the ID of the cluster.
+        # The list of cluster IDs.
         self.cluster_ids = cluster_ids
 
     def validate(self):

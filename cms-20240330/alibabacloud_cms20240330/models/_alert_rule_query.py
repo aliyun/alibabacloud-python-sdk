@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class AlertRuleQuery(DaraModel):
     def __init__(
         self,
+        aggregate: str = None,
         check_after_data_complete: bool = None,
         dimensions: List[Dict[str, str]] = None,
         domain: str = None,
@@ -22,94 +23,112 @@ class AlertRuleQuery(DaraModel):
         group_id: str = None,
         group_type: str = None,
         label_filters: List[main_models.AlertRuleQueryLabelFilters] = None,
+        log_set: str = None,
         mark_tags: List[main_models.AlertRuleQueryMarkTags] = None,
         metric: str = None,
         metric_set: str = None,
         namespace: str = None,
+        offset_secs: int = None,
         queries: List[main_models.AlertRuleQueryQueries] = None,
         relation_type: str = None,
         second_join: main_models.AlertRuleSlsQueryJoin = None,
         service_ids: List[str] = None,
         type: str = None,
+        window_secs: int = None,
     ):
+        self.aggregate = aggregate
         # Applicable query type: PROMQL_QUERY.
-        # Whether to perform alert evaluation only after data completeness is ensured.
+        # 
+        # Specifies whether to perform alert detection only after data is complete.
         self.check_after_data_complete = check_after_data_complete
-        # Applicable query type: CMS_BASIC_QUERY.
-        # List of filtering dimensions for the resource.
+        # Applicable query type: CMS_BASIC_QUERY.  
+        # 
+        # The list of filter dimensions for the resource.
         self.dimensions = dimensions
-        # 资源所属的领域。
+        # The domain to which the resource belongs.
         self.domain = domain
         # Applicable query type: PROMQL_QUERY.
-        # Duration of alert data, in seconds.
+        # 
+        # The duration for which alert data persists. Unit: seconds.
         self.duration = duration
+        # The array of entity field filters.
         self.entity_fields = entity_fields
-        # 资源过滤器，用于筛选目标资源。
+        # The resource filter used to filter target resources.
         self.entity_filter = entity_filter
         # Applicable query type: PROMQL_QUERY.
-        # Query expression (PromQL).
+        # 
+        # The query expression (PromQL).
         self.expr = expr
         # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
+        # 
+        # The set join operation configuration for the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
         self.first_join = first_join
         # Applicable query type: SLS_MULTI_QUERY.
-        # List of grouping field names.
+        # 
+        # The list of group field names.
         self.group_field_list = group_field_list
         # Applicable query type: CMS_BASIC_QUERY.
-        # Associated application group ID, valid only when relationType = GROUP.
+        # 
+        # The ID of the associated application group. This parameter takes effect only when relationType is set to GROUP.
         self.group_id = group_id
         # Applicable query type: SLS_MULTI_QUERY.
-        # Grouping type, with the following possible values:
         # 
-        # - none: No grouping.
-        # - label: Automatic label grouping.
-        # - custom: Custom label grouping.
+        # The group type. Valid values:
+        # - none: no grouping.
+        # - label: automatic label-based grouping.
+        # - custom: custom label-based grouping.
         self.group_type = group_type
+        # The array of label filters.
         self.label_filters = label_filters
+        self.log_set = log_set
         self.mark_tags = mark_tags
-        # 指标名。
+        # The metric name.
         self.metric = metric
-        # 监控指标集合。
+        # The collection of monitoring metrics.
         self.metric_set = metric_set
         # Applicable query type: CMS_BASIC_QUERY.
-        # Namespace of the metric.
-        self.namespace = namespace
-        # Applicable query types: SLS_MULTI_QUERY, APM_MULTI_QUERY.
-        # List of subqueries.
         # 
-        # For the SLS_MULTI_QUERY type, the list can contain up to three subqueries, and the number and order of subqueries must match the sub-datasource configurations in datasource.dsList.
+        # The namespace of the metric.
+        self.namespace = namespace
+        self.offset_secs = offset_secs
+        # Applicable query types: SLS_MULTI_QUERY and APM_MULTI_QUERY.
+        # 
+        # The list of subqueries.
+        # 
+        # For the SLS_MULTI_QUERY query type, a maximum of three subqueries are supported. The number and order of subqueries must match the sub-datasource config in datasource.dsList.
         self.queries = queries
         # Applicable query type: CMS_BASIC_QUERY.
-        # Resource scope for the rule query, with the following allowed values:
-        # - USER: All resources under the user\\"s UID.
-        # - GROUP: Application group.
-        # - INSTANCE: Specified list of instances.
+        # 
+        # The resource scope of the rule query. Valid values:
+        # - USER: all resources under the user UID.
+        # - GROUP: application group.
+        # - INSTANCE: specified instance list.
         self.relation_type = relation_type
         # Applicable query type: SLS_MULTI_QUERY.
-        # Configuration for the set join operation between the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
+        # 
+        # The set join operation configuration for the results of subquery 2 (queries[2]) and subquery 3 (queries[3]).
         self.second_join = second_join
-        # Service ID list.
+        # The list of service IDs.
         self.service_ids = service_ids
-        # Query type.
+        # The query type. 
         # 
         # Valid values:
+        # - PROMQL_QUERY: PromQL query.
+        # - SLS_MULTI_QUERY: SLS query.
+        # - APM_MULTI_QUERY: APM query.
+        # - CMS_BASIC_QUERY: basic cloud service monitoring query.
         # 
-        # - PROMQL_QUERY: PromQL query
-        # - SLS_MULTI_QUERY: SLS query
-        # - APM_MULTI_QUERY: APM query
-        # - CMS_BASIC_QUERY: Basic CloudMonitor query
+        # Different query types use different valid fields in the query object. For more information, see the "Applicable query type" description of each field.
         # 
-        # The valid fields within the query object vary depending on the query type. Refer to the "Applicable query type" description in each field\\"s documentation for details.
-        # 
-        # The query type must match the data source type, with the following correspondences:
-        # 
+        # The query type must match the data source type. The mappings are as follows:
         # - Prometheus data source (PROMETHEUS_DS): PROMQL_QUERY
         # - APM data source (APM_DS): APM_MULTI_QUERY
         # - SLS data source (SLS_MULTI_DS): SLS_MULTI_QUERY
-        # - Basic CloudMonitor data source (CMS_BASIC_DS): CMS_BASIC_QUERY.
+        # - Basic cloud service monitoring data source (CMS_BASIC_DS): CMS_BASIC_QUERY
         # 
         # This parameter is required.
         self.type = type
+        self.window_secs = window_secs
 
     def validate(self):
         if self.entity_fields:
@@ -140,6 +159,9 @@ class AlertRuleQuery(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.aggregate is not None:
+            result['aggregate'] = self.aggregate
+
         if self.check_after_data_complete is not None:
             result['checkAfterDataComplete'] = self.check_after_data_complete
 
@@ -180,6 +202,9 @@ class AlertRuleQuery(DaraModel):
             for k1 in self.label_filters:
                 result['labelFilters'].append(k1.to_map() if k1 else None)
 
+        if self.log_set is not None:
+            result['logSet'] = self.log_set
+
         result['markTags'] = []
         if self.mark_tags is not None:
             for k1 in self.mark_tags:
@@ -193,6 +218,9 @@ class AlertRuleQuery(DaraModel):
 
         if self.namespace is not None:
             result['namespace'] = self.namespace
+
+        if self.offset_secs is not None:
+            result['offsetSecs'] = self.offset_secs
 
         result['queries'] = []
         if self.queries is not None:
@@ -211,10 +239,16 @@ class AlertRuleQuery(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.window_secs is not None:
+            result['windowSecs'] = self.window_secs
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aggregate') is not None:
+            self.aggregate = m.get('aggregate')
+
         if m.get('checkAfterDataComplete') is not None:
             self.check_after_data_complete = m.get('checkAfterDataComplete')
 
@@ -259,6 +293,9 @@ class AlertRuleQuery(DaraModel):
                 temp_model = main_models.AlertRuleQueryLabelFilters()
                 self.label_filters.append(temp_model.from_map(k1))
 
+        if m.get('logSet') is not None:
+            self.log_set = m.get('logSet')
+
         self.mark_tags = []
         if m.get('markTags') is not None:
             for k1 in m.get('markTags'):
@@ -273,6 +310,9 @@ class AlertRuleQuery(DaraModel):
 
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
+
+        if m.get('offsetSecs') is not None:
+            self.offset_secs = m.get('offsetSecs')
 
         self.queries = []
         if m.get('queries') is not None:
@@ -293,6 +333,9 @@ class AlertRuleQuery(DaraModel):
         if m.get('type') is not None:
             self.type = m.get('type')
 
+        if m.get('windowSecs') is not None:
+            self.window_secs = m.get('windowSecs')
+
         return self
 
 class AlertRuleQueryQueries(DaraModel):
@@ -304,6 +347,9 @@ class AlertRuleQueryQueries(DaraModel):
         duration: int = None,
         end: int = None,
         expr: str = None,
+        label_filters: List[main_models.AlertRuleQueryQueriesLabelFilters] = None,
+        metric: str = None,
+        metric_set: str = None,
         name: str = None,
         prom_ql: str = None,
         start: int = None,
@@ -311,43 +357,61 @@ class AlertRuleQueryQueries(DaraModel):
         window: int = None,
     ):
         # Applicable query type: APM_MULTI_QUERY.
-        # ID of the APM predefined metric.
+        # 
+        # The ID of the APM predefined metric.
         self.apm_alert_metric_id = apm_alert_metric_id
         # Applicable query type: ARMS_MULTI_QUERY.
-        # Dimension filter configuration for APM metrics. Must be used in conjunction with apmAlertMetricId.
+        # 
+        # The dimension filter configuration for the APM metric. Must be used together with apmAlertMetricId.
         self.apm_filters = apm_filters
         # Applicable query type: ARMS_MULTI_QUERY.
-        # List of aggregation dimensions for the query, i.e., the dimensions by which the metric is aggregated.
+        # 
+        # The list of aggregation dimensions for the query, specifying which metric dimensions to aggregate by.
         self.apm_group_by = apm_group_by
         # Applicable query type: ARMS_MULTI_QUERY.
-        # Alert (data) duration.
+        # 
+        # The alert data duration.
         self.duration = duration
         # Applicable query type: SLS_MULTI_QUERY.
-        # Time offset end time (relative).
+        # 
+        # The relative time offset end time.
+        # 
         # If start and end are specified, do not specify window.
         self.end = end
         # Applicable query types: APM_MULTI_QUERY, SLS_MULTI_QUERY.
-        # Query expression.
+        # 
+        # The query expression.
         # 
         # - For APM_MULTI_QUERY, this field is optional and contains the PromQL generated for predefined metrics (used for data preview).
         # - For SLS_MULTI_QUERY, this field contains the SQL query statement.
         self.expr = expr
+        self.label_filters = label_filters
+        self.metric = metric
+        self.metric_set = metric_set
         self.name = name
         self.prom_ql = prom_ql
         # Applicable query type: SLS_MULTI_QUERY.
-        # SLS query time offset start time (relative).
-        # If start and end are specified, do not specify window. For example: start=15, timeUnit=minute, which means 15 minutes ago.
+        # 
+        # The relative time offset start time for the SLS query.
+        # 
+        # If start and end are specified, do not specify window. Example: start=15, timeUnit=minute indicates 15 minutes ago.
         self.start = start
         # Applicable query type: SLS_MULTI_QUERY.
-        # Time units for the start, end, and window parameters: day/hour/minute/second.
+        # 
+        # The time unit for the start, end, and window parameters: day/hour/minute/second.
         self.time_unit = time_unit
         # Applicable query type: SLS_MULTI_QUERY.
-        # Exact-hour time query interval. If window is specified, start and end should not be specified.
+        # 
+        # The time frame query interval. If window is specified, do not specify start or end.
         self.window = window
 
     def validate(self):
         if self.apm_filters:
             for v1 in self.apm_filters:
+                 if v1:
+                    v1.validate()
+        if self.label_filters:
+            for v1 in self.label_filters:
                  if v1:
                     v1.validate()
 
@@ -375,6 +439,17 @@ class AlertRuleQueryQueries(DaraModel):
 
         if self.expr is not None:
             result['expr'] = self.expr
+
+        result['labelFilters'] = []
+        if self.label_filters is not None:
+            for k1 in self.label_filters:
+                result['labelFilters'].append(k1.to_map() if k1 else None)
+
+        if self.metric is not None:
+            result['metric'] = self.metric
+
+        if self.metric_set is not None:
+            result['metricSet'] = self.metric_set
 
         if self.name is not None:
             result['name'] = self.name
@@ -416,6 +491,18 @@ class AlertRuleQueryQueries(DaraModel):
         if m.get('expr') is not None:
             self.expr = m.get('expr')
 
+        self.label_filters = []
+        if m.get('labelFilters') is not None:
+            for k1 in m.get('labelFilters'):
+                temp_model = main_models.AlertRuleQueryQueriesLabelFilters()
+                self.label_filters.append(temp_model.from_map(k1))
+
+        if m.get('metric') is not None:
+            self.metric = m.get('metric')
+
+        if m.get('metricSet') is not None:
+            self.metric_set = m.get('metricSet')
+
         if m.get('name') is not None:
             self.name = m.get('name')
 
@@ -433,6 +520,49 @@ class AlertRuleQueryQueries(DaraModel):
 
         return self
 
+class AlertRuleQueryQueriesLabelFilters(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        operator: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operator = operator
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.operator is not None:
+            result['operator'] = self.operator
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
+
+        return self
+
 class AlertRuleQueryQueriesApmFilters(DaraModel):
     def __init__(
         self,
@@ -440,16 +570,15 @@ class AlertRuleQueryQueriesApmFilters(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Dimension in APM metrics.
+        # The dimension in the APM metric.
         self.dim = dim
-        # Filter operation types:
-        # 
-        # - eq: equals.
-        # - neq: not equals.
-        # - match: regular expression match.
-        # - nmatch: regular expression not match.
+        # The filter operation type. Valid values:
+        # - eq: equal to
+        # - neq: not equal to
+        # - match: regex match
+        # - nmatch: regex not match
         self.type = type
-        # The corresponding value for the filter operation.
+        # The value corresponding to the filter operation.
         self.value = value
 
     def validate(self):
@@ -526,8 +655,11 @@ class AlertRuleQueryLabelFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # The label name.
         self.name = name
+        # The comparison operator that determines how to match the label value.
         self.operator = operator
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -569,11 +701,11 @@ class AlertRuleQueryEntityFilter(DaraModel):
         filters: List[main_models.AlertRuleQueryEntityFilterFilters] = None,
         type: str = None,
     ):
-        # 资源类型域。
+        # The resource type domain.
         self.domain = domain
-        # 过滤条件列表，用于进一步筛选资源。
+        # The list of filter conditions used to further filter resources.
         self.filters = filters
-        # 资源类型。
+        # The resource type.
         self.type = type
 
     def validate(self):
@@ -623,11 +755,11 @@ class AlertRuleQueryEntityFilterFilters(DaraModel):
         operator: str = None,
         value: str = None,
     ):
-        # 字段
+        # The field.
         self.field = field
-        # 比较运算符。
+        # The comparison operator.
         self.operator = operator
-        # 匹配的值。
+        # The matched value.
         self.value = value
 
     def validate(self):
@@ -668,7 +800,9 @@ class AlertRuleQueryEntityFields(DaraModel):
         field: str = None,
         value: str = None,
     ):
+        # The entity field name.
         self.field = field
+        # The field value.
         self.value = value
 
     def validate(self):

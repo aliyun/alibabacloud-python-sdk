@@ -13,9 +13,9 @@ class DescribeTaskErrorLogResponseBody(DaraModel):
         logs: List[main_models.DescribeTaskErrorLogResponseBodyLogs] = None,
         request_id: str = None,
     ):
-        # An array that consists of the error logs.
+        # The list of error logs.
         self.logs = logs
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

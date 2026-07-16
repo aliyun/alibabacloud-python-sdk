@@ -15,13 +15,13 @@ class ListPoliciesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response code.
         self.code = code
-        # The response payload.
+        # The response data.
         self.data = data
-        # The status message.
+        # The response message.
         self.message = message
-        # The request ID for API call tracing.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +76,9 @@ class ListPoliciesResponseBodyData(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

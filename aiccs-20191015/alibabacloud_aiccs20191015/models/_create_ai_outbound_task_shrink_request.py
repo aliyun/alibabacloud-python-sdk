@@ -19,22 +19,51 @@ class CreateAiOutboundTaskShrinkRequest(DaraModel):
         recall_rule_shrink: str = None,
         type: int = None,
     ):
+        # Concurrent call rate for automated outbound calls.
         self.concurrent_rate = concurrent_rate
+        # Job description. Length: 0 to 100 characters.
         self.description = description
+        # Job execution time, in JSON format.
+        # 
+        # > The end time must be later than the start time.
+        # 
         # This parameter is required.
         self.execution_time = execution_time
+        # Fixed outbound ratio for predictive dialing. Valid values: **≥1**.
         self.forecast_call_rate = forecast_call_rate
+        # The skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls). You can obtain this information in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.handler_id = handler_id
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job name. Length: 1 to 15 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # Called number deduplication policy. Valid values:
+        # - **0**: Remove duplicates within the job.
+        # - **1**: Do not remove duplicates.
+        # 
         # This parameter is required.
         self.num_repeated = num_repeated
+        # Outbound caller numbers.  
+        # 
+        # > Must be purchased numbers. Separate multiple numbers with commas (,).
+        # 
         # This parameter is required.
         self.outbound_nums_shrink = outbound_nums_shrink
+        # Failed call retry policy.  
+        # 
+        # > If empty, no retries are performed.
         self.recall_rule_shrink = recall_rule_shrink
+        # Task Type. Valid values:  
+        # - **2**: Predictive outbound call.  
+        # - **3**: Automated outbound call.
+        # 
         # This parameter is required.
         self.type = type
 

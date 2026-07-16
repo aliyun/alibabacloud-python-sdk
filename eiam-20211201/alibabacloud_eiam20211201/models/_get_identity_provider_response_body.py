@@ -13,9 +13,9 @@ class GetIdentityProviderResponseBody(DaraModel):
         identity_provider_detail: main_models.GetIdentityProviderResponseBodyIdentityProviderDetail = None,
         request_id: str = None,
     ):
-        # Identity provider Information.
+        # The identity provider information.
         self.identity_provider_detail = identity_provider_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78,84 +78,113 @@ class GetIdentityProviderResponseBodyIdentityProviderDetail(DaraModel):
         update_time: int = None,
         we_com_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig = None,
     ):
-        # Advanced configuration capability. 
-        # Value range:  
-        # Disabled: disabled  
-        # Enable: enabled
+        # The advanced configuration status. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.advanced_status = advanced_status
-        # The corresponding identity provider product, e.g., Okta, Google, or Azure AD. Possible values:
+        # The authentication source product, such as Okta, Google, or Azure AD. Valid values:
         # 
-        # DingTalk: urn:alibaba:idaas:idp:alibaba:dingtalk
+        # - urn:alibaba:idaas:idp:alibaba:dingtalk: DingTalk.
         # 
-        # LDAP: urn:alibaba:idaas:idp:unknown:ldap
+        # - urn:alibaba:idaas:idp:unknown:ldap: LDAP.
         # 
-        # Alibaba Cloud IDaaS: urn:alibaba:idaas:idp:alibaba:idaas
+        # - urn:alibaba:idaas:idp:alibaba:idaas: Alibaba Cloud IDaaS.
         # 
-        # WeCom (Enterprise WeChat): urn:alibaba:idaas:idp:tencent:wecom
+        # - urn:alibaba:idaas:idp:tencent:wecom: WeCom.
         # 
-        # Lark (Feishu): urn:alibaba:idaas:idp:bytedance:lark
+        # - urn:alibaba:idaas:idp:bytedance:lark: Lark.
         # 
-        # Active Directory: urn:alibaba:idaas:idp:microsoft:ad
+        # - urn:alibaba:idaas:idp:microsoft:ad: Active Directory.
         # 
-        # Azure Active Directory: urn:alibaba:idaas:idp:microsoft:aad
+        # - urn:alibaba:idaas:idp:microsoft:aad: Azure Active Directory.
         # 
-        # Alibaba Cloud SASE: urn:alibaba:idaas:idp:alibaba:sase
+        # - urn:alibaba:idaas:idp:alibaba:sase: Alibaba Cloud SASE.
         self.authn_source_supplier = authn_source_supplier
-        # Authentication type — OIDC or SAML. Possible values:
+        # The authentication method type, such as OIDC or SAML. Valid values:
         # 
-        # OIDC: urn:alibaba:idaas:authntype:oidc
+        # - urn:alibaba:idaas:authntype:oidc: OIDC.
         # 
-        # SAML: urn:alibaba:idaas:authntype:saml2
+        # - urn:alibaba:idaas:authntype:saml2: SAML.
         self.authn_source_type = authn_source_type
-        # Whether the corresponding IdP supports authentication. Value range: 
-        # Disabled: disabled  
-        # Enabled: enabled
+        # Specifies whether the corresponding IdP supports authentication. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.authn_status = authn_status
-        # The time when the version was created.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # Identity provider description.
+        # The description of the identity provider.
         self.description = description
-        # DingTalk Basic Configuration
+        # The DingTalk basic configuration.
         self.dingtalk_app_config = dingtalk_app_config
-        # DingTalk synchronous configuration.
+        # The DingTalk synchronization configuration. This value is returned only for DingTalk identity providers.
         self.dingtalk_provisioning_config = dingtalk_provisioning_config
+        # The endpoint metadata.
         self.endpoint_metadata = endpoint_metadata
-        # Identity provider external ID.
+        # The external ID of the identity provider.
         self.identity_provider_external_id = identity_provider_external_id
-        # Identity provider ID.
+        # The identity provider ID.
         self.identity_provider_id = identity_provider_id
-        # Identity provider name.
+        # The name of the identity provider.
         self.identity_provider_name = identity_provider_name
-        # Identity provider type.
+        # The synchronization type of the identity provider. Valid values:
+        # 
+        # - urn:alibaba:idaas:idp:alibaba:dingtalk:pull: Inbound DingTalk.
+        # 
+        # - urn:alibaba:idaas:idp:alibaba:dingtalk:push: Outbound DingTalk.
+        # 
+        # - urn:alibaba:idaas:idp:tencent:wecom:pull: Inbound WeCom.
+        # 
+        # - urn:alibaba:idaas:idp:bytedance:lark:pull: Inbound Lark.
+        # 
+        # - urn:alibaba:idaas:idp:microsoft:ad:pull: Inbound AD.
+        # 
+        # - urn:alibaba:idaas:idp:unknown:ldap:pull: Inbound LDAP.
+        # 
+        # - urn:alibaba:idaas:idp:standard:oidc: Standard OIDC.
+        # 
+        # - urn:alibaba:idaas:idp:alibaba:sase: SASE custom OIDC.
         self.identity_provider_type = identity_provider_type
-        # Instance ID.
+        # The instance ID.
         self.instance_id = instance_id
-        # Lark configuration.
+        # The Lark configuration.
         self.lark_config = lark_config
-        # Last status check result.
+        # The result of the last status check.
         self.last_status_check_job_result = last_status_check_job_result
-        # AD/LDAP Identity provider information.
+        # The AD/LDAP identity provider configuration.
         self.ldap_config = ldap_config
-        # The reason why write operations on the instance are locked.
+        # The lock reason.
         self.lock_reason = lock_reason
-        # The URL of the application logo.
+        # The custom logo URL of the identity provider.
         self.logo_url = logo_url
-        # The unique identifier of the network access endpoint.
+        # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC IdP configuration.
+        # The OIDC IdP configuration.
         self.oidc_config = oidc_config
+        # The SAML IdP configuration.
         self.saml_config = saml_config
-        # Sync in configuration.
+        # The inbound synchronization configuration.
         self.ud_pull_config = ud_pull_config
-        # Indicates whether the IDaaS EIAM system supports UD (User Directory) synchronization.
+        # Specifies whether the inbound synchronization feature is supported. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.ud_pull_status = ud_pull_status
-        # Outbound synchronization configuration.
+        # The outbound synchronization configuration.
         self.ud_push_config = ud_push_config
-        # Outbound synchronization capability.
+        # Specifies whether the outbound synchronization feature is enabled. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.ud_push_status = ud_push_status
-        # The time when the serviceInstance  was last updated.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
-        # WeCom configuration.
+        # The WeCom configuration.
         self.we_com_config = we_com_config
 
     def validate(self):
@@ -378,15 +407,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig(DaraModel
         corp_secret: str = None,
         trustable_domain: str = None,
     ):
-        # The ID of the load generator. This parameter is disabled.
+        # The ID of the WeCom self-built application.
         self.agent_id = agent_id
-        # Authorization callback domain.
+        # The authorization callback domain.
         self.authorize_callback_domain = authorize_callback_domain
-        # CorpId.
+        # The CorpId of the WeCom self-built application.
         self.corp_id = corp_id
-        # Corp secret.
+        # The CorpSecret of the WeCom self-built application.
         self.corp_secret = corp_secret
-        # Trusted domain.
+        # The trusted domain name.
         self.trustable_domain = trustable_domain
 
     def validate(self):
@@ -439,9 +468,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig(DaraMode
         incremental_callback_status: str = None,
         ud_sync_scope_configs: List[main_models.GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs] = None,
     ):
-        # Incremental callback status: Whether to process incremental callback data from the IdP.
+        # This field is not in use. Ignore it.
         self.incremental_callback_status = incremental_callback_status
-        # Outbound synchronization configuration Information.
+        # The list of synchronization scope configurations.
         self.ud_sync_scope_configs = ud_sync_scope_configs
 
     def validate(self):
@@ -484,9 +513,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncSco
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # Synchronization source node.
+        # The list of synchronization source nodes.
         self.source_scopes = source_scopes
-        # Synchronization target node.
+        # The synchronization target node.
         self.target_scope = target_scope
 
     def validate(self):
@@ -522,15 +551,19 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig(DaraMode
         incremental_callback_status: str = None,
         ud_sync_scope_config: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig = None,
     ):
-        # Whether to enable group synchronization. Possible values:
+        # Specifies whether group synchronization is enabled. Valid values:
         # 
-        # Disabled: disabled
+        # - disabled: Disabled.
         # 
-        # Enabled: enabled
+        # - enabled: Enabled.
         self.group_sync_status = group_sync_status
-        # Incremental callback status: Whether to process incremental callback data from the IdP.
+        # The incremental callback status. Specifies whether to process incremental callback data from the IdP. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.incremental_callback_status = incremental_callback_status
-        # Inbound synchronization configuration Information.
+        # The synchronization scope configuration.
         self.ud_sync_scope_config = ud_sync_scope_config
 
     def validate(self):
@@ -573,9 +606,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncSco
         source_scopes: List[str] = None,
         target_scope: str = None,
     ):
-        # Synchronization source node.
+        # The list of synchronization source nodes.
         self.source_scopes = source_scopes
-        # Synchronization target node.
+        # The synchronization target node.
         self.target_scope = target_scope
 
     def validate(self):
@@ -613,13 +646,23 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         id_psso_url: str = None,
         max_clock_skew: int = None,
         require_request_signed: bool = None,
+        want_assertions_signed: bool = None,
+        want_response_signed: bool = None,
     ):
+        # The binding type.
         self.binding_method = binding_method
+        # The list of IdP signing certificates.
         self.certificates = certificates
+        # The EntityId of the IdP.
         self.id_pentity_id = id_pentity_id
+        # The logon URL of the IdP.
         self.id_psso_url = id_psso_url
+        # The maximum clock skew.
         self.max_clock_skew = max_clock_skew
+        # Specifies whether the request must be signed.
         self.require_request_signed = require_request_signed
+        self.want_assertions_signed = want_assertions_signed
+        self.want_response_signed = want_response_signed
 
     def validate(self):
         if self.certificates:
@@ -652,6 +695,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         if self.require_request_signed is not None:
             result['RequireRequestSigned'] = self.require_request_signed
 
+        if self.want_assertions_signed is not None:
+            result['WantAssertionsSigned'] = self.want_assertions_signed
+
+        if self.want_response_signed is not None:
+            result['WantResponseSigned'] = self.want_response_signed
+
         return result
 
     def from_map(self, m: dict = None):
@@ -677,6 +726,12 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig(DaraModel)
         if m.get('RequireRequestSigned') is not None:
             self.require_request_signed = m.get('RequireRequestSigned')
 
+        if m.get('WantAssertionsSigned') is not None:
+            self.want_assertions_signed = m.get('WantAssertionsSigned')
+
+        if m.get('WantResponseSigned') is not None:
+            self.want_response_signed = m.get('WantResponseSigned')
+
         return self
 
 class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates(DaraModel):
@@ -685,7 +740,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificate
         certificate_metadata: main_models.GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata = None,
         content: str = None,
     ):
+        # The certificate metadata.
         self.certificate_metadata = certificate_metadata
+        # The certificate content.
         self.content = content
 
     def validate(self):
@@ -722,7 +779,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificate
         not_after: int = None,
         not_before: int = None,
     ):
+        # The latest validity date of the certificate.
         self.not_after = not_after
+        # The earliest validity date of the certificate.
         self.not_before = not_before
 
     def validate(self):
@@ -761,17 +820,21 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig(DaraModel)
         pkce_challenge_method: str = None,
         pkce_required: bool = None,
     ):
-        # OIDC client authentication configuration.
+        # The OIDC client authentication configuration.
         self.authn_param = authn_param
-        # OIDC endpoint configuration.
+        # The OIDC endpoint configuration.
         self.endpoint_config = endpoint_config
-        # OIDC authorization scope list.
+        # The list of OIDC grant scopes.
         self.grant_scopes = grant_scopes
-        # OIDC authorization grant type.
+        # The OIDC grant type.
         self.grant_type = grant_type
-        # Supported PKCE code challenge methods.
+        # The PKCE algorithm. Valid values:
+        # 
+        # - S256: SHA-256.
+        # 
+        # - plain: Plaintext.
         self.pkce_challenge_method = pkce_challenge_method
-        # Whether to use PKCE in authorization code grant flow.
+        # Specifies whether to use PKCE in the AuthorizationCode grant mode.
         self.pkce_required = pkce_required
 
     def validate(self):
@@ -838,15 +901,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigEndpointCon
         token_endpoint: str = None,
         userinfo_endpoint: str = None,
     ):
-        # OAuth2 authorization endpoint.
+        # The OIDC authorization endpoint.
         self.authorization_endpoint = authorization_endpoint
-        # The CA that issued the certificate.
+        # The OIDC issuer information.
         self.issuer = issuer
-        # Jwks uri.
+        # The OIDC JWKS URI.
         self.jwks_uri = jwks_uri
-        # Token endpoint.
+        # The OIDC token endpoint.
         self.token_endpoint = token_endpoint
-        # OIDC user info endpoint.
+        # The OIDC user information endpoint.
         self.userinfo_endpoint = userinfo_endpoint
 
     def validate(self):
@@ -900,11 +963,11 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfigAuthnParam(
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OIDC/OAuth2 authentication method.
+        # The OIDC authentication method.
         self.authn_method = authn_method
-        # The client ID of the device whose access credential you want to query.
+        # The OIDC client ID.
         self.client_id = client_id
-        # The application secret registered with the OIDC authentication service.
+        # The OIDC client secret.
         self.client_secret = client_secret
 
     def validate(self):
@@ -951,21 +1014,29 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig(DaraModel)
         ldap_server_port: int = None,
         start_tls_status: str = None,
     ):
-        # Administrator password.
+        # The AD/LDAP administrator password.
         self.administrator_password = administrator_password
-        # Administrator username.
+        # The AD/LDAP administrator account.
         self.administrator_username = administrator_username
-        # Whether to verify the fingerprint certificate.
+        # Specifies whether to verify the certificate fingerprint. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.certificate_fingerprint_status = certificate_fingerprint_status
-        # Certificate fingerprint list.
+        # The list of certificate fingerprints.
         self.certificate_fingerprints = certificate_fingerprints
-        # Ldap protocol.
+        # The communication protocol of AD/LDAP.
         self.ldap_protocol = ldap_protocol
-        # ldap server host.
+        # The AD/LDAP server address.
         self.ldap_server_host = ldap_server_host
-        # ldap server port.
+        # The AD/LDAP server address.
         self.ldap_server_port = ldap_server_port
-        # StartTls status.
+        # Specifies whether StartTLS is enabled. Valid values:
+        # 
+        # - disabled: Disabled.
+        # 
+        # - enabled: Enabled.
         self.start_tls_status = start_tls_status
 
     def validate(self):
@@ -1039,15 +1110,15 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig(DaraModel)
         enterprise_number: str = None,
         verification_token: str = None,
     ):
-        # The application ID.
+        # The AppId of the Lark self-built application.
         self.app_id = app_id
-        # The creation time.
+        # The AppSecret of the Lark self-built application.
         self.app_secret = app_secret
-        # Feishu encryptKey.
+        # The EncryptKey of the Lark self-built application.
         self.encrypt_key = encrypt_key
-        # Feishu enterprise code.
+        # The Lark enterprise number.
         self.enterprise_number = enterprise_number
-        # Feishu verificationToken.
+        # The VerificationToken of the Lark self-built application.
         self.verification_token = verification_token
 
     def validate(self):
@@ -1101,8 +1172,11 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata(Dara
         saml_entity_id: str = None,
         saml_meta_endpoint: str = None,
     ):
+        # The SAML Assertion Consumer Service (ACS) endpoint.
         self.saml_acs_endpoint = saml_acs_endpoint
+        # The SAML EntityId.
         self.saml_entity_id = saml_entity_id
+        # The SAML metadata endpoint.
         self.saml_meta_endpoint = saml_meta_endpoint
 
     def validate(self):
@@ -1145,13 +1219,13 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         corp_id: str = None,
         corp_name: str = None,
     ):
-        # List of authorized DingTalk departments.
+        # The authorized DingTalk departments.
         self.authed_department_ids = authed_department_ids
-        # Authorized DingTalk account list.
+        # The list of authorized DingTalk accounts.
         self.authed_users = authed_users
-        # DingTalk enterprise corpId.
+        # The DingTalk enterprise CorpId.
         self.corp_id = corp_id
-        # The name of the company.
+        # The DingTalk enterprise name.
         self.corp_name = corp_name
 
     def validate(self):
@@ -1215,9 +1289,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         name: str = None,
         user_id: str = None,
     ):
-        # DingTalk user name.
+        # The DingTalk username.
         self.name = name
-        # DingTalk user id.
+        # The DingTalk user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -1252,9 +1326,9 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningC
         dept_id: str = None,
         dept_name: str = None,
     ):
-        # Department ID.
+        # The DingTalk department ID.
         self.dept_id = dept_id
-        # Department name.
+        # The DingTalk department name.
         self.dept_name = dept_name
 
     def validate(self):
@@ -1294,19 +1368,23 @@ class GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig(Dar
         encrypt_key: str = None,
         verification_token: str = None,
     ):
-        # The AppKey for the application.
+        # The AppKey of the DingTalk first-party application.
         self.app_key = app_key
-        # The details of the application secret.
+        # The AppSecret of the DingTalk first-party application.
         self.app_secret = app_secret
-        # DingTalk corpId.
+        # The CorpId of the DingTalk first-party application.
         self.corp_id = corp_id
-        # IDaaS EIAM 钉钉扫码登录版本
+        # The DingTalk QR code logon version.
         self.dingtalk_login_version = dingtalk_login_version
-        # DingTalk Version.
+        # The DingTalk version. Valid values:
+        # 
+        # - public_dingtalk: Standard DingTalk.
+        # 
+        # - private_dingtalk: Dedicated DingTalk.
         self.dingtalk_version = dingtalk_version
-        # DingTalk  encrypt key.
+        # The EncryptKey of the DingTalk application.
         self.encrypt_key = encrypt_key
-        # DingTalk  verification token.
+        # The VerificationToken of the DingTalk application.
         self.verification_token = verification_token
 
     def validate(self):

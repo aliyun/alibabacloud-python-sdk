@@ -14,11 +14,21 @@ class WorkspaceActionLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The log.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. This can be an error message or an informational notice.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates if the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

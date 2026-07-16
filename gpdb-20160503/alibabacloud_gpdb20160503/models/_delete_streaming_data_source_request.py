@@ -19,6 +19,9 @@ class DeleteStreamingDataSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # The region ID.
+        # 
+        # > You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
         self.region_id = region_id
 
     def validate(self):

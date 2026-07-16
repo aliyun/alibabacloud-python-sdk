@@ -16,18 +16,18 @@ class DescribeModuleConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The number of configurations for the module.
+        # The number of module settings.
         self.count = count
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # An array that consists of the configurations of the module.
+        # The list of module settings.
         self.module_config_list = module_config_list
-        # The request ID.
+        # The request ID. It is a unique identifier that Alibaba Cloud generates for the request. You can use it to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,11 +89,11 @@ class DescribeModuleConfigResponseBodyModuleConfigList(DaraModel):
         items: List[main_models.DescribeModuleConfigResponseBodyModuleConfigListItems] = None,
         module_name: str = None,
     ):
-        # The name of the configuration.
+        # The configuration name.
         self.config_name = config_name
-        # An array that consists of the configuration items.
+        # The list of configuration items.
         self.items = items
-        # The name of the module.
+        # The module name.
         self.module_name = module_name
 
     def validate(self):
@@ -148,9 +148,9 @@ class DescribeModuleConfigResponseBodyModuleConfigListItems(DaraModel):
     ):
         # The ID of the server group.
         self.group_id = group_id
-        # The ID of the server.
+        # The ID of the server instance.
         self.instance_id = instance_id
-        # The name of the server.
+        # The name of the server instance.
         self.instance_name = instance_name
         # The IP address of the server.
         self.ip = ip

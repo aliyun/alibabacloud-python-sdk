@@ -11,8 +11,11 @@ class ListAuditContentErrorTypesRequest(DaraModel):
         next_token: str = None,
         workspace_id: str = None,
     ):
+        # Maximum number of records
         self.max_results = max_results
+        # Token for the next page
         self.next_token = next_token
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

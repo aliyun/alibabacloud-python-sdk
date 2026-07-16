@@ -23,22 +23,45 @@ class ModifyVirtualBorderRouterAttributeRequest(DaraModel):
         vbr_id: str = None,
         vlan_id: int = None,
     ):
+        # The circuit code of the Express Connect circuit. The circuit code is provided by your connectivity provider.
         self.circuit_code = circuit_code
+        # A client-generated token that ensures the request is idempotent. The token must be unique for each request, contain only ASCII characters, and not exceed 64 characters in length.
         self.client_token = client_token
+        # The description of the VBR.
+        # 
+        # The description must be 2 to 256 characters long. It must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
+        # The local gateway IP address for the BGP session.
         self.local_gateway_ip = local_gateway_ip
+        # The name of the VBR.
+        # 
+        # The name must be 2 to 128 characters long. It must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The peer gateway IP address for the BGP session.
         self.peer_gateway_ip = peer_gateway_ip
+        # The subnet mask for the `LocalGatewayIp` and `PeerGatewayIp`.
         self.peering_subnet_mask = peering_subnet_mask
+        # The ID of the region where the virtual border router (VBR) is deployed.
+        # 
+        # To get a list of the latest regions, call the `DescribeRegions` operation.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The CIDR block of the on-premises network that is connected to the VBR.
         self.user_cidr = user_cidr
+        # The ID of the VBR to modify.
+        # 
         # This parameter is required.
         self.vbr_id = vbr_id
+        # The VLAN ID of the VBR. The VLAN ID must be unique on the physical connection.
+        # 
+        # Valid values: 0 to 4095.
+        # 
+        # A value of 0 indicates that the VBR does not use a VLAN.
         self.vlan_id = vlan_id
 
     def validate(self):

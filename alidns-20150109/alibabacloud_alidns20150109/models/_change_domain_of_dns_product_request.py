@@ -13,29 +13,32 @@ class ChangeDomainOfDnsProductRequest(DaraModel):
         new_domain: str = None,
         user_client_ip: str = None,
     ):
-        # Specifies whether to forcibly bind a domain name to the instance. Valid values:
+        # Specifies whether to forcefully attach the domain name.
+        # Valid values:
         # 
-        # *   **false****: no**
-        # *   **true**: **yes**
+        # - **false**: No
         # 
-        # Default value: **false**.
+        # - **true**: Yes
+        # 
+        # The default value is **false**.
         self.force = force
-        # The ID of the Alibaba Cloud Domain Name System (DNS) instance.
-        # 
-        # You can call the [ListCloudGtmInstances ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID.
+        # The ID of the Cloud DNS product.
+        # You can obtain the ID by calling [ListCloudGtmInstances](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-listcloudgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response.
+        # Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
         # 
-        # Default value: **zh**.
+        # - **en**: English
+        # 
+        # The default value is **zh**.
         self.lang = lang
-        # The domain name that you want to bind to the instance. If you leave this parameter empty, the domain name that is bound to the instance is unbound from the instance.
+        # The domain name that you want to attach. If you leave this parameter empty, the currently attached domain name is detached.
         self.new_domain = new_domain
-        # The IP address of the client.
+        # The client IP address.
         self.user_client_ip = user_client_ip
 
     def validate(self):

@@ -14,15 +14,17 @@ class DeleteSyndbResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # *   If the value **true** is returned for the **Status** parameter, the system does not return the ErrorMsg parameter.
-        # *   If the value **false** is returned for the **Status** parameter, the system returns the deletion failure cause for the ErrorMsg parameter.
+        # - This parameter is not returned if **Status** is **true**.
+        # 
+        # - If **Status** is **false**, this parameter indicates the reason for the failure.
         self.error_msg = error_msg
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the database used for data synchronization was deleted. Valid values:
+        # Indicates whether the deletion was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The deletion was successful.
+        # 
+        # - **false**: The deletion failed.
         self.status = status
 
     def validate(self):

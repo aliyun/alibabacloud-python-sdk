@@ -9,7 +9,7 @@ class GetCursorRequest(DaraModel):
         self,
         from_: str = None,
     ):
-        # The point in time that you want to use to query a cursor. Set the value to a UNIX timestamp or a string such as `begin` and `end`.
+        # A point in time. This can be a UNIX timestamp or the string `begin` or `end`.
         # 
         # This parameter is required.
         self.from_ = from_

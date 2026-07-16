@@ -13,9 +13,9 @@ class DescribeRuleDetailByRuleIdResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeRuleDetailByRuleIdResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object.
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -71,47 +71,47 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(DaraModel):
         rule_type: str = None,
         rule_version_id: int = None,
     ):
-        # Service authorization type.
+        # The service authorization type.
         self.auth_type = auth_type
-        # Version.
+        # The version.
         self.biz_version = biz_version
-        # Primary key ID of the policy.
+        # The primary key ID of the policy.
         self.console_rule_id = console_rule_id
-        # Creation type.
+        # The creation type.
         self.create_type = create_type
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Log expression.
+        # The logical expression.
         self.logic_expression = logic_expression
-        # Main event code.
+        # The main event code.
         self.main_event_code = main_event_code
-        # Memo.
+        # The remarks.
         self.memo = memo
-        # Rule action structure.
+        # The rule action structure.
         self.rule_action_map = rule_action_map
-        # Rule actions.
+        # The rule actions.
         self.rule_actions = rule_actions
-        # Rule authorization type.
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # DSL policy expression.
+        # The DSL policy expression.
         self.rule_body = rule_body
-        # Rule expressions.
+        # The rule expressions.
         self.rule_expressions = rule_expressions
-        # Policy ID.
+        # The policy ID.
         self.rule_id = rule_id
-        # Policy name.
+        # The policy name.
         self.rule_name = rule_name
-        # Policy status.
+        # The policy status.
         self.rule_status = rule_status
-        # Rule type.
+        # The policy type.
         self.rule_type = rule_type
-        # Primary key ID of the policy version.
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):

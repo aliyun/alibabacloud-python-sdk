@@ -11,9 +11,9 @@ class CreateLineageRelationshipResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The lineage ID.
+        # The lineage relationship ID.
         self.id = id
-        # The request ID. The unique identifier of a request.
+        # The request ID. A unique identifier for the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

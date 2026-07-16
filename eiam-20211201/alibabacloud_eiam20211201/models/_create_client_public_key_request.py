@@ -13,21 +13,23 @@ class CreateClientPublicKeyRequest(DaraModel):
         instance_id: str = None,
         public_key: str = None,
     ):
-        # IDaaS的应用ClientpublicKey算法类型
+        # The algorithm type.
         # 
         # This parameter is required.
         self.algorithm_type = algorithm_type
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 应用ClientpublicKey的公钥，只接收 PEM 格式
+        # The public key in PEM format. The key must be of the SPKI type, starting with "-----BEGIN PUBLIC KEY-----" and ending with "-----END PUBLIC KEY-----".
         # 
         # This parameter is required.
         self.public_key = public_key

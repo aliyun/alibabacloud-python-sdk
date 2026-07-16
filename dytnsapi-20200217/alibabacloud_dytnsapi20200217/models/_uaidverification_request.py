@@ -18,18 +18,36 @@ class UAIDVerificationRequest(DaraModel):
         token: str = None,
         user_grant_id: str = None,
     ):
+        # The authorization code.
+        # 
+        # > In **Cell Phone Number Service** -> [**Tag Marketplace**](https://dytns.console.aliyun.com/analysis/square), select a tag and submit a usage application. After the application is approved, you will obtain this authorization code.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The carrier of the user. Valid values:
+        # - **CM**: China Mobile.
+        # - **CU**: China Unicom.
+        # - **CT**: China Telecom.
+        # 
         # This parameter is required.
         self.carrier = carrier
+        # The public IP address. This parameter is required when the carrier is China Unicom (CU). Both IPv4 and IPv6 addresses are supported.
         self.ip = ip
+        # The external serial number.
         self.out_id = out_id
         self.owner_id = owner_id
+        # The province ID. This parameter is optional when the carrier is China Unicom (CU). The value must be the same as the value of the province field in the response returned when the token is obtained.
         self.province = province
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The carrier authorization token.  
+        # > For information about how to obtain the authorization token and its signature, see the GetUAIDApplyTokenSign API documentation.
+        # 
         # This parameter is required.
         self.token = token
+        # The user authorization code, which indicates that the user has granted authorization. The value must be a unique random number that does not exceed 128 characters in length.  
+        # 
+        # <warning>When you integrate the service, we recommend that you include UAID-related content in the privacy policy of your product.</warning>
         self.user_grant_id = user_grant_id
 
     def validate(self):

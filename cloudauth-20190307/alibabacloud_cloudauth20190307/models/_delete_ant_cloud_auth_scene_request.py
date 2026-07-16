@@ -9,7 +9,7 @@ class DeleteAntCloudAuthSceneRequest(DaraModel):
         self,
         scene_id: int = None,
     ):
-        # ID of the scene to be deleted.
+        # The ID of the scene to delete.
         # 
         # This parameter is required.
         self.scene_id = scene_id

@@ -46,8 +46,6 @@ class AttachKeyPairResponseBody(DaraModel):
 
         return self
 
-
-
 class AttachKeyPairResponseBodyData(DaraModel):
     def __init__(
         self,

@@ -16,11 +16,15 @@ class ListContactsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The list of contacts.
         self.contacts = contacts
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -90,15 +94,25 @@ class ListContactsResponseBodyContacts(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
+        # The ID of the contact.
         self.contact_id = contact_id
+        # The email address of the contact.
         self.email = email
+        # Indicates whether the email address is verified.
         self.email_verify = email_verify
+        # A list of contact group IDs to which the contact belongs.
         self.group_list = group_list
+        # A map of user IDs for various instant messaging (IM) tools.
         self.im_user_ids = im_user_ids
+        # The language preference for notifications. Valid values: zh-CN and en-US.
         self.lang = lang
+        # The name of the contact.
         self.name = name
+        # The phone number of the contact.
         self.phone = phone
+        # Indicates whether the phone number is verified.
         self.phone_verify = phone_verify
+        # The last time the contact was updated.
         self.update_time = update_time
         self.workspace = workspace
 

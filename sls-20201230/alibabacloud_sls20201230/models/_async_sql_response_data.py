@@ -17,12 +17,30 @@ class AsyncSqlResponseData(DaraModel):
         rows: List[List[str]] = None,
         state: str = None,
     ):
+        # The metadata of the SQL query.
         self.async_sql_meta_pb = async_sql_meta_pb
+        # If the SQL query fails to execute, this parameter contains the specific error code.
         self.error_code = error_code
+        # If the SQL query fails to execute, this parameter contains the specific error message.
         self.error_message = error_message
+        # The ID of the asynchronous SQL query.
+        # 
         # This parameter is required.
         self.id = id
+        # The SQL result. Each element in the array is also an array that corresponds to a specific row of the result.
         self.rows = rows
+        # The current execution state of the asynchronous SQL query. Valid values are:
+        # 
+        # - RUNNING
+        # 
+        # - FINISHED
+        # 
+        # - FAILED
+        # 
+        # - CANCELLED
+        # 
+        # RUNNING is a temporary state that indicates the SQL query is still running. You can read the results only when the state is FINISHED. The error_code and error_message parameters are valid only when the state is FAILED.
+        # 
         # This parameter is required.
         self.state = state
 
@@ -91,12 +109,23 @@ class AsyncSqlResponseDataAsyncSqlMetaPB(DaraModel):
         progress: str = None,
         result_rows: int = None,
     ):
+        # The number of CPU cores used.
         self.cpu_cores = cpu_cores
+        # The total CPU time consumed in seconds.
         self.cpu_sec = cpu_sec
+        # The SQL query running time in milliseconds.
         self.elapsed_milli = elapsed_milli
+        # The names of the columns in the SQL result. The keys correspond one-to-one with the fields in the SELECT statement.
         self.keys = keys
+        # The number of raw data rows processed.
         self.processed_rows = processed_rows
+        # Indicates whether the SQL result is accurate. Valid values are:
+        # 
+        # - Complete: The result is accurate.
+        # 
+        # - Incomplete: The result is not accurate.
         self.progress = progress
+        # The total number of rows in the result. When you read the results, the offset value must not exceed this value.
         self.result_rows = result_rows
 
     def validate(self):

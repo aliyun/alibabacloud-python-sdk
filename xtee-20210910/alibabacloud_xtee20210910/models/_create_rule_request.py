@@ -22,35 +22,35 @@ class CreateRuleRequest(DaraModel):
         rule_status: str = None,
         rule_type: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Rule ID.
+        # The rule ID.
         self.console_rule_id = console_rule_id
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Policy expression execution logic
+        # The execution logic of the policy expression.
         self.logic_expression = logic_expression
-        # Memo
+        # The remarks.
         self.memo = memo
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Policy execution output action
+        # The output actions of the policy execution.
         self.rule_actions = rule_actions
-        # DSL policy execution logic
+        # The DSL policy execution logic.
         self.rule_body = rule_body
-        # Policy expression
+        # The policy expressions.
         self.rule_expressions = rule_expressions
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Policy status
+        # The policy status.
         self.rule_status = rule_status
-        # Policy type
+        # The policy type.
         self.rule_type = rule_type
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListNodeInstanceTypeResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The resource types.
+        # The list of resource specifications.
         self.node_instance_type_models = node_instance_type_models
-        # The page number of the returned page.
+        # The page number of the query results currently displayed.
         self.page_number = page_number
-        # The number of entries on each page.
+        # The number of query results per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -95,28 +95,34 @@ class ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels(DaraModel):
         self.cpu = cpu
         # The number of GPUs.
         self.gpu = gpu
-        # The GPU size. Unit: MB.
+        # The GPU memory size. Unit: MB.
         self.gpu_memory = gpu_memory
-        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
+        # The maximum number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification. The valid values for each resource specification are as follows:
         # 
-        # *   appstreaming.general.4c8g: 1 to 2
-        # *   appstreaming.general.8c16g: 1 to 4
-        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
-        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
-        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
+        # - appstreaming.general.2c4g: 1
+        # - appstreaming.general.4c8g: 1 to 2
+        # - appstreaming.general.8c16g: 1 to 4
+        # - appstreaming.vgpu.8c16g.4g: 1 to 4
+        # - appstreaming.vgpu.8c31g.16g: 1 to 4
+        # - appstreaming.vgpu.14c93g.12g: 1 to 7
+        # - appstreaming.vgpu.4c10g.2gt4: 1 to 2
+        # - appstreaming.vgpu.4c16g.2ga10: 1 to 2
+        # - appstreaming.vgpu.8c16g.4g: 1 to 4
+        # - appstreaming.vgpu.8c31g.16g: 1 to 4
+        # - appstreaming.vgpu.8c16g.4gt4: 1 to 4
+        # - appstreaming.vgpu.8c32g.4ga10: 1 to 4
+        # - appstreaming.vgpu.12c46g.11g28: 1 to 6
+        # - appstreaming.vgpu.14c93g.12g: 1 to 7
+        # - appstreaming.vgpu.16c32g.8g: 1 to 8
+        # - appstreaming.vgpu.16c62g.8ga10: 1 to 8.
         self.max_capacity = max_capacity
         # The memory size. Unit: MB.
         self.memory = memory
-        # The ID of the resource type.
+        # The ID of the resource specification type.
         self.node_instance_type = node_instance_type
-        # The resource type family.
-        # 
-        # Valid values:
-        # 
-        # *   appstreaming.general: WUYING - General
-        # *   appstreaming.vgpu: WUYING - Graphics
+        # The resource specification family.
         self.node_instance_type_family = node_instance_type_family
-        # The name of the resource type.
+        # The name of the resource specification.
         self.node_type_name = node_type_name
 
     def validate(self):

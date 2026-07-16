@@ -16,13 +16,27 @@ class CancelJobsRequest(DaraModel):
         job_reference_id: List[str] = None,
         scenario_id: str = None,
     ):
+        # Specifies whether to cancel all jobs.
+        # 
         # This parameter is required.
         self.all = all
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # A filter condition. The task group ID.
         self.job_group_id = job_group_id
+        # A filter condition. The job ID.
+        # 
+        # > The JobId parameter is required when the All parameter is set to false.
         self.job_id = job_id
+        # A filter condition. The reference ID of the job.
+        # 
+        # > This is the ReferenceId that you specified when you uploaded the contact list.
         self.job_reference_id = job_reference_id
+        # A filter condition. The scenario ID.
+        # 
+        # > Obtain this ID by calling the DescribeJobGroup operation.
         self.scenario_id = scenario_id
 
     def validate(self):

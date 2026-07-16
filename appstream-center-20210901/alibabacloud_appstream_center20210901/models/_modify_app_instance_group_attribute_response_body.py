@@ -11,9 +11,9 @@ class ModifyAppInstanceGroupAttributeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The error code returned if the request failed.
         self.code = code
-        # The error message.
+        # The error message returned if the request failed.
         self.message = message
         # The request ID.
         self.request_id = request_id

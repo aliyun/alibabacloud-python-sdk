@@ -11,7 +11,6 @@ class DeleteSubscribedCalendarResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.result = result
-        # requestId
         self.request_id = request_id
 
     def validate(self):

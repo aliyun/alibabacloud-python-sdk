@@ -15,12 +15,19 @@ class ListTaskGroupRequest(DaraModel):
         task_group_name: str = None,
         type: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # The language of the error message returned by the API. Valid values: zh: Chinese; en: English. The default value is en.
         self.lang = lang
+        # Page size.
         self.page_size = page_size
+        # The area encoding.
         self.reg_id = reg_id
+        # Sample name.
         self.sample_name = sample_name
+        # Task group name.
         self.task_group_name = task_group_name
+        # Access type.
         self.type = type
 
     def validate(self):

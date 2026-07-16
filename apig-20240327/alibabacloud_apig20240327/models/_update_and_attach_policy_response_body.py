@@ -11,11 +11,11 @@ class UpdateAndAttachPolicyResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code returned.
+        # The response code.
         self.code = code
-        # The response message returned.
+        # The response message.
         self.message = message
-        # The request ID, which is used to trace the call link.
+        # The request ID, which is used to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):

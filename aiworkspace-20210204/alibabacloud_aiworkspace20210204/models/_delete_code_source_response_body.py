@@ -10,9 +10,9 @@ class DeleteCodeSourceResponseBody(DaraModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the deleted code source.
+        # The ID of the deleted code source configuration.
         self.code_source_id = code_source_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -15,11 +15,15 @@ class UpdatePolarClawAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details of the updated agent.
         self.agent = agent
         # Agent ID
         self.agent_id = agent_id
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -86,8 +90,11 @@ class UpdatePolarClawAgentResponseBodyAgent(DaraModel):
     ):
         # Agent ID
         self.id = id
+        # The identity information.
         self.identity = identity
+        # The display name of the agent.
         self.name = name
+        # The working directory path.
         self.workspace = workspace
 
     def validate(self):
@@ -139,10 +146,15 @@ class UpdatePolarClawAgentResponseBodyAgentIdentity(DaraModel):
         name: str = None,
         theme: str = None,
     ):
+        # The avatar path or content.
         self.avatar = avatar
+        # The avatar URL.
         self.avatar_url = avatar_url
+        # The emoji identifier. The value is in Unicode encoding format such as U+1F99E, or a direct emoji character.
         self.emoji = emoji
+        # The identity name.
         self.name = name
+        # The theme.
         self.theme = theme
 
     def validate(self):

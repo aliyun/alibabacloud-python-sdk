@@ -38,13 +38,15 @@ class ListEditingProjectsRequest(DaraModel):
         self.next_token = next_token
         # The type of the editing project. Valid values:
         # 
-        # *   EditingProject: a regular editing project.
-        # *   LiveEditingProject: a live stream editing project.
+        # - EditingProject: a regular editing project.
+        # 
+        # - LiveEditingProject: a live stream editing project.
         self.project_type = project_type
         # The order of sorting of the results. Valid values:
         # 
-        # *   CreationTime:Desc (default): sorts the results in reverse chronological order.
-        # *   CreationTime:Asc: sorts the results in chronological order.
+        # - CreationTime:Desc (default): sorts the results in reverse chronological order.
+        # 
+        # - CreationTime:Asc: sorts the results in chronological order.
         self.sort_by = sort_by
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
@@ -52,14 +54,17 @@ class ListEditingProjectsRequest(DaraModel):
         self.status = status
         # The template type. This parameter is required if you create a template-based online editing project. Default value: Timeline.
         # 
-        # *
-        # *
+        # -
+        # 
+        # -
         # 
         # Valid values:
         # 
-        # *   Timeline: a regular template.
-        # *   VETemplate: an advanced template.
-        # *   None: general editing.
+        # - Timeline: a regular template.
+        # 
+        # - VETemplate: an advanced template.
+        # 
+        # - None: general editing.
         self.template_type = template_type
 
     def validate(self):

@@ -9,6 +9,7 @@ class CancelFundAccountLowAvailableAmountAlarmRequest(DaraModel):
         self,
         fund_account_id: int = None,
     ):
+        # The ID of the fund account. If this parameter is not specified, the ID of the account owned by the current account is used by default.
         self.fund_account_id = fund_account_id
 
     def validate(self):

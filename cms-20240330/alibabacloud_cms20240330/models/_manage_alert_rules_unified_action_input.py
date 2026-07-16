@@ -21,38 +21,32 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
+        observe_resource_instance_id: str = None,
+        observe_resource_type: str = None,
         query_config: main_models.QueryConfigUnified = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
         uuid: str = None,
         uuid_list: List[str] = None,
         workspace: str = None,
     ):
-        # 操作类型
-        # 
         # This parameter is required.
         self.action = action
         self.action_integration_config = action_integration_config
-        # 注解
         self.annotations = annotations
         self.arms_integration_config = arms_integration_config
         self.condition_config = condition_config
-        # 内容模板
         self.content_template = content_template
         self.datasource_config = datasource_config
-        # 显示名称
         self.display_name = display_name
-        # 是否启用
         self.enabled = enabled
-        # 标签
         self.labels = labels
         self.notify_config = notify_config
+        self.observe_resource_instance_id = observe_resource_instance_id
+        self.observe_resource_type = observe_resource_type
         self.query_config = query_config
         self.schedule_config = schedule_config
-        # 规则 UUID（UPDATE/PATCH 必填）
         self.uuid = uuid
-        # 待删除规则 UUID 列表（BATCH_DELETE）
         self.uuid_list = uuid_list
-        # 工作空间（CREATE/UPDATE 等）
         self.workspace = workspace
 
     def validate(self):
@@ -108,6 +102,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
 
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
+
+        if self.observe_resource_instance_id is not None:
+            result['observeResourceInstanceId'] = self.observe_resource_instance_id
+
+        if self.observe_resource_type is not None:
+            result['observeResourceType'] = self.observe_resource_type
 
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
@@ -165,6 +165,12 @@ class ManageAlertRulesUnifiedActionInput(DaraModel):
         if m.get('notifyConfig') is not None:
             temp_model = main_models.NotifyConfigUnified()
             self.notify_config = temp_model.from_map(m.get('notifyConfig'))
+
+        if m.get('observeResourceInstanceId') is not None:
+            self.observe_resource_instance_id = m.get('observeResourceInstanceId')
+
+        if m.get('observeResourceType') is not None:
+            self.observe_resource_type = m.get('observeResourceType')
 
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()

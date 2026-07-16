@@ -18,15 +18,28 @@ class AiStatisticsPathField(DaraModel):
         sensitive: bool = None,
         source: str = None,
     ):
+        # The secondary category.
         self.category = category
+        # The field description.
         self.description = description
+        # The log key.
         self.field_key = field_key
+        # The request or response direction.
         self.io = io
+        # The corresponding JSON path (GJSON syntax).
         self.json_path = json_path
+        # The display name of the field.
         self.name = name
+        # Specifies whether collection is enabled.
         self.record_enabled = record_enabled
+        # The rule used for streaming response extraction. Valid values:
+        # - append: appends content
+        # - first: retrieves the first value
+        # - replace: retrieves the last value
         self.rule = rule
+        # Indicates whether the field is sensitive.
         self.sensitive = sensitive
+        # The data source.
         self.source = source
 
     def validate(self):

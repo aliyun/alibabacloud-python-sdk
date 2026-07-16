@@ -12,9 +12,21 @@ class ModifyResourceLogDeliveryStatusResponseBody(DaraModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The name of the log delivery configuration.
         self.delivery_name = delivery_name
+        # The type of log delivery destination for the protected object. Valid values:
+        # 
+        # - **syslog**: logs are delivered to a syslog server.
+        # 
+        # - **kafka**: logs are delivered to a Kafka cluster.
         self.delivery_type = delivery_type
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether log delivery is enabled for the protected object. Valid values:
+        # 
+        # - **true**: Log delivery is enabled.
+        # 
+        # - **false**: Log delivery is disabled.
         self.status = status
 
     def validate(self):

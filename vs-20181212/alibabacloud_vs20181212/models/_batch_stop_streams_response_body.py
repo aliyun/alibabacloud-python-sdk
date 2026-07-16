@@ -13,7 +13,9 @@ class BatchStopStreamsResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchStopStreamsResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,13 @@ class BatchStopStreamsResponseBodyResults(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The error message for the stream.
+        # 
+        # > This parameter is returned only if an error occurs on the stream.
         self.error = error
+        # The stream ID.
         self.id = id
+        # The stream name.
         self.name = name
 
     def validate(self):

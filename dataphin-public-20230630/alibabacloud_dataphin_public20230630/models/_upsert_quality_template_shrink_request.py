@@ -10,8 +10,12 @@ class UpsertQualityTemplateShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         upsert_command_shrink: str = None,
     ):
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Upsert command.
+        # 
         # This parameter is required.
         self.upsert_command_shrink = upsert_command_shrink
 

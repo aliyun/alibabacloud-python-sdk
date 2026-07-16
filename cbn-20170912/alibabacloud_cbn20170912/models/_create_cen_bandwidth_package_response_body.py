@@ -15,7 +15,7 @@ class CreateCenBandwidthPackageResponseBody(DaraModel):
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
         # The ID of the order for the bandwidth plan.
         self.cen_bandwidth_package_order_id = cen_bandwidth_package_order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

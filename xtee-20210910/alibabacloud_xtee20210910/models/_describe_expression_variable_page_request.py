@@ -16,29 +16,29 @@ class DescribeExpressionVariablePageRequest(DaraModel):
         status: str = None,
         value: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Variable return type.
+        # The variable return type.
         self.outputs = outputs
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Status.
+        # The status.
         self.status = status
-        # Variable name/description.
+        # The variable name or description.
         self.value = value
 
     def validate(self):

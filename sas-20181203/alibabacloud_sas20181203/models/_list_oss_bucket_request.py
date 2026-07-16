@@ -10,12 +10,12 @@ class ListOssBucketRequest(DaraModel):
         bucket_name: str = None,
         lang: str = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The language of the content in the request and response. Default value: **zh**. Valid values:
+        # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

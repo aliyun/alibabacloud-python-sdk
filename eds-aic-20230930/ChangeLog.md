@@ -1,3 +1,79 @@
+2026-07-13 Version: 4.31.2
+- Update API CreateAndroidInstanceGroup: add request parameters ChannelCookie.
+- Update API CreateCloudPhoneNode: add request parameters ChannelCookie.
+- Update API CreateCreditPackage: add request parameters ChannelCookie.
+- Update API CreateCreditPackage: add request parameters PackageAmount.
+- Update API CreateCreditPackage: add response parameters Body.CreditPackageIds.
+- Update API CreateMobileAgentPackage: add request parameters ChannelCookie.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.DigestSource.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.Reason.
+- Update API DescribeAgentTask: add response parameters Body.Tasks.$.TaskDigest.
+- Update API DescribeCreditPackage: add response parameters Body.CreditsPackageInfos.$.CreateTime.
+- Update API ResumeAgentTask: add request parameters ClarificationAnswers.
+- Update API ResumeAgentTask: add request parameters ToolCallId.
+
+
+2026-07-09 Version: 4.31.1
+- Update API ListPolicyGroups: add response parameters Body.PolicyGroupModel.$.AccessPolicies.
+
+
+2026-07-07 Version: 4.31.0
+- Support API ActivateEdgeMobileAgent.
+- Support API CreateEdgeMobileAgentPackage.
+- Support API DescribeEdgeMobileAgentPackages.
+- Support API RefreshAuthTokens.
+
+
+2026-07-02 Version: 4.30.1
+- Update API RunAgentTask: add request parameters Targets.
+- Update API RunAgentTask: add response parameters Body.Tasks.$.SessionId.
+
+
+2026-07-01 Version: 4.30.0
+- Support API DescribeCreditDetail.
+
+
+2026-06-26 Version: 4.29.1
+- Update API RunAgentTask: add request parameters ScheduleId.
+- Update API RunAgentTask: add request parameters TaskConfigId.
+
+
+2026-06-25 Version: 4.29.0
+- Support API DeleteMobileAgentPackage.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.Channel.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.PackageId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.Channel.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.PackageId.
+- Update API DescribeBackupFiles: add response parameters Body.Data.$.Channel.
+
+
+2026-06-25 Version: 4.29.0
+- Support API DeleteMobileAgentPackage.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.Channel.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.PackageId.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.Channel.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.PackageId.
+- Update API DescribeBackupFiles: add response parameters Body.Data.$.Channel.
+
+
+2026-06-04 Version: 4.28.1
+- Update API CreateMobileAgentPackage: add request parameters ImageId.
+- Update API CreateMobileAgentPackage: add request parameters PackageSpecId.
+- Update API DescribeMobileAgentPackage: add response parameters Body.PackageList.$.PackageSpecName.
+- Update API SendFile: add request parameters FileMd5.
+
+
+2026-06-02 Version: 4.28.0
+- Support API CreateCreditPackage.
+- Support API DescribeCreditPackage.
+
+
+2026-06-01 Version: 4.27.0
+- Support API CreateMobileAgentPackage.
+- Support API DescribeMobileAgentPackage.
+- Support API RenewMobileAgentPackage.
+
+
 2026-05-19 Version: 4.26.0
 - Support API PauseAgentTask.
 - Support API ResumeAgentTask.

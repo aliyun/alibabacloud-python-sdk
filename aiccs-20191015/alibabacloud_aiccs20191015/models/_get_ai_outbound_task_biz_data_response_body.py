@@ -14,10 +14,17 @@ class GetAiOutboundTaskBizDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business information associated with this call.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -74,9 +81,13 @@ class GetAiOutboundTaskBizDataResponseBodyData(DaraModel):
         phone_num: str = None,
         task_id: int = None,
     ):
+        # Custom business information.
         self.biz_data = biz_data
+        # The Activity ID associated with this outbound call.
         self.case_id = case_id
+        # The outbound phone number.
         self.phone_num = phone_num
+        # The job ID.
         self.task_id = task_id
 
     def validate(self):

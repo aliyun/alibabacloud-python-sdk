@@ -16,14 +16,15 @@ class DeleteBindingRequest(DaraModel):
     ):
         # The binding key.
         self.binding_key = binding_key
-        # The type of the object that you want to unbind from the source exchange. Valid values:
+        # The type of the destination object. Valid values:
         # 
-        # *   **QUEUE**
-        # *   **EXCHANGE**
+        # - **QUEUE**
+        # 
+        # - **EXCHANGE**
         # 
         # This parameter is required.
         self.binding_type = binding_type
-        # The name of the object that you want to unbind from the source exchange.
+        # The name of the destination object.
         # 
         # This parameter is required.
         self.destination_name = destination_name

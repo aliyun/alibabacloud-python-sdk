@@ -9,6 +9,8 @@ class DeleteModelProviderTemplateRequest(DaraModel):
         self,
         provider_template_id: str = None,
     ):
+        # The ID of the model provider template.
+        # 
         # This parameter is required.
         self.provider_template_id = provider_template_id
 

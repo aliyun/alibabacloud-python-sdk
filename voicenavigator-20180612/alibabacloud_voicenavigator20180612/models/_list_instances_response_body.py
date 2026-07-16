@@ -16,10 +16,15 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The array of instances.
         self.instances = instances
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,18 +96,36 @@ class ListInstancesResponseBodyInstances(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
+        # The list of applicable operations for the instance.
         self.applicable_operations = applicable_operations
+        # The concurrency.
         self.concurrency = concurrency
+        # The creation time.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The modification time.
         self.modify_time = modify_time
+        # The operator who performed the operation.
         self.modify_user_name = modify_user_name
+        # The name.
         self.name = name
+        # The large language model service parameters in JSON format.
         self.nlu_service_params_json = nlu_service_params_json
+        # The list of inbound numbers.
         self.numbers = numbers
+        # The instance status.
         self.status = status
+        # The instance ID.
+        # 
+        # 
+        # > When UnionSource is set to CCC, UnionInstanceId is set to the instance ID of Cloud Call Center.
         self.union_instance_id = union_instance_id
+        # The source.
+        # 
+        # - CCC: Cloud Call Center.
         self.union_source = union_source
 
     def validate(self):

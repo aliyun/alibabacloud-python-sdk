@@ -16,10 +16,19 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -90,17 +99,29 @@ class ListInstancesResponseBodyData(DaraModel):
         region: str = None,
         status: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The ECS instance ID.
         self.instance = instance
+        # The current kernel version of the instance.
         self.kernel_version = kernel_version
+        # The metadata of the instance.
         self.meta = meta
+        # The architecture of the ECS instance.
         self.os_arch = os_arch
+        # The health score of the instance.
         self.os_health_score = os_health_score
+        # The operating system name of the instance (obtained from /etc/os-release).
         self.os_name = os_name
+        # The operating system name ID of the instance (obtained from /etc/os-release).
         self.os_name_id = os_name_id
+        # The operating system version of the instance (obtained from /etc/os-release).
         self.os_version = os_version
+        # The operating system version ID of the instance (obtained from /etc/os-release).
         self.os_version_id = os_version_id
+        # The region where the instance resides.
         self.region = region
+        # The status of the instance.
         self.status = status
 
     def validate(self):

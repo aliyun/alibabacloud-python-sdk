@@ -17,13 +17,20 @@ class DescribeForwardTableEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
+        # The ID of the DNAT table.
+        # 
         # This parameter is required.
         self.forward_table_id = forward_table_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
+        # The ID of the region that contains the DNAT table. Call the DescribeRegions operation to get the latest list of regions.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

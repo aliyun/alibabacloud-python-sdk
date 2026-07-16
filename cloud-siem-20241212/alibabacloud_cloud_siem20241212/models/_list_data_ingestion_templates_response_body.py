@@ -15,9 +15,13 @@ class ListDataIngestionTemplatesResponseBody(DaraModel):
         page_size: str = None,
         request_id: str = None,
     ):
+        # The list of data ingestion templates.
         self.data_ingestion_templates = data_ingestion_templates
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81,16 +85,43 @@ class ListDataIngestionTemplatesResponseBodyDataIngestionTemplates(DaraModel):
         normalization_rule_name: str = None,
         update_time: int = None,
     ):
+        # The number of associated security capabilities.
         self.capacity_count = capacity_count
+        # The time when the template was created.
         self.create_time = create_time
+        # The data ingestion mode. Valid values:
+        # 
+        # - realtime
+        # 
+        # - scan
         self.data_ingestion_mode = data_ingestion_mode
+        # The data ingestion status. Valid values:
+        # 
+        # - enabled: enabled.
+        # 
+        # - disabled: disabled.
         self.data_ingestion_status = data_ingestion_status
+        # The ID of the data ingestion template.
         self.data_ingestion_template_id = data_ingestion_template_id
+        # The name of the data ingestion template.
         self.data_ingestion_template_name = data_ingestion_template_name
+        # The status of the data ingestion template. Valid values:
+        # 
+        # - pending
+        # 
+        # - running
+        # 
+        # - success
+        # 
+        # - failed
         self.data_ingestion_template_status = data_ingestion_template_status
+        # The ID of the data source template.
         self.data_source_template_id = data_source_template_id
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The time when the template was last updated.
         self.update_time = update_time
 
     def validate(self):

@@ -13,15 +13,15 @@ class ModifyTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+        # The result of the operation. A value of `success` indicates that the operation was successful. Otherwise, an error message is returned.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned. This parameter is not returned if the value of Code is `success`.
+        # The error message. This parameter is not returned if the value of Code is `success`.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values: true false
+        # Indicates whether the operation was successful. Valid values: true and false.
         self.success = success
 
     def validate(self):

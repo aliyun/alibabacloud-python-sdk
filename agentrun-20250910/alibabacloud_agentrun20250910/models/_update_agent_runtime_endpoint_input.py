@@ -16,17 +16,19 @@ class UpdateAgentRuntimeEndpointInput(DaraModel):
         scaling_config: main_models.ScalingConfig = None,
         target_version: str = None,
     ):
+        # Agent runtime endpoint Name
         self.agent_runtime_endpoint_name = agent_runtime_endpoint_name
         # 为 true 时删除该端点的弹性配置
         self.delete_scaling_config = delete_scaling_config
+        # Description
         self.description = description
-        # 是否禁用该端点的公网访问
+        # Whether to disable public network access for this endpoint
         self.disable_public_network_access = disable_public_network_access
-        # 智能体运行时端点的路由配置，支持多版本权重分配
+        # The Ingress configuration of the agent runtime endpoint, which supports weight assignment across multiple versions
         self.routing_configuration = routing_configuration
         # 端点的弹性伸缩配置，包括最小实例数和定时扩容策略（复用 ScalingConfig）
         self.scaling_config = scaling_config
-        # 智能体运行时的目标版本
+        # Target Version of the agent runtime
         self.target_version = target_version
 
     def validate(self):

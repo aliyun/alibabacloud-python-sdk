@@ -16,10 +16,15 @@ class DescribeAccessInstanceVSwitchListResponseBody(DaraModel):
         total_count: int = None,
         zones: List[main_models.DescribeAccessInstanceVSwitchListResponseBodyZones] = None,
     ):
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -80,7 +85,9 @@ class DescribeAccessInstanceVSwitchListResponseBodyZones(DaraModel):
         v_switch_list: List[main_models.DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList] = None,
         zone_id: str = None,
     ):
+        # The list of vSwitches.
         self.v_switch_list = v_switch_list
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -127,11 +134,17 @@ class DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList(DaraModel):
         v_switch_name: str = None,
         vpc_id: str = None,
     ):
+        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
+        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # Indicates whether the vSwitch is in a VPC that is managed by Cloud Firewall.
         self.firewall_vswitch = firewall_vswitch
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
+        # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

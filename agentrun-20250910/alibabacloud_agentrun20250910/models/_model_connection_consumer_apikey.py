@@ -10,8 +10,9 @@ class ModelConnectionConsumerAPIKey(DaraModel):
         api_key_id: str = None,
         value: str = None,
     ):
-        # 消费者API密钥记录的唯一标识
+        # The unique identifier for the consumer API key.
         self.api_key_id = api_key_id
+        # The value of the consumer API key.
         self.value = value
 
     def validate(self):

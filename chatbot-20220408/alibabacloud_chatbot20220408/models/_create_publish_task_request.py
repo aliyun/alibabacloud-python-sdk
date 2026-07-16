@@ -13,8 +13,11 @@ class CreatePublishTaskRequest(DaraModel):
         biz_type: str = None,
         data_id_list: List[str] = None,
     ):
+        # The key of the business space. If you omit this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The type of content to publish. To publish a bot, use the `CreateInstancePublishTask` API.
         self.biz_type = biz_type
+        # Specifies data to publish by ID. This parameter is used only when `BizType` is set to `faq`. In this case, provide one or more category IDs to publish knowledge exclusively from the specified categories.
         self.data_id_list = data_id_list
 
     def validate(self):

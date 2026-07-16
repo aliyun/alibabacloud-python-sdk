@@ -14,11 +14,11 @@ class DescribeApisecAbnormalDomainStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The response parameters.
+        # The data list.
         self.data = data
-        # Id of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records returned.
         self.total_count = total_count
 
     def validate(self):
@@ -74,11 +74,11 @@ class DescribeApisecAbnormalDomainStatisticResponseBodyData(DaraModel):
         self.api_count = api_count
         # The domain name.
         self.domain = domain
-        # The number of high-level risks.
+        # The number of high-risk vulnerabilities.
         self.high = high
-        # The number of low-level risks.
+        # The number of low-risk vulnerabilities.
         self.low = low
-        # The number of medium-level risks.
+        # The number of medium-risk vulnerabilities.
         self.medium = medium
 
     def validate(self):

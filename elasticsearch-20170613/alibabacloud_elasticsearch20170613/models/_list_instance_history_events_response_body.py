@@ -14,8 +14,11 @@ class ListInstanceHistoryEventsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListInstanceHistoryEventsResponseBodyResult] = None,
     ):
+        # The response headers.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -75,15 +78,37 @@ class ListInstanceHistoryEventsResponseBodyResult(DaraModel):
         node_ip: str = None,
         region_id: str = None,
     ):
+        # The ECS instance ID.
         self.ecs_id = ecs_id
+        # The event creation time.
         self.event_create_time = event_create_time
+        # The event status. Valid values:
+        # - FAILED: failed
+        # - EXECUTED: executed
+        # - EXECUTING: executing.
         self.event_cycle_status = event_cycle_status
+        # The event execution time.
         self.event_execute_time = event_execute_time
+        # The event completion time.
         self.event_finash_time = event_finash_time
+        # The event level. Valid values:
+        # - INFO: information
+        # - WARN: warning
+        # - CRITICAL: critical.
         self.event_level = event_level
+        # The event type. Valid values:
+        # - ECS:AUTO_RESTART: Automatic restart of an ECS node.
+        # - Instance:InstanceFailure.Reboot:Executed: ECS instance reboot completed (instance error).
+        # - Instance:InstanceFailure.Reboot:Executing: ECS instance reboot started (instance error).
+        # - Instance:SystemFailure.Reboot:Executed: ECS instance reboot completed (system error).
+        # - Instance:SystemFailure.Reboot:Executing: ECS instance reboot started (system error).
+        # - Instance:SystemFailure.Reboot:Failed: ECS instance reboot failed (system error).
         self.event_type = event_type
+        # The instance ID.
         self.instance_id = instance_id
+        # The IP address of the node that generated the event.
         self.node_ip = node_ip
+        # The region ID where the event occurred.
         self.region_id = region_id
 
     def validate(self):
@@ -167,8 +192,11 @@ class ListInstanceHistoryEventsResponseBodyHeaders(DaraModel):
         x_total_failed: int = None,
         x_total_success: int = None,
     ):
+        # The total number of records.
         self.x_total_count = x_total_count
+        # The total number of failures.
         self.x_total_failed = x_total_failed
+        # The total number of successes.
         self.x_total_success = x_total_success
 
     def validate(self):

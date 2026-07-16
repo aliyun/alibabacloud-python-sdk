@@ -15,13 +15,13 @@ class ListConsumerAPIKeysOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # 消费者API密钥列表
+        # A list of consumer API keys.
         self.items = items
-        # 当前页码
+        # The current page number.
         self.page_number = page_number
-        # 每页记录数
+        # The number of entries per page.
         self.page_size = page_size
-        # 符合条件的消费者API密钥总数
+        # The total number of matching consumer API keys.
         self.total = total
 
     def validate(self):

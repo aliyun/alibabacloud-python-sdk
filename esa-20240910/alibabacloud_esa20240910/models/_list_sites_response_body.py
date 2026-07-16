@@ -16,15 +16,15 @@ class ListSitesResponseBody(DaraModel):
         sites: List[main_models.ListSitesResponseBodySites] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the returned data.
         self.page_number = page_number
-        # The number of websites per page.
+        # The number of sites displayed per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried websites.
+        # The list of queried site information.
         self.sites = sites
-        # The total number of websites.
+        # The total number of sites.
         self.total_count = total_count
 
     def validate(self):
@@ -100,50 +100,56 @@ class ListSitesResponseBodySites(DaraModel):
         verify_code: str = None,
         visit_time: str = None,
     ):
-        # The DNS setup for the website. Valid values:
+        # The site access type. Valid values:
         # 
-        # *   **NS**
-        # *   **CNAME**
+        # - **NS**: NS-based access.
+        # - **CNAME**: CNAME-based access.
         self.access_type = access_type
-        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+        # The CNAME suffix of the site. For sites that use CNAME-based access, this is the CNAME suffix that needs to be configured for records.
         self.cname_zone = cname_zone
-        # The service location for the website. Valid values:
+        # The acceleration region of the site. Valid values:
         # 
-        # *   **domestic**: the Chinese mainland
-        # *   **global**: global
-        # *   **overseas**: outside the Chinese mainland
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
-        # The ID of the plan associated with the website.
+        # The instance ID of the plan attached to the site.
         self.instance_id = instance_id
-        # The nameservers assigned to the website domain, which are separated by commas (,).
+        # The list of name servers assigned to the site. Multiple values are separated by commas (,).
         self.name_server_list = name_server_list
+        # The reason why the site is disabled. Valid values:
+        # 
+        # - **expiration_ arrears**: The subscription plan has expired or the account has an overdue payment.
+        # - **internally_disabled**: The site is disabled by the system.
+        # - **missing_icp**: The domain name does not have an ICP filing.
+        # - **content_violation**: Content violation.
+        # - **proactively_disabled**: You proactively disabled the site or the site is disabled because the usage cap you configured is reached.
         self.offline_reason = offline_reason
         # The plan name.
         self.plan_name = plan_name
-        # The plan associated with the website.
+        # The specification name of the site plan.
         self.plan_spec_name = plan_spec_name
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
-        # The website status. Valid values:
-        # 
-        # *   **pending**: The website is to be configured.
-        # *   **active**: The website is active.
-        # *   **offline**: The website is suspended.
-        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
+        # The site status. Valid values:
+        # - **pending**: the site is pending configuration.
+        # - **active**: the site is activated.
+        # - **offline**: the site is offline.
+        # - **moved**: the site has been superseded.
         self.status = status
-        # The tags of the website.
+        # The site tags.
         self.tags = tags
-        # The time when the website was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The update time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.update_time = update_time
-        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+        # The site ownership verification code. When a site uses CNAME-based access, this TXT verification code must be configured.
         self.verify_code = verify_code
-        # The website visit time is represented in the ISO 8601 date format using UTC time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+        # The access time of the site. The time is in ISO 8601 format and displayed in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.visit_time = visit_time
 
     def validate(self):

@@ -19,13 +19,20 @@ class CreateDigitalSmsTemplateRequest(DaraModel):
         template_name: str = None,
     ):
         self.owner_id = owner_id
+        # The application description. Describe your business use case for the template.
+        # 
         # This parameter is required.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The signature.
         self.sign_name = sign_name
+        # An array of objects that define the template content.
+        # 
         # This parameter is required.
         self.template_contents = template_contents
+        # The template name. The name can contain up to 20 characters.
+        # 
         # This parameter is required.
         self.template_name = template_name
 
@@ -101,9 +108,13 @@ class CreateDigitalSmsTemplateRequestTemplateContents(DaraModel):
         file_size: int = None,
         file_suffix: str = None,
     ):
+        # The file content, converted to a Base64 string. The file must be UTF-8 encoded before the Base64 conversion.
         self.file_contents = file_contents
+        # The file name without the extension.
         self.file_name = file_name
+        # The file size, in bytes.
         self.file_size = file_size
+        # The file suffix. Supported formats are `txt` for text; `gif`, `jpg`, and `png` for images; `mp3` for audio; and `mp4` for video. You can upload only one video file per template.
         self.file_suffix = file_suffix
 
     def validate(self):

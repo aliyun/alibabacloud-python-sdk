@@ -11,8 +11,11 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

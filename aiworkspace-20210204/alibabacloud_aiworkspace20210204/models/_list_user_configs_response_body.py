@@ -14,11 +14,11 @@ class ListUserConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configurations list.
+        # The list of configurations.
         self.configs = configs
         # The request ID.
         self.request_id = request_id
-        # The number of items returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -69,13 +69,13 @@ class ListUserConfigsResponseBodyConfigs(DaraModel):
         config_value: str = None,
         scope: str = None,
     ):
-        # The category. Currently, only DataPrivacyConfig is supported.
+        # The category. Only DataPrivacyConfig is supported.
         self.category_name = category_name
-        # The key of the configuration item.
+        # The configuration key.
         self.config_key = config_key
-        # The value of the configuration item.
+        # The configuration value.
         self.config_value = config_value
-        # The scope. Currently, subUser and owner are supported.
+        # The scope. Supported values are subUser and owner.
         self.scope = scope
 
     def validate(self):

@@ -9,7 +9,7 @@ class ListConsumedServicesRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id

@@ -17,31 +17,37 @@ class ListApplicationsForSwimmingLaneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: Success.
+        # 
+        # - **3xx**: Redirection.
+        # 
+        # - **4xx**: Client error.
+        # 
+        # - **5xx**: Server error.
         self.code = code
-        # The list of applications.
+        # The application list.
         self.data = data
-        # The status code. Value values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, the **ErrorCode** parameter is returned. For more information, see **Error codes** section in this topic.
+        # - The parameter is an empty string if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned. The following limits are imposed on the ID:
+        # The response message. Valid values:
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   An error code is returned when a request failed.
+        # - **success** is returned if the request is successful.
+        # 
+        # - A specific error code is returned if the request fails.
         self.message = message
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The trace ID used to query the details of a request.
         self.request_id = request_id
-        # Indicates whether the list of application instances was queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The instance groups were obtained.
-        # *   **false**: The instance groups failed to be obtained.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -114,9 +120,9 @@ class ListApplicationsForSwimmingLaneResponseBodyData(DaraModel):
         mse_namespace_id: str = None,
         service_tags: Dict[str, str] = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The ID of the baseline application.
         self.base_app_id = base_app_id
@@ -124,11 +130,11 @@ class ListApplicationsForSwimmingLaneResponseBodyData(DaraModel):
         self.base_app_name = base_app_name
         # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
-        # MSE Instance Name
+        # The name of the MSE instance.
         self.mse_app_name = mse_app_name
-        # The ID of the namespace to which the MSE instance belongs.
+        # The ID of the namespace in which the MSE instance resides.
         self.mse_namespace_id = mse_namespace_id
-        # The canary tag configured for the application.
+        # The canary tags configured for the application.
         self.service_tags = service_tags
 
     def validate(self):

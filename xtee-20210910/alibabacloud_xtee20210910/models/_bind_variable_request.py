@@ -25,43 +25,43 @@ class BindVariableRequest(DaraModel):
         source_type: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # API region ID
+        # The API region ID.
         self.api_region_id = api_region_id
-        # API type
+        # The API type.
         self.api_type = api_type
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Associated variable definition primary key ID
+        # The primary key ID of the associated variable definition.
         self.define_id = define_id
-        # Variable definition IDs, can be multiple. If binding multiple IDs, separate them with commas
+        # The variable definition IDs. You can specify multiple IDs separated by commas.
         self.define_ids = define_ids
-        # Description information.
+        # The description.
         self.description = description
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Exception value
+        # The exception value.
         self.exception_value = exception_value
-        # Variable primary key ID
+        # The primary key ID of the variable.
         self.id = id
-        # Output field path
+        # The output field path.
         self.output_field = output_field
-        # Output type
+        # The output type.
         self.output_type = output_type
-        # Binding input parameter information
+        # The input parameter information for the binding.
         self.params = params
-        # Event parameter mapping 2.0, either params or paramsList must not be empty. List, JSON structure
+        # The event parameter mapping 2.0. Either params or paramsList must be non-empty. This is a List JSON structure.
         self.params_list = params_list
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Variable source
+        # The variable source.
         self.source_type = source_type
-        # Title
+        # The title.
         # 
         # This parameter is required.
         self.title = title

@@ -17,9 +17,11 @@ class StartInstanceRequest(DaraModel):
         slave_vswitch_id: str = None,
         vswitch_id: str = None,
     ):
+        # The IDs of the security groups for the endpoint that is used to access the bastion host over a private network.
         self.client_security_group_ids = client_security_group_ids
+        # Specifies whether to enable the O\\&M portal of the bastion host to be accessed over a private network.
         self.enable_portal_private_access = enable_portal_private_access
-        # The ID of the bastion host that you want to enable.
+        # The ID of the bastion host to start.
         # 
         # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 
@@ -27,12 +29,13 @@ class StartInstanceRequest(DaraModel):
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
-        # An array consisting of the IDs of security groups to which the bastion host is added.
+        # The IDs of the security groups to which the bastion host is bound.
         # 
         # This parameter is required.
         self.security_group_ids = security_group_ids
+        # The ID of the secondary vSwitch to which the bastion host is bound.
         self.slave_vswitch_id = slave_vswitch_id
-        # The ID of the vSwitch to which the bastion host belongs.
+        # The ID of the vSwitch to which the bastion host is bound.
         self.vswitch_id = vswitch_id
 
     def validate(self):

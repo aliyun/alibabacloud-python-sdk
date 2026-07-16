@@ -12,13 +12,13 @@ class DeleteK8sAccessInfoRequest(DaraModel):
         aliyun_yundun_gateway_project_name: str = None,
         id: int = None,
     ):
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.aliyun_yundun_gateway_api_name = aliyun_yundun_gateway_api_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.aliyun_yundun_gateway_pop_name = aliyun_yundun_gateway_pop_name
-        # This parameter is deprecated.
+        # This parameter is deprecated and can be ignored.
         self.aliyun_yundun_gateway_project_name = aliyun_yundun_gateway_project_name
-        # The ID generated when Kubernetes is connected. You can call the GenerateK8sAccessInfo operation to query the ID.
+        # The default value generated when accessing Kubernetes. You can obtain the ID by calling the [GenerateK8sAccessInfo](https://help.aliyun.com/document_detail/2623602.html) operation.
         # 
         # This parameter is required.
         self.id = id

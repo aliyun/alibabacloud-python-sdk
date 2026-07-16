@@ -10,9 +10,9 @@ class CreateRuleResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):

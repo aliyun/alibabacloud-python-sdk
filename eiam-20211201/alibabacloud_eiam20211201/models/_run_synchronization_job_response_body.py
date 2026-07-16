@@ -12,7 +12,7 @@ class RunSynchronizationJobResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the synchronization job.
+        # The ID of the synchronization task.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):

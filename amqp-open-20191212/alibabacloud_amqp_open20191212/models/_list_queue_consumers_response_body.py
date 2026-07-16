@@ -53,11 +53,11 @@ class ListQueueConsumersResponseBodyData(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The consumers.
+        # The consumer information.
         self.consumers = consumers
-        # The maximum number of entries returned.
+        # The maximum number of results.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+        # The token to retrieve the next page of results. An empty value indicates that all results have been returned.
         self.next_token = next_token
 
     def validate(self):

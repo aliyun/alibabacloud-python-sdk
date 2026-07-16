@@ -13,9 +13,9 @@ class DescribeRuleHitsTopRuleIdResponseBody(DaraModel):
         request_id: str = None,
         rule_hits_top_rule_id: List[main_models.DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The array of the IDs of the top 10 rules that are matched by requests.
+        # The top 10 rule IDs by rule hits.
         self.rule_hits_top_rule_id = rule_hits_top_rule_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeRuleHitsTopRuleIdResponseBodyRuleHitsTopRuleId(DaraModel):
         resource: str = None,
         rule_id: str = None,
     ):
-        # The number of requests that match the rule.
+        # The number of requests that hit the rule.
         self.count = count
-        # The protected object.
+        # The protected object. This parameter is returned when the IsGroupResource request parameter is set to false.
         self.resource = resource
-        # The ID of the rule.
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):

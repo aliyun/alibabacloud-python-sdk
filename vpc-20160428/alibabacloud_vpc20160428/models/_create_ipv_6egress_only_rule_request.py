@@ -30,6 +30,7 @@ class CreateIpv6EgressOnlyRuleRequest(DaraModel):
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
+        # A dry run of the request without actually executing it.
         self.dry_run = dry_run
         # The ID of the IPv6 address for which you want to create an egress-only rule.
         # 

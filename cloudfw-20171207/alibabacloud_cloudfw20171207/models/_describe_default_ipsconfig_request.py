@@ -9,10 +9,11 @@ class DescribeDefaultIPSConfigRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh**: Chinese. This is the default value.
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

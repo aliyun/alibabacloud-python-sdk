@@ -17,11 +17,17 @@ class GetInterveneRuleDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -83,6 +89,7 @@ class GetInterveneRuleDetailResponseBodyData(DaraModel):
         intervene_rule_detail: main_models.GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail = None,
     ):
         self.code = code
+        # Structure of the rule details
         self.intervene_rule_detail = intervene_rule_detail
 
     def validate(self):
@@ -123,11 +130,17 @@ class GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # Answer configuration
         self.answer_config = answer_config
+        # Activation configuration
         self.effect_config = effect_config
+        # Intervention type
         self.intervene_type = intervene_type
+        # Namespace list
         self.namespace_list = namespace_list
+        # Rule ID
         self.rule_id = rule_id
+        # Rule name
         self.rule_name = rule_name
 
     def validate(self):
@@ -198,8 +211,11 @@ class GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailEffectConfig(Dara
         end_time: str = None,
         start_time: str = None,
     ):
+        # Activation type
         self.effect_type = effect_type
+        # End time
         self.end_time = end_time
+        # Start time
         self.start_time = start_time
 
     def validate(self):
@@ -241,8 +257,11 @@ class GetInterveneRuleDetailResponseBodyDataInterveneRuleDetailAnswerConfig(Dara
         message: str = None,
         namespace: str = None,
     ):
+        # Answer type
         self.answer_type = answer_type
+        # Answer content
         self.message = message
+        # Namespace
         self.namespace = namespace
 
     def validate(self):

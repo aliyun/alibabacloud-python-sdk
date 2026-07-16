@@ -13,8 +13,11 @@ class ListDatasourceTablesResponseBody(DaraModel):
         tables: List[str] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of tables.
         self.tables = tables
+        # The total count.
         self.total_count = total_count
 
     def validate(self):

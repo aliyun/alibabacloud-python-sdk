@@ -14,11 +14,11 @@ class GetServiceEstimateCostResponseBody(DaraModel):
         request_id: str = None,
         resources: Dict[str, Any] = None,
     ):
-        # Alibaba Cloud Marketplace purchase order information.
+        # The information about the Alibaba Cloud Marketplace purchase order.
         self.commodity = commodity
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resources.
         self.resources = resources
 
     def validate(self):

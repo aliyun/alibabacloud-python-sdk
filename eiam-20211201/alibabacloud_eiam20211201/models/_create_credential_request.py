@@ -22,38 +22,43 @@ class CreateCredentialRequest(DaraModel):
         exclusive_user_id: str = None,
         instance_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # 凭据的内容。
+        # The credential content.
         # 
         # This parameter is required.
         self.credential_content = credential_content
         self.credential_external_id = credential_external_id
-        # 凭据标识。
+        # The credential identifier.
         # 
         # This parameter is required.
         self.credential_identifier = credential_identifier
-        # 凭据名称。
+        # The credential name.
         # 
         # This parameter is required.
         self.credential_name = credential_name
-        # 凭据的使用场景标签。
+        # The Scenarios label of the credential. Valid values:
+        # - llm: large language model.
+        # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
         self.credential_sharing_scope = credential_sharing_scope
-        # 凭据所属的主体ID。
+        # The subject ID of the credential.
         self.credential_subject_id = credential_subject_id
-        # 凭据所属的主体类型。
+        # The subject type of the credential. Valid values:
+        # - authentication_token_provider: authentication token provider.
         self.credential_subject_type = credential_subject_type
-        # 凭据类型。
+        # The credential type. Valid values:
+        # - api_key: API key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # 描述
+        # The credential description.
         self.description = description
         self.exclusive_user_id = exclusive_user_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -158,9 +163,9 @@ class CreateCredentialRequestCredentialContent(DaraModel):
         api_key_content: main_models.CreateCredentialRequestCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.CreateCredentialRequestCredentialContentOAuthClientContent = None,
     ):
-        # Api Key的内容。
+        # The credential content of the API key credential type.
         self.api_key_content = api_key_content
-        # OAuth客户端认证凭证类型的凭据内容。
+        # The credential content of the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -200,9 +205,9 @@ class CreateCredentialRequestCredentialContentOAuthClientContent(DaraModel):
         client_id: str = None,
         client_secret: str = None,
     ):
-        # OAuth协议的client_id。
+        # The client_id of the OAuth protocol.
         self.client_id = client_id
-        # OAuth协议的client_secret。
+        # The client_secret of the OAuth protocol.
         self.client_secret = client_secret
 
     def validate(self):
@@ -236,7 +241,7 @@ class CreateCredentialRequestCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
-        # API Key 凭证类型的凭据内容。
+        # The API key content.
         self.api_key = api_key
 
     def validate(self):

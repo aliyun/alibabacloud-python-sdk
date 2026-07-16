@@ -10,6 +10,7 @@ class GetLogsV2Request(DaraModel):
         forward: bool = None,
         from_: int = None,
         highlight: bool = None,
+        is_accurate: bool = None,
         line: int = None,
         offset: int = None,
         power_sql: bool = None,
@@ -19,41 +20,48 @@ class GetLogsV2Request(DaraModel):
         to: int = None,
         topic: str = None,
     ):
-        # Specifies whether to page forward or backward for the scan-based query or phrase search.
+        # Specifies whether to page forward or backward for scan or phrase queries.
         self.forward = forward
-        # The beginning of the time range to query. The value is the log time that is specified when log data is written.
+        # The start time of the query. This time refers to the log time specified when log data is written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range defined by the from and to request parameters follows the left-closed, right-open principle. The time range includes the start time but excludes the end time. If the values of from and to are the same, the time range is invalid and the function returns an error.
+        # The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.from_ = from_
-        # Specifies whether to highlight the returned result.
+        # Specifies whether to enable highlighting.
         self.highlight = highlight
-        # The maximum number of logs to return for the request. This parameter takes effect only when the query parameter is set to a search statement. Valid values: 0 to 100. Default value: 100.
+        # Specifies whether to enable nanosecond-precision ordering.
+        self.is_accurate = is_accurate
+        # The maximum number of logs to return in the request. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
         self.line = line
-        # The line from which the query starts. This parameter takes effect only when the query parameter is set to a search statement. Default value: 0.
+        # The start row of the query. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
         self.offset = offset
-        # Specifies whether to enable the SQL enhancement feature. By default, the feature is disabled.
+        # Specifies whether to enable Dedicated SQL. Disabled by default.
         self.power_sql = power_sql
-        # The search statement or query statement. For more information, see the "Log search overview" and "Log analysis overview" topics.
+        # The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
         # 
-        # If you add set session parallel_sql=true; to the analytic statement in the query parameter, Dedicated SQL is used. Example: \\* | set session parallel_sql=true; select count(\\*) as pv.
+        # Add set session parallel_sql=true; to the analytic statement in the query parameter to use Dedicated SQL. Example: * | set session parallel_sql=true; select count(*) as pv.
         # 
-        # Note: If you specify an analytic statement in the query parameter, the line and offset parameters do not take effect in this operation. In this case, we recommend that you set the line and offset parameters to 0 and use the LIMIT clause to specify the number of logs to return on each page. For more information, see the "Perform paged queries" topic.
+        # Note: When the query parameter contains an analytic statement (SQL statement), the line and offset parameters of this API are invalid. Set them to 0. Use the LIMIT syntax in the SQL statement for pagination. For more information, see Display query and analysis results by page.
         self.query = query
-        # Specifies whether to return logs in reverse chronological order of log timestamps. The log timestamps are accurate to minutes. Valid values:
+        # Specifies whether to return logs in descending order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
         # 
-        # true: Logs are returned in reverse chronological order of log timestamps. false (default): Logs are returned in chronological order of log timestamps. Note: The reverse parameter takes effect only when the query parameter is set to a search statement. The reverse parameter specifies the method used to sort returned logs. If the query parameter is set to a query statement, the reverse parameter does not take effect. The method used to sort returned logs is specified by the ORDER BY clause in the analytic statement. If you use the keyword asc in the ORDER BY clause, the logs are sorted in chronological order. If you use the keyword desc in the ORDER BY clause, the logs are sorted in reverse chronological order. By default, asc is used in the ORDER BY clause.
+        # - true: Returns logs in descending order of log timestamps.
+        # - false (default): Returns logs in ascending order of log timestamps.
+        # 
+        # To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), the results are sorted in ascending order. If ORDER BY is set to desc, the results are sorted in descending order.
         self.reverse = reverse
-        # The parameter that is used to query data.
+        # The query parameter.
         self.session = session
-        # The end of the time range to query. The value is the log time that is specified when log data is written.
+        # The end time of the query. This time refers to the log time specified when log data is written.
         # 
-        # The time range that is specified in this operation is a left-closed, right-open interval. The interval includes the start time specified by the from parameter, but does not include the end time specified by the to parameter. If you specify the same value for the from and to parameters, the interval is invalid, and an error message is returned. The value is a timestamp that follows the UNIX time format. It is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time range defined by the from and to request parameters follows the left-closed, right-open principle. The time range includes the start time but excludes the end time. If the values of from and to are the same, the time range is invalid and the function returns an error.
+        # The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
         # This parameter is required.
         self.to = to
-        # The topic of the logs. Default value: double quotation marks ("").
+        # The topic. Default value: empty string.
         self.topic = topic
 
     def validate(self):
@@ -72,6 +80,9 @@ class GetLogsV2Request(DaraModel):
 
         if self.highlight is not None:
             result['highlight'] = self.highlight
+
+        if self.is_accurate is not None:
+            result['isAccurate'] = self.is_accurate
 
         if self.line is not None:
             result['line'] = self.line
@@ -109,6 +120,9 @@ class GetLogsV2Request(DaraModel):
 
         if m.get('highlight') is not None:
             self.highlight = m.get('highlight')
+
+        if m.get('isAccurate') is not None:
+            self.is_accurate = m.get('isAccurate')
 
         if m.get('line') is not None:
             self.line = m.get('line')

@@ -10,8 +10,12 @@ class UpdateSqlInstanceRequest(DaraModel):
         cu: int = None,
         use_as_default: bool = None,
     ):
+        # The number of Compute Units (CUs). A CU is a compute core that can be used for parallel processing when Dedicated SQL is running.
+        # 
         # This parameter is required.
         self.cu = cu
+        # Specifies whether to enable Dedicated SQL for the project by default. If this parameter is set to true, all query and analysis operations in the project, such as alerts and dashboards, use Dedicated SQL.
+        # 
         # This parameter is required.
         self.use_as_default = use_as_default
 

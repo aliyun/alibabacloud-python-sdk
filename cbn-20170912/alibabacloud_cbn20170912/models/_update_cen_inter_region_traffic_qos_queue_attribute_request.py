@@ -32,8 +32,9 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The differentiated services code point (DSCP) value used to match packets in the queue.
         self.dscps = dscps
@@ -41,7 +42,7 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The new description of the queue.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.qos_queue_description = qos_queue_description
         # The queue ID.
         # 
@@ -49,7 +50,7 @@ class UpdateCenInterRegionTrafficQosQueueAttributeRequest(DaraModel):
         self.qos_queue_id = qos_queue_id
         # The new name of the queue.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.qos_queue_name = qos_queue_name
         # The percentage of bandwidth that can be allocated to the current queue.
         # 

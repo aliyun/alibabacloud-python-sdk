@@ -12,10 +12,20 @@ class AttachApplicationPolarFSRequest(DaraModel):
         polar_fsaccess_key_secret: str = None,
         polar_fsinstance_id: str = None,
     ):
+        # Application ID
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # AccessKey ID of the Alibaba Cloud account or RAM user. Ensure that you granted permissions to this account or user when you created the PolarLakeBase instance.
         self.polar_fsaccess_key_id = polar_fsaccess_key_id
+        # AccessKey secret of the Alibaba Cloud account or RAM user
         self.polar_fsaccess_key_secret = polar_fsaccess_key_secret
+        # PolarLakeBase cold-storage instance ID
+        # 
+        # Only the following applications support cold-storage instances:
+        # 
+        # - Supabase
+        # 
         # This parameter is required.
         self.polar_fsinstance_id = polar_fsinstance_id
 

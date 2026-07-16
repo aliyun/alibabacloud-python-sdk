@@ -15,21 +15,21 @@ class DescribeListFaceVerifyInfosRequest(DaraModel):
         scene_id: int = None,
         status: int = None,
     ):
-        # Verification ID.
+        # The authentication ID.
         self.certify_id = certify_id
-        # Query the end time of the verification.
+        # The end time of the authentication query.
         self.gmt_end = gmt_end
-        # Query the start time of the verification.
+        # The start time of the authentication query.
         self.gmt_start = gmt_start
-        # Pagination parameter: current page number.
+        # The current page number for pagination.
         self.page_number = page_number
-        # Number of items per page for paginated queries. Maximum value: 100, default value: 10.
+        # The number of entries per page in a paged query. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Verification status:
-        # - **1**: Verification passed.
-        # - **2**: Verification failed.
+        # The authentication status. Valid values:
+        # - **1**: Authentication passed.
+        # - **2**: Authentication failed.
         self.status = status
 
     def validate(self):

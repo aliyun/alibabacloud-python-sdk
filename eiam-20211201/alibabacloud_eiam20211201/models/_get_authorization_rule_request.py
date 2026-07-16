@@ -10,11 +10,11 @@ class GetAuthorizationRuleRequest(DaraModel):
         authorization_rule_id: str = None,
         instance_id: str = None,
     ):
-        # 授权规则标识。
+        # Authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # IDaaS EIAM实例的ID。
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

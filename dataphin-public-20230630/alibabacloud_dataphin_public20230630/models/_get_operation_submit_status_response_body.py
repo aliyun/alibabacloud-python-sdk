@@ -15,11 +15,17 @@ class GetOperationSubmitStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The submit status of the operation.
         self.operation_submit_job = operation_submit_job
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,11 +90,18 @@ class GetOperationSubmitStatusResponseBodyOperationSubmitJob(DaraModel):
         operator: str = None,
         progress: str = None,
     ):
+        # The business ID. If the operation is a data backfill, this value is the data backfill workflow ID.
         self.external_biz_id = external_biz_id
+        # The submit ID of the data backfill request.
         self.job_id = job_id
+        # The operation type. Valid values:
+        # - SUPPLY_DATA: data backfill.
         self.operation = operation
+        # The status.
         self.operation_status = operation_status
+        # The user ID of the submitter.
         self.operator = operator
+        # The progress.
         self.progress = progress
 
     def validate(self):

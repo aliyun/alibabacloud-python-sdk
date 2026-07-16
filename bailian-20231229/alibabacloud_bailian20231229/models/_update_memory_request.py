@@ -9,6 +9,7 @@ class UpdateMemoryRequest(DaraModel):
         self,
         description: str = None,
     ):
+        # The new description. The description must be 1 to 50 characters in length and can contain characters in the letter category of Unicode, which includes letters, Chinese characters, and digits. The description can also contain half-width colons (:), underscores (_), periods (.), or hyphens (-).
         self.description = description
 
     def validate(self):

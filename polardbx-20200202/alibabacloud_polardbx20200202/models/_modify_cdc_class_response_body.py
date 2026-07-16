@@ -11,6 +11,7 @@ class ModifyCdcClassResponseBody(DaraModel):
         data: main_models.ModifyCdcClassResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -48,6 +49,7 @@ class ModifyCdcClassResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

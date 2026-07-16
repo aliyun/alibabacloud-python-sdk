@@ -14,6 +14,8 @@ class CancelActiveOperationTasksRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The O\\&M task IDs. Separate multiple IDs with a comma (,).
+        # 
         # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account

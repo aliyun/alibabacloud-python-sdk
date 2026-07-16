@@ -15,10 +15,15 @@ class LogGroup(DaraModel):
         source: str = None,
         topic: str = None,
     ):
+        # A list of logs.
+        # 
         # This parameter is required.
         self.log_items = log_items
+        # The list of tags for the log.
         self.log_tags = log_tags
+        # The source of the log. For example, the IP address of the machine that generated the log.
         self.source = source
+        # The topic of the log. This is a user-defined field that distinguishes log data with different features.
         self.topic = topic
 
     def validate(self):

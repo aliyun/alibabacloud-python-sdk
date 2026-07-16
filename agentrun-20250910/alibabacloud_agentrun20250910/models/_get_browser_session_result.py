@@ -12,9 +12,11 @@ class GetBrowserSessionResult(DaraModel):
         data: main_models.BrowserSessionOut = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # `SUCCESS` for a successful request; otherwise, an error type such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
+        # The details of the browser session.
         self.data = data
+        # A unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):

@@ -15,21 +15,19 @@ class ModifyWebLockProcessStatusRequest(DaraModel):
         status: int = None,
         uuid: str = None,
     ):
-        # Specifies whether to change the status of the process on multiple servers on which the process runs at the same time. Valid values:
-        # 
-        # *   **0**: no
-        # *   **1**: yes
+        # The identity is simultaneous processing of servers that have the same process. Valid values:
+        # - **0**: Do not use simultaneous processing.
+        # - **1**: Use simultaneous processing.
         self.deal_all = deal_all
-        # The parameters required to change the status of multiple processes at a time. The value is in the JSON format.
+        # The operation parameters for batch setting the tamper-proofing process status. The value is in JSON format.
         self.operate_info = operate_info
-        # The paths to the processes.
+        # The list of process paths.
         self.process_path = process_path
-        # The status of the process. Valid values:
-        # 
-        # *   **0**: cancels adding the process to the process whitelist
-        # *   **1**: adds the process to the process whitelist
+        # The status of the tamper-proofing process. Valid values:
+        # - **0**: Remove from the whitelist.
+        # - **1**: Add to the whitelist.
         self.status = status
-        # The UUID of the server.
+        # The UUID of the server for which you want to set the tamper-proofing process status.
         self.uuid = uuid
 
     def validate(self):

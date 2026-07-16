@@ -10,12 +10,12 @@ class UntagResourcesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The returned result.
         # 
-        # *   true: deleted
-        # *   false: Failed
+        # - true: The deletion was successful.
+        # - false: The deletion failed.
         self.result = result
 
     def validate(self):

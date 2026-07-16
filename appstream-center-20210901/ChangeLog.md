@@ -1,3 +1,51 @@
+2026-07-02 Version: 5.6.2
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportType.
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportedRegions.
+
+
+2026-07-02 Version: 5.6.2
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportType.
+- Update API ListTenantConfig: add response parameters Body.TenantConfigModel.MultiSessionSupportedRegions.
+
+
+2026-06-24 Version: 5.6.1
+- Update API ListDesktopAgentRuntime: add request parameters ManagementStatus.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ManagementStatuses.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.AgentInstanceInfoList.$.AgentPlatform.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.AgentInstanceInfoList.$.AgentProvider.
+
+
+2026-05-29 Version: 5.6.0
+- Support API ListModelProviderEndpoints.
+- Update API GetRuntimeChannel: add response parameters Body.Data.$.ChannelType.
+- Update API GetRuntimeModelConfig: add response parameters Body.Data.ModelTemplateRefType.
+- Update API GetRuntimeModelConfig: add response parameters Body.Data.ResourceGroupId.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ModelTemplateId.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.ModelTemplateName.
+- Update API ListDesktopAgentRuntime: add response parameters Body.Data.$.RegionLocation.
+
+
+2026-05-28 Version: 5.5.1
+- Update API ListImage: add request parameters Distro.
+
+
+2026-05-28 Version: 5.5.1
+- Update API ListImage: add request parameters Distro.
+
+
+2026-05-27 Version: 5.5.0
+- Support API DescribeWuyingServer.
+
+
+2026-05-27 Version: 5.4.0
+- Support API AssignWuyingServerPrivateAddresses.
+- Support API UnassignWuyingServerPrivateAddresses.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.EniPrivateIpAddressQuantity.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.PrivateIpSets.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VkUpgradeNeeded.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VkVersion.
+
+
 2026-05-12 Version: 5.3.0
 - Support API DeliverToUserSls.
 

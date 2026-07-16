@@ -18,18 +18,42 @@ class ListPlanningProposalShrinkRequest(DaraModel):
         topic_version: str = None,
         view_point_type: str = None,
     ):
+        # The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Custom viewpoint ID (used for custom viewpoint planning proposal scenarios).
         self.custom_view_point_id = custom_view_point_id
+        # List of custom viewpoint IDs (used for custom viewpoint planning proposal scenarios).
         self.custom_view_point_ids_shrink = custom_view_point_ids_shrink
+        # Maximum number of returned results.
         self.max_results = max_results
+        # Token for the next page.
         self.next_token = next_token
+        # Filter planning proposal titles, corresponding to the viewpoint names of each planning proposal type.
         self.titles_shrink = titles_shrink
+        # Hot topic subject.
+        # 
         # This parameter is required.
         self.topic = topic
+        # Hot topic source.
+        # 
         # This parameter is required.
         self.topic_source = topic_source
+        # Hot spot event data version.
         self.topic_version = topic_version
+        # Planning proposal type
+        # 
+        # - CustomViewPoints: Custom viewpoint
+        # 
+        # - HotViewPoints: Hot viewpoint
+        # 
+        # - TimedViewPoints: Time-sensitive viewpoint
+        # 
+        # - WebReviewPoints: User viewpoint
+        # 
+        # - FreshViewPoints: Fresh viewpoint
+        # 
         # This parameter is required.
         self.view_point_type = view_point_type
 

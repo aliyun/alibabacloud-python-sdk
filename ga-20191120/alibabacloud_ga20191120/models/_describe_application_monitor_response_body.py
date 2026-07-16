@@ -31,8 +31,9 @@ class DescribeApplicationMonitorResponseBody(DaraModel):
         self.address = address
         # Indicates whether the automatic diagnostics feature is enabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.detect_enable = detect_enable
         # The threshold that is used to trigger automatic diagnostics.
         # 
@@ -58,11 +59,15 @@ class DescribeApplicationMonitorResponseBody(DaraModel):
         self.silence_time = silence_time
         # The status of the origin probing task. Valid values:
         # 
-        # *   **init**
-        # *   **active**
-        # *   **updating**
-        # *   **inactive**
-        # *   **deleting**
+        # - **init**
+        # 
+        # - **active**
+        # 
+        # - **updating**
+        # 
+        # - **inactive**
+        # 
+        # - **deleting**
         self.state = state
         # The ID of the origin probing task.
         self.task_id = task_id

@@ -27,21 +27,37 @@ class AiSecurityGuardConfig(DaraModel):
         risk_config: List[main_models.AiSecurityGuardConfigRiskConfig] = None,
         service_address: str = None,
     ):
+        # The response buffer size in KB. Default value: 1000. Valid values: 1 to 1500.
         self.buffer_limit = buffer_limit
+        # Specifies whether to check request content.
         self.check_request = check_request
+        # Specifies whether to check request images.
         self.check_request_image = check_request_image
+        # Specifies whether to check response content.
         self.check_response = check_response
+        # Specifies whether to check response images.
         self.check_response_image = check_response_image
+        # The consumer-level request detection service configuration.
         self.consumer_request_check_service = consumer_request_check_service
+        # The consumer-level response detection service configuration.
         self.consumer_response_check_service = consumer_response_check_service
+        # The consumer-level risk level configuration.
         self.consumer_risk_level = consumer_risk_level
+        # The plugin running status.
         self.plugin_status = plugin_status
+        # The ServiceCode of the request text detection service (system-injected default value).
         self.request_check_service = request_check_service
+        # The ServiceCode of the request image detection service (system-injected default value).
         self.request_image_check_service = request_image_check_service
+        # The ServiceCode of the response text detection service (system-injected default value).
         self.response_check_service = response_check_service
+        # The ServiceCode of the response image detection service (system-injected default value).
         self.response_image_check_service = response_image_check_service
+        # The global risk alert level.
         self.risk_alert_level = risk_alert_level
+        # The risk dimension configuration list (system-injected, normalized from ConsumerRiskLevel).
         self.risk_config = risk_config
+        # The security guardrail service address (green-cip endpoint). Use the VPC internal address when the gateway and security guardrail are in the same region.
         self.service_address = service_address
 
     def validate(self):
@@ -199,8 +215,11 @@ class AiSecurityGuardConfigRiskConfig(DaraModel):
         level: str = None,
         type: str = None,
     ):
+        # The consumer-level matching rules.
         self.consumer_rules = consumer_rules
+        # The risk level.
         self.level = level
+        # The risk dimension type.
         self.type = type
 
     def validate(self):
@@ -243,7 +262,9 @@ class AiSecurityGuardConfigRiskConfigConsumerRules(DaraModel):
         match_type: str = None,
         pattern: str = None,
     ):
+        # The matching method.
         self.match_type = match_type
+        # The consumer matching pattern value.
         self.pattern = pattern
 
     def validate(self):
@@ -280,9 +301,13 @@ class AiSecurityGuardConfigConsumerRiskLevel(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The risk level.
         self.level = level
+        # The consumer matching method.
         self.match_type = match_type
+        # The consumer name.
         self.name = name
+        # The risk dimension type.
         self.type = type
 
     def validate(self):
@@ -332,10 +357,15 @@ class AiSecurityGuardConfigConsumerResponseCheckService(DaraModel):
         response_check_service: str = None,
         response_image_check_service: str = None,
     ):
+        # The consumer matching method.
         self.match_type = match_type
+        # The modality type.
         self.modality_type = modality_type
+        # The consumer name.
         self.name = name
+        # The check service.
         self.response_check_service = response_check_service
+        # The image check service.
         self.response_image_check_service = response_image_check_service
 
     def validate(self):
@@ -391,10 +421,15 @@ class AiSecurityGuardConfigConsumerRequestCheckService(DaraModel):
         request_check_service: str = None,
         request_image_check_service: str = None,
     ):
+        # The consumer matching method.
         self.match_type = match_type
+        # The modality type.
         self.modality_type = modality_type
+        # The consumer name.
         self.name = name
+        # The check service.
         self.request_check_service = request_check_service
+        # The image check service.
         self.request_image_check_service = request_image_check_service
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeApiNameListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeApiNameListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -58,9 +58,9 @@ class DescribeApiNameListResponseBodyResultObject(DaraModel):
         api_id: str = None,
         api_name: str = None,
     ):
-        # API ID.
+        # The API ID.
         self.api_id = api_id
-        # API name.
+        # The API name.
         self.api_name = api_name
 
     def validate(self):

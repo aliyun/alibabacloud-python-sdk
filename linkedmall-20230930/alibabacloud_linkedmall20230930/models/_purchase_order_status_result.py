@@ -10,7 +10,9 @@ class PurchaseOrderStatusResult(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # API request requestId
         self.request_id = request_id
+        # Purchase order status
         self.status = status
 
     def validate(self):

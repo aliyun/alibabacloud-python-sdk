@@ -13,12 +13,13 @@ class DeleteInstanceEndpointAclPolicyResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call is successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

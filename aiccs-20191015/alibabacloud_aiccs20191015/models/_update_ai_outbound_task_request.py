@@ -22,22 +22,49 @@ class UpdateAiOutboundTaskRequest(DaraModel):
         recall_rule: main_models.UpdateAiOutboundTaskRequestRecallRule = None,
         task_id: int = None,
     ):
+        # The concurrent rate for automated outbound calls.
         self.concurrent_rate = concurrent_rate
+        # The job description. It can contain 0 to 100 characters.
         self.description = description
+        # The job execution time.
+        # 
+        # > The end time must be later than the start time.
+        # 
         # This parameter is required.
         self.execution_time = execution_time
+        # Fixed dialing ratio for predictive outbound calls. Valid values: **≥1**.
         self.forecast_call_rate = forecast_call_rate
+        # The skill group ID (for predictive outbound calls) or IVR ID (for automated outbound calls).
+        # 
         # This parameter is required.
         self.handler_id = handler_id
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job name. Length: 1 to 15 characters.
+        # 
         # This parameter is required.
         self.name = name
+        # The policy for handling duplicate callee numbers.
+        # - **0**: Remove duplicates within the job.
+        # - **1**: Do not remove duplicates within the job.
+        # 
         # This parameter is required.
         self.num_repeated = num_repeated
+        # Outbound caller numbers.
+        # 
         # This parameter is required.
         self.outbound_nums = outbound_nums
+        # Failed-call retry policy.
+        # 
+        # > If empty, no retry is performed when an outbound call fails.
         self.recall_rule = recall_rule
+        # The job ID.
+        # 
+        # You can invoke the [CreateAiOutboundTask](https://help.aliyun.com/document_detail/312260.html) API and check the **Data** field in the response, or invoke the [GetAiOutboundTaskList](https://help.aliyun.com/document_detail/2718026.html) API and check the **TaskId** field in the response.
+        # 
         # This parameter is required.
         self.task_id = task_id
 
@@ -129,7 +156,9 @@ class UpdateAiOutboundTaskRequestRecallRule(DaraModel):
         count: int = None,
         interval: int = None,
     ):
+        # Number of retries after a failed call. Valid values: **1 to 3**.
         self.count = count
+        # Time interval between retries after a failed call. Valid values: **1 to 60**, unit: minutes.
         self.interval = interval
 
     def validate(self):

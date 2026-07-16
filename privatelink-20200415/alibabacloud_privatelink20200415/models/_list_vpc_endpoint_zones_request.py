@@ -12,22 +12,23 @@ class ListVpcEndpointZonesRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The ID of the endpoint for which you want to query zones.
+        # The ID of the endpoint.
         # 
-        # After you specify an endpoint ID, the system queries the zones of the specified endpoint.
+        # After you specify the endpoint ID, the system queries the zones of the endpoint.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries to return on each page. Valid values: **1** to **1000**. Default value: **50**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used to retrieve the next page of results. Valid values:
         # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   If a next request is to be performed, set the parameter to the value of **NextToken** that is returned from the last call.
+        # - If this is your first query, you do not need to specify this parameter.
+        # 
+        # - If a next page exists, set the value to the **NextToken** value that is returned from the previous call.
         self.next_token = next_token
-        # The region ID of the endpoint.
+        # The ID of the region.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

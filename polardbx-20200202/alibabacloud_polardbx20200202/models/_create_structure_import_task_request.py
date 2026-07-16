@@ -12,10 +12,16 @@ class CreateStructureImportTaskRequest(DaraModel):
         region_id: str = None,
         slink_task_id: str = None,
     ):
+        # The configuration information.
         self.config = config
+        # The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
         self.dbinstance_name = dbinstance_name
+        # The region in which the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the target task. > You can call the [DescribeSlinkTasks](https://help.aliyun.com/document_detail/196830.html) operation to query the execution status of the target task, including the task ID.
+        # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
 

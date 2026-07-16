@@ -13,12 +13,26 @@ class BatchUnbindTemplateRequest(DaraModel):
         template_id: str = None,
         template_type: str = None,
     ):
+        # The instance ID. Separate multiple IDs with commas.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The instance type. Valid values:
+        # 
+        # - group
+        # 
+        # - stream
+        # 
         # This parameter is required.
         self.instance_type = instance_type
         self.owner_id = owner_id
+        # The template ID. If omitted, all bindings that match the conditions on the instance are detached.
         self.template_id = template_id
+        # The template type. Valid values:
+        # 
+        # - record
+        # 
+        # - snapshot
         self.template_type = template_type
 
     def validate(self):

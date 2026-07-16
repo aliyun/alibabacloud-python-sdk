@@ -11,9 +11,9 @@ class DescribeNameListLimitResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeNameListLimitResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeNameListLimitResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Whether it exceeds the maximum quantity
+        # Indicates whether the maximum number of entries is exceeded.
         self.limit = limit
-        # Maximum number of creatable items
+        # The maximum number of entries that can be created.
         self.max_total_item = max_total_item
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
 
     def validate(self):

@@ -20,14 +20,23 @@ class ListGeneralConfigsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The query results.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The fault description.
         self.message = message
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` indicates failure.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -114,9 +123,13 @@ class ListGeneralConfigsResponseBodyData(DaraModel):
         config_value: str = None,
         config_value_type: str = None,
     ):
+        # The description of the configuration item.
         self.config_desc = config_desc
+        # The unique identifier of the configuration item.
         self.config_key = config_key
+        # The value of the configuration item.
         self.config_value = config_value
+        # The type of the configuration item.
         self.config_value_type = config_value_type
 
     def validate(self):

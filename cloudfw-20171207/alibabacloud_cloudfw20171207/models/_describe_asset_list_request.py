@@ -23,79 +23,85 @@ class DescribeAssetListRequest(DaraModel):
         type: str = None,
         user_type: str = None,
     ):
-        # The page number. Valid values: 1 to 50.
+        # The page number of the current page in a paginated query.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The IP version of the asset that is protected by Cloud Firewall. Valid values:
+        # The IP version of the assets protected by Cloud Firewall. Valid values:
         # 
-        # *   **4**: IPv4 (default)
-        # *   **6**: IPv6
+        # - **4** (default): IPv4.
+        # - **6**: IPv6.
         self.ip_version = ip_version
-        # The language of the content within the response. Valid values:
+        # The language type of the response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is added to Cloud Firewall.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The time when the asset was added. Valid values:
-        # 
-        # *   **discovered in 1 hour**: within one hour.
-        # *   **discovered in 1 day**: within one day.
-        # *   **discovered in 7 days**: within seven days.
+        # The time when the asset was discovered. Valid values:
+        # - **discovered in 1 hour**: The asset was discovered within 1 hour.
+        # - **discovered in 1 day**: The asset was discovered within 1 day.
+        # - **discovered in 7 days**: The asset was discovered within 7 days.
         self.new_resource_tag = new_resource_tag
-        # Whether to query external traffic information.
+        # Specifies whether to query outbound traffic information.
         self.out_statistic = out_statistic
-        # The number of entries per page. Valid values: 1 to 50.
+        # The number of Cloud Firewall-protected assets to display on each page in a paginated query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The region ID of your Cloud Firewall.
+        # The region ID of the Cloud Firewall.
         # 
-        # > For more information about the regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # > For more information about regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
-        # The type of the asset. Valid values:
+        # The asset type. Valid values:
         # 
-        # *   **BastionHostEgressIP**: the egress IP address of a bastion host
-        # *   **BastionHostIngressIP**: the ingress IP address of a bastion host
-        # *   **EcsEIP**: the elastic IP address (EIP) of an Elastic Compute Service (ECS) instance
-        # *   **EcsPublicIP**: the public IP address of an ECS instance
-        # *   **EIP**: the EIP
-        # *   **EniEIP**: the EIP of an elastic network interface (ENI)
-        # *   **NatEIP**: the EIP of a NAT gateway
-        # *   **SlbEIP**: the EIP of a Server Load Balancer (SLB) instance or a Classic Load Balancer (CLB) instance
-        # *   **SlbPublicIP**: the public IP address of an SLB instance or a CLB instance
-        # *   **NatPublicIP**: the public IP address of a NAT gateway
-        # *   **HAVIP**: the high-availability virtual IP address (HAVIP)
+        # - **BastionHostEgressIP**: Bastion host egress IP.
+        # - **BastionHostIngressIP**: Bastion host ingress IP.
+        # - **EcsEIP**: ECS EIP.
+        # - **EcsPublicIP**: ECS public IP.
+        # - **EIP**: Elastic IP address.
+        # - **EniEIP**: Elastic network interface EIP.
+        # - **NatEIP**: NAT EIP.
+        # - **SlbEIP**: SLB EIP (CLB EIP).
+        # - **SlbPublicIP**: SLB public IP (CLB public IP).
+        # - **NatPublicIP**: NAT public IP.
+        # - **HAVIP**: High-availability virtual IP.
+        # - **NlbEIP**: NLB EIP.
+        # - **ApiGatewayEIP**: API Gateway public IP.
+        # - **AlbEIP**: ALB EIP.
+        # - **AiGatewayEIP**: AI Gateway public IP.
+        # - **GaEIP**: GA EIP.
+        # - **SwasEIP**: Simple Application Server public IP.
+        # - **EcdEIP**: Elastic Desktop Service public IP.
+        # - **BastionHostIP**: Bastion host IP.
         self.resource_type = resource_type
-        # The instance ID or IP address of the asset.
+        # The IP address or instance ID of the asset.
         self.search_item = search_item
-        # Data leakage detection activation status.
+        # The status of data leakage detection.
         self.sensitive_status = sensitive_status
-        # The status of the security group policy. Valid values:
+        # The security group policy status. Valid values:
         # 
-        # *   **pass**: delivered
-        # *   **block**: undelivered
-        # *   **unsupport**: unsupported
-        # 
-        # > If you do not specify this parameter, the assets on which security group policies in all states take effect are queried.
+        # - **pass**: Delivered.
+        # - **block**: Not delivered.
+        # - **unsupport**: Not supported.
+        # > If this parameter is not set, all security group policy statuses are queried.
         self.sg_status = sg_status
-        # The status of the firewall. Valid values:
+        # The Cloud Firewall status. Valid values:
         # 
-        # *   **open**: The firewall is enabled.
-        # *   **opening**: The firewall is being enabled.
-        # *   **closed**: The firewall is disabled.
-        # *   **closing**: The firewall is being disabled.
+        # - **open**: Protected.
+        # - **opening**: Protection enabling.
+        # - **closed**: Not protected.
+        # - **closing**: Protection disabling.
         # 
-        # > If you do not specify this parameter, the assets that are configured for firewalls in all states are queried.
+        # > If this parameter is not set, all firewall statuses are queried.
         self.status = status
         # This parameter is deprecated.
         self.type = type
-        # The edition of Cloud Firewall. Valid values:
+        # The user type. Valid values:
         # 
-        # *   **buy**: a paid edition (default)
-        # *   **free**: Free Edition
+        # - **buy** (default): Paid user.
+        # - **free**: Free user.
         self.user_type = user_type
 
     def validate(self):

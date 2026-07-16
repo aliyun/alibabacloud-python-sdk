@@ -20,9 +20,9 @@ class GetNatGatewayAttributeRequest(DaraModel):
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the NAT gateway is deployed.
+        # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

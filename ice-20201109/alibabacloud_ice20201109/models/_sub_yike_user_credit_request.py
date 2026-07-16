@@ -10,8 +10,12 @@ class SubYikeUserCreditRequest(DaraModel):
         credit: int = None,
         yike_user_id: str = None,
     ):
+        # The amount of credit to deduct. The value must be greater than 0 and cannot exceed the credit balance of the sub-account.
+        # 
         # This parameter is required.
         self.credit = credit
+        # The user ID of the sub-account.
+        # 
         # This parameter is required.
         self.yike_user_id = yike_user_id
 

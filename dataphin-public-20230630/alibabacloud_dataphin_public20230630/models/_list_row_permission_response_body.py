@@ -17,11 +17,17 @@ class ListRowPermissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListRowPermissionResponseBodyPageResult(DaraModel):
         data: List[main_models.ListRowPermissionResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
+        # The query result.
         self.data = data
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -134,16 +142,27 @@ class ListRowPermissionResponseBodyPageResultData(DaraModel):
         tables: List[main_models.ListRowPermissionResponseBodyPageResultDataTables] = None,
         tenant_id: int = None,
     ):
+        # The creator.
         self.creator = creator
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The mapping fields.
         self.mapping_columns = mapping_columns
+        # The modifier.
         self.modifier = modifier
+        # The description of the row-level permission.
         self.row_permission_desc = row_permission_desc
+        # The row-level permission ID.
         self.row_permission_id = row_permission_id
+        # The name of the row-level permission.
         self.row_permission_name = row_permission_name
+        # The rules.
         self.rules = rules
+        # The related tables.
         self.tables = tables
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -259,8 +278,11 @@ class ListRowPermissionResponseBodyPageResultDataTables(DaraModel):
         mapping_column_name: str = None,
         resource_id: str = None,
     ):
+        # The table field.
         self.column_name = column_name
+        # The name of the mapping field.
         self.mapping_column_name = mapping_column_name
+        # The GUID of the table.
         self.resource_id = resource_id
 
     def validate(self):
@@ -306,12 +328,19 @@ class ListRowPermissionResponseBodyPageResultDataRules(DaraModel):
         status: int = None,
         user_mapping_list: List[main_models.ListRowPermissionResponseBodyPageResultDataRulesUserMappingList] = None,
     ):
+        # The rule expressions.
         self.expressions = expressions
+        # The rule ID.
         self.id = id
+        # Indicates whether the rule is deleted.
         self.is_delete = is_delete
+        # The rule name.
         self.rule_name = rule_name
+        # The scope type of the rule.
         self.scope_type = scope_type
+        # The rule status.
         self.status = status
+        # The accounts bound to the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -393,7 +422,9 @@ class ListRowPermissionResponseBodyPageResultDataRulesUserMappingList(DaraModel)
         account_type: str = None,
         accounts: List[main_models.ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts] = None,
     ):
+        # The type of the account bound to the rule.
         self.account_type = account_type
+        # The accounts bound to the rule.
         self.accounts = accounts
 
     def validate(self):
@@ -435,6 +466,7 @@ class ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts(Da
         self,
         account_id: str = None,
     ):
+        # The ID of the account bound to the rule.
         self.account_id = account_id
 
     def validate(self):
@@ -466,10 +498,15 @@ class ListRowPermissionResponseBodyPageResultDataRulesExpressions(DaraModel):
         type: str = None,
         values: List[str] = None,
     ):
+        # The name of the mapping field.
         self.mapping_column_name = mapping_column_name
+        # The expression operator.
         self.operator = operator
+        # The sub-expressions.
         self.sub_conditions = sub_conditions
+        # The expression type.
         self.type = type
+        # The operation values of the expression.
         self.values = values
 
     def validate(self):
@@ -523,8 +560,11 @@ class ListRowPermissionResponseBodyPageResultDataMappingColumns(DaraModel):
         column_name: str = None,
         column_type: str = None,
     ):
+        # The description of the mapping field.
         self.column_desc = column_desc
+        # The name of the mapping field.
         self.column_name = column_name
+        # The type of the mapping field.
         self.column_type = column_type
 
     def validate(self):

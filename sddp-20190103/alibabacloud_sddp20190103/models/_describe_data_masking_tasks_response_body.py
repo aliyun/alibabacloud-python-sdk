@@ -18,7 +18,7 @@ class DescribeDataMaskingTasksResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # A list of de-identification tasks.
+        # A list of data masking tasks.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size
@@ -101,48 +101,99 @@ class DescribeDataMaskingTasksResponseBodyItems(DaraModel):
         task_name: str = None,
         trigger_type: int = None,
     ):
-        # The member account to which the desensitization target belongs.
+        # The member account that the data masking destination belongs to.
         self.dst_member_account = dst_member_account
         # The destination path.
         self.dst_path = dst_path
-        # The service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The product that the destination data source belongs to. Valid values:
+        # 
+        # - **1**: MaxCompute.
+        # 
+        # - **2**: OSS.
+        # 
+        # - **3**: ADS.
+        # 
+        # - **4**: OTS.
+        # 
+        # - **5**: RDS.
+        # 
+        # - **6**: SELF_DB.
         self.dst_type = dst_type
-        # The type of the service to which the de-identified data belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the destination product. Valid values:
+        # 
+        # - **MaxCompute**.
+        # 
+        # - **OSS**.
+        # 
+        # - **ADS**.
+        # 
+        # - **OTS**.
+        # 
+        # - **RDS**.
+        # 
+        # - **SELF_DB**.
         self.dst_type_code = dst_type_code
-        # The time when the de-identification task is created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # Indicates whether the de-identification task is running.
+        # Indicates whether the task is running.
         self.has_unfinish_process = has_unfinish_process
-        # The task ID.
+        # The numerical ID of the task.
         self.id = id
-        # Indicates whether the source table is de-identified.
+        # Indicates whether the source table is masked.
         self.original_table = original_table
-        # The user who created the de-identification task.
+        # The creator of the task.
         self.owner = owner
-        # The number of times that the de-identification task is run.
+        # The number of executions.
         self.run_count = run_count
-        # The member account to which the desensitization source belongs.
+        # The member account that the data masking source belongs to.
         self.src_member_account = src_member_account
         # The source path.
         self.src_path = src_path
-        # The type of the service to which the data to be de-identified belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The type of the source product. Valid values:
+        # 
+        # - **1**: MaxCompute.
+        # 
+        # - **2**: OSS.
+        # 
+        # - **3**: ADS.
+        # 
+        # - **4**: OTS.
+        # 
+        # - **5**: RDS.
+        # 
+        # - **6**: SELF_DB.
         self.src_type = src_type
-        # The type of the service to which the data to be de-identified belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The type of the source product. Valid values:
+        # 
+        # - **MaxCompute**.
+        # 
+        # - **OSS**.
+        # 
+        # - **ADS**.
+        # 
+        # - **OTS**.
+        # 
+        # - **RDS**.
+        # 
+        # - **SELF_DB**.
         self.src_type_code = src_type_code
         # The status of the task. Valid values:
         # 
-        # *   **0**: disabled
-        # *   **1**: enabled
+        # - **0**: Disabled.
+        # 
+        # - **1**: Enabled.
         self.status = status
-        # The ID of the task.
+        # The string ID of the task.
         self.task_id = task_id
         # The name of the task.
         self.task_name = task_name
-        # The mode in which the de-identification task is run. Valid values:
+        # The execution method of the task. Valid values:
         # 
-        # *   **1**: manual
-        # *   **2**: scheduled
-        # *   **3**: manual and scheduled
+        # - **1**: Manual.
+        # 
+        # - **2**: Scheduled.
+        # 
+        # - **3**: Manual and scheduled.
         self.trigger_type = trigger_type
 
     def validate(self):

@@ -10,6 +10,7 @@ class CreateCredentialRequest(DaraModel):
         self,
         body: main_models.CreateCredentialInput = None,
     ):
+        # The parameters for creating a credential.
         self.body = body
 
     def validate(self):

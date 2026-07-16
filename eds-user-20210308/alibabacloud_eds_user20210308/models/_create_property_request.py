@@ -13,6 +13,7 @@ class CreatePropertyRequest(DaraModel):
         property_key: str = None,
         property_values: List[str] = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The property name.
         # 

@@ -23,7 +23,6 @@ class GetSubscribedCalendarResponseBody(DaraModel):
         self.description = description
         self.managers = managers
         self.name = name
-        # requestId
         self.request_id = request_id
         self.subscribe_scope = subscribe_scope
 

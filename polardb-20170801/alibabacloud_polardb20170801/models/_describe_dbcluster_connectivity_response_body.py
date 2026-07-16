@@ -13,17 +13,19 @@ class DescribeDBClusterConnectivityResponseBody(DaraModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
-        # The error code for connection diagnosis. Valid values:
+        # The connection check error code. Valid values:
         # 
-        # *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
-        # *   **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+        # - **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not in the whitelist.
+        # 
+        # - **CONNECTION_ABNORMAL**: The connection is abnormal.
         self.conn_check_error_code = conn_check_error_code
-        # The error message for connection diagnosis.
+        # The connection check error message.
         self.conn_check_error_message = conn_check_error_message
-        # The connection diagnosis result. Valid values:
+        # The connection check result. Valid values:
         # 
-        # *   **Success**
-        # *   **Failed**
+        # - **Success**
+        # 
+        # - **Failed**
         self.conn_check_result = conn_check_result
         # The cluster ID.
         self.dbcluster_id = dbcluster_id

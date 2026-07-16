@@ -15,11 +15,17 @@ class DownloadScriptRecordingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # API status code
         self.code = code
+        # Parameters
         self.download_params = download_params
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Success
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class DownloadScriptRecordingResponseBodyDownloadParams(DaraModel):
         file_name: str = None,
         signature_url: str = None,
     ):
+        # Recording file name
         self.file_name = file_name
+        # A URL pointing to the recording file. Use this address for playback or download.
         self.signature_url = signature_url
 
     def validate(self):

@@ -19,19 +19,57 @@ class DescribeVsStreamsPublishListRequest(DaraModel):
         stream_name: str = None,
         stream_type: str = None,
     ):
+        # The application name of the live stream.
         self.app_name = app_name
+        # Your domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The end time.
+        # 
+        # > - Use UTC format. Example: 2016-06-30T19:00:00Z
+        # >
+        # > - The interval between EndTime and StartTime must not exceed 30 days.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The sort order. Valid values:
+        # 
+        # - stream_name_desc (sort by stream name in descending order)
+        # 
+        # - stream_name_asc (sort by stream name in ascending order)
+        # 
+        # - publish_time_desc (sort by publish time in descending order)
+        # 
+        # - publish_time_asc (sort by publish time in ascending order) (default)
         self.order_by = order_by
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 3000.<br>
+        # Valid values: 1 to 3000.<br>
         self.page_size = page_size
+        # Specifies whether to use fuzzy matching for the stream name. Valid values:
+        # 
+        # - fuzzy (fuzzy match)
+        # 
+        # - strict (exact match)
         self.query_type = query_type
+        # The start time.
+        # 
+        # > Use UTC format. Example: 2016-06-29T19:00:00Z
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The live stream name.
         self.stream_name = stream_name
+        # The stream type. Valid values:
+        # 
+        # - all (all streams) (default)
+        # 
+        # - raw (raw stream)
+        # 
+        # - trans (transcoded stream)
         self.stream_type = stream_type
 
     def validate(self):

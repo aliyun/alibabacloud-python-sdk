@@ -14,11 +14,11 @@ class ListNetworkDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The network domains that are returned.
+        # The list of network domains.
         self.network_domains = network_domains
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of network domains that are returned.
+        # The total number of network domains.
         self.total_count = total_count
 
     def validate(self):
@@ -71,22 +71,25 @@ class ListNetworkDomainsResponseBodyNetworkDomains(DaraModel):
         network_domain_type: str = None,
         proxies_state: List[main_models.ListNetworkDomainsResponseBodyNetworkDomainsProxiesState] = None,
     ):
-        # The remarks of the network domain.
+        # The comments on the network domain.
         self.comment = comment
-        # Indicates whether the network domain is built-in.
+        # Indicates whether the network domain is a built-in domain.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: yes
+        # 
+        # - **false**: no
         self.default = default
-        # The network domain ID.
+        # The ID of the network domain.
         self.network_domain_id = network_domain_id
         # The name of the network domain.
         self.network_domain_name = network_domain_name
-        # The connection mode of the network domain. Valid values:
+        # The type of the network domain. Valid values:
         # 
-        # *   **Direct**
-        # *   **Proxy**
+        # - **Direct**: direct connection
+        # 
+        # - **Proxy**: proxy connection
         self.network_domain_type = network_domain_type
+        # The information about the proxy servers.
         self.proxies_state = proxies_state
 
     def validate(self):
@@ -155,13 +158,15 @@ class ListNetworkDomainsResponseBodyNetworkDomainsProxiesState(DaraModel):
     ):
         # The node type of the proxy server. Valid values:
         # 
-        # *   **Master**: primary proxy server.
-        # *   **Slave**: secondary proxy server.
-        self.node_type = node_type
-        # The status of the proxy server.
+        # - **Master**: the master proxy server
         # 
-        # *   **Available**
-        # *   **Unavailable**
+        # - **Slave**: the slave proxy server
+        self.node_type = node_type
+        # The status of the proxy server. Valid values:
+        # 
+        # - **Available**
+        # 
+        # - **Unavailable**
         self.proxy_state = proxy_state
 
     def validate(self):

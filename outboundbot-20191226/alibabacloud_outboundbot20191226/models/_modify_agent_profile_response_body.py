@@ -15,11 +15,17 @@ class ModifyAgentProfileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Returned data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,26 +103,53 @@ class ModifyAgentProfileResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
+        # Agent configuration ID
         self.agent_profile_id = agent_profile_id
-        # agent template id
+        # Agent Template ID
         self.agent_profile_template_id = agent_profile_template_id
-        # agent type
+        # Agent Type
         self.agent_type = agent_type
+        # API plug-in configuration
         self.api_plugin_json = api_plugin_json
+        # Creation time
         self.create_time = create_time
+        # Description
         self.description = description
+        # Instance ID
         self.instance_id = instance_id
+        # Instruction configuration
         self.instruction_json = instruction_json
+        # Label description
         self.labels_json = labels_json
+        # Model ID
         self.model = model
+        # Model configuration
         self.model_config = model_config
+        # NLU configuration, parameter settings:
+        # 
+        # - chatbotInstanceId Xiaomi Large Language Model (LLM) robot instance ID
+        # 
+        # - faqCategoryIds bound FAQ category ID
+        # 
+        # - llmAgentId Xiaomi Large Language Model (LLM) workspace ID
+        # 
+        # - llmAgentKey Xiaomi Large Language Model (LLM) workspace key
+        # 
+        # - llmAgentInstanceId Xiaomi Large Language Model (LLM) workspace instance ID
         self.nlu_config_json = nlu_config_json
+        # Prompt (Professional Mode)
         self.prompt = prompt
+        # Agent configuration
         self.prompt_json = prompt_json
+        # Scenario
         self.scenario = scenario
+        # Scenario ID
         self.script_id = script_id
+        # Is it a system template?
         self.system = system
+        # Modification time
         self.update_time = update_time
+        # Variable configuration
         self.variables_json = variables_json
 
     def validate(self):

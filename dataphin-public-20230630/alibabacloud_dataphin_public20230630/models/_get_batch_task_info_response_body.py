@@ -17,11 +17,17 @@ class GetBatchTaskInfoResponseBody(DaraModel):
         success: bool = None,
         task_info: main_models.GetBatchTaskInfoResponseBodyTaskInfo = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The node details.
         self.task_info = task_info
 
     def validate(self):
@@ -117,42 +123,97 @@ class GetBatchTaskInfoResponseBodyTaskInfo(DaraModel):
         task_type: int = None,
         up_stream_list: List[main_models.GetBatchTaskInfoResponseBodyTaskInfoUpStreamList] = None,
     ):
+        # The node code.
         self.code = code
+        # The cron expression for automatic scheduling. Refer to the Linux cron expression format.
         self.cron_expression = cron_expression
+        # The custom scheduling interval configuration.
         self.custom_schedule_config = custom_schedule_config
+        # The ID of the DAG to which the node belongs.
         self.dag_id = dag_id
+        # The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
+        # The data source ID for database SQL nodes.
         self.data_source_id = data_source_id
+        # The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        # The user ID of the development owner.
         self.develop_owner_id = develop_owner_id
+        # The name of the development owner.
         self.develop_owner_name = develop_owner_name
+        # The node ID in the directory tree.
         self.file_id = file_id
+        # Indicates whether the node has a development environment node.
         self.has_dev_node = has_dev_node
+        # The node name.
         self.name = name
+        # Indicates whether the node needs to be published.
         self.need_publish = need_publish
+        # The node description.
         self.node_description = node_description
+        # The node source, indicating the organization or application that created the node.
         self.node_from = node_from
+        # The node ID.
         self.node_id = node_id
+        # The node name.
         self.node_name = node_name
+        # The list of node output names.
         self.node_output_name_list = node_output_name_list
+        # The node status. Valid values:
+        # 
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         self.node_status = node_status
+        # The user ID of the current operator.
         self.operator_user_id = operator_user_id
+        # The user ID of the O&M owner.
         self.ops_owner_id = ops_owner_id
+        # The name of the O&M owner.
         self.ops_owner_name = ops_owner_name
+        # The name of the node owner.
         self.owner_name = owner_name
+        # The user ID of the node owner.
         self.owner_user_id = owner_user_id
+        # The list of custom node parameters.
         self.param_list = param_list
+        # Indicates whether the node is paused for scheduling.
         self.paused = paused
+        # The scheduling priority of the node. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
+        # The project ID.
         self.project_id = project_id
+        # Indicates whether the node is published.
         self.published = published
+        # The remarks.
         self.remark = remark
+        # Indicates whether the node can be rerun.
         self.rerunable = rerunable
+        # The scheduling period. Valid values:
+        # 
+        # - YEARLY
+        # - MONTHLY
+        # - WEEKLY
+        # - DAILY
+        # - HOURLY
+        # - MINUTELY.
         self.schedule_period = schedule_period
+        # The scheduling type. Valid values:
+        # 
+        # - 1: periodic node.
+        # - 3: manual node.
         self.schedule_type = schedule_type
+        # The Spark client information.
         self.spark_client_info = spark_client_info
+        # The submit status. Valid values:
+        # 
+        # - 0: draft.
+        # - 1: submitted.
+        # - 100: in development.
         self.status = status
+        # The node type. For more information, refer to the create offline compute node operation.
         self.task_type = task_type
+        # The upstream dependencies.
         self.up_stream_list = up_stream_list
 
     def validate(self):
@@ -429,16 +490,30 @@ class GetBatchTaskInfoResponseBodyTaskInfoUpStreamList(DaraModel):
         source_node_user_name: str = None,
         source_table_name: str = None,
     ):
+        # The dependency period.
         self.depend_period = depend_period
+        # The dependency strategy. Valid values: ALL, FIRST, LAST, NEAR.
         self.depend_strategy = depend_strategy
+        # The dependent logical table fields.
         self.field_list = field_list
+        # The upstream dependency node type. Valid values:
+        # 
+        # - PHYSICAL: physical node.
+        # - LOGICAL: logical table dependency.
         self.node_type = node_type
+        # The period difference. A value of 0 indicates a same-period dependency. A positive number indicates a dependency on the previous N periods.
         self.period_diff = period_diff
+        # Indicates whether the upstream node is enabled.
         self.source_node_enabled = source_node_enabled
+        # The upstream node ID.
         self.source_node_id = source_node_id
+        # The upstream node name.
         self.source_node_name = source_node_name
+        # The output name of the upstream node.
         self.source_node_output_name = source_node_output_name
+        # The username of the upstream node owner.
         self.source_node_user_name = source_node_user_name
+        # The name of the input table.
         self.source_table_name = source_table_name
 
     def validate(self):
@@ -529,7 +604,14 @@ class GetBatchTaskInfoResponseBodyTaskInfoUpStreamListDependPeriod(DaraModel):
         period_offset: int = None,
         period_type: str = None,
     ):
+        # The period offset. This parameter is required when PeriodType is set to LAST_N_PERIOD.
         self.period_offset = period_offset
+        # The dependency period type. Valid values:
+        # 
+        # - CURRENT_PERIOD
+        # - LAST_PERIOD
+        # - LAST_N_PERIOD
+        # - LAST_24_HOUR.
         self.period_type = period_type
 
     def validate(self):
@@ -563,6 +645,7 @@ class GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo(DaraModel):
         self,
         spark_client_version: str = None,
     ):
+        # The Spark client version name.
         self.spark_client_version = spark_client_version
 
     def validate(self):
@@ -591,7 +674,9 @@ class GetBatchTaskInfoResponseBodyTaskInfoParamList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.key = key
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -629,10 +714,18 @@ class GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig(DaraModel):
         schedule_period: str = None,
         start_time: str = None,
     ):
+        # The end time in the format of HH:mm.
         self.end_time = end_time
+        # The custom interval.
         self.interval = interval
+        # The interval unit. Valid values:
+        # 
+        # - MINUTE
+        # - HOUR.
         self.interval_unit = interval_unit
+        # The scheduling period.
         self.schedule_period = schedule_period
+        # The start time in the format of HH:mm.
         self.start_time = start_time
 
     def validate(self):

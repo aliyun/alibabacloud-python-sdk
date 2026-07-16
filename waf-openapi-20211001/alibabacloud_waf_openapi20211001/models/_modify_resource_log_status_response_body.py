@@ -14,8 +14,9 @@ class ModifyResourceLogStatusResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the log collection feature is enabled for the protected object. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The feature is enabled.
+        # 
+        # - **false**: The feature is disabled.
         self.status = status
 
     def validate(self):

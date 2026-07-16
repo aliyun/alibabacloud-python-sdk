@@ -9,6 +9,7 @@ class RemovePluginRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # Request body.
         self.body = body
 
     def validate(self):

@@ -13,28 +13,26 @@ class UpdatePublishCronRequest(DaraModel):
         cron_type: str = None,
         duration: int = None,
     ):
-        # The cron expression that is used to specify the start time of the upgrade.
+        # The Cron expression for the upgrade start time.
         # 
         # This parameter is required.
         self.cron = cron
-        # The day of a week on which you want to perform the upgrade. Valid values:
-        # 
-        # *   **MON**
-        # *   **TUE**
-        # *   **WED**
-        # *   **THU**
-        # *   **FRI**
-        # *   **SAT**
-        # *   **SUN**
+        # The day of the week for the upgrade time. Valid values:
+        # - **MON**: Monday
+        # - **TUE**: Tuesday
+        # - **WED**: Wednesday
+        # - **THU**: Thursday
+        # - **FRI**: Friday
+        # - **SAT**: Saturday
+        # - **SUN**: Sunday.
         self.cron_day = cron_day
-        # The start timestamp. Unit: milliseconds.
+        # The publish start timestamp. Unit: milliseconds.
         self.cron_time = cron_time
-        # The type of the upgrade cycle. Valid values:
-        # 
-        # *   **day**: every day
-        # *   **week**: every week
+        # The upgrade start cycle type. Valid values:
+        # - **day**: every day
+        # - **week**: every week.
         self.cron_type = cron_type
-        # The duration of the upgrade. Unit: hours.
+        # The upgrade duration. Unit: hours.
         # 
         # This parameter is required.
         self.duration = duration

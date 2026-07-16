@@ -17,11 +17,17 @@ class GenerateUploadConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,21 @@ class GenerateUploadConfigResponseBodyData(DaraModel):
         form_datas: Dict[str, str] = None,
         post_url: str = None,
     ):
+        # The unique identifier of the file. You can use this value as a URL for AI Writing Assistant.
         self.file_key = file_key
+        # The credentials for uploading the file to OSS.
+        # 
+        # ```json
+        # {
+        #   "OSSAccessKeyId": "xxx",
+        #   "Signature": "xxx+xxx=",
+        #   "MaxSize": 31457280,
+        #   "key": "aimiaobi/dataset/2_2/xx.txt",
+        #   "policy": "xxx=="
+        # }
+        # ```
         self.form_datas = form_datas
+        # The address for uploading the file to OSS. This is a dedicated OSS domain name for AI Writing Assistant. The value is fixed to \\`https\\://aimiaobi-service-prod.oss-cn-beijing.aliyuncs.com/\\`.
         self.post_url = post_url
 
     def validate(self):

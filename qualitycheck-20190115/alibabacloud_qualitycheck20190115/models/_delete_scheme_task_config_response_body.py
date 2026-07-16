@@ -17,11 +17,16 @@ class DeleteSchemeTaskConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the response. A value of **200** indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
+        # The message returned for the request. If the request is successful, successful is returned. If the request fails, an error message is returned.
         self.message = message
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):

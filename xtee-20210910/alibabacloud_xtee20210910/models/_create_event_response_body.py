@@ -10,9 +10,9 @@ class CreateEventResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Return result.
+        # The returned result.
         self.data = data
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

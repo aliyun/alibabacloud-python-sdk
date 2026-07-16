@@ -14,7 +14,16 @@ class DescribeDBClusterNetInfoRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The type of the endpoint. Valid values:
+        # 
+        # - Normal: the primary endpoint
+        # 
+        # - ReadWriteSplitting: the cluster endpoint
+        # 
+        # - MPP: the Massively Parallel Processing (MPP) endpoint
         self.connection_string_type = connection_string_type
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account

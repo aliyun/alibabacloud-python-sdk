@@ -10,7 +10,9 @@ class VerifyCustomHostnameResponseBody(DaraModel):
         passed: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the verification is passed.
         self.passed = passed
+        # The request ID. A unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):

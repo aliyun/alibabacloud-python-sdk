@@ -20,14 +20,23 @@ class ListSearchTaskDialoguesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The number of the page returned.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -122,17 +131,29 @@ class ListSearchTaskDialoguesResponseBodyData(DaraModel):
         task_id: str = None,
         text: str = None,
     ):
+        # The configuration.
         self.chat_config = chat_config
+        # The time when the task was created.
         self.create_time = create_time
+        # The type of generation.
         self.dialogue_type = dialogue_type
+        # The generated content that the customer rated as good.
         self.good_text = good_text
+        # The original session ID.
         self.origin_session_id = origin_session_id
+        # The input prompt.
         self.prompt = prompt
+        # The rating of the content, which can be Like or Dislike.
         self.rating = rating
+        # The response body as a string.
         self.response_body_str = response_body_str
+        # The unique ID of a single-turn conversation.
         self.session_id = session_id
+        # The tags.
         self.tags = tags
+        # The unique ID of the task.
         self.task_id = task_id
+        # The customer feedback.
         self.text = text
 
     def validate(self):
@@ -233,10 +254,15 @@ class ListSearchTaskDialoguesResponseBodyDataChatConfig(DaraModel):
         search_models: List[str] = None,
         search_param: main_models.ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam = None,
     ):
+        # The request type.
         self.dialogue_type = dialogue_type
+        # Indicates whether the process is end-to-end.
         self.end_to_end = end_to_end
+        # The generation level.
         self.generate_level = generate_level
+        # The type of content generation.
         self.generate_technology = generate_technology
+        # The search type.
         self.search_models = search_models
         self.search_param = search_param
 
@@ -302,6 +328,7 @@ class ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam(DaraModel):
     ):
         self.end_time = end_time
         self.multimodal_search_types = multimodal_search_types
+        # The search sources.
         self.search_sources = search_sources
         self.start_time = start_time
 
@@ -358,8 +385,11 @@ class ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources(
         dataset_name: str = None,
         name: str = None,
     ):
+        # The type.
         self.code = code
+        # The unique ID.
         self.dataset_name = dataset_name
+        # The description.
         self.name = name
 
     def validate(self):

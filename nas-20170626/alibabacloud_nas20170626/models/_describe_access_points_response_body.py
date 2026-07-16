@@ -15,11 +15,11 @@ class DescribeAccessPointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the access point.
+        # The access point information.
         self.access_points = access_points
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         # 
         # This parameter is required.
         self.request_id = request_id
@@ -93,52 +93,52 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the access point.
+        # The access point ARN.
         self.arn = arn
-        # The name of the permission group.
+        # The permission group name.
         self.access_group = access_group
-        # The ID of the access point.
+        # The access point ID.
         self.access_point_id = access_point_id
-        # The name of the access point.
+        # The access point name.
         self.access_point_name = access_point_name
         # The time when the access point was created.
         self.create_time = create_time
         # The domain name of the access point.
         self.domain_name = domain_name
-        # Indicates whether the Resource Access Management (RAM) policy is enabled.
+        # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The time when the access point was modified.
+        # The time when the access point was last modified.
         self.modify_time = modify_time
-        # The Portable Operating System Interface for UNIX (POSIX) user.
+        # The POSIX user.
         self.posix_user = posix_user
         # The root directory.
         self.root_path = root_path
-        # The permissions on the root directory.
+        # The root directory permissions.
         self.root_path_permission = root_path_permission
-        # The status of the root directory.
+        # The current root directory status.
         # 
         # Valid values:
         # 
-        # *   0: The rootpath status is unknown.
-        # *   1: The rootpath does not exist and may be deleted.
-        # *   2: The rootpath is normal.
+        # - 0: The root path status is unknown.
+        # - 1: The root path does not exist. It may have been deleted by the user.
+        # - 2: The root path status is normal.
         self.root_path_status = root_path_status
-        # The status of the access point.
+        # The current access point status.
         # 
         # Valid values:
         # 
-        # *   Active: The access point is available.
-        # *   Inactive: The access point is unavailable.
-        # *   Pending: The access point is being created.
-        # *   Deleting: The access point is being deleted.
+        # - Active: available.
+        # - Inactive: unavailable.
+        # - Pending: being created.
+        # - Deleting: being deleted.
         # 
-        # >  You can mount a file system only if the access point is in the Active state.
+        # > You can mount a file system only when the status is Active.
         self.status = status
-        # The tags of the access point.
+        # The list of access point tags.
         self.tags = tags
-        # Switch ID.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -279,9 +279,9 @@ class DescribeAccessPointsResponseBodyAccessPointsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the resource.
+        # The tag key.
         self.key = key
-        # Tag value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -317,9 +317,9 @@ class DescribeAccessPointsResponseBodyAccessPointsRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
-        # The ID of the owner group.
+        # The file group ID of the owner.
         self.owner_group_id = owner_group_id
-        # The owner ID.
+        # The user ID of the owner.
         self.owner_user_id = owner_user_id
         # The POSIX permission.
         self.permission = permission
@@ -363,11 +363,11 @@ class DescribeAccessPointsResponseBodyAccessPointsPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
-        # The ID of the POSIX user group.
+        # The POSIX group ID.
         self.posix_group_id = posix_group_id
-        # The IDs of the secondary user groups.
+        # The secondary group ID.
         self.posix_secondary_group_ids = posix_secondary_group_ids
-        # The ID of the POSIX user.
+        # The POSIX user ID.
         self.posix_user_id = posix_user_id
 
     def validate(self):

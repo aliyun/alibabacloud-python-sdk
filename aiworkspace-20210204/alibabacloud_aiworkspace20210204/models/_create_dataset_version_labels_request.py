@@ -12,7 +12,7 @@ class CreateDatasetVersionLabelsRequest(DaraModel):
         self,
         labels: List[main_models.Label] = None,
     ):
-        # The tags.
+        # The list of labels.
         # 
         # This parameter is required.
         self.labels = labels

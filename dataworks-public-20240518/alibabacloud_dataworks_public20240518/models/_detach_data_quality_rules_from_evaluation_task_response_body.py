@@ -12,9 +12,9 @@ class DetachDataQualityRulesFromEvaluationTaskResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # Whether the call is successful. The values are as follows:
-        # - true: The call is successful.
-        # - false: the call failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

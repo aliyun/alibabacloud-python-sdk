@@ -17,20 +17,21 @@ class StartInstanceRequest(DaraModel):
     ):
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the AccessKey pair, the permissions of the RAM user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # 
+        # - false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         # 
         # Default value: false.
         self.dry_run = dry_run
         # Specifies whether to restore the ECS instance to the initial health state on startup if a local disk fails. This parameter is applicable to ECS instances that are equipped with local disks, such as d1, i1, and i2 instances. Valid values:
         # 
-        # *   true: restores the ECS instance to the initial health state on startup.
+        # - true: restores the ECS instance to the initial health state on startup.
         # 
-        #     **
+        #   \\*\\*
         # 
-        #     **Warning**: After the ECS instance is restored to the initial health state, data stored on the local disks of the instance is lost.
+        #   **Warning**: After the ECS instance is restored to the initial health state, data stored on the local disks of the instance is lost.
         # 
-        # *   false: does not restore the ECS instance to the initial health state on startup. The instance remains in the current state.
+        # - false: does not restore the ECS instance to the initial health state on startup. The instance remains in the current state.
         # 
         # Default value: false.
         self.init_local_disk = init_local_disk

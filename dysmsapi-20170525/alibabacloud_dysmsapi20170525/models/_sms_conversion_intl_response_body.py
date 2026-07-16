@@ -11,9 +11,9 @@ class SmsConversionIntlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. If OK is returned, the request is successful. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.101345.0.0.74326ff2J5EZyt).
+        # The status code. A return value of OK indicates that the request was successful. For other error codes, see [Error Code List](https://help.aliyun.com/document_detail/101346.html?spm=a2c4g.101345.0.0.74326ff2J5EZyt).
         self.code = code
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id

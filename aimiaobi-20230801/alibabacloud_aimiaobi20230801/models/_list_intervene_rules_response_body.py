@@ -17,11 +17,17 @@ class ListInterveneRulesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -85,10 +91,15 @@ class ListInterveneRulesResponseBodyData(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # Status code returned by the intervention service
         self.code = code
+        # Number of items
         self.count = count
+        # List of rules
         self.intervene_rule_list = intervene_rule_list
+        # Page number
         self.page_index = page_index
+        # Page size
         self.page_size = page_size
 
     def validate(self):
@@ -154,12 +165,19 @@ class ListInterveneRulesResponseBodyDataInterveneRuleList(DaraModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # Answer configuration
         self.answer_config = answer_config
+        # Creation time
         self.create_time = create_time
+        # Effective time
         self.effect_time = effect_time
+        # Intervention type
         self.intervene_type = intervene_type
+        # List of namespaces
         self.namespace_list = namespace_list
+        # Rule ID
         self.rule_id = rule_id
+        # Rule name
         self.rule_name = rule_name
 
     def validate(self):
@@ -233,8 +251,11 @@ class ListInterveneRulesResponseBodyDataInterveneRuleListAnswerConfig(DaraModel)
         message: str = None,
         namespace: str = None,
     ):
+        # Answer type
         self.answer_type = answer_type
+        # Answer content
         self.message = message
+        # Namespace
         self.namespace = namespace
 
     def validate(self):

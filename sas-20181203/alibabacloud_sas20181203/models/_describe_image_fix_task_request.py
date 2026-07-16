@@ -13,23 +13,23 @@ class DescribeImageFixTaskRequest(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The number of the page to return. Default value: **1**
+        # The page number of the results to return. Default value: **1**, which indicates that the results start from page 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The timestamp when the task ends. Unit: milliseconds.
+        # The end timestamp of the repair task that you want to query. Unit: milliseconds.
         self.end_time = end_time
-        # The number of entries to return on each page. Default value: **20**
+        # The number of entries per page in a paginated query. Default value: **20**, which indicates that up to 20 entries are returned per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The timestamp when the task starts. Unit: milliseconds.
+        # The start timestamp of the repair task that you want to query. Unit: milliseconds.
         self.start_time = start_time
-        # The status of the task. Valid values:
+        # The status of the image repair task that you want to query. Valid values:
         # 
-        # *   **1**: The task is running.
-        # *   **2**: The task is successful.
-        # *   **3**: The task failed.
+        # - **1**: Repairing
+        # - **2**: Repaired
+        # - **3**: Repair failed
         self.status = status
 
     def validate(self):

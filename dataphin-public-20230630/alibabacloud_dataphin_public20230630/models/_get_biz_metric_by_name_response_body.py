@@ -17,12 +17,17 @@ class GetBizMetricByNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The details of the business metric.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -98,22 +103,39 @@ class GetBizMetricByNameResponseBodyData(DaraModel):
         tenant_id: int = None,
         view_scope: main_models.GetBizMetricByNameResponseBodyDataViewScope = None,
     ):
+        # The list of associated technical metrics.
         self.associated_tech_metrics = associated_tech_metrics
+        # The name of the business owner.
         self.biz_owner_name = biz_owner_name
+        # The list of affiliated catalogs.
         self.catalogs = catalogs
+        # The list of custom attributes.
         self.custom_attribute = custom_attribute
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
+        # The GUID of the business metric.
         self.guid = guid
+        # The list of labels.
         self.labels = labels
+        # The metric definition.
         self.metric_definition = metric_definition
+        # The expression of the metric relation diagram.
         self.metric_relation_diagram_expression = metric_relation_diagram_expression
+        # Indicates whether the metric relation diagram is enabled. A value of true indicates that the diagram is enabled. A value of false indicates that the diagram is disabled.
         self.metric_relation_diagram_switch_open = metric_relation_diagram_switch_open
+        # The name of the business metric.
         self.name = name
+        # The text content of the operation instruction.
         self.operate_instruction_content = operate_instruction_content
+        # Indicates whether the operation instruction is enabled. A value of true indicates that the operation instruction is enabled. A value of false indicates that the operation instruction is disabled.
         self.operate_instruction_enabled = operate_instruction_enabled
+        # The list of related business metrics.
         self.related_biz_metrics = related_biz_metrics
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The view scope.
         self.view_scope = view_scope
 
     def validate(self):
@@ -277,8 +299,11 @@ class GetBizMetricByNameResponseBodyDataViewScope(DaraModel):
         user_group_names: List[str] = None,
         user_names: List[str] = None,
     ):
+        # The type of view scope. Valid values: ALL_USERS_CAN_VIEW (visible to all users), PART_USERS_CAN_VIEW (visible to specific users), and PART_USERS_CAN_NOT_VIEW (invisible to specific users).
         self.scope_type = scope_type
+        # The names of user groups. This parameter takes effect only when the view scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
         self.user_group_names = user_group_names
+        # The usernames of individual accounts. This parameter is valid only when the view scope is set to PART_USERS_CAN_VIEW or PART_USERS_CAN_NOT_VIEW.
         self.user_names = user_names
 
     def validate(self):
@@ -322,11 +347,15 @@ class GetBizMetricByNameResponseBodyDataRelatedBizMetrics(DaraModel):
         name: str = None,
         relation_type: str = None,
     ):
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
-        # guid
+        # The GUID.
         self.guid = guid
+        # The name.
         self.name = name
+        # The relation type. Valid values: POSITIVE (positive correlation), NEGATIVE (negative correlation), and OTHER (other).
         self.relation_type = relation_type
 
     def validate(self):
@@ -379,7 +408,9 @@ class GetBizMetricByNameResponseBodyDataCustomAttribute(DaraModel):
         code: str = None,
         values: List[str] = None,
     ):
+        # The code of the custom attribute.
         self.code = code
+        # The list of attribute values. 1. For custom input and single-select dropdown attributes, the first value in the list is used. 2. For multi-select dropdown attributes, all values in the list are used. 3. For hyperlink attributes, the first value is the display text and the second value is the link URL.
         self.values = values
 
     def validate(self):
@@ -419,12 +450,19 @@ class GetBizMetricByNameResponseBodyDataCatalogs(DaraModel):
         topic_id: int = None,
         topic_name: str = None,
     ):
+        # The catalog description.
         self.catalog_desc = catalog_desc
+        # The catalog ID.
         self.catalog_id = catalog_id
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The parent catalog ID.
         self.parent_catalog_id = parent_catalog_id
+        # The parent path of the catalog.
         self.parent_path = parent_path
+        # The topic ID to which the catalog belongs.
         self.topic_id = topic_id
+        # The topic name to which the catalog belongs.
         self.topic_name = topic_name
 
     def validate(self):
@@ -492,11 +530,15 @@ class GetBizMetricByNameResponseBodyDataAssociatedTechMetrics(DaraModel):
         name: str = None,
         sub_type: str = None,
     ):
+        # The description.
         self.description = description
+        # The display name.
         self.display_name = display_name
-        # guid
+        # The GUID.
         self.guid = guid
+        # The name.
         self.name = name
+        # The type of the technical metric. Valid values: INDEX (modeling metric) and CUSTOM_INDEX (custom metric).
         self.sub_type = sub_type
 
     def validate(self):

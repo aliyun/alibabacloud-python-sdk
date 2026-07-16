@@ -14,11 +14,11 @@ class DescribeDomainSecureVulListResponseBody(DaraModel):
         total_count: int = None,
         vul_list: List[main_models.DescribeDomainSecureVulListResponseBodyVulList] = None,
     ):
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
         # The total number of vulnerabilities returned.
         self.total_count = total_count
-        # The domain name-related vulnerabilities.
+        # The list of vulnerabilities associated with the domain name.
         self.vul_list = vul_list
 
     def validate(self):
@@ -76,34 +76,44 @@ class DescribeDomainSecureVulListResponseBodyVulList(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The number of the vulnerabilities that have the **high** priority.
+        # The number of high-priority vulnerabilities.
         self.asap_count = asap_count
-        # The timestamp when the vulnerability was last detected. Unit: milliseconds.
+        # The timestamp when the vulnerability was last detected, in milliseconds.
         self.gmt_last = gmt_last
         # The number of handled vulnerabilities.
         self.handled_count = handled_count
-        # The number of the vulnerabilities that have the **medium** priority.
+        # The number of medium-priority vulnerabilities.
         self.later_count = later_count
         # The name of the vulnerability.
         self.name = name
-        # The number of the vulnerabilities that have the **low** priority.
+        # The number of low-priority vulnerabilities.
         self.nntf_count = nntf_count
-        # The tag that is added to the vulnerability. Valid values:
+        # The label of the vulnerability. Valid values:
         # 
-        # *   Restart required
-        # *   Remote utilization
-        # *   EXP exists
-        # *   Available
-        # *   Elevation of Privilege
-        # *   Code Execution
+        # <props="china">
+        # - Restart required
+        # - Remote utilization
+        # - EXP exists
+        # - Available
+        # - Privilege escalation
+        # - Code execution
+        # 
+        # 
+        # <props="intl">
+        # - Restart required
+        # - Remote utilization
+        # - EXP exists
+        # - Available
+        # - Privilege escalation
+        # - Code execution
         self.tags = tags
-        # The type of the vulnerability. Default value: cve. Valid values:
+        # The type of the vulnerability to query. Default value: cve. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability.
-        # *   **sys**: Windows system vulnerability.
-        # *   **cms**: Web-CMS vulnerability.
-        # *   **app**: application vulnerability that is detected by network scanning.
-        # *   **sca**: application vulnerability that is detected by using software component analysis.
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **app**: application vulnerability (network scan)
+        # - **sca**: application vulnerability (software constituency parsing)
         self.type = type
 
     def validate(self):

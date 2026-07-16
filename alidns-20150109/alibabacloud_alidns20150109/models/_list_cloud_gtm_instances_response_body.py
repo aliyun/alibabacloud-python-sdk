@@ -18,15 +18,15 @@ class ListCloudGtmInstancesResponseBody(DaraModel):
         total_pages: int = None,
     ):
         self.instances = instances
-        # Current page number, starting with **1**, default is **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of 100 and a default of 20.
+        # The number of entries returned on each page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Total number of instance entries.
+        # The total number of instances.
         self.total_items = total_items
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

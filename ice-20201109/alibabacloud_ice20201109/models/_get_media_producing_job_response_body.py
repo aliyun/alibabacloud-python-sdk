@@ -11,7 +11,7 @@ class GetMediaProducingJobResponseBody(DaraModel):
         media_producing_job: main_models.GetMediaProducingJobResponseBodyMediaProducingJob = None,
         request_id: str = None,
     ):
-        # The information about the online editing project.
+        # The details of the media producing job.
         self.media_producing_job = media_producing_job
         # The request ID.
         self.request_id = request_id
@@ -66,62 +66,55 @@ class GetMediaProducingJobResponseBodyMediaProducingJob(DaraModel):
         user_data: str = None,
         vod_media_id: str = None,
     ):
-        # The template parameters of the media editing and production job.
+        # The clip parameters of the template used for the job.
         self.clips_param = clips_param
-        # The response code
-        # 
-        # Note: Pay attention to this parameter if the job failed.
+        # The error code of the media producing job. >Notice: This parameter is returned only if the job fails.
         self.code = code
-        # The time when the media editing and production job was complete.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time in UTC when the media producing job was completed, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
         self.complete_time = complete_time
-        # The time when the media editing and production job was created.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time in UTC when the media producing job was created, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
         self.create_time = create_time
-        # The duration of the output file.
-        # 
-        # Note: This parameter has a value if the job is successful and the output file is an audio or video file.
+        # The duration of the output media. >Notice: This parameter is returned only if the job is successful and the output is an audio or video file.
         self.duration = duration
-        # The ID of the media editing and production job.
+        # The job ID.
         self.job_id = job_id
-        # The media asset ID of the output file.
+        # The ID of the output media asset.
         self.media_id = media_id
-        # The URL of the output file.
+        # The URL of the output media file.
         self.media_url = media_url
-        # The returned message.
+        # The error message of the media producing job.
         # 
-        # Note: Pay attention to this parameter if the job failed.
+        # >Notice: 
+        # 
+        # This parameter is returned only if the job fails.
         self.message = message
-        # The time when the media editing and production job was last modified.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time in UTC when the media producing job was last modified, formatted as `YYYY-MM-DD\\"T\\"hh:mm:ss\\"Z\\"`.
         self.modified_time = modified_time
+        # The progress of the job. Valid values: 0 to 100.
         self.progress = progress
-        # The ID of the online editing project.
+        # The project ID.
         self.project_id = project_id
-        # The state of the media editing and production job. Valid values:
+        # The status of the media producing job. Valid values:
         # 
-        # Init
+        # - `Init` (Initialized)
         # 
-        # Queuing
+        # - `Queuing` (In queue)
         # 
-        # Processing
+        # - `Processing` (In progress)
         # 
-        # Success
+        # - `Success` (Successful)
         # 
-        # Failed
+        # - `Failed` (Failed)
         self.status = status
-        # The materials of the media editing and production job if the job is a subjob of a quick video production job, including the broadcast text and title.
+        # If the job is a subtask of a batch smart one-click video creation task, this parameter contains the subtask\\"s materials, such as the title and speech script.
         self.sub_job_materials = sub_job_materials
-        # The ID of the template used by the media editing and production job.
+        # The ID of the template used for the job.
         self.template_id = template_id
-        # The timeline of the media editing and production job.
+        # The timeline of the media producing job.
         self.timeline = timeline
-        # The user-defined data in the JSON format.
+        # The user data, in JSON format.
         self.user_data = user_data
-        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+        # The ID of the media asset in VOD (Video on Demand). This ID is returned if the job\\"s output is stored in VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):

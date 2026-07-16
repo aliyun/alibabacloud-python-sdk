@@ -18,33 +18,35 @@ class DescribeApisecAbnormalDomainStatisticRequest(DaraModel):
         start_time: int = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # > This parameter is applicable only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The end of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
         self.end_time = end_time
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sorting order. Valid values:
+        # The sort order of the list. Valid values:
         # 
         # - **asc**: ascending order.
+        # 
         # - **desc**: descending order.
         self.order_way = order_way
-        # The page number. Default value: **1**.
+        # The page number when using paging. Sets the current page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Default value: **5**.
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The beginning of the time range to query. Specify a UNIX timestamp in UTC. Unit: seconds.
+        # The beginning of the time range to query. The value is a UNIX timestamp (UTC) in seconds.
         self.start_time = start_time
 
     def validate(self):

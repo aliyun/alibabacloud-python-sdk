@@ -14,8 +14,11 @@ class DescribeVpcFirewallDomainListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of returned data.
         self.data_list = data_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -72,15 +75,25 @@ class DescribeVpcFirewallDomainListResponseBodyDataList(DaraModel):
         src_vpc_count: int = None,
         total_bytes: int = None,
     ):
+        # The list of application layer protocols.
         self.application_name_list = application_name_list
+        # The business to which the domain name belongs.
         self.business = business
+        # The domain name.
         self.domain = domain
+        # The organization to which the domain name belongs.
         self.group_name = group_name
+        # The volume of request traffic to the domain name. Unit: bytes.
         self.request_bytes = request_bytes
+        # The volume of response traffic. Unit: bytes.
         self.response_bytes = response_bytes
+        # The number of sessions.
         self.session_count = session_count
+        # The number of source IP addresses that are used to access the domain name.
         self.src_ip_count = src_ip_count
+        # The number of source VPCs that are used to access the domain name.
         self.src_vpc_count = src_vpc_count
+        # The total traffic volume. Unit: bytes.
         self.total_bytes = total_bytes
 
     def validate(self):

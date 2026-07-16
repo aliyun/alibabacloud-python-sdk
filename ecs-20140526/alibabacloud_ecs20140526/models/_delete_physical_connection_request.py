@@ -15,11 +15,16 @@ class DeletePhysicalConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # A client-generated, case-sensitive token used to ensure request idempotency. This token must be unique across all requests and contain a maximum of 64 ASCII characters.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the physical connection.
+        # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
+        # The region ID of the physical connection.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

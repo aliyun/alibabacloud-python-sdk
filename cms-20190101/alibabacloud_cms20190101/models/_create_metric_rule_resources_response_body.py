@@ -12,15 +12,15 @@ class CreateMetricRuleResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The status code.
+        # > The value 200 indicates success.
+        # >
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true: The request was successful. false: The request failed.
+        # Indicates whether the operation was successful. The value true indicates success, and the value false indicates failure.
         self.success = success
 
     def validate(self):

@@ -17,16 +17,19 @@ class UpdateJobTemplateRequest(DaraModel):
         template_name: str = None,
         version: int = None,
     ):
-        # 字段约束规则。Key 为 JSONPath 表达式，Value 为约束类型：locked（锁定不可覆盖）、overridable（可覆盖）、required（必填）。需与 Content 同时提供，不允许单独更新。
+        # The field constraints. The key is a JSONPath expression and the value is the constraint type. Valid values are `locked`, `overridable`, and `required`. This parameter must be specified with `Content` and cannot be updated on its own.
         self.constraints = constraints
-        # 任务模板的配置内容，支持 CreateJob 接口的所有参数字段，以 JSON 格式传入。提供时会创建新版本。
+        # The configuration content of the job template. This parameter supports all fields from the `CreateJob` operation and must be in JSON format. Specifying this parameter creates a new version.
         self.content = content
+        # The description of the job template.
         self.description = description
-        # 用户自定义的键值对元数据，用于存储模板的附加信息。
+        # User-defined key-value pairs.
         self.metadata = metadata
-        # 当创建了新版本时，是否将新版本设为默认版本。
+        # If `true`, the new version becomes the default version.
         self.set_as_default = set_as_default
+        # The name of the job template.
         self.template_name = template_name
+        # This field is not supported.
         self.version = version
 
     def validate(self):

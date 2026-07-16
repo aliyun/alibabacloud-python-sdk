@@ -15,9 +15,14 @@ class RestartDBNodeZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # A client token to ensure request idempotence. Generate a unique token for each request. The token must be case-sensitive and up to 64 ASCII characters long.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The cluster node ID.
+        # 
         # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account

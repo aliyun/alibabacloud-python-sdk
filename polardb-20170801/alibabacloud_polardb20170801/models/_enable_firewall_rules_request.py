@@ -21,18 +21,18 @@ class EnableFirewallRulesRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable or disable the specified firewall rules. Valid values:
         # 
-        # *   **true**: enables the specified firewall rules.
-        # *   **false**: disables the specified firewall rules.
+        # - **true**: Enable.
+        # - **false**: Disable.
         # 
-        # > This parameter is valid only when you specify the **RuleNameList** parameter.
+        # > This parameter takes effect only when a value is specified for the **RuleNameList** parameter.
         self.enable = enable
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the firewall rule that you want to enable for the cluster. You can specify multiple firewall rules at a time. Separate multiple rules with commas (,).
+        # A comma-separated list of the firewall rule names to enable or disable.
         # 
-        # > You can call the **DescribeFirewallRules** operation to query the details of all firewall rules that are applicable to a cluster, such as rule names.
+        # > You can find rule names under **Security Management****SQL Firewall** tab of the cluster.
         # 
         # This parameter is required.
         self.rule_name_list = rule_name_list

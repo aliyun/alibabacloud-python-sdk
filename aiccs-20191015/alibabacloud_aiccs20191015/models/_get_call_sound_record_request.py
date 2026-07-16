@@ -13,8 +13,18 @@ class GetCallSoundRecordRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Unique call ID.
+        # 
+        # 
+        # You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **Data** field in the response parameters to obtain this value.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # Call creation time. Format: YYYY-MM-DD hh:mm:ss.
+        # 
+        # 
+        # You can invoke the [RobotCall](https://help.aliyun.com/document_detail/2717996.html) API and check the **date** parameter in the **Response Header** to obtain this value.
+        # 
         # This parameter is required.
         self.create_time = create_time
         self.owner_id = owner_id

@@ -15,13 +15,21 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to delete all tags. This parameter is valid only when TagKey.N is empty. Valid values: true, false, True, and False. Default value: false.
         self.all = all
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs. A maximum of 50 subkeys are supported.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Set this parameter to PolarDBXInstance.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The tag keys. A maximum of 20 subkeys are supported.
         self.tag_key = tag_key
 
     def validate(self):

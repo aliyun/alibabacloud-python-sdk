@@ -14,7 +14,7 @@ class DeleteOrganizationalUnitRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The organization ID.
+        # The organizational unit ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id

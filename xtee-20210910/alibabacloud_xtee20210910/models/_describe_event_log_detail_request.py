@@ -11,13 +11,13 @@ class DescribeEventLogDetailRequest(DaraModel):
         reg_id: str = None,
         req_id_by_log: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Log details.
+        # The log details.
         # 
         # This parameter is required.
         self.req_id_by_log = req_id_by_log

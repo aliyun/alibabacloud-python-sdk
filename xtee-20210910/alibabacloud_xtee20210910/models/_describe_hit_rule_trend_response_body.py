@@ -17,17 +17,17 @@ class DescribeHitRuleTrendResponseBody(DaraModel):
         result_object: main_models.DescribeHitRuleTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Response object
+        # The returned object.
         self.result_object = result_object
-        # Indicates whether the operation was successful, where true means success.
+        # Indicates whether the operation was successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeHitRuleTrendResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeHitRuleTrendResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeHitRuleTrendResponseBodyResultObjectXaxis = None,
     ):
-        # Chart data
+        # The chart data.
         self.series = series
-        # X-axis data
+        # The x-axis data.
         self.xaxis = xaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeHitRuleTrendResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # Returned data object
+        # The returned data object.
         self.data = data
 
     def validate(self):
@@ -164,9 +164,9 @@ class DescribeHitRuleTrendResponseBodyResultObjectSeries(DaraModel):
         data: List[main_models.DescribeHitRuleTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
-        # Returned data object
+        # The returned data object.
         self.data = data
-        # Display title
+        # The display title.
         self.name = name
 
     def validate(self):
@@ -209,9 +209,9 @@ class DescribeHitRuleTrendResponseBodyResultObjectSeriesData(DaraModel):
         num: int = None,
         scale: str = None,
     ):
-        # Number
+        # The quantity.
         self.num = num
-        # Scale
+        # The ratio.
         self.scale = scale
 
     def validate(self):

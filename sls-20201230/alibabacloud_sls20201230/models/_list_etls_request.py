@@ -11,8 +11,11 @@ class ListETLsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The Logstore name.
         self.logstore = logstore
+        # The line from which the query starts. The default value is 0.
         self.offset = offset
+        # The number of data transformation jobs to return.
         self.size = size
 
     def validate(self):

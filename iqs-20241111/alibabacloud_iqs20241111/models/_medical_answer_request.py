@@ -10,6 +10,7 @@ class MedicalAnswerRequest(DaraModel):
         self,
         body: main_models.MedicalAnswerInput = None,
     ):
+        # Search information
         self.body = body
 
     def validate(self):

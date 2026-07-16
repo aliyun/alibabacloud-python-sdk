@@ -18,17 +18,17 @@ class DescribeExcuteNumRequest(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # This field is currently unused and has no query significance.
+        # This field is currently not in use and has no query significance.
         self.degree = degree
-        # End date, format yyyy-MM-dd, e.g., 2025-03-13.
+        # End date in the format yyyy-MM-dd, for example, 2025-03-15.
         self.end_date = end_date
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # Specifies the language type for request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Request source IP address.
+        # Source IP address of the request.
         self.source_ip = source_ip
-        # Start date, format yyyy-MM-dd, e.g., 2025-03-10.
+        # Start date in the format yyyy-MM-dd, for example, 2025-03-10.
         self.start_date = start_date
 
     def validate(self):

@@ -12,13 +12,13 @@ class DescribeListFaceVerifyDataRequest(DaraModel):
         name: str = None,
         scene_id: int = None,
     ):
-        # End time of the query.
+        # The query end time.
         self.gmt_end = gmt_end
-        # Start time of the query.
+        # The query start time.
         self.gmt_start = gmt_start
-        # Product Code, currently deprecated.
+        # The product code. This parameter is deprecated.
         self.name = name
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
 
     def validate(self):

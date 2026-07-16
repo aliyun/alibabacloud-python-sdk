@@ -22,15 +22,15 @@ class ListScheduledTasksResponseBody(DaraModel):
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The number of records returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of scheduled inspection tasks.
+        # A list of scheduled inspection tasks.
         self.schedules = schedules
         # Indicates whether the request was successful.
         self.success = success
-        # The total number of entries that are returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -113,25 +113,32 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         task_start_time: str = None,
         time_range: str = None,
     ):
-        # The creation time of the task.
+        # The time the task was created, in UTC.
         self.create_time = create_time
-        # The description of the inspection task.
+        # The description of the inspection.
         self.description = description
-        # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # The inspection frequency. Multiple values are separated by commas. The default is DAILY. Valid values:
         # 
-        # *   DAILY
-        # *   Monday
-        # *   Tuesday
-        # *   Wednesday
-        # *   Thursday
-        # *   Friday
-        # *   Saturday
-        # *   Sunday
+        # - DAILY: Every day
         # 
-        # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you set this parameter to DAILY,Monday, the backend will use DAILY as the inspection frequency.
+        # - Monday: Monday
+        # 
+        # - Tuesday: Tuesday
+        # 
+        # - Wednesday: Wednesday
+        # 
+        # - Thursday: Thursday
+        # 
+        # - Friday: Friday
+        # 
+        # - Saturday: Saturday
+        # 
+        # - Sunday: Sunday
+        # 
+        # ### Note: The DAILY setting overrides any specified days of the week. For example, if you specify DAILY,Monday, the inspection runs daily.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The number of instances covered by the task.
+        # The number of instances in the task.
         self.instance_count = instance_count
         # The name of the task.
         self.name = name
@@ -140,9 +147,9 @@ class ListScheduledTasksResponseBodySchedules(DaraModel):
         self.report_type = report_type
         # The ID of the scheduled inspection configuration.
         self.scheduled_id = scheduled_id
-        # The actual start time of the task.
+        # The task start time, in UTC.
         self.task_start_time = task_start_time
-        # The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+        # The inspection time range in hours. Default: 24. Valid values: 1 to 168.
         self.time_range = time_range
 
     def validate(self):

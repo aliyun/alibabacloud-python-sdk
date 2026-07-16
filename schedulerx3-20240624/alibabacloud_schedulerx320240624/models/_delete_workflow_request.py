@@ -12,11 +12,18 @@ class DeleteWorkflowRequest(DaraModel):
         delete_jobs: bool = None,
         workflow_id: int = None,
     ):
+        # The Application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to delete all Jobs in the Workflow.
         self.delete_jobs = delete_jobs
+        # The Workflow ID.
+        # 
         # This parameter is required.
         self.workflow_id = workflow_id
 

@@ -23,55 +23,77 @@ class UpdateAcceleratorRequest(DaraModel):
         self.accelerator_id = accelerator_id
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false**: disables automatic payment. This is the default value. After an order is generated, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
-        # *   **true**: enables automatic payment. Payments are automatically completed.
+        # - **false** (default): Disables automatic payment. After an order is generated, you must go to the [Order Hub](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         # 
-        # >  This parameter takes effect only if you call the operation to upgrade a GA instance.
+        # - **true**: Enables automatic payment. The system automatically pays the bill.
+        # 
+        # > This parameter is valid only for upgrade orders.
         self.auto_pay = auto_pay
-        # Specifies whether to automatically pay bills by using coupons. Default value: false. Valid values:
+        # Specifies whether to automatically use a coupon to pay for the bill. Valid values:
         # 
-        # *   **true**: automatically pays bills by using coupons.
-        # *   **false**: does not automatically pay bills by using coupons.
+        # - **true**: Use a coupon.
         # 
-        # >  This parameter takes effect only if the **AutoPay** parameter is set to **true**.
+        # - **false** (default): Do not use a coupon.
+        # 
+        # > This parameter is valid only if **AutoPay** is set to **true**.
         self.auto_use_coupon = auto_use_coupon
+        # The bandwidth of the standard GA instance. Unit: **Mbps**.
+        # 
+        # Valid values: 200 to 5000.
+        # 
+        # > This parameter is valid only when the access mode of the acceleration area is Anycast.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The description of the GA instance. The description can be up to 200 characters in length.
         self.description = description
         # The name of the GA instance.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length, start with a letter or a Chinese character, and can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the GA instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
         # The specification of the GA instance. Valid values:
         # 
-        # *   **1**: Small Ⅰ
-        # *   **2**: Small Ⅱ
-        # *   **3**: Small Ⅲ
-        # *   **5**: Medium Ⅰ
-        # *   **8**: Medium Ⅱ
-        # *   **10**: Medium Ⅲ
-        # *   **20**: Large Ⅰ
-        # *   **30**: Large Ⅱ
-        # *   **40**: Large Ⅲ
-        # *   **50**: Large Ⅳ
-        # *   **60**: Large Ⅴ
-        # *   **70**: Large Ⅵ
-        # *   **80**: Large VⅡ
-        # *   **90**: Large VⅢ
-        # *   **100**: Super Large Ⅰ
-        # *   **200**: Super Large Ⅱ
+        # - **1**: Small I
         # 
-        # >  The Large Ⅲ specification and higher specifications are available only for accounts that are added to the whitelist. To use these specifications, contact your Alibaba Cloud account manager.
+        # - **2**: Small II
         # 
-        # Different specifications provide different capabilities. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/153127.html).
+        # - **3**: Small III
+        # 
+        # - **5**: Medium I
+        # 
+        # - **8**: Medium II
+        # 
+        # - **10**: Medium III
+        # 
+        # - **20**: Large I
+        # 
+        # - **30**: Large II
+        # 
+        # - **40**: Large III
+        # 
+        # - **50**: Large IV
+        # 
+        # - **60**: Large V
+        # 
+        # - **70**: Large VI
+        # 
+        # - **80**: Large VII
+        # 
+        # - **90**: Large VIII
+        # 
+        # - **100**: Ultra-large I
+        # 
+        # - **200**: Ultra-large II
+        # 
+        # > Large III and higher specifications are available only to whitelisted users. To use these specifications, contact your account manager.
+        # 
+        # The definitions of instance types vary. For more information, see [Instance types](https://help.aliyun.com/document_detail/153127.html).
         self.spec = spec
 
     def validate(self):

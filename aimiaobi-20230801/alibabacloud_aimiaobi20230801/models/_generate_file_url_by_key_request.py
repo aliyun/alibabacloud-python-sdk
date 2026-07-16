@@ -11,9 +11,13 @@ class GenerateFileUrlByKeyRequest(DaraModel):
         file_key: str = None,
         file_name: str = None,
     ):
+        # Unique workspace identity: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # File key. Format: protocol://serverInstance/bucketPath/fileKey
         self.file_key = file_key
+        # File name
         self.file_name = file_name
 
     def validate(self):

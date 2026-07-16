@@ -12,12 +12,20 @@ class ClientNodeConfiguration(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The number of client nodes.
+        # 
         # This parameter is required.
         self.amount = amount
+        # The storage size of the client node. Unit: GB.
+        # 
         # This parameter is required.
         self.disk = disk
+        # The storage type of the client node. Only cloud_efficiency (ultra cloud disk) is supported.
+        # 
         # This parameter is required.
         self.disk_type = disk_type
+        # The node specifications of the client node. For more information, see [Specifications](https://help.aliyun.com/document_detail/271718.html).
+        # 
         # This parameter is required.
         self.spec = spec
 

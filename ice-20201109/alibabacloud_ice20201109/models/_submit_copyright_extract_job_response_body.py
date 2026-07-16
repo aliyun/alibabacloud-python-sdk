@@ -13,11 +13,11 @@ class SubmitCopyrightExtractJobResponseBody(DaraModel):
         request_id: str = None,
         status_code: int = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The status code.
         self.status_code = status_code

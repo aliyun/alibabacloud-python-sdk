@@ -11,9 +11,13 @@ class UpdateRecursionRecordWeightRequest(DaraModel):
         record_id: str = None,
         weight: int = None,
     ):
+        # The client token that ensures the idempotence of the request. Generate a unique token for each request. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
+        # The unique ID of the DNS record.
+        # 
         # This parameter is required.
         self.record_id = record_id
+        # The weight. The value can be an integer from 0 to 100.
         self.weight = weight
 
     def validate(self):

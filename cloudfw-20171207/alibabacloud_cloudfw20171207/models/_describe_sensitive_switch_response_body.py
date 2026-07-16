@@ -15,9 +15,13 @@ class DescribeSensitiveSwitchResponseBody(DaraModel):
         total_count: int = None,
         user_sensitive_data_switch_list: List[main_models.DescribeSensitiveSwitchResponseBodyUserSensitiveDataSwitchList] = None,
     ):
+        # The total number of enabled items.
         self.open_count = open_count
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The list of sensitive data detection switches.
         self.user_sensitive_data_switch_list = user_sensitive_data_switch_list
 
     def validate(self):
@@ -75,10 +79,15 @@ class DescribeSensitiveSwitchResponseBodyUserSensitiveDataSwitchList(DaraModel):
         sensitive_level: str = None,
         switch_status: int = None,
     ):
+        # The name of the sensitive credential category.
         self.category_name = category_name
+        # The description of the sensitive credential.
         self.description = description
+        # The type of the sensitive credential.
         self.sensitive_category = sensitive_category
+        # The sensitivity level.
         self.sensitive_level = sensitive_level
+        # The status of the sensitive data detection switch.
         self.switch_status = switch_status
 
     def validate(self):

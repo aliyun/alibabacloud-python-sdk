@@ -16,15 +16,15 @@ class DescribeWhitelistSettingResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Pagination parameter: current page number, default value is 1.
+        # The current page number. Default value: 1.
         self.current_page = current_page
-        # List of certification details.
+        # The list of certification details.
         self.items = items
-        # Number of items per page for pagination.
+        # The number of entries per page in a paged query.
         self.page_size = page_size
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -92,30 +92,32 @@ class DescribeWhitelistSettingResponseBodyItems(DaraModel):
         status: str = None,
         valid_end_date: str = None,
         valid_start_date: str = None,
+        whitelist_type: str = None,
     ):
-        # Certificate number.
+        # The certificate number.
         self.cert_no = cert_no
-        # Certificate ID.
+        # The certificate ID.
         self.certify_id = certify_id
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # Whitelist ID.
+        # The whitelist ID.
         self.id = id
-        # Remark.
+        # The remarks.
         self.remark = remark
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Whitelist status:
+        # The whitelist status. Valid values:
         # - **VALID**: Valid.
         # - **INVALID**: Invalid.
         # - **DELETED**: Deleted.
         self.status = status
-        # Effective end date.
+        # The expiration date.
         self.valid_end_date = valid_end_date
-        # Effective start time.
+        # The effective period.
         self.valid_start_date = valid_start_date
+        self.whitelist_type = whitelist_type
 
     def validate(self):
         pass
@@ -155,6 +157,9 @@ class DescribeWhitelistSettingResponseBodyItems(DaraModel):
         if self.valid_start_date is not None:
             result['ValidStartDate'] = self.valid_start_date
 
+        if self.whitelist_type is not None:
+            result['WhitelistType'] = self.whitelist_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -188,6 +193,9 @@ class DescribeWhitelistSettingResponseBodyItems(DaraModel):
 
         if m.get('ValidStartDate') is not None:
             self.valid_start_date = m.get('ValidStartDate')
+
+        if m.get('WhitelistType') is not None:
+            self.whitelist_type = m.get('WhitelistType')
 
         return self
 

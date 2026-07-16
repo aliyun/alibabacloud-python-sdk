@@ -10,7 +10,12 @@ class OpenDiagnosisResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the intelligent O&M feature is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Failed.
         self.result = result
 
     def validate(self):

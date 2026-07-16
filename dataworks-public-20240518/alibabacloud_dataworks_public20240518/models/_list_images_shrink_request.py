@@ -21,18 +21,40 @@ class ListImagesShrinkRequest(DaraModel):
         supported_modules_shrink: str = None,
         supported_task_types_shrink: str = None,
     ):
+        # The accessibility:
+        # 
+        # - Public: Visible to all members.
+        # 
+        # - Private: Visible only to the creator.
         self.accessibility = accessibility
+        # The image name, used for fuzzy search.
         self.name = name
+        # Specifies whether the image is an official image.
         self.official = official
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The list of workspace IDs.
         self.project_ids_shrink = project_ids_shrink
+        # The list of image provider types.
         self.provider_types_shrink = provider_types_shrink
+        # Specifies whether to search all images.
         self.search_all = search_all
+        # The list of sort fields. You can sort by scheduled time, start time, and other fields. The format is "SortField+SortOrder(Desc/Asc)", where Asc is the default and can be omitted. Valid values of sort fields:
+        # 
+        # - CreateTime (Desc/Asc): The creation time.
+        # 
+        # - Name (Desc/Asc): The image name.
+        #   Default value: CreateTime Asc.
         self.sort_by = sort_by
+        # The list of image publish stages to query.
         self.stages_shrink = stages_shrink
+        # The list of image statuses to query.
         self.statuses_shrink = statuses_shrink
+        # The list of supported modules.
         self.supported_modules_shrink = supported_modules_shrink
+        # The list of supported task types.
         self.supported_task_types_shrink = supported_task_types_shrink
 
     def validate(self):

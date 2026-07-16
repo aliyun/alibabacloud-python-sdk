@@ -13,7 +13,7 @@ class SubmitMediaInfoJobResponseBody(DaraModel):
         media_info_job: main_models.SubmitMediaInfoJobResponseBodyMediaInfoJob = None,
         request_id: str = None,
     ):
-        # MediaInfoJobDTO
+        # The media information job.
         self.media_info_job = media_info_job
         # The request ID.
         self.request_id = request_id
@@ -63,29 +63,41 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJob(DaraModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
-        # Indicates whether asynchronous processing was performed.
+        # Indicates whether to process the job asynchronously.
         self.async_ = async_
-        # The time when the job was complete.
+        # The time when the job was completed.
         self.finish_time = finish_time
-        # The input of the job.
+        # The job input.
         self.input = input
         # The job ID.
         self.job_id = job_id
-        # The details of the media information.
+        # Details of the media information.
         self.media_info_property = media_info_property
         # The job name.
         self.name = name
         # The request ID.
         self.request_id = request_id
-        # The scheduling information.
+        # The scheduling configuration.
         self.schedule_config = schedule_config
-        # The state of the job. Valid values: Init (the job is submitted), Success (the job is successful), and Fail (the job failed).
+        # The job status. Valid values:
+        # 
+        # - `Init`: Submitted.
+        # 
+        # - `Success`: Successful.
+        # 
+        # - `Fail`: Failed.
         self.status = status
-        # The job submission information.
+        # The job submission details.
         self.submit_result_json = submit_result_json
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The source of the job. Valid values: API, WorkFlow, and Console.
+        # The source of the job. Valid values:
+        # 
+        # - `API`: The job was submitted by calling an API operation.
+        # 
+        # - `WorkFlow`: The job was triggered by a workflow.
+        # 
+        # - `Console`: The job was submitted in the console.
         self.trigger_source = trigger_source
         # The user data.
         self.user_data = user_data
@@ -196,9 +208,9 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobScheduleConfig(DaraModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
-        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+        # The job priority. Higher values indicate higher priority. Valid values range from 1 to 10.
         self.priority = priority
 
     def validate(self):
@@ -234,11 +246,11 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoProperty(DaraModel):
         file_basic_info: main_models.SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo = None,
         video_stream_info_list: List[main_models.SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfoList] = None,
     ):
-        # The information about the audio stream.
+        # A list of audio stream details.
         self.audio_stream_info_list = audio_stream_info_list
-        # The basic file information.
+        # Basic information about the file.
         self.file_basic_info = file_basic_info
-        # The information about the video stream.
+        # A list of video stream details.
         self.video_stream_info_list = video_stream_info_list
 
     def validate(self):
@@ -322,35 +334,37 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfo
     ):
         # The average frame rate.
         self.avg_fps = avg_fps
-        # The bitrate.
+        # The bitrate of the stream, in Kbit/s.
         self.bit_rate = bit_rate
-        # The name of the encoding format.
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
-        # The encoding format.
+        # The stream\\"s codec.
         self.codec_name = codec_name
-        # The tag of the encoding format.
+        # The codec tag.
         self.codec_tag = codec_tag
-        # The tag string of the encoding format.
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
-        # The time base of the encoder.
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
-        # The display aspect ratio.
+        # The display aspect ratio (DAR).
         self.dar = dar
-        # The duration of the file.
+        # The duration of the stream, in seconds.
         self.duration = duration
         # The frame rate.
         self.fps = fps
-        # Indicates whether the video stream contains bidirectional frames (B-frames). Valid values:
+        # Indicates whether the stream contains B-frames. Valid values:
         # 
-        # *   0: The stream contains no B-frames.
-        # *   1: The stream contains one B-frame.
-        # *   2: The stream contains multiple consecutive B-frames.
+        # - `0`: The stream does not contain B-frames.
+        # 
+        # - `1`: The stream contains one B-frame.
+        # 
+        # - `2`: The stream contains two or more consecutive B-frames.
         self.has_bframes = has_bframes
-        # The height of the output video.
+        # The height of the video, in pixels.
         self.height = height
-        # The sequence number of the stream.
+        # The stream index.
         self.index = index
-        # The language of the stream.
+        # The stream\\"s language.
         self.lang = lang
         # The codec level.
         self.level = level
@@ -358,17 +372,17 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyVideoStreamInfo
         self.num_frames = num_frames
         # The pixel format.
         self.pix_fmt = pix_fmt
-        # The encoder profile.
+        # The codec profile.
         self.profile = profile
-        # The rotation angle of the video image.
+        # The rotation angle of the video, in degrees.
         self.rotate = rotate
-        # The aspect ratio of the area from which the sampling points are collected.
+        # The sample aspect ratio (SAR).
         self.sar = sar
-        # The start time of the stream.
+        # The start time of the stream, in seconds.
         self.start_time = start_time
-        # The time base.
+        # The stream\\"s time base.
         self.time_base = time_base
-        # The width of the output video.
+        # The width of the video, in pixels.
         self.width = width
 
     def validate(self):
@@ -539,15 +553,15 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo(D
         region: str = None,
         width: str = None,
     ):
-        # The video bitrate.
+        # The video bitrate, in Kbit/s.
         self.bitrate = bitrate
-        # The duration of the video.
+        # The duration of the video, in seconds.
         self.duration = duration
         # The file name.
         self.file_name = file_name
-        # The file size.
+        # The file size, in bytes.
         self.file_size = file_size
-        # The state of the file.
+        # The file status.
         self.file_status = file_status
         # The file type.
         self.file_type = file_type
@@ -555,13 +569,13 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyFileBasicInfo(D
         self.file_url = file_url
         # The name of the video format.
         self.format_name = format_name
-        # The height of the output video.
+        # The height of the video, in pixels.
         self.height = height
-        # The ID of the media asset.
+        # The media ID.
         self.media_id = media_id
-        # The region in which the file resides.
+        # The region where the file is stored.
         self.region = region
-        # The width of the output video.
+        # The width of the video, in pixels.
         self.width = width
 
     def validate(self):
@@ -669,35 +683,35 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobMediaInfoPropertyAudioStreamInfo
         start_time: str = None,
         timebase: str = None,
     ):
-        # The bitrate.
+        # The bitrate of the stream.
         self.bitrate = bitrate
-        # The sound channel layout.
+        # The channel layout.
         self.channel_layout = channel_layout
-        # The number of sound channels.
+        # The number of audio channels.
         self.channels = channels
-        # The name of the encoding format.
+        # The full name of the codec.
         self.codec_long_name = codec_long_name
-        # The encoding format.
+        # The stream\\"s codec.
         self.codec_name = codec_name
-        # The encoder tag.
+        # The codec tag.
         self.codec_tag = codec_tag
-        # The name of the encoder tag.
+        # The codec tag string.
         self.codec_tag_string = codec_tag_string
-        # The time base of the encoder.
+        # The time base of the codec.
         self.codec_time_base = codec_time_base
-        # The duration of the stream. Unit: seconds.
+        # The duration of the stream, in seconds.
         self.duration = duration
-        # The sequence number of the stream.
+        # The stream index.
         self.index = index
-        # The language of the stream.
+        # The stream\\"s language.
         self.lang = lang
         # The sample format.
         self.sample_fmt = sample_fmt
-        # The sampling rate. Unit: Hz.
+        # The sample rate, in Hz.
         self.sample_rate = sample_rate
-        # The start time of the stream.
+        # The start time of the stream, in seconds.
         self.start_time = start_time
-        # The time base.
+        # The stream\\"s time base.
         self.timebase = timebase
 
     def validate(self):
@@ -810,9 +824,17 @@ class SubmitMediaInfoJobResponseBodyMediaInfoJobInput(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, set this parameter to the ID of a media asset.
+        # The value of the media object. This value depends on the `Type` parameter.
+        # 
+        # - If `Type` is `OSS`, this parameter is the URL of the media file. Both the `oss://` and HTTPS protocols are supported.
+        # 
+        # - If `Type` is `Media`, this parameter is the media ID.
         self.media = media
-        # The type of the media object. Valid values: OSS and Media. A value of OSS indicates an OSS object. A value of Media indicates a media asset.
+        # The type of input media. Valid values:
+        # 
+        # - `OSS`: An Object Storage Service (OSS) file.
+        # 
+        # - `Media`: A media ID.
         self.type = type
 
     def validate(self):

@@ -14,20 +14,36 @@ class UpdatePolarClawAgentRequest(DaraModel):
         application_id: str = None,
         avatar: str = None,
         files: List[main_models.UpdatePolarClawAgentRequestFiles] = None,
+        is_default: bool = None,
+        keep_workspace_files: bool = None,
         model: str = None,
         name: str = None,
         restart: bool = None,
         workspace: str = None,
     ):
+        # The ID of the agent to update.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The new avatar.
         self.avatar = avatar
+        # The list of files to update.
         self.files = files
+        # Specifies whether to set the agent as the default agent.
+        self.is_default = is_default
+        # Specifies whether to keep files when switching the workspace.
+        self.keep_workspace_files = keep_workspace_files
+        # The model override.
         self.model = model
+        # The new display name of the agent.
         self.name = name
+        # Specifies whether to restart the gateway after creation. Default value: true.
         self.restart = restart
+        # The new working directory path.
         self.workspace = workspace
 
     def validate(self):
@@ -54,6 +70,12 @@ class UpdatePolarClawAgentRequest(DaraModel):
         if self.files is not None:
             for k1 in self.files:
                 result['Files'].append(k1.to_map() if k1 else None)
+
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
+
+        if self.keep_workspace_files is not None:
+            result['KeepWorkspaceFiles'] = self.keep_workspace_files
 
         if self.model is not None:
             result['Model'] = self.model
@@ -86,6 +108,12 @@ class UpdatePolarClawAgentRequest(DaraModel):
                 temp_model = main_models.UpdatePolarClawAgentRequestFiles()
                 self.files.append(temp_model.from_map(k1))
 
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
+
+        if m.get('KeepWorkspaceFiles') is not None:
+            self.keep_workspace_files = m.get('KeepWorkspaceFiles')
+
         if m.get('Model') is not None:
             self.model = m.get('Model')
 
@@ -106,7 +134,9 @@ class UpdatePolarClawAgentRequestFiles(DaraModel):
         file_content: str = None,
         file_name: str = None,
     ):
+        # The file content.
         self.file_content = file_content
+        # The file name. The value must be one of the following allowed file names: AGENTS.md, SOUL.md, TOOLS.md, IDENTITY.md, USER.md, HEARTBEAT.md, BOOTSTRAP.md, MEMORY.md, or MEMORY.alt.md.
         self.file_name = file_name
 
     def validate(self):

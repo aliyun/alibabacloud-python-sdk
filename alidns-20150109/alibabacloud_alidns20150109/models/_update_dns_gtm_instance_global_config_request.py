@@ -23,38 +23,41 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(DaraModel):
         public_zone_name: str = None,
         ttl: int = None,
     ):
+        # The alert configurations.
         self.alert_config = alert_config
-        # The name of the alert group in the JSON format.
+        # The alert contact group. The value is a JSON-formatted \\`List\\<string>\\`.
         self.alert_group = alert_group
-        # The type of the canonical name (CNAME).
+        # The type of the CNAME record. Valid value:
         # 
-        # *   Set the value to PUBLIC.
+        # - PUBLIC: The CNAME record is used for Internet access.
         self.cname_type = cname_type
-        # Specifies whether to enable force updates. Valid values:
+        # Specifies whether to forcefully update the instance. Valid values:
         # 
-        # *   true: enables force update without a conflict alert.
-        # *   false: disables force update. If a conflict occurs, the system displays an alert. null: This valid value of ForceUpdate provides the same information as the false value.
+        # - true: Forcefully updates the instance without checking for conflicts.
+        # 
+        # - false or null: Does not forcefully update the instance. The system checks for conflicts before the update.
         self.force_update = force_update
-        # The ID of the instance.
+        # The ID of the GTM instance. To obtain the instance ID, call the [DescribeDnsGtmInstances](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describednsgtminstances?spm=a2c63.p38356.help-menu-search-29697.d_0) operation.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the instance. This parameter is required only for the first update.
+        # The name of the instance. This parameter is required when you update the instance for the first time. It is optional for subsequent updates.
         self.instance_name = instance_name
-        # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Valid values: en, zh, and ja. The default value is en.
         self.lang = lang
-        # Specifies whether to use a custom CNAME domain name or a CNAME domain name assigned by the system to access the instance over the Internet. Valid values:
+        # The method used to access the instance over the Internet. Valid values:
         # 
-        # *   SYSTEM_ASSIGN: a CNAME domain name assigned by the system
-        # *   CUSTOM: a custom CNAME domain name
+        # - SYSTEM_ASSIGN: The system assigns a canonical name (CNAME) record. This option is disabled.
+        # 
+        # - CUSTOM: You specify a CNAME record.
         self.public_cname_mode = public_cname_mode
-        # The hostname corresponding to the CNAME domain name that is used to access the instance over the Internet.
+        # The hostname of the CNAME record that is used for Internet access.
         self.public_rr = public_rr
-        # The service domain name that is used over the Internet.
+        # The service domain name that is accessed over the Internet.
         self.public_user_domain_name = public_user_domain_name
-        # The CNAME domain name that is used to access the instance over the Internet, which is the primary domain name. This parameter is required when the PublicCnameMode parameter is set to CUSTOM.
+        # The primary domain name that is used to access the instance over the Internet using a CNAME record. This parameter is required if you set PublicCnameMode to CUSTOM.
         # 
-        # >  You must use the primary domain name. Do not include the hostname specified by the PublicRr parameter.
+        # > Enter the primary domain name. Do not include the hostname specified by the PublicRr parameter.
         self.public_zone_name = public_zone_name
         # The global time to live (TTL).
         self.ttl = ttl
@@ -161,9 +164,37 @@ class UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig(DaraModel):
         notice_type: str = None,
         sms_notice: bool = None,
     ):
+        # Specifies whether to send alerts through DingTalk. Valid values:
+        # 
+        # - true: yes
+        # 
+        # - false: no
         self.dingtalk_notice = dingtalk_notice
+        # Specifies whether to send alerts by email. Valid values:
+        # 
+        # - true: yes
+        # 
+        # - false or null: no
         self.email_notice = email_notice
+        # The type of the alert event. Valid values:
+        # 
+        # - ADDR_ALERT: An address becomes unavailable.
+        # 
+        # - ADDR_RESUME: An address becomes available.
+        # 
+        # - ADDR_POOL_GROUP_UNAVAILABLE: An address pool group becomes unavailable.
+        # 
+        # - ADDR_POOL_GROUP_AVAILABLE: An address pool group becomes available.
+        # 
+        # - ACCESS_STRATEGY_POOL_GROUP_SWITCH: A switchover occurs between the primary and secondary address pools.
+        # 
+        # - MONITOR_NODE_IP_CHANGE: The IP address of a monitoring node changes.
         self.notice_type = notice_type
+        # Specifies whether to send alerts through text messages. Valid values:
+        # 
+        # - true: yes
+        # 
+        # - false or null: no
         self.sms_notice = sms_notice
 
     def validate(self):

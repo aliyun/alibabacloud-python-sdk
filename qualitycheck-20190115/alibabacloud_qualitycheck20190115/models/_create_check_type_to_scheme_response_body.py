@@ -18,12 +18,18 @@ class CreateCheckTypeToSchemeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Any other value means failure. Callers can use this field to identify the cause of failure.
         self.code = code
+        # Quality check dimension ID.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error details when the request fails. Returns **successful** on success.
         self.message = message
         self.messages = messages
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Callers can use this field to determine success: true means success. false or null means failure.
         self.success = success
 
     def validate(self):

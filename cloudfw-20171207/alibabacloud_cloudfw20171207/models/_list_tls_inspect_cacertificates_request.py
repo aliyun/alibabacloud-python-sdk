@@ -11,8 +11,11 @@ class ListTlsInspectCACertificatesRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
+        # The ID of the CA certificate.
         self.ca_cert_id = ca_cert_id
+        # The page number for a paged query. The default value is 1.
         self.current_page = current_page
+        # The maximum number of entries to return on each page for a paged query. The default value is 20.
         self.page_size = page_size
 
     def validate(self):

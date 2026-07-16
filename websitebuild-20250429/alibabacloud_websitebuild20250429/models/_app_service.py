@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
@@ -16,6 +18,7 @@ class AppService(DaraModel):
         gmt_modified: str = None,
         instance_biz_id: str = None,
         name: str = None,
+        node_list: List[main_models.TreeNode] = None,
         profile: main_models.AppServiceProfile = None,
         service_type: str = None,
         service_type_text: str = None,
@@ -32,6 +35,7 @@ class AppService(DaraModel):
         self.gmt_modified = gmt_modified
         self.instance_biz_id = instance_biz_id
         self.name = name
+        self.node_list = node_list
         self.profile = profile
         self.service_type = service_type
         self.service_type_text = service_type_text
@@ -41,6 +45,10 @@ class AppService(DaraModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.node_list:
+            for v1 in self.node_list:
+                 if v1:
+                    v1.validate()
         if self.profile:
             self.profile.validate()
 
@@ -72,6 +80,11 @@ class AppService(DaraModel):
 
         if self.name is not None:
             result['Name'] = self.name
+
+        result['NodeList'] = []
+        if self.node_list is not None:
+            for k1 in self.node_list:
+                result['NodeList'].append(k1.to_map() if k1 else None)
 
         if self.profile is not None:
             result['Profile'] = self.profile.to_map()
@@ -121,6 +134,12 @@ class AppService(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        self.node_list = []
+        if m.get('NodeList') is not None:
+            for k1 in m.get('NodeList'):
+                temp_model = main_models.TreeNode()
+                self.node_list.append(temp_model.from_map(k1))
 
         if m.get('Profile') is not None:
             temp_model = main_models.AppServiceProfile()

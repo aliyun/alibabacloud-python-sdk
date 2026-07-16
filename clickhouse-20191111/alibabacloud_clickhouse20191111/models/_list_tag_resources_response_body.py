@@ -14,11 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # A pagination token. It can be used in the next request to retrieve a new page of results. If not all results are returned in one query, you can pass in the NextToken value returned for the query to perform the next query.
+        # The token that is used to retrieve the next page of results. This parameter is returned only if the results are not fully returned in the current request. You can use this token in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tags that are added to clusters.
+        # Information about the clusters and their tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -69,13 +69,19 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # <props="china">
+        # 
         # The cluster ID.
+        # 
+        # 
+        # 
+        # <props="intl">
         self.resource_id = resource_id
-        # The type of the resource. Only **CLUSTER** is returned.
+        # The resource type. The value is **DBCLUSTER**.
         self.resource_type = resource_type
-        # The key of the tag that is added to the resource.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag that is added to the resource.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

@@ -19,47 +19,32 @@ class ModifyAppInstanceGroupAttributeShrinkRequest(DaraModel):
         session_timeout: int = None,
         storage_policy_shrink: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
-        # The network settings.
+        # The network configuration.
         # 
-        # >  If you want to use this parameter, submit a ticket.
+        # > To use this parameter, submit a ticket.
         self.network_shrink = network_shrink
-        # The information about the resource group.
+        # The resource group object.
         self.node_pool_shrink = node_pool_shrink
-        # Specifies whether only one application can be opened in a session.
-        # 
-        # *   After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to allow only one application per session.
+        # - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
         self.per_session_per_app = per_session_per_app
-        # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+        # The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
         self.pre_open_app_id = pre_open_app_id
         # The pre-open mode.
-        # 
-        # Valid values:
-        # 
-        # *   SINGLE_APP: enables the pre-open mode for a single application.
-        # *   OFF: disables the pre-open mode. This is the default value.
         self.pre_open_mode = pre_open_mode
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+        # The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
         # The storage policy.
         self.storage_policy_shrink = storage_policy_shrink

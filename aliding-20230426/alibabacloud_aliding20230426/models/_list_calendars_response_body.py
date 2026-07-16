@@ -13,7 +13,6 @@ class ListCalendarsResponseBody(DaraModel):
         request_id: str = None,
         response: main_models.ListCalendarsResponseBodyResponse = None,
     ):
-        # requestId
         self.request_id = request_id
         self.response = response
 

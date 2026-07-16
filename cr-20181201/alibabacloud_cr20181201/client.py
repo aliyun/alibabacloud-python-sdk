@@ -21,6 +21,51 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'cr.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'cr.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'cr.us-east-1.aliyuncs.com',
+            'na-south-1': 'cr.na-south-1.aliyuncs.com',
+            'me-east-1': 'cr.me-east-1.aliyuncs.com',
+            'me-central-1': 'cr.me-central-1.aliyuncs.com',
+            'eu-west-2': 'cr.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'cr.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'cr.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'cr.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'cr.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'cr.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'cr.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'cr.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'cr.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'cr.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'cr.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'cr.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'cr.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'cr.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'cr.cn-north-2-gov-1.aliyuncs.com',
+            'cn-nanjing': 'cr.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'cr.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'cr.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'cr.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'cr.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'cr.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'cr.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'cr.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'cr.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'cr.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'cr.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'cr.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'cr.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'cr.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'cr.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'cr.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'cr.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'cr.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'cr.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'cr.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'cr.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'cr.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1142,17 +1187,109 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_chart_repository_with_options_async(request, runtime)
 
+    def create_instance_customized_domain_with_options(
+        self,
+        request: main_models.CreateInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cert_region_id):
+            query['CertRegionId'] = request.cert_region_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceCustomizedDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_customized_domain_with_options_async(
+        self,
+        request: main_models.CreateInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cert_region_id):
+            query['CertRegionId'] = request.cert_region_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceCustomizedDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_customized_domain(
+        self,
+        request: main_models.CreateInstanceCustomizedDomainRequest,
+    ) -> main_models.CreateInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return self.create_instance_customized_domain_with_options(request, runtime)
+
+    async def create_instance_customized_domain_async(
+        self,
+        request: main_models.CreateInstanceCustomizedDomainRequest,
+    ) -> main_models.CreateInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return await self.create_instance_customized_domain_with_options_async(request, runtime)
+
     def create_instance_endpoint_acl_policy_with_options(
         self,
-        request: main_models.CreateInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.CreateInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -1180,15 +1317,21 @@ class Client(OpenApiClient):
 
     async def create_instance_endpoint_acl_policy_with_options_async(
         self,
-        request: main_models.CreateInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.CreateInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.comment):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -3004,15 +3147,99 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_event_center_rule_with_options_async(request, runtime)
 
+    def delete_instance_customized_domain_with_options(
+        self,
+        request: main_models.DeleteInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceCustomizedDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_customized_domain_with_options_async(
+        self,
+        request: main_models.DeleteInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceCustomizedDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_customized_domain(
+        self,
+        request: main_models.DeleteInstanceCustomizedDomainRequest,
+    ) -> main_models.DeleteInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return self.delete_instance_customized_domain_with_options(request, runtime)
+
+    async def delete_instance_customized_domain_async(
+        self,
+        request: main_models.DeleteInstanceCustomizedDomainRequest,
+    ) -> main_models.DeleteInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_instance_customized_domain_with_options_async(request, runtime)
+
     def delete_instance_endpoint_acl_policy_with_options(
         self,
-        request: main_models.DeleteInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.DeleteInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DeleteInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -3040,13 +3267,19 @@ class Client(OpenApiClient):
 
     async def delete_instance_endpoint_acl_policy_with_options_async(
         self,
-        request: main_models.DeleteInstanceEndpointAclPolicyRequest,
+        tmp_req: main_models.DeleteInstanceEndpointAclPolicyRequest,
         runtime: RuntimeOptions,
     ) -> main_models.DeleteInstanceEndpointAclPolicyResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.DeleteInstanceEndpointAclPolicyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.entries):
+            request.entries_shrink = Utils.array_to_string_with_specified_style(tmp_req.entries, 'Entries', 'json')
         query = {}
         if not DaraCore.is_null(request.endpoint_type):
             query['EndpointType'] = request.endpoint_type
+        if not DaraCore.is_null(request.entries_shrink):
+            query['Entries'] = request.entries_shrink
         if not DaraCore.is_null(request.entry):
             query['Entry'] = request.entry
         if not DaraCore.is_null(request.instance_id):
@@ -4591,6 +4824,84 @@ class Client(OpenApiClient):
     async def get_instance_count_async(self) -> main_models.GetInstanceCountResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_count_with_options_async(runtime)
+
+    def get_instance_customized_domain_with_options(
+        self,
+        request: main_models.GetInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceCustomizedDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_customized_domain_with_options_async(
+        self,
+        request: main_models.GetInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceCustomizedDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_customized_domain(
+        self,
+        request: main_models.GetInstanceCustomizedDomainRequest,
+    ) -> main_models.GetInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_customized_domain_with_options(request, runtime)
+
+    async def get_instance_customized_domain_async(
+        self,
+        request: main_models.GetInstanceCustomizedDomainRequest,
+    ) -> main_models.GetInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_customized_domain_with_options_async(request, runtime)
 
     def get_instance_endpoint_with_options(
         self,
@@ -8729,6 +9040,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateEventCenterRuleResponse:
         runtime = RuntimeOptions()
         return await self.update_event_center_rule_with_options_async(request, runtime)
+
+    def update_instance_customized_domain_with_options(
+        self,
+        request: main_models.UpdateInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cert_region_id):
+            query['CertRegionId'] = request.cert_region_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceCustomizedDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_customized_domain_with_options_async(
+        self,
+        request: main_models.UpdateInstanceCustomizedDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceCustomizedDomainResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cert_region_id):
+            query['CertRegionId'] = request.cert_region_id
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_name):
+            query['ModuleName'] = request.module_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceCustomizedDomain',
+            version = '2018-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceCustomizedDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_customized_domain(
+        self,
+        request: main_models.UpdateInstanceCustomizedDomainRequest,
+    ) -> main_models.UpdateInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return self.update_instance_customized_domain_with_options(request, runtime)
+
+    async def update_instance_customized_domain_async(
+        self,
+        request: main_models.UpdateInstanceCustomizedDomainRequest,
+    ) -> main_models.UpdateInstanceCustomizedDomainResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instance_customized_domain_with_options_async(request, runtime)
 
     def update_instance_endpoint_status_with_options(
         self,

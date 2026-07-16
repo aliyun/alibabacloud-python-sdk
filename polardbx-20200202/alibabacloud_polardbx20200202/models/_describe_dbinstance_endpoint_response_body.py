@@ -18,7 +18,6 @@ class DescribeDBInstanceEndpointResponseBody(DaraModel):
         self.data = data
         self.max_results = max_results
         self.next_token = next_token
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

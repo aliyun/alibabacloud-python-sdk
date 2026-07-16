@@ -9,7 +9,7 @@ class SubmitAvatarTrainingJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the digital human training job.
+        # The unique identifier for the avatar training job.
         # 
         # This parameter is required.
         self.job_id = job_id

@@ -16,17 +16,29 @@ class CreateFinReportSummaryTaskRequest(DaraModel):
         start_page: int = None,
         task_type: str = None,
     ):
+        # Document ID
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # Enable table
+        # 
         # This parameter is required.
         self.enable_table = enable_table
+        # End page
         self.end_page = end_page
+        # Instruction
         self.instruction = instruction
+        # Document library ID
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # Model ID
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # Start page
         self.start_page = start_page
+        # Task type. Optional. Defaults to finance_report. If you set this to custom, provide an instruction.
         self.task_type = task_type
 
     def validate(self):

@@ -10,6 +10,7 @@ class UpdateMemoryCollectionRequest(DaraModel):
         self,
         body: main_models.UpdateMemoryCollectionInput = None,
     ):
+        # The request body to update the memory collection.
         self.body = body
 
     def validate(self):

@@ -9,7 +9,7 @@ class ModifyWebLockUnbindResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. It is a unique identifier that Alibaba Cloud generates for the request. You can use it to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

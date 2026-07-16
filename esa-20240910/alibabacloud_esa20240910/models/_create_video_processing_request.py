@@ -20,43 +20,39 @@ class CreateVideoProcessingRequest(DaraModel):
         site_version: int = None,
         video_seek_enable: str = None,
     ):
-        # Set custom end parameters for FLV files.
+        # The custom FLV end parameter.
         self.flv_seek_end = flv_seek_end
-        # The custom start parameter for FLV files.
+        # The custom FLV start parameter.
         self.flv_seek_start = flv_seek_start
-        # FLV seeking. Valid values:
-        # 
-        # *   by_byte: seek by byte
-        # *   by_time: seek by time.
+        # The FLV seek mode. Valid values:
+        # - by_byte: seek by byte.
+        # - by_time: seek by time.
         self.flv_video_seek_mode = flv_video_seek_mode
-        # Customize the mp4 end parameter.
+        # The custom MP4 end parameter.
         self.mp_4seek_end = mp_4seek_end
-        # Customize the mp4 start parameter.
+        # The custom MP4 start parameter.
         self.mp_4seek_start = mp_4seek_start
-        # The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configuration. Use cases:
-        # 
-        # *   true: Match all incoming requests.
-        # *   Set the value to a custom expression, for example:(http.host eq "video.example.com"): Match the specified request.
+        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two usage scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
         self.rule = rule
-        # Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configuration. Specifies whether to check the image used by the instance supports hot migration. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # The name of the scheduling rule. You do not need to set this parameter when you add global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # The order in which the rule is executed. A smaller value gives priority to the rule.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
-        # Video seeking. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The video seek (drag-and-play) switch. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.video_seek_enable = video_seek_enable
 
     def validate(self):

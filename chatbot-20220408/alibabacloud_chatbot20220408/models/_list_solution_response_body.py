@@ -13,7 +13,9 @@ class ListSolutionResponseBody(DaraModel):
         request_id: str = None,
         solutions: List[main_models.ListSolutionResponseBodySolutions] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of solutions.
         self.solutions = solutions
 
     def validate(self):
@@ -62,13 +64,21 @@ class ListSolutionResponseBodySolutions(DaraModel):
         solution_id: int = None,
         tag_id_list: List[int] = None,
     ):
+        # The content of the solution.
         self.content = content
+        # The type of the solution content. Valid values: `0` (plain text) and `1` (rich text).
         self.content_type = content_type
+        # The time when the solution was created, in UTC.
         self.create_time = create_time
+        # The time when the solution was last modified, in UTC.
         self.modify_time = modify_time
+        # A list of perspective codes.
         self.perspective_codes = perspective_codes
+        # The content of the solution in plain text.
         self.plain_text = plain_text
+        # The solution ID.
         self.solution_id = solution_id
+        # A list of tag IDs.
         self.tag_id_list = tag_id_list
 
     def validate(self):

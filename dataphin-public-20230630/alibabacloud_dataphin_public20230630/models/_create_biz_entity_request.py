@@ -13,8 +13,12 @@ class CreateBizEntityRequest(DaraModel):
         create_command: main_models.CreateBizEntityRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -55,12 +59,22 @@ class CreateBizEntityRequestCreateCommand(DaraModel):
         data_domain_id: int = None,
         type: str = None,
     ):
+        # The business object.
         self.biz_object = biz_object
+        # The business activity.
         self.biz_process = biz_process
+        # The ID of the business unit to which the business activity belongs.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The ID of the data domain to which the business activity belongs.
+        # 
         # This parameter is required.
         self.data_domain_id = data_domain_id
+        # The business type. Valid values: 
+        # - BIZ_OBJECT: business object.
+        # - BIZ_PROCESS: business activity.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -125,15 +139,29 @@ class CreateBizEntityRequestCreateCommandBizProcess(DaraModel):
         ref_biz_entity_id_list: List[int] = None,
         type: str = None,
     ):
+        # The list of business event activity IDs included in the business process activity. This parameter takes effect only when the current activity is a business process activity.
         self.biz_event_entity_id_list = biz_event_entity_id_list
+        # The description of the business activity. The description can be up to 128 characters in length.
         self.description = description
+        # The display name of the business activity. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code name of the business activity. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The user ID of the business activity owner.
         self.owner_user_id = owner_user_id
+        # The list of preceding business process activity IDs for the business process activity.
         self.pre_biz_process_id_list = pre_biz_process_id_list
+        # The list of associated online business entity IDs.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
+        # The type of the business activity. Valid values:
+        # - BIZ_EVENT: business event.
+        # - BIZ_SNAPSHOT: business snapshot.
+        # - BIZ_PROCESS: business process.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -210,14 +238,28 @@ class CreateBizEntityRequestCreateCommandBizObject(DaraModel):
         ref_biz_entity_id_list: List[int] = None,
         type: str = None,
     ):
+        # The description of the business object. The description can be up to 128 characters in length.
         self.description = description
+        # The display name of the business object. The name can be up to 64 characters in length and can contain only Chinese characters, letters, digits, underscores, and hyphens.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+        # 
         # This parameter is required.
         self.name = name
+        # The user ID of the business object owner.
         self.owner_user_id = owner_user_id
+        # The parent entity from which the business object inherits. Only common business objects support inheritance, and the parent entity must be an online business object.
         self.parent_id = parent_id
+        # The list of associated online business entity IDs.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
+        # The object type of the business object. Valid values:
+        # - NORMAL: common object.
+        # - ENUM: enumeration object.
+        # - VIRTUAL: virtual object.
+        # - HIERARCHY: hierarchy object.
+        # 
         # This parameter is required.
         self.type = type
 

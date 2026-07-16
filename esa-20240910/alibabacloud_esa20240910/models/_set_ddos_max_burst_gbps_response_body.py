@@ -9,6 +9,7 @@ class SetDdosMaxBurstGbpsResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request. Alibaba Cloud generates this unique ID for each request. Use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

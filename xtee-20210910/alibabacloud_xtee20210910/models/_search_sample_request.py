@@ -15,12 +15,19 @@ class SearchSampleRequest(DaraModel):
         upload_time_end: str = None,
         upload_time_start: str = None,
     ):
+        # The domain name keyword provided.
         self.keyword = keyword
+        # The language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
         self.lang = lang
+        # The area encoding.
         self.reg_id = reg_id
+        # The scenario.
         self.tab = tab
+        # The access type.
         self.type = type
+        # The upload end time.
         self.upload_time_end = upload_time_end
+        # The upload start time.
         self.upload_time_start = upload_time_start
 
     def validate(self):

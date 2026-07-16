@@ -14,11 +14,11 @@ class ListInstanceIndicesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListInstanceIndicesResponseBodyResult] = None,
     ):
-        # The total size of the OpenStore cold stage index for this instance. Unit: bytes.
+        # The response headers.
         self.headers = headers
-        # The total number of indexes in Cloud Hosting.
+        # The request ID.
         self.request_id = request_id
-        # The total storage space occupied by the current index. Unit: bytes.
+        # The index list details.
         self.result = result
 
     def validate(self):
@@ -76,33 +76,43 @@ class ListInstanceIndicesResponseBodyResult(DaraModel):
         phase: str = None,
         size: int = None,
     ):
-        # The name of the Elasticsearch index.
+        # The time when the index list was queried.
         self.create_time = create_time
+        # The health status of the index. Valid values:
+        # 
+        # - green: Healthy.
+        # 
+        # - yellow: Warning.
+        # 
+        # - red: Abnormal.
         self.health = health
+        # The full lifecycle status of the index.
         self.ilm_explain = ilm_explain
-        # The managed status of the index. The following three statuses are supported:
-        # 
-        # *   following: Hosting.
-        # *   closing: The instance is being unhosted.
-        # *   closed: unmanaged.
+        # This parameter is deprecated and can be ignored.
         self.is_managed = is_managed
-        # The current storage lifecycle. Value meaning:
+        # The managed status of the index. Valid values:
         # 
-        # *   warm: warm.
-        # *   cold: the cold phase.
-        # *   hot: hot phase.
-        # *   delete: deletes a stage.
+        # - following: Managed.
         # 
-        # >  If this parameter is empty, the current index is not managed by the lifecycle.
+        # - closing: Being unmanaged.
+        # 
+        # - closed: Not managed.
         self.managed_status = managed_status
-        # The full lifecycle status of the current index.
+        # The index name.
         self.name = name
-        self.phase = phase
-        # The running status of the index. The following three statuses are supported:
+        # The current storage lifecycle phase. Valid values:
         # 
-        # *   green: healthy.
-        # *   yellow: alerts.
-        # *   red: an exception.
+        # - warm: Warm phase.
+        # 
+        # - cold: Cold phase.
+        # 
+        # - hot: Hot phase.
+        # 
+        # - delete: Delete phase.
+        # 
+        # > If this parameter is empty, the index is not managed by a lifecycle policy.
+        self.phase = phase
+        # The total storage space occupied by the index. Unit: bytes.
         self.size = size
 
     def validate(self):
@@ -175,13 +185,13 @@ class ListInstanceIndicesResponseBodyHeaders(DaraModel):
         x_osscount: int = None,
         x_ossstorage_size: int = None,
     ):
-        # The details of the index list.
+        # The total number of managed indexes in the cloud.
         self.x_managed_count = x_managed_count
-        # The total number of indexes in the OpenStore cold phase.
+        # The total size of managed indexes in the cloud. Unit: bytes.
         self.x_managed_storage_size = x_managed_storage_size
-        # The time when the index list was queried.
+        # The total number of OpenStore cold-phase indexes.
         self.x_osscount = x_osscount
-        # This parameter is deprecated.
+        # The total size of OpenStore cold-phase indexes for the instance. Unit: bytes.
         self.x_ossstorage_size = x_ossstorage_size
 
     def validate(self):

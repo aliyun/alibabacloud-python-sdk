@@ -14,8 +14,11 @@ class DescribeTrafficLogResponseBody(DaraModel):
         page_info: main_models.DescribeTrafficLogResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The data list.
         self.data_list = data_list
+        # The pagination information.
         self.page_info = page_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,8 +71,11 @@ class DescribeTrafficLogResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -157,54 +163,135 @@ class DescribeTrafficLogResponseBodyDataList(DaraModel):
         vpc_firewall_id: str = None,
         vul_level: int = None,
     ):
+        # The policy ID of the ACL pre-match. If this parameter is not specified, all policies are included.
         self.acl_pre_rule_id = acl_pre_rule_id
+        # The policy name of the ACL pre-match.
         self.acl_pre_rule_name = acl_pre_rule_name
+        # The ACL pre-match status. Valid values:
+        # 
+        # **app_unknown**: application not identified
+        # 
+        # **domain_unknown**: domain name not identified
+        # 
+        # **normal**: normal
         self.acl_pre_state = acl_pre_state
+        # The application identification status. Valid values:
+        # 
+        # **none**: initial state
+        # 
+        # **policy_discard**: connection establishment failed because the connection was blocked by a user ACL or threat intelligence rule
+        # 
+        # **tcp_not_establish**: TCP connection establishment failed
+        # 
+        # **no_payload**: connection established, but DPI has analyzed 0 payloads
+        # 
+        # **analysing**: identification in progress
+        # 
+        # **unknown_loose**: loose mode, identification failed, continuing identification
+        # 
+        # **unknown_strict**: strict mode, identification failed
+        # 
+        # **success**: identification succeeded
         self.app_dpi_state = app_dpi_state
+        # The application ID.
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The name of the attacked application.
         self.attack_app = attack_app
+        # The attack type of the intrusion prevention event.
         self.attack_type = attack_type
+        # The city ID.
         self.city_id = city_id
+        # The close reason.
         self.close_reason = close_reason
+        # The cloud service instance ID.
         self.cloud_instance_id = cloud_instance_id
+        # The country ID.
         self.country_id = country_id
+        # The traffic direction. Valid values:
+        # - **in**: inbound.
+        # - **out**: outbound.
         self.direction = direction
+        # The domain name.
         self.domain_name = domain_name
+        # The URL of the flow log.
         self.domain_url = domain_url
+        # The destination IP address. Indicates that the intrusion prevention event contains this destination IP address.
         self.dst_ip = dst_ip
+        # The destination port.
         self.dst_port = dst_port
+        # The destination VPC information.
         self.dst_vpc = dst_vpc
+        # The end time of the data. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # Other extended data.
         self.ext = ext
+        # The inbound traffic.
         self.in_bytes = in_bytes
+        # The number of inbound packets.
         self.in_packets = in_packets
+        # The protocol type.
         self.ip_protocol = ip_protocol
+        # The Internet service provider (ISP).
         self.isp = isp
+        # The ISP ID.
         self.isp_id = isp_id
+        # The region of the source or destination IP address.
         self.location = location
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
+        # The outbound traffic.
         self.out_bytes = out_bytes
+        # The number of outbound packets.
         self.out_packets = out_packets
+        # The number of bytes in the packet.
         self.packet_bytes = packet_bytes
+        # The number of traffic packets.
         self.packet_count = packet_count
+        # The private IP address.
         self.private_ip = private_ip
+        # The private port.
         self.private_port = private_port
+        # The region ID.
         self.region_id = region_id
+        # The ID of the matched rule.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The final result of the traffic. Valid values:
+        # - **0**: Allow.
+        # - **1**: Alert.
+        # - **2**: Drop.
         self.rule_result = rule_result
+        # The source of the matched detection rule. Valid values:
+        # - **0**: None.
+        # - **1**: Basic protection.
+        # - **2**: Virtual patches.
+        # - **3**: Access control.
+        # - **4**: Threat intelligence.
         self.rule_source = rule_source
+        # The rule list.
         self.rules = rules
+        # The source IP address.
         self.src_ip = src_ip
+        # The port of the data source.
         self.src_port = src_port
+        # The private source IP address.
         self.src_private_ip = src_private_ip
+        # The source VPC information.
         self.src_vpc = src_vpc
+        # The start time of the data. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
+        # The ID of the matched TLS inspection rule.
         self.tls_rule_id = tls_rule_id
+        # The name of the matched TLS inspection rule.
         self.tls_rule_name = tls_rule_name
+        # The TLS inspection scope ID.
         self.tls_scope_id = tls_scope_id
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.vpc_firewall_id = vpc_firewall_id
+        # The vulnerability level.
         self.vul_level = vul_level
 
     def validate(self):
@@ -536,8 +623,11 @@ class DescribeTrafficLogResponseBodyDataListSrcVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The region ID of the source VPC.
         self.region_no = region_no
+        # The instance ID of the source VPC.
         self.vpc_id = vpc_id
+        # The instance name of the source VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -577,9 +667,14 @@ class DescribeTrafficLogResponseBodyDataListRules(DaraModel):
         self,
         rule_id: str = None,
         rule_name: str = None,
+        rule_source: str = None,
     ):
+        # The rule ID.
         self.rule_id = rule_id
+        # The rule name.
         self.rule_name = rule_name
+        # The rule source.
+        self.rule_source = rule_source
 
     def validate(self):
         pass
@@ -595,6 +690,9 @@ class DescribeTrafficLogResponseBodyDataListRules(DaraModel):
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
 
+        if self.rule_source is not None:
+            result['RuleSource'] = self.rule_source
+
         return result
 
     def from_map(self, m: dict = None):
@@ -605,6 +703,9 @@ class DescribeTrafficLogResponseBodyDataListRules(DaraModel):
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
 
+        if m.get('RuleSource') is not None:
+            self.rule_source = m.get('RuleSource')
+
         return self
 
 class DescribeTrafficLogResponseBodyDataListDstVpc(DaraModel):
@@ -614,8 +715,11 @@ class DescribeTrafficLogResponseBodyDataListDstVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The region ID.
         self.region_no = region_no
+        # The VPC-connected instance ID.
         self.vpc_id = vpc_id
+        # The VPC instance name.
         self.vpc_name = vpc_name
 
     def validate(self):

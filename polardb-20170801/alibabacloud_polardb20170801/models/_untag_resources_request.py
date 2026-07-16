@@ -19,29 +19,29 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to detach all tags from the cluster. Valid values: **true** and **false**. Default value: **false**.
+        # Specifies whether to detach all tags. Valid values: **true** and **false**. Default value: **false**.
         # 
-        # >  This parameter takes effect only if `TagKey.n` is empty.
+        # > This parameter takes effect only when the `TagKey.n` parameter is empty.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the clusters.
+        # The ID of the target cluster.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **cluster**.
+        # The resource type. Set the value to **cluster**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The keys of the tags.
+        # The tag key.
         self.tag_key = tag_key
 
     def validate(self):

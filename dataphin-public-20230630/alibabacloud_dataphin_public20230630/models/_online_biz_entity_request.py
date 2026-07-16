@@ -11,8 +11,12 @@ class OnlineBizEntityRequest(DaraModel):
         online_command: main_models.OnlineBizEntityRequestOnlineCommand = None,
         op_tenant_id: int = None,
     ):
+        # The online request.
+        # 
         # This parameter is required.
         self.online_command = online_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,12 +56,22 @@ class OnlineBizEntityRequestOnlineCommand(DaraModel):
         id: int = None,
         type: str = None,
     ):
+        # The ID of the business unit to which the entity belongs.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The remarks for the offline operation.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The ID of the business entity.
+        # 
         # This parameter is required.
         self.id = id
+        # The business type. Valid values:
+        # - BIZ_OBJECT
+        # - BIZ_PROCESS.
+        # 
         # This parameter is required.
         self.type = type
 

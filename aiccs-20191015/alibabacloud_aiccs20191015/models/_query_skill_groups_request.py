@@ -14,13 +14,32 @@ class QuerySkillGroupsRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The channel type of the skill group. Valid values:
+        # 
+        # - **0**: Returns all skill groups.
+        # - **1**: Hotline skill group.
+        # - **2**: Online skill group.
+        # - **3**: Online and hotline skill group.
+        # - **4**: Ticket skill group.
+        # - **5**: Hotline and ticket skill group.
+        # - **6**: Online and ticket skill group.
+        # - **7**: Online, hotline, and ticket skill group.
         self.channel_type = channel_type
+        # A unique ID for the customer request. Used for idempotency validation. You can generate it using UUID.
         self.client_token = client_token
+        # The department ID.
         self.department_id = department_id
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The current page number. The value must be greater than **0**. Default Value: **1**.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # Page size. The value must be greater than **0**. Default value: **20**.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

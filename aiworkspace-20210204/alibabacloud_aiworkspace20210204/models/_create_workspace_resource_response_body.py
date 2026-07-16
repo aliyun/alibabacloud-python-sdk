@@ -16,7 +16,7 @@ class CreateWorkspaceResourceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # A list of resources.
         self.resources = resources
         # The total number of resources.
         self.total_count = total_count

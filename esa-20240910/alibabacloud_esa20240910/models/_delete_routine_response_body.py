@@ -12,7 +12,7 @@ class DeleteRoutineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # The status of the operation, which indicates success or failure.
         self.status = status
 
     def validate(self):

@@ -18,9 +18,9 @@ class DescribeImagesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.images = images
-        # The page number returned.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries on the current page.
         self.page_size = page_size
         # The region ID of the image.
         self.region_id = region_id
@@ -151,6 +151,7 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         status: str = None,
         supplier_name: str = None,
         tags: main_models.DescribeImagesResponseBodyImagesImageTags = None,
+        usable: bool = None,
         usage: str = None,
     ):
         self.architecture = architecture
@@ -185,6 +186,7 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         self.status = status
         self.supplier_name = supplier_name
         self.tags = tags
+        self.usable = usable
         self.usage = usage
 
     def validate(self):
@@ -298,6 +300,9 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
 
+        if self.usable is not None:
+            result['Usable'] = self.usable
+
         if self.usage is not None:
             result['Usage'] = self.usage
 
@@ -404,6 +409,9 @@ class DescribeImagesResponseBodyImagesImage(DaraModel):
         if m.get('Tags') is not None:
             temp_model = main_models.DescribeImagesResponseBodyImagesImageTags()
             self.tags = temp_model.from_map(m.get('Tags'))
+
+        if m.get('Usable') is not None:
+            self.usable = m.get('Usable')
 
         if m.get('Usage') is not None:
             self.usage = m.get('Usage')

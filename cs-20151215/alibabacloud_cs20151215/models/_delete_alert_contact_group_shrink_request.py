@@ -9,7 +9,7 @@ class DeleteAlertContactGroupShrinkRequest(DaraModel):
         self,
         contact_group_ids_shrink: str = None,
     ):
-        # The list of alert contact group IDs.
+        # List of alert contact group IDs.
         # 
         # This parameter is required.
         self.contact_group_ids_shrink = contact_group_ids_shrink

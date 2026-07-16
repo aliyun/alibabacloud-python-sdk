@@ -13,10 +13,15 @@ class CheckTaskGroupNameResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):

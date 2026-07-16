@@ -23,15 +23,34 @@ class DescribeVSwitchListRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0. It cannot exceed the maximum value of the Integer data type.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The ID of the region where the vSwitch resides.
+        # 
+        # > Call [DescribeRegions](https://help.aliyun.com/document_detail/118703.html) to query the IDs of all regions that support vSwitches.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # A list of vSwitches in the VPC.
         self.v_switch_ids = v_switch_ids
+        # The ID of the virtual private cloud (VPC).
+        # 
+        # > Call [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) to view the details of the VPC.
         self.vpc_id = vpc_id
+        # The ID of the zone where the vSwitch resides.
         self.zone_id = zone_id
 
     def validate(self):

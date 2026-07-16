@@ -14,9 +14,16 @@ class ListNodeDownStreamRequest(DaraModel):
         list_query: main_models.ListNodeDownStreamRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD (default): production environment.
         self.env = env
+        # The request for querying node downstream.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -62,10 +69,15 @@ class ListNodeDownStreamRequestListQuery(DaraModel):
         node_id_list: List[main_models.ListNodeDownStreamRequestListQueryNodeIdList] = None,
         project_id: int = None,
     ):
+        # The depth. Default value: 3.
         self.down_stream_depth = down_stream_depth
+        # The filters. You can include or exclude results based on projects or nodes. Default value: empty.
         self.filter_list = filter_list
+        # The list of nodes.
+        # 
         # This parameter is required.
         self.node_id_list = node_id_list
+        # The project ID.
         self.project_id = project_id
 
     def validate(self):
@@ -129,7 +141,9 @@ class ListNodeDownStreamRequestListQueryNodeIdList(DaraModel):
         field_id_list: List[str] = None,
         id: str = None,
     ):
+        # The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
         self.field_id_list = field_id_list
+        # The node ID.
         self.id = id
 
     def validate(self):
@@ -165,8 +179,14 @@ class ListNodeDownStreamRequestListQueryFilterList(DaraModel):
         key: str = None,
         value_list: List[str] = None,
     ):
+        # Specifies whether to exclude the matched results. Default value: false.
         self.exclude = exclude
+        # The filter key. Valid values:
+        # - PROJECT: project
+        # - PHYSICAL_NODE_ID: physical node ID
+        # - LOGICAL_TABLE_NODE_ID: logical table ID.
         self.key = key
+        # The list of filter values.
         self.value_list = value_list
 
     def validate(self):

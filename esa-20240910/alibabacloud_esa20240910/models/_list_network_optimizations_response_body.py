@@ -17,17 +17,17 @@ class ListNetworkOptimizationsResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Response body configurations.
+        # The configurations returned in the response body.
         self.configs = configs
-        # The current page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # The size of the page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -104,45 +104,45 @@ class ListNetworkOptimizationsResponseBodyConfigs(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type, which can be used to query global or rule-based configurations. The value range is as follows:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # - global: Query global configuration.
-        # - rule: Query rule-based configuration.
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Whether to enable GRPC, default is off. The value range is:
+        # Specifies whether to enable gRPC. This feature is disabled by default. Valid values:
         # - on: enabled.
         # - off: disabled.
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, defaulting to off. The value range is as follows:
+        # Specifies whether to enable HTTP/2 back-to-origin. This feature is disabled by default. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: enabled.
+        # - off: disabled.
         self.http_2origin = http_2origin
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, e.g., (http.host eq \\"video.example.com\\")
+        # The rule content, which uses conditional expressions to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specified requests: set the value to a custom expression, such as (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. The value range is as follows:
-        # - on: Enabled.
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site configuration version number. For sites with version management enabled, this parameter can specify the site version for which the configuration takes effect, defaulting to version 0.
+        # The version number of the site configuration. For sites with configuration version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # Whether to enable smart routing service, defaulting to off. The value range is as follows:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Specifies whether to enable the smart routing service. This feature is disabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.smart_routing = smart_routing
-        # Maximum file size for upload, in MB. The value range is 100 to 500.
+        # The maximum upload file size, in MB. Valid values: 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, enabled by default. Value range: 
-        # - on: Enabled. 
-        # - off: Disabled.
+        # Specifies whether to enable WebSocket. This feature is enabled by default. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.websocket = websocket
 
     def validate(self):

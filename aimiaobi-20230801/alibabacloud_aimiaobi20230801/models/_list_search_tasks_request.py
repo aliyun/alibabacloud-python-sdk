@@ -14,9 +14,14 @@ class ListSearchTasksRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # Task type
         self.dialogue_types = dialogue_types
+        # Current page number
         self.page_number = page_number
+        # Number of items per page. Default is 10.
         self.page_size = page_size
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain workspaceId]().
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

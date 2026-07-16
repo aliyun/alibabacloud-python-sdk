@@ -10,7 +10,10 @@ class GetMyTenantsShrinkRequest(DaraModel):
         feature_code_list_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The feature codes owned by the tenant.
         self.feature_code_list_shrink = feature_code_list_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

@@ -10,14 +10,13 @@ class DescribeLogstoreStorageRequest(DaraModel):
         from_: str = None,
         lang: str = None,
     ):
-        # The ID of the request source. Set the value to **sas**.
+        # The identifier of the request source. Set this parameter to **sas**.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

@@ -13,10 +13,23 @@ class SubmitReviewInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. 200 indicates success.
+        # 
+        # > If the value is different, it indicates failure. Callers can use this field to determine the cause of failure.
         self.code = code
+        # Returns the quality inspection score after review upon successful saving.
         self.data = data
+        # Indicates error details on failure, or **successful** on success.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # Callers can use this field to determine if the request was successful:
+        # 
+        # - true indicates success
+        # 
+        # - false/null indicates failure
         self.success = success
 
     def validate(self):

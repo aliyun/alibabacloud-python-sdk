@@ -13,11 +13,11 @@ class TextModerationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The response code.
         self.code = code
-        # The moderation results.
+        # The moderation result data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -74,19 +74,41 @@ class TextModerationResponseBodyData(DaraModel):
         manual_task_id: str = None,
         reason: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The \\`accountId\\` specified in the request.
         self.account_id = account_id
-        # The ID of the moderated object.
+        # The data ID of the moderated object.
+        # 
+        # > If you specify the dataId parameter in the request, its value is returned in this parameter.
         self.data_id = data_id
-        # The description of the labels.
+        # The description of the label.
         self.descriptions = descriptions
-        # The device ID.
+        # The \\`deviceId\\` specified in the request.
         self.device_id = device_id
+        # Auxiliary reference information for the text.
         self.ext = ext
-        # The labels. Multiple labels are separated by commas (,). Valid values: ad: ad violation profanity: abuse contraband: contraband sexual_content: pornography violence: violence nonsense: irrigation spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: custom library that is hit
+        # The moderation labels. If multiple labels are returned, they are separated by commas (,). Valid values: ad: advertisement profanity: profanity contraband: contraband sexual_content: sexual content violence: violent and terrorist content nonsense: meaningless content spam: spam negative_content: undesirable content cyberbullying: cyberbullying C_customized: A match in a custom library
         self.labels = labels
+        # The ID of the manual review task.
         self.manual_task_id = manual_task_id
-        # The JSON string used to locate the cause. Valid values: riskTips: subcategory label riskWords: risk words adNums: hit advertising number customizedWords: customized words customizedLibs: customized libraries
+        # A JSON string that contains the reason for the moderation result. The string includes the following fields:
+        # 
+        # 1. riskTips: The sub-labels.
+        # 
+        # 2. riskWords: The detected risk words.
+        # 
+        # 3. adNums: The detected ad-related numbers.
+        # 
+        # 4. customizedWords: The detected custom words.
+        # 
+        # 5. customizedLibs: The names of the custom libraries that contain a match.
+        # 
+        # 6. riskLevel: The risk level, which is recommended by the system. Valid values:
+        # 
+        # - high: high risk
+        # 
+        # - medium: medium risk
+        # 
+        # - low: low risk
         self.reason = reason
 
     def validate(self):
@@ -158,6 +180,7 @@ class TextModerationResponseBodyDataExt(DaraModel):
         self,
         llm_content: main_models.TextModerationResponseBodyDataExtLlmContent = None,
     ):
+        # The output from the Large Language Model (LLM).
         self.llm_content = llm_content
 
     def validate(self):
@@ -187,6 +210,7 @@ class TextModerationResponseBodyDataExtLlmContent(DaraModel):
         self,
         output_text: str = None,
     ):
+        # The output content.
         self.output_text = output_text
 
     def validate(self):

@@ -16,10 +16,15 @@ class DescribeVpcsForMongoDBResponseBody(DaraModel):
         total_count: int = None,
         vpcs: List[main_models.DescribeVpcsForMongoDBResponseBodyVpcs] = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The list of VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -89,17 +94,31 @@ class DescribeVpcsForMongoDBResponseBodyVpcs(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # This parameter is deprecated. No value is returned.
         self.ali_uid = ali_uid
+        # This parameter is deprecated. No value is returned.
         self.bid = bid
+        # The CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # This parameter is deprecated. No value is returned.
         self.gmt_create = gmt_create
+        # This parameter is deprecated. No value is returned.
         self.gmt_modified = gmt_modified
+        # Indicates whether the VPC is the default one. Valid values:
+        # 
+        # - **true**: The VPC is the default one.
+        # 
+        # - **false**: The VPC is not the default one.
         self.is_default = is_default
+        # The region ID.
         self.region_no = region_no
+        # The status of the VPC. A value of **Available** indicates that the VPC is active.
         self.status = status
+        # The list of vSwitches.
         self.v_switchs = v_switchs
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -202,14 +221,25 @@ class DescribeVpcsForMongoDBResponseBodyVpcsVSwitchs(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # This parameter is deprecated. No value is returned.
         self.gmt_create = gmt_create
+        # This parameter is deprecated. No value is returned.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # - **true**: The vSwitch is the default vSwitch.
+        # 
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
+        # The zone to which the vSwitch belongs.
         self.iz_no = iz_no
+        # The status of the vSwitch. A value of **Available** indicates that the vSwitch is active.
         self.status = status
-        # VSwitch ID。
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):

@@ -10,9 +10,13 @@ class DeleteGtmRecoveryPlanRequest(DaraModel):
         lang: str = None,
         recovery_plan_id: int = None,
     ):
-        # The language used by the user.
+        # The language of the response. The default value is **zh**. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The ID of the disaster recovery plan that you want to delete.
+        # The ID of the disaster recovery plan.<props="intl"> To obtain the ID, call [DescribeGtmRecoveryPlans](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describegtmrecoveryplans?spm=a2c63.p38356.help-menu-search-29697.d_0).
         # 
         # This parameter is required.
         self.recovery_plan_id = recovery_plan_id

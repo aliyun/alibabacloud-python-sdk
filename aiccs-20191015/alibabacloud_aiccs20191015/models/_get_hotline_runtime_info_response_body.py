@@ -15,10 +15,15 @@ class GetHotlineRuntimeInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A return value of "Success" indicates that the request succeeded.
         self.code = code
+        # Hotline runtime information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):

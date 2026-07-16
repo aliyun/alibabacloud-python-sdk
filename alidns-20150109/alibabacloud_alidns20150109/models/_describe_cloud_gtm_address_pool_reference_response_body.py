@@ -15,12 +15,12 @@ class DescribeCloudGtmAddressPoolReferenceResponseBody(DaraModel):
         instance_configs: main_models.DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs = None,
         request_id: str = None,
     ):
-        # The ID of the address pool. This ID uniquely identifies the address pool.
+        # The unique ID of the address pool.
         self.address_pool_id = address_pool_id
-        # Address pool name.
+        # The name of the address pool.
         self.address_pool_name = address_pool_name
         self.instance_configs = instance_configs
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

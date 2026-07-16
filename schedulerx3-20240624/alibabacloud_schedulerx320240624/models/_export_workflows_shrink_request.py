@@ -11,11 +11,13 @@ class ExportWorkflowsShrinkRequest(DaraModel):
         cluster_id: str = None,
         workflow_id_shrink: str = None,
     ):
+        # The name of the application.
         self.app_name = app_name
-        # A short description of struct
+        # The ID of the cluster where the Workflow is located.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # An array of Workflow IDs to export.
         self.workflow_id_shrink = workflow_id_shrink
 
     def validate(self):

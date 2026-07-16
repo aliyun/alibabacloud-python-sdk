@@ -9,7 +9,7 @@ class RetryAgentlessTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task. You can call the [ListAgentlessTask](~~ListAgentlessTask~~) operation to obtain the IDs of tasks.
+        # The task ID. Call [ListAgentlessTask](~~ListAgentlessTask~~) to obtain the task ID.
         self.task_id = task_id
 
     def validate(self):

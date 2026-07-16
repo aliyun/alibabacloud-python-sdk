@@ -14,13 +14,21 @@ class ListRecursionZonesRequest(DaraModel):
         remark: str = None,
         zone_name: str = None,
     ):
+        # The maximum number of entries to return for this request.
         self.max_results = max_results
+        # The token to start the next query.
         self.next_token = next_token
+        # The current page number. The value starts from **1**. The default value is **1**.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries to return on each page for a paged query. The maximum value is 100. The default value is 20.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The remarks.
         self.remark = remark
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):

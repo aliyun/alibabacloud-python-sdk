@@ -11,8 +11,12 @@ class UpdateEventsAttentionRequest(DaraModel):
         range: str = None,
         uuid: str = None,
     ):
+        # The sensitivity of the anomaly event. Valid values: -1 to 3. A value of -1 indicates that the sensitivity is decreased by 1. A value of 0 indicates that the sensitivity is increased by 1.
         self.mode = mode
+        # The scope in which the update takes effect. Valid values: cluster and node.
         self.range = range
+        # The UUID of the anomaly event.
+        # 
         # This parameter is required.
         self.uuid = uuid
 

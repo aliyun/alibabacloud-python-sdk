@@ -20,31 +20,26 @@ class CreateImageRequest(DaraModel):
         snapshot_id: str = None,
         snapshot_ids: List[str] = None,
     ):
-        # Specifies whether to clear private data of users. If you set AutoCleanUserdata to `true`, the custom image clears the data directories, excluding the `Administrator` and `Public` directories, in the `C:\\Users` directory.
+        # Specify whether to clear user personal data. If set to `true`, the image clears all folders under `C:\\Users`, except `Administrator` and `Public`.
         self.auto_clean_userdata = auto_clean_userdata
         self.data_snapshot_ids = data_snapshot_ids
-        # The description of the custom image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description of the image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the cloud computer.
         self.desktop_id = desktop_id
-        # The disk data that is contained in the custom image.
-        # 
-        # Valid values:
-        # 
-        # - SYSTEM: only contain data from system disks.
-        # - ALL: contain data from system disks and user disks. [default]
+        # The disk data included in the image.
         self.disk_type = disk_type
-        # The name of the image. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the image. The name must be 2 to 128 characters in length. It must start with a letter or Chinese character. It cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.image_name = image_name
-        # This parameter is not publicly available.
+        # This parameter is not available for use.
         self.image_resource_type = image_resource_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to view the list of regions that support WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The IDs of the snapshots.
+        # A list of snapshot IDs.
         self.snapshot_ids = snapshot_ids
 
     def validate(self):

@@ -18,12 +18,19 @@ class ListJobGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the asynchronous task. You can use this ID to query the status of the task.
         self.async_task_id = async_task_id
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The list of job groups.
         self.job_groups = job_groups
+        # The returned message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: `true` and `false`.
         self.success = success
 
     def validate(self):
@@ -92,9 +99,13 @@ class ListJobGroupsResponseBodyJobGroups(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of job groups.
         self.list = list
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -162,20 +173,53 @@ class ListJobGroupsResponseBodyJobGroupsList(DaraModel):
         strategy: main_models.ListJobGroupsResponseBodyJobGroupsListStrategy = None,
         total_call_num: int = None,
     ):
+        # The time when the job group was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.creation_time = creation_time
+        # The progress of the export task.
         self.export_progress = export_progress
+        # The ID of the task that parses the job data file. This parameter is deprecated.
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # The description of the job group.
         self.job_group_description = job_group_description
+        # The ID of the job group.
         self.job_group_id = job_group_id
+        # The name of the job group.
         self.job_group_name = job_group_name
+        # The minimum number of concurrent calls.
         self.min_concurrency = min_concurrency
+        # The time when the job group was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.modify_time = modify_time
+        # The progress of the job group.
         self.progress = progress
+        # The ID of the script.
         self.script_id = script_id
+        # The name of the script.
         self.script_name = script_name
+        # The script version.
         self.script_version = script_version
+        # The status of the job group. Valid values:
+        # 
+        # - **Draft**: The job group is a draft.
+        # 
+        # - **Scheduling**: The job group is being scheduled.
+        # 
+        # - **Executing**: The job group is running.
+        # 
+        # - **Completed**: The job group is completed.
+        # 
+        # - **Paused**: The job group is paused.
+        # 
+        # - **Failed**: The job group failed.
+        # 
+        # - **Cancelled**: The job group is canceled.
+        # 
+        # - **Initializing**: The job group is being initialized.
         self.status = status
+        # The calling strategy. This parameter is deprecated.
+        # 
+        # > To view the strategy for a job group, call the `DescribeJobGroup` operation.
         self.strategy = strategy
+        # The total number of calls.
         self.total_call_num = total_call_num
 
     def validate(self):
@@ -296,7 +340,9 @@ class ListJobGroupsResponseBodyJobGroupsListStrategy(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
+        # The end time of the calling window.
         self.end_time = end_time
+        # The start time of the calling window.
         self.start_time = start_time
 
     def validate(self):
@@ -340,16 +386,45 @@ class ListJobGroupsResponseBodyJobGroupsListProgress(DaraModel):
         total_jobs: int = None,
         total_not_answered: int = None,
     ):
+        # The number of canceled jobs.
         self.cancelled_num = cancelled_num
+        # The total runtime. This parameter is deprecated.
         self.duration = duration
+        # The number of running jobs.
         self.executing_num = executing_num
+        # The number of failed jobs.
         self.failed_num = failed_num
+        # The number of paused jobs.
         self.paused_num = paused_num
+        # The number of jobs that are being scheduled.
         self.scheduling = scheduling
+        # The start time. This parameter is deprecated.
         self.start_time = start_time
+        # > This parameter is no longer returned.
+        # 
+        # The status of the job. Valid values:
+        # 
+        # - **Draft**: The job is a draft.
+        # 
+        # - **Scheduling**: The job is being scheduled.
+        # 
+        # - **Executing**: The job is running.
+        # 
+        # - **Completed**: The job is completed.
+        # 
+        # - **Paused**: The job is paused.
+        # 
+        # - **Failed**: The job failed.
+        # 
+        # - **Cancelled**: The job is canceled.
+        # 
+        # - **Initializing**: The job is being initialized.
         self.status = status
+        # The number of completed jobs.
         self.total_completed = total_completed
+        # The total number of jobs.
         self.total_jobs = total_jobs
+        # This parameter is deprecated.
         self.total_not_answered = total_not_answered
 
     def validate(self):
@@ -439,8 +514,19 @@ class ListJobGroupsResponseBodyJobGroupsListExportProgress(DaraModel):
         progress: str = None,
         status: str = None,
     ):
+        # This parameter is deprecated.
         self.file_http_url = file_http_url
+        # The progress of the export task.
         self.progress = progress
+        # The status of the export task. Valid values:
+        # 
+        # - **PENDING**: The task is pending.
+        # 
+        # - **IN_PROGRESS**: The task is in progress.
+        # 
+        # - **FINISHED**: The task is finished.
+        # 
+        # - **FAILED**: The task failed.
         self.status = status
 
     def validate(self):

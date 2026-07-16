@@ -17,11 +17,11 @@ class DescribeLaunchTemplateVersionsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.launch_template_version_sets = launch_template_version_sets
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in a paged query. Settings this parameter for paging.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of launch templates.
         self.total_count = total_count

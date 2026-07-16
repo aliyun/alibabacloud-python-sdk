@@ -10,8 +10,12 @@ class DeleteRowPermissionShrinkRequest(DaraModel):
         delete_row_permission_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The request command.
+        # 
         # This parameter is required.
         self.delete_row_permission_command_shrink = delete_row_permission_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

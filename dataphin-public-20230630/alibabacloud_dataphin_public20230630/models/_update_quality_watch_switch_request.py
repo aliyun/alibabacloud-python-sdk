@@ -13,8 +13,12 @@ class UpdateQualityWatchSwitchRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateQualityWatchSwitchRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -52,8 +56,12 @@ class UpdateQualityWatchSwitchRequestUpdateCommand(DaraModel):
         open: bool = None,
         watch_id_list: List[int] = None,
     ):
+        # Specifies whether to enable the monitored object.
+        # 
         # This parameter is required.
         self.open = open
+        # The list of monitoring IDs.
+        # 
         # This parameter is required.
         self.watch_id_list = watch_id_list
 

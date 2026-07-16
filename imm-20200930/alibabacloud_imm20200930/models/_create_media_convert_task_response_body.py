@@ -11,11 +11,11 @@ class CreateMediaConvertTaskResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Event ID.
+        # The ID of the event.
         self.event_id = event_id
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

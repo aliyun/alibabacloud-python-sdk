@@ -11,9 +11,11 @@ class ListOSSExportsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The number of entries to return. The default value is 10.
         self.logstore = logstore
+        # The line number from which to start the query. The default value is 0.
         self.offset = offset
-        # The number of entries to return. Default value: 10.
+        # The number of jobs to return. The default value is 10.
         self.size = size
 
     def validate(self):

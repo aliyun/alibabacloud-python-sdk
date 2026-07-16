@@ -18,12 +18,19 @@ class RunDeepWritingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response header.
         self.header = header
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The response body.
         self.payload = payload
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -92,6 +99,7 @@ class RunDeepWritingResponseBodyPayload(DaraModel):
         self,
         output: main_models.RunDeepWritingResponseBodyPayloadOutput = None,
     ):
+        # The output.
         self.output = output
 
     def validate(self):
@@ -125,10 +133,15 @@ class RunDeepWritingResponseBodyPayloadOutput(DaraModel):
         sequence_number: str = None,
         type: str = None,
     ):
+        # The new output item for this event.
         self.item = item
+        # The ordinal number of the new output item in this event.
         self.output_index = output_index
+        # The response body.
         self.response = response
+        # The ordinal number of the streaming event.
         self.sequence_number = sequence_number
+        # The type.
         self.type = type
 
     def validate(self):
@@ -186,7 +199,9 @@ class RunDeepWritingResponseBodyPayloadOutputResponse(DaraModel):
         id: str = None,
         status: str = None,
     ):
+        # The unique ID of the task.
         self.id = id
+        # The execution status of the task.
         self.status = status
 
     def validate(self):
@@ -227,13 +242,21 @@ class RunDeepWritingResponseBodyPayloadOutputItem(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The name of the agent that generated this item.
         self.agent = agent
+        # Parameter
         self.arguments = arguments
+        # This field has a value when the item type is \\`message\\`. The value is a list of output content.
         self.content = content
+        # The unique ID of the item.
         self.id = id
+        # The name of the parameter.
         self.name = name
+        # The item\\"s result.
         self.result = result
+        # The status of the item.
         self.status = status
+        # The type of the item.
         self.type = type
 
     def validate(self):
@@ -312,7 +335,9 @@ class RunDeepWritingResponseBodyPayloadOutputItemContent(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The text content that is output when the item type is \\`message\\`.
         self.text = text
+        # When the item type is \\`message\\`, the value of this field is \\`output_text\\`.
         self.type = type
 
     def validate(self):
@@ -352,12 +377,19 @@ class RunDeepWritingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The Server-Sent Event (SSE).
         self.event = event
+        # The session ID.
         self.session_id = session_id
+        # The HTTP status code.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

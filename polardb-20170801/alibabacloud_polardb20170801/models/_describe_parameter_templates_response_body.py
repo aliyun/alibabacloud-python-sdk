@@ -17,11 +17,11 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         parameters: main_models.DescribeParameterTemplatesResponseBodyParameters = None,
         request_id: str = None,
     ):
-        # The type of the database engine.
+        # The database engine type.
         self.dbtype = dbtype
-        # The version of the database engine.
+        # The database engine version.
         self.dbversion = dbversion
-        # The database engine of the cluster.
+        # The database engine.
         self.engine = engine
         # The number of parameters.
         self.parameter_count = parameter_count

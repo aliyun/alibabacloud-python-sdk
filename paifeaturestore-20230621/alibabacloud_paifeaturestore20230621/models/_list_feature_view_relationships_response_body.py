@@ -13,7 +13,9 @@ class ListFeatureViewRelationshipsResponseBody(DaraModel):
         relationships: List[main_models.ListFeatureViewRelationshipsResponseBodyRelationships] = None,
         request_id: str = None,
     ):
+        # A list of relationships to models that use this feature view.
         self.relationships = relationships
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListFeatureViewRelationshipsResponseBodyRelationships(DaraModel):
         models: List[main_models.ListFeatureViewRelationshipsResponseBodyRelationshipsModels] = None,
         project_name: str = None,
     ):
+        # The name of the feature view.
         self.feature_view_name = feature_view_name
+        # A list of models.
         self.models = models
+        # The name of the project.
         self.project_name = project_name
 
     def validate(self):
@@ -107,7 +112,9 @@ class ListFeatureViewRelationshipsResponseBodyRelationshipsModels(DaraModel):
         model_id: str = None,
         model_name: str = None,
     ):
+        # The ID of the model.
         self.model_id = model_id
+        # The name of the model.
         self.model_name = model_name
 
     def validate(self):

@@ -11,9 +11,12 @@ class DeleteRuleV4Request(DaraModel):
         force_delete: bool = None,
         rule_id: int = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Whether to delete the rule even if it is associated with quality inspection tasks.
         self.force_delete = force_delete
+        # Rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

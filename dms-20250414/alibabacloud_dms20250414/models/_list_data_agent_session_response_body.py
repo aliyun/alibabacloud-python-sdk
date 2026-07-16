@@ -20,15 +20,26 @@ class ListDataAgentSessionResponseBody(DaraModel):
         total: int = None,
         total_pages: int = None,
     ):
+        # The response struct.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The current page number.
         self.page_number = page_number
+        # The current page size.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # - **false**: The request fails.
         self.success = success
+        # The total number of records.
         self.total = total
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -122,16 +133,27 @@ class ListDataAgentSessionResponseBodyData(DaraModel):
         title: str = None,
         user_id: str = None,
     ):
+        # The current agent ID.
         self.agent_id = agent_id
+        # The current agent status.
         self.agent_status = agent_status
+        # The session creation time.
         self.create_time = create_time
+        # Indicates whether the session is favorited by the current logged-in user in the workspace.
         self.favorite_in_workspace = favorite_in_workspace
+        # The file ID.
         self.file = file
+        # Indicates whether the session is favorited by the current logged-in user.
         self.saved = saved
+        # The session configuration item.
         self.session_config = session_config
+        # The Data Agent session ID.
         self.session_id = session_id
+        # The session status.
         self.session_status = session_status
+        # The title.
         self.title = title
+        # The ID of the session owner.
         self.user_id = user_id
 
     def validate(self):
@@ -226,11 +248,26 @@ class ListDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         mode: str = None,
         user_oss_bucket: str = None,
     ):
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
+        # The usage stage of the custom agent. Valid values:
+        # - **debug**: Debug stage.
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
+        # Specifies whether to enable web search.
         self.enable_search = enable_search
+        # The language. Valid values:
+        # - **CHINESE**: Chinese.
+        # - **ENGLISH**: English.
         self.language = language
+        # The mode. Valid values:
+        #  - **ASK_DATA**: Ask data mode.
+        #  - **ANALYSIS**: Analysis mode.
+        #  - **INSIGHT**: Insight mode.
         self.mode = mode
+        # The name of the user OSS bucket.
+        # 
+        # - Analysis process files and report artifacts can be uploaded to the user-specified OSS bucket.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

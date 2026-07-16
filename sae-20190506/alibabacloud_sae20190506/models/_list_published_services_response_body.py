@@ -20,31 +20,37 @@ class ListPublishedServicesResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A client error occurs.
+        # 
+        # - **5xx**: A server error occurs.
         self.code = code
-        # The details of the microservices.
+        # The list of published microservices.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - For more information about error codes, see the **Error codes** section.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - Returns **success** if the request is successful.
+        # 
+        # - Returns an error code if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the list of microservices was queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The list was queried.
-        # *   **false**: The list failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID for querying call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -122,19 +128,19 @@ class ListPublishedServicesResponseBodyData(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The reserved parameter. This parameter does not take effect.
+        # A reserved field.
         self.group_2ip = group_2ip
-        # The service group that corresponds to the consumed service.
+        # The groups to which the service belongs.
         self.groups = groups
-        # The addresses where services can be subscribed to.
+        # The service subscription addresses.
         self.ips = ips
-        # The name of the published service.
+        # The published service name.
         self.name = name
-        # The type of the published service.
+        # The published service type.
         self.type = type
-        # The version of the published services.
+        # The published service version.
         self.version = version
 
     def validate(self):

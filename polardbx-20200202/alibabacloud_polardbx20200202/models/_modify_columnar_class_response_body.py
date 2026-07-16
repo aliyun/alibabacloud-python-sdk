@@ -11,6 +11,7 @@ class ModifyColumnarClassResponseBody(DaraModel):
         data: main_models.ModifyColumnarClassResponseBodyData = None,
         request_id: str = None,
     ):
+        # The policy details returned.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -48,6 +49,7 @@ class ModifyColumnarClassResponseBodyData(DaraModel):
         self,
         task_id: int = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

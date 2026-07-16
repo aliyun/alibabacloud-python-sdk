@@ -11,11 +11,11 @@ class CreateNetworkPackageResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the premium bandwidth plan.
+        # The premium bandwidth plan ID.
         self.network_package_id = network_package_id
-        # The ID of the bill.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

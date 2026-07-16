@@ -19,36 +19,34 @@ class ModifyInterceptionRuleRequest(DaraModel):
         src_target: Dict[str, Any] = None,
     ):
         # The ID of the container cluster.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of container clusters.
+        # > You can call the [DescribeGroupedContainerInstances](https://help.aliyun.com/document_detail/182997.html) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The destination objects of the rule. The following parameters are included:
+        # The destination object. The metric description is as follows:
         # 
-        # *   targetId: the ID of the destination object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
-        # *   ports: the destination port ranges.
+        # - targetId: the ID of the destination object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
+        # - ports: the list of destination port ranges.
         self.dst_target = dst_target
         # The interception mode. Valid values:
-        # 
-        # *   **1**: block
-        # *   **2**: alert
-        # *   **3**: allow
+        # - **1**: Block Mode
+        # - **2**: Alert mode
+        # - **3**: Allow mode.
         self.intercept_type = intercept_type
-        # The priority of the rule. Valid values: 1 to 1000. A smaller value indicates a higher priority.
+        # The priority of the rule. The priority ranges from 1 to 1000. A smaller number indicates a higher priority.
         self.order_index = order_index
-        # The ID of the rule.
+        # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # Specifies whether the rule is enabled. Valid values:
+        # The switch status of the rule. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: enabled
+        # - **0**: disabled.
         self.rule_switch = rule_switch
-        # The source object of the rule. The following parameters are included:
+        # The source rule object. The metric description is as follows:
         # 
-        # *   targetId: the ID of the source object. You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to query the ID.
+        # - targetId: the ID of the source object. You can invoke the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
         self.src_target = src_target
 
     def validate(self):

@@ -13,11 +13,11 @@ class CommonResult(DaraModel):
         data: Any = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # Indicates the request status. A value of `SUCCESS` indicates success. On failure, an error code is returned, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
-        # 实际的业务数据内容
+        # The returned business data.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # A unique request identifier for issue tracking.
         self.request_id = request_id
 
     def validate(self):

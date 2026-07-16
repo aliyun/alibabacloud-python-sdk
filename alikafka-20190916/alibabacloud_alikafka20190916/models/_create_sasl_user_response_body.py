@@ -12,11 +12,11 @@ class CreateSaslUserResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The HTTP status code 200 indicates that the request was successful.
+        # The status code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

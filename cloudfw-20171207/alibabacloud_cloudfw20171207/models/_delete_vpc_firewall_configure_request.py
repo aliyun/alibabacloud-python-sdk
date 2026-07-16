@@ -13,14 +13,15 @@ class DeleteVpcFirewallConfigureRequest(DaraModel):
         member_uid: str = None,
         vpc_firewall_id_list: List[str] = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of one of the member accounts of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The instance IDs of VPC firewalls.
+        # The list of instance IDs of the virtual private cloud (VPC) firewalls to delete.
         # 
         # This parameter is required.
         self.vpc_firewall_id_list = vpc_firewall_id_list

@@ -10,6 +10,7 @@ class ExecuteLogQueryRequest(DaraModel):
         end_time: str = None,
         extend_content_packed: str = None,
         lang: str = None,
+        log_condition: str = None,
         log_project_name: str = None,
         log_query: str = None,
         log_region_id: str = None,
@@ -20,17 +21,36 @@ class ExecuteLogQueryRequest(DaraModel):
         role_for: int = None,
         start_time: str = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        self.log_condition = log_condition
+        # The Simple Log Service project name.
         self.log_project_name = log_project_name
+        # The Simple Log Service query statement.
         self.log_query = log_query
+        # The log storage region ID.
         self.log_region_id = log_region_id
+        # The Simple Log Service project name.
         self.log_store_name = log_store_name
+        # The user ID for data access.
         self.log_user_id = log_user_id
+        # If packing is enabled, you must specify NormalizationSchemaId.
         self.normalization_schema_id = normalization_schema_id
+        # The region where the threat analysis data management center is located. Specify the management center based on the region of your assets. Valid values:
+        # - cn-hangzhou: the asset is in the Chinese mainland.
+        # - ap-southeast-1: the asset is outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -49,6 +69,9 @@ class ExecuteLogQueryRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.log_condition is not None:
+            result['LogCondition'] = self.log_condition
 
         if self.log_project_name is not None:
             result['LogProjectName'] = self.log_project_name
@@ -89,6 +112,9 @@ class ExecuteLogQueryRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('LogCondition') is not None:
+            self.log_condition = m.get('LogCondition')
 
         if m.get('LogProjectName') is not None:
             self.log_project_name = m.get('LogProjectName')

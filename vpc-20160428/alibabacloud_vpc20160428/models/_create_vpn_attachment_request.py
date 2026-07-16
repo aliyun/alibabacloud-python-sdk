@@ -70,6 +70,10 @@ class CreateVpnAttachmentRequest(DaraModel):
         # 
         # >  This parameter is required only when you create a single-tunnel IPsec-VPN connection.
         self.customer_gateway_id = customer_gateway_id
+        # Specifies whether to perform a dry run of the request. Valid values:
+        # 
+        # - **true**: Sends a dry run request without creating the IPsec-VPN connection. The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, the error code `DryRunOperation` is returned.
+        # - **false** (default): Sends a normal request. If the check passes, the IPsec-VPN connection is created immediately.
         self.dry_run = dry_run
         # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
@@ -204,6 +208,9 @@ class CreateVpnAttachmentRequest(DaraModel):
         # 
         # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
         self.tags = tags
+        # Specifies the bandwidth specification for a single VPN tunnel. Valid values:
+        # Standard (Default Value): medium, with a default bandwidth of 1 Gbps
+        # Large: large, with a default bandwidth of 3 Gbps
         self.tunnel_bandwidth = tunnel_bandwidth
         # The tunnel configurations.
         # 

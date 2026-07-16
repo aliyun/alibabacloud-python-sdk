@@ -14,8 +14,11 @@ class DescribeVpcFirewallCenSummaryListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of CEN instances.
         self.cen_list = cen_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -65,8 +68,11 @@ class DescribeVpcFirewallCenSummaryListResponseBodyCenList(DaraModel):
         cen_name: str = None,
         region_no_list: List[str] = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The name of the CEN instance.
         self.cen_name = cen_name
+        # The list of region IDs for the VPC border firewall.
         self.region_no_list = region_no_list
 
     def validate(self):

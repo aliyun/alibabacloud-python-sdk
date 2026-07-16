@@ -13,12 +13,20 @@ class RunDocSmartCardRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # The name of the custom model.
         self.model_name = model_name
+        # The prompt.
         self.prompt = prompt
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

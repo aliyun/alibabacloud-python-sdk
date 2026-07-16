@@ -16,14 +16,29 @@ class UpdateAppRequest(DaraModel):
         title: str = None,
         worker_id: int = None,
     ):
+        # The access token.
         self.access_token = access_token
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Specifies whether to enable logging.
+        # 
+        # - `true`: Enables logging.
+        # 
+        # - `false`: Disables logging.
         self.enable_log = enable_log
         self.label_route_strategy = label_route_strategy
+        # The task execution queue size.
+        # 
+        # > Sets the maximum number of concurrent task instances in the application group. Additional task instances are queued for execution and not discarded.
         self.max_concurrency = max_concurrency
+        # The title.
+        # 
         # This parameter is required.
         self.title = title
         self.worker_id = worker_id

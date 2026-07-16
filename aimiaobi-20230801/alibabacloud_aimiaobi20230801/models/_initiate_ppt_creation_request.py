@@ -13,9 +13,13 @@ class InitiatePptCreationRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # The outline.
         self.outline = outline
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
         self.workspace_id = workspace_id
 
     def validate(self):

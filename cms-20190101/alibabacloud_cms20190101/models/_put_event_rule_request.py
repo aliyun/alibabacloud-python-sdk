@@ -19,28 +19,30 @@ class PutEventRuleRequest(DaraModel):
         silence_time: int = None,
         state: str = None,
     ):
-        # The description of the event-triggered alert rule.
+        # The description of the Event-triggered Alert Rule.
         self.description = description
+        # The pattern of the Event-triggered Alert Rule.
+        # 
         # This parameter is required.
         self.event_pattern = event_pattern
-        # The type of the event-triggered alert rule. Valid values:
+        # The type of the Event-triggered Alert Rule. Valid values:
         # 
-        # *   SYSTEM: system event-triggered alert rule
-        # *   CUSTOM: custom event-triggered alert rule
+        # - SYSTEM: system event.
+        # - CUSTOM: custom event.
         self.event_type = event_type
-        # The ID of the application group to which the event-triggered alert rule belongs.
+        # The ID of the application group to which the Event-triggered Alert Rule belongs.
         self.group_id = group_id
         self.region_id = region_id
-        # The name of the event-triggered alert rule.
+        # The name of the Event-triggered Alert Rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met. Unit: seconds.
+        # The mute period. Unit: seconds.
         self.silence_time = silence_time
-        # The status of the event-triggered alert rule. Valid values:
+        # The status of the Event-triggered Alert Rule. Valid values:
         # 
-        # *   ENABLED: enabled
-        # *   DISABLED: disabled
+        # - ENABLED: enabled.
+        # - DISABLED: disabled.
         self.state = state
 
     def validate(self):
@@ -124,21 +126,40 @@ class PutEventRuleRequestEventPattern(DaraModel):
         sqlfilter: str = None,
         status_list: List[str] = None,
     ):
-        # The keyword that is used to filter events. If the content of an event contains the specified keyword, an alert is automatically triggered.
+        # The keyword for event filtering. When the event content contains this keyword, an alert is automatically triggered.
         self.custom_filters = custom_filters
-        self.event_type_list = event_type_list
-        self.level_list = level_list
-        self.name_list = name_list
-        # The type of the cloud service. Valid values of N: 1 to 50.
+        # The type of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
         # 
-        # >  You can call the DescribeSystemEventMetaList operation to query the cloud services that support event-triggered alerts. For more information, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
+        # - StatusNotification: fault notification.
+        # 
+        # - Exception: exception.
+        # 
+        # - Maintenance: O&M.
+        # 
+        # - \\*: unlimited.
+        self.event_type_list = event_type_list
+        # The level of the Event-triggered Alert Rule. Valid values of N: 1 to 50. Valid values:
+        # 
+        # - CRITICAL: critical.
+        # 
+        # - WARN: warning.
+        # 
+        # - INFO: information.
+        # 
+        # - \\*: all levels.
+        self.level_list = level_list
+        # The name of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
+        self.name_list = name_list
+        # The Alibaba Cloud service type. Valid values of N: 1 to 50.
+        # 
+        # >For information about the Alibaba Cloud services supported by Event-triggered Alert Rules, see [DescribeSystemEventMetaList](https://help.aliyun.com/document_detail/114972.html).
         # 
         # This parameter is required.
         self.product = product
-        # The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
-        # 
-        # >  The syntax of SQL event filtering is consistent with the query syntax of Log Service.
+        # The SQL filter for events. When the event content meets the SQL condition, an alert is automatically triggered.
+        # > The syntax of the SQL event filter is consistent with the query syntax of Simple Log Service (SLS).
         self.sqlfilter = sqlfilter
+        # The status of the Event-triggered Alert Rule. Valid values of N: 1 to 50.
         self.status_list = status_list
 
     def validate(self):

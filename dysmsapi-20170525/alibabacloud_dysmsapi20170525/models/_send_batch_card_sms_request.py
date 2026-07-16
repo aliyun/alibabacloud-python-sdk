@@ -21,57 +21,63 @@ class SendBatchCardSmsRequest(DaraModel):
         template_code: str = None,
         template_param_json: str = None,
     ):
-        # The code of the message template. You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
-        # 
-        # > Make sure that the message template has been approved.
+        # The code of the card SMS template. On the **Card SMS** [Template Management](https://dysms.console.aliyun.com/domestic/card) page in the console, select the code of a card SMS template that has been **approved**.
         # 
         # This parameter is required.
         self.card_template_code = card_template_code
-        # The variables of the card message template.
+        # The actual values of the variables in the card SMS template. This parameter is required when the card SMS template specified by **CardTemplateCode** contains variables.
+        # 
+        # >If the JSON contains line breaks, handle them based on the standard JSON protocol.
         self.card_template_param_json = card_template_param_json
-        # The code of the digital message template that applies when the card message is rolled back. You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
+        # The code of the digital SMS template used for fallback. This parameter is required when **FallbackType** is set to **DIGITALSMS** (fallback to digital SMS).
         # 
-        # > Make sure that the message template has been approved.
+        # You can view the list of digital SMS templates on the **Domestic Digital SMS** [Template Management](https://dysms.console.aliyun.com/domestic/digit) page in the console.
+        # >The template must be added and approved.
         self.digital_template_code = digital_template_code
-        # The variables of the digital message template.
+        # The actual values of the variables in the digital SMS template. This parameter is required when the fallback digital SMS template specified by **DigitalTemplateCode** contains variables.
+        # >If the JSON contains line breaks, handle them based on the standard JSON protocol.
         self.digital_template_param_json = digital_template_param_json
-        # The rollback type. Valid values:
-        # 
-        # *   **SMS**: text message
-        # *   **DIGITALSMS**: digital message
-        # *   **NONE**: none
+        # The fallback type. Valid values:
+        # - **SMS**: Phone numbers that do not support card SMS messages fall back to text SMS messages.
+        # - **DIGITALSMS**: Phone numbers that do not support card SMS messages fall back to digital SMS messages.
+        # - **NONE**: No fallback is required.
         # 
         # This parameter is required.
         self.fallback_type = fallback_type
-        # The ID that is reserved for the caller of the operation.
+        # The ID reserved for the caller.
         self.out_id = out_id
-        # The mobile numbers of the recipients.
+        # The mobile phone numbers that receive the SMS messages.
         # 
         # This parameter is required.
         self.phone_number_json = phone_number_json
-        # The signature. You can view the template code in the **Signature** column on the **Signaturess** tab of the **Go China** page in the Alibaba Cloud SMS console.
-        # 
-        # > The signatures must be approved and correspond to the mobile numbers in sequence.
+        # The name of the SMS signature.
+        # You can call the [QuerySmsSignList](https://help.aliyun.com/document_detail/419282.html) operation to query the signatures that have been submitted under the current account, or you can view the list of signatures in the [Short Message Service console](https://dysms.console.aliyun.com/domestic/text/sign).
+        # >The signature must be added and approved. The number of SMS signatures must be the same as the number of phone numbers, and the signatures must be in one-to-one correspondence with the phone numbers.
         # 
         # This parameter is required.
         self.sign_name_json = sign_name_json
-        # The code of the text message template that applies when the card message is rolled back. You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
+        # The code of the text SMS template used for fallback. This parameter is required when **FallbackType** is set to **SMS** (fallback to text SMS).
         # 
-        # > Make sure that the message template has been approved.
+        # You can call the [QuerySmsTemplateList](https://help.aliyun.com/document_detail/419288.html) operation to query the templates that have been submitted under the current account, or you can view the list of templates in the [Short Message Service console](https://dysms.console.aliyun.com/domestic/text/template).
+        # >The template must be added and approved.
         self.sms_template_code = sms_template_code
-        # The variables of the text message template.
+        # The actual values of the variables in the text SMS template. This parameter is required when the fallback text SMS template specified by **SmsTemplateCode** contains variables.
+        # 
+        # >If the JSON contains line breaks, handle them based on the standard JSON protocol.
         self.sms_template_param_json = sms_template_param_json
-        # The extension code of the upstream message.
+        # The extension code of the MO (mobile-originated) SMS message.
         self.sms_up_extend_code_json = sms_up_extend_code_json
-        # The code of the message template.
+        # The code of the custom send content template.
         # 
-        # You can log on to the [Alibaba Cloud console](https://dysms.console.aliyun.com/dysms.htm?spm=5176.12818093.categories-n-products.ddysms.3b2816d0xml2NA#/overview), click **Go China** or **Go Globe** in the left-side navigation pane, and then view the **template code** on the **Templates** tab.
+        # The custom content is sent to the terminal in the form of the selected text SMS template plus the card parsing link. You can log on to the [Short Message Service console](https://dysms.console.aliyun.com/overview), choose **Domestic Messages** or **International/Hong Kong, Macao, and Taiwan Messages**, and then view the **Template Code** on the **Template Management** page.
         # 
-        # > You must specify a message template that is created in the SMS console and approved by Alibaba Cloud. If you send messages to countries or regions outside the Chinese mainland, use the corresponding message templates.
+        # > - The template must be added and approved. To send international or Hong Kong, Macao, and Taiwan messages, use an international or Hong Kong, Macao, and Taiwan SMS template.
+        # > - For example, the selected text SMS template content is: You have a message to check; the card parsing link is: `1*.cn/2**d`. The final delivered content is: `You have a message to check 1*.cn/2**d`. Perform testing and control the number of characters before sending.
         self.template_code = template_code
-        # The value of the variable in the message template.
+        # The actual values of the variables in the custom send content template. This parameter is required when the SMS template specified by **TemplateCode** contains variables.
         # 
-        # > If you need to add line breaks to the JSON template, make sure that the format is valid. In addition, the sequence of variable values must be the same as that of the mobile numbers and signatures.
+        # > - If the JSON contains line breaks, handle them based on the standard JSON protocol.
+        # > - The number of template variable values must be the same as the number of phone numbers and signatures, and they must be in one-to-one correspondence. This indicates that an SMS message with the corresponding signature is sent to the specified phone number, and the variable parameters in the SMS template are replaced with the corresponding values.
         self.template_param_json = template_param_json
 
     def validate(self):

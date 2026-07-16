@@ -11,11 +11,11 @@ class ListAckClustersRequest(DaraModel):
         size: int = None,
         vpc_id: str = None,
     ):
-        # The number of the page to return.
+        # The page number. (Deprecated).
         self.page = page
-        # The number of entries to return on each page.
+        # The number of records per page. (Deprecated).
         self.size = size
-        # The ID of the virtual private cloud (VPC) to which the ACK clusters belong.
+        # The ID of the VPC where the ACK cluster resides.
         self.vpc_id = vpc_id
 
     def validate(self):

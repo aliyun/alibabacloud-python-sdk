@@ -13,7 +13,9 @@ class ListScalingConfigsOutput(DaraModel):
         next_token: str = None,
         scaling_configs: List[main_models.ScalingConfigStatus] = None,
     ):
+        # Paging token for the next request.
         self.next_token = next_token
+        # Function scaling configuration information
         self.scaling_configs = scaling_configs
 
     def validate(self):

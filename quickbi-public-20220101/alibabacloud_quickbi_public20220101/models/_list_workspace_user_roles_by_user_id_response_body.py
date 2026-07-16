@@ -14,9 +14,17 @@ class ListWorkspaceUserRolesByUserIdResponseBody(DaraModel):
         result: List[main_models.ListWorkspaceUserRolesByUserIdResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of all workspace role information.
+        # 
         # This parameter is required.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -66,8 +74,11 @@ class ListWorkspaceUserRolesByUserIdResponseBodyResult(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The workspace role information.
         self.role_model = role_model
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -111,8 +122,19 @@ class ListWorkspaceUserRolesByUserIdResponseBodyResultRoleModel(DaraModel):
         role_id: str = None,
         role_name: str = None,
     ):
+        # The code that corresponds to the preset workspace role. This parameter is not returned for custom roles.
         self.role_code = role_code
+        # The workspace role ID. This includes, but is not limited to, the following preset workspace roles:
+        # 
+        # - 25: Workspace Admin (preset role)
+        # 
+        # - 26: Workspace Developer (preset role)
+        # 
+        # - 27: Workspace Analyst (preset role)
+        # 
+        # - 30: Workspace Viewer (preset role)
         self.role_id = role_id
+        # The name of the workspace role.
         self.role_name = role_name
 
     def validate(self):

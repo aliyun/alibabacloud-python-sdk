@@ -13,7 +13,9 @@ class SearchMemoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.SearchMemoriesResponseBodyResults] = None,
     ):
+        # The unique request ID.
         self.request_id = request_id
+        # An array of search results.
         self.results = results
 
     def validate(self):
@@ -62,13 +64,21 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         score: str = None,
         update_time: str = None,
     ):
+        # The creation time of the memory.
         self.create_time = create_time
+        # The unique ID of the memory.
         self.id = id
+        # The content of the memory.
         self.memory = memory
+        # The agent ID that owns the memory.
         self.memory_agent_id = memory_agent_id
+        # The user ID that owns the memory.
         self.memory_user_id = memory_user_id
+        # Additional metadata associated with the memory.
         self.metadata = metadata
+        # The relevance score of the result.
         self.score = score
+        # The update time of the memory.
         self.update_time = update_time
 
     def validate(self):

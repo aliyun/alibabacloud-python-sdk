@@ -13,9 +13,9 @@ class DescribeUserBackupMachinesResponseBody(DaraModel):
         machines: List[main_models.DescribeUserBackupMachinesResponseBodyMachines] = None,
         request_id: str = None,
     ):
-        # An array consisting of the servers to which the anti-ransomware policy is applied.
+        # The information about servers that have backup policies enabled.
         self.machines = machines
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeUserBackupMachinesResponseBodyMachines(DaraModel):
         policy_name: str = None,
         uuid: str = None,
     ):
-        # The ID of the anti-ransomware policy that is applied to the server.
+        # The ID of the policy enabled on the server.
         self.id = id
-        # The name of the anti-ransomware policy that is applied to the server.
+        # The name of the policy enabled on the server.
         self.policy_name = policy_name
-        # The UUID of the server to which the anti-ransomware policy is applied.
+        # The UUID of the server that has a backup policy enabled.
         self.uuid = uuid
 
     def validate(self):

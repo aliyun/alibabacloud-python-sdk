@@ -10,8 +10,13 @@ class CancelAsyncTaskRequest(DaraModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The unique ID of the task.
+        # 
+        # > The system automatically generates the TaskId. This parameter does not need to be specified. If subsequent tasks use the same TaskId, they are grouped into the same conversation.
         self.task_id = task_id
 
     def validate(self):

@@ -16,10 +16,15 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of parameters.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -105,32 +110,68 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
+        # Indicates whether cancellation is allowed. Valid values:
+        # 
+        # - **0**: Not allowed.
+        # - **1**: Allowed.
         self.allow_cancel = allow_cancel
+        # Indicates whether modification is allowed. Valid values:
+        # 
+        # - **0**: Not allowed.
+        # - **1**: Allowed.
         self.allow_change = allow_change
+        # The change level. This parameter can be ignored.
         self.change_level = change_level
+        # The change level in English.
         self.change_level_en = change_level_en
+        # The change level in Chinese.
         self.change_level_zh = change_level_zh
+        # The creation time.
         self.created_time = created_time
+        # The current availability zone.
         self.current_avz = current_avz
+        # The database type.
         self.db_type = db_type
+        # The database version.
         self.db_version = db_version
+        # The deadline.
         self.deadline = deadline
+        # The task ID.
         self.id = id
+        # The impact. This parameter is not returned.
         self.impact = impact
+        # The impact description in English.
         self.impact_en = impact_en
+        # The impact description in Chinese.
         self.impact_zh = impact_zh
+        # The description.
         self.ins_comment = ins_comment
+        # The instance name.
         self.ins_name = ins_name
+        # The modification time.
         self.modified_time = modified_time
+        # The preparation interval.
         self.prepare_interval = prepare_interval
+        # The region.
         self.region = region
+        # The result information. This parameter can be ignored.
         self.result_info = result_info
+        # The start time.
         self.start_time = start_time
+        # The status. Valid values:
+        # 
+        # - **3**: Pending. 
+        # - **4**: Running.
         self.status = status
+        # The list of child instances.
         self.sub_ins_names = sub_ins_names
+        # The switchover time.
         self.switch_time = switch_time
+        # The task type.
         self.task_type = task_type
+        # The task type in English. This parameter can be ignored.
         self.task_type_en = task_type_en
+        # The task type in Chinese. This parameter can be ignored.
         self.task_type_zh = task_type_zh
 
     def validate(self):

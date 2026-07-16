@@ -13,7 +13,9 @@ class DescribeCrossCloudRegionMappingToAliyunResponseBody(DaraModel):
         cross_cloud_region_mapping_list: List[main_models.DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMappingList] = None,
         request_id: str = None,
     ):
+        # The list of cross-cloud region mappings.
         self.cross_cloud_region_mapping_list = cross_cloud_region_mapping_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeCrossCloudRegionMappingToAliyunResponseBodyCrossCloudRegionMapping
         cloud_provider: str = None,
         cross_cloud_region_id: str = None,
     ):
+        # The region ID of Alibaba Cloud.
         self.aliyun_region_id = aliyun_region_id
+        # The cloud provider.
         self.cloud_provider = cloud_provider
+        # The region ID of the third-party cloud.
         self.cross_cloud_region_id = cross_cloud_region_id
 
     def validate(self):

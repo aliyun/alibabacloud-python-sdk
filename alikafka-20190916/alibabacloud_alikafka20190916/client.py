@@ -21,6 +21,38 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'alikafka.us-west-1.aliyuncs.com',
+            'us-east-1': 'alikafka.us-east-1.aliyuncs.com',
+            'na-south-1': 'alikafka.na-south-1.aliyuncs.com',
+            'me-east-1': 'alikafka.me-east-1.aliyuncs.com',
+            'me-central-1': 'alikafka.me-central-1.aliyuncs.com',
+            'eu-west-1': 'alikafka.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'alikafka.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'alikafka.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'alikafka.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'alikafka.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'alikafka.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'alikafka.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'alikafka.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'alikafka.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'alikafka.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'alikafka.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'alikafka.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'alikafka.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'alikafka.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'alikafka.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'alikafka.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'alikafka.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'alikafka.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'alikafka.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-5': 'alikafka.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'alikafka.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'alikafka.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'alikafka.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-2': 'alikafka.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'alikafka.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('alikafka', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

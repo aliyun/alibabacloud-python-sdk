@@ -24,50 +24,75 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         status: int = None,
         task_type: str = None,
     ):
-        # Specifies whether to allow the cancellation operation. Valid values:
+        # Specifies whether the task can be canceled. Valid values:
         # 
-        # *   **0**: The cancellation operation is not allowed.
-        # *   **1**: The cancellation operation is allowed.
+        # - **-1** (default): returns all tasks.
+        # 
+        # - **0**: returns only tasks that cannot be canceled.
+        # 
+        # - **1**: returns only tasks that can be canceled.
         self.allow_cancel = allow_cancel
-        # Specifies whether to allow the modification operation. Valid values:
+        # Specifies whether the time can be changed. Valid values:
         # 
-        # *   **0**: The modification operation is not allowed.
-        # *   **1**: The modification operation is allowed.
+        # - **-1** (default): returns all tasks.
+        # 
+        # - **0**: returns only tasks whose time cannot be changed.
+        # 
+        # - **1**: returns only tasks whose time can be changed.
         self.allow_change = allow_change
-        # The type of task configuration change. Valid values:
+        # The level of the task. Valid values:
         # 
-        # *   **all** (default): The configurations of all O\\&M tasks are changed.
-        # *   **S0**: The configurations of tasks initiated to fix exceptions are changed.
-        # *   **S1**: The configurations of system O\\&M tasks are changed.
+        # - **all** (default): returns all tasks.
+        # 
+        # - **S0**: returns tasks for exception fixing.
+        # 
+        # - **S1**: returns tasks for system O\\&M.
         self.change_level = change_level
-        # The type of the database engine.
+        # The database type. Default value: **all**.
         self.db_type = db_type
-        # The name of the instance.
+        # The name of the instance. This parameter is optional. You can specify only one instance name.
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Specify the parameter to a positive integer that is greater than **0**. Default value: **1**.
+        # The page number. The value must be greater than **0**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The ID of the service.
+        # The product name. For MongoDB instances, set this parameter to **MongoDB**.
         self.product_id = product_id
-        # The region ID of the instance.
+        # The ID of the region where the pending event is located. Call the DescribeRegions operation to obtain the region ID.
         # 
-        # >  If you set the Region parameter to **all**, all tasks created within your Alibaba Cloud account are queried. In this case, you must set the **taskType** parameter to **all**.
+        # > A value of **all** indicates all region IDs.
         self.region = region
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The status of the task. Valid values:
+        # The task status. This parameter filters the returned tasks.
         # 
-        # *   **0**: waiting for execution
-        # *   **1**: being executed
-        # *   **2**: successful
-        # *   **3**: failed
+        # - **-1**: all tasks.
+        # 
+        # - **3**: pending tasks.
+        # 
+        # - **4**: running tasks.
+        # 
+        # - **5**: successfully completed tasks.
+        # 
+        # - **6**: failed tasks.
+        # 
+        # - **7**: canceled tasks.
         self.status = status
-        # The task type.
+        # The task type. Valid values:
+        # 
+        # - **rds_apsaradb_ha**: primary-secondary node switchover.
+        # 
+        # - **rds_apsaradb_transfer**: instance migration.
+        # 
+        # - **rds_apsaradb_upgrade**: minor version upgrade.
+        # 
+        # - **rds_apsaradb_maxscale**: proxy minor version upgrade.
+        # 
+        # - **all**: all task types.
         self.task_type = task_type
 
     def validate(self):

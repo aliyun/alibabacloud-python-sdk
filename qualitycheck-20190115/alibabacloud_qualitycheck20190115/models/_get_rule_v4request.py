@@ -9,6 +9,8 @@ class GetRuleV4Request(DaraModel):
         self,
         rule_id: int = None,
     ):
+        # Rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

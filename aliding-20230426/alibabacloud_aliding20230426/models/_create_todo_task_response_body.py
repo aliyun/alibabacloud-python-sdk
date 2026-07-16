@@ -50,7 +50,6 @@ class CreateTodoTaskResponseBody(DaraModel):
         self.notify_configs = notify_configs
         self.participant_ids = participant_ids
         self.priority = priority
-        # requestId
         self.request_id = request_id
         self.source = source
         self.source_id = source_id
@@ -285,9 +284,7 @@ class CreateTodoTaskResponseBodyContentFieldList(DaraModel):
         field_key: str = None,
         field_value: str = None,
     ):
-        # fieldKey
         self.field_key = field_key
-        # fieldValue
         self.field_value = field_value
 
     def validate(self):

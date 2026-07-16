@@ -13,8 +13,12 @@ class UpsertQualityScheduleRequest(DaraModel):
         op_tenant_id: int = None,
         upsert_command: main_models.UpsertQualityScheduleRequestUpsertCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.upsert_command = upsert_command
 
@@ -63,20 +67,58 @@ class UpsertQualityScheduleRequestUpsertCommand(DaraModel):
         validate_partition_type: str = None,
         watch_id: int = None,
     ):
+        # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
+        # The ID of the schedule resource. If specified, the operation updates the existing resource. If not specified, the operation creates a new resource.
         self.id = id
+        # The name of the schedule resource.
+        # 
         # This parameter is required.
         self.name = name
+        # The partition expression for custom expressions.
         self.partition_expression = partition_expression
+        # The partition type. Valid values:
+        # - EVERY_DAY: every day.
+        # - PRE_DAY: previous day.
+        # - TODAY: current day.
+        # - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
+        # - CUSTOM: custom.
         self.partition_type = partition_type
+        # The scheduling interval type for timed scheduling. Valid values:
+        # - DAILY: day.
+        # - WEEKLY: week.
+        # - MONTHLY: month.
+        # - HOURLY: hour.
+        # - MINUTELY: minute.
         self.period_schedule_interval_type = period_schedule_interval_type
+        # The scheduling interval values for timed scheduling.
         self.period_schedule_param_list = period_schedule_param_list
+        # The trigger method for fixed task triggers. Valid values:
+        # - ALL_TASKS_FINISHED
+        # - ONE_TASKS_FINISHED
+        # - PRE_ONE_TASKS_START.
         self.static_task_trigger_type = static_task_trigger_type
+        # The checklist of trigger nodes for trigger scheduling.
         self.trigger_node_list = trigger_node_list
+        # The trigger method for trigger scheduling. Valid values:
+        # - STATIC_TASK_TRIGGER: fixed task trigger.
+        # - CODE_CHECK_TRIGGER: code check trigger.
         self.trigger_type = trigger_type
+        # The scheduling type. Valid values:
+        # - PERIOD_SCHEDULE: timed scheduling.
+        # - MANUAL_SCHEDULE: manual trigger.
+        # - CODE_CHECK_TRIGGER: code check trigger.
+        # - STATIC_TASK_TRIGGER: fixed task trigger.
+        # - DEPENDENCY_SCHEDULE: dependency scheduling.
+        # 
         # This parameter is required.
         self.type = type
+        # The validation scope. Valid values:
+        # - TASK_REFERRED_PARTITION: task update partition.
+        # - USER_DEFINED_PARTITION: custom partition.
         self.validate_partition_type = validate_partition_type
+        # The ID of the monitored object.
+        # 
         # This parameter is required.
         self.watch_id = watch_id
 

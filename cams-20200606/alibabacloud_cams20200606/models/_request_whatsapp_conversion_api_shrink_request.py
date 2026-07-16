@@ -14,11 +14,16 @@ class RequestWhatsappConversionApiShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The space ID or instance ID of the customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The PageId of Meta.
+        # 
         # This parameter is required.
         self.page_id = page_id
+        # The request data.
         self.request_data_shrink = request_data_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

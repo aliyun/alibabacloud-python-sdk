@@ -17,12 +17,21 @@ class BatchUpdateFileTagResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The response code. A value of Success indicates that the call was successful.
         self.code = code
+        # The data returned by the operation.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code returned for the request.
         self.status = status
+        # Indicates whether the request was accepted. Check `UpdateFileTagResultList` for the status of each file. Valid values:
+        # 
+        # - true: The request was accepted.
+        # 
+        # - false: The request failed, for example, due to an invalid parameter.
         self.success = success
 
     def validate(self):
@@ -82,6 +91,7 @@ class BatchUpdateFileTagResponseBodyData(DaraModel):
         self,
         update_file_tag_result_list: List[main_models.BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList] = None,
     ):
+        # A list of the tag update results.
         self.update_file_tag_result_list = update_file_tag_result_list
 
     def validate(self):
@@ -120,9 +130,17 @@ class BatchUpdateFileTagResponseBodyDataUpdateFileTagResultList(DaraModel):
         file_id: str = None,
         success: bool = None,
     ):
+        # The error code. This parameter is returned only if Success is false.
         self.error_code = error_code
+        # The error message. This parameter is returned only if Success is false.
         self.error_message = error_message
+        # The file ID.
         self.file_id = file_id
+        # Indicates whether the tags for the specific file were updated. Valid values:
+        # 
+        # - true: The tags were updated successfully.
+        # 
+        # - false: The tag update failed.
         self.success = success
 
     def validate(self):

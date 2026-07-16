@@ -18,7 +18,7 @@ class DeletePortRangeListRequest(DaraModel):
         self.owner_id = owner_id
         # The ID of the port list.
         # 
-        # >  If the port list is associated with other resources, you cannot delete the port list. You must disassociate the port list from the resources and then delete the port list.
+        # > If the port list is associated with other resources, you cannot delete the port list. You must disassociate the port list from the resources and then delete the port list.
         # 
         # This parameter is required.
         self.port_range_list_id = port_range_list_id

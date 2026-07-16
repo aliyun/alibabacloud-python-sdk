@@ -12,8 +12,11 @@ class CancelAgentSessionRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.CancelAgentSessionRequestParams = None,
     ):
+        # The ID passed by the requester. The value is returned as-is in the response.
         self.id = id
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
+        # The business parameters of the request.
         self.params = params
 
     def validate(self):
@@ -55,6 +58,7 @@ class CancelAgentSessionRequestParams(DaraModel):
         self,
         session_id: str = None,
     ):
+        # The ID of the session to cancel. This parameter is required.
         self.session_id = session_id
 
     def validate(self):

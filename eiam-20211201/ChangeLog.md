@@ -1,3 +1,90 @@
+2026-07-15 Version: 2.17.3
+- Update API GenerateOauthToken: add request parameters GrantType.
+- Update API GenerateOauthToken: add request parameters RequestedTokenType.
+- Update API GenerateOauthToken: add request parameters SubjectToken.
+- Update API GenerateOauthToken: add request parameters SubjectTokenType.
+- Update API GenerateOauthToken: add response parameters Body.TokenResponse.IssuedTokenType.
+
+
+2026-07-10 Version: 2.17.2
+- Update API CreateApplicationFederatedCredential: add request parameters OidcVerificationConfig.
+- Update API CreateApplicationFederatedCredential: add request parameters Pkcs7VerificationConfig.
+- Update API CreateApplicationFederatedCredential: add request parameters VerificationMode.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.OidcVerificationConfig.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.Pkcs7VerificationConfig.
+- Update API GetApplicationFederatedCredential: add response parameters Body.ApplicationFederatedCredential.VerificationMode.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.OidcVerificationConfig.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.Pkcs7VerificationConfig.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.VerificationCondition.
+- Update API ListApplicationFederatedCredentials: add response parameters Body.ApplicationFederatedCredentials.$.VerificationMode.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.OidcVerificationConfig.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.Pkcs7VerificationConfig.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.VerificationCondition.
+- Update API ListApplicationFederatedCredentialsForProvider: add response parameters Body.ApplicationFederatedCredentials.$.VerificationMode.
+- Update API ListApplications: add request parameters ManagedServiceCode.
+- Update API ListApplications: add request parameters ServiceManaged.
+- Update API UpdateApplicationFederatedCredential: add request parameters OidcVerificationConfig.
+- Update API UpdateApplicationFederatedCredential: add request parameters Pkcs7VerificationConfig.
+
+
+2026-07-02 Version: 2.17.1
+- Update API GetCloudAccount: add response parameters Body.CloudAccount.CloudAccountSite.
+- Update API ListCloudAccounts: add response parameters Body.CloudAccounts.$.CloudAccountSite.
+
+
+2026-06-23 Version: 2.17.0
+- Support API GetAuthorizationServer.
+- Support API ListAuthorizationServers.
+- Support API UpdateAuthorizationServer.
+- Support API UpdateAuthorizationServerDescription.
+
+
+2026-06-16 Version: 2.16.1
+- Update API GetInstance: add response parameters Body.Instance.CrossRegionReplication.
+- Update API GetInstance: add response parameters Body.Instance.CrossRegionReplicationRole.
+- Update API GetInstance: add response parameters Body.Instance.InstanceFailoverStatus.
+- Update API GetInstance: add response parameters Body.Instance.ReplicationConfiguration.
+- Update API ListInstances: add request parameters CrossRegionReplication.
+- Update API ListInstances: add response parameters Body.Instances.$.CrossRegionReplication.
+- Update API ListInstances: add response parameters Body.Instances.$.CrossRegionReplicationRole.
+- Update API ListInstances: add response parameters Body.Instances.$.InstanceFailoverStatus.
+- Update API ListInstances: add response parameters Body.Instances.$.ReplicationConfiguration.
+
+
+2026-06-08 Version: 2.16.0
+- Support API ListResourceServerScopes.
+
+
+2026-06-08 Version: 2.16.0
+- Support API ListResourceServerScopes.
+
+
+2026-06-04 Version: 2.15.12
+- Update API ListInstances: add request parameters Edition.
+
+
+2026-06-04 Version: 2.15.12
+- Update API ListInstances: add request parameters Edition.
+
+
+2026-05-29 Version: 2.15.11
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantAssertionsSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantResponseSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+
+
+2026-05-29 Version: 2.15.11
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API CreateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantAssertionsSigned.
+- Update API GetIdentityProvider: add response parameters Body.IdentityProviderDetail.SamlConfig.WantResponseSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantAssertionsSigned.
+- Update API UpdateIdentityProvider: add request parameters SamlConfig.WantResponseSigned.
+
+
 2026-05-20 Version: 2.15.10
 - Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.MimApplicationLicenseStatus.
 - Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PrepaidActiveUserNumber.

@@ -14,11 +14,11 @@ class DescribeNetworkPackagesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The premium bandwidth plans.
+        # The list of premium Internet bandwidth plans.
         self.network_packages = network_packages
-        # The token that is used to start the next query. If the value of this parameter is empty, all results are returned.
+        # The token for the next query. If NextToken is empty, no more results exist.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,121 +79,54 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         reservation_active_time: str = None,
         reservation_bandwidth: int = None,
         reservation_internet_charge_type: str = None,
+        tags: List[main_models.DescribeNetworkPackagesResponseBodyNetworkPackagesTags] = None,
     ):
-        # The bandwidth provided by the premium bandwidth plan. Unit: Mbit/s.
+        # The bandwidth of the premium Internet bandwidth plan. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The business status.
-        # 
-        # Valid values:
-        # 
-        # *   Expired
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Normal
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.business_status = business_status
-        # The time when the premium bandwidth plan was created.
+        # The creation time.
         self.create_time = create_time
-        # The public egress IP address of the premium bandwidth plan.
+        # The public egress IP address of the premium Internet bandwidth plan.
         self.eip_addresses = eip_addresses
-        # The time when the premium bandwidth plan expires.
+        # The expiration time of the premium Internet bandwidth plan.
         # 
-        # *   If the plan is a subscription one, the time when the plan expires is returned.
-        # *   If the plan is a pay-as-you-go one, `2099-12-31T15:59:59Z` is returned.
+        # - If the plan uses the subscription billing method, the actual expiration time is returned.
+        # - If the plan uses the pay-as-you-go billing method, `2099-12-31T15:59:59Z` is returned.
         self.expired_time = expired_time
-        # The charge type of the premium bandwidth plan.
+        # The billing method of the premium Internet bandwidth plan.
         # 
-        # *   Valid value when the `PayType` parameter is set to `PrePaid`:
-        # 
-        #     *   PayByBandwidth: charges by fixed bandwidth.
-        # 
-        # *   Valid values when the `PayType` parameter is set to `PostPaid`:
-        # 
-        #     *   PayByTraffic: charges by data transfer.
-        #     *   PayByBandwidth: charges by fixed bandwidth.
+        # - If the parameter `PayType` is set to `PrePaid`, valid values:
+        #     - PayByBandwidth: pay-by-bandwidth.
+        # - If the parameter `PayType` is set to `PostPaid`, valid values:
+        #     - PayByTraffic: pay-by-data-transfer.
+        #     - PayByBandwidth: pay-by-bandwidth.
         self.internet_charge_type = internet_charge_type
-        # The ID of the premium bandwidth plan.
+        # The ID of the premium Internet bandwidth plan.
         self.network_package_id = network_package_id
-        # The status of the premium bandwidth plan.
-        # 
-        # Valid values:
-        # 
-        # *   Creating
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Released
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   InUse
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Releasing
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the premium Internet bandwidth plan.
         self.network_package_status = network_package_status
         # The office network ID.
         self.office_site_id = office_site_id
         # The office network name.
         self.office_site_name = office_site_name
-        # The type of the office network.
-        # 
-        # Valid values:
-        # 
-        # *   standard: advanced office network
-        # *   customized: custom office network
-        # *   basic: basic office network
+        # The office network type.
         self.office_site_vpc_type = office_site_vpc_type
-        # The billing method of the premium bandwidth plan.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go
-        # *   PrePaid: subscription
+        # The billing method.
         self.pay_type = pay_type
-        # The time when the reserved network bandwidth took effect.
+        # The effective period of the reserved network bandwidth.
         self.reservation_active_time = reservation_active_time
-        # The peak bandwidth that is reserved for the premium bandwidth plan. Unit: Mbit/s.
+        # The peak reserved network bandwidth. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
         # The billing method of the reserved network bandwidth.
-        # 
-        # Valid values:
-        # 
-        # *   PayByTraffic: charges by data transfer.
-        # 
-        # *   PayByBandwidth: charges by fixed bandwidth.
         self.reservation_internet_charge_type = reservation_internet_charge_type
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -245,6 +178,11 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
         if self.reservation_internet_charge_type is not None:
             result['ReservationInternetChargeType'] = self.reservation_internet_charge_type
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -293,6 +231,47 @@ class DescribeNetworkPackagesResponseBodyNetworkPackages(DaraModel):
 
         if m.get('ReservationInternetChargeType') is not None:
             self.reservation_internet_charge_type = m.get('ReservationInternetChargeType')
+
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.DescribeNetworkPackagesResponseBodyNetworkPackagesTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeNetworkPackagesResponseBodyNetworkPackagesTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

@@ -17,7 +17,7 @@ class ListIndicesResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code.
         self.code = code
         # The returned data.
         self.data = data
@@ -25,12 +25,11 @@ class ListIndicesResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the operation was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -95,11 +94,11 @@ class ListIndicesResponseBodyData(DaraModel):
     ):
         # The list of knowledge bases.
         self.indices = indices
-        # The specified page number.
+        # The page number returned.
         self.page_number = page_number
-        # The specified number of documents on each page.
+        # The number of entries per page returned.
         self.page_size = page_size
-        # The total number of knowledge bases returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -169,67 +168,98 @@ class ListIndicesResponseBodyDataIndices(DaraModel):
         source_type: str = None,
         structure_type: str = None,
     ):
-        # The estimated length of chunks. Valid values: [1-2048].
+        # The estimated chunk length. Valid values: 1 to 2048.
         self.chunk_size = chunk_size
+        # The configuration mode used by this knowledge base. Valid values:
+        # - recommend: recommended configuration.
+        # - user-defined: custom configuration.
         self.confg_model = confg_model
         # The description of the knowledge base.
         self.description = description
-        # The list of the primary key IDs of the documents.
+        # The list of file IDs.
         self.document_ids = document_ids
         # The name of the embedding model. Valid values:
         # 
-        # *   text-embedding-v2
+        # <props="china">
+        # 
+        # - text-embedding-v4: the text-embedding-v4 model.
+        # - text-embedding-v3: the text-embedding-v3 model.
+        # - text-embedding-v2: the text-embedding-v2 model.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - text-embedding-v2: the text-embedding-v2 model.
+        # 
+        # .
         self.embedding_model_name = embedding_model_name
+        # Indicates whether <props="china">[multi-turn conversation rewriting](https://help.aliyun.com/model-studio/use-cases/rag-optimization#b7031e2ad6cji)<props="intl">[multi-turn conversation rewriting](https://www.alibabacloud.com/help/model-studio/use-cases/rag-optimization#b7031e2ad6cji) is enabled for this knowledge base. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_rewrite = enable_rewrite
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         self.id = id
         # The name of the knowledge base.
         self.name = name
-        # The overlap length. Valid values: [0-1024].
+        # The chunk overlap length. Valid values: 0 to 1024.
         self.overlap_size = overlap_size
-        # Similarity Threshold Valid values: [0.01-1.00].
+        # The similarity threshold. Valid values: 0.01 to 1.00.
         self.rerank_min_score = rerank_min_score
-        # The name of the rank model. Valid values:
+        # The name of the rerank model. Valid values:
         # 
-        # *   gte-rerank-hybrid
-        # *   gte-rerank
+        # <props="china">
+        # 
+        # - qwen3-rerank-hybrid: qwen3-rerank (hybrid) reranking.
+        # - qwen3-rerank: qwen3-rerank reranking.
+        # - gte-rerank-hybrid: gte-rerank (hybrid) reranking.
+        # - gte-rerank: gte-rerank reranking.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - gte-rerank-hybrid: official reranking.
+        # - gte-rerank: gte-rerank reranking.
+        # 
+        # .
         self.rerank_model_name = rerank_model_name
-        # The clause identifier. Separate multiple clause identifiers with |. Valid values:
-        # 
-        # *   \\n: line break
-        # *   ，: Chinese comma
-        # *   ,: English comma
-        # *   。 : Chinese full stop
-        # *   .: English full stop
-        # *   ！ : Chinese exclamation point
-        # *   ! : English exclamation point
-        # *   ；: Chinese semicolon
-        # *   ;: English semicolon
-        # *   ？ : Chinese question mark
-        # *   ?: English question mark
+        # The sentence separator. If multiple separators are used, they are separated by |. Valid values:
+        # - \\
+        # : line break
+        # - ，: Chinese comma
+        # - ,: English comma
+        # - 。: Chinese period
+        # - .: English period
+        # - ！: Chinese exclamation mark
+        # - !: English exclamation mark
+        # - ；: Chinese semicolon
+        # - ;: English semicolon
+        # - ？: Chinese question mark
+        # - ?: English question mark.
         self.separator = separator
-        # The ID of the vector storage instance.
+        # The instance ID of the vector storage for the knowledge base.
         self.sink_instance_id = sink_instance_id
-        # The region of the vector storage instance.
+        # The region of the vector storage instance for the knowledge base.
         self.sink_region = sink_region
         # The vector storage type of the knowledge base. Valid values:
-        # 
-        # *   ES: Built-in vector database.
-        # *   BUILT_IN: Built-in vector database.
-        # *   ADB: AnalyticDB for PostgreSQL database.
+        # - ES: built-in vector database.
+        # - BUILT_IN: built-in vector database.
+        # - ADB: AnalyticDB for PostgreSQL database.
         self.sink_type = sink_type
-        # The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For unstructured knowledge base, possible values:
+        # The data type of Alibaba Cloud Model Studio <props="china">[application data](https://bailian.console.aliyun.com/?tab=app#/data-center)<props="intl">[application data](https://modelstudio.console.alibabacloud.com/?tab=app#/data-center).
         # 
-        # *   DATA_CENTER_CATEGORY: The category type.
-        # *   DATA_CENTER_FILE: The document type.
         # 
-        # For structured knowledge base, possible values:
+        # For document search<props="china">/audio and video search knowledge bases, valid values:
+        # - DATA_CENTER_CATEGORY: category type.
+        # - DATA_CENTER_FILE: file type.
         # 
-        # *   DATA_CENTER_STRUCTURED_TABLE: The data table type.
+        # For data query/image Q&A knowledge bases, valid values:
+        # - DATA_CENTER_STRUCTURED_TABLE: data table type.
         self.source_type = source_type
-        # The vector storage type of the knowledge base. Valid values:
+        # The type of the knowledge base. Valid values:
         # 
-        # *   UNSTRUCTURED
+        # - UNSTRUCTURED: document search.
         self.structure_type = structure_type
 
     def validate(self):

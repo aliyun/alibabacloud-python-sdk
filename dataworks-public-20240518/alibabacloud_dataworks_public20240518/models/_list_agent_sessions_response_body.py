@@ -13,8 +13,9 @@ class ListAgentSessionsResponseBody(DaraModel):
         json_rpc_response: main_models.ListAgentSessionsResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC response.
         self.json_rpc_response = json_rpc_response
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,8 +53,11 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentSessionsResponseBodyJsonRpcResponseResult = None,
     ):
+        # The ID provided in the request. This value is returned unmodified.
         self.id = id
+        # The JSON-RPC version. The value is always `2.0`.
         self.jsonrpc = jsonrpc
+        # The paginated results of the session query.
         self.result = result
 
     def validate(self):
@@ -98,9 +102,13 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResult(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # A list of sessions.
         self.agent_sessions = agent_sessions
+        # The number of entries returned on the current page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. To retrieve the first page, use the value `1`.
         self.next_token = next_token
+        # The total number of sessions that match the query.
         self.total_count = total_count
 
     def validate(self):
@@ -159,11 +167,17 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessions(DaraModel)
         session_title: str = None,
         session_updated_at: int = None,
     ):
+        # DataWorks-specific session metadata. This field is not part of the standard ACP protocol.
         self.meta = meta
+        # The time the session was created.
         self.session_created_at = session_created_at
+        # The session description.
         self.session_description = session_description
+        # The unique session ID.
         self.session_id = session_id
+        # The session title.
         self.session_title = session_title
+        # The time the session was last modified.
         self.session_updated_at = session_updated_at
 
     def validate(self):
@@ -225,8 +239,11 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMeta(DaraMo
         session_status: str = None,
         session_tag_list: List[main_models.ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSessionTagList] = None,
     ):
+        # The source of the session.
         self.session_source = session_source
+        # The session status.
         self.session_status = session_status
+        # A list of session tags.
         self.session_tag_list = session_tag_list
 
     def validate(self):
@@ -274,6 +291,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResultAgentSessionsMetaSession
         self,
         session_tag_code: str = None,
     ):
+        # A tag for the session, which can be used for filtering. For example, if your application has its own user accounts but calls the API through a single service account, you can pass your application\\"s user ID as a tag. This allows you to filter sessions by your internal users.
         self.session_tag_code = session_tag_code
 
     def validate(self):

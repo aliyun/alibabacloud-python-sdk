@@ -12,7 +12,9 @@ class CdcYamlArtifact(DaraModel):
         additional_dependencies: List[str] = None,
         cdc_yaml: str = None,
     ):
+        # Full URL paths to the additional dependencies.
         self.additional_dependencies = additional_dependencies
+        # Code for the data ingestion job.
         self.cdc_yaml = cdc_yaml
 
     def validate(self):

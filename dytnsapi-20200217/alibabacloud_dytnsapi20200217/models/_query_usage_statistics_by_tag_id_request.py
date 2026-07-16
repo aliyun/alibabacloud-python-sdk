@@ -16,14 +16,14 @@ class QueryUsageStatisticsByTagIdRequest(DaraModel):
         resource_owner_id: int = None,
         tag_id: int = None,
     ):
-        # The beginning of the time range to query.
+        # The start time of the query.
         self.begin_time = begin_time
-        # The end of the time range to query.
+        # The end time of the query.
         self.end_time = end_time
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

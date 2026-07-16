@@ -11,7 +11,9 @@ class CreateAIDBClusterTaskResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The instance ID of the generated model service.
         self.dbcluster_id = dbcluster_id
+        # The order ID.
         self.order_id = order_id
         # Id of the request
         self.request_id = request_id

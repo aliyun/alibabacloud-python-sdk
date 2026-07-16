@@ -16,12 +16,15 @@ class ListAuthorizationRulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # 分页查询时每页行数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token returned by this call. Use it in the next call to retrieve the next page of results.
         self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -93,31 +96,51 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # 授权资源范围，枚举值：global（项目下所有资源）、custom（指定资源）。
+        # The scope of resources to authorize. Valid values:
+        # 
+        # - global: global resources in the project
+        # 
+        # - custom: resources in a specific project
         self.authorization_resource_scope = authorization_resource_scope
-        # 授权规则的创建类型，枚举类型：user_created（用户创建)，approval_created（审批创建)。
+        # The type of authorization rule creation. Valid values:
+        # 
+        # - system_init: created by the system
+        # 
+        # - user_custom: created by a user
         self.authorization_rule_creation_type = authorization_rule_creation_type
-        # 授权规则标识。
+        # The ID of the authorization rule.
         self.authorization_rule_id = authorization_rule_id
-        # 授权规则名称。
+        # The name of the authorization rule.
         self.authorization_rule_name = authorization_rule_name
-        # 授权规则主体ID，主体类型对应的主体ID。
+        # The ID of the subject associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
-        # 授权规则主体范围，枚举类型：shared（共享型，即支持所有主体，包括账户、应用），exclusive（专属类型）
+        # The scope of subjects for the authorization rule. Valid values:
+        # 
+        # - shared: applies to all subjects, such as accounts and applications
+        # 
+        # - exclusive: applies only to a specific subject
         self.authorization_rule_subject_scope = authorization_rule_subject_scope
-        # 授权规则主体类型，枚举类型：application（应用)，user（账户)。
+        # The type of subject associated with the authorization rule. This parameter takes effect only when AuthorizationRuleSubjectScope is exclusive. Valid values:
+        # 
+        # - application
+        # 
+        # - user
         self.authorization_rule_subject_type = authorization_rule_subject_type
-        # 创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the authorization rule was created, in Unix timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # 授权规则描述，长度限制为128字符。
+        # The description of the authorization rule.
         self.description = description
-        # 实例ID。
+        # The ID of the instance.
         self.instance_id = instance_id
-        # 授权规则关联的项目标识。
+        # The ID of the project associated with the authorization rule.
         self.project_id = project_id
-        # 授权规则状态，枚举值：enabled（启用）、disabled（禁用）。
+        # The status of the authorization rule. Valid values:
+        # 
+        # - enabled
+        # 
+        # - disabled
         self.status = status
-        # 最近一次更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the authorization rule was last updated, in Unix timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

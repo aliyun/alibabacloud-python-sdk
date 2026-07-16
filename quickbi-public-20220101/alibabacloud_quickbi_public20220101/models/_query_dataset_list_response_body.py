@@ -14,14 +14,15 @@ class QueryDatasetListResponseBody(DaraModel):
         result: main_models.QueryDatasetListResponseBodyResult = None,
         success: bool = None,
     ):
-        # The keyword used to search for the dataset name.
+        # The request ID.
         self.request_id = request_id
-        # Test dataset
+        # The paged results of the dataset list. The details of the datasets are returned in the Data parameter.
         self.result = result
-        # Whether to recursively wrap the dataset in the subdirectory. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: returns datasets in all recursive subdirectories in the directoryId directory.
-        # *   false: Only datasets in the directory specified by directoryId are returned, excluding subdirectories.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -67,24 +68,15 @@ class QueryDatasetListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Returns the pagination results of the dataset list. The detailed information of the dataset list is stored in the response parameter Data.
+        # The details of the dataset list.
         self.data = data
-        # The number of rows per page in a paged query.
-        # 
-        # *   Default value: 10.
-        # *   Maximum value: 1,000.
+        # The page number.
         self.page_num = page_num
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # The number of entries per page specified in the request.
         self.page_size = page_size
-        # The ID of the request.
+        # The total number of entries.
         self.total_num = total_num
-        # Current page number for dataset list:
-        # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -156,33 +148,39 @@ class QueryDatasetListResponseBodyResultData(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The details of the dataset list.
+        # The time when the dataset was created.
         self.create_time = create_time
-        # Test Space
-        self.data_source = data_source
-        # The name of the workspace.
-        self.dataset_id = dataset_id
-        # Tom
-        self.dataset_name = dataset_name
-        # The number of rows per page set when the interface is requested.
-        self.description = description
         # The information about the data source to which the dataset belongs.
-        self.directory = directory
-        # The nickname of the dataset owner.
-        self.modify_time = modify_time
-        self.open_offline_acceleration = open_offline_acceleration
-        # The creation time.
-        self.owner_id = owner_id
-        # Whether to enable row-level permissions. Valid values:
-        # 
-        # *   true: The VIP Netty channel is enabled.
-        # *   false: The incremental log backup feature is disabled.
-        self.owner_name = owner_name
-        # The total number of pages returned.
-        self.row_level = row_level
-        # The page number of the returned page.
-        self.workspace_id = workspace_id
+        self.data_source = data_source
+        # The dataset ID.
+        self.dataset_id = dataset_id
+        # The dataset name.
+        self.dataset_name = dataset_name
         # The description of the dataset.
+        self.description = description
+        # The information about the folder in which the dataset is located.
+        self.directory = directory
+        # The time when the dataset was last modified.
+        self.modify_time = modify_time
+        # Indicates whether extraction-based acceleration is enabled. Valid values:
+        # 
+        # - true: Enabled
+        # 
+        # - false: Disabled
+        self.open_offline_acceleration = open_offline_acceleration
+        # The user ID of the dataset owner in Quick BI.
+        self.owner_id = owner_id
+        # The nickname of the dataset owner.
+        self.owner_name = owner_name
+        # Indicates whether row-level permissions are enabled. Valid values:
+        # 
+        # - true: Enabled
+        # 
+        # - false: Disabled
+        self.row_level = row_level
+        # The workspace ID.
+        self.workspace_id = workspace_id
+        # The workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -290,13 +288,13 @@ class QueryDatasetListResponseBodyResultDataDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # The ID of the directory path.
+        # The folder ID.
         self.id = id
-        # The ID of the data source.
+        # The folder name.
         self.name = name
-        # The type of the data source.
+        # The ID of the folder path.
         self.path_id = path_id
-        # The name of the data source.
+        # The name of the folder path.
         self.path_name = path_name
 
     def validate(self):
@@ -344,11 +342,11 @@ class QueryDatasetListResponseBodyResultDataDataSource(DaraModel):
         ds_name: str = None,
         ds_type: str = None,
     ):
-        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # The data source ID.
         self.ds_id = ds_id
-        # The time when the scaling group was modified.
+        # The data source name.
         self.ds_name = ds_name
-        # The user ID of the dataset owner in the Quick BI.
+        # The data source type.
         self.ds_type = ds_type
 
     def validate(self):

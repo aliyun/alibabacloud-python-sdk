@@ -19,17 +19,54 @@ class DescribeVsStreamsOnlineListRequest(DaraModel):
         stream_name: str = None,
         stream_type: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The end of the time range to query.
+        # 
+        # > - Specify the time in the UTC format. Example: 2016-06-30T19:00:00Z.
+        # >
+        # > - The time range between EndTime and StartTime cannot exceed 30 days.
         self.end_time = end_time
+        # The sorting method. Valid values:
+        # 
+        # - stream_name_desc: sorts by stream name in descending order.
+        # 
+        # - stream_name_asc: sorts by stream name in ascending order.
+        # 
+        # - publish_time_desc: sorts by ingest time in descending order.
+        # 
+        # - publish_time_asc (default): sorts by ingest time in ascending order.
         self.order_by = order_by
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 3000.
+        # 
+        # Valid values: 1 to 3000.
         self.page_size = page_size
+        # Specifies whether to perform a fuzzy match for the stream name. Valid values:
+        # 
+        # - fuzzy: fuzzy match
+        # 
+        # - strict: exact match
         self.query_type = query_type
+        # The start of the time range to query.
+        # 
+        # > Specify the time in the UTC format. Example: 2016-06-29T19:00:00Z.
         self.start_time = start_time
+        # The stream name.
         self.stream_name = stream_name
+        # The stream type. Valid values:
+        # 
+        # - all (default): all streams
+        # 
+        # - raw: raw streams
+        # 
+        # - trans: transcoded streams
         self.stream_type = stream_type
 
     def validate(self):

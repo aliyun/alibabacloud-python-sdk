@@ -20,7 +20,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'public': 'alidns.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('alidns', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1962,6 +1965,292 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.copy_gtm_config_with_options_async(request, runtime)
 
+    def create_ati_agent_register_info_with_options(
+        self,
+        tmp_req: main_models.CreateAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiAgentRegisterInfoResponse:
+        tmp_req.validate()
+        request = main_models.CreateAtiAgentRegisterInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.endpoints):
+            request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_description):
+            query['AgentDescription'] = request.agent_description
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ati_agent_register_info_with_options_async(
+        self,
+        tmp_req: main_models.CreateAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiAgentRegisterInfoResponse:
+        tmp_req.validate()
+        request = main_models.CreateAtiAgentRegisterInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.endpoints):
+            request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_description):
+            query['AgentDescription'] = request.agent_description
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ati_agent_register_info(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoRequest,
+    ) -> main_models.CreateAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.create_ati_agent_register_info_with_options(request, runtime)
+
+    async def create_ati_agent_register_info_async(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoRequest,
+    ) -> main_models.CreateAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.create_ati_agent_register_info_with_options_async(request, runtime)
+
+    def create_ati_agent_register_info_acme_challenge_record_with_options(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiAgentRegisterInfoAcmeChallengeRecord',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ati_agent_register_info_acme_challenge_record_with_options_async(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiAgentRegisterInfoAcmeChallengeRecord',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ati_agent_register_info_acme_challenge_record(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+    ) -> main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        runtime = RuntimeOptions()
+        return self.create_ati_agent_register_info_acme_challenge_record_with_options(request, runtime)
+
+    async def create_ati_agent_register_info_acme_challenge_record_async(
+        self,
+        request: main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+    ) -> main_models.CreateAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        runtime = RuntimeOptions()
+        return await self.create_ati_agent_register_info_acme_challenge_record_with_options_async(request, runtime)
+
+    def create_ati_registrant_with_options(
+        self,
+        request: main_models.CreateAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cc):
+            query['Cc'] = request.cc
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.document_code):
+            query['DocumentCode'] = request.document_code
+        if not DaraCore.is_null(request.document_image):
+            query['DocumentImage'] = request.document_image
+        if not DaraCore.is_null(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.street):
+            query['Street'] = request.street
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiRegistrantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ati_registrant_with_options_async(
+        self,
+        request: main_models.CreateAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cc):
+            query['Cc'] = request.cc
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.document_code):
+            query['DocumentCode'] = request.document_code
+        if not DaraCore.is_null(request.document_image):
+            query['DocumentImage'] = request.document_image
+        if not DaraCore.is_null(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.street):
+            query['Street'] = request.street
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAtiRegistrantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ati_registrant(
+        self,
+        request: main_models.CreateAtiRegistrantRequest,
+    ) -> main_models.CreateAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return self.create_ati_registrant_with_options(request, runtime)
+
+    async def create_ati_registrant_async(
+        self,
+        request: main_models.CreateAtiRegistrantRequest,
+    ) -> main_models.CreateAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return await self.create_ati_registrant_with_options_async(request, runtime)
+
     def create_cloud_gtm_address_with_options(
         self,
         tmp_req: main_models.CreateCloudGtmAddressRequest,
@@ -2561,6 +2850,154 @@ class Client(OpenApiClient):
     ) -> main_models.CreatePdnsUdpIpSegmentResponse:
         runtime = RuntimeOptions()
         return await self.create_pdns_udp_ip_segment_with_options_async(request, runtime)
+
+    def delete_ati_agent_register_info_with_options(
+        self,
+        request: main_models.DeleteAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ati_agent_register_info_with_options_async(
+        self,
+        request: main_models.DeleteAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ati_agent_register_info(
+        self,
+        request: main_models.DeleteAtiAgentRegisterInfoRequest,
+    ) -> main_models.DeleteAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.delete_ati_agent_register_info_with_options(request, runtime)
+
+    async def delete_ati_agent_register_info_async(
+        self,
+        request: main_models.DeleteAtiAgentRegisterInfoRequest,
+    ) -> main_models.DeleteAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_ati_agent_register_info_with_options_async(request, runtime)
+
+    def delete_ati_registrant_with_options(
+        self,
+        request: main_models.DeleteAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAtiRegistrantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ati_registrant_with_options_async(
+        self,
+        request: main_models.DeleteAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAtiRegistrantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ati_registrant(
+        self,
+        request: main_models.DeleteAtiRegistrantRequest,
+    ) -> main_models.DeleteAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return self.delete_ati_registrant_with_options(request, runtime)
+
+    async def delete_ati_registrant_async(
+        self,
+        request: main_models.DeleteAtiRegistrantRequest,
+    ) -> main_models.DeleteAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_ati_registrant_with_options_async(request, runtime)
 
     def delete_cloud_gtm_address_with_options(
         self,
@@ -3855,6 +4292,298 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSubDomainRecordsResponse:
         runtime = RuntimeOptions()
         return await self.delete_sub_domain_records_with_options_async(request, runtime)
+
+    def describe_ati_agent_register_info_with_options(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ati_agent_register_info_with_options_async(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ati_agent_register_info(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoRequest,
+    ) -> main_models.DescribeAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ati_agent_register_info_with_options(request, runtime)
+
+    async def describe_ati_agent_register_info_async(
+        self,
+        request: main_models.DescribeAtiAgentRegisterInfoRequest,
+    ) -> main_models.DescribeAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ati_agent_register_info_with_options_async(request, runtime)
+
+    def describe_ati_alert_settings_with_options(
+        self,
+        request: main_models.DescribeAtiAlertSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAlertSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAlertSettings',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAlertSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ati_alert_settings_with_options_async(
+        self,
+        request: main_models.DescribeAtiAlertSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiAlertSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiAlertSettings',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiAlertSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ati_alert_settings(
+        self,
+        request: main_models.DescribeAtiAlertSettingsRequest,
+    ) -> main_models.DescribeAtiAlertSettingsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ati_alert_settings_with_options(request, runtime)
+
+    async def describe_ati_alert_settings_async(
+        self,
+        request: main_models.DescribeAtiAlertSettingsRequest,
+    ) -> main_models.DescribeAtiAlertSettingsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ati_alert_settings_with_options_async(request, runtime)
+
+    def describe_ati_certificate_with_options(
+        self,
+        request: main_models.DescribeAtiCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_certificate_id):
+            query['AgentCertificateId'] = request.agent_certificate_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiCertificate',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ati_certificate_with_options_async(
+        self,
+        request: main_models.DescribeAtiCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_certificate_id):
+            query['AgentCertificateId'] = request.agent_certificate_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiCertificate',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ati_certificate(
+        self,
+        request: main_models.DescribeAtiCertificateRequest,
+    ) -> main_models.DescribeAtiCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ati_certificate_with_options(request, runtime)
+
+    async def describe_ati_certificate_async(
+        self,
+        request: main_models.DescribeAtiCertificateRequest,
+    ) -> main_models.DescribeAtiCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ati_certificate_with_options_async(request, runtime)
+
+    def describe_ati_registrant_with_options(
+        self,
+        request: main_models.DescribeAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiRegistrantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ati_registrant_with_options_async(
+        self,
+        request: main_models.DescribeAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAtiRegistrantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ati_registrant(
+        self,
+        request: main_models.DescribeAtiRegistrantRequest,
+    ) -> main_models.DescribeAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ati_registrant_with_options(request, runtime)
+
+    async def describe_ati_registrant_async(
+        self,
+        request: main_models.DescribeAtiRegistrantRequest,
+    ) -> main_models.DescribeAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ati_registrant_with_options_async(request, runtime)
 
     def describe_batch_result_count_with_options(
         self,
@@ -12164,6 +12893,308 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_txt_record_for_verify_with_options_async(request, runtime)
 
+    def list_ati_agent_register_infos_with_options(
+        self,
+        request: main_models.ListAtiAgentRegisterInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiAgentRegisterInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiAgentRegisterInfos',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiAgentRegisterInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ati_agent_register_infos_with_options_async(
+        self,
+        request: main_models.ListAtiAgentRegisterInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiAgentRegisterInfosResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiAgentRegisterInfos',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiAgentRegisterInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ati_agent_register_infos(
+        self,
+        request: main_models.ListAtiAgentRegisterInfosRequest,
+    ) -> main_models.ListAtiAgentRegisterInfosResponse:
+        runtime = RuntimeOptions()
+        return self.list_ati_agent_register_infos_with_options(request, runtime)
+
+    async def list_ati_agent_register_infos_async(
+        self,
+        request: main_models.ListAtiAgentRegisterInfosRequest,
+    ) -> main_models.ListAtiAgentRegisterInfosResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ati_agent_register_infos_with_options_async(request, runtime)
+
+    def list_ati_change_logs_with_options(
+        self,
+        request: main_models.ListAtiChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiChangeLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.operator_account):
+            query['OperatorAccount'] = request.operator_account
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiChangeLogs',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiChangeLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ati_change_logs_with_options_async(
+        self,
+        request: main_models.ListAtiChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiChangeLogsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        if not DaraCore.is_null(request.operator_account):
+            query['OperatorAccount'] = request.operator_account
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiChangeLogs',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiChangeLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ati_change_logs(
+        self,
+        request: main_models.ListAtiChangeLogsRequest,
+    ) -> main_models.ListAtiChangeLogsResponse:
+        runtime = RuntimeOptions()
+        return self.list_ati_change_logs_with_options(request, runtime)
+
+    async def list_ati_change_logs_async(
+        self,
+        request: main_models.ListAtiChangeLogsRequest,
+    ) -> main_models.ListAtiChangeLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ati_change_logs_with_options_async(request, runtime)
+
+    def list_ati_registrants_with_options(
+        self,
+        request: main_models.ListAtiRegistrantsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiRegistrantsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiRegistrants',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiRegistrantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ati_registrants_with_options_async(
+        self,
+        request: main_models.ListAtiRegistrantsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAtiRegistrantsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAtiRegistrants',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAtiRegistrantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ati_registrants(
+        self,
+        request: main_models.ListAtiRegistrantsRequest,
+    ) -> main_models.ListAtiRegistrantsResponse:
+        runtime = RuntimeOptions()
+        return self.list_ati_registrants_with_options(request, runtime)
+
+    async def list_ati_registrants_async(
+        self,
+        request: main_models.ListAtiRegistrantsRequest,
+    ) -> main_models.ListAtiRegistrantsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_ati_registrants_with_options_async(request, runtime)
+
     def list_cloud_gtm_address_pools_with_options(
         self,
         request: main_models.ListCloudGtmAddressPoolsRequest,
@@ -14294,6 +15325,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.retrieve_domain_with_options_async(request, runtime)
 
+    def revoke_ati_agent_register_info_with_options(
+        self,
+        request: main_models.RevokeAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        if not DaraCore.is_null(request.reason_code):
+            query['ReasonCode'] = request.reason_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_ati_agent_register_info_with_options_async(
+        self,
+        request: main_models.RevokeAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.reason):
+            query['Reason'] = request.reason
+        if not DaraCore.is_null(request.reason_code):
+            query['ReasonCode'] = request.reason_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_ati_agent_register_info(
+        self,
+        request: main_models.RevokeAtiAgentRegisterInfoRequest,
+    ) -> main_models.RevokeAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_ati_agent_register_info_with_options(request, runtime)
+
+    async def revoke_ati_agent_register_info_async(
+        self,
+        request: main_models.RevokeAtiAgentRegisterInfoRequest,
+    ) -> main_models.RevokeAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_ati_agent_register_info_with_options_async(request, runtime)
+
+    def revoke_ati_registrant_with_options(
+        self,
+        request: main_models.RevokeAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAtiRegistrantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_ati_registrant_with_options_async(
+        self,
+        request: main_models.RevokeAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeAtiRegistrantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_ati_registrant(
+        self,
+        request: main_models.RevokeAtiRegistrantRequest,
+    ) -> main_models.RevokeAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_ati_registrant_with_options(request, runtime)
+
+    async def revoke_ati_registrant_async(
+        self,
+        request: main_models.RevokeAtiRegistrantRequest,
+    ) -> main_models.RevokeAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_ati_registrant_with_options_async(request, runtime)
+
     def rollback_gtm_recovery_plan_with_options(
         self,
         request: main_models.RollbackGtmRecoveryPlanRequest,
@@ -14367,6 +15554,108 @@ class Client(OpenApiClient):
     ) -> main_models.RollbackGtmRecoveryPlanResponse:
         runtime = RuntimeOptions()
         return await self.rollback_gtm_recovery_plan_with_options_async(request, runtime)
+
+    def search_ati_agent_register_info_market_with_options(
+        self,
+        request: main_models.SearchAtiAgentRegisterInfoMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAtiAgentRegisterInfoMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAtiAgentRegisterInfoMarket',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAtiAgentRegisterInfoMarketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_ati_agent_register_info_market_with_options_async(
+        self,
+        request: main_models.SearchAtiAgentRegisterInfoMarketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchAtiAgentRegisterInfoMarketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.protocol):
+            query['Protocol'] = request.protocol
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.trust_level):
+            query['TrustLevel'] = request.trust_level
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchAtiAgentRegisterInfoMarket',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchAtiAgentRegisterInfoMarketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_ati_agent_register_info_market(
+        self,
+        request: main_models.SearchAtiAgentRegisterInfoMarketRequest,
+    ) -> main_models.SearchAtiAgentRegisterInfoMarketResponse:
+        runtime = RuntimeOptions()
+        return self.search_ati_agent_register_info_market_with_options(request, runtime)
+
+    async def search_ati_agent_register_info_market_async(
+        self,
+        request: main_models.SearchAtiAgentRegisterInfoMarketRequest,
+    ) -> main_models.SearchAtiAgentRegisterInfoMarketResponse:
+        runtime = RuntimeOptions()
+        return await self.search_ati_agent_register_info_market_with_options_async(request, runtime)
 
     def search_cloud_gtm_address_pools_with_options(
         self,
@@ -15774,6 +17063,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_gtm_monitor_status_with_options_async(request, runtime)
 
+    def submit_ati_agent_register_info_with_options(
+        self,
+        request: main_models.SubmitAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.identity_csr):
+            query['IdentityCsr'] = request.identity_csr
+        if not DaraCore.is_null(request.server_cert_pem):
+            query['ServerCertPem'] = request.server_cert_pem
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_ati_agent_register_info_with_options_async(
+        self,
+        request: main_models.SubmitAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAtiAgentRegisterInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.identity_csr):
+            query['IdentityCsr'] = request.identity_csr
+        if not DaraCore.is_null(request.server_cert_pem):
+            query['ServerCertPem'] = request.server_cert_pem
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_ati_agent_register_info(
+        self,
+        request: main_models.SubmitAtiAgentRegisterInfoRequest,
+    ) -> main_models.SubmitAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.submit_ati_agent_register_info_with_options(request, runtime)
+
+    async def submit_ati_agent_register_info_async(
+        self,
+        request: main_models.SubmitAtiAgentRegisterInfoRequest,
+    ) -> main_models.SubmitAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_ati_agent_register_info_with_options_async(request, runtime)
+
     def submit_isp_flush_cache_task_with_options(
         self,
         request: main_models.SubmitIspFlushCacheTaskRequest,
@@ -16339,6 +17710,304 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAppKeyStateResponse:
         runtime = RuntimeOptions()
         return await self.update_app_key_state_with_options_async(request, runtime)
+
+    def update_ati_agent_register_info_with_options(
+        self,
+        tmp_req: main_models.UpdateAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiAgentRegisterInfoResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAtiAgentRegisterInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.endpoints):
+            request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_description):
+            query['AgentDescription'] = request.agent_description
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiAgentRegisterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ati_agent_register_info_with_options_async(
+        self,
+        tmp_req: main_models.UpdateAtiAgentRegisterInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiAgentRegisterInfoResponse:
+        tmp_req.validate()
+        request = main_models.UpdateAtiAgentRegisterInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.endpoints):
+            request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        query = {}
+        if not DaraCore.is_null(request.agent_description):
+            query['AgentDescription'] = request.agent_description
+        if not DaraCore.is_null(request.agent_display_name):
+            query['AgentDisplayName'] = request.agent_display_name
+        if not DaraCore.is_null(request.agent_host):
+            query['AgentHost'] = request.agent_host
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.agent_version):
+            query['AgentVersion'] = request.agent_version
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.endpoints_shrink):
+            query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiAgentRegisterInfo',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiAgentRegisterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ati_agent_register_info(
+        self,
+        request: main_models.UpdateAtiAgentRegisterInfoRequest,
+    ) -> main_models.UpdateAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return self.update_ati_agent_register_info_with_options(request, runtime)
+
+    async def update_ati_agent_register_info_async(
+        self,
+        request: main_models.UpdateAtiAgentRegisterInfoRequest,
+    ) -> main_models.UpdateAtiAgentRegisterInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.update_ati_agent_register_info_with_options_async(request, runtime)
+
+    def update_ati_alert_settings_with_options(
+        self,
+        request: main_models.UpdateAtiAlertSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiAlertSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_config):
+            query['AlertConfig'] = request.alert_config
+        if not DaraCore.is_null(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiAlertSettings',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiAlertSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ati_alert_settings_with_options_async(
+        self,
+        request: main_models.UpdateAtiAlertSettingsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiAlertSettingsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alert_config):
+            query['AlertConfig'] = request.alert_config
+        if not DaraCore.is_null(request.alert_group):
+            query['AlertGroup'] = request.alert_group
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiAlertSettings',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiAlertSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ati_alert_settings(
+        self,
+        request: main_models.UpdateAtiAlertSettingsRequest,
+    ) -> main_models.UpdateAtiAlertSettingsResponse:
+        runtime = RuntimeOptions()
+        return self.update_ati_alert_settings_with_options(request, runtime)
+
+    async def update_ati_alert_settings_async(
+        self,
+        request: main_models.UpdateAtiAlertSettingsRequest,
+    ) -> main_models.UpdateAtiAlertSettingsResponse:
+        runtime = RuntimeOptions()
+        return await self.update_ati_alert_settings_with_options_async(request, runtime)
+
+    def update_ati_registrant_with_options(
+        self,
+        request: main_models.UpdateAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cc):
+            query['Cc'] = request.cc
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.document_code):
+            query['DocumentCode'] = request.document_code
+        if not DaraCore.is_null(request.document_image):
+            query['DocumentImage'] = request.document_image
+        if not DaraCore.is_null(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.street):
+            query['Street'] = request.street
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiRegistrantResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ati_registrant_with_options_async(
+        self,
+        request: main_models.UpdateAtiRegistrantRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAtiRegistrantResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cc):
+            query['Cc'] = request.cc
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.document_code):
+            query['DocumentCode'] = request.document_code
+        if not DaraCore.is_null(request.document_image):
+            query['DocumentImage'] = request.document_image
+        if not DaraCore.is_null(request.document_type):
+            query['DocumentType'] = request.document_type
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.phone):
+            query['Phone'] = request.phone
+        if not DaraCore.is_null(request.registrant_id):
+            query['RegistrantId'] = request.registrant_id
+        if not DaraCore.is_null(request.state):
+            query['State'] = request.state
+        if not DaraCore.is_null(request.street):
+            query['Street'] = request.street
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAtiRegistrant',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAtiRegistrantResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ati_registrant(
+        self,
+        request: main_models.UpdateAtiRegistrantRequest,
+    ) -> main_models.UpdateAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return self.update_ati_registrant_with_options(request, runtime)
+
+    async def update_ati_registrant_async(
+        self,
+        request: main_models.UpdateAtiRegistrantRequest,
+    ) -> main_models.UpdateAtiRegistrantResponse:
+        runtime = RuntimeOptions()
+        return await self.update_ati_registrant_with_options_async(request, runtime)
 
     def update_cloud_gtm_address_with_options(
         self,
@@ -20521,3 +22190,151 @@ class Client(OpenApiClient):
     ) -> main_models.ValidatePdnsUdpIpSegmentResponse:
         runtime = RuntimeOptions()
         return await self.validate_pdns_udp_ip_segment_with_options_async(request, runtime)
+
+    def verify_ati_agent_dns_records_with_options(
+        self,
+        request: main_models.VerifyAtiAgentDnsRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAtiAgentDnsRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAtiAgentDnsRecords',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAtiAgentDnsRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_ati_agent_dns_records_with_options_async(
+        self,
+        request: main_models.VerifyAtiAgentDnsRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAtiAgentDnsRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAtiAgentDnsRecords',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAtiAgentDnsRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_ati_agent_dns_records(
+        self,
+        request: main_models.VerifyAtiAgentDnsRecordsRequest,
+    ) -> main_models.VerifyAtiAgentDnsRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.verify_ati_agent_dns_records_with_options(request, runtime)
+
+    async def verify_ati_agent_dns_records_async(
+        self,
+        request: main_models.VerifyAtiAgentDnsRecordsRequest,
+    ) -> main_models.VerifyAtiAgentDnsRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.verify_ati_agent_dns_records_with_options_async(request, runtime)
+
+    def verify_ati_agent_register_info_acme_challenge_record_with_options(
+        self,
+        request: main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAtiAgentRegisterInfoAcmeChallengeRecord',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_ati_agent_register_info_acme_challenge_record_with_options_async(
+        self,
+        request: main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_register_info_id):
+            query['AgentRegisterInfoId'] = request.agent_register_info_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyAtiAgentRegisterInfoAcmeChallengeRecord',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_ati_agent_register_info_acme_challenge_record(
+        self,
+        request: main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+    ) -> main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        runtime = RuntimeOptions()
+        return self.verify_ati_agent_register_info_acme_challenge_record_with_options(request, runtime)
+
+    async def verify_ati_agent_register_info_acme_challenge_record_async(
+        self,
+        request: main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest,
+    ) -> main_models.VerifyAtiAgentRegisterInfoAcmeChallengeRecordResponse:
+        runtime = RuntimeOptions()
+        return await self.verify_ati_agent_register_info_acme_challenge_record_with_options_async(request, runtime)

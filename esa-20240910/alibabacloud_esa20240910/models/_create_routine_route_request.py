@@ -17,35 +17,39 @@ class CreateRoutineRouteRequest(DaraModel):
         site_id: int = None,
         timeout: str = None,
     ):
-        # Bypass mode Valid values:
-        # 
-        # *   on
-        # *   off
+        # The bypass mode. Valid values:
+        # - on: enabled
+        # - off: disabled
         self.bypass = bypass
-        # The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request falls back to the origin server. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.fallback = fallback
-        # The routing switch. Valid values:
+        # The route switch. Valid values:
+        # - on: enabled
+        # - off: disabled
         # 
-        # *   on
-        # *   off
+        # This parameter is required.
         self.route_enable = route_enable
-        # The name of the route.
+        # The route name.
+        # 
+        # This parameter is required.
         self.route_name = route_name
-        # The edge function name.
+        # The Edge Routine name.
         # 
         # This parameter is required.
         self.routine_name = routine_name
-        # The content of the rule.
+        # The rule content.
+        # 
+        # This parameter is required.
         self.rule = rule
-        # The order in which the rule is executed.
+        # The rule execution order.
         self.sequence = sequence
-        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):

@@ -10,8 +10,10 @@ class GetRuleByIdRequest(DaraModel):
         base_me_agent_id: int = None,
         rule_id: int = None,
     ):
-        # baseMeAgentId
+        # The business space ID.
         self.base_me_agent_id = base_me_agent_id
+        # The rule ID.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

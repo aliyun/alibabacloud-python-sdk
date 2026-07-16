@@ -9,6 +9,9 @@ class DescribeTenantBindNumberRequest(DaraModel):
         self,
         number: str = None,
     ):
+        # Phone number to query (required)
+        # 
+        # > Query the binding status of this number across all instances. Get the number from the response of ListAllTenantBindNumberBinding.
         self.number = number
 
     def validate(self):

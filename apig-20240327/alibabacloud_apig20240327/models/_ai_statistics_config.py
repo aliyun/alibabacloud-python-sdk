@@ -14,8 +14,11 @@ class AiStatisticsConfig(DaraModel):
         log_response_content: bool = None,
         path_field_configs: List[main_models.AiStatisticsConfigPathFieldConfigs] = None,
     ):
+        # Specifies whether to log request content (controls whether question-related attributes are generated).
         self.log_request_content = log_request_content
+        # Specifies whether to log response content (controls whether answer-related attributes are generated).
         self.log_response_content = log_response_content
+        # The list of custom field collection configurations, configured by API path.
         self.path_field_configs = path_field_configs
 
     def validate(self):
@@ -64,7 +67,9 @@ class AiStatisticsConfigPathFieldConfigs(DaraModel):
         field_paths: Dict[str, main_models.AiStatisticsPathField] = None,
         path: str = None,
     ):
+        # The field collection configuration.
         self.field_paths = field_paths
+        # The API path.
         self.path = path
 
     def validate(self):

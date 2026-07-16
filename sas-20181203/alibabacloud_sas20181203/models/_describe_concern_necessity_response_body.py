@@ -12,13 +12,15 @@ class DescribeConcernNecessityResponseBody(DaraModel):
         concern_necessity: List[str] = None,
         request_id: str = None,
     ):
-        # The priorities to fix the vulnerabilities. Valid values:
+        # The list of vulnerability fix necessity levels. Valid values:
         # 
-        # *   asap: high
-        # *   later: medium
-        # *   nntf: low
+        # - asap: high.
+        # 
+        # - later: medium.
+        # 
+        # - nntf: low.
         self.concern_necessity = concern_necessity
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

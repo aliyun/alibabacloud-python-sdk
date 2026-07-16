@@ -10,9 +10,9 @@ class PurgeCachesResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Task ID, which is returned when you create a refresh or preheat task.
+        # The task ID. This ID is returned when you create a refresh or prefetch task.
         self.task_id = task_id
 
     def validate(self):

@@ -14,23 +14,26 @@ class SmartqAuthorizeRequest(DaraModel):
         operation_type: int = None,
         user_ids: str = None,
     ):
-        # Array of dataset IDs, separated by English commas. <notice>This parameter will be converted to the corresponding question resource ID for authorization. Therefore, if the input cubeId does not correspond to any question resource, an error indicating that the question resource does not exist will be reported. Please ensure the correctness of the cubeId.</notice>
+        # An array of dataset IDs. Separate multiple IDs with commas.
+        # >Notice: This parameter is converted to the corresponding Q\\&A resource ID for authorization. If a \\`cubeId\\` does not correspond to an existing Q\\&A resource, an error is reported that the Q\\&A resource does not exist. Ensure that the \\`cubeId\\` is correct.
         self.cube_ids = cube_ids
-        # Expiration time, with a default of seven days.
+        # The expiration time. The default is seven days.
         # Format: 2099-12-31
         self.expire_day = expire_day
-        # Array of analysis theme IDs, separated by English commas.
+        # An array of analysis subject IDs. Separate multiple IDs with commas.
         self.llm_cube_themes = llm_cube_themes
-        # Array of Q&A resource IDs, separated by English commas.
+        # An array of Q\\&A resource IDs. Separate multiple IDs with commas.
         self.llm_cubes = llm_cubes
-        # Operation type. The values are as follows:
-        # - 0: Add authorization
-        # - 1: Remove authorization
+        # The operation type. Valid values:
+        # 
+        # - 0: Grant authorization
+        # 
+        # - 1: Delete authorization
         # 
         # This parameter is required.
         self.operation_type = operation_type
-        # Array of user IDs, separated by English commas.
-        # >Notice: The number of user IDs per request * (number of Q&A resources + number of analysis themes) cannot exceed 100.
+        # An array of user IDs. Separate multiple IDs with commas.
+        # >Notice: The number of user IDs × (the number of Q\\&A resources + the number of analysis subjects) in a single request cannot exceed 100.
         # 
         # This parameter is required.
         self.user_ids = user_ids

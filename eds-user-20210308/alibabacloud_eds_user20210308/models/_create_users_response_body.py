@@ -15,9 +15,9 @@ class CreateUsersResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.all_succeed = all_succeed
-        # The result of user creation.
+        # The result of creating convenience accounts.
         self.create_result = create_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,9 +60,9 @@ class CreateUsersResponseBodyCreateResult(DaraModel):
         created_users: List[main_models.CreateUsersResponseBodyCreateResultCreatedUsers] = None,
         failed_users: List[main_models.CreateUsersResponseBodyCreateResultFailedUsers] = None,
     ):
-        # Details of the created convenience users.
+        # The convenience accounts that were successfully created.
         self.created_users = created_users
-        # Details of the convenience users that failed to be created.
+        # The convenience accounts that failed to be created.
         self.failed_users = failed_users
 
     def validate(self):
@@ -117,15 +117,15 @@ class CreateUsersResponseBodyCreateResultFailedUsers(DaraModel):
         error_message: str = None,
         phone: str = None,
     ):
-        # The email address of the end user.
+        # The email address.
         self.email = email
-        # The name of the end user.
+        # The user name.
         self.end_user_id = end_user_id
-        # The error code returned if the request failed.
+        # The error code.
         self.error_code = error_code
-        # The error message returned.
+        # The error message.
         self.error_message = error_message
-        # The mobile number of the end user.
+        # The phone number.
         self.phone = phone
 
     def validate(self):
@@ -181,15 +181,15 @@ class CreateUsersResponseBodyCreateResultCreatedUsers(DaraModel):
         real_nick_name: str = None,
         remark: str = None,
     ):
-        # The email address of the end user.
+        # The email address.
         self.email = email
-        # The name of the end user.
+        # The user name.
         self.end_user_id = end_user_id
-        # The mobile number of the end user.
+        # The phone number.
         self.phone = phone
-        # The display name of the end user.
+        # The display name.
         self.real_nick_name = real_nick_name
-        # The remarks of the end user.
+        # The user\\"s remark.
         self.remark = remark
 
     def validate(self):

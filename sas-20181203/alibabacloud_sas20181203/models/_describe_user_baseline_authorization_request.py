@@ -11,13 +11,12 @@ class DescribeUserBaselineAuthorizationRequest(DaraModel):
         resource_owner_id: int = None,
         source_ip: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requests and responses. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
         self.resource_owner_id = resource_owner_id
-        # The ID of the asset owner.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

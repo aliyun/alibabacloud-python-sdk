@@ -20,15 +20,33 @@ class GetPublishTaskStateResponseBody(DaraModel):
         status: str = None,
         warnings: Dict[str, Any] = None,
     ):
+        # The list of business types.
         self.biz_type_list = biz_type_list
+        # The UTC time when the task was created.
         self.create_time = create_time
+        # The error message returned if the task fails.
         self.error = error
+        # A map of error messages for each submodule, where the key is the submodule name and the value is the error message.
         self.errors = errors
+        # The publish task ID.
         self.id = id
+        # The UTC time when the task was last modified.
         self.modify_time = modify_time
+        # The request ID.
         self.request_id = request_id
+        # The publish task ID. This field is redundant. Use the `Id` field instead.
         self.response = response
+        # The task status. Valid values:
+        # 
+        # - `FE_RUNNING`: Publishing
+        # 
+        # - `FE_SUCCESS`: Success
+        # 
+        # - `FE_FAILED`: Failed
+        # 
+        # - `FE_ABORTED`: Aborted
         self.status = status
+        # A map of warning messages for each submodule, where the key is the submodule name and the value is the warning message.
         self.warnings = warnings
 
     def validate(self):

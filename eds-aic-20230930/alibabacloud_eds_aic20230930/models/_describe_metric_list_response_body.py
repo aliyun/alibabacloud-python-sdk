@@ -15,9 +15,13 @@ class DescribeMetricListResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The number of records.
         self.count = count
+        # The instance monitoring data.
         self.metric_total_model = metric_total_model
+        # The token for the next query. If not all results are returned, this parameter is not empty. Use the returned token to query the next page.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,8 +77,12 @@ class DescribeMetricListResponseBodyMetricTotalModel(DaraModel):
         instance_id: str = None,
         metric_model_list: List[main_models.DescribeMetricListResponseBodyMetricTotalModelMetricModelList] = None,
     ):
+        # For instance-level monitoring, the Cloud Phone instance ID is returned.
+        # <props="china">For matrix-level monitoring, the matrix ID is returned.
         self.android_instance_id = android_instance_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The monitoring data for metrics.
         self.metric_model_list = metric_model_list
 
     def validate(self):
@@ -124,8 +132,11 @@ class DescribeMetricListResponseBodyMetricTotalModelMetricModelList(DaraModel):
         metric_name: str = None,
         process_name: str = None,
     ):
+        # A list of monitoring data points.
         self.data_points = data_points
+        # The name of the metric.
         self.metric_name = metric_name
+        # The process name.
         self.process_name = process_name
 
     def validate(self):
@@ -178,11 +189,25 @@ class DescribeMetricListResponseBodyMetricTotalModelMetricModelListDataPoints(Da
         timestamp: int = None,
         value: float = None,
     ):
+        # The average value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
         self.average = average
+        # The GPU ID.
         self.gpu_id = gpu_id
+        # The maximum value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
         self.maximum = maximum
+        # The minimum value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
         self.minimum = minimum
+        # The timestamp of the statistics. Unit: milliseconds.
         self.timestamp = timestamp
+        # The data value. Unit: %.
+        # 
+        # > The unit is bps when the metric is \\`bandwidth_package_usage_out\\` or \\`bandwidth_package_usage_in\\`.
         self.value = value
 
     def validate(self):

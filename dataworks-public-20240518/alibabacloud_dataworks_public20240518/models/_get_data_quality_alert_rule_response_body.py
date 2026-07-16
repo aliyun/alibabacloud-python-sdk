@@ -208,14 +208,21 @@ class GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceive
         self.extension = extension
         # The type of alert recipients.
         # 
-        # *   ShiftSchedule
-        # *   WebhookUrl
-        # *   FeishuUrl
-        # *   TaskOwner
-        # *   WeixinUrl
-        # *   DingdingUrl
-        # *   DataQualityScanOwner
-        # *   AliUid
+        # - ShiftSchedule
+        # 
+        # - WebhookUrl
+        # 
+        # - FeishuUrl
+        # 
+        # - TaskOwner
+        # 
+        # - WeixinUrl
+        # 
+        # - DingdingUrl
+        # 
+        # - DataQualityScanOwner
+        # 
+        # - AliUid
         self.receiver_type = receiver_type
         # The value of alert recipients.
         self.receiver_values = receiver_values

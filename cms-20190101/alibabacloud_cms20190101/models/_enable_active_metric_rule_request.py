@@ -12,17 +12,27 @@ class EnableActiveMetricRuleRequest(DaraModel):
     ):
         # The cloud service for which you want to enable initiative alert. Valid values:
         # 
-        # *   ECS: Elastic Compute Service (ECS)
-        # *   rds: ApsaraDB RDS
-        # *   slb: Server Load Balancer (SLB)
-        # *   redis_standard: Redis Open-Source Edition (standard architecture)
-        # *   redis_sharding: Redis Open-Source Edition (cluster architecture)
-        # *   redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
-        # *   mongodb: ApsaraDB for MongoDB of the replica set architecture
-        # *   mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
-        # *   hbase: ApsaraDB for HBase
-        # *   elasticsearch: Elasticsearch
-        # *   opensearch: OpenSearch
+        # - ECS: Elastic Compute Service (ECS)
+        # 
+        # - rds: ApsaraDB RDS
+        # 
+        # - slb: Server Load Balancer (SLB)
+        # 
+        # - redis_standard: Redis Open-Source Edition (standard architecture)
+        # 
+        # - redis_sharding: Redis Open-Source Edition (cluster architecture)
+        # 
+        # - redis_splitrw: Redis Open-Source Edition (read/write splitting architecture)
+        # 
+        # - mongodb: ApsaraDB for MongoDB of the replica set architecture
+        # 
+        # - mongodb_sharding: ApsaraDB for MongoDB of the sharded cluster architecture
+        # 
+        # - hbase: ApsaraDB for HBase
+        # 
+        # - elasticsearch: Elasticsearch
+        # 
+        # - opensearch: OpenSearch
         # 
         # This parameter is required.
         self.product = product

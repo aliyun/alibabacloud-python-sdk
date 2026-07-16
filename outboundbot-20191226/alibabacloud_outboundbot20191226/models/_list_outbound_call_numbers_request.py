@@ -11,10 +11,16 @@ class ListOutboundCallNumbersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Number of entries to return on each page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

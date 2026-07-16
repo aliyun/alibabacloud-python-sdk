@@ -11,6 +11,8 @@ class UpdateFileTagRequest(DaraModel):
         self,
         tags: List[str] = None,
     ):
+        # - The list of tags to associate with the file. You can specify a maximum of 100 tags. The combined length of all tag values cannot exceed 700 characters.
+        # 
         # This parameter is required.
         self.tags = tags
 

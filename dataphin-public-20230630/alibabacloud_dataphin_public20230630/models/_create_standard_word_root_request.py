@@ -11,8 +11,12 @@ class CreateStandardWordRootRequest(DaraModel):
         create_command: main_models.CreateStandardWordRootRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create instruction.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,11 +56,18 @@ class CreateStandardWordRootRequestCreateCommand(DaraModel):
         full_name: str = None,
         name: str = None,
     ):
+        # The abbreviation of the root word.
+        # 
         # This parameter is required.
         self.abbreviation = abbreviation
+        # The description of the root word.
         self.description = description
+        # The full name of the root word.
+        # 
         # This parameter is required.
         self.full_name = full_name
+        # The name of the root word.
+        # 
         # This parameter is required.
         self.name = name
 

@@ -37,9 +37,9 @@ class AttachCenChildInstanceRequest(DaraModel):
         self.child_instance_region_id = child_instance_region_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **CCN**: CCN instance
+        # - **VPC**: VPC
+        # - **VBR**: VBR
+        # - **CCN**: CCN instance
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type

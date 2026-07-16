@@ -17,33 +17,35 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(DaraModel):
         mse_gateway_entry_rule_shrink: str = None,
         namespace_id: str = None,
     ):
-        # The route configuration of the gateway.
+        # The configuration of the gateway route.
         # 
-        # >  This parameter is required if the gateway entry of the lane group is Java.
+        # > This parameter is required if the gateway entry application for the swimlane group is a Java application.
         self.app_entry_rule_shrink = app_entry_rule_shrink
-        # Full-link Grayscale Mode:
+        # The end-to-end canary release mode.
         # 
-        # *   0: The request is routed based on the content of the request.
-        # *   1: routing based on percentages
+        # - `0`: content-based routing
+        # 
+        # - `1`: percentage-based routing
         self.canary_model = canary_model
-        # Lane Status
+        # The status of the swimlane.
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - `true`: enabled
+        # 
+        # - `false`: disabled
         self.enable = enable
-        # The ID of the lane group to which the lane belongs.
+        # The ID of the swimlane group.
         self.group_id = group_id
-        # The ID of the lane.
+        # The ID of the swimlane.
         self.lane_id = lane_id
-        # The name of the lane.
+        # The name of the swimlane.
         self.lane_name = lane_name
-        # The tag of the lane.
+        # The tag of the swimlane.
         self.lane_tag = lane_tag
-        # The route configuration of the MSE gateway.
+        # Configuration for the MSE gateway route.
         # 
-        # >  If the **EntryAppType** is set to **apig** or **mse-gw**, it is required.
+        # > This parameter is required if the **EntryAppType** parameter is set to **apig** or **mse-gw**.
         self.mse_gateway_entry_rule_shrink = mse_gateway_entry_rule_shrink
-        # The namespace ID.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
 
     def validate(self):

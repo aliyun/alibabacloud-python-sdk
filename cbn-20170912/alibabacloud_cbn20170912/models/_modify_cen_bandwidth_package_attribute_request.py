@@ -19,13 +19,13 @@ class ModifyCenBandwidthPackageAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_bandwidth_package_id = cen_bandwidth_package_id
-        # The new description of the bandwidth plan.
+        # The new description for the bandwidth plan.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters long. It cannot start with http\\:// or https\\://.
         self.description = description
-        # The new name of the bandwidth plan.
+        # The new name for the bandwidth plan.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters long. It cannot start with http\\:// or https\\://.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id

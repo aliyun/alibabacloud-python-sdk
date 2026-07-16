@@ -23,9 +23,11 @@ class CreateVodPackagingConfigurationShrinkRequest(DaraModel):
         self.package_config_shrink = package_config_shrink
         # The package type.
         # 
-        # *   HLS: packages content into TS segments for delivery over the HLS protocol.
-        # *   HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
-        # *   DASH: packages content for delivery over the DASH protocol.
+        # - HLS: packages content into TS segments for delivery over the HLS protocol.
+        # 
+        # - HLS_CMAF: packages content into CMAF segments for delivery over the HLS protocol.
+        # 
+        # - DASH: packages content for delivery over the DASH protocol.
         self.protocol = protocol
 
     def validate(self):

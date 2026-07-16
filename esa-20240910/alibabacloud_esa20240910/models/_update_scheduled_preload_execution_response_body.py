@@ -17,29 +17,28 @@ class UpdateScheduledPreloadExecutionResponseBody(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plan.
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The ID of the prefetch plan.
+        # The prefetch plan ID.
         self.id = id
-        # The time interval between each batch execution. Unit: seconds.
+        # The execution interval between each batch of the scheduled prefetch plan, in seconds.
         self.interval = interval
-        # The ID of the prefetch task.
+        # The prefetch task ID.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id
-        # The number of URLs prefetched in each batch.
+        # The number of URLs to prefetch per batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plan.
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
+        # The status of the scheduled prefetch plan. Valid values:
+        # - **waiting**: Waiting to be executed.
+        # - **running**: Being executed.
+        # - **finished**: Execution completed.
+        # - **failed**: Execution failed.
+        # - **stopped**: Execution paused.
         self.status = status
 
     def validate(self):

@@ -20,17 +20,59 @@ class CreateResponseRuleRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The token that specifies the position from which to start the query. If you do not specify this parameter, the query starts from the beginning.
         self.next_token = next_token
+        # The deployment region of the data management center for threat analysis. You must select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland or Hong Kong (China).
+        # 
+        # - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
         self.region_id = region_id
+        # The action configuration, specified as a JSON string.
         self.response_action_config = response_action_config
+        # The action type for the automatic response rule. Valid values:
+        # 
+        # - doPlaybook: Runs a playbook.
+        # 
+        # - changeEventStatus: Changes the status of an event.
+        # 
+        # - changeThreatLevel: Changes the threat level of an event.
+        # 
+        # - addEventTag: Adds a tag to an event.
+        # 
+        # - deleteEventTag: Deletes a tag from an event.
+        # 
+        # - alertWhitelist: Adds an alert to the allowlist.
         self.response_action_type = response_action_type
+        # The trigger conditions for the rule, specified as a JSON string.
         self.response_execution_condition = response_execution_condition
+        # The name of the automatic response rule.
         self.response_rule_name = response_rule_name
+        # The execution priority of the automatic response rule.
         self.response_rule_priority = response_rule_priority
+        # The trigger type for the automatic response rule. Valid values:
+        # 
+        # - event: An event is generated.
+        # 
+        # - event_update: An event is updated.
+        # 
+        # - alert: An alert is generated.
         self.response_trigger_type = response_trigger_type
+        # The ID of the member account. An administrator uses this parameter to operate on behalf of the specified member.
         self.role_for = role_for
+        # The operational scope. Valid values:
+        # 
+        # - 0: Sets the scope to the current Alibaba Cloud account.
+        # 
+        # - 1: Sets the scope to all accounts in the enterprise.
         self.role_type = role_type
 
     def validate(self):

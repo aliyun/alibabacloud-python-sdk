@@ -16,16 +16,22 @@ class DescribeNotifyConfigResponseBody(DaraModel):
         token: str = None,
     ):
         self.audio_oss_path = audio_oss_path
+        # The URL where event callbacks are sent.
         self.callback_url = callback_url
         self.enable_audio_recording = enable_audio_recording
+        # Indicates whether notifications are enabled.
         self.enable_notify = enable_notify
-        # The event types. If this parameter is empty, all event types are selected.
+        # The event types. If you do not specify this parameter, all event types are selected by default.
         # 
-        # *   agent_start: The agent is started.
-        # *   agent_stop: The agent is stopped.
-        # *   error: An error occurred.
+        # - `agent_start`: The agent is ready.
+        # 
+        # - `agent_stop`: The agent is stopped.
+        # 
+        # - `error`: The task encountered an error.
         self.event_types = event_types
+        # The unique identifier for the request.
         self.request_id = request_id
+        # The authentication token used to verify the callback. This token is included in the `Authorization` field of the request header for each event callback.
         self.token = token
 
     def validate(self):

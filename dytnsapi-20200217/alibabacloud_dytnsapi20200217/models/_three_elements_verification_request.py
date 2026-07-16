@@ -18,45 +18,47 @@ class ThreeElementsVerificationRequest(DaraModel):
     ):
         # The authorization code.
         # 
-        # >  On the **My Applications** page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization code (also known as authorization ID).
+        # > On the **My Applications** page of the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), the authorization ID is the authorization code.
         # 
         # This parameter is required.
         self.auth_code = auth_code
         # The ID card number to be verified.
         # 
-        # *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
-        # *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
-        # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+        # - If Mask is set to NORMAL, this field is in plaintext.
+        # - If Mask is set to MD5, encrypt this field by using MD5.
+        # - If Mask is set to SHA256, encrypt this field by using SHA256.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # >Notice: Letters in the encrypted string are case-insensitive.
         # 
         # This parameter is required.
         self.cert_code = cert_code
         # The phone number to be verified.
         # 
-        # *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
-        # *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
-        # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+        # - If Mask is set to NORMAL, this field is in plaintext.
+        # - If Mask is set to MD5, encrypt this field by using MD5.
+        # - If Mask is set to SHA256, encrypt this field by using SHA256.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # >Notice: Letters in the encrypted string are case-insensitive.
         # 
         # This parameter is required.
         self.input_number = input_number
         # The encryption method. Valid values:
         # 
-        # *   **NORMAL**: The phone number is not encrypted.
-        # *   **MD5**
-        # *   **SHA256**
+        # - **NORMAL**: No encryption.
+        # 
+        # - **MD5**
+        # 
+        # - **SHA256**
         # 
         # This parameter is required.
         self.mask = mask
         # The name to be verified.
         # 
-        # *   If the value of Mask is NORMAL, specify a value in plaintext for this field.
-        # *   If the value of Mask is MD5, specify a MD5-encrypted value for this field.
-        # *   If the value of Mask is SHA256, specify a SHA256-encrypted value for this field.
+        # - If Mask is set to NORMAL, this field is in plaintext.
+        # - If Mask is set to MD5, encrypt this field by using MD5.
+        # - If Mask is set to SHA256, encrypt this field by using SHA256.
         # 
-        # >  Letters in the encrypted strings are not case-sensitive.
+        # >Notice: Letters in the encrypted string are case-insensitive.
         # 
         # This parameter is required.
         self.name = name

@@ -24,20 +24,33 @@ class ModifyMaterialFileResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message.
         self.dynamic_message = dynamic_message
+        # The error parameters returned.
         self.error_args = error_args
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # Indicates whether the modification was successful.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The root error code.
         self.root_error_code = root_error_code
+        # The root error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request was successful.
         self.success = success
+        # The reserved parameter.
         self.synchro = synchro
 
     def validate(self):

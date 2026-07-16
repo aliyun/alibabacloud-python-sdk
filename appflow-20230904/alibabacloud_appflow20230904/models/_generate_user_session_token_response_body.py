@@ -12,7 +12,7 @@ class GenerateUserSessionTokenResponseBody(DaraModel):
     ):
         # Request ID.
         self.request_id = request_id
-        # Token.
+        # Token
         self.user_session_token = user_session_token
 
     def validate(self):

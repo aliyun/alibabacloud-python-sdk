@@ -17,9 +17,9 @@ class UpdateDomainRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain = domain
-        # The ID of the region where the Global Accelerator (GA) instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The accelerated domain name to be modified.
+        # The accelerated domain name that you want to update.
         # 
         # This parameter is required.
         self.target_domain = target_domain

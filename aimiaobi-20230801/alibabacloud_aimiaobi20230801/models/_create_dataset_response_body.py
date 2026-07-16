@@ -15,11 +15,17 @@ class CreateDatasetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The business data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -85,12 +91,19 @@ class CreateDatasetResponseBodyData(DaraModel):
         dataset_type: str = None,
         search_dataset_enable: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.create_user = create_user
+        # The display name of the dataset.
         self.dataset_description = dataset_description
+        # The dataset ID.
         self.dataset_id = dataset_id
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The dataset type.
         self.dataset_type = dataset_type
+        # The dataset search switch.
         self.search_dataset_enable = search_dataset_enable
 
     def validate(self):

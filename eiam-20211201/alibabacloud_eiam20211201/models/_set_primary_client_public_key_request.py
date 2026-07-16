@@ -12,17 +12,19 @@ class SetPrimaryClientPublicKeyRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用ClientPublicKey的ID
+        # The ID of the client public key for the application.
         # 
         # This parameter is required.
         self.client_public_key_id = client_public_key_id
+        # A client token used to ensure the idempotence of a request. You must generate a unique value for this parameter from your client. The token can contain only ASCII characters and cannot be more than 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

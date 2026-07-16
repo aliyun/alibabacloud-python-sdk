@@ -13,7 +13,7 @@ class ListBindAccountResponseBody(DaraModel):
         data: List[main_models.ListBindAccountResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The result set.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -64,25 +64,27 @@ class ListBindAccountResponseBodyData(DaraModel):
         data_source_count: int = None,
         modify_time: str = None,
     ):
-        # The AccessKey ID of the cloud account.
+        # The AccessKey ID of the account.
         self.access_id = access_id
         # The ID of the cloud account.
         self.account_id = account_id
-        # The username of the cloud account.
+        # The name of the account.
         self.account_name = account_name
-        # The ID that is generated when the cloud account is added.
+        # The binding ID.
         self.bind_id = bind_id
         # The code of the cloud service provider. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The ID of the account that is used to add the cloud account.
+        # The user who bound the account.
         self.create_user = create_user
-        # The number of data sources that are added to the threat analysis feature within the cloud account.
+        # The number of data sources that are bound to the account.
         self.data_source_count = data_source_count
-        # The modification time.
+        # The time when the binding was modified.
         self.modify_time = modify_time
 
     def validate(self):

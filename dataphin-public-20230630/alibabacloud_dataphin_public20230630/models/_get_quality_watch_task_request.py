@@ -10,8 +10,12 @@ class GetQualityWatchTaskRequest(DaraModel):
         op_tenant_id: int = None,
         watch_task_id: int = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The quality watchtask ID.
+        # 
         # This parameter is required.
         self.watch_task_id = watch_task_id
 

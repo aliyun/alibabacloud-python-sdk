@@ -10,6 +10,7 @@ class UpdateCustomDomainRequest(DaraModel):
         self,
         body: main_models.UpdateCustomDomainInput = None,
     ):
+        # The updated configuration for the custom domain.
         self.body = body
 
     def validate(self):

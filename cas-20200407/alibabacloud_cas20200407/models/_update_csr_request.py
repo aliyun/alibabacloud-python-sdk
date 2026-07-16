@@ -10,11 +10,11 @@ class UpdateCsrRequest(DaraModel):
         csr_id: int = None,
         key: str = None,
     ):
-        # The ID of the CSR.
+        # The unique ID of the CSR. This ID is generated when you upload a CSR. To obtain the ID, call the [ListCsr](https://help.aliyun.com/document_detail/2709717.html) operation.
         # 
         # This parameter is required.
         self.csr_id = csr_id
-        # The private key content of the certificate in the PEM format.
+        # The content of the certificate private key in PEM format.
         # 
         # This parameter is required.
         self.key = key

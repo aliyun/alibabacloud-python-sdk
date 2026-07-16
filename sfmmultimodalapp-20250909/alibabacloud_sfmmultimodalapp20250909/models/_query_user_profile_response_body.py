@@ -21,7 +21,6 @@ class QueryUserProfileResponseBody(DaraModel):
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -135,7 +134,6 @@ class QueryUserProfileResponseBodyDataAttributes(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # id
         self.id = id
         self.name = name
         self.value = value

@@ -12,10 +12,15 @@ class DescribeDownloadRecordsRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a specific region, including instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The download task type. Valid values:
+        # 
+        # - `SQL_DIAGNOSE`: SQL diagnosis.
+        # 
+        # - `SLOW_SQL`: slow SQL query.
         self.download_task_type = download_task_type
 
     def validate(self):

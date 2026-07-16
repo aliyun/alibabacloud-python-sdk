@@ -19,8 +19,7 @@ class UpdateHoneypotNodeRequest(DaraModel):
         # This parameter is required.
         self.available_probe_num = available_probe_num
         # The ID of the management node.
-        # 
-        # > You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to query the IDs of management nodes.
+        # >You can call the [ListHoneypotNode](~~ListHoneypotNode~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.node_id = node_id
@@ -28,7 +27,7 @@ class UpdateHoneypotNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.node_name = node_name
-        # The CIDR blocks that are allowed to access the management node.
+        # The collection of allowed CIDR blocks.
         self.security_group_probe_ip_list = security_group_probe_ip_list
 
     def validate(self):

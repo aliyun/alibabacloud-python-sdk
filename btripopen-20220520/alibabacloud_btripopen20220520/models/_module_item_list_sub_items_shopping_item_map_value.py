@@ -20,7 +20,6 @@ class ModuleItemListSubItemsShoppingItemMapValue(DaraModel):
         self.cabin_quantity_list = cabin_quantity_list
         self.search_price = search_price
         self.segment_price_list = segment_price_list
-        # id
         self.id = id
         self.cabin_quantity = cabin_quantity
         self.segment_price = segment_price
@@ -273,7 +272,6 @@ class ModuleItemListSubItemsShoppingItemMapValueSearchPrice(DaraModel):
         self.first_standard_price = first_standard_price
         self.business_standard_price = business_standard_price
         self.common_standard_price = common_standard_price
-        # fdPrice
         self.inter_ticket_price = inter_ticket_price
         self.subtracted_price = subtracted_price
         self.origin_common_price = origin_common_price

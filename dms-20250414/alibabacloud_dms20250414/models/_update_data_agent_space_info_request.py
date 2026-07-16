@@ -13,10 +13,15 @@ class UpdateDataAgentSpaceInfoRequest(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # Specifies whether to enable session sharing for the workspace. Valid values: true and false.
         self.is_session_share_enabled = is_session_share_enabled
+        # The new description for the workspace.
         self.workspace_desc = workspace_desc
+        # The ID of the workspace.
         self.workspace_id = workspace_id
+        # The new name for the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):

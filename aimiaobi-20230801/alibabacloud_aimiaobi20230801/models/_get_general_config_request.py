@@ -10,8 +10,12 @@ class GetGeneralConfigRequest(DaraModel):
         config_key: str = None,
         workspace_id: str = None,
     ):
+        # The unique identifier of the configuration.
+        # 
         # This parameter is required.
         self.config_key = config_key
+        # The unique identifier of the Model Studio workspace. For more information, see [Get workspaceId]().
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

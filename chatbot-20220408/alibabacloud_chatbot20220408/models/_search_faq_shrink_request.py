@@ -25,22 +25,39 @@ class SearchFaqShrinkRequest(DaraModel):
         start_time_end: str = None,
         status: int = None,
     ):
+        # The key for the workspace. If this parameter is not specified, the default workspace is used. You can get the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # An array of category IDs to filter the search results.
         self.category_ids_shrink = category_ids_shrink
+        # The start of the creation period.
         self.create_time_begin = create_time_begin
+        # The end of the creation period.
         self.create_time_end = create_time_end
+        # The creator\\"s username.
         self.create_user_name = create_user_name
+        # The start of the expiration period.
         self.end_time_begin = end_time_begin
+        # The end of the expiration period.
         self.end_time_end = end_time_end
+        # The search keyword.
         self.keyword = keyword
+        # The start of the modification period.
         self.modify_time_begin = modify_time_begin
+        # The end of the modification period.
         self.modify_time_end = modify_time_end
+        # The modifier\\"s username.
         self.modify_user_name = modify_user_name
+        # The number of the page to return. The default value is 1.
         self.page_number = page_number
+        # The number of entries per page. The default value is 10, and the maximum value is 100.
         self.page_size = page_size
+        # The search scope.
         self.search_scope = search_scope
+        # The start of the effective period.
         self.start_time_begin = start_time_begin
+        # The end of the effective period.
         self.start_time_end = start_time_end
+        # The status of the knowledge item.
         self.status = status
 
     def validate(self):

@@ -13,19 +13,19 @@ class SendBatchCardSmsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
-        # 
-        # *   The value OK indicates that the request was successful.
-        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
+        # The request status code.
+        # * If **OK** is returned, the request is successful.
+        # * For information about other error codes, see [API error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The call is successful.
+        # 
+        # - **false**: The call fails.
         self.success = success
 
     def validate(self):
@@ -78,23 +78,21 @@ class SendBatchCardSmsResponseBodyData(DaraModel):
         media_mobiles: str = None,
         not_media_mobiles: str = None,
     ):
-        # The ID of the card message.
+        # The ID of the card SMS sending task.
         self.biz_card_id = biz_card_id
-        # The ID of the digital message.
+        # The ID of the digital SMS sending task.
         self.biz_digital_id = biz_digital_id
-        # The ID of the text message.
+        # The ID of the text SMS sending task.
         self.biz_sms_id = biz_sms_id
-        # The review status of the card message template.
-        # 
-        # *   **0**: pending approval
-        # *   **1**: approved
-        # *   **2**: rejected
-        # 
-        # > Unapproved card messages are rolled back.
+        # The review status of the card SMS template. Valid values:
+        # - **0**: Under review.
+        # - **1**: Approved.
+        # - **2**: Rejected.
+        # > For SMS messages that are rejected, you can configure the fallback process by using the **FallbackType** parameter.
         self.card_tmp_state = card_tmp_state
-        # The mobile phone number from which the card message is sent.
+        # The mobile phone numbers that receive the card SMS messages.
         self.media_mobiles = media_mobiles
-        # The mobile phone number whose card message is rolled back.
+        # The fallback phone numbers.
         self.not_media_mobiles = not_media_mobiles
 
     def validate(self):

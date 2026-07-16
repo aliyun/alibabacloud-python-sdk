@@ -12,11 +12,18 @@ class SubmitScriptReviewRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # Description
+        # 
         # This parameter is required.
         self.description = description
+        # Source of review submission
         self.from_ = from_
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Script ID
+        # 
         # This parameter is required.
         self.script_id = script_id
 

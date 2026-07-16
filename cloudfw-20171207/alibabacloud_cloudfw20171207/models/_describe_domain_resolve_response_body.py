@@ -11,9 +11,9 @@ class DescribeDomainResolveResponseBody(DaraModel):
         request_id: str = None,
         resolve_result: main_models.DescribeDomainResolveResponseBodyResolveResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The details about the DNS record of the domain name.
+        # The result of the domain name resolution.
         self.resolve_result = resolve_result
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeDomainResolveResponseBodyResolveResult(DaraModel):
         ip_addrs: str = None,
         update_time: int = None,
     ):
-        # The IP address to which the domain name is resolved. Multiple IP addresses are separated by commas (,).
+        # The resolution result of the domain name. Multiple IP addresses are separated by commas (,).
         self.ip_addrs = ip_addrs
-        # The time when the domain name was resolved. The value of this parameter is a timestamp. Unit: seconds.
+        # The timestamp of the resolution. Unit: seconds.
         self.update_time = update_time
 
     def validate(self):

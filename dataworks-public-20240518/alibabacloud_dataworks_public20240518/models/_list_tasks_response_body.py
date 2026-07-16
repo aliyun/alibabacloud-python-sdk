@@ -150,8 +150,9 @@ class ListTasksResponseBodyPagingInfoTasks(DaraModel):
         self.id = id
         # The instance generation mode. Valid values:
         # 
-        # *   T+1
-        # *   Immediately
+        # - T+1
+        # 
+        # - Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -167,8 +168,9 @@ class ListTasksResponseBodyPagingInfoTasks(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -178,9 +180,11 @@ class ListTasksResponseBodyPagingInfoTasks(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -374,9 +378,11 @@ class ListTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
@@ -384,8 +390,9 @@ class ListTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.type = type
 
     def validate(self):

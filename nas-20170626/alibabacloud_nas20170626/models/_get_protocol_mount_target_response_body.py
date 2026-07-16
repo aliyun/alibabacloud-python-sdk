@@ -73,7 +73,7 @@ class GetProtocolMountTargetResponseBodyProtocolMountTarget(DaraModel):
     ):
         # The name of the permission group.
         # 
-        # Default permission group: DEFAULT\\\_VPC\\\_GROUP\\\_NAME
+        # Default permission group: DEFAULT\_VPC\_GROUP\_NAME
         self.access_group_name = access_group_name
         # The time when the export directory was created. Return format: yyyy-MM-dd HH:mm:ss
         self.create_time = create_time

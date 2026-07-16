@@ -11,10 +11,10 @@ class ModifyContainerScanConfigResponseBody(DaraModel):
         http_status_code: int = None,
         request_id: str = None,
     ):
-        # Indicates whether the request was successful. Valid values:
+        # The processing result.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

@@ -29,8 +29,9 @@ class GetDeploymentPackageResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call succeeded. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -149,8 +150,9 @@ class GetDeploymentPackageResponseBodyDataDeployment(DaraModel):
     ):
         # The validation status of nodes in the deployment package. For packages deployed to the development environment (toEnviroment=1), you can only proceed to deploy to production if the package Status is 1 (succeeded) and CheckingStatus is empty (validation complete).
         # 
-        # *   7: Validation failed
-        # *   8: Validation in progress
+        # - 7: Validation failed
+        # 
+        # - 8: Validation in progress
         self.checking_status = checking_status
         # The timestamp (in milliseconds) when the deployment package was created.
         self.create_time = create_time
@@ -256,13 +258,19 @@ class GetDeploymentPackageResponseBodyDataDeployedItems(DaraModel):
         self.file_id = file_id
         # The file version.
         self.file_version = file_version
-        # *   UNPUBLISHED(0)
-        # *   SUCCESS(1)
-        # *   ERROR(2)
-        # *   CLONED(3)
-        # *   DEPLOY_ERROR(4)
-        # *   CLONING(5)
-        # *   REJECT(6)
+        # - UNPUBLISHED(0)
+        # 
+        # - SUCCESS(1)
+        # 
+        # - ERROR(2)
+        # 
+        # - CLONED(3)
+        # 
+        # - DEPLOY_ERROR(4)
+        # 
+        # - CLONING(5)
+        # 
+        # - REJECT(6)
         self.status = status
 
     def validate(self):

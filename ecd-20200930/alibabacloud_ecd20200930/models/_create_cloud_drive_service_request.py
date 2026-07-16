@@ -28,83 +28,48 @@ class CreateCloudDriveServiceRequest(DaraModel):
         user_count: int = None,
         user_max_size: int = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-payment feature. Ensure your Alibaba Cloud account has sufficient balance. Insufficient balance may result in abnormal orders.
-        # *   false (default): disables the auto-payment feature. The order is generated, but payment must be made manually. You can log on to the Alibaba Cloud Management Console and complete the payment based on the order ID on the Orders page.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # Optional. Specifies whether to enable the auto-renewal feature. This parameter takes effect only if you set CdsChargeType to `Prepaid`.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable auto-renewal. This parameter applies only when `CdsChargeType` is set to `PrePaid`.
         self.auto_renew = auto_renew
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The billing method of the enterprise drive.
-        # 
-        # Valid values:
-        # 
-        # *   PostPaid: pay-as-you-go.
-        # *   PrePaid: subscription.
+        # The billing method of the cloud drive.
         self.cds_charge_type = cds_charge_type
-        # The ID of the Cloud Enterprise Network (CEN) instance. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
+        # The ID of the Cloud Enterprise Network (CEN) instance. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
         self.cen_id = cen_id
-        # The domain name of the enterprise AD office network. This parameter takes effect only if you set `OfficeSiteType` to `AD_CONNECTOR`. If you have configured `OfficeSiteId`, you can leave this parameter empty.
+        # The name of the domain controller. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
         self.domain_name = domain_name
-        # The user IDs.
+        # A list of user IDs.
         self.end_user_id = end_user_id
-        # The maximum storage capacity of the enterprise drive.
+        # The total capacity of the cloud drive.
         # 
-        # *   For a pay-as-you-go enterprise drive, the unit is bytes.
-        # *   For a subscription enterprise drive, the unit is GiB. For example, to create a 500 GiB subscription drive, set the value to 500 GiB. To create a 2 TiB subscription drive, set the value to 2048 GiB.
+        # - For pay-as-you-go cloud drives, the unit is bytes.
+        # 
+        # - For subscription cloud drives, the unit is GiB. For example, set the value to 500 for 500 GiB, or to 2048 for 2 TiB.
         # 
         # This parameter is required.
         self.max_size = max_size
-        # The name of the enterprise drive
+        # The name of the cloud drive.
         self.name = name
-        # The ID of the office network. This parameter takes effect only if you set OfficeSiteType to `AD_CONNECTOR`.
+        # The ID of the office site. This parameter applies only when `OfficeSiteType` is set to `AD_CONNECTOR`.
         self.office_site_id = office_site_id
-        # The type of the office network.
-        # 
-        # Valid values:
-        # 
-        # *   SIMPLE: convenience office network.
-        # *   AD_CONNECTOR: enterprise Active Directory (AD) office network.
+        # The type of the office site.
         self.office_site_type = office_site_type
-        # The subscription duration. The unit is specified by `PeriodUnit`. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
-        # 
-        # Valid values:
-        # 
-        # *   1
-        # *   2
-        # *   3
+        # The subscription duration. The unit is specified by `PeriodUnit`. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
         self.period = period
-        # Required. The unit of the subscription duration. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
-        # 
-        # Valid value:
-        # 
-        # *   Year
+        # The unit of the subscription duration. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
         self.period_unit = period_unit
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Enterprise Drive Service is available.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.reseller_owner_uid = reseller_owner_uid
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.solution_id = solution_id
-        # Required. The maximum number of users allowed on the enterprise drive. This parameter takes effect only if you set `CdsChargeType` to `PrePaid`.
-        # 
-        # Valid values:
-        # 
-        # *   5 when the value of MaxSize is 500 GiB.
-        # *   20 when the value of MaxSize is 2048 GiB.
-        # *   50 when the value of MaxSize is 5120 GiB.
+        # The maximum number of users for a subscription cloud drive. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
         self.user_count = user_count
-        # The maximum storage capacity of the user\\"s personal disk when allocated. Unit: bytes.
+        # The maximum size of the personal disk for each user, in bytes.
         self.user_max_size = user_max_size
 
     def validate(self):

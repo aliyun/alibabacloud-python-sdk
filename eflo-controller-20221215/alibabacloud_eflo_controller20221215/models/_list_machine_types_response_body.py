@@ -14,11 +14,11 @@ class ListMachineTypesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The instance types.
+        # Details of the machine types.
         self.machine_types = machine_types
-        # The token that is used in the next request to retrieve a new page of results.
+        # The token to request the next page of results. Include this token in your next request to retrieve the next page.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -77,23 +77,23 @@ class ListMachineTypesResponseBodyMachineTypes(DaraModel):
     ):
         # The number of bonds.
         self.bond_num = bond_num
-        # The CPU information.
+        # CPU information.
         self.cpu_info = cpu_info
-        # The disk information.
+        # Disk information.
         self.disk_info = disk_info
-        # The GPU information.
+        # GPU information.
         self.gpu_info = gpu_info
-        # The storage information.
+        # Memory information.
         self.memory_info = memory_info
-        # The name of the instance type.
+        # The name of the machine type.
         self.name = name
-        # The network information.
+        # Network information.
         self.network_info = network_info
         # The number of nodes.
         self.node_count = node_count
-        # The number of vCPUs.
+        # The number of CPU cores.
         self.total_cpu_core = total_cpu_core
-        # The access type.
+        # The type of the machine type.
         self.type = type
 
     def validate(self):

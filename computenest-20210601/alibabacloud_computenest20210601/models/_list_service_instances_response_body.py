@@ -16,15 +16,15 @@ class ListServiceInstancesResponseBody(DaraModel):
         service_instances: List[main_models.ListServiceInstancesResponseBodyServiceInstances] = None,
         total_count: int = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned per page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about service instances.
+        # The information about the service instances.
         self.service_instances = service_instances
-        # The total number of entries returned.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):
@@ -111,86 +111,103 @@ class ListServiceInstancesResponseBodyServiceInstances(DaraModel):
         template_name: str = None,
         update_time: str = None,
     ):
-        # The business state of the service instance. Valid values:
+        # The business status of the service instance. Possible values:
         # 
-        # *   Normal
-        # *   Renewing
-        # *   RenewFailed
-        # *   Expired
+        # - Normal: The service instance is running as expected.
+        # 
+        # - Renewing: The service instance is being renewed.
+        # 
+        # - RenewFoiled: The renewal of the service instance failed.
+        # 
+        # - Expired: The service instance has expired.
         self.biz_status = biz_status
-        # The time when the service instance was created.
+        # The creation time.
         self.create_time = create_time
-        # Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+        # Indicates whether the service instance has the Alibaba Cloud Managed Services feature. Possible values:
         # 
-        # *   true
-        # *   false
+        # - true: The service instance has the Alibaba Cloud Managed Services feature.
+        # 
+        # - false: The service instance does not have the Alibaba Cloud Managed Services feature.
         self.enable_instance_ops = enable_instance_ops
-        # The time when the service instance expires.
+        # The expiration time of the service instance.
         self.end_time = end_time
         self.granted_permission = granted_permission
         # The ID of the Alibaba Cloud Marketplace instance.
         self.market_instance_id = market_instance_id
         # The name of the service instance.
         self.name = name
-        # The ID of the managed service instance.
+        # The ID of the service instance that is managed by Alibaba Cloud.
         self.operated_service_instance_id = operated_service_instance_id
-        # The end of the time range during which hosted O\\&M is implemented.
+        # The end time of the Alibaba Cloud Managed Services.
         self.operation_end_time = operation_end_time
-        # The beginning of the time range during which hosted O\\&M is implemented.
+        # The start time of the Alibaba Cloud Managed Services.
         self.operation_start_time = operation_start_time
         # The order ID.
         self.order_id = order_id
-        # The information returned after the service instance is created.
+        # The output information of the service instance.
         self.outputs = outputs
-        # The parameters of the service instance.
+        # The parameter information of the service instance.
         self.parameters = parameters
         # The billing method. Valid values:
         # 
-        # *   Permanent: Once you purchase the service, you can use it permanently.
-        # *   Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
-        # *   PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
-        # *   CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+        # - Permanent: The service is purchased permanently.
+        # 
+        # - Subscription: The service is a subscription instance from Alibaba Cloud Marketplace.
+        # 
+        # - PayAsYouGo: The service is a pay-as-you-go instance from Alibaba Cloud Marketplace.
+        # 
+        # - CustomFixTime: The service has a custom fixed duration.
         self.pay_type = pay_type
         self.policy_names = policy_names
-        # The deployment progress of the service instance, in percentage.
+        # The deployment progress of the service instance. Unit: %.
         self.progress = progress
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The resources.
+        # The list of resources.
         self.resources = resources
-        # The services.
+        # The service.
         self.service = service
         # The service instance ID.
         self.service_instance_id = service_instance_id
-        # The type of the service. Valid values:
+        # The service type. Possible values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
-        # *   poc: The service is a trial service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is hosted in the service provider\\"s account.
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Service.
+        # 
+        # - poc: The service instance is a trial instance.
         self.service_type = service_type
-        # The source from which the service instance is created.
+        # The source from which the service instance was created.
         self.source = source
-        # The state of the service instance. Valid values:
+        # The status of the service instance. Possible values:
         # 
-        # *   Created
-        # *   Deploying
-        # *   DeployedFailed
-        # *   Deployed
-        # *   Upgrading
-        # *   Deleting
-        # *   Deleted
-        # *   DeletedFailed
+        # - Created: The service instance is created.
+        # 
+        # - Deploying: The service instance is being deployed.
+        # 
+        # - DeployedFailed: The service instance failed to be deployed.
+        # 
+        # - Deployed: The service instance is deployed.
+        # 
+        # - Upgrading: The service instance is being upgraded.
+        # 
+        # - Deleting: The service instance is being deleted.
+        # 
+        # - Deleted: The service instance is deleted.
+        # 
+        # - DeletedFailed: The service instance failed to be deleted.
         self.status = status
-        # The description of the deployment of the service instance.
+        # The description of the deployment information of the service instance.
         self.status_detail = status_detail
-        # Is it supported to convert from trial to formal
+        # Indicates whether the trial instance can be converted to a regular instance.
         self.support_trial_to_private = support_trial_to_private
         # The custom tags.
         self.tags = tags
         # The template name.
         self.template_name = template_name
-        # The time when the service instance was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -441,33 +458,39 @@ class ListServiceInstancesResponseBodyServiceInstancesService(DaraModel):
         version: str = None,
         version_name: str = None,
     ):
-        # The commodity details.
+        # The commodity specifications.
         self.commodity = commodity
-        # The deployment type of the service. Valid values:
+        # The deployment type. Possible values:
         # 
-        # *   ros: The service is deployed by using Resource Orchestration Service (ROS).
-        # *   terraform: The service is deployed by using Terraform.
-        # *   ack: The service is deployed by using Alibaba Cloud Container Service for Kubernetes (ACK).
-        # *   spi: The service is deployed by calling the Service Provider Interface (SPI).
-        # *   operation: The service is deployed by using a hosted O\\&M service.
+        # - ros: The service is deployed using ROS.
+        # 
+        # - terraform: The service is deployed using Terraform.
+        # 
+        # - ack: The service is deployed using ACK.
+        # 
+        # - spi: The service is deployed by calling SPI.
+        # 
+        # - operation: The service is deployed using Alibaba Cloud Managed Services.
         self.deploy_type = deploy_type
-        # The time when the service was published.
+        # The publishing time.
         self.publish_time = publish_time
         # The service ID.
         self.service_id = service_id
-        # The information about the service.
+        # The service information.
         self.service_infos = service_infos
-        # The type of the service. Valid values:
+        # The service type. Possible values:
         # 
-        # *   private: The service is a private service and is deployed within the account of a customer.
-        # *   managed: The service is a fully managed service and is deployed within the account of a service provider.
-        # *   operation: The service is a hosted O\\&M service.
+        # - private: The service is deployed in the user\\"s account.
+        # 
+        # - managed: The service is hosted in the service provider\\"s account.
+        # 
+        # - operation: The service is an Alibaba Cloud Managed Service.
         self.service_type = service_type
-        # The service state.
+        # The service status.
         self.status = status
         # The name of the service provider.
         self.supplier_name = supplier_name
-        # The URL of the service provider.
+        # The service provider\\"s URL.
         self.supplier_url = supplier_url
         # The service version.
         self.version = version
@@ -577,9 +600,9 @@ class ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos(DaraMo
         self.image = image
         # The language of the service instance.
         self.locale = locale
-        # The name of the service.
+        # The service name.
         self.name = name
-        # The description of the service.
+        # The service overview.
         self.short_description = short_description
 
     def validate(self):
@@ -626,13 +649,15 @@ class ListServiceInstancesResponseBodyServiceInstancesServiceCommodity(DaraModel
         saas_boost_metadata: str = None,
         type: str = None,
     ):
-        # The configuration metadata related to SaaS Boost.
+        # The metadata of the Software as a Service (SaaS) Boost configuration.
         self.saas_boost_metadata = saas_boost_metadata
-        # The platform type. Valid values:
+        # The type. Possible values:
         # 
-        # *   marketplace: Alibaba Cloud Marketplace.
-        # *   Css: Lingxiao.
-        # *   SaasBoost: SaaS Boost.
+        # - Marketplace: Alibaba Cloud Marketplace.
+        # 
+        # - Css: Lingxiao.
+        # 
+        # - SaasBoost: SaaS Boost.
         self.type = type
 
     def validate(self):

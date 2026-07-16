@@ -24,13 +24,13 @@ class CancelImagePipelineExecutionRequest(DaraModel):
         self.execution_id = execution_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.template_tag = template_tag
 
     def validate(self):
@@ -103,9 +103,9 @@ class CancelImagePipelineExecutionRequestTemplateTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.key = key
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.value = value
 
     def validate(self):

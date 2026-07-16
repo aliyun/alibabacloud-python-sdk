@@ -16,10 +16,17 @@ class GetAgentIndexRealTimeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Data list.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -77,10 +84,15 @@ class GetAgentIndexRealTimeResponseBodyData(DaraModel):
         rows: List[Dict[str, Any]] = None,
         total: int = None,
     ):
+        # Description of returned columns.
         self.columns = columns
+        # Current page number.
         self.page = page
+        # Page size.
         self.page_size = page_size
+        # Returned data results.
         self.rows = rows
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -141,7 +153,9 @@ class GetAgentIndexRealTimeResponseBodyDataColumns(DaraModel):
         key: str = None,
         title: str = None,
     ):
+        # Metric.
         self.key = key
+        # Metric description.
         self.title = title
 
     def validate(self):

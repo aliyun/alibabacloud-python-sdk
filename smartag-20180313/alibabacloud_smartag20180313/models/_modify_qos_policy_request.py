@@ -29,75 +29,77 @@ class ModifyQosPolicyRequest(DaraModel):
         source_port_range: str = None,
         start_time: str = None,
     ):
-        # The description of the traffic classification rule.
+        # The description of the stream classification rule.
         # 
-        # The description must be 1 to 512 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The description must be 1 to 512 characters in length. It must start with a letter and can contain digits, underscores (_), and hyphens (-).
         self.description = description
-        # The range of the destination IP addresses.
+        # The destination CIDR block.
         # 
-        # Specify the value of this parameter in CIDR notation. Example: 192.168.10.0/24.
+        # The destination CIDR block must be in CIDR format. Example: 192.168.10.0/24.
         self.dest_cidr = dest_cidr
-        # The range of destination ports.
+        # The destination port range.
         # 
-        # Valid values: **1** to **65535** and **-1**.
+        # Valid values: **-1** or **1** to **65535**.
         # 
-        # Set this parameter in one of the following formats:
+        # Examples of how to specify a port range:
         # 
-        # *   **1/200**: port 1 to port 200
-        # *   **80/80**: port 80
-        # *   **-1/-1**: all ports
+        # - **1/200**: ports 1 through 200.
+        # - **80/80**: port 80.
+        # - **-1/-1**: all ports.
         self.dest_port_range = dest_port_range
+        # The list of application group IDs.
         self.dpi_group_ids = dpi_group_ids
+        # The list of application IDs.
         self.dpi_signature_ids = dpi_signature_ids
-        # The time when the traffic classification rule becomes invalid.
+        # The time when the stream classification rule expires.
         # 
-        # Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss+0800 format. The time must be in UTC+8.
+        # Specify the time in the ISO 8601 standard. The time must be in UTC+8. Format: YYYY-MM-DDThh:mm:ss+0800.
         self.end_time = end_time
-        # The type of the protocol that applies to the traffic classification rule.
+        # The protocol.
         # 
-        # The supported protocols provided in this topic are for reference only. The actual protocols in the console shall prevail.
+        # For a list of supported protocols, see the information in the console.
         self.ip_protocol = ip_protocol
-        # The name of the traffic classification rule.
+        # The name of the stream classification rule.
         # 
-        # The name must be 2 to 100 characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 100 characters in length. It must start with a letter and can contain digits, underscores (_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The priority of the traffic throttling policy to which the traffic classification rule belongs.
+        # The priority of the throttling rule to which the stream classification rule belongs.
         # 
-        # Valid values: **1 to 3**. A smaller value indicates a higher priority.
+        # Valid values: 1 to **3**. A smaller value indicates a higher priority.
         self.priority = priority
         # The ID of the QoS policy.
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The ID of the traffic classification rule.
+        # The ID of the stream classification rule in the QoS policy.
         # 
         # This parameter is required.
         self.qos_policy_id = qos_policy_id
-        # The ID of the region to which the QoS policy belongs.
+        # The ID of the region where the QoS policy is created.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The range of the source IP addresses.
+        # The source CIDR block.
         # 
-        # Specify the value of this parameter in CIDR notation. Example: 192.168.1.0/24.
+        # The source CIDR block must be in CIDR format. Example: 192.168.1.0/24.
         self.source_cidr = source_cidr
-        # The range of source ports.
+        # The source port range.
         # 
-        # Valid values: **1** to **65535** and **-1**.
+        # Valid values: **-1** or **1** to **65535**.
         # 
-        # Set this parameter in one of the following formats:
+        # Examples of how to specify a port range:
         # 
-        # *   **1/200**: a port range from 1 to 200
-        # *   **80/80**: port 80
-        # *   **-1/-1**: all ports
+        # - **1/200**: ports 1 through 200.
+        # - **80/80**: port 80.
+        # - **-1/-1**: all ports.
         self.source_port_range = source_port_range
-        # The time when the traffic classification rule takes effect.
+        # The time when the stream classification rule takes effect.
         # 
-        # Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss+0800 format. The time must be in UTC+8.
+        # Specify the time in the ISO 8601 standard. The time must be in UTC+8. Format: YYYY-MM-DDThh:mm:ss+0800.
         self.start_time = start_time
 
     def validate(self):

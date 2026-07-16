@@ -18,12 +18,32 @@ class CreateExternalCACertificateShrinkRequest(DaraModel):
         tags: List[main_models.CreateExternalCACertificateShrinkRequestTags] = None,
         validity: str = None,
     ):
+        # Specifies API parameters that override content from the CSR or add information to the CA certificate.
         self.api_passthrough_shrink = api_passthrough_shrink
         self.cert_max_time = cert_max_time
+        # The certificate signing request (CSR). The CSR can contain information such as the SubjectDN and custom extensions for the CA certificate. The CA generates the SubjectKeyIdentifier, AuthorityKeyIdentifier, and CRLDistributionPoints extensions, ignoring any corresponding values in the CSR.
         self.csr = csr
+        # The ID of the external subordinate CA instance.
         self.instance_id = instance_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The tags to add to the certificate.
         self.tags = tags
+        # The certificate validity period. You can specify this using either relative or absolute time.
+        # 
+        # > Relative time: Supported units are year, month, and day.
+        # 
+        # - y - year
+        # 
+        # - m - month
+        # 
+        # - d - day
+        # 
+        # > Absolute time: Use GMT time in the `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"` format.
+        # 
+        # - To specify only the expiration time, use `$NotAfter`.
+        # 
+        # - To specify both the start and expiration times, use `$NotBefore/$NotAfter`.
         self.validity = validity
 
     def validate(self):
@@ -96,7 +116,9 @@ class CreateExternalCACertificateShrinkRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag\\"s key.
         self.key = key
+        # The tag\\"s value.
         self.value = value
 
     def validate(self):

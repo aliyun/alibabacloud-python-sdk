@@ -12,7 +12,9 @@ class DescribeVpcFirewallAssetRegionListResponseBody(DaraModel):
         region_no_list: List[str] = None,
         request_id: str = None,
     ):
+        # The list of regions.
         self.region_no_list = region_no_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

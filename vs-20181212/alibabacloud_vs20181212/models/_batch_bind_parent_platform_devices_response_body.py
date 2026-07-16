@@ -13,7 +13,9 @@ class BatchBindParentPlatformDevicesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchBindParentPlatformDevicesResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,12 @@ class BatchBindParentPlatformDevicesResponseBodyResults(DaraModel):
         error: str = None,
         parent_platform_id: str = None,
     ):
+        # The device ID.
         self.device_id = device_id
+        # The error message.
+        # > This parameter is returned only when an error occurs.
         self.error = error
+        # The ID of the parent platform.
         self.parent_platform_id = parent_platform_id
 
     def validate(self):

@@ -72,11 +72,15 @@ class GetAIWorkflowTaskResponseBodyWorkflowTask(DaraModel):
         # 
         # Valid values:
         # 
-        # *   running
-        # *   stopped
-        # *   failed
-        # *   partial-succeeded
-        # *   succeeded
+        # - running
+        # 
+        # - stopped
+        # 
+        # - failed
+        # 
+        # - partial-succeeded
+        # 
+        # - succeeded
         self.status = status
         # The ID of the workflow task.
         self.task_id = task_id
@@ -185,9 +189,11 @@ class GetAIWorkflowTaskResponseBodyWorkflowTaskWorkflow(DaraModel):
         self.name = name
         # Workflow template status. Valid values:
         # 
-        # *   Draft
-        # *   Published
-        # *   Editing
+        # - Draft
+        # 
+        # - Published
+        # 
+        # - Editing
         self.status = status
         # The scenario type of the template.
         self.type = type

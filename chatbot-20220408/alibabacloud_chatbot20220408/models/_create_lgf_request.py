@@ -12,9 +12,13 @@ class CreateLgfRequest(DaraModel):
         instance_id: str = None,
         lgf_definition: main_models.CreateLgfRequestLgfDefinition = None,
     ):
+        # The key for the business space. If you omit this parameter, the default business space is used. You can find the key on the Business Management page of your main account.
         self.agent_key = agent_key
+        # The chatbot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The LGF definition.
         self.lgf_definition = lgf_definition
 
     def validate(self):
@@ -57,8 +61,12 @@ class CreateLgfRequestLgfDefinition(DaraModel):
         intent_id: int = None,
         rule_text: str = None,
     ):
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The LGF configuration.
+        # 
         # This parameter is required.
         self.rule_text = rule_text
 

@@ -16,13 +16,21 @@ class ListLLMConfigsRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The name of the LLM configuration.
         self.name = name
+        # A pagination token returned from a previous call. Pass this token to retrieve the next page of results. If you do not specify this parameter, the query starts from the beginning.
         self.next_token = next_token
+        # The sort order.
         self.order = order
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The field to sort by.
         self.sort_by = sort_by
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

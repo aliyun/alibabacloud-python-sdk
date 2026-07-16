@@ -16,13 +16,21 @@ class CreatePocSampleRequest(DaraModel):
         tab: str = None,
         type: str = None,
     ):
+        # File Name.
         self.file_name = file_name
+        # File URL.
         self.file_url = file_url
+        # The language of the error message returned by the API. Valid values: zh: Chinese. en: English. The default value is en.
         self.lang = lang
+        # The area encoding.
         self.reg_id = reg_id
+        # The remark for the topic. It can only contain letters, digits, underscores (_), and hyphens (-). The length must be 3 to 64 characters.
         self.remark = remark
+        # Sample Name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # Access type.
         self.type = type
 
     def validate(self):

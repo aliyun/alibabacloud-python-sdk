@@ -14,25 +14,25 @@ class CreateArchiveFileInspectionTaskShrinkRequest(DaraModel):
         source_uri: str = None,
         user_data: str = None,
     ):
-        # **If you have no special requirements, leave this parameter empty.**
+        # **Leave this parameter empty if you do not have special requirements.**
         # 
-        # The configurations of authorization chains. For more information, see [Use authorization chains to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
+        # The configuration for chained authorization. This parameter is not required. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # The notification settings. For information about the asynchronous notification format, see [Asynchronous message examples](https://help.aliyun.com/document_detail/2743997.html).
+        # The notification configuration. For more information, see Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://help.aliyun.com/document_detail/2743997.html).
         # 
-        # >  The IMM operation does not support a callback URL. We recommend that you use Simple Message Queue (SMQ) to receive notifications.
+        # > Currently, API callbacks in IMM do not support custom webhook addresses. Use MNS instead.
         self.notification_shrink = notification_shrink
-        # The password that protects the package. If the package is password-protected, you must provide the password to view the contents of the package.
+        # The password of the compressed file. If the file is encrypted, provide the password to inspect its contents.
         self.password = password
-        # The name of the project.[](~~478153~~)
+        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The URI of the package.
+        # The location of the compressed file.
         # 
-        # Specify the OSS URI in the oss://${Bucket}/${Object} format, where `${Bucket}` is the name of the bucket in the same region as the current project and `${Object}` is the path of the object with the extension included.
+        # The Object Storage Service (OSS) URI must be in the oss\\://${Bucket}/${Object} format. In this format, `${Bucket}` is the name of the OSS bucket that is in the same region as the current project, and `${Object}` is the full path of the file, including the file name extension.
         self.source_uri = source_uri
-        # The custom information, which is returned in an asynchronous notification and facilitates notification management. The maximum length of the value is 2,048 bytes.
+        # Custom information that is returned in the asynchronous notification message. You can use this information to associate the notification message with your services. The maximum length is 2,048 bytes.
         self.user_data = user_data
 
     def validate(self):

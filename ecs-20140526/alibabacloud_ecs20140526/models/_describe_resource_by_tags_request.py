@@ -20,36 +20,45 @@ class DescribeResourceByTagsRequest(DaraModel):
         tag: List[main_models.DescribeResourceByTagsRequestTag] = None,
     ):
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number to return. The minimum value is 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # Default value: 50.
         self.page_size = page_size
-        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the resource is located. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # *   instance: Elastic Compute Service (ECS) instance
-        # *   disk: disk
-        # *   snapshot: snapshot
-        # *   image: image
-        # *   securitygroup: security group
-        # *   volume: storage volume
-        # *   eni: elastic network interface (ENI)
-        # *   ddh: dedicated host
-        # *   keypair: SSH key pair
-        # *   launchtemplate: launch template
+        # - `instance`: ECS instance.
         # 
-        # All the preceding values must be lowercase.
+        # - `disk`: disk.
+        # 
+        # - `snapshot`: snapshot.
+        # 
+        # - `image`: image.
+        # 
+        # - `securitygroup`: security group.
+        # 
+        # - `volume`: volume.
+        # 
+        # - `eni`: elastic network interface.
+        # 
+        # - `ddh`: dedicated host.
+        # 
+        # - `keypair`: key pair.
+        # 
+        # - `launchtemplate`: launch template.
+        # 
+        # All values must be in lowercase.
         self.resource_type = resource_type
-        # The tags.
+        # The tag list.
         self.tag = tag
 
     def validate(self):
@@ -128,9 +137,11 @@ class DescribeResourceByTagsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length.
+        # The tag key.
+        # 
+        # > For best compatibility, we recommend that you use the `Tag.N.Key` parameter.
         self.key = key
-        # The value of tag N of the resource. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length.
+        # The tag value. An empty string is allowed. The value can be up to 128 characters in length.
         self.value = value
 
     def validate(self):

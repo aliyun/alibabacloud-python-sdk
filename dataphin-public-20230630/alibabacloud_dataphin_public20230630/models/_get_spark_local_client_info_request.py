@@ -11,10 +11,19 @@ class GetSparkLocalClientInfoRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: str = None,
     ):
+        # The environment identifier. Valid values:
+        # 
+        # - DEV: development environment.
+        # - PROD: production environment.
+        # 
         # This parameter is required.
         self.env_enum = env_enum
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

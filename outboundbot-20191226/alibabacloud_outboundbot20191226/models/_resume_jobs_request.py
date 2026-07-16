@@ -16,13 +16,25 @@ class ResumeJobsRequest(DaraModel):
         job_reference_id: List[str] = None,
         scenario_id: str = None,
     ):
+        # Filter condition: Specifies whether to restart all jobs.
+        # 
         # This parameter is required.
         self.all = all
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Filter condition: Task group ID.
         self.job_group_id = job_group_id
+        # Job ID list.
+        # 
+        # > This parameter is required when All is false.
         self.job_id = job_id
+        # Third-party ID of the job.
+        # 
+        # > This is the ReferenceId uploaded by the customer when uploading the outbound list.
         self.job_reference_id = job_reference_id
+        # Filter condition: Scenario ID (historical parameter, deprecated).
         self.scenario_id = scenario_id
 
     def validate(self):

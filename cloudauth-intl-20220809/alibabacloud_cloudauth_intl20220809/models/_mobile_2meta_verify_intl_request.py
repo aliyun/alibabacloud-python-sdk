@@ -12,31 +12,28 @@ class Mobile2MetaVerifyIntlRequest(DaraModel):
         product_code: str = None,
         user_name: str = None,
     ):
-        # The mobile number.
+        # The phone number.
         # 
-        # >
-        # > - If **paramType** is set to **normal**, enter the plaintext value.
-        # > - If **paramType** is set to **md5**, enter the 32-bit lowercase MD5 string.
+        # - If ParamType is set to normal, pass in the phone number in plaintext.
+        # - If ParamType is set to md5, pass in the phone number in ciphertext as a 32-character lowercase MD5 string.
         # 
         # This parameter is required.
         self.mobile = mobile
-        # The parameter type:
+        # The parameter type. Valid values:
         # 
-        # - **normal**: plaintext
-        # 
-        # - **md5**: MD5-encrypted
+        # - normal: not encrypted
+        # - md5: MD5-encrypted.
         # 
         # This parameter is required.
         self.param_type = param_type
-        # The product to use. Set this parameter to the static value **MOBILE_2META**.
+        # The product code. Set this parameter to MOBILE_2META.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The name.
+        # The name. Valid values:
         # 
-        # > 
-        # > - If **paramType** is set to **normal**, enter the plaintext value.
-        # > - If **paramType** is set to **md5**, enter the 32-bit lowercase MD5 string.
+        # - If ParamType is set to normal, pass in the name in plaintext.
+        # - If ParamType is set to md5, pass in the name in ciphertext as a 32-character lowercase MD5 string.
         # 
         # This parameter is required.
         self.user_name = user_name

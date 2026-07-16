@@ -10,8 +10,9 @@ class UpdateSchemeTaskConfigRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Input parameter JSON. For details, see the request parameters section.
         self.json_str = json_str
 
     def validate(self):

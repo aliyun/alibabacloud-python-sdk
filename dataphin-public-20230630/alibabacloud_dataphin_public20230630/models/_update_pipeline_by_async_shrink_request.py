@@ -11,10 +11,16 @@ class UpdatePipelineByAsyncShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         update_command_shrink: str = None,
     ):
+        # The request context information.
+        # 
         # This parameter is required.
         self.context_shrink = context_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The pipeline node update configuration.
+        # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink
 

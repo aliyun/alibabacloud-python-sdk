@@ -11,7 +11,7 @@ class CreateAnnotationDataSetRequest(DaraModel):
         body: main_models.MLDataSetParam = None,
         dataset_id: str = None,
     ):
-        # The data structure of the request.
+        # The request struct for the dataset.
         self.body = body
         # The unique identifier of the dataset.
         self.dataset_id = dataset_id

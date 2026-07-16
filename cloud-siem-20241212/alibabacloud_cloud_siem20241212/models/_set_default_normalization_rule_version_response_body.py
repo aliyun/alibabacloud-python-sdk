@@ -11,7 +11,9 @@ class SetDefaultNormalizationRuleVersionResponseBody(DaraModel):
         normalization_rule_version: main_models.SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion = None,
         request_id: str = None,
     ):
+        # The normalization rule version.
         self.normalization_rule_version = normalization_rule_version
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,23 +58,41 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
         normalization_rule_type: str = None,
         normalization_rule_version: int = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         product_id: str = None,
         update_time: int = None,
         vendor_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The normalization rule category ID.
         self.normalization_category_id = normalization_category_id
+        # The normalization rule description.
         self.normalization_rule_description = normalization_rule_description
+        # The normalization rule expression.
         self.normalization_rule_expression = normalization_rule_expression
+        # The normalization rule format.
         self.normalization_rule_format = normalization_rule_format
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
+        # The normalization rule name.
         self.normalization_rule_name = normalization_rule_name
+        # The normalization rule status.
         self.normalization_rule_status = normalization_rule_status
+        # The normalization rule type. Valid values:
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The current version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The product ID.
         self.product_id = product_id
+        # The update time.
         self.update_time = update_time
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -115,6 +135,9 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
 
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
+
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
 
         if self.product_id is not None:
             result['ProductId'] = self.product_id
@@ -161,6 +184,9 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
 
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
+
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
 
         if m.get('ProductId') is not None:
             self.product_id = m.get('ProductId')

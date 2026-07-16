@@ -14,14 +14,15 @@ class QueryUserListResponseBody(DaraModel):
         result: main_models.QueryUserListResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The pagination result of the user list is returned. The detailed information list of organization members is stored in the response parameter Data.
+        # The paginated list of users. The `Data` parameter contains the details of each organization member.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -67,15 +68,15 @@ class QueryUserListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Returns the list of requested users.
+        # The list of users.
         self.data = data
-        # The page number of the returned page.
+        # The page number.
         self.page_num = page_num
-        # The number of rows per page set when the interface is requested.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of rows in the table.
+        # The total number of matching users.
         self.total_num = total_num
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -146,40 +147,54 @@ class QueryUserListResponseBodyResultData(DaraModel):
         user_id: str = None,
         user_type: int = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID. For users not added through RAM, this ID is available only after they log in.
         self.account_id = account_id
-        # The name of the Alibaba Cloud account that corresponds to the member.
+        # The Alibaba Cloud account name.
         self.account_name = account_name
-        # Indicates whether the organization administrator. Valid values:
+        # Indicates whether the user is an organization administrator. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: Yes
+        # 
+        # - `false`: No
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. Use the `RoleIdList` parameter instead.
         self.admin_user = admin_user
-        # Indicate whether the RAM user is a permission administrator. Valid values:
+        # Indicates whether the user is a permission administrator. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: Yes
+        # 
+        # - `false`: No
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. Use the `RoleIdList` parameter instead.
         self.auth_admin_user = auth_admin_user
         self.copilot_modules = copilot_modules
-        # User status: 
-        # - Active - false 
-        # - Inactive - true
-        self.is_deleted = is_deleted
-        # Join Date
-        self.joined_date = joined_date
-        # Last login time.
-        self.last_login_time = last_login_time
-        # The nickname of the organization member.
-        self.nick_name = nick_name
-        # List of organization role IDs bound to the user.
-        self.role_id_list = role_id_list
-        # The UserID in the Quick BI.
-        self.user_id = user_id
-        # The role type of the organization member. Valid values:
+        # Indicates whether the user is inactive.
         # 
-        # *   1 : developer
-        # *   2 : visitors
-        # *   3 : Analyst
+        # - `false`: Active
+        # 
+        # - `true`: Inactive
+        self.is_deleted = is_deleted
+        # The Unix timestamp (in milliseconds) that indicates when the user joined the organization.
+        self.joined_date = joined_date
+        # The Unix timestamp (in milliseconds) of the user\\"s last login.
+        self.last_login_time = last_login_time
+        # The nickname of the user.
+        self.nick_name = nick_name
+        # The IDs of the organization roles assigned to the user.
+        self.role_id_list = role_id_list
+        # The user ID in Quick BI.
+        self.user_id = user_id
+        # The user type of the organization member. Valid values:
+        # 
+        # - `1`: developer
+        # 
+        # - `2`: viewer
+        # 
+        # - `3`: analyst
         self.user_type = user_type
 
     def validate(self):

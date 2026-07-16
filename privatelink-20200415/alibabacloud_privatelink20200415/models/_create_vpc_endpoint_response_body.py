@@ -25,54 +25,71 @@ class CreateVpcEndpointResponseBody(DaraModel):
         vpc_id: str = None,
         zone_affinity_enabled: bool = None,
     ):
-        # The protocol. Valid values:
+        # The IP version of the endpoint. Valid values:
         # 
-        # *   **IPv4** (default)
-        # *   **DualStack**
+        # - **IPv4**: IPv4 (default).
+        # 
+        # - **DualStack**: Dual-stack.
         self.address_ip_version = address_ip_version
-        # The bandwidth of the endpoint connection. Unit: Mbit/s.
+        # The bandwidth of the endpoint connection, in Mbps.
         self.bandwidth = bandwidth
-        # The state of the endpoint connection. Valid values:
+        # The connection status of the endpoint. Valid values:
         # 
-        # *   **Pending**: The connection is being modified.
-        # *   **Connecting**: The connection is being established.
-        # *   **Connected**: The connection is established.
-        # *   **Disconnecting**: The endpoint is being disconnected from the endpoint service.
-        # *   **Disconnected**: The endpoint is disconnected from the endpoint service.
-        # *   **Deleting**: The connection is being deleted.
+        # - **Pending**: The endpoint is being modified.
+        # 
+        # - **Connecting**: The endpoint is being connected.
+        # 
+        # - **Connected**: The endpoint is connected.
+        # 
+        # - **Disconnecting**: The endpoint is being disconnected.
+        # 
+        # - **Disconnected**: The endpoint is disconnected.
+        # 
+        # - **Deleting**: The endpoint is being deleted.
         self.connection_status = connection_status
-        # The time when the endpoint was created.
+        # The time the endpoint was created.
         self.create_time = create_time
+        # The cross-region bandwidth in Mbps. This parameter is returned only when the endpoint and the endpoint service are in different regions.
         self.cross_region_bandwidth = cross_region_bandwidth
-        # The service state of the endpoint. Valid values:
+        # The business status of the endpoint. Valid values:
         # 
-        # *   **Normal**: The endpoint runs as expected.
-        # *   **FinancialLocked**: The endpoint is locked due to overdue payments.
+        # - **Normal**: The endpoint is running as expected.
+        # 
+        # - **FinancialLocked**: The endpoint is locked due to overdue payments.
         self.endpoint_business_status = endpoint_business_status
         # The description of the endpoint.
         self.endpoint_description = endpoint_description
-        # The domain name of the endpoint.
+        # The endpoint domain name.
         self.endpoint_domain = endpoint_domain
-        # The endpoint ID.
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
         # The name of the endpoint.
         self.endpoint_name = endpoint_name
-        # The state of the endpoint. Valid values:
+        # The status of the endpoint. Valid values:
         # 
-        # *   **Creating**: The endpoint is being created.
-        # *   **Active**: The endpoint is available.
-        # *   **Pending**: The endpoint is being modified.
-        # *   **Deleting**: The endpoint is being deleted.
+        # - **Creating**: The endpoint is being created.
+        # 
+        # - **Active**: The endpoint is available.
+        # 
+        # - **Pending**: The endpoint is being modified.
+        # 
+        # - **Deleting**: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
         # The request ID.
         self.request_id = request_id
-        # The ID of the endpoint service with which the endpoint is associated.
+        # The ID of the associated endpoint service.
         self.service_id = service_id
-        # The name of the endpoint service with which the endpoint is associated.
+        # The name of the associated endpoint service.
         self.service_name = service_name
+        # The region ID of the endpoint service.
         self.service_region_id = service_region_id
-        # The ID of the VPC to which the endpoint belongs.
+        # The ID of the VPC that contains the endpoint.
         self.vpc_id = vpc_id
+        # Indicates whether zone affinity is enabled. Valid values:
+        # 
+        # - **true**: Zone affinity is enabled.
+        # 
+        # - **false**: Zone affinity is disabled.
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):

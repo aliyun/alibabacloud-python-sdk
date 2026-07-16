@@ -23,22 +23,42 @@ class DescribeBinlogFilesRequest(DaraModel):
         src_region: str = None,
         start_time: str = None,
     ):
+        # The binlog ID. This parameter is not currently supported.
         self.binlog_id = binlog_id
+        # The ID of the instance. If the instance is a sharded cluster, you must also specify the **NodeId** parameter.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The region where the cross-region backup is stored.
+        # 
+        # > This parameter is required when you query cross-region backups.
         self.dest_region = dest_region
+        # The end time of the query. The time must be later than the start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss.xxx*Z format. The time is displayed in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The ID of the mongos node or shard node in the sharded cluster instance.
+        # 
+        # > This parameter is applicable only to sharded cluster instances.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The region of the source instance for a cross-region backup.
+        # 
+        # > - This parameter is required when you query cross-region backups.
         self.src_region = src_region
+        # The start time of the query. The time is in the *yyyy-MM-dd*T*HH:mm:ss.xxx*Z format. The time is displayed in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

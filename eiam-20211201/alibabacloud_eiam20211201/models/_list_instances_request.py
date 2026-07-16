@@ -9,21 +9,31 @@ from darabonba.model import DaraModel
 class ListInstancesRequest(DaraModel):
     def __init__(
         self,
+        cross_region_replication: str = None,
+        edition: str = None,
         instance_ids: List[str] = None,
         page_number: int = None,
         page_size: int = None,
         status: str = None,
     ):
+        # The cross-region replication status.
+        self.cross_region_replication = cross_region_replication
+        # The license edition. Valid values:
+        # - free: Free Edition.
+        # - trial: Trial Edition.
+        # - scalability: Scalability Edition.
+        # - standard: Standard Edition.
+        # - enterprise: Enterprise Edition.
+        self.edition = edition
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # The status of the instance. Valid values:
-        # 
-        # *   creating
-        # *   running
+        # The instance status. Valid values:
+        # - creating: Being created.
+        # - running: Running.
         self.status = status
 
     def validate(self):
@@ -34,6 +44,12 @@ class ListInstancesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cross_region_replication is not None:
+            result['CrossRegionReplication'] = self.cross_region_replication
+
+        if self.edition is not None:
+            result['Edition'] = self.edition
+
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
@@ -50,6 +66,12 @@ class ListInstancesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CrossRegionReplication') is not None:
+            self.cross_region_replication = m.get('CrossRegionReplication')
+
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
+
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
 

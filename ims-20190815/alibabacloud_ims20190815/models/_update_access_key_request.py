@@ -13,8 +13,9 @@ class UpdateAccessKeyRequest(DaraModel):
     ):
         # The status of the AccessKey pair. Valid values:
         # 
-        # *   Active
-        # *   Inactive
+        # - Active
+        # 
+        # - Inactive
         # 
         # This parameter is required.
         self.status = status

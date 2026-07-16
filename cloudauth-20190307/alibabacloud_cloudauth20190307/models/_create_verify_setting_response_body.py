@@ -15,15 +15,15 @@ class CreateVerifySettingResponseBody(DaraModel):
         solution: str = None,
         step_list: List[str] = None,
     ):
-        # Verification scenario name.
+        # The name of the verification scenario.
         self.biz_name = biz_name
-        # Verification scenario identifier.
+        # The identifier of the verification scenario.
         self.biz_type = biz_type
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Authentication solution name.
+        # The name of the verification solution.
         self.solution = solution
-        # Authentication steps
+        # The verification steps. guide indicates the guide step, and privacy indicates the authorization step.
         self.step_list = step_list
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListInstancesWithEcsInfoResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message. An empty value indicates that all data has been read.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -91,18 +96,37 @@ class ListInstancesWithEcsInfoResponseBodyData(DaraModel):
         resource_group_name: str = None,
         status: str = None,
     ):
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The instance tags.
         self.instance_tag = instance_tag
+        # The kernel version.
         self.kernel_version = kernel_version
+        # The architecture of the ECS instance.
         self.os_arch = os_arch
+        # The health score of the instance.
         self.os_health_score = os_health_score
+        # The operating system name of the instance.
         self.os_name = os_name
+        # The private IP address of the instance.
         self.private_ip = private_ip
+        # The public IP address of the instance.
         self.public_ip = public_ip
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource group name.
         self.resource_group_name = resource_group_name
+        # The running status of the instance. Valid values:
+        # - **Running**: The instance is running.
+        # - **Offline**: The instance is offline.
+        # 
+        # 
+        # 
+        # > An instance in the Offline state indicates that the heartbeat between the node and the SysOM server is lost. It does not mean that the corresponding ECS instance has stopped running.
         self.status = status
 
     def validate(self):
@@ -211,7 +235,9 @@ class ListInstancesWithEcsInfoResponseBodyDataInstanceTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

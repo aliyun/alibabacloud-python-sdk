@@ -11,7 +11,7 @@ class DescribeCloudResourceStatusRequest(DaraModel):
     ):
         # The AccessKey secret used to access cloud resources.
         # 
-        # >  You can call the [ListCloudAccess](https://help.aliyun.com/document_detail/2712219.html) operation to obtain the ID.
+        # > You can call the [ListCloudAccess](https://help.aliyun.com/document_detail/2712219.html) operation to obtain the ID.
         self.secret_id = secret_id
 
     def validate(self):

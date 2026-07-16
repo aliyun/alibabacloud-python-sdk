@@ -10,6 +10,8 @@ class QueryChildDivisionCodeRequest(DaraModel):
         self,
         body: main_models.DivisionQuery = None,
     ):
+        # The parameters for querying child division codes.
+        # 
         # This parameter is required.
         self.body = body
 

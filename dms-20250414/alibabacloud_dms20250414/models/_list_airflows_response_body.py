@@ -20,15 +20,27 @@ class ListAirflowsResponseBody(DaraModel):
         root: main_models.ListAirflowsResponseBodyRoot = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The error code. This parameter is returned when an error occurs.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The number of entries per page.
         self.max_results = max_results
+        # The error message.
         self.message = message
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # Reuqest ID。
+        # The request ID.
         self.request_id = request_id
+        # The details of the data.
         self.root = root
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -107,7 +119,9 @@ class ListAirflowsResponseBodyRoot(DaraModel):
         list: List[main_models.ListAirflowsResponseBodyRootList] = None,
         total_count: int = None,
     ):
+        # The list of data.
         self.list = list
+        # The total number of matching Airflow instances.
         self.total_count = total_count
 
     def validate(self):
@@ -169,27 +183,47 @@ class ListAirflowsResponseBodyRootList(DaraModel):
         workspace_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the Airflow instance.
         self.airflow_id = airflow_id
+        # The name of the Airflow instance.
         self.airflow_name = airflow_name
+        # The specifications of the Airflow instance.
         self.app_spec = app_spec
+        # The type.
         self.app_type = app_type
+        # The custom configuration.
         self.custom_airflow_cfg = custom_airflow_cfg
+        # The DAGs folder that Airflow scans.
         self.dags_dir = dags_dir
+        # The error message returned when the deployment fails.
         self.deploy_error_msg = deploy_error_msg
+        # The description of the Airflow instance.
         self.description = description
+        # The time when the Airflow instance was created.
         self.gmt_created = gmt_created
+        # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
+        # The path in OSS.
         self.oss_path = oss_path
+        # The plugins folder that Airflow scans.
         self.plugins_dir = plugins_dir
+        # The path to the file that contains the dependencies.
         self.requirement_file = requirement_file
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The path to the script that is loaded when Airflow starts.
         self.startup_file = startup_file
+        # The status of the Airflow instance.
         self.status = status
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
+        # The number of worker nodes.
         self.worker_serverless_replicas = worker_serverless_replicas
+        # The ID of the DMS workspace.
         self.workspace_id = workspace_id
+        # The ID of the zone in the region.
         self.zone_id = zone_id
 
     def validate(self):

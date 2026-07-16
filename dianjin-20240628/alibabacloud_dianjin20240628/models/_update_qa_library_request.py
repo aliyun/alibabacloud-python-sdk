@@ -14,9 +14,14 @@ class UpdateQaLibraryRequest(DaraModel):
         qa_library_id: str = None,
         request_id: str = None,
     ):
+        # A list of parsed Q\\&A pair results.
+        # 
         # This parameter is required.
         self.parse_qa_results = parse_qa_results
+        # The ID of the Q\\&A library.
         self.qa_library_id = qa_library_id
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
 
@@ -66,8 +71,12 @@ class UpdateQaLibraryRequestParseQaResults(DaraModel):
         answer: str = None,
         question: str = None,
     ):
+        # The answer.
+        # 
         # This parameter is required.
         self.answer = answer
+        # The question.
+        # 
         # This parameter is required.
         self.question = question
 

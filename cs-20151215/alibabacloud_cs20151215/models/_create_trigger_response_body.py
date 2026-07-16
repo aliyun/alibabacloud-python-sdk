@@ -13,13 +13,13 @@ class CreateTriggerResponseBody(DaraModel):
         project_id: str = None,
         type: str = None,
     ):
-        # The actions performed by the trigger.
+        # The trigger action.
         self.action = action
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The trigger ID.
         self.id = id
-        # The name of the trigger project.
+        # The trigger project name.
         self.project_id = project_id
         # The trigger type.
         self.type = type

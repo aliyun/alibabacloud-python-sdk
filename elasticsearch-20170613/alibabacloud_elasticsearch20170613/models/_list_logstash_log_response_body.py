@@ -13,9 +13,9 @@ class ListLogstashLogResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListLogstashLogResponseBodyResult] = None,
     ):
-        # The details of the log.
+        # The request ID.
         self.request_id = request_id
-        # The timestamp of log generation. Unit: ms.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -61,12 +61,15 @@ class ListLogstashLogResponseBodyResult(DaraModel):
         level: str = None,
         timestamp: int = None,
     ):
-        # The IP address of the node that generates the log.
+        # The detailed content of the log.
         self.content = content
+        # The IP address of the node that generated the log.
         self.host = host
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the instance.
+        # The log level. Valid values: trace, debug, info, warn, and error. GC logs do not have a level.
         self.level = level
+        # The timestamp when the log was generated. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):

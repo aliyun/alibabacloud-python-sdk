@@ -12,15 +12,15 @@ class FileUploadRequest(DaraModel):
         lang: str = None,
         tab: str = None,
     ):
-        # File name.
+        # The file name.
         self.file_name = file_name
-        # File URL
+        # The file URL.
         self.file_url = file_url
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Scenario.
+        # The scenario.
         self.tab = tab
 
     def validate(self):

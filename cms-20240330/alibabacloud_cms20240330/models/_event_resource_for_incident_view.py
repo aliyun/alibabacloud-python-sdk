@@ -13,10 +13,15 @@ class EventResourceForIncidentView(DaraModel):
         probs: str = None,
         tags: str = None,
     ):
+        # The domain of the resource type.
         self.domain = domain
+        # The entity ID.
         self.entity_id = entity_id
+        # The entity type.
         self.entity_type = entity_type
+        # The string that describes the properties of the resource.
         self.probs = probs
+        # The tags.
         self.tags = tags
 
     def validate(self):

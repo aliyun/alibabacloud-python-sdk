@@ -10,9 +10,9 @@ class CreateFileDetectResponseBody(DaraModel):
         hash_key: str = None,
         request_id: str = None,
     ):
-        # The identifier of the file.
+        # The unique identifier of the file.
         self.hash_key = hash_key
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

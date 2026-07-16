@@ -13,13 +13,13 @@ class ListLayersRequest(DaraModel):
         prefix: str = None,
         public: str = None,
     ):
-        # The number of layers that are returned
+        # The number of layers to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
-        # Specifies whether the layer is official. Valid values: true and false.
+        # Specifies whether the layer is an official layer. Valid values: true and false.
         self.official = official
-        # The name prefix of the layer.
+        # The prefix of the layer name.
         self.prefix = prefix
         # Specifies whether the layer is public. Valid values: true and false.
         self.public = public

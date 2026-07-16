@@ -9,12 +9,10 @@ class SetBuildRiskDefineRuleConfigRequest(DaraModel):
         self,
         config: str = None,
     ):
-        # The configuration item for scanning image build command risks. Valid values:
-        # 
-        # *   **classKey**: Set the value to a valid value of the ClassKey parameter in RuleTree.
-        # *   **ruleList**: Set the value to a valid value of the RuleKey parameter in RuleList.
-        # 
-        # >  You can call the [GetBuildRiskDefineRuleConfig](~~GetBuildRiskDefineRuleConfig~~) operation to query the valid values.
+        # The risk items in the risk scan configuration for image build instructions. Valid values:
+        # - **classKey**: the ClassKey field value from RuleTree
+        # - **ruleList**: the RuleKey field values under RuleList
+        # > Call the [GetBuildRiskDefineRuleConfig](~~GetBuildRiskDefineRuleConfig~~) operation to obtain this parameter.
         self.config = config
 
     def validate(self):

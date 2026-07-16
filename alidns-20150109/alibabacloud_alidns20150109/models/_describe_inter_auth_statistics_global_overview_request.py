@@ -12,9 +12,17 @@ class DescribeInterAuthStatisticsGlobalOverviewRequest(DaraModel):
         overview_period: str = None,
         server_region: str = None,
     ):
+        # The language of the returned availability zone names. Valid values:
+        # 
+        # - **zh-CN**: Chinese.
+        # 
+        # - **en-US** (default): English.
         self.accept_language = accept_language
+        # A unique, client-generated token to ensure the idempotence of the request. The token must be a string of ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The statistical period.
         self.overview_period = overview_period
+        # The ID of the region.
         self.server_region = server_region
 
     def validate(self):

@@ -14,12 +14,20 @@ class QueryScriptsByStatusRequest(DaraModel):
         page_size: int = None,
         status_list: List[str] = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The list of statuses.
+        # 
         # This parameter is required.
         self.status_list = status_list
 

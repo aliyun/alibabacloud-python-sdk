@@ -11,9 +11,9 @@ class CreateNetworkInterfacePermissionResponseBody(DaraModel):
         network_interface_permission: main_models.CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission = None,
         request_id: str = None,
     ):
-        # Details about permissions on the ENI.
+        # The information about the ENI permission.
         self.network_interface_permission = network_interface_permission
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,22 +54,22 @@ class CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission(Dar
         permission_state: str = None,
         service_name: str = None,
     ):
-        # The ID of the Alibaba Cloud partner (a certified ISV).
+        # The ID of the Alibaba Cloud partner (certified ISV) account.
         self.account_id = account_id
-        # The ID of the ENI.
+        # The ENI ID.
         self.network_interface_id = network_interface_id
-        # The ID of the permission on the ENI.
+        # The ENI permission ID.
         self.network_interface_permission_id = network_interface_permission_id
-        # The permission on the ENI.
+        # The ENI permission.
         self.permission = permission
-        # The state of the permission on the ENI. Valid values:
+        # The ENI permission state. Valid values:
         # 
-        # *   Pending: The permission is being granted.
-        # *   Granted: The permission is granted.
-        # *   Revoking: The permission is being revoked.
-        # *   Revoked: The permission is revoked.
+        # - Pending: The permission is being granted.
+        # - Granted: The permission has been granted.
+        # - Revoking: The permission is being revoked.
+        # - Revoked: The permission has been revoked.
         self.permission_state = permission_state
-        # The name of the Alibaba Cloud service.
+        # The Alibaba Cloud service name.
         self.service_name = service_name
 
     def validate(self):

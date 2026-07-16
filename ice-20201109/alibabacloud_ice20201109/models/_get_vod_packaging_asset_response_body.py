@@ -178,9 +178,11 @@ class GetVodPackagingAssetResponseBodyAssetEgressEndpoints(DaraModel):
         self.configuration_name = configuration_name
         # The asset status. Valid values:
         # 
-        # *   Queuing: The asset is waiting for packaging.
-        # *   Playable: The asset is packaged and playable.
-        # *   Failed: The asset fails to be packaged.
+        # - Queuing: The asset is waiting for packaging.
+        # 
+        # - Playable: The asset is packaged and playable.
+        # 
+        # - Failed: The asset fails to be packaged.
         self.status = status
         # The playback URL. If the asset fails to be packaged, no playback URL is returned.
         self.url = url

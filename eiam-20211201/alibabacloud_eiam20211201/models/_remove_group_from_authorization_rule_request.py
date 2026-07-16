@@ -11,15 +11,15 @@ class RemoveGroupFromAuthorizationRuleRequest(DaraModel):
         group_id: str = None,
         instance_id: str = None,
     ):
-        # 授权规则标识。
+        # The ID of the authorization rule.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # 组ID。
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

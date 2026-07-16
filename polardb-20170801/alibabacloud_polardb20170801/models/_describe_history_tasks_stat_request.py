@@ -22,21 +22,48 @@ class DescribeHistoryTasksStatRequest(DaraModel):
         to_exec_time: int = None,
         to_start_time: str = None,
     ):
+        # The minimum running time. The query returns tasks with a running time greater than this value. Unit: seconds.
         self.from_exec_time = from_exec_time
+        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.from_start_time = from_start_time
+        # The instance ID. This corresponds to the ins_name parameter. You can specify up to 30 instance IDs. Separate multiple IDs with commas (,).
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The task status. Valid values:
+        # 
+        # - **Scheduled**: The task is waiting to be executed.
+        # 
+        # - **Running**: The task is running.
+        # 
+        # - **Succeed**: The task is successful.
+        # 
+        # - **Cancelling**: The task is being canceled.
+        # 
+        # - **Canceled**: The task is canceled.
+        # 
+        # - **Waiting**: The task is waiting for a scheduled time.
+        # 
+        # To query tasks in multiple states, separate the states with commas (,). If you leave this parameter empty, tasks in all states are queried.
         self.status = status
+        # The task ID. You can specify up to 30 task IDs. Separate multiple IDs with commas (,). If you leave this parameter empty, this parameter is not used as a filter.
         self.task_id = task_id
+        # The task type. This parameter is used to query tasks of a specific type. You can specify up to 30 task types. Separate multiple types with commas (,). If you leave this parameter empty, this parameter is not used as a filter.
         self.task_type = task_type
+        # The maximum running time. The query returns tasks with a running time less than or equal to this value. Unit: seconds.
         self.to_exec_time = to_exec_time
+        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.to_start_time = to_start_time
 

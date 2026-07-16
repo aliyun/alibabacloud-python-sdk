@@ -23,8 +23,9 @@ class UpdateCenInterRegionTrafficQosPolicyAttributeRequest(DaraModel):
         self.client_token = client_token
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32,7 +33,7 @@ class UpdateCenInterRegionTrafficQosPolicyAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the QoS policy.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.traffic_qos_policy_description = traffic_qos_policy_description
         # The ID of the QoS policy.
         # 
@@ -40,7 +41,7 @@ class UpdateCenInterRegionTrafficQosPolicyAttributeRequest(DaraModel):
         self.traffic_qos_policy_id = traffic_qos_policy_id
         # The new name of the QoS policy.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
         self.traffic_qos_policy_name = traffic_qos_policy_name
 
     def validate(self):

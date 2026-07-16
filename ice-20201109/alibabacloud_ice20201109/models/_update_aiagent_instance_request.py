@@ -13,13 +13,48 @@ class UpdateAIAgentInstanceRequest(DaraModel):
         template_config: main_models.AIAgentTemplateConfig = None,
         user_data: str = None,
     ):
+        # The AI agent configuration to update. This configuration is merged with the existing configuration of the instance. For more information, see the AIAgentConfig definition. The following parameters in AIAgentConfig can be updated:
+        # 
+        # - VoiceId
+        # 
+        # - EnableVoiceInterrupt
+        # 
+        # - Greeting
+        # 
+        # - Volume
+        # 
+        # - EnablePushToTalk
+        # 
+        # - UseVoiceprint
+        # 
+        # - BailianAppParams
         self.agent_config = agent_config
-        # The ID of the AI agent that you want to update.
+        # The ID of the AI agent instance.
+        # 
+        # > This unique ID is returned after the AI agent instance starts successfully. For more information about starting an agent, see [StartAIAgentInstance](https://help.aliyun.com/document_detail/2846201.html) and [GenerateAIAgentCall](https://help.aliyun.com/document_detail/2846209.html).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The template configurations of the AI agent. The configurations are merged with the template configurations that are used to start the AI agent. For more information, see the definition of TemplateConfig.
+        # > The AI agent template configuration. This parameter is deprecated. Use the AgentConfig parameter instead.
+        # 
+        # The AI agent configuration to update. This configuration is merged with the existing configuration of the instance. For more information, see the [AIAgentTemplateConfig](https://help.aliyun.com/document_detail/2846193.html) definition.
+        # The following parameters in AIAgentTemplateConfig can be updated:
+        # 
+        # - VoiceId (Voice ID)
+        # 
+        # - EnableVoiceInterrupt (Enable voice interruption)
+        # 
+        # - Greeting (Greeting)
+        # 
+        # - Volume (Volume)
+        # 
+        # - EnablePushToTalk (Enable push-to-talk)
+        # 
+        # - UseVoiceprint (Use voiceprint)
+        # 
+        # - AsrMaxSilence (ASR maximum silence duration)
         self.template_config = template_config
+        # Custom user data.
         self.user_data = user_data
 
     def validate(self):

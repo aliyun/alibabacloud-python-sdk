@@ -10,8 +10,12 @@ class GetSecurityLevelRequest(DaraModel):
         index: int = None,
         op_tenant_id: int = None,
     ):
+        # The sensitivity level of the data classification.
+        # 
         # This parameter is required.
         self.index = index
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

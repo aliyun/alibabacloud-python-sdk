@@ -9,6 +9,7 @@ class GetLivyComputeTokenRequest(DaraModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

@@ -9,17 +9,32 @@ class DescribeConsumersRequest(DaraModel):
         self,
         consumer_group_id: str = None,
         consumer_id: str = None,
+        consumer_name: str = None,
+        consumer_name_list: str = None,
         gw_cluster_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
+        # The user group ID.
         self.consumer_group_id = consumer_group_id
+        # The user ID.
         self.consumer_id = consumer_id
+        self.consumer_name = consumer_name
+        self.consumer_name_list = consumer_name_list
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # * **30**
+        # * **50**
+        # * **100**
+        # Default value: **30**.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -35,6 +50,12 @@ class DescribeConsumersRequest(DaraModel):
 
         if self.consumer_id is not None:
             result['ConsumerId'] = self.consumer_id
+
+        if self.consumer_name is not None:
+            result['ConsumerName'] = self.consumer_name
+
+        if self.consumer_name_list is not None:
+            result['ConsumerNameList'] = self.consumer_name_list
 
         if self.gw_cluster_id is not None:
             result['GwClusterId'] = self.gw_cluster_id
@@ -57,6 +78,12 @@ class DescribeConsumersRequest(DaraModel):
 
         if m.get('ConsumerId') is not None:
             self.consumer_id = m.get('ConsumerId')
+
+        if m.get('ConsumerName') is not None:
+            self.consumer_name = m.get('ConsumerName')
+
+        if m.get('ConsumerNameList') is not None:
+            self.consumer_name_list = m.get('ConsumerNameList')
 
         if m.get('GwClusterId') is not None:
             self.gw_cluster_id = m.get('GwClusterId')

@@ -17,11 +17,21 @@ class ListDataLakeTablebaseInfoResponseBody(DaraModel):
         tablebase_info_list: List[main_models.DLTablebaseInfo] = None,
         total_count: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. The return values are:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The list of data lake tables.
         self.tablebase_info_list = tablebase_info_list
+        # The number of tables that meet the conditions.
         self.total_count = total_count
 
     def validate(self):

@@ -24,37 +24,39 @@ class ListIpamScopesRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.ListIpamScopesRequestTags] = None,
     ):
-        # The ID of the IPAM.
+        # The instance ID of the IPAM.
         self.ipam_id = ipam_id
-        # The IDs of IPAM scopes.
+        # The instance IDs of the IPAM scopes.
         self.ipam_scope_ids = ipam_scope_ids
         # The name of the IPAM scope.
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.ipam_scope_name = ipam_scope_name
         # The type of the IPAM scope. Valid values:
         # 
-        # *   **public**
-        # *   **private**
-        self.ipam_scope_type = ipam_scope_type
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
-        self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - **public**: the public scope.
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - **private**: the private scope.
+        self.ipam_scope_type = ipam_scope_type
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
+        self.max_results = max_results
+        # The token that is used for the next query. Valid values:
+        # 
+        # - You do not need to specify this parameter for the first query.
+        # 
+        # - For a subsequent query, set this parameter to the NextToken value returned from the last query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPAM instance is hosted. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The ID of the region where the IPAM instance is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID of the IPAM scope.
+        # The ID of the resource group to which the IPAM scope belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag list.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -163,13 +165,13 @@ class ListIpamScopesRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The tag key must start with a letter but cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with a `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

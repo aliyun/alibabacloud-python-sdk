@@ -21,8 +21,9 @@ class ModifyDatabaseRequest(DaraModel):
     ):
         # The new address type of the database. Valid values:
         # 
-        # *   **Public**
-        # *   **Private**
+        # - **Public**
+        # 
+        # - **Private**
         self.active_address_type = active_address_type
         # The new remarks of the database.
         self.comment = comment
@@ -46,7 +47,7 @@ class ModifyDatabaseRequest(DaraModel):
         self.instance_id = instance_id
         # The ID of the new network domain for the database.
         # 
-        # >  You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
+        # > You can call the [ListNetworkDomains](https://help.aliyun.com/document_detail/2758827.html) operation to query the network domain ID.
         self.network_domain_id = network_domain_id
         # The region ID of the bastion host that manages the database to modify.
         # 

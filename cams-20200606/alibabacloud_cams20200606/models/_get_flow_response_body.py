@@ -17,7 +17,7 @@ class GetFlowResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -85,48 +85,22 @@ class GetFlowResponseBodyData(DaraModel):
         preview_url_expires: int = None,
         status: str = None,
     ):
-        # The categories of the Flow.
+        # The list of categories.
         self.categories = categories
-        # The version number of the API.
+        # The API version.
         self.data_api_version = data_api_version
         self.endpoint_uri = endpoint_uri
-        # The Flow ID.
+        # The flow ID.
         self.flow_id = flow_id
-        # The Flow name.
+        # The flow name.
         self.flow_name = flow_name
         # The JSON version.
         self.jsonversion = jsonversion
         # The temporary preview URL.
         self.preview_url = preview_url
-        # The time when the preview URL expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The expiration time of the preview URL.
         self.preview_url_expires = preview_url_expires
-        # The state of the Flow.
-        # 
-        # Valid values:
-        # 
-        # *   PUBLISHED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DRAFT
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DEPRECATED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The status of the flow.
         self.status = status
 
     def validate(self):

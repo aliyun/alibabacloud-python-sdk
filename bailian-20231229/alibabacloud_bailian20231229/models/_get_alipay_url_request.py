@@ -10,7 +10,9 @@ class GetAlipayUrlRequest(DaraModel):
         app_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the Bailian application.
         self.app_id = app_id
+        # The ID of the Bailian workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

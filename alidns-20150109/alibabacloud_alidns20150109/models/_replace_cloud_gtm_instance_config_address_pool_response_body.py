@@ -10,11 +10,13 @@ class ReplaceCloudGtmInstanceConfigAddressPoolResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful, with values: 
-        # - true: Success. 
-        # - false: Failure.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

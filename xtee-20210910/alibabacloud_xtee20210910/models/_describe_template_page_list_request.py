@@ -17,25 +17,25 @@ class DescribeTemplatePageListRequest(DaraModel):
         template_status: str = None,
         template_type: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Event code.
+        # The event code.
         self.event_codes = event_codes
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Event name
+        # The event name.
         self.template_name = template_name
-        # Event template search field
+        # The search field for event templates.
         self.template_search_item = template_search_item
-        # Event status
+        # The event status.
         self.template_status = template_status
-        # Template type
+        # The templatetype.
         self.template_type = template_type
 
     def validate(self):

@@ -22,19 +22,57 @@ class ListDataSetsShrinkRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The ID of the dataset.
         self.data_set_id = data_set_id
+        # The list of dataset IDs.
         self.data_set_ids_shrink = data_set_ids_shrink
+        # The name of the dataset.
         self.data_set_name = data_set_name
+        # The status of the dataset. Valid values:
+        # 
+        # - 0: deleted.
+        # 
+        # - 1: enabled.
         self.data_set_status = data_set_status
+        # The type of the dataset. Valid values:
+        # 
+        # - custom: custom.
+        # 
+        # - preset: predefined.
         self.data_set_type = data_set_type
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of results to return for the request. This parameter is used for queries that use NextToken. Valid values: 1 to 100. Default value: 50.
         self.max_results = max_results
+        # The token that is used to start the next query.
         self.next_token = next_token
+        # The sort order. Valid values:
+        # 
+        # - **asc** (default): ascending.
+        # 
+        # - **desc**: descending.
         self.order_direction = order_direction
+        # The field to use for sorting. Valid values:
+        # 
+        # - GmtCreate: creation time.
+        # 
+        # - GmtModified: update time.
         self.order_field_name = order_field_name
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region where the Data Management Center for threat analysis is deployed. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The user ID that an administrator uses to switch to the perspective of a member.
         self.role_for = role_for
 
     def validate(self):

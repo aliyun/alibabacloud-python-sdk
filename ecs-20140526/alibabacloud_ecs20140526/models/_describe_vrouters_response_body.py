@@ -16,10 +16,15 @@ class DescribeVRoutersResponseBody(DaraModel):
         total_count: int = None,
         vrouters: main_models.DescribeVRoutersResponseBodyVRouters = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # A wrapper object for the VRouter list.
         self.vrouters = vrouters
 
     def validate(self):

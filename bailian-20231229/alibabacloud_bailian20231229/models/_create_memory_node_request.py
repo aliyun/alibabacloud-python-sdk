@@ -9,6 +9,8 @@ class CreateMemoryNodeRequest(DaraModel):
         self,
         content: str = None,
     ):
+        # The content of the memory node. The content must be 1 to 200 characters in length and can contain letters, digits, underscores (_), hyphens (-), periods (.), and colons (:).
+        # 
         # This parameter is required.
         self.content = content
 

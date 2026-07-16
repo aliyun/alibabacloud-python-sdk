@@ -16,10 +16,11 @@ class CreateClusterResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The request ID.
         self.request_id = request_id
-        # The request result. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
         # The task ID.
         self.task_id = task_id

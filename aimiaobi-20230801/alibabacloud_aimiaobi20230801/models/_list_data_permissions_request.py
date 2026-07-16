@@ -13,10 +13,20 @@ class ListDataPermissionsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the data.
+        # 
+        # - Example for a dataset: SystemSearch.QuarkCommonNews
         self.data_id = data_id
+        # The data type.
+        # 
+        # - dataset: a dataset
         self.data_type = data_type
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries on each page.
         self.page_size = page_size
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Get a workspaceId](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

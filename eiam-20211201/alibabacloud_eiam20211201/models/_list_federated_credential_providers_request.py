@@ -14,19 +14,19 @@ class ListFederatedCredentialProvidersRequest(DaraModel):
         next_token: str = None,
         previous_token: str = None,
     ):
-        # 联邦凭证提供方名称
+        # The name of the federated trust source.
         self.federated_credential_provider_name = federated_credential_provider_name
-        # 联邦凭证提供方类型
+        # The type of the federated trust source.
         self.federated_credential_provider_type = federated_credential_provider_type
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The pagination token.
         self.next_token = next_token
-        # 查询上一页凭证（Token），取值为上一次API调用返回的previousToken参数值。
+        # The token used to query the previous page.
         self.previous_token = previous_token
 
     def validate(self):

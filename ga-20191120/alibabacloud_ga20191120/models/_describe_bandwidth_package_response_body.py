@@ -30,71 +30,79 @@ class DescribeBandwidthPackageResponseBody(DaraModel):
         tags: List[main_models.DescribeBandwidthPackageResponseBodyTags] = None,
         type: str = None,
     ):
-        # The ID of the GA instance that is associated with the bandwidth plan.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance attached to the bandwidth plan.
         self.accelerators = accelerators
         # The bandwidth value of the bandwidth plan. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The ID of the bandwidth plan.
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
-        # The type of the bandwidth. Valid values:
+        # The bandwidth type. Valid values:
         # 
-        # *   **Basic**: basic bandwidth
-        # *   **Enhanced**: enhanced bandwidth
-        # *   **Advanced**: premium bandwidth
+        # - **Basic**: standard acceleration bandwidth.
+        # 
+        # - **Enhanced**: enhanced acceleration bandwidth.
+        # 
+        # - **Advanced**: premium acceleration bandwidth.
         self.bandwidth_type = bandwidth_type
-        # The metering method that is used when you use the pay-as-you-go billing method. Valid values:
-        # 
-        # *   **PayByTraffic**: pay-by-data-transfer
-        # *   **PayBY95**: pay-by-95th-percentile
+        # The billable methods for the pay-as-you-go billing method. Valid values:
+        # - **PayByTraffic**: pay-by-data-transfer.
+        # - **PayBY95**: pay-by-95th-percentile.
         self.billing_type = billing_type
-        # Area A specified in the cross-region acceleration bandwidth plan. Only **China-mainland** (the Chinese mainland) is returned.
+        # The interconnected area A of the cross-border acceleration bandwidth plan. The value is returned only as **China-mainland** (the Chinese mainland).
         # 
-        # This parameter is returned only if you call this operation on the International site (alibabacloud.com).
+        # This parameter is returned only on the Alibaba Cloud International Website (www.alibabacloud.com).
         self.cbn_geographic_region_id_a = cbn_geographic_region_id_a
-        # Area B specified in the cross-region acceleration bandwidth plan. Only **Global** (global) is returned.
+        # The interconnected area B of the cross-border acceleration bandwidth plan. The value is returned only as **Global**.
         # 
-        # This parameter is returned only if you call this operation on the International site (alibabacloud.com).
+        # This parameter is returned only on the Chinese site (Chinese mainland).
         self.cbn_geographic_region_id_b = cbn_geographic_region_id_b
-        # The billing method of the bandwidth plan.
-        # 
-        # *   **PREPAY**: subscription. This is the default value.
-        # *   **POSTPAY**: pay-as-you-go.
+        # The billing method. Valid values:
+        # - **PREPAY** (default): subscription.
+        # - **POSTPAY**: pay-as-you-go.
         self.charge_type = charge_type
-        # The timestamp that indicates when the bandwidth plan was created.
+        # The timestamp when the bandwidth plan was created.
         self.create_time = create_time
         # The description of the bandwidth plan.
         self.description = description
-        # The timestamp that indicates when the bandwidth plan expires.
+        # The timestamp when the bandwidth plan expires.
         self.expired_time = expired_time
         # The name of the bandwidth plan.
         self.name = name
-        # The percentage of the minimum bandwidth guaranteed if the pay-by-95th-percentile-bandwidth metering method is used. Valid values: **30** to **100**.
+        # The minimum percentage for the pay-by-95th-percentile metering method. Valid values: **30** to **100**.
         self.ratio = ratio
-        # The ID of the region where GA instance is deployed. **cn-hangzhou** is returned.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The state of the bandwidth plan. Valid values:
+        # The status of the bandwidth plan. Valid values:
         # 
-        # *   **init**: The bandwidth plan is being initialized.
-        # *   **active**: The bandwidth plan is available.
-        # *   **binded**: The bandwidth plan is associated with a GA instance.
-        # *   **binding**: The bandwidth plan is being associated.
-        # *   **unbinding**: The bandwidth plan is being disassociated.
-        # *   **updating**: The bandwidth plan is being updated.
-        # *   **finacialLocked**: The bandwidth plan is locked due to overdue payments.
-        # *   **Locked**: The bandwidth plan is locked.
+        # - **init**: initialization.
+        # 
+        # - **active**: active.
+        # 
+        # - **binded**: attached.
+        # 
+        # - **binding**: being attached.
+        # 
+        # - **unbinding**: being disassociated.
+        # 
+        # - **updating**: being updated.
+        # 
+        # - **finacialLocked**: locked due to overdue payment.
+        # 
+        # - **locked**: locked.
         self.state = state
-        # Tag objects.
+        # The resource tags.
         self.tags = tags
         # The type of the bandwidth plan. Valid values:
         # 
-        # *   **Basic**: a basic bandwidth plan
-        # *   **CrossDomain**: a cross-region acceleration bandwidth plan
+        # - **Basic**: basic bandwidth plan.
         # 
-        # If you call this operation on the Alibaba Cloud China Site (aliyun.com), only **Basic** is returned.
+        # - **CrossDomain**: cross-border acceleration bandwidth plan.
+        # 
+        # Only **Basic** is returned on the Alibaba Cloud China Website (www.aliyun.com).
         self.type = type
 
     def validate(self):
@@ -239,9 +247,9 @@ class DescribeBandwidthPackageResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N that is added to the bandwidth plan.
+        # The tag key.
         self.key = key
-        # The value of tag N that is added to the bandwidth plan.
+        # The tag value.
         self.value = value
 
     def validate(self):

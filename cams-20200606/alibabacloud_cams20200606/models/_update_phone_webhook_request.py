@@ -17,28 +17,32 @@ class UpdatePhoneWebhookRequest(DaraModel):
         status_callback_url: str = None,
         up_callback_url: str = None,
     ):
-        # SpaceId for ISV sub clients.
+        # The SpaceId of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # Whether to use HTTP to receive receipts. Value:
-        # *   Y: Yes.
-        # *   N: No.
+        # Specifies whether to use HTTP to receive receipts. Valid values:
+        # 
+        # - Y: Yes.
+        # 
+        # - N: No.
         self.http_flag = http_flag
         self.owner_id = owner_id
-        # phone number.
+        # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # Whether to use queue method to receive receipts. Value:
-        # *   Y: Yes.
-        # *   N: No.
+        # Specifies whether to use a queue to receive receipts. Valid values:
+        # 
+        # - Y: Yes.
+        # 
+        # - N: No.
         self.queue_flag = queue_flag
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # HTTP status report interface callback address.
+        # The callback URL for the HTTP-based status report.
         self.status_callback_url = status_callback_url
-        # HTTP upstream message interface callback address.
+        # The callback URL for the HTTP-based upstream message.
         self.up_callback_url = up_callback_url
 
     def validate(self):

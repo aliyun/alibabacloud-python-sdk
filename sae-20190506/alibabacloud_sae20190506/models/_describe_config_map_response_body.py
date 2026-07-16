@@ -20,31 +20,37 @@ class DescribeConfigMapResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: success
+        # 
+        # - **3xx**: redirection
+        # 
+        # - **4xx**: client error
+        # 
+        # - **5xx**: server error
         self.code = code
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The error code. Valid values:
+        # The error code returned if the request fails.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is empty if the request succeeds.
+        # 
+        # - This parameter contains an error code if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The returned message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - The value is **success** if the request succeeds.
+        # 
+        # - The value is an error code if the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the details of the ConfigMap were queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The details were queried.
-        # *   **false**: The details failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID. You can use it to locate the call details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -117,25 +123,25 @@ class DescribeConfigMapResponseBodyData(DaraModel):
         relate_apps: List[main_models.DescribeConfigMapResponseBodyDataRelateApps] = None,
         update_time: int = None,
     ):
-        # The ID of the ConfigMap.
+        # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
-        # The time when the ConfigMap was created.
+        # The time when the instance was created.
         self.create_time = create_time
-        # The key-value pairs of the ConfigMap. Format:
+        # The key-value pairs of the ConfigMap. The data is in the following format:
         # 
         # {"k1":"v1", "k2":"v2"}
         # 
-        # k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
+        # For more information about configuration items, see [Manage and use configuration items](https://help.aliyun.com/document_detail/171326.html).
         self.data = data
-        # The description of the ConfigMap.
+        # The description of the ConfigMap instance.
         self.description = description
-        # The name of the ConfigMap.
+        # The name of the ConfigMap instance.
         self.name = name
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The application that is associated with the ConfigMap.
+        # The associated applications.
         self.relate_apps = relate_apps
-        # The time when the ConfigMap was updated.
+        # The time when the instance was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -214,9 +220,9 @@ class DescribeConfigMapResponseBodyDataRelateApps(DaraModel):
         app_id: str = None,
         app_name: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
 
     def validate(self):

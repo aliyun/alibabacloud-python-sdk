@@ -10,8 +10,12 @@ class DescribeExportProgressRequest(DaraModel):
         export_task_id: str = None,
         instance_id: str = None,
     ):
+        # The export task ID.
+        # 
         # This parameter is required.
         self.export_task_id = export_task_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

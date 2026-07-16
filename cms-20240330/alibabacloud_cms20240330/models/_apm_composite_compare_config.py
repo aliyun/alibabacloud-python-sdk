@@ -10,19 +10,25 @@ class ApmCompositeCompareConfig(DaraModel):
         aggregate: str = None,
         operator: str = None,
         threshold: float = None,
+        yoy_time_unit: str = None,
+        yoy_time_value: int = None,
     ):
-        # 聚合函数
+        # The aggregation method for metric data. For example, `AVG`, `SUM`, or `MAX`.
         # 
         # This parameter is required.
         self.aggregate = aggregate
-        # 比较操作符
+        # The operator for comparing the aggregated metric data against the `threshold`. For example, `GREATER_THAN` or `LESS_THAN`.
         # 
         # This parameter is required.
         self.operator = operator
-        # 单阈值
+        # The value to compare the aggregated metric data against. An alert is triggered when the metric data meets the condition defined by the `operator`.
         # 
         # This parameter is required.
         self.threshold = threshold
+        # The time unit for the year-over-year (YoY) comparison. Use this parameter with `yoyTimeValue` to define the comparison period. Valid values are `day` and `week`.
+        self.yoy_time_unit = yoy_time_unit
+        # The time value for the YoY comparison. For example, if `yoyTimeUnit` is `day` and `yoyTimeValue` is `7`, the system compares current data with data from 7 days ago.
+        self.yoy_time_value = yoy_time_value
 
     def validate(self):
         pass
@@ -41,6 +47,12 @@ class ApmCompositeCompareConfig(DaraModel):
         if self.threshold is not None:
             result['threshold'] = self.threshold
 
+        if self.yoy_time_unit is not None:
+            result['yoyTimeUnit'] = self.yoy_time_unit
+
+        if self.yoy_time_value is not None:
+            result['yoyTimeValue'] = self.yoy_time_value
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +65,12 @@ class ApmCompositeCompareConfig(DaraModel):
 
         if m.get('threshold') is not None:
             self.threshold = m.get('threshold')
+
+        if m.get('yoyTimeUnit') is not None:
+            self.yoy_time_unit = m.get('yoyTimeUnit')
+
+        if m.get('yoyTimeValue') is not None:
+            self.yoy_time_value = m.get('yoyTimeValue')
 
         return self
 

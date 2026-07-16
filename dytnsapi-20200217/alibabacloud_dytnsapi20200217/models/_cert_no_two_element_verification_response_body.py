@@ -14,10 +14,15 @@ class CertNoTwoElementVerificationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
         self.code = code
+        # The returned result.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,6 +76,13 @@ class CertNoTwoElementVerificationResponseBodyData(DaraModel):
         self,
         is_consistent: str = None,
     ):
+        # Indicates whether the verification result is consistent. Valid values:
+        # 
+        # - **1**: Consistent
+        # 
+        # - **0**: Inconsistent
+        # 
+        # - **2**: Not found
         self.is_consistent = is_consistent
 
     def validate(self):

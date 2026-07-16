@@ -11,10 +11,15 @@ class DeletePolarClawAgentRequest(DaraModel):
         application_id: str = None,
         delete_files: bool = None,
     ):
+        # The ID of the agent to delete. This parameter cannot be set to `main`.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to delete the working directory and session files. Default value: `true`.
         self.delete_files = delete_files
 
     def validate(self):

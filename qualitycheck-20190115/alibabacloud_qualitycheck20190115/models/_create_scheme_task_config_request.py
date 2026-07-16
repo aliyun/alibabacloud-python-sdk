@@ -12,6 +12,7 @@ class CreateSchemeTaskConfigRequest(DaraModel):
     ):
         # baseMeAgentId
         self.base_me_agent_id = base_me_agent_id
+        # Input parameter in JSON format. For details, see Request Parameters.
         self.json_str = json_str
 
     def validate(self):

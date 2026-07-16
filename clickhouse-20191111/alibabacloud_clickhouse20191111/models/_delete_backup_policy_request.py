@@ -13,9 +13,15 @@ class DeleteBackupPolicyRequest(DaraModel):
         product: str = None,
         resource_owner_id: int = None,
     ):
+        # A client token used to ensure the idempotence of the request. The value must be a string that contains a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
         self.client_token = client_token
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in the destination region, including cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The number of records to return on each page. Valid values: 1 to **100**. Default value: **30**.
         self.max_results = max_results
+        # The product name.
         self.product = product
         self.resource_owner_id = resource_owner_id
 

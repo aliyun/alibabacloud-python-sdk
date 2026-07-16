@@ -19,12 +19,9 @@ class FlightModifyOtaSearchV2ResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -788,7 +785,6 @@ class FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo(DaraModel):
         self.cabin_class_info = cabin_class_info
         self.cabin_code = cabin_code
         self.cabin_name = cabin_name
-        # item_id
         self.item_id = item_id
         self.modify_type_desc = modify_type_desc
         self.modify_type_name = modify_type_name
@@ -1123,7 +1119,6 @@ class FlightModifyOtaSearchV2ResponseBodyModuleAgentInfoCabinClassInfo(DaraModel
     ):
         self.cabin_class = cabin_class
         self.class_name = class_name
-        # inner_cabin_class
         self.inner_cabin_class = inner_cabin_class
         self.quantity = quantity
 

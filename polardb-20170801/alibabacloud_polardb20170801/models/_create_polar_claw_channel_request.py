@@ -16,15 +16,25 @@ class CreatePolarClawChannelRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The channel configuration.
         self.channel_config = channel_config
+        # The channel\\"s unique identifier.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The name and version of the npm package for the channel plugin.
+        # 
         # This parameter is required.
         self.npm_package = npm_package
+        # The channel plugin\\"s name.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # Indicates whether to restart the gateway after the channel is created. Default: `true`.
         self.restart = restart
 
     def validate(self):

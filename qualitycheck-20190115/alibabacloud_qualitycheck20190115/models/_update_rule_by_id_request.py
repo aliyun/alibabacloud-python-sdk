@@ -13,12 +13,17 @@ class UpdateRuleByIdRequest(DaraModel):
         return_related_schemes: bool = None,
         rule_id: int = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Whether to copy. Setting to true is equivalent to copying the rule.
         self.is_copy = is_copy
+        # For more information about the format of JsonStrForlRule, see [`Rule object description`](https://help.aliyun.com/document_detail/453053.html).
+        # 
         # This parameter is required.
         self.json_str_for_rule = json_str_for_rule
+        # Returns the IDs and names of quality inspection schemes associated with this rule.
         self.return_related_schemes = return_related_schemes
+        # Rule ID. Not required when creating, required when modifying.
         self.rule_id = rule_id
 
     def validate(self):

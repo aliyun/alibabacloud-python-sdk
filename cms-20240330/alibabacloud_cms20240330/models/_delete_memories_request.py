@@ -12,9 +12,13 @@ class DeleteMemoriesRequest(DaraModel):
         run_id: str = None,
         user_id: str = None,
     ):
+        # The agent ID of the application.
         self.agent_id = agent_id
+        # The application ID.
         self.app_id = app_id
+        # The run ID.
         self.run_id = run_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

@@ -16,17 +16,21 @@ class ListJobTemplatesRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The sort order. Valid values: `asc` for ascending and `desc` for descending. Default value: `desc`.
         self.order = order
+        # The page number to retrieve.
         self.page_number = page_number
+        # The number of results to return per page.
         self.page_size = page_size
+        # The field to sort the results by. Default value: `GmtCreateTime`.
         self.sort_by = sort_by
-        # 按模板 ID 精确筛选。
+        # The job template ID. Use this parameter to filter for an exact match.
         self.template_id = template_id
-        # 按模板名称模糊筛选。
+        # The job template name. Use this parameter to filter for a partial match.
         self.template_name = template_name
-        # 按创建者用户 ID 筛选。
+        # The ID of the creator. Use this parameter to filter results by a specific creator.
         self.user_id = user_id
-        # 工作空间 ID。如何获取工作空间 ID，请参见 ListWorkspaces。
+        # The ID of the workspace.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

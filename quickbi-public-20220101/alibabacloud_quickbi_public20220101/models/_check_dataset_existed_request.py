@@ -9,6 +9,8 @@ class CheckDatasetExistedRequest(DaraModel):
         self,
         cube_id: str = None,
     ):
+        # The ID of the dataset.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
 

@@ -14,7 +14,7 @@ class ListCloudGtmAvailableAlertGroupsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.alert_groups = alert_groups
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

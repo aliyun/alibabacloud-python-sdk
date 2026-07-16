@@ -15,14 +15,24 @@ class ListPluginsInstancesRequest(DaraModel):
         plugin_id: str = None,
         region: str = None,
     ):
+        # The current page number. This field is present when pagination is used.
         self.current = current
+        # Filters instances by instance ID or instance name. Fuzzy match is supported.
         self.instance_id_name = instance_id_name
+        # Filters instances by instance tag.
         self.instance_tag = instance_tag
+        # Filters instances by plug-in installation status.
+        # 
         # This parameter is required.
         self.operation_type = operation_type
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # Filters the instance list by the specified agent. If this parameter is specified, only instances associated with the specified agent are returned.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # Filters instances by region.
+        # 
         # This parameter is required.
         self.region = region
 

@@ -13,46 +13,71 @@ class OpenDeliveryRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The log code of the cloud service, such as the code of the process log for Security Center. This parameter is optional. If you leave this parameter empty, operations are performed on all logs of the cloud service.
+        # The code for a specific log of the cloud service, such as the process log of Security Center. This parameter is optional. If you do not specify this parameter, the operation applies to all logs of the service.
         self.log_code = log_code
         # The code of the cloud service. Valid values:
         # 
-        # *   qcloud_waf
-        # *   qlcoud_cfw
-        # *   hcloud_waf
-        # *   hcloud_cfw
-        # *   ddos
-        # *   sas
-        # *   cfw
-        # *   config
-        # *   csk
-        # *   fc
-        # *   rds
-        # *   nas
-        # *   apigateway
-        # *   cdn
-        # *   mongodb
-        # *   eip
-        # *   slb
-        # *   vpc
-        # *   actiontrail
-        # *   waf
-        # *   bastionhost
-        # *   oss
-        # *   polardb
+        # - qcloud_waf
+        # 
+        # - qcloud_cfw
+        # 
+        # - hcloud_waf
+        # 
+        # - hcloud_cfw
+        # 
+        # - ddos
+        # 
+        # - sas
+        # 
+        # - cfw
+        # 
+        # - config
+        # 
+        # - csk
+        # 
+        # - fc
+        # 
+        # - rds
+        # 
+        # - nas
+        # 
+        # - apigateway
+        # 
+        # - cdn
+        # 
+        # - mongodb
+        # 
+        # - eip
+        # 
+        # - slb
+        # 
+        # - vpc
+        # 
+        # - actiontrail
+        # 
+        # - waf
+        # 
+        # - bastionhost
+        # 
+        # - oss
+        # 
+        # - polardb
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # The region where the Data Management center of threat analysis is located. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Select this value if your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Select this value if your assets are in a region outside China.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The ID of the member account that the administrator wants to access.
         self.role_for = role_for
         # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # 
+        # - 0: The view of the current Alibaba Cloud account.
+        # 
+        # - 1: The view of all accounts within the enterprise.
         self.role_type = role_type
 
     def validate(self):

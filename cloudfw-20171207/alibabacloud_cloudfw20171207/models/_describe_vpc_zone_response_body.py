@@ -15,7 +15,7 @@ class DescribeVpcZoneResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The zones.
+        # The list of zones.
         self.zone_list = zone_list
 
     def validate(self):
@@ -61,9 +61,9 @@ class DescribeVpcZoneResponseBodyZoneList(DaraModel):
     ):
         # The name of the zone.
         self.local_name = local_name
-        # The zone ID.
+        # The ID of the zone.
         self.zone_id = zone_id
-        # The zone type. Default value: AvailabilityZone. This value indicates Alibaba Cloud zones.
+        # The type of the zone. The default value is \\`AvailabilityZone\\`, which indicates a standard cloud zone.
         self.zone_type = zone_type
 
     def validate(self):

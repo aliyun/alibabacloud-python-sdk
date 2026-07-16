@@ -31,8 +31,9 @@ class ModifyDBClusterServerlessConfRequest(DaraModel):
     ):
         # Specifies whether to enable No-activity Suspension. Default value: false. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.allow_shut_down = allow_shut_down
         # Cycle policy ID.
         self.crontab_job_id = crontab_job_id
@@ -42,19 +43,23 @@ class ModifyDBClusterServerlessConfRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
         # 
-        # *   false: scheduled task
-        # *   true: immediate task
+        # - false: scheduled task
+        # 
+        # - true: immediate task
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The latest start time for upgrading the specifications within the scheduled time period. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-        # > * The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-        # >*   If you specify PlannedStartTime but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set PlannedStartTime to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+        # 
+        # > - The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+        # >
+        # > - If you specify PlannedStartTime but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set PlannedStartTime to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
         self.planned_end_time = planned_end_time
         # The earliest start time of the scheduled task for adding the read-only node. The scheduled task specifies that the task is run in the required period. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # 
-        # > *   The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
-        # >*   If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
+        # > - The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+        # >
+        # > - If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

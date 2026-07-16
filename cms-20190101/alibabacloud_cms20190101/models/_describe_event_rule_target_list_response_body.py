@@ -20,9 +20,9 @@ class DescribeEventRuleTargetListResponseBody(DaraModel):
         sls_parameters: main_models.DescribeEventRuleTargetListResponseBodySlsParameters = None,
         webhook_parameters: main_models.DescribeEventRuleTargetListResponseBodyWebhookParameters = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > A value of 200 indicates success.
         self.code = code
         self.contact_parameters = contact_parameters
         self.fc_parameters = fc_parameters
@@ -30,7 +30,7 @@ class DescribeEventRuleTargetListResponseBody(DaraModel):
         self.message = message
         self.mns_parameters = mns_parameters
         self.open_api_parameters = open_api_parameters
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.sls_parameters = sls_parameters
         self.webhook_parameters = webhook_parameters

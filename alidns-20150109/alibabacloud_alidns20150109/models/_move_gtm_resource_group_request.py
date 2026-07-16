@@ -11,9 +11,14 @@ class MoveGtmResourceGroupRequest(DaraModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        # The language of the response. Valid values: en, zh, and ja. Default value: en.
         self.lang = lang
+        # The ID of the new resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 

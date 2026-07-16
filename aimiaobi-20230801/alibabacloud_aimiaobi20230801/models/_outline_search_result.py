@@ -16,10 +16,15 @@ class OutlineSearchResult(DaraModel):
         primary_outline: str = None,
         query: str = None,
     ):
+        # A list of retrieved materials.
         self.articles = articles
+        # The retrieved outline.
         self.outline = outline
+        # The unique identifier of the outline.
         self.outline_id = outline_id
+        # The primary outline.
         self.primary_outline = primary_outline
+        # The retrieval query.
         self.query = query
 
     def validate(self):

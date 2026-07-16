@@ -15,11 +15,11 @@ class GetMediaConnectFlowResponseBody(DaraModel):
     ):
         # The response body.
         self.content = content
-        # The call description.
+        # The description of the API call.
         self.description = description
-        # The ID of the request.
+        # Request ID
         self.request_id = request_id
-        # The returned code. A value of 0 indicates the call is successful.
+        # The return code. A value of 0 indicates success.
         self.retcode = retcode
 
     def validate(self):
@@ -73,17 +73,18 @@ class GetMediaConnectFlowResponseBodyContent(DaraModel):
         flow_status: str = None,
         start_time: str = None,
     ):
-        # The time when the flow was created.
+        # The creation time of the MediaConnect Flow instance.
         self.create_time = create_time
+        # Indicates whether Input Failover is enabled for the flow. Valid values: `yes` and `no`.
         self.flow_failover = flow_failover
-        # The flow ID.
+        # The ID of the MediaConnect Flow instance.
         self.flow_id = flow_id
-        # The flow name.
+        # The name of the MediaConnect Flow instance.
         self.flow_name = flow_name
         self.flow_region = flow_region
-        # The state of the flow.
+        # The status of the MediaConnect Flow instance.
         self.flow_status = flow_status
-        # The time when the flow is started.
+        # The start time of the MediaConnect Flow instance.
         self.start_time = start_time
 
     def validate(self):

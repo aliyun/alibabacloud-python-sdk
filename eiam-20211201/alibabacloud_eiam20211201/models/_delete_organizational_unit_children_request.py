@@ -10,11 +10,11 @@ class DeleteOrganizationalUnitChildrenRequest(DaraModel):
         instance_id: str = None,
         organizational_unit_id: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Organizational Unit ID.
+        # The organization ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id

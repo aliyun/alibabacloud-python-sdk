@@ -15,20 +15,19 @@ class ChangeParseSettingResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The error status code.
         self.code = code
-        # The returned data fields.
+        # The business data returned when the request is successful.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The status code returned by the operation.
         self.status = status
-        # Indicates whether the call is successful. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -88,7 +87,9 @@ class ChangeParseSettingResponseBodyData(DaraModel):
         self,
         change_result: bool = None,
     ):
-        # The result of the modification.
+        # Indicates whether the configuration was changed. Valid values:
+        # - true: The configuration was updated.
+        # - false: The configuration was not changed. The modification failed.
         self.change_result = change_result
 
     def validate(self):

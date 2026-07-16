@@ -17,21 +17,19 @@ class ListJobsRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
         # The job filter information.
         self.job_filter = job_filter
-        # The page number of the page to return.
-        # 
-        # *   Pages start from page 1.
-        # *   Default value: 1
+        # The page number of the list.
+        # - Minimum value: 1.
+        # - Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
-        # 
-        # *   Maximum value: 50.
-        # *   Default value: 10
+        # The number of entries per page when using paged query. Paging is applied to the results.
+        # - Maximum value: 50.
+        # - Default value: 10.
         self.page_size = page_size
 
     def validate(self):
@@ -87,29 +85,28 @@ class ListJobsRequestJobFilter(DaraModel):
         sort_by: main_models.ListJobsRequestJobFilterSortBy = None,
         users: List[str] = None,
     ):
-        # The time when the job was last updated. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
+        # The last update time of the job. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
         self.create_time_end = create_time_end
-        # The time when the job started. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
+        # The start time of the job. The value is a UNIX timestamp representing the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
         self.create_time_start = create_time_start
-        # Job diagnosis and analysis list.
+        # The job diagnostic analysis list.
         self.diagnosis = diagnosis
         # The job name. Fuzzy match is supported.
         self.job_name = job_name
         # The job status. Valid values:
-        # 
-        # *   all: returns all jobs.
-        # *   finished: returns completed jobs.
-        # *   notfinish: returns uncompleted jobs.
+        # - all: all statuses.
+        # - finished: completed.
+        # - notfinish: not completed.
         # 
         # Default value: all.
         self.job_status = job_status
-        # The compute nodes that run the jobs.
+        # The list of compute nodes that run the jobs.
         self.nodes = nodes
-        # The queues to which the jobs belong.
+        # The list of queues that run the jobs.
         self.queues = queues
-        # The result sorting configurations.
+        # The sorting configuration for the job list.
         self.sort_by = sort_by
-        # The users that run the jobs.
+        # The list of users who run the jobs.
         self.users = users
 
     def validate(self):
@@ -198,24 +195,21 @@ class ListJobsRequestJobFilterSortBy(DaraModel):
         pend_order: str = None,
         submit_order: str = None,
     ):
-        # The order in which jobs are sorted based on their execution time. Valid values:
-        # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # Sorts jobs by execution time. Valid values:
+        # - asc: ascending order.
+        # - desc: descending order.
         # 
         # Default value: desc.
         self.execute_order = execute_order
-        # The order in which jobs are sorted based on their queuing time. Valid values:
-        # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # Sorts jobs by queue wait time. Valid values:
+        # - asc: ascending order.
+        # - desc: descending order.
         # 
         # Default value: desc.
         self.pend_order = pend_order
-        # The order in which jobs are sorted based on their submitting time. Valid values:
-        # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # Sorts jobs by submission time. Valid values:
+        # - asc: ascending order.
+        # - desc: descending order.
         # 
         # Default value: desc.
         self.submit_order = submit_order
@@ -259,11 +253,11 @@ class ListJobsRequestJobFilterDiagnosis(DaraModel):
         option: str = None,
         threshold: str = None,
     ):
-        # Job diagnosis threshold comparator.
+        # The comparison operator for the job diagnostic threshold.
         self.operator = operator
-        # Job diagnosis and analysis metrics
+        # The job diagnostic analysis metric.
         self.option = option
-        # Job diagnosis threshold.
+        # The job diagnostic threshold.
         self.threshold = threshold
 
     def validate(self):

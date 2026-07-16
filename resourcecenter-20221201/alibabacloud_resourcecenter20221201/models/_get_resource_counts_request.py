@@ -17,21 +17,15 @@ class GetResourceCountsRequest(DaraModel):
     ):
         # The filter conditions.
         self.filter = filter
-        # The dimension by which the queried resources are grouped. Valid values:
+        # The dimension by which resources are queried. Valid values:
         # 
-        # - ResourceType: The resource type.
-        # 
-        # - RegionId: The region.
-        # 
-        # - ResourceGroupId: The resource group ID.
+        # *   ResourceType
+        # *   Region
+        # *   ResourceGroupId
+        # *   TagKey
+        # *   TagValue
         self.group_by_key = group_by_key
-        # Specifies whether to include deleted resources. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.include_deleted_resources = include_deleted_resources
-        # The search keyword. Resource Center filters the search results based on relevance.
         self.search_expression = search_expression
 
     def validate(self):
@@ -87,11 +81,11 @@ class GetResourceCountsRequestFilter(DaraModel):
         match_type: str = None,
         value: List[str] = None,
     ):
-        # The key of the filter condition. For information about valid values, see the "`Supported filter parameters`" section below.
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
-        # The matching method.
+        # The matching mode.
         # 
-        # Set this parameter to `Equals`, which means an equal match.
+        # The value Equals indicates an equal match.
         self.match_type = match_type
         # The values of the filter condition.
         self.value = value

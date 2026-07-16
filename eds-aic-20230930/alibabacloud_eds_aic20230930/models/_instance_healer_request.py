@@ -13,9 +13,13 @@ class InstanceHealerRequest(DaraModel):
         strategy: str = None,
         timeout: int = None,
     ):
+        # The list of instances.
+        # 
         # This parameter is required.
         self.instance_id_list = instance_id_list
+        # The policy type. The only supported value is Clean.
         self.strategy = strategy
+        # The timeout period in seconds. If you do not specify this parameter, the default value is 30.
         self.timeout = timeout
 
     def validate(self):

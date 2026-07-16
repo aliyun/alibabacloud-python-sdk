@@ -10,9 +10,9 @@ class FixCheckWarningsResponseBody(DaraModel):
         batch_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the baseline risk item that has been fixed by using the Batch Repair feature.
+        # The ID of the batch fix task for risk items.
         self.batch_id = batch_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

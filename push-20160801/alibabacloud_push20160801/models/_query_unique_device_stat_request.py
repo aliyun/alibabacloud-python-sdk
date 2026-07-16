@@ -12,12 +12,24 @@ class QueryUniqueDeviceStatRequest(DaraModel):
         granularity: str = None,
         start_time: str = None,
     ):
+        # Your app key.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The end time of the query, in ISO 8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The time granularity for the query. Valid values:
+        # 
+        # - DAY
+        # 
+        # - MONTH
+        # 
         # This parameter is required.
         self.granularity = granularity
+        # The start time of the query, in ISO 8601 format. Format: YYYY-MM-DDThh:mm:ssZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

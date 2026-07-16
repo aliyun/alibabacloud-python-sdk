@@ -1,3 +1,17 @@
+2026-06-25 Version: 8.2.0
+- Support API CreateWorkspaceRole.
+- Support API DeleteWorkspaceRoles.
+- Support API GetInstanceJob.
+- Support API GetWorkspaceRole.
+- Support API ListWorkspaceRoles.
+- Support API UpdateWorkspaceRole.
+- Update API CreateConnection: add request parameters body.Models.$.MaxModelLength.
+- Update API CreateConnection: add request parameters body.Models.$.SupportReasoning.
+- Update API CreateConnection: add request parameters body.Models.$.SupportResponseSchema.
+- Update API CreateConnection: add request parameters body.Models.$.SupportVision.
+- Update API ListWorkspaces: add response parameters Body.Workspaces.$.DisplayName.
+
+
 2026-04-21 Version: 8.1.5
 - Generated python 2021-02-04 for AIWorkSpace.
 

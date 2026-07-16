@@ -11,8 +11,11 @@ class HiMarketIdentityMapping(DaraModel):
         user_id_field: str = None,
         user_name_field: str = None,
     ):
+        # The identity field name that corresponds to the mailbox.
         self.email_field = email_field
+        # The identity field name that corresponds to the user ID.
         self.user_id_field = user_id_field
+        # The identity field name that corresponds to the username.
         self.user_name_field = user_name_field
 
     def validate(self):

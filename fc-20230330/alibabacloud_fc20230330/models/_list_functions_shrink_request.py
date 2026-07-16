@@ -18,28 +18,29 @@ class ListFunctionsShrinkRequest(DaraModel):
         runtime: str = None,
         tags_shrink: str = None,
     ):
-        # The description of the functions to retrieve.
+        # The function description to filter by.
         self.description = description
-        # The version of Function Compute to which the functions belong.
+        # The version to which the function belongs. Valid values:
+        # - v3: lists only FC 3.0 functions.
+        # - v2: lists only FC 2.0 functions.
         # 
-        # *   v3: Only lists functions of Function Compute 3.0.
-        # *   v2: Only lists functions of Function Compute 2.0.
-        # 
-        # By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+        # If not specified, both FC 3.0 and FC 2.0 functions are listed.
         self.fc_version = fc_version
+        # The function name.
         self.function_name = function_name
-        # The GPU type of the functions to retrieve.
+        # The function GPU type to filter by.
         self.gpu_type = gpu_type
-        # The number of functions to return. The minimum value is 1 and the maximum value is 100.
+        # The number of functions to return. Minimum value: 1. Maximum value: 100.
         self.limit = limit
         # The pagination token.
         self.next_token = next_token
-        # The prefix of the function name.
+        # The function name prefix.
         self.prefix = prefix
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The runtime of the functions to retrieve.
+        # The function runtime to filter by.
         self.runtime = runtime
-        # The tag of the functions to retrieve.
+        # The function tags to filter by.
         self.tags_shrink = tags_shrink
 
     def validate(self):

@@ -15,10 +15,19 @@ class ListScheduleTimesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. `200` indicates that the request was successful.
         self.code = code
+        # A list of the scheduled times.
         self.data = data
+        # The response message. The value is `success` if the request succeeds, or an error message if it fails.
         self.message = message
+        # The unique ID of the request. Use this ID for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

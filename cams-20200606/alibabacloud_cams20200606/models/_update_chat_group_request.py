@@ -18,18 +18,37 @@ class UpdateChatGroupRequest(DaraModel):
         resource_owner_id: int = None,
         subject: str = None,
     ):
+        # The business phone number. You can view the business phone number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid values:
+        # 
+        # - **WHATSAPP**.
+        # 
+        # > Only the WhatsApp channel type is supported.
         self.channel_type = channel_type
+        # The space ID of the ISV sub-customer, which is also the instance ID. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The group description.
         self.description = description
+        # The group ID. You can view the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
+        # 
         # This parameter is required.
         self.group_id = group_id
         self.owner_id = owner_id
+        # The group profile picture.
+        # 
+        # > Image restrictions:
+        # > - Supported MIME type: image/jpeg
+        # > - Maximum image size: 5 MB
+        # > - The image must be square with a minimum dimension of 192 × 192 pixels.
         self.profile_picture_file = profile_picture_file
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The group subject.
         self.subject = subject
 
     def validate(self):

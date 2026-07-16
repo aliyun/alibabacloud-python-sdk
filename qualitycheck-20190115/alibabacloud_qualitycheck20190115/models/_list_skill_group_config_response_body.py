@@ -16,10 +16,14 @@ class ListSkillGroupConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of 200 indicates success. Any other value indicates failure. Use this field to determine the cause of failure.
         self.code = code
         self.data = data
+        # Details of the error if the request failed. If successful, the value is "successful".
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
         self.success = success
 
     def validate(self):

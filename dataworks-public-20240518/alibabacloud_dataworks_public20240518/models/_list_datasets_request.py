@@ -24,13 +24,19 @@ class ListDatasetsRequest(DaraModel):
         self.creator_id = creator_id
         # The data type. Multiple selections are allowed. Valid values:
         # 
-        # *   COMMON
-        # *   PIC
-        # *   TEXT
-        # *   TABLE
-        # *   VIDEO
-        # *   AUDIO
-        # *   INDEX
+        # - COMMON
+        # 
+        # - PIC
+        # 
+        # - TEXT
+        # 
+        # - TABLE
+        # 
+        # - VIDEO
+        # 
+        # - AUDIO
+        # 
+        # - INDEX
         self.data_type_list = data_type_list
         # The dataset name. Supports fuzzy search.
         self.name = name
@@ -38,13 +44,15 @@ class ListDatasetsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Asc: Ascending.
-        # *   Desc: Descending.
+        # - Asc: Ascending.
+        # 
+        # - Desc: Descending.
         self.order = order
         # The dataset source. Valid values:
         # 
-        # *   DataWorks
-        # *   PAI
+        # - DataWorks
+        # 
+        # - PAI
         self.origin = origin
         # The page number. Default: 1.
         self.page_number = page_number
@@ -56,19 +64,27 @@ class ListDatasetsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ModifyTime: Modification time.
-        # *   CreateTime: Creation time.
-        # *   Name
+        # - ModifyTime: Modification time.
+        # 
+        # - CreateTime: Creation time.
+        # 
+        # - Name
         self.sort_by = sort_by
         # The storage type. Multiple selections are allowed. Supported values:
         # 
-        # *   OSS
-        # *   NAS: General-purpose NAS file systems
-        # *   EXTREMENAS: Extreme NAS file systems
-        # *   DLF_LANCE: Data Lake Formation
-        # *   CPFS: Cloud Parallel File Storage
-        # *   BMCPFS: CPFS for Lingjun
-        # *   MAXCOMPUTE: MaxCompute table
+        # - OSS
+        # 
+        # - NAS: General-purpose NAS file systems
+        # 
+        # - EXTREMENAS: Extreme NAS file systems
+        # 
+        # - DLF_LANCE: Data Lake Formation
+        # 
+        # - CPFS: Cloud Parallel File Storage
+        # 
+        # - BMCPFS: CPFS for Lingjun
+        # 
+        # - MAXCOMPUTE: MaxCompute table
         self.storage_type_list = storage_type_list
 
     def validate(self):

@@ -33,77 +33,93 @@ class GetVpcEndpointServiceAttributeResponseBody(DaraModel):
         zone_affinity_enabled: bool = None,
         zones: List[str] = None,
     ):
-        # The protocol. Valid values:
+        # The IP address version. Valid values:
         # 
-        # *   **IPv4**
-        # *   **DualStack**
+        # - **IPv4**: The IPv4 address family.
+        # 
+        # - **DualStack**: The dual stack IP address family.
         self.address_ip_version = address_ip_version
-        # Indicates whether endpoint connection requests are automatically accepted. Valid values:
+        # Specifies whether to automatically accept endpoint connections. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Endpoint connections are automatically accepted.
+        # 
+        # - **false**: Endpoint connections are not automatically accepted.
         self.auto_accept_enabled = auto_accept_enabled
-        # The default maximum bandwidth of the endpoint connection. Unit: Mbit/s. Valid values: **100** to 10240.
+        # The default maximum bandwidth of an endpoint connection, in Mbps. Valid values are **100 to 10,240**.
         self.connect_bandwidth = connect_bandwidth
-        # The time when the endpoint service was created.
+        # The time the service was created.
         self.create_time = create_time
-        # The maximum bandwidth of the endpoint connection. Unit: Mbit/s.
+        # The maximum bandwidth of the endpoint connection, in Mbps.
         self.max_bandwidth = max_bandwidth
-        # The minimum bandwidth of the endpoint connection. Unit: Mbit/s.
+        # The minimum bandwidth of the endpoint connection, in Mbps.
         self.min_bandwidth = min_bandwidth
-        # The payer of the endpoint service. Valid values:
+        # The party that pays for the service. Valid values:
         # 
-        # *   **Endpoint**: the service consumer.
-        # *   **EndpointService**: the service provider.
+        # - **Endpoint**: The service consumer.
+        # 
+        # - **EndpointService**: The service provider.
         self.payer = payer
-        # The region ID of the endpoint service.
+        # The region where the service is deployed.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The service status of the endpoint service. Valid values:
+        # The business status of the service. Valid values:
         # 
-        # *   **Normal**: The endpoint service runs as expected.
-        # *   **FinancialLocked**: The endpoint service is locked due to overdue payments.
+        # - **Normal**: The service is operating normally.
+        # 
+        # - **FinancialLocked**: The endpoint service is locked due to an overdue payment.
         self.service_business_status = service_business_status
-        # The description of the endpoint service.
+        # The description of the service.
         self.service_description = service_description
-        # The domain name of the endpoint service.
+        # The domain name of the service.
         self.service_domain = service_domain
-        # The endpoint service ID.
+        # The ID of the service.
         self.service_id = service_id
-        # The name of the endpoint service.
+        # The name of the service.
         self.service_name = service_name
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: a CLB instance.
-        # *   **alb**: an ALB instance.
+        # - **slb**: The service resource is a Classic Load Balancer (CLB).
+        # 
+        # - **alb**: The service resource is an Application Load Balancer (ALB).
+        # 
+        # - **nlb**: The service resource is a Network Load Balancer (NLB).
+        # 
+        # - **gwlb**: The service resource is a Gateway Load Balancer (GWLB).
         self.service_resource_type = service_resource_type
-        # The state of the endpoint service. Valid values:
+        # The status of the service. Valid values:
         # 
-        # *   **Creating**: The endpoint service is being created.
-        # *   **Pending**: The endpoint service is being modified.
-        # *   **Active**: The endpoint service is available.
-        # *   **Deleting**: The endpoint service is being deleted.
-        # *   **Inactive**: The endpoint service is unavailable.
+        # - **Creating**: The service is being created.
+        # 
+        # - **Pending**: The service is being updated.
+        # 
+        # - **Active**: The service is available.
+        # 
+        # - **Deleting**: The service is being deleted.
         self.service_status = service_status
-        # Specifies whether the endpoint service supports IPv6. Valid values:
+        # Specifies whether the service supports IPv6. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: The service supports IPv6.
+        # 
+        # - **false** (default): The service does not support IPv6.
         self.service_support_ipv_6 = service_support_ipv_6
-        # The type of the endpoint.
+        # The endpoint type.
         # 
-        # Only **Interface** is returned. The value indicates the interface endpoint. Then, you can specify ALB and CLB instances as service resources for the endpoint service.
+        # - **Interface**: An interface endpoint. You can add Classic Load Balancer (CLB), Application Load Balancer (ALB), and Network Load Balancer (NLB) instances as service resources.
+        # 
+        # - **GatewayLoadBalancer**: A gateway endpoint. You can add Gateway Load Balancer (GWLB) instances as service resources.
         self.service_type = service_type
+        # The regions where the service is supported. Service consumers can create endpoint connections to the service from these regions.
         self.supported_region_set = supported_region_set
-        # Indicates whether the domain name of the nearest endpoint that is associated with the endpoint service is resolved first. Valid values:
+        # Specifies whether zone affinity is enabled. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): Zone affinity is enabled.
+        # 
+        # - **false**: Zone affinity is disabled.
         self.zone_affinity_enabled = zone_affinity_enabled
-        # The zones to which the service resources belong.
+        # The zones where the service is available.
         self.zones = zones
 
     def validate(self):
@@ -268,9 +284,26 @@ class GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet(DaraModel):
         service_region_id: str = None,
         supported_region_id: str = None,
     ):
+        # The business status of the endpoint service in the supported region. Valid values:
+        # 
+        # - **Normal**: The service is operating normally in the supported region.
+        # 
+        # - **FinancialLocked**: The endpoint service is locked due to an overdue payment.
         self.region_business_status = region_business_status
+        # The status of the endpoint service in the supported region. Valid values:
+        # 
+        # - **Pending**: The supported region is being modified.
+        # 
+        # - **Available**: The service is available in the supported region.
+        # 
+        # - **Deleting**: The supported region is being deleted.
+        # 
+        # - **Failed**: The service failed to be deployed in the supported region.
+        # 
+        # - **Closed**: The endpoint service is not available in the supported region.
         self.region_service_status = region_service_status
         self.service_region_id = service_region_id
+        # The ID of the supported region.
         self.supported_region_id = supported_region_id
 
     def validate(self):

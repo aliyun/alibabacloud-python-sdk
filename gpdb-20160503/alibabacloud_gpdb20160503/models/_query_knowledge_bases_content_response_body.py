@@ -19,23 +19,22 @@ class QueryKnowledgeBasesContentResponseBody(DaraModel):
         status: str = None,
         usage: main_models.QueryKnowledgeBasesContentResponseBodyUsage = None,
     ):
-        # The number of tokens that are used during vectorization.
+        # The number of tokens used during vectorization.
         # 
-        # >  A token is the minimum unit for segmenting text. A token can be a word, phrase, punctuation, or character.
+        # > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
         self.embedding_tokens = embedding_tokens
         self.entities = entities
         self.matches = matches
-        # The returned information.
+        # The returned message.
         self.message = message
         self.relations = relations
-        # The unique ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the operation. Valid values:
-        # 
-        # *   **success**.
-        # *   **fail**.
+        # The API execution status. Valid values:
+        # - **success**: The execution is successful.
+        # - **fail**: The execution failed.
         self.status = status
-        # The total number of tokens that are consumed by this query.
+        # The resource usage of this query.
         self.usage = usage
 
     def validate(self):
@@ -117,13 +116,13 @@ class QueryKnowledgeBasesContentResponseBodyUsage(DaraModel):
         embedding_entries: str = None,
         embedding_tokens: str = None,
     ):
-        # The number of entries that are used during vectorization.
+        # The number of entries used during vectorization.
         # 
-        # >  An entry refers to a single unit of vectorization processing. Processing one text input counts as 1 entry, while processing one image counts as 2 entries.
+        # > An entry refers to the number of items processed during vectorization of text or images. For example, processing text once counts as 1 entry, and processing an image once counts as 2 entries.
         self.embedding_entries = embedding_entries
-        # The number of tokens that are used for vectorization.
+        # The number of tokens used during vectorization.
         # 
-        # >  A token is the minimum unit for splitting text. A token can be a word, phrase, punctuation, or character.
+        # > A token is the smallest unit into which the input text is split. A token can be a word, a phrase, a punctuation mark, or a character.
         self.embedding_tokens = embedding_tokens
 
     def validate(self):

@@ -11,19 +11,19 @@ class GetBasicAccelerateIpIdleCountRequest(DaraModel):
         ip_set_id: str = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of a request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure that the value is unique among different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # The ID of the basic GA instance that you want to query.
+        # The acceleration region instance ID of the basic Alibaba Cloud Global Accelerator (GA) instance that you want to query.
         # 
-        # You can call the [GetBasicAccelerator](https://help.aliyun.com/document_detail/2253380.html) operation to query the region ID.
+        # You can invoke [GetBasicAccelerator](https://help.aliyun.com/document_detail/2253380.html) to query the acceleration region instance ID.
         # 
         # This parameter is required.
         self.ip_set_id = ip_set_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of Global Accelerator. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id

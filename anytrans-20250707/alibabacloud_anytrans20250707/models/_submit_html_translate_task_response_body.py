@@ -15,11 +15,17 @@ class SubmitHtmlTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID. Use it to trace the API call.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class SubmitHtmlTranslateTaskResponseBodyData(DaraModel):
         task_id: str = None,
         tracking_data: str = None,
     ):
+        # The translation task status.
         self.status = status
+        # The HTML translation task ID.
         self.task_id = task_id
+        # User-defined tracking data that the service returns as-is. Use this parameter for data tracking.
         self.tracking_data = tracking_data
 
     def validate(self):

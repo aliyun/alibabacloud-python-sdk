@@ -10,7 +10,7 @@ class DeleteDataQualityRuleTemplateRequest(DaraModel):
         code: str = None,
         project_id: int = None,
     ):
-        # The code for the template.
+        # The code of the rule template.
         # 
         # This parameter is required.
         self.code = code

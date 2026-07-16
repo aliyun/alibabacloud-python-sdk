@@ -10,7 +10,13 @@ class MultiModalGuardRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The type of the moderation service. Valid values:
+        # 
+        # - query_security_check: AI input content moderation.
+        # 
+        # - response_security_check: AI-generated content moderation.
         self.service = service
+        # The set of parameters required for the moderation service. The value must be a JSON string.
         self.service_parameters = service_parameters
 
     def validate(self):

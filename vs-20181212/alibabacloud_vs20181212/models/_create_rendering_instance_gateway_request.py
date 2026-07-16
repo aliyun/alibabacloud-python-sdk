@@ -10,8 +10,12 @@ class CreateRenderingInstanceGatewayRequest(DaraModel):
         gateway_instance_id: str = None,
         rendering_instance_id: str = None,
     ):
+        # The ID of the custom gateway instance.
+        # 
         # This parameter is required.
         self.gateway_instance_id = gateway_instance_id
+        # The ID of the cloud application service instance.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

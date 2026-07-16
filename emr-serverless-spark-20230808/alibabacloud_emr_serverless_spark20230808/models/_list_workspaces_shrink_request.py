@@ -15,17 +15,19 @@ class ListWorkspacesShrinkRequest(DaraModel):
         state: str = None,
         tag_shrink: str = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of results per page.
         self.max_results = max_results
-        # The name of the workspace. Fuzzy match is supported.
+        # The name of the workspace. Fuzzy search is supported.
         self.name = name
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page of results.
         self.next_token = next_token
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The state of the workspace.
         self.state = state
+        # Filters the results by one or more tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

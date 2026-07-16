@@ -14,8 +14,11 @@ class ListReportDefinitionsResponseBody(DaraModel):
         report_definitions: List[main_models.ListReportDefinitionsResponseBodyReportDefinitions] = None,
         request_id: str = None,
     ):
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The data list.
         self.report_definitions = report_definitions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -71,14 +74,26 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         report_type: str = None,
         subscribe_create_time: str = None,
     ):
+        # The start billing cycle for push. After the subscription is created, the system automatically pushes data from the start billing cycle to the current time. This parameter does not take effect for monthly bill PDF subscriptions, and historical data is not re-pushed. Data within the last year can be pushed.
         self.begin_billing_cycle = begin_billing_cycle
+        # The name of the OSS bucket that stores the files.
         self.oss_bucket_name = oss_bucket_name
+        # The UID of the OSS bucket owner that stores the files. Specify this parameter when a Bid/Reseller subscription needs to push data to the OSS bucket of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The calling account is used by default.
         self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
+        # The storage path of the OSS bucket.
         self.oss_bucket_path = oss_bucket_path
+        # The subscription source name.
         self.report_source_name = report_source_name
+        # The subscription source. Valid values: OSS and MC.
         self.report_source_type = report_source_type
+        # The bill subscription task ID.
         self.report_task_id = report_task_id
+        # The subscription type. Valid values:
+        # - BillingItemDetailForBillingPeriod: billable item consumption details.
+        # - InstanceDetailForBillingPeriod: instance consumption details.
+        # - BillingItemDetailMonthly: billable item consumption summary by billing cycle.
         self.report_type = report_type
+        # The time when the subscription was created.
         self.subscribe_create_time = subscribe_create_time
 
     def validate(self):

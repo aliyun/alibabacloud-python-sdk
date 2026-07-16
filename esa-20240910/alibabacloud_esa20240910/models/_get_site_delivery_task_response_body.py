@@ -24,32 +24,41 @@ class GetSiteDeliveryTaskResponseBody(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
+        # The type of real-time log for Dynamic Route for CDN (DCDN). Valid values:
         # 
-        # *   dcdn_log_access_l1 (default): access logs.
-        # *   dcdn_log_er: Edge Routine logs.
-        # *   dcdn_log_waf: firewall logs.
-        # *   dcdn_log_ipa: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1** (default): access log.
+        # 
+        # - **dcdn_log_er**: edge function log.
+        # 
+        # - **dcdn_log_waf**: WAF log.
+        # 
+        # - **dcdn_log_ipa**: layer 4 acceleration log.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # 1.  cn: the Chinese mainland.
-        # 2.  sg: outside the Chinese mainland.
-        self.data_center = data_center
-        # The destination of the delivery. Valid values:
+        # - **cn**: Chinese mainland.
         # 
-        # 1.  sls: Alibaba Cloud Simple Log Service (SLS).
-        # 2.  http: HTTP server.
-        # 3.  aws3: Amazon Simple Storage Service (S3).
-        # 4.  oss: Alibaba Cloud Object Storage Service (OSS).
-        # 5.  kafka: Kafka.
-        # 6.  aws3cmpt: S3-compatible storage service.
+        # - **sg**: Global (excluding Chinese mainland). Note that the value for this region is "sg".
+        self.data_center = data_center
+        # The delivery type. Valid values:
+        # 
+        # - **sls**: Log Service.
+        # 
+        # - **http**: HTTP service.
+        # 
+        # - **aws3**: Amazon S3.
+        # 
+        # - **oss**: Object Storage Service.
+        # 
+        # - **kafka**: Kafka service.
+        # 
+        # - **aws3cmpt**: Amazon S3-compatible service.
         self.delivery_type = delivery_type
         # The discard rate.
         self.discard_rate = discard_rate
-        # The log fields.
+        # A comma-separated list of log fields to deliver.
         self.field_list = field_list
-        # The filtering rules.
+        # The filter rules.
         self.filter_rules = filter_rules
         self.filter_ver = filter_ver
         self.raw_rule = raw_rule
@@ -57,16 +66,17 @@ class GetSiteDeliveryTaskResponseBody(DaraModel):
         self.request_id = request_id
         # The delivery configuration.
         self.sink_config = sink_config
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
-        # The status of the delivery task.
+        # The status of the task. Valid values:
         # 
-        # *   **online**
-        # *   **offline**
+        # - **online**: The task is delivering logs.
+        # 
+        # - **offline**: The task is paused.
         self.status = status
-        # The name of the delivery task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

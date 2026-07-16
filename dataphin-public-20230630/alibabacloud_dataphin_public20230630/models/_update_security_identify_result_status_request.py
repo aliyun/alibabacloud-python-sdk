@@ -13,8 +13,12 @@ class UpdateSecurityIdentifyResultStatusRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateSecurityIdentifyResultStatusRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update instruction.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -52,8 +56,12 @@ class UpdateSecurityIdentifyResultStatusRequestUpdateCommand(DaraModel):
         enable: bool = None,
         identify_result_id_list: List[int] = None,
     ):
+        # Specifies whether the result is effective.
+        # 
         # This parameter is required.
         self.enable = enable
+        # The list of identification result IDs.
+        # 
         # This parameter is required.
         self.identify_result_id_list = identify_result_id_list
 

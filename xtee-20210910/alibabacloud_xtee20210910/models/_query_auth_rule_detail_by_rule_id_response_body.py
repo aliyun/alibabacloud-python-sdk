@@ -13,9 +13,9 @@ class QueryAuthRuleDetailByRuleIdResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.QueryAuthRuleDetailByRuleIdResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -72,49 +72,49 @@ class QueryAuthRuleDetailByRuleIdResponseBodyResultObject(DaraModel):
         template_type: str = None,
         version: int = None,
     ):
-        # Audit ID
+        # The approval ID.
         self.audit_id = audit_id
-        # Authorization type
+        # The authorization type.
         self.auth_type = auth_type
-        # Authorized user UID
+        # The UID of the authorized user.
         self.auth_users = auth_users
-        # Primary key ID of the strategy
+        # The primary key ID of the policy.
         self.console_rule_id = console_rule_id
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Execution logic
+        # The execution logic.
         self.logic_expression = logic_expression
-        # Description
+        # The description.
         self.memo = memo
-        # Rule priority, the higher the number, the higher the priority.
+        # The policy priority. A larger value indicates a higher priority.
         self.priority = priority
-        # Returned rule action structure.
+        # The returned rule action struct.
         self.rule_action_map = rule_action_map
-        # Output actions
+        # The output actions.
         self.rule_actions = rule_actions
-        # Rule authorization type
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # Rule expressions.
+        # The rule expressions.
         self.rule_expressions = rule_expressions
-        # Strategy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Strategy name
+        # The policy name.
         self.rule_name = rule_name
-        # Strategy status
+        # The policy status.
         self.rule_status = rule_status
-        # Rule type
+        # The policy type.
         self.rule_type = rule_type
-        # Primary key ID of the strategy version
+        # The primary key ID of the policy version.
         self.rule_version_id = rule_version_id
-        # Template type
+        # The template type.
         self.template_type = template_type
-        # Version number
+        # The version number.
         self.version = version
 
     def validate(self):

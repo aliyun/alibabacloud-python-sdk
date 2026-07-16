@@ -16,18 +16,19 @@ class QueryTagListPageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. **OK** indicates that the request is successful.
+        # The response code. **OK** indicates success.
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The description of the response code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: successful.
+        # 
+        # - false: failed.
         self.success = success
 
     def validate(self):
@@ -85,15 +86,15 @@ class QueryTagListPageResponseBodyData(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
-        # The retruned data.
+        # The data list.
         self.records = records
-        # The total number of returned entries.
+        # The total count.
         self.total_count = total_count
-        # The total number of returned pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -164,11 +165,11 @@ class QueryTagListPageResponseBodyDataRecords(DaraModel):
         scene_id: int = None,
         scene_name: str = None,
     ):
-        # The API operation that is called by the frontend.
+        # The name of the API called by the frontend.
         self.api_name = api_name
-        # Code
+        # The response code. OK indicates success.
         self.code = code
-        # The URL for the API documentation.
+        # The API document link.
         self.doc_address = doc_address
         # The tag ID.
         self.id = id
@@ -176,14 +177,15 @@ class QueryTagListPageResponseBodyDataRecords(DaraModel):
         self.industry_id = industry_id
         # The industry name.
         self.industry_name = industry_name
-        # The tag description.
+        # The tag introduction.
         self.introduction = introduction
-        # Indicates whether the number is activated.
+        # Indicates whether the activation has been applied for.
         self.is_open = is_open
         # The tag name.
         self.name = name
-        # *   0: The number is hidden.
-        # *   1: The number is public.
+        # - 0: hidden.
+        #  
+        # - 1: public.
         self.sale_status_str = sale_status_str
         # The scene ID.
         self.scene_id = scene_id

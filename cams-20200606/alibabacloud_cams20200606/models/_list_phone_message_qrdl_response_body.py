@@ -16,12 +16,13 @@ class ListPhoneMessageQrdlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
+        # The response code. OK indicates success.
         self.code = code
-        # The returned data.
+        # The returned data object.
         self.data = data
-        # Error description information.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -88,17 +89,17 @@ class ListPhoneMessageQrdlResponseBodyData(DaraModel):
         qr_image_url: str = None,
         qrdl_code: str = None,
     ):
-        # The URL of the deep link.
+        # The deep link URL.
         self.deep_link_url = deep_link_url
-        # The format of the generated image.
+        # The type of the generated image.
         self.generate_qr_image = generate_qr_image
         # The phone number.
         self.phone_number = phone_number
-        # The message content.
+        # The prefilled message content.
         self.prefilled_message = prefilled_message
-        # The URL of the QR code.
+        # The URL of the QR code image.
         self.qr_image_url = qr_image_url
-        # The mode of the quick-response (QR) code.
+        # The QR code identifier.
         self.qrdl_code = qrdl_code
 
     def validate(self):

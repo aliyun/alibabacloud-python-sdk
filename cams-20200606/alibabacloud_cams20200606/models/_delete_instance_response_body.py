@@ -13,10 +13,23 @@ class DeleteInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of `OK` means the request was successful.
+        # 
+        # - For other error codes, see the [Error Code List](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The response message.
         self.message = message
+        # The unique ID for the request. Use it for troubleshooting.
         self.request_id = request_id
+        # Specifies whether the request was successful. Valid values:
+        # 
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

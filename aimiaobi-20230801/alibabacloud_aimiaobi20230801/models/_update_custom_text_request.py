@@ -13,12 +13,19 @@ class UpdateCustomTextRequest(DaraModel):
         id: int = None,
         title: str = None,
     ):
+        # Workspace unique identifier: AgentKey
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Commodity code
         self.commodity_code = commodity_code
+        # Content
         self.content = content
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Title
         self.title = title
 
     def validate(self):

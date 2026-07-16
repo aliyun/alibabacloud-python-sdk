@@ -16,16 +16,39 @@ class DescribeRelatedDefenseRulesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_id: int = None,
     ):
+        # The WAF protection scenario. Only the following value is supported:
+        # 
+        # - **address_book**: address book.
+        # 
         # This parameter is required.
         self.defense_scene = defense_scene
+        # The type of the protection rule. Only the following value is supported:
+        # - **global**: a global-level rule.
+        # 
         # This parameter is required.
         self.defense_type = defense_type
+        # Instance ID of the WAF instance.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page when using paging. Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
+        # The pagination token (**Token**) for the next page. If a next page exists, this field has a return value.
+        # 
+        # > If this parameter has a return value, a next page exists. Use the returned **NextToken** as a request parameter to obtain the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
+        # The region in which the WAF instance resides. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The ID of the rule to query.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
 

@@ -11,10 +11,16 @@ class UpdateFuncSwitchRecordShrinkRequest(DaraModel):
         params_shrink: str = None,
         service_name: str = None,
     ):
+        # The diagnostic channel. Currently, this parameter is fixed to the ECS channel.
+        # 
         # This parameter is required.
         self.channel = channel
+        # The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
+        # 
         # This parameter is required.
         self.params_shrink = params_shrink
+        # The service name.
+        # 
         # This parameter is required.
         self.service_name = service_name
 

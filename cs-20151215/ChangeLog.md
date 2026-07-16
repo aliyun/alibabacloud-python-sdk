@@ -1,3 +1,51 @@
+2026-07-15 Version: 7.0.3
+- Update API CreateClusterNodePool: add request parameters body.management.drift_enabled.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.drift_enabled.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.drift_enabled.
+- Update API ModifyClusterNodePool: add request parameters body.management.drift_enabled.
+
+
+2026-07-10 Version: 7.0.2
+- Update API CreateClusterNodePool: add request parameters body.eflo_node_group.auto_attach_enabled.
+- Update API CreateClusterNodePool: add request parameters body.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.auto_attach_enabled.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.node_components.$.config_revision.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.auto_attach_enabled.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.worker_ram_role_name.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.node_components.$.config_revision.
+- Update API ModifyClusterNodePool: add request parameters body.eflo_node_group.
+
+
+2026-06-25 Version: 7.0.1
+- Update API UpgradeClusterNodepool: add request parameters body.ignore_warning_check.
+
+
+2026-06-25 Version: 7.0.0
+- Update API CreateClusterNodePool: update request parameters body.node_components.$.config.custom_config' type has changed.
+- Update API DescribeClusterNodePoolDetail: update response parameters Body.node_components.$.config.custom_config' type has changed.
+- Update API DescribeClusterNodePools: update response parameters Body.nodepools.$.node_components.$.config.custom_config' type has changed.
+- Update API InstallNodePoolComponents: update request parameters body.components.$.config.customConfig' type has changed.
+- Update API UpdateNodePoolComponent: update request parameters body.config.customConfig' type has changed.
+
+
+2026-06-23 Version: 6.7.1
+- Update API DescribeClusterNodes: add request parameters nodeIps.
+- Update API DescribeClusterNodes: add request parameters nodeLabels.
+- Update API DescribeClusterNodes: add request parameters nodeNames.
+
+
+2026-06-11 Version: 6.7.0
+- Support API RunNodeOperation.
+
+
+2026-06-10 Version: 6.6.4
+- Update API CreateClusterNodePool: add request parameters body.management.auto_fault_diagnosis.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_fault_diagnosis.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.auto_fault_diagnosis.
+- Update API ModifyClusterNodePool: add request parameters body.management.auto_fault_diagnosis.
+
+
 2026-05-15 Version: 6.6.3
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.eflo_node_group.
 - Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.eflo_node_group.

@@ -9861,6 +9861,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_abtest_scene_with_options_async(app_group_identity, scene_id, request, headers, runtime)
 
+    def update_app_group_delete_protection_with_options(
+        self,
+        app_group_identity: str,
+        request: main_models.UpdateAppGroupDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppGroupDeleteProtectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAppGroupDeleteProtection',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/delete-protection',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAppGroupDeleteProtectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_app_group_delete_protection_with_options_async(
+        self,
+        app_group_identity: str,
+        request: main_models.UpdateAppGroupDeleteProtectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAppGroupDeleteProtectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.body):
+            body['body'] = request.body
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAppGroupDeleteProtection',
+            version = '2017-12-25',
+            protocol = 'HTTPS',
+            pathname = f'/v4/openapi/app-groups/{DaraURL.percent_encode(app_group_identity)}/delete-protection',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAppGroupDeleteProtectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_app_group_delete_protection(
+        self,
+        app_group_identity: str,
+        request: main_models.UpdateAppGroupDeleteProtectionRequest,
+    ) -> main_models.UpdateAppGroupDeleteProtectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_app_group_delete_protection_with_options(app_group_identity, request, headers, runtime)
+
+    async def update_app_group_delete_protection_async(
+        self,
+        app_group_identity: str,
+        request: main_models.UpdateAppGroupDeleteProtectionRequest,
+    ) -> main_models.UpdateAppGroupDeleteProtectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_app_group_delete_protection_with_options_async(app_group_identity, request, headers, runtime)
+
     def update_fetch_fields_with_options(
         self,
         app_group_identity: str,

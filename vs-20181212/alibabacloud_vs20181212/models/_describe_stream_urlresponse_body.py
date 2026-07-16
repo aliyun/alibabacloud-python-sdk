@@ -11,8 +11,12 @@ class DescribeStreamURLResponseBody(DaraModel):
         request_id: str = None,
         url: str = None,
     ):
+        # The time when the URL expires.<br>
+        # A UNIX timestamp. Unit: seconds.<br>
         self.expire_time = expire_time
+        # The request ID.
         self.request_id = request_id
+        # The URL of the stream.
         self.url = url
 
     def validate(self):

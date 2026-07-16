@@ -35,34 +35,33 @@ class AddControlPolicyRequest(DaraModel):
         source_type: str = None,
         start_time: int = None,
     ):
-        # The action that Cloud Firewall performs on the traffic. Valid values:
+        # The action that is set in the access control policy. Settings the method in which traffic passes through Cloud Firewall. Valid values:
         # 
-        # *   **accept**: allows the traffic.
-        # *   **drop**: denies the traffic.
-        # *   **log**: monitors the traffic.
+        # - **accept**: allows the access.
+        # - **drop**: deny the access.
+        # - **log**: monitors the traffic.
         # 
         # This parameter is required.
         self.acl_action = acl_action
         # The application type supported by the access control policy. Valid values:
+        # - **FTP**
+        # - **HTTP**
+        # - **HTTPS**
+        # - **Memcache**
+        # - **MongoDB**
+        # - **MQTT**
+        # - **MySQL**
+        # - **RDP**
+        # - **Redis**
+        # - **SMTP**
+        # - **SMTPS**
+        # - **SSH**
+        # - **SSL_No_Cert**
+        # - **SSL**
+        # - **VNC**
+        # - **ANY**: all application types
         # 
-        # *   **FTP**
-        # *   **HTTP**
-        # *   **HTTPS**
-        # *   **Memcache**
-        # *   **MongoDB**
-        # *   **MQTT**
-        # *   **MySQL**
-        # *   **RDP**
-        # *   **Redis**
-        # *   **SMTP**
-        # *   **SMTPS**
-        # *   **SSH**
-        # *   **SSL_No_Cert**
-        # *   **SSL**
-        # *   **VNC**
-        # *   **ANY**
-        # 
-        # > The value of this parameter is based on the value of Proto. If Proto is set to TCP, you can set ApplicationName to any valid value. If Proto is set to UDP, ICMP, or ANY, you can set ApplicationName only to ANY. You must specify at least one of the ApplicationNameList and ApplicationName parameters.
+        # > The valid values of ApplicationName depend on the value of the protocol type (Proto). If Proto is set to TCP, ApplicationName can be set to any of the preceding application types. If Proto is set to UDP, ICMP, or ANY, ApplicationName can be set only to ANY. You must specify either ApplicationNameList or ApplicationName. You cannot leave both of them empty.
         self.application_name = application_name
         # The application types supported by the access control policy.
         self.application_name_list = application_name_list
@@ -72,161 +71,163 @@ class AddControlPolicyRequest(DaraModel):
         self.description = description
         # The destination port in the access control policy. Valid values:
         # 
-        # *   If Proto is set to ICMP, DestPort is automatically left empty.
+        # - If the protocol type is ICMP, the value of DestPort is empty.
+        #    
+        # > If the protocol type is ICMP, access control on the destination port is not supported.
         # 
-        # > If Proto is set to ICMP, access control does not take effect on the destination port.
+        # - If the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is group, the value of DestPort is empty.
         # 
-        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to group, DestPort is empty.
+        # > If the destination port type of the access control policy is set to group (port address book), you do not need to specify a destination port number. All ports that the access control policy manages are included in the port address book.
         # 
-        # > If DestPortType is set to group, you do not need to specify the destination port number. All ports on which the access control policy takes effect are included in the destination port address book.
-        # 
-        # *   If Proto is set to TCP, UDP, or ANY and DestPortType is set to port, the value of DestPort is the destination port number.
+        # - If the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
         self.dest_port = dest_port
         # The name of the destination port address book in the access control policy.
         # 
-        # > If DestPortType is set to group, you must specify the name of the destination port address book.
+        # 
+        # > If DestPortType is set to group, you must specify the destination port address book name.
         self.dest_port_group = dest_port_group
         # The type of the destination port in the access control policy.
         # 
         # Valid values:
         # 
-        # *   **port**: port
-        # *   **group**: port address book
+        # - **port**: port
+        # - **group**: port address book.
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy.
         # 
         # Valid values:
+        # - If DestinationType is set to net, the value of Destination is a destination CIDR block.
+        #   
+        #   Example: 1.2.XX.XX/24
         # 
-        # *   If DestinationType is set to net, the value of this parameter is a CIDR block.
+        # - If DestinationType is set to group, the value of Destination is a destination address book name.
         # 
-        #     Example: 1.2.XX.XX/24
+        #   Example: db_group
         # 
-        # *   If DestinationType is set to group, the value of this parameter is an address book name.
+        # - If DestinationType is set to domain, the value of Destination is a destination domain name.
         # 
-        #     Example: db_group
+        #   Example: *.aliyuncs.com
         # 
-        # *   If DestinationType is set to domain, the value of this parameter is a domain name.
+        # - If DestinationType is set to location, the value of Destination is a destination region.
         # 
-        #     Example: \\*.aliyuncs.com
+        #   Example: ["BJ11", "ZB"\\]
         # 
-        # *   If DestinationType is set to location, the value of this parameter is a location.
-        # 
-        #     Example: ["BJ11", "ZB"]
+        # > If Destination is set to a destination region, for more information, see [Region codes](https://help.aliyun.com/document_detail/2854161.html).
         # 
         # This parameter is required.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        # *   **domain**: domain name
-        # *   **location**: location
+        # - **net**: destination CIDR block
+        # - **group**: destination address book
+        # - **domain**: destination domain name
+        # - **location**: destination region.
         # 
         # This parameter is required.
         self.destination_type = destination_type
-        # The direction of the traffic to which the access control policy applies. Valid values:
+        # The traffic direction of the access control policy. Valid values:
         # 
-        # *   **in**: inbound traffic
-        # *   **out**: outbound traffic
+        # - **in**: inbound traffic
+        # - **out**: outbound traffic.
         # 
         # This parameter is required.
         self.direction = direction
         # The domain name resolution method of the access control policy. Valid values:
         # 
-        # * **FQDN**: fully qualified domain name (FQDN)-based resolution
+        # * **FQDN**: FQDN-based resolution
         # * **DNS**: DNS-based dynamic resolution
-        # * **FQDN_AND_DNS**: FQDN and DNS-based dynamic resolution
+        # * **FQDN_AND_DNS**: FQDN-based and DNS-based dynamic resolution.
         self.domain_resolve_type = domain_resolve_type
-        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        # 
-        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+        # The end time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
         self.end_time = end_time
-        # The IP version supported by the access control policy.
+        # The IP address version supported.
         # 
         # Valid values:
         # 
-        # *   **4**: IPv4
-        # *   **6**: IPv6
-        self.ip_version = ip_version
-        # The language of the content within the request and response. Valid values:
+        # - **4**: IPv4
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **6**: IPv6.
+        self.ip_version = ip_version
+        # The language of the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English.
         self.lang = lang
-        # The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
+        # The priority of the access control policy. The priority value starts from 1. A smaller value indicates a higher priority.
         # 
         # This parameter is required.
         self.new_order = new_order
-        # The protocol type supported by the access control policy. Valid values:
+        # The protocol type in the access control policy. Valid values:
         # 
-        # *   **ANY**
-        # *   **TCP**
-        # *   **UDP**
-        # *   **ICMP**
+        # - **ANY**: any protocol
+        # - **TCP**
+        # - **UDP**
+        # - **ICMP**
+        # 
+        # > If the traffic direction is outbound and the destination address is a threat intelligence address book or cloud service address book of the domain name type, only TCP is supported. The application type can be set to HTTP, HTTPS, SMTP, SMTPS, or SSL.
         # 
         # This parameter is required.
         self.proto = proto
-        # Specifies whether to enable the access control policy. By default, an access control policy is enabled after the policy is created. Valid values:
+        # Specifies whether to enable the access control policy. The policy is enabled by default after it is created. Valid values:
+        # - **true**: enables the access control policy.
         # 
-        # *   **true**: enables the access control policy.
-        # *   **false**: disables the access control policy.
+        # - **false**: disables the access control policy.
         self.release = release
-        # The days of a week or of a month on which the access control policy takes effect.
-        # 
-        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: [].
-        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: [0, 6].
-        # 
-        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
-        # 
-        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: [1, 31].
-        # 
-        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
+        # The days of the recurrence for the policy validity period of the access control policy.
+        # - If RepeatType is set to `Permanent`, `None`, or `Daily`, the value of RepeatDays is an empty array.
+        #   Example: []
+        # - If RepeatType is set to Weekly, the value of RepeatDays must not be empty.
+        #   Example: [0, 6]
+        # > If RepeatType is set to Weekly, the values in RepeatDays cannot be repeated.
+        # - If RepeatType is set to `Monthly`, the value of RepeatDays must not be empty.
+        #   Example: [1, 31]
+        # > If RepeatType is set to Monthly, the values in RepeatDays cannot be repeated.
         self.repeat_days = repeat_days
-        # The point in time when the recurrence ends. Example: 23:30. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
-        # 
-        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+        # The recurrence end time of the policy validity period for the access control policy. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the recurrence start time.
+        # > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
+        # > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
         self.repeat_end_time = repeat_end_time
-        # The point in time when the recurrence starts. Example: 08:00. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
-        # 
-        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
+        # The recurrence start time of the policy validity period for the access control policy. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the recurrence end time.
+        # > If RepeatType is set to Permanent or None, this parameter is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter is required.
+        # > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
         self.repeat_start_time = repeat_start_time
-        # The recurrence type for the access control policy to take effect. Valid values:
-        # 
-        # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
-        # *   **Daily**: The policy takes effect on a daily basis.
-        # *   **Weekly**: The policy takes effect on a weekly basis.
-        # *   **Monthly**: The policy takes effect on a monthly basis.
+        # The recurrence type of the policy validity period for the access control policy. Valid values:
+        # - **Permanent** (default): The policy is always valid.
+        # - **None**: The policy is valid for a specified single time period.
+        # - **Daily**: The policy is valid on a daily basis.
+        # - **Weekly**: The policy is valid on a weekly basis.
+        # - **Monthly**: The policy is valid on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
-        # *   If SourceType is set to net, the value of this parameter is a CIDR block.
+        # - If SourceType is set to net, the value of Source is a source CIDR block.
         # 
-        #     Example: 1.1.XX.XX/24
+        #   Example: 1.1.XX.XX/24
         # 
-        # *   If SourceType is set to group, the value of this parameter is an address book name.
+        # - If SourceType is set to group, the value of Source is a source address book name.
         # 
-        #     Example: db_group
+        #   Example: db_group
         # 
-        # *   If SourceType is set to location, the value of this parameter is a location.
+        # - If SourceType is set to location, the value of Source is a source region.
         # 
-        #     Example: ["BJ11", "ZB"]
+        #   Example: ["BJ11", "ZB"\\]
+        # 
+        # > If Source is set to a source region, for more information, see [Region codes](https://help.aliyun.com/document_detail/2854161.html).
         # 
         # This parameter is required.
         self.source = source
         # The source IP address of the request.
         self.source_ip = source_ip
         # The type of the source address in the access control policy. Valid values:
-        # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        # *   **location**: location
+        # - **net**: source CIDR block
+        # - **group**: source address book
+        # - **location**: source region.
         # 
         # This parameter is required.
         self.source_type = source_type
-        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
-        # 
-        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
+        # The start time of the policy validity period for the access control policy. The value is a UNIX timestamp in seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        # > If RepeatType is set to Permanent, this parameter is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, this parameter is required.
         self.start_time = start_time
 
     def validate(self):

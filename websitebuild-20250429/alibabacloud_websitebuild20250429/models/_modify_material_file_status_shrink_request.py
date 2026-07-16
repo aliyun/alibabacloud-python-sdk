@@ -11,10 +11,16 @@ class ModifyMaterialFileStatusShrinkRequest(DaraModel):
         file_ids_shrink: str = None,
         status: str = None,
     ):
+        # The business instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The file IDs.
+        # 
         # This parameter is required.
         self.file_ids_shrink = file_ids_shrink
+        # The updated status.
+        # 
         # This parameter is required.
         self.status = status
 

@@ -10,9 +10,14 @@ class VideoModerationRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The service code for video moderation.
         self.service = service
-        # The parameters required by the moderation service. The value is a JSON string.
+        # The parameters that are required for the moderation service. The value must be a JSON string.
+        # 
+        # - url: Required. The URL of the object to be moderated. Make sure that the URL can be accessed over the Internet.
+        # - dataId: Optional. The data ID of the object to be moderated.
+        # 
+        # For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/2505810.html).
         self.service_parameters = service_parameters
 
     def validate(self):

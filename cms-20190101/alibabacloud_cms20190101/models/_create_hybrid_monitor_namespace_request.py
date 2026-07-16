@@ -14,34 +14,33 @@ class CreateHybridMonitorNamespaceRequest(DaraModel):
         region_id: str = None,
         spec: str = None,
     ):
-        # The description of the namespace.
+        # The description of the metric repository.
         self.description = description
-        # The name of the namespace.
+        # The name of the metric repository.
         # 
-        # The name can contain lowercase letters, digits, and hyphens (-).
+        # Format: consists of lowercase letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The region where the metric data is stored.
+        # The region in which monitoring data is stored.
         self.namespace_region = namespace_region
-        # The storage scheme of metric data. Valid values:
+        # The storage solution for monitoring data. Valid values:
         # 
-        # *   m_prom_user: The metric data is stored in Simple Log Service.
-        # *   m_prom_pool: The metric data is stored in the private storage space provided by CloudMonitor.
+        # - aliyun_prometheus: monitoring data is stored in Managed Service for Prometheus.
         # 
-        # >  For more information about the storage schemes of metric data, see [Data storage schemes for Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/2594921.html).
+        # > For more information about storage solutions for monitoring data, see [Storage solutions for Hybrid Cloud Monitoring data](https://help.aliyun.com/document_detail/2594921.html).
         self.namespace_type = namespace_type
         self.region_id = region_id
-        # The data retention period. Valid values:
+        # The data storage duration. Valid values:
         # 
-        # *   cms.s1.large (Retention Period 15 Days)
-        # *   cms.s1.xlarge (Retention Period 32 Days)
-        # *   cms.s1.2xlarge (Retention Period 63 Days)
-        # *   cms.s1.3xlarge (Retention Period 93 Days) (default)
-        # *   cms.s1.6xlarge (Retention Period 185 Days)
-        # *   cms.s1.12xlarge (Retention Period 367 Days)
+        # - cms.s1.large: storage duration of 15 days.
+        # - cms.s1.xlarge: storage duration of 32 days.
+        # - cms.s1.2xlarge: storage duration of 63 days.
+        # - cms.s1.3xlarge (default): storage duration of 93 days.
+        # - cms.s1.6xlarge: storage duration of 185 days.
+        # - cms.s1.12xlarge: storage duration of 376 days.
         # 
-        # For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](https://help.aliyun.com/document_detail/223532.html).
+        # For the pricing of different storage duration specifications, see the **Pricing** section in [monitoring dashboard](https://help.aliyun.com/document_detail/223532.html).
         self.spec = spec
 
     def validate(self):

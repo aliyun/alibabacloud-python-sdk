@@ -11,8 +11,15 @@ class DescribeCrossCloudRegionMappingToAliyunRequest(DaraModel):
         cloud_provider: str = None,
         cross_cloud_region_id: str = None,
     ):
+        # The region ID of Alibaba Cloud.
         self.aliyun_region_id = aliyun_region_id
+        # The cloud provider. Valid values:
+        # 
+        # - HuaweiCloud
+        # 
+        # - Azure
         self.cloud_provider = cloud_provider
+        # The region ID of the third-party cloud.
         self.cross_cloud_region_id = cross_cloud_region_id
 
     def validate(self):

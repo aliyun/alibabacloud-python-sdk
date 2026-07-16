@@ -17,12 +17,19 @@ class AddFilesFromAuthorizedOssResponseBody(DaraModel):
         status: str = None,
         success: str = None,
     ):
+        # The error code.
         self.code = code
+        # The data field returned by the operation.
         self.data = data
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The status code returned by the operation.
         self.status = status
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -82,6 +89,7 @@ class AddFilesFromAuthorizedOssResponseBodyData(DaraModel):
         self,
         add_file_result_list: List[main_models.AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList] = None,
     ):
+        # The list of file import results.
         self.add_file_result_list = add_file_result_list
 
     def validate(self):
@@ -120,9 +128,19 @@ class AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList(DaraModel):
         oss_key: str = None,
         status: str = None,
     ):
+        # The file ID. Keep this value safe because it is required for all subsequent API operations related to this file.
         self.file_id = file_id
+        # The error message returned when the file import fails.
         self.msg = msg
+        # The key of the imported file in the OSS bucket.
         self.oss_key = oss_key
+        # The file import status. Valid values:
+        # 
+        # - SUCCESS: The import to application data is complete.
+        # - FAILED: The import to application data failed.
+        # 
+        # > Only files with a SUCCESS status can be used to create or update a knowledge base.
+        # >
         self.status = status
 
     def validate(self):

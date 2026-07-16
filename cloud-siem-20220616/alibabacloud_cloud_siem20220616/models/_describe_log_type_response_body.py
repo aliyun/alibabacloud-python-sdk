@@ -16,18 +16,19 @@ class DescribeLogTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,9 +89,9 @@ class DescribeLogTypeResponseBodyData(DaraModel):
         log_type: str = None,
         log_type_name: str = None,
     ):
-        # The log type of the rule.
+        # The log type for the rule.
         self.log_type = log_type
-        # The internal code of the log type.
+        # The code for the log type name.
         self.log_type_name = log_type_name
 
     def validate(self):

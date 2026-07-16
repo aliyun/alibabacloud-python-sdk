@@ -15,29 +15,30 @@ class DeepfakeDetectIntlStreamRequest(DaraModel):
         product_code: str = None,
         scene_code: str = None,
     ):
-        # Enter the Base64 encoded format of the face image; for video formats, it is recommended to input via stream.
+        # The Base64-encoded face image. For videos, we recommend that you use the stream method for transmission.
         self.face_base_64 = face_base_64
-        # Image input stream.
+        # The image input stream.
         self.face_file = face_file
-        # Face material input type:
+        # The type of facial material input:
         # 
         # - IMAGE (default): Face image
         # - VIDEO: Face video
         # 
-        # Note: Video processing takes longer, it is recommended to set the timeout > 3S.
+        # Note
+        # Video processing takes a long time. We recommend that you set the timeout period to more than 3 seconds.
         self.face_input_type = face_input_type
-        # Enter the URL address of the face image.
+        # The URL of the face image.
         self.face_url = face_url
-        # A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination.
+        # The unique identifier of the merchant request. The value is an alphanumeric string with a length of 32 characters.
         # 
-        # The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
+        # The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a timestamp, and the last part can use a random or incremental sequence.
         self.merchant_biz_id = merchant_biz_id
-        # The product solution to be integrated.
-        # Value: FACE_DEEPFAKE
+        # The product solution to integrate.
+        # Valid value: FACE_DEEPFAKE
         self.product_code = product_code
-        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later.
+        # A custom verification scenario ID that you define. This ID is used to query related records in the console.
         # 
-        # Supports a combination of 10 characters, including letters, numbers, or underscores.
+        # The value is a combination of letters, digits, or underscores (_) with a maximum length of 10 characters.
         self.scene_code = scene_code
 
     def validate(self):

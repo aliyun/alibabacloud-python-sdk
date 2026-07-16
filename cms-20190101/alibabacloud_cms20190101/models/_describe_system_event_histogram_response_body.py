@@ -18,7 +18,7 @@ class DescribeSystemEventHistogramResponseBody(DaraModel):
     ):
         # The response code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message

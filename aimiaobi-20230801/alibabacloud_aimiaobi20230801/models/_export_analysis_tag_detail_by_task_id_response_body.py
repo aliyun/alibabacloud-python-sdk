@@ -14,11 +14,17 @@ class ExportAnalysisTagDetailByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Temporary accessible URL (expires in 1 hour).
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
+        # Unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful: true for success, false for failure.
         self.success = success
 
     def validate(self):

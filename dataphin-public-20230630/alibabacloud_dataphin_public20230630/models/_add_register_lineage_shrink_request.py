@@ -10,8 +10,12 @@ class AddRegisterLineageShrinkRequest(DaraModel):
         add_register_lineage_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The command for registering and adding data lineage.
+        # 
         # This parameter is required.
         self.add_register_lineage_command_shrink = add_register_lineage_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

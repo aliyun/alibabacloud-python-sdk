@@ -32,9 +32,11 @@ class DescribeEniMonitorDataRequest(DaraModel):
         self.owner_id = owner_id
         # The interval at which to retrieve the monitoring data. Unit: seconds. Default value: Month. Valid values:
         # 
-        # *   60
-        # *   600
-        # *   3600
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 3600
         # 
         # Default: 60.
         self.period = period

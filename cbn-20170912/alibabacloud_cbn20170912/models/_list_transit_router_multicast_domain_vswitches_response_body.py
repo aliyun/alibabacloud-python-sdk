@@ -15,10 +15,18 @@ class ListTransitRouterMulticastDomainVSwitchesResponseBody(DaraModel):
         total_count: int = None,
         v_switch_ids: List[str] = None,
     ):
+        # The number of entries returned per page.
         self.max_results = max_results
+        # The token for the next query. Valid values:
+        # 
+        # - If **NextToken** is empty, there is no next query.
+        # - If **NextToken** has a return value, the value is the token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The number of entries in the list.
         self.total_count = total_count
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

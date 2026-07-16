@@ -13,10 +13,18 @@ class Shard(DaraModel):
         shard_id: int = None,
         status: str = None,
     ):
+        # The time at which the shard was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The end of the MD5 hash range.
         self.exclusive_end_key = exclusive_end_key
+        # The start of the MD5 hash range. The value is included in the MD5 hash range of the shard.
         self.inclusive_begin_key = inclusive_begin_key
+        # shard id
         self.shard_id = shard_id
+        # The status of the shard. After you create a shard, the shard enters the readwrite state. If you split a shard or merge shards, the shard status changes to readonly. The newly generated shards are in the readwrite state. The status of a shard does not affect the performance of read operations that are performed on the shard. Data can be written to the shards that are in the readwrite state, but data cannot be written to the shards that are in the readonly state. Valid values:
+        # 
+        # *   readwrite
+        # *   readonly
         self.status = status
 
     def validate(self):

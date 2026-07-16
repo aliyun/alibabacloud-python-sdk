@@ -77,7 +77,7 @@ class BindConfigGroupRequestResourceInfos(DaraModel):
         # 
         # Valid value:
         # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # - CLOUD_DESKTOP: the cloud computer service.
         self.product_type = product_type
         # The ID of the resource.
         self.resource_id = resource_id
@@ -87,8 +87,9 @@ class BindConfigGroupRequestResourceInfos(DaraModel):
         # 
         # Valid values:
         # 
-        # *   RESOURCE_GROUP: the resource group
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # - RESOURCE_GROUP: the resource group
+        # 
+        # - CLOUD_DESKTOP: the cloud computer service.
         self.resource_type = resource_type
 
     def validate(self):

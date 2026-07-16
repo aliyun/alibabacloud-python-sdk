@@ -17,11 +17,16 @@ class DescribeVsDomainReqTrafficDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # Time granularity of the query.
         self.data_interval = data_interval
+        # Domain name of the Visual Edge Computing Service
         self.domain_name = domain_name
+        # End time of the query.
         self.end_time = end_time
         self.req_traffic_data_per_interval = req_traffic_data_per_interval
+        # Request ID.
         self.request_id = request_id
+        # Start time of the query.
         self.start_time = start_time
 
     def validate(self):

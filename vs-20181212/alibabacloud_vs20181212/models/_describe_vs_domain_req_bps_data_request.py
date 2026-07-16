@@ -15,12 +15,18 @@ class DescribeVsDomainReqBpsDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Visual Edge Computing Service domain name.
         self.domain_name = domain_name
+        # End time must be later than start time. Use ISO 8601 notation and UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>
         self.end_time = end_time
+        # Time granularity for the query, in seconds. Valid values: 300, 3600, and 86400. If you omit this parameter or specify an unsupported value, the default value 300 is used.
         self.interval = interval
+        # ISP name in English. Get this value from the DescribeCdnRegionAndIsp operation. If you omit this parameter, the system queries data for all ISPs.
         self.isp_name_en = isp_name_en
+        # Region name in English. Get this value from the DescribeCdnRegionAndIsp operation. If you omit this parameter, the system queries data for all regions.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
+        # Start time of the data query. Use ISO 8601 notation and UTC time.<br>Format: YYYY-MM-DDThh:mm:ssZ<br>Minimum data granularity is 5 minutes.<br>If you omit this parameter, the system reads data from the last 24 hours by default.<br><br><br>
         self.start_time = start_time
 
     def validate(self):

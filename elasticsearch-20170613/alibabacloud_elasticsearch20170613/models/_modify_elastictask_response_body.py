@@ -13,7 +13,9 @@ class ModifyElastictaskResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ModifyElastictaskResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -50,7 +52,9 @@ class ModifyElastictaskResponseBodyResult(DaraModel):
         elastic_expansion_task: main_models.ModifyElastictaskResponseBodyResultElasticExpansionTask = None,
         elastic_shrink_task: main_models.ModifyElastictaskResponseBodyResultElasticShrinkTask = None,
     ):
+        # The elastic node scale-out rule.
         self.elastic_expansion_task = elastic_expansion_task
+        # The elastic node scale-in rule.
         self.elastic_shrink_task = elastic_shrink_task
 
     def validate(self):
@@ -93,10 +97,14 @@ class ModifyElastictaskResponseBodyResultElasticShrinkTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
+        # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
+        # The target number of elastic data nodes during off-peak hours.
         self.elastic_node_count = elastic_node_count
+        # The number of replicas for the target index.
         self.replica_count = replica_count
         self.target_indices = target_indices
+        # The cause. Valid values: crontab, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -152,10 +160,14 @@ class ModifyElastictaskResponseBodyResultElasticExpansionTask(DaraModel):
         target_indices: List[str] = None,
         trigger_type: str = None,
     ):
+        # The trigger cycle, specified as a Quartz Cron expression.
         self.cron_expression = cron_expression
+        # The target number of elastic data nodes during peak hours.
         self.elastic_node_count = elastic_node_count
+        # The number of replicas for the target index.
         self.replica_count = replica_count
         self.target_indices = target_indices
+        # The cause. The value is fixed as crontab, which indicates scheduled triggering.
         self.trigger_type = trigger_type
 
     def validate(self):

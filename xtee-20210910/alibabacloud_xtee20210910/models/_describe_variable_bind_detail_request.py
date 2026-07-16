@@ -12,15 +12,15 @@ class DescribeVariableBindDetailRequest(DaraModel):
         id: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Bound variable definition ID
+        # The ID of the bound variable definition.
         self.define_id = define_id
-        # Primary key ID of the variable, which is empty if it\\"s a new addition
+        # The primary key ID of the variable. Leave this parameter empty for new entries.
         self.id = id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

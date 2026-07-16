@@ -16,12 +16,19 @@ class TableSnapshot(DaraModel):
         snapshot: main_models.Snapshot = None,
         total_buckets: int = None,
     ):
+        # The total number of files in the snapshot.
         self.file_count = file_count
+        # The total size of all files in the snapshot, in bytes.
         self.file_size_in_bytes = file_size_in_bytes
+        # The creation time of the most recent file in the snapshot, as a Unix timestamp in milliseconds.
         self.last_file_creation_time = last_file_creation_time
+        # The total number of partitions in the table.
         self.partition_count = partition_count
+        # The total number of records in the snapshot.
         self.record_count = record_count
+        # Contains detailed information about the snapshot.
         self.snapshot = snapshot
+        # The total number of buckets in the table.
         self.total_buckets = total_buckets
 
     def validate(self):

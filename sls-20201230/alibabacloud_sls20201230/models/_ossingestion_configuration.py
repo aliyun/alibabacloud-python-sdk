@@ -11,8 +11,12 @@ class OSSIngestionConfiguration(DaraModel):
         logstore: str = None,
         source: main_models.OSSIngestionConfigurationSource = None,
     ):
+        # The Logstore.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The source that you specify for the configurations of the OSS data import job.
+        # 
         # This parameter is required.
         self.source = source
 

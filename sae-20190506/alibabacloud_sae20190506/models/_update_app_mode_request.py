@@ -13,17 +13,14 @@ class UpdateAppModeRequest(DaraModel):
         idle_hour: str = None,
         namespace_id: str = None,
     ):
-        # The app ID.
+        # The application ID.
         self.app_id = app_id
+        # The application IDs.
         self.app_ids = app_ids
-        # Enable Idle Mode?
-        # 
-        # Enumeration value:
-        # 
-        # *   true: enables.
-        # *   false: disables.
+        # Specifies whether to enable the idle mode.
         self.enable_idle = enable_idle
         self.idle_hour = idle_hour
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

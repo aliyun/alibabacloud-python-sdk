@@ -18,29 +18,35 @@ class RestartInstancesResponseBody(DaraModel):
     ):
         # The HTTP status code. Take note of the following rules:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The details of the application.
         self.data = data
         # The error code returned if the request failed. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - The **ErrorCode** parameter is not returned if the request succeeds.
+        # 
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
         # The additional information that is returned. Take note of the following rules:
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - success: If the call is successful, **success** is returned.
+        # 
+        # - An error code: If the call fails, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Specifies whether the instances are successfully restarted. Take note of the following rules:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id

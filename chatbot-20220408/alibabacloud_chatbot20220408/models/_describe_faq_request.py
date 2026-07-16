@@ -10,7 +10,10 @@ class DescribeFaqRequest(DaraModel):
         agent_key: str = None,
         knowledge_id: int = None,
     ):
+        # Specifies the key for the business space. If this parameter is omitted, the default business space is used. You can get this key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # Specifies the knowledge ID.
+        # 
         # This parameter is required.
         self.knowledge_id = knowledge_id
 

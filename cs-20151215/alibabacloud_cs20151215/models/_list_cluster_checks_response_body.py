@@ -12,7 +12,7 @@ class ListClusterChecksResponseBody(DaraModel):
         self,
         checks: List[main_models.ListClusterChecksResponseBodyChecks] = None,
     ):
-        # The list of check items.
+        # The list of checks.
         self.checks = checks
 
     def validate(self):
@@ -53,17 +53,17 @@ class ListClusterChecksResponseBodyChecks(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The ID of the cluster check task.
+        # The check ID.
         self.check_id = check_id
-        # The time when the cluster check task was created.
+        # The creation time.
         self.created_at = created_at
-        # The time when the cluster check task was completed.
+        # The completion time.
         self.finished_at = finished_at
-        # The message that indicates the status of the cluster check task.
+        # The check status message.
         self.message = message
-        # The status of the cluster check.
+        # The check status.
         self.status = status
-        # The check method.
+        # The check type.
         self.type = type
 
     def validate(self):

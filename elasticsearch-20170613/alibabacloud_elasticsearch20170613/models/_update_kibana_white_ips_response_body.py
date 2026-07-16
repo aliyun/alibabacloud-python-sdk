@@ -13,9 +13,9 @@ class UpdateKibanaWhiteIpsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.UpdateKibanaWhiteIpsResponseBodyResult = None,
     ):
-        # The details of the Elasticsearch cluster.
+        # The request ID.
         self.request_id = request_id
-        # The private IP address whitelists for access to the Kibana console of the cluster.
+        # The details of the Elasticsearch instance.
         self.result = result
 
     def validate(self):
@@ -53,11 +53,11 @@ class UpdateKibanaWhiteIpsResponseBodyResult(DaraModel):
         kibana_private_ipwhitelist: List[str] = None,
         network_config: main_models.UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig = None,
     ):
-        # The public IP address whitelists for access to the Kibana console of the cluster.
+        # The Kibana access whitelist.
         self.kibana_ipwhitelist = kibana_ipwhitelist
-        # The private IP address whitelists for access to the Kibana console of the cluster.
+        # The Kibana internal-facing whitelist.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
-        # The ID of the virtual private cloud (VPC).
+        # The network configuration.
         self.network_config = network_config
 
     def validate(self):
@@ -103,15 +103,15 @@ class UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig(DaraModel):
         vswitch_id: str = None,
         white_ip_group_list: List[main_models.UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
-        # The IP address whitelists.
-        self.type = type
-        # The ID of the vSwitch.
-        self.vpc_id = vpc_id
         # The network type.
+        self.type = type
+        # The VPC ID.
+        self.vpc_id = vpc_id
+        # The region where the instance resides.
         self.vs_area = vs_area
-        # The region ID.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The IP address whitelists.
+        # The whitelist group list.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -173,10 +173,11 @@ class UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList(DaraMo
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
-        # The IP addresses in the whitelist.
+        # The name of the whitelist group.
         self.group_name = group_name
-        # The IP addresses in the whitelist.
+        # The list of IP addresses in the whitelist group.
         self.ips = ips
+        # The whitelist type.
         self.white_ip_type = white_ip_type
 
     def validate(self):

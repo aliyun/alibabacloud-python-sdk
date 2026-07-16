@@ -13,19 +13,19 @@ class CreateDBInstanceResponseBody(DaraModel):
         port: str = None,
         request_id: str = None,
     ):
-        # This parameter is deprecated and will not return a value.
+        # This parameter is deprecated and is no longer returned.
         # 
-        # You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the connection address of the instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the connection string of the instance.
         self.connection_string = connection_string
-        # Instance ID.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # Order ID.
+        # The order ID.
         self.order_id = order_id
-        # This parameter is deprecated and will not return a value.
+        # This parameter is deprecated and is no longer returned.
         # 
-        # You can use the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) interface to view the port number of the instance.
+        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the port number of the instance.
         self.port = port
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

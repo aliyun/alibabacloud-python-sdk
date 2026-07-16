@@ -14,8 +14,11 @@ class DescribeBaseSystemRulesResponseBody(DaraModel):
         rules: List[main_models.DescribeBaseSystemRulesResponseBodyRules] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of system protection rules.
         self.rules = rules
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +74,85 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         rule_status: int = None,
         update_time: int = None,
     ):
+        # The CVE ID of the vulnerability that is associated with the system protection rule.
         self.cve_id = cve_id
+        # The description of the system protection rule.
         self.description = description
+        # The type of attack that the system protection rule detects. Valid values:
+        # 
+        # - **sqli**: SQL injection.
+        # 
+        # - **xss**: cross-site scripting (XSS).
+        # 
+        # - **cmdi**: OS command injection.
+        # 
+        # - **expression_injection**: expression injection.
+        # 
+        # - **java_deserialization**: Java deserialization.
+        # 
+        # - **dot_net_deserialization**: .NET deserialization.
+        # 
+        # - **php_deserialization**: PHP deserialization.
+        # 
+        # - **code_exec**: code execution.
+        # 
+        # - **ssrf**: server-side request forgery (SSRF).
+        # 
+        # - **path_traversal**: path traversal.
+        # 
+        # - **arbitrary_file_uploading**: arbitrary file upload.
+        # 
+        # - **webshell**: webshell.
+        # 
+        # - **rfilei**: remote file inclusion (RFI).
+        # 
+        # - **lfilei**: local file inclusion (LFI).
+        # 
+        # - **protocol_violation**: protocol violation.
+        # 
+        # - **scanner_behavior**: scanner behavior.
+        # 
+        # - **logic_flaw**: logic flaw.
+        # 
+        # - **arbitrary_file_reading**: arbitrary file read.
+        # 
+        # - **arbitrary_file_download**: arbitrary file download.
+        # 
+        # - **xxe**: external entity injection.
+        # 
+        # - **csrf**: cross-site request forgery (CSRF).
+        # 
+        # - **crlf**: CRLF injection.
+        # 
+        # - **other**: other.
         self.detect_type = detect_type
+        # The risk level of the system protection rule. Valid values:
+        # 
+        # - **super_strict**: Very Strict.
+        # 
+        # - **strict**: Strict.
+        # 
+        # - **medium**: Medium.
+        # 
+        # - **loose**: Loose.
         self.risk_level = risk_level
+        # The action of the system protection rule. Valid values:
+        # 
+        # - **block**: Block.
+        # 
+        # - **monitor**: Monitor.
         self.rule_action = rule_action
+        # The ID of the system protection rule.
         self.rule_id = rule_id
+        # The name of the system protection rule.
         self.rule_name = rule_name
+        # The status of the system protection rule. Valid values:
+        # 
+        # - **1**: disabled.
+        # 
+        # - **0**: enabled.
         self.rule_status = rule_status
+        # The time when the system protection rule was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

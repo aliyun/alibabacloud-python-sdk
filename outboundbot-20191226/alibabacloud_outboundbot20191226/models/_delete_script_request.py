@@ -10,8 +10,12 @@ class DeleteScriptRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the script to delete.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

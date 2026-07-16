@@ -23,17 +23,17 @@ class CreateNetTestTaskRequest(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # Specify when NetTestType is CommTest.
+        # Specify this parameter if NetTestType is set to CommTest.
         self.comm_test = comm_test
-        # Specify when NetTestType is DelayTest.
+        # Specify this parameter if NetTestType is set to DelayTest.
         self.delay_test = delay_test
-        # The type of the network test. Valid values: DelayTest, TrafficTest, and CommTest.
+        # The type of network test. Valid values: DelayTest, TrafficTest, and CommTest.
         self.net_test_type = net_test_type
         # The network mode.
         self.network_mode = network_mode
-        # The port number.
+        # The test port number.
         self.port = port
-        # If the TrafficModel is Fullmesh, leave this parameter empty.
+        # This field is empty if TrafficModel is set to Fullmesh.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -117,19 +117,19 @@ class CreateNetTestTaskRequestTrafficTest(DaraModel):
         servers: List[main_models.CreateNetTestTaskRequestTrafficTestServers] = None,
         traffic_model: str = None,
     ):
-        # The client IDs.
+        # The client resources.
         self.clients = clients
-        # The running duration of the pipeline job. Unit: seconds.
+        # The runtime duration of the flow task, in seconds.
         self.duration = duration
-        # If the protocol is RDMA, enter True or False. If the protocol is TCP, leave this field empty.
+        # If Protocol is set to RDMA, specify True or False. This field is empty if Protocol is set to TCP.
         self.gdr = gdr
-        # The network protocol, which can be RDMA or TCP.
+        # The network protocol. Valid values: RDMA and TCP.
         self.protocol = protocol
-        # If the protocol is TCP, enter the number of concurrent connections. If the protocol is RDMA, enter the configured QP value.
+        # If Protocol is set to TCP, specify the number of concurrent connections for the test. If Protocol is set to RDMA, specify the QP value.
         self.qp = qp
-        # The services.
+        # The list of servers.
         self.servers = servers
-        # The traffic model, which can be MTON or Fullmesh.
+        # The traffic model. Valid values: MTON and Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -214,7 +214,7 @@ class CreateNetTestTaskRequestTrafficTestServers(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded NIC port.
         self.bond = bond
         # The IP address of the node.
         self.ip = ip
@@ -222,7 +222,7 @@ class CreateNetTestTaskRequestTrafficTestServers(DaraModel):
         self.node_id = node_id
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -278,7 +278,7 @@ class CreateNetTestTaskRequestTrafficTestClients(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded port of the network interface card (NIC).
         self.bond = bond
         # The IP address of the node.
         self.ip = ip
@@ -286,7 +286,7 @@ class CreateNetTestTaskRequestTrafficTestClients(DaraModel):
         self.node_id = node_id
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -338,7 +338,7 @@ class CreateNetTestTaskRequestDelayTest(DaraModel):
         self,
         hosts: List[main_models.CreateNetTestTaskRequestDelayTestHosts] = None,
     ):
-        # The hosts of the test node.
+        # The hosts of the test nodes.
         self.hosts = hosts
 
     def validate(self):
@@ -378,7 +378,7 @@ class CreateNetTestTaskRequestDelayTestHosts(DaraModel):
         resource_id: str = None,
         server_name: str = None,
     ):
-        # The bonding of network interface card.
+        # The bonded NIC port.
         self.bond = bond
         # The IP address of the node.
         self.ip = ip
@@ -386,7 +386,7 @@ class CreateNetTestTaskRequestDelayTestHosts(DaraModel):
         self.node_id = node_id
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):
@@ -443,11 +443,11 @@ class CreateNetTestTaskRequestCommTest(DaraModel):
     ):
         # The number of GPUs.
         self.gpunum = gpunum
-        # The host IDs.
+        # The hosts.
         self.hosts = hosts
         # The communication library model.
         self.model = model
-        # The CommTest type, which can be ACCL or NCCL.
+        # The type of communication library test. Valid values: ACCL and NCCL.
         self.type = type
 
     def validate(self):
@@ -510,7 +510,7 @@ class CreateNetTestTaskRequestCommTestHosts(DaraModel):
         self.node_id = node_id
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the service.
+        # The service name.
         self.server_name = server_name
 
     def validate(self):

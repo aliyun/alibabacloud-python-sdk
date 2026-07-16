@@ -34,8 +34,9 @@ class ModifySagWanSnatRequest(DaraModel):
         self.smart_agsn = smart_agsn
         # Specifies whether to enable SNAT. Valid values:
         # 
-        # *   **ENABLE**: enables SNAT.
-        # *   **DISABLE**: disables SNAT.
+        # - **ENABLE**: enables SNAT.
+        # 
+        # - **DISABLE**: disables SNAT.
         # 
         # This parameter is required.
         self.snat = snat

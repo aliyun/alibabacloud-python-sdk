@@ -15,14 +15,20 @@ class DescribeModifyParameterLogRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. The end time must be later than the start time. The time is in the `YYYY-MM-DDThh:mmZ` format and is in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The beginning of the time range to query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and is in UTC.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

@@ -12,11 +12,11 @@ class DescribePropertyPortItemRequest(DaraModel):
         page_size: int = None,
         port: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page to display in a paged query.
         self.current_page = current_page
-        # Specifies whether to forcefully refresh the data that you want to query.
+        # Specifies whether to forcibly refresh the data to be queried.
         self.force_flush = force_flush
-        # The number of entries to return on each page.
+        # The maximum number of entries to display on each page in a paged query.
         self.page_size = page_size
         # The port number.
         self.port = port

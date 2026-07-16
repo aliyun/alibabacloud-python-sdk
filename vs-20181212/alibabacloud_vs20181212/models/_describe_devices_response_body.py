@@ -17,11 +17,17 @@ class DescribeDevicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of devices.
         self.devices = devices
+        # The total number of pages.
         self.page_count = page_count
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of devices.
         self.total_count = total_count
 
     def validate(self):
@@ -117,36 +123,95 @@ class DescribeDevicesResponseBodyDevices(DaraModel):
         username: str = None,
         vendor: str = None,
     ):
+        # The GB/T 28181 alarm subscription method. Valid values:
+        # 
+        # - 0 (all)
+        # 
+        # - 5 (video alarm)
+        # 
+        # - 7 (other alarm)
+        # 
+        # > * An empty value indicates that no alarm is subscribed.
+        # >
+        # > * Specify multiple values. Separate them with commas (,).
         self.alarm_method = alarm_method
+        # Indicates whether directory reporting is enabled for the platform device.
         self.auto_directory = auto_directory
+        # Indicates whether to enable position subscription for the device.
         self.auto_pos = auto_pos
+        # Indicates whether to automatically start the stream.
         self.auto_start = auto_start
+        # The time when the channels were synchronized.
         self.channel_sync_time = channel_sync_time
+        # The time when the device was created.
         self.created_time = created_time
+        # The description of the device.
         self.description = description
+        # The directory information.
         self.directory = directory
+        # The directory ID.
         self.directory_id = directory_id
+        # The serial number of the device.
+        # 
+        # > This parameter applies only to the AUVSP and ODCAP protocols.
         self.dsn = dsn
+        # Indicates whether the device is enabled.
         self.enabled = enabled
+        # The GB/T 28181 ID of the device.
+        # 
+        # > This parameter applies only to the GB/T 28181 protocol.
         self.gb_id = gb_id
+        # The ID of the group to which the device belongs.
         self.group_id = group_id
+        # The device ID.
         self.id = id
+        # The IP address of the device.
         self.ip = ip
+        # The latitude of the device.
         self.latitude = latitude
+        # The longitude of the device.
         self.longitude = longitude
+        # The device name.
         self.name = name
+        # Other parameters of the device.
         self.params = params
+        # The ID of the parent device, such as the ID of the platform to which a camera belongs.
         self.parent_id = parent_id
+        # The device password.
         self.password = password
+        # The device port.
         self.port = port
+        # The position subscription interval, in seconds.
         self.pos_interval = pos_interval
+        # The device protocol.
         self.protocol = protocol
+        # The time when the device was registered.
         self.registered_time = registered_time
+        # The stream statistics of the device.
         self.stats = stats
+        # The device status. Valid values:
+        # 
+        # - on (online)
+        # 
+        # - off (offline)
+        # 
+        # - failed
+        # 
+        # - new (unregistered)
         self.status = status
+        # The device type. Valid values:
+        # 
+        # - ipc (camera)
+        # 
+        # - platform
+        # 
+        # - ied (intelligent edge device)
         self.type = type
+        # The stream URL on the device.
         self.url = url
+        # The username for the device.
         self.username = username
+        # The manufacturer of the device.
         self.vendor = vendor
 
     def validate(self):
@@ -363,10 +428,15 @@ class DescribeDevicesResponseBodyDevicesStats(DaraModel):
         online_num: int = None,
         stream_num: int = None,
     ):
+        # The number of channels.
         self.channel_num = channel_num
+        # The number of failed streams.
         self.failed_num = failed_num
+        # The number of offline streams.
         self.offline_num = offline_num
+        # The number of online streams.
         self.online_num = online_num
+        # The number of streams.
         self.stream_num = stream_num
 
     def validate(self):
@@ -423,11 +493,17 @@ class DescribeDevicesResponseBodyDevicesDirectory(DaraModel):
         name: str = None,
         parent_id: str = None,
     ):
+        # The time when the directory was created.
         self.created_time = created_time
+        # The description of the directory.
         self.description = description
+        # The ID of the group to which the directory belongs.
         self.group_id = group_id
+        # The directory ID.
         self.id = id
+        # The name of the directory.
         self.name = name
+        # The ID of the parent directory.
         self.parent_id = parent_id
 
     def validate(self):

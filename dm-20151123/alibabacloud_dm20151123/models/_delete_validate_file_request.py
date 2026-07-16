@@ -9,6 +9,7 @@ class DeleteValidateFileRequest(DaraModel):
         self,
         file_id: str = None,
     ):
+        # The ID of the file that is returned after the task is submitted.
         self.file_id = file_id
 
     def validate(self):

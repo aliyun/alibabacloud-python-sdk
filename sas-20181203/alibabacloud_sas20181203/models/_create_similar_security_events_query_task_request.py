@@ -15,15 +15,11 @@ class CreateSimilarSecurityEventsQueryTaskRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the alert event.
         # 
-        # >  You must specify at least one of the SecurityEventId and SimilarEventScenarioCode parameters.
-        # 
         # This parameter is required.
         self.security_event_id = security_event_id
-        # The codes of alert events that are triggered by the same rule or of the same alert type.
-        # 
-        # >  You must specify at least one of the SecurityEventId and SimilarEventScenarioCode parameters.
+        # The code of the alerting event that has the same type or rule hits.
         self.similar_event_scenario_code = similar_event_scenario_code
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

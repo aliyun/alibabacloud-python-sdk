@@ -95,7 +95,9 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(DaraModel):
         total_size: int = None,
         used_size: str = None,
     ):
+        # List of group administrators.
         self.admin_user_ids = admin_user_ids
+        # Administrator information for the group space.
         self.admin_user_infos = admin_user_infos
         # The time when the team space was created.
         self.create_time = create_time
@@ -107,12 +109,15 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroups(DaraModel):
         self.group_id = group_id
         # The name of the team space.
         self.group_name = group_name
+        # Organization ID of the team.
         self.org_id = org_id
+        # Size of the recycle bin for the team space. Unit: Byte.
         self.recycle_bin_size = recycle_bin_size
         # The team space status. Valid values:
         # 
-        # *   enabled
-        # *   disabled
+        # - enabled
+        # 
+        # - disabled
         # 
         # Default value: enabled.
         self.status = status
@@ -226,12 +231,19 @@ class DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos(DaraMod
         real_nick_name: str = None,
         remark: str = None,
     ):
+        # Mailbox.
         self.email = email
+        # Administrator username (may be unreadable when imported from a third party).
         self.end_user_id = end_user_id
+        # Job number (DingTalk)
         self.job_number = job_number
+        # Administrator nickname.
         self.nick_name = nick_name
+        # Phone number.
         self.phone = phone
+        # Administrator nickname.
         self.real_nick_name = real_nick_name
+        # Remark.
         self.remark = remark
 
     def validate(self):

@@ -25,21 +25,45 @@ class CreateLivyComputeRequest(DaraModel):
         release_version: str = None,
         region_id: str = None,
     ):
+        # The authentication method.
         self.auth_type = auth_type
+        # The automatic startup configuration.
         self.auto_start_configuration = auto_start_configuration
+        # The automatic stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
+        # The number of CPU cores for the Livy server.
         self.cpu_limit = cpu_limit
+        # The version number of the Spark engine.
         self.display_release_version = display_release_version
+        # Specifies whether to enable the public endpoint.
         self.enable_public = enable_public
+        # The ID of the runtime environment.
         self.environment_id = environment_id
+        # Specifies whether to enable acceleration with the Fusion engine.
         self.fusion = fusion
+        # The configuration of the Livy Gateway. This parameter is in JSON format and supports the following files:
+        # 
+        # - sparkDefaultsConf
+        # 
+        # - sparkBlackListConf
+        # 
+        # - livyConf
+        # 
+        # - livyClientConf
         self.livy_server_conf = livy_server_conf
+        # The Livy version.
         self.livy_version = livy_version
+        # The memory size of the Livy server.
         self.memory_limit = memory_limit
+        # The name of the Livy Gateway.
         self.name = name
+        # The name of the network connection.
         self.network_name = network_name
+        # The name of the submission queue.
         self.queue_name = queue_name
+        # The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
         self.release_version = release_version
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -163,7 +187,13 @@ class CreateLivyComputeRequestAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
+        # Specifies whether to automatically stop the Livy Gateway.
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.enable = enable
+        # The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -197,6 +227,11 @@ class CreateLivyComputeRequestAutoStartConfiguration(DaraModel):
         self,
         enable: bool = None,
     ):
+        # Specifies whether to automatically start the Livy Gateway after it is created.
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.enable = enable
 
     def validate(self):

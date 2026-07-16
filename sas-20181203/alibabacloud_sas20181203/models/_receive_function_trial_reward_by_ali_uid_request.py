@@ -10,15 +10,14 @@ class ReceiveFunctionTrialRewardByAliUidRequest(DaraModel):
         function_name: str = None,
         lang: str = None,
     ):
-        # The name of the feature for which you want to apply for a free trial. Valid values:
-        # 
-        # *   **trail_honeypot_reward**: cloud honeypot
-        # *   **trail_file_detect_api_reward**: SDK for malicious file detection
+        # The name of the trial feature. Valid values:
+        # - **trail_honeypot_reward**: cloud honeypot
+        # - **trail_file_detect_api_reward**: malicious file detection SDK.
         self.function_name = function_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

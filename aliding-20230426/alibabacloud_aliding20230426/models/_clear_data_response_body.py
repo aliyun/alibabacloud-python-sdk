@@ -11,7 +11,6 @@ class ClearDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.a_1notation = a_1notation
-        # requestId
         self.request_id = request_id
 
     def validate(self):

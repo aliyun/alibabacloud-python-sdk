@@ -17,11 +17,17 @@ class ListIntentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The paginated list of intents.
         self.intents = intents
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListIntentsResponseBodyIntents(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of intents.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of intents.
         self.total_count = total_count
 
     def validate(self):
@@ -147,13 +157,21 @@ class ListIntentsResponseBodyIntentsList(DaraModel):
         update_time: int = None,
         utterances: str = None,
     ):
+        # The time when the intent was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
+        # The description of the intent.
         self.intent_description = intent_description
+        # The intent ID.
         self.intent_id = intent_id
+        # The intent name.
         self.intent_name = intent_name
+        # The keywords of the intent.
         self.keywords = keywords
+        # The script ID.
         self.script_id = script_id
+        # The time when the intent was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.update_time = update_time
+        # The user utterances that trigger the intent.
         self.utterances = utterances
 
     def validate(self):

@@ -12,10 +12,11 @@ class DescribeComponentsRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The type of the supported components. Valid values:
+        # The supported component type. Valid values:
         # 
-        # *   **TOMCAT**
-        # *   **JDK**
+        # - **TOMCAT**
+        # 
+        # - **JDK**
         # 
         # This parameter is required.
         self.type = type

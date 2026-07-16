@@ -17,33 +17,41 @@ class CreateCloudGtmAddressPoolRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   zh-CN: Chinese
-        # *   en-US (default): English
+        # - zh-CN: Chinese.
+        # 
+        # - en-US: English. This is the default value.
         self.accept_language = accept_language
-        # Address pool name, helping users distinguish the purpose of address pools.
+        # The name of the address pool. The name helps you identify the purpose of the address pool.
         self.address_pool_name = address_pool_name
         # The type of the address pool. Valid values:
         # 
-        # *   IPv4: IPv4 addresses are returned for Domain Name System (DNS) resolution.
-        # *   IPv6: IPv6 addresses are returned for DNS resolution.
-        # *   domain: Domain names are returned for DNS resolution.
+        # - IPv4: The endpoint is an IPv4 address.
+        # 
+        # - IPv6: The endpoint is an IPv6 address.
+        # 
+        # - domain: The endpoint is a domain name.
         self.address_pool_type = address_pool_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique token for each request. The token can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The enabling state of the address pool. Valid values:
+        # The status of the address pool. Valid values:
         # 
-        # *   enable: The address pool is enabled, and the addresses in the address pool are returned for DNS resolution when the health check results are normal.
-        # *   disable: The address pool is disabled, and the addresses in the address pool are not returned for DNS resolution regardless of whether the health check results are normal or not.
+        # - enable: The address pool is enabled and can be used for DNS resolution if it passes health checks.
+        # 
+        # - disable: The address pool is disabled and cannot be used for DNS resolution, regardless of its health check status.
         self.enable_status = enable_status
-        # The condition for determining the health status of the address pool. Valid values:
+        # The health status condition of the address pool. Valid values:
         # 
-        # *   any_ok: At least one address in the address pool is available.
-        # *   p30_ok: At least 30% of the addresses in the address pool are available.
-        # *   p50_ok: At least 50% of the addresses in the address pool are available.
-        # *   p70_ok: At least 70% of the addresses in the address pool are available.
-        # *   all_ok: All addresses in the address pool are available.
+        # - any_ok: At least one address in the address pool is active.
+        # 
+        # - p30_ok: At least 30% of the addresses in the address pool are active.
+        # 
+        # - p50_ok: At least 50% of the addresses in the address pool are active.
+        # 
+        # - p70_ok: At least 70% of the addresses in the address pool are active.
+        # 
+        # - all_ok: All addresses in the address pool are active.
         self.health_judgement = health_judgement
-        # Remarks for the address pool, helping users distinguish the usage scenarios of different address pools.
+        # Remarks about the address pool. The remarks help you identify the scenario in which the address pool is used.
         self.remark = remark
 
     def validate(self):

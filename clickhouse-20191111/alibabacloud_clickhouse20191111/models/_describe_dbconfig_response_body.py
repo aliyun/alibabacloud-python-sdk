@@ -10,7 +10,7 @@ class DescribeDBConfigResponseBody(DaraModel):
         config: str = None,
         request_id: str = None,
     ):
-        # The configuration information about the cluster.
+        # The cluster configuration.
         self.config = config
         # The request ID.
         self.request_id = request_id

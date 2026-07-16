@@ -11,6 +11,7 @@ class ModifyTTSConfigRequest(DaraModel):
         app_key: str = None,
         engine: str = None,
         engine_xunfei: str = None,
+        ext_params: str = None,
         instance_id: str = None,
         nls_service_type: str = None,
         pitch_rate: str = None,
@@ -19,17 +20,30 @@ class ModifyTTSConfigRequest(DaraModel):
         voice: str = None,
         volume: str = None,
     ):
+        # The personalized custom voice ID.
         self.ali_customized_voice = ali_customized_voice
+        # The AppKey of the third-party voice configuration.
         self.app_key = app_key
+        # The TTS engine.
         self.engine = engine
+        # The iFLYTEK engine parameters.
         self.engine_xunfei = engine_xunfei
+        self.ext_params = ext_params
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The TTS service invoke type.
         self.nls_service_type = nls_service_type
+        # The pitch rate.
         self.pitch_rate = pitch_rate
+        # The speech rate.
         self.speech_rate = speech_rate
+        # The TTS error correction dictionary.
         self.tts_overrides = tts_overrides
+        # The voice.
         self.voice = voice
+        # The volume.
         self.volume = volume
 
     def validate(self):
@@ -51,6 +65,9 @@ class ModifyTTSConfigRequest(DaraModel):
 
         if self.engine_xunfei is not None:
             result['EngineXunfei'] = self.engine_xunfei
+
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -88,6 +105,9 @@ class ModifyTTSConfigRequest(DaraModel):
 
         if m.get('EngineXunfei') is not None:
             self.engine_xunfei = m.get('EngineXunfei')
+
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

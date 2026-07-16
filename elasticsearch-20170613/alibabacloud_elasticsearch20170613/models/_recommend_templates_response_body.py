@@ -13,7 +13,9 @@ class RecommendTemplatesResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.RecommendTemplatesResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -56,15 +58,15 @@ class RecommendTemplatesResponseBodyResult(DaraModel):
         content: str = None,
         template_name: str = None,
     ):
+        # The template configuration content.
         self.content = content
-        # *
-        # *
-        # *
-        # *
+        # The template name. Valid values:
+        # - staticSettings: cluster static configuration
+        # - dynamicSettings: cluster dynamic configuration
+        # - indexTemplate: index template configuration
+        # - ilmPolicy: index lifecycle configuration
         # 
-        # **
-        # 
-        # ****
+        # > Advanced Edition instances of version 6.7.0 or later support enabling the index lifecycle template.
         self.template_name = template_name
 
     def validate(self):

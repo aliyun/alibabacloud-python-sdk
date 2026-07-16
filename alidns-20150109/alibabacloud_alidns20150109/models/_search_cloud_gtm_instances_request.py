@@ -15,22 +15,24 @@ class SearchCloudGtmInstancesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The language of the return value. Options are:
-        # - **zh-CN**: Chinese. 
+        # The language of the response. Valid values:
+        # 
+        # - **zh-CN**: Chinese.
+        # 
         # - **en-US**: English.
         self.accept_language = accept_language
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+        # The client token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
         # The ID of the Global Traffic Manager (GTM) 3.0 instance.
         self.instance_id = instance_id
-        # Schedule instance name, supports fuzzy search.
+        # The name of the scheduling instance. Fuzzy search is supported.
         self.instance_name = instance_name
-        # Current page number, starting from 1, default is 1.
+        # The number of the page to return. The value starts from 1. The default value is 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
         # 
         # This parameter is required.
         self.page_size = page_size

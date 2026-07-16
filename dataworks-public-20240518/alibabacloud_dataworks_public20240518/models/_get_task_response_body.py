@@ -93,8 +93,9 @@ class GetTaskResponseBodyTask(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The instance ID.
         self.id = id
@@ -102,8 +103,9 @@ class GetTaskResponseBodyTask(DaraModel):
         self.inputs = inputs
         # The instance generation mode. Valid values:
         # 
-        # *   T+1
-        # *   Immediately
+        # - T+1
+        # 
+        # - Immediately
         self.instance_mode = instance_mode
         # The modification time.
         self.modify_time = modify_time
@@ -119,8 +121,9 @@ class GetTaskResponseBodyTask(DaraModel):
         self.priority = priority
         # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -128,9 +131,11 @@ class GetTaskResponseBodyTask(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
-        # *   FailureAllowed: The task can be rerun only after it fails to be run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to be run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -392,16 +397,19 @@ class GetTaskResponseBodyTaskTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual scheduling
+        # - Scheduler: periodic scheduling
+        # 
+        # - Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -495,9 +503,11 @@ class GetTaskResponseBodyTaskSubTasks(DaraModel):
         self.sub_tasks = sub_tasks
         # The type of the subtask. Valid values:
         # 
-        # *   DoWhile: do-while node
-        # *   Combined: node group
-        # *   ForEach: for-each node
+        # - DoWhile: do-while node
+        # 
+        # - Combined: node group
+        # 
+        # - ForEach: for-each node
         self.type = type
 
     def validate(self):
@@ -572,8 +582,9 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The task ID.
         self.id = id
@@ -589,8 +600,9 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(DaraModel):
         self.priority = priority
         # The environment of the workspace. This parameter is deprecated and replaced by the EnvType parameter. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The workspace ID.
         self.project_id = project_id
@@ -598,9 +610,11 @@ class GetTaskResponseBodyTaskSubTasksSubTasks(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
-        # *   FailureAllowed: The task can be rerun only after it fails to be run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to be run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to be run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to be run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -784,16 +798,19 @@ class GetTaskResponseBodyTaskSubTasksSubTasksTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual scheduling
+        # - Scheduler: periodic scheduling
+        # 
+        # - Manual: manual scheduling
         self.type = type
 
     def validate(self):
@@ -1062,10 +1079,13 @@ class GetTaskResponseBodyTaskOutputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant
-        # *   PassThrough: node output
-        # *   System: variable
-        # *   NodeOutput: script output
+        # - Constant: constant
+        # 
+        # - PassThrough: node output
+        # 
+        # - System: variable
+        # 
+        # - NodeOutput: script output
         self.type = type
         # The value of the variable.
         self.value = value
@@ -1177,10 +1197,13 @@ class GetTaskResponseBodyTaskInputsVariables(DaraModel):
         self.name = name
         # The type. Valid values:
         # 
-        # *   Constant: constant
-        # *   PassThrough: node output
-        # *   System: variable
-        # *   NodeOutput: script output
+        # - Constant: constant
+        # 
+        # - PassThrough: node output
+        # 
+        # - System: variable
+        # 
+        # - NodeOutput: script output
         self.type = type
         # The value of the variable.
         self.value = value
@@ -1226,10 +1249,13 @@ class GetTaskResponseBodyTaskDependencies(DaraModel):
     ):
         # The dependency type. Valid values:
         # 
-        # *   CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
-        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
-        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # *   Normal: same-cycle scheduling dependency
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on level-1 descendant nodes
+        # 
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # 
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # 
+        # - Normal: same-cycle scheduling dependency
         self.type = type
         # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output

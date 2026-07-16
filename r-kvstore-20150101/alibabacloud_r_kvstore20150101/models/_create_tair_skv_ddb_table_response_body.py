@@ -23,20 +23,37 @@ class CreateTairSkvDdbTableResponseBody(DaraModel):
         task_id: str = None,
         zone_id: str = None,
     ):
+        # The bandwidth limit of the instance. Unit: MB/s.
         self.bandwidth = bandwidth
+        # The billing method. Valid values:
+        # - PrePaid: subscription.
+        # - PostPaid: pay-as-you-go.
         self.charge_type = charge_type
+        # The detailed configuration of the instance in JSON format. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
+        # The internal endpoint of the Redis instance.
         self.connection_domain = connection_domain
+        # The maximum number of connections supported by the instance.
         self.connections = connections
+        # The globally unique instance ID.
         self.instance_id = instance_id
+        # The current status of the instance. The value is fixed to Creating.
         self.instance_status = instance_status
+        # The order ID.
         self.order_id = order_id
+        # The Redis service port.
         self.port = port
+        # The queries per second (QPS). This value is the theoretical value for the current instance specification.
         self.qps = qps
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The instance name.
         self.table_name = table_name
+        # The ID of the task flow that is executed for the creation.
         self.task_id = task_id
+        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

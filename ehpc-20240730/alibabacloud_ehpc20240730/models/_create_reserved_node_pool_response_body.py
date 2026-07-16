@@ -10,7 +10,9 @@ class CreateReservedNodePoolResponseBody(DaraModel):
         request_id: str = None,
         reserved_node_pool_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the reserved node pool.
         self.reserved_node_pool_id = reserved_node_pool_id
 
     def validate(self):

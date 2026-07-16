@@ -69,8 +69,10 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
         # Anti-ransomware capacity allocated to the member, in GB.
         self.anti_ransomware_capacity = anti_ransomware_capacity
         # Charge type, values:
-        # * **PREPAID**: Prepaid.
-        # * **POSTPAID** (default): Postpaid.
+        # 
+        # - **PREPAID**: Prepaid.
+        # 
+        # - **POSTPAID** (default): Postpaid.
         self.charge_type = charge_type
         # Cloud platform configuration check scan count allocated to the member. Unit: times per month.
         self.cspm_capacity = cspm_capacity
@@ -80,9 +82,12 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
         self.image_scan_capacity = image_scan_capacity
         # The Cloud Security Center instance ID purchased by the member account.
         self.instance_id = instance_id
-        # Operation type. Values:  
-        # - **ADD**: Add 
+        # Operation type. Values:
+        # 
+        # - **ADD**: Add
+        # 
         # - **CHANGE**: Change
+        # 
         # - **DEL**: Delete
         self.opt_type = opt_type
         # Application protection count allocated to the member. Unit: per month.
@@ -91,19 +96,26 @@ class UpdateMultiUserInstancesRequestMemberInstances(DaraModel):
         self.sdk_capacity = sdk_capacity
         # Log storage capacity allocated to the member, in GB.
         self.sls_capacity = sls_capacity
-        # Status of the member account instance. Values: 
-        # - **1**: Valid. 
+        # Status of the member account instance. Values:
+        # 
+        # - **1**: Valid.
+        # 
         # - **2**: Invalid.
         self.status = status
         # Threat analysis capacity allocated to the member. Unit: GB.
         self.threat_analysis_capacity = threat_analysis_capacity
         # Threat analysis and response log access traffic allocated to the member. Unit: GB/day.
         self.threat_analysis_flow = threat_analysis_flow
-        # The version of Cloud Security Center protection to be bound. Values:  
-        # - **1**: Free Edition 
+        # The version of Cloud Security Center protection to be bound. Values:
+        # 
+        # - **1**: Free Edition
+        # 
         # - **3**: Enterprise Edition
+        # 
         # - **5**: Advanced Edition
-        # - **6**: Antivirus Edition    
+        # 
+        # - **6**: Antivirus Edition
+        # 
         # - **7**: Flagship Edition
         self.version = version
         # Member account authorization usage information.
@@ -246,13 +258,20 @@ class UpdateMultiUserInstancesRequestMemberInstancesVersionSummary(DaraModel):
         self.core_count = core_count
         # Number of authorizations allocated to the member.
         self.ecs_count = ecs_count
-        # Version of the Cloud Security Center for the member account. Values:  
-        # - **1**: Free Edition 
+        # Version of the Cloud Security Center for the member account. Values:
+        # 
+        # - **1**: Free Edition
+        # 
         # - **3**: Enterprise Edition
+        # 
         # - **5**: Advanced Edition
-        # - **6**: Antivirus Edition    
-        # - **7**: Flagship Edition   
-        # - **8**: Multiple Versions   
+        # 
+        # - **6**: Antivirus Edition
+        # 
+        # - **7**: Flagship Edition
+        # 
+        # - **8**: Multiple Versions
+        # 
         # - **10**: Only Purchase Value-Added Services
         self.version = version
 

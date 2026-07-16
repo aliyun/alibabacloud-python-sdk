@@ -13,14 +13,15 @@ class QueryShortUrlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The request status code.
         # 
-        # *   If OK is returned, the request is successful.
-        # *   Other values indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
+        # - A successful request returns `OK`.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
-        # The details of the short URL.
+        # The details of the short link.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -77,26 +78,29 @@ class QueryShortUrlResponseBodyData(DaraModel):
         source_url: str = None,
         unique_visitor_count: str = None,
     ):
-        # The time when the short URL was created.
+        # The creation date and time of the short link.
         self.create_date = create_date
-        # The time when the short URL expires.
+        # The expiration date and time of the short link.
         self.expire_date = expire_date
-        # The PV.
+        # The page view (PV) count for the short link.
         self.page_view_count = page_view_count
-        # The short URL.
+        # The generated short link.
         self.short_url = short_url
-        # The service name of the short URL.
+        # The name of the service that generated the short link.
         self.short_url_name = short_url_name
-        # The status of the short URL. Valid values:
+        # The short link status. Valid values:
         # 
-        # *   **expired**
-        # *   **effective**
-        # *   **audit**
-        # *   **reject**
+        # - **expired**: The short link has expired.
+        # 
+        # - **effective**: The short link is active.
+        # 
+        # - **audit**: The short link is under review.
+        # 
+        # - **reject**: The short link was rejected.
         self.short_url_status = short_url_status
-        # The source address.
+        # The source URL.
         self.source_url = source_url
-        # The UV.
+        # The unique visitor (UV) count for the short link.
         self.unique_visitor_count = unique_visitor_count
 
     def validate(self):

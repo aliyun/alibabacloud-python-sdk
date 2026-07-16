@@ -12,23 +12,22 @@ class ModifyEmgVulSubmitRequest(DaraModel):
         resource_directory_account_id: int = None,
         user_agreement: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The name of the vulnerability.
+        # The name of the vulnerability to query.
         # 
         # This parameter is required.
         self.name = name
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain the IDs.
+        # The ID of the member accounts in the resource folder (Alibaba Cloud account).
+        # >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # Specifies whether to scan for urgent vulnerabilities. Valid values:
+        # Specifies whether to perform vulnerability detection. Valid values:
         # 
-        # *   **yes**
-        # *   **no**
+        # - **yes**: Perform vulnerability detection.
+        # - **no**: Do not perform vulnerability detection.
         # 
         # This parameter is required.
         self.user_agreement = user_agreement

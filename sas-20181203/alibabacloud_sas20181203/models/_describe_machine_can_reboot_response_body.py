@@ -12,10 +12,10 @@ class DescribeMachineCanRebootResponseBody(DaraModel):
     ):
         # Indicates whether the server can be restarted. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: The server can be restarted.
+        # - **false**: The server cannot be restarted.
         self.can_reboot = can_reboot
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

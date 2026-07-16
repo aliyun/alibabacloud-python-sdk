@@ -11,9 +11,9 @@ class DescribeRuleCountByUserIdResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeRuleCountByUserIdResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeRuleCountByUserIdResponseBodyResultObject(DaraModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
-        # Whether the limit condition is reached. Values: -**true**: Yes-**false**: No
+        # Indicates whether the limit condition is reached. Valid values: - **true**: The limit condition is reached. - **false**: The limit condition is not reached.
         self.limit = limit
-        # Maximum number of items
+        # The maximum number of entries.
         self.max_total_item = max_total_item
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
 
     def validate(self):

@@ -16,30 +16,35 @@ class DescribeDomainStatisticsSummaryRequest(DaraModel):
         start_date: str = None,
         threshold: int = None,
     ):
-        # The end of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+        # The end date of the query. The format is **YYYY-MM-DD**.
         # 
-        # The default value is the day when you perform the operation.
+        # The default value is the current date.
         self.end_date = end_date
-        # The keyword for searches in %KeyWord% mode. The value is not case-sensitive.
+        # The keyword. The search is performed in \\`%KeyWord%\\` mode and is case-insensitive.
         self.keyword = keyword
-        # The language type.
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The page number. The start value is **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries per page. The maximum value is **100** and the minimum value is **1**. The default value is **20**.
         self.page_size = page_size
-        # The search mode of the keyword. Valid values:
+        # The search mode for the keyword. Valid values:
         # 
-        # *   **LIKE**: fuzzy match (default).
-        # *   **EXACT**: exact match.
+        # - **LIKE** (default): Fuzzy match
+        # 
+        # - **EXACT**: Exact match
         self.search_mode = search_mode
-        # The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
+        # The start date of the query. The format is **YYYY-MM-DD**.
         # 
-        # You can only query DNS records of the last 90 days.
+        # You can query data from the last 90 days only. The value of `StartDate` must be greater than or equal to the current date minus 90 days.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The threshold of query volume that can be obtained. You can also obtain data about a domain name with the query volume less than or equal to the threshold. For example, if you set this parameter to 100, you can query domain names with less than 100 queries.
+        # The threshold for the number of requests. This operation returns domain names whose request count is less than or equal to the specified value. For example, if you set this parameter to 100, domain names with 100 or fewer requests are returned. If you do not specify this parameter, all domain names are returned.
         self.threshold = threshold
 
     def validate(self):

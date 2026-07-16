@@ -24,9 +24,11 @@ class DescribeAuditLogFilterRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The role of the node in the instance. Valid values:
         # 
-        # * **mongos**: mongos node.
-        # * **db** : shard node.
-        # * **logic** : logical instance.
+        # - **mongos**: mongos node.
+        # 
+        # - **db** : shard node.
+        # 
+        # - **logic** : logical instance.
         self.role_type = role_type
 
     def validate(self):

@@ -16,10 +16,15 @@ class SearchSampleResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.SearchSampleResponseBodyResultObject] = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -87,14 +92,23 @@ class SearchSampleResponseBodyResultObject(DaraModel):
         upload_time: str = None,
         upload_user_name: str = None,
     ):
+        # File Name.
         self.file_name = file_name
+        # File Size.
         self.file_size = file_size
+        # Remarks.
         self.remark = remark
+        # Number of Records.
         self.row_count = row_count
+        # Sample ID.
         self.sample_id = sample_id
+        # Sample Name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # File Upload Time.
         self.upload_time = upload_time
+        # Uploader.
         self.upload_user_name = upload_user_name
 
     def validate(self):

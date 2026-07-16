@@ -18,15 +18,35 @@ class ListCertRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # Filters certificates modified after this date.
         self.after_date = after_date
+        # Filters certificates modified before this date.
         self.before_date = before_date
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The UUID of the instance.
         self.instance_uuid = instance_uuid
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. This is the NextToken value from a previous response. If unspecified, the first page is returned.
         self.next_token = next_token
+        # The identifier of the intermediate CA that issued the certificate.
         self.parent_identifier = parent_identifier
+        # The page size. Default value: 50.
         self.show_size = show_size
+        # The status of the certificate. Valid values:
+        # 
+        # - ISSUE: Active
+        # 
+        # - REVOKE: Revoked
         self.status = status
+        # The certificate type. Valid values:
+        # 
+        # - SERVER: Server certificate
+        # 
+        # - CLIENT: Client certificate
+        # 
+        # - END_ENTITY: End-entity certificate
         self.type = type
 
     def validate(self):

@@ -11,7 +11,7 @@ class DeleteOpaStrategyNewRequest(DaraModel):
         self,
         strategy_ids: List[int] = None,
     ):
-        # The IDs of rules.
+        # The list of policy IDs.
         self.strategy_ids = strategy_ids
 
     def validate(self):

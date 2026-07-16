@@ -17,13 +17,13 @@ class GetDebugAppInstanceResponseBody(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the application instance.
+        # The application instance ID.
         self.app_instance_id = app_instance_id
-        # The ID of the application version.
+        # The application version ID.
         self.app_version = app_version
-        # The authorization code. This authorization code is valid for 3 minutes and can be used only once, regardless of whether the authentication succeeds. If multiple authentication codes are generated for a user, only the latest authentication code takes effect.
+        # The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated code is valid.
         self.auth_code = auth_code
         # The request ID.
         self.request_id = request_id

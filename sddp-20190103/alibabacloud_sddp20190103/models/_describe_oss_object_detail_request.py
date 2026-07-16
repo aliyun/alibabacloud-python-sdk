@@ -10,16 +10,17 @@ class DescribeOssObjectDetailRequest(DaraModel):
         id: int = None,
         lang: str = None,
     ):
-        # The ID of the OSS object.
+        # The unique ID of the OSS object.
         # 
-        # >  You can call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID of the OSS object.
+        # > Call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
 
     def validate(self):

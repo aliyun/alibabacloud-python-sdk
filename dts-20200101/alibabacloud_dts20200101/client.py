@@ -12925,6 +12925,8 @@ class Client(OpenApiClient):
     ) -> main_models.TransferInstanceClassResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.database_count):
+            query['DatabaseCount'] = request.database_count
         if not DaraCore.is_null(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
         if not DaraCore.is_null(request.instance_class):
@@ -12961,6 +12963,8 @@ class Client(OpenApiClient):
     ) -> main_models.TransferInstanceClassResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.database_count):
+            query['DatabaseCount'] = request.database_count
         if not DaraCore.is_null(request.dts_job_id):
             query['DtsJobId'] = request.dts_job_id
         if not DaraCore.is_null(request.instance_class):

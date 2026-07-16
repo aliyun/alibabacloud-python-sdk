@@ -20,56 +20,80 @@ class SubmitMediaProducingJobRequest(DaraModel):
         timeline: str = None,
         user_data: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client-generated token that ensures request idempotence. This token must be a unique value of up to 64 ASCII characters.
         self.client_token = client_token
-        # The material parameters of the template, in the JSON format. If TemplateId is specified, ClipsParam must also be specified. For more information, see [Create and use a regular template](https://help.aliyun.com/document_detail/445399.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
+        # The clip parameters that correspond to the template, in JSON format. If `TemplateId` is specified, this parameter is required. For details about the format, see [Create and use basic templates](https://help.aliyun.com/document_detail/445399.html) and [Create and use advanced templates](https://help.aliyun.com/document_detail/445389.html).
         self.clips_param = clips_param
-        # The parameters for editing and production. For more information, see [EditingProduceConfig](https://help.aliyun.com/document_detail/357745.html).
+        # The parameters for the media producing job. For configuration details, see [EditingProduceConfig parameter details](~~357745#section-8a4-pb2-hkv~~).
         # 
-        # >  If no thumbnail is specified in EditingProduceConfig, the first frame of the video is used as the thumbnail.
+        # > If a cover is not configured in `EditingProduceConfig`, the first frame of the video is used as the default cover.
         # 
-        # *   AutoRegisterInputVodMedia: specifies whether to automatically register the ApsaraVideo VOD media assets in your timeline with IMS. Default value: true.
-        # *   OutputWebmTransparentChannel: specifies whether the output video contains alpha channels. Default value: false.
-        # *   CoverConfig: the custom thumbnail parameters.
-        # *
+        # - `AutoRegisterInputVodMedia`: Specifies whether to automatically register the VOD media assets in your timeline to IMS. Default value: true.
+        # 
+        # - `OutputWebmTransparentChannel`: Specifies whether to output a video with a transparent channel. Default value: false.
+        # 
+        # - `CoverConfig`: The parameters for a custom cover.
+        # 
+        # - ...
         self.editing_produce_config = editing_produce_config
-        # The metadata of the produced video, in the JSON format. For more information about the parameters, see [MediaMetadata](https://help.aliyun.com/document_detail/357745.html).
+        # The metadata of the output video, in JSON format. For details about the structure, see [MediaMetadata](~~357745#97ff26d0e3c28~~).
         self.media_metadata = media_metadata
-        # The configurations of the output file, in the JSON format. You can specify an OSS URL or a storage location in a storage bucket of ApsaraVideo VOD.
+        # The configuration for the output media target, in JSON format. You can set the URL for the output media in OSS or the storage location in a VOD bucket.
         # 
-        # To store the output file in OSS, you must specify MediaURL. To store the output file in ApsaraVideo VOD, you must specify StorageLocation and FileName.
+        # - When outputting to OSS, the `MediaURL` parameter is required.
         # 
-        # For more information, see [OutputMediaConfig](https://help.aliyun.com/document_detail/357745.html).
+        # - When outputting to VOD, both the `StorageLocation` and `FileName` parameters are required.
+        # 
+        # For more information, see [OutputMediaConfig parameter examples](~~357745#title-4j6-ve7-g31~~).
         # 
         # This parameter is required.
         self.output_media_config = output_media_config
-        # The type of the output file. Valid values:
+        # The target type for the output media. Valid values:
         # 
-        # *   oss-object: OSS object in an OSS bucket.
-        # *   vod-media: media asset in ApsaraVideo VOD.
-        # *   S3: output file based on the Amazon Simple Storage Service (S3) protocol.
+        # - `oss-object`: An object in your Alibaba Cloud OSS bucket.
+        # 
+        # - `vod-media`: A media asset in Alibaba Cloud VOD.
+        # 
+        # - `S3`: A destination that supports the S3 protocol.
         self.output_media_target = output_media_target
-        # The ID of the editing project.
-        # 
-        # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
+        # The ID of the editing project. Call the [CreateEditingProject](https://help.aliyun.com/document_detail/441137.html) operation to create an editing project and obtain the `ProjectId` to submit a media producing job.
+        # >Notice: You must specify one of the `ProjectId`, `Timeline`, or `TemplateId` parameters. The other two parameters must be left empty.
         self.project_id = project_id
-        # The metadata of the editing project, in the JSON format. For more information about the parameters, see [ProjectMetadata](https://help.aliyun.com/document_detail/357745.html).
+        # The metadata of the editing project, in JSON format. For details about the structure, see [ProjectMetadata](~~357745#title-yvp-81k-wff~~).
         self.project_metadata = project_metadata
-        # The source of the editing and production request. Valid values:
+        # The source of the media producing job request. Valid values:
         # 
-        # *   OpenAPI
-        # *   AliyunConsole
-        # *   WebSDK
+        # - `OpenAPI`: A request initiated through an API call.
+        # 
+        # - `AliyunConsole`: A request that originates from the Alibaba Cloud console.
+        # 
+        # - `WebSDK`: A request sent from a front-end page that integrates the WebSDK.
         self.source = source
-        # The template ID. The template is used to build a timeline with ease.
+        # The ID of a template for quickly building a timeline. You can use basic and advanced templates for video editing.
         # 
-        # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty. If TemplateId is specified, ClipsParam must also be specified.
+        # - When you submit a media producing job using a template ID, you must provide the `ClipsParam` parameter to adjust or replace clips in the template.
+        # 
+        # - Call the [GetTemplate](https://help.aliyun.com/document_detail/441164.html) operation to obtain template information.
+        # 
+        # >Notice: 
+        # 
+        # You must specify one of the `ProjectId`, `Timeline`, or `TemplateId` parameters. The other two parameters must be left empty.
         self.template_id = template_id
-        # The timeline of the online editing job. For more information about the parameters, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.html).
+        # The timeline for the cloud editing job. To arrange clips and design effects, manually construct the `Timeline` parameter.
         # 
-        # > : You must specify one of ProgectId, Timeline, and TempalteId and leave the other two parameters empty.
+        # - A timeline primarily consists of three types of objects: tracks, clips, and effects. For more information, see [Timeline configuration](https://help.aliyun.com/document_detail/198823.html).
+        # 
+        # - For more examples of timeline configurations, see [Best practices](https://help.aliyun.com/document_detail/2766669.html).
+        # 
+        # >Notice: 
+        # 
+        # You must specify one of the `ProjectId`, `Timeline`, or `TemplateId` parameters. The other two parameters must be left empty.
         self.timeline = timeline
-        # The user-defined data in the JSON format, which can be up to 512 bytes in length. You can specify a custom callback URL. For more information, see [Configure a callback upon editing completion](https://help.aliyun.com/document_detail/451631.html).
+        # Custom user data in JSON format. The value can be up to 512 bytes in length. This parameter supports [job completion callback configuration](https://help.aliyun.com/document_detail/451631.html). The fields include:
+        # 
+        # - `NotifyAddress`: The callback for job completion.
+        # 
+        # - `RegisterMediaNotifyAddress`: The callback invoked when the analysis of the output media asset is complete.
         self.user_data = user_data
 
     def validate(self):

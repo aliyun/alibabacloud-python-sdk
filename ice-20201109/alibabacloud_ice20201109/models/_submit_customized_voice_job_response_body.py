@@ -12,14 +12,15 @@ class SubmitCustomizedVoiceJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -62,9 +63,9 @@ class SubmitCustomizedVoiceJobResponseBodyData(DaraModel):
         job_id: str = None,
         voice_id: str = None,
     ):
-        # The ID of the human voice cloning job.
+        # The unique identifier for the voice cloning job.
         self.job_id = job_id
-        # The voice ID.
+        # The unique identifier for the voice.
         self.voice_id = voice_id
 
     def validate(self):

@@ -14,7 +14,7 @@ class DescribeCustomizeRuleTestResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The HTTP status code returned.
         self.code = code
         # The data returned.
         self.data = data
@@ -24,8 +24,9 @@ class DescribeCustomizeRuleTestResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -81,17 +82,21 @@ class DescribeCustomizeRuleTestResponseBodyData(DaraModel):
         simulate_data: str = None,
         status: int = None,
     ):
-        # The ID of the rule.
+        # The ID of the custom rule.
         self.id = id
-        # The historical data that is used in the simulation test.
+        # The historical data of the simulated test case.
         self.simulate_data = simulate_data
         # The status of the rule. Valid values:
         # 
-        # *   0: The rule is in the initial state.
-        # *   10: The simulation data is tested.
-        # *   15: The business data is being tested.
-        # *   20: The business data test ends.
-        # *   100: The rule takes effect.
+        # - 0: initial
+        # 
+        # - 10: simulated data test
+        # 
+        # - 15: real-time data test in progress
+        # 
+        # - 20: real-time data test complete
+        # 
+        # - 100: published
         self.status = status
 
     def validate(self):

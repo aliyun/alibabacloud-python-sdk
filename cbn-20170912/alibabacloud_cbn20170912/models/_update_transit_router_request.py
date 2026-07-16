@@ -20,36 +20,37 @@ class UpdateTransitRouterRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a client token to make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** of each request is unique.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. A dry run checks permissions and the status of the instance. Valid values:
         # 
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        # - **false** (default): Sends a normal request. After the request passes the check, the information about the TransitRouter instance is modified.
+        # 
+        # - **true**: Sends a check request. The system checks the request for required parameters and format correctness, but does not modify the TransitRouter instance. If the check fails, an error is returned. If the check passes, the request ID is returned.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the transit router.
+        # The ID of the region where the TransitRouter instance is deployed.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The description of the transit router.
+        # The new description of the TransitRouter instance.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters in length. The description cannot start with http\\:// or https\\://.
         self.transit_router_description = transit_router_description
-        # The transit router ID.
+        # The ID of the TransitRouter instance.
         # 
         # This parameter is required.
         self.transit_router_id = transit_router_id
-        # The transit router name.
+        # The new name for the TransitRouter instance.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters in length. The name cannot start with http\\:// or https\\://.
         self.transit_router_name = transit_router_name
 
     def validate(self):

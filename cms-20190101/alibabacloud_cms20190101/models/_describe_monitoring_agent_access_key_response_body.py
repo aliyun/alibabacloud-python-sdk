@@ -28,8 +28,9 @@ class DescribeMonitoringAgentAccessKeyResponseBody(DaraModel):
         self.secret_key = secret_key
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

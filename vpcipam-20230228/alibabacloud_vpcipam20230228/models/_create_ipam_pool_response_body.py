@@ -10,7 +10,7 @@ class CreateIpamPoolResponseBody(DaraModel):
         ipam_pool_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM address pool.
         self.ipam_pool_id = ipam_pool_id
         # The request ID.
         self.request_id = request_id

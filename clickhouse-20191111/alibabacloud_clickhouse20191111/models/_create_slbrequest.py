@@ -11,10 +11,11 @@ class CreateSLBRequest(DaraModel):
         product: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to obtain the cluster ID.
+        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to obtain the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The product code.
         self.product = product
         self.resource_owner_id = resource_owner_id
 

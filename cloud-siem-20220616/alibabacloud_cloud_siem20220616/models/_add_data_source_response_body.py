@@ -13,7 +13,7 @@ class AddDataSourceResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class AddDataSourceResponseBodyData(DaraModel):
         count: int = None,
         data_source_instance_id: str = None,
     ):
-        # The number of data sources that are added. The value 1 indicates that data source is added, and a value less than or equal to 0 indicates that the data source failed to be added.
+        # The number of data sources that were added. A value of 1 indicates success. A value of 0 or less indicates failure.
         self.count = count
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+        # The ID of the data source. The threat analysis feature generates the ID by calculating an MD5 hash of the parameter values.
         self.data_source_instance_id = data_source_instance_id
 
     def validate(self):

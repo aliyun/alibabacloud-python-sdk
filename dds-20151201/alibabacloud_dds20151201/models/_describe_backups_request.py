@@ -23,46 +23,55 @@ class DescribeBackupsRequest(DaraModel):
         src_region: str = None,
         start_time: str = None,
     ):
-        # The ID of the backup set. You can call the [CreateBackup](https://help.aliyun.com/document_detail/62171.html) operation to query the backup set ID.
+        # The backup ID.
         # 
-        # If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, the number of backup IDs is the same as the number of shard nodes. Multiple backup IDs are separated with commas (,).
+        # If you specify the ID of a sharded cluster instance for the **DBInstanceId** parameter, the number of backup IDs must be the same as the number of shard nodes. Separate the backup IDs with commas (,).
         self.backup_id = backup_id
+        # The backup job ID.
         self.backup_job_id = backup_job_id
-        # The instance ID.
+        # The ID of the instance.
         # 
-        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # > If the instance is a sharded cluster instance, you must also specify the **NodeId** parameter.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region ID of the Cross-regional backup.
+        # The region where the backup resides.
         # 
-        # >  This parameter is required for the Cross-regional backup.
+        # > This parameter is required for geo-redundancy.
         self.dest_region = dest_region
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC. The end time must be later than the start time.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # > This parameter is invalid if you specify the BackupId parameter.
         self.end_time = end_time
         # The ID of the shard node in the sharded cluster instance.
         # 
-        # > This parameter takes effect only when you set the **DBInstanceId** parameter to the ID of a sharded cluster instance.
+        # > This parameter is required if you specify the ID of a sharded cluster instance for the **DBInstanceId** parameter.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1. Default value: **1**.
+        # The page number. The value must be greater than 0 and not greater than the maximum value of the integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return per page. Valid values:
+        # The number of entries to return on each page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (Default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region ID of the instance.
+        # The region where the instance resides.
         # 
-        # >- This parameter is required if you want to query the backup sets of a released instance.
-        # >-  This parameter is required if you want to query cross-region backups.
+        # > - This parameter is required to restore a deleted instance.
+        # >
+        # > - This parameter is required for geo-redundancy.
         self.src_region = src_region
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in Coordinated Universal Time (UTC).
+        # 
+        # > This parameter is invalid if you specify the BackupId parameter.
         self.start_time = start_time
 
     def validate(self):

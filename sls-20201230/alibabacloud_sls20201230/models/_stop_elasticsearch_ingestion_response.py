@@ -11,9 +11,13 @@ class StopElasticsearchIngestionResponse(DaraModel):
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        id: str = None,
+        event: str = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.id = id
+        self.event = event
 
     def validate(self):
         pass
@@ -29,6 +33,12 @@ class StopElasticsearchIngestionResponse(DaraModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
 
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.event is not None:
+            result['event'] = self.event
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +48,12 @@ class StopElasticsearchIngestionResponse(DaraModel):
 
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('event') is not None:
+            self.event = m.get('event')
 
         return self
 

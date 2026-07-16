@@ -40,14 +40,15 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         self.filter = filter
         # The bastion host ID.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether SSL is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         # 
         # This parameter is required.
         self.is_ssl = is_ssl
@@ -63,7 +64,7 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         self.port = port
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the AD server.
         # 

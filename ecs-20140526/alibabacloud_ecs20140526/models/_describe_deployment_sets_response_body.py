@@ -17,16 +17,17 @@ class DescribeDeploymentSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # Details of deployment sets.
         self.deployment_sets = deployment_sets
-        # The page number.
+        # The page number of the deployment set list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the region.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The total number of queried deployment sets.
+        # The total number of deployment sets.
         self.total_count = total_count
 
     def validate(self):
@@ -120,6 +121,7 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
     def __init__(
         self,
         account_id: int = None,
+        affinity: int = None,
         capacities: main_models.DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities = None,
         creation_time: str = None,
         deployment_set_description: str = None,
@@ -135,6 +137,7 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
         type: str = None,
     ):
         self.account_id = account_id
+        self.affinity = affinity
         self.capacities = capacities
         self.creation_time = creation_time
         self.deployment_set_description = deployment_set_description
@@ -162,6 +165,9 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
             result = _map
         if self.account_id is not None:
             result['AccountId'] = self.account_id
+
+        if self.affinity is not None:
+            result['Affinity'] = self.affinity
 
         if self.capacities is not None:
             result['Capacities'] = self.capacities.to_map()
@@ -208,6 +214,9 @@ class DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel):
         m = m or dict()
         if m.get('AccountId') is not None:
             self.account_id = m.get('AccountId')
+
+        if m.get('Affinity') is not None:
+            self.affinity = m.get('Affinity')
 
         if m.get('Capacities') is not None:
             temp_model = main_models.DescribeDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacities()

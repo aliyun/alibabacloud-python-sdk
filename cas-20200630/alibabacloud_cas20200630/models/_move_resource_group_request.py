@@ -12,11 +12,18 @@ class MoveResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the destination resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The ID of the resource to move.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource. Set the value to **instance**.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

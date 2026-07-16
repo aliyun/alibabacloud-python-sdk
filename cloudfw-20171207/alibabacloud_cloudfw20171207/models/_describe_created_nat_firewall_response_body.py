@@ -13,7 +13,9 @@ class DescribeCreatedNatFirewallResponseBody(DaraModel):
         created_nat_firewalls: List[main_models.DescribeCreatedNatFirewallResponseBodyCreatedNatFirewalls] = None,
         request_id: str = None,
     ):
+        # A list of the created NAT firewalls.
         self.created_nat_firewalls = created_nat_firewalls
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class DescribeCreatedNatFirewallResponseBodyCreatedNatFirewalls(DaraModel):
         nat_gateway_id: str = None,
         nat_gateway_name: str = None,
     ):
+        # The ID of the NAT firewall.
         self.nat_firewall_id = nat_firewall_id
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
 
     def validate(self):

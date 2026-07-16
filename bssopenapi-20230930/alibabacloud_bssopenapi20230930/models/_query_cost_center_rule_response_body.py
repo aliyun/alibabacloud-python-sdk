@@ -22,17 +22,31 @@ class QueryCostCenterRuleResponseBody(DaraModel):
         root_cost_center_id: int = None,
         status: str = None,
     ):
+        # The cost center ID.
         self.cost_center_id = cost_center_id
+        # The rule expression.
         self.filter_expression = filter_expression
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the cost center auto-allocation rule.
         self.id = id
+        # The deletion status. Valid values:
+        # * **0**: active.
+        # * **1**: inactive.
         self.is_deleted = is_deleted
+        # Response structure metadata.
         self.metadata = metadata
+        # The owner user of the cost center.
         self.owner_account_id = owner_account_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The root cost center ID.
         self.root_cost_center_id = root_cost_center_id
+        # The status. Valid values:
+        # - on: active.
+        # - off: inactive.
         self.status = status
 
     def validate(self):
@@ -126,10 +140,15 @@ class QueryCostCenterRuleResponseBodyFilterExpression(DaraModel):
         operands: List[Any] = None,
         operator_type: str = None,
     ):
+        # The operation type.
         self.expression_type = expression_type
+        # The sub-condition filter.
         self.filter_values = filter_values
+        # The filter condition (deprecated).
         self.operand = operand
+        # The condition expression.
         self.operands = operands
+        # The relational expression.
         self.operator_type = operator_type
 
     def validate(self):
@@ -186,9 +205,15 @@ class QueryCostCenterRuleResponseBodyFilterExpressionFilterValues(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The condition filter key.
         self.code = code
+        # The condition filter key name (deprecated).
         self.code_name = code_name
+        # The association between code and value.
         self.select_type = select_type
+        # The attribute value types corresponding to the module code. Valid values:
+        # - single_float: single value type.
+        # - range_float: range value type.
         self.values = values
 
     def validate(self):

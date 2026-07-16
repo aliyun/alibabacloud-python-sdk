@@ -10,7 +10,7 @@ class CreateDomainResponseBody(DaraModel):
         domain_id: str = None,
         request_id: str = None,
     ):
-        # Domain ID.
+        # The domain ID.
         self.domain_id = domain_id
         # The request ID.
         self.request_id = request_id

@@ -11,10 +11,15 @@ class CreateFundAccountPayRelationShrinkRequest(DaraModel):
         fund_account_id: str = None,
         nbid: str = None,
     ):
+        # List of enterprises and accounts.
+        # 
         # This parameter is required.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
+        # Fund account ID.
+        # 
         # This parameter is required.
         self.fund_account_id = fund_account_id
+        # Primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):

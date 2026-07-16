@@ -35,11 +35,7 @@ class CreateTemplateRequest(DaraModel):
     ):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
-        # >  This parameter is not publicly available.
-        # 
-        # Valid values:
-        # 
-        # *   1: the Enterprise edition.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
         self.charge_type = charge_type
         # The data disks.
@@ -48,8 +44,9 @@ class CreateTemplateRequest(DaraModel):
         self.default_language = default_language
         # The template description. It must meet the following criteria:
         # 
-        # *   It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        # *   It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
+        # - It can be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # 
+        # - It can contain letters, digits, and special characters, including spaces. Note: You can use carriage returns to break lines.
         self.description = description
         # The ID of the cloud computer image. You can query image IDs on the Images page. System images and custom images are supported.
         self.image_id = image_id
@@ -59,38 +56,32 @@ class CreateTemplateRequest(DaraModel):
         self.policy_group_id = policy_group_id
         self.post_paid_after_used_up = post_paid_after_used_up
         # The service type. Set the value to `CloudDesktop`.
-        # 
-        # *
         self.product_type = product_type
         # The regions of the template. You can create cloud computers by using a template only within the same region as the template itself.
         # 
-        # >  You can specify up to 20 regions.
+        # > You can specify up to 20 regions.
         self.region_config_list = region_config_list
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The tags added to cloud computers. Specify tags in key-value pairs. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
-        # 区域配置管理
+        # The site configurations.
         self.site_config_list = site_config_list
         # The performance level (PL) of the system disk.
         # 
-        # >  Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
-        # 
-        # Valid values:
-        # 
-        # *   PL1: a PL1 ESSD.
-        # *   PL0: a PL0 ESSD.
-        # *   AutoPL: an AutoPL ESSD.
+        # > Only cloud computers of the Graphics or High Frequency type support Enterprise SSDs (ESSDs).
         self.system_disk_performance_level = system_disk_performance_level
         # The size of the system disk. Unit: GiB. Valid values: 40 to 500. Increments: 10 GiB.
         # 
-        # >  The system disk size must be at least as large as the configured image size.
+        # > The system disk size must be at least as large as the configured image size.
         self.system_disk_size = system_disk_size
         # The template name. It must meet the following criteria:
         # 
-        # *   It can be 2 to 126 characters in length.
-        # *   It must begin with a letter and cannot start with `http://` or `https://`.
-        # *   It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
+        # - It can be 2 to 126 characters in length.
+        # 
+        # - It must begin with a letter and cannot start with `http://` or `https://`.
+        # 
+        # - It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Note: Periods (.) are not supported in the name.
         # 
         # This parameter is required.
         self.template_name = template_name
@@ -285,9 +276,9 @@ class CreateTemplateRequestSiteConfigList(DaraModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
-        # 应用管控策略ID
+        # The application control policy ID.
         self.app_rule_id = app_rule_id
-        # 站点ID。
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):
@@ -366,7 +357,7 @@ class CreateTemplateRequestRegionConfigList(DaraModel):
     ):
         # The office network ID.
         self.office_site_id = office_site_id
-        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+        # The region ID. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
         self.region_id = region_id
         # The ID of the cloud computer type.
         self.resource_instance_type = resource_instance_type
@@ -375,13 +366,8 @@ class CreateTemplateRequestRegionConfigList(DaraModel):
         # The subnet ID.
         self.subnet_id = subnet_id
         # Specifies whether to enable disk encryption.
-        # 
-        # Valid values:
-        # 
-        # *   false (default): disables disk encryption.
-        # *   true: enables disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
-        # The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query KMS keys.
+        # The ID of the Key Management Service (KMS) key that you want to use to encrypt disks. You can call the [](t22712.xdita#)operation to query KMS keys.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -450,9 +436,9 @@ class CreateTemplateRequestDataDiskList(DaraModel):
         self.performance_level = performance_level
         # The size of the data disk. Unit: GiB. Valid values: 40 to 2040. Increments: 10 GiB.
         # 
-        # **
+        # >Notice: 
         # 
-        # **Keep in mind** that the larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
+        # The larger the ESSD disk capacity, the higher the available PL (for example, PL2 is available for disks larger than 460 GiB). A higher PL comes with a higher cost. Select an ESSD based on your specific needs.
         self.size = size
 
     def validate(self):

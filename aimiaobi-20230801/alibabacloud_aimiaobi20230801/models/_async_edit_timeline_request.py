@@ -15,11 +15,18 @@ class AsyncEditTimelineRequest(DaraModel):
         timelines: List[main_models.AsyncEditTimelineRequestTimelines] = None,
         workspace_id: str = None,
     ):
+        # Enable automatic clip adjustment
         self.auto_clips = auto_clips
+        # Unique identifier of the task
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Array structure of video editing timelines
+        # 
         # This parameter is required.
         self.timelines = timelines
+        # [Model Studio workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -75,8 +82,11 @@ class AsyncEditTimelineRequestTimelines(DaraModel):
         clips: List[main_models.AsyncEditTimelineRequestTimelinesClips] = None,
         timeline_id: str = None,
     ):
+        # Array of video clips
+        # 
         # This parameter is required.
         self.clips = clips
+        # Timeline ID
         self.timeline_id = timeline_id
 
     def validate(self):
@@ -125,13 +135,21 @@ class AsyncEditTimelineRequestTimelinesClips(DaraModel):
         video_id: str = None,
         video_name: str = None,
     ):
+        # Clip ID
         self.clip_id = clip_id
+        # Segmented voice-over script
         self.content_inner = content_inner
+        # Start time, in seconds. Deprecated.
         self.in_ = in_
+        # Clip start time, in milliseconds
         self.in_ex = in_ex
+        # End time, in seconds. Deprecated.
         self.out = out
+        # Clip end time, in milliseconds
         self.out_ex = out_ex
+        # Video ID
         self.video_id = video_id
+        # Video name
         self.video_name = video_name
 
     def validate(self):

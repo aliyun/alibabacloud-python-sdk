@@ -11,8 +11,14 @@ class BatchSetVsDomainConfigsRequest(DaraModel):
         functions: str = None,
         owner_id: int = None,
     ):
+        # Your accelerated domain names.
+        # 
+        # > Supports multiple domain names separated by commas (,).
+        # 
         # This parameter is required.
         self.domain_names = domain_names
+        # List of features.
+        # 
         # This parameter is required.
         self.functions = functions
         self.owner_id = owner_id

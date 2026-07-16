@@ -18,15 +18,15 @@ class DescribeGtmInstancesResponseBody(DaraModel):
         total_pages: int = None,
     ):
         self.gtm_instances = gtm_instances
-        # The returned page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of items.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

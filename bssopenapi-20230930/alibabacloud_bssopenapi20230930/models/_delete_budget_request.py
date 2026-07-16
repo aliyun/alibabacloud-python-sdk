@@ -10,8 +10,11 @@ class DeleteBudgetRequest(DaraModel):
         budget_name: str = None,
         nbid: str = None,
     ):
+        # The budget name.
+        # 
         # This parameter is required.
         self.budget_name = budget_name
+        # The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
 
     def validate(self):

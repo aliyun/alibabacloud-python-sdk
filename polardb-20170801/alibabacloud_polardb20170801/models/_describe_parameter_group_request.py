@@ -16,18 +16,25 @@ class DescribeParameterGroupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The database engine type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template.
+        # The ID of the parameter group.
         # 
-        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter groups in the specified region.
         # 
         # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID.
         # 
-        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all available regions and their IDs in your account.
         # 
         # This parameter is required.
         self.region_id = region_id

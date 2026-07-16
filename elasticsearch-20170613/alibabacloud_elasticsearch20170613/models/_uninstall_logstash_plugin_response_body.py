@@ -14,6 +14,7 @@ class UninstallLogstashPluginResponseBody(DaraModel):
         result: List[str] = None,
     ):
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
         self.result = result
 

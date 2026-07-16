@@ -17,11 +17,16 @@ class QueryPushRecordsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Deprecated. This parameter is no longer used.
         self.next_token = next_token
+        # The current page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
         self.push_infos = push_infos
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total = total
 
     def validate(self):

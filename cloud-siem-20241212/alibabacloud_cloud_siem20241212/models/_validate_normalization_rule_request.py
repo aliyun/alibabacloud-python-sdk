@@ -20,17 +20,37 @@ class ValidateNormalizationRuleRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
+        # The rule ID.
         self.data = data
+        # The storage mode for extended fields. Valid values: \\`flat\\`, \\`pack\\`, and \\`reject\\`.
         self.extend_field_store_mode = extend_field_store_mode
+        # The language of the response messages. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The sample log. The value must be in the JSON format.
         self.log_sample = log_sample
+        # The normalization category of the rule.
         self.normalization_category_id = normalization_category_id
+        # The expression for the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The mode of the normalization rule. Valid values: \\`both\\` and \\`realtime\\`.
         self.normalization_rule_mode = normalization_rule_mode
+        # The ID of the normalization pattern for the rule.
         self.normalization_schema_id = normalization_schema_id
+        # The product ID.
         self.product_id = product_id
+        # The region where the Data Management center for threat analysis is deployed. Select the region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in regions outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of the member. An administrator uses this parameter to switch to the perspective of the member.
         self.role_for = role_for
+        # The vendor ID.
         self.vendor_id = vendor_id
 
     def validate(self):

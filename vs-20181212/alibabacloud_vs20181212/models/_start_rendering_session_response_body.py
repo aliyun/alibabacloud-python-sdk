@@ -19,13 +19,21 @@ class StartRenderingSessionResponseBody(DaraModel):
         session_id: str = None,
         state_info: main_models.StartRenderingSessionResponseBodyStateInfo = None,
     ):
+        # Instance hostname. By default, this is the EIP used for access.
         self.hostname = hostname
+        # Is this a repeated request
         self.is_repeated_request = is_repeated_request
+        # Cloud application service instance location information
         self.location = location
+        # Port mapping information
         self.port_mappings = port_mappings
+        # Cloud application service instance ID
         self.rendering_instance_id = rendering_instance_id
+        # Request ID
         self.request_id = request_id
+        # Session ID
         self.session_id = session_id
+        # Session state information
         self.state_info = state_info
 
     def validate(self):
@@ -111,8 +119,11 @@ class StartRenderingSessionResponseBodyStateInfo(DaraModel):
         state: str = None,
         update_time: str = None,
     ):
+        # State description
         self.comment = comment
+        # Session state
         self.state = state
+        # Last update time of the state
         self.update_time = update_time
 
     def validate(self):
@@ -153,7 +164,9 @@ class StartRenderingSessionResponseBodyPortMappings(DaraModel):
         external_port: str = None,
         internal_port: str = None,
     ):
+        # External port or port range, such as 22. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.external_port = external_port
+        # Internal port or port range. Ports correspond one-to-one with external ports. For a port range, separate the start and end ports with a forward slash (/), for example, 10/20.
         self.internal_port = internal_port
 
     def validate(self):
@@ -187,6 +200,7 @@ class StartRenderingSessionResponseBodyLocation(DaraModel):
         self,
         province_code: str = None,
     ):
+        # Province code of the cloud application service instance
         self.province_code = province_code
 
     def validate(self):

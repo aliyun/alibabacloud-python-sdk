@@ -57,251 +57,298 @@ class CreateDBInstanceRequest(DaraModel):
         vector_configuration_status: str = None,
         zone_id: str = None,
     ):
+        # The AI node specifications.
         self.ainode_spec_infos = ainode_spec_infos
-        # Backup set ID.
+        # The ID of the backup set.
         # 
-        # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) interface to view the backup set IDs of all backup sets under the target instance.
+        # > You can call the [DescribeDataBackups](https://help.aliyun.com/document_detail/210093.html) operation to query the backup set IDs for the source instance.
         self.backup_id = backup_id
+        # The cache size for a serverless instance, in GB.
         self.cache_storage_size = cache_storage_size
-        # Idempotence check. For more information, see [How to Ensure Idempotence](https://help.aliyun.com/document_detail/327176.html).
+        # A client token used to ensure the idempotence of the request. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/327176.html).
         self.client_token = client_token
-        # Whether to load sample datasets after the instance is created. The values are as follows:
+        # Specifies whether to load a sample dataset after the instance is created. Valid values:
         # 
-        # - **true**: Load sample datasets.
-        # - **false**: Do not load sample datasets.
+        # - **true**: A sample dataset is loaded.
         # 
-        # > If this parameter is not specified, it defaults to not loading sample datasets.
+        # - **false**: A sample dataset is not loaded.
+        # 
+        # > If this parameter is not specified, a sample dataset is not loaded.
         self.create_sample_data = create_sample_data
-        # Instance series. The value description is as follows:
+        # The instance edition. Valid values:
         # 
-        # - **HighAvailability**: High availability version.
-        # - **Basic**: Basic version.
+        # - **HighAvailability**: High-availability Edition
         # 
-        # > This parameter is required when creating an instance in the storage elastic mode.
+        # - **Basic**: Basic Edition
+        # 
+        # > This parameter is required for instances in elastic storage mode.
         self.dbinstance_category = dbinstance_category
-        # Instance type. For more details, see the supplementary description of the DBInstanceClass parameter.
+        # The instance type. For more information, see the description of the `DBInstanceClass` parameter.
         # 
-        # > This parameter is required when creating a reserved storage mode instance.
+        # > This parameter is required for instances in reserved storage mode.
         self.dbinstance_class = dbinstance_class
-        # Instance description.
+        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # Number of compute groups. The values are: 2, 4, 8, 12, 16, 24, 32, 64, 96, 128.
+        # The number of compute groups. Valid values: 2, 4, 8, 12, 16, 24, 32, 64, 96, and 128.
         # 
-        # > This parameter is required when creating a reserved storage mode instance.
+        # > This parameter is required for instances in reserved storage mode.
         self.dbinstance_group_count = dbinstance_group_count
-        # Instance resource type. The value description is as follows:
+        # The instance resource mode. Valid values:
         # 
-        # - **StorageElastic**: Storage elastic mode.
-        # - **Serverless**: Serverless mode.
-        # - **Classic**: Storage reserved mode.
+        # - **StorageElastic**: elastic storage mode
+        # 
+        # - **Serverless**: serverless mode
+        # 
+        # - **Classic**: reserved storage mode
         # 
         # > This parameter is required.
         # 
         # This parameter is required.
         self.dbinstance_mode = dbinstance_mode
-        # Deployment mode. The values are as follows:
-        # - multiple: Multi-zone deployment.
-        # - single: Single-zone deployment.
+        # The deployment mode. Valid values:
         # 
-        # > 
-        # > - If this parameter is not specified, the default value is single-zone deployment.
-        # > - Currently, only single-zone deployment is supported.
+        # - multiple: multi-AZ deployment.
+        # 
+        # - single: single-AZ deployment.
+        # 
+        # > * If this parameter is not specified, the default value is single.
+        # >
+        # > * Defaults to `single` (single-AZ deployment), which is the only mode currently supported.
         self.deploy_mode = deploy_mode
         # Specifies whether to enable SSL encryption. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: SSL encryption is enabled.
+        # 
+        # - **false** (default): SSL encryption is disabled.
         self.enable_ssl = enable_ssl
-        # Key ID.
+        # The ID of the encryption key.
         # 
-        # > If the value of the **EncryptionType** parameter is **CloudDisk**, you need to specify the encryption key ID within the same region through this parameter; otherwise, it should be empty.
+        # > If `EncryptionType` is set to `CloudDisk`, you must specify the ID of an encryption key in the same region. Otherwise, leave this parameter empty.
         self.encryption_key = encryption_key
-        # Encryption type. The value description is as follows:
+        # The encryption type. Valid values:
         # 
-        # - **NULL**: No encryption (default).
-        # - **CloudDisk**: Enable cloud disk encryption and specify the key through the **EncryptionKey** parameter.
+        # - **NULL**: disables encryption. This is the default value.
         # 
-        # > Once cloud disk encryption is enabled, it cannot be disabled.
+        # - **CloudDisk**: Enables cloud disk encryption. If you select this option, you must also specify a value for `EncryptionKey`.
+        # 
+        # > After cloud disk encryption is enabled, it cannot be disabled.
         self.encryption_type = encryption_type
-        # Database engine, with the value **gpdb**.
+        # The database engine. Set the value to **gpdb**.
         # 
         # This parameter is required.
         self.engine = engine
-        # Engine version. The values are as follows:
-        # - **6.0**: Version 6.0.
-        # - **7.0**: Version 7.0.
+        # The database engine version. Valid values:
+        # 
+        # - **6.0**
+        # 
+        # - **7.0**
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The idle release wait time. When the duration without business traffic reaches the specified time, the instance will enter the idle state. The unit is seconds, with a minimum value of 60, and the default value is 600.
+        # The period of inactivity, in seconds, after which the instance is considered idle. Minimum value: 60. Default value: 600.
         # 
-        # > This parameter is required only for Serverless auto-scheduling mode instances.
+        # > This parameter is required only for serverless instances that use auto-scheduling.
         self.idle_time = idle_time
-        # Instance network type, with the value **VPC**.
+        # The instance network type. Set the value to **VPC**.
         # 
-        # > - Only VPC networks are supported in public cloud.
-        # > - If not specified, it defaults to VPC type.
+        # > - Only VPCs are supported.
+        # >
+        # > - If this parameter is not specified, VPC is used by default.
         self.instance_network_type = instance_network_type
-        # Compute node specifications.
+        # The instance type for the compute nodes.
         # 
-        # For high-availability versions of the elastic storage mode, the values are as follows:
+        # Valid values for a High-availability Edition instance in elastic storage mode:
+        # 
         # - **2C16G**
+        # 
         # - **4C32G**
+        # 
         # - **16C128G**
         # 
-        # For basic versions of the elastic storage mode, the values are as follows:
+        # Valid values for a Basic Edition instance in elastic storage mode:
+        # 
         # - **2C8G**
+        # 
         # - **4C16G**
+        # 
         # - **8C32G**
+        # 
         # - **16C64G**
         # 
-        # For Serverless mode, the values are as follows:
+        # Valid values for a serverless instance:
+        # 
         # - **4C16G**
+        # 
         # - **8C32G**
         # 
-        # > This parameter is required when creating an elastic storage mode instance or a Serverless mode instance.
+        # > This parameter is required for instances in elastic storage mode or serverless mode.
         self.instance_spec = instance_spec
-        # This parameter must be specified if you want to change coordinator nodes to AI coordinator nodes.
+        # Use this parameter to configure the coordinator node as a MasterAI node.
         # 
-        # >-  You cannot specify the MasterAISpec and MasterCU parameters at the same time.
-        # >- You can change coordinator nodes to AI coordinator nodes only in specific regions and zones.
-        # >- Only AnalyticDB for PostgreSQL V7.0 instances of Basic Edition support AI coordinator nodes.
-        # >- You can view the valid values of this parameter on the configuration change page of coordinator nodes.
+        # > - This parameter and `MasterCU` are mutually exclusive.
+        # >
+        # > - This feature is available only in some regions and zones.
+        # >
+        # > - MasterAI nodes are supported only for AnalyticDB for PostgreSQL V7.0 Basic Edition instances.
+        # >
+        # > - For a list of all possible values, see the coordinator node specification change page in the console.
         self.master_aispec = master_aispec
-        # Master resources, with the following values: 
-        # - 2 CU 
-        # - 4 CU 
-        # - 8 CU 
-        # - 16 CU 
-        # - 32 CU 
-        # > Master resources above 8 CU will incur charges.
+        # The resources for the coordinator node. Valid values:
+        # 
+        # - 2 CU
+        # 
+        # - 4 CU
+        # 
+        # - 8 CU
+        # 
+        # - 16 CU
+        # 
+        # - 32 CU
+        # 
+        # > You are charged for coordinator node resources of 8 CUs or more.
         self.master_cu = master_cu
-        # This parameter is deprecated and should not be passed.
+        # This parameter is deprecated.
         self.master_node_num = master_node_num
         self.owner_id = owner_id
-        # The billing method of the instance. Valid values:
+        # The billing method for the instance. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go.
         # 
-        # > 
+        # - **Prepaid**: subscription.
         # 
-        # *   If you do not specify this parameter, Postpaid is used.
-        # 
-        # *   You can obtain more cost savings if you create a subscription instance for one year or longer. We recommend that you select the billing method that best suits your needs.
+        # > * If this parameter is not specified, the default billing method is pay-as-you-go.
+        # >
+        # > * Discounts are available for subscriptions of one year or longer. Select a billing method based on your business needs.
         self.pay_type = pay_type
-        # Unit of the duration for which resources are purchased. The values are as follows:
-        # - **Month**: Month
-        # - **Year**: Year
+        # The unit of the subscription duration. Valid values:
         # 
-        # > This parameter is required when creating a subscription-billed instance.
+        # - **Month**
+        # 
+        # - **Year**
+        # 
+        # > This parameter is required for subscription instances.
         self.period = period
-        # This parameter is deprecated and should not be passed.
+        # This parameter is deprecated.
         self.private_ip_address = private_ip_address
-        # Product type. The values are as follows:
+        # The product type. Valid values:
+        # 
         # - **standard**: Standard Edition.
-        # - **cost-effective**: Cost-Effective Edition.
         # 
-        # > If this parameter is not specified, the default value is Standard Edition.
+        # - **cost-effective**: Cost-effective Edition.
+        # 
+        # > If this parameter is not specified, the default value is standard.
         self.prod_type = prod_type
-        # Region ID.
+        # The ID of the region for the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the IDs of available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the enterprise resource group where the instance is located.
+        # The ID of the resource group for the instance.
         self.resource_group_id = resource_group_id
-        # The IP address whitelist of the instance.
+        # The IP address whitelist for the instance.
         # 
-        # A value of 127.0.0.1 denies access from any external IP address. You can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist after you create an instance.
+        # A value of 127.0.0.1 blocks all external access. After you create the instance, you can call the [ModifySecurityIps](https://help.aliyun.com/document_detail/86928.html) operation to modify the IP address whitelist.
         self.security_iplist = security_iplist
-        # The performance level of ESSDs. Valid values:
+        # The performance level of the ESSDs. Valid values:
         # 
-        # *   **pl0**
-        # *   **pl1**
-        # *   **pl2**
+        # - **pl0**: PL0
         # 
-        # > 
+        # - **pl1**: PL1
         # 
-        # *   This parameter takes effect only when SegStorageType is set to cloud_essd.
+        # - **pl2**: PL2
         # 
-        # *   If you do not specify this parameter, pl1 is used.
+        # > * This parameter applies only if the segment node storage type is ESSD.
+        # >
+        # > * If this parameter is not specified, pl1 is used by default.
         self.seg_disk_performance_level = seg_disk_performance_level
-        # The number of compute nodes. The value description is as follows:
+        # The number of compute nodes. Valid values:
         # 
-        # - For the high-availability version of the storage elastic mode, the value range is 4 to 512, and the value must be a multiple of 4.
-        # - For the basic version of the storage elastic mode, the value range is 2 to 512, and the value must be a multiple of 2.
-        # - For the Serverless mode, the value range is 2 to 512, and the value must be a multiple of 2.
+        # - For a High-availability Edition instance in elastic storage mode, the value must be a multiple of 4, from 4 to 512.
         # 
-        # > This parameter is required when creating instances in the storage elastic mode or Serverless mode.
+        # - For a Basic Edition instance in elastic storage mode, the value must be a multiple of 2, from 2 to 512.
+        # 
+        # - For a serverless instance, the value must be a multiple of 2, from 2 to 512.
+        # 
+        # > This parameter is required for instances in elastic storage mode or serverless mode.
         self.seg_node_num = seg_node_num
-        # Disk storage type, currently only ESSD cloud disks are supported, with the value **cloud_essd**.
+        # The storage type for the segment nodes. Only ESSDs are supported. Set the value to **cloud_essd**.
         # 
-        # > This parameter is required when creating an elastic storage mode instance.
+        # > This parameter is required for instances in elastic storage mode.
         self.seg_storage_type = seg_storage_type
-        # The mode of the Serverless instance. The values are as follows:
+        # The mode of the serverless instance. Valid values:
         # 
-        # - **Manual**: Manual scheduling (default).
-        # - **Auto**: Auto scheduling.
+        # - **Manual**: manual scheduling. This is the default value.
         # 
-        # > This parameter is required only for Serverless mode instances.
+        # - **Auto**: auto-scheduling.
+        # 
+        # > * This parameter is required only for instances in serverless mode.
+        # >
+        # > * Auto-scheduling for AnalyticDB for PostgreSQL instances in serverless mode is in preview. To use this feature, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket?product=rds) to be added to the whitelist.
         self.serverless_mode = serverless_mode
-        # The threshold for computing resources. The value range is 8 to 32, with a step of 8, and the unit is ACU. The default value is 32.
+        # The threshold for computing resources, in AnalyticDB Compute Units (ACUs). The value must be a multiple of 8, ranging from 8 to 32. The default value is 32.
         # 
-        # > This parameter is required only for Serverless auto-scheduling mode instances.
+        # > This parameter is required only for serverless instances that use auto-scheduling.
         self.serverless_resource = serverless_resource
-        # ID of the source instance to be cloned.
+        # The ID of the source instance to be cloned.
         # 
-        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) interface to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in the destination region, including instance IDs.
         self.src_db_instance_name = src_db_instance_name
-        # VSwitch ID of the standby zone.
+        # The ID of the vSwitch in the standby zone.
         # 
-        # > 
-        # > - This parameter is required for multi-zone deployment.
-        # > - The VSwitch ID of the standby zone must be in the same zone as the StandbyZoneId.
+        # > - This parameter is required only for a multi-AZ deployment.
+        # >
+        # > - The vSwitch must be in the standby zone specified in `StandbyZoneId`.
         self.standby_vswitch_id = standby_vswitch_id
-        # ID of the standby zone.
+        # The ID of the standby zone.
         # 
-        # > 
-        # > - This parameter is required for multi-zone deployment.
-        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available zone IDs.
-        # > - The ID of the standby zone must be different from the ID of the primary zone.
+        # > - This parameter is required only for a multi-AZ deployment.
+        # >
+        # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the IDs of available zones.
+        # >
+        # > - The standby zone must be different from the primary zone.
         self.standby_zone_id = standby_zone_id
-        # The size of the storage space, in GB, with a value range of <props="china">50~8000<props="intl">50~6000.
+        # The storage capacity for the instance, in GB. Valid values: <props="china">50 to 8000<props="intl">50 to 6000.
         # 
-        # > This parameter is required when creating an instance in the storage elastic mode.
+        # > This parameter is required for instances in elastic storage mode.
         self.storage_size = storage_size
-        # This parameter is deprecated and should not be passed.
+        # This parameter is deprecated.
         self.storage_type = storage_type
-        # The Nth tag. The value of N ranges from 1 to 20.
+        # The tags to add to the instance. You can add up to 20 tags.
         self.tag = tag
-        # Duration for which resources are purchased. The values are as follows:
-        # - When **Period** is **Month**, the value ranges from 1 to 9.
-        # - When **Period** is **Year**, the value ranges from 1 to 3.
+        # The subscription duration. Valid values:
         # 
-        # > This parameter is required when creating a subscription-billed instance.
+        # - If **Period** is **Month**, the value can be an integer from 1 to 9.
+        # 
+        # - If **Period** is **Year**, the value can be an integer from 1 to 3.
+        # 
+        # > This parameter is required for subscription instances.
         self.used_time = used_time
-        # VPC ID.
+        # The VPC ID.
         # 
-        # > - **VPCId** is required.
-        # > - The region of the **VPC** must be consistent with **RegionId**.
+        # > - This parameter is required.
+        # >
+        # > - The VPC must be in the region specified by `RegionId`.
         self.vpcid = vpcid
-        # vSwitch ID.
+        # The vSwitch ID.
         # 
-        # > - **vSwitchId** is required.
-        # > - The availability zone of the **vSwitch** must be consistent with **ZoneId**.
+        # > - This parameter is required.
+        # >
+        # > - The vSwitch must be in the zone specified by `ZoneId`.
         self.v_switch_id = v_switch_id
-        # Whether to enable vector engine optimization. The value description is as follows:
-        # - **enabled**: Enable vector engine optimization.
-        # - **disabled** (default): Do not enable vector engine optimization.
+        # Specifies whether to enable vector engine optimization. Valid values:
         # 
-        # > - For mainstream analysis scenarios, data warehouse scenarios, and real-time data warehouse scenarios, it is recommended to **not enable** vector engine optimization.
-        # > - For users using the vector analysis engine for AIGC, vector retrieval, and other scenarios, it is recommended to **enable** vector engine optimization.
+        # - **enabled**: enables vector engine optimization.
+        # 
+        # - **disabled** (default): disables vector engine optimization.
+        # 
+        # > * For mainstream analytics, data warehousing, and real-time data warehousing scenarios, we recommend that you **disable** vector engine optimization.
+        # >
+        # > * For AIGC and vector search scenarios, we recommend that you **enable** vector engine optimization.
         self.vector_configuration_status = vector_configuration_status
-        # Zone ID.
+        # The ID of the zone for the instance.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) interface to view available zone IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) operation to query the IDs of available zones.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -619,17 +666,21 @@ class CreateDBInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key. The restrictions are as follows:
+        # The tag key. The following limits apply:
         # 
-        # - It cannot be an empty string.
-        # - It supports up to 128 characters.
-        # - It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
+        # - The tag key cannot be empty.
+        # 
+        # - The tag key can be up to 128 characters in length.
+        # 
+        # - The tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.key = key
-        # Tag value. The restrictions are as follows:
+        # The tag value. The following limits apply:
         # 
-        # - It can be an empty string.
-        # - It supports up to 128 characters.
-        # - It cannot start with `acs:`, and it cannot contain `http://` or `https://`.
+        # - The tag value can be empty.
+        # 
+        # - The tag value can be up to 128 characters in length.
+        # 
+        # - The tag value cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -664,7 +715,9 @@ class CreateDBInstanceRequestAINodeSpecInfos(DaraModel):
         ainode_num: str = None,
         ainode_spec: str = None,
     ):
+        # The number of AI nodes.
         self.ainode_num = ainode_num
+        # The specifications of the AI nodes.
         self.ainode_spec = ainode_spec
 
     def validate(self):

@@ -17,11 +17,16 @@ class DescribeVsDomainPvDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # This static field defines the time interval for each record, with a value of either 1 hour or 1 day.
         self.data_interval = data_interval
+        # The domain name for Visual Edge Computing Service.
         self.domain_name = domain_name
+        # The end of the time range.
         self.end_time = end_time
         self.pv_data_interval = pv_data_interval
+        # The ID of the request.
         self.request_id = request_id
+        # The beginning of the time range.
         self.start_time = start_time
 
     def validate(self):

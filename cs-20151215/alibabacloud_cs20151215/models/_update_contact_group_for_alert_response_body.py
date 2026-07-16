@@ -10,12 +10,11 @@ class UpdateContactGroupForAlertResponseBody(DaraModel):
         msg: str = None,
         status: bool = None,
     ):
-        # The error message returned if the call fails.
+        # The message returned when the operation failed.
         self.msg = msg
-        # The update status.
-        # 
-        # *   true: The update is successful.
-        # *   false: The update failed.
+        # The status of the update result. Valid values:
+        # - true: The operation is successful.
+        # - false: The operation failed.
         self.status = status
 
     def validate(self):

@@ -20,31 +20,30 @@ class DescribeImageSecurityScanCountRequest(DaraModel):
         scan_range: List[str] = None,
         uuids: List[str] = None,
     ):
-        # The ID of the cluster that you want to scan.
+        # The ID of the cluster for image security scanning.
         self.cluster_id = cluster_id
-        # The handling status. Valid values:
-        # 
-        # *   **Y**: handled.
-        # *   **N**: unhandled.
-        # *   **A**: all.
+        # Specifies whether the event is handled. Valid values:
+        # - **Y**: Handled. 
+        # - **N**: Not handled. 
+        # - **A**: All.
         self.dealed = dealed
-        # The SHA-256 value of the image digest.
+        # The SHA256 value of the image digest.
         self.image_digest = image_digest
-        # The tag of the image.
+        # The image tag.
         self.image_tag = image_tag
         # The UUID of the image.
         self.image_uuid = image_uuid
-        # The ID of the Container Registry repository.
+        # The ID of the container image repository.
         self.repo_id = repo_id
-        # The ID of the Container Registry instance.
+        # The instance ID of the container image.
         # 
-        # >  You can call the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain the ID.
+        # > Invoke the [DescribeImageInstances](~~DescribeImageInstances~~) operation to obtain this parameter.
         self.repo_instance_id = repo_instance_id
-        # The region ID of the Container Registry repository.
+        # The region ID of the container image repository.
         self.repo_region_id = repo_region_id
-        # The assets that you want to scan.
+        # The scan scope.
         self.scan_range = scan_range
-        # The IDs of the instances that you want to scan.
+        # The instance ID for image security scanning.
         self.uuids = uuids
 
     def validate(self):

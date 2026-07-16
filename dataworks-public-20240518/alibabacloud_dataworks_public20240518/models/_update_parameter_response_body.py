@@ -10,7 +10,9 @@ class UpdateParameterResponseBody(DaraModel):
         request_id: str = None,
         version: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The new version number.
         self.version = version
 
     def validate(self):

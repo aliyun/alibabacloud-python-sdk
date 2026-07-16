@@ -15,9 +15,13 @@ class PauseAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.PauseAgentTaskResponseBodyTasks] = None,
     ):
+        # The status code.
         self.code = code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # A list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -76,11 +80,33 @@ class PauseAgentTaskResponseBodyTasks(DaraModel):
         previous_status: str = None,
         task_id: str = None,
     ):
+        # The current status of the task. The following are possible values:
+        # 
+        # PENDING: The task is being created.
+        # 
+        # RUNNING: The task is running.
+        # 
+        # COMPLETED: The task is completed.
+        # 
+        # FAILED: The task failed.
+        # 
+        # TIMEOUT: The task timed out.
+        # 
+        # PAUSING: The task is being paused.
+        # 
+        # PAUSED: The task is paused.
         self.current_status = current_status
+        # The reason the task failed to pause.
         self.failed_reason = failed_reason
+        # The ID of the Mobile node.
         self.instance_id = instance_id
+        # The time when the pause request was initiated, in ISO 8601 format.
         self.pausing_at = pausing_at
+        # The status of the task before the pause request. The only valid value is:
+        # 
+        # RUNNING: The task is running.
         self.previous_status = previous_status
+        # The unique ID of the task.
         self.task_id = task_id
 
     def validate(self):

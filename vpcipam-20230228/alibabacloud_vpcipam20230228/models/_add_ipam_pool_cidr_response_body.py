@@ -10,7 +10,7 @@ class AddIpamPoolCidrResponseBody(DaraModel):
         cidr: str = None,
         request_id: str = None,
     ):
-        # The successfully provisioned CIDR block.
+        # The CIDR block that is successfully provisioned for the IPAM pool.
         self.cidr = cidr
         # The request ID.
         self.request_id = request_id

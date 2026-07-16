@@ -13,7 +13,7 @@ class QueryPackageTypeInfoRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # 产品名称，如dysms
+        # The product name. The value must be dytns.
         self.product_name = product_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -16,11 +16,21 @@ class DescribeEncryptionDBRolePrivilegeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The result set.
         self.data = data
+        # The response message.
+        # 
+        # > If the request is successful, \\`Successful\\` is returned. If the request fails, an error message, such as an error code, is returned.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -74,6 +84,7 @@ class DescribeEncryptionDBRolePrivilegeResponseBodyData(DaraModel):
         self,
         role_privilege_list: List[main_models.DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList] = None,
     ):
+        # A list of role access policies.
         self.role_privilege_list = role_privilege_list
 
     def validate(self):
@@ -112,9 +123,13 @@ class DescribeEncryptionDBRolePrivilegeResponseBodyDataRolePrivilegeList(DaraMod
         not_encryption: str = None,
         role_privilege_name: str = None,
     ):
+        # The regular users.
         self.encryption = encryption
+        # Other users.
         self.negation = negation
+        # The privileged users.
         self.not_encryption = not_encryption
+        # The name of the role permission.
         self.role_privilege_name = role_privilege_name
 
     def validate(self):

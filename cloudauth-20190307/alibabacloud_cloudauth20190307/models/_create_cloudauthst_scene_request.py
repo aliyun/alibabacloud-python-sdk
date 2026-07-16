@@ -11,17 +11,17 @@ class CreateCloudauthstSceneRequest(DaraModel):
         scene_name: str = None,
         store_image: str = None,
     ):
-        # Product code.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Scene name.
+        # The scenario name.
         # 
         # This parameter is required.
         self.scene_name = scene_name
-        # Whether to deliver the files generated from the authentication to the customer\\"s OSS:
-        # - **Y**: Enable
-        # - **N**: Disable
+        # Specifies whether to deliver files generated during authentication to the customer\\"s OSS. Valid values:
+        # - **Y**: Enabled.
+        # - **N**: Disabled.
         self.store_image = store_image
 
     def validate(self):

@@ -15,11 +15,17 @@ class DeleteSessionClusterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data structure of the deleted session cluster.
         self.data = data
+        # This parameter is not empty and indicates the error code if \\`success\\` is \\`false\\`. This parameter is empty if \\`success\\` is \\`true\\`.
         self.error_code = error_code
+        # This parameter is not empty and indicates the error message if \\`success\\` is \\`false\\`. This parameter is empty if \\`success\\` is \\`true\\`.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is returned. The \\`success\\` parameter indicates whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

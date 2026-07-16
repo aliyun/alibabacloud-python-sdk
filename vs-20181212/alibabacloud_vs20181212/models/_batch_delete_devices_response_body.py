@@ -13,7 +13,9 @@ class BatchDeleteDevicesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchDeleteDevicesResponseBodyResults] = None,
     ):
+        # The request ID of this task.
         self.request_id = request_id
+        # Result list.
         self.results = results
 
     def validate(self):
@@ -56,7 +58,9 @@ class BatchDeleteDevicesResponseBodyResults(DaraModel):
         error: str = None,
         id: str = None,
     ):
+        # Device error message. (Only present if an error occurs)
         self.error = error
+        # Device ID.
         self.id = id
 
     def validate(self):

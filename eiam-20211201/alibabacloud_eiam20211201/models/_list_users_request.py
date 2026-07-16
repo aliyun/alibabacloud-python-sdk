@@ -26,49 +26,50 @@ class ListUsersRequest(DaraModel):
         user_source_type: str = None,
         username_starts_with: str = None,
     ):
-        # Displayname
+        # The display name prefix. A left-match query is used.
         self.display_name_starts_with = display_name_starts_with
-        # The email address of the user who owns the account.
+        # The email address of the account.
         self.email = email
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page for paging.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
-        # The ID of the organizational unit.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The mobile number of the user who owns the account.
+        # The phone number of the account.
         self.phone_number = phone_number
-        # The country code of the mobile number. For example, the country code of China is 86 without 00 or +.
+        # The phone region code. Example: The region code for the Chinese mainland is 86, without the 00 or + prefix.
         self.phone_region = phone_region
-        # The status of the account. Valid values:
-        # 
-        # *   enabled: The account is enabled.
-        # *   disabled: The account is disabled.
+        # The account status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
-        # The external ID of the account. The external ID can be used by external data to map the data of the account in IDaaS EIAM.
+        # The external ID, which is used to associate external data with IDaaS accounts.
         # 
-        # For accounts with the same source type and source ID, each account has a unique external ID.
+        # Note: The external ID must be unique within the same source type and source ID.
         self.user_external_id = user_external_id
-        # User ID set
+        # The list of account IDs.
         self.user_ids = user_ids
         # The source ID of the account.
         # 
-        # If the account was created in IDaaS, its source ID is the ID of the IDaaS instance. If the account was imported, its source ID is the enterprise ID in the source. For example, if the account was imported from DingTalk, its source ID is the corpId value of the enterprise in DingTalk.
+        # For self-built accounts, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, the value corresponds to the corpId of the DingTalk enterprise.
         self.user_source_id = user_source_id
         # The source type of the account. Valid values:
-        # 
-        # *   build_in: The account was created in IDaaS.
-        # *   ding_talk: The account was imported from DingTalk.
-        # *   ad: The account was imported from Microsoft Active Directory (AD).
-        # *   ldap: The account was imported from a Lightweight Directory Access Protocol (LDAP) service.
+        # - build_in: self-built.
+        # - ding_talk: imported from DingTalk.
+        # - ad: imported from AD.
+        # - ldap: imported from LDAP.
+        # - we_com: imported from WeCom.
         self.user_source_type = user_source_type
-        # Username
+        # The username prefix. A left-match query is used.
         self.username_starts_with = username_starts_with
 
     def validate(self):

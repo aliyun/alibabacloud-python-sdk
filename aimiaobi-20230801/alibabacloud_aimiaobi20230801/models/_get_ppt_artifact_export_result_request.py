@@ -11,8 +11,10 @@ class GetPptArtifactExportResultRequest(DaraModel):
         external_user_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the export task.
         self.export_task_id = export_task_id
         self.external_user_id = external_user_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

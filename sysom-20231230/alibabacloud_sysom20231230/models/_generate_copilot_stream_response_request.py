@@ -9,6 +9,7 @@ class GenerateCopilotStreamResponseRequest(DaraModel):
         self,
         llm_param_string: str = None,
     ):
+        # The input parameter for the Copilot LLM service. Refer to the standard LLM operation input parameter dictionary. Convert the dictionary to a string and pass it in llmParamString.
         self.llm_param_string = llm_param_string
 
     def validate(self):

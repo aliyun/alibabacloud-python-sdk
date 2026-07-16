@@ -13,17 +13,17 @@ class GetTopicListRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The page number. Default value: 1
+        # The number of the page to return. Default value: 1.
         self.current_page = current_page
-        # The ID of the instance.
+        # The ID of the instance to which the topic belongs.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
-        # The region ID of the instance to which the topics that you want to query belong.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # The name of the topic that you want to query.
+        # The name of the topic whose information you want to query.
         self.topic = topic
 
     def validate(self):

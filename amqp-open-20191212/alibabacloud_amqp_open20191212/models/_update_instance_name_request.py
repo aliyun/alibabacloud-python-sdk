@@ -10,11 +10,11 @@ class UpdateInstanceNameRequest(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
-        # The ID of the ApsaraMQ for RabbitMQ instance for which you want to update the name.
+        # The ID of the ApsaraMQ for RabbitMQ instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new name of the instance. No limits are imposed on the value. We recommend that you set this parameter to a maximum of 64 characters in length.
+        # The new name of the instance. The name can be any string of up to 64 characters.
         # 
         # This parameter is required.
         self.instance_name = instance_name

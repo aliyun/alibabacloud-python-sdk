@@ -13,7 +13,9 @@ class ListIcebergSnapshotsResponseBody(DaraModel):
         next_page_token: str = None,
         snapshots: List[main_models.IcebergSnapshot] = None,
     ):
+        # The pagination token for the next page of results. If this parameter is null, all results have been returned.
         self.next_page_token = next_page_token
+        # The list of snapshots.
         self.snapshots = snapshots
 
     def validate(self):

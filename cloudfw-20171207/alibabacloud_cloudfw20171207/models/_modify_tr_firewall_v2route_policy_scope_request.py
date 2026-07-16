@@ -17,23 +17,25 @@ class ModifyTrFirewallV2RoutePolicyScopeRequest(DaraModel):
         src_candidate_list: List[main_models.ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
-        # The secondary traffic redirection instances.
+        # The destination instances.
         self.dest_candidate_list = dest_candidate_list
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The ID of the TR firewall instance.
         # 
         # This parameter is required.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *  **zh** (default): Chinese
-        # *  **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # Specifies whether to restore the traffic redirection configurations. Valid values:
+        # Specifies whether to restore the traffic redirection configuration. Valid values:
         # 
-        # *   true: roll back
-        # *   false: withdraw
+        # - true: Rolls back the routes.
+        # 
+        # - false: Revokes the routes.
         self.should_recover = should_recover
-        # The primary traffic redirection instances.
+        # The source instances.
         self.src_candidate_list = src_candidate_list
         # The ID of the routing policy.
         # 
@@ -113,9 +115,9 @@ class ModifyTrFirewallV2RoutePolicyScopeRequestSrcCandidateList(DaraModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the traffic redirection instance.
+        # The ID of the instance.
         self.candidate_id = candidate_id
-        # The type of the traffic redirection instance.
+        # The type of the instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -150,9 +152,9 @@ class ModifyTrFirewallV2RoutePolicyScopeRequestDestCandidateList(DaraModel):
         candidate_id: str = None,
         candidate_type: str = None,
     ):
-        # The ID of the traffic redirection instance.
+        # The ID of the instance.
         self.candidate_id = candidate_id
-        # The type of the traffic redirection instance.
+        # The type of the instance.
         self.candidate_type = candidate_type
 
     def validate(self):

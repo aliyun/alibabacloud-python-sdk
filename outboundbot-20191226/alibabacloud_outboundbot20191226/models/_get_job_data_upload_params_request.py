@@ -13,12 +13,19 @@ class GetJobDataUploadParamsRequest(DaraModel):
         path: str = None,
         unique_id: str = None,
     ):
+        # Business type
         self.busi_type = busi_type
+        # File name
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Relative path for file storage
         self.path = path
+        # Unique business ID (prevents duplicate file names; the system automatically adds one if left blank)
         self.unique_id = unique_id
 
     def validate(self):

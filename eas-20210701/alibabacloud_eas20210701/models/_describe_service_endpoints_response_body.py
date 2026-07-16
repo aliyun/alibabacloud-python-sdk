@@ -17,9 +17,9 @@ class DescribeServiceEndpointsResponseBody(DaraModel):
     ):
         # The service token.
         self.access_token = access_token
-        # The service endpoints.
+        # The list of service endpoints.
         self.endpoints = endpoints
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -80,11 +80,37 @@ class DescribeServiceEndpointsResponseBodyEndpoints(DaraModel):
         path_type: str = None,
         port: int = None,
     ):
+        # The ID of the backend service. The value of this parameter varies based on the value of EndpointType:
+        # 
+        # - If EndpointType is DefaultGateway, this parameter is set to default.
+        # 
+        # - If EndpointType is PrivateGateway, this parameter is the ID of the dedicated gateway.
+        # 
+        # - If EndpointType is Nlb, this parameter is the ID of the NLB instance.
+        # 
+        # - If EndpointType is Nacos, this parameter is the ID of the Nacos instance.
         self.backend_id = backend_id
+        # The connection type of the service endpoint. Valid values:
+        # 
+        # - DefaultGateway: The service is connected using a shared gateway.
+        # 
+        # - PrivateGateway: The service is connected using a dedicated gateway.
+        # 
+        # - Nlb: The service is attached to a Network Load Balancer (NLB) instance.
+        # 
+        # - Nacos: The service is attached to a Nacos instance.
         self.endpoint_type = endpoint_type
+        # The list of internet-facing endpoints.
         self.internet_endpoints = internet_endpoints
+        # The list of internal endpoints.
         self.intranet_endpoints = intranet_endpoints
+        # The type of the endpoint. Valid values:
+        # 
+        # - Group: The endpoint of an audience group.
+        # 
+        # - Service: The endpoint of a service.
         self.path_type = path_type
+        # The port number. This parameter is returned only when the service is attached to an NLB or Nacos instance.
         self.port = port
 
     def validate(self):

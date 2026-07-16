@@ -11,9 +11,15 @@ class AddRecursionZoneResponseBody(DaraModel):
         success: bool = None,
         zone_id: str = None,
     ):
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # Zone ID。
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

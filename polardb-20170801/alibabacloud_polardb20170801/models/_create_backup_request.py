@@ -8,14 +8,16 @@ class CreateBackupRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
+        comment: str = None,
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token is case-sensitive and can contain only ASCII characters. The token can be up to 64 characters in length.
         self.client_token = client_token
+        self.comment = comment
         # The cluster ID.
         # 
         # This parameter is required.
@@ -35,6 +37,9 @@ class CreateBackupRequest(DaraModel):
             result = _map
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
+
+        if self.comment is not None:
+            result['Comment'] = self.comment
 
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
@@ -57,6 +62,9 @@ class CreateBackupRequest(DaraModel):
         m = m or dict()
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
+
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
 
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')

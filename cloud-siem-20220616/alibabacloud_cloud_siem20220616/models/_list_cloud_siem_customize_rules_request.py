@@ -31,58 +31,69 @@ class ListCloudSiemCustomizeRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end of the time range to query. Unit: milliseconds.
+        # The end time of the query. The value is a UNIX timestamp. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the custom rule.
         self.id = id
-        # The sort method. Valid values:
+        # The order in which you want to sort the custom rules. Valid values:
         # 
-        # *   desc: descending order.
-        # *   asc: ascending order.
+        # - desc: descending order
+        # 
+        # - asc: ascending order
         self.order = order
-        # The field that is used to sort the rules. Valid values:
+        # The field that you use to sort the custom rules. Valid values:
         # 
-        # *   GmtModified: The rules are sorted based on the modification time.
-        # *   Id (default): The rules are sorted based on the rule ID.
+        # - GmtModified: sorts the rules by modification time.
+        # 
+        # - Id: sorts the rules by rule ID. This is the default value.
         self.order_field = order_field
-        # The number of entries per page. The value can be up to 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The data management center of the threat analysis feature. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the data management center of Threat Analysis is deployed. You must select the region where your assets reside. Valid values:
         # 
-        # *   **cn-hangzhou**: Your assets reside in regions in China.
-        # *   **ap-southeast-1**: Your assets reside in regions outside China.
+        # - **cn-hangzhou**: your assets are in the Chinese mainland or Hong Kong (China).
+        # 
+        # - **ap-southeast-1**: your assets are outside China.
         self.region_id = region_id
-        # The ID of the destination account to which you switch the view from the management account.
+        # The user ID that is used to switch the administrator\\"s view to the view of a member.
         self.role_for = role_for
-        # The type of the view. Valid values:
+        # The view type.
         # 
-        # *   0: view of the current Alibaba Cloud account.
-        # *   1: view of all accounts for the enterprise.
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all members in the enterprise.
         self.role_type = role_type
         # The name of the rule. The name can contain letters, digits, underscores (_), and periods (.).
         self.rule_name = rule_name
         # The type of the rule. Valid values:
         # 
-        # *   **predefine**
-        # *   **customize**
+        # - **predefine**: predefined
+        # 
+        # - **customize**: custom
         self.rule_type = rule_type
-        # The beginning of the time range to query. Unit: milliseconds.
+        # The start time of the query. The value is a UNIX timestamp. Unit: milliseconds.
         self.start_time = start_time
         # The status of the rule. Valid values:
         # 
-        # *   **0**: The rule is in the initial state.
-        # *   **10**: The simulation data is tested.
-        # *   **15**: The business data is being tested.
-        # *   **20**: The business data test is complete.
-        # *   **100**: The rule is in effect.
-        self.status = status
-        # The threat level. The value must be a JSON array. Valid values:
+        # - **0**: initial
         # 
-        # *   **serious**: high-risk.
-        # *   **suspicious**: medium-risk.
-        # *   **remind**: low-risk.
+        # - **10**: testing with simulated data
+        # 
+        # - **15**: testing with business data
+        # 
+        # - **20**: testing with business data is complete
+        # 
+        # - **100**: published
+        self.status = status
+        # The threat level. The value is a JSON array. Valid values:
+        # 
+        # - **serious**: high
+        # 
+        # - **suspicious**: medium
+        # 
+        # - **remind**: low
         self.threat_level = threat_level
 
     def validate(self):

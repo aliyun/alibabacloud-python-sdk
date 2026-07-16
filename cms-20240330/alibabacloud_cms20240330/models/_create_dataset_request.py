@@ -14,9 +14,14 @@ class CreateDatasetRequest(DaraModel):
         description: str = None,
         schema: Dict[str, main_models.IndexKey] = None,
     ):
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.dataset_name = dataset_name
+        # The description of the dataset.
         self.description = description
+        # The schema of the dataset.
+        # 
         # This parameter is required.
         self.schema = schema
 

@@ -12,8 +12,11 @@ class CreateServiceRolloutRequest(DaraModel):
         partition: main_models.CreateServiceRolloutRequestPartition = None,
         paused: bool = None,
     ):
+        # The configuration for the Batch strategy.
         self.batch = batch
+        # The configuration for the Partition strategy.
         self.partition = partition
+        # Specifies whether to pause the rollout.
         self.paused = paused
 
     def validate(self):
@@ -58,6 +61,7 @@ class CreateServiceRolloutRequestPartition(DaraModel):
         self,
         partition: str = None,
     ):
+        # The number of instances to update to the new version.
         self.partition = partition
 
     def validate(self):
@@ -86,7 +90,9 @@ class CreateServiceRolloutRequestBatch(DaraModel):
         batch_size: str = None,
         interval: str = None,
     ):
+        # The number of instances to update in each batch.
         self.batch_size = batch_size
+        # The wait interval after each batch completes.
         self.interval = interval
 
     def validate(self):

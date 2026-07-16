@@ -13,7 +13,9 @@ class DescribeMetaStatisticsListResponseBody(DaraModel):
         items: List[main_models.DescribeMetaStatisticsListResponseBodyItems] = None,
         request_id: str = None,
     ):
+        # The list of statistics information.
         self.items = items
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,19 +70,50 @@ class DescribeMetaStatisticsListResponseBodyItems(DaraModel):
         total_count: int = None,
         unpassed_count: int = None,
     ):
+        # The commodity (product) code.
         self.api = api
+        # The name corresponding to the API. Valid values:
+        # - **ID_CARD_2_META**: ID card two-element verification
+        # - **ID_PERIOD**: ID card validity period verification
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+        # - **MOBILE_2_META**: mobile number two-element verification
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition)
+        # - **MOBILE_DETECT**: phone number detection
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        # - **VEHICLE_CHECK**: vehicle element verification.
         self.api_name = api_name
+        # The number of successful queries (billable).
         self.bill_count = bill_count
+        # The query hit rate (%).
         self.bill_rate = bill_rate
+        # The number of successful phone number queries (exclusive to phone number detection).
         self.charge_count = charge_count
+        # The date.
         self.date = date
+        # The name of the telecommunications service provider. Valid values:
+        # - **CMCC**: China Mobile
+        # - **CUCC**: China Unicom
+        # - **CTCC**: China Telecom.
         self.isp_name = isp_name
+        # The number of calls with no education information found.
         self.no_record_count = no_record_count
+        # The number of authentication-passed transactions.
         self.passed_count = passed_count
+        # The authentication pass rate (%).
         self.passed_rate = passed_rate
+        # The number of successful calls.
         self.success_count = success_count
+        # The call success rate (%).
         self.success_rate = success_rate
+        # The total number of calls.
         self.total_count = total_count
+        # The number of authentication-failed transactions.
         self.unpassed_count = unpassed_count
 
     def validate(self):

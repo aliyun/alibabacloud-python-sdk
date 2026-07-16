@@ -13,7 +13,9 @@ class BatchBindTemplatesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchBindTemplatesResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of results.
         self.results = results
 
     def validate(self):
@@ -58,9 +60,15 @@ class BatchBindTemplatesResponseBodyResults(DaraModel):
         instance_type: str = None,
         template_id: str = None,
     ):
+        # The error message.
+        # 
+        # > This parameter is returned only when the operation fails.
         self.error = error
+        # The instance ID.
         self.instance_id = instance_id
+        # The instance type.
         self.instance_type = instance_type
+        # The template ID.
         self.template_id = template_id
 
     def validate(self):

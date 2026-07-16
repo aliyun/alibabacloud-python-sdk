@@ -12,10 +12,15 @@ class GetMatchedResourcesRequest(DaraModel):
         next_token: str = None,
         resource_scope: str = None,
     ):
+        # The certificate IDs.
+        # 
         # This parameter is required.
         self.cert_ids = cert_ids
+        # Because of the large number of matched resources, the backend uses aggregation and does not support pagination. This parameter is reserved. By default, a maximum of 2,000 entries are returned.
         self.max_results = max_results
+        # Because of the large number of matched resources, the backend uses aggregation and does not support pagination. This parameter is reserved.
         self.next_token = next_token
+        # The resource match scope. This parameter can be empty.
         self.resource_scope = resource_scope
 
     def validate(self):

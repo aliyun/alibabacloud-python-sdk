@@ -16,10 +16,15 @@ class DescribeVfwIPSConfigListResponseBody(DaraModel):
         total_count: int = None,
         vfw_ips_switch_config_list: List[main_models.DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList] = None,
     ):
+        # The current page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The configuration list.
         self.vfw_ips_switch_config_list = vfw_ips_switch_config_list
 
     def validate(self):
@@ -86,13 +91,21 @@ class DescribeVfwIPSConfigListResponseBodyVfwIpsSwitchConfigList(DaraModel):
         vpc_firewall_id_list: List[str] = None,
         vpc_firewall_name: str = None,
     ):
+        # The status of the Basic Policies switch.
         self.basic_rules = basic_rules
+        # The UID of the member accounts.
         self.member_uid = member_uid
+        # The status of the virtual patches switch.
         self.patch_rules = patch_rules
+        # The rule class for Block Mode.
         self.rule_class = rule_class
+        # The defense mode.
         self.run_mode = run_mode
+        # The instance ID of the virtual private cloud (VPC) firewall.
         self.vpc_firewall_id = vpc_firewall_id
+        # The list of instance IDs of virtual private cloud (VPC) firewalls.
         self.vpc_firewall_id_list = vpc_firewall_id_list
+        # The instance name of the virtual private cloud (VPC) firewall.
         self.vpc_firewall_name = vpc_firewall_name
 
     def validate(self):

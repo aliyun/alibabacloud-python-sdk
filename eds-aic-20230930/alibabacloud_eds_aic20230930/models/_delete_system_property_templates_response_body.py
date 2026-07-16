@@ -11,9 +11,13 @@ class DeleteSystemPropertyTemplatesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The error code.
+        # 
+        # > This parameter is returned only when the API call fails.
         self.code = code
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

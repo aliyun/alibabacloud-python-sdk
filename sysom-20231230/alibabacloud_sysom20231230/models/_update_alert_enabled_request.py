@@ -10,7 +10,9 @@ class UpdateAlertEnabledRequest(DaraModel):
         enabled: bool = None,
         id: int = None,
     ):
+        # Specifies whether the alert policy is enabled.
         self.enabled = enabled
+        # The ID of the alert policy.
         self.id = id
 
     def validate(self):

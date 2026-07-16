@@ -15,7 +15,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         project_names: List[str] = None,
-        region: str = None,
         signature: str = None,
         spec_codes: List[str] = None,
         start_date: int = None,
@@ -33,8 +32,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         self.page_size = page_size
         # The name of MaxCompute project.
         self.project_names = project_names
-        # The region ID.
-        self.region = region
         # The signature of the SQL job.
         self.signature = signature
         # Specification types.
@@ -70,9 +67,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
         if self.project_names is not None:
             result['projectNames'] = self.project_names
 
-        if self.region is not None:
-            result['region'] = self.region
-
         if self.signature is not None:
             result['signature'] = self.signature
 
@@ -106,9 +100,6 @@ class ListComputeMetricsByInstanceRequest(DaraModel):
 
         if m.get('projectNames') is not None:
             self.project_names = m.get('projectNames')
-
-        if m.get('region') is not None:
-            self.region = m.get('region')
 
         if m.get('signature') is not None:
             self.signature = m.get('signature')

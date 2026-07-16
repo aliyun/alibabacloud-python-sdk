@@ -16,13 +16,15 @@ class VerifyCheckInstanceResultRequest(DaraModel):
     ):
         # The ID of the check item.
         # 
-        # > You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of check items.
+        # > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
         self.check_id = check_id
-        # List of item IDs to be checked.
+        # The list of IDs of the check items.
         self.check_ids = check_ids
-        # The instance IDs of the assets on which risks are detected based on the check item.
+        # The list of instance IDs of the assets affected by the check item.
         self.instance_ids = instance_ids
-        # The source of task.
+        # The source of the task. Valid values:
+        # 
+        # - **YAO_CHI**: YaoChi console.
         self.task_source = task_source
 
     def validate(self):

@@ -11,12 +11,19 @@ class CreateInstanceInspectionRequest(DaraModel):
         self,
         instance: str = None,
         items: List[str] = None,
+        metric_source: str = None,
         region: str = None,
         source: str = None,
     ):
+        # The instance ID.
         self.instance = instance
+        # 异常项
         self.items = items
+        # The metric source.
+        self.metric_source = metric_source
+        # The region to which the instance belongs.
         self.region = region
+        # The source.
         self.source = source
 
     def validate(self):
@@ -33,6 +40,9 @@ class CreateInstanceInspectionRequest(DaraModel):
         if self.items is not None:
             result['items'] = self.items
 
+        if self.metric_source is not None:
+            result['metricSource'] = self.metric_source
+
         if self.region is not None:
             result['region'] = self.region
 
@@ -48,6 +58,9 @@ class CreateInstanceInspectionRequest(DaraModel):
 
         if m.get('items') is not None:
             self.items = m.get('items')
+
+        if m.get('metricSource') is not None:
+            self.metric_source = m.get('metricSource')
 
         if m.get('region') is not None:
             self.region = m.get('region')

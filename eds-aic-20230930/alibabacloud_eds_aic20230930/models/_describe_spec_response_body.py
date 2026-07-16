@@ -15,13 +15,13 @@ class DescribeSpecResponseBody(DaraModel):
         spec_info_model: List[main_models.DescribeSpecResponseBodySpecInfoModel] = None,
         total_count: int = None,
     ):
-        # Indicates the current read position returned by this call. An empty value means that all data has been read.
+        # The token to use for the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # The specifications.
+        # The specification information.
         self.spec_info_model = spec_info_model
-        # Total number of items.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -84,23 +84,25 @@ class DescribeSpecResponseBodySpecInfoModel(DaraModel):
         spec_type: str = None,
         system_disk_size: int = None,
     ):
-        # Number of CPU cores.
+        # The number of CPU cores.
         self.core = core
-        # The maximum number of cloud phone instances.
+        # The maximum number of instances.
         self.max_phone_count = max_phone_count
-        # Memory size.
+        # The memory size in GB.
         self.memory = memory
-        # The minimum number of cloud phone instances.
+        # The minimum number of instances.
         self.min_phone_count = min_phone_count
+        # The number of instances.
         self.phone_count = phone_count
+        # The resolution of the cloud phone instance.
         self.resolution = resolution
-        # Specification ID.
+        # The specification ID.
         self.spec_id = spec_id
-        # Specification status.
+        # The specification status.
         self.spec_status = spec_status
-        # Specification type.
+        # The specification type.
         self.spec_type = spec_type
-        # System disk size, in GB.
+        # The size of the system disk, in GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

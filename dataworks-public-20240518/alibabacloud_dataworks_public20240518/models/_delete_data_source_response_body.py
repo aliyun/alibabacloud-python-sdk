@@ -13,7 +13,9 @@ class DeleteDataSourceResponseBody(DaraModel):
         # The request ID. You can locate logs and troubleshoot issues based on the ID.
         self.request_id = request_id
         # Whether the call is successful.
+        # 
         # - true: Successful
+        # 
         # - false: Failed
         self.success = success
 

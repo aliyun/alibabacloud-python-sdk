@@ -25,15 +25,17 @@ class DescribeAvailableResourceRequest(DaraModel):
         self.dbinstance_class = dbinstance_class
         # The architecture of the instance. Valid values:
         # 
-        # *   **normal**: replica set instance
-        # *   **sharding**: sharded cluster instance
+        # - **normal**: replica set instance
+        # 
+        # - **sharding**: sharded cluster instance
         self.db_type = db_type
         # The major engine version of the instance.
         self.engine_version = engine_version
         # The billing method of the instance. Valid values:
         # 
-        # *   **PrePaid** (default): subscription
-        # *   **PostPaid**: pay-as-you-go
+        # - **PrePaid** (default): subscription
+        # 
+        # - **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49,11 +51,15 @@ class DescribeAvailableResourceRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The storage type of the instance. Valid values:
         # 
-        # *   local_ssd: local SSD
-        # *   cloud_essd1: PL1 enhanced SSD (ESSD)
-        # *   cloud_essd2: PL2 ESSD
-        # *   cloud_essd3: PL3 ESSD
-        # *   cloud_auto: ESSD AutoPL disk
+        # - local_ssd: local SSD
+        # 
+        # - cloud_essd1: PL1 enhanced SSD (ESSD)
+        # 
+        # - cloud_essd2: PL2 ESSD
+        # 
+        # - cloud_essd3: PL3 ESSD
+        # 
+        # - cloud_auto: ESSD AutoPL disk
         # 
         # This parameter is empty by default, which indicates all types of storage resources are queried.
         self.storage_type = storage_type

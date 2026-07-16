@@ -17,11 +17,17 @@ class CreateJobGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP return code.
         self.http_status_code = http_status_code
+        # Job information.
         self.job_group = job_group
+        # Message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -99,24 +105,51 @@ class CreateJobGroupResponseBodyJobGroup(DaraModel):
         status: str = None,
         strategy: main_models.CreateJobGroupResponseBodyJobGroupStrategy = None,
     ):
+        # List of calling numbers.
         self.calling_numbers = calling_numbers
+        # Creation Time.
         self.creation_time = creation_time
+        # Export progress.  
+        # > This field is deprecated in the current parameter.
         self.export_progress = export_progress
+        # The ID of the asynchronous parsing operation in the backend corresponding to the uploaded job file.  
+        # > If empty, it is not returned.
         self.job_data_parsing_task_id = job_data_parsing_task_id
+        # OSS path of the job file.  
+        # > If empty, it is not returned.
         self.job_file_path = job_file_path
+        # Task description.
         self.job_group_description = job_group_description
+        # Task ID.
         self.job_group_id = job_group_id
+        # Task Name.
         self.job_group_name = job_group_name
+        # Concurrent guarantee value.  
+        # When the job starts, it guarantees a minimum of N concurrent instances.  
+        # The sum of concurrent guarantee values for jobs with the same priority must not exceed the instance concurrency limit.  
+        # If the concurrent guarantee value is set to 0, the system intelligently assigns available idle concurrency.
         self.min_concurrency = min_concurrency
+        # Updated At.
         self.modify_time = modify_time
+        # Job group priority. Valid values:  
+        # - **Urgent**: Urgent job.  
+        # - **Daily**: Daily job.
         self.priority = priority
+        # List of recall calling numbers
         self.recall_calling_numbers = recall_calling_numbers
+        # Redial policy.
         self.recall_strategy = recall_strategy
+        # Ringing duration.
         self.ringing_duration = ringing_duration
+        # Scenario ID.
         self.scenario_id = scenario_id
+        # Scenario name.
         self.script_name = script_name
+        # Script scenario version.
         self.script_version = script_version
+        # Task status.
         self.status = status
+        # Job scheduling policy.
         self.strategy = strategy
 
     def validate(self):
@@ -274,20 +307,40 @@ class CreateJobGroupResponseBodyJobGroupStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.CreateJobGroupResponseBodyJobGroupStrategyWorkingTime] = None,
     ):
+        # Custom policy data
         self.customized = customized
+        # End Time
         self.end_time = end_time
+        # Post-execution handling method after the epoch ends (this field is deprecated).
         self.follow_up_strategy = follow_up_strategy
+        # Indicates whether it is a template.
         self.is_template = is_template
+        # The maximum number of attempts per day when a call in the job fails to connect.
         self.max_attempts_per_day = max_attempts_per_day
+        # Calling interval.
         self.min_attempt_interval = min_attempt_interval
+        # Repetition mode: "once" for no repetition, "day" for daily repetition, "week" for weekly repetition, and "month" for monthly repetition.
         self.repeat_by = repeat_by
+        # Days on which execution repeats.
+        # - If the recurrence **RepeatBy** is set to **Week**, 0 represents Sunday, and 1–6 represent Monday through Saturday, respectively.
+        # - If the recurrence **RepeatBy** is set to **Month**, values 1–31 represent the 1st through the 31st day of the month. Months that do not contain the specified date will not execute the task. For example, if the 30th is selected, the task will not run in February.
         self.repeat_days = repeat_days
+        # Number routing policy.
+        # - None: No special rule.
+        # - LocalFirst: Local city numbers are prioritized.
+        # - LocalProvinceFirst: Numbers from the same province are prioritized.
         self.routing_strategy = routing_strategy
+        # Start Time.
         self.start_time = start_time
+        # Policy Description
         self.strategy_description = strategy_description
+        # Policy ID.
         self.strategy_id = strategy_id
+        # Policy Name.
         self.strategy_name = strategy_name
+        # Policy Type.
         self.type = type
+        # Time window for policy execution.
         self.working_time = working_time
 
     def validate(self):
@@ -408,7 +461,9 @@ class CreateJobGroupResponseBodyJobGroupStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
+        # End Time of the window.
         self.begin_time = begin_time
+        # Start Time of the window.
         self.end_time = end_time
 
     def validate(self):
@@ -444,8 +499,11 @@ class CreateJobGroupResponseBodyJobGroupRecallStrategy(DaraModel):
         in_arrears_ignore: bool = None,
         out_of_service_ignore: bool = None,
     ):
+        # Do not make outbound calls to nonexistent numbers.
         self.empty_number_ignore = empty_number_ignore
+        # Do not make outbound calls to numbers with overdue payment.
         self.in_arrears_ignore = in_arrears_ignore
+        # Do not make outbound calls to numbers that are out of service.
         self.out_of_service_ignore = out_of_service_ignore
 
     def validate(self):
@@ -487,8 +545,11 @@ class CreateJobGroupResponseBodyJobGroupExportProgress(DaraModel):
         progress: str = None,
         status: str = None,
     ):
+        # File URL. [Deprecated]
         self.file_http_url = file_http_url
+        # Progress. [Deprecated]
         self.progress = progress
+        # Job export status. [Deprecated]
         self.status = status
 
     def validate(self):

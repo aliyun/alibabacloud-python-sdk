@@ -44,60 +44,62 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         start_date: str = None,
         tags: List[main_models.GetUserCertificateDetailResponseBodyTags] = None,
     ):
-        # The algorithm.
+        # The algorithm of the certificate.
         self.algorithm = algorithm
         # Indicates whether the certificate was purchased from Alibaba Cloud. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: Yes
+        # 
+        # - **false**: No
         self.buy_in_aliyun = buy_in_aliyun
-        # The content of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The content of the certificate that does not use a Chinese cryptographic algorithm. This parameter is returned only when the certFilter request parameter is false.
         self.cert = cert
-        # The certificate chain.
+        # The information about the certificate chain.
         self.cert_chain = cert_chain
-        # The certificate identifier. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of CertIdentifier is 123-cn-hangzhou.
+        # The certificate ID followed by "-cn-hangzhou". For example, if the certificate ID is 123, the value of CertIdentifier is "123-cn-hangzhou".
         self.cert_identifier = cert_identifier
         self.cert_sha_2 = cert_sha_2
-        # The city of the company or organization to which the certificate purchaser belongs.
+        # The city where the company or organization of the certificate purchaser is located.
         self.city = city
         # The primary domain name that is bound to the certificate.
         self.common = common
-        # The country or region of the company or organization to which the certificate purchaser belongs.
+        # The country where the company or organization of the certificate purchaser is located.
         self.country = country
-        # The content of the encryption certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The content of the encryption certificate that uses a Chinese cryptographic algorithm. The certificate is in PEM format. This parameter is returned only when the certFilter request parameter is false.
         self.encrypt_cert = encrypt_cert
-        # The private key of the encryption certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The private key of the encryption certificate that uses a Chinese cryptographic algorithm. The private key is in PEM format. This parameter is returned only when the certFilter request parameter is false.
         self.encrypt_private_key = encrypt_private_key
         # The expiration date of the certificate.
         self.end_date = end_date
         # Indicates whether the certificate has expired. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: The certificate has expired.
+        # 
+        # - **false**: The certificate has not expired.
         self.expired = expired
         # The fingerprint of the certificate.
         self.fingerprint = fingerprint
         # The ID of the certificate.
         self.id = id
-        # The instance ID of the resource.
+        # The ID of the resource instance.
         self.instance_id = instance_id
-        # The certificate authority (CA) that issued the certificate.
+        # The certification authority (CA) that issued the certificate.
         self.issuer = issuer
-        # The private key of the certificate if the certificate does not use an SM algorithm. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The private key of the certificate that does not use a Chinese cryptographic algorithm. This parameter is returned only when the certFilter request parameter is false.
         self.key = key
         # The name of the certificate.
         self.name = name
-        # The end of the validity period of the certificate.
+        # The end time of the validity period of the certificate.
         self.not_after = not_after
-        # The beginning of the validity period of the certificate.
+        # The start time of the validity period of the certificate.
         self.not_before = not_before
-        # The order ID.
+        # The ID of the certificate application order.
         self.order_id = order_id
-        # The name of the company or organization to which the certificate purchaser belongs.
+        # The name of the company or organization of the certificate purchaser.
         self.org_name = org_name
-        # The province of the company or organization to which the certificate purchaser belongs.
+        # The province where the company or organization of the certificate purchaser is located.
         self.province = province
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. This unique ID is generated by Alibaba Cloud for the request and can be used to troubleshoot and locate issues.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -107,12 +109,13 @@ class GetUserCertificateDetailResponseBody(DaraModel):
         self.serial_no = serial_no
         # The SHA-2 value of the certificate.
         self.sha_2 = sha_2
-        # The content of the signing certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The content of the signing certificate that uses a Chinese cryptographic algorithm. The certificate is in PEM format. This parameter is returned only when the certFilter request parameter is false.
         self.sign_cert = sign_cert
-        # The private key of the signing certificate if the certificate uses an SM algorithm and is encoded in the PEM format. If certFilter is set to false, this parameter is returned. Otherwise, this parameter is not returned.
+        # The private key of the signing certificate that uses a Chinese cryptographic algorithm. The private key is in PEM format. This parameter is returned only when the certFilter request parameter is false.
         self.sign_private_key = sign_private_key
         # The issuance date of the certificate.
         self.start_date = start_date
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -350,7 +353,9 @@ class GetUserCertificateDetailResponseBodyTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -388,15 +393,15 @@ class GetUserCertificateDetailResponseBodyCertChain(DaraModel):
         not_before: int = None,
         remain_day: int = None,
     ):
-        # The common name of the certificate.
+        # The common name of the certificate in the chain.
         self.common_name = common_name
         # The common name of the issuer.
         self.issuer_common_name = issuer_common_name
-        # The end of the validity period of the certificate.
+        # The expiration date of the certificate in the chain.
         self.not_after = not_after
-        # The beginning of the validity period of the certificate.
+        # The issuance date of the certificate in the chain.
         self.not_before = not_before
-        # The remaining days of the certificate validity period.
+        # The number of days until the certificate in the chain expires.
         self.remain_day = remain_day
 
     def validate(self):

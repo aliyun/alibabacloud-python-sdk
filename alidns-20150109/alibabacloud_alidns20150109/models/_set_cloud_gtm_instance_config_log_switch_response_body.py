@@ -10,7 +10,13 @@ class SetCloudGtmInstanceConfigLogSwitchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful:
+        # 
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

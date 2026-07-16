@@ -20,17 +20,17 @@ class CreateNetTestTaskShrinkRequest(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # Specify when NetTestType is CommTest.
+        # Specify this parameter if NetTestType is set to CommTest.
         self.comm_test_shrink = comm_test_shrink
-        # Specify when NetTestType is DelayTest.
+        # Specify this parameter if NetTestType is set to DelayTest.
         self.delay_test_shrink = delay_test_shrink
-        # The type of the network test. Valid values: DelayTest, TrafficTest, and CommTest.
+        # The type of network test. Valid values: DelayTest, TrafficTest, and CommTest.
         self.net_test_type = net_test_type
         # The network mode.
         self.network_mode = network_mode
-        # The port number.
+        # The test port number.
         self.port = port
-        # If the TrafficModel is Fullmesh, leave this parameter empty.
+        # This field is empty if TrafficModel is set to Fullmesh.
         self.traffic_test_shrink = traffic_test_shrink
 
     def validate(self):

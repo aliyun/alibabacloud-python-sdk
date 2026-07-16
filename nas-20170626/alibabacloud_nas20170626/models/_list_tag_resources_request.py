@@ -17,13 +17,18 @@ class ListTagResourcesRequest(DaraModel):
     ):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The resource IDs.
+        # The ID of the resource.
+        # 
+        # The ID of the destination resource. Valid values of N: 1 to 50.
         self.resource_id = resource_id
-        # The resource type. Set the value to filesystem.
+        # The type of the resource. Valid values:
+        # 
+        # *   filesystem
+        # *   accesspoint
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The details about the tags.
+        # The tags of the reserved instance. The array may contain up to 20 tags. If the array contains multiple tags, each tag key is unique.
         self.tag = tag
 
     def validate(self):
@@ -78,23 +83,20 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of a tag.
         # 
         # Limits:
         # 
-        # *   The tag key cannot be left empty.
-        # *   Valid values of N: 1 to 20.
-        # *   The tag key must be 1 to 128 characters in length.
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
-        self.key = key
-        # The tag value.
-        # 
-        # Limits:
-        # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag value must be 1 to 128 characters in length.
+        # *   The tag key cannot be null or an empty string.
+        # *   The tag value can be up to 128 characters in length.
         # *   The tag value cannot start with `aliyun` or `acs:`.
+        # *   The tag value cannot contain `http://` or `https://`.
+        self.key = key
+        # The value of a tag.
+        # 
+        # Limits:
+        # 
+        # *   The tag value can be up to 128 characters in length.
         # *   The tag value cannot contain `http://` or `https://`.
         self.value = value
 

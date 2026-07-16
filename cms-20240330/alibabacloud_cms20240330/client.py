@@ -21,7 +21,52 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'metrics.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'metrics.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'metrics.us-east-1.aliyuncs.com',
+            'na-south-1': 'metrics.na-south-1.aliyuncs.com',
+            'me-east-1': 'metrics.me-east-1.aliyuncs.com',
+            'me-central-1': 'metrics.me-central-1.aliyuncs.com',
+            'eu-west-2': 'metrics.eu-west-2.aliyuncs.com',
+            'eu-west-1': 'metrics.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'metrics.eu-central-1.aliyuncs.com',
+            'cn-zhongwei': 'metrics.cn-zhongwei.aliyuncs.com',
+            'cn-zhengzhou-jva': 'metrics.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'metrics.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu-gic-1': 'metrics.cn-wulanchabu-gic-1.aliyuncs.com',
+            'cn-wulanchabu': 'metrics.cn-wulanchabu.aliyuncs.com',
+            'cn-wuhan-lr': 'metrics.cn-wuhan-lr.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'metrics.cn-shenzhen-finance-1.aliyuncs.com',
+            'cn-shenzhen': 'metrics.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'metrics.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'metrics.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'metrics.cn-qingdao.aliyuncs.com',
+            'cn-north-2-gov-1': 'metrics.cn-north-2-gov-1.aliyuncs.com',
+            'cn-nanjing': 'metrics.cn-nanjing.aliyuncs.com',
+            'cn-huhehaote': 'metrics.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'metrics.cn-hongkong.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'metrics.cn-heyuan-acdr-1.aliyuncs.com',
+            'cn-heyuan': 'metrics.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou-finance': 'metrics.cn-hangzhou-finance.aliyuncs.com',
+            'cn-hangzhou': 'metrics.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'metrics.cn-guangzhou.aliyuncs.com',
+            'cn-fuzhou': 'metrics.cn-fuzhou.aliyuncs.com',
+            'cn-chengdu': 'metrics.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'metrics.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'metrics.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'metrics.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'metrics.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'metrics.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'metrics.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'metrics.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-2': 'metrics.ap-southeast-2.aliyuncs.com',
+            'ap-southeast-1': 'metrics.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'metrics.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'metrics.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'metrics.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cms', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1503,6 +1548,84 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_memory_store_with_options_async(workspace, request, headers, runtime)
 
+    def create_notify_policy_with_options(
+        self,
+        request: main_models.CreateNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_notify_policy_with_options_async(
+        self,
+        request: main_models.CreateNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_notify_policy(
+        self,
+        request: main_models.CreateNotifyPolicyRequest,
+    ) -> main_models.CreateNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_notify_policy_with_options(request, headers, runtime)
+
+    async def create_notify_policy_async(
+        self,
+        request: main_models.CreateNotifyPolicyRequest,
+    ) -> main_models.CreateNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_notify_policy_with_options_async(request, headers, runtime)
+
     def create_pipeline_with_options(
         self,
         workspace: str,
@@ -1627,6 +1750,8 @@ class Client(OpenApiClient):
             body['paymentType'] = request.payment_type
         if not DaraCore.is_null(request.prometheus_instance_name):
             body['prometheusInstanceName'] = request.prometheus_instance_name
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         if not DaraCore.is_null(request.storage_duration):
@@ -1679,6 +1804,8 @@ class Client(OpenApiClient):
             body['paymentType'] = request.payment_type
         if not DaraCore.is_null(request.prometheus_instance_name):
             body['prometheusInstanceName'] = request.prometheus_instance_name
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
         if not DaraCore.is_null(request.storage_duration):
@@ -2102,6 +2229,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_service_observability_with_options_async(workspace, type, request, headers, runtime)
+
+    def create_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+    ) -> main_models.CreateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def create_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.CreateServiceRecordRequest,
+    ) -> main_models.CreateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def create_ticket_with_options(
         self,
@@ -3517,6 +3732,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
 
+    def delete_notify_policy_with_options(
+        self,
+        request: main_models.DeleteNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.uuid):
+            query['uuid'] = request.uuid
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_notify_policy_with_options_async(
+        self,
+        request: main_models.DeleteNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.uuid):
+            query['uuid'] = request.uuid
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_notify_policy(
+        self,
+        request: main_models.DeleteNotifyPolicyRequest,
+    ) -> main_models.DeleteNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_notify_policy_with_options(request, headers, runtime)
+
+    async def delete_notify_policy_async(
+        self,
+        request: main_models.DeleteNotifyPolicyRequest,
+    ) -> main_models.DeleteNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_notify_policy_with_options_async(request, headers, runtime)
+
     def delete_pipeline_with_options(
         self,
         workspace: str,
@@ -3884,6 +4179,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_service_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def delete_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+    ) -> main_models.DeleteServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def delete_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.DeleteServiceRecordRequest,
+    ) -> main_models.DeleteServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def delete_umodel_with_options(
         self,
@@ -4380,6 +4759,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
+
+    def disable_notify_policy_with_options(
+        self,
+        uuid: str,
+        request: main_models.DisableNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/{DaraURL.percent_encode(uuid)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_notify_policy_with_options_async(
+        self,
+        uuid: str,
+        request: main_models.DisableNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/{DaraURL.percent_encode(uuid)}/disable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_notify_policy(
+        self,
+        uuid: str,
+        request: main_models.DisableNotifyPolicyRequest,
+    ) -> main_models.DisableNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_notify_policy_with_options(uuid, request, headers, runtime)
+
+    async def disable_notify_policy_async(
+        self,
+        uuid: str,
+        request: main_models.DisableNotifyPolicyRequest,
+    ) -> main_models.DisableNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_notify_policy_with_options_async(uuid, request, headers, runtime)
+
+    def enable_notify_policy_with_options(
+        self,
+        uuid: str,
+        request: main_models.EnableNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/{DaraURL.percent_encode(uuid)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_notify_policy_with_options_async(
+        self,
+        uuid: str,
+        request: main_models.EnableNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/{DaraURL.percent_encode(uuid)}/enable',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_notify_policy(
+        self,
+        uuid: str,
+        request: main_models.EnableNotifyPolicyRequest,
+    ) -> main_models.EnableNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_notify_policy_with_options(uuid, request, headers, runtime)
+
+    async def enable_notify_policy_async(
+        self,
+        uuid: str,
+        request: main_models.EnableNotifyPolicyRequest,
+    ) -> main_models.EnableNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_notify_policy_with_options_async(uuid, request, headers, runtime)
 
     def execute_query_with_options(
         self,
@@ -6153,6 +6692,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
 
+    def get_notify_policy_with_options(
+        self,
+        request: main_models.GetNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.uuid):
+            query['uuid'] = request.uuid
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_notify_policy_with_options_async(
+        self,
+        request: main_models.GetNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.uuid):
+            query['uuid'] = request.uuid
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_notify_policy(
+        self,
+        request: main_models.GetNotifyPolicyRequest,
+    ) -> main_models.GetNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_notify_policy_with_options(request, headers, runtime)
+
+    async def get_notify_policy_async(
+        self,
+        request: main_models.GetNotifyPolicyRequest,
+    ) -> main_models.GetNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_notify_policy_with_options_async(request, headers, runtime)
+
     def get_pipeline_with_options(
         self,
         workspace: str,
@@ -6625,6 +7244,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_service_observability_with_options_async(workspace, type, request, headers, runtime)
 
+    def get_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceRecordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+    ) -> main_models.GetServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def get_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.GetServiceRecordRequest,
+    ) -> main_models.GetServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_service_record_with_options_async(workspace, service_id, request, headers, runtime)
+
     def get_umodel_with_options(
         self,
         workspace: str,
@@ -6940,6 +7643,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_name):
             query['addonName'] = request.addon_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.parent_addon_release_id):
             query['parentAddonReleaseId'] = request.parent_addon_release_id
         req = open_api_util_models.OpenApiRequest(
@@ -6973,6 +7680,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.addon_name):
             query['addonName'] = request.addon_name
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         if not DaraCore.is_null(request.parent_addon_release_id):
             query['parentAddonReleaseId'] = request.parent_addon_release_id
         req = open_api_util_models.OpenApiRequest(
@@ -9017,6 +9728,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_memory_stores_with_options_async(workspace, request, headers, runtime)
 
+    def list_notify_policies_with_options(
+        self,
+        request: main_models.ListNotifyPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNotifyPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_desc):
+            query['orderDesc'] = request.order_desc
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNotifyPolicies',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNotifyPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_notify_policies_with_options_async(
+        self,
+        request: main_models.ListNotifyPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNotifyPoliciesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_by):
+            query['orderBy'] = request.order_by
+        if not DaraCore.is_null(request.order_desc):
+            query['orderDesc'] = request.order_desc
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNotifyPolicies',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNotifyPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_notify_policies(
+        self,
+        request: main_models.ListNotifyPoliciesRequest,
+    ) -> main_models.ListNotifyPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_notify_policies_with_options(request, headers, runtime)
+
+    async def list_notify_policies_async(
+        self,
+        request: main_models.ListNotifyPoliciesRequest,
+    ) -> main_models.ListNotifyPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_notify_policies_with_options_async(request, headers, runtime)
+
     def list_pipelines_with_options(
         self,
         workspace: str,
@@ -9517,6 +10324,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_prometheus_virtual_instances_with_options_async(request, headers, runtime)
 
+    def list_service_records_with_options(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceRecords',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_records_with_options_async(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListServiceRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.record_type):
+            query['recordType'] = request.record_type
+        if not DaraCore.is_null(request.search):
+            query['search'] = request.search
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListServiceRecords',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-records',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListServiceRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_records(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+    ) -> main_models.ListServiceRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_service_records_with_options(workspace, request, headers, runtime)
+
+    async def list_service_records_async(
+        self,
+        workspace: str,
+        request: main_models.ListServiceRecordsRequest,
+    ) -> main_models.ListServiceRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_service_records_with_options_async(workspace, request, headers, runtime)
+
     def list_services_with_options(
         self,
         workspace: str,
@@ -9912,6 +10811,74 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.manage_alert_rules_with_options_async(request, headers, runtime)
+
+    def open_cms_service_with_options(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenCmsServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenCmsService',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/cmsservice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenCmsServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_cms_service_with_options_async(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OpenCmsServiceResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'OpenCmsService',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/cmsservice',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OpenCmsServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_cms_service(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+    ) -> main_models.OpenCmsServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.open_cms_service_with_options(request, headers, runtime)
+
+    async def open_cms_service_async(
+        self,
+        request: main_models.OpenCmsServiceRequest,
+    ) -> main_models.OpenCmsServiceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.open_cms_service_with_options_async(request, headers, runtime)
 
     def put_workspace_with_options(
         self,
@@ -11705,6 +12672,84 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_memory_store_with_options_async(workspace, memory_store_name, request, headers, runtime)
 
+    def update_notify_policy_with_options(
+        self,
+        request: main_models.UpdateNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/update',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNotifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_notify_policy_with_options_async(
+        self,
+        request: main_models.UpdateNotifyPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateNotifyPolicyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateNotifyPolicy',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/eventbase/notify-policy/update',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateNotifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_notify_policy(
+        self,
+        request: main_models.UpdateNotifyPolicyRequest,
+    ) -> main_models.UpdateNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_notify_policy_with_options(request, headers, runtime)
+
+    async def update_notify_policy_async(
+        self,
+        request: main_models.UpdateNotifyPolicyRequest,
+    ) -> main_models.UpdateNotifyPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_notify_policy_with_options_async(request, headers, runtime)
+
     def update_notify_strategy_with_options(
         self,
         notify_strategy_id: str,
@@ -12286,6 +13331,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_service_with_options_async(workspace, service_id, request, headers, runtime)
+
+    def update_service_record_with_options(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_service_record_with_options_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateServiceRecordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.record_content):
+            body['recordContent'] = request.record_content
+        if not DaraCore.is_null(request.record_type):
+            body['recordType'] = request.record_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateServiceRecord',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service/{DaraURL.percent_encode(service_id)}/record',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateServiceRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_service_record(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+    ) -> main_models.UpdateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_service_record_with_options(workspace, service_id, request, headers, runtime)
+
+    async def update_service_record_async(
+        self,
+        workspace: str,
+        service_id: str,
+        request: main_models.UpdateServiceRecordRequest,
+    ) -> main_models.UpdateServiceRecordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_service_record_with_options_async(workspace, service_id, request, headers, runtime)
 
     def update_subscription_with_options(
         self,

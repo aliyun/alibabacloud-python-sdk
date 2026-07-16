@@ -12,10 +12,13 @@ class OperateAppInstanceForPartnerResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

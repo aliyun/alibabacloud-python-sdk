@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class OSSIngestionConfigurationSource(DaraModel):
     def __init__(
         self,
+        advanced_parameters: Dict[str, Any] = None,
         bucket: str = None,
         compression_codec: str = None,
         encoding: str = None,
@@ -29,30 +30,57 @@ class OSSIngestionConfigurationSource(DaraModel):
         time_zone: str = None,
         use_meta_index: bool = None,
     ):
+        self.advanced_parameters = advanced_parameters
+        # The name of the OSS bucket.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The compression type of the source files.
+        # 
         # This parameter is required.
         self.compression_codec = compression_codec
+        # The encoding of the source files.
+        # 
         # This parameter is required.
         self.encoding = encoding
+        # Imports only files modified before this time. The value is a Unix timestamp in seconds.
         self.end_time = end_time
+        # The OSS endpoint.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # Defines the format of the source data.
+        # 
         # This parameter is required.
         self.format = format
+        # The check interval for new files.
+        # 
         # This parameter is required.
         self.interval = interval
+        # A regular expression to filter files by path.
         self.pattern = pattern
+        # The path prefix for filtering files.
         self.prefix = prefix
+        # The ID of the writer processor.
         self.processor_id = processor_id
+        # Specifies whether to import archived files.
         self.restore_object_enabled = restore_object_enabled
+        # The Role ARN to use for accessing the OSS bucket.
         self.role_arn = role_arn
+        # Imports only files modified after this time. The value is a Unix timestamp in seconds.
         self.start_time = start_time
+        # Specifies whether to enable context retrieval.
         self.tag_pack_id = tag_pack_id
+        # The field containing the log time.
         self.time_field = time_field
+        # The format of the time field.
         self.time_format = time_format
+        # The regular expression to extract the time value from a log.
         self.time_pattern = time_pattern
+        # The time zone of the timestamp in the source data.
         self.time_zone = time_zone
+        # Specifies whether to use the OSS metadata index to accelerate file discovery.
+        # 
         # This parameter is required.
         self.use_meta_index = use_meta_index
 
@@ -64,6 +92,9 @@ class OSSIngestionConfigurationSource(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.advanced_parameters is not None:
+            result['advancedParameters'] = self.advanced_parameters
+
         if self.bucket is not None:
             result['bucket'] = self.bucket
 
@@ -125,6 +156,9 @@ class OSSIngestionConfigurationSource(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('advancedParameters') is not None:
+            self.advanced_parameters = m.get('advancedParameters')
+
         if m.get('bucket') is not None:
             self.bucket = m.get('bucket')
 

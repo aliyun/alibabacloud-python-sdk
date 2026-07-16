@@ -10,7 +10,10 @@ class UploadAudioDataRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
+        # The workspace ID. This ID is used to select a specific workspace in a multi-workspace scenario. The default workspace is used if you do not specify this parameter.
         self.base_me_agent_id = base_me_agent_id
+        # The complete JSON string. For more information, see the details below.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

@@ -17,6 +17,7 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
         instance_tasks: List[main_models.BatchGetAcpConnectionTicketRequestInstanceTasks] = None,
         ports: List[str] = None,
     ):
+        # The connection mode.
         self.connection_mode = connection_mode
         # The ID of the user to whom the cloud phone instance is assigned.
         self.end_user_id = end_user_id
@@ -24,7 +25,7 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
         self.instance_group_id = instance_group_id
         # The IDs of the cloud phone instances. You can specify 1 to 100 IDs of cloud phone instances.
         self.instance_ids = instance_ids
-        # The instance connection tasks.
+        # The instance connection task, which is used to query whether the ticket retrieval task is completed.
         self.instance_tasks = instance_tasks
         self.ports = ports
 

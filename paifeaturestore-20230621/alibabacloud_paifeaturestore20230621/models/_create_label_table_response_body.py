@@ -10,7 +10,9 @@ class CreateLabelTableResponseBody(DaraModel):
         label_table_id: str = None,
         request_id: str = None,
     ):
+        # The label table ID.
         self.label_table_id = label_table_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

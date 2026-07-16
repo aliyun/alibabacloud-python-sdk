@@ -13,9 +13,9 @@ class DescribeBackupClientsResponseBody(DaraModel):
         clients: List[main_models.DescribeBackupClientsResponseBodyClients] = None,
         request_id: str = None,
     ):
-        # An array that consists of the information about the anti-ransomware agent.
+        # The anti-ransomware client information.
         self.clients = clients
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -61,24 +61,29 @@ class DescribeBackupClientsResponseBodyClients(DaraModel):
         instance_id: str = None,
         uuid: str = None,
     ):
-        # The ID of the anti-ransomware agent.
+        # The anti-ransomware client ID.
         self.client_id = client_id
-        # The status of the anti-ransomware agent.
+        # The status of the anti-ransomware client.
         # 
         # Valid values:
         # 
-        # *   **INSTALLING**: The agent is being installed.
-        # *   **ONLINE**: The agent is online.
-        # *   **UNINSTALLING**: The agent is being uninstalled.
-        # *   **NOT_INSTALLED**: The agent is not installed.
-        # *   **ACTIVATED**: The agent is enabled.
-        # *   **CLIENT_CONNECTION_ERROR**: A connection error occurs on the agent.
+        # - **INSTALLING**: The client is being installed.
+        # 
+        # - **ONLINE**: The client is online.
+        # 
+        # - **UNINSTALLING**: The client is being uninstalled.
+        # 
+        # - **NOT_INSTALLED**: The client is not installed.
+        # 
+        # - **ACTIVATED**: The client is activated.
+        # 
+        # - **CLIENT_CONNECTION_ERROR**: A client connection error occurred.
         self.client_status = client_status
-        # The version of the anti-ransomware agent.
+        # The version number of the anti-ransomware client.
         self.client_version = client_version
-        # The ID of the ECS instance on which the anti-ransomware agent is installed.
+        # The instance ID of the ECS instance that has the anti-ransomware client installed.
         self.instance_id = instance_id
-        # The UUID of the Elastic Compute Service (ECS) instance on which the anti-ransomware agent is installed.
+        # The UUID of the ECS instance that has the anti-ransomware client installed.
         self.uuid = uuid
 
     def validate(self):

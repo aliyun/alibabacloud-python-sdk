@@ -12,9 +12,13 @@ class UpdateDynamicSettingsRequest(DaraModel):
         body: str = None,
         mode: str = None,
     ):
+        # A client token used to ensure the idempotency of the request.
         self.client_token = client_token
+        # The ID of the region where the instance is deployed.
         self.region_id = region_id
+        # The request body, which contains the dynamic settings to be updated.
         self.body = body
+        # The update mode for the dynamic settings.
         self.mode = mode
 
     def validate(self):

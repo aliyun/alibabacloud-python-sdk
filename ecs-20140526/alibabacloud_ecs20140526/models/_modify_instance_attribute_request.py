@@ -32,88 +32,96 @@ class ModifyInstanceAttributeRequest(DaraModel):
         user_data: str = None,
     ):
         self.cpu_options = cpu_options
-        # The performance mode of the burstable instance. Valid values:
+        # The running mode of the burstable instance. Valid values:
         # 
-        # *   Standard
-        # *   Unlimited
+        # - Standard: standard mode.
+        # - Unlimited: unlimited mode.
         # 
-        # For more information about the performance modes of burstable instances, see [Overview](https://help.aliyun.com/document_detail/59977.html).
+        # For more information about the running modes of burstable instances, see [What are burstable instances?](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
-        # The release protection attribute of the instance. This parameter specifies whether you can use the ECS console or call the [DeleteInstance](https://help.aliyun.com/document_detail/25507.html) operation to release the instance.
+        # The release protection attribute of the instance. Specifies whether the instance can be released from the console or by calling [DeleteInstance](https://help.aliyun.com/document_detail/25507.html).
         # 
-        # >  This parameter is applicable only to pay-as-you-go instances. The release protection attribute can protect instances against manual releases, but not against automatic releases.
+        # > This attribute applies only to pay-as-you-go instances and only prevents manual release operations. It does not apply to system-initiated release operations.
         self.deletion_protection = deletion_protection
         # The description of the instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to enable the Jumbo Frames feature for the instance. Valid values:
+        # Specifies whether to enable the Jumbo Frame feature for the instance MTU. Valid values:
         # 
-        # *   true: The Jumbo Frame feature is enabled for the instance.
-        # *   false: The Jumbo Frame feature is disabled for the instance.
+        # - true: enables the feature.
+        # - false: does not enable the feature.
         # 
         # Take note of the following items:
-        # 
-        # *   The instance must be in the Running (`Running`) or Stopped (`Stopped`) state.
-        # *   The instance must reside in a VPC.
-        # *   After the Jumbo Frames feature is enabled, the MTU value of the instance is set to 8500. After the Jumbo Frames feature is disabled, the MTU value of the instance is set to 1500. You can enable the Jumbo Frames feature only for specific instance types. For more information, see [Jumbo Frames](https://help.aliyun.com/document_detail/200512.html).
+        # - The instance must be in the Running or Stopped state.
+        # - The instance must be a VPC-connected instance.
+        # - After the Jumbo Frame feature is enabled, the MTU value of the instance changes to 8500. After the feature is disabled, the MTU value reverts to 1500.
+        # Only some instance types support the Jumbo Frame feature. For more information, see [ECS instance MTU](https://help.aliyun.com/document_detail/200512.html).
         self.enable_jumbo_frame = enable_jumbo_frame
+        # Specifies whether to enable VPC network traffic encryption. Valid values:
+        # 
+        # - true: enables the encryption.
+        # - false: disables the encryption.
+        # > This parameter is in invitational preview and is not publicly available.
         self.enable_network_encryption = enable_network_encryption
-        # The hostname of the instance. Take note of the following items:
+        # The hostname of the operating system. Take note of the following items:
         # 
-        # *   The instance cannot be in the Creating (`Pending`) or Starting (`Starting`) state. Otherwise, the new hostname and the configurations in the `/etc/hosts` file may not take effect. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) operation to query the status of the instance.
-        # *   The parameter takes effect after the instance is restarted. You can restart an instance in the ECS console. For more information, see [Restart an instance](https://help.aliyun.com/document_detail/25440.html). You can also call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance. The parameter cannot take effect if you restart an instance within the operating system.
+        # - The instance cannot be in the Pending or Starting state. Otherwise, the hostname and `/etc/hosts` configuration may not take effect. You can call [DescribeInstances](https://help.aliyun.com/document_detail/25506.html) to query the current status of the instance.
         # 
-        # The following limits apply to the hostnames of instances that run different operating systems:
+        # - The new hostname takes effect after you restart the instance. You can restart the instance in the ECS console (for more information, see [Restart an instance](https://help.aliyun.com/document_detail/25440.html)) or by calling [RebootInstance](https://help.aliyun.com/document_detail/25502.html). Restarting the instance from within the operating system does not take effect.
         # 
-        # *   For Windows Server, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot start or end with a hyphen (-), contain consecutive hyphens (-), or contain only digits.
-        # *   For other operating systems such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate a hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-). The hostname cannot contain consecutive periods (.) or hyphens (-). The hostname cannot start or end with a period (.) or a hyphen (-).
+        # 
+        # The hostname has the following limits for different operating systems:
+        # 
+        # - Windows Server: The hostname must be 2 to 15 characters in length and can contain uppercase letters, lowercase letters, digits, and hyphens (-). It cannot start or end with a hyphen (-), cannot contain consecutive hyphens (-), and cannot contain only digits.
+        # 
+        # - Other instances (such as Linux): The hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain uppercase letters, lowercase letters, digits, and hyphens (-), but cannot contain consecutive periods (.) or hyphens (-). The hostname cannot start or end with a period (.) or hyphen (-).
         self.host_name = host_name
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the instance. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the instance. The name must be 2 to 128 characters in length. It must start with an uppercase letter, lowercase letter, or Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
         self.instance_name = instance_name
-        # The number of queues supported by the primary elastic network interface (ENI) of the instance. Take note of the following items:
-        # 
-        # *   The instance must be in the Stopped (`Stopped`) state.
-        # *   The number of queues supported by an ENI cannot exceed the maximum number of queues that the instance type allows for each ENI. The total number of queues on all ENIs on the instance cannot exceed the queue quota that the instance type supports. To query the maximum number of queues that an instance type allows for each ENI and the queue quota for the instance type, call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation.
-        # *   If you set this parameter to -1, the value is reset to the default value for the instance type. To query the default number of queues of an ENI of each instance type, call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation.
+        # The number of queues for the primary network interface controller (NIC). Take note of the following items:
+        # - The instance must be in the Stopped state.
+        # - The value cannot exceed the maximum number of queues per NIC allowed by the instance type. The total number of queues for all NICs on the instance cannot exceed the total queue quota allowed by the instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the maximum number of queues per NIC and the total queue quota for an instance type.
+        # - If you set this parameter to -1, the number of queues for the primary NIC is reset to the default value for the instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the default number of Elastic Network Interface (ENI) queues for an instance type.
         self.network_interface_queue_number = network_interface_queue_number
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password of the instance. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include **( ) \\` ~ ! @ # $ % ^ & \\* - _ + = | { } [ ] : ; \\" < > , . ? /** The password of a Windows instance cannot start with a forward slash (/). Take note of the following items:
+        # The password of the instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: **()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/**
+        # . For Windows instances, the password cannot start with a forward slash (/). Take note of the following items:
         # 
-        # *   The instance cannot be in the Starting (`Starting`) state.
-        # *   The parameter takes effect after the instance is restarted. You can restart an instance in the ECS console. For more information, see [Restart an instance](https://help.aliyun.com/document_detail/25440.html). You can also call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation to restart the instance. The parameter cannot take effect if you restart an instance within the operating system.
+        # - The instance cannot be in the Starting state.
+        # - The new password takes effect after you restart the instance. You can restart the instance in the ECS console (for more information, see [Restart an instance](https://help.aliyun.com/document_detail/25440.html)) or by calling [RebootInstance](https://help.aliyun.com/document_detail/25502.html). Restarting the instance from within the operating system does not take effect.
         # 
-        # >  For security reasons, we recommend that you use HTTPS to send requests if `Password` is specified.
+        # > If you specify the Password parameter, use HTTPS to send the request to avoid password leaks.
         self.password = password
-        # The private domain name options of the ECS instance.
+        # The private domain name configuration of the instance.
         # 
-        # For information about private domain name resolution, see [ECS private DNS resolution](https://help.aliyun.com/document_detail/2844797.html).
+        # 
+        # For more information about private private domain resolution, see [ECS private private domain resolution](https://help.aliyun.com/document_detail/2844797.html).
         self.private_dns_name_options = private_dns_name_options
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.recyclable = recyclable
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.remote_connection_options = remote_connection_options
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the new security groups to which to assign the instance. Take note of the following items:
+        # The IDs of the security groups to which the instance is reassigned. Take note of the following items:
         # 
-        # *   The security group IDs in the array cannot be duplicate. The length of the array is related to the quota of security groups to which the instance can be assigned. For more information, see the [Security group limits](~~25412#SecurityGroupQuota1~~) section in the "Limits and quotas" topic.
-        # *   The instance is moved from the current security groups to the replacement security groups. If you want the instance to remain in the current security groups, add the IDs of the current security groups to the array.
-        # *   You can move the instance to security groups of a different type. However, the array cannot contain the IDs of both basic and advanced security groups.
-        # *   The security groups and the instance must belong to the same VPC.
-        # *   Security groups of instances in the classic network cannot be changed.
+        # - Security group IDs in the array cannot be duplicated. The maximum length of the array depends on the maximum number of security groups to which the instance can belong. For more information, see [Limits](~~25412#SecurityGroupQuota1~~).
+        # - The instance leaves its current security groups. To retain the current security groups, add their IDs to the array.
+        # - You can switch between security group types, but the list cannot contain both basic security groups and advanced security groups at the same time.
+        # - The security groups must belong to the same VPC as the instance.
         # 
-        # >  New security groups become valid for the instance after a short delay.
+        # > Changes to security groups take effect on the instance shortly after the modification, but a slight delay may occur.
         self.security_group_ids = security_group_ids
-        # The user data of the instance. We recommend that you encode the data in Base64. Take note of the following items:
+        # The instance user data. We recommend that you Base64-encode the data before you pass it in. Take note of the following items:
         # 
-        # *   The instance must meet the limits for user data. For more information, see [Initialize an instance by using instance user data](https://help.aliyun.com/document_detail/49121.html).
-        # *   After you restart the instance, the new user data is displayed but not run as scripts.
+        # - The instance must meet the usage limits for instance user data. For more information, see [Create instance user data](https://help.aliyun.com/document_detail/49121.html).
+        # - After you restart the instance, the new user data is displayed on the instance but is not run.
         # 
-        # >  The maximum size of the raw data before encoding is 32 KB. We recommend that you do not pass in confidential information such as passwords and private keys in plaintext. If you must pass in confidential information, we recommend that you encrypt and Base64-encode the information before you pass it in. Then, you can decode and decrypt the information in the same way within the instance.
+        # > Before Base64 encoding, the raw data cannot exceed 32 KB. Do not pass in sensitive information such as passwords and private keys in plaintext. If you must pass in sensitive information, encrypt the information, Base64-encode it, and then decrypt it in the same way within the instance.
         self.user_data = user_data
 
     def validate(self):
@@ -264,9 +272,9 @@ class ModifyInstanceAttributeRequestRemoteConnectionOptions(DaraModel):
         password: str = None,
         type: str = None,
     ):
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.password = password
-        # >  This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in invitational preview and is not publicly available.
         self.type = type
 
     def validate(self):
@@ -304,39 +312,37 @@ class ModifyInstanceAttributeRequestPrivateDnsNameOptions(DaraModel):
         enable_ip_dns_ptr_record: bool = None,
         hostname_type: str = None,
     ):
-        # Specifies whether DNS Resolution from the Instance ID-based Hostname to the Instance Primary Private IPv6 Address (AAAA Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable DNS resolution from the instance ID-based domain name to the IPv6 address. Valid values:
+        #  
+        # - true: enables the resolution.
+        # - false: disables the resolution.
         # 
         # Default value: false.
         self.enable_instance_id_dns_aaaarecord = enable_instance_id_dns_aaaarecord
-        # Specifies whether DNS Resolution from the Instance ID-based Hostname to the Instance Primary Private IPv4 Address (A Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable DNS resolution from the instance ID-based domain name to the IPv4 address. Valid values:
+        #  
+        # - true: enables the resolution.
+        # - false: disables the resolution.
         # 
         # Default value: false.
         self.enable_instance_id_dns_arecord = enable_instance_id_dns_arecord
-        # Specifies whether DNS Resolution from the IP Address-based Hostname to the Instance Primary Private IPv4 Address (A Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable DNS resolution from the IP-based domain name to the IPv4 address. Valid values:
+        # - true: enables the resolution.
+        # - false: disables the resolution.
         # 
         # Default value: false.
         self.enable_ip_dns_arecord = enable_ip_dns_arecord
-        # Specifies whether Reverse DNS Resolution from the Instance Primary Private IPv4 Address to the IP Address-based Hostname (PTR Record) is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable reverse DNS resolution from the IPv4 address to the IP-based domain name. Valid values:
+        # - true: enables the resolution.
+        # - false: disables the resolution.
         # 
         # Default value: false.
         self.enable_ip_dns_ptr_record = enable_ip_dns_ptr_record
-        # The type of the hostname. Valid values:
+        # The hostname type. Valid values:
         # 
-        # *   Custom: custom hostname.
-        # *   IpBased: IP address-based hostname.
-        # *   InstanceIdBased: instance ID-based hostname.
+        # - Custom: custom.
+        # - IpBased: IP-based hostname.
+        # - InstanceIdBased: instance ID-based hostname.
         # 
         # Default value: Custom.
         self.hostname_type = hostname_type
@@ -393,26 +399,31 @@ class ModifyInstanceAttributeRequestCpuOptions(DaraModel):
         topology_type: str = None,
         nested_virtualization: str = None,
     ):
-        # The number of CPU cores. This parameter cannot be specified but only uses its default value.
-        self.core = core
-        # The number of threads per CPU core. The following formula is used to calculate the number of vCPUs of the instance: `CpuOptions.Core` value × `CpuOptions.ThreadsPerCore` value.
+        # The number of CPU cores. This parameter does not support custom values and can only use the default value.
         # 
-        # *   If `CpuOptionsThreadPerCore` is set to 1, Hyper-Threading (HT) is disabled.
-        # *   This parameter is applicable only to specific instance types.
+        # <props="china">Default value: see [Customize CPU options](https://help.aliyun.com/document_detail/145895.html).
+        self.core = core
+        # The number of threads per CPU core. The number of vCPUs of the ECS instance = CpuOptions.Core value × CpuOptions.ThreadsPerCore value.
+        # 
+        # - CpuOptions.ThreadsPerCore=1 indicates that hyper-threading is disabled.
+        # 
+        # - Only some instance types support custom thread counts.
+        # 
+        # <props="china">Valid values and default value: see [Customize CPU options](https://help.aliyun.com/document_detail/145895.html).
         self.threads_per_core = threads_per_core
         # The CPU topology type of the instance. Valid values:
         # 
-        # *   ContinuousCoreToHTMapping: The Hyper-Threading (HT) technology allows continuous threads to run on the same core in the CPU topology of the instance.
-        # *   DiscreteCoreToHTMapping: The HT technology allows discrete threads to run on the same core.
+        # - ContinuousCoreToHTMapping: the hyper-threads of the same core in the CPU topology are continuous.
+        # - DiscreteCoreToHTMapping: the hyper-threads of the same core are discrete.
         # 
-        # This parameter is left empty by default.
+        # Default value: none.
         # 
         # Take note of the following items:
+        # - The instance must be in the Stopped state.
         # 
-        # *   The instance must be in the Stopped (`Stopped`) state.
-        # 
-        # >  This parameter is supported only for specific instance families. For information about the supported instance families, see [View and modify CPU topologies](https://help.aliyun.com/document_detail/2636059.html).
+        # > Only some instance families support this parameter. For information about the supported instance families, see [View and modify the CPU topology structure](https://help.aliyun.com/document_detail/2636059.html).
         self.topology_type = topology_type
+        # > This parameter is in invitational preview and is not publicly available.
         self.nested_virtualization = nested_virtualization
 
     def validate(self):

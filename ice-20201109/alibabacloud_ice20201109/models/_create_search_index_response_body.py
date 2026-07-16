@@ -11,8 +11,15 @@ class CreateSearchIndexResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Return code.
         self.code = code
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the invocation succeeded. Valid values:
+        # 
+        # - true: Invocation succeeded
+        # 
+        # - false: Failed to invoke
         self.success = success
 
     def validate(self):

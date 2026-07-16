@@ -27,59 +27,57 @@ class ContrastFaceVerifyRequest(DaraModel):
         scene_id: int = None,
         user_id: str = None,
     ):
-        # Real name.
+        # The real name.
         self.cert_name = cert_name
-        # ID number
+        # The certificate number.
         self.cert_no = cert_no
-        # Type of identification. Currently, only IDENTITY_CARD is supported and must be provided.
+        # The certificate type.
+        # Currently only ID cards are supported. You must set this parameter to IDENTITY_CARD.
         self.cert_type = cert_type
-        # The CertifyId of a previously passed real-person authentication, with the photo taken during that authentication used as the comparison photo. 
-        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to provide.
+        # The CertifyId from a previous successful ID Verification. The photo from that verification is used as the comparison photo.
+        # 
+        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
         self.certify_id = certify_id
-        # Allow face image cropping:
+        # Specifies whether to allow cropping of the face image. Valid values:
         # 
-        # -  **T** – Cropping is allowed.
-        # -  **F** (default) – Cropping is not allowed.
+        # - T: Allowed.
+        # 
+        # - F (default): Not allowed.
         self.crop = crop
-        # Risk Identification - Device Token
+        # The device token for risk identification.
         self.device_token = device_token
-        # Encryption type. Leave it empty if no encryption is required.
-        # 
-        # If you enable encrypted transmission, you must specify the encryption algorithm; currently, only the SM2 (Chinese national standard) algorithm is supported.
-        # 
-        # When an encryption algorithm is specified, encrypt both **CertName** and **CertNo** and submit the resulting ciphertext. For more details on parameter encryption, see the [Parameter Encryption documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/description-of-parameter-encryption?spm=a2c4g.11186623.0.0.49541a8554cELI#task-2229332).
+        # The encryption type. An empty value indicates no encryption.
         self.encrypt_type = encrypt_type
-        # Local video file.
+        # The local video file.
         self.face_contrast_file = face_contrast_file
-        # Base64 encoded photo
+        # The Base64-encoded photo.
         self.face_contrast_picture = face_contrast_picture
-        # OSS photo URL, currently only supports authorized OSS photo URLs.
-        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
+        # The OSS photo URL. Currently only authorized OSS photo URLs are supported.
+        # 
+        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
         self.face_contrast_picture_url = face_contrast_picture_url
-        # User IP.
+        # The IP address of the user.
         self.ip = ip
-        # User\\"s phone number.
+        # The mobile phone number of the user.
         self.mobile = mobile
-        # Liveness detection type. Possible values:
-        # 
-        # • **NO_LIVENESS** – Liveness detection is disabled.
-        # 
-        # • **FRONT_CAMERA_LIVENESS** (default) – Liveness detection on face images captured with the mobile device’s front camera.
-        # 
-        # • **REAR_CAMERA_LIVENESS** – Liveness detection on face images captured in other scenarios (e.g., via the rear camera).
+        # The liveness detection type.
         self.model = model
-        # Authorized OSS space Bucket name. In the methods of passing images, including FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS, choose one to pass in.
+        # The bucket name of the authorized OSS space.
+        # 
+        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
         self.oss_bucket_name = oss_bucket_name
-        # Filename of the authorized OSS space.
-        # > Among the four ways to input images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to input.
+        # The file name in the authorized OSS space.
+        # 
+        # > Among the four methods of passing in images (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS), select only one.
         self.oss_object_name = oss_object_name
-        # A unique identifier for the merchant\\"s request. It is a 32-character alphanumeric combination. The first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incrementing sequence.
+        # The unique identifier of the merchant request.
+        # The value is a 32-character alphanumeric string. The first few characters are a custom abbreviation defined by the merchant, the middle part can be a time segment, and the last part can be a random or incremental sequence.
         self.outer_order_no = outer_order_no
         # Fixed value: ID_MIN.
         self.product_code = product_code
-        # Authentication scenario ID.
+        # The verification scenario ID.
         self.scene_id = scene_id
-        # Custom user ID defined by the customer\\"s business.
+        # The custom user ID defined by the business.
         self.user_id = user_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class CreateConfigGroupRequest(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The scheduled task groups.
+        # An array of scheduled task configurations.
         self.config_timers = config_timers
         # The description of the configuration group.
         self.description = description
@@ -25,21 +25,13 @@ class CreateConfigGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The service type of the configuration group.
-        # 
-        # Valid value:
-        # 
-        # *   CLOUD_DESKTOP: the cloud computer service.
+        # The product to which the configuration group applies.
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The ID of the region. Set the value to `cn-shanghai`.
+        # The region ID. This feature is not region-specific. You must set this parameter to cn-shanghai.
         self.region_id = region_id
-        # The group type.
-        # 
-        # Valid value:
-        # 
-        # *   Timer: a scheduled task group.
+        # The type of the configuration group.
         # 
         # This parameter is required.
         self.type = type
@@ -117,57 +109,31 @@ class CreateConfigGroupRequestConfigTimers(DaraModel):
         timer_type: str = None,
         trigger_type: str = None,
     ):
-        # Specifies whether to allow end users to configure the scheduled task.
+        # Whether to allow end users to configure the scheduled task.
         self.allow_client_setting = allow_client_setting
-        # The cron expression specified in the scheduled task.
+        # The cron expression for the scheduled task.
         # 
-        # >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\* 1,2,3,4,5,6,7
+        # >Notice: 
+        # 
+        # The cron expression is based on UTC. For example, to run a task at 00:00 China Standard Time (UTC+8) every day, set this parameter to `0 0 16 ? * 1,2,3,4,5,6,7`.
         self.cron_expression = cron_expression
-        # Specifies whether to forcefully execute the scheduled task.
+        # Whether to forcefully execute the scheduled task.
         self.enforce = enforce
-        # The interval at which the scheduled task is executed. Unit: minutes.
+        # The time interval, in minutes.
         self.interval = interval
         self.notification_time = notification_time
-        # The type of the scheduled operation. If you set TimerType to NoConnect, you can specify this parameter.
-        # 
-        # Valid values:
-        # 
-        # *   Hibernate: scheduled hibernation.
-        # *   Shutdown: scheduled shutdown.
+        # The operation to perform for the scheduled task. This parameter is valid only when `TimerType` is set to `NoConnect`.
         self.operation_type = operation_type
-        # The process whitelist. If whitelisted processes are running, the scheduled task does not take effect.
+        # The process whitelist for smart detection. If a process from this whitelist is running, the inactivity-based scheduled task does not run.
         self.process_whitelist = process_whitelist
-        # The reset option.
-        # 
-        # Valid values:
-        # 
-        # *   RESET_TYPE_SYSTEM: resets only the system disk.
-        # *   RESET_TYPE_USER_DISK: resets only the data disk.
-        # *   RESET_TYPE_BOTH: resets the system and data disks.
+        # The reset type for the cloud desktop.
         self.reset_type = reset_type
         self.segment_timers = segment_timers
-        # The scheduled task type.
-        # 
-        # Valid values:
-        # 
-        # *   NoOperationDisconnect: scheduled disconnection upon inactivity.
-        # *   NoConnect: scheduled disconnection upon specified operation (OperationType).
-        # *   TimerBoot: scheduled start.
-        # *   TimerReset: scheduled reset.
-        # *   NoOperationShutdown: scheduled shutdown upon inactivity.
-        # *   NoOperationHibernate: scheduled hibernation upon inactivity.
-        # *   TimerShutdown: scheduled shutdown.
-        # *   NoOperationReboot: scheduled restart upon inactivity.
-        # *   TimerReboot: scheduled restart.
+        # The type of the scheduled task.
         # 
         # This parameter is required.
         self.timer_type = timer_type
-        # The method to trigger the scheduled task upon inactivity.
-        # 
-        # Valid values:
-        # 
-        # *   Advanced: intelligent detection.
-        # *   Standard: standard detection.
+        # The trigger condition for inactivity-based scheduled tasks.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -267,6 +233,7 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         enforce: bool = None,
         image_id: str = None,
         interval: int = None,
+        ip_segments: List[str] = None,
         lock_screen_time: int = None,
         notification_time: int = None,
         operation_type: str = None,
@@ -280,12 +247,16 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
         verification_notification_time: int = None,
         verification_time: int = None,
     ):
+        # The execution time for a one-time scheduled task, specified as a UNIX timestamp in milliseconds.
         self.appointment_timer = appointment_timer
         self.create_snapshot = create_snapshot
         self.end_cron_expression = end_cron_expression
         self.enforce = enforce
+        # The image ID for a scheduled task that changes the image of a cloud desktop.
         self.image_id = image_id
         self.interval = interval
+        self.ip_segments = ip_segments
+        # The amount of inactive time, in seconds, before the screen automatically locks. This parameter applies only to Active Directory desktops.
         self.lock_screen_time = lock_screen_time
         self.notification_time = notification_time
         self.operation_type = operation_type
@@ -324,6 +295,9 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
 
         if self.interval is not None:
             result['Interval'] = self.interval
+
+        if self.ip_segments is not None:
+            result['IpSegments'] = self.ip_segments
 
         if self.lock_screen_time is not None:
             result['LockScreenTime'] = self.lock_screen_time
@@ -382,6 +356,9 @@ class CreateConfigGroupRequestConfigTimersSegmentTimers(DaraModel):
 
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+
+        if m.get('IpSegments') is not None:
+            self.ip_segments = m.get('IpSegments')
 
         if m.get('LockScreenTime') is not None:
             self.lock_screen_time = m.get('LockScreenTime')

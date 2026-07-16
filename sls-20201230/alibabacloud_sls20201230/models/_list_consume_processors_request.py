@@ -12,13 +12,13 @@ class ListConsumeProcessorsRequest(DaraModel):
         processor_name: str = None,
         size: str = None,
     ):
-        # The display name of the consumption processor.
+        # The display name of the consume processor.
         self.display_name = display_name
-        # The offset. Default value: 0.
+        # The offset of the query. The default value is 0.
         self.offset = offset
-        # The identifier of the consumption processor.
+        # The identity of the consume processor.
         self.processor_name = processor_name
-        # The number of entries. Default value: 200.
+        # The number of entries to return. The default value is 200.
         self.size = size
 
     def validate(self):

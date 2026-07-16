@@ -13,11 +13,18 @@ class GetGlobalAcceleratorResourcesRequest(DaraModel):
         associated_resource_type: str = None,
         region_id: str = None,
     ):
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA).
+        # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # The ID of the linked peripheral resource.
         self.associated_resource_id = associated_resource_id
+        # The Region ID where the linked instance is located.
         self.associated_resource_region_id = associated_resource_region_id
+        # The resource type of the linked peripheral resource.
         self.associated_resource_type = associated_resource_type
+        # The Region ID where the Alibaba Cloud Global Accelerator (GA) instance is located. The only valid value is cn-hangzhou.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -19,9 +19,9 @@ class DescribeSiteMonitorListResponseBody(DaraModel):
         success: str = None,
         total_count: int = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The value 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
@@ -32,12 +32,13 @@ class DescribeSiteMonitorListResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         self.site_monitors = site_monitors
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -13,10 +13,28 @@ class SetVsStreamsNotifyUrlConfigRequest(DaraModel):
         notify_url: str = None,
         owner_id: int = None,
     ):
+        # The primary key associated with the playback domain name. This key generates authenticated URLs.
+        # 
+        # > Call the [DescribeVsDomainConfigs](https://help.aliyun.com/document_detail/464513.html) operation to query the AuthKey value.
         self.auth_key = auth_key
+        # The authentication type. Valid values:
+        # 
+        # - **no_auth** (disabled)
+        # 
+        # - **type_a** (method A)
+        # 
+        # - **type_b** (method B)
+        # 
+        # - **type_c** (method C)
         self.auth_type = auth_type
+        # Your accelerated domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The URL to which live stream information is pushed.
+        # 
+        # > This URL must start with http\\:// or https\\://.
+        # 
         # This parameter is required.
         self.notify_url = notify_url
         self.owner_id = owner_id

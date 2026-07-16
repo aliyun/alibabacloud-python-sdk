@@ -9,7 +9,7 @@ class DeleteRoutineRequest(DaraModel):
         self,
         name: str = None,
     ):
-        # The routine name.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name

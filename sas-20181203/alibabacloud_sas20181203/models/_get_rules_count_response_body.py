@@ -11,11 +11,11 @@ class GetRulesCountResponseBody(DaraModel):
         total_system_client_rule_count: int = None,
         total_user_define_rule_count: int = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of system defense rules.
         self.total_system_client_rule_count = total_system_client_rule_count
-        # The total number of custom defense rules.
+        # The total number of user-defined rules.
         self.total_user_define_rule_count = total_user_define_rule_count
 
     def validate(self):

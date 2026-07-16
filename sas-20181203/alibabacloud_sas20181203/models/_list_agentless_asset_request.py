@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ListAgentlessAssetRequest(DaraModel):
@@ -10,6 +12,7 @@ class ListAgentlessAssetRequest(DaraModel):
         current_page: int = None,
         disk_type: str = None,
         instance_id: str = None,
+        instance_ids: List[str] = None,
         instance_name: str = None,
         page_size: int = None,
         platform: str = None,
@@ -26,6 +29,7 @@ class ListAgentlessAssetRequest(DaraModel):
         self.disk_type = disk_type
         # The ID of the asset instance.
         self.instance_id = instance_id
+        self.instance_ids = instance_ids
         # The name of the asset instance.
         self.instance_name = instance_name
         # The maximum number of items to return per page in a paginated query.
@@ -58,6 +62,9 @@ class ListAgentlessAssetRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -85,6 +92,9 @@ class ListAgentlessAssetRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')

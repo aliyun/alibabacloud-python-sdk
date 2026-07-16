@@ -18,28 +18,33 @@ class AbortChangeOrderResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The error code. Value values:
+        # The error code. This parameter is returned only if the request fails. For more information, see the **Error codes** section in this topic.
         # 
-        # *   **ErrorCode** is not returned if a request is successful.
-        # *   **ErrorCode** is returned if a request failed. For more information, see **Error code** section of this topic.
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned for the operation.
+        # The message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the change order was terminated. Valid values:
+        # Indicates whether the change order is stopped. Valid values:
         # 
-        # *   **true**: The change order was terminated.
-        # *   **false**: The change order failed to be terminated.
+        # - **true**: The change order is stopped.
+        # 
+        # - **false**: The change order is not stopped.
         self.success = success
-        # The ID of the trace.
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateSecurityGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):

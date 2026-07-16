@@ -12,11 +12,24 @@ class InsertAiOutboundPhoneNumsShrinkRequest(DaraModel):
         instance_id: str = None,
         task_id: int = None,
     ):
+        # The batch version number of the job.  
+        # 
+        # > If this parameter is not specified, numbers are imported into the default batch.
         self.batch_version = batch_version
+        # Number details.  
+        # > A maximum of 30 entries are allowed.
+        # 
         # This parameter is required.
         self.details_shrink = details_shrink
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The job ID.  
+        # 
+        # You can invoke the [CreateAiOutboundTask](https://help.aliyun.com/document_detail/312260.html) API and check the **Data** field in the response, or invoke the [GetAiOutboundTaskList](https://help.aliyun.com/document_detail/2718026.html) API and check the **TaskId** field in the response.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

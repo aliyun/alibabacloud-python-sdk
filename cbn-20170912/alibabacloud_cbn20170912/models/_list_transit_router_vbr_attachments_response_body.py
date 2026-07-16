@@ -16,9 +16,13 @@ class ListTransitRouterVbrAttachmentsResponseBody(DaraModel):
         total_count: int = None,
         transit_router_attachments: List[main_models.ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments] = None,
     ):
-        # The number of entries returned per page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+        # The token that is used for the next query.
+        # 
+        # - If this parameter is empty, no more data is returned.
+        # 
+        # - If a value is returned for this parameter, it is the token that you can use to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -98,38 +102,38 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         vbr_owner_id: int = None,
         vbr_region_id: str = None,
     ):
-        # Indicates whether the Enterprise Edition transit router is allowed to automatically advertise routes to the VBR. Valid values:
+        # Indicates whether the Enterprise Edition transit router automatically advertises routes to the VBR.
         # 
-        # *   **false** (default)
-        # *   **true**
+        # - **false**: no.
+        # 
+        # - **true**: yes.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The ID of the CEN instance.
         self.cen_id = cen_id
         # The time when the VBR connection was created.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time is displayed in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         self.managed_service = managed_service
-        # The entity that pays the fees of the network instance. Valid values:
+        # The payer for the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-        # *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+        # - **PayByCenOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the transit router.
+        # 
+        # - **PayByResourceOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the VBR.
         self.order_type = order_type
-        # The type of resource to which the transit router is connected. Valid values:
+        # The resource type of the connection.
         # 
-        # *   **VPC**
-        # *   **CCN**
-        # *   **VBR**
-        # *   **TR**
+        # The value is set to **VBR**, which indicates a VBR instance.
         self.resource_type = resource_type
-        # The status of the VBR connection. Valid values:
+        # The status of the VBR connection.
         # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detaching**
-        # *   **Detached**
+        # - **Attached**: The connection is established.
+        # 
+        # - **Attaching**: The connection is being established.
+        # 
+        # - **Detaching**: The connection is being removed.
         self.status = status
-        # A list of tags.
+        # The list of tags.
         self.tags = tags
         # The description of the VBR connection.
         self.transit_router_attachment_description = transit_router_attachment_description
@@ -137,13 +141,13 @@ class ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         self.transit_router_attachment_id = transit_router_attachment_id
         # The name of the VBR connection.
         self.transit_router_attachment_name = transit_router_attachment_name
-        # The description of the Enterprise Edition transit router.
+        # The ID of the Enterprise Edition transit router.
         self.transit_router_id = transit_router_id
         # The VBR ID.
         self.vbr_id = vbr_id
         # The ID of the Alibaba Cloud account to which the VBR belongs.
         self.vbr_owner_id = vbr_owner_id
-        # The region ID of the VBR.
+        # The ID of the region where the VBR is deployed.
         self.vbr_region_id = vbr_region_id
 
     def validate(self):

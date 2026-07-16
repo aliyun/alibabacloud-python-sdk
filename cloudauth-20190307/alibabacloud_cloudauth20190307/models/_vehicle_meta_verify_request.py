@@ -14,37 +14,37 @@ class VehicleMetaVerifyRequest(DaraModel):
         vehicle_type: str = None,
         verify_meta_type: str = None,
     ):
-        # ID number.
+        # The ID card number.
         # 
-        # This is a required field when VerifyMetaType is set to VEHICLE_3_META.
+        # This parameter is required when VerifyMetaType is set to VEHICLE_3_META.
         # > 
-        # > - When paramType is set to normal, enter the plain text.
-        # > - When paramType is set to md5, enter the first 6 digits in plain text + the birth date encrypted with MD5 (32 lowercase characters) + the last 4 digits in plain text.
+        # > - When paramType is set to normal, enter the plaintext.
+        # > - When paramType is set to md5, enter the first 6 digits of the ID card number in plaintext + the MD5-encrypted date of birth (32-bit lowercase MD5) + the last 4 digits of the ID card number.
         self.identify_num = identify_num
-        # Parameter type:
+        # The parameter type. Valid values:
         # 
-        # - normal: Unencrypted.
-        # - md5: Encrypted with MD5.
+        # - normal: not encrypted.
+        # - md5: MD5-encrypted.
         self.param_type = param_type
-        # Name
+        # The name.
         # 
-        # > This is an explanation
-        # > - When paramType is set to normal, enter the plain text.
-        # > - When paramType is set to md5, encrypt the first character of the name with MD5 (32 lowercase characters) + the rest of the name in plain text.
+        # > Note
+        # > - When paramType is set to normal, enter the plaintext.
+        # > - When paramType is set to md5, enter the MD5-encrypted first character of the name (32-bit lowercase MD5) + the remaining characters of the name in plaintext.
         self.user_name = user_name
-        # Vehicle license plate
+        # The license plate number.
         # 
         # > 
-        # > - When paramType is set to normal, enter the plain text.
-        # > - When paramType is set to md5, enter the part of the license plate except for the last two characters in plain text + the last two characters of the license plate encrypted with MD5 (32 lowercase characters).
+        # > - When paramType is set to normal, enter the plaintext.
+        # > - When paramType is set to md5, enter the characters of the license plate number except the last two in plaintext + the MD5-encrypted last two characters (32-bit lowercase MD5).
         self.vehicle_num = vehicle_num
-        # Vehicle type
+        # The vehicle type.
         self.vehicle_type = vehicle_type
-        # Verification type
+        # The verification type.
         # 
         # > 
-        # > - VEHICLE_2_META: Two-element verification, name + vehicle license plate verification;
-        # > - VEHICLE_3_META: Three-element verification, name + vehicle license plate + ID number verification;
+        # > - VEHICLE_2_META: two-element verification. Verifies the name and license plate number.
+        # > - VEHICLE_3_META: three-element verification. Verifies the name, license plate number, and ID card number.
         self.verify_meta_type = verify_meta_type
 
     def validate(self):

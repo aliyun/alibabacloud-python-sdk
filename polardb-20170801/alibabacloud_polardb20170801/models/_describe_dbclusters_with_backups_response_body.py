@@ -17,13 +17,13 @@ class DescribeDBClustersWithBackupsResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
-        # The total number of returned pages.
+        # The page number.
         self.page_number = page_number
-        # The number of clusters returned per page.
+        # The number of clusters on the current page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_record_count = total_record_count
 
     def validate(self):

@@ -17,36 +17,18 @@ class StopDesktopsRequest(DaraModel):
         stopped_mode: str = None,
     ):
         self.create_snapshot = create_snapshot
-        # The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
+        # An array of 1 to 100 cloud desktop IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # Whether to perform a patch update when the update is ready. A value of true indicates that a patch update is performed.
+        # Specifies whether to apply pending patch updates.
         self.os_update = os_update
         self.patch_id = patch_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to get a list of regions that Elastic Desktop Service supports.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The billing mode after you stop the cloud computer.
-        # 
-        # Default value: StopCharging. Valid values:
-        # 
-        # *   StopCharging: After the cloud computer is stopped, the system automatically reclaims computing resources. You are no longer charged for computing resources. However, you are still charged for storage resources.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   KeepCharging: After the cloud computer is stopped, the system does not reclaim resources to prevent insufficient resources and startup failures. You are still charged for the resources.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies the billing mode for the cloud desktops after they are stopped.
         self.stopped_mode = stopped_mode
 
     def validate(self):

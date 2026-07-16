@@ -17,11 +17,17 @@ class ListDownloadTasksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The download task data.
         self.download_tasks = download_tasks
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListDownloadTasksResponseBodyDownloadTasks(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The list of download tasks.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -144,10 +154,15 @@ class ListDownloadTasksResponseBodyDownloadTasksList(DaraModel):
         task_id: str = None,
         title: str = None,
     ):
+        # The list of download task files.
         self.download_task_files = download_task_files
+        # The expiration time.
         self.expire_time = expire_time
+        # The status.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The title.
         self.title = title
 
     def validate(self):
@@ -210,9 +225,13 @@ class ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles(DaraModel)
         status: str = None,
         title: str = None,
     ):
+        # The file ID.
         self.file_id = file_id
+        # The completion progress of the download task.
         self.progress = progress
+        # The status.
         self.status = status
+        # The title.
         self.title = title
 
     def validate(self):

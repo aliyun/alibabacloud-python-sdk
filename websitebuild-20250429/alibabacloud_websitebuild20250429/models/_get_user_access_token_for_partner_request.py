@@ -11,6 +11,9 @@ class GetUserAccessTokenForPartnerRequest(DaraModel):
         ticket: str = None,
     ):
         self.site_host = site_host
+        # The credential for connecting to the cloud application.
+        # > This parameter is displayed for non-initial calls.
+        # 
         # This parameter is required.
         self.ticket = ticket
 

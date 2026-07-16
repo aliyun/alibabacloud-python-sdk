@@ -26,30 +26,93 @@ class UpdateSmartAccessGatewayOspfRouteRequest(DaraModel):
         sag_ins_id: str = None,
         sag_sn: str = None,
     ):
+        # The OSPF area ID.
+        # 
+        # The value must be an integer from **1** to **2147483647**.
+        # 
         # This parameter is required.
         self.area_id = area_id
+        # The authentication method. Valid values:
+        # 
+        # - **NONE**: No authentication is configured.
+        # - **CLEARTEXT**: Plaintext authentication is used.
+        # - **MD5**: MD5 authentication is used.
+        # 
         # This parameter is required.
         self.authentication_type = authentication_type
+        # Specifies whether to query only the SAG instances that belong to other Alibaba Cloud accounts. Valid values:
+        # 
+        # - **false** (default): No.
+        # - **true**: Yes.
         self.cross_account = cross_account
+        # The dead interval. Unit: seconds.
+        # 
+        # The value must be an integer from **1** to **65535**.
+        # 
         # This parameter is required.
         self.dead_time = dead_time
+        # The interval at which Hello packets are sent. Unit: seconds.
+        # 
+        # The value must be an integer from **1** to **65535**.
+        # 
         # This parameter is required.
         self.hello_time = hello_time
+        # The port name.
+        # 
+        # > This parameter is not in use.
         self.interface_name = interface_name
+        # The MD5 key.
+        # 
+        # The value must be 1 to **47** characters in length.
+        # 
+        # > This parameter is required only when you set **AuthenticationType** to **MD5**.
         self.md_5key = md_5key
+        # The MD5 key ID.
+        # 
+        # The value must be an integer from 1 to **2147483647**.
+        # 
+        # > This parameter is required only when you set **AuthenticationType** to **MD5**.
         self.md_5key_id = md_5key_id
+        # The network segment.
+        # 
+        # > This parameter is not in use.
         self.networks = networks
+        # The cost of the OSPF route.
+        # 
+        # > This parameter is not in use.
         self.ospf_cost = ospf_cost
+        # The OSPF network type.
+        # 
+        # > This parameter is not in use.
         self.ospf_network_type = ospf_network_type
+        # The password for plaintext authentication.
+        # 
+        # The password must be 1 to 8 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # 
+        # > This parameter is required only when you set **AuthenticationType** to **CLEARTEXT**.
         self.password = password
+        # The route redistribution protocol.
+        # 
+        # > This parameter is not in use.
         self.redistribute_protocol = redistribute_protocol
+        # The ID of the region where the SAG instance is deployed.
+        # 
+        # For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/69813.html).
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_uid = resource_uid
+        # The OSPF router ID.
+        # 
         # This parameter is required.
         self.router_id = router_id
+        # The ID of the SAG instance.
+        # 
         # This parameter is required.
         self.sag_ins_id = sag_ins_id
+        # The serial number of the SAG device.
+        # 
         # This parameter is required.
         self.sag_sn = sag_sn
 

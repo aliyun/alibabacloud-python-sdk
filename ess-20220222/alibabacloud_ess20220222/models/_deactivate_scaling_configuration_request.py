@@ -15,8 +15,6 @@ class DeactivateScalingConfigurationRequest(DaraModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
-        # The ID of the scaling configuration.
-        # 
         # This parameter is required.
         self.scaling_configuration_id = scaling_configuration_id
 

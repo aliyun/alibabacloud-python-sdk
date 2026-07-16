@@ -13,21 +13,24 @@ class CreateAuthorizationResourceRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
-        # 授权资源关联的资源标识。
+        # The ID of the resource entity associated with the authorization resource.
         # 
         # This parameter is required.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # 授权资源的资源类型。枚举取值:asset(资产)、credential(凭据)、cloudAccountRole(云账号角色)。
+        # The type of the resource entity associated with the authorization resource. Valid values:
+        # - cloud_account_role: cloud role.
         # 
         # This parameter is required.
         self.authorization_resource_entity_type = authorization_resource_entity_type
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

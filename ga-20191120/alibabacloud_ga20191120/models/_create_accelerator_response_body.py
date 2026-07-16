@@ -13,9 +13,17 @@ class CreateAcceleratorResponseBody(DaraModel):
     ):
         # The ID of the GA instance.
         self.accelerator_id = accelerator_id
-        # The ID of the order.
+        # Order ID.
         # 
-        # This parameter is returned only when the InstanceChargeType parameter is set to PREPAY. If AutoPay is set to false, you must manually complete the payment in the [Order Center](https://usercenter2-intl.aliyun.com/order/list).
+        # <props="china">
+        # 
+        # The order ID. This parameter is returned when \\`InstanceChargeType\\` is set to \\`PREPAY\\` (subscription). If \\`AutoPay\\` is set to \\`false\\`, go to the [Order Hub](https://usercenter2.aliyun.com/order/list) on the Alibaba Cloud China site to complete the payment.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # If you are using the Alibaba Cloud International site and \\`AutoPay\\` is set to \\`false\\`, go to the [Order Hub](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

@@ -10,7 +10,7 @@ class DescribeJobRequest(DaraModel):
         app_id: str = None,
         job_id: str = None,
     ):
-        # The ID of the job template.
+        # The job template ID.
         # 
         # This parameter is required.
         self.app_id = app_id

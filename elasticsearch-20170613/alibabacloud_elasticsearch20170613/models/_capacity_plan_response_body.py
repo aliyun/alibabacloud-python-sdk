@@ -13,9 +13,9 @@ class CapacityPlanResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CapacityPlanResponseBodyResult = None,
     ):
-        # ID of the current request.
+        # The ID of the request.
         self.request_id = request_id
-        # Returned result of the request.
+        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -54,23 +54,23 @@ class CapacityPlanResponseBodyResult(DaraModel):
         node_configurations: List[main_models.CapacityPlanResponseBodyResultNodeConfigurations] = None,
         oversized_cluster: bool = None,
     ):
-        # Extended configuration information.
+        # The extended configuration information.
         self.extend_configs = extend_configs
-        # Edition type, with values meaning as follows:
+        # The edition type. Valid values:
         # 
-        # - advanced: Enhanced Edition
+        # - advanced: Advanced Edition
         # 
         # - x-pack: Commercial Edition
         # 
-        # - community: Community Edition
+        # - community: Community Edition.
         self.instance_category = instance_category
-        # Node information.
+        # The node information.
         self.node_configurations = node_configurations
-        # Based on the capacity planning calculation, there is no default value. The meanings of the values are as follows:
+        # The result calculated based on capacity planning. No default value is available. Valid values:
         # 
-        # - true: Represents an oversized cluster, indicating that the number of data nodes calculated by the capacity planning exceeds the threshold of 50.
+        # - true: The cluster is oversized. The number of data nodes calculated by capacity planning exceeds the threshold of 50.
         # 
-        # - false: The number of data nodes calculated by the capacity planning is within 50.
+        # - false: The number of data nodes calculated by capacity planning is within 50.
         self.oversized_cluster = oversized_cluster
 
     def validate(self):
@@ -138,39 +138,39 @@ class CapacityPlanResponseBodyResultNodeConfigurations(DaraModel):
         memory: int = None,
         node_type: str = None,
     ):
-        # Number of nodes.
+        # The number of nodes.
         self.amount = amount
-        # Number of CPUs.
+        # The number of CPUs.
         self.cpu = cpu
-        # Disk size, in GiB.
+        # The disk size, in GiB.
         self.disk = disk
-        # Disk type, with meanings as follows:
+        # The disk type. Valid values:
         # 
-        # - cloud_essd: ESSD Cloud Disk
+        # - cloud_essd: ESSD
         # 
-        # - cloud_ssd: SSD Cloud Disk
+        # - cloud_ssd: standard SSD
         # 
-        # - cloud_efficiency: Efficient Cloud Disk
+        # - cloud_efficiency: ultra cloud disk
         # 
-        # - local_ssd: Local SSD Disk
+        # - local_ssd: local SSD
         # 
-        # - local_efficiency: Local Efficient Disk
+        # - local_efficiency: local ultra disk.
         self.disk_type = disk_type
-        # Specified memory size for the current node role.
+        # The memory size of the specifications for the current node role.
         self.memory = memory
-        # Node type, with supported types as follows:
+        # The node type. Valid values:
         # 
-        # - WORKER: Data Node
+        # - WORKER: data node
         # 
-        # - WORKER_WARM: Cold Data Node
+        # - WORKER_WARM: warm node
         # 
-        # - MASTER: Dedicated Master Node
+        # - MASTER: dedicated master node
         # 
-        # - KIBANA: Kibana Node
+        # - KIBANA: Kibana node
         # 
-        # - COORDINATING: Coordinator Node
+        # - COORDINATING: client node
         # 
-        # - ELASTIC_WORKER: Elastic Node
+        # - ELASTIC_WORKER: elastic node.
         self.node_type = node_type
 
     def validate(self):
@@ -230,15 +230,15 @@ class CapacityPlanResponseBodyResultExtendConfigs(DaraModel):
         disk: int = None,
         disk_type: str = None,
     ):
-        # Configuration type, with a single value: sharedDisk.
+        # The configuration type. The only valid value is sharedDisk.
         # 
-        # > This extendConfigs attribute may appear when the planned instance type is Advanced.
+        # > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
         self.config_type = config_type
-        # Disk size, in GiB.
+        # The disk size, in GiB.
         self.disk = disk
-        # Disk type, with a single value: CPFS_PREMIUM.
+        # The disk type. The only valid value is CPFS_PREMIUM.
         # 
-        # > This extendConfigs attribute may appear when the planned instance type is Advanced.
+        # > This extendConfigs property may appear when the planned instance type is Advanced Edition (advanced).
         self.disk_type = disk_type
 
     def validate(self):

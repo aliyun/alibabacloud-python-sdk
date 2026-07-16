@@ -16,15 +16,15 @@ class ListServicesResponseBody(DaraModel):
         services: List[main_models.ListServicesResponseBodyServices] = None,
         total_count: int = None,
     ):
-        # Maximum number of results to return, with a maximum value of 200
+        # The maximum number of results returned. The maximum value is 200.
         self.max_results = max_results
-        # Pagination token
+        # The paging token.
         self.next_token = next_token
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # List of service information.
+        # A list of service information.
         self.services = services
-        # Total count
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -94,26 +94,27 @@ class ListServicesResponseBodyServices(DaraModel):
         service_type: str = None,
         workspace: str = None,
     ):
-        # Extended information.
+        # Additional information.
         self.attributes = attributes
-        # Creation time
+        # The creation time.
         self.create_time = create_time
-        # Service description, valid only when serviceType=RUM.
+        # The service description. This parameter is valid only when serviceType is RUM.
         self.description = description
-        # Display name, valid only when serviceType=RUM.
+        # The display name. This parameter is valid only when serviceType is RUM.
         self.display_name = display_name
-        # Historical compatible ARMS application ID
+        # The ID of the ARMS application for backward compatibility.
         self.pid = pid
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Service ID
+        # The service ID.
         self.service_id = service_id
-        # Service name
+        # The service name.
         self.service_name = service_name
-        # Service status, valid only when serviceType=RUM.
+        # The service status. This parameter is valid only when serviceType is RUM.
         self.service_status = service_status
-        # Service type
+        # The service type.
         self.service_type = service_type
-        # Workspace.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

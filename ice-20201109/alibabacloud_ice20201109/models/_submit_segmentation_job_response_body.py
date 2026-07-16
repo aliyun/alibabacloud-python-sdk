@@ -10,9 +10,9 @@ class SubmitSegmentationJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The task ID.
+        # The ID of the segmentation job.
         self.job_id = job_id
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

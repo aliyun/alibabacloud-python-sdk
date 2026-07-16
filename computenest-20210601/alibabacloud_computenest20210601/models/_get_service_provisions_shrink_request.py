@@ -14,7 +14,7 @@ class GetServiceProvisionsShrinkRequest(DaraModel):
         template_name: str = None,
         trial_type: str = None,
     ):
-        # The parameters configured for the service instance.
+        # The parameters for deploying the user instance.
         self.parameters_shrink = parameters_shrink
         # The region ID.
         self.region_id = region_id
@@ -22,14 +22,15 @@ class GetServiceProvisionsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The version of the service.
+        # The service version.
         self.service_version = service_version
         # The template name.
         self.template_name = template_name
-        # The trial policy. Valid values:
+        # The usage type. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports trial use.
+        # 
+        # - NotTrial: The service does not support trial use.
         self.trial_type = trial_type
 
     def validate(self):

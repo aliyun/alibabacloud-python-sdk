@@ -23,10 +23,13 @@ class ListDatabasesForUserRequest(DaraModel):
         self.database_name = database_name
         # The engine of the database to query. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
         self.database_type = database_type
         # The bastion host ID.
         # 
@@ -38,7 +41,7 @@ class ListDatabasesForUserRequest(DaraModel):
         self.network_domain_id = network_domain_id
         # The page number. Default value: **1**. Pages start from page 1.
         self.page_number = page_number
-        # The number of entries per page.\\
+        # The number of entries per page.<br>
         # Valid values: 1 to 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
         # > We recommend that you do not leave this parameter empty.

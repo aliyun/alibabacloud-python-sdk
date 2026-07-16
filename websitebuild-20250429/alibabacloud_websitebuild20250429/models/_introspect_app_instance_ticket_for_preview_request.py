@@ -10,7 +10,9 @@ class IntrospectAppInstanceTicketForPreviewRequest(DaraModel):
         biz_id: str = None,
         token: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Password-free login access token
         self.token = token
 
     def validate(self):

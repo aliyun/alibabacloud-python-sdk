@@ -1,3 +1,45 @@
+2026-07-08 Version: 9.3.0
+- Support API DescribeVpcFirewallTrafficTrend.
+
+
+2026-07-08 Version: 9.2.1
+- Update API AddAddressBook: add request parameters AssetMemberUids.
+- Update API AddAddressBook: add request parameters AssetRegionResourceTypes.
+- Update API DescribeAddressBook: add request parameters AssetMemberUids.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AssetMemberUids.
+- Update API DescribeAddressBook: add response parameters Body.Acls.$.AssetRegionResourceTypes.
+- Update API ModifyAddressBook: add request parameters AssetMemberUids.
+- Update API ModifyAddressBook: add request parameters AssetRegionResourceTypes.
+
+
+2026-07-02 Version: 9.2.0
+- Support API DescribeFirewallDropTrend.
+- Support API DescribeFirewallTrafficTrend.
+- Support API DescribeSdlLastPayload.
+
+
+2026-06-22 Version: 9.1.0
+- Support API DescribePostpayBill.
+- Support API DescribePrepayBillTotal.
+- Update API CreateSecurityProxy: add request parameters FwVswitchZoneId.
+
+
+2026-06-17 Version: 9.0.0
+- Support API DescribeIPSRules.
+- Update API DescribeACLProtectTrend: add request parameters FirewallType.
+- Update API DescribeACLProtectTrend: add request parameters Interval.
+- Update API DescribeACLProtectTrend: add response parameters Body.TotalAlertCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TotalPassCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TrendList.$.AlertCnt.
+- Update API DescribeACLProtectTrend: add response parameters Body.TrendList.$.PassCnt.
+- Update API DescribeTrafficLog: add request parameters RuleSourceFinal.
+- Update API DescribeTrafficLog: add response parameters Body.DataList.$.Rules.$.RuleSource.
+- Update API DescribeUserAlarmConfig: delete response parameters Body.NotifyConfig.
+- Update API ModifyUserAlarmConfig: update request parameters ContactConfig.$.Status' type has changed.
+- Update API ModifyUserAlarmConfig: update request parameters ContactConfig.$.Status' format has changed.
+- Update API ModifyUserAlarmConfig: delete request parameters NotifyConfig.
+
+
 2026-03-25 Version: 8.0.4
 - Update API DescribeAddressBook: add request parameters GroupUuid.
 

@@ -20,7 +20,7 @@ class GetAdvancedMonitorStateResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,10 +74,11 @@ class GetAdvancedMonitorStateResponseBodyData(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the DPI feature is enabled. Valid values:
+        # Indicates whether the advanced monitoring feature is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: The feature is enabled.
+        # 
+        # - **false**: The feature is disabled.
         self.enable = enable
 
     def validate(self):

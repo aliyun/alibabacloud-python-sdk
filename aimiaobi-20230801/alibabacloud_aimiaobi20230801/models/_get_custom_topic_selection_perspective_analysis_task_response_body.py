@@ -17,11 +17,17 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
+        # Result of the custom topic selection analysis task
         self.custom_view_points_result = custom_view_points_result
+        # Error message
         self.error_message = error_message
+        # Task status (PENDING: pending, RUNNING: running, SUCCESSED: succeeded, SUSPENDED: suspended, FAILED: failed, CANCELED: canceled)
         self.status = status
 
     def validate(self):
@@ -127,7 +136,9 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPo
         attitudes: List[main_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudes] = None,
         topic: str = None,
     ):
+        # List of custom viewpoints. By default, the system generates one viewpoint based on the prompt input.
         self.attitudes = attitudes
+        # Hot topic event
         self.topic = topic
 
     def validate(self):
@@ -172,9 +183,13 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPo
         ratio: str = None,
         view_points: List[main_models.GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPointsResultAttitudesViewPoints] = None,
     ):
+        # Current viewpoint
         self.attitude = attitude
+        # Viewpoint type
         self.attitude_type = attitude_type
+        # Proportion of the current viewpoint
         self.ratio = ratio
+        # List of topic selection perspectives
         self.view_points = view_points
 
     def validate(self):
@@ -230,8 +245,11 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPo
         point: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outlines = outlines
+        # Generated perspective
         self.point = point
+        # Summary
         self.summary = summary
 
     def validate(self):
@@ -280,7 +298,9 @@ class GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyDataCustomViewPo
         outline: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outline = outline
+        # Outline summary
         self.summary = summary
 
     def validate(self):

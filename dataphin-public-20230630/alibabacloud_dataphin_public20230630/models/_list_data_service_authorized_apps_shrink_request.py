@@ -11,9 +11,14 @@ class ListDataServiceAuthorizedAppsShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The query conditions.
         self.list_query_shrink = list_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the data service project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

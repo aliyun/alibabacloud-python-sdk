@@ -14,12 +14,20 @@ class DescribeParentPlatformDevicesRequest(DaraModel):
         sort_by: str = None,
         sort_direction: str = None,
     ):
+        # Query by parent platform ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_num = page_num
+        # The page size. Default value: 20.
         self.page_size = page_size
+        # Sort by the specified field. Sorted by id by default.
         self.sort_by = sort_by
+        # Sort order. Ascending by default. Valid values:
+        # - asc (ascending)
+        # - desc (descending)
         self.sort_direction = sort_direction
 
     def validate(self):

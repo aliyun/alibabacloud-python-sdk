@@ -11,10 +11,16 @@ class GetSchemaRequest(DaraModel):
         topic_name: str = None,
         version_id: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
+        # The schema version number.
+        # 
         # This parameter is required.
         self.version_id = version_id
 

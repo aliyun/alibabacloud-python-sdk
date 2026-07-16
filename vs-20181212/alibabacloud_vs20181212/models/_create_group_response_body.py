@@ -13,10 +13,15 @@ class CreateGroupResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # National standard ID associated with the workspace. (Applies only to workspaces using national standard ingest.)
         self.gb_id = gb_id
+        # IP address of the national standard signaling gateway server associated with the workspace. (Applies only to workspaces using national standard ingest.)
         self.gb_ip = gb_ip
+        # National standard signaling server port provided by the workspace. (Applies only to workspaces using national standard ingest.)
         self.gb_port = gb_port
+        # Workspace ID
         self.id = id
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -20,14 +20,23 @@ class ListChatbotInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Chatbot list details
         self.bots = bots
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Page number.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded.
         self.success = success
+        # Total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -117,12 +126,19 @@ class ListChatbotInstancesResponseBodyBots(DaraModel):
         name: str = None,
         time_zone: str = None,
     ):
+        # Profile picture URL.
         self.avatar = avatar
+        # Creation time.
         self.create_time = create_time
+        # Instance ID.
         self.instance_id = instance_id
+        # Chatbot description.
         self.introduction = introduction
+        # Language used by the chatbot, such as zh-cn or en-us.
         self.language_code = language_code
+        # Chatbot name.
         self.name = name
+        # Time zone of the chatbot. See Common Time Zone Codes.
         self.time_zone = time_zone
 
     def validate(self):

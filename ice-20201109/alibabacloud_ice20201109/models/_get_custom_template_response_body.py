@@ -11,7 +11,7 @@ class GetCustomTemplateResponseBody(DaraModel):
         custom_template: main_models.GetCustomTemplateResponseBodyCustomTemplate = None,
         request_id: str = None,
     ):
-        # The template information.
+        # The template details.
         self.custom_template = custom_template
         # The request ID.
         self.request_id = request_id
@@ -62,26 +62,27 @@ class GetCustomTemplateResponseBodyCustomTemplate(DaraModel):
     ):
         # The time when the template was created.
         self.create_time = create_time
+        # Reserved for frontend display.
         self.frontend_hint = frontend_hint
-        # Indicates whether the template is the default template.
+        # Indicates whether the template is a default template.
         self.is_default = is_default
         # The time when the template was last modified.
         self.modified_time = modified_time
-        # The template state.
+        # The status of the template.
         self.status = status
-        # The subtype ID of the template.
+        # The ID of the template subtype.
         self.subtype = subtype
-        # The subtype name of the template.
+        # The name of the template subtype.
         self.subtype_name = subtype_name
-        # The template parameters.
+        # The template configuration, in a JSON string.
         self.template_config = template_config
         # The template ID.
         self.template_id = template_id
         # The template name.
         self.template_name = template_name
-        # The type ID of the template.
+        # The ID of the template type.
         self.type = type
-        # The type name of the template.
+        # The name of the template type.
         self.type_name = type_name
 
     def validate(self):
@@ -177,6 +178,7 @@ class GetCustomTemplateResponseBodyCustomTemplateFrontendHint(DaraModel):
         self,
         transcode_template_hint: main_models.GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHint = None,
     ):
+        # Hint for transcoding templates.
         self.transcode_template_hint = transcode_template_hint
 
     def validate(self):
@@ -206,6 +208,7 @@ class GetCustomTemplateResponseBodyCustomTemplateFrontendHintTranscodeTemplateHi
         self,
         bitrate_control_type: str = None,
     ):
+        # The bitrate control type.
         self.bitrate_control_type = bitrate_control_type
 
     def validate(self):

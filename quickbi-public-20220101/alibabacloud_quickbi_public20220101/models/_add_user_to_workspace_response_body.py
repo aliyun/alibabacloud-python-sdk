@@ -13,15 +13,17 @@ class AddUserToWorkspaceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Returns the result of the interface execution. Value range:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: Execution successful
-        # - false: Execution failed
+        # - true: The operation succeeded.
+        # 
+        # - false: The operation failed.
         self.result = result
-        # Indicates whether the request was successful. Value range:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: Request successful
-        # - false: Request failed
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

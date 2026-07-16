@@ -16,13 +16,13 @@ class DescribeImageGroupedVulListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page in the paging query.
         self.current_page = current_page
-        # An array that consists of the image vulnerabilities.
+        # The list of image vulnerabilities.
         self.grouped_vul_items = grouped_vul_items
-        # The number of entries returned per page. Default value: **20**.
+        # The number of image vulnerabilities returned on each page in the paging query. Default value: **20**, which indicates that 20 image vulnerability records are returned on each page.
         self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of image system vulnerabilities.
         self.total_count = total_count
@@ -97,47 +97,45 @@ class DescribeImageGroupedVulListResponseBodyGroupedVulItems(DaraModel):
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
-        # The number of vulnerabilities that have the high priority.
+        # The number of high-risk vulnerabilities.
         self.asap_count = asap_count
-        # Indicates whether the vulnerability can be fixed in the Security Center console. Valid values:
-        # 
-        # *   **yes**
-        # *   **no**
+        # Indicates whether the vulnerability can be fixed. Valid values:
+        # - **yes**: The vulnerability can be fixed.
+        # - **no**: The vulnerability cannot be fixed.
         self.can_fix = can_fix
-        # The timestamp when the first scan was performed. Unit: milliseconds.
+        # The timestamp of the first scan, in milliseconds.
         self.gmt_last = gmt_last
-        # The timestamp when the last scan was performed. Unit: milliseconds.
+        # The timestamp of the latest scan, in milliseconds.
         self.last_scan_time = last_scan_time
-        # The number of vulnerabilities that have the medium priority.
+        # The number of medium-risk vulnerabilities.
         self.later_count = later_count
         # The name of the vulnerability.
         self.name = name
-        # The number of vulnerabilities that have the low priority.
+        # The number of low-risk vulnerabilities.
         self.nntf_count = nntf_count
-        # The tag of this vulnerability. Valid values:
+        # The vulnerability tag. Valid values:
         # 
-        # *   **AI**: AI-related components.
+        #  - **AI**: vulnerabilities related to AI components.
         self.rule_tag = rule_tag
-        # The status of the vulnerability. Valid values:
+        # The processing status of the vulnerability. Valid values:
         # 
-        # *   **0**: unhandled
-        # *   **1**: handled
-        # *   **2**: verifying
-        # *   **3**: added to the whitelist
+        # - **0**: Unhandled.
+        # - **1**: Handled.
+        # - **2**: Verifying.
+        # - **3**: Added to the whitelist.
         self.status = status
-        # The tag of the vulnerability. Valid values:
+        # The label of the vulnerability. Valid values:
         # 
-        # *   Restart required
-        # *   Remote exploitation
-        # *   Exploit exists
-        # *   Exploitable
-        # *   Privilege escalation
-        # *   Code execution
+        # - Restart required
+        # - Remote utilization
+        # - EXP exists
+        # - Available
+        # - Privilege escalation
+        # - Code execution
         self.tags = tags
-        # The type of the vulnerability. Valid values:
-        # 
-        # *   **cve**: image system vulnerability
-        # *   **sca**: image application vulnerability
+        # The type of vulnerability to query. Valid values:
+        # - **cve**: image system vulnerability
+        # - **sca**: image application vulnerability.
         self.type = type
 
     def validate(self):

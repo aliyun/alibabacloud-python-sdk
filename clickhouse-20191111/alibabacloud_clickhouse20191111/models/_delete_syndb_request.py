@@ -22,7 +22,7 @@ class DeleteSyndbRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the database in the ApsaraDB RDS for MySQL instance. The database is used for data synchronization.
+        # The ApsaraDB RDS for MySQL database.
         # 
         # This parameter is required.
         self.syn_db = syn_db

@@ -13,10 +13,14 @@ class StartRecordStreamRequest(DaraModel):
         owner_id: int = None,
         play_domain: str = None,
     ):
+        # The stream\\"s App name.
         self.app = app
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
         self.owner_id = owner_id
+        # The stream\\"s playback domain name.
         self.play_domain = play_domain
 
     def validate(self):

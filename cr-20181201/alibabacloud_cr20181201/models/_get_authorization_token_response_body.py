@@ -14,17 +14,17 @@ class GetAuthorizationTokenResponseBody(DaraModel):
         request_id: str = None,
         temp_username: str = None,
     ):
-        # The password that you use to log on to the registry.
+        # The password used to log on to the Registry.
         self.authorization_token = authorization_token
-        # The HTTP status code.
+        # The return code.
         self.code = code
-        # The timestamp when the temporary token expired. Unit: milliseconds.
+        # The expiration timestamp of the temporary token, in milliseconds.
         self.expire_time = expire_time
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The request ID
+        # The request ID.
         self.request_id = request_id
-        # The username that you use to log on to the registry.
+        # The username used to log on to the Registry.
         self.temp_username = temp_username
 
     def validate(self):

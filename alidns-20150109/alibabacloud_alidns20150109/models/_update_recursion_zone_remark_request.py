@@ -11,8 +11,11 @@ class UpdateRecursionZoneRemarkRequest(DaraModel):
         remark: str = None,
         zone_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You must generate a unique value for this parameter. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The remarks.
         self.remark = remark
+        # The zone ID. This is the unique identifier of the zone.
         self.zone_id = zone_id
 
     def validate(self):

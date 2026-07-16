@@ -28,72 +28,81 @@ class AddDnsGtmAccessStrategyRequest(DaraModel):
         strategy_mode: str = None,
         strategy_name: str = None,
     ):
-        # The address pools in the primary address pool set.
+        # The collection of primary address pools.
         # 
         # This parameter is required.
         self.default_addr_pool = default_addr_pool
-        # The type of the primary address pool. Valid values:
+        # The type of the primary address pool.
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         # 
         # This parameter is required.
         self.default_addr_pool_type = default_addr_pool_type
-        # Specifies whether to enable DNS resolution with optimal latency for the primary address pool set. Valid values:
+        # The latency-based scheduling optimization for the primary address pool collection.
         # 
-        # *   OPEN
-        # *   CLOSE
+        # - OPEN: enabled
+        # 
+        # - CLOSE: disabled
         self.default_latency_optimization = default_latency_optimization
-        # The load balancing policy of the primary address pool set. Valid values:
+        # The load balancing policy for the primary address pool collection.
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: returns all addresses.
+        # 
+        # - RATIO: returns addresses by weight.
         self.default_lba_strategy = default_lba_strategy
-        # The maximum number of addresses returned from the primary address pool set.
+        # The maximum number of addresses returned from the primary address pool collection.
         self.default_max_return_addr_num = default_max_return_addr_num
-        # The minimum number of available addresses in the primary address pool set.
+        # The minimum number of active addresses in the primary address pool collection.
         # 
         # This parameter is required.
         self.default_min_available_addr_num = default_min_available_addr_num
-        # The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+        # The collection of failover address pools. If a failover address pool collection is not configured, enter "EMPTY".
         self.failover_addr_pool = failover_addr_pool
-        # The type of the secondary address pool. Valid values:
+        # The type of the failover address pool.
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         self.failover_addr_pool_type = failover_addr_pool_type
-        # Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
+        # The latency-based scheduling optimization for the failover address pool collection.
         # 
-        # *   OPEN
-        # *   CLOSE
+        # - OPEN: enabled
+        # 
+        # - CLOSE: disabled
         self.failover_latency_optimization = failover_latency_optimization
-        # The load balancing policy of the secondary address pool set. Valid values:
+        # The load balancing policy for the failover address pool collection.
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: returns all addresses.
+        # 
+        # - RATIO: returns addresses by weight.
         self.failover_lba_strategy = failover_lba_strategy
-        # The maximum number of addresses returned from the secondary address pool set.
+        # The maximum number of addresses returned from the failover address pool collection.
         self.failover_max_return_addr_num = failover_max_return_addr_num
-        # The minimum number of available addresses in the secondary address pool set.
+        # The minimum number of active addresses in the failover address pool collection.
         self.failover_min_available_addr_num = failover_min_available_addr_num
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of some returned parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The Domain Name System (DNS) request source. For example: `["default", "drpeng"]` indicates Global and Dr. Peng Group.
+        # The source of the DNS request. For example, `["default", "drpeng"]` indicates a global policy and Dr. Peng Group.
         self.lines = lines
-        # The type of the access policy. Valid values:
+        # The type of the access policy.
         # 
-        # *   GEO: geographical location-based access policy
-        # *   LATENCY: latency-based access policy
+        # - GEO: a location-based access policy.
+        # 
+        # - LATENCY: a latency-based access policy.
         # 
         # This parameter is required.
         self.strategy_mode = strategy_mode
-        # The name of the access policy.
+        # The policy name.
         # 
         # This parameter is required.
         self.strategy_name = strategy_name
@@ -237,9 +246,9 @@ class AddDnsGtmAccessStrategyRequestFailoverAddrPool(DaraModel):
         id: str = None,
         lba_weight: int = None,
     ):
-        # The ID of the address pool in the secondary address pool set.
+        # The ID of the address pool.
         self.id = id
-        # The weight of the address pool in the secondary address pool set.
+        # The weight of the address pool.
         self.lba_weight = lba_weight
 
     def validate(self):
@@ -274,9 +283,9 @@ class AddDnsGtmAccessStrategyRequestDefaultAddrPool(DaraModel):
         id: str = None,
         lba_weight: int = None,
     ):
-        # The ID of the address pool in the primary address pool set.
+        # The ID of the address pool.
         self.id = id
-        # The weight of the address pool in the primary address pool set.
+        # The weight of the address pool.
         self.lba_weight = lba_weight
 
     def validate(self):

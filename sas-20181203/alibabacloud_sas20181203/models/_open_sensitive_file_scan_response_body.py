@@ -15,20 +15,19 @@ class OpenSensitiveFileScanResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The data.
+        # The data returned for modifying the sensitive file scan switch.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned.
+        # The detailed information of the error code.
         self.message = message
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # The result status of the API call. Valid values:
+        # - **true**: The API call was successful.
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):
@@ -88,10 +87,10 @@ class OpenSensitiveFileScanResponseBodyData(DaraModel):
         self,
         switch_on: str = None,
     ):
-        # Indicates whether sensitive file scan is enabled or disabled. Valid values:
+        # The switch operation. Valid values:
         # 
-        # *   **on**: enabled
-        # *   **off**: disabled
+        # - **on**: Enable.
+        # - **off**: Disable.
         self.switch_on = switch_on
 
     def validate(self):

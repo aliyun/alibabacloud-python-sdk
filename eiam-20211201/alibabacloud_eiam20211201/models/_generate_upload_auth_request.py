@@ -11,13 +11,13 @@ class GenerateUploadAuthRequest(DaraModel):
         purpose: str = None,
         type: str = None,
     ):
-        # IDaaS EIAM的实例id
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 文件用途
+        # File purpose.
         self.purpose = purpose
-        # 文件类型，目前只支持image,最大1M
+        # File type.
         self.type = type
 
     def validate(self):

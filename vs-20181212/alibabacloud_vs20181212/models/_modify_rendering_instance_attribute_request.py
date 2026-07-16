@@ -10,8 +10,12 @@ class ModifyRenderingInstanceAttributeRequest(DaraModel):
         password: str = None,
         rendering_instance_id: str = None,
     ):
+        # Password for the device.
+        # 
         # This parameter is required.
         self.password = password
+        # ID of the cloud application service instance.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

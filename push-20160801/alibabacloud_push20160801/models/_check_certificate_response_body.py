@@ -14,10 +14,23 @@ class CheckCertificateResponseBody(DaraModel):
         production_cert_info: main_models.CheckCertificateResponseBodyProductionCertInfo = None,
         request_id: str = None,
     ):
+        # Indicates whether the AppKey belongs to an Android app:
+        # 
+        # - true
+        # 
+        # - false
         self.android = android
+        # The information about the certificate for the development or sandbox environment.
         self.development_cert_info = development_cert_info
+        # Indicates whether the AppKey belongs to an iOS app:
+        # 
+        # - true
+        # 
+        # - false
         self.ios = ios
+        # The information about the certificate for the production environment.
         self.production_cert_info = production_cert_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -75,7 +88,19 @@ class CheckCertificateResponseBodyProductionCertInfo(DaraModel):
         exipre_time: int = None,
         status: str = None,
     ):
+        # The expiration time of the certificate.
         self.exipre_time = exipre_time
+        # The status of the certificate. Valid values:
+        # 
+        # - **EXPIRED**: The certificate is expired.
+        # 
+        # - **NOT_CONFIGURED**: The certificate is not configured.
+        # 
+        # - **NO_PASSWORD**: The password for the certificate is not configured.
+        # 
+        # - **OK**: The certificate is normal.
+        # 
+        # - **REVOKED**: The certificate is revoked.
         self.status = status
 
     def validate(self):
@@ -110,7 +135,19 @@ class CheckCertificateResponseBodyDevelopmentCertInfo(DaraModel):
         exipre_time: int = None,
         status: str = None,
     ):
+        # The expiration time of the certificate.
         self.exipre_time = exipre_time
+        # The status of the certificate. Valid values:
+        # 
+        # - **EXPIRED**: The certificate is expired.
+        # 
+        # - **NOT_CONFIGURED**: The certificate is not configured.
+        # 
+        # - **NO_PASSWORD**: The password for the certificate is not configured.
+        # 
+        # - **OK**: The certificate is normal.
+        # 
+        # - **REVOKED**: The certificate is revoked.
         self.status = status
 
     def validate(self):

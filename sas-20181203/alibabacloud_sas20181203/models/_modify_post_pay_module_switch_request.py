@@ -14,42 +14,42 @@ class ModifyPostPayModuleSwitchRequest(DaraModel):
         post_pay_module_switch: str = None,
         post_pay_module_switch_obj: main_models.ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj = None,
     ):
-        # Automatic binding switch for new assets in host and container protection. Values:
+        # Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
         # 
-        # - **0**: Off
-        # - **1**: On
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.post_paid_host_auto_bind = post_paid_host_auto_bind
-        # Version for automatic binding of new assets in host and container protection. Values:
-        # - **1**: Free Edition 
-        # - **3**: Enterprise Edition
-        # - **5**: Advanced Edition
-        # - **6**: Antivirus Edition    
-        # - **7**: Flagship Edition
+        # The version to which newly added assets are automatically bound for host and container protection. Valid values:
+        # - **1**: Free Edition. 
+        # - **3**: Enterprise Edition.
+        # - **5**: Advanced Edition.
+        # - **6**: Anti-virus Edition.    
+        # - **7**: Ultimate Edition.
         self.post_paid_host_auto_bind_version = post_paid_host_auto_bind_version
-        # Pay-as-you-go instance ID, which must be filled in.
+        # The pay-as-you-go instance ID. This parameter is required.
         # 
-        # > Call the [DescribeVersionConfig](~~DescribeVersionConfig~~) interface to obtain this parameter.
+        # > Invoke the [DescribeVersionConfig](~~DescribeVersionConfig~~) operation to obtain this parameter.
         self.post_pay_instance_id = post_pay_instance_id
-        # Status of the pay-as-you-go module switch, in JsonString format. Values:
+        # The switch status of pay-as-you-go modules in JSON string format. Valid values:
         # - Key:
-        #   - **VUL**: Vulnerability Repair Module
-        #   - **CSPM**: Cloud Security Posture Management Module
-        #   - **AGENTLESS**: Agentless Detection Module
-        #   - **SERVERLESS**: Serverless Security Module
-        #   - **CTDR**: Threat Analysis and Response Module
-        #   - **POST_HOST**: Host and Container Security Module
-        #   - **SDK**: Malicious File Detection SDK Module
-        #   - **RASP**: Application Protection Module
-        #   - **CTDR_STORAGE**: Log Management Module
-        #   - **ANTI_RANSOMWARE**: Anti-Ransomware Management
-        # - Value: 0 means off, 1 means on
+        #   - **VUL**: vulnerability fix module
+        #   - **CSPM**: Cloud Security Posture Management (CSPM) module
+        #   - **AGENTLESS**: agentless detection module
+        #   - **SERVERLESS**: serverless security module
+        #   - **CTDR**: threat detection and response module
+        #   - **POST_HOST**: host and container security module
+        #   - **SDK**: malicious file detection SDK module
+        #   - **RASP**: application protection module
+        #   - **CTDR_STORAGE**: log management module
+        #   - **ANTI_RANSOMWARE**: anti-ransomware management
+        # - Value: 0 indicates disabled. 1 indicates enabled.
         # 
-        # > The values of modules not passed will not change.
+        # > Modules for which no value is specified remain unchanged.
         # 
-        # <notice>The meaning is the same as the PostPayModuleSwitchObj field. When both exist, the value of PostPayModuleSwitch takes precedence.
+        # <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
         self.post_pay_module_switch = post_pay_module_switch
-        # Pay-as-you-go module switch.
-        # >Notice:  The meaning is the same as the PostPayModuleSwitch field. When both exist, the value of PostPayModuleSwitch takes precedence.
+        # The pay-as-you-go module switch.
+        # >Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
         self.post_pay_module_switch_obj = post_pay_module_switch_obj
 
     def validate(self):
@@ -115,57 +115,57 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         vul: int = None,
         web_lock: int = None,
     ):
-        # Agentless Detection Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The agentless detection module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.agentless = agentless
-        # AI Digitization
+        # The AI digitalization module.
         self.ai_digital = ai_digital
-        # Anti-Ransomware Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The anti-ransomware module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.anti_ransomware = anti_ransomware
-        # Basic service module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The basic service module. Valid values:
+        # - **0**: shutdown.
+        # - **1**: enabling status.
         # 
-        # >Notice: The basic service module switch does not support active modification. When other modules are on, this module is also on. If all other modules are off, then this module is off.
+        # >Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is in the enabling status, and is in the shutdown state only when all other modules are in the shutdown state.
         self.basic_service = basic_service
-        # Cloud Security Configuration Check Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The cloud security configuration check module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.cspm = cspm
-        # Threat Analysis and Response Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The threat detection and response module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.ctdr = ctdr
-        # Log Management Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The log management module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.ctdr_storage = ctdr_storage
-        # Host and Container Security Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The host and container security module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.post_host = post_host
-        # Application Protection Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The application protection module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.rasp = rasp
-        # Malicious File Detection SDK Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The malicious file detection SDK module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.sdk = sdk
-        # Serverless Security Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The serverless security module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.serverless = serverless
-        # Vulnerability Repair Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The vulnerability fix module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.vul = vul
-        # File Tamper Protection Module. Values:
-        # - **0**: Off
-        # - **1**: On
+        # The tamper-proofing module. Valid values:
+        # - **0**: Disabled.
+        # - **1**: Enabled.
         self.web_lock = web_lock
 
     def validate(self):

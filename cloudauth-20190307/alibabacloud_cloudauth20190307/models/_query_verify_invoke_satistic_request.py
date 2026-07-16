@@ -16,26 +16,26 @@ class QueryVerifyInvokeSatisticRequest(DaraModel):
         start_date: int = None,
         statistics_type: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End date of the query.
+        # The end time of the query.
         self.end_date = end_date
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # List of product codes to query. Please refer to the productCode under the corresponding ProductType.
+        # The list of product codes to query. For more information, refer to the productCode under the corresponding ProductType.
         self.product_program_list = product_program_list
-        # Product type:
-        # - **FINANCE_VERIFY**: Financial-grade real-person verification
-        # - **SMART_VERIFY**: Enhanced real-person verification (discontinued)
-        # - **FACE_VERIFY**: Real-person verification (discontinued)
+        # The product type. Valid values:
+        # - **FINANCE_VERIFY**: financial-grade ID Verification
+        # - **SMART_VERIFY**: enhanced ID Verification (discontinued)
+        # - **FACE_VERIFY**: ID Verification (discontinued).
         self.product_type = product_type
-        # List of application scenarios.
+        # The list of common scenarios.
         self.scene_id_list = scene_id_list
-        # Start date of the query.
+        # The start time of the query.
         self.start_date = start_date
-        # Statistics dimension:
+        # The statistical dimension. Valid values:
         # - **day**: daily
-        # - **month**: monthly
+        # - **month**: monthly.
         self.statistics_type = statistics_type
 
     def validate(self):

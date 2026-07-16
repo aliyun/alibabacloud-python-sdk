@@ -9,6 +9,10 @@ class GetTlsInspectCertificateDownloadUrlRequest(DaraModel):
         self,
         ca_cert_id: str = None,
     ):
+        # The ID of the CA certificate.
+        # 
+        # > Call the ListTlsInspectCACertificates operation to query existing CA certificates.
+        # 
         # This parameter is required.
         self.ca_cert_id = ca_cert_id
 

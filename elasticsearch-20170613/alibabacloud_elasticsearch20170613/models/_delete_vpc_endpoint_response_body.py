@@ -10,7 +10,13 @@ class DeleteVpcEndpointResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the deletion is successful. Valid values:
+        # 
+        # - true: The deletion is successful.
+        # 
+        # - false: The deletion failed.
         self.result = result
 
     def validate(self):

@@ -17,9 +17,11 @@ class AsyncResourcePlanOperationResult(DaraModel):
         self.plan = plan
         # The status of the ticket that applies for an asynchronous operation. Valid values:
         # 
-        # *   EXECUTING
-        # *   FINISHED
-        # *   FAILED
+        # - EXECUTING
+        # 
+        # - FINISHED
+        # 
+        # - FAILED
         self.ticket_status = ticket_status
 
     def validate(self):

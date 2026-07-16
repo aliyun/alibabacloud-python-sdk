@@ -24,7 +24,7 @@ class DescribeGtmLogsResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned on all pages.
+        # The total number of entries returned.
         self.total_items = total_items
         # The total number of pages returned.
         self.total_pages = total_pages

@@ -13,18 +13,18 @@ class DescribeCardVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeCardVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 indicates success, all others indicate failure.
-        # Important
-        # - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
-        # - Please check the business verification results through the fields in ResultObject.
+        # The response code. 200 indicates success. Other values indicate failure.
+        # > **Important**
+        # > - This parameter indicates whether the operation is called correctly. For more information about return codes, refer to error codes.
+        # > - Check the business verification result by viewing the fields in ResultObject.
         self.code = code
-        # Interface call return message.
-        # Important
-        # - This parameter only indicates whether there was an exception with the interface.
+        # The response message of the operation.
+        # > **Important**
+        # > - This parameter only indicates whether the operation is abnormal.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result object.
+        # The result object.
         self.result_object = result_object
 
     def validate(self):
@@ -76,20 +76,20 @@ class DescribeCardVerifyResponseBodyResultObject(DaraModel):
         ocr_card_info: str = None,
         picture_info: str = None,
     ):
-        # Identity verification result:
-        # - 1: Consistent
-        # - 2: Inconsistent
-        # - 3: No Record Found
+        # The identity verification result. Valid values:
+        # - 1: consistent
+        # - 2: inconsistent
+        # - 3: no record found.
         self.biz_code = biz_code
-        # Submitted ID card information for verification.
+        # The ID card information submitted for verification.
         self.card_info = card_info
-        # Image comparison score.
+        # The image comparison score.
         self.face_detail = face_detail
-        # ID card information read by OCR.
+        # The ID card information read by OCR.
         self.ocr_card_info = ocr_card_info
-        # Returned photo URLs.
-        # - certUrl  Front side
-        # - certNationalUrl  National emblem side
+        # The returned photo URLs.
+        # - certUrl: front side
+        # - certNationalUrl: national emblem side.
         self.picture_info = picture_info
 
     def validate(self):

@@ -1,3 +1,53 @@
+2026-07-16 Version: 7.9.2
+- Update API DescribeImages: add request parameters Usable.
+- Update API DescribeImages: add response parameters Body.Images.$.Usable.
+
+
+2026-07-10 Version: 7.9.1
+- Generated python 2014-05-26 for Ecs.
+
+2026-07-01 Version: 7.9.0
+- Support API ModifySystemEventAttribute.
+
+
+2026-06-24 Version: 7.8.7
+- Update API DescribeInstanceHistoryEvents: add response parameters Body.InstanceSystemEventSet.$.ExtendedAttribute.InitialNotBefore.
+- Update API DescribeInstanceTopology: add response parameters Body.Topologys.$.NetworkNodes.
+
+
+2026-06-19 Version: 7.8.6
+- Update API DescribeDisks: add response parameters Body.Disks.$.DataSource.
+
+
+2026-06-15 Version: 7.8.5
+- Update API CreatePlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+- Update API DescribePlanMaintenanceWindows: add response parameters Body.PlanMaintenanceWindowList.$.MinMaintenanceInterval.
+- Update API ModifyPlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+
+
+2026-06-15 Version: 7.8.5
+- Update API CreatePlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+- Update API DescribePlanMaintenanceWindows: add response parameters Body.PlanMaintenanceWindowList.$.MinMaintenanceInterval.
+- Update API ModifyPlanMaintenanceWindow: add request parameters MinMaintenanceInterval.
+
+
+2026-06-09 Version: 7.8.4
+- Update API DescribeRenewalPrice: add response parameters Body.PriceInfo.RelatedPrice.
+
+
+2026-06-03 Version: 7.8.3
+- Update API CreateCapacityReservation: add request parameters InstanceChargeType.
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.DeliveryTime.
+- Update API DescribeCapacityReservations: add response parameters Body.CapacityReservationSet.$.UnlockedTime.
+- Update API DescribeInstances: add response parameters Body.Instances.$.MetadataOptions.InstanceMetadataTags.
+
+
+2026-06-01 Version: 7.8.2
+- Update API CreateDeploymentSet: add request parameters Affinity.
+- Update API DescribeDeploymentSets: add response parameters Body.DeploymentSets.$.Affinity.
+- Update API ModifyDeploymentSetAttribute: add request parameters Affinity.
+
+
 2026-05-19 Version: 7.8.1
 - Update API ModifyInstanceAttribute: add request parameters CpuOptions.
 - Update API RunInstances: add request parameters CpuOptions.

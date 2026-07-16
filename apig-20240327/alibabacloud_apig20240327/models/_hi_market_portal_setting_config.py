@@ -11,8 +11,11 @@ class HiMarketPortalSettingConfig(DaraModel):
         auto_approve_subscriptions: bool = None,
         builtin_auth_enabled: bool = None,
     ):
+        # Specifies whether to automatically approve developer registration requests.
         self.auto_approve_developers = auto_approve_developers
+        # Specifies whether to automatically approve API subscription requests.
         self.auto_approve_subscriptions = auto_approve_subscriptions
+        # Specifies whether to enable username-password authentication (built-in authentication).
         self.builtin_auth_enabled = builtin_auth_enabled
 
     def validate(self):

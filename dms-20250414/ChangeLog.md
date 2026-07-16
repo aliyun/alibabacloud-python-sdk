@@ -1,3 +1,82 @@
+2026-07-03 Version: 1.17.0
+- Support API CreateDataAgentAccuracyTest.
+- Support API DeleteDataAgentAccuracyTest.
+- Support API ListDataAgentAccuracyTestInstances.
+- Support API ListDataAgentAccuracyTestResults.
+- Support API ListDataAgentAccuracyTestTasks.
+- Support API StartDataAgentAccuracyTestTask.
+- Support API StopDataAgentAccuracyTestTask.
+- Support API UpdateDataAgentAccuracyTest.
+- Update API SendChatMessage: add request parameters UserOssBucket.
+- Update API SendChatMessage: add request parameters SessionConfig.EnableSearch.
+- Update API SendChatMessage: add request parameters SessionConfig.KbUuidList.
+- Update API SendChatMessage: add request parameters SessionConfig.McpServerIds.
+- Update API SendChatMessage: add request parameters SessionConfig.PlanMode.
+
+
+2026-07-03 Version: 1.17.0
+- Support API CreateDataAgentAccuracyTest.
+- Support API DeleteDataAgentAccuracyTest.
+- Support API ListDataAgentAccuracyTestInstances.
+- Support API ListDataAgentAccuracyTestResults.
+- Support API ListDataAgentAccuracyTestTasks.
+- Support API StartDataAgentAccuracyTestTask.
+- Support API StopDataAgentAccuracyTestTask.
+- Support API UpdateDataAgentAccuracyTest.
+- Update API SendChatMessage: add request parameters UserOssBucket.
+- Update API SendChatMessage: add request parameters SessionConfig.EnableSearch.
+- Update API SendChatMessage: add request parameters SessionConfig.KbUuidList.
+- Update API SendChatMessage: add request parameters SessionConfig.McpServerIds.
+- Update API SendChatMessage: add request parameters SessionConfig.PlanMode.
+
+
+2026-06-25 Version: 1.16.1
+- Update API SendChatMessage: add request parameters WorkspaceId.
+
+
+2026-06-24 Version: 1.16.0
+- Support API GetSqlConsoleOperationLog.
+- Update API ListDataAgentSession: add request parameters Mode.
+
+
+2026-06-16 Version: 1.15.3
+- Update API CreateDataAgentWorkspace: add response parameters Body.Data.Type.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.Artifacts.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.DataSources.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.RecallResults.
+- Update API GetDataAgentWorkspaceInfo: add response parameters Body.Data.Type.
+- Update API ListDataAgentWorkspace: add response parameters Body.Data.Content.$.Type.
+- Update API SendChatMessage: add request parameters TaskConfig.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipAskHuman.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipPlan.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipSqlConfirm.
+- Update API SendChatMessage: add request parameters SessionConfig.SkipWebReportConfirm.
+- Update API SendChatMessage: add response parameters Body.Data.MessageId.
+
+
+2026-06-11 Version: 1.15.2
+- Generated python 2025-04-14 for Dms.
+
+2026-06-11 Version: 1.15.1
+- Generated python 2025-04-14 for Dms.
+
+2026-06-09 Version: 1.15.0
+- Support API RetrieveKnowledgeBase.
+
+
+2026-06-02 Version: 1.14.0
+- Support API DeleteWorkspaceCode.
+- Support API GetWorkspaceCode.
+- Support API ListWorkspaceCode.
+- Support API SaveWorkspaceCode.
+- Update API CreateCustomAgent: add request parameters RelatedSessionId.
+- Update API CreateCustomAgent: add response parameters Body.Data.RelatedSessionId.
+- Update API DescribeCustomAgent: add response parameters Body.Data.RelatedSessionId.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.RelatedSessionId.
+- Update API ModifyCustomAgent: add request parameters RelatedSessionId.
+- Update API ModifyCustomAgent: add response parameters Body.Data.RelatedSessionId.
+
+
 2026-05-20 Version: 1.13.1
 - Update API FileUploadCallback: add request parameters OssBucket.
 

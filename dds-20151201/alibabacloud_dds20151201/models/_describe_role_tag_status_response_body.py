@@ -13,8 +13,21 @@ class DescribeRoleTagStatusResponseBody(DaraModel):
         role_tag_status: str = None,
         shard_role_tag_status: Dict[str, Any] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The tag status of the ReplicaSet node. Valid values:
+        # 
+        # - **true**: The tag is created.
+        # 
+        # - **false**: The tag is not created.
+        # 
+        # > If the instance is a sharded cluster, this parameter returns false.
         self.role_tag_status = role_tag_status
+        # The tag status of each node in the sharded cluster. Valid values:
+        # 
+        # - **true**: The tag is created.
+        # 
+        # - **false**: The tag is not created.
         self.shard_role_tag_status = shard_role_tag_status
 
     def validate(self):

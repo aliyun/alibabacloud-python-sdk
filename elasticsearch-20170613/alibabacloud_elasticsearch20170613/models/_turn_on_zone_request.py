@@ -7,8 +7,11 @@ from darabonba.model import DaraModel
 class TurnOnZoneRequest(DaraModel):
     def __init__(
         self,
+        hp_alb_zone_drained: bool = None,
         zone: str = None,
     ):
+        self.hp_alb_zone_drained = hp_alb_zone_drained
+        # The zone of the instance.
         self.zone = zone
 
     def validate(self):
@@ -19,6 +22,9 @@ class TurnOnZoneRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.hp_alb_zone_drained is not None:
+            result['hpAlbZoneDrained'] = self.hp_alb_zone_drained
+
         if self.zone is not None:
             result['zone'] = self.zone
 
@@ -26,6 +32,9 @@ class TurnOnZoneRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('hpAlbZoneDrained') is not None:
+            self.hp_alb_zone_drained = m.get('hpAlbZoneDrained')
+
         if m.get('zone') is not None:
             self.zone = m.get('zone')
 

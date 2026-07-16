@@ -12,12 +12,28 @@ class TriggerNetworkRequest(DaraModel):
         node_type: str = None,
         client_token: str = None,
     ):
+        # The action type. Valid values:
+        # 
+        # - CLOSE: disable.
+        # - OPEN: enable.
+        # 
         # This parameter is required.
         self.action_type = action_type
+        # The network type. Valid values:
+        # 
+        # - PUBLIC: public network.
+        # - PRIVATE: private network.
+        # 
         # This parameter is required.
         self.network_type = network_type
+        # The instance type. Valid values:
+        # 
+        # - KIBANA: Kibana cluster.
+        # - WORKER: Elasticsearch cluster.
+        # 
         # This parameter is required.
         self.node_type = node_type
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):

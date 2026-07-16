@@ -19,7 +19,6 @@ class TrainStationSearchResponseBody(DaraModel):
     ):
         self.code = code
         self.message = message
-        # module
         self.module = module
         self.request_id = request_id
         self.success = success

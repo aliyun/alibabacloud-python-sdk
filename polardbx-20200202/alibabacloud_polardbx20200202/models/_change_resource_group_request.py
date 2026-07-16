@@ -12,12 +12,20 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the new resource group.
+        # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource ID.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Currently, only PolarDB-X 2.0 instances are supported.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

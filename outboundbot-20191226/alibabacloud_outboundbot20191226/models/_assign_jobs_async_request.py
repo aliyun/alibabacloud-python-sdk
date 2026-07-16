@@ -15,12 +15,59 @@ class AssignJobsAsyncRequest(DaraModel):
         jobs_json: List[str] = None,
         strategy_json: str = None,
     ):
+        # The list of calling numbers to be displayed to callees.
+        # 
+        # > If you omit this parameter, the system uses all available calling numbers by default.
         self.calling_number = calling_number
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the job group.
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # A JSON array containing job data. For the required format, see the example.
+        # 
+        # Each JSON object in the array represents a job for a single contact.
         self.jobs_json = jobs_json
+        # A JSON string that defines the job group execution strategy. This object has the following properties:
+        # 
+        # - `repeatBy`
+        # 
+        # Specifies the repetition frequency. Valid values include `Once` (does not repeat), `Day` (repeats daily), `Week` (repeats weekly), and `Month` (repeats monthly).
+        # 
+        # - `startTime`
+        # 
+        # The start time of the execution strategy.
+        # 
+        # - `endTime`
+        # 
+        # The end time of the execution strategy.
+        # 
+        # - `workingTime`
+        # 
+        # The time range during which outbound calls can be made.
+        # 
+        # - `maxAttemptsPerDay`
+        # 
+        # The maximum number of daily call attempts for a single phone number.
+        # 
+        # - `minAttemptInterval`
+        # 
+        # The minimum interval between retry attempts, in minutes.
+        # 
+        # - `routingStrategy`
+        # 
+        # The routing strategy for calling numbers. Valid values: `None` (not specified), `LocalFirst` (prioritizes numbers in the same city), and `LocalProvinceFirst` (prioritizes numbers in the same province).
+        # 
+        # - `repeatDays`
+        # 
+        # The days on which the job repeats. If `repeatBy` is set to `Week`, valid values are `0` for Sunday and `1` to `6` for Monday to Saturday. If `repeatBy` is set to `Month`, valid values are `1` to `31`. If a specified day does not exist in a given month (e.g., February 30), the job is skipped for that month.
+        # 
+        # - `repeatable`
+        # 
+        # Specifies whether to enable recurring jobs. Valid values: `true` and `false`.
         self.strategy_json = strategy_json
 
     def validate(self):

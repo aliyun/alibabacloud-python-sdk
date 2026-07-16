@@ -16,14 +16,15 @@ class ListCatalogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The data catalogs.
         self.catalogs = catalogs
-        # 一次获取的最大记录数。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 下一页TOKEN。
+        # The token to retrieve the next page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -93,16 +94,23 @@ class ListCatalogsResponseBodyCatalogs(DaraModel):
         workspace_id: str = None,
     ):
         self.alias = alias
-        # regionId。
+        # The ID of the data catalog.
         self.catalog_id = catalog_id
+        # The provider of the data catalog.
         self.catalog_provider = catalog_provider
+        # Indicates whether this is the default data catalog.
         self.catalog_type = catalog_type
+        # The environment types.
         self.environments = environments
+        # Extra information.
         self.extras = extras
+        # The time when the resource was created.
         self.gmt_create = gmt_create
+        # The time when the resource was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the resource owner.
         self.resource_owner_id = resource_owner_id
-        # 工作空间id。
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

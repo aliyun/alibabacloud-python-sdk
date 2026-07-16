@@ -13,10 +13,15 @@ class DescribeVsCertificateDetailResponseBody(DaraModel):
         key: str = None,
         request_id: str = None,
     ):
+        # The certificate content.
         self.cert = cert
+        # The certificate ID.
         self.cert_id = cert_id
+        # The certificate name.
         self.cert_name = cert_name
+        # The key.
         self.key = key
+        # The request ID for this operation.
         self.request_id = request_id
 
     def validate(self):

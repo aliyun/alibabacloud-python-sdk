@@ -11,19 +11,19 @@ class GetTopicSubscribeStatusRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The instance ID.
+        # Instance ID.
         # 
-        # You can call the [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) operation to query the list of instances.
+        # You can call [GetInstanceList](https://help.aliyun.com/document_detail/437663.html) to obtain it.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID.
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The topic name.
+        # Topic name.
         # 
-        # You can call the [GetTopicList](https://help.aliyun.com/document_detail/437677.html) operation to query the list of topics.
+        # You can call [GetTopicList](https://help.aliyun.com/document_detail/437677.html) to obtain it.
         # 
         # This parameter is required.
         self.topic = topic

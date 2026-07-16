@@ -21,8 +21,9 @@ class DescribePrefixListAttributesResponseBody(DaraModel):
     ):
         # The IP address family of the prefix list. Valid values:
         # 
-        # *   IPv4
-        # *   IPv6
+        # - IPv4
+        # 
+        # - IPv6
         self.address_family = address_family
         # The time when the prefix list was created.
         self.creation_time = creation_time

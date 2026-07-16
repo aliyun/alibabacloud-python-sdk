@@ -12,7 +12,7 @@ class CreateChatFlowLogSettingRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Process code.
+        # The code of the flow. View the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

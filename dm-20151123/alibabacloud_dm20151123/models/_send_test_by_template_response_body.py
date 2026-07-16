@@ -9,7 +9,7 @@ class SendTestByTemplateResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Request ID
+        # The unique ID for the request.
         self.request_id = request_id
 
     def validate(self):

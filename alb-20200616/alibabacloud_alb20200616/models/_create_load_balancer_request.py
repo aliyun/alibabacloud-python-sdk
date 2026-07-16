@@ -21,6 +21,7 @@ class CreateLoadBalancerRequest(DaraModel):
         load_balancer_name: str = None,
         modification_protection_config: main_models.CreateLoadBalancerRequestModificationProtectionConfig = None,
         resource_group_id: str = None,
+        security_group_ids: List[main_models.CreateLoadBalancerRequestSecurityGroupIds] = None,
         tag: List[main_models.CreateLoadBalancerRequestTag] = None,
         vpc_id: str = None,
         zone_mappings: List[main_models.CreateLoadBalancerRequestZoneMappings] = None,
@@ -80,6 +81,7 @@ class CreateLoadBalancerRequest(DaraModel):
         self.modification_protection_config = modification_protection_config
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.security_group_ids = security_group_ids
         # The tags.
         self.tag = tag
         # The ID of the virtual private cloud (VPC) in which you want to create the ALB instance.
@@ -96,6 +98,10 @@ class CreateLoadBalancerRequest(DaraModel):
             self.load_balancer_billing_config.validate()
         if self.modification_protection_config:
             self.modification_protection_config.validate()
+        if self.security_group_ids:
+            for v1 in self.security_group_ids:
+                 if v1:
+                    v1.validate()
         if self.tag:
             for v1 in self.tag:
                  if v1:
@@ -142,6 +148,11 @@ class CreateLoadBalancerRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+
+        result['SecurityGroupIds'] = []
+        if self.security_group_ids is not None:
+            for k1 in self.security_group_ids:
+                result['SecurityGroupIds'].append(k1.to_map() if k1 else None)
 
         result['Tag'] = []
         if self.tag is not None:
@@ -194,6 +205,12 @@ class CreateLoadBalancerRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        self.security_group_ids = []
+        if m.get('SecurityGroupIds') is not None:
+            for k1 in m.get('SecurityGroupIds'):
+                temp_model = main_models.CreateLoadBalancerRequestSecurityGroupIds()
+                self.security_group_ids.append(temp_model.from_map(k1))
 
         self.tag = []
         if m.get('Tag') is not None:
@@ -319,6 +336,33 @@ class CreateLoadBalancerRequestTag(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class CreateLoadBalancerRequestSecurityGroupIds(DaraModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
 
         return self
 

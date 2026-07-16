@@ -14,7 +14,7 @@ class DescribeClusterTasksRequest(DaraModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

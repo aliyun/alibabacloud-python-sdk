@@ -13,8 +13,12 @@ class DeleteQualityRulesRequest(DaraModel):
         delete_command: main_models.DeleteQualityRulesRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,8 @@ class DeleteQualityRulesRequestDeleteCommand(DaraModel):
         self,
         rule_id_list: List[int] = None,
     ):
+        # The rule IDs.
+        # 
         # This parameter is required.
         self.rule_id_list = rule_id_list
 

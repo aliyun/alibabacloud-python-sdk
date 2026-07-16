@@ -16,33 +16,39 @@ class CreateOrUpdateSwimmingLaneResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code or an error code of Platform as a Service (PaaS). Valid values:
         # 
-        # *   **2xx**: Success.
-        # *   **3xx**: Redirection.
-        # *   **4xx**: Request error.
-        # *   **5xx**: Server error.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A request error occurs.
+        # 
+        # - **5xx**: A server error occurs.
         self.code = code
-        # The returned information.
+        # The returned data.
         self.data = data
-        # The status code. Value values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - For more information, see the "**Error codes**" section in this topic.
         self.error_code = error_code
-        # The message returned. Value description:
+        # The response message. Valid values:
         # 
-        # *   If the request was successful, a success message is returned.
-        # *   An error code is returned if the request failed.
+        # - If the request is successful, `success` is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Whether the creation or update was successful. Valid values:
+        # Indicates whether the swimlane was created or updated. Valid values:
         # 
-        # *   true: created.
-        # *   false: failed to create.
+        # - true
+        # 
+        # - false
         self.success = success
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The request trace ID. You can use this ID to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(DaraModel):
         self,
         lane_id: int = None,
     ):
-        # The ID of the lane.
+        # The ID of the swimlane.
         self.lane_id = lane_id
 
     def validate(self):

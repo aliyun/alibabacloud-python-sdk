@@ -14,8 +14,15 @@ class GetMailTaskListResponseBody(DaraModel):
         result: main_models.GetMailTaskListResponseBodyResult = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The paging information for the tracking tasks.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -63,12 +70,19 @@ class GetMailTaskListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
+        # An array of tracking task models.
         self.data = data
+        # The next page number. A value of null or 0 indicates that there is no next page.
         self.next = next
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page that was set for the request.
         self.page_size = page_size
+        # The previous page number. A value of null or 0 indicates that there is no previous page.
         self.pre = pre
+        # The total number of entries.
         self.total_num = total_num
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -144,10 +158,19 @@ class GetMailTaskListResponseBodyResultData(DaraModel):
         paused: bool = None,
         subscribe_name: str = None,
     ):
+        # The nickname of the owner.
         self.biz_owner_name = biz_owner_name
+        # The user ID of the owner.
         self.biz_owner_user_id = biz_owner_user_id
+        # The mail ID of the tracking task.
         self.mail_id = mail_id
+        # Indicates whether the task is paused.
+        # 
+        # - true: The task is paused.
+        # 
+        # - false: The task is not paused.
         self.paused = paused
+        # The name of the tracking task.
         self.subscribe_name = subscribe_name
 
     def validate(self):

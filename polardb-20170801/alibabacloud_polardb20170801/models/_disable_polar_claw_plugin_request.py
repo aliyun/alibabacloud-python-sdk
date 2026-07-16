@@ -11,10 +11,15 @@ class DisablePolarClawPluginRequest(DaraModel):
         plugin_id: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the plugin to disable.
+        # 
         # This parameter is required.
         self.plugin_id = plugin_id
+        # Specifies whether to restart the gateway. Default value: true.
         self.restart = restart
 
     def validate(self):

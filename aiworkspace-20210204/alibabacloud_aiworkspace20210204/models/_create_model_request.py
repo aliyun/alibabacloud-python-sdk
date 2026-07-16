@@ -27,35 +27,37 @@ class CreateModelRequest(DaraModel):
     ):
         # The visibility of the model in the workspace. Valid values:
         # 
-        # *   PRIVATE (default): Visible only to you and the administrator of the workspace.
-        # *   PUBLIC: Vvisible to all users in the workspace.
+        # - PRIVATE (default): The model is visible only to you and administrators in the workspace.
+        # 
+        # - PUBLIC: The model is visible to everyone in the workspace.
         self.accessibility = accessibility
-        # The domain of the model. Describes the domain in which the model is for. Example: nlp (natural language processing), cv (computer vision), and others.
+        # The domain. This describes the field that the model is designed for, such as nlp (Natural Language Processing) or cv (computer vision).
         self.domain = domain
         # Other information about the model.
         self.extra_info = extra_info
-        # The tags. This parameter will be deprecated and replaced by Tag.
+        # A list of labels. This parameter is deprecated and is replaced by the Tag parameter.
         self.labels = labels
-        # The model description, used to distinguish different models.
+        # The description of the model. Use this to distinguish different models.
         self.model_description = model_description
-        # The documentation of the model.
+        # The model documentation.
         self.model_doc = model_doc
         # The name of the model. The name must be 1 to 127 characters in length.
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model type. Example: Checkpoint or LoRA.
+        # The model type, such as Checkpoint or LoRA.
         self.model_type = model_type
-        # The sequence number of the model. Can be used for custom sorting.
+        # The ordinal number of the model. You can use this for custom sorting.
         self.order_number = order_number
-        # The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
+        # The source of the model. This specifies the community or organization that the source model belongs to, such as ModelScope and HuggingFace.
         self.origin = origin
+        # The number of parameters, in millions.
         self.parameter_size = parameter_size
-        # The tags.
+        # A list of tags.
         self.tag = tag
-        # The task of the model. Describes the specific problem that the model solves. Example: text-classification.
+        # The task. This describes the specific problem that the model solves, such as text-classification (text classification).
         self.task = task
-        # The workspace ID. Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The ID of the workspace. For more information about how to obtain a workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

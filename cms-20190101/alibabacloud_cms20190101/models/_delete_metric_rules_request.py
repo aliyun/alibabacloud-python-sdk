@@ -12,6 +12,8 @@ class DeleteMetricRulesRequest(DaraModel):
         id: List[str] = None,
         region_id: str = None,
     ):
+        # The IDs of the alert rules to delete.
+        # 
         # This parameter is required.
         self.id = id
         self.region_id = region_id

@@ -13,7 +13,7 @@ class DescribeAITaskStatusResponseBody(DaraModel):
         status: str = None,
         status_name: str = None,
     ):
-        # The name of the database account that is used to connect to the AI nodes in the cluster.
+        # The most recently configured account name.
         self.account_name = account_name
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -21,10 +21,11 @@ class DescribeAITaskStatusResponseBody(DaraModel):
         self.request_id = request_id
         # The status of the PolarDB for AI feature. Valid values:
         # 
-        # *   **1**: enabled.
-        # *   **2**: disabled.
+        # - **1**: Enabled
+        # 
+        # - **2**: Disabled
         self.status = status
-        # The description of the status of the PolarDB for AI feature.
+        # A description of the feature status.
         self.status_name = status_name
 
     def validate(self):

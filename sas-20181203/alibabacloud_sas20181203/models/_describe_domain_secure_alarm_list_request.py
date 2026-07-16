@@ -11,14 +11,13 @@ class DescribeDomainSecureAlarmListRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The identifier of the request source. Set the value to sas.
+        # The identifier of the request source. Set this parameter to sas.
         self.from_ = from_
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type of the request and response messages. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

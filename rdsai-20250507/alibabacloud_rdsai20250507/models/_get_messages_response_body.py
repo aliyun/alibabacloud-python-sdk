@@ -15,13 +15,13 @@ class GetMessagesResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
-        # The returned results.
+        # A list of message objects.
         self.data = data
-        # Indicates whether the current page is followed by a page.
+        # Indicates whether there are more messages to retrieve.
         self.has_more = has_more
-        # The maximum number of entries to return.
+        # The value of the Limit parameter used for this request.
         self.limit = limit
-        # The request ID.
+        # The unique identifier for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -78,25 +78,35 @@ class GetMessagesResponseBodyData(DaraModel):
         created_at: str = None,
         events: List[main_models.GetMessagesResponseBodyDataEvents] = None,
         feedback: str = None,
+        generation_finished_at: str = None,
+        generation_started_at: str = None,
+        generation_status: str = None,
         id: str = None,
+        last_sent_entry_id: str = None,
         query: str = None,
         retriever_resources: List[Any] = None,
+        stream_key: str = None,
     ):
-        # The response to the query.
+        # The AI-generated response to the query.
         self.answer = answer
-        # The ID of the conversation.
+        # The unique identifier for the conversation.
         self.conversation_id = conversation_id
-        # The creation time of the conversation.
+        # The Unix timestamp (in seconds) when the message was created.
         self.created_at = created_at
         self.events = events
-        # The feedback.
+        # The user\\"s feedback on the answer, such as "like" or "dislike".
         self.feedback = feedback
-        # The message ID.
+        self.generation_finished_at = generation_finished_at
+        self.generation_started_at = generation_started_at
+        self.generation_status = generation_status
+        # The unique identifier for the message.
         self.id = id
-        # The query statement.
+        self.last_sent_entry_id = last_sent_entry_id
+        # The user\\"s query.
         self.query = query
-        # The retriever resources.
+        # The resources that were retrieved to generate the answer.
         self.retriever_resources = retriever_resources
+        self.stream_key = stream_key
 
     def validate(self):
         if self.events:
@@ -126,14 +136,29 @@ class GetMessagesResponseBodyData(DaraModel):
         if self.feedback is not None:
             result['Feedback'] = self.feedback
 
+        if self.generation_finished_at is not None:
+            result['GenerationFinishedAt'] = self.generation_finished_at
+
+        if self.generation_started_at is not None:
+            result['GenerationStartedAt'] = self.generation_started_at
+
+        if self.generation_status is not None:
+            result['GenerationStatus'] = self.generation_status
+
         if self.id is not None:
             result['Id'] = self.id
+
+        if self.last_sent_entry_id is not None:
+            result['LastSentEntryId'] = self.last_sent_entry_id
 
         if self.query is not None:
             result['Query'] = self.query
 
         if self.retriever_resources is not None:
             result['RetrieverResources'] = self.retriever_resources
+
+        if self.stream_key is not None:
+            result['StreamKey'] = self.stream_key
 
         return result
 
@@ -157,14 +182,29 @@ class GetMessagesResponseBodyData(DaraModel):
         if m.get('Feedback') is not None:
             self.feedback = m.get('Feedback')
 
+        if m.get('GenerationFinishedAt') is not None:
+            self.generation_finished_at = m.get('GenerationFinishedAt')
+
+        if m.get('GenerationStartedAt') is not None:
+            self.generation_started_at = m.get('GenerationStartedAt')
+
+        if m.get('GenerationStatus') is not None:
+            self.generation_status = m.get('GenerationStatus')
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('LastSentEntryId') is not None:
+            self.last_sent_entry_id = m.get('LastSentEntryId')
 
         if m.get('Query') is not None:
             self.query = m.get('Query')
 
         if m.get('RetrieverResources') is not None:
             self.retriever_resources = m.get('RetrieverResources')
+
+        if m.get('StreamKey') is not None:
+            self.stream_key = m.get('StreamKey')
 
         return self
 

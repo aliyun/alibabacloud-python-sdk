@@ -22,32 +22,30 @@ class ModifyPhoneBusinessProfileRequest(DaraModel):
         vertical: str = None,
         websites: List[str] = None,
     ):
-        # The business information.
+        # The about information.
         self.about = about
         # The address.
         self.address = address
-        # The space ID of the RAM user within the independent software vendor (ISV) account.
+        # The space ID of the ISV sub-customer.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
-        # The description of the phone number.
+        # The description.
         self.description = description
         # The email address.
         self.email = email
         self.owner_id = owner_id
-        # The mobile phone number.
+        # The phone number.
         # 
         # This parameter is required.
         self.phone_number = phone_number
-        # The URL of the profile picture.
+        # The profile picture URL.
         self.profile_picture_url = profile_picture_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The industry.
-        # 
-        # >  Valid values: OTHER, AUTO, BEAUTY, APPAREL, EDU, ENTERTAIN, EVENT_PLAN, FINANCE, GROCERY, GOVT, HOTEL, HEALTH, NONPROFIT, PROF_SERVICES, RETAIL, TRAVEL, and RESTAURANT.
+        # The industry vertical.
         self.vertical = vertical
-        # The URLs of the websites.
+        # The websites.
         self.websites = websites
 
     def validate(self):

@@ -17,12 +17,17 @@ class GetSmartAuditResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.code = code
+        # The review result.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,8 +89,11 @@ class GetSmartAuditResultResponseBodyData(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
+        # The list of review error details.
         self.error_item_details = error_item_details
+        # If the final status is not SUCCESSED, read this error message to identify the fault.
         self.error_message = error_message
+        # The task execution status. Valid values: PENDING, RUNNING, SUCCESSED, SUSPENDED, FAILED, and CANCELLED.
         self.status = status
 
     def validate(self):
@@ -145,18 +153,31 @@ class GetSmartAuditResultResponseBodyDataErrorItemDetails(DaraModel):
         sub_class_desc: str = None,
         url: str = None,
     ):
+        # The unique ID of the review item.
         self.check_id = check_id
+        # The original text segment.
         self.context = context
+        # The offset index of the incorrect word within the context.
         self.context_offset = context_offset
+        # The error level. 1: critical, 2: warning, 3: notice, 4: suggestion.
         self.error_level = error_level
+        # The incorrect word.
         self.error_word = error_word
+        # The primary error code.
         self.major_code = major_code
+        # The description of the primary error.
         self.major_code_desc = major_code_desc
+        # The offset index of the incorrect word in the full text.
         self.offset = offset
+        # The error description.
         self.reason = reason
+        # The suggested correction.
         self.right_word = right_word
+        # The sub-error code.
         self.sub_class_code = sub_class_code
+        # The description of the sub-error.
         self.sub_class_desc = sub_class_desc
+        # In an image review scenario, this is the public URL of the image that triggered the review.
         self.url = url
 
     def validate(self):

@@ -10,17 +10,30 @@ class CreateCubeBySqlRequest(DaraModel):
         caption: str = None,
         custom_sql: str = None,
         ds_id: str = None,
+        placeholders: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The name of the custom dataset.
+        # 
         # This parameter is required.
         self.caption = caption
+        # The custom SQL statement.
+        # 
         # This parameter is required.
         self.custom_sql = custom_sql
+        # The data source ID.
+        # 
         # This parameter is required.
         self.ds_id = ds_id
+        # The placeholder parameters. For more information, see the supplementary description below.
+        self.placeholders = placeholders
+        # The Quick BI UserId of a user who has permissions to create datasets. This is not your Alibaba Cloud account ID. You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=cn-hangzhou) operation to obtain the UserId.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -41,6 +54,9 @@ class CreateCubeBySqlRequest(DaraModel):
         if self.ds_id is not None:
             result['DsId'] = self.ds_id
 
+        if self.placeholders is not None:
+            result['Placeholders'] = self.placeholders
+
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
@@ -59,6 +75,9 @@ class CreateCubeBySqlRequest(DaraModel):
 
         if m.get('DsId') is not None:
             self.ds_id = m.get('DsId')
+
+        if m.get('Placeholders') is not None:
+            self.placeholders = m.get('Placeholders')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

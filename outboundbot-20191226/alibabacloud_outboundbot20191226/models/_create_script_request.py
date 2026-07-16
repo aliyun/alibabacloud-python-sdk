@@ -30,29 +30,104 @@ class CreateScriptRequest(DaraModel):
         script_waveform: List[str] = None,
         tts_config: str = None,
     ):
+        # Robot workspace ID
         self.agent_id = agent_id
+        # Robot workspace access Key
         self.agent_key = agent_key
+        # Is the robot workspace a Large Language Model (LLM) workspace?
         self.agent_llm = agent_llm
+        # ASR configuration. Parameter definitions:
+        # 
+        # - **appKey**: Alibaba Cloud account appKey.
+        # 
+        # - **maxEndSilence**: Voice endpoint detection duration.
+        # 
+        # - **silenceTimeout**: Silence timeout. Unit: seconds. The user times out after N seconds of silence.
+        # 
+        # - **engine**: Invoke service; [ali, xunfei]
+        # 
+        # - **nlsServiceType**: Invoke service type [Managed, Authorized]
+        # 
+        # - **engineXunfei**: If the caller is xunfei, enter the corresponding configuration.
+        # 
+        # > If you select ali as the engine and Authorized as the nlsServiceType, a custom service is used, and the service provider is ali. If you select ali as the engine and Managed as the nlsServiceType, the default service is used. If you select xunfei as the engine and Authorized as the nlsServiceType, xunfei is the service provider. You must enter the xunfei configuration: {"uuid":"ed2xxxxxxxxx","globalMaxEndSilence":700,"globalMaxEndSilenceEnable":true}
+        # 
+        # - **globalMaxEndSilence**: Silence detection. Unit: milliseconds.
+        # 
+        # - **globalMaxEndSilenceEnable**: Silence detection switch. Enabled by default.
+        # 
+        # - **speechNoiseThreshold**: Noise filtering threshold
         self.asr_config = asr_config
+        # If the NluServiceType of the instance is Authorized or Provided, specify the ID of the chatbot instance to which the script needs to be attached using this field.
         self.chatbot_id = chatbot_id
+        # Emotion detection configuration switch (applicable to small models)
         self.emotion_enable = emotion_enable
+        # Industry
+        # 
         # This parameter is required.
         self.industry = industry
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Intelligent sentence segmentation configuration switch (applicable to small models)
         self.long_wait_enable = long_wait_enable
+        # Connective phrase configuration switch (applicable to small models)
         self.mini_playback_enable = mini_playback_enable
+        # Graceful interruption configuration switch (applicable to small models)
         self.new_barge_in_enable = new_barge_in_enable
+        # NLU access method (applicable only to Large Language Model (LLM) scenarios). Enumeration: Managed - Access using an Alibaba public account. This field is empty for non-LLM scenarios.
         self.nlu_access_type = nlu_access_type
+        # NLU engine (applicable only to Large Language Model (LLM) scenarios). This field is empty for non-LLM scenarios.
+        # 
+        # - Prompts - Large Language Model (LLM) scenario,
+        # 
+        # - SSE_FUNCTION - Function Compute pattern.
+        # 
+        # - BeeBot - Workflow pattern.
         self.nlu_engine = nlu_engine
+        # Scenario
+        # 
         # This parameter is required.
         self.scene = scene
+        # For notification instances, pass in the script list. Deprecated.
         self.script_content = script_content
+        # Script description
         self.script_description = script_description
+        # Script name
+        # 
         # This parameter is required.
         self.script_name = script_name
+        # > If nluEngine is SSE_FUNCTION, you must pass in the corresponding configuration.
+        # 
+        # Function Compute service pattern configuration
+        # 
+        # - fcRegion: Function service region
+        # 
+        # - fcFunction: Function service name
+        # 
+        # - fcHttpTriggerUrl Function service trigger
         self.script_nlu_profile_json_string = script_nlu_profile_json_string
+        # For notification instances, pass in the script voice list. Deprecated.
         self.script_waveform = script_waveform
+        # TTS configuration. Parameter definitions:
+        # 
+        # - **voice**: Speaker.
+        # 
+        # - **volume**: Volume. Value range: 0 to 100. Default value: 50.
+        # 
+        # - **speechRate**: Speech rate. Value range: -500 to 500. Default value: 0.
+        # 
+        # - **pitchRate**: Pitch rate. Value range: -500 to 500. Default value: 0.
+        # 
+        # - **globalInterruptible**: Voice interruption configuration.
+        #   -**engine**: Invoke service; [ali, volc, xunfei]. Large Language Model (LLM) scenarios do not support xunfei.
+        # 
+        # - **nlsServiceType**: Service type. [Managed, Authorized]
+        # 
+        # - **engineXunfei**: Configuration when the service provider is xunfei.
+        # 
+        # > 1\\. If you select ali as the engine and Authorized as the nlsServiceType, a custom service is used. 2. If the service provider is ali, and you select ali as the engine and Managed as the nlsServiceType, the default service is used. 3. If you select xunfei as the engine (applicable to small model scenarios) and Authorized as the nlsServiceType, xunfei is the service provider. You must enter the engineXunfei configuration: {"pitchRate":50,"speechRate":50,"voice":"aisjiuxu","volume":50}. 4. If you select volc as the engine and Authorized as the nlsServiceType, it applies to doubao.
         self.tts_config = tts_config
 
     def validate(self):

@@ -10,7 +10,7 @@ class StartJobWithParamsRequest(DaraModel):
         self,
         body: main_models.JobStartParameters = None,
     ):
-        # The parameter that is used to start the job.
+        # Parameters to start the job instance.
         self.body = body
 
     def validate(self):

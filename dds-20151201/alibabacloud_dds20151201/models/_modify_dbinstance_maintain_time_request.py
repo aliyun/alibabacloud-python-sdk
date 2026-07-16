@@ -21,7 +21,7 @@ class ModifyDBInstanceMaintainTimeRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The end time of the maintenance window. Specify the time in the ISO 8601 standard in the *HH:mm*Z format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time of the maintenance window.
+        # > The end time must be later than the start time of the maintenance window.
         # 
         # This parameter is required.
         self.maintain_end_time = maintain_end_time

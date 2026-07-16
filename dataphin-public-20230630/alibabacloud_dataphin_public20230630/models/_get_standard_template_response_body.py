@@ -17,12 +17,17 @@ class GetStandardTemplateResponseBody(DaraModel):
         success: bool = None,
         template_info: main_models.GetStandardTemplateResponseBodyTemplateInfo = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The template details.
         self.template_info = template_info
 
     def validate(self):
@@ -95,20 +100,35 @@ class GetStandardTemplateResponseBodyTemplateInfo(DaraModel):
         unique_id: str = None,
         version: int = None,
     ):
+        # The attribute configuration.
         self.attributes_config = attributes_config
+        # The code of the standard template. This value is globally unique and cannot be modified when references exist.
         self.code = code
+        # The auto-generation rule configuration for the standard code.
         self.code_rule_config = code_rule_config
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The description of the standard template.
         self.description = description
+        # The standard template ID.
         self.id = id
+        # The last modifier.
         self.last_modifier = last_modifier
+        # The list of maintainers.
         self.maintainer_list = maintainer_list
+        # The modification time.
         self.modify_time = modify_time
+        # The name of the standard template.
         self.name = name
+        # The source of the standard template. Valid values:
+        # - CUSTOM: custom standard template.
+        # - SYSTEM: system built-in standard template.
         self.template_from = template_from
         # uniqueId
         self.unique_id = unique_id
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -235,7 +255,9 @@ class GetStandardTemplateResponseBodyTemplateInfoMaintainerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -270,7 +292,9 @@ class GetStandardTemplateResponseBodyTemplateInfoLastModifier(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -305,7 +329,9 @@ class GetStandardTemplateResponseBodyTemplateInfoCreator(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):
@@ -340,7 +366,11 @@ class GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfig(DaraModel):
         auto_config: main_models.GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfig = None,
         generate_type: str = None,
     ):
+        # The auto-generation configuration for the standard code rule. This parameter takes effect when the generation method is set to AUTO_GENERATE.
         self.auto_config = auto_config
+        # The standard code generation method. Valid values:
+        # - CUSTOMIZED: custom.
+        # - AUTO_GENERATE: automatically generated based on the standard code rule.
         self.generate_type = generate_type
 
     def validate(self):
@@ -377,7 +407,9 @@ class GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfig(DaraMo
         code_rule_list: List[main_models.GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRuleList] = None,
         need_strong_validate: bool = None,
     ):
+        # The standard code rules.
         self.code_rule_list = code_rule_list
+        # Indicates whether strong validation is required.
         self.need_strong_validate = need_strong_validate
 
     def validate(self):
@@ -422,9 +454,16 @@ class GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRul
         type: str = None,
         value: str = None,
     ):
+        # The auto-increment sequence configuration.
         self.auto_increment_sequence_config = auto_increment_sequence_config
+        # The position index of the code rule.
         self.index = index
+        # The code rule type. Valid values:
+        # - FIXED_STRING: fixed string.
+        # - AUTO_INCREMENT: auto-increment sequence.
+        # - STANDARD_SET_CODE: standard set code.
         self.type = type
+        # The format or value of the code rule.
         self.value = value
 
     def validate(self):
@@ -475,9 +514,13 @@ class GetStandardTemplateResponseBodyTemplateInfoCodeRuleConfigAutoConfigCodeRul
         start_value: int = None,
         step: int = None,
     ):
+        # The number of digits.
         self.digit = digit
+        # Indicates whether zero-padding is required.
         self.need_padding_zero = need_padding_zero
+        # The start value.
         self.start_value = start_value
+        # The step size.
         self.step = step
 
     def validate(self):
@@ -523,6 +566,7 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfig(DaraModel):
         self,
         attribute_list: List[main_models.GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeList] = None,
     ):
+        # The list of attributes.
         self.attribute_list = attribute_list
 
     def validate(self):
@@ -567,15 +611,32 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeList(D
         type: str = None,
         value_config: main_models.GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfig = None,
     ):
+        # The attribute code.
         self.code = code
+        # The description.
         self.description = description
+        # Indicates whether monitoring configuration is enabled.
         self.enable_monitor_config = enable_monitor_config
+        # The attribute ID.
         self.id = id
+        # The monitoring configuration.
         self.monitor_config = monitor_config
+        # The attribute name.
         self.name = name
+        # The referenced attribute information.
         self.ref_attribute = ref_attribute
+        # Indicates whether the attribute is required.
         self.required = required
+        # The attribute type. Valid values:
+        # - BIZ_ATTRIBUTE: business attribute.
+        # - TECH_ATTRIBUTE: technical attribute.
+        # - MANAGEMENT_ATTRIBUTE: management attribute.
+        # - QUALITY_ATTRIBUTE: quality attribute.
+        # - MASTER_DATA_ATTRIBUTE: master data attribute.
+        # - LIFECYCLE_ATTRIBUTE: lifecycle attribute.
+        # - SECURITY_ATTRIBUTE: security attribute.
         self.type = type
+        # The value configuration.
         self.value_config = value_config
 
     def validate(self):
@@ -669,10 +730,25 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVa
         type: str = None,
         value_range: main_models.GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListValueConfigValueRange = None,
     ):
+        # The data type of the attribute value. Valid values:
+        # - STRING: string.
+        # - BIGINT: numeric.
+        # - DOUBLE: floating-point.
+        # - DATE: date, accurate to the day.
+        # - DATETIME: date, accurate to the millisecond.
+        # - BOOLEAN: Boolean.
         self.data_type = data_type
+        # The default value.
         self.default_value = default_value
+        # The length of the attribute value. If this parameter is left empty or set to -1, the length is not limited. Typically, only string types have a length limit for attribute values.
         self.length = length
+        # The attribute value type. Valid values:
+        # - CUSTOMIZED: custom input.
+        # - SINGLE_ENUM: single enumeration value.
+        # - MULTIPLE_ENUMS: multiple enumeration values.
+        # - RANGE: range value.
         self.type = type
+        # The value range.
         self.value_range = value_range
 
     def validate(self):
@@ -730,10 +806,27 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVa
         value_constraint: str = None,
         value_list: List[str] = None,
     ):
+        # The value range. This parameter takes effect when the value source is set to DATAPHIN_ATTRIBUTE. Valid values:
+        # - BIZ_UNIT: data domain.
+        # - PROJECT: project.
+        # - USER: user.
+        # - USER_GROUP: user group.
         self.dataphin_attribute_type = dataphin_attribute_type
+        # The value range. This parameter takes effect when the value source is set to LOOKUP_TABLE.
         self.lookup_table_reference = lookup_table_reference
+        # The value range. This parameter takes effect when the value source is set to MIN_MAX.
         self.min_max_value_config = min_max_value_config
+        # The value source. Valid values:
+        # - NONE: no constraint.
+        # - LIST: obtained from a list.
+        # - LOOKUP_TABLE: lookup table.
+        # - MIN_MAX: value between the minimum and maximum.
+        # - DATAPHIN_ATTRIBUTE: Dataphin system property.
+        # - BUILT_IN_DATA_TYPES: built-in data types.
+        # - BUILT_IN_DATA_CLASSIFICATION: built-in data categorization.
+        # - BUILT_IN_DATA_LEVEL: built-in data security classification.
         self.value_constraint = value_constraint
+        # The value range. This parameter takes effect when the value source is set to LIST.
         self.value_list = value_list
 
     def validate(self):
@@ -793,9 +886,13 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVa
         max_value: str = None,
         min_value: str = None,
     ):
+        # Indicates whether the maximum value is included.
         self.include_max_value = include_max_value
+        # Indicates whether the minimum value is included.
         self.include_min_value = include_min_value
+        # The maximum value.
         self.max_value = max_value
+        # The minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -842,7 +939,9 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListVa
         column: str = None,
         lookup_table_id: int = None,
     ):
+        # The referenced lookup table field.
         self.column = column
+        # The lookup table ID.
         self.lookup_table_id = lookup_table_id
 
     def validate(self):
@@ -877,7 +976,9 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRe
         attribute_from_info: main_models.GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttributeAttributeFromInfo = None,
         attribute_id: int = None,
     ):
+        # The attribute source.
         self.attribute_from_info = attribute_from_info
+        # The attribute ID.
         self.attribute_id = attribute_id
 
     def validate(self):
@@ -914,7 +1015,12 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRe
         attribute_from: str = None,
         standard_reference: main_models.GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRefAttributeAttributeFromInfoStandardReference = None,
     ):
+        # The attribute source. Valid values:
+        # - SYSTEM: system attribute.
+        # - CUSTOM: custom attribute.
+        # - STANDARD: standard.
         self.attribute_from = attribute_from
+        # The corresponding standard. This parameter takes effect when the attribute source is set to STANDARD.
         self.standard_reference = standard_reference
 
     def validate(self):
@@ -951,7 +1057,9 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListRe
         standard_id: int = None,
         version: int = None,
     ):
+        # The standard ID.
         self.standard_id = standard_id
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -987,8 +1095,13 @@ class GetStandardTemplateResponseBodyTemplateInfoAttributesConfigAttributeListMo
         is_case_sensitive: bool = None,
         type: str = None,
     ):
+        # The field to check.
         self.column_name = column_name
+        # Indicates whether the check is case-sensitive.
         self.is_case_sensitive = is_case_sensitive
+        # The monitoring method. Valid values:
+        # - METADATA: metadata monitoring.
+        # - QUALITY: data quality monitoring.
         self.type = type
 
     def validate(self):

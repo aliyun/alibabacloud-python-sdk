@@ -13,10 +13,15 @@ class ListYikeProductionsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
+        # The maximum number of results to return on each page.
         self.max_results = max_results
+        # The pagination token from a previous response. Use this to retrieve the next page of results.
         self.next_token = next_token
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of results to return on each page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

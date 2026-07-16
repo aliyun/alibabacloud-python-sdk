@@ -14,11 +14,17 @@ class GetProjectFeatureEntityResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # Feature entity ID.
         self.feature_entity_id = feature_entity_id
+        # Join ID used to associate with feature views.
         self.join_id = join_id
+        # Feature entity name.
         self.name = name
+        # Project name.
         self.project_name = project_name
+        # Request ID.
         self.request_id = request_id
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

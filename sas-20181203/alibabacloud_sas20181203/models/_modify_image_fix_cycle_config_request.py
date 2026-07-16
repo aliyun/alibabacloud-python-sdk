@@ -16,13 +16,15 @@ class ModifyImageFixCycleConfigRequest(DaraModel):
         self.image_fix_cycle = image_fix_cycle
         # Specifies whether to enable the schedule image fix.
         # 
-        # *   **on**: enable
-        # *   **off**: disable
+        # - **on**: enable
+        # 
+        # - **off**: disable
         self.image_fix_switch = image_fix_switch
         # The range of the scheduled fix. The value of this parameter is in the JSON format and contains the following fields:
         # 
-        # *   **type**: The type of the image. The value is fixed to repo.
-        # *   **target**: The content of the image. The value is in the format of Namespace/Image repository.
+        # - **type**: The type of the image. The value is fixed to repo.
+        # 
+        # - **target**: The content of the image. The value is in the format of Namespace/Image repository.
         self.image_fix_target = image_fix_target
         # The time range during which the image was modified. Unit: day.
         self.image_time_range = image_time_range

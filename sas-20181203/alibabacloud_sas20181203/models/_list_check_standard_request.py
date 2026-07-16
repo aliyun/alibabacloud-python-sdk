@@ -24,18 +24,23 @@ class ListCheckStandardRequest(DaraModel):
         self.instance_types = instance_types
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # List of task sources.
         self.task_sources = task_sources
         # The cloud service providers. Valid values:
         # 
-        # *   **ALIYUN**: Alibaba Cloud.
-        # *   **TENCENT**: Tencent Cloud.
-        # *   **HUAWEICLOUD**: Huawei Cloud.
-        # *   **MICROSOFT**: Microsoft Azure.
-        # *   **AWS**: Amazon Web Services (AWS).
+        # - **ALIYUN**: Alibaba Cloud.
+        # 
+        # - **TENCENT**: Tencent Cloud.
+        # 
+        # - **HUAWEICLOUD**: Huawei Cloud.
+        # 
+        # - **MICROSOFT**: Microsoft Azure.
+        # 
+        # - **AWS**: Amazon Web Services (AWS).
         self.vendors = vendors
 
     def validate(self):

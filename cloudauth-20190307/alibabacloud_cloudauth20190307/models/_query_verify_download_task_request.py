@@ -9,7 +9,7 @@ class QueryVerifyDownloadTaskRequest(DaraModel):
         self,
         download_task_id: str = None,
     ):
-        # Download task ID.
+        # The download task ID.
         self.download_task_id = download_task_id
 
     def validate(self):

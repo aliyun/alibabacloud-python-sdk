@@ -13,8 +13,9 @@ class DescribeRenderingInstanceSettingsResponseBody(DaraModel):
         request_id: str = None,
         settings: List[main_models.DescribeRenderingInstanceSettingsResponseBodySettings] = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The list of instance configurations.
         self.settings = settings
 
     def validate(self):
@@ -57,7 +58,9 @@ class DescribeRenderingInstanceSettingsResponseBodySettings(DaraModel):
         attribute_name: str = None,
         attribute_value: str = None,
     ):
+        # The name of an instance configuration.
         self.attribute_name = attribute_name
+        # The value of an instance configuration.
         self.attribute_value = attribute_value
 
     def validate(self):

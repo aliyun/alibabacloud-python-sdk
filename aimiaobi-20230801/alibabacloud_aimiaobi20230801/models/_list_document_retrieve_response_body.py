@@ -20,15 +20,23 @@ class ListDocumentRetrieveResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code.
         self.code = code
+        # Business data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Maximum number of records returned.
         self.max_results = max_results
+        # Error message.
         self.message = message
+        # Token for the next page.
         self.next_token = next_token
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -116,10 +124,15 @@ class ListDocumentRetrieveResponseBodyData(DaraModel):
         publication_date: str = None,
         title: str = None,
     ):
+        # Main text.
         self.essay = essay
+        # Issuing agency.
         self.issuing_authority = issuing_authority
+        # URL.
         self.link = link
+        # Publication date.
         self.publication_date = publication_date
+        # Title.
         self.title = title
 
     def validate(self):

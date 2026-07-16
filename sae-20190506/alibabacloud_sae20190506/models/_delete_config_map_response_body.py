@@ -16,33 +16,39 @@ class DeleteConfigMapResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code returned for the request.
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: success
+        # 
+        # - **3xx**: redirection
+        # 
+        # - **4xx**: client error
+        # 
+        # - **5xx**: server error
         self.code = code
-        # The returned result.
+        # The operation result.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - Not returned if the request is successful.
+        # 
+        # - Returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message. Valid values:
+        # The response message.
         # 
-        # *   success: If the call is successful, **success** is returned.
-        # *   An error code: If the call fails, an error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the ConfigMap was deleted. Valid values:
+        # Indicates whether the deletion succeeded. Valid values:
         # 
-        # *   **true**: The ConfigMap was deleted.
-        # *   **false**: The ConfigMap failed to be deleted.
+        # - **true**: The deletion was successful.
+        # 
+        # - **false**: The deletion failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID for querying request details.
         self.trace_id = trace_id
 
     def validate(self):
@@ -108,7 +114,7 @@ class DeleteConfigMapResponseBodyData(DaraModel):
         self,
         config_map_id: int = None,
     ):
-        # The ID of the deleted ConfigMap.
+        # The ID of the deleted ConfigMap instance.
         self.config_map_id = config_map_id
 
     def validate(self):

@@ -18,13 +18,18 @@ class CancelAiCallDetailsRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: str = None,
     ):
+        # The batch ID. This ID is returned when you import callee data. You can find the task batch ID on the **Call Task Management**>**Details**>**Execution Record** page, or use the import batch ID that is returned by the [ImportTaskNumberDatas](https://help.aliyun.com/document_detail/2926815.html) API operation. If DetailIdList is specified, this parameter is invalid.
         self.batch_id = batch_id
+        # A list of detail IDs. If you specify this parameter, `BatchId` and `PhoneNumbers` are ignored.
         self.detail_id_list = detail_id_list
         self.encryption_type = encryption_type
         self.owner_id = owner_id
+        # A list of phone numbers. This parameter takes effect only when `BatchId` is also specified.
         self.phone_numbers = phone_numbers
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID. You can view the task ID on the **Call Task Management** page or obtain it by calling the [QueryAiCallTaskPage](https://help.aliyun.com/document_detail/2926799.html) operation.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

@@ -14,23 +14,23 @@ class CreateUploadMediaResponseBody(DaraModel):
         upload_address: str = None,
         upload_auth: str = None,
     ):
-        # The OSS URL of the file. The URL does not contain the information used for authentication.
+        # The OSS URL of the file, without authentication parameters.
         self.file_url = file_url
         # The ID of the media asset.
         self.media_id = media_id
         # The URL of the media asset.
         # 
-        # >  If a domain name for Alibaba Cloud CDN (CDN) is specified, a CDN URL is returned. Otherwise, an OSS URL is returned. If the HTTP status code 403 is returned when you access the URL from your browser, the URL authentication feature of ApsaraVideo VOD is enabled. To resolve this issue, disable URL authentication or generate an authentication signature.
+        # > This will be a CDN URL if a CDN domain is configured, or an OSS URL otherwise. If you receive a 403 error when accessing this URL in a browser, it is likely because URL authentication is enabled for the VOD domain. To resolve this, either disable URL authentication or generate a signed URL for access.
         self.media_url = media_url
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The upload URL.
+        # The upload address.
         # 
-        # >  The returned upload URL is a Base64-encoded URL. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAddress only if you use OSS SDK or call an OSS API operation to upload media files.
+        # > The returned upload address is Base64-encoded and must be decoded before use. You only need to manually decode this address if you are using a native OSS SDK or an OSS API to perform the upload.
         self.upload_address = upload_address
         # The upload credential.
         # 
-        # >  The returned upload credential is a Base64-encoded value. You must decode the Base64-encoded upload URL before you use an SDK or call an API operation to upload media files. You need to parse UploadAuth only if you use OSS SDK or call an OSS API operation to upload media files.
+        # > The returned upload credential is Base64-encoded and must be decoded before use. You only need to manually decode this credential if you are using a native OSS SDK or an OSS API to perform the upload.
         self.upload_auth = upload_auth
 
     def validate(self):

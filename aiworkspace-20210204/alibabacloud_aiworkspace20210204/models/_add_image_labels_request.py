@@ -12,7 +12,7 @@ class AddImageLabelsRequest(DaraModel):
         self,
         labels: List[main_models.AddImageLabelsRequestLabels] = None,
     ):
-        # The list of image tags.
+        # A list of image labels.
         # 
         # This parameter is required.
         self.labels = labels
@@ -51,28 +51,45 @@ class AddImageLabelsRequestLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. The following keys can be added:
+        # The key of the label. The following keys are supported:
         # 
-        # *   system.chipType
-        # *   system.dsw.cudaVersion
-        # *   system.dsw.fromImageId
-        # *   system.dsw.fromInstanceId
-        # *   system.dsw.id
-        # *   system.dsw.os
-        # *   system.dsw.osVersion
-        # *   system.dsw.resourceType
-        # *   system.dsw.rootImageId
-        # *   system.dsw.stage
-        # *   system.dsw.tag
-        # *   system.dsw.type
-        # *   system.framework
-        # *   system.origin
-        # *   system.pythonVersion
-        # *   system.source
-        # *   system.supported.dlc
-        # *   system.supported.dsw
+        # - system.chipType
+        # 
+        # - system.dsw\\.cudaVersion
+        # 
+        # - system.dsw\\.fromImageId
+        # 
+        # - system.dsw\\.fromInstanceId
+        # 
+        # - system.dsw\\.id
+        # 
+        # - system.dsw\\.os
+        # 
+        # - system.dsw\\.osVersion
+        # 
+        # - system.dsw\\.resourceType
+        # 
+        # - system.dsw\\.rootImageId
+        # 
+        # - system.dsw\\.stage
+        # 
+        # - system.dsw\\.tag
+        # 
+        # - system.dsw\\.type
+        # 
+        # - system.framework
+        # 
+        # - system.origin
+        # 
+        # - system.pythonVersion
+        # 
+        # - system.source
+        # 
+        # - system.supported.dlc
+        # 
+        # - system.supported.dsw
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

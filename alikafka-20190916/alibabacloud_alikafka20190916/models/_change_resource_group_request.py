@@ -11,9 +11,9 @@ class ChangeResourceGroupRequest(DaraModel):
         region_id: str = None,
         resource_id: str = None,
     ):
-        # The ID of the resource group to which you want to transfer the cloud resource.
+        # The ID of the resource group to which you want to move the cloud resource instance.
         # 
-        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/94475.html)
+        # > Resource groups are a mechanism for grouping and managing resources under an Alibaba Cloud account, which helps you solve the complexity of resource grouping and authorization management within a single cloud account. For more information, see [Resource Management](https://help.aliyun.com/document_detail/94475.html).
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
@@ -21,9 +21,9 @@ class ChangeResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource to which you want to attach a tag. Only the ID of a Message Queue for Apache Kafka instance is supported.
+        # The ID of the resource to be tagged. Currently, only instance-level tagging is supported.
         # 
-        # For example, if the ID of the instance is alikafka_post-cn-v0h1fgs2xxxx, the resource ID is alikafka_post-cn-v0h1fgs2xxxx.
+        # For example, if the instance ID is alikafka_post-cn-v0h1fgs2xxxx, the resource ID is alikafka_post-cn-v0h1fgs2xxxx.
         # 
         # This parameter is required.
         self.resource_id = resource_id

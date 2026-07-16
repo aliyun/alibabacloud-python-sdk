@@ -22,29 +22,62 @@ class CreateNormalizationRuleRequest(DaraModel):
         normalization_rule_type: str = None,
         normalization_rule_version: int = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         order_field: str = None,
         product_id: str = None,
         region_id: str = None,
         role_for: int = None,
         vendor_id: str = None,
     ):
+        # Specifies whether to pack non-standard fields into the extension field extend_content. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
+        # The storage mode for extension fields. Valid values: flat, pack, and reject.
         self.extend_field_store_mode = extend_field_store_mode
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
+        # The list of normalization rule IDs.
         self.normalization_rule_ids = normalization_rule_ids
+        # The mode of the normalization rule. Valid values:
+        # - both
+        # - scan
+        # - realtime.
         self.normalization_rule_mode = normalization_rule_mode
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The type of the normalization rule. Valid values:
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The field used to sort the rule list. Valid values:
+        # - GmtModified: sorted by modification time.
+        # - Id: sorted by rule ID (default).
         self.order_field = order_field
+        # The product ID.
         self.product_id = product_id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
+        # The ID of the member accounts in the resource directory.
         self.role_for = role_for
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -93,6 +126,9 @@ class CreateNormalizationRuleRequest(DaraModel):
 
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
+
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
 
         if self.order_field is not None:
             result['OrderField'] = self.order_field
@@ -151,6 +187,9 @@ class CreateNormalizationRuleRequest(DaraModel):
 
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
+
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
 
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')

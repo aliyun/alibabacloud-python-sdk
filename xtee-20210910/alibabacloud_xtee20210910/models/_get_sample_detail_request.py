@@ -11,8 +11,11 @@ class GetSampleDetailRequest(DaraModel):
         reg_id: str = None,
         sample_id: int = None,
     ):
+        # The language of error messages returned by the API. Valid values: zh: Chinese; en: English. The default value is en.
         self.lang = lang
+        # The area encoding.
         self.reg_id = reg_id
+        # The sample ID.
         self.sample_id = sample_id
 
     def validate(self):

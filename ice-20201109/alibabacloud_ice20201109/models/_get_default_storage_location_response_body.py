@@ -13,10 +13,19 @@ class GetDefaultStorageLocationResponseBody(DaraModel):
         status: str = None,
         storage_type: str = None,
     ):
+        # OSS bucket name
         self.bucket = bucket
+        # Path
         self.path = path
+        # Request ID
         self.request_id = request_id
+        # Bucket status:
+        # 
+        # - Normal: The bucket is in normal status.
+        # 
+        # - notExist: The bucket does not exist.
         self.status = status
+        # Storage class
         self.storage_type = storage_type
 
     def validate(self):

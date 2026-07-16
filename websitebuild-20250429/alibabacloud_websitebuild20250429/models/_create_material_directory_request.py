@@ -11,10 +11,16 @@ class CreateMaterialDirectoryRequest(DaraModel):
         name: str = None,
         parent_directory_id: str = None,
     ):
+        # The application instance ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The folder name.
+        # 
         # This parameter is required.
         self.name = name
+        # The parent folder ID.
+        # 
         # This parameter is required.
         self.parent_directory_id = parent_directory_id
 

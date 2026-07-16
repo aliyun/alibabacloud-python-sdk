@@ -12,7 +12,9 @@ class AddFavoritePublicMediaResponseBody(DaraModel):
         ignored_list: List[str] = None,
         request_id: str = None,
     ):
+        # A list of Media Asset IDs that were not added to your Favorites. This happens if a Media Asset does not exist or is already in your Favorites.
         self.ignored_list = ignored_list
+        # The Request ID.
         self.request_id = request_id
 
     def validate(self):

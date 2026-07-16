@@ -11,7 +11,9 @@ class GetNormalizationRuleVersionResponseBody(DaraModel):
         normalization_rule_version: main_models.GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion = None,
         request_id: str = None,
     ):
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62,21 +64,45 @@ class GetNormalizationRuleVersionResponseBodyNormalizationRuleVersion(DaraModel)
         update_time: int = None,
         vendor_id: str = None,
     ):
+        # The time when the rule version was created.
         self.create_time = create_time
+        # The ID of the normalization rule category.
         self.normalization_category_id = normalization_category_id
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
+        # The expression for the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
+        # The type of the normalization rule. Valid values:
+        # 
+        # - predefined: a predefined rule.
+        # 
+        # - custom: a custom rule.
         self.normalization_rule_type = normalization_rule_type
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The name of the normalization rule version.
         self.normalization_rule_version_name = normalization_rule_version_name
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
+        # The product ID.
         self.product_id = product_id
+        # The region where the Data Management center for Threat Analysis is located. Select a region for the management center based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: Your assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your assets are in a region outside China.
         self.region_id = region_id
+        # The time when the rule version was last updated.
         self.update_time = update_time
+        # The ID of the vendor for the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

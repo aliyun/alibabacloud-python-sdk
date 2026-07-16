@@ -13,24 +13,25 @@ class ListIpamPoolCidrsRequest(DaraModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # The provisioned CIDR block that you want to query.
+        # The provisioned CIDR block to query.
         # 
-        # >  Only IPv4 CIDR blocks are supported.
+        # > Only IPv4 CIDR blocks are supported.
         self.cidr = cidr
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used to retrieve the next page of results. Set the value to the `NextToken` value that is returned in the last call. You do not need to specify this parameter for the first call.
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no further query is needed.
+        # 
+        # - If **NextToken** has a value, use it as the token for the next query.
         self.next_token = next_token
-        # The ID of the region where the IPAM instance is hosted.
+        # The ID of the region where the IPAM is created.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

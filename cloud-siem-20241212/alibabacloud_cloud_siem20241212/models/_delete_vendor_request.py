@@ -13,10 +13,23 @@ class DeleteVendorRequest(DaraModel):
         vendor_id: str = None,
         vendor_name: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region where the Data Management Center of your threat analysis service is located. Select a region for the Management Center based on the region of your asset. Valid values:
+        # 
+        # - cn-hangzhou: Your asset is in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Your asset is in a region outside China.
         self.region_id = region_id
+        # The user ID of the member. This parameter is used when an administrator switches to the perspective of a member.
         self.role_for = role_for
+        # The vendor ID.
         self.vendor_id = vendor_id
+        # The vendor name.
         self.vendor_name = vendor_name
 
     def validate(self):

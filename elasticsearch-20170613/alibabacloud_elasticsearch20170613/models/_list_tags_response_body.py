@@ -13,8 +13,9 @@ class ListTagsResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListTagsResponseBodyResult] = None,
     ):
-        # The key of the tag.
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -57,7 +58,9 @@ class ListTagsResponseBodyResult(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The label key.
         self.tag_key = tag_key
+        # The label value.
         self.tag_value = tag_value
 
     def validate(self):

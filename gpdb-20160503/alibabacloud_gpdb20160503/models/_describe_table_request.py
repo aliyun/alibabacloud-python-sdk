@@ -18,9 +18,9 @@ class DescribeTableRequest(DaraModel):
     ):
         # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the details of all AnalyticDB for PostgreSQL instances in a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
-        # The name of the database.
+        # The database name.
         # 
         # This parameter is required.
         self.database = database
@@ -29,20 +29,21 @@ class DescribeTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the schema to which the table belongs.
+        # The name of the schema that contains the table.
         # 
         # This parameter is required.
         self.schema = schema
-        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+        # The access credential. Created by calling the CreateSecret operation.
         # 
-        # >  To call the DescribeTable operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+        # > When you access this operation by using a RAM user, you must have the UseSecret or GetSecretValue permission on this SecretArn.
         # 
         # This parameter is required.
         self.secret_arn = secret_arn
-        # The name of the table.
+        # The table name.
         # 
         # This parameter is required.
         self.table = table
+        # The ID of the workspace that consists of multiple database instances. This parameter and DBInstanceId cannot both be empty. If both this parameter and DBInstanceId are specified, this parameter takes precedence.
         self.workspace_id = workspace_id
 
     def validate(self):

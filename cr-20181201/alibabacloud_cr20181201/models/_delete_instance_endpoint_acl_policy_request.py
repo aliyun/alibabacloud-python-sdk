@@ -2,36 +2,43 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_cr20181201 import models as main_models
 from darabonba.model import DaraModel
 
 class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
     def __init__(
         self,
         endpoint_type: str = None,
+        entries: List[main_models.AccessControlEntry] = None,
         entry: str = None,
         instance_id: str = None,
         module_name: str = None,
     ):
-        # The type of the endpoint. Set the value to Internet.
+        # The endpoint type. Only Internet is supported.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
-        # The CIDR block.
-        # 
-        # This parameter is required.
+        self.entries = entries
+        # The IP CIDR block.
         self.entry = entry
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the module that you want to access. Valid values:
+        # The module for which the access policy is set. Valid values:
         # 
-        # *   `Registry`: the image repository.
-        # *   `Chart`: a Helm chart.
+        # - `Registry`: access to the image repository
+        # 
+        # - `Chart`: access to Helm Chart
         self.module_name = module_name
 
     def validate(self):
-        pass
+        if self.entries:
+            for v1 in self.entries:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -40,6 +47,11 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
             result = _map
         if self.endpoint_type is not None:
             result['EndpointType'] = self.endpoint_type
+
+        result['Entries'] = []
+        if self.entries is not None:
+            for k1 in self.entries:
+                result['Entries'].append(k1.to_map() if k1 else None)
 
         if self.entry is not None:
             result['Entry'] = self.entry
@@ -56,6 +68,12 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         m = m or dict()
         if m.get('EndpointType') is not None:
             self.endpoint_type = m.get('EndpointType')
+
+        self.entries = []
+        if m.get('Entries') is not None:
+            for k1 in m.get('Entries'):
+                temp_model = main_models.AccessControlEntry()
+                self.entries.append(temp_model.from_map(k1))
 
         if m.get('Entry') is not None:
             self.entry = m.get('Entry')

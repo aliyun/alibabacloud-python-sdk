@@ -1,3 +1,172 @@
+2026-07-15 Version: 7.6.0
+- Support API DescribeApplicationSessionIds.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.InsName.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.Timestamp.
+- Update API DescribeApplicationPerformance: add request parameters Downsample.
+- Update API DescribeApplicationPerformance: add request parameters EndStep.
+- Update API DescribeApplicationPerformance: add request parameters MaxPoints.
+- Update API DescribeApplicationPerformance: add request parameters StartStep.
+- Update API DescribeApplicationPerformance: add response parameters Body.Interval.
+- Update API DescribeApplicationPerformance: add response parameters Body.PerformanceKeys.$.Points.$.Step.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageAutoScale.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageUpperBound.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMax.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMin.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryRecommended.
+
+
+2026-07-15 Version: 7.6.0
+- Support API DescribeApplicationSessionIds.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.InsName.
+- Update API DescribeApplicationLogs: add response parameters Body.Items.$.Timestamp.
+- Update API DescribeApplicationPerformance: add request parameters Downsample.
+- Update API DescribeApplicationPerformance: add request parameters EndStep.
+- Update API DescribeApplicationPerformance: add request parameters MaxPoints.
+- Update API DescribeApplicationPerformance: add request parameters StartStep.
+- Update API DescribeApplicationPerformance: add response parameters Body.Interval.
+- Update API DescribeApplicationPerformance: add response parameters Body.PerformanceKeys.$.Points.$.Step.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageAutoScale.
+- Update API DescribeDBClusterAttribute: add response parameters Body.StorageUpperBound.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMax.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryMin.
+- Update API DescribeDBClusterAttribute: add response parameters Body.DBNodes.$.RemoteMemoryRecommended.
+
+
+2026-07-10 Version: 7.5.0
+- Support API DescribeDBClusterPrice.
+- Update API CreateAIDBClusterTask: add request parameters TuneArch.
+- Update API CreateBackup: add request parameters Comment.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesInfo.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesType.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.VnodeKubernetesConfig.
+- Update API DescribeAIDBClusterTaskAttribute: add response parameters Body.TuneArch.
+- Update API DescribeAIDBClusterTasks: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeBackups: add response parameters Body.Items.$.Comment.
+- Update API DescribeBudgetPolicies: add request parameters ScopeRefName.
+- Update API DescribeConsumers: add request parameters ConsumerName.
+- Update API DescribeConsumers: add request parameters ConsumerNameList.
+- Update API DescribeDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API DescribeDBClusterSSL: add request parameters PfsInstanceId.
+- Update API DescribePolarFsAttribute: add response parameters Body.DBEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.EndpointItems.
+- Update API DescribePolarFsAttribute: add response parameters Body.MaxscaleEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaMxsConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccName.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccSk.
+- Update API ModifyDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API ModifyDBClusterSSL: add request parameters ConnectionString.
+- Update API ModifyDBClusterSSL: add request parameters PfsInstanceId.
+
+
+2026-07-10 Version: 7.5.0
+- Support API DescribeDBClusterPrice.
+- Update API CreateAIDBClusterTask: add request parameters TuneArch.
+- Update API CreateBackup: add request parameters Comment.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesInfo.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.TimeSlicesType.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.VnodeKubernetesConfig.
+- Update API DescribeAIDBClusterTaskAttribute: add response parameters Body.TuneArch.
+- Update API DescribeAIDBClusterTasks: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeAvailableModels: add response parameters Body.Items.$.TuneArch.
+- Update API DescribeBackups: add response parameters Body.Items.$.Comment.
+- Update API DescribeBudgetPolicies: add request parameters ScopeRefName.
+- Update API DescribeConsumers: add request parameters ConsumerName.
+- Update API DescribeConsumers: add request parameters ConsumerNameList.
+- Update API DescribeDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API DescribeDBClusterSSL: add request parameters PfsInstanceId.
+- Update API DescribePolarFsAttribute: add response parameters Body.DBEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.EndpointItems.
+- Update API DescribePolarFsAttribute: add response parameters Body.MaxscaleEndpointId.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaMxsConnString.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccName.
+- Update API DescribePolarFsAttribute: add response parameters Body.UserDefaultAccSk.
+- Update API ModifyDBClusterAccessWhitelist: add request parameters PfsInstanceId.
+- Update API ModifyDBClusterSSL: add request parameters ConnectionString.
+- Update API ModifyDBClusterSSL: add request parameters PfsInstanceId.
+
+
+2026-07-02 Version: 7.4.0
+- Support API DescribePolarFs.
+
+
+2026-07-01 Version: 7.3.0
+- Support API CreateAgenticDBBranch.
+- Support API CreateAgenticDBProject.
+- Support API CreateAgenticDBTenantApiKey.
+- Support API DeleteAgenticDBBranch.
+- Support API DeleteAgenticDBComputeCluster.
+- Support API DeleteAgenticDBProject.
+- Support API DeleteAgenticDBTenantApiKey.
+- Support API DescribeAgenticDBBranch.
+- Support API DescribeAgenticDBBranchEndpoints.
+- Support API DescribeAgenticDBBranchLineage.
+- Support API DescribeAgenticDBBranches.
+- Support API DescribeAgenticDBClusters.
+- Support API DescribeAgenticDBComputeClusters.
+- Support API DescribeAgenticDBProject.
+- Support API DescribeAgenticDBProjects.
+- Support API DescribeAgenticDBTenantApiKeys.
+- Support API ResetAgenticDBTenantApiKey.
+- Support API VerifyAgenticDBTenantApiKey.
+- Update API CreateDBCluster: add request parameters AgenticDbClusterDescription.
+- Update API CreateDBCluster: add request parameters AgenticDbClusterId.
+- Update API CreateDBCluster: add request parameters AgenticDbType.
+- Update API CreateDBCluster: add response parameters Body.AgenticDbClusterDescription.
+- Update API CreateDBCluster: add response parameters Body.AgenticDbClusterId.
+- Update API DescribeDBClusterAttribute: add response parameters Body.ConnectionResourceQuota.
+- Update API DescribeDBClusterAttribute: add response parameters Body.ConnectionResourceUsed.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.ConnectionResourceQuota.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.ConnectionResourceUsed.
+- Update API ModifyDBCluster: add request parameters ConnectionResourceQuota.
+
+
+2026-06-30 Version: 7.2.0
+- Support API DescribePolarClawAgentFile.
+- Support API DescribePolarClawAgentTools.
+- Support API DescribePolarClawSkillDetail.
+- Support API InstallPolarClawSkill.
+- Support API SearchPolarClawSkills.
+- Support API UpdatePolarClawAgentSkills.
+- Support API UpdatePolarClawAgentTools.
+- Support API UpdatePolarClawSkill.
+
+
+2026-06-26 Version: 7.1.0
+- Support API CreateBatchConsumer.
+- Support API DescribeApikeyAttribute.
+- Support API DescribeGatewayApikeyList.
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.GatewayId.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Default.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Files.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Model.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Skills.
+- Update API DescribePolarClawAgents: add response parameters Body.Agents.$.Workspace.
+- Update API DescribePolarFsAttribute: add response parameters Body.MetaInstanceName.
+- Update API UpdatePolarClawAgent: add request parameters IsDefault.
+- Update API UpdatePolarClawAgent: add request parameters KeepWorkspaceFiles.
+
+
+2026-06-17 Version: 7.0.0
+- Support API OperateApplication.
+- Update API CreateAIDBCluster: add request parameters ModelName.
+- Update API CreateAIDBCluster: delete request parameters ModeName.
+- Update API CreateBatchTask: add request parameters ApplicationType.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.GraphLlmModelName.
+- Update API DescribeBackups: add response parameters Body.Items.$.TableRestoreMetaStatus.
+- Update API DescribeBatchTask: add response parameters Body.ApplicationType.
+- Update API DescribeDBClusterVersion: add response parameters Body.DBLatestStableVersion.
+- Update API DescribeDBClusterVersion: add response parameters Body.IsLatestStableVersion.
+- Update API DisableDBClusterServerless: add request parameters FromTimeService.
+- Update API DisableDBClusterServerless: add request parameters PlannedEndTime.
+- Update API DisableDBClusterServerless: add request parameters PlannedStartTime.
+- Update API EnableDBClusterServerless: add request parameters FromTimeService.
+- Update API EnableDBClusterServerless: add request parameters PlannedEndTime.
+- Update API EnableDBClusterServerless: add request parameters PlannedStartTime.
+
+
 2026-05-20 Version: 6.20.0
 - Support API DescribeSharedBackups.
 

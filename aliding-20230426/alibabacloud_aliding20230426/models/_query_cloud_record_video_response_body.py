@@ -13,7 +13,6 @@ class QueryCloudRecordVideoResponseBody(DaraModel):
         request_id: str = None,
         video_list: List[main_models.QueryCloudRecordVideoResponseBodyVideoList] = None,
     ):
-        # requestId
         self.request_id = request_id
         self.video_list = video_list
 

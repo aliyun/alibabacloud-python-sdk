@@ -13,7 +13,9 @@ class GetDataBatchIngestionResponseBody(DaraModel):
         data_batch_ingestion: main_models.GetDataBatchIngestionResponseBodyDataBatchIngestion = None,
         request_id: str = None,
     ):
+        # The details of the batch data ingestion task.
         self.data_batch_ingestion = data_batch_ingestion
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,15 +60,37 @@ class GetDataBatchIngestionResponseBodyDataBatchIngestion(DaraModel):
         log_user_ids: List[str] = None,
         recommend_data_ingestion_ids: List[str] = None,
     ):
+        # The list of data ingestion IDs for Alibaba Cloud services.
         self.apsara_data_ingestion_ids = apsara_data_ingestion_ids
+        # Specifies whether to automatically discover new users. Valid values:
+        # 
+        # - enabled: New users are automatically discovered.
+        # 
+        # - disabled: New users are not automatically discovered.
         self.auto_scan_new = auto_scan_new
+        # The time when the configuration of the batch data ingestion task took effect.
         self.data_batch_ingestion_effect_time = data_batch_ingestion_effect_time
+        # The mode of the batch data ingestion task.
         self.data_batch_ingestion_mode = data_batch_ingestion_mode
+        # The time when the batch data ingestion task was configured.
         self.data_batch_ingestion_set_time = data_batch_ingestion_set_time
+        # The status of the batch data ingestion task. Valid values:
+        # 
+        # - pending: The configuration is pending to take effect.
+        # 
+        # - running: The configuration is taking effect.
+        # 
+        # - success: The configuration has taken effect.
+        # 
+        # - failed: The configuration failed to take effect.
         self.data_batch_ingestion_status = data_batch_ingestion_status
+        # The list of data ingestion tasks.
         self.data_ingestions = data_ingestions
+        # Specifies whether to automatically discover new Logstores.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The list of user IDs for batch data ingestion.
         self.log_user_ids = log_user_ids
+        # The list of recommended data ingestion IDs.
         self.recommend_data_ingestion_ids = recommend_data_ingestion_ids
 
     def validate(self):
@@ -160,10 +184,19 @@ class GetDataBatchIngestionResponseBodyDataBatchIngestionDataIngestions(DaraMode
         product_id: str = None,
         vendor_id: str = None,
     ):
+        # The ID of the data ingestion task.
         self.data_ingestion_id = data_ingestion_id
+        # The status of the data ingestion task. Valid values:
+        # 
+        # - enabled: enabled
+        # 
+        # - disabled: disabled
         self.data_ingestion_status = data_ingestion_status
+        # The ID of the data source.
         self.data_source_id = data_source_id
+        # The ID of the product.
         self.product_id = product_id
+        # The ID of the vendor.
         self.vendor_id = vendor_id
 
     def validate(self):

@@ -16,10 +16,19 @@ class ListClusterAgentInstallRecordsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # Request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
+        # Status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate authorization failure. When authorization fails, check the `message` field for detailed error information.
         self.code = code
+        # Response results.
         self.data = data
+        # Error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # Total number of query results.
         self.total = total
 
     def validate(self):
@@ -88,11 +97,19 @@ class ListClusterAgentInstallRecordsResponseBodyData(DaraModel):
     ):
         self.agent_config_id = agent_config_id
         self.agent_config_name = agent_config_name
+        # Cluster ID.
+        # 
+        # > This cluster ID is not the ACK cluster ID.
         self.cluster_id = cluster_id
+        # Creation time.
         self.created_at = created_at
+        # Canary release configuration.
         self.grayscale_config = grayscale_config
+        # Component ID.
         self.plugin_id = plugin_id
+        # Plugin version.
         self.plugin_version = plugin_version
+        # Modification time.
         self.updated_at = updated_at
 
     def validate(self):

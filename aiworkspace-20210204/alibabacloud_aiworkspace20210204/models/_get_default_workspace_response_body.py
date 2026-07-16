@@ -23,39 +23,45 @@ class GetDefaultWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The conditions of the default workspace in the creation process.
+        # The details about the creation stages of the default workspace.
         self.conditions = conditions
-        # The UID of the Alibaba Cloud account.
+        # The Alibaba Cloud account that created the workspace.
         self.creator = creator
-        # The workspace description.
+        # The description of the workspace.
         self.description = description
         # The display name of the workspace.
         self.display_name = display_name
-        # The environments of the workspace. Valid values:
+        # The environments in the workspace.
         # 
-        # *   Workspaces in basic mode can run only in the production environment.
-        # *   Workspaces in standard mode can run in both the development and production environments.
+        # - A workspace in basic mode contains only the production (prod) environment.
+        # 
+        # - A workspace in standard mode contains the development (dev) and production (prod) environments.
         self.env_types = env_types
-        # The time when the workspace was created, in UTC. The time follows the ISO 8601 standard.
+        # The time when the workspace was created. The time is in Coordinated Universal Time (UTC) and is formatted in ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The time when the workspace was modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the workspace was last modified. The time is in UTC and is formatted in ISO 8601.
         self.gmt_modified_time = gmt_modified_time
-        # The UID of the Alibaba Cloud account.
+        # The Alibaba Cloud account that created the workspace.
         self.owner = owner
         # The request ID.
         self.request_id = request_id
-        # The workspace status. Valid values:
+        # The status of the workspace. Valid values:
         # 
-        # *   ENABLED
-        # *   INITIALIZING
-        # *   FAILURE
-        # *   DISABLED
-        # *   FROZEN
-        # *   UPDATING
+        # - ENABLED: Normal.
+        # 
+        # - INITIALIZING: Initializing.
+        # 
+        # - FAILURE: Failed.
+        # 
+        # - DISABLED: Disabled.
+        # 
+        # - FROZEN: Frozen due to an overdue payment.
+        # 
+        # - UPDATING: The workspace is being updated.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The workspace name, which is unique in a region.
+        # The name of the workspace. The name must be unique within the same region.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -162,9 +168,9 @@ class GetDefaultWorkspaceResponseBodyOwner(DaraModel):
         user_kp: str = None,
         user_name: str = None,
     ):
-        # The user ID.
+        # The UID of the user.
         self.user_id = user_id
-        # The user ID.
+        # The UID of the user.
         self.user_kp = user_kp
         # The username.
         self.user_name = user_name
@@ -208,16 +214,19 @@ class GetDefaultWorkspaceResponseBodyConditions(DaraModel):
         message: str = None,
         type: str = None,
     ):
-        # The returned status code. HTTP status code 200 indicates that the request was successful. Other HTTP status codes indicate that the request failed.
+        # The status code. A value of 200 indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
-        # The error message. If the returned status code is 200, this parameter is empty.
+        # The error message. This parameter is empty if the status code is 200.
         self.message = message
         # The task type. Valid values:
         # 
-        # *   CREATING: The workspace is being created.
-        # *   WORKSPACE_CREATED: The workspace is created.
-        # *   MEMBERS_ADDED: The member is added.
-        # *   ENABLED: The workspace is created and the member is added.
+        # - CREATING: Creating.
+        # 
+        # - WORKSPACE_CREATED: The workspace is created.
+        # 
+        # - MEMBERS_ADDED: Members are added.
+        # 
+        # - ENABLED: The process is complete.
         self.type = type
 
     def validate(self):

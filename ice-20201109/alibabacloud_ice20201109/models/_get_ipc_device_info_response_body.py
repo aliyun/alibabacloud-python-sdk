@@ -14,8 +14,11 @@ class GetIpcDeviceInfoResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # List of device identity information.
         self.device_infos = device_infos
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -65,8 +68,17 @@ class GetIpcDeviceInfoResponseBodyDeviceInfos(DaraModel):
         device_id: str = None,
         expire_time: str = None,
     ):
+        # Capability. Valid values:
+        # 
+        # - understand: understanding
+        # 
+        # - understand-reid: understanding with reid
+        # 
+        # - search: search
         self.capability = capability
+        # Device ID.
         self.device_id = device_id
+        # Expiration Time. UTC time in the format yyyy-MM-ddTHH:mm:ssZ.
         self.expire_time = expire_time
 
     def validate(self):

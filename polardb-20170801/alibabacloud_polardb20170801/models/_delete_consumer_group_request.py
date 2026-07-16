@@ -11,10 +11,15 @@ class DeleteConsumerGroupRequest(DaraModel):
         gw_cluster_id: str = None,
         region_id: str = None,
     ):
+        # The name of the consumer group.
+        # 
         # This parameter is required.
         self.consumer_group_name = consumer_group_name
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -17,34 +17,27 @@ class CreateUniRestorePlanRequest(DaraModel):
     ):
         # The name of the database.
         self.database = database
-        # The UUID of the Hybrid Backup Recovery (HBR) agent that is used to restore the data of the database on your server.
-        # 
-        # >  You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to query the UUID.
+        # The unique identifier of the database backup client on the destination server for restoration.
+        # >Call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
         self.instance_uuid = instance_uuid
-        # The ID of the anti-ransomware policy.
-        # 
-        # >  You can call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to query the ID.
+        # The ID of the database anti-ransomware backup policy.
+        # >Call the [DescribeUniBackupPolicies](~~DescribeUniBackupPolicies~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.policy_id = policy_id
-        # The identifier of the point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
-        # 
-        # >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
+        # The **reset_scn** value of the selected record from the recoverable points in time when you query backups for an Oracle database.
+        # >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
         self.reset_scn = reset_scn
-        # The point in time for restoration in the backup version that you want to use. The database is an Oracle database.****
-        # 
-        # >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the value.
+        # The **reset_time** value of the selected record from the recoverable points in time when you query backups for an Oracle database.
+        # >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
         self.reset_time = reset_time
-        # The information about the database. This parameter is available when the database is a Microsoft SQL Server (MSSQL) database. The value is a JSON string. Valid values:
-        # 
-        # *   **name**: the name of the database
-        # *   **files**: the path to the database files
-        # 
-        # >  You can call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to query the information.
+        # The database restoration information when the database type is MSSQL. The value is a JSON string. Valid values:
+        # - **name**: the name of the database.
+        # - **files**: the file path of the database.
+        # >Call the [DescribeUniRecoverableList](~~DescribeUniRecoverableList~~) operation to obtain this parameter.
         self.restore_info = restore_info
-        # The point in time to which you want to restore data.
-        # 
-        # >  You can call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to query the point in time.
+        # The point in time to which you want to restore the database.
+        # >Call the [DescribeRestorePlans](~~DescribeRestorePlans~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.time_point = time_point

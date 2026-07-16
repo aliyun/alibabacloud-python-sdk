@@ -9,6 +9,7 @@ class CreateAppTokenServiceRequest(DaraModel):
         self,
         create_action: str = None,
     ):
+        # The subscription type: OPEN_SUBSCRIPTION.
         self.create_action = create_action
 
     def validate(self):

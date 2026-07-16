@@ -15,20 +15,21 @@ class GetFileVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the file version.
+        # Version details of the file.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The HTTP status code.
+        # HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The unique ID of this request. If an error occurs, you can troubleshoot the issue using this ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call succeeded.
         # 
-        # *   true
-        # *   false
+        # - true: Succeeded.
+        # 
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -100,48 +101,59 @@ class GetFileVersionResponseBodyData(DaraModel):
         status: str = None,
         use_type: str = None,
     ):
-        # The type of the change to the file of the current version. Valid values: CREATE, UPDATE, and DELETE.
+        # The change type of this file version, including CREATE, UPDATE, and DELETE.
         self.change_type = change_type
-        # The description of the file version.
+        # Description of this file version.
         self.comment = comment
-        # The time when the file version was generated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # UNIX timestamp (in milliseconds) when the file version was generated.
         self.commit_time = commit_time
-        # The ID of the Alibaba Cloud account that is used to generate the file of the current version.
+        # User ID of the Alibaba Cloud user who generated this file version.
         self.commit_user = commit_user
-        # The code in the file of the current version.
+        # The code of the file for this version.
         self.file_content = file_content
-        # The name of the file of the current version.
+        # File name used to generate this file version.
         self.file_name = file_name
-        # The basic information about the file of the current version.
+        # Basic information of the file used to generate this file version.
         self.file_property_content = file_property_content
-        # The file version.
+        # The version of the file.
         self.file_version = file_version
-        # Indicates whether the version is the latest version in the production environment. Valid values:
+        # Indicates whether this file version is the latest version in the current production environment.
         # 
-        # *   true
-        # *   false
+        # - true: It is the latest version.
+        # 
+        # - false: It is not the latest version.
         self.is_current_prod = is_current_prod
-        # The scheduling configurations of the node that corresponds to the file of the current version.
+        # The scan configuration at the time this file version was generated.
         self.node_content = node_content
-        # The ID of the node that corresponds to the file version.
+        # The ID of the scheduling task corresponding to the generation of this file version.
         self.node_id = node_id
-        # The status of the file version. Valid values:
+        # Current status of the file version. Valid values:
         # 
-        # *   COMMITTING
-        # *   COMMITTED or CHECK_OK
-        # *   PACKAGED
-        # *   DEPLOYING
-        # *   DEPLOYED
-        # *   CANCELLED
+        # - COMMITTING (Submitting)
+        # 
+        # - COMMITTED or CHECK_OK (Submitted)
+        # 
+        # - PACKAGED (Preparing for publish)
+        # 
+        # - DEPLOYING (In Publish)
+        # 
+        # - DEPLOYED (Published)
+        # 
+        # - CANCELLED (Publish canceled)
         self.status = status
-        # The module to which the file belongs. Valid values:
+        # Function module to which the file belongs. Valid values:
         # 
-        # *   0: NORMAL, which indicates that the file is used for DataStudio.
-        # *   1: MANUAL, which indicates that the file is used for a manually triggered node.
-        # *   2: MANUAL_BIZ, which indicates that the file is used for a manually triggered workflow.
-        # *   3: SKIP, which indicates that the file is used for a dry-run node in DataStudio.
-        # *   10: ADHOCQUERY, which indicates that the file is used for an ad hoc query.
-        # *   30: COMPONENT, which indicates that the file is used for a script template.
+        # - 0: NORMAL (Data Development)
+        # 
+        # - 1: MANUAL (one-time task)
+        # 
+        # - 2: MANUAL_BIZ (manual pipeline)
+        # 
+        # - 3: SKIP (Dry-Run scheduling in Data Development)
+        # 
+        # - 10: ADHOCQUERY (Ad Hoc Query)
+        # 
+        # - 30: COMPONENT (widget Management)
         self.use_type = use_type
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeSceneAllEventNameCodeListResponseBody(DaraModel):
         result_object: List[main_models.DescribeSceneAllEventNameCodeListResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Status code
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID, which is unique for each request, facilitating subsequent troubleshooting
+        # The request ID. Each request has a unique ID for troubleshooting purposes.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Indicates whether the operation was successful, where true means success.
+        # Indicates whether the operation was successful. A value of true indicates success.
         self.success = success
 
     def validate(self):
@@ -97,15 +97,15 @@ class DescribeSceneAllEventNameCodeListResponseBodyResultObject(DaraModel):
         event_name: str = None,
         event_type: str = None,
     ):
-        # Child objects
+        # The child class objects.
         self.children = children
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):
@@ -168,13 +168,13 @@ class DescribeSceneAllEventNameCodeListResponseBodyResultObjectChildren(DaraMode
         event_name: str = None,
         event_type: str = None,
     ):
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Event type
+        # The event type.
         self.event_type = event_type
 
     def validate(self):

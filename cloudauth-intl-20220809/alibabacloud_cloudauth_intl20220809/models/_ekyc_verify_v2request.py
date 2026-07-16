@@ -15,6 +15,7 @@ class EkycVerifyV2Request(DaraModel):
         face_picture_base_64: str = None,
         face_picture_file: str = None,
         face_picture_url: str = None,
+        face_quality_check: str = None,
         id_ocr_picture_base_64: str = None,
         id_ocr_picture_file: str = None,
         id_ocr_picture_url: str = None,
@@ -23,20 +24,52 @@ class EkycVerifyV2Request(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        # Specifies whether to enable authoritative identity verification. Currently, this feature is applicable only to second-generation ID cards of mainland China.
         self.authorize = authorize
+        # Specifies whether cropping is allowed. Not allowed by default. Valid values: T and F.
+        # 
+        # - T: Cropping is allowed.
+        # - F: Cropping is not allowed. (Default: F)
         self.crop = crop
+        # The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports combinations of Chinese characters with a length of at least 1 character. Special characters are not supported, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
+        # The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, at least one of the following groups must be provided: document key information (DocName, DocNo) or document image (IdOcrPictureBase64/URL). Note: Supports a combination of letters and digits with a length of 18 characters.
         self.doc_no = doc_no
+        # The document type.
         self.doc_type = doc_type
+        # The Base64-encoded face image.
+        # 
+        # Note:
+        # 
+        # - If you use this method to pass the face image, check the photo size and do not pass an overly large photo.
+        # - You can only specify one of FacePictureBase64, FacePictureUrl, and FacePictureFile.
         self.face_picture_base_64 = face_picture_base_64
+        # The file stream of the face photo.
         self.face_picture_file = face_picture_file
+        # The URL of the face photo.
         self.face_picture_url = face_picture_url
+        self.face_quality_check = face_quality_check
+        # The Base64-encoded document image. Note:
+        # 
+        # - If you use this method to pass the document image, check the photo size and do not pass an overly large photo.
+        # - You can only specify one of IdOcrPictureBase64, IdOcrPictureUrl, and IdOcrPictureFile.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # The file stream of the front side of the document image.
         self.id_ocr_picture_file = id_ocr_picture_file
+        # The URL of the front side of the document image.
         self.id_ocr_picture_url = id_ocr_picture_url
+        # The custom OCR quality detection threshold mode:
+        # 
+        # - 0: System default.
+        # - 1: Strict mode.
+        # - 2: Lenient mode.
+        # - 3 (Default): Quality detection is disabled.
         self.id_threshold = id_threshold
+        # A unique business identifier customized by the merchant, used for subsequent troubleshooting. Supports a combination of letters and digits with a length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
+        # A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
+        # The product code.
         self.product_code = product_code
 
     def validate(self):
@@ -70,6 +103,9 @@ class EkycVerifyV2Request(DaraModel):
 
         if self.face_picture_url is not None:
             result['FacePictureUrl'] = self.face_picture_url
+
+        if self.face_quality_check is not None:
+            result['FaceQualityCheck'] = self.face_quality_check
 
         if self.id_ocr_picture_base_64 is not None:
             result['IdOcrPictureBase64'] = self.id_ocr_picture_base_64
@@ -119,6 +155,9 @@ class EkycVerifyV2Request(DaraModel):
 
         if m.get('FacePictureUrl') is not None:
             self.face_picture_url = m.get('FacePictureUrl')
+
+        if m.get('FaceQualityCheck') is not None:
+            self.face_quality_check = m.get('FaceQualityCheck')
 
         if m.get('IdOcrPictureBase64') is not None:
             self.id_ocr_picture_base_64 = m.get('IdOcrPictureBase64')

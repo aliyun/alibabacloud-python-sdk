@@ -11,6 +11,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest(DaraModel):
         current_expiration_date: int = None,
         domain_name: str = None,
         lang: str = None,
+        permit_premium_renew: bool = None,
         promotion_no: str = None,
         subscription_duration: int = None,
         use_coupon: bool = None,
@@ -23,6 +24,7 @@ class SaveSingleTaskForCreatingOrderRenewRequest(DaraModel):
         # This parameter is required.
         self.domain_name = domain_name
         self.lang = lang
+        self.permit_premium_renew = permit_premium_renew
         self.promotion_no = promotion_no
         # This parameter is required.
         self.subscription_duration = subscription_duration
@@ -49,6 +51,9 @@ class SaveSingleTaskForCreatingOrderRenewRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.permit_premium_renew is not None:
+            result['PermitPremiumRenew'] = self.permit_premium_renew
 
         if self.promotion_no is not None:
             result['PromotionNo'] = self.promotion_no
@@ -80,6 +85,9 @@ class SaveSingleTaskForCreatingOrderRenewRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('PermitPremiumRenew') is not None:
+            self.permit_premium_renew = m.get('PermitPremiumRenew')
 
         if m.get('PromotionNo') is not None:
             self.promotion_no = m.get('PromotionNo')

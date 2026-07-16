@@ -14,11 +14,17 @@ class ExportGeneratedContentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request identity
         self.request_id = request_id
+        # Operation result: true for success, false for failure
         self.success = success
 
     def validate(self):

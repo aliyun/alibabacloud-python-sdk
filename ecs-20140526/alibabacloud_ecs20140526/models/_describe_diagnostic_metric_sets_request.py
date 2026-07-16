@@ -20,8 +20,9 @@ class DescribeDiagnosticMetricSetsRequest(DaraModel):
         # 
         # Default value:
         # 
-        # *   If this parameter is left empty, the default value is 10.
-        # *   If you set this parameter to a value that is greater than 100, the default value is 100.
+        # - If this parameter is left empty, the default value is 10.
+        # 
+        # - If you set this parameter to a value that is greater than 100, the default value is 100.
         self.max_results = max_results
         # The IDs of diagnostic metric sets.
         self.metric_set_ids = metric_set_ids
@@ -35,8 +36,9 @@ class DescribeDiagnosticMetricSetsRequest(DaraModel):
         self.resource_type = resource_type
         # The type of the diagnostic metric set. Valid values:
         # 
-        # *   User: custom diagnostic metric set
-        # *   Common: public diagnostic metric set
+        # - User: custom diagnostic metric set
+        # 
+        # - Common: public diagnostic metric set
         # 
         # Default value: User.
         self.type = type

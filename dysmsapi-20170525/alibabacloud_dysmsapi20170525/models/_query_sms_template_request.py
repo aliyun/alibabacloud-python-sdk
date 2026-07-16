@@ -15,9 +15,11 @@ class QuerySmsTemplateRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The code of the message template.
+        # The template code.
         # 
-        # You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm), click **Go China** or **Go Globe** in the left-side navigation pane, and then view the template code on the **Templates** tab. You can also call the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation to obtain the template code.
+        # - The template code is returned in the response of the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) API.
+        # 
+        # - The template code is available on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
         # 
         # This parameter is required.
         self.template_code = template_code

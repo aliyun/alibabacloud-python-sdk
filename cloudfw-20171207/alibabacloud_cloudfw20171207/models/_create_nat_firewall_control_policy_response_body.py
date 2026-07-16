@@ -12,9 +12,9 @@ class CreateNatFirewallControlPolicyResponseBody(DaraModel):
     ):
         # The unique ID of the access control policy.
         # 
-        # >  To modify an access control policy, you must specify the unique ID of the policy. You can call the DescribeNatFirewallControlPolicy operation to obtain the ID.
+        # > To modify an access control policy, you must provide its unique ID. You can call the `DescribeNatFirewallControlPolicy` operation to obtain this ID.
         self.acl_uuid = acl_uuid
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

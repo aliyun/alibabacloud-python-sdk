@@ -30,24 +30,43 @@ class DescribeInvadeEventDetailResponseBody(DaraModel):
         risk_level: int = None,
         unhandle_operation_list: List[main_models.DescribeInvadeEventDetailResponseBodyUnhandleOperationList] = None,
     ):
+        # The instance ID of the asset.
         self.assets_instance_id = assets_instance_id
+        # The name of the asset.
         self.assets_instance_name = assets_instance_name
+        # The description of the event.
         self.event_desc = event_desc
+        # The details of the event.
         self.event_detail = event_detail
+        # The key of the event.
         self.event_key = event_key
+        # The name of the event.
         self.event_name = event_name
+        # The UUID of the threat detection event.
         self.event_uuid = event_uuid
+        # The time when the event first occurred. This value is a UNIX timestamp. Unit: seconds.
         self.first_time = first_time
+        # Indicates whether the event is ignored.
         self.is_ignore = is_ignore
+        # The time when the event last occurred. This value is a UNIX timestamp. Unit: seconds.
         self.last_time = last_time
+        # The list of remediation operations.
         self.operation_list = operation_list
+        # The private IP address.
         self.private_ip = private_ip
+        # The handling status of the event.
         self.process_status = process_status
+        # The public IP address.
         self.public_ip = public_ip
+        # The reference information.
         self.reference = reference
+        # The region ID.
         self.region_no = region_no
+        # The ID of the request.
         self.request_id = request_id
+        # The risk level of the event.
         self.risk_level = risk_level
+        # The list of unhandled operations.
         self.unhandle_operation_list = unhandle_operation_list
 
     def validate(self):
@@ -201,7 +220,9 @@ class DescribeInvadeEventDetailResponseBodyUnhandleOperationList(DaraModel):
         args: str = None,
         operate: str = None,
     ):
+        # The parameters for the operation.
         self.args = args
+        # The operation.
         self.operate = operate
 
     def validate(self):
@@ -236,7 +257,9 @@ class DescribeInvadeEventDetailResponseBodyOperationList(DaraModel):
         args: str = None,
         operate: str = None,
     ):
+        # The parameters for the operation.
         self.args = args
+        # The operation.
         self.operate = operate
 
     def validate(self):

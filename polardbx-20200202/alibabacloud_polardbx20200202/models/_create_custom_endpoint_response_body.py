@@ -11,6 +11,7 @@ class CreateCustomEndpointResponseBody(DaraModel):
         data: main_models.CreateCustomEndpointResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -49,7 +50,9 @@ class CreateCustomEndpointResponseBodyData(DaraModel):
         custom_endpoint_id: str = None,
         dbinstance_name: str = None,
     ):
+        # The endpoint ID.
         self.custom_endpoint_id = custom_endpoint_id
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
 
     def validate(self):

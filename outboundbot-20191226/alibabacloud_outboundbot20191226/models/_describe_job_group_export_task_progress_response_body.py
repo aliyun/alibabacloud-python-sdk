@@ -15,12 +15,19 @@ class DescribeJobGroupExportTaskProgressResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API status code.
         self.code = code
+        # The file URL.
         self.file_http_url = file_http_url
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The API message.
         self.message = message
+        # The export progress.
         self.progress = progress
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -16,7 +16,7 @@ class ListDownStreamBindingsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. The status code 200 indicates that the request is successful.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
         # The returned data.
         self.data = data
@@ -24,7 +24,7 @@ class ListDownStreamBindingsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -82,9 +82,9 @@ class ListDownStreamBindingsResponseBodyData(DaraModel):
     ):
         # The bindings.
         self.bindings = bindings
-        # The maximum number of entries returned.
+        # The maximum number of results returned.
         self.max_results = max_results
-        # The token that marks the end of the current returned page. If this parameter is empty, all data is retrieved.
+        # The token that is used to retrieve the next page of results. If the value is empty, all results have been returned.
         self.next_token = next_token
 
     def validate(self):
@@ -136,32 +136,37 @@ class ListDownStreamBindingsResponseBodyDataBindings(DaraModel):
         destination_name: str = None,
         source_exchange: str = None,
     ):
-        # The x-match attribute. Valid values:
+        # The x-match property. Valid values:
         # 
-        # *   **all:** A headers exchange routes a message to a queue only if all binding attributes of the queue except for x-match match the headers attributes of the message. This value is the default value.
-        # *   **any:** A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
+        # - **all**: The default value. All key-value pairs in the message header must match.
         # 
-        # This parameter is available only for headers exchanges.
+        # - **any**: At least one key-value pair in the message header must match.
+        # 
+        # This parameter is valid only for headers exchanges.
         self.argument = argument
         # The binding key.
         # 
-        # *   If the source exchange is not a topic exchange, the binding key must meet the following conventions:
+        # - If the source exchange is not a topic exchange:
         # 
-        #     *   The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
-        #     *   The binding key must be 1 to 255 characters in length.
+        #   - The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), forward slashes (/), and at signs (@).
         # 
-        # *   If the source exchange is a topic exchange, the binding key must meet the following conventions:
+        #   - The binding key must be 1 to 255 characters in length.
         # 
-        #     *   The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@).
-        #     *   The binding key cannot start or end with a period (.). If a binding key starts with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be followed by a period (.). If the binding key ends with a number sign (#) or an asterisk (\\*), the number sign (#) or asterisk (\\*) must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is used in the middle of a binding key, the number sign (#) or asterisk (\\*) must be preceded and followed by a period (.).
-        #     *   The binding key must be 1 to 255 characters in length.
+        # - If the source exchange is a topic exchange:
+        # 
+        #   - The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), asterisks (\\*), forward slashes (/), and at signs (@).
+        # 
+        #   - The binding key cannot start or end with a period (.). If the binding key starts with a number sign (#) or an asterisk (\\*), it must be followed by a period (.). If it ends with a number sign (#) or an asterisk (\\*), it must be preceded by a period (.). If a number sign (#) or an asterisk (\\*) is in the middle of the binding key, it must be surrounded by periods (.).
+        # 
+        #   - The binding key must be 1 to 255 characters in length.
         self.binding_key = binding_key
-        # The type of the object to which the source exchange is bound. Valid values:
+        # The type of the destination object. Valid values:
         # 
-        # *   **QUEUE**
-        # *   **EXCHANGE**
+        # - **QUEUE**
+        # 
+        # - **EXCHANGE**
         self.binding_type = binding_type
-        # The name of the object to which the source exchange is bound.
+        # The name of the destination.
         self.destination_name = destination_name
         # The name of the source exchange.
         self.source_exchange = source_exchange

@@ -13,10 +13,15 @@ class OfflineBizEntityResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code of the request. OK indicates a successful request.
         self.code = code
+        # HTTP status code returned by the backend
         self.http_status_code = http_status_code
+        # Error message of the request
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Whether the request was successful
         self.success = success
 
     def validate(self):

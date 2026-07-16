@@ -10,8 +10,12 @@ class CreateBizMetricShrinkRequest(DaraModel):
         create_biz_metric_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The create request.
+        # 
         # This parameter is required.
         self.create_biz_metric_command_shrink = create_biz_metric_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

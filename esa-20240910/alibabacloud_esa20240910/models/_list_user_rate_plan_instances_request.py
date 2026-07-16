@@ -19,37 +19,50 @@ class ListUserRatePlanInstancesRequest(DaraModel):
         status: str = None,
         subscribe_type: str = None,
     ):
-        # Specifies whether to query only the plans that have remaining quota for associating websites. Valid values:
+        # Specifies whether to filter plan instances that have remaining site quota. Valid values:
         # 
-        # *   true: queries only the plans that have remaining quota for associating websites.
-        # *   false: queries all plans in your account.
+        # - **true**: Filters plan instances that have remaining site quota.
+        # - **false**: Queries all plan instances under the user.
         self.check_remaining_site_quota = check_remaining_site_quota
-        # The plan ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # The plan instance ID. You can obtain the ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.instance_id = instance_id
-        # The page number. Valid values: **1** to **100000**. Default value: **1**.
+        # The page number to return in a paged query. Default value: **1**. Valid values: **1** to **100000**. Settings for paging take effect only when this parameter is specified.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. Valid values: 1 to 500. This parameter is used for paging.
         self.page_size = page_size
+        # The plan name in English.
         self.plan_name_en = plan_name_en
+        # The plan type. Valid values:
+        # 
+        # - normal: fixed-version plan
+        # - enterprise: Enterprise Edition plan.
         self.plan_type = plan_type
+        # Queries plan instances whose remaining validity period is within the specified number of days. The value must be a positive integer. Unit: days.
         self.remaining_expire_days = remaining_expire_days
-        # The sorting field. By default, the queried plans are sorted by purchase time. Valid values:
+        # The field by which to sort the results. By default, results are sorted by purchase time. Valid values:
         # 
-        # *   CreateTime: the time when the plans were purchased.
-        # *   ExpireTime: the time when the plans expire.
+        # - **CreateTime**: purchase time.
+        # - **ExpireTime**: expiration time.
         self.sort_by = sort_by
-        # The order in which you want to sort the query results. Default value: desc. Valid values:
+        # The sort order. Default value: desc. Valid values:
         # 
-        # *   asc: in ascending order.
-        # *   desc: in descending order.
+        # - **asc**: ascending order.
+        # - **desc**: descending order.
         self.sort_order = sort_order
-        # The plan status. Valid values:
-        # 
-        # *   online: The plan is in service.
-        # *   offline: The plan has expired within an allowable period. In this state, the plan is unavailable.
-        # *   disable: The plan is released.
-        # *   overdue: The plan is stopped due to overdue payments.
+        # The instance status. Valid values:
+        # - **online**: The plan instance is in normal service.
+        # - **offline**: The plan instance has expired but has not exceeded the grace period and is not active.
+        # - **disable**: The plan instance has been released.
+        # - **overdue**: The plan instance has an overdue payment.
         self.status = status
+        # The plan subscription type. Valid values:
+        # 
+        # - entranceplan: Free Edition (Chinese mainland)
+        # - entranceplan_intl: Free Edition (International)
+        # - basicplan: Basic Edition
+        # - standardplan: Standard Edition
+        # - advancedplan: Premium Edition
+        # - enterpriseplan: Enterprise Edition.
         self.subscribe_type = subscribe_type
 
     def validate(self):

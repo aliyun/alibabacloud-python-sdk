@@ -18,21 +18,27 @@ class ListDeploymentJobRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   cloud: multi-cloud deployment task.
-        # *   user: cloud service deployment task. This type of task does not support Elastic Compute Service (ECS) instances.
+        # - cloud: multi-cloud deployment task.
+        # 
+        # - user: cloud service deployment task. This type of task does not support Elastic Compute Service (ECS) instances.
         self.job_type = job_type
-        # The number of certificates per page. Default value: **50**.
+        # The number of entries to return on each page. Default value: 50.
         self.show_size = show_size
         # The status of the deployment task.
         # 
         # Valid values:
         # 
-        # *   success
-        # *   pending
-        # *   scheduling
-        # *   processing
-        # *   error
-        # *   editing
+        # - success
+        # 
+        # - pending
+        # 
+        # - scheduling
+        # 
+        # - processing
+        # 
+        # - error
+        # 
+        # - editing
         self.status = status
 
     def validate(self):

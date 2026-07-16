@@ -13,6 +13,7 @@ class QueryTagsResponseBody(DaraModel):
         request_id: str = None,
         tag_infos: main_models.QueryTagsResponseBodyTagInfos = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.tag_infos = tag_infos
 

@@ -26,9 +26,9 @@ class CreateDeliveryChannelRequest(DaraModel):
         # 
         # This parameter is required.
         self.delivery_channel_name = delivery_channel_name
-        # The delivery of resource configuration changes.
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
-        # The scheduled delivery of resource snapshots.
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -96,19 +96,19 @@ class CreateDeliveryChannelRequestResourceSnapshotDelivery(DaraModel):
         self.custom_expression = custom_expression
         # The delivery time.
         self.delivery_time = delivery_time
-        # The SLS configurations.
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
-        # The Alibaba Cloud Resource Name (ARN) of the destination. Valid values:
+        # The Alibaba Cloud Resource Name (ARN) of the delivery destination.
         # 
-        # - If you set `TargetType` to `OSS`, set `TargetArn` to the ARN of an Object Storage Service (OSS) bucket that has the `resourcecenter-` prefix. Example: `acs:oss:cn-hangzhou:191142248777****:resourcecenter-oss`.
-        # 
-        # - If you set `TargetType` to `SLS`, set `TargetArn` to the ARN of a Simple Log Service (SLS) Logstore that has the `resourcecenter-` prefix. Example: `acs:log:cn-hangzhou: 191142248777****:project/delivery/logstore/resourcecenter-sls`.
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
         self.target_arn = target_arn
-        # The type of the destination. Valid values:
+        # The type of the delivery destination.
         # 
-        # - For standard scheduled delivery, set this parameter to `OSS`.
+        # Valid values:
         # 
-        # - For custom scheduled delivery, set this parameter to `OSS` or `SLS`.
+        # *   `OSS` for standard delivery
+        # *   `OSS` or `SLS` for custom delivery
         self.target_type = target_type
 
     def validate(self):
@@ -162,11 +162,11 @@ class CreateDeliveryChannelRequestResourceSnapshotDeliverySlsProperties(DaraMode
         self,
         oversized_data_oss_target_arn: str = None,
     ):
-        # The ARN of the destination OSS bucket for oversized files.
+        # The ARN of the destination to which large files are delivered.
         # 
-        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. Set this parameter to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
-        # 
-        # > This parameter is valid only for custom scheduled delivery. You do not need to specify this parameter for standard scheduled delivery.
+        # *   If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+        # *   You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   This parameter takes effect only if you use custom delivery for scheduled resource snapshots. You do not need to configure this parameter if you use standard delivery for scheduled resource snapshots.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -196,17 +196,18 @@ class CreateDeliveryChannelRequestResourceChangeDelivery(DaraModel):
         target_arn: str = None,
         target_type: str = None,
     ):
-        # The SLS configurations.
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
-        # The ARN of the destination. Valid values:
+        # The ARN of the delivery destination.
         # 
-        # - If you set `TargetType` to `OSS`, set `TargetArn` to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
-        # 
-        # - If you set `TargetType` to `SLS`, set `TargetArn` to the ARN of an SLS Logstore that has the `resourcecenter-` prefix.
+        # *   If you set `TargetType` to `OSS`, you must set `TargetArn` to the ARN of a bucket whose name is prefixed with resourcecenter-.
+        # *   If you set `TargetType` to `SLS`, you must set `TargetArn` to the ARN of a Logstore whose name is prefixed with resourcecenter-.
         self.target_arn = target_arn
-        # The type of the destination.
+        # The type of the delivery destination.
         # 
-        # Valid value: `SLS`.
+        # Valid values:
+        # 
+        # *   `SLS`
         self.target_type = target_type
 
     def validate(self):
@@ -248,9 +249,10 @@ class CreateDeliveryChannelRequestResourceChangeDeliverySlsProperties(DaraModel)
         self,
         oversized_data_oss_target_arn: str = None,
     ):
-        # The ARN of the destination OSS bucket for oversized files.
+        # The ARN of the destination to which large files are delivered.
         # 
-        # If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object. Set this parameter to the ARN of an OSS bucket that has the `resourcecenter-` prefix.
+        # *   If the size of a resource configuration change event exceeds 1 MB, the event is delivered as an OSS object.
+        # *   You need to set this parameter to the ARN of a bucket whose name is prefixed with resourcecenter-.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -278,7 +280,10 @@ class CreateDeliveryChannelRequestDeliveryChannelFilter(DaraModel):
         self,
         resource_types: List[str] = None,
     ):
-        # The list of resource types to be delivered.
+        # An array of effective resource types for the delivery channel.
+        # 
+        # *   Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
+        # *   If you want to deliver items of all resource types supported by Resource Center, set this parameter to ["ALL"].
         self.resource_types = resource_types
 
     def validate(self):

@@ -11,7 +11,9 @@ class GetAgentSessionArtifactMetaResponseBody(DaraModel):
         json_rpc_response: main_models.GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC response object.
         self.json_rpc_response = json_rpc_response
+        # The ID of the request. You can use it to trace the request in logs.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,11 @@ class GetAgentSessionArtifactMetaResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult = None,
     ):
+        # The ID from the original request.
         self.id = id
+        # The JSON-RPC version. The value is `2.0`.
         self.jsonrpc = jsonrpc
+        # Contains the metadata and content of the artifact.
         self.result = result
 
     def validate(self):
@@ -94,8 +99,11 @@ class GetAgentSessionArtifactMetaResponseBodyJsonRpcResponseResult(DaraModel):
         artifact_name: str = None,
         artifact_path: str = None,
     ):
+        # The content of the artifact.
         self.artifact_content = artifact_content
+        # The name of the artifact.
         self.artifact_name = artifact_name
+        # The path of the artifact.
         self.artifact_path = artifact_path
 
     def validate(self):

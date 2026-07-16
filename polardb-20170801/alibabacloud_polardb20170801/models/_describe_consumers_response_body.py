@@ -17,12 +17,17 @@ class DescribeConsumersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of users.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records on the current page.
         self.page_record_count = page_record_count
+        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -100,18 +105,31 @@ class DescribeConsumersResponseBodyItems(DaraModel):
         name: str = None,
         nick_name: str = None,
     ):
+        # The list of supported models.
         self.allowed_models = allowed_models
+        # The full API key, returned only in this response.
         self.api_key = api_key
+        # The user group ID.
         self.consumer_group_id = consumer_group_id
+        # The user group name.
         self.consumer_group_name = consumer_group_name
+        # The user ID.
         self.consumer_id = consumer_id
+        # The creation time.
         self.gmt_created = gmt_created
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The total cumulative usage.
         self.lifetime_cost_count = lifetime_cost_count
+        # The total cost for the current month.
         self.lifetime_token_count = lifetime_token_count
+        # The usage for the current month.
         self.mtd_cost_count = mtd_cost_count
+        # The total cumulative cost.
         self.mtd_token_count = mtd_token_count
+        # The username.
         self.name = name
+        # The nickname.
         self.nick_name = nick_name
 
     def validate(self):

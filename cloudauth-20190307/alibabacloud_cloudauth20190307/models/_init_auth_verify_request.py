@@ -18,20 +18,49 @@ class InitAuthVerifyRequest(DaraModel):
         product_code: str = None,
         scene_id: int = None,
     ):
+        # A security token that you generate to prevent replay attacks and data tampering.
+        # If this value is set, the CallbackToken field is included in the callback to CallbackUrl.
         self.callback_token = callback_token
+        # The callback URL for OCR results. The callback request method is GET by default. The callback URL must start with https. After OCR is completed, a callback is sent to this URL with the certifyId and subcode fields automatically appended.
+        # > Warning
+        # - The URL is validated for public network access before the API is invoked. If the URL is not publicly accessible, a 400 error is returned.
+        # - The callback is executed immediately after the OCR invocation is completed, but may be delayed due to network issues. Accept the request completion notification from the client side first, and then invoke the query API to obtain the result details.
         self.callback_url = callback_url
+        # The number of card pages collected by the SDK. Valid values:
+        # - "1": front side only
+        # - "2": both front and back sides.
+        # 
         # This parameter is required.
         self.card_page_number = card_page_number
+        # The document type. Set the value to IDENTITY_CARD.
+        # 
         # This parameter is required.
         self.card_type = card_type
+        # The OCR document scan pattern. Valid values:
+        # - shoot (default): photo capture
+        # - scan: scan
+        # - auto: automatic switchover between photo capture and scan.
         self.doc_scan_mode = doc_scan_mode
+        # Specifies whether to enable the document anti-forgery detection feature. Valid values:
+        # - Y: Enabled.
+        # - N: Disabled. This is the default value.
         self.id_spoof = id_spoof
+        # The MetaInfo environment parameter, which must be obtained from the client SDK.
+        # 
         # This parameter is required.
         self.meta_info = meta_info
+        # A custom business unique identifier that you specify for subsequent troubleshooting.
+        # 
+        # The value can contain letters (both uppercase and lowercase) and digits, with a maximum length of 32 characters.
+        # 
         # This parameter is required.
         self.outer_order_no = outer_order_no
+        # The product solution to use. Set the value to ID_OCR.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # The China Chinese authentication scenario ID.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
 

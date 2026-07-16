@@ -10,8 +10,10 @@ class UploadDataRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID. Use this to select a specific workspace in multi-workspace scenarios. Defaults to the default workspace.
         self.base_me_agent_id = base_me_agent_id
+        # JsonStr is a JSON string that contains all custom parameters for this API. See the JsonStr property description below.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

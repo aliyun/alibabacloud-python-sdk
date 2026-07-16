@@ -24,7 +24,6 @@ class ListUsersResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about the users.
         self.users = users
 
     def validate(self):
@@ -117,19 +116,10 @@ class ListUsersResponseBodyUsersUserInfo(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The time when the user was first added.
         self.add_time = add_time
-        # The name of the permission group. Valid values:
-        # 
-        # users: ordinary permissions, which are suitable for regular users that need only to submit and debug jobs.
-        # 
-        # wheel: sudo permissions, which are suitable for administrators who need to manage clusters. In addition to submitting and debugging jobs, you can also run sudo commands to install software and restart nodes.
         self.group = group
-        # The permission group ID.
         self.group_id = group_id
-        # The user ID.
         self.user_id = user_id
-        # The username.
         self.user_name = user_name
 
     def validate(self):

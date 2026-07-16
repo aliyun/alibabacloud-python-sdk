@@ -17,12 +17,17 @@ class GetDataServiceAppResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code returned by the backend.
         self.code = code
+        # The details of the data service application.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -90,14 +95,25 @@ class GetDataServiceAppResponseBodyData(DaraModel):
         owner_list: List[main_models.GetDataServiceAppResponseBodyDataOwnerList] = None,
         scenarios: str = None,
     ):
+        # The application group name.
         self.app_group = app_group
+        # The application ID.
         self.app_id = app_id
+        # The AppKey of the application.
         self.app_key = app_key
+        # The application name.
         self.app_name = app_name
+        # The AppSecret of the application.
         self.app_secret = app_secret
+        # The IP whitelist addresses. Specify IP addresses or CIDR blocks separated by semicolons (;). CIDR blocks end with a slash (/) followed by a number in the range of 1 to 32. Example: 192.168.3.12/24.
         self.ip_whitelist = ip_whitelist
+        # Indicates whether the IP whitelist is enabled. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.ip_whitelist_status = ip_whitelist_status
+        # The list of owners.
         self.owner_list = owner_list
+        # The common scenarios.
         self.scenarios = scenarios
 
     def validate(self):
@@ -182,7 +198,9 @@ class GetDataServiceAppResponseBodyDataOwnerList(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The user ID.
         self.id = id
+        # The username.
         self.name = name
 
     def validate(self):

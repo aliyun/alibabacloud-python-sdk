@@ -13,7 +13,9 @@ class DescribeRdsVSwitchsResponseBody(DaraModel):
         request_id: str = None,
         v_switches: main_models.DescribeRdsVSwitchsResponseBodyVSwitches = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of vSwitches.
         self.v_switches = v_switches
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeRdsVSwitchsResponseBodyVSwitches(DaraModel):
         self,
         v_switch: List[main_models.DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch] = None,
     ):
+        # The vSwitch information.
         self.v_switch = v_switch
 
     def validate(self):
@@ -94,17 +97,31 @@ class DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # This parameter is deprecated. No value is returned.
         self.ali_uid = ali_uid
+        # This parameter is deprecated. No value is returned.
         self.bid = bid
+        # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # This parameter is deprecated. No value is returned.
         self.gmt_create = gmt_create
+        # This parameter is deprecated. No value is returned.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # - **true**: The vSwitch is the default vSwitch.
+        # 
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
+        # The zone ID.
         self.iz_no = iz_no
+        # This parameter is deprecated. No value is returned.
         self.region_no = region_no
+        # The status of the vSwitch. A value of **Available** indicates that the vSwitch is active.
         self.status = status
-        # VSwitch ID。
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):

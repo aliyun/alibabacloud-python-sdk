@@ -15,7 +15,7 @@ class ListDataSourceTypesResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,13 +58,15 @@ class ListDataSourceTypesResponseBodyData(DaraModel):
         cloud_code: str = None,
         data_source_type: str = None,
     ):
-        # The code of the third-party cloud service.
+        # The code of the multicloud service.
         self.cloud_code = cloud_code
         # The type of the data source. Valid values:
         # 
-        # *   obs: Huawei Cloud Object Storage Service (OBS)
-        # *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-        # *   ckafka: Tencent Cloud Kafka (CKafka)
+        # - obs: Huawei Cloud OBS.
+        # 
+        # - wafApi: Tencent Cloud WAF download API.
+        # 
+        # - ckafka: Tencent Cloud CKafka.
         self.data_source_type = data_source_type
 
     def validate(self):

@@ -12,6 +12,7 @@ class ListKeywordsShrinkRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
         sort_shrink: str = None,
+        tenant_code: str = None,
         word: str = None,
     ):
         # Current page number.
@@ -24,6 +25,7 @@ class ListKeywordsShrinkRequest(DaraModel):
         self.region_id = region_id
         # Sort field.
         self.sort_shrink = sort_shrink
+        self.tenant_code = tenant_code
         # Keyword.
         self.word = word
 
@@ -50,6 +52,9 @@ class ListKeywordsShrinkRequest(DaraModel):
         if self.sort_shrink is not None:
             result['Sort'] = self.sort_shrink
 
+        if self.tenant_code is not None:
+            result['TenantCode'] = self.tenant_code
+
         if self.word is not None:
             result['Word'] = self.word
 
@@ -71,6 +76,9 @@ class ListKeywordsShrinkRequest(DaraModel):
 
         if m.get('Sort') is not None:
             self.sort_shrink = m.get('Sort')
+
+        if m.get('TenantCode') is not None:
+            self.tenant_code = m.get('TenantCode')
 
         if m.get('Word') is not None:
             self.word = m.get('Word')

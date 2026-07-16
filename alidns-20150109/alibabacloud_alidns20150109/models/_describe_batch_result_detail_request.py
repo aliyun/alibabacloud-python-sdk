@@ -16,23 +16,27 @@ class DescribeBatchResultDetailRequest(DaraModel):
     ):
         # The type of the batch operation. Valid values:
         # 
-        # *   **DOMAIN_ADD**: adds domain names in batches.
-        # *   **DOMAIN_DEL**: deletes domain names in batches.
-        # *   **RR_ADD**: adds Domain Name System (DNS) records in batches.
-        # *   **RR_DEL**: deletes DNS records in batches.
+        # - **DOMAIN_ADD**: Add domain names in batches.
         # 
-        # >  Do not perform filtering when this field is empty.
+        # - **DOMAIN_DEL**: Delete domain names in batches.
+        # 
+        # - **RR_ADD**: Add DNS records in batches.
+        # 
+        # - **RR_DEL**: Delete DNS records in batches.
+        # 
+        # > If you leave this parameter empty, the results are not filtered by operation type.
         self.batch_type = batch_type
-        # The language of the content within the request and response. Default: **zh**. Valid values:
+        # The language of the request and response. The default value is **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The page number. Default value: **1**.
+        # The current page number. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
-        # The execution result. If you do not specify this parameter, all results are returned.
+        # The status of the task. If you do not specify this parameter, the details of tasks in all states are returned.
         self.status = status
         # The task ID.
         self.task_id = task_id

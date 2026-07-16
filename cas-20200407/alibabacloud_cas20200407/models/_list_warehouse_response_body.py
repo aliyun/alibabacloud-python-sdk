@@ -16,10 +16,15 @@ class ListWarehouseResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of warehouse objects.
         self.data = data
+        # The maximum number of entries returned on each page. The default value is 20.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries in the result set.
         self.total_count = total_count
 
     def validate(self):
@@ -81,8 +86,11 @@ class ListWarehouseResponseBodyData(DaraModel):
         warehouse_name: str = None,
         warehouse_type: str = None,
     ):
+        # The warehouse instance ID.
         self.warehouse_instance_id = warehouse_instance_id
+        # The warehouse name.
         self.warehouse_name = warehouse_name
+        # The warehouse type.
         self.warehouse_type = warehouse_type
 
     def validate(self):

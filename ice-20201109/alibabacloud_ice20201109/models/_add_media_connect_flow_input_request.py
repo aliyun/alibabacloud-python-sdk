@@ -20,48 +20,33 @@ class AddMediaConnectFlowInputRequest(DaraModel):
         srt_pbkey_len: str = None,
         with_internal_vip: str = None,
     ):
-        # The IP address whitelist in CIDR format. Separate multiple CIDR blocks with commas (,).
+        # IP address whitelist in CIDR notation. Separate multiple CIDR blocks with commas.
         self.cidrs = cidrs
-        # The flow ID.
+        # Flow instance ID
         # 
         # This parameter is required.
         self.flow_id = flow_id
-        # The source URL. This parameter is required when the source type is RTMP-PULL or SRT-Listener.
+        # Input URL. Required only when the input type is RTMP-PULL or SRT-Listener.
         self.input_from_url = input_from_url
-        # The source name.
+        # Input name
         # 
         # This parameter is required.
         self.input_name = input_name
-        # The source type.
-        # 
-        # Valid values:
-        # 
-        # *   RTMP-PUSH
-        # *   SRT-Caller
-        # *   RTMP-PULL
-        # *   SRT-Listener
-        # *   Flow
+        # Input type
         # 
         # This parameter is required.
         self.input_protocol = input_protocol
-        # The maximum bitrate. Unit: bit/s.
+        # Maximum bitrate in bits per second (bps)
         self.max_bitrate = max_bitrate
-        # The ID of the source flow. This parameter is required when the source type is Flow.
+        # Upstream Flow ID. Required only when the input type is Flow.
         self.pair_flow_id = pair_flow_id
-        # The output of the source flow. This parameter is required when the source type is Flow.
+        # Upstream Flow output name. Required only when the input type is Flow.
         self.pair_output_name = pair_output_name
-        # The latency for the SRT stream. This parameter is required the source type is SRT-Listener or SRT-Caller.
+        # SRT latency in milliseconds. Required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_latency = srt_latency
-        # The SRT key. This parameter is required when the source type is SRT-Listener or SRT-Caller.
+        # SRT encryption key. Required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_passphrase = srt_passphrase
-        # The encryption key length. This parameter is required when the source type is SRT-Listener or SRT-Caller.
-        # 
-        # Valid values:
-        # 
-        # *   0
-        # *   16
-        # *   24
-        # *   32
+        # SRT encryption key length in bytes. Required only when the input type is SRT-Listener or SRT-Caller.
         self.srt_pbkey_len = srt_pbkey_len
         self.with_internal_vip = with_internal_vip
 

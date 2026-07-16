@@ -9,7 +9,7 @@ class QueryDatasetDetailInfoRequest(DaraModel):
         self,
         dataset_id: str = None,
     ):
-        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # The dataset ID.
         # 
         # This parameter is required.
         self.dataset_id = dataset_id

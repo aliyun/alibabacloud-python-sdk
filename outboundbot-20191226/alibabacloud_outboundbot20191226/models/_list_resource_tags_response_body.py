@@ -17,11 +17,17 @@ class ListResourceTagsResponseBody(DaraModel):
         resource_tags: main_models.ListResourceTagsResponseBodyResourceTags = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Resource tag information
         self.resource_tags = resource_tags
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListResourceTagsResponseBodyResourceTags(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # List of resource tags
         self.list = list
+        # Page number
         self.page_number = page_number
+        # Number of items per page
         self.page_size = page_size
+        # Total number of items
         self.total_count = total_count
 
     def validate(self):
@@ -141,7 +151,9 @@ class ListResourceTagsResponseBodyResourceTagsList(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # Tag key
         self.key = key
+        # Tag value
         self.value = value
 
     def validate(self):

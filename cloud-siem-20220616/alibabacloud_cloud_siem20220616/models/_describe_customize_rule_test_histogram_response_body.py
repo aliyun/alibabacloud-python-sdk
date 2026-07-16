@@ -16,18 +16,19 @@ class DescribeCustomizeRuleTestHistogramResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
-        # The return value for the request.
+        # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,11 +90,11 @@ class DescribeCustomizeRuleTestHistogramResponseBodyData(DaraModel):
         from_: int = None,
         to: int = None,
     ):
-        # The number of alerts that are generated in the query time range.
+        # The number of alerts generated in the subinterval.
         self.count = count
-        # The start of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+        # The start of the time range for the alert. This value is a UNIX timestamp. Unit: seconds.
         self.from_ = from_
-        # The end of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
+        # The end of the time range for the alert. This value is a UNIX timestamp. Unit: seconds.
         self.to = to
 
     def validate(self):

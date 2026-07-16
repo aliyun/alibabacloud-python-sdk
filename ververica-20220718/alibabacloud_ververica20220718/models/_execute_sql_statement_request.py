@@ -10,7 +10,7 @@ class ExecuteSqlStatementRequest(DaraModel):
         self,
         body: main_models.SqlStatementWithContext = None,
     ):
-        # The SQL statement to query the metadata.
+        # The SQL statements for metadata.
         self.body = body
 
     def validate(self):

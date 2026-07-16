@@ -15,24 +15,24 @@ class ChatWithKnowledgeBaseStreamShrinkRequest(DaraModel):
         prompt_params: str = None,
         region_id: str = None,
     ):
-        # The cluster ID.
+        # The instance ID.
         # 
-        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances in a region.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Whether to return the retrieved result. Default value: false.
+        # Specifies whether to return recall results. Default value: false.
         self.include_knowledge_base_results = include_knowledge_base_results
-        # The knowledge retrieval parameter object. If you do not specify this parameter, only chat mode is enabled.
+        # The knowledge retrieval parameter object. If this parameter is not specified, only chat is performed.
         self.knowledge_params_shrink = knowledge_params_shrink
-        # The Large Language Model (LLM) invocation parameter object.
+        # The large language model (LLM) invocation parameter object.
         # 
         # This parameter is required.
         self.model_params_shrink = model_params_shrink
         self.owner_id = owner_id
-        # The system prompt template, which should include {{ text_chunks }},{{ user_system_prompt }},{{ graph_entities },{{ graph_relations }}. If any of these placeholders are not specified, the corresponding section should have no effect.
+        # The system prompt template. The template must include {{ text_chunks }}, {{ user_system_prompt }}, {{ graph_entities }}, and {{ graph_relations }}. If not specified, this part does not take effect.
         self.prompt_params = prompt_params
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -12,13 +12,13 @@ class DescribeFixUsedCountResponseBody(DaraModel):
         used_count_cn: int = None,
         used_count_sg: int = None,
     ):
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
-        # The number of vulnerabilities that are fixed by the vulnerability fixing feature.
+        # The number of vulnerability fixes used.
         self.used_count = used_count
-        # The number of vulnerabilities that are fixed by the vulnerability fixing feature in China.
+        # The number of vulnerability fixes used in regions in the Chinese mainland.
         self.used_count_cn = used_count_cn
-        # The number of vulnerabilities that are fixed by the vulnerability fixing feature outside China.
+        # The number of vulnerability fixes used in regions outside the Chinese mainland.
         self.used_count_sg = used_count_sg
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetUserLangResponseBody(DaraModel):
         request_id: str = None,
         sas_user_lang: main_models.GetUserLangResponseBodySasUserLang = None,
     ):
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The language settings.
+        # The language settings data.
         self.sas_user_lang = sas_user_lang
 
     def validate(self):
@@ -49,10 +49,10 @@ class GetUserLangResponseBodySasUserLang(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language specified for log analysis. Valid values:
+        # The language configured for log analysis. Valid values:
         # 
-        # *   zh: Chinese
-        # *   en: English
+        # - zh: Chinese
+        # - en: English.
         self.lang = lang
 
     def validate(self):

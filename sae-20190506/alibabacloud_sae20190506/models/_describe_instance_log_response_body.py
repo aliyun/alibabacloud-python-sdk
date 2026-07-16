@@ -15,35 +15,39 @@ class DescribeInstanceLogResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The interface state or POP error code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The information of instance logs.
+        # The instance log.
         self.data = data
-        # Error code.
+        # The error code.
         # 
-        # - No error code returned if the request succeeded.
+        # - This parameter is not returned if the request is successful.
         # 
-        # - Error code returned if the request failed. Refer to error code list below for details.
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message returned.
         # 
-        # success is returned when the request succeeds.
-        # An error code is returned when the request fails.
+        # - **success** is returned if the request is successful.
+        # 
+        # - An error code is returned if the request fails.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the logs of the instance is obtained.
+        # Indicates whether the instance log was obtained. Valid values:
         # 
-        # - true: logs obtained.
+        # - **true**: The instance log was obtained.
         # 
-        # - false: failed to obtain logs.
+        # - **false**: The instance log failed to be obtained.
         self.success = success
-        # Trace ID.
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

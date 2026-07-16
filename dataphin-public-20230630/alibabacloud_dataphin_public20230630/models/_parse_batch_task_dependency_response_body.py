@@ -17,11 +17,17 @@ class ParseBatchTaskDependencyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The parsing result.
         self.parse_result = parse_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class ParseBatchTaskDependencyResponseBodyParseResult(DaraModel):
         self,
         depend_node_list: List[main_models.ParseBatchTaskDependencyResponseBodyParseResultDependNodeList] = None,
     ):
+        # The list of dependent nodes.
         self.depend_node_list = depend_node_list
 
     def validate(self):
@@ -117,7 +124,9 @@ class ParseBatchTaskDependencyResponseBodyParseResultDependNodeList(DaraModel):
         node_io_type: str = None,
         schedule_node_info_list: List[main_models.ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeInfoList] = None,
     ):
+        # The input/output type. Valid values: input (dependent node) and output (node output name).
         self.node_io_type = node_io_type
+        # The list of schedule nodes.
         self.schedule_node_info_list = schedule_node_info_list
 
     def validate(self):
@@ -165,12 +174,19 @@ class ParseBatchTaskDependencyResponseBodyParseResultDependNodeListScheduleNodeI
         owner_user_id: str = None,
         table_name: str = None,
     ):
+        # The list of fields. This parameter applies only to logical table dependencies.
         self.field_list = field_list
+        # The node ID. A value of -1 is returned if no node is found for the corresponding input table.
         self.node_id = node_id
+        # The node name. This parameter is empty if no node is found for the corresponding input table.
         self.node_name = node_name
+        # The output name of the node.
         self.output_name = output_name
+        # The owner of the node. This parameter is empty if no node is found for the corresponding input table.
         self.owner_name = owner_name
+        # The owner of the node. This parameter is empty if no node is found for the corresponding input table.
         self.owner_user_id = owner_user_id
+        # The output table name of the node.
         self.table_name = table_name
 
     def validate(self):

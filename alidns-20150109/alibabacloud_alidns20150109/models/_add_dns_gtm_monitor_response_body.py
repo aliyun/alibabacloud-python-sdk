@@ -12,7 +12,7 @@ class AddDnsGtmMonitorResponseBody(DaraModel):
     ):
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

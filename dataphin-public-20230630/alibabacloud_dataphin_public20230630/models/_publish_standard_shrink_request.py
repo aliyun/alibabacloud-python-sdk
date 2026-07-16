@@ -10,8 +10,12 @@ class PublishStandardShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         publish_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The publish command.
+        # 
         # This parameter is required.
         self.publish_command_shrink = publish_command_shrink
 

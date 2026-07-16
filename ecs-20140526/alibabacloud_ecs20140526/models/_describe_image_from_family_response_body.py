@@ -75,8 +75,9 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
     ):
         # The architecture of the image. Valid values:
         # 
-        # *   i386
-        # *   x86_64
+        # - i386
+        # 
+        # - x86_64
         self.architecture = architecture
         # The time when the image was created.
         self.creation_time = creation_time
@@ -91,10 +92,13 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         self.image_name = image_name
         # The alias of the image owner. Valid values:
         # 
-        # *   system: public images provided by Alibaba Cloud
-        # *   self: your custom images
-        # *   others: shared images from other Alibaba Cloud accounts
-        # *   marketplace: Alibaba Cloud Marketplace images
+        # - system: public images provided by Alibaba Cloud
+        # 
+        # - self: your custom images
+        # 
+        # - others: shared images from other Alibaba Cloud accounts
+        # 
+        # - marketplace: Alibaba Cloud Marketplace images
         self.image_owner_alias = image_owner_alias
         # The image version.
         self.image_version = image_version
@@ -112,8 +116,9 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         self.osname = osname
         # The type of the operating system. Valid values:
         # 
-        # *   windows
-        # *   linux
+        # - windows
+        # 
+        # - linux
         self.ostype = ostype
         # The operating system.
         self.platform = platform
@@ -125,16 +130,20 @@ class DescribeImageFromFamilyResponseBodyImage(DaraModel):
         self.size = size
         # The state of the image. Valid values:
         # 
-        # *   UnAvailable
-        # *   Available
-        # *   Creating
-        # *   CreateFailed
+        # - UnAvailable
+        # 
+        # - Available
+        # 
+        # - Creating
+        # 
+        # - CreateFailed
         self.status = status
         self.tags = tags
         # Indicates whether the image has been used to create ECS instances. Valid values:
         # 
-        # *   instance: The image was used to create one or more ECS instances.
-        # *   none: The image was not used to create ECS instances.
+        # - instance: The image was used to create one or more ECS instances.
+        # 
+        # - none: The image was not used to create ECS instances.
         self.usage = usage
 
     def validate(self):

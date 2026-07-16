@@ -15,13 +15,15 @@ class ListDatasetJobConfigsRequest(DaraModel):
     ):
         # The configuration type.
         # 
-        # *   MultimodalIntelligentTag
-        # *   MultimodalSemanticIndex
+        # - MultimodalIntelligentTag
+        # 
+        # - MultimodalSemanticIndex
         self.config_type = config_type
+        # The name of the dataset version.
         self.dataset_version = dataset_version
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries per page. The default value is 10.
         self.page_size = page_size
         # The workspace ID.
         self.workspace_id = workspace_id

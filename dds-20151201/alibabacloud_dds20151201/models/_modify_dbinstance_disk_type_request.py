@@ -20,41 +20,53 @@ class ModifyDBInstanceDiskTypeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # *   **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses** and select **User Center** from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management** > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
+        # - **true**: Enables automatic payment. Make sure that your account has a sufficient balance.
+        # 
+        # <props="china">
+        # 
+        # - **false**: Disables automatic payment. To pay for the order, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the navigation pane on the left, choose **Subscription Orders** > **My Orders**. On the **Product Orders** tab, find the order and complete the payment.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **false**: Disables automatic payment. To pay for the order, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the navigation pane on the left, click **Order Management**. On the **Product Orders** page, find the order and complete the payment.
+        # 
+        # 
+        # 
         # 
         # Default value: **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal. Valid values:
+        # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Enables auto-renewal.
         # 
-        # Default value: **false**.
+        # - **false**: Disables auto-renewal.
+        # 
+        # Default value: **false**
         self.auto_renew = auto_renew
         # The business information. This is an additional parameter.
         self.business_info = business_info
-        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
+        # The coupon code. The default value is `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new disk type. Valid values:
+        # The disk type after the modification. Valid value:
         # 
-        # *   **cloud_auto**: ESSD AutoPL disk
-        # *   **cloud_essd1**: PL1 ESSD
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
+        # - **cloud_auto**: ESSD AutoPL disk.
         self.db_instance_storage_type = db_instance_storage_type
         # An additional parameter.
         self.extra_param = extra_param
-        # The type of configuration changes. Valid values:
+        # The order type. Valid values:
         # 
-        # *   **UPGRADE**
-        # *   **DOWNGRADE**
+        # - **UPGRADE**: Upgrades the instance configuration.
         # 
-        # >  This parameter is valid only when the billing method of the instance is subscription.
+        # - **DOWNGRADE**: Downgrades the instance configuration.
+        # 
+        # > This parameter is available only when the instance uses the subscription billing method.
         self.order_type = order_type
         # The provisioned IOPS. Valid values: 0 to 50000.
         self.provisioned_iops = provisioned_iops

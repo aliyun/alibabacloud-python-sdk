@@ -70,11 +70,15 @@ class CreateEditingProjectResponseBodyProject(DaraModel):
         self.business_config = business_config
         # The business status of the project. This parameter can be ignored for general editing projects. Valid values:
         # 
-        # *   Reserving
-        # *   ReservationCanceled
-        # *   BroadCasting
-        # *   LoadingFailed
-        # *   LiveFinished
+        # - Reserving
+        # 
+        # - ReservationCanceled
+        # 
+        # - BroadCasting
+        # 
+        # - LoadingFailed
+        # 
+        # - LiveFinished
         self.business_status = business_status
         # The template material parameters.
         self.clips_param = clips_param
@@ -146,7 +150,7 @@ class CreateEditingProjectResponseBodyProject(DaraModel):
         # 
         # \\- VETemplate
         self.template_type = template_type
-        # The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662).  If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
+        # The timeline of the online editing project, in the JSON format.<props="china">For more information about objects in a timeline, see [Timeline configurations](https://help.aliyun.com/document_detail/198823.htm?spm=a2c4g.11186623.2.9.90dc653dF67srN#topic-2024662). If you leave this parameter empty, an empty timeline is created and the duration of the online editing project is zero.
         self.timeline = timeline
         # The title of the online editing project.
         self.title = title

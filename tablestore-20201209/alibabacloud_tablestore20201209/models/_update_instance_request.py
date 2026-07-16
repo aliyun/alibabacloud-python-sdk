@@ -32,9 +32,11 @@ class UpdateInstanceRequest(DaraModel):
         self.network_source_acl = network_source_acl
         # The new types of the network from which access is allowed. By default, all types of networks are allowed. Valid values:
         # 
-        # *   INTERNET: the Internet
-        # *   VPC: VPCs
-        # *   CLASSIC: the classic network
+        # - INTERNET: the Internet
+        # 
+        # - VPC: VPCs
+        # 
+        # - CLASSIC: the classic network
         self.network_type_acl = network_type_acl
 
     def validate(self):

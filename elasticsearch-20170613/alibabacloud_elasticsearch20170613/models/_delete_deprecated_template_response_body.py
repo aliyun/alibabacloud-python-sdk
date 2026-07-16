@@ -10,7 +10,12 @@ class DeleteDeprecatedTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The result. Valid values:
+        # 
+        # - true: succeeded.
+        # - false: failed.
         self.result = result
 
     def validate(self):

@@ -20,10 +20,8 @@ class QueryReimbursementOrderResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -335,10 +333,12 @@ class QueryReimbursementOrderResponseBodyModulePaymentInfos(DaraModel):
     def __init__(
         self,
         amount: str = None,
+        cnaps_code: str = None,
         payee_account_number: str = None,
         payee_user_id: str = None,
     ):
         self.amount = amount
+        self.cnaps_code = cnaps_code
         self.payee_account_number = payee_account_number
         self.payee_user_id = payee_user_id
 
@@ -353,6 +353,9 @@ class QueryReimbursementOrderResponseBodyModulePaymentInfos(DaraModel):
         if self.amount is not None:
             result['amount'] = self.amount
 
+        if self.cnaps_code is not None:
+            result['cnaps_code'] = self.cnaps_code
+
         if self.payee_account_number is not None:
             result['payee_account_number'] = self.payee_account_number
 
@@ -365,6 +368,9 @@ class QueryReimbursementOrderResponseBodyModulePaymentInfos(DaraModel):
         m = m or dict()
         if m.get('amount') is not None:
             self.amount = m.get('amount')
+
+        if m.get('cnaps_code') is not None:
+            self.cnaps_code = m.get('cnaps_code')
 
         if m.get('payee_account_number') is not None:
             self.payee_account_number = m.get('payee_account_number')

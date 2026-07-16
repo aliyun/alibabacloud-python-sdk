@@ -16,11 +16,23 @@ class AllocateCostCenterResourceRequest(DaraModel):
         resource_instance_list: List[main_models.AllocateCostCenterResourceRequestResourceInstanceList] = None,
         to_cost_center_id: int = None,
     ):
+        # The ID of the source cost center. This parameter is required.
+        # 
+        # - 0 indicates that the cost center is unallocated.
+        # - A value greater than 0 indicates an allocated cost center ID.
         self.from_cost_center_id = from_cost_center_id
+        # The ID of the owner of the source cost center.
         self.from_owner_account_id = from_owner_account_id
+        # The primary sales channel ID. If this parameter is left empty, the sales channel ID of the current user is used by default.
         self.nbid = nbid
+        # The list of resource instances.
+        # 
         # This parameter is required.
         self.resource_instance_list = resource_instance_list
+        # The ID of the destination cost center. Valid values:
+        # 
+        # - -1: moves the allocated resource to the unallocated state.
+        # - A value greater than 0: allocates the resource to the specified cost center.
         self.to_cost_center_id = to_cost_center_id
 
     def validate(self):
@@ -95,21 +107,41 @@ class AllocateCostCenterResourceRequestResourceInstanceList(DaraModel):
         resource_user_id: int = None,
         resource_user_name: str = None,
     ):
+        # The attached resource type of the attached-resource instance. This parameter is required only for attached-resource product instances.
+        # - Currently, eight commodities support attached resources. The commodity codes are oss, dcdn, snapshot, vod, cdn, live, and cbwp.
+        # - You can call the QueryCostUnitResource operation to obtain all billing instances (including attached-resource instances with their attached resources) under a specific cost center (including the unallocated cost center) of a user.
         self.apportion_code = apportion_code
+        # The attached resource name.
         self.apportion_name = apportion_name
+        # The commodity code of the billing instance. This parameter is required.
         self.commodity_code = commodity_code
+        # The commodity name of the resource.
         self.commodity_name = commodity_name
+        # The billing granularity ID. This parameter is required.
         self.instance_id = instance_id
+        # The product code, which is the same as the product code in User Center bills.
         self.pip_code = pip_code
+        # The resources related to the resource instance.
         self.related_resources = related_resources
+        # The resource group.
         self.resource_group = resource_group
+        # The resource ID.
         self.resource_id = resource_id
+        # The custom nickname of the resource.
         self.resource_nick = resource_nick
+        # The resource source. Valid values:
+        # - AUTO_ALLOCATE: automatic allocation.
+        # - MANUAL_ALLOCATE: manual allocation.
         self.resource_source = resource_source
+        # The resource status.
         self.resource_status = resource_status
+        # The tag of the resource.
         self.resource_tag = resource_tag
+        # The resource type.
         self.resource_type = resource_type
+        # The ID of the owner of the billing instance. This parameter is required.
         self.resource_user_id = resource_user_id
+        # The resource ownership username.
         self.resource_user_name = resource_user_name
 
     def validate(self):

@@ -12,11 +12,17 @@ class RunPolarClawCronJobRequest(DaraModel):
         mode: str = None,
         restart: bool = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the cron job to run.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The execution mode. Valid values: force and due. Default value: force.
         self.mode = mode
+        # Specifies whether to restart the gateway after the job completes. Default value: true.
         self.restart = restart
 
     def validate(self):

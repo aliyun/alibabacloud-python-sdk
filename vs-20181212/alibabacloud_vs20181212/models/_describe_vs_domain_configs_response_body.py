@@ -13,7 +13,9 @@ class DescribeVsDomainConfigsResponseBody(DaraModel):
         domain_configs: List[main_models.DescribeVsDomainConfigsResponseBodyDomainConfigs] = None,
         request_id: str = None,
     ):
+        # Domain name configurations.
         self.domain_configs = domain_configs
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +60,21 @@ class DescribeVsDomainConfigsResponseBodyDomainConfigs(DaraModel):
         function_name: str = None,
         status: str = None,
     ):
+        # The configuration ID.
         self.config_id = config_id
+        # Each function.
         self.function_args = function_args
+        # The function name.
         self.function_name = function_name
+        # Status. Valid values:
+        # 
+        # - success
+        # 
+        # - testing
+        # 
+        # - failed
+        # 
+        # - configuring
         self.status = status
 
     def validate(self):
@@ -115,7 +129,9 @@ class DescribeVsDomainConfigsResponseBodyDomainConfigsFunctionArgs(DaraModel):
         arg_name: str = None,
         arg_value: str = None,
     ):
+        # The name of the configuration.
         self.arg_name = arg_name
+        # The argument value.
         self.arg_value = arg_value
 
     def validate(self):

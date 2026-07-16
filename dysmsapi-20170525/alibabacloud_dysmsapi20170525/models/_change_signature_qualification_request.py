@@ -14,16 +14,16 @@ class ChangeSignatureQualificationRequest(DaraModel):
         resource_owner_id: int = None,
         signature_name: str = None,
     ):
-        # 授权委托书id
+        # The ID of the authorization letter.
         self.authorization_letter_id = authorization_letter_id
         self.owner_id = owner_id
-        # 资质id
+        # The ID of the qualification, which is returned when you apply for it. You can also find this ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page in the console for messages to the Chinese mainland.
         # 
         # This parameter is required.
         self.qualification_id = qualification_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 签名
+        # The signature.
         # 
         # This parameter is required.
         self.signature_name = signature_name

@@ -16,15 +16,15 @@ class GetWorkFlowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error codes
+        # The error code.
         self.code = code
-        # The data of the workflow.
+        # The workflow data.
         self.data = data
-        # Error message
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The result of the API call.
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class GetWorkFlowResponseBodyData(DaraModel):
         work_flow_info: main_models.GetWorkFlowResponseBodyDataWorkFlowInfo = None,
         work_flow_node_info: main_models.GetWorkFlowResponseBodyDataWorkFlowNodeInfo = None,
     ):
-        # The basic information of the workflow.
+        # The basic information about the workflow.
         self.work_flow_info = work_flow_info
-        # The node information of the workflow.
+        # The workflow node information.
         self.work_flow_node_info = work_flow_node_info
 
     def validate(self):
@@ -121,7 +121,7 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfo(DaraModel):
         edges: List[main_models.GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges] = None,
         nodes: List[main_models.GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes] = None,
     ):
-        # The workflow edges.
+        # The list of workflow edges.
         self.edges = edges
         # The list of workflow nodes.
         self.nodes = nodes
@@ -176,11 +176,11 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfoNodes(DaraModel):
         label: str = None,
         status: int = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.id = id
-        # The name of the job.
+        # The job name.
         self.label = label
-        # The status of the job.
+        # The job status.
         self.status = status
 
     def validate(self):
@@ -221,9 +221,9 @@ class GetWorkFlowResponseBodyDataWorkFlowNodeInfoEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
-        # The ID of the source job.
+        # The source job ID.
         self.source = source
-        # The ID of the object job.
+        # The target job ID.
         self.target = target
 
     def validate(self):
@@ -267,18 +267,21 @@ class GetWorkFlowResponseBodyDataWorkFlowInfo(DaraModel):
     ):
         # The description of the workflow.
         self.description = description
+        # The ID of the application group.
         self.group_id = group_id
+        # The maximum number of concurrent instances.
         self.max_concurrency = max_concurrency
-        # The name of the workflow.
+        # The workflow name.
         self.name = name
+        # The ID of the namespace.
         self.namespace = namespace
-        # The status of the workflow.
+        # The workflow status.
         self.status = status
-        # The time expression of the workflow.
+        # The time expression for the workflow.
         self.time_expression = time_expression
         # The time type of the workflow.
         self.time_type = time_type
-        # The ID of the workflow.
+        # The workflow ID.
         self.workflow_id = workflow_id
 
     def validate(self):

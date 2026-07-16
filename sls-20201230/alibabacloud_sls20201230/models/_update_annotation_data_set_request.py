@@ -10,7 +10,7 @@ class UpdateAnnotationDataSetRequest(DaraModel):
         self,
         body: main_models.MLDataSetParam = None,
     ):
-        # The data structure of the request.
+        # The request body.
         self.body = body
 
     def validate(self):

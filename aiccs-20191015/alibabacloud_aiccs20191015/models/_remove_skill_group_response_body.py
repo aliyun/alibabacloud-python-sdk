@@ -12,9 +12,15 @@ class RemoveSkillGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A value of "Success" indicates that the request succeeded.
         self.code = code
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

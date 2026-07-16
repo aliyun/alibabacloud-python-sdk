@@ -7,8 +7,17 @@ from darabonba.model import DaraModel
 class ListDiagnosisItemsRequest(DaraModel):
     def __init__(
         self,
+        instance_id: str = None,
         lang: str = None,
     ):
+        self.instance_id = instance_id
+        # The language of the request. Default value: the browser language. Valid values:
+        # 
+        # - en: English
+        # - zh: Simplified Chinese
+        # - zt: Traditional Chinese
+        # - es: Spanish
+        # - fr: French.
         self.lang = lang
 
     def validate(self):
@@ -19,6 +28,9 @@ class ListDiagnosisItemsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+
         if self.lang is not None:
             result['lang'] = self.lang
 
@@ -26,6 +38,9 @@ class ListDiagnosisItemsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+
         if m.get('lang') is not None:
             self.lang = m.get('lang')
 

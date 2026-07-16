@@ -20,17 +20,29 @@ class AgenticTableEngineMeta(DaraModel):
         storage_capacity: int = None,
         table_schema_name: str = None,
     ):
+        # A checksum to verify the table\\"s data integrity.
         self.checksum = checksum
+        # The time the table was created, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
         self.create_time = create_time
+        # The total size of the table\\"s data, in bytes.
         self.data_bytes = data_bytes
+        # The character encoding of the table.
         self.encoding = encoding
+        # The table\\"s storage engine, such as `InnoDB`.
         self.engine = engine
+        # A checksum of the table\\"s data and indexes.
         self.full_checksum = full_checksum
+        # The total size of the table\\"s indexes, in bytes.
         self.index_bytes = index_bytes
+        # The timestamp of the last DDL (Data Definition Language) operation, in UTC format (`YYYY-MM-DDThh:mm:ssZ`).
         self.last_ddl_time = last_ddl_time
+        # The number of rows in the table.
         self.num_rows = num_rows
+        # The table\\"s reference information.
         self.ref_info = ref_info
+        # The table\\"s total storage capacity, in bytes.
         self.storage_capacity = storage_capacity
+        # The name of the table schema.
         self.table_schema_name = table_schema_name
 
     def validate(self):

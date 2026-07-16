@@ -15,12 +15,17 @@ class UpdateTableFromAuthorizedOssResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # Error status code.
         self.code = code
+        # Data field of the response.
         self.data = data
+        # Error message.
         self.message = message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Status code returned by the operation.
         self.status = status
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -81,7 +86,9 @@ class UpdateTableFromAuthorizedOssResponseBodyData(DaraModel):
         status: str = None,
         table_id: str = None,
     ):
+        # Current table status. After upload, the status usually changes to TO_IMPORT. This means the system has accepted the uploaded file and is waiting to schedule it into the data table.
         self.status = status
+        # Same as the input TableId parameter.
         self.table_id = table_id
 
     def validate(self):

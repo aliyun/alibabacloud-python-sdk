@@ -21,12 +21,19 @@ class GetPolarAgentResponseBody(DaraModel):
     ):
         # Id of the request
         self.content = content
+        # Indicates whether FunctionCall is supported.
         self.function_call = function_call
+        # The cloud product type.
         self.product = product
+        # The ID of the user query pipeline task.
         self.query_id = query_id
+        # The model\\"s reasoning content.
         self.reasoning_content = reasoning_content
+        # The request ID.
         self.request_id = request_id
+        # The session ID for code execution.
         self.session_id = session_id
+        # Indicates whether UiFunctionCall is supported.
         self.ui_function_call = ui_function_call
 
     def validate(self):
@@ -116,6 +123,7 @@ class GetPolarAgentResponseBodyUiFunctionCall(DaraModel):
     ):
         # xxx
         self.args_text = args_text
+        # The tool command that is invoked.
         self.tool_name = tool_name
 
     def validate(self):
@@ -152,9 +160,13 @@ class GetPolarAgentResponseBodyFunctionCall(DaraModel):
         name: str = None,
         status: str = None,
     ):
+        # The operation-related output result.
         self.arguments = arguments
+        # The quota ID.
         self.id = id
+        # The rule name.
         self.name = name
+        # The status.
         self.status = status
 
     def validate(self):

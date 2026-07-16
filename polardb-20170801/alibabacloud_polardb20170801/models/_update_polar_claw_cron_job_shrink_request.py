@@ -23,22 +23,39 @@ class UpdatePolarClawCronJobShrinkRequest(DaraModel):
         session_target: str = None,
         wake_mode: str = None,
     ):
+        # The ID of the Agent that runs the task.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to delete the task after its first execution.
         self.delete_after_run = delete_after_run
+        # The result delivery configuration.
         self.delivery_shrink = delivery_shrink
+        # The new description for the task.
         self.description = description
+        # Specifies whether the task is enabled.
         self.enabled = enabled
+        # The configuration for failure alerts. Set this to `false` to disable alerts.
         self.failure_alert_shrink = failure_alert_shrink
+        # The ID of the scheduled task to update.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The new name for the task.
         self.name = name
+        # The new payload configuration.
         self.payload_shrink = payload_shrink
+        # Specifies whether to restart the gateway after the update. Default value: `true`.
         self.restart = restart
+        # The scheduling configuration.
         self.schedule_shrink = schedule_shrink
+        # The session routing key.
         self.session_key = session_key
+        # The new session target.
         self.session_target = session_target
+        # The new wake mode.
         self.wake_mode = wake_mode
 
     def validate(self):

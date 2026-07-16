@@ -69,28 +69,29 @@ class GetKubernetesTriggerResponseBody(DaraModel):
         action: str = None,
         token: str = None,
     ):
-        # The ID of the trigger.
+        # The trigger ID.
         self.id = id
-        # The name of the trigger.
+        # The trigger name.
         self.name = name
-        # The ID of the associated cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # The name of the project.
+        # The trigger project name.
         # 
-        # The name consists of the namespace where the application is deployed and the name of the application. The format is `${namespace}/${name}`. Example: default/test-app.
+        # The value consists of the namespace and application name in the format of `${namespace}/${name}`. Example: default/test-app.
         self.project_id = project_id
-        # The type of trigger.
+        # The trigger type.
         # 
         # Valid values:
         # 
-        # *   `deployment`: performs actions on Deployments.
-        # *   `application`: performs actions on applications that are deployed in Application Center.
+        # - `deployment`: a trigger for a stateless application. 
+        # 
+        # - `application`: a trigger for an application center application.
         # 
         # Default value: `deployment`.
         self.type = type
-        # The action that the trigger performs. The value is set to redeploy.
+        # The trigger action. Valid values:
         # 
-        # `redeploy`: redeploys the resource specified by project_id.
+        # `redeploy`: redeploys the resources defined in project_id.
         self.action = action
         # Token
         self.token = token

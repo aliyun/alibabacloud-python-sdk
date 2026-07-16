@@ -24,9 +24,11 @@ class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The deployment strategy. Valid values:
         # 
-        # *   Availability: high availability strategy
-        # *   AvailabilityGroup: high availability group strategy
-        # *   LowLatency: low latency strategy
+        # - Availability: high availability strategy
+        # 
+        # - AvailabilityGroup: high availability group strategy
+        # 
+        # - LowLatency: low latency strategy
         # 
         # Default value: Availability.
         self.strategy = strategy

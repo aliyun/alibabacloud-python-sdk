@@ -11,10 +11,11 @@ class CreateRoutineRelatedRecordResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The record ID.
         self.record_id = record_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # The operation status, which indicates success or failure.
         self.status = status
 
     def validate(self):

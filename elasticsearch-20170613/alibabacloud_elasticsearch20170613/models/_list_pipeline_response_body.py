@@ -14,11 +14,11 @@ class ListPipelineResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListPipelineResponseBodyResult] = None,
     ):
-        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
+        # The response headers.
         self.headers = headers
-        # The response.
+        # The request ID.
         self.request_id = request_id
-        # The time when the pipeline was created.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -72,14 +72,17 @@ class ListPipelineResponseBodyResult(DaraModel):
         pipeline_id: str = None,
         pipeline_status: str = None,
     ):
+        # The time when the pipeline was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the pipeline was last updated.
         self.gmt_update_time = gmt_update_time
-        # The status of the pipeline. Supported:
-        # 
-        # *   NOT_DEPLOYED: The node is not deployed.
-        # *   RUNNING
-        # *   DELETED: Deleted. The console does not display this status.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
+        # The pipeline status. Valid values:
+        # 
+        # - NOT_DEPLOYED: not deployed.
+        # - RUNNING: running.
+        # - DELETED: deleted. This status is not displayed in the console.
         self.pipeline_status = pipeline_status
 
     def validate(self):
@@ -125,7 +128,7 @@ class ListPipelineResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The time when the pipeline was updated.
+        # The total number of records.
         self.x_total_count = x_total_count
 
     def validate(self):

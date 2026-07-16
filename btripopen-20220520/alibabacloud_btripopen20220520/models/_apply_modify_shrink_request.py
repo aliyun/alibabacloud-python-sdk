@@ -53,7 +53,6 @@ class ApplyModifyShrinkRequest(DaraModel):
         self.default_standard_shrink = default_standard_shrink
         self.depart_id = depart_id
         self.depart_name = depart_name
-        # 可将补充描述传入此字段，账单中将会体现此字段的值。可以用于企业的统计和对账
         self.extend_field = extend_field
         self.external_traveler_list_shrink = external_traveler_list_shrink
         self.external_traveler_standard_shrink = external_traveler_standard_shrink
@@ -70,7 +69,6 @@ class ApplyModifyShrinkRequest(DaraModel):
         self.payment_department_id = payment_department_id
         self.payment_department_name = payment_department_name
         self.status = status
-        # 子企业Id
         self.sub_corp_id = sub_corp_id
         # This parameter is required.
         self.thirdpart_apply_id = thirdpart_apply_id

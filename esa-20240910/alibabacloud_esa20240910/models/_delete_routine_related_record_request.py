@@ -12,7 +12,7 @@ class DeleteRoutineRelatedRecordRequest(DaraModel):
         record_name: str = None,
         site_id: int = None,
     ):
-        # The routine name.
+        # The name of the Edge Routine.
         # 
         # This parameter is required.
         self.name = name
@@ -24,7 +24,7 @@ class DeleteRoutineRelatedRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.record_name = record_name
-        # The website ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

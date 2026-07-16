@@ -11,8 +11,12 @@ class DeleteSecurityClassifyCatalogRequest(DaraModel):
         delete_command: main_models.DeleteSecurityClassifyCatalogRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,8 +54,11 @@ class DeleteSecurityClassifyCatalogRequestDeleteCommand(DaraModel):
         path: str = None,
         return_removed_details: bool = None,
     ):
+        # The full path of the original catalog.
+        # 
         # This parameter is required.
         self.path = path
+        # Specifies whether to return deletion details. Default value: true.
         self.return_removed_details = return_removed_details
 
     def validate(self):

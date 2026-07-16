@@ -14,11 +14,17 @@ class ListVirtualResourceRequest(DaraModel):
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
+        # The sorting order. Valid values:
+        # 
+        # - Desc: Descending order.
+        # 
+        # - Asc: Ascending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number for the list of virtual resource groups. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of virtual resource groups to display on each page. The default value is 100.
         self.page_size = page_size
+        # The field that is used to sort the results. By default, the results are sorted by timestamp in descending order.
         self.sort = sort
         # The ID of the virtual resource group.
         self.virtual_resource_id = virtual_resource_id

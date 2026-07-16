@@ -13,11 +13,15 @@ class IcebergNestedField(DaraModel):
         optional: bool = None,
         type: str = None,
     ):
+        # The comment for the field.
         self.doc = doc
-        # id
+        # The field ID.
         self.id = id
+        # The field name.
         self.name = name
+        # Indicates whether the field is optional.
         self.optional = optional
+        # The field type.
         self.type = type
 
     def validate(self):

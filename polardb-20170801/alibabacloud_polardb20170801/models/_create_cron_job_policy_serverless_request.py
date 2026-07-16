@@ -28,29 +28,57 @@ class CreateCronJobPolicyServerlessRequest(DaraModel):
         serverless_rule_mode: str = None,
         start_time: str = None,
     ):
+        # Specifies whether to enable no-activity suspension. Valid values:
+        # 
+        # - **true**: Enables the feature.
+        # 
+        # - **false** (default): Disables the feature.
         self.allow_shut_down = allow_shut_down
+        # The Cron expression.
+        # 
         # This parameter is required.
         self.cron_expression = cron_expression
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The end time of the task. Use the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The maximum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_max = scale_ap_ro_num_max
+        # The minimum number of read-only column store nodes. Valid values: 0 to 15.
         self.scale_ap_ro_num_min = scale_ap_ro_num_min
+        # The maximum number of PCUs. The value must be from 1 to 32.
         self.scale_max = scale_max
+        # The minimum number of PolarDB Capacity Units (PCUs). The value must be from 0.25 to 32 and must be less than or equal to the value of ScaleMax.
         self.scale_min = scale_min
+        # The maximum number of read-only nodes. Valid values: 0 to 15. The value must be greater than or equal to the value of ScaleRoNumMin.
         self.scale_ro_num_max = scale_ro_num_max
+        # The minimum number of read-only nodes. Valid values: 0 to 15.
         self.scale_ro_num_min = scale_ro_num_min
+        # The period of inactivity in minutes before the cluster is automatically paused. The value must be a multiple of 5 and range from 5 to 1440.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        # The CPU utilization percentage that triggers a scale-up. Valid values: 40 to 100.
         self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        # The CPU utilization percentage that triggers a scale-down. Valid values: 10 to 100. The value of ServerlessRuleCpuEnlargeThreshold minus the value of this parameter must be 30 or greater.
         self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        # The scaling sensitivity. Valid values:
+        # 
+        # - normal: standard
+        # 
+        # - flexible: flexible
         self.serverless_rule_mode = serverless_rule_mode
+        # The start time of the task. Use the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in Coordinated Universal Time (UTC).
         self.start_time = start_time
 
     def validate(self):

@@ -12,7 +12,7 @@ class DeleteHostAvailabilityRequest(DaraModel):
         id: List[int] = None,
         region_id: str = None,
     ):
-        # The task ID. Valid values of N: 1 to 20.
+        # The IDs of the tasks.
         # 
         # This parameter is required.
         self.id = id

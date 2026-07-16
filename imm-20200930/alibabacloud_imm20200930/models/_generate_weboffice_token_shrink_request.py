@@ -24,84 +24,102 @@ class GenerateWebofficeTokenShrinkRequest(DaraModel):
         user_data: str = None,
         watermark_shrink: str = None,
     ):
-        # Cache preview flag: 
-        # - true: When enabled, the document preview will no longer update collaborative editing content, suitable for scenarios where only preview is needed. 
-        # - false: When disabled, it defaults to collaborative preview, allowing the preview to synchronously update collaborative editing content.
-        # >Notice: The price for cache preview and non-cache preview differs. Please refer to the billing item description for more details.</notice> >Notice: Search and print functions are not supported during cache preview.</notice> <notice>Updating cached content is currently not supported in cache preview mode.</notice>
+        # Specifies whether to enable cached preview.
+        # 
+        # -  true: When enabled, the document preview no longer updates collaborative editing content. This is suitable for preview-only scenarios.
+        # -  false: When disabled, collaborative preview is used by default, which synchronizes collaborative editing content during preview.
+        # 
+        # >Notice: Cached preview and non-cached preview have different unit prices. For more information, see the billing item description.
+        # </notice>>Notice: Cached preview does not support document content search or printing.</notice>
+        # <notice>Cached preview does not support updating cached content.</notice>.
         self.cache_preview = cache_preview
-        # **If there are no special requirements, leave this blank.**
+        # **Leave this parameter empty unless you have specific requirements.**
         # 
-        # Chained authorization configuration, not required. For more information, see [Using Chained Authorization to Access Other Entity Resources](https://help.aliyun.com/document_detail/465340.html).
+        # The China authorization configuration. This parameter is optional. For more information, see [Use chained authorization to access resources of other entities](https://help.aliyun.com/document_detail/465340.html).
         self.credential_config_shrink = credential_config_shrink
-        # Indicates whether uploading a file with the same name to OSS is an expected behavior. Possible values are as follows:
+        # Specifies whether uploading a file with the same name to OSS is expected behavior. Valid values:
         # 
-        # - true: Uploading a file with the same name to OSS is an expected behavior. The uploaded document will overwrite the original document and generate a new version. After setting it to true, you still need to close the currently editing document and wait for about 5 minutes before reopening it to load the new document. The upload is only effective when the document is closed; if the document is open, the new save will overwrite the uploaded file.
-        # - false (default): Uploading a file with the same name to OSS is not an expected behavior, and the interface will return an error.
+        # - true: Uploading a file with the same name to OSS is expected behavior. The uploaded document overwrites the original document and generates a new version. After this parameter is set to true, you must first close the document that is being edited, wait about 5 minutes, and then reopen it to load the new document. The upload takes effect only when the document is closed. If the document is open, new saves overwrite the uploaded file.
+        # - false (default): Uploading a file with the same name to OSS is not expected behavior. The operation returns an error.
         self.external_uploaded = external_uploaded
-        # Filename, which must include the file extension. By default, it is the last segment of the **SourceURI** parameter.
-        # Supported file extensions (PDF is only supported for preview):
-        # - Text documents (Word): doc, docx, txt, dot, wps, wpt, dotx, docm, dotm, rtf 
-        # - Presentation documents (PPT): ppt, pptx, pptm, ppsx, ppsm, pps, potx, potm, dpt, dps - Spreadsheet documents (Excel): et, xls, xlt, xlsx, xlsm, xltx, xltm, csv 
-        # - PDF documents: pdf
+        # The file name, which must include the file name extension. The default value is the last segment of the **SourceURI** parameter.
+        # 
+        # Supported file name extensions (PDF supports preview only):
+        # 
+        # - Word documents: doc, docx, txt, dot, wps, wpt, dotx, docm, dotm, and rtf
+        # - PowerPoint documents: ppt, pptx, pptm, ppsx, ppsm, pps, potx, potm, dpt, and dps
+        # - Excel documents: et, xls, xlt, xlsx, xlsm, xltx, xltm, and csv
+        # - PDF documents: pdf.
         self.filename = filename
-        # Whether to hide the toolbar. This parameter can be set in document preview mode. Possible values are as follows:
+        # Specifies whether to hide the toolbar. This parameter is supported in document preview mode. Valid values:
         # 
-        # - false (default): Do not hide the toolbar.
-        # - true: Hide the toolbar.
+        # - false (default): The toolbar is not hidden.
+        # 
+        # - true: The toolbar is hidden.
         self.hidecmb = hidecmb
-        # Notification message configuration, currently supporting only MNS. For the asynchronous notification message format, refer to [WebOffice Message Notification Format](https://help.aliyun.com/document_detail/2743999.html).
+        # The notification configuration. Currently, only MNS is supported. For the format of asynchronous notification messages, see [WebOffice message notification format](https://help.aliyun.com/document_detail/2743999.html).
         # 
-        # > There will be message notifications when the file is saved or renamed.
+        # > Message notifications are sent when a file is saved or renamed.
         self.notification_shrink = notification_shrink
-        # Supports notifying some events to customers via MNS messages. This parameter is the topic for MNS asynchronous message notifications.
+        # Sends event notifications to you as MNS messages. This parameter specifies the MNS topic for asynchronous message notifications.
         self.notify_topic_name = notify_topic_name
         # The password to open the document.
-        # > If you need to preview or edit a password-protected document, set this parameter.
+        # > Set this parameter if you want to preview or edit a password-protected document.
         self.password = password
-        # User permission information, represented in JSON format.
+        # The user permission information in JSON format.
         # 
         # User permissions include the following options:
         # 
-        # Each option is of type Boolean, with a default value of false, and can be set to true or false.
+        # Each option is of the Boolean type. The default value is false. Valid values: true and false.
         # 
         # - Readonly (optional): Preview mode.
-        # - Rename (optional): File renaming permission, which only provides message notification functionality. The renaming event will be sent to MNS.
-        # - History (optional): Permission to view historical versions.
-        # - Copy (optional): Copy permission.
-        # - Export (optional): PDF export permission.
-        # - Print (optional): Print permission.
         # 
-        # >PDF only supports preview functionality, so the "Readonly" parameter must be set to true.
+        # - Rename (optional): The permission to rename a file. Only message notification is provided. The rename event is sent to MNS.
+        # 
+        # - History (optional): The permission to view historical versions.
+        # 
+        # - Copy (optional): The copy permission.
+        # 
+        # - Export (optional): The permission to export to PDF.
+        # 
+        # - Print (optional): The print permission.
+        # 
+        # 
+        # > PDF supports only the preview feature. You must set the Readonly parameter to true.
         # >
-        # >PDF files do not support exporting.
+        # 
+        # > PDF files do not support export.
         # > 
-        # >To use the multi-version feature, you must first enable the multi-version feature in OSS and then set the "History" parameter to true.
+        # 
+        # > To use the versioning feature, you must first enable versioning in OSS and then set the History parameter to true.
         # >
         # >Notice: Printing is not supported in cached preview.
-        # >Notice: Historical versions can be viewed in edit mode but not in preview mode.
+        # >Notice: Historical versions can be viewed in edit mode but not in preview mode..
         self.permission_shrink = permission_shrink
-        # Limits the number of pages that can be previewed. By default, there is no limit. The maximum cannot exceed 5000.
+        # The maximum number of pages that can be previewed. By default, no limit is imposed. The maximum value is 5,000.
         self.preview_pages = preview_pages
-        # Project name, for how to obtain it, please refer to [Create Project](https://help.aliyun.com/document_detail/478153.html).
+        # The project name. For information about how to obtain the project name, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # OSS anti-leeching. IMM needs to obtain the source file from OSS. If OSS has set up anti-leeching, IMM must pass the corresponding header to OSS to get the source file.
-        # > If the Bucket where the document is located has Referer set, please configure this parameter.
+        # The OSS hotlink protection referer. Intelligent Media Management (IMM) needs to retrieve the source file from OSS. If hotlink protection is configured for OSS, IMM must pass the corresponding header to OSS to retrieve the source file.
+        # > Set this parameter if the bucket that stores the document has a referer configured.
         self.referer = referer
-        # OSS address of the document to be previewed or edited. The OSS address follows the rule `oss://${Bucket}/${Object}`, where `Bucket` is the name of the OSS Bucket in the same region as the current project, and `Object` is the full path of the file including the file extension.
+        # The OSS URI of the document to preview or edit.
+        # 
+        # The OSS URI follows the format `oss://${Bucket}/${Object}`, where `Bucket` is the name of an OSS bucket in the same region as the current project, and `Object` is the full path of the file including the file name extension.
         # 
         # This parameter is required.
         self.source_uri = source_uri
-        # User information. You can pass in user information from the business side, which will be displayed on the WebOffice page.
+        # The user information. You can pass in user information from the business side, and the WebOffice page displays this information.
         # 
-        # The system distinguishes different users by User.Id, and User.Name is used only for front-end display. If User.Id is not provided, the backend will generate a random ID. Users with different IDs are considered different entities and cannot modify or delete each other\\"s comments.
+        # The system distinguishes different users by User.Id. User.Name is used only for frontend display. If User.Id is not specified, the backend automatically generates a random ID. Users with different IDs are treated as different principals and cannot modify or delete each other\\"s comments.
         # 
-        # The default format is: Unknown_random string. If User.Id is not provided, the user information will default to "Unknown".
+        # The default format is: Unknown_RandomString. If User.Id is not specified, the user information is displayed as "Unknown" by default.
         self.user_shrink = user_shrink
-        # User-defined information. It only takes effect when Notification parameters are filled in for MNS configuration. It will be returned in asynchronous message notifications, which can help you correlate and process messages within your system. The maximum length is 2048 bytes.
+        # The custom user data. This parameter takes effect only when the Notification parameter is specified with MNS configurations. The data is returned in asynchronous message notifications for you to associate and process message notifications within your system. Maximum length: 2,048 bytes.
         self.user_data = user_data
-        # Watermark information. The watermark is generated on the front end and is not written into the source document. The same document with different parameters will result in different watermarks.
+        # The watermark information. The watermark is generated on the frontend and is not written to the source document. Different parameters passed for the same document produce different watermarks.
         self.watermark_shrink = watermark_shrink
 
     def validate(self):

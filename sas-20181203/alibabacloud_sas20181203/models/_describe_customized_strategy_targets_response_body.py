@@ -13,9 +13,9 @@ class DescribeCustomizedStrategyTargetsResponseBody(DaraModel):
         request_id: str = None,
         startegy_targets: List[main_models.DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets] = None,
     ):
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the servers to which custom policies are applied.
+        # The list of target information for the custom policy.
         self.startegy_targets = startegy_targets
 
     def validate(self):
@@ -61,16 +61,14 @@ class DescribeCustomizedStrategyTargetsResponseBodyStartegyTargets(DaraModel):
         uuid: str = None,
     ):
         # The ID of the server group.
-        # 
-        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query the IDs of server groups.
+        # > You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to query server group IDs.
         self.group_id = group_id
         # The ID of the baseline check policy.
         self.strategy_id = strategy_id
         # The name of the baseline check policy.
         self.strategy_name = strategy_name
-        # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUID of the asset.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.
         self.uuid = uuid
 
     def validate(self):

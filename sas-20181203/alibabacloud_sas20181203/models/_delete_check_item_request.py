@@ -11,7 +11,7 @@ class DeleteCheckItemRequest(DaraModel):
         self,
         check_ids: List[int] = None,
     ):
-        # List of check item IDs.
+        # The list of check item IDs.
         # 
         # This parameter is required.
         self.check_ids = check_ids

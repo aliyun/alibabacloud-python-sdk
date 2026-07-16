@@ -43,118 +43,106 @@ class DescribeVpnConnectionResponseBody(DaraModel):
         vpn_gateway_id: str = None,
         zone_no: str = None,
     ):
-        # The ID of the CEN instance to which the transit router belongs.
+        # The tag information.
         self.attach_instance_id = attach_instance_id
-        # The type of the resource that is associated with the IPsec-VPN connection. Valid values:
-        # 
-        # *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
-        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
-        # *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
-        self.attach_type = attach_type
-        # The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-        self.create_time = create_time
         # Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
         # 
         # *   **true**
         # *   **false**
-        self.cross_account_authorized = cross_account_authorized
-        # The ID of the customer gateway associated with the IPsec-VPN connection.
-        self.customer_gateway_id = customer_gateway_id
-        # Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
-        # 
-        # *   **true**: Negotiations are reinitiated after the configuration is changed.
-        # *   **false**: Negotiations are reinitiated after traffic is detected.
-        self.effect_immediately = effect_immediately
+        self.attach_type = attach_type
         # Indicates whether the dead peer detection (DPD) feature is enabled for the IPsec-VPN connection. Valid values:
         # 
         # *   **false**
         # *   **true**
         # 
         # After you enable the DPD feature, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within a specified period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
-        self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
+        self.create_time = create_time
+        # Indicates whether the DPD feature is enabled for the tunnel. Valid values:
         # 
-        # *   **true**
         # *   **false**
+        # *   **true**
+        self.cross_account_authorized = cross_account_authorized
+        # The version of the IKE protocol.
         # 
-        # After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+        # *   **ikev1**
+        # *   **ikev2**
+        # 
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        self.customer_gateway_id = customer_gateway_id
+        # The configuration of Phase 1 negotiations.
+        self.effect_immediately = effect_immediately
+        # The pre-shared key.
+        self.enable_dpd = enable_dpd
+        # The name of the IPsec-VPN connection.
         self.enable_nat_traversal = enable_nat_traversal
         # Indicates whether BGP is enabled for the tunnel. Valid values:
         # 
         # *   **true**
         # *   **false**
+        # 
+        # This parameter is returned only by dual-tunnel IPsec-VPN connections.
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The configuration of Phase 1 negotiations.
+        # The authentication algorithm in the IKE phase.
         self.ike_config = ike_config
-        # The gateway IP address of the IPsec-VPN connection.
+        # The tunnel configurations.
         self.internet_ip = internet_ip
-        # The configuration of Phase 2 negotiations.
+        # The maximum number of health check retries.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the Alibaba Cloud side.
-        # 
-        # Multiple CIDR blocks are separated by commas (,).
+        # The lifetime in the IKE phase. Unit: seconds.
         self.local_subnet = local_subnet
-        # The name of the IPsec-VPN connection.
+        # The Diffie-Hellman (DH) group in the IKE phase.
         self.name = name
-        # The network type of the IPsec-VPN connection. Valid values:
-        # 
-        # *   **public**: an encrypted connection over the Internet
-        # *   **private**: an encrypted connection over private networks
+        # The list of tags added to the IPsec-VPN connection.
         self.network_type = network_type
-        # The certificate authority (CA) certificate of the peer.
+        # The ID of the customer gateway associated with the IPsec-VPN connection.
         self.remote_ca_certificate = remote_ca_certificate
+        # The IKE negotiation mode.
+        # 
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
+        self.remote_subnet = remote_subnet
+        # The encryption algorithm in the IKE phase.
+        self.request_id = request_id
+        # The ID of the resource group to which the VPN connection belongs.
+        # 
+        #  You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group list.
+        self.resource_group_id = resource_group_id
+        # The tag key.
+        self.spec = spec
+        # The tag value.
+        self.state = state
         # The CIDR block on the data center side.
         # 
         # Multiple CIDR blocks are separated by commas (,).
-        self.remote_subnet = remote_subnet
-        # The request ID.
-        self.request_id = request_id
-        # The ID of the resource group to which the IPsec-VPN connection belongs.
-        # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query the resource group information.
-        self.resource_group_id = resource_group_id
-        # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
-        self.spec = spec
-        # The association state of the IPsec-VPN connection. Valid values:
-        # 
-        # *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
-        # *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
-        # *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
-        # *   **attached**: The IPsec-VPN connection is associated with a transit router.
-        # *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
-        # *   **financialLocked**: The IPsec-VPN connection is locked due to overdue payments.
-        # *   **provisioning**: The IPsec-VPN connection is being prepared.
-        # *   **updating**: The IPsec-VPN connection is being updated.
-        # *   **Upgrading**: The IPsec-VPN connection is being upgraded.
-        # *   **deleted**: The IPsec-VPN connection is deleted.
-        self.state = state
-        # The state of the IPsec-VPN connection. Valid values:
-        # 
-        # *   **ike_sa_not_established**: Phase 1 negotiations failed.
-        # *   **ike_sa_established**: Phase 1 negotiations succeeded.
-        # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-        # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
         self.tags = tags
-        # The ID of the transit router with which the IPsec-VPN connection is associated.
+        # The tunnel ID.
         self.transit_router_id = transit_router_id
-        # The name of the transit router.
+        # The ID of the customer gateway associated with the tunnel.
         self.transit_router_name = transit_router_name
+        # Specifies the bandwidth specifications for a single tunnel in VPN attachment. Available options:
+        # - **Standard**: Standard, 1Gbps
+        # - **Large**: Large-sized, 3Gbps
         self.tunnel_bandwidth = tunnel_bandwidth
         self.tunnel_options_specification = tunnel_options_specification
-        # The health check information about the IPsec-VPN connection.
-        self.vco_health_check = vco_health_check
-        # The Border Gateway Protocol (BGP) configuration of the IPsec-VPN connection.
-        self.vpn_bgp_config = vpn_bgp_config
-        # The ID of the IPsec-VPN connection.
-        self.vpn_connection_id = vpn_connection_id
-        # The ID of the VPN gateway.
-        self.vpn_gateway_id = vpn_gateway_id
-        # The ID of the zone where the IPsec-VPN connection is deployed.
+        # The negotiation state of the BGP routing protocol. Valid values:
         # 
-        # You can call [DescribeZones](https://help.aliyun.com/document_detail/36064.html) to query zone IDs and mapping between zone IDs and zone names.
+        # *   **success**: normal
+        # *   **failed**
+        self.vco_health_check = vco_health_check
+        # The type of the resource that is associated with the IPsec-VPN connection. Valid values:
+        # 
+        # *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
+        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
+        # *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
+        self.vpn_bgp_config = vpn_bgp_config
+        # The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
+        self.vpn_connection_id = vpn_connection_id
+        # The identifier of the IPsec-VPN connection on the data center side.
+        self.vpn_gateway_id = vpn_gateway_id
+        # The tunnel configurations of the IPsec-VPN connection.
+        # 
+        # Parameters in **TunnelOptionsSpecification** are returned only if you query an IPsec-VPN connection in dual-tunnel mode.
         self.zone_no = zone_no
 
     def validate(self):
@@ -392,27 +380,37 @@ class DescribeVpnConnectionResponseBodyVpnBgpConfig(DaraModel):
         status: str = None,
         tunnel_cidr: str = None,
     ):
-        # The authentication key of the BGP routing protocol.
+        # The name of the transit router.
         self.auth_key = auth_key
-        # Indicates whether BGP is enabled. Valid values:
+        # The association state of the IPsec-VPN connection. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
+        # *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
+        # *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
+        # *   **attached**: The IPsec-VPN connection is associated with a transit router.
+        # *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
+        # *   **financialLocked**: The IPsec-VPN connection is locked due to overdue payments.
+        # *   **provisioning**: The IPsec-VPN connection is being prepared.
+        # *   **updating**: The IPsec-VPN connection is being updated.
+        # *   **Upgrading**: The IPsec-VPN connection is being upgraded.
+        # *   **deleted**: The IPsec-VPN connection is deleted.
         self.enable_bgp = enable_bgp
-        # The ASN on the Alibaba Cloud side.
+        # The ID of the transit router with which the IPsec-VPN connection is associated.
         self.local_asn = local_asn
-        # The BGP IP address on the Alibaba Cloud side.
-        self.local_bgp_ip = local_bgp_ip
-        # The autonomous system number (ASN) of the peer.
-        self.peer_asn = peer_asn
-        # The BGP IP address of the peer.
-        self.peer_bgp_ip = peer_bgp_ip
-        # The negotiation state of the BGP routing protocol. Valid values:
+        # The ID of the zone where the IPsec-VPN connection is deployed.
         # 
-        # *   **success**: normal
-        # *   **failed**
+        # You can call [DescribeZones](https://help.aliyun.com/document_detail/36064.html) to query zone IDs and mapping between zone IDs and zone names.
+        self.local_bgp_ip = local_bgp_ip
+        # The gateway IP address of the IPsec-VPN connection.
+        self.peer_asn = peer_asn
+        # The ID of the CEN instance to which the transit router belongs.
+        self.peer_bgp_ip = peer_bgp_ip
+        # The network type of the IPsec-VPN connection. Valid values:
+        # 
+        # *   **public**: an encrypted connection over the Internet
+        # *   **private**: an encrypted connection over private networks
         self.status = status
-        # The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -488,28 +486,22 @@ class DescribeVpnConnectionResponseBodyVcoHealthCheck(DaraModel):
         sip: str = None,
         status: str = None,
     ):
-        # The destination IP address.
+        # The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         self.dip = dip
-        # Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # The ASN on the Alibaba Cloud side.
         self.enable = enable
-        # The interval between two consecutive health checks. Unit: seconds.
+        # Indicates whether BGP is enabled. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.interval = interval
-        # Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
-        # 
-        # *   **revoke_route**: Advertised routes are withdrawn.
-        # *   **reserve_route**: Advertised routes are not withdrawn.
+        # The authentication key of the BGP routing protocol.
         self.policy = policy
-        # The maximum number of health check retries.
+        # The BGP IP address on the Alibaba Cloud side.
         self.retry = retry
-        # The source IP address.
+        # The autonomous system number (ASN) of the peer.
         self.sip = sip
-        # The state of the health check. Valid values:
-        # 
-        # *   **failed**
-        # *   **success**: normal
+        # The BGP IP address of the peer.
         self.status = status
 
     def validate(self):
@@ -1029,13 +1021,19 @@ class DescribeVpnConnectionResponseBodyIpsecConfig(DaraModel):
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm in the IPsec phase.
+        # The source IP address.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm in the IPsec phase.
+        # Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
+        # 
+        # *   **revoke_route**: Advertised routes are withdrawn.
+        # *   **reserve_route**: Advertised routes are not withdrawn.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The lifetime in the IPsec phase. Unit: seconds.
+        # Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
+        # 
+        # *   **false**
+        # *   **true**
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group in the IPsec phase.
+        # The Border Gateway Protocol (BGP) configuration of the IPsec-VPN connection.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -1089,31 +1087,26 @@ class DescribeVpnConnectionResponseBodyIkeConfig(DaraModel):
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm in the IKE phase.
+        # The interval between two consecutive health checks. Unit: seconds.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm in the IKE phase.
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ike_enc_alg = ike_enc_alg
-        # The lifetime in the IKE phase. Unit: seconds.
+        # The authentication algorithm in the IPsec phase.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode.
-        # 
-        # *   **main**: This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # The DH group in the IPsec phase.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman (DH) group in the IKE phase.
+        # The state of the health check. Valid values:
+        # 
+        # *   **failed**
+        # *   **success**: normal
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol.
-        # 
-        # *   **ikev1**
-        # *   **ikev2**
-        # 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        # The health check information about the IPsec-VPN connection.
         self.ike_version = ike_version
-        # The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
+        # The encryption algorithm in the IPsec phase.
         self.local_id = local_id
-        # The pre-shared key.
+        # The destination IP address.
         self.psk = psk
-        # The identifier of the IPsec-VPN connection on the data center side.
+        # The configuration of Phase 2 negotiations.
         self.remote_id = remote_id
 
     def validate(self):

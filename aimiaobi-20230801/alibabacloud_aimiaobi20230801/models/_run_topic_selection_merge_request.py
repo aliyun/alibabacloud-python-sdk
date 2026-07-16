@@ -14,9 +14,14 @@ class RunTopicSelectionMergeRequest(DaraModel):
         topics: List[main_models.TopicSelection] = None,
         workspace_id: str = None,
     ):
+        # Custom merge prompt
         self.prompt = prompt
+        # List of topic perspectives to merge
+        # 
         # This parameter is required.
         self.topics = topics
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

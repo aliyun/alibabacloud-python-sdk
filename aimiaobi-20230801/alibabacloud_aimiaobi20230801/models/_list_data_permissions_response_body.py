@@ -20,14 +20,23 @@ class ListDataPermissionsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries on each page.
         self.page_size = page_size
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success and \\`false\\` indicates failure.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -118,13 +127,25 @@ class ListDataPermissionsResponseBodyData(DaraModel):
         user_id: str = None,
         username: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.create_user = create_user
+        # The unique ID of the data.
+        # 
+        # - Example for a dataset: SystemSearch.QuarkCommonNews
         self.data_id = data_id
+        # The data type.
+        # 
+        # - dataset: a dataset
         self.data_type = data_type
+        # The primary key ID.
         self.id = id
+        # The permission type. The default value is \\`read\\`, which means read-only.
         self.permission = permission
+        # The unique ID of the user with the permission.
         self.user_id = user_id
+        # The name of the user with the permission.
         self.username = username
 
     def validate(self):

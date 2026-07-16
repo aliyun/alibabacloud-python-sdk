@@ -11,8 +11,12 @@ class ListKeylessServersRequest(DaraModel):
         page_size: int = None,
         site_id: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
 

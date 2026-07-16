@@ -13,21 +13,21 @@ class DescribeEventResultBarChartRequest(DaraModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # Sets the language type for requests and responses. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Start time, accurate to milliseconds (ms).
+        # The start time, accurate to milliseconds (ms).
         # 
         # This parameter is required.
         self.begin_time = begin_time
-        # End time, accurate to milliseconds (ms).
+        # The end time, accurate to milliseconds (ms).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Event code.
+        # Event codes.
         self.event_codes = event_codes
-        # Region code
+        # Region ID.
         self.reg_id = reg_id
 
     def validate(self):

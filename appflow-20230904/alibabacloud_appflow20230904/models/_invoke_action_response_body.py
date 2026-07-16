@@ -13,8 +13,9 @@ class InvokeActionResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.InvokeActionResponseBodyResult = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The execution result.
         self.result = result
 
     def validate(self):
@@ -52,8 +53,11 @@ class InvokeActionResponseBodyResult(DaraModel):
         output: Any = None,
         status: str = None,
     ):
+        # The error message.
         self.error_message = error_message
+        # The output of the action.
         self.output = output
+        # The execution status.
         self.status = status
 
     def validate(self):

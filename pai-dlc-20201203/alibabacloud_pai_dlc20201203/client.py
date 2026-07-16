@@ -65,7 +65,25 @@ class Client(OpenApiClient):
             'eu-west-1': 'pai-dlc.aliyuncs.com',
             'eu-west-1-oxs': 'pai-dlc.aliyuncs.com',
             'me-east-1': 'pai-dlc.aliyuncs.com',
-            'rus-west-1-pop': 'pai-dlc.aliyuncs.com'
+            'rus-west-1-pop': 'pai-dlc.aliyuncs.com',
+            'us-west-1': 'pai-dlc.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'pai-dlc.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'pai-dlc.us-east-1.aliyuncs.com',
+            'eu-central-1': 'pai-dlc.eu-central-1.aliyuncs.com',
+            'cn-wulanchabu': 'pai-dlc.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'pai-dlc.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'pai-dlc.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'pai-dlc.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'pai-dlc.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'pai-dlc.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'pai-dlc.cn-guangzhou.aliyuncs.com',
+            'cn-beijing': 'pai-dlc.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'pai-dlc.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'pai-dlc.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-5': 'pai-dlc.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'pai-dlc.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'pai-dlc.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'pai-dlc.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('pai-dlc', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -358,6 +376,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_job_template_with_options_async(request, headers, runtime)
 
+    def create_ray_history_server_with_options(
+        self,
+        request: main_models.CreateRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRayHistoryServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not DaraCore.is_null(request.max_runtime_minutes):
+            body['MaxRuntimeMinutes'] = request.max_runtime_minutes
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.storage_path):
+            body['StoragePath'] = request.storage_path
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRayHistoryServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ray_history_server_with_options_async(
+        self,
+        request: main_models.CreateRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRayHistoryServerResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.display_name):
+            body['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.ecs_spec):
+            body['EcsSpec'] = request.ecs_spec
+        if not DaraCore.is_null(request.max_runtime_minutes):
+            body['MaxRuntimeMinutes'] = request.max_runtime_minutes
+        if not DaraCore.is_null(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.storage_path):
+            body['StoragePath'] = request.storage_path
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRayHistoryServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ray_history_server(
+        self,
+        request: main_models.CreateRayHistoryServerRequest,
+    ) -> main_models.CreateRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_ray_history_server_with_options(request, headers, runtime)
+
+    async def create_ray_history_server_async(
+        self,
+        request: main_models.CreateRayHistoryServerRequest,
+    ) -> main_models.CreateRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_ray_history_server_with_options_async(request, headers, runtime)
+
     def create_tensorboard_with_options(
         self,
         request: main_models.CreateTensorboardRequest,
@@ -647,6 +765,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_job_template_with_options_async(template_id, request, headers, runtime)
+
+    def delete_ray_history_server_with_options(
+        self,
+        ray_history_server_id: str,
+        request: main_models.DeleteRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRayHistoryServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ray_history_server_with_options_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.DeleteRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRayHistoryServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ray_history_server(
+        self,
+        ray_history_server_id: str,
+        request: main_models.DeleteRayHistoryServerRequest,
+    ) -> main_models.DeleteRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_ray_history_server_with_options(ray_history_server_id, request, headers, runtime)
+
+    async def delete_ray_history_server_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.DeleteRayHistoryServerRequest,
+    ) -> main_models.DeleteRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_ray_history_server_with_options_async(ray_history_server_id, request, headers, runtime)
 
     def delete_tensorboard_with_options(
         self,
@@ -1244,6 +1434,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_template_with_options_async(template_id, request, headers, runtime)
 
+    def get_metrics_with_options(
+        self,
+        request: main_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.length):
+            query['Length'] = request.length
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetrics',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cms/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_metrics_with_options_async(
+        self,
+        request: main_models.GetMetricsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.length):
+            query['Length'] = request.length
+        if not DaraCore.is_null(request.metric_name):
+            query['MetricName'] = request.metric_name
+        if not DaraCore.is_null(request.namespace):
+            query['Namespace'] = request.namespace
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetrics',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/cms/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_metrics(
+        self,
+        request: main_models.GetMetricsRequest,
+    ) -> main_models.GetMetricsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_metrics_with_options(request, headers, runtime)
+
+    async def get_metrics_async(
+        self,
+        request: main_models.GetMetricsRequest,
+    ) -> main_models.GetMetricsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_metrics_with_options_async(request, headers, runtime)
+
     def get_pod_events_with_options(
         self,
         job_id: str,
@@ -1523,6 +1825,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_ray_dashboard_with_options_async(job_id, request, headers, runtime)
+
+    def get_ray_history_server_with_options(
+        self,
+        ray_history_server_id: str,
+        request: main_models.GetRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayHistoryServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ray_history_server_with_options_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.GetRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRayHistoryServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ray_history_server(
+        self,
+        ray_history_server_id: str,
+        request: main_models.GetRayHistoryServerRequest,
+    ) -> main_models.GetRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_ray_history_server_with_options(ray_history_server_id, request, headers, runtime)
+
+    async def get_ray_history_server_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.GetRayHistoryServerRequest,
+    ) -> main_models.GetRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_ray_history_server_with_options_async(ray_history_server_id, request, headers, runtime)
 
     def get_tensorboard_with_options(
         self,
@@ -2372,6 +2746,146 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_jobs_with_options_async(request, headers, runtime)
 
+    def list_ray_history_servers_with_options(
+        self,
+        request: main_models.ListRayHistoryServersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayHistoryServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.id_prefix):
+            query['IdPrefix'] = request.id_prefix
+        if not DaraCore.is_null(request.modified_after):
+            query['ModifiedAfter'] = request.modified_after
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.show_own):
+            query['ShowOwn'] = request.show_own
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.storage_path):
+            query['StoragePath'] = request.storage_path
+        if not DaraCore.is_null(request.user_id_for_filter):
+            query['UserIdForFilter'] = request.user_id_for_filter
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayHistoryServers',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayHistoryServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ray_history_servers_with_options_async(
+        self,
+        request: main_models.ListRayHistoryServersRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRayHistoryServersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['DisplayName'] = request.display_name
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.id_prefix):
+            query['IdPrefix'] = request.id_prefix
+        if not DaraCore.is_null(request.modified_after):
+            query['ModifiedAfter'] = request.modified_after
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.show_own):
+            query['ShowOwn'] = request.show_own
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.storage_path):
+            query['StoragePath'] = request.storage_path
+        if not DaraCore.is_null(request.user_id_for_filter):
+            query['UserIdForFilter'] = request.user_id_for_filter
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRayHistoryServers',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRayHistoryServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ray_history_servers(
+        self,
+        request: main_models.ListRayHistoryServersRequest,
+    ) -> main_models.ListRayHistoryServersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_ray_history_servers_with_options(request, headers, runtime)
+
+    async def list_ray_history_servers_async(
+        self,
+        request: main_models.ListRayHistoryServersRequest,
+    ) -> main_models.ListRayHistoryServersResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_ray_history_servers_with_options_async(request, headers, runtime)
+
     def list_tensorboards_with_options(
         self,
         request: main_models.ListTensorboardsRequest,
@@ -2604,6 +3118,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.set_job_template_default_version_with_options_async(template_id, request, headers, runtime)
 
+    def start_ray_history_server_with_options(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StartRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StartRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}/start',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartRayHistoryServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_ray_history_server_with_options_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StartRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StartRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StartRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}/start',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartRayHistoryServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_ray_history_server(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StartRayHistoryServerRequest,
+    ) -> main_models.StartRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.start_ray_history_server_with_options(ray_history_server_id, request, headers, runtime)
+
+    async def start_ray_history_server_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StartRayHistoryServerRequest,
+    ) -> main_models.StartRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.start_ray_history_server_with_options_async(ray_history_server_id, request, headers, runtime)
+
     def start_tensorboard_with_options(
         self,
         tensorboard_id: str,
@@ -2749,6 +3335,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.stop_job_with_options_async(job_id, headers, runtime)
+
+    def stop_ray_history_server_with_options(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StopRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopRayHistoryServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_ray_history_server_with_options_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StopRayHistoryServerRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.StopRayHistoryServerResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'StopRayHistoryServer',
+            version = '2020-12-03',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/rayhistoryservers/{DaraURL.percent_encode(ray_history_server_id)}/stop',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopRayHistoryServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_ray_history_server(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StopRayHistoryServerRequest,
+    ) -> main_models.StopRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.stop_ray_history_server_with_options(ray_history_server_id, request, headers, runtime)
+
+    async def stop_ray_history_server_async(
+        self,
+        ray_history_server_id: str,
+        request: main_models.StopRayHistoryServerRequest,
+    ) -> main_models.StopRayHistoryServerResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.stop_ray_history_server_with_options_async(ray_history_server_id, request, headers, runtime)
 
     def stop_tensorboard_with_options(
         self,

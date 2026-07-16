@@ -20,15 +20,15 @@ class ListGroupsForApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
-        # The group IDs. You can specify up to 100 group IDs at a time.
+        # A list of group IDs. You can specify up to 100 group IDs in a single operation.
         self.group_ids = group_ids
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number.
+        # The page number of the list.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

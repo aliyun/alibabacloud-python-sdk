@@ -1,3 +1,8 @@
+2026-06-10 Version: 1.4.1
+- Update API DeviceRegister: add request parameters workspaceId.
+- Update API DeviceRegister: add response parameters Body.data.workspaceId.
+
+
 2025-12-16 Version: 1.4.0
 - Support API GetPassThroughAuthInfo.
 

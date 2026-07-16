@@ -16,17 +16,21 @@ class ListChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details, this field is returned only when RAM verification fails.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # System error code. For more details on error codes, please refer to the error code documentation.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Response data
+        # The response data.
         self.response = response
-        # Whether the request was successful.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

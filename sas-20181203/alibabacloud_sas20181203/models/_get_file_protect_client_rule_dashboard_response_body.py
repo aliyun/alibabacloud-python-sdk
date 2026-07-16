@@ -11,6 +11,7 @@ class GetFileProtectClientRuleDashboardResponseBody(DaraModel):
         data: main_models.GetFileProtectClientRuleDashboardResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned when the API call is successful.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -51,9 +52,13 @@ class GetFileProtectClientRuleDashboardResponseBodyData(DaraModel):
         protected_directories_count: int = None,
         protected_instances_count: int = None,
     ):
+        # The total number of web tamper-proofing licenses.
         self.auth_total = auth_total
+        # The number of bound tamper-proofing licenses.
         self.bind_count = bind_count
+        # The total number of web tamper-proofing rules.
         self.protected_directories_count = protected_directories_count
+        # The total number of online web tamper-proofing clients.
         self.protected_instances_count = protected_instances_count
 
     def validate(self):

@@ -11,8 +11,12 @@ class GetDatasetRequest(DaraModel):
         dataset_name: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the dataset. You must specify either this parameter or \\`DatasetName\\`.
         self.dataset_id = dataset_id
+        # The name of the dataset. The name must be globally unique.
         self.dataset_name = dataset_name
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

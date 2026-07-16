@@ -14,7 +14,6 @@ class KafkaIngestion(DaraModel):
         display_name: str = None,
         last_modified_time: int = None,
         name: str = None,
-        processor_id: str = None,
         schedule: main_models.Schedule = None,
         schedule_id: str = None,
         status: str = None,
@@ -28,7 +27,6 @@ class KafkaIngestion(DaraModel):
         self.last_modified_time = last_modified_time
         # This parameter is required.
         self.name = name
-        self.processor_id = processor_id
         # This parameter is required.
         self.schedule = schedule
         self.schedule_id = schedule_id
@@ -63,9 +61,6 @@ class KafkaIngestion(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
-        if self.processor_id is not None:
-            result['processorId'] = self.processor_id
-
         if self.schedule is not None:
             result['schedule'] = self.schedule.to_map()
 
@@ -97,9 +92,6 @@ class KafkaIngestion(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
-
-        if m.get('processorId') is not None:
-            self.processor_id = m.get('processorId')
 
         if m.get('schedule') is not None:
             temp_model = main_models.Schedule()

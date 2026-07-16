@@ -13,26 +13,27 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tags: str = None,
     ):
-        # A maximum of 50 entries can be returned for a query. If a query generates more than 50 entries, the NextToken parameter is returned with the first 50 entries. You can use the NextToken parameter value to retrieve the subsequent entries that are not returned in the current query result.
+        # A query can return a maximum of 50 results. If the number of results exceeds this limit, the response includes a NextToken. To retrieve the next page of results, pass this token in your next request.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. Separate multiple resource IDs with comma (,). This parameter is required if you do not specify the **Tags** parameter.
+        # The resource IDs, specified as a JSON array of strings. This parameter is required if the **Tags** parameter is not specified.
         self.resource_ids = resource_ids
-        # The type of the resource. Set the value to `application`.
+        # The resource type. Only `application` is supported.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag in the format of a key-value pair. This parameter is required if you do not specify the **ResourceIds** parameter. The following parameters are involved:
+        # The tags used to filter resources. This parameter is required if the **ResourceIds** parameter is not specified. A tag is a key-value pair.
         # 
-        # *   **key**: the tag key. It cannot exceed 128 characters in length.
-        # *   **value**: the tag value. It cannot exceed 128 characters in length.
+        # - **key**: The tag key. The key can be 1 to 128 characters in length.
         # 
-        # Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+        # - **value**: The tag value. The value can be 1 to 128 characters in length.
         # 
-        # Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # Tag keys and tag values are case-sensitive. If you specify multiple tags, the operation returns only resources that have all the specified tags.
+        # 
+        # A tag key cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.tags = tags
 
     def validate(self):

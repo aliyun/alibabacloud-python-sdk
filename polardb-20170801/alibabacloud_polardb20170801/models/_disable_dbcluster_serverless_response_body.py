@@ -10,7 +10,7 @@ class DisableDBClusterServerlessResponseBody(DaraModel):
         dbcluster_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the serverless cluster.
+        # The serverless cluster ID.
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id

@@ -18,16 +18,28 @@ class ETLConfigurationSink(DaraModel):
         project: str = None,
         role_arn: str = None,
     ):
+        # The AccessKey ID used to write to the destination Logstore.
         self.access_key_id = access_key_id
+        # The AccessKey Secret used to write to the destination Logstore.
         self.access_key_secret = access_key_secret
+        # The datasets to write to the sink.
         self.datasets = datasets
+        # The endpoint of the destination Project\\"s region.
         self.endpoint = endpoint
+        # The destination Logstore name.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The sink name.
+        # 
         # This parameter is required.
         self.name = name
+        # The destination Project name.
+        # 
         # This parameter is required.
         self.project = project
+        # The role ARN used to write to the destination Logstore.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
 

@@ -10,8 +10,12 @@ class FetchExportTermsTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The unique identifier of your Alibaba Cloud Model Studio workspace. To get your [Workspace ID](https://help.aliyun.com/document_detail/2782167.html), see the referenced document.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -16,33 +16,33 @@ class DescribeDataFlowTasksRequest(DaraModel):
         next_token: str = None,
         with_reports: bool = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         # 
-        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-099394bd928c\\*\\*\\*\\*.
-        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*. .
+        # - CPFS General-purpose: The ID must start with `cpfs-`, such as cpfs-099394bd928c\\*\\*\\*\\*.
+        # 
+        # - CPFS for AI Computing: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The details about filters.
+        # A collection of filters.
         self.filters = filters
-        # The number of results for each query.
+        # The maximum number of results to return per page.
         # 
         # Valid values: 10 to 100.
         # 
         # Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The pagination token for the next page of results. If the response is truncated, use this token in your next request to retrieve the subsequent page.
         self.next_token = next_token
-        # Whether to query report information.
+        # Specifies whether to return report information.
         # 
-        # *   True (default)
-        # *   False
+        # - True (default): Includes reports in the response.
         # 
-        # > 
+        # - False: Excludes reports from the response.
         # 
-        # *   Set it to False to speed up the query.
-        # 
-        # *   Only CPFS for Lingjun supports this parameter.
+        # > * Set this parameter to False to speed up the query.
+        # >
+        # > * This parameter is supported only in CPFS for AI Computing.
         self.with_reports = with_reports
 
     def validate(self):
@@ -103,37 +103,59 @@ class DescribeDataFlowTasksRequestFilters(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter name.
+        # The filter key.
         # 
-        # Valid value:
+        # Valid values:
         # 
-        # *   DataFlowIds: filters dataflow tasks by dataflow ID.
-        # *   TaskIds: filters dataflow tasks by task ID.
-        # *   Originator: filters dataflow tasks by task initiator.
-        # *   TaskActions: filters dataflow tasks by task type.
-        # *   DataTypes: filters dataflow tasks by data type.
-        # *   Status: filters dataflow tasks by dataflow status.
-        # *   CreateTimeBegin: filters dataflow tasks that are created after a specified time.
-        # *   CreateTimeEnd: filters dataflow tasks that are created before a specified time.
-        # *   StartTimeBegin: filters dataflow tasks that are started after a specified time.
-        # *   StartTimeEnd: filters dataflow tasks that are started before a specified time.
-        # *   EndTimeBegin: filters dataflow tasks that are stopped after a specified time.
-        # *   EndTimeEnd: filters dataflow tasks that are stopped before a specified time.
+        # - DataFlowIds: Filters by data flow ID.
+        # 
+        # - TaskIds: Filters by data flow task ID.
+        # 
+        # - Originator: Filters by originator.
+        # 
+        # - TaskActions: Filters by data flow task type.
+        # 
+        # - DataTypes: Filters by data type.
+        # 
+        # - Status: Filters by status.
+        # 
+        # - CreateTimeBegin: Filters data flow tasks created after the specified time.
+        # 
+        # - CreateTimeEnd: Filters data flow tasks created before the specified time.
+        # 
+        # - StartTimeBegin: Filters data flow tasks that started after the specified time.
+        # 
+        # - StartTimeEnd: Filters data flow tasks that started before the specified time.
+        # 
+        # - EndTimeBegin: Filters data flow tasks that ended after the specified time.
+        # 
+        # - EndTimeEnd: Filters data flow tasks that ended before the specified time.
         self.key = key
-        # The value of the filter. This parameter does not support wildcards.
+        # The filter value. This parameter does not support wildcards.
         # 
-        # *   If Key is set to DataFlowIds, set Value to a dataflow ID or a part of the dataflow ID. You can specify a dataflow ID or a group of dataflow IDs. You can specify a maximum of 10 dataflow IDs. Example: `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
-        # *   If Key is set to TaskId, set Value to a dataflow task ID or a part of the dataflow task ID. You can specify a dataflow task ID or a group of dataflow task IDs. You can specify a maximum of 10 dataflow task IDs. Example: `task-38aa8e890f45****` or `task-38aa8e890f45****,task-29ae8e890f45****`.
-        # *   If Key is set to TaskActions, set Value to the type of dataflow task. The task type can be **Import**, **Export**, **Evict**, **Inventory**, **StreamImport**, or **StreamExport**. Combined query is supported. CPFS for Lingjun supports only the Import, Export, StreamImport, and StreamExport tasks. Only CPFS for Lingjun V2.6.0 and later support the StreamImport and StreamExport tasks.
-        # *   If Key is set to DataTypes, set Value to the data type of the dataflow task. The data type can be MetaAndData, Metadata, or Data. Combined query is supported.
-        # *   If Key is set to Originator, set Value to the initiator of the dataflow task. The initiator can be User or System.
-        # *   If Key is set to Status, set Value to the status of the dataflow task. The status can be Pending, Executing, Failed, Completed, Canceling, or Canceled. Combined query is supported.
-        # *   If Key is set to CreateTimeBegin, set Value to the beginning of the time range to create the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to CreateTimeEnd, set Value to the end of the time range to create the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to StartTimeBegin, set Value to the beginning of the time range to start the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to StartTimeEnd, set Value to the end of the time range to start the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to EndTimeBegin, set Value to the beginning of the time range to stop the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
-        # *   If Key is set to EndTimeEnd, set Value to the end of the time range to stop the dataflow task. Time format: `yyyy-MM-ddThh:mmZ`.
+        # - When `Key` is `DataFlowIds`, specify one or more data flow IDs. You can specify up to 10 data flow IDs, separated by commas. For example, `df-194433a5be31****` or `df-194433a512a2****,df-234533a5be31****`.
+        # 
+        # - When `Key` is `TaskId`, specify one or more data flow task IDs. You can specify up to 10 data flow task IDs, separated by commas. For example, `task-38aa8e890f45****` or `task-38aa8e890f45****,task-29ae8e890f45****`.
+        # 
+        # - When `Key` is `TaskActions`, specify the data flow task type. Valid values are **Import**, **Export**, **Evict**, **Inventory**, **StreamImport**, and **StreamExport**. You can specify multiple values. CPFS for AI Computing supports only Import, Export, StreamImport, and StreamExport. StreamImport and StreamExport are available only in CPFS for AI Computing 2.6.0 and later.
+        # 
+        # - When `Key` is `DataTypes`, specify the data type of the data flow task. Valid values are MetaAndData, Metadata, and Data. You can specify multiple values.
+        # 
+        # - When `Key` is `Originator`, specify the originator of the data flow task. Valid values are User and System.
+        # 
+        # - When `Key` is `Status`, specify the status of the data flow task. Valid values are Pending, Executing, Failed, Completed, Canceling, and Canceled. You can specify multiple values.
+        # 
+        # - When `Key` is `CreateTimeBegin`, specify the earliest creation time. Use the `yyyy-MM-ddTHH:mmZ` format.
+        # 
+        # - When `Key` is `CreateTimeEnd`, specify the latest creation time. Use the `yyyy-MM-ddTHH:mmZ` format.
+        # 
+        # - When `Key` is `StartTimeBegin`, specify the earliest start time. Use the `yyyy-MM-ddTHH:mmZ` format.
+        # 
+        # - When `Key` is `StartTimeEnd`, specify the latest start time. Use the `yyyy-MM-ddTHH:mmZ` format.
+        # 
+        # - When `Key` is `EndTimeBegin`, specify the earliest end time. Use the `yyyy-MM-ddTHH:mmZ` format.
+        # 
+        # - When `Key` is `EndTimeEnd`, specify the latest end time. Use the `yyyy-MM-ddTHH:mmZ` format.
         self.value = value
 
     def validate(self):

@@ -13,10 +13,29 @@ class ListInstancesRequest(DaraModel):
         sort_by: str = None,
         status: str = None,
     ):
+        # The sort order.
+        # 
+        # - ASC: Ascending order.
+        # 
+        # - DESC: Descending order.
         self.order = order
+        # The page number. Pages start at 1. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
+        # The sort key.
+        # 
+        # - GmtCreateTime: The creation time.
+        # 
+        # - GmtModifiedTime: The update time.
         self.sort_by = sort_by
+        # Filters the results by instance status.
+        # 
+        # - Initializing
+        # 
+        # - Running
+        # 
+        # - Stopped
         self.status = status
 
     def validate(self):

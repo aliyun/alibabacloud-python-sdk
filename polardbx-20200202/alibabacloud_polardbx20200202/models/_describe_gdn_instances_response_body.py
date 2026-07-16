@@ -15,9 +15,14 @@ class DescribeGdnInstancesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of instance details.
         self.data = data
+        # The response message.
+        # > This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -68,9 +73,13 @@ class DescribeGdnInstancesResponseBodyData(DaraModel):
         page_size: str = None,
         total_number: str = None,
     ):
+        # The list of GDN instances.
         self.gdn_instance_list = gdn_instance_list
+        # The page number.
         self.page_number = page_number
+        # The page size.
         self.page_size = page_size
+        # The total number of entries.
         self.total_number = total_number
 
     def validate(self):
@@ -134,16 +143,23 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceList(DaraModel):
         status: str = None,
         switch_history: str = None,
     ):
+        # The description.
         self.description = description
+        # The GDN instance name.
         self.gdn_instance_name = gdn_instance_name
         self.gdn_mode = gdn_mode
+        # The creation time.
         self.gmt_created = gmt_created
+        # The list of members.
         self.member_list = member_list
+        # The MySQL version supported by the instance.
         self.mysql_version = mysql_version
         self.rpl_conflict_strategy = rpl_conflict_strategy
         self.rpl_dml_strategy = rpl_dml_strategy
         self.rpl_sync_ddl = rpl_sync_ddl
+        # The status.
         self.status = status
+        # The switchover log.
         self.switch_history = switch_history
 
     def validate(self):
@@ -259,26 +275,75 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         tertiary_zone: str = None,
         zone_id: str = None,
     ):
+        # The instance type.
         self.class_code = class_code
+        # The CN node specifications. Valid values:
+        # 
+        # - **polarx.x4.medium.2e**: 2 cores, 8 GB
+        # - **polarx.x4.large.2e**: 4 cores, 16 GB
+        # - **polarx.x8.large.2e**: 4 cores, 32 GB
+        # - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+        # - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+        # - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+        # - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+        # - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+        # - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+        # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+        # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB.
         self.cn_node_class_code = cn_node_class_code
+        # The number of CN nodes.
         self.cn_node_count = cn_node_count
+        # The commodity code.
         self.commodity_code = commodity_code
         self.data_sync_status = data_sync_status
+        # The DN node specifications. Valid values:
+        # - **mysql.n2.medium.25**: 2 cores, 4 GB
+        # - **mysql.n4.medium.25**: 2 cores, 8 GB
+        # - **mysql.x8.medium.25**: 2 cores, 16 GB
+        # - **mysql.n2.large.25**: 4 cores, 8 GB
+        # - **mysql.n4.large.25**: 4 cores, 16 GB
+        # - **mysql.x8.large.25**: 4 cores, 32 GB
+        # - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+        # - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+        # - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+        # - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+        # - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+        # - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+        # - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+        # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+        # - **mysql.st.12xlarge.25**: 90 cores, 720 GB.
         self.dn_node_class_code = dn_node_class_code
+        # The number of DN nodes.
         self.dn_node_count = dn_node_count
+        # The expiration time.
         self.expire_time = expire_time
+        # The creation time.
         self.gmt_created = gmt_created
+        # The member name (PolarDB-X instance name).
         self.member_name = member_name
+        # The billing method of the instance. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
+        # The primary zone.
         self.primary_zone = primary_zone
         self.read_write_status = read_write_status
+        # The region ID.
         self.region_id = region_id
+        # The member role.
         self.role = role
+        # The secondary zone.
         self.secondary_zone = secondary_zone
+        # The data latency.
         self.seconds_behind_master = seconds_behind_master
+        # The member status.
         self.status = status
+        # The switchover task status.
         self.task_status = task_status
+        # The zone for Three-zone deployment. This zone is active only when three-zone deployment is enabled.
         self.tertiary_zone = tertiary_zone
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

@@ -16,23 +16,23 @@ class DescribeOperationLogPageListRequest(DaraModel):
         start_date: int = None,
         user_name_search: str = None,
     ):
-        # Set the language type for request and response messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # End time.
+        # The end time.
         self.end_date = end_date
-        # Operation Summary.
+        # The change content to query.
         self.operation_summary = operation_summary
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Start time.
+        # The start time.
         self.start_date = start_date
-        # User Name Search.
+        # The operator name to query.
         self.user_name_search = user_name_search
 
     def validate(self):

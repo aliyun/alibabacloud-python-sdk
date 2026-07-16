@@ -14,8 +14,13 @@ class ListInstancesEcsInfoListResponseBody(DaraModel):
         data: List[main_models.ListInstancesEcsInfoListResponseBodyData] = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
 
     def validate(self):
@@ -66,9 +71,13 @@ class ListInstancesEcsInfoListResponseBodyData(DaraModel):
         tag_value: str = None,
         type: str = None,
     ):
+        # The IP address of the machine.
         self.ip = ip
+        # The tag name.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
+        # The IP address type.
         self.type = type
 
     def validate(self):

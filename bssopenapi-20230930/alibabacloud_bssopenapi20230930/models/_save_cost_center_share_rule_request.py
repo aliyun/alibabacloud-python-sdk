@@ -16,10 +16,15 @@ class SaveCostCenterShareRuleRequest(DaraModel):
         owner_account_id: int = None,
         remove_share_rule_list: List[int] = None,
     ):
+        # The list of sharing rules to create.
         self.create_share_rule_list = create_share_rule_list
+        # The list of sharing rules to modify.
         self.modify_share_rule_list = modify_share_rule_list
+        # The primary marketplace ID. If left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
+        # The user ID of the cost center owner.
         self.owner_account_id = owner_account_id
+        # The list of sharing rules to delete.
         self.remove_share_rule_list = remove_share_rule_list
 
     def validate(self):
@@ -93,13 +98,21 @@ class SaveCostCenterShareRuleRequestModifyShareRuleList(DaraModel):
         share_type: str = None,
         to_cost_center_list: List[int] = None,
     ):
+        # The list of source cost centers.
         self.from_cost_center_list = from_cost_center_list
+        # The list of sharing ratios.
         self.share_ratio_list = share_ratio_list
+        # The ID of the sharing rule.
+        # 
         # This parameter is required.
         self.share_rule_id = share_rule_id
+        # The name of the sharing rule.
         self.share_rule_name = share_rule_name
+        # The type of the sharing rule.
+        # 
         # This parameter is required.
         self.share_type = share_type
+        # The list of target cost centers.
         self.to_cost_center_list = to_cost_center_list
 
     def validate(self):
@@ -161,11 +174,17 @@ class SaveCostCenterShareRuleRequestCreateShareRuleList(DaraModel):
         share_type: str = None,
         to_cost_center_list: List[int] = None,
     ):
+        # The list of source cost centers.
         self.from_cost_center_list = from_cost_center_list
+        # The list of sharing ratios.
         self.share_ratio_list = share_ratio_list
+        # The name of the sharing rule.
         self.share_rule_name = share_rule_name
+        # The type of the sharing rule.
+        # 
         # This parameter is required.
         self.share_type = share_type
+        # The list of target cost centers.
         self.to_cost_center_list = to_cost_center_list
 
     def validate(self):

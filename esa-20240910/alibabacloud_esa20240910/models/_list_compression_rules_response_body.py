@@ -17,17 +17,17 @@ class ListCompressionRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of compression rule configurations.
+        # The list of compression rule configurations.
         self.configs = configs
-        # Current page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of items.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,35 +102,37 @@ class ListCompressionRulesResponseBodyConfigs(DaraModel):
         site_version: int = None,
         zstd: str = None,
     ):
-        # Brotli compression. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Brotli compression. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.brotli = brotli
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule-based configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Gzip compression. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # Gzip compression. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.gzip = gzip
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when adding a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enabled.
-        # - off: Disabled.
+        # The rule switch. You do not need to set this parameter when adding a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when adding a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the site configuration, defaulting to version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
-        # Zstd compression. Value range: - on: Enable. - off: Disable.
+        # Zstd compression. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.zstd = zstd
 
     def validate(self):

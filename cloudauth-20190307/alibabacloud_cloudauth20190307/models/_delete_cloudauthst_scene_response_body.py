@@ -10,9 +10,9 @@ class DeleteCloudauthstSceneResponseBody(DaraModel):
         request_id: str = None,
         result_object: bool = None,
     ):
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):

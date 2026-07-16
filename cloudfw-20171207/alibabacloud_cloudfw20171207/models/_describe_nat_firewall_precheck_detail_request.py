@@ -11,8 +11,11 @@ class DescribeNatFirewallPrecheckDetailRequest(DaraModel):
         nat_gateway_id: str = None,
         region_no: str = None,
     ):
+        # The language of the request and response messages.
         self.lang = lang
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The region ID.
         self.region_no = region_no
 
     def validate(self):

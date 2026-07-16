@@ -13,8 +13,11 @@ class GenerateViewPointRequest(DaraModel):
         agent_key: str = None,
         reference_data: main_models.GenerateViewPointRequestReferenceData = None,
     ):
+        # The unique identifier of the workspace.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The context data.
         self.reference_data = reference_data
 
     def validate(self):
@@ -50,6 +53,7 @@ class GenerateViewPointRequestReferenceData(DaraModel):
         self,
         mini_doc: List[str] = None,
     ):
+        # The article snippets.
         self.mini_doc = mini_doc
 
     def validate(self):

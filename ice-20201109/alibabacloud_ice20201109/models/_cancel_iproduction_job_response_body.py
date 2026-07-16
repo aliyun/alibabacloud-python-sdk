@@ -68,32 +68,41 @@ class CancelIProductionJobResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_action = auth_action
         # The identity. Values:
         # 
-        # *   RAM user: a UID
-        # *   RAM role: RoleName:RoleSessionName
-        # *   Federated user: ProviderType/ProviderName
+        # - RAM user: a UID
+        # 
+        # - RAM role: RoleName:RoleSessionName
+        # 
+        # - Federated user: ProviderType/ProviderName
         self.auth_principal_display_name = auth_principal_display_name
         # The account to which the principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of identity that made the request. Valid values:
         # 
-        # *   SubUser: RAM user
-        # *   AssumedRoleUser: RAM role
-        # *   Federated: SSO federated user
+        # - SubUser: RAM user
+        # 
+        # - AssumedRoleUser: RAM role
+        # 
+        # - Federated: SSO federated user
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The type of policy that resulted in the denial. Valid values:
         # 
-        # *   **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
-        # *   **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
+        # - **ImplicitDeny**: The resource holder has not configured a policy for the current user. By default, unauthorized operations are denied.
+        # 
+        # - **ExplicitDeny**: The RAM policy configured by the resource holder explicitly denies the current user access to the corresponding resources.
         self.no_permission_type = no_permission_type
         # The type of policy that triggered the permission failure.
         # 
-        # *   **ControlPolicy**: control policy
-        # *   **SessionPolicy**: an additional policy attached to a temporary token.
-        # *   **AssumeRolePolicy**: the trust policy of a RAM role.
-        # *   **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
-        # *   **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
+        # - **ControlPolicy**: control policy
+        # 
+        # - **SessionPolicy**: an additional policy attached to a temporary token.
+        # 
+        # - **AssumeRolePolicy**: the trust policy of a RAM role.
+        # 
+        # - **AccountLevelIdentityBasedPolicy**: an identity-based policy at the account level (custom or system).
+        # 
+        # - **ResourceGroupLevelIdentityBasedPolicy**: an identity-based policy scoped to a resource group.
         self.policy_type = policy_type
 
     def validate(self):

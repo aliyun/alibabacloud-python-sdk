@@ -15,10 +15,13 @@ class ListNetworkAccessEndpointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A collection of network endpoints.
         self.network_access_endpoints = network_access_endpoints
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token returned for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -82,27 +85,39 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints(DaraModel):
         vpc_id: str = None,
         vpc_region_id: str = None,
     ):
-        # 专属网络端点创建时间，Unix时间戳格式，单位为毫秒。
+        # The time when the network endpoint was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # 实例ID。
+        # The instance ID.
         self.instance_id = instance_id
-        # 专属网络端点ID。
+        # The network endpoint ID.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # 专属网络端点名称。
+        # The name of the network endpoint.
         self.network_access_endpoint_name = network_access_endpoint_name
-        # 专属网络端点连接的类型。
+        # The type of the network endpoint. Valid values:
+        # 
+        # - shared: a shared network endpoint.
+        # 
+        # - private: a private network endpoint.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # 专属网络端点使用的安全组ID。
+        # The ID of the security group used by the private network endpoint.
         self.security_group_id = security_group_id
-        # 专属网络端点状态。
+        # The status of the network endpoint. Valid values:
+        # 
+        # - pending: The endpoint is pending initialization.
+        # 
+        # - creating: The endpoint is being created.
+        # 
+        # - running: The endpoint is running.
+        # 
+        # - deleting: The endpoint is being deleted.
         self.status = status
-        # 专属网络端点最近更新时间，Unix时间戳格式，单位为毫秒。
+        # The time when the network endpoint was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
-        # 专属网络端点连接的指定vSwitch列表。
+        # A list of vSwitches to which the private network endpoint is connected.
         self.v_switch_ids = v_switch_ids
-        # 专属网络端点连接的VpcID。
+        # The ID of the VPC to which the private network endpoint is connected.
         self.vpc_id = vpc_id
-        # 专属网络端点连接的Vpc所属地域。
+        # The region ID of the VPC to which the private network endpoint is connected.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):

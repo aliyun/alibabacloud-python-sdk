@@ -16,13 +16,22 @@ class InitModelRequest(DaraModel):
         models: List[main_models.InitModelRequestModels] = None,
         workspace: str = None,
     ):
+        # API key for the AI Search Open Platform
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # Service registration endpoint of the AI Search Open Platform
+        # 
         # This parameter is required.
         self.host = host
+        # HTTP protocol type
+        # 
         # This parameter is required.
         self.http_schema = http_schema
+        # Specify the models to initialize. If empty, all built-in models will be initialized.
         self.models = models
+        # Workspace.
+        # 
         # This parameter is required.
         self.workspace = workspace
 
@@ -84,7 +93,16 @@ class InitModelRequestModels(DaraModel):
         model_type: str = None,
         service_id: str = None,
     ):
+        # Model category  
+        # - a. Text embedding: text_embedding  
+        # - b. Reranking: rerank  
+        # - c. Document segmentation: doc_split  
+        # - d. Large Language Model (LLM) service: completion  
+        # - e. Query analysis: query_analyze  
+        # - f. Document content parsing: doc_analyze  
+        # - g. Image content parsing: img_analyze
         self.model_type = model_type
+        # Service ID of the Search Open Platform
         self.service_id = service_id
 
     def validate(self):

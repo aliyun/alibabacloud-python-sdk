@@ -14,12 +14,19 @@ class ListTopicsRequest(DaraModel):
         pure: bool = None,
         skip: int = None,
     ):
+        # The filter keyword for a paged query.
         self.keyword = keyword
+        # The maximum number of records to return in a paged query.
         self.max_results = max_results
+        # The pagination token. If NextToken is empty, paged query starts from the beginning. Otherwise, paged query starts from the position where the previous query ended.
         self.next_token = next_token
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # Specifies whether to return only primary key information.
         self.pure = pure
+        # The number of records to skip in a paged query.
         self.skip = skip
 
     def validate(self):

@@ -11,11 +11,11 @@ class UpdateGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The ID of the gateway.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
         # The returned message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

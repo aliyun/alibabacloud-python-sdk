@@ -11,17 +11,19 @@ class QueryUserListRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # The keyword of the username or nickname of the organization member.
+        # The keyword to search for organization members by username or nickname.
         self.keyword = keyword
-        # Current page number for organization member list:
+        # The page number to return.
         # 
-        # *   Pages start from page 1.
-        # *   Default value: 1.
+        # - Starting value: 1
+        # 
+        # - Default value: 1
         self.page_num = page_num
-        # The number of rows per page in a paged query.
+        # The number of organization members to return per page.
         # 
-        # *   Default value: 10.
-        # *   Maximum value: 1,000.
+        # - Default value: 10
+        # 
+        # - Maximum value: 1000
         self.page_size = page_size
 
     def validate(self):

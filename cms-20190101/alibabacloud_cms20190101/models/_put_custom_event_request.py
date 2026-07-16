@@ -79,7 +79,7 @@ class PutCustomEventRequestEventInfo(DaraModel):
         # 
         # Valid values of N: 1 to 50.
         # 
-        # >  You can also specify a UNIX timestamp. Example: 1552199984000. Unit: milliseconds.
+        # > You can also specify a UNIX timestamp. Example: 1552199984000. Unit: milliseconds.
         self.time = time
 
     def validate(self):

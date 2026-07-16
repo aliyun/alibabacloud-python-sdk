@@ -22,17 +22,41 @@ class DescribeUpgradeReportResponseBody(DaraModel):
         type: str = None,
         upgrade_report_list: List[main_models.DescribeUpgradeReportResponseBodyUpgradeReportList] = None,
     ):
+        # The details.
         self.details = details
+        # The database type of the destination instance. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **Oracle**
         self.dst_dbtype = dst_dbtype
+        # The list of Oracle compatibility evaluation details.
+        # 
+        # > This parameter is supported only for **Oracle** instances.
         self.items = items
+        # The number of entries in the list of Oracle compatibility evaluation details.
         self.items_size = items_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the source instance.
         self.source_dbcluster_id = source_dbcluster_id
+        # The database type of the source instance. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **Oracle**
         self.src_dbtype = src_dbtype
+        # The deletion status of the source instance. Valid values:
+        # 
+        # - **0**: Not deleted.
+        # 
+        # - **1**: Deleted.
         self.src_deleted = src_deleted
+        # The total number of entries returned.
         self.total_size = total_size
+        # A special metric. This parameter is supported only for instances that use the Tair architecture.
         self.type = type
+        # The list of evaluation reports.
         self.upgrade_report_list = upgrade_report_list
 
     def validate(self):
@@ -146,15 +170,25 @@ class DescribeUpgradeReportResponseBodyUpgradeReportList(DaraModel):
         task_id: str = None,
         upgrade_mode: str = None,
     ):
+        # The check time.
         self.check_time = check_time
+        # The version of the destination instance.
         self.dst_version = dst_version
+        # The effective time of the evaluation.
         self.effective_time = effective_time
+        # The end time of the evaluation.
         self.end_time = end_time
+        # The status of the evaluation task.
         self.result = result
+        # The name of the source instance.
         self.src_ins_name = src_ins_name
+        # The version of the source instance.
         self.src_version = src_version
+        # The start time of the evaluation.
         self.start_time = start_time
+        # The task ID.
         self.task_id = task_id
+        # The upgrade mode.
         self.upgrade_mode = upgrade_mode
 
     def validate(self):
@@ -240,10 +274,19 @@ class DescribeUpgradeReportResponseBodyItems(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The Data Definition Language (DDL) statements for object synchronization.
         self.ddl = ddl
+        # The name of the evaluation object.
         self.name = name
+        # The schema of the evaluation object.
         self.schema = schema
+        # The result of the compatibility evaluation. Valid values:
+        # 
+        # - **0**: Failed.
+        # 
+        # - **1**: Succeeded.
         self.status = status
+        # The type of the evaluation object.
         self.type = type
 
     def validate(self):

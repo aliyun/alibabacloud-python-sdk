@@ -16,10 +16,15 @@ class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Detailed access-denied information. This field appears only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # List of returned data items.
         self.data = data
+        # Indicates whether you can retry the request after failure. `true`: retry is allowed. `false`: retry is not allowed.
         self.recoverable_error = recoverable_error
+        # Unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. `true`: succeeded. `false`: failed.
         self.success = success
 
     def validate(self):
@@ -77,7 +82,9 @@ class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyData(DaraModel
         domain_name: str = None,
         status_list: List[main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyDataStatusList] = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Status information for the task
         self.status_list = status_list
 
     def validate(self):
@@ -121,8 +128,11 @@ class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyDataStatusList
         status: str = None,
         status_msg: str = None,
     ):
+        # Domain name.
         self.domain_name = domain_name
+        # Current domain name status.
         self.status = status
+        # Description of the domain name status.
         self.status_msg = status_msg
 
     def validate(self):
@@ -168,12 +178,23 @@ class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyAccessDeniedDe
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # Display name of the authenticated entity.
         self.auth_principal_display_name = auth_principal_display_name
+        # Owner ID of the authenticated entity.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # Identity type.
         self.auth_principal_type = auth_principal_type
+        # Encrypted diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # Reason for authentication failure. Valid values:
+        # 
+        # - ExplicitDeny
+        # 
+        # - ImplicitDeny
         self.no_permission_type = no_permission_type
+        # Policy type.
         self.policy_type = policy_type
 
     def validate(self):

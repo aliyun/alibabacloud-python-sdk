@@ -12,6 +12,9 @@ from ._create_cluster_request import CreateClusterRequest
 from ._create_cluster_shrink_request import CreateClusterShrinkRequest
 from ._create_cluster_response_body import CreateClusterResponseBody
 from ._create_cluster_response import CreateClusterResponse
+from ._create_contact_request import CreateContactRequest
+from ._create_contact_response_body import CreateContactResponseBody
+from ._create_contact_response import CreateContactResponse
 from ._create_datasource_request import CreateDatasourceRequest
 from ._create_datasource_response_body import CreateDatasourceResponseBody
 from ._create_datasource_response import CreateDatasourceResponse
@@ -37,6 +40,9 @@ from ._delete_calendar_response import DeleteCalendarResponse
 from ._delete_cluster_request import DeleteClusterRequest
 from ._delete_cluster_response_body import DeleteClusterResponseBody
 from ._delete_cluster_response import DeleteClusterResponse
+from ._delete_contact_request import DeleteContactRequest
+from ._delete_contact_response_body import DeleteContactResponseBody
+from ._delete_contact_response import DeleteContactResponse
 from ._delete_datasource_request import DeleteDatasourceRequest
 from ._delete_datasource_response_body import DeleteDatasourceResponseBody
 from ._delete_datasource_response import DeleteDatasourceResponse
@@ -132,6 +138,9 @@ from ._list_calendars_response import ListCalendarsResponse
 from ._list_clusters_request import ListClustersRequest
 from ._list_clusters_response_body import ListClustersResponseBody
 from ._list_clusters_response import ListClustersResponse
+from ._list_contacts_request import ListContactsRequest
+from ._list_contacts_response_body import ListContactsResponseBody
+from ._list_contacts_response import ListContactsResponse
 from ._list_datasources_request import ListDatasourcesRequest
 from ._list_datasources_response_body import ListDatasourcesResponseBody
 from ._list_datasources_response import ListDatasourcesResponse
@@ -261,6 +270,9 @@ from ._update_calendar_response import UpdateCalendarResponse
 from ._update_cluster_request import UpdateClusterRequest
 from ._update_cluster_response_body import UpdateClusterResponseBody
 from ._update_cluster_response import UpdateClusterResponse
+from ._update_contact_request import UpdateContactRequest
+from ._update_contact_response_body import UpdateContactResponseBody
+from ._update_contact_response import UpdateContactResponse
 from ._update_datasource_request import UpdateDatasourceRequest
 from ._update_datasource_response_body import UpdateDatasourceResponseBody
 from ._update_datasource_response import UpdateDatasourceResponse
@@ -295,6 +307,7 @@ from ._create_cluster_request import CreateClusterRequestTag
 from ._create_cluster_request import CreateClusterRequestVSwitches
 from ._create_cluster_shrink_request import CreateClusterShrinkRequestTag
 from ._create_cluster_response_body import CreateClusterResponseBodyData
+from ._create_contact_response_body import CreateContactResponseBodyData
 from ._create_datasource_response_body import CreateDatasourceResponseBodyData
 from ._create_executor_group_response_body import CreateExecutorGroupResponseBodyData
 from ._create_executors_response_body import CreateExecutorsResponseBodyData
@@ -346,6 +359,8 @@ from ._list_clusters_request import ListClustersRequestTag
 from ._list_clusters_response_body import ListClustersResponseBodyDataRecordsVSwitches
 from ._list_clusters_response_body import ListClustersResponseBodyDataRecords
 from ._list_clusters_response_body import ListClustersResponseBodyData
+from ._list_contacts_response_body import ListContactsResponseBodyDataRecords
+from ._list_contacts_response_body import ListContactsResponseBodyData
 from ._list_datasources_response_body import ListDatasourcesResponseBodyDataRecords
 from ._list_datasources_response_body import ListDatasourcesResponseBodyData
 from ._list_executor_group_response_body import ListExecutorGroupResponseBodyDataRecordsCiteList
@@ -391,6 +406,9 @@ __all__ = [
     CreateClusterShrinkRequest,
     CreateClusterResponseBody,
     CreateClusterResponse,
+    CreateContactRequest,
+    CreateContactResponseBody,
+    CreateContactResponse,
     CreateDatasourceRequest,
     CreateDatasourceResponseBody,
     CreateDatasourceResponse,
@@ -416,6 +434,9 @@ __all__ = [
     DeleteClusterRequest,
     DeleteClusterResponseBody,
     DeleteClusterResponse,
+    DeleteContactRequest,
+    DeleteContactResponseBody,
+    DeleteContactResponse,
     DeleteDatasourceRequest,
     DeleteDatasourceResponseBody,
     DeleteDatasourceResponse,
@@ -511,6 +532,9 @@ __all__ = [
     ListClustersRequest,
     ListClustersResponseBody,
     ListClustersResponse,
+    ListContactsRequest,
+    ListContactsResponseBody,
+    ListContactsResponse,
     ListDatasourcesRequest,
     ListDatasourcesResponseBody,
     ListDatasourcesResponse,
@@ -640,6 +664,9 @@ __all__ = [
     UpdateClusterRequest,
     UpdateClusterResponseBody,
     UpdateClusterResponse,
+    UpdateContactRequest,
+    UpdateContactResponseBody,
+    UpdateContactResponse,
     UpdateDatasourceRequest,
     UpdateDatasourceResponseBody,
     UpdateDatasourceResponse,
@@ -674,6 +701,7 @@ __all__ = [
     CreateClusterRequestVSwitches,
     CreateClusterShrinkRequestTag,
     CreateClusterResponseBodyData,
+    CreateContactResponseBodyData,
     CreateDatasourceResponseBodyData,
     CreateExecutorGroupResponseBodyData,
     CreateExecutorsResponseBodyData,
@@ -725,6 +753,8 @@ __all__ = [
     ListClustersResponseBodyDataRecordsVSwitches,
     ListClustersResponseBodyDataRecords,
     ListClustersResponseBodyData,
+    ListContactsResponseBodyDataRecords,
+    ListContactsResponseBodyData,
     ListDatasourcesResponseBodyDataRecords,
     ListDatasourcesResponseBodyData,
     ListExecutorGroupResponseBodyDataRecordsCiteList,

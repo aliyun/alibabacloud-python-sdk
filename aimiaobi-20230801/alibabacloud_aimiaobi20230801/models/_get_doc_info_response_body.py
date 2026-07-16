@@ -17,11 +17,17 @@ class GetDocInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The internal error code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,20 @@ class GetDocInfoResponseBodyData(DaraModel):
         status_message: str = None,
         video_contents: List[str] = None,
     ):
+        # The category where the document is stored.
         self.category_id = category_id
+        # The document name.
         self.doc_name = doc_name
+        # The document type.
         self.doc_type = doc_type
+        # The URL of the document.
         self.file_url = file_url
         self.page_info = page_info
+        # The task status.
         self.status = status
+        # The status message.
         self.status_message = status_message
+        # Text transcripts from the video\\"s audio.
         self.video_contents = video_contents
 
     def validate(self):

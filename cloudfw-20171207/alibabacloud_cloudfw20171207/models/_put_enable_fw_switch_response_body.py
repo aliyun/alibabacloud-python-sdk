@@ -13,9 +13,9 @@ class PutEnableFwSwitchResponseBody(DaraModel):
         abnormal_resource_status_list: List[main_models.PutEnableFwSwitchResponseBodyAbnormalResourceStatusList] = None,
         request_id: str = None,
     ):
-        # The status information of the asset when it is not synchronized to Cloud Firewall.
+        # Information about unsynchronized assets.
         self.abnormal_resource_status_list = abnormal_resource_status_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,15 +59,15 @@ class PutEnableFwSwitchResponseBodyAbnormalResourceStatusList(DaraModel):
         resource: str = None,
         status: str = None,
     ):
-        # The message displayed when the asset is not synchronized to Cloud Firewall. Valid values:
+        # A message that provides details about why an asset was not synchronized. Valid value:
         # 
-        # *   cloudfirewall do not sync this ip address: This IP address is not synchronized to Cloud Firewall.
+        # - `cloudfirewall do not sync this ip address`: Cloud Firewall does not synchronize the IP address of the asset.
         self.msg = msg
         # The IP address of the asset.
         self.resource = resource
-        # The status of the asset when it is not synchronized to Cloud Firewall. Valid values:
+        # The synchronization status of the asset. Valid value:
         # 
-        # *   ip_not_sync: The asset is not synchronized.
+        # - `ip_not_sync`: The asset is not synchronized.
         self.status = status
 
     def validate(self):

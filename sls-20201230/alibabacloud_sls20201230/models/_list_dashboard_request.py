@@ -16,12 +16,15 @@ class ListDashboardRequest(DaraModel):
         size: int = None,
         tags: List[main_models.ListDashboardRequestTags] = None,
     ):
+        # The dashboard name.
         self.dashboard_name = dashboard_name
+        # The display name.
         self.display_name = display_name
-        # The line from which the query starts. Default value: 0.
+        # The line from which the query starts. The default value is 0.
         self.offset = offset
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # The number of entries to return on each page for a paged query. The maximum value is 500. The default value is 500.
         self.size = size
+        # The tag information.
         self.tags = tags
 
     def validate(self):
@@ -82,7 +85,9 @@ class ListDashboardRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

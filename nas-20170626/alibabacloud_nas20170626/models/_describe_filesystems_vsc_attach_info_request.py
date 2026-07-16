@@ -13,21 +13,30 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
         resource_ids: List[main_models.DescribeFilesystemsVscAttachInfoRequestResourceIds] = None,
+        role_chain: List[main_models.DescribeFilesystemsVscAttachInfoRequestRoleChain] = None,
     ):
         # The number of results for each query.
         # 
-        # Valid values: 10 to 100. Default value: 10.
+        # Valid values: 10 to 100.
+        # Default value: 10.
         self.max_results = max_results
-        # Query token, which is the NextToken value returned from the previous API call.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # The ID information of file systems and virtual storage channels. A maximum of 10 entries can be specified per batch.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
+        # The role chain.
+        # >Required only for cross-account scenarios.
+        self.role_chain = role_chain
 
     def validate(self):
         if self.resource_ids:
             for v1 in self.resource_ids:
+                 if v1:
+                    v1.validate()
+        if self.role_chain:
+            for v1 in self.role_chain:
                  if v1:
                     v1.validate()
 
@@ -47,6 +56,11 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
             for k1 in self.resource_ids:
                 result['ResourceIds'].append(k1.to_map() if k1 else None)
 
+        result['RoleChain'] = []
+        if self.role_chain is not None:
+            for k1 in self.role_chain:
+                result['RoleChain'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +77,58 @@ class DescribeFilesystemsVscAttachInfoRequest(DaraModel):
                 temp_model = main_models.DescribeFilesystemsVscAttachInfoRequestResourceIds()
                 self.resource_ids.append(temp_model.from_map(k1))
 
+        self.role_chain = []
+        if m.get('RoleChain') is not None:
+            for k1 in m.get('RoleChain'):
+                temp_model = main_models.DescribeFilesystemsVscAttachInfoRequestRoleChain()
+                self.role_chain.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeFilesystemsVscAttachInfoRequestRoleChain(DaraModel):
+    def __init__(
+        self,
+        assume_role_for: str = None,
+        role_arn: str = None,
+        role_type: str = None,
+    ):
+        # The UID of the Alibaba Cloud account, which specifies the account on whose behalf the service assumes the role.
+        self.assume_role_for = assume_role_for
+        # The resource descriptor of the specified role. Format: acs:ram::$accountID:role/$roleName.
+        self.role_arn = role_arn
+        # The role type. Valid values: service and user.
+        self.role_type = role_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.assume_role_for is not None:
+            result['AssumeRoleFor'] = self.assume_role_for
+
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        if self.role_type is not None:
+            result['RoleType'] = self.role_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssumeRoleFor') is not None:
+            self.assume_role_for = m.get('AssumeRoleFor')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        if m.get('RoleType') is not None:
+            self.role_type = m.get('RoleType')
+
         return self
 
 class DescribeFilesystemsVscAttachInfoRequestResourceIds(DaraModel):
@@ -71,9 +137,9 @@ class DescribeFilesystemsVscAttachInfoRequestResourceIds(DaraModel):
         file_system_id: str = None,
         vsc_id: str = None,
     ):
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The ID of the virtual storage channel.
+        # The virtual storage channel ID.
         self.vsc_id = vsc_id
 
     def validate(self):

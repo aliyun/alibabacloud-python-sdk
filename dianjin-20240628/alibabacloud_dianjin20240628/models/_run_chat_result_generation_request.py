@@ -17,13 +17,21 @@ class RunChatResultGenerationRequest(DaraModel):
         stream: bool = None,
         tools: List[main_models.RunChatResultGenerationRequestTools] = None,
     ):
+        # Hyperparameters used for inference.
         self.inference_parameters = inference_parameters
+        # Messages to input into the model.
+        # 
         # This parameter is required.
         self.messages = messages
+        # The model service type. Get this value from the /api/app/config API endpoint in the llmHelperTypeList field.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # Session ID. Use this to mark a conversation.
         self.session_id = session_id
+        # Streaming mode. Set to true for streaming responses. Set to false for full responses. Default is false.
         self.stream = stream
+        # Tool information. Specify a list of tools the model can call. When multiple tools are provided, the model selects one to generate a response.
         self.tools = tools
 
     def validate(self):
@@ -99,7 +107,9 @@ class RunChatResultGenerationRequestTools(DaraModel):
         function: main_models.RunChatResultGenerationRequestToolsFunction = None,
         type: str = None,
     ):
+        # An object containing name, description, and parameters.
         self.function = function
+        # A string indicating the tool type. Currently, only "function" is supported.
         self.type = type
 
     def validate(self):
@@ -138,9 +148,13 @@ class RunChatResultGenerationRequestToolsFunction(DaraModel):
         parameters: main_models.RunChatResultGenerationRequestToolsFunctionParameters = None,
         required: List[str] = None,
     ):
+        # A string describing the tool function. This helps the model decide when and how to call it.
         self.description = description
+        # A string representing the tool function name. It must contain only letters, digits, underscores, and hyphens. Maximum length is 64 characters.
         self.name = name
+        # An object describing the tool parameters. It must be a valid JSON Schema.
         self.parameters = parameters
+        # List of required parameters.
         self.required = required
 
     def validate(self):
@@ -189,7 +203,9 @@ class RunChatResultGenerationRequestToolsFunctionParameters(DaraModel):
         properties: Dict[str, Any] = None,
         type: str = None,
     ):
+        # Properties.
         self.properties = properties
+        # Type.
         self.type = type
 
     def validate(self):
@@ -224,7 +240,9 @@ class RunChatResultGenerationRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # Message content.
         self.content = content
+        # Message role.
         self.role = role
 
     def validate(self):

@@ -11,8 +11,12 @@ class DescribeActiveOperationTaskCountRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
+        # A reserved parameter. You do not need to specify this parameter.
         self.category = category
+        # The product. Default value: polarx.
         self.product = product
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

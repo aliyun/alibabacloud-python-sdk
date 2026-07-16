@@ -15,12 +15,19 @@ class HiMarketModelFeature(DaraModel):
         temperature: float = None,
         web_search: bool = None,
     ):
+        # Indicates whether multimodal input is supported.
         self.enable_multi_modal = enable_multi_modal
+        # Indicates whether chain-of-thought (Thinking) is supported.
         self.enable_thinking = enable_thinking
+        # The maximum number of tokens supported by the model.
         self.max_tokens = max_tokens
+        # The model name.
         self.model = model
+        # Indicates whether streaming output is supported.
         self.streaming = streaming
+        # The temperature parameter that controls the randomness of generation.
         self.temperature = temperature
+        # Indicates whether web search is supported.
         self.web_search = web_search
 
     def validate(self):

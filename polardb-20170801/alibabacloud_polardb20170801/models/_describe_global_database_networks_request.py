@@ -20,32 +20,37 @@ class DescribeGlobalDatabaseNetworksRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to find the IDs of all clusters in a region.
         self.dbcluster_id = dbcluster_id
-        # Specify the region in which you want to query GDNs. You can create secondary clusters for the GDNs.
+        # Returns only GDNs that support creating a secondary cluster in the specified region.
         self.filter_region = filter_region
         # The description of the GDN. The description must meet the following requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (_), and hyphens (-).
-        # *   It must be 2 to 126 characters in length.
+        # - It cannot start with `http://` or `https://`.
+        # 
+        # - It must start with a letter or a Chinese character.
+        # 
+        # - It can contain letters, Chinese characters, digits, underscores (_), and hyphens (-).
+        # 
+        # - It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
-        # The ID of the GDN.
+        # The GDN ID.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: 1. The value must be an integer that is greater than 0.
+        # The page number. The value must be greater than 0. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 30. Valid values:
+        # The number of entries to return on each page. Default value: 30. Valid values:
         # 
-        # *   30
-        # *   50
-        # *   100
+        # - 30
+        # 
+        # - 50
+        # 
+        # - 100
         self.page_size = page_size
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -15,21 +15,21 @@ class GetCheckStructureRequest(DaraModel):
         region_id: str = None,
         task_sources: List[str] = None,
     ):
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page.
+        # The maximum number of entries per page in a paging query.
         self.page_size = page_size
-        # The region ID of the asset. Valid values:
+        # The region where the asset resides. Valid values:
         # 
-        # *   cn-hangzhou: China.
-        # *   ap-southeast-1: outside China.
+        # - cn-hangzhou: China
+        # - ap-southeast-1: outside China.
         self.region_id = region_id
-        # List of task sources.
+        # The list of task sources.
         self.task_sources = task_sources
 
     def validate(self):

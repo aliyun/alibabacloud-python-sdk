@@ -12,7 +12,7 @@ class DeleteTemplatesRequest(DaraModel):
         biz_type: str = None,
         template_ids: List[str] = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.biz_type = biz_type
         # The IDs of the templates that you want to delete.
         self.template_ids = template_ids

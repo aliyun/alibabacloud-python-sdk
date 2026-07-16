@@ -25,18 +25,40 @@ class CacheCluster(DaraModel):
         v_switches: List[main_models.CacheClusterVSwitches] = None,
         vpc_id: str = None,
     ):
+        # Cluster ID
         self.cluster_id = cluster_id
+        # Cluster name
         self.cluster_name = cluster_name
+        # Creation time
         self.created_at = created_at
+        # Creator name
         self.created_by = created_by
+        # Version of the deployed instance
         self.deploy_instance_version = deploy_instance_version
+        # Deployed options version
         self.deploy_options_version = deploy_options_version
+        # Milvus Version
         self.instance_version = instance_version
+        # Cache cluster configuration
         self.options = options
+        # Options version
         self.options_version = options_version
+        # Cache cluster status. Valid values:
+        # ● NEW: Newly created and not started.
+        # ● STARTING: Starting.
+        # ● START_FAILED: Start failed.
+        # ● RUNNING: Running.
+        # ● PENDING_RESTART: Pending restart.
+        # ● PENDING_TERMINATE: Pending termination.
+        # ● TERMINATING: Terminating.
+        # ● TERMINATE_FAILED: Termination failed.
+        # ● TERMINATED: Terminated.
         self.status = status
+        # Update time
         self.updated_at = updated_at
+        # Updater name
         self.updated_by = updated_by
+        # vSwitch list
         self.v_switches = v_switches
         # VPC ID
         self.vpc_id = vpc_id
@@ -155,7 +177,9 @@ class CacheClusterVSwitches(DaraModel):
         v_switch_id: str = None,
         zone: str = None,
     ):
+        # vSwitch ID
         self.v_switch_id = v_switch_id
+        # Instance zone
         self.zone = zone
 
     def validate(self):

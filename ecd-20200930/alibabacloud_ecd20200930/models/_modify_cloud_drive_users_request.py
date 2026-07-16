@@ -15,10 +15,16 @@ class ModifyCloudDriveUsersRequest(DaraModel):
         status: str = None,
         user_max_size: int = None,
     ):
+        # The enterprise cloud disk ID.
+        # 
         # This parameter is required.
         self.cds_id = cds_id
+        # A list of end user IDs.
+        # 
         # This parameter is required.
         self.end_user_id = end_user_id
+        # The region ID. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain the list of regions supported by WUYING Workspace.
+        # 
         # This parameter is required.
         self.region_id = region_id
         # The status of Cloud Drive Service users.

@@ -14,11 +14,17 @@ class TaskPreparingResponseBody(DaraModel):
         success: bool = None,
         task_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

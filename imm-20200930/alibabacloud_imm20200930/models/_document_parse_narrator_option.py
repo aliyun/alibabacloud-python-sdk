@@ -9,6 +9,7 @@ class DocumentParseNarratorOption(DaraModel):
         self,
         narrate: bool = None,
     ):
+        # The summary of the document.
         self.narrate = narrate
 
     def validate(self):

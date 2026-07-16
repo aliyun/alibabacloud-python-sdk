@@ -11,8 +11,17 @@ class ModifyBackupExpireTimeResponseBody(DaraModel):
         backup_id: str = None,
         request_id: str = None,
     ):
+        # The time-to-live (TTL) of the backup. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is in UTC.
+        # 
+        # > - *9999-01-01*T*00:00:00*&#x5A;*&#x20;indicates that the backup is retained permanently.*
+        # >
+        # >   **
+        # >
+        # > **
         self.backup_expire_time = backup_expire_time
+        # The backup ID.
         self.backup_id = backup_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

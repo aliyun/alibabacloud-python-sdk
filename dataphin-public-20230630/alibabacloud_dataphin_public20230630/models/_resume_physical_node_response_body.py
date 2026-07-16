@@ -17,11 +17,17 @@ class ResumePhysicalNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. A value of OK indicates a successful request.
         self.code = code
+        # HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Results of the node resume scheduling operation.
         self.node_operate_result_list = node_operate_result_list
+        # Request ID.
         self.request_id = request_id
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -89,8 +95,11 @@ class ResumePhysicalNodeResponseBodyNodeOperateResultList(DaraModel):
         node_id: str = None,
         status: str = None,
     ):
+        # Error message returned when the operation fails.
         self.error_message = error_message
+        # Node ID.
         self.node_id = node_id
+        # Operation result.
         self.status = status
 
     def validate(self):

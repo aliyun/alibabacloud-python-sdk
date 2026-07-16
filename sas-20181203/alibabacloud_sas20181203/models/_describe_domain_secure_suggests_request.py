@@ -10,9 +10,9 @@ class DescribeDomainSecureSuggestsRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # Sets the language type for requests and received messages, default is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
         # The IP address of the access source.
         self.source_ip = source_ip

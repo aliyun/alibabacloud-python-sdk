@@ -20,7 +20,32 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'dytnsapi.aliyuncs.com',
+            'us-east-1': 'dytnsapi.aliyuncs.com',
+            'me-east-1': 'dytnsapi.aliyuncs.com',
+            'eu-west-1': 'dytnsapi.aliyuncs.com',
+            'eu-central-1': 'dytnsapi.aliyuncs.com',
+            'cn-zhangjiakou': 'dytnsapi.aliyuncs.com',
+            'cn-wulanchabu': 'dytnsapi.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'dytnsapi.aliyuncs.com',
+            'cn-shenzhen': 'dytnsapi.aliyuncs.com',
+            'cn-shanghai-finance-1': 'dytnsapi.aliyuncs.com',
+            'cn-shanghai': 'dytnsapi.aliyuncs.com',
+            'cn-qingdao': 'dytnsapi.aliyuncs.com',
+            'cn-huhehaote': 'dytnsapi.aliyuncs.com',
+            'cn-hongkong': 'dytnsapi.aliyuncs.com',
+            'cn-hangzhou-finance': 'dytnsapi.aliyuncs.com',
+            'cn-hangzhou': 'dytnsapi.aliyuncs.com',
+            'cn-chengdu': 'dytnsapi.aliyuncs.com',
+            'cn-beijing-finance-1': 'dytnsapi.aliyuncs.com',
+            'cn-beijing': 'dytnsapi.aliyuncs.com',
+            'ap-southeast-5': 'dytnsapi.aliyuncs.com',
+            'ap-southeast-3': 'dytnsapi.aliyuncs.com',
+            'ap-southeast-1': 'dytnsapi.aliyuncs.com',
+            'ap-northeast-1': 'dytnsapi.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dytnsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1985,6 +2010,100 @@ class Client(OpenApiClient):
     ) -> main_models.GetUAIDConversionSignResponse:
         runtime = RuntimeOptions()
         return await self.get_uaidconversion_sign_with_options_async(request, runtime)
+
+    def history_three_elements_verification_with_options(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.carrier):
+            query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.verification_time):
+            query['VerificationTime'] = request.verification_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HistoryThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HistoryThreeElementsVerificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def history_three_elements_verification_with_options_async(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.carrier):
+            query['Carrier'] = request.carrier
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.verification_time):
+            query['VerificationTime'] = request.verification_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'HistoryThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.HistoryThreeElementsVerificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def history_three_elements_verification(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return self.history_three_elements_verification_with_options(request, runtime)
+
+    async def history_three_elements_verification_async(
+        self,
+        request: main_models.HistoryThreeElementsVerificationRequest,
+    ) -> main_models.HistoryThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return await self.history_three_elements_verification_with_options_async(request, runtime)
 
     def invalid_phone_number_filter_with_options(
         self,
@@ -4335,3 +4454,89 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateContactsResponse:
         runtime = RuntimeOptions()
         return await self.update_contacts_with_options_async(request, runtime)
+
+    def virtual_three_elements_verification_with_options(
+        self,
+        request: main_models.VirtualThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualThreeElementsVerificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def virtual_three_elements_verification_with_options_async(
+        self,
+        request: main_models.VirtualThreeElementsVerificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VirtualThreeElementsVerificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.cert_code):
+            query['CertCode'] = request.cert_code
+        if not DaraCore.is_null(request.cert_name):
+            query['CertName'] = request.cert_name
+        if not DaraCore.is_null(request.input_number):
+            query['InputNumber'] = request.input_number
+        if not DaraCore.is_null(request.mask):
+            query['Mask'] = request.mask
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VirtualThreeElementsVerification',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VirtualThreeElementsVerificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def virtual_three_elements_verification(
+        self,
+        request: main_models.VirtualThreeElementsVerificationRequest,
+    ) -> main_models.VirtualThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return self.virtual_three_elements_verification_with_options(request, runtime)
+
+    async def virtual_three_elements_verification_async(
+        self,
+        request: main_models.VirtualThreeElementsVerificationRequest,
+    ) -> main_models.VirtualThreeElementsVerificationResponse:
+        runtime = RuntimeOptions()
+        return await self.virtual_three_elements_verification_with_options_async(request, runtime)

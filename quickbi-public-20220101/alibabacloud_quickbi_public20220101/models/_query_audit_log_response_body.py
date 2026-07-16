@@ -14,13 +14,15 @@ class QueryAuditLogResponseBody(DaraModel):
         result: List[main_models.QueryAuditLogResponseBodyResult] = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Array of logs.
+        # An array of log objects.
         self.result = result
-        # Indicates whether the request was successful. Possible values: 
-        # - true: The request succeeded 
-        # - false: The request failed
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -75,21 +77,21 @@ class QueryAuditLogResponseBodyResult(DaraModel):
         target_type: str = None,
         workspace_id: str = None,
     ):
-        # Log time.
+        # The time when the log was generated.
         self.gmt_create = gmt_create
-        # Operator account.
+        # The account name of the operator.
         self.operator_account_name = operator_account_name
-        # Operator\\"s nickname.
+        # The nickname of the operator.
         self.operator_name = operator_name
-        # Operation type.
+        # The operation type.
         self.operator_type = operator_type
-        # Target ID.
+        # The ID of the operation target.
         self.target_id = target_id
-        # Target name.
+        # The name of the operation target.
         self.target_name = target_name
-        # Target type.
+        # The type of the operation target.
         self.target_type = target_type
-        # Workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

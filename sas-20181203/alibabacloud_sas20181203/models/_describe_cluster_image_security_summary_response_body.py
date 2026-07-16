@@ -13,7 +13,7 @@ class DescribeClusterImageSecuritySummaryResponseBody(DaraModel):
         cluster_image_event: main_models.DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent = None,
         request_id: str = None,
     ):
-        # The information about the image-related security events.
+        # The image security event information.
         self.cluster_image_event = cluster_image_event
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEvent(DaraModel
         image_malicious_file: List[main_models.DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMaliciousFile] = None,
         image_sca_vul: List[main_models.DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVul] = None,
     ):
-        # The information about image baseline risks.
+        # The image baseline check information.
         self.image_baseline = image_baseline
-        # The information about image system vulnerabilities.
+        # The image system vulnerability information.
         self.image_cve_vul = image_cve_vul
-        # The information about malicious image samples.
+        # The image malicious sample information.
         self.image_malicious_file = image_malicious_file
-        # The information about image application vulnerabilities.
+        # The image application vulnerability information.
         self.image_sca_vul = image_sca_vul
 
     def validate(self):
@@ -142,13 +142,13 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageScaVu
         count: int = None,
         risk_level: str = None,
     ):
-        # The number of image application vulnerabilities.
+        # The number of application vulnerabilities.
         self.count = count
-        # The alert level. Valid values:
+        # The warning level. Valid values:
         # 
-        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
-        # *   **nntf**: medium. You can fix the vulnerability based on your business requirements.
-        # *   **later**: low. You can ignore the vulnerability.
+        # - **asap**: High. Fix the vulnerability at the earliest opportunity.
+        # - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
+        # - **later**: Low. The vulnerability can be left unfixed.
         self.risk_level = risk_level
 
     def validate(self):
@@ -187,9 +187,9 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageMalic
         self.count = count
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: High.
+        # - **medium**: Medium.
+        # - **low**: Low.
         self.risk_level = risk_level
 
     def validate(self):
@@ -226,11 +226,11 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageCveVu
     ):
         # The number of vulnerabilities.
         self.count = count
-        # The alert level. Valid values:
+        # The warning level. Valid values:
         # 
-        # *   **asap**: high. You must fix the vulnerability at the earliest opportunity.
-        # *   **nntf**: medium. You can fix the vulnerability based on your business requirements.
-        # *   **later**: low. You can ignore the vulnerability.
+        # - **asap**: High. Fix the vulnerability at the earliest opportunity.
+        # - **nntf**: Medium. The vulnerability can be temporarily left unfixed.
+        # - **later**: Low. The vulnerability can be left unfixed.
         self.risk_level = risk_level
 
     def validate(self):
@@ -269,9 +269,9 @@ class DescribeClusterImageSecuritySummaryResponseBodyClusterImageEventImageBasel
         self.count = count
         # The risk level. Valid values:
         # 
-        # *   **high**
-        # *   **medium**
-        # *   **low**
+        # - **high**: High.
+        # - **medium**: Medium.
+        # - **low**: Low.
         self.risk_level = risk_level
 
     def validate(self):

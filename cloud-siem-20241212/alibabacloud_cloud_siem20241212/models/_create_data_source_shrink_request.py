@@ -28,22 +28,59 @@ class CreateDataSourceShrinkRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_from = data_source_from
+        # A list of data source IDs.
         self.data_source_ids_shrink = data_source_ids_shrink
+        # The name of the data source.
         self.data_source_name = data_source_name
+        # Specifies whether to automatically discover new data sources.
         self.data_source_recognize_enabled = data_source_recognize_enabled
+        # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
+        # The IDs of associated data access instances.
         self.data_source_references_shrink = data_source_references_shrink
+        # The list of Simple Log Service projects.
         self.data_source_stores = data_source_stores
+        # The ID of the data source template.
         self.data_source_template_id = data_source_template_id
+        # The type of the data source. Valid values:
+        # 
+        # - preset
+        # 
+        # - custom
         self.data_source_type = data_source_type
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
+        # The user ID for data ingestion.
         self.log_user_id = log_user_id
+        # The sort order. Valid values:
+        # 
+        # - desc: descending.
+        # 
+        # - asc: ascending.
         self.order = order
+        # The region of the Management Hub. Select a region based on the location of your assets. Valid values:
+        # 
+        # - cn-hangzhou: Assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: Assets are outside China.
         self.region_id = region_id
+        # The user ID of the member whose perspective the administrator assumes.
         self.role_for = role_for
 
     def validate(self):
@@ -180,11 +217,25 @@ class CreateDataSourceShrinkRequestDataSourceStores(DaraModel):
         log_region_id: str = None,
         log_store_name: str = None,
     ):
+        # The source of the data. Valid values:
+        # 
+        # - center
+        # 
+        # - custom
         self.data_source_store_from = data_source_store_from
+        # The ID of the log storage.
         self.data_source_store_id = data_source_store_id
+        # The status of the log storage. Valid values:
+        # 
+        # - normal
+        # 
+        # - abnormal
         self.data_source_store_status = data_source_store_status
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
 
     def validate(self):

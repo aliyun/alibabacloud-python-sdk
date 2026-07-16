@@ -16,14 +16,14 @@ class GetInstanceListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the call is successful.
+        # The status code. A value of 200 indicates that the request is successful.
         self.code = code
         self.instance_list = instance_list
-        # The message returned.
+        # The returned message.
         self.message = message
-        # The ID of the region.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates if the request was successful.
         self.success = success
 
     def validate(self):

@@ -72,9 +72,11 @@ class GetLiveTranscodeJobResponseBodyJob(DaraModel):
         self.start_mode = start_mode
         # The state of the job.
         # 
-        # *   0: The job is not started.
-        # *   1: The job is in progress.
-        # *   2: The job is stopped.
+        # - 0: The job is not started.
+        # 
+        # - 1: The job is in progress.
+        # 
+        # - 2: The job is stopped.
         self.status = status
         # The information about the input stream.
         self.stream_input = stream_input

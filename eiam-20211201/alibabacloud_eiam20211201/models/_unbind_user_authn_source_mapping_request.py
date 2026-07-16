@@ -12,19 +12,19 @@ class UnbindUserAuthnSourceMappingRequest(DaraModel):
         user_external_id: str = None,
         user_id: str = None,
     ):
-        # 来源ID
+        # The ID of the source identity provider.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 外部关联ID
+        # The external ID associated with the user.
         # 
         # This parameter is required.
         self.user_external_id = user_external_id
-        # 用户ID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

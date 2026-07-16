@@ -10,7 +10,9 @@ class ListContextStoreAPIKeysRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries to return in a single request. If this parameter is not specified, the service returns a default number of entries.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results. Leave this parameter empty to retrieve the first page.
         self.next_token = next_token
 
     def validate(self):

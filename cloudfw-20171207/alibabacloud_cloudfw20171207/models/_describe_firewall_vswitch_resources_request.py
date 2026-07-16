@@ -12,11 +12,18 @@ class DescribeFirewallVswitchResourcesRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
+        # The type of the Cloud Firewall.
+        # 
         # This parameter is required.
         self.firewall_type = firewall_type
+        # The language of the response message.
         self.lang = lang
+        # The region.
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The ID of the VPC instance.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

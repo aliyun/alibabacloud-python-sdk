@@ -13,9 +13,13 @@ class HiMarketPortalDeployConfig(DaraModel):
         sae_config: main_models.HiMarketPortalDeployConfigSaeConfig = None,
         status: str = None,
     ):
+        # The deployment status message.
         self.message = message
+        # The deployment platform type.
         self.platform = platform
+        # The SAE (Serverless App Engine) deployment configuration.
         self.sae_config = sae_config
+        # The deployment status.
         self.status = status
 
     def validate(self):
@@ -70,13 +74,21 @@ class HiMarketPortalDeployConfigSaeConfig(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The SAE application ID.
         self.app_id = app_id
+        # The SAE namespace ID.
         self.namespace_id = namespace_id
+        # The OIDC role name used for SAE to access other cloud resources.
         self.oidc_role_name = oidc_role_name
+        # The region ID of SAE.
         self.region_id = region_id
+        # The number of instance replicas.
         self.replicas = replicas
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):

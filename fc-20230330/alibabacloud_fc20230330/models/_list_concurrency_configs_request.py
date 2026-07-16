@@ -11,11 +11,11 @@ class ListConcurrencyConfigsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The function name. If you leave this parameter empty, the concurrency configurations of all functions are returned.
+        # The function name. If you do not specify this parameter, the concurrency configurations of all functions are listed.
         self.function_name = function_name
-        # The maximum number of entries returned.
+        # The maximum number of results to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token for paging.
         self.next_token = next_token
 
     def validate(self):

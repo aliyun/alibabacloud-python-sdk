@@ -18,17 +18,28 @@ class RunDocBrainmapRequest(DaraModel):
         workspace_id: str = None,
         reference_content: str = None,
     ):
+        # Indicates whether to clear the previous cache.
         self.clean_cache = clean_cache
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # The name of the model to use.
         self.model_name = model_name
+        # The number of nodes to generate at the second level of the mind map.
         self.node_number = node_number
+        # A custom prompt to guide the mind map generation.
         self.prompt = prompt
         self.response_format = response_format
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The maximum number of words in each node.
         self.word_number = word_number
+        # The ID of the Model Studio workspace. For more information, see [How to use a workspace](https://help.aliyun.com/document_detail/2782167.html).
         self.workspace_id = workspace_id
+        # The source content for generating the mind map. This parameter takes precedence over `DocId`.
         self.reference_content = reference_content
 
     def validate(self):

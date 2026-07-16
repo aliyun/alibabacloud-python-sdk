@@ -16,11 +16,15 @@ class ListExecutorLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The retrieved logs, sorted in contextual order. If no contextual logs are found based on the specified starting log, this parameter is empty.
         self.logs = logs
+        # The maximum number of results returned per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. This value is null when there are no more results to return.
         self.next_token = next_token
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The total count of log files.
         self.total_count = total_count
 
     def validate(self):
@@ -84,10 +88,15 @@ class ListExecutorLogsResponseBodyLogs(DaraModel):
         log_type: str = None,
         update_time: int = None,
     ):
+        # The full path of the log file.
         self.file_name = file_name
+        # The size of the file, in bytes.
         self.file_size = file_size
+        # The log name.
         self.log_name = log_name
+        # The log type.
         self.log_type = log_type
+        # The time the log file was last updated, as a Unix timestamp.
         self.update_time = update_time
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListMaxComputeExportsResponseBody(DaraModel):
         results: List[main_models.MaxComputeExport] = None,
         total: int = None,
     ):
+        # The number of MaxCompute delivery tasks that are returned.
         self.count = count
+        # The list of MaxCompute delivery tasks.
         self.results = results
+        # The total number of MaxCompute delivery tasks in the project.
         self.total = total
 
     def validate(self):

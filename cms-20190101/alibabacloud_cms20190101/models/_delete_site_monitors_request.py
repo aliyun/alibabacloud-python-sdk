@@ -11,13 +11,14 @@ class DeleteSiteMonitorsRequest(DaraModel):
         region_id: str = None,
         task_ids: str = None,
     ):
-        # Specifies whether to delete the alert rules configured for the site monitoring tasks. Valid values:
+        # Specifies whether to delete the alert rules associated with the tasks. Valid values:
         # 
-        # *   true (default value)
-        # *   false
+        # - true (default): Deletes the alert rules.
+        # 
+        # - false: Does not delete the alert rules.
         self.is_delete_alarms = is_delete_alarms
         self.region_id = region_id
-        # The IDs of the site monitoring tasks that you want to delete. Separate multiple task IDs with commas (,).
+        # The IDs of the tasks to be deleted. Separate multiple task IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids

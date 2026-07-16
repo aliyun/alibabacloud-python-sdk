@@ -12,15 +12,15 @@ class DescribeRecommendVelocitiesRequest(DaraModel):
         reg_id: str = None,
         type: str = None,
     ):
-        # Sets the language type for requests and responses, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Metric code
+        # The metric code.
         self.code = code
-        # Region ID
+        # The region code.
         self.reg_id = reg_id
-        # Metric type
+        # The metric type.
         self.type = type
 
     def validate(self):

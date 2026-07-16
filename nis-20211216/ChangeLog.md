@@ -1,3 +1,9 @@
+2026-05-26 Version: 2.3.1
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.BytesIncrease.
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.BytesIncreaseRatio.
+- Update API DescribeNisTrafficRanking: add response parameters Body.FlowRankingList.$.CenId.
+
+
 2026-02-03 Version: 2.3.0
 - Support API DescribeNisTrafficRanking.
 - Support API StartNisTrafficRanking.

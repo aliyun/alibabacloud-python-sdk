@@ -11,10 +11,16 @@ class GetDomainInfoForPartnerRequest(DaraModel):
         domain_name: str = None,
         user_id: str = None,
     ):
+        # The customer business ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        # The domain name.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
+        # The Alibaba Cloud account ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

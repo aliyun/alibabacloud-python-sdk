@@ -16,10 +16,17 @@ class ListTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request status code. A return value of OK indicates that the request succeeded.
         self.code = code
+        # Detailed job information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +83,13 @@ class ListTaskDetailResponseBodyData(DaraModel):
         record: List[main_models.ListTaskDetailResponseBodyDataRecord] = None,
         total: int = None,
     ):
+        # Number of items per page.
         self.page_no = page_no
+        # Current page number.
         self.page_size = page_size
+        # List of job information.
         self.record = record
+        # Total number of jobs.
         self.total = total
 
     def validate(self):
@@ -144,18 +155,34 @@ class ListTaskDetailResponseBodyDataRecord(DaraModel):
         status_code_desc: str = None,
         tags: str = None,
     ):
+        # Called number.
         self.called = called
+        # Calling number.
         self.caller = caller
+        # Hang-up direction. Valid values:
+        # 
+        # - **User**.
+        # - **Machine**.
         self.direction = direction
+        # Call duration. Unit: seconds.
         self.duration = duration
+        # End time.
         self.end_time = end_time
+        # Record ID.
         self.id = id
+        # Current retry count.
         self.retry_cur_times = retry_cur_times
+        # Retry Count.
         self.retry_times = retry_times
+        # Start Time.
         self.start_time = start_time
+        # Detail status.
         self.status = status
+        # Call status code.
         self.status_code = status_code
+        # Call status code description.
         self.status_code_desc = status_code_desc
+        # Intent tags.
         self.tags = tags
 
     def validate(self):

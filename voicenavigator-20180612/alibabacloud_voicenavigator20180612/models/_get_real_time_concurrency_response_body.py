@@ -12,9 +12,13 @@ class GetRealTimeConcurrencyResponseBody(DaraModel):
         request_id: str = None,
         timestamp: int = None,
     ):
+        # The maximum concurrency.
         self.max_concurrency = max_concurrency
+        # The real-time concurrency.
         self.real_time_concurrency = real_time_concurrency
+        # The request ID.
         self.request_id = request_id
+        # The timestamp of the request.
         self.timestamp = timestamp
 
     def validate(self):

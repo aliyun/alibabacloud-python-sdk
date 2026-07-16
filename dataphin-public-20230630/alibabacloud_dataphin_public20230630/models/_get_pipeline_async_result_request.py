@@ -12,10 +12,16 @@ class GetPipelineAsyncResultRequest(DaraModel):
         context: main_models.GetPipelineAsyncResultRequestContext = None,
         op_tenant_id: int = None,
     ):
+        # The asynchronous execution ID.
+        # 
         # This parameter is required.
         self.async_id = async_id
+        # The request context information.
+        # 
         # This parameter is required.
         self.context = context
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -59,8 +65,14 @@ class GetPipelineAsyncResultRequestContext(DaraModel):
         env: str = None,
         project_id: int = None,
     ):
+        # The current operation environment. Valid values:
+        # - DEV: development environment.
+        # - PROD: production environment.
+        # 
         # This parameter is required.
         self.env = env
+        # The ID of the project to which the integration pipeline task belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

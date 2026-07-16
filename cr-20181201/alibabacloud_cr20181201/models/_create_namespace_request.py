@@ -14,19 +14,20 @@ class CreateNamespaceRequest(DaraModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
-        # Specifies whether to automatically create an image repository in the namespace.
+        # Specifies whether a repository is automatically created when an image is pushed to a repository that does not yet exist in the namespace.
         self.auto_create_repo = auto_create_repo
         self.default_repo_configuration = default_repo_configuration
-        # The default type of the repositories that are automatically created in the namespace. Valid values:
+        # The default type of automatically created repositories. Valid values:
         # 
-        # *   `PUBLIC`: public repositories
-        # *   `PRIVATE`: private repositories.
+        # - `PUBLIC`: public
+        # 
+        # - `PRIVATE`: private
         self.default_repo_type = default_repo_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the namespace. The name must be 2 to 120 characters in length, and can contain lowercase letters, digits, and the following delimiters: underscores (_), hyphens (-), and periods (.). The name cannot start or end with a delimiter.
+        # The name of the namespace. The name must be 2 to 120 characters long and can contain only lowercase letters, digits, and the following separators: underscores (_), hyphens (-), and periods (.). A separator cannot be used as the first or last character.
         # 
         # This parameter is required.
         self.namespace_name = namespace_name

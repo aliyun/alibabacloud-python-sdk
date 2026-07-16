@@ -28,10 +28,15 @@ from ._dlstorage_descriptor import DLStorageDescriptor
 from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
+from ._data_agent_billing_instance import DataAgentBillingInstance
 from ._data_mount_info import DataMountInfo
+from ._dms_gateway_order import DmsGatewayOrder
 from ._dms_knowledge_search_order_info_do import DmsKnowledgeSearchOrderInfoDO
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
+from ._mdb_agent_instance_vo import MdbAgentInstanceVo
+from ._one_meta_database import OneMetaDatabase
+from ._one_meta_database_engine_meta import OneMetaDatabaseEngineMeta
 from ._one_meta_database_object import OneMetaDatabaseObject
 from ._one_meta_knowledge_base import OneMetaKnowledgeBase
 from ._one_meta_knowledge_base_chunk import OneMetaKnowledgeBaseChunk
@@ -74,6 +79,9 @@ from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
 from ._create_custom_agent_response import CreateCustomAgentResponse
+from ._create_data_agent_accuracy_test_request import CreateDataAgentAccuracyTestRequest
+from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBody
+from ._create_data_agent_accuracy_test_response import CreateDataAgentAccuracyTestResponse
 from ._create_data_agent_knowledge_base_request import CreateDataAgentKnowledgeBaseRequest
 from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBody
 from ._create_data_agent_knowledge_base_response import CreateDataAgentKnowledgeBaseResponse
@@ -106,6 +114,9 @@ from ._delete_airflow_response import DeleteAirflowResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_data_agent_accuracy_test_request import DeleteDataAgentAccuracyTestRequest
+from ._delete_data_agent_accuracy_test_response_body import DeleteDataAgentAccuracyTestResponseBody
+from ._delete_data_agent_accuracy_test_response import DeleteDataAgentAccuracyTestResponse
 from ._delete_data_agent_knowledge_base_request import DeleteDataAgentKnowledgeBaseRequest
 from ._delete_data_agent_knowledge_base_response_body import DeleteDataAgentKnowledgeBaseResponseBody
 from ._delete_data_agent_knowledge_base_response import DeleteDataAgentKnowledgeBaseResponse
@@ -135,6 +146,9 @@ from ._delete_document_chunks_response import DeleteDocumentChunksResponse
 from ._delete_file_upload_request import DeleteFileUploadRequest
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBody
 from ._delete_file_upload_response import DeleteFileUploadResponse
+from ._delete_workspace_code_request import DeleteWorkspaceCodeRequest
+from ._delete_workspace_code_response_body import DeleteWorkspaceCodeResponseBody
+from ._delete_workspace_code_response import DeleteWorkspaceCodeResponse
 from ._describe_custom_agent_request import DescribeCustomAgentRequest
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBody
 from ._describe_custom_agent_response import DescribeCustomAgentResponse
@@ -190,6 +204,12 @@ from ._get_notebook_and_submit_task_response import GetNotebookAndSubmitTaskResp
 from ._get_notebook_task_status_request import GetNotebookTaskStatusRequest
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBody
 from ._get_notebook_task_status_response import GetNotebookTaskStatusResponse
+from ._get_sql_console_operation_log_request import GetSqlConsoleOperationLogRequest
+from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBody
+from ._get_sql_console_operation_log_response import GetSqlConsoleOperationLogResponse
+from ._get_workspace_code_request import GetWorkspaceCodeRequest
+from ._get_workspace_code_response_body import GetWorkspaceCodeResponseBody
+from ._get_workspace_code_response import GetWorkspaceCodeResponse
 from ._get_workspace_code_publish_setting_request import GetWorkspaceCodePublishSettingRequest
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBody
 from ._get_workspace_code_publish_setting_response import GetWorkspaceCodePublishSettingResponse
@@ -205,6 +225,15 @@ from ._list_airflows_response import ListAirflowsResponse
 from ._list_custom_agent_request import ListCustomAgentRequest
 from ._list_custom_agent_response_body import ListCustomAgentResponseBody
 from ._list_custom_agent_response import ListCustomAgentResponse
+from ._list_data_agent_accuracy_test_instances_request import ListDataAgentAccuracyTestInstancesRequest
+from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgentAccuracyTestInstancesResponseBody
+from ._list_data_agent_accuracy_test_instances_response import ListDataAgentAccuracyTestInstancesResponse
+from ._list_data_agent_accuracy_test_results_request import ListDataAgentAccuracyTestResultsRequest
+from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBody
+from ._list_data_agent_accuracy_test_results_response import ListDataAgentAccuracyTestResultsResponse
+from ._list_data_agent_accuracy_test_tasks_request import ListDataAgentAccuracyTestTasksRequest
+from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBody
+from ._list_data_agent_accuracy_test_tasks_response import ListDataAgentAccuracyTestTasksResponse
 from ._list_data_agent_session_request import ListDataAgentSessionRequest
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBody
 from ._list_data_agent_session_response import ListDataAgentSessionResponse
@@ -263,6 +292,9 @@ from ._list_file_upload_response import ListFileUploadResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
+from ._list_workspace_code_request import ListWorkspaceCodeRequest
+from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBody
+from ._list_workspace_code_response import ListWorkspaceCodeResponse
 from ._modify_custom_agent_request import ModifyCustomAgentRequest
 from ._modify_custom_agent_shrink_request import ModifyCustomAgentShrinkRequest
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBody
@@ -276,6 +308,12 @@ from ._redeploy_airflow_response import RedeployAirflowResponse
 from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
 from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
 from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
+from ._retrieve_knowledge_base_request import RetrieveKnowledgeBaseRequest
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBody
+from ._retrieve_knowledge_base_response import RetrieveKnowledgeBaseResponse
+from ._save_workspace_code_request import SaveWorkspaceCodeRequest
+from ._save_workspace_code_response_body import SaveWorkspaceCodeResponseBody
+from ._save_workspace_code_response import SaveWorkspaceCodeResponse
 from ._send_chat_message_request import SendChatMessageRequest
 from ._send_chat_message_shrink_request import SendChatMessageShrinkRequest
 from ._send_chat_message_response_body import SendChatMessageResponseBody
@@ -286,10 +324,19 @@ from ._set_workspace_code_publish_setting_response import SetWorkspaceCodePublis
 from ._set_workspace_quota_request import SetWorkspaceQuotaRequest
 from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBody
 from ._set_workspace_quota_response import SetWorkspaceQuotaResponse
+from ._start_data_agent_accuracy_test_task_request import StartDataAgentAccuracyTestTaskRequest
+from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBody
+from ._start_data_agent_accuracy_test_task_response import StartDataAgentAccuracyTestTaskResponse
+from ._stop_data_agent_accuracy_test_task_request import StopDataAgentAccuracyTestTaskRequest
+from ._stop_data_agent_accuracy_test_task_response_body import StopDataAgentAccuracyTestTaskResponseBody
+from ._stop_data_agent_accuracy_test_task_response import StopDataAgentAccuracyTestTaskResponse
 from ._update_airflow_request import UpdateAirflowRequest
 from ._update_airflow_shrink_request import UpdateAirflowShrinkRequest
 from ._update_airflow_response_body import UpdateAirflowResponseBody
 from ._update_airflow_response import UpdateAirflowResponse
+from ._update_data_agent_accuracy_test_request import UpdateDataAgentAccuracyTestRequest
+from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBody
+from ._update_data_agent_accuracy_test_response import UpdateDataAgentAccuracyTestResponse
 from ._update_data_agent_space_info_request import UpdateDataAgentSpaceInfoRequest
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBody
 from ._update_data_agent_space_info_response import UpdateDataAgentSpaceInfoResponse
@@ -348,6 +395,7 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeConfigList
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
+from ._create_data_agent_accuracy_test_response_body import CreateDataAgentAccuracyTestResponseBodyData
 from ._create_data_agent_knowledge_base_response_body import CreateDataAgentKnowledgeBaseResponseBodyData
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
@@ -363,7 +411,10 @@ from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBod
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataArtifacts
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataDataSources
+from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataRecallResults
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
 from ._describe_document_response_body import DescribeDocumentResponseBodyData
@@ -375,6 +426,7 @@ from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
 from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
+from ._get_sql_console_operation_log_response_body import GetSqlConsoleOperationLogResponseBodyData
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyDataRepos
 from ._get_workspace_code_publish_setting_response_body import GetWorkspaceCodePublishSettingResponseBodyData
 from ._get_workspace_quota_response_body import GetWorkspaceQuotaResponseBodyData
@@ -386,6 +438,10 @@ from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataCon
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentScheduleTaskConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContent
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
+from ._list_data_agent_accuracy_test_instances_response_body import ListDataAgentAccuracyTestInstancesResponseBodyData
+from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyDataContent
+from ._list_data_agent_accuracy_test_results_response_body import ListDataAgentAccuracyTestResultsResponseBodyData
+from ._list_data_agent_accuracy_test_tasks_response_body import ListDataAgentAccuracyTestTasksResponseBodyData
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyDataSessionConfig
 from ._list_data_agent_session_response_body import ListDataAgentSessionResponseBodyData
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyDataContent
@@ -396,6 +452,8 @@ from ._list_data_center_database_response_body import ListDataCenterDatabaseResp
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyDataContent
 from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyData
 from ._list_file_upload_response_body import ListFileUploadResponseBodyData
+from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBodyDataList
+from ._list_workspace_code_response_body import ListWorkspaceCodeResponseBodyData
 from ._modify_custom_agent_request import ModifyCustomAgentRequestCallbackConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestExecutionConfig
 from ._modify_custom_agent_request import ModifyCustomAgentRequestKnowledgeConfigList
@@ -406,12 +464,19 @@ from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDat
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
 from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
 from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataMatches
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyDataResults
+from ._retrieve_knowledge_base_response_body import RetrieveKnowledgeBaseResponseBodyData
 from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestDataSources
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
+from ._send_chat_message_request import SendChatMessageRequestTaskConfigReportConfig
+from ._send_chat_message_request import SendChatMessageRequestTaskConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._set_workspace_quota_response_body import SetWorkspaceQuotaResponseBodyData
+from ._start_data_agent_accuracy_test_task_response_body import StartDataAgentAccuracyTestTaskResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
+from ._update_data_agent_accuracy_test_response_body import UpdateDataAgentAccuracyTestResponseBodyData
 from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
 from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
 from ._workspace_action_status_response_body import WorkspaceActionStatusResponseBodyData
@@ -444,10 +509,15 @@ __all__ = [
     DLTable,
     DLTableInput,
     DLTablebaseInfo,
+    DataAgentBillingInstance,
     DataMountInfo,
+    DmsGatewayOrder,
     DmsKnowledgeSearchOrderInfoDO,
     ForeignInstance,
     ForeignInstanceCredInfo,
+    MdbAgentInstanceVo,
+    OneMetaDatabase,
+    OneMetaDatabaseEngineMeta,
     OneMetaDatabaseObject,
     OneMetaKnowledgeBase,
     OneMetaKnowledgeBaseChunk,
@@ -490,6 +560,9 @@ __all__ = [
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
     CreateCustomAgentResponse,
+    CreateDataAgentAccuracyTestRequest,
+    CreateDataAgentAccuracyTestResponseBody,
+    CreateDataAgentAccuracyTestResponse,
     CreateDataAgentKnowledgeBaseRequest,
     CreateDataAgentKnowledgeBaseResponseBody,
     CreateDataAgentKnowledgeBaseResponse,
@@ -522,6 +595,9 @@ __all__ = [
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteDataAgentAccuracyTestRequest,
+    DeleteDataAgentAccuracyTestResponseBody,
+    DeleteDataAgentAccuracyTestResponse,
     DeleteDataAgentKnowledgeBaseRequest,
     DeleteDataAgentKnowledgeBaseResponseBody,
     DeleteDataAgentKnowledgeBaseResponse,
@@ -551,6 +627,9 @@ __all__ = [
     DeleteFileUploadRequest,
     DeleteFileUploadResponseBody,
     DeleteFileUploadResponse,
+    DeleteWorkspaceCodeRequest,
+    DeleteWorkspaceCodeResponseBody,
+    DeleteWorkspaceCodeResponse,
     DescribeCustomAgentRequest,
     DescribeCustomAgentResponseBody,
     DescribeCustomAgentResponse,
@@ -606,6 +685,12 @@ __all__ = [
     GetNotebookTaskStatusRequest,
     GetNotebookTaskStatusResponseBody,
     GetNotebookTaskStatusResponse,
+    GetSqlConsoleOperationLogRequest,
+    GetSqlConsoleOperationLogResponseBody,
+    GetSqlConsoleOperationLogResponse,
+    GetWorkspaceCodeRequest,
+    GetWorkspaceCodeResponseBody,
+    GetWorkspaceCodeResponse,
     GetWorkspaceCodePublishSettingRequest,
     GetWorkspaceCodePublishSettingResponseBody,
     GetWorkspaceCodePublishSettingResponse,
@@ -621,6 +706,15 @@ __all__ = [
     ListCustomAgentRequest,
     ListCustomAgentResponseBody,
     ListCustomAgentResponse,
+    ListDataAgentAccuracyTestInstancesRequest,
+    ListDataAgentAccuracyTestInstancesResponseBody,
+    ListDataAgentAccuracyTestInstancesResponse,
+    ListDataAgentAccuracyTestResultsRequest,
+    ListDataAgentAccuracyTestResultsResponseBody,
+    ListDataAgentAccuracyTestResultsResponse,
+    ListDataAgentAccuracyTestTasksRequest,
+    ListDataAgentAccuracyTestTasksResponseBody,
+    ListDataAgentAccuracyTestTasksResponse,
     ListDataAgentSessionRequest,
     ListDataAgentSessionResponseBody,
     ListDataAgentSessionResponse,
@@ -679,6 +773,9 @@ __all__ = [
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponseBody,
     ListKnowledgeBasesResponse,
+    ListWorkspaceCodeRequest,
+    ListWorkspaceCodeResponseBody,
+    ListWorkspaceCodeResponse,
     ModifyCustomAgentRequest,
     ModifyCustomAgentShrinkRequest,
     ModifyCustomAgentResponseBody,
@@ -692,6 +789,12 @@ __all__ = [
     RemoveUserToDataAgentWorkspaceRequest,
     RemoveUserToDataAgentWorkspaceResponseBody,
     RemoveUserToDataAgentWorkspaceResponse,
+    RetrieveKnowledgeBaseRequest,
+    RetrieveKnowledgeBaseResponseBody,
+    RetrieveKnowledgeBaseResponse,
+    SaveWorkspaceCodeRequest,
+    SaveWorkspaceCodeResponseBody,
+    SaveWorkspaceCodeResponse,
     SendChatMessageRequest,
     SendChatMessageShrinkRequest,
     SendChatMessageResponseBody,
@@ -702,10 +805,19 @@ __all__ = [
     SetWorkspaceQuotaRequest,
     SetWorkspaceQuotaResponseBody,
     SetWorkspaceQuotaResponse,
+    StartDataAgentAccuracyTestTaskRequest,
+    StartDataAgentAccuracyTestTaskResponseBody,
+    StartDataAgentAccuracyTestTaskResponse,
+    StopDataAgentAccuracyTestTaskRequest,
+    StopDataAgentAccuracyTestTaskResponseBody,
+    StopDataAgentAccuracyTestTaskResponse,
     UpdateAirflowRequest,
     UpdateAirflowShrinkRequest,
     UpdateAirflowResponseBody,
     UpdateAirflowResponse,
+    UpdateDataAgentAccuracyTestRequest,
+    UpdateDataAgentAccuracyTestResponseBody,
+    UpdateDataAgentAccuracyTestResponse,
     UpdateDataAgentSpaceInfoRequest,
     UpdateDataAgentSpaceInfoResponseBody,
     UpdateDataAgentSpaceInfoResponse,
@@ -764,6 +876,7 @@ __all__ = [
     CreateCustomAgentResponseBodyDataKnowledgeConfigList,
     CreateCustomAgentResponseBodyDataScheduleTaskConfig,
     CreateCustomAgentResponseBodyData,
+    CreateDataAgentAccuracyTestResponseBodyData,
     CreateDataAgentKnowledgeBaseResponseBodyData,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
@@ -779,7 +892,10 @@ __all__ = [
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
     DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
+    DescribeDataAgentSessionResponseBodyDataArtifacts,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
+    DescribeDataAgentSessionResponseBodyDataDataSources,
+    DescribeDataAgentSessionResponseBodyDataRecallResults,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
     DescribeDocumentResponseBodyData,
@@ -791,6 +907,7 @@ __all__ = [
     GetDataAgentSubAccountInfoResponseBodyData,
     GetDataAgentWorkspaceInfoResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
+    GetSqlConsoleOperationLogResponseBodyData,
     GetWorkspaceCodePublishSettingResponseBodyDataRepos,
     GetWorkspaceCodePublishSettingResponseBodyData,
     GetWorkspaceQuotaResponseBodyData,
@@ -802,6 +919,10 @@ __all__ = [
     ListCustomAgentResponseBodyDataContentScheduleTaskConfig,
     ListCustomAgentResponseBodyDataContent,
     ListCustomAgentResponseBodyData,
+    ListDataAgentAccuracyTestInstancesResponseBodyData,
+    ListDataAgentAccuracyTestResultsResponseBodyDataContent,
+    ListDataAgentAccuracyTestResultsResponseBodyData,
+    ListDataAgentAccuracyTestTasksResponseBodyData,
     ListDataAgentSessionResponseBodyDataSessionConfig,
     ListDataAgentSessionResponseBodyData,
     ListDataAgentWorkspaceResponseBodyDataContent,
@@ -812,6 +933,8 @@ __all__ = [
     ListDataCenterTableResponseBodyDataContent,
     ListDataCenterTableResponseBodyData,
     ListFileUploadResponseBodyData,
+    ListWorkspaceCodeResponseBodyDataList,
+    ListWorkspaceCodeResponseBodyData,
     ModifyCustomAgentRequestCallbackConfig,
     ModifyCustomAgentRequestExecutionConfig,
     ModifyCustomAgentRequestKnowledgeConfigList,
@@ -822,12 +945,19 @@ __all__ = [
     ModifyCustomAgentResponseBodyDataScheduleTaskConfig,
     ModifyCustomAgentResponseBodyData,
     OperateCustomAgentResponseBodyData,
+    RetrieveKnowledgeBaseResponseBodyDataMatches,
+    RetrieveKnowledgeBaseResponseBodyDataResults,
+    RetrieveKnowledgeBaseResponseBodyData,
     SendChatMessageRequestDataSource,
     SendChatMessageRequestDataSources,
     SendChatMessageRequestSessionConfig,
+    SendChatMessageRequestTaskConfigReportConfig,
+    SendChatMessageRequestTaskConfig,
     SendChatMessageResponseBodyData,
     SetWorkspaceQuotaResponseBodyData,
+    StartDataAgentAccuracyTestTaskResponseBodyData,
     UpdateAirflowResponseBodyRoot,
+    UpdateDataAgentAccuracyTestResponseBodyData,
     UpdateDataAgentSpaceInfoResponseBodyData,
     UpdateDataAgentWorkspaceMemberRoleResponseBodyData,
     WorkspaceActionStatusResponseBodyData,

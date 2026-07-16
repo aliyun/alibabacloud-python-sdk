@@ -9,6 +9,8 @@ class DeleteMaterialTaskShrinkRequest(DaraModel):
         self,
         task_ids_shrink: str = None,
     ):
+        # The list of task IDs.
+        # 
         # This parameter is required.
         self.task_ids_shrink = task_ids_shrink
 

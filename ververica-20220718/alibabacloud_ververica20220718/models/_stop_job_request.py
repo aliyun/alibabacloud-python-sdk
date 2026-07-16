@@ -10,7 +10,7 @@ class StopJobRequest(DaraModel):
         self,
         body: main_models.StopJobRequestBody = None,
     ):
-        # The parameter that is used to stop the job.
+        # The parameters to stop the job instance.
         # 
         # This parameter is required.
         self.body = body

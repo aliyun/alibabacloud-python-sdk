@@ -35,124 +35,74 @@ class CreateADConnectorOfficeSiteRequest(DaraModel):
         verify_code: str = None,
     ):
         self.access_attribute = access_attribute
-        # The hostname of the domain controller. The hostname must comply with the naming conventions for Windows hosts.
+        # The domain controller hostname.
+        # The hostname must comply with Windows hostname naming conventions.
         self.ad_hostname = ad_hostname
         # The hostname of the backup domain controller.
         self.backup_dchostname = backup_dchostname
         # The DNS address of the backup domain controller.
         self.backup_dns = backup_dns
-        # The maximum public bandwidth of the Internet access package. Valid values: 0 to 200.\\
-        # If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
+        # The peak public bandwidth, specified in Mbit/s. The value can range from 0 to 200.<br>
+        # If you omit this parameter or set it to 0, internet access is disabled.<br>
         self.bandwidth = bandwidth
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The Alibaba Cloud account that creates the Cloud Enterprise Network (CEN) instance.
+        # The ID of the Alibaba Cloud account that owns the Cloud Enterprise Network (CEN) instance.
         # 
-        # *   If you do not specify the CenId parameter, or the CEN instance that is specified by the CenId parameter belongs to the current Alibaba Cloud account, skip this parameter.
-        # *   If you specify the CenId parameter and the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, enter the ID of the Alibaba Cloud account.
+        # - If you do not specify `CenId`, or the specified CEN instance belongs to your Alibaba Cloud account, you do not need to specify this parameter.
+        # 
+        # - If the specified CEN instance belongs to another Alibaba Cloud account, you must specify that account\\"s ID.
         self.cen_owner_id = cen_owner_id
-        # The IPv4 CIDR block of the virtual private cloud (VPC) that your office network uses. The system creates a VPC for your office network based on the IPv4 CIDR block. We recommend that you set this parameter to one of the following CIDR blocks and their subnets:
+        # The IPv4 CIDR block for the office site\\"s VPC. The system uses this IPv4 CIDR block to automatically create a VPC. We recommend that you use one of the following CIDR blocks or their subnets:
         # 
-        # *   `10.0.0.0/12` (subnet mask range: 12 to 24 bits)
-        # *   `172.16.0.0/12` (subnet mask range: 12 to 24 bits)
-        # *   `192.168.0.0/16` (subnet mask range: 16 to 24 bits)
+        # - `10.0.0.0/12` (The subnet mask length must be 12 to 24 bits.)
+        # 
+        # - `172.16.0.0/12` (The subnet mask length must be 12 to 24 bits.)
+        # 
+        # - `192.168.0.0/16` (The subnet mask length must be 16 to 24 bits.)
         self.cidr_block = cidr_block
-        # The method to connect to cloud computers from Alibaba Cloud Workspace clients.
+        # The method for connecting to cloud desktops.
         # 
-        # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to `VPC` or `Any`, PrivateLink is automatically activated.
-        # 
-        # Valid values:
-        # 
-        # - Internet: connects clients to cloud desktops only over the Internet. [Default]
-        # - VPC: connects clients to cloud desktops only over a VPC.
-        # - Any: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method based on your business requirements when you connect to your cloud desktop from a client.
+        # > VPC connections are established using Alibaba Cloud PrivateLink, which is a free service. If you set this parameter to `VPC` or `Any`, PrivateLink is automatically enabled.
         self.desktop_access_type = desktop_access_type
-        # The IP address of the DNS server of the enterprise AD system. You can specify only one IP address.
+        # An array that contains the IP address of the DNS server for the enterprise AD. You can specify only one IP address.
         # 
         # This parameter is required.
         self.dns_address = dns_address
-        # The domain name of the enterprise AD system. You can register each domain name only once.
+        # The domain name for the enterprise AD. Each domain name must be unique.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The password of the domain administrator. The password can be up to 64 characters in length.
+        # The domain administrator\\"s password. The password cannot exceed 64 characters in length.
         self.domain_password = domain_password
-        # The username of the domain administrator. The username can be up to 64 characters in length.
+        # The domain administrator\\"s username. The username cannot exceed 64 characters in length.
         # 
-        # > Specify the username by using sAMAccountName instead of userPrincipalName.
+        # > Use the sAMAccountName, not the userPrincipalName.
         self.domain_user_name = domain_user_name
-        # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
-        # 
-        # Valid values:
-        # 
-        # *   <!-- -->
-        # 
-        #     true
-        # 
-        #     <!-- -->
-        # 
-        #     (default)
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     false
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # Specifies whether to grant local administrator permissions to cloud desktop users. Default: true.
         self.enable_admin_access = enable_admin_access
-        # Specifies whether to enable Internet access.
+        # This parameter is deprecated. Use the `Bandwidth` parameter to manage internet access.
         self.enable_internet_access = enable_internet_access
         # Specifies whether to enable multi-factor authentication (MFA).
         self.mfa_enabled = mfa_enabled
-        # The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.\\
-        # This parameter is empty by default.
+        # The name of the office site. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).<br>
+        # This parameter is empty by default.<br>
         self.office_site_name = office_site_name
         # The protocol type.
-        # 
-        # Valid value:
-        # 
-        # *   Adaptive Streaming Protocol (ASP)
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.protocol_type = protocol_type
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The AD connector type.
-        # 
-        # Valid values:
-        # 
-        # *   1: General
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   2: Advanced
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The AD Connector type.
         self.specification = specification
-        # The DNS address of the enterprise AD subdomain. If you specify `SubDomainName` but do not specify this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
+        # The DNS address of the enterprise AD child domain. If you specify `SubDomainName` but not this parameter, the DNS address of the child domain is considered the same as that of the parent domain.
         self.sub_domain_dns_address = sub_domain_dns_address
-        # The domain name of the enterprise AD subdomain.
+        # The domain name of the enterprise AD child domain.
         self.sub_domain_name = sub_domain_name
-        # The array of the vSwitch IDs.
+        # The list of vSwitch IDs.
         self.v_switch_id = v_switch_id
-        # The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
+        # The verification code. If the `CenId` that you specify belongs to another Alibaba Cloud account, you must first call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
         self.verify_code = verify_code
 
     def validate(self):

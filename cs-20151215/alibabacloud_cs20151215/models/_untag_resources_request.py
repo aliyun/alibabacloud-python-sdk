@@ -15,24 +15,26 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
-        # Specifies whether to remove all custom labels. This parameter takes effect only when `tag_keys` is left empty. Valid values:
+        # Specifies whether to delete all custom tags. This parameter takes effect only when `tag_keys` is empty. Valid values:
         # 
-        # *   `true`: Remove all custom labels.
-        # *   `false`: Do not remove all custom labels.
+        # - `true`: Delete all tags.
+        # - `false`: Do not delete all tags.
         self.all = all
-        # The region ID of the resources.
+        # The region ID of the resource.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of resource IDs.
+        # The list of resource IDs. You can specify up to 50 resource IDs.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The type of resource. Set the value to `CLUSTER`.
+        # The resource type.
+        # 
+        # CLUSTER: cluster.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of keys of the labels that you want to remove.
+        # The list of tag keys for the resource. You can specify up to 20 tag keys.
         # 
         # This parameter is required.
         self.tag_keys = tag_keys

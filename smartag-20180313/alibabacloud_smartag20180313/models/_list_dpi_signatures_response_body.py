@@ -15,13 +15,13 @@ class ListDpiSignaturesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the application.
+        # A list of applications.
         self.dpi_signature = dpi_signature
-        # The token returned for the next query.
+        # The token for the next page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned on the current page.
+        # The total number of applications returned.
         self.total_count = total_count
 
     def validate(self):
@@ -81,13 +81,13 @@ class ListDpiSignaturesResponseBodyDpiSignature(DaraModel):
     ):
         # The ID of the application group to which the application belongs.
         self.dpi_group_id = dpi_group_id
-        # The ID of the application.
+        # The application ID.
         self.dpi_signature_id = dpi_signature_id
-        # The name of the application.
+        # The application name.
         self.dpi_signature_name = dpi_signature_name
-        # The earliest version of engine that supports the application.
+        # The minimum version of the deep packet inspection (DPI) engine that supports the application.
         self.min_engine_version = min_engine_version
-        # The earliest version of signature database that supports the application.
+        # The minimum version of the signature library that supports the application.
         self.min_signature_db_version = min_signature_db_version
 
     def validate(self):

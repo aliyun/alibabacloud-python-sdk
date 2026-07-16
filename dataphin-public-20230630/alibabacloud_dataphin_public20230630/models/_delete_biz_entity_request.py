@@ -12,12 +12,20 @@ class DeleteBizEntityRequest(DaraModel):
         op_tenant_id: int = None,
         type: str = None,
     ):
+        # The ID of the business unit to which the entity belongs.
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # The ID of the business entity.
+        # 
         # This parameter is required.
         self.id = id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The type of the business entity. For more information, refer to the create business entity operation.
+        # 
         # This parameter is required.
         self.type = type
 

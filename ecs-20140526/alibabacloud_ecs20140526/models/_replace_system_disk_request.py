@@ -32,30 +32,31 @@ class ReplaceSystemDiskRequest(DaraModel):
         use_additional_service: bool = None,
     ):
         self.system_disk = system_disk
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.architecture = architecture
         # This parameter is not available for public use.
         self.arn = arn
         # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but make sure that the token is unique across requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # >  This parameter is deprecated. To improve compatibility, we recommend that you use `ImageId`.
+        # > This parameter is deprecated. To improve compatibility, we recommend that you use `ImageId`.
         self.disk_id = disk_id
         # > This parameter is not available for public use.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the disk. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         # 
-        # >  When you use a shared encrypted image to create the disk based on an encrypted snapshot, you must set Encrypted to true to ensure that the disk uses an encryption key of your own.
+        # > When you use a shared encrypted image to create the disk based on an encrypted snapshot, you must set Encrypted to true to ensure that the disk uses an encryption key of your own.
         self.encrypted = encrypted
         # The ID of the image used to replace the system disk. This parameter is required.
         self.image_id = image_id
         # The ID of the instance whose operating system you want to replace.
         # 
-        # >  Make sure that the instance is in the `Stopped` (`Stopped`) state.
+        # > Make sure that the instance is in the `Stopped` (`Stopped`) state.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -69,7 +70,9 @@ class ReplaceSystemDiskRequest(DaraModel):
         self.owner_id = owner_id
         # Specifies whether to reset the password for the instance. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. Special characters include:
         # 
-        #     ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+        # ```
+        # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
+        # ```
         # 
         # The passwords of Windows instances cannot start with a forward slash (/).
         # 
@@ -83,14 +86,15 @@ class ReplaceSystemDiskRequest(DaraModel):
         # 
         # > If the PasswordInherit parameter is specified, you must leave the Password parameter empty. Before you use this parameter, make sure that a password is preset for the image.
         self.password_inherit = password_inherit
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.platform = platform
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to use Security Center Basic after the system disk is replaced. Valid values:
         # 
-        # *   Active: uses Security Center Basic after the system disk is re-initialized. This value is applicable only to public images.
-        # *   Deactive: does not use Security Center Basic after the system disk is re-initialized. This value is applicable to all images.
+        # - Active: uses Security Center Basic after the system disk is re-initialized. This value is applicable only to public images.
+        # 
+        # - Deactive: does not use Security Center Basic after the system disk is re-initialized. This value is applicable to all images.
         # 
         # Default value: Deactive.
         self.security_enhancement_strategy = security_enhancement_strategy
@@ -297,22 +301,25 @@ class ReplaceSystemDiskRequestSystemDisk(DaraModel):
     ):
         # The capacity of the new system disk. Unit: GiB. Valid values:
         # 
-        # *   Basic disk: Max{20, Size of the image specified by ImageId} to 500.
+        # - Basic disk: Max{20, Size of the image specified by ImageId} to 500.
         # 
-        # *   Enterprise SSD (ESSD):
+        # - Enterprise SSD (ESSD):
         # 
-        #     *   PL0 ESSD: Max{1, Size of the image specified by ImageId} to 2048.
-        #     *   PL1 ESSD: Max{20, Size of the image specified by ImageId} to 2048.
-        #     *   PL2 ESSD: Max{461, Size of the image specified by ImageId} to 2048.
-        #     *   PL3 ESSD: Max{1261, Size of the image specified by ImageId} to 2048.
+        #   - PL0 ESSD: Max{1, Size of the image specified by ImageId} to 2048.
         # 
-        # *   ESSD AutoPL disk: Max{1, Size of the image specified by ImageId} to 2048.
+        #   - PL1 ESSD: Max{20, Size of the image specified by ImageId} to 2048.
         # 
-        # *   Other disk categories: Max{20, Size of the image specified by ImageId} to 2048.
+        #   - PL2 ESSD: Max{461, Size of the image specified by ImageId} to 2048.
+        # 
+        #   - PL3 ESSD: Max{1261, Size of the image specified by ImageId} to 2048.
+        # 
+        # - ESSD AutoPL disk: Max{1, Size of the image specified by ImageId} to 2048.
+        # 
+        # - Other disk categories: Max{20, Size of the image specified by ImageId} to 2048.
         # 
         # Default value: Max{40, Size of the image specified by ImageId}.
         # 
-        # >  If the capacity of the new system disk exceeds `Max{20, Capacity of the original system disk}`, you are charged for the excess capacity.
+        # > If the capacity of the new system disk exceeds `Max{20, Capacity of the original system disk}`, you are charged for the excess capacity.
         self.size = size
 
     def validate(self):

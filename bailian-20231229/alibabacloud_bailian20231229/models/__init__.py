@@ -5,6 +5,14 @@ from __future__ import annotations
 from ._add_category_request import AddCategoryRequest
 from ._add_category_response_body import AddCategoryResponseBody
 from ._add_category_response import AddCategoryResponse
+from ._add_chunk_request import AddChunkRequest
+from ._add_chunk_shrink_request import AddChunkShrinkRequest
+from ._add_chunk_response_body import AddChunkResponseBody
+from ._add_chunk_response import AddChunkResponse
+from ._add_connector_request import AddConnectorRequest
+from ._add_connector_shrink_request import AddConnectorShrinkRequest
+from ._add_connector_response_body import AddConnectorResponseBody
+from ._add_connector_response import AddConnectorResponse
 from ._add_file_request import AddFileRequest
 from ._add_file_shrink_request import AddFileShrinkRequest
 from ._add_file_response_body import AddFileResponseBody
@@ -58,9 +66,16 @@ from ._delete_chunk_request import DeleteChunkRequest
 from ._delete_chunk_shrink_request import DeleteChunkShrinkRequest
 from ._delete_chunk_response_body import DeleteChunkResponseBody
 from ._delete_chunk_response import DeleteChunkResponse
+from ._delete_connector_request import DeleteConnectorRequest
+from ._delete_connector_response_body import DeleteConnectorResponseBody
+from ._delete_connector_response import DeleteConnectorResponse
 from ._delete_file_request import DeleteFileRequest
 from ._delete_file_response_body import DeleteFileResponseBody
 from ._delete_file_response import DeleteFileResponse
+from ._delete_files_request import DeleteFilesRequest
+from ._delete_files_shrink_request import DeleteFilesShrinkRequest
+from ._delete_files_response_body import DeleteFilesResponseBody
+from ._delete_files_response import DeleteFilesResponse
 from ._delete_index_request import DeleteIndexRequest
 from ._delete_index_response_body import DeleteIndexResponseBody
 from ._delete_index_response import DeleteIndexResponse
@@ -89,6 +104,9 @@ from ._get_alipay_url_response import GetAlipayUrlResponse
 from ._get_available_parser_types_request import GetAvailableParserTypesRequest
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBody
 from ._get_available_parser_types_response import GetAvailableParserTypesResponse
+from ._get_connector_request import GetConnectorRequest
+from ._get_connector_response_body import GetConnectorResponseBody
+from ._get_connector_response import GetConnectorResponse
 from ._get_index_job_status_request import GetIndexJobStatusRequest
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBody
 from ._get_index_job_status_response import GetIndexJobStatusResponse
@@ -120,6 +138,7 @@ from ._list_chunks_request import ListChunksRequest
 from ._list_chunks_response_body import ListChunksResponseBody
 from ._list_chunks_response import ListChunksResponse
 from ._list_file_request import ListFileRequest
+from ._list_file_shrink_request import ListFileShrinkRequest
 from ._list_file_response_body import ListFileResponseBody
 from ._list_file_response import ListFileResponse
 from ._list_index_documents_request import ListIndexDocumentsRequest
@@ -165,6 +184,9 @@ from ._update_and_publish_agent_selective_response import UpdateAndPublishAgentS
 from ._update_chunk_request import UpdateChunkRequest
 from ._update_chunk_response_body import UpdateChunkResponseBody
 from ._update_chunk_response import UpdateChunkResponse
+from ._update_connector_request import UpdateConnectorRequest
+from ._update_connector_response_body import UpdateConnectorResponseBody
+from ._update_connector_response import UpdateConnectorResponse
 from ._update_file_tag_request import UpdateFileTagRequest
 from ._update_file_tag_shrink_request import UpdateFileTagShrinkRequest
 from ._update_file_tag_response_body import UpdateFileTagResponseBody
@@ -185,8 +207,11 @@ from ._update_table_from_authorized_oss_request import UpdateTableFromAuthorized
 from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBody
 from ._update_table_from_authorized_oss_response import UpdateTableFromAuthorizedOssResponse
 from ._add_category_response_body import AddCategoryResponseBodyData
+from ._add_connector_request import AddConnectorRequestFileConnectorConfig
+from ._add_connector_response_body import AddConnectorResponseBodyData
 from ._add_file_request import AddFileRequestParserConfig
 from ._add_file_response_body import AddFileResponseBodyData
+from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetailsParserConfig
 from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList
 from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyData
@@ -214,13 +239,17 @@ from ._create_index_request import CreateIndexRequestColumns
 from ._create_index_request import CreateIndexRequestMetaExtractColumns
 from ._create_index_response_body import CreateIndexResponseBodyData
 from ._delete_category_response_body import DeleteCategoryResponseBodyData
+from ._delete_connector_response_body import DeleteConnectorResponseBodyData
 from ._delete_file_response_body import DeleteFileResponseBodyData
+from ._delete_files_response_body import DeleteFilesResponseBodyDataDeleteFileResultList
+from ._delete_files_response_body import DeleteFilesResponseBodyData
 from ._delete_index_document_response_body import DeleteIndexDocumentResponseBodyData
 from ._describe_file_response_body import DescribeFileResponseBodyData
 from ._get_alipay_transfer_status_response_body import GetAlipayTransferStatusResponseBodyData
 from ._get_alipay_url_response_body import GetAlipayUrlResponseBodyData
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyDataParserList
 from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyData
+from ._get_connector_response_body import GetConnectorResponseBodyData
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyDataDocuments
 from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyData
 from ._get_parse_settings_response_body import GetParseSettingsResponseBodyDataParserConfig
@@ -286,6 +315,7 @@ from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSe
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfig
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestSampleLibrary
+from ._update_connector_response_body import UpdateConnectorResponseBodyData
 from ._update_file_tag_response_body import UpdateFileTagResponseBodyData
 from ._update_index_response_body import UpdateIndexResponseBodyData
 from ._update_table_from_authorized_oss_response_body import UpdateTableFromAuthorizedOssResponseBodyData
@@ -294,6 +324,14 @@ __all__ = [
     AddCategoryRequest,
     AddCategoryResponseBody,
     AddCategoryResponse,
+    AddChunkRequest,
+    AddChunkShrinkRequest,
+    AddChunkResponseBody,
+    AddChunkResponse,
+    AddConnectorRequest,
+    AddConnectorShrinkRequest,
+    AddConnectorResponseBody,
+    AddConnectorResponse,
     AddFileRequest,
     AddFileShrinkRequest,
     AddFileResponseBody,
@@ -347,9 +385,16 @@ __all__ = [
     DeleteChunkShrinkRequest,
     DeleteChunkResponseBody,
     DeleteChunkResponse,
+    DeleteConnectorRequest,
+    DeleteConnectorResponseBody,
+    DeleteConnectorResponse,
     DeleteFileRequest,
     DeleteFileResponseBody,
     DeleteFileResponse,
+    DeleteFilesRequest,
+    DeleteFilesShrinkRequest,
+    DeleteFilesResponseBody,
+    DeleteFilesResponse,
     DeleteIndexRequest,
     DeleteIndexResponseBody,
     DeleteIndexResponse,
@@ -378,6 +423,9 @@ __all__ = [
     GetAvailableParserTypesRequest,
     GetAvailableParserTypesResponseBody,
     GetAvailableParserTypesResponse,
+    GetConnectorRequest,
+    GetConnectorResponseBody,
+    GetConnectorResponse,
     GetIndexJobStatusRequest,
     GetIndexJobStatusResponseBody,
     GetIndexJobStatusResponse,
@@ -409,6 +457,7 @@ __all__ = [
     ListChunksResponseBody,
     ListChunksResponse,
     ListFileRequest,
+    ListFileShrinkRequest,
     ListFileResponseBody,
     ListFileResponse,
     ListIndexDocumentsRequest,
@@ -454,6 +503,9 @@ __all__ = [
     UpdateChunkRequest,
     UpdateChunkResponseBody,
     UpdateChunkResponse,
+    UpdateConnectorRequest,
+    UpdateConnectorResponseBody,
+    UpdateConnectorResponse,
     UpdateFileTagRequest,
     UpdateFileTagShrinkRequest,
     UpdateFileTagResponseBody,
@@ -474,8 +526,11 @@ __all__ = [
     UpdateTableFromAuthorizedOssResponseBody,
     UpdateTableFromAuthorizedOssResponse,
     AddCategoryResponseBodyData,
+    AddConnectorRequestFileConnectorConfig,
+    AddConnectorResponseBodyData,
     AddFileRequestParserConfig,
     AddFileResponseBodyData,
+    AddFilesFromAuthorizedOssRequestFileDetailsParserConfig,
     AddFilesFromAuthorizedOssRequestFileDetails,
     AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList,
     AddFilesFromAuthorizedOssResponseBodyData,
@@ -503,13 +558,17 @@ __all__ = [
     CreateIndexRequestMetaExtractColumns,
     CreateIndexResponseBodyData,
     DeleteCategoryResponseBodyData,
+    DeleteConnectorResponseBodyData,
     DeleteFileResponseBodyData,
+    DeleteFilesResponseBodyDataDeleteFileResultList,
+    DeleteFilesResponseBodyData,
     DeleteIndexDocumentResponseBodyData,
     DescribeFileResponseBodyData,
     GetAlipayTransferStatusResponseBodyData,
     GetAlipayUrlResponseBodyData,
     GetAvailableParserTypesResponseBodyDataParserList,
     GetAvailableParserTypesResponseBodyData,
+    GetConnectorResponseBodyData,
     GetIndexJobStatusResponseBodyDataDocuments,
     GetIndexJobStatusResponseBodyData,
     GetParseSettingsResponseBodyDataParserConfig,
@@ -575,6 +634,7 @@ __all__ = [
     UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows,
     UpdateAndPublishAgentSelectiveRequestApplicationConfig,
     UpdateAndPublishAgentSelectiveRequestSampleLibrary,
+    UpdateConnectorResponseBodyData,
     UpdateFileTagResponseBodyData,
     UpdateIndexResponseBodyData,
     UpdateTableFromAuthorizedOssResponseBodyData

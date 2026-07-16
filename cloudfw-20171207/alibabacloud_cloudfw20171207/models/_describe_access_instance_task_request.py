@@ -13,10 +13,15 @@ class DescribeAccessInstanceTaskRequest(DaraModel):
         region_no: str = None,
         task_id: str = None,
     ):
+        # The ID of the synchronization node.
         self.access_instance_id = access_instance_id
+        # The type of the synchronization node.
         self.access_instance_type = access_instance_type
+        # The language of the response messages.
         self.lang = lang
+        # The region ID.
         self.region_no = region_no
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -15,13 +15,13 @@ class SubmitMediaProducingJobResponseBody(DaraModel):
     ):
         # The job ID.
         self.job_id = job_id
-        # The media asset ID of the output file.
+        # The media ID.
         self.media_id = media_id
-        # The ID of the editing project.
+        # The project ID.
         self.project_id = project_id
         # The request ID.
         self.request_id = request_id
-        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+        # The VOD media ID. Returned if the output destination is VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):

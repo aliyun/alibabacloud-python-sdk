@@ -11,7 +11,9 @@ class GetBrandResponseBody(DaraModel):
         brand: main_models.GetBrandResponseBodyBrand = None,
         request_id: str = None,
     ):
+        # Brand.
         self.brand = brand
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,15 +53,15 @@ class GetBrandResponseBodyBrand(DaraModel):
         instance_id: str = None,
         status: str = None,
     ):
-        # 品牌ID
+        # Brand ID.
         self.brand_id = brand_id
-        # 品牌名称
+        # Brand name.
         self.brand_name = brand_name
-        # 品牌类型
+        # Brand type.
         self.brand_type = brand_type
-        # 实例ID。
+        # Instance ID.
         self.instance_id = instance_id
-        # 品牌状态
+        # Brand status.
         self.status = status
 
     def validate(self):

@@ -13,10 +13,15 @@ class DeleteGeneralConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Unique identifier of the request.
         self.request_id = request_id
+        # Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):

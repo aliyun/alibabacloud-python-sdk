@@ -10,7 +10,9 @@ class UpdateUnknownThreatDetectProcessRequest(DaraModel):
         process_id: str = None,
         remark: str = None,
     ):
+        # The process ID.
         self.process_id = process_id
+        # The remark for the process.
         self.remark = remark
 
     def validate(self):

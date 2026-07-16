@@ -15,11 +15,17 @@ class GetFileContentLengthResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message.
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the operation succeeded. true means success. false means failure.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class GetFileContentLengthResponseBodyData(DaraModel):
         self,
         word_num: int = None,
     ):
+        # File length
         self.word_num = word_num
 
     def validate(self):

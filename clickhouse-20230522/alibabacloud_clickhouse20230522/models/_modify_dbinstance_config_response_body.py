@@ -11,6 +11,7 @@ class ModifyDBInstanceConfigResponseBody(DaraModel):
         data: main_models.ModifyDBInstanceConfigResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -48,6 +49,7 @@ class ModifyDBInstanceConfigResponseBodyData(DaraModel):
         self,
         dbinstance_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

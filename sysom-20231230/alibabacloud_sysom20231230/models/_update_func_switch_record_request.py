@@ -12,10 +12,16 @@ class UpdateFuncSwitchRecordRequest(DaraModel):
         params: main_models.UpdateFuncSwitchRecordRequestParams = None,
         service_name: str = None,
     ):
+        # The diagnostic channel. Currently, this parameter is fixed to the ECS channel.
+        # 
         # This parameter is required.
         self.channel = channel
+        # The diagnostic parameters. Different types of diagnostics require different diagnostic parameters. You can use this field to filter records whose parameters match the specified values.
+        # 
         # This parameter is required.
         self.params = params
+        # The service name.
+        # 
         # This parameter is required.
         self.service_name = service_name
 
@@ -63,12 +69,19 @@ class UpdateFuncSwitchRecordRequestParams(DaraModel):
         region: str = None,
         uid: str = None,
     ):
+        # The configuration parameters.
         self.args = args
+        # The feature name.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The instance ID.
         self.instance = instance
+        # The operation type.
         self.op = op
+        # The region to which the instance belongs. All instance IDs passed in instances must belong to the same region.
         self.region = region
+        # The user ID.
         self.uid = uid
 
     def validate(self):
@@ -136,14 +149,23 @@ class UpdateFuncSwitchRecordRequestParamsArgs(DaraModel):
         pid: int = None,
         system_profiling: str = None,
     ):
+        # The configuration process.
         self.add_cmd = add_cmd
+        # The ONCPU tracing switch.
         self.cpu = cpu
+        # The start duration, in seconds (s).
         self.duration = duration
+        # The storage path.
         self.java_store_path = java_store_path
+        # The lock tracing switch.
         self.locks = locks
+        # The tracing cycle.
         self.loop = loop
+        # The memory tracing switch.
         self.mem = mem
+        # The process PID.
         self.pid = pid
+        # The system tracing switch.
         self.system_profiling = system_profiling
 
     def validate(self):

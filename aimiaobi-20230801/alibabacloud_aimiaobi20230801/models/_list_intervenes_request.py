@@ -14,12 +14,19 @@ class ListIntervenesRequest(DaraModel):
         query: str = None,
         rule_id: int = None,
     ):
+        # The unique identity of the workspace. For more information, see [AgentKey]().
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The intervention type.
         self.intervene_type = intervene_type
+        # The page number.
         self.page_index = page_index
+        # The page size.
         self.page_size = page_size
+        # The query.
         self.query = query
+        # The rule ID.
         self.rule_id = rule_id
 
     def validate(self):

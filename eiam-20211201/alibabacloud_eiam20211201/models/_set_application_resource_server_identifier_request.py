@@ -12,16 +12,17 @@ class SetApplicationResourceServerIdentifierRequest(DaraModel):
         instance_id: str = None,
         resource_server_identifier: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # A client token to ensure the idempotence of the request. Generate a unique value from your client for this parameter. The client token can contain only ASCII characters and cannot be longer than 64 characters. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
         self.client_token = client_token
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # ResourceServer唯一标识，对应ResourceServer受众
+        # The unique identifier of the resource server.
         # 
         # This parameter is required.
         self.resource_server_identifier = resource_server_identifier

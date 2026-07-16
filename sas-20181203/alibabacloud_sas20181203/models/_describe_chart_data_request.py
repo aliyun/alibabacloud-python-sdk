@@ -14,26 +14,26 @@ class DescribeChartDataRequest(DaraModel):
         time_end: int = None,
         time_start: int = None,
     ):
-        # The ID of the chart.
+        # The chart ID.
         # 
-        # >  You can call the [DescribeChartList](~~DescribeChartList~~) operation to query the ID. This parameter is required if the report version is 1.0.0.
+        # > Call the [DescribeChartList](~~DescribeChartList~~) operation to obtain this parameter. This parameter is required if the report version is 1.0.0.
         self.char_id = char_id
-        # The ID of the chart.
+        # The chart ID.
         # 
-        # >  You can call the [DescribeChartList](~~DescribeChartList~~) operation to query the ID. This parameter is required if the report version is 2.0.0.
+        # > Call the [DescribeChartList](~~DescribeChartList~~) operation to obtain this parameter. This parameter is required if the report version is 2.0.0.
         self.chart_id = chart_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The ID of the security report.
+        # The report ID.
         # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # > Call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
         self.report_id = report_id
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The end timestamp for statistics. Unit: milliseconds.
         self.time_end = time_end
-        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start timestamp for statistics. Unit: milliseconds.
         self.time_start = time_start
 
     def validate(self):

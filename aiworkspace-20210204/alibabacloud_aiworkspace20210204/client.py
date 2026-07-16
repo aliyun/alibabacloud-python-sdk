@@ -62,7 +62,28 @@ class Client(OpenApiClient):
             'eu-west-1': 'aiworkspace.aliyuncs.com',
             'eu-west-1-oxs': 'aiworkspace.aliyuncs.com',
             'me-east-1': 'aiworkspace.aliyuncs.com',
-            'rus-west-1-pop': 'aiworkspace.aliyuncs.com'
+            'rus-west-1-pop': 'aiworkspace.aliyuncs.com',
+            'us-west-1': 'aiworkspace.us-west-1.aliyuncs.com',
+            'us-southeast-1': 'aiworkspace.us-southeast-1.aliyuncs.com',
+            'us-east-1': 'aiworkspace.us-east-1.aliyuncs.com',
+            'na-south-1': 'aiworkspace.na-south-1.aliyuncs.com',
+            'eu-central-1': 'aiworkspace.eu-central-1.aliyuncs.com',
+            'cn-wulanchabu': 'aiworkspace.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'aiworkspace.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'aiworkspace.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'aiworkspace.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'aiworkspace.cn-hongkong.aliyuncs.com',
+            'cn-heyuan': 'aiworkspace.cn-heyuan.aliyuncs.com',
+            'cn-hangzhou': 'aiworkspace.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'aiworkspace.cn-guangzhou.aliyuncs.com	',
+            'cn-beijing': 'aiworkspace.cn-beijing.aliyuncs.com',
+            'ap-southeast-8': 'aiworkspace.ap-southeast-8.aliyuncs.com',
+            'ap-southeast-7': 'aiworkspace.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-3': 'aiworkspace.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'aiworkspace.ap-southeast-1.aliyuncs.com',
+            'ap-south-1': 'aiworkspace.ap-south-1.aliyuncs.com',
+            'ap-northeast-2': 'aiworkspace.ap-northeast-2.aliyuncs.com',
+            'ap-northeast-1': 'aiworkspace.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aiworkspace', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2559,6 +2580,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_workspace_role_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.CreateWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceRoleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.module_permissions):
+            body['ModulePermissions'] = request.module_permissions
+        if not DaraCore.is_null(request.role_name):
+            body['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_role_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceRoleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.module_permissions):
+            body['ModulePermissions'] = request.module_permissions
+        if not DaraCore.is_null(request.role_name):
+            body['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace_role(
+        self,
+        workspace_id: str,
+        request: main_models.CreateWorkspaceRoleRequest,
+    ) -> main_models.CreateWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_workspace_role_with_options(workspace_id, request, headers, runtime)
+
+    async def create_workspace_role_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateWorkspaceRoleRequest,
+    ) -> main_models.CreateWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_workspace_role_with_options_async(workspace_id, request, headers, runtime)
+
     def delete_code_source_with_options(
         self,
         code_source_id: str,
@@ -4295,6 +4404,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
 
+    def delete_workspace_roles_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceRolesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.role_ids):
+            body['RoleIds'] = request.role_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceRoles',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/action/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_roles_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWorkspaceRolesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.role_ids):
+            body['RoleIds'] = request.role_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWorkspaceRoles',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/action/delete',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWorkspaceRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace_roles(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRolesRequest,
+    ) -> main_models.DeleteWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_workspace_roles_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_workspace_roles_async(
+        self,
+        workspace_id: str,
+        request: main_models.DeleteWorkspaceRolesRequest,
+    ) -> main_models.DeleteWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_workspace_roles_with_options_async(workspace_id, request, headers, runtime)
+
     def get_code_source_with_options(
         self,
         code_source_id: str,
@@ -5271,6 +5460,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_image_with_options_async(image_id, request, headers, runtime)
 
+    def get_instance_job_with_options(
+        self,
+        instance_job_id: str,
+        request: main_models.GetInstanceJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceJob',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instancejobs/{DaraURL.percent_encode(instance_job_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_job_with_options_async(
+        self,
+        instance_job_id: str,
+        request: main_models.GetInstanceJobRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceJobResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceJob',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instancejobs/{DaraURL.percent_encode(instance_job_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_job(
+        self,
+        instance_job_id: str,
+        request: main_models.GetInstanceJobRequest,
+    ) -> main_models.GetInstanceJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_instance_job_with_options(instance_job_id, request, headers, runtime)
+
+    async def get_instance_job_async(
+        self,
+        instance_job_id: str,
+        request: main_models.GetInstanceJobRequest,
+    ) -> main_models.GetInstanceJobResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_instance_job_with_options_async(instance_job_id, request, headers, runtime)
+
     def get_member_with_options(
         self,
         workspace_id: str,
@@ -5782,6 +6043,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_workspace_with_options_async(workspace_id, request, headers, runtime)
+
+    def get_workspace_role_with_options(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.GetWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceRoleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/{DaraURL.percent_encode(role_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_role_with_options_async(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.GetWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkspaceRoleResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/{DaraURL.percent_encode(role_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkspaceRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace_role(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.GetWorkspaceRoleRequest,
+    ) -> main_models.GetWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_workspace_role_with_options(workspace_id, role_id, request, headers, runtime)
+
+    async def get_workspace_role_async(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.GetWorkspaceRoleRequest,
+    ) -> main_models.GetWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_workspace_role_with_options_async(workspace_id, role_id, request, headers, runtime)
 
     def list_code_sources_with_options(
         self,
@@ -8222,6 +8559,118 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_user_configs_with_options_async(request, headers, runtime)
+
+    def list_workspace_roles_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListWorkspaceRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role_ids):
+            query['RoleIds'] = request.role_ids
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.role_type):
+            query['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.verbose_fields):
+            query['VerboseFields'] = request.verbose_fields
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceRoles',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_roles_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListWorkspaceRolesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspaceRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.role_ids):
+            query['RoleIds'] = request.role_ids
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.role_type):
+            query['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.verbose_fields):
+            query['VerboseFields'] = request.verbose_fields
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaceRoles',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspaceRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_roles(
+        self,
+        workspace_id: str,
+        request: main_models.ListWorkspaceRolesRequest,
+    ) -> main_models.ListWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_workspace_roles_with_options(workspace_id, request, headers, runtime)
+
+    async def list_workspace_roles_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListWorkspaceRolesRequest,
+    ) -> main_models.ListWorkspaceRolesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_workspace_roles_with_options_async(workspace_id, request, headers, runtime)
 
     def list_workspace_users_with_options(
         self,
@@ -10738,6 +11187,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
+
+    def update_workspace_role_with_options(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.UpdateWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceRoleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.module_permissions):
+            body['ModulePermissions'] = request.module_permissions
+        if not DaraCore.is_null(request.role_name):
+            body['RoleName'] = request.role_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/{DaraURL.percent_encode(role_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_role_with_options_async(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.UpdateWorkspaceRoleRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWorkspaceRoleResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.module_permissions):
+            body['ModulePermissions'] = request.module_permissions
+        if not DaraCore.is_null(request.role_name):
+            body['RoleName'] = request.role_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWorkspaceRole',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/roles/{DaraURL.percent_encode(role_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWorkspaceRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace_role(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.UpdateWorkspaceRoleRequest,
+    ) -> main_models.UpdateWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_workspace_role_with_options(workspace_id, role_id, request, headers, runtime)
+
+    async def update_workspace_role_async(
+        self,
+        workspace_id: str,
+        role_id: str,
+        request: main_models.UpdateWorkspaceRoleRequest,
+    ) -> main_models.UpdateWorkspaceRoleResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_workspace_role_with_options_async(workspace_id, role_id, request, headers, runtime)
 
     def validate_connection_with_options(
         self,

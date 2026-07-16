@@ -16,10 +16,15 @@ class DescribeBinaryLogListResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # The list of binlog files.
         self.log_list = log_list
+        # The page number of the current query.
         self.page_number = page_number
+        # The number of binlog entries displayed on the current page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of binlog files found.
         self.total_number = total_number
 
     def validate(self):
@@ -89,16 +94,34 @@ class DescribeBinaryLogListResponseBodyLogList(DaraModel):
         upload_host: str = None,
         upload_status: int = None,
     ):
+        # The start time of the log.
         self.begin_time = begin_time
+        # The creation time of the file.
         self.created_time = created_time
+        # The download link for the file. The link is valid for 2 days.
         self.download_link = download_link
+        # The end time of the current binlog.
         self.end_time = end_time
+        # The name of the binlog file.
         self.file_name = file_name
+        # The unique ID of the current record.
         self.id = id
+        # The size of the current log file.
         self.log_size = log_size
+        # The last modification time.
         self.modified_time = modified_time
+        # The purge status. Valid values:
+        # 
+        # - 0: Not deleted.
+        # - 1: Deleted.
         self.purge_status = purge_status
+        # The backup host.
         self.upload_host = upload_host
+        # The backup status. Valid values:
+        # 
+        # - 0: Not backed up.
+        # - 1: Backing up.
+        # - 2: Backed up.
         self.upload_status = upload_status
 
     def validate(self):

@@ -67,9 +67,9 @@ class ListRoutesResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The list of network resource routing information obtained.
+        # The routes of the network resource.
         self.route_list = route_list
-        # All data entries
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -130,15 +130,15 @@ class ListRoutesResponseBodyPagingInfoRouteList(DaraModel):
     ):
         # The creation time, which is a 64-bit timestamp.
         self.create_time = create_time
-        # Route destination CIDR
+        # The destination CIDR block of the route.
         self.destination_cidr = destination_cidr
-        # Route ID
+        # The route ID.
         self.id = id
-        # Network Resource ID
+        # The network resource ID.
         self.network_id = network_id
-        # Unique identifier of the resource group to which it belongs
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Unique identifier of network resource
+        # The ID of the network resource.
         self.resource_id = resource_id
 
     def validate(self):

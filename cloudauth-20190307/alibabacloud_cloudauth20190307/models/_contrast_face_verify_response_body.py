@@ -13,13 +13,13 @@ class ContrastFaceVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.ContrastFaceVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Request result
+        # The request result.
         self.result_object = result_object
 
     def validate(self):
@@ -71,15 +71,15 @@ class ContrastFaceVerifyResponseBodyResultObject(DaraModel):
         passed: str = None,
         sub_code: str = None,
     ):
-        # Unique identifier for the real-person verification request.
+        # The unique identifier of the ID Verification request.
         self.certify_id = certify_id
-        # Information about the authenticated entity, which is usually empty in general authentication scenarios.
+        # The subject information of the verification. This is returned as empty in common verification scenarios.
         self.identity_info = identity_info
-        # Attachment information of the authenticated entity, mainly image materials, in JSON format, as follows.
+        # The supplementary material information of the verification subject, primarily image-based materials, in JSON format as follows.
         self.material_info = material_info
-        # Whether it passed, T for pass, F for fail.
+        # Indicates whether the verification is passed. A value of T indicates passed. A value of F indicates not passed.
         self.passed = passed
-        # Description of the authentication result. For details, see the SubCode explanation below.
+        # The verification result description. For more information, see the SubCode description below.
         self.sub_code = sub_code
 
     def validate(self):

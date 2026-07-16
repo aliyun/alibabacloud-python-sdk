@@ -15,21 +15,21 @@ class CreateBasicAccelerateIpEndpointRelationsRequest(DaraModel):
         client_token: str = None,
         region_id: str = None,
     ):
-        # A list of accelerated IP addresses and the endpoints with which the accelerated IP addresses are associated.
+        # The list of attachments between accelerated IP addresses and endpoints for the basic Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerate_ip_endpoint_relations = accelerate_ip_endpoint_relations
-        # The ID of the basic GA instance.
+        # The ID of the basic Global Accelerator instance.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **cn-hangzhou**.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -86,15 +86,15 @@ class CreateBasicAccelerateIpEndpointRelationsRequestAccelerateIpEndpointRelatio
         accelerate_ip_id: str = None,
         endpoint_id: str = None,
     ):
-        # The IDs of the accelerated IP addresses.
+        # The ID of the accelerated IP address of the basic Global Accelerator instance.
         # 
-        # You can call the [ListBasicAccelerateIps](https://help.aliyun.com/document_detail/2253393.html) operation to query the IDs of the accelerated IP addresses.
+        # You can call [ListBasicAccelerateIps](https://help.aliyun.com/document_detail/2253393.html) to query accelerated IP address IDs.
         # 
-        # You can specify up to 20 IP address IDs.
+        # You can specify up to 20 accelerated IP address IDs.
         self.accelerate_ip_id = accelerate_ip_id
-        # The IDs of the endpoints.
+        # The endpoint ID of the basic Global Accelerator instance.
         # 
-        # You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/2253406.html) to query the IDs of the endpoints.
+        # You can call [ListBasicEndpoints](https://help.aliyun.com/document_detail/2253406.html) to query endpoint IDs.
         # 
         # You can specify up to 20 endpoint IDs.
         self.endpoint_id = endpoint_id

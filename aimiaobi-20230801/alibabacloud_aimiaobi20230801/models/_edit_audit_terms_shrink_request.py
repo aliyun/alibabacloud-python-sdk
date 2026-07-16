@@ -14,11 +14,18 @@ class EditAuditTermsShrinkRequest(DaraModel):
         terms_desc: str = None,
         workspace_id: str = None,
     ):
+        # Exception statements
         self.exception_word_shrink = exception_word_shrink
+        # Primary key ID
         self.id = id
+        # Keyword
         self.keyword = keyword
+        # Suggested word
         self.suggest_word = suggest_word
+        # Audit rationale
         self.terms_desc = terms_desc
+        # The unique identifier of your Alibaba Cloud Model Studio workspace. Get your [workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

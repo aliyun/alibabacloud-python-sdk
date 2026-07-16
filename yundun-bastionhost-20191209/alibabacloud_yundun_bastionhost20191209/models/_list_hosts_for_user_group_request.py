@@ -17,40 +17,41 @@ class ListHostsForUserGroupRequest(DaraModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The address of the host. You can set this parameter to a domain name or an IP address. Exact match is supported.
         self.host_address = host_address
-        # The name of the host that you want to query. Only exact match is supported.
+        # The name of the host. Exact match is supported.
         self.host_name = host_name
-        # The ID of the bastion host on which you want to query the hosts that the user group is authorized or not authorized to manage.
+        # The ID of the bastion host instance that contains the user group.
         # 
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies the category of the hosts that you want to query. Valid values:
+        # Specifies whether to query for authorized or unauthorized hosts. Valid values:
         # 
-        # *   **Authorized**: queries the hosts that the user group is authorized to manage. This is the default value.
-        # *   **Unauthorized**: queries the hosts that the user group is not authorized to manage.
+        # - **Authorized** (default)
+        # 
+        # - **Unauthorized**
         self.mode = mode
-        # The operating system of the host that you want to query. Valid values:
+        # The operating system of the host. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
-        # The number of the page. Default value: 1.
+        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
+        # The number of entries to return on each page.<br>Maximum value: 100. Default value: 20.<br>
         # 
-        # > We recommend that you do not leave this parameter empty.
+        # > We recommend that you specify this parameter.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query the hosts that the user group is authorized or not authorized to manage.
+        # The ID of the region where the bastion host instance is located.
         # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about regions and their corresponding IDs, see [regions and availability zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The ID of the user group for which you want to query hosts.
+        # The ID of the user group whose hosts you want to list.
         # 
-        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](https://help.aliyun.com/document_detail/204509.html) operation to obtain the user group ID.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id

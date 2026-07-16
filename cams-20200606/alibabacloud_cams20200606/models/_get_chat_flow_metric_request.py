@@ -21,25 +21,36 @@ class GetChatFlowMetricRequest(DaraModel):
         resource_owner_id: int = None,
         to: int = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend = biz_extend
-        # Flow code.
+        # The flow code. You can view the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
         self.flow_code = flow_code
-        # Flow version.
+        # The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and view the flow version.
         self.flow_version = flow_version
-        # Start timestamp in seconds.
+        # The start time. This value is a UNIX timestamp. Unit: seconds.
         self.from_ = from_
-        # Metric name.
+        # The metric name. Valid values:
+        # 
+        # - nodeUsageStatistics: node usage statistics.
+        # 
+        # - nodeErrorDetails: node error details.
         # 
         # This parameter is required.
         self.metric_name = metric_name
+        # The extended parameter for the metric query. When MetricName is set to nodeErrorDetails, pass in a JSON string. Valid values for the JSON fields:
+        # 
+        # - pageNo: the current page number.
+        # 
+        # - pageSize: the number of entries per page.
+        # 
+        # - nodeId: the node ID. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and copy the node ID.
         self.metric_param = metric_param
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # End timestamp in seconds.
+        # The end time. This value is a UNIX timestamp. Unit: seconds.
         self.to = to
 
     def validate(self):

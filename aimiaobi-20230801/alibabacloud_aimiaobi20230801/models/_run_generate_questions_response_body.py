@@ -12,9 +12,11 @@ class RunGenerateQuestionsResponseBody(DaraModel):
         payload: main_models.RunGenerateQuestionsResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
-        # Id of the request
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -60,7 +62,9 @@ class RunGenerateQuestionsResponseBodyPayload(DaraModel):
         output: main_models.RunGenerateQuestionsResponseBodyPayloadOutput = None,
         usage: main_models.RunGenerateQuestionsResponseBodyPayloadUsage = None,
     ):
+        # Outputs
         self.output = output
+        # Token usage
         self.usage = usage
 
     def validate(self):
@@ -101,8 +105,11 @@ class RunGenerateQuestionsResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens used
         self.input_tokens = input_tokens
+        # Number of output tokens
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -142,6 +149,7 @@ class RunGenerateQuestionsResponseBodyPayloadOutput(DaraModel):
         self,
         content: str = None,
     ):
+        # Question content
         self.content = content
 
     def validate(self):
@@ -175,12 +183,19 @@ class RunGenerateQuestionsResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Error message returned when the call fails.
         self.error_message = error_message
+        # Event name
         self.event = event
+        # Event description
         self.event_info = event_info
+        # Session ID
         self.session_id = session_id
+        # Task ID
         self.task_id = task_id
+        # Trace ID
         self.trace_id = trace_id
 
     def validate(self):

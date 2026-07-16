@@ -13,10 +13,14 @@ class StopRecordStreamRequest(DaraModel):
         owner_id: int = None,
         play_domain: str = None,
     ):
+        # App name of the stream.
         self.app = app
+        # Stream ID.
         self.id = id
+        # Stream name.
         self.name = name
         self.owner_id = owner_id
+        # Playback domain name of the stream.
         self.play_domain = play_domain
 
     def validate(self):

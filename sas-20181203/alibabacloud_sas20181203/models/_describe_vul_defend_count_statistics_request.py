@@ -9,10 +9,10 @@ class DescribeVulDefendCountStatisticsRequest(DaraModel):
         self,
         vul_type: str = None,
     ):
-        # The type of the vulnerabilities. Valid values:
+        # The type of vulnerability to query. Valid values:
         # 
-        # *   app: application vulnerabilities
-        # *   emg: urgent vulnerabilities
+        # - app: application vulnerability
+        # - emg: emergency vulnerability.
         self.vul_type = vul_type
 
     def validate(self):

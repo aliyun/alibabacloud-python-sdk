@@ -16,6 +16,7 @@ class GetInstanceEventsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
         # The status code. Valid values:
         # 
@@ -41,6 +42,7 @@ class GetInstanceEventsResponseBody(DaraModel):
         # *   true
         # *   false
         self.success = success
+        self.total_count = total_count
 
     def validate(self):
         pass
@@ -71,6 +73,9 @@ class GetInstanceEventsResponseBody(DaraModel):
         if self.success is not None:
             result['Success'] = self.success
 
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -95,6 +100,9 @@ class GetInstanceEventsResponseBody(DaraModel):
 
         if m.get('Success') is not None:
             self.success = m.get('Success')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
 
         return self
 

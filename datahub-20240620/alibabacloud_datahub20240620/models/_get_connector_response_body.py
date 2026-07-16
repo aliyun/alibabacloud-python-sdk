@@ -22,19 +22,33 @@ class GetConnectorResponseBody(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
+        # The list of fields for the synchronization task.
         self.column_fields = column_fields
+        # The configuration information of the synchronization task.
         self.config = config
+        # The synchronization task ID.
         self.connector_id = connector_id
+        # The creation time.
         self.create_time = create_time
+        # The creator of the synchronization task.
         self.creator = creator
+        # The time when the synchronization task is marked as done. This parameter takes effect only for ODPS synchronization (SINK_ODPS) tasks.
         self.done_time = done_time
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The status of the synchronization task.
         self.state = state
+        # The subscription ID.
         self.subscription_id = subscription_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The topic name.
         self.topic_name = topic_name
+        # The type of the synchronization task.
         self.type = type
+        # The last update time.
         self.update_time = update_time
 
     def validate(self):

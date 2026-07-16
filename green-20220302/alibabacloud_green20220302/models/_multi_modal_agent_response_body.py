@@ -15,8 +15,11 @@ class MultiModalAgentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
+        # The result of the image content detection.
         self.data = data
+        # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,21 @@ class MultiModalAgentResponseBodyData(DaraModel):
         risk_level: str = None,
         usage: main_models.MultiModalAgentResponseBodyDataUsage = None,
     ):
+        # The data ID.
         self.data_id = data_id
+        # The structure of the label item.
         self.result = result
+        # The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+        # 
+        # - high: High risk
+        # 
+        # - medium: Medium risk
+        # 
+        # - low: Low risk
+        # 
+        # - none: No risk detected
         self.risk_level = risk_level
+        # Token usage.
         self.usage = usage
 
     def validate(self):
@@ -130,8 +145,11 @@ class MultiModalAgentResponseBodyDataUsage(DaraModel):
         content_length: int = None,
         prompt_length: int = None,
     ):
+        # Agent details.
         self.agent_detail = agent_detail
+        # The length of the content.
         self.content_length = content_length
+        # The length of the prompt.
         self.prompt_length = prompt_length
 
     def validate(self):
@@ -173,8 +191,27 @@ class MultiModalAgentResponseBodyDataResult(DaraModel):
         label: str = None,
         reason: str = None,
     ):
+        # The description of the label.
         self.description = description
+        # The risk label.
         self.label = label
+        # A description of the result when the session is terminated.
+        # 
+        # - **SESSION_KILLED**: The session was successfully terminated.
+        # 
+        # - **SESSION_EXPIRED**: The session has expired.
+        # 
+        # - **SESSION_NO_PERMISSION**: The account used to terminate the session does not have sufficient permissions.
+        # 
+        # - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is incorrect.
+        # 
+        # - **SESSION_IGNORED_USER**: The session of an account that does not need to be terminated.
+        # 
+        # - **SESSION_INTERNAL_USER_OR_COMMAND**: The session or command of an Alibaba Cloud operations account.
+        # 
+        # - **SESSION_KILL_TASK_TIMEOUT**: A timeout occurred when terminating the session.
+        # 
+        # - **SESSION_OTHER_ERROR**: Other errors.
         self.reason = reason
 
     def validate(self):

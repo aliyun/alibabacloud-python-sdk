@@ -14,10 +14,15 @@ class AddRuleCategoryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Return Result
         self.data = data
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -72,7 +77,9 @@ class AddRuleCategoryResponseBodyData(DaraModel):
         select: bool = None,
         type: int = None,
     ):
+        # Indicates whether the newly added rule category is selected.
         self.select = select
+        # Rule category ID
         self.type = type
 
     def validate(self):

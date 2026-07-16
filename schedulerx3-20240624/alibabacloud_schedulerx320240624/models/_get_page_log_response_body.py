@@ -17,10 +17,8 @@ class GetPageLogResponseBody(DaraModel):
         success: bool = None,
     ):
         self.code = code
-        # -
         self.data = data
         self.message = message
-        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -80,7 +78,6 @@ class GetPageLogResponseBodyData(DaraModel):
     ):
         self.page_num = page_num
         self.page_size = page_size
-        # -
         self.records = records
         self.total = total
 

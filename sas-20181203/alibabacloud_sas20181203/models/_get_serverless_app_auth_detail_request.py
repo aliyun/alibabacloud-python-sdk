@@ -12,20 +12,20 @@ class GetServerlessAppAuthDetailRequest(DaraModel):
         machine_type: str = None,
         vendor_type: str = None,
     ):
-        # SAE application ID.
+        # The SAE application ID.
         # 
-        # > Obtain through the [ListMachineApps](~~ListMachineApps~~) interface.
+        # > You can call the [ListMachineApps](~~ListMachineApps~~) operation to obtain the ID.
         self.app_id = app_id
-        # Application region ID.
+        # The region ID of the application.
         self.app_region_id = app_region_id
-        # Server type: 
+        # The server type. Valid values:
         # - **RunD**
-        # - **ECI**
+        # - **ECI**.
         self.machine_type = machine_type
-        # Cloud product: 
+        # The cloud service to which the application belongs. Valid values:
         # - **ASK**
         # - **SAE**
-        # - **ACS**
+        # - **ACS**.
         self.vendor_type = vendor_type
 
     def validate(self):

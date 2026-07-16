@@ -32,86 +32,90 @@ class PutGroupMetricRuleRequest(DaraModel):
         webhook: str = None,
     ):
         self.escalations = escalations
-        # The abbreviation of the cloud service name.
+        # The abbreviation of the Alibaba Cloud service name.
         # 
-        # For more information about how to obtain the abbreviation of a cloud service name, see `metricCategory` in the response parameter `Labels` of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
+        # For information about how to obtain the abbreviation, see the `metricCategory` tag in the `Labels` response parameter of the [DescribeProjectMeta](https://help.aliyun.com/document_detail/114916.html) operation.
         self.category = category
         # The alert contact group.
         self.contact_groups = contact_groups
-        # The first-level dimension of the alert rule in the application group.
+        # The first-level dimensions of the alert rule in the application group.
         # 
-        # Set the value to a set of key-value pairs, for example, `userId:120886317861****` or `instanceId:i-m5e1qg6uo38rztr4****`.
+        # Format: a collection of `key:value` pairs, such as `{"userId":"120886317861****"}` and `{"instanceId":"i-m5e1qg6uo38rztr4****"}`.
         self.dimensions = dimensions
-        # The time period during which the alert rule is effective.
+        # The effective period during which the alert rule takes effect.
         self.effective_interval = effective_interval
-        # The subject of the alert notification email.
+        # The subject of the alert email.
         self.email_subject = email_subject
-        # The second-level or third-level dimension of the alert rule in the application group.
+        # The second-level or third-level dimensions of the alert rule in the application group.
         # 
-        # Set the value to a set of key-value pairs, for example, `port:80` or `/dev/xvda:d-m5e6yphgzn3aprwu****`.
+        # Format: a collection of `key:value` pairs, such as `port:80` and `/dev/xvda:d-m5e6yphgzn3aprwu****`.
         # 
-        # If the first-level dimension of the alert rule is `instanceId:i-m5e1qg6uo38rztr4****`, its second-level dimension is the `/dev/xvda:d-m5e6yphgzn3aprwu****` disk in the instance.
+        # If the first-level dimension is `{"instanceId":"i-m5e1qg6uo38rztr4****"}`, the second-level dimension is a cloud disk of the instance: `{"/dev/xvda":"d-m5e6yphgzn3aprwu****"}`.
         self.extra_dimension_json = extra_dimension_json
         # The application group ID.
         # 
-        # For more information about how to obtain the ID of an application group, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
+        # For information about how to obtain the application group ID, see [DescribeMonitorGroups](https://help.aliyun.com/document_detail/115032.html).
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The interval at which CloudMonitor checks whether the alert rule is triggered. Unit: seconds.
+        # The detection period of the alert rule. Unit: seconds.
         # 
-        # >  We recommend that you set the interval to the data aggregation period. If the interval is shorter than the data aggregation period, alerts cannot be triggered due to insufficient data.
+        # > Keep the detection period consistent with the data reporting period. If the detection period is shorter than the data reporting period, alerts may not be triggered due to insufficient data.
         self.interval = interval
         # The tags of the alert rule.
         # 
-        # The specified tag is contained in alert notifications.
+        # Tags are included in alert notifications.
         self.labels = labels
         # The metric name.
         # 
-        # For more information about how to obtain the name of a metric, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain the metric name, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
-        # The namespace of the cloud service.
+        # The namespace of the Alibaba Cloud service.
         # 
-        # For more information about how to obtain the namespace of a cloud service, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For information about how to obtain the namespace, see [DescribeMetricMetaList](https://help.aliyun.com/document_detail/98846.html) or [Cloud service monitoring](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The method that is used to handle alerts when no monitoring data is found. Valid values:
-        # 
-        # *   KEEP_LAST_STATE (default): No operation is performed.
-        # *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
-        # *   OK: The status is considered normal.
+        # The processing method when no monitoring data is found. Valid values:
+        # - KEEP_LAST_STATE (default): No action is performed.
+        # - INSUFFICIENT_DATA: An alert whose content is "Insufficient Data" is triggered.
+        # - OK: The status is considered normal.
         self.no_data_policy = no_data_policy
-        # The time period during which the alert rule is ineffective.
+        # The time range during which the alert rule is ineffective.
         self.no_effective_interval = no_effective_interval
+        # The advanced settings.
+        # 
+        # Format: {"key1":"value1","key2":"value2"}. Example: {"NotSendOK":true}. This specifies whether to send a notification when the alert is cleared. The key is NotSendOK, and the value is true (do not send) or false (send, which is the default).
         self.options = options
-        # The aggregation period of the metric data.
+        # The reporting period of monitoring data.
         # 
-        # Set the `Period` parameter to an integral multiple of 60. Unit: seconds. Default value: 300.
+        # The value of `Period` must be 60 or a multiple of 60. Unit: seconds. Default value: 300.
         self.period = period
-        # The ID of the alert rule.
+        # The alert rule ID.
         # 
-        # *   When you create an alert rule for the application group, enter the ID of the alert rule.
-        # *   When you modify a specified alert rule in the application group, you must obtain the ID of the alert rule. For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # - To create an alert rule for the application group, enter an alert rule ID.
+        # 
+        # - To modify a specified alert rule in the application group, obtain the alert rule ID. For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the alert rule.
+        # The alert rule name.
         # 
-        # *   When you create an alert rule for the application group, enter the name of the alert rule.
-        # *   When you modify a specified alert rule in the application group, you must obtain the name of the alert rule. For more information about how to obtain the name of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # - To create an alert rule for the application group, enter an alert rule name.
+        # 
+        # - To modify a specified alert rule in the application group, obtain the alert rule name. For information about how to obtain the alert rule name, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_name = rule_name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met.
+        # The mute period.
         # 
         # Unit: seconds. Default value: 86400.
         self.silence_time = silence_time
-        # The callback URL.
+        # The callback URL to which a request is sent when an alert is triggered.
         # 
-        # The callback URL must be accessible over the Internet. CloudMonitor sends a POST request to push an alert notification to the callback URL that you specify. Only HTTP requests are supported.
+        # Enter a publicly accessible URL. CloudMonitor sends a POST request to push alert information to this URL. Only the HTTP protocol is supported.
         self.webhook = webhook
 
     def validate(self):
@@ -355,27 +359,27 @@ class PutGroupMetricRuleRequestEscalationsWarn(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
+        # Warn级别阈值比较符。取值：
         # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。
+        # - GreaterThanThreshold：大于。
+        # - LessThanOrEqualToThreshold：小于等于。
+        # - LessThanThreshold：小于。
+        # - NotEqualToThreshold：不等于。
+        # - GreaterThanYesterday：同比昨天时间上涨。
+        # - LessThanYesterday：同比昨天时间下降。
+        # - GreaterThanLastWeek：同比上周同一时间上涨。
+        # - LessThanLastWeek：同比上周同一时间下降。
+        # - GreaterThanLastPeriod：环比上周期上涨。
+        # - LessThanLastPeriod：环比上周期下降。
         self.comparison_operator = comparison_operator
-        # The statistical methods for Warn-level alerts. Separate multiple statistical methods with commas (,).
+        # Warn级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
         self.statistics = statistics
-        # The threshold for Warn-level alerts.
+        # Warn级别报警阈值。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Warn-level alert is triggered.
+        # Warn级别报警重试次数。
         self.times = times
 
     def validate(self):
@@ -424,27 +428,27 @@ class PutGroupMetricRuleRequestEscalationsInfo(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
+        # Info级别阈值比较符。取值：
         # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。
+        # - GreaterThanThreshold：大于。
+        # - LessThanOrEqualToThreshold：小于等于。
+        # - LessThanThreshold：小于。
+        # - NotEqualToThreshold：不等于。
+        # - GreaterThanYesterday：同比昨天时间上涨。
+        # - LessThanYesterday：同比昨天时间下降。
+        # - GreaterThanLastWeek：同比上周同一时间上涨。
+        # - LessThanLastWeek：同比上周同一时间下降。
+        # - GreaterThanLastPeriod：环比上周期上涨。
+        # - LessThanLastPeriod：环比上周期下降。
         self.comparison_operator = comparison_operator
-        # The statistical methods for Info-level alerts. Separate multiple statistical methods with commas (,).
+        # Info级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
         self.statistics = statistics
-        # The threshold for Info-level alerts.
+        # Info级别报警阈值。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before an Info-level alert is triggered.
+        # Info级别报警重试次数。
         self.times = times
 
     def validate(self):
@@ -493,27 +497,27 @@ class PutGroupMetricRuleRequestEscalationsCritical(DaraModel):
         threshold: str = None,
         times: int = None,
     ):
-        # The operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
+        # Critical级别阈值比较符。取值：
         # 
-        # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
-        # *   GreaterThanThreshold: greater than the threshold
-        # *   LessThanOrEqualToThreshold: less than or equal to the threshold
-        # *   LessThanThreshold: less than the threshold
-        # *   NotEqualToThreshold: not equal to the threshold
-        # *   GreaterThanYesterday: greater than the metric value at the same time yesterday
-        # *   LessThanYesterday: less than the metric value at the same time yesterday
-        # *   GreaterThanLastWeek: greater than the metric value at the same time last week
-        # *   LessThanLastWeek: less than the metric value at the same time last week
-        # *   GreaterThanLastPeriod: greater than the metric value in the last monitoring cycle
-        # *   LessThanLastPeriod: less than the metric value in the last monitoring cycle
+        # - GreaterThanOrEqualToThreshold：大于等于。
+        # - GreaterThanThreshold：大于。
+        # - LessThanOrEqualToThreshold：小于等于。
+        # - LessThanThreshold：小于。
+        # - NotEqualToThreshold：不等于。
+        # - GreaterThanYesterday：同比昨天时间上涨。
+        # - LessThanYesterday：同比昨天时间下降。
+        # - GreaterThanLastWeek：同比上周同一时间上涨。
+        # - LessThanLastWeek：同比上周同一时间下降。
+        # - GreaterThanLastPeriod：环比上周期上涨。
+        # - LessThanLastPeriod：环比上周期下降。
         self.comparison_operator = comparison_operator
-        # The statistical methods for Critical-level alerts. Separate multiple statistical methods with commas (,).
+        # Critical级别报警统计方法。多个统计方法之间用半角逗号（,）分隔。
         # 
-        # The value of this parameter is determined by the `Statistics` column corresponding to the `MetricName` parameter of the specified cloud service. The value of this parameter can be Maximum, Minimum, or Average. For more information about how to obtain the value of this parameter, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # 该参数的取值由指定云产品的`MetricName`对应的`Statistics`列决定，例如：Maximum、Minimum和Average。关于如何获取该参数的取值，请参见[云产品监控项](https://help.aliyun.com/document_detail/163515.html)。
         self.statistics = statistics
-        # The threshold for Critical-level alerts.
+        # Critical级别报警阈值。
         self.threshold = threshold
-        # The consecutive number of times for which the metric value meets the alert condition before a Critical-level alert is triggered.
+        # Critical级别报警重试次数。
         self.times = times
 
     def validate(self):

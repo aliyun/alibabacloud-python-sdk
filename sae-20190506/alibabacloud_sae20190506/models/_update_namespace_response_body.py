@@ -18,17 +18,21 @@ class UpdateNamespaceResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The call was successful.
+        # 
+        # - **3xx**: The call was redirected.
+        # 
+        # - **4xx**: The call failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The information about a namespace.
         self.data = data
         # The error code returned. Take note of the following rules:
         # 
-        # *   The **ErrorCode** parameter is not returned if the request succeeds.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # - The **ErrorCode** parameter is not returned if the request succeeds.
+        # 
+        # - If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
         self.error_code = error_code
         # The message returned for the operation.
         self.message = message
@@ -36,8 +40,9 @@ class UpdateNamespaceResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the information about the namespace was updated. Valid values:
         # 
-        # *   **true**: The instance was updated.
-        # *   **false**: The instance failed to be updated.
+        # - **true**: The instance was updated.
+        # 
+        # - **false**: The instance failed to be updated.
         self.success = success
         # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
@@ -112,8 +117,9 @@ class UpdateNamespaceResponseBodyData(DaraModel):
     ):
         # Indicates whether to enable SAE built-in registry:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.enable_micro_registration = enable_micro_registration
         # The short ID of the namespace.
         self.name_space_short_id = name_space_short_id

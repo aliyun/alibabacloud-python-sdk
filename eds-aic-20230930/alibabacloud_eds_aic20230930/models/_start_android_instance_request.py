@@ -14,6 +14,7 @@ class StartAndroidInstanceRequest(DaraModel):
     ):
         # List of instances.
         self.android_instance_ids = android_instance_ids
+        # The billing mode. This parameter is deprecated.
         self.sale_mode = sale_mode
 
     def validate(self):

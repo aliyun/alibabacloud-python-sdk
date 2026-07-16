@@ -26,37 +26,46 @@ class DescribeRouteTablesRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page during paging. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the route table to be queried belongs.
+        # The ID of the resource group to which the route table belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table that you want to query.
-        self.route_table_id = route_table_id
-        # The name of the route table that you want to query.
+        # The ID of the route table to query.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
+        self.route_table_id = route_table_id
+        # The name of the route table to query.
+        # 
+        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
         self.route_table_name = route_table_name
         # The ID of the router to which the route table belongs.
+        # 
+        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
         self.router_id = router_id
         # The type of the router to which the route table belongs. Valid values:
         # 
-        # *   **VRouter** (default)
-        # *   **VBR**
+        # - **VRouter** (default): vRouter.
+        # - **VBR**: Virtual Border Router.
         self.router_type = router_type
-        # The route type. Valid values:
+        # The destination type of the route to query. Valid values:
         # 
-        # *   **Custom**
-        # *   **System**
-        # *   **BGP**
-        # *   **CEN**
+        # - **Custom**: custom route.
+        # - **System**: system route.
+        # - **BGP**: BGP route.
+        # - **CEN**: Cloud Enterprise Network (CEN) route.
+        # - **ECR**: Express Connect Router (ECR) route.
         self.type = type
-        # The ID of the vRouter.
+        # The ID of the vRouter to query.
+        # 
+        # >You must specify at least one of the following parameters: VRouterId, RouteTableId, RouterId, and RouteTableName. You cannot specify both VRouterId and RouterId at the same time.
         self.vrouter_id = vrouter_id
 
     def validate(self):

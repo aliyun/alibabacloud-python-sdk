@@ -12,7 +12,7 @@ class ConsumerGroupHeartBeatRequest(DaraModel):
         body: List[int] = None,
         consumer: str = None,
     ):
-        # The IDs of shards whose data is being consumed.
+        # The list of shard IDs that are being consumed.
         # 
         # This parameter is required.
         self.body = body

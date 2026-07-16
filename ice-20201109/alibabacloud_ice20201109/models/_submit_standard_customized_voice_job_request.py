@@ -13,37 +13,39 @@ class SubmitStandardCustomizedVoiceJobRequest(DaraModel):
         gender: str = None,
         voice_name: str = None,
     ):
-        # *   The material assets IDs of the materials for training.
-        # *   Separate multiple media IDs with commas (,).
+        # - The material assets IDs of the materials for training.
+        # 
+        # - Separate multiple media IDs with commas (,).
         # 
         # > : The total duration of all materials must be within 15 to 30 minutes. The duration of each material must be greater than 1 minute.
         self.audios = audios
-        # *   The media asset ID of the authentication audio.
+        # - The media asset ID of the authentication audio.
         # 
-        # *   Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
+        # - Upload an audio file for identity authentication. If the voiceprint extracted from the uploaded file differs from that of the training file, the job fails.
         # 
-        #     **
+        #   \\*\\*
         # 
-        #     **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
+        #   **Note**: Clearly read and record the following text: I confirm to customize human voice cloning and provide audio files that contain my voice for training. I promise that I am responsible for the customized content and that the content complies with laws and regulations.
         self.authentication = authentication
         # The URL of the sample audio file.
         # 
-        # *   If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
+        # - If this parameter is specified, a sample audio file is generated at the specified Object Storage Service (OSS) URL after the training is complete.
         # 
-        # *   If this parameter is not specified, no sample audio file is generated.
+        # - If this parameter is not specified, no sample audio file is generated.
         # 
-        #     **
+        #   \\*\\*
         # 
-        #     **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
+        #   **Note**: The URL must be a valid public OSS URL within your Alibaba Cloud account.
         self.demo_audio_media_url = demo_audio_media_url
         # The gender. Valid values:
         # 
-        # *   female
-        # *   male
+        # - female
+        # 
+        # - male
         self.gender = gender
         # The voice name.
         # 
-        # *   The name can be up to 32 characters in length.
+        # - The name can be up to 32 characters in length.
         self.voice_name = voice_name
 
     def validate(self):

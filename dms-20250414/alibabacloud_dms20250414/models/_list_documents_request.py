@@ -15,13 +15,39 @@ class ListDocumentsRequest(DaraModel):
         sort_field_name: str = None,
         sort_order: str = None,
     ):
+        # The document property filter. The following properties are supported:
+        # 
+        # - `fileExt`: The document extension.
+        # 
+        # - `state`: The document status.
         self.filters = filters
+        # The ID of the knowledge base.
+        # 
         # This parameter is required.
         self.kb_uuid = kb_uuid
+        # The maximum number of documents to return per page.
+        # 
+        # Valid values: 1 to 100.
+        # 
+        # Default value: 20.
         self.max_results = max_results
+        # The document name filter. Returns only documents whose names contain this value.
         self.name_pattern = name_pattern
+        # The pagination token to retrieve the next page of results. Omit this parameter to retrieve the first page. A `NextToken` value in the response indicates that more results are available. To fetch the next page, pass this value in a subsequent request. A `null` value indicates that all results have been retrieved.
         self.next_token = next_token
+        # The sort field. Valid values:
+        # 
+        # - `id` (default): The document ID.
+        # 
+        # - `hits`: The number of hits.
+        # 
+        # - `modifyTime`: The modification time.
         self.sort_field_name = sort_field_name
+        # The sort order. Valid values:
+        # 
+        # - **ASC** (default): Sorts in ascending order.
+        # 
+        # - **DESC**: Sorts in descending order.
         self.sort_order = sort_order
 
     def validate(self):

@@ -18,15 +18,15 @@ class SearchCloudGtmInstanceConfigsResponseBody(DaraModel):
         total_pages: int = None,
     ):
         self.instance_configs = instance_configs
-        # Current page number, starting from 1, default is 1.
+        # The page number. The start value is 1. Default value: 1.
         self.page_number = page_number
-        # The number of rows per page when paginating queries, with a maximum value of **100**, and a default of **20**.
+        # The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # Unique request identification code.
+        # The unique request ID.
         self.request_id = request_id
-        # Total number of instance configuration entries.
+        # The total number of instance configurations.
         self.total_items = total_items
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

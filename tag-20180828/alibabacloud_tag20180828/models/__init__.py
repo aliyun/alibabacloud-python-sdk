@@ -1,0 +1,271 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._attach_policy_request import AttachPolicyRequest
+from ._attach_policy_response_body import AttachPolicyResponseBody
+from ._attach_policy_response import AttachPolicyResponse
+from ._check_created_by_enabled_request import CheckCreatedByEnabledRequest
+from ._check_created_by_enabled_response_body import CheckCreatedByEnabledResponseBody
+from ._check_created_by_enabled_response import CheckCreatedByEnabledResponse
+from ._close_created_by_request import CloseCreatedByRequest
+from ._close_created_by_response_body import CloseCreatedByResponseBody
+from ._close_created_by_response import CloseCreatedByResponse
+from ._create_associated_resource_rules_request import CreateAssociatedResourceRulesRequest
+from ._create_associated_resource_rules_response_body import CreateAssociatedResourceRulesResponseBody
+from ._create_associated_resource_rules_response import CreateAssociatedResourceRulesResponse
+from ._create_policy_request import CreatePolicyRequest
+from ._create_policy_response_body import CreatePolicyResponseBody
+from ._create_policy_response import CreatePolicyResponse
+from ._create_tags_request import CreateTagsRequest
+from ._create_tags_response_body import CreateTagsResponseBody
+from ._create_tags_response import CreateTagsResponse
+from ._delete_associated_resource_rule_request import DeleteAssociatedResourceRuleRequest
+from ._delete_associated_resource_rule_response_body import DeleteAssociatedResourceRuleResponseBody
+from ._delete_associated_resource_rule_response import DeleteAssociatedResourceRuleResponse
+from ._delete_policy_request import DeletePolicyRequest
+from ._delete_policy_response_body import DeletePolicyResponseBody
+from ._delete_policy_response import DeletePolicyResponse
+from ._delete_tag_request import DeleteTagRequest
+from ._delete_tag_response_body import DeleteTagResponseBody
+from ._delete_tag_response import DeleteTagResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._detach_policy_request import DetachPolicyRequest
+from ._detach_policy_response_body import DetachPolicyResponseBody
+from ._detach_policy_response import DetachPolicyResponse
+from ._disable_policy_type_request import DisablePolicyTypeRequest
+from ._disable_policy_type_response_body import DisablePolicyTypeResponseBody
+from ._disable_policy_type_response import DisablePolicyTypeResponse
+from ._enable_policy_type_request import EnablePolicyTypeRequest
+from ._enable_policy_type_response_body import EnablePolicyTypeResponseBody
+from ._enable_policy_type_response import EnablePolicyTypeResponse
+from ._generate_config_rule_report_request import GenerateConfigRuleReportRequest
+from ._generate_config_rule_report_response_body import GenerateConfigRuleReportResponseBody
+from ._generate_config_rule_report_response import GenerateConfigRuleReportResponse
+from ._get_config_rule_report_request import GetConfigRuleReportRequest
+from ._get_config_rule_report_response_body import GetConfigRuleReportResponseBody
+from ._get_config_rule_report_response import GetConfigRuleReportResponse
+from ._get_effective_policy_request import GetEffectivePolicyRequest
+from ._get_effective_policy_response_body import GetEffectivePolicyResponseBody
+from ._get_effective_policy_response import GetEffectivePolicyResponse
+from ._get_policy_request import GetPolicyRequest
+from ._get_policy_response_body import GetPolicyResponseBody
+from ._get_policy_response import GetPolicyResponse
+from ._get_policy_enable_status_request import GetPolicyEnableStatusRequest
+from ._get_policy_enable_status_response_body import GetPolicyEnableStatusResponseBody
+from ._get_policy_enable_status_response import GetPolicyEnableStatusResponse
+from ._list_associated_resource_rules_request import ListAssociatedResourceRulesRequest
+from ._list_associated_resource_rules_response_body import ListAssociatedResourceRulesResponseBody
+from ._list_associated_resource_rules_response import ListAssociatedResourceRulesResponse
+from ._list_config_rules_for_target_request import ListConfigRulesForTargetRequest
+from ._list_config_rules_for_target_response_body import ListConfigRulesForTargetResponseBody
+from ._list_config_rules_for_target_response import ListConfigRulesForTargetResponse
+from ._list_policies_request import ListPoliciesRequest
+from ._list_policies_response_body import ListPoliciesResponseBody
+from ._list_policies_response import ListPoliciesResponse
+from ._list_policies_for_target_request import ListPoliciesForTargetRequest
+from ._list_policies_for_target_response_body import ListPoliciesForTargetResponseBody
+from ._list_policies_for_target_response import ListPoliciesForTargetResponse
+from ._list_resources_by_tag_request import ListResourcesByTagRequest
+from ._list_resources_by_tag_response_body import ListResourcesByTagResponseBody
+from ._list_resources_by_tag_response import ListResourcesByTagResponse
+from ._list_support_resource_types_request import ListSupportResourceTypesRequest
+from ._list_support_resource_types_response_body import ListSupportResourceTypesResponseBody
+from ._list_support_resource_types_response import ListSupportResourceTypesResponse
+from ._list_tag_keys_request import ListTagKeysRequest
+from ._list_tag_keys_response_body import ListTagKeysResponseBody
+from ._list_tag_keys_response import ListTagKeysResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_tag_values_request import ListTagValuesRequest
+from ._list_tag_values_response_body import ListTagValuesResponseBody
+from ._list_tag_values_response import ListTagValuesResponse
+from ._list_targets_for_policy_request import ListTargetsForPolicyRequest
+from ._list_targets_for_policy_response_body import ListTargetsForPolicyResponseBody
+from ._list_targets_for_policy_response import ListTargetsForPolicyResponse
+from ._modify_policy_request import ModifyPolicyRequest
+from ._modify_policy_response_body import ModifyPolicyResponseBody
+from ._modify_policy_response import ModifyPolicyResponse
+from ._open_created_by_request import OpenCreatedByRequest
+from ._open_created_by_response_body import OpenCreatedByResponseBody
+from ._open_created_by_response import OpenCreatedByResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_associated_resource_rule_request import UpdateAssociatedResourceRuleRequest
+from ._update_associated_resource_rule_response_body import UpdateAssociatedResourceRuleResponseBody
+from ._update_associated_resource_rule_response import UpdateAssociatedResourceRuleResponse
+from ._create_associated_resource_rules_request import CreateAssociatedResourceRulesRequestCreateRulesList
+from ._create_tags_request import CreateTagsRequestTagKeyValueParamListTagValueParamList
+from ._create_tags_request import CreateTagsRequestTagKeyValueParamList
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._get_config_rule_report_response_body import GetConfigRuleReportResponseBodyData
+from ._get_effective_policy_response_body import GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList
+from ._get_effective_policy_response_body import GetEffectivePolicyResponseBodyPolicyAttachments
+from ._get_policy_response_body import GetPolicyResponseBodyPolicy
+from ._get_policy_enable_status_response_body import GetPolicyEnableStatusResponseBodyStatusModels
+from ._list_associated_resource_rules_response_body import ListAssociatedResourceRulesResponseBodyRules
+from ._list_config_rules_for_target_response_body import ListConfigRulesForTargetResponseBodyData
+from ._list_policies_response_body import ListPoliciesResponseBodyPolicyList
+from ._list_policies_for_target_response_body import ListPoliciesForTargetResponseBodyData
+from ._list_resources_by_tag_request import ListResourcesByTagRequestTagFilter
+from ._list_resources_by_tag_response_body import ListResourcesByTagResponseBodyResourcesTags
+from ._list_resources_by_tag_response_body import ListResourcesByTagResponseBodyResources
+from ._list_support_resource_types_response_body import ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems
+from ._list_support_resource_types_response_body import ListSupportResourceTypesResponseBodySupportResourceTypes
+from ._list_tag_keys_request import ListTagKeysRequestTagFilter
+from ._list_tag_keys_response_body import ListTagKeysResponseBodyKeysKey
+from ._list_tag_keys_response_body import ListTagKeysResponseBodyKeys
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTags
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_tag_values_request import ListTagValuesRequestTagFilter
+from ._list_tag_values_response_body import ListTagValuesResponseBodyValues
+from ._list_targets_for_policy_response_body import ListTargetsForPolicyResponseBodyTargets
+from ._tag_resources_response_body import TagResourcesResponseBodyFailedResourcesFailedResourceResult
+from ._tag_resources_response_body import TagResourcesResponseBodyFailedResourcesFailedResource
+from ._tag_resources_response_body import TagResourcesResponseBodyFailedResources
+from ._untag_resources_response_body import UntagResourcesResponseBodyFailedResourcesFailedResourceResult
+from ._untag_resources_response_body import UntagResourcesResponseBodyFailedResourcesFailedResource
+from ._untag_resources_response_body import UntagResourcesResponseBodyFailedResources
+
+__all__ = [
+    AttachPolicyRequest,
+    AttachPolicyResponseBody,
+    AttachPolicyResponse,
+    CheckCreatedByEnabledRequest,
+    CheckCreatedByEnabledResponseBody,
+    CheckCreatedByEnabledResponse,
+    CloseCreatedByRequest,
+    CloseCreatedByResponseBody,
+    CloseCreatedByResponse,
+    CreateAssociatedResourceRulesRequest,
+    CreateAssociatedResourceRulesResponseBody,
+    CreateAssociatedResourceRulesResponse,
+    CreatePolicyRequest,
+    CreatePolicyResponseBody,
+    CreatePolicyResponse,
+    CreateTagsRequest,
+    CreateTagsResponseBody,
+    CreateTagsResponse,
+    DeleteAssociatedResourceRuleRequest,
+    DeleteAssociatedResourceRuleResponseBody,
+    DeleteAssociatedResourceRuleResponse,
+    DeletePolicyRequest,
+    DeletePolicyResponseBody,
+    DeletePolicyResponse,
+    DeleteTagRequest,
+    DeleteTagResponseBody,
+    DeleteTagResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DetachPolicyRequest,
+    DetachPolicyResponseBody,
+    DetachPolicyResponse,
+    DisablePolicyTypeRequest,
+    DisablePolicyTypeResponseBody,
+    DisablePolicyTypeResponse,
+    EnablePolicyTypeRequest,
+    EnablePolicyTypeResponseBody,
+    EnablePolicyTypeResponse,
+    GenerateConfigRuleReportRequest,
+    GenerateConfigRuleReportResponseBody,
+    GenerateConfigRuleReportResponse,
+    GetConfigRuleReportRequest,
+    GetConfigRuleReportResponseBody,
+    GetConfigRuleReportResponse,
+    GetEffectivePolicyRequest,
+    GetEffectivePolicyResponseBody,
+    GetEffectivePolicyResponse,
+    GetPolicyRequest,
+    GetPolicyResponseBody,
+    GetPolicyResponse,
+    GetPolicyEnableStatusRequest,
+    GetPolicyEnableStatusResponseBody,
+    GetPolicyEnableStatusResponse,
+    ListAssociatedResourceRulesRequest,
+    ListAssociatedResourceRulesResponseBody,
+    ListAssociatedResourceRulesResponse,
+    ListConfigRulesForTargetRequest,
+    ListConfigRulesForTargetResponseBody,
+    ListConfigRulesForTargetResponse,
+    ListPoliciesRequest,
+    ListPoliciesResponseBody,
+    ListPoliciesResponse,
+    ListPoliciesForTargetRequest,
+    ListPoliciesForTargetResponseBody,
+    ListPoliciesForTargetResponse,
+    ListResourcesByTagRequest,
+    ListResourcesByTagResponseBody,
+    ListResourcesByTagResponse,
+    ListSupportResourceTypesRequest,
+    ListSupportResourceTypesResponseBody,
+    ListSupportResourceTypesResponse,
+    ListTagKeysRequest,
+    ListTagKeysResponseBody,
+    ListTagKeysResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListTagValuesRequest,
+    ListTagValuesResponseBody,
+    ListTagValuesResponse,
+    ListTargetsForPolicyRequest,
+    ListTargetsForPolicyResponseBody,
+    ListTargetsForPolicyResponse,
+    ModifyPolicyRequest,
+    ModifyPolicyResponseBody,
+    ModifyPolicyResponse,
+    OpenCreatedByRequest,
+    OpenCreatedByResponseBody,
+    OpenCreatedByResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateAssociatedResourceRuleRequest,
+    UpdateAssociatedResourceRuleResponseBody,
+    UpdateAssociatedResourceRuleResponse,
+    CreateAssociatedResourceRulesRequestCreateRulesList,
+    CreateTagsRequestTagKeyValueParamListTagValueParamList,
+    CreateTagsRequestTagKeyValueParamList,
+    DescribeRegionsResponseBodyRegionsRegion,
+    DescribeRegionsResponseBodyRegions,
+    GetConfigRuleReportResponseBodyData,
+    GetEffectivePolicyResponseBodyPolicyAttachmentsPolicyList,
+    GetEffectivePolicyResponseBodyPolicyAttachments,
+    GetPolicyResponseBodyPolicy,
+    GetPolicyEnableStatusResponseBodyStatusModels,
+    ListAssociatedResourceRulesResponseBodyRules,
+    ListConfigRulesForTargetResponseBodyData,
+    ListPoliciesResponseBodyPolicyList,
+    ListPoliciesForTargetResponseBodyData,
+    ListResourcesByTagRequestTagFilter,
+    ListResourcesByTagResponseBodyResourcesTags,
+    ListResourcesByTagResponseBodyResources,
+    ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems,
+    ListSupportResourceTypesResponseBodySupportResourceTypes,
+    ListTagKeysRequestTagFilter,
+    ListTagKeysResponseBodyKeysKey,
+    ListTagKeysResponseBodyKeys,
+    ListTagResourcesResponseBodyTagResourcesTags,
+    ListTagResourcesResponseBodyTagResources,
+    ListTagValuesRequestTagFilter,
+    ListTagValuesResponseBodyValues,
+    ListTargetsForPolicyResponseBodyTargets,
+    TagResourcesResponseBodyFailedResourcesFailedResourceResult,
+    TagResourcesResponseBodyFailedResourcesFailedResource,
+    TagResourcesResponseBodyFailedResources,
+    UntagResourcesResponseBodyFailedResourcesFailedResourceResult,
+    UntagResourcesResponseBodyFailedResourcesFailedResource,
+    UntagResourcesResponseBodyFailedResources
+]

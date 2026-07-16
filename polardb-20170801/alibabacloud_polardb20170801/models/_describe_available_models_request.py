@@ -12,6 +12,7 @@ class DescribeAvailableModelsRequest(DaraModel):
     ):
         # aideploy
         self.kube_type = kube_type
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

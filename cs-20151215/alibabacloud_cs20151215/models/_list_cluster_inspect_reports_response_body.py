@@ -16,7 +16,7 @@ class ListClusterInspectReportsResponseBody(DaraModel):
     ):
         # The pagination token.
         self.next_token = next_token
-        # The list of inspection reports.
+        # The inspection reports.
         self.reports = reports
         # The request ID.
         self.request_id = request_id
@@ -70,15 +70,15 @@ class ListClusterInspectReportsResponseBodyReports(DaraModel):
         status: str = None,
         summary: main_models.ListClusterInspectReportsResponseBodyReportsSummary = None,
     ):
-        # The report completion time.
+        # The completion time of the inspection report.
         self.end_time = end_time
-        # An inspection report ID.
+        # The inspection report ID.
         self.report_id = report_id
-        # The report start time.
+        # The start time of the inspection report.
         self.start_time = start_time
-        # The inspection report status.
+        # The generation status of the inspection report.
         self.status = status
-        # The inspection summary.
+        # The inspection report summary.
         self.summary = summary
 
     def validate(self):
@@ -136,15 +136,15 @@ class ListClusterInspectReportsResponseBodyReportsSummary(DaraModel):
         normal_count: int = None,
         warn_count: int = None,
     ):
-        # The number of items whose result is advice.
+        # The number of check items with a result of advice.
         self.advice_count = advice_count
-        # Aggregated inspection task result code.
+        # The status code of the check task result.
         self.code = code
-        # The number of items whose result is error.
+        # The number of check items with a result of error.
         self.error_count = error_count
-        # The number of items whose result is normal.
+        # The number of check items with a result of normal.
         self.normal_count = normal_count
-        # The number of items whose result is warning.
+        # The number of check items with a result of warning.
         self.warn_count = warn_count
 
     def validate(self):

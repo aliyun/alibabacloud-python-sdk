@@ -17,12 +17,17 @@ class ListQualityTemplatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListQualityTemplatesResponseBodyPageResult(DaraModel):
         quality_template_list: List[main_models.ListQualityTemplatesResponseBodyPageResultQualityTemplateList] = None,
         total_count: int = None,
     ):
+        # The list of quality templates.
         self.quality_template_list = quality_template_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -143,24 +150,82 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateList(DaraModel):
         type: str = None,
         type_name: str = None,
     ):
+        # The template category. Valid values:
+        # - CONSISTENT: consistency
+        # - EFFECTIVE: validity
+        # - TIMELINESE: timeliness
+        # - ACCURATE: accuracy
+        # - UNIQUENESS: uniqueness
+        # - COMPLETENESS: completeness
+        # - STABILITY: stability
+        # - CUSTOM: custom.
         self.catalog = catalog
+        # The display name of the template category.
         self.catalog_name = catalog_name
+        # The creation time.
         self.create_time = create_time
+        # The user ID of the creator.
         self.creator = creator
+        # The name of the creator.
         self.creator_name = creator_name
+        # The template description.
         self.description = description
+        # The rule configuration key-value pairs.
         self.form_property_list = form_property_list
+        # The template ID.
         self.id = id
+        # Indicates whether the template is a system template.
         self.is_system_template = is_system_template
+        # The user ID of the last modifier.
         self.modifier = modifier
+        # The name of the last modifier.
         self.modifier_name = modifier_name
+        # The modification time.
         self.modify_time = modify_time
+        # The template name.
         self.name = name
+        # The user ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_name = owner_name
+        # Indicates whether all data source types are supported.
         self.support_all_data_source_type = support_all_data_source_type
+        # The supported data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
         self.support_data_source_type_list = support_data_source_type_list
+        # The templatetype. Valid values:
+        # - FIELD_NULL_VALUE_VALIDATE: field null value check
+        # - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
+        # - FIELD_UNIQUE_VALIDATE: field uniqueness check
+        # - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
+        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
+        # - FUNCTION_TIME_COMPARE: time function comparison
+        # - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
+        # - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
+        # - FIELD_FORMAT_VALIDATE: field format check
+        # - FIELD_LENGTH_VALIDATE: field length check
+        # - FIELD_VALUE_RANGE_VALIDATE: field value range check
+        # - CODE_TABLE_COMPARE: lookup table reference comparison
+        # - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
+        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
+        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
+        # - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
+        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
+        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
+        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
+        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
+        # - TABLE_STABILITY_VALIDATE: table stability check
+        # - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
+        # - FIELD_STABILITY_VALIDATE: field stability check
+        # - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
+        # - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
+        # - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
+        # - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
+        # - TABLE_SCHEMA_CHECK: table schema change monitoring
+        # - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
+        # - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
+        # - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
         self.type = type
+        # The display name of the templatetype.
         self.type_name = type_name
 
     def validate(self):
@@ -306,8 +371,11 @@ class ListQualityTemplatesResponseBodyPageResultQualityTemplateListFormPropertyL
         name: str = None,
         value: str = None,
     ):
+        # The control type.
         self.component_type = component_type
+        # The property name.
         self.name = name
+        # The property value.
         self.value = value
 
     def validate(self):

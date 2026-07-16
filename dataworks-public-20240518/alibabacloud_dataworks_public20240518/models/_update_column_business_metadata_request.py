@@ -2,17 +2,22 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, List
+
 from darabonba.model import DaraModel
 
 class UpdateColumnBusinessMetadataRequest(DaraModel):
     def __init__(
         self,
+        custom_attributes: Dict[str, List[str]] = None,
         description: str = None,
         id: str = None,
     ):
-        # The field business description.
+        # The custom attributes of the column, specified as key-value pairs. The key is the attribute identifier, and the value is an array that can contain at most one element. An empty array deletes the attribute\\"s value. To avoid overwriting the column\\"s business description, omit the `Description` parameter from the request. An empty object (`{}`) indicates that no custom attributes are updated.
+        self.custom_attributes = custom_attributes
+        # The business description of the column.
         self.description = description
-        # The field ID. You can refer to the response from the ListColumns operation. You can also refer to the [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID of the column. You can obtain this ID from the response of the `ListColumns` operation. For more information, see [Metadata Entity Concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
         # This parameter is required.
         self.id = id
@@ -25,6 +30,9 @@ class UpdateColumnBusinessMetadataRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_attributes is not None:
+            result['CustomAttributes'] = self.custom_attributes
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -35,6 +43,9 @@ class UpdateColumnBusinessMetadataRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomAttributes') is not None:
+            self.custom_attributes = m.get('CustomAttributes')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

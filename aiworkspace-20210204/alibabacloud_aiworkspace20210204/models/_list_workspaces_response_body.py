@@ -17,17 +17,17 @@ class ListWorkspacesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The type and quantity of resources that can be activated in a workspace. This list is returned when the Option is set to GetResourceLimits. Valid values:
-        # 
-        # *   MaxCompute_share: pay-as-you-go MaxCompute
-        # *   MaxCompute_isolate: subscription MaxCompute
-        # *   DLC_share: pay-as-you-go DLC
-        # *   PAI_Isolate: subscription PAI
-        # *   PAI_share: pay-as-you-go PAI
-        # *   DataWorks_isolate: subscription DataWorks
-        # *   DataWorks_share: pay-as-you-go DataWorks
+        # The resource types and quantity limits that a user can activate within a workspace. This list is returned when Option is set to GetResourceLimits.
+        # Currently supported resource types include:
+        # * MaxCompute_share: MaxCompute pay-as-you-go.
+        # * MaxCompute_isolate: MaxCompute subscription.
+        # * DLC_share: DLC pay-as-you-go.
+        # * PAI_isolate: PAI subscription.
+        # * PAI_share: PAI pay-as-you-go.
+        # * DataWorks_isolate: DataWorks subscription.
+        # * DataWorks_share: DataWorks pay-as-you-go.
         self.resource_limits = resource_limits
-        # The number of workspaces that meet the query conditions.
+        # The total number of workspaces that match the query conditions.
         self.total_count = total_count
         # The list of workspace details. This list is returned when Option is set to GetWorkspaces.
         self.workspaces = workspaces
@@ -84,6 +84,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         admin_names: List[str] = None,
         creator: str = None,
         description: str = None,
+        display_name: str = None,
         env_types: List[str] = None,
         extra_infos: Dict[str, Any] = None,
         gmt_create_time: str = None,
@@ -94,27 +95,28 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_name: str = None,
         resource_group_id: str = None,
     ):
-        # The names of the administrator accounts.
+        # The list of administrator account names.
         self.admin_names = admin_names
         # The user ID of the creator.
         self.creator = creator
-        # The description of the workspace.
+        # The workspace description.
         self.description = description
-        # The environment types of the workspace.
+        self.display_name = display_name
+        # The list of environments in the workspace.
         self.env_types = env_types
-        # the additional information. Only contains TenantId.
+        # The extended information. Currently, this includes TenantId, which represents the tenant ID.
         self.extra_infos = extra_infos
-        # The time when the workspace was created. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+        # The time when the workspace was created. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mm:ss.SSSZ.
         self.gmt_create_time = gmt_create_time
-        # The time when the workspace was modified. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+        # The time when the workspace was last modified. The time follows the ISO 8601 standard in UTC+0. Format: yyyy-MM-ddTHH:mmZ.
         self.gmt_modified_time = gmt_modified_time
         # Indicates whether the workspace is the default workspace.
         self.is_default = is_default
-        # The status of the workspace.
+        # The workspace status.
         self.status = status
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The name of the workspace.
+        # The workspace name.
         self.workspace_name = workspace_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -135,6 +137,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
 
         if self.env_types is not None:
             result['EnvTypes'] = self.env_types
@@ -175,6 +180,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
 
         if m.get('EnvTypes') is not None:
             self.env_types = m.get('EnvTypes')

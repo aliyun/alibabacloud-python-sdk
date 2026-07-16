@@ -110,27 +110,33 @@ class SearchEditingProjectResponseBodyProjectList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   BroadCasting:
-        # *   ReservationCanceled
-        # *   LiveFinished
-        # *   LoadingFailed
-        # *   Reserving
+        # - BroadCasting:
+        # 
+        # - ReservationCanceled
+        # 
+        # - LiveFinished
+        # 
+        # - LoadingFailed
+        # 
+        # - Reserving
         self.business_status = business_status
         # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
         # The method for editing the online editing project.
         # 
-        # \\-OpenAPI
+        # -OpenAPI
         # 
-        # \\-AliyunConsole
+        # -AliyunConsole
         # 
-        # \\-WebSDK
+        # -WebSDK
         # 
         # Valid values:
         # 
-        # *   AliyunConsole: The project is created in the Alibaba Cloud console.
-        # *   WebSDK: The project is created by using the SDK for Web.
-        # *   OpenAPI: The project is created by calling API operations.
+        # - AliyunConsole: The project is created in the Alibaba Cloud console.
+        # 
+        # - WebSDK: The project is created by using the SDK for Web.
+        # 
+        # - OpenAPI: The project is created by calling API operations.
         self.create_source = create_source
         # The time when the online editing project was created.
         self.create_time = create_time
@@ -152,28 +158,33 @@ class SearchEditingProjectResponseBodyProjectList(DaraModel):
         # 
         # Valid values:
         # 
-        # *   LiveEditingProject: a live stream editing project.
-        # *   EditingProject: a regular editing project.
+        # - LiveEditingProject: a live stream editing project.
+        # 
+        # - EditingProject: a regular editing project.
         self.project_type = project_type
         # The status of the online editing project. Valid values:
         # 
-        # \\-Draft
+        # -Draft
         # 
-        # \\-Editing
+        # -Editing
         # 
-        # \\-Producing
+        # -Producing
         # 
-        # \\-Produced
+        # -Produced
         # 
-        # \\-ProduceFailed
+        # -ProduceFailed
         # 
         # Valid values:
         # 
-        # *   Draft
-        # *   Produced
-        # *   Editing
-        # *   Producing
-        # *   ProduceFailed
+        # - Draft
+        # 
+        # - Produced
+        # 
+        # - Editing
+        # 
+        # - Producing
+        # 
+        # - ProduceFailed
         self.status = status
         # The type of the template.
         self.template_type = template_type

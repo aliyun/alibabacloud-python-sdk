@@ -14,8 +14,13 @@ class GetRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The records that were read.
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -67,8 +72,11 @@ class GetRecordsResponseBodyRecords(DaraModel):
         data: List[str] = None,
         system_time: int = None,
     ):
+        # The additional information of the record. This value is empty if no additional information exists.
         self.attributes = attributes
+        # The data content of the record.
         self.data = data
+        # The write time of the record.
         self.system_time = system_time
 
     def validate(self):

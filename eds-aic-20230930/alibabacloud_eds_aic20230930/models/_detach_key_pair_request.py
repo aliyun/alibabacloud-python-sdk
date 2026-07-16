@@ -12,7 +12,7 @@ class DetachKeyPairRequest(DaraModel):
         instance_ids: List[str] = None,
         key_pair_id: str = None,
     ):
-        # The IDs of the cloud phone instances. You can specify a maximum of 50 cloud phone instances.
+        # The IDs of the cloud phone instances. You can specify up to 50 instance IDs.
         self.instance_ids = instance_ids
         # The ID of the ADB key pair.
         # 

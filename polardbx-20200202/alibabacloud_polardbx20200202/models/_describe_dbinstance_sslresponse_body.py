@@ -11,7 +11,9 @@ class DescribeDBInstanceSSLResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceSSLResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data structure.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,8 +51,14 @@ class DescribeDBInstanceSSLResponseBodyData(DaraModel):
         sslenabled: bool = None,
         sslexpired_time: str = None,
     ):
+        # The domain name bound to the certificate.
         self.cert_common_name = cert_common_name
+        # Indicates whether SSL is enabled for the instance:
+        # 
+        # - **true**: enabled
+        # - **false**: disabled
         self.sslenabled = sslenabled
+        # The expiration time of the SSL certificate.
         self.sslexpired_time = sslexpired_time
 
     def validate(self):

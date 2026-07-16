@@ -17,15 +17,15 @@ class StartJobWithParamsResponseBody(DaraModel):
         success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # The details of the job of the deployment returned.
+        # Details of the job instance created from the deployment.
         self.data = data
-        # If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+        # The error code. This field is populated only when `success` is `false` and is empty otherwise.
         self.error_code = error_code
-        # If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+        # The error message. This field is populated only when `success` is `false` and is empty otherwise.
         self.error_message = error_message
-        # The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+        # The HTTP status code. This value is always 200. Use the `success` field to determine whether the request was successful.
         self.http_code = http_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

@@ -13,8 +13,9 @@ class ListKibanaPvlNetworkResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListKibanaPvlNetworkResponseBodyResult] = None,
     ):
-        # request id
+        # The request ID.
         self.request_id = request_id
+        # The array of result objects.
         self.result = result
 
     def validate(self):
@@ -63,13 +64,25 @@ class ListKibanaPvlNetworkResponseBodyResult(DaraModel):
         v_switch_ids_zone: List[main_models.ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone] = None,
         vpc_id: str = None,
     ):
+        # The time when the Kibana private network connection was created.
         self.create_time = create_time
+        # The endpoint ID.
         self.endpoint_id = endpoint_id
+        # The endpoint name.
         self.endpoint_name = endpoint_name
+        # The endpoint status. Valid values:
+        # 
+        # - Disconnected: not connected.
+        # 
+        # - Connected: connected.
         self.endpoint_status = endpoint_status
+        # The Kibana private network connection ID.
         self.pvl_id = pvl_id
+        # The list of security groups.
         self.security_groups = security_groups
+        # The vSwitch and zone information.
         self.v_switch_ids_zone = v_switch_ids_zone
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -148,7 +161,9 @@ class ListKibanaPvlNetworkResponseBodyResultVSwitchIdsZone(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

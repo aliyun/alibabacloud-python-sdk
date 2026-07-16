@@ -11,8 +11,12 @@ class ModifyFaceGroupRequest(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The description.
         self.description = description
+        # The primary key ID.
         self.id = id
+        # The name of the face library.
+        # 
         # This parameter is required.
         self.name = name
 

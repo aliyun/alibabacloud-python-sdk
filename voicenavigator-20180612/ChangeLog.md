@@ -1,3 +1,23 @@
+2026-07-13 Version: 2.0.3
+- Update API ExportConversationDetails: add request parameters AbTestId.
+- Update API ListConversations: add request parameters AbTestId.
+- Update API ListConversations: add response parameters Body.Conversations.$.AbTestName.
+
+
+2026-06-26 Version: 2.0.2
+- Update API AuditTTSVoice: add request parameters ExtParams.
+- Update API DescribeTTSConfig: add response parameters Body.ExtParams.
+- Update API ModifyTTSConfig: add request parameters ExtParams.
+
+
+2026-06-02 Version: 2.0.1
+- Update API DebugBeginDialogue: add request parameters ShouldUseSandBox.
+
+
+2026-06-02 Version: 2.0.1
+- Update API DebugBeginDialogue: add request parameters ShouldUseSandBox.
+
+
 2026-05-11 Version: 2.0.0
 - Delete API GenerateUploadUrl.
 - Update API DescribeTTSConfig: add response parameters Body.TtsOverrides.

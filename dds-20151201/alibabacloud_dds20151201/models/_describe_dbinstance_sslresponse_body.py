@@ -15,15 +15,21 @@ class DescribeDBInstanceSSLResponseBody(DaraModel):
     ):
         # The name of the SSL certificate.
         self.cert_common_name = cert_common_name
+        # Specifies whether connections must be encrypted using SSL. Valid values:
+        # 
+        # - **1**: Connections must be encrypted using SSL.
+        # 
+        # - **0**: Connections do not need to be encrypted using SSL.
         self.force_encryption = force_encryption
         # The request ID.
         self.request_id = request_id
-        # The time when the SSL certificate expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in Coordinated Universal Time (UTC).
+        # The expiration time of the SSL certificate. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
         self.sslexpired_time = sslexpired_time
-        # The status of the SSL feature. Valid values:
+        # The status of the SSL feature.
         # 
-        # *   **Open**: The SSL feature is enabled.
-        # *   **Closed**: The SSL feature is disabled.
+        # - **Open**: The SSL feature is enabled.
+        # 
+        # - **Closed**: The SSL feature is disabled.
         self.sslstatus = sslstatus
 
     def validate(self):

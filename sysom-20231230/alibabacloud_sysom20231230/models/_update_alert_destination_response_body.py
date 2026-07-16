@@ -14,9 +14,17 @@ class UpdateAlertDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization has failed. Check the `message` field for the detailed error message.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

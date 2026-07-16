@@ -11,14 +11,10 @@ class SumStorageMetricsByDateResponseBody(DaraModel):
     def __init__(
         self,
         data: List[main_models.SumStorageMetricsByDateResponseBodyData] = None,
-        error_code: str = None,
-        error_msg: str = None,
         http_code: int = None,
         request_id: str = None,
     ):
         self.data = data
-        self.error_code = error_code
-        self.error_msg = error_msg
         self.http_code = http_code
         self.request_id = request_id
 
@@ -38,12 +34,6 @@ class SumStorageMetricsByDateResponseBody(DaraModel):
             for k1 in self.data:
                 result['data'].append(k1.to_map() if k1 else None)
 
-        if self.error_code is not None:
-            result['errorCode'] = self.error_code
-
-        if self.error_msg is not None:
-            result['errorMsg'] = self.error_msg
-
         if self.http_code is not None:
             result['httpCode'] = self.http_code
 
@@ -59,12 +49,6 @@ class SumStorageMetricsByDateResponseBody(DaraModel):
             for k1 in m.get('data'):
                 temp_model = main_models.SumStorageMetricsByDateResponseBodyData()
                 self.data.append(temp_model.from_map(k1))
-
-        if m.get('errorCode') is not None:
-            self.error_code = m.get('errorCode')
-
-        if m.get('errorMsg') is not None:
-            self.error_msg = m.get('errorMsg')
 
         if m.get('httpCode') is not None:
             self.http_code = m.get('httpCode')

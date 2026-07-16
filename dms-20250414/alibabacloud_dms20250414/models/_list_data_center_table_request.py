@@ -17,14 +17,29 @@ class ListDataCenterTableRequest(DaraModel):
         search_key: str = None,
         table_name: str = None,
     ):
+        # For frontend use only.
         self.call_from = call_from
+        # The name of the database.
+        # 
+        # - If `ImportType` is `FILE`, this parameter represents the file name.
         self.database_name = database_name
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The import type.
+        # 
+        # - FILE
         self.import_type = import_type
+        # The name of the instance.
+        # 
+        # - If `ImportType` is `FILE`, this parameter represents the file ID of the data center.
         self.instance_name = instance_name
+        # The page number, starting from 1.
         self.page_number = page_number
+        # The number of records to return per page. Default: 20.
         self.page_size = page_size
+        # The keyword for a fuzzy search of database tables.
         self.search_key = search_key
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

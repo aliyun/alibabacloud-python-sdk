@@ -15,19 +15,19 @@ class DescribeGtmLogsRequest(DaraModel):
         page_size: int = None,
         start_timestamp: int = None,
     ):
-        # The timestamp that specifies the end of the time range to query.
+        # The end of the time range to query. This value is a UNIX timestamp.
         self.end_timestamp = end_timestamp
-        # The ID of the GTM instance whose logs you want to query.
+        # The ID of the instance.
         self.instance_id = instance_id
-        # The keyword for searching logs, in case-insensitive "%Keyword%" format.
+        # The keyword for a fuzzy search. The search uses the %Keyword% pattern and is case-insensitive.
         self.keyword = keyword
-        # The language used by the user.
+        # The language of the response.
         self.lang = lang
-        # The number of the page to return. Pages start from page **1**. Default value: **1**.
+        # The number of the page to return. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **100**. Default value: **20**.
         self.page_size = page_size
-        # The beginning of the time range to query.
+        # The beginning of the time range to query. This value is a UNIX timestamp.
         self.start_timestamp = start_timestamp
 
     def validate(self):

@@ -13,9 +13,9 @@ class DescribeLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeLogstashResponseBodyResult = None,
     ):
-        # Detailed information about the instance.
+        # The request ID.
         self.request_id = request_id
-        # The configurations of the instance.
+        # The details of the instance.
         self.result = result
 
     def validate(self):
@@ -68,51 +68,47 @@ class DescribeLogstashResponseBodyResult(DaraModel):
         version: str = None,
         vpc_instance_id: str = None,
     ):
-        # The configuration information of the node.
         self.extend_configs = extend_configs
-        # The number of data nodes.
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The key of the tag.
+        # The instance labels.
         self.tags = tags
-        # The status of the zone. Valid values:
-        # 
-        # *   ISOLATION: offline
-        # *   NORMAL
+        # The zone information.
         self.zone_infos = zone_infos
-        # The billing method of the instance. Valid values:
-        # 
-        # *   prepaid: subscription
-        # *   postpaid: pay-as-you-go
+        # The instance configuration.
         self.config = config
-        # The state of the instance. Four states are supported:
-        # 
-        # *   Normal: active
-        # *   Active: activating
-        # *   Freeze: inactive
-        # *   Invalid: invalid
-        self.created_at = created_at
         # The time when the instance was created.
+        self.created_at = created_at
+        # The name of the instance.
         self.description = description
         self.end_time = end_time
-        # The ID of the zone where the node resides.
+        # The access information of the nodes.
         self.endpoint_list = endpoint_list
-        # The access information of the node.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the virtual private cloud (VPC).
+        # The network configuration.
         self.network_config = network_config
-        # The name of the instance.
+        # The number of nodes in the instance.
         self.node_amount = node_amount
-        # The specifications of the node.
+        # The configuration of the node.
         self.node_spec = node_spec
-        # The ID of the resource group to which the instance belongs.
+        # The billing method of the instance. Valid values:
+        # 
+        # - prepaid: subscription
+        # - postpaid: pay-as-you-go.
         self.payment_type = payment_type
-        # The ID of the virtual private cloud (VPC) to which the elastic container instances belong.
+        # The status of the instance. Valid values:
+        # 
+        # - active: Normal.
+        # - activating: Taking effect.
+        # - inactive: Frozen.
+        # - invalid: Expired.
         self.status = status
-        # The edition of the dedicated KMS instance.
-        self.updated_at = updated_at
-        # The ID of the instance.
-        self.version = version
         # The time when the instance was last updated.
+        self.updated_at = updated_at
+        # The version of the instance.
+        self.version = version
+        # The ID of the VPC to which the instance belongs.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -277,16 +273,16 @@ class DescribeLogstashResponseBodyResultNodeSpec(DaraModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # Whether to use disk encryption:
-        # 
-        # *   true
-        # *   false
-        self.disk = disk
-        # The disk type of the node.
-        self.disk_encryption = disk_encryption
-        # The network configurations.
-        self.disk_type = disk_type
         # The disk size of the node.
+        self.disk = disk
+        # Indicates whether cloud disk encryption is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
+        self.disk_encryption = disk_encryption
+        # The disk type of the node.
+        self.disk_type = disk_type
+        # The specification of the node.
         self.spec = spec
 
     def validate(self):
@@ -335,12 +331,13 @@ class DescribeLogstashResponseBodyResultNetworkConfig(DaraModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the vSwitch to which the instance is connected.
+        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
         self.type = type
-        # The zone where the cluster resides.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # The network type of the instance. Valid values: Currently, only Virtual Private Cloud (VPC) are supported.
+        # The zone in which the instance resides.
         self.vs_area = vs_area
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -388,11 +385,11 @@ class DescribeLogstashResponseBodyResultEndpointList(DaraModel):
         port: str = None,
         zone_id: str = None,
     ):
-        # The tags added to the ALB instance.
-        self.host = host
         # The IP address of the node.
-        self.port = port
+        self.host = host
         # The port number.
+        self.port = port
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -433,9 +430,12 @@ class DescribeLogstashResponseBodyResultZoneInfos(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The zone ID of the new instance.
+        # The status of the zone. Valid values:
+        # 
+        # - ISOLATION: offline.
+        # - NORMAL: Normal.
         self.status = status
-        # The configuration of cluster extension parameters.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -470,9 +470,9 @@ class DescribeLogstashResponseBodyResultTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The value of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The information about the zones.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

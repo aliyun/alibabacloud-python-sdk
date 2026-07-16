@@ -14,11 +14,11 @@ class ModifyDesktopChargeTypeResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The IDs of the cloud computers.
+        # The IDs of the cloud desktops.
         self.desktop_id = desktop_id
         # The ID of the order.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.task_id = task_id
 

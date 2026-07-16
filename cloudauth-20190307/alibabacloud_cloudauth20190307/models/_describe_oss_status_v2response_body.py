@@ -15,17 +15,17 @@ class DescribeOssStatusV2ResponseBody(DaraModel):
         result_object: main_models.DescribeOssStatusV2ResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Returned result information.
+        # The result information.
         self.result_object = result_object
-        # Whether the response was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,11 +87,11 @@ class DescribeOssStatusV2ResponseBodyResultObject(DaraModel):
         region: str = None,
         user_status: str = None,
     ):
-        # Bucket name.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # Region.
+        # The region.
         self.region = region
-        # User activation status, **SUCCESS** indicates activated.
+        # The activation status of the user. A value of **SUCCESS** indicates that the service is activated.
         self.user_status = user_status
 
     def validate(self):

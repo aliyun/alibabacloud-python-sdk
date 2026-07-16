@@ -13,8 +13,12 @@ class CreateSecurityClassifyCatalogRequest(DaraModel):
         create_command: main_models.CreateSecurityClassifyCatalogRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -54,10 +58,18 @@ class CreateSecurityClassifyCatalogRequestCreateCommand(DaraModel):
         parent_path: str = None,
         visible_type: str = None,
     ):
+        # The name of the classification folder.
+        # 
         # This parameter is required.
         self.name = name
+        # The list of administrator IDs. This parameter takes effect only when the parent folder is the root folder.
         self.owner_list = owner_list
+        # The full path of the parent folder. Default value: /.
         self.parent_path = parent_path
+        # The visibility scope of the classification folder. Valid values:
+        # - PUBLIC: visible to all users.
+        # - PRIVATE: visible only to administrators.
+        # Default value: PUBLIC. This parameter takes effect only when the parent folder is the root folder.
         self.visible_type = visible_type
 
     def validate(self):

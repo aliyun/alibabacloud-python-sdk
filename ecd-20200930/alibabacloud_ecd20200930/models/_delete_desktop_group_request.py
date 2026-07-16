@@ -11,11 +11,11 @@ class DeleteDesktopGroupRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # The ID of the cloud computer share.
+        # Shared desktop group ID.
         # 
         # This parameter is required.
         self.desktop_group_id = desktop_group_id
-        # The region ID.
+        # Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the list of regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

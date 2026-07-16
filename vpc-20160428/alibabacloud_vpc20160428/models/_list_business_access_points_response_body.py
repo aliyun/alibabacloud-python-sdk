@@ -13,7 +13,7 @@ class ListBusinessAccessPointsResponseBody(DaraModel):
         business_access_points: List[main_models.ListBusinessAccessPointsResponseBodyBusinessAccessPoints] = None,
         request_id: str = None,
     ):
-        # The list of access points.
+        # A list of access points.
         self.business_access_points = business_access_points
         # The request ID.
         self.request_id = request_id
@@ -68,35 +68,47 @@ class ListBusinessAccessPointsResponseBodyBusinessAccessPoints(DaraModel):
         self.access_point_id = access_point_id
         # The name of the access point.
         self.access_point_name = access_point_name
-        # The ID of the cloud box.
+        # The ID of the Cloud Box instance.
         # 
-        # >  You can query this parameter if the Express Connect circuits and access points are of the cloud box type.
+        # > This parameter is returned only for access points that are associated with Cloud Box instances.
         self.cloud_box_instance_ids = cloud_box_instance_ids
         # The latitude of the access point.
         self.latitude = latitude
         # The longitude of the access point.
         self.longitude = longitude
+        # The supported model of the optical module.
         self.optical_module_models = optical_module_models
-        # The connectivity provider of the Express Connect circuit. Valid values:
+        # The connectivity provider for the Express Connect circuit. Valid values:
         # 
-        # *   **CT**: China Telecom.
-        # *   **CU**: China Unicom.
-        # *   **CM**: China Mobile.
-        # *   **CO**: other connectivity providers in the Chinese mainland.
-        # *   **Equinix**: Equinix.
-        # *   **Other**: other connectivity providers outside the Chinese mainland.
+        # - **CT**: China Telecom.
+        # 
+        # - **CU**: China Unicom.
+        # 
+        # - **CM**: China Mobile.
+        # 
+        # - **CO**: other connectivity providers in the Chinese mainland.
+        # 
+        # - **Equinix**: Equinix.
+        # 
+        # - **Other**: other connectivity providers outside the Chinese mainland.
         self.support_line_operator = support_line_operator
-        # The port type supported by the access point. Valid values:
+        # The port types supported by the access point. Valid values:
         # 
-        # *   **100Base-T**: 100 Mbit/s copper Ethernet port
-        # *   **1000Base-T**: 1,000 Mbit/s copper Ethernet port
-        # *   **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
-        # *   **10GBase-T**: 10,000 Mbit/s copper Ethernet port
-        # *   **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
-        # *   **40GBase-LR**: 40,000 Mbit/s single-mode optical port
-        # *   **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+        # - **100Base-T**: 100 Mbit/s copper port.
         # 
-        # >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+        # - **1000Base-T**: 1,000 Mbit/s copper port.
+        # 
+        # - **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km).
+        # 
+        # - **10GBase-T**: 10,000 Mbit/s copper port.
+        # 
+        # - **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km).
+        # 
+        # - **40GBase-LR**: 40,000 Mbit/s single-mode optical port.
+        # 
+        # - **100GBase-LR**: 100,000 Mbit/s single-mode optical port.
+        # 
+        # > The 40GBase-LR and 100GBase-LR port types are subject to availability. To use these port types, contact your account manager.
         self.support_port_types = support_port_types
 
     def validate(self):
@@ -175,7 +187,9 @@ class ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModel
         optical_module_model: str = None,
         port_type: str = None,
     ):
+        # The model of the optical module.
         self.optical_module_model = optical_module_model
+        # The port type.
         self.port_type = port_type
 
     def validate(self):

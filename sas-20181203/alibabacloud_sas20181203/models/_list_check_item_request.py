@@ -18,8 +18,9 @@ class ListCheckItemRequest(DaraModel):
         self.current_page = current_page
         # The language of the content within the request and response. Default value: **zh**. Valid value:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries per page. Default value: **20**.
         self.page_size = page_size

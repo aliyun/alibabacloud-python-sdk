@@ -22,20 +22,49 @@ class ListScheduleEventRequest(DaraModel):
         workflow_execution_id: int = None,
         workflow_name: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The end of the time range to query events. This is a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The event status to filter by. Valid values:
+        # 
+        # - Scheduled
+        # 
+        # - Running
+        # 
+        # - Succeeded
+        # 
+        # - Failed
+        # 
+        # - Failing_Auto_Retry
+        # 
+        # - Skip_Schedule
+        # 
+        # - Execute_Log
         self.event = event
+        # The event type.
         self.event_type = event_type
+        # The job execution ID.
         self.job_execution_id = job_execution_id
+        # The job name.
         self.job_name = job_name
+        # The search keyword.
         self.keyword = keyword
+        # The page number.
         self.page_num = page_num
+        # The number of events to return per page.
         self.page_size = page_size
+        # Specifies whether to sort the results in descending order. Set to `true` for descending order or `false` for ascending order. Default is `false`.
         self.reverse = reverse
+        # The start of the time range to query events. This is a Unix timestamp in milliseconds.
         self.start_time = start_time
+        # The workflow execution ID.
         self.workflow_execution_id = workflow_execution_id
+        # The workflow name.
         self.workflow_name = workflow_name
 
     def validate(self):

@@ -12,11 +12,11 @@ class SubmitTraceM3u8JobResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

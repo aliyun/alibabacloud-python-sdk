@@ -12,9 +12,13 @@ class ListWarehouseShrinkRequest(DaraModel):
         warehouse_instance_ids_shrink: str = None,
         warehouse_types_shrink: str = None,
     ):
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The pagination token from a previous response. Use this token to retrieve the next page of results. Omit this parameter for the first request.
         self.next_token = next_token
+        # A list of warehouse instance IDs.
         self.warehouse_instance_ids_shrink = warehouse_instance_ids_shrink
+        # A list of warehouse types.
         self.warehouse_types_shrink = warehouse_types_shrink
 
     def validate(self):

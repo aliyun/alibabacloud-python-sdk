@@ -17,11 +17,17 @@ class GetMaterialByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -99,24 +105,43 @@ class GetMaterialByIdResponseBodyData(DaraModel):
         update_user: str = None,
         url: str = None,
     ):
+        # Author
         self.author = author
+        # Creation time
         self.create_time = create_time
+        # Creator user ID
         self.create_user = create_user
+        # Document tags used for classification and other purposes. Separate multiple keywords with commas.
         self.doc_keywords = doc_keywords
+        # Document type, such as pdf, word, url, or image
         self.doc_type = doc_type
+        # URL uploaded by an external customer. Used only for record keeping.
         self.external_url = external_url
+        # Web page content
         self.html_content = html_content
+        # Primary key
         self.id = id
+        # Publication time
         self.pub_time = pub_time
+        # Temporary public URL
         self.public_url = public_url
+        # Sharing attribute stored as bit flags. The first bit indicates sharing within the workspace, the second bit indicates sharing within the tenant, and the third bit indicates system-wide sharing.
         self.share_attr = share_attr
+        # Document source, such as user_upload, search, or viewpoint
         self.src_from = src_from
+        # Document summary
         self.summary = summary
+        # Parsed text content. Empty for images.
         self.text_content = text_content
+        # Base64-encoded thumbnail for image documents
         self.thumbnail_in_base_64 = thumbnail_in_base_64
+        # Document title
         self.title = title
+        # Modification time
         self.update_time = update_time
+        # Modifier user ID
         self.update_user = update_user
+        # Internal document storage URL
         self.url = url
 
     def validate(self):

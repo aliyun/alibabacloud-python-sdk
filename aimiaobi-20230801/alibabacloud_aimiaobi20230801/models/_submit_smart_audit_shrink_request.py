@@ -15,12 +15,19 @@ class SubmitSmartAuditShrinkRequest(DaraModel):
         workspace_id: str = None,
         image_urls_shrink: str = None,
     ):
+        # Parameters for image audit
         self.image_url_list_shrink = image_url_list_shrink
+        # Rule library ID for rule-based auditing (default: Default)
         self.note_id = note_id
+        # List of sub-audit codes
         self.sub_codes_shrink = sub_codes_shrink
+        # Word library name for dictionary-based auditing (default: Default)
         self.terms_name = terms_name
+        # Content to be audited
         self.text = text
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
+        # Parameters for image audit (deprecated; use ImageUrlList instead)
         self.image_urls_shrink = image_urls_shrink
 
     def validate(self):

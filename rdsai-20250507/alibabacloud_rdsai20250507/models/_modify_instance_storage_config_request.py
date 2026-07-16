@@ -78,7 +78,17 @@ class ModifyInstanceStorageConfigRequestConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the configuration item. Valid values:
+        # 
+        # - **AWS_SESSION_TOKEN** (optional): The temporary session token for OSS. If this parameter is not provided, validation is performed using the AccessKey ID and AccessKey secret.
+        # - **AWS_ACCESS_KEY_ID**: The AccessKey ID for OSS.
+        # - **AWS_SECRET_ACCESS_KEY**: The AccessKey secret for OSS.
+        # - **GLOBAL_S3_BUCKET**: The bucket name in OSS.
+        # - **TENANT_ID**: The folder name in OSS. No manual creation is required.
+        # - **GLOBAL_S3_ENDPOINT**: The endpoint (access domain name) for OSS.
+        # - **REGION**: The region of OSS.
         self.name = name
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

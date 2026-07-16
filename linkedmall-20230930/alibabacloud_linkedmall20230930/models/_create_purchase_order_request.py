@@ -10,6 +10,8 @@ class CreatePurchaseOrderRequest(DaraModel):
         self,
         body: main_models.PurchaseOrderCreateCmd = None,
     ):
+        # Creates a purchase order.
+        # 
         # This parameter is required.
         self.body = body
 

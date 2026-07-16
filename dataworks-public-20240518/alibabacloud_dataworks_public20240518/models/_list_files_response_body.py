@@ -29,8 +29,9 @@ class ListFilesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -178,8 +179,9 @@ class ListFilesResponseBodyDataFiles(DaraModel):
         self.absolute_folder_path = absolute_folder_path
         # Specifies whether automatic parsing is enabled for the file. Valid values:
         # 
-        # *   true: The file automatically parses code.
-        # *   false: The file does not automatically parse code.
+        # - true: The file automatically parses code.
+        # 
+        # - false: The file does not automatically parse code.
         # 
         # This parameter corresponds to Analyze Code when you set Dependencies to Same Cycle in the scheduling configuration of a Data Studio task in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
@@ -225,12 +227,17 @@ class ListFilesResponseBodyDataFiles(DaraModel):
         self.parent_id = parent_id
         # The functional module to which the file belongs. Valid values:
         # 
-        # *   NORMAL: Data Studio
-        # *   MANUAL: Manually triggered node
-        # *   MANUAL_BIZ: Manually triggered workflow
-        # *   SKIP: Dry-run scheduling in Data Studio
-        # *   ADHOCQUERY: Ad hoc query
-        # *   COMPONENT: Component management
+        # - NORMAL: Data Studio
+        # 
+        # - MANUAL: Manually triggered node
+        # 
+        # - MANUAL_BIZ: Manually triggered workflow
+        # 
+        # - SKIP: Dry-run scheduling in Data Studio
+        # 
+        # - ADHOCQUERY: Ad hoc query
+        # 
+        # - COMPONENT: Component management
         self.use_type = use_type
 
     def validate(self):

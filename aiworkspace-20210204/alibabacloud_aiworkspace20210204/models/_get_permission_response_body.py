@@ -14,9 +14,9 @@ class GetPermissionResponseBody(DaraModel):
         permission_rules: List[main_models.GetPermissionResponseBodyPermissionRules] = None,
         request_id: str = None,
     ):
-        # The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html).
+        # The name of the permission. The name is unique within the same region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html).
         self.permission_code = permission_code
-        # The permission rules.
+        # The list of permission rules.
         self.permission_rules = permission_rules
         # The request ID.
         self.request_id = request_id
@@ -67,16 +67,21 @@ class GetPermissionResponseBodyPermissionRules(DaraModel):
         accessibility: str = None,
         entity_access_type: str = None,
     ):
-        # The accessibility. Valid values:
+        # The access type. Valid values:
         # 
-        # *   PUBLIC: All members can access the workspace.
-        # *   PRIVATE: Only the creator can access the workspace.
-        # *   ANY: All users can access the workspace.
+        # - PUBLIC: All members in the current workspace can perform the operation.
+        # 
+        # - PRIVATE: Only the creator can perform the operation.
+        # 
+        # - ANY: Both the creator and non-creators can perform the operation.
         self.accessibility = accessibility
-        # The access type. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the value of this parameter can be:
+        # The access type.
+        # This parameter is invalid when Accessibility is set to PUBLIC because all users can perform the operation.
+        # When Accessibility is set to PRIVATE, EntityAccessType supports the following values:
         # 
-        # *   PRIVATE: Only the creator can access the workspace.
-        # *   ANY: All users can access the workspace.
+        # - CREATOR: Only the creator can perform the operation.
+        # 
+        # - ANY: Both the creator and non-creators can perform the operation.
         self.entity_access_type = entity_access_type
 
     def validate(self):

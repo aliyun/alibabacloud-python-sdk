@@ -10,7 +10,7 @@ class UpdateDataQualityEvaluationTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can use the ID to query logs and troubleshoot issues.
+        # Request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

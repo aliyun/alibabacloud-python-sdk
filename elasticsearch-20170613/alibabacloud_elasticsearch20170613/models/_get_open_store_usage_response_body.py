@@ -11,9 +11,9 @@ class GetOpenStoreUsageResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.GetOpenStoreUsageResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The current request result.
+        # The result of the current request.
         self.result = result
 
     def validate(self):
@@ -50,9 +50,9 @@ class GetOpenStoreUsageResponseBodyResult(DaraModel):
         current_usage: int = None,
         last_day_usage: int = None,
     ):
-        # The current OpenStore storage capacity (estimated value based on actual indexes). Unit: Byte.
+        # The current OpenStore storage usage, which is an estimated value based on actual indexes. Unit: bytes.
         self.current_usage = current_usage
-        # The storage capacity of OpenStore yesterday. Unit: bytes.
+        # The OpenStore storage usage on the previous day. Unit: bytes.
         self.last_day_usage = last_day_usage
 
     def validate(self):

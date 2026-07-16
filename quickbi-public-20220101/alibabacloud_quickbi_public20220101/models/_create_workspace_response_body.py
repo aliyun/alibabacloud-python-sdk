@@ -11,8 +11,15 @@ class CreateWorkspaceResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The workspace ID.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

@@ -16,11 +16,11 @@ class GetRepoTagScanStatusRequest(DaraModel):
     ):
         # The image digest.
         self.digest = digest
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the image repository.
+        # The ID of the repository.
         self.repo_id = repo_id
         # The ID of the image scan task.
         self.scan_task_id = scan_task_id

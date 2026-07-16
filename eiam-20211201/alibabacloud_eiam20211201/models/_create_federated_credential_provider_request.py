@@ -21,27 +21,27 @@ class CreateFederatedCredentialProviderRequest(DaraModel):
         private_ca_provider_config: main_models.CreateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
     ):
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # 联邦凭证提供方描述
+        # The description of the federated trust source.
         self.description = description
-        # 联邦凭证提供方名称
+        # The name of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_name = federated_credential_provider_name
-        # 联邦凭证提供方类型
+        # The type of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_type = federated_credential_provider_type
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 网络端点ID
+        # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC配置
+        # The OIDC configuration.
         self.oidc_provider_config = oidc_provider_config
-        # PKCS7配置
+        # The PKCS7 configuration.
         self.pkcs_7provider_config = pkcs_7provider_config
-        # 私有CA配置
+        # The private CA configuration.
         self.private_ca_provider_config = private_ca_provider_config
 
     def validate(self):
@@ -130,11 +130,11 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfig(DaraModel)
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # Root证书列表
+        # The list of root certificates.
         self.certificates = certificates
-        # Root证书获取方式
+        # The method used to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # Root证书的信任条件
+        # The trust condition for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -182,7 +182,7 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfigCertificate
         self,
         content: str = None,
     ):
-        # Root证书内容
+        # The content of the root certificate.
         self.content = content
 
     def validate(self):
@@ -215,17 +215,17 @@ class CreateFederatedCredentialProviderRequestPkcs7ProviderConfig(DaraModel):
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # pkcs7证书列表
+        # The list of PKCS7 certificates.
         self.certificates = certificates
-        # CMS验证模式
+        # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # 签名有效期, 单位秒，1200
+        # The validity period of the signature.
         self.signature_effective_time = signature_effective_time
-        # 获取签名时间的表达式
+        # The expression used to retrieve the signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # 证书信任锚点来源
+        # The source of the certificate trust anchor.
         self.trust_anchor_source = trust_anchor_source
-        # 信任条件
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -291,7 +291,7 @@ class CreateFederatedCredentialProviderRequestPkcs7ProviderConfigCertificates(Da
         self,
         content: str = None,
     ):
-        # Root证书内容
+        # The content of the root certificate.
         self.content = content
 
     def validate(self):
@@ -324,16 +324,17 @@ class CreateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
         static_jwks: str = None,
         trust_condition: str = None,
     ):
+        # The list of audiences.
         self.audiences = audiences
         # Issuer
         self.issuer = issuer
-        # Jwks来源
+        # The source of the JWKS.
         self.jwks_source = jwks_source
-        # JWKS 端点
+        # The JWKS endpoint.
         self.jwks_uri = jwks_uri
-        # 静态获取的jwks
+        # The statically retrieved JWKS.
         self.static_jwks = static_jwks
-        # 信任条件
+        # The trust condition.
         self.trust_condition = trust_condition
 
     def validate(self):

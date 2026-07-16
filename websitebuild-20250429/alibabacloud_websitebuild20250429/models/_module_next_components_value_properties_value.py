@@ -15,9 +15,13 @@ class ModuleNextComponentsValuePropertiesValue(DaraModel):
         value: str = None,
         values: List[main_models.ModuleNextComponentsValuePropertiesValueValues] = None,
     ):
+        # Property code (internal system identifier)
         self.code = code
+        # Property display name (user-visible name)
         self.name = name
+        # Property value code (internal system value)
         self.value = value
+        # Module property value list
         self.values = values
 
     def validate(self):
@@ -73,8 +77,11 @@ class ModuleNextComponentsValuePropertiesValueValues(DaraModel):
         value: str = None,
         name: str = None,
     ):
+        # Property code (internal system identifier)
         self.code = code
+        # Property value code (internal system value)
         self.value = value
+        # Property display name (user-visible name)
         self.name = name
 
     def validate(self):

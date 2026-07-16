@@ -11,11 +11,11 @@ class DescribeDingTalkRequest(DaraModel):
         page_size: int = None,
         rule_action_name: str = None,
     ):
-        # The number of the page to return.Default value: 1.
+        # The page number of the current page to display in a paged query.
         self.current_page = current_page
-        # The number of entries to return on each page.Default value: 20.
+        # The maximum number of notifications to display per page in a paged query. Default value: **20**, which indicates that up to 20 entries are displayed per page.
         self.page_size = page_size
-        # The name of the notification.
+        # The notification name.
         self.rule_action_name = rule_action_name
 
     def validate(self):

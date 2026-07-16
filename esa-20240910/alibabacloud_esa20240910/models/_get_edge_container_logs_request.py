@@ -10,11 +10,11 @@ class GetEdgeContainerLogsRequest(DaraModel):
         app_id: str = None,
         lines: int = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The number of log entries to output.
+        # The number of log lines to output.>Notice: Valid values: 1 to 5000. If the value exceeds the upper limit, an error is returned.</notice>.
         # 
         # This parameter is required.
         self.lines = lines

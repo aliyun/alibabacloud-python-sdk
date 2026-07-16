@@ -14,12 +14,13 @@ class GetFlowJSONAssestResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
+        # The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
-        # Error description information.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -78,7 +79,7 @@ class GetFlowJSONAssestResponseBodyData(DaraModel):
     ):
         # The file path.
         self.file_path = file_path
-        # The Flow ID.
+        # The flow ID.
         self.flow_id = flow_id
 
     def validate(self):

@@ -27,9 +27,11 @@ class GetWhatsappHealthStatusRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   template: message template
-        # *   phone: phone number
-        # *   waba: WhatsApp Business Account (WABA)
+        # - template: message template
+        # 
+        # - phone: phone number
+        # 
+        # - waba: WhatsApp Business Account (WABA)
         # 
         # This parameter is required.
         self.node_type = node_type

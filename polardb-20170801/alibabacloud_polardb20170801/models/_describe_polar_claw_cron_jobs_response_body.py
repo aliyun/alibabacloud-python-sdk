@@ -17,11 +17,17 @@ class DescribePolarClawCronJobsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
+        # Application ID
         self.application_id = application_id
+        # Status code
         self.code = code
+        # List of scheduled tasks
         self.jobs = jobs
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Total number of tasks
         self.total = total
 
     def validate(self):
@@ -102,21 +108,37 @@ class DescribePolarClawCronJobsResponseBodyJobs(DaraModel):
         updated_at_ms: int = None,
         wake_mode: str = None,
     ):
+        # Execution Agent ID
         self.agent_id = agent_id
+        # Creation timestamp (milliseconds)
         self.created_at_ms = created_at_ms
+        # Delete after first execution
         self.delete_after_run = delete_after_run
+        # Result delivery configuration
         self.delivery = delivery
+        # Task description
         self.description = description
+        # Whether enabled
         self.enabled = enabled
+        # Task ID (UUID)
         self.id = id
+        # Task name
         self.name = name
+        # Execution payload
         self.payload = payload
+        # Run history
         self.runs = runs
+        # Scheduling Configuration
         self.schedule = schedule
+        # Session routing key
         self.session_key = session_key
+        # Session target: main/isolated/current
         self.session_target = session_target
+        # Run status
         self.state = state
+        # Update timestamp (milliseconds)
         self.updated_at_ms = updated_at_ms
+        # Wake mode: now/next-heartbeat
         self.wake_mode = wake_mode
 
     def validate(self):
@@ -257,9 +279,13 @@ class DescribePolarClawCronJobsResponseBodyJobsState(DaraModel):
         last_run_status: str = None,
         next_run_at_ms: int = None,
     ):
+        # Number of consecutive failures
         self.consecutive_errors = consecutive_errors
+        # Last execution timestamp (milliseconds)
         self.last_run_at_ms = last_run_at_ms
+        # Last execution status
         self.last_run_status = last_run_status
+        # Next execution timestamp (milliseconds)
         self.next_run_at_ms = next_run_at_ms
 
     def validate(self):
@@ -310,11 +336,17 @@ class DescribePolarClawCronJobsResponseBodyJobsSchedule(DaraModel):
         kind: str = None,
         tz: str = None,
     ):
+        # Alignment anchor timestamp for interval
         self.anchor_ms = anchor_ms
+        # ISO 8601 timestamp
         self.at = at
+        # Interval in milliseconds
         self.every_ms = every_ms
+        # Cron expression
         self.expr = expr
+        # Schedule type: cron/every/at
         self.kind = kind
+        # IANA time zone
         self.tz = tz
 
     def validate(self):
@@ -386,20 +418,35 @@ class DescribePolarClawCronJobsResponseBodyJobsRuns(DaraModel):
         ts: int = None,
         usage: main_models.DescribePolarClawCronJobsResponseBodyJobsRunsUsage = None,
     ):
+        # Action: finished/error/skipped
         self.action = action
+        # Indicates whether the job has been delivered.
         self.delivered = delivered
+        # Delivery status
         self.delivery_status = delivery_status
+        # Execution duration (milliseconds)
         self.duration_ms = duration_ms
+        # Associated task ID
         self.job_id = job_id
+        # Task name
         self.job_name = job_name
+        # Model used
         self.model = model
+        # Next execution timestamp (milliseconds)
         self.next_run_at_ms = next_run_at_ms
+        # Model provider
         self.provider = provider
+        # Actual execution timestamp (milliseconds)
         self.run_at_ms = run_at_ms
+        # Associated session ID
         self.session_id = session_id
+        # Status: ok/error/skipped
         self.status = status
+        # Run summary text
         self.summary = summary
+        # Run timestamp (milliseconds)
         self.ts = ts
+        # Token usage details
         self.usage = usage
 
     def validate(self):
@@ -515,8 +562,11 @@ class DescribePolarClawCronJobsResponseBodyJobsRunsUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens
         self.input_tokens = input_tokens
+        # Number of output tokens
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -565,15 +615,25 @@ class DescribePolarClawCronJobsResponseBodyJobsPayload(DaraModel):
         timeout_seconds: int = None,
         to: str = None,
     ):
+        # Ignore delivery failures
         self.best_effort_deliver = best_effort_deliver
+        # Delivery channel ID
         self.channel = channel
+        # Deliver output to channel
         self.deliver = deliver
+        # Payload type: agentTurn/systemEvent
         self.kind = kind
+        # Indicates whether lightweight context is used.
         self.light_context = light_context
+        # Agent conversation prompt
         self.message = message
+        # Model override
         self.model = model
+        # System event text
         self.text = text
+        # Execution timeout in seconds
         self.timeout_seconds = timeout_seconds
+        # Delivery destination
         self.to = to
 
     def validate(self):
@@ -659,10 +719,15 @@ class DescribePolarClawCronJobsResponseBodyJobsDelivery(DaraModel):
         mode: str = None,
         to: str = None,
     ):
+        # Channel account ID
         self.account_id = account_id
+        # Ignore delivery failures
         self.best_effort = best_effort
+        # Delivery channel
         self.channel = channel
+        # Delivery mode: none/announce/webhook
         self.mode = mode
+        # Delivery destination
         self.to = to
 
     def validate(self):

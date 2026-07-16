@@ -17,11 +17,16 @@ class DescribeApplicationLogsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The application ID.
         self.application_id = application_id
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -122,6 +127,7 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         file_name: str = None,
         full_file_path: str = None,
         hostname: str = None,
+        ins_name: str = None,
         log_level_id: int = None,
         log_level_name: str = None,
         method: str = None,
@@ -129,6 +135,7 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         runtime: str = None,
         runtime_version: str = None,
         time: str = None,
+        timestamp: int = None,
     ):
         self.component_name = component_name
         self.container_name = container_name
@@ -138,6 +145,7 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         self.file_name = file_name
         self.full_file_path = full_file_path
         self.hostname = hostname
+        self.ins_name = ins_name
         self.log_level_id = log_level_id
         self.log_level_name = log_level_name
         self.method = method
@@ -145,6 +153,7 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         self.runtime = runtime
         self.runtime_version = runtime_version
         self.time = time
+        self.timestamp = timestamp
 
     def validate(self):
         pass
@@ -178,6 +187,9 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         if self.hostname is not None:
             result['Hostname'] = self.hostname
 
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+
         if self.log_level_id is not None:
             result['LogLevelId'] = self.log_level_id
 
@@ -198,6 +210,9 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
 
         if self.time is not None:
             result['Time'] = self.time
+
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
 
         return result
 
@@ -227,6 +242,9 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
 
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+
         if m.get('LogLevelId') is not None:
             self.log_level_id = m.get('LogLevelId')
 
@@ -247,6 +265,9 @@ class DescribeApplicationLogsResponseBodyItemsLogRecords(DaraModel):
 
         if m.get('Time') is not None:
             self.time = m.get('Time')
+
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
 
         return self
 

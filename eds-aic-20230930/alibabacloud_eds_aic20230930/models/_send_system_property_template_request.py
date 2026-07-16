@@ -13,8 +13,11 @@ class SendSystemPropertyTemplateRequest(DaraModel):
         template_id: str = None,
         template_ids: List[str] = None,
     ):
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
+        # The ID of the property template.
         self.template_id = template_id
+        # A list of property template IDs. If you provide multiple template IDs, the system randomly matches the specified instances with the provided templates.
         self.template_ids = template_ids
 
     def validate(self):

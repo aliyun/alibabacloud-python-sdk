@@ -18,15 +18,25 @@ class GetDocumentChunkListRequest(DaraModel):
         page_size: int = None,
         search_query: str = None,
     ):
+        # List of document chunk IDs
         self.chunk_id_list = chunk_id_list
+        # Document ID
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # Library ID
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # Sorting method
         self.order = order
+        # Sort field
         self.order_by = order_by
+        # Page number
         self.page = page
+        # Page size
         self.page_size = page_size
+        # Search query keyword
         self.search_query = search_query
 
     def validate(self):

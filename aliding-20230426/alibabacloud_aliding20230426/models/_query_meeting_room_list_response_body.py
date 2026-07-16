@@ -17,7 +17,6 @@ class QueryMeetingRoomListResponseBody(DaraModel):
     ):
         self.has_more = has_more
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
         self.result = result
 

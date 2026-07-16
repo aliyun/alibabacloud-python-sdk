@@ -11,12 +11,13 @@ class CreateApplicationClientSecretRequest(DaraModel):
         expiration_time: int = None,
         instance_id: str = None,
     ):
-        # The ID of the application for which you want to create a client key.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The expiration time in UNIX timestamp format, in milliseconds. If this parameter is left empty, the client secret is permanently valid. The minimum validity period that you can set is 1 day, and the maximum validity period is 3 years.
         self.expiration_time = expiration_time
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

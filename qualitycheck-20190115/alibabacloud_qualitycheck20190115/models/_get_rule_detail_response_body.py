@@ -16,10 +16,19 @@ class GetRuleDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. **200** means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message if the request fails. If the request succeeds, the value is **successful**.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the result:
+        # 
+        # - **true** means success.
+        # 
+        # - false or **null** means failure.
         self.success = success
 
     def validate(self):
@@ -78,8 +87,11 @@ class GetRuleDetailResponseBodyData(DaraModel):
         rules: main_models.GetRuleDetailResponseBodyDataRules = None,
     ):
         self.conditions = conditions
+        # The total number of items.
         self.count = count
+        # The current page number.
         self.page_number = page_number
+        # The number of items per page.
         self.page_size = page_size
         self.rules = rules
 

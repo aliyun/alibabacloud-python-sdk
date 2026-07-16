@@ -14,14 +14,24 @@ class MaxComputeExportConfiguration(DaraModel):
         sink: main_models.MaxComputeExportConfigurationSink = None,
         to_time: int = None,
     ):
+        # The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore.
+        # 
         # This parameter is required.
         self.from_time = from_time
+        # The name of the Logstore.
+        # 
         # This parameter is required.
         self.logstore = logstore
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is used to read data from Simple Log Service.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The configuration of the MaxCompute data shipping job.
+        # 
         # This parameter is required.
         self.sink = sink
+        # The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped.
+        # 
         # This parameter is required.
         self.to_time = to_time
 

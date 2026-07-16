@@ -12,6 +12,7 @@ class GrayPublishResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # Return Result.
         self.result = result
 
     def validate(self):

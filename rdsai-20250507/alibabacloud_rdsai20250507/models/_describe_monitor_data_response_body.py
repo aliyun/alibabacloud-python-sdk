@@ -15,10 +15,13 @@ class DescribeMonitorDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -73,7 +76,9 @@ class DescribeMonitorDataResponseBodyData(DaraModel):
         name: str = None,
         value: List[main_models.DescribeMonitorDataResponseBodyDataValue] = None,
     ):
+        # The metric name.
         self.name = name
+        # An array of data points for the metric.
         self.value = value
 
     def validate(self):
@@ -116,7 +121,9 @@ class DescribeMonitorDataResponseBodyDataValue(DaraModel):
         time: str = None,
         value: float = None,
     ):
+        # The timestamp of the data point.
         self.time = time
+        # The value of the metric at the specified timestamp.
         self.value = value
 
     def validate(self):

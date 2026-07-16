@@ -16,18 +16,19 @@ class ListDisposeStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # HTTP status code.
         self.code = code
-        # The data returned.
+        # Response data.
         self.data = data
-        # The returned message.
+        # Response message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request succeeded. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):
@@ -82,9 +83,9 @@ class ListDisposeStrategyResponseBodyData(DaraModel):
         page_info: main_models.ListDisposeStrategyResponseBodyDataPageInfo = None,
         response_data: List[main_models.ListDisposeStrategyResponseBodyDataResponseData] = None,
     ):
-        # The pagination information.
+        # Paging information.
         self.page_info = page_info
-        # The detailed data.
+        # Detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -150,66 +151,77 @@ class ListDisposeStrategyResponseBodyDataResponseData(DaraModel):
         task_param: str = None,
         task_url: str = None,
     ):
-        # The UUID of the alert.
+        # Alert UUID.
         self.alert_uuid = alert_uuid
-        # The ID of the Alibaba Cloud account that is associated with the policy in SIEM.
+        # SIEM root account ID associated with the strategy.
         self.aliuid = aliuid
-        # The status of the policy. Valid values:
+        # Strategy status. Valid values:
         # 
-        # *   0: invalid
-        # *   1: valid
+        # - 0: disabled
+        # 
+        # - 1: enabled
         self.effective_status = effective_status
-        # The details of the entity. The value is a JSON array.
+        # Entity details in JSON array format.
         self.entity = entity
-        # The ID of the entity.
+        # Entity ID.
         self.entity_id = entity_id
-        # The type of the entity. Valid values:
+        # Entity type. Valid values:
         # 
-        # *   ip
-        # *   process
-        # *   file
+        # - ip
+        # 
+        # - process
+        # 
+        # - file
         self.entity_type = entity_type
-        # The summary information about the failed task.
+        # Summary of task failure.
         self.error_message = error_message
-        # The end time of the task.
+        # Task completion time.
         self.finish_time = finish_time
-        # The creation time.
+        # Creation time.
         self.gmt_create = gmt_create
-        # The update time.
+        # Last modified time.
         self.gmt_modified = gmt_modified
-        # The ID of the policy.
+        # Strategy ID.
         self.id = id
-        # The name of the event.
+        # Event name.
         self.incident_name = incident_name
-        # The UUID of the event.
+        # Global unique UUID of the event.
         self.incident_uuid = incident_uuid
-        # The name of the playbook, which is the unique identifier of the playbook.
+        # Unique name of the playbook.
         self.playbook_name = playbook_name
-        # The type of the playbook. Valid values:
+        # Playbook type. Valid values:
         # 
-        # *   system: user-triggered playbook
-        # *   custom: event-triggered playbook
-        # *   custom_alert: alert-triggered playbook
-        # *   soar-manual: user-run playbook
-        # *   soar-mdr: MDR-run playbook
+        # - system: manual disposal
+        # 
+        # - custom: event-triggered playbook
+        # 
+        # - custom_alert: alert-triggered playbook
+        # 
+        # - soar-manual: manually run playbook
+        # 
+        # - soar-mdr: MDR-run playbook
         self.playbook_type = playbook_type
-        # The UUID of the playbook.
+        # UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The scope of the policy.
+        # Disposal scope.
         self.scope = scope
-        # The ID of the SOAR handling policy.
+        # ID of the security orchestration and automated response disposal strategy.
         self.sophon_task_id = sophon_task_id
-        # The running status of the playbook. Valid values:
+        # Playbook invocation status. Valid values:
         # 
-        # *   200: successful
-        # *   10: deleted
-        # *   5: failed
-        # *   0: initial
+        # - 200: succeeded
+        # 
+        # - 10: deleted
+        # 
+        # - 5: failed
+        # 
+        # - 0: initial state
         self.status = status
-        # The ID of the Alibaba account that is used to configure the policy.
+        # The Alibaba Cloud account ID associated with the configuration policy.
         self.sub_aliuid = sub_aliuid
-        # The parameters that are used to trigger the playbook. The value is in the JSON format.
+        # Parameters used to trigger the playbook, in JSON format.
         self.task_param = task_param
+        # Playbook URL.
         self.task_url = task_url
 
     def validate(self):
@@ -365,11 +377,11 @@ class ListDisposeStrategyResponseBodyDataPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The current page number.
+        # Current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # Number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # Total number of entries.
         self.total_count = total_count
 
     def validate(self):

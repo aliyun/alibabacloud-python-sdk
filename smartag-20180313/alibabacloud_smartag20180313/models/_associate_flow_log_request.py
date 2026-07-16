@@ -15,19 +15,19 @@ class AssociateFlowLogRequest(DaraModel):
         resource_owner_id: int = None,
         smart_agid: str = None,
     ):
-        # The instance ID of the flow log.
+        # The flow log instance ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the flow log belongs.
+        # The region ID of the flow log.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the SAG instance to be associated.
+        # The Smart Access Gateway instance ID.
         # 
         # This parameter is required.
         self.smart_agid = smart_agid

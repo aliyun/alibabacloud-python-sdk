@@ -14,14 +14,15 @@ class ListCenChildInstanceRouteEntriesToAttachmentResponseBody(DaraModel):
         request_id: str = None,
         route_entry: List[main_models.ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry] = None,
     ):
-        # The token that determines the start point of the next query. Valid values:
+        # The token that is used for the next query.
         # 
-        # *   If **NextToken** is not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # - If **NextToken** is empty, no subsequent query is sent.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the region.
+        # The request ID.
         self.request_id = request_id
-        # The detailed information about the route.
+        # The details of the route.
         self.route_entry = route_entry
 
     def validate(self):
@@ -76,17 +77,19 @@ class ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry(DaraMod
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The ID of the route table configured on the network instance.
+        # The ID of the route table of the network instance.
         self.child_instance_route_table_id = child_instance_route_table_id
         # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # Indicates whether the route is hosted. If the parameter is empty, the route is not hosted. A value of TR indicates that the route is hosted on a transit router.
+        # The type of the managed routing service. If this parameter is empty, the route is not managed. The value TR indicates that the route is managed by a transit router.
         self.service_type = service_type
         # The status of the route. Valid values:
         # 
-        # *   **Available**: The route is available.
-        # *   **Pending**: The route is being configured.
-        # *   **Modifying**: the route is being modified.
+        # - **Available**: The route is active.
+        # 
+        # - **Pending**: The route is being configured.
+        # 
+        # - **Modifying**: The route is being modified.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id

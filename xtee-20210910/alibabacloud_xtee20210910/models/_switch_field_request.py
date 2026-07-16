@@ -14,21 +14,25 @@ class SwitchFieldRequest(DaraModel):
         source: str = None,
         status: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Primary Key ID
+        # The primary key ID.
         self.id = id
-        # Parameter Name.
+        # The parameter name.
         self.name = name
-        # Region Code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Field Source
+        # The field source. Valid values:
+        # - **DEFINE**: custom
+        # - **DEFAULT**: system default.
         self.source = source
-        # Status.
+        # The status. Valid values:
+        # - **DISABLE**: disabled
+        # - **ENABLE**: enabled.
         self.status = status
 
     def validate(self):

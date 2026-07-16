@@ -15,15 +15,15 @@ class GetOnceTaskResultInfoResponseBody(DaraModel):
         task_info: main_models.GetOnceTaskResultInfoResponseBodyTaskInfo = None,
         total_count: int = None,
     ):
-        # The execution time of the task.
+        # The time when the task was executed.
         self.collect_time = collect_time
-        # The number of tasks that were completed.
+        # The number of tasks that have been completed.
         self.finish_count = finish_count
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. This uniquely identifies the request and can be used for troubleshooting.
         self.request_id = request_id
-        # The ID of the scan task.
+        # The ID of the one-time task.
         self.task_id = task_id
-        # The information about the task.
+        # Details of the task.
         self.task_info = task_info
         # The total number of entries returned.
         self.total_count = total_count
@@ -87,10 +87,13 @@ class GetOnceTaskResultInfoResponseBodyTaskInfo(DaraModel):
     ):
         # The status of the task. Valid values:
         # 
-        # *   **INIT**: The task is not started.
-        # *   **START**: The task is started.
-        # *   **SUCCESS**: The task is complete.
-        # *   **TIMEOUT**: The task times out.
+        # - **INIT**: The task is pending start.
+        # 
+        # - **START**: The task is running.
+        # 
+        # - **SUCCESS**: The task is completed.
+        # 
+        # - **TIMEOUT**: The task has timed out.
         self.status = status
 
     def validate(self):

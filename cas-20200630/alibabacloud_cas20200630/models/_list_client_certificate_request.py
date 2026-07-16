@@ -12,14 +12,15 @@ class ListClientCertificateRequest(DaraModel):
         resource_group_id: str = None,
         show_size: int = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: 1.
         self.current_page = current_page
-        # The unique identifier of the client certificate or the server certificate that you want to query.
+        # The unique identifier of the client or server-side certificate that you want to query.
         # 
-        # >  You can call the [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) operation to query the unique identifiers of all client certificates and server certificates.
+        # > You can call [ListClientCertificate](https://help.aliyun.com/document_detail/330884.html) to query the unique identifiers of all client and server-side certificates.
         self.identifier = identifier
+        # The ID of the resource group. Call the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation to obtain this ID.
         self.resource_group_id = resource_group_id
-        # The number of certificates to return on each page. Default value: **20**.
+        # The number of entries to return on each page. Default value: 20.
         self.show_size = show_size
 
     def validate(self):

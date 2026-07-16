@@ -13,9 +13,9 @@ class DescribeTrFirewallPolicyBackUpAssociationListResponseBody(DaraModel):
         policy_association_backup_configs: List[main_models.DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociationBackupConfigs] = None,
         request_id: str = None,
     ):
-        # The route tables.
+        # The list of route tables to recover.
         self.policy_association_backup_configs = policy_association_backup_configs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -67,9 +67,9 @@ class DescribeTrFirewallPolicyBackUpAssociationListResponseBodyPolicyAssociation
         self.candidate_name = candidate_name
         # The type of the traffic redirection instance.
         self.candidate_type = candidate_type
-        # The route table that is used after traffic redirection.
+        # The ID of the route table used after traffic redirection.
         self.current_route_table_id = current_route_table_id
-        # The ID of the route table.
+        # The ID of the original route table.
         self.original_route_table_id = original_route_table_id
 
     def validate(self):

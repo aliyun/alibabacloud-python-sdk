@@ -11,8 +11,11 @@ class DLCatalog(DaraModel):
         location: str = None,
         name: str = None,
     ):
+        # The description of the data catalog.
         self.description = description
+        # The storage path of the data catalog.
         self.location = location
+        # The name of the data catalog.
         self.name = name
 
     def validate(self):

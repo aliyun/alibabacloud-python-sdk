@@ -13,13 +13,30 @@ class CreateDatasourceRequest(DaraModel):
         uri: str = None,
         workspace_id: str = None,
     ):
+        # The configuration of the resource.
         self.config = config
+        # The name of the datasource.
+        # 
         # This parameter is required.
         self.name = name
+        # The datasource type. Valid values are:
+        # 
+        # ● Hologres
+        # 
+        # ● GraphCompute
+        # 
+        # ● Redis
+        # 
+        # ● MaxCompute
+        # 
         # This parameter is required.
         self.type = type
+        # The URI of the resource.
+        # 
         # This parameter is required.
         self.uri = uri
+        # The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

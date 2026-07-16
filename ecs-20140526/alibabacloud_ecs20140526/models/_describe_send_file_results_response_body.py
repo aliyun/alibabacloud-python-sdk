@@ -18,15 +18,15 @@ class DescribeSendFileResultsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.invocations = invocations
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The pagination token returned in this call.
         self.next_token = next_token
-        # The page number.
+        # The page number of the query result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of file sending tasks queried.
+        # The total number of scripts.
         self.total_count = total_count
 
     def validate(self):

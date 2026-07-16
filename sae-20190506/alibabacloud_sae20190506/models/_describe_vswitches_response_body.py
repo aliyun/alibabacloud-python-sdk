@@ -104,7 +104,6 @@ class DescribeVSwitchesResponseBodyData(DaraModel):
         self.status = status
         self.v_switch_id = v_switch_id
         self.v_switch_name = v_switch_name
-        # vpcid。
         self.vpc_id = vpc_id
         self.zone_id = zone_id
 

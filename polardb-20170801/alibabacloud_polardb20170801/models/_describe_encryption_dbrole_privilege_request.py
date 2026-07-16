@@ -14,12 +14,17 @@ class DescribeEncryptionDBRolePrivilegeRequest(DaraModel):
         resource_owner_id: int = None,
         role_privilege_name_list: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the role permission to query. To query multiple permissions at a time, enter multiple permission names and separate them with commas (,).
+        # 
+        # > - Call the [DescribeEncryptionDBRolePrivilege](https://help.aliyun.com/document_detail/212573.html) operation to view the details of all role access policy rules for the cluster. The details include the permission names.
         self.role_privilege_name_list = role_privilege_name_list
 
     def validate(self):

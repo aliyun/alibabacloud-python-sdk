@@ -21,39 +21,48 @@ class DescribeMetricRuleBlackListRequest(DaraModel):
         region_id: str = None,
         scope_type: str = None,
     ):
-        # The ID of the blacklist policy.
+        # The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
         self.category = category
+        # The IDs of the blacklist policies.
         self.ids = ids
-        # The IDs of the instances in the blacklist policy.
+        # The IDs of instances in the blacklist policy.
         # 
-        # Valid values of N: 0 to 10.
+        # The value of N can be an integer from 0 to 10.
         self.instance_ids = instance_ids
         # The status of the blacklist policy. Valid values:
         # 
-        # *   true: The blacklist policy is enabled.
-        # *   false: The blacklist policy is disabled.
+        # - true: enabled.
+        # 
+        # - false: disabled.
         self.is_enable = is_enable
         # The name of the blacklist policy.
         # 
-        # This parameter supports fuzzy match.
+        # Fuzzy queries are supported.
         self.name = name
-        # The timestamp when the blacklist policy expired.
+        # The namespace of the Alibaba Cloud service.
         # 
-        # Unit: milliseconds.
+        # For more information, see [Metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
-        # The HTTP status code.
+        # The order in which to sort the results by time. Valid values:
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # - DESC (default): descending order.
+        # 
+        # - ASC: ascending order.
         self.order = order
-        # The name of the metric.
+        # The page number.
+        # 
+        # Default value: 1.
         self.page_number = page_number
-        # The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+        # The number of entries to return on each page.
+        # 
+        # Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
-        # The effective scope of the blacklist policy. Valid values:
+        # The scope of the blacklist policy. Valid values:
         # 
-        # *   USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
-        # *   GROUP: The blacklist policy takes effect only within the specified application group.
+        # - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
+        # 
+        # - GROUP: The blacklist policy takes effect for the specified application groups.
         self.scope_type = scope_type
 
     def validate(self):

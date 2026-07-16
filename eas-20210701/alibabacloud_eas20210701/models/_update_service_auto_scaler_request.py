@@ -88,8 +88,9 @@ class UpdateServiceAutoScalerRequestScaleStrategies(DaraModel):
     ):
         # The name of the metric for triggering auto scaling. Valid values:
         # 
-        # *   qps: the queries per second (QPS) for an individual instance.
-        # *   cpu: the CPU utilization.
+        # - qps: the queries per second (QPS) for an individual instance.
+        # 
+        # - cpu: the CPU utilization.
         # 
         # This parameter is required.
         self.metric_name = metric_name
@@ -97,8 +98,9 @@ class UpdateServiceAutoScalerRequestScaleStrategies(DaraModel):
         self.service = service
         # The threshold of the metric that triggers auto scaling.
         # 
-        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
-        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+        # - If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+        # 
+        # - If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
         # 
         # This parameter is required.
         self.threshold = threshold

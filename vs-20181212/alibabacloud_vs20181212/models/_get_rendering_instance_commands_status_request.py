@@ -10,8 +10,12 @@ class GetRenderingInstanceCommandsStatusRequest(DaraModel):
         cmd_id: str = None,
         rendering_instance_id: str = None,
     ):
+        # Unique ID of the command delivery request
+        # 
         # This parameter is required.
         self.cmd_id = cmd_id
+        # Cloud application service instance ID
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

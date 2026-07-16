@@ -14,7 +14,7 @@ class DescribePrepayDailyBillsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The bills of the burstable QPS (pay-as-you-go) feature.
+        # The list of WAF elastic billing records.
         self.bills = bills
         # The request ID.
         self.request_id = request_id
@@ -67,6 +67,8 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         elastic_qps_set_value: int = None,
         end_time: int = None,
         exceed_status: int = None,
+        extension_plugin: bool = None,
+        extension_plugin_request: int = None,
         max_qps: int = None,
         price: float = None,
         qps: int = None,
@@ -77,36 +79,36 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         total: int = None,
         type: List[str] = None,
     ):
-        # The burstable QPS of the WAF instance.
+        # The burstable QPS specification of the WAF instance.
         self.elastic_qps_set_value = elastic_qps_set_value
-        # The billing end time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.end_time = end_time
-        # The status of QPS usage within the current period of time. Valid values:
-        # 
-        # *   **0**: normal.
-        # *   **1**: excess.
-        # *   **2**: sandbox.
+        # The overuse status of the current period. Valid values:
+        # - **0**: Normal.
+        # - **1**: Overused.
+        # - **2**: Sandboxed.
         self.exceed_status = exceed_status
-        # The peak QPS within the current period of time.
+        self.extension_plugin = extension_plugin
+        self.extension_plugin_request = extension_plugin_request
+        # The maximum QPS during the current period.
         self.max_qps = max_qps
-        # The unit price in the bill. The price is measured in CNY for bills at the China site (aliyun.com) and in USD for bills at the international site (alibabacloud.com).
+        # The unit price for elastic billing. Unit: CNY for the China site and USD for the international site.
         self.price = price
-        # The extended QPS of the WAF instance.
+        # The QPS extension specification of the WAF instance.
         self.qps = qps
-        # The default QPS of the WAF instance.
+        # The QPS specification included in the WAF instance edition.
         self.qps_version = qps_version
         # Indicates whether risk identification is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Risk identification is enabled.
+        # - **false**: Risk identification is not enabled.
         self.risk_control = risk_control
-        # The number of times that risk identification is performed.
+        # The number of times risk identification is used.
         self.risk_traffic = risk_traffic
-        # The billing start time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the billing period. The value is a UNIX timestamp (UTC). Unit: seconds.
         self.start_time = start_time
-        # The actual QPS in total.
+        # The total QPS that is billed.
         self.total = total
-        # The billing types.
+        # The elastic billing type.
         self.type = type
 
     def validate(self):
@@ -125,6 +127,12 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
 
         if self.exceed_status is not None:
             result['ExceedStatus'] = self.exceed_status
+
+        if self.extension_plugin is not None:
+            result['ExtensionPlugin'] = self.extension_plugin
+
+        if self.extension_plugin_request is not None:
+            result['ExtensionPluginRequest'] = self.extension_plugin_request
 
         if self.max_qps is not None:
             result['MaxQps'] = self.max_qps
@@ -165,6 +173,12 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
 
         if m.get('ExceedStatus') is not None:
             self.exceed_status = m.get('ExceedStatus')
+
+        if m.get('ExtensionPlugin') is not None:
+            self.extension_plugin = m.get('ExtensionPlugin')
+
+        if m.get('ExtensionPluginRequest') is not None:
+            self.extension_plugin_request = m.get('ExtensionPluginRequest')
 
         if m.get('MaxQps') is not None:
             self.max_qps = m.get('MaxQps')

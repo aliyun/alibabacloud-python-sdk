@@ -1,3 +1,31 @@
+2026-07-06 Version: 2.55.0
+- Support API SignOutOrgAccount.
+
+
+2026-07-03 Version: 2.54.1
+- Generated python 2023-04-26 for aliding.
+
+2026-06-30 Version: 2.54.0
+- Support API DisableSceneGroupTemplate.
+
+
+2026-06-04 Version: 2.53.2
+- Generated python 2023-04-26 for aliding.
+
+2026-06-04 Version: 2.53.1
+- Generated python 2023-04-26 for aliding.
+
+2026-06-02 Version: 2.53.0
+- Support API MeetingFlashMinutesText.
+
+
+2026-05-27 Version: 2.52.0
+- Support API BatchGetUserIdByOpenDingtalkId.
+
+
+2026-05-22 Version: 2.51.3
+- Generated python 2023-04-26 for aliding.
+
 2026-05-15 Version: 2.51.1
 - Generated python 2023-04-26 for aliding.
 

@@ -14,27 +14,27 @@ class AddGtmAccessStrategyRequest(DaraModel):
         lang: str = None,
         strategy_name: str = None,
     ):
-        # The line codes of access regions.
+        # The source of the DNS requests.
         # 
         # This parameter is required.
         self.access_lines = access_lines
-        # The ID of the default address pool.
+        # The ID of the primary address pool collection.
         # 
         # This parameter is required.
         self.default_addr_pool_id = default_addr_pool_id
-        # The ID of the failover address pool.
+        # The ID of the failover address pool collection.
         # 
-        # If the failover address pool is not set, pass the **Empty** value.
+        # If a failover address pool collection is not configured, set this parameter to **EMPTY**.
         # 
         # This parameter is required.
         self.failover_addr_pool_id = failover_addr_pool_id
-        # The ID of the GTM instance for which you want to create an access policy.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The language used by the user.
+        # The language.
         self.lang = lang
-        # The name of the access policy.
+        # The policy name.
         # 
         # This parameter is required.
         self.strategy_name = strategy_name

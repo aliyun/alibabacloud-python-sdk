@@ -10,9 +10,9 @@ class SubmitDynamicChartJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The job ID.
+        # The Job ID.
         self.job_id = job_id
-        # The request ID.
+        # The Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -11,19 +11,21 @@ class SwitchSecurityProxyRequest(DaraModel):
         proxy_id: str = None,
         switch: str = None,
     ):
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The ID of the NAT firewall.
         # 
         # This parameter is required.
         self.proxy_id = proxy_id
-        # Specifies whether to enable the NAT firewall. Valid values:
+        # The security protection switch. Valid values:
         # 
-        # *   open: yes
-        # *   close: no
+        # - open: Enables security protection.
+        # 
+        # - close: Disables security protection.
         # 
         # This parameter is required.
         self.switch = switch

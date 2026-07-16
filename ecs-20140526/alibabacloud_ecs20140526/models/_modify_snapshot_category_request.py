@@ -15,23 +15,23 @@ class ModifySnapshotCategoryRequest(DaraModel):
         retention_days: int = None,
         snapshot_id: str = None,
     ):
-        # The type of the snapshot.
+        # The snapshot type.
         # 
-        # *   Archive: archive snapshot
+        # - Archive: archive snapshot.
         self.category = category
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The retention period of the snapshot. Unit: days. The retention period started at the point in time when the snapshot was created. You can archive only standard snapshots that have been retained for at least 14 days.
+        # The number of days for which the snapshot is retained. The retention period starts from the snapshot creation time (CreationTime). A standard snapshot must have been retained for at least 14 days after creation before it can be archived.
         # 
-        # After the snapshot is archived, the minimum retention period (also called minimum archive period) is 60 days. When you calculate the retention period of archived snapshots, you must deduct the retention period of standard snapshots. If you delete the snapshot within 60 days after the snapshot is archived, you are charged archive tier storage fees for the snapshot for 60 days. For more information about the billing of snapshots, see [Snapshots](https://help.aliyun.com/document_detail/56159.html).
+        # Archive snapshots must be retained for at least 60 days. When the retention period of an archive snapshot is calculated, the retention period of the standard snapshot is deducted. If an archive snapshot is deleted before 60 days, you are charged for 60 days of archive storage. For more information, see [Snapshot billing](https://help.aliyun.com/document_detail/56159.html).
         # 
-        # Value range [74,65536]
+        # Valid values: [74, 65536].
         # 
         # > If you do not specify this parameter, the snapshot is permanently retained.
         self.retention_days = retention_days
-        # The ID of the snapshot.
+        # The snapshot ID.
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id

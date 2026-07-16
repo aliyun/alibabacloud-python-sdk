@@ -18,14 +18,21 @@ class UpdateApplicationEnvironmentVariablesResponseBody(DaraModel):
         total_variables: int = None,
         updated_keys: List[str] = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The response message.
         self.message = message
+        # Indicates whether the operation succeeded.
         self.ok = ok
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the gateway was restarted.
         self.restarted = restarted
+        # The total number of environment variables for the application after the update.
         self.total_variables = total_variables
+        # A list of the environment variable names that were added or updated.
         self.updated_keys = updated_keys
 
     def validate(self):

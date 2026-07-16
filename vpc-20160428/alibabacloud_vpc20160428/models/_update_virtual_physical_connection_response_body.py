@@ -12,10 +12,11 @@ class UpdateVirtualPhysicalConnectionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the VLAN ID of the hosted connection is changed. Valid values:
+        # Indicates whether the VLAN ID of the virtual physical connection was successfully modified.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The VLAN ID was modified.
+        # 
+        # - **false**: The VLAN ID was not modified.
         self.success = success
 
     def validate(self):

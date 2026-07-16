@@ -12,15 +12,15 @@ class ModifyScheduledScalingRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The return code.
         # 
-        # The value **200** indicates that the request was successful.
+        # A value of **200** indicates success.
         self.code = code
-        # The returned message.
+        # The prompt message of the return result.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

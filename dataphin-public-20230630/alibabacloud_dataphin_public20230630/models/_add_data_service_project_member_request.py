@@ -14,10 +14,16 @@ class AddDataServiceProjectMemberRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The command to add project members.
+        # 
         # This parameter is required.
         self.add_command = add_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The data service project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -60,6 +66,8 @@ class AddDataServiceProjectMemberRequestAddCommand(DaraModel):
         self,
         project_member_list: List[main_models.AddDataServiceProjectMemberRequestAddCommandProjectMemberList] = None,
     ):
+        # The list of project members to add.
+        # 
         # This parameter is required.
         self.project_member_list = project_member_list
 
@@ -99,12 +107,24 @@ class AddDataServiceProjectMemberRequestAddCommandProjectMemberList(DaraModel):
         role: int = None,
         user_id: str = None,
     ):
+        # The username of the user.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The nickname of the user.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The role of the user. Valid values:
+        # - 2: development user
+        # - 3: application member
+        # - 4: service project administrator
+        # - 5: O&M user.
+        # 
         # This parameter is required.
         self.role = role
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 

@@ -26,72 +26,87 @@ class ListDisposeStrategyRequest(DaraModel):
         start_time: int = None,
         status: int = None,
     ):
-        # The page number. Pages start from page 1.
+        # Current page number. Must be greater than or equal to 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The status of the policy. Valid values:
+        # Strategy status. Valid values:
         # 
-        # *   0: invalid
-        # *   1: valid
+        # - 0: disabled
+        # 
+        # - 1: enabled
         self.effective_status = effective_status
-        # The end of the time range to query. Unit: milliseconds.
+        # End time of the query, in milliseconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The feature value of the entity. Fuzzy match is supported.
+        # Entity feature value. Use this to perform a fuzzy search on entities.
         self.entity_identity = entity_identity
-        # The entity type of the playbook. Valid values:
+        # Entity type. Valid values:
         # 
-        # *   ip
-        # *   process
-        # *   file
+        # - ip
+        # 
+        # - process
+        # 
+        # - file
         self.entity_type = entity_type
+        # Event ID.
         self.incident_uuid = incident_uuid
-        # The sort order. Valid values:
+        # Sort order. Valid values:
         # 
-        # *   desc: descending order.
-        # *   asc: ascending order.
+        # - desc: descending
+        # 
+        # - asc: ascending
         self.order = order
-        # The sort field. Valid values:
+        # Sort field. Valid values:
         # 
-        # *   GmtModified: sorts the policies by update time.
-        # *   GmtCreate: sorts the policies by creation time.
-        # *   FinishTime: sorts the policies by end time.
+        # - GmtModified: sort by last modified time
+        # 
+        # - GmtCreate: sort by creation time
+        # 
+        # - FinishTime: sort by strategy end time
         self.order_field = order_field
-        # The number of entries per page. Maximum value: 100.
+        # Number of entries per page. Maximum value is 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The name of the playbook, which is the unique identifier of the playbook.
+        # Unique name of the playbook.
         self.playbook_name = playbook_name
-        # The type of the playbook. Valid values:
+        # Playbook type. Valid values:
         # 
-        # *   system: user-triggered playbook
-        # *   custom: event-triggered playbook
-        # *   custom_alert: alert-triggered playbook
-        # *   soar-manual: user-run playbook
-        # *   soar-mdr: MDR-run playbook
+        # - system: manual disposal
+        # 
+        # - custom: event-triggered playbook
+        # 
+        # - custom_alert: alert-triggered playbook
+        # 
+        # - soar-manual: manually run playbook
+        # 
+        # - soar-mdr: MDR-run playbook
         self.playbook_types = playbook_types
-        # The UUID of the playbook.
+        # UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # Location of the Data Management center for Threat Analysis and Response. Select the location based on where your assets are deployed. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China)
+        # 
+        # - ap-southeast-1: assets outside China
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # Alibaba Cloud account ID when an administrator switches to another member\\"s perspective.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # View type. Valid values:
+        # 
+        # - 0: view for the current Alibaba Cloud account
+        # 
+        # - 1: view for all accounts under the enterprise
         self.role_type = role_type
-        # The ID of the SOAR handling policy.
+        # ID of the security orchestration and automated response disposal strategy.
         self.sophon_task_id = sophon_task_id
-        # The beginning of the time range to query. Unit: milliseconds.
+        # Start time of the query, in milliseconds.
         # 
         # This parameter is required.
         self.start_time = start_time
+        # Disposal strategy status.
         self.status = status
 
     def validate(self):

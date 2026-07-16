@@ -11,10 +11,11 @@ class CreateRoutineRequest(DaraModel):
         has_assets: bool = None,
         name: str = None,
     ):
-        # The routine description.
+        # The description of the Edge Routine.
         self.description = description
+        # Specifies whether the Edge Routine contains asset files.
         self.has_assets = has_assets
-        # The routine name, which must be unique in the same account.
+        # The name of the Edge Routine. The name must be unique within the same account.
         # 
         # This parameter is required.
         self.name = name

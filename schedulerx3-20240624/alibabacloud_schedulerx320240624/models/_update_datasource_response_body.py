@@ -12,10 +12,15 @@ class UpdateDatasourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Response code
         self.code = code
+        # Error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the invocation succeeded.  
+        # - true: The invocation succeeded.  
+        # - false: The invocation failed.
         self.success = success
 
     def validate(self):

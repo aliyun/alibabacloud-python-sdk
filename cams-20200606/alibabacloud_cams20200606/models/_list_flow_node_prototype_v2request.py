@@ -16,13 +16,29 @@ class ListFlowNodePrototypeV2Request(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business tenant code. The default value is ALICOM_OPAAS.
+        # 
         # This parameter is required.
         self.biz_code = biz_code
+        # The code for the component group. Valid values:
+        # 
+        # - Messaging: Message components.
+        # 
+        # - Core: Core components.
+        # 
+        # - Intelligence: Intelligence components.
+        # 
+        # - Contact: Contact management components.
         self.group_code = group_code
+        # The search keyword. This parameter is used to perform a fuzzy query by flow component name.
         self.keyword = keyword
         self.owner_id = owner_id
+        # The page number.
+        # 
         # This parameter is required.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account

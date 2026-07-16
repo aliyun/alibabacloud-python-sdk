@@ -18,27 +18,38 @@ class CreateCredentialProviderRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
+        # The idempotency token that ensures the idempotence of the request.
+        # 
+        # Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # 认证令牌提供商的配置。
+        # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
-        # 认证令牌提供商的业务标识。是一个具备可读性的唯一标识。
+        # The business identifier of the credential provider.
+        # 
+        # > Allowed characters include uppercase and lowercase letters, digits, and the special characters `.-_`. The length cannot exceed 64 characters.
         # 
         # This parameter is required.
         self.credential_provider_identifier = credential_provider_identifier
-        # 认证令牌提供商名称。
+        # The name of the credential provider.
+        # 
+        # > The length cannot exceed 64 characters.
         # 
         # This parameter is required.
         self.credential_provider_name = credential_provider_name
-        # 认证令牌提供商的类型。
+        # The type of the credential provider. Valid values:
+        # 
+        # - oauth: OAuth credential provider
+        # - jwt: JWT credential provider
         # 
         # This parameter is required.
         self.credential_provider_type = credential_provider_type
-        # 描述。
+        # The description.
+        # 
+        # > The length cannot exceed 128 characters.
         self.description = description
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -107,9 +118,9 @@ class CreateCredentialProviderRequestCredentialProviderConfig(DaraModel):
         jwt_provider_config: main_models.CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig = None,
         oauth_provider_config: main_models.CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig = None,
     ):
-        # JWT身份提供商配置。
+        # The configuration of the JWT credential provider.
         self.jwt_provider_config = jwt_provider_config
-        # OAuth 2LO机用类型的提供商的配置。
+        # The configuration of the OAuth credential provider.
         self.oauth_provider_config = oauth_provider_config
 
     def validate(self):
@@ -151,17 +162,33 @@ class CreateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         scope: str = None,
         token_endpoint: str = None,
     ):
-        # OAuth协议中的client_id，客户端ID。
+        # The client_id in the OAuth protocol, which is the client ID.
+        # 
+        # > The length cannot exceed 128 characters.
         # 
         # This parameter is required.
         self.client_id = client_id
-        # OAuth协议中的client_secret，客户端密钥。
+        # The client_secret in the OAuth protocol, which is the client secret.
+        # 
+        # > The length cannot exceed 1024 characters.
         # 
         # This parameter is required.
         self.client_secret = client_secret
-        # OAuth协议中的scope，权限范围。
+        # The scope in the OAuth protocol, which specifies the permission scope.
+        # 
+        # > The Scope configuration on the credential provider serves as the default value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
+        # 
+        # >Notice: Separate multiple Scope values with spaces.
+        # 
+        # The following restrictions apply to each individual Scope value:
+        # 1. Allowed characters: lowercase letters, digits, and the special characters `|/:_-.`
+        # 2. Must contain at least one lowercase letter or digit.
+        # 3. Must start with the special character `.`, a lowercase letter, or a digit.
+        # 4. The length cannot exceed 1024 characters.
         self.scope = scope
-        # OAuth协议的Token端点。
+        # The token endpoint of the OAuth protocol.
+        # 
+        # > The value must start with `http://` or `https://`, and the length cannot exceed 1024 characters.
         # 
         # This parameter is required.
         self.token_endpoint = token_endpoint
@@ -212,13 +239,15 @@ class CreateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
         expiration: int = None,
         expiration_cleanup_enabled: bool = None,
     ):
-        # 签发出的JWT中的issuer字段的允许列表。
+        # The list of allowed JWT issuers.
+        # 
+        # > The list can contain up to 200 entries.
         self.allowed_token_issuers = allowed_token_issuers
-        # 是否开启JWT派生短令牌能力。
+        # Specifies whether to enable the JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # JWT的有效时长，单位秒。
+        # The validity period of the JWT. Unit: seconds.
         self.expiration = expiration
-        # 是否开启JWT过期清理。
+        # Specifies whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
 
     def validate(self):

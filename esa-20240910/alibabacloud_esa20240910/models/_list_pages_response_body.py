@@ -17,17 +17,17 @@ class ListPagesResponseBody(DaraModel):
         total_count: int = None,
         usage: int = None,
     ):
-        # The page number returned.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The custom error pages. Each element in the array contains error page-specific information.
+        # The array of custom response pages. Each object in the array contains the details of a page.
         self.pages = pages
         # The request ID.
         self.request_id = request_id
-        # The number of custom error pages after filtering.
+        # The number of custom response pages after filtering.
         self.total_count = total_count
-        # The number of custom error pages that you created.
+        # The number of custom response pages created by the user.
         self.usage = usage
 
     def validate(self):
@@ -99,7 +99,7 @@ class ListPagesResponseBodyPages(DaraModel):
         name: str = None,
         update_time: str = None,
     ):
-        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        # The Base64-encoded response page content corresponding to the Content-Type.
         # 
         # This parameter is required.
         self.content = content
@@ -107,15 +107,19 @@ class ListPagesResponseBodyPages(DaraModel):
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The description of the custom error page.
+        # The description of the custom response page.
         self.description = description
-        # The ID of the custom error page.[](~~2850223~~)
+        # The ID of the custom response page. You can call the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation to obtain the ID.
         self.id = id
-        # The type of the custom error page.
+        # The type of the custom response page.
         self.kind = kind
-        # The name of the custom error page.
+        # The name of the custom response page.
         self.name = name
-        # The time when the custom error page was last modified.
+        # The time when the custom response page was last modified.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

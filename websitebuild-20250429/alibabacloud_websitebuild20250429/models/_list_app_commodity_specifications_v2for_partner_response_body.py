@@ -24,19 +24,34 @@ class ListAppCommoditySpecificationsV2ForPartnerResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The app name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace the `%s` in the **ErrMessage** error message of the response parameters.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The number of results per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The response data.
         self.module = module
+        # The token for the next query. This parameter is empty when there is no next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -146,14 +161,23 @@ class ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The request result.
         self.data = data
+        # The next feature ID.
         self.next = next
+        # Indicates whether there is a next page.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether there is a previous page.
         self.pre_page = pre_page
+        # In addition to pagination limits, the server processes a maximum of the most recent 1000 records per query. If the results exceed 1000, **ResultLimit** is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is **false**.
         self.result_limit = result_limit
+        # The total number of items.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):
@@ -243,9 +267,13 @@ class ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext(DaraModel
         name: str = None,
         properties: Dict[str, main_models.ModuleNextPropertiesValue] = None,
     ):
+        # The API status or POP error code.
         self.code = code
+        # The default values.
         self.components = components
+        # The website name.
         self.name = name
+        # The frame rate.
         self.properties = properties
 
     def validate(self):
@@ -311,9 +339,13 @@ class ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData(DaraModel
         name: str = None,
         properties: Dict[str, main_models.ModuleDataPropertiesValue] = None,
     ):
+        # The API status or POP error code.
         self.code = code
+        # The default values.
         self.components = components
+        # The file name.
         self.name = name
+        # The duration.
         self.properties = properties
 
     def validate(self):

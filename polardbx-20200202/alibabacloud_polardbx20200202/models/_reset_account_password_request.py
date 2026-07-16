@@ -14,15 +14,25 @@ class ResetAccountPasswordRequest(DaraModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # The name of the account.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The password of the account.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the security administrator account.
         self.security_account_name = security_account_name
+        # The password of the security administrator account.
         self.security_account_password = security_account_password
 
     def validate(self):

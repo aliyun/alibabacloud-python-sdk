@@ -14,15 +14,15 @@ class DescribeGtmInstancesRequest(DaraModel):
         page_size: int = None,
         resource_group_id: str = None,
     ):
-        # The keyword that you use for query. Exact match is supported by instance ID or instance name.
+        # The keyword for an exact match search by instance ID or instance name.
         self.keyword = keyword
-        # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
+        # The language.
         self.lang = lang
-        # Specifies whether additional information is required. Default value: **false**.
+        # Specifies whether to return detailed information. The default value is **false**.
         self.need_detail_attributes = need_detail_attributes
-        # The page number to return.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries to return on each page for a paged query. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

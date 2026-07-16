@@ -15,12 +15,20 @@ class ListTemplatesOutput(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # An array of template objects.
+        # 
         # This parameter is required.
         self.items = items
+        # The page number of the returned results.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The maximum number of items to return per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The total number of templates available.
+        # 
         # This parameter is required.
         self.total = total
 

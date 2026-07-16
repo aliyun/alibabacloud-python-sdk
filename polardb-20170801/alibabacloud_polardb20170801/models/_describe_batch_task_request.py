@@ -9,6 +9,7 @@ class DescribeBatchTaskRequest(DaraModel):
         self,
         batch_id: str = None,
     ):
+        # The ID of the batch task.
         self.batch_id = batch_id
 
     def validate(self):

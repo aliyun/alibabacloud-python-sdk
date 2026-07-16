@@ -23,21 +23,46 @@ class SearchImageShrinkRequest(DaraModel):
         tags_shrink: str = None,
         text: str = None,
     ):
+        # The color.
         self.color_hex = color_hex
+        # Specifies whether the image contains a person.
         self.has_person = has_person
+        # The image category. Valid values:
+        # - normal: illustrations or article images.
+        # - banner: background images or carousel images.
+        # - goods: product or service images.
         self.image_category = image_category
+        # The aspect ratio of the image. Valid values:
+        # "16:9"
+        # "4:3"
+        # "2:1"
+        # "1:1"
+        # "3:4"
+        # "9:16".
         self.image_ratio = image_ratio
+        # The maximum height of the image.
         self.max_height = max_height
+        # The number of entries per page for paging queries. Maximum value: 100. Default value: 20.
         self.max_results = max_results
+        # The maximum width of the image, inclusive.
         self.max_width = max_width
+        # The minimum height of the image.
         self.min_height = min_height
+        # The minimum width of the image, inclusive.
         self.min_width = min_width
+        # The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters do not take effect, and the TotalCount value in the response is invalid.
         self.next_token = next_token
-        # Osskey。
+        # The OSS key.
         self.oss_key = oss_key
+        # The number of returned results. Default value: 10.
         self.size = size
+        # The start position of the returned results. Valid values: 0 to 499. Default value: 0.
         self.start = start
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The description text used to search for images.
+        # 
+        # >Maximum length: 512 characters.
         self.text = text
 
     def validate(self):

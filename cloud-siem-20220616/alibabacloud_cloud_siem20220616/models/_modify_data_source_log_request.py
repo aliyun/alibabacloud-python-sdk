@@ -16,40 +16,46 @@ class ModifyDataSourceLogRequest(DaraModel):
         log_instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The code of the cloud service provider. Valid values:
+        # The code for the multicloud environment. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         # 
         # This parameter is required.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [DescribeDataSourceInstance](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CDescribeDataSourceInstance) operation to query the IDs of data sources.
+        # The ID of the data source. The threat analysis feature generates this ID by calculating an MD5 hash of the parameters.
+        # Call the [DescribeDataSourceInstance](https://help.aliyun.com/document_detail/2639736.html) operation to obtain the data source ID.
         # 
         # This parameter is required.
         self.data_source_instance_id = data_source_instance_id
-        # The parameters of the data source. Set this parameter to a JSON string.
+        # The details of the data source parameters, in a JSON array format.
         # 
         # This parameter is required.
         self.data_source_instance_logs = data_source_instance_logs
         # The type of the data source. Valid values:
         # 
-        # *   obs: Huawei Cloud Object Storage Service (OBS)
-        # *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-        # *   ckafka: Tencent Cloud Kafka (CKafka)
+        # - obs: Huawei Cloud Object Storage Service (OBS).
+        # 
+        # - wafApi: Tencent Cloud Web Application Firewall (WAF) download API.
+        # 
+        # - ckafka: Tencent Cloud CKafka.
         self.data_source_type = data_source_type
-        # The log code.
+        # The code of the log.
         self.log_code = log_code
-        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters. You can call the [ListDataSourceLogs](https://api.aliyun-inc.com/#/publishment/document/cloud-siem/863fdf54478f4cc5877e27c2a5fe9e44?tenantUuid=f382fccd88b94c5c8c864def6815b854\\&activeTabKey=api%7CListDataSourceLogs) to query log IDs.
+        # The ID of the log. The threat analysis feature generates this ID by calculating an MD5 hash of the parameters. Call the [ListDataSourceLogs](https://help.aliyun.com/document_detail/2639707.html) operation to obtain the log ID.
         # 
         # This parameter is required.
         self.log_instance_id = log_instance_id
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management hub is located. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
 
     def validate(self):

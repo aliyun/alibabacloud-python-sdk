@@ -14,19 +14,19 @@ class RemoveEventRequest(DaraModel):
         reg_id: str = None,
         template_code: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event ID
+        # The event ID.
         self.id = id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Input field template type
+        # The templatetype of the input parameter.
         self.template_code = template_code
 
     def validate(self):

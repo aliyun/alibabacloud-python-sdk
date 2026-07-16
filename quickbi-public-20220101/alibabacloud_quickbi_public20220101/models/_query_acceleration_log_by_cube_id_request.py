@@ -13,12 +13,22 @@ class QueryAccelerationLogByCubeIdRequest(DaraModel):
         page_size: int = None,
         start_date: str = None,
     ):
+        # The ID of the dataset.
+        # 
         # This parameter is required.
         self.cube_id = cube_id
+        # The end time. The format is yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.end_date = end_date
+        # The page number. The default value is **1**.
         self.page_no = page_no
+        # The number of entries per page.
+        # 
+        # - Default value: 10.
         self.page_size = page_size
+        # The start time. The format is yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.start_date = start_date
 

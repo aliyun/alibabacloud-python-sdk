@@ -17,12 +17,17 @@ class ListDataServiceMyAppPermissionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListDataServiceMyAppPermissionsResponseBodyPageResult(DaraModel):
         permission_list: List[main_models.ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList] = None,
         total_count: int = None,
     ):
+        # The paginated permission list.
         self.permission_list = permission_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -139,17 +146,34 @@ class ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionList(DaraMo
     ):
         # AppId
         self.app_id = app_id
+        # The application name.
         self.app_name = app_name
+        # The name of the creator.
         self.create_user_name = create_user_name
+        # The ID of the creator.
         self.creator = creator
+        # The role of the current logon user relative to this record. Valid values:
+        # - SuperAdmin: the current user is a super administrator.
+        # - ProjMan: the current user is a project administrator for this record.
+        # - NormalUser: the current user is a regular user for this record, meaning the user is neither a super administrator nor a project administrator.
         self.current_user_role = current_user_role
+        # The ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_user_name = owner_user_name
+        # The user to whom the permission belongs.
         self.privilege_belong_to = privilege_belong_to
+        # The source of the authorization. Valid values:
+        # - 0: owner.
         self.privilege_from = privilege_from
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The description, used for troubleshooting.
         self.remark_for_debug_list = remark_for_debug_list
+        # The role. Valid values:
+        # - 0: owner.
         self.role = role
 
     def validate(self):
@@ -258,7 +282,9 @@ class ListDataServiceMyAppPermissionsResponseBodyPageResultPermissionListRemarkF
         key: str = None,
         value: str = None,
     ):
+        # The configuration item.
         self.key = key
+        # The configuration item value.
         self.value = value
 
     def validate(self):

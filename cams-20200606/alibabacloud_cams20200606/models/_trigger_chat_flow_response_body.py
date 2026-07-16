@@ -16,19 +16,21 @@ class TriggerChatFlowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of access denial
+        # Details about the access denied error.
         self.access_denied_detail = access_denied_detail
-        # Status code.
+        # The status code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Error description message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Whether the call was successful.
-        # - **true**: Call succeeded.
-        # - **false**: Call failed.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

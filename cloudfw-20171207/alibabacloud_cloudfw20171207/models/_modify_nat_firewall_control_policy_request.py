@@ -33,19 +33,21 @@ class ModifyNatFirewallControlPolicyRequest(DaraModel):
         source_type: str = None,
         start_time: int = None,
     ):
-        # The action that Cloud Firewall performs on the traffic. Valid values:
+        # The action that you want to perform on traffic. Valid values:
         # 
-        # *   **accept**: allows the traffic.
-        # *   **drop**: denies the traffic.
-        # *   **log**: monitors the traffic.
+        # - **accept**: allows the traffic.
+        # 
+        # - **drop**: denies the traffic.
+        # 
+        # - **log**: monitors the traffic.
         self.acl_action = acl_action
         # The UUID of the access control policy.
         # 
-        # To modify the configurations of an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
+        # To modify an access control policy, you must provide the UUID of the policy. You can call the DescribeNatFirewallControlPolicy operation to query the UUIDs of access control policies.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The name of the application.
+        # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy. Fuzzy match is supported.
         # 
@@ -53,47 +55,59 @@ class ModifyNatFirewallControlPolicyRequest(DaraModel):
         self.description = description
         # The destination port in the access control policy.
         # 
-        # > If **DestPortType** is set to `port`, you must specify this parameter.
+        # > This parameter is required when you set **DestPortType** to `port`.
         self.dest_port = dest_port
         # The name of the destination port address book in the access control policy.
         self.dest_port_group = dest_port_group
         # The type of the destination port in the access control policy. Valid values:
         # 
-        # *   **port**: port
-        # *   **group**: port address book
+        # - **port**: port
+        # 
+        # - **group**: port address book
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy.
         # 
-        # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.3.4/24
-        # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
-        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \\*.aliyuncs.com
-        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: ["BJ11", "ZB"]
+        # - If **DestinationType** is `net`, specify a destination CIDR block. Example: `1.2.3.4/24`.
+        # 
+        # - If **DestinationType** is `group`, specify a destination address book. Example: `db_group`.
+        # 
+        # - If **DestinationType** is `domain`, specify a destination domain name. Example: `*.aliyuncs.com`.
+        # 
+        # - If **DestinationType** is `location`, specify a destination location. For more information about location codes, see AddIpamPoolCidr. Example: `["BJ11", "ZB"]`.
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        # *   **domain**: domain name
-        # *   **location**: destination location
+        # - **net**: destination CIDR block
+        # 
+        # - **group**: destination address book
+        # 
+        # - **domain**: destination domain name
+        # 
+        # - **location**: destination location
         self.destination_type = destination_type
-        # The direction of the traffic to which the access control policy applies. Valid value:
+        # The direction of the traffic to which the access control policy applies. Valid values:
         # 
-        # *   **out**: outbound.
+        # - **out**: outbound traffic
         self.direction = direction
-        # The domain name resolution method of the access control policy. Valid values:
+        # The DNS resolution method of the domain name. Valid values:
         # 
-        # *   **0**: Fully qualified domain name (FQDN)-based resolution
-        # *   **1**: Domain Name System (DNS)-based dynamic resolution
-        # *   **2**: FQDN and DNS-based dynamic resolution
+        # - **0**: FQDN
+        # 
+        # - **1**: dynamic DNS
+        # 
+        # - **2**: FQDN and dynamic DNS
+        # 
+        # > If the domain name is resolved in FQDN mode, you can select only the TCP protocol. The supported applications are HTTP, HTTPS, SMTP, SMTPS, SSL, IMAPS, and POPS.
         self.domain_resolve_type = domain_resolve_type
-        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # The end time of the effective period for the access control policy. The time is a Unix timestamp. The time must be on the hour or half-hour and be at least 30 minutes after the start time.
         # 
-        # >  If RepeatType is set to Permanent, EndTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified.
+        # > If `RepeatType` is Permanent, `EndTime` is empty. If `RepeatType` is None, Daily, Weekly, or Monthly, `EndTime` is required.
         self.end_time = end_time
-        # The language of the content within the request and the response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
         # 
@@ -101,60 +115,71 @@ class ModifyNatFirewallControlPolicyRequest(DaraModel):
         self.nat_gateway_id = nat_gateway_id
         # The protocol type in the access control policy. Valid values:
         # 
-        # *   **ANY**
-        # *   **TCP**
-        # *   **UDP**
-        # *   **ICMP**
+        # - **ANY**
         # 
-        # >  The value **ANY** indicates all types of applications.
+        # - **TCP**
         # 
-        # >  If the destination address type is a threat intelligence address book of the domain name type or a cloud service address book, you can set Proto to TCP. If you set Proto to TCP, you can set application types to HTTP, HTTPS, SMTP, SMTPS, and SSL.
+        # - **UDP**
+        # 
+        # - **ICMP**
+        # 
+        # > **ANY** indicates that the policy applies to all protocol types.
+        # 
+        # > If the destination is a domain name-based address book that contains a threat intelligence address book or a cloud service address book, you can select TCP. If you select TCP, you can select HTTP, HTTPS, SMTP, SMTPS, or SSL.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # - **true**: enabled
+        # 
+        # - **false**: disabled
         self.release = release
-        # The days of a week or of a month on which the access control policy takes effect.
+        # The days of a week or a month on which the policy recurs.
         # 
-        # *   If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is left empty. Example: [].
-        # *   If RepeatType is set to Weekly, RepeatDays must be specified. Example: [0, 6].
+        # - If you set **RepeatType** to `Permanent`, `None`, or `Daily`, leave this parameter empty. Example: [].
         # 
-        # >  If RepeatType is set to Weekly, the fields in the value of RepeatDays cannot be repeated.
+        # - If you set **RepeatType** to `Weekly`, this parameter is required. Example: [0, 6].
         # 
-        # *   If RepeatType is set to `Monthly`, RepeatDays must be specified. Example: [1, 31].
+        # > When RepeatType is set to Weekly, RepeatDays does not allow duplicates.
         # 
-        # >  If RepeatType is set to Monthly, the fields in the value of RepeatDays cannot be repeated.
+        # - When RepeatType is `Monthly`, RepeatDays cannot be empty. For example: [1, 31]
+        # 
+        # > When RepeatType is set to Monthly, RepeatDays cannot contain duplicate values.
         self.repeat_days = repeat_days
-        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # The end time of the policy\\"s recurrence period. The time must be in the 24-hour HH:mm format, such as 23:30, be on the hour or half-hour, and be at least half an hour later than the recurrence start time.
         # 
-        # >  If RepeatType is set to Permanent or None, RepeatEndTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified.
+        # > When RepeatType is Permanent or None, RepeatEndTime is empty. When RepeatType is Daily, Weekly, or Monthly, you must set RepeatEndTime to specify the end time for the repetition.
         self.repeat_end_time = repeat_end_time
-        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # The start time of the repeat cycle. Use the 24-hour HH:mm format, such as 08:00. The time must be on the hour or half-hour and at least 30 minutes before the repeat end time.
         # 
-        # >  If RepeatType is set to Permanent or None, RepeatStartTime is left empty. If RepeatType is set to Daily, Weekly, or Monthly, this parameter must be specified.
+        # > This parameter is not used if `RepeatType` is set to `Permanent` or `None`. This parameter is required if `RepeatType` is set to `Daily`, `Weekly`, or `Monthly`.
         self.repeat_start_time = repeat_start_time
-        # The recurrence type for the access control policy to take effect. Valid values:
+        # The recurrence type for the policy to take effect. Valid values:
         # 
-        # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
-        # *   **Daily**: The policy takes effect on a daily basis.
-        # *   **Weekly**: The policy takes effect on a weekly basis.
-        # *   **Monthly**: The policy takes effect on a monthly basis.
+        # - **Permanent** (default): The policy is always in effect.
+        # 
+        # - **None**: The policy takes effect for a specified period of time.
+        # 
+        # - **Daily**: The policy takes effect daily.
+        # 
+        # - **Weekly**: The policy takes effect weekly.
+        # 
+        # - **Monthly**: The policy takes effect monthly.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
         # 
-        # *   If **SourceType** is set to `net`, the value of this parameter is a CIDR block. Example: 10.2.XX.XX/24.
-        # *   If **SourceType** is set to `group`, the value of this parameter is an address book name. Example: db_group.
+        # - When **SourceType** is `net`, Source is the source CIDR address, for example, 10.2.XX.XX/24.
+        # 
+        # - If **SourceType** is `group`, specify a source address book. Example: `db_group`.
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
-        # *   **net**: CIDR block
-        # *   **group**: address book
-        self.source_type = source_type
-        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # - **net**: source CIDR block
         # 
-        # >  If RepeatType is set to Permanent, StartTime is left empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified.
+        # - **group**: source address book
+        self.source_type = source_type
+        # The start time of the effective period for the access control policy is specified in the Unix timestamp format. It must be on the hour or half-hour and at least half an hour earlier than the end time.
+        # 
+        # > When RepeatType is Permanent, StartTime is empty. When RepeatType is None, Daily, Weekly, or Monthly, StartTime is required.
         self.start_time = start_time
 
     def validate(self):

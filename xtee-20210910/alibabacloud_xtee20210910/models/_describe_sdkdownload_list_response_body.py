@@ -13,9 +13,9 @@ class DescribeSDKDownloadListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeSDKDownloadListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -66,25 +66,25 @@ class DescribeSDKDownloadListResponseBodyResultObject(DaraModel):
         sdk_version: str = None,
         size: str = None,
     ):
-        # Description information.
+        # The description.
         self.description = description
-        # Developer
+        # The developer.
         self.developer = developer
-        # Device type.
+        # The device type.
         self.device_type = device_type
-        # Download URL.
+        # The download URL.
         self.download_url = download_url
-        # File MD5.
+        # The MD5 hash of the file.
         self.md_5 = md_5
-        # Package name
+        # The package name.
         self.package_name = package_name
-        # Risk recognition SDK privacy policy link
+        # The privacy policy link for the risk identification SDK.
         self.privacy_link = privacy_link
-        # Release time
+        # The release time.
         self.push_time = push_time
-        # SDK version.
+        # The SDK version.
         self.sdk_version = sdk_version
-        # Size
+        # The size.
         self.size = size
 
     def validate(self):

@@ -17,11 +17,9 @@ class AllocateVpcIpv6CidrRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The type of the IPv6 address pool. Valid values:
+        # The type of the IPv6 address pool. Set the value to **custom**.
         # 
-        # - **aliyun** (default): IPv6 CIDR block is allocated by the system.
-        # 
-        # - **custom**: custom IPv6 CIDR block.
+        # >  This parameter is required.
         self.address_pool_type = address_pool_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
@@ -31,16 +29,16 @@ class AllocateVpcIpv6CidrRequest(DaraModel):
         self.ipv_6cidr_block = ipv_6cidr_block
         # The type of IPv6 CIDR block. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP)
-        # *   **BGP_International**: BGP (Multi-ISP) International
-        # *   **ChinaMobile**: China Mobile (Single-ISP)
-        # *   **ChinaUnicom**: China Unicom (Single-ISP)
-        # *   **ChinaTelecom**: China Telecom (Single-ISP)
-        # *   **ChinaMobile_L2**: China Mobile (Single-ISP)_L2
-        # *   **ChinaUnicom_L2**: China Unicom (Single-ISP)_L2
-        # *   **ChinaTelecom_L2**: China Telecom (Single-ISP)_L2
-        # > *   If your account is included in the whitelist, you can set this parameter to one of the following values: **ChinaTelecom**, **ChinaUnicom**, **ChinaMobile**, **ChinaTelecom_L2**, **ChinaUnicom_L2**, **ChinaMobile_L2**, and **BGP_International**.
-        # > *   You can reserve only one IPv6 CIDR block of each type. You can reserve another IPv6 CIDR block only after the existing one is allocated to a VPC.
+        # *   **BGP** (default)
+        # *   **ChinaMobile**
+        # *   **ChinaUnicom**
+        # *   **ChinaTelecom**
+        # 
+        # > 
+        # 
+        # *   If your Alibaba Cloud account is allowed to use single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
+        # 
+        # *   You can reserve only one IPv6 CIDR block of each type. After a reserved IPv6 CIDR block of a type is allocated to a VPC, you can reserve another IPv6 CIDR of the type.
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id

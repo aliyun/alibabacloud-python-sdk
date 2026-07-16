@@ -15,11 +15,15 @@ class DescribeClusterEventsRequest(DaraModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 50. Default value: 50.
+        # The maximum number of results to return per page.
+        # 
+        # Valid values: [1,100].
+        # 
+        # Default value: 50.
         self.page_size = page_size
-        # The ID of the query task.
+        # The ID of the task to query.
         self.task_id = task_id
 
     def validate(self):

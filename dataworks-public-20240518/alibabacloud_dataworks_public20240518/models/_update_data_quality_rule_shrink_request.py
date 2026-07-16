@@ -18,32 +18,31 @@ class UpdateDataQualityRuleShrinkRequest(DaraModel):
         severity: str = None,
         template_code: str = None,
     ):
-        # The check settings for sample data.
+        # The sample verification settings.
         self.checking_config_shrink = checking_config_shrink
-        # The description of the rule. The description can be up to 500 characters in length.
+        # The rule description. The maximum length is 500 characters.
         self.description = description
-        # Specifies whether to enable the rule.
+        # Specifies whether the rule is enabled.
         self.enabled = enabled
-        # The operations that you can perform after the rule-based check fails.
+        # The list of issue handlers for data quality rule verification.
         self.error_handlers_shrink = error_handlers_shrink
         # The rule ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the rule. The name can be up to 255 characters in length and can contain digits, letters, and punctuation marks.
+        # The rule name. The name can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation. The maximum length is 255 characters.
         self.name = name
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace Settings page to obtain the workspace ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sampling settings.
+        # The settings required for sample collection.
         self.sampling_config_shrink = sampling_config_shrink
-        # The strength of the rule. Valid values:
-        # 
-        # *   Normal
-        # *   High
+        # The severity level of the rule for the business (corresponding to strong/weak rules on the page). Valid values:
+        # - Normal
+        # - High
         self.severity = severity
-        # The ID of the template used by the rule.
+        # The unique identifier of the rule template referenced by the rule.
         self.template_code = template_code
 
     def validate(self):

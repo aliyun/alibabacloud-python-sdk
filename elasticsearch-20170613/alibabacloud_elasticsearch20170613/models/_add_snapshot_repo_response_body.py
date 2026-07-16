@@ -10,12 +10,12 @@ class AddSnapshotRepoResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Return results:
+        # The result. Valid values:
         # 
-        # *   true: Reference warehouse created successfully
-        # *   false: Reference warehouse created failed
+        # - true: The reference repository is created.
+        # - false: The reference repository failed to be created.
         self.result = result
 
     def validate(self):

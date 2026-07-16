@@ -16,18 +16,18 @@ class UpdateChatFlowShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         title: str = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
+        # The business tenant code. The default value is ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
+        # The business extension information. The default value is an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # Process code.
+        # The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
         self.flow_code = flow_code
         self.owner_id = owner_id
-        # Process remarks
+        # The updated remarks for the flow.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Process title
+        # The updated name of the flow.
         self.title = title
 
     def validate(self):

@@ -13,10 +13,18 @@ class AttachTaskRequest(DaraModel):
         resource_owner_id: int = None,
         task_id: int = None,
     ):
+        # The calling string (callee information and parameter list). Valid values:
+        # 
+        # - **LIST**: Use this type when the script has no input variables. In this case, only the callee numbers need to be provided. Example: `0571****5678,0571****5679`.
+        # - **JSON**: Use this type when the script includes input variables. You must provide the variable names, callee numbers, and variable values. Example: `{"ParamNames":["name","age"],"CalleeList":[{"Callee":"181****0000","Params":["Zhang San","20"]},{"Callee":"181****0001","Params":["Li Si","21"]}]}`. **ParamNames** represents the list of parameter names; **Params** represents the list of parameter values.
+        # 
+        # > You can view the script input variables on the [**Script Management**](https://aiccs.console.aliyun.com/patter/list) > **View** > **Input and Output Parameters** interface.
         self.call_string = call_string
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The job ID. You can obtain the job ID from the [Task Management](https://aiccs.console.aliyun.com/job/list) interface.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

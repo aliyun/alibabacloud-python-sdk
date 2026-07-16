@@ -13,14 +13,15 @@ class UpgradePrePayOrderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # A return code of 200 indicates that the request succeeded.
         self.code = code
-        # The error message returned.
+        # The response message.
         self.message = message
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

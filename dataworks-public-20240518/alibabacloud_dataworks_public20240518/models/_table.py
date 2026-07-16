@@ -18,24 +18,25 @@ class Table(DaraModel):
         name: str = None,
         parent_meta_entity_id: str = None,
         partition_keys: List[str] = None,
+        statistics_infos: Dict[str, str] = None,
         table_type: str = None,
         technical_metadata: main_models.TableTechnicalMetadata = None,
     ):
-        # The information about the business metadata that is related to DataWorks, including the usage notes, tags, categories, ancestor tasks, and extended information.
+        # The business metadata related to DataWorks, including usage instructions, tags, categories, upstream production nodes, and extended information.
         self.business_metadata = business_metadata
-        # The comments.
+        # The comment.
         self.comment = comment
-        # The creation time. This value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time, in millisecond-level timestamp.
         self.create_time = create_time
-        # The table ID. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}:${Table name}`. If a level does not exist, specify an empty string as a placeholder.
+        # The format is `${EntityType}:${instance ID or encoded URL}:${DataFolderIdentity}:${DatabaseName}:${PatternName}:${TableName}`. Use an empty character as a placeholder for levels that do not exist.
         # 
-        # >  For MaxCompute and DLF tables, specify an empty string at the Instance ID level as a placeholder. For MaxCompute tables, specify a MaxCompute project name at the Database name level. If the three-layer model is enabled for your MaxCompute project, you must specify a schema name at the Schema name level. Otherwise, you can specify an empty string at the Schema name level as a placeholder.
+        # > For maxcompute and dlf types, use an empty string as a placeholder for the instance ID. For the maxcompute type, the database name is the MaxCompute project name. Projects with the three-layer model enabled require a schema name. For projects without the three-layer model enabled, use an empty string as a placeholder for the schema name.
         # 
-        # >  For StarRocks tables, specify a catalog name at the Catalog identifier level. For DLF tables, specify a catalog ID at the Catalog identifier level. Other types of tables do not support the Catalog identifier level, and you can specify an empty string as a placeholder.
+        # > For the starrocks type, the data catalog identifier is the catalog name. For the dlf type, the data catalog identifier is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
         # 
-        # You can configure this parameter in one of the following formats based on your table type:
+        # The following examples show the ID formats for common types:
         # 
         # `maxcompute-table:::project_name:[schema_name]:table_name`
         # 
@@ -46,34 +47,34 @@ class Table(DaraModel):
         # `holo-table:instance_id::database_name:schema_name:table_name`
         # 
         # `mysql-table:(instance_id|encoded_jdbc_url)::database_name::table_name`
-        # 
-        # > \\
-        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
-        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
-        # `catalog_id`: the ID of a DLF catalog.\\
-        # `project_name`: the name of a MaxCompute project.\\
-        # `database_name`: the name of a database.\\
-        # `schema_name`: the name of a schema. For a MaxCompute table, this parameter is required only if the three-layer model is enabled for the MaxCompute project to which the table belongs. If the schema feature is not enabled for the MaxCompute project, specify an empty string for this parameter as a placeholder.\\
-        # `table_name`: the name of a table.
+        # > Where  
+        # `instance_id`: The instance ID. This is required when the data source is registered in instance mode.  
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.  
+        # `catalog_id`: The DLF catalog ID.  
+        # `project_name`: The MaxCompute project name.   
+        # `database_name`: The database name.   
+        # `schema_name`: The schema name. For the maxcompute type, this is required only when the three-layer model is enabled for the project. If the three-layer model is not enabled, use an empty string as a placeholder.   
+        # `table_name`: The table name.
         self.id = id
-        # The modification time. This value is a UNIX timestamp. Unit: milliseconds.
+        # The modification time, in millisecond-level timestamp.
         self.modify_time = modify_time
-        # The table name.
+        # The name.
         self.name = name
-        # The ID of a parent metadata entity. For more information, see [Concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The parent-level metadata entity ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # *   For data source types that support schemas, such as `MaxCompute, Hologres, PostgreSQL, SQL Server, HybridDB for PostgreSQL, and Oracle`, the `ParentMetaEntityId` parameter specifies the schema of the database to which the table belongs. In this case, the common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}:${Schema name}`. If a level does not exist, leave the level empty. For a MaxCompute data table, you must make sure that the three-layer model is enabled for the MaxCompute project to which the table belongs.
-        # *   For other data source types that do not support schemas, the `ParentMetaEntityId` parameter specifies the database to which the table belongs. In this case, the common format of this parameter is `${Entity type}:${Instance ID or escaped URL}:${Catalog identifier}:${Database name}`. If a level does not exist, leave the level empty.
+        # - For types that support schemas (`maxcompute/holo/postgresql/sqlserver/hybriddb_for_postgresql/oracle, where the maxcompute type requires the Layer 3 model to be enabled for the project`), ParentMetaEntityId is the database pattern to which the table belongs. The format is `${EntityType}:${instance ID or encoded URL}:${DataFolderIdentity}:${DatabaseName}:${PatternName}`. Use an empty character as a placeholder for levels that do not exist.
         # 
-        # >  For MaxCompute and DLF tables, specify an empty string at the Instance ID level as a placeholder. For MaxCompute tables, specify a MaxCompute project name at the Database name level.
+        # - For other types, ParentMetaEntityId is the database to which the table belongs. The format is `${EntityType}:${instance ID or encoded URL}:${DataFolderIdentity}:${DatabaseName}`. Use an empty character as a placeholder for levels that do not exist.
         # 
-        # >  For StarRocks tables, specify a catalog name at the Catalog identifier level. For DLF tables, specify a catalog ID at the Catalog identifier level. Other types of tables do not support the Catalog identifier level, and you can specify an empty string as a placeholder.
+        # > For maxcompute and dlf types, use an empty string as a placeholder for the instance ID. For the maxcompute type, the database name is the MaxCompute project name.
         # 
-        # You can configure this parameter in one of the following formats based on your table type:
+        # > For the starrocks type, the data catalog identifier is the catalog name. For the dlf type, the data catalog identifier is the catalog ID. Other types do not support the catalog level. Use an empty string as a placeholder.
         # 
+        # The following examples show the ParentMetaEntityId formats for common types:
+        # 	
         # `maxcompute-project:::project_name`
         # 
-        # `maxcompute-schema:::project_name:schema_name` (Three-layer model enabled for the MaxCompute project)
+        # `maxcompute-schema:::project_name:schema_name` (only when the three-layer model is enabled for the project)
         # 
         # `dlf-database::catalog_id:database_name`
         # 
@@ -83,17 +84,18 @@ class Table(DaraModel):
         # 
         # `mysql-database:(instance_id|encoded_jdbc_url)::database_name`
         # 
-        # > \\
-        # `instance_id`: the ID of an instance. If the related data source is added to DataWorks in Alibaba Cloud instance mode, you must configure this parameter.\\
-        # `encoded_jdbc_url`: the JDBC connection string that is URL-encoded. If the related data source is added to DataWorks in connection string mode, you must configure this parameter.\\
-        # `catalog_id`: the ID of a DLF catalog.\\
-        # `project_name`: the name of a MaxCompute project.\\
-        # `database_name`: the name of a database.\\
-        # `schema_name`: the name of a schema.
+        # > Where  
+        # `instance_id`: The instance ID. This is required when the data source is registered in instance mode.   
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.   
+        # `catalog_id`: The DLF catalog ID.   
+        # `project_name`: The MaxCompute project name.   
+        # `database_name`: The database name.   
+        # `schema_name`: The schema name.
         self.parent_meta_entity_id = parent_meta_entity_id
-        # The partition keys. If the table is a non-partitioned table, leave this parameter empty.
+        # The list of partition keys. This is empty for non-partitioned tables.
         self.partition_keys = partition_keys
-        # The table type. The value of this parameter is related to the type of metadata crawler.
+        self.statistics_infos = statistics_infos
+        # The table type. The valid values depend on the metadata collector type.
         self.table_type = table_type
         # The technical metadata.
         self.technical_metadata = technical_metadata
@@ -133,6 +135,9 @@ class Table(DaraModel):
         if self.partition_keys is not None:
             result['PartitionKeys'] = self.partition_keys
 
+        if self.statistics_infos is not None:
+            result['StatisticsInfos'] = self.statistics_infos
+
         if self.table_type is not None:
             result['TableType'] = self.table_type
 
@@ -168,6 +173,9 @@ class Table(DaraModel):
         if m.get('PartitionKeys') is not None:
             self.partition_keys = m.get('PartitionKeys')
 
+        if m.get('StatisticsInfos') is not None:
+            self.statistics_infos = m.get('StatisticsInfos')
+
         if m.get('TableType') is not None:
             self.table_type = m.get('TableType')
 
@@ -188,19 +196,19 @@ class TableTechnicalMetadata(DaraModel):
         parameters: Dict[str, str] = None,
         serialization_library: str = None,
     ):
-        # Specifies whether the table is a compressed table. Valid values: true and false.
+        # Indicates whether the table is compressed.
         self.compressed = compressed
         # The input format.
         self.input_format = input_format
-        # The storage location of the table.
+        # The storage location.
         self.location = location
         # The output format.
         self.output_format = output_format
-        # The table owner.
+        # The owner.
         self.owner = owner
-        # The information about parameters.
+        # The parameter information.
         self.parameters = parameters
-        # The implementation class of SerDe.
+        # The class used by SerDe.
         self.serialization_library = serialization_library
 
     def validate(self):
@@ -263,20 +271,23 @@ class TableBusinessMetadata(DaraModel):
     def __init__(
         self,
         categories: List[List[main_models.TableBusinessMetadataCategories]] = None,
+        custom_attributes: Dict[str, List[str]] = None,
         extension: main_models.TableBusinessMetadataExtension = None,
         readme: str = None,
         tags: List[main_models.TableBusinessMetadataTags] = None,
         upstream_tasks: List[main_models.TableBusinessMetadataUpstreamTasks] = None,
     ):
-        # The categories.
+        # The list of categories.
         self.categories = categories
-        # The extended information. Only MaxCompute tables supports this parameter.
+        # The custom attribute values, where key is the custom attribute identifier and value is the list of attribute values.
+        self.custom_attributes = custom_attributes
+        # The extension information. Currently only supported for MaxCompute type.
         self.extension = extension
-        # The usage notes.
+        # The usage instructions.
         self.readme = readme
-        # The tags.
+        # The list of tags.
         self.tags = tags
-        # The ancestor tasks.
+        # The list of upstream nodes.
         self.upstream_tasks = upstream_tasks
 
     def validate(self):
@@ -309,6 +320,9 @@ class TableBusinessMetadata(DaraModel):
                     l1.append(k2.to_map() if k2 else None)
                 result['Categories'].append(l1)
 
+        if self.custom_attributes is not None:
+            result['CustomAttributes'] = self.custom_attributes
+
         if self.extension is not None:
             result['Extension'] = self.extension.to_map()
 
@@ -338,6 +352,9 @@ class TableBusinessMetadata(DaraModel):
                     l1.append(temp_model.from_map(k2))
                 self.categories.append(l1)
 
+        if m.get('CustomAttributes') is not None:
+            self.custom_attributes = m.get('CustomAttributes')
+
         if m.get('Extension') is not None:
             temp_model = main_models.TableBusinessMetadataExtension()
             self.extension = temp_model.from_map(m.get('Extension'))
@@ -365,9 +382,9 @@ class TableBusinessMetadataUpstreamTasks(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ancestor task ID.
+        # The node ID.
         self.id = id
-        # The ancestor task name.
+        # The node name.
         self.name = name
 
     def validate(self):
@@ -402,9 +419,9 @@ class TableBusinessMetadataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You cannot leave this parameter empty.
+        # The tag key. This parameter cannot be empty.
         self.key = key
-        # The tag value. You can leave this parameter empty.
+        # The tag value. This parameter can be empty.
         self.value = value
 
     def validate(self):
@@ -442,18 +459,18 @@ class TableBusinessMetadataExtension(DaraModel):
         read_count: int = None,
         view_count: int = None,
     ):
-        # The type of the environment. Valid values:
+        # The environment type. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod: Production environment.
+        # - Dev: Development environment.
         self.env_type = env_type
-        # The number of times the table is added to favorites.
+        # The favorite count.
         self.favor_count = favor_count
-        # The DataWorks workspace ID.
+        # The workspace ID.
         self.project_id = project_id
-        # The number of times the table is read.
+        # The read count.
         self.read_count = read_count
-        # The number of times the table is viewed.
+        # The view count.
         self.view_count = view_count
 
     def validate(self):
@@ -509,9 +526,9 @@ class TableBusinessMetadataCategories(DaraModel):
     ):
         # The category ID.
         self.id = id
-        # The category name.
+        # The name.
         self.name = name
-        # The parent category ID. You can leave this parameter empty.
+        # The parent category ID. This parameter can be empty.
         self.parent_id = parent_id
 
     def validate(self):

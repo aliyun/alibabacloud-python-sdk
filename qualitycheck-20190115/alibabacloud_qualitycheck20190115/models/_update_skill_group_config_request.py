@@ -10,8 +10,10 @@ class UpdateSkillGroupConfigRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # The ID of the workspace.
         self.base_me_agent_id = base_me_agent_id
+        # The complete JSON string. For more information, see the details that follow.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

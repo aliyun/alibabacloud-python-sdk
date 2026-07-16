@@ -31,28 +31,70 @@ class ListIncidentsRequest(DaraModel):
         start_time: int = None,
         threat_level: List[str] = None,
     ):
+        # The alert ID.
         self.alert_uuid = alert_uuid
+        # The end time as a timestamp in milliseconds (ms).
         self.end_time = end_time
+        # The name of the incident.
         self.incident_name = incident_name
+        # The status of the incident. Valid values:
+        # - 0: unhandled.
+        # - 1: handling.
+        # - 5: handling failed.
+        # - 10: handled.
         self.incident_status = incident_status
+        # The tags of the incident.
         self.incident_tags = incident_tags
+        # The list of incident UUIDs, separated by commas (,).
         self.incident_uuids = incident_uuids
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        # The sort direction. Valid values:
+        # - **desc** (default): descending order.
+        # - **asc**: ascending order.
         self.order_direction = order_direction
+        # The field name used to sort the list. Valid values:
+        # - GmtModified: sorts by incident update time (default).
+        # - ThreatScore: sorts by threat score.
         self.order_field_name = order_field_name
+        # The UID of the account that owns the incident.
         self.owners = owners
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Your assets reside in the Chinese mainland.
+        # - ap-southeast-1: Your assets reside outside China.
         self.region_id = region_id
+        # The ID of the asset associated with the incident.
         self.relate_asset_id = relate_asset_id
+        # The ID of the entity associated with the incident.
         self.relate_entity_id = relate_entity_id
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
+        # The view type. Valid values:
+        # - 0: the view of the current Alibaba Cloud account.
+        # - 1: the view of all accounts in the enterprise.
         self.role_type = role_type
+        # The start time as a timestamp in milliseconds (ms).
         self.start_time = start_time
+        # The threat level. Valid values:
+        # - 5: critical.
+        # - 4: high.
+        # - 3: medium.
+        # - 2: low.
+        # - 1: informational.
         self.threat_level = threat_level
 
     def validate(self):

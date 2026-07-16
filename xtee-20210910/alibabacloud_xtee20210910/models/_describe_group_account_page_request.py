@@ -19,29 +19,29 @@ class DescribeGroupAccountPageRequest(DaraModel):
         reg_id: str = None,
         task_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # The language type for sending and receiving messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Community number.
+        # The community number.
         self.community_no = community_no
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Order direction.
+        # The sort order.
         self.direction = direction
-        # fieldKey.
+        # fieldKey
         self.field_key = field_key
-        # fieldVal.
+        # fieldVal
         self.field_val = field_val
-        # Whether to paginate.
+        # Specifies whether to enable pagination.
         self.is_page = is_page
-        # Sorting condition.
+        # The sort condition.
         self.order = order
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region ID.
         self.reg_id = reg_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

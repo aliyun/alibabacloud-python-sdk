@@ -17,15 +17,15 @@ class ReadSchedulerxDesignateInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The access denial details.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The return code.
         self.code = code
-        # *
+        # - The returned data object.
         self.data = data
-        # The error message returned only if an error occurs.
+        # The error message returned if the request fails.
         self.message = message
-        # The request ID.
+        # The unique Request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -92,21 +92,23 @@ class ReadSchedulerxDesignateInfoResponseBodyData(DaraModel):
         designate_type: int = None,
         transferable: bool = None,
     ):
-        # *
+        # - The details of the designated Workers.
         self.designate_detail_vos = designate_detail_vos
-        # The information type of the specified workers.
+        # The type of designated resource. Valid values:
         # 
-        # *   1: the IP address of the specified workers.
-        # *   2: the tags of the specified workers.
+        # - `1`: The task is designated to run on a specific Worker.
         # 
-        # >  The default value of the DesignateType parameter is 1.
+        # - `2`: The task is designated to run on Workers with a specific tag.
+        # 
+        # > The default configuration for a task is to designate a specific Worker (`1`).
         self.designate_type = designate_type
-        # Indicates whether to enable failover for the workers. If you set this parameter to true, the job is scheduled to other workers when the specified workers go offline.
+        # Indicates whether Failover is enabled. If enabled, the task can be scheduled on non-designated Workers if all designated Workers are offline. Valid values:
         # 
-        # *   true: enables failover for the workers.
-        # *   false: disables failover for the workers.
+        # - `true`: Enabled.
         # 
-        # >  The default value of the Transferable parameter is false.
+        # - `false`: Disabled.
+        # 
+        # > By default, Failover is disabled (false).
         self.transferable = transferable
 
     def validate(self):
@@ -161,32 +163,37 @@ class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVos(DaraModel):
         starter: str = None,
         version: str = None,
     ):
-        # The status of the workers. Valid values:
+        # The status of the Worker. Valid values:
         # 
-        # *   FREE: idle.
-        # *   LOAD5_BUSY: The average of the latest five values of CPU workload is too high.
-        # *   HEAP5_BUSY: The average of the latest five values of heap memory usage is too high.
-        # *   DISK_BUSY: The disk usage is too high.
+        # - `FREE`: The Worker is idle.
+        # 
+        # - `LOAD5_BUSY`: The 5-minute average CPU Load is high.
+        # 
+        # - `HEAP5_BUSY`: The 5-minute average Heap Memory usage is high.
+        # 
+        # - `DISK_BUSY`: The Disk Usage is high.
         self.busy = busy
-        # Indicates whether the workers are specified.
+        # Indicates whether the Worker is designated. Valid values:
         # 
-        # *   true: The workers are specified.
-        # *   false: The workers are not specified.
+        # - `true`: The Worker is designated.
+        # 
+        # - `false`: The Worker is not designated.
         self.checked = checked
-        # The information returned based on the value of the DesignateType parameter.
+        # The value of the key. The meaning of this parameter depends on the value of the `DesignateType` parameter.
         # 
-        # *   If you set the DesignateType parameter to 2, the tags of the workers are returned.
-        # *   If you set the DesignateType parameter to 1, the IP addresses of the workers are returned.
+        # - If `DesignateType` is `1`, this parameter indicates the address of the Worker.
+        # 
+        # - If `DesignateType` is `2`, this parameter indicates the Tag of the Worker.
         self.key = key
-        # The metric values.
+        # The performance metrics for the Worker.
         self.metrics = metrics
-        # Indicates whether the workers are offline.
+        # Indicates whether the Worker is offline.
         self.offline = offline
-        # The number of workers.
+        # The number of Workers.
         self.size = size
-        # The startup method of the workers.
+        # The startup mode of the Worker.
         self.starter = starter
-        # The version of the workers.
+        # The version of the Worker.
         self.version = version
 
     def validate(self):
@@ -270,31 +277,31 @@ class ReadSchedulerxDesignateInfoResponseBodyDataDesignateDetailVosMetrics(DaraM
         share_pool_available_size: int = None,
         share_pool_queue_size: int = None,
     ):
-        # The most recent value of CPU workload.
+        # The most recent CPU Load.
         self.cpu_load_1 = cpu_load_1
-        # The average of the latest five values of CPU workload.
+        # The average CPU Load over the last five minutes.
         self.cpu_load_5 = cpu_load_5
-        # The number of available CPU processors.
+        # The number of available CPU cores.
         self.cpu_processors = cpu_processors
-        # The total disk capacity in MB.
+        # The total disk capacity, in MB.
         self.disk_max = disk_max
-        # The disk usage.
+        # The Disk Usage, as a percentage.
         self.disk_usage = disk_usage
-        # The used disk space in MB.
+        # The used disk space, in MB.
         self.disk_used = disk_used
-        # The number of job executions.
+        # The number of task executions.
         self.exec_count = exec_count
-        # The most recent value of heap memory usage.
+        # The most recent Heap Memory usage, as a percentage.
         self.heap_1usage = heap_1usage
-        # The most recent value of used heap memory in MB.
+        # The amount of Heap Memory used in the most recent measurement, in MB.
         self.heap_1used = heap_1used
-        # The average of the latest five values of heap memory usage.
+        # The average Heap Memory usage over the last five minutes, as a percentage.
         self.heap_5usage = heap_5usage
-        # The maximum heap memory in MB.
+        # The maximum available Heap Memory, in MB.
         self.heap_max = heap_max
         # The number of available resources in the shared pool.
         self.share_pool_available_size = share_pool_available_size
-        # The queue size in the shared pool.
+        # The size of the queue in the shared pool.
         self.share_pool_queue_size = share_pool_queue_size
 
     def validate(self):
@@ -400,19 +407,19 @@ class ReadSchedulerxDesignateInfoResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authentication operation.
+        # The requested operation that was denied.
         self.auth_action = auth_action
-        # The principal name.
+        # The display name of the Principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The principal account.
+        # The ID of the Alibaba Cloud account to which the Principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The principal type.
+        # The type of the Principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The permission denial type.
+        # The type of permission denial.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of Policy that caused the denial.
         self.policy_type = policy_type
 
     def validate(self):

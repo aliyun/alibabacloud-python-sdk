@@ -21,16 +21,25 @@ class GraphFlowNode(DaraModel):
         rid: int = None,
         use_conditions: bool = None,
     ):
+        # Operator information.
         self.conditions = conditions
+        # Used for frontend display.
         self.content = content
+        # Node ID.
         self.id = id
-        # index
+        # Index
         self.index = index
+        # Node name
         self.name = name
+        # Child nodes
         self.next_nodes = next_nodes
+        # Node Type
         self.node_type = node_type
+        # Node properties
         self.properties = properties
+        # Rule ID. \\`rid\\` is empty if the rule is not persisted. If the rule is persisted, \\`rid\\` equals \\`ID\\`.
         self.rid = rid
+        # Whether to use operator matching or legacy matching.
         self.use_conditions = use_conditions
 
     def validate(self):
@@ -145,19 +154,33 @@ class GraphFlowNodeProperties(DaraModel):
         triggers: List[str] = None,
         type: str = None,
     ):
+        # 1: Do not auto-review.
         self.auto_review = auto_review
+        # Enable branch judgment.
         self.branch_judge = branch_judge
+        # Maximum N sentences to check.
         self.check_more_size = check_more_size
+        # Quality check dimension
         self.check_type = check_type
+        # General operator logic.
         self.lambda_ = lambda_
+        # Role when the type is \\`single\\`.
         self.role = role
+        # Is scored.
         self.rule_score_type = rule_score_type
+        # Indicates expression when the type is \\`single\\`.
         self.say_type = say_type
+        # Score value
         self.score_num = score_num
+        # 0: Add or deduct points after the rule is triggered; 1: Score once after the rule is triggered.
         self.score_num_type = score_num_type
+        # 0: Score when the node is hit.
         self.score_rule_hit_type = score_rule_hit_type
+        # 1: Add points; 3: Deduct points; default is 1.
         self.score_type = score_type
+        # Operators to follow.
         self.triggers = triggers
+        # Property type
         self.type = type
 
     def validate(self):
@@ -268,11 +291,17 @@ class GraphFlowNodeNextNodes(DaraModel):
         next_node_id: int = None,
         triggers: List[str] = None,
     ):
+        # Quality check dimension
         self.check_type = check_type
+        # Flow branch priority. A smaller value indicates higher priority.
         self.index = index
+        # Lambda expression for the next hop.
         self.lambda_ = lambda_
+        # Conditional branch name.
         self.name = name
+        # Next node ID.
         self.next_node_id = next_node_id
+        # Operators to follow.
         self.triggers = triggers
 
     def validate(self):

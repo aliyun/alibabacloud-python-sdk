@@ -12,9 +12,13 @@ class GetMemoryResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
+        # The description of the long-term memory.
         self.description = description
+        # The ID of the long-term memory.
         self.memory_id = memory_id
+        # The request ID.
         self.request_id = request_id
+        # The ID of the workspace to which the long-term memory belongs.
         self.workspace_id = workspace_id
 
     def validate(self):

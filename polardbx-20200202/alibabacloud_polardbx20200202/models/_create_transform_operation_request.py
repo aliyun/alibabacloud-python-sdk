@@ -11,8 +11,11 @@ class CreateTransformOperationRequest(DaraModel):
         operation: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The type of the operation.
         self.operation = operation
+        # The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
         self.region_id = region_id
 
     def validate(self):

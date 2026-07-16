@@ -14,17 +14,25 @@ class FlowBindPhoneResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of access denial; this field is returned only when RAM verification fails.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Status code.
+        # The status code.
         self.code = code
-        # Error description message.
+        # The error message.
         self.message = message
-        # Return result.
+        # Indicates whether the result was successful. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.model = model
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Values: true: success; false: failure.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

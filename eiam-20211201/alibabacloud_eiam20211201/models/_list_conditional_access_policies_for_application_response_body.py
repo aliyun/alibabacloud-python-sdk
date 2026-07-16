@@ -13,7 +13,9 @@ class ListConditionalAccessPoliciesForApplicationResponseBody(DaraModel):
         conditional_access_policies: List[main_models.ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPolicies] = None,
         request_id: str = None,
     ):
+        # Collection of conditional access policies.
         self.conditional_access_policies = conditional_access_policies
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,31 +69,31 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         priority: int = None,
         status: str = None,
     ):
-        # IDaaS EIAM 条件访问策略Id
+        # Conditional access policy ID.
         self.conditional_access_policy_id = conditional_access_policy_id
-        # IDaaS EIAM 条件访问策略名称
+        # Conditional access policy name.
         self.conditional_access_policy_name = conditional_access_policy_name
-        # IDaaS EIAM 条件访问策略类型
+        # Conditional access policy type.
         self.conditional_access_policy_type = conditional_access_policy_type
-        # IDaaS EIAM 条件访问策略内容
+        # Conditional access policy conditions.
         self.conditions_config = conditions_config
-        # 创建时间
+        # Creation time.
         self.create_time = create_time
-        # IDaaS EIAM 条件访问策略执行Action
+        # Conditional access policy decision configuration.
         self.decision_config = decision_config
-        # IDaaS EIAM 条件访问策略执行类型
+        # Conditional access policy decision type.
         self.decision_type = decision_type
-        # IDaaS EIAM 条件访问策略描述
+        # Conditional access policy description.
         self.description = description
-        # IDaaS EIAM 条件访问策略执行点
+        # Conditional access policy evaluation point.
         self.evaluate_at = evaluate_at
-        # IDaaS EIAM 实例Id
+        # Instance ID.
         self.instance_id = instance_id
-        # 更新时间
+        # Last updated time.
         self.last_updated_time = last_updated_time
-        # 优先级
+        # Priority.
         self.priority = priority
-        # IDaaS EIAM 条件访问策略启用禁用状态
+        # Enabled or disabled status of the conditional access policy.
         self.status = status
 
     def validate(self):
@@ -200,14 +202,15 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         mfa_authentication_methods: List[str] = None,
         mfa_type: str = None,
     ):
+        # Whether session reuse is enabled.
         self.active_session_reuse_status = active_session_reuse_status
-        # IDaaS EIAM 条件访问策略决策Action
+        # Conditional access policy decision action.
         self.effect = effect
-        # IDaaS EIAM 条件访问策略重复认证时间间隔(秒)
+        # Conditional access policy re-authentication interval (seconds).
         self.mfa_authentication_interval_seconds = mfa_authentication_interval_seconds
-        # IDaaS EIAM 条件访问策略允许使用的mfa类型
+        # Collection of MFA authentication methods allowed by the conditional access policy.
         self.mfa_authentication_methods = mfa_authentication_methods
-        # IDaaS EIAM 条件访问策略Mfa类型
+        # Conditional access policy MFA type.
         self.mfa_type = mfa_type
 
     def validate(self):
@@ -261,11 +264,11 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         network_zones: main_models.ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigNetworkZones = None,
         users: main_models.ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPoliciesConditionsConfigUsers = None,
     ):
-        # 条件访问策略目标应用
+        # Conditional access policy target applications.
         self.applications = applications
-        # 条件访问策略网络区域
+        # Conditional access policy network zones.
         self.network_zones = network_zones
-        # 条件访问策略目标用户
+        # Conditional access policy target users.
         self.users = users
 
     def validate(self):
@@ -318,17 +321,17 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         include_organizational_units: List[str] = None,
         include_users: List[str] = None,
     ):
-        # 排除的用户组
+        # Excluded groups.
         self.exclude_groups = exclude_groups
-        # 排除的组织
+        # Excluded organizational units.
         self.exclude_organizational_units = exclude_organizational_units
-        # 排除的用户
+        # Excluded users.
         self.exclude_users = exclude_users
-        # 选择的用户组
+        # Included groups.
         self.include_groups = include_groups
-        # 选择的组织
+        # Included organizational units.
         self.include_organizational_units = include_organizational_units
-        # 选择的用户
+        # Included users.
         self.include_users = include_users
 
     def validate(self):
@@ -387,9 +390,9 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         exclude_network_zones: List[str] = None,
         include_network_zones: List[str] = None,
     ):
-        # 排除的网络区域
+        # Excluded network zones.
         self.exclude_network_zones = exclude_network_zones
-        # 选择的网络区域
+        # Included network zones.
         self.include_network_zones = include_network_zones
 
     def validate(self):
@@ -424,9 +427,9 @@ class ListConditionalAccessPoliciesForApplicationResponseBodyConditionalAccessPo
         exclude_applications: List[str] = None,
         include_applications: List[str] = None,
     ):
-        # 排除的应用
+        # Excluded applications.
         self.exclude_applications = exclude_applications
-        # 选择的应用
+        # Included applications.
         self.include_applications = include_applications
 
     def validate(self):

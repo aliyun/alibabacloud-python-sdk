@@ -19,12 +19,18 @@ class DescribeHaVipsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The query filters. You can specify 1 to 20 filters.
+        # 
         # This parameter is required.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Maximum value: 50. Default value: 10.
         self.page_size = page_size
+        # The ID of the region.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
@@ -106,7 +112,23 @@ class DescribeHaVipsRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
+        # The filter key. Valid values:
+        # 
+        # `HaVipId`: The ID of the high-availability virtual IP (HAVIP).
+        # 
+        # `HaVipName`: The name of the HAVIP.
+        # 
+        # `VpcId`: The ID of the VPC to which the HAVIP belongs.
+        # 
+        # `VSwitchId`: The ID of the vSwitch to which the HAVIP belongs.
+        # 
+        # `IpAddress`: The IP address of the HAVIP.
+        # 
+        # `AssociatedInstanceType`: The type of instance associated with the HAVIP. The value must be `EcsInstance`.
+        # 
+        # `AssociatedInstanceId`: The ID of the instance associated with the HAVIP.
         self.key = key
+        # A list of 1 to 20 values.
         self.value = value
 
     def validate(self):

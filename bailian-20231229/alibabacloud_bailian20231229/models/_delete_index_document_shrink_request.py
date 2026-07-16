@@ -10,11 +10,11 @@ class DeleteIndexDocumentShrinkRequest(DaraModel):
         document_ids_shrink: str = None,
         index_id: str = None,
     ):
-        # The list of the primary key IDs of the documents.
+        # The list of file IDs.
         # 
         # This parameter is required.
         self.document_ids_shrink = document_ids_shrink
-        # The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         # 
         # This parameter is required.
         self.index_id = index_id

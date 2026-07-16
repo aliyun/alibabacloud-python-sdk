@@ -11,8 +11,11 @@ class AssignCertificateCountResponseBody(DaraModel):
         current_year_free_cert_count: int = None,
         request_id: str = None,
     ):
+        # The number of assigned certificates.
         self.cert_count = cert_count
+        # The number of free certificates for the current year.
         self.current_year_free_cert_count = current_year_free_cert_count
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

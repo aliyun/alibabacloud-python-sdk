@@ -13,12 +13,18 @@ class DescribeVpcFirewallManualVSwitchListRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
+        # The language of request and response messages.
         self.lang = lang
+        # The UID of the member account.
         self.member_uid = member_uid
         # This parameter is required.
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The ID of the VPC instance.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

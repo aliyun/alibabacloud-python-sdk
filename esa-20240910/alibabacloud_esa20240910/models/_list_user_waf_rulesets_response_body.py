@@ -17,12 +17,17 @@ class ListUserWafRulesetsResponseBody(DaraModel):
         rulesets: List[main_models.ListUserWafRulesetsResponseBodyRulesets] = None,
         total_count: int = None,
     ):
+        # The instance usage.
         self.instance_usage = instance_usage
+        # The page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # A list of WAF ruleset objects.
         self.rulesets = rulesets
+        # The total number of records after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -93,11 +98,33 @@ class ListUserWafRulesetsResponseBodyRulesets(DaraModel):
         position: int = None,
         status: str = None,
     ):
+        # The WAF ruleset description.
         self.description = description
+        # The WAF ruleset ID.
         self.id = id
+        # The WAF ruleset name.
         self.name = name
+        # The WAF rule execution phase. Possible values:
+        # 
+        # - `http_whitelist`: Whitelist rule
+        # 
+        # - `http_custom`: Custom rule
+        # 
+        # - `http_managed`: Managed rule
+        # 
+        # - `http_anti_scan`: Scan protection rule
+        # 
+        # - `http_ratelimit`: Rate limit rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: Bot rule
+        # 
+        # - `http_security_level_rule`: Security rule
         self.phase = phase
+        # The WAF ruleset position.
         self.position = position
+        # The WAF ruleset status.
         self.status = status
 
     def validate(self):

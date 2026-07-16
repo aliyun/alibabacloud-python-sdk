@@ -10,7 +10,7 @@ class SubmitDNAJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the media fingerprint analysis job. We recommend that you save this ID for subsequent calls of other operations.
+        # The ID of the DNA job. Save this ID for subsequent API calls.
         self.job_id = job_id
         # The request ID.
         self.request_id = request_id

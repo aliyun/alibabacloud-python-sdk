@@ -27,96 +27,91 @@ class DescribeGroupedVulRequest(DaraModel):
         type: str = None,
         uuids: str = None,
     ):
-        # The alias of the vulnerability.
+        # The alias of the vulnerability to query.
         self.alias_name = alias_name
-        # The type of the asset on which the vulnerability is detected. Separate multiple types with commas (,). Valid values:
-        # 
-        # *   **ECS**: Elastic Compute Service (ECS) instance
-        # *   **CONTAINER**: container
+        # The Asset Type where the vulnerability is detected. Separate multiple types with commas (,). Valid values:
+        # - **ECS**: host asset
+        # - **CONTAINER**: container asset.
         self.asset_type = asset_type
-        # The type of the vulnerability. This parameter is valid only for application vulnerabilities. Separate multiple values with commas (,). Valid values:
-        # 
-        # *   **sca**: vulnerability that is detected based on software component analysis
-        # *   **app**: application vulnerability
+        # The vulnerability type. This query condition is valid only for application vulnerabilities. Separate multiple values with commas (,). Valid values:
+        # - **sca**: software constituency parsing vulnerability
+        # - **app**: application vulnerability.
         self.attach_types = attach_types
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The key of the condition that is used to query containers. Valid values:
+        # The container search field. Valid values:
         # 
-        # *   **instanceId**: the ID of the asset
-        # *   **appName**: the name of the application
-        # *   **clusterId**: the ID of the cluster
-        # *   **regionId**: the ID of the region
-        # *   **nodeName**: the name of the node
-        # *   **namespace**: the namespace
-        # *   **clusterName**: the name of the cluster
-        # *   **image**: the name of the image
-        # *   **imageRepoName**: the name of the image repository
-        # *   **imageRepoNamespace**: the namespace to which the image repository belongs
-        # *   **imageRepoTag**: the tag that is added to the image
-        # *   **imageDigest**: the digest of the image
+        # - **instanceId**: instance ID
+        # - **appName**: application name
+        # - **clusterId**: cluster ID
+        # - **regionId**: region
+        # - **nodeName**: node name
+        # - **namespace**: namespace
+        # - **clusterName**: cluster name
+        # - **image**: image name
+        # - **imageRepoName**: image repository name
+        # - **imageRepoNamespace**: image repository namespace
+        # - **imageRepoTag**: image tag
+        # - **imageDigest**: image digest.
         self.container_field_name = container_field_name
-        # The value specified by **ContainerFieldName**.
+        # The value that corresponds to **ContainerFieldName**.
         self.container_field_value = container_field_value
-        # The number of the page to return. Default value: **1**.
+        # The page number of the first page to display in the query results. Default value: **1**, which indicates that the results start from page 1.
         self.current_page = current_page
         # The CVE ID.
-        # 
-        # >  You can call the [DescribeVulListPage](~~DescribeVulListPage~~) operation to query the CVE ID.
+        # > Call the [DescribeVulListPage](~~DescribeVulListPage~~) operation to obtain this parameter.
         self.cve_id = cve_id
         # Specifies whether the vulnerability is handled. Valid values:
         # 
-        # *   **y**: handled
-        # *   **n**: not handled
+        # - **y**: handled
+        # - **n**: not handled.
         self.dealed = dealed
         # The ID of the asset group.
         self.group_id = group_id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The priorities to fix the vulnerabilities. Separate multiple priorities with commas (,). Valid values:
+        # The priority of the vulnerability fix to query. Separate multiple priorities with commas (,). Valid values:
         # 
-        # *   **asap**: high
-        # *   **later**: medium
-        # *   **nntf**: low
+        # - **asap**: high
+        # - **later**: medium
+        # - **nntf**: low.
         self.necessity = necessity
-        # The number of entries per page. Default value: 10.
+        # The number of vulnerability entries per page in a paged query. Default value: 10, which indicates that 10 vulnerability entries are displayed per page.
         self.page_size = page_size
-        # Indicates whether the application protection feature is supported. Valid values:
+        # Specifies whether Runtime Application Self-Protection (RASP) supports real-time protection against the vulnerability. Valid values:
         # 
-        # - **0**: no.
-        # 
-        # - **1**: yes.
+        # - **0**: Not supported.
+        # - **1**: Supported.
         self.rasp_defend = rasp_defend
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the account ID.
+        # The ID of the Alibaba Cloud account that is added as one of the member accounts in a resource folder.
+        # > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
-        # The tag that is used to search for the vulnerability. Valid values:
+        # The label used for filtering. Valid values:
         # 
-        # *   **Restart required**
-        # *   **Remote utilization**
-        # *   **EXP exists**
-        # *   **Available**
-        # *   **Elevation of Privilege**
-        # *   **Code Execution**
+        # - **Restart required**
+        # - **Remote utilization**
+        # - **EXP exists**
+        # - **Available**
+        # - **Privilege escalation**
+        # - **Code execution**
         self.search_tags = search_tags
-        # The query type for containers. Valid values:
+        # The container query type. Valid values:
         # 
-        # *   **containerId**: the ID of the container
-        # *   **uuid**: the ID of the asset
+        # - **containerId**: container ID
+        # - **uuid**: asset ID.
         self.target_type = target_type
-        # The type of the vulnerability that you want to query. Default value: cve. Valid values:
+        # The type of the vulnerability to query. Default value: cve. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **app**: application vulnerability that is detected by network scanning
-        # *   **sca**: application vulnerability that is detected by software component analysis
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **app**: application vulnerability (network scan)
+        # - **sca**: application vulnerability (software constituency parsing).
         self.type = type
-        # The UUID of the server. Separate multiple UUIDs with commas (,).
+        # The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
         self.uuids = uuids
 
     def validate(self):

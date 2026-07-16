@@ -18,20 +18,26 @@ class QueryVideoCognitionJobResponseBody(DaraModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # The input file.
         self.input = input
-        # The status of the task. Valid values:
+        # The job status. Valid values:
         # 
-        # *   **Success**
-        # *   **Fail**
-        # *   **Processing**
-        # *   **Submitted**
+        # - **Success**: The job succeeded.
+        # 
+        # - **Fail**: The job failed.
+        # 
+        # - **Processing**: The job is in progress.
+        # 
+        # - **Submitted**: The job has been submitted and is awaiting processing.
         self.job_status = job_status
+        # The request parameters.
         self.params = params
         # The request ID.
         self.request_id = request_id
         self.results = results
+        # The template ID.
         self.template_id = template_id
-        # The user-defined data.
+        # The user data.
         self.user_data = user_data
 
     def validate(self):
@@ -171,7 +177,9 @@ class QueryVideoCognitionJobResponseBodyInput(DaraModel):
         media: str = None,
         type: str = None,
     ):
+        # The URL of the input file.
         self.media = media
+        # The type of the input file. Valid value: OSS.
         self.type = type
 
     def validate(self):

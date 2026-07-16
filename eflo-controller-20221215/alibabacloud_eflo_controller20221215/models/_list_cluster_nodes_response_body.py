@@ -14,9 +14,9 @@ class ListClusterNodesResponseBody(DaraModel):
         nodes: List[main_models.ListClusterNodesResponseBodyNodes] = None,
         request_id: str = None,
     ):
-        # The returned pagination token which can be used in the next request to retrieve a new page of results.
+        # The token to retrieve the next page of results. If this parameter is empty, no more results are available.
         self.next_token = next_token
-        # The nodes.
+        # The list of nodes.
         self.nodes = nodes
         # The request ID.
         self.request_id = request_id
@@ -87,26 +87,27 @@ class ListClusterNodesResponseBodyNodes(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The commodity code.
+        # The unique code that identifies the cloud product or service.
         self.commodity_code = commodity_code
         # The creation time.
         self.create_time = create_time
-        # The time when the node expires.
+        # The expiration time of the node.
         self.expired_time = expired_time
-        # Indicates whether file storage mounting is supported.
+        # Indicates whether the node supports mounting file storage.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The hostname.
         self.hostname = hostname
-        # The cluster number.
+        # The ID of the HPN zone.
         self.hpn_zone = hpn_zone
+        # The hyper node ID.
         self.hyper_node_id = hyper_node_id
-        # The system image ID.
+        # The image ID.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
-        # The node type.
+        # The machine type.
         self.machine_type = machine_type
-        # The network information.
+        # Network details.
         self.networks = networks
         # The node group ID.
         self.node_group_id = node_group_id
@@ -114,36 +115,21 @@ class ListClusterNodesResponseBodyNodes(DaraModel):
         self.node_group_name = node_group_name
         # The node ID.
         self.node_id = node_id
+        # The type of the node.
         self.node_type = node_type
-        # The node status.
-        # 
-        # Valid values:
-        # 
-        # *   Extending
-        # *   UnusedNodeStopped
-        # *   UnusedNodeStopping
-        # *   Unused
-        # *   Using
-        # *   ReleaseLocking
-        # *   Operating
-        # *   Cutting
-        # *   ClusterNodeStopped
-        # *   UnusedNodeRecovering
-        # *   ClusterNodeStopping
-        # *   ClusterNodeRecovering
-        # *   Replacing
+        # The status of the node.
         self.operating_state = operating_state
-        # The serial number of the node.
+        # The serial number (SN) of the node.
         self.sn = sn
-        # The tags.
+        # The list of tags attached to the node.
         self.tags = tags
-        # The job ID.
+        # The task ID.
         self.task_id = task_id
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the VPC where the node is located.
         self.vpc_id = vpc_id
-        # The zone ID.
+        # The availability zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -354,13 +340,13 @@ class ListClusterNodesResponseBodyNodesNetworks(DaraModel):
         subnet_id: str = None,
         vpd_id: str = None,
     ):
-        # The name of the network port for the node.
+        # The name of the network interface.
         self.bond_name = bond_name
-        # The IP address of the node in the virtual private cloud (VPC).
+        # The IP address of the node in the VPC.
         self.ip = ip
         # The subnet ID.
         self.subnet_id = subnet_id
-        # The VPC ID.
+        # The ID of the VPC to which the network interface belongs.
         self.vpd_id = vpd_id
 
     def validate(self):

@@ -18,77 +18,91 @@ class DeleteAclRequest(DaraModel):
         region_id: str = None,
         username: str = None,
     ):
-        # The type of the operation allowed by the access control list (ACL). Valid values:
+        # Operation type. Valid values:
         # 
-        # *   **Write**: data writes.
-        # *   **Read**: data reads.
-        # *   **Describe**: reads of transaction IDs.
-        # *   **IdempotentWrite**: idempotent data writes to clusters.
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
-        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # - **Write**: Write
+        # 
+        # - **Read**: Read
+        # 
+        # - **Describe**: Read TransactionalId
+        # 
+        # - **IdempotentWrite**: Idempotent write to Cluster
+        # 
+        # - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
+        # 
+        # - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
         # 
         # This parameter is required.
         self.acl_operation_type = acl_operation_type
-        # The types of operations allowed by the ACL. Separate multiple operations with commas (,).
+        # Batch authorization operation types. Multiple operations are separated by commas (,).
         # 
         # Valid values:
         # 
-        # *   **Write**: data writes.
-        # *   **Read**: data reads.
-        # *   **Describe**: reads of transaction IDs.
-        # *   **IdempotentWrite**: idempotent data writes to clusters.
-        # *   **IDEMPOTENT_WRITE**: idempotent data writes to clusters. This value is available only for serverless ApsaraMQ for Kafka instances.
-        # *   **DESCRIBE_CONFIGS**: configuration query. This value is available only for serverless ApsaraMQ for Kafka instances.
+        # - **Write**: Read
         # 
-        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        # - **Read**: Write
+        # 
+        # - **Describe**: Read TransactionalId
+        # 
+        # - **IdempotentWrite**: Idempotent write to Cluster
+        # 
+        # - **IDEMPOTENT_WRITE**: Idempotent write to Cluster, only available for Serverless instances.
+        # 
+        # - **DESCRIBE_CONFIGS**: Query configuration, only available for Serverless instances.
+        # 
+        # > This parameter is only supported for Serverless instances.
         self.acl_operation_types = acl_operation_types
-        # The authorization method. Valid values:
+        # Authorization method. Valid values:
         # 
-        # *   Deny
-        # *   ALLOW
+        # - DENY: Deny
         # 
-        # >  This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        # - ALLOW: Allow
+        # 
+        # > This parameter is only supported for Serverless instances.
         self.acl_permission_type = acl_permission_type
-        # The name of the resource.
+        # Resource name.
         # 
-        # *   The value can be the name of a topic or consumer group.
-        # *   You can use an asterisk (\\*) to indicate the names of all topics or consumer groups.
+        # - Topic name or Group name.
+        # 
+        # - Asterisk (\\*) represents all Topic or Group names.
         # 
         # This parameter is required.
         self.acl_resource_name = acl_resource_name
-        # The mode that is used to match resources. Valid values:
+        # Matching pattern. Valid values:
         # 
-        # *   **LITERAL:** full match
-        # *   **PREFIXED**: prefix match
+        # - **LITERAL**: Exact matching pattern
+        # 
+        # - **PREFIXED**: Prefix matching pattern
         # 
         # This parameter is required.
         self.acl_resource_pattern_type = acl_resource_pattern_type
-        # The resource type. Valid values:
+        # Resource type.
         # 
-        # *   **Topic**: topic
-        # *   **Group**: consumer group
-        # *   **Cluster**: cluster
-        # *   **TransactionalId**: transactional ID
+        # - **Topic**: Message topic.
+        # 
+        # - **Group**: Consumer group.
+        # 
+        # - **Cluster**: Instance.
+        # 
+        # - **TransactionalId**: Transaction ID.
         # 
         # This parameter is required.
         self.acl_resource_type = acl_resource_type
-        # The IP address of the source.
+        # Source IP.
         # 
-        # > 
-        # 
-        # *   You can specify only a specific IP address or use the asterisk (\\*) wildcard character to specify all IP addresses. CIDR blocks are not supported.
-        # 
-        # *   This parameter is available only for serverless ApsaraMQ for Kafka instances.
+        # > - Only supports specific IP addresses or setting \\* (all IPs), does not support IP segments.
+        # >
+        # > - This parameter is only supported for Serverless instances.
         self.host = host
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the region.
+        # Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the user.
+        # Username.
         # 
         # This parameter is required.
         self.username = username

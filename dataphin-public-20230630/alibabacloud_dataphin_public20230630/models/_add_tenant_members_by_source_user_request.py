@@ -13,7 +13,10 @@ class AddTenantMembersBySourceUserRequest(DaraModel):
         add_command: main_models.AddTenantMembersBySourceUserRequestAddCommand = None,
         op_tenant_id: int = None,
     ):
+        # The add request.
         self.add_command = add_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -50,6 +53,7 @@ class AddTenantMembersBySourceUserRequestAddCommand(DaraModel):
         self,
         source_user_list: List[main_models.AddTenantMembersBySourceUserRequestAddCommandSourceUserList] = None,
     ):
+        # The list of source users.
         self.source_user_list = source_user_list
 
     def validate(self):
@@ -90,11 +94,17 @@ class AddTenantMembersBySourceUserRequestAddCommandSourceUserList(DaraModel):
         mobile_phone: str = None,
         source_id: str = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The DingTalk number.
         self.ding_number = ding_number
+        # The display name.
         self.display_name = display_name
+        # The email address.
         self.mail = mail
+        # The phone number.
         self.mobile_phone = mobile_phone
+        # The original ID of the user.
         self.source_id = source_id
 
     def validate(self):

@@ -12,11 +12,11 @@ class ListAgentRuntimeEndpointsResult(DaraModel):
         data: main_models.ListAgentRuntimeEndpointsOutput = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型，比如 ERR_BAD_REQUEST ERR_VALIDATION_FAILED ERR_INTERNAL_SERVER_ERROR
+        # The status code of the response. `SUCCESS` indicates that the operation succeeded. If the operation fails, an error code is returned, such as `ERR_BAD_REQUEST`, `ERR_VALIDATION_FAILED`, or `ERR_INTERNAL_SERVER_ERROR`.
         self.code = code
-        # 智能体运行时端点列表的详细信息
+        # Detailed information about the agent runtime endpoints.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # A unique request identifier for troubleshooting purposes.
         self.request_id = request_id
 
     def validate(self):

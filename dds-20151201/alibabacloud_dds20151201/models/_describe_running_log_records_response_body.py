@@ -20,13 +20,13 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
         # The database engine.
         self.engine = engine
         self.items = items
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of records per page.
         self.page_record_count = page_record_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):

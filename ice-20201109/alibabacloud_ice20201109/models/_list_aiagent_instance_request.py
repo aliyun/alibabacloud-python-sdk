@@ -13,17 +13,17 @@ class ListAIAgentInstanceRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The ID of the AI agent.
+        # Agent ID.
         # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+        # End time of the query in ISO 8601 format. No default value.
         self.end_time = end_time
-        # The page number. Default value: 1. Valid values: 1 to 100.
+        # Page number. Default is 1. Valid values: 1 to 100.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Valid values: 0 to 100.
+        # Number of results per page. Default is 10. Valid values: 0 to 100.
         self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. This parameter does not have a default value.
+        # Start time of the query in ISO 8601 format. No default value.
         self.start_time = start_time
 
     def validate(self):

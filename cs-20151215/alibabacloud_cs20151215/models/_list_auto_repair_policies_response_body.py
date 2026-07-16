@@ -12,6 +12,7 @@ class ListAutoRepairPoliciesResponseBody(DaraModel):
         self,
         items: List[main_models.ListAutoRepairPoliciesResponseBodyItems] = None,
     ):
+        # The auto-repair policies.
         self.items = items
 
     def validate(self):
@@ -52,11 +53,17 @@ class ListAutoRepairPoliciesResponseBodyItems(DaraModel):
         resource_type: str = None,
         rules: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRules] = None,
     ):
+        # The ID of the auto-repair policy.
         self.id = id
+        # The name of the auto-repair policy.
         self.name = name
+        # The list of resources bound to the auto-repair policy.
         self.resource_ids = resource_ids
+        # The subtype of resource bound to the auto-repair policy.
         self.resource_sub_type = resource_sub_type
+        # The type of resource bound to the auto-repair policy.
         self.resource_type = resource_type
+        # The list of auto-repair sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -123,7 +130,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRules(DaraModel):
         incidents: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRulesIncidents] = None,
         repair_procedure: List[main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure] = None,
     ):
+        # The list of identified incidents.
         self.incidents = incidents
+        # The repair procedure.
         self.repair_procedure = repair_procedure
 
     def validate(self):
@@ -176,8 +185,11 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure(DaraModel):
         intervention: main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
+        # The configuration parameters of the procedure.
         self.config = config
+        # The configuration for manual intervention.
         self.intervention = intervention
+        # The name of the procedure.
         self.name = name
 
     def validate(self):
@@ -222,9 +234,13 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention(Da
         inquiring_label: main_models.ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
+        # The label configuration for confirming authorization. When you add the following label to a node, it indicates that you authorize ACK to execute the action of this phase. After completing the action of this phase, ACK automatically removes the authorization inquiry label and the confirmation label corresponding to this phase. If you do not add the following label to authorize the action in time, ACK will not execute the action of this phase or any subsequent actions, and the node may remain in a damaged state.
         self.approved_label = approved_label
+        # Specifies whether to enable manual approval.
         self.enable = enable
+        # The label configuration for authorization inquiry. When this phase is entered, ACK adds the following label to your node and waits for your authorization to execute the action of this phase.
         self.inquiring_label = inquiring_label
+        # The type of manual approval.
         self.type = type
 
     def validate(self):
@@ -276,7 +292,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInq
         key: str = None,
         value: str = None,
     ):
+        # The label `key`.
         self.key = key
+        # The taint `value`.
         self.value = value
 
     def validate(self):
@@ -311,7 +329,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApp
         key: str = None,
         value: str = None,
     ):
+        # The label `key`.
         self.key = key
+        # The label `value`.
         self.value = value
 
     def validate(self):
@@ -346,7 +366,9 @@ class ListAutoRepairPoliciesResponseBodyItemsRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the incident.
         self.name = name
+        # The diagnosis type.
         self.type = type
 
     def validate(self):

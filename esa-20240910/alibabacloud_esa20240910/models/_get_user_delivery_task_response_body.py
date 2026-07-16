@@ -23,33 +23,42 @@ class GetUserDeliveryTaskResponseBody(DaraModel):
         status: str = None,
         task_name: str = None,
     ):
-        # The log category. Valid values:
+        # The business type. Valid values:
         # 
-        # *   **dcdn_log_access_l1** (default): access logs.
-        # *   **dcdn_log_er**: Edge Routine logs.
-        # *   **dcdn_log_waf**: firewall logs.
-        # *   **dcdn_log_ipa**: TCP/UDP proxy logs.
+        # - **dcdn_log_access_l1** (default): access log.
+        # 
+        # - **dcdn_log_er**: edge function log.
+        # 
+        # - **dcdn_log_waf**: WAF log.
+        # 
+        # - **dcdn_log_ipa**: Layer 4 acceleration log.
         self.business_type = business_type
         # The data center. Valid values:
         # 
-        # *   cn: the Chinese mainland.
-        # *   sg: outside the Chinese mainland.
-        self.data_center = data_center
-        # The destination of the delivery. Valid values:
+        # - **cn**: Chinese mainland
         # 
-        # *   sls: Alibaba Cloud Simple Log Service (SLS).
-        # *   http: HTTP server.
-        # *   aws3: Amazon Simple Storage Service (S3).
-        # *   oss: Alibaba Cloud Object Storage Service (OSS).
-        # *   kafka: Kafka.
-        # *   aws3cmpt: S3-compatible storage service.
+        # - **sg**: Global (excluding the Chinese mainland)
+        self.data_center = data_center
+        # The delivery type. Valid values:
+        # 
+        # - **sls**: Log Service
+        # 
+        # - **http**: HTTP service
+        # 
+        # - **aws3**: Amazon S3
+        # 
+        # - **oss**: OSS
+        # 
+        # - **kafka**: Kafka service
+        # 
+        # - **aws3cmpt**: Amazon S3-compatible service
         self.delivery_type = delivery_type
         self.details = details
         # The discard rate.
         self.discard_rate = discard_rate
-        # The fields.
+        # A comma-separated list of fields.
         self.field_list = field_list
-        # The filtering rules.
+        # The filter rules.
         self.filter_rules = filter_rules
         self.filter_ver = filter_ver
         self.raw_rule = raw_rule
@@ -57,9 +66,9 @@ class GetUserDeliveryTaskResponseBody(DaraModel):
         self.request_id = request_id
         # The delivery configuration.
         self.sink_config = sink_config
-        # The status of the delivery task.
+        # The task status.
         self.status = status
-        # The name of the delivery task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

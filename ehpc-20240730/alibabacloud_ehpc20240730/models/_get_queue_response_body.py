@@ -13,9 +13,9 @@ class GetQueueResponseBody(DaraModel):
         queue: main_models.GetQueueResponseBodyQueue = None,
         request_id: str = None,
     ):
-        # The queue configurations.
+        # The configuration of the queue.
         self.queue = queue
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,50 +68,53 @@ class GetQueueResponseBodyQueue(DaraModel):
         update_time: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The auto scale-out policy of the queue.
+        # The strategy used for automatic scale-out of the queue.
         self.allocation_strategy = allocation_strategy
-        # The hardware configurations of the compute nodes in the queue.
+        # The hardware configurations of compute nodes in the queue.
         self.compute_nodes = compute_nodes
         self.create_time = create_time
-        # Indicates whether auto scale-in is enabled for the queue. Valid values:
+        # Specifies whether automatic scale-in is enabled for the queue. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_scale_in = enable_scale_in
-        # Indicates whether auto scale-out is enabled for the queue. Valid values:
+        # Specifies whether automatic scale-out is enabled for the queue. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_scale_out = enable_scale_out
-        # The hostname prefix of the compute nodes in the queue.
+        # The hostname prefix for compute nodes in the queue.
         self.hostname_prefix = hostname_prefix
-        # The hostname suffix of the compute nodes in the queue.
+        # The hostname suffix for compute nodes in the queue.
         self.hostname_suffix = hostname_suffix
         # The initial number of nodes in the queue.
         self.initial_count = initial_count
-        # The type of the network between compute nodes in the queue. Valid values:
+        # The network type between compute nodes in the queue. Valid values:
         # 
-        # *   vpc
-        # *   eRDMA
+        # - vpc
+        # 
+        # - eRDMA
         self.inter_connect = inter_connect
-        # The nodes for which deletion protection is enabled in the queue.
+        # The list of nodes with deletion protection enabled in the queue.
         self.keep_alive_nodes = keep_alive_nodes
-        # The maximum number of compute nodes that the queue can contain.
+        # The maximum number of compute nodes that the queue maintains.
         self.max_count = max_count
-        # The minimum number of nodes that are delivered to the queue in each scale-out cycle.
+        # The minimum number of nodes delivered per scale-out cycle.
         self.max_count_per_cycle = max_count_per_cycle
-        # The minimum number of compute nodes that the queue must contain.
+        # The minimum number of compute nodes that the queue maintains.
         self.min_count = min_count
-        # The queue name.
+        # The name of the queue.
         # 
         # This parameter is required.
         self.queue_name = queue_name
-        # The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
+        # The name of the RAM role attached to compute nodes in the queue.
         self.ram_role = ram_role
-        # Preset node pool ID.
+        # The ID of the reserved node pool.
         self.reserved_node_pool_id = reserved_node_pool_id
         self.update_time = update_time
-        # The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
+        # The list of virtual switches available to compute nodes in the queue. N ranges from 1 to 5.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

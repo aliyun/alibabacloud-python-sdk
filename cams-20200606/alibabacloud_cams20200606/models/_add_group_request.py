@@ -22,16 +22,26 @@ class AddGroupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The business tenant code.
         self.biz_code = biz_code
+        # The business extension information.
         self.biz_extend = biz_extend
+        # The contact description.
         self.contact_details = contact_details
+        # The contact name.
         self.contact_name = contact_name
+        # The country.
         self.country = country
+        # The email address.
         self.email = email
+        # The file path.
         self.file_path = file_path
+        # The group name.
+        # 
         # This parameter is required.
         self.group_name = group_name
         self.owner_id = owner_id
+        # The remarks.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

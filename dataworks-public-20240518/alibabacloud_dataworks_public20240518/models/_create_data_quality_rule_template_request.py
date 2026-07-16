@@ -15,11 +15,11 @@ class CreateDataQualityRuleTemplateRequest(DaraModel):
         sampling_config: main_models.CreateDataQualityRuleTemplateRequestSamplingConfig = None,
         visible_scope: str = None,
     ):
-        # The check settings for sample data.
+        # The sample validation settings.
         self.checking_config = checking_config
-        # The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
+        # The category directory where the custom template is stored. Hierarchy levels are separated by slashes. Each level name can be up to 1024 characters long and cannot contain whitespace characters or slashes.
         self.directory_path = directory_path
-        # The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
+        # The name of the rule template. It can be a combination of digits, English letters, Chinese characters, and half-width or full-width punctuation marks. The maximum length is 512 characters.
         # 
         # This parameter is required.
         self.name = name
@@ -27,12 +27,11 @@ class CreateDataQualityRuleTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sampling settings.
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # The applicable scope of the template. Valid values:
-        # 
-        # *   Tenant: The template is available in all workspaces in the current tenant.
-        # *   Project: The template is available only in the current workspace.
+        # The visibility scope of the template:
+        # - Tenant: available to the entire tenant
+        # - Project: available only in the current project
         self.visible_scope = visible_scope
 
     def validate(self):
@@ -97,27 +96,26 @@ class CreateDataQualityRuleTemplateRequestSamplingConfig(DaraModel):
         metric_parameters: str = None,
         setting_config: str = None,
     ):
-        # The metrics used for sampling. Valid values:
-        # 
-        # *   Count: the number of rows in the table.
-        # *   Min: the minimum value of the field.
-        # *   Max: the maximum value of the field.
-        # *   Avg: the average value of the field.
-        # *   DistinctCount: the number of unique values of the field after deduplication.
-        # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
-        # *   DuplicatedCount: the number of duplicated values of the field.
-        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-        # *   TableSize: the table size.
-        # *   NullValueCount: the number of rows in which the field value is null.
-        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
-        # *   GroupCount: the field value and the number of rows for each field value.
-        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+        # The name of the metric to sample:
+        # - Count: number of table rows
+        # - Min: minimum field value
+        # - Max: maximum field value
+        # - Avg: average field value
+        # - DistinctCount: number of distinct field values
+        # - DistinctPercent: ratio of the number of distinct field values to the number of data rows
+        # - DuplicatedCount: number of duplicate field values
+        # - DuplicatedPercent: ratio of the number of duplicate field values to the number of data rows
+        # - TableSize: table size
+        # - NullValueCount: number of rows where the field is null
+        # - NullValuePercent: ratio of rows where the field is null
+        # - GroupCount: each value and the corresponding number of data rows after aggregating by field value
+        # - CountNotIn: number of rows whose enum value does not match
+        # - CountDistinctNotIn: number of distinct values whose enum value does not match
+        # - UserDefinedSql: sample collection via a custom SQL statement
         self.metric = metric
-        # The parameters required for sampling.
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
-        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+        # Runtime parameter setting statements to be inserted and executed before the sampling statement is executed. The maximum length is 1000 characters. Currently only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -158,16 +156,15 @@ class CreateDataQualityRuleTemplateRequestCheckingConfig(DaraModel):
         referenced_samples_filter: str = None,
         type: str = None,
     ):
-        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to specify the query method of referenced samples.
+        # Some threshold types require querying reference samples and then aggregating the values of those reference samples to derive the threshold used for comparison. An expression is used here to describe how the reference samples are queried.
         self.referenced_samples_filter = referenced_samples_filter
-        # The threshold calculation method. Valid values:
-        # 
-        # *   Fixed
-        # *   Fluctation
-        # *   FluctationDiscreate
-        # *   Auto
-        # *   Average
-        # *   Variance
+        # The threshold calculation method:
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):

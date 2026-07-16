@@ -18,29 +18,29 @@ class DescribeRulePageListRequest(DaraModel):
         rule_status: str = None,
         sort: str = None,
     ):
-        # Set the language type for requests and responses, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Creation type.
+        # The creation type.
         self.create_type = create_type
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Event code.
+        # The event code.
         self.event_code = event_code
-        # Page size, default value is 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code.
+        # The region code.
         self.reg_id = reg_id
-        # Policy type.
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # Policy name.
+        # The policy name.
         self.rule_name = rule_name
-        # Policy status.
+        # The policy status.
         self.rule_status = rule_status
-        # Sorting method, default value is desc.
+        # The sort order. Default value: desc.
         # - desc: descending order
-        # - asc: ascending order
+        # - asc: ascending order.
         self.sort = sort
 
     def validate(self):

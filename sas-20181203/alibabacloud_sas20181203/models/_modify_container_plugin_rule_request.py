@@ -17,30 +17,28 @@ class ModifyContainerPluginRuleRequest(DaraModel):
         selected_policy: List[str] = None,
         white_images: List[str] = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for requests and responses. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The action mode of the rule. Valid values:
-        # 
-        # *   **1**: alerts
-        # *   **2**: block
+        # - **1**: Alert.
+        # - **2**: Block.
         self.mode = mode
-        # The ID of the rule.
+        # The rule ID.
+        # > You can call the [ListSasContainerWebDefenseRule](https://help.aliyun.com/document_detail/2623606.html) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the rule.
+        # The rule name.
         self.rule_name = rule_name
-        # The type of the rule. Valid values:
-        # 
-        # *   **0**: user-defined rule
-        # *   **1**: built-in rule
+        # The rule type. Valid values:
+        # - **0**: User-defined.
+        # - **1**: System built-in.
         self.rule_type = rule_type
-        # The rule items.
+        # The list of rule items.
         self.selected_policy = selected_policy
-        # The images that are added to the whitelist.
+        # The list of whitelisted images.
         self.white_images = white_images
 
     def validate(self):

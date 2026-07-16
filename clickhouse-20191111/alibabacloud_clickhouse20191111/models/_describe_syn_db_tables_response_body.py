@@ -14,7 +14,7 @@ class DescribeSynDbTablesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried tables.
+        # The tables.
         self.tables = tables
 
     def validate(self):

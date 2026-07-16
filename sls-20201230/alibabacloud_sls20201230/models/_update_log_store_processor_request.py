@@ -9,7 +9,7 @@ class UpdateLogStoreProcessorRequest(DaraModel):
         self,
         processor_name: str = None,
     ):
-        # The identifier of the ingest processor.
+        # The name of the ingest processor.
         # 
         # This parameter is required.
         self.processor_name = processor_name

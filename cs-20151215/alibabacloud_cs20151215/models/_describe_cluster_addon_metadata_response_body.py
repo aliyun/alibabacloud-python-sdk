@@ -11,7 +11,7 @@ class DescribeClusterAddonMetadataResponseBody(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The component schema parameters.
+        # The component parameter schema.
         self.config_schema = config_schema
         # The component name.
         self.name = name

@@ -14,12 +14,27 @@ class DescribeCostRulesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The model name, such as `gpt-4` or `qwen-turbo`.
         self.model_name = model_name
+        # The model service ID.
         self.model_service_id = model_service_id
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # Default value: 30.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

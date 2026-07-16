@@ -17,16 +17,48 @@ class ListInstancesRequest(DaraModel):
         union_instance_id: str = None,
         union_source: str = None,
     ):
+        # The list of digital employee scenario IDs.
         self.instance_id_list_json_string = instance_id_list_json_string
+        # The scenario name used as a filter condition.
         self.name = name
+        # The NLU type used to filter by dialog capability source. If this parameter is not specified, all types are selected.
+        # 
+        #  * MANAGED: managed (deprecated).
+        # 
+        #  * AUTHORIZED: authorized. In the public cloud, this refers to Chatbot service.
+        # 
+        #  * PROVIDED: private. Configured by specifying the AccessKey ID, AccessKey Secret, and chatEndpoint in the O&M console.
+        # * CCC_AUTHORIZED: uses a Chatbot authorized by Cloud Call Center.
+        # 
+        # * CCC_FUNCTION: uses Alibaba Cloud Function Compute.
+        # 
+        # * SSE_FUNCTION: uses a streaming function service. Function Compute that supports SSE, used to connect to third-party large language model chatbots.
+        # 
+        # 
+        # * PROMPTS: connects to Qwen foundation models.
+        # 
+        # * LOCAL: private cloud, local Chatbot.
         self.nlu_service_type_list_json_string = nlu_service_type_list_json_string
+        # The inbound number used as a filter condition.
         self.number = number
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of entries per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The scenario status used as a filter condition. If this parameter is not specified, all statuses are selected.
+        # * DISABLED: offline.
+        # * PUBLISHED: published.
         self.status = status
+        # The instance ID.
+        # 
+        # > When UnionSource is set to CCC, set UnionInstanceId to the instance ID of Cloud Call Center.
         self.union_instance_id = union_instance_id
+        # The source.
+        # * CCC: Cloud Call Center.
         self.union_source = union_source
 
     def validate(self):

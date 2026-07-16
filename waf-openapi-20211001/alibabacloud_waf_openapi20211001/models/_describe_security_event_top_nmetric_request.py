@@ -17,48 +17,47 @@ class DescribeSecurityEventTopNMetricRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter conditions for the query. Multiple conditions are evaluated by using a logical AND.
+        # The query filter conditions. Multiple filter conditions are evaluated using a logical AND.
         # 
         # This parameter is required.
         self.filter = filter
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of data entries that can be returned. Data entries are sorted in descending order before they are returned. Maximum value: 10.
+        # The number of data entries to return after the statistics are sorted in descending order. Maximum value: 10.
         # 
         # This parameter is required.
         self.limit = limit
-        # The metric whose top N data entries you want to return. The following metrics are supported:
+        # Specifies the type of data to return. Different Metric values correspond to different data content. The following Metric values are supported by this API operation:
+        # > The definition of "attack request" is described in the API operation description. The following descriptions reference this concept.
         # 
-        # >  For more information about attack requests, see the "Operation description" section of this topic.
-        # 
-        # *   real_client_ip: The system aggregates the source IP addresses of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
-        # *   http_user_agent: The system aggregates the User-Agent header field of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
-        # *   matched_host: The system aggregates the protected objects that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
-        # *   remote_region_id: The system aggregates the countries to which the source IP addresses of attack requests belong to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
-        # *   request_path: The system aggregates the URLs of attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The URLs exclude query strings.
-        # *   block_defense_scene: The system aggregates the protection modules that block attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries. The requests match protection rules whose actions are not set to Monitor.
-        # *   defense_scene: The system aggregates the protection modules that are matched by attack requests to collect statistics, sorts the statistical results in descending order, and returns top N data entries.
-        # *   defense_scene_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. Only protection rules whose actions are not set to Monitor are counted. The system returns the value in the following format:\\
-        #     `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
-        # *   defense_scene_with_rule_id: The system returns the IDs of top N protection rules that are matched by attack requests and also the related protection modules. The IDs and protection modules are connected by using hyphens (-). Protection rules whose actions are set to Monitor and Block are counted. The system returns the value in the following format:\\
-        #     `{ "Attribute": "", "Value": 1, "Name": "120075-waf_base" }`
-        # *   defense_scene_top_rule_id: The system returns top N matched protection rules of a specific protection module. You can specify Conditions in Filter to configure filter conditions. For example, you can use the following condition to query top N matched protection rules of the custom rule module:\\
-        #     `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
-        # *   defense_scene_rule_type: The system returns top N matched protection rules of the core web protection module. This metric is supported only by the core web protection module because only this module supports subtypes of protection rules. You must specify Conditions in Filter to configure filter conditions. Example:\\
-        #     `{ "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
+        # - real_client_ip: performs aggregation and sorting of the source IP addresses of attack requests in descending order, and returns the top N entries.
+        # - http_user_agent: performs aggregation and sorting of the User-Agent values of attack requests in descending order, and returns the top N entries.
+        # - matched_host: performs aggregation and sorting of the protected objects hit by attack requests in descending order, and returns the top N entries.
+        # - remote_region_id: performs aggregation and sorting of the countries to which the source IP addresses of attack requests belong in descending order, and returns the top N entries.
+        # - request_path: performs aggregation and sorting of the URLs (excluding query strings) of attack requests in descending order, and returns the top N entries.
+        # - block_defense_scene: performs aggregation and sorting of the final action modules of blocked requests (whose action is not "monitor") in descending order, and returns the top N entries.
+        # - defense_scene: performs aggregation and sorting of all protection modules hit by attack requests in descending order, and returns the top N entries.
+        # - defense_scene_rule_id: queries the top rule IDs of hit non-monitor rules and the protection modules to which the rules belong. This query returns statistics only for non-monitor mode rules. The returned data format is as follows:<br>
+        #  `{ "Attribute": "waf_base", "Value": 140, "Name": "111034" }`
+        # - defense_scene_with_rule_id: returns the top N rule IDs ranked by the number of hit requests and the protection modules to which the rules belong, connected by "-". This query does not distinguish between rule actions and includes both monitor rules and block rules. The returned format is as follows:<br>
+        #  `{ "Attribute": "",  "Value": 1,  "Name": "120075-waf_base" }`
+        # - defense_scene_top_rule_id: queries the top rule hits of a specific protection module. Specify filter conditions in the Conditions field of Filter. For example, to query the top rule hits of the "custom ACL" module, set the Conditions field as follows:<br>
+        #    `{ "Key": "defense_scene_map", "OpValue": "contain", "Values": "custom_acl" }`
+        # - defense_scene_rule_type: queries the top hit rule types of the web core protection module. Only the web core protection module supports this query because only web core protection has rule child classes. Specify filter conditions in the Conditions field of Filter. The format is as follows:<br>
+        # `    { "Key": "defense_scene", "OpValue": "eq", "Values": "waf_base" }`
         # 
         # This parameter is required.
         self.metric = metric
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: The Chinese mainland.
-        # *   **ap-southeast-1**: Outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -119,9 +118,9 @@ class DescribeSecurityEventTopNMetricRequestFilter(DaraModel):
         conditions: List[main_models.DescribeSecurityEventTopNMetricRequestFilterConditions] = None,
         date_range: main_models.DescribeSecurityEventTopNMetricRequestFilterDateRange = None,
     ):
-        # The filter conditions. Each object describes a filter condition.
+        # The list of filter conditions. Each node describes a filter condition.
         self.conditions = conditions
-        # The time range for the query.
+        # The query time range.
         # 
         # This parameter is required.
         self.date_range = date_range
@@ -169,11 +168,15 @@ class DescribeSecurityEventTopNMetricRequestFilterDateRange(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. The value is a Unix timestamp. Unit: seconds.
+        # The end time used for querying data, expressed as a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The beginning of the time range to query. The value is a Unix timestamp. Unit: seconds.
+        # The query data range cannot exceed the past 30 days. The start time used for querying data, expressed as a UNIX timestamp. Unit: seconds.
+        # 
+        # 
+        # > The start time must be later than the current time minus 30 days.
+        # > -
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -211,11 +214,11 @@ class DescribeSecurityEventTopNMetricRequestFilterConditions(DaraModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field name. This operation supports all fields. For more information, see the **Supported field names** section below.
+        # The field name on which the filter operation is performed. This operation supports all fields.
         self.key = key
-        # The operator. For more information, see the **Supported operators** section below.
+        # The operator.
         self.op_value = op_value
-        # The field content.
+        # The filter values.
         self.values = values
 
     def validate(self):

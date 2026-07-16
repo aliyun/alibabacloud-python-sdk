@@ -19,13 +19,21 @@ class ShopPageDataResult(DaraModel):
         start_date: str = None,
         status: str = None,
     ):
+        # Partner shops
         self.cooperation_shops = cooperation_shops
+        # End time
         self.end_date = end_date
+        # Purchaser ID
         self.purchaser_id = purchaser_id
+        # Shop ID
         self.shop_id = shop_id
+        # Shop name
         self.shop_name = shop_name
+        # Shop type
         self.shop_type = shop_type
+        # Start time
         self.start_date = start_date
+        # Shop status
         self.status = status
 
     def validate(self):

@@ -27,7 +27,18 @@ class Client(OpenApiClient):
             'cn-beijing': 'dysmsapi-proxy.cn-beijing.aliyuncs.com',
             'cn-hongkong': 'dysmsapi-xman.cn-hongkong.aliyuncs.com',
             'eu-central-1': 'dysmsapi.eu-central-1.aliyuncs.com',
-            'us-east-1': 'dysmsapi.us-east-1.aliyuncs.com'
+            'us-east-1': 'dysmsapi.us-east-1.aliyuncs.com',
+            'cn-zhangjiakou': 'dysmsapi.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'dysmsapi.aliyuncs.com',
+            'cn-shenzhen': 'dysmsapi.aliyuncs.com',
+            'cn-shanghai-finance-1': 'dysmsapi.aliyuncs.com',
+            'cn-qingdao': 'dysmsapi.aliyuncs.com',
+            'cn-north-2-gov-1': 'dysmsapi.aliyuncs.com',
+            'cn-huhehaote': 'dysmsapi.aliyuncs.com',
+            'cn-hangzhou-finance': 'dysmsapi.aliyuncs.com',
+            'cn-hangzhou': 'dysmsapi.aliyuncs.com',
+            'cn-chengdu': 'dysmsapi.aliyuncs.com',
+            'cn-beijing-finance-1': 'dysmsapi.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dysmsapi', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -133,6 +144,80 @@ class Client(OpenApiClient):
     ) -> main_models.AddExtCodeSignResponse:
         runtime = RuntimeOptions()
         return await self.add_ext_code_sign_with_options_async(request, runtime)
+
+    def add_rcs_sign_menu_with_options(
+        self,
+        request: main_models.AddRcsSignMenuRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRcsSignMenuResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.menu_content):
+            query['MenuContent'] = request.menu_content
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRcsSignMenu',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRcsSignMenuResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_rcs_sign_menu_with_options_async(
+        self,
+        request: main_models.AddRcsSignMenuRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRcsSignMenuResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.menu_content):
+            query['MenuContent'] = request.menu_content
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRcsSignMenu',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRcsSignMenuResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_rcs_sign_menu(
+        self,
+        request: main_models.AddRcsSignMenuRequest,
+    ) -> main_models.AddRcsSignMenuResponse:
+        runtime = RuntimeOptions()
+        return self.add_rcs_sign_menu_with_options(request, runtime)
+
+    async def add_rcs_sign_menu_async(
+        self,
+        request: main_models.AddRcsSignMenuRequest,
+    ) -> main_models.AddRcsSignMenuResponse:
+        runtime = RuntimeOptions()
+        return await self.add_rcs_sign_menu_with_options_async(request, runtime)
 
     def add_short_url_with_options(
         self,
@@ -984,6 +1069,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_digital_sms_template_with_options_async(request, runtime)
 
+    def create_rcsmobile_capable_task_with_options(
+        self,
+        request: main_models.CreateRCSMobileCapableTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCSMobileCapableTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phone_numbers_file):
+            query['PhoneNumbersFile'] = request.phone_numbers_file
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCSMobileCapableTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCSMobileCapableTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rcsmobile_capable_task_with_options_async(
+        self,
+        request: main_models.CreateRCSMobileCapableTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCSMobileCapableTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phone_numbers_file):
+            query['PhoneNumbersFile'] = request.phone_numbers_file
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCSMobileCapableTask',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCSMobileCapableTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rcsmobile_capable_task(
+        self,
+        request: main_models.CreateRCSMobileCapableTaskRequest,
+    ) -> main_models.CreateRCSMobileCapableTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_rcsmobile_capable_task_with_options(request, runtime)
+
+    async def create_rcsmobile_capable_task_async(
+        self,
+        request: main_models.CreateRCSMobileCapableTaskRequest,
+    ) -> main_models.CreateRCSMobileCapableTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rcsmobile_capable_task_with_options_async(request, runtime)
+
+    def create_rcstemplate_with_options(
+        self,
+        request: main_models.CreateRCSTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCSTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.related_sign_names):
+            query['RelatedSignNames'] = request.related_sign_names
+        if not DaraCore.is_null(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not DaraCore.is_null(request.template_format):
+            query['TemplateFormat'] = request.template_format
+        if not DaraCore.is_null(request.template_menu):
+            query['TemplateMenu'] = request.template_menu
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCSTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCSTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rcstemplate_with_options_async(
+        self,
+        request: main_models.CreateRCSTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCSTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.related_sign_names):
+            query['RelatedSignNames'] = request.related_sign_names
+        if not DaraCore.is_null(request.template_content):
+            query['TemplateContent'] = request.template_content
+        if not DaraCore.is_null(request.template_format):
+            query['TemplateFormat'] = request.template_format
+        if not DaraCore.is_null(request.template_menu):
+            query['TemplateMenu'] = request.template_menu
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_rule):
+            query['TemplateRule'] = request.template_rule
+        if not DaraCore.is_null(request.template_type):
+            query['TemplateType'] = request.template_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCSTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCSTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rcstemplate(
+        self,
+        request: main_models.CreateRCSTemplateRequest,
+    ) -> main_models.CreateRCSTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_rcstemplate_with_options(request, runtime)
+
+    async def create_rcstemplate_async(
+        self,
+        request: main_models.CreateRCSTemplateRequest,
+    ) -> main_models.CreateRCSTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rcstemplate_with_options_async(request, runtime)
+
     def create_smart_short_url_with_options(
         self,
         request: main_models.CreateSmartShortUrlRequest,
@@ -1089,8 +1346,12 @@ class Client(OpenApiClient):
             query['AppIcpRecordPic'] = request.app_icp_record_pic
         if not DaraCore.is_null(request.app_principal_unit_name):
             query['AppPrincipalUnitName'] = request.app_principal_unit_name
+        if not DaraCore.is_null(request.app_runtime_pic):
+            query['AppRuntimePic'] = request.app_runtime_pic
         if not DaraCore.is_null(request.app_service_name):
             query['AppServiceName'] = request.app_service_name
+        if not DaraCore.is_null(request.app_store_download_pic):
+            query['AppStoreDownloadPic'] = request.app_store_download_pic
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.owner_id):
@@ -1133,8 +1394,12 @@ class Client(OpenApiClient):
             query['AppIcpRecordPic'] = request.app_icp_record_pic
         if not DaraCore.is_null(request.app_principal_unit_name):
             query['AppPrincipalUnitName'] = request.app_principal_unit_name
+        if not DaraCore.is_null(request.app_runtime_pic):
+            query['AppRuntimePic'] = request.app_runtime_pic
         if not DaraCore.is_null(request.app_service_name):
             query['AppServiceName'] = request.app_service_name
+        if not DaraCore.is_null(request.app_store_download_pic):
+            query['AppStoreDownloadPic'] = request.app_store_download_pic
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
         if not DaraCore.is_null(request.owner_id):
@@ -2574,6 +2839,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_qualification_oss_info_with_options_async(request, runtime)
 
+    def get_rcssignature_with_options(
+        self,
+        request: main_models.GetRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRCSSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_rcssignature_with_options_async(
+        self,
+        request: main_models.GetRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRCSSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_rcssignature(
+        self,
+        request: main_models.GetRCSSignatureRequest,
+    ) -> main_models.GetRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.get_rcssignature_with_options(request, runtime)
+
+    async def get_rcssignature_async(
+        self,
+        request: main_models.GetRCSSignatureRequest,
+    ) -> main_models.GetRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.get_rcssignature_with_options_async(request, runtime)
+
     def get_sms_ocr_oss_info_with_options(
         self,
         request: main_models.GetSmsOcrOssInfoRequest,
@@ -3759,6 +4094,298 @@ class Client(OpenApiClient):
     ) -> main_models.QueryPageSmartShortUrlLogResponse:
         runtime = RuntimeOptions()
         return await self.query_page_smart_short_url_log_with_options_async(request, runtime)
+
+    def query_rcsmobile_capable_with_options(
+        self,
+        request: main_models.QueryRCSMobileCapableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSMobileCapableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSMobileCapable',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSMobileCapableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rcsmobile_capable_with_options_async(
+        self,
+        request: main_models.QueryRCSMobileCapableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSMobileCapableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSMobileCapable',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSMobileCapableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rcsmobile_capable(
+        self,
+        request: main_models.QueryRCSMobileCapableRequest,
+    ) -> main_models.QueryRCSMobileCapableResponse:
+        runtime = RuntimeOptions()
+        return self.query_rcsmobile_capable_with_options(request, runtime)
+
+    async def query_rcsmobile_capable_async(
+        self,
+        request: main_models.QueryRCSMobileCapableRequest,
+    ) -> main_models.QueryRCSMobileCapableResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rcsmobile_capable_with_options_async(request, runtime)
+
+    def query_rcsmobile_capable_task_result_with_options(
+        self,
+        request: main_models.QueryRCSMobileCapableTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSMobileCapableTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSMobileCapableTaskResult',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSMobileCapableTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rcsmobile_capable_task_result_with_options_async(
+        self,
+        request: main_models.QueryRCSMobileCapableTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSMobileCapableTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSMobileCapableTaskResult',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSMobileCapableTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rcsmobile_capable_task_result(
+        self,
+        request: main_models.QueryRCSMobileCapableTaskResultRequest,
+    ) -> main_models.QueryRCSMobileCapableTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.query_rcsmobile_capable_task_result_with_options(request, runtime)
+
+    async def query_rcsmobile_capable_task_result_async(
+        self,
+        request: main_models.QueryRCSMobileCapableTaskResultRequest,
+    ) -> main_models.QueryRCSMobileCapableTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rcsmobile_capable_task_result_with_options_async(request, runtime)
+
+    def query_rcstemplate_with_options(
+        self,
+        request: main_models.QueryRCSTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rcstemplate_with_options_async(
+        self,
+        request: main_models.QueryRCSTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRCSTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRCSTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRCSTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rcstemplate(
+        self,
+        request: main_models.QueryRCSTemplateRequest,
+    ) -> main_models.QueryRCSTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.query_rcstemplate_with_options(request, runtime)
+
+    async def query_rcstemplate_async(
+        self,
+        request: main_models.QueryRCSTemplateRequest,
+    ) -> main_models.QueryRCSTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rcstemplate_with_options_async(request, runtime)
+
+    def query_rcs_sign_menu_by_version_with_options(
+        self,
+        request: main_models.QueryRcsSignMenuByVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRcsSignMenuByVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.rcs_menu_version):
+            query['RcsMenuVersion'] = request.rcs_menu_version
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRcsSignMenuByVersion',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRcsSignMenuByVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rcs_sign_menu_by_version_with_options_async(
+        self,
+        request: main_models.QueryRcsSignMenuByVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryRcsSignMenuByVersionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.rcs_menu_version):
+            query['RcsMenuVersion'] = request.rcs_menu_version
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryRcsSignMenuByVersion',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryRcsSignMenuByVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rcs_sign_menu_by_version(
+        self,
+        request: main_models.QueryRcsSignMenuByVersionRequest,
+    ) -> main_models.QueryRcsSignMenuByVersionResponse:
+        runtime = RuntimeOptions()
+        return self.query_rcs_sign_menu_by_version_with_options(request, runtime)
+
+    async def query_rcs_sign_menu_by_version_async(
+        self,
+        request: main_models.QueryRcsSignMenuByVersionRequest,
+    ) -> main_models.QueryRcsSignMenuByVersionResponse:
+        runtime = RuntimeOptions()
+        return await self.query_rcs_sign_menu_by_version_with_options_async(request, runtime)
 
     def query_send_details_with_options(
         self,
@@ -5394,6 +6021,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.send_logistics_sms_with_options_async(request, runtime)
 
+    def send_rcswith_options(
+        self,
+        request: main_models.SendRCSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRCSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not DaraCore.is_null(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRCS',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRCSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_rcswith_options_async(
+        self,
+        request: main_models.SendRCSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRCSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not DaraCore.is_null(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRCS',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRCSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_rcs(
+        self,
+        request: main_models.SendRCSRequest,
+    ) -> main_models.SendRCSResponse:
+        runtime = RuntimeOptions()
+        return self.send_rcswith_options(request, runtime)
+
+    async def send_rcs_async(
+        self,
+        request: main_models.SendRCSRequest,
+    ) -> main_models.SendRCSResponse:
+        runtime = RuntimeOptions()
+        return await self.send_rcswith_options_async(request, runtime)
+
+    def send_rcsreply_with_options(
+        self,
+        request: main_models.SendRCSReplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRCSReplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.in_reply_to_rcs_id):
+            query['InReplyToRcsID'] = request.in_reply_to_rcs_id
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not DaraCore.is_null(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRCSReply',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRCSReplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_rcsreply_with_options_async(
+        self,
+        request: main_models.SendRCSReplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRCSReplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.in_reply_to_rcs_id):
+            query['InReplyToRcsID'] = request.in_reply_to_rcs_id
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.phone_numbers):
+            query['PhoneNumbers'] = request.phone_numbers
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not DaraCore.is_null(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRCSReply',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRCSReplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_rcsreply(
+        self,
+        request: main_models.SendRCSReplyRequest,
+    ) -> main_models.SendRCSReplyResponse:
+        runtime = RuntimeOptions()
+        return self.send_rcsreply_with_options(request, runtime)
+
+    async def send_rcsreply_async(
+        self,
+        request: main_models.SendRCSReplyRequest,
+    ) -> main_models.SendRCSReplyResponse:
+        runtime = RuntimeOptions()
+        return await self.send_rcsreply_with_options_async(request, runtime)
+
     def send_sms_with_options(
         self,
         request: main_models.SendSmsRequest,
@@ -6062,6 +6865,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_ext_code_sign_with_options_async(request, runtime)
 
+    def update_rcssignature_with_options(
+        self,
+        request: main_models.UpdateRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.background_image):
+            query['BackgroundImage'] = request.background_image
+        if not DaraCore.is_null(request.bubble_color):
+            query['BubbleColor'] = request.bubble_color
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.latitude):
+            query['Latitude'] = request.latitude
+        if not DaraCore.is_null(request.logo):
+            query['Logo'] = request.logo
+        if not DaraCore.is_null(request.longitude):
+            query['Longitude'] = request.longitude
+        if not DaraCore.is_null(request.office_address):
+            query['OfficeAddress'] = request.office_address
+        if not DaraCore.is_null(request.service_email):
+            query['ServiceEmail'] = request.service_email
+        if not DaraCore.is_null(request.service_phone):
+            query['ServicePhone'] = request.service_phone
+        if not DaraCore.is_null(request.service_terms):
+            query['ServiceTerms'] = request.service_terms
+        if not DaraCore.is_null(request.service_website):
+            query['ServiceWebsite'] = request.service_website
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRCSSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rcssignature_with_options_async(
+        self,
+        request: main_models.UpdateRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.background_image):
+            query['BackgroundImage'] = request.background_image
+        if not DaraCore.is_null(request.bubble_color):
+            query['BubbleColor'] = request.bubble_color
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.latitude):
+            query['Latitude'] = request.latitude
+        if not DaraCore.is_null(request.logo):
+            query['Logo'] = request.logo
+        if not DaraCore.is_null(request.longitude):
+            query['Longitude'] = request.longitude
+        if not DaraCore.is_null(request.office_address):
+            query['OfficeAddress'] = request.office_address
+        if not DaraCore.is_null(request.service_email):
+            query['ServiceEmail'] = request.service_email
+        if not DaraCore.is_null(request.service_phone):
+            query['ServicePhone'] = request.service_phone
+        if not DaraCore.is_null(request.service_terms):
+            query['ServiceTerms'] = request.service_terms
+        if not DaraCore.is_null(request.service_website):
+            query['ServiceWebsite'] = request.service_website
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRCSSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rcssignature(
+        self,
+        request: main_models.UpdateRCSSignatureRequest,
+    ) -> main_models.UpdateRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.update_rcssignature_with_options(request, runtime)
+
+    async def update_rcssignature_async(
+        self,
+        request: main_models.UpdateRCSSignatureRequest,
+    ) -> main_models.UpdateRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.update_rcssignature_with_options_async(request, runtime)
+
     def update_sms_qualification_with_options(
         self,
         tmp_req: main_models.UpdateSmsQualificationRequest,
@@ -6491,6 +7412,124 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateSmsTemplateResponse:
         runtime = RuntimeOptions()
         return await self.update_sms_template_with_options_async(request, runtime)
+
+    def upgrade_to_rcssignature_with_options(
+        self,
+        request: main_models.UpgradeToRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeToRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.background_image):
+            query['BackgroundImage'] = request.background_image
+        if not DaraCore.is_null(request.bubble_color):
+            query['BubbleColor'] = request.bubble_color
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.latitude):
+            query['Latitude'] = request.latitude
+        if not DaraCore.is_null(request.logo):
+            query['Logo'] = request.logo
+        if not DaraCore.is_null(request.longitude):
+            query['Longitude'] = request.longitude
+        if not DaraCore.is_null(request.office_address):
+            query['OfficeAddress'] = request.office_address
+        if not DaraCore.is_null(request.service_email):
+            query['ServiceEmail'] = request.service_email
+        if not DaraCore.is_null(request.service_phone):
+            query['ServicePhone'] = request.service_phone
+        if not DaraCore.is_null(request.service_terms):
+            query['ServiceTerms'] = request.service_terms
+        if not DaraCore.is_null(request.service_website):
+            query['ServiceWebsite'] = request.service_website
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeToRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeToRCSSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_to_rcssignature_with_options_async(
+        self,
+        request: main_models.UpgradeToRCSSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeToRCSSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.background_image):
+            query['BackgroundImage'] = request.background_image
+        if not DaraCore.is_null(request.bubble_color):
+            query['BubbleColor'] = request.bubble_color
+        if not DaraCore.is_null(request.category):
+            query['Category'] = request.category
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.latitude):
+            query['Latitude'] = request.latitude
+        if not DaraCore.is_null(request.logo):
+            query['Logo'] = request.logo
+        if not DaraCore.is_null(request.longitude):
+            query['Longitude'] = request.longitude
+        if not DaraCore.is_null(request.office_address):
+            query['OfficeAddress'] = request.office_address
+        if not DaraCore.is_null(request.service_email):
+            query['ServiceEmail'] = request.service_email
+        if not DaraCore.is_null(request.service_phone):
+            query['ServicePhone'] = request.service_phone
+        if not DaraCore.is_null(request.service_terms):
+            query['ServiceTerms'] = request.service_terms
+        if not DaraCore.is_null(request.service_website):
+            query['ServiceWebsite'] = request.service_website
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeToRCSSignature',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeToRCSSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_to_rcssignature(
+        self,
+        request: main_models.UpgradeToRCSSignatureRequest,
+    ) -> main_models.UpgradeToRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_to_rcssignature_with_options(request, runtime)
+
+    async def upgrade_to_rcssignature_async(
+        self,
+        request: main_models.UpgradeToRCSSignatureRequest,
+    ) -> main_models.UpgradeToRCSSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_to_rcssignature_with_options_async(request, runtime)
 
     def valid_phone_code_with_options(
         self,

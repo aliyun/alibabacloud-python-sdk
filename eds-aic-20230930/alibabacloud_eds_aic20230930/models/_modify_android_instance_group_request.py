@@ -16,12 +16,11 @@ class ModifyAndroidInstanceGroupRequest(DaraModel):
         self.instance_group_id = instance_group_id
         # The new name of the instance group.
         # 
-        # > 
-        # 
-        # *   The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http:// or https://.
+        # > The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with http\\:// or https\\://.
         self.new_instance_group_name = new_instance_group_name
         # The ID of the policy.
         self.policy_group_id = policy_group_id
+        # Specifies the streaming mode for instances within the instance group. If this parameter is omitted, the mode defaults to 1 (Preemptive).
         self.stream_mode = stream_mode
 
     def validate(self):

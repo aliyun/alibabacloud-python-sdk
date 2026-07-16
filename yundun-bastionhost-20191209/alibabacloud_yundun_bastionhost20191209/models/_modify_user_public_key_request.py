@@ -18,17 +18,17 @@ class ModifyUserPublicKeyRequest(DaraModel):
         self.comment = comment
         # The ID of the bastion host on which you want to modify the public key of a user.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The new public key.
         # 
-        # >  Specify a Base64-encoded string.
+        # > Specify a Base64-encoded string.
         self.public_key = public_key
         # The ID of the public key that you want to modify.
         # 
-        # >  You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
+        # > You can call the [ListUserPublicKeys](https://help.aliyun.com/document_detail/477555.html) operation to query the public key ID.
         # 
         # This parameter is required.
         self.public_key_id = public_key_id

@@ -9,6 +9,8 @@ class DeleteCustomHostnameRequest(DaraModel):
         self,
         hostname_id: int = None,
     ):
+        # The ID of the custom hostname. To obtain this ID, call the [ListCustomHostnames](https://help.aliyun.com/document_detail/3018667.html) operation.
+        # 
         # This parameter is required.
         self.hostname_id = hostname_id
 

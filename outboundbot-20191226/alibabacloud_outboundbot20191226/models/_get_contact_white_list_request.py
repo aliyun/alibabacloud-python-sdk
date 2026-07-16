@@ -12,10 +12,15 @@ class GetContactWhiteListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Whether to return the total count
         self.count_total_row = count_total_row
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page number
         self.page_number = page_number
+        # Number of entries per page
         self.page_size = page_size
 
     def validate(self):

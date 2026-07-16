@@ -12,8 +12,14 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         has_config: int = None,
         request_id: str = None,
     ):
+        # The configuration information.
         self.config = config
+        # Indicates whether the O&M window has been configured. Valid values:
+        # 
+        # - 1: configured.
+        # - 0: not configured.
         self.has_config = has_config
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,12 +67,19 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
+        # The creation time.
         self.created_time = created_time
+        # The cycle time.
         self.cycle_time = cycle_time
+        # The cycle type.
         self.cycle_type = cycle_type
+        # The end time of the O&M window.
         self.maintain_end_time = maintain_end_time
+        # The start time of the O&M window.
         self.maintain_start_time = maintain_start_time
+        # The modification time.
         self.modified_time = modified_time
+        # The status.
         self.status = status
 
     def validate(self):

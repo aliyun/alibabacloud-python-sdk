@@ -18,6 +18,7 @@ class CreateTemplateInput(DaraModel):
         description: str = None,
         disk_size: int = None,
         enable_agent: bool = None,
+        enable_pre_stop: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         log_configuration: main_models.LogConfiguration = None,
@@ -25,6 +26,7 @@ class CreateTemplateInput(DaraModel):
         nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         oss_configuration: List[main_models.OssConfiguration] = None,
+        pre_stop_timeout_in_seconds: int = None,
         sandbox_idle_timeout_in_seconds: int = None,
         sandbox_ttlin_seconds: int = None,
         scaling_config: main_models.ScalingConfig = None,
@@ -33,40 +35,58 @@ class CreateTemplateInput(DaraModel):
         template_type: str = None,
         workspace_id: str = None,
     ):
+        # Whether to allow data channel to call create/stop/delete sandbox APIs
         self.allow_anonymous_manage = allow_anonymous_manage
+        # ARMS configuration
         self.arms_configuration = arms_configuration
-        # 容器配置，只允许基于 Browser/Code Interpreter 基础镜像的 image
+        # Container configuration, only images based on Browser/Code Interpreter base images are allowed
         self.container_configuration = container_configuration
-        # CPU资源配置（单位：核心）
+        # CPU resource configuration (unit: cores)
         # 
         # This parameter is required.
         self.cpu = cpu
+        # Credential configuration
         self.credential_configuration = credential_configuration
+        # Template description
         self.description = description
+        # Disk size
         self.disk_size = disk_size
+        # Sandbox Agent switch
         self.enable_agent = enable_agent
+        self.enable_pre_stop = enable_pre_stop
+        # Environment variables
         self.environment_variables = environment_variables
+        # Execution role ARN
         self.execution_role_arn = execution_role_arn
+        # Log configuration
         self.log_configuration = log_configuration
-        # 内存资源配置（单位：MB）
+        # Memory resource configuration (unit: MB)
         # 
         # This parameter is required.
         self.memory = memory
+        # NAS mount configuration
         self.nas_config = nas_config
+        # Network configuration
+        # 
         # This parameter is required.
         self.network_configuration = network_configuration
+        # OSS configuration
         self.oss_configuration = oss_configuration
-        # 沙箱空闲超时时间（秒）
+        self.pre_stop_timeout_in_seconds = pre_stop_timeout_in_seconds
+        # Sandbox idle timeout (in seconds)
         self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
-        # 沙箱存活时间（秒）
+        # Sandbox time-to-live (in seconds)
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
+        # Scaling configuration
         self.scaling_config = scaling_config
-        # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
+        # Template configuration (flexible object structure that varies depending on templateType)
         self.template_configuration = template_configuration
-        # 模板名称（要求账号唯一的）
+        # Template name (must be unique within the account)
         # 
         # This parameter is required.
         self.template_name = template_name
+        # Template type
+        # 
         # This parameter is required.
         self.template_type = template_type
         self.workspace_id = workspace_id
@@ -120,6 +140,9 @@ class CreateTemplateInput(DaraModel):
         if self.enable_agent is not None:
             result['enableAgent'] = self.enable_agent
 
+        if self.enable_pre_stop is not None:
+            result['enablePreStop'] = self.enable_pre_stop
+
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
 
@@ -142,6 +165,9 @@ class CreateTemplateInput(DaraModel):
         if self.oss_configuration is not None:
             for k1 in self.oss_configuration:
                 result['ossConfiguration'].append(k1.to_map() if k1 else None)
+
+        if self.pre_stop_timeout_in_seconds is not None:
+            result['preStopTimeoutInSeconds'] = self.pre_stop_timeout_in_seconds
 
         if self.sandbox_idle_timeout_in_seconds is not None:
             result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
@@ -195,6 +221,9 @@ class CreateTemplateInput(DaraModel):
         if m.get('enableAgent') is not None:
             self.enable_agent = m.get('enableAgent')
 
+        if m.get('enablePreStop') is not None:
+            self.enable_pre_stop = m.get('enablePreStop')
+
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
 
@@ -221,6 +250,9 @@ class CreateTemplateInput(DaraModel):
             for k1 in m.get('ossConfiguration'):
                 temp_model = main_models.OssConfiguration()
                 self.oss_configuration.append(temp_model.from_map(k1))
+
+        if m.get('preStopTimeoutInSeconds') is not None:
+            self.pre_stop_timeout_in_seconds = m.get('preStopTimeoutInSeconds')
 
         if m.get('sandboxIdleTimeoutInSeconds') is not None:
             self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')

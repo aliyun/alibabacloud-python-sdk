@@ -22,7 +22,7 @@ class SearchResourcesResponseBody(DaraModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The information about the resources.
         self.resources = resources
@@ -109,21 +109,16 @@ class SearchResourcesResponseBodyResources(DaraModel):
         self.account_id = account_id
         # The time when the resource was created.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
-        # Indicates whether the resource is deleted. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.deleted = deleted
         # The time when the resource expires.
         self.expire_time = expire_time
-        # The attributes of the IP addresses.
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
         # The region ID.
         self.region_id = region_id
@@ -139,7 +134,7 @@ class SearchResourcesResponseBodyResources(DaraModel):
         self.tags = tags
         # The zone ID.
         # 
-        # > Whether this parameter is returned depends on the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -257,9 +252,9 @@ class SearchResourcesResponseBodyResourcesTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -299,11 +294,10 @@ class SearchResourcesResponseBodyResourcesIpAddressAttributes(DaraModel):
         self.ip_address = ip_address
         # The network type. Valid values:
         # 
-        # - **Public**: Internet
-        # 
-        # - **Private**: Private network
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
-        # The IP address version.
+        # The version.
         self.version = version
 
     def validate(self):
@@ -347,7 +341,7 @@ class SearchResourcesResponseBodyFilters(DaraModel):
     ):
         # The key of the filter condition.
         self.key = key
-        # The matching method.
+        # The matching mode.
         self.match_type = match_type
         # The values of the filter condition.
         self.values = values

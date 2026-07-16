@@ -21,15 +21,25 @@ class ListDatasetDocumentsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code for the request.
         self.code = code
+        # A list of documents.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A detailed message about the request status.
         self.message = message
+        # The token used to retrieve the next page of results. This field appears only when more results are available.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
         self.success = success
+        # The total number of matching documents.
         self.total_count = total_count
 
     def validate(self):
@@ -139,27 +149,47 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         update_user: str = None,
         url: str = None,
     ):
+        # The unique ID of the category.
         self.category_uuid = category_uuid
+        # The content of the document.
         self.content = content
+        # The creation time of the document.
         self.create_time = create_time
+        # The creator of the document.
         self.create_user = create_user
+        # Indicates whether multimodal indexing is disabled for this document.
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
+        # The user-specified unique document ID.
         self.doc_id = doc_id
+        # The type of the document.
         self.doc_type = doc_type
+        # The unique internal document ID.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # A list of multimodal media items associated with the document.
         self.multimodal_medias = multimodal_medias
+        # The publication time of the document.
         self.pub_time = pub_time
+        # The source of the document.
         self.source_from = source_from
+        # The build status of the document index.
         self.status = status
+        # The summary of the document.
         self.summary = summary
+        # A list of tags associated with the document.
         self.tags = tags
+        # The title of the document.
         self.title = title
+        # The last update time of the document.
         self.update_time = update_time
+        # The user who last updated the document.
         self.update_user = update_user
-        # url
+        # The URL of the document.
         self.url = url
 
     def validate(self):
@@ -317,8 +347,11 @@ class ListDatasetDocumentsResponseBodyDataMultimodalMedias(DaraModel):
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the image or video file.
         self.file_url = file_url
+        # The unique ID of the multimodal media.
         self.media_id = media_id
+        # The type of the multimodal media.
         self.media_type = media_type
 
     def validate(self):

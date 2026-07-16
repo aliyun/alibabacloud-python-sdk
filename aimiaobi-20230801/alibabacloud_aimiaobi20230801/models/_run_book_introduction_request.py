@@ -15,12 +15,20 @@ class RunBookIntroductionRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.clean_cache = clean_cache
+        # The document ID.
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # A custom prompt for extracting key points.
         self.key_point_prompt = key_point_prompt
+        # The session ID.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # A custom prompt for generating the summary.
         self.summary_prompt = summary_prompt
+        # The unique ID of the workspace in Model Studio (Bailian). For more information, see [Get your workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

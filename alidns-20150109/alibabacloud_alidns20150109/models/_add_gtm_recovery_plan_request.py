@@ -12,17 +12,17 @@ class AddGtmRecoveryPlanRequest(DaraModel):
         name: str = None,
         remark: str = None,
     ):
-        # The IDs of faulty address pools.
+        # The IDs of the faulty address pools.
         # 
         # This parameter is required.
         self.fault_addr_pool = fault_addr_pool
-        # The language.
+        # The language of the user.
         self.lang = lang
         # The name of the disaster recovery plan.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the disaster recovery plan.
+        # The remarks.
         self.remark = remark
 
     def validate(self):

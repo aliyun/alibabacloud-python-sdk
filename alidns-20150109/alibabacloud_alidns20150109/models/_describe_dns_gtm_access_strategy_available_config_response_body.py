@@ -24,12 +24,12 @@ class DescribeDnsGtmAccessStrategyAvailableConfigResponseBody(DaraModel):
         self.ipv_4addr_pools = ipv_4addr_pools
         self.ipv_6addr_pools = ipv_6addr_pools
         self.lines = lines
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
         self.selected_domain_lines = selected_domain_lines
         self.selected_ipv_4lines = selected_ipv_4lines
         self.selected_ipv_6lines = selected_ipv_6lines
-        # Indicates whether we recommend that you set the source region to global.
+        # Indicates whether it is recommended to set a default line.
         self.suggest_set_default_line = suggest_set_default_line
 
     def validate(self):

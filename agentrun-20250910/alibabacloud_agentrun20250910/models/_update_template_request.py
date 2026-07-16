@@ -11,11 +11,11 @@ class UpdateTemplateRequest(DaraModel):
         body: main_models.UpdateTemplateInput = None,
         client_token: str = None,
     ):
-        # 更新模板所需的配置信息
+        # The request body for the template update.
         # 
         # This parameter is required.
         self.body = body
-        # 用于确保请求幂等性的唯一标识符
+        # A unique client token to ensure request idempotency.
         self.client_token = client_token
 
     def validate(self):

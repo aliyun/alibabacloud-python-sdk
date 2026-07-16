@@ -12,7 +12,6 @@ class BatchGetResourceConfigurationsRequest(DaraModel):
         self,
         resources: List[main_models.BatchGetResourceConfigurationsRequestResources] = None,
     ):
-        # The list of resources.
         self.resources = resources
 
     def validate(self):
@@ -52,13 +51,8 @@ class BatchGetResourceConfigurationsRequestResources(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The region ID of the resource.
         self.region_id = region_id
-        # The resource ID.
         self.resource_id = resource_id
-        # The resource type.
-        # 
-        # For a list of resource types supported by Resource Center, see [Alibaba Cloud services and resource types that are supported by Resource Center](https://help.aliyun.com/document_detail/477798.html).
         self.resource_type = resource_type
 
     def validate(self):

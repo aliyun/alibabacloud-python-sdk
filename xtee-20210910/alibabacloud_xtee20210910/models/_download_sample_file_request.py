@@ -12,9 +12,13 @@ class DownloadSampleFileRequest(DaraModel):
         sample_id: int = None,
         tab: str = None,
     ):
+        # Language of error messages returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Sample ID.
         self.sample_id = sample_id
+        # Scenario.
         self.tab = tab
 
     def validate(self):

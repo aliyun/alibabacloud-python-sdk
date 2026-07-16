@@ -11,8 +11,11 @@ class DeleteCustomEndpointRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the custom endpoint domain name.
         self.custom_endpoint_id = custom_endpoint_id
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
+        # The region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):

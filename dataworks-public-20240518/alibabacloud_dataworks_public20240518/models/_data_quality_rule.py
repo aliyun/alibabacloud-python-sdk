@@ -445,6 +445,7 @@ class DataQualityRuleCheckingConfigThresholdsWarned(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -497,6 +498,7 @@ class DataQualityRuleCheckingConfigThresholdsExpected(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # 阈值表达式
         self.expression = expression
         # The comparison operator. Valid values:
         # 
@@ -549,6 +551,7 @@ class DataQualityRuleCheckingConfigThresholdsCritical(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # 校验表达式
         self.expression = expression
         # The comparison operator. Valid values:
         # 

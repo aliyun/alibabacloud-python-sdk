@@ -20,7 +20,7 @@ class DescribeDnsGtmMonitorAvailableConfigResponseBody(DaraModel):
         self.domain_ipv_6isp_city_nodes = domain_ipv_6isp_city_nodes
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

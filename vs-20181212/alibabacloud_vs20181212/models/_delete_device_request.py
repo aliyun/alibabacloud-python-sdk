@@ -10,6 +10,8 @@ class DeleteDeviceRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

@@ -12,7 +12,7 @@ class SetUserConfigsRequest(DaraModel):
         self,
         configs: List[main_models.SetUserConfigsRequestConfigs] = None,
     ):
-        # The configurations list.
+        # The list of configurations.
         self.configs = configs
 
     def validate(self):
@@ -51,15 +51,15 @@ class SetUserConfigsRequestConfigs(DaraModel):
         config_value: str = None,
         scope: str = None,
     ):
-        # The category. Only DataPrivacyConfig is supported.
+        # The classification. Only DataPrivacyConfig is supported.
         # 
         # This parameter is required.
         self.category_name = category_name
-        # The key of the configuration item.
+        # The configuration key.
         # 
         # This parameter is required.
         self.config_key = config_key
-        # The value of the configuration item.
+        # The configuration value.
         # 
         # This parameter is required.
         self.config_value = config_value

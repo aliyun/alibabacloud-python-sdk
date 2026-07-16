@@ -13,7 +13,9 @@ class DescribeRdsVpcsResponseBody(DaraModel):
         request_id: str = None,
         vpcs: main_models.DescribeRdsVpcsResponseBodyVpcs = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # A list of VPCs.
         self.vpcs = vpcs
 
     def validate(self):
@@ -49,6 +51,7 @@ class DescribeRdsVpcsResponseBodyVpcs(DaraModel):
         self,
         vpc: List[main_models.DescribeRdsVpcsResponseBodyVpcsVpc] = None,
     ):
+        # VPC details.
         self.vpc = vpc
 
     def validate(self):
@@ -94,17 +97,31 @@ class DescribeRdsVpcsResponseBodyVpcsVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # This parameter is deprecated. No value is returned.
         self.ali_uid = ali_uid
+        # This parameter is deprecated. No value is returned.
         self.bid = bid
+        # The CIDR block of the VPC.
         self.cidr_block = cidr_block
+        # This parameter is deprecated. No value is returned.
         self.gmt_create = gmt_create
+        # This parameter is deprecated. No value is returned.
         self.gmt_modified = gmt_modified
+        # Indicates whether the VPC is the default VPC. Valid values:
+        # 
+        # - **true**
+        # 
+        # - **false**
         self.is_default = is_default
+        # The region ID.
         self.region_no = region_no
+        # The status of the VPC. A value of **Available** indicates that the VPC is available.
         self.status = status
+        # A list of vSwitches.
         self.v_switchs = v_switchs
-        # VPC ID。
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -207,14 +224,25 @@ class DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs(DaraModel):
         v_switch_id: str = None,
         v_switch_name: str = None,
     ):
+        # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
+        # This parameter is deprecated. No value is returned.
         self.gmt_create = gmt_create
+        # This parameter is deprecated. No value is returned.
         self.gmt_modified = gmt_modified
+        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # 
+        # - **true**: The vSwitch is the default vSwitch.
+        # 
+        # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
+        # The ID of the zone where the vSwitch is located.
         self.iz_no = iz_no
+        # The status of the vSwitch. A value of **Available** indicates that the vSwitch is available.
         self.status = status
-        # VSwitch ID。
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The name of the vSwitch.
         self.v_switch_name = v_switch_name
 
     def validate(self):

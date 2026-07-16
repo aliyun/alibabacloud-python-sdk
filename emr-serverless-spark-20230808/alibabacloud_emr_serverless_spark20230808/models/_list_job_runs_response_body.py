@@ -16,15 +16,15 @@ class ListJobRunsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The Spark jobs.
+        # A list of Spark jobs.
         self.job_runs = job_runs
-        # The maximum number of entries returned.
+        # The maximum number of entries returned for the current request.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that match the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -114,43 +114,43 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         # 
         # PYTHON
         self.code_type = code_type
-        # The advanced configurations of Spark.
+        # The advanced Spark configurations. This parameter is not returned by the ListJobRuns operation.
         self.configuration_overrides = configuration_overrides
-        # The ID of the user who created the job.
+        # The UID of the user who created the job.
         self.creator = creator
-        # The number of CUs consumed during a specified cycle of a task. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CUs.
+        # The number of CUs consumed by the job run. This is an estimated value. The actual value is reflected in your bill.
         self.cu_hours = cu_hours
-        # The version of Spark on which the jobs run.
+        # The display version of the Spark engine that is used to run the job.
         self.display_release_version = display_release_version
-        # The end time of the job.
+        # The time when the job ended.
         self.end_time = end_time
-        # The timeout period of the job.
+        # The timeout period for the job execution, in seconds.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether the Fusion engine is used for acceleration.
+        # Indicates whether the Fusion engine is enabled for acceleration.
         self.fusion = fusion
-        # The information about Spark Driver.
+        # The information about the Spark driver. This parameter is not returned by the ListJobRuns operation.
         self.job_driver = job_driver
-        # The job ID.
+        # The job run ID.
         self.job_run_id = job_run_id
-        # The path where the operational logs are stored.
+        # The path of the run log.
         self.log = log
-        # The total amount of memory allocated to the job multiplied by the running duration (seconds).
+        # The total memory in MB allocated to the job run, multiplied by the runtime in seconds.
         self.mb_seconds = mb_seconds
         # The job name.
         self.name = name
         self.priority = priority
-        # The version of Spark on which the jobs run.
+        # The version of the Spark engine that is used to run the job.
         self.release_version = release_version
         self.resource_queue_id = resource_queue_id
-        # The job state.
+        # The state of the job run.
         self.state = state
-        # The reason of the job status change.
+        # The reason for the state change.
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags of the job.
+        # The tags.
         self.tags = tags
-        # The total number of CPU cores allocated to the job multiplied by the running duration (seconds).
+        # The total number of vCores allocated to the job run, multiplied by the runtime in seconds.
         self.vcore_seconds = vcore_seconds
         # The web UI of the job.
         self.web_ui = web_ui
@@ -371,7 +371,7 @@ class ListJobRunsResponseBodyJobRunsConfigurationOverrides(DaraModel):
         self,
         configurations: List[main_models.Configuration] = None,
     ):
-        # The SparkConf objects.
+        # A list of Spark configurations.
         self.configurations = configurations
 
     def validate(self):

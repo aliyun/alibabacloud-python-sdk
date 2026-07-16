@@ -13,11 +13,18 @@ class ProductDTO(DaraModel):
         quantity: int = None,
         sku_id: str = None,
     ):
+        # Product price (unit: cent)>Notice: It is recommended to include this field.</notice>
         self.price = price
+        # Product ID
+        # 
         # This parameter is required.
         self.product_id = product_id
+        # Purchaser ID
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
+        # Quantity
+        # 
         # This parameter is required.
         self.quantity = quantity
         # SKUID

@@ -19,19 +19,44 @@ class ListChatGroupShrinkRequest(DaraModel):
         resource_owner_id: int = None,
         subject: str = None,
     ):
+        # The business phone number.
+        # 
         # This parameter is required.
         self.business_number = business_number
+        # The channel type. Valid values: **WHATSAPP**.
+        # 
+        # > Only the WhatsApp channel type is supported.
         self.channel_type = channel_type
+        # The SpaceId or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The Telegram group link.
         self.group_link = group_link
+        # The group status. Valid values:
+        # 
+        # - ACTIVE: In use.
+        # 
+        # - INACTIVE: Not activated.
+        # 
+        # - SUSPENDED: Suspended.
+        # 
+        # - CREATING: Being created.
+        # 
+        # - DELETING: Being deleted.
+        # 
+        # - UPDATING: Being updated.
         self.group_status = group_status
+        # The Telegram group type.
         self.group_type = group_type
         self.owner_id = owner_id
+        # The pagination information.
+        # 
         # This parameter is required.
         self.page_shrink = page_shrink
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The group subject.
         self.subject = subject
 
     def validate(self):

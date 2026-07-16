@@ -17,16 +17,25 @@ class ListMessengerSubscriptionTokenRequest(DaraModel):
         resource_owner_id: int = None,
         token_type: str = None,
     ):
+        # The space ID of the ISV sub-customer or the instance ID. View the ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
+        # The custom audience ID.
         self.custom_audience_id = custom_audience_id
+        # The number of entries to return. Valid values: 1 to 1000.
         self.limit = limit
         self.owner_id = owner_id
+        # The page ID for Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
+        # The pagination key.
         self.page_key = page_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The token type.
+        # 
         # This parameter is required.
         self.token_type = token_type
 

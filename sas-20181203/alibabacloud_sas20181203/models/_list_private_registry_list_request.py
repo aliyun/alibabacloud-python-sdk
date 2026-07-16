@@ -11,10 +11,13 @@ class ListPrivateRegistryListRequest(DaraModel):
     ):
         # The type of the image repository. Valid values:
         # 
-        # *   **acr**: Container Registry
-        # *   **harbor**: Harbor
-        # *   **quay**: Quay
-        # *   **CI/CD**: Jenkins
+        # - **acr**: ACR
+        # 
+        # - **harbor**: Harbor
+        # 
+        # - **quay**: Quay
+        # 
+        # - **CI/CD**: Jenkins
         self.registry_type = registry_type
 
     def validate(self):

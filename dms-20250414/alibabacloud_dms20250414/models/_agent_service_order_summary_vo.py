@@ -14,11 +14,17 @@ class AgentServiceOrderSummaryVO(DaraModel):
         service_num_total: int = None,
         skill_plan_call_quota: int = None,
     ):
+        # The name of the agent service.
         self.agent_service = agent_service
+        # The deep research quota for the service.
         self.deep_research_quota = deep_research_quota
+        # The model call quota for the service.
         self.model_call_quota = model_call_quota
+        # The order count for the agent service.
         self.order_count = order_count
+        # The total number of services.
         self.service_num_total = service_num_total
+        # The skill plan call quota for the service.
         self.skill_plan_call_quota = skill_plan_call_quota
 
     def validate(self):

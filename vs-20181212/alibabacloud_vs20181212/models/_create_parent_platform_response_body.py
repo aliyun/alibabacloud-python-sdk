@@ -10,7 +10,9 @@ class CreateParentPlatformResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
+        # 上级平台ID。
         self.id = id
+        # 请求ID。
         self.request_id = request_id
 
     def validate(self):

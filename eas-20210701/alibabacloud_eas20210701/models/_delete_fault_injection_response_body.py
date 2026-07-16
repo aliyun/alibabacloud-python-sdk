@@ -10,8 +10,9 @@ class DeleteFaultInjectionResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # A message that indicates the result of the operation.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

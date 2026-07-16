@@ -15,20 +15,19 @@ class GetOverviewResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned in JSON format. Valid data types:
-        # 
-        # *   Basic job data.
-        # *   Job running data.
-        # *   Time series data for job execution: includes triggering statistics, records of successful and failed executions, and their associated timestamps within a specific time range.
+        # The overview data in JSON format, which corresponds to the overview data on the console. The result is returned in one of the following three formats:
+        # - Basic information.
+        # - Node runtime information within a time interval.
+        # - Node runtime timing information within a time interval. This format returns statistics information at each time point for three data items: node triggers, successful executions, and failed executions.
         self.data = data
-        # Additional information. Returned only if an error occurs.
+        # The error message. This parameter is returned only when an error occurs.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

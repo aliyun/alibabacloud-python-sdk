@@ -15,34 +15,34 @@ class DescribeUserAssetRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The type of the statistics. Valid values:
-        # 
-        # *   **asset_num**: total number of APIs
-        # *   **asset_active**: number of active APIs
-        # *   **asset_newborn**: number of new APIs
-        # *   **asset_offline**: number of deactivated APIs
-        # *   **asset_bot**: number of APIs that are called by bots
-        # *   **asset_cross_border**: number of APIs that are called for cross-border data transfer
-        # *   **sensitive_api**: number of response-sensitive APIs
-        # *   **sensitive_domain**: number of response-sensitive domain names
+        # The type of statistics. Valid values:
+        # - **asset_num**: total number of API assets.
+        # - **asset_active**: number of active APIs.
+        # - **asset_newborn**: number of APIs added today.
+        # - **asset_offline**: number of inactive APIs.
+        # - **asset_bot**: number of APIs with bot requests.
+        # - **asset_cross_border**: number of APIs with cross-border data transfer.
+        # - **sensitive_api**: number of APIs with sensitive data in responses.
+        # - **sensitive_domain**: number of sites with sensitive data in responses.
         # 
         # This parameter is required.
         self.data_type = data_type
-        # The time at which the API was called. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
-        # >Notice: The parameter has been deprecated.
+        # The query time in UNIX timestamp format (UTC). Unit: seconds.
+        # >Notice: This parameter is deprecated.
         self.days = days
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id

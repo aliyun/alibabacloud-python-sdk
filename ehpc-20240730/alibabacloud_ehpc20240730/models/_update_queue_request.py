@@ -15,9 +15,9 @@ class UpdateQueueRequest(DaraModel):
     ):
         # The cluster ID.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # Call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to get the cluster ID.
         self.cluster_id = cluster_id
-        # The information about the queue to be updated.
+        # The queue information to update.
         self.queue = queue
 
     def validate(self):
@@ -68,46 +68,48 @@ class UpdateQueueRequestQueue(DaraModel):
         reserved_node_pool_id: str = None,
         v_switch_ids: List[str] = None,
     ):
-        # The policy based on which instance types are selected for compute nodes during auto scale-outs. Valid values:
+        # The strategy for selecting instance types when the queue scales out automatically. Valid values:
         # 
-        # *   PriorityInstanceType
+        # - PriorityInstanceType
         self.allocation_strategy = allocation_strategy
-        # The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10.
+        # The hardware configuration of compute nodes in the queue. Valid values for N: 1 to 10.
         self.compute_nodes = compute_nodes
-        # Specifies whether to enable auto scale-in for the queue. Valid values:
+        # Enable auto scale-in for the queue. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_scale_in = enable_scale_in
-        # Specifies whether to enable auto scale-out for the queue. Valid values:
+        # Enable auto scale-out for the queue. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_scale_out = enable_scale_out
-        # The hostname prefix of the added compute nodes.
+        # The hostname prefix for compute nodes in the queue.
         self.hostname_prefix = hostname_prefix
-        # The hostname suffix of the compute nodes in the queue.
+        # The hostname suffix for compute nodes in the queue.
         self.hostname_suffix = hostname_suffix
         # The initial number of compute nodes in the queue.
         self.initial_count = initial_count
-        # The type of the network for interconnecting compute nodes in the queue.
+        # The interconnect network type for compute nodes in the queue.
         self.inter_connect = inter_connect
-        # List of excluded compute nodes in the queue.
+        # The list of exceptional compute nodes in the queue.
         self.keep_alive_nodes = keep_alive_nodes
-        # The maximum number of compute nodes that the queue can contain.
+        # The maximum number of compute nodes that the queue can retain.
         self.max_count = max_count
-        # The minimum number of compute nodes that are added to the queue during an automatic scale-out.
+        # The minimum number of compute nodes created during auto scale-out.
         self.max_count_per_cycle = max_count_per_cycle
-        # The minimum number of compute nodes that the queue must contain.
+        # The minimum number of nodes that the queue retains.
         self.min_count = min_count
         # The queue name.
         # 
         # This parameter is required.
         self.queue_name = queue_name
-        # The Resource Access Management (RAM) role that is assumed by compute nodes in the queue.
+        # The name of the instance role attached to compute nodes in the queue.
         self.ram_role = ram_role
         self.reserved_node_pool_id = reserved_node_pool_id
-        # The vSwitches available for use by compute nodes in the queue.
+        # The list of vSwitches available for compute nodes in the queue.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

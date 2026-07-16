@@ -15,9 +15,15 @@ class ListAbnormalyEventsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization was successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error code description. This value is empty if no error occurred.
         self.message = message
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -84,19 +90,38 @@ class ListAbnormalyEventsResponseBodyData(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
+        # The creation time.
         self.created_at = created_at
+        # The detailed description of the anomaly item.
         self.description = description
+        # The diagnostic status. Valid values:
+        # - 1: diagnosis ready.
+        # - 2: diagnosis in progress.
+        # - 3: diagnosis completed.
+        # - 4: not diagnosable.
+        # - 5: diagnosis failed.
         self.diag_status = diag_status
+        # The end time of the anomaly event.
         self.end_at = end_at
+        # The instance ID.
         self.instance = instance
+        # The name of the anomaly item.
         self.item = item
+        # The level of the anomaly item.
         self.level = level
+        # The namespace of the pod.
         self.namespace = namespace
+        # The list of operations for the anomaly item.
         self.opts = opts
+        # The pod name.
         self.pod = pod
+        # The raw metrics.
         self.raw_metrics = raw_metrics
+        # The region ID.
         self.region_id = region_id
+        # The type of the anomaly item.
         self.type = type
+        # The UUID of the anomaly event.
         self.uuid = uuid
 
     def validate(self):
@@ -215,8 +240,11 @@ class ListAbnormalyEventsResponseBodyDataRawMetrics(DaraModel):
         metrics: List[str] = None,
         start_time: float = None,
     ):
+        # The end time.
         self.end_time = end_time
+        # The list of metric values.
         self.metrics = metrics
+        # The start time.
         self.start_time = start_time
 
     def validate(self):
@@ -258,8 +286,11 @@ class ListAbnormalyEventsResponseBodyDataOpts(DaraModel):
         result: main_models.ListAbnormalyEventsResponseBodyDataOptsResult = None,
         type: str = None,
     ):
+        # The operation type.
         self.label = label
+        # The diagnostic result of the anomaly item.
         self.result = result
+        # The diagnostic type.
         self.type = type
 
     def validate(self):
@@ -302,7 +333,9 @@ class ListAbnormalyEventsResponseBodyDataOptsResult(DaraModel):
         status: str = None,
         url: str = None,
     ):
+        # The diagnostic status.
         self.status = status
+        # The URL of the diagnostic details.
         self.url = url
 
     def validate(self):

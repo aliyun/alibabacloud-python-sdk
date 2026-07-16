@@ -13,6 +13,7 @@ class ListAgentsResponseBody(DaraModel):
         json_rpc_response: main_models.ListAgentsResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The response object that conforms to the JSON-RPC specification.
         self.json_rpc_response = json_rpc_response
         # Id of the request
         self.request_id = request_id
@@ -52,8 +53,11 @@ class ListAgentsResponseBodyJsonRpcResponse(DaraModel):
         jsonrpc: str = None,
         result: main_models.ListAgentsResponseBodyJsonRpcResponseResult = None,
     ):
+        # The request ID passed in by the caller. The value is returned as-is in the response.
         self.id = id
+        # The JSON-RPC version. Fixed value: 2.0.
         self.jsonrpc = jsonrpc
+        # The paginated query result for agents.
         self.result = result
 
     def validate(self):
@@ -98,9 +102,13 @@ class ListAgentsResponseBodyJsonRpcResponseResult(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
+        # The list of agents.
         self.agents = agents
+        # The actual number of entries per page that takes effect.
         self.max_results = max_results
+        # The token for the next page. The value is null when the current page is the last page or no data is available.
         self.next_token = next_token
+        # The total number of agents that match the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -154,6 +162,7 @@ class ListAgentsResponseBodyJsonRpcResponseResultAgents(DaraModel):
         self,
         agent_name: str = None,
     ):
+        # The agent name.
         self.agent_name = agent_name
 
     def validate(self):

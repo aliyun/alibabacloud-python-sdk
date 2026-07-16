@@ -14,8 +14,11 @@ class ListFundAccountResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # Data list
         self.data = data
+        # Response metadata
         self.metadata = metadata
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -73,16 +76,35 @@ class ListFundAccountResponseBodyData(DaraModel):
         permissions: List[str] = None,
         site: str = None,
     ):
+        # Account creation time
         self.create_date = create_date
+        # Account ID of the MA user associated with the account
         self.fund_account_admin_account_id = fund_account_admin_account_id
+        # Name of the MA user associated with the account
         self.fund_account_admin_account_name = fund_account_admin_account_name
+        # Account ID
         self.fund_account_id = fund_account_id
+        # Account name
         self.fund_account_name = fund_account_name
+        # Account ID of the fund account owner
         self.fund_account_owner_account_id = fund_account_owner_account_id
+        # Account status.
+        # VALID: valid.
+        # FROZEN: frozen.
+        # CLOSED: closed.
         self.fund_account_status = fund_account_status
+        # Account type.
+        # DIRECT_USER: Alibaba Cloud direct customer account.
+        # RESELLER_QUOTA: ecosystem account.
         self.fund_account_type = fund_account_type
+        # Level-1 marketplace
         self.nbid = nbid
+        # Set of account permissions that the user has.
+        # using: use.
+        # manage: manage.
+        # owner: own.
         self.permissions = permissions
+        # Site
         self.site = site
 
     def validate(self):

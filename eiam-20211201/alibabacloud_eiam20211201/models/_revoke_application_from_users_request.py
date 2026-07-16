@@ -14,17 +14,17 @@ class RevokeApplicationFromUsersRequest(DaraModel):
         instance_id: str = None,
         user_ids: List[str] = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用角色ID。
+        # The application role ID.
         self.application_role_id = application_role_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time.
+        # The list of account IDs. A maximum of 100 account IDs are supported in a single operation.
         # 
         # This parameter is required.
         self.user_ids = user_ids

@@ -12,7 +12,17 @@ class DisconnectAndroidInstanceRequest(DaraModel):
         end_user_id: str = None,
         instance_ids: List[str] = None,
     ):
+        # <props="china">
+        # 
+        # If you use the Cloud Phone Matrix Edition and the instance stream pattern is collaborative mode, you can specify `EndUserId` to disconnect a specific user and invalidate the corresponding ticket.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # This parameter is not publicly available.
         self.end_user_id = end_user_id
+        # A list of instance IDs. You can specify 1 to 100 IDs.
         self.instance_ids = instance_ids
 
     def validate(self):

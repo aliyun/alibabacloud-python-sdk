@@ -16,35 +16,26 @@ class DescribeCheckWarningDetailRequest(DaraModel):
         uuid: str = None,
     ):
         # The ID of the check item.
-        # 
-        # >  You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to query the IDs of check items.
-        # 
-        # >  If you specify this parameter, you must also specify the Uuid parameter.
+        # > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.>Notice: When this parameter is specified, the Uuid parameter is required..
         self.check_id = check_id
-        # The ID of the alert triggered by the check item.
+        # The alert ID of the check item.
         # 
-        # >  To query the details of a check item, you must provide the ID of the alert that is triggered by the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to query the IDs of alerts.
-        # 
-        # >  If the Uuid and CheckId parameters are not specified, this parameter is required.
+        # > To query the details of a specified check item, provide the alert ID of the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this ID.
+        # >Notice: This parameter is required when both Uuid and CheckId are empty..
         self.check_warning_id = check_warning_id
-        # Container name.
+        # The container name.
         self.container_name = container_name
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The Alibaba Cloud account ID of the member in the resource directory.
-        # 
-        # >  You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to query the IDs of Alibaba Cloud accounts.
+        # The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
         # The source IP address of the request.
         self.source_ip = source_ip
-        # The UUID of the server.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
-        # 
-        # >  If you specify this parameter, you must also specify the CheckId parameter.
+        # The UUID of the server to query.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.>Notice: When this parameter is specified, the CheckId parameter is required..
         self.uuid = uuid
 
     def validate(self):

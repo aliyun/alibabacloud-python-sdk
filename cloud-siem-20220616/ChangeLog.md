@@ -1,3 +1,22 @@
+2026-07-13 Version: 6.2.0
+- Support API GetDataStorage.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.DisposeStatus.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.ErrorMessage.
+
+
+2026-07-13 Version: 6.2.0
+- Support API GetDataStorage.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.DisposeStatus.
+- Update API DescribeDisposeAndPlaybook: add response parameters Body.Data.ResponseData.$.PlaybookList.$.ErrorMessage.
+
+
+2026-07-03 Version: 6.1.0
+- Support API GetEntitiyStat.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentAnalysisReason.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposalReason.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposes.$.AgentDisposalReason.
+
+
 2026-04-22 Version: 6.0.2
 - Update API DescribeAlertSource: add response parameters Body.Data.$.Modules.
 

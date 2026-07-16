@@ -12,13 +12,13 @@ class CreateACLResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the ACL.
+        # The access control instance ID.
         self.acl_id = acl_id
-        # The type of SAG instance to be associated with the ACL.
+        # The type of the Smart Access Gateway instance associated with the access control instance.
         self.acl_type = acl_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the ACL belongs.
+        # The resource group ID of the access control instance.
         self.resource_group_id = resource_group_id
 
     def validate(self):

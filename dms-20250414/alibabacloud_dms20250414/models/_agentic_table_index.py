@@ -17,12 +17,19 @@ class AgenticTableIndex(DaraModel):
         real_column_names: List[str] = None,
         unique: bool = None,
     ):
+        # An array of column names included in the index.
         self.column_names = column_names
+        # An optional, user-defined description for the index.
         self.description = description
+        # The unique name of the index within the table.
         self.index_name = index_name
+        # The type of the index, such as PRIMARY, UNIQUE, or NORMAL.
         self.index_type = index_type
+        # Specifies if the index is the primary key. A table can have only one primary key.
         self.primary = primary
+        # An array of physical column names from the database. Use this parameter when the names in ColumnNames are aliases or logical names.
         self.real_column_names = real_column_names
+        # Specifies if the index enforces a unique constraint, requiring all its values to be unique across rows.
         self.unique = unique
 
     def validate(self):

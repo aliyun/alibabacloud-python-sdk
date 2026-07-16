@@ -12,15 +12,15 @@ class DescribeInputFeildCountByEventCodeRequest(DaraModel):
         event_code: str = None,
         reg_id: str = None,
     ):
-        # Set the language type for request and response, default value is **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

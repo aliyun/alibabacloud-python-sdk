@@ -13,9 +13,9 @@ class DetachKeyPairResponseBody(DaraModel):
         data: main_models.DetachKeyPairResponseBodyData = None,
         request_id: str = None,
     ):
-        # The object that is returned.
+        # The result object.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class DetachKeyPairResponseBodyData(DaraModel):
         key_pair_id: str = None,
         total_count: int = None,
     ):
-        # The IDs of the cloud phone instances from which the ADB key pair is successfully detached.
+        # A list of IDs of the instances from which the key pair was successfully detached.
         self.detached_instance_ids = detached_instance_ids
-        # The number of the cloud phone instances from which the ADB key pair failed to be detached.
+        # The number of instances from which the key pair failed to detach.
         self.fail_count = fail_count
         # The ID of the ADB key pair.
         self.key_pair_id = key_pair_id
-        # The total number of the cloud phone instances.
+        # The total number of instances for which the detach operation was attempted.
         self.total_count = total_count
 
     def validate(self):

@@ -17,11 +17,17 @@ class ListAlertEventsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The query result.
         self.list_result = list_result
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListAlertEventsResponseBodyListResult(DaraModel):
         data: List[main_models.ListAlertEventsResponseBodyListResultData] = None,
         total_count: int = None,
     ):
+        # The alert event query results.
         self.data = data
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -135,17 +143,35 @@ class ListAlertEventsResponseBodyListResultData(DaraModel):
         total_alert_times: int = None,
         url_config: main_models.ListAlertEventsResponseBodyListResultDataUrlConfig = None,
     ):
+        # The alert frequency. Valid values:
+        # - ONCE: instant alert
+        # - PERIOD: periodic alert. Format: 1HOUR, 1MINUTE, 1SECOND.
         self.alert_frequency = alert_frequency
+        # The alert object.
         self.alert_object = alert_object
+        # The alert reason.
         self.alert_reason = alert_reason
+        # The list of alert receivers.
         self.alert_receiver_list = alert_receiver_list
+        # The project to which the alert belongs.
         self.belong_project = belong_project
+        # The expiration time of the do-not-disturb period.
         self.do_not_disturb_end_time = do_not_disturb_end_time
+        # The time of the first alert.
         self.first_alert_time = first_alert_time
+        # The alert event ID.
         self.id = id
+        # The time of the latest alert.
         self.latest_alert_time = latest_alert_time
+        # The alert status. Valid values:
+        # - ALERTING: alerting
+        # - DO_NOT_DISTURB: do not disturb
+        # - SILENCING: alerting (cool-down period)
+        # - FINISH: completed.
         self.status = status
+        # The total number of alert occurrences.
         self.total_alert_times = total_alert_times
+        # The URL information.
         self.url_config = url_config
 
     def validate(self):
@@ -261,8 +287,11 @@ class ListAlertEventsResponseBodyListResultDataUrlConfig(DaraModel):
         log_url: str = None,
         object_url: str = None,
     ):
+        # The URL of the alert configuration page.
         self.alert_config_url = alert_config_url
+        # The URL of the log page.
         self.log_url = log_url
+        # The URL of the alert object page.
         self.object_url = object_url
 
     def validate(self):
@@ -303,7 +332,9 @@ class ListAlertEventsResponseBodyListResultDataBelongProject(DaraModel):
         biz_name: str = None,
         project_name: str = None,
     ):
+        # The business unit name.
         self.biz_name = biz_name
+        # The project name.
         self.project_name = project_name
 
     def validate(self):
@@ -341,10 +372,18 @@ class ListAlertEventsResponseBodyListResultDataAlertReceiverList(DaraModel):
         type: str = None,
         user_list: List[main_models.ListAlertEventsResponseBodyListResultDataAlertReceiverListUserList] = None,
     ):
+        # The list of alert channel types.
         self.alert_channel_type_list = alert_channel_type_list
+        # The list of custom alert channel IDs.
         self.custom_alert_channel_id_list = custom_alert_channel_id_list
+        # The name of the on-call schedule.
         self.on_call_table_name = on_call_table_name
+        # The type of the alert receiver. Valid values:
+        # - ON_CALL_TABLE: on-call schedule
+        # - USER_DEFINED: custom user
+        # - OWNER: owner.
         self.type = type
+        # The list of alert users.
         self.user_list = user_list
 
     def validate(self):
@@ -404,6 +443,7 @@ class ListAlertEventsResponseBodyListResultDataAlertReceiverListUserList(DaraMod
         self,
         name: str = None,
     ):
+        # The username.
         self.name = name
 
     def validate(self):
@@ -434,9 +474,49 @@ class ListAlertEventsResponseBodyListResultDataAlertReason(DaraModel):
         type: str = None,
         unique_key: str = None,
     ):
+        # The list of alert reason parameters.
         self.alert_reason_param_list = alert_reason_param_list
+        # The business date.
         self.biz_date = biz_date
+        # The alert reason type. Valid values:
+        # - DQE_COLUMN: field rule exception
+        # - DQE_DATA_SOURCE: data source rule exception
+        # - DQE_CUSTOMIZE: custom rule exception
+        # - DQE_TABLE: table rule exception
+        # - DQE_REALTIME_TABLE: real-time table rule exception
+        # - DQE_INDEX: metric rule exception
+        # - OS_AVG_RESPONSE: average response time exception
+        # - OS_CALL_TIMES: call count exception
+        # - OS_ERROR_RATE: error rate exception
+        # - OS_OFFLINE: Offline percentage exception
+        # - STREAM_BIZ_DELAY: business delay too high
+        # - STREAM_DATA_RETENTION: data retention exceeds configuration
+        # - STREAM_MORE_THAN_FAILURE: failure frequency exceeds configuration
+        # - STREAM_TPS_OUT_RANGE: TPS out of range
+        # - STREAM_CHECKPOINT_FAILURE: checkpoint failures exceed configuration
+        # - STREAM_BACKPRESSURE: backpressure duration exceeds configuration
+        # - STREAM_JOB_FAILURE: job failure
+        # - VDM_BATCH_ERROR: error
+        # - VDM_BATCH_FINISH: completed
+        # - VDM_BATCH_TIME_OUT: execution timeout
+        # - VDM_BATCH_UNDONE: incomplete
+        # - VDM_BATCH_LOGIC_DATA_DELAY: data delay
+        # - QD_DECISION_CALL_TIMES: decision call count exception
+        # - QD_DECISION_MAX_RESPONSE: maximum response time exception
+        # - QD_DECISION_ERROR_RATE: error rate exception
+        # - QD_DECISION_PARAM_COUNT: decision parameter count exception
+        # - QD_DECISION_PARAM_PERCENTAGE: decision parameter percentage exception
+        # - QD_DECISION_PARAM_SUM: decision parameter sum exception
+        # - QD_DECISION_PARAM_AVG: decision parameter average exception
+        # - LOGICAL_INSTANCE_GENERATION: logical instance generation monitoring
+        # - KGB_TASK_ERROR: baseline task error
+        # - KGB_TASK_SLOW_DOWN: baseline task slowdown
+        # - KGB_EARLY_WARNING: baseline early warning
+        # - KGB_BROKEN_LINE: baseline breach
+        # 
+        # and more.
         self.type = type
+        # The unique identifier.
         self.unique_key = unique_key
 
     def validate(self):
@@ -491,7 +571,9 @@ class ListAlertEventsResponseBodyListResultDataAlertReasonAlertReasonParamList(D
         key: str = None,
         value: str = None,
     ):
+        # The name of the alert reason parameter.
         self.key = key
+        # The value of the alert reason parameter.
         self.value = value
 
     def validate(self):
@@ -527,8 +609,50 @@ class ListAlertEventsResponseBodyListResultDataAlertObject(DaraModel):
         source_system_type: str = None,
         type: str = None,
     ):
+        # The name of the alert object.
         self.name = name
+        # The source system. Valid values:
+        # 
+        # - ALL: all
+        # - DQE: data quality
+        # - OS: data service
+        # - STREAM: real-time computing
+        # - VDM_BATCH: offline computing
+        # - SOP: O&M platform
+        # - REAL_TIME_PIPELINE: real-time integration
+        # - KGB: baseline monitoring
+        # 
+        # and more.
         self.source_system_type = source_system_type
+        # The alert object type. Valid values:
+        # - OS_API: API operation
+        # - OS_APPLICATION_SERVICE: service application
+        # - STREAM_TASK: real-time computing
+        # - REAL_TIME_PIPELINE_TASK: real-time integration
+        # - VDM_BATCH_SHELL: SHELL
+        # - VDM_BATCH_PYTHON: PYTHON
+        # - VDM_BATCH_DATAX: DATAX
+        # - VDM_BATCH_DLINK: DLINK
+        # - VDM_BATCH_VIRTUAL: VIRTUAL
+        # - VDM_BATCH_PYTHON37: PYTHON37
+        # - VDM_BATCH_PYTHON311: PYTHON311
+        # - VDM_BATCH_MAX_COMPUTE_SQL: MAXCOMPUTE_SQL
+        # - VDM_BATCH_MAX_COMPUTE_MR: MAXCOMPUTE_MR
+        # - VDM_BATCH_SPARK_JAR_ON_MAX_COMPUTE: SPARK_JAR_ON_MAX_COMPUTE
+        # - VDM_BATCH_HIVE_SQL: HIVE_SQL
+        # - VDM_BATCH_HADOOP_MR: HADOOP_MR
+        # - VDM_BATCH_SPARK_JAR_ON_HIVE: SPARK_JAR_ON_HIVE
+        # - VDM_BATCH_SPARK_SQL_ON_HIVE: SPARK_SQL_ON_HIVE
+        # - VDM_BATCH_SPARK_SQL: VDM_BATCH_SPARK_SQL
+        # - DQE_LOGICAL_TABLE: logical table
+        # - DQE_PHYSICAL_TABLE: physical table
+        # - DQE_REALTIME_TABLE: real-time metadata table
+        # - DQE_DATA_SOURCE: data source
+        # - DQE_INDEX: metric
+        # - QD_DECISION_INVOKE: QD decision invocation
+        # - BASELINE: baseline
+        # 
+        # and more.
         self.type = type
 
     def validate(self):

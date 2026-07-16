@@ -13,9 +13,9 @@ class ListClusterCnnfStatusDetailResponseBody(DaraModel):
         data: List[main_models.ListClusterCnnfStatusDetailResponseBodyData] = None,
         request_id: str = None,
     ):
-        # An array that consists of the protection status of the container firewall.
+        # The list of container firewall statuses.
         self.data = data
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. The China Chinese Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -68,36 +68,34 @@ class ListClusterCnnfStatusDetailResponseBodyData(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # Indicates whether the container firewall plug-in is installed.
         self.installed = installed
-        # The ID of the server.
+        # The instance ID of the server.
         self.instance_id = instance_id
         # The public IP address of the associated instance.
         self.internet_ip = internet_ip
         # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
-        # The cause why the plug-in is invalid. Valid values:
-        # 
-        # *   **PLUGIN_OFFLINE**: The plug-in is offline.
-        # *   **PLUGIN_NOT_INSTALLED**: The plug-in is not installed.
-        # *   **PLUGIN_INVALID_VERSION**: The version of the plug-in is invalid.
+        # The invalid type of the plug-in. Valid values:
+        # - **PLUGIN_OFFLINE**: offline
+        # - **PLUGIN_NOT_INSTALLED**: not installed
+        # - **PLUGIN_INVALID_VERSION**: invalid version.
         self.invalid_type = invalid_type
         # The name of the server.
         self.machine_name = machine_name
-        # The machine type of the instance. The value is fixed as **ecs**.
+        # The type of the instance. The value is fixed as **ecs**.
         self.machine_type = machine_type
-        # The name of the plug-in. The value is fixed as **alinet**.
+        # The name of the plug-in type. The value is fixed as **alinet**.
         self.plugin_name = plugin_name
         # The version of the plug-in.
         self.plugin_version = plugin_version
         # The online status of the plug-in. Valid values:
-        # 
-        # *   **false**: The plug-in is offline.
-        # *   **true**: The plug-in is online.
+        # - **false**: offline
+        # - **true**: online.
         self.status = status
-        # The UUID of the asset.
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

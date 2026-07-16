@@ -21,43 +21,37 @@ class SubmitDynamicChartJobRequest(DaraModel):
         unit: str = None,
         user_data: str = None,
     ):
-        # The axis configurations. If XAxisFontInterval is set to 0 or left empty, the system automatically determines an optimal interval.
+        # The axis style settings. If `XAxisFontInterval` is not specified or is set to 0, the system automatically calculates the interval.
         self.axis_params = axis_params
-        # The chart background.
+        # The settings for the chart background. You can specify a Background Color or a Background Image.
         self.background = background
-        # The chart configurations.
+        # The overall configuration for the chart\\"s appearance and timing.
         self.chart_config = chart_config
-        # The chart title.
+        # The chart title settings.
         self.chart_title = chart_title
-        # The chart type.
-        # 
-        # Valid values:
-        # 
-        # *   Line: line chart
-        # *   Histogram: bar chart
-        # *   Pie: pie chart
+        # The chart type to generate.
         # 
         # This parameter is required.
         self.chart_type = chart_type
-        # The data source.
+        # The data source label settings.
         self.data_source = data_source
         # The job description.
         self.description = description
-        # The input data for the chart.
+        # The input data configuration, which specifies the Excel file location.
         # 
         # This parameter is required.
         self.input = input
-        # The output configurations.
+        # The output video configuration.
         # 
         # This parameter is required.
         self.output_config = output_config
-        # The subtitle.
+        # The subtitle settings.
         self.subtitle = subtitle
         # The job title.
         self.title = title
-        # Unit
+        # The data unit label settings.
         self.unit = unit
-        # The custom data in JSON format.
+        # The custom user data in JSON format.
         self.user_data = user_data
 
     def validate(self):

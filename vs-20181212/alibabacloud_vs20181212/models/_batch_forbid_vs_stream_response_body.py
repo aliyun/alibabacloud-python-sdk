@@ -14,6 +14,7 @@ class BatchForbidVsStreamResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.forbid_result = forbid_result
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

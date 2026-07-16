@@ -18,14 +18,13 @@ class DeleteImageEventOperationResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -79,7 +78,7 @@ class DeleteImageEventOperationResponseBodyData(DaraModel):
         self,
         id: int = None,
     ):
-        # The primary key of the alert handling rule.
+        # The primary key of the alert disposal rule.
         self.id = id
 
     def validate(self):

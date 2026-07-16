@@ -10,7 +10,9 @@ class SeccompProfile(DaraModel):
         localhost_profile: str = None,
         type: str = None,
     ):
+        # The path of the Seccomp profile on the node. This parameter takes effect only when Type is set to Localhost.
         self.localhost_profile = localhost_profile
+        # The Seccomp configuration type. Valid values: Localhost, RuntimeDefault, Unconfined.
         self.type = type
 
     def validate(self):

@@ -17,14 +17,37 @@ class DescribePrivateDnsEndpointListRequest(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the instance.
         self.access_instance_id = access_instance_id
+        # The name of the private instance.
         self.access_instance_name = access_instance_name
+        # The type of Cloud Firewall. Valid values:
+        # 
+        # - **internet**
+        # 
+        # - **vpc**
+        # 
+        # - **nat**
         self.firewall_type = firewall_type
+        # The UID of the member account.
         self.member_uid = member_uid
+        # The page number.
         self.page_no = page_no
+        # The number of the page to return.
         self.page_size = page_size
+        # The ID of the region.
         self.region_no = region_no
+        # The status of the instance. Valid values:
+        # 
+        # - **creating**: The instance is being created.
+        # 
+        # - **deleting**: The instance is being deleted.
+        # 
+        # - **normal**: The instance is running as expected.
+        # 
+        # - **updating**: The instance is being updated.
         self.status = status
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

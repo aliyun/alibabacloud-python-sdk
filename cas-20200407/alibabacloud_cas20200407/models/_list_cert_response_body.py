@@ -16,15 +16,15 @@ class ListCertResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # An array that consists of the certificates.
+        # The list of certificates.
         self.cert_list = cert_list
-        # The page number of the returned page. Default value: 1.
+        # The current page number. Default value: 1.
         self.current_page = current_page
         # The ID of the request.
         self.request_id = request_id
-        # The number of entries returned per page. Default value: 50.
+        # The page size. Default value: 50.
         self.show_size = show_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -98,44 +98,57 @@ class ListCertResponseBodyCertList(DaraModel):
         wh_id: int = None,
         wh_instance_id: str = None,
     ):
-        # The expiration time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration date of the certificate. This value is a UNIX timestamp in milliseconds.
         self.after_date = after_date
+        # The encryption algorithm of the certificate. Valid values:
+        # 
+        # - **RSA**: the RSA algorithm
+        # 
+        # - **ECC**: the ECC algorithm
+        # 
+        # - **SM2**: the SM2 algorithm
         self.algorithm = algorithm
-        # The issuance time of the certificate. The value is a UNIX timestamp. Unit: milliseconds.
+        # The start date of the certificate\\"s validity period. This value is a UNIX timestamp in milliseconds.
         self.before_date = before_date
-        # 证书的类型 。取值：
+        # The type of the certificate. Valid values:
         # 
-        # - **CA**：表示CA证书。
-        # - **CERT**：表示签发的证书。
+        # - **CA**: a Certificate Authority (CA) certificate
+        # 
+        # - **CERT**: an issued certificate
         self.cert_type = cert_type
-        # The domain name.
+        # The common name of the certificate. This is typically the primary domain name associated with the certificate.
         self.common_name = common_name
-        # Indicates whether the certificate contains a private key. Valid values:
+        # Indicates whether a private key is available for the certificate. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.exist_private_key = exist_private_key
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The issuer of the certificate.
         self.issuer = issuer
-        # The domain names that are bound to the certificate. Multiple domain names are separated by commas.
+        # The Subject Alternative Names (SANs) associated with the certificate. Multiple domain names are separated by commas (,).
         self.sans = sans
+        # The serial number of the certificate. This parameter is returned only if the `OrderType` request parameter is set to `CERT` or `UPLOAD`.
         self.serial_no = serial_no
+        # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
         # The source of the certificate. Valid values:
         # 
-        # *   **upload**: uploaded certificate
-        # *   **aliyun**: Alibaba Cloud certificate
+        # - **upload**: The certificate is uploaded.
+        # 
+        # - **aliyun**: The certificate is from Alibaba Cloud.
         self.source_type = source_type
         # The status of the certificate. Valid values:
         # 
-        # *   **ISSUE**: issued
-        # *   **REVOKE**: revoked
+        # - **ISSUE**: The certificate is issued.
+        # 
+        # - **REVOKE**: The certificate is revoked.
         self.status = status
-        # The ID of the certificate repository.
+        # The warehouse ID.
         self.wh_id = wh_id
-        # The instance ID of the certificate repository.
+        # The warehouse instance ID.
         self.wh_instance_id = wh_instance_id
 
     def validate(self):

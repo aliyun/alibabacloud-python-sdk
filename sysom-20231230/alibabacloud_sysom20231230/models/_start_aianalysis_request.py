@@ -24,19 +24,35 @@ class StartAIAnalysisRequest(DaraModel):
         timeout: int = None,
         uid: str = None,
     ):
+        # Analysis tool. Not required for OpenAPI access.
         self.analysis_tool = analysis_tool
+        # Data richness
         self.analysis_params = analysis_params
+        # Channel name
         self.channel = channel
+        # Process name, optional parameter
         self.comms = comms
+        # Creator. Not required for OpenAPI access.
         self.created_by = created_by
+        # Instance ID
         self.instance = instance
+        # Instance type. Not required for OpenAPI access.
         self.instance_type = instance_type
+        # Iteration entry function. Required only in iteration mode. Can be left blank.
         self.iteration_func = iteration_func
+        # Iteration entry module. Required only in iteration mode. Can be left blank.
         self.iteration_mod = iteration_mod
+        # Iteration range (iteration count: refers to the number of iterations when the data collection module is activated, independent of the AI job\\"s iteration count)
         self.iteration_range = iteration_range
+        # AI job process PIDs. Supports batch input, separated by commas.
         self.pids = pids
+        # Region ID
         self.region = region
+        # AI Infra analysis time;
+        # Unit: milliseconds;
+        # Default value: 2000;
         self.timeout = timeout
+        # Alibaba Cloud user ID. Not required for OpenAPI access.
         self.uid = uid
 
     def validate(self):

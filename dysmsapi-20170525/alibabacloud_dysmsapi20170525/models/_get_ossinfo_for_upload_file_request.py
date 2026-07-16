@@ -12,9 +12,9 @@ class GetOSSInfoForUploadFileRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Business type, default value is **fcMediaSms**.
+        # The business type. Default value: **fcMediaSms**.
         # 
-        # When creating signatures and templates, and uploading **additional materials**, this value is **fcMediaSms**.
+        # When you create a signature or template and upload **More Materials**, the value is **fcMediaSms**.
         self.biz_type = biz_type
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

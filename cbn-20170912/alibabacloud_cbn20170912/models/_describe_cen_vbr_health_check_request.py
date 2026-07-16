@@ -22,19 +22,19 @@ class DescribeCenVbrHealthCheckRequest(DaraModel):
         self.cen_id = cen_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VBR.
         self.vbr_instance_id = vbr_instance_id
-        # The ID of the Alibaba Cloud account that owns the VBRs.
+        # The ID of the Alibaba Cloud account that owns the VBR.
         self.vbr_instance_owner_id = vbr_instance_owner_id
-        # The ID of the region where the VBRs are deployed.
+        # The ID of the region where the Virtual Border Router (VBR) is deployed.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # For more information, see [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html).
         # 
         # This parameter is required.
         self.vbr_instance_region_id = vbr_instance_region_id

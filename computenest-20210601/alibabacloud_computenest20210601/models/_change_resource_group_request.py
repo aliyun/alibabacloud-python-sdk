@@ -12,18 +12,19 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the new resource group.
+        # The ID of the destination resource group.
         # 
-        # You can view resource group IDs in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) .
+        # You can obtain the resource group ID from the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups).
         self.new_resource_group_id = new_resource_group_id
         # The region ID.
         self.region_id = region_id
-        # The ID of the cloud resource that you want to move to a new resource group.
+        # The ID of the cloud resource whose resource group you want to change.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # *   service: service
-        # *   serviceinstance: service instance
+        # - service: The resource is a service.
+        # 
+        # - serviceinstance: The resource is a service instance.
         self.resource_type = resource_type
 
     def validate(self):

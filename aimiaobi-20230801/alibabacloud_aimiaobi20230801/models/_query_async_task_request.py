@@ -10,8 +10,13 @@ class QueryAsyncTaskRequest(DaraModel):
         agent_key: str = None,
         task_id: str = None,
     ):
+        # Unique ID of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Unique task ID
+        # 
+        # > The system automatically generates the TaskId by default. If subsequent tasks use the same TaskId, they belong to the same conversation group.
         self.task_id = task_id
 
     def validate(self):

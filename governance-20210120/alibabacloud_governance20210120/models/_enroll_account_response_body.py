@@ -10,7 +10,11 @@ class EnrollAccountResponseBody(DaraModel):
         account_uid: int = None,
         request_id: str = None,
     ):
-        # The account ID.
+        # The ID of the enrolled account.
+        # 
+        # colspan="1" rowspan="1">
+        # 
+        # 143165363236\\*\\*\\*\\*
         self.account_uid = account_uid
         # The request ID.
         self.request_id = request_id

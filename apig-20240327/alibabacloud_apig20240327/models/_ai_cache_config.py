@@ -16,12 +16,19 @@ class AiCacheConfig(DaraModel):
         redis_config: main_models.AiPolicyRedisConfig = None,
         vector_config: main_models.AiCacheConfigVectorConfig = None,
     ):
+        # The cache key generation strategy.
         self.cache_key_strategy = cache_key_strategy
+        # The cache mode.
         self.cache_mode = cache_mode
+        # The cache expiration time, in seconds.
         self.cache_ttl = cache_ttl
+        # The embedding service configuration.
         self.embedding_config = embedding_config
+        # The plugin running status.
         self.plugin_status = plugin_status
+        # The Redis configuration for exact cache count storage.
         self.redis_config = redis_config
+        # The vector database configuration.
         self.vector_config = vector_config
 
     def validate(self):
@@ -101,11 +108,17 @@ class AiCacheConfigVectorConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # The API key of the vector database.
         self.api_key = api_key
+        # The vector collection ID.
         self.collection_id = collection_id
+        # The service address of the vector database.
         self.service_host = service_host
+        # The similarity threshold.
         self.threshold = threshold
+        # The request timeout period, in milliseconds.
         self.timeout = timeout
+        # The vector database type.
         self.type = type
 
     def validate(self):
@@ -166,9 +179,13 @@ class AiCacheConfigEmbeddingConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # The embedding model name.
         self.model_name = model_name
+        # The embedding service ID.
         self.service_id = service_id
+        # The request timeout period, in milliseconds.
         self.timeout = timeout
+        # The embedding service type.
         self.type = type
 
     def validate(self):

@@ -17,14 +17,17 @@ class ListActionTrackEventTypesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of event types.
         self.event_types = event_types
-        # 分页查询时每页行数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+        # The token to retrieve the next page of results.
         self.next_token = next_token
-        # 本次调用返回的查询凭证（Token）值，用于上一次翻页查询。
+        # The token to retrieve the previous page of results.
         self.previous_token = previous_token
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,6 +93,7 @@ class ListActionTrackEventTypesResponseBodyEventTypes(DaraModel):
         self,
         event_type: str = None,
     ):
+        # The event type.
         self.event_type = event_type
 
     def validate(self):

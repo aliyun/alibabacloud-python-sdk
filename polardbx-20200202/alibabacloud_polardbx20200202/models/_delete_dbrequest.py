@@ -11,10 +11,16 @@ class DeleteDBRequest(DaraModel):
         db_name: str = None,
         region_id: str = None,
     ):
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The name of the database to delete.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

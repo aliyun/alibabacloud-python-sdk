@@ -11,7 +11,7 @@ class GetDomainResponseBody(DaraModel):
         domain: main_models.GetDomainResponseBodyDomain = None,
         request_id: str = None,
     ):
-        # The domain name.
+        # The domain name object.
         self.domain = domain
         # The ID of the request.
         self.request_id = request_id
@@ -58,30 +58,33 @@ class GetDomainResponseBodyDomain(DaraModel):
         lock_mode: str = None,
         update_time: int = None,
     ):
+        # The ID of the brand.
         self.brand_id = brand_id
-        # The start time when the change order was created.
+        # The time when the domain name was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
-        # Whether it is the default domain.
+        # Specifies whether the domain name is the default domain name.
         self.default_domain = default_domain
-        # The domain.
+        # The domain name.
         self.domain = domain
-        # Domain ID.
+        # The ID of the domain name.
         self.domain_id = domain_id
         # The type of the domain name. Valid values:
         # 
-        # *   **system_init**: Initialize domain
-        # *   **user_custom**: user custom domain
-        self.domain_type = domain_type
-        # Domain registration information.
-        self.filing = filing
-        # The instance ID.
-        self.instance_id = instance_id
-        # The lock status of the instance. Valid values:
+        # - system_init: The initial domain name.
         # 
-        # *   **Unlock**: The instance is normal.
-        # *   **lockByLicense**: Not available due to license restrictions.
+        # - user_custom: A custom domain name.
+        self.domain_type = domain_type
+        # The ICP filing information about the domain name.
+        self.filing = filing
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The lock status of the domain name. Valid values:
+        # 
+        # - unlock: Normal.
+        # 
+        # - lockByLicense: The domain name is unavailable due to license restrictions.
         self.lock_mode = lock_mode
-        # The time when the service was updated.
+        # The time when the domain name was last updated. This value is a UNIX timestamp. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -165,8 +168,7 @@ class GetDomainResponseBodyDomainFiling(DaraModel):
         self,
         icp_number: str = None,
     ):
-        # <notice>The ICP filing number is only applicable for services in the China region.  For non-China regions, no validation or display of this record number will be performed.</notice>
-        # The ICP filing number associated with the domain name, with a maximum length of 64 characters.
+        # The ICP filing number that is associated with the domain name. The ICP filing number can be for an entity or a website.
         self.icp_number = icp_number
 
     def validate(self):

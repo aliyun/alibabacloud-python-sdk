@@ -17,29 +17,29 @@ class CreateTriggerRequest(DaraModel):
         service_role: str = None,
         tags: Dict[str, Any] = None,
     ):
-        # The templates.
+        # A list of data processing templates.
         # 
         # This parameter is required.
         self.actions = actions
-        # The data source configurations.
+        # The data source configuration.
         # 
         # This parameter is required.
         self.input = input
-        # The notification settings. The operation supports multiple messaging middleware options. For more information about notification messages, see Asynchronous message examples. You can use one of the following methods to receive notification messages:
+        # The notification recipient. Various message intermediaries are supported. For details about the message format, see Asynchronous notification message. Choose one of the following methods to receive messages:
         # 
-        # In the region in which the IMM project is located, use EventBridge to receive task notifications. For more information, see IMM events. In the region in which the IMM project is located, configure a Simple Message Queue (SMQ) subscription to receive task notifications.
+        # Activate and connect to EventBridge in the same region as Intelligent Media Management (IMM) to receive task notifications. For more information, see IMM events. Activate Message Service (MNS) in the same region as IMM and configure a subscription.
         self.notification = notification
-        # The name of the project.[](~~478153~~)
+        # The project name. For more information, see [Create a project](https://help.aliyun.com/document_detail/478153.html).
         # 
         # This parameter is required.
         self.project_name = project_name
-        # The service role. IMM assumes the service role so that it can access resources in other cloud services, such as OSS. Default value: AliyunIMMBatchTriggerRole.
+        # The service role that grants Intelligent Media Management (IMM) permissions to access other cloud resources, such as Object Storage Service (OSS). The default value is AliyunIMMBatchTriggerRole.
         # 
-        # You can also create a custom service role in the RAM console and grant the required permissions to the role based on your business requirements. For more information, see [Create a regular service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a role](https://help.aliyun.com/document_detail/116147.html).
+        # To use a custom service role, create a service role and grant permissions to the role in the Resource Access Management (RAM) console. For more information, see [Create a service role](https://help.aliyun.com/document_detail/116800.html) and [Grant permissions to a RAM role](https://help.aliyun.com/document_detail/116147.html).
         # 
         # This parameter is required.
         self.service_role = service_role
-        # The custom tags. You can search for or filter asynchronous tasks by custom tag.
+        # Custom tags used to search and filter asynchronous tasks.
         self.tags = tags
 
     def validate(self):
@@ -111,7 +111,7 @@ class CreateTriggerRequestNotification(DaraModel):
         self,
         mns: main_models.MNS = None,
     ):
-        # The SMQ notification settings.
+        # The parameter object for MNS notifications.
         self.mns = mns
 
     def validate(self):
@@ -143,13 +143,13 @@ class CreateTriggerRequestActions(DaraModel):
         name: str = None,
         parameters: List[str] = None,
     ):
-        # The policy configurations for handling failures.
+        # The fast-fail policy configuration.
         self.fast_fail_policy = fast_fail_policy
         # The name of the template.
         # 
         # This parameter is required.
         self.name = name
-        # The template parameters.
+        # A list of template parameters.
         self.parameters = parameters
 
     def validate(self):

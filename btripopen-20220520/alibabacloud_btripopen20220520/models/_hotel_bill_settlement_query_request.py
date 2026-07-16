@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class HotelBillSettlementQueryRequest(DaraModel):
     def __init__(
         self,
+        apply_id: str = None,
         bill_batch: str = None,
         bill_record_time_end: str = None,
         bill_record_time_start: str = None,
@@ -18,6 +19,7 @@ class HotelBillSettlementQueryRequest(DaraModel):
         scroll_id: str = None,
         scroll_mod: bool = None,
     ):
+        self.apply_id = apply_id
         self.bill_batch = bill_batch
         self.bill_record_time_end = bill_record_time_end
         self.bill_record_time_start = bill_record_time_start
@@ -39,6 +41,9 @@ class HotelBillSettlementQueryRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
+
         if self.bill_batch is not None:
             result['bill_batch'] = self.bill_batch
 
@@ -73,6 +78,9 @@ class HotelBillSettlementQueryRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
+
         if m.get('bill_batch') is not None:
             self.bill_batch = m.get('bill_batch')
 

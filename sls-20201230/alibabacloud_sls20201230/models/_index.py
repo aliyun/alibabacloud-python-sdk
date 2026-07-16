@@ -18,12 +18,23 @@ class Index(DaraModel):
         max_text_len: int = None,
         scan_index: bool = None,
     ):
+        # The field index configuration. The key is the field name and the value is the index configuration for the field. You must specify either this parameter or the \\`line\\` parameter.
         self.keys = keys
+        # The full-text index configuration. You must specify either this parameter or the \\`keys\\` parameter.
         self.line = line
+        # Specifies whether to enable log clustering. If enabled, either the whitelist or the blacklist can be active, but not both.
+        # 
+        # - true: Enable log clustering.
+        # 
+        # - false (default): Do not enable log clustering.
         self.log_reduce = log_reduce
+        # The blacklist of fields for log clustering. This parameter is valid only when log clustering is enabled.
         self.log_reduce_black_list = log_reduce_black_list
+        # The whitelist of fields for log clustering. This parameter is valid only when log clustering is enabled.
         self.log_reduce_white_list = log_reduce_white_list
+        # The default maximum length of a field value in Simple Log Service is 2,048 bytes (2 KB). To change this limit, set the maximum length for a text field. The value must be between 64 and 16,384 bytes.
         self.max_text_len = max_text_len
+        # Specifies whether to enable the scan index.
         self.scan_index = scan_index
 
     def validate(self):
@@ -102,10 +113,24 @@ class IndexLine(DaraModel):
         include_keys: List[str] = None,
         token: List[str] = None,
     ):
+        # Specifies whether the index is case-sensitive.
+        # 
+        # - true: The index is case-sensitive.
+        # 
+        # - false (default): The index is not case-sensitive.
         self.case_sensitive = case_sensitive
+        # Specifies whether the logs contain Chinese characters.
+        # 
+        # - true: The logs contain Chinese characters.
+        # 
+        # - false (default): The logs do not contain Chinese characters.
         self.chn = chn
+        # The list of fields to exclude from the full-text index. This parameter cannot be specified at the same time as \\`include_keys\\`.
         self.exclude_keys = exclude_keys
+        # The list of fields to include in the full-text index. This parameter cannot be specified at the same time as \\`exclude_keys\\`.
         self.include_keys = include_keys
+        # The list of delimiters for tokenization. This parameter specifies how the field is tokenized.
+        # 
         # This parameter is required.
         self.token = token
 

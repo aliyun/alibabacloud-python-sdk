@@ -17,11 +17,17 @@ class GenerateViewPointResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message. The value is `successful` on success, or an error message on failure.
         self.message = message
+        # The unique request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success, and `false` indicates failure.
         self.success = success
 
     def validate(self):
@@ -87,6 +93,7 @@ class GenerateViewPointResponseBodyData(DaraModel):
         self,
         point: str = None,
     ):
+        # The viewpoint text.
         self.point = point
 
     def validate(self):

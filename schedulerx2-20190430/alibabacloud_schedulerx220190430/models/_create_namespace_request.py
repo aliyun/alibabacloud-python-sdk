@@ -12,17 +12,17 @@ class CreateNamespaceRequest(DaraModel):
         region_id: str = None,
         uid: str = None,
     ):
-        # The description of the namespace.
+        # The namespace description.
         self.description = description
-        # The name of the namespace.
+        # The namespace name.
         # 
         # This parameter is required.
         self.name = name
-        # The region ID.
+        # The region ID. For example, `cn-hangzhou` specifies the China (Hangzhou) region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The unique identifier (UID) of the namespace. We recommend that you use the universally unique identifier (UUID) to generate the UID.
+        # The namespace UID. This value must be globally unique. We recommend that you use a UUID.
         self.uid = uid
 
     def validate(self):

@@ -10,8 +10,12 @@ class GetDocTranslateTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The document translation task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # The ID of the Model Studio workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

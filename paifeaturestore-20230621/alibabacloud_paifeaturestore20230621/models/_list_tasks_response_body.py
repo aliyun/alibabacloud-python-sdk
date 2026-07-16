@@ -14,8 +14,11 @@ class ListTasksResponseBody(DaraModel):
         tasks: List[main_models.ListTasksResponseBodyTasks] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -72,15 +75,41 @@ class ListTasksResponseBodyTasks(DaraModel):
         task_id: str = None,
         type: str = None,
     ):
+        # The time when the task was created.
         self.gmt_create_time = gmt_create_time
+        # The time when the task was executed.
         self.gmt_executed_time = gmt_executed_time
+        # The time when the task was completed.
         self.gmt_finished_time = gmt_finished_time
+        # The ID of the object.
         self.object_id = object_id
+        # The type of the object. Valid values:
+        # 
+        # ● ModelFeature: a model feature.
+        # 
+        # ● FeatureView: a feature view.
         self.object_type = object_type
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The status of the task. Valid values:
+        # 
+        # ● Initializing: The task is being initialized.
+        # 
+        # ● Running: The task is in progress.
+        # 
+        # ● Success: The task is successful.
+        # 
+        # ● Failure: The task failed.
         self.status = status
+        # The task ID.
         self.task_id = task_id
+        # The task type. Valid values:
+        # 
+        # ● OfflineToOnline: The task synchronizes data from offline to online.
+        # 
+        # ● ExportTrainingSet: The task exports a training set.
         self.type = type
 
     def validate(self):

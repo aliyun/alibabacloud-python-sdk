@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class GetLogStoreConfigResponseBody(DaraModel):
+    def __init__(
+        self,
+        client_ip_headers: List[str] = None,
+    ):
+        # An array of header keys used to extract the client IP address when data is written to the Logstore. The keys are case-insensitive, but their order in the array is significant. For this feature to work, enable the `appendMeta` option on the Logstore. Log Service searches the request headers for these keys in the specified order and adds the first valid IP address it finds as a log tag.
+        self.client_ip_headers = client_ip_headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_ip_headers is not None:
+            result['clientIpHeaders'] = self.client_ip_headers
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clientIpHeaders') is not None:
+            self.client_ip_headers = m.get('clientIpHeaders')
+
+        return self
+

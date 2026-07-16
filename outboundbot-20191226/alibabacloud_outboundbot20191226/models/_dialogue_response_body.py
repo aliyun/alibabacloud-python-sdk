@@ -15,11 +15,17 @@ class DialogueResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Interface status code
         self.code = code
+        # Returns dialogue information
         self.feedback = feedback
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Interface message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):
@@ -83,11 +89,15 @@ class DialogueResponseBodyFeedback(DaraModel):
         content_params: str = None,
         interruptible: bool = None,
     ):
+        # Instruction for IVR
         self.action = action
+        # Instruction parameters
         self.action_params = action_params
+        # Dialogue text
         self.content = content
-        # 已废弃
+        # Deprecated
         self.content_params = content_params
+        # Indicates whether the broadcast can be interrupted
         self.interruptible = interruptible
 
     def validate(self):

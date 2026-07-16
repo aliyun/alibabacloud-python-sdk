@@ -17,7 +17,6 @@ class QueryConferenceMembersResponseBody(DaraModel):
     ):
         self.member_models = member_models
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
         self.total_count = total_count
 

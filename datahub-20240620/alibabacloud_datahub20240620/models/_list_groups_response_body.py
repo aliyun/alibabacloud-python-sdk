@@ -17,11 +17,17 @@ class ListGroupsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of consumer groups.
         self.list = list
+        # The maximum number of records returned in this query.
         self.max_results = max_results
+        # The pagination token for the next query. If NextToken is empty, no more results are available. If NextToken has a value, it indicates the token from which the next query starts.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records in the query result.
         self.total_count = total_count
 
     def validate(self):
@@ -93,12 +99,19 @@ class ListGroupsResponseBodyList(DaraModel):
         topic_list: List[str] = None,
         update_time: int = None,
     ):
+        # The description of the consumer group.
         self.comment = comment
+        # The creation time.
         self.create_time = create_time
+        # The creator of the consumer group.
         self.creator = creator
+        # The consumer group name.
         self.group_name = group_name
+        # The project name.
         self.project_name = project_name
+        # The list of topics bound to the consumer group.
         self.topic_list = topic_list
+        # The last update time.
         self.update_time = update_time
 
     def validate(self):

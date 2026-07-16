@@ -11,12 +11,9 @@ class DescribePipelineResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribePipelineResponseBodyResult = None,
     ):
-        # The time when the pipeline was updated.
+        # The request ID.
         self.request_id = request_id
-        # The type of the queue. Valid values:
-        # 
-        # *   MEMORY: a traditional memory-based queue.
-        # *   PERSISTED: disk-based ACKed queue (persistent queue).
+        # The returned pipeline information. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
         self.result = result
 
     def validate(self):
@@ -63,30 +60,36 @@ class DescribePipelineResponseBodyResult(DaraModel):
         queue_type: str = None,
         workers: int = None,
     ):
-        # The time when the pipeline was created.
+        # The batch delay of the pipeline. Unit: milliseconds.
         self.batch_delay = batch_delay
+        # The batch size of the pipeline.
         self.batch_size = batch_size
-        # The description of the pipeline.
-        self.config = config
-        # The state of the MPS queue. Valid values:
-        # 
-        # *   NOT_DEPLOYED: The node is not deployed.
-        # *   RUNNING
-        # *   DELETED: Deleted. The console does not display this status.
-        self.description = description
-        self.gmt_created_time = gmt_created_time
-        # The total capacity of the queue in bytes. Unit: MB.
-        self.gmt_update_time = gmt_update_time
-        # Number of queue checkpoint writes.
-        self.pipeline_id = pipeline_id
-        self.pipeline_status = pipeline_status
-        # Pipeline batch delay. Unit: milliseconds.
-        self.queue_check_point_writes = queue_check_point_writes
-        # The number of pipeline workers.
-        self.queue_max_bytes = queue_max_bytes
         # The specific configuration of the pipeline.
+        self.config = config
+        # The pipeline description.
+        self.description = description
+        # The time when the pipeline was created.
+        self.gmt_created_time = gmt_created_time
+        # The time when the pipeline was last updated.
+        self.gmt_update_time = gmt_update_time
+        # The pipeline ID.
+        self.pipeline_id = pipeline_id
+        # The pipeline status. Valid values:
+        # 
+        # - NOT_DEPLOYED: not deployed.
+        # - RUNNING: running.
+        # - DELETED: deleted. This status is not displayed in the console.
+        self.pipeline_status = pipeline_status
+        # The number of queue checkpoint writes.
+        self.queue_check_point_writes = queue_check_point_writes
+        # The total capacity of the queue, in bytes. Unit: MB.
+        self.queue_max_bytes = queue_max_bytes
+        # The queue type. Valid values:
+        # 
+        # - MEMORY: a traditional memory-based queue.
+        # - PERSISTED: a disk-based ACKed queue (persistent queue).
         self.queue_type = queue_type
-        # The size of the pipeline batch.
+        # The number of pipeline worker threads.
         self.workers = workers
 
     def validate(self):

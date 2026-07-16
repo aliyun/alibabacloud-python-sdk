@@ -10,11 +10,11 @@ class DescribeApplicationImageRequest(DaraModel):
         app_id: str = None,
         image_url: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The URL of the image.
+        # The image URL.
         # 
         # This parameter is required.
         self.image_url = image_url

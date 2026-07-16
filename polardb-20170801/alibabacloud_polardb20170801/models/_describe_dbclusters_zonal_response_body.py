@@ -18,12 +18,19 @@ class DescribeDBClustersZonalResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of clusters.
         self.items = items
+        # The maximum number of entries returned for the current request. Default value: 10.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If more results are available, this parameter is returned. To retrieve the next page, include this token in your next request. If all results have been returned, this parameter is not returned.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of clusters on the current page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -122,33 +129,107 @@ class DescribeDBClustersZonalResponseBodyItems(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
+        # The AI node type. Valid values:
+        # 
+        # - SearchNode: search node
+        # 
+        # - DLNode: AI node
         self.ai_type = ai_type
+        # The Cluster Edition. The following editions are supported:
+        # 
+        # - Normal: Cluster Edition
+        # 
+        # - Basic: single node
+        # 
+        # - Archive: X-Engine
+        # 
+        # - NormalMultimaster: Multi-master Cluster (Database/Table)
         self.category = category
+        # The ID of the central control region.
         self.central_control_region_id = central_control_region_id
+        # The cloud service provider.
         self.cloud_provider = cloud_provider
+        # The number of CPU cores.
         self.cpu_cores = cpu_cores
+        # The creation time.
         self.create_time = create_time
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The status of the cluster.
         self.dbcluster_status = dbcluster_status
+        # The node specifications.
         self.dbnode_class = dbnode_class
+        # The number of nodes.
         self.dbnode_number = dbnode_number
+        # The database type.
         self.dbtype = dbtype
+        # The database version.
         self.dbversion = dbversion
+        # The ENS region ID.
         self.ensregion_id = ensregion_id
+        # The expiration time of the cluster.
+        # 
+        # > This parameter is returned only for **Prepaid** (subscription) clusters. For **Postpaid** (pay-as-you-go) clusters, this parameter is empty.
         self.expire_time = expire_time
+        # Indicates whether the cluster has expired. Valid values:
+        # 
+        # - true
+        # 
+        # - false
         self.expired = expired
+        # The lock state of the cluster. Valid values:
+        # 
+        # - Unlock: Normal.
+        # 
+        # - ManualLock: The cluster is manually locked.
+        # 
+        # - LockByExpiration: The cluster is automatically locked upon expiration.
         self.lock_mode = lock_mode
+        # The billing method. Valid values:
+        # 
+        # - Postpaid: pay-as-you-go.
+        # 
+        # - Prepaid: subscription.
         self.pay_type = pay_type
+        # The Serverless type. \\`**AgileServerless**\\` indicates that the cluster is a Serverless cluster. An empty value indicates that the cluster is a common cluster.
         self.serverless_type = serverless_type
+        # The storage capacity of the instance.
         self.storage_space = storage_space
+        # The storage class of the Standard Edition cluster. Valid values:
+        # 
+        # - essdpl0
+        # 
+        # - essdpl1
+        # 
+        # - essdpl2
+        # 
+        # - essdpl3
+        # 
+        # - essdautopl
         self.storage_type = storage_type
+        # The used storage space of the cluster. Unit: bytes.
         self.storage_used = storage_used
+        # Indicates whether strong consistency is enabled for data across multiple zones. Valid values:
+        # 
+        # - **ON**: Strong consistency is enabled. This applies to Standard Edition clusters that are deployed in three zones.
+        # 
+        # - **OFF**: Strong consistency is not enabled.
         self.strict_consistency = strict_consistency
+        # The specification type of the compute node. Valid values:
+        # 
+        # - **Exclusive**: Dedicated
+        # 
+        # - **General**: General-purpose
         self.sub_category = sub_category
+        # The list of tags.
         self.tags = tags
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The virtual switch ID.
         self.vswitch_id = vswitch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -347,7 +428,9 @@ class DescribeDBClustersZonalResponseBodyItemsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

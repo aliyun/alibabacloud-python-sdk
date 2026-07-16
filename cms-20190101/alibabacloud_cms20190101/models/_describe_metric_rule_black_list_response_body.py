@@ -17,21 +17,23 @@ class DescribeMetricRuleBlackListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The categories of the Alibaba Cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+        # The status code.
+        # 
+        # > A value of 200 indicates that the request was successful.
         self.code = code
-        # The queried blacklist policies.
+        # The blacklist policies.
         self.describe_metric_rule_black_list = describe_metric_rule_black_list
         # The error message.
         self.message = message
-        # The namespace of the cloud service.
+        # The request ID.
         self.request_id = request_id
-        # The namespace of the cloud service.
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](https://help.aliyun.com/document_detail/163515.html).
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
-        # The timestamp when the blacklist policy was created.
-        # 
-        # Unit: milliseconds.
+        # The total number of blacklist policies.
         self.total = total
 
     def validate(self):
@@ -110,45 +112,47 @@ class DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackList(DaraMod
         scope_value: List[str] = None,
         update_time: str = None,
     ):
-        # The category of the cloud service. For example, ApsaraDB for Redis includes the following categories: ApsaraDB for Redis (standard architecture), ApsaraDB for Redis (cluster architecture), and ApsaraDB for Redis (read/write splitting architecture). In this case, the valid values of this parameter for ApsaraDB for Redis include `kvstore_standard`, `kvstore_sharding`, and `kvstore_splitrw`.
+        # The category of the Alibaba Cloud service. For example, Redis has different editions, such as `kvstore_standard` (Standard Edition), `kvstore_sharding` (Cluster Edition), and `kvstore_splitrw` (Read/write Splitting Edition).
         self.category = category
-        # The timestamp when the blacklist policy was created.
+        # The timestamp that indicates when the blacklist policy was created.
         # 
         # Unit: milliseconds.
         self.create_time = create_time
-        # The time range within which the blacklist policy is effective.
+        # The time range during which the blacklist policy is effective.
         self.effective_time = effective_time
-        # The timestamp when the blacklist policy started to take effect.
+        # The timestamp that indicates when the alert blacklist policy is no longer in effect.
         # 
-        # Unit: milliseconds.
+        # The timestamp is measured in milliseconds.
         self.enable_end_time = enable_end_time
-        # The timestamp when the blacklist policy expired.
+        # The time when the alert blacklist policy expires.
         # 
-        # Unit: milliseconds.
+        # This is a UNIX timestamp in milliseconds.
         self.enable_start_time = enable_start_time
         # The ID of the blacklist policy.
         self.id = id
-        # The IDs of the instances that belong to the specified cloud service.
+        # The instances of the Alibaba Cloud service in the blacklist policy.
         self.instances = instances
         # The status of the blacklist policy. Valid values:
         # 
-        # *   true: The blacklist policy is enabled.
-        # *   false: The blacklist policy is disabled.
+        # - true: enabled.
+        # 
+        # - false: disabled.
         self.is_enable = is_enable
         # The metrics of the instance.
         self.metrics = metrics
         # The name of the blacklist policy.
         self.name = name
-        # The namespace of the cloud service.
+        # The namespace of the Alibaba Cloud service.
         self.namespace = namespace
-        # The effective scope of the blacklist policy. Valid values:
+        # The scope of the blacklist policy. Valid values:
         # 
-        # *   USER: The blacklist policy takes effect only within the current Alibaba Cloud account.
-        # *   GROUP: The blacklist policy takes effect only within the specified application group.
+        # - USER: The blacklist policy takes effect only for the current Alibaba Cloud account.
+        # 
+        # - GROUP: The blacklist policy takes effect for the specified application groups.
         self.scope_type = scope_type
         # The IDs of the application groups.
         self.scope_value = scope_value
-        # The timestamp when the blacklist policy was modified.
+        # The timestamp that indicates when the blacklist policy was modified.
         # 
         # Unit: milliseconds.
         self.update_time = update_time
@@ -265,9 +269,9 @@ class DescribeMetricRuleBlackListResponseBodyDescribeMetricRuleBlackListMetrics(
         metric_name: str = None,
         resource: str = None,
     ):
-        # The metric name.
+        # The name of the metric.
         self.metric_name = metric_name
-        # The extended dimension of the instance. For example, `{"device":"C:"}` specifies that the blacklist policy is applied to all C disks of the specified Elastic Compute Service (ECS) instance.
+        # The extended dimension of the instance. For example, `{"device":"C:"}` means that the blacklist policy is applied to all C drives of an Elastic Compute Service (ECS) instance.
         self.resource = resource
 
     def validate(self):

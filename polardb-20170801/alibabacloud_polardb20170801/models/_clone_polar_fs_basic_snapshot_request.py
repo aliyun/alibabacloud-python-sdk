@@ -12,9 +12,13 @@ class ClonePolarFsBasicSnapshotRequest(DaraModel):
         source_path: str = None,
         target_path: str = None,
     ):
+        # The ID of the database cluster.
         self.dbcluster_id = dbcluster_id
+        # The ID of the Polarlakebase instance.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The source path of the file resource. This parameter is empty if the type is local.
         self.source_path = source_path
+        # The destination path.
         self.target_path = target_path
 
     def validate(self):

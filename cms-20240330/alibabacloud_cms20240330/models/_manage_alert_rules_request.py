@@ -10,6 +10,7 @@ class ManageAlertRulesRequest(DaraModel):
         self,
         body: main_models.ManageAlertRulesUnifiedActionInput = None,
     ):
+        # The request body for managing alert rules. This body is shared by CREATE, UPDATE, PATCH, and BATCH_DELETE operations. Specify fields based on the action.
         self.body = body
 
     def validate(self):

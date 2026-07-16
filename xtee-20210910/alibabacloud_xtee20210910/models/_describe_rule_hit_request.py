@@ -14,19 +14,19 @@ class DescribeRuleHitRequest(DaraModel):
         rule_snapshot_id: str = None,
         s_request_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Execution time
+        # The execution time.
         self.request_time = request_time
-        # Rule ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Snapshot ID.
+        # The snapshot ID.
         self.rule_snapshot_id = rule_snapshot_id
-        # Request ID.
+        # The request ID.
         self.s_request_id = s_request_id
 
     def validate(self):

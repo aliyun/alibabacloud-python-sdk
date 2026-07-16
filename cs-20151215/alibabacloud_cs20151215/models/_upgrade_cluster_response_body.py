@@ -11,11 +11,11 @@ class UpgradeClusterResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # Cluster ID.
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

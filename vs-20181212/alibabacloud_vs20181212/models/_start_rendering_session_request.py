@@ -14,11 +14,22 @@ class StartRenderingSessionRequest(DaraModel):
         patch_id: str = None,
         project_id: str = None,
     ):
+        # Cloud application ID
         self.app_id = app_id
+        # Unique ID of the client
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # Client parameter information
         self.client_params = client_params
+        # Cloud application patch ID.
+        # 
+        # 1. By default, start the stable version of the AppId (if no stable patch version is set, the original version is used).
+        # 
+        # 2. If you enter "origin", start the original version.
         self.patch_id = patch_id
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -73,6 +84,7 @@ class StartRenderingSessionRequestClientParams(DaraModel):
         self,
         client_ip: str = None,
     ):
+        # Client IP address. This IP address is used by default for scheduling instances based on proximity.
         self.client_ip = client_ip
 
     def validate(self):

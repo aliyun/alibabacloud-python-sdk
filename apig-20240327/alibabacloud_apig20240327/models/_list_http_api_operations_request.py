@@ -21,31 +21,31 @@ class ListHttpApiOperationsRequest(DaraModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
-        # Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
+        # The consumer authorization rule ID used to filter the API operation list. The response includes only authorized API operations.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # Filter operations by authentication status
+        # Specifies whether to filter by authentication enablement status.
         self.enable_auth = enable_auth
-        # Whether to filter for deployment scenario
+        # Specifies whether the request is for a deployment scenario.
         self.for_deploy = for_deploy
-        # The gateway ID
+        # The gateway ID used to filter results.
         self.gateway_id = gateway_id
-        # List interfaces by Method.
+        # Lists API operations by HTTP method.
         self.method = method
-        # Search operations by exact name.
+        # Searches for API operations by exact name match.
         self.name = name
-        # Search operations by name prefix.
+        # Searches for API operations by name prefix.
         self.name_like = name_like
-        # Page number, starting from 1, default is 1 if not specified.
+        # The page number to return. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # Page size, valid range [1, 100], default is 10 if not specified.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Search operations by path prefix.
+        # Searches for API operations by path prefix match.
         self.path_like = path_like
-        # Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+        # The environment ID. When specified, the response includes the authorization rule list of the specified consumer under the specified environment for each API operation. You must also specify the withConsumerInfoById parameter.
         self.with_consumer_in_environment_id = with_consumer_in_environment_id
-        # Each operation information in the response carries a list of authorization rules for the specified consumer under the specified environment ID. The withConsumerInEnvironmentId field needs to be additionally specified.
+        # The consumer ID. When specified, the response includes the authorization rule list of the specified consumer under the specified environment for each API operation. You must also specify the withConsumerInEnvironmentId parameter.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Plugin ID, use this plugin ID to retrieve the plugin release information.
+        # The plug-in ID used to retrieve plug-in publishing information.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

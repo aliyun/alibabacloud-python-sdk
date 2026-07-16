@@ -10,7 +10,13 @@ class DescribeSecurityModeRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

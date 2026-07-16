@@ -11,8 +11,11 @@ class CreatePerspectiveRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
+        # The agent key. If unspecified, the system uses the default agent. You can obtain this key from the Business Management page of your Alibaba Cloud account.
         self.agent_key = agent_key
+        # The description of the perspective.
         self.description = description
+        # The name of the perspective. The maximum length is 50 characters.
         self.name = name
 
     def validate(self):

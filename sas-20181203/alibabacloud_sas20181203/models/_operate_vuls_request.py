@@ -14,19 +14,19 @@ class OperateVulsRequest(DaraModel):
         uuids: List[str] = None,
         vul_names: List[str] = None,
     ):
-        # The operation on the vulnerabilities. Set the value to **vul_fix**, which indicates vulnerability fixing.
+        # The method to handle the vulnerability. Set the value to **vul_fix**, which indicates fixing the vulnerability.
         # 
         # This parameter is required.
         self.operate_type = operate_type
-        # The type of the vulnerabilities that you want to fix. Set the value to **cve**, which indicates Linux software vulnerabilities.
+        # The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
         # 
         # This parameter is required.
         self.type = type
-        # The UUIDs of servers for which you want to fix vulnerabilities.
+        # The UUIDs of the servers on which you want to fix the vulnerabilities.
         # 
         # This parameter is required.
         self.uuids = uuids
-        # The names of the vulnerabilities that you want to fix.
+        # The names of the vulnerabilities to fix.
         # 
         # This parameter is required.
         self.vul_names = vul_names

@@ -19,31 +19,39 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         setting_type: str = None,
         sls_delivery_config_shrink: str = None,
     ):
-        # The configurations for upgrading Cloud Assistant Agent.
+        # The configurations of upgrading the Cloud Assistant agent.
         self.agent_upgrade_config_shrink = agent_upgrade_config_shrink
-        # The configurations for delivering records to Object Storage Service (OSS).
+        # The configurations of delivering records to OSS.
         self.oss_delivery_config_shrink = oss_delivery_config_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.resource_usage_config_shrink = resource_usage_config_shrink
-        # Cloud Assistant Session Manager configuration.
-        self.session_manager_config_shrink = session_manager_config_shrink
-        # The Cloud Assistant feature. Set SettingType to one of the following valid values:
+        # The configurations of resource usage for Cloud Assistant. This setting takes effect only when the version of the Cloud Assistant agent is not earlier than the following versions:
         # 
-        # *   SessionManagerDelivery: the Session Record Delivery configurations.
-        # *   InvocationDelivery: the Operation Content and Result Delivery configurations.
-        # *   AgentUpgradeConfig: the Cloud Assistant Agent Upgrade configurations.
-        # *   SessionManagerConfig: Cloud Assistant the SessionManager configuration.
+        # - Windows: 2.1.4.1065
+        # 
+        # - Linux: 2.2.4.1065
+        self.resource_usage_config_shrink = resource_usage_config_shrink
+        # The configurations of the Session Manager feature.
+        self.session_manager_config_shrink = session_manager_config_shrink
+        # The type of the service configurations. Valid values:
+        # 
+        # - `SessionManagerDelivery`: the configurations of delivering session records.
+        # 
+        # - `InvocationDelivery`: the configurations of delivering command execution records.
+        # 
+        # - `AgentUpgradeConfig`: the configurations of upgrading the Cloud Assistant agent.
+        # 
+        # - `SessionManagerConfig`: the configurations of Cloud Assistant Session Manager.
         # 
         # This parameter is required.
         self.setting_type = setting_type
-        # The configurations for delivering records to Simple Log Service.
+        # The configurations of delivering records to SLS.
         self.sls_delivery_config_shrink = sls_delivery_config_shrink
 
     def validate(self):

@@ -12,9 +12,13 @@ class GetFileProtectClientEventDashboardRequest(DaraModel):
         page_size: str = None,
         start_time: int = None,
     ):
+        # The page number of the current page to return.
         self.current_page = current_page
+        # The end timestamp of the query.
         self.end_time = end_time
+        # The maximum number of entries per page for a paged query.
         self.page_size = page_size
+        # The start timestamp of the query.
         self.start_time = start_time
 
     def validate(self):

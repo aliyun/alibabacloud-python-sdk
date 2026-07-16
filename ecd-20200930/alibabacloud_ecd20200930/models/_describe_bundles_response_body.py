@@ -92,34 +92,10 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         # The name of the cloud computer template.
         self.bundle_name = bundle_name
         # The type of the cloud computer template.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system template
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CUSTOM: custom template
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.bundle_type = bundle_type
         # The time when the cloud computer template was created.
         self.creation_time = creation_time
         # The category of the data disk.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_efficiency: the ultra disk
-        # *   cloud_auto: the standard SSD.
-        # *   cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
         self.data_disk_category = data_disk_category
         # The description of the cloud computer template.
         self.description = description
@@ -128,12 +104,6 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         # The details of the cloud computer instance type.
         self.desktop_type_attribute = desktop_type_attribute
         # The instance family of the cloud computer.
-        # 
-        # Valid values:
-        # 
-        # *   eds.graphics: graphical instance family
-        # *   eds.hf: instance family with a high clock speed
-        # *   eds.general: general-purpose instance family
         self.desktop_type_family = desktop_type_family
         # Details of the disks.
         self.disks = disks
@@ -144,109 +114,18 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         # The status of the image.
         self.image_status = image_status
         # The OS language of the image.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: English
-        # *   zh-HK: Chinese, Traditional (Hong Kong, China)
-        # *   zh-CN: Simplified Chinese
-        # *   ja-JP: Japanese
         self.language = language
         # The type of the OS.
-        # 
-        # Valid values:
-        # 
-        # *   Linux
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.os_type = os_type
         # The OS.
-        # 
-        # Valid values:
-        # 
-        # *   Ubuntu
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows Server 2022
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   UOS
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   CentOS
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows Server 2019
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   Windows Server 2016
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.platform = platform
         # The protocol type.
-        # 
-        # Valid values:
-        # 
-        # *   HDX: HDX protocol
-        # *   ASP: in-house ASP
         self.protocol_type = protocol_type
         # The session type.
-        # 
-        # Valid values:
-        # 
-        # *   0: single-session
-        # *   1: multi-session
         self.session_type = session_type
         # The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
         self.stock_state = stock_state
         # The category of the system disk.
-        # 
-        # Valid values:
-        # 
-        # *   cloud_efficiency: the ultra disk
-        # *   cloud_auto: the standard SSD.
-        # *   cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
         self.system_disk_category = system_disk_category
         # Indicates whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
@@ -418,62 +297,10 @@ class DescribeBundlesResponseBodyBundlesDisks(DaraModel):
         disk_type: str = None,
     ):
         # The PL of the disk.
-        # 
-        # Valid values:
-        # 
-        # *   PL1
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL0
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL3
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   PL2
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.disk_performance_level = disk_performance_level
         # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
         # The type of the disk.
-        # 
-        # Valid values:
-        # 
-        # *   SYSTEM: system disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DATA: data disk
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.disk_type = disk_type
 
     def validate(self):

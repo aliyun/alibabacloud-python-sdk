@@ -13,8 +13,11 @@ class ListTongyiChatHistorysResponseBody(DaraModel):
         datas: List[Dict[str, Any]] = None,
         request_id: str = None,
     ):
+        # The request duration, in milliseconds.
         self.cost_time = cost_time
+        # A list of chat history entries.
         self.datas = datas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

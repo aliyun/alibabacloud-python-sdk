@@ -16,10 +16,15 @@ class DescribeTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # The list of result items.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_record_count = page_record_count
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -89,16 +94,30 @@ class DescribeTasksResponseBodyItems(DaraModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
+        # The start time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
         self.begin_time = begin_time
+        # The database name associated with the task. This parameter is generally empty.
         self.dbname = dbname
+        # The end time of the task, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
         self.finish_time = finish_time
+        # The task progress, in percentage.
         self.progress = progress
+        # The detailed progress information of the task. This parameter is generally empty.
         self.progress_info = progress_info
+        # The scale-out ID if the task is a scale-out task. This value serves as a unique key in the backend.
         self.scale_out_token = scale_out_token
+        # The task status. Valid values:
+        # 
+        # - **RUNNING**: The task is running.
+        # - **FAILED**: The task failed.
         self.status = status
+        # The task action, which serves as the unique key for the backend task type.
         self.task_action = task_action
+        # The error code of the failed task.
         self.task_error_code = task_error_code
+        # The error message of the failed task.
         self.task_error_message = task_error_message
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

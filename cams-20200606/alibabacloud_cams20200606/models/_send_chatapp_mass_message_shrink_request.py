@@ -28,60 +28,66 @@ class SendChatappMassMessageShrinkRequest(DaraModel):
         template_name: str = None,
         ttl: int = None,
     ):
-        # The type of the channel. Valid values:
+        # The channel type. Valid values:
         # 
-        # *   **whatsapp**
-        # *   **viber**
-        # *   **line** (under development)
+        # - **whatsapp**
+        # 
+        # - **messenger**
+        # - **instagram**
+        # 
+        # <props="intl">- **viber**
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # The space ID of the user.
+        # The ISV sub-customer SpaceId or direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
         self.cust_space_id = cust_space_id
-        # The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
-        # 
-        # >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+        # The ISV customer WABA ID. This parameter is deprecated. Use CustSpaceId instead, which is the direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
         self.cust_waba_id = cust_waba_id
-        # The content of the fallback message.
+        # The custom fallback content. This parameter is for the China site (Chinese). China site users can ignore this parameter.
         self.fall_back_content = fall_back_content
-        # Specifies the period of time after which the fallback message is sent if the message receipt that indicates the message is delivered to clients is not received. If this parameter is left empty, the fallback message is sent only when the message fails to be sent or the message receipt that indicates the message is not delivered to clients is received. Unit: seconds. Valid values: 60 to 43200.
+        # The fallback trigger time. This parameter is for the international site. China site users can ignore this parameter. <props="intl">If no delivery receipt is returned within the specified time, the fallback is triggered. If this parameter is not specified, the fallback is triggered only when the message fails to send or a failure status report is received. Unit: seconds. Minimum value: 60. Maximum value: 43200.
         self.fall_back_duration = fall_back_duration
-        # The ID of the fallback policy.
+        # The fallback policy ID. This parameter is for the China site (Chinese). China site users can ignore this parameter. <props="intl">You can view the policy ID on the [**Fallback Policy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
         self.fall_back_id = fall_back_id
-        # The fallback rule. Valid values:
-        # 
-        # *   **undelivered**: A fallback is triggered if the message is not delivered to clients. When the message is being sent, the template parameters are verified. If the parameters fail to pass the verification, the message fails to be sent. Whether the template and phone number are prohibited is not verified. By default, this value is used when FallBackRule is left empty.
-        # *   **sentFailed**: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
+        # The fallback rule. This parameter is for the international site. China site users can ignore this parameter.
+        # <props="intl">Valid values:
+        # <props="intl">- **undelivered**: the fallback is triggered when the message cannot be delivered to the device. During sending, the template and parameters must pass validation. Blocked templates or blocked numbers are not validated. This rule is used by default if the parameter value is empty.
+        # <props="intl">- **sentFailed**: the fallback is triggered when validation of the template or template variables fails. Only channelType, type, messageType, to, and from (whether it exists) are strictly validated.
         self.fall_back_rule = fall_back_rule
-        # The mobile phone number of the message sender.
+        # The sender phone number.
+        # 
+        # - If ChannelType is **whatsapp**, this is the phone number registered and bindng with WhatsApp. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **WABA Management** > **Phone Number Management** page.
+        # - If ChannelType is **messenger**, this is the Page ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Public Page** page.
+        # - If ChannelType is **instagram**, this is the Instagram professional Account ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Professional Account** page.
+        # <props="intl">- If ChannelType is **viber**, this is the Viber Service ID. You can view it on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Service ID Management** page.
         # 
         # This parameter is required.
         self.from_ = from_
-        # The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+        # The ISV verification code used to verify whether a RAM user is authorized by the ISV. This parameter is deprecated and can be ignored.
         self.isv_code = isv_code
-        # The type of the Viber message. Valid values:
-        # 
-        # *   **promotion**
-        # *   **transaction**
+        # The Viber message type. This parameter is for the international site. China site users can ignore this parameter.
+        # <props="intl">Valid values:
+        # <props="intl">- **pormotion**: marketing or promotional messages.
+        # <props="intl">- **transaction**: notification messages.
         self.label = label
-        # The language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # The language. For a list of language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         # 
         # This parameter is required.
         self.language = language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The mobile phone numbers of the message receivers.
+        # The list of recipient phone numbers.
         self.sender_list_shrink = sender_list_shrink
-        # The tag information when the ChannelType parameter is set to viber.
+        # The tag information. Custom tag information for Viber message sending.
         self.tag = tag
-        # The task ID.
+        # The custom task ID.
         self.task_id = task_id
-        # The template code.
+        # The template code. You can view the template code on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Template Design** page.
         self.template_code = template_code
-        # The name of the message template.
+        # The template name. You can view the template name on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management** > **Template Design** page.
         self.template_name = template_name
-        # The timeout period for sending messages when the ChannelType parameter is set to viber. Valid values: 30 to 1209600. Unit: seconds.
+        # The timeout period for Viber message sending. This parameter is for the international site. China site users can ignore this parameter. <props="intl">Unit: seconds. Valid values: 30 to 1209600.
         self.ttl = ttl
 
     def validate(self):

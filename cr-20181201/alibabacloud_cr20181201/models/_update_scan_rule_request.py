@@ -22,17 +22,15 @@ class UpdateScanRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of namespaces.
-        # 
-        # *   When the scan scope is NAMESPACE, this parameter cannot be empty.
-        # *   If the scan scope is REPO, you must specify a unique Namespace for this parameter.
+        # The collection of namespaces.
+        # - If the scan scope is set to NAMESPACE, this parameter is required.
+        # - If the scan scope is set to REPO, specify exactly one namespace for this parameter.
         self.namespaces = namespaces
         # The list of repositories.
-        # 
-        # *   When the scan scope is NAMESPACE, this parameter must be empty.
-        # *   When the scan scope is REPO, this parameter cannot be empty.
+        # - If the scan scope is set to NAMESPACE, this parameter must be empty.
+        # - If the scan scope is set to REPO, this parameter is required.
         self.repo_names = repo_names
-        # The tag filtering rules.
+        # The tag filtering rule.
         # 
         # This parameter is required.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
@@ -44,21 +42,15 @@ class UpdateScanRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.scan_rule_id = scan_rule_id
-        # The scan scope.
-        # 
-        # Valid values:
-        # 
-        # *   NAMESPACE: namespace.
-        # *   REPO: repository.
+        # The scan scope. Valid values:
+        # - NAMESPACE: namespace
+        # - REPO: repository.
         # 
         # This parameter is required.
         self.scan_scope = scan_scope
-        # The trigger type.
-        # 
-        # Valid values:
-        # 
-        # *   AUTO: automatically triggers.
-        # *   MANUAL: manually triggers.
+        # The trigger type. Valid values:
+        # - AUTO: Automatically triggered upon push.
+        # - MANUAL: Manually triggered.
         # 
         # This parameter is required.
         self.trigger_type = trigger_type

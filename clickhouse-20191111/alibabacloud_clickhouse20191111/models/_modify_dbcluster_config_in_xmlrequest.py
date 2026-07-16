@@ -12,19 +12,19 @@ class ModifyDBClusterConfigInXMLRequest(DaraModel):
         reason: str = None,
         region_id: str = None,
     ):
-        # The configuration parameters whose settings you want to modify. You can call the [DescribeDBClusterConfigInXML](https://help.aliyun.com/document_detail/452210.html) operation to query configuration parameters, and modify the settings of the returned configuration parameters.
+        # The configuration parameters to modify. Call the [DescribeDBClusterConfigInXML](https://help.aliyun.com/document_detail/452210.html) operation to query the current configuration parameters. Then, modify the returned parameters.
         # 
-        # > You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
+        # > When you modify a parameter, you must include all other configuration parameters in the request. If a parameter is not included, it retains its initial value or the modification fails.
         # 
         # This parameter is required.
         self.config = config
-        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specified region, including the cluster IDs.
+        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the IDs of all clusters in a region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The reason for the modification.
         self.reason = reason
-        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query available region IDs.
         self.region_id = region_id
 
     def validate(self):

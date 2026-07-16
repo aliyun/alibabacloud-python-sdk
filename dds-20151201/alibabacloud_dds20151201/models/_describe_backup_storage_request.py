@@ -21,11 +21,11 @@ class DescribeBackupStorageRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The ID of the shard node in the sharded cluster instance.
         # 
-        # >  This parameter is required only when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
+        # > This parameter is required if the **DBInstanceId** parameter specifies the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the most recent region list.
+        # The ID of the region where the instance is located. Call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

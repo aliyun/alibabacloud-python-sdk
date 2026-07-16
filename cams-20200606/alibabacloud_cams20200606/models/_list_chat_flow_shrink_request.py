@@ -19,29 +19,33 @@ class ListChatFlowShrinkRequest(DaraModel):
         return_with_online_version: bool = None,
         status: str = None,
     ):
-        # Business tenant code, default is “ALICOM_OPAAS”.
+        # The business tenant code. Default value: ALICOM_OPAAS.
         self.biz_code = biz_code
-        # Business extension information, default is “{}”.
+        # The business extension information. Default value: an empty collection.
         self.biz_extend_shrink = biz_extend_shrink
-        # Flow trigger type, enum values:
+        # The flow trigger type. Valid values:
         # - TriggeredManually
         # - TriggeredByWhatsApp
         # - TriggeredByInstagram
         # - TriggeredByViber
         # - TriggeredByMessenger
         self.flow_trigger_type = flow_trigger_type
-        # Search keyword.
+        # The search keyword. This parameter is used for fuzzy match of flow names.
         self.keyword = keyword
         self.owner_id = owner_id
-        # Page number
+        # The page number.
         self.page_no = page_no
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Whether to return the online status
+        # Specifies whether to return the online status. Valid values:
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.return_with_online_version = return_with_online_version
-        # Flow status
+        # The flow status. Default value: NORMAL.
         self.status = status
 
     def validate(self):

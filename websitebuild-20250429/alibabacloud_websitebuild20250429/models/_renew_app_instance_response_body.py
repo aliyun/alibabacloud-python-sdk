@@ -22,28 +22,28 @@ class RenewAppInstanceResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether a retry is allowed.
         self.allow_retry = allow_retry
-        # App name.
+        # The application name.
         self.app_name = app_name
-        # Dynamic error code.
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the `%s` in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it indicates that the input request parameter **DtsJobId** is invalid.
+        # The dynamic error message that is used to replace the `%s` variable in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters.
         self.error_args = error_args
-        # Response data
+        # The response data.
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
+        # A reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -133,7 +133,7 @@ class RenewAppInstanceResponseBodyModule(DaraModel):
         self,
         order_id: str = None,
     ):
-        # Order ID
+        # The order ID.
         self.order_id = order_id
 
     def validate(self):

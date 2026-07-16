@@ -10,7 +10,9 @@ class CreateConnQuestionResponseBody(DaraModel):
         outline_id: int = None,
         request_id: str = None,
     ):
+        # The outline ID.
         self.outline_id = outline_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

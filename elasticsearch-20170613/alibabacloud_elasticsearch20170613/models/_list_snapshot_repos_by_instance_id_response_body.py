@@ -13,9 +13,9 @@ class ListSnapshotReposByInstanceIdResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListSnapshotReposByInstanceIdResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -60,13 +60,15 @@ class ListSnapshotReposByInstanceIdResponseBodyResult(DaraModel):
         snap_warehouse: str = None,
         status: str = None,
     ):
-        # Reference instance ID.
+        # The referenced instance ID.
         self.instance_id = instance_id
-        # The address of the repository.
+        # The repository address.
         self.repo_path = repo_path
-        # Reference warehouse name.
+        # The name of the referenced repository.
         self.snap_warehouse = snap_warehouse
-        # Reference warehouse status. available indicates that it is valid. unavailable indicates that it is invalid.
+        # The status of the referenced repository. Valid values:
+        # - available: The repository is active.
+        # - unavailable: The repository is inactive.
         self.status = status
 
     def validate(self):

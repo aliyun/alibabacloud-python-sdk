@@ -15,13 +15,21 @@ class DeleteMessageCampaignRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The Meta ad account ID.
+        # 
         # This parameter is required.
         self.ad_account_id = ad_account_id
+        # The campaign ID.
+        # 
         # This parameter is required.
         self.campaign_id = campaign_id
+        # The space ID of an Independent Software Vendor (ISV) sub-customer or the instance ID of a direct customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The Page ID of Messenger.
+        # 
         # This parameter is required.
         self.page_id = page_id
         self.resource_owner_account = resource_owner_account

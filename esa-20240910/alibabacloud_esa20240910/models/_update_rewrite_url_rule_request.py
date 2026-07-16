@@ -18,32 +18,33 @@ class UpdateRewriteUrlRuleRequest(DaraModel):
         site_id: int = None,
         uri: str = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) interface.
+        # The configuration ID. You can call the [ListRewriteUrlRules](https://help.aliyun.com/document_detail/2867480.html) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
         # The query string after rewriting.
         self.query_string = query_string
-        # Query string rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
+        # The query character string rewrite type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.rewrite_query_string_type = rewrite_query_string_type
-        # URI rewrite type. Value range:
-        # - static: Static mode.
-        # - dynamic: Dynamic mode.
+        # The path rewrite type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic pattern.
         self.rewrite_uri_type = rewrite_uri_type
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content. A conditional expression is used to match user requests. This parameter is not required when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Value range:
-        # - on: Enable.
-        # - off: Disable.
+        # The rule switch. This parameter is not required when you add a global configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is not required when you add a global configuration.
         self.rule_name = rule_name
+        # The rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

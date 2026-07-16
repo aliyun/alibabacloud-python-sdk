@@ -14,6 +14,7 @@ class DescribeVsPullStreamInfoConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.live_app_record_list = live_app_record_list
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

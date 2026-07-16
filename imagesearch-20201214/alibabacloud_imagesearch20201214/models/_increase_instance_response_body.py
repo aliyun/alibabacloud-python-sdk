@@ -12,11 +12,11 @@ class IncreaseInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The information about the task.
+        # The returned result of the task.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -59,13 +59,12 @@ class IncreaseInstanceResponseBodyData(DaraModel):
         id: str = None,
         increment_status: str = None,
     ):
-        # The ID of the task.
+        # The task ID.
         self.id = id
-        # The status of the task.
-        # 
-        # *   PROCESSING: in progress
-        # *   FAIL: failed
-        # *   SUCCESS: successful
+        # The status of the batch task. Valid values:
+        # - PROCESSING: The task is being processed.
+        # - FAIL: The task failed.
+        # - SUCCESS: The task is complete.
         self.increment_status = increment_status
 
     def validate(self):

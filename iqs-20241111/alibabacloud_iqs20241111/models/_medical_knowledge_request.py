@@ -10,6 +10,7 @@ class MedicalKnowledgeRequest(DaraModel):
         self,
         body: main_models.MedicalKnowInput = None,
     ):
+        # Health Graph query conditions
         self.body = body
 
     def validate(self):

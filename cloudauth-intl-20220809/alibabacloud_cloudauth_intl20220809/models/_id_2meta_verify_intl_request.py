@@ -12,19 +12,16 @@ class Id2MetaVerifyIntlRequest(DaraModel):
         product_code: str = None,
         user_name: str = None,
     ):
-        # The ID card number.
-        # 
-        # > Only ID cards of residents in the Chinese mainland are supported.
+        # The ID card number (in plaintext).
         self.identify_num = identify_num
-        # The parameter type.
+        # The parameter type. Valid values:
         # 
-        # **normal**: The original value in plaintext.
-        # 
-        # > Due to limitations of the authoritative data source, two-factor ID verification does not support MD5 encryption.
+        # - normal: original value (plaintext).
+        # - Note: Due to authoritative data source restrictions, two-factor identity verification does not support MD5 encryption.
         self.param_type = param_type
-        # The product plan. This is a static field. Set the value to **ID_2META**.
+        # The product solution code. Set this parameter to ID_2META.
         self.product_code = product_code
-        # The name.
+        # The name (in plaintext).
         self.user_name = user_name
 
     def validate(self):

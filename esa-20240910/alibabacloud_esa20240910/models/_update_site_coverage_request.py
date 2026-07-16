@@ -10,15 +10,16 @@ class UpdateSiteCoverageRequest(DaraModel):
         coverage: str = None,
         site_id: int = None,
     ):
-        # The desired service location. Valid values:
+        # The target acceleration region to change to. Valid values:
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         # 
-        # *   **domestic**: the Chinese mainland
-        # *   **global**: global
-        # *   **overseas**: outside the Chinese mainland
+        # <props="china">If the value is set to domestic or global, the site corresponding to SiteId must have a valid ICP filing..
         # 
         # This parameter is required.
         self.coverage = coverage
-        # The website ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the ID.
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to query the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id

@@ -16,36 +16,41 @@ class DescribePackagesRequest(DaraModel):
         risk_level_id: int = None,
         rule_id: int = None,
     ):
-        # The page number of the page to return.
+        # The page number to return.
         self.current_page = current_page
-        # The ID of the instance to which the package belongs.
+        # The ID of the asset instance to which the data asset package belongs.
         # 
-        # > You can call the **DescribeInstances** operation to query the ID of the instance.
+        # > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by instance ID, call the **DescribeInstances** operation to obtain the instance ID.
         self.instance_id = instance_id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
-        # The search keyword. Fuzzy match is supported.
+        # The keyword for the search. Fuzzy matching is supported.
         self.name = name
-        # The number of entries to return on each page.
+        # The maximum number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the service to which the package belongs.
+        # The ID of the product to which the data asset package belongs.
         # 
-        # > You can call the **DescribeDataAssets** operation to query the ID of the service.
+        # > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by product ID, call the **DescribeDataAssets** operation to obtain the product ID.
         self.product_id = product_id
-        # The sensitivity level of the package. Valid values:
+        # The ID of the risk level for the data asset package.
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A: No sensitive data is detected.
+        # 
+        # - **2**: S1: Level 1 sensitive data.
+        # 
+        # - **3**: S2: Level 2 sensitive data.
+        # 
+        # - **4**: S3: Level 3 sensitive data.
+        # 
+        # - **5**: S4: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The ID of the sensitive data detection rule that the package hits.
+        # The ID of the sensitive data detection rule that the data asset package matches.
         # 
-        # > You can call the **DescribeRules** operation to query the ID of the sensitive data detection rule.
+        # > To query the list of MaxCompute data asset packages that are authorized for an SDPP connection by the ID of a matching sensitive data detection rule, call the **DescribeRules** operation to obtain the rule ID.
         self.rule_id = rule_id
 
     def validate(self):

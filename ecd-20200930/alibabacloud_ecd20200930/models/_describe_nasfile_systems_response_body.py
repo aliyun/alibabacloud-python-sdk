@@ -14,11 +14,11 @@ class DescribeNASFileSystemsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The NAS file systems.
+        # The details of the NAS file systems.
         self.file_systems = file_systems
-        # The token that determines the start point of the next query. This parameter is empty if no additional results exist.
+        # The token for the next page of results. If this parameter is empty, no more results are available.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,20 +90,21 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
-        # >  This parameter is not publicly available.
+        # > This parameter is not publicly available.
         self.allow_operate_user_drive = allow_operate_user_drive
-        # The application delivery groups that are associated with the UPM-supported NAS file systems.
+        # The application delivery groups associated with the UPM-supported NAS file system.
         self.app_instance_groups = app_instance_groups
-        # The total capacity of the NAS file system. Unit: GiB.
+        # The storage capacity of the NAS file system, in GiB.
         # 
-        # *   The Capacity type has 10 PiB of storage, which is equal to 10,485,760 GiB.
-        # *   The Performance type has 1 PiB of storage, which is equal to 1,048,576 GiB.
+        # - If the storage type is capacity type, the capacity is 10 PiB (10,485,760 GiB).
+        # 
+        # - If the storage type is performance type, the capacity is 1 PiB (1,048,576 GiB).
         self.capacity = capacity
-        # The time when the NAS file system was created.
+        # The creation time of the NAS file system.
         self.create_time = create_time
         # The description of the NAS file system.
         self.description = description
-        # The cloud computer shares that are associated with the UPM-supported NAS file systems.
+        # The desktop groups associated with the UPM-supported NAS file system.
         self.desktop_groups = desktop_groups
         # Indicates whether disk encryption is enabled.
         self.encryption_enabled = encryption_enabled
@@ -111,56 +112,35 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.file_system_id = file_system_id
         # The name of the NAS file system.
         self.file_system_name = file_system_name
-        # The status of the NAS file system. The possible values include:
-        # 
-        # *   Pending: The NAS file system is being created.
-        # *   Running: The NAS file system is running.
-        # *   Stopped: The NAS file system is stopped.
-        # *   Deleting: The NAS file system is being deleted.
-        # *   Deleted: The NAS file system is deleted.
-        # *   Invalid: The NAS file system is invalid.
+        # The status of the NAS file system.
         self.file_system_status = file_system_status
-        # The type of the NAS file system. The only valid value is `standard`.
+        # The type of the NAS file system. Currently, only the standard type is supported. The value is always `standard`.
         self.file_system_type = file_system_type
-        # The used capacity of the NAS file system. Unit: bytes.
+        # The amount of storage used by the NAS file system, in bytes.
         self.metered_size = metered_size
         # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The status of the mount target. The possible values include:
-        # 
-        # *   Pending: The mount target is being created.
-        # *   Active: The mount target is enabled.
-        # *   Inactive: The mount target is disabled.
-        # *   Deleting: The mount target is being deleted.
-        # *   Invalid: The mount target is invalid.
+        # The status of the mount target.
         self.mount_target_status = mount_target_status
         # The ID of the office network.
         self.office_site_id = office_site_id
         # The name of the office network.
         self.office_site_name = office_site_name
-        # The office networks.
+        # The office networks associated with the file system.
         self.office_sites = office_sites
         self.product_type = product_type
         # Indicates whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The storage type of the NAS file system.
-        # 
-        # Valid values:
-        # 
-        # *   Upm: the UPM-supported NAS file system.
-        # *   ShareNas: the shared NAS file system.
+        # The use case of the NAS file system.
         self.scene = scene
         self.size_quota = size_quota
-        # The storage type of the NAS file system. Valid values:
-        # 
-        # *   Capacity
-        # *   Performance
+        # The storage type of the NAS file system.
         self.storage_type = storage_type
-        # Indicates whether the Server Message Block (SMB) access control list (ACL) feature was enabled.
+        # Indicates whether the Server Message Block (SMB) access control list (ACL) feature is supported.
         self.support_acl = support_acl
-        # The ID of the zone where the NAS file system resides.
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -396,9 +376,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups(DaraModel):
         desktop_group_id: str = None,
         desktop_group_name: str = None,
     ):
-        # The ID of the cloud computer share.
+        # The ID of the desktop group.
         self.desktop_group_id = desktop_group_id
-        # The name of the cloud computer share.
+        # The name of the desktop group.
         self.desktop_group_name = desktop_group_name
 
     def validate(self):
@@ -433,9 +413,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups(DaraModel):
         app_instance_group_id: str = None,
         app_instance_group_name: str = None,
     ):
-        # The ID of the delivery group.
+        # The ID of the application delivery group.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The name of the application delivery group.
         self.app_instance_group_name = app_instance_group_name
 
     def validate(self):

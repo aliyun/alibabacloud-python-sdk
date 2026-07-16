@@ -17,11 +17,17 @@ class DeleteInterveneRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request ID
         self.request_id = request_id
+        # Whether the operation was successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class DeleteInterveneRuleResponseBodyData(DaraModel):
         fail_id_list: List[str] = None,
         task_id: str = None,
     ):
+        # Status code returned by the intervention service
         self.code = code
+        # List of failed index IDs
         self.fail_id_list = fail_id_list
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

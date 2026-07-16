@@ -11,11 +11,11 @@ class PutAsyncInvokeConfigRequest(DaraModel):
         body: main_models.PutAsyncInvokeConfigInput = None,
         qualifier: str = None,
     ):
-        # The configurations of asynchronous function invocations.
+        # The asynchronous invocation configuration of the function.
         # 
         # This parameter is required.
         self.body = body
-        # The version or alias of the function.
+        # The function version or alias.
         self.qualifier = qualifier
 
     def validate(self):

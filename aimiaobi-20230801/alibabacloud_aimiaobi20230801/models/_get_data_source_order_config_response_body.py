@@ -17,11 +17,17 @@ class GetDataSourceOrderConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Is successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class GetDataSourceOrderConfigResponseBodyData(DaraModel):
         total_doc_size: int = None,
         user_config_data_source_list: List[main_models.GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList] = None,
     ):
+        # Maximum total document count
         self.total_doc_size = total_doc_size
+        # List of user-configured data source weights
         self.user_config_data_source_list = user_config_data_source_list
 
     def validate(self):
@@ -128,10 +136,15 @@ class GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList(DaraModel
         number: int = None,
         type: str = None,
     ):
+        # Code description
         self.code = code
+        # Is enabled
         self.enable = enable
+        # Display name
         self.name = name
+        # Quantity
         self.number = number
+        # Type
         self.type = type
 
     def validate(self):

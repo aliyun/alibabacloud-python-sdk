@@ -15,19 +15,19 @@ class BatchDisableJobsRequest(DaraModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
-        # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # The ID of the application group. You can find this ID on the **Application Management** page in the console.
         self.group_id = group_id
-        # The job IDs. Separate multiple job IDs with commas (,).
+        # The IDs of the jobs to disable.
         # 
         # This parameter is required.
         self.job_id_list = job_id_list
-        # The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # The ID of the namespace that contains the jobs. You can find this ID on the **Namespaces** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # This parameter is used only by specific third-party services.
         self.namespace_source = namespace_source
-        # The ID of the region to which the job belongs.
+        # The ID of the region where the jobs are located.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -272,8 +272,6 @@ class GenerateBroadcastNewsResponseBodyDataHotTopicSummaries(DaraModel):
 
         return self
 
-
-
 class GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages(DaraModel):
     def __init__(
         self,

@@ -11,11 +11,13 @@ class CreateIntlFixedPriceDomainOrderRequest(DaraModel):
         contact_id: int = None,
         domain: str = None,
         expected_price: int = None,
+        product_type: int = None,
     ):
         self.auto_pay = auto_pay
         self.contact_id = contact_id
         self.domain = domain
         self.expected_price = expected_price
+        self.product_type = product_type
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class CreateIntlFixedPriceDomainOrderRequest(DaraModel):
         if self.expected_price is not None:
             result['ExpectedPrice'] = self.expected_price
 
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +57,9 @@ class CreateIntlFixedPriceDomainOrderRequest(DaraModel):
 
         if m.get('ExpectedPrice') is not None:
             self.expected_price = m.get('ExpectedPrice')
+
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
 
         return self
 

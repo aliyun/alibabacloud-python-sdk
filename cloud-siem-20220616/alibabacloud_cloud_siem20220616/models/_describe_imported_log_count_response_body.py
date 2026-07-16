@@ -11,9 +11,9 @@ class DescribeImportedLogCountResponseBody(DaraModel):
         data: main_models.DescribeImportedLogCountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeImportedLogCountResponseBodyData(DaraModel):
         total_log_count: int = None,
         un_imported_log_count: int = None,
     ):
-        # The number of logs that are added.
+        # The number of ingested logs.
         self.imported_log_count = imported_log_count
         # The total number of logs.
         self.total_log_count = total_log_count
-        # The number of logs that are not added.
+        # The number of logs that are not ingested.
         self.un_imported_log_count = un_imported_log_count
 
     def validate(self):

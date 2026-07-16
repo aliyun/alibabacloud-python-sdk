@@ -16,11 +16,15 @@ class SearchImageResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The image search results.
         self.image_response = image_response
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -76,8 +80,13 @@ class SearchImageResponseBodyImageResponse(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The image list.
         self.image_list = image_list
+        # The number of entries returned per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The token for the next query. This value is empty if there are no more results.
         self.next_token = next_token
 
     def validate(self):
@@ -134,16 +143,28 @@ class SearchImageResponseBodyImageResponseImageList(DaraModel):
         url: str = None,
         width: int = None,
     ):
+        # The descriptive tones identified from the image.
         self.descriptive_tones = descriptive_tones
+        # The height of the image.
         self.height = height
+        # The image category. Valid values:
+        # - normal: illustrations or article images.
+        # - banner: background images or carousel images.
+        # - goods: product or service images.
         self.image_category = image_category
+        # The aspect ratio.
         self.image_ratio = image_ratio
+        # The unique identifier of the image.
         self.image_uuid = image_uuid
         # oss key
         self.oss_key = oss_key
+        # The quantitative palette extracted by the algorithm (HEX, LAB).
         self.quantitative_palette = quantitative_palette
+        # The image tags.
         self.tags_from_image = tags_from_image
+        # The temporary access URL of the image.
         self.url = url
+        # The width of the image.
         self.width = width
 
     def validate(self):

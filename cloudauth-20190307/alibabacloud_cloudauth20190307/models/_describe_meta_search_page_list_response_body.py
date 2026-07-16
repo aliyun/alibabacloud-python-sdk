@@ -17,11 +17,17 @@ class DescribeMetaSearchPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The paginated list data.
         self.items = items
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of this request.
         self.request_id = request_id
+        # The total number of pages.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -102,21 +108,71 @@ class DescribeMetaSearchPageListResponseBodyItems(DaraModel):
         user_name: str = None,
         vehicle_num: str = None,
     ):
+        # The product API. Valid values:
+        # - **ID_CARD_2_META**: ID card two-element verification
+        # - **ID_PERIOD**: ID card validity period verification
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+        # - **MOBILE_2_META**: mobile number two-element verification
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition)
+        # - **MOBILE_DETECT**: phone number detection 
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        # - **VEHICLE_CHECK**: vehicle element verification.
         self.api = api
+        # The name corresponding to the API. Valid values:
+        # - **ID_CARD_2_META**: ID card two-element verification
+        # - **ID_PERIOD**: ID card validity period verification
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition)
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition)
+        # - **MOBILE_2_META**: mobile number two-element verification
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition)
+        # - **MOBILE_DETECT**: phone number detection 
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition)
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query
+        # - **VEHICLE_CHECK**: vehicle element verification.
         self.api_name = api_name
+        # The bank card ID.
         self.bank_card = bank_card
+        # The verification status. Valid values:
+        # - **1**: Verification passed.
+        # - **2**: Verification failed.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # The verification date.
         self.date = date
+        # The ID card number.
         self.identify_num = identify_num
+        # The name of the telecommunications service provider. Valid values:
+        # - **CMCC**: China Mobile
+        # - **CUCC**: China Unicom
+        # - **CTCC**: China Telecom.
         self.isp_name = isp_name
+        # The mobile phone number.
         self.mobile = mobile
+        # The request parameters.
         self.request = request
+        # The request ID.
         self.request_id = request_id
+        # The HTTP request parameters.
         self.request_json = request_json
+        # The response content.
         self.response = response
+        # The response content.
         self.response_json = response_json
+        # The result code. For more information, see [official documentation](https://www.alibabacloud.com/help/en/id-verification/information-verification/).
         self.sub_code = sub_code
+        # The name.
         self.user_name = user_name
+        # The vehicle number.
         self.vehicle_num = vehicle_num
 
     def validate(self):
@@ -241,8 +297,11 @@ class DescribeMetaSearchPageListResponseBodyItemsResponse(DaraModel):
         data: main_models.DescribeMetaSearchPageListResponseBodyItemsResponseData = None,
         message: str = None,
     ):
+        # The HTTP return code.
         self.code = code
+        # The response data.
         self.data = data
+        # The message.
         self.message = message
 
     def validate(self):
@@ -309,31 +368,60 @@ class DescribeMetaSearchPageListResponseBodyItemsResponseData(DaraModel):
         vin: str = None,
         wheel_base: str = None,
     ):
+        # The approved number of passengers.
         self.approved_count = approved_count
+        # The approved passenger capacity.
         self.approved_load = approved_load
+        # The number of axles.
         self.axle_count = axle_count
+        # The rear wheel track.
         self.back_wheel_distance = back_wheel_distance
+        # The bank card number.
         self.bank_card = bank_card
+        # The verification status. Valid values:
+        # - **1**: Verification passed.
+        # - **2**: Verification failed.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # The brand name.
         self.brand = brand
+        # The body color.
         self.color = color
+        # The displacement.
         self.displacement = displacement
+        # The engine number.
         self.engine_num = engine_num
+        # The engine model.
         self.engine_type = engine_type
+        # The front wheel track.
         self.front_wheel_distance = front_wheel_distance
+        # The fuel type.
         self.fuel_type = fuel_type
+        # The inspection validity expiration date.
         self.inspection_date = inspection_date
+        # The vehicle model number.
         self.model_num = model_num
+        # The power.
         self.power = power
+        # The initial registration date.
         self.registration_date = registration_date
+        # The manufacturing date.
         self.release_date = release_date
+        # The mandatory retirement date.
         self.retirement_date = retirement_date
+        # The gross mass.
         self.total_mass = total_mass
+        # The vehicle type.
         self.type = type
+        # The curb weight.
         self.unladen_mass = unladen_mass
+        # The usage property.
         self.use_property = use_property
+        # The motor vehicle status.
         self.vehicle_state = vehicle_state
+        # The vehicle identification number (VIN).
         self.vin = vin
+        # The wheelbase.
         self.wheel_base = wheel_base
 
     def validate(self):
@@ -513,8 +601,35 @@ class DescribeMetaSearchPageListResponseBodyItemsRequest(DaraModel):
         vehicle_type: str = None,
         vehicle_type_name: str = None,
     ):
+        # The vehicle number.
         self.vehicle_num = vehicle_num
+        # The vehicle type. Valid values:
+        # - **01**: large vehicle  
+        # - **02**: small vehicle  
+        # - **03**: embassy vehicle  
+        # - **04**: consulate vehicle  
+        # - **05**: overseas vehicle  
+        # - **06**: foreign vehicle  
+        # - **07**: standard motorcycle  
+        # - **08**: light motorcycle  
+        # - **09**: embassy motorcycle  
+        # - **10**: consulate motorcycle  
+        # - **11**: overseas motorcycle  
+        # - **12**: foreign motorcycle  
+        # - **13**: low-speed vehicle  
+        # - **14**: tractor  
+        # - **15**: trailer  
+        # - **16**: training vehicle  
+        # - **17**: training motorcycle  
+        # - **20**: temporary entry vehicle  
+        # - **21**: temporary entry motorcycle  
+        # - **22**: temporary driving vehicle  
+        # - **23**: police vehicle  
+        # - **24**: police motorcycle  
+        # - **51**: new energy large vehicle  
+        # - **52**: new energy small vehicle.
         self.vehicle_type = vehicle_type
+        # The vehicle type name.
         self.vehicle_type_name = vehicle_type_name
 
     def validate(self):

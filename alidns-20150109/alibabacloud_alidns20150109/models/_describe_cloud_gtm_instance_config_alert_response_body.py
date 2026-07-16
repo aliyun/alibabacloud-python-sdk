@@ -19,16 +19,17 @@ class DescribeCloudGtmInstanceConfigAlertResponseBody(DaraModel):
     ):
         self.alert_config = alert_config
         self.alert_group = alert_group
-        # The alert configuration mode of the instance. Valid values:
+        # The alert configuration mode for the instance.
         # 
-        # *   global: global alert configuration
-        # *   instance_config: custom alert configuration
+        # - global: The instance inherits the global alert configuration.
+        # 
+        # - instance_config: The instance uses a custom alert configuration.
         self.alert_mode = alert_mode
-        # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
+        # The ID of the instance configuration. For the same access domain name and GTM instance, you can configure both A and AAAA records. This creates two instance configurations. \\`ConfigId\\` uniquely identifies an instance configuration.
         self.config_id = config_id
         # The ID of the GTM 3.0 instance.
         self.instance_id = instance_id
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -15,10 +15,15 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskRequest(DaraModel):
         perspective_types: List[str] = None,
         topic: str = None,
     ):
+        # The unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The list of documents to be analyzed. (Provide at least one of documents or topic)
         self.documents = documents
+        # The topic selection perspective tasks to be analyzed. By default, this parameter is empty, which means all tasks are analyzed. (TopicSummary: Topic event summary, HotViewPoints: Hot topic selection perspectives, TimedViewPoints: Timeliness topic selection perspectives, WebReviewPoints: Online review topic selection perspectives, FreshViewPoints: Novel topic selection perspectives)
         self.perspective_types = perspective_types
+        # The name of the topic to be analyzed. (Provide at least one of documents or topic)
         self.topic = topic
 
     def validate(self):
@@ -79,14 +84,23 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Author
         self.author = author
+        # Content list
         self.comments = comments
+        # Content
+        # 
         # This parameter is required.
         self.content = content
+        # Publication time. Format: YYYY-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # Article source
         self.source = source
+        # Summary
         self.summary = summary
+        # Title
         self.title = title
+        # Article URL
         self.url = url
 
     def validate(self):
@@ -165,7 +179,9 @@ class SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments(DaraMo
         text: str = None,
         username: str = None,
     ):
+        # Content
         self.text = text
+        # Username
         self.username = username
 
     def validate(self):

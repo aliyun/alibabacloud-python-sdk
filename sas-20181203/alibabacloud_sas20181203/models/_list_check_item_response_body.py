@@ -138,8 +138,10 @@ class ListCheckItemResponseBodyCheckItems(DaraModel):
         self.check_id = check_id
         # The name of the check item.
         self.check_show_name = check_show_name
-        # The source type of the Situation Awareness check item: 
-        # - **CUSTOM**: User-defined 
+        # The source type of the Situation Awareness check item:
+        # 
+        # - **CUSTOM**: User-defined
+        # 
         # - **SYSTEM**: Predefined by the Situation Awareness platform
         self.check_type = check_type
         # The check items.
@@ -150,72 +152,105 @@ class ListCheckItemResponseBodyCheckItems(DaraModel):
         self.estimated_count = estimated_count
         # The asset subtype of the cloud service. Valid values:
         # 
-        # *   If **InstanceType** is set to **ECS**, this parameter supports the following valid values:
+        # - If **InstanceType** is set to **ECS**, this parameter supports the following valid values:
         # 
-        #     *   **INSTANCE**
-        #     *   **DISK**
-        #     *   **SECURITY_GROUP**
+        #   - **INSTANCE**
         # 
-        # *   If **InstanceType** is set to **ACR**, this parameter supports the following valid values:
+        #   - **DISK**
         # 
-        #     *   **REPOSITORY_ENTERPRISE**
-        #     *   **REPOSITORY_PERSON**
+        #   - **SECURITY_GROUP**
         # 
-        # *   If **InstanceType** is set to **RAM**, this parameter supports the following valid values:
+        # - If **InstanceType** is set to **ACR**, this parameter supports the following valid values:
         # 
-        #     *   **ALIAS**
-        #     *   **USER**
-        #     *   **POLICY**
-        #     *   **GROUP**
+        #   - **REPOSITORY_ENTERPRISE**
         # 
-        # *   If **InstanceType** is set to **WAF**, this parameter supports the following valid value:
+        #   - **REPOSITORY_PERSON**
         # 
-        #     *   **DOMAIN**
+        # - If **InstanceType** is set to **RAM**, this parameter supports the following valid values:
         # 
-        # *   If **InstanceType** is set to other values, this parameter supports the following valid values:
+        #   - **ALIAS**
         # 
-        #     *   **INSTANCE**
+        #   - **USER**
+        # 
+        #   - **POLICY**
+        # 
+        #   - **GROUP**
+        # 
+        # - If **InstanceType** is set to **WAF**, this parameter supports the following valid value:
+        # 
+        #   - **DOMAIN**
+        # 
+        # - If **InstanceType** is set to other values, this parameter supports the following valid values:
+        # 
+        #   - **INSTANCE**
         self.instance_sub_type = instance_sub_type
         # The asset type of the cloud service. Valid values:
         # 
-        # *   **ECS**: Elastic Compute Service (ECS).
-        # *   **SLB**: Server Load Balancer (SLB).
-        # *   **RDS**: ApsaraDB RDS.
-        # *   **MONGODB**: ApsaraDB for MongoDB (MongoDB).
-        # *   **KVSTORE**: ApsaraDB for Redis (Redis).
-        # *   **ACR**: Container Registry.
-        # *   **CSK**: Container Service for Kubernetes (ACK).
-        # *   **VPC**: Virtual Private Cloud (VPC).
-        # *   **ACTIONTRAIL**: ActionTrail.
-        # *   **CDN**: Alibaba Cloud CDN (CDN).
-        # *   **CAS**: Certificate Management Service (formerly SSL Certificates Service).
-        # *   **RDC**: Apsara Devops.
-        # *   **RAM**: Resource Access Management (RAM).
-        # *   **DDOS**: Anti-DDoS.
-        # *   **WAF**: Web Application Firewall (WAF).
-        # *   **OSS**: Object Storage Service (OSS).
-        # *   **POLARDB**: PolarDB.
-        # *   **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
-        # *   **MSE**: Microservices Engine (MSE).
-        # *   **NAS**: File Storage NAS (NAS).
-        # *   **SDDP**: Sensitive Data Discovery and Protection (SDDP).
-        # *   **EIP**: Elastic IP Address (EIP).
+        # - **ECS**: Elastic Compute Service (ECS).
+        # 
+        # - **SLB**: Server Load Balancer (SLB).
+        # 
+        # - **RDS**: ApsaraDB RDS.
+        # 
+        # - **MONGODB**: ApsaraDB for MongoDB (MongoDB).
+        # 
+        # - **KVSTORE**: ApsaraDB for Redis (Redis).
+        # 
+        # - **ACR**: Container Registry.
+        # 
+        # - **CSK**: Container Service for Kubernetes (ACK).
+        # 
+        # - **VPC**: Virtual Private Cloud (VPC).
+        # 
+        # - **ACTIONTRAIL**: ActionTrail.
+        # 
+        # - **CDN**: Alibaba Cloud CDN (CDN).
+        # 
+        # - **CAS**: Certificate Management Service (formerly SSL Certificates Service).
+        # 
+        # - **RDC**: Apsara Devops.
+        # 
+        # - **RAM**: Resource Access Management (RAM).
+        # 
+        # - **DDOS**: Anti-DDoS.
+        # 
+        # - **WAF**: Web Application Firewall (WAF).
+        # 
+        # - **OSS**: Object Storage Service (OSS).
+        # 
+        # - **POLARDB**: PolarDB.
+        # 
+        # - **POSTGRESQL**: ApsaraDB RDS for PostgreSQL.
+        # 
+        # - **MSE**: Microservices Engine (MSE).
+        # 
+        # - **NAS**: File Storage NAS (NAS).
+        # 
+        # - **SDDP**: Sensitive Data Discovery and Protection (SDDP).
+        # 
+        # - **EIP**: Elastic IP Address (EIP).
         self.instance_type = instance_type
         # The risk level of the check item. Valid values:
         # 
-        # *   **HIGH**
-        # *   **MEDIUM**
-        # *   **LOW**
+        # - **HIGH**
+        # 
+        # - **MEDIUM**
+        # 
+        # - **LOW**
         self.risk_level = risk_level
         # The IDs of the sections associated with the check items.
         self.section_ids = section_ids
         # The type of the cloud asset. Valid values:
         # 
-        # *   **0**: an asset provided by Alibaba Cloud.
-        # *   **1**: an asset outside Alibaba Cloud.
-        # *   **2**: an asset in a data center.
-        # *   **3**, **4**, **5**, and **7**: other cloud asset.
-        # *   **8**: a simple application server.
+        # - **0**: an asset provided by Alibaba Cloud.
+        # 
+        # - **1**: an asset outside Alibaba Cloud.
+        # 
+        # - **2**: an asset in a data center.
+        # 
+        # - **3**, **4**, **5**, and **7**: other cloud asset.
+        # 
+        # - **8**: a simple application server.
         self.vendor = vendor
 
     def validate(self):
@@ -317,7 +352,7 @@ class ListCheckItemResponseBodyCheckItemsDescription(DaraModel):
     ):
         # The type of the description of the check item. Valid value:
         # 
-        # *   **text**
+        # - **text**
         self.type = type
         # The content of the description for the check item when the Type parameter is text.
         self.value = value

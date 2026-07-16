@@ -23,29 +23,29 @@ class GetCoordinateTicketResponseBody(DaraModel):
         # 
         # Possible values:
         # 
-        # *   Finished
+        # - Finished
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Failed
+        # - Failed
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   Running
+        # - Running
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.task_status = task_status
         # The credentials of the stream collaboration.
         self.ticket = ticket

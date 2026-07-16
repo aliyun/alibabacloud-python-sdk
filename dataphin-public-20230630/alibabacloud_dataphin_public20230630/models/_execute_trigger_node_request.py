@@ -14,14 +14,28 @@ class ExecuteTriggerNodeRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The business date.
+        # 
         # This parameter is required.
         self.biz_date = biz_date
+        # The environment. Valid values:
+        # - DEV: development environment.
+        # - PROD: production environment.
+        # 
+        # Default value: PROD.
         self.env = env
+        # If the node is an hourly or minutely node, multiple instances are generated per day. This parameter specifies the ordinal number of the instance.
         self.index = index
+        # The node ID.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

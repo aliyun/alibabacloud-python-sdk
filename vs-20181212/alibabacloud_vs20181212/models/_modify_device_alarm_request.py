@@ -13,13 +13,25 @@ class ModifyDeviceAlarmRequest(DaraModel):
         owner_id: int = None,
         status: int = None,
     ):
+        # The alarm ID.
+        # 
         # This parameter is required.
         self.alarm_id = alarm_id
+        # The channel ID.
+        # 
         # This parameter is required.
         self.channel_id = channel_id
+        # The device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # The alarm status. Valid values:
+        # 
+        # - 1 (upload completed)
+        # - 2 (upload failed)
+        # - 3 (general error)
+        # 
         # This parameter is required.
         self.status = status
 

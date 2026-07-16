@@ -13,9 +13,9 @@ class DescribePolicyInstancesStatusResponseBody(DaraModel):
         instances_severity_count: Dict[str, Any] = None,
         policy_instances: List[main_models.DescribePolicyInstancesStatusResponseBodyPolicyInstances] = None,
     ):
-        # The number of policy instances that are deployed in the cluster at different severity levels.
+        # The number of policy instances deployed in the cluster at different governance levels.
         self.instances_severity_count = instances_severity_count
-        # The number of policy instances of each policy type.
+        # The list of policy instance counts for different policy types.
         self.policy_instances = policy_instances
 
     def validate(self):
@@ -61,15 +61,15 @@ class DescribePolicyInstancesStatusResponseBodyPolicyInstances(DaraModel):
         policy_name: str = None,
         policy_severity: str = None,
     ):
-        # The type of the policy. For more information about different types of policies and their descriptions, see [Predefined security policies of ACK](https://help.aliyun.com/document_detail/359819.html).
+        # The policy type. For more information about supported policy types and their descriptions, see [Container security policy rule library](https://help.aliyun.com/document_detail/359819.html).
         self.policy_category = policy_category
-        # The description of the policy.
+        # The policy description.
         self.policy_description = policy_description
-        # The number of policy instances that are deployed. If this parameter is empty, no policy instance is deployed.
+        # The number of deployed policy instances. If this field is empty, no policy instances of this type are deployed.
         self.policy_instances_count = policy_instances_count
-        # The name of the policy.
+        # The policy name.
         self.policy_name = policy_name
-        # The severity level of the policy.
+        # The governance level of the policy.
         self.policy_severity = policy_severity
 
     def validate(self):

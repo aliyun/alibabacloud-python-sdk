@@ -15,6 +15,7 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
         normalization_rule_name: str = None,
         normalization_rule_type: str = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         order_field: str = None,
         order_type: str = None,
         page_number: int = None,
@@ -24,21 +25,46 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
+        # The list of normalization rule IDs.
         self.normalization_rule_ids_shrink = normalization_rule_ids_shrink
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The type of the normalization rule. Valid values:
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The field used for sorting.
         self.order_field = order_field
+        # The sort order. Valid values:
+        # - desc
+        # - asc.
         self.order_type = order_type
+        # The page number of the current page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The product ID.
         self.product_id = product_id
+        # The region where the data management center of the threat analysis feature resides. Specify this parameter based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: the Chinese mainland.
+        # - ap-southeast-1: outside China.
         self.region_id = region_id
+        # The user ID of the member to which the administrator switches the view.
         self.role_for = role_for
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -72,6 +98,9 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
 
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
+
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
 
         if self.order_field is not None:
             result['OrderField'] = self.order_field
@@ -124,6 +153,9 @@ class ListNormalizationRulesShrinkRequest(DaraModel):
 
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
+
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
 
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')

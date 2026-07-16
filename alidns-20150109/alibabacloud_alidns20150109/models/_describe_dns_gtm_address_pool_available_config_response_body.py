@@ -14,7 +14,7 @@ class DescribeDnsGtmAddressPoolAvailableConfigResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.attribute_infos = attribute_infos
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

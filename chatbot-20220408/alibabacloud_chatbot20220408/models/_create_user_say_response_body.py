@@ -10,7 +10,9 @@ class CreateUserSayResponseBody(DaraModel):
         request_id: str = None,
         user_say_id: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The unique ID of the intent-user say pair.
         self.user_say_id = user_say_id
 
     def validate(self):

@@ -17,13 +17,21 @@ class UpdateQaLibraryResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -95,6 +103,7 @@ class UpdateQaLibraryResponseBodyData(DaraModel):
         self,
         qa_library_id: str = None,
     ):
+        # The ID of the Q\\&A library.
         self.qa_library_id = qa_library_id
 
     def validate(self):

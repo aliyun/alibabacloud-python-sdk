@@ -12,9 +12,13 @@ class AssignReviewerResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Any other value means failure. Use this field to identify the cause of failure.
         self.code = code
+        # Error details if the call fails. Returns successful if the call succeeds.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. false or null means failure.
         self.success = success
 
     def validate(self):

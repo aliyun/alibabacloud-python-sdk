@@ -18,22 +18,21 @@ class SearchImageByNameResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The product descriptions returned.
+        # The descriptions of all returned products.
         self.auctions = auctions
-        # The error code returned.
-        # 
-        # *   A value of 0 indicates that the operation is successful.
-        # *   Values other than 0 indicate errors.
+        # The error code. Valid values:
+        # - 0: success.
+        # - Non-zero: failure.
         self.code = code
-        # The summary of the search result.
+        # The overview of the search results.
         self.head = head
-        # The error message returned.
+        # The error message.
         self.msg = msg
-        # The information such as the system-selected category and result of subject recognition.
+        # The information such as category prediction and subject identification results.
         self.pic_info = pic_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -114,17 +113,15 @@ class SearchImageByNameResponseBodyPicInfo(DaraModel):
         multi_region: List[main_models.SearchImageByNameResponseBodyPicInfoMultiRegion] = None,
         region: str = None,
     ):
-        # The categories that are supported by the system.
+        # The information about all categories supported by the system.
         self.all_categories = all_categories
-        # The category selected by the system.
-        # 
-        # If a category is specified in the request, the specified category prevails.
+        # The category prediction result.
+        # If the user specifies a category in the request, the specified category is used.
         self.category_id = category_id
-        # The recognized subjects.
+        # The subject identification collection.
         self.multi_region = multi_region
-        # The result of subject recognition.
-        # 
-        # The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+        # The subject identification result.
+        # The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
         self.region = region
 
     def validate(self):
@@ -187,9 +184,8 @@ class SearchImageByNameResponseBodyPicInfoMultiRegion(DaraModel):
         self,
         region: str = None,
     ):
-        # The result of subject recognition.
-        # 
-        # The subject area of the image, in the format of x1,x2,y1,y2. Specifically, x1 and y1 specify the upper-left pixel, and x2 and y2 specify the lower-right pixel. If a subject area is specified in the request, the specified subject area prevails.
+        # The subject identification result.
+        # The subject region of the image, in the format of x1,x2,y1,y2, where x1,y1 is the upper-left point and x2,y2 is the lower-right point. If the user specifies a subject region in the request, the specified region is used.
         self.region = region
 
     def validate(self):
@@ -218,9 +214,9 @@ class SearchImageByNameResponseBodyPicInfoAllCategories(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The ID of the category.
+        # The category ID.
         self.id = id
-        # The name of the category.
+        # The category name.
         self.name = name
 
     def validate(self):
@@ -256,11 +252,11 @@ class SearchImageByNameResponseBodyHead(DaraModel):
         docs_return: int = None,
         search_time: int = None,
     ):
-        # The number of images returned.
+        # The number of results returned.
         self.docs_found = docs_found
-        # The number of images that match the search conditions on the Image Search instance.
+        # The number of matched results in the instance.
         self.docs_return = docs_return
-        # The time it takes to complete the search process. Unit: milliseconds.
+        # The search duration, in milliseconds.
         self.search_time = search_time
 
     def validate(self):
@@ -313,34 +309,38 @@ class SearchImageByNameResponseBodyAuctions(DaraModel):
         str_attr_3: str = None,
         str_attr_4: str = None,
     ):
-        # The category of the image.
+        # The image category.
         self.category_id = category_id
-        # The user-defined content.
+        # The custom content defined by the user.
         self.custom_content = custom_content
-        # The attribute, which is an integer.
+        # The integer attribute.
         self.int_attr = int_attr
+        # The integer attribute.
         self.int_attr_2 = int_attr_2
+        # The integer attribute. This field can be used for filtering during queries and is returned in query results.
         self.int_attr_3 = int_attr_3
+        # The integer attribute. This field can be used for filtering during queries and is returned in query results.
         self.int_attr_4 = int_attr_4
-        # The name of the image.
+        # The image name.
         self.pic_name = pic_name
-        # The ID of the product.
+        # The product ID.
         self.product_id = product_id
-        # The similarity score of the returned image. Valid values: 0 to 1.
-        # 
-        # >  To use this feature, you must upgrade the SDK to version 3.1.1.
+        # The image similarity score. Valid values: 0 to 1.
+        # > You must upgrade to V3.1.1 or later to use this field.
         self.score = score
-        # The score information about the image.
-        # 
-        # > *   This parameter is not supported. We recommend that you use the Score parameter.
-        # >*   The SortExprValues parameter indicates a 2-tuple in which values are separated by a semicolon (;). The first value indicates the correlation score of the returned image. A greater value indicates a higher correlation with the sample image. Different algorithms are used.
-        # >*   If the value of CategoryId is within the value range from 0 to 2, the value range of SortExprValues is from 0 to 7.33136443711219e+24.
-        # >*   If the value of CategoryId is not within the value range from 0 to 2, the value range of SortExprValues is from 0 to 5.37633353624177e+24. If the returned image is identical with the sample image, the highest correlation score is generated.
+        # The system scoring information.
+        # > - This field is deprecated. Use Score instead.
+        # - SortExprValues is a semicolon-separated pair. The first value indicates the relevance score of the image. A higher value indicates higher relevance to the query image. The scoring varies depending on the algorithm model.
+        # - When the category is 0 to 2, the value range of SortExprValues is 0 to 7.33136443711219e+24.
+        # - For other category values, the value range of SortExprValues is 0 to 5.37633353624177e+24. This score reaches its maximum when two images are identical.
         self.sort_expr_values = sort_expr_values
-        # The attribute, which is a string.
+        # The string attribute.
         self.str_attr = str_attr
+        # The string attribute.
         self.str_attr_2 = str_attr_2
+        # The string attribute. The maximum length is 128 characters. This field can be used for filtering during queries and is returned in query results.
         self.str_attr_3 = str_attr_3
+        # The string attribute. The maximum length is 128 characters. This field can be used for filtering during queries and is returned in query results.
         self.str_attr_4 = str_attr_4
 
     def validate(self):

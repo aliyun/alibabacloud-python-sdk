@@ -22,19 +22,33 @@ class GetValidateFileStatusResponseBody(DaraModel):
         upload_time: str = None,
         valid_num: str = None,
     ):
+        # The number of catch-all addresses.
         self.catch_all_num = catch_all_num
+        # The task completion time.
         self.complete_time = complete_time
+        # The number of do-not-mail addresses.
         self.do_not_mail_num = do_not_mail_num
+        # The file ID.
         self.file_id = file_id
+        # The file name.
         self.file_name = file_name
+        # The number of invalid addresses.
         self.invalid_num = invalid_num
+        # The task completion percentage.
         self.percentage = percentage
+        # The number of processed addresses.
         self.processed_num = processed_num
+        # The request ID.
         self.request_id = request_id
+        # The task status.
         self.status = status
+        # The total number of addresses in the file.
         self.total_num = total_num
+        # The number of unknown addresses.
         self.unknown_num = unknown_num
+        # The upload time.
         self.upload_time = upload_time
+        # The number of valid addresses.
         self.valid_num = valid_num
 
     def validate(self):

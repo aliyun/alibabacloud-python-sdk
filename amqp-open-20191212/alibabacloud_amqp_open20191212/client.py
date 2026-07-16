@@ -21,6 +21,32 @@ class Client(OpenApiClient):
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'amqp-open.us-west-1.aliyuncs.com',
+            'us-east-1': 'amqp-open.us-east-1.aliyuncs.com',
+            'me-central-1': 'amqp-open.me-central-1.aliyuncs.com',
+            'eu-central-1': 'amqp-open.eu-central-1.aliyuncs.com',
+            'cn-zhengzhou-jva': 'amqp-open.cn-zhengzhou-jva.aliyuncs.com',
+            'cn-zhangjiakou': 'amqp-open.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'amqp-open.cn-wulanchabu.aliyuncs.com',
+            'cn-shenzhen': 'amqp-open.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'amqp-open.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'amqp-open.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'amqp-open.cn-qingdao.aliyuncs.com',
+            'cn-huhehaote': 'amqp-open.cn-huhehaote.aliyuncs.com',
+            'cn-hongkong': 'amqp-open.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'amqp-open.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'amqp-open.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'amqp-open.cn-chengdu.aliyuncs.com',
+            'cn-beijing-finance-1': 'amqp-open.cn-beijing-finance-1.aliyuncs.com',
+            'cn-beijing': 'amqp-open.cn-beijing.aliyuncs.com',
+            'ap-southeast-7': 'amqp-open.ap-southeast-7.aliyuncs.com',
+            'ap-southeast-6': 'amqp-open.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'amqp-open.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'amqp-open.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'amqp-open.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'amqp-open.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('amqp-open', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -39,6 +65,92 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_instance_white_list_with_options(
+        self,
+        tmp_req: main_models.AddInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.AddInstanceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list_item):
+            request.white_list_item_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list_item, 'WhiteListItem', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_shrink):
+            query['WhiteListItem'] = request.white_list_item_shrink
+        if not DaraCore.is_null(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_instance_white_list_with_options_async(
+        self,
+        tmp_req: main_models.AddInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.AddInstanceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list_item):
+            request.white_list_item_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list_item, 'WhiteListItem', 'json')
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_shrink):
+            query['WhiteListItem'] = request.white_list_item_shrink
+        if not DaraCore.is_null(request.white_list_type):
+            query['WhiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_instance_white_list(
+        self,
+        request: main_models.AddInstanceWhiteListRequest,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.add_instance_white_list_with_options(request, runtime)
+
+    async def add_instance_white_list_async(
+        self,
+        request: main_models.AddInstanceWhiteListRequest,
+    ) -> main_models.AddInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.add_instance_white_list_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
@@ -528,6 +640,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_open_source_account_with_options(
+        self,
+        request: main_models.CreateOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_open_source_account_with_options_async(
+        self,
+        request: main_models.CreateOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_open_source_account(
+        self,
+        request: main_models.CreateOpenSourceAccountRequest,
+    ) -> main_models.CreateOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.create_open_source_account_with_options(request, runtime)
+
+    async def create_open_source_account_async(
+        self,
+        request: main_models.CreateOpenSourceAccountRequest,
+    ) -> main_models.CreateOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.create_open_source_account_with_options_async(request, runtime)
+
+    def create_open_source_permission_with_options(
+        self,
+        request: main_models.CreateOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configure):
+            query['Configure'] = request.configure
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.read):
+            query['Read'] = request.read
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        if not DaraCore.is_null(request.write):
+            query['Write'] = request.write
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSourcePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_open_source_permission_with_options_async(
+        self,
+        request: main_models.CreateOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configure):
+            query['Configure'] = request.configure
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.read):
+            query['Read'] = request.read
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        if not DaraCore.is_null(request.write):
+            query['Write'] = request.write
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOpenSourcePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_open_source_permission(
+        self,
+        request: main_models.CreateOpenSourcePermissionRequest,
+    ) -> main_models.CreateOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return self.create_open_source_permission_with_options(request, runtime)
+
+    async def create_open_source_permission_async(
+        self,
+        request: main_models.CreateOpenSourcePermissionRequest,
+    ) -> main_models.CreateOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return await self.create_open_source_permission_with_options_async(request, runtime)
+
     def create_queue_with_options(
         self,
         request: main_models.CreateQueueRequest,
@@ -953,6 +1245,158 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteExchangeResponse:
         runtime = RuntimeOptions()
         return await self.delete_exchange_with_options_async(request, runtime)
+
+    def delete_open_source_account_with_options(
+        self,
+        request: main_models.DeleteOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_open_source_account_with_options_async(
+        self,
+        request: main_models.DeleteOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_open_source_account(
+        self,
+        request: main_models.DeleteOpenSourceAccountRequest,
+    ) -> main_models.DeleteOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.delete_open_source_account_with_options(request, runtime)
+
+    async def delete_open_source_account_async(
+        self,
+        request: main_models.DeleteOpenSourceAccountRequest,
+    ) -> main_models.DeleteOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_open_source_account_with_options_async(request, runtime)
+
+    def delete_open_source_permission_with_options(
+        self,
+        request: main_models.DeleteOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSourcePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_open_source_permission_with_options_async(
+        self,
+        request: main_models.DeleteOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOpenSourcePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_open_source_permission(
+        self,
+        request: main_models.DeleteOpenSourcePermissionRequest,
+    ) -> main_models.DeleteOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return self.delete_open_source_permission_with_options(request, runtime)
+
+    async def delete_open_source_permission_async(
+        self,
+        request: main_models.DeleteOpenSourcePermissionRequest,
+    ) -> main_models.DeleteOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_open_source_permission_with_options_async(request, runtime)
 
     def delete_queue_with_options(
         self,
@@ -1572,6 +2016,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_exchanges_with_options_async(request, runtime)
 
+    def list_instance_white_list_with_options(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_white_list_with_options_async(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_white_list(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.list_instance_white_list_with_options(request, runtime)
+
+    async def list_instance_white_list_async(
+        self,
+        request: main_models.ListInstanceWhiteListRequest,
+    ) -> main_models.ListInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instance_white_list_with_options_async(request, runtime)
+
     def list_instances_with_options(
         self,
         request: main_models.ListInstancesRequest,
@@ -1637,6 +2155,166 @@ class Client(OpenApiClient):
     ) -> main_models.ListInstancesResponse:
         runtime = RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
+
+    def list_open_source_accounts_with_options(
+        self,
+        request: main_models.ListOpenSourceAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOpenSourceAccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOpenSourceAccounts',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOpenSourceAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_open_source_accounts_with_options_async(
+        self,
+        request: main_models.ListOpenSourceAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOpenSourceAccountsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOpenSourceAccounts',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOpenSourceAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_open_source_accounts(
+        self,
+        request: main_models.ListOpenSourceAccountsRequest,
+    ) -> main_models.ListOpenSourceAccountsResponse:
+        runtime = RuntimeOptions()
+        return self.list_open_source_accounts_with_options(request, runtime)
+
+    async def list_open_source_accounts_async(
+        self,
+        request: main_models.ListOpenSourceAccountsRequest,
+    ) -> main_models.ListOpenSourceAccountsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_open_source_accounts_with_options_async(request, runtime)
+
+    def list_open_source_permissions_with_options(
+        self,
+        request: main_models.ListOpenSourcePermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOpenSourcePermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOpenSourcePermissions',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOpenSourcePermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_open_source_permissions_with_options_async(
+        self,
+        request: main_models.ListOpenSourcePermissionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOpenSourcePermissionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListOpenSourcePermissions',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListOpenSourcePermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_open_source_permissions(
+        self,
+        request: main_models.ListOpenSourcePermissionsRequest,
+    ) -> main_models.ListOpenSourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        return self.list_open_source_permissions_with_options(request, runtime)
+
+    async def list_open_source_permissions_async(
+        self,
+        request: main_models.ListOpenSourcePermissionsRequest,
+    ) -> main_models.ListOpenSourcePermissionsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_open_source_permissions_with_options_async(request, runtime)
 
     def list_queue_consumers_with_options(
         self,
@@ -1902,6 +2580,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_virtual_hosts_with_options_async(request, runtime)
 
+    def remove_instance_white_list_with_options(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_id):
+            query['whiteListItemId'] = request.white_list_item_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveInstanceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_instance_white_list_with_options_async(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.white_list_item_id):
+            query['whiteListItemId'] = request.white_list_item_id
+        if not DaraCore.is_null(request.white_list_type):
+            query['whiteListType'] = request.white_list_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveInstanceWhiteList',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveInstanceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_instance_white_list(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.remove_instance_white_list_with_options(request, runtime)
+
+    async def remove_instance_white_list_async(
+        self,
+        request: main_models.RemoveInstanceWhiteListRequest,
+    ) -> main_models.RemoveInstanceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_instance_white_list_with_options_async(request, runtime)
+
     def update_instance_with_options(
         self,
         request: main_models.UpdateInstanceRequest,
@@ -2109,3 +2865,261 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateInstanceNameResponse:
         runtime = RuntimeOptions()
         return await self.update_instance_name_with_options_async(request, runtime)
+
+    def update_instance_serverless_switch_with_options(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceServerlessSwitch',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceServerlessSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_serverless_switch_with_options_async(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.serverless_switch):
+            query['ServerlessSwitch'] = request.serverless_switch
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceServerlessSwitch',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceServerlessSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_serverless_switch(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        runtime = RuntimeOptions()
+        return self.update_instance_serverless_switch_with_options(request, runtime)
+
+    async def update_instance_serverless_switch_async(
+        self,
+        request: main_models.UpdateInstanceServerlessSwitchRequest,
+    ) -> main_models.UpdateInstanceServerlessSwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instance_serverless_switch_with_options_async(request, runtime)
+
+    def update_open_source_account_with_options(
+        self,
+        request: main_models.UpdateOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOpenSourceAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_open_source_account_with_options_async(
+        self,
+        request: main_models.UpdateOpenSourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOpenSourceAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOpenSourceAccount',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOpenSourceAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_open_source_account(
+        self,
+        request: main_models.UpdateOpenSourceAccountRequest,
+    ) -> main_models.UpdateOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return self.update_open_source_account_with_options(request, runtime)
+
+    async def update_open_source_account_async(
+        self,
+        request: main_models.UpdateOpenSourceAccountRequest,
+    ) -> main_models.UpdateOpenSourceAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.update_open_source_account_with_options_async(request, runtime)
+
+    def update_open_source_permission_with_options(
+        self,
+        request: main_models.UpdateOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configure):
+            query['Configure'] = request.configure
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.read):
+            query['Read'] = request.read
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        if not DaraCore.is_null(request.write):
+            query['Write'] = request.write
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOpenSourcePermissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_open_source_permission_with_options_async(
+        self,
+        request: main_models.UpdateOpenSourcePermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOpenSourcePermissionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.configure):
+            query['Configure'] = request.configure
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.read):
+            query['Read'] = request.read
+        if not DaraCore.is_null(request.user_name):
+            query['UserName'] = request.user_name
+        if not DaraCore.is_null(request.vhost):
+            query['Vhost'] = request.vhost
+        if not DaraCore.is_null(request.write):
+            query['Write'] = request.write
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateOpenSourcePermission',
+            version = '2019-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateOpenSourcePermissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_open_source_permission(
+        self,
+        request: main_models.UpdateOpenSourcePermissionRequest,
+    ) -> main_models.UpdateOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return self.update_open_source_permission_with_options(request, runtime)
+
+    async def update_open_source_permission_async(
+        self,
+        request: main_models.UpdateOpenSourcePermissionRequest,
+    ) -> main_models.UpdateOpenSourcePermissionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_open_source_permission_with_options_async(request, runtime)

@@ -11,10 +11,24 @@ class UpdateAutoDisposeConfigRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
+        # Specifies whether to enable auto decision. Valid values:
+        # 
+        # - `enabled`: Enables auto decision.
+        # 
+        # - `disabled`: Disables auto decision.
+        # 
         # This parameter is required.
         self.auto_decision_status = auto_decision_status
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
+        # 
         # This parameter is required.
         self.lang = lang
+        # The code for the cloud product.
+        # 
         # This parameter is required.
         self.product_code = product_code
 

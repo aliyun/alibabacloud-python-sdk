@@ -17,13 +17,13 @@ class ScaleWithAdjustmentResponseBody(DaraModel):
     ):
         # The type of the scaling activity.
         # 
-        # If `ActivityType` is set to `CapacityChange`, only the expected number of instances is changed during the scaling activity specified by ScalingActivityId and no scale-out is triggered.
+        # If this parameter is set to `CapacityChange`, the scaling activity only adjusts the desired capacity of the scaling group without immediately adding or removing instances.
         # 
-        # This parameter is applicable to only scaling groups that have an expected number of instances.
+        # This setting only affects scaling groups with a configured desired capacity.
         self.activity_type = activity_type
-        # The elastic planning result returned when the ExecutionMode is set to PlanOnly.
+        # The scaling plan result returned when ExecutionMode is set to PlanOnly.
         self.plan_result = plan_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
@@ -73,7 +73,7 @@ class ScaleWithAdjustmentResponseBodyPlanResult(DaraModel):
         self,
         resource_allocations: List[main_models.ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations] = None,
     ):
-        # The resource allocation information in the elastic planning result.
+        # The resource allocation details in the scaling plan result.
         self.resource_allocations = resource_allocations
 
     def validate(self):
@@ -117,18 +117,21 @@ class ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations(DaraModel):
         self.amount = amount
         # The billing method of the instance. Valid values:
         # 
-        # *   **Prepaid**: subscription.
-        # *   **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription
+        # 
+        # - **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         # The instance type.
         self.instance_type = instance_type
-        # The spot policy of instances. Valid values:
+        # The spot strategy of the instance. Valid values:
         # 
-        # *   NoSpot: The instances are created as pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The instances are created as spot instances for which you can specify the maximum hourly price.
-        # *   SpotAsPriceGo: The instances are spot instances for which the market price at the time of purchase is automatically used as the bid price.
+        # - NoSpot: A pay-as-you-go instance.
+        # 
+        # - SpotWithPriceLimit: A spot instance with a user-specified price limit.
+        # 
+        # - SpotAsPriceGo: A spot instance where the system automatically bids based on the current market price.
         self.spot_strategy = spot_strategy
-        # The ID of the zone.
+        # The availability zone ID.
         self.zone_id = zone_id
 
     def validate(self):

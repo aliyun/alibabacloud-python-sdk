@@ -13,13 +13,13 @@ class TempAccessTokenIntlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Return result.
+        # The response data.
         self.data = data
-        # Return message.
+        # The response message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -72,17 +72,17 @@ class TempAccessTokenIntlResponseBodyData(DaraModel):
         oss_end_point: str = None,
         security_token: str = None,
     ):
-        # AccessKeyId for temporary file upload credentials.
+        # The AccessKeyId of the temporary credential for file upload.
         self.access_key_id = access_key_id
-        # Temporary authorization secret.
+        # The temporary authorization secret.
         self.access_key_secret = access_key_secret
-        # Bucket name.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # File prefix.
+        # The file name prefix.
         self.file_name_prefix = file_name_prefix
-        # OSS endpoint.
+        # OssEndPoint。
         self.oss_end_point = oss_end_point
-        # Security token for temporary file upload credentials.
+        # The security token of the temporary credential for file upload.
         self.security_token = security_token
 
     def validate(self):

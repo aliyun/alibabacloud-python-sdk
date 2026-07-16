@@ -14,7 +14,7 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # A pagination token. If NextToken is empty, no next page exists.
+        # The token that determines the start point of the next query. If this parameter is empty, no next query is to be sent.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -69,17 +69,13 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID, which is the cloud computer ID.
+        # The ID of the resource, that is, the ID of the cloud computer.
         self.resource_id = resource_id
-        # The type of the resource.
-        # 
-        # Valid values:
-        # 
-        # * ALIYUN::GWS::INSTANCE: cloud computer.
+        # The resource type.
         self.resource_type = resource_type
-        # The tag keys.
+        # The tag key.
         self.tag_key = tag_key
-        # The tag values.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

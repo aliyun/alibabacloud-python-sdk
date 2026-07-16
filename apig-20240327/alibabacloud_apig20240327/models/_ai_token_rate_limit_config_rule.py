@@ -14,11 +14,17 @@ class AiTokenRateLimitConfigRule(DaraModel):
         match_type: str = None,
         match_value: str = None,
     ):
+        # The throttling mode.
         self.limit_mode = limit_mode
+        # The throttling type.
         self.limit_type = limit_type
+        # The throttling value.
         self.limit_value = limit_value
+        # The match key name.
         self.match_key = match_key
+        # The matching method.
         self.match_type = match_type
+        # The match value.
         self.match_value = match_value
 
     def validate(self):

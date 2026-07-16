@@ -16,24 +16,24 @@ class CreateCloudConnectNetworkResponseBody(DaraModel):
         snat_cidr_block: str = None,
         status: str = None,
     ):
-        # The ID of the CCN instance.
+        # The instance ID of the Cloud Connect Network (CCN).
         self.ccn_id = ccn_id
         # The private CIDR block.
         self.cidr_block = cidr_block
-        # The description about the CCN instance.
+        # The description of the Cloud Connect Network (CCN) instance.
         self.description = description
-        # The name of the CCN instance.
+        # The name of the Cloud Connect Network (CCN) instance.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the CCN instance belongs.
+        # The ID of the resource group to which the Cloud Connect Network (CCN) instance belongs.
         self.resource_group_id = resource_group_id
-        # The private CIDR block used for SNAT.
+        # The SNAT private CIDR block.
         self.snat_cidr_block = snat_cidr_block
-        # The status of the CCN instance. Valid values:
+        # The instance status of the Cloud Connect Network (CCN). Valid values:
         # 
-        # *   **Active**: indicates the CNN instance running as expected.
-        # *   **Pending**: indicates the CCN instance is to be created.
+        # - **Active**: Normal.
+        # - **Pending**: Pending creation.
         self.status = status
 
     def validate(self):

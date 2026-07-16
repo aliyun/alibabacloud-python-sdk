@@ -10,8 +10,14 @@ class CompleteContinuouslyPushRequest(DaraModel):
         app_key: int = None,
         message_id: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The message ID.
+        # 
+        # This ID is returned after you call the Push operation and set Target to TBD. It identifies a message saved in the push system.
+        # 
         # This parameter is required.
         self.message_id = message_id
 

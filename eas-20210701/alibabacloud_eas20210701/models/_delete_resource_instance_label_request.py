@@ -14,12 +14,13 @@ class DeleteResourceInstanceLabelRequest(DaraModel):
         keys: List[str] = None,
         label_keys: List[str] = None,
     ):
-        # Specifies whether the delete operation takes effect on all instances in the resource group. If you set this parameter to true, the InstanceIds parameter does not take effect.
+        # Specifies whether the operation takes effect on all instances in the resource group. If this parameter is set to true, the InstanceIds parameter does not take effect.
         self.all_instances = all_instances
-        # The instance IDs.
+        # The machine instance IDs.
         self.instance_ids = instance_ids
-        # The keys of the tags that you want to delete.
+        # The tags to delete. (Deprecated. Use LabelKeys instead.).
         self.keys = keys
+        # The tags to delete.
         self.label_keys = label_keys
 
     def validate(self):

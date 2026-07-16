@@ -11,9 +11,9 @@ class SetDNSSLBStatusResponseBody(DaraModel):
         record_count: int = None,
         request_id: str = None,
     ):
-        # Indicates whether weighted round-robin is enabled for the subdomain name.
+        # The latest status of the weight configuration.
         self.open = open
-        # The number of A records that are matched.
+        # The number of DNS records that match the rule.
         self.record_count = record_count
         # The request ID.
         self.request_id = request_id

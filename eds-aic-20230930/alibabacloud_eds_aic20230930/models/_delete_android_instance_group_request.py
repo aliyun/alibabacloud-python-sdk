@@ -11,7 +11,7 @@ class DeleteAndroidInstanceGroupRequest(DaraModel):
         self,
         instance_group_ids: List[str] = None,
     ):
-        # The IDs of the instance groups.
+        # A list of instance group IDs.
         self.instance_group_ids = instance_group_ids
 
     def validate(self):

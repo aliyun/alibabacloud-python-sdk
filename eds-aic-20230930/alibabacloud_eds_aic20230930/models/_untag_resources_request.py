@@ -14,11 +14,19 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the resources. This parameter applies only when TagKey.N is not specified. The default value is false.
         self.all = all
+        # The IDs of the resources. You can specify 1 to 50 resource IDs.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The type of the resource.
+        # 
+        # Valid value: ALIYUN::ACP::INSTANCE, which represents a cloud phone.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The keys of the tags to remove. You can specify 1 to 20 tag keys.
         self.tag_key = tag_key
 
     def validate(self):

@@ -10,7 +10,7 @@ class UpdateToolRequest(DaraModel):
         self,
         body: main_models.UpdateToolInputV2 = None,
     ):
-        # 更新工具的请求参数，只需提供需要修改的字段
+        # The request body.
         self.body = body
 
     def validate(self):

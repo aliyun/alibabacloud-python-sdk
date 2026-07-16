@@ -20,14 +20,23 @@ class ListHotViewPointsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Business Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Maximum number of return results
         self.max_results = max_results
+        # Fault description
         self.message = message
+        # Token for the next page
         self.next_token = next_token
+        # Request UUID
         self.request_id = request_id
+        # Indicates whether the operation succeeded: true for success, false for failure
         self.success = success
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -115,10 +124,15 @@ class ListHotViewPointsResponseBodyData(DaraModel):
         ratio: str = None,
         view_points: List[main_models.ListHotViewPointsResponseBodyDataViewPoints] = None,
     ):
+        # Current viewpoint
         self.attitude = attitude
+        # Attitude Type
         self.attitude_type = attitude_type
+        # List of related news articles
         self.news = news
+        # Current viewpoint ratio
         self.ratio = ratio
+        # List of topic viewpoints
         self.view_points = view_points
 
     def validate(self):
@@ -189,8 +203,11 @@ class ListHotViewPointsResponseBodyDataViewPoints(DaraModel):
         point: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outlines = outlines
+        # Generated point
         self.point = point
+        # Summary
         self.summary = summary
 
     def validate(self):
@@ -239,7 +256,9 @@ class ListHotViewPointsResponseBodyDataViewPointsOutlines(DaraModel):
         outline: str = None,
         summary: str = None,
     ):
+        # Outline
         self.outline = outline
+        # Outline summary
         self.summary = summary
 
     def validate(self):
@@ -284,17 +303,29 @@ class ListHotViewPointsResponseBodyDataNews(DaraModel):
         topic: str = None,
         url: str = None,
     ):
+        # Author
         self.author = author
+        # Content
         self.content = content
+        # External UUID of the article
         self.doc_id = doc_id
+        # Unique ID of the article
         self.doc_uuid = doc_uuid
+        # URLs of article images
         self.image_urls = image_urls
+        # Published At. Format: YYYY-MM-dd HH:mm:ss
         self.pub_time = pub_time
+        # Source
         self.source = source
+        # summary
         self.summary = summary
+        # tags
         self.tags = tags
+        # title
         self.title = title
+        # topic
         self.topic = topic
+        # Article URL
         self.url = url
 
     def validate(self):

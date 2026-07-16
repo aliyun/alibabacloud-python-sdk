@@ -16,25 +16,10 @@ class GetMultiAccountResourceCountsResponseBody(DaraModel):
         resource_counts: List[main_models.GetMultiAccountResourceCountsResponseBodyResourceCounts] = None,
         scope: str = None,
     ):
-        # The filter condition.
         self.filters = filters
-        # The dimension by which resources are queried.
         self.group_by_key = group_by_key
-        # The request ID.
         self.request_id = request_id
-        # The numbers of resources.
         self.resource_counts = resource_counts
-        # The search scope. Valid values:
-        # 
-        # - ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
-        # 
-        # - ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
-        # 
-        # - ID of a folder: Resources within all members in the folder are searched.
-        # 
-        # - ID of a member: Resources within the member are searched.
-        # 
-        # For information about how to obtain the ID of a resource directory, the Root folder, a folder, or a member, see [GetResourceDirectory](https://help.aliyun.com/document_detail/159995.html), [ListFoldersForParent](https://help.aliyun.com/document_detail/159997.html), or [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
         self.scope = scope
 
     def validate(self):
@@ -104,9 +89,7 @@ class GetMultiAccountResourceCountsResponseBodyResourceCounts(DaraModel):
         count: int = None,
         group_name: str = None,
     ):
-        # The number of resources.
         self.count = count
-        # The group name.
         self.group_name = group_name
 
     def validate(self):
@@ -141,9 +124,7 @@ class GetMultiAccountResourceCountsResponseBodyFilters(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
-        # The key of the filter condition.
         self.key = key
-        # The values of the filter condition.
         self.values = values
 
     def validate(self):

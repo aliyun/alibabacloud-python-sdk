@@ -15,11 +15,21 @@ class GetHotUpdateJobResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result of the dynamic update.
         self.data = data
+        # - If the success parameter is false, an error code is returned.
+        # 
+        # - If the success parameter is true, this parameter is empty.
         self.error_code = error_code
+        # - If the success parameter is false, an error message is returned.
+        # 
+        # - If the success parameter is true, this parameter is empty.
         self.error_message = error_message
+        # The HTTP status code. A value of 200 is always returned. The success parameter indicates whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

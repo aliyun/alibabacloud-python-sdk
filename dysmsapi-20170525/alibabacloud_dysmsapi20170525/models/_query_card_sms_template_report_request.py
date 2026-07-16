@@ -13,11 +13,11 @@ class QueryCardSmsTemplateReportRequest(DaraModel):
         start_date: str = None,
         template_codes: List[str] = None,
     ):
-        # The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start_date = start_date
-        # The array of message templates.
+        # The card SMS object.
         # 
         # This parameter is required.
         self.template_codes = template_codes

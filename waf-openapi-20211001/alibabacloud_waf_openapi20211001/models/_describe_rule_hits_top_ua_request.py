@@ -14,18 +14,19 @@ class DescribeRuleHitsTopUaRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         start_timestamp: str = None,
     ):
-        # The end of the time range to query. Unit: seconds. If you do not specify this parameter, the current time is used.
+        # The end of the time range to query. Unit: seconds. If you do not set this parameter, the end time is the current query time.
         self.end_timestamp = end_timestamp
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The protected object.
         self.resource = resource

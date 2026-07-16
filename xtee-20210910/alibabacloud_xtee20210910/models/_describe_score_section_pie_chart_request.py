@@ -14,19 +14,19 @@ class DescribeScoreSectionPieChartRequest(DaraModel):
         event_type: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         self.begin_time = begin_time
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         self.end_time = end_time
-        # Event code.
+        # The event code.
         self.event_codes = event_codes
-        # Event type.
+        # The event type.
         self.event_type = event_type
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

@@ -25,8 +25,9 @@ class ModifyDedicatedHostAttributeRequest(DaraModel):
         self.network_attributes = network_attributes
         # The policy for migrating the instances deployed on the dedicated host when the dedicated host fails or needs to be repaired online. Valid values:
         # 
-        # *   Migrate: The instances are migrated to another physical machine and then restarted.
-        # *   Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
+        # - Migrate: The instances are migrated to another physical machine and then restarted.
+        # 
+        # - Stop: The instances are stopped. If the dedicated host cannot be repaired, the instances are migrated to another physical machine and then restarted.
         # 
         # If the dedicated host has cloud disks attached, the default value is Migrate.
         # 
@@ -34,8 +35,9 @@ class ModifyDedicatedHostAttributeRequest(DaraModel):
         self.action_on_maintenance = action_on_maintenance
         # Specifies whether to add the dedicated host to the resource pool for automatic deployment. If you do not specify **DedicatedHostId** when you create an instance on a dedicated host, Alibaba Cloud automatically selects a dedicated host from the resource pool to host the instance. Valid values:
         # 
-        # *   on: adds the dedicated host to the resource pool for automatic deployment.
-        # *   off: does not add the dedicated host to the resource pool for automatic deployment.
+        # - on: adds the dedicated host to the resource pool for automatic deployment.
+        # 
+        # - off: does not add the dedicated host to the resource pool for automatic deployment.
         # 
         # For information about automatic deployment, see [Functions and features](https://help.aliyun.com/document_detail/118938.html).
         self.auto_placement = auto_placement
@@ -49,7 +51,7 @@ class ModifyDedicatedHostAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dedicated_host_id = dedicated_host_id
-        # The name of the dedicated host. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the dedicated host. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http\\:// or https\\://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         self.dedicated_host_name = dedicated_host_name
         # The description of the dedicated host. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description

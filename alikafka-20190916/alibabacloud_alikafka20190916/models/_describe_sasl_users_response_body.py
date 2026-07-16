@@ -16,11 +16,11 @@ class DescribeSaslUsersResponseBody(DaraModel):
         sasl_user_list: main_models.DescribeSaslUsersResponseBodySaslUserList = None,
         success: bool = None,
     ):
-        # The HTTP status code returned. The HTTP status code 200 indicates that the request is successful.
+        # Status code. A value of 200 indicates success.
         self.code = code
-        # The returned message.
+        # Response message.
         self.message = message
-        # The ID of the request.
+        # Request ID.
         self.request_id = request_id
         self.sasl_user_list = sasl_user_list
         # Indicates whether the request is successful.

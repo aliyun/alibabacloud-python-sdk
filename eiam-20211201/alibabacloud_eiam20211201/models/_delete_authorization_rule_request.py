@@ -10,11 +10,11 @@ class DeleteAuthorizationRuleRequest(DaraModel):
         authorization_rule_id: str = None,
         instance_id: str = None,
     ):
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

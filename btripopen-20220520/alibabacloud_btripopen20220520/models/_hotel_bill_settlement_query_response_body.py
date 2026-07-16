@@ -187,6 +187,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         booker_name: str = None,
         brand_group: str = None,
         brand_name: str = None,
+        budget_number: str = None,
+        business_reason: str = None,
         business_trip_result: str = None,
         cancel_or_modify_reason: str = None,
         cancel_or_modify_scene: str = None,
@@ -204,11 +206,13 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         cost_center: str = None,
         cost_center_number: str = None,
         cost_department: str = None,
+        custom_apply_id: str = None,
         custom_content: str = None,
         deductible_tax: float = None,
         department: str = None,
         department_id: str = None,
         exceed_reason: str = None,
+        external_person_type: str = None,
         fee_type: str = None,
         fee_type_desc: str = None,
         fees: float = None,
@@ -285,7 +289,6 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.apply_arr_city_name = apply_arr_city_name
         self.apply_dep_city_code = apply_dep_city_code
         self.apply_dep_city_name = apply_dep_city_name
-        # 审批扩展自定义字段
         self.apply_extend_field = apply_extend_field
         self.apply_id = apply_id
         self.approver_email = approver_email
@@ -304,6 +307,8 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.booker_name = booker_name
         self.brand_group = brand_group
         self.brand_name = brand_name
+        self.budget_number = budget_number
+        self.business_reason = business_reason
         self.business_trip_result = business_trip_result
         self.cancel_or_modify_reason = cancel_or_modify_reason
         self.cancel_or_modify_scene = cancel_or_modify_scene
@@ -321,11 +326,13 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.cost_center = cost_center
         self.cost_center_number = cost_center_number
         self.cost_department = cost_department
+        self.custom_apply_id = custom_apply_id
         self.custom_content = custom_content
         self.deductible_tax = deductible_tax
         self.department = department
         self.department_id = department_id
         self.exceed_reason = exceed_reason
+        self.external_person_type = external_person_type
         self.fee_type = fee_type
         self.fee_type_desc = fee_type_desc
         self.fees = fees
@@ -381,7 +388,6 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         self.star = star
         self.status = status
         self.status_desc = status_desc
-        # 税率
         self.tax_rate = tax_rate
         self.third_itinerary_id = third_itinerary_id
         self.total_nights = total_nights
@@ -479,6 +485,12 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         if self.brand_name is not None:
             result['brand_name'] = self.brand_name
 
+        if self.budget_number is not None:
+            result['budget_number'] = self.budget_number
+
+        if self.business_reason is not None:
+            result['business_reason'] = self.business_reason
+
         if self.business_trip_result is not None:
             result['business_trip_result'] = self.business_trip_result
 
@@ -530,6 +542,9 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         if self.cost_department is not None:
             result['cost_department'] = self.cost_department
 
+        if self.custom_apply_id is not None:
+            result['custom_apply_id'] = self.custom_apply_id
+
         if self.custom_content is not None:
             result['custom_content'] = self.custom_content
 
@@ -544,6 +559,9 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
 
         if self.exceed_reason is not None:
             result['exceed_reason'] = self.exceed_reason
+
+        if self.external_person_type is not None:
+            result['external_person_type'] = self.external_person_type
 
         if self.fee_type is not None:
             result['fee_type'] = self.fee_type
@@ -828,6 +846,12 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         if m.get('brand_name') is not None:
             self.brand_name = m.get('brand_name')
 
+        if m.get('budget_number') is not None:
+            self.budget_number = m.get('budget_number')
+
+        if m.get('business_reason') is not None:
+            self.business_reason = m.get('business_reason')
+
         if m.get('business_trip_result') is not None:
             self.business_trip_result = m.get('business_trip_result')
 
@@ -879,6 +903,9 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
         if m.get('cost_department') is not None:
             self.cost_department = m.get('cost_department')
 
+        if m.get('custom_apply_id') is not None:
+            self.custom_apply_id = m.get('custom_apply_id')
+
         if m.get('custom_content') is not None:
             self.custom_content = m.get('custom_content')
 
@@ -893,6 +920,9 @@ class HotelBillSettlementQueryResponseBodyModuleDataList(DaraModel):
 
         if m.get('exceed_reason') is not None:
             self.exceed_reason = m.get('exceed_reason')
+
+        if m.get('external_person_type') is not None:
+            self.external_person_type = m.get('external_person_type')
 
         if m.get('fee_type') is not None:
             self.fee_type = m.get('fee_type')

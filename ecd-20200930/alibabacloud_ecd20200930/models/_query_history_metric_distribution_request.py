@@ -15,9 +15,13 @@ class QueryHistoryMetricDistributionRequest(DaraModel):
         ranges: List[main_models.QueryHistoryMetricDistributionRequestRanges] = None,
         start_date: str = None,
     ):
+        # The end date of the query period. The date must be in the `YYYY-MM-DD` format. The default value is T-1.
         self.end_date = end_date
+        # The name of the metric to query.
         self.metric_name = metric_name
+        # An array of custom value ranges.
         self.ranges = ranges
+        # The start date of the query period. The date must be in the `YYYY-MM-DD` format. The default value is T-1.
         self.start_date = start_date
 
     def validate(self):
@@ -75,10 +79,15 @@ class QueryHistoryMetricDistributionRequestRanges(DaraModel):
         max: float = None,
         min: float = None,
     ):
+        # Specifies whether to include the maximum value in the range. The default value is `false`.
         self.include_max = include_max
+        # Specifies whether to include the minimum value in the range. The default value is `true`.
         self.include_min = include_min
+        # The label for the value range. This label is returned in the response.
         self.label = label
+        # The maximum value of the value range.
         self.max = max
+        # The minimum value of the value range.
         self.min = min
 
     def validate(self):

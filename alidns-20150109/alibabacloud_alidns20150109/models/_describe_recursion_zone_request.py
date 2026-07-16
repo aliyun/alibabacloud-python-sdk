@@ -9,6 +9,8 @@ class DescribeRecursionZoneRequest(DaraModel):
         self,
         zone_id: str = None,
     ):
+        # The zone ID. This is the unique identifier of the zone.
+        # 
         # This parameter is required.
         self.zone_id = zone_id
 

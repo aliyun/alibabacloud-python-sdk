@@ -24,15 +24,15 @@ class CreateDriveRequest(DaraModel):
         self.description = description
         # The ID of the storage resource.
         # 
-        # >  Call the DescribeDrives operation to retrieve the storage resource ID.
+        # > Call the DescribeDrives operation to retrieve the storage resource ID.
         self.domain_id = domain_id
         # The name of the user-level storage resource.
         self.drive_name = drive_name
         # The ID of the external storage resource.
         # 
-        # >  Call the DescribeDrives operation to retrieve the external storage resource ID.
+        # > Call the DescribeDrives operation to retrieve the external storage resource ID.
         self.external_domain_id = external_domain_id
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.profile_roaming = profile_roaming
         # The region ID.
         self.region_id = region_id
@@ -40,15 +40,17 @@ class CreateDriveRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   NAS: File Storage NAS
-        # *   PDS: Drive and Photo Service
+        # - NAS: File Storage NAS
+        # 
+        # - PDS: Drive and Photo Service
         self.resource_type = resource_type
         # The usage of the storage resource.
         # 
         # Valid values:
         # 
-        # *   DESKTOP: data disk space
-        # *   USER_PROFILE: space for personal data of the user
+        # - DESKTOP: data disk space
+        # 
+        # - USER_PROFILE: space for personal data of the user
         self.type = type
         # The user ID.
         self.user_id = user_id

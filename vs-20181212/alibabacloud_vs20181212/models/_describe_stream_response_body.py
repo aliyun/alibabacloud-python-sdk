@@ -22,19 +22,37 @@ class DescribeStreamResponseBody(DaraModel):
         status: str = None,
         width: int = None,
     ):
+        # The application to which the stream belongs.
         self.app = app
+        # The time when the stream was created.
         self.created_time = created_time
+        # The ID of the device to which the stream belongs.
         self.device_id = device_id
+        # Indicates whether the stream is enabled.
         self.enabled = enabled
+        # The ID of the group to which the stream belongs.
         self.group_id = group_id
+        # The height of the video stream resolution.
         self.height = height
+        # The stream ID.
         self.id = id
+        # The name of the stream.
         self.name = name
+        # The streaming domain to which the stream belongs.
         self.play_domain = play_domain
+        # The protocol of the stream.
         self.protocol = protocol
+        # The ingest domain to which the stream belongs.
         self.push_domain = push_domain
+        # The request ID.
         self.request_id = request_id
+        # The status of the stream. Valid values:
+        # 
+        # - on (online)
+        # 
+        # - off (offline)
         self.status = status
+        # The width of the video stream resolution.
         self.width = width
 
     def validate(self):

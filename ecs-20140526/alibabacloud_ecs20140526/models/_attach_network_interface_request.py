@@ -22,27 +22,26 @@ class AttachNetworkInterfaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The index of the network interface controller (NIC).
+        # The index of the network card specified for the ENI.
         # 
-        # > The value of this parameter varies based on the instance family of the specified instance. If the instance type of the specified instance does not support NICs, leave this parameter empty. If the instance type of the specified instance supports NICs, set this parameter to a valid value. For information about the valid values of this parameter, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # >Valid values of NetworkCardIndex depend on the instance family. If the instance type does not support network cards, you cannot specify this parameter. If the instance type supports network cards, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
         self.network_card_index = network_card_index
-        # The ID of the ENI.
+        # The network interface controller (NIC) ID.
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the trunk ENI.
-        # 
-        # > This parameter is unavailable.
+        # >This parameter is not yet available.
         self.trunk_network_instance_id = trunk_network_instance_id
-        # > This parameter is no longer supported.
+        # >This parameter is deprecated.
         self.wait_for_network_configuration_ready = wait_for_network_configuration_ready
 
     def validate(self):

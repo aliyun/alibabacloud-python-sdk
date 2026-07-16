@@ -27,8 +27,9 @@ class GetFolderResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call was successful.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):

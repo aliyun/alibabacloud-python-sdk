@@ -13,13 +13,13 @@ class MobileOnlineStatusResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.MobileOnlineStatusResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message.
+        # The response message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Returned result information
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -69,26 +69,26 @@ class MobileOnlineStatusResponseBodyResultObject(DaraModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
-        # Verification result
+        # The verification result. Valid values:
         # 
-        # - 1: Available online 
-        # - 2: Not available online (see subCode for details)
-        # - 3: No query result
+        # - 1: active and available. 
+        # - 2: not in an active and available state. For more information, see subCode.
+        # - 3: no query result.
         self.biz_code = biz_code
-        # ISP name
+        # The name of the telecommunications service provider. Valid values:
         # 
-        # - CMCC: China Mobile 
-        # - CUCC: China Unicom 
-        # - CTCC: China Telecom
+        # - CMCC: China Mobile. 
+        # - CUCC: China Unicom. 
+        # - CTCC: China Telecom.
         self.isp_name = isp_name
-        # Verification details
+        # The verification details. Valid values:
         # 
-        # - 101: Available online 
-        # - 201: Suspended 
-        # - 202: Disconnected 
-        # - 203: Online but not available 
-        # - 204: Not online 
-        # - 301: No record found
+        # - 101: active and available. 
+        # - 201: suspended. 
+        # - 202: canceled. 
+        # - 203: active but unavailable. 
+        # - 204: not active. 
+        # - 301: no record found.
         self.sub_code = sub_code
 
     def validate(self):

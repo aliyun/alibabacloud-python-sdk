@@ -18,17 +18,19 @@ class DescribeVpcFirewallCenDetailResponseBody(DaraModel):
         vpc_firewall_id: str = None,
         vpc_firewall_name: str = None,
     ):
-        # The connection type of the VPC firewall. The value is fixed as **cen**, which indicates CEN instances.
+        # The connection type of the VPC firewall. The value is fixed as **cen**, which indicates CEN.
         self.connect_type = connect_type
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: enabled
-        # *   **closed**: disabled
-        # *   **notconfigured**: not configured
+        # - **opened**: The firewall is enabled.
+        # 
+        # - **closed**: The firewall is disabled.
+        # 
+        # - **notconfigured**: The firewall is not configured.
         self.firewall_switch_status = firewall_switch_status
-        # The firewall VPC.
+        # The VPC that is used by the firewall.
         self.firewall_vpc = firewall_vpc
-        # The details about the VPC.
+        # The details of the VPC.
         self.local_vpc = local_vpc
         # The ID of the request.
         self.request_id = request_id
@@ -119,17 +121,17 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The ID of the connection between two network instances.
+        # The ID of the network instance connection.
         self.attachment_id = attachment_id
-        # The name of the connection between two network instances.
+        # The name of the network instance connection.
         self.attachment_name = attachment_name
-        # An array consisting of the CIDR blocks that are protected by the VPC firewall.
+        # The list of CIDR blocks that are protected by the VPC firewall.
         self.defend_cidr_list = defend_cidr_list
-        # The Elastic Network Interfaces (ENIs).
+        # The list of elastic network interfaces (ENIs).
         self.eni_list = eni_list
-        # The ID of the specified vSwitch when the routing mode is manual.
+        # The ID of the vSwitch that is specified for the manual routing mode.
         self.manual_vswitch_id = manual_vswitch_id
-        # The ID of the VPC for which the VPC firewall is created.
+        # The ID of the VPC instance for which the VPC firewall is created.
         self.network_instance_id = network_instance_id
         # The name of the network instance.
         self.network_instance_name = network_instance_name
@@ -137,30 +139,33 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpc(DaraModel):
         self.network_instance_type = network_instance_type
         # The UID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
-        # The ID of the region in which the VPC resides.
+        # The region ID of the VPC.
         self.region_no = region_no
         # The routing mode. Valid values:
         # 
-        # *   auto: automatic mode
-        # *   manual: manual mode
+        # - auto: automatic mode.
+        # 
+        # - manual: manual mode.
         self.route_mode = route_mode
         # Indicates whether the manual routing mode is supported. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes.
+        # 
+        # - **0**: no.
         self.support_manual_mode = support_manual_mode
         # The instance ID of the CEN transit router.
         self.transit_router_id = transit_router_id
         # The edition of the CEN transit router. Valid values:
         # 
-        # *   **Basic**: Basic Edition
-        # *   **Enterprise**: Enterprise Edition
+        # - **Basic**: Basic Edition.
+        # 
+        # - **Enterprise**: Enterprise Edition.
         self.transit_router_type = transit_router_type
-        # An array that consists of the CIDR blocks of the VPC.
+        # The list of CIDR blocks for the VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
-        # The ID of the VPC.
+        # The instance ID of the VPC.
         self.vpc_id = vpc_id
-        # The name of the VPC.
+        # The instance name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -302,9 +307,9 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableList(DaraModel
         route_entry_list: List[main_models.DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries for the VPC.
+        # The list of route entries for the VPC.
         self.route_entry_list = route_entry_list
-        # The route table ID of the VPC.
+        # The ID of the route table for the VPC.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -349,7 +354,7 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEntry
     ):
         # The destination CIDR block of the VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID of the next hop for the VPC.
+        # The ID of the next hop instance in the VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):
@@ -385,11 +390,11 @@ class DescribeVpcFirewallCenDetailResponseBodyLocalVpcEniList(DaraModel):
         eni_private_ip_address: str = None,
         eni_vswitch_id: str = None,
     ):
-        # The ID of the ENI that belongs to the VPC.
+        # The instance ID of the ENI in the VPC.
         self.eni_id = eni_id
-        # The private IP address of the ENI that belongs to the VPC.
+        # The private IP address of the ENI in the VPC.
         self.eni_private_ip_address = eni_private_ip_address
-        # The ID of the vSwitch to which the ENI is connected.
+        # The ID of the vSwitch for the ENI in the VPC.
         self.eni_vswitch_id = eni_vswitch_id
 
     def validate(self):
@@ -436,24 +441,25 @@ class DescribeVpcFirewallCenDetailResponseBodyFirewallVpc(DaraModel):
         vswitch_zone_id: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether you can specify a CIDR block when you create a VPC firewall for a Basic Edition transit router of a CEN instance. Valid values:
+        # Indicates whether you can specify a CIDR block for the firewall VPC when you create a VPC firewall for a Basic Edition transit router. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes.
+        # 
+        # - **0**: no.
         self.allow_configuration = allow_configuration
-        # Firewall backup availability zone ID.
+        # The ID of the secondary zone for the firewall.
         self.standby_zone_id = standby_zone_id
         # The CIDR block of the VPC.
         self.vpc_cidr = vpc_cidr
-        # The VPC ID.
+        # The VPC instance ID.
         self.vpc_id = vpc_id
-        # The CIDR block of the vSwitch.
+        # The CIDR block of the virtual switch.
         self.vswitch_cidr = vswitch_cidr
-        # The vSwitch ID.
+        # The virtual switch ID.
         self.vswitch_id = vswitch_id
-        # The availability zone ID of the virtual switch.
+        # The zone ID of the virtual switch.
         self.vswitch_zone_id = vswitch_zone_id
-        # The zone ID.
+        # The ID of the primary zone for the firewall.
         self.zone_id = zone_id
 
     def validate(self):

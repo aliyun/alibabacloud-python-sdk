@@ -19,14 +19,23 @@ class GetAssignJobsAsyncResultResponseBody(DaraModel):
         timeout: bool = None,
         valid: bool = None,
     ):
+        # The API status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The task group ID.
         self.job_group_id = job_group_id
+        # The list of job IDs.
         self.jobs_id = jobs_id
+        # The API message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # Indicates whether the asynchronous task timed out.
         self.timeout = timeout
+        # Indicates whether the result has been fully generated.
         self.valid = valid
 
     def validate(self):

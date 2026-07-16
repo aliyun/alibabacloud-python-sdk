@@ -12,10 +12,15 @@ class Namespace(DaraModel):
         name: str = None,
         properties: str = None,
     ):
+        # 命名空间所属的数据目录名称
+        # 
         # This parameter is required.
         self.catalog = catalog
+        # 命名空间的备注描述信息
         self.comment = comment
+        # 命名空间的唯一标识名称
         self.name = name
+        # 命名空间的扩展属性
         self.properties = properties
 
     def validate(self):

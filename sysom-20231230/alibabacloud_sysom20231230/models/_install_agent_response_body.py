@@ -13,9 +13,17 @@ class InstallAgentResponseBody(DaraModel):
         data: main_models.InstallAgentResponseBodyData = None,
         message: str = None,
     ):
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
+        # The status code.
+        # - If `code == Success`, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The response data.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
 
     def validate(self):
@@ -63,6 +71,9 @@ class InstallAgentResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
+        # 
+        # You can use this task ID to call the GetAgentTask operation to retrieve the task execution status.
         self.task_id = task_id
 
     def validate(self):

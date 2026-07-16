@@ -78,15 +78,19 @@ class ListDatabaseAccountsForUserResponseBodyDatabaseAccounts(DaraModel):
         self.database_id = database_id
         # Indicates whether the user is authorized to manage the database account. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_authorized = is_authorized
         # The protocol used by the database account. Valid values:
         # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
+        # - **MySQL**
+        # 
+        # - **Oracle**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **SQLServer**
         self.protocol_name = protocol_name
 
     def validate(self):

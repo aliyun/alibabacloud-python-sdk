@@ -16,7 +16,7 @@ class ModifyHichinaDomainDNSResponseBody(DaraModel):
     ):
         self.new_dns_servers = new_dns_servers
         self.original_dns_servers = original_dns_servers
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

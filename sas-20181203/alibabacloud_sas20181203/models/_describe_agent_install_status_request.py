@@ -11,16 +11,14 @@ class DescribeAgentInstallStatusRequest(DaraModel):
         source_ip: str = None,
         uuids: str = None,
     ):
-        # The language of the content within the request and response. Valid value:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUIDs of servers. Separate multiple UUIDs with commas (,).
-        # 
-        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
         # 
         # This parameter is required.
         self.uuids = uuids

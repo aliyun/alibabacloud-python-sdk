@@ -1,3 +1,25 @@
+2026-07-02 Version: 5.0.0
+- Update API CreateDataset: delete request parameters DatasetConfig.
+- Update API CreateProject: delete request parameters DatasetConfig.
+- Update API UpdateDataset: delete request parameters DatasetConfig.
+- Update API UpdateProject: delete request parameters DatasetConfig.
+
+
+2026-06-22 Version: 4.8.4
+- Update API CreateProject: add request parameters DatasetConfig.
+- Update API UpdateProject: add request parameters DatasetConfig.
+
+
+2026-06-22 Version: 4.8.4
+- Update API CreateProject: add request parameters DatasetConfig.
+- Update API UpdateProject: add request parameters DatasetConfig.
+
+
+2026-05-26 Version: 4.8.3
+- Update API DetectImageCropping: add request parameters InclusionHints.
+- Update API DetectImageCropping: add response parameters Body.MatchedInclusionHints.
+
+
 2026-04-17 Version: 4.8.2
 - Update API ListBindings: add request parameters Name.
 

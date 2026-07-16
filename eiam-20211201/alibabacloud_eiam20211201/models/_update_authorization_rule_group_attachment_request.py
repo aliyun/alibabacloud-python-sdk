@@ -15,23 +15,28 @@ class UpdateAuthorizationRuleGroupAttachmentRequest(DaraModel):
         validity_period: main_models.UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod = None,
         validity_type: str = None,
     ):
-        # 授权规则标识。
+        # The authorization rule ID.
         # 
         # This parameter is required.
         self.authorization_rule_id = authorization_rule_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # 
         # This parameter is required.
         self.client_token = client_token
-        # 组标识。
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 有效周期，当validityPeriodType为custom有效。
+        # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
-        # 有效期类型，枚举值：permanent（永久），time_bound（自定义时间范围）。
+        # The validity type of the relationship. Valid values:
+        # 
+        # - permanent: permanent
+        # - time_bound: custom time range.
         # 
         # This parameter is required.
         self.validity_type = validity_type
@@ -94,9 +99,9 @@ class UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # 授权规则生效结束时间，采用unix纪元精确到毫秒。
+        # The end time of the validity period, in UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
-        # 授权规则生效开始时间，采用unix纪元精确到毫秒。
+        # The start time of the validity period, in UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):

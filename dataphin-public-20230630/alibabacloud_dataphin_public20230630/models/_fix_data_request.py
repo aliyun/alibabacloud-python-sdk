@@ -14,9 +14,16 @@ class FixDataRequest(DaraModel):
         fix_data_command: main_models.FixDataRequestFixDataCommand = None,
         op_tenant_id: int = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD (default): production environment.
         self.env = env
+        # The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+        # 
         # This parameter is required.
         self.fix_data_command = fix_data_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -64,12 +71,24 @@ class FixDataRequestFixDataCommand(DaraModel):
         project_id: int = None,
         root_instance_id: main_models.FixDataRequestFixDataCommandRootInstanceId = None,
     ):
+        # Specifies whether to rerun the root instance. If you do not specify this parameter, the default value is true.
         self.contain_root_instance = contain_root_instance
+        # The downstream instances. If you have specified a downstream range, you do not need to specify this parameter. Otherwise, you must specify the list of downstream instances.
         self.down_stream_instance_id_list = down_stream_instance_id_list
+        # The downstream range. Valid values:
+        # - ALL_FAILED_INSTANCE: all failed instances.
+        # - ALL_INSTANCE: all instances.
+        # - ALL_FINAL_INSTANCE: all desired state instances.
+        # - If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
         self.downstream_range = downstream_range
+        # Specifies whether to force a rerun.
         self.force_rerun = force_rerun
+        # The project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The root instance.
+        # 
         # This parameter is required.
         self.root_instance_id = root_instance_id
 
@@ -140,7 +159,10 @@ class FixDataRequestFixDataCommandRootInstanceId(DaraModel):
         field_instance_id_list: List[str] = None,
         id: str = None,
     ):
+        # The field IDs. This parameter is available when the node is a logical table instance ID. If you do not specify this parameter, the full table is used by default.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
+        # 
         # This parameter is required.
         self.id = id
 
@@ -176,7 +198,9 @@ class FixDataRequestFixDataCommandDownStreamInstanceIdList(DaraModel):
         field_instance_id_list: List[str] = None,
         id: str = None,
     ):
+        # The field instance ID.
         self.field_instance_id_list = field_instance_id_list
+        # The instance ID.
         self.id = id
 
     def validate(self):

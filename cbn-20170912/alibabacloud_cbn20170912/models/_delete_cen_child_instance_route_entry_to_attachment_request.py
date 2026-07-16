@@ -24,26 +24,27 @@ class DeleteCenChildInstanceRouteEntryToAttachmentRequest(DaraModel):
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The token can contain only ASCII characters.
+        # Generate a token from your client to make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each request.
         self.client_token = client_token
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
-        # Specifies whether to perform a dry run to check information such as the permissions and the instance status. Valid values:
+        # Specifies whether to perform a dry run. A dry run checks for potential issues, including permissions and instance status. Valid values:
         # 
-        # *   **false**: performs a dry run and sends the request.
-        # *   **true**: performs a dry run. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        # - **false** (default): Sends a normal request. The route entry of the network instance is deleted after the request passes the check.
         # 
-        # >  This parameter is not in use.
+        # - **true**: Sends a check request. The system checks the required parameters and the request format. If the check fails, an error message is returned. If the check succeeds, the corresponding request ID is returned. The route entry of the network instance is not deleted.
+        # 
+        # > This parameter is not in effect.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table configured on the network instance.
+        # The ID of the route table that belongs to the network instance.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

@@ -29,13 +29,15 @@ class ModifyIdcProbeRequest(DaraModel):
         self.linux_port = linux_port
         # The unit of the scan interval. Valid values:
         # 
-        # *   **day**
-        # *   **hour**
+        # - **day**
+        # 
+        # - **hour**
         self.period_unit = period_unit
         # The usage status. Valid values:
         # 
-        # *   **0**: enabled.
-        # *   **1**: disabled.
+        # - **0**: enabled.
+        # 
+        # - **1**: disabled.
         self.status = status
         # The UUID of the server. Separate multiple UUIDs with commas (,).
         # 

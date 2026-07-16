@@ -10,7 +10,7 @@ class CreateHostResponseBody(DaraModel):
         host_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the host.
+        # The ID of the new host.
         self.host_id = host_id
         # The ID of the request.
         self.request_id = request_id

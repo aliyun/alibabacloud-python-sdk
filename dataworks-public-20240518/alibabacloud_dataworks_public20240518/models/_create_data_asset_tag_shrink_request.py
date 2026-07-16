@@ -23,10 +23,13 @@ class CreateDataAssetTagShrinkRequest(DaraModel):
         self.managers_shrink = managers_shrink
         # The type of the tag value. Valid values:
         # 
-        # *   Boolean
-        # *   Int
-        # *   String
-        # *   Double
+        # - Boolean
+        # 
+        # - Int
+        # 
+        # - String
+        # 
+        # - Double
         self.value_type = value_type
         # The tag values.
         self.values_shrink = values_shrink

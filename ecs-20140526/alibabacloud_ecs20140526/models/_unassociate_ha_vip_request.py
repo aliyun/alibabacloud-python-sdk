@@ -17,14 +17,22 @@ class UnassociateHaVipRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # A client-generated token that ensures request idempotency. The token must be unique for each request, contain only ASCII characters, and be no more than 64 characters long.
         self.client_token = client_token
+        # Specifies whether to forcefully disassociate the HaVip. If you set this parameter to `true`, you can disassociate the HaVip from a master instance. Valid values: `true` and `false`. The default value is `false`.
         self.force = force
+        # The ID of the HaVip.
+        # 
         # This parameter is required.
         self.ha_vip_id = ha_vip_id
+        # The ID of the ECS instance to disassociate the HaVip from.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the HaVip is deployed. You can call the `DescribeRegions` operation to query the latest region list.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

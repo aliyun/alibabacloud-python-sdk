@@ -10,6 +10,7 @@ class UpdateScheduledPlanRequest(DaraModel):
         self,
         body: main_models.ScheduledPlan = None,
     ):
+        # The data structure of the scheduled plan to be updated.
         self.body = body
 
     def validate(self):

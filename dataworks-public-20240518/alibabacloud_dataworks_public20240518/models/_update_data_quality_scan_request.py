@@ -161,8 +161,9 @@ class UpdateDataQualityScanRequestTrigger(DaraModel):
         self.task_ids = task_ids
         # The trigger mode of the data quality monitor. Valid values:
         # 
-        # *   ByManual: Manually triggered. Default setting.
-        # *   BySchedule: Triggered by a scheduled task instance.
+        # - ByManual: Manually triggered. Default setting.
+        # 
+        # - BySchedule: Triggered by a scheduled task instance.
         self.type = type
 
     def validate(self):
@@ -286,7 +287,7 @@ class UpdateDataQualityScanRequestHooks(DaraModel):
         self.condition = condition
         # The type of the hook. Valid values:
         # 
-        # *   BlockTaskInstance: Block the scheduling of the task instance.
+        # - BlockTaskInstance: Block the scheduling of the task instance.
         self.type = type
 
     def validate(self):
@@ -324,8 +325,9 @@ class UpdateDataQualityScanRequestComputeResource(DaraModel):
     ):
         # Workspace environment of the compute engine. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The name of the compute engine, which is a unique identifier.
         self.name = name
@@ -375,9 +377,11 @@ class UpdateDataQualityScanRequestComputeResourceRuntime(DaraModel):
     ):
         # The engine type. These settings are only supported for the EMR compute engine.This setting? Valid values:
         # 
-        # *   Hive: Hive SQL
-        # *   Spark: Spark SQL
-        # *   Kyuubi
+        # - Hive: Hive SQL
+        # 
+        # - Spark: Spark SQL
+        # 
+        # - Kyuubi
         self.engine = engine
         # Additional Hive engine parameters. Currently, only the mapreduce.job.queuename parameter is supported.
         self.hive_conf = hive_conf

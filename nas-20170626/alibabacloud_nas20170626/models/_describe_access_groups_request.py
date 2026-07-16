@@ -17,33 +17,34 @@ class DescribeAccessGroupsRequest(DaraModel):
         # 
         # Limits:
         # 
-        # *   The name must be 3 to 64 characters in length.
-        # *   The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-).
+        # - The name must be 3 to 64 characters in length.
+        # 
+        # - The name must start with a letter and can contain letters, digits, underscores (_), or hyphens (-).
         self.access_group_name = access_group_name
         # The type of the file system.
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose NAS
-        # *   extreme: Extreme NAS
-        # *   cpfs: CPFS
+        # - standard (default): General-purpose NAS.
+        # - extreme: Extreme NAS.
+        # - cpfs: Cloud Parallel File Storage (CPFS).
         self.file_system_type = file_system_type
-        # The page number.
+        # The page number of the list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of permission groups returned per page.
+        # The number of permission groups on each page.
         # 
         # Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # Specifies whether the time to return is displayed in UTC.
+        # Specifies whether the returned time is displayed in UTC.
         # 
         # Valid values:
         # 
-        # *   true (default): The time is displayed in UTC.
-        # *   false: The time is not displayed in UTC.
+        # - true (default): The returned time is displayed in UTC.
+        # - false: The returned time is not displayed in UTC.
         self.use_utcdate_time = use_utcdate_time
 
     def validate(self):

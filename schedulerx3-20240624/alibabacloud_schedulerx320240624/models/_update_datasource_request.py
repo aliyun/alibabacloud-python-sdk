@@ -14,13 +14,21 @@ class UpdateDatasourceRequest(DaraModel):
         name: str = None,
         password: str = None,
     ):
+        # Cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # Data source connection parameters
         self.connection_params = connection_params
+        # DataSource ID, which can be obtained by calling the ListDatasources API.
+        # 
         # This parameter is required.
         self.datasource_id = datasource_id
+        # Data source description
         self.description = description
+        # Datasource Name
         self.name = name
+        # Database password
         self.password = password
 
     def validate(self):

@@ -10,8 +10,12 @@ class DescribePrivateDnsEndpointDetailRequest(DaraModel):
         access_instance_id: str = None,
         region_no: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
+        # The ID of the region where the instance is located.
+        # 
         # This parameter is required.
         self.region_no = region_no
 

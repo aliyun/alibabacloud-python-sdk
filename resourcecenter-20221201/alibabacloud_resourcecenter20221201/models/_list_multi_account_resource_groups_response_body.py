@@ -16,9 +16,9 @@ class ListMultiAccountResourceGroupsResponseBody(DaraModel):
     ):
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The resource groups.
+        # The information about the resource groups.
         self.resource_groups = resource_groups
 
     def validate(self):
@@ -70,28 +70,31 @@ class ListMultiAccountResourceGroupsResponseBodyResourceGroups(DaraModel):
         id: str = None,
         name: str = None,
         status: str = None,
+        tags: List[main_models.ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags] = None,
     ):
-        # The ID of the management account or a member in the resource directory.
+        # The ID of the management account or member of the resource directory.
         self.account_id = account_id
         # The time when the resource group was created.
         self.create_date = create_date
         # The display name of the resource group.
         self.display_name = display_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.id = id
         # The unique identifier of the resource group.
         self.name = name
-        # The status of the resource group.
+        # The status of the resource group. Valid values:
         # 
-        # - Creating: The resource group is being created.
-        # 
-        # - OK: The resource group is created.
-        # 
-        # - PendingDelete: The resource group is pending deletion.
+        # *   Creating: The resource group is being created.
+        # *   OK: The resource group is created.
+        # *   PendingDelete: The resource group is waiting to be deleted.
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -116,6 +119,11 @@ class ListMultiAccountResourceGroupsResponseBodyResourceGroups(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -137,6 +145,47 @@ class ListMultiAccountResourceGroupsResponseBodyResourceGroups(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        return self
+
+class ListMultiAccountResourceGroupsResponseBodyResourceGroupsTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

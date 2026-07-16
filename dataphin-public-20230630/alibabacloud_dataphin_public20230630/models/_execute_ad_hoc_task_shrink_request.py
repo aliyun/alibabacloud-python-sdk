@@ -10,8 +10,12 @@ class ExecuteAdHocTaskShrinkRequest(DaraModel):
         execute_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The execution command.
+        # 
         # This parameter is required.
         self.execute_command_shrink = execute_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

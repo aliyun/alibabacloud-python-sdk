@@ -9,6 +9,7 @@ class GetPptTemplateSelectorRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

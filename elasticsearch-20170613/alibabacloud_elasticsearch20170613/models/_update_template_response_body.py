@@ -10,7 +10,12 @@ class UpdateTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the scenario-specific template configuration is modified. Valid values:
+        # 
+        # - true: The modification is successful.
+        # - false: The modification failed.
         self.result = result
 
     def validate(self):

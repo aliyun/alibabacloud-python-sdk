@@ -12,12 +12,19 @@ class ImportWorkflowsRequest(DaraModel):
         content: str = None,
         overwrite: bool = None,
     ):
+        # Specifies whether to automatically create the application if it does not exist.
         self.auto_create_app = auto_create_app
-        # A short description of struct
+        # The ID of the target cluster.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The definitions of the workflows to import. The content must be a valid JSON string.
         self.content = content
+        # Specifies whether to overwrite an existing workflow that has the same name. Default value: `true`.
+        # 
+        # - `true`: The existing workflow is overwritten.
+        # 
+        # - `false`: The existing workflow is not overwritten.
         self.overwrite = overwrite
 
     def validate(self):

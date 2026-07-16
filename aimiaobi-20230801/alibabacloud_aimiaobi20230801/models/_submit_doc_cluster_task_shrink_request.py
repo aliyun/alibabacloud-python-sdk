@@ -13,12 +13,19 @@ class SubmitDocClusterTaskShrinkRequest(DaraModel):
         title_length: int = None,
         topic_count: int = None,
     ):
+        # The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # A list of documents.
+        # 
         # This parameter is required.
         self.documents_shrink = documents_shrink
+        # The character limit for the generated cluster summary.
         self.summary_length = summary_length
+        # The character limit for the generated cluster title.
         self.title_length = title_length
+        # The maximum number of clusters.
         self.topic_count = topic_count
 
     def validate(self):

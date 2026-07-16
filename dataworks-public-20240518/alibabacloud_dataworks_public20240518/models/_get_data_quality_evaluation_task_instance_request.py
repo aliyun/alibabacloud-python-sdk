@@ -9,7 +9,7 @@ class GetDataQualityEvaluationTaskInstanceRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The ID of the data quality monitoring instance.
+        # The instance ID of the data quality monitoring task.
         # 
         # This parameter is required.
         self.id = id

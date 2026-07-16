@@ -15,10 +15,13 @@ class DescribeGlobalTimerBatchesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.DescribeGlobalTimerBatchesResponseBodyResults] = None,
     ):
+        # The total number of entries.
         self.count = count
+        # The token to use to retrieve the next page of results. This parameter is returned only when more results are available.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # A list of batches.
         self.results = results
 
     def validate(self):
@@ -78,12 +81,19 @@ class DescribeGlobalTimerBatchesResponseBodyResults(DaraModel):
         succeed_count: int = None,
         timer_type: str = None,
     ):
+        # The ID of the batch.
         self.batch_id = batch_id
+        # The time when the batch was created.
         self.create_time = create_time
+        # The number of failed tasks.
         self.failed_count = failed_count
+        # The number of running tasks.
         self.running_count = running_count
+        # The number of skipped tasks.
         self.skipped_count = skipped_count
+        # The number of successfully executed tasks.
         self.succeed_count = succeed_count
+        # The type of the scheduled task.
         self.timer_type = timer_type
 
     def validate(self):

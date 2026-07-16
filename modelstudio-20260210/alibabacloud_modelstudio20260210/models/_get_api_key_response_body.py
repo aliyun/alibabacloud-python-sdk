@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_modelstudio20260210 import models as main_models
 from darabonba.model import DaraModel
 
@@ -15,12 +17,19 @@ class GetApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The API key information.
         self.api_key = api_key
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -80,6 +89,7 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
         self,
         api_key_id: int = None,
         api_key_value: str = None,
+        auth: main_models.GetApiKeyResponseBodyApiKeyAuth = None,
         created_by: str = None,
         description: str = None,
         disabled: int = None,
@@ -88,15 +98,27 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
     ):
         # API Key ID。
         self.api_key_id = api_key_id
+        # The value of the API key.
         self.api_key_value = api_key_value
+        # The permission settings.
+        self.auth = auth
+        # The creator.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # Indicates whether the API key is disabled.
+        # 
+        # - **0**: Active.
+        # - **1**: Disabled.
         self.disabled = disabled
+        # The time when the API key was created.
         self.gmt_create = gmt_create
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
-        pass
+        if self.auth:
+            self.auth.validate()
 
     def to_map(self):
         result = dict()
@@ -108,6 +130,9 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
 
         if self.api_key_value is not None:
             result['apiKeyValue'] = self.api_key_value
+
+        if self.auth is not None:
+            result['auth'] = self.auth.to_map()
 
         if self.created_by is not None:
             result['createdBy'] = self.created_by
@@ -134,6 +159,10 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
         if m.get('apiKeyValue') is not None:
             self.api_key_value = m.get('apiKeyValue')
 
+        if m.get('auth') is not None:
+            temp_model = main_models.GetApiKeyResponseBodyApiKeyAuth()
+            self.auth = temp_model.from_map(m.get('auth'))
+
         if m.get('createdBy') is not None:
             self.created_by = m.get('createdBy')
 
@@ -148,6 +177,94 @@ class GetApiKeyResponseBodyApiKey(DaraModel):
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')
+
+        return self
+
+class GetApiKeyResponseBodyApiKeyAuth(DaraModel):
+    def __init__(
+        self,
+        access_ips: List[str] = None,
+        model_access_scope: main_models.GetApiKeyResponseBodyApiKeyAuthModelAccessScope = None,
+        type: str = None,
+    ):
+        # The IP access whitelist.
+        self.access_ips = access_ips
+        # The model access scope.
+        self.model_access_scope = model_access_scope
+        # All: all permissions. Custom: custom permissions.
+        self.type = type
+
+    def validate(self):
+        if self.model_access_scope:
+            self.model_access_scope.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_ips is not None:
+            result['accessIps'] = self.access_ips
+
+        if self.model_access_scope is not None:
+            result['modelAccessScope'] = self.model_access_scope.to_map()
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessIps') is not None:
+            self.access_ips = m.get('accessIps')
+
+        if m.get('modelAccessScope') is not None:
+            temp_model = main_models.GetApiKeyResponseBodyApiKeyAuthModelAccessScope()
+            self.model_access_scope = temp_model.from_map(m.get('modelAccessScope'))
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class GetApiKeyResponseBodyApiKeyAuthModelAccessScope(DaraModel):
+    def __init__(
+        self,
+        accessible_models: List[str] = None,
+        allow_all_models: bool = None,
+    ):
+        # The list of accessible models.
+        self.accessible_models = accessible_models
+        # Indicates whether all models with granted inference permissions in the workspace can be accessed. Valid values:
+        # 
+        # - true
+        # - false
+        self.allow_all_models = allow_all_models
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.accessible_models is not None:
+            result['accessibleModels'] = self.accessible_models
+
+        if self.allow_all_models is not None:
+            result['allowAllModels'] = self.allow_all_models
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessibleModels') is not None:
+            self.accessible_models = m.get('accessibleModels')
+
+        if m.get('allowAllModels') is not None:
+            self.allow_all_models = m.get('allowAllModels')
 
         return self
 

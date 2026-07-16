@@ -15,6 +15,7 @@ class DescribeTagsResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The list of tag information.
         self.tag_infos = tag_infos
 
     def validate(self):
@@ -58,8 +59,11 @@ class DescribeTagsResponseBodyTagInfos(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The list of database instances associated with the tag.
         self.dbinstance_ids = dbinstance_ids
+        # The tag key.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

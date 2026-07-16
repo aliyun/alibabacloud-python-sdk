@@ -13,38 +13,52 @@ class CreateAppInstanceRequest(DaraModel):
         application_type: str = None,
         auto_renew: bool = None,
         client_token: str = None,
+        create_action: str = None,
         deploy_area: str = None,
+        description: str = None,
         duration: int = None,
         extend: str = None,
+        name: str = None,
         payment_type: str = None,
         pricing_cycle: str = None,
         quantity: int = None,
         resource_group_id: str = None,
         site_version: str = None,
         tags: List[main_models.CreateAppInstanceRequestTags] = None,
+        version: str = None,
     ):
-        # Application type
+        # The application type.
         self.application_type = application_type
-        # Whether to enable auto-renewal upon expiration
+        # Specifies whether to enable auto-renewal upon expiration.
         self.auto_renew = auto_renew
-        # Ensures idempotence of the request. Generate a unique value from your client to ensure that it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters
+        # The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Deployment area
+        self.create_action = create_action
+        # The deployment region.
         self.deploy_area = deploy_area
-        # Required. The number of subscription periods
+        self.description = description
+        # Required. The number of subscription periods.
         self.duration = duration
-        # Extended information
+        # The extended information.
         self.extend = extend
-        # Payment type
+        self.name = name
+        # The payment type.
         self.payment_type = payment_type
-        # Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour
+        # Required. The unit of the subscription period. Valid values:
+        # - Year: year
+        # - Month: month
+        # - Day: day
+        # - Hour: hour.
         self.pricing_cycle = pricing_cycle
-        # Required. The quantity of instances to be ordered.
+        # Required. The number of instances to subscribe to.
         self.quantity = quantity
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Site version
+        # The website version.
         self.site_version = site_version
+        # The list of tags.
         self.tags = tags
+        self.version = version
 
     def validate(self):
         if self.tags:
@@ -66,14 +80,23 @@ class CreateAppInstanceRequest(DaraModel):
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
 
+        if self.create_action is not None:
+            result['CreateAction'] = self.create_action
+
         if self.deploy_area is not None:
             result['DeployArea'] = self.deploy_area
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.duration is not None:
             result['Duration'] = self.duration
 
         if self.extend is not None:
             result['Extend'] = self.extend
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
@@ -95,6 +118,9 @@ class CreateAppInstanceRequest(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.version is not None:
+            result['Version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -108,14 +134,23 @@ class CreateAppInstanceRequest(DaraModel):
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
 
+        if m.get('CreateAction') is not None:
+            self.create_action = m.get('CreateAction')
+
         if m.get('DeployArea') is not None:
             self.deploy_area = m.get('DeployArea')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
 
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
@@ -138,6 +173,9 @@ class CreateAppInstanceRequest(DaraModel):
                 temp_model = main_models.CreateAppInstanceRequestTags()
                 self.tags.append(temp_model.from_map(k1))
 
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+
         return self
 
 class CreateAppInstanceRequestTags(DaraModel):
@@ -146,7 +184,9 @@ class CreateAppInstanceRequestTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The tag key.
         self.tag_key = tag_key
+        # The value of tag 0.
         self.tag_value = tag_value
 
     def validate(self):

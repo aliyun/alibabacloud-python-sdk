@@ -16,15 +16,15 @@ class ListReleaseVersionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of records to return on a single page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page of results.
         self.next_token = next_token
-        # The versions.
+        # The list of versions.
         self.release_versions = release_versions
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -93,21 +93,21 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
         state: str = None,
         type: str = None,
     ):
-        # The version number of open source Spark.
+        # The community version number of Spark.
         self.community_version = community_version
-        # The CPU architectures.
+        # The list of CPU architectures.
         self.cpu_architectures = cpu_architectures
         # The version number.
         self.display_release_version = display_release_version
-        # Indicates whether the Fusion engine is used for acceleration.
+        # Indicates whether the Fusion engine is enabled for acceleration.
         self.fusion = fusion
-        # The creation time.
+        # The time when the version was created.
         self.gmt_create = gmt_create
-        # The type of the Infrastructure as a Service (IaaS) layer.
+        # The type of the IaaS layer.
         self.iaas_type = iaas_type
         # The version number.
         self.release_version = release_version
-        # The version of Scala.
+        # The Scala version.
         self.scala_version = scala_version
         # The status of the version.
         self.state = state

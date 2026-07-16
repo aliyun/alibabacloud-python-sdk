@@ -25,8 +25,9 @@ class DeleteMonitorGroupNotifyPolicyResponseBody(DaraModel):
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

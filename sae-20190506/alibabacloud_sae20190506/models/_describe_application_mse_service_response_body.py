@@ -22,20 +22,23 @@ class DescribeApplicationMseServiceResponseBody(DaraModel):
         self.data = data
         # The error code. Value description:
         # 
-        # *   If the request succeeds, this field is not returned.
-        # *   For more information, see the **Error codes** section of this topic.
+        # - If the request succeeds, this field is not returned.
+        # 
+        # - For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
         # The additional information. Value description:
         # 
-        # *   If the request was successful, **success** is returned.
-        # *   If the request failed, an error code is returned.
+        # - If the request was successful, **success** is returned.
+        # 
+        # - If the request failed, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the application instance groups were obtained successfully. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
         # The ID of the trace, which is used to query the exact call information.
         self.trace_id = trace_id
@@ -114,11 +117,15 @@ class DescribeApplicationMseServiceResponseBodyData(DaraModel):
         self.mse_app_name_space = mse_app_name_space
         # The application status. Valid values:
         # 
-        # *   EXPIRED
-        # *   REBOOTING
-        # *   WAITING
-        # *   FAIL
-        # *   NULL/SUCCESS
+        # - EXPIRED
+        # 
+        # - REBOOTING
+        # 
+        # - WAITING
+        # 
+        # - FAIL
+        # 
+        # - NULL/SUCCESS
         self.status = status
 
     def validate(self):

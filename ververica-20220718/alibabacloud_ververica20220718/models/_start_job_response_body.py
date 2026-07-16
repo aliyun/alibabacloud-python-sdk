@@ -16,21 +16,25 @@ class StartJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the access denial.
         self.access_denied_detail = access_denied_detail
-        # *   If the value of success was true, the job that you created was returned.
-        # *   If the value of success was false, a null value was returned.
+        # - When \\`success\\` is \\`true\\`, the created instance information is returned.
+        # 
+        # - Returns an empty value if \\`success\\` is false.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If success is false, the call returns a business error code.If success is true, the call returns business data. The following table describes the data format.If success is true, the call returns business data. The following table describes the data format.
+        # 
+        # - When success is true, an empty value is returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If success is false, a business error message is returned.
+        # 
+        # - When \\`success\\` is true, an empty value is returned.
         self.error_message = error_message
-        # The value was fixed to 200.
+        # Fixed value: 200.
         self.http_code = http_code
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the service request was successful.
         self.success = success
 
     def validate(self):

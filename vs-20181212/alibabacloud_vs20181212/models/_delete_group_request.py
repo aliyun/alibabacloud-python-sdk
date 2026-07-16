@@ -10,6 +10,8 @@ class DeleteGroupRequest(DaraModel):
         id: str = None,
         owner_id: int = None,
     ):
+        # Space ID
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id

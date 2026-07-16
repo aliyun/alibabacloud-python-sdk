@@ -127,8 +127,9 @@ class ListDataAssetTagsResponseBodyPagingInfoDataAssetTags(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Normal
-        # *   System
+        # - Normal
+        # 
+        # - System
         self.category = category
         # The time when the tag was created.
         self.create_time = create_time

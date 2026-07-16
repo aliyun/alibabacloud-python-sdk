@@ -14,13 +14,29 @@ class UpdateSkillGroupRequest(DaraModel):
         skill_group_id: int = None,
         skill_group_name: str = None,
     ):
+        # Unique ID of the customer request. Used for idempotency validation. You can generate it by using a UUID.
         self.client_token = client_token
+        # Skill group description.  
+        # > This parameter can be updated.
         self.description = description
+        # Display name of the skill group.  
+        # > This parameter can be updated.
         self.display_name = display_name
+        # AICCS instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.  
+        # 
+        # You can invoke the [QuerySkillGroups](https://help.aliyun.com/zh/aiccs/developer-reference/api-aiccs-2019-10-15-queryskillgroups) API and check the **SkillGroupId** field in the response to obtain the skill group ID.  
+        # 
+        # > This parameter cannot be updated.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
+        # Skill group name.  
+        # > This parameter cannot be updated.
         self.skill_group_name = skill_group_name
 
     def validate(self):

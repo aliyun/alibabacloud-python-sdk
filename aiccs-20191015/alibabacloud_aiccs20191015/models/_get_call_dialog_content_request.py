@@ -13,8 +13,14 @@ class GetCallDialogContentRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The outbound call date, in yyyy-MM-dd format. You can only query data from the last 30 days.
+        # 
         # This parameter is required.
         self.call_date = call_date
+        # The unique identifier for a call.
+        # 
+        # > The LlmSmartCall API returns this ID in the CallId parameter of its response.
+        # 
         # This parameter is required.
         self.call_id = call_id
         self.owner_id = owner_id

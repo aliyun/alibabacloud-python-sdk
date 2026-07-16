@@ -14,11 +14,17 @@ class UploadSampleFileRequest(DaraModel):
         tab: str = None,
         type: str = None,
     ):
+        # File name.
         self.file_name = file_name
+        # File URL.
         self.file_url = file_url
+        # Language of the error message returned by the API. Valid values: zh: Chinese. en: English. Default value: en.
         self.lang = lang
+        # Area encoding.
         self.reg_id = reg_id
+        # Scenario.
         self.tab = tab
+        # Access type.
         self.type = type
 
     def validate(self):

@@ -15,7 +15,6 @@ class QueryMeetingRoomGroupResponseBody(DaraModel):
         self.group_id = group_id
         self.group_name = group_name
         self.parent_id = parent_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

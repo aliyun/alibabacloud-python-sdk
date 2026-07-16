@@ -9,6 +9,7 @@ from ._approve_reply_mail_address_request import ApproveReplyMailAddressRequest
 from ._approve_reply_mail_address_response_body import ApproveReplyMailAddressResponseBody
 from ._approve_reply_mail_address_response import ApproveReplyMailAddressResponse
 from ._batch_send_mail_request import BatchSendMailRequest
+from ._batch_send_mail_shrink_request import BatchSendMailShrinkRequest
 from ._batch_send_mail_response_body import BatchSendMailResponseBody
 from ._batch_send_mail_response import BatchSendMailResponse
 from ._change_domain_dkim_record_request import ChangeDomainDkimRecordRequest
@@ -106,6 +107,9 @@ from ._delete_receiver_detail_response import DeleteReceiverDetailResponse
 from ._delete_tag_request import DeleteTagRequest
 from ._delete_tag_response_body import DeleteTagResponseBody
 from ._delete_tag_response import DeleteTagResponse
+from ._delete_template_request import DeleteTemplateRequest
+from ._delete_template_response_body import DeleteTemplateResponseBody
+from ._delete_template_response import DeleteTemplateResponse
 from ._delete_validate_file_request import DeleteValidateFileRequest
 from ._delete_validate_file_response_body import DeleteValidateFileResponseBody
 from ._delete_validate_file_response import DeleteValidateFileResponse
@@ -171,6 +175,9 @@ from ._modify_pwby_domain_response import ModifyPWByDomainResponse
 from ._modify_tag_request import ModifyTagRequest
 from ._modify_tag_response_body import ModifyTagResponseBody
 from ._modify_tag_response import ModifyTagResponse
+from ._modify_template_request import ModifyTemplateRequest
+from ._modify_template_response_body import ModifyTemplateResponseBody
+from ._modify_template_response import ModifyTemplateResponse
 from ._open_sendify_trial_service_response_body import OpenSendifyTrialServiceResponseBody
 from ._open_sendify_trial_service_response import OpenSendifyTrialServiceResponse
 from ._query_domain_by_param_request import QueryDomainByParamRequest
@@ -237,6 +244,8 @@ from ._update_user_response import UpdateUserResponse
 from ._validate_email_request import ValidateEmailRequest
 from ._validate_email_response_body import ValidateEmailResponseBody
 from ._validate_email_response import ValidateEmailResponse
+from ._batch_send_mail_request import BatchSendMailRequestReceivers
+from ._batch_send_mail_request import BatchSendMailRequestTemplateContent
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetailIpPool
 from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetail
 from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSetsIpPool
@@ -296,6 +305,7 @@ __all__ = [
     ApproveReplyMailAddressResponseBody,
     ApproveReplyMailAddressResponse,
     BatchSendMailRequest,
+    BatchSendMailShrinkRequest,
     BatchSendMailResponseBody,
     BatchSendMailResponse,
     ChangeDomainDkimRecordRequest,
@@ -393,6 +403,9 @@ __all__ = [
     DeleteTagRequest,
     DeleteTagResponseBody,
     DeleteTagResponse,
+    DeleteTemplateRequest,
+    DeleteTemplateResponseBody,
+    DeleteTemplateResponse,
     DeleteValidateFileRequest,
     DeleteValidateFileResponseBody,
     DeleteValidateFileResponse,
@@ -458,6 +471,9 @@ __all__ = [
     ModifyTagRequest,
     ModifyTagResponseBody,
     ModifyTagResponse,
+    ModifyTemplateRequest,
+    ModifyTemplateResponseBody,
+    ModifyTemplateResponse,
     OpenSendifyTrialServiceResponseBody,
     OpenSendifyTrialServiceResponse,
     QueryDomainByParamRequest,
@@ -524,6 +540,8 @@ __all__ = [
     ValidateEmailRequest,
     ValidateEmailResponseBody,
     ValidateEmailResponse,
+    BatchSendMailRequestReceivers,
+    BatchSendMailRequestTemplateContent,
     ConfigSetDetailResponseBodyDetailIpPool,
     ConfigSetDetailResponseBodyDetail,
     ConfigSetListResponseBodyConfigSetsIpPool,

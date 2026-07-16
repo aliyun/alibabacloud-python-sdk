@@ -19,7 +19,7 @@ class ListDeliveryChannelsResponseBody(DaraModel):
         self.delivery_channels = delivery_channels
         # The maximum number of entries per page.
         self.max_results = max_results
-        # A pagination token.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
         # This parameter is required.
         self.next_token = next_token

@@ -95,17 +95,21 @@ class DescribePreloadTasksResponseBodyTasks(DaraModel):
         self.create_time = create_time
         # The error message returned upon a prefetch task failure. Valid values:
         # 
-        # *   **Internal Error**
-        # *   **Origin Timeout**
-        # *   **Origin Return StatusCode 5XX**
+        # - **Internal Error**
+        # 
+        # - **Origin Timeout**
+        # 
+        # - **Origin Return StatusCode 5XX**
         self.description = description
         # The progress of the task, in percentage.
         self.process = process
         # The task status.
         # 
-        # *   **Complete**: The task is complete.
-        # *   **Refreshing**: The task is in progress.
-        # *   **Failed**: The task failed.
+        # - **Complete**: The task is complete.
+        # 
+        # - **Refreshing**: The task is in progress.
+        # 
+        # - **Failed**: The task failed.
         self.status = status
         # The ID of the queried task.
         self.task_id = task_id

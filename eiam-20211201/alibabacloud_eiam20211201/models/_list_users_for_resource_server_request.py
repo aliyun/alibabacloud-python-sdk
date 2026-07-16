@@ -17,17 +17,19 @@ class ListUsersForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The ID of the Resource Server application.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # A list of filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page for paged queries.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token for the next page. Set this parameter to the value of NextToken returned by the previous API call.
         self.next_token = next_token
         # 权限唯一标识。
         self.resource_server_scope_id = resource_server_scope_id
@@ -96,7 +98,9 @@ class ListUsersForResourceServerRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter condition.
         self.name = name
+        # A list of values for the filter condition.
         self.value = value
 
     def validate(self):

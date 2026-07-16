@@ -18,10 +18,15 @@ class DescribeVsDomainBpsDataResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.bps_data_per_interval = bps_data_per_interval
+        # The time interval for each record. Unit: seconds.
         self.data_interval = data_interval
+        # Domain name
         self.domain_name = domain_name
+        # End time
         self.end_time = end_time
+        # Request ID for this operation
         self.request_id = request_id
+        # Start time
         self.start_time = start_time
 
     def validate(self):

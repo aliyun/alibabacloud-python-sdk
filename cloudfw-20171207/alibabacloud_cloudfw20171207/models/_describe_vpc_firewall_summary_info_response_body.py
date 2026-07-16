@@ -47,44 +47,83 @@ class DescribeVpcFirewallSummaryInfoResponseBody(DaraModel):
         total_vpc_firewall_quota: int = None,
         total_vpn_count: int = None,
     ):
+        # The remaining quota for VPC firewalls.
         self.available_vpc_firewall_quota = available_vpc_firewall_quota
+        # The number of VPCs connected using Cloud Enterprise Network (CEN) and Express Connect.
         self.cen_express_connect_vpc_count = cen_express_connect_vpc_count
+        # The number of CEN VPCs.
         self.cen_firewall_vpc_count = cen_firewall_vpc_count
+        # The number of VPCs on the CEN transit router.
         self.cen_tr_vpc_count = cen_tr_vpc_count
+        # The number of configured CEN firewalls that are disabled.
         self.closed_cen_firewall_count = closed_cen_firewall_count
+        # The number of configured Express Connect firewalls that are disabled.
         self.closed_express_connect_firewall_count = closed_express_connect_firewall_count
+        # The number of configured VPC firewalls that are disabled.
         self.closed_vpc_firewall_count = closed_vpc_firewall_count
+        # The number of configured CEN firewall instances of the Basic Edition.
         self.configured_cen_firewall_count = configured_cen_firewall_count
+        # The number of regions where CEN firewalls are configured.
         self.configured_cen_firewall_region_count = configured_cen_firewall_region_count
+        # The number of VPCs for which CEN firewalls are configured.
         self.configured_cen_firewall_vpc_count = configured_cen_firewall_vpc_count
+        # The number of configured CEN transit router firewall instances.
         self.configured_cen_tr_firewall_count = configured_cen_tr_firewall_count
+        # The number of configured Express Connect circuits.
         self.configured_express_connect_firewall_count = configured_express_connect_firewall_count
+        # The number of VPCs for which Express Connect firewalls are configured.
         self.configured_express_connect_vpc_count = configured_express_connect_vpc_count
+        # The number of configured VPC firewalls.
         self.configured_vpc_firewall_count = configured_vpc_firewall_count
+        # The number of VPCs for which VPC firewalls are configured.
         self.configured_vpc_firewall_vpc_count = configured_vpc_firewall_vpc_count
+        # The number of Express Connect VPCs.
         self.express_connect_vpc_count = express_connect_vpc_count
+        # The number of CEN firewalls that are not configured.
         self.not_configured_cen_firewall_count = not_configured_cen_firewall_count
+        # The number of CEN transit router firewall instances that are not configured.
         self.not_configured_cen_tr_firewall_count = not_configured_cen_tr_firewall_count
+        # The number of Express Connect firewalls that are not configured.
         self.not_configured_express_connect_firewall_count = not_configured_express_connect_firewall_count
+        # The number of VPC firewalls that are not configured.
         self.not_configured_vpc_firewall_count = not_configured_vpc_firewall_count
+        # The number of VPCs that are connected using CEN and Express Connect and have the firewall enabled.
         self.opened_cen_express_connect_vpc_count = opened_cen_express_connect_vpc_count
+        # The number of enabled CEN firewalls.
         self.opened_cen_firewall_count = opened_cen_firewall_count
+        # The number of VPCs protected by CEN firewalls.
         self.opened_cen_firewall_vpc_count = opened_cen_firewall_vpc_count
+        # The number of VPCs protected by the CEN transit router firewall.
         self.opened_cen_tr_firewall_vpc_count = opened_cen_tr_firewall_vpc_count
+        # The number of enabled CEN Express Connect Routers (ECRs).
         self.opened_ecr_count = opened_ecr_count
+        # The number of enabled Express Connect firewalls.
         self.opened_express_connect_firewall_count = opened_express_connect_firewall_count
+        # The number of VPCs protected by Express Connect firewalls.
         self.opened_express_connect_vpc_count = opened_express_connect_vpc_count
+        # The number of inter-region connections protected by the CEN transit router firewall.
         self.opened_peer_tr_count = opened_peer_tr_count
+        # The number of Virtual Border Routers (VBRs) protected by the CEN transit router firewall.
         self.opened_vbr_count = opened_vbr_count
+        # The number of protected VPCs.
         self.opened_vpc_count = opened_vpc_count
+        # The number of enabled VPC firewalls.
         self.opened_vpc_firewall_count = opened_vpc_firewall_count
+        # The number of VPN gateways protected by the CEN transit router firewall.
         self.opened_vpn_count = opened_vpn_count
+        # The ID of the request.
         self.request_id = request_id
+        # The number of ECRs.
         self.total_ecr_count = total_ecr_count
+        # The number of inter-region connections on the CEN transit router.
         self.total_peer_tr_count = total_peer_tr_count
+        # The number of VBRs on the CEN transit router.
         self.total_vbr_count = total_vbr_count
+        # The number of interconnected VPCs.
         self.total_vpc_count = total_vpc_count
+        # The total quota for VPC firewalls.
         self.total_vpc_firewall_quota = total_vpc_firewall_quota
+        # The number of VPN gateways on the CEN transit router.
         self.total_vpn_count = total_vpn_count
 
     def validate(self):

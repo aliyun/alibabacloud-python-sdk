@@ -12,9 +12,9 @@ class DescribePageSettingResponseBody(DaraModel):
         fail_reasons: Dict[str, Any] = None,
         request_id: str = None,
     ):
-        # Failure reasons.
+        # The failure reasons.
         self.fail_reasons = fail_reasons
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

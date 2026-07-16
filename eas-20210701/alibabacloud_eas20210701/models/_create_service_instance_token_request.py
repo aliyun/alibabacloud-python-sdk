@@ -10,7 +10,11 @@ class CreateServiceInstanceTokenRequest(DaraModel):
         action_type: str = None,
         worker_name: str = None,
     ):
+        # Type of URL to return. Valid values:
+        # 
+        # - **WorkBench**: Log on to the container using Workbench.
         self.action_type = action_type
+        # Name of the service worker. Call the ListServiceContainers operation to get the worker name.
         self.worker_name = worker_name
 
     def validate(self):

@@ -13,28 +13,29 @@ class ModifyNatFirewallControlPolicyPositionRequest(DaraModel):
         nat_gateway_id: str = None,
         new_order: int = None,
     ):
-        # The UUID of the access control policy.
+        # The unique ID of the access control policy.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The direction of the traffic to which the access control policy applies.
+        # The traffic direction of the access control policy.
         # 
-        # *   Set the value to **out**.
+        # Valid values:
+        # 
+        # - **out**: outbound traffic.
         self.direction = direction
         # The language of the content within the response. Valid values:
-        # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.lang = lang
-        # The ID of the NAT gateway.
+        # The NAT gateway ID.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The new priority of the IPv4 access control policy. You must specify a numeric value for this parameter. The value 1 indicates the highest priority. A larger value indicates a lower priority.
+        # The policy priority for the NAT firewall IPv4 access control policy. A value of 1 indicates the highest priority. A larger value indicates a lower priority.
         # 
-        # > Make sure that the value of this parameter is within the priority range of existing IPv4 access control policies. Otherwise, an error occurs when you call this operation.
+        # > The policy priority value must be within the range of existing NAT firewall IPv4 policy priorities. Otherwise, an error occurs when you call this operation.
         # 
-        # Before you call this operation, we recommend that you call the DescribeNatFirewallPolicyPriorUsed operation to query the priority range of the IPv4 access control policies in the specified traffic direction.
+        # Before you call this operation, call DescribeNatFirewallPolicyPriorUsed to query the priority range of IPv4 policies for the specified traffic direction of the NAT firewall.
         # 
         # This parameter is required.
         self.new_order = new_order

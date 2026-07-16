@@ -20,14 +20,23 @@ class ListAsyncTasksResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code.
         self.code = code
+        # The current page.
         self.current = current
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error description.
         self.message = message
+        # The unique ID of the request.
         self.request_id = request_id
+        # The number of records per page.
         self.size = size
+        # Indicates whether the request was successful. true: The request was successful. false: The request failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -131,26 +140,47 @@ class ListAsyncTasksResponseBodyData(DaraModel):
         update_time: str = None,
         update_user: str = None,
     ):
+        # The creation date.
         self.create_time = create_time
+        # The creator.
         self.create_user = create_user
+        # The primary key ID of the task.
         self.id = id
+        # The task identifier, which specifies the task.
         self.task_code = task_code
+        # The optional task definition configuration in JSON format. These parameters overwrite the system\\"s default configuration.
         self.task_definition = task_definition
+        # The actual end time of the task.
         self.task_end_time = task_end_time
+        # The error message from the task execution for the client.
         self.task_error_message = task_error_message
+        # The time when the task is scheduled to run. The system polls only for tasks that are due. If this parameter is empty, the task runs immediately.
         self.task_execute_time = task_execute_time
+        # The unique task ID. It is equivalent to the Id parameter.
         self.task_id = task_id
+        # The internal error message from the task execution. Sensitive information, such as exception stacks and internal thread stacks, is recorded here.
         self.task_inner_error_message = task_inner_error_message
+        # The intermediate result of the task execution. If a task consists of multiple steps, the output of each step can be saved here. When the task resumes from a paused state, it can read this intermediate result and continue execution.
         self.task_intermediate_result = task_intermediate_result
+        # The task name.
         self.task_name = task_name
+        # The input parameters for the task execution, in JSON format.
         self.task_param = task_param
+        # The progress information of the task execution.
         self.task_progress_message = task_progress_message
+        # The result information of the task execution.
         self.task_result = task_result
+        # The number of times the task has been retried.
         self.task_retry_count = task_retry_count
+        # The actual start time of the task.
         self.task_start_time = task_start_time
+        # The execution status of the task. Valid values: 0 (Pending), 1 (Running), 2 (Succeeded), 3 (Paused), 4 (Failed and retriable), 5 (Failed and not retriable), 6 (Canceled).
         self.task_status = task_status
+        # The task categories. Multiple categories are separated by commas.
         self.task_type = task_type
+        # The update date.
         self.update_time = update_time
+        # The user who performed the update.
         self.update_user = update_user
 
     def validate(self):

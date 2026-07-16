@@ -14,8 +14,11 @@ class ChangeNodeTypesResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The responses for the nodes.
         self.node_response = node_response
+        # The request ID.
         self.request_id = request_id
+        # The task ID. A task ID is returned only if all nodes pass the precheck. If an exception occurs, this parameter is empty.
         self.task_id = task_id
 
     def validate(self):
@@ -67,8 +70,11 @@ class ChangeNodeTypesResponseBodyNodeResponse(DaraModel):
         message: str = None,
         node_id: str = None,
     ):
+        # The response code for the node.
         self.code = code
+        # The response message for the node.
         self.message = message
+        # The ID of the node included in the response.
         self.node_id = node_id
 
     def validate(self):

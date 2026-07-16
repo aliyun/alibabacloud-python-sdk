@@ -16,14 +16,23 @@ class ListPermissionsRequest(DaraModel):
         table: str = None,
         view: str = None,
     ):
+        # The name of the database.
         self.database = database
+        # The name of the function.
         self.function = function
+        # The number of entries per page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
+        # The resource descriptor of the user.
         self.principal = principal
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The name of the table.
         self.table = table
+        # The name of the view.
         self.view = view
 
     def validate(self):

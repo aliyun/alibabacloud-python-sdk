@@ -9,6 +9,8 @@ class UploadPcaCertToCasRequest(DaraModel):
         self,
         ids: str = None,
     ):
+        # The list of primary key identifiers to synchronize to Certificate Service. Separate multiple IDs with commas (,).
+        # 
         # This parameter is required.
         self.ids = ids
 

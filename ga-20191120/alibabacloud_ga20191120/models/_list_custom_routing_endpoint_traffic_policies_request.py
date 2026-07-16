@@ -16,23 +16,23 @@ class ListCustomRoutingEndpointTrafficPoliciesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance to which the traffic policies belong.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance for which you want to query traffic policies.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The IP address of the traffic destination.
+        # The IP address of the traffic policy destination.
         self.address = address
-        # The ID of the endpoint group to which the traffic policies belong.
+        # The ID of the endpoint group for which you want to query traffic policies.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the endpoint to which the traffic policies belong.
+        # The ID of the endpoint for which you want to query traffic policies.
         self.endpoint_id = endpoint_id
-        # The ID of the listener to which the traffic policies belong.
+        # The ID of the listener for which you want to query traffic policies.
         self.listener_id = listener_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id

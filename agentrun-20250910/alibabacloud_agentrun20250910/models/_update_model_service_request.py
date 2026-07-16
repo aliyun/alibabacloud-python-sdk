@@ -10,6 +10,7 @@ class UpdateModelServiceRequest(DaraModel):
         self,
         body: main_models.UpdateModelServiceInput = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

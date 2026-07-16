@@ -16,32 +16,23 @@ class ListLiveSnapshotTemplatesRequest(DaraModel):
         template_ids: List[str] = None,
         type: str = None,
     ):
-        # The page number. Valid values: [1,n). Default value: 1.
+        # The page number. The value must be greater than or equal to 1. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
+        # The search keyword. You can perform a fuzzy search by template ID or template name.
         # 
-        # *   It cannot exceed 128 characters in length.
+        # - Maximum length: 128 characters.
         self.search_key_word = search_key_word
-        # The sorting order. By default, the query results are sorted by creation time in descending order.
-        # 
-        # Valid values:
-        # 
-        # *   asc: sorts the query results by creation time in ascending order.
-        # *   desc: sorts the query results by creation time in descending order.
+        # The sorting method. By default, results are sorted by creation time in descending order.
         self.sort_by = sort_by
         # The template IDs.
         # 
-        # *   If you specify the SearchKeyWord parameter, this condition does not take effect.
-        # *   The maximum length of the array is 200.
+        # - This parameter does not take effect if `SearchKeyWord` is specified.
+        # 
+        # - You can specify a maximum of 200 template IDs.
         self.template_ids = template_ids
-        # The type of the template. By default, all types are queried.
-        # 
-        # Valid values:
-        # 
-        # *   system
-        # *   custom
+        # The type of the template. By default, templates of all types are queried.
         self.type = type
 
     def validate(self):

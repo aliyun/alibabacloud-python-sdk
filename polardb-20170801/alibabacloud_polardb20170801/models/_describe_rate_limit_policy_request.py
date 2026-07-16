@@ -15,13 +15,31 @@ class DescribeRateLimitPolicyRequest(DaraModel):
         scope_ref_id: str = None,
         scope_type: str = None,
     ):
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The page number to return. The default value is 1.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**. The default value is **30**.
         self.page_size = page_size
+        # The ID of the rate limit policy.
         self.policy_id = policy_id
+        # The region ID.
         self.region_id = region_id
+        # The ID of the target resource, which can be a consumer group or a consumer, depending on the `ScopeType` value.
         self.scope_ref_id = scope_ref_id
+        # The scope of the rate limit policy. Valid values:
+        # 
+        # - **ConsumerGroup**: The policy applies to a consumer group.
+        # 
+        # - **Consumer**: The policy applies to a specific consumer.
         self.scope_type = scope_type
 
     def validate(self):

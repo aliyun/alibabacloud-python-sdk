@@ -28,71 +28,81 @@ class UpdateDnsGtmAccessStrategyRequest(DaraModel):
         strategy_id: str = None,
         strategy_name: str = None,
     ):
-        # The primary/secondary switchover policy for address pool sets. Valid values:
+        # The switchover policy for the address pool collection:
         # 
-        # *   AUTO: performs automatic switchover between the primary and secondary address pool sets upon failures.
-        # *   DEFAULT: the primary address pool set
-        # *   FAILOVER: the secondary address pool set
+        # - AUTO: Automatic switchover
+        # 
+        # - DEFAULT: Primary address pool collection
+        # 
+        # - FAILOVER: Failover address pool collection
         self.access_mode = access_mode
-        # The address pools in the primary address pool set.
+        # The primary address pool collection.
         # 
         # This parameter is required.
         self.default_addr_pool = default_addr_pool
-        # The type of the primary address pool. Valid values:
+        # The type of the primary address pool:
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         # 
         # This parameter is required.
         self.default_addr_pool_type = default_addr_pool_type
-        # Specifies whether to enable Domain Name System (DNS) resolution with optimal latency for the primary address pool set. Valid values:
+        # Specifies whether to enable latency-based scheduling for the primary address pool collection:
         # 
-        # *   OPEN
-        # *   CLOSE
+        # - OPEN: Enabled
+        # 
+        # - CLOSE: Disabled
         self.default_latency_optimization = default_latency_optimization
-        # The load balancing policy of the primary address pool set. Valid values:
+        # The load balancing policy for the primary address pool collection:
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: Returns all addresses.
+        # 
+        # - RATIO: Returns addresses by weight.
         self.default_lba_strategy = default_lba_strategy
-        # The maximum number of addresses returned from the primary address pool set.
+        # The maximum number of addresses returned from the primary address pool collection.
         self.default_max_return_addr_num = default_max_return_addr_num
-        # The minimum number of available addresses in the primary address pool set.
+        # The minimum number of available addresses in the primary address pool collection.
         # 
         # This parameter is required.
         self.default_min_available_addr_num = default_min_available_addr_num
-        # The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
+        # The failover address pool collection. If no failover address pool collection is configured, enter "EMPTY".
         self.failover_addr_pool = failover_addr_pool
-        # The type of the secondary address pool. Valid values:
+        # The type of the failover address pool:
         # 
-        # *   IPV4
-        # *   IPV6
-        # *   DOMAIN
+        # - IPV4
+        # 
+        # - IPV6
+        # 
+        # - DOMAIN
         self.failover_addr_pool_type = failover_addr_pool_type
-        # Specifies whether to enable DNS resolution with optimal latency for the secondary address pool set. Valid values:
+        # Specifies whether to enable latency-based scheduling for the failover address pool collection:
         # 
-        # *   OPEN
-        # *   CLOSE
+        # - OPEN: Enabled
+        # 
+        # - CLOSE: Disabled
         self.failover_latency_optimization = failover_latency_optimization
-        # The load balancing policy of the secondary address pool set. Valid values:
+        # The load balancing policy for the failover address pool collection:
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: Returns all addresses.
+        # 
+        # - RATIO: Returns addresses by weight.
         self.failover_lba_strategy = failover_lba_strategy
-        # The maximum number of addresses returned from the secondary address pool set.
+        # The maximum number of addresses returned from the failover address pool collection.
         self.failover_max_return_addr_num = failover_max_return_addr_num
-        # The minimum number of available addresses in the secondary address pool set.
+        # The minimum number of available addresses in the failover address pool collection.
         self.failover_min_available_addr_num = failover_min_available_addr_num
-        # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+        # The language of the response. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
-        # The line codes of the source regions. Example: `["default", "drpeng"]`, which indicates the global line and Dr. Peng Group line.
+        # The line codes of the access regions. For example, `["default", "drpeng"]` specifies the global line and the Dr. Peng line.
         self.lines = lines
-        # The ID of the access policy.
+        # The ID of the policy. To obtain the policy ID, call [DescribeDnsGtmAccessStrategies](https://help.aliyun.com/document_detail/2357191.html).
         # 
         # This parameter is required.
         self.strategy_id = strategy_id
-        # The name of the access policy.
+        # The name of the policy.
         # 
         # This parameter is required.
         self.strategy_name = strategy_name
@@ -236,9 +246,9 @@ class UpdateDnsGtmAccessStrategyRequestFailoverAddrPool(DaraModel):
         id: str = None,
         lba_weight: int = None,
     ):
-        # The ID of the address pool in the secondary address pool set.
+        # The ID of the address pool in the failover address pool collection.
         self.id = id
-        # The weight of the address pool in the secondary address pool set.
+        # The weight of the address pool in the failover address pool collection.
         self.lba_weight = lba_weight
 
     def validate(self):
@@ -273,9 +283,9 @@ class UpdateDnsGtmAccessStrategyRequestDefaultAddrPool(DaraModel):
         id: str = None,
         lba_weight: int = None,
     ):
-        # The ID of the address pool in the primary address pool set.
+        # The ID of the address pool in the primary address pool collection.
         self.id = id
-        # The weight of the address pool in the primary address pool set.
+        # The weight of the address pool in the primary address pool collection.
         self.lba_weight = lba_weight
 
     def validate(self):

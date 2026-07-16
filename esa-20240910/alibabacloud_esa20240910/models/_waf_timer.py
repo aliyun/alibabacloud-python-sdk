@@ -15,9 +15,13 @@ class WafTimer(DaraModel):
         weekly_periods: List[main_models.WafTimerWeeklyPeriods] = None,
         zone: int = None,
     ):
+        # 生效时间段。
         self.periods = periods
+        # 定时类型：永久生效（permanent/<空>）/时间段生效（periods）/weekly（周期生效）。
         self.scopes = scopes
+        # 每周生效时间段。
         self.weekly_periods = weekly_periods
+        # 时区，不填则默认为UTC+00:00。<br>例：8表示东8区，-8表示西8区<br>范围：-12 - +14。
         self.zone = zone
 
     def validate(self):
@@ -81,7 +85,9 @@ class WafTimerWeeklyPeriods(DaraModel):
         daily_periods: List[main_models.WafTimerWeeklyPeriodsDailyPeriods] = None,
         days: str = None,
     ):
+        # 该周期内的生效时间。
         self.daily_periods = daily_periods
+        # 周期，多个使用逗号分隔，1-7分别代表周一-周日。<br>例：周一，周三值为"1,3"。
         self.days = days
 
     def validate(self):
@@ -124,7 +130,9 @@ class WafTimerWeeklyPeriodsDailyPeriods(DaraModel):
         end: str = None,
         start: str = None,
     ):
+        # 结束时间，格式为HH:mm:ss。
         self.end = end
+        # 起始时间，格式为HH:mm:ss。
         self.start = start
 
     def validate(self):
@@ -159,7 +167,9 @@ class WafTimerPeriods(DaraModel):
         end: str = None,
         start: str = None,
     ):
+        # 结束时间，值为RFC3339格式的UTC时间。
         self.end = end
+        # 起始时间，值为RFC3339格式的UTC时间。
         self.start = start
 
     def validate(self):

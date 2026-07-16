@@ -13,17 +13,17 @@ class UpdateOSSIngestionRequest(DaraModel):
         display_name: str = None,
         schedule: main_models.Schedule = None,
     ):
-        # The configuration of the OSS data import job.
+        # The configuration of the OSS import task.
         # 
         # This parameter is required.
         self.configuration = configuration
-        # The description of the Object Storage Service (OSS) data import job.
+        # The description of the OSS import task.
         self.description = description
-        # The display name of the OSS data import job.
+        # The display name of the OSS import task.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The scheduling type. By default, you do not need to specify this parameter. If you want to import data at regular intervals, such as importing data every Monday at 08: 00., you can specify a cron expression.
+        # The schedule of the task. This parameter is optional. To run the task at a fixed time, such as 08:00 every Monday, use a cron expression.
         self.schedule = schedule
 
     def validate(self):

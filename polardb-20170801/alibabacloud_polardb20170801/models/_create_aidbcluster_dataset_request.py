@@ -18,15 +18,33 @@ class CreateAIDBClusterDatasetRequest(DaraModel):
         resource_owner_id: int = None,
         train_mode: str = None,
     ):
+        # The ID of the PolarDB database cluster.
         self.dbcluster_id = dbcluster_id
+        # The dataset name.
         self.dataset_name = dataset_name
+        # The type of the dataset. Valid values:
+        # 
+        # - **train**: training set
+        # 
+        # - **eval**: evaluation set
         self.dataset_type = dataset_type
+        # The import method. Valid values:
+        # 
+        # - **LocalImport**: local import
         self.import_mode = import_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The training mode for the dataset. The dataset format depends on the mode. Valid values:
+        # 
+        # - **sft**: supervised fine-tuning. For training sets only.
+        # 
+        # - **grpo**: reinforcement learning optimization. For training sets only.
+        # 
+        # - **text**: text generation. For validation sets only.
         self.train_mode = train_mode
 
     def validate(self):

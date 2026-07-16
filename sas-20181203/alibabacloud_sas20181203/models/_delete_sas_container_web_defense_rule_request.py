@@ -10,8 +10,7 @@ class DeleteSasContainerWebDefenseRuleRequest(DaraModel):
         rule_id: int = None,
     ):
         # The rule ID.
-        # 
-        # >  You can call the ListContainerWebDefenseRule operation to query the rule ID.
+        # > You can call the ListContainerWebDefenseRule operation to obtain this parameter.
         # 
         # This parameter is required.
         self.rule_id = rule_id

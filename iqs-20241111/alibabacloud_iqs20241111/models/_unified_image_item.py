@@ -14,11 +14,17 @@ class UnifiedImageItem(DaraModel):
         title: str = None,
         width: int = None,
     ):
+        # Height
         self.height = height
+        # URL of the web page to which the image belongs
         self.host_page_url = host_page_url
+        # Image URL
         self.image_url = image_url
+        # Web page published time, in ISO time format
         self.published_time = published_time
+        # Image title
         self.title = title
+        # Image width
         self.width = width
 
     def validate(self):

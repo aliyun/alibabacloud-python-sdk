@@ -12,15 +12,15 @@ class ModifyHostInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # > The value 200 indicates that the call was successful.
         self.code = code
         # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. The value true indicates a success. The value false indicates a failure.
+        # Indicates whether the call was successful. The value true indicates that the call was successful. The value false indicates that the call failed.
         self.success = success
 
     def validate(self):

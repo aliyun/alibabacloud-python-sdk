@@ -18,33 +18,39 @@ class ListAllSwimmingLaneGroupsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request was invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # Responses.
+        # The returned data.
         self.data = data
-        # The status code. Value values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - For a list of error codes, see the "**Error codes**" section in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The response message.
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - **success** is returned if the request is successful.
+        # 
+        # - An error message is returned if the request fails.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
+        # - **true**
+        # 
+        # - **false**
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID that is used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -126,34 +132,37 @@ class ListAllSwimmingLaneGroupsResponseBodyData(DaraModel):
         namespace_id: str = None,
         swim_version: str = None,
     ):
-        # The IDs of the applications associated with the lane group.
+        # The IDs of the applications that are associated with the swimming lane group.
         self.app_ids = app_ids
-        # The application information.
+        # The information about the applications.
         self.apps = apps
-        # Full-link Grayscale Mode:
+        # The canary release mode.
         # 
-        # *   0: The request is routed based on the content of the request.
-        # *   1: Proportional routing
+        # - 0: content-based routing
+        # 
+        # - 1: percentage-based routing
         self.canary_model = canary_model
-        # The entry application.
+        # The ingress application.
         self.entry_app = entry_app
         # The ID of the gateway.
         self.entry_app_id = entry_app_id
-        # The application entry type (gateway type).
+        # The type of the ingress application. This parameter is equivalent to the gateway type.
         # 
-        # *   **apig:** cloud-native API Gateway
-        # *   **mse-gw:** an MSE cloud original gateway
-        # *   **mse:** Java Services Gateway
+        # - **apig:** API Gateway
+        # 
+        # - **mse-gw:** cloud-native gateway
+        # 
+        # - **mse:** Java service gateway
         self.entry_app_type = entry_app_type
-        # The ID of the lane group.
+        # The ID of the swimming lane group.
         self.group_id = group_id
-        # The name of a lane group.
+        # The name of the swimming lane group.
         self.group_name = group_name
         # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
-        # The ID of the namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
-        # The end-to-end grayscale version. Valid values: 0 and 2 (recommended).
+        # The version of the canary release. Valid values: 0 and 2. We recommend that you use 2.
         self.swim_version = swim_version
 
     def validate(self):
@@ -257,15 +266,15 @@ class ListAllSwimmingLaneGroupsResponseBodyDataEntryApp(DaraModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application.
+        # The application type.
         self.app_type = app_type
         # The ID of the MSE instance.
         self.mse_app_id = mse_app_id
-        # MSE Instance Name
+        # The name of the MSE instance.
         self.mse_app_name = mse_app_name
         # The ID of the namespace to which the MSE instance belongs.
         self.mse_namespace_id = mse_namespace_id
@@ -329,9 +338,9 @@ class ListAllSwimmingLaneGroupsResponseBodyDataApps(DaraModel):
         mse_app_name: str = None,
         mse_namespace_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
         # The ID of the MSE instance.
         self.mse_app_id = mse_app_id

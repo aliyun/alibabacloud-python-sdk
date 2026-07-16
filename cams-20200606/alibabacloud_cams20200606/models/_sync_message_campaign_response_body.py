@@ -13,10 +13,21 @@ class SyncMessageCampaignResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request. A value of OK indicates that the request was successful.
+        # 
+        # For other error codes, see Error Codes.
         self.code = code
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

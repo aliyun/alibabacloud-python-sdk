@@ -17,11 +17,17 @@ class ListFlashSmsTemplatesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call succeeded. A value of true indicates a successful call. A value of false indicates a failed call.
         self.success = success
 
     def validate(self):
@@ -89,8 +95,11 @@ class ListFlashSmsTemplatesResponseBodyData(DaraModel):
         template_id: str = None,
         template_name: str = None,
     ):
+        # The content of the template.
         self.template_content = template_content
+        # The ID of the flash SMS template.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
 
     def validate(self):

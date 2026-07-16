@@ -12,9 +12,13 @@ class ListUsersRequest(DaraModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The number of entries to return on each page.
         self.max_results = max_results
+        # The pagination token used to retrieve the next page of results. If this parameter is not returned in the response, pass an empty string ("").
         self.page_token = page_token
+        # The type of the user.
         self.type = type
+        # The user name.
         self.user_name = user_name
 
     def validate(self):

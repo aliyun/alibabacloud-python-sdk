@@ -16,12 +16,19 @@ class InitContainerConfig(DaraModel):
         name: str = None,
         secret_mount_desc: str = None,
     ):
+        # Start command for the image.
         self.command = command
+        # Arguments for the image start command.
         self.command_args = command_args
+        # ConfigMap mount description.
         self.config_map_mount_desc = config_map_mount_desc
+        # EmptyDir mount description.
         self.empty_dir_desc = empty_dir_desc
+        # Environment variable parameters for the container.
         self.envs = envs
+        # The address of the image registry.
         self.image_url = image_url
+        # Container name.
         self.name = name
         self.secret_mount_desc = secret_mount_desc
 

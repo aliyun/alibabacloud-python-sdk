@@ -13,13 +13,13 @@ class GetServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The service details.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

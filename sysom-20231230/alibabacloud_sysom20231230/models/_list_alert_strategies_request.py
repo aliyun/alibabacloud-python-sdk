@@ -13,10 +13,15 @@ class ListAlertStrategiesRequest(DaraModel):
         next_token: str = None,
         page_size: int = None,
     ):
+        # The current page number (starting from 1).
         self.current = current
+        # The maximum number of records to retrieve in a single request.
         self.max_results = max_results
+        # The policy name of the alerting policy.
         self.name = name
+        # The pagination token for the next request.
         self.next_token = next_token
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

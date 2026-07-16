@@ -15,13 +15,13 @@ class ListPluginClassesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The response parameters.
+        # The response data.
         self.data = data
-        # The returned message.
+        # The error message.
         self.message = message
-        # The ID of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,7 +72,7 @@ class ListPluginClassesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The plugin details.
+        # The result objects.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -142,27 +142,27 @@ class ListPluginClassesResponseBodyDataItems(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The alias of the plugin.
+        # The plug-in alias.
         self.alias = alias
-        # The description of the plugin.
+        # The plug-in description.
         self.description = description
-        # Indicates whether the plugin is installed.
+        # Indicates whether the plug-in is installed.
         self.installed = installed
-        # The plugin name.
+        # The plug-in name.
         self.name = name
-        # The plugin type ID.
+        # The plug-in type ID.
         self.plugin_class_id = plugin_class_id
-        # The plugin ID.
+        # The plug-in ID.
         self.plugin_id = plugin_id
-        # The publishing status.
+        # The publish status.
         self.publish_status = publish_status
-        # The source of the plugin.
+        # The plug-in source.
         self.source = source
-        # The minimum version of the gateway supported by the plugin.
+        # The minimum gateway version supported by the plug-in.
         self.supported_min_gateway_version = supported_min_gateway_version
-        # The type of the plugin.
+        # The plug-in type.
         self.type = type
-        # The version.
+        # The plug-in version.
         self.version = version
 
     def validate(self):

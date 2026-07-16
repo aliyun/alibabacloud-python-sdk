@@ -20,14 +20,23 @@ class ConditionBasicInfo(DaraModel):
         rid: str = None,
         user_group: str = None,
     ):
+        # Detection range
         self.check_range = check_range
+        # Condition ID, which may be the primary key in the database or a transformed identifier such as a, b, or c
         self.cid = cid
+        # Exclude
         self.exclusion = exclusion
+        # Primary key in the database
         self.id = id
+        # Lambda expression; for example: a&&b
         self.lambda_ = lambda_
+        # Condition name
         self.name = name
+        # List of operators
         self.operators = operators
+        # ID of the rule to which the condition belongs
         self.rid = rid
+        # User group
         self.user_group = user_group
 
     def validate(self):
@@ -119,11 +128,17 @@ class ConditionBasicInfoCheckRange(DaraModel):
         role: str = None,
         role_id: int = None,
     ):
+        # false: relative position; the sentence position is determined in combination with the anchor and the role
         self.absolute = absolute
+        # true: Every sentence must satisfy the condition;
         self.all_sentences_satisfy = all_sentences_satisfy
+        # Precondition and postcondition
         self.anchor = anchor
+        # Relative range
         self.range = range
+        # Corresponds to RoleType.type
         self.role = role
+        # Corresponds to RoleType.id
         self.role_id = role_id
 
     def validate(self):
@@ -187,7 +202,9 @@ class ConditionBasicInfoCheckRangeRange(DaraModel):
         from_: int = None,
         to: int = None,
     ):
+        # Start index of the conversation
         self.from_ = from_
+        # End index of the conversation
         self.to = to
 
     def validate(self):
@@ -216,8 +233,6 @@ class ConditionBasicInfoCheckRangeRange(DaraModel):
 
         return self
 
-
-
 class ConditionBasicInfoCheckRangeAnchor(DaraModel):
     def __init__(
         self,
@@ -225,8 +240,11 @@ class ConditionBasicInfoCheckRangeAnchor(DaraModel):
         hit_time: int = None,
         location: str = None,
     ):
+        # Condition ID
         self.cid = cid
+        # Hit count
         self.hit_time = hit_time
+        # Location
         self.location = location
 
     def validate(self):

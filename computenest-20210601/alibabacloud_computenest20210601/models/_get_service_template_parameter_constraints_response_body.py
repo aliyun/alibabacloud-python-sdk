@@ -14,9 +14,9 @@ class GetServiceTemplateParameterConstraintsResponseBody(DaraModel):
         parameter_constraints: List[main_models.GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints] = None,
         request_id: str = None,
     ):
-        # The package family constraints.
+        # The constraints on the specification family.
         self.family_constraints = family_constraints
-        # The constraints on the parameters.
+        # The parameter constraints.
         self.parameter_constraints = parameter_constraints
         # The request ID.
         self.request_id = request_id
@@ -75,25 +75,27 @@ class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints(Dar
     ):
         # The valid values of the parameter.
         self.allowed_values = allowed_values
-        # The names of the associated parameters.
+        # The associated parameters.
         self.association_parameter_names = association_parameter_names
         # The behavior of the parameter. Valid values:
         # 
-        # *   NoLimit: No limit is imposed on the value of this parameter.
-        # *   NotSupport: The value of this parameter cannot be queried.
-        # *   QueryError: This parameter failed to be queried.
+        # - NoLimit: No limits are imposed on the value of this parameter.
         # 
-        # >  If AllowedValues is not returned, Behavior and BehaviorReason are returned, which indicate the behavior of the parameter and the reason for the behavior.
+        # - NotSupport: The values of this parameter cannot be queried.
+        # 
+        # - QueryError: The query failed.
+        # 
+        # > If AllowedValues is not returned, Behavior and BehaviorReason are returned to describe the behavior of the parameter and the reason.
         self.behavior = behavior
-        # The reason why the behavior of the parameter is returned.
+        # The reason for the parameter behavior.
         self.behavior_reason = behavior_reason
-        # The original constraint information.
+        # The original constraints.
         self.original_constraints = original_constraints
         # The name of the parameter.
         self.parameter_key = parameter_key
-        # The error details that are returned if the request fails.
+        # The details of the query failure.
         self.query_errors = query_errors
-        # The data type of the parameter.
+        # The type of the parameter.
         self.type = type
 
     def validate(self):
@@ -182,7 +184,7 @@ class GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQuer
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The error message.
+        # The error details.
         self.error_message = error_message
         # The resource name.
         self.resource_name = resource_name

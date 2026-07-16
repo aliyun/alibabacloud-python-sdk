@@ -29,8 +29,9 @@ class ListLiveRecordJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   asc: sorts the query results in ascending order.
-        # *   desc: sorts the query results in descending order.
+        # - asc: sorts the query results in ascending order.
+        # 
+        # - desc: sorts the query results in descending order.
         self.sort_by = sort_by
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
@@ -40,9 +41,11 @@ class ListLiveRecordJobsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   paused: The job is paused.
-        # *   initial: The job is not started.
-        # *   started: The job is in progress.
+        # - paused: The job is paused.
+        # 
+        # - initial: The job is not started.
+        # 
+        # - started: The job is in progress.
         self.status = status
 
     def validate(self):

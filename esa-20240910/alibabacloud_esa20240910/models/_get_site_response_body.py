@@ -15,7 +15,7 @@ class GetSiteResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The queried website information.
+        # The details of the site.
         self.site_model = site_model
 
     def validate(self):
@@ -68,52 +68,69 @@ class GetSiteResponseBodySiteModel(DaraModel):
         verify_code: str = None,
         version_management: bool = None,
     ):
-        # The DNS setup option for the website. Valid values:
+        # The access type of the site. Valid values:
         # 
-        # *   **NS**
-        # *   **CNAME**
+        # - **NS**: Access via NS.
+        # 
+        # - **CNAME**: Access via CNAME.
         self.access_type = access_type
-        # The CNAME of the website domain. If you use CNAME setup when you add your website to ESA, the value is the CNAME that you configured then.
+        # For sites onboarded via CNAME, use this suffix to configure the CNAME record.
         self.cname_zone = cname_zone
-        # The service location. Valid values:
+        # The acceleration region. Valid values:
         # 
-        # *   **domestic**: the Chinese mainland.
-        # *   **global**: global.
-        # *   **overseas**: outside the Chinese mainland.
+        # - **domestic**: Chinese mainland only
+        # 
+        # - **global**: Global
+        # 
+        # - **overseas**: Global (excluding the Chinese mainland)
         self.coverage = coverage
-        # The time when the WEBsite was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+        # The time (in UTC) when the site was created, formatted in ISO 8601 (`yyyy-MM-ddTHH:mm:ssZ`).
         self.create_time = create_time
-        # The plan ID.
+        # The ID of the plan instance.
         self.instance_id = instance_id
-        # The nameservers assigned to the website domain. They are separated by commas (,).
+        # A comma-separated list of name servers assigned to the site.
         self.name_server_list = name_server_list
-        self.offline_reason = offline_reason
-        # The plan name.
-        self.plan_name = plan_name
-        # The specification of the plan associated with the website.
-        self.plan_spec_name = plan_spec_name
-        # The ID of your Alibaba Cloud resource group.
-        self.resource_group_id = resource_group_id
-        # The website ID.
-        self.site_id = site_id
-        # The website name.
-        self.site_name = site_name
-        # The website status. Valid values:
+        # The reason the site is offline. This parameter appears only when `Status` is `offline`. Valid values:
         # 
-        # *   **pending**: The website is to be configured.
-        # *   **active**: The website is active.
-        # *   **offline**: The website is suspended.
-        # *   **moved**: The website has been added and verified by another Alibaba Cloud account.
+        # - **expiration_arrears**: The subscription plan has expired or the account has overdue payments.
+        # 
+        # - **internally_disabled**: The site was disabled by the system.
+        # 
+        # - **missing_icp**: The domain is missing an ICP license.
+        # 
+        # - **content_violation**: The site violated content policies.
+        # 
+        # - **proactively_disabled**: The site was disabled either by you or by a usage limit that you configured.
+        self.offline_reason = offline_reason
+        # The name of the plan.
+        self.plan_name = plan_name
+        # The name of the plan specification.
+        self.plan_spec_name = plan_spec_name
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # The ID of the site.
+        self.site_id = site_id
+        # The name of the site.
+        self.site_name = site_name
+        # The status of the site. Valid values:
+        # 
+        # - **pending**: The site is pending configuration.
+        # 
+        # - **active**: The site is active.
+        # 
+        # - **offline**: The site is offline.
+        # 
+        # - **moved**: The site has been superseded.
         self.status = status
-        # The tags of the website.
+        # The tags of the site.
         self.tags = tags
-        # The time when the WEBsite was updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+        # The time (in UTC) when the site was last updated, formatted in ISO 8601 (`yyyy-MM-ddTHH:mm:ssZ`).
         self.update_time = update_time
-        # The information about custom nameservers of the website domain. The key is a custom nameserver name, and the value is the IP address of the custom nameserver. Multiple IP addresses are separated by commas (,).
+        # Each key is a custom name server, and its value is a comma-separated list of the server\\"s IP addresses.
         self.vanity_nslist = vanity_nslist
-        # The code that is used to verify the website domain ownership. As part of the verification TXT record, this parameter is returned for websites that use CNAME setup.
+        # For sites onboarded via CNAME, you must configure this code as a TXT record.
         self.verify_code = verify_code
-        # The status of version management. If true is returned, version management is enabled for the website.
+        # If `true`, version management is enabled for the site.
         self.version_management = version_management
 
     def validate(self):

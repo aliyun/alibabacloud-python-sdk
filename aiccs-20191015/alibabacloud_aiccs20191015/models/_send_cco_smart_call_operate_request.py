@@ -15,12 +15,20 @@ class SendCcoSmartCallOperateRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Unique receipt ID of the call. This can be obtained from the response of the [SendCcoSmartCall](https://help.aliyun.com/document_detail/311247.html) API.
+        # 
         # This parameter is required.
         self.call_id = call_id
+        # Specifies the action to be performed for the called number during an Intelligent Outbound Call.  
+        # 
+        # > Currently, only the **parallelBridge** parameter is supported, which indicates bridging the called number with a call center agent.
+        # 
         # This parameter is required.
         self.command = command
         self.owner_id = owner_id
+        # Extension field.
         self.param = param
+        # Product name. Default value: **aiccs**.
         self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

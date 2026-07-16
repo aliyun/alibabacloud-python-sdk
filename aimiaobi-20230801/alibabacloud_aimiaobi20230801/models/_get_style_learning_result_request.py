@@ -10,8 +10,12 @@ class GetStyleLearningResultRequest(DaraModel):
         agent_key: str = None,
         id: int = None,
     ):
+        # The unique identifier of the workspace.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The ID of the style learning task.
+        # 
         # This parameter is required.
         self.id = id
 

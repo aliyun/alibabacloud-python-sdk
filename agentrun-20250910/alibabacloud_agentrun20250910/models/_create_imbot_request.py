@@ -10,6 +10,8 @@ class CreateIMBotRequest(DaraModel):
         self,
         body: main_models.CreateIMBotInput = None,
     ):
+        # The request body.
+        # 
         # This parameter is required.
         self.body = body
 

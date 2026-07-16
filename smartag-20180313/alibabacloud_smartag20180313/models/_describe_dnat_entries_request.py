@@ -31,14 +31,15 @@ class DescribeDnatEntriesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the SAG instance.
         # 
-        # >  Only SAG customer-premises equipment (CPE) instances are supported.
+        # > Only SAG customer-premises equipment (CPE) instances are supported.
         # 
         # This parameter is required.
         self.sag_id = sag_id
         # The type of the DNAT entry. Valid values:
         # 
-        # *   **Intranet**: translates the IP address to a specific internal IP address. This is the default value.
-        # *   **Internet**: translates the IP address to a specific public IP address.
+        # - **Intranet**: translates the IP address to a specific internal IP address. This is the default value.
+        # 
+        # - **Internet**: translates the IP address to a specific public IP address.
         self.type = type
 
     def validate(self):

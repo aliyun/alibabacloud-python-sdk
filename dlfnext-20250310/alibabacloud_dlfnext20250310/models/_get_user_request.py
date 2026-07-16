@@ -9,6 +9,7 @@ class GetUserRequest(DaraModel):
         self,
         user_principal: str = None,
     ):
+        # The resource descriptor of the user.
         self.user_principal = user_principal
 
     def validate(self):

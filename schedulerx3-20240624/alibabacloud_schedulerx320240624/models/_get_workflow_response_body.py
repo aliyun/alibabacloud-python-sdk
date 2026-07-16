@@ -14,11 +14,19 @@ class GetWorkflowResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
         # -
         self.data = data
+        # The error message.
         self.message = message
+        # The ID of the request. This ID is unique to each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,18 +92,51 @@ class GetWorkflowResponseBodyData(DaraModel):
         workflow_id: int = None,
         xattrs: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The custom calendar.
         self.calendar = calendar
+        # The user who created the workflow.
         self.creator = creator
+        # The workflow description.
         self.description = description
+        # The maximum concurrency.
         self.max_concurrency = max_concurrency
+        # The workflow name.
         self.name = name
+        # The workflow status.
+        # 
+        # - 0: disabled
+        # 
+        # - 1: enabled
         self.status = status
+        # The time expression. The value of this parameter depends on the schedule type.
+        # 
+        # - **None**: No expression is required.
+        # 
+        # - **cron**: A standard cron expression.
+        # 
+        # - **API**: No expression is required.
         self.time_expression = time_expression
+        # The schedule type.
+        # 
+        # - -1: None
+        # 
+        # - 1: cron
+        # 
+        # - 100: API
         self.time_type = time_type
+        # The time zone.
+        # 
+        # > If this parameter is omitted, the time zone of the server in the current region is used.
         self.timezone = timezone
+        # The user who last updated the workflow.
         self.updater = updater
+        # The workflow ID.
         self.workflow_id = workflow_id
+        # The extended attributes.
+        # 
+        # > This parameter is not supported.
         self.xattrs = xattrs
 
     def validate(self):

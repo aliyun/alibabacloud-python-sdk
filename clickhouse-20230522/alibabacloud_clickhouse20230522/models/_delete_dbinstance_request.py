@@ -10,7 +10,7 @@ class DeleteDBInstanceRequest(DaraModel):
         dbinstance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the destination cluster.
+        # The ID of the target cluster.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id

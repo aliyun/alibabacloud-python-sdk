@@ -14,7 +14,7 @@ class RenewElasticityAssurancesResponseBody(DaraModel):
         private_pool_options_id_set: main_models.RenewElasticityAssurancesResponseBodyPrivatePoolOptionsIdSet = None,
         request_id: str = None,
     ):
-        # The ID of the renewal order.
+        # The renewal order ID.
         self.order_id = order_id
         self.private_pool_options_id_set = private_pool_options_id_set
         # The request ID.

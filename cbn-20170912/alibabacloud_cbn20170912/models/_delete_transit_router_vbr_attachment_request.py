@@ -18,19 +18,21 @@ class DeleteTransitRouterVbrAttachmentRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+        # Use the client to generate the token, but you must make sure that the token is unique among requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # > When left empty, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** is different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Default values:
+        # Specifies whether to perform a dry run to check permissions and instance status. Valid values:
         # 
-        # *   **false** (default): performs a dry run and sends the request.
-        # *   **true**: performs a dry run. The system checks the required parameters and the request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+        # - **false** (default): sends a request and deletes the VBR connection.
+        # 
+        # - **true**: sends a check request without deleting the VBR connection. The system checks the required parameters and request syntax. If the request fails the dry run, an error code is returned. If the request passes the dry run, a request ID is returned.
         self.dry_run = dry_run
         # Specifies whether to forcibly delete the VBR connection. Valid values:
         # 
-        # *   **false** (default): checks for resources related to the VBR connection, such as associated forwarding and route learning policies. If such resources exist, the VBR connection is not deleted and an error message is returned.
-        # *   **true**: deletes the VBR connection and related resources.
+        # - **false** (default): The system checks resources, such as forwarding associations or route learning. If there are such resources, the VBR connection is not deleted and an error code is returned.
+        # 
+        # - **true**: When the VBR connection is deleted, all associated resources are also deleted.
         self.force = force
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -15,9 +15,13 @@ class DescribeCreditPackageAgentsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # A list of agents.
         self.agents = agents
+        # The number of results returned on the current page.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If this value is empty, all results have been returned.
         self.next_token = next_token
+        # The request ID. Provide this ID when contacting support.
         self.request_id = request_id
 
     def validate(self):
@@ -78,14 +82,21 @@ class DescribeCreditPackageAgentsResponseBodyAgents(DaraModel):
         used_credit: int = None,
         warn_percent: int = None,
     ):
-        # Agent ID
+        # The ID of the agent.
         self.agent_id = agent_id
+        # **The creation time of the instance.**
         self.created_time = created_time
+        # **The ID of the active credit package instance.**
         self.credit_package_id = credit_package_id
+        # **The expiration time of the instance.**
         self.expired_time = expired_time
+        # The instance type.
         self.instance_type = instance_type
+        # **The total credit.**
         self.total_credit = total_credit
+        # **The amount of credit used.**
         self.used_credit = used_credit
+        # **The alarm threshold, specified as a percentage. Valid values: 0 to 100.**
         self.warn_percent = warn_percent
 
     def validate(self):

@@ -19,13 +19,20 @@ class SearchRecursionRecordsResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
+        # The token for the next query.
         self.next_token = next_token
+        # The current page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
+        # The number of entries returned per page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
         self.records = records
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_items = total_items
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

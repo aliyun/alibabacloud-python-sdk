@@ -259,6 +259,10 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not DaraCore.is_null(request.channel):
             query['Channel'] = request.channel
+        if not DaraCore.is_null(request.cipher_end_user_id):
+            query['CipherEndUserId'] = request.cipher_end_user_id
+        if not DaraCore.is_null(request.cipher_password):
+            query['CipherPassword'] = request.cipher_password
         if not DaraCore.is_null(request.client_id):
             query['ClientId'] = request.client_id
         if not DaraCore.is_null(request.client_name):
@@ -365,6 +369,10 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not DaraCore.is_null(request.channel):
             query['Channel'] = request.channel
+        if not DaraCore.is_null(request.cipher_end_user_id):
+            query['CipherEndUserId'] = request.cipher_end_user_id
+        if not DaraCore.is_null(request.cipher_password):
+            query['CipherPassword'] = request.cipher_password
         if not DaraCore.is_null(request.client_id):
             query['ClientId'] = request.client_id
         if not DaraCore.is_null(request.client_name):

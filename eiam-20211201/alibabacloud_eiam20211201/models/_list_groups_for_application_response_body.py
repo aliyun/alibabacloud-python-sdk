@@ -14,11 +14,11 @@ class ListGroupsForApplicationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The group IDs.
+        # The list of groups.
         self.groups = groups
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,7 +67,7 @@ class ListGroupsForApplicationResponseBodyGroups(DaraModel):
         application_roles: List[main_models.ListGroupsForApplicationResponseBodyGroupsApplicationRoles] = None,
         group_id: str = None,
     ):
-        # 应用角色列表。
+        # The list of application roles. This parameter is not returned for SAML applications.
         self.application_roles = application_roles
         # The group ID.
         self.group_id = group_id
@@ -111,7 +111,7 @@ class ListGroupsForApplicationResponseBodyGroupsApplicationRoles(DaraModel):
         self,
         application_role_id: str = None,
     ):
-        # 应用角色标识。
+        # The ID of the application role.
         self.application_role_id = application_role_id
 
     def validate(self):

@@ -16,9 +16,9 @@ class DescribeHybridProxyListResponseBody(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The information about the proxy clusters.
+        # The proxy cluster list.
         self.proxy_list = proxy_list
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -77,26 +77,26 @@ class DescribeHybridProxyListResponseBodyProxyList(DaraModel):
         status: str = None,
         uuid: str = None,
     ):
-        # The number of servers that are connected to the proxy instance.
+        # The number of Security Center agents connected to the proxy instance.
         self.client_count = client_count
         # The version of the proxy instance.
         self.current_version = current_version
-        # The instance ID.
+        # The instance ID of the asset.
         self.instance_id = instance_id
-        # The instance name.
+        # The name of the asset instance.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The UUID of the proxy node.
+        # The unique key that identifies the proxy node.
         self.proxy_uuid = proxy_uuid
-        # The status of the proxy server. Valid values:
+        # The running status of the proxy machine. Valid values:
         # 
-        # *   **online**
-        # *   **offline**
+        # - **online**: online
+        # - **offline**: offline.
         self.status = status
-        # The UUID of the server that is connected to the proxy instance.
+        # The UUID of the Security Center agent deployed on the proxy instance.
         self.uuid = uuid
 
     def validate(self):
@@ -175,11 +175,11 @@ class DescribeHybridProxyListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries returned on the current page in a paged query.
         self.count = count
-        # The page number.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries returned on each page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count

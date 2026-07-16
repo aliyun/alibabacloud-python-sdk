@@ -28,6 +28,7 @@ class HotelSearchRequest(DaraModel):
         page_size: int = None,
         pay_over_type: int = None,
         payment_type: int = None,
+        poi: str = None,
         shids: List[int] = None,
         sort_code: int = None,
         super_man: int = None,
@@ -55,6 +56,7 @@ class HotelSearchRequest(DaraModel):
         self.page_size = page_size
         self.pay_over_type = pay_over_type
         self.payment_type = payment_type
+        self.poi = poi
         self.shids = shids
         # This parameter is required.
         self.sort_code = sort_code
@@ -125,6 +127,9 @@ class HotelSearchRequest(DaraModel):
         if self.payment_type is not None:
             result['payment_type'] = self.payment_type
 
+        if self.poi is not None:
+            result['poi'] = self.poi
+
         if self.shids is not None:
             result['shids'] = self.shids
 
@@ -194,6 +199,9 @@ class HotelSearchRequest(DaraModel):
 
         if m.get('payment_type') is not None:
             self.payment_type = m.get('payment_type')
+
+        if m.get('poi') is not None:
+            self.poi = m.get('poi')
 
         if m.get('shids') is not None:
             self.shids = m.get('shids')

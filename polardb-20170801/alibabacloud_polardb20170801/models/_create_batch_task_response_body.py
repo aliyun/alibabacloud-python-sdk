@@ -10,7 +10,9 @@ class CreateBatchTaskResponseBody(DaraModel):
         batch_id: str = None,
         request_id: str = None,
     ):
+        # The release batch ID.
         self.batch_id = batch_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

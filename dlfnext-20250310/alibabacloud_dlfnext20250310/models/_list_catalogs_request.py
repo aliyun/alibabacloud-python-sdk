@@ -11,8 +11,11 @@ class ListCatalogsRequest(DaraModel):
         max_results: int = None,
         page_token: str = None,
     ):
+        # The pattern of the catalog name.
         self.catalog_name_pattern = catalog_name_pattern
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
+        # The token to retrieve the next page of results. If the response does not include this token, pass an empty string ("").
         self.page_token = page_token
 
     def validate(self):

@@ -14,10 +14,15 @@ class ListInstanceRequest(DaraModel):
         robot_type: str = None,
         sandbox: bool = None,
     ):
+        # The key of the business space. You can obtain the key on the Business Management page of the primary account. If you do not set this parameter, the default business space is accessed.
         self.agent_key = agent_key
+        # The name of the chatbot. A fuzzy search is supported.
         self.name = name
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of instances to return on each page. Default value: 10.
         self.page_size = page_size
+        # The type of the chatbot.
         self.robot_type = robot_type
         self.sandbox = sandbox
 

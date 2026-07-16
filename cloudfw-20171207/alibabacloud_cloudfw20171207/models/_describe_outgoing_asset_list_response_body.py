@@ -14,8 +14,11 @@ class DescribeOutgoingAssetListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of assets.
         self.asset_list = asset_list
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,23 +83,41 @@ class DescribeOutgoingAssetListResponseBodyAssetList(DaraModel):
         session_count: int = None,
         total_bytes: int = None,
     ):
+        # The ID of the asset instance.
         self.asset_instance_id = asset_instance_id
+        # The name of the asset instance.
         self.asset_instance_name = asset_instance_name
+        # The region ID.
         self.assets_region = assets_region
+        # The follow status.
         self.group_name = group_name
+        # The inbound traffic, which is the response traffic. Unit: bytes.
         self.in_bytes = in_bytes
+        # The number of IPS hits.
         self.ips_hit_cnt = ips_hit_cnt
+        # The ID of the NAT Gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The name of the NAT Gateway.
         self.nat_gateway_name = nat_gateway_name
+        # The outbound traffic, which is the request traffic. Unit: bytes.
         self.out_bytes = out_bytes
+        # The number of outbound domains.
         self.outgoing_domain_cnt = outgoing_domain_cnt
+        # The number of outbound destination IP addresses.
         self.outgoing_dst_ipcnt = outgoing_dst_ipcnt
+        # The private IP address.
         self.private_ip = private_ip
+        # The list of private IP addresses.
         self.private_iplist = private_iplist
+        # The public IP address.
         self.public_ip = public_ip
+        # The type of the public IP address of the asset.
         self.resource_type = resource_type
+        # The security risk.
         self.security_risk = security_risk
+        # The number of sessions.
         self.session_count = session_count
+        # The total traffic.
         self.total_bytes = total_bytes
 
     def validate(self):

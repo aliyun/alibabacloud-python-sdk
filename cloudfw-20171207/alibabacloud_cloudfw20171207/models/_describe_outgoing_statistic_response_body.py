@@ -27,24 +27,43 @@ class DescribeOutgoingStatisticResponseBody(DaraModel):
         uncovered_acl_dst_ip: int = None,
         unknown_protocol_radio: str = None,
     ):
+        # The number of assets that are ignored.
         self.ignore_asset_count = ignore_asset_count
+        # The number of domain names that are ignored.
         self.ignore_domain_count = ignore_domain_count
+        # The number of destination IP addresses that are ignored.
         self.ignore_dst_ipcount = ignore_dst_ipcount
+        # The number of risky assets with outbound connections over a private network.
         self.private_risk_asset_count = private_risk_asset_count
+        # The number of assets with outbound connections over a private network.
         self.private_total_asset_count = private_total_asset_count
+        # The request ID.
         self.request_id = request_id
+        # The number of risky assets.
         self.risk_asset_count = risk_asset_count
+        # The number of risky domain names for outbound connections.
         self.risk_domain_count = risk_domain_count
+        # The number of risky destination IP addresses for outbound connections.
         self.risk_dst_ipcount = risk_dst_ipcount
+        # The number of assets that you follow.
         self.subscribe_asset_count = subscribe_asset_count
+        # The number of domain names that you follow.
         self.subscribe_domain_count = subscribe_domain_count
+        # The number of destination IP addresses that you follow.
         self.subscribe_dst_ipcount = subscribe_dst_ipcount
+        # The total number of assets that have outbound connections.
         self.total_asset_count = total_asset_count
+        # The total number of outbound domain names.
         self.total_domain_count = total_domain_count
+        # The total number of destination IP addresses for outbound connections.
         self.total_dst_ipcount = total_dst_ipcount
+        # The number of outbound connection protocols.
         self.total_protocol_count = total_protocol_count
+        # The number of domain names that are not covered by a policy.
         self.uncovered_acl_domain = uncovered_acl_domain
+        # The number of destination IP addresses that are not covered by a policy.
         self.uncovered_acl_dst_ip = uncovered_acl_dst_ip
+        # The percentage of traffic from unidentified protocols.
         self.unknown_protocol_radio = unknown_protocol_radio
 
     def validate(self):

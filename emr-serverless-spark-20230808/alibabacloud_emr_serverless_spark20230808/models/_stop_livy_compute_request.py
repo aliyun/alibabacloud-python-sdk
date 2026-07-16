@@ -9,6 +9,7 @@ class StopLivyComputeRequest(DaraModel):
         self,
         region_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

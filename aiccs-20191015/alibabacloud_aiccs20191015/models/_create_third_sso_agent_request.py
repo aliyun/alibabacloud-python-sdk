@@ -18,17 +18,29 @@ class CreateThirdSsoAgentRequest(DaraModel):
         role_ids: List[int] = None,
         skill_group_ids: List[int] = None,
     ):
+        # Account ID to synchronize.
+        # 
         # This parameter is required.
         self.account_id = account_id
+        # Account name to synchronize.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The client ID issued to the tenant instance.
+        # 
         # This parameter is required.
         self.client_id = client_id
+        # Unique ID for the customer request. Used for idempotency validation and can be generated using UUID.
         self.client_token = client_token
+        # Agent display name.
         self.display_name = display_name
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # List of role IDs.
         self.role_ids = role_ids
+        # List of skill group IDs.
         self.skill_group_ids = skill_group_ids
 
     def validate(self):

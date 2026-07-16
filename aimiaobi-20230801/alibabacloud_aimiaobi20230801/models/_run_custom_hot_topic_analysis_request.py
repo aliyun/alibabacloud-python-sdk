@@ -15,13 +15,24 @@ class RunCustomHotTopicAnalysisRequest(DaraModel):
         user_back: str = None,
         workspace_id: str = None,
     ):
+        # The follow-up question from the model.
         self.ask_user = ask_user
+        # Specifies whether to forcibly analyze a duplicate topic and overwrite the existing analysis.
         self.force_analysis_exists_topic = force_analysis_exists_topic
+        # The user\\"s input prompt.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The unique ID for each request.
         self.session_id = session_id
+        # The unique ID for the entire conversation task.
+        # 
+        # > By default, you do not need to specify TaskId. The system automatically generates one. If you specify the same TaskId for subsequent tasks, the tasks are considered part of the same conversation group.
         self.task_id = task_id
+        # The user\\"s input in response to the model\\"s follow-up question.
         self.user_back = user_back
+        # The unique ID of the Alibaba Cloud Model Studio workspace. For more information, see [Obtain a Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

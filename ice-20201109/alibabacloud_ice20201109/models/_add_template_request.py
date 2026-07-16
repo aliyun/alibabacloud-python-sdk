@@ -16,8 +16,9 @@ class AddTemplateRequest(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # *   The template configurations. The Config object of a regular template is encapsulated based on the Timeline object of an online editing project. The Config object of a custom template provides more flexible features. If you have special requirements, we recommend that you understand the structure of a Config object and configure a custom template. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
-        # *   For more information about Config object examples, see [Basic template configurations](https://help.aliyun.com/document_detail/451634.html).
+        # - The template configurations. The Config object of a regular template is encapsulated based on the Timeline object of an online editing project. The Config object of a custom template provides more flexible features. If you have special requirements, we recommend that you understand the structure of a Config object and configure a custom template. For more information, see [Config object of a regular template](https://help.aliyun.com/document_detail/456193.html).
+        # 
+        # - For more information about Config object examples, see [Basic template configurations](https://help.aliyun.com/document_detail/451634.html).
         self.config = config
         # The URL of the template thumbnail.
         self.cover_url = cover_url
@@ -29,27 +30,35 @@ class AddTemplateRequest(DaraModel):
         self.related_mediaids = related_mediaids
         # The source from which the template is created. Valid values:
         # 
-        # *   OpenAPI
-        # *   AliyunConsole
-        # *   WebSDK
+        # - OpenAPI
+        # 
+        # - AliyunConsole
+        # 
+        # - WebSDK
         # 
         # <!---->
         self.source = source
         # The template state. Valid values:
         # 
-        # *   Available: The template is available.
-        # *   Created: The template is created but not ready for use.
-        # *   Uploading: The video is being uploaded.
-        # *   Processing: The advanced template is being processed.
-        # *   UploadFailed: Failed to upload the video.
-        # *   ProcessFailed: Failed to process the advanced template.
+        # - Available: The template is available.
+        # 
+        # - Created: The template is created but not ready for use.
+        # 
+        # - Uploading: The video is being uploaded.
+        # 
+        # - Processing: The advanced template is being processed.
+        # 
+        # - UploadFailed: Failed to upload the video.
+        # 
+        # - ProcessFailed: Failed to process the advanced template.
         # 
         # <!---->
         self.status = status
         # The template type. Valid values:
         # 
-        # *   Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
-        # *   VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
+        # - Timeline: a regular template created based on the timeline of a video editing project, in which multiple materials are arranged in sequence across multiple layers. It can be used to convert text and images into videos, create photo albums, add opening and closing parts, and apply the default watermark.
+        # 
+        # - VETemplate: an advanced template created using effects of Adobe After Effects (AE). It can be used to produce complex animations and advanced media effects.
         # 
         # <!---->
         self.type = type

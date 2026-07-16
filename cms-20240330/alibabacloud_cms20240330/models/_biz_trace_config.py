@@ -16,13 +16,21 @@ class BizTraceConfig(DaraModel):
         rule_config: str = None,
         workspace: str = None,
     ):
+        # The advanced configuration.
         self.advanced_config = advanced_config
+        # The business trace identifier.
         self.biz_trace_code = biz_trace_code
+        # The business trace ID.
         self.biz_trace_id = biz_trace_id
+        # The business trace name.
         self.biz_trace_name = biz_trace_name
+        # The creation time.
         self.create_time = create_time
+        # The region ID.
         self.region_id = region_id
+        # The list of configuration rules.
         self.rule_config = rule_config
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

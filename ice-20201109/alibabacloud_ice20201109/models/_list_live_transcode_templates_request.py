@@ -17,8 +17,9 @@ class ListLiveTranscodeTemplatesRequest(DaraModel):
     ):
         # The category of the template. Valid values:
         # 
-        # *   system
-        # *   customized
+        # - system
+        # 
+        # - customized
         self.category = category
         # The search keyword. You can use the template ID or name as the keyword to search for templates. If you search for templates by name, fuzzy match is supported.
         self.key_word = key_word
@@ -28,20 +29,25 @@ class ListLiveTranscodeTemplatesRequest(DaraModel):
         self.page_size = page_size
         # The sorting order. By default, the query results are sorted by creation time in descending order. Valid values:
         # 
-        # *   asc
-        # *   desc
+        # - asc
+        # 
+        # - desc
         self.sort_by = sort_by
         # The type of the template. Valid values:
         # 
-        # *   normal
-        # *   narrow-band
-        # *   audio-only
-        # *   origin
+        # - normal
+        # 
+        # - narrow-band
+        # 
+        # - audio-only
+        # 
+        # - origin
         self.type = type
         # The video codec. Valid values:
         # 
-        # *   H.264
-        # *   H.265
+        # - H.264
+        # 
+        # - H.265
         self.video_codec = video_codec
 
     def validate(self):

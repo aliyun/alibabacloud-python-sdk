@@ -19,19 +19,29 @@ class DeleteExtensionsRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
+        # A client-generated token to ensure that the request is idempotent. The token must be unique for each request. It is case-sensitive and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.dbnames = dbnames
+        # The extensions to uninstall. Separate multiple extension names with a comma (,).
+        # 
         # This parameter is required.
         self.extensions = extensions
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the virtual private cloud (VPC) where the endpoint is located.
         self.vpc_id = vpc_id
 
     def validate(self):

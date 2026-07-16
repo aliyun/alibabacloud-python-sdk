@@ -19,42 +19,55 @@ class UpdateNetworkOptimizationRequest(DaraModel):
         upload_max_filesize: str = None,
         websocket: str = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Whether to enable GRPC, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
+        # Controls whether gRPC is enabled. This feature is disabled by default. Valid values:
+        # 
+        # - on: gRPC is enabled.
+        # 
+        # - off: gRPC is disabled.
         self.grpc = grpc
-        # Whether to enable HTTP2 origin, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
+        # Controls whether HTTP/2 to origin is enabled. This feature is disabled by default. Valid values:
+        # 
+        # - on: HTTP/2 to origin is enabled.
+        # 
+        # - off: HTTP/2 to origin is disabled.
         self.http_2origin = http_2origin
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The conditional expression used to match requests. This parameter is optional for global configurations.
+        # 
+        # - To match all incoming requests, set the value to true.
+        # 
+        # - To match specific requests, set the value to a custom expression, for example, (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # Controls whether the rule is enabled. This parameter is optional for global configurations. Valid values:
+        # 
+        # - on: The rule is enabled.
+        # 
+        # - off: The rule is disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. This parameter is optional for global configurations.
         self.rule_name = rule_name
+        # The rule execution order. Smaller values have higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) API.
+        # The site ID. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Whether to enable the smart routing service, default is disabled. Possible values:
-        # - on: Enable
-        # - off: Disable
+        # Controls whether smart routing is enabled. This feature is disabled by default. Valid values:
+        # 
+        # - on: Smart routing is enabled.
+        # 
+        # - off: Smart routing is disabled.
         self.smart_routing = smart_routing
-        # Maximum upload file size, in MB, with a range of 100 to 500.
+        # The maximum upload file size, in MB. The value must be an integer from 100 to 500.
         self.upload_max_filesize = upload_max_filesize
-        # Whether to enable Websocket, default is enabled. Possible values:
-        # - on: Enable
-        # - off: Disable
+        # Controls whether WebSocket is enabled. This feature is enabled by default. Valid values:
+        # 
+        # - on: WebSocket is enabled.
+        # 
+        # - off: WebSocket is disabled.
         self.websocket = websocket
 
     def validate(self):

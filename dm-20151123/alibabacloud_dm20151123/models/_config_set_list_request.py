@@ -12,9 +12,13 @@ class ConfigSetListRequest(DaraModel):
         page_index: str = None,
         page_size: str = None,
     ):
+        # Specifies whether to retrieve all ConfigSets. Optional.
         self.all = all
+        # The keyword for filtering ConfigSets by name.
         self.keyword = keyword
+        # The page number, starting from 1. Required.
         self.page_index = page_index
+        # The number of entries per page. Required.
         self.page_size = page_size
 
     def validate(self):

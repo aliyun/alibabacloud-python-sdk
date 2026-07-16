@@ -12,11 +12,17 @@ class GetRiskListRequest(DaraModel):
         region_id: str = None,
         start_index: int = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page size.
         self.page_size = page_size
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start index for paging.
         self.start_index = start_index
 
     def validate(self):

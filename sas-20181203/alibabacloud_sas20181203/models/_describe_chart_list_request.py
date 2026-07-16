@@ -11,20 +11,19 @@ class DescribeChartListRequest(DaraModel):
         project_code: str = None,
         report_id: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The code of the report. Valid value:
+        # The project code. Valid values:
         # 
-        # *   **customize_report**
+        # - **customize_report**: custom report.
         # 
         # This parameter is required.
         self.project_code = project_code
-        # The ID of the report.
+        # The report ID.
         # 
-        # >  You can call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to query the ID.
+        # > Call the [DescribeCustomizeReportList](~~DescribeCustomizeReportList~~) operation to obtain this parameter.
         self.report_id = report_id
 
     def validate(self):

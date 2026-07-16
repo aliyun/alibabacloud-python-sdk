@@ -11,7 +11,9 @@ class SeverityConfiguration(DaraModel):
         eval_condition: main_models.ConditionConfiguration = None,
         severity: int = None,
     ):
+        # The trigger condition configurations.
         self.eval_condition = eval_condition
+        # The value of the alert severity.
         self.severity = severity
 
     def validate(self):

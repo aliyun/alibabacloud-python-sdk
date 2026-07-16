@@ -11,7 +11,7 @@ class KillProcessResponseBody(DaraModel):
         data: main_models.KillProcessResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class KillProcessResponseBodyData(DaraModel):
         dbinstance_id: int = None,
         dbinstance_name: str = None,
     ):
-        # The number of queries that are terminated.
+        # The number of terminated tasks.
         self.count = count
         # The cluster ID.
         self.dbinstance_id = dbinstance_id

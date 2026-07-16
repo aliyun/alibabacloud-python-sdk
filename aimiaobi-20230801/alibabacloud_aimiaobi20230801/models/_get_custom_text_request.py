@@ -11,9 +11,14 @@ class GetCustomTextRequest(DaraModel):
         commodity_code: str = None,
         id: int = None,
     ):
+        # Workspace unique identifier: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Product code
         self.commodity_code = commodity_code
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
 

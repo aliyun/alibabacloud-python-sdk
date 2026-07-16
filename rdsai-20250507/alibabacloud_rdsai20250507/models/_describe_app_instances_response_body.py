@@ -17,13 +17,13 @@ class DescribeAppInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the RDS Supabase instances.
+        # A list of instances.
         self.instances = instances
-        # A reserved parameter. You do not need to specify this parameter.
+        # This parameter is reserved for future use.
         self.max_results = max_results
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -104,28 +104,29 @@ class DescribeAppInstancesResponseBodyInstances(DaraModel):
         v_switch_id: str = None,
         vpc_connection_string: str = None,
     ):
-        # The name of the AI application.
+        # The application name.
         self.app_name = app_name
-        # The application type. Only **supabase** is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
+        # The application type. The only supported value is **supabase**, which represents [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        # The components of the instance.
         self.components = components
-        # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+        # The DB instance ID of the connected ApsaraDB RDS for PostgreSQL instance.
         self.dbinstance_name = dbinstance_name
         # The instance type.
         self.instance_class = instance_class
-        # The minor version number of RDS Supabase instance.
+        # The minor version of the AI application.
         self.instance_minor_version = instance_minor_version
-        # The ID of the RDS Supabase instance.
+        # The ID of the application instance.
         self.instance_name = instance_name
-        # The public endpoint of the AI application.
+        # The public connection string.
         self.public_connection_string = public_connection_string
         # The region ID.
         self.region_id = region_id
-        # The instance status. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
+        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
-        # The ID of the vSwitch.
+        # The VSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal endpoint of the AI application.
+        # The VPC connection string.
         self.vpc_connection_string = vpc_connection_string
 
     def validate(self):
@@ -228,7 +229,9 @@ class DescribeAppInstancesResponseBodyInstancesComponents(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The component status.
         self.status = status
+        # The component type.
         self.type = type
 
     def validate(self):

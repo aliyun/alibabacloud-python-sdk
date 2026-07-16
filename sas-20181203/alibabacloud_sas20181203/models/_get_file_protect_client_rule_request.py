@@ -9,6 +9,7 @@ class GetFileProtectClientRuleRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The policy ID.
         self.id = id
 
     def validate(self):

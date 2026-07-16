@@ -11,13 +11,13 @@ class GetTopicStatusRequest(DaraModel):
         region_id: str = None,
         topic: str = None,
     ):
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the instance.
+        # Region ID.
         self.region_id = region_id
-        # The name of the topic.
+        # Topic name.
         # 
         # This parameter is required.
         self.topic = topic

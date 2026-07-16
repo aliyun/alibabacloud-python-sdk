@@ -10,11 +10,11 @@ class EnableCredentialProviderRequest(DaraModel):
         credential_provider_id: str = None,
         instance_id: str = None,
     ):
-        # 认证令牌提供商ID。
+        # The ID of the credential provider.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

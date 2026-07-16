@@ -18,12 +18,19 @@ class GetRuleV4ResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. A value of **200** indicates success. Other values indicate failure. Use this field to identify the cause of failure.
         self.code = code
+        # Rule information.
         self.data = data
+        # HTTP status code returned by the request. A value of 200 indicates success.
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns **successful** if the request succeeded.
         self.message = message
+        # Error details if the request failed. Use this field when returning multiple messages.
         self.messages = messages
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
         self.success = success
 
     def validate(self):

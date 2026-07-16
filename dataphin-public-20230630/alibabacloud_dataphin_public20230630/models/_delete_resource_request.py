@@ -12,12 +12,20 @@ class DeleteResourceRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # Remarks.
+        # 
         # This parameter is required.
         self.comment = comment
+        # Resource file ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Project ID.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

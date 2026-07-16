@@ -11,9 +11,14 @@ class ExportCustomSourceAnalysisTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Export format type. Default is jsonLine. jsonline: Exports in jsonLine format. excel: Exports in Excel format.
         self.export_type = export_type
+        # Unique ID for the task
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Unique identifier for the workspace: AgentKey
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

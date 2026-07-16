@@ -12,15 +12,15 @@ class DescribeRuleSnapshotRequest(DaraModel):
         rule_id: str = None,
         snapshot_version: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # Sets the language type for sending and receiving messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Policy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Snapshot version.
+        # The snapshot version.
         self.snapshot_version = snapshot_version
 
     def validate(self):

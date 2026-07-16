@@ -12,7 +12,7 @@ class UpdateConfigsRequest(DaraModel):
         self,
         configs: List[main_models.UpdateConfigsRequestConfigs] = None,
     ):
-        # The list of workspace configurations to update or add.
+        # A list of workspace configurations to update or add.
         self.configs = configs
 
     def validate(self):
@@ -51,28 +51,37 @@ class UpdateConfigsRequestConfigs(DaraModel):
         config_value: str = None,
         labels: List[main_models.UpdateConfigsRequestConfigsLabels] = None,
     ):
-        # The category of the configuration item. Supported categories:
+        # The category of the configuration item. The following categories are supported:
         # 
-        # *   CommonResourceConfig
-        # *   DLCAutoRecycle
-        # *   DLCPriorityConfig
-        # *   DSWPriorityConfig
-        # *   QuotaMaximumDuration
-        # *   CommonTagConfig
+        # - CommonResourceConfig: General resource configuration.
+        # 
+        # - DLCAutoRecycle: DLC automatic recycling.
+        # 
+        # - DLCPriorityConfig: DLC priority settings.
+        # 
+        # - DSWPriorityConfig: DSW priority settings.
+        # 
+        # - QuotaMaximumDuration: Configuration for the maximum runtime of a DLC job within a quota.
+        # 
+        # - CommonTagConfig: Tag settings.
         self.category_name = category_name
-        # The key of the configuration item. Supported keys:
+        # The key of the configuration item. The following keys are supported:
         # 
-        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
-        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
-        # *   predefinedTags: The predefined tags of the workspace. All created resources must have tags.
+        # - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
+        # 
+        # - isAutoRecycle: The configuration for automatic resource recycling. This key is valid only when CategoryName is set to DLCAutoRecycle.
+        # 
+        # - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # 
+        # - quotaMaximumDuration: The maximum runtime configuration for a DLC job within a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
+        # 
+        # - predefinedTags: The predefined tags for the workspace. Created resources must have these tags.
         self.config_key = config_key
         # The value of the configuration item.
         # 
-        # *   When ConfigKey is predefinedTags, the ConfigValue follows this format: [{"Type":"Tag","Key":"Key1","Value":"{"Products":"DLC,DSW,EAS","Values":"value1,value2,value3"}"}]. "Products" indicates the products that use the predefined tags.
+        # - If ConfigKey is set to predefinedTags, the format of ConfigValue is [{"Type":"Tag","Key":"Key1","Value":"{\\\\"Products\\\\":\\\\"DLC,DSW,EAS\\\\",\\\\"Values\\\\":\\\\"value1,value2,value3\\\\"}"}]. The Products field specifies which products use the predefined tags.
         self.config_value = config_value
-        # The tags of the configuration item.
+        # A list of tags for the configuration item.
         self.labels = labels
 
     def validate(self):
@@ -127,7 +136,7 @@ class UpdateConfigsRequestConfigsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
         # The value of the tag.
         self.value = value

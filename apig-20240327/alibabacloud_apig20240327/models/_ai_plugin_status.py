@@ -2,19 +2,22 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import List, Dict, Any
 
 from darabonba.model import DaraModel
 
 class AiPluginStatus(DaraModel):
     def __init__(
         self,
-        error_logs: Dict[str, str] = None,
+        error_logs: List[Dict[str, Any]] = None,
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # The list of plug-in runtime error logs. Each item is a map[string]any key-value pair.
         self.error_logs = error_logs
+        # The plug-in instance ID.
         self.plugin_id = plugin_id
+        # Indicates whether the backend service that the plug-in depends on is healthy.
         self.service_healthy = service_healthy
 
     def validate(self):

@@ -19,20 +19,59 @@ class CreateGatewayRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable auto-renewal. Valid values:
+        # 
+        # - **true**: enables auto-renewal.
+        # 
+        # - **false**: disables auto-renewal.
+        # 
+        # Default value: **false**.
+        # 
+        # > This parameter applies only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
+        # The cluster specification.
         self.dbcluster_class = dbcluster_class
+        # The database engine type. Valid values:
+        # 
+        # - MySQL
+        # 
+        # - PostgreSQL
         self.dbtype = dbtype
+        # The billing method. Valid values:
+        # 
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
+        # 
         # This parameter is required.
         self.pay_type = pay_type
+        # The unit of the subscription duration. This parameter is required when **PayType** is set to **Prepaid**.
+        # 
+        # - **Year**: The subscription duration is measured in years.
+        # 
+        # - **Month**: The subscription duration is measured in months.
         self.period = period
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The subscription duration. This parameter is required when **PayType** is set to **Prepaid**.
+        # 
+        # - If **Period** is set to **Month**, the value must be an integer from `1` to `9`.
+        # 
+        # - If **Period** is set to **Year**, the value must be an integer from `1` to `3`.
         self.used_time = used_time
+        # The ID of the virtual private cloud (VPC).
+        # 
         # This parameter is required.
         self.vpcid = vpcid
+        # The vSwitch ID.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The availability zone ID.
         self.zone_id = zone_id
 
     def validate(self):

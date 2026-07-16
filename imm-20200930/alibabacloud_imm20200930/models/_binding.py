@@ -16,35 +16,41 @@ class Binding(DaraModel):
         uri: str = None,
         update_time: str = None,
     ):
-        # The RFC3339Nano timestamp when the OSS bucket was bound to the dataset.
+        # The timestamp when the binding between the dataset and the OSS bucket was created. The format is RFC3339Nano.
         self.create_time = create_time
         # The name of the dataset.
         self.dataset_name = dataset_name
-        # The type of the scan. Valid values:
+        # The scan type. Valid values:
         # 
-        # *   FullScanning
-        # *   IncrementalScanning
+        # - FullScanning: A full scan is in progress.
+        # 
+        # - IncrementalScanning: An incremental scan is in progress.
         self.phase = phase
         # The name of the project.
         self.project_name = project_name
         # Reason
         self.reason = reason
-        # The status of the binding between the dataset and the OSS bucket. Valid values:
+        # The state of the binding between the dataset and the OSS bucket. Valid values:
         # 
-        # *   Ready: IMM is ready to create the binding.
-        # *   Stopped: The binding creation is suspended.
-        # *   Running: The binding is running.
-        # *   Retrying: IMM is retrying the binding.
-        # *   Failed: The binding failed.
-        # *   Deleted: The binding is deleted.
+        # - Ready: The binding is being prepared after it is created.
+        # 
+        # - Stopped: The binding is paused.
+        # 
+        # - Running: The binding is running.
+        # 
+        # - Retrying: The binding is being retried after it is created.
+        # 
+        # - Failed: The binding failed to be created.
+        # 
+        # - Deleted: The binding is deleted.
         self.state = state
-        # The URI of the OSS bucket to which the dataset is bound.
+        # The URI of the Object Storage Service (OSS) bucket attached to the dataset.
         # 
-        # The URI is in the `oss://${bucketname}` format, where `bucketname` is the name of the OSS bucket.
+        # The format of an OSS bucket URI is `oss://${bucketname}`. The `bucketname` is the name of an OSS bucket that is in the same region as the current project.
         self.uri = uri
-        # The RFC3339Nano timestamp when the binding was modified.
+        # The timestamp when the binding between the dataset and the OSS bucket was last modified. The format is RFC3339Nano.
         # 
-        # >  If you never suspend or retry the binding between the dataset and the OSS bucket after you complete the binding, the value of UpdateTime is the same as that of CreateTime.
+        # > After a binding is created, if the binding has not been paused or restarted, this timestamp is the same as the creation timestamp.
         self.update_time = update_time
 
     def validate(self):

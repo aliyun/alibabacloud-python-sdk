@@ -15,15 +15,19 @@ class ListTemplatesRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
-        # 当前页码，从1开始计数
+        # The number of the page to return.
         self.page_number = page_number
-        # 每页返回的记录数量
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The status of the template. Use this parameter to filter templates.
         self.status = status
+        # The name of the template. Use this parameter to filter templates.
         self.template_name = template_name
-        # 按模板类型过滤
+        # The type of the template. Use this parameter to filter templates.
         self.template_type = template_type
+        # The ID of the workspace to which the template belongs.
         self.workspace_id = workspace_id
+        # The IDs of the workspaces. You can use this parameter to query templates from multiple workspaces.
         self.workspace_ids = workspace_ids
 
     def validate(self):

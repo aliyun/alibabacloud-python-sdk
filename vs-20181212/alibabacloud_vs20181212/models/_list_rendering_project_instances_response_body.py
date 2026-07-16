@@ -14,8 +14,11 @@ class ListRenderingProjectInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # List of cloud application service instances
         self.rendering_instances = rendering_instances
+        # Request ID
         self.request_id = request_id
+        # Total number of cloud application service instances
         self.total_count = total_count
 
     def validate(self):
@@ -65,8 +68,11 @@ class ListRenderingProjectInstancesResponseBodyRenderingInstances(DaraModel):
         rendering_instance_id: str = None,
         state_info: main_models.ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo = None,
     ):
+        # Time when the instance was associated with the project
         self.association_time = association_time
+        # Cloud application service instance
         self.rendering_instance_id = rendering_instance_id
+        # Status information for the project instance
         self.state_info = state_info
 
     def validate(self):
@@ -110,8 +116,11 @@ class ListRenderingProjectInstancesResponseBodyRenderingInstancesStateInfo(DaraM
         state: str = None,
         update_time: str = None,
     ):
+        # Description of the current status
         self.comment = comment
+        # Instance status
         self.state = state
+        # Time when the status was last updated
         self.update_time = update_time
 
     def validate(self):

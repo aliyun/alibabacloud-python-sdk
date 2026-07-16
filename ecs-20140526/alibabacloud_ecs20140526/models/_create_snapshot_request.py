@@ -26,60 +26,54 @@ class CreateSnapshotRequest(DaraModel):
         storage_location_arn: str = None,
         tag: List[main_models.CreateSnapshotRequestTag] = None,
     ):
-        # The category of the snapshot. Valid values:
+        # The snapshot type. Valid values:
         # 
-        # *   Standard: standard snapshot
-        # *   Flash: local snapshot
+        # - Standard: standard snapshot.
+        # - Flash: local snapshot.
         # 
-        # >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+        # > This parameter will be deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. This applies to enterprise SSDs, ESSD AutoPL disks, ESSD Entry disks, and regional enterprise SSDs. Standard snapshots of standard SSDs are also active by default.
         self.category = category
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http:// `or `https://`.
+        # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
-        # By default, this parameter is left empty.
+        # Default value: null.
         self.description = description
-        # The ID of the cloud disk.
+        # The disk ID.
         # 
         # This parameter is required.
         self.disk_id = disk_id
-        # Specifies whether to enable the instant access feature. Valid values:
-        # 
-        # *   true: enables the instant access feature. This feature can be enabled only for ESSDs.
-        # *   false: does not enable the instant access feature. If InstantAccess is set to false, a standard snapshot is created.
+        # Specifies whether to enable the snapshot instant access feature. Valid values:
+        # - true: enables the feature. Only enterprise SSDs support this feature.
+        # - false: shutdown. A standard snapshot is created.
         # 
         # Default value: false.
         # 
-        # >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+        # > This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. This applies to enterprise SSDs, ESSD AutoPL disks, ESSD Entry disks, and regional enterprise SSDs. Standard snapshots of standard SSDs are also active by default.
         self.instant_access = instant_access
-        # The validity period of the instant access feature. When the validity period ends, the feature is disabled and the instant access snapshot is automatically released. This parameter takes effect only when `InstantAccess` is set to true. Unit: days. Valid values: 1 to 65535.
+        # Settings for the retention period of the snapshot instant access feature. After the retention period expires, the snapshot is subject to automatic release. This parameter takes effect only when `InstantAccess=true`. Unit: days. Valid values: 1 to 65535.
         # 
-        # By default, the value of this parameter is the same as that of `RetentionDays`.
+        # Default value: the same as the value of the `RetentionDays` parameter.
         # 
-        # >  This parameter is no longer used. By default, new standard snapshots of ESSDs are upgraded to instant access snapshots free of charge without the need for additional configurations. For more information, see [Use the instant access feature](https://help.aliyun.com/document_detail/193667.html).
+        # > This parameter is deprecated. Standard snapshots of enterprise SSDs have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration or fees are required. This applies to enterprise SSDs, ESSD AutoPL disks, ESSD Entry disks, and regional enterprise SSDs. Standard snapshots of standard SSDs are also active by default.
         self.instant_access_retention_days = instant_access_retention_days
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The snapshot type. Valid values:
-        # 
-        # *   Standard: standard snapshot
-        # *   Flash: local snapshot
-        # 
-        # > This parameter will be removed in the future. We recommend that you use the `InstantAccess` parameter to ensure future compatibility. This parameter and the `InstantAccess` parameter cannot be specified at the same time. For more information, see the "Description" section of this topic.
+        # The ID of the resource group to which the snapshot belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The retention period of the snapshot. Unit: days. Valid values: 1 to 65536. After the retention period ends, the snapshot is automatically released.
+        # Settings for the retention period of the snapshot. Unit: days. Valid values: 1 to 65536. The snapshot is subject to automatic release when the retention period expires.
         # 
-        # This parameter is left empty by default, which indicates that the snapshot is not automatically released.
+        # Default value: null, which indicates that the snapshot is not subject to automatic release.
         self.retention_days = retention_days
-        # The name of the snapshot. The name must be 2 to 128 characters in length and start with a letter. The name can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. The name can contain Unicode characters under the letter category (including letters in English and Chinese), ASCII digits (0-9), colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # >  The name cannot start with http:// or https://. The name cannot start with `auto` because the names of automatic snapshots start with auto.
+        # > The name cannot start with `auto` to avoid conflicts with the names of automatic snapshots.
         self.snapshot_name = snapshot_name
-        # > This parameter is unavailable for public use.
+        # > This parameter is not publicly available.
         self.storage_location_arn = storage_location_arn
-        # The tags to add to the snapshot.
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -200,9 +194,9 @@ class CreateSnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the snapshot. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # The tag key of the snapshot. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
         self.key = key
-        # The value of tag N to add to the snapshot. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # The tag value of the snapshot. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

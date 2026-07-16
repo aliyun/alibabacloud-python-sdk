@@ -14,10 +14,15 @@ class AgenticTableColumn(DaraModel):
         engine_meta: main_models.AgenticTableColumnEngineMeta = None,
         position: int = None,
     ):
+        # The name of the column.
         self.column_name = column_name
+        # The data type of the column.
         self.column_type = column_type
+        # The description of the column.
         self.description = description
+        # Engine-specific metadata for the column.
         self.engine_meta = engine_meta
+        # The 1-based ordinal position of the column within the table.
         self.position = position
 
     def validate(self):

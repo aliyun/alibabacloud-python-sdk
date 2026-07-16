@@ -15,21 +15,21 @@ class DescribeTaskLogListRequest(DaraModel):
         task_log_id: str = None,
         reg_id: str = None,
     ):
-        # Current page.
+        # The current page number.
         self.current_page = current_page
-        # Whether to paginate.
+        # Specifies whether to enable pagination.
         self.is_page = is_page
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # Task log ID
+        # The task log ID.
         self.task_log_id = task_log_id
-        # Region code
+        # The region code.
         self.reg_id = reg_id
 
     def validate(self):

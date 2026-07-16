@@ -12,9 +12,17 @@ class DeleteJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The response message. An error message is returned if the request is unsuccessful.
         self.message = message
+        # The ID of the request. This ID is unique to each request and can be used for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

@@ -12,10 +12,21 @@ class UpdateRenderingProjectShrinkRequest(DaraModel):
         project_name: str = None,
         session_attribs_shrink: str = None,
     ):
+        # Project description
         self.description = description
+        # Project ID
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # Default naming rules:
+        # 
+        # 1. Length 1-128
+        # 
+        # 2. Lowercase letters, numbers, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 3. The first and last characters must be letters or digits. At least one of ProjectName, SessionAttribs, or Description must be specified.
         self.project_name = project_name
+        # Session attributes
         self.session_attribs_shrink = session_attribs_shrink
 
     def validate(self):

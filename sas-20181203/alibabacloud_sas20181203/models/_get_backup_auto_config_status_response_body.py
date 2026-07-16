@@ -11,9 +11,9 @@ class GetBackupAutoConfigStatusResponseBody(DaraModel):
         data: main_models.GetBackupAutoConfigStatusResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response parameters.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -49,10 +49,9 @@ class GetBackupAutoConfigStatusResponseBodyData(DaraModel):
         self,
         can_config_auto: bool = None,
     ):
-        # Indicates whether the anti-ransomware policy for servers can be automatically configured by the managed anti-ransomware feature. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
+        # Indicates whether the managed service supports configuring anti-ransomware backup policies. Valid values:
+        # - **false**: Not supported.
+        # - **true**: Supported.
         self.can_config_auto = can_config_auto
 
     def validate(self):

@@ -11,10 +11,15 @@ class DescribeIntentStatisticsRequest(DaraModel):
         job_group_id: str = None,
         limit: int = None,
     ):
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Job group ID
+        # 
         # This parameter is required.
         self.job_group_id = job_group_id
+        # Number of statistics to display (required)
         self.limit = limit
 
     def validate(self):

@@ -12,7 +12,7 @@ class UpdateSecretRequest(DaraModel):
         secret_data: main_models.UpdateSecretRequestSecretData = None,
         secret_id: int = None,
     ):
-        # The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+        # The ID of the namespace where the Secret instance is located. If the instance is in the default namespace, specify only the region ID, such as `cn-beijing`.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
@@ -20,6 +20,8 @@ class UpdateSecretRequest(DaraModel):
         # 
         # This parameter is required.
         self.secret_data = secret_data
+        # The ID of the Secret instance.
+        # 
         # This parameter is required.
         self.secret_id = secret_id
 
@@ -62,11 +64,11 @@ class UpdateSecretRequestSecretData(DaraModel):
         self,
         secret_data: str = None,
     ):
-        # The information about the key-value pairs of the Secret. This parameter is required. The following formats are supported:
+        # The key-value pairs of the Secret. This parameter is required. The value must be a JSON object.
         # 
-        # {"Data":"{"k1":"v1", "k2":"v2"}"}
+        # For more information about configuration items, see [Manage and use secrets](https://help.aliyun.com/document_detail/463383.html).
         # 
-        # k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes Secret](https://help.aliyun.com/document_detail/463383.html).
+        # k specifies a key and v specifies a value. For more information about configuration items, see [Manage and use secrets](https://help.aliyun.com/document_detail/463383.html).
         # 
         # This parameter is required.
         self.secret_data = secret_data

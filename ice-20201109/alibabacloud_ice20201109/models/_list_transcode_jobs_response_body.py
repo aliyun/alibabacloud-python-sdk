@@ -16,9 +16,9 @@ class ListTranscodeJobsResponseBody(DaraModel):
     ):
         # The list of jobs.
         self.jobs = jobs
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. The token of the next page is returned after you call this operation for the first time.
+        # The token for the next page of results. Leave this parameter empty for the first request. The token is returned after the first query.
         self.next_page_token = next_page_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -79,38 +79,41 @@ class ListTranscodeJobsResponseBodyJobs(DaraModel):
         trigger_source: str = None,
         user_data: str = None,
     ):
-        # The time when the job was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the job was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.create_time = create_time
-        # The time when the job was complete. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the job was complete. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The input group of the job. An input of a single file indicates a transcoding job. An input of multiple files indicates an audio and video stream merge job.
+        # The input group of the job. A single input indicates a transcoding job. Multiple inputs indicate a composition job.
         self.input_group = input_group
-        # The number of subjobs.
+        # The number of sub-jobs.
         self.job_count = job_count
         # The job name.
         self.name = name
         # The output group of the job.
         self.output_group = output_group
-        # The main job ID.
+        # The parent job ID.
         self.parent_job_id = parent_job_id
-        # The completion percentage of the job.
+        # The progress of the job.
         self.percent = percent
-        # The ID of the request that submitted the job.
+        # The request ID of the job.
         self.request_id = request_id
-        # The scheduling configuration of the job.
+        # The schedule configuration of the job.
         self.schedule_config = schedule_config
-        # The state of the job.
+        # The status of the job. Valid values:
         # 
-        # *   Success: At least one of the subjobs is successful.
-        # *   Fail: All subjobs failed.
+        # - `Success`: The job is successful if at least one sub-job is successful.
+        # 
+        # - `Fail`: The job fails if all sub-jobs fail.
         self.status = status
-        # The time when the job was submitted. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The time when the job was submitted. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.submit_time = submit_time
         # The source of the job. Valid values:
         # 
-        # *   API
-        # *   WorkFlow
-        # *   Console
+        # - `API`: The job is submitted by calling an API operation.
+        # 
+        # - `Workflow`: The job is triggered by a workflow.
+        # 
+        # - `Console`: The job is submitted on the console.
         self.trigger_source = trigger_source
         # The user data.
         self.user_data = user_data
@@ -239,9 +242,9 @@ class ListTranscodeJobsResponseBodyJobsScheduleConfig(DaraModel):
         pipeline_id: str = None,
         priority: int = None,
     ):
-        # The ID of the MPS queue to which the job was submitted.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The priority of the job. Valid values: 1 to 10. The greater the value, the higher the priority.
+        # The priority of the job. A larger value indicates a higher priority. The value can be an integer from 1 to 10.
         self.priority = priority
 
     def validate(self):
@@ -276,7 +279,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroup(DaraModel):
         output: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupOutput = None,
         process_config: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig = None,
     ):
-        # The output file configuration.
+        # The output media configuration.
         self.output = output
         # The job processing configuration.
         self.process_config = process_config
@@ -323,17 +326,17 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfig(DaraModel):
         text_watermarks: List[main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks] = None,
         transcode: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode = None,
     ):
-        # The multi-input stream merge configuration.
+        # The configurations for combining multiple inputs.
         self.combine_configs = combine_configs
         # The encryption settings.
         self.encryption = encryption
-        # The watermark configuration for an image.
+        # The image watermark configurations.
         self.image_watermarks = image_watermarks
-        # Indicates whether the tags of the input stream are inherited in the output stream. This parameter does not take effect when the input is not a media asset. Default value: false.
+        # Specifies whether to inherit tags from the input stream. This parameter applies only when the input is a Media Asset. Default Value: false
         self.is_inherit_tags = is_inherit_tags
-        # The subtitle configuration.
+        # The subtitle burn-in settings.
         self.subtitles = subtitles
-        # The configurations of the text watermarks.
+        # The text watermark configurations.
         self.text_watermarks = text_watermarks
         # The transcoding configuration.
         self.transcode = transcode
@@ -441,7 +444,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscode(DaraMod
         overwrite_params: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
         self.overwrite_params = overwrite_params
         # The template ID.
         self.template_id = template_id
@@ -485,10 +488,11 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
     ):
         # The audio settings.
         self.audio = audio
-        # The encapsulation format settings.
+        # The container format settings.
         self.container = container
-        # The encapsulation settings.
+        # The muxing settings.
         self.mux_config = mux_config
+        # The custom tags.
         self.tags = tags
         # The video settings.
         self.video = video
@@ -570,80 +574,95 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         scan_mode: str = None,
         width: str = None,
     ):
-        # The maximum adaptive bitrate (ABR). This parameter takes effect only for Narrowband HD 1.0. Valid values: [10,50000]. Unit: Kbit/s.
+        # The maximum bitrate for adaptive bitrate (ABR) streaming. This parameter is valid only for videos with a narrow height and a wide width. Valid values: 10 to 50000. Unit: Kbit/s.
         self.abr_max = abr_max
-        # The average bitrate of the video.
+        # The average video bitrate.
         # 
-        # *   Valid values: [10,50000].
-        # *   Unit: Kbit/s.
+        # - Valid values: 10 to 50000.
+        # 
+        # - Unit: Kbit/s.
         self.bitrate = bitrate
         # The buffer size.
         # 
-        # *   Valid values: [1000,128000].
-        # *   Default value: 6000.
-        # *   Unit: KB.
+        # - Valid values: 1000 to 128000.
+        # 
+        # - Default value: 6000.
+        # 
+        # - Unit: Kbit.
         self.bufsize = bufsize
-        # The encoding format.
+        # The video codec.
         self.codec = codec
-        # The constant rate factor.
+        # The quality-to-bitrate control factor.
         # 
-        # *   Valid values: [0,51].
-        # *   Default value: 23 if the encoding format is H.264, or 26 if the encoding format is H.265.
+        # - Valid values: 0 to 51.
         # 
-        # If this parameter is set, the value of Bitrate becomes invalid.
+        # - Default value: If the codec is H.264, the default value is 23. If the codec is H.265, the default value is 26.
+        # 
+        # If you specify Crf, the value of Bitrate is ignored.
         self.crf = crf
-        # The method of video cropping. Valid values:
+        # The cropping settings. Two modes are supported.
         # 
-        # *   border: automatically detects and removes black bars.
-        # *   A value in the width:height:left:top format: crops the videos based on the custom settings. Example: 1280:800:0:140.
+        # - Automatic: Set the value to `border` to automatically detect and crop black borders.
+        # 
+        # - Manual: Specify the crop area in the `width:height:left:top` format. Example: `1280:800:0:140`.
         self.crop = crop
         # The frame rate.
         # 
-        # *   Valid values: (0,60].
-        # *   The value is 60 if the frame rate of the input video exceeds 60.
-        # *   Default value: the frame rate of the input video.
+        # - Valid values: 0 to 60.
+        # 
+        # - If the frame rate of the input file is greater than 60, the value is 60.
+        # 
+        # - Default value: the frame rate of the input file.
         self.fps = fps
-        # The maximum number of frames between two keyframes.
+        # The maximum number of frames in a Group of Pictures (GOP).
         # 
-        # *   Valid values: [1,1080000].
-        # *   Default value: 250.
+        # - Valid values: 1 to 1080000.
+        # 
+        # - Default value: 250.
         self.gop = gop
-        # The height of the output video.
+        # The height.
         # 
-        # *   Valid values: [128,4096].
-        # *   Unit: pixels.
-        # *   Default value: the height of the input video.
+        # - Valid values: 128 to 4096.
+        # 
+        # - Unit: px.
+        # 
+        # - Default value: the height of the source video.
         self.height = height
-        # Indicates whether the auto-rotate screen feature is enabled.
+        # Specifies whether to enable adaptive resolution by long and short sides.
         self.long_short_mode = long_short_mode
-        # The maximum bitrate of the output video. Valid values: [10,50000]. Unit: Kbit/s.
+        # The maximum video bitrate. Valid values: 10 to 50000. Unit: Kbit/s.
         self.maxrate = maxrate
-        # The black bars added to the video.
+        # The settings for adding black bars.
         # 
-        # *   Format: width:height:left:top.
-        # *   Example: 1280:800:0:140.
+        # - Format: `width:height:left:top`.
+        # 
+        # - Example: `1280:800:0:140`.
         self.pad = pad
-        # The pixel format of the video. Valid values: standard pixel formats such as yuv420p and yuvj420p.
+        # The pixel format. Valid values include `yuv420p` and `yuvj420p`.
         self.pix_fmt = pix_fmt
-        # The preset video algorithm. This parameter takes effect only if the encoding format is H.264. Valid values: veryfast, fast, medium, slow, and slower. Default value: medium.
+        # The preset of the video encoder. This parameter is supported only when the video codec is H.264. Valid values: `veryfast`, `fast`, `medium`, `slow`, and `slower`. Default value: `medium`.
         self.preset = preset
-        # The encoding profile. Valid values: baseline, main, and high.
+        # The encoding profile. Valid values include baseline, main, and high.
         # 
-        # *   baseline: applicable to mobile devices.
-        # *   main: applicable to standard-definition devices.
-        # *   high: applicable to high-definition devices.
+        # - `baseline`: suitable for mobile devices.
         # 
-        # Default value: high.
+        # - `main`: suitable for standard-definition devices.
+        # 
+        # - `high`: suitable for high-definition devices.
+        # 
+        # Default value: `high`.
         self.profile = profile
-        # Indicates whether the video was removed.
+        # Specifies whether to delete the video. Valid values: `true` and `false`.
         self.remove = remove
-        # The scan mode. Valid values: interlaced and progressive.
+        # The scan mode. Valid values: `interlaced` and `progressive`.
         self.scan_mode = scan_mode
-        # The width of the output video.
+        # The width.
         # 
-        # *   Valid values: [128,4096].
-        # *   Unit: pixels.
-        # *   Default value: the width of the input video.
+        # - Valid values: 128 to 4096.
+        # 
+        # - Unit: px.
+        # 
+        # - Default value: the width of the source video.
         self.width = width
 
     def validate(self):
@@ -804,9 +823,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         duration: str = None,
         force_seg_time: str = None,
     ):
-        # The segment length.
+        # The duration of each segment.
         self.duration = duration
-        # The forced segmentation point in time.
+        # The time points at which to enforce segmentation.
         self.force_seg_time = force_seg_time
 
     def validate(self):
@@ -876,25 +895,29 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
     ):
         # The audio bitrate of the output file.
         # 
-        # *   Valid values: [8,1000].
-        # *   Unit: Kbit/s.
-        # *   Default value: 128.
-        self.bitrate = bitrate
-        # The number of sound channels. Default value: 2.
-        self.channels = channels
-        # The audio codec. Valid values: AAC, MP3, VORBIS, and FLAC. Default value: AAC.
-        self.codec = codec
-        # The audio codec profile. If the Codec parameter is set to AAC, the valid values are aac_low, aac_he, aac_he_v2, aac_ld, and aac_eld.
-        self.profile = profile
-        # Indicates whether the audio stream is deleted.
-        self.remove = remove
-        # The sampling rate.
+        # - Valid values: 8 to 1000.
         # 
-        # *   Default value: 44100.
-        # *   Valid values: 22050, 32000, 44100, 48000, and 96000.
-        # *   Unit: Hz.
+        # - Unit: Kbit/s.
+        # 
+        # - Default value: 128.
+        self.bitrate = bitrate
+        # The number of audio channels. Default value: 2.
+        self.channels = channels
+        # The audio codec. Valid values: `AAC`, `MP3`, `VORBIS`, and `FLAC`. Default value: `AAC`.
+        self.codec = codec
+        # The audio encoding preset. This parameter is supported only when the audio codec is AAC. Valid values: `aac_low`, `aac_he`, `aac_he_v2`, `aac_ld`, and `aac_eld`.
+        self.profile = profile
+        # Specifies whether to delete the audio stream. Valid values: `true` and `false`.
+        self.remove = remove
+        # The sample rate.
+        # 
+        # - Valid values: 22050, 32000, 44100, 48000, and 96000.
+        # 
+        # - Default value: 44100.
+        # 
+        # - Unit: Hz.
         self.samplerate = samplerate
-        # The volume configurations.
+        # The volume control settings.
         self.volume = volume
 
     def validate(self):
@@ -963,13 +986,13 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTranscodeOverwrit
         method: str = None,
         true_peak: str = None,
     ):
-        # The output volume.
+        # The target integrated loudness.
         self.integrated_loudness_target = integrated_loudness_target
-        # The volume range.
+        # The target loudness range.
         self.loudness_range_target = loudness_range_target
-        # The volume adjustment method. Valid values:
+        # The volume adjustment method.
         self.method = method
-        # The peak volume.
+        # The true peak level.
         self.true_peak = true_peak
 
     def validate(self):
@@ -1016,7 +1039,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarks(Da
         overwrite_params: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
         self.overwrite_params = overwrite_params
         # The template ID.
         self.template_id = template_id
@@ -1063,23 +1086,29 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigTextWatermarksOve
         left: str = None,
         top: str = None,
     ):
-        # Indicates whether the text size was adjusted based on the output video dimensions. true / false, default: false
+        # Specifies whether to adjust the font size based on the output video size.
+        # 
+        # - `true`: The font size is automatically adjusted based on the output video size.
+        # 
+        # - `false`: The font size remains fixed and is not affected by the output video size.
+        # 
+        # Default value: false
         self.adaptive = adaptive
-        # The border color.
+        # The color of the border.
         self.border_color = border_color
-        # The border width.
+        # The width of the border.
         self.border_width = border_width
-        # The watermark text. Base64 encoding is not required. The string must be encoded in UTF-8.
+        # The watermark text, which must be UTF-8 encoded. The text does not need to be Base64 encoded.
         self.content = content
-        # The transparency of the watermark.
+        # The transparency.
         self.font_alpha = font_alpha
-        # The color of the text.
+        # The color.
         self.font_color = font_color
-        # The font of the text.
+        # The font.
         self.font_name = font_name
-        # The size of the text.
+        # The font size.
         self.font_size = font_size
-        # The distance of the watermark from the left edge.
+        # The distance from the left edge of the video.
         self.left = left
         # The distance of the watermark from the top edge.
         self.top = top
@@ -1164,7 +1193,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitles(DaraMod
         overwrite_params: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # The overwrite parameters. If specified, these parameters overwrite the corresponding parameters in the template.
         self.overwrite_params = overwrite_params
         # The template ID.
         self.template_id = template_id
@@ -1251,15 +1280,17 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigSubtitlesOverwrit
         media: str = None,
         type: str = None,
     ):
-        # The media object.
+        # The media value:
         # 
-        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, the ID of a media asset is returned.
+        # - If type is OSS, the value is a URL. Both OSS and HTTP protocols are supported.
+        # 
+        # - If type is Media, the value is the Media Asset ID.
         self.media = media
         # The type of the media object. Valid values:
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - OSS: an Object Storage Service (OSS) file.
+        # 
+        # - Media: the ID of the Media Asset.
         self.type = type
 
     def validate(self):
@@ -1294,7 +1325,7 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarks(D
         overwrite_params: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParams = None,
         template_id: str = None,
     ):
-        # The parameters that are used to overwrite the corresponding parameters of the template.
+        # The override parameter. If you specify this parameter, the corresponding parameter in the template is overwritten.
         self.overwrite_params = overwrite_params
         # The template ID.
         self.template_id = template_id
@@ -1338,19 +1369,19 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         timeline: main_models.ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOverwriteParamsTimeline = None,
         width: str = None,
     ):
-        # The position of the watermark on the x-axis.
+        # The horizontal offset of the watermark.
         self.dx = dx
-        # The position of the watermark on the y-axis.
+        # The vertical offset of the watermark.
         self.dy = dy
         # The watermark image file.
         self.file = file
-        # The height of the output video.
+        # The height of the watermark.
         self.height = height
-        # The reference position of the watermark. Valid values: TopLeft, TopRight, BottomLeft, and BottomRight. Default value: TopLeft.
+        # The reference position. Valid values: `TopLeft`, `TopRight`, `BottomLeft`, and `BottomRight`. Default value: `TopLeft`.
         self.refer_pos = refer_pos
         # The timeline settings.
         self.timeline = timeline
-        # The width of the output video.
+        # The width of the watermark.
         self.width = width
 
     def validate(self):
@@ -1420,9 +1451,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         duration: str = None,
         start: str = None,
     ):
-        # The duration of the stream. Valid values: the number of seconds or "ToEND".
+        # The display duration in seconds. You can also set the value to `ToEND`.
         self.duration = duration
-        # The beginning of the time range for which data was queried.
+        # The start time.
         self.start = start
 
     def validate(self):
@@ -1457,12 +1488,17 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigImageWatermarksOv
         media: str = None,
         type: str = None,
     ):
-        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
-        self.media = media
-        # The type of the media object. Valid values:
+        # The media information. The value of this parameter varies based on the value of Type.
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
+        # 
+        # - If Type is set to `Media`, the value of this parameter must be a media ID.
+        self.media = media
+        # The type of the media asset. Valid values:
+        # 
+        # - `OSS`: an OSS file.
+        # 
+        # - `Media`: a media asset ID.
         self.type = type
 
     def validate(self):
@@ -1498,9 +1534,9 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigEncryption(DaraMo
         decrypt_key_uri: str = None,
         encrypt_type: str = None,
     ):
-        # The ciphertext of HTTP Live Streaming (HLS) encryption.
+        # The key ciphertext for standard encryption.
         self.cipher_text = cipher_text
-        # The endpoint of the decryption service for HLS encryption.
+        # The URL of the decryption service for standard encryption.
         self.decrypt_key_uri = decrypt_key_uri
         # The encryption type.
         self.encrypt_type = encrypt_type
@@ -1549,11 +1585,11 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs(Da
         # 
         # This parameter is required.
         self.audio_index = audio_index
-        # The duration of the input stream. The default value is the duration of the video.
+        # The duration of the input stream. The default is the duration of the video.
         self.duration = duration
-        # The start time of the input stream. Default value: 0.
+        # The start time of the input stream. The default value is 0.
         self.start = start
-        # The video stream index.
+        # The index of the video stream.
         # 
         # This parameter is required.
         self.video_index = video_index
@@ -1603,14 +1639,19 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupOutput(DaraModel):
         output_url: str = None,
         type: str = None,
     ):
-        # The media object. If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported. If Type is set to Media, the ID of a media asset is returned.
-        self.media = media
-        # The URL of the transcoded output stream. This parameter is required only when the output is a media asset.
-        self.output_url = output_url
-        # The type of the media object. Valid values:
+        # The media information. The value of this parameter varies based on the value of Type.
         # 
-        # *   OSS: an OSS object.
-        # *   Media: a media asset.
+        # - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
+        # 
+        # - If Type is set to `Media`, the value of this parameter must be a media ID.
+        self.media = media
+        # The URL of the output stream. This parameter is required only when you transcode a media stream.
+        self.output_url = output_url
+        # The type of the media asset. Valid values:
+        # 
+        # - `OSS`: an OSS file.
+        # 
+        # - `Media`: a media asset ID.
         self.type = type
 
     def validate(self):
@@ -1652,17 +1693,19 @@ class ListTranscodeJobsResponseBodyJobsInputGroup(DaraModel):
         media: str = None,
         type: str = None,
     ):
-        # The URL of the media asset. This parameter is specified only when the media asset is transcoded.
+        # The URL of the media stream. This parameter is required only when you transcode a media stream.
         self.input_url = input_url
-        # The media object.
+        # The media information. The value of this parameter varies based on the value of Type.
         # 
-        # *   If Type is set to OSS, the URL of an OSS object is returned. Both the OSS and HTTP protocols are supported.
-        # *   If Type is set to Media, the ID of a media asset is returned.
+        # - If Type is set to `OSS`, the value of this parameter must be an OSS URL. Both the `oss://` and `http(s)://` protocols are supported.
+        # 
+        # - If Type is set to `Media`, the value of this parameter must be a media ID.
         self.media = media
-        # The type of the media object. Valid values:
+        # The type of the media asset. Valid values:
         # 
-        # *   OSS: an Object Storage Service (OSS) object.
-        # *   Media: a media asset.
+        # - `OSS`: an OSS file.
+        # 
+        # - `Media`: a media asset ID.
         self.type = type
 
     def validate(self):

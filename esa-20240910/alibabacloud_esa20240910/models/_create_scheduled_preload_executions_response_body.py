@@ -17,17 +17,17 @@ class CreateScheduledPreloadExecutionsResponseBody(DaraModel):
         success_executions: List[main_models.CreateScheduledPreloadExecutionsResponseBodySuccessExecutions] = None,
         total_count: int = None,
     ):
-        # The information about prefetch plans that failed to be created.
+        # The information about prefetch plans that failed to be added.
         self.failed_executions = failed_executions
-        # The information about plan failures.
+        # The list of failure messages for plans that failed to be added.
         self.failed_messages = failed_messages
         # The request ID.
         self.request_id = request_id
-        # The number of prefetch plans that are created.
+        # The number of prefetch plans that were successfully added.
         self.success_count = success_count
-        # The information about created prefetch plans.
+        # The information about prefetch plans that were successfully added.
         self.success_executions = success_executions
-        # The total number of new plans requested.
+        # The total number of plans requested to be added.
         self.total_count = total_count
 
     def validate(self):
@@ -109,27 +109,26 @@ class CreateScheduledPreloadExecutionsResponseBodySuccessExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plans.
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The ID of the prefetch plan.
+        # The prefetch plan ID.
         self.id = id
-        # The time interval between each batch execution. Unit: seconds.
+        # The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
         self.interval = interval
-        # The ID of the prefetch task.
+        # The prefetch task ID.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
+        # The number of URLs to prefetch per batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plans.
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
+        # The status of the scheduled prefetch plan. Valid values:
+        # - **waiting**: Waiting to be executed.
+        # - **running**: Being executed.
+        # - **finished**: Execution completed.
+        # - **failed**: Execution failed.
+        # - **stopped**: Execution paused.
         self.status = status
 
     def validate(self):
@@ -206,27 +205,26 @@ class CreateScheduledPreloadExecutionsResponseBodyFailedExecutions(DaraModel):
         start_time: str = None,
         status: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The end time of the prefetch plans.
+        # The end time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.end_time = end_time
-        # The ID of the prefetch plan.
+        # The prefetch plan ID.
         self.id = id
-        # The time interval between each batch execution. Unit: seconds.
+        # The interval between each batch execution of the scheduled prefetch plan. Unit: seconds.
         self.interval = interval
-        # The ID of the prefetch task.
+        # The prefetch task ID.
         self.job_id = job_id
-        # The number of URLs prefetched in each batch.
+        # The number of URLs to prefetch per batch.
         self.slice_len = slice_len
-        # The start time of the prefetch plans.
+        # The start time of the scheduled prefetch plan, in ISO 8601 format (such as 2024-01-01T00:00:00+Z).
         self.start_time = start_time
-        # The status of the prefetch plan. Valid values:
-        # 
-        # *   **waiting**
-        # *   **running**
-        # *   **finished**
-        # *   **failed**
-        # *   **stopped**
+        # The status of the scheduled prefetch plan. Valid values:
+        # - **waiting**: Waiting to be executed.
+        # - **running**: Being executed.
+        # - **finished**: Execution completed.
+        # - **failed**: Execution failed.
+        # - **stopped**: Execution paused.
         self.status = status
 
     def validate(self):

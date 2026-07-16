@@ -12,9 +12,9 @@ class CreateMountTargetResponseBody(DaraModel):
         mount_target_extra: main_models.CreateMountTargetResponseBodyMountTargetExtra = None,
         request_id: str = None,
     ):
-        # The IPv4 domain name of the mount target.
+        # The IPv4 mount target.
         self.mount_target_domain = mount_target_domain
-        # The information about the mount target.
+        # The mount target information.
         self.mount_target_extra = mount_target_extra
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class CreateMountTargetResponseBodyMountTargetExtra(DaraModel):
         self,
         dual_stack_mount_target_domain: str = None,
     ):
-        # The dual-stack (IPv4 and IPv6) domain name of the mount target.
+        # The dual-stack mount target that supports both IPv4 and IPv6.
         self.dual_stack_mount_target_domain = dual_stack_mount_target_domain
 
     def validate(self):

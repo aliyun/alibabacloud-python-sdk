@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -17,43 +17,71 @@ class AlertRuleV2(DaraModel):
         content_template: str = None,
         created_at: str = None,
         datasource_config: main_models.DatasourceConfigUnified = None,
+        datasource_type: str = None,
         display_name: str = None,
         enabled: bool = None,
         labels: Dict[str, str] = None,
         notify_config: main_models.NotifyConfigUnified = None,
+        notify_strategy_id: str = None,
+        observe_resource_global_scope: bool = None,
+        observe_resource_list: List[str] = None,
+        observe_resource_type: str = None,
+        partition_key: str = None,
         query_config: main_models.QueryConfigUnified = None,
         schedule_config: main_models.ScheduleConfigUnified = None,
+        severity_levels: str = None,
         status: str = None,
         updated_at: str = None,
         uuid: str = None,
         workspace: str = None,
     ):
+        # Configuration for action integrations, such as webhooks, that execute when an alert is triggered.
         self.action_integration_config = action_integration_config
-        # 注解
+        # A set of key-value pairs that serve as annotations, providing additional, non-identifying information, such as a description or a runbook link.
         self.annotations = annotations
+        # The configuration for integrating the alert rule with Application Real-Time Monitoring Service (ARMS).
         self.arms_integration_config = arms_integration_config
+        # The configuration for the conditions that trigger an alert.
         self.condition_config = condition_config
-        # 内容模板
+        # The template for the alert notification content.
         self.content_template = content_template
-        # 创建时间（只读），ISO 8601
+        # The time the alert rule was created.
         self.created_at = created_at
+        # The configuration for the data source to be evaluated.
         self.datasource_config = datasource_config
-        # 显示名称
+        # The data source type. Examples: `sls`, `prometheus`.
+        self.datasource_type = datasource_type
+        # The user-defined display name for the alert rule.
         self.display_name = display_name
-        # 是否启用
+        # Indicates whether the alert rule is active. Set to `true` to enable the rule, or `false` to disable it.
         self.enabled = enabled
-        # 标签
+        # A set of key-value pairs that serve as labels to filter and group alert rules.
         self.labels = labels
+        # The configuration for sending notifications when an alert is triggered.
         self.notify_config = notify_config
+        # The ID of the notification strategy to use for this alert rule.
+        self.notify_strategy_id = notify_strategy_id
+        # Indicates whether the alert rule monitors all resources of the specified type. If `true`, the rule applies globally within the workspace.
+        self.observe_resource_global_scope = observe_resource_global_scope
+        # A list of specific resource IDs to monitor, used only when `observeResourceGlobalScope` is `false`.
+        self.observe_resource_list = observe_resource_list
+        # The type of resource that the alert rule monitors.
+        self.observe_resource_type = observe_resource_type
+        # The partition key used to group alerts. Alerts with the same partition key are treated as a single incident.
+        self.partition_key = partition_key
+        # The configuration for querying and processing data from the data source.
         self.query_config = query_config
+        # The configuration for how often the alert rule is evaluated.
         self.schedule_config = schedule_config
-        # 告警状态（只读）
+        # The severity level of the alert. Examples: `critical`, `warning`.
+        self.severity_levels = severity_levels
+        # The current status of the alert rule. Examples: `RUNNING`, `STOPPED`.
         self.status = status
-        # 更新时间（只读），ISO 8601
+        # The time the alert rule was last updated.
         self.updated_at = updated_at
-        # 规则 UUID（系统生成，只读）
+        # The unique identifier for the alert rule.
         self.uuid = uuid
-        # 工作空间
+        # The ID of the workspace that contains the alert rule.
         self.workspace = workspace
 
     def validate(self):
@@ -98,6 +126,9 @@ class AlertRuleV2(DaraModel):
         if self.datasource_config is not None:
             result['datasourceConfig'] = self.datasource_config.to_map()
 
+        if self.datasource_type is not None:
+            result['datasourceType'] = self.datasource_type
+
         if self.display_name is not None:
             result['displayName'] = self.display_name
 
@@ -110,11 +141,29 @@ class AlertRuleV2(DaraModel):
         if self.notify_config is not None:
             result['notifyConfig'] = self.notify_config.to_map()
 
+        if self.notify_strategy_id is not None:
+            result['notifyStrategyId'] = self.notify_strategy_id
+
+        if self.observe_resource_global_scope is not None:
+            result['observeResourceGlobalScope'] = self.observe_resource_global_scope
+
+        if self.observe_resource_list is not None:
+            result['observeResourceList'] = self.observe_resource_list
+
+        if self.observe_resource_type is not None:
+            result['observeResourceType'] = self.observe_resource_type
+
+        if self.partition_key is not None:
+            result['partitionKey'] = self.partition_key
+
         if self.query_config is not None:
             result['queryConfig'] = self.query_config.to_map()
 
         if self.schedule_config is not None:
             result['scheduleConfig'] = self.schedule_config.to_map()
+
+        if self.severity_levels is not None:
+            result['severityLevels'] = self.severity_levels
 
         if self.status is not None:
             result['status'] = self.status
@@ -157,6 +206,9 @@ class AlertRuleV2(DaraModel):
             temp_model = main_models.DatasourceConfigUnified()
             self.datasource_config = temp_model.from_map(m.get('datasourceConfig'))
 
+        if m.get('datasourceType') is not None:
+            self.datasource_type = m.get('datasourceType')
+
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
 
@@ -170,6 +222,21 @@ class AlertRuleV2(DaraModel):
             temp_model = main_models.NotifyConfigUnified()
             self.notify_config = temp_model.from_map(m.get('notifyConfig'))
 
+        if m.get('notifyStrategyId') is not None:
+            self.notify_strategy_id = m.get('notifyStrategyId')
+
+        if m.get('observeResourceGlobalScope') is not None:
+            self.observe_resource_global_scope = m.get('observeResourceGlobalScope')
+
+        if m.get('observeResourceList') is not None:
+            self.observe_resource_list = m.get('observeResourceList')
+
+        if m.get('observeResourceType') is not None:
+            self.observe_resource_type = m.get('observeResourceType')
+
+        if m.get('partitionKey') is not None:
+            self.partition_key = m.get('partitionKey')
+
         if m.get('queryConfig') is not None:
             temp_model = main_models.QueryConfigUnified()
             self.query_config = temp_model.from_map(m.get('queryConfig'))
@@ -177,6 +244,9 @@ class AlertRuleV2(DaraModel):
         if m.get('scheduleConfig') is not None:
             temp_model = main_models.ScheduleConfigUnified()
             self.schedule_config = temp_model.from_map(m.get('scheduleConfig'))
+
+        if m.get('severityLevels') is not None:
+            self.severity_levels = m.get('severityLevels')
 
         if m.get('status') is not None:
             self.status = m.get('status')

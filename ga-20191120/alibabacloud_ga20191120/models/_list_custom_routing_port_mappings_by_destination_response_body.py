@@ -16,15 +16,15 @@ class ListCustomRoutingPortMappingsByDestinationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Details about the port mapping table.
+        # The information about the port mappings.
         self.port_mappings = port_mappings
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -93,31 +93,33 @@ class ListCustomRoutingPortMappingsByDestinationResponseBodyPortMappings(DaraMod
         protocols: List[str] = None,
         vswitch: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Global Accelerator instance to which the port mapping belongs.
         self.accelerator_id = accelerator_id
         # The acceleration port.
         self.accelerator_port = accelerator_port
         # The service IP address and port of the backend instance.
         self.destination_socket_address = destination_socket_address
-        # The access policy of traffic for the backend instance.
+        # The traffic policy for the backend instance.
         # 
-        # *   **allow**: allows traffic to the backend instance.
-        # *   **deny**: denies all traffic to the backend instance.
+        # - **allow**: allows the backend instance to receive traffic.
+        # 
+        # - **deny**: denies the backend instance from receiving traffic.
         self.destination_traffic_state = destination_traffic_state
         # The ID of the endpoint group.
         self.endpoint_group_id = endpoint_group_id
-        # The ID of the region in which the endpoint group resides.
+        # The ID of the region where the endpoint group is deployed.
         self.endpoint_group_region = endpoint_group_region
         # The ID of the endpoint.
         self.endpoint_id = endpoint_id
-        # The ID of the listener.
+        # The ID of the custom routing listener to which the port mapping belongs.
         self.listener_id = listener_id
         # The protocol of the backend service.
         # 
-        # *   **tcp**: TCP
-        # *   **udp**: UDP
+        # - **TCP**: TCP.
+        # 
+        # - **UDP**: UDP.
         self.protocols = protocols
-        # The name of the endpoint (vSwitch).
+        # The name of the vSwitch instance of the endpoint.
         self.vswitch = vswitch
 
     def validate(self):

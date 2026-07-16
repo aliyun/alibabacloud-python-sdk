@@ -13,7 +13,9 @@ class DescribeAckClusterPodLabelsResponseBody(DaraModel):
         ack_labels: List[main_models.DescribeAckClusterPodLabelsResponseBodyAckLabels] = None,
         request_id: str = None,
     ):
+        # A list of ACK labels.
         self.ack_labels = ack_labels
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeAckClusterPodLabelsResponseBodyAckLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

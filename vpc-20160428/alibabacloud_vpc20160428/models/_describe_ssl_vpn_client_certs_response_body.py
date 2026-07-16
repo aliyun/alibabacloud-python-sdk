@@ -16,14 +16,14 @@ class DescribeSslVpnClientCertsResponseBody(DaraModel):
         ssl_vpn_client_cert_keys: main_models.DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeys = None,
         total_count: int = None,
     ):
-        # The number of the page to return.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page in a paged query. This is used for paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.ssl_vpn_client_cert_keys = ssl_vpn_client_cert_keys
-        # The number of entries returned.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):

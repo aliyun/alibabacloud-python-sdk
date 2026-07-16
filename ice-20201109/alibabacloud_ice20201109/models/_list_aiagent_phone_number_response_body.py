@@ -16,10 +16,15 @@ class ListAIAgentPhoneNumberResponseBody(DaraModel):
         request_id: str = None,
         total_number: int = None,
     ):
+        # Array of returned Data.
         self.data = data
+        # Page number.
         self.page_number = page_number
+        # Number of records returned per page.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Total number of phone numbers found in the query.
         self.total_number = total_number
 
     def validate(self):
@@ -80,7 +85,17 @@ class ListAIAgentPhoneNumberResponseBodyData(DaraModel):
         phone_number: str = None,
         status: int = None,
     ):
+        # Phone number.
         self.phone_number = phone_number
+        # Phone number status.
+        # 
+        # - 1: "Activation in progress".
+        # 
+        # - 2: "Normal".
+        # 
+        # - 3: "Deactivation in progress".
+        # 
+        # - 4: "Deactivated".
         self.status = status
 
     def validate(self):

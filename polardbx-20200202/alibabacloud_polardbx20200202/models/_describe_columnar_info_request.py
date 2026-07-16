@@ -10,8 +10,13 @@ class DescribeColumnarInfoRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region ID of the instance.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

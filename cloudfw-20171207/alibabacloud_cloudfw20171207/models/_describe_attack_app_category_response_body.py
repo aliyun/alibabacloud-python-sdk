@@ -13,7 +13,9 @@ class DescribeAttackAppCategoryResponseBody(DaraModel):
         app_categories: List[main_models.DescribeAttackAppCategoryResponseBodyAppCategories] = None,
         request_id: str = None,
     ):
+        # The list of attack application categories.
         self.app_categories = app_categories
+        # The request ID of the returned result.
         self.request_id = request_id
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeAttackAppCategoryResponseBodyAppCategories(DaraModel):
         attack_apps: List[str] = None,
         category_name: str = None,
     ):
+        # The list of attack applications.
         self.attack_apps = attack_apps
+        # The name of the attack application category.
         self.category_name = category_name
 
     def validate(self):

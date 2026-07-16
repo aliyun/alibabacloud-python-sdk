@@ -25,23 +25,40 @@ class UpdateMaterialDocumentRequest(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # Unique identifier of the workspace: [AgentKey](https://help.aliyun.com/document_detail/2587494.html)
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Author
         self.author = author
+        # Document tags for categorization
         self.doc_keywords = doc_keywords
+        # Document type. Valid values: html, plainText, image, pdf, word, excel, csv, jsonLine
+        # 
         # This parameter is required.
         self.doc_type = doc_type
+        # URL uploaded by an external customer. Used only for record keeping
         self.external_url = external_url
+        # Formatted content
         self.html_content = html_content
+        # Primary key
+        # 
         # This parameter is required.
         self.id = id
+        # Publication time in yyyy-MM-dd HH:mm:ss format
         self.pub_time = pub_time
         self.region_id = region_id
+        # Sharing attribute. Valid values: 0 (private), 1 (shared within the workspace)
         self.share_attr = share_attr
+        # Source of the document. Valid values: UserUpload, IntellijSearch, HotViewPoint
         self.src_from = src_from
+        # Summary
         self.summary = summary
+        # Parsed text content. Empty for images
         self.text_content = text_content
+        # Document title
         self.title = title
+        # URL of the material
         self.url = url
 
     def validate(self):

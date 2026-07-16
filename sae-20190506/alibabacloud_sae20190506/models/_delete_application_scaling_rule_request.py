@@ -10,11 +10,11 @@ class DeleteApplicationScalingRuleRequest(DaraModel):
         app_id: str = None,
         scaling_rule_name: str = None,
     ):
-        # The ID of the request.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the trace. The ID is used to query the details of a request.
+        # The name of the Auto Scaling policy.
         # 
         # This parameter is required.
         self.scaling_rule_name = scaling_rule_name

@@ -14,11 +14,11 @@ class ListGroupsForUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried account groups.
+        # The list of account groups.
         self.groups = groups
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned. The maximum number of entries returned at a time depends on the value of PageSize.
+        # The total number of matching records. The maximum number of records returned per page is determined by PageSize.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +68,23 @@ class ListGroupsForUserResponseBodyGroups(DaraModel):
         group_member_relation_source_id: str = None,
         group_member_relation_source_type: str = None,
     ):
-        # The group ID.
+        # The account group ID.
         self.group_id = group_id
-        # Account membership source ID
+        # The source ID of the group member relationship.
+        # 
+        # For the build_in type, this defaults to the instance ID. For other types, this corresponds to the enterprise ID of the respective source. For example, for a DingTalk source, this corresponds to the corpId of the DingTalk enterprise.
         self.group_member_relation_source_id = group_member_relation_source_id
-        # Account membership source type
+        # The source type of the group member relationship. Valid values:
+        # 
+        # build_in: built-in.
+        # 
+        # ding_talk: imported from DingTalk.
+        # 
+        # ad: imported from AD.
+        # 
+        # ldap: imported from LDAP.
+        # 
+        # we_com: imported from WeCom.
         self.group_member_relation_source_type = group_member_relation_source_type
 
     def validate(self):

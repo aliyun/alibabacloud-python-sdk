@@ -16,10 +16,15 @@ class DescribeHistoryTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The list of tasks.
         self.items = items
+        # The page number of the query result.
         self.page_number = page_number
+        # The number of records per page.
         self.page_size = page_size
+        # The unique ID of the request.
         self.request_id = request_id
+        # The total number of tasks that meet the conditions, regardless of paging factors.
         self.total_count = total_count
 
     def validate(self):
@@ -98,25 +103,67 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         task_type: str = None,
         uid: str = None,
     ):
+        # The allowed operation information.
+        # 
+        # > This feature is not supported yet.
         self.action_info = action_info
+        # The request source. Valid values:
+        # 
+        # - **System**: system
+        # 
+        # - **User**: user
         self.caller_source = caller_source
+        # The ID of the requesting user. If `CallerSource` is `User`, this is the user\\"s UID.
         self.caller_uid = caller_uid
+        # The name of the current step being executed. If this parameter is empty, the task has not started.
         self.current_step_name = current_step_name
+        # The database type.
         self.db_type = db_type
+        # The end time of the task.
         self.end_time = end_time
+        # The resource ID.
         self.instance_id = instance_id
+        # The resource name.
         self.instance_name = instance_name
+        # The resource type.
         self.instance_type = instance_type
+        # The product.
         self.product = product
+        # The completion progress of the task, from 0.0 to 100.0.
         self.progress = progress
+        # The reason for initiating the current task.
         self.reason_code = reason_code
+        # The region ID.
         self.region_id = region_id
+        # The estimated remaining execution time, in seconds (s).
+        # 
+        # > This value is for reference only. The actual execution time prevails.
         self.remain_time = remain_time
+        # The start time of the task.
         self.start_time = start_time
+        # The final status of the task.
+        # 
+        # - Scheduled: waiting for execution
+        # 
+        # - Running: executing
+        # 
+        # - Succeed: executed successfully
+        # 
+        # - Failed: execution failed
+        # 
+        # - Cancelling: stopping
+        # 
+        # - Canceled: stopped
+        # 
+        # - Waiting: waiting for preset time
         self.status = status
+        # The task details.
         self.task_detail = task_detail
+        # The task ID.
         self.task_id = task_id
+        # The task type.
         self.task_type = task_type
+        # The UID of the account that owns the resource.
         self.uid = uid
 
     def validate(self):

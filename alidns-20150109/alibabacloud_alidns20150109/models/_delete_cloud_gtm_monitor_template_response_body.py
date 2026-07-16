@@ -10,11 +10,13 @@ class DeleteCloudGtmMonitorTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Unique request identification code.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation to delete the health check template was successful:
-        # - true: Operation successful
-        # - false: Operation failed
+        # Indicates whether the operation was successful.
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

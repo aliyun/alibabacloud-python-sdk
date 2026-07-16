@@ -193,9 +193,13 @@ class ListMediaLiveInputsResponseBodyInputsInputInfos(DaraModel):
         self.monitor_url = monitor_url
         # The source URL where the stream is pulled from. This parameter is returned for PULL inputs.
         self.source_url = source_url
+        # Latency of the SRT stream, in milliseconds (ms).
         self.srt_latency = srt_latency
+        # The maximum bitrate of the SRT stream, in bps.
         self.srt_max_bitrate = srt_max_bitrate
+        # SRT encryption configuration—the password for the SRT stream.
         self.srt_passphrase = srt_passphrase
+        # Encryption configuration for SRT. Specifies the key length for the SRT stream.
         self.srt_pb_key_len = srt_pb_key_len
         # The name of the pushed stream. This parameter is returned for PUSH inputs.
         self.stream_name = stream_name

@@ -13,7 +13,9 @@ class GatewayNetworkConfiguration(DaraModel):
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # Network mode
         self.network_mode = network_mode
+        # Virtual private cloud (VPC) ID
         self.vpc_id = vpc_id
         self.vswitch_ids = vswitch_ids
 

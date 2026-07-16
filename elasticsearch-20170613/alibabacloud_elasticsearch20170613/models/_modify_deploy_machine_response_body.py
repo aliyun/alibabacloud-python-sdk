@@ -12,10 +12,10 @@ class ModifyDeployMachineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the ECS instances are changed. Valid values:
+        # Indicates whether the update is successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.result = result
 
     def validate(self):

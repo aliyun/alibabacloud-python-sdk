@@ -13,7 +13,9 @@ class BatchUnbindPurchasedDevicesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchUnbindPurchasedDevicesResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Result list.
         self.results = results
 
     def validate(self):
@@ -56,7 +58,11 @@ class BatchUnbindPurchasedDevicesResponseBodyResults(DaraModel):
         device_id: str = None,
         error: str = None,
     ):
+        # Device ID.
         self.device_id = device_id
+        # Error message.
+        # 
+        # > This field appears only when an error occurs.
         self.error = error
 
     def validate(self):

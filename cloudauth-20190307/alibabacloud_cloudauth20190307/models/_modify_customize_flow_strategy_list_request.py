@@ -13,9 +13,9 @@ class ModifyCustomizeFlowStrategyListRequest(DaraModel):
         product_type: str = None,
         strategy_object: List[main_models.ModifyCustomizeFlowStrategyListRequestStrategyObject] = None,
     ):
-        # Product type, currently only supports **ANT_CLOUD_AUTH** (Financial-grade real person), all others have been phased out.
+        # The product type. Currently, only **ANT_CLOUD_AUTH** (financial-grade ID Verification) is supported. All other types have been discontinued.
         self.product_type = product_type
-        # Strategy list.
+        # The policy list.
         self.strategy_object = strategy_object
 
     def validate(self):
@@ -67,33 +67,33 @@ class ModifyCustomizeFlowStrategyListRequestStrategyObject(DaraModel):
     ):
         # AccumulateKey
         self.accumulate_key = accumulate_key
-        # Flow control statistical window size, in minutes.
+        # The size of the rate limiting statistical window, in minutes.
         self.accumulate_window = accumulate_window
-        # API name, same as **ProductCode**.
+        # The API name, which is the same as **ProductCode**.
         # 
         # This parameter is required.
         self.api_name = api_name
-        # Flow type:
-        # - **ACCUMULATE**: Repeated appearance of ID card
-        # - **PASSED_RATE**: Pass rate less than
-        # - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
-        # - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+        # The flow type. Valid values:
+        # - **ACCUMULATE**: repeated occurrence of an ID card.
+        # - **PASSED_RATE**: pass rate is less than.
+        # - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than.
+        # - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than.
         self.flow_type = flow_type
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Operation.
+        # The operation.
         self.operation = operation
-        # Status:
-        # - **disabled**: Disabled
-        # - **normal**: Enabled
+        # The status. Valid values:
+        # - **disabled**: disabled.
+        # - **normal**: enabled.
         # 
         # This parameter is required.
         self.status = status
-        # Flow control threshold.
+        # The rate limiting threshold.
         # 
         # This parameter is required.
         self.threshold = threshold
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

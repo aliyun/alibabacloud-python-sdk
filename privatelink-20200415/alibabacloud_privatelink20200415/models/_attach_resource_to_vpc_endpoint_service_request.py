@@ -17,38 +17,41 @@ class AttachResourceToVpcEndpointServiceRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: Performs a dry run to check the request for potential issues, including required parameters, request format, and service limits. The system does not add the service resource. If the check fails, an error message is returned. If the check passes, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the service resource is added.
         self.dry_run = dry_run
-        # The region ID of the endpoint service to which you want to add the service resource.
+        # The ID of the region where the endpoint service is deployed.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+        # Call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The service resource ID.
+        # The ID of the service resource.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: Classic Load Balancer (CLB) instance
-        # *   **alb**: Application Load Balancer (ALB) instance
-        # *   **nlb**: Network Load Balancer (NLB) instance
+        # - **slb**: Classic Load Balancer (CLB).
         # 
-        # >  You cannot access TCP/SSL listeners configured for NLB instances.
+        # - **alb**: Application Load Balancer (ALB).
+        # 
+        # - **nlb**: Network Load Balancer (NLB).
+        # 
+        # - **gwlb**: Gateway Load Balancer (GWLB).
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The ID of the endpoint service to which you want to add the service resource.
+        # The endpoint service to which you want to add the service resource.
         # 
         # This parameter is required.
         self.service_id = service_id
-        # The zone ID of the service resource.
+        # The zone where the service resource is located. This parameter is required if the service resource is an ALB, NLB, or GWLB instance.
         self.zone_id = zone_id
 
     def validate(self):

@@ -15,35 +15,45 @@ class CreateAvatarTrainingJobRequest(DaraModel):
         transparent: bool = None,
         video: str = None,
     ):
-        # *   The description of the digital human.
-        # *   The description can be up to 1,000 characters in length.
+        # - The description of the digital human.
+        # 
+        # - The description can be up to 1,000 characters in length.
         self.avatar_description = avatar_description
-        # *   The name of the digital human.
-        # *   The name can be up to seven characters in length.
+        # - The name of the digital human.
+        # 
+        # - The name can be up to seven characters in length.
         # 
         # This parameter is required.
         self.avatar_name = avatar_name
         # The type of the digital human.
         self.avatar_type = avatar_type
-        # *   The media asset ID of the portrait image.
-        # *   The value must be 32 characters in length.
+        # - The media asset ID of the portrait image.
+        # 
+        # - The value must be 32 characters in length.
         self.portrait = portrait
-        # *   The thumbnail URL.
-        # *   After the digital human is trained, the thumbnail is uploaded to this URL.
-        # *   The URL must be a valid public Object Storage Service (OSS) URL.
-        # *   The URL can be up to 512 characters in length.
+        # - The thumbnail URL.
+        # 
+        # - After the digital human is trained, the thumbnail is uploaded to this URL.
+        # 
+        # - The URL must be a valid public Object Storage Service (OSS) URL.
+        # 
+        # - The URL can be up to 512 characters in length.
         self.thumbnail = thumbnail
-        # *   Specifies whether the training video supports alpha channels.
+        # - Specifies whether the training video supports alpha channels.
         # 
-        #     **
+        #   \\*\\*
         # 
-        #     **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
+        #   **Note**: Make sure that the current settings are consistent with those of the submitted training video. Otherwise, the digital human may malfunction.
         self.transparent = transparent
-        # *   The ID of the video used for training.
-        # *   The value must be 32 characters in length.
-        # *   Supported formats: MP4, MOV, and WebM.
-        # *   The duration of the video must be 5 to 15 minutes.
-        # *   The resolution of the video must be 1920×1080 or 1080×1920.
+        # - The ID of the video used for training.
+        # 
+        # - The value must be 32 characters in length.
+        # 
+        # - Supported formats: MP4, MOV, and WebM.
+        # 
+        # - The duration of the video must be 5 to 15 minutes.
+        # 
+        # - The resolution of the video must be 1920×1080 or 1080×1920.
         self.video = video
 
     def validate(self):

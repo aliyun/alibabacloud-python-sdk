@@ -15,24 +15,24 @@ class ListHttpIncomingRequestHeaderModificationRulesRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
-        # The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to query the ID.
+        # The configuration ID. You can call the ListHttpIncomingRequestHeaderModificationRules operation to obtain the configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # *   global: global configurations.
-        # *   rule: rule configurations.
+        # - global: queries global configurations.
+        # - rule: queries rule configurations.
         self.config_type = config_type
-        # The page number. Default value: 1.
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 500. Default value: 500.
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
         # The rule name.
         self.rule_name = rule_name
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. The default value is version 0.
         self.site_version = site_version
 
     def validate(self):

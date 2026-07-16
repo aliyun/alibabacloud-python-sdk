@@ -13,10 +13,23 @@ class DeleteResponseRuleRequest(DaraModel):
         region_id: str = None,
         response_rule_id: str = None,
     ):
+        # The language of the response message. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. If you do not specify this parameter, the service returns the first page of results.
         self.next_token = next_token
+        # The region ID of the data management center for threat analysis. This must be the region where your assets are located. Valid values:
+        # 
+        # - `cn-hangzhou`: for assets in the Chinese mainland or Hong Kong (China).
+        # 
+        # - `ap-southeast-1`: for assets in international regions.
         self.region_id = region_id
+        # The ID of the automatic response rule to delete.
         self.response_rule_id = response_rule_id
 
     def validate(self):

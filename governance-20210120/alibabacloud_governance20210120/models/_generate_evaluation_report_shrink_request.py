@@ -9,13 +9,22 @@ class GenerateEvaluationReportShrinkRequest(DaraModel):
         self,
         account_id: int = None,
         account_ids_shrink: str = None,
+        evaluation_domain: str = None,
         region_id: str = None,
         report_type: str = None,
     ):
+        # The account ID. If this parameter is not specified, the report is generated for the current account by default. A management account (MA) can pass in a member account ID to generate a report for the member account.
         self.account_id = account_id
+        # The list of member account IDs for which to generate reports.
+        # Note: This parameter is required only when you generate a multi-account report and want to specify the scope of accounts.
         self.account_ids_shrink = account_ids_shrink
+        self.evaluation_domain = evaluation_domain
         # RegionId
         self.region_id = region_id
+        # The report type. Valid values:
+        # - EvaluationAccountHtmlReport: single-account HTML report.
+        # - EvaluationAccountExcelReport: single-account Excel report.
+        # - EvaluationMultiAccountExcelReport: multi-account Excel report.
         self.report_type = report_type
 
     def validate(self):
@@ -32,6 +41,9 @@ class GenerateEvaluationReportShrinkRequest(DaraModel):
         if self.account_ids_shrink is not None:
             result['AccountIds'] = self.account_ids_shrink
 
+        if self.evaluation_domain is not None:
+            result['EvaluationDomain'] = self.evaluation_domain
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -47,6 +59,9 @@ class GenerateEvaluationReportShrinkRequest(DaraModel):
 
         if m.get('AccountIds') is not None:
             self.account_ids_shrink = m.get('AccountIds')
+
+        if m.get('EvaluationDomain') is not None:
+            self.evaluation_domain = m.get('EvaluationDomain')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

@@ -9,7 +9,7 @@ class TempAccessTokenIntlRequest(DaraModel):
         self,
         type: str = None,
     ):
-        # Type.
+        # The type.
         self.type = type
 
     def validate(self):

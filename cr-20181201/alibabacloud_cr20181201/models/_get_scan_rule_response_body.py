@@ -15,13 +15,13 @@ class GetScanRuleResponseBody(DaraModel):
         request_id: str = None,
         scan_rule: main_models.GetScanRuleResponseBodyScanRule = None,
     ):
-        # Return value
+        # The return code.
         self.code = code
-        # Indicates whether the API call was successful, valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # - `true`: The API call was successful
+        # - `true`: The API call is successful.
         # 
-        # - `false`: The API call failed
+        # - `false`: The API call failed.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id
@@ -87,31 +87,31 @@ class GetScanRuleResponseBodyScanRule(DaraModel):
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # Names of namespaces where the event is effective.
+        # The namespace names for which the event takes effect.
         self.namespaces = namespaces
-        # Names of repositories where the event is effective.
+        # The repository names for which the event takes effect.
         self.repo_names = repo_names
-        # Tag filter pattern for event triggering.
+        # The tag filtering rule that triggers the event.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
-        # The event rule name.
+        # The name of the event rule.
         self.rule_name = rule_name
         # The scan rule ID.
         self.scan_rule_id = scan_rule_id
         # The scan scope.
         self.scan_scope = scan_scope
-        # The vulnerability type: 
+        # The vulnerability type. Valid values:
         # 
-        # - `cve`: System vulnerability
+        # - `cve`: system vulnerability
         # 
-        # - `sca`: Application vulnerability
+        # - `sca`: application vulnerability
         self.scan_type = scan_type
-        # The trigger type, valid values:
+        # The trigger type. Valid values:
         # 
-        # - `ALL`: All triggers
+        # - `ALL`: all triggers
         # 
-        # - `TAG_LISTTAG`: Trigger
+        # - `TAG_LISTTAG`: tag trigger
         # 
-        # - `TAG_REG_EXP`: Expression trigger
+        # - `TAG_REG_EXP`: expression trigger
         self.trigger_type = trigger_type
         # The update time.
         self.update_time = update_time

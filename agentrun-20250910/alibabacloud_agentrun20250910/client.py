@@ -21,7 +21,14 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shenzhen': 'agentrun.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai': 'agentrun.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'agentrun.cn-hangzhou.aliyuncs.com',
+            'cn-beijing': 'agentrun.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'agentrun.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agentrun', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

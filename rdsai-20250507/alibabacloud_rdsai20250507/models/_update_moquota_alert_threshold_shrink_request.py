@@ -10,8 +10,12 @@ class UpdateMOQuotaAlertThresholdShrinkRequest(DaraModel):
         apikey_shrink: str = None,
         instance_id: str = None,
     ):
+        # A list of API keys.
+        # 
         # This parameter is required.
         self.apikey_shrink = apikey_shrink
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

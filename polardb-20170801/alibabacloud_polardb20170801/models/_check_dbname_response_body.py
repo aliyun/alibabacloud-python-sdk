@@ -10,9 +10,9 @@ class CheckDBNameResponseBody(DaraModel):
         dbname: str = None,
         request_id: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.dbname = dbname
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

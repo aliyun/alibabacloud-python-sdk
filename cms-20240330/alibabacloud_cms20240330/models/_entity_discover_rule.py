@@ -20,14 +20,23 @@ class EntityDiscoverRule(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.EntityDiscoverRuleTags] = None,
     ):
+        # A collection of annotation matching rules.
         self.annotations = annotations
+        # A collection of entity types.
         self.entity_types = entity_types
+        # The property matching rules.
         self.field_rules = field_rules
+        # A collection of instance IDs.
         self.instance_ids = instance_ids
+        # A collection of IP address matching rules.
         self.ip_match_rule = ip_match_rule
+        # A collection of label matching rules.
         self.labels = labels
+        # A collection of region IDs.
         self.region_ids = region_ids
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tag-based service discovery rules.
         self.tags = tags
 
     def validate(self):
@@ -143,8 +152,11 @@ class EntityDiscoverRuleTags(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # The operation.
         self.op = op
+        # The key of the tag.
         self.tag_key = tag_key
+        # A collection of tag values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -186,8 +198,11 @@ class EntityDiscoverRuleLabels(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # The operation.
         self.op = op
+        # The key of the label.
         self.tag_key = tag_key
+        # A collection of label values.
         self.tag_values = tag_values
 
     def validate(self):
@@ -264,8 +279,11 @@ class EntityDiscoverRuleFieldRules(DaraModel):
         field_values: List[str] = None,
         op: str = None,
     ):
+        # The key of the property.
         self.field_key = field_key
+        # A collection of property values.
         self.field_values = field_values
+        # The operation.
         self.op = op
 
     def validate(self):
@@ -307,8 +325,11 @@ class EntityDiscoverRuleAnnotations(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
+        # The operation.
         self.op = op
+        # The key of the annotation.
         self.tag_key = tag_key
+        # A collection of annotation values.
         self.tag_values = tag_values
 
     def validate(self):

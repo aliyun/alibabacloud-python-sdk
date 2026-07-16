@@ -33,27 +33,49 @@ class IncidentForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The details of the incident.
         self.content = content
+        # The list of escalation policies.
         self.escalations = escalations
+        # The group identifier.
         self.group_uuid = group_uuid
+        # The key-value pairs for grouping.
         self.grouping_keys = grouping_keys
+        # The unique identifier of the incident.
         self.incident_id = incident_id
+        # The name of the notification policy.
         self.notify_strategy_name = notify_strategy_name
+        # The UUID of the associated notification policy, which is used to trigger notifications.
         self.notify_strategy_uuid = notify_strategy_uuid
+        # The information about the operator.
         self.operator = operator
+        # The list of owners.
         self.owners = owners
+        # The list of participants.
         self.participants = participants
+        # The response plan.
         self.plan = plan
+        # The list of associated resources.
         self.related_resources = related_resources
+        # The root cause category.
         self.root_cause_category = root_cause_category
+        # The severity level of the incident.
         self.severity = severity
+        # The description of the solution.
         self.solution = solution
+        # The current state of the incident.
         self.state = state
+        # The name of the subscription policy.
         self.subscription_name = subscription_name
+        # The UUID of the subscription policy.
         self.subscription_uuid = subscription_uuid
+        # The timestamp when the incident was created.
         self.time = time
+        # The title of the incident.
         self.title = title
+        # The ID of the user who created the incident.
         self.user_id = user_id
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

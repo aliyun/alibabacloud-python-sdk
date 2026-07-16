@@ -11,16 +11,16 @@ class GetServerlessAuthSummaryRequest(DaraModel):
         machine_type: str = None,
         vendor_type: str = None,
     ):
-        # Application region ID.
+        # The region ID of the application.
         self.app_region_id = app_region_id
-        # Server type: 
+        # The server type. Valid values:
         # - **RunD**
-        # - **ECI**
+        # - **ECI**.
         self.machine_type = machine_type
-        # Cloud product: 
+        # The cloud service to which the resource belongs. Valid values:
         # - **ASK**
         # - **SAE**
-        # - **ACS**
+        # - **ACS**.
         self.vendor_type = vendor_type
 
     def validate(self):

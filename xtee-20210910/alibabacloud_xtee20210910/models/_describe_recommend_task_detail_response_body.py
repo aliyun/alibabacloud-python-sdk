@@ -13,9 +13,9 @@ class DescribeRecommendTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeRecommendTaskDetailResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -64,33 +64,33 @@ class DescribeRecommendTaskDetailResponseBodyResultObject(DaraModel):
         task_name: str = None,
         task_status: str = None,
     ):
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Comparison indicators
+        # The comparison metrics.
         self.expect_velocities = expect_velocities
-        # Creation time
+        # The creation time.
         self.gmt_create = gmt_create
-        # Number of normal samples
+        # The number of normal samples.
         self.normal_size = normal_size
-        # Recommended strategy list
+        # The list of recommended policies.
         self.recommend_rule_dtos = recommend_rule_dtos
-        # Selected variable list
+        # The list of selected variables.
         self.recommend_variable_dtos = recommend_variable_dtos
-        # Number of risk samples
+        # The number of risk samples.
         self.risk_size = risk_size
-        # Sample name
+        # The sample name.
         self.sample_name = sample_name
-        # Sample scenario
+        # The sample scenario.
         self.sample_scene = sample_scene
-        # Sample scenario name
+        # The sample scenario name.
         self.sample_scene_name = sample_scene_name
-        # Task ID
+        # The task ID.
         self.task_id = task_id
-        # Task name
+        # The task name.
         self.task_name = task_name
-        # Task status.
+        # The task status.
         self.task_status = task_status
 
     def validate(self):
@@ -214,9 +214,9 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendVariableDTOs(D
         id: int = None,
         title: str = None,
     ):
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Title
+        # The title.
         self.title = title
 
     def validate(self):
@@ -258,23 +258,23 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs(DaraM
         status: str = None,
         velocities: str = None,
     ):
-        # Calculation path
+        # The computation path.
         self.compute_expression = compute_expression
-        # Number of hit samples
+        # The number of samples that are hit.
         self.hit_sample = hit_sample
-        # Primary key ID of the rule
+        # The primary key ID of the policy.
         self.id = id
-        # Number of unhit samples
+        # The number of samples that are not hit.
         self.not_hit_sample = not_hit_sample
-        # List of candidate rules
+        # The list of candidate policies.
         self.recommend_rules = recommend_rules
-        # Strategy ID
+        # The policy ID.
         self.rule_id = rule_id
-        # Rule name
+        # The policy name.
         self.rule_name = rule_name
-        # Status
+        # The status.
         self.status = status
-        # List of indicators in JSON string format
+        # The list of metrics in JSON string format.
         self.velocities = velocities
 
     def validate(self):
@@ -360,11 +360,11 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRecomm
         operator: str = None,
         right: str = None,
     ):
-        # Left variable
+        # The left variable.
         self.left = left
-        # Operator
+        # The operator.
         self.operator = operator
-        # Right variable
+        # The right variable.
         self.right = right
 
     def validate(self):

@@ -11,11 +11,13 @@ class RerunTaskInstancesRequest(DaraModel):
         self,
         comment: str = None,
         ids: List[int] = None,
+        use_latest_config: bool = None,
     ):
-        # Remarks.
+        # The remarks.
         self.comment = comment
-        # The ID list of the task instance.
+        # The list of node instance IDs.
         self.ids = ids
+        self.use_latest_config = use_latest_config
 
     def validate(self):
         pass
@@ -31,6 +33,9 @@ class RerunTaskInstancesRequest(DaraModel):
         if self.ids is not None:
             result['Ids'] = self.ids
 
+        if self.use_latest_config is not None:
+            result['UseLatestConfig'] = self.use_latest_config
+
         return result
 
     def from_map(self, m: dict = None):
@@ -40,6 +45,9 @@ class RerunTaskInstancesRequest(DaraModel):
 
         if m.get('Ids') is not None:
             self.ids = m.get('Ids')
+
+        if m.get('UseLatestConfig') is not None:
+            self.use_latest_config = m.get('UseLatestConfig')
 
         return self
 

@@ -13,9 +13,9 @@ class DescribeHybridProxyListRequest(DaraModel):
     ):
         # The name of the proxy cluster.
         self.cluster_name = cluster_name
-        # The page number.
+        # The number of the page to return in a paged query.
         self.current_page = current_page
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries to return on each page in a paged query. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

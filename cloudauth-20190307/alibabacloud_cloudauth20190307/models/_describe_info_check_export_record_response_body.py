@@ -20,15 +20,23 @@ class DescribeInfoCheckExportRecordResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
+        # The current page number.
         self.current_page = current_page
+        # The list of results.
         self.items = items
+        # The error code.
         self.message = message
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -119,13 +127,38 @@ class DescribeInfoCheckExportRecordResponseBodyItems(DaraModel):
         status: int = None,
         url: str = None,
     ):
+        # The download date.
         self.download_date = download_date
+        # The ID of the download task.
         self.download_task_id = download_task_id
+        # The error code.
         self.error_code = error_code
+        # The file name.
         self.file_name = file_name
+        # The file type.
         self.file_type = file_type
+        # The product type name. Valid values:
+        # - **ID_CARD_2_META**: ID card two-element verification.
+        # - **ID_PERIOD**: ID card validity period verification.
+        # - **MOBILE_ONLINE_LENGTH**: mobile number online duration.
+        # - **MOBILE_ONLINE_STATUS**: mobile number online status.
+        # - **MOBILE_3_META_SIMPLE**: mobile number three-element verification (simple edition).
+        # - **MOBILE_3_META**: mobile number three-element verification (detailed edition).
+        # - **MOBILE_2_META**: mobile number two-element verification.
+        # - **BANK_CARD_N_META**: bank card verification (detailed edition).
+        # - **MOBILE_DETECT**: phone number detection.
+        # - **VEHICLE_N_META**: vehicle element verification (enhanced edition).
+        # - **VEHICLE_PENTA_INFO**: vehicle five-element information recognition.
+        # - **VEHICLE_LICENSE_INFO**: vehicle information recognition.
+        # - **VEHICLE_INSURE_DATE**: vehicle insurance date query.
+        # - **VEHICLE_CHECK**: vehicle element verification.
         self.product_type = product_type
+        # The task status. Valid values:
+        # - **1**: The file is being generated.
+        # - **2**: The file has been generated.
+        # - **3**: The file failed to be generated.
         self.status = status
+        # The task URL.
         self.url = url
 
     def validate(self):

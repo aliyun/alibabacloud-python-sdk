@@ -179,6 +179,7 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
         rag_config: main_models.GetApplicationResponseBodyDataPublishedVersionRagConfig = None,
         script_profile: main_models.GetApplicationResponseBodyDataPublishedVersionScriptProfile = None,
         synthesizer_config: main_models.GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig = None,
+        tool_config: main_models.GetApplicationResponseBodyDataPublishedVersionToolConfig = None,
         transcriber_config: main_models.GetApplicationResponseBodyDataPublishedVersionTranscriberConfig = None,
         version_id: str = None,
     ):
@@ -186,6 +187,7 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
         self.rag_config = rag_config
         self.script_profile = script_profile
         self.synthesizer_config = synthesizer_config
+        self.tool_config = tool_config
         self.transcriber_config = transcriber_config
         self.version_id = version_id
 
@@ -198,6 +200,8 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
             self.script_profile.validate()
         if self.synthesizer_config:
             self.synthesizer_config.validate()
+        if self.tool_config:
+            self.tool_config.validate()
         if self.transcriber_config:
             self.transcriber_config.validate()
 
@@ -217,6 +221,9 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
 
         if self.synthesizer_config is not None:
             result['SynthesizerConfig'] = self.synthesizer_config.to_map()
+
+        if self.tool_config is not None:
+            result['ToolConfig'] = self.tool_config.to_map()
 
         if self.transcriber_config is not None:
             result['TranscriberConfig'] = self.transcriber_config.to_map()
@@ -243,6 +250,10 @@ class GetApplicationResponseBodyDataPublishedVersion(DaraModel):
         if m.get('SynthesizerConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionSynthesizerConfig()
             self.synthesizer_config = temp_model.from_map(m.get('SynthesizerConfig'))
+
+        if m.get('ToolConfig') is not None:
+            temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionToolConfig()
+            self.tool_config = temp_model.from_map(m.get('ToolConfig'))
 
         if m.get('TranscriberConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionTranscriberConfig()
@@ -414,6 +425,84 @@ class GetApplicationResponseBodyDataPublishedVersionTranscriberConfigCorrectionR
 
         if m.get('Replacement') is not None:
             self.replacement = m.get('Replacement')
+
+        return self
+
+class GetApplicationResponseBodyDataPublishedVersionToolConfig(DaraModel):
+    def __init__(
+        self,
+        mcp_servers: List[main_models.GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers] = None,
+    ):
+        self.mcp_servers = mcp_servers
+
+    def validate(self):
+        if self.mcp_servers:
+            for v1 in self.mcp_servers:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['McpServers'] = []
+        if self.mcp_servers is not None:
+            for k1 in self.mcp_servers:
+                result['McpServers'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mcp_servers = []
+        if m.get('McpServers') is not None:
+            for k1 in m.get('McpServers'):
+                temp_model = main_models.GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers()
+                self.mcp_servers.append(temp_model.from_map(k1))
+
+        return self
+
+class GetApplicationResponseBodyDataPublishedVersionToolConfigMcpServers(DaraModel):
+    def __init__(
+        self,
+        base_url: str = None,
+        name: str = None,
+        sse_endpoint: str = None,
+    ):
+        self.base_url = base_url
+        self.name = name
+        self.sse_endpoint = sse_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.sse_endpoint is not None:
+            result['SseEndpoint'] = self.sse_endpoint
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('SseEndpoint') is not None:
+            self.sse_endpoint = m.get('SseEndpoint')
 
         return self
 
@@ -807,6 +896,7 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
         rag_config: main_models.GetApplicationResponseBodyDataDraftVersionRagConfig = None,
         script_profile: main_models.GetApplicationResponseBodyDataDraftVersionScriptProfile = None,
         synthesizer_config: main_models.GetApplicationResponseBodyDataDraftVersionSynthesizerConfig = None,
+        tool_config: main_models.GetApplicationResponseBodyDataDraftVersionToolConfig = None,
         transcriber_config: main_models.GetApplicationResponseBodyDataDraftVersionTranscriberConfig = None,
         version_id: str = None,
     ):
@@ -814,6 +904,7 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
         self.rag_config = rag_config
         self.script_profile = script_profile
         self.synthesizer_config = synthesizer_config
+        self.tool_config = tool_config
         self.transcriber_config = transcriber_config
         self.version_id = version_id
 
@@ -826,6 +917,8 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
             self.script_profile.validate()
         if self.synthesizer_config:
             self.synthesizer_config.validate()
+        if self.tool_config:
+            self.tool_config.validate()
         if self.transcriber_config:
             self.transcriber_config.validate()
 
@@ -845,6 +938,9 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
 
         if self.synthesizer_config is not None:
             result['SynthesizerConfig'] = self.synthesizer_config.to_map()
+
+        if self.tool_config is not None:
+            result['ToolConfig'] = self.tool_config.to_map()
 
         if self.transcriber_config is not None:
             result['TranscriberConfig'] = self.transcriber_config.to_map()
@@ -871,6 +967,10 @@ class GetApplicationResponseBodyDataDraftVersion(DaraModel):
         if m.get('SynthesizerConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataDraftVersionSynthesizerConfig()
             self.synthesizer_config = temp_model.from_map(m.get('SynthesizerConfig'))
+
+        if m.get('ToolConfig') is not None:
+            temp_model = main_models.GetApplicationResponseBodyDataDraftVersionToolConfig()
+            self.tool_config = temp_model.from_map(m.get('ToolConfig'))
 
         if m.get('TranscriberConfig') is not None:
             temp_model = main_models.GetApplicationResponseBodyDataDraftVersionTranscriberConfig()
@@ -1042,6 +1142,84 @@ class GetApplicationResponseBodyDataDraftVersionTranscriberConfigCorrectionRules
 
         if m.get('Replacement') is not None:
             self.replacement = m.get('Replacement')
+
+        return self
+
+class GetApplicationResponseBodyDataDraftVersionToolConfig(DaraModel):
+    def __init__(
+        self,
+        mcp_servers: List[main_models.GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers] = None,
+    ):
+        self.mcp_servers = mcp_servers
+
+    def validate(self):
+        if self.mcp_servers:
+            for v1 in self.mcp_servers:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['McpServers'] = []
+        if self.mcp_servers is not None:
+            for k1 in self.mcp_servers:
+                result['McpServers'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.mcp_servers = []
+        if m.get('McpServers') is not None:
+            for k1 in m.get('McpServers'):
+                temp_model = main_models.GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers()
+                self.mcp_servers.append(temp_model.from_map(k1))
+
+        return self
+
+class GetApplicationResponseBodyDataDraftVersionToolConfigMcpServers(DaraModel):
+    def __init__(
+        self,
+        base_url: str = None,
+        name: str = None,
+        sse_endpoint: str = None,
+    ):
+        self.base_url = base_url
+        self.name = name
+        self.sse_endpoint = sse_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.base_url is not None:
+            result['BaseUrl'] = self.base_url
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.sse_endpoint is not None:
+            result['SseEndpoint'] = self.sse_endpoint
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BaseUrl') is not None:
+            self.base_url = m.get('BaseUrl')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('SseEndpoint') is not None:
+            self.sse_endpoint = m.get('SseEndpoint')
 
         return self
 

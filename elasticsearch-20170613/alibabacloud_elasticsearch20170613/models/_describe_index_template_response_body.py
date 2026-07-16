@@ -13,7 +13,9 @@ class DescribeIndexTemplateResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeIndexTemplateResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The details of the index template.
         self.result = result
 
     def validate(self):
@@ -54,11 +56,22 @@ class DescribeIndexTemplateResponseBodyResult(DaraModel):
         priority: int = None,
         template: main_models.DescribeIndexTemplateResponseBodyResultTemplate = None,
     ):
+        # Indicates whether the data stream is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # 
+        # - false: Not enabled.
+        # 
+        # Default value: false.
         self.data_stream = data_stream
+        # The Policy Name of the lifecycle epoch.
         self.ilm_policy = ilm_policy
         self.index_patterns = index_patterns
+        # The name of the index template.
         self.index_template = index_template
+        # The priority.
         self.priority = priority
+        # The component template.
         self.template = template
 
     def validate(self):
@@ -120,8 +133,11 @@ class DescribeIndexTemplateResponseBodyResultTemplate(DaraModel):
         mappings: str = None,
         settings: str = None,
     ):
+        # The aliases configuration.
         self.aliases = aliases
+        # The mappings configuration.
         self.mappings = mappings
+        # The settings configuration.
         self.settings = settings
 
     def validate(self):

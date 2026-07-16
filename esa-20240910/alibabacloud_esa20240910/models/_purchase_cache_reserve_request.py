@@ -14,25 +14,24 @@ class PurchaseCacheReserveRequest(DaraModel):
         period: int = None,
         quota_gb: int = None,
     ):
-        # Whether to automatically pay. The default value is false.
-        # - true: Automatically pay.
-        # - false: Do not automatically pay.
+        # Specifies whether to enable automatic payment. Default value: false. Valid values:
+        # - true: Enables automatic payment.
+        # - false: Disables automatic payment.
         self.auto_pay = auto_pay
-        # Whether to auto-renew:
-        # - true: Auto-renew.
-        # - false: Do not auto-renew.
+        # Specifies whether to enable auto-renewal. Valid values:
+        # - true: Enables auto-renewal.
+        # - false: Disables auto-renewal.
         self.auto_renew = auto_renew
-        # Billing type
-        # - PREPAY: Prepaid.
-        # - POSTPAY: Postpaid.
+        # The billing type. Valid values:
+        # - PREPAY: upfront.
         self.charge_type = charge_type
-        # Cache retention region
-        # - HK: Hong Kong, China
-        # - CN-beijing: Mainland China - Beijing
+        # The cache reserve region.
+        # - HK: Hong Kong (China)
+        # - CN-beijing: Chinese mainland - Beijing
         self.cr_region = cr_region
-        # Purchase period (unit: month).
+        # The purchase period. Unit: months.
         self.period = period
-        # Cache retention specification (unit: GB).
+        # The cache reserve specification. Unit: GB.
         self.quota_gb = quota_gb
 
     def validate(self):

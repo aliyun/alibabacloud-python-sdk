@@ -11,6 +11,7 @@ class SelectionGroupRemoveProductResponseBody(DaraModel):
         self,
         product_ids: List[str] = None,
     ):
+        # A collection of IDs for the products that were successfully removed.
         self.product_ids = product_ids
 
     def validate(self):

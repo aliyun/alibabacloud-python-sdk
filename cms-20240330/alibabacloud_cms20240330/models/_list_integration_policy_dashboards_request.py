@@ -11,11 +11,11 @@ class ListIntegrationPolicyDashboardsRequest(DaraModel):
         language: str = None,
         scene: str = None,
     ):
-        # Addon Name.
+        # The add-on name.
         self.addon_name = addon_name
-        # Query Language
+        # The query language.
         self.language = language
-        # Component Scenario.
+        # The component scenario.
         self.scene = scene
 
     def validate(self):

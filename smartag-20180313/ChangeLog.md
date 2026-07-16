@@ -1,3 +1,8 @@
+2026-07-03 Version: 2.1.0
+- Support API AttachCcnInstanceToCen.
+- Support API DetachCcnInstanceFromCen.
+
+
 2026-03-17 Version: 2.0.8
 - Update API DescribeCloudConnectNetworks: add response parameters Body.CloudConnectNetworks.$.NewAgw.
 - Update API DescribeCloudConnectNetworks: add response parameters Body.CloudConnectNetworks.$.Subnet.

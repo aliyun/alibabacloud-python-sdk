@@ -10,12 +10,13 @@ class CheckModifyConfigNeedRestartResponseBody(DaraModel):
         need_restart: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the cluster was restarted after you modified the configuration parameters. Valid values:
+        # 变更配置参数后是否重启。取值说明：
         # 
-        # *   **true**: The cluster was restarted.
-        # *   **false**: The cluster was not restarted.
+        # - **true**：重启。
+        # 
+        # - **false**：不重启。
         self.need_restart = need_restart
-        # The request ID.
+        # 请求 ID。
         self.request_id = request_id
 
     def validate(self):

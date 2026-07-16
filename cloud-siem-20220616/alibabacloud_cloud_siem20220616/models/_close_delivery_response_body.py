@@ -10,10 +10,11 @@ class CloseDeliveryResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the threat analysis feature was disabled. Valid values:
+        # The result of the request. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.data = data
         # The request ID.
         self.request_id = request_id

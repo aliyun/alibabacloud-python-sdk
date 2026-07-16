@@ -16,17 +16,19 @@ class ListApplicationRolesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # 应用ID
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
+        # The filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token used to start the next query. Set this parameter to the value of NextToken that is returned in the last API call. Leave this parameter empty for the first query.
         self.next_token = next_token
 
     def validate(self):
@@ -87,7 +89,9 @@ class ListApplicationRolesRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter condition.
         self.name = name
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):

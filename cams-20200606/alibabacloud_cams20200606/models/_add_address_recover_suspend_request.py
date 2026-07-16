@@ -17,9 +17,12 @@ class AddAddressRecoverSuspendRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The audit record.
         self.audit_record = audit_record
+        # The customer space ID.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
+        # The request type.
         self.request_type = request_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -87,10 +90,15 @@ class AddAddressRecoverSuspendRequestAuditRecord(DaraModel):
         recovery_date: str = None,
         suspension_date: str = None,
     ):
+        # The reason for the application.
         self.apply_reason = apply_reason
+        # The list of destination countries for messages.
         self.message_destination_country = message_destination_country
+        # The list of international destination countries for messages.
         self.message_destination_international_country = message_destination_international_country
+        # The recovery date.
         self.recovery_date = recovery_date
+        # The suspension date.
         self.suspension_date = suspension_date
 
     def validate(self):

@@ -11,17 +11,19 @@ class GetTxtRecordForVerifyRequest(DaraModel):
         lang: str = None,
         type: str = None,
     ):
-        # The ID of the Domain Name System (DNS) record. You can call the [DescribeDomainRecords](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomainrecords?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the ID.
+        # The domain name. The [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains) operation returns a list of domain names.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The feature verified by using the TXT record. Valid values:
+        # The purpose of the TXT record verification. Valid values:
         # 
-        # *   ADD_SUB_DOMAIN: add a subdomain for verification.
-        # *   RETRIEVAL: add other subdomains for verification
+        # - ADD_SUB_DOMAIN: Add a subdomain for verification.
+        # 
+        # - RETRIEVAL: Other verifications.
         # 
         # This parameter is required.
         self.type = type

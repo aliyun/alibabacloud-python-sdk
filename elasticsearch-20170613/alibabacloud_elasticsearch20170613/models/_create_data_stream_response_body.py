@@ -11,7 +11,9 @@ class CreateDataStreamResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CreateDataStreamResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The name of the created data stream.
         self.result = result
 
     def validate(self):
@@ -47,6 +49,7 @@ class CreateDataStreamResponseBodyResult(DaraModel):
         self,
         name: str = None,
     ):
+        # The data stream name.
         self.name = name
 
     def validate(self):

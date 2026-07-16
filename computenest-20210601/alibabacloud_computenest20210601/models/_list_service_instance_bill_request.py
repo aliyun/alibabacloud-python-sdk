@@ -14,24 +14,25 @@ class ListServiceInstanceBillRequest(DaraModel):
         next_token: str = None,
         service_instance_id: str = None,
     ):
-        # The billing cycle. Format: YYYY-MM.
+        # The billing cycle in YYYY-MM format. Only billing cycles in the last 18 months are supported.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The billing date. This parameter is required only if the **Granularity** parameter is set to DAILY. Format: YYYY-MM-DD.
+        # The billing date. This parameter is required only when **Granularity** is set to DAILY. The format is YYYY-MM-DD.
         self.billing_date = billing_date
-        # The granularity at which bills are queried. Valid values:
+        # The granularity of the bills to query. Valid values:
         # 
-        # *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-        # *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+        # - MONTHLY: monthly. The data is consistent with the bills aggregated by billing cycle in the User Center.
         # 
-        # You must set the **BillingDate** parameter before you can set the Granularity parameter to DAILY.
+        # - DAILY: daily. The data is consistent with the bills aggregated by day in the User Center.
+        # 
+        # If you set this parameter to DAILY, you must also specify **BillingDate**.
         self.granularity = granularity
-        # The number of entries page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # The service instance ID.
+        # The ID of the service instance.
         self.service_instance_id = service_instance_id
 
     def validate(self):

@@ -17,14 +17,15 @@ class GetRoutineResponseBody(DaraModel):
         has_assets: bool = None,
         request_id: str = None,
     ):
-        # The time when the routine was created.
+        # The time when the Edge Routine was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
-        # The default record name to access.
+        # The default access record.
         self.default_related_record = default_related_record
-        # The description of the routine.
+        # The description of the Edge Routine.
         self.description = description
-        # The information about the environments.
+        # The list of environment context.
         self.envs = envs
+        # Indicates whether the Routine has the Assets tag.
         self.has_assets = has_assets
         # The request ID.
         self.request_id = request_id
@@ -93,8 +94,9 @@ class GetRoutineResponseBodyEnvs(DaraModel):
         code_deploy: main_models.GetRoutineResponseBodyEnvsCodeDeploy = None,
         env: str = None,
     ):
+        # The percentage-based canary release deployment information.
         self.code_deploy = code_deploy
-        # The environment type.
+        # The environment name.
         self.env = env
 
     def validate(self):
@@ -133,9 +135,13 @@ class GetRoutineResponseBodyEnvsCodeDeploy(DaraModel):
         deploy_id: str = None,
         strategy: str = None,
     ):
+        # The list of deployed code version numbers.
         self.code_versions = code_versions
+        # The time when the deployment was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.creation_time = creation_time
+        # The deployment record ID.
         self.deploy_id = deploy_id
+        # The deployment strategy. Default value: percentage.
         self.strategy = strategy
 
     def validate(self):
@@ -192,9 +198,13 @@ class GetRoutineResponseBodyEnvsCodeDeployCodeVersions(DaraModel):
         description: str = None,
         percentage: int = None,
     ):
+        # The code version number.
         self.code_version = code_version
+        # The time when the code version was created. The time follows the RFC 3339 standard in the UTC time zone.
         self.create_time = create_time
+        # The description of the code version.
         self.description = description
+        # The canary release percentage of the code version.
         self.percentage = percentage
 
     def validate(self):

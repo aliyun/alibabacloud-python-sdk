@@ -10,7 +10,7 @@ class CreateAccessRuleResponseBody(DaraModel):
         access_rule_id: str = None,
         request_id: str = None,
     ):
-        # The rule ID.
+        # The ID of the permission rule.
         self.access_rule_id = access_rule_id
         # The request ID.
         self.request_id = request_id

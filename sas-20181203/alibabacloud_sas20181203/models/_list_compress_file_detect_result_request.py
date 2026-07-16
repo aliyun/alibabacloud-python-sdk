@@ -16,7 +16,7 @@ class ListCompressFileDetectResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The identifier of the file. Only MD5 hash values are supported.
+        # The unique identifier for the file.
         self.hash_key = hash_key
         # The number of entries per page. Default value: 20.
         # 

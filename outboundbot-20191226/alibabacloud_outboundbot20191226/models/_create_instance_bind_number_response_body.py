@@ -17,11 +17,17 @@ class CreateInstanceBindNumberResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -81,6 +87,7 @@ class CreateInstanceBindNumberResponseBodyData(DaraModel):
         self,
         list: List[main_models.CreateInstanceBindNumberResponseBodyDataList] = None,
     ):
+        # List of number data.
         self.list = list
 
     def validate(self):
@@ -117,7 +124,9 @@ class CreateInstanceBindNumberResponseBodyDataList(DaraModel):
         instance_id: str = None,
         success: bool = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Indicates whether the binding was successful.
         self.success = success
 
     def validate(self):

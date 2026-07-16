@@ -10,9 +10,9 @@ class CreateNetworkServiceResponseBody(DaraModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # Workspace Id。
+        # The operation ID.
         self.operation_id = operation_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class WafRatelimitCharacteristics(DaraModel):
         logic: str = None,
         match_type: str = None,
     ):
-        # The details of logical databases.
+        # A list of match criteria.
         self.criteria = criteria
-        # The logical judgment.
+        # The logical relationship between the criteria.
         self.logic = logic
-        # The matching type.
+        # The field to match.
         self.match_type = match_type
 
     def validate(self):
@@ -68,11 +68,11 @@ class WafRatelimitCharacteristicsCriteria(DaraModel):
         logic: str = None,
         match_type: str = None,
     ):
-        # The details of logical databases.
+        # A list of match criteria.
         self.criteria = criteria
-        # The logical judgment.
+        # The logical relationship between the criteria.
         self.logic = logic
-        # The matching type.
+        # The field to match.
         self.match_type = match_type
 
     def validate(self):
@@ -122,11 +122,11 @@ class WafRatelimitCharacteristicsCriteriaCriteria(DaraModel):
         logic: str = None,
         match_type: str = None,
     ):
-        # The details of logical databases.
+        # A list of match criteria.
         self.criteria = criteria
-        # The logical judgment.
+        # The logical relationship between the criteria.
         self.logic = logic
-        # The matching type.
+        # The field to match.
         self.match_type = match_type
 
     def validate(self):
@@ -174,7 +174,7 @@ class WafRatelimitCharacteristicsCriteriaCriteriaCriteria(DaraModel):
         self,
         match_type: str = None,
     ):
-        # The matching type.
+        # The field to match.
         self.match_type = match_type
 
     def validate(self):

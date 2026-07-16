@@ -15,8 +15,11 @@ class ListExternalServicesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code.
         self.code = code
+        # The list of APIs.
         self.data = data
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -66,6 +69,7 @@ class ListExternalServicesResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListExternalServicesResponseBodyDataItems] = None,
     ):
+        # The service information.
         self.items = items
 
     def validate(self):
@@ -103,8 +107,11 @@ class ListExternalServicesResponseBodyDataItems(DaraModel):
         namespace_show_name: str = None,
         services: List[main_models.ListExternalServicesResponseBodyDataItemsServices] = None,
     ):
+        # The namespace.
         self.namespace = namespace
+        # The display name of the namespace.
         self.namespace_show_name = namespace_show_name
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -153,7 +160,9 @@ class ListExternalServicesResponseBodyDataItemsServices(DaraModel):
         name: str = None,
         namespace: str = None,
     ):
+        # The name.
         self.name = name
+        # The namespace.
         self.namespace = namespace
 
     def validate(self):

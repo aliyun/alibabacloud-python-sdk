@@ -20,17 +20,20 @@ class CreateConsumerRequest(DaraModel):
     ):
         # The list of AK/SK identity configurations.
         self.ak_sk_identity_configs = ak_sk_identity_configs
-        # The configuration for the API key authentication method.
+        # The API key authentication identity configuration.
         self.apikey_identity_config = apikey_identity_config
-        # The description of the consumer.
+        # The consumer description.
         self.description = description
-        # Indicates if enabled.
+        # Specifies whether to enable the consumer.
         self.enable = enable
-        # The type of the gateway.
+        # The gateway type. Valid values:
+        # 
+        # - API: a consumer of a cloud-native API gateway.
+        # - AI: a consumer of an AI gateway.
         self.gateway_type = gateway_type
-        # The configuration of the JWT identity.
+        # The JWT identity configuration.
         self.jwt_identity_config = jwt_identity_config
-        # The name of the consumer.
+        # The consumer name.
         self.name = name
 
     def validate(self):

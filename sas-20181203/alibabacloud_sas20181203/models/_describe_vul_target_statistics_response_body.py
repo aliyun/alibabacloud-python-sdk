@@ -16,13 +16,13 @@ class DescribeVulTargetStatisticsResponseBody(DaraModel):
         target_stats: List[main_models.DescribeVulTargetStatisticsResponseBodyTargetStats] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the current page when paging is used in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries per page when paging is used in a paged query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the configurations of the vulnerability scan feature.
+        # The statistics of vulnerability configurations.
         self.target_stats = target_stats
         # The total number of entries returned.
         self.total_count = total_count
@@ -87,18 +87,18 @@ class DescribeVulTargetStatisticsResponseBodyTargetStats(DaraModel):
         uuid_count: int = None,
         vul_type: str = None,
     ):
-        # An array that consists of available servers.
+        # The list of target servers for the assets.
         self.targets = targets
-        # The total number of servers.
+        # The total number of assets returned.
         self.total_count = total_count
-        # The number of servers to which the configurations are applied.
+        # The number of servers on which the configuration takes effect.
         self.uuid_count = uuid_count
-        # The type of the vulnerability. Valid values:
+        # The type of vulnerability to query. Valid values:
         # 
-        # *   cve: Linux software vulnerabilities
-        # *   sys: Windows system vulnerabilities
-        # *   cms: Web-CMS vulnerabilities
-        # *   emg: urgent vulnerabilities
+        # - cve: Linux software vulnerability
+        # - sys: Windows system vulnerability
+        # - cms: Web-CMS vulnerability
+        # - emg: emergency vulnerability.
         self.vul_type = vul_type
 
     def validate(self):
@@ -154,17 +154,17 @@ class DescribeVulTargetStatisticsResponseBodyTargetStatsTargets(DaraModel):
         target: str = None,
         target_type: str = None,
     ):
-        # Indicates whether the configurations are applied to the server. Valid values:
+        # The type of configuration effect. Valid values:
         # 
-        # *   **add**: yes
-        # *   **del**: no
+        # - **add**: The configuration takes effect on the server.
+        # - **del**: The configuration does not take effect on the server.
         self.flag = flag
-        # The group ID or UUID of the server to which the configurations are applied.
+        # The group ID or UUID of the asset on which the configuration takes effect.
         self.target = target
-        # The condition by which the configurations are applied to the server. Valid values:
+        # The target type. Valid values:
         # 
-        # *   **uuid**: the UUID of the server
-        # *   **groupId**: the ID of the server group
+        # - **uuid**: asset.
+        # - **groupId**: server group.
         self.target_type = target_type
 
     def validate(self):

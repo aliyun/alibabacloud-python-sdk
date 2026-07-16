@@ -106,9 +106,11 @@ class GetPromptTestResultResponseBodyResultLabelDetails(DaraModel):
         self,
         description: str = None,
         label: str = None,
+        reason: str = None,
     ):
         self.description = description
         self.label = label
+        self.reason = reason
 
     def validate(self):
         pass
@@ -124,6 +126,9 @@ class GetPromptTestResultResponseBodyResultLabelDetails(DaraModel):
         if self.label is not None:
             result['Label'] = self.label
 
+        if self.reason is not None:
+            result['Reason'] = self.reason
+
         return result
 
     def from_map(self, m: dict = None):
@@ -133,6 +138,9 @@ class GetPromptTestResultResponseBodyResultLabelDetails(DaraModel):
 
         if m.get('Label') is not None:
             self.label = m.get('Label')
+
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
 
         return self
 

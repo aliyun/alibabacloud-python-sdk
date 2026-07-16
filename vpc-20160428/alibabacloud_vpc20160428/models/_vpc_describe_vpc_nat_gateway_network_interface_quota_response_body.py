@@ -10,9 +10,9 @@ class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody(DaraModel):
         quota: int = None,
         request_id: str = None,
     ):
-        # The number of endpoints that can be created.
+        # The number of EPs that can be created.
         self.quota = quota
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

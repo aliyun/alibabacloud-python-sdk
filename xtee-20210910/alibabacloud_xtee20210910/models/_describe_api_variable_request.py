@@ -11,15 +11,15 @@ class DescribeApiVariableRequest(DaraModel):
         id: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # Variable ID
+        # The variable ID.
         # 
         # This parameter is required.
         self.id = id
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

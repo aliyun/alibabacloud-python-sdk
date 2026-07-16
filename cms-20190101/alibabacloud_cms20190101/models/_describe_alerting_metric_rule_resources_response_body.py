@@ -28,8 +28,9 @@ class DescribeAlertingMetricRuleResourcesResponseBody(DaraModel):
         self.resources = resources
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
         # The total number of entries returned.
         self.total = total

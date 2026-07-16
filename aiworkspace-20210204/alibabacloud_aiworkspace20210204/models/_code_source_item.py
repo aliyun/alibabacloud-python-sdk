@@ -25,31 +25,33 @@ class CodeSourceItem(DaraModel):
     ):
         # The visibility of the code source. Valid values:
         # 
-        # *   PRIVATE: Visible only to you and the administrator in the workspace.
-        # *   PUBLIC: Visible to all users in the workspace.
+        # - `PRIVATE`: Visible only to you and workspace administrators.
+        # 
+        # - `PUBLIC`: Visible to all workspace members.
         self.accessibility = accessibility
+        # The clone type.
         self.clone_type = clone_type
         # The code branch.
         self.code_branch = code_branch
-        # The code commit ID
+        # The commit ID.
         self.code_commit = code_commit
-        # The address of the code repository.
+        # The code repository URL.
         self.code_repo = code_repo
-        # The token used to access the code repository.
+        # The access token for the code repository.
         self.code_repo_access_token = code_repo_access_token
-        # The username of the code repository.
+        # The username for the code repository.
         self.code_repo_user_name = code_repo_user_name
         # The code source ID.
         self.code_source_id = code_source_id
-        # The code source description.
+        # The description of the code source.
         self.description = description
-        # The code source name.
+        # The display name of the code source.
         self.display_name = display_name
-        # The creation time.
+        # The time when the code source was created.
         self.gmt_create_time = gmt_create_time
-        # The last modified time.
+        # The time when the code source was last modified.
         self.gmt_modify_time = gmt_modify_time
-        # The local mount path of the code.
+        # The local mount path for the code repository.
         self.mount_path = mount_path
         # The ID of the creator.
         self.user_id = user_id

@@ -10,9 +10,9 @@ class VoiceModerationResultRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service. Valid values: nickname_detection: user nickname
+        # The moderation service type. Supported values include `nickname_detection` for user nickname moderation. Support for more types is planned.
         self.service = service
-        # The parameters of API requests that are sent from API Gateway to the backend service.
+        # Parameters that the gateway sends to the backend service.
         # 
         # For more information, see [ServiceParameter](https://help.aliyun.com/document_detail/43988.html).
         self.service_parameters = service_parameters

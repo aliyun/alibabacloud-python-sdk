@@ -9,6 +9,8 @@ class GetFactAuditUrlRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. Get the [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

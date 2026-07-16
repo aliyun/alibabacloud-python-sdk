@@ -11,8 +11,11 @@ class PolarFsMountConfig(DaraModel):
         mount_dir: str = None,
         remote_dir: str = None,
     ):
+        # Instance ID.
         self.instance_id = instance_id
+        # Local mount folder.
         self.mount_dir = mount_dir
+        # Remote mount folder
         self.remote_dir = remote_dir
 
     def validate(self):

@@ -13,11 +13,24 @@ class CreateVmcoreDiagnosisTaskRequest(DaraModel):
         task_type: str = None,
         vmcore_url: str = None,
     ):
+        # The download URL of the debuginfo-common file. This parameter is optional when the diagnostic type is vmcore.
+        # 
+        # For CentOS or Alinux kernels, the corresponding debuginfo-common file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo-common file that corresponds to the kernel version.
         self.debuginfo_common_url = debuginfo_common_url
+        # The download URL of the debuginfo file. This parameter is optional when the diagnostic type is vmcore.
+        # 
+        # For CentOS or Alinux kernels, the corresponding debuginfo file is automatically downloaded, and you do not need to specify this parameter. For other distribution kernels, manually provide the download URL of the debuginfo file that corresponds to the kernel version.
         self.debuginfo_url = debuginfo_url
+        # The download URL of the dmesg log file. This parameter is required when the diagnostic type is dmesg.
         self.dmesg_url = dmesg_url
+        # The task type. Valid values:
+        # 
+        # - vmcore: vmcore file diagnostic task.
+        # - dmesg: dmesg log diagnostic task.
+        # 
         # This parameter is required.
         self.task_type = task_type
+        # The download URL of the vmcore file. This parameter is required when the diagnostic type is vmcore.
         self.vmcore_url = vmcore_url
 
     def validate(self):

@@ -11,8 +11,13 @@ class AddRecursionZoneRequest(DaraModel):
         proxy_pattern: str = None,
         zone_name: str = None,
     ):
+        # A client token that ensures the idempotence of the request. You can specify a custom value. Make sure that the value is unique among different requests. The value can contain up to 64 ASCII characters.
         self.client_token = client_token
+        # Specifies whether to enable recursive proxy for subdomains. Valid values:
+        # 
+        # zone: Disables recursive proxy. An NXDOMAIN response is returned for non-existent subdomains. record: Enables recursive proxy. For non-existent subdomains, the system queries the forwarding and recursion modules in sequence and returns the final result.
         self.proxy_pattern = proxy_pattern
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):

@@ -10,6 +10,8 @@ class UnbindPurchasedDeviceRequest(DaraModel):
         device_id: str = None,
         owner_id: int = None,
     ):
+        # The ID of the device.
+        # 
         # This parameter is required.
         self.device_id = device_id
         self.owner_id = owner_id

@@ -22,23 +22,27 @@ class ListTransitRouterVbrAttachmentsRequest(DaraModel):
         transit_router_attachment_id: str = None,
         transit_router_id: str = None,
     ):
-        # The IDs of the CEN instances.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The number of entries to return on each page. Default value: **20**.
+        # The maximum number of entries to return for a single query. The default value is **20**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that is used for the next query. Valid values:
+        # 
+        # - If this is your first query, you do not need to specify this parameter.
+        # 
+        # - If a subsequent query is to be sent, set the value to the NextToken value that is returned in the previous request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the Enterprise Edition transit router.
+        # The ID of the region where the Enterprise Edition transit router is deployed.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The information about the tags.
+        # The tag.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can specify up to 20 tags.
         self.tag = tag
         # The ID of the VBR connection.
         self.transit_router_attachment_id = transit_router_attachment_id
@@ -139,17 +143,17 @@ class ListTransitRouterVbrAttachmentsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https:// `.
         # 
-        # You can specify at most 20 tag keys.
+        # You can specify up to 20 tag keys.
         self.key = key
-        # The tag value.
+        # The tag value of the resource.
         # 
-        # The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https:// `.
         # 
-        # Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+        # Each tag key must have a unique tag value. You can specify up to 20 tag values.
         self.value = value
 
     def validate(self):

@@ -15,6 +15,8 @@ class QueryAiCallTaskDetailRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

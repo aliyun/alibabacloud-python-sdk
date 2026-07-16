@@ -16,7 +16,7 @@ class QuerySmsSignListRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_index = page_index
-        # The number of signatures per page. Valid values: **1 to 50**.
+        # The number of signatures to return on each page. Default value: **10**. Valid values: **1 to 50**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

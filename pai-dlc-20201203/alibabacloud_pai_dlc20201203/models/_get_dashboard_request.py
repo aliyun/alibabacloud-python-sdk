@@ -10,14 +10,9 @@ class GetDashboardRequest(DaraModel):
         is_shared: bool = None,
         token: str = None,
     ):
-        # Specifies whether the link is a sharing link. If yes, a token is required.
-        # 
-        # Enumerated values:
-        # 
-        # *   true
-        # *   false
+        # Indicates whether this is a shared link. If it is, the \\`token\\` parameter is also required.
         self.is_shared = is_shared
-        # The token obtained from GetToken
+        # The token obtained from GetToken.
         self.token = token
 
     def validate(self):

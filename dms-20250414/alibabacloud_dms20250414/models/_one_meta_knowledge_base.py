@@ -18,15 +18,25 @@ class OneMetaKnowledgeBase(DaraModel):
         state: int = None,
         tag: str = None,
     ):
+        # The creator of the knowledge base.
         self.creator = creator
+        # The description of the knowledge base.
         self.description = description
+        # The domain of the knowledge base.
         self.domain = domain
+        # Additional information about the knowledge base.
         self.extra_info = extra_info
+        # The time when the knowledge base was created.
         self.gmt_create = gmt_create
+        # The time when the knowledge base was last modified.
         self.gmt_modified = gmt_modified
+        # The UUID of the knowledge base.
         self.kb_uuid = kb_uuid
+        # The name of the knowledge base.
         self.name = name
+        # The state of the knowledge base. Valid values include 0 (No data) and 1 (Available).
         self.state = state
+        # The tag of the knowledge base.
         self.tag = tag
 
     def validate(self):

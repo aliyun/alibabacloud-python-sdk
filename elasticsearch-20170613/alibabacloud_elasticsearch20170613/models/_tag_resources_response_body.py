@@ -10,7 +10,12 @@ class TagResourcesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # - true: The tag-resource relationships are created.
+        # - false: The tag-resource relationships failed to be created.
         self.result = result
 
     def validate(self):

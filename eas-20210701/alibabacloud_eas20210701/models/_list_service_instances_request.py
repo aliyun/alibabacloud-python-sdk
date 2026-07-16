@@ -26,150 +26,41 @@ class ListServiceInstancesRequest(DaraModel):
         role: str = None,
         sort: str = None,
     ):
-        # The keyword used to query instances. Instances can be queried based on instance name, instance IP address, IP address of the server where the instance resides, and instance type.
+        # A keyword for the search. You can search by instance name, instance IP address, host IP address, or instance type.
         self.filter = filter
-        # The IP address of the server where the instance resides.
+        # The IP address of the host where the service instance is deployed.
         self.host_ip = host_ip
-        # The IP address of the instance.
+        # The IP address of the service instance.
         self.instance_ip = instance_ip
-        # The instance name.
+        # The name of the service instance.
         self.instance_name = instance_name
-        # The instance state.
+        # The status of the service instance.
         self.instance_status = instance_status
         # The instance type.
         self.instance_type = instance_type
-        # Specifies whether the instance is a preemptible instance.
+        # Specifies whether the instance is a spot instance.
         self.is_spot = is_spot
+        # Specifies whether to query the list of instance replicas.
         self.list_replica = list_replica
+        # The type of the sub-service. This parameter is valid only for aggregation services.
         self.member_type = member_type
-        # The sorting order.
-        # 
-        # Valid values:
-        # 
-        # *   asc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     The instances are sorted in ascending order.
-        # 
-        # *   desc
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     The instances are sorted in descending order.
+        # The sort order.
         self.order = order
-        # The page number. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 100.
+        # The number of entries to return on each page. The default value is 100.
         self.page_size = page_size
+        # The quota ID.
         self.quota_id = quota_id
+        # The name of the instance replica.
         self.replica_name = replica_name
+        # The resource group to which the instance belongs.
         self.resource = resource
-        # The type of the resource group to which the instance belongs.
-        # 
-        # Valid values:
-        # 
-        # *   PublicResource
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DedicatedResource
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
+        # The type of the resource group to which the service instance belongs.
         self.resource_type = resource_type
-        # The service role.
-        # 
-        # Valid values:
-        # 
-        # *   DataSet
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     dataset service
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   SDProxy
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Stable-Diffusion proxy service
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   Standard
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     standard service
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   Queue
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     queue service
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # The role of the service.
         self.role = role
-        # The field that you use to sort the query results.
-        # 
-        # *   Set the value to StartTime.
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     The value specifies that the query results are sorted based on the time when the instances were created
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # The field to use for sorting.
         self.sort = sort
 
     def validate(self):

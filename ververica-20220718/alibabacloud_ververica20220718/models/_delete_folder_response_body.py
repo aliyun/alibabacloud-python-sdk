@@ -13,11 +13,13 @@ class DeleteFolderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error code was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error message was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_message = error_message
         # The HTTP status code. If this parameter was not empty and the value of this parameter was not 200, the request failed.
         self.http_code = http_code

@@ -14,11 +14,31 @@ class ListIndexFileDetailsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # Filters the returned file details list by file name. Default value: empty, which means no filtering by file name.
         self.document_name = document_name
+        # Filters the returned file list by file import status. Valid values:
+        # 
+        # - INSERT_ERROR: Failed to import to the index.
+        # - RUNNING: Index building in progress.
+        # - DELETED: Deleted.
+        # - FINISH: Index building succeeded.
+        # - PARSE_FAILED: Parsing failed.
+        # - DOC_PARSING: Parsing in progress.
+        # 
+        # Default value: empty, which means no filtering by file import status.
         self.document_status = document_status
+        # Specifies whether to enable fuzzy matching for file names. This parameter is used together with the `DocumentName` parameter. Valid values:
+        # 
+        # - true: Performs fuzzy matching on the returned file list based on the file name.
+        # - false: Performs exact matching on the returned file list based on the file name.
+        # 
+        # Default value: false.
         self.enable_name_like = enable_name_like
+        # The knowledge base ID, which is the `Data.Id` returned by the **CreateIndex** operation.
         self.index_id = index_id
+        # The page number to query. Minimum value: 1. Default value: 1.
         self.page_number = page_number
+        # The number of files to display per page for paging. Maximum value: 10.
         self.page_size = page_size
 
     def validate(self):

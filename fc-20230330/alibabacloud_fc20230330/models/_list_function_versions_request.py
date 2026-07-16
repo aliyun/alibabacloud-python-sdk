@@ -11,11 +11,11 @@ class ListFunctionVersionsRequest(DaraModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The sorting mode of function versions. Valid values: BACKWARD and FORWARD.
+        # The order in which to sort the versions. Valid values: BACKWARD and FORWARD.
         self.direction = direction
-        # The number of function versions that are returned.
+        # The number of versions to return.
         self.limit = limit
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that marks the start of the next page of results.
         self.next_token = next_token
 
     def validate(self):

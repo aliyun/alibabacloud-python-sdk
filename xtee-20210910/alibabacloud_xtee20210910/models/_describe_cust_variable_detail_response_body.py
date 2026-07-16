@@ -13,9 +13,9 @@ class DescribeCustVariableDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeCustVariableDetailResponseBodyResultObject] = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -70,33 +70,33 @@ class DescribeCustVariableDetailResponseBodyResultObject(DaraModel):
         velocity_fc: str = None,
         velocity_tw: str = None,
     ):
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Data version.
+        # The data version.
         self.data_version = data_version
-        # Description information.
+        # The description.
         self.description = description
-        # Event code.
+        # The event code.
         self.event_codes = event_codes
-        # Value type
+        # The value type.
         self.history_value_type = history_value_type
-        # Primary key ID of the cumulative variable
+        # The primary key ID of the cumulative variable.
         self.id = id
-        # Cumulative object
+        # The cumulative object.
         self.object = object
-        # Variable return type
+        # The variable return type.
         self.outputs = outputs
-        # Main object
+        # The primary object.
         self.subject = subject
-        # Time slice type
+        # The time slice type.
         self.time_type = time_type
-        # Title.
+        # The title.
         self.title = title
-        # Time count
+        # The number of time windows.
         self.tw_count = tw_count
-        # Variable type
+        # The variable type.
         self.velocity_fc = velocity_fc
-        # Time slice unit
+        # The time slice unit.
         self.velocity_tw = velocity_tw
 
     def validate(self):

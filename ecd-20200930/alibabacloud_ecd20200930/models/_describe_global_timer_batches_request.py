@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeGlobalTimerBatchesRequest(DaraModel):
@@ -11,14 +13,38 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         max_results: str = None,
         next_token: str = None,
         region_id: str = None,
+        resource_types: List[str] = None,
         search_region_id: str = None,
         timer_type: str = None,
     ):
+        # The ID of the scheduled task group.
         self.group_id = group_id
+        # The maximum number of entries to return.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. Set this parameter to the `NextToken` value from a previous response.
         self.next_token = next_token
+        # The region ID.
+        # 
+        # - China (Shanghai)
+        # 
+        # - Singapore (Singapore)
         self.region_id = region_id
+        self.resource_types = resource_types
+        # The ID of the region where the cloud computers are located. This parameter filters the results to include only cloud computers in the specified region.
         self.search_region_id = search_region_id
+        # The type of the scheduled task. This operation returns batch information for timer-based scheduled tasks only.
+        # 
+        # - `TimerBoot`: scheduled startup
+        # 
+        # - `TimerShutdown`: scheduled shutdown
+        # 
+        # - `TimerReboot`: scheduled reboot
+        # 
+        # - `TimerReset`: scheduled reset
+        # 
+        # - `TimerMaintenance`: scheduled maintenance
+        # 
+        # - `TimerHibernate`: scheduled hibernation
         self.timer_type = timer_type
 
     def validate(self):
@@ -41,6 +67,9 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource_types is not None:
+            result['ResourceTypes'] = self.resource_types
+
         if self.search_region_id is not None:
             result['SearchRegionId'] = self.search_region_id
 
@@ -62,6 +91,9 @@ class DescribeGlobalTimerBatchesRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceTypes') is not None:
+            self.resource_types = m.get('ResourceTypes')
 
         if m.get('SearchRegionId') is not None:
             self.search_region_id = m.get('SearchRegionId')

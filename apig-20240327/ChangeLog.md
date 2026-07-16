@@ -1,3 +1,136 @@
+2026-07-15 Version: 10.1.0
+- Support API BatchAddConsumerGroupConsumers.
+- Support API BatchRemoveConsumerGroupConsumers.
+- Support API CreateAiModelCard.
+- Support API CreateConsumerGroup.
+- Support API DeleteAiModelCard.
+- Support API DeleteAiModelProvider.
+- Support API DeleteConsumerGroup.
+- Support API GetAiModelCard.
+- Support API GetAiModelProvider.
+- Support API GetConsumerGroup.
+- Support API ListAiModelCards.
+- Support API ListAiModelProviders.
+- Support API ListConsumerGroupConsumers.
+- Support API ListConsumerGroups.
+- Support API UpdateAiModelCard.
+- Support API UpdateAiModelProvider.
+- Support API UpdateConsumerGroup.
+
+
+2026-07-15 Version: 10.0.0
+- Support API DeletePluginClass.
+- Update API GetDomain: add response parameters Body.data.certDetailErrorCode.
+- Update API GetDomain: add response parameters Body.data.certDetailErrorMessage.
+- Update API GetDomain: add response parameters Body.data.certDetailStatus.
+- Update API ListZones: add request parameters gatewayEdition.
+- Update API ListZones: add request The number of query or body parameters has changed from zero to many.
+
+
+2026-07-03 Version: 9.3.0
+- Support API CreateAiModelProvider.
+- Support API CreatePluginClass.
+- Support API GetPluginClass.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.consumerGroupId.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.principalType.
+- Update API CreateService: add request parameters body.serviceConfigs.$.modelProviderId.
+- Update API GetConsumer: add response parameters Body.data.consumerGroups.
+- Update API QueryConsumerAuthorizationRules: add request parameters consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add request parameters principalType.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupInfo.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.principalType.
+- Update API UpdateService: add request parameters body.modelProviderId.
+
+
+2026-07-03 Version: 9.3.0
+- Support API CreateAiModelProvider.
+- Support API CreatePluginClass.
+- Support API GetPluginClass.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.consumerGroupId.
+- Update API CreateConsumerAuthorizationRules: add request parameters body.authorizationRules.$.principalType.
+- Update API CreateService: add request parameters body.serviceConfigs.$.modelProviderId.
+- Update API GetConsumer: add response parameters Body.data.consumerGroups.
+- Update API QueryConsumerAuthorizationRules: add request parameters consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add request parameters principalType.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupId.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.consumerGroupInfo.
+- Update API QueryConsumerAuthorizationRules: add response parameters Body.data.items.$.principalType.
+- Update API UpdateService: add request parameters body.modelProviderId.
+
+
+2026-06-29 Version: 9.2.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
+2026-06-26 Version: 9.1.1
+- Generated python 2024-03-27 for APIG.
+
+2026-06-25 Version: 9.1.0
+- Support API ListConsumerQuotaRules.
+
+
+2026-06-23 Version: 9.0.0
+- Update API AddGatewayQuotaRule: add request parameters body.periodMultiplier.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+- Update API AddGatewayQuotaRule: update response parameters Body.data.accepted' type has changed.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.consumers.
+- Update API ResetGatewayQuotaRule: add request parameters body.periodMultiplier.
+- Update API ResetGatewayQuotaRule: add request parameters body.windowAlignment.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictPeriodType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.conflictType.
+
+
+2026-06-22 Version: 8.0.0
+- Update API DescribeRegions: delete response parameters Body.regions.
+
+
+2026-06-17 Version: 7.2.2
+- Update API CreateDomain: add request parameters body.domainScope.
+- Update API GetDomain: add response parameters Body.data.domainScope.
+- Update API GetSource: add response parameters Body.data.associationReason.
+- Update API GetSource: add response parameters Body.data.associationStatus.
+- Update API ListDomains: add request parameters domainScope.
+- Update API UpdateDomain: add request parameters body.domainScope.
+
+
+2026-06-15 Version: 7.2.1
+- Update API DescribeRegions: add response parameters Body.data.
+
+
+2026-06-12 Version: 7.2.0
+- Support API DescribeRegions.
+- Update API ImportHttpApi: add request parameters body.withGatewayExtension.
+- Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.failureRoutes.
+- Update API ImportHttpApi: add response parameters Body.data.dryRunInfo.successRoutes.
+
+
+2026-06-11 Version: 7.1.0
+- Support API AddGatewayQuotaRule.
+- Support API DeleteGatewayQuotaRule.
+- Support API GetGatewayQuotaRule.
+- Support API GetGatewayQuotaRuleSubjectUsage.
+- Support API ListGatewayQuotaRules.
+- Support API ResetGatewayQuotaRule.
+- Support API UpdateGatewayQuotaRule.
+- Support API UpdateGatewayQuotaRuleStatus.
+
+
+2026-06-05 Version: 7.0.5
+- Update API GetMcpServer: add response parameters Body.data.apiId.
+
+
+2026-05-23 Version: 7.0.4
+- Generated python 2024-03-27 for APIG.
+
+2026-05-21 Version: 7.0.3
+- Generated python 2024-03-27 for APIG.
+
 2026-04-21 Version: 7.0.1
 - Update API DeployHttpApi: add response parameters Body.data.
 

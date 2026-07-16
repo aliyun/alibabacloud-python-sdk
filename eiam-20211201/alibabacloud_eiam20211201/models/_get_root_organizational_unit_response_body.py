@@ -11,9 +11,9 @@ class GetRootOrganizationalUnitResponseBody(DaraModel):
         organizational_unit: main_models.GetRootOrganizationalUnitResponseBodyOrganizationalUnit = None,
         request_id: str = None,
     ):
-        # The data object of the organizational unit.
+        # The organizational unit data object.
         self.organizational_unit = organizational_unit
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,17 +54,17 @@ class GetRootOrganizationalUnitResponseBodyOrganizationalUnit(DaraModel):
         organizational_unit_name: str = None,
         update_time: int = None,
     ):
-        # The time when the organizational unit was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was created, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The description of the organizational unit.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the organizational unit.
+        # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The name of the organization.
+        # The organizational unit name.
         self.organizational_unit_name = organizational_unit_name
-        # The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was last updated, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

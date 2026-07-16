@@ -12,7 +12,9 @@ class InstallLogstashSystemPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):

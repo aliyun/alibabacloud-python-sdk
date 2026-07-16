@@ -2098,6 +2098,286 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_coupon_item_list_with_options_async(request, runtime)
 
+    def describe_deduct_logs_with_options(
+        self,
+        tmp_req: main_models.DescribeDeductLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductLogsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDeductLogsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.relation_account_ids):
+            request.relation_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.relation_account_ids, 'RelationAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_instance_id):
+            query['BillInstanceId'] = request.bill_instance_id
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.billing_commodity_code):
+            body['BillingCommodityCode'] = request.billing_commodity_code
+        if not DaraCore.is_null(request.billing_end_time):
+            body['BillingEndTime'] = request.billing_end_time
+        if not DaraCore.is_null(request.billing_start_time):
+            body['BillingStartTime'] = request.billing_start_time
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relation_account_ids_shrink):
+            body['RelationAccountIds'] = request.relation_account_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductLogs',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_deduct_logs_with_options_async(
+        self,
+        tmp_req: main_models.DescribeDeductLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeductLogsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeDeductLogsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.relation_account_ids):
+            request.relation_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.relation_account_ids, 'RelationAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.bill_instance_id):
+            query['BillInstanceId'] = request.bill_instance_id
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.billing_commodity_code):
+            body['BillingCommodityCode'] = request.billing_commodity_code
+        if not DaraCore.is_null(request.billing_end_time):
+            body['BillingEndTime'] = request.billing_end_time
+        if not DaraCore.is_null(request.billing_start_time):
+            body['BillingStartTime'] = request.billing_start_time
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relation_account_ids_shrink):
+            body['RelationAccountIds'] = request.relation_account_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDeductLogs',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDeductLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_deduct_logs(
+        self,
+        request: main_models.DescribeDeductLogsRequest,
+    ) -> main_models.DescribeDeductLogsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_deduct_logs_with_options(request, runtime)
+
+    async def describe_deduct_logs_async(
+        self,
+        request: main_models.DescribeDeductLogsRequest,
+    ) -> main_models.DescribeDeductLogsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_deduct_logs_with_options_async(request, runtime)
+
+    def describe_fr_instances_with_options(
+        self,
+        tmp_req: main_models.DescribeFrInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFrInstancesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFrInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.instance_tag):
+            query['InstanceTag'] = request.instance_tag
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.capacity_type):
+            body['CapacityType'] = request.capacity_type
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            body['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.spec):
+            body['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFrInstances',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFrInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fr_instances_with_options_async(
+        self,
+        tmp_req: main_models.DescribeFrInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFrInstancesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFrInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.instance_tag):
+            query['InstanceTag'] = request.instance_tag
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.capacity_type):
+            body['CapacityType'] = request.capacity_type
+        if not DaraCore.is_null(request.commodity_code):
+            body['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.cycle_type):
+            body['CycleType'] = request.cycle_type
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.group):
+            body['Group'] = request.group
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_num):
+            body['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_code):
+            body['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not DaraCore.is_null(request.sort_rule):
+            body['SortRule'] = request.sort_rule
+        if not DaraCore.is_null(request.spec):
+            body['Spec'] = request.spec
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.status):
+            body['Status'] = request.status
+        if not DaraCore.is_null(request.template_code):
+            body['TemplateCode'] = request.template_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFrInstances',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFrInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fr_instances(
+        self,
+        request: main_models.DescribeFrInstancesRequest,
+    ) -> main_models.DescribeFrInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_fr_instances_with_options(request, runtime)
+
+    async def describe_fr_instances_async(
+        self,
+        request: main_models.DescribeFrInstancesRequest,
+    ) -> main_models.DescribeFrInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_fr_instances_with_options_async(request, runtime)
+
     def describe_user_spn_summary_info_with_options(
         self,
         tmp_req: main_models.DescribeUserSpnSummaryInfoRequest,
@@ -4428,6 +4708,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_cost_center_share_rule_with_options_async(request, runtime)
 
+    def query_monthly_sla_list_with_options(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.pay_statuses):
+            body['PayStatuses'] = request.pay_statuses
+        if not DaraCore.is_null(request.product_codes):
+            body['ProductCodes'] = request.product_codes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMonthlySlaList',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMonthlySlaListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_monthly_sla_list_with_options_async(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        body = {}
+        if not DaraCore.is_null(request.instance_ids):
+            body['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.months):
+            body['Months'] = request.months
+        if not DaraCore.is_null(request.pay_statuses):
+            body['PayStatuses'] = request.pay_statuses
+        if not DaraCore.is_null(request.product_codes):
+            body['ProductCodes'] = request.product_codes
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMonthlySlaList',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMonthlySlaListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_monthly_sla_list(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        runtime = RuntimeOptions()
+        return self.query_monthly_sla_list_with_options(request, runtime)
+
+    async def query_monthly_sla_list_async(
+        self,
+        request: main_models.QueryMonthlySlaListRequest,
+    ) -> main_models.QueryMonthlySlaListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_monthly_sla_list_with_options_async(request, runtime)
+
     def save_cost_center_share_rule_with_options(
         self,
         tmp_req: main_models.SaveCostCenterShareRuleRequest,
@@ -4779,6 +5161,92 @@ class Client(OpenApiClient):
     ) -> main_models.SetSavingPlanUserDeductRuleResponse:
         runtime = RuntimeOptions()
         return await self.set_saving_plan_user_deduct_rule_with_options_async(request, runtime)
+
+    def submit_sla_coupon_apply_with_options(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.damaged_ids):
+            body['DamagedIds'] = request.damaged_ids
+        if not DaraCore.is_null(request.month):
+            body['Month'] = request.month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitSlaCouponApply',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitSlaCouponApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_sla_coupon_apply_with_options_async(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not DaraCore.is_null(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not DaraCore.is_null(request.damaged_ids):
+            body['DamagedIds'] = request.damaged_ids
+        if not DaraCore.is_null(request.month):
+            body['Month'] = request.month
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitSlaCouponApply',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitSlaCouponApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_sla_coupon_apply(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        runtime = RuntimeOptions()
+        return self.submit_sla_coupon_apply_with_options(request, runtime)
+
+    async def submit_sla_coupon_apply_async(
+        self,
+        request: main_models.SubmitSlaCouponApplyRequest,
+    ) -> main_models.SubmitSlaCouponApplyResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_sla_coupon_apply_with_options_async(request, runtime)
 
     def update_budget_with_options(
         self,

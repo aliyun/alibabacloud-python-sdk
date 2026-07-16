@@ -19,7 +19,7 @@ class GetPageResponseBody(DaraModel):
         site_ids: List[int] = None,
         update_time: str = None,
     ):
-        # The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
+        # The Base64-encoded response page content corresponding to the Content-Type.
         # 
         # This parameter is required.
         self.content = content
@@ -27,9 +27,9 @@ class GetPageResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.content_type = content_type
-        # The description of the custom error page.
+        # The description of the custom response page.
         self.description = description
-        # The ID of the custom error page.[](~~2850223~~)
+        # The ID of the custom response page. You can obtain this value by calling the [ListPages](https://help.aliyun.com/document_detail/2850223.html) operation.
         self.id = id
         # The type of the custom response page.
         self.kind = kind
@@ -39,8 +39,13 @@ class GetPageResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        # The list of associated site IDs.
         self.site_ids = site_ids
-        # The time when the custom error page was last modified.
+        # The last modification time of the custom response page.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

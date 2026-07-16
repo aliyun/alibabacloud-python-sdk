@@ -17,17 +17,17 @@ class DescribeRuleBarChartResponseBody(DaraModel):
         result_object: main_models.DescribeRuleBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Whether the request was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class DescribeRuleBarChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeRuleBarChartResponseBodyResultObjectSeries] = None,
         yaxis: main_models.DescribeRuleBarChartResponseBodyResultObjectYaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # yaxis related results.
+        # The y-axis results.
         self.yaxis = yaxis
 
     def validate(self):
@@ -135,7 +135,7 @@ class DescribeRuleBarChartResponseBodyResultObjectYaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # yaxis data items
+        # The y-axis data items.
         self.data = data
 
     def validate(self):
@@ -164,9 +164,9 @@ class DescribeRuleBarChartResponseBodyResultObjectSeries(DaraModel):
         data: List[main_models.DescribeRuleBarChartResponseBodyResultObjectSeriesData] = None,
         type: str = None,
     ):
-        # Response data.
+        # The response data.
         self.data = data
-        # Bar chart type
+        # The bar chart type.
         self.type = type
 
     def validate(self):
@@ -211,13 +211,13 @@ class DescribeRuleBarChartResponseBodyResultObjectSeriesData(DaraModel):
         rule_name: str = None,
         status: str = None,
     ):
-        # Event name.
+        # The event name.
         self.event_name = event_name
-        # Number.
+        # The quantity.
         self.num = num
-        # Policy name
+        # The policy name.
         self.rule_name = rule_name
-        # Status.
+        # The status.
         self.status = status
 
     def validate(self):

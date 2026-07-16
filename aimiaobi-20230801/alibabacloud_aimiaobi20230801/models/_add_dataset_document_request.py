@@ -15,10 +15,16 @@ class AddDatasetDocumentRequest(DaraModel):
         document: main_models.AddDatasetDocumentRequestDocument = None,
         workspace_id: str = None,
     ):
+        # The unique identifier of the dataset.
         self.dataset_id = dataset_id
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # The document.
+        # 
         # This parameter is required.
         self.document = document
+        # The unique identifier of the Model Studio workspace. For more information, see [Obtain a workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -84,23 +90,59 @@ class AddDatasetDocumentRequestDocument(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The unique identifier of the category.
         self.category_uuid = category_uuid
+        # The content.
         self.content = content
+        # Specifies whether to disable the indexing of multimodal data, such as images and videos, in the current record. The default value is true.
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
+        # The unique business ID of the document.
         self.doc_id = doc_id
+        # The type of the document.
+        # 
+        # - plainText: plain text. The content parameter is required.
+        # 
+        # - richText: rich text in HTML format. The content parameter is required.
+        # 
+        # - text: a text file. The url parameter is required.
+        # 
+        # - pdf: a PDF file. The url parameter is required.
+        # 
+        # - word: a Word document. The url parameter is required.
+        # 
+        # - image: an image. The url parameter is required. Most common image formats are supported, such as GIF, PNG, JPG, and JPEG.
+        # 
+        # - video: a video. The url parameter is required. Most common video formats are supported, such as MP4, AVI, WMV, and MOV.
         self.doc_type = doc_type
+        # The unique system ID of the document. The system automatically generates this ID. You do not need to specify this parameter.
         self.doc_uuid = doc_uuid
+        # Extension field 1.
         self.extend_1 = extend_1
+        # Extension field 2.
         self.extend_2 = extend_2
+        # Extension field 3.
         self.extend_3 = extend_3
+        # The metadata.
         self.metadata = metadata
+        # Deprecated. This parameter is not available.
         self.multimodal_index_name = multimodal_index_name
+        # A list of multimodal data in the document.
+        # 
+        # - If a document, such as a rich text document, contains multimodal data like images or videos, you can pass the data using this parameter. This allows the data to be retrieved in search results.
+        # 
+        # - If the document itself is multimodal data, leave this field empty and specify the data using the docType and url parameters.
         self.multimodal_medias = multimodal_medias
+        # The publishing time.
         self.pub_time = pub_time
+        # The source.
         self.source_from = source_from
+        # The summary of the article.
         self.summary = summary
+        # The tag name.
         self.tags = tags
+        # The title of the document.
         self.title = title
+        # The URL of the article. The URL must be accessible over the public network.
         self.url = url
 
     def validate(self):
@@ -243,8 +285,15 @@ class AddDatasetDocumentRequestDocumentMultimodalMedias(DaraModel):
         media_id: str = None,
         media_type: str = None,
     ):
+        # The URL of the file. The URL must be accessible over the public network.
         self.file_url = file_url
+        # The unique identifier of the multimodal data. The system automatically generates this ID. You do not need to specify this parameter.
         self.media_id = media_id
+        # The type of the multimodal data.
+        # 
+        # - image: an image
+        # 
+        # - video: a video
         self.media_type = media_type
 
     def validate(self):
@@ -287,9 +336,13 @@ class AddDatasetDocumentRequestDocumentMetadata(DaraModel):
         text: str = None,
         video_shots: List[main_models.AddDatasetDocumentRequestDocumentMetadataVideoShots] = None,
     ):
+        # The speech or caption information.
         self.asr_sentences = asr_sentences
+        # The metadata in a key-value structure.
         self.key_values = key_values
+        # The description of the metadata. This field is deprecated.
         self.text = text
+        # The video shot information.
         self.video_shots = video_shots
 
     def validate(self):
@@ -363,8 +416,11 @@ class AddDatasetDocumentRequestDocumentMetadataVideoShots(DaraModel):
         start_time: int = None,
         text: str = None,
     ):
+        # The end time in milliseconds.
         self.end_time = end_time
+        # The start time in milliseconds.
         self.start_time = start_time
+        # The text information from the video shot analysis.
         self.text = text
 
     def validate(self):
@@ -405,7 +461,9 @@ class AddDatasetDocumentRequestDocumentMetadataKeyValues(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The name.
         self.key = key
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -441,8 +499,11 @@ class AddDatasetDocumentRequestDocumentMetadataAsrSentences(DaraModel):
         start_time: int = None,
         text: str = None,
     ):
+        # The end time in milliseconds.
         self.end_time = end_time
+        # The start time in milliseconds.
         self.start_time = start_time
+        # The speech or caption information.
         self.text = text
 
     def validate(self):

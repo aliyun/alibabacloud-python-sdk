@@ -12,9 +12,9 @@ class TracingConfig(DaraModel):
         params: Dict[str, str] = None,
         type: str = None,
     ):
-        # The parameters of Managed Service for OpenTelemetry. Specify the value in the map[string]string format, where the key is "endpoint", and the value is the internal endpoint of Tracing Analysis. Example: endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces.
+        # The parameters for Tracing Analysis. The value is a map[string]string where the key is "endpoint" and the value is the internal network endpoint for Tracing Analysis. For example: endpoint: http\\://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces.
         self.params = params
-        # The type of protocol for Managed Service for OpenTelemetry. Only Jaeger is supported.
+        # The Protocol Type for Tracing Analysis. Only Jaeger is supported.
         self.type = type
 
     def validate(self):

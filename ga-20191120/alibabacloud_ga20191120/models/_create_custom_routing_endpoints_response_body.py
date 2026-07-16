@@ -12,9 +12,9 @@ class CreateCustomRoutingEndpointsResponseBody(DaraModel):
         endpoint_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the endpoints.
+        # The list of endpoint IDs.
         self.endpoint_ids = endpoint_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

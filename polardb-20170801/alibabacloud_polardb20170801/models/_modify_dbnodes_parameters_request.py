@@ -23,21 +23,21 @@ class ModifyDBNodesParametersRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # The IDs of the nodes. To specify multiple node IDs, separate the IDs with a comma (,).
         # 
         # This parameter is required.
         self.dbnode_ids = dbnode_ids
-        # Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values: false: runs the task on schedule. true: runs the task immediately. Default value: false.
+        # Specifies whether to apply the parameter modifications and restart the node. Valid values: \\`false\\` (default): Schedules the task. \\`true\\`: Executes the task immediately.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template that is used for the cluster.
+        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
-        # The JSON string that specifies the parameter and its value.
+        # A JSON string that contains the parameters and their values.
         self.parameters = parameters
-        # The latest start time to run the task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The latest time to start the scheduled task. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format and in UTC.
         self.planned_end_time = planned_end_time
-        # The earliest start time to run the task to upgrade the kernel version of the cluster. The task runs within a specified period of time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The earliest time to start the scheduled task. The time must be in the \\`YYYY-MM-DDThh:mm:ssZ\\` format and in UTC.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

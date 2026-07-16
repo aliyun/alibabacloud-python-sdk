@@ -10,8 +10,11 @@ class DescribePolarAgentSessionStatusRequest(DaraModel):
         session_id: str = None,
         source: str = None,
     ):
+        # The ID of the session. This ID is used to identify a visitor\\"s session and maintain context information.
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # The source of the product. Set the value to polardb-console.
         self.source = source
 
     def validate(self):

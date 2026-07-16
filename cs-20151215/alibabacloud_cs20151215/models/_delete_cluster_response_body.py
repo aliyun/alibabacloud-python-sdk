@@ -11,11 +11,11 @@ class DeleteClusterResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The request ID.
         self.request_id = request_id
-        # The ID of the task.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

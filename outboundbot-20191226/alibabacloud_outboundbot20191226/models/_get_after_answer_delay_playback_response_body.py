@@ -14,11 +14,17 @@ class GetAfterAnswerDelayPlaybackResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Delay before playing audio after the call is answered, in seconds
         self.after_answer_delay_playback = after_answer_delay_playback
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
 
     def validate(self):

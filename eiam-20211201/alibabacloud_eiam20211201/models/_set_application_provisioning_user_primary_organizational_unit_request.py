@@ -11,15 +11,15 @@ class SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest(DaraModel):
         instance_id: str = None,
         user_primary_organizational_unit_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 组织ID。
+        # The organization ID.
         # 
         # This parameter is required.
         self.user_primary_organizational_unit_id = user_primary_organizational_unit_id

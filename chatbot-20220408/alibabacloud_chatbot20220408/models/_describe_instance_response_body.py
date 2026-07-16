@@ -22,16 +22,27 @@ class DescribeInstanceResponseBody(DaraModel):
         robot_type: str = None,
         time_zone: str = None,
     ):
+        # The URL of the robot\\"s avatar.
         self.avatar = avatar
+        # A list of categories.
         self.categories = categories
+        # The UTC time when the robot was created.
         self.create_time = create_time
+        # The status of the robot.
         self.edit_status = edit_status
+        # The unique identifier of the robot instance.
         self.instance_id = instance_id
+        # The robot\\"s introduction.
         self.introduction = introduction
+        # The language of the robot, such as zh-cn and en-us.
         self.language_code = language_code
+        # The robot name.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The robot type.
         self.robot_type = robot_type
+        # The time zone of the robot. For more information, see Time zone codes.
         self.time_zone = time_zone
 
     def validate(self):
@@ -130,9 +141,13 @@ class DescribeInstanceResponseBodyCategories(DaraModel):
         name: str = None,
         parent_category_id: int = None,
     ):
+        # The ability type of the category, such as FAQ or MRC.
         self.ability_type = ability_type
+        # The category ID.
         self.category_id = category_id
+        # The category name.
         self.name = name
+        # The parent category ID. A value of -1 indicates the root directory.
         self.parent_category_id = parent_category_id
 
     def validate(self):

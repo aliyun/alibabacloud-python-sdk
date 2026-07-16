@@ -12,9 +12,13 @@ class DeleteEvaluateAndImportTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the task is deleted.
         self.data = data
+        # The returned message. > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

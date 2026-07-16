@@ -18,7 +18,7 @@ class ListBackupsRequest(DaraModel):
         self.filter = filter
         # The number of entries per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token that is used to start the next query.
         self.next_token = next_token
 
     def validate(self):
@@ -67,15 +67,19 @@ class ListBackupsRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+        # The name of the filter. You can query by one or more filter names. Valid values:
         # 
-        # *   BackupId: the ID of the backup.
-        # *   ServiceInstanceId: The ID of the service instance.
-        # *   Status: the state of the service.
-        # *   StartTime
-        # *   EndTime
+        # - BackupId: The backup ID.
+        # 
+        # - ServiceInstanceId: The service instance ID.
+        # 
+        # - Status: The status.
+        # 
+        # - StartTime: The start time.
+        # 
+        # - EndTime: The end time.
         self.name = name
-        # The list of filters.
+        # The filter values.
         self.value = value
 
     def validate(self):

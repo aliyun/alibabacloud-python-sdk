@@ -13,9 +13,9 @@ class DescribeTagsNumLineChartResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeTagsNumLineChartResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeTagsNumLineChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeTagsNumLineChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeTagsNumLineChartResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # xaxis node.
+        # The xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -99,7 +99,7 @@ class DescribeTagsNumLineChartResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
 
     def validate(self):
@@ -128,9 +128,9 @@ class DescribeTagsNumLineChartResponseBodyResultObjectSeries(DaraModel):
         data: List[str] = None,
         name: str = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
-        # Series name.
+        # The series name.
         self.name = name
 
     def validate(self):

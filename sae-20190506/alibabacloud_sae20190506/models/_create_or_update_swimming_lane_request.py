@@ -20,33 +20,35 @@ class CreateOrUpdateSwimmingLaneRequest(DaraModel):
         mse_gateway_entry_rule: main_models.CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule = None,
         namespace_id: str = None,
     ):
-        # The route configuration of the gateway.
+        # The configuration of the gateway route.
         # 
-        # >  This parameter is required if the gateway entry of the lane group is Java.
+        # > This parameter is required if the gateway entry application for the swimlane group is a Java application.
         self.app_entry_rule = app_entry_rule
-        # Full-link Grayscale Mode:
+        # The end-to-end canary release mode.
         # 
-        # *   0: The request is routed based on the content of the request.
-        # *   1: routing based on percentages
+        # - `0`: content-based routing
+        # 
+        # - `1`: percentage-based routing
         self.canary_model = canary_model
-        # Lane Status
+        # The status of the swimlane.
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - `true`: enabled
+        # 
+        # - `false`: disabled
         self.enable = enable
-        # The ID of the lane group to which the lane belongs.
+        # The ID of the swimlane group.
         self.group_id = group_id
-        # The ID of the lane.
+        # The ID of the swimlane.
         self.lane_id = lane_id
-        # The name of the lane.
+        # The name of the swimlane.
         self.lane_name = lane_name
-        # The tag of the lane.
+        # The tag of the swimlane.
         self.lane_tag = lane_tag
-        # The route configuration of the MSE gateway.
+        # Configuration for the MSE gateway route.
         # 
-        # >  If the **EntryAppType** is set to **apig** or **mse-gw**, it is required.
+        # > This parameter is required if the **EntryAppType** parameter is set to **apig** or **mse-gw**.
         self.mse_gateway_entry_rule = mse_gateway_entry_rule
-        # The namespace ID.
+        # The ID of the namespace.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -132,23 +134,25 @@ class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule(DaraModel):
         percentage_by_route: Dict[str, int] = None,
         route_ids: List[int] = None,
     ):
-        # Logical connectors between conditions:
+        # The logical operator used to combine conditions.
         # 
-        # *   AND: All conditions are met at the same time.
-        # *   OR: Any condition is met.
+        # - `AND`: All conditions must be met.
+        # 
+        # - `OR`: At least one of the conditions must be met.
         self.condition_joiner = condition_joiner
-        # Routing Condition
+        # The match conditions.
         self.conditions = conditions
-        # Whether to enable proportional grayscale.
+        # Specifies whether to enable percentage-based routing.
         # 
-        # *   true: Enabled. After you enable this parameter, you must configure the PercentageByPath.
-        # *   false: Disabled.
+        # - `true`: Enables percentage-based routing. You must also configure the `PercentageByRoute` parameter.
+        # 
+        # - `false`: Disables percentage-based routing.
         self.independent_percentage_enable = independent_percentage_enable
-        # The percentage of traffic replication. Valid values: 0 to 100.
+        # The traffic mirroring percentage. Valid values: 0 to 100.
         self.percentage = percentage
-        # The traffic configuration.
+        # An object that maps route IDs to traffic percentages.
         self.percentage_by_route = percentage_by_route
-        # The ID of the route.
+        # The route IDs.
         self.route_ids = route_ids
 
     def validate(self):
@@ -219,21 +223,27 @@ class CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions(DaraModel):
     ):
         # The matching rule.
         # 
-        # *   \\==: exact match.
-        # *   ! =: exact match.
-        # *   in: contains matches.
-        # *   Percentage: Percentage matching.
-        # *   Regular matching: specifies whether a regular expression is used to search for the original string.
-        self.condition = condition
-        # The parameter name.
-        self.name = name
-        # The parameter type. Valid values:
+        # - `==`: Exact match. The attribute\\"s value must be identical to the value specified.
         # 
-        # *   header
-        # *   param
-        # *   Cookie: forwards requests based on cookies.
+        # - `!=`: Negated exact match. The attribute\\"s value must not be identical to the value specified.
+        # 
+        # - `in`: Inclusion match. The attribute\\"s value must be present in the specified comma-separated list of values.
+        # 
+        # - `percentage`: Percentage-based match. The expression `hash(get(key)) % 100 < value` must be true.
+        # 
+        # - `regex`: Regular expression match. The attribute\\"s value must match the specified regular expression.
+        self.condition = condition
+        # The name of the header, parameter, or cookie.
+        self.name = name
+        # The type of the request attribute to match.
+        # 
+        # - `header`: A request header.
+        # 
+        # - `param`: A request parameter.
+        # 
+        # - `cookie`: A request cookie.
         self.type = type
-        # The match value of the condition.
+        # The value to match against the request attribute.
         self.value = value
 
     def validate(self):
@@ -284,23 +294,25 @@ class CreateOrUpdateSwimmingLaneRequestAppEntryRule(DaraModel):
         percentage: int = None,
         percentage_by_path: Dict[str, int] = None,
     ):
-        # Logical connectors between conditions:
+        # The logical operator used to combine conditions.
         # 
-        # *   AND: All conditions are met at the same time.
-        # *   OR: Any condition is met.
+        # - `AND`: All conditions must be met.
+        # 
+        # - `OR`: At least one of the conditions must be met.
         self.condition_joiner = condition_joiner
-        # The conditions that trigger circuit breaking.
+        # The match conditions.
         self.conditions = conditions
-        # Whether to enable proportional grayscale.
+        # Specifies whether to enable percentage-based routing.
         # 
-        # *   true: enabled. After you enable this parameter, you must configure the PercentageByPath.
-        # *   false: disables the service.
+        # - `true`: Enables percentage-based routing. You must also configure the `PercentageByPath` parameter.
+        # 
+        # - `false`: Disables percentage-based routing.
         self.independent_percentage_enable = independent_percentage_enable
-        # The matched request path.
+        # The request paths to match.
         self.paths = paths
-        # The traffic ratio. Valid values: 0 to 100.
+        # The traffic percentage for percentage-based routing. Valid values: 0 to 100.
         self.percentage = percentage
-        # The traffic configuration.
+        # An object that maps request paths to traffic percentages.
         self.percentage_by_path = percentage_by_path
 
     def validate(self):
@@ -369,23 +381,29 @@ class CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Matching Rule:
+        # The matching rule.
         # 
-        # *   The exact match. The condition is met if the traffic value and the condition value are exactly the same.
-        # *   The exact match. The condition is met if the traffic value and the condition value are exactly the same.
-        # *   The inclusive match. The condition is met if the traffic value is included in the specified list.
-        # *   The percentage match. Principle: The condition is met if \\"hash(get(`key`)) % 100 < value\\".
-        # *   Regular match: a regular expression match. The condition is met when the match is based on regular expression rules.
+        # - `==`: Exact match. The attribute\\"s value must be identical to the value specified.
+        # 
+        # - `!=`: Negated exact match. The attribute\\"s value must not be identical to the value specified.
+        # 
+        # - `in`: Inclusion match. The attribute\\"s value must be present in the specified comma-separated list of values.
+        # 
+        # - `percentage`: Percentage-based match. The expression `hash(get(key)) % 100 < value` must be true.
+        # 
+        # - `regex`: Regular expression match. The attribute\\"s value must match the specified regular expression.
         self.condition = condition
-        # The parameter name.
+        # The name of the header, parameter, or cookie.
         self.name = name
-        # The parameter type. Valid values:
+        # The type of the request attribute to match.
         # 
-        # *   header
-        # *   param
-        # *   Cookie: forwards requests based on cookies.
+        # - `header`: A request header.
+        # 
+        # - `param`: A request parameter.
+        # 
+        # - `cookie`: A request cookie.
         self.type = type
-        # The match value of the condition.
+        # The value to match against the request attribute.
         self.value = value
 
     def validate(self):

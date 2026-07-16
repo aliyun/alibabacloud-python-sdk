@@ -12,9 +12,13 @@ class ListContextStoresRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The name of the context store.
         self.context_store_name = context_store_name
+        # The context type.
         self.context_type = context_type
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
 
     def validate(self):

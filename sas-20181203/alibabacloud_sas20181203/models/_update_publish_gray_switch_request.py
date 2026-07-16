@@ -11,8 +11,9 @@ class UpdatePublishGraySwitchRequest(DaraModel):
     ):
         # Specifies whether to enable the canary release feature. Valid values:
         # 
-        # *   **1**: enabled.
-        # *   **0**: disabled.
+        # - **1**: enabled.
+        # 
+        # - **0**: disabled.
         # 
         # This parameter is required.
         self.gray_switch_status = gray_switch_status

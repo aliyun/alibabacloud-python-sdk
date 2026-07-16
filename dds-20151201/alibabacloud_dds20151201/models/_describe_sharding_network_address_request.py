@@ -19,10 +19,17 @@ class DescribeShardingNetworkAddressRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        self.network_type = network_type
-        # The ID of the mongos, shard, or Configserver node in the sharded cluster instance.
+        # The network type. Valid values:
         # 
-        # >  You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the ID of the mongos, shard, or Configserver node.
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **Classic**: classic network.
+        # 
+        # - **Public**: public network.
+        self.network_type = network_type
+        # The ID of a mongos, shard, or ConfigServer node in the sharded cluster instance.
+        # 
+        # > You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to query the IDs of mongos, shard, and ConfigServer nodes.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -13,11 +13,17 @@ class SubmitDeepWriteTaskShrinkRequest(DaraModel):
         instructions: str = None,
         workspace_id: str = None,
     ):
+        # The agent orchestration options.
         self.agent_orchestration_shrink = agent_orchestration_shrink
+        # A list of attachments.
         self.files_shrink = files_shrink
+        # The user\\"s question.
+        # 
         # This parameter is required.
         self.input = input
+        # The instructions.
         self.instructions = instructions
+        # [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

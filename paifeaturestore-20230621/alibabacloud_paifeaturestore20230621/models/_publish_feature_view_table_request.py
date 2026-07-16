@@ -15,12 +15,23 @@ class PublishFeatureViewTableRequest(DaraModel):
         offline_to_online: bool = None,
         partitions: Dict[str, dict] = None,
     ):
+        # Custom configurations for the task, provided as a JSON string.
         self.config = config
+        # The event time of the data to be published, in ISO 8601 format.
         self.event_time = event_time
+        # The synchronization mode. The following values are supported:
+        # 
+        # - `Overwrite`: Overwrites all data in the specified partitions.
+        # 
+        # - `Merge`: Merges the new data with existing data in the specified partitions.
+        # 
         # This parameter is required.
         self.mode = mode
+        # Specifies whether to synchronize data from the offline table to the online store.
+        # 
         # This parameter is required.
         self.offline_to_online = offline_to_online
+        # The partitions to publish.
         self.partitions = partitions
 
     def validate(self):

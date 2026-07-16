@@ -31,43 +31,51 @@ class NotifyStrategyForView(DaraModel):
         workspace: str = None,
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
+        # The automatic recovery time.
         self.auto_recover_seconds = auto_recover_seconds
-        # Create Time.
+        # The creation time.
         self.create_time = create_time
-        # Notification channel template.
+        # The notification channel templates.
         self.custom_template_entries = custom_template_entries
-        # Description.
+        # The description.
         self.description = description
-        # Whether enabled.
+        # Indicates whether the policy is enabled.
         self.enable = enable
+        # The filter settings.
         self.filter_setting = filter_setting
-        # Grouping Setting.
+        # The merge settings.
         # 
         # This parameter is required.
         self.grouping_setting = grouping_setting
-        # Whether to notify on recovery.
+        # Indicates whether to send a notification upon recovery.
         self.ignore_restored_notification = ignore_restored_notification
+        # The list of associated escalation policies.
         self.incident_escalation_policies = incident_escalation_policies
-        # UUID
+        # The UUID.
         self.notify_strategy_id = notify_strategy_id
-        # Name.
+        # The name.
         # 
         # This parameter is required.
         self.notify_strategy_name = notify_strategy_name
+        # The push settings.
         self.pushing_setting = pushing_setting
+        # The list of receiver names.
         self.receiver_names = receiver_names
+        # The settings for repeated notifications.
         self.repeat_notify_setting = repeat_notify_setting
-        # Notification channel routing configuration.
+        # The routing settings for notification channels.
         # 
         # This parameter is required.
         self.routes = routes
+        # The source type of the synchronization policy.
         self.sync_from_type = sync_from_type
-        # Update Time.
+        # The update time.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
-        # workspace
+        # The workspace.
         self.workspace = workspace
+        # The workspace filter settings.
         self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
@@ -246,15 +254,15 @@ class NotifyStrategyForViewRoutes(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
-        # Notification channel.
+        # The notification channels.
         self.channels = channels
         self.digital_employee_name = digital_employee_name
-        # Field.
+        # The field.
         self.effect_time_range = effect_time_range
         self.enable_rca = enable_rca
-        # Routing settings.
+        # The routing settings.
         self.filter_setting = filter_setting
-        # Severity level list.
+        # The list of severity levels.
         self.severities = severities
 
     def validate(self):
@@ -329,13 +337,13 @@ class NotifyStrategyForViewRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # Effective days (Monday to Sunday).
+        # The days of the week when the policy is effective (Monday to Sunday).
         self.day_in_week = day_in_week
-        # End time (in minutes).
+        # The end time in minutes.
         self.end_time_in_minute = end_time_in_minute
-        # Start time (in minutes).
+        # The start time in minutes.
         self.start_time_in_minute = start_time_in_minute
-        # Time Zone.
+        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):
@@ -383,13 +391,13 @@ class NotifyStrategyForViewRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # Channel type.
+        # The channel type.
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Enabled notification types.
+        # The enabled notification types.
         self.enabled_sub_channels = enabled_sub_channels
-        # Channel recipient.
+        # The channel receivers.
         # 
         # This parameter is required.
         self.receivers = receivers
@@ -432,7 +440,9 @@ class NotifyStrategyForViewRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
+        # The event state at which to stop.
         self.end_incident_state = end_incident_state
+        # The interval for repeated notifications.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -468,8 +478,11 @@ class NotifyStrategyForViewPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
+        # The list of alert action IDs.
         self.alert_action_ids = alert_action_ids
+        # The list of recovery action IDs.
         self.restore_action_ids = restore_action_ids
+        # The template UUID.
         self.template_uuid = template_uuid
 
     def validate(self):
@@ -512,13 +525,13 @@ class NotifyStrategyForViewGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # Grouping Keys
+        # The merge keys.
         self.grouping_keys = grouping_keys
-        # Check interval in minutes.
+        # The check period in minutes.
         self.period_min = period_min
-        # Silence duration in seconds.
+        # The silence period in seconds.
         self.silence_sec = silence_sec
-        # Trigger count.
+        # The number of triggers.
         self.times = times
 
     def validate(self):
@@ -565,11 +578,11 @@ class NotifyStrategyForViewCustomTemplateEntries(DaraModel):
         target_type: str = None,
         template_uuid: str = None,
     ):
-        # Notification type.
+        # The notification type.
         # 
         # This parameter is required.
         self.target_type = target_type
-        # Template UUID.
+        # The template UUID.
         # 
         # This parameter is required.
         self.template_uuid = template_uuid

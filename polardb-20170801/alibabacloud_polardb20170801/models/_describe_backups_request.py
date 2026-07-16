@@ -21,45 +21,42 @@ class DescribeBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The ID of the backup set.
+        # The backup ID.
         self.backup_id = backup_id
-        # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
+        # The backup mode. Valid values: 
+        # * **Automated**: automatic backup.
+        # * **Manual**: manual backup.
         self.backup_mode = backup_mode
-        # The region where the cross-region data backup file of the instance is stored.
+        # The destination region for cross-region backups.
         # 
-        # > This parameter is valid only for PolarDB for MySQL clusters.
+        # > Currently, only PolarDB for MySQL supports this parameter.
         self.backup_region = backup_region
-        # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
+        # The backup status. Valid values:
+        # * **Success**: The backup is complete.
+        # * **Failed**: The backup failed.
         self.backup_status = backup_status
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. Set the value to an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # The number of entries per page. Valid values: 
+        # * **30**
+        # * **50**
+        # * **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # The beginning of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

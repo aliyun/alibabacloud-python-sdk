@@ -13,6 +13,7 @@ class VatInvoiceScanQueryHeaders(DaraModel):
         x_acs_btrip_so_corp_token: str = None,
     ):
         self.common_headers = common_headers
+        # A header parameter obtained from the "Enterprise access credential" API operation (added in the header). In HTTP mode, you can use corp_token=value in the URL as a substitute.
         self.x_acs_btrip_so_corp_token = x_acs_btrip_so_corp_token
 
     def validate(self):

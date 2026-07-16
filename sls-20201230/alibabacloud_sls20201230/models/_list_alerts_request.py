@@ -11,9 +11,11 @@ class ListAlertsRequest(DaraModel):
         offset: int = None,
         size: int = None,
     ):
+        # The Logstore from which to obtain alert rules. The default value is empty.
         self.logstore = logstore
+        # The line from which to start the query. The default value is 0.
         self.offset = offset
-        # The number of entries per page. Maximum value: 200. Default value: 10.
+        # The number of rows to return on each page for a paged query. The maximum value is 200. The default value is 10.
         self.size = size
 
     def validate(self):

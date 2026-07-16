@@ -1,3 +1,13 @@
+2026-07-08 Version: 2.2.2
+- Generated python 2025-07-07 for AnyTrans.
+
+2026-06-10 Version: 2.2.1
+- Generated python 2025-07-07 for AnyTrans.
+
+2026-06-10 Version: 2.2.0
+- Support API UsageQuery.
+
+
 2026-05-19 Version: 2.1.7
 - Update API SubmitDocTranslateTask: add request parameters ext.config.isBilingual.
 

@@ -10,12 +10,12 @@ class RenewLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result. Valid values:
         # 
-        # *   true: The cluster is renewed.
-        # *   false: The cluster fails to be renewed.
+        # - true: The renewal was successful.
+        # - false: The renewal failed.
         self.result = result
 
     def validate(self):

@@ -18,17 +18,21 @@ class CreateSecretResponseBody(DaraModel):
     ):
         # The HTTP status code or the error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The returned result.
         self.data = data
         # The status code. Value values:
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - If the request was successful, **ErrorCode** is not returned.
+        # 
+        # - If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
         self.error_code = error_code
         # The message returned for the operation.
         self.message = message
@@ -36,8 +40,9 @@ class CreateSecretResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the Secret was created. Valid values:
         # 
-        # *   **true**: The ConfigMap was created.
-        # *   **false**: The ConfigMap failed to be created.
+        # - **true**: The ConfigMap was created.
+        # 
+        # - **false**: The ConfigMap failed to be created.
         self.success = success
         # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id

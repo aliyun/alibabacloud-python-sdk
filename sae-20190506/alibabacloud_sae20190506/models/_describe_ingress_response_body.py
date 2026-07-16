@@ -18,33 +18,39 @@ class DescribeIngressResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code returned for the request. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A client error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The result returned.
+        # The returned data.
         self.data = data
-        # The error codes. Valid values:
+        # The error code.
         # 
-        # *   **ErrorCode** is not returned if a request is successful.
-        # *   **ErrorCode** is returned if a request failed. For more information, see **Error code** section of this topic.
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The message returned. Valid values:
+        # The returned message.
         # 
-        # *   **success** is returned when a request is successful.
-        # *   An error code is returned when the request failed.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, a specific error code is returned.
         self.message = message
-        # The ID of a request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the configurations of Ingresses were queried successfully. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of a trace. The ID is used to query the details of a request.
+        # The trace ID used to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -133,53 +139,93 @@ class DescribeIngressResponseBodyData(DaraModel):
         slb_id: str = None,
         slb_type: str = None,
     ):
-        # The ID of the certificate that is associated with a Classic Load Balancer (**CLB**) instance.
+        # The ID of the **Classic Load Balancer (CLB)** certificate.
         self.cert_id = cert_id
-        # The ID of the certificate that is associated with an Application Load Balancer **ALB** instance.
+        # The comma-separated IDs of the **Application Load Balancer (ALB)** certificates.
         self.cert_ids = cert_ids
+        # The configurations for Cross-Origin Resource Sharing (CORS). Valid HTTP methods:
+        # 
+        # - **GET**
+        # 
+        # - **POST**
+        # 
+        # - **PUT**
+        # 
+        # - **DELETE**
+        # 
+        # - **HEAD**
+        # 
+        # - **OPTIONS**
+        # 
+        # - **PATCH**
         self.cors_config = cors_config
+        # Indicates whether the Application Load Balancer (ALB) instance was provisioned by SAE.
         self.created_by_sae = created_by_sae
         # The default rule.
         self.default_rule = default_rule
-        # The name of a routing rule.
+        # The description of the Ingress.
         self.description = description
+        # Specifies whether to enable Gzip compression.
         self.enable_gzip = enable_gzip
+        # Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses.
         self.enable_xforwarded_for = enable_xforwarded_for
+        # Specifies whether to use a header to retrieve the source port of the client.
         self.enable_xforwarded_for_client_src_port = enable_xforwarded_for_client_src_port
+        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol of the SLB instance.
         self.enable_xforwarded_for_proto = enable_xforwarded_for_proto
+        # Specifies whether to use the `SLB-ID` header to retrieve the ID of the SLB instance.
         self.enable_xforwarded_for_slb_id = enable_xforwarded_for_slb_id
+        # Specifies whether to use the `X-Forwarded-Port` header to retrieve the listener port of the SLB instance.
         self.enable_xforwarded_for_slb_port = enable_xforwarded_for_slb_port
-        # The ID of a routing rule.
+        # The ID of the Ingress.
         self.id = id
+        # The connection idle timeout, in seconds.
+        # 
+        # Valid values: 1 to 60.
+        # 
+        # Default value: 15.
+        # 
+        # If no request is received within the timeout period, the load balancer closes the connection. A new connection is established when the next request is received.
         self.idle_timeout = idle_timeout
-        # The listener ports for an SLB instance.
+        # The listener port of the SLB instance.
         self.listener_port = listener_port
-        # The protocol used to forward requests. Valid values:
+        # The request forwarding protocol. Valid values:
         # 
-        # *   **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
-        # *   **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+        # - **HTTP**: Suitable for applications that need to identify data content.
         # 
-        # This parameter is optional in the **CreateIngress** and **UpadateIngress** operations. If you do not configure this parameter when you call the CreateIngress or UpdateIngress operation to create or update a gateway routing rule, this parameter is not returned for the corresponding response.
+        # - **HTTPS**: Suitable for applications that require encrypted transmission.
+        # 
+        # This parameter is optional for the `CreateIngress` and `UpdateIngress` operations. It is not returned if it was not specified when the Ingress was created or updated.
         self.listener_protocol = listener_protocol
-        # The type of SLB instances. Valid values:
+        # The type of the Server Load Balancer (SLB) instance. Valid values:
         # 
-        # *   **clb**: Classic Load Balancer (formerly known as SLB).
-        # *   **alb**: Application Load Balancer.
+        # - **clb**: Classic Load Balancer (CLB), formerly known as SLB.
+        # 
+        # - **alb**: Application Load Balancer (ALB).
         self.load_balance_type = load_balance_type
-        # The name of a routing rule.
+        # The name of the Ingress.
         self.name = name
-        # The ID of a namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
+        # The request timeout, in seconds.
+        # 
+        # Valid values: 1 to 180.
+        # 
+        # Default value: 60.
+        # 
+        # If a backend server does not respond within the specified timeout period, the load balancer terminates the request and returns an HTTP 504 error to the client.
         self.request_timeout = request_timeout
         # The forwarding rules.
         self.rules = rules
+        # The ID of the security policy instance.
         self.security_policy_id = security_policy_id
-        # The ID of a Server Load Balancer (SLB) instance.
+        # The ID of the Server Load Balancer (SLB) instance.
         self.slb_id = slb_id
-        # The type of an SLB instance. Valid values:
+        # The type of the SLB instance. Valid values:
         # 
-        # *   **internet**: an Internet-facing SLB instance
-        # *   **intranet**: an Intranet-facing SLB instance
+        # - **internet**: An internet-facing instance.
+        # 
+        # - **intranet**: An internal-facing instance.
         self.slb_type = slb_type
 
     def validate(self):
@@ -366,26 +412,29 @@ class DescribeIngressResponseBodyDataRules(DaraModel):
         rewrite_path: str = None,
         rule_actions: List[main_models.DescribeIngressResponseBodyDataRulesRuleActions] = None,
     ):
-        # The ID of the application specified in the forwarding rule.
+        # The ID of the destination application.
         self.app_id = app_id
-        # The name of the application specified in the forwarding rules.
+        # The name of the destination application.
         self.app_name = app_name
         # The backend protocol. Valid values:
         # 
-        # *   **http**: HTTP is suitable for applications that need to identify the transmitted data.
-        # *   **https**: HTTPS is suitable for applications that require encrypted data transmission.
-        # *   **grpc**: GRPC is suitable for load balancing scenarios in which you want to deploy services in multi-language frameworks, such as the .NET framework.
+        # - **http**: Suitable for applications that need to identify data content.
         # 
-        # This parameter is returned only if the **LoadBalanceType** parameter is set to **ALB** and the **ListenerProtocol** parameter is set to **HTTPS**.
+        # - **https**: Suitable for applications that require encrypted transmission.
+        # 
+        # - **grpc**: Suitable for load balancing gRPC services developed in multiple languages, such as .NET.
+        # 
+        # This parameter is valid only when the `LoadBalanceType` parameter is set to `alb` and the `ListenerProtocol` parameter is set to `HTTPS`.
         self.backend_protocol = backend_protocol
-        # Tthe container port of the application specified in the forwarding rules.
+        # The backend port of the application.
         self.container_port = container_port
-        # The domain name of the application specified in the forwarding rules.
+        # The domain name of the application.
         self.domain = domain
-        # The path of a URL.
+        # The URL path.
         self.path = path
-        # The path that is used to rewrite the original path.
+        # The rewritten path.
         self.rewrite_path = rewrite_path
+        # The actions of the forwarding rule.
         self.rule_actions = rule_actions
 
     def validate(self):
@@ -464,7 +513,13 @@ class DescribeIngressResponseBodyDataRulesRuleActions(DaraModel):
         action_config: str = None,
         action_type: str = None,
     ):
+        # The configuration of the action.
         self.action_config = action_config
+        # The type of the action. Valid values:
+        # 
+        # - rewrite: a rewrite policy
+        # 
+        # - redirect: a redirection policy
         self.action_type = action_type
 
     def validate(self):
@@ -501,19 +556,21 @@ class DescribeIngressResponseBodyDataDefaultRule(DaraModel):
         backend_protocol: str = None,
         container_port: int = None,
     ):
-        # The ID of the application that is specified in the default rule.
+        # The ID of the application for the default rule.
         self.app_id = app_id
-        # The name of the application that is specified in the default rule.
+        # The name of the application for the default rule.
         self.app_name = app_name
         # The backend protocol. Valid values:
         # 
-        # *   **http**: HTTP is suitable for applications that need to identify the transmitted data.
-        # *   **https**: HTTP is suitable for applications that require encrypted data transmission.
-        # *   **grpc**: GRPC is suitable for load balancing scenarios in which you want to deploy services in multi-language frameworks, such as the .NET framework.
+        # - **http**: Suitable for applications that need to identify data content.
         # 
-        # This parameter is returned only if the**LoadBalanceType** parameter is set to **ALB** and the **ListenerProtocol** parameter **is set to HTTPS**.
+        # - **https**: Suitable for applications that require encrypted transmission.
+        # 
+        # - **grpc**: Suitable for load balancing gRPC services developed in multiple languages, such as .NET.
+        # 
+        # This parameter is valid only when the `LoadBalanceType` parameter is set to `alb` and the `ListenerProtocol` parameter is set to `HTTPS`.
         self.backend_protocol = backend_protocol
-        # The container port of the application that is specified in the default rule.
+        # The backend port for the default rule.
         self.container_port = container_port
 
     def validate(self):
@@ -565,12 +622,29 @@ class DescribeIngressResponseBodyDataCorsConfig(DaraModel):
         expose_headers: str = None,
         max_age: str = None,
     ):
+        # Specifies whether to allow credentials in cross-origin requests. Valid values:
+        # 
+        # - **on**: yes
+        # 
+        # - **off**: no
         self.allow_credentials = allow_credentials
+        # The headers that are allowed in cross-origin requests.
         self.allow_headers = allow_headers
+        # The HTTP methods that are allowed for cross-origin requests.
         self.allow_methods = allow_methods
+        # The origins that are allowed to access the resource. You can specify a single asterisk (`*`) or one or more specific origins.
+        # 
+        # - A specific origin must start with `http://` or `https://` and be a valid domain name or a first-level wildcard domain name. Example: `http://*.test.abc.example.com`.
+        # 
+        # - You can optionally specify a port. The valid port range is **1** to **65535**.
         self.allow_origin = allow_origin
+        # Specifies whether to enable CORS.
         self.enable = enable
+        # The headers that are exposed to clients.
         self.expose_headers = expose_headers
+        # The maximum cache duration of preflight requests in the browser, in seconds.
+        # 
+        # Valid values: **-1** to **172800**.
         self.max_age = max_age
 
     def validate(self):

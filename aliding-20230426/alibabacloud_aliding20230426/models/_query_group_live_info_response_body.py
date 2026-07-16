@@ -34,7 +34,6 @@ class QueryGroupLiveInfoResponseBody(DaraModel):
         self.live_status = live_status
         self.playback_duration = playback_duration
         self.replay_url = replay_url
-        # requestId
         self.request_id = request_id
         self.staff_id = staff_id
         self.start_time = start_time

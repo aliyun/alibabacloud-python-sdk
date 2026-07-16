@@ -12,12 +12,13 @@ class UpdateCommonSwitchConfigRequest(DaraModel):
     ):
         # Specifies whether to turn on the switch for newly added servers. Valid values:
         # 
-        # *   **add**: yes
-        # *   **del**: no
+        # - **add**: yes
+        # 
+        # - **del**: no
         self.target_default = target_default
         # The type of the switch.
         # 
-        # >  You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) or [ListSystemClientRules](~~ListSystemClientRules~~) operation to obtain the type from the response parameter SwitchId.
+        # > You can call the [ListClientUserDefineRules](~~ListClientUserDefineRules~~) or [ListSystemClientRules](~~ListSystemClientRules~~) operation to obtain the type from the response parameter SwitchId.
         self.type = type
 
     def validate(self):

@@ -16,15 +16,25 @@ class ListModelProviderTemplatesShrinkRequest(DaraModel):
         provider_name: str = None,
         provider_template_ids_shrink: str = None,
     ):
+        # The Agent platform.
         self.agent_platform = agent_platform
+        # The name of the Agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # The business type.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # The model group ID to filter by.
         self.model_template_id = model_template_id
+        # The page number, starting from 1. Values 0 and 1 return the same result.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The name of the model provider to filter by.
         self.provider_name = provider_name
+        # The model provider template IDs to filter by.
         self.provider_template_ids_shrink = provider_template_ids_shrink
 
     def validate(self):

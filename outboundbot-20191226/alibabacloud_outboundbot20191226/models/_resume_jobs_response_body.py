@@ -13,10 +13,15 @@ class ResumeJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # API message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Success.
         self.success = success
 
     def validate(self):

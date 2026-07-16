@@ -13,12 +13,23 @@ class ListUnknownThreatDetectStrategyRequest(DaraModel):
         page_size: str = None,
         study_mode: str = None,
     ):
+        # The page number for a paginated query.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # The strategy ID.
         self.id = id
+        # The strategy name.
         self.name = name
+        # The number of entries to return per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The whitelist mode. Valid values:
+        # 
+        # - **hash**: process hash
+        # 
+        # - **path**: process path
         self.study_mode = study_mode
 
     def validate(self):

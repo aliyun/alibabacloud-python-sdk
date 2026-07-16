@@ -21,8 +21,9 @@ class ChangeResourceGroupRequest(DaraModel):
         self.resource_id = resource_id
         # The type of resource. Valid values:
         # 
-        # *   **VpcEndpoint**: endpoint
-        # *   **VpcEndpointService**: endpoint service
+        # - **VpcEndpoint**: endpoint
+        # 
+        # - **VpcEndpointService**: endpoint service
         self.resource_type = resource_type
 
     def validate(self):

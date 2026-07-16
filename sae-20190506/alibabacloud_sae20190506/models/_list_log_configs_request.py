@@ -11,15 +11,15 @@ class ListLogConfigsRequest(DaraModel):
         current_page: int = None,
         page_size: int = None,
     ):
-        # 10
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The ID of the request.
+        # The page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # 1
+        # The number of entries to return on each page. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.page_size = page_size

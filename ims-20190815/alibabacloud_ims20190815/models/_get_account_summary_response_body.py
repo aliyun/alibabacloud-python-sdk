@@ -11,9 +11,9 @@ class GetAccountSummaryResponseBody(DaraModel):
         request_id: str = None,
         summary_map: main_models.GetAccountSummaryResponseBodySummaryMap = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The overview information about the Alibaba Cloud account.
+        # An overview of the Alibaba Cloud account.
         self.summary_map = summary_map
 
     def validate(self):
@@ -68,38 +68,40 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         policy_size_quota: int = None,
         roles: int = None,
         roles_quota: int = None,
+        service_credentials_per_user_per_service_quota: int = None,
         users: int = None,
         users_quota: int = None,
         versions_per_policy_quota: int = None,
         virtual_mfadevices_quota: int = None,
     ):
-        # The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
+        # The maximum number of access keys that a RAM user can have.
         self.access_keys_per_user_quota = access_keys_per_user_quota
+        # The maximum number of access keys that an Alibaba Cloud account can have.
         self.account_access_keys_per_account_quota = account_access_keys_per_account_quota
-        # The maximum number of custom policies that can be added to a RAM user group.
+        # The maximum number of custom policies that can be attached to a user group.
         self.attached_policies_per_group_quota = attached_policies_per_group_quota
-        # The maximum number of custom policies that can be added to a RAM role.
+        # The maximum number of custom policies that can be attached to a RAM role.
         self.attached_policies_per_role_quota = attached_policies_per_role_quota
-        # The maximum number of custom policies that can be added to a RAM user.
+        # The maximum number of custom policies that can be attached to a RAM user.
         self.attached_policies_per_user_quota = attached_policies_per_user_quota
-        # The maximum number of system policies that can be added to a RAM user group.
+        # The maximum number of system policies that can be attached to a user group.
         self.attached_system_policies_per_group_quota = attached_system_policies_per_group_quota
-        # The maximum number of system policies that can be added to a RAM role.
+        # The maximum number of system policies that can be attached to a RAM role.
         self.attached_system_policies_per_role_quota = attached_system_policies_per_role_quota
-        # The maximum number of system policies that can be added to a RAM user.
+        # The maximum number of system policies that can be attached to a RAM user.
         self.attached_system_policies_per_user_quota = attached_system_policies_per_user_quota
         self.authorized_client_per_user_quota = authorized_client_per_user_quota
-        # The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
+        # The maximum number of conditions allowed in a network access control policy for an account or an access key.
         self.conditions_per_akpolicy_quota = conditions_per_akpolicy_quota
-        # The number of RAM user groups.
+        # The number of user groups.
         self.groups = groups
-        # The maximum number of RAM user groups to which a RAM user can be added.
+        # The maximum number of user groups to which a RAM user can be added.
         self.groups_per_user_quota = groups_per_user_quota
-        # The maximum number of RAM user groups that can be created.
+        # The maximum number of user groups that can be created.
         self.groups_quota = groups_quota
-        # The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
+        # The maximum number of IP addresses or CIDR blocks allowed in a network access control policy for an account or an access key.
         self.ipitems_per_akpolicy_quota = ipitems_per_akpolicy_quota
-        # The number of virtual multi-factor authentication (MFA) devices.
+        # The number of virtual MFA devices.
         self.mfadevices = mfadevices
         # The number of virtual MFA devices in use.
         self.mfadevices_in_use = mfadevices_in_use
@@ -107,17 +109,19 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
         self.policies = policies
         # The maximum number of custom policies that can be created.
         self.policies_quota = policies_quota
-        # The maximum length of the policy content.
+        # The maximum character length of a policy document.
         self.policy_size_quota = policy_size_quota
         # The number of RAM roles.
         self.roles = roles
         # The maximum number of RAM roles that can be created.
         self.roles_quota = roles_quota
+        # The maximum number of service-specific credentials that a RAM user can create for each service.
+        self.service_credentials_per_user_per_service_quota = service_credentials_per_user_per_service_quota
         # The number of RAM users.
         self.users = users
         # The maximum number of RAM users that can be created.
         self.users_quota = users_quota
-        # The maximum number of policy versions.
+        # The maximum number of versions that can be created for a policy.
         self.versions_per_policy_quota = versions_per_policy_quota
         # The maximum number of virtual MFA devices that can be created.
         self.virtual_mfadevices_quota = virtual_mfadevices_quota
@@ -192,6 +196,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
 
         if self.roles_quota is not None:
             result['RolesQuota'] = self.roles_quota
+
+        if self.service_credentials_per_user_per_service_quota is not None:
+            result['ServiceCredentialsPerUserPerServiceQuota'] = self.service_credentials_per_user_per_service_quota
 
         if self.users is not None:
             result['Users'] = self.users
@@ -271,6 +278,9 @@ class GetAccountSummaryResponseBodySummaryMap(DaraModel):
 
         if m.get('RolesQuota') is not None:
             self.roles_quota = m.get('RolesQuota')
+
+        if m.get('ServiceCredentialsPerUserPerServiceQuota') is not None:
+            self.service_credentials_per_user_per_service_quota = m.get('ServiceCredentialsPerUserPerServiceQuota')
 
         if m.get('Users') is not None:
             self.users = m.get('Users')

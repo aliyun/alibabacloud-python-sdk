@@ -11,8 +11,11 @@ class CooperationShop(DaraModel):
         cooperation_shop_id: str = None,
         shop_id: str = None,
     ):
+        # The partner company ID.
         self.cooperation_company_id = cooperation_company_id
+        # The partner shop ID.
         self.cooperation_shop_id = cooperation_shop_id
+        # The shop ID.
         self.shop_id = shop_id
 
     def validate(self):

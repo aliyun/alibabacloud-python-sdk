@@ -10,7 +10,7 @@ class GetArtifactBuildTaskRequest(DaraModel):
         build_task_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the artifact building task.
+        # The ID of the artifact build task.
         # 
         # This parameter is required.
         self.build_task_id = build_task_id

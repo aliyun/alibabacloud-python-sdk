@@ -11,7 +11,7 @@ class UpdateUserInformationRequest(DaraModel):
         delivery_settings: main_models.UpdateUserInformationRequestDeliverySettings = None,
         region_id: str = None,
     ):
-        # The modified delivery settings.
+        # The configurations to modify.
         self.delivery_settings = delivery_settings
         # The region ID.
         # 
@@ -55,19 +55,21 @@ class UpdateUserInformationRequestDeliverySettings(DaraModel):
         oss_expiration_days: int = None,
         oss_path: str = None,
     ):
-        # Specifies whether to enable screencast delivery to OSS. Valid values:
+        # Specifies whether to deliver ActionTrail events to OSS. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Delivery is enabled.
+        # 
+        # - false: Delivery is disabled.
         self.actiontrail_delivery_to_oss_enabled = actiontrail_delivery_to_oss_enabled
         # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
-        # Specifies whether to enable screencast delivery to Object Storage Service (OSS). Valid values:
+        # Specifies whether to deliver data to Object Storage Service (OSS). Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Delivery is enabled.
+        # 
+        # - false: Delivery is disabled.
         self.oss_enabled = oss_enabled
-        # The number of days for which the screencasts are saved.
+        # The number of days to retain screen recordings.
         self.oss_expiration_days = oss_expiration_days
         # The OSS path.
         self.oss_path = oss_path

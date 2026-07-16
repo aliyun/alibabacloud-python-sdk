@@ -45,26 +45,39 @@ class ReportInstancesStatusRequest(DaraModel):
         self.instance_id = instance_id
         # The category of the exception. This parameter is applicable only to ECS bare metal instances. Valid values:
         # 
-        # *   hardware-cpu-error: CPU failure
-        # *   hardware-motherboard-error: motherboard failure
-        # *   hardware-mem-error: memory failure
-        # *   hardware-power-error: power failure
-        # *   hardware-disk-error: disk failure
-        # *   hardware-networkcard-error: network interface controller (NIC) failure
-        # *   hardware-raidcard-error: SAS/RAID card failure
-        # *   hardware-fan-error: fan failure
-        # *   others: other failures
+        # - hardware-cpu-error: CPU failure
+        # 
+        # - hardware-motherboard-error: motherboard failure
+        # 
+        # - hardware-mem-error: memory failure
+        # 
+        # - hardware-power-error: power failure
+        # 
+        # - hardware-disk-error: disk failure
+        # 
+        # - hardware-networkcard-error: network interface controller (NIC) failure
+        # 
+        # - hardware-raidcard-error: SAS/RAID card failure
+        # 
+        # - hardware-fan-error: fan failure
+        # 
+        # - others: other failures
         self.issue_category = issue_category
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The impact of the exception on the instance. Valid values:
         # 
-        # *   instance-hang: The instance is unavailable or cannot be connected.
-        # *   instance-stuck-in-status: The instance is stuck in a state such as Starting or Stopping.
-        # *   abnormal-network: The instance has a network exception.
-        # *   abnormal-local-disk: A local disk attached to the instance has an exception.
-        # *   abnormal-cloud-disk: A disk or a Shared Block Storage device attached to the instance has an exception.
-        # *   others: other exception types. If the impact is not of the preceding types, you can set `Reason` to others and specify the `Description` parameter.
+        # - instance-hang: The instance is unavailable or cannot be connected.
+        # 
+        # - instance-stuck-in-status: The instance is stuck in a state such as Starting or Stopping.
+        # 
+        # - abnormal-network: The instance has a network exception.
+        # 
+        # - abnormal-local-disk: A local disk attached to the instance has an exception.
+        # 
+        # - abnormal-cloud-disk: A disk or a Shared Block Storage device attached to the instance has an exception.
+        # 
+        # - others: other exception types. If the impact is not of the preceding types, you can set `Reason` to others and specify the `Description` parameter.
         self.reason = reason
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 

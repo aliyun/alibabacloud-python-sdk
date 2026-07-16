@@ -17,12 +17,17 @@ class UploadBookResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Operation result. Set to true for success. Set to false for failure.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class UploadBookResponseBodyData(DaraModel):
         doc_ids: List[str] = None,
         existed_ids: List[str] = None,
     ):
+        # Document IDs
         self.doc_ids = doc_ids
+        # IDs of duplicate documents
         self.existed_ids = existed_ids
 
     def validate(self):

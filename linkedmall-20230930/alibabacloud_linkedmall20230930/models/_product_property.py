@@ -12,7 +12,9 @@ class ProductProperty(DaraModel):
         text: str = None,
         values: List[str] = None,
     ):
+        # The text of the property.
         self.text = text
+        # A collection of property values.
         self.values = values
 
     def validate(self):

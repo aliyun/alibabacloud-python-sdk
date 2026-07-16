@@ -13,8 +13,12 @@ class RevokeResourcePermissionRequest(DaraModel):
         op_tenant_id: int = None,
         revoke_command: main_models.RevokeResourcePermissionRequestRevokeCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The authorization revocation request.
+        # 
         # This parameter is required.
         self.revoke_command = revoke_command
 
@@ -55,12 +59,20 @@ class RevokeResourcePermissionRequestRevokeCommand(DaraModel):
         resource_type: str = None,
         user_id: str = None,
     ):
+        # The list of operations.
         self.operate_list = operate_list
+        # The reason for revoking the authorization.
         self.reason = reason
+        # The list of resources.
+        # 
         # This parameter is required.
         self.resource_list = resource_list
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The user ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
 
@@ -121,6 +133,7 @@ class RevokeResourcePermissionRequestRevokeCommandResourceList(DaraModel):
         self,
         resource_id: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
 
     def validate(self):

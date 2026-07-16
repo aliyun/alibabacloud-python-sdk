@@ -16,12 +16,28 @@ class CreateDialogAnalysisTaskRequest(DaraModel):
         play_code: str = None,
         request_id: str = None,
     ):
+        # A list of analysis nodes. If you leave this parameter empty, all nodes are analyzed. You can specify one or more nodes.
         self.analysis_nodes = analysis_nodes
+        # The session content. You can specify multiple sessions.
+        # 
         # This parameter is required.
         self.conversation_list = conversation_list
+        # The metadata. This includes business-related properties that are used during session analysis. The business system passes these properties in real time when it initiates the analysis task.
+        # 
+        # ```
+        # {
+        #   "labels": "XXX",  // Tags
+        #   "summaryConstraints": "XXX",   // Summary dimensions
+        #   "sopInfo": "XXX"  // SOP information
+        # }
+        # ```
         self.meta_data = meta_data
+        # The session scenario code, which is associated with the session analysis configuration.
+        # 
         # This parameter is required.
         self.play_code = play_code
+        # The request ID.
+        # 
         # This parameter is required.
         self.request_id = request_id
 
@@ -82,6 +98,8 @@ class CreateDialogAnalysisTaskRequestConversationList(DaraModel):
         self,
         dialogue_list: List[main_models.CreateDialogAnalysisTaskRequestConversationListDialogueList] = None,
     ):
+        # A list of dialogues.
+        # 
         # This parameter is required.
         self.dialogue_list = dialogue_list
 
@@ -119,8 +137,12 @@ class CreateDialogAnalysisTaskRequestConversationListDialogueList(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # The content of the dialogue.
+        # 
         # This parameter is required.
         self.content = content
+        # The role.
+        # 
         # This parameter is required.
         self.role = role
 

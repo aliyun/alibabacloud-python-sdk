@@ -18,12 +18,23 @@ class ListDataLakeDatabaseResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of databases.
         self.database_list = database_list
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The maximum number of entries returned per page. This parameter is used with \\`NextToken\\` for paging.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If this parameter is empty, no more results are available.
         self.next_token = next_token
+        # The request ID, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

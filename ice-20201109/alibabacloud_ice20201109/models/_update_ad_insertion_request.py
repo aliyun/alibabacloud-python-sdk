@@ -21,8 +21,9 @@ class UpdateAdInsertionRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   OFF: Disable.
-        # *   ON: Enable.
+        # - OFF: Disable.
+        # 
+        # - ON: Enable.
         self.ad_marker_passthrough = ad_marker_passthrough
         # The request URL of the ad decision server (ADS). HTTP and HTTPS are supported. The maximum length is 2,048 characters.
         # 

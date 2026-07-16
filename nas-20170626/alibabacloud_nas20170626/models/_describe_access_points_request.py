@@ -16,21 +16,21 @@ class DescribeAccessPointsRequest(DaraModel):
         next_token: str = None,
         tag: List[main_models.DescribeAccessPointsRequestTag] = None,
     ):
-        # The name of the permission group.
+        # The permission group name.
         # 
-        # This parameter is required for a General-purpose NAS file system.
+        # This parameter is required if the file system is a General-purpose NAS file system.
         # 
-        # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
+        # Default permission group: DEFAULT_VPC_GROUP_NAME (the default VPC permission group).
         self.access_group = access_group
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
         # The number of results for each query.
         # 
         # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
-        # The token used to retrieve the next page of results. Do not specify this parameter for the first request. For subsequent requests, set this value to the NextToken returned in the previous response.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The tags of the access point.
+        # The list of access point tags.
         self.tag = tag
 
     def validate(self):
@@ -91,23 +91,23 @@ class DescribeAccessPointsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         # 
         # Limits:
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   Maximum length is 128 characters.
-        # *   Cannot start with aliyun or acs:.
-        # *   Cannot contain http:// or https://.
+        # - Valid values of N: 1 to 20.
+        # - The tag key can be up to 128 characters in length.
+        # - The tag key cannot start with aliyun or acs:.
+        # - The tag key cannot contain http:// or https://.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         # 
         # Limits:
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   Maximum length is 128 characters.
-        # *   Cannot start with aliyun or acs:.
-        # *   Cannot contain http:// or https://.
+        # - Valid values of N: 1 to 20.
+        # - The tag value can be up to 128 characters in length.
+        # - The tag value cannot start with aliyun or acs:.
+        # - The tag value cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

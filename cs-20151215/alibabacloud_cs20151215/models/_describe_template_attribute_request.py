@@ -9,13 +9,13 @@ class DescribeTemplateAttributeRequest(DaraModel):
         self,
         template_type: str = None,
     ):
-        # The type of template. The value can be a custom value.
+        # The templatetype.
         # 
-        # *   If the parameter is set to `kubernetes`, the template is displayed on the Templates page in the console.
-        # *   If the parameter is set to `compose`, the template is displayed on the Container Service - Swarm page in the console. Container Service for Swarm is deprecated.
-        # *   If the value of the parameter is not `kubernetes`, the template is not displayed on the Templates page in the console. We recommend that you set the parameter to `kubernetes`.
+        # - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # Default value: `kubernetes`.
+        # - If you leave this parameter empty or set it to other values, the template is not displayed on the Orchestration Templates page in the console.
+        # 
+        # Settings this parameter to `kubernetes` is recommended.
         self.template_type = template_type
 
     def validate(self):

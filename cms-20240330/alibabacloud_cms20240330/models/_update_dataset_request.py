@@ -9,6 +9,7 @@ class UpdateDatasetRequest(DaraModel):
         self,
         description: str = None,
     ):
+        # The new description for the dataset.
         self.description = description
 
     def validate(self):

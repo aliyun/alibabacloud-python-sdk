@@ -12,7 +12,7 @@ class ListServiceCategoriesResponseBody(DaraModel):
         categories: List[str] = None,
         request_id: str = None,
     ):
-        # The category list of the service.
+        # A list of service category names.
         self.categories = categories
         # The request ID.
         self.request_id = request_id

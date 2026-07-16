@@ -10,7 +10,9 @@ class DeleteDataAgentWorkspaceRequest(DaraModel):
         dmsunit: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

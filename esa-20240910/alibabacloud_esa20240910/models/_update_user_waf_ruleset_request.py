@@ -20,16 +20,27 @@ class UpdateUserWafRulesetRequest(DaraModel):
         shared: main_models.WafBatchRuleShared = None,
         status: str = None,
     ):
+        # The description of the WAF ruleset.
         self.description = description
+        # The expression of the WAF ruleset.
         self.expression = expression
+        # The WAF ruleset ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the WAF ruleset.
         self.name = name
+        # The position of the WAF ruleset.
         self.position = position
+        # A list of rule configurations in the WAF ruleset.
         self.rules = rules
+        # The shared configuration of the WAF ruleset.
         self.shared = shared
+        # The status of the WAF ruleset.
         self.status = status
 
     def validate(self):

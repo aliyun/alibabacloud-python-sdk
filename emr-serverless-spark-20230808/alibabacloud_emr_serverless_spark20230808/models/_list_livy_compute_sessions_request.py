@@ -11,8 +11,11 @@ class ListLivyComputeSessionsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The page number. The default value is 1.
         self.page_num = page_num
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
         self.page_size = page_size
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

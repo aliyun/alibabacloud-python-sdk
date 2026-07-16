@@ -10,9 +10,9 @@ class UmodelEntityField(DaraModel):
         field: str = None,
         value: str = None,
     ):
-        # 实体字段名
+        # The name of the entity field.
         self.field = field
-        # 字段别名或展示值
+        # The field alias or display value.
         self.value = value
 
     def validate(self):

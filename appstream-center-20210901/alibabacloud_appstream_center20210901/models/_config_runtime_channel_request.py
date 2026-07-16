@@ -18,17 +18,32 @@ class ConfigRuntimeChannelRequest(DaraModel):
         runtime_ids: List[str] = None,
         runtime_type: str = None,
     ):
+        # The Agent platform (such as ENTERPRISE or JVS).
         self.agent_platform = agent_platform
+        # The Agent provider.
+        # 
         # This parameter is required.
         self.agent_provider = agent_provider
+        # The third-party channel code.
+        # 
         # This parameter is required.
         self.code = code
+        # The channel configuration JSON string.
+        # 
         # This parameter is required.
         self.config = config
+        # The configuration mode.
         self.config_mode = config_mode
+        # The channel name.
+        # 
+        # If you leave this parameter empty, the system automatically uses the value of Code as the name.
         self.name = name
+        # The list of runtime IDs.
+        # 
         # This parameter is required.
         self.runtime_ids = runtime_ids
+        # The Agent runtime type.
+        # 
         # This parameter is required.
         self.runtime_type = runtime_type
 

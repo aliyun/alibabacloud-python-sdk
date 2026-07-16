@@ -17,17 +17,17 @@ class QueryCustomizeFlowStrategyResponseBody(DaraModel):
         result_object: List[main_models.QueryCustomizeFlowStrategyResponseBodyResultObject] = None,
         success: bool = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The return code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Processing result.
+        # The processing result.
         self.result_object = result_object
-        # Whether the response was successful.
+        # Indicates whether the response is successful.
         self.success = success
 
     def validate(self):
@@ -103,27 +103,27 @@ class QueryCustomizeFlowStrategyResponseBodyResultObject(DaraModel):
     ):
         # AccumulateKey
         self.accumulate_key = accumulate_key
-        # Flow control statistical window, unit: **minutes**.
+        # The rate limiting statistical window. Unit: **minutes**.
         self.accumulate_window = accumulate_window
-        # API name, same as **ProductCode**.
+        # The API name, which is the same as **ProductCode**.
         self.api_name = api_name
-        # Flow type:
-        # - **ACCUMULATE**: ID card reappears
-        # - **PASSED_RATE**: Pass rate less than
-        # - **SUB_CODE_205**: Authentication failed and liveness attack 205 ratio greater than
-        # - **SUB_CODE_206**: Authentication failed and liveness attack 206 ratio greater than
+        # The flow type. Valid values:
+        # - **ACCUMULATE**: repeated occurrence of an ID card number.
+        # - **PASSED_RATE**: pass rate less than the threshold.
+        # - **SUB_CODE_205**: authentication failed and the proportion of liveness attack 205 is greater than the threshold.
+        # - **SUB_CODE_206**: authentication failed and the proportion of liveness attack 206 is greater than the threshold.
         self.flow_type = flow_type
-        # Rule ID.
+        # The rule ID.
         self.id = id
-        # Operation.
+        # The operation.
         self.operation = operation
-        # Status:
-        # - **disabled**: Disabled
-        # - **normal**: Enabled
+        # The status. Valid values:
+        # - **disabled**: Disabled.
+        # - **normal**: Enabled.
         self.status = status
-        # Threshold.
+        # The threshold.
         self.threshold = threshold
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

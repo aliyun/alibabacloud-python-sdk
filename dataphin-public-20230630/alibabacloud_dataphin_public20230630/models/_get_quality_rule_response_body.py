@@ -17,12 +17,17 @@ class GetQualityRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
+        # The quality rule details.
         self.quality_rule_info = quality_rule_info
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -107,31 +112,104 @@ class GetQualityRuleResponseBodyQualityRuleInfo(DaraModel):
         validate_object: main_models.GetQualityRuleResponseBodyQualityRuleInfoValidateObject = None,
         watch_id: int = None,
     ):
+        # The rule business attribute configurations.
         self.attribute_with_value_list = attribute_with_value_list
+        # The rule categories. Valid values:
+        # - CONSISTENT: consistency
+        # - EFFECTIVE: validity
+        # - TIMELINESE: timeliness
+        # - ACCURATE: accuracy
+        # - UNIQUENESS: uniqueness
+        # - COMPLETENESS: completeness
+        # - STABILITY: stability
+        # - CUSTOM: custom.
         self.catalog_list = catalog_list
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The creator name.
         self.creator_name = creator_name
+        # The description.
         self.description = description
+        # Indicates whether exception archiving is enabled.
         self.enable_error_archive = enable_error_archive
+        # The rule configuration key-value pairs. These vary by templatetype. Different templatetypes return different form key-value pair configurations.
         self.form_property_list = form_property_list
+        # The quality rule ID.
         self.id = id
+        # The ID of the user who last modified the rule.
         self.modifier = modifier
+        # The name of the user who last modified the rule.
         self.modifier_name = modifier_name
+        # The modification time.
         self.modify_time = modify_time
+        # The quality rule name.
         self.name = name
+        # The list of schedules bound to the rule.
         self.schedule_bind_list = schedule_bind_list
+        # The quality rule status. Valid values:
+        # - ENABLE
+        # - DISABLE.
         self.status = status
+        # The rule strength. Valid values:
+        # - STRONG
+        # - WEAK.
         self.strength = strength
+        # The template ID.
         self.template_id = template_id
+        # The template name.
         self.template_name = template_name
+        # The templatetype group. Valid values:
+        # - SYSTEM: system preset
+        # - CUSTOM: custom template
+        # - TEMPLATE: union of SYSTEM and CUSTOM
+        # - CUSTOM_SQL: custom SQL template.
         self.template_scope = template_scope
+        # The templatetype. Valid values:
+        #   - FIELD_NULL_VALUE_VALIDATE: field null value check
+        #   - FIELD_EMPTY_STRING_VALIDATE: field empty character string check
+        #   - FIELD_UNIQUE_VALIDATE: field uniqueness check
+        #   - FIELD_GROUP_COUNT_VALIDATE: field unique value count check
+        #   - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check
+        #   - FUNCTION_TIME_COMPARE: time function comparison
+        #   - SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison
+        #   - DOUBLE_TABLE_TIME_COMPARE: two-table time field comparison
+        #   - FIELD_FORMAT_VALIDATE: field format check
+        #   - FIELD_LENGTH_VALIDATE: field length check
+        #   - FIELD_VALUE_RANGE_VALIDATE: field value range check
+        #   - CODE_TABLE_COMPARE: lookup table reference comparison
+        #   - STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison
+        #   - SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison
+        #   - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison
+        #   - SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison
+        #   - DOUBLE_TABLE_FIELD_VALUE_COMPARE: two-table field value consistency comparison
+        #   - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: two-table field statistical value consistency comparison
+        #   - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source two-table field statistical value consistency comparison
+        #   - DOUBLE_TABLE_FIELD_EXP_COMPARE: two-table field business logic consistency comparison
+        #   - TABLE_STABILITY_VALIDATE: table stability check
+        #   - TABLE_FLUCTUATION_VALIDATE: table fluctuation check
+        #   - FIELD_STABILITY_VALIDATE: field stability check
+        #   - FIELD_FLUCTUATION_VALIDATE: field fluctuation check
+        #   - CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check
+        #   - CUSTOM_DATA_DETAILS_VALIDATE: custom data details check
+        #   - DATASOURCE_AVAILABLE_CHECK: data source connectivity monitoring
+        #   - TABLE_SCHEMA_CHECK: table schema change monitoring
+        #   - REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison
+        #   - REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value monitoring
+        #   - REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison, and more.
         self.template_type = template_type
+        # The ID of the most recent test run task.
         self.test_run_rule_task_id = test_run_rule_task_id
+        # The status of the most recent test run task. Valid values: NOT_RUN, WAITING, RUNNING, SUCCESS, FAILED.
         self.test_run_rule_task_status = test_run_rule_task_status
+        # Indicates whether the test run validation passed.
         self.test_run_rule_validate_result = test_run_rule_validate_result
+        # The list of validation conditions.
         self.validate_condition_list = validate_condition_list
+        # The validation object.
         self.validate_object = validate_object
+        # The ID of the associated monitoring task.
         self.watch_id = watch_id
 
     def validate(self):
@@ -348,7 +426,9 @@ class GetQualityRuleResponseBodyQualityRuleInfoValidateObject(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The validation object name.
         self.name = name
+        # The validation object type. Valid values: UNKNOWN, TABLE, COLUMN, DATASOURCE, DATASOURCE_TABLE, REALTIME, INDEX, CHAIN.
         self.type = type
 
     def validate(self):
@@ -389,13 +469,23 @@ class GetQualityRuleResponseBodyQualityRuleInfoValidateConditionList(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The condition node ID.
         self.id = id
+        # The metric.
         self.metric = metric
+        # The metric name.
         self.metric_name = metric_name
+        # The operator. Valid values: EQUAL, NOT_EQUAL, LARGER, SMALLER, LARGE_OR_EQUAL, SMALLER_OR_EQUAL, AND, OR.
         self.operator = operator
+        # The operator name.
         self.operator_name = operator_name
+        # The parent condition node ID.
         self.parent_id = parent_id
+        # The condition type. Valid values:
+        # - RELATION: relationship
+        # - EXPRESSION: expression.
         self.type = type
+        # The value.
         self.value = value
 
     def validate(self):
@@ -466,7 +556,9 @@ class GetQualityRuleResponseBodyQualityRuleInfoScheduleBindList(DaraModel):
         schedule_id: int = None,
         schedule_name: str = None,
     ):
+        # The schedule ID.
         self.schedule_id = schedule_id
+        # The schedule name.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -502,8 +594,11 @@ class GetQualityRuleResponseBodyQualityRuleInfoFormPropertyList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The control type.
         self.component_type = component_type
+        # The property name.
         self.name = name
+        # The property value.
         self.value = value
 
     def validate(self):
@@ -544,7 +639,9 @@ class GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueList(DaraModel)
         attribute_info: main_models.GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeInfo = None,
         attribute_value: main_models.GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeValue = None,
     ):
+        # The attribute details.
         self.attribute_info = attribute_info
+        # The property value.
         self.attribute_value = attribute_value
 
     def validate(self):
@@ -587,10 +684,15 @@ class GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeVa
         min_value: str = None,
         value_list: List[str] = None,
     ):
+        # Indicates whether the maximum value is included.
         self.include_max_value = include_max_value
+        # Indicates whether the minimum value is included.
         self.include_min_value = include_min_value
+        # The maximum value. This applies to range interval attributes.
         self.max_value = max_value
+        # The minimum value. This applies to range interval attributes.
         self.min_value = min_value
+        # The list of attribute values. This applies to attributes with custom input, single-select dropdown, or multi-select dropdown input methods.
         self.value_list = value_list
 
     def validate(self):
@@ -648,12 +750,19 @@ class GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeIn
         searchable: bool = None,
         value_config: main_models.GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeInfoValueConfig = None,
     ):
+        # The description.
         self.description = description
+        # Indicates whether the attribute is enabled.
         self.enabled = enabled
+        # The attribute ID.
         self.id = id
+        # The attribute name.
         self.name = name
+        # Indicates whether the attribute is required.
         self.required = required
+        # Indicates whether the attribute is searchable.
         self.searchable = searchable
+        # The attribute value configuration details.
         self.value_config = value_config
 
     def validate(self):
@@ -723,10 +832,25 @@ class GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeIn
         type: str = None,
         value_enum_list: List[str] = None,
     ):
+        # The attribute field data type. Valid values:
+        # - STRING: text
+        # - BIGINT: integer
+        # - DOUBLE: floating-point
+        # - BOOLEAN: Boolean
+        # - DATE: date
+        # - DATETIME: datetime.
         self.data_type = data_type
+        # The attribute default value.
         self.default_value = default_value
+        # The attribute field length. This constrains the maximum length of text-type attribute values.
         self.length = length
+        # The attribute value input method. Valid values:
+        # - CUSTOMIZED: custom input
+        # - SINGLE_ENUM: single-select dropdown
+        # - MULTIPLE_ENUMS: multi-select dropdown
+        # - RANGE: range interval.
         self.type = type
+        # The attribute option values. This applies only to attributes with a single-select dropdown or multi-select dropdown input method.
         self.value_enum_list = value_enum_list
 
     def validate(self):
@@ -784,10 +908,15 @@ class GetQualityRuleResponseBodyQualityRuleInfoAttributeWithValueListAttributeIn
         min_value: str = None,
         value_list: List[str] = None,
     ):
+        # Indicates whether the maximum value is included.
         self.include_max_value = include_max_value
+        # Indicates whether the minimum value is included.
         self.include_min_value = include_min_value
+        # The maximum value. This applies to range interval attributes.
         self.max_value = max_value
+        # The minimum value. This applies to range interval attributes.
         self.min_value = min_value
+        # The list of attribute values. This applies to attributes with custom input, single-select dropdown, or multi-select dropdown input methods.
         self.value_list = value_list
 
     def validate(self):

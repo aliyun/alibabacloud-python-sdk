@@ -11,14 +11,21 @@ class BatchGetMediaInfosRequest(DaraModel):
         auth_timeout: int = None,
         media_ids: str = None,
     ):
-        # The additional information that you want to query about the media assets. By default, only BasicInfo is returned. The following additional information can be queried:
+        # The types of additional media asset information to return. If this parameter is not specified, only basic information is returned. Valid values are:
         # 
-        # \\- FileInfo
+        # -FileInfo
         # 
-        # \\- DynamicMetaData
+        # -DynamicMetaData
         self.addition_type = addition_type
+        # The authentication timeout, in seconds.
+        # 
+        # - Minimum value: **1**.
+        # 
+        # - Maximum value: 86400.
+        # 
+        # - Default value: 3600.
         self.auth_timeout = auth_timeout
-        # The IDs of the media assets that you want to query. Separate the IDs with commas (,).
+        # A comma-separated list of media asset IDs to query.
         self.media_ids = media_ids
 
     def validate(self):

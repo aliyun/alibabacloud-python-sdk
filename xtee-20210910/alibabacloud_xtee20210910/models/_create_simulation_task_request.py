@@ -19,39 +19,39 @@ class CreateSimulationTaskRequest(DaraModel):
         start_time: int = None,
         task_name: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # The language type for the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Data source configuration
+        # The datasource config.
         self.data_source_config = data_source_config
-        # Data source type
+        # The data source type.
         self.data_source_type = data_source_type
-        # End time, accurate to milliseconds (ms).
+        # The end time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Filters
+        # The filter.
         self.filters_str = filters_str
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Rules list
+        # The list of policies.
         # 
         # This parameter is required.
         self.rules_str = rules_str
-        # Whether to run the task directly
+        # Specifies whether to run the task immediately.
         # 
         # This parameter is required.
         self.run_task = run_task
-        # Start time, accurate to milliseconds (ms).
+        # The start time, in milliseconds (ms).
         # 
         # This parameter is required.
         self.start_time = start_time
-        # Task name
+        # The task name.
         # 
         # This parameter is required.
         self.task_name = task_name

@@ -15,11 +15,11 @@ class DescribeImageResultExtResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message of the request.
         self.msg = msg
         # The request ID.
         self.request_id = request_id
@@ -71,11 +71,11 @@ class DescribeImageResultExtResponseBodyData(DaraModel):
         public_figure: List[main_models.DescribeImageResultExtResponseBodyDataPublicFigure] = None,
         text_in_image: main_models.DescribeImageResultExtResponseBodyDataTextInImage = None,
     ):
-        # If a custom image library is hit, information about the hit custom image library is returned.
+        # The list of custom image library hit information.
         self.custom_image = custom_image
-        # Person information list.
+        # The list of figure information.
         self.public_figure = public_figure
-        # Returns the text information in the hit image.
+        # The text information in the hit image.
         self.text_in_image = text_in_image
 
     def validate(self):
@@ -137,11 +137,11 @@ class DescribeImageResultExtResponseBodyDataTextInImage(DaraModel):
         ocr_datas: List[str] = None,
         risk_words: List[str] = None,
     ):
-        # When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
+        # When a custom text library is hit, the custom library ID, custom library name, and custom words are returned.
         self.custom_texts = custom_texts
-        # Returns the text information in the recognized image.
+        # The text information detected in the image.
         self.ocr_datas = ocr_datas
-        # The risk words that are hit. Multiple words are separated by commas (,).
+        # The hit risk keywords
         self.risk_words = risk_words
 
     def validate(self):
@@ -191,11 +191,11 @@ class DescribeImageResultExtResponseBodyDataTextInImageCustomTexts(DaraModel):
         lib_id: str = None,
         lib_name: str = None,
     ):
-        # Custom words, multiple words separated by commas.
+        # The custom words, multiple words are separated by commas.
         self.key_words = key_words
-        # Custom library ID.
+        # The custom library ID
         self.lib_id = lib_id
-        # Custom library name.
+        # The custom library name.
         self.lib_name = lib_name
 
     def validate(self):
@@ -235,7 +235,7 @@ class DescribeImageResultExtResponseBodyDataPublicFigure(DaraModel):
         self,
         figure_id: str = None,
     ):
-        # Identified person coding information.
+        # The figure ID.
         self.figure_id = figure_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class GetChatQuestionRespRequest(DaraModel):
         batch_id: str = None,
         session_id: str = None,
     ):
+        # Question batch ID
+        # 
         # This parameter is required.
         self.batch_id = batch_id
+        # Session ID
+        # 
         # This parameter is required.
         self.session_id = session_id
 

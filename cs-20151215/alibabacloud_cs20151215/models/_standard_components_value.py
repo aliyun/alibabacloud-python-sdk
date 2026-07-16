@@ -13,21 +13,22 @@ class StandardComponentsValue(DaraModel):
         required: str = None,
         disabled: bool = None,
     ):
-        # The name of the component.
+        # The component name.
         self.name = name
-        # The version of the component.
+        # The component version.
         self.version = version
-        # The description of the component.
+        # The description of the component features.
         self.description = description
-        # Indicates whether the component is a required component. Valid values:
+        # Indicates whether the component is required by the cluster. Valid values:
         # 
-        # *   `true`: The component is required and must be installed when a cluster is created.
-        # *   `false`: The component is optional. After a cluster is created, you can go to the `Add-ons` page to install the component.
+        # - `true`: The component is required and must be installed when the cluster is created.
+        # 
+        # - `false`: The component is optional and can be installed through Component Management after the cluster is created.
         self.required = required
-        # Indicates whether the automatic installation of the component is disabled. By default, some optional components, such as components for logging and Ingresses, are installed when a cluster is created. You can set this parameter to disable automatic component installation. Valid values:
+        # Indicates whether default installation is disabled. When a cluster is created, in addition to the components required by the cluster, some logging or routing-related components (such as Ingress) are also installed by default. If you do not want to install them by default, you can set this field to disable default installation. Valid values:
         # 
-        # *   `true`: disables automatic component installation.
-        # *   `false`: enables automatic component installation.
+        # - `true`: Default installation is disabled.
+        # - `false`: Default installation is enabled.
         self.disabled = disabled
 
     def validate(self):

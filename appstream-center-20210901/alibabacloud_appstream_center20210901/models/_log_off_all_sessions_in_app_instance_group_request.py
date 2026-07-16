@@ -10,15 +10,11 @@ class LogOffAllSessionsInAppInstanceGroupRequest(DaraModel):
         app_instance_group_id: str = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type

@@ -12,7 +12,7 @@ class DescribeCACertificateCountResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
+        # The total number of your CA certificates, including root and subordinate CA certificates.
         self.total_count = total_count
 
     def validate(self):

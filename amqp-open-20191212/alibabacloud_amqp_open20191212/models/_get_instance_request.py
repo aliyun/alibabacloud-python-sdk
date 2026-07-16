@@ -9,6 +9,8 @@ class GetInstanceRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the Message Queue for RabbitMQ instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

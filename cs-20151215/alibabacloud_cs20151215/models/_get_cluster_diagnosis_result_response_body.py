@@ -17,40 +17,28 @@ class GetClusterDiagnosisResultResponseBody(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The code that indicates the diagnostic result. Valid values:
-        # 
-        # *   0: the diagnostic is completed.
-        # *   1: the diagnostic failed.
+        # The diagnosis result code. Valid values:
+        # - 0: diagnosis completed.
+        # - 1: diagnosis failed.
         self.code = code
-        # The time when the diagnostic is initiated.
+        # The time when the diagnosis was initiated.
         self.created = created
-        # The diagnostic ID.
+        # The diagnosis ID.
         self.diagnosis_id = diagnosis_id
-        # The time when the diagnostic is completed.
+        # The time when the diagnosis was completed.
         self.finished = finished
-        # The diagnostic status information.
+        # The diagnosis status message.
         self.message = message
-        # The diagnostic result.
+        # The diagnosis result.
         self.result = result
-        # The status of the diagnostic. Valid values:
-        # 
-        # *   0: The diagnostic is created.
-        # *   1: The diagnostic is running.
-        # *   2: The diagnostic is completed.
+        # The diagnosis status. Valid values:
+        # - 0: diagnosis created.
+        # - 1: diagnosis running.
+        # - 2: diagnosis completed.
         self.status = status
-        # The diagnostic object.
+        # The diagnosis target.
         self.target = target
-        # The type of the diagnostic.
-        # 
-        # Valid values:
-        # 
-        # *   node
-        # *   ingress
-        # *   cluster
-        # *   memory
-        # *   pod
-        # *   service
-        # *   network
+        # The diagnosis type.
         self.type = type
 
     def validate(self):

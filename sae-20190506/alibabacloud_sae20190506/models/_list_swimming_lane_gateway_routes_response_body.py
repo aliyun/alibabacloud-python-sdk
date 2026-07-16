@@ -18,33 +18,39 @@ class ListSwimmingLaneGatewayRoutesResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code.
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: Indicates a client error.
+        # 
+        # - **5xx**: Indicates a server error.
         self.code = code
-        # Responses.
+        # The list of gateway routes.
         self.data = data
-        # The status code. Value values:
+        # The error code.
         # 
-        # *   If the request was successful, **ErrorCode** is not returned.
-        # *   If the request failed, **ErrorCode** is returned. For more information, see **Error codes** in this topic.
+        # - This parameter is returned only if the request fails.
+        # 
+        # - For more information, see the **Error codes** section of this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The message returned for the request.
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error message is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: Valid values:
+        # Indicates whether the request was successful.
         # 
-        # *   **true**: The configurations were obtained.
-        # *   **false**: The configurations failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID of the request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -118,9 +124,9 @@ class ListSwimmingLaneGatewayRoutesResponseBodyData(DaraModel):
         route_name: str = None,
         route_predicate: main_models.ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate = None,
     ):
-        # The ID of the route.
+        # The route ID.
         self.route_id = route_id
-        # The name of the route.
+        # The route name.
         self.route_name = route_name
         # The routing rule.
         self.route_predicate = route_predicate
@@ -195,9 +201,9 @@ class ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate(D
         path: str = None,
         type: str = None,
     ):
-        # The route URL.
+        # The route path.
         self.path = path
-        # The type of the protection rule.
+        # The type of the rule.
         self.type = type
 
     def validate(self):

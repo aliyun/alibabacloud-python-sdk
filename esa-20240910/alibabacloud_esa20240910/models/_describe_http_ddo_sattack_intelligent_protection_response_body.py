@@ -12,21 +12,25 @@ class DescribeHttpDDoSAttackIntelligentProtectionResponseBody(DaraModel):
         request_id: str = None,
         site_id: int = None,
     ):
-        # The mode of smart HTTP DDoS protection. Valid values:
+        # The protection mode for HTTP DDoS intelligent protection. Valid values:
         # 
-        # *   **observe**: alert.
-        # *   **defense**: block.
+        # - **observe**: Observe
+        # 
+        # - **defense**: Defense
         self.ai_mode = ai_mode
-        # The level of smart HTTP DDoS protection. Valid values:
+        # The protection level for HTTP DDoS intelligent protection. Valid values:
         # 
-        # *   **level0**: very loose.
-        # *   **level30**: loose.
-        # *   **level60**: normal.
-        # *   **level90**: strict.
+        # - **level0**: Very Loose
+        # 
+        # - **level30**: Loose
+        # 
+        # - **level60**: Normal
+        # 
+        # - **level90**: Strict
         self.ai_template = ai_template
         # The request ID.
         self.request_id = request_id
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
 
     def validate(self):

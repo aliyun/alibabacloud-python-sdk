@@ -10,9 +10,9 @@ class CreateAuthKeyResponseBody(DaraModel):
         auth_key: str = None,
         request_id: str = None,
     ):
-        # The key that can be used for authorization activation. The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
+        # The key that can be used for authorization activation. The authorization key is valid for 30 minutes and cannot be reused. Obtain a new key before each activation.
         self.auth_key = auth_key
-        # The ID of this request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

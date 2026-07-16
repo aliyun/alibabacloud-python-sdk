@@ -18,24 +18,25 @@ class UpdateHttpRequestHeaderModificationRuleRequest(DaraModel):
         sequence: int = None,
         site_id: int = None,
     ):
-        # Configuration ID. It can be obtained by calling the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) API.
+        # Configuration ID. You can call the [ListHttpRequestHeaderModificationRules](https://help.aliyun.com/document_detail/2867483.html) operation to obtain the configuration ID.
         # 
         # This parameter is required.
         self.config_id = config_id
-        # Modify request headers, supporting add, delete, and modify operations.
+        # Modify request headers. Three operation methods are supported: add, delete, and modify.
         self.request_header_modification = request_header_modification
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - To match all incoming requests: Set the value to true
-        # - To match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # Rule content. Use conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
+        # - Match all incoming requests: Set the value to true.
+        # - Match specified requests: Set the value to a custom expression, for example: (http.host eq "video.example.com").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
+        # Rule switch. This parameter is not required when adding a global configuration. Valid values:
         # - on: Enable.
         # - off: Disable.
         self.rule_enable = rule_enable
         # Rule name. This parameter is not required when adding a global configuration.
         self.rule_name = rule_name
+        # Rule execution order. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # Site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
@@ -116,14 +117,17 @@ class UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(Da
         # 
         # This parameter is required.
         self.name = name
-        # Operation method. Possible values:
+        # Operation method. Valid values:
         # 
         # - add: Add.
-        # - del: Delete
+        # - del: Delete.
         # - modify: Modify.
         # 
         # This parameter is required.
         self.operation = operation
+        # Value type. Valid values:
+        # - static: Static mode.
+        # - dynamic: Dynamic mode.
         self.type = type
         # Request header value.
         self.value = value

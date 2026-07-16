@@ -20,26 +20,21 @@ class SearchResourcesRequest(DaraModel):
     ):
         # The filter conditions.
         self.filter = filter
-        # Specifies whether to include deleted resources. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.include_deleted_resources = include_deleted_resources
         # The maximum number of entries per page.
         # 
-        # Valid values: 1 to 500.
+        # Valid values: 1 to 100.
         # 
         # Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+        # The pagination token that is used in the next request to retrieve a new page of results.
+        # 
+        # If the total number of entries returned for the current request exceeds the value of the `MaxResults` parameter, the entries are truncated. In this case, you can use the `token` to initiate another request and obtain the remaining entries.
         self.next_token = next_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The search keyword. Resource Center filters and sorts the search results based on relevance.
-        # If you do not specify a sorting parameter, resources that better match the keyword are displayed with higher priority.
         self.search_expression = search_expression
-        # The sorting parameters.
+        # The method that is used to sort the entries returned.
         self.sort_criterion = sort_criterion
 
     def validate(self):
@@ -115,17 +110,14 @@ class SearchResourcesRequestSortCriterion(DaraModel):
         key: str = None,
         order: str = None,
     ):
-        # The sort key.
+        # The attribute based on which the entries are sorted.
         # 
-        # Set this parameter to `CreateTime`, which means the results are sorted by resource creation time.
+        # The value CreateTime indicates the creation time of resources.
         self.key = key
-        # The sort order. Valid values:
+        # The order in which the entries are sorted. Valid values:
         # 
-        # - ASC: Ascending order.
-        # 
-        # - DESC: Descending order.
-        # 
-        # Default value: ASC.
+        # *   ASC: The entries are sorted in ascending order. This value is the default value.
+        # *   DESC: The entries are sorted in descending order.
         self.order = order
 
     def validate(self):
@@ -161,23 +153,13 @@ class SearchResourcesRequestFilter(DaraModel):
         match_type: str = None,
         value: List[str] = None,
     ):
-        # The key of the filter condition. For more information about the valid values, see the "`Supported filter parameters`" section below.
+        # The key of the filter condition. For more information, see `Supported filter parameters`.
         self.key = key
-        # The matching method. Valid values:
+        # The matching mode.
         # 
-        # - Equals: Exact match.
-        # 
-        # - Prefix: Prefix match.
-        # 
-        # - Contains: Contains a value.
-        # 
-        # - NotContains: Does not contain a value.
-        # 
-        # - Exists: The key exists.
-        # 
-        # - NotExists: The key does not exist.
+        # The value Equals indicates an equal match.
         self.match_type = match_type
-        # The value of the filter condition.
+        # The values of the filter condition.
         self.value = value
 
     def validate(self):

@@ -54,17 +54,17 @@ class GetMetadataAmountResponseBodyData(DaraModel):
         max_queues: int = None,
         max_virtual_hosts: int = None,
     ):
-        # The number of created exchanges on the ApsaraMQ for RabbitMQ instance.
+        # The number of existing exchanges.
         self.current_exchanges = current_exchanges
-        # The number of created queues on the ApsaraMQ for RabbitMQ instance.
+        # The number of existing queues.
         self.current_queues = current_queues
-        # The number of created vhosts on the ApsaraMQ for RabbitMQ instance.
+        # The number of existing vhosts.
         self.current_virtual_hosts = current_virtual_hosts
-        # The maximum number of exchanges that can be created on the ApsaraMQ for RabbitMQ instance.
+        # The maximum number of exchanges that you can create.
         self.max_exchanges = max_exchanges
-        # The maximum number of queues that can be created on the ApsaraMQ for RabbitMQ instance.
+        # The maximum number of queues that you can create.
         self.max_queues = max_queues
-        # The maximum number of vhosts that can be created on the ApsaraMQ for RabbitMQ instance.
+        # The maximum number of vhosts that you can create.
         self.max_virtual_hosts = max_virtual_hosts
 
     def validate(self):

@@ -16,44 +16,61 @@ class DescribeUserApiRequestRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         type: str = None,
     ):
-        # The API.
-        # >Notice: This parameter is deprecated, please use ApiId to query.
+        # The API operation.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. Use the ApiId parameter instead.
         self.api_format = api_format
         # The ID of the API.
         # 
         # This parameter is required.
         self.api_id = api_id
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
-        self.cluster_id = cluster_id
-        # The domain name or IP address of the API.
-        # >Notice: This parameter is deprecated, please use ApiId to query.
-        self.domain = domain
-        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > This parameter applies only to hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain information about hybrid cloud clusters.
+        self.cluster_id = cluster_id
+        # The domain name or IP address of the API operation.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is deprecated. Use the ApiId parameter instead.
+        self.domain = domain
+        # The ID of the WAF instance.
+        # 
+        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland
-        # *   **ap-southeast-1**: outside the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the statistics. Valid values:
+        # The type of statistics. Valid values:
         # 
-        # *   **api_ip**: total traffic
-        # *   **api_cross_border_ip**: cross-border traffic
-        # *   **api_bot_ip**: bot traffic
-        # *   **remote_region**: geographical location
-        # *   **client_id**: client type
-        # *   **http_referer**: Referer
-        # *   **api_cnt**: total number of calls
-        # *   **bot_cnt**: number of bot calls
-        # *   **cross_border_cnt**: number of cross-border requests
-        # *   **api_freq**: call frequency
+        # - **api_ip**: total traffic.
+        # 
+        # - **api_cross_border_ip**: cross-border traffic.
+        # 
+        # - **api_bot_ip**: bot traffic.
+        # 
+        # - **remote_region**: geographic location statistics.
+        # 
+        # - **client_id**: client type statistics.
+        # 
+        # - **http_referer**: Referer statistics.
+        # 
+        # - **api_cnt**: total number of calls.
+        # 
+        # - **bot_cnt**: number of bot requests.
+        # 
+        # - **cross_border_cnt**: number of cross-border requests.
+        # 
+        # - **api_freq**: call frequency.
         self.type = type
 
     def validate(self):

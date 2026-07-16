@@ -11,7 +11,9 @@ class HiMarketProductRefConfig(DaraModel):
         apig_ref_config: main_models.HiMarketProductRefConfigApigRefConfig = None,
         gateway_id: str = None,
     ):
+        # The APIG resource reference configuration.
         self.apig_ref_config = apig_ref_config
+        # The ID of the associated gateway.
         self.gateway_id = gateway_id
 
     def validate(self):
@@ -53,12 +55,19 @@ class HiMarketProductRefConfigApigRefConfig(DaraModel):
         model_api_id: str = None,
         model_api_name: str = None,
     ):
+        # The associated Agent API ID.
         self.agent_api_id = agent_api_id
+        # The Agent API name.
         self.agent_api_name = agent_api_name
+        # The associated MCP route ID.
         self.mcp_route_id = mcp_route_id
+        # The associated MCP Server ID.
         self.mcp_server_id = mcp_server_id
+        # The MCP Server name.
         self.mcp_server_name = mcp_server_name
+        # The associated Model API ID.
         self.model_api_id = model_api_id
+        # The Model API name.
         self.model_api_name = model_api_name
 
     def validate(self):

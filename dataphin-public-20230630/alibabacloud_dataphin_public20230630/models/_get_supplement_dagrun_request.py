@@ -11,9 +11,17 @@ class GetSupplementDagrunRequest(DaraModel):
         op_tenant_id: int = None,
         supplement_id: str = None,
     ):
+        # The environment identifier. Valid values:
+        # 
+        # - DEV: development environment.
+        # - PROD (default): production environment.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the data backfill instance.
+        # 
         # This parameter is required.
         self.supplement_id = supplement_id
 

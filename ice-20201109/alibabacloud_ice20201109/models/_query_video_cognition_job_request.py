@@ -12,13 +12,13 @@ class QueryVideoCognitionJobRequest(DaraModel):
         job_id: str = None,
         params: str = None,
     ):
-        # Specifies whether to include the full algorithm results in the response.
+        # A container for parameters that determine which algorithm results to include in the response.
         self.include_results = include_results
-        # The ID of the task to query. It is returned when you call the [SubmitSmarttagJob](https://help.aliyun.com/document_detail/478786.html) operation.
+        # The ID of the intelligent tagging job. You can obtain this ID from the response of the [SubmitIntelligentTaggingJob](https://help.aliyun.com/document_detail/478786.html) operation.
         # 
         # This parameter is required.
         self.job_id = job_id
-        # Additional request parameters, provided as a JSON string.
+        # Additional request parameters, specified as a JSON string.
         self.params = params
 
     def validate(self):
@@ -62,11 +62,11 @@ class QueryVideoCognitionJobRequestIncludeResults(DaraModel):
         need_ocr: bool = None,
         need_process: bool = None,
     ):
-        # Specifies whether to include Automatic Speech Recognition (ASR) results.
+        # Specifies whether to return the ASR results.
         self.need_asr = need_asr
-        # Specifies whether to include Optical Character Recognition (OCR) results.
+        # Specifies whether to return the OCR results.
         self.need_ocr = need_ocr
-        # Specifies whether to include the URL to the raw output of the algorithm.
+        # Specifies whether to return a link to the raw operator results.
         self.need_process = need_process
 
     def validate(self):

@@ -13,8 +13,12 @@ class UpdateTenantComputeEngineRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateTenantComputeEngineRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The update command.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -53,10 +57,15 @@ class UpdateTenantComputeEngineRequestUpdateCommand(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The list of cluster node endpoints.
+        # 
         # This parameter is required.
         self.cluster_url_list = cluster_url_list
+        # The compute source type.
+        # 
         # This parameter is required.
         self.type = type
+        # The version number.
         self.version = version
 
     def validate(self):

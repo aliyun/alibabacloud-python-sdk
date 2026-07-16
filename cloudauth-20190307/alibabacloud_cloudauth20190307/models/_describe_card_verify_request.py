@@ -9,8 +9,8 @@ class DescribeCardVerifyRequest(DaraModel):
         self,
         certify_id: str = None,
     ):
-        # Authentication request ID.
-        # You must first call the initialization interface InitCardVerify to submit an authentication request in order to get the authentication request ID.
+        # The verification request ID.
+        # You must first call the InitCardVerify operation to submit a verification request before you can obtain the verification request ID.
         # 
         # This parameter is required.
         self.certify_id = certify_id

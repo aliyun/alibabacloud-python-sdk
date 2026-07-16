@@ -19,13 +19,21 @@ class GetHistoryListByBizTypeResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Response time in milliseconds
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetHistoryListByBizTypeResponseBodyData(DaraModel):
         total_pages: int = None,
         total_records: int = None,
     ):
+        # Current page number
         self.current_page = current_page
+        # Number of records per page
         self.page_size = page_size
+        # Records
         self.records = records
+        # Total number of pages
         self.total_pages = total_pages
+        # Total number of records
         self.total_records = total_records
 
     def validate(self):
@@ -174,16 +187,27 @@ class GetHistoryListByBizTypeResponseBodyDataRecords(DaraModel):
         session_id: str = None,
         user_query: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Business type
         self.biz_type = biz_type
+        # Extension information
         self.extra_message = extra_message
+        # Creation time
         self.gmt_create = gmt_create
+        # Last modified time
         self.gmt_modified = gmt_modified
+        # History record ID
         self.id = id
+        # Large Language Model (LLM) response
         self.llm_answer = llm_answer
+        # Prompt for the Large Language Model (LLM)
         self.llm_prompt = llm_prompt
+        # Large Language Model (LLM) type
         self.llm_type = llm_type
+        # Session ID
         self.session_id = session_id
+        # User query
         self.user_query = user_query
 
     def validate(self):

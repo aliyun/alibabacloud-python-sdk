@@ -17,13 +17,13 @@ class GetKvNamespaceResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The available capacity of the namespace. Unit: bytes.
+        # The available capacity of the namespace, in bytes.
         self.capacity = capacity
-        # The available capacity of the namespace.
+        # The available capacity of the namespace, formatted as a human-readable string.
         self.capacity_string = capacity_string
-        # The used capacity of the namespace. Unit: bytes.
+        # The used capacity of the namespace, in bytes.
         self.capacity_used = capacity_used
-        # The used capacity of the namespace.
+        # The used capacity of the namespace, formatted as a human-readable string.
         self.capacity_used_string = capacity_used_string
         # The description of the namespace.
         self.description = description
@@ -31,14 +31,17 @@ class GetKvNamespaceResponseBody(DaraModel):
         self.namespace = namespace
         # The ID of the namespace.
         self.namespace_id = namespace_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The status of the namespace. Valid values:
         # 
-        # *   **online**: working as expected.
-        # *   **delete**: pending deletion.
-        # *   **deleting**: being deleted.
-        # *   **deleted**: deleted.
+        # - **online**: The namespace is active.
+        # 
+        # - **delete**: The namespace is marked for deletion.
+        # 
+        # - **deleting**: The namespace is being deleted.
+        # 
+        # - **deleted**: The namespace has been deleted.
         self.status = status
 
     def validate(self):

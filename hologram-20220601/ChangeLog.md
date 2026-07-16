@@ -1,3 +1,38 @@
+2026-05-21 Version: 1.11.0
+- Support API BindLeaderInstance.
+- Support API CreateManualBackup.
+- Support API DeleteBackupData.
+- Support API DescribeTags.
+- Support API DisableOperationEvent.
+- Support API DisableSupportAccount.
+- Support API DiscardUpgrade.
+- Support API EnableSupportAccount.
+- Support API GetHoloWebLoginSetting.
+- Support API GetLastUpgradeRecord.
+- Support API GetScheduledBackupConfig.
+- Support API GetUpgradeStatus.
+- Support API GetUpgradeable.
+- Support API ListFollowerInstances.
+- Support API ListLeaderInstances.
+- Support API ListMigrationZones.
+- Support API ListOperationEvents.
+- Support API ListRegions.
+- Support API ListUpgradeReleaseVersions.
+- Support API MigrateInstanceZone.
+- Support API PrepareUpgrade.
+- Support API TagResources.
+- Support API UnBindLeaderInstance.
+- Support API UntagResources.
+- Support API UpdateAutoUpgrade.
+- Support API UpdateBackupDataDesc.
+- Support API UpdateHoloWebLoginSetting.
+- Support API UpdateInstancePort.
+- Support API UpdateMaintenanceWindow.
+- Support API UpdateOperationEventScheduleTime.
+- Support API UpdateScheduledBackupConfig.
+- Support API UpgradeInstance.
+
+
 2026-05-15 Version: 1.10.0
 - Support API DisableExecuteStatement.
 - Support API EnableExecuteStatement.

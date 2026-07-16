@@ -17,12 +17,17 @@ class GetAutoClipsTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Business data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error description.
         self.message = message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -109,33 +114,61 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         voice_style: str = None,
         voice_volume: int = None,
     ):
+        # List of video understanding results.
         self.analysis_results = analysis_results
+        # Disable background music.
         self.close_music = close_music
+        # Disable subtitles.
         self.close_subtitle = close_subtitle
+        # Disable voiceover.
         self.close_voice = close_voice
+        # URL of the closing credits video.
         self.closing_credits_url = closing_credits_url
+        # Array of decorative text elements.
         self.color_words = color_words
+        # Full voiceover script.
         self.content = content
+        # Voice style for CosyVoice.
         self.custom_voice_style = custom_voice_style
+        # URL of the custom audio track file.
         self.custom_voice_url = custom_voice_url
+        # Volume of the custom audio track.
         self.custom_voice_volume = custom_voice_volume
+        # Error message.
         self.error_message = error_message
+        # ApsaraVideo timeline.
         self.media_cloud_timeline = media_cloud_timeline
+        # Recommended music style.
         self.music_style = music_style
+        # URL of the background music.
         self.music_url = music_url
+        # Volume of the background music.
         self.music_volume = music_volume
+        # URL of the opening credits video.
         self.opening_credits_url = opening_credits_url
+        # File key of the output video.
         self.output_video_file_key = output_video_file_key
+        # URL of the final video.
         self.output_video_url = output_video_url
+        # Reference video information.
         self.reference_video = reference_video
+        # List of video sources used for editing.
         self.source_videos = source_videos
+        # Status
         self.status = status
+        # Current step.
         self.step = step
+        # Array of stickers.
         self.stickers = stickers
+        # Font size of subtitles.
         self.subtitle_font_size = subtitle_font_size
+        # Unique ID of the task.
         self.task_id = task_id
+        # Array of voiceover timelines.
         self.timelines = timelines
+        # Voice style for voiceover.
         self.voice_style = voice_style
+        # Volume of the voiceover.
         self.voice_volume = voice_volume
 
     def validate(self):
@@ -374,8 +407,11 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelines(DaraModel):
         content: str = None,
         timeline_id: str = None,
     ):
+        # Array of video clips.
         self.clips = clips
+        # Voiceover script.
         self.content = content
+        # ID of the timeline.
         self.timeline_id = timeline_id
 
     def validate(self):
@@ -430,13 +466,21 @@ class GetAutoClipsTaskInfoResponseBodyDataTimelinesClips(DaraModel):
         video_id: str = None,
         video_name: str = None,
     ):
+        # ID of the clip.
         self.clip_id = clip_id
+        # Segmented voiceover script.
         self.content_inner = content_inner
+        # Start time of the clip in seconds. This field is deprecated.
         self.in_ = in_
+        # Start time of the clip in milliseconds.
         self.in_ex = in_ex
+        # End time of the clip in seconds. This field is deprecated.
         self.out = out
+        # End time of the clip in milliseconds.
         self.out_ex = out_ex
+        # ID of the video.
         self.video_id = video_id
+        # Name of the video.
         self.video_name = video_name
 
     def validate(self):
@@ -513,13 +557,21 @@ class GetAutoClipsTaskInfoResponseBodyDataStickers(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Duration of the sticker display.
         self.duration = duration
+        # Height of the sticker
         self.dync_frames = dync_frames
+        # Height of the sticker.
         self.height = height
+        # Start time of the sticker in seconds.
         self.timeline_in = timeline_in
+        # URL of the sticker GIF file.
         self.url = url
+        # Width of the sticker.
         self.width = width
+        # X-coordinate of the sticker position.
         self.x = x
+        # Y-coordinate of the sticker position.
         self.y = y
 
     def validate(self):
@@ -591,8 +643,11 @@ class GetAutoClipsTaskInfoResponseBodyDataSourceVideos(DaraModel):
         video_name: str = None,
         video_url: str = None,
     ):
+        # Video ID.
         self.video_id = video_id
+        # Video name.
         self.video_name = video_name
+        # Video URL.
         self.video_url = video_url
 
     def validate(self):
@@ -634,8 +689,11 @@ class GetAutoClipsTaskInfoResponseBodyDataReferenceVideo(DaraModel):
         video_name: str = None,
         video_url: str = None,
     ):
+        # Video ID.
         self.video_id = video_id
+        # Video name.
         self.video_name = video_name
+        # Video URL.
         self.video_url = video_url
 
     def validate(self):
@@ -681,12 +739,19 @@ class GetAutoClipsTaskInfoResponseBodyDataColorWords(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Text content.
         self.content = content
+        # Visual effect of the decorative text.
         self.effect_color_style = effect_color_style
+        # Font size of the decorative text.
         self.font_size = font_size
+        # Start time of the decorative text in seconds.
         self.timeline_in = timeline_in
+        # End time of the decorative text in seconds.
         self.timeline_out = timeline_out
+        # X-coordinate of the decorative text.
         self.x = x
+        # Y-coordinate of the decorative text.
         self.y = y
 
     def validate(self):
@@ -753,9 +818,13 @@ class GetAutoClipsTaskInfoResponseBodyDataAnalysisResults(DaraModel):
         media_name: str = None,
         media_url: str = None,
     ):
+        # List of shot information.
         self.lens_infos = lens_infos
+        # Video ID.
         self.media_id = media_id
+        # Video name.
         self.media_name = media_name
+        # Video URL.
         self.media_url = media_url
 
     def validate(self):
@@ -811,8 +880,11 @@ class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos(DaraModel):
         end_time: main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime = None,
         start_time: main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime = None,
     ):
+        # Content analysis
         self.analysis_content = analysis_content
+        # End time.
         self.end_time = end_time
+        # Start time.
         self.start_time = start_time
 
     def validate(self):
@@ -860,9 +932,13 @@ class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime(Dara
         minute: int = None,
         second: int = None,
     ):
+        # Hour.
         self.hour = hour
+        # Millisecond.
         self.mill_second = mill_second
+        # Minute.
         self.minute = minute
+        # Second.
         self.second = second
 
     def validate(self):
@@ -911,9 +987,13 @@ class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime(DaraMo
         minute: int = None,
         second: int = None,
     ):
+        # Hour.
         self.hour = hour
+        # Millisecond.
         self.mill_second = mill_second
+        # Minute.
         self.minute = minute
+        # Second.
         self.second = second
 
     def validate(self):

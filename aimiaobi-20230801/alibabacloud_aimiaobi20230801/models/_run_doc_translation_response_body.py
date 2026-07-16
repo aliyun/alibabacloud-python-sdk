@@ -12,8 +12,11 @@ class RunDocTranslationResponseBody(DaraModel):
         payload: main_models.RunDocTranslationResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -59,7 +62,9 @@ class RunDocTranslationResponseBodyPayload(DaraModel):
         output: main_models.RunDocTranslationResponseBodyPayloadOutput = None,
         usage: main_models.RunDocTranslationResponseBodyPayloadUsage = None,
     ):
+        # Outputs
         self.output = output
+        # Token usage
         self.usage = usage
 
     def validate(self):
@@ -100,8 +105,11 @@ class RunDocTranslationResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of tokens used for input
         self.input_tokens = input_tokens
+        # Number of tokens used for output
         self.output_tokens = output_tokens
+        # Total number of tokens used for this call
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -141,6 +149,7 @@ class RunDocTranslationResponseBodyPayloadOutput(DaraModel):
         self,
         content: str = None,
     ):
+        # Translated content
         self.content = content
 
     def validate(self):
@@ -174,12 +183,19 @@ class RunDocTranslationResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Error code message
         self.error_message = error_message
+        # Event type
         self.event = event
+        # Event description
         self.event_info = event_info
+        # Session ID
         self.session_id = session_id
+        # Task ID
         self.task_id = task_id
+        # Trace ID
         self.trace_id = trace_id
 
     def validate(self):

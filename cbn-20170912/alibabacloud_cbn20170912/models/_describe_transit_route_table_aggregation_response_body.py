@@ -16,18 +16,19 @@ class DescribeTransitRouteTableAggregationResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.count = count
         # A list of aggregate routes.
         self.data = data
         # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
+        # - If **NextToken** is empty, no next page exists.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -100,23 +101,27 @@ class DescribeTransitRouteTableAggregationResponseBodyData(DaraModel):
         self.name = name
         # The type of the aggregate route.
         # 
-        # The valid value is **Static**, which indicates a static route. By default, aggregate routes advertised to a VPC are considered custom routes.
+        # The value is set to **Static**. This indicates that the route is a static route. After the aggregate route is advertised to a VPC, it becomes a custom route entry by default.
         self.route_type = route_type
-        # The scope of networks that you want to advertise the aggregate route.
+        # The scope of the aggregate route.
         # 
-        # The valid value is **VPC**, which indicates that the aggregate route is advertised to all virtual private clouds (VPCs) that are in associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
+        # The value is set to **VPC**. This indicates that the aggregate route is advertised to all VPCs that are associated with the route table of the Enterprise Edition transit router and have route synchronization enabled.
         self.scope = scope
-        # The list of propagation ranges of the aggregation route.
+        # The list of scopes of the aggregate route.
         # 
-        # >  You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
+        # > You must specify at least one of the Scope and ScopeList properties. We recommend that you specify ScopeList. The elements in ScopeList cannot be the same as the value of Scope.
         self.scope_list = scope_list
-        # The status of the advertisement of the aggregate route. Valid values:
+        # The advertising status of the aggregate route.
         # 
-        # *   **AllConfigured**: The aggregate route is advertised to all VPCs.
-        # *   **Configuring**: The aggregate route is being advertised.
-        # *   **ConfigFailed**: The aggregate route failed to be advertised.
-        # *   **PartialConfigured**: Failed to advertise the aggregate route to some VPCs.
-        # *   **Deleting**: The aggregate route is being deleted.
+        # - **AllConfigured**: The aggregate route is advertised to all VPCs.
+        # 
+        # - **Configuring**: The aggregate route is being advertised.
+        # 
+        # - **ConfigFailed**: The aggregate route failed to be advertised.
+        # 
+        # - **PartialConfigured**: The aggregate route is advertised to some VPCs.
+        # 
+        # - **Deleting**: The aggregate route is being deleted.
         self.status = status
         # The ID of the route table of the Enterprise Edition transit router.
         self.tr_route_table_id = tr_route_table_id

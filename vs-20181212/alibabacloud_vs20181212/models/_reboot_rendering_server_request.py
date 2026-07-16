@@ -11,6 +11,8 @@ class RebootRenderingServerRequest(DaraModel):
         self,
         rendering_instance_ids: List[str] = None,
     ):
+        # List of cloud application service instance IDs
+        # 
         # This parameter is required.
         self.rendering_instance_ids = rendering_instance_ids
 

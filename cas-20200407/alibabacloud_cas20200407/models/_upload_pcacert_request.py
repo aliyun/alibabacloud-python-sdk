@@ -12,19 +12,17 @@ class UploadPCACertRequest(DaraModel):
         private_key: str = None,
         warehouse_id: int = None,
     ):
-        # <UploadPCACertResponse>
-        #     <RequestId>15C66C7B-671A-4297-9187-2C4477247A74</RequestId>
-        # </UploadPCACertResponse>
+        # The content of the certificate and its chain, in PEM format.
         # 
         # This parameter is required.
         self.cert = cert
-        # UploadPCACert
+        # A custom name for the certificate.
         self.name = name
-        # Uploads a private certificate to a certificate repository.
+        # The private key of the certificate, in PEM format.
         self.private_key = private_key
-        # The ID of the repository.
+        # The ID of the certificate warehouse.
         # 
-        # >  You can call the [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) operation to query the ID.
+        # > Call [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) to obtain this ID.
         # 
         # This parameter is required.
         self.warehouse_id = warehouse_id

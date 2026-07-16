@@ -2,12 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_imm20200930 import models as main_models
 from darabonba.model import DaraModel
 
 class SmartCluster(DaraModel):
     def __init__(
         self,
+        cluster_type: str = None,
         create_time: str = None,
         dataset_name: str = None,
         description: str = None,
@@ -17,41 +20,56 @@ class SmartCluster(DaraModel):
         object_type: str = None,
         owner_id: str = None,
         project_name: str = None,
+        reason: str = None,
         rule: main_models.SmartClusterRule = None,
+        rules: List[main_models.SmartClusterRule] = None,
         update_time: str = None,
     ):
-        # The time when the cluster was created.
+        # The category of the grouping.
+        self.cluster_type = cluster_type
+        # The time when the grouping was created.
         self.create_time = create_time
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The description of the cluster.
+        # The description of the grouping.
         self.description = description
-        # The name of the cluster.
+        # The grouping name.
         self.name = name
-        # The ID of the cluster.
+        # The intelligent grouping ID.
         self.object_id = object_id
-        # The status of the cluster.
+        # The status of the grouping.
         self.object_status = object_status
-        # The type of the cluster.
+        # The grouping type.
         self.object_type = object_type
         # The user ID.
         self.owner_id = owner_id
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
-        # The clustering rule.
+        # The reason why the grouping failed.
+        self.reason = reason
+        # The grouping rule. This parameter is deprecated. Use the Rules parameter instead.
         self.rule = rule
-        # The time when the cluster was updated.
+        # The list of grouping rules.
+        self.rules = rules
+        # The time when the grouping was last updated.
         self.update_time = update_time
 
     def validate(self):
         if self.rule:
             self.rule.validate()
+        if self.rules:
+            for v1 in self.rules:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -79,8 +97,16 @@ class SmartCluster(DaraModel):
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
+        if self.reason is not None:
+            result['Reason'] = self.reason
+
         if self.rule is not None:
             result['Rule'] = self.rule.to_map()
+
+        result['Rules'] = []
+        if self.rules is not None:
+            for k1 in self.rules:
+                result['Rules'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -89,6 +115,9 @@ class SmartCluster(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -116,9 +145,18 @@ class SmartCluster(DaraModel):
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
 
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+
         if m.get('Rule') is not None:
             temp_model = main_models.SmartClusterRule()
             self.rule = temp_model.from_map(m.get('Rule'))
+
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k1 in m.get('Rules'):
+                temp_model = main_models.SmartClusterRule()
+                self.rules.append(temp_model.from_map(k1))
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')

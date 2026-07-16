@@ -18,13 +18,37 @@ class GetFilterDocumentListRequest(DaraModel):
         page_size: int = None,
         status: List[str] = None,
     ):
+        # AND expression to filter documents or document chunks.
         self.and_ = and_
+        # List of document IDs to filter documents or document chunks.
         self.doc_id_list = doc_id_list
+        # Document library ID to filter documents or document chunks.
+        # 
         # This parameter is required.
         self.library_id = library_id
+        # OR expression to filter documents or document chunks.
         self.or_ = or_
+        # Page number for pagination.
         self.page = page
+        # Number of records per page for pagination.
         self.page_size = page_size
+        # List of document statuses to filter documents.
+        # 
+        # ### Document parsing status codes
+        # 
+        # *Status codes: WaitRefresh, InQueue, FetchingData, Embedding, Completed, FormatError, Error*
+        # 
+        # - Completed: Active. Document parsing completed.
+        # 
+        # - Error: Inactive. Document parsing failed.
+        # 
+        # - FormatError: File format error. Re-upload the file in the correct format if it is encrypted or incomplete.
+        # 
+        # - InQueue: Pending. Document is waiting for parsing.
+        # 
+        # - Parsed: Parsing completed.
+        # 
+        # - Other statuses are internal system states. For example, WaitRefresh means the task is scheduled. FetchingData means parsing is in progress. Embedding means index building is in progress.
         self.status = status
 
     def validate(self):
@@ -108,9 +132,17 @@ class GetFilterDocumentListRequestOr(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # Weight of the value in the text retrieval engine. Default is 1.
         self.boost = boost
+        # Metadata key in the document library.
         self.key = key
+        # ### Relationship between the stored metadata value and your input value
+        # 
+        # - eq: The stored metadata value equals your input value.
+        # 
+        # - contains: The stored metadata value list contains your input value.
         self.operator = operator
+        # Input metadata value.
         self.value = value
 
     def validate(self):
@@ -159,9 +191,17 @@ class GetFilterDocumentListRequestAnd(DaraModel):
         operator: str = None,
         value: str = None,
     ):
+        # Weight of the value in the text retrieval engine. Default is 1.
         self.boost = boost
+        # Metadata key in the document library.
         self.key = key
+        # ### Relationship between the stored metadata value and your input value
+        # 
+        # - eq: The stored metadata value equals your input value.
+        # 
+        # - contains: The stored metadata value list contains your input value.
         self.operator = operator
+        # Input metadata value.
         self.value = value
 
     def validate(self):

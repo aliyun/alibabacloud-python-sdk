@@ -33,15 +33,17 @@ class DescribeCloudAssistantStatusRequest(DaraModel):
         self.next_token = next_token
         # The operating system type of the instance. Valid values:
         # 
-        # *   Windows
-        # *   Linux
-        # *   FreeBSD
+        # - Windows
+        # 
+        # - Linux
+        # 
+        # - FreeBSD
         self.ostype = ostype
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_number = page_number
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_size = page_size
         # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 

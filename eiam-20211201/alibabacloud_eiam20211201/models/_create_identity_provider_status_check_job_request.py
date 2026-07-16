@@ -10,11 +10,11 @@ class CreateIdentityProviderStatusCheckJobRequest(DaraModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的身份提供方主键id
+        # The ID of the identity provider.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

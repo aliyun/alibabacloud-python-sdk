@@ -10,22 +10,56 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         application_id: str = None,
         consumer: str = None,
         consumer_group: str = None,
+        downsample: str = None,
+        end_step: int = None,
         end_time: str = None,
         interval: str = None,
         key: str = None,
+        max_points: int = None,
         model_service: str = None,
+        start_step: int = None,
         start_time: str = None,
     ):
+        # The ID of the application cluster.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The ID of the consumer.
         self.consumer = consumer
+        # The ID of the consumer group.
         self.consumer_group = consumer_group
+        self.downsample = downsample
+        self.end_step = end_step
+        # The end time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The granularity of the performance data, in seconds. Valid values:
+        # 
+        # - 5
+        # 
+        # - 30
+        # 
+        # - 60
+        # 
+        # - 600
+        # 
+        # - 1800
+        # 
+        # - 3600
+        # 
+        # - 86400
         self.interval = interval
+        # The performance metrics to query. Separate multiple metrics with commas (,).<br>You can specify up to five performance metrics.<br>
+        # 
         # This parameter is required.
         self.key = key
+        self.max_points = max_points
+        # The ID of the model service.
         self.model_service = model_service
+        self.start_step = start_step
+        # The start time for the query. Specify the time in UTC in the `yyyy-MM-ddTHH:mmZ` format.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -46,6 +80,12 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if self.consumer_group is not None:
             result['ConsumerGroup'] = self.consumer_group
 
+        if self.downsample is not None:
+            result['Downsample'] = self.downsample
+
+        if self.end_step is not None:
+            result['EndStep'] = self.end_step
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -55,8 +95,14 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if self.key is not None:
             result['Key'] = self.key
 
+        if self.max_points is not None:
+            result['MaxPoints'] = self.max_points
+
         if self.model_service is not None:
             result['ModelService'] = self.model_service
+
+        if self.start_step is not None:
+            result['StartStep'] = self.start_step
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -74,6 +120,12 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if m.get('ConsumerGroup') is not None:
             self.consumer_group = m.get('ConsumerGroup')
 
+        if m.get('Downsample') is not None:
+            self.downsample = m.get('Downsample')
+
+        if m.get('EndStep') is not None:
+            self.end_step = m.get('EndStep')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
@@ -83,8 +135,14 @@ class DescribeApplicationPerformanceRequest(DaraModel):
         if m.get('Key') is not None:
             self.key = m.get('Key')
 
+        if m.get('MaxPoints') is not None:
+            self.max_points = m.get('MaxPoints')
+
         if m.get('ModelService') is not None:
             self.model_service = m.get('ModelService')
+
+        if m.get('StartStep') is not None:
+            self.start_step = m.get('StartStep')
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')

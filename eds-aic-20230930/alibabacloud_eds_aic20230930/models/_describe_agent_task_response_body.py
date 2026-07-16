@@ -16,10 +16,15 @@ class DescribeAgentTaskResponseBody(DaraModel):
         request_id: str = None,
         tasks: List[main_models.DescribeAgentTaskResponseBodyTasks] = None,
     ):
+        # The API status code.
         self.code = code
+        # The number of tasks.
         self.count = count
+        # The message returned by the API.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -78,21 +83,45 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
     def __init__(
         self,
         current_status: str = None,
+        digest_source: str = None,
         instance_id: str = None,
+        reason: str = None,
         running_at: str = None,
         steps: str = None,
+        task_digest: str = None,
         task_duration: str = None,
         task_id: str = None,
         task_result: str = None,
         user_prompt: str = None,
     ):
+        # The current status of the task. Valid values:
+        # 
+        # PENDING: The task is being created.
+        # 
+        # RUNNING: The task is running.
+        # 
+        # COMPLETED: The task is completed.
+        # 
+        # FAILED: The task failed.
+        # 
+        # TIMEOUT: The task execution timed out.
         self.current_status = current_status
+        self.digest_source = digest_source
+        # The Mobile node ID.
         self.instance_id = instance_id
+        self.reason = reason
+        # The time when the task was created, in ISO 8601 format.
         self.running_at = running_at
+        # The number of steps executed.
         self.steps = steps
+        self.task_digest = task_digest
+        # The task duration. This field is returned only when CurrentStatus is FAILED or COMPLETED.
         self.task_duration = task_duration
+        # The task ID, which is globally unique.
         self.task_id = task_id
+        # The task result in the desired state. This field is returned only when CurrentStatus is COMPLETED or FAILED.
         self.task_result = task_result
+        # The user instruction in natural language. The Agent performs operations based on this instruction.
         self.user_prompt = user_prompt
 
     def validate(self):
@@ -106,14 +135,23 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         if self.current_status is not None:
             result['CurrentStatus'] = self.current_status
 
+        if self.digest_source is not None:
+            result['DigestSource'] = self.digest_source
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.reason is not None:
+            result['Reason'] = self.reason
 
         if self.running_at is not None:
             result['RunningAt'] = self.running_at
 
         if self.steps is not None:
             result['Steps'] = self.steps
+
+        if self.task_digest is not None:
+            result['TaskDigest'] = self.task_digest
 
         if self.task_duration is not None:
             result['TaskDuration'] = self.task_duration
@@ -134,14 +172,23 @@ class DescribeAgentTaskResponseBodyTasks(DaraModel):
         if m.get('CurrentStatus') is not None:
             self.current_status = m.get('CurrentStatus')
 
+        if m.get('DigestSource') is not None:
+            self.digest_source = m.get('DigestSource')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
 
         if m.get('RunningAt') is not None:
             self.running_at = m.get('RunningAt')
 
         if m.get('Steps') is not None:
             self.steps = m.get('Steps')
+
+        if m.get('TaskDigest') is not None:
+            self.task_digest = m.get('TaskDigest')
 
         if m.get('TaskDuration') is not None:
             self.task_duration = m.get('TaskDuration')

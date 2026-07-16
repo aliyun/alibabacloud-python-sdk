@@ -23,60 +23,80 @@ class DescribeDomainRecordsRequest(DaraModel):
         type_key_word: str = None,
         value_key_word: str = None,
     ):
-        # The order in which you want to sort the returned DNS records. Valid values: DESC and ASC. Default value: DESC.
+        # The sorting direction. Valid values: DESC, ASC. Default value: DESC.
         self.direction = direction
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name.<props="china"> For more information, see [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+        # <props="intl">For more information, see [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0).
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The ID of the domain name group.
+        # The ID of the domain group.
         # 
-        # *   If you do not specify GroupId, all domain names are queried.
-        # *   If you set GroupId to 0, no value is returned.
-        # *   If you set GroupId to 1, the domain names in the default group are queried.
-        # *   If you set GroupId to -2, all domain names are queried.
-        # *   You can also specify GroupId based on the actual group ID.
+        # - If you do not specify GroupId, the query is performed on all domain names.
         # 
-        # You can call the [DescribeDomainGroups ](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0)operation to obtain the ID of the domain name group.
+        # - If you set GroupId to 0, an empty result is returned.
+        # 
+        # - If you set GroupId to -1, the query is performed on the default group. The default group includes domain names that are not assigned to a group.
+        # 
+        # - If you set GroupId to -2, the query is performed on all domain names.
+        # 
+        # - If you specify another value for GroupId, the query is performed on the specified group.
+        #   <props="china">For more information, see [DescribeDomainGroups](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c4g.11186623.help-menu-search-29697.d_0).
+        #   <props="intl">For more information, see [DescribeDomainGroups](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomaingroups?spm=a2c63.p38356.help-menu-search-29697.d_0).
         self.group_id = group_id
         # The keyword.
         self.key_word = key_word
-        # The language.
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The resolution line. Default value: **default**.
+        # The DNS resolution line. Default value: **default**.
         # 
-        # For more information, see
+        # For more information, see:
+        # <props="china">[Enumeration of DNS resolution lines](https://help.aliyun.com/document_detail/29807.html).
         # 
-        # [DNS lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm).
+        # <props="intl">
+        # 
+        # [Enumeration of DNS resolution lines](https://www.alibabacloud.com/help/zh/doc-detail/29807.htm)
         self.line = line
-        # The method that is used to sort the returned DNS records. By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        # The sorting method. Records are sorted in descending order based on the time they were added.
         self.order_by = order_by
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 500**. Default value: **20**.
+        # The number of entries to return on each page for a paged query. Maximum value: **500**. Default value: **20**.
         self.page_size = page_size
-        # The hostname keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
+        # The keyword for the host record. The search uses a fuzzy match pattern and is not case-sensitive.
         self.rrkey_word = rrkey_word
-        # The search mode. Valid values: **LIKE, EXACT, and ADVANCED**.
+        # The search mode. Valid values: LIKE, EXACT, ADVANCED, and **COMBINATION**.
         # 
-        # *   If you set SearchMode to LIKE or EXACT, specify KeyWord. In this case, RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status are invalid.
+        # - If you set this parameter to LIKE or EXACT, use the KeyWord parameter. The RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters are invalid.
         # 
-        # *   If you set SearchMode to ADVANCED, specify RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status.
+        # - If you set this parameter to ADVANCED, use the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters. The RRKeyWord and ValueKeyWord parameters support fuzzy matching.
         # 
-        # *   If you do not specify SearchMode, the system determines the search mode based on the following rules:
+        # - If you set this parameter to COMBINATION, use the RRKeyWord, TypeKeyWord, ValueKeyWord, Type, Line, and Status parameters. All these parameters support only exact matching.
         # 
-        #     *   If KeyWord is specified, the system uses the LIKE mode.
-        #     *   If KeyWord is not specified, the system queries DNS records based on values of RRKeyWord and ValueKeyWord in fuzzy match mode, and based on the values of TypeKeyWord, Type, Line, and Status in exact match mode.
+        # - If you do not specify this parameter:
+        # 
+        #   - If you specify the keyWord parameter, the search mode is set to LIKE.
+        # 
+        #   - If you do not specify the keyWord parameter, RRKeyWord and ValueKeyWord support fuzzy matching, and TypeKeyWord, Type, Line, and Status support exact matching.
         self.search_mode = search_mode
-        # The status of the DNS records to query. Valid values: **Enable and Disable**.
-        self.status = status
-        # The type of the DNS records to query. For more information, see
+        # The status of the DNS record. Valid values:
         # 
-        # [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+        # Enable: The DNS record is enabled.
+        # 
+        # Disable: The DNS record is paused.
+        self.status = status
+        # The type of the DNS record. For more information, see:
+        # 
+        # <props="china">[DNS record types](https://help.aliyun.com/document_detail/29805.html)
+        # <props="intl">[DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm)
         self.type = type
-        # The type keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in exact match mode. The value is not case-sensitive.
+        # The keyword for the record type. The search uses an exact match and is not case-sensitive.
         self.type_key_word = type_key_word
-        # The record value keyword based on which the system queries DNS records. The system queries DNS records based on the value of this parameter in fuzzy match mode. The value is not case-sensitive.
+        # The keyword for the record value. The search uses a fuzzy match pattern and is not case-sensitive.
         self.value_key_word = value_key_word
 
     def validate(self):

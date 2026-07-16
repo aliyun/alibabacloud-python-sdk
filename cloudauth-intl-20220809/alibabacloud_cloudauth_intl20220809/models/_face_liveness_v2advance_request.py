@@ -17,12 +17,27 @@ class FaceLivenessV2AdvanceRequest(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        # The Base64-encoded face image.
+        # 
+        # > **Note**
+        # 
+        # - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+        # - Specify one of the following parameters: FacePictureBase64, FacePictureUrl, or FacePictureFile.
         self.face_picture_base_64 = face_picture_base_64
+        # The file stream of the face image.
         self.face_picture_file_object = face_picture_file_object
+        # The URL of the face image. The URL must be a publicly accessible HTTPS URL.
         self.face_picture_url = face_picture_url
+        # Specifies whether to check the quality of the face image. Valid values:
+        # - Y: enabled.
+        # - N: disabled. This is the default value.
         self.face_quality_check = face_quality_check
+        # The merchant-defined unique business ID for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Make sure the value is unique.
         self.merchant_biz_id = merchant_biz_id
+        # The custom user ID or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
+        # The product plan to use. Valid values: FACE_LIVENESS_MIN_PRO and FACE_LIVENESS_MIN.
+        # 
         # This parameter is required.
         self.product_code = product_code
 

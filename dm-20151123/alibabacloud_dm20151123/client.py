@@ -29,7 +29,13 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-east-1': 'dm.us-east-1.aliyuncs.com',
+            'eu-central-1': 'dm.eu-central-1.aliyuncs.com',
+            'cn-hangzhou': 'dm.aliyuncs.com',
+            'ap-southeast-1': 'dm.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dm', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -371,10 +377,16 @@ class Client(OpenApiClient):
 
     def batch_send_mail_with_options(
         self,
-        request: main_models.BatchSendMailRequest,
+        tmp_req: main_models.BatchSendMailRequest,
         runtime: RuntimeOptions,
     ) -> main_models.BatchSendMailResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.BatchSendMailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.receivers):
+            request.receivers_shrink = Utils.array_to_string_with_specified_style(tmp_req.receivers, 'Receivers', 'json')
+        if not DaraCore.is_null(tmp_req.template_content):
+            request.template_content_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_content, 'TemplateContent', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -408,8 +420,14 @@ class Client(OpenApiClient):
             query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not DaraCore.is_null(request.un_subscribe_link_type):
             query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+        body = {}
+        if not DaraCore.is_null(request.receivers_shrink):
+            body['Receivers'] = request.receivers_shrink
+        if not DaraCore.is_null(request.template_content_shrink):
+            body['TemplateContent'] = request.template_content_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'BatchSendMail',
@@ -429,10 +447,16 @@ class Client(OpenApiClient):
 
     async def batch_send_mail_with_options_async(
         self,
-        request: main_models.BatchSendMailRequest,
+        tmp_req: main_models.BatchSendMailRequest,
         runtime: RuntimeOptions,
     ) -> main_models.BatchSendMailResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.BatchSendMailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.receivers):
+            request.receivers_shrink = Utils.array_to_string_with_specified_style(tmp_req.receivers, 'Receivers', 'json')
+        if not DaraCore.is_null(tmp_req.template_content):
+            request.template_content_shrink = Utils.array_to_string_with_specified_style(tmp_req.template_content, 'TemplateContent', 'json')
         query = {}
         if not DaraCore.is_null(request.account_name):
             query['AccountName'] = request.account_name
@@ -466,8 +490,14 @@ class Client(OpenApiClient):
             query['UnSubscribeFilterLevel'] = request.un_subscribe_filter_level
         if not DaraCore.is_null(request.un_subscribe_link_type):
             query['UnSubscribeLinkType'] = request.un_subscribe_link_type
+        body = {}
+        if not DaraCore.is_null(request.receivers_shrink):
+            body['Receivers'] = request.receivers_shrink
+        if not DaraCore.is_null(request.template_content_shrink):
+            body['TemplateContent'] = request.template_content_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'BatchSendMail',
@@ -3083,6 +3113,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_tag_with_options_async(request, runtime)
 
+    def delete_template_with_options(
+        self,
+        request: main_models.DeleteTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_template_with_options_async(
+        self,
+        request: main_models.DeleteTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_template(
+        self,
+        request: main_models.DeleteTemplateRequest,
+    ) -> main_models.DeleteTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_template_with_options(request, runtime)
+
+    async def delete_template_async(
+        self,
+        request: main_models.DeleteTemplateRequest,
+    ) -> main_models.DeleteTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_template_with_options_async(request, runtime)
+
     def delete_validate_file_with_options(
         self,
         request: main_models.DeleteValidateFileRequest,
@@ -4952,6 +5068,120 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyTagResponse:
         runtime = RuntimeOptions()
         return await self.modify_tag_with_options_async(request, runtime)
+
+    def modify_template_with_options(
+        self,
+        request: main_models.ModifyTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sms_content):
+            query['SmsContent'] = request.sms_content
+        if not DaraCore.is_null(request.sms_type):
+            query['SmsType'] = request.sms_type
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_nick_name):
+            query['TemplateNickName'] = request.template_nick_name
+        if not DaraCore.is_null(request.template_subject):
+            query['TemplateSubject'] = request.template_subject
+        if not DaraCore.is_null(request.template_text):
+            query['TemplateText'] = request.template_text
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_template_with_options_async(
+        self,
+        request: main_models.ModifyTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.from_type):
+            query['FromType'] = request.from_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sms_content):
+            query['SmsContent'] = request.sms_content
+        if not DaraCore.is_null(request.sms_type):
+            query['SmsType'] = request.sms_type
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        if not DaraCore.is_null(request.template_nick_name):
+            query['TemplateNickName'] = request.template_nick_name
+        if not DaraCore.is_null(request.template_subject):
+            query['TemplateSubject'] = request.template_subject
+        if not DaraCore.is_null(request.template_text):
+            query['TemplateText'] = request.template_text
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTemplate',
+            version = '2015-11-23',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_template(
+        self,
+        request: main_models.ModifyTemplateRequest,
+    ) -> main_models.ModifyTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.modify_template_with_options(request, runtime)
+
+    async def modify_template_async(
+        self,
+        request: main_models.ModifyTemplateRequest,
+    ) -> main_models.ModifyTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_template_with_options_async(request, runtime)
 
     def open_sendify_trial_service_with_options(
         self,
@@ -7194,6 +7424,8 @@ class Client(OpenApiClient):
             query['CheckGraylist'] = request.check_graylist
         if not DaraCore.is_null(request.email):
             query['Email'] = request.email
+        if not DaraCore.is_null(request.probe_type):
+            query['ProbeType'] = request.probe_type
         if not DaraCore.is_null(request.timeout):
             query['Timeout'] = request.timeout
         req = open_api_util_models.OpenApiRequest(
@@ -7226,6 +7458,8 @@ class Client(OpenApiClient):
             query['CheckGraylist'] = request.check_graylist
         if not DaraCore.is_null(request.email):
             query['Email'] = request.email
+        if not DaraCore.is_null(request.probe_type):
+            query['ProbeType'] = request.probe_type
         if not DaraCore.is_null(request.timeout):
             query['Timeout'] = request.timeout
         req = open_api_util_models.OpenApiRequest(

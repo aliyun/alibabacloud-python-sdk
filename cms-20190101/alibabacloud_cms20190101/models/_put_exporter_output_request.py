@@ -13,23 +13,23 @@ class PutExporterOutputRequest(DaraModel):
         dest_type: str = None,
         region_id: str = None,
     ):
-        # The configuration set for exporting monitoring data. It is a JSON object string. The string must include the following fields:
+        # The configuration of the data export. The value is a JSONObject string that must contain the following fields:
         # 
-        # *   endpoint: the endpoint of Log Service.
-        # *   project: the Log Service project to which monitoring data is exported.
-        # *   logstore: the Log Service Logstore to which the monitoring data is exported.
-        # *   ak: the AccessKey ID.
-        # *   as: the AccessKey secret.
+        # - endpoint: the domain name that corresponds to the data of Log Service (SLS).
+        # - project: the project.
+        # - logstore: the Logstore.
+        # - ak: the AccessKey ID.
+        # - as: the AccessKey secret.
         # 
         # This parameter is required.
         self.config_json = config_json
-        # The description of the configuration set.
+        # The description of the configuration.
         self.desc = desc
-        # The name of the configuration set.
+        # The name of the configuration.
         # 
         # This parameter is required.
         self.dest_name = dest_name
-        # The service to which the monitoring data is exported.
+        # The product to which the data is exported.
         self.dest_type = dest_type
         self.region_id = region_id
 

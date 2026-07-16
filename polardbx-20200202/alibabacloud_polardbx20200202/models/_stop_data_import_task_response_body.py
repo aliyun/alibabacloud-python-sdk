@@ -12,9 +12,13 @@ class StopDataImportTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the import task is successful.
         self.data = data
+        # The response message. >This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

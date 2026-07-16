@@ -18,30 +18,35 @@ class DescribeGreyTagRouteResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The status code of the API call or a POP error code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A client-side error occurred.
+        # 
+        # - **5xx**: A server-side error occurred.
         self.code = code
-        # The information about the canary release rule.
+        # The details of the canary rule.
         self.data = data
         # The error code. Valid values:
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - If the request fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The message that indicates the result of the call.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the information of the change order was queried. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The information was queried.
-        # *   **false**: The information failed to be queried.
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID for querying the details of a call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -115,22 +120,23 @@ class DescribeGreyTagRouteResponseBodyData(DaraModel):
         sc_rules: List[main_models.DescribeGreyTagRouteResponseBodyDataScRules] = None,
         update_time: int = None,
     ):
+        # The canary rules for the Application Load Balancer (ALB) instance.
         self.alb_rules = alb_rules
-        # The ID of the application.
+        # The application ID.
         self.app_id = app_id
-        # The timestamp when the canary release rule was created. Unit: milliseconds.
+        # The creation timestamp of the rule, in milliseconds.
         self.create_time = create_time
-        # The description of the canary release rule.
+        # The description of the canary rule.
         self.description = description
-        # The canary release rule of the Dubbo service.
+        # The canary rules for the Dubbo service.
         self.dubbo_rules = dubbo_rules
-        # The ID of the canary release rule. The ID is globally unique.
+        # The globally unique ID of the canary rule.
         self.grey_tag_route_id = grey_tag_route_id
-        # The name of the canary release rule.
+        # The name of the canary rule.
         self.name = name
-        # The canary release rule of the Spring Cloud application.
+        # The canary rules for the Spring Cloud application.
         self.sc_rules = sc_rules
-        # The timestamp when the canary release rule was updated. Unit: milliseconds.
+        # The timestamp of the rule\\"s last update, in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -234,14 +240,15 @@ class DescribeGreyTagRouteResponseBodyDataScRules(DaraModel):
         items: List[main_models.DescribeGreyTagRouteResponseBodyDataScRulesItems] = None,
         path: str = None,
     ):
-        # The relationship between the conditions in the canary release rule. Valid values:
+        # The relationship between the conditions in the rule. Valid values:
         # 
-        # *   **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
-        # *   **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
+        # - **AND**: All conditions must be met.
+        # 
+        # - **OR**: At least one condition must be met.
         self.condition = condition
-        # The conditions.
+        # The list of conditions.
         self.items = items
-        # The path of the canary release rule of the Spring Cloud application.
+        # The path to which the rule applies.
         self.path = path
 
     def validate(self):
@@ -295,28 +302,33 @@ class DescribeGreyTagRouteResponseBodyDataScRulesItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
+        # The comparison operator. Valid values are **>**, **<**, **>=**, **<=**, **==**, and **!=**.
         self.cond = cond
-        # This parameter is not returned for Spring Cloud applications.
+        # Not used in Spring Cloud applications.
         self.expr = expr
-        # This parameter is not returned for Spring Cloud applications.
+        # Not used in Spring Cloud applications.
         self.index = index
-        # The name of the parameter.
+        # The name of the element to match, as specified by the type parameter. For example, a header name or cookie name.
         self.name = name
-        # The operator. Valid values:
+        # The matching operator. Valid values:
         # 
-        # *   **rawvalue**: direct comparison.
-        # *   **list**: whitelist.
-        # *   **mod**: mods 100.
-        # *   **deterministic_proportional_steaming_division**: percentage.
+        # - **rawvalue**: Performs a direct comparison.
+        # 
+        # - **list**: Matches against an allowlist of values.
+        # 
+        # - **mod**: Calculates the remainder of a division by 100.
+        # 
+        # - **deterministic_proportional_steaming_division**: Performs a percentage-based match.
         self.operator = operator
-        # The type of the comparison. Valid values:
+        # The type of request element to match against. Valid values:
         # 
-        # *   **param**: parameter
-        # *   **cookie**: cookie
-        # *   **header**: header
+        # - **param**: A request parameter.
+        # 
+        # - **cookie**: A cookie.
+        # 
+        # - **header**: A request header.
         self.type = type
-        # The value of the parameter. This value is compared with the value that is obtained based on the **type** and **name** parameters.
+        # The value to match. This value is compared with the actual value of the element specified by **type** and **name**.
         self.value = value
 
     def validate(self):
@@ -385,20 +397,21 @@ class DescribeGreyTagRouteResponseBodyDataDubboRules(DaraModel):
         service_name: str = None,
         version: str = None,
     ):
-        # The relationship between the conditions in the canary release rule. Valid values:
+        # The relationship between the conditions in the rule. Valid values:
         # 
-        # *   **AND**: The conditions are in the logical AND relation. All conditions must be met at the same time.
-        # *   **OR**: The conditions are in the logical OR relation. At least one of the conditions must be met.
+        # - **AND**: All conditions must be met.
+        # 
+        # - **OR**: At least one condition must be met.
         self.condition = condition
-        # The group of the Dubbo service that corresponds to the canary release rule.
+        # The service group to which the canary rule applies.
         self.group = group
-        # The conditions.
+        # The list of conditions.
         self.items = items
         # The method name of the Dubbo service.
         self.method_name = method_name
-        # The name of the Dubbo service.
+        # The Dubbo service name.
         self.service_name = service_name
-        # The version of the Dubbo service.
+        # The Dubbo service version.
         self.version = version
 
     def validate(self):
@@ -470,31 +483,39 @@ class DescribeGreyTagRouteResponseBodyDataDubboRulesItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The comparison operator. Valid values: **>**, **<**, **>=**, **<=**, **==**, and **! =**.
+        # The comparison operator. Valid values are **>**, **<**, **>=**, **<=**, **==**, and **!=**.
         self.cond = cond
-        # The expression that is used to obtain the value of the parameter. Valid values:
+        # The expression that is used to obtain the parameter value. Valid values:
         # 
-        # *   **Empty**: obtains the value of the parameter.
-        # *   **.name**: obtains the name property of the parameter. This expression works the same way as args0.getName().
-        # *   **.isEnabled()**: obtains the enabled property of the parameter. This expression works the same way as args0.isEnabled().
-        # *   **[0]**: indicates that the value of the parameter is an array and obtains the first value of the array. This expression works the same way as args0[0]. This expression does not start with a period (.).
-        # *   **.get(0)**: indicates that the value of the parameter is a list and obtains the first value of the list. This expression works the same way as args0.get(0).
-        # *   **.get("key")**: indicates that the value of the parameter is a map and obtains the value of the key in the map. This expression works the same way as args0.get("key").
+        # - **Leave empty**: If left empty, the value of the parameter itself is used.
+        # 
+        # - **.name**: Obtains the value of the `name` attribute of the parameter. This is equivalent to `args0.getName()`.
+        # 
+        # - **.isEnabled()**: Obtains the value of the `enabled` attribute of the parameter. This is equivalent to `args0.isEnabled()`.
+        # 
+        # - **[0]**: The parameter must be an array. This expression obtains the first value of the array, which is equivalent to `args0[0]`. Note that the expression does not start with a period (.).
+        # 
+        # - **.get(0)**: The parameter must be a list. This expression obtains the first value of the list, which is equivalent to `args0.get(0)`.
+        # 
+        # - **.get("key")**: The parameter must be a map. This expression obtains the value that corresponds to a key. This is equivalent to `args0.get("key")`.
         self.expr = expr
-        # The index of the parameter. The value 0 indicates the first parameter.
+        # The parameter index. `0` indicates the first parameter.
         self.index = index
-        # This parameter is not returned for Dubbo services.
+        # Not used in Dubbo services.
         self.name = name
-        # The operator. Valid values:
+        # The matching operator. Valid values:
         # 
-        # *   **rawvalue**: direct comparison.
-        # *   **list**: whitelist.
-        # *   **mod**: mods 100.
-        # *   **deterministic_proportional_steaming_division**: percentage.
+        # - **rawvalue**: Performs a direct comparison.
+        # 
+        # - **list**: Matches against an allowlist of values.
+        # 
+        # - **mod**: Calculates the remainder of a division by 100.
+        # 
+        # - **deterministic_proportional_steaming_division**: Performs a percentage-based match.
         self.operator = operator
-        # This parameter is not returned for Dubbo services.
+        # Not used in Dubbo services.
         self.type = type
-        # The value of the parameter. This value is compared with the value that is obtained based on the **expr** and **index** parameters.
+        # The value to match. This value is compared with the actual value retrieved by using the specified **expr** and **index**.
         self.value = value
 
     def validate(self):
@@ -561,12 +582,13 @@ class DescribeGreyTagRouteResponseBodyDataAlbRules(DaraModel):
         items: List[main_models.DescribeGreyTagRouteResponseBodyDataAlbRulesItems] = None,
         service_id: str = None,
     ):
-        # The condition mode of the canary release rule. Valid value: AND. This value indicates that that all conditions must be met.
+        # The relationship between the conditions in the canary rule. Only **AND** is supported, which indicates that all conditions must be met.
         self.condition = condition
-        # The ID of the gateway routing rule.
+        # The ID of the Ingress.
         self.ingress_id = ingress_id
+        # The list of conditions.
         self.items = items
-        # The service ID.
+        # The routing service ID.
         self.service_id = service_id
 
     def validate(self):
@@ -626,23 +648,25 @@ class DescribeGreyTagRouteResponseBodyDataAlbRulesItems(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # Valid value: ==.
+        # Currently supports ==.
         self.cond = cond
-        # This parameter is not returned for applications that are associated with ALB instances.
+        # Not required for ALB applications.
         self.expr = expr
-        # This parameter is not returned for applications that are associated with Application Load Balancer (ALB) instances.
+        # Not required for ALB applications.
         self.index = index
-        # The name of the parameter.
+        # The name of the element to match, such as a header or cookie name. This parameter is not used if type is set to sourceIp.
         self.name = name
-        # The operator. Valid value: **rawvalue**. This value indicates direct comparison.
+        # The matching operator. Only **rawvalue** is supported, which indicates a direct comparison.
         self.operator = operator
-        # The type of the comparison. Valid values:
+        # The type of request element to match against. Valid values:
         # 
-        # *   **sourceIp**: SourceIp
-        # *   **cookie**: cookie
-        # *   **header**: header
+        # - **sourceIp**: The source IP address.
+        # 
+        # - **cookie**: A cookie.
+        # 
+        # - **header**: A request header.
         self.type = type
-        # The value of the parameter. This value is compared with the value that is obtained based on the type and name parameters.
+        # The value to match. This value is compared with the actual value of the element specified by **type** and **name**.
         self.value = value
 
     def validate(self):

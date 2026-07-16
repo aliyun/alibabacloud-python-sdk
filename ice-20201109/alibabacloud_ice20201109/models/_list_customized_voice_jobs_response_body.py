@@ -115,13 +115,15 @@ class ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList(DaraModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
-        # *   The time when the job was created.
-        # *   The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # - The time when the job was created.
+        # 
+        # - The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The gender. Valid values:
         # 
-        # *   female
-        # *   male
+        # - female
+        # 
+        # - male
         self.gender = gender
         # The time when the job was created.
         self.gmt_create = gmt_create
@@ -131,33 +133,41 @@ class ListCustomizedVoiceJobsResponseBodyDataCustomizedVoiceJobList(DaraModel):
         self.message = message
         # The scenario. Valid values:
         # 
-        # *   story
-        # *   interaction
-        # *   navigation
+        # - story
+        # 
+        # - interaction
+        # 
+        # - navigation
         self.scenario = scenario
         # The job state. Valid values:
         # 
-        # *   Initialization
-        # *   AudioDetecting
-        # *   PreTraining
-        # *   Training
-        # *   Success
-        # *   Fail
-        self.status = status
-        # *   The voice type. Valid values:
+        # - Initialization
         # 
-        #     *   Basic
-        #     *   Standard
+        # - AudioDetecting
+        # 
+        # - PreTraining
+        # 
+        # - Training
+        # 
+        # - Success
+        # 
+        # - Fail
+        self.status = status
+        # - The voice type. Valid values:
+        # 
+        #   - Basic
+        # 
+        #   - Standard
         self.type = type
         # The voice description.
         # 
-        # *   The description can be up to 256 characters in length.
+        # - The description can be up to 256 characters in length.
         self.voice_desc = voice_desc
         # The voice ID.
         self.voice_id = voice_id
         # The voice name.
         # 
-        # *   The name can be up to 32 characters in length.
+        # - The name can be up to 32 characters in length.
         self.voice_name = voice_name
 
     def validate(self):

@@ -14,8 +14,12 @@ class UpdateWabaMmlStatusRequest(DaraModel):
         resource_owner_id: int = None,
         waba_id: str = None,
     ):
+        # The Meta embedded authorization code.
+        # 
         # This parameter is required.
         self.code = code
+        # The space ID or instance ID of the ISV sub-customer, which is the channel ID. You can view it on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id

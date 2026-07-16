@@ -15,11 +15,15 @@ class ListTagResourcesShrinkRequest(DaraModel):
         self.resource_id_shrink = resource_id_shrink
         # The type of the resource. Valid values:
         # 
-        # *   project
-        # *   logstore
-        # *   dashboard
-        # *   machinegroup
-        # *   logtailconfig
+        # - project
+        # 
+        # - logstore
+        # 
+        # - dashboard
+        # 
+        # - machinegroup
+        # 
+        # - logtailconfig
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -23,26 +23,67 @@ class DescribeDBLogFilesRequest(DaraModel):
         simulate_status_list: str = None,
         start_time: str = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The ID of the node in the PolarDB cluster.
         self.dbnode_id = dbnode_id
+        # The mode to query simulation records. Valid values:
+        # 
+        # - **0**: Queries the simulation records of a logical instance. You can specify the simulation ID.
+        # 
+        # - **1**: Queries the simulation records of a physical instance based on a specified `SimulateListId`.
+        # 
+        # - **2**: Queries the records of the most recent simulation in progress.
         self.describe_simulate_switch_mode = describe_simulate_switch_mode
+        # The end of the time range to query. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.end_time = end_time
         # The log type. Valid values:
         # 
-        # *   **HaSwitchLogList**: failover logs.
+        # - **HaSwitchLogList**: A list of failover logs.
+        # 
+        # - **HaSwitchLogInfo**: Details of a failover log.
+        # 
+        # - **SimulateSwitchLogs**: Failover simulation logs.
         # 
         # This parameter is required.
         self.log_type = log_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0. The default value is **1**.
         self.page_number = page_number
+        # The page size. Valid values: 5 to 50. The default value is 10.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of a logical instance simulation record.
         self.simulate_list_id = simulate_list_id
+        # Filters the results by one or more simulation modes. Specify multiple modes as a comma-separated string. Valid values:
+        # 
+        # - **0**: Fault is injected into the primary availability zone.
+        # 
+        # - **1**: Fault is injected into the DB instance.
+        # 
+        # - **2**: Fault is injected into the disaster recovery data center.
         self.simulate_mode_list = simulate_mode_list
+        # Filters the results by one or more simulation statuses. Specify multiple statuses as a comma-separated string. Valid values:
+        # 
+        # - **0**: Waiting for scheduling
+        # 
+        # - **1**: Succeeded
+        # 
+        # - **2**: Running
+        # 
+        # - **3**: Failed
+        # 
+        # - **4**: Interrupted
+        # 
+        # - **5**: Waiting for switchback
+        # 
+        # - **6**: Canceled
         self.simulate_status_list = simulate_status_list
+        # The start of the time range to query. The time must be in UTC and formatted as `yyyy-MM-ddTHH:mm:ssZ`.
         self.start_time = start_time
 
     def validate(self):

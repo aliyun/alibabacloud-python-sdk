@@ -96,7 +96,10 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         binding_resource_id: str = None,
         binding_resource_type: str = None,
         bytes: float = None,
+        bytes_increase: float = None,
+        bytes_increase_ratio: float = None,
         bytes_rate: float = None,
+        cen_id: str = None,
         client_asn: str = None,
         client_city: str = None,
         client_country: str = None,
@@ -141,7 +144,10 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         self.binding_resource_id = binding_resource_id
         self.binding_resource_type = binding_resource_type
         self.bytes = bytes
+        self.bytes_increase = bytes_increase
+        self.bytes_increase_ratio = bytes_increase_ratio
         self.bytes_rate = bytes_rate
+        self.cen_id = cen_id
         self.client_asn = client_asn
         self.client_city = client_city
         self.client_country = client_country
@@ -200,8 +206,17 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         if self.bytes is not None:
             result['Bytes'] = self.bytes
 
+        if self.bytes_increase is not None:
+            result['BytesIncrease'] = self.bytes_increase
+
+        if self.bytes_increase_ratio is not None:
+            result['BytesIncreaseRatio'] = self.bytes_increase_ratio
+
         if self.bytes_rate is not None:
             result['BytesRate'] = self.bytes_rate
+
+        if self.cen_id is not None:
+            result['CenId'] = self.cen_id
 
         if self.client_asn is not None:
             result['ClientAsn'] = self.client_asn
@@ -336,8 +351,17 @@ class DescribeNisTrafficRankingResponseBodyFlowRankingList(DaraModel):
         if m.get('Bytes') is not None:
             self.bytes = m.get('Bytes')
 
+        if m.get('BytesIncrease') is not None:
+            self.bytes_increase = m.get('BytesIncrease')
+
+        if m.get('BytesIncreaseRatio') is not None:
+            self.bytes_increase_ratio = m.get('BytesIncreaseRatio')
+
         if m.get('BytesRate') is not None:
             self.bytes_rate = m.get('BytesRate')
+
+        if m.get('CenId') is not None:
+            self.cen_id = m.get('CenId')
 
         if m.get('ClientAsn') is not None:
             self.client_asn = m.get('ClientAsn')

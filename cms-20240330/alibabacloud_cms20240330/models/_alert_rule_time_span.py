@@ -14,13 +14,13 @@ class AlertRuleTimeSpan(DaraModel):
         gmt_offset: str = None,
         start_time: str = None,
     ):
-        # Day of the week.
+        # The days of the week.
         self.day_of_week = day_of_week
-        # End time, in HH:mm format.
+        # The end time. The format is HH:mm.
         self.end_time = end_time
-        # Default time zone is Beijing Time: +0800.
+        # The default value is +0800 (UTC+8).
         self.gmt_offset = gmt_offset
-        # Start time, in HH:mm format.
+        # The start time. The format is HH:mm.
         self.start_time = start_time
 
     def validate(self):

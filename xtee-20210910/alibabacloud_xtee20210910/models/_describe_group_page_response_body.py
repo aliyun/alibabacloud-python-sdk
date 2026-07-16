@@ -17,17 +17,17 @@ class DescribeGroupPageResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object.
+        # The returned object.
         self.result_object = result_object
-        # Total number of items.
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,21 +100,21 @@ class DescribeGroupPageResponseBodyResultObject(DaraModel):
         task_id: int = None,
         user_id: str = None,
     ):
-        # Community number.
+        # The community number.
         self.community_no = community_no
-        # Creation time.
+        # The creation time.
         self.create_time = create_time
-        # Group risk concentration.
+        # The risk concentration.
         self.group_risk = group_risk
-        # Group scale.
+        # The community scale.
         self.group_scale = group_scale
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Scene name.
+        # The scenario name.
         self.scene_name = scene_name
-        # Task ID.
+        # The task ID.
         self.task_id = task_id
-        # User UID.
+        # The user UID.
         self.user_id = user_id
 
     def validate(self):

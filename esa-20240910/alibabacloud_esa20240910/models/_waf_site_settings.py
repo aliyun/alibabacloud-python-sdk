@@ -19,16 +19,24 @@ class WafSiteSettings(DaraModel):
         request_body_inspection: main_models.WafSiteSettingsRequestBodyInspection = None,
         security_level: main_models.WafSiteSettingsSecurityLevel = None,
     ):
-        # Adds a bot protection header.
+        # The bot protection headers.
         self.add_bot_protection_headers = add_bot_protection_headers
-        # Adds security request header.
+        # The security headers.
         self.add_security_headers = add_security_headers
+        # The bandwidth abuse protection.
         self.bandwidth_abuse_protection = bandwidth_abuse_protection
-        # Bot management.
+        # The bot management.
         self.bot_management = bot_management
-        # Identifies the IP address of the client.
+        # The client IP identification.
         self.client_ip_identifier = client_ip_identifier
+        # The configuration for disabling the security module.
         self.disable_security_module = disable_security_module
+        # The request body inspection configuration. Controls the deep packet inspection behavior of WAF for HTTP request bodies. After this feature is enabled, content-based matching rules such as SQL injection and XSS detection take effect on request bodies.
+        # 
+        # This structure can contain the following fields:
+        # - Id: The unique identifier of the built-in inspection rule.
+        # - SizeLimit: The maximum size of the request body to inspect.
+        # - Action: The action to take when the request body exceeds the size limit.
         self.request_body_inspection = request_body_inspection
         # The security level.
         self.security_level = security_level
@@ -124,15 +132,6 @@ class WafSiteSettingsSecurityLevel(DaraModel):
         value: str = None,
     ):
         # The security level value.
-        # 
-        # Enumerated values:
-        # 
-        # *   high: high.
-        # *   low: low.
-        # *   under_attack: I am under attack.
-        # *   medium: medium.
-        # *   essentially_off: essentially off.
-        # *   off: completely off.
         self.value = value
 
     def validate(self):
@@ -162,8 +161,21 @@ class WafSiteSettingsRequestBodyInspection(DaraModel):
         id: int = None,
         size_limit: str = None,
     ):
+        # The action to take when the request body size exceeds SizeLimit.
+        # 
+        # Common valid values (the complete list is determined by the server-side configuration):
+        # - allow: allows the request without performing deep packet inspection on the portion that exceeds the limit.
+        # 
+        # > The complete enumeration is determined by the WAF server-side configuration.
         self.action = action
+        # The request body inspection rule ID, which is the unique identifier of the built-in rule. When request body inspection is enabled, the server uses this ID to associate the matching logic of the built-in inspection rule. The valid values are based on the built-in rule list of WAF.
         self.id = id
+        # The maximum size of the request body to inspect, in bytes.
+        # 
+        # - If the request body is less than or equal to this value, the entire content is subject to WAF matching.
+        # - If the request body exceeds this value, the action specified in the Action field is taken, such as inspecting only the first N bytes, rejecting the request, or allowing the request.
+        # 
+        # > The valid value range and default value are determined by the WAF server-side configuration.
         self.size_limit = size_limit
 
     def validate(self):
@@ -203,6 +215,7 @@ class WafSiteSettingsDisableSecurityModule(DaraModel):
         self,
         status: str = None,
     ):
+        # The status switch for disabling the security module.
         self.status = status
 
     def validate(self):
@@ -231,14 +244,9 @@ class WafSiteSettingsClientIpIdentifier(DaraModel):
         headers: List[str] = None,
         mode: str = None,
     ):
-        # Specify headers.
+        # The specified headers.
         self.headers = headers
-        # Identifies the mode.
-        # 
-        # Enumerated values:
-        # 
-        # *   headers: specifies the headers.
-        # *   connection_ip: the IP address for establishing a connection.
+        # The identification mode.
         self.mode = mode
 
     def validate(self):
@@ -276,15 +284,15 @@ class WafSiteSettingsBotManagement(DaraModel):
         likely_bots: main_models.WafSiteSettingsBotManagementLikelyBots = None,
         verified_bots: main_models.WafSiteSettingsBotManagementVerifiedBots = None,
     ):
-        # Definite Bots
+        # The definite bots.
         self.definite_bots = definite_bots
-        # Takes effect on static resource requests.
+        # Specifies whether the rule applies to static resource requests.
         self.effect_on_static = effect_on_static
-        # JavaScript detection.
+        # The JavaScript detection.
         self.jsdetection = jsdetection
-        # Likely Bots
+        # The likely bots.
         self.likely_bots = likely_bots
-        # Verified Bots
+        # The verified bots.
         self.verified_bots = verified_bots
 
     def validate(self):
@@ -351,7 +359,7 @@ class WafSiteSettingsBotManagementVerifiedBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
+        # The action.
         self.action = action
         # The rule ID.
         self.id = id
@@ -388,7 +396,7 @@ class WafSiteSettingsBotManagementLikelyBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
+        # The action.
         self.action = action
         # The rule ID.
         self.id = id
@@ -424,7 +432,7 @@ class WafSiteSettingsBotManagementJSDetection(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
+        # The switch.
         self.enable = enable
 
     def validate(self):
@@ -452,7 +460,7 @@ class WafSiteSettingsBotManagementEffectOnStatic(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
+        # The switch.
         self.enable = enable
 
     def validate(self):
@@ -481,7 +489,7 @@ class WafSiteSettingsBotManagementDefiniteBots(DaraModel):
         action: str = None,
         id: int = None,
     ):
-        # The action that you want to perform on requests that match the rule.
+        # The action.
         self.action = action
         # The rule ID.
         self.id = id
@@ -519,8 +527,11 @@ class WafSiteSettingsBandwidthAbuseProtection(DaraModel):
         id: int = None,
         status: str = None,
     ):
+        # The action of the bandwidth abuse protection rule.
         self.action = action
+        # The ID of the bandwidth abuse protection rule.
         self.id = id
+        # The status of the bandwidth abuse protection rule.
         self.status = status
 
     def validate(self):
@@ -560,7 +571,7 @@ class WafSiteSettingsAddSecurityHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
+        # The switch.
         self.enable = enable
 
     def validate(self):
@@ -588,7 +599,7 @@ class WafSiteSettingsAddBotProtectionHeaders(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Indicates whether the parameter is enabled.
+        # The switch.
         self.enable = enable
 
     def validate(self):

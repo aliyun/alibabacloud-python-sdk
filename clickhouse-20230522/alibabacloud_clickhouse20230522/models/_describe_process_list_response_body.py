@@ -13,7 +13,7 @@ class DescribeProcessListResponseBody(DaraModel):
         data: main_models.DescribeProcessListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The data object.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class DescribeProcessListResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The cluster name.
         self.dbinstance_name = dbinstance_name
-        # The result sets.
+        # The result set.
         self.result_set = result_set
-        # The total number of entries returned.
+        # The total number of entries that match the filter criteria.
         self.total_count = total_count
 
     def validate(self):
@@ -119,17 +119,17 @@ class DescribeProcessListResponseBodyDataResultSet(DaraModel):
         query_duration_ms: int = None,
         query_start_time: str = None,
     ):
-        # The address to which the query statement is sent.
+        # The address from which the query was initiated.
         self.initial_address = initial_address
         # The query ID.
         self.initial_query_id = initial_query_id
-        # The user who executes the query statement.
+        # The user who initiated the query.
         self.initial_user = initial_user
-        # The query statement that is running.
+        # The query statement.
         self.query = query
-        # The minimum query duration. Minimum value: **1000**. Unit: milliseconds.
+        # The execution duration of the query, in milliseconds (ms).
         self.query_duration_ms = query_duration_ms
-        # The beginning of the time range to query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the query. The time is in UTC and follows the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.query_start_time = query_start_time
 
     def validate(self):

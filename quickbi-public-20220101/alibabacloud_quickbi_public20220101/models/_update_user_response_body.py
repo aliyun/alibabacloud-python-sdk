@@ -11,17 +11,19 @@ class UpdateUserResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The execution result of the interface is returned. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request fails.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.result = result
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

@@ -10,8 +10,9 @@ class DeleteLgfResponseBody(DaraModel):
         lgf_id: int = None,
         request_id: str = None,
     ):
-        # LGF ID
+        # The ID of the LGF configuration.
         self.lgf_id = lgf_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

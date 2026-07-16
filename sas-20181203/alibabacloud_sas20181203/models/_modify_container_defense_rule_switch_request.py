@@ -12,12 +12,12 @@ class ModifyContainerDefenseRuleSwitchRequest(DaraModel):
         rule_ids: List[int] = None,
         rule_switch: int = None,
     ):
-        # The IDs of the rules.
+        # The IDs of the rules that you want to modify.
         self.rule_ids = rule_ids
-        # The status of the rule. Valid values:
+        # The switch status of the rule. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: enabled.
+        # - **0**: disabled.
         self.rule_switch = rule_switch
 
     def validate(self):

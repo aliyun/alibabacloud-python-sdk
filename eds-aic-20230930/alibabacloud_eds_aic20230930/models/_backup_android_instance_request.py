@@ -15,12 +15,20 @@ class BackupAndroidInstanceRequest(DaraModel):
         description: str = None,
         upload_endpoint: str = None,
     ):
+        # A list of instance IDs.
+        # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        # The name of the backup file.
         self.backup_file_name = backup_file_name
+        # The upload URL for the backup file.
+        # 
         # This parameter is required.
         self.backup_file_path = backup_file_path
+        # The description of the full instance backup.
         self.description = description
+        # The region where the backup is stored.
+        # 
         # This parameter is required.
         self.upload_endpoint = upload_endpoint
 

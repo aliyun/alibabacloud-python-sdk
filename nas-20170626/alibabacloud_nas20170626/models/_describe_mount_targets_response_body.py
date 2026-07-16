@@ -17,9 +17,9 @@ class DescribeMountTargetsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.mount_targets = mount_targets
-        # The page number.
+        # The page number of the file system list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of mount targets on each page when paging is used.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

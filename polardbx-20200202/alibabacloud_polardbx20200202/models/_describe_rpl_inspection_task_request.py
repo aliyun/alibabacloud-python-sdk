@@ -14,12 +14,19 @@ class DescribeRplInspectionTaskRequest(DaraModel):
         success_page_number: int = None,
         success_page_size: int = None,
     ):
+        # The current page number.
         self.fail_page_number = fail_page_number
+        # The number of records per page.
         self.fail_page_size = fail_page_size
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The switchover task ID.
         self.slink_task_id = slink_task_id
+        # The requested page number.
         self.success_page_number = success_page_number
+        # The number of records per page.
         self.success_page_size = success_page_size
 
     def validate(self):

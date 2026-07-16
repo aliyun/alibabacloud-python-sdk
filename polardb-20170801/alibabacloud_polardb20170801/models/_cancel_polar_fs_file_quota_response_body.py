@@ -11,9 +11,11 @@ class CancelPolarFsFileQuotaResponseBody(DaraModel):
         polar_fs_instance_id: str = None,
         request_id: str = None,
     ):
+        # The file paths for which the quotas were deleted. Multiple paths are separated by a comma (`,`).
         self.file_path_ids = file_path_ids
+        # The ID of the Polarlakebase instance.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -25,39 +25,32 @@ class ListAppInstanceGroupRequest(DaraModel):
         tag: List[main_models.ListAppInstanceGroupRequestTag] = None,
         user_group_ids: List[str] = None,
     ):
-        # The image ID of the app. You can obtain the ID from the Images page in the App Streaming console.
+        # The application image ID. You can obtain this value from the Image Management page in the WUYING Cloud Application console.
         self.app_center_image_id = app_center_image_id
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery groups to query. Fuzzy match is used for queries. For example, if you set this parameter to `Office App`, all delivery groups whose names contain `Office App` are queried, such as `My Office Apps` and `Office App A`.
+        # The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `Office App`, all delivery groups whose names contain `Office App` are returned, such as `My Office App` and `Office App A`.
         self.app_instance_group_name = app_instance_group_name
-        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-        # 
-        # Valid values:
-        # 
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-hangzhou: China (Hangzhou)
+        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
         self.excluded_user_group_ids = excluded_user_group_ids
-        # The ID of the resource specification that you purchase. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain the ID.
+        # The specification type ID of the purchased resources. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
         self.node_instance_type = node_instance_type
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The page number.
+        # The page number of the query results to display.
         self.page_number = page_number
-        # The number of entries per page. The value cannot be greater than `100`.
+        # The number of query results per page. Maximum value: `100`.
         self.page_size = page_size
         # The product type.
         # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
-        # 
         # This parameter is required.
         self.product_type = product_type
-        # The region ID
+        # The region ID.
         self.region_id = region_id
-        # The status of the delivery groups.
+        # The list of delivery group statuses.
         self.status = status
+        # The tags.
         self.tag = tag
         self.user_group_ids = user_group_ids
 
@@ -173,7 +166,9 @@ class ListAppInstanceGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

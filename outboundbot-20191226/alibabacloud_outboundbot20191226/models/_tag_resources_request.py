@@ -15,12 +15,22 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
+        # This parameter is deprecated.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # A list of resource IDs. The value of n can be from 1 to 50.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of tags. If the key and value of a tag are different from existing tags, a new tag is created.
+        # 
+        # > Use the ListResourceTags operation to get the list of tags for an instance.
+        # 
         # This parameter is required.
         self.tag = tag
 
@@ -76,7 +86,9 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. The value of n can be from 1 to 20.
         self.key = key
+        # The value of the tag. The value can contain 1 to 20 characters.
         self.value = value
 
     def validate(self):

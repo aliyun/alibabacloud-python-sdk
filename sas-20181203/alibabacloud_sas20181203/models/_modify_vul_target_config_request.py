@@ -12,25 +12,25 @@ class ModifyVulTargetConfigRequest(DaraModel):
         type: str = None,
         uuid: str = None,
     ):
-        # Specifies whether to enable vulnerability detection. Valid values:
+        # Specifies whether to enable or disable vulnerability detection. Valid values:
         # 
-        # *   **on**: yes
-        # *   **off**: no
+        # - **on**: Enable vulnerability detection.
+        # - **off**: Disable vulnerability detection.
         # 
         # This parameter is required.
         self.config = config
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The type of the vulnerability. Valid values:
+        # The type of vulnerability detection to configure. Valid values:
         # 
-        # *   **cve**: Linux software vulnerability
-        # *   **sys**: Windows system vulnerability
-        # *   **cms**: Web-CMS vulnerability
-        # *   **emg**: urgent vulnerability
+        # - **cve**: Linux software vulnerability
+        # - **sys**: Windows system vulnerability
+        # - **cms**: Web-CMS vulnerability
+        # - **emg**: urgent vulnerability.
         # 
         # This parameter is required.
         self.type = type
-        # The UUID of the server.
+        # The UUID of the server to configure.
         # 
         # This parameter is required.
         self.uuid = uuid

@@ -15,12 +15,20 @@ class CreateDataPermissionsRequest(DaraModel):
         permission_user_infos: List[main_models.CreateDataPermissionsRequestPermissionUserInfos] = None,
         workspace_id: str = None,
     ):
+        # A unique identifier for the permission.
+        # 
         # This parameter is required.
         self.data_id = data_id
+        # The permission type. Currently, only \\`dataset\\` is supported.
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # The users to whom you want to assign permissions.
+        # 
         # This parameter is required.
         self.permission_user_infos = permission_user_infos
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -76,8 +84,15 @@ class CreateDataPermissionsRequestPermissionUserInfos(DaraModel):
         permission_user_id: str = None,
         permission_username: str = None,
     ):
+        # The user ID.
+        # 
+        # - For a RAM user: The ID of the RAM user.
+        # 
+        # - For a role user: The user identity in the format AssumedRoleUser${roleId}.
+        # 
         # This parameter is required.
         self.permission_user_id = permission_user_id
+        # The username.
         self.permission_username = permission_username
 
     def validate(self):

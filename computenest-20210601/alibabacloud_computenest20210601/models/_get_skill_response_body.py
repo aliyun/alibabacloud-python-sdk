@@ -1,0 +1,167 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_computenest20210601 import models as main_models
+from darabonba.model import DaraModel
+
+class GetSkillResponseBody(DaraModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        locales: List[main_models.GetSkillResponseBodyLocales] = None,
+        request_id: str = None,
+        skill_description: str = None,
+        skill_display_name: str = None,
+        skill_id: str = None,
+        skill_labels: List[str] = None,
+        skill_name: str = None,
+        skill_space_id: str = None,
+        update_time: str = None,
+    ):
+        # The time when the Skill was created.
+        self.create_time = create_time
+        self.locales = locales
+        # Id of the request
+        self.request_id = request_id
+        # The Skill description.
+        self.skill_description = skill_description
+        self.skill_display_name = skill_display_name
+        # Skill ID
+        self.skill_id = skill_id
+        # The Skill labels.
+        self.skill_labels = skill_labels
+        # The Skill name.
+        self.skill_name = skill_name
+        # The ID of the SkillSpace to which the Skill belongs.
+        self.skill_space_id = skill_space_id
+        # The time when the Skill was last updated.
+        self.update_time = update_time
+
+    def validate(self):
+        if self.locales:
+            for v1 in self.locales:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
+        result['Locales'] = []
+        if self.locales is not None:
+            for k1 in self.locales:
+                result['Locales'].append(k1.to_map() if k1 else None)
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.skill_description is not None:
+            result['SkillDescription'] = self.skill_description
+
+        if self.skill_display_name is not None:
+            result['SkillDisplayName'] = self.skill_display_name
+
+        if self.skill_id is not None:
+            result['SkillId'] = self.skill_id
+
+        if self.skill_labels is not None:
+            result['SkillLabels'] = self.skill_labels
+
+        if self.skill_name is not None:
+            result['SkillName'] = self.skill_name
+
+        if self.skill_space_id is not None:
+            result['SkillSpaceId'] = self.skill_space_id
+
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
+        self.locales = []
+        if m.get('Locales') is not None:
+            for k1 in m.get('Locales'):
+                temp_model = main_models.GetSkillResponseBodyLocales()
+                self.locales.append(temp_model.from_map(k1))
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('SkillDescription') is not None:
+            self.skill_description = m.get('SkillDescription')
+
+        if m.get('SkillDisplayName') is not None:
+            self.skill_display_name = m.get('SkillDisplayName')
+
+        if m.get('SkillId') is not None:
+            self.skill_id = m.get('SkillId')
+
+        if m.get('SkillLabels') is not None:
+            self.skill_labels = m.get('SkillLabels')
+
+        if m.get('SkillName') is not None:
+            self.skill_name = m.get('SkillName')
+
+        if m.get('SkillSpaceId') is not None:
+            self.skill_space_id = m.get('SkillSpaceId')
+
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+
+        return self
+
+class GetSkillResponseBodyLocales(DaraModel):
+    def __init__(
+        self,
+        en_value: str = None,
+        original_value: str = None,
+        zh_value: str = None,
+    ):
+        self.en_value = en_value
+        self.original_value = original_value
+        self.zh_value = zh_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.en_value is not None:
+            result['EnValue'] = self.en_value
+
+        if self.original_value is not None:
+            result['OriginalValue'] = self.original_value
+
+        if self.zh_value is not None:
+            result['ZhValue'] = self.zh_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnValue') is not None:
+            self.en_value = m.get('EnValue')
+
+        if m.get('OriginalValue') is not None:
+            self.original_value = m.get('OriginalValue')
+
+        if m.get('ZhValue') is not None:
+            self.zh_value = m.get('ZhValue')
+
+        return self
+

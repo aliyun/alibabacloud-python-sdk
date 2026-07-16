@@ -21,25 +21,25 @@ class QueryFaceRecordResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Return code.
+        # The response code.
         self.code = code
-        # Current query page number.
+        # The current page number.
         self.current_page = current_page
-        # List of returned information.
+        # The list of returned records.
         self.items = items
-        # Maximum number of data entries per page.
+        # The maximum number of entries per page.
         self.max_results = max_results
-        # Return message.
+        # The response message.
         self.message = message
-        # Token for the next query start.
+        # The token for the next query.
         self.next_token = next_token
-        # Number of items per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -134,17 +134,17 @@ class QueryFaceRecordResponseBodyItems(DaraModel):
         merchant_user_id: str = None,
         registration_type: str = None,
     ):
-        # Face ID.
+        # The face ID.
         self.face_id = face_id
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Primary key ID.
+        # The primary key ID.
         self.id = id
-        # Face image URL.
+        # The URL of the face image.
         self.img_oss_url = img_oss_url
-        # Merchant User ID.
+        # The merchant user ID.
         self.merchant_user_id = merchant_user_id
-        # Registration type.
+        # The registration type.
         self.registration_type = registration_type
 
     def validate(self):

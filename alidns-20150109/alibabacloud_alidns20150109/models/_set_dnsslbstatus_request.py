@@ -17,25 +17,27 @@ class SetDNSSLBStatusRequest(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The language of the content within the request and response. Default: **zh**. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The DNS resolution line. The line can be the default line, China Telecom, and China Mobile.
+        # The DNS resolution line, such as default, telecom, or mobile.
         self.line = line
-        # Specifies whether to enable or disable weighted round-robin. Valid values:
+        # Specifies whether to enable the weight configuration. Valid values:
         # 
-        # *   **true** (default): enables weighted round-robin.
-        # *   **false**: disables weighted round-robin.
+        # - **true** (default): Enable
+        # 
+        # - **false**: Disable
         self.open = open
-        # The subdomain name for which you want to enable weighted round-robin. Set the parameter to @.example.com instead of example.com.
+        # The subdomain for which to configure weights. A primary domain name, such as example.com, is not valid. Use @.example.com instead.
         # 
         # This parameter is required.
         self.sub_domain = sub_domain
-        # The type of the Domain Name System (DNS) record. Valid values: A and AAAA. Default value: A.
+        # The type of the DNS record. Valid values: A and AAAA. Default value: A.
         self.type = type
-        # The IP address of the client.
+        # The IP address of the user.
         self.user_client_ip = user_client_ip
 
     def validate(self):

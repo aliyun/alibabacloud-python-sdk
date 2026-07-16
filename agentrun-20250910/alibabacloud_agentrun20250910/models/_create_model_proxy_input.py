@@ -24,34 +24,49 @@ class CreateModelProxyInput(DaraModel):
         service_region_id: str = None,
         workspace_id: str = None,
     ):
+        # Specifies the configuration for Application Real-Time Monitoring Service (ARMS).
         self.arms_configuration = arms_configuration
+        # The number of CPU cores for the proxy.
+        # 
         # This parameter is required.
         self.cpu = cpu
-        # credentialName
+        # The name of the credential for accessing the model service.
         self.credential_name = credential_name
+        # Optional. A custom description for the model proxy.
         self.description = description
+        # The ARN of the execution role the service assumes to act on your behalf.
         self.execution_role_arn = execution_role_arn
-        # litellmVersion
+        # The version of LiteLLM for the proxy.
         self.litellm_version = litellm_version
+        # The Log Service (SLS) configuration for the Agent runtime.
         self.log_configuration = log_configuration
+        # The memory size for the proxy, in GiB.
+        # 
         # This parameter is required.
         self.memory = memory
-        # modelProxyName
+        # The unique name for the model proxy.
         # 
         # This parameter is required.
         self.model_proxy_name = model_proxy_name
+        # The model type. Valid values:
+        # 
+        # - `system`: Specifies a system model.
+        # 
+        # - `deployment`: Specifies a custom deployment model.
         self.model_type = model_type
+        # Specifies the network configuration for the proxy.
         self.network_configuration = network_configuration
-        # ProxyConfig
+        # The configuration settings for the proxy.
         # 
         # This parameter is required.
         self.proxy_config = proxy_config
-        # proxyMode
+        # Specifies the operational mode of the proxy.
         # 
         # This parameter is required.
         self.proxy_mode = proxy_mode
-        # serviceRegionId
+        # The ID of the region for the model service.
         self.service_region_id = service_region_id
+        # The ID of the workspace that contains the model proxy.
         self.workspace_id = workspace_id
 
     def validate(self):

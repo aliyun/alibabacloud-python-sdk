@@ -10,7 +10,9 @@ class DescribeFileUploadSignatureRequest(DaraModel):
         call_from: str = None,
         dms_unit: str = None,
     ):
+        # Used by the frontend only
         self.call_from = call_from
+        # Current DMS unit
         self.dms_unit = dms_unit
 
     def validate(self):

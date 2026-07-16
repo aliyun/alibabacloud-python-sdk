@@ -18,12 +18,33 @@ class SaveAnnotationMissionSessionListRequest(DaraModel):
         environment: int = None,
         user_nick: str = None,
     ):
+        # The agent ID.
+        # 
+        # > Obtain this by calling the DescribeInstance operation.
         self.agent_id = agent_id
+        # The key of the workspace. If you do not specify this parameter, the default workspace is accessed. Obtain the key on the Business Management page of your Alibaba Cloud account.
+        # 
+        # > Obtain this by calling the DescribeInstance operation.
         self.agent_key = agent_key
+        # The source of the annotation data. Valid values: 1: Outbound call. 2: Navigation.
         self.annotation_mission_data_source_type = annotation_mission_data_source_type
+        # The list of sessions.
+        # 
+        # > This parameter has the same function as AnnotationMissionSessionListJsonString. Specify either of them.
         self.annotation_mission_session_list = annotation_mission_session_list
+        # The list of sessions in JSON format.
+        # 
+        # > This parameter has the same function as the AnnotationMissionSessionList parameter. You can specify either of them. The JSON field is a parameter of AnnotationMissionSessionList.
         self.annotation_mission_session_list_json_string = annotation_mission_session_list_json_string
+        # The environment.
+        # 
+        # - 0: NONE
+        # 
+        # - 1: Private cloud
+        # 
+        # - 2: Public cloud
         self.environment = environment
+        # The user\\"s nickname.
         self.user_nick = user_nick
 
     def validate(self):
@@ -105,16 +126,35 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionList(DaraMo
         script_id: str = None,
         session_id: str = None,
     ):
+        # The list of chats.
         self.annotation_mission_chat_list = annotation_mission_chat_list
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
+        # The annotation status.
+        # 
+        # - 0: UNDO
+        # 
+        # - 1: DOING
+        # 
+        # - 2: DONE
+        # 
+        # - 3: CLOSED
         self.annotation_status = annotation_status
+        # The time when the session was created.
         self.create_time = create_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The task group ID.
         self.job_group_id = job_group_id
+        # The task ID.
         self.job_id = job_id
+        # The time when the session was last modified.
         self.modified_time = modified_time
+        # The scenario ID.
         self.script_id = script_id
+        # For an outbound call, this is the task ID. For navigation, this is the conversation ID.
         self.session_id = session_id
 
     def validate(self):
@@ -230,27 +270,83 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotat
         tag_annotation_status: int = None,
         translation_error: int = None,
     ):
+        # The result of manual ASR annotation. This is used to calculate the character accuracy rate.
         self.annotation_asr_result = annotation_asr_result
+        # The language model annotation information for the annotation task chat.
         self.annotation_mission_chat_customization_data_info_list = annotation_mission_chat_customization_data_info_list
-        # chat id
+        # The chat ID.
         self.annotation_mission_chat_id = annotation_mission_chat_id
+        # The list.
         self.annotation_mission_chat_intent_user_say_info_list = annotation_mission_chat_intent_user_say_info_list
+        # The list of mappings between annotation information chats and attached tags.
         self.annotation_mission_chat_tag_info_list = annotation_mission_chat_tag_info_list
+        # The hotword annotation information for the annotation task chat.
         self.annotation_mission_chat_vocabulary_info_list = annotation_mission_chat_vocabulary_info_list
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
+        # The annotation status.
+        # 
+        # - 0: UNDO
+        # 
+        # - 1: DOING
+        # 
+        # - 2: DONE
+        # 
+        # - 3: CLOSED
         self.annotation_status = annotation_status
+        # The content of the robot\\"s response.
         self.answer = answer
+        # The Automatic Speech Recognition (ASR) annotation status.
+        # 
+        # - 0: UNDO
+        # 
+        # - 1: DOING
+        # 
+        # - 2: DONE
+        # 
+        # - 3: CLOSED
         self.asr_annotation_status = asr_annotation_status
+        # The time when the chat was created.
         self.create_time = create_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The semantic tagging status.
+        # 
+        # - 0: UNDO
+        # 
+        # - 1: DOING
+        # 
+        # - 2: DONE
+        # 
+        # - 3: CLOSED
         self.intent_annotation_status = intent_annotation_status
+        # The time when the chat was last modified.
         self.modified_time = modified_time
+        # The time when the chat was triggered.
         self.occur_time = occur_time
+        # The ASR result.
         self.original_asr_result = original_asr_result
+        # The serial number of the current session interaction.
         self.sequence_id = sequence_id
+        # The annotation action. Valid values: 1: Correct. 20: Matching error (not optimized). 21: Matching error (optimized). 3: Not covered. 4: Invalid.
         self.sub_status = sub_status
+        # The tag annotation status.
+        # 
+        # - 0: UNDO
+        # 
+        # - 1: DOING
+        # 
+        # - 2: DONE
+        # 
+        # - 3: CLOSED
         self.tag_annotation_status = tag_annotation_status
+        # The transcription error flag.
+        # 
+        # - 0: No
+        # 
+        # - 1: Yes
         self.translation_error = translation_error
 
     def validate(self):
@@ -446,21 +542,33 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotat
         vocabulary_name: str = None,
         vocabulary_weight: int = None,
     ):
-        # chat id
+        # The chat ID.
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # id
+        # The ID.
         self.annotation_mission_chat_vocabulary_info_id = annotation_mission_chat_vocabulary_info_id
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
+        # Create
         self.create = create
+        # The time when the item was created.
         self.create_time = create_time
+        # Delete
         self.delete = delete
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the item was last modified.
         self.modified_time = modified_time
+        # The content of the hotword annotation.
         self.vocabulary = vocabulary
+        # The description.
         self.vocabulary_description = vocabulary_description
+        # The hotword ID.
         self.vocabulary_id = vocabulary_id
+        # The name of the processing scenario.
         self.vocabulary_name = vocabulary_name
+        # The weight of the hotword. The value ranges from -6 to 5.
         self.vocabulary_weight = vocabulary_weight
 
     def validate(self):
@@ -576,19 +684,27 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotat
         instance_id: str = None,
         modified_time: int = None,
     ):
-        # chat id
+        # The chat ID.
         self.annotation_mission_chat_id = annotation_mission_chat_id
-        # id
+        # The ID.
         self.annotation_mission_chat_tag_info_id = annotation_mission_chat_tag_info_id
+        # The task ID.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
-        # tag id
+        # The tag ID.
         self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        # The tag name.
         self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        # Create
         self.create = create
+        # End time of the annotation mission group.
         self.create_time = create_time
+        # Delete
         self.delete = delete
+        # The instance ID.
         self.instance_id = instance_id
+        # Modified time
         self.modified_time = modified_time
 
     def validate(self):
@@ -688,18 +804,31 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotat
         intent_id: int = None,
         modified_time: int = None,
     ):
+        # The chat ID.
         self.annotation_mission_chat_id = annotation_mission_chat_id
+        # The ID.
         self.annotation_mission_chat_intent_user_say_info_id = annotation_mission_chat_intent_user_say_info_id
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
+        # The bot ID.
         self.bot_id = bot_id
+        # The content.
         self.content = content
+        # Create
         self.create = create
+        # The time when the item was created.
         self.create_time = create_time
+        # Delete this item.
         self.delete = delete
+        # The dialog ID.
         self.dialog_id = dialog_id
+        # The instance ID.
         self.instance_id = instance_id
+        # The intent ID.
         self.intent_id = intent_id
+        # The time when the item was last modified.
         self.modified_time = modified_time
 
     def validate(self):
@@ -812,22 +941,33 @@ class SaveAnnotationMissionSessionListRequestAnnotationMissionSessionListAnnotat
         instance_id: str = None,
         modified_time: int = None,
     ):
-        # id
+        # The ID.
         self.annotation_mission_chat_customization_data_info_id = annotation_mission_chat_customization_data_info_id
-        # chat id
+        # The chat ID.
         self.annotation_mission_chat_id = annotation_mission_chat_id
+        # The ID of the annotation task.
         self.annotation_mission_id = annotation_mission_id
+        # The session ID.
         self.annotation_mission_session_id = annotation_mission_session_id
+        # The content.
         self.content = content
+        # Create
         self.create = create
+        # The time when the item was created.
         self.create_time = create_time
+        # The description.
         self.customization_data_description = customization_data_description
-        # id
+        # The ID.
         self.customization_data_id = customization_data_id
+        # The name.
         self.customization_data_name = customization_data_name
+        # The weight of the language model data.
         self.customization_data_weight = customization_data_weight
+        # Delete
         self.delete = delete
+        # The instance ID.
         self.instance_id = instance_id
+        # The time when the item was last modified.
         self.modified_time = modified_time
 
     def validate(self):

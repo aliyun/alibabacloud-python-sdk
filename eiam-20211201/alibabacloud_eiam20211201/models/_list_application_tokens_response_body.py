@@ -13,7 +13,9 @@ class ListApplicationTokensResponseBody(DaraModel):
         application_tokens: List[main_models.ListApplicationTokensResponseBodyApplicationTokens] = None,
         request_id: str = None,
     ):
+        # The application tokens.
         self.application_tokens = application_tokens
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,24 +69,25 @@ class ListApplicationTokensResponseBodyApplicationTokens(DaraModel):
     ):
         # aliUid。
         self.ali_uid = ali_uid
-        # 应用ID
+        # The application ID.
         self.application_id = application_id
-        # 应用token
+        # The application tokens.
         self.application_token = application_token
-        # 应用token ID
+        # The application token ID.
         self.application_token_id = application_token_id
-        # 应用token类型
+        # The application token type.
         self.application_token_type = application_token_type
+        # The creation time.
         self.create_time = create_time
-        # 应用token描述
+        # The application token description.
         self.description = description
-        # 到期时间
+        # The expiration time.
         self.expiration_time = expiration_time
-        # IDaaS EIAM 实例Id
+        # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
-        # 最后使用时间
+        # The last used time.
         self.last_used_time = last_used_time
-        # 应用状态
+        # The enabling status.
         self.status = status
 
     def validate(self):

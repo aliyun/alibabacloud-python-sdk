@@ -14,11 +14,11 @@ class ListVirusScanMachineResponseBody(DaraModel):
         page_info: main_models.ListVirusScanMachineResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The data details.
         self.data = data
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,11 +71,11 @@ class ListVirusScanMachineResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries returned per page in a paging query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -120,17 +120,17 @@ class ListVirusScanMachineResponseBodyData(DaraModel):
         intranet_ip: str = None,
         uuid: str = None,
     ):
-        # The number of times that the alert is triggered.
+        # The number of security alert occurrences.
         self.event_count = event_count
         # The instance ID of the server.
         self.instance_id = instance_id
-        # The name of the server.
+        # The instance name.
         self.instance_name = instance_name
-        # The public IP address of the associated server.
+        # The public IP address of the associated instance.
         self.internet_ip = internet_ip
-        # The private IP address of the associated server.
+        # The private IP address of the associated instance.
         self.intranet_ip = intranet_ip
-        # The UUID of the server.
+        # The UUID of the asset instance.
         self.uuid = uuid
 
     def validate(self):

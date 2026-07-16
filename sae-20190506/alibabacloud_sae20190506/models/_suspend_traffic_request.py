@@ -12,7 +12,7 @@ class SuspendTrafficRequest(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The instance ID.
+        # The IDs of the instances.
         self.instance_ids = instance_ids
 
     def validate(self):

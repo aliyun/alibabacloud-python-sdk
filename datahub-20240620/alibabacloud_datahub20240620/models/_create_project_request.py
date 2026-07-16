@@ -10,8 +10,12 @@ class CreateProjectRequest(DaraModel):
         comment: str = None,
         project_name: str = None,
     ):
+        # The description of the workspace.
+        # 
         # This parameter is required.
         self.comment = comment
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
 

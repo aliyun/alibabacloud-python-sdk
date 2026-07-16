@@ -21,45 +21,42 @@ class GetRoutineRouteResponseBody(DaraModel):
         site_version: int = None,
         timeout: str = None,
     ):
-        # Bypass mode. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The bypass mode. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.bypass = bypass
         # The configuration ID.
         self.config_id = config_id
-        # The configuration type to query. Valid values:
+        # The configuration type. You can use this parameter to query global or rule configurations. Valid values:
         # 
-        # *   global: global configurations.
-        # *   rule: queries rule configurations.
+        # - global: queries global configurations.
+        # - rule: queries rule configurations.
         self.config_type = config_type
-        # The exception origin fetch switch. After you turn on this switch, if a function exception occurs, such as CPU usage exceeding the upper limit, requests are sent back to the origin. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The back-to-origin on exception switch. When enabled, if the function encounters an exception such as CPU usage exceeding the limit, the request is forwarded to the origin. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.fallback = fallback
-        # The configuration mode. Valid values: Valid values:
-        # 
-        # *   simple
-        # *   custom
+        # The configuration mode. Valid values:
+        # - simple: simple mode.
+        # - custom: custom mode.
         self.mode = mode
         # The request ID.
         self.request_id = request_id
-        # The routing switch. Valid values:
-        # 
-        # *   on
-        # *   off
+        # The route switch. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.route_enable = route_enable
         # The route name.
         self.route_name = route_name
-        # The function name.
+        # The Edge Routine name.
         self.routine_name = routine_name
         # The rule content.
         self.rule = rule
-        # The order in which the rule is executed.
+        # The rule execution order.
         self.sequence = sequence
-        # The version number of the website.
+        # The version number of the site.
         self.site_version = site_version
+        # The Edge Routine timeout period. Valid values: 5 to 60. Unit: seconds.
         self.timeout = timeout
 
     def validate(self):

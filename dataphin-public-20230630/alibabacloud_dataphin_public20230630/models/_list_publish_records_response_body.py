@@ -17,11 +17,17 @@ class ListPublishRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. A value of OK indicates that the request was successful.
         self.code = code
+        # Backend response HTTP status code.
         self.http_status_code = http_status_code
+        # Query result.
         self.list_result = list_result
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListPublishRecordsResponseBodyListResult(DaraModel):
         data: List[main_models.ListPublishRecordsResponseBodyListResultData] = None,
         total_count: int = None,
     ):
+        # Publish record list.
         self.data = data
+        # Total count.
         self.total_count = total_count
 
     def validate(self):
@@ -139,21 +147,37 @@ class ListPublishRecordsResponseBodyListResultData(DaraModel):
         publisher: str = None,
         publisher_name: str = None,
     ):
+        # Change type. Valid values: 0: Create. 1: Update. 2: Delete.
         self.change_type = change_type
+        # Publish error message.
         self.error_message = error_message
+        # Publish completion time in the yyyy-MM-dd HH:mm:ss format.
         self.finish_time = finish_time
+        # Creation time in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
+        # Modification time in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_modify = gmt_modify
+        # Publish record ID, which is not the object ID and is globally unique in the publish list.
         self.id = id
+        # Node ID.
         self.node_id = node_id
+        # Object ID.
         self.object_id = object_id
+        # Object name.
         self.object_name = object_name
+        # Object type.
         self.object_type = object_type
+        # Object version.
         self.object_version = object_version
+        # Project ID.
         self.project_id = project_id
+        # Publish name.
         self.publish_name = publish_name
+        # Publish status. Valid values: 0: Failed. 1: Succeeded. 2: Publishing.
         self.publish_status = publish_status
+        # Publisher ID.
         self.publisher = publisher
+        # Publisher name.
         self.publisher_name = publisher_name
 
     def validate(self):

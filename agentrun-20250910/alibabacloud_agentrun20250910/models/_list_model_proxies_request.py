@@ -14,12 +14,17 @@ class ListModelProxiesRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
+        # The page number for pagination.
         self.page_number = page_number
+        # The number of entries per page. The default is 20.
         self.page_size = page_size
-        # proxyMode
+        # Specifies the proxy mode.
         self.proxy_mode = proxy_mode
+        # Filters the list by Model Proxy status.
         self.status = status
+        # The ID of the workspace.
         self.workspace_id = workspace_id
+        # A comma-separated list of workspace IDs to query.
         self.workspace_ids = workspace_ids
 
     def validate(self):

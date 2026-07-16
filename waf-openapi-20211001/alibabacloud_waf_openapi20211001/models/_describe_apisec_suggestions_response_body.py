@@ -13,7 +13,7 @@ class DescribeApisecSuggestionsResponseBody(DaraModel):
         data: List[main_models.DescribeApisecSuggestionsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The protection suggestions.
+        # The list of protection suggestions.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -61,33 +61,31 @@ class DescribeApisecSuggestionsResponseBodyData(DaraModel):
         suggest_rule: str = None,
         suggest_type: str = None,
     ):
-        # The API.
+        # The API operation.
         self.api_format = api_format
-        # The domain name or IP address of the API.
+        # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
-        # The rule ID of the protection suggestion.
+        # The ID of the protection suggestion.
         self.suggest_id = suggest_id
-        # The rule content of the protection suggestion. The value is a string that consists of multiple parameters in the JSON format. Valid values:
-        # 
-        # *   **event_tags**: event type
-        # *   **black_iplist**: IP address blacklist
-        # *   **ip_baseline**: IP address
-        # *   **freq_baseline**: throttling frequency
-        # *   **client_id_baseline**: client information
-        # *   **country_baseline**: country information
-        # *   **province_baseline**: province information
-        # *   **sensitive_type**: sensitive information
+        # The content of the protection suggestion rule, which is a string converted from a JSON object constructed with a series of parameters. The parameters include:
+        # - **event_tags**: the event type.
+        # - **black_iplist**: the IP blacklist.
+        # - **ip_baseline**: the IP list.
+        # - **freq_baseline**: the throttling frequency information.
+        # - **client_id_baseline**: the client information.
+        # - **country_baseline**: the country information.
+        # - **province_baseline**: the region information.
+        # - **sensitive_type**: the sensitive information type.
         self.suggest_rule = suggest_rule
-        # The rule type of the protection suggestion. Valid values:
-        # 
-        # *   **BotRule**: bot management rules
-        # *   **BlackIPRule**: IP address blacklist rules
-        # *   **WhiteIPRule**: IP address whitelist rules
-        # *   **RateLimitRule**: throttling rules
-        # *   **ClientRule**: client rules
-        # *   **GeoRule**: region-related rules
-        # *   **SensitiveRule**: sensitive information rules
-        # *   **UnauthRule**: authentication rules
+        # The type of the protection suggestion. Valid values: 
+        # - **BotRule**: bot rule.
+        # - **BlackIPRule**: IP blacklist rule.
+        # - **WhiteIPRule**: IP whitelist rule.
+        # - **RateLimitRule**: throttling rule.
+        # - **ClientRule**: client rule.
+        # - **GeoRule**: geo-blocking rule.
+        # - **SensitiveRule**: sensitive information rule.
+        # - **UnauthRule**: authentication rule.
         self.suggest_type = suggest_type
 
     def validate(self):

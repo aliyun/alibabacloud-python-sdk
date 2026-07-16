@@ -13,11 +13,17 @@ class DescribeVsUpPeakPublishStreamDataRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Domain name to query. Returns data at the domain granularity.
         self.domain_name = domain_name
+        # Enables or disables domain-level statistics. Valid values: on or off. When set to on, the response shows domain-level data. When set to off or omitted, the response shows user-level data. Default is user-level data.
         self.domain_switch = domain_switch
+        # End time of stream ingest, in UTC format. The time range between StartTime and EndTime must be within 30 days. EndTime must be later than the current time.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
+        # Start time of stream ingest, in UTC format. The time range between StartTime and EndTime must be within 30 days.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

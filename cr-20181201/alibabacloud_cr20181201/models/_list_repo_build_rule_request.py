@@ -16,9 +16,9 @@ class ListRepoBuildRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries to return per page.
         self.page_size = page_size
         # The ID of the image repository.
         # 

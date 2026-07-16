@@ -23,18 +23,31 @@ class GetFundAccountCanAllocateCreditAmountResponseBody(DaraModel):
         request_id: str = None,
         site: str = None,
     ):
+        # The enterprise entity ID.
         self.ecid = ecid
+        # The allocated credit limit of the enterprise.
         self.ecid_allocated_credit_amount = ecid_allocated_credit_amount
+        # The enterprise credit quota.
         self.ecid_credit_amount = ecid_credit_amount
+        # The account ECID.
         self.fund_account_ecid = fund_account_ecid
+        # The account ID.
         self.fund_account_id = fund_account_id
+        # The account name.
         self.fund_account_name = fund_account_name
+        # The Alibaba Cloud account ID of the account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
+        # The maximum allocatable credit limit of the current account.
         self.max_can_allocate_credit_amount = max_can_allocate_credit_amount
+        # Response structure metadata.
         self.metadata = metadata
+        # The minimum allocatable credit limit of the current account.
         self.min_can_allocate_credit_amount = min_can_allocate_credit_amount
+        # The primary marketplace.
         self.nbid = nbid
+        # The request ID.
         self.request_id = request_id
+        # The site.
         self.site = site
 
     def validate(self):

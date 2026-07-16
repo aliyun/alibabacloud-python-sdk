@@ -93,7 +93,7 @@ class GetUrlUploadInfosResponseBodyURLUploadInfoList(DaraModel):
         self.status = status
         # The upload URL of the source file.
         # 
-        # >  A maximum of 100 URLs can be returned.
+        # > A maximum of 100 URLs can be returned.
         self.upload_url = upload_url
         # The user data. The value is a JSON string.
         self.user_data = user_data

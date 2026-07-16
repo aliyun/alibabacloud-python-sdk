@@ -15,13 +15,27 @@ class DescribeAddressesRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         rule_id: int = None,
     ):
+        # The address to query. You can set this parameter to perform a fuzzy match on added addresses.
         self.address_like = address_like
+        # The ID of the WAF instance.
+        # 
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
+        # The pagination token for the next page. Set this parameter to the value of **NextToken** returned in the previous API call. Leave this parameter empty for the first page.
         self.next_token = next_token
+        # The region where the WAF instance is deployed. Valid values:
+        # 
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The ID of the address book to query.
         self.rule_id = rule_id
 
     def validate(self):

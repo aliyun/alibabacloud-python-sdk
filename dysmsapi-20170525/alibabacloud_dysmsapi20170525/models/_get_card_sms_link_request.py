@@ -17,53 +17,43 @@ class GetCardSmsLinkRequest(DaraModel):
         phone_number_json: str = None,
         sign_name_json: str = None,
     ):
-        # The code type of the URLs.
-        # 
-        # *   **1**: group texting
-        # *   **2**: personalization
+        # The encoding type of the short URL for the card message. Valid values:
+        # - 1: bulk sending.
+        # - 2: personalized.
         self.card_code_type = card_code_type
-        # The type of the short URLs.
+        # The type of the short URL for the card message. Valid values:
+        # - 1: standard short URL.
+        # - 2: custom short URL.
         # 
-        # *   1: standard short code.
-        # *   2: custom short code.
-        # 
-        # > If the **CardLinkType** is not specified, standard short codes are generated. If you need to generate custom short codes, contact Alibaba Cloud SMS technical support.
+        # > If **CardLinkType** is left empty, the default value is standard short URL. To generate a custom short URL, contact Alibaba Cloud operations to register in advance.
         self.card_link_type = card_link_type
-        # The code of the message template. You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
-        # 
-        # > Make sure that the message template has been approved.
+        # The code of the card message template. In the console, go to the [Card Messages > Template Management](https://dysms.console.aliyun.com/domestic/card) page and select the code of an approved card message template.
         # 
         # This parameter is required.
         self.card_template_code = card_template_code
-        # The variables of the message template.
+        # The variables of the card message template.
         self.card_template_param_json = card_template_param_json
-        # The custom short code. It can contain 4 to 8 digits or letters.
+        # The custom short code. The value must be 4 to 8 digits or letters.
         # 
-        # > If the CardLinkType parameter is set to 2, the CustomShortCodeJson parameter is required.
+        # > This parameter is required when the generation type is custom short URL.
         self.custom_short_code_json = custom_short_code_json
-        # The original domain name. You must submit domain names for approval in advance.
+        # The short URL domain assigned to the sending account. The domain must be registered in advance.
         # 
-        # > 
-        # 
-        # *   If the **CardLinkType** parameter is set to **2**, the **Domain** parameter is required.
-        # 
-        # *   The **Domain** parameter cannot exceed 100 characters in length. If the parameter is not specified, a default domain name is used.
+        # > - When **CardLinkType** is set to **2**, the **Domain** parameter is required.
+        # > - If the **Domain** parameter is left empty, the system default domain is used. The value can be up to 100 characters in length.
         self.domain = domain
-        # The extension field.
+        # The external extension field.
         self.out_id = out_id
-        # The mobile phone numbers of recipients, custom identifiers, or system identifiers.
+        # The phone number, user ID, or internal system identifier.
         # 
-        # > 
-        # 
-        # *   A maximum of 10,000 mobile phone numbers are supported.
-        # 
-        # *   You can enter custom identifier. Each identifier can be a maximum of 60 characters in length.
-        # 
-        # *   You can apply for a maximum of 10 OPPO templates at a time.
+        # > - Supports up to 10,000 phone numbers.
+        # > - You can also specify a custom identifier of up to 60 characters.
+        # > - For OPPO templates, you can submit up to 10 requests at a time.
         self.phone_number_json = phone_number_json
-        # The signature. You can view the template code in the **Signature** column on the **Signaturess** tab of the **Go China** page in the Alibaba Cloud SMS console.
+        # The signature name of the SMS message.
+        # In the console, go to the [Domestic Messages > Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) tab and view the name in the **Signature Name** column. You can also call the [QuerySmsSignList](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2017-05-25-querysmssignlist) operation to view SMS signature names.
         # 
-        # > The signatures must be approved and correspond to the mobile numbers in sequence.
+        # > The signature must be added and approved. The number of SMS signatures must match the number of phone numbers, and each signature must correspond to a phone number.
         # 
         # This parameter is required.
         self.sign_name_json = sign_name_json

@@ -10,9 +10,9 @@ class DetachDdosFromAcceleratorResponseBody(DaraModel):
         ddos_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Anti-DDoS Pro/Premium instance that was disassociated from the GA instance.
+        # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance that is detached from the Global Accelerator instance.
         self.ddos_id = ddos_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

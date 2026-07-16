@@ -15,9 +15,13 @@ class RunWritingV2ResponseBody(DaraModel):
         payload: main_models.RunWritingV2ResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether this is the final message in the response stream.
         self.end = end
+        # The response header.
         self.header = header
+        # The response payload.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +73,9 @@ class RunWritingV2ResponseBodyPayload(DaraModel):
         output: main_models.RunWritingV2ResponseBodyPayloadOutput = None,
         usage: main_models.RunWritingV2ResponseBodyPayloadUsage = None,
     ):
+        # The output.
         self.output = output
+        # The token usage statistics.
         self.usage = usage
 
     def validate(self):
@@ -111,9 +117,13 @@ class RunWritingV2ResponseBodyPayloadUsage(DaraModel):
         token_map: Dict[str, int] = None,
         total_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # A detailed breakdown of token consumption.
         self.token_map = token_map
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -166,13 +176,21 @@ class RunWritingV2ResponseBodyPayloadOutput(DaraModel):
         text: str = None,
         title: str = None,
     ):
+        # The reference articles.
         self.articles = articles
+        # A traceability object, returned when the `modelSourceTrace` parameter is provided.
         self.generate_traceability = generate_traceability
+        # A list of refined article snippets.
         self.mini_doc = mini_doc
+        # A list of outlines. This field is returned when `writingStyle` is set to `outlineWriting` and `step` is `outlineWriting`.
         self.outlines = outlines
+        # The result of the query rewrite.
         self.search_query = search_query
+        # The search result. This field is returned when `writingStyle` is set to `outlineWriting` and `step` is `OutlineSearch`.
         self.search_result = search_result
+        # The generated text.
         self.text = text
+        # The article title. This field is returned when `writingStyle` is set to `outlineWriting` and `step` is `outlineWriting`.
         self.title = title
 
     def validate(self):
@@ -274,15 +292,25 @@ class RunWritingV2ResponseBodyPayloadOutputArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID for the document.
         self.doc_id = doc_id
+        # The internal unique identifier for the document.
         self.doc_uuid = doc_uuid
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The article URL.
         self.url = url
 
     def validate(self):
@@ -371,13 +399,25 @@ class RunWritingV2ResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The type of event. The service returns two types of events: writing events and other events.
+        # 
+        # The writing event, `task-progress-start-generating`, indicates that the output contains the complete article information.
+        # 
+        # Other events, such as `writing-instruction-analysis` (instruction analysis), `task-progress-news-search-end` (web search), and `result-intent-recognition-end` (intent recognition), can be monitored through the `payload.output.text` field or ignored.
         self.event = event
+        # The parent session ID.
         self.origin_session_id = origin_session_id
+        # The session ID.
         self.session_id = session_id
+        # The HTTP status code.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

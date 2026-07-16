@@ -13,7 +13,9 @@ class GetFederatedCredentialProviderResponseBody(DaraModel):
         federated_credential_provider: main_models.GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider = None,
         request_id: str = None,
     ):
+        # The federated credential provider.
         self.federated_credential_provider = federated_credential_provider
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,29 +64,29 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider(Dara
         update_time: int = None,
     ):
         self.cloud_id_pprovider_config = cloud_id_pprovider_config
-        # 创建时间
+        # The time when the provider was created.
         self.create_time = create_time
-        # 描述
+        # The description.
         self.description = description
-        # Federated Credential Provider ID
+        # The ID of the federated credential provider.
         self.federated_credential_provider_id = federated_credential_provider_id
-        # 联邦凭证提供方名称
+        # The name of the federated credential provider.
         self.federated_credential_provider_name = federated_credential_provider_name
-        # 联邦凭证提供方类型
+        # The type of the federated credential provider.
         self.federated_credential_provider_type = federated_credential_provider_type
-        # EIAM 实例ID
+        # The ID of the EIAM instance.
         self.instance_id = instance_id
-        # 网络访问端点ID
+        # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # OIDC配置
+        # The OpenID Connect (OIDC) configuration.
         self.oidc_provider_config = oidc_provider_config
-        # PKCS7配置
+        # The PKCS#7 configuration.
         self.pkcs_7provider_config = pkcs_7provider_config
-        # 私有CA配置
+        # The private certificate authority (CA) configuration.
         self.private_ca_provider_config = private_ca_provider_config
-        # 状态
+        # The status of the federated credential provider.
         self.status = status
-        # 更新时间
+        # The time when the provider was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -197,11 +199,11 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # Root证书
+        # A list of root certificates.
         self.certificates = certificates
-        # Root证书获取方式
+        # The method for obtaining the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # Root证书的默认条件
+        # The trust condition for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -251,11 +253,11 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
         content: str = None,
         fingerprint: str = None,
     ):
-        # 证书元数据
+        # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # Root证书内容
+        # The content of the root certificate.
         self.content = content
-        # Root证书指纹
+        # The fingerprint of the root certificate.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -298,9 +300,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
         not_after: int = None,
         not_before: int = None,
     ):
-        # 证书过期时间
+        # The time when the certificate expires.
         self.not_after = not_after
-        # 证书生效时间
+        # The time when the certificate becomes valid.
         self.not_before = not_before
 
     def validate(self):
@@ -339,17 +341,17 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # pkcs7证书列表
+        # A list of PKCS#7 certificates.
         self.certificates = certificates
-        # CMS验证模式
+        # The Cryptographic Message Syntax (CMS) verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # 签名有效时间
+        # The validity period of the signature, in seconds.
         self.signature_effective_time = signature_effective_time
-        # 签名时间
+        # An expression that specifies the signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # 证书信任锚点来源
+        # The source of the certificate trust anchor.
         self.trust_anchor_source = trust_anchor_source
-        # 信任条件
+        # The trust condition for the PKCS#7 provider.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -417,11 +419,11 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
         content: str = None,
         fingerprint: str = None,
     ):
-        # 证书元数据
+        # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # Root证书内容
+        # The content of the certificate.
         self.content = content
-        # Root证书指纹
+        # The fingerprint of the certificate.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -464,9 +466,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
         not_after: int = None,
         not_before: int = None,
     ):
-        # 证书过期时间
+        # The time when the certificate expires.
         self.not_after = not_after
-        # 证书生效时间
+        # The time when the certificate becomes valid.
         self.not_before = not_before
 
     def validate(self):
@@ -507,20 +509,21 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcP
         static_jwks: str = None,
         trust_condition: str = None,
     ):
-        # oidc凭证的受众列表
+        # A list of audiences for the OIDC credential.
         self.audiences = audiences
-        # 动态获取的jwks
+        # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # Issuer
+        # The issuer of the OIDC credential.
         self.issuer = issuer
+        # The time of the last JWKS retrieval.
         self.jwks_last_obtained_time = jwks_last_obtained_time
-        # Jwks来源
+        # The source of the JSON Web Key Set (JWKS).
         self.jwks_source = jwks_source
-        # JWKS 端点
+        # The JWKS endpoint.
         self.jwks_uri = jwks_uri
-        # 静态获取的jwks
+        # The static JWKS content.
         self.static_jwks = static_jwks
-        # 默认条件
+        # The trust condition for the OIDC provider.
         self.trust_condition = trust_condition
 
     def validate(self):

@@ -11,8 +11,12 @@ class BindDirectoryRequest(DaraModel):
         directory_id: str = None,
         owner_id: int = None,
     ):
+        # The device ID.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The folder ID.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
         self.owner_id = owner_id

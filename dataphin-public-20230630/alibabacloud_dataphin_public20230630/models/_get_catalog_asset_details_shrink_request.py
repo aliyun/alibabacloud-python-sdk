@@ -10,8 +10,12 @@ class GetCatalogAssetDetailsShrinkRequest(DaraModel):
         get_catalog_asset_details_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The paging query for the listing asset catalog list.
+        # 
         # This parameter is required.
         self.get_catalog_asset_details_query_shrink = get_catalog_asset_details_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

@@ -16,15 +16,13 @@ class GetConsumerProgressRequest(DaraModel):
         # 
         # This parameter is required.
         self.consumer_id = consumer_id
-        # Specifies whether to hide LastTimestamp. Default value: false. We recommend that you set this parameter to true.
+        # Specifies whether to hide the \\`LastTimestamp\\` parameter. The default value is false. Set this parameter to true for better performance.
         # 
-        # > 
-        # 
-        # *   If you set this parameter to true, -1 is returned for LastTimestamp. If you set this parameter to false, a specific value is returned for LastTimestamp. This parameter is supported only by topics that use cloud storage on reserved instances.
-        # 
-        # *   A large amount of data is processed by this operation, which causes performance loss. We recommend that you set this parameter to true to accelerate processing.
+        # > - If you set this parameter to true, -1 is returned for the \\`LastTimestamp\\` parameter. Otherwise, a specific value is returned. This parameter is supported only for topics of cloud storage on provisioned instances.
+        # >
+        # > - This operation processes a large amount of data and consumes a high degree of performance. Set this parameter to true to reduce the processing time.
         self.hide_last_timestamp = hide_last_timestamp
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

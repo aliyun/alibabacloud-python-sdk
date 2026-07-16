@@ -10,7 +10,7 @@ class StartInstanceResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the bastion host that you enable.
+        # The ID of the bastion host that is enabled.
         self.instance_id = instance_id
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id

@@ -10,7 +10,12 @@ class UpdateAdminPasswordResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the password is updated. Valid values:
+        # 
+        # - true: The password is updated.
+        # - false: The password failed to be updated.
         self.result = result
 
     def validate(self):

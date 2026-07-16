@@ -21,58 +21,71 @@ class DescribeDBClustersWithBackupsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the cluster. The name must meet the following requirements:
+        # The cluster name. The cluster name must meet the following requirements:
         # 
-        # *   It cannot start with `http://` or `https://`.
-        # *   It must be 2 to 256 characters in length.
+        # - It cannot start with `http://` or `https://`.
+        # 
+        # - It must be 2 to 256 characters in length.
         self.dbcluster_description = dbcluster_description
-        # The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+        # The ID of the cluster. You can specify multiple cluster IDs. Separate the IDs with a comma (,).
         self.dbcluster_ids = dbcluster_ids
-        # The type of the database engine. Valid values:
+        # The database engine type. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
-        # The version of the database engine.
+        # The database engine version.
         # 
-        # *   Valid values for the MySQL database engine:
+        # - Valid values for MySQL:
         # 
-        #     *   **5.6**
-        #     *   **5.7**
-        #     *   **8.0**
+        #   - **5.6**
         # 
-        # *   Valid values for the PostgreSQL database engine:
+        #   - **5.7**
         # 
-        #     *   **11**
-        #     *   **14**
+        #   - **8.0**
         # 
-        # *   Valid value for the Oracle database engine: **11**
+        # - Valid values for PostgreSQL:
+        # 
+        #   - **11**
+        # 
+        #   - **14**
+        # 
+        # - Valid values for Oracle:
+        # 
+        #   - **11**
+        # 
+        #   - **14**
         self.dbversion = dbversion
         # Specifies whether the cluster is deleted. Valid values:
         # 
-        # *   **0**: not deleted
-        # *   **1**: deleted
+        # - **0**: The cluster is not deleted.
+        # 
+        # - **1**: The cluster is deleted.
         self.is_deleted = is_deleted
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of records on each page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         # 
         # Default value: 30.
         self.page_size = page_size
-        # The region ID of the cluster.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to view details about regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

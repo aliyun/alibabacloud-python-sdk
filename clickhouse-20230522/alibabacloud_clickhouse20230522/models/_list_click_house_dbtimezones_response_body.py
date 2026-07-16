@@ -15,6 +15,7 @@ class ListClickHouseDBTimezonesResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The list of time zones that ClickHouse supports.
         self.time_zones = time_zones
 
     def validate(self):
@@ -56,6 +57,7 @@ class ListClickHouseDBTimezonesResponseBodyTimeZones(DaraModel):
         self,
         zone_id: str = None,
     ):
+        # The enumeration value for the time zone.
         self.zone_id = zone_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class ListCatalogsRequest(DaraModel):
         environment: str = None,
         region_id: str = None,
     ):
+        # The environment type.
         self.environment = environment
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

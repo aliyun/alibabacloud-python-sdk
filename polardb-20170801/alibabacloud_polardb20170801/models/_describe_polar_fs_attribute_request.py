@@ -11,9 +11,16 @@ class DescribePolarFsAttributeRequest(DaraModel):
         polar_fs_instance_id: str = None,
         query_fuse_mount_info: bool = None,
     ):
+        # The cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including cluster IDs.
         self.dbcluster_id = dbcluster_id
+        # The PolarLakebase instance ID.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # Specifies whether to query Fuse mount information. Valid values:
+        # - **true**: Yes.
+        # - **false**: No. This is the default value.
         self.query_fuse_mount_info = query_fuse_mount_info
 
     def validate(self):

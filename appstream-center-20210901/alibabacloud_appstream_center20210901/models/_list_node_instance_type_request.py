@@ -24,52 +24,41 @@ class ListNodeInstanceTypeRequest(DaraModel):
         product_type: str = None,
         sort_type: str = None,
     ):
-        # The ID of the region where the resource resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
-        # 
-        # Valid values:
-        # 
-        # *   cn-shanghai: China (Shanghai)
-        # *   cn-hangzhou: China (Hangzhou)
+        # The region ID of the resource. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
+        # The number of CPU cores.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud desktops. Unit: MB.
         self.gpu_memory = gpu_memory
         self.instance_type_for_modify = instance_type_for_modify
-        # The language that you want to use.
-        # 
-        # Valid values:
-        # 
-        # *   en-US: English (US)
-        # *   zh-CN: Simplified Chinese
+        # The language type.
         self.language = language
+        # The memory size. Unit: MB.
         self.memory = memory
-        # The resource type that you want to query. If you do not configure this parameter, all resource types are returned.
+        # The resource specification type to query. If you leave this parameter empty, all specification types are returned.
         self.node_instance_type = node_instance_type
+        # The instance family.
         self.node_instance_type_family = node_instance_type_family
+        # CPU/Memory.
         self.order_by = order_by
         self.order_type = order_type
-        # The operating system that is supported.
-        # 
-        # Valid value:
-        # 
-        # *   Windows: the Windows operating system
+        # The supported operating system type.
         self.os_type = os_type
-        # The number of the page to return.
+        # The page number of the query results to display.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: 1 to 100.
+        # The number of query results per page. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The product type.
         # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
-        # 
         # This parameter is required.
         self.product_type = product_type
+        # DESC/ASC.
         self.sort_type = sort_type
 
     def validate(self):

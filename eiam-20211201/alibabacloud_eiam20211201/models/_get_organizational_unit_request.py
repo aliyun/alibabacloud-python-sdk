@@ -10,11 +10,11 @@ class GetOrganizationalUnitRequest(DaraModel):
         instance_id: str = None,
         organizational_unit_id: str = None,
     ):
-        # The ID of the instance.
+        # Instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the organizational unit.
+        # Organizational unit ID.
         # 
         # This parameter is required.
         self.organizational_unit_id = organizational_unit_id

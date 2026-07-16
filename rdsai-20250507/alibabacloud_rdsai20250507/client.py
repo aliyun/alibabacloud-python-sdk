@@ -22,7 +22,23 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'rdsai.us-west-1.aliyuncs.com',
+            'eu-central-1': 'rdsai.eu-central-1.aliyuncs.com',
+            'cn-wulanchabu': 'rdsai.aliyuncs.com',
+            'cn-shenzhen': 'rdsai.aliyuncs.com',
+            'cn-shanghai': 'rdsai.aliyuncs.com',
+            'cn-hongkong': 'rdsai.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'rdsai.aliyuncs.com',
+            'cn-guangzhou': 'rdsai.aliyuncs.com',
+            'cn-chengdu': 'rdsai.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'rdsai.aliyuncs.com',
+            'ap-southeast-5': 'rdsai.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'rdsai.ap-southeast-3.aliyuncs.com',
+            'ap-southeast-1': 'rdsai.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'rdsai.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('rdsai', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -311,6 +327,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApiKeyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.daily_token_quota):
+            query['DailyTokenQuota'] = request.daily_token_quota
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.key_name):
@@ -349,6 +367,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApiKeyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.daily_token_quota):
+            query['DailyTokenQuota'] = request.daily_token_quota
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.key_name):
@@ -423,6 +443,8 @@ class Client(OpenApiClient):
             query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.dashboard_username):
             query['DashboardUsername'] = request.dashboard_username
+        if not DaraCore.is_null(request.database):
+            query['Database'] = request.database
         if not DaraCore.is_null(request.database_password):
             query['DatabasePassword'] = request.database_password
         if not DaraCore.is_null(request.initialize_with_existing_data):
@@ -487,6 +509,8 @@ class Client(OpenApiClient):
             query['DashboardPassword'] = request.dashboard_password
         if not DaraCore.is_null(request.dashboard_username):
             query['DashboardUsername'] = request.dashboard_username
+        if not DaraCore.is_null(request.database):
+            query['Database'] = request.database
         if not DaraCore.is_null(request.database_password):
             query['DatabasePassword'] = request.database_password
         if not DaraCore.is_null(request.initialize_with_existing_data):
@@ -731,6 +755,100 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInspectionTaskResponse:
         runtime = RuntimeOptions()
         return await self.create_inspection_task_with_options_async(request, runtime)
+
+    def create_sandbox_template_with_options(
+        self,
+        request: main_models.CreateSandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_cpu):
+            query['DefaultCpu'] = request.default_cpu
+        if not DaraCore.is_null(request.default_memory):
+            query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replicas):
+            query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSandboxTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sandbox_template_with_options_async(
+        self,
+        request: main_models.CreateSandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_cpu):
+            query['DefaultCpu'] = request.default_cpu
+        if not DaraCore.is_null(request.default_memory):
+            query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replicas):
+            query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSandboxTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sandbox_template(
+        self,
+        request: main_models.CreateSandboxTemplateRequest,
+    ) -> main_models.CreateSandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_sandbox_template_with_options(request, runtime)
+
+    async def create_sandbox_template_async(
+        self,
+        request: main_models.CreateSandboxTemplateRequest,
+    ) -> main_models.CreateSandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_sandbox_template_with_options_async(request, runtime)
 
     def create_scheduled_task_with_options(
         self,
@@ -1158,6 +1276,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
 
+    def delete_sandbox_template_with_options(
+        self,
+        request: main_models.DeleteSandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSandboxTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sandbox_template_with_options_async(
+        self,
+        request: main_models.DeleteSandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSandboxTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sandbox_template(
+        self,
+        request: main_models.DeleteSandboxTemplateRequest,
+    ) -> main_models.DeleteSandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_sandbox_template_with_options(request, runtime)
+
+    async def delete_sandbox_template_async(
+        self,
+        request: main_models.DeleteSandboxTemplateRequest,
+    ) -> main_models.DeleteSandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_sandbox_template_with_options_async(request, runtime)
+
     def delete_scheduled_task_with_options(
         self,
         request: main_models.DeleteScheduledTaskRequest,
@@ -1457,6 +1653,84 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAppInstancesResponse:
         runtime = RuntimeOptions()
         return await self.describe_app_instances_with_options_async(request, runtime)
+
+    def describe_common_sandbox_templates_with_options(
+        self,
+        request: main_models.DescribeCommonSandboxTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCommonSandboxTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCommonSandboxTemplates',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCommonSandboxTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_common_sandbox_templates_with_options_async(
+        self,
+        request: main_models.DescribeCommonSandboxTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCommonSandboxTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCommonSandboxTemplates',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCommonSandboxTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_common_sandbox_templates(
+        self,
+        request: main_models.DescribeCommonSandboxTemplatesRequest,
+    ) -> main_models.DescribeCommonSandboxTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_common_sandbox_templates_with_options(request, runtime)
+
+    async def describe_common_sandbox_templates_async(
+        self,
+        request: main_models.DescribeCommonSandboxTemplatesRequest,
+    ) -> main_models.DescribeCommonSandboxTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_common_sandbox_templates_with_options_async(request, runtime)
 
     def describe_events_list_with_options(
         self,
@@ -2023,6 +2297,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2069,6 +2345,8 @@ class Client(OpenApiClient):
             query['Region'] = request.region
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.usage_type):
+            query['UsageType'] = request.usage_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4617,6 +4895,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyMessagesFeedbacksResponse:
         runtime = RuntimeOptions()
         return await self.modify_messages_feedbacks_with_options_async(request, runtime)
+
+    def modify_sandbox_template_with_options(
+        self,
+        request: main_models.ModifySandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_cpu):
+            query['DefaultCpu'] = request.default_cpu
+        if not DaraCore.is_null(request.default_memory):
+            query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replicas):
+            query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySandboxTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sandbox_template_with_options_async(
+        self,
+        request: main_models.ModifySandboxTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifySandboxTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_cpu):
+            query['DefaultCpu'] = request.default_cpu
+        if not DaraCore.is_null(request.default_memory):
+            query['DefaultMemory'] = request.default_memory
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.replicas):
+            query['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifySandboxTemplate',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifySandboxTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sandbox_template(
+        self,
+        request: main_models.ModifySandboxTemplateRequest,
+    ) -> main_models.ModifySandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.modify_sandbox_template_with_options(request, runtime)
+
+    async def modify_sandbox_template_async(
+        self,
+        request: main_models.ModifySandboxTemplateRequest,
+    ) -> main_models.ModifySandboxTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_sandbox_template_with_options_async(request, runtime)
 
     def modify_scheduled_task_with_options(
         self,

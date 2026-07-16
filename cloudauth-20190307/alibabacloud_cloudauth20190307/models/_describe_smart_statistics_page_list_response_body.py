@@ -17,17 +17,17 @@ class DescribeSmartStatisticsPageListResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Returned data list.
+        # The list of returned data.
         self.items = items
-        # Number of items displayed per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # ID of this request.
+        # The request ID.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,19 +99,19 @@ class DescribeSmartStatisticsPageListResponseBodyItems(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
-        # Date. Format: <i>month/day</i>
+        # The date. Format: <i>month/day</i>.
         self.date = date
-        # Pass rate.
+        # The pass rate.
         self.pass_rate = pass_rate
-        # Product solution Code, please refer to the Enhanced Real Person Help Documentation.
+        # The product solution code. For more information, refer to the enhanced ID Verification documentation.
         self.product_code = product_code
-        # Scene ID.
+        # The scene ID.
         self.scene_id = scene_id
-        # Scene name.
+        # The scene name.
         self.scene_name = scene_name
-        # Number of successful calls.
+        # The number of successful calls.
         self.success_count = success_count
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

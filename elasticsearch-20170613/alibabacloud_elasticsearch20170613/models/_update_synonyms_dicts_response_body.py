@@ -66,10 +66,10 @@ class UpdateSynonymsDictsResponseBodyResult(DaraModel):
         self.name = name
         # The source type of the dictionary file. Valid values:
         # 
-        # *   OSS
-        # *   ORIGIN
+        # - OSS: OSS open storage.
+        # - ORIGIN: retains the previously uploaded dictionary.
         self.source_type = source_type
-        # The dictionary type. The value is fixed as SYNONYMS.
+        # The dictionary type. Valid values: SYNONYMS (synonym).
         self.type = type
 
     def validate(self):

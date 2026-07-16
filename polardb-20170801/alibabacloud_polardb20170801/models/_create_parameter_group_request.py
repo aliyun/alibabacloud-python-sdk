@@ -25,9 +25,11 @@ class CreateParameterGroupRequest(DaraModel):
         self.dbtype = dbtype
         # The version of the database engine. Valid values:
         # 
-        # *   **5.6**
-        # *   **5.7**
-        # *   **8.0**
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
         # 
         # This parameter is required.
         self.dbversion = dbversion
@@ -37,20 +39,21 @@ class CreateParameterGroupRequest(DaraModel):
         self.parameter_group_desc = parameter_group_desc
         # The name of the parameter template. The name must meet the following requirements:
         # 
-        # *   It can contain letters, digits, and underscores (_). It must start with a letter and cannot end with an underscore.**
-        # *   It must be 8 to 64 characters in length.
+        # - It must start with a letter and can contain letters, digits, and underscores (_). It cannot contain Chinese characters or end with an underscore (_).
+        # 
+        # - It must be 8 to 64 characters in length.
         # 
         # This parameter is required.
         self.parameter_group_name = parameter_group_name
-        # The JSON string that consists of parameters and values. The parameter values are strings. Example: `{"wait_timeout":"86400","innodb_old_blocks_time":"1000"}`.
+        # A JSON string that consists of parameters and their values. The values of the parameters must be strings. For example: `{"wait_timeout":"86400","innodb_old_blocks_time":"1000"}`.
         # 
-        # > You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/207428.html) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
+        # > You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/207428.html) operation to view the details of all parameters for a specific database engine version. The details include parameter names and value ranges.
         # 
         # This parameter is required.
         self.parameters = parameters
-        # The region ID.
+        # The ID of the region where the parameter template is located.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

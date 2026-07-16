@@ -11,8 +11,11 @@ class CreateTopicResponseBody(DaraModel):
         success: bool = None,
         topic_name: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):

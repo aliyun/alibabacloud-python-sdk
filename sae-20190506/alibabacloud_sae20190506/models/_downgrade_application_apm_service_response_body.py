@@ -18,10 +18,13 @@ class DowngradeApplicationApmServiceResponseBody(DaraModel):
     ):
         # The HTTP status code or the error code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request failed.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The returned result.
         self.data = data
@@ -33,8 +36,9 @@ class DowngradeApplicationApmServiceResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether ARMS advanced monitoring is disabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
         # The ID of the trace. The ID is used to query the details of a request.
         self.trace_id = trace_id
@@ -104,8 +108,9 @@ class DowngradeApplicationApmServiceResponseBodyData(DaraModel):
     ):
         # Indicates whether ARMS advanced monitoring is disabled. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.status = status
 
     def validate(self):

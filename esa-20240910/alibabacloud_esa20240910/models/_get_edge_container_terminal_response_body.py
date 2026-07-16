@@ -19,15 +19,15 @@ class GetEdgeContainerTerminalResponseBody(DaraModel):
         self.cluster = cluster
         # The container name.
         self.container = container
-        # The name of the namespace.
+        # The namespace name.
         self.namespace = namespace
-        # The name of the container group.
+        # The pod name.
         self.pod = pod
         # The request ID.
         self.request_id = request_id
         # The session ID.
         self.session_id = session_id
-        # The information about the shared token.
+        # The sharing token information.
         self.token = token
 
     def validate(self):

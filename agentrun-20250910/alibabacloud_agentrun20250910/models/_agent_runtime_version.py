@@ -14,17 +14,17 @@ class AgentRuntimeVersion(DaraModel):
         description: str = None,
         last_updated_at: str = None,
     ):
-        # 智能体运行时的ARN
+        # The ARN of the agent runtime.
         self.agent_runtime_arn = agent_runtime_arn
-        # 智能体运行时的ID
+        # The ID of the agent runtime.
         self.agent_runtime_id = agent_runtime_id
-        # 智能体运行时的名称
+        # The name of the agent runtime.
         self.agent_runtime_name = agent_runtime_name
-        # 已发布版本的版本号
+        # The version of the agent runtime.
         self.agent_runtime_version = agent_runtime_version
-        # 此版本的描述
+        # The description of the agent runtime version.
         self.description = description
-        # 最后更新的时间戳
+        # The timestamp of the agent runtime version\\"s last update.
         self.last_updated_at = last_updated_at
 
     def validate(self):

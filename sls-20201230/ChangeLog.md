@@ -1,3 +1,28 @@
+2026-06-24 Version: 5.14.0
+- Support API DeleteLogs.
+- Support API UpdateLogs.
+- Update API GetMaterializedView: add response parameters Body.status.
+- Update API GetProject: add request parameters crossRegion.
+
+
+2026-06-12 Version: 5.13.1
+- Update API CreateLogStore: add request parameters body.enableModify.
+- Update API GetMaterializedView: add request parameters returnStatus.
+
+
+2026-05-28 Version: 5.13.0
+- Support API CreateGCSIngestion.
+- Support API GetGCSIngestion.
+- Support API GetLogStoreConfig.
+- Support API ListGCSIngestions.
+- Support API PutLogStoreConfig.
+- Support API StartGCSIngestion.
+- Support API StopGCSIngestion.
+- Support API UpdateGCSIngestion.
+- Update API GetLogsV2: add request parameters body.isAccurate.
+- Update API GetMetricStore: add response parameters Body.processorId.
+
+
 2026-02-05 Version: 5.12.1
 - Generated python 2020-12-30 for Sls.
 

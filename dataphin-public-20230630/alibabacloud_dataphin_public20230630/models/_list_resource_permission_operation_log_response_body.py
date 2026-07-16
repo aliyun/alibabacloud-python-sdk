@@ -17,11 +17,17 @@ class ListResourcePermissionOperationLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListResourcePermissionOperationLogResponseBodyPageResult(DaraModel):
         data: List[main_models.ListResourcePermissionOperationLogResponseBodyPageResultData] = None,
         total_count: int = None,
     ):
+        # The paginated records.
         self.data = data
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -132,14 +140,28 @@ class ListResourcePermissionOperationLogResponseBodyPageResultData(DaraModel):
         resource_info: main_models.ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo = None,
         target_account: main_models.ListResourcePermissionOperationLogResponseBodyPageResultDataTargetAccount = None,
     ):
+        # The operator.
         self.account = account
+        # The authorization scope of the table. Valid values:
+        # - selectTable: specified table
+        # - projectAllTable: all tables in the project
+        # - bizUnitAllLogicTable: all logical tables in the business unit.
         self.auth_scope = auth_scope
+        # The operation ID.
         self.operate_id = operate_id
+        # The operation time.
         self.operate_time = operate_time
+        # The operation type. Valid values:
+        # - APPLY: Apply for permissions.
+        # - GRANT: Grant permissions.
         self.operate_type = operate_type
+        # The validity period settings.
         self.period = period
+        # The reason.
         self.reason = reason
+        # The permission resource.
         self.resource_info = resource_info
+        # The authorized object.
         self.target_account = target_account
 
     def validate(self):
@@ -228,8 +250,11 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataTargetAccount(
         name: str = None,
         type: str = None,
     ):
+        # The account ID.
         self.id = id
+        # The account name.
         self.name = name
+        # The authorized account type.
         self.type = type
 
     def validate(self):
@@ -275,12 +300,28 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfo(D
         project_info: main_models.ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoProjectInfo = None,
         type: str = None,
     ):
+        # The business unit information.
         self.biz_unit_info = biz_unit_info
+        # The display name of the resource.
         self.display_name = display_name
+        # The resource environment. Valid values:
+        # - DEV
+        # - PROD.
         self.env = env
+        # The permission resource ID.
         self.id = id
+        # The permission resource name.
         self.name = name
+        # The project information.
         self.project_info = project_info
+        # The resource type. Valid values:
+        # - PHYSICAL_TABLE: physical table
+        # - PHYSICAL_VIEW: physical view
+        # - LOGICAL_TABLE: fact logical table
+        # - LOGICAL_VIEW: fact logical view
+        # - REALTIME_LOGICAL_TABLE: real-time meta table
+        # - REALTIME_MIRROR_TABLE: real-time meta table
+        # - DATASOURCE: datasource.
         self.type = type
 
     def validate(self):
@@ -352,9 +393,15 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoPr
         id: int = None,
         name: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The environment identifier. Valid values: 
+        # - DEV
+        # - PROD.
         self.env = env
+        # The project ID.
         self.id = id
+        # The name.
         self.name = name
 
     def validate(self):
@@ -403,10 +450,15 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataResourceInfoBi
         id: str = None,
         name: str = None,
     ):
+        # The display name.
         self.display_name = display_name
+        # The environment identifier. Valid values: 
+        # - DEV
+        # - PROD.
         self.env = env
         # Id
         self.id = id
+        # The name.
         self.name = name
 
     def validate(self):
@@ -453,7 +505,14 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataPeriod(DaraMod
         end_time: str = None,
         type: str = None,
     ):
+        # The expiration time.
         self.end_time = end_time
+        # The validity period type. Valid values:
+        # - CUSTOM: custom
+        # - LONG_TERM: permanently valid
+        # - DAYS_30: valid for 30 days
+        # - DAYS_90: valid for 90 days
+        # - DAYS_180: valid for 180 days.
         self.type = type
 
     def validate(self):
@@ -489,8 +548,17 @@ class ListResourcePermissionOperationLogResponseBodyPageResultDataAccount(DaraMo
         name: str = None,
         type: str = None,
     ):
+        # The account ID.
+        # - Individual account: the userId on the Dataphin side.
+        # - Production account: the UserId obtained by calling the GetProjectProduceUser operation.
+        # - User group: the user group ID obtained by calling the ListUserGroup operation.
         self.id = id
+        # The account name.
         self.name = name
+        # The authorization account type. Valid values:
+        # - PERSONAL: individual account
+        # - PRODUCE: production account
+        # - USER_GROUP: user group.
         self.type = type
 
     def validate(self):

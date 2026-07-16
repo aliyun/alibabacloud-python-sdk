@@ -15,15 +15,30 @@ class ModifyAccountPrivilegeRequest(DaraModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The account permissions. Valid values:
+        # 
+        # - **ReadWrite**
+        # - **ReadOnly**
+        # - **DMLOnly**
+        # - **DDLOnly**.
         self.account_privilege = account_privilege
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The database name.
         self.db_name = db_name
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The name of the security administrator account.
         self.security_account_name = security_account_name
+        # The password of the security administrator account.
         self.security_account_password = security_account_password
 
     def validate(self):

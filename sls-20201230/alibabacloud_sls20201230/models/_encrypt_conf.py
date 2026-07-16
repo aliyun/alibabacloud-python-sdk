@@ -12,9 +12,16 @@ class EncryptConf(DaraModel):
         encrypt_type: str = None,
         user_cmk_info: main_models.EncryptUserCmkConf = None,
     ):
+        # Specifies whether to enable data encryption. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
         # This parameter is required.
         self.enable = enable
+        # The encryption algorithm. Valid values: default and sm4. If enable is set to true, you must configure this parameter.
         self.encrypt_type = encrypt_type
+        # Optional. If you configure this parameter, the bring-your-own-key (BYOK) key is used. If you do not configure this parameter, the service key of Simple Log Service is used.
         self.user_cmk_info = user_cmk_info
 
     def validate(self):

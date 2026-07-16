@@ -11,15 +11,13 @@ class QueryPreCheckDatabaseRequest(DaraModel):
         task_id: str = None,
         uni_region_id: str = None,
     ):
-        # The UUID of the agent that is used to back up the data of the database.
-        # 
-        # > You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to query the UUID.
+        # The unique identifier of the server database backup client.
+        # > You can call the [DescribeUniBackupDatabase](~~DescribeUniBackupDatabase~~) operation to obtain this parameter.
         self.instance_uuid = instance_uuid
-        # The ID of the database precheck task.
-        # 
-        # > You can call the [StartPreCheckDatabase](~~StartPreCheckDatabase~~) operation to query the ID of the database precheck task.
+        # The ID of the database pre-check task.
+        # > You can call the [StartPreCheckDatabase](~~StartPreCheckDatabase~~) operation to obtain this parameter.
         self.task_id = task_id
-        # The region ID of the server that hosts the database.
+        # The region ID of the database server.
         # 
         # This parameter is required.
         self.uni_region_id = uni_region_id

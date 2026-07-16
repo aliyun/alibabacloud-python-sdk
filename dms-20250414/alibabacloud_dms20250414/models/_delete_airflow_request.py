@@ -11,9 +11,14 @@ class DeleteAirflowRequest(DaraModel):
         client_token: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the Airflow instance.
+        # 
         # This parameter is required.
         self.airflow_id = airflow_id
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

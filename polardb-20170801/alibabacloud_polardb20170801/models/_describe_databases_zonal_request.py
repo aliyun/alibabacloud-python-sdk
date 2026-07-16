@@ -18,14 +18,29 @@ class DescribeDatabasesZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The database name.
         self.dbname = dbname
+        # The maximum number of entries to return for the current request.
         self.max_results = max_results
+        # The query token. This is the NextToken value from the previous API call. If there are no more results, do not specify this parameter.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. The default value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # - 30
+        # 
+        # - 50
+        # 
+        # - 100
+        # 
+        # The default value is 30.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

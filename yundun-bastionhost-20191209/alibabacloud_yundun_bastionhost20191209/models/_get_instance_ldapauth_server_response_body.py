@@ -70,13 +70,15 @@ class GetInstanceLDAPAuthServerResponseBodyLDAP(DaraModel):
         self.filter = filter
         # Indicates whether passwords are required. Valid values:
         # 
-        # *   **true**: required
-        # *   **false**: not required
+        # - **true**: required
+        # 
+        # - **false**: not required
         self.has_password = has_password
         # Indicates whether SSL is supported. Valid values:
         # 
-        # *   **true**: supported
-        # *   **false**: not supported
+        # - **true**: supported
+        # 
+        # - **false**: not supported
         self.is_ssl = is_ssl
         # The field that is used to indicate the logon name of a user on the LDAP server.
         self.login_name_mapping = login_name_mapping

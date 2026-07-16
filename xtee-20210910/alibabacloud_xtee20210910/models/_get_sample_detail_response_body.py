@@ -16,10 +16,15 @@ class GetSampleDetailResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.GetSampleDetailResponseBodyResultObject = None,
     ):
+        # The status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Request result.
         self.result_object = result_object
 
     def validate(self):
@@ -85,18 +90,32 @@ class GetSampleDetailResponseBodyResultObject(DaraModel):
         upload_time: str = None,
         upload_user_name: str = None,
     ):
+        # Columns.
         self.column_stats = column_stats
+        # The time filter Type. You can filter by the last 7 Days, last 30 Days, last 6 months, or Custom.
         self.date_type = date_type
+        # The download URL of the file.
         self.download_url = download_url
+        # File name.  
+        # > The file name must end with .txt or .sql. For example, test.txt or test.sql.
         self.file_name = file_name
+        # File Size (bytes).
         self.file_size = file_size
+        # Table data.
         self.preview_data = preview_data
+        # Remarks.
         self.remark = remark
+        # The number of result records returned.
         self.row_count = row_count
+        # The sample ID.
         self.sample_id = sample_id
+        # Sample name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # File upload time.
         self.upload_time = upload_time
+        # Uploader.
         self.upload_user_name = upload_user_name
 
     def validate(self):
@@ -208,7 +227,9 @@ class GetSampleDetailResponseBodyResultObjectPreviewData(DaraModel):
         headers: List[str] = None,
         rows: List[List[str]] = None,
     ):
+        # Header information returned.
         self.headers = headers
+        # Row data.
         self.rows = rows
 
     def validate(self):
@@ -247,11 +268,17 @@ class GetSampleDetailResponseBodyResultObjectColumnStats(DaraModel):
         miss_rate: str = None,
         row_number: int = None,
     ):
+        # De-duplication count.
         self.distinct_number = distinct_number
+        # De-duplication rate.
         self.distinct_rate = distinct_rate
+        # Field Name.
         self.field_name = field_name
+        # Number of missing values.
         self.miss_number = miss_number
+        # Missing rate.
         self.miss_rate = miss_rate
+        # Row number of the record.
         self.row_number = row_number
 
     def validate(self):

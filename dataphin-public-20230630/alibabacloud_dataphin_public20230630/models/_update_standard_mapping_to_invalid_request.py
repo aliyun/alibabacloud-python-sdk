@@ -13,8 +13,12 @@ class UpdateStandardMappingToInvalidRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateStandardMappingToInvalidRequestUpdateCommand = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Update Command
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -53,8 +57,12 @@ class UpdateStandardMappingToInvalidRequestUpdateCommand(DaraModel):
         guid_list: List[str] = None,
         standard_id: int = None,
     ):
+        # Belonging GUID list, with an upper limit of 1000
         self.belong_guid_list = belong_guid_list
+        # GUID list, with an upper limit of 1000
         self.guid_list = guid_list
+        # Standard ID
+        # 
         # This parameter is required.
         self.standard_id = standard_id
 

@@ -1,3 +1,9 @@
+2026-06-16 Version: 1.13.3
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.Strategy.
+- Update API DescribeScalingInstances: add response parameters Body.ScalingInstances.$.ReplaceStatus.
+- Update API StartInstanceRefresh: add request parameters Strategy.
+
+
 2026-05-13 Version: 1.13.2
 - Update API CreateScalingConfiguration: add request parameters ResourcePoolOptions.PrivatePoolTags.
 - Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.ResourcePoolOptions.PrivatePoolTags.

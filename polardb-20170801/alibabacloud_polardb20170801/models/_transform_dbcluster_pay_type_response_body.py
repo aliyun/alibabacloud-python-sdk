@@ -13,18 +13,19 @@ class TransformDBClusterPayTypeResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The billing method of the cluster. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go
+        # 
+        # - **Prepaid**: subscription
         self.charge_type = charge_type
-        # The cluster ID.
+        # The ID of the PolarDB cluster.
         self.dbcluster_id = dbcluster_id
-        # The time when the cluster expires.
+        # The expiration time of the instance.
         # 
-        # >  This parameter is returned if you set the **PayType** parameter to **Prepaid**.
+        # > This parameter is returned only when **PayType** is set to **Prepaid**.
         self.expired_time = expired_time
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id

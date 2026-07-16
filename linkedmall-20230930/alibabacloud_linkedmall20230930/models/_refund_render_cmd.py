@@ -11,10 +11,16 @@ class RefundRenderCmd(DaraModel):
         goods_status: int = None,
         order_line_id: str = None,
     ):
+        # Refund Type: 1 for refund only, 3 for return and refund
+        # 
         # This parameter is required.
         self.biz_claim_type = biz_claim_type
+        # Goods Status: 4 for not shipped, 1 for not received, 2 for received
+        # 
         # This parameter is required.
         self.goods_status = goods_status
+        # Sub-distribution order ID
+        # 
         # This parameter is required.
         self.order_line_id = order_line_id
 

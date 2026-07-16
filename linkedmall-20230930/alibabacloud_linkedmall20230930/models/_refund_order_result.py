@@ -12,9 +12,20 @@ class RefundOrderResult(DaraModel):
         order_line_id: str = None,
         request_id: str = None,
     ):
+        # Dispute ID
         self.dispute_id = dispute_id
+        # Status of the reverse operation  
+        # 1 – Return pending  
+        # 2 – Awaiting buyer return  
+        # 3 – Awaiting merchant receipt  
+        # 4 – Refund closed  
+        # 5 – Refund succeeded  
+        # 6 – Refund denied  
+        # 17 – Canceling refund
         self.dispute_status = dispute_status
+        # Sub-distribution order ID for which the reverse operation was initiated
         self.order_line_id = order_line_id
+        # API request ID
         self.request_id = request_id
 
     def validate(self):

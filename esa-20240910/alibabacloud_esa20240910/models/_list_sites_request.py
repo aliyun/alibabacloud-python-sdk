@@ -23,48 +23,47 @@ class ListSitesRequest(DaraModel):
         status: str = None,
         tag_filter: List[main_models.ListSitesRequestTagFilter] = None,
     ):
-        # The DNS setup. Valid values:
+        # The access type. Valid values:
         # 
-        # *   **NS**
-        # *   **CNAME**
+        # - **NS**: NS-based access.
+        # 
+        # - **CNAME**: CNAME-based access.
         self.access_type = access_type
-        # The service location. Valid values:
-        # 
-        # *   **domestic**: the Chinese mainland
-        # *   **global**: global
-        # *   **overseas**: outside the Chinese mainland
+        # The acceleration region. Valid values:
+        # - **domestic**: the Chinese mainland only.
+        # - **global**: global.
+        # - **overseas**: global (excluding the Chinese mainland).
         self.coverage = coverage
-        # Specifies whether to query only websites on Enterprise plans. Valid values: **true and false**.
+        # Specifies whether to query only Enterprise Edition sites. Set this parameter to **true** to query only Enterprise Edition sites.
         self.only_enterprise = only_enterprise
-        # Sorting field. By default, it sorts by creation time, supporting the following options:
-        # - gmtCreate: website creation time
-        # - visitTime: website visit time
+        # The sort field. By default, results are sorted by creation time. Valid values:
+        # - gmtCreate: site creation time.
+        # - visitTime: site access time.
         self.order_by = order_by
-        # The page number. Default value: **1**.
+        # The page number for paging. The value must be greater than or equal to 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: **500**.
+        # The number of entries per page for paging. Valid values: 1 to 500.
         self.page_size = page_size
-        # The plan type. Valid values:
-        # 
-        # *   **basicplan**: Entrance
-        # *   **standardplan**: Pro
-        # *   **advancedplan**: Premium
-        # *   **enterpriseplan**: Enterprise
+        # The plan subscription type. Valid values:
+        # - **basicplan**: Basic Edition.
+        # - **standardplan**: Standard Edition.
+        # - **advancedplan**: Premium Edition.
+        # - **enterpriseplan**: Enterprise Edition.
         self.plan_subscribe_type = plan_subscribe_type
-        # The ID of the resource group. This parameter specifies a filter condition for the query.
+        # The resource group ID. Used as a filter condition for the query.
         self.resource_group_id = resource_group_id
-        # The website name. This parameter specifies a filter condition for the query.
+        # The site name. Used as a filter condition for the query.
         self.site_name = site_name
-        # The match mode to search for the website name. Default value: exact. Valid values:
+        # The search matching mode for the site name. Default is exact match. Valid values:
         # 
-        # *   **prefix**: match by prefix.
-        # *   **suffix**: match by suffix.
-        # *   **exact**: exact match.
-        # *   **fuzzy**: fuzzy match.
+        # - **prefix**: prefix match.
+        # - **suffix**: suffix match.
+        # - **exact**: exact match.
+        # - **fuzzy**: fuzzy match.
         self.site_search_type = site_search_type
-        # The website status. This parameter specifies a filter condition for the query.
+        # The site status. Used as a filter condition for the query.
         self.status = status
-        # The tag filtering rule.
+        # The tag filter rules.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -167,9 +166,9 @@ class ListSitesRequestTagFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. This parameter specifies a filter condition for the query.
+        # The tag key. Used as a filter condition for the query.
         self.key = key
-        # The tag value. This parameter specifies a filter condition for the query.
+        # The tag value. Used as a filter condition for the query.
         self.value = value
 
     def validate(self):

@@ -21,25 +21,25 @@ class ListPrometheusViewsRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Filter by RegionID.
+        # Filters by region ID.
         self.filter_region_ids = filter_region_ids
-        # Maximum number of records to return.
+        # The maximum number of records to return.
         self.max_results = max_results
-        # Query token.
+        # The query token.
         self.next_token = next_token
-        # List of Prometheus view instance IDs.
+        # The list of Prometheus view instance IDs.
         self.prometheus_view_ids = prometheus_view_ids
-        # Prometheus view name.
+        # The Prometheus view name.
         self.prometheus_view_name = prometheus_view_name
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource type.
+        # The resource type.
         self.resource_type = resource_type
-        # List of tags.
+        # The list of tags.
         self.tag = tag
-        # Instance version: V1 or V2
+        # The instance version: V1 or V2.
         self.version = version
-        # Workspace name
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):
@@ -130,9 +130,9 @@ class ListPrometheusViewsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key
+        # The tag key.
         self.key = key
-        # Match value.
+        # The tag value.
         self.value = value
 
     def validate(self):

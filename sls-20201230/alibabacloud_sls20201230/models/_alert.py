@@ -17,17 +17,29 @@ class Alert(DaraModel):
         schedule: main_models.Schedule = None,
         status: str = None,
     ):
+        # The configuration of the alert rule.
+        # 
         # This parameter is required.
         self.configuration = configuration
+        # The time when the alert rule was created.
         self.create_time = create_time
+        # The description of the alert rule.
         self.description = description
+        # The name of the alert rule.
+        # 
         # This parameter is required.
         self.display_name = display_name
+        # The time when the alert rule was last modified.
         self.last_modified_time = last_modified_time
+        # The ID of the alert rule.
+        # 
         # This parameter is required.
         self.name = name
+        # The scheduling configuration.
+        # 
         # This parameter is required.
         self.schedule = schedule
+        # The status of the alert rule.
         self.status = status
 
     def validate(self):

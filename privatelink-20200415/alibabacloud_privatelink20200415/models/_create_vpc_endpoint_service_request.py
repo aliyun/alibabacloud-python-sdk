@@ -25,64 +25,71 @@ class CreateVpcEndpointServiceRequest(DaraModel):
         tag: List[main_models.CreateVpcEndpointServiceRequestTag] = None,
         zone_affinity_enabled: bool = None,
     ):
-        # The protocol. Valid values:
+        # The IP version. Valid values:
         # 
-        # *   **IPv4** (default)
-        # *   **DualStack**
-        # 
-        # >  You can set the protocol to DualStack only for endpoint services whose backend resource type is NLB. An endpoint service supports dual-stack only if its backend resources support dual-stack.
+        # - **IPv4** (default): IPv4.
+        # - **DualStack**: dual stack.
+        # > Only endpoint services whose backend resource type is nlb or gwlb support DualStack. If the endpoint service supports dual stack, its backend resources must also support dual stack.
         self.address_ip_version = address_ip_version
         # Specifies whether to automatically accept endpoint connection requests. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: automatically accepts endpoint connection requests.
+        # 
+        # - **false** (default): does not automatically accept endpoint connection requests.
         self.auto_accept_enabled = auto_accept_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. **ClientToken** can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request.
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs only a dry run. The system checks the request for required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The payer. Valid values:
+        # The payer of the endpoint service. Valid values:
         # 
-        # *   **Endpoint**: service consumer
-        # *   **EndpointService**: service provider
+        # - **Endpoint**: the service consumer.
+        # 
+        # - **EndpointService**: the service provider.
         self.payer = payer
-        # The region ID of the endpoint service.
+        # The ID of the region where the endpoint service is created.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/120468.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/469325.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The service resources of the endpoint service. You can create at most 10 resources. After the resource is created, you can continue to add service resources to the endpoint.
+        # The list of service resources of the endpoint service. You can add at most 10 service resources when you create the endpoint service. After the endpoint service is created, you can continue to add service resources.
         self.resource = resource
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The description of the endpoint service.
         self.service_description = service_description
         # The type of the service resource. Valid values:
         # 
-        # *   **slb**: Classic Load Balancer (CLB) instance
-        # *   **alb**: Application Load Balancer (ALB) instance
-        # *   **nlb**: Network Load Balancer (NLB) instance
+        # - **slb**: a Classic Load Balancer (CLB) instance.
         # 
-        # >  You cannot access TCP/SSL listeners configured for NLB instances.
+        # - **alb**: an Application Load Balancer (ALB) instance.
+        # - **nlb**: a Network Load Balancer (NLB) instance.
+        # - **gwlb**: a Gateway Load Balancer (GWLB) instance.
+        # 
+        # > TCPSSL listeners of NLB instances cannot be accessed.
         self.service_resource_type = service_resource_type
-        # Specifies whether to enable IPv6 for the endpoint service. Valid values:
+        # Specifies whether the endpoint service supports IPv6. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: yes.
+        # 
+        # - **false** (default): no.
         self.service_support_ipv_6 = service_support_ipv_6
+        # The list of regions in which the endpoint service is available. Service consumers can initiate endpoint connections from the regions in the list.
         self.supported_region_list = supported_region_list
-        # The tags to add to the resource.
+        # The tag list.
         self.tag = tag
-        # Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+        # Specifies whether to enable zone affinity for endpoint domain name resolution. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: yes.
+        # 
+        # - **false** (default): no.
         self.zone_affinity_enabled = zone_affinity_enabled
 
     def validate(self):
@@ -206,13 +213,13 @@ class CreateVpcEndpointServiceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key can be at most 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
+        # The tag value can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -250,15 +257,15 @@ class CreateVpcEndpointServiceRequestResource(DaraModel):
     ):
         # The ID of the service resource that is added to the endpoint service.
         self.resource_id = resource_id
-        # The type of the service resource that is added to the endpoint service. You can add up to 20 service resources to the endpoint service. Valid values:
+        # The type of the service resource that is added to the endpoint service. You can add at most 20 service resources to an endpoint service. Valid values:
         # 
-        # *   **slb**: CLB instance
-        # *   **alb**: ALB instance
-        # *   **nlb**: NLB instance
+        # - **slb**: a Classic Load Balancer (CLB) instance.
         # 
-        # >  In regions where PrivateLink is supported, CLB instances deployed in virtual private clouds (VPCs) can serve as the service resources of the endpoint service. You cannot access TCP/SSL listeners configured for NLB instances.
+        # - **alb**: an Application Load Balancer (ALB) instance.
+        # - **nlb**: a Network Load Balancer (NLB) instance.
+        # - **gwlb**: a Gateway Load Balancer (GWLB) instance.
         self.resource_type = resource_type
-        # The zone ID of the cluster.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

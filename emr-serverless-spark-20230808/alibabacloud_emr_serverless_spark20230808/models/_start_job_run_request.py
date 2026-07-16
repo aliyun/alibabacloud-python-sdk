@@ -24,33 +24,35 @@ class StartJobRunRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         region_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # The idempotence token.
         self.client_token = client_token
-        # The code type of the job. Valid values:
+        # The job type. Valid values:
         # 
-        # *   SQL
-        # *   JAR
-        # *   PYTHON
+        # - SQL
+        # 
+        # - JAR
+        # 
+        # - PYTHON
         self.code_type = code_type
-        # The advanced configurations of Spark.
+        # The advanced Spark configurations.
         self.configuration_overrides = configuration_overrides
-        # The version of the Spark engine.
+        # The version that is displayed in the console.
         self.display_release_version = display_release_version
-        # The timeout period of the job.
+        # The timeout period for the job.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Specifies whether to enable Fusion engine for acceleration.
+        # Specifies whether to enable the Fusion engine for acceleration.
         self.fusion = fusion
-        # The information about Spark Driver.
+        # The information about the Spark driver.
         self.job_driver = job_driver
         # The job ID.
         self.job_id = job_id
-        # The name of the job.
+        # The job name.
         self.name = name
-        # The version number of Spark.
+        # The version of the Spark engine.
         self.release_version = release_version
-        # The name of the resource queue on which the Spark job runs.
+        # The resource queue on which the Spark job runs.
         self.resource_queue_id = resource_queue_id
-        # The tags of the job.
+        # The list of job tags.
         self.tags = tags
         # The region ID.
         self.region_id = region_id
@@ -166,7 +168,7 @@ class StartJobRunRequestConfigurationOverrides(DaraModel):
         self,
         configurations: List[main_models.StartJobRunRequestConfigurationOverridesConfigurations] = None,
     ):
-        # The SparkConf objects.
+        # The list of Spark configurations.
         self.configurations = configurations
 
     def validate(self):
@@ -204,11 +206,11 @@ class StartJobRunRequestConfigurationOverridesConfigurations(DaraModel):
         config_item_key: str = None,
         config_item_value: str = None,
     ):
-        # The configuration file of SparkConf.
+        # The configuration file to which the Spark configuration belongs.
         self.config_file_name = config_file_name
-        # The key of SparkConf.
+        # The key of the Spark configuration.
         self.config_item_key = config_item_key
-        # The value of SparkConf.
+        # The value of the Spark configuration.
         self.config_item_value = config_item_value
 
     def validate(self):

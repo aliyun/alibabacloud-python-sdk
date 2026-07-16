@@ -15,15 +15,26 @@ class TextTranslateShrinkRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extended parameters to control translation behavior
         self.ext_shrink = ext_shrink
+        # text format
         self.format = format
+        # Model type
         self.scene = scene
+        # Source language code
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # Target Language Code
+        # 
         # This parameter is required.
         self.target_language = target_language
+        # Text to be translated
+        # 
         # This parameter is required.
         self.text = text
+        # Workspace ID
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

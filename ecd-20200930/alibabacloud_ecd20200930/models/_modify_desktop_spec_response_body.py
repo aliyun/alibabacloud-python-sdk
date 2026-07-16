@@ -13,11 +13,11 @@ class ModifyDesktopSpecResponseBody(DaraModel):
         order_ids: List[int] = None,
         request_id: str = None,
     ):
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The array of order IDs.
+        # A list of order IDs.
         self.order_ids = order_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

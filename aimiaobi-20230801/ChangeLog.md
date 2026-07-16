@@ -1,3 +1,26 @@
+2026-07-08 Version: 1.45.2
+- Update API AsyncCreateClipsTask: add request parameters AdaptMode.
+- Update API AsyncCreateClipsTask: add request parameters Alignment.
+- Update API AsyncCreateClipsTask: add request parameters TextWidth.
+
+
+2026-06-06 Version: 1.45.1
+- Update API ListHotTopics: add request parameters CreateTimeEnd.
+- Update API ListHotTopics: add request parameters CreateTimeStart.
+- Update API ListHotTopics: add request parameters CustomField.
+- Update API ListHotTopics: add response parameters Body.Data.$.CreateTime.
+- Update API ListHotTopics: add response parameters Body.Data.$.CustomField.
+- Update API ListHotTopics: add response parameters Body.Data.$.TopicUrl.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters Topics.$.CustomField.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters Topics.$.TopicUrl.
+
+
+2026-06-04 Version: 1.45.0
+- Support API FetchParseDocumentLayoutTask.
+- Support API SubmitParseDocumentLayoutTask.
+- Update API RunSearchSimilarArticles: add response parameters Body.Header.EventInfo.
+
+
 2026-05-20 Version: 1.44.3
 - Update API ExportPptArtifact: add request parameters ExternalUserId.
 - Update API GetPptArtifactExportResult: add request parameters ExternalUserId.

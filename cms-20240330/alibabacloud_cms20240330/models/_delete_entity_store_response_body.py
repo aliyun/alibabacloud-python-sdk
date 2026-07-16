@@ -9,7 +9,7 @@ class DeleteEntityStoreResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # request ID
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

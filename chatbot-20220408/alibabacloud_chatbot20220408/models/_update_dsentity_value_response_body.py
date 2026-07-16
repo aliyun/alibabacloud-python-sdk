@@ -10,7 +10,9 @@ class UpdateDSEntityValueResponseBody(DaraModel):
         entity_value_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the updated entity value.
         self.entity_value_id = entity_value_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,12 +10,13 @@ class UpdateDIJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request ID. You can locate logs and troubleshoot issues based on the ID.
+        # The ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):

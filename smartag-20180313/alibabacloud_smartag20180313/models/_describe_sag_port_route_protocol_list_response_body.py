@@ -14,11 +14,11 @@ class DescribeSagPortRouteProtocolListResponseBody(DaraModel):
         request_id: str = None,
         task_states: List[main_models.DescribeSagPortRouteProtocolListResponseBodyTaskStates] = None,
     ):
-        # An array that consists of the details of the port.
+        # The list of port information.
         self.ports = ports
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details about the status of the query task.
+        # The query task status.
         self.task_states = task_states
 
     def validate(self):
@@ -80,21 +80,21 @@ class DescribeSagPortRouteProtocolListResponseBodyTaskStates(DaraModel):
     ):
         # The time when the query task was created.
         self.create_time = create_time
-        # The error code returned. A value of 200 indicates that the query task is successful.
+        # The error code. A value of 200 indicates that the query task succeeded.
         self.error_code = error_code
-        # The error message returned. A value of Successful indicates that the query task is successful.
+        # The error message. A value of Successful indicates that the query task succeeded.
         self.error_message = error_message
-        # The status of the query task. Valid values:
+        # The status of the asynchronous task. Valid values:
         # 
-        # *   **Initialized**: The query task is initialized.
-        # *   **Offline**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. After the SAG device is connected to Alibaba Cloud, Alibaba Cloud assigns the query task to the SAG device.
-        # *   **Succeed**: Alibaba Cloud has assigned the query task to the SAG device.
-        # *   **Processing**: Alibaba Cloud is assigning the query task to the SAG device.
-        # *   **VersionNotSupport**: The query task is not supported by the current version of the SAG device.
-        # *   **BuildRequestError**: The query task is not supported by the controller of the SAG device.
-        # *   **HardwareError**: Alibaba Cloud failed to assign the query task to the SAG device because the SAG device is faulty.
-        # *   **TaskNotExist**: The query task does not exist.
-        # *   **OfflineNotConfiged**: The SAG device is disconnected from Alibaba Cloud and Alibaba Cloud has not assigned the query task to the SAG device. Alibaba Cloud does not assign the query task to the SAG device even after the SAG device is connected to Alibaba Cloud.
+        # - **Initialized**: The query task is initialized.
+        # - **Offline**: The Smart Access Gateway device is offline and the query task has not been delivered. The task will be delivered after the device comes online.
+        # - **Succeed**: The query task is delivered.
+        # - **Processing**: The query task is being delivered.
+        # - **VersionNotSupport**: The current version of the Smart Access Gateway device does not support this operation.
+        # - **BuildRequestError**: The China Cloud Management Platform does not support this operation.
+        # - **HardwareError**: The query task failed to be delivered due to a device error.
+        # - **TaskNotExist**: The query task does not exist.
+        # - **OfflineNotConfiged**: The Smart Access Gateway device is offline and the query task has not been delivered. The task will not be delivered even after the device comes online.
         self.state = state
 
     def validate(self):
@@ -146,24 +146,24 @@ class DescribeSagPortRouteProtocolListResponseBodyPorts(DaraModel):
         status: str = None,
         vlan: str = None,
     ):
-        # The IP address of the neighbor device.
+        # The neighbor IP address.
         self.neighbor_ip = neighbor_ip
-        # The name of the port.
+        # The port name.
         self.port_name = port_name
-        # The number of the autonomous system (AS) to which the SAG device belongs.
+        # The autonomous system number of the peer BGP network.
         self.remote_as = remote_as
-        # The IP address of the peer device.
+        # The IP address of the peer.
         self.remote_ip = remote_ip
-        # The routing protocol. Valid values:
+        # The routable protocol of the port. Valid values:
         # 
-        # *   **STATIC**: static routing protocol
-        # *   **OSPF**: Open Shortest Path First protocol (OSPF)
-        # *   **BGP**: Border Gateway Protocol (BGP)
+        # - **STATIC**: static routable protocol.
+        # - **OSPF**: OSPF dynamic routable protocol.
+        # - **BGP**: BGP dynamic routable protocol.
         self.route_protocol = route_protocol
-        # The status of the port. Valid values:
+        # The port status. Valid values:
         # 
-        # *   **UP**: The port was enabled.
-        # *   **DOWN**: The port was disabled.
+        # - **UP**: The port is enabled.
+        # - **DOWN**: The port is disabled.
         self.status = status
         # The VLAN ID.
         self.vlan = vlan

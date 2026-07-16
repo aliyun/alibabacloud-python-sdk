@@ -15,12 +15,29 @@ class ListDatasourcesRequest(DaraModel):
         type: str = None,
         workspace_id: str = None,
     ):
+        # The name of the data source.
         self.name = name
+        # The sort order. Valid values:
+        # 
+        # - Asc: ascending order.
+        # 
+        # - Desc: descending order.
         self.order = order
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
+        # The number of data sources per page. Default value: 10.
         self.page_size = page_size
+        # The field to sort by.
         self.sort_by = sort_by
+        # The type of the data source. Valid values:
+        # 
+        # - Hologres
+        # 
+        # - Redis
+        # 
+        # - MaxCompute
         self.type = type
+        # The ID of the workspace. Call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to get the workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

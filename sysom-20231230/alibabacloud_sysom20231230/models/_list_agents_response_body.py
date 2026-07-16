@@ -16,10 +16,19 @@ class ListAgentsResponseBody(DaraModel):
         message: str = None,
         total: int = None,
     ):
+        # The request ID, which can be used for end-to-end diagnostics.
         self.request_id = request_id
+        # The status code.
+        # - If code is Success, the authorization is successful.
+        # - Other status codes indicate authorization failed. Check the message field for the detailed fault information.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
+        # - If code is Success, this field is empty.
+        # - Otherwise, this field contains the request error message.
         self.message = message
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -86,13 +95,23 @@ class ListAgentsResponseBodyData(DaraModel):
         updated_at: str = None,
         versions: List[main_models.ListAgentsResponseBodyDataVersions] = None,
     ):
+        # The time when the component was created.
         self.created_at = created_at
+        # The component description.
         self.description = description
+        # The component ID.
         self.id = id
+        # The component name.
         self.name = name
+        # The supported architectures. Multiple architectures are separated by commas.
         self.support_arch = support_arch
+        # The type of the component. Valid values:
+        # - Control: control-type component.
+        # - AI: AI component.
         self.type = type
+        # The time when the component was last updated.
         self.updated_at = updated_at
+        # The list of component versions.
         self.versions = versions
 
     def validate(self):
@@ -175,11 +194,17 @@ class ListAgentsResponseBodyDataVersions(DaraModel):
         upgrade_script: str = None,
         version: str = None,
     ):
+        # The time when the component version was created.
         self.created_at = created_at
+        # The installation script of the component.
         self.install_script = install_script
+        # The uninstallation script of the component.
         self.uninstall_script = uninstall_script
+        # The time when the component version was last updated.
         self.updated_at = updated_at
+        # The update script of the component.
         self.upgrade_script = upgrade_script
+        # The component version number.
         self.version = version
 
     def validate(self):

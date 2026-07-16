@@ -10,7 +10,7 @@ class GetIdentityProviderRequest(DaraModel):
         identity_provider_id: str = None,
         instance_id: str = None,
     ):
-        # Identity provider ID.
+        # The identity provider ID.
         # 
         # This parameter is required.
         self.identity_provider_id = identity_provider_id

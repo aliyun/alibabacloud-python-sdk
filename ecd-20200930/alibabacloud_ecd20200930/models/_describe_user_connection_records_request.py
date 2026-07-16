@@ -47,21 +47,21 @@ class DescribeUserConnectionRecordsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   SIMPLE: convenience account
+        # - SIMPLE: convenience account
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   AD_CONNECTOR: enterprise AD account
+        # - AD_CONNECTOR: enterprise AD account
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.end_user_type = end_user_type
         # The number of entries to return on each page. Maximum value: 100. Default value: 10.
         self.max_results = max_results

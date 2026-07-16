@@ -9,6 +9,8 @@ class UpdateSessionInput(DaraModel):
     def __init__(
         self,
         disable_session_id_reuse: bool = None,
+        enable_auto_pause: bool = None,
+        enable_auto_resume: bool = None,
         juice_fs_config: main_models.JuiceFsConfig = None,
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
@@ -16,12 +18,20 @@ class UpdateSessionInput(DaraModel):
         session_idle_timeout_in_seconds: int = None,
         session_ttlin_seconds: int = None,
     ):
+        # Specifies whether to disable session ID reuse after the session expires. Valid values:
+        # - False: After the session associated with a SessionID expires, you can use the same SessionID to initiate requests. The system treats this as a new session and binds it to a new instance.
+        # - True: After the session associated with a SessionID expires, the SessionID cannot be reused.
+        # Default value: False.
         self.disable_session_id_reuse = disable_session_id_reuse
+        self.enable_auto_pause = enable_auto_pause
+        self.enable_auto_resume = enable_auto_resume
         self.juice_fs_config = juice_fs_config
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
         self.polar_fs_config = polar_fs_config
+        # The session idle timeout period.
         self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        # The session lifetime.
         self.session_ttlin_seconds = session_ttlin_seconds
 
     def validate(self):
@@ -41,6 +51,12 @@ class UpdateSessionInput(DaraModel):
             result = _map
         if self.disable_session_id_reuse is not None:
             result['disableSessionIdReuse'] = self.disable_session_id_reuse
+
+        if self.enable_auto_pause is not None:
+            result['enableAutoPause'] = self.enable_auto_pause
+
+        if self.enable_auto_resume is not None:
+            result['enableAutoResume'] = self.enable_auto_resume
 
         if self.juice_fs_config is not None:
             result['juiceFsConfig'] = self.juice_fs_config.to_map()
@@ -66,6 +82,12 @@ class UpdateSessionInput(DaraModel):
         m = m or dict()
         if m.get('disableSessionIdReuse') is not None:
             self.disable_session_id_reuse = m.get('disableSessionIdReuse')
+
+        if m.get('enableAutoPause') is not None:
+            self.enable_auto_pause = m.get('enableAutoPause')
+
+        if m.get('enableAutoResume') is not None:
+            self.enable_auto_resume = m.get('enableAutoResume')
 
         if m.get('juiceFsConfig') is not None:
             temp_model = main_models.JuiceFsConfig()

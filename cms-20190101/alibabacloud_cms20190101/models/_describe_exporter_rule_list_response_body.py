@@ -18,23 +18,22 @@ class DescribeExporterRuleListResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # > A value of 200 indicates success. Any other value indicates failure.
         self.code = code
         self.datapoints = datapoints
         # The returned message.
         self.message = message
-        # The page number of the returned page.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   `true`
-        # *   `false`
+        # Indicates whether the call was successful. Valid values:  
+        # - `true`: Successful.
+        # - `false`: Failed.
         self.success = success
-        # The total number of returned entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):

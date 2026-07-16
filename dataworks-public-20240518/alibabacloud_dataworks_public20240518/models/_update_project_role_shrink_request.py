@@ -12,11 +12,20 @@ class UpdateProjectRoleShrinkRequest(DaraModel):
         module_permissions_shrink: str = None,
         project_id: int = None,
     ):
+        # A reserved parameter.
         self.client_token = client_token
+        # The unique identifier of the custom role.
+        # 
         # This parameter is required.
         self.code = code
+        # The list of DataWorks module permissions.
+        # 
         # This parameter is required.
         self.module_permissions_shrink = module_permissions_shrink
+        # The ID of the DataWorks workspace. You can log on to the [DataWorks console](https://dataworks.console.aliyun.com/workspace/list) and go to the workspace management page to obtain the ID.
+        # 
+        # This parameter specifies the DataWorks workspace on which the API operation is performed.
+        # 
         # This parameter is required.
         self.project_id = project_id
 

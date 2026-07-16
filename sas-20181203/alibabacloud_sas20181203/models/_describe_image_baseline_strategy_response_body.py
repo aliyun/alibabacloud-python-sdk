@@ -15,7 +15,7 @@ class DescribeImageBaselineStrategyResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information about the baseline check policy.
+        # The baseline check policy information.
         self.strategy = strategy
 
     def validate(self):
@@ -58,24 +58,25 @@ class DescribeImageBaselineStrategyResponseBodyStrategy(DaraModel):
         total_item_count: int = None,
         type: str = None,
     ):
-        # The baseline check policy for agentless detection.
+        # The agentless baseline check policy.
         self.baseline_item = baseline_item
-        # An array that contains the baselines.
+        # The list of baseline items.
         self.baseline_item_list = baseline_item_list
+        # The retention period of baseline risks. Unit: days.
         self.image_vul_clean = image_vul_clean
         # The number of selected baseline check items.
         self.selected_item_count = selected_item_count
         # The ID of the baseline check policy.
         self.strategy_id = strategy_id
-        # The name of the baseline check policy.
+        # The Policy Name.
         self.strategy_name = strategy_name
         # The total number of baseline check items.
         self.total_item_count = total_item_count
         # The type of the baseline check policy. Valid values:
         # 
-        # *   **default**: the default policy
-        # *   **full**: a policy that uses all baselines
-        # *   **normal**: a policy that uses general baselines
+        # - **default**: default policy
+        # - **full**: full baseline item policy
+        # - **normal**: common baseline item policy.
         self.type = type
 
     def validate(self):
@@ -155,11 +156,11 @@ class DescribeImageBaselineStrategyResponseBodyStrategyBaselineItemList(DaraMode
         item_key: str = None,
         name_key: str = None,
     ):
-        # The key of the baseline type.
+        # The classification key of the baseline main item.
         self.class_key = class_key
-        # The key of the baseline check item.
+        # The key of the baseline subitem.
         self.item_key = item_key
-        # The key of the name for the baseline.
+        # The name key of the baseline main item.
         self.name_key = name_key
 
     def validate(self):

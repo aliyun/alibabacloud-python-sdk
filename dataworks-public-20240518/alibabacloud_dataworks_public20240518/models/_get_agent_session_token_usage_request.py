@@ -12,8 +12,11 @@ class GetAgentSessionTokenUsageRequest(DaraModel):
         jsonrpc: str = None,
         params: main_models.GetAgentSessionTokenUsageRequestParams = None,
     ):
+        # The ID provided by the requester, which is echoed in the response.
         self.id = id
+        # The JSON-RPC version. The value is always 2.0.
         self.jsonrpc = jsonrpc
+        # Business parameters.
         self.params = params
 
     def validate(self):
@@ -55,6 +58,7 @@ class GetAgentSessionTokenUsageRequestParams(DaraModel):
         self,
         session_id: str = None,
     ):
+        # The session ID. Required.
         self.session_id = session_id
 
     def validate(self):

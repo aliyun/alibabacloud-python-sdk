@@ -16,12 +16,19 @@ class SubmitDocClusterTaskRequest(DaraModel):
         title_length: int = None,
         topic_count: int = None,
     ):
+        # The unique ID of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # A list of documents.
+        # 
         # This parameter is required.
         self.documents = documents
+        # The character limit for the generated cluster summary.
         self.summary_length = summary_length
+        # The character limit for the generated cluster title.
         self.title_length = title_length
+        # The maximum number of clusters.
         self.topic_count = topic_count
 
     def validate(self):
@@ -83,9 +90,13 @@ class SubmitDocClusterTaskRequestDocuments(DaraModel):
         doc_id: str = None,
         title: str = None,
     ):
+        # The content of the document.
+        # 
         # This parameter is required.
         self.content = content
+        # The document ID. It is used to identify the document in the returned cluster results. If you do not provide an ID for any document, the array index is used instead. An error is reported if you provide IDs for only some of the documents.
         self.doc_id = doc_id
+        # The title of the document.
         self.title = title
 
     def validate(self):

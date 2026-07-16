@@ -16,15 +16,37 @@ class ListIpamDiscoveredIpAddressesRequest(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The CIDR block to search for used IP addresses in a VPC or vSwitch. To query a specific IP address, use a /32 prefix length.
+        # 
+        # > Only IPv4 CIDR blocks are supported.
         self.cidr = cidr
+        # The IP protocol version. Valid value:
+        # 
+        # - **IPv4**
         self.ip_version = ip_version
+        # The ID of the resource discovery instance.
+        # 
         # This parameter is required.
         self.ipam_resource_discovery_id = ipam_resource_discovery_id
+        # The maximum number of entries to return per page. Valid values: 1 to 200. Default value: 100.
         self.max_results = max_results
+        # The token used to retrieve the next page of results. Valid values:
+        # 
+        # - Do not specify this parameter for your first request.
+        # 
+        # - If a next page exists, set this parameter to the value of **NextToken** returned in the previous response.
         self.next_token = next_token
+        # The ID of the region where the resource discovery instance is hosted.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of a discovered VSwitch.
+        # 
+        # > You must specify at least one of VpcId and VSwitchId.
         self.v_switch_id = v_switch_id
+        # The ID of a discovered VPC.
+        # 
+        # > You must specify at least one of VpcId and VSwitchId.
         self.vpc_id = vpc_id
 
     def validate(self):

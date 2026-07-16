@@ -64,21 +64,21 @@ class ListProjectLogStoresResponseBodyData(DaraModel):
         sub_user_id: int = None,
         sub_user_name: str = None,
     ):
-        # The endpoint of the Simple Log Service project.
+        # The endpoint of the SLS project.
         self.end_point = end_point
-        # The name of the region in which the Simple Log Service project resides.
+        # The name of the region where the SLS project resides.
         self.local_name = local_name
-        # The name of the Simple Log Service Logstore.
+        # The name of the SLS Logstore.
         self.log_store = log_store
-        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
+        # The ID of the Alibaba Cloud account that is used to purchase Threat Analysis.
         self.main_user_id = main_user_id
-        # The name of the Simple Log Service project.
+        # The name of the SLS project.
         self.project = project
-        # The ID of the region in which the Simple Log Service project resides.
+        # The region where the SLS project resides.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The ID of the member account for which threat analysis is performed.
         self.sub_user_id = sub_user_id
-        # The username of the Alibaba Cloud account that can be used to perform operations supported by the threat analysis feature.
+        # The name of the member account.
         self.sub_user_name = sub_user_name
 
     def validate(self):

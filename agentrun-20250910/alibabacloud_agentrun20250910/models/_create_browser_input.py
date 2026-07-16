@@ -17,22 +17,29 @@ class CreateBrowserInput(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         session_idle_timeout_seconds: int = None,
     ):
+        # The name of the browser.
+        # 
         # This parameter is required.
         self.browser_name = browser_name
-        # CPU资源配置（单位：核）
+        # The CPU cores to allocate to the browser instance.
         # 
         # This parameter is required.
         self.cpu = cpu
+        # The credential ID used for authentication.
         self.credential_id = credential_id
+        # A description of the browser instance.
         self.description = description
+        # The ARN of the execution role.
         self.execution_role_arn = execution_role_arn
-        # 内存资源配置（单位：MB）
+        # The memory (in MB) to allocate to the browser instance.
         # 
         # This parameter is required.
         self.memory = memory
+        # The network configuration for the browser instance.
+        # 
         # This parameter is required.
         self.network_configuration = network_configuration
-        # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
+        # The idle time in seconds before a session expires. When a session is idle, the instance enters an idle billing mode.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
 
     def validate(self):

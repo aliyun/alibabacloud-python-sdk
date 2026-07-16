@@ -10,7 +10,15 @@ class ListClickHouseDBTimezonesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number.
         self.page_number = page_number
+        # The number of records on each page. Valid values:
+        # 
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
 
     def validate(self):

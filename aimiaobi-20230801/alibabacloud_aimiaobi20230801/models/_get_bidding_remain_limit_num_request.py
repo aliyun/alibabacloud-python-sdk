@@ -10,7 +10,9 @@ class GetBiddingRemainLimitNumRequest(DaraModel):
         api_name: str = None,
         workspace_id: str = None,
     ):
+        # API name
         self.api_name = api_name
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

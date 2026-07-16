@@ -17,12 +17,19 @@ class DescribeModelApisResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
+        # A list of Model API objects.
         self.items = items
+        # The page number.
         self.page_number = page_number
+        # The number of records returned on the current page.
         self.page_record_count = page_record_count
+        # The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+        # 
+        # Default value: **30**.
         self.page_size = page_size
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of records that match the query.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -97,15 +104,39 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         route_rules: str = None,
         status: str = None,
     ):
+        # The model category. Valid values:
+        # 
+        # - **text**
+        # 
+        # - **embedding**
+        # 
+        # - **rerank**
         self.category = category
+        # The creation time.
         self.gmt_created = gmt_created
+        # The Model API ID.
         self.model_api_id = model_api_id
+        # The Model API name.
         self.name = name
+        # The API path prefix.
         self.path_prefix = path_prefix
+        # The protocol. Valid values:
+        # 
+        # - **openai**
+        # 
+        # - **anthropic**
+        # 
+        # - **bailian**
+        # 
+        # - **vllm**
         self.protocol = protocol
+        # The number of input records.
         self.record_input = record_input
+        # The number of output records.
         self.record_output = record_output
+        # A JSON array of routing rules, formatted as a string.
         self.route_rules = route_rules
+        # The Model API status.
         self.status = status
 
     def validate(self):

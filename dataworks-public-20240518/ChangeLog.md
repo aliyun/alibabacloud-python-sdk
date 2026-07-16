@@ -1,3 +1,132 @@
+2026-07-10 Version: 8.8.5
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.ResourceGroupId.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.Skills.
+- Update API ListDataAssets: add request parameters AssetDomainId.
+- Update API ListDataAssets: add request parameters CategoryUuid.
+- Update API ListDataAssets: add request parameters Name.
+- Update API ListDataAssets: add response parameters Body.PagingInfo.DataAssets.$.AssetCategories.
+
+
+2026-07-06 Version: 8.8.4
+- Update API CreatePipelineRun: add request parameters AutoRunUntilStage.
+- Update API CreatePipelineRun: add request parameters RunMode.
+- Update API GetTable: add request parameters IncludeExtendedProperties.
+- Update API ImportWorkflowDefinition: add request parameters DryRun.
+- Update API ListColumns: add request parameters IncludeExtendedProperties.
+- Update API ListTables: add request parameters IncludeExtendedProperties.
+
+
+2026-06-26 Version: 8.8.3
+- Update API RerunTaskInstances: add request parameters UseLatestConfig.
+
+
+2026-06-23 Version: 8.8.2
+- Update API ApproveProcessInstance: add request parameters NewExpiration.
+- Update API CreateAgentSession: add request parameters Params.Meta.InitialConfigOptions.
+
+
+2026-06-09 Version: 8.8.1
+- Generated python 2024-05-18 for dataworks-public.
+
+2026-06-08 Version: 8.8.0
+- Support API ApplyResourceAccessPermission.
+- Support API ApproveProcessInstance.
+- Support API CreateProcessDefinition.
+- Support API CreateSecurityStrategy.
+- Support API DeleteProcessDefinition.
+- Support API DeleteSecurityStrategy.
+- Support API DisableProcessDefinition.
+- Support API EnableProcessDefinition.
+- Support API FindBestMatchSecurityStrategy.
+- Support API GetApplicationContents.
+- Support API GetProcessDefinition.
+- Support API GetProcessInstance.
+- Support API GetSecurityStrategy.
+- Support API ListMyApplications.
+- Support API ListMyRelatedApprovals.
+- Support API ListPendingApprovals.
+- Support API ListProcessDefinitions.
+- Support API ListSecurityStrategies.
+- Support API StopProcessInstance.
+- Support API UpdateProcessDefinition.
+- Support API UpdateSecurityStrategy.
+
+
+2026-06-08 Version: 8.8.0
+- Support API ApplyResourceAccessPermission.
+- Support API ApproveProcessInstance.
+- Support API CreateProcessDefinition.
+- Support API CreateSecurityStrategy.
+- Support API DeleteProcessDefinition.
+- Support API DeleteSecurityStrategy.
+- Support API DisableProcessDefinition.
+- Support API EnableProcessDefinition.
+- Support API FindBestMatchSecurityStrategy.
+- Support API GetApplicationContents.
+- Support API GetProcessDefinition.
+- Support API GetProcessInstance.
+- Support API GetSecurityStrategy.
+- Support API ListMyApplications.
+- Support API ListMyRelatedApprovals.
+- Support API ListPendingApprovals.
+- Support API ListProcessDefinitions.
+- Support API ListSecurityStrategies.
+- Support API StopProcessInstance.
+- Support API UpdateProcessDefinition.
+- Support API UpdateSecurityStrategy.
+
+
+2026-06-07 Version: 8.7.0
+- Support API CreateMcpServer.
+- Support API CreateSkill.
+- Support API GetMcpServer.
+- Support API GetSkill.
+- Support API ListCustomAgents.
+- Support API ListMcpServers.
+- Support API ListSkills.
+- Support API UpdateMcpServer.
+
+
+2026-06-05 Version: 8.6.0
+- Support API CreateAgent.
+- Support API DeleteAgent.
+- Support API DeleteMcpServer.
+- Support API DeleteSkill.
+- Support API GetAgent.
+
+
+2026-06-05 Version: 8.6.0
+- Support API CreateAgent.
+- Support API DeleteAgent.
+- Support API DeleteMcpServer.
+- Support API DeleteSkill.
+- Support API GetAgent.
+
+
+2026-06-04 Version: 8.5.0
+- Support API BatchCreateMetaEntities.
+- Support API BatchDeleteMetaEntities.
+- Support API CreateCustomAttribute.
+- Support API CreateMetaEntityDef.
+- Support API DeleteCustomAttribute.
+- Support API DeleteMetaEntityDef.
+- Support API GetCustomAttribute.
+- Support API GetMetaEntity.
+- Support API GetMetaEntityDef.
+- Support API ListCustomAttributes.
+- Support API ListMetaEntities.
+- Support API ListMetaEntityDefs.
+- Support API UpdateCustomAttribute.
+- Support API UpdateMetaEntity.
+- Support API UpdateMetaEntityDef.
+- Update API UpdateColumnBusinessMetadata: add request parameters CustomAttributes.
+- Update API UpdateTableBusinessMetadata: add request parameters CustomAttributes.
+
+
+2026-05-21 Version: 8.4.1
+- Update API ListWorkflowInstances: add request parameters EnvType.
+
+
 2026-05-15 Version: 8.4.0
 - Support API CreateProjectRole.
 - Support API DeleteProjectRole.

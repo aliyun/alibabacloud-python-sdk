@@ -14,7 +14,6 @@ class QueryBuyerDomainTradeRecordsResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.module = module
-        # Id of the request
         self.request_id = request_id
 
     def validate(self):

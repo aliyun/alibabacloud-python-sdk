@@ -25,44 +25,53 @@ class GetConnectionResponseBody(DaraModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
-        # The resource accessibility. Valid values:
+        # The visibility of the resource. Valid values:
         # 
-        # *   PUBLIC: All members in the workspace can access the workspace.
-        # *   PRIVATE: Only the creator can access the workspace.
+        # - PUBLIC: All members in the current workspace can access the resource.
+        # 
+        # - PRIVATE: Only the creator can access the resource.
         self.accessibility = accessibility
-        # The connection configuration.
+        # The configuration information of the connection.
         self.configs = configs
         # The connection ID.
         self.connection_id = connection_id
-        # The connection name.
+        # The name of the connection.
         self.connection_name = connection_name
         # The type of the connection. Valid values:
         # 
-        # *   DashScopeConnection: Alibaba Cloud Model Studio connection.
-        # *   OpenLLMConnection: Open source model connection.
-        # *   MilvusConnection: Milvus connection.
-        # *   OpenSearchConnection: OpenSearch connection.
-        # *   LindormConnection: Lindorm connection.
-        # *   ElasticsearchConnection: Elasticsearch connection.
-        # *   HologresConnection: Hologres connection.
-        # *   RDSConnection: RDS connection.
-        # *   CustomConnection: Custom connection.
+        # - DashScopeConnection: A connection to a Model Studio service.
+        # 
+        # - OpenLLMConnection: A connection to an open-source model.
+        # 
+        # - MilvusConnection: A connection to Milvus.
+        # 
+        # - OpenSearchConnection: A connection to OpenSearch.
+        # 
+        # - LindormConnection: A connection to Lindorm.
+        # 
+        # - ElasticsearchConnection: A connection to Elasticsearch.
+        # 
+        # - HologresConnection: A connection to Hologres.
+        # 
+        # - RDSConnection: A connection to RDS.
+        # 
+        # - CustomConnection: A custom connection.
         self.connection_type = connection_type
         # The creator of the connection.
         self.creator = creator
-        # The connection description.
+        # The description of the connection.
         self.description = description
-        # The time when the connection is created, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the connection was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the connection is modified, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the connection was last modified. The time is in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The models, which apply to model service connections.
+        # The list of models. This parameter is applicable to connections of the model service type.
         self.models = models
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # The instance resource information of the connection, which applies to database connections.
+        # The instance resource information of the connection. This parameter is typically used for database connections.
         self.resource_meta = resource_meta
-        # The encrypted configuration, in key-value pairs. Examples: the database logon password and the key of the model connection.
+        # The key-value pairs that need to be encrypted. Examples include the logon password for a database and the key for a model connection.
         self.secrets = secrets
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -183,6 +192,7 @@ class GetConnectionResponseBodyResourceMeta(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # Additional configuration information.
         self.extra = extra
         # The instance ID.
         self.instance_id = instance_id
@@ -235,14 +245,17 @@ class GetConnectionResponseBodyModels(DaraModel):
         self.model = model
         # The model type. Valid values:
         # 
-        # *   LLM
-        # *   Embedding
-        # *   ReRank
-        self.model_type = model_type
-        # Indicates whether a tool can be called by using ToolCall. Valid values:
+        # - LLM: A large language model (LLM).
         # 
-        # *   true
-        # *   false
+        # - Embedding: An embedding model.
+        # 
+        # - ReRank: A reranking model.
+        self.model_type = model_type
+        # Indicates whether tool calling is supported. Valid values:
+        # 
+        # - true: Tool calling is supported.
+        # 
+        # - false: Tool calling is not supported.
         self.tool_call = tool_call
 
     def validate(self):

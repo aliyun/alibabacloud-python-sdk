@@ -14,8 +14,13 @@ class BatchRevokePermissionsResponseBody(DaraModel):
         failure_permissions: List[main_models.FailurePermission] = None,
         success: bool = None,
     ):
+        # - A business error message is returned if \\`success\\` is \\`false\\`.
+        # 
+        # - This parameter is empty if \\`success\\` is \\`true\\`.
         self.error_message = error_message
+        # The permissions failed to be revoked.
         self.failure_permissions = failure_permissions
+        # Indicates whether the call succeeded.
         self.success = success
 
     def validate(self):

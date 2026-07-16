@@ -15,10 +15,13 @@ class DescribeExtensionsResponseBody(DaraModel):
         request_id: str = None,
         uninstalled_extensions: List[main_models.DescribeExtensionsResponseBodyUninstalledExtensions] = None,
     ):
+        # The extensions that are installed in the specified database.
         self.installed_extensions = installed_extensions
+        # The overview of the extension.
         self.overview = overview
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The extensions that are not installed in the specified database.
         self.uninstalled_extensions = uninstalled_extensions
 
     def validate(self):
@@ -89,14 +92,23 @@ class DescribeExtensionsResponseBodyUninstalledExtensions(DaraModel):
         requires: str = None,
         restart: str = None,
     ):
+        # The extension type.
         self.category = category
+        # The purpose of the extension.
         self.comment = comment
+        # The default version of the extension.
         self.default_version = default_version
+        # The currently installed version of the extension.
         self.installed_version = installed_version
+        # The extension name.
         self.name = name
+        # The owner of the extension.
         self.owner = owner
+        # The priority of the extension.
         self.priority = priority
+        # The extensions on which this extension depends.
         self.requires = requires
+        # Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
         self.restart = restart
 
     def validate(self):
@@ -180,14 +192,23 @@ class DescribeExtensionsResponseBodyInstalledExtensions(DaraModel):
         requires: str = None,
         restart: str = None,
     ):
+        # The extension type.
         self.category = category
+        # The description of the extension.
         self.comment = comment
+        # The default version of the extension.
         self.default_version = default_version
+        # The currently installed version of the extension.
         self.installed_version = installed_version
+        # The extension name.
         self.name = name
+        # The owner of the extension.
         self.owner = owner
+        # The priority of the extension.
         self.priority = priority
+        # The extensions on which this extension depends.
         self.requires = requires
+        # Specifies whether to restart the application. \\`true\\`: The application is restarted. \\`false\\`: The application is not restarted.
         self.restart = restart
 
     def validate(self):

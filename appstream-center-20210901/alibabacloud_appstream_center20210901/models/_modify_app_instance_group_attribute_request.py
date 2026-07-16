@@ -22,47 +22,32 @@ class ModifyAppInstanceGroupAttributeRequest(DaraModel):
         session_timeout: int = None,
         storage_policy: main_models.ModifyAppInstanceGroupAttributeRequestStoragePolicy = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         # 
         # This parameter is required.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
-        # The network settings.
+        # The network configuration.
         # 
-        # >  If you want to use this parameter, submit a ticket.
+        # > To use this parameter, submit a ticket.
         self.network = network
-        # The information about the resource group.
+        # The resource group object.
         self.node_pool = node_pool
-        # Specifies whether only one application can be opened in a session.
-        # 
-        # *   After you enable this feature, the system assigns a session to each application if you open multiple applications in a delivery group. This consumes a larger number of sessions.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to allow only one application per session.
+        # - If enabled, opening multiple applications within a delivery group allocates a separate session for each application, consuming more sessions.
         self.per_session_per_app = per_session_per_app
-        # The application ID of the pre-open application. If you set `PreOpenMode` to `SINGLE_APP`, you cannot leave this parameter empty.``
+        # The AppId of the pre-open application. If the PreOpenMode parameter is set to `SINGLE_APP`, PreOpenAppId cannot be an empty string.
         self.pre_open_app_id = pre_open_app_id
         # The pre-open mode.
-        # 
-        # Valid values:
-        # 
-        # *   SINGLE_APP: enables the pre-open mode for a single application.
-        # *   OFF: disables the pre-open mode. This is the default value.
         self.pre_open_mode = pre_open_mode
         # The product type.
-        # 
-        # Valid value:
-        # 
-        # *   CloudApp: App Streaming
         # 
         # This parameter is required.
         self.product_type = product_type
         # The security policy.
         self.security_policy = security_policy
-        # The duration for which sessions are retained after disconnection. Unit: minutes. After an end user disconnects from a session, the session is closed only after the specified duration elapses. If you want to permanently retain sessions, set this parameter to `-1`. Valid values:-1 and 3 to 300. Default value: `15`.
+        # The session retention duration after disconnection, in minutes. After an end user session is disconnected, the session is retained for the specified duration before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
         # The storage policy.
         self.storage_policy = storage_policy
@@ -165,9 +150,9 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicy(DaraModel):
         user_profile: main_models.ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile = None,
         user_profile_follow: main_models.ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfileFollow = None,
     ):
-        # The storage types.
+        # The list of storage types.
         self.storage_type_list = storage_type_list
-        # The configurations of user data roaming.
+        # The user data roaming configuration.
         self.user_profile = user_profile
         self.user_profile_follow = user_profile_follow
 
@@ -249,14 +234,9 @@ class ModifyAppInstanceGroupAttributeRequestStoragePolicyUserProfile(DaraModel):
         file_system_id: str = None,
         user_profile_switch: bool = None,
     ):
-        # The ID of the File Storage NAS (NAS) file system used to store user data.
+        # The ID of the user data storage system (NAS ID).
         self.file_system_id = file_system_id
-        # Specifies whether user data roaming is enabled.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable user data roaming.
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -291,19 +271,9 @@ class ModifyAppInstanceGroupAttributeRequestSecurityPolicy(DaraModel):
         reset_after_unbind: bool = None,
         skip_user_auth_check: bool = None,
     ):
-        # Specifies whether to reset after unbinding from a delivery group.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to reset after unbinding.
         self.reset_after_unbind = reset_after_unbind
-        # Specifies whether to skip user permission verification.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false: This is the default value.
+        # Specifies whether to skip user authorization verification.
         self.skip_user_auth_check = skip_user_auth_check
 
     def validate(self):
@@ -338,15 +308,9 @@ class ModifyAppInstanceGroupAttributeRequestNodePool(DaraModel):
         node_capacity: int = None,
         node_pool_id: str = None,
     ):
-        # The maximum number of sessions to which a resource can connect at the same time. If a resource connects to a large number of sessions at the same time, user experience can be compromised. The value range varies based on the resource type. The following items describe the value ranges of different resource types:
-        # 
-        # *   appstreaming.general.4c8g: 1 to 2
-        # *   appstreaming.general.8c16g: 1 to 4
-        # *   appstreaming.vgpu.8c16g.4g: 1 to 4
-        # *   appstreaming.vgpu.8c31g.16g: 1 to 4
-        # *   appstreaming.vgpu.14c93g.12g: 1 to 6
+        # The number of concurrent sessions, which is the number of sessions that can be simultaneously connected to a single resource. Too many simultaneous sessions may degrade the application experience. The valid value range varies by resource specification. You can call the ListNodeInstanceType operation to query the valid value range for each resource specification.
         self.node_capacity = node_capacity
-        # The ID of the resource group.
+        # The resource group ID.
         self.node_pool_id = node_pool_id
 
     def validate(self):
@@ -380,7 +344,7 @@ class ModifyAppInstanceGroupAttributeRequestNetwork(DaraModel):
         self,
         domain_rules: List[main_models.ModifyAppInstanceGroupAttributeRequestNetworkDomainRules] = None,
     ):
-        # The domain name rules.
+        # The domain name rule configurations.
         self.domain_rules = domain_rules
 
     def validate(self):
@@ -419,12 +383,7 @@ class ModifyAppInstanceGroupAttributeRequestNetworkDomainRules(DaraModel):
     ):
         # The domain name.
         self.domain = domain
-        # The policy used for the domain name.
-        # 
-        # Valid values:
-        # 
-        # *   allow
-        # *   block
+        # The policy value.
         self.policy = policy
 
     def validate(self):

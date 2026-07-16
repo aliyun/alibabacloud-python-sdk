@@ -11,8 +11,11 @@ class GetAgentSessionArtifactMetaShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
+        # A client-provided ID that is echoed in the response.
         self.id = id
+        # The JSON-RPC version. The value is `2.0`.
         self.jsonrpc = jsonrpc
+        # The container for business parameters.
         self.params_shrink = params_shrink
 
     def validate(self):

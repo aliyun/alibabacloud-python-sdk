@@ -21,10 +21,11 @@ class ListCenInterRegionTrafficQosPoliciesRequest(DaraModel):
     ):
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token for the next page of results. Valid values:
         # 
-        # *   If this is your first query or no subsequent query is to be sent, ignore this parameter.
-        # *   If a next query is to be sent, set the value to the value of **NextToken** that is returned from the last call.
+        # - If this is your first query or no next page exists, do not specify this parameter.
+        # 
+        # - If a next page exists, set the value to the **NextToken** value returned from the previous call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32,17 +33,17 @@ class ListCenInterRegionTrafficQosPoliciesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The description of the QoS policy.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
         self.traffic_qos_policy_description = traffic_qos_policy_description
         # The ID of the QoS policy.
         self.traffic_qos_policy_id = traffic_qos_policy_id
         # The name of the QoS policy.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
         self.traffic_qos_policy_name = traffic_qos_policy_name
         # The ID of the inter-region connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The ID of the transit router.
+        # The ID of the TransitRouter instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

@@ -10,8 +10,12 @@ class EncryptPhoneNumRequest(DaraModel):
         instance_id: str = None,
         phone_num: str = None,
     ):
+        # AICCS instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The plaintext phone number.
+        # 
         # This parameter is required.
         self.phone_num = phone_num
 

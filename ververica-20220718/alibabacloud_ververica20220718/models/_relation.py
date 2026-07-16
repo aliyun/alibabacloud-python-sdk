@@ -11,8 +11,11 @@ class Relation(DaraModel):
         job_id: str = None,
         source: str = None,
     ):
+        # The destination table information.
         self.destination = destination
+        # The job instance ID.
         self.job_id = job_id
+        # The source table information.
         self.source = source
 
     def validate(self):

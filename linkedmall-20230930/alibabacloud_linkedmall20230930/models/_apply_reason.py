@@ -10,7 +10,9 @@ class ApplyReason(DaraModel):
         reason_text_id: int = None,
         reason_tips: str = None,
     ):
+        # The reason ID.
         self.reason_text_id = reason_text_id
+        # The reason text.
         self.reason_tips = reason_tips
 
     def validate(self):

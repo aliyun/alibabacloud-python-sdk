@@ -31,34 +31,39 @@ class DescribeDnsGtmInstanceAddressPoolResponseBody(DaraModel):
         self.addrs = addrs
         # The time when the address pool was created.
         self.create_time = create_time
-        # The timestamp that indicates the time when the address pool was created.
+        # The time when the address pool was created. This value is a UNIX timestamp.
         self.create_timestamp = create_timestamp
-        # The load balancing policy for the address pool. Valid values:
+        # The load balancing policy.
         # 
-        # *   ALL_RR: returns all addresses.
-        # *   RATIO: returns addresses by weight.
+        # - ALL_RR: Returns all addresses.
+        # 
+        # - RATIO: Returns addresses by weight.
         self.lba_strategy = lba_strategy
         # The ID of the health check configuration.
         self.monitor_config_id = monitor_config_id
-        # Indicates the status of the health check. Valid values:
+        # The health check status of the address pool.
         # 
-        # *   OPEN: The health check is enabled.
-        # *   CLOSE: The health check is disabled.
-        # *   UNCONFIGURED: The health check is not configured.
+        # - OPEN: Enabled
+        # 
+        # - CLOSE: Disabled
+        # 
+        # - UNCONFIGURED: Not configured
         self.monitor_status = monitor_status
         # The name of the address pool.
         self.name = name
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The type of the address pool. Valid values:
+        # The type of the address pool.
         # 
-        # *   IPV4: IPv4 address
-        # *   IPV6: IPv6 address
-        # *   DOMAIN: domain name
+        # - IPV4: IPv4 address
+        # 
+        # - IPV6: IPv6 address
+        # 
+        # - DOMAIN: Domain name
         self.type = type
         # The time when the address pool was last updated.
         self.update_time = update_time
-        # The timestamp that indicates the time when the address pool was last updated.
+        # The time when the address pool was last updated. This value is a UNIX timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

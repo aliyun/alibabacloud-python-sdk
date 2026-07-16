@@ -12,16 +12,17 @@ class UpdateSwimmingLaneEnableAttributeRequest(DaraModel):
         lane_id: int = None,
         namespace_id: str = None,
     ):
-        # Lane status:
+        # The enabled status of the swimming lane. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # - true: enabled
+        # 
+        # - false: disabled
         self.enable = enable
-        # The ID of the lane group.
+        # The swimming lane group ID.
         self.group_id = group_id
-        # The ID of the lane.
+        # The swimming lane ID.
         self.lane_id = lane_id
-        # The ID of a namespace.
+        # The namespace ID.
         self.namespace_id = namespace_id
 
     def validate(self):

@@ -12,7 +12,9 @@ class MassPushV2ResponseBody(DaraModel):
         message_ids: List[str] = None,
         request_id: str = None,
     ):
+        # List of message IDs.
         self.message_ids = message_ids
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

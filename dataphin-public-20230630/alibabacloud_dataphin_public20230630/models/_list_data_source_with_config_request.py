@@ -13,8 +13,12 @@ class ListDataSourceWithConfigRequest(DaraModel):
         list_query: main_models.ListDataSourceWithConfigRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # Paginated query
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -57,14 +61,30 @@ class ListDataSourceWithConfigRequestListQuery(DaraModel):
         tag: str = None,
         type_list: List[str] = None,
     ):
+        # Data source name
         self.name = name
+        # Data source owner
         self.owner_list = owner_list
+        # Page number. The value starts from 1.
+        # 
         # This parameter is required.
         self.page = page
+        # Number of records per page
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Data source scope. Valid values:
+        # - STREAMING: Real-time
+        # - OFFLINE: Offline
+        # - DIP_META_SYNC: Meta warehouse initialization
+        # - DATA_DISTILL: Data distillation
+        # - CUMPUTE_SOURCE_SHADOW: Shadow compute source
+        # - LABEL: Label
+        # - ALL: Offline + Real-time
         self.scope_list = scope_list
+        # Tag marked when creating the data source
         self.tag = tag
+        # Data source type
         self.type_list = type_list
 
     def validate(self):

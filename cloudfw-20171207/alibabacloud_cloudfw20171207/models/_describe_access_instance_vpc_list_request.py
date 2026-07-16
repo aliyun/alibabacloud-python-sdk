@@ -13,11 +13,17 @@ class DescribeAccessInstanceVpcListRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
+        # The UID of the Alibaba Cloud account that owns the resource.
         self.member_uid = member_uid
+        # The page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_no = region_no
+        # The ID of the VPC instance.
         self.vpc_id = vpc_id
 
     def validate(self):

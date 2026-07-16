@@ -17,11 +17,21 @@ class CancelAiCallDetailsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed reason why the access was denied.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The message returned for the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -85,10 +95,21 @@ class CancelAiCallDetailsResponseBodyData(DaraModel):
         succeed_count: int = None,
         total_count: int = None,
     ):
+        # The number of calls that could not be canceled.
         self.failed_count = failed_count
+        # Details about the failed cancellations. This is a map where the key is the failed detail ID or phone number, and the value is the reason for the failure.
         self.failed_details = failed_details
+        # The result code of the cancellation. Valid values:
+        # 
+        # - ALL_FAILED: All cancellations failed.
+        # 
+        # - ALL_SUCCEED: All cancellations succeeded.
+        # 
+        # - PART_FAILED: Some cancellations failed.
         self.result_code = result_code
+        # The number of calls that were successfully canceled.
         self.succeed_count = succeed_count
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):

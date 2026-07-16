@@ -14,9 +14,8 @@ class ListTagKeysRequest(DaraModel):
     ):
         # The matching mode. Valid values:
         # 
-        # - Equals: equal match
-        # 
-        # - Prefix: match by prefix
+        # *   Equals: equal match
+        # *   Prefix: match by prefix
         self.match_type = match_type
         # The maximum number of entries to return on each page.
         # 

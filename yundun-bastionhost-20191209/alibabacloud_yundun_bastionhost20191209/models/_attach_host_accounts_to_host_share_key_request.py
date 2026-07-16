@@ -14,11 +14,11 @@ class AttachHostAccountsToHostShareKeyRequest(DaraModel):
     ):
         # The host account IDs.
         # 
-        # >  You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
+        # > You must specify this parameter. You can call the [ListHostAccounts](https://help.aliyun.com/document_detail/462937.html) operation to query the host account IDs.
         self.host_account_ids = host_account_ids
         # The shared key ID.
         # 
-        # >  You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
+        # > You must specify this parameter. You can call the [ListHostShareKeys](https://help.aliyun.com/document_detail/462973.html) operation to query the shared key ID.
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the ID of the bastion host.
         # 

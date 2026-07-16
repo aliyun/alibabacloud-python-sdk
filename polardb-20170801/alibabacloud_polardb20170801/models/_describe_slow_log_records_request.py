@@ -21,49 +21,53 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         sqlhash: str = None,
         start_time: str = None,
     ):
-        # Cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) interface to view all cluster information in the target region, including the Cluster ID.
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all clusters in the target region and their cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Database name.
+        # The database name.
         self.dbname = dbname
-        # End time of the query, which must be later than the start time, and the time interval between the start and end times must not exceed 24 hours. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
+        # The end of the query time range. The end time must be later than the start time. The time range cannot exceed 24 hours. Specify the time in UTC in the `YYYY-MM-DDThh:mmZ` format.
         # 
-        # > The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
+        # > The time must be in UTC. If your service is in a different time zone, you must convert the time. For example, to query data from 08:00 to 12:00 in the UTC+8 time zone, you must set the time range from 00:00 UTC to 04:00 UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Node ID
+        # The node ID.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0.
+        # The page number. The value must be an integer greater than 0.
         # 
         # Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values:
+        # The number of records per page. Valid values:
         # 
-        # *   **30**
-        # *   **50**
-        # *   **100**
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # Region ID.
+        # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) interface to view the available regions under the target account, including the Region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions and their region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Unique identifier of the SQL statement in the slow log statistics, which can be used to obtain the detailed slow logs for that SQL statement.
+        # The SQL hash of a slow query. Obtain this hash from slow query log statistics to retrieve the details of a specific slow query.
         self.sqlhash = sqlhash
-        # Start time of the query. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
+        # The start of the query time range. Specify the time in UTC in the `YYYY-MM-DDThh:mmZ` format.
         # 
-        # > * Supports viewing slow log information up to 30 days.
-        # > * The input is UTC time (i.e., 0 timezone). If your service is currently in a different timezone, please perform a time conversion. For example, if the current timezone of your service is Beijing Time (UTC+8) at 12:00, and you need to query the slow logs between 08:00-12:00 Beijing Time, you should input 00:00-04:00.
+        # > - You can query slow query logs from the past 30 days.
+        # >
+        # > - The time must be in UTC. If your service is in a different time zone, you must convert the time. For example, to query data from 08:00 to 12:00 in the UTC+8 time zone, you must set the time range from 00:00 UTC to 04:00 UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

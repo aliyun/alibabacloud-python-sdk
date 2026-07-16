@@ -13,8 +13,11 @@ class ListFeaturesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of features.
         self.features = features
+        # The request ID.
         self.request_id = request_id
+        # The total number of features.
         self.total_count = total_count
 
     def validate(self):

@@ -15,34 +15,39 @@ class CreateCustomizedVoiceJobRequest(DaraModel):
     ):
         # The gender. Valid values:
         # 
-        # *   female
-        # *   male
+        # - female
+        # 
+        # - male
         # 
         # This parameter is required.
         self.gender = gender
         # The scenario. Valid values:
         # 
-        # *   story
-        # *   interaction
-        # *   navigation
+        # - story
+        # 
+        # - interaction
+        # 
+        # - navigation
         # 
         # This parameter is required.
         self.scenario = scenario
         # The voice description.
         # 
-        # *   The description can be up to 256 characters in length.
+        # - Must be 256 characters or fewer.
         self.voice_desc = voice_desc
-        # The voice ID. It can be the English name or Chinese Pinyin of the voice.
+        # The custom voice ID. This is typically an English name or Pinyin.
         # 
-        # *   The value must be a unique ID that is not used by other custom voices.
-        # *   The ID can be up to 32 characters in length.
-        # *   Only letters and digits are supported.
+        # - Must be unique among your other custom voices.
+        # 
+        # - Must be 32 characters or fewer.
+        # 
+        # - Can contain only letters and numbers.
         # 
         # This parameter is required.
         self.voice_id = voice_id
-        # The voice name.
+        # The voice name, typically in Chinese.
         # 
-        # *   The name can be up to 32 characters in length.
+        # - Must be 32 characters or fewer.
         self.voice_name = voice_name
 
     def validate(self):

@@ -11,9 +11,12 @@ class AddYikeUserCreditResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The error code returned when the increase fails. Valid values:
+        # - NOT_ENOUGH_ALLOCATE_CREDIT_QUOTA: The primary account does not have sufficient credit balance.
         self.error_code = error_code
         # RequestId
         self.request_id = request_id
+        # Indicates whether the credits were increased successfully.
         self.result = result
 
     def validate(self):

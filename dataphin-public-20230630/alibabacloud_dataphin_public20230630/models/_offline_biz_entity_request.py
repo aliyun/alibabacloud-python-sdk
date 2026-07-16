@@ -11,8 +11,12 @@ class OfflineBizEntityRequest(DaraModel):
         offline_command: main_models.OfflineBizEntityRequestOfflineCommand = None,
         op_tenant_id: int = None,
     ):
+        # Offline request
+        # 
         # This parameter is required.
         self.offline_command = offline_command
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -52,12 +56,20 @@ class OfflineBizEntityRequestOfflineCommand(DaraModel):
         id: int = None,
         type: str = None,
     ):
+        # Business unit ID
+        # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
+        # Offline comment
+        # 
         # This parameter is required.
         self.comment = comment
+        # Business entity ID
+        # 
         # This parameter is required.
         self.id = id
+        # Business entity type. For more information, see the "CreateBizEntity" operation.
+        # 
         # This parameter is required.
         self.type = type
 

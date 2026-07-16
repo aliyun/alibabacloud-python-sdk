@@ -12,7 +12,9 @@ class GetMLServiceResultsResponseBody(DaraModel):
         data: List[Dict[str, str]] = None,
         status: Dict[str, str] = None,
     ):
+        # The returned data.
         self.data = data
+        # The status of the task.
         self.status = status
 
     def validate(self):

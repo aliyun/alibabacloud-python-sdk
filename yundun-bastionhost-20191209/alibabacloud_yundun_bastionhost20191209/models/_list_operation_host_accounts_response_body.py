@@ -75,8 +75,9 @@ class ListOperationHostAccountsResponseBodyHostAccounts(DaraModel):
     ):
         # Indicates whether a password is configured for the host account.
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.has_password = has_password
         # The host account ID.
         self.host_account_id = host_account_id
@@ -90,8 +91,9 @@ class ListOperationHostAccountsResponseBodyHostAccounts(DaraModel):
         self.private_key_fingerprint = private_key_fingerprint
         # The protocol that is used by the host account.
         # 
-        # *   **SSH**
-        # *   **RDP**
+        # - **SSH**
+        # 
+        # - **RDP**
         self.protocol_name = protocol_name
         # Indicates whether the Secure File Transfer Protocol (SFTP) channels or the SSH channels are enabled for the host account that uses the SSH protocol.
         self.sshconfig = sshconfig

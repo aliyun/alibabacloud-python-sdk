@@ -18,12 +18,27 @@ class DescribeMetricMetaListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The keyword.
         self.keywords = keywords
+        # Filters resources by label. The following labels are available:
+        # - metricCategory: the metric category description.
+        # - alertEnable: specifies whether alerting is required.
+        # - alertUnit: the recommended alert unit.
+        # - unitFactor: the unit conversion factor.
+        # - minAlertPeriod: the minimum alert period.
+        # - productCategory: the service type category.
         self.labels = labels
+        # The metadata source. Valid values:
+        # - CMS: CloudMonitor Basic monitoring metrics.
+        # - PROM_BASIC: Prometheus CloudMonitor basic monitoring metrics.
         self.meta_format = meta_format
+        # The metric name.
         self.metric_name = metric_name
+        # The namespace, which is used to distinguish between services.
         self.namespace = namespace
+        # The page number. Default value: 1.
         self.page_number = page_number
+        # The number of entries per page. Default value: 2000.
         self.page_size = page_size
 
     def validate(self):
@@ -96,7 +111,9 @@ class DescribeMetricMetaListRequestLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The label name.
         self.name = name
+        # The label value.
         self.value = value
 
     def validate(self):

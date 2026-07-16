@@ -10,11 +10,14 @@ class GenerateFileImportTemplateRequest(DaraModel):
         instance_id: str = None,
         target_type: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 同步目标类型
+        # The synchronization target type. Valid values:
+        # - identity_provider: identity provider
+        # - application: application
+        # - eiam_v2_user_import: IDaaS 2.0 user import.
         # 
         # This parameter is required.
         self.target_type = target_type

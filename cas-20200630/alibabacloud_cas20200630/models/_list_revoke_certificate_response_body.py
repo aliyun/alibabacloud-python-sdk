@@ -17,7 +17,7 @@ class ListRevokeCertificateResponseBody(DaraModel):
         show_size: int = None,
         total_count: int = None,
     ):
-        # An array that consists of the details about the revoked client certificates or server certificates.
+        # The details of the revoked client or server-side certificates.
         self.certificate_list = certificate_list
         # The page number of the current page.
         self.current_page = current_page
@@ -25,9 +25,9 @@ class ListRevokeCertificateResponseBody(DaraModel):
         self.page_count = page_count
         # The ID of the request.
         self.request_id = request_id
-        # The number of revoked certificates that are returned per page.
+        # The number of revoked certificates on each page.
         self.show_size = show_size
-        # The total number of revoked client certificates and server certificates that are returned.
+        # The total number of revoked client and server-side certificates.
         self.total_count = total_count
 
     def validate(self):
@@ -114,53 +114,59 @@ class ListRevokeCertificateResponseBodyCertificateList(DaraModel):
         status: str = None,
         subject_dn: str = None,
     ):
-        # The expiration date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-12-31T00:00Z` indicates December 31, 2021.
+        # The expiration date of the certificate. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-12-31T00:00Z` indicates December 31, 2021.
         self.after_date = after_date
         # The type of the encryption algorithm of the certificate. Valid values:
         # 
-        # *   **RSA**: the Rivest-Shamir-Adleman (RSA) algorithm.
-        # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
-        # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
+        # - **RSA**: the RSA algorithm.
+        # 
+        # - **ECC**: the ECC algorithm.
+        # 
+        # - **SM2**: the SM2 algorithm.
         self.algorithm = algorithm
-        # The issuance date of the certificate. The date is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-01-01T00:00Z` indicates January 1, 2021.
+        # The date when the certificate was issued. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-01-01T00:00Z` indicates January 1, 2021.
         self.before_date = before_date
         # The type of the certificate.
         self.certificate_type = certificate_type
         # The common name of the certificate.
         self.common_name = common_name
-        # The code of the country in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The country code of the organization that is associated with the subordinate CA certificate that issued the certificate.
         # 
-        # For more information about country codes, see the **"Country codes"** section of the [Manage company profiles](https://help.aliyun.com/document_detail/198289.html) topic.
+        # For more information about country codes, see the "Country codes" section in [Manage company information](https://help.aliyun.com/document_detail/198289.html).
         self.country_code = country_code
+        # The custom identifier. This is a unique key.
         self.custom_identifier = custom_identifier
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
         self.key_size = key_size
-        # The name of the city in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The name of the city where the organization of the subordinate CA certificate that issued the certificate is located.
         self.locality = locality
         # The MD5 fingerprint of the certificate.
         self.md_5 = md_5
-        # The name of the organization. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The name of the organization that is associated with the subordinate CA certificate that issued the certificate.
         self.organization = organization
-        # The name of the department in the organization. The organization is associated with the intermediate certificate authority (CA) certificate from which the certificate is issued.
+        # The name of the department of the organization that is associated with the subordinate CA certificate that issued the certificate.
         self.organization_unit = organization_unit
-        # The identifier of the root certificate.
+        # The identifier of the parent certificate.
         self.parent_identifier = parent_identifier
-        # The date on which the certificate was revoked. The value is in the `yyyy-MM-ddT00:00Z` format. For example, the value `2021-09-01T00:00Z` indicates September 1, 2021.
+        # The date when the certificate was revoked. The format is `yyyy-MM-ddT00:00Z`. For example, `2021-09-01T00:00Z` indicates September 1, 2021.
         self.revoke_date = revoke_date
-        # The subject alternative name (SAN) extension of the certificate.
+        # The Subject Alternative Name (SAN) extension of the certificate.
         # 
-        # The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that corresponds to a SAN extension. A SAN extension struct contains the following parameters:
+        # This parameter is a string that is converted from a JSON array. Each element in the JSON array is a struct that corresponds to a SAN extension. Each SAN extension struct contains the following parameters:
         # 
-        # *   **Type**: the type of the extension. Data type: integer. Valid values:
+        # - **Type**: The type of the extension. This parameter is of the integer type. Valid values:
         # 
-        #     *   **1**: an email address
-        #     *   **2**: a domain name
-        #     *   **6**: a Uniform Resource Identifier (URI)
-        #     *   **7**: an IP address
+        #   - **1**: an email address.
         # 
-        # *   **Value**: the value of the extension. Data type: string.
+        #   - **2**: a domain name.
+        # 
+        #   - **6**: a Uniform Resource Identifier (URI).
+        # 
+        #   - **7**: an IP address.
+        # 
+        # - **Value**: The content of the extension. This parameter is of the string type.
         self.sans = sans
         # The serial number of the certificate.
         self.serial_number = serial_number
@@ -168,18 +174,35 @@ class ListRevokeCertificateResponseBodyCertificateList(DaraModel):
         self.sha_2 = sha_2
         # The signature algorithm of the certificate.
         self.sign_algorithm = sign_algorithm
-        # The name of the province, municipality, or autonomous region in which the organization is located. The organization is associated with the intermediate certificate from which the certificate is issued.
+        # The name of the province or state of the organization that is associated with the subordinate CA certificate that issued the certificate.
         self.state = state
-        # The status.
+        # The status of the certificate.
         self.status = status
-        # The distinguished name (DN) extension of the certificate, which indicates the user of the certificate. The DN extension includes the following information:
+        # The Distinguished Name (DN) of the certificate. The DN indicates the user of the certificate and contains the following information:
         # 
-        # *   **C**: the country
-        # *   **O**: the organization
-        # *   **OU**: the department
-        # *   **L**: the city
-        # *   **ST**: the province, municipality, or autonomous region
-        # *   **CN**: the common name
+        # - **C**: The country.
+        # 
+        # - **O**: The organization.
+        # 
+        # - **OU**: The department.
+        # 
+        # - **CN**: The common name.
+        # 
+        # <props="china">
+        # 
+        # - **ST**: The province, municipality, or autonomous region.
+        # 
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - **ST**: The province or state.
+        # 
+        # 
+        # 
+        # 
+        # - **CN**: The common name.
         self.subject_dn = subject_dn
 
     def validate(self):

@@ -19,15 +19,31 @@ class GetSkillGroupAndAgentStatusSummaryRequest(DaraModel):
         page_size: int = None,
         start_date: int = None,
     ):
+        # Current page. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # List of department IDs.
         self.dep_ids = dep_ids
+        # End Datetime Variable as a UNIX timestamp. Unit: milliseconds.
         self.end_date = end_date
+        # Specifies whether to query by department grouping. Default value: **false**. Valid values:  
+        # 
+        # - **true**: Yes.  
+        # - **false**: No.
         self.exist_department_grouping = exist_department_grouping
+        # Specifies whether to query by skill group grouping. Default value: **false**. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.exist_skill_group_grouping = exist_skill_group_grouping
+        # List of skill group IDs.
         self.group_ids = group_ids
+        # AICCS instance ID.  
+        # You can obtain it in the **Instance Management** section of the left-side navigation pane in the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
+        # Start date UNIX timestamp. Unit: milliseconds.
         self.start_date = start_date
 
     def validate(self):

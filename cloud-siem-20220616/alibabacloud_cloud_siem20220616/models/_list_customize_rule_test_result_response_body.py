@@ -16,18 +16,19 @@ class ListCustomizeRuleTestResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -146,41 +147,49 @@ class ListCustomizeRuleTestResultResponseBodyDataResponseData(DaraModel):
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
-        # The alert details in the JSON format.
+        # The details of the alert, in JSON format.
         self.alert_detail = alert_detail
-        # The source of the alert.
+        # The source product of the alert that is associated with the event.
         self.alert_src_prod = alert_src_prod
-        # The sub-module of the source.
+        # The sub-module of the source product of the alert that is associated with the event.
         self.alert_src_prod_module = alert_src_prod_module
-        # The tag of the ATT\\&CK attack.
+        # The ATT\\&CK attack technique tag.
         self.att_ck = att_ck
-        # The name of the alert, which corresponds to the name of the custom rule.
+        # The name of the alert. This value corresponds to the name of the custom rule.
         self.event_name = event_name
-        # The threat type, which indicates the alert type.
+        # The threat type. This parameter is equivalent to the alert type.
         self.event_type = event_type
         # The threat level. Valid values:
         # 
-        # *   serious: high.
-        # *   suspicious: medium.
-        # *   remind: low.
+        # - serious: high
+        # 
+        # - suspicious: medium
+        # 
+        # - remind: low
         self.level = level
-        # The log source of the rule.
+        # The log source that corresponds to the rule.
         self.log_source = log_source
         # The time when the alert was recorded.
         self.log_time = log_time
-        # The log type of the rule.
+        # The log type that corresponds to the rule.
         self.log_type = log_type
-        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+        # The ID of the main Alibaba Cloud account for Security Information and Event Management (SIEM) that is associated with the alert.
         self.main_user_id = main_user_id
         # The status of the alert data. Valid values:
         # 
-        # *   test: business test data.
-        # *   online: online data.
+        # - test: business test
+        # 
+        # - online: published
         self.online_status = online_status
-        # The ID of the Alibaba Cloud account within which the alert is generated.
+        # The ID of the member account that is associated with the alert.
         self.sub_user_id = sub_user_id
         # The UUID of the alert.
         self.uuid = uuid
+        # The result of verifying the alert based on the alert template.
+        # 
+        # - true: The verification is passed.
+        # 
+        # - false: The verification failed.
         self.verify_type = verify_type
 
     def validate(self):
@@ -303,10 +312,11 @@ class ListCustomizeRuleTestResultResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
+        # The number of alerts that passed the verification.
         self.verified_count = verified_count
 
     def validate(self):

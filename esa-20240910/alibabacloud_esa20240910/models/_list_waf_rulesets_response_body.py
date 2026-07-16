@@ -18,19 +18,19 @@ class ListWafRulesetsResponseBody(DaraModel):
         site_usage: int = None,
         total_count: int = None,
     ):
-        # Number of WAF rule sets used by the instance in this WAF operation phase.
+        # The number of WAF rulesets used by the instance in this WAF execution phase.
         self.instance_usage = instance_usage
-        # Current page number.
+        # The current page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of rule set information, containing detailed information about the rule sets.
+        # The list of rulesets, including detailed information about each ruleset.
         self.rulesets = rulesets
-        # Number of WAF rule sets used by the site in this WAF operation phase.
+        # The number of WAF rulesets used by the site in this WAF execution phase.
         self.site_usage = site_usage
-        # Total number of filtered records.
+        # The total number of records after filtering.
         self.total_count = total_count
 
     def validate(self):
@@ -109,21 +109,33 @@ class ListWafRulesetsResponseBodyRulesets(DaraModel):
         types: List[str] = None,
         update_time: str = None,
     ):
-        # List of match objects.
+        # The list of match objects.
         self.fields = fields
-        # ID of the WAF rule set.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ruleset ID.
         self.id = id
-        # Name of the rule set.
+        # The ruleset name.
         self.name = name
-        # WAF operation phase.
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: frequency control rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rules
         self.phase = phase
-        # Status of the rule set.
+        # The ruleset status.
         self.status = status
-        # Protection target type in http_bot.
+        # The protection target type in http_bot.
         self.target = target
-        # List of rule types.
+        # The list of rule types.
         self.types = types
-        # Last modification time of the rule set.
+        # The last modification time of the ruleset.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

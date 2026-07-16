@@ -10,7 +10,9 @@ class FunctionFileResource(DaraModel):
         resource_type: str = None,
         uri: str = None,
     ):
+        # Resource type
         self.resource_type = resource_type
+        # Resource path
         self.uri = uri
 
     def validate(self):

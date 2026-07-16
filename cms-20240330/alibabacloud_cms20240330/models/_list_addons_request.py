@@ -12,9 +12,13 @@ class ListAddonsRequest(DaraModel):
         regexp: bool = None,
         search: str = None,
     ):
+        # The language. Valid values: zh and en. The default value is zh.
         self.aliyun_lang = aliyun_lang
+        # Tag filtering.
         self.category = category
+        # Specifies whether to use regular expressions for the search. The default value is false.
         self.regexp = regexp
+        # The search keyword. You can search for add-ons by name, description, or keyword.
         self.search = search
 
     def validate(self):

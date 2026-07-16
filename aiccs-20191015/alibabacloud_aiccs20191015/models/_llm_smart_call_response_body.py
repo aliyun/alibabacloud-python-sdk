@@ -12,8 +12,11 @@ class LlmSmartCallResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Unique receipt ID for this call.
         self.call_id = call_id
+        # Request status code. A return value of "OK" indicates that the request succeeded.
         self.code = code
+        # Description of the status code.
         self.message = message
         # Id of the request
         self.request_id = request_id

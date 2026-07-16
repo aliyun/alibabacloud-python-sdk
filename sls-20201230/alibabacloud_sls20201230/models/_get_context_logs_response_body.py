@@ -23,8 +23,9 @@ class GetContextLogsResponseBody(DaraModel):
         self.logs = logs
         # Indicates whether the query and analysis results are complete. Valid values:
         # 
-        # *   Complete: The query is successful, and the complete query and analysis results are returned.
-        # *   Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
+        # - Complete: The query is successful, and the complete query and analysis results are returned.
+        # 
+        # - Incomplete: The query is successful, but the query and analysis results are incomplete. To obtain the complete results, you must repeat the request.
         self.progress = progress
         # The total number of logs that are returned. The logs include the start log that is specified in the request.
         self.total_lines = total_lines

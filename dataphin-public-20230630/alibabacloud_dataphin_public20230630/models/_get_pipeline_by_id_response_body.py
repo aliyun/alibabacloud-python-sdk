@@ -17,12 +17,17 @@ class GetPipelineByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The pipeline task details.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details returned by the backend.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,12 +93,19 @@ class GetPipelineByIdResponseBodyData(DaraModel):
         schedule_config: str = None,
         settings: str = None,
     ):
+        # The configuration mode of the integration pipeline.
         self.mode = mode
+        # The basic information of the pipeline task.
         self.node_info = node_info
+        # The component configuration of the integration pipeline.
         self.pipeline_config = pipeline_config
+        # The script mode configuration of the integration pipeline.
         self.pipeline_json = pipeline_json
+        # The pipeline task type.
         self.pipeline_type = pipeline_type
+        # The schedule configuration of the integration pipeline. The value is a JSON string. Deserialize it by using the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.vo.OAScheduleConfigVO.
         self.schedule_config = schedule_config
+        # The channel configuration of the integration pipeline. The value is a JSON string. Deserialize it by using the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting.
         self.settings = settings
 
     def validate(self):
@@ -163,7 +175,9 @@ class GetPipelineByIdResponseBodyDataPipelineConfig(DaraModel):
         hops: List[main_models.GetPipelineByIdResponseBodyDataPipelineConfigHops] = None,
         steps: List[main_models.GetPipelineByIdResponseBodyDataPipelineConfigSteps] = None,
     ):
+        # The DAG (directed acyclic graph) link configuration that describes the connections between all components.
         self.hops = hops
+        # The component configurations, including detailed configurations of all components used.
         self.steps = steps
 
     def validate(self):
@@ -218,10 +232,22 @@ class GetPipelineByIdResponseBodyDataPipelineConfigSteps(DaraModel):
         step_name: str = None,
         step_type: str = None,
     ):
+        # Specifies the data distribution method when the current component has multiple downstream components. Valid values:
+        # - true: The data of the current component is sent to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. Default value: true.
+        # - false: The full data of the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, each downstream component receives 100 records.
         self.is_distribute = is_distribute
+        # The plugin ID. Each plugin has a unique identifier. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
         self.key = key
+        # The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
         self.plugin_config = plugin_config
+        # The step name. Step names must be unique within the same pipeline task.
         self.step_name = step_name
+        # The component type. Valid values:
+        # - input: an input component.
+        # - output: an output component.
+        # - transfrom: a transformation component.
+        # - process: a flow control component.
+        # Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
         self.step_type = step_type
 
     def validate(self):
@@ -275,8 +301,11 @@ class GetPipelineByIdResponseBodyDataPipelineConfigHops(DaraModel):
         source: str = None,
         target: str = None,
     ):
+        # For conditional distribution components, set this parameter to true when the downstream condition is true. Otherwise, set it to false.
         self.send_to = send_to
+        # The input step name, which corresponds to Steps[*].StepName.
         self.source = source
+        # The output step name, which corresponds to Steps[*].StepName.
         self.target = target
 
     def validate(self):
@@ -321,11 +350,17 @@ class GetPipelineByIdResponseBodyDataNodeInfo(DaraModel):
         node_name: str = None,
         pipeline_id: int = None,
     ):
+        # The task description.
         self.desc = desc
+        # The folder of the integration pipeline task node. The default value is the root folder. The folder must exist. If it does not exist, call the relevant API operation to create a folder of the offlinePipeline type.
         self.directory = directory
+        # The pipeline file ID. This parameter is empty when the task is first created. When updating a pipeline task, specify at least one of pipelineId, fileId, or nodeId.
         self.file_id = file_id
+        # The scheduling node ID of the pipeline task. This parameter is empty when the task is first created. When updating a pipeline task, specify at least one of pipelineId, fileId, or nodeId.
         self.node_id = node_id
+        # The name of the integration pipeline task.
         self.node_name = node_name
+        # The pipeline task ID. This parameter is empty when the task is first created. When updating a pipeline task, specify at least one of pipelineId, fileId, or nodeId.
         self.pipeline_id = pipeline_id
 
     def validate(self):

@@ -17,11 +17,16 @@ class CreateKyuubiTokenRequest(DaraModel):
         token: str = None,
         region_id: str = None,
     ):
+        # The automatic expiration settings.
         self.auto_expire_configuration = auto_expire_configuration
+        # The list of ARNs of authorized users.
         self.member_arns = member_arns
+        # The token name.
         self.name = name
         self.spark_role = spark_role
+        # The token content. The token must be 32 characters long and contain only lowercase letters and digits.
         self.token = token
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -82,7 +87,9 @@ class CreateKyuubiTokenRequestAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
+        # Specifies whether the token automatically expires.
         self.enable = enable
+        # The expiration period in days.
         self.expire_days = expire_days
 
     def validate(self):

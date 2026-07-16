@@ -14,8 +14,12 @@ class DeleteDatabaseZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database.
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account

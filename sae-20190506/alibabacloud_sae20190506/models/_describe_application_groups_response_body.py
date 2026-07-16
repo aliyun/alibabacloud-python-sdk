@@ -18,30 +18,35 @@ class DescribeApplicationGroupsResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code. Valid values:
+        # The HTTP status code or the POP error code. Valid values:
         # 
-        # *   **2xx**: The call was successful.
-        # *   **3xx**: The call was redirected.
-        # *   **4xx**: The call failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: The request is invalid.
+        # 
+        # - **5xx**: A server error occurs.
         self.code = code
-        # The information about the instance groups of the application.
+        # A list of application groups.
         self.data = data
-        # The error code. Valid values:
+        # The error code.
         # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the **Error codes** section in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **error codes** section.
         self.error_code = error_code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the instance groups of an application were obtained. Valid values:
+        # Indicates whether the application groups were successfully retrieved. Valid values:
         # 
-        # *   **true**: The instance groups were obtained.
-        # *   **false**: The instance groups failed to be obtained.
+        # - **true**: The application groups were retrieved.
+        # 
+        # - **false**: The application groups were not retrieved.
         self.success = success
-        # The trace ID that is used to query the details of the request.
+        # The trace ID used to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):
@@ -125,50 +130,65 @@ class DescribeApplicationGroupsResponseBodyData(DaraModel):
         running_instances: int = None,
         web_container: str = None,
     ):
-        # The version of the container, such as Ali-Tomcat, in which an application that is developed based on High-speed Service Framework (HSF) is deployed.
+        # The version of the application runtime environment in the High-Speed Service Framework (HSF), such as an Ali-Tomcat container.
         self.edas_container_version = edas_container_version
-        # The ID of the instance group.
+        # The ID of the application group.
         self.group_id = group_id
-        # The name of the instance group.
+        # The name of the application group.
         self.group_name = group_name
-        # The type of the instance group.
+        # The type of the application group.
         self.group_type = group_type
-        # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
+        # The image URL. This parameter is required when **package type** is set to **Image**.
         self.image_url = image_url
-        # The version of the JDK on which the deployment package of the application depends. This parameter is not returned if the **PackageType** parameter is set to **Image**.
+        # The JDK version required by the deployment package. This parameter is not supported when **package type** is set to **Image**.
         self.jdk = jdk
         # The type of the deployment package. Valid values:
         # 
-        # *   If you deploy a Java application, the value of this parameter can be **FatJar**, **War**, or **Image**.
+        # - For Java applications, the supported types are **FatJar**, **War**, and **Image**.
         # 
-        # *   If you deploy a PHP application, the value of this parameter can be one of the following values:
+        # - For PHP applications, the supported types are:
         # 
-        #     *   **PhpZip**
-        #     *   **IMAGE_PHP_5_4**
-        #     *   **IMAGE_PHP_5_4_ALPINE**
-        #     *   **IMAGE_PHP_5_5**
-        #     *   **IMAGE_PHP_5_5_ALPINE**
-        #     *   **IMAGE_PHP_5_6**
-        #     *   **IMAGE_PHP_5_6_ALPINE**
-        #     *   **IMAGE_PHP_7_0**
-        #     *   **IMAGE_PHP_7_0_ALPINE**
-        #     *   **IMAGE_PHP_7_1**
-        #     *   **IMAGE_PHP_7_1_ALPINE**
-        #     *   **IMAGE_PHP_7_2**
-        #     *   **IMAGE_PHP_7_2_ALPINE**
-        #     *   **IMAGE_PHP_7_3**
-        #     *   **IMAGE_PHP_7_3_ALPINE**
+        #   - **PhpZip**
+        # 
+        #   - **IMAGE_PHP_5_4**
+        # 
+        #   - **IMAGE_PHP_5_4_ALPINE**
+        # 
+        #   - **IMAGE_PHP_5_5**
+        # 
+        #   - **IMAGE_PHP_5_5_ALPINE**
+        # 
+        #   - **IMAGE_PHP_5_6**
+        # 
+        #   - **IMAGE_PHP_5_6_ALPINE**
+        # 
+        #   - **IMAGE_PHP_7_0**
+        # 
+        #   - **IMAGE_PHP_7_0_ALPINE**
+        # 
+        #   - **IMAGE_PHP_7_1**
+        # 
+        #   - **IMAGE_PHP_7_1_ALPINE**
+        # 
+        #   - **IMAGE_PHP_7_2**
+        # 
+        #   - **IMAGE_PHP_7_2_ALPINE**
+        # 
+        #   - **IMAGE_PHP_7_3**
+        # 
+        #   - **IMAGE_PHP_7_3_ALPINE**
         self.package_type = package_type
-        # The URL of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**.
+        # The URL of the deployment package. This parameter is required when **package type** is set to **FatJar**, **War**, or **PhpZip**.
         self.package_url = package_url
-        # The version of the deployment package. This parameter is returned only if the **PackageType** parameter is set to **FatJar**, **War**, or **PhpZip**. The value of this parameter is automatically generated only if the **ImageUrl** is returned.
+        # The deployment package version. This parameter is required when **package type** is set to **FatJar**, **War**, or **PhpZip**. This parameter is automatically generated if you deploy the application by using an **image**.
         self.package_version = package_version
+        # The ID of the deployment package version.
         self.package_version_id = package_version_id
         # The total number of instances.
         self.replicas = replicas
         # The number of running instances.
         self.running_instances = running_instances
-        # The version of the Tomcat container on which the deployment package depends. This parameter is not returned if the **PackageType** parameter is set to **Image**.
+        # The Tomcat container version required by the deployment package. This parameter is not supported when **package type** is set to **Image**.
         self.web_container = web_container
 
     def validate(self):

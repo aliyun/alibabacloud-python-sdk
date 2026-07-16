@@ -16,12 +16,19 @@ class CreateContextStoreRequest(DaraModel):
         dataset: main_models.CreateContextStoreRequestDataset = None,
         description: str = None,
     ):
+        # The configuration.
         self.config = config
+        # The name of the context store.
+        # 
         # This parameter is required.
         self.context_store_name = context_store_name
+        # The type of the context store.
+        # 
         # This parameter is required.
         self.context_type = context_type
+        # The properties of the dataset.
         self.dataset = dataset
+        # The description of the context store.
         self.description = description
 
     def validate(self):
@@ -78,6 +85,7 @@ class CreateContextStoreRequestDataset(DaraModel):
         self,
         name: str = None,
     ):
+        # The name of the dataset.
         self.name = name
 
     def validate(self):
@@ -106,7 +114,9 @@ class CreateContextStoreRequestConfig(DaraModel):
         metadata_field: Dict[str, str] = None,
         source: main_models.CreateContextStoreRequestConfigSource = None,
     ):
+        # The metadata fields.
         self.metadata_field = metadata_field
+        # The configuration source.
         self.source = source
 
     def validate(self):
@@ -144,8 +154,12 @@ class CreateContextStoreRequestConfigSource(DaraModel):
         project: str = None,
         start_time: str = None,
     ):
+        # The name of the Log Service Logstore.
         self.logstore = logstore
+        # The name of the Log Service project.
         self.project = project
+        # The effective start time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
 

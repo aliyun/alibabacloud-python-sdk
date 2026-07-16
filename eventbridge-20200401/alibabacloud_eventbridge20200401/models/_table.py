@@ -19,13 +19,21 @@ class Table(DaraModel):
         retention_policy: main_models.TableRetentionPolicy = None,
         update_time: int = None,
     ):
+        # 表所属的数据目录名称
         self.catalog = catalog
+        # 表的列定义列表。每列包含 Name（列名）、Type（数据类型）、Comment（备注）
         self.columns = columns
+        # 表的备注描述信息
         self.comment = comment
+        # 表的创建时间（Unix 时间戳，毫秒）
         self.create_time = create_time
+        # 事件表的唯一标识名称
         self.name = name
+        # 表所属的命名空间名称
         self.namespace = namespace
+        # 数据保留策略。包含热数据和冷数据的保留天数
         self.retention_policy = retention_policy
+        # 表的最后更新时间（Unix 时间戳，毫秒）
         self.update_time = update_time
 
     def validate(self):
@@ -107,7 +115,9 @@ class TableRetentionPolicy(DaraModel):
         cold_ttl: int = None,
         hot_ttl: int = None,
     ):
+        # 冷数据保留天数，低成本归档存储
         self.cold_ttl = cold_ttl
+        # 热数据保留天数，高性能查询存储
         self.hot_ttl = hot_ttl
 
     def validate(self):

@@ -14,19 +14,18 @@ class DescribeLogstoreStorageResponseBody(DaraModel):
         used: int = None,
         user_project: str = None,
     ):
-        # The name of the dedicated Logstore that is used to store full logs of Security Center. The value is fixed as **sas-log**.
+        # The name of the dedicated Logstore in which full logs of Security Center are stored. The value is fixed as **sas-log**.
         self.logstore = logstore
-        # The purchased log storage capacity, in GB.
+        # The purchased log analysis storage capacity. Unit: GB.
         self.preserve = preserve
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The number of days during which logs can be retained. The value is fixed as **180**, which indicates that logs can be retained for 180 days.
-        # 
-        # >  You are not allowed to change the value of this parameter.
+        # The number of days for which logs are retained. The value is fixed as **180**, which indicates that logs can be retained for 180 days.
+        # > Security Center does not support adjusting the log retention period.
         self.ttl = ttl
-        # The used log storage capacity, in GB.
+        # The used log analysis storage capacity. Unit: GB.
         self.used = used
-        # The name of the dedicated Project that is used to store full logs of Security Center.
+        # The name of the dedicated Project in which full logs of Security Center are stored.
         self.user_project = user_project
 
     def validate(self):

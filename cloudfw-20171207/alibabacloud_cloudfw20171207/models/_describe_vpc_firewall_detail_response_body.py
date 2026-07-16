@@ -22,22 +22,25 @@ class DescribeVpcFirewallDetailResponseBody(DaraModel):
     ):
         # The bandwidth of the Express Connect circuit. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect circuits.
+        # The connection type of the VPC firewall. The value is fixed as **expressconnect**, which indicates Express Connect.
         self.connect_type = connect_type
         # The status of the VPC firewall. Valid values:
         # 
-        # *   **opened**: The VPC firewall is enabled.
-        # *   **closed**: The VPC firewall is disabled.
-        # *   **notconfigured**: The VPC firewall is not configured.
-        # *   **configured**: The VPC firewall is configured.
+        # - **opened**: The firewall is enabled.
+        # 
+        # - **closed**: The firewall is disabled.
+        # 
+        # - **notconfigured**: The firewall is not configured.
+        # 
+        # - **configured**: The firewall is configured.
         self.firewall_switch_status = firewall_switch_status
-        # The details about the local VPC.
+        # The details of the local VPC.
         self.local_vpc = local_vpc
-        # The UID of the member that is managed by your Alibaba Cloud account.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
-        # The details about the peer VPC.
+        # The details of the peer VPC.
         self.peer_vpc = peer_vpc
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -128,19 +131,19 @@ class DescribeVpcFirewallDetailResponseBodyPeerVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The ID of the ENI for the peer VPC.
+        # The instance ID of the ENI in the peer VPC.
         self.eni_id = eni_id
-        # The private IP address of the ENI for the peer VPC.
+        # The private IP address of the ENI in the peer VPC.
         self.eni_private_ip_address = eni_private_ip_address
         # The region ID of the peer VPC.
         self.region_no = region_no
-        # The router interface ID of the peer VPC.
+        # The ID of the router interface in the peer VPC.
         self.router_interface_id = router_interface_id
-        # The CIDR blocks of the peer VPC.
+        # A list of CIDR blocks for the peer VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
-        # The ID of the peer VPC.
+        # The instance ID of the peer VPC.
         self.vpc_id = vpc_id
-        # The name of the peer VPC.
+        # The instance name of the peer VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -213,7 +216,7 @@ class DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableList(DaraModel):
         route_entry_list: List[main_models.DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries of the peer VPC.
+        # A list of routes for the peer VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the peer VPC.
         self.route_table_id = route_table_id
@@ -260,7 +263,7 @@ class DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryList
     ):
         # The destination CIDR block of the peer VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID of the next hop for the peer VPC.
+        # The ID of the next hop instance in the peer VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):
@@ -300,19 +303,19 @@ class DescribeVpcFirewallDetailResponseBodyLocalVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The ID of the ENI for the local VPC.
+        # The instance ID of the ENI in the local VPC.
         self.eni_id = eni_id
-        # The private IP address of the elastic network interface (ENI) for the local VPC.
+        # The private IP address of the elastic network interface (ENI) in the local VPC.
         self.eni_private_ip_address = eni_private_ip_address
         # The region ID of the local VPC.
         self.region_no = region_no
-        # The router interface ID of the local VPC.
+        # The ID of the router interface in the local VPC.
         self.router_interface_id = router_interface_id
-        # The CIDR blocks of the local VPC.
+        # A list of CIDR blocks for the local VPC.
         self.vpc_cidr_table_list = vpc_cidr_table_list
-        # The ID of the local VPC.
+        # The instance ID of the local VPC.
         self.vpc_id = vpc_id
-        # The name of the local VPC.
+        # The instance name of the local VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -385,7 +388,7 @@ class DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableList(DaraModel):
         route_entry_list: List[main_models.DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryList] = None,
         route_table_id: str = None,
     ):
-        # The route entries of the local VPC.
+        # A list of routes for the local VPC.
         self.route_entry_list = route_entry_list
         # The ID of the route table for the local VPC.
         self.route_table_id = route_table_id
@@ -432,7 +435,7 @@ class DescribeVpcFirewallDetailResponseBodyLocalVpcVpcCidrTableListRouteEntryLis
     ):
         # The destination CIDR block of the local VPC.
         self.destination_cidr = destination_cidr
-        # The instance ID of the next hop for the local VPC.
+        # The ID of the next hop instance in the local VPC.
         self.next_hop_instance_id = next_hop_instance_id
 
     def validate(self):

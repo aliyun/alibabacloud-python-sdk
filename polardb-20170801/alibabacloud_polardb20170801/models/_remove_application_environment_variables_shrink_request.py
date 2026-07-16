@@ -11,9 +11,14 @@ class RemoveApplicationEnvironmentVariablesShrinkRequest(DaraModel):
         restart: bool = None,
         variable_names_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to restart the gateway after removing the variables. The default is `true`.
         self.restart = restart
+        # A list of the environment variable names to remove.
+        # 
         # This parameter is required.
         self.variable_names_shrink = variable_names_shrink
 

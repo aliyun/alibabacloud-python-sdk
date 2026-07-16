@@ -13,10 +13,23 @@ class UpsertDocumentChunksResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the update was successful. Valid values:
+        # 
+        # - **true**: The update succeeded.
+        # 
+        # - **false**: The update failed.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
+        # The unique request ID. Use this ID to troubleshoot errors.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

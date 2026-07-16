@@ -11,19 +11,18 @@ class GetAegisContainerPluginRuleRequest(DaraModel):
         lang: str = None,
         rule_type: int = None,
     ):
-        # The ID of the defense rule against container escapes.
-        # 
-        # >  You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to obtain the ID.
+        # The ID of the container escape prevention rule.
+        # >You can call the [ListAegisContainerPluginRule](~~ListAegisContainerPluginRule~~) operation to query this parameter.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for requests and responses. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The type of the rule. Valid values:
-        # 
-        # *   **0**: custom rule
-        # *   **1**: system rule
+        # The rule type. Valid values:
+        # - **0**: user-defined
+        # - **1**: system built-in
         self.rule_type = rule_type
 
     def validate(self):

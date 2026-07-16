@@ -13,25 +13,25 @@ class SetPolicyApprovalConfigRequest(DaraModel):
         policy_id: str = None,
         region_id: str = None,
     ):
-        # The O&M approval setting in the control policy.
+        # The O\\&M approval setting in the control policy.
         # 
         # This parameter is required.
         self.approval_config = approval_config
         # The bastion host ID.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the control policy that you want to modify.
         # 
-        # >  You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
+        # > You can call the [ListPolicies](https://help.aliyun.com/document_detail/2758876.html) operation to query the control policy ID.
         # 
         # This parameter is required.
         self.policy_id = policy_id
         # The region ID of the bastion host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -79,10 +79,11 @@ class SetPolicyApprovalConfigRequestApprovalConfig(DaraModel):
         self,
         switch_status: str = None,
     ):
-        # Specifies whether to enable O&M approval in the control policy. Valid values:
+        # Specifies whether to enable O\\&M approval in the control policy. Valid values:
         # 
-        # * **On**: enables O&M approval.
-        # * **Off**: disables O&M approval.
+        # - **On**: enables O\\&M approval.
+        # 
+        # - **Off**: disables O\\&M approval.
         # 
         # This parameter is required.
         self.switch_status = switch_status

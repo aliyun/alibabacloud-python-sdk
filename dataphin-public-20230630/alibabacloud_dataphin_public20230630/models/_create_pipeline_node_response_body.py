@@ -17,11 +17,17 @@ class CreatePipelineNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The pipeline node information.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class CreatePipelineNodeResponseBodyData(DaraModel):
         error_message_list: List[str] = None,
         pipeline_id: int = None,
     ):
+        # The error codes.
         self.error_code_list = error_code_list
+        # The error messages.
         self.error_message_list = error_message_list
+        # The ID of the pipeline created.
         self.pipeline_id = pipeline_id
 
     def validate(self):

@@ -15,9 +15,13 @@ class CreateNatGatewayResponseBody(DaraModel):
         nat_gateway_id: str = None,
         request_id: str = None,
     ):
+        # The IDs of the EIP bandwidth plans.
         self.bandwidth_package_ids = bandwidth_package_ids
+        # The IDs of the forwarding tables.
         self.forward_table_ids = forward_table_ids
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

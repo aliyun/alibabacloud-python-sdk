@@ -16,19 +16,21 @@ class DescribeDBNodesParametersResponseBody(DaraModel):
         engine: str = None,
         request_id: str = None,
     ):
-        # The IDs of the nodes.
+        # The list of node IDs.
         self.dbnode_ids = dbnode_ids
-        # The type of the database engine. Set the value to **MySQL**.
+        # The type of the database. The value is fixed as **MySQL**.
         self.dbtype = dbtype
-        # The version of the MySQL database engine. Valid values:
+        # The version of the MySQL database. Valid values:
         # 
-        # *   **5.6**
-        # *   **5.7**
-        # *   **8.0**
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
         self.dbversion = dbversion
-        # The cluster engine.
+        # The database engine of the cluster.
         self.engine = engine
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -91,7 +93,7 @@ class DescribeDBNodesParametersResponseBodyDBNodeIds(DaraModel):
     ):
         # The ID of the node.
         self.dbnode_id = dbnode_id
-        # The parameters of the current node.
+        # The list of parameters that are running on the node.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -146,32 +148,37 @@ class DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters(DaraModel)
     ):
         # The valid values of the parameter.
         self.checking_code = checking_code
-        # The data type of the parameter value. Valid values:
+        # The data type of the parameter. Valid values:
         # 
-        # *   **INT**
-        # *   **STRING**
-        # *   **B**
+        # - **INT**: Integer
+        # 
+        # - **STRING**: String
+        # 
+        # - **B**: Byte
         self.data_type = data_type
         # The default value of the parameter.
         self.default_parameter_value = default_parameter_value
-        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+        # The divisor. For integer and byte type parameters, the parameter value must be a multiple of this factor. The factor cannot be 0.
         self.factor = factor
-        # Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+        # Indicates whether a restart is required for the parameter modification to take effect. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: No
+        # 
+        # - **true**: Yes
         self.force_restart = force_restart
         # Indicates whether the parameter can be modified. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: No
+        # 
+        # - **true**: Yes
         self.is_modifiable = is_modifiable
         # Indicates whether the parameter is a global parameter. Valid values:
         # 
-        # *   **0**: yes. The modified parameter value is synchronized to other nodes.
-        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized to.
+        # - **0**: The parameter is a global parameter. Modifications to the parameter are applied to other nodes by default and cannot be canceled.
+        # 
+        # - **1**: The parameter is not a global parameter. You can specify the nodes to which you want to apply the parameter modifications.
         self.is_node_available = is_node_available
-        # The dependencies of the parameter.
+        # The dependency of the parameter.
         self.param_rely_rule = param_rely_rule
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -179,8 +186,9 @@ class DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters(DaraModel)
         self.parameter_name = parameter_name
         # The status of the parameter. Valid values:
         # 
-        # *   **normal**
-        # *   **modifying**
+        # - **normal**: Normal
+        # 
+        # - **modifying**: Modifying
         self.parameter_status = parameter_status
         # The value of the parameter.
         self.parameter_value = parameter_value

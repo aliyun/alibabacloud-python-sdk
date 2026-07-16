@@ -9,7 +9,7 @@ class ListAvailableHoneypotRequest(DaraModel):
         self,
         node_id: str = None,
     ):
-        # The ID of the management node to which the honeypot is deployed.
+        # The ID of the honeypot management node.
         self.node_id = node_id
 
     def validate(self):

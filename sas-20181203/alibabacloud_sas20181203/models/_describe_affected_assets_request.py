@@ -11,17 +11,15 @@ class DescribeAffectedAssetsRequest(DaraModel):
         levels: str = None,
         page_size: str = None,
     ):
-        # The number of the page to return.
+        # The current page number.
         self.current = current
-        # The severity. Separate multiple severities with commas (,). Valid values:
-        # 
-        # *   serious
-        # *   suspicious
-        # *   remind
+        # The severity level. Separate multiple values with commas (,). Valid values:
+        # - serious: urgent
+        # - suspicious: suspicious
+        # - remind: reminder.
         self.levels = levels
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries per page in a paginated query. Default value: 20. If this parameter is left empty, 20 entries are returned.
+        # >Do not leave PageSize empty.
         self.page_size = page_size
 
     def validate(self):

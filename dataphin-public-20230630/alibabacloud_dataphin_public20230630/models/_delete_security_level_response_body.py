@@ -17,12 +17,17 @@ class DeleteSecurityLevelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The deletion result.
         self.delete_result = delete_result
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,8 +89,11 @@ class DeleteSecurityLevelResponseBodyDeleteResult(DaraModel):
         related_classify_id_list: List[int] = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The list of data classification IDs that are associated with the current classification level. This parameter is returned only when this error is triggered.
         self.related_classify_id_list = related_classify_id_list
+        # Indicates whether the deletion was successful.
         self.success = success
 
     def validate(self):

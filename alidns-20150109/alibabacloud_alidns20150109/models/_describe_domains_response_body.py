@@ -17,11 +17,11 @@ class DescribeDomainsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.domains = domains
-        # The page number of the returned page.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
         # The total number of domain names.
         self.total_count = total_count

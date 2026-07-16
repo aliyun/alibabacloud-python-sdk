@@ -31,6 +31,11 @@ class DescribeManagedInstancesRequest(DaraModel):
     ):
         # The ID of the activation code.
         self.activation_id = activation_id
+        # Indicates whether the managed instance is connected.
+        # 
+        # true: The managed instance is connected, and you can manage it by using Cloud Assistant.
+        # 
+        # false: The managed instance is not connected. The server may be shut down or the Cloud Assistant Agent may not be installed correctly.
         self.connected = connected
         # The ID of managed instance N. Valid values of N: 1 to 50.
         self.instance_id = instance_id
@@ -40,16 +45,20 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.instance_name = instance_name
         # The value of the MachineId parameter that you specify when you register a managed instance. A maximum of 36 characters are allowed. Sample registration script:
         # 
-        #     aliyun-service --register \\
-        #       --RegionId=cn-hangznou \\
-        #       --ActivationId=xxxxxxxxxxx \\
-        #       --ActivationCode=xxxxxxxxx \\
-        #     --MachineId=xxxxxx \\ # Optional. The unique identifier of the machine.
-        #       --ForceResue                 
+        # ```
+        # aliyun-service --register \\
+        #   --RegionId=cn-hangznou \\
+        #   --ActivationId=xxxxxxxxxxx \\
+        #   --ActivationCode=xxxxxxxxx \\
+        # --MachineId=xxxxxx \\ # Optional. The unique identifier of the machine.
+        #   --ForceResue                 
+        # ```
         # 
-        # *   If the MachineId and ForceResult parameters are specified during registration, the Cloud Assistant generates a fixed managed instance ID for this MachineId.
-        # *   If the MachineId parameter is not explicitly specified, the Cloud Assistant will automatically generate a MachineId value based on the hardware information of the machine.
-        # *   We recommend that you explicitly specify the MachineId and ForceResult parameters to mark the mapping between a managed instance and an on-premises machine.
+        # - If the MachineId and ForceResult parameters are specified during registration, the Cloud Assistant generates a fixed managed instance ID for this MachineId.
+        # 
+        # - If the MachineId parameter is not explicitly specified, the Cloud Assistant will automatically generate a MachineId value based on the hardware information of the machine.
+        # 
+        # - We recommend that you explicitly specify the MachineId and ForceResult parameters to mark the mapping between a managed instance and an on-premises machine.
         self.machine_id = machine_id
         # The maximum number of entries per page.
         # 
@@ -61,15 +70,17 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.next_token = next_token
         # The operating system type of the managed instance. Valid values:
         # 
-        # *   windows
-        # *   linux
-        # *   FreeBSD
+        # - windows
+        # 
+        # - linux
+        # 
+        # - FreeBSD
         self.os_type = os_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_number = page_number
-        # >  This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
+        # > This parameter will be removed in the future. We recommend that you use NextToken and MaxResults for a paged query.
         self.page_size = page_size
         # The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), China (Hong Kong), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 

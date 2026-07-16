@@ -9,6 +9,7 @@ class GetNetworkBlacklistRequest(DaraModel):
         self,
         type: str = None,
     ):
+        # The query type. Valid values: IP and Domain. If you do not specify this parameter, information for both types is returned.
         self.type = type
 
     def validate(self):

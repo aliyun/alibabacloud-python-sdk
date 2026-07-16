@@ -14,8 +14,11 @@ class DescribeOutgoingTagResponseBody(DaraModel):
         tag_list: List[main_models.DescribeOutgoingTagResponseBodyTagList] = None,
         total_count: int = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of tags.
         self.tag_list = tag_list
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,10 +70,29 @@ class DescribeOutgoingTagResponseBodyTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
+        # The classification. Valid values:
+        # 
+        # - **Suspicious**: suspicious.
+        # 
+        # - **Malicious**: malicious.
+        # 
+        # - **Trusted**: trusted.
         self.class_id = class_id
+        # The risk assessment level. Valid values:
+        # 
+        # - **0**: no threat.
+        # 
+        # - **1**: low threat.
+        # 
+        # - **2**: medium threat.
+        # 
+        # - **3**: high threat.
         self.risk_level = risk_level
+        # The description of the tag.
         self.tag_describe = tag_describe
+        # The ID of the tag.
         self.tag_id = tag_id
+        # The name of the tag.
         self.tag_name = tag_name
 
     def validate(self):

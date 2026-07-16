@@ -11,8 +11,12 @@ class DeleteRowPermissionRequest(DaraModel):
         delete_row_permission_command: main_models.DeleteRowPermissionRequestDeleteRowPermissionCommand = None,
         op_tenant_id: int = None,
     ):
+        # The request command.
+        # 
         # This parameter is required.
         self.delete_row_permission_command = delete_row_permission_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -49,6 +53,8 @@ class DeleteRowPermissionRequestDeleteRowPermissionCommand(DaraModel):
         self,
         row_permission_id: int = None,
     ):
+        # The row-level permission ID.
+        # 
         # This parameter is required.
         self.row_permission_id = row_permission_id
 

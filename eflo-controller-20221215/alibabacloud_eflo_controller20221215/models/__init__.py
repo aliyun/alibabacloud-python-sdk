@@ -188,6 +188,7 @@ from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
 from ._update_node_group_request import UpdateNodeGroupRequest
+from ._update_node_group_shrink_request import UpdateNodeGroupShrinkRequest
 from ._update_node_group_response_body import UpdateNodeGroupResponseBody
 from ._update_node_group_response import UpdateNodeGroupResponse
 from ._change_node_types_response_body import ChangeNodeTypesResponseBodyNodeResponse
@@ -313,6 +314,7 @@ from ._shrink_cluster_request import ShrinkClusterRequestNodeGroupsHyperNodes
 from ._shrink_cluster_request import ShrinkClusterRequestNodeGroupsNodes
 from ._shrink_cluster_request import ShrinkClusterRequestNodeGroups
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_node_group_request import UpdateNodeGroupRequestSystemDisk
 
 __all__ = [
     ApproveOperationRequest,
@@ -501,6 +503,7 @@ __all__ = [
     UntagResourcesResponseBody,
     UntagResourcesResponse,
     UpdateNodeGroupRequest,
+    UpdateNodeGroupShrinkRequest,
     UpdateNodeGroupResponseBody,
     UpdateNodeGroupResponse,
     ChangeNodeTypesResponseBodyNodeResponse,
@@ -625,5 +628,6 @@ __all__ = [
     ShrinkClusterRequestNodeGroupsHyperNodes,
     ShrinkClusterRequestNodeGroupsNodes,
     ShrinkClusterRequestNodeGroups,
-    TagResourcesRequestTag
+    TagResourcesRequestTag,
+    UpdateNodeGroupRequestSystemDisk
 ]

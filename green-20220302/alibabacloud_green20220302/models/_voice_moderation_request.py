@@ -10,9 +10,11 @@ class VoiceModerationRequest(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
-        # The type of the moderation service.
+        # The ServiceCode for voice moderation.
         self.service = service
-        # The parameters required by the moderation service. The value is a JSON string.
+        # The set of parameters that are required for the moderation service. The value must be a JSON string.
+        # 
+        # url: Required. The URL of the object to be detected. Make sure that the URL is accessible over the Internet. dataId: Optional. The data ID of the object to be detected. For more information, see ServiceParameter.
         self.service_parameters = service_parameters
 
     def validate(self):

@@ -17,8 +17,12 @@ class AddAuditViberOpenRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The audit record.
         self.audit_record = audit_record
+        # The audit result.
         self.audit_result = audit_result
+        # The Space ID of the ISV sub-customer.
+        # 
         # This parameter is required.
         self.cust_space_id = cust_space_id
         self.owner_id = owner_id
@@ -110,34 +114,63 @@ class AddAuditViberOpenRequestAuditRecord(DaraModel):
         reply_content: str = None,
         web_address: str = None,
     ):
+        # The age limit.
         self.age_limit = age_limit
+        # The name of the business account.
         self.business_account_name = business_account_name
+        # The registration number of the business license.
         self.business_license_registration_number = business_license_registration_number
+        # A list of company addresses.
         self.company_address = company_address
+        # The English name of the company.
         self.company_english_name = company_english_name
+        # The legal name of the company.
         self.company_legal_name = company_legal_name
+        # The legal representative of the company.
         self.company_legal_person = company_legal_person
+        # The company profile.
         self.company_profile = company_profile
+        # The country where the company is registered.
         self.company_registered_country = company_registered_country
+        # A list of company phone number objects.
         self.company_tel = company_tel
+        # The complete address of the headquarters.
         self.complete_address_of_headquarters = complete_address_of_headquarters
+        # The email address of the contact person.
         self.contact_email = contact_email
+        # The email address.
         self.contact_mail = contact_mail
+        # The name of the contact person.
         self.contact_name = contact_name
+        # The phone number of the contact person.
         self.contact_phone = contact_phone
+        # The position of the contact person.
         self.contact_position = contact_position
+        # Specifies whether to enable auto-reply.
         self.enable_auto_reply = enable_auto_reply
+        # A description of the industry.
         self.industry_description = industry_description
+        # The industry involved.
         self.industry_involved = industry_involved
+        # The letter of guarantee.
         self.letter_guarantee = letter_guarantee
+        # A list of logos.
         self.logo = logo
+        # A list of destination countries/regions for messages.
         self.message_destination_country = message_destination_country
+        # A list of destination countries/regions for international messages.
         self.message_destination_international_country = message_destination_international_country
+        # The introduction in the message dialog box.
         self.message_dialogue_introduction = message_dialogue_introduction
+        # The date when messaging is enabled.
         self.message_enable_date = message_enable_date
+        # The name of the message session.
         self.message_session_name = message_session_name
+        # Other letters of guarantee.
         self.other_letter_guarantee = other_letter_guarantee
+        # The content of the reply.
         self.reply_content = reply_content
+        # The website address.
         self.web_address = web_address
 
     def validate(self):
@@ -351,7 +384,9 @@ class AddAuditViberOpenRequestAuditRecordCompanyTel(DaraModel):
         company_tel_number: str = None,
         company_tel_title: str = None,
     ):
+        # The company phone number.
         self.company_tel_number = company_tel_number
+        # The title of the company phone number.
         self.company_tel_title = company_tel_title
 
     def validate(self):
@@ -386,7 +421,9 @@ class AddAuditViberOpenRequestAuditRecordCompanyAddress(DaraModel):
         company_address: str = None,
         company_address_title: str = None,
     ):
+        # The company address.
         self.company_address = company_address
+        # The title of the company address.
         self.company_address_title = company_address_title
 
     def validate(self):

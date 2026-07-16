@@ -10,7 +10,9 @@ class CreateMemoryNodeResponseBody(DaraModel):
         memory_node_id: str = None,
         request_id: str = None,
     ):
+        # The memory node ID.
         self.memory_node_id = memory_node_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

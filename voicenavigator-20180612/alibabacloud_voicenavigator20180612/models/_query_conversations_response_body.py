@@ -16,10 +16,15 @@ class QueryConversationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The conversation list.
         self.conversations = conversations
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total count of conversation records.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,21 @@ class QueryConversationsResponseBodyConversations(DaraModel):
         transferred_to_agent: bool = None,
         user_utterance_count: int = None,
     ):
+        # The start time. This value is a Unix timestamp in milliseconds.
         self.begin_time = begin_time
+        # The calling number.
         self.calling_number = calling_number
+        # The conversation ID.
         self.conversation_id = conversation_id
+        # The effective answer count.
         self.effective_answer_count = effective_answer_count
+        # The end time. This value is a Unix timestamp in milliseconds.
         self.end_time = end_time
+        # The ID of the skill group.
         self.skill_group_id = skill_group_id
+        # Whether the conversation was transferred to an agent.
         self.transferred_to_agent = transferred_to_agent
+        # The user utterance count.
         self.user_utterance_count = user_utterance_count
 
     def validate(self):

@@ -9,6 +9,8 @@ class ListSaasPermissionGroupInfosRequest(DaraModel):
         self,
         agent_key: str = None,
     ):
+        # The key for the business space. If unspecified, the default business space is used. You can find this key on the Business Management page of your main account.
+        # 
         # This parameter is required.
         self.agent_key = agent_key
 

@@ -13,11 +13,11 @@ class DeleteDesktopsRequest(DaraModel):
         region_id: str = None,
         reseller_owner_uid: int = None,
     ):
-        # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # A list of 1 to 100 cloud computer IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The region ID. Call [](t2167755.xdita#)to get a list of regions that Elastic Desktop Service (EDS) supports.
         # 
         # This parameter is required.
         self.region_id = region_id

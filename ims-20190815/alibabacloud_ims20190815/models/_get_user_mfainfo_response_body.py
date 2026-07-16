@@ -14,8 +14,9 @@ class GetUserMFAInfoResponseBody(DaraModel):
     ):
         # Indicates whether the MFA device is enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.is_mfaenable = is_mfaenable
         # The information about the MFA device.
         self.mfadevice = mfadevice
@@ -66,8 +67,9 @@ class GetUserMFAInfoResponseBodyMFADevice(DaraModel):
         self.serial_number = serial_number
         # The type of the MFA device. Valid values:
         # 
-        # *   VMFA: virtual MFA device.
-        # *   U2F: Universal 2nd Factor (U2F) security key.
+        # - VMFA: virtual MFA device.
+        # 
+        # - U2F: Universal 2nd Factor (U2F) security key.
         self.type = type
 
     def validate(self):

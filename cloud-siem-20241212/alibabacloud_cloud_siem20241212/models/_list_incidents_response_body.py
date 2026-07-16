@@ -18,12 +18,19 @@ class ListIncidentsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of incidents.
         self.incidents = incidents
+        # The maximum number of entries to return in this request.
         self.max_results = max_results
+        # The pagination token for the next query. Leave this parameter empty for the first query or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -103,20 +110,44 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         owner: str = None,
         relate_alert_count: int = None,
         relate_asset_count: int = None,
+        response_time: int = None,
         threat_level: str = None,
         update_time: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
+        # The name of the incident.
         self.incident_name = incident_name
+        # The remarks of the incident.
         self.incident_remark = incident_remark
+        # The status of the incident. Valid values:
+        # - 0: unhandled.
+        # - 1: handling.
+        # - 5: handling failed.
+        # - 10: handled.
         self.incident_status = incident_status
+        # The tags of the incident.
         self.incident_tags = incident_tags
+        # The UUID of the incident.
         self.incident_uuid = incident_uuid
+        # The UID of the account that owns the incident.
         self.owner = owner
+        # The number of alerts associated with the incident.
         self.relate_alert_count = relate_alert_count
+        # The number of assets associated with the incident.
         self.relate_asset_count = relate_asset_count
+        # The response time, in milliseconds (ms).
+        self.response_time = response_time
+        # The threat level. Valid values:
+        # - 5: critical.
+        # - 4: high.
+        # - 3: medium.
+        # - 2: low.
+        # - 1: informational.
         self.threat_level = threat_level
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -157,6 +188,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
         if self.relate_asset_count is not None:
             result['RelateAssetCount'] = self.relate_asset_count
 
+        if self.response_time is not None:
+            result['ResponseTime'] = self.response_time
+
         if self.threat_level is not None:
             result['ThreatLevel'] = self.threat_level
 
@@ -196,6 +230,9 @@ class ListIncidentsResponseBodyIncidents(DaraModel):
 
         if m.get('RelateAssetCount') is not None:
             self.relate_asset_count = m.get('RelateAssetCount')
+
+        if m.get('ResponseTime') is not None:
+            self.response_time = m.get('ResponseTime')
 
         if m.get('ThreatLevel') is not None:
             self.threat_level = m.get('ThreatLevel')

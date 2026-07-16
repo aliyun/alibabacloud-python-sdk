@@ -10,7 +10,9 @@ class GetRegionStatusResponseBody(DaraModel):
         service_role_exists: bool = None,
         status: str = None,
     ):
+        # Indicates whether DLF\\"s service-linked role has been created.
         self.service_role_exists = service_role_exists
+        # The status.
         self.status = status
 
     def validate(self):

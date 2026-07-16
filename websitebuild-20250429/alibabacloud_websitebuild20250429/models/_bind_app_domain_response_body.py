@@ -22,34 +22,34 @@ class BindAppDomainResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
+        # The detailed reason why access is denied.
         self.access_denied_detail = access_denied_detail
-        # Whether retry is allowed
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
-        # App Name.
+        # The application name.
         self.app_name = app_name
-        # Error Code
+        # The error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the **%s** in the error message of the returned parameter **ErrMessage**.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it indicates that the input request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** response element.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
+        # The error parameters returned.
         self.error_args = error_args
-        # Data table module.
+        # The data table module. Valid values:
         # 
-        # - ABTest: Experiment data table
+        # - ABTest: experiment data table
         # 
-        # - ExperimentTool: Experiment tool table
+        # - ExperimentTool: experiment tool table
         # 
-        # - DataDiagnosis: Data diagnosis
+        # - DataDiagnosis: data modeling diagnostics
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error Code
+        # The error code.
         self.root_error_code = root_error_code
-        # Exception Message
+        # The exception message.
         self.root_error_msg = root_error_msg
-        # Whether to process synchronously
+        # Indicates whether the request is synchronously processed.
         self.synchro = synchro
 
     def validate(self):
@@ -137,10 +137,112 @@ class BindAppDomainResponseBody(DaraModel):
 class BindAppDomainResponseBodyModule(DaraModel):
     def __init__(
         self,
+        dns_conflict: main_models.BindAppDomainResponseBodyModuleDnsConflict = None,
         success: bool = None,
     ):
-        # Indicator of whether the request was successful.
+        self.dns_conflict = dns_conflict
+        # Indicates whether the request is successful.
         self.success = success
+
+    def validate(self):
+        if self.dns_conflict:
+            self.dns_conflict.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dns_conflict is not None:
+            result['DnsConflict'] = self.dns_conflict.to_map()
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DnsConflict') is not None:
+            temp_model = main_models.BindAppDomainResponseBodyModuleDnsConflict()
+            self.dns_conflict = temp_model.from_map(m.get('DnsConflict'))
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class BindAppDomainResponseBodyModuleDnsConflict(DaraModel):
+    def __init__(
+        self,
+        can_auto_resolve: bool = None,
+        has_conflict: bool = None,
+        message: str = None,
+        records: List[main_models.BindAppDomainResponseBodyModuleDnsConflictRecords] = None,
+    ):
+        self.can_auto_resolve = can_auto_resolve
+        self.has_conflict = has_conflict
+        self.message = message
+        self.records = records
+
+    def validate(self):
+        if self.records:
+            for v1 in self.records:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.can_auto_resolve is not None:
+            result['CanAutoResolve'] = self.can_auto_resolve
+
+        if self.has_conflict is not None:
+            result['HasConflict'] = self.has_conflict
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        result['Records'] = []
+        if self.records is not None:
+            for k1 in self.records:
+                result['Records'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanAutoResolve') is not None:
+            self.can_auto_resolve = m.get('CanAutoResolve')
+
+        if m.get('HasConflict') is not None:
+            self.has_conflict = m.get('HasConflict')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        self.records = []
+        if m.get('Records') is not None:
+            for k1 in m.get('Records'):
+                temp_model = main_models.BindAppDomainResponseBodyModuleDnsConflictRecords()
+                self.records.append(temp_model.from_map(k1))
+
+        return self
+
+class BindAppDomainResponseBodyModuleDnsConflictRecords(DaraModel):
+    def __init__(
+        self,
+        host: str = None,
+        record_type: str = None,
+        status: str = None,
+        value: str = None,
+    ):
+        self.host = host
+        self.record_type = record_type
+        self.status = status
+        self.value = value
 
     def validate(self):
         pass
@@ -150,15 +252,33 @@ class BindAppDomainResponseBodyModule(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.success is not None:
-            result['Success'] = self.success
+        if self.host is not None:
+            result['Host'] = self.host
+
+        if self.record_type is not None:
+            result['RecordType'] = self.record_type
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.value is not None:
+            result['Value'] = self.value
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+
+        if m.get('RecordType') is not None:
+            self.record_type = m.get('RecordType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

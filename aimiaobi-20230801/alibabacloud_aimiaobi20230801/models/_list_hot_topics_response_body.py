@@ -20,14 +20,23 @@ class ListHotTopicsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The status code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of results returned on this page.
         self.max_results = max_results
+        # The result message for the request.
         self.message = message
+        # The token to retrieve the next page of results.
         self.next_token = next_token
+        # The unique ID for the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of `true` indicates success; `false` indicates failure.
         self.success = success
+        # The total number of topics found.
         self.total_count = total_count
 
     def validate(self):
@@ -110,7 +119,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
     def __init__(
         self,
         async_task_id: str = None,
+        create_time: str = None,
         create_user: str = None,
+        custom_field: str = None,
         hot_value: int = None,
         id: str = None,
         status: str = None,
@@ -120,19 +131,50 @@ class ListHotTopicsResponseBodyData(DaraModel):
         task_status: int = None,
         topic: str = None,
         topic_source: str = None,
+        topic_url: str = None,
         version: str = None,
     ):
+        # The asynchronous task ID. This parameter is returned only when `TopicSource` is `Custom`.
         self.async_task_id = async_task_id
+        # The time the topic was created, in `yyyy-MM-dd HH:mm:ss` format.
+        self.create_time = create_time
+        # The ID of the user who created the topic. This parameter is returned only when `TopicSource` is `Custom`.
         self.create_user = create_user
+        # A custom field for business-specific data, such as a keyword.
+        self.custom_field = custom_field
+        # The popularity score of the topic.
         self.hot_value = hot_value
+        # The ID of the hot topic.
         self.id = id
+        # The asynchronous task status. This parameter is returned only when `TopicSource` is `Custom`. Valid values: `PENDING`, `RUNNING`, `SUCCEEDED`, `SUSPENDED`, `FAILED`, and `CANCELED`.
         self.status = status
+        # A list of structured topic summaries.
         self.structure_summary = structure_summary
+        # The hot topic summary.
         self.summary = summary
+        # The error message returned when the asynchronous task fails.
         self.task_error_message = task_error_message
+        # The asynchronous task status. This parameter is returned only when `TopicSource` is `Custom`. Valid values: `0` (Pending), `1` (Running), `2` (Succeeded), `3` (Suspended, not currently in use), `4` (Failed), and `6` (Canceled).
         self.task_status = task_status
+        # The unique topic name.
         self.topic = topic
+        # The source of the hot topic. Valid values:
+        # 
+        # - `Toutiao`
+        # 
+        # - `Quark`
+        # 
+        # - `Baidu`
+        # 
+        # - `Sina`
+        # 
+        # - `Custom`
+        # 
+        # - `Aggregation`
         self.topic_source = topic_source
+        # The URL of the original topic.
+        self.topic_url = topic_url
+        # The data version.
         self.version = version
 
     def validate(self):
@@ -149,8 +191,14 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if self.async_task_id is not None:
             result['AsyncTaskId'] = self.async_task_id
 
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
         if self.create_user is not None:
             result['CreateUser'] = self.create_user
+
+        if self.custom_field is not None:
+            result['CustomField'] = self.custom_field
 
         if self.hot_value is not None:
             result['HotValue'] = self.hot_value
@@ -181,6 +229,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if self.topic_source is not None:
             result['TopicSource'] = self.topic_source
 
+        if self.topic_url is not None:
+            result['TopicUrl'] = self.topic_url
+
         if self.version is not None:
             result['Version'] = self.version
 
@@ -191,8 +242,14 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if m.get('AsyncTaskId') is not None:
             self.async_task_id = m.get('AsyncTaskId')
 
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
         if m.get('CreateUser') is not None:
             self.create_user = m.get('CreateUser')
+
+        if m.get('CustomField') is not None:
+            self.custom_field = m.get('CustomField')
 
         if m.get('HotValue') is not None:
             self.hot_value = m.get('HotValue')
@@ -224,6 +281,9 @@ class ListHotTopicsResponseBodyData(DaraModel):
         if m.get('TopicSource') is not None:
             self.topic_source = m.get('TopicSource')
 
+        if m.get('TopicUrl') is not None:
+            self.topic_url = m.get('TopicUrl')
+
         if m.get('Version') is not None:
             self.version = m.get('Version')
 
@@ -236,8 +296,11 @@ class ListHotTopicsResponseBodyDataStructureSummary(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # A list of articles used to generate the title and summary.
         self.doc_list = doc_list
+        # The generated summary.
         self.summary = summary
+        # The generated title.
         self.title = title
 
     def validate(self):
@@ -287,8 +350,11 @@ class ListHotTopicsResponseBodyDataStructureSummaryDocList(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The source of the article.
         self.source = source
+        # The article title.
         self.title = title
+        # The article URL.
         self.url = url
 
     def validate(self):

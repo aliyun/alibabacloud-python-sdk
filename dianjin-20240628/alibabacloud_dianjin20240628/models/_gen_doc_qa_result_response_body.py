@@ -19,13 +19,21 @@ class GenDocQaResultResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # The time consumed.
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The timestamp.
         self.time = time
 
     def validate(self):
@@ -100,9 +108,13 @@ class GenDocQaResultResponseBodyData(DaraModel):
         library_id: str = None,
         parse_qa_results: List[main_models.GenDocQaResultResponseBodyDataParseQaResults] = None,
     ):
+        # The current status. Valid values: \\`INIT\\`, \\`PROCESSING\\`, \\`COMPLETED\\`, and \\`FAIL\\`.
         self.current_status = current_status
+        # The document ID.
         self.doc_id = doc_id
+        # The document library ID.
         self.library_id = library_id
+        # The results of the Q\\&A pair parsing.
         self.parse_qa_results = parse_qa_results
 
     def validate(self):
@@ -157,7 +169,9 @@ class GenDocQaResultResponseBodyDataParseQaResults(DaraModel):
         answer: str = None,
         question: str = None,
     ):
+        # The answer.
         self.answer = answer
+        # The question.
         self.question = question
 
     def validate(self):

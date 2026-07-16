@@ -15,15 +15,27 @@ class UpdateDataLakeFunctionRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The name of the database.
+        # 
         # This parameter is required.
         self.db_name = db_name
+        # The details of the function.
+        # 
         # This parameter is required.
         self.function_input = function_input
+        # The name of the function.
+        # 
         # This parameter is required.
         self.function_name = function_name
+        # The tenant ID.
+        # 
+        # > Hover over your profile picture in the upper-right corner of the DMS console to obtain the tenant ID. For details, see [View tenant information](https://help.aliyun.com/document_detail/181330.html).
         self.tid = tid
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

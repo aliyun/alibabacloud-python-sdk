@@ -18,12 +18,13 @@ class ModifyAuditPolicyRequest(DaraModel):
         service_type: str = None,
         storage_period: int = None,
     ):
-        # The request source for the audit log feature. Set the value to **Console**.
+        # The source of the request. Set this parameter to **Console**.
         self.audit_log_switch_source = audit_log_switch_source
-        # Specifies whether to enable the audit log feature. Valid values:
+        # The status of the audit log. Valid values:
         # 
-        # *   **enable**
-        # *   **disabled**
+        # - **enable**: Enables the audit log feature.
+        # 
+        # - **disabled**: Disables the audit log feature.
         # 
         # This parameter is required.
         self.audit_status = audit_status
@@ -31,19 +32,27 @@ class ModifyAuditPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # This parameter is effective only for the **V2_Standard** (DAS Enterprise Edition (NoSQL Compatible) audit log) edition. It specifies the hot storage duration for the audit log. Valid values: 0 to 7. Unit: days.
         self.hot_storage_period = hot_storage_period
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the audit log feature. Valid values:
+        # The edition of the audit log. Valid values:
         # 
-        # *   **Trail**: free trial edition.
-        # *   **Standard**: official edition.
+        # - **Trial**: Trial Edition.
         # 
-        # > The default value is **Trail**. Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and the free trial edition of the feature can no longer be applied for. We recommend that you set this parameter to **Standard**.
+        # - **Standard**: Standard Edition.
+        # 
+        # - **V2_Standard**: DAS Enterprise Edition (NoSQL Compatible) audit log.
+        # 
+        # > * The default value of this parameter is **Trial**. Starting from January 6, 2022, the Standard edition is being rolled out across regions, and new applications for the Trial edition are no longer accepted.
+        # >
+        # > * Starting from February 2026, the DAS Enterprise Edition (NoSQL Compatible) audit log will be rolled out across regions, and new applications for the Standard edition will no longer be accepted.
         self.service_type = service_type
-        # The log retention period. Valid values: 1 to 365 days. Default value: 30 days.
+        # - For the **Standard** edition, this parameter specifies the retention period for the audit log. Valid values: 1 to 365. The default value is 30. Unit: days.
+        # 
+        # - For the **V2_Standard** (DAS Enterprise Edition (NoSQL Compatible) audit log) edition, this parameter specifies the cold storage duration for the audit log. Valid values: 30, 180, 365, 1095, and 1825. Unit: days.
         self.storage_period = storage_period
 
     def validate(self):

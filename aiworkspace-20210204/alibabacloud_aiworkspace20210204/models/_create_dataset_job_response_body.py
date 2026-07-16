@@ -10,7 +10,7 @@ class CreateDatasetJobResponseBody(DaraModel):
         dataset_job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the dataset job.
+        # The dataset task ID.
         self.dataset_job_id = dataset_job_id
         # The request ID.
         self.request_id = request_id

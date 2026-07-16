@@ -9,7 +9,8 @@ class GetEdgeContainerAppLogRiverRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The application ID, which can be obtained by calling the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation.
+        # The application ID. You can call the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) operation to obtain the application ID.
+        # <notice>AppId is a required parameter. If this parameter is not specified, the API returns InvalidParameter.appid (400). You can call the ListEdgeContainerApps operation to obtain a valid AppId.</notice>.
         self.app_id = app_id
 
     def validate(self):

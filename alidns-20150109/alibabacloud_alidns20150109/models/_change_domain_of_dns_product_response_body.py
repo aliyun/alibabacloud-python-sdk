@@ -10,7 +10,7 @@ class ChangeDomainOfDnsProductResponseBody(DaraModel):
         original_domain: str = None,
         request_id: str = None,
     ):
-        # The domain name that is originally bound to the instance. If no value is returned for this parameter, the instance is bound to a domain name for the first time.
+        # The domain name that was originally attached. If this parameter is empty, it indicates that this is the first time a domain name is attached to the product.
         self.original_domain = original_domain
         # The request ID.
         self.request_id = request_id

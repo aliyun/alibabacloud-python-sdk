@@ -9,6 +9,8 @@ class ListAddableRolesRequest(DaraModel):
         self,
         op_tenant_id: int = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

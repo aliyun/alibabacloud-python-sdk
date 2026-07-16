@@ -16,7 +16,7 @@ class ModifyDatabaseAccountRequest(DaraModel):
     ):
         # The ID of the database account to modify.
         # 
-        # >  You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
+        # > You can call the [ListDatabaseAccounts](https://help.aliyun.com/document_detail/2758839.html) operation to query the database account ID.
         # 
         # This parameter is required.
         self.database_account_id = database_account_id
@@ -34,7 +34,7 @@ class ModifyDatabaseAccountRequest(DaraModel):
         self.password = password
         # The region ID of the bastion host that manages the database account to modify.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):

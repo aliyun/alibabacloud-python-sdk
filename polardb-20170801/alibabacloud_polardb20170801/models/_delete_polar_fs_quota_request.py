@@ -14,9 +14,16 @@ class DeletePolarFsQuotaRequest(DaraModel):
         polar_fs_instance_id: str = None,
         quotas: List[main_models.DeletePolarFsQuotaRequestQuotas] = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the details of all clusters under your account, including the cluster ID.
         self.dbcluster_id = dbcluster_id
+        # The ID of the Polarlakebase instance.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
+        # The details of the quota rules.
+        # 
         # This parameter is required.
         self.quotas = quotas
 
@@ -66,8 +73,12 @@ class DeletePolarFsQuotaRequestQuotas(DaraModel):
         id: str = None,
         name: str = None,
     ):
+        # The ID of the quota.
+        # 
         # This parameter is required.
         self.id = id
+        # The name of the quota.
+        # 
         # This parameter is required.
         self.name = name
 

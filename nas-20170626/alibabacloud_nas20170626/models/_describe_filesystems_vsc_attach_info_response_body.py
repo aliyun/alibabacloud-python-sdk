@@ -16,17 +16,17 @@ class DescribeFilesystemsVscAttachInfoResponseBody(DaraModel):
         total_count: int = None,
         vsc_attach_info: main_models.DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo = None,
     ):
-        # The number of directories to return for each query.
+        # The number of entries returned per query.
         # 
         # Valid values: 10 to 1000.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # Query token, which is the NextToken value returned from the previous API call.
+        # The query token. Set the value to the NextToken value returned in the previous API call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of associated information.
+        # The total number of association entries.
         self.total_count = total_count
         self.vsc_attach_info = vsc_attach_info
 

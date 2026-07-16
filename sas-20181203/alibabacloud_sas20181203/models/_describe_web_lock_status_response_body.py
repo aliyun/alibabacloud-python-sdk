@@ -15,17 +15,17 @@ class DescribeWebLockStatusResponseBody(DaraModel):
         request_id: str = None,
         white_count: int = None,
     ):
-        # The total quota that you purchase for web tamper proofing.
+        # The total number of purchased tamper-proofing authorizations.
         self.auth_count = auth_count
-        # The associated tamper proofing quota.
+        # The number of bound tamper-proofing authorizations.
         self.bind_count = bind_count
         # The number of blocked processes.
         self.block_count = block_count
         # The number of protected directories.
         self.dir_count = dir_count
-        # The timestamp generated when the quota for tamper proofing expires. Unit: millisecond.
+        # The timestamp when the tamper-proofing authorization expires. Unit: milliseconds.
         self.expire_time = expire_time
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The number of processes in the whitelist.
         self.white_count = white_count

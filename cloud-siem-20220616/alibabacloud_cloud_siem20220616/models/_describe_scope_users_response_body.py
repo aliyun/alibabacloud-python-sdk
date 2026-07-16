@@ -16,18 +16,19 @@ class DescribeScopeUsersResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned for the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -92,17 +93,19 @@ class DescribeScopeUsersResponseBodyData(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The ID of the security information and event management (SIEM) user.
+        # The user ID in Security Information and Event Management (SIEM).
         self.ali_uid = ali_uid
-        # 云code。  取值：
-        # - qcloud：腾讯云
-        # - hcloud：华为云
+        # The cloud code. Valid values:
+        # 
+        # - qcloud: Tencent Cloud
+        # 
+        # - hcloud: Huawei Cloud
         self.cloud_code = cloud_code
-        # An array consisting of the domain names that are protected by the WAF instance.
+        # The list of domain names protected by the WAF instance.
         self.domains = domains
         # The ID of the Web Application Firewall (WAF) instance.
         self.instance_id = instance_id
-        # 多云用户ID。
+        # The multicloud user ID.
         self.user_id = user_id
         # The username.
         self.user_name = user_name

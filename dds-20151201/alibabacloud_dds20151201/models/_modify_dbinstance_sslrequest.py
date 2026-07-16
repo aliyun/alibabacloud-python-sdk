@@ -16,23 +16,45 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         sslaction: str = None,
         switch_mode: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to forcibly enable SSL encryption for connections. Valid values:
+        # 
+        # - **1**: Forcibly enable SSL encryption.
+        # 
+        # - **0**: Do not forcibly enable SSL encryption.
+        # 
+        # > * Forced SSL encryption is supported only for MongoDB 7.0 and 8.0 instances that use cloud disks and meet the following minor engine version requirements:
+        # >
+        # > * - For version 7.0, the minor engine version must be 8.0.13 or later.
+        # >
+        # > * - For version 8.0, the minor engine version must be 9.0.5 or later.
+        # 
+        # >Warning: 
+        # 
+        # After you enable forced SSL encryption, only SSL connections to the instance are allowed.
         self.force_encryption = force_encryption
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The operation on the SSL feature. Valid values:
+        # The operation to perform on the SSL feature. Valid values:
         # 
-        # *   **Open**: enables SSL encryption.
-        # *   **Close**: disables SSL encryption.
-        # *   **Update**: updates the SSL certificate.
+        # - **Open**: Enable SSL encryption.
+        # 
+        # - **Close**: Disable SSL encryption.
+        # 
+        # - **Update**: Update the SSL certificate.
         # 
         # This parameter is required.
         self.sslaction = sslaction
+        # The time to modify the SSL configuration of the MongoDB instance. Valid values:
+        # 
+        # - 0: Modify immediately.
+        # 
+        # - 1: Modify within the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):

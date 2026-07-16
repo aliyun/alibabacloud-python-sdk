@@ -17,20 +17,23 @@ class StopJobResponseBody(DaraModel):
         success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # *   If the value of success was true, the job that you stopped was returned.
-        # *   If the value of success was false, a null value was returned.
+        # - The details of the stopped job instance, returned if the request succeeds.
+        # 
+        # - Empty if the request fails.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - The error code that is returned if the request fails.
+        # 
+        # - Empty if the request succeeds.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - The error message that is returned if the request fails.
+        # 
+        # - Empty if the request succeeds.
         self.error_message = error_message
-        # The value was fixed to 200.
+        # The value is fixed at 200.
         self.http_code = http_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):

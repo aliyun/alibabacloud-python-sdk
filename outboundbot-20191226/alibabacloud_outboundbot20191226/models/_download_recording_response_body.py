@@ -15,11 +15,17 @@ class DownloadRecordingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # Download parameters for the recording file.
         self.download_params = download_params
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class DownloadRecordingResponseBodyDownloadParams(DaraModel):
         signature_url: str = None,
         voice_slice_recording_list_json: str = None,
     ):
+        # The name of the recording file, typically a universally unique identifier (UUID).
         self.file_name = file_name
+        # The signed URL for downloading the recording file.
         self.signature_url = signature_url
+        # A JSON-formatted string that contains a list of voice slice recordings. Each item in the list includes the file name and URL of a slice.
         self.voice_slice_recording_list_json = voice_slice_recording_list_json
 
     def validate(self):

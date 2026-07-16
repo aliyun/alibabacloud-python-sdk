@@ -10,7 +10,9 @@ class CreateDataIngestionResponseBody(DaraModel):
         data_ingestion_id: str = None,
         request_id: str = None,
     ):
+        # The data ingestion ID.
         self.data_ingestion_id = data_ingestion_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

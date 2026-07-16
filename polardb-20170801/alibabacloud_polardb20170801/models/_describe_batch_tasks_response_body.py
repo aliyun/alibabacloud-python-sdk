@@ -16,11 +16,15 @@ class DescribeBatchTasksResponseBody(DaraModel):
         task_list: List[main_models.DescribeBatchTasksResponseBodyTaskList] = None,
         total_count: int = None,
     ):
+        # The page number of the returned results.
         self.page_number = page_number
+        # The number of entries returned per page.
         self.page_size = page_size
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The task list.
         self.task_list = task_list
+        # The total number of tasks that match the query, ignoring pagination.
         self.total_count = total_count
 
     def validate(self):
@@ -87,13 +91,21 @@ class DescribeBatchTasksResponseBodyTaskList(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
+        # The batch ID.
         self.batch_id = batch_id
+        # The task status.
         self.status = status
+        # The number of successfully completed subtasks in the batch.
         self.success_count = success_count
+        # The task start time.
         self.task_begin = task_begin
+        # The task end time.
         self.task_end = task_end
+        # The task name.
         self.task_name = task_name
+        # The task type.
         self.task_type = task_type
+        # The total number of subtasks in the batch.
         self.total_count = total_count
 
     def validate(self):

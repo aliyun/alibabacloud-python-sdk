@@ -24,24 +24,49 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
         rendering_status: main_models.DescribeRenderingInstanceResponseBodyRenderingStatus = None,
         request_id: str = None,
         resource_attributes: main_models.DescribeRenderingInstanceResponseBodyResourceAttributes = None,
+        resource_status: main_models.DescribeRenderingInstanceResponseBodyResourceStatus = None,
         storage_size: int = None,
         system_info: main_models.DescribeRenderingInstanceResponseBodySystemInfo = None,
     ):
+        # A list of optional ingress network information.
         self.additional_ingresses = additional_ingresses
+        # The configuration information of the rendering instance.
         self.config_info = config_info
+        # The instance creation time, in UTC (ISO 8601).
         self.creation_time = creation_time
+        # The egress IP address.
         self.egress_ip = egress_ip
+        # The domain name or access IP address of the rendering instance.
         self.hostname = hostname
+        # The billing method of the instance.
         self.instance_charge_type = instance_charge_type
+        # The internal IP address.
         self.internal_ip = internal_ip
+        # The ISP code. Valid values:
+        # 
+        # 1. `cmcc`
+        # 
+        # 2. `unicom`
+        # 
+        # 3. `telecom`
         self.isp = isp
+        # A list of port mappings.
         self.port_mappings = port_mappings
+        # The ID of the rendering instance.
         self.rendering_instance_id = rendering_instance_id
+        # The specification of the rendering instance.
         self.rendering_spec = rendering_spec
+        # The operational status of the rendering instance.
         self.rendering_status = rendering_status
+        # The request ID.
         self.request_id = request_id
+        # The attributes of the rendering instance.
         self.resource_attributes = resource_attributes
+        # The status of the underlying computing resource.
+        self.resource_status = resource_status
+        # The storage capacity of the rendering instance.
         self.storage_size = storage_size
+        # The system information of the rendering instance, such as its resolution.
         self.system_info = system_info
 
     def validate(self):
@@ -59,6 +84,8 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
             self.rendering_status.validate()
         if self.resource_attributes:
             self.resource_attributes.validate()
+        if self.resource_status:
+            self.resource_status.validate()
         if self.system_info:
             self.system_info.validate()
 
@@ -112,6 +139,9 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
 
         if self.resource_attributes is not None:
             result['ResourceAttributes'] = self.resource_attributes.to_map()
+
+        if self.resource_status is not None:
+            result['ResourceStatus'] = self.resource_status.to_map()
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
@@ -174,6 +204,10 @@ class DescribeRenderingInstanceResponseBody(DaraModel):
             temp_model = main_models.DescribeRenderingInstanceResponseBodyResourceAttributes()
             self.resource_attributes = temp_model.from_map(m.get('ResourceAttributes'))
 
+        if m.get('ResourceStatus') is not None:
+            temp_model = main_models.DescribeRenderingInstanceResponseBodyResourceStatus()
+            self.resource_status = temp_model.from_map(m.get('ResourceStatus'))
+
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
 
@@ -189,7 +223,25 @@ class DescribeRenderingInstanceResponseBodySystemInfo(DaraModel):
         frequency: int = None,
         resolution: str = None,
     ):
+        # The refresh rate of the instance, in Hz.
         self.frequency = frequency
+        # The resolution. Valid values:
+        # 
+        # - `1920*864`
+        # 
+        # - `1080*1920`
+        # 
+        # - `1920*1080`
+        # 
+        # - `720*1280`
+        # 
+        # - `2400*1080`
+        # 
+        # - `1080*2400`
+        # 
+        # - `1280*720`
+        # 
+        # - `864*1920`
         self.resolution = resolution
 
     def validate(self):
@@ -218,6 +270,40 @@ class DescribeRenderingInstanceResponseBodySystemInfo(DaraModel):
 
         return self
 
+class DescribeRenderingInstanceResponseBodyResourceStatus(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        # The running status of the computing resource. Valid values:
+        # 
+        # 1. `running`: The edge instance is running normally.
+        # 
+        # 2. `operating`: The edge instance is under maintenance.
+        # 
+        # 3. `error`: An exception is detected on the edge instance.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
 class DescribeRenderingInstanceResponseBodyResourceAttributes(DaraModel):
     def __init__(
         self,
@@ -226,9 +312,25 @@ class DescribeRenderingInstanceResponseBodyResourceAttributes(DaraModel):
         out_access: str = None,
         zone: str = None,
     ):
+        # The configuration of the edge media service. Valid values:
+        # 
+        # 1. `ON`: Enabled.
+        # 
+        # 2. `OFF`: Disabled.
         self.edge_media_service = edge_media_service
+        # The ingress network access configuration. Valid values:
+        # 
+        # 1. `ON`: Enabled. The rendering instance can be accessed from the public internet.
+        # 
+        # 2. `OFF`: Disabled.
         self.in_access = in_access
+        # The egress network access configuration. Valid values:
+        # 
+        # 1. `ON`: Enabled. The rendering instance can access the public internet.
+        # 
+        # 2. `OFF`: Disabled.
         self.out_access = out_access
+        # The resource zone. Valid values: `Private` and `Public`.
         self.zone = zone
 
     def validate(self):
@@ -276,8 +378,21 @@ class DescribeRenderingInstanceResponseBodyRenderingStatus(DaraModel):
         latest_action: str = None,
         status: str = None,
     ):
+        # Additional details about the current status.
         self.description = description
+        # The name of the last action performed on the instance.
         self.latest_action = latest_action
+        # The operational status of the instance. Valid values:
+        # 
+        # 1. `Preparing`: The instance is being initialized.
+        # 
+        # 2. `Rebooting`: The instance is rebooting.
+        # 
+        # 3. `Resetting`: The instance is being reset.
+        # 
+        # 4. `Working`: The instance is running normally. This is a terminal state.
+        # 
+        # 5. `Failure`: The instance has failed to start or operate. This is a terminal state.
         self.status = status
 
     def validate(self):
@@ -318,7 +433,9 @@ class DescribeRenderingInstanceResponseBodyPortMappings(DaraModel):
         external_port: str = None,
         internal_port: str = None,
     ):
+        # The external port or port range, such as `22`. For a port range, use a forward slash (`/`) to separate the start and end ports, for example, `10/20`.
         self.external_port = external_port
+        # The internal port or port range. The ports correspond one-to-one with the external ports. For a port range, use a forward slash (`/`) to separate the start and end ports, for example, `10/20`.
         self.internal_port = internal_port
 
     def validate(self):
@@ -353,7 +470,9 @@ class DescribeRenderingInstanceResponseBodyConfigInfo(DaraModel):
         configuration: List[main_models.DescribeRenderingInstanceResponseBodyConfigInfoConfiguration] = None,
         network_config: main_models.DescribeRenderingInstanceResponseBodyConfigInfoNetworkConfig = None,
     ):
+        # A list of configured physical device simulation modules.
         self.configuration = configuration
+        # Ingress and egress bandwidth limits, in Mbps.
         self.network_config = network_config
 
     def validate(self):
@@ -401,9 +520,19 @@ class DescribeRenderingInstanceResponseBodyConfigInfoNetworkConfig(DaraModel):
         max_ingress_bandwidth: int = None,
         update_time: str = None,
     ):
+        # The status of the bandwidth configuration. Valid values:
+        # 
+        # 1. `waiting`: The configuration is being applied.
+        # 
+        # 2. `success`: The configuration change is complete.
+        # 
+        # 3. `failed`: The configuration change failed.
         self.bandwidth_status = bandwidth_status
+        # The maximum egress bandwidth, in Mbps. A value of 0 indicates no limit.
         self.max_egress_bandwidth = max_egress_bandwidth
+        # The maximum ingress bandwidth, in Mbps. A value of 0 indicates no limit.
         self.max_ingress_bandwidth = max_ingress_bandwidth
+        # The time the configuration was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -450,7 +579,27 @@ class DescribeRenderingInstanceResponseBodyConfigInfoConfiguration(DaraModel):
         attributes: List[main_models.DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes] = None,
         module_name: str = None,
     ):
+        # A list of attributes.
         self.attributes = attributes
+        # The name of the physical device simulation module. Valid values:
+        # 
+        # 1. `ctl`: Control module
+        # 
+        # 2. `prop`: Property module
+        # 
+        # 3. `location`: Location module
+        # 
+        # 4. `battery`: Battery module
+        # 
+        # 5. `network`: Network module
+        # 
+        # 6. `bluetooth`: Bluetooth module
+        # 
+        # 7. `sim`: SIM card module
+        # 
+        # 8. `display`: Display module
+        # 
+        # 9. `system`: System module
         self.module_name = module_name
 
     def validate(self):
@@ -493,7 +642,9 @@ class DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes(Dar
         name: str = None,
         value: Any = None,
     ):
+        # The name of the attribute.
         self.name = name
+        # The value of the attribute.
         self.value = value
 
     def validate(self):
@@ -529,8 +680,17 @@ class DescribeRenderingInstanceResponseBodyAdditionalIngresses(DaraModel):
         isp: str = None,
         port_mappings: List[main_models.DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings] = None,
     ):
+        # The domain name or IP address of the rendering instance.
         self.hostname = hostname
+        # The ISP code. Valid values:
+        # 
+        # 1. `cmcc`
+        # 
+        # 2. `unicom`
+        # 
+        # 3. `telecom`
         self.isp = isp
+        # A list of port mappings.
         self.port_mappings = port_mappings
 
     def validate(self):
@@ -579,7 +739,9 @@ class DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings(DaraM
         external_port: str = None,
         internal_port: str = None,
     ):
+        # The external port or port range, such as `22`. For a port range, use a forward slash (`/`) to separate the start and end ports, for example, `10/20`.
         self.external_port = external_port
+        # The internal port or port range. The ports correspond one-to-one with the external ports. For a port range, use a forward slash (`/`) to separate the start and end ports, for example, `10/20`.
         self.internal_port = internal_port
 
     def validate(self):

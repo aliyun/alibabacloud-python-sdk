@@ -16,15 +16,15 @@ class GetAutoScalingConfigurationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value 200 indicates that the request was successful.
+        # Status code. A return value of 200 indicates success.
         self.code = code
-        # The returned data.
+        # Return result.
         self.data = data
-        # The returned message.
+        # Return message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Whether the call was successful.
         self.success = success
 
     def validate(self):

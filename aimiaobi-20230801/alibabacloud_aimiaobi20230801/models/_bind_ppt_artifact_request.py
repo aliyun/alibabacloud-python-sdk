@@ -12,11 +12,16 @@ class BindPptArtifactRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The artifact ID.
+        # 
         # This parameter is required.
         self.artifact_id = artifact_id
         self.external_user_id = external_user_id
+        # The task ID.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # [The workspace ID.](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

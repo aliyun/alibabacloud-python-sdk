@@ -27,22 +27,41 @@ class QueryMaterialTaskListResponseBody(DaraModel):
         success: bool = None,
         synchro: bool = None,
     ):
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed. Valid values:
+        # - false: Retry is not allowed.
+        # - true: Retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic message. This parameter is currently not in use. Ignore this parameter.
         self.dynamic_message = dynamic_message
+        # The returned error parameters.
         self.error_args = error_args
+        # The error code. The ErrorCode parameter is not returned if the request is successful. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes section.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The number of entries per query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # The response data.
         self.module = module
+        # The token for the next query. This parameter is empty if no more results exist.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The exception message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is successful.
         self.success = success
+        # Indicates whether synchronous processing is used.
         self.synchro = synchro
 
     def validate(self):
@@ -169,13 +188,21 @@ class QueryMaterialTaskListResponseBodyModule(DaraModel):
         total_item_num: int = None,
         total_page_num: int = None,
     ):
+        # The current page number.
         self.current_page_num = current_page_num
+        # The request results.
         self.data = data
+        # Indicates whether a next page exists.
         self.next_page = next_page
+        # The page size.
         self.page_size = page_size
+        # Indicates whether a previous page exists.
         self.pre_page = pre_page
+        # In addition to the pagination limit, the server processes up to the 1000 most recent records for the current query. If the results exceed 1000 records, **ResultLimit** is set to **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit** is set to **false**.
         self.result_limit = result_limit
+        # The total number of entries.
         self.total_item_num = total_item_num
+        # The total number of pages.
         self.total_page_num = total_page_num
 
     def validate(self):

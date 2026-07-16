@@ -17,25 +17,28 @@ class CreateSampleDataRequest(DaraModel):
         store_path: str = None,
         store_type: str = None,
     ):
-        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Description.
+        # The description.
         self.description = description
-        # Encryption type
+        # The encryption type. Valid values:
+        # - **ALL**: all encryption
+        # - **LABEL**: label encryption
+        # - **NONE**: no encryption.
         self.encrypt_type = encrypt_type
-        # Name
+        # The name.
         self.name = name
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Specified risk value
+        # The specified risk value.
         self.risk_value = risk_value
-        # Scene
+        # The scenario.
         self.scene = scene
-        # Storage path
+        # The storage path.
         self.store_path = store_path
-        # Storage type
+        # The storage type.
         self.store_type = store_type
 
     def validate(self):

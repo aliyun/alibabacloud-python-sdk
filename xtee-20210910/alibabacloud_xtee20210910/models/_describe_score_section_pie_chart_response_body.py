@@ -13,9 +13,9 @@ class DescribeScoreSectionPieChartResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeScoreSectionPieChartResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -53,11 +53,11 @@ class DescribeScoreSectionPieChartResponseBodyResultObject(DaraModel):
         grid: main_models.DescribeScoreSectionPieChartResponseBodyResultObjectGrid = None,
         series: List[main_models.DescribeScoreSectionPieChartResponseBodyResultObjectSeries] = None,
     ):
-        # Chart field, default true
+        # The chart field. Default value: true.
         self.animation = animation
-        # Belongs to grid.
+        # The grid.
         self.grid = grid
-        # Data list
+        # The data list.
         self.series = series
 
     def validate(self):
@@ -110,11 +110,11 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectSeries(DaraModel):
         name: str = None,
         rose_type: bool = None,
     ):
-        # Chart data list
+        # The chart data list.
         self.data = data
-        # Category name.
+        # The category name.
         self.name = name
-        # Chart field, default false
+        # The chart field. Default value: false.
         self.rose_type = rose_type
 
     def validate(self):
@@ -163,9 +163,9 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectSeriesData(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # Category item name.
+        # The category item name.
         self.name = name
-        # Result value.
+        # The result value.
         self.value = value
 
     def validate(self):
@@ -199,7 +199,7 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectGrid(DaraModel):
         self,
         show: bool = None,
     ):
-        # Chart field, default false
+        # The chart field. Default value: false.
         self.show = show
 
     def validate(self):

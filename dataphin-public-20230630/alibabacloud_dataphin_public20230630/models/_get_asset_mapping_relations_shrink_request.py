@@ -10,7 +10,10 @@ class GetAssetMappingRelationsShrinkRequest(DaraModel):
         asset_mapping_query_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The query instruction.
         self.asset_mapping_query_shrink = asset_mapping_query_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

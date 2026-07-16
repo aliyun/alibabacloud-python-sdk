@@ -1,3 +1,71 @@
+2026-07-14 Version: 5.9.0
+- Support API CreateApiKey.
+- Support API DeleteApiKey.
+- Support API GetApiKey.
+- Support API GetWorkspace.
+- Support API ListApiKeys.
+
+
+2026-06-30 Version: 5.8.0
+- Support API CreateModelOperatorApiKey.
+- Support API DescribeModelOperatorApiKey.
+- Support API DescribeModelOperatorUsage.
+- Support API ListModelOperatorApiKeys.
+- Support API ListModelOperatorServices.
+
+
+2026-06-29 Version: 5.7.0
+- Support API ResetBranch.
+- Support API RestoreBranch.
+- Support API SetAsDefaultBranch.
+- Support API UpdateBranch.
+
+
+2026-06-26 Version: 5.6.0
+- Support API PauseSaasService.
+- Support API ResumeSaasService.
+- Update API ChatWithKnowledgeBase: add request parameters KnowledgeParams.SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+- Update API ChatWithKnowledgeBaseStream: add request parameters KnowledgeParams.SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+- Update API QueryContent: add request parameters RerankModel.RerankMetadataFields.
+- Update API QueryKnowledgeBasesContent: add request parameters SourceCollection.$.QueryParams.RerankModel.RerankMetadataFields.
+
+
+2026-06-18 Version: 5.5.0
+- Support API CreateBranch.
+- Support API CreateSnapshot.
+- Support API DeleteBranch.
+- Support API DeleteSnapshot.
+- Support API DescribeBranch.
+- Support API GetBranchSchema.
+- Support API ListBranches.
+- Support API RestartSupabaseProject.
+- Support API RestoreSnapshot.
+
+
+2026-06-17 Version: 5.4.0
+- Support API CreateSaasService.
+- Support API CreateWorkspace.
+- Support API DeleteSaasService.
+- Support API DeleteWorkspace.
+- Support API GetSaasService.
+- Support API GetServiceAccessInfo.
+- Support API ListSaasService.
+- Support API ListWorkspaces.
+- Update API CreateSupabaseProject: add request parameters EngineVersion.
+
+
+2026-05-27 Version: 5.3.0
+- Support API ListSupabaseProjectTags.
+- Support API ModifySupabaseProjectDescription.
+- Support API TagSupabaseProject.
+- Support API UntagSupabaseProject.
+
+
+2026-05-26 Version: 5.2.2
+- Update API GetSupabaseProject: add response parameters Body.ProjectDescription.
+- Update API ListSupabaseProjects: add response parameters Body.Items.$.ProjectDescription.
+
+
 2026-04-20 Version: 5.2.0
 - Support API ModifySupabaseAutoScalePolicy.
 

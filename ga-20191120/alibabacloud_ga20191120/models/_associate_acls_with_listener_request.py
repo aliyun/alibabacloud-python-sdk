@@ -16,35 +16,33 @@ class AssociateAclsWithListenerRequest(DaraModel):
         listener_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the ACL. You can associate up to two ACL IDs.
+        # The ID of the access control policy group. You can associate up to two access control policy groups.
         # 
         # This parameter is required.
         self.acl_ids = acl_ids
-        # The type of the ACL. Valid values:
-        # 
-        # *   **white**: Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists are suitable for scenarios in which you want to allow access from specific IP addresses to an application. If a whitelist is improperly configured, risks may arise. After a whitelist is configured for a listener, only requests from the IP addresses that are added to the whitelist are distributed by the listener. If a whitelist is enabled but no IP address is added to the whitelist, the listener forwards all requests.
-        # *   **black**: All requests from the IP addresses or CIDR blocks in the ACL are rejected. Blacklists are suitable for scenarios in which you want to deny access from specific IP addresses to an application. If the blacklist is enabled but no IP addresses are added to the ACL, the listener forwards all requests.
+        # The type of access control. Valid values:
+        # - **white**: Only requests from the IP addresses or CIDR blocks Settings in the specified access control policy group are forwarded. Whitelists are applicable to scenarios in which you want to allow only specific IP addresses to access your application. After you enable a whitelist, only the IP addresses in the whitelist can access the Global Accelerator listener. If you enable a whitelist but the access control policy group does not contain any IP addresses, the Global Accelerator listener forwards all requests.
+        # - **black**: All requests from the IP addresses or CIDR blocks Settings in the specified access control policy group are blocked. Blacklists are applicable to scenarios in which you want to block specific IP addresses from accessing your application. If you enable a blacklist but the access control policy group does not contain any IP addresses, the Global Accelerator listener forwards all requests.
         # 
         # This parameter is required.
         self.acl_type = acl_type
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotency of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
-        # Specifies whether to only precheck the request. Default value: false. Valid values:
-        # 
-        # *   **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without associating the resources. The system checks the required parameters, request syntax, and business limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The listener ID.
         # 
-        # Only intelligent routing listeners support ACLs.
+        # Only intelligent routing listeners support the access control feature.
         # 
         # This parameter is required.
         self.listener_id = listener_id
-        # The region ID of the Global Accelerator (GA) instance. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id

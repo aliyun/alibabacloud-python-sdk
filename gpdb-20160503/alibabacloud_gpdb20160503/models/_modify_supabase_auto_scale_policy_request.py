@@ -11,10 +11,17 @@ class ModifySupabaseAutoScalePolicyRequest(DaraModel):
         project_id: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to enable **automatic start and stop**. Valid values:
+        # - true: Enabled. After this feature is enabled, Supabase automatically pauses and resumes based on traffic conditions.
+        # - false: Disabled. After this feature is disabled, the automatic start and stop feature of Supabase is turned off.
+        # 
         # This parameter is required.
         self.auto_scale = auto_scale
+        # The ID of the Supabase project. You can obtain the workspace ID from the Supabase page in the console.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The region ID of the instance.
         self.region_id = region_id
 
     def validate(self):

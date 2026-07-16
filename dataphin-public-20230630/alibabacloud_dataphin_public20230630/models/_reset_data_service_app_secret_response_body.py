@@ -15,12 +15,17 @@ class ResetDataServiceAppSecretResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Backend response code
         self.code = code
+        # Reset Data Service application key result
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Backend exception details
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful
         self.success = success
 
     def validate(self):
@@ -81,7 +86,9 @@ class ResetDataServiceAppSecretResponseBodyData(DaraModel):
         app_key: str = None,
         app_secret: str = None,
     ):
+        # The new application key
         self.app_key = app_key
+        # The new application secret
         self.app_secret = app_secret
 
     def validate(self):

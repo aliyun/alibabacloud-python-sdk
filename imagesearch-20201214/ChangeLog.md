@@ -1,3 +1,7 @@
+2026-06-25 Version: 4.4.0
+- Support API SearchImageByFilter.
+
+
 2026-03-16 Version: 4.3.0
 - Support API CheckImageExists.
 - Update API AddImage: add response parameters Body.PicInfo.AllCategories.

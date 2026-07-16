@@ -16,13 +16,37 @@ class SearchPublicMediaInfoRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # Indicates whether the User has purchased a resource plan that includes this media asset.
         self.authorized = authorized
+        # Dynamic metadata search matching conditions.
         self.dynamic_meta_data_match_fields = dynamic_meta_data_match_fields
+        # Entity ID, used to identify different types of public copyright media assets. Valid values:
+        # 
+        # - Copyright_Music: Public copyright music
         self.entity_id = entity_id
+        # Indicates whether the User has collected this media asset.
         self.favorite = favorite
+        # IMS media asset IDs.
+        # 
+        # - Separate multiple IDs with commas.
         self.media_ids = media_ids
+        # Page number.
         self.page_no = page_no
+        # Number of entries per page.
         self.page_size = page_size
+        # Result sorting method: :. Valid values:
+        # 
+        # field:
+        # 
+        # - "UsageCount": usage
+        # 
+        # - "UnitPrice": unit price
+        # 
+        # order:
+        # 
+        # - "Desc": descending
+        # 
+        # - "Asc": ascending
         self.sort_by = sort_by
 
     def validate(self):

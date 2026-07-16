@@ -10,7 +10,15 @@ class UpdateLifecyclePolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
+        # 
+        # Valid values:
+        # 
+        # - true: The request succeeded.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

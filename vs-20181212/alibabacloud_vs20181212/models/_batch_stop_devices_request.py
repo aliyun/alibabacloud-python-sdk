@@ -11,9 +11,12 @@ class BatchStopDevicesRequest(DaraModel):
         owner_id: int = None,
         start_time: str = None,
     ):
+        # Device ID. Separate multiple values with commas.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # Stream restart trigger time.
         self.start_time = start_time
 
     def validate(self):

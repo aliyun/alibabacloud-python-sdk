@@ -15,11 +15,17 @@ class ModifyScriptResponseBody(DaraModel):
         script: main_models.ModifyScriptResponseBodyScript = None,
         success: bool = None,
     ):
+        # The status of the API.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The script information.
         self.script = script
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -88,15 +94,25 @@ class ModifyScriptResponseBodyScript(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The debug status of the script.
         self.debug_status = debug_status
+        # The industry.
         self.industry = industry
+        # Indicates whether the script is a debug draft.
         self.is_debug_drafted = is_debug_drafted
+        # Indicates whether the script is a draft.
         self.is_drafted = is_drafted
+        # The scenario.
         self.scene = scene
+        # The description of the script.
         self.script_description = script_description
+        # The ID of the script.
         self.script_id = script_id
+        # The name of the script.
         self.script_name = script_name
+        # The status of the script.
         self.status = status
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

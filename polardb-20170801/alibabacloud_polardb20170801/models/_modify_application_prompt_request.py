@@ -12,13 +12,17 @@ class ModifyApplicationPromptRequest(DaraModel):
         prompt_name: str = None,
         prompt_value: str = None,
     ):
+        # The ID of the application.
+        # 
         # This parameter is required.
         self.application_id = application_id
-        # papt-xx
+        # The ID of the prompt.
         # 
         # This parameter is required.
         self.prompt_id = prompt_id
+        # The name of the prompt.
         self.prompt_name = prompt_name
+        # The content of the prompt.
         self.prompt_value = prompt_value
 
     def validate(self):

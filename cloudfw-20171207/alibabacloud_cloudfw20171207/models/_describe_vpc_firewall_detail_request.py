@@ -12,18 +12,19 @@ class DescribeVpcFirewallDetailRequest(DaraModel):
         peer_vpc_id: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The natural language of the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The ID of the local VPC.
+        # The instance ID of the local VPC.
         self.local_vpc_id = local_vpc_id
-        # The ID of the peer VPC.
+        # The instance ID of the peer VPC.
         self.peer_vpc_id = peer_vpc_id
         # The instance ID of the VPC firewall.
         # 
-        # >  You can call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance IDs of VPC firewalls.
+        # > Call the [DescribeVpcFirewallList](https://help.aliyun.com/document_detail/342932.html) operation to query the instance ID of the VPC firewall.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

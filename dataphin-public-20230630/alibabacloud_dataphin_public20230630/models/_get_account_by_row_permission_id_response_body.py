@@ -17,11 +17,17 @@ class GetAccountByRowPermissionIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The query result.
         self.data = data
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +94,9 @@ class GetAccountByRowPermissionIdResponseBodyData(DaraModel):
         id: int = None,
         user_mapping_list: List[main_models.GetAccountByRowPermissionIdResponseBodyDataUserMappingList] = None,
     ):
+        # The row-level permission rule IDs.
         self.id = id
+        # The accounts associated with the rule.
         self.user_mapping_list = user_mapping_list
 
     def validate(self):
@@ -131,7 +139,9 @@ class GetAccountByRowPermissionIdResponseBodyDataUserMappingList(DaraModel):
         account_type: str = None,
         accounts: List[main_models.GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts] = None,
     ):
+        # The type of the account associated with the rule.
         self.account_type = account_type
+        # The accounts associated with the rule.
         self.accounts = accounts
 
     def validate(self):
@@ -174,7 +184,9 @@ class GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts(DaraMod
         account_id: str = None,
         account_name: str = None,
     ):
+        # The ID of the account associated with the rule.
         self.account_id = account_id
+        # The name of the account associated with the rule.
         self.account_name = account_name
 
     def validate(self):

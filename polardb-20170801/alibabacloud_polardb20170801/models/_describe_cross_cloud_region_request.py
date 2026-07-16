@@ -11,8 +11,21 @@ class DescribeCrossCloudRegionRequest(DaraModel):
         cross_cloud_region_id: str = None,
         dbtype: str = None,
     ):
+        # The cloud service provider. Valid values:
+        # 
+        # - HuaweiCloud
+        # 
+        # - Azure
         self.cloud_provider = cloud_provider
+        # The ID of the third-party cloud region.
         self.cross_cloud_region_id = cross_cloud_region_id
+        # The database engine type. Valid values:
+        # 
+        # - MySQL
+        # 
+        # - PostgreSQL
+        # 
+        # - Oracle
         self.dbtype = dbtype
 
     def validate(self):

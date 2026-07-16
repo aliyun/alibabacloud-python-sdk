@@ -1,3 +1,24 @@
+2026-07-02 Version: 3.0.0
+- Support API GenerateMac.
+- Support API VerifyMac.
+- Delete API CertificatePrivateKeyDecrypt.
+- Delete API CertificatePrivateKeySign.
+- Delete API CertificatePublicKeyEncrypt.
+- Delete API CertificatePublicKeyVerify.
+- Delete API DeleteCertificate.
+- Delete API DescribeCertificate.
+- Delete API GetCertificate.
+- Delete API UpdateCertificateStatus.
+- Delete API UploadCertificate.
+- Update API Decrypt: add request parameters Recipient.
+- Update API Decrypt: add response parameters Body.CiphertextForRecipient.
+- Update API GenerateDataKey: add request parameters Recipient.
+- Update API GenerateDataKey: add response parameters Body.CiphertextForRecipient.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.DeletionProtection.
+- Update API GetKmsInstance: add response parameters Body.KmsInstance.DeletionProtectionDescription.
+- Update API SetDeletionProtection: add request parameters KmsInstanceId.
+
+
 2025-12-05 Version: 2.4.0
 - Support API GetKmsInstanceQuotaInfos.
 - Update API DescribeSecret: add response parameters Body.OwingService.

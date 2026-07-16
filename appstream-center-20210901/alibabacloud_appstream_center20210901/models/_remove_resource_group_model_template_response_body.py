@@ -14,8 +14,11 @@ class RemoveResourceGroupModelTemplateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The removal results.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -66,9 +69,13 @@ class RemoveResourceGroupModelTemplateResponseBodyData(DaraModel):
         resource_group_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the operation fails.
         self.code = code
+        # The error message returned if the operation fails.
         self.message = message
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

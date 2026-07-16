@@ -18,16 +18,17 @@ class ListTransitRouterRouteTableAssociationsResponseBody(DaraModel):
     ):
         # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the query. Valid values:
+        # The token for the next query.
         # 
-        # *   If **NextToken** was not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # - If this parameter is not returned, it indicates that no more results are to be returned.
+        # 
+        # - If a value is returned for this parameter, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # A list of associated forwarding correlations.
+        # A list of forwarding associations.
         self.transit_router_associations = transit_router_associations
 
     def validate(self):
@@ -91,21 +92,27 @@ class ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociatio
         transit_router_attachment_id: str = None,
         transit_router_route_table_id: str = None,
     ):
-        # The ID of the next hop.
+        # The ID of the next hop resource.
         self.resource_id = resource_id
-        # The type of next hop. Valid values:
+        # The type of the next hop resource.
         # 
-        # *   **VPC**: VPC
-        # *   **VBR**: VBR
-        # *   **TR**: transit router
-        # *   **VPN** :VPN attachment
+        # - **VPC**: virtual private cloud (VPC).
+        # 
+        # - **VBR**: virtual border router (VBR).
+        # 
+        # - **TR**: transit router.
+        # 
+        # - **VPN**: VPN connection.
         self.resource_type = resource_type
-        # The status of the associated forwarding correlation. Valid values:
+        # The status of the association.
         # 
-        # *   **Active**: The associated forwarding correlation is available.
-        # *   **Associating**: The associated forwarding correlation is being created.
-        # *   **Dissociating**: The associated forwarding correlation is being deleted.
-        # *   **Deleted**: The associated forwarding correlation is deleted.
+        # - **Active**: The association is active.
+        # 
+        # - **Associating**: The association is being created.
+        # 
+        # - **Dissociating**: The association is being deleted.
+        # 
+        # - **Deleted**: The association is deleted.
         self.status = status
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id

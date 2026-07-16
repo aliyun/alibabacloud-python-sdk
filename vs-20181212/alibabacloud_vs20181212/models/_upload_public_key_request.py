@@ -13,12 +13,37 @@ class UploadPublicKeyRequest(DaraModel):
         key_name: str = None,
         key_type: str = None,
     ):
+        # Base64-encoded public key content.
+        # 
         # This parameter is required.
         self.content = content
+        # Description of the public key.
         self.description = description
+        # Group for the public key. Used for public key management.
+        # 
+        # 1. Length: 0 to 255 characters.
+        # 
+        # 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 3. First character must be a letter or digit.
         self.key_group = key_group
+        # Name of the public key. Must be unique.
+        # 
+        # 1. Length: 8 to 255 characters.
+        # 
+        # 2. Valid characters: lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 3. First character must be a letter or digit.
+        # 
+        # 4. Prefix cannot be group-.
+        # 
         # This parameter is required.
         self.key_name = key_name
+        # Type of the public key. Valid values:
+        # 
+        # - **adb**: ADB key.
+        # 
+        # - **ssh**: SSH key.
         self.key_type = key_type
 
     def validate(self):

@@ -11,14 +11,14 @@ class DescribeDataSourceRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The method that is used to send alert notifications. Set the value to DingTalk.
+        # The type of data source to retrieve. This parameter is currently fixed to DingTalk.
         self.config_type = config_type
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

@@ -13,9 +13,13 @@ class RefreshImportMetaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The monitoring data.
         self.data = data
+        # The result details of the import or export task. > This parameter is empty unless an exception occurs.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,6 +67,7 @@ class RefreshImportMetaResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
+        # The export task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

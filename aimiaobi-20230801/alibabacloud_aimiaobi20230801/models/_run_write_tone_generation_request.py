@@ -15,11 +15,20 @@ class RunWriteToneGenerationRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Tone. Examples include lyrical, bold, subtle, excited, friendly, and inspirational.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Data required for generation.
+        # 
         # This parameter is required.
         self.reference_data = reference_data
+        # Unique identifier of the associated article.
+        # 
+        # > You do not need to specify TaskId. The system generates it automatically. If you use the same TaskId in later requests, those requests belong to the same conversation group.
         self.task_id = task_id
+        # Unique identifier of your Alibaba Cloud Model Studio workspace. To get this ID, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -68,6 +77,8 @@ class RunWriteToneGenerationRequestReferenceData(DaraModel):
         self,
         contents: List[str] = None,
     ):
+        # List of main text blocks.
+        # 
         # This parameter is required.
         self.contents = contents
 

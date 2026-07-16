@@ -12,7 +12,9 @@ class ListFeatureViewOnlineFeaturesResponseBody(DaraModel):
         online_features: List[str] = None,
         request_id: str = None,
     ):
+        # An array of the retrieved online feature records.
         self.online_features = online_features
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

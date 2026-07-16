@@ -13,9 +13,9 @@ class DescribePrefixListsResponseBody(DaraModel):
         prefix_list: List[main_models.DescribePrefixListsResponseBodyPrefixList] = None,
         request_id: str = None,
     ):
-        # Details about the prefix lists.
+        # An array of prefix lists.
         self.prefix_list = prefix_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -63,22 +63,23 @@ class DescribePrefixListsResponseBodyPrefixList(DaraModel):
         prefix_list_id: str = None,
         prefix_list_name: str = None,
     ):
-        # The IP address family of the prefix list. Valid values:
+        # The address family of the prefix list. Valid values:
         # 
-        # *   IPv4
-        # *   IPv6
+        # - IPv4
+        # 
+        # - IPv6
         self.address_family = address_family
         # The number of associated resources.
         self.association_count = association_count
-        # The creation time.
+        # The time the prefix list was created. The timestamp is in ISO 8601 format: `yyyy-MM-ddTHH:mm:ssZ`.
         self.creation_time = creation_time
-        # The description.
+        # The description of the prefix list.
         self.description = description
         # The maximum number of entries in the prefix list.
         self.max_entries = max_entries
-        # The ID of the prefix list.
+        # The prefix list ID.
         self.prefix_list_id = prefix_list_id
-        # The name of the prefix list.
+        # The prefix list name.
         self.prefix_list_name = prefix_list_name
 
     def validate(self):

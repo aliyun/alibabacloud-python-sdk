@@ -17,11 +17,17 @@ class ListGlobalQuestionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # The global question data.
         self.global_questions = global_questions
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,9 +90,13 @@ class ListGlobalQuestionsResponseBodyGlobalQuestions(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The array of global questions.
         self.list = list
+        # The page number.
         self.page_number = page_number
+        # The number of entries.
         self.page_size = page_size
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -145,11 +155,21 @@ class ListGlobalQuestionsResponseBodyGlobalQuestionsList(DaraModel):
         questions: str = None,
         script_id: str = None,
     ):
+        # The replies to the global question.
         self.answers = answers
+        # The global question ID.
         self.global_question_id = global_question_id
+        # The name of the global question.
         self.global_question_name = global_question_name
+        # The type of the global question.
+        # 
+        # - SYSTEM: System-defined
+        # 
+        # - COMMON: General
         self.global_question_type = global_question_type
+        # The list of global questions.
         self.questions = questions
+        # The scenario ID.
         self.script_id = script_id
 
     def validate(self):

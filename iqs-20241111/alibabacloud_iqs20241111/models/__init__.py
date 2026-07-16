@@ -34,6 +34,10 @@ from ._read_page_body import ReadPageBody
 from ._read_page_item import ReadPageItem
 from ._read_page_scrape_body import ReadPageScrapeBody
 from ._request_contents import RequestContents
+from ._scan_file_info import ScanFileInfo
+from ._scan_file_input import ScanFileInput
+from ._scan_file_input_config import ScanFileInputConfig
+from ._scan_file_output import ScanFileOutput
 from ._scene_item import SceneItem
 from ._score_page_item import ScorePageItem
 from ._search_credits import SearchCredits
@@ -78,6 +82,8 @@ from ._read_page_basic_response import ReadPageBasicResponse
 from ._read_page_scrape_request import ReadPageScrapeRequest
 from ._read_page_scrape_response_body import ReadPageScrapeResponseBody
 from ._read_page_scrape_response import ReadPageScrapeResponse
+from ._scan_file_request import ScanFileRequest
+from ._scan_file_response import ScanFileResponse
 from ._unified_search_request import UnifiedSearchRequest
 from ._unified_search_response import UnifiedSearchResponse
 from ._get_iqs_usage_result import GetIqsUsageResultRecords
@@ -127,6 +133,10 @@ __all__ = [
     ReadPageItem,
     ReadPageScrapeBody,
     RequestContents,
+    ScanFileInfo,
+    ScanFileInput,
+    ScanFileInputConfig,
+    ScanFileOutput,
     SceneItem,
     ScorePageItem,
     SearchCredits,
@@ -171,6 +181,8 @@ __all__ = [
     ReadPageScrapeRequest,
     ReadPageScrapeResponseBody,
     ReadPageScrapeResponse,
+    ScanFileRequest,
+    ScanFileResponse,
     UnifiedSearchRequest,
     UnifiedSearchResponse,
     GetIqsUsageResultRecords,

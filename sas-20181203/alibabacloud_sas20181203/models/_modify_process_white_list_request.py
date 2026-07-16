@@ -13,29 +13,25 @@ class ModifyProcessWhiteListRequest(DaraModel):
         status: int = None,
         strategy_id: int = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The MD5 hash value of the process startup file.
-        # 
-        # >  You can call the [DescribeWhiteListProcess](~~DescribeWhiteListProcess~~) operation to obtain the MD5 hash value.
+        # The MD5 hash of the process startup file.
+        # > You can call the [DescribeWhiteListProcess](~~DescribeWhiteListProcess~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.md_5s = md_5s
-        # The source IP address of the request. You do not need to specify this parameter. It is automatically obtained by the system.
+        # The source IP address of the request. You do not need to specify this parameter. The system automatically obtains this value.
         self.source_ip = source_ip
         # The whitelist status of the process. Valid values:
-        # 
-        # *   **1**: removes a process from the whitelist.
-        # *   **2**: adds a process to the whitelist.
+        # - **1**: Remove from the whitelist.
+        # - **2**: Add to the whitelist.
         # 
         # This parameter is required.
         self.status = status
         # The ID of the policy.
-        # 
-        # >  You can call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to obtain the ID.
+        # > You can call the [DescribeWhiteListStrategyList](~~DescribeWhiteListStrategyList~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

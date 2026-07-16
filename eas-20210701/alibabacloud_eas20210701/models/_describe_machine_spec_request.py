@@ -13,9 +13,11 @@ class DescribeMachineSpecRequest(DaraModel):
         instance_types: List[str] = None,
         resource_type: str = None,
     ):
+        # The billing method. The default value is \\`PostPaid\\`.
         self.charge_type = charge_type
         # This parameter is deprecated.
         self.instance_types = instance_types
+        # The resource type. The default value is \\`Public\\`.
         self.resource_type = resource_type
 
     def validate(self):

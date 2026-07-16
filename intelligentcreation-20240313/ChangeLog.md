@@ -1,3 +1,10 @@
+2026-06-10 Version: 2.18.2
+- Update API GetAICoachScript: add response parameters Body.points.$.questionSample.
+- Update API ListAgents: add response parameters Body.list.$.agentIconUrl.
+- Update API ListAgents: add response parameters Body.list.$.characterAgeStage.
+- Update API ListAgents: add response parameters Body.list.$.characterName.
+
+
 2026-05-19 Version: 2.18.1
 - Update API GetAICoachScript: add response parameters Body.pointCoveredFlag.
 - Update API GetAICoachScript: add response parameters Body.points.$.scriptPointId.

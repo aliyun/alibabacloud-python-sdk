@@ -16,10 +16,15 @@ class DescribePrivateDnsEndpointListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # A list of private instances.
         self.access_instance_list = access_instance_list
+        # The page number.
         self.page_no = page_no
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -94,21 +99,61 @@ class DescribePrivateDnsEndpointListResponseBodyAccessInstanceList(DaraModel):
         task_id: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the instance.
         self.access_instance_id = access_instance_id
+        # The name of the private instance.
         self.access_instance_name = access_instance_name
+        # The UID of the Alibaba Cloud account that owns the Cloud Firewall.
         self.ali_uid = ali_uid
+        # The number of domain names.
         self.domain_name_count = domain_name_count
+        # The type of Cloud Firewall. Valid values:
+        # 
+        # - **internet**
+        # 
+        # - **vpc**
+        # 
+        # - **nat**
         self.firewall_type = firewall_type
+        # The time when the instance was created. The value is a UNIX timestamp measured in seconds.
         self.gmt_create = gmt_create
+        # The IP protocol. Valid values:
+        # 
+        # - **TCP**
+        # 
+        # - **UDP**
         self.ip_protocol = ip_protocol
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
+        # The port number.
         self.port = port
+        # The primary DNS server.
         self.primary_dns = primary_dns
+        # The type of private DNS. Valid values:
+        # 
+        # - **PrivateZone**
+        # 
+        # - **Custom** (default)
         self.private_dns_type = private_dns_type
+        # The ID of the region where the instance resides.
         self.region_no = region_no
+        # The standby DNS server.
         self.standby_dns = standby_dns
+        # The status of the instance. Valid values:
+        # 
+        # - **creating**: The instance is being created.
+        # 
+        # - **deleting**: The instance is being deleted.
+        # 
+        # - **normal**: The instance is running as expected.
+        # 
+        # - **updating**: The instance is being updated.
+        # 
+        # - **abnormal**: The instance is in an abnormal state.
         self.status = status
+        # The unique ID of the task.
         self.task_id = task_id
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

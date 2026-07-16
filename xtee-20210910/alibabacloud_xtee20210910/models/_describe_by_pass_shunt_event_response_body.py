@@ -15,17 +15,17 @@ class DescribeByPassShuntEventResponseBody(DaraModel):
         result_object: main_models.DescribeByPassShuntEventResponseBodyResultObject = None,
         success: bool = None,
     ):
-        # Error code.
+        # The error code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Whether it was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class DescribeByPassShuntEventResponseBodyResultObject(DaraModel):
         self,
         event_name: str = None,
     ):
-        # Event name.
+        # The event name.
         self.event_name = event_name
 
     def validate(self):

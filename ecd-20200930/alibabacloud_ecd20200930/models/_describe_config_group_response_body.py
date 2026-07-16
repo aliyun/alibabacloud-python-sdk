@@ -103,9 +103,13 @@ class DescribeConfigGroupResponseBodyData(DaraModel):
         self.description = description
         # The ID of the configuration group.
         self.group_id = group_id
+        # Used for frontend display. The system scheduled task description uses a code.
         self.inner_timer_desc = inner_timer_desc
+        # Used for frontend display; maps the system scheduled task name to a code.
         self.inner_timer_name = inner_timer_name
+        # Used for system scheduled task checks. The current scheduled task does not support detach or attach operations.
         self.is_bind = is_bind
+        # Used for system scheduled task checks. The current scheduled task does not support modification.
         self.is_update = is_update
         # The name of the configuration group.
         self.name = name

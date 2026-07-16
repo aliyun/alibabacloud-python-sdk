@@ -17,14 +17,33 @@ class ListFileUploadRequest(DaraModel):
         sort_column: str = None,
         sort_direction: str = None,
     ):
+        # For front-end use only.
         self.call_from = call_from
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The validity period of the download link, in seconds. This parameter applies only to files in user-owned Object Storage Service (OSS) buckets. The default is 3600.
+        # 
+        # - Minimum value: 3600 (1 hour)
+        # 
+        # - Maximum value: 129600 (36 hours)
+        # 
+        # Notes:
+        # 
+        # - Download links for files in the built-in OSS are valid for 1 hour.
+        # 
+        # -
         self.download_link_expire = download_link_expire
+        # The file category.
         self.file_category = file_category
+        # The file source.
         self.file_from = file_from
+        # The file ID.
         self.file_id = file_id
+        # The session ID.
         self.session_id = session_id
+        # The sort column.
         self.sort_column = sort_column
+        # The sort direction.
         self.sort_direction = sort_direction
 
     def validate(self):

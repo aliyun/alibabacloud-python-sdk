@@ -13,9 +13,13 @@ class GetLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For more information about the error, see the message parameter.
         self.code = code
+        # The data returned.
         self.data = data
+        # The response message.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -70,14 +74,21 @@ class GetLivyComputeTokenResponseBodyData(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
+        # The information about token expiration.
         self.auto_expire_configuration = auto_expire_configuration
+        # The time when the token was created.
         self.create_time = create_time
+        # The name of the user who created the token.
         self.created_by = created_by
+        # The time when the token expires.
         self.expire_time = expire_time
+        # The time when the token was last used.
         self.last_used_time = last_used_time
+        # The name of the token.
         self.name = name
+        # The content of the token.
         self.token = token
-        # Token ID。
+        # The ID of the token.
         self.token_id = token_id
 
     def validate(self):
@@ -150,7 +161,13 @@ class GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
+        # Specifies whether the token automatically expires.
+        # 
+        # - true: Yes.
+        # 
+        # - false: No.
         self.enable = enable
+        # The expiration period, in days.
         self.expire_days = expire_days
 
     def validate(self):

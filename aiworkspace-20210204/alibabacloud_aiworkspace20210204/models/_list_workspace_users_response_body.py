@@ -16,9 +16,9 @@ class ListWorkspaceUsersResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The number of users who meet the filter conditions.
+        # The number of users that meet the filter condition.
         self.total_count = total_count
-        # The users.
+        # The list of users.
         self.users = users
 
     def validate(self):

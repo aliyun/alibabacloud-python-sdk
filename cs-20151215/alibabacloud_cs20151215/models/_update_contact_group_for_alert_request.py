@@ -14,11 +14,11 @@ class UpdateContactGroupForAlertRequest(DaraModel):
         cr_name: str = None,
         namespace: str = None,
     ):
-        # The name of the alert contact group.
+        # The name of the alert metric contact group.
         self.alert_rule_group_name = alert_rule_group_name
         # The list of contact group IDs.
         self.contact_group_ids = contact_group_ids
-        # The name of the container registry instance.
+        # The name of the CR instance.
         self.cr_name = cr_name
         # The namespace in which the resource resides.
         self.namespace = namespace

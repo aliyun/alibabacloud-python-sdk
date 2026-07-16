@@ -14,10 +14,17 @@ class GetUAIDApplyTokenSignResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response status code. Valid values:
+        # 
+        # - **OK**: The request was successful.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73,8 +80,17 @@ class GetUAIDApplyTokenSignResponseBodyData(DaraModel):
         out_id: str = None,
         sign: str = None,
     ):
+        # The mobile carrier. Valid values:
+        # 
+        # - **CM**: China Mobile
+        # 
+        # - **CU**: China Unicom
+        # 
+        # - **CT**: China Telecom
         self.carrier = carrier
+        # The external ID.
         self.out_id = out_id
+        # The signature value.
         self.sign = sign
 
     def validate(self):

@@ -13,7 +13,9 @@ class DescribeArchiveTableListResponseBody(DaraModel):
         data: main_models.DescribeArchiveTableListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data = data
+        # requestId
         self.request_id = request_id
 
     def validate(self):
@@ -56,13 +58,16 @@ class DescribeArchiveTableListResponseBodyData(DaraModel):
         tobe_archived_conut: int = None,
         total: int = None,
     ):
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
         self.paused_count = paused_count
         self.running_count = running_count
         self.success_count = success_count
         self.tables = tables
         self.tobe_archived_conut = tobe_archived_conut
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -147,11 +152,16 @@ class DescribeArchiveTableListResponseBodyDataTables(DaraModel):
         table_name: str = None,
     ):
         self.archive_status = archive_status
+        # The time when the table was created.
         self.created_date = created_date
+        # The number of files.
         self.file_count = file_count
         self.last_success_archive_time = last_success_archive_time
+        # The database name.
         self.schema_name = schema_name
+        # The space occupied by the table.
         self.space_size = space_size
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

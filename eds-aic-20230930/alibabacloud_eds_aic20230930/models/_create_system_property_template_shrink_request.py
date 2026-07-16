@@ -12,9 +12,21 @@ class CreateSystemPropertyTemplateShrinkRequest(DaraModel):
         system_property_info_shrink: str = None,
         template_name: str = None,
     ):
+        # Specifies whether to automatically generate preset system properties.
         self.enable_auto = enable_auto
+        # The URL of the property template file. The API parses the file synchronously. An error is returned if the file format is invalid.
+        # 
+        # > The file must be in the following format: `{ "properties":{"key1":"value1"}}`.
         self.file_path = file_path
+        # The information about the system property template.
         self.system_property_info_shrink = system_property_info_shrink
+        # The name of the template. The name must meet the following requirements:
+        # 
+        # - Be 2 to 32 characters in length.
+        # 
+        # - Start with an uppercase or lowercase letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # 
+        # - Contain letters, digits, colons (:), underscores (_), and hyphens (-). Periods (.) are not supported.
         self.template_name = template_name
 
     def validate(self):

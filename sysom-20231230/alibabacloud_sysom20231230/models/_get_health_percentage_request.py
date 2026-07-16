@@ -12,10 +12,16 @@ class GetHealthPercentageRequest(DaraModel):
         instance: str = None,
         start: float = None,
     ):
+        # The cluster ID.
         self.cluster = cluster
+        # The end time.
+        # 
         # This parameter is required.
         self.end = end
+        # The instance ID.
         self.instance = instance
+        # The start time.
+        # 
         # This parameter is required.
         self.start = start
 

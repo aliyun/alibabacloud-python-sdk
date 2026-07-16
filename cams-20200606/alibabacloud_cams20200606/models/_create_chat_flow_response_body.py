@@ -17,19 +17,23 @@ class CreateChatFlowResponseBody(DaraModel):
         response: Dict[str, Any] = None,
         success: bool = None,
     ):
-        # Access denied details, this field is returned only when RAM verification fails.
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The status code.
         self.code = code
-        # Returned data object.
+        # The returned data object.
         self.data = data
-        # Error message.
+        # The error message.
         self.message = message
-        # Unique request ID.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Response data
+        # The response data.
         self.response = response
-        # Whether the call was successful.
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

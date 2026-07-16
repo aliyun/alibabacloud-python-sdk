@@ -12,10 +12,11 @@ class DescribeSlsAuthStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether WAF is authorized to access Logstores. Valid values:
+        # The authorization status. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: indicates that authorization is granted.
+        # 
+        # - **false**: indicates that authorization is not granted.
         self.status = status
 
     def validate(self):

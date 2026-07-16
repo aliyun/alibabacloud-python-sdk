@@ -1,3 +1,23 @@
+2026-07-07 Version: 3.4.1
+- Generated python 2019-08-15 for Ims.
+
+2026-07-06 Version: 3.4.0
+- Support API CreateServiceCredential.
+- Support API DeleteServiceCredential.
+- Support API GetAccessKeyPolicy.
+- Support API GetServiceCredential.
+- Support API ListServiceCredentials.
+- Support API SetAccessKeyPolicy.
+- Support API UpdateServiceCredential.
+
+
+2026-05-25 Version: 3.3.7
+- Update API GetAccountSummary: add response parameters Body.SummaryMap.ServiceCredentialsPerUserPerServiceQuota.
+- Update API GetSecurityPreference: add response parameters Body.SecurityPreference.AccessKeyPreference.AllowUserToManageServiceCredentials.
+- Update API SetSecurityPreference: add request parameters AllowUserToManageServiceCredentials.
+- Update API SetSecurityPreference: add response parameters Body.SecurityPreference.AccessKeyPreference.AllowUserToManageServiceCredentials.
+
+
 2026-03-30 Version: 3.3.6
 - Update API GetAccountSummary: add response parameters Body.SummaryMap.AuthorizedClientPerUserQuota.
 

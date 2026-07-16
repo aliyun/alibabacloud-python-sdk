@@ -9,6 +9,10 @@ class DisableDBClusterDynamoDBRequest(DaraModel):
         self,
         dbcluster_id: str = None,
     ):
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to list all clusters in the destination region, including their IDs.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
 

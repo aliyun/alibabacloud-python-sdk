@@ -9,7 +9,7 @@ class RevokeWHClientCertificateRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The unique identifier of the client certificate or server certificate that you want to revoke.
+        # The unique identifier of the client or server certificate to revoke.
         # 
         # This parameter is required.
         self.identifier = identifier

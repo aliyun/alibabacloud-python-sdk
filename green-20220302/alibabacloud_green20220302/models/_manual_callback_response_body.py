@@ -11,11 +11,11 @@ class ManualCallbackResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Error code
+        # The error code.
         self.code = code
-        # Message information
+        # The message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

@@ -14,10 +14,15 @@ class MakeDoubleCallResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -71,6 +76,7 @@ class MakeDoubleCallResponseBodyData(DaraModel):
         self,
         acid: str = None,
     ):
+        # Session ID.
         self.acid = acid
 
     def validate(self):

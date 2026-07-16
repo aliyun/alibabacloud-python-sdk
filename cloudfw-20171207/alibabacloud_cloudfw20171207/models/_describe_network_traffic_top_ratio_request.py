@@ -26,26 +26,48 @@ class DescribeNetworkTrafficTopRatioRequest(DaraModel):
         src_ip: str = None,
         start_time: str = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The IP address of the asset.
         self.asset_ip = asset_ip
+        # The region where the asset resides.
         self.asset_region = asset_region
+        # The data type.
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # The traffic direction.
         self.direction = direction
+        # The destination IP address.
         self.dst_ip = dst_ip
+        # The destination port.
         self.dst_port = dst_port
+        # The end of the time range to query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The IP address property.
         self.ip_property = ip_property
+        # The Internet Service Provider (ISP).
         self.isp = isp
+        # The language of the response.
         self.lang = lang
+        # The area.
         self.location = location
+        # The action triggered by the rule.
         self.rule_result = rule_result
+        # The sorting method.
         self.sort = sort
+        # The source identifier.
+        # 
         # This parameter is required.
         self.source_code = source_code
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The source IP address.
         self.src_ip = src_ip
+        # The beginning of the time range to query. The value is a UNIX timestamp in seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

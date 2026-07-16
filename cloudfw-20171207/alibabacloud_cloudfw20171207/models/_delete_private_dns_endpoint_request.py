@@ -10,8 +10,12 @@ class DeletePrivateDnsEndpointRequest(DaraModel):
         access_instance_id: str = None,
         region_no: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.access_instance_id = access_instance_id
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_no = region_no
 

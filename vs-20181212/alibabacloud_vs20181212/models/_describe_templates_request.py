@@ -16,13 +16,24 @@ class DescribeTemplatesRequest(DaraModel):
         sort_direction: str = None,
         type: str = None,
     ):
+        # Template ID.
         self.id = id
+        # Filter templates by the bound instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
+        # Page number. Default: 1.
         self.page_num = page_num
+        # Number of entries per page. Default: 20.
         self.page_size = page_size
+        # Sort results by the specified field. Default: sort by ID.
         self.sort_by = sort_by
+        # Sort order. Default: ascending. Valid values:
+        # 
+        # - asc (ascending)
+        # 
+        # - desc (descending)
         self.sort_direction = sort_direction
+        # Filter templates by template type.
         self.type = type
 
     def validate(self):

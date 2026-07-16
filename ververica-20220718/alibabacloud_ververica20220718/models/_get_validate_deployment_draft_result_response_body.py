@@ -15,11 +15,17 @@ class GetValidateDeploymentDraftResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result object of the in-depth check for the job draft.
         self.data = data
+        # If success is false, this parameter is not empty and indicates the business error code. If success is true, this parameter is empty.
         self.error_code = error_code
+        # If success is false, this parameter is not empty and indicates the business error message. If success is true, this parameter is empty.
         self.error_message = error_message
+        # The business status code. This is always 200. The success parameter indicates whether the business request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the business request was successful.
         self.success = success
 
     def validate(self):

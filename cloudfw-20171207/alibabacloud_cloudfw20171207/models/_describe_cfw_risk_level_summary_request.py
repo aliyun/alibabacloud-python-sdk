@@ -11,18 +11,21 @@ class DescribeCfwRiskLevelSummaryRequest(DaraModel):
         lang: str = None,
         region_id: str = None,
     ):
-        # The instance type.
+        # The instance type. Valid value:
+        # 
+        # - **ecs**
         self.instance_type = instance_type
-        # The language of the content within the response.
+        # The language of the response.
         # 
         # Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
-        self.lang = lang
-        # The region ID of your Cloud Firewall.
+        # - **zh** (default): Chinese
         # 
-        # >  For more information about Cloud Firewall supported regions, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
+        # - **en**: English
+        self.lang = lang
+        # The ID of the region where Cloud Firewall is deployed.
+        # 
+        # > For more information about the regions where Cloud Firewall is available, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_id = region_id
 
     def validate(self):

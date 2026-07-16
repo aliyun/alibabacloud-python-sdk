@@ -460,6 +460,8 @@ class Client(OpenApiClient):
             query['RegistryContent'] = request.registry_content
         if not DaraCore.is_null(request.registry_key):
             query['RegistryKey'] = request.registry_key
+        if not DaraCore.is_null(request.target_default):
+            query['TargetDefault'] = request.target_default
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -520,6 +522,8 @@ class Client(OpenApiClient):
             query['RegistryContent'] = request.registry_content
         if not DaraCore.is_null(request.registry_key):
             query['RegistryKey'] = request.registry_key
+        if not DaraCore.is_null(request.target_default):
+            query['TargetDefault'] = request.target_default
         if not DaraCore.is_null(request.type):
             query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
@@ -2530,6 +2534,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
             query['UnBind'] = request.un_bind
         req = open_api_util_models.OpenApiRequest(
@@ -2576,6 +2582,8 @@ class Client(OpenApiClient):
             query['NtmVersion'] = request.ntm_version
         if not DaraCore.is_null(request.pre_bind_order_id):
             query['PreBindOrderId'] = request.pre_bind_order_id
+        if not DaraCore.is_null(request.resource_directory_account_id):
+            query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
         if not DaraCore.is_null(request.un_bind):
             query['UnBind'] = request.un_bind
         req = open_api_util_models.OpenApiRequest(
@@ -42936,6 +42944,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -42966,6 +42976,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cloud_asset_types):
             query['CloudAssetTypes'] = request.cloud_asset_types
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.vendors):
             query['Vendors'] = request.vendors
         req = open_api_util_models.OpenApiRequest(
@@ -50626,6 +50638,8 @@ class Client(OpenApiClient):
             query['DiskType'] = request.disk_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.page_size):
@@ -50668,6 +50682,8 @@ class Client(OpenApiClient):
             query['DiskType'] = request.disk_type
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.page_size):
@@ -53498,6 +53514,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.page_size):
@@ -53538,6 +53556,8 @@ class Client(OpenApiClient):
             query['Criteria'] = request.criteria
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.is_sale_data):
+            query['IsSaleData'] = request.is_sale_data
         if not DaraCore.is_null(request.logical_exp):
             query['LogicalExp'] = request.logical_exp
         if not DaraCore.is_null(request.page_size):
@@ -59490,10 +59510,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListUnknownThreatDetectEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.hash_key):
             query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_process_path):
@@ -59532,10 +59556,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListUnknownThreatDetectEventResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.analyze_result):
+            query['AnalyzeResult'] = request.analyze_result
         if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.hash_key):
             query['HashKey'] = request.hash_key
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.parent_process_path):

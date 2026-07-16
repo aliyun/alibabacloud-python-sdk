@@ -23,11 +23,11 @@ class DescribeColumnsRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The database name. You can call the [DescribeSchemas](https://help.aliyun.com/document_detail/350931.html) operation to query database names.
+        # The name of the database. You can call the [DescribeSchemas](https://help.aliyun.com/document_detail/350931.html) operation to query database names.
         # 
         # This parameter is required.
         self.schema_name = schema_name
-        # The table name. You can call the [DescribeTables](https://help.aliyun.com/document_detail/350932.html) operation to query table names.
+        # The name of the table. You can call the [DescribeTables](https://help.aliyun.com/document_detail/350932.html) operation to query table names.
         # 
         # This parameter is required.
         self.table_name = table_name

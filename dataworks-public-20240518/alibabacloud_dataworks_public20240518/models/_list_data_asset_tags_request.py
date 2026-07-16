@@ -14,8 +14,9 @@ class ListDataAssetTagsRequest(DaraModel):
     ):
         # The type of the tag. Valid values:
         # 
-        # *   Normal
-        # *   System
+        # - Normal
+        # 
+        # - System
         self.category = category
         # The tag key.
         self.key = key

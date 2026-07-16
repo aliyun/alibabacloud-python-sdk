@@ -16,26 +16,29 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The computing group ID.
         self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The end of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+        # The end time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
         self.end_time = end_time
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   30 (default)
-        # *   50
-        # *   100
+        # - 30 (default)
+        # 
+        # - 50
+        # 
+        # - 100
         self.page_size = page_size
-        # The execution duration of slow SQL queries. Minimum value: **1000**. Unit: milliseconds.
+        # The minimum duration, in milliseconds, for a slow SQL query to be returned. The minimum value is **1000**.
         self.query_duration_ms = query_duration_ms
         # The region ID.
         self.region_id = region_id
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
+        # The start time of the query. The time must be in UTC and in `yyyy-MM-dd HH:mm:ss` format.
         self.start_time = start_time
 
     def validate(self):

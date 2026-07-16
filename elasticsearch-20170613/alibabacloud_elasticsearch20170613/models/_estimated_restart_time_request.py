@@ -11,7 +11,7 @@ class EstimatedRestartTimeRequest(DaraModel):
         force: bool = None,
     ):
         self.body = body
-        # Specifies whether to forcibly restart the cluster. Default value: false.
+        # Specifies whether to force restart the instance. Default value: false.
         self.force = force
 
     def validate(self):

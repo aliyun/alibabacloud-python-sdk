@@ -16,7 +16,7 @@ class ListCloudGtmMonitorNodesResponseBody(DaraModel):
     ):
         self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
         self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
-        # Unique request identification code.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,6 +17,7 @@ class SubscriptionForView(DaraModel):
         filter_setting: main_models.FilterSetting = None,
         notify_strategy_id: str = None,
         pushing_setting: main_models.SubscriptionForViewPushingSetting = None,
+        subscribe_legacy_event: bool = None,
         subscription_id: str = None,
         subscription_name: str = None,
         subscription_type: str = None,
@@ -27,29 +28,34 @@ class SubscriptionForView(DaraModel):
         workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
         self.agent_config = agent_config
-        # Create Time.
+        # The creation time.
         self.create_time = create_time
-        # Description.
+        # The description.
         self.description = description
-        # Whether enabled.
+        # Indicates whether the subscription is enabled.
         self.enable = enable
-        # Filtering settings.
+        # The filter settings.
         self.filter_setting = filter_setting
-        # Notification policy UUID.
+        # The UUID of the notification policy.
         self.notify_strategy_id = notify_strategy_id
-        # Push settings.
+        # The push settings.
         self.pushing_setting = pushing_setting
+        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values:
+        # - true: Subscribe.
+        # - false or null: Do not subscribe.
+        self.subscribe_legacy_event = subscribe_legacy_event
         # UUID
         self.subscription_id = subscription_id
-        # Name.
+        # The name.
         # 
         # This parameter is required.
         self.subscription_name = subscription_name
         self.subscription_type = subscription_type
+        # The source type of the synchronization policy.
         self.sync_from_type = sync_from_type
-        # Update Time.
+        # The update time.
         self.update_time = update_time
-        # User ID.
+        # The user ID.
         self.user_id = user_id
         # workspace
         self.workspace = workspace
@@ -90,6 +96,9 @@ class SubscriptionForView(DaraModel):
 
         if self.pushing_setting is not None:
             result['pushingSetting'] = self.pushing_setting.to_map()
+
+        if self.subscribe_legacy_event is not None:
+            result['subscribeLegacyEvent'] = self.subscribe_legacy_event
 
         if self.subscription_id is not None:
             result['subscriptionId'] = self.subscription_id
@@ -143,6 +152,9 @@ class SubscriptionForView(DaraModel):
             temp_model = main_models.SubscriptionForViewPushingSetting()
             self.pushing_setting = temp_model.from_map(m.get('pushingSetting'))
 
+        if m.get('subscribeLegacyEvent') is not None:
+            self.subscribe_legacy_event = m.get('subscribeLegacyEvent')
+
         if m.get('subscriptionId') is not None:
             self.subscription_id = m.get('subscriptionId')
 
@@ -178,13 +190,13 @@ class SubscriptionForViewPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # Alert push action integration ID list.
+        # The list of action integration IDs for alert pushing.
         self.alert_action_ids = alert_action_ids
-        # Action plan ID.
+        # The action plan ID.
         self.response_plan_id = response_plan_id
-        # Recovery push action integration ID list.
+        # The list of action integration IDs for recovery pushing.
         self.restore_action_ids = restore_action_ids
-        # Template UUID.
+        # The UUID of the template.
         self.template_uuid = template_uuid
 
     def validate(self):

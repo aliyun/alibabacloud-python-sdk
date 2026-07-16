@@ -16,7 +16,7 @@ class DescribeSiteMonitorDataResponseBody(DaraModel):
     ):
         # The responses code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The monitoring data.
         self.data = data

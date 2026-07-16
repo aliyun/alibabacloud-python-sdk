@@ -15,9 +15,13 @@ class ListResourceRelationshipsResponseBody(DaraModel):
         request_id: str = None,
         resource_relationships: List[main_models.ListResourceRelationshipsResponseBodyResourceRelationships] = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The resource relationships.
         self.resource_relationships = resource_relationships
 
     def validate(self):
@@ -76,11 +80,17 @@ class ListResourceRelationshipsResponseBodyResourceRelationships(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The region ID of the resource.
         self.region_id = region_id
+        # The ID of the associated resource.
         self.related_resource_id = related_resource_id
+        # The region ID of the associated resource.
         self.related_resource_region_id = related_resource_region_id
+        # The type of the associated resource.
         self.related_resource_type = related_resource_type
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):

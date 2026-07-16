@@ -9,9 +9,8 @@ class DeleteMaliciousNoteRequest(DaraModel):
         self,
         note_id: int = None,
     ):
-        # The ID of the remarks.
-        # 
-        # >  You can call the [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) operation to obtain the ID from the NoteId parameter.
+        # The ID of the note record.
+        # >Call the [ListAgentlessMaliciousFiles](~~ListAgentlessMaliciousFiles~~) operation to obtain this parameter from the NoteId field.
         self.note_id = note_id
 
     def validate(self):

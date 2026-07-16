@@ -8,6 +8,7 @@ class OperateSupabaseForAdminRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
+        env: str = None,
         execute_sql: str = None,
         operate_type: str = None,
         order_by_clause: str = None,
@@ -19,17 +20,30 @@ class OperateSupabaseForAdminRequest(DaraModel):
         user_id: str = None,
         where_clause: str = None,
     ):
+        # The business ID.
+        # 
         # This parameter is required.
         self.biz_id = biz_id
+        self.env = env
+        # The SQL statement.
         self.execute_sql = execute_sql
+        # The operation type.
         self.operate_type = operate_type
+        # The ORDER BY clause.
         self.order_by_clause = order_by_clause
+        # The field by which to sort the results.
         self.order_column = order_column
+        # The sort order. Valid values: ASC and DESC.
         self.order_type = order_type
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The table name.
         self.table_name = table_name
+        # The user ID.
         self.user_id = user_id
+        # The WHERE clause.
         self.where_clause = where_clause
 
     def validate(self):
@@ -42,6 +56,9 @@ class OperateSupabaseForAdminRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
+
+        if self.env is not None:
+            result['Env'] = self.env
 
         if self.execute_sql is not None:
             result['ExecuteSql'] = self.execute_sql
@@ -79,6 +96,9 @@ class OperateSupabaseForAdminRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
+
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
 
         if m.get('ExecuteSql') is not None:
             self.execute_sql = m.get('ExecuteSql')

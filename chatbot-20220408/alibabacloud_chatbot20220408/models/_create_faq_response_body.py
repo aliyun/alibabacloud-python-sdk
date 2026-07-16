@@ -10,7 +10,9 @@ class CreateFaqResponseBody(DaraModel):
         knowledge_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the newly created knowledge.
         self.knowledge_id = knowledge_id
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

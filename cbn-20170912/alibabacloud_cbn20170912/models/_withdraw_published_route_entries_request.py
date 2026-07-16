@@ -20,25 +20,29 @@ class WithdrawPublishedRouteEntriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the attached network instance.
+        # The ID of the network instance.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The ID of the region where the attached network instance is created.
+        # The region ID of the network instance.
+        # 
+        # Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
-        # The ID of the route table of the attached network instance.
+        # The route table ID of the network instance.
         # 
         # This parameter is required.
         self.child_instance_route_table_id = child_instance_route_table_id
-        # The type of the attached network instance.
+        # The type of the network instance. Valid values:
         # 
-        # Set the value to **VPC**, which indicates a virtual private cloud (VPC).
+        # - **VPC**: virtual private cloud.
+        # 
+        # - **VBR**: virtual border router.
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
-        # The destination CIDR block of the route that you want to withdraw.
+        # The destination CIDR block of the route entry that you want to withdraw.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block

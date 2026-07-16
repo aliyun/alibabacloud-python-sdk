@@ -18,37 +18,37 @@ class DescribeAdvanceSearchPageListRequest(DaraModel):
         page_size: int = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Condition value.
+        # The condition value.
         self.condition = condition
-        # Current page number.
+        # The current page number.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Query start time, accurate to milliseconds (ms).
+        # The start time of the query, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
-        # Event code.
+        # The event code.
         # 
         # This parameter is required.
         self.event_codes = event_codes
-        # End time, accurate to milliseconds (ms).
+        # The end time of the query, in milliseconds (ms).
         # 
         # This parameter is required.
         self.event_end_time = event_end_time
-        # Field name
+        # The field name.
         self.field_name = field_name
-        # Field value
+        # The field value.
         self.field_value = field_value
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id

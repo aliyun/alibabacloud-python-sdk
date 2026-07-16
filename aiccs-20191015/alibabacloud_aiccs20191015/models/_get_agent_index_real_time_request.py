@@ -15,11 +15,19 @@ class GetAgentIndexRealTimeRequest(DaraModel):
         instance_id: str = None,
         page_size: int = None,
     ):
+        # Current page number. The value must be greater than **0**. Default value: **1**.
         self.current_page = current_page
+        # List of department IDs.
         self.dep_ids = dep_ids
+        # List of skill group IDs.
         self.group_ids = group_ids
+        # AICCS instance ID.  
+        # 
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Page size. The value must be greater than **0**. Default value: **20**.
         self.page_size = page_size
 
     def validate(self):

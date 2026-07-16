@@ -27,25 +27,46 @@ class SearchDatasetDocumentsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         workspace_id: str = None,
     ):
+        # A list of category UUIDs for filtering.
         self.category_uuids_shrink = category_uuids_shrink
+        # The end time for document creation, specified as a Unix timestamp.
         self.create_time_end = create_time_end
+        # The start time for document creation, specified as a Unix timestamp.
         self.create_time_start = create_time_start
+        # The ID of the dataset. You must specify either `DatasetId` or `DatasetName`.
         self.dataset_id = dataset_id
+        # The name of the dataset.
         self.dataset_name = dataset_name
+        # A list of document IDs for filtering.
         self.doc_ids_shrink = doc_ids_shrink
+        # A list of document types for filtering.
         self.doc_types_shrink = doc_types_shrink
+        # A list of document UUIDs for filtering.
         self.doc_uuids_shrink = doc_uuids_shrink
+        # The end of the time range for filtering, specified as a Unix timestamp.
         self.end_time = end_time
+        # A business parameter.
         self.extend_1 = extend_1
+        # A reserved business parameter.
         self.extend_2 = extend_2
+        # A reserved business parameter.
         self.extend_3 = extend_3
+        # Specifies whether to include the document content in the search results. The default value is `false`.
         self.include_content = include_content
+        # The number of documents to return per page.
         self.page_size = page_size
+        # The search query.
+        # 
         # This parameter is required.
         self.query = query
+        # The search mode.
         self.search_mode = search_mode
+        # The start of the time range for filtering, specified as a Unix timestamp.
         self.start_time = start_time
+        # A list of tags for filtering.
         self.tags_shrink = tags_shrink
+        # The ID of the Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

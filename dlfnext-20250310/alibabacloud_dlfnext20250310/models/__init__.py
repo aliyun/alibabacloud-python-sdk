@@ -44,6 +44,7 @@ from ._share import Share
 from ._share_options import ShareOptions
 from ._share_resource import ShareResource
 from ._snapshot import Snapshot
+from ._statement_result import StatementResult
 from ._table import Table
 from ._table_compaction import TableCompaction
 from ._table_compaction_history import TableCompactionHistory
@@ -72,6 +73,8 @@ from ._alter_share_resources_request import AlterShareResourcesRequest
 from ._alter_share_resources_response import AlterShareResourcesResponse
 from ._alter_table_request import AlterTableRequest
 from ._alter_table_response import AlterTableResponse
+from ._alter_table_schema_request import AlterTableSchemaRequest
+from ._alter_table_schema_response import AlterTableSchemaResponse
 from ._batch_grant_permissions_request import BatchGrantPermissionsRequest
 from ._batch_grant_permissions_response_body import BatchGrantPermissionsResponseBody
 from ._batch_grant_permissions_response import BatchGrantPermissionsResponse
@@ -158,6 +161,9 @@ from ._list_partition_summaries_response import ListPartitionSummariesResponse
 from ._list_partitions_request import ListPartitionsRequest
 from ._list_partitions_response_body import ListPartitionsResponseBody
 from ._list_partitions_response import ListPartitionsResponse
+from ._list_partitions_by_names_request import ListPartitionsByNamesRequest
+from ._list_partitions_by_names_response_body import ListPartitionsByNamesResponseBody
+from ._list_partitions_by_names_response import ListPartitionsByNamesResponse
 from ._list_permissions_request import ListPermissionsRequest
 from ._list_permissions_response_body import ListPermissionsResponseBody
 from ._list_permissions_response import ListPermissionsResponse
@@ -215,6 +221,7 @@ from ._update_role_users_request import UpdateRoleUsersRequest
 from ._update_role_users_response import UpdateRoleUsersResponse
 from ._cache_cluster import CacheClusterVSwitches
 from ._permission import PermissionColumns
+from ._statement_result import StatementResultSchema
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._get_vpc_config_response_body import GetVpcConfigResponseBodyTrustedVpcs
 
@@ -261,6 +268,7 @@ __all__ = [
     ShareOptions,
     ShareResource,
     Snapshot,
+    StatementResult,
     Table,
     TableCompaction,
     TableCompactionHistory,
@@ -289,6 +297,8 @@ __all__ = [
     AlterShareResourcesResponse,
     AlterTableRequest,
     AlterTableResponse,
+    AlterTableSchemaRequest,
+    AlterTableSchemaResponse,
     BatchGrantPermissionsRequest,
     BatchGrantPermissionsResponseBody,
     BatchGrantPermissionsResponse,
@@ -375,6 +385,9 @@ __all__ = [
     ListPartitionsRequest,
     ListPartitionsResponseBody,
     ListPartitionsResponse,
+    ListPartitionsByNamesRequest,
+    ListPartitionsByNamesResponseBody,
+    ListPartitionsByNamesResponse,
     ListPermissionsRequest,
     ListPermissionsResponseBody,
     ListPermissionsResponse,
@@ -432,6 +445,7 @@ __all__ = [
     UpdateRoleUsersResponse,
     CacheClusterVSwitches,
     PermissionColumns,
+    StatementResultSchema,
     DescribeRegionsResponseBodyRegions,
     GetVpcConfigResponseBodyTrustedVpcs
 ]

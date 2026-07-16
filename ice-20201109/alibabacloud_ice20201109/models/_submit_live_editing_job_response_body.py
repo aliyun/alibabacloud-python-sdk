@@ -16,15 +16,15 @@ class SubmitLiveEditingJobResponseBody(DaraModel):
     ):
         # The ID of the live editing job.
         self.job_id = job_id
-        # The media asset ID of the output file.
+        # The ID of the output media asset.
         self.media_id = media_id
         # The URL of the output file.
         self.media_url = media_url
         # The ID of the live editing project.
         self.project_id = project_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The media asset ID of the output file in ApsaraVideo VOD if the output file is stored in ApsaraVideo VOD.
+        # The ID of the VOD media asset. This parameter is returned only if the output destination is VOD.
         self.vod_media_id = vod_media_id
 
     def validate(self):

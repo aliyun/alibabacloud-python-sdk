@@ -11,9 +11,9 @@ class GetCertificateResponseBody(DaraModel):
         certificate: main_models.GetCertificateResponseBodyCertificate = None,
         request_id: str = None,
     ):
-        # The details of the certificate file.
+        # The details of the certificate.
         self.certificate = certificate
-        # The request ID.
+        # The request ID. Use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -55,19 +55,19 @@ class GetCertificateResponseBodyCertificate(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
-        # The time when the certificate file was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the file was created. This is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The ID of the user who created the certificate file.
         self.create_user = create_user
         # The description.
         self.description = description
-        # The size of the certificate file, in bytes.
+        # The file size in bytes.
         self.file_size_in_bytes = file_size_in_bytes
-        # The ID of the certificate file.
+        # The unique ID of the certificate file.
         self.id = id
-        # The name of the certificate file.
+        # The file name.
         self.name = name
-        # The ID of the workspace to which the certificate file belongs.
+        # The ID of the project to which the certificate file belongs.
         self.project_id = project_id
 
     def validate(self):

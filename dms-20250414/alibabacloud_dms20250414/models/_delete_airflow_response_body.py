@@ -18,12 +18,23 @@ class DeleteAirflowResponseBody(DaraModel):
         root: main_models.DeleteAirflowResponseBodyRoot = None,
         success: bool = None,
     ):
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
+        # The error code.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The details of the deleted instance.
         self.root = root
+        # Indicates whether the request was successful. The following values are returned:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,6 +100,7 @@ class DeleteAirflowResponseBodyRoot(DaraModel):
         self,
         responses: List[main_models.DeleteAirflowResponseBodyRootResponses] = None,
     ):
+        # The details of the return value.
         self.responses = responses
 
     def validate(self):
@@ -125,7 +137,15 @@ class DeleteAirflowResponseBodyRootResponses(DaraModel):
         success: bool = None,
         uuid: str = None,
     ):
+        # Indicates whether the request was successful. The following values are returned:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
+        # The UUID of the asset instance.
+        # 
+        # > This result is not returned if no process exists under the asset.
         self.uuid = uuid
 
     def validate(self):

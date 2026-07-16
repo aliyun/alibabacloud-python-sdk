@@ -93,6 +93,12 @@ from ._batch_get_form_data_by_id_list_request import BatchGetFormDataByIdListReq
 from ._batch_get_form_data_by_id_list_shrink_request import BatchGetFormDataByIdListShrinkRequest
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBody
 from ._batch_get_form_data_by_id_list_response import BatchGetFormDataByIdListResponse
+from ._batch_get_user_id_by_open_dingtalk_id_headers import BatchGetUserIdByOpenDingtalkIdHeaders
+from ._batch_get_user_id_by_open_dingtalk_id_shrink_headers import BatchGetUserIdByOpenDingtalkIdShrinkHeaders
+from ._batch_get_user_id_by_open_dingtalk_id_request import BatchGetUserIdByOpenDingtalkIdRequest
+from ._batch_get_user_id_by_open_dingtalk_id_shrink_request import BatchGetUserIdByOpenDingtalkIdShrinkRequest
+from ._batch_get_user_id_by_open_dingtalk_id_response_body import BatchGetUserIdByOpenDingtalkIdResponseBody
+from ._batch_get_user_id_by_open_dingtalk_id_response import BatchGetUserIdByOpenDingtalkIdResponse
 from ._batch_query_group_member_headers import BatchQueryGroupMemberHeaders
 from ._batch_query_group_member_shrink_headers import BatchQueryGroupMemberShrinkHeaders
 from ._batch_query_group_member_request import BatchQueryGroupMemberRequest
@@ -451,6 +457,12 @@ from ._delete_workspace_members_request import DeleteWorkspaceMembersRequest
 from ._delete_workspace_members_shrink_request import DeleteWorkspaceMembersShrinkRequest
 from ._delete_workspace_members_response_body import DeleteWorkspaceMembersResponseBody
 from ._delete_workspace_members_response import DeleteWorkspaceMembersResponse
+from ._disable_scene_group_template_headers import DisableSceneGroupTemplateHeaders
+from ._disable_scene_group_template_shrink_headers import DisableSceneGroupTemplateShrinkHeaders
+from ._disable_scene_group_template_request import DisableSceneGroupTemplateRequest
+from ._disable_scene_group_template_shrink_request import DisableSceneGroupTemplateShrinkRequest
+from ._disable_scene_group_template_response_body import DisableSceneGroupTemplateResponseBody
+from ._disable_scene_group_template_response import DisableSceneGroupTemplateResponse
 from ._doc_blocks_delete_headers import DocBlocksDeleteHeaders
 from ._doc_blocks_delete_shrink_headers import DocBlocksDeleteShrinkHeaders
 from ._doc_blocks_delete_request import DocBlocksDeleteRequest
@@ -898,6 +910,12 @@ from ._get_user_id_request import GetUserIdRequest
 from ._get_user_id_shrink_request import GetUserIdShrinkRequest
 from ._get_user_id_response_body import GetUserIdResponseBody
 from ._get_user_id_response import GetUserIdResponse
+from ._get_user_id_by_open_dingtalk_id_headers import GetUserIdByOpenDingtalkIdHeaders
+from ._get_user_id_by_open_dingtalk_id_shrink_headers import GetUserIdByOpenDingtalkIdShrinkHeaders
+from ._get_user_id_by_open_dingtalk_id_request import GetUserIdByOpenDingtalkIdRequest
+from ._get_user_id_by_open_dingtalk_id_shrink_request import GetUserIdByOpenDingtalkIdShrinkRequest
+from ._get_user_id_by_open_dingtalk_id_response_body import GetUserIdByOpenDingtalkIdResponseBody
+from ._get_user_id_by_open_dingtalk_id_response import GetUserIdByOpenDingtalkIdResponse
 from ._get_user_id_by_org_id_and_staff_id_headers import GetUserIdByOrgIdAndStaffIdHeaders
 from ._get_user_id_by_org_id_and_staff_id_shrink_headers import GetUserIdByOrgIdAndStaffIdShrinkHeaders
 from ._get_user_id_by_org_id_and_staff_id_request import GetUserIdByOrgIdAndStaffIdRequest
@@ -1092,6 +1110,12 @@ from ._meeting_flash_minutes_request import MeetingFlashMinutesRequest
 from ._meeting_flash_minutes_shrink_request import MeetingFlashMinutesShrinkRequest
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBody
 from ._meeting_flash_minutes_response import MeetingFlashMinutesResponse
+from ._meeting_flash_minutes_text_headers import MeetingFlashMinutesTextHeaders
+from ._meeting_flash_minutes_text_shrink_headers import MeetingFlashMinutesTextShrinkHeaders
+from ._meeting_flash_minutes_text_request import MeetingFlashMinutesTextRequest
+from ._meeting_flash_minutes_text_shrink_request import MeetingFlashMinutesTextShrinkRequest
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBody
+from ._meeting_flash_minutes_text_response import MeetingFlashMinutesTextResponse
 from ._mute_all_headers import MuteAllHeaders
 from ._mute_all_shrink_headers import MuteAllShrinkHeaders
 from ._mute_all_request import MuteAllRequest
@@ -1389,6 +1413,12 @@ from ._set_rows_visibility_request import SetRowsVisibilityRequest
 from ._set_rows_visibility_shrink_request import SetRowsVisibilityShrinkRequest
 from ._set_rows_visibility_response_body import SetRowsVisibilityResponseBody
 from ._set_rows_visibility_response import SetRowsVisibilityResponse
+from ._sign_out_org_account_headers import SignOutOrgAccountHeaders
+from ._sign_out_org_account_shrink_headers import SignOutOrgAccountShrinkHeaders
+from ._sign_out_org_account_request import SignOutOrgAccountRequest
+from ._sign_out_org_account_shrink_request import SignOutOrgAccountShrinkRequest
+from ._sign_out_org_account_response_body import SignOutOrgAccountResponseBody
+from ._sign_out_org_account_response import SignOutOrgAccountResponse
 from ._simple_list_report_headers import SimpleListReportHeaders
 from ._simple_list_report_shrink_headers import SimpleListReportShrinkHeaders
 from ._simple_list_report_request import SimpleListReportRequest
@@ -1672,6 +1702,9 @@ from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdL
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResultOriginatorName
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResultOriginator
 from ._batch_get_form_data_by_id_list_response_body import BatchGetFormDataByIdListResponseBodyResult
+from ._batch_get_user_id_by_open_dingtalk_id_headers import BatchGetUserIdByOpenDingtalkIdHeadersAccountContext
+from ._batch_get_user_id_by_open_dingtalk_id_request import BatchGetUserIdByOpenDingtalkIdRequestTenantContext
+from ._batch_get_user_id_by_open_dingtalk_id_response_body import BatchGetUserIdByOpenDingtalkIdResponseBodyResults
 from ._batch_query_group_member_headers import BatchQueryGroupMemberHeadersAccountContext
 from ._batch_query_group_member_request import BatchQueryGroupMemberRequestTenantContext
 from ._batch_removal_by_form_instance_id_list_headers import BatchRemovalByFormInstanceIdListHeadersAccountContext
@@ -1923,6 +1956,8 @@ from ._delete_workspace_doc_members_request import DeleteWorkspaceDocMembersRequ
 from ._delete_workspace_members_headers import DeleteWorkspaceMembersHeadersAccountContext
 from ._delete_workspace_members_request import DeleteWorkspaceMembersRequestMembers
 from ._delete_workspace_members_request import DeleteWorkspaceMembersRequestTenantContext
+from ._disable_scene_group_template_headers import DisableSceneGroupTemplateHeadersAccountContext
+from ._disable_scene_group_template_request import DisableSceneGroupTemplateRequestTenantContext
 from ._doc_blocks_delete_headers import DocBlocksDeleteHeadersAccountContext
 from ._doc_blocks_delete_request import DocBlocksDeleteRequestTenantContext
 from ._doc_blocks_modify_headers import DocBlocksModifyHeadersAccountContext
@@ -2210,6 +2245,8 @@ from ._get_user_response_body import GetUserResponseBodyUnionEmpExtUnionEmpMapLi
 from ._get_user_response_body import GetUserResponseBodyUnionEmpExt
 from ._get_user_id_headers import GetUserIdHeadersAccountContext
 from ._get_user_id_request import GetUserIdRequestTenantContext
+from ._get_user_id_by_open_dingtalk_id_headers import GetUserIdByOpenDingtalkIdHeadersAccountContext
+from ._get_user_id_by_open_dingtalk_id_request import GetUserIdByOpenDingtalkIdRequestTenantContext
 from ._get_user_id_by_org_id_and_staff_id_headers import GetUserIdByOrgIdAndStaffIdHeadersAccountContext
 from ._get_user_id_by_org_id_and_staff_id_request import GetUserIdByOrgIdAndStaffIdRequestTenantContext
 from ._get_user_latest_plan_headers import GetUserLatestPlanHeadersAccountContext
@@ -2419,6 +2456,12 @@ from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBod
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodosDingtalkTodoList
 from ._meeting_flash_minutes_response_body import MeetingFlashMinutesResponseBodyTodos
+from ._meeting_flash_minutes_text_headers import MeetingFlashMinutesTextHeadersAccountContext
+from ._meeting_flash_minutes_text_request import MeetingFlashMinutesTextRequestTenantContext
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSentenceListWordList
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSentenceList
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphListSpeakerDisplay
+from ._meeting_flash_minutes_text_response_body import MeetingFlashMinutesTextResponseBodyParagraphList
 from ._mute_all_headers import MuteAllHeadersAccountContext
 from ._mute_all_request import MuteAllRequestTenantContext
 from ._mute_members_headers import MuteMembersHeadersAccountContext
@@ -2613,6 +2656,8 @@ from ._set_conference_hosts_headers import SetConferenceHostsHeadersAccountConte
 from ._set_conference_hosts_request import SetConferenceHostsRequestTenantContext
 from ._set_rows_visibility_headers import SetRowsVisibilityHeadersAccountContext
 from ._set_rows_visibility_request import SetRowsVisibilityRequestTenantContext
+from ._sign_out_org_account_headers import SignOutOrgAccountHeadersAccountContext
+from ._sign_out_org_account_request import SignOutOrgAccountRequestTenantContext
 from ._simple_list_report_headers import SimpleListReportHeadersAccountContext
 from ._simple_list_report_request import SimpleListReportRequestTenantContext
 from ._simple_list_report_response_body import SimpleListReportResponseBodyDataList
@@ -2799,6 +2844,12 @@ __all__ = [
     BatchGetFormDataByIdListShrinkRequest,
     BatchGetFormDataByIdListResponseBody,
     BatchGetFormDataByIdListResponse,
+    BatchGetUserIdByOpenDingtalkIdHeaders,
+    BatchGetUserIdByOpenDingtalkIdShrinkHeaders,
+    BatchGetUserIdByOpenDingtalkIdRequest,
+    BatchGetUserIdByOpenDingtalkIdShrinkRequest,
+    BatchGetUserIdByOpenDingtalkIdResponseBody,
+    BatchGetUserIdByOpenDingtalkIdResponse,
     BatchQueryGroupMemberHeaders,
     BatchQueryGroupMemberShrinkHeaders,
     BatchQueryGroupMemberRequest,
@@ -3157,6 +3208,12 @@ __all__ = [
     DeleteWorkspaceMembersShrinkRequest,
     DeleteWorkspaceMembersResponseBody,
     DeleteWorkspaceMembersResponse,
+    DisableSceneGroupTemplateHeaders,
+    DisableSceneGroupTemplateShrinkHeaders,
+    DisableSceneGroupTemplateRequest,
+    DisableSceneGroupTemplateShrinkRequest,
+    DisableSceneGroupTemplateResponseBody,
+    DisableSceneGroupTemplateResponse,
     DocBlocksDeleteHeaders,
     DocBlocksDeleteShrinkHeaders,
     DocBlocksDeleteRequest,
@@ -3604,6 +3661,12 @@ __all__ = [
     GetUserIdShrinkRequest,
     GetUserIdResponseBody,
     GetUserIdResponse,
+    GetUserIdByOpenDingtalkIdHeaders,
+    GetUserIdByOpenDingtalkIdShrinkHeaders,
+    GetUserIdByOpenDingtalkIdRequest,
+    GetUserIdByOpenDingtalkIdShrinkRequest,
+    GetUserIdByOpenDingtalkIdResponseBody,
+    GetUserIdByOpenDingtalkIdResponse,
     GetUserIdByOrgIdAndStaffIdHeaders,
     GetUserIdByOrgIdAndStaffIdShrinkHeaders,
     GetUserIdByOrgIdAndStaffIdRequest,
@@ -3798,6 +3861,12 @@ __all__ = [
     MeetingFlashMinutesShrinkRequest,
     MeetingFlashMinutesResponseBody,
     MeetingFlashMinutesResponse,
+    MeetingFlashMinutesTextHeaders,
+    MeetingFlashMinutesTextShrinkHeaders,
+    MeetingFlashMinutesTextRequest,
+    MeetingFlashMinutesTextShrinkRequest,
+    MeetingFlashMinutesTextResponseBody,
+    MeetingFlashMinutesTextResponse,
     MuteAllHeaders,
     MuteAllShrinkHeaders,
     MuteAllRequest,
@@ -4095,6 +4164,12 @@ __all__ = [
     SetRowsVisibilityShrinkRequest,
     SetRowsVisibilityResponseBody,
     SetRowsVisibilityResponse,
+    SignOutOrgAccountHeaders,
+    SignOutOrgAccountShrinkHeaders,
+    SignOutOrgAccountRequest,
+    SignOutOrgAccountShrinkRequest,
+    SignOutOrgAccountResponseBody,
+    SignOutOrgAccountResponse,
     SimpleListReportHeaders,
     SimpleListReportShrinkHeaders,
     SimpleListReportRequest,
@@ -4378,6 +4453,9 @@ __all__ = [
     BatchGetFormDataByIdListResponseBodyResultOriginatorName,
     BatchGetFormDataByIdListResponseBodyResultOriginator,
     BatchGetFormDataByIdListResponseBodyResult,
+    BatchGetUserIdByOpenDingtalkIdHeadersAccountContext,
+    BatchGetUserIdByOpenDingtalkIdRequestTenantContext,
+    BatchGetUserIdByOpenDingtalkIdResponseBodyResults,
     BatchQueryGroupMemberHeadersAccountContext,
     BatchQueryGroupMemberRequestTenantContext,
     BatchRemovalByFormInstanceIdListHeadersAccountContext,
@@ -4629,6 +4707,8 @@ __all__ = [
     DeleteWorkspaceMembersHeadersAccountContext,
     DeleteWorkspaceMembersRequestMembers,
     DeleteWorkspaceMembersRequestTenantContext,
+    DisableSceneGroupTemplateHeadersAccountContext,
+    DisableSceneGroupTemplateRequestTenantContext,
     DocBlocksDeleteHeadersAccountContext,
     DocBlocksDeleteRequestTenantContext,
     DocBlocksModifyHeadersAccountContext,
@@ -4916,6 +4996,8 @@ __all__ = [
     GetUserResponseBodyUnionEmpExt,
     GetUserIdHeadersAccountContext,
     GetUserIdRequestTenantContext,
+    GetUserIdByOpenDingtalkIdHeadersAccountContext,
+    GetUserIdByOpenDingtalkIdRequestTenantContext,
     GetUserIdByOrgIdAndStaffIdHeadersAccountContext,
     GetUserIdByOrgIdAndStaffIdRequestTenantContext,
     GetUserLatestPlanHeadersAccountContext,
@@ -5125,6 +5207,12 @@ __all__ = [
     MeetingFlashMinutesResponseBodyTodosDingtalkTodoListExecutorList,
     MeetingFlashMinutesResponseBodyTodosDingtalkTodoList,
     MeetingFlashMinutesResponseBodyTodos,
+    MeetingFlashMinutesTextHeadersAccountContext,
+    MeetingFlashMinutesTextRequestTenantContext,
+    MeetingFlashMinutesTextResponseBodyParagraphListSentenceListWordList,
+    MeetingFlashMinutesTextResponseBodyParagraphListSentenceList,
+    MeetingFlashMinutesTextResponseBodyParagraphListSpeakerDisplay,
+    MeetingFlashMinutesTextResponseBodyParagraphList,
     MuteAllHeadersAccountContext,
     MuteAllRequestTenantContext,
     MuteMembersHeadersAccountContext,
@@ -5319,6 +5407,8 @@ __all__ = [
     SetConferenceHostsRequestTenantContext,
     SetRowsVisibilityHeadersAccountContext,
     SetRowsVisibilityRequestTenantContext,
+    SignOutOrgAccountHeadersAccountContext,
+    SignOutOrgAccountRequestTenantContext,
     SimpleListReportHeadersAccountContext,
     SimpleListReportRequestTenantContext,
     SimpleListReportResponseBodyDataList,

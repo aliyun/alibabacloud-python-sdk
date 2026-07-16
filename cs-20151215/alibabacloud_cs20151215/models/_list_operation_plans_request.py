@@ -12,7 +12,7 @@ class ListOperationPlansRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The operation plan type.
+        # The execution plan type.
         self.type = type
 
     def validate(self):

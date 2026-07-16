@@ -10,8 +10,11 @@ class DescribeQosRulesRequest(DaraModel):
         network_package_id: str = None,
         qos_rule_name: str = None,
     ):
+        # The network package ID.
+        # 
         # This parameter is required.
         self.network_package_id = network_package_id
+        # The QoS rule name.
         self.qos_rule_name = qos_rule_name
 
     def validate(self):

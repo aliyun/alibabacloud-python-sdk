@@ -18,23 +18,25 @@ class ListAgentRuntimesRequest(DaraModel):
         workspace_id: str = None,
         workspace_ids: str = None,
     ):
-        # 根据智能体运行时名称进行模糊匹配过滤
+        # Filters the results by agent runtime name.
         self.agent_runtime_name = agent_runtime_name
-        # 用于服务发现的资源组标识符
+        # The service discovery resource group ID.
         self.discovery_resource_group_id = discovery_resource_group_id
-        # 当前页码，从1开始计数
+        # The page number to return.
         self.page_number = page_number
-        # 每页返回的记录数量
+        # The number of entries to return per page.
         self.page_size = page_size
+        # The ID of the resource group. This parameter is deprecated.
         self.resource_group_id = resource_group_id
-        # 查询模式，支持精确查询和模糊查询
+        # The search mode.
         self.search_mode = search_mode
-        # 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
+        # Filters the results by status.
         self.status = status
-        # 根据系统标签进行过滤，多个标签用逗号分隔，支持精确匹配
+        # Filters the results by system tags. Separate multiple tags with commas. This parameter supports only exact matches.
         self.system_tags = system_tags
-        # 根据工作空间ID进行过滤，用于资源隔离和权限管理
+        # The workspace ID.
         self.workspace_id = workspace_id
+        # A comma-separated string of workspace IDs.
         self.workspace_ids = workspace_ids
 
     def validate(self):

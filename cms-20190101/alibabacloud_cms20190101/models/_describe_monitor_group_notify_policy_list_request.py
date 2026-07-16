@@ -19,9 +19,9 @@ class DescribeMonitorGroupNotifyPolicyListRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The type of the policy.
+        # The type of the pause notification.
         # 
-        # Valid value: PauseNotify.
+        # Currently, only PauseNotify is supported.
         # 
         # This parameter is required.
         self.policy_type = policy_type

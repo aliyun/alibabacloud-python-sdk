@@ -19,13 +19,13 @@ class GetServiceEstimateCostShrinkRequest(DaraModel):
         template_name: str = None,
         trial_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. Generate a unique value for each request. The **ClientToken** supports only ASCII characters and cannot be longer than 64 characters.
         self.client_token = client_token
-        # The information about the subscription duration.
+        # The subscription period for the purchase order.
         self.commodity_shrink = commodity_shrink
-        # The name of the configuration change operation.
+        # The name of the upgrade or downgrade operation.
         self.operation_name = operation_name
-        # The parameters that are specified to deploy the service instance.
+        # The parameters to deploy the service instance.
         self.parameters_shrink = parameters_shrink
         # The region ID.
         self.region_id = region_id
@@ -37,14 +37,15 @@ class GetServiceEstimateCostShrinkRequest(DaraModel):
         self.service_instance_id = service_instance_id
         # The service version.
         self.service_version = service_version
-        # The name of the package specification.
+        # The specification name.
         self.specification_name = specification_name
         # The template name.
         self.template_name = template_name
-        # The trial policy. Valid values:
+        # The usage type. Valid values:
         # 
-        # *   Trial: Trials are supported.
-        # *   NotTrial: Trials are not supported.
+        # - Trial: The service supports a free trial.
+        # 
+        # - NotTrial: The service does not support a free trial.
         self.trial_type = trial_type
 
     def validate(self):

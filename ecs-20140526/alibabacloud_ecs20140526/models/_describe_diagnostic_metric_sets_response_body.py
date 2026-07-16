@@ -83,8 +83,9 @@ class DescribeDiagnosticMetricSetsResponseBodyMetricSets(DaraModel):
         self.resource_type = resource_type
         # The type of the diagnostic metric set. Valid values:
         # 
-        # *   User: user-defined diagnostic metric set
-        # *   Common: common diagnostic metric set
+        # - User: user-defined diagnostic metric set
+        # 
+        # - Common: common diagnostic metric set
         self.type = type
 
     def validate(self):

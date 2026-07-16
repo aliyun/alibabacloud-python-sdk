@@ -13,10 +13,15 @@ class SkuSpec(DaraModel):
         value_alias: str = None,
         value_id: int = None,
     ):
+        # Specification key
         self.key = key
+        # Specification ID
         self.key_id = key_id
+        # Specification value
         self.value = value
+        # Specification value alias (Recommendation: If this field is not empty (null), use its value as the frontend display specification; if this field is empty (null), use the value field as the frontend display specification.)
         self.value_alias = value_alias
+        # Specification value ID
         self.value_id = value_id
 
     def validate(self):

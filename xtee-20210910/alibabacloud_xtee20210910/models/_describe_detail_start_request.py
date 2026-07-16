@@ -13,19 +13,19 @@ class DescribeDetailStartRequest(DaraModel):
         service: str = None,
         start_ds: str = None,
     ):
-        # Application appkey.
+        # The AppKey of the application.
         self.app_key = app_key
-        # End time
+        # The end time.
         #      
-        # Format yyyymmdd
+        # Format: yyyymmdd.
         self.end_ds = end_ds
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Called service
+        # The service to call.
         self.service = service
-        # Start time
+        # The start time.
         #      
-        #  Format yyyymmdd
+        # Format: yyyymmdd.
         self.start_ds = start_ds
 
     def validate(self):

@@ -15,16 +15,15 @@ class DescribeInstanceAntiBruteForceRulesRequest(DaraModel):
         source_ip: str = None,
         uuid_list: List[str] = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: **10000**.
+        # The number of assets to display per page in a paging query. Default value: **10000**, which indicates that up to 10,000 entries of asset information are returned per page.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
-        # The UUIDs of the servers.
-        # 
-        # >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+        # The list of server UUIDs to query.
+        # > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
         self.uuid_list = uuid_list
 
     def validate(self):

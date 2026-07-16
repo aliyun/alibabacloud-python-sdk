@@ -14,9 +14,13 @@ class ListWarehouseRequest(DaraModel):
         warehouse_instance_ids: List[str] = None,
         warehouse_types: List[str] = None,
     ):
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
+        # The pagination token from a previous response. Use this token to retrieve the next page of results. Omit this parameter for the first request.
         self.next_token = next_token
+        # A list of warehouse instance IDs.
         self.warehouse_instance_ids = warehouse_instance_ids
+        # A list of warehouse types.
         self.warehouse_types = warehouse_types
 
     def validate(self):

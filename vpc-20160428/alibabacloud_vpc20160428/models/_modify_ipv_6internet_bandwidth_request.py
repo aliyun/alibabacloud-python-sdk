@@ -18,33 +18,42 @@ class ModifyIpv6InternetBandwidthRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Internet bandwidth value of the IPv6 address. Unit: Mbit/s.
+        # The Internet bandwidth of the IPv6 address. Unit: Mbit/s.
         # 
-        # *   If the billing method is pay-by-data-transfer, valid values are **1** to **1000**.
-        # *   If the billing method is pay-by-bandwidth, valid values are **1** to **2000**.
+        # <props="china">
+        # 
+        # - If the billing method is pay-by-data-transfer, the Internet bandwidth ranges from **1** to **1000**.
+        # - If the billing method is pay-by-bandwidth, the Internet bandwidth ranges from **1** to **2000**.
+        # - If the billing method is traditional 95th percentile, the Internet bandwidth ranges from **1** to **2000**.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # 
+        # - If the billing method is pay-by-data-transfer, the Internet bandwidth ranges from **1** to **1000**.
+        # - If the billing method is pay-by-bandwidth, the Internet bandwidth ranges from **1** to **2000**.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
-        # 
-        # *   **true**: pre-checks the request but does not create the IPv4 gateway. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the API request. After the request passes the check, an HTTP 2xx status code is returned and the IPv4 gateway is created.
+        # Specifies whether to perform a dry run. Valid values:
+        # - **true**: performs a dry run without creating an IPv4 gateway. The system checks the required parameters, request syntax, and business limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the IPv4 gateway is created.
         self.dry_run = dry_run
         # The ID of the IPv6 address.
         # 
-        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
+        # > You must specify either **Ipv6AddressId** or **Ipv6InternetBandwidthId**.
         self.ipv_6address_id = ipv_6address_id
-        # The instance ID of the Internet bandwidth of the IPv6 address.
+        # The Internet bandwidth instance ID of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

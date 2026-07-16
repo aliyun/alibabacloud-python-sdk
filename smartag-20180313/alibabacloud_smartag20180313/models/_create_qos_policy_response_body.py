@@ -26,7 +26,7 @@ class CreateQosPolicyResponseBody(DaraModel):
         source_port_range: str = None,
         start_time: str = None,
     ):
-        # The description of the traffic classification rule.
+        # The description of the traffic classification rule for the QoS policy.
         self.description = description
         # The destination CIDR block.
         self.dest_cidr = dest_cidr
@@ -36,17 +36,17 @@ class CreateQosPolicyResponseBody(DaraModel):
         self.dpi_signature_ids = dpi_signature_ids
         # The time when the traffic classification rule expires.
         self.end_time = end_time
-        # The protocol that applies to the traffic classification rule.
+        # The protocol type to which the traffic classification rule applies.
         self.ip_protocol = ip_protocol
-        # The name of the traffic classification rule.
+        # The name of the traffic classification rule for the QoS policy.
         self.name = name
-        # The priority of the traffic throttling policy to which the traffic classification rule belongs.
+        # The priority of the rate limiting rule to which the traffic classification rule belongs.
         self.priority = priority
-        # The ID of the QoS policy.
+        # The instance ID of the QoS policy.
         self.qos_id = qos_id
-        # The ID of the traffic classification rule.
+        # The instance ID of the traffic classification rule for the QoS policy.
         self.qos_policy_id = qos_policy_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The source CIDR block.
         self.source_cidr = source_cidr

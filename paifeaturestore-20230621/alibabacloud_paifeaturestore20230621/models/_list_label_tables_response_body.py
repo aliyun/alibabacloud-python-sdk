@@ -14,8 +14,11 @@ class ListLabelTablesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of label tables.
         self.label_tables = label_tables
+        # The request ID.
         self.request_id = request_id
+        # The total number of label tables.
         self.total_count = total_count
 
     def validate(self):
@@ -71,14 +74,23 @@ class ListLabelTablesResponseBodyLabelTables(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
+        # The ID of the data source.
         self.datasource_id = datasource_id
+        # The name of the data source.
         self.datasource_name = datasource_name
+        # The time when the label table was created. The time is displayed in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The time when the label table was last modified. The time is displayed in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the label table.
         self.label_table_id = label_table_id
+        # The name of the label table.
         self.name = name
+        # The Alibaba Cloud account ID of the owner.
         self.owner = owner
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
 
     def validate(self):

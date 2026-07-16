@@ -17,17 +17,17 @@ class DescribeDataSourcePageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Return object
+        # The returned object.
         self.result_object = result_object
-        # Total items
+        # The total number of entries.
         self.total_item = total_item
-        # Total pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -101,23 +101,23 @@ class DescribeDataSourcePageListResponseBodyResultObject(DaraModel):
         total: int = None,
         type: str = None,
     ):
-        # Creator of the data source.
+        # The creator of the data source.
         self.creator = creator
-        # Data source description.
+        # The description of the data source.
         self.description = description
-        # Time when the data source was created.
+        # The time when the data source was created.
         self.gmt_create = gmt_create
-        # Time when the data source was last modified.
+        # The time when the data source was last modified.
         self.gmt_modified = gmt_modified
-        # Data source ID.
+        # The data source ID.
         self.id = id
-        # Last modifier.
+        # The user who last modified the data source.
         self.modifier = modifier
-        # Data source name.
+        # The data source name.
         self.name = name
-        # Total pages.
+        # The total number of pages.
         self.total = total
-        # Data source type.
+        # The data source type.
         self.type = type
 
     def validate(self):

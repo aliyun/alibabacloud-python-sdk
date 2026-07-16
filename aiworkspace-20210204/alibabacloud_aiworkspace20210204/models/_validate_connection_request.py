@@ -16,11 +16,28 @@ class ValidateConnectionRequest(DaraModel):
         validate_type: str = None,
         workspace_id: str = None,
     ):
+        # The configuration of the connection, specified as key-value pairs. The configuration keys vary by connection type. For more information, see the supplementary information about the request parameters of the CreateConnection operation.
         self.configs = configs
+        # The connection ID. For more information about how to obtain the connection ID, see [ListConnections](url).
         self.connection_id = connection_id
+        # The connection type. Only connection types that support public network access are available. Valid values:
+        # 
+        # - DashScopeConnection: a service connection for Alibaba Cloud Model Studio.
+        # 
+        # - DeepSeekConnection: a service connection for DeepSeek.
+        # 
+        # - FunctionAIMCPConnection: a connection for Function AI MCP.
+        # 
+        # - CustomMCPConnection: a custom MCP connection.
         self.connection_type = connection_type
+        # The key-value pairs to encrypt, such as a database logon password or a model connection key.
         self.secrets = secrets
+        # The validation type. Set the value to:
+        # 
+        # - Connectivity: a connectivity test
         self.validate_type = validate_type
+        # The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

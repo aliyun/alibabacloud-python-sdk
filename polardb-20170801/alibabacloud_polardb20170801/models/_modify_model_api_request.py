@@ -17,19 +17,48 @@ class ModifyModelApiRequest(DaraModel):
         region_id: str = None,
         route_rules: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The model API ID.
+        # 
         # This parameter is required.
         self.model_api_id = model_api_id
+        # The model category. Valid values:
+        # 
+        # - `text`
+        # 
+        # - `embedding`
+        # 
+        # - `rerank`
+        # 
         # This parameter is required.
         self.model_category = model_category
+        # The API path prefix.
+        # 
         # This parameter is required.
         self.path_prefix = path_prefix
+        # The protocol. Valid values:
+        # 
+        # - `openai`
+        # 
+        # - `anthropic`
+        # 
+        # - `Model Studio`
+        # 
+        # - `vllm`
+        # 
         # This parameter is required.
         self.protocol = protocol
+        # The number of input units.
         self.record_input = record_input
+        # The number of output units.
         self.record_output = record_output
+        # The region ID.
         self.region_id = region_id
+        # A JSON array of routing rules, provided as a string.
+        # 
         # This parameter is required.
         self.route_rules = route_rules
 

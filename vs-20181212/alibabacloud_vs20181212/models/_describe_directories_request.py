@@ -16,14 +16,26 @@ class DescribeDirectoriesRequest(DaraModel):
         sort_by: str = None,
         sort_direction: str = None,
     ):
+        # ID of the group to which the directory belongs.
+        # 
         # This parameter is required.
         self.group_id = group_id
+        # Disable paging. Default is false.
         self.no_pagination = no_pagination
         self.owner_id = owner_id
+        # Page number. Default is 1.
         self.page_num = page_num
+        # Page size. Default is 20.
         self.page_size = page_size
+        # Query by parent directory ID.
         self.parent_id = parent_id
+        # Sort by the specified field. Default is by ID.
         self.sort_by = sort_by
+        # Sort order. Default is ascending. Values:
+        # 
+        # - asc (ascending)
+        # 
+        # - desc (descending)
         self.sort_direction = sort_direction
 
     def validate(self):

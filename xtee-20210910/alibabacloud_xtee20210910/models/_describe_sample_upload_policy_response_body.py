@@ -15,19 +15,19 @@ class DescribeSampleUploadPolicyResponseBody(DaraModel):
         signature: str = None,
         sts_token: str = None,
     ):
-        # OSS access key ID.
+        # ossaccesskeyid。
         self.access_id = access_id
-        # OSS domain name.
+        # The OSS domain name.
         self.host = host
-        # The key of OSS upload policy.
+        # The key of the OSS upload policy.
         self.key = key
-        # OSS upload policy.
+        # The OSS upload policy.
         self.policy = policy
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Signature information.
+        # The signature information.
         self.signature = signature
-        # Temporary identity credential.
+        # The temporary identity credential.
         self.sts_token = sts_token
 
     def validate(self):

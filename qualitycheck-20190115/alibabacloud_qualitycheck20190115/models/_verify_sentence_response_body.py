@@ -19,13 +19,20 @@ class VerifySentenceResponseBody(DaraModel):
         success: bool = None,
         target_role: int = None,
     ):
+        # Result code. **200** indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
         self.data = data
+        # Number of incorrect characters in this sentence.
         self.incorrect_words = incorrect_words
+        # Error details if the request failed. Returns successful if the request succeeded.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Correct role after manual verification. Valid values: 0 (agent), 1 (customer).
         self.source_role = source_role
+        # Indicates whether the request succeeded. Set to true for success. Set to false or null for failure.
         self.success = success
+        # Transcribed role. Valid values: 0 (agent), 1 (customer).
         self.target_role = target_role
 
     def validate(self):

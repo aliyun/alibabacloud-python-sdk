@@ -11,7 +11,9 @@ class DescribeCategoryResponseBody(DaraModel):
         category: main_models.DescribeCategoryResponseBodyCategory = None,
         request_id: str = None,
     ):
+        # The category information.
         self.category = category
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,10 +53,15 @@ class DescribeCategoryResponseBodyCategory(DaraModel):
         parent_category_id: int = None,
         status: int = None,
     ):
+        # The business code.
         self.biz_code = biz_code
+        # The ID of the category.
         self.category_id = category_id
+        # The name of the category.
         self.name = name
+        # The ID of the parent category. A value of -1 indicates the root directory.
         self.parent_category_id = parent_category_id
+        # The status of the category. Valid values: 0 (Normal) or -1 (Deleted).
         self.status = status
 
     def validate(self):

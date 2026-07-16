@@ -15,9 +15,13 @@ class DescribeNatFirewallDropTrafficTrendResponseBody(DaraModel):
         drop_session_max_time: str = None,
         request_id: str = None,
     ):
+        # The list of data for the Overview page.
         self.data_list = data_list
+        # The peak number of dropped sessions for the specified period.
         self.drop_session_max = drop_session_max
+        # The timestamp that corresponds to the peak number of dropped sessions. The value is a UNIX timestamp. Unit: seconds.
         self.drop_session_max_time = drop_session_max_time
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,8 +77,11 @@ class DescribeNatFirewallDropTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_session: int = None,
     ):
+        # The number of blocked sessions.
         self.drop_session = drop_session
+        # The data timestamp. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
+        # The total number of requests.
         self.total_session = total_session
 
     def validate(self):

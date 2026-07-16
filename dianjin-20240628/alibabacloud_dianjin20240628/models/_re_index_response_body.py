@@ -16,13 +16,21 @@ class ReIndexResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Processing time
         self.cost = cost
+        # The response data.
         self.data = data
+        # The data type.
         self.data_type = data_type
+        # The error code.
         self.err_code = err_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
+        # The timestamp in YYYY-MM-DD HH:MM:SS format.
         self.time = time
 
     def validate(self):

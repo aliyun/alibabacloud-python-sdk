@@ -17,11 +17,17 @@ class DescribeCouponItemListRequest(DaraModel):
         nbid: str = None,
         page_size: int = None,
     ):
+        # The coupon ID.
         self.coupon_id = coupon_id
+        # The current page number.
         self.current_page = current_page
+        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
+        # The product name. Fuzzy matching is supported.
         self.name = name
+        # The level-1 sales channel ID. If this parameter is left empty, the channel ID of the current user is used by default.
         self.nbid = nbid
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -88,7 +94,10 @@ class DescribeCouponItemListRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
+        # The enterprise entity ID.
+        # 
         # This parameter is required.
         self.ec_id = ec_id
 

@@ -11,9 +11,14 @@ class SubmitImportTermsTaskRequest(DaraModel):
         terms_name: str = None,
         workspace_id: str = None,
     ):
+        # File Key.
+        # 
         # This parameter is required.
         self.file_key = file_key
+        # Dictionary name. Optional. If not specified, the default is Default.
         self.terms_name = terms_name
+        # Alibaba Cloud Model Studio unique workspace identifier: For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

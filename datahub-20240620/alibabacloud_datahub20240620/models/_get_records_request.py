@@ -12,10 +12,16 @@ class GetRecordsRequest(DaraModel):
         start_time: int = None,
         topic_name: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The shard ID from which to read data.
         self.shard_id = shard_id
+        # The start time for reading data. By default, data is read starting from 5 minutes before the current time.
         self.start_time = start_time
+        # The topic name.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

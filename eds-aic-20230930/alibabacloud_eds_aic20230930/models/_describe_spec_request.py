@@ -19,30 +19,22 @@ class DescribeSpecRequest(DaraModel):
         spec_status: str = None,
         spec_type: str = None,
     ):
+        # The region ID.
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
-        # The matrix specification.
-        # 
-        # Valid values:
-        # 
-        # *   cpm.gn6.gx1
+        # The cloud phone matrix specification.
         self.matrix_spec = matrix_spec
-        # The maximum number of items to return per page in a paginated query. The value range is 1 to 100, with a default value of 100.
+        # The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 100.
         self.max_results = max_results
-        # Indicates the starting position for reading. If left empty, it starts from the beginning.
+        # The position from which to start the query. Leave this parameter empty to query from the beginning.
         self.next_token = next_token
-        # The purchase mode of cloud mobile phones.
-        # 
-        # Valid values:
-        # 
-        # *   Instance (default): the instance group mode.
-        # *   Node: the matrix mode [whitelisted].
+        # The purchase mode of the cloud phone.
         self.sale_mode = sale_mode
-        # List of specification IDs.
+        # A list of specification IDs.
         self.spec_ids = spec_ids
-        # Specification status.
+        # The specification status.
         self.spec_status = spec_status
-        # Specification type.
+        # The specification type.
         self.spec_type = spec_type
 
     def validate(self):

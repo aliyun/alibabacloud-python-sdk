@@ -11,8 +11,11 @@ class DescribeSdlStatisticRequest(DaraModel):
         lang: str = None,
         start_time: int = None,
     ):
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The language of the request and response.
         self.lang = lang
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

@@ -10,25 +10,21 @@ class ModifyVulTargetRequest(DaraModel):
         config: str = None,
         target: str = None,
     ):
-        # The configurations. The value of this parameter is in the JSON format and contains the following fields:
+        # The configuration target. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **vulType**: the type of the vulnerabilities to scan. Valid values:
-        # 
-        #     *   **cve**: Linux software vulnerabilities
-        #     *   **sys**: Windows system vulnerabilities
-        #     *   **cms**: Web-CMS vulnerabilities
-        #     *   **emg**: urgent vulnerabilities
+        # - **vulType**: The vulnerability type. Valid values:
+        #      - **cve**: Linux software vulnerability.
+        #     - **sys**: Windows system vulnerability.
+        #     - **cms**: Web-CMS vulnerability.
+        #     - **emg**: Emergency vulnerability.
         self.config = config
-        # The operation. The value of this parameter is in the JSON format and contains the following fields:
+        # The operation target. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **target**: the UUID of the server.
-        # 
-        # *   **targetType**: the application scope of the operation. Set the value to uuid.
-        # 
-        # *   **flag**: the type of the operation. Valid values:
-        # 
-        #     *   **add**: select
-        #     *   **del**: deselect
+        # - **target**: The UUID of the target machine.
+        # - **targetType**: The target type. Fixed value: uuid.
+        # - **flag**: The flag. Valid values:
+        #     - **add**: Selected.
+        #     - **del**: Deselected.
         self.target = target
 
     def validate(self):

@@ -13,10 +13,16 @@ class MobileRecycledMetaVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.MobileRecycledMetaVerifyResponseBodyResultObject = None,
     ):
+        # The response code. A value of 200 indicates success. Any other value indicates failure.
+        # > **Important**
+        # - This parameter indicates whether the API operation is called correctly. For more information about return codes, see error codes.
+        # - Check the business verification result in the fields of ResultObject.
         self.code = code
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -66,8 +72,19 @@ class MobileRecycledMetaVerifyResponseBodyResultObject(DaraModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
+        # The query result. Valid values:
+        # 
+        # - 1: A query result is found.
+        # - 3: No query result is found.
         self.biz_code = biz_code
+        # The carrier name. China Mobile: CMCC. China Unicom: CUCC. China Telecom: CTCC.
         self.isp_name = isp_name
+        # The detailed verification result. Valid values:
+        # 
+        # - 101: The registration date is equal to or later than the phone number activation date.
+        # - 102: The registration date is earlier than the phone number activation date.
+        # - 103: The new subscriber has not been synchronized yet.
+        # - 301: Data exception or the subscriber has been deactivated.
         self.sub_code = sub_code
 
     def validate(self):

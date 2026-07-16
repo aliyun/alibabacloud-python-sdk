@@ -13,7 +13,9 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         data: main_models.DescribeParameterTemplatesResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +54,13 @@ class DescribeParameterTemplatesResponseBodyData(DaraModel):
         parameter_count: int = None,
         parameters: List[main_models.DescribeParameterTemplatesResponseBodyDataParameters] = None,
     ):
+        # The engine. Default value: polarx.
         self.engine = engine
+        # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
+        # The number of parameters.
         self.parameter_count = parameter_count
+        # The parameter list.
         self.parameters = parameters
 
     def validate(self):
@@ -114,11 +120,23 @@ class DescribeParameterTemplatesResponseBodyDataParameters(DaraModel):
         revisable: int = None,
         user_changable: int = None,
     ):
+        # The validation constraint.
         self.checking_code = checking_code
+        # Indicates whether the parameter is dynamic. Valid values:
+        # 
+        # - **0**: No.
+        # - **1**: Yes.
         self.dynamic = dynamic
+        # The parameter description.
         self.parameter_description = parameter_description
+        # The parameter name.
         self.parameter_name = parameter_name
+        # The parameter value.
         self.parameter_value = parameter_value
+        # Indicates whether the parameter can be modified. Valid values:
+        # 
+        # - **0**: The parameter cannot be modified.
+        # - **1**: The parameter can be modified.
         self.revisable = revisable
         self.user_changable = user_changable
 

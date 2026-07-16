@@ -15,12 +15,19 @@ class DescribeVpcFirewallZoneRequest(DaraModel):
         source_ip: str = None,
         transit_router_id: str = None,
     ):
+        # The ID of the CEN instance.
         self.cen_id = cen_id
+        # The environment.
         self.environment = environment
+        # The language of the response.
         self.lang = lang
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
+        # The region ID.
         self.region_no = region_no
+        # The source IP address of the request.
         self.source_ip = source_ip
+        # The ID of the TransitRouter instance.
         self.transit_router_id = transit_router_id
 
     def validate(self):

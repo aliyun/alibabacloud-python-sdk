@@ -11,13 +11,15 @@ class DeleteCloudAccountRoleRequest(DaraModel):
         cloud_account_role_id: str = None,
         instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
+        # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
-        # 云账号角色ID
+        # The ID of the cloud role.
         # 
         # This parameter is required.
         self.cloud_account_role_id = cloud_account_role_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

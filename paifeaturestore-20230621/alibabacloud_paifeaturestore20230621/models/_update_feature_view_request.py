@@ -12,6 +12,8 @@ class UpdateFeatureViewRequest(DaraModel):
         self,
         fields: List[main_models.UpdateFeatureViewRequestFields] = None,
     ):
+        # A list of fields.
+        # 
         # This parameter is required.
         self.fields = fields
 
@@ -51,11 +53,24 @@ class UpdateFeatureViewRequestFields(DaraModel):
         transform: List[main_models.UpdateFeatureViewRequestFieldsTransform] = None,
         type: str = None,
     ):
+        # A list of field attributes. Valid values:
+        # 
+        # - `Partition`: Indicates that the field is a partition field.
+        # 
+        # - `PrimaryKey`: Indicates that the field is a primary key.
+        # 
+        # - `EventTime`: Indicates that the field is the event time.
+        # 
         # This parameter is required.
         self.attributes = attributes
+        # The name of the field.
+        # 
         # This parameter is required.
         self.name = name
+        # The feature generation configuration.
         self.transform = transform
+        # The data type of the field.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -112,10 +127,16 @@ class UpdateFeatureViewRequestFieldsTransform(DaraModel):
         llmconfig_id: int = None,
         type: str = None,
     ):
+        # The input fields.
+        # 
         # This parameter is required.
         self.input = input
+        # The ID of the LLM configuration.
+        # 
         # This parameter is required.
         self.llmconfig_id = llmconfig_id
+        # The type of feature generation.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -166,9 +187,14 @@ class UpdateFeatureViewRequestFieldsTransformInput(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The modality of the input, such as text or image.
         self.modality = modality
+        # The name of the input field.
+        # 
         # This parameter is required.
         self.name = name
+        # The data type of the input field.
+        # 
         # This parameter is required.
         self.type = type
 

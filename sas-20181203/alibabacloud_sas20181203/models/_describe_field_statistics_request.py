@@ -11,15 +11,15 @@ class DescribeFieldStatisticsRequest(DaraModel):
         region_id: str = None,
         resource_directory_account_id: int = None,
     ):
-        # The type of the asset to query. If no asset types are specified, all types of assets are returned. Valid values:
+        # The type of asset to query. If you do not specify an asset type, the statistics information of all asset types is queried. Valid values:
         # 
-        # *   **ecs**: server
-        # *   **cloud_product**: Alibaba Cloud service
+        # - **ecs**: server
+        # - **cloud_product**: cloud product.
         self.machine_types = machine_types
-        # The ID of the region in which the asset resides.
+        # The ID of the region where the server resides.
         self.region_id = region_id
-        # The ID of the primary account of the Resource Directory member account.
-        # > call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) interface to obtain this parameter.
+        # The ID of the Alibaba Cloud account of the member accounts in the resource directory.
+        # >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
         self.resource_directory_account_id = resource_directory_account_id
 
     def validate(self):

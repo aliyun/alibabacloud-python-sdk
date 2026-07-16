@@ -1,3 +1,7 @@
+2026-06-04 Version: 5.11.5
+- Update API TransferInstanceClass: add request parameters DatabaseCount.
+
+
 2026-04-16 Version: 5.11.4
 - Update API DescribeDtsJobs: add response parameters Body.DtsJobList.$.InsightModule.
 

@@ -20,29 +20,75 @@ class UpdateNormalizationRuleShrinkRequest(DaraModel):
         normalization_rule_name: str = None,
         normalization_rule_type: str = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         order_field: str = None,
         product_id: str = None,
         region_id: str = None,
         role_for: int = None,
         vendor_id: str = None,
     ):
+        # Specifies whether to package non-standard fields into the extend_content extension field. Valid values:
+        # 
+        # - enabled: The feature is enabled.
+        # 
+        # - disabled: The feature is disabled.
         self.extend_content_packed = extend_content_packed
+        # The storage mode for extension fields. Valid values: flat, pack, and reject.
         self.extend_field_store_mode = extend_field_store_mode
+        # The language of the content within the request and response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The normalization category.
         self.normalization_category_id = normalization_category_id
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
+        # The expression for the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
+        # The list of normalization rule IDs.
         self.normalization_rule_ids_shrink = normalization_rule_ids_shrink
+        # The mode of the normalization rule. Valid values:
+        # 
+        # - both
+        # 
+        # - scan
+        # 
+        # - realtime
         self.normalization_rule_mode = normalization_rule_mode
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The type of the normalization rule. Valid values:
+        # 
+        # - predefined: predefined normalization rule.
+        # 
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The ID of the normalization structure.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The field to use for sorting the rule list. Valid values:
+        # 
+        # - GmtModified: Sorts by modification time.
+        # 
+        # - Id: Sorts by rule ID (default).
         self.order_field = order_field
+        # The product ID.
         self.product_id = product_id
+        # The region where the Data Management center of threat analysis is located. Select a region based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: an asset in the Chinese mainland.
+        # 
+        # - ap-southeast-1: an asset outside the Chinese mainland.
         self.region_id = region_id
+        # The user ID of a member. This parameter is used when an administrator switches to the perspective of the member.
         self.role_for = role_for
+        # The vendor ID that corresponds to the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -91,6 +137,9 @@ class UpdateNormalizationRuleShrinkRequest(DaraModel):
 
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
+
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
 
         if self.order_field is not None:
             result['OrderField'] = self.order_field
@@ -149,6 +198,9 @@ class UpdateNormalizationRuleShrinkRequest(DaraModel):
 
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
+
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
 
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')

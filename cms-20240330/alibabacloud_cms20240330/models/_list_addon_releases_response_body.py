@@ -10,15 +10,18 @@ from darabonba.model import DaraModel
 class ListAddonReleasesResponseBody(DaraModel):
     def __init__(
         self,
+        next_token: str = None,
         releases: List[main_models.ListAddonReleasesResponseBodyReleases] = None,
         request_id: str = None,
         total: int = None,
     ):
-        # Set of add-on component information.
+        # A pagination token to retrieve the next page of results. If this field is empty, no more results are available.
+        self.next_token = next_token
+        # The list of add-on releases.
         self.releases = releases
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Number of components.
+        # The total number of add-on releases that match the query.
         self.total = total
 
     def validate(self):
@@ -32,6 +35,9 @@ class ListAddonReleasesResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+
         result['releases'] = []
         if self.releases is not None:
             for k1 in self.releases:
@@ -47,6 +53,9 @@ class ListAddonReleasesResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+
         self.releases = []
         if m.get('releases') is not None:
             for k1 in m.get('releases'):
@@ -93,61 +102,61 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # Addon name.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # Number of alert rules.
+        # The number of alert rules.
         self.alert_rule_count = alert_rule_count
-        # API version.
+        # The API version.
         self.api_version = api_version
-        # Installation phase information.
+        # The conditions of the release.
         self.conditions = conditions
-        # Component configuration information.
+        # The configuration of the add-on.
         self.config = config
-        # Access time.
+        # The installation time of the add-on.
         self.create_time = create_time
-        # Number of dashboards.
+        # The number of dashboards.
         self.dashboard_count = dashboard_count
-        # Entity details.
+        # Details of the entity rules.
         self.entity_rules = entity_rules
-        # Environment type.
+        # The environment type.
         self.env_type = env_type
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Number of plugins.
+        # The number of exporters.
         self.exporter_count = exporter_count
-        # Whether there is a configuration.
+        # Indicates whether a configuration exists.
         self.have_config = have_config
-        # Access user ID.
+        # The ID of the user who installed the add-on.
         self.install_user_id = install_user_id
-        # Language.
+        # The language.
         self.language = language
-        # Whether it is a managed component.
+        # Indicates whether the add-on is managed.
         self.managed = managed
-        # Starting version number for the remaining list.
+        # The next available version of the add-on.
         self.next_version = next_version
-        # Parent AddonReleaseId.
+        # The ID of the parent release.
         self.parent_addon_release_id = parent_addon_release_id
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Release ID.
+        # The release ID.
         self.release_id = release_id
-        # Release name.
+        # The release name.
         self.release_name = release_name
-        # Component scenario.
+        # The usage scenario of the add-on.
         self.scene = scene
-        # Status.
+        # The status of the release.
         self.status = status
-        # Sub-AddonRelease statistics.
+        # Statistics about sub-releases.
         self.sub_addon_release = sub_addon_release
-        # Update time.
+        # The last update time.
         self.update_time = update_time
-        # Owner user ID.
+        # The ID of the owner.
         self.user_id = user_id
-        # Component version.
+        # The version of the add-on.
         self.version = version
-        # Workspace.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -352,9 +361,9 @@ class ListAddonReleasesResponseBodyReleasesSubAddonRelease(DaraModel):
         ready: int = None,
         total: int = None,
     ):
-        # Number of ready sub-Releases.
+        # The number of ready sub-releases.
         self.ready = ready
-        # Number of sub-Releases.
+        # The total number of sub-releases.
         self.total = total
 
     def validate(self):
@@ -392,15 +401,15 @@ class ListAddonReleasesResponseBodyReleasesConditions(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # First transition time.
+        # The timestamp of the first status transition.
         self.first_transition_time = first_transition_time
-        # Last transition time.
+        # The timestamp of the last status transition.
         self.last_transition_time = last_transition_time
-        # Details.
+        # A detailed message about the status.
         self.message = message
-        # Phase status.
+        # The status of the condition.
         self.status = status
-        # Phase type.
+        # The type of the condition.
         self.type = type
 
     def validate(self):

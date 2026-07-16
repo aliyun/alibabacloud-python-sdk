@@ -9,6 +9,7 @@ class GetFundAccountCanWithdrawAmountRequest(DaraModel):
         self,
         fund_account_id: int = None,
     ):
+        # Fund account ID. If not specified, the account ID owned by the current account (owner) is used by default.
         self.fund_account_id = fund_account_id
 
     def validate(self):

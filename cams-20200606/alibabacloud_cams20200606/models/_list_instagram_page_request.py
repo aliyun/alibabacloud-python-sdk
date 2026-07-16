@@ -12,6 +12,8 @@ class ListInstagramPageRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID. Only non-Alibaba Cloud hosts are supported.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_id = owner_id

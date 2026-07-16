@@ -14,15 +14,15 @@ class UpdateApplicationSsoFormParamsRequest(DaraModel):
         application_template_params: List[main_models.UpdateApplicationSsoFormParamsRequestApplicationTemplateParams] = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用主键id
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用模板创建参数，应用创建来源为模板时才可以指定
+        # The parameters for creating the application template.
         # 
         # This parameter is required.
         self.application_template_params = application_template_params
-        # IDaaS EIAM的实例id
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -73,9 +73,9 @@ class UpdateApplicationSsoFormParamsRequestApplicationTemplateParams(DaraModel):
         template_param_name: str = None,
         template_param_value: str = None,
     ):
-        # 应用模板创建参数具体名称
+        # The name of a parameter for creating the application template.
         self.template_param_name = template_param_name
-        # 应用模板创建参数真实的取值
+        # The value of the parameter for creating the application template.
         self.template_param_value = template_param_value
 
     def validate(self):

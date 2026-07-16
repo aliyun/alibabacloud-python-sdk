@@ -1,3 +1,7 @@
+2026-06-02 Version: 7.1.0
+- Support API ChatConversation.
+
+
 2026-05-15 Version: 7.0.2
 - Update API ExportRecallManagementTable: add request parameters body.RecallManagementTableVersionId.
 

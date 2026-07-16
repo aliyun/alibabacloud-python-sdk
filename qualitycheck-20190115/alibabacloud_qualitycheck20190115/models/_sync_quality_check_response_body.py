@@ -16,10 +16,15 @@ class SyncQualityCheckResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result status code. 200 indicates success. Other values indicate failure. The caller can determine the reason for failure using this field.
         self.code = code
+        # Returned result, including hit information.
         self.data = data
+        # Error details if an error occurs. "successful" if successful.
         self.message = message
+        # Unique request identifier.
         self.request_id = request_id
+        # Indicates whether the request was successful. The caller can use this field to determine if the request succeeded: true for success; false/null for failure.
         self.success = success
 
     def validate(self):
@@ -77,10 +82,15 @@ class SyncQualityCheckResponseBodyData(DaraModel):
         task_id: str = None,
         tid: str = None,
     ):
+        # Time of recording and dialogue occurrence, in milliseconds since January 1, 1970, 00:00:00 UTC (UNIX timestamp in milliseconds, such as 1584535485856).
         self.begin_time = begin_time
+        # List of hit rules. Each item is a rule. Only hit rule information and hit rule location information are returned.
         self.rules = rules
+        # Final score, with a maximum of 100.
         self.score = score
+        # Task ID.
         self.task_id = task_id
+        # Unique identifier for the current conversation.
         self.tid = tid
 
     def validate(self):
@@ -143,9 +153,13 @@ class SyncQualityCheckResponseBodyDataRules(DaraModel):
         rule_info_base: main_models.SyncQualityCheckResponseBodyDataRulesRuleInfoBase = None,
         rule_name: str = None,
     ):
+        # List of hit sentences. For this API, if a hit occurs, it is a single data entry.
         self.hit = hit
+        # ID of the hit rule.
         self.rid = rid
+        # Rule basic information
         self.rule_info_base = rule_info_base
+        # Name of the hit rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -208,12 +222,21 @@ class SyncQualityCheckResponseBodyDataRulesRuleInfoBase(DaraModel):
         score_type: int = None,
         type: int = None,
     ):
+        # Rule remarks
         self.comments = comments
+        # Rule importance level
         self.level = level
+        # Rule category name
+        # >Notice: The requiredFields parameter must include "ruleInfoBase.ruleCategoryName".
         self.rule_category_name = rule_category_name
+        # Score value
         self.score_num = score_num
+        # Scoring type. 0: bonus/penalty points, 1: one-time score.
         self.score_num_type = score_num_type
+        # 1 for bonus points, 3 for penalty points. Default is 1.
         self.score_type = score_type
+        # Rule type ID
+        # >Notice: The requiredFields parameter must include "ruleInfoBase".
         self.type = type
 
     def validate(self):
@@ -278,7 +301,9 @@ class SyncQualityCheckResponseBodyDataRulesHit(DaraModel):
         hit_key_words: List[main_models.SyncQualityCheckResponseBodyDataRulesHitHitKeyWords] = None,
         phrase: main_models.SyncQualityCheckResponseBodyDataRulesHitPhrase = None,
     ):
+        # Keywords that met the condition.
         self.hit_key_words = hit_key_words
+        # Dialogue content that met the condition.
         self.phrase = phrase
 
     def validate(self):
@@ -330,13 +355,21 @@ class SyncQualityCheckResponseBodyDataRulesHitPhrase(DaraModel):
         speech_rate: int = None,
         words: str = None,
     ):
+        # Start time of this sentence relative to the entire conversation, in milliseconds.
         self.begin = begin
+        # Emotional value of this sentence, 0-10. Higher values indicate stronger emotions.
         self.emotion_value = emotion_value
+        # End time of this sentence relative to the entire conversation, in milliseconds.
         self.end = end
+        # Deprecated field. Ignore it.
         self.identity = identity
+        # Role of this sentence. Valid values: customer service representative, customer.
         self.role = role
+        # Deprecated field. Ignore it.
         self.silence_duration = silence_duration
+        # Speech rate of this sentence, in characters per minute.
         self.speech_rate = speech_rate
+        # Dialogue content.
         self.words = words
 
     def validate(self):
@@ -410,10 +443,15 @@ class SyncQualityCheckResponseBodyDataRulesHitHitKeyWords(DaraModel):
         to: int = None,
         val: str = None,
     ):
+        # Condition ID of the rule.
         self.cid = cid
+        # Start position of the keyword.
         self.from_ = from_
+        # Index value of the hit sentence in the entire conversation.
         self.pid = pid
+        # End position of the keyword.
         self.to = to
+        # Keyword.
         self.val = val
 
     def validate(self):

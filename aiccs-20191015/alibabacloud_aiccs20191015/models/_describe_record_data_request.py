@@ -16,13 +16,18 @@ class DescribeRecordDataRequest(DaraModel):
         resource_owner_id: int = None,
         sec_level: int = None,
     ):
+        # AccountId.
         self.account_id = account_id
+        # Account type.
         self.account_type = account_type
+        # Session ID.
         self.acid = acid
         self.owner_id = owner_id
+        # Product name. Default value: **aiccs**.
         self.prod_code = prod_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # Recording desensitization level. Valid values: **1–4**.
         self.sec_level = sec_level
 
     def validate(self):

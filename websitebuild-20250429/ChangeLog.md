@@ -1,3 +1,217 @@
+2026-07-13 Version: 2.32.1
+- Update API CreateAppInstanceTicket: add request parameters Role.
+- Update API UpdateAppSeoStatus: add request parameters SeIndexStatus.
+
+
+2026-07-13 Version: 2.32.1
+- Update API CreateAppInstanceTicket: add request parameters Role.
+- Update API UpdateAppSeoStatus: add request parameters SeIndexStatus.
+
+
+2026-07-10 Version: 2.32.0
+- Support API AuthorizeAppProxyOps.
+
+
+2026-07-08 Version: 2.31.3
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-07-07 Version: 2.31.2
+- Update API BindAppDomain: add response parameters Body.Module.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Ownership.RootDomain.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Verification.VerificationStatusCode.
+
+
+2026-07-07 Version: 2.31.2
+- Update API BindAppDomain: add response parameters Body.Module.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Data.$.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.DnsConflict.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Migration.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Ownership.RootDomain.
+- Update API ListAppInstanceDomains: add response parameters Body.Module.Next.Verification.VerificationStatusCode.
+
+
+2026-06-30 Version: 2.31.1
+- Update API GrantPromotionOfferForPartner: add request parameters ActivityCode.
+
+
+2026-06-29 Version: 2.31.0
+- Support API CreateInspiration.
+
+
+2026-06-26 Version: 2.30.0
+- Support API GrantPromotionOfferForPartner.
+- Support API ListPromotionActivitiesForPartner.
+- Support API ListPromotionOfferRecordsForPartner.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.ActionType.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.Description.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.RecommendType.
+- Update API GetAppRecommendedCommodities: add response parameters Body.Module.Commodities.$.Title.
+
+
+2026-06-24 Version: 2.29.0
+- Support API OfflineAppInstance.
+- Support API OnlineAppInstance.
+- Update API ListAppInstances: add request parameters BizIds.
+
+
+2026-06-17 Version: 2.28.1
+- Update API NotifyAppNotificationForAdmin: add request parameters Payload.
+
+
+2026-06-16 Version: 2.28.0
+- Support API CheckAppVerifyCode.
+- Support API CreateAppNotificationScene.
+- Support API DeleteAppNotificationScene.
+- Support API NotifyAppNotificationForAdmin.
+
+
+2026-06-10 Version: 2.27.2
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.RecordKey.
+
+
+2026-06-10 Version: 2.27.1
+- Update API GetAppCodeWorkspaceDetail: add response parameters Body.Module.CommitHash.
+- Update API GetAppPublishStatus: add response parameters Body.Module.Subchannel.
+- Update API ListAppPublishHistory: add request parameters PublishEnv.
+- Update API ListAppPublishHistory: add request parameters Subchannel.
+- Update API ListAppPublishHistory: add response parameters Body.Module.History.$.CommitHash.
+- Update API ListAppPublishHistory: add response parameters Body.Module.History.$.Subchannel.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Data.$.InitQuotaStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.BalanceStr.
+- Update API QueryInspirationAccountDetails: add response parameters Body.Module.Next.InitQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.RemainingStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalQuotaStr.
+- Update API QueryInspirationBalance: add response parameters Body.Module.TotalUsedStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Data.$.ConsumeType.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.AmountStr.
+- Update API QueryInspirationConsumeRecords: add response parameters Body.Module.Next.ConsumeType.
+
+
+2026-06-09 Version: 2.27.0
+- Support API ConfirmAppInstance.
+- Support API DeleteAppFile.
+- Support API GetOssUploadPolicy.
+- Support API GetTempDownloadUrl.
+- Update API ListAppPublishHistory: add request parameters DeployChannel.
+- Update API UpdateAppSeoStatus: add request parameters SeAuthInfo.
+
+
+2026-06-08 Version: 2.26.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-05 Version: 2.26.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-05 Version: 2.26.0
+- Support API GetMiniAppAuthUrl.
+- Support API GetMiniAppBinding.
+- Support API GetMiniAppBindingForAdmin.
+- Support API UpdateMiniAppBinding.
+
+
+2026-06-05 Version: 2.25.3
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-05 Version: 2.25.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-05 Version: 2.25.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-04 Version: 2.25.0
+- Support API CreateAppLlmApiKeyForPartner.
+
+
+2026-06-04 Version: 2.24.3
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-04 Version: 2.24.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-04 Version: 2.24.1
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-06-04 Version: 2.24.0
+- Support API CopyAppPluginConfig.
+- Support API CreateAppChat.
+- Support API DeleteAppInstanceFile.
+- Support API DeleteAppSupabaseSecrets.
+- Support API GetAppCodeWorkspaceDetail.
+- Support API GetAppConversation.
+- Support API GetAppConversationLockStatus.
+- Support API GetAppDatabaseTableSchemas.
+- Support API GetAppFileContent.
+- Support API GetAppInstanceEntitlement.
+- Support API GetAppInstanceTempShortUrl.
+- Support API GetAppPublishStatus.
+- Support API GetAppRequirement.
+- Support API GetAppSandboxPreviewUrl.
+- Support API GetAppSeoStatus.
+- Support API GetAppSeoTrends.
+- Support API GetAppSitemap.
+- Support API GetAppSupabaseAuthConfig.
+- Support API GetAppSupabaseInstance.
+- Support API GetAppSupabaseSecrets.
+- Support API GetAppTemplate.
+- Support API GetAppWorkspaceDirectory.
+- Support API ListAppChatMessages.
+- Support API ListAppConversationMessages.
+- Support API ListAppConversations.
+- Support API ListAppPluginConfigs.
+- Support API ListAppPlugins.
+- Support API ListAppPublishHistory.
+- Support API ListAppTemplateDicts.
+- Support API ListAppTemplates.
+- Support API ListIsvPaymentPluginConfigs.
+- Support API OperateAppTemplateLike.
+- Support API PublishAppInstance.
+- Support API ReconnectAppChat.
+- Support API RenewAppSandbox.
+- Support API RollbackAppCodeSnapshot.
+- Support API RollbackAppInstancePublish.
+- Support API SaveAppRequirement.
+- Support API SaveAppSupabaseSecrets.
+- Support API SubmitAppSeoIndex.
+- Support API SwitchAppConversation.
+- Support API UpdateAppChatMessage.
+- Support API UpdateAppCode.
+- Support API UpdateAppFile.
+- Support API UpdateAppInstance.
+- Support API UpdateAppSeoStatus.
+- Support API UpdateAppSupabaseAuthConfig.
+- Support API UpdateAppSupabaseSecret.
+- Support API UploadAppSiteValidationFile.
+
+
+2026-06-03 Version: 2.23.1
+- Update API CreateAppInstance: add request parameters CreateAction.
+- Update API CreateAppInstance: add request parameters Description.
+- Update API CreateAppInstance: add request parameters Name.
+- Update API CreateAppInstance: add request parameters Version.
+- Update API ListAppInstances: add response parameters Body.StartPosition.
+
+
+2026-05-27 Version: 2.23.0
+- Support API GetAIStaffPreviewUrl.
+
+
+2026-05-27 Version: 2.22.2
+- Generated python 2025-04-29 for WebsiteBuild.
+
+2026-05-26 Version: 2.22.1
+- Update API AllocateSupabaseForAdmin: add request parameters Env.
+- Update API OperateSupabaseForAdmin: add request parameters Env.
+- Update API QuerySupabaseAuthConfigsForAdmin: add request parameters Env.
+- Update API QuerySupabaseConfigsForAdmin: add request parameters Env.
+
+
 2026-05-19 Version: 2.22.0
 - Support API CreateAIStaffChat.
 - Support API CreateAIStaffConversation.

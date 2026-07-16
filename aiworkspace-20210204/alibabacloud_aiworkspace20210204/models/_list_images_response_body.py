@@ -14,7 +14,7 @@ class ListImagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The images.
+        # The list of images.
         self.images = images
         # The request ID.
         self.request_id = request_id
@@ -79,34 +79,35 @@ class ListImagesResponseBodyImages(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The accessibility of the image. Valid values:
+        # The visibility of the image. Valid values:
         # 
-        # *   PUBLIC: All members can access the image.
-        # *   PRIVATE: Only the creator can access the image.
+        # - PUBLIC: All members in the current workspace can perform operations on the image.
+        # 
+        # - PRIVATE: Only the creator can perform operations on the image.
         self.accessibility = accessibility
         # The image description.
         self.description = description
-        # The time when the image is created, in UTC. The time follows the ISO 8601 standard.
+        # The time when the image was created. The time is in UTC and the format is ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
+        # The time when the image was last modified. The time is in UTC and the format is ISO 8601.
         self.gmt_modified_time = gmt_modified_time
         # The image ID.
         self.image_id = image_id
-        # The image address, which includes the version number.
+        # The image URL, which includes the version number.
         self.image_uri = image_uri
-        # The image tags.
+        # The list of image labels.
         self.labels = labels
         # The image name.
         self.name = name
-        # The ID of the Alibaba Cloud account.
+        # The UID of the Alibaba Cloud account that created the image.
         self.parent_user_id = parent_user_id
-        # The image size. Unit: GB.
+        # The image size in bytes.
         self.size = size
-        # 镜像来源 ID
+        # The ID of the image source.
         self.source_id = source_id
-        # 镜像来源类型
+        # The type of the image source.
         self.source_type = source_type
-        # The user ID.
+        # The UID of the Alibaba Cloud account that created the image.
         self.user_id = user_id
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -223,9 +224,9 @@ class ListImagesResponseBodyImagesLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the label.
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

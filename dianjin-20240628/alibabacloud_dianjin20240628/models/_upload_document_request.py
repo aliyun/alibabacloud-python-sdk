@@ -12,11 +12,20 @@ class UploadDocumentRequest(DaraModel):
         file_url: str = None,
         library_id: str = None,
     ):
+        # File metadata. You can use this to filter results during retrieval.
         self.data = data
+        # The full file name, including the extension. Supported formats are PDF, DOC, DOCX, Markdown, PPT, and PPTX. File size must not exceed 100 MB. PDF, DOC, DOCX, PPT, and PPTX files must not exceed 500 pages.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The OSS URL of the file. If the file is not publicly readable, include a signature in the URL.
+        # 
+        # If you use the SDK to upload files, upload the file directly. You do not need to provide an OSS URL. For more information, see the SDK documentation.
+        # 
         # This parameter is required.
         self.file_url = file_url
+        # The document library ID.
+        # 
         # This parameter is required.
         self.library_id = library_id
 

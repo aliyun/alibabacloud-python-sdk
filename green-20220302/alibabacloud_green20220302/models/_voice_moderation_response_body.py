@@ -13,13 +13,13 @@ class VoiceModerationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The error code.
         self.code = code
-        # The data returned.
+        # The data structure of the returned task information.
         self.data = data
-        # The message that is returned in response to the request.
+        # The error message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,7 +68,7 @@ class VoiceModerationResponseBodyData(DaraModel):
         data_id: str = None,
         task_id: str = None,
     ):
-        # The ID of the moderated object.
+        # The value of the dataId parameter that you specify in the API request. If you do not specify this parameter in the request, this field is not returned.
         self.data_id = data_id
         # The task ID.
         self.task_id = task_id

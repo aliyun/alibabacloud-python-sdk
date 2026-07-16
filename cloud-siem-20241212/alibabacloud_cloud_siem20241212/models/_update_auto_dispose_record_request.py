@@ -13,11 +13,22 @@ class UpdateAutoDisposeRecordRequest(DaraModel):
         auto_dispose_record_id: str = None,
         lang: str = None,
     ):
+        # The conclusion of the automatic alert analysis.
         self.auto_decision_conclusion = auto_decision_conclusion
+        # The list of entities for analysis.
         self.auto_decision_entity_list = auto_decision_entity_list
+        # The analysis result.
         self.auto_decision_result = auto_decision_result
+        # The unique ID of the analysis record.
+        # 
         # This parameter is required.
         self.auto_dispose_record_id = auto_dispose_record_id
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
+        # 
         # This parameter is required.
         self.lang = lang
 

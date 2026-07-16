@@ -14,6 +14,7 @@ class QueryAliasesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.alias_infos = alias_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

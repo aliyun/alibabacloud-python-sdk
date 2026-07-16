@@ -9,7 +9,7 @@ class CancelOrderRequestResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot and locate problems.
         self.request_id = request_id
 
     def validate(self):

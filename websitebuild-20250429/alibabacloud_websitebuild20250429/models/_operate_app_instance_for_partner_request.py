@@ -10,7 +10,9 @@ class OperateAppInstanceForPartnerRequest(DaraModel):
         extend: str = None,
         operate_event: str = None,
     ):
+        # The extended information.
         self.extend = extend
+        # The operation event type.
         self.operate_event = operate_event
 
     def validate(self):

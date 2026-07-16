@@ -10,11 +10,11 @@ class RecallRuleAuditRequest(DaraModel):
         id: int = None,
         reg_id: str = None,
     ):
-        # Primary key ID
+        # The primary key ID.
         # 
         # This parameter is required.
         self.id = id
-        # Region code
+        # The region encoding.
         self.reg_id = reg_id
 
     def validate(self):

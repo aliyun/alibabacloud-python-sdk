@@ -17,13 +17,21 @@ class DescribeBeebotIntentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Internal request ID
         self.beebot_request_id = beebot_request_id
+        # API status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Intent information
         self.intent = intent
+        # Intent ID
         self.intent_id = intent_id
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded
         self.success = success
 
     def validate(self):
@@ -103,14 +111,23 @@ class DescribeBeebotIntentResponseBodyIntent(DaraModel):
         modify_user_id: str = None,
         modify_user_name: str = None,
     ):
+        # Intent alias
         self.alias_name = alias_name
+        # Creation time
         self.create_time = create_time
+        # Creator user ID
         self.create_user_id = create_user_id
+        # Creator account name
         self.create_user_name = create_user_name
+        # Intent ID
         self.intent_id = intent_id
+        # Intent name
         self.intent_name = intent_name
+        # Modification time
         self.modify_time = modify_time
+        # Modifier user ID
         self.modify_user_id = modify_user_id
+        # Modifier account name
         self.modify_user_name = modify_user_name
 
     def validate(self):

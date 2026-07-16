@@ -14,7 +14,7 @@ class DescribeUserEncryptionKeyListResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.key_ids = key_ids
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

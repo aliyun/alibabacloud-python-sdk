@@ -20,41 +20,49 @@ class DescribeGrantRulesToCenRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The CEN instance ID.
+        # The ID of the CEN instance.
         # 
         # This parameter is required.
         self.cen_id = cen_id
-        # The ID of the network instance that you want to query.
+        # The ID of the network instance to query.
         self.child_instance_id = child_instance_id
-        # The ID of the Alibaba Cloud account to which the network instance belongs.
+        # The ID of the Alibaba Cloud account that owns the network instance.
         self.child_instance_owner_id = child_instance_owner_id
-        # Specifies whether to enable IPv6.
+        # Specifies whether IPv6 is enabled.
         # 
-        # 1.  This parameter takes effect only if ProductType is set to VPC.
-        # 2.  true: enables IPv6. false: disables IPv6. If you do not specify a value, network instances are not filtered based on this parameter.
+        # 1. This parameter applies only when **ProductType** is set to **VPC**.
+        # 
+        # 2. Set to **true** to return only VPCs with IPv6 enabled, or **false** to return only those with IPv6 disabled. If you omit this parameter, the response is not filtered by the IPv6 status.
         self.enabled_ipv_6 = enabled_ipv_6
-        # *   If you do not set **MaxResults**, it indicates that you do not need to query results in batches. The value of **MaxResults** in the response indicates the total number of entries returned.
-        # *   If you specify a value for **MaxResults**, it indicates that you need to query results in batches. The value of **MaxResults** indicates the number of entries to return in each batch. Valid values: **1** to **100**. The value of **MaxResults** in the response indicates the number of entries in the current batch. We recommend that you set **MaxResults** to **20**.
-        self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # - If you omit this parameter, all entries are returned. The **MaxResults** value in the response then indicates the total number of entries.
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of **NextToken**.
+        # - If you set this parameter, the response is paginated. The **MaxResults** value specifies the number of entries to return on each page. Valid values: **1** to **100**. The **MaxResults** value in the response indicates the number of entries on the current page. Setting **MaxResults** to **20** is recommended.
+        self.max_results = max_results
+        # The token used to retrieve the next page of results.
+        # 
+        # - Omit this parameter for the first request.
+        # 
+        # - Set this parameter to the **NextToken** value from the previous response to retrieve the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The type of the network instance. Valid values:
         # 
-        # *   **VPC**
-        # *   **VBR**
-        # *   **CCN**
-        # *   **VPN**
+        # - **VPC**: a virtual private cloud (VPC).
+        # 
+        # - **VBR**: a virtual border router (VBR).
+        # 
+        # - **CCN**: a Cloud Connect Network (CCN) instance.
+        # 
+        # - **VPN**: an IPsec-VPN connection.
+        # 
+        # - **ECR**: an Express Connect router.
         # 
         # This parameter is required.
         self.product_type = product_type
-        # The region ID of the network instance.
+        # The ID of the region where the network instance is located.
         # 
-        # You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+        # You can call the [](t2264556.xdita#)operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

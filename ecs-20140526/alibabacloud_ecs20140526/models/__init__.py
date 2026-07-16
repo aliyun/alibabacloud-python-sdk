@@ -985,6 +985,9 @@ from ._modify_storage_capacity_unit_attribute_response import ModifyStorageCapac
 from ._modify_storage_set_attribute_request import ModifyStorageSetAttributeRequest
 from ._modify_storage_set_attribute_response_body import ModifyStorageSetAttributeResponseBody
 from ._modify_storage_set_attribute_response import ModifyStorageSetAttributeResponse
+from ._modify_system_event_attribute_request import ModifySystemEventAttributeRequest
+from ._modify_system_event_attribute_response_body import ModifySystemEventAttributeResponseBody
+from ._modify_system_event_attribute_response import ModifySystemEventAttributeResponse
 from ._modify_user_business_behavior_request import ModifyUserBusinessBehaviorRequest
 from ._modify_user_business_behavior_response_body import ModifyUserBusinessBehaviorResponseBody
 from ._modify_user_business_behavior_response import ModifyUserBusinessBehaviorResponse
@@ -1441,6 +1444,7 @@ from ._describe_disks_request import DescribeDisksRequestFilter
 from ._describe_disks_request import DescribeDisksRequestTag
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskAttachmentsAttachment
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskAttachments
+from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskDataSource
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskMountInstances
 from ._describe_disks_response_body import DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock
@@ -1598,6 +1602,7 @@ from ._describe_instance_ram_role_response_body import DescribeInstanceRamRoleRe
 from ._describe_instance_ram_role_response_body import DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets
 from ._describe_instance_status_response_body import DescribeInstanceStatusResponseBodyInstanceStatusesInstanceStatus
 from ._describe_instance_status_response_body import DescribeInstanceStatusResponseBodyInstanceStatuses
+from ._describe_instance_topology_response_body import DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes
 from ._describe_instance_topology_response_body import DescribeInstanceTopologyResponseBodyTopologysTopology
 from ._describe_instance_topology_response_body import DescribeInstanceTopologyResponseBodyTopologys
 from ._describe_instance_type_families_response_body import DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily
@@ -1806,6 +1811,8 @@ from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseB
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfos
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoPrice
+from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice
+from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoRulesRule
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfoRules
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfo
@@ -3051,6 +3058,9 @@ __all__ = [
     ModifyStorageSetAttributeRequest,
     ModifyStorageSetAttributeResponseBody,
     ModifyStorageSetAttributeResponse,
+    ModifySystemEventAttributeRequest,
+    ModifySystemEventAttributeResponseBody,
+    ModifySystemEventAttributeResponse,
     ModifyUserBusinessBehaviorRequest,
     ModifyUserBusinessBehaviorResponseBody,
     ModifyUserBusinessBehaviorResponse,
@@ -3507,6 +3517,7 @@ __all__ = [
     DescribeDisksRequestTag,
     DescribeDisksResponseBodyDisksDiskAttachmentsAttachment,
     DescribeDisksResponseBodyDisksDiskAttachments,
+    DescribeDisksResponseBodyDisksDiskDataSource,
     DescribeDisksResponseBodyDisksDiskMountInstancesMountInstance,
     DescribeDisksResponseBodyDisksDiskMountInstances,
     DescribeDisksResponseBodyDisksDiskOperationLocksOperationLock,
@@ -3664,6 +3675,7 @@ __all__ = [
     DescribeInstanceRamRoleResponseBodyInstanceRamRoleSets,
     DescribeInstanceStatusResponseBodyInstanceStatusesInstanceStatus,
     DescribeInstanceStatusResponseBodyInstanceStatuses,
+    DescribeInstanceTopologyResponseBodyTopologysTopologyNetworkNodes,
     DescribeInstanceTopologyResponseBodyTopologysTopology,
     DescribeInstanceTopologyResponseBodyTopologys,
     DescribeInstanceTypeFamiliesResponseBodyInstanceTypeFamiliesInstanceTypeFamily,
@@ -3872,6 +3884,8 @@ __all__ = [
     DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfosDetailInfo,
     DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfos,
     DescribeRenewalPriceResponseBodyPriceInfoPrice,
+    DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice,
+    DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice,
     DescribeRenewalPriceResponseBodyPriceInfoRulesRule,
     DescribeRenewalPriceResponseBodyPriceInfoRules,
     DescribeRenewalPriceResponseBodyPriceInfo,

@@ -9,6 +9,8 @@ class ConsumeProcessorConfiguration(DaraModel):
         self,
         spl: str = None,
     ):
+        # SPL statement
+        # 
         # This parameter is required.
         self.spl = spl
 

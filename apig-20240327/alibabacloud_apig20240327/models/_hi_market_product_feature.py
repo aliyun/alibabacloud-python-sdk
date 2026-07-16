@@ -10,6 +10,7 @@ class HiMarketProductFeature(DaraModel):
         self,
         model_feature: main_models.HiMarketModelFeature = None,
     ):
+        # The model feature.
         self.model_feature = model_feature
 
     def validate(self):

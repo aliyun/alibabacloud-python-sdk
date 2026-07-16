@@ -16,10 +16,17 @@ class ListAiccsRobotResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of OK indicates that the request Succeeded.
         self.code = code
+        # Robot scripts.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API invocation Succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: failed.
         self.success = success
 
     def validate(self):
@@ -83,10 +90,15 @@ class ListAiccsRobotResponseBodyData(DaraModel):
         robot_name: str = None,
         robot_type: str = None,
     ):
+        # Associated industry.
         self.at_profession = at_profession
+        # Associated business.
         self.at_sence = at_sence
+        # Robot ID.
         self.id = id
+        # Robot name.
         self.robot_name = robot_name
+        # Robot type.
         self.robot_type = robot_type
 
     def validate(self):

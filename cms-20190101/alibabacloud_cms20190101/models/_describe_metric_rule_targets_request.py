@@ -13,7 +13,8 @@ class DescribeMetricRuleTargetsRequest(DaraModel):
         self.region_id = region_id
         # The ID of the alert rule.
         # 
-        # For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # 
+        # For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_id = rule_id

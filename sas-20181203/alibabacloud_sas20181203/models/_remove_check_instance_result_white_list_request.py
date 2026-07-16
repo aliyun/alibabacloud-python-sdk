@@ -14,7 +14,7 @@ class RemoveCheckInstanceResultWhiteListRequest(DaraModel):
     ):
         # The ID of the check item.
         self.check_id = check_id
-        # The IDs of instances. Separate multiple IDs with commas (,).
+        # The instance ID to query. Separate multiple instance IDs with commas (,).
         self.instance_ids = instance_ids
 
     def validate(self):

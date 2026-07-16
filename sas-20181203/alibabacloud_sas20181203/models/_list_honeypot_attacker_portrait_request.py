@@ -20,12 +20,13 @@ class ListHoneypotAttackerPortraitRequest(DaraModel):
         self.end_time_stamp = end_time_stamp
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries per page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # >  We recommend that you do not leave this parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
         # The source IP address of the attack.
         self.src_ip = src_ip

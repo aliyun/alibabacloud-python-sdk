@@ -17,11 +17,11 @@ class DescribeInstancesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.instances = instances
-        # The page number of the returned page.
+        # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of instances.
         self.total_count = total_count
@@ -139,6 +139,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         port: int = None,
         private_ip: str = None,
         qps: int = None,
+        quota_count: int = None,
         read_only_count: str = None,
         region_id: str = None,
         replacate_id: str = None,
@@ -150,6 +151,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         slave_read_only_count: int = None,
         slave_replica_count: int = None,
         tags: main_models.DescribeInstancesResponseBodyInstancesKVStoreInstanceTags = None,
+        used_count: int = None,
         user_name: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -185,6 +187,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         self.port = port
         self.private_ip = private_ip
         self.qps = qps
+        self.quota_count = quota_count
         self.read_only_count = read_only_count
         self.region_id = region_id
         self.replacate_id = replacate_id
@@ -196,6 +199,7 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         self.slave_read_only_count = slave_read_only_count
         self.slave_replica_count = slave_replica_count
         self.tags = tags
+        self.used_count = used_count
         self.user_name = user_name
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
@@ -298,6 +302,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         if self.qps is not None:
             result['QPS'] = self.qps
 
+        if self.quota_count is not None:
+            result['QuotaCount'] = self.quota_count
+
         if self.read_only_count is not None:
             result['ReadOnlyCount'] = self.read_only_count
 
@@ -330,6 +337,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
 
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+
+        if self.used_count is not None:
+            result['UsedCount'] = self.used_count
 
         if self.user_name is not None:
             result['UserName'] = self.user_name
@@ -437,6 +447,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         if m.get('QPS') is not None:
             self.qps = m.get('QPS')
 
+        if m.get('QuotaCount') is not None:
+            self.quota_count = m.get('QuotaCount')
+
         if m.get('ReadOnlyCount') is not None:
             self.read_only_count = m.get('ReadOnlyCount')
 
@@ -470,6 +483,9 @@ class DescribeInstancesResponseBodyInstancesKVStoreInstance(DaraModel):
         if m.get('Tags') is not None:
             temp_model = main_models.DescribeInstancesResponseBodyInstancesKVStoreInstanceTags()
             self.tags = temp_model.from_map(m.get('Tags'))
+
+        if m.get('UsedCount') is not None:
+            self.used_count = m.get('UsedCount')
 
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')

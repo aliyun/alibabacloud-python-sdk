@@ -18,12 +18,27 @@ class ListCustomAudienceResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # Details about the access denial.
         self.access_denied_detail = access_denied_detail
+        # The request status code.
+        # 
+        # - A value of OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
+        # 
+        # - **true**: successful.
+        # 
+        # - **false**: failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -105,16 +120,27 @@ class ListCustomAudienceResponseBodyData(DaraModel):
         update_time: int = None,
         upload_type: str = None,
     ):
+        # The Meta ad account ID.
         self.ad_account_id = ad_account_id
+        # The time when the audience was created.
         self.create_time = create_time
+        # The ID of the custom audience.
         self.custom_audience_id = custom_audience_id
+        # The name of the custom audience.
         self.custom_audience_name = custom_audience_name
+        # The description.
         self.description = description
+        # The Page ID for Messenger.
         self.page_id = page_id
+        # The status.
         self.status = status
+        # The number of tokens.
         self.token_total = token_total
+        # The token type.
         self.token_type = token_type
+        # The time when the audience was last updated.
         self.update_time = update_time
+        # The upload type.
         self.upload_type = upload_type
 
     def validate(self):

@@ -23,41 +23,41 @@ class DescribeVerifyTokenRequest(DaraModel):
         user_phone_number: str = None,
         user_regist_time: int = None,
     ):
-        # Verification ID. A unique ID that identifies a verification task, not exceeding 64 characters. For a single verification task, the system supports unlimited submissions until the final verification is passed and the task is completed.
+        # The authentication ID. A unique ID that identifies an authentication task. The value can be up to 64 characters in length. For a single authentication task, the system supports unlimited submissions until the authentication is passed and the task is completed.
         # 
-        # > Different BizIds are required for different verification tasks.
+        # > Use a different BizId for each different authentication task.
         # 
         # This parameter is required.
         self.biz_id = biz_id
-        # Identifier for the business scenario using the real person authentication service. Please refer to [Business Settings](https://help.aliyun.com/document_detail/127885.html) and complete the creation in the console first.
+        # The business scenario identifier for using the ID Verification service. Create one in the console first. For more information, see [Business settings](https://help.aliyun.com/document_detail/127885.html).
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Callback seed.
+        # The callback seed.
         self.callback_seed = callback_seed
-        # Callback URL.
+        # The callback URL.
         self.callback_url = callback_url
-        # HTTP or HTTPS link to the retained portrait photo.
+        # The HTTP or HTTPS URL of the retained face photo.
         self.face_retained_image_url = face_retained_image_url
-        # Redirect URL for failed verification.
+        # The redirect URL upon verification failure.
         self.failed_redirect_url = failed_redirect_url
-        # HTTP or HTTPS link to the national emblem side of the ID card image.
+        # The HTTP or HTTPS URL of the national emblem side of the ID card image.
         self.id_card_back_image_url = id_card_back_image_url
-        # HTTP or HTTPS link to the portrait side of the ID card image.
+        # The HTTP or HTTPS URL of the portrait side of the ID card image.
         self.id_card_front_image_url = id_card_front_image_url
-        # ID card number.
+        # The ID card number.
         self.id_card_number = id_card_number
-        # Name.
+        # The name.
         self.name = name
-        # Redirect URL upon successful verification.
+        # The redirect URL upon successful verification.
         self.passed_redirect_url = passed_redirect_url
-        # ID of the end user, such as the account ID of the end user.
+        # The ID of the end user, such as the account ID of the end user.
         self.user_id = user_id
-        # User IP.
+        # The IP address of the user.
         self.user_ip = user_ip
-        # User phone number.
+        # The phone number of the user.
         self.user_phone_number = user_phone_number
-        # User registration time. Expressed in timestamp format, unit: milliseconds.
+        # The registration time of the user. Specify the value in UNIX timestamp format. Unit: milliseconds.
         self.user_regist_time = user_regist_time
 
     def validate(self):

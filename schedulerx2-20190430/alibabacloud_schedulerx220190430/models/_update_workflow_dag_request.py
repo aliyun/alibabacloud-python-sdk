@@ -14,25 +14,25 @@ class UpdateWorkflowDagRequest(DaraModel):
         region_id: str = None,
         workflow_id: str = None,
     ):
-        # The directed acyclic graph (DAG) of the workflow, including the information about the nodes and the edges. Specify the value of this parameter in the JSON format.
+        # The definition of the workflow\\"s directed acyclic graph (DAG), including nodes and edges, as a JSON string.
         # 
         # This parameter is required.
         self.dag_json = dag_json
-        # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # The Application Group ID. You can find this ID on the **Application Management** page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The Namespace ID. You can obtain the ID on the **Namespaces** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. This parameter is required only for a special third party.
+        # This parameter is required only for specific third-party integrations.
         self.namespace_source = namespace_source
-        # The region ID.
+        # The Region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The workflow ID.
+        # The Workflow ID.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id

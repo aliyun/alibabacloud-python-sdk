@@ -26,6 +26,7 @@ class HotelSearchShrinkRequest(DaraModel):
         page_size: int = None,
         pay_over_type: int = None,
         payment_type: int = None,
+        poi: str = None,
         shids_shrink: str = None,
         sort_code: int = None,
         super_man: int = None,
@@ -53,6 +54,7 @@ class HotelSearchShrinkRequest(DaraModel):
         self.page_size = page_size
         self.pay_over_type = pay_over_type
         self.payment_type = payment_type
+        self.poi = poi
         self.shids_shrink = shids_shrink
         # This parameter is required.
         self.sort_code = sort_code
@@ -123,6 +125,9 @@ class HotelSearchShrinkRequest(DaraModel):
         if self.payment_type is not None:
             result['payment_type'] = self.payment_type
 
+        if self.poi is not None:
+            result['poi'] = self.poi
+
         if self.shids_shrink is not None:
             result['shids'] = self.shids_shrink
 
@@ -192,6 +197,9 @@ class HotelSearchShrinkRequest(DaraModel):
 
         if m.get('payment_type') is not None:
             self.payment_type = m.get('payment_type')
+
+        if m.get('poi') is not None:
+            self.poi = m.get('poi')
 
         if m.get('shids') is not None:
             self.shids_shrink = m.get('shids')

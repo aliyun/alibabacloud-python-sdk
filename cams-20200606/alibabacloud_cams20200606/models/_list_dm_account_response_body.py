@@ -18,12 +18,27 @@ class ListDmAccountResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The response status code. Valid values:
+        # 
+        # - OK: The request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
+        # The returned data.
         self.data = data
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # - true: Successful.
+        # 
+        # - false: Failed.
         self.success = success
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -98,9 +113,16 @@ class ListDmAccountResponseBodyData(DaraModel):
         mail_address_id: str = None,
         sendtype: str = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The time when the account was created.
         self.create_time = create_time
+        # The ID of the email address.
         self.mail_address_id = mail_address_id
+        # The type of the sender address. Valid values:
+        # 
+        # - batch: batch emails
+        # - trigger: triggered emails
         self.sendtype = sendtype
 
     def validate(self):

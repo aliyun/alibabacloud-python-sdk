@@ -12,11 +12,20 @@ class ModifyActiveOperationTasksRequest(DaraModel):
         region_id: str = None,
         switch_time: str = None,
     ):
+        # The O&M event ID.
+        # 
         # This parameter is required.
         self.ids = ids
+        # Specifies whether to immediately execute the event. Valid values:
+        # 
+        # - 1: immediately execute
+        # - 0: execute at the specified time.
         self.immediate_start = immediate_start
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The switchover start time in the YYYY-MM-DDThh:mm:ssZ format.
         self.switch_time = switch_time
 
     def validate(self):

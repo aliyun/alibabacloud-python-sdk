@@ -16,23 +16,23 @@ class DescribeNameListPageListRequest(DaraModel):
         value: str = None,
         variable_id: int = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Update start time.
+        # The start time of the update period.
         self.update_begin_time = update_begin_time
-        # Update end time.
+        # The end time of the update period.
         self.update_end_time = update_end_time
-        # Variable name/description
+        # The variable name or description.
         self.value = value
-        # Variable ID
+        # The variable ID.
         # 
         # This parameter is required.
         self.variable_id = variable_id

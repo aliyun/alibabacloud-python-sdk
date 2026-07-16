@@ -11,8 +11,12 @@ class DeleteFileUploadRequest(DaraModel):
         dms_unit: str = None,
         file_id: str = None,
     ):
+        # Used by frontend only
         self.call_from = call_from
+        # Current DMS unit
         self.dms_unit = dms_unit
+        # File ID
+        # 
         # This parameter is required.
         self.file_id = file_id
 

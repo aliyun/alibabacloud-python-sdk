@@ -13,13 +13,13 @@ class BankMetaVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.BankMetaVerifyIntlResponseBodyResultObject = None,
     ):
-        # Return code: 200 for success, others for failure.
+        # The response code. A value of 200 indicates success. Other values indicate failure.
         self.code = code
-        # Return message
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned result information
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -68,36 +68,36 @@ class BankMetaVerifyIntlResponseBodyResultObject(DaraModel):
         biz_code: str = None,
         sub_code: str = None,
     ):
-        # Verification result code.
-        # - 1: Consistent (charged)
-        # - 2: Inconsistent (charged)
-        # - 3: No record found (not charged)
+        # The verification result code. Valid values:
+        # - 1: Verification consistent (billable).
+        # - 2: Verification inconsistent (billable).
+        # - 3: No record found (not billable).
         self.biz_code = biz_code
-        # Verification details:
+        # The verification details. Valid values:
         # 
         # - **101**: Verification passed.
-        # - **201**: Authentication information does not match, cardholder information is incorrect.
-        # - **202**: Authentication information does not match, bank card has not been activated for authenticated payments.
-        # - **203**: Authentication information does not match, bank card has expired.
-        # - **204**: Authentication information does not match, bank card is a restricted card.
-        # - **205**: Authentication information does not match, this card has been confiscated.
-        # - **206**: Authentication information does not match, bank card is invalid.
-        # - **207**: Authentication information does not match, this card has no corresponding issuing bank.
-        # - **208**: Authentication information does not match, this card is uninitialized or dormant.
-        # - **209**: Authentication information does not match, this card is a cheating card or swallowed card.
-        # - **210**: Authentication information does not match, this card has been reported lost.
-        # - **211**: Authentication information does not match, password error limit exceeded.
-        # - **212**: Authentication information does not match, issuing bank does not support this transaction.
-        # - **213**: Authentication information does not match, card status is abnormal or card is invalid.
-        # - **214**: Authentication information does not match, no phone number reserved.
-        # - **215**: Authentication information does not match, entered password, expiration date, or CVN2 is incorrect.
-        # - **216**: Authentication information does not match, other card anomalies.
-        # - **301**: Unable to verify, bank card does not support this service.
-        # - **302**: Unable to verify, verification failed or bank refused verification, please contact the issuing bank.
-        # - **303**: Unable to verify, bank card does not currently support phone number verification.
-        # - **304**: Unable to verify, bank card number is incorrect.
-        # - **305**: Unable to verify, other reasons.
-        # - **306**: Unable to verify, verification attempt limit exceeded.
+        # - **201**: Authentication information inconsistent. The cardholder information is incorrect.
+        # - **202**: Authentication information inconsistent. The bank card has not enabled authenticated payment.
+        # - **203**: Authentication information inconsistent. The bank card has expired.
+        # - **204**: Authentication information inconsistent. The bank card is restricted.
+        # - **205**: Authentication information inconsistent. The card has been confiscated.
+        # - **206**: Authentication information inconsistent. The bank card is invalid.
+        # - **207**: Authentication information inconsistent. No issuing bank found for this card.
+        # - **208**: Authentication information inconsistent. The card is not initialized or is a dormant card.
+        # - **209**: Authentication information inconsistent. The card is a fraudulent or retained card.
+        # - **210**: Authentication information inconsistent. The card has been reported lost.
+        # - **211**: Authentication information inconsistent. The number of incorrect password attempts has exceeded the limit.
+        # - **212**: Authentication information inconsistent. The issuing bank does not support this transaction.
+        # - **213**: Authentication information inconsistent. The card status is abnormal or the card is invalid.
+        # - **214**: Authentication information inconsistent. No phone number is registered with the card.
+        # - **215**: Authentication information inconsistent. The password, expiration date, or CVN2 is incorrect.
+        # - **216**: Authentication information inconsistent. Other card exceptions.
+        # - **301**: Verification unavailable. The bank card does not support this service.
+        # - **302**: Verification unavailable. Verification failed or the bank rejected the verification. Contact the issuing bank.
+        # - **303**: Verification unavailable. The bank card does not currently support phone number verification.
+        # - **304**: Verification unavailable. The bank card number is incorrect.
+        # - **305**: Verification unavailable. Other reasons.
+        # - **306**: Verification unavailable. The number of verification attempts has exceeded the limit.
         self.sub_code = sub_code
 
     def validate(self):

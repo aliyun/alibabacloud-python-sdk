@@ -1,3 +1,25 @@
+2026-07-14 Version: 3.3.4
+- Update API PushBroadcast: add request parameters VendorTemplate.
+- Update API PushMultiple: add request parameters VendorTemplate.
+- Update API PushSimple: add request parameters VendorTemplate.
+- Update API PushTemplate: add request parameters VendorTemplate.
+
+
+2026-06-23 Version: 3.3.3
+- Update API SaveOrderRelationInfoToMsence: add request parameters ItemId.
+- Update API SaveOrderRelationInfoToMsence: add request parameters ItemTitle.
+
+
+2026-06-08 Version: 3.3.2
+- Update API SaveOrderRelationInfoToMsence: add request parameters ClientType.
+- Update API SaveOrderRelationInfoToMsence: add request parameters CpExtra.
+
+
+2026-06-04 Version: 3.3.1
+- Update API QueryMdsUpgradeTaskDetail: add response parameters Body.ResultContent.Data.Content.ReminderPeriod.
+- Update API QueryPayOrderToMsence: add response parameters Body.MpaasUserGamecenterPaymentQuerystatusResponse.CpExtra.
+
+
 2026-05-18 Version: 3.3.0
 - Support API CheckUserAuthToMscene.
 - Update API GetGameReviewByStatus: add response parameters Body.ResultContent.Content.$.TargetDetail.PublishStatusDesc.

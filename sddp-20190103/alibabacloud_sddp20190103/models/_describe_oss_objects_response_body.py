@@ -21,24 +21,25 @@ class DescribeOssObjectsResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # The OSS objects.
+        # A list of OSS objects.
         self.items = items
         # This parameter is deprecated.
         self.marker = marker
-        # The ID value from which the next page of results starts.
+        # The token that marks the start of the next page of results.
         # 
-        # >  This parameter is returned only when the `Truncated` parameter is set to `true`.
+        # > This parameter is returned only when `Truncated` is `true`.
         self.next_marker = next_marker
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # Indicates whether the queried entries are truncated. Valid values:
+        # Indicates whether the results are truncated. The default value is false. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The results are truncated.
+        # 
+        # - **false**: The results are not truncated.
         self.truncated = truncated
 
     def validate(self):
@@ -132,45 +133,49 @@ class DescribeOssObjectsResponseBodyItems(DaraModel):
         sensitive_count: int = None,
         size: int = None,
     ):
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The type of the OSS object. Valid values include **900001**, **800015**, or **800005**, which indicates the MP4 file, PDF file, or OSS configuration file, respectively.
+        # The type of the OSS object, such as **900001** (MP4 video file), **800015** (PDF document), and **800005** (OSS configuration file).
         self.category = category
         # The name of the file type.
         self.category_name = category_name
-        # The code of the file type.
+        # The code of the file category.
         self.file_category_code = file_category_code
-        # The name of the file type.
+        # The name of the file category.
         self.file_category_name = file_category_name
-        # The file ID of the OSS object.
+        # The ID of the OSS file.
         self.file_id = file_id
-        # The ID of the OSS object.
+        # The unique ID of the OSS object.
         self.id = id
-        # The ID of the instance to which the OSS object belongs.
+        # The ID of the asset instance to which the OSS object belongs.
         self.instance_id = instance_id
         # The time when the file was last modified.
         self.last_modified_time = last_modified_time
         # The name of the OSS object.
         self.name = name
-        # The region ID of the OSS object.
+        # The region ID of the OSS object owner.
         self.region_id = region_id
-        # The ID of the sensitivity level of the OSS object. Valid values:
+        # The risk level ID of the OSS object. Valid values:
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A. No sensitive data is detected.
+        # 
+        # - **2**: S1. Level 1 sensitive data.
+        # 
+        # - **3**: S2. Level 2 sensitive data.
+        # 
+        # - **4**: S3. Level 3 sensitive data.
+        # 
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The name of the sensitivity level for the OSS object.
+        # The name of the risk level for the OSS object.
         self.risk_level_name = risk_level_name
-        # The number of rules that are hit.
+        # The number of matched rules.
         self.rule_count = rule_count
-        # The rules.
+        # A list of rules.
         self.rule_list = rule_list
-        # The number of fields that are hit.
+        # The number of matched fields.
         self.sensitive_count = sensitive_count
-        # The size of the file. Unit: bytes.
+        # The file size. Unit: bytes.
         self.size = size
 
     def validate(self):
@@ -304,17 +309,21 @@ class DescribeOssObjectsResponseBodyItemsRuleList(DaraModel):
         name: str = None,
         risk_level_id: int = None,
     ):
-        # The number of times that the rule is hit.
+        # The number of times the rule is matched.
         self.count = count
-        # The search keyword. Fuzzy match is supported.
+        # The name of the rule.
         self.name = name
-        # The ID of the sensitivity level of the OSS object. Valid values:
+        # The risk level ID of the rule. Valid values:
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A. No sensitive data is detected.
+        # 
+        # - **2**: S1. Level 1 sensitive data.
+        # 
+        # - **3**: S2. Level 2 sensitive data.
+        # 
+        # - **4**: S3. Level 3 sensitive data.
+        # 
+        # - **5**: S4. Level 4 sensitive data.
         self.risk_level_id = risk_level_id
 
     def validate(self):

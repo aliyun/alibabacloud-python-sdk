@@ -10,9 +10,9 @@ class CheckServiceLinkedRoleResponseBody(DaraModel):
         has_service_linked_role: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the SLR is created.
+        # Indicates whether a service-linked role has been created.
         self.has_service_linked_role = has_service_linked_role
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

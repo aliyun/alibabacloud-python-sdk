@@ -148,8 +148,10 @@ class ListCheckItemsResponseBodyCheckItems(DaraModel):
         # The name of the check item.
         self.check_show_name = check_show_name
         # The source type of the Security Posture check item:
-        #  - **CUSTOM**: User-defined
-        #  - **SYSTEM**: Predefined by the Security Posture platform
+        # 
+        # - **CUSTOM**: User-defined
+        # 
+        # - **SYSTEM**: Predefined by the Security Posture platform
         self.check_type = check_type
         # The description information of the check item.
         self.description = description
@@ -160,14 +162,19 @@ class ListCheckItemsResponseBodyCheckItems(DaraModel):
         # Remark information.
         self.remark = remark
         # The risk level of the check item. Values:
+        # 
         # - **HIGH**: High risk
+        # 
         # - **MEDIUM**: Medium risk
+        # 
         # - **LOW**: Low risk
         self.risk_level = risk_level
         # The solution information for the check item.
         self.solution = solution
         # The status of the check item. Values:
+        # 
         # - **EDIT**: In editing
+        # 
         # - **RELEASE**: Released
         self.status = status
         # The cloud asset vendor.
@@ -296,7 +303,7 @@ class ListCheckItemsResponseBodyCheckItemsSolution(DaraModel):
     ):
         # The type of the check item solution information. Values:
         # 
-        # - **text**：Text
+        # - **text**:Text
         self.type = type
         # The content of the solution for the check item risk.
         self.value = value
@@ -335,7 +342,7 @@ class ListCheckItemsResponseBodyCheckItemsDescription(DaraModel):
     ):
         # The type of the check description attribute. Values:
         # 
-        # - **text**：Text
+        # - **text**:Text
         self.type = type
         # The specific content of the description.
         self.value = value
@@ -390,11 +397,16 @@ class ListCheckItemsResponseBodyCheckItemsCheckPolicies(DaraModel):
         # The display name of the standard for the check item.
         self.standard_show_name = standard_show_name
         # The name of the associated policy category:
-        # - **AISPM**：AI Configuration Management (AI-SPM)
-        # - **KISPM**：Kubernetes Configuration Management (KSPM)
-        # - **IDENTITY_PERMISSION**：Identity and Permission Management (CIEM)
-        # - **RISK**：Security Risk
-        # - **COMPLIANCE**：Compliance Risk
+        # 
+        # - **AISPM**:AI Configuration Management (AI-SPM)
+        # 
+        # - **KISPM**:Kubernetes Configuration Management (KSPM)
+        # 
+        # - **IDENTITY_PERMISSION**:Identity and Permission Management (CIEM)
+        # 
+        # - **RISK**:Security Risk
+        # 
+        # - **COMPLIANCE**:Compliance Risk
         self.type = type
 
     def validate(self):
@@ -461,7 +473,7 @@ class ListCheckItemsResponseBodyCheckItemsAssistInfo(DaraModel):
     ):
         # The type of the help information for the check item risk. Values:
         # 
-        # - **text**：Text
+        # - **text**:Text
         self.type = type
         # The content of the help information for the check item risk.
         self.value = value

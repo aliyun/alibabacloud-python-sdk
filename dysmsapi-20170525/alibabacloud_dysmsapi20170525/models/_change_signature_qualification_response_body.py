@@ -17,11 +17,25 @@ class ChangeSignatureQualificationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Details of the access denial. This field is returned only if RAM authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request.
+        # 
+        # - A value of `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see the error code list in this topic or the [API Error Codes](https://help.aliyun.com/document_detail/101346.html) topic.
         self.code = code
+        # The returned data structure.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID. Alibaba Cloud generates this unique identifier to help you troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -84,9 +98,13 @@ class ChangeSignatureQualificationResponseBodyData(DaraModel):
         err_message: str = None,
         success: bool = None,
     ):
+        # This field is not used. You can ignore it.
         self.data = data
+        # The status code of the request.
         self.err_code = err_code
+        # The description of the status code.
         self.err_message = err_message
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

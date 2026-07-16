@@ -13,13 +13,13 @@ class GetSourceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -65,6 +65,8 @@ class GetSourceResponseBody(DaraModel):
 class GetSourceResponseBodyData(DaraModel):
     def __init__(
         self,
+        association_reason: str = None,
+        association_status: str = None,
         create_timestamp: int = None,
         gateway_id: str = None,
         k_8ssource_info: main_models.GetSourceResponseBodyDataK8SSourceInfo = None,
@@ -75,13 +77,17 @@ class GetSourceResponseBodyData(DaraModel):
         type: str = None,
         update_timestamp: int = None,
     ):
+        # The reason for the association status
+        self.association_reason = association_reason
+        # The association status of the source
+        self.association_status = association_status
         # The creation timestamp.
         self.create_timestamp = create_timestamp
         # The gateway ID.
         self.gateway_id = gateway_id
-        # Kubernetes source information.
+        # The Kubernetes source information.
         self.k_8ssource_info = k_8ssource_info
-        # The source information when the source type is MSE_NACOS.
+        # The MSE Nacos source information.
         self.nacos_source_info = nacos_source_info
         # The name.
         self.name = name
@@ -105,6 +111,12 @@ class GetSourceResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.association_reason is not None:
+            result['associationReason'] = self.association_reason
+
+        if self.association_status is not None:
+            result['associationStatus'] = self.association_status
+
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
 
@@ -136,6 +148,12 @@ class GetSourceResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('associationReason') is not None:
+            self.association_reason = m.get('associationReason')
+
+        if m.get('associationStatus') is not None:
+            self.association_status = m.get('associationStatus')
+
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
 
@@ -174,7 +192,7 @@ class GetSourceResponseBodyDataNacosSourceInfo(DaraModel):
         cluster_id: str = None,
         instance_id: str = None,
     ):
-        # The endpoint of the Nacos instance.
+        # The access address of the Nacos instance.
         self.address = address
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -218,7 +236,7 @@ class GetSourceResponseBodyDataK8SSourceInfo(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The ID of the Container Service for Kubernetes (ACK) cluster.
+        # The Container Service cluster ID.
         self.cluster_id = cluster_id
 
     def validate(self):

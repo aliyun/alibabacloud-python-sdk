@@ -11,10 +11,16 @@ class UpdateUserGroupSwitchRequest(DaraModel):
         op_tenant_id: int = None,
         user_group_id: str = None,
     ):
+        # Specifies whether to enable the user group.
+        # 
         # This parameter is required.
         self.active = active
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The user group ID.
+        # 
         # This parameter is required.
         self.user_group_id = user_group_id
 

@@ -11,12 +11,13 @@ class DeleteControlPolicyTemplateRequest(DaraModel):
         source_ip: str = None,
         template_id: str = None,
     ):
-        # The language of the content within the request and response. Valid values:
+        # The language of the request and response. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The source IP address of the request.
+        # The source IP address.
         self.source_ip = source_ip
         # The ID of the access control policy template.
         # 

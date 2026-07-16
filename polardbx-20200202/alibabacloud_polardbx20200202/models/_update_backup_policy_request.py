@@ -29,28 +29,64 @@ class UpdateBackupPolicyRequest(DaraModel):
         region_id: str = None,
         remove_log_retention: int = None,
     ):
+        # The backup cycle. You must specify at least 2 days. The value is a 7-digit number. From left to right, each digit indicates whether backup is enabled from Monday to Sunday. A value of 0 indicates that backup is disabled, and a value of 1 indicates that backup is enabled:
+        # 
+        # - First digit: Monday
+        # - Second digit: Tuesday
+        # - Third digit: Wednesday
+        # - Fourth digit: Thursday
+        # - Fifth digit: Friday
+        # - Sixth digit: Saturday
+        # - Seventh digit: Sunday.
         self.backup_period = backup_period
+        # The start time of the daily backup, in UTC.
         self.backup_plan_begin = backup_plan_begin
+        # The retention period of backup sets. Unit: days.
         self.backup_set_retention = backup_set_retention
+        # The backup type. Currently, only "0" is supported, which indicates fast backup.
         self.backup_type = backup_type
+        # The backup method. Valid values:
+        # 
+        # - **P**: physical backup
+        # - **L**: logical backup.
         self.backup_way = backup_way
+        # The interval for cold data backups. Unit: days. Valid values: 1 to 59.
         self.cold_data_backup_interval = cold_data_backup_interval
+        # The retention period for cold data backups. Unit: days. Valid values: 30 to 730.
         self.cold_data_backup_retention = cold_data_backup_retention
+        # The retention period for cross-region data backups. Unit: days.
         self.cross_region_data_backup_retention = cross_region_data_backup_retention
         self.cross_region_filter_value = cross_region_filter_value
+        # The retention period for cross-region log backups. Unit: days.
         self.cross_region_log_backup_retention = cross_region_log_backup_retention
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The destination region for cross-region backup.
         self.dest_cross_region = dest_cross_region
+        # Specifies whether to forcibly clean up binary logs when the total space usage of the instance exceeds 80% or the remaining space is less than 50 GB. The cleanup starts from the earliest logs until the total space usage drops below 80% and the remaining space exceeds 50 GB. Valid values:
+        # 
+        # - **1**: yes
+        # - **0**: no.
         self.force_clean_on_high_space_usage = force_clean_on_high_space_usage
+        # Specifies whether to enable cross-region data backup. Default value: false.
         self.is_cross_region_data_backup_enabled = is_cross_region_data_backup_enabled
+        # Specifies whether to enable cross-region log backup. Default value: false.
         self.is_cross_region_log_backup_enabled = is_cross_region_log_backup_enabled
+        # Specifies whether to enable backup. The value is fixed to 1, which indicates that backup is enabled.
         self.is_enabled = is_enabled
+        # The number of hours that log backups are retained locally. Valid values: 0 to 168 (7 × 24 hours). A value of 0 indicates that log backups are not retained locally. Default value: 7.
         self.local_log_retention = local_log_retention
+        # The number of binary logs retained locally. Default value: 60. Valid values: 6 to 100.
         self.local_log_retention_number = local_log_retention_number
+        # The maximum space usage for binary logs, expressed as a percentage. Valid values: 0 to 50. This parameter specifies a loop space. Default value: 30.
         self.log_local_retention_space = log_local_retention_space
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The number of days that log backups are retained remotely. Valid values: 7 to 730. Unit: days. Default value: 7.
         self.remove_log_retention = remove_log_retention
 
     def validate(self):

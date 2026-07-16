@@ -16,11 +16,19 @@ class ModifyCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -94,6 +102,7 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         next_runtime: int = None,
         offline_time: str = None,
         region: str = None,
+        related_session_id: str = None,
         release_time: str = None,
         schedule_task_config: main_models.ModifyCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
@@ -101,33 +110,65 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         web_report_config: str = None,
         workspace_id: str = None,
     ):
+        # The main Alibaba Cloud account ID.
         self.aliyun_parent_uid = aliyun_parent_uid
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
+        # The callback configuration.
         self.callback_config = callback_config
+        # Name of the user who created the agent.
         self.creator_user_name = creator_user_name
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The data scope in JSON format.
         self.data_json = data_json
+        # The custom agent description.
         self.description = description
+        # The current DMS unit.
         self.dms_unit = dms_unit
+        # The execution configuration.
         self.execution_config = execution_config
+        # The creation time.
         self.gmt_created = gmt_created
+        # The last modification time.
         self.gmt_modified = gmt_modified
+        # The instruction for the agent.
         self.instruction = instruction
+        # Indicates whether a scheduled task is configured.
         self.is_schedule_task = is_schedule_task
+        # The text-based knowledge for the agent.
         self.knowledge = knowledge
+        # Configurations for external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
+        # ID of the last modifier.
         self.modifier = modifier
+        # Name of the user who last modified the agent.
         self.modifier_user_name = modifier_user_name
+        # The custom agent name.
         self.name = name
+        # The next runtime for the scheduled task.
+        # 
+        # - This value is a UNIX timestamp.
         self.next_runtime = next_runtime
+        # The offline time.
         self.offline_time = offline_time
+        # The region ID.
         self.region = region
+        # The ID of a reference session.
+        self.related_session_id = related_session_id
+        # The release time.
         self.release_time = release_time
+        # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
+        # The agent status.
         self.status = status
+        # Formatting requirements for the text report.
         self.text_report_config = text_report_config
+        # Formatting requirements for the web report.
         self.web_report_config = web_report_config
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -214,6 +255,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
 
         if self.region is not None:
             result['Region'] = self.region
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
 
         if self.release_time is not None:
             result['ReleaseTime'] = self.release_time
@@ -308,6 +352,9 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         if m.get('Region') is not None:
             self.region = m.get('Region')
 
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
+
         if m.get('ReleaseTime') is not None:
             self.release_time = m.get('ReleaseTime')
 
@@ -336,8 +383,11 @@ class ModifyCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
+        # The cron expression for the task.
         self.cron_expression = cron_expression
+        # The query for the task.
         self.query = query
+        # The ID of a reference session.
         self.related_session_id = related_session_id
 
     def validate(self):
@@ -379,8 +429,13 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         kb_uuid: str = None,
         mcp_server_id: str = None,
     ):
+        # The access type.
+        # 
+        # - mcp: Connects via MCP.
         self.access_type = access_type
+        # The knowledge base UUID.
         self.kb_uuid = kb_uuid
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -423,9 +478,13 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
+        # Specifies whether to skip asking for human input during execution.
         self.skip_ask_human = skip_ask_human
+        # Specifies whether to skip plan confirmation.
         self.skip_plan = skip_plan
+        # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
+        # Specifies whether to skip web report confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -475,10 +534,15 @@ class ModifyCustomAgentResponseBodyDataCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
+        # The callback arguments.
         self.callback_args = callback_args
+        # The callback prompt.
         self.callback_prompt = callback_prompt
+        # The callback timestamp.
         self.callback_time = callback_time
+        # The ID of the tool to be called.
         self.tool_id = tool_id
+        # The callback type.
         self.type = type
 
     def validate(self):

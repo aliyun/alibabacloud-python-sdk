@@ -10,6 +10,8 @@ class CreateDeploymentDraftRequest(DaraModel):
         self,
         body: main_models.DeploymentDraft = None,
     ):
+        # The data structure of the job draft.
+        # 
         # This parameter is required.
         self.body = body
 

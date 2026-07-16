@@ -23,6 +23,7 @@ class DescribeAppsRequest(DaraModel):
         self.app_id_list = app_id_list
         # The name of the application.
         self.app_name = app_name
+        # > This parameter is for internal use now.
         self.app_type = app_type
         # Region id.
         self.biz_region_id = biz_region_id
@@ -30,12 +31,17 @@ class DescribeAppsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   INSTALLFAILED: The application failed to be installed.
-        # *   UNINSTALLING: The application is being uninstalled.
-        # *   INSTALLING: The application is being installed.
-        # *   UNINSTALLED: The application is uninstalled.
-        # *   INSTALLED: The application is installed.
-        # *   UNINSTALLFAILED: The application failed to be uninstalled.
+        # - INSTALLFAILED: The application failed to be installed.
+        # 
+        # - UNINSTALLING: The application is being uninstalled.
+        # 
+        # - INSTALLING: The application is being installed.
+        # 
+        # - UNINSTALLED: The application is uninstalled.
+        # 
+        # - INSTALLED: The application is installed.
+        # 
+        # - UNINSTALLFAILED: The application failed to be uninstalled.
         self.installation_status = installation_status
         # The value of MD5.
         self.md5 = md5
@@ -44,12 +50,6 @@ class DescribeAppsRequest(DaraModel):
         # The pagination token that is used in the next request to retrieve a new page of results. If the parameter is left empty, the data is queried from the first entry.
         self.next_token = next_token
         # The status of the application.
-        # 
-        # Valid values:
-        # 
-        # *   FAILED: The application failed to be created.
-        # *   NORMAL: The application is available.
-        # *   CREATING: The application is being created.
         self.status = status
 
     def validate(self):

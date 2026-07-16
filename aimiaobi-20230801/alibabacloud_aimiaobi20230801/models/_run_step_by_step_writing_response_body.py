@@ -14,8 +14,11 @@ class RunStepByStepWritingResponseBody(DaraModel):
         payload: main_models.RunStepByStepWritingResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # The response header.
         self.header = header
+        # The response body.
         self.payload = payload
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -61,7 +64,9 @@ class RunStepByStepWritingResponseBodyPayload(DaraModel):
         output: main_models.RunStepByStepWritingResponseBodyPayloadOutput = None,
         usage: main_models.RunStepByStepWritingResponseBodyPayloadUsage = None,
     ):
+        # The output.
         self.output = output
+        # Information about token usage.
         self.usage = usage
 
     def validate(self):
@@ -102,8 +107,11 @@ class RunStepByStepWritingResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of input tokens.
         self.input_tokens = input_tokens
+        # The number of output tokens.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -147,10 +155,15 @@ class RunStepByStepWritingResponseBodyPayloadOutput(DaraModel):
         search_query: str = None,
         text: str = None,
     ):
+        # The reference articles.
         self.articles = articles
+        # Extra output fields.
         self.extra_output = extra_output
+        # A list of segments after the article layout has been optimized.
         self.mini_doc = mini_doc
+        # The rewritten query.
         self.search_query = search_query
+        # The text generation result.
         self.text = text
 
     def validate(self):
@@ -213,6 +226,7 @@ class RunStepByStepWritingResponseBodyPayloadOutputExtraOutput(DaraModel):
         self,
         summarization: List[str] = None,
     ):
+        # The list of summaries. This field is returned when summaries are generated step-by-step.
         self.summarization = summarization
 
     def validate(self):
@@ -250,16 +264,27 @@ class RunStepByStepWritingResponseBodyPayloadOutputArticles(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The author.
         self.author = author
+        # The content.
         self.content = content
+        # The custom unique ID of the document.
         self.doc_id = doc_id
+        # The internal unique ID of the document.
         self.doc_uuid = doc_uuid
+        # The URL of the original material.
         self.media_url = media_url
+        # The publication time.
         self.pub_time = pub_time
+        # The source.
         self.source = source
+        # The article summary.
         self.summary = summary
+        # The tag.
         self.tag = tag
+        # The title.
         self.title = title
+        # The URL of the article.
         self.url = url
 
     def validate(self):
@@ -353,12 +378,19 @@ class RunStepByStepWritingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The Server-Sent Events (SSE) event. \\`task-started\\`: The task begins. \\`task-finished\\`: The task is complete. \\`task-failed\\`: The task failed.
         self.event = event
+        # The parent session ID.
         self.origin_session_id = origin_session_id
+        # The session ID.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The full-link trace ID.
         self.trace_id = trace_id
 
     def validate(self):

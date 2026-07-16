@@ -10,7 +10,10 @@ class CreateUserGroupShrinkRequest(DaraModel):
         create_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The creation request.
         self.create_command_shrink = create_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

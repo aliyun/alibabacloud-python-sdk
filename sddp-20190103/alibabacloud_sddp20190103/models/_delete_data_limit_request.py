@@ -14,16 +14,17 @@ class DeleteDataLimitRequest(DaraModel):
     ):
         # This parameter is deprecated.
         self.feature_type = feature_type
-        # The ID of the data asset.
+        # The unique ID of the data asset. The data asset can be an instance, a database, or a bucket.
         # 
-        # You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
+        # Call the DescribeDataLimits operation and check the Id parameter in the response to obtain this ID.
         # 
         # This parameter is required.
         self.id = id
-        # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
+        # The language of the request and response. The default value is **zh_cn**. Valid values:
         # 
-        # *   **zh_cn**: Chinese
-        # *   **en_us**: English
+        # - **zh_cn**: Chinese.
+        # 
+        # - **en_us**: English.
         self.lang = lang
         # This parameter is deprecated.
         self.source_ip = source_ip

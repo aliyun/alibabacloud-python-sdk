@@ -101,7 +101,7 @@ class CreateDriveResponseBodyDrive(DaraModel):
         self.drive_id = drive_id
         # The ID of the external user-level storage resource.
         # 
-        # >  A value is returned for this parameter only if ResourceType is set to PDS.
+        # > A value is returned for this parameter only if ResourceType is set to PDS.
         self.external_drive_id = external_drive_id
         # The ID of the external user.
         self.external_user_id = external_user_id
@@ -113,33 +113,39 @@ class CreateDriveResponseBodyDrive(DaraModel):
         self.id = id
         # The name of the storage resource.
         self.name = name
-        # >  This parameter is deprecated.
+        # > This parameter is deprecated.
         self.profile_roaming = profile_roaming
         # The status of the user-level storage resource.
         # 
         # Valid values:
         # 
-        # *   INIT: initializing
-        # *   MAINTAIN: maintaining
-        # *   DELETING
-        # *   INVALID
-        # *   NORMAL
-        # *   FAIL: failed
+        # - INIT: initializing
+        # 
+        # - MAINTAIN: maintaining
+        # 
+        # - DELETING
+        # 
+        # - INVALID
+        # 
+        # - NORMAL
+        # 
+        # - FAIL: failed
         self.status = status
         # The total amount of the user-level storage resource capacity.
         # 
-        # >  Unit: bytes.
+        # > Unit: bytes.
         self.total_size = total_size
         # The usage of the storage resource.
         # 
         # Valid values:
         # 
-        # *   DESKTOP: data disk space
-        # *   USER_PROFILE: space for personal data of the user
+        # - DESKTOP: data disk space
+        # 
+        # - USER_PROFILE: space for personal data of the user
         self.type = type
         # The amount of user-level storage resource capacity used.
         # 
-        # >  Unit: bytes.
+        # > Unit: bytes.
         self.used_size = used_size
         # The user ID.
         self.user_id = user_id

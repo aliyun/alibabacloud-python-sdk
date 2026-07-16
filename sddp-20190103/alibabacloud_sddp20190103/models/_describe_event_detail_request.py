@@ -10,16 +10,17 @@ class DescribeEventDetailRequest(DaraModel):
         id: int = None,
         lang: str = None,
     ):
-        # The ID of the anomalous event.
+        # The unique ID of the anomalous activity.
         # 
-        # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+        # > To query the details of a single anomalous activity, you must provide its unique ID. You can call the **DescribeEvents** operation to obtain the ID.
         # 
         # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

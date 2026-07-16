@@ -19,87 +19,90 @@ class UpgradePostPayOrderShrinkRequest(DaraModel):
         spec_type: str = None,
         topic_quota: int = None,
     ):
-        # The disk size. Unit: GB.
+        # The disk capacity. Unit: GB.
         # 
-        # *   The disk size that you specify must be greater than or equal to the current disk size of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - The disk capacity that you specify must be greater than or equal to the current disk capacity of the instance.
         # 
-        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # 
+        # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
         self.disk_size = disk_size
-        # The maximum Internet traffic of the instance.
+        # The Internet traffic.
         # 
-        # *   The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - The Internet traffic that you specify must be greater than or equal to the current Internet traffic of the instance.
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         # 
-        # > 
-        # 
-        # *   If you set **EipModel** to **true**, set **EipMax** to a value that is greater than 0.
-        # 
-        # *   If you set **EipModel** to **false**, set **EipMax** to **0**.
-        # 
-        # *   If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # > - If EipModel is set to true, the value of EipMax must be greater than 0.
+        # > - If EipModel is set to false, the value of EipMax must be 0.
+        # > - If the instance is a serverless instance, you do not need to specify this parameter.
         self.eip_max = eip_max
-        # Specifies whether to enable Internet access for the instance. Valid values:
+        # Specifies whether the instance requires Internet access. Valid values:
         # 
-        # *   true: enables Internet access.
-        # *   false: disables Internet access.
+        # - true: Internet access is required.
+        # 
+        # - false: Internet access is not required.
+        # > This parameter is optional for pay-as-you-go instances. This parameter is required for serverless instances.
         self.eip_model = eip_model
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum traffic of the instance. We recommend that you do not configure this parameter.
+        # The peak traffic (not recommended).
         # 
-        # *   The maximum traffic that you specify must be greater than or equal to the current maximum traffic of the instance.
-        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - The peak traffic that you specify must be greater than or equal to the current peak traffic of the instance.
         # 
-        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # - You must specify either the peak traffic or the traffic specification. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
+        # 
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If the instance is a serverless instance, you do not need to specify this parameter.
         self.io_max = io_max
-        # The traffic specification of the instance. We recommend that you configure this parameter.
+        # The traffic specification (recommended).
         # 
-        # *   The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
-        # *   You must configure at least one of IoMax and IoMaxSpec. If you configure both parameters, the value of IoMaxSpec takes effect. We recommend that you configure only IoMaxSpec.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - The traffic specification that you specify must be greater than or equal to the current traffic specification of the instance.
         # 
-        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # - You must specify either the peak traffic or the traffic specification. If you specify both, the traffic specification takes precedence. Specify only the traffic specification.
+        # 
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
         self.io_max_spec = io_max_spec
-        # The number of partitions. We recommend that you configure this parameter.
+        # The number of partitions (recommended).
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
-        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # * You must specify either the number of partitions or the topic specification. Specify only the number of partitions.
         # 
-        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # * If you specify both the number of partitions and the topic specification, the system validates whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, an error is returned. If they are equivalent, the purchase is made based on the number of partitions.
+        # 
+        # * For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If the instance is a serverless instance, you do not need to specify this parameter. This parameter is required for pay-as-you-go instances.
         self.partition_num = partition_num
         # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The parameters that are configured for the serverless instance. These parameters are required only when you create a serverless instance.
+        # The settings of the serverless instance. This parameter is required when you change the specifications of a serverless instance.
         self.serverless_config_shrink = serverless_config_shrink
-        # The instance edition.
+        # The specification type.
         # 
-        # Valid values for this parameter if you set PaidType to 1:
+        # If the PaidType of the instance is 1 (pay-as-you-go), valid values:
         # 
-        # *   normal: Standard Edition (High Write)
-        # *   professional: Professional Edition (High Write)
-        # *   professionalForHighRead: Professional Edition (High Read)
+        # - normal: Standard Edition (shared throughput)
+        # - professional: Professional Edition (shared throughput)
+        # - professionalForHighRead: Professional Edition (shared read throughput)
         # 
-        # Valid values for this parameter if you set PaidType to 3:
-        # 
-        # *   normal: Serverless Standard Edition
+        # If the PaidType of the instance is 3 (reserved specification pay-as-you-go + serverless elastic scaling pay-as-you-go), valid values:
+        # - normal: Serverless Standard Edition
         # 
         # For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
         self.spec_type = spec_type
-        # The number of topics. We recommend that you do not configure this parameter.
+        # The number of topics (not recommended).
         # 
-        # *   You must configure one of PartitionNum and TopicQuota. We recommend that you configure only PartitionNum.
-        # *   If you configure PartitionNum and TopicQuota at the same time, the system verifies whether the price of the partitions equals the price of the topics based on the previous topic-based selling mode. If the price of the partitions does not equal the price of the topics, an error is returned. If the price of the partitions equals the price of the topics, the instance is purchased based on the partition number.
-        # *   The default value of TopicQuota varies based on the value of IoMaxSpec. If the number of topics that you use exceeds the default value, you are charged additional fees.
-        # *   For information about the valid values of this parameter, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # - You must specify either the number of partitions or the topic specification. Specify only the number of partitions.
         # 
-        # >  If the instance is a serverless ApsaraMQ for Kafka instance, you do not need to configure this parameter.
+        # - If you specify both the number of partitions and the topic specification, the system validates whether the number of partitions and the topic specification are equivalent based on the legacy topic sales model. If they are not equivalent, an error is returned. If they are equivalent, the purchase is made based on the number of partitions.
+        # 
+        # - The default value varies based on the traffic specification. Additional fees are charged if the value exceeds the default value.
+        # 
+        # - For the value range, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+        # > If the instance is a serverless instance, you do not need to specify this parameter.
         self.topic_quota = topic_quota
 
     def validate(self):

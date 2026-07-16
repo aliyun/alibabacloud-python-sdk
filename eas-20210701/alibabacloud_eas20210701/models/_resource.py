@@ -35,53 +35,59 @@ class Resource(DaraModel):
         usage_mode: str = None,
         vendor: str = None,
     ):
-        # The information about the clusters.
+        # The ID of the cluster where the resource group is located.
         self.cluster_id = cluster_id
-        # The total number of CPU cores.
+        # The total number of CPU cores in the resource group.
         self.cpu_count = cpu_count
+        # The number of used CPU cores in the resource group.
         self.cpu_used = cpu_used
-        # The time when the instance was created.
+        # The time the resource group was created, in ISO 8601 format.
         self.create_time = create_time
-        # The additional information.
+        # Additional information.
         self.extra_data = extra_data
+        # The features supported by the resource group.
         self.features = features
-        # The total number of GPUs.
+        # The total number of GPUs in the resource group.
         self.gpu_count = gpu_count
+        # The number of used GPUs in the resource group.
         self.gpu_used = gpu_used
-        # The total number of instances. It is equal to the number of subscription instances plus the number of pay-as-you-go instances.
+        # The total number of instances (prepaid and postpaid) in the resource group.
         self.instance_count = instance_count
+        # The maximum number of allocatable CPU cores per node.
         self.instance_max_allocatable_cpu = instance_max_allocatable_cpu
+        # The maximum number of allocatable GPUs per node.
         self.instance_max_allocatable_gpu = instance_max_allocatable_gpu
+        # The maximum allocatable memory per node in the resource group.
         self.instance_max_allocatable_memory = instance_max_allocatable_memory
+        # The total memory of the resource group, in MB.
         self.memory = memory
+        # The amount of used memory in the resource group, in MB.
         self.memory_used = memory_used
-        # The latest message about the resource group.
+        # The latest status message for the resource group.
         self.message = message
-        # The number of pay-as-you-go instances.
+        # The number of postpaid instances.
         self.post_paid_instance_count = post_paid_instance_count
-        # The number of subscription instances.
+        # The number of prepaid instances.
         self.pre_paid_instance_count = pre_paid_instance_count
-        # The resource group ID.
+        # The unique identifier of the resource group.
         self.resource_id = resource_id
         # The name of the resource group.
         self.resource_name = resource_name
         # The type of the resource group. Valid values:
         # 
-        # *   Dedicated: the dedicated resource group.
-        # *   SelfManaged: the self-managed resource group.
+        # - `Dedicated`: A dedicated resource group.
+        # 
+        # - `SelfManaged`: A self-managed resource group.
         self.resource_type = resource_type
+        # The number of services deployed in the resource group.
         self.service_count = service_count
         # The status of the resource group.
         self.status = status
-        # The time when the instance was last updated.
+        # The time the resource group was last updated, in ISO 8601 format.
         self.update_time = update_time
+        # The usage mode of the resource group.
         self.usage_mode = usage_mode
-        # The vendor of the resource group instances.
-        # 
-        # Valid values:
-        # 
-        # *   ECS
-        # *   BareMetal
+        # The provider of the compute instances in the resource group, such as ECS.
         self.vendor = vendor
 
     def validate(self):

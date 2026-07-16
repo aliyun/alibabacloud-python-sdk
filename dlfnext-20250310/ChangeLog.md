@@ -1,3 +1,8 @@
+2026-06-26 Version: 3.7.0
+- Support API AlterTableSchema.
+- Support API ListPartitionsByNames.
+
+
 2026-04-01 Version: 3.6.2
 - Generated python 2025-03-10 for DlfNext.
 

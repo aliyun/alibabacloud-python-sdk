@@ -162,6 +162,12 @@ from ._enable_service_for_cloud_siem_response import EnableServiceForCloudSiemRe
 from ._get_capacity_request import GetCapacityRequest
 from ._get_capacity_response_body import GetCapacityResponseBody
 from ._get_capacity_response import GetCapacityResponse
+from ._get_data_storage_request import GetDataStorageRequest
+from ._get_data_storage_response_body import GetDataStorageResponseBody
+from ._get_data_storage_response import GetDataStorageResponse
+from ._get_entitiy_stat_request import GetEntitiyStatRequest
+from ._get_entitiy_stat_response_body import GetEntitiyStatResponseBody
+from ._get_entitiy_stat_response import GetEntitiyStatResponse
 from ._get_storage_request import GetStorageRequest
 from ._get_storage_response_body import GetStorageResponseBody
 from ._get_storage_response import GetStorageResponse
@@ -342,6 +348,11 @@ from ._describe_white_rule_list_response_body import DescribeWhiteRuleListRespon
 from ._describe_white_rule_list_response_body import DescribeWhiteRuleListResponseBodyDataResponseData
 from ._describe_white_rule_list_response_body import DescribeWhiteRuleListResponseBodyData
 from ._get_capacity_response_body import GetCapacityResponseBodyData
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogStores
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataNormalizationLogViews
+from ._get_data_storage_response_body import GetDataStorageResponseBodyDataSasLogStores
+from ._get_data_storage_response_body import GetDataStorageResponseBodyData
+from ._get_entitiy_stat_response_body import GetEntitiyStatResponseBodyData
 from ._get_storage_response_body import GetStorageResponseBodyData
 from ._list_account_access_id_response_body import ListAccountAccessIdResponseBodyData
 from ._list_accounts_by_log_response_body import ListAccountsByLogResponseBodyData
@@ -546,6 +557,12 @@ __all__ = [
     GetCapacityRequest,
     GetCapacityResponseBody,
     GetCapacityResponse,
+    GetDataStorageRequest,
+    GetDataStorageResponseBody,
+    GetDataStorageResponse,
+    GetEntitiyStatRequest,
+    GetEntitiyStatResponseBody,
+    GetEntitiyStatResponse,
     GetStorageRequest,
     GetStorageResponseBody,
     GetStorageResponse,
@@ -726,6 +743,11 @@ __all__ = [
     DescribeWhiteRuleListResponseBodyDataResponseData,
     DescribeWhiteRuleListResponseBodyData,
     GetCapacityResponseBodyData,
+    GetDataStorageResponseBodyDataNormalizationLogStores,
+    GetDataStorageResponseBodyDataNormalizationLogViews,
+    GetDataStorageResponseBodyDataSasLogStores,
+    GetDataStorageResponseBodyData,
+    GetEntitiyStatResponseBodyData,
     GetStorageResponseBodyData,
     ListAccountAccessIdResponseBodyData,
     ListAccountsByLogResponseBodyData,

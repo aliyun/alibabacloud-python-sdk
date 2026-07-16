@@ -18,22 +18,22 @@ class ListHoneypotResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
         self.code = code
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # An array that consists of the information about the honeypots.
+        # The list of honeypot data.
         self.list = list
-        # The error message returned.
+        # The detailed information about the error code.
         self.message = message
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -111,13 +111,13 @@ class ListHoneypotResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The maximum number of entries to return per page in a paged query.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -171,9 +171,9 @@ class ListHoneypotResponseBodyList(DaraModel):
         preset_id: str = None,
         state: List[str] = None,
     ):
-        # The name of the management node.
+        # The name of the honeypot management node.
         self.control_node_name = control_node_name
-        # The ID of the honeypot.
+        # The honeypot ID.
         self.honeypot_id = honeypot_id
         # The display name of the honeypot image.
         self.honeypot_image_display_name = honeypot_image_display_name
@@ -185,9 +185,9 @@ class ListHoneypotResponseBodyList(DaraModel):
         self.honeypot_name = honeypot_name
         # The ID of the management node.
         self.node_id = node_id
-        # The ID of the custom configuration for the honeypot.
+        # The ID of the custom honeypot parameter.
         self.preset_id = preset_id
-        # An array that consists of the status information about the honeypot.
+        # The status of the honeypot.
         self.state = state
 
     def validate(self):

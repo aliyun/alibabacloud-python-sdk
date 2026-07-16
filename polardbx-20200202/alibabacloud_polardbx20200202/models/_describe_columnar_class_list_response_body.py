@@ -13,6 +13,7 @@ class DescribeColumnarClassListResponseBody(DaraModel):
         data: main_models.DescribeColumnarClassListResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data struct.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -88,8 +89,11 @@ class DescribeColumnarClassListResponseBodyDataClassCodeList(DaraModel):
         cpu_core: str = None,
         mem: str = None,
     ):
+        # The instance specification.
         self.class_code = class_code
+        # The number of CPU cores.
         self.cpu_core = cpu_core
+        # The memory size. Unit: GB.
         self.mem = mem
 
     def validate(self):

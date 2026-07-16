@@ -12,12 +12,19 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # The ID of the region where the resource is located.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the destination resource group.
+        # 
         # This parameter is required.
         self.resource_group_id = resource_group_id
+        # The ID of the resource to move.
+        # 
         # This parameter is required.
         self.resource_id = resource_id
+        # The resource type. Set this to `Workspace`.
         self.resource_type = resource_type
 
     def validate(self):

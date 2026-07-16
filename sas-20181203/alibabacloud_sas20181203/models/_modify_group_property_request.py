@@ -9,14 +9,14 @@ class ModifyGroupPropertyRequest(DaraModel):
         self,
         data: str = None,
     ):
-        # The new attributes of the server group. You can specify the following parameters to configure the attributes:
+        # The new property information of the server group after modification. The following parameters are described:
         # 
-        # *   **groupFlag**: the type of the server group. Valid values: 0 and 1. The value **0** specifies the Default server group. The value **1** specifies other server groups.
-        # *   **groupId**: the ID of the server group.
-        # *   **groupIndex**: no meaning. You can leave this parameter empty.
-        # *   **groupName**: the name of the server group. The value is the new name of the server group. The new name cannot be the same as the original name of the server group.
+        # - **groupFlag**: The type of the server group. Valid values: **0** (default group) | **1** (other group).
+        # - **groupId**: The ID of the server group.
+        # - **groupIndex**: The sorting number of the server group. Sorted in ascending order.
+        # - **groupName**: The name of the server group. Set this parameter to the new name of the server group. The new name must be different from the original name.
         # 
-        # >  You can call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the values of the groupFlag and groupId parameters. You cannot change the value of the groupFlag or groupId parameter. You can change only the value of the groupName parameter.
+        # > Call the [DescribeAllGroups](~~DescribeAllGroups~~) operation to obtain the values of groupFlag and groupId. The values of groupFlag and groupId cannot be modified. Only the value of groupName can be modified.
         # 
         # This parameter is required.
         self.data = data

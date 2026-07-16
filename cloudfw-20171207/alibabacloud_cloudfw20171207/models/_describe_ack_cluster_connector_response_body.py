@@ -11,7 +11,9 @@ class DescribeAckClusterConnectorResponseBody(DaraModel):
         ack_cluster_connector: main_models.DescribeAckClusterConnectorResponseBodyAckClusterConnector = None,
         request_id: str = None,
     ):
+        # The ACK cluster connector.
         self.ack_cluster_connector = ack_cluster_connector
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,23 +66,50 @@ class DescribeAckClusterConnectorResponseBodyAckClusterConnector(DaraModel):
         unhealthy_reason: str = None,
         vpc_id: str = None,
     ):
+        # The ID of the ACK cluster. You can obtain the value from:
+        # - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
         self.cluster_id = cluster_id
+        # The name of the ACK cluster.
         self.cluster_name = cluster_name
+        # The health check status of the ACK cluster connector.
         self.connector_health_check_status = connector_health_check_status
+        # The ID of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
         self.connector_id = connector_id
+        # The name of the ACK cluster connector. The name is 1 to 64 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.connector_name = connector_name
+        # The instance status of the ACK cluster connector.
         self.connector_status = connector_status
+        # The timestamp when the ACK cluster connector was created. Unit: seconds.
         self.create_time = create_time
+        # The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
         self.member_uid = member_uid
+        # The primary vSwitch of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists vSwitches of synchronization nodes.
         self.primary_vswitch_id = primary_vswitch_id
+        # The IP address of the primary vSwitch of the ACK cluster connector.
         self.primary_vswitch_ip = primary_vswitch_ip
+        # The zone of the primary vSwitch of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists zones of synchronization node vSwitches.
         self.primary_vswitch_zone_id = primary_vswitch_zone_id
+        # The region ID of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of synchronization node regions.
+        # 
+        # > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
         self.region_no = region_no
+        # The standby vSwitch of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists vSwitches of synchronization nodes.
         self.standby_vswitch_id = standby_vswitch_id
+        # The IP address of the standby vSwitch of the ACK cluster connector.
         self.standby_vswitch_ip = standby_vswitch_ip
+        # The zone of the standby vSwitch of the ACK cluster connector. You can obtain the value from:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists zones of synchronization node vSwitches.
         self.standby_vswitch_zone_id = standby_vswitch_zone_id
+        # The synchronization interval of the ACK cluster connector. Valid values: 2 to 60. Unit: seconds.
         self.ttl = ttl
+        # The reason why the ACK cluster connector is unhealthy.
         self.unhealthy_reason = unhealthy_reason
+        # The instance ID of the VPC-connected instance to which the ACK cluster belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

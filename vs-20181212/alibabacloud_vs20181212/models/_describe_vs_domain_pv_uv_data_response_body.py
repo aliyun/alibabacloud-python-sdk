@@ -17,11 +17,16 @@ class DescribeVsDomainPvUvDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # Time interval in seconds.
         self.data_interval = data_interval
+        # Visual Edge Computing Service domain name.
         self.domain_name = domain_name
+        # End time.
         self.end_time = end_time
         self.pv_uv_data_infos = pv_uv_data_infos
+        # Request ID for this operation.
         self.request_id = request_id
+        # Start time.
         self.start_time = start_time
 
     def validate(self):

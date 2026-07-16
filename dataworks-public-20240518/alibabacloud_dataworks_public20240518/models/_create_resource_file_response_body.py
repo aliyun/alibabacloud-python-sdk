@@ -10,9 +10,9 @@ class CreateResourceFileResponseBody(DaraModel):
         data: int = None,
         request_id: str = None,
     ):
-        # The ID of the file that is created.
+        # The ID of the file after successful creation.
         self.data = data
-        # The request ID.
+        # The unique ID of this request. If an error occurs, you can use this ID to troubleshoot the issue.
         self.request_id = request_id
 
     def validate(self):

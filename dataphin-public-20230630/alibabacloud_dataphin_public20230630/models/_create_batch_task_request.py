@@ -13,8 +13,12 @@ class CreateBatchTaskRequest(DaraModel):
         create_command: main_models.CreateBatchTaskRequestCreateCommand = None,
         op_tenant_id: int = None,
     ):
+        # The create command.
+        # 
         # This parameter is required.
         self.create_command = create_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -61,21 +65,87 @@ class CreateBatchTaskRequestCreateCommand(DaraModel):
         schedule_type: int = None,
         task_type: int = None,
     ):
+        # The catalog for a database SQL node. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
+        # The data source ID for a database SQL node.
         self.data_source_id = data_source_id
+        # The schema for a database SQL node. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
+        # The description.
+        # 
         # This parameter is required.
         self.description = description
+        # The folder path in the menu tree to which the node belongs.
+        # 
         # This parameter is required.
         self.directory = directory
+        # The execution engine for the node, such as a Python node. Valid values:
+        # - 1: PYTHON2_7
+        # - 2: PYTHON3_7
+        # - 3: PYTHON3_11.
         self.engine = engine
+        # The name of the batch task.
+        # 
         # This parameter is required.
         self.name = name
+        # The ID of the project to which the node belongs.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The list of third-party Python packages that the node depends on.
         self.python_module_list = python_module_list
+        # The scheduling type. Valid values:
+        # - 1: periodic node.
+        # - 3: manual node.
+        # 
         # This parameter is required.
         self.schedule_type = schedule_type
+        # The node type. Valid values:
+        # - Hive_SQL: 1
+        # - Hive_SQL_23X: 101
+        # - HIVE_SQL_FUSION_INSIGHT_80X: 111
+        # - COMMON_HIVE_SQL: 131
+        # - HADOOP_MR: 2
+        # - MaxCompute_SQL: 5
+        # - MaxCompute_MR: 6
+        # - SPARK_SQL_ON_MAX_COMPUTE: 7
+        # - SPARK_JAR_ON_MAX_COMPUTE: 8
+        # - SPARK_SQL_ON_HIVE: 17
+        # - Spark_JAR_ON_HIVE: 18
+        # - Shell: 10
+        # - PAI_DESIGNER: 71
+        # - DataX: 15
+        # - Merge: 16
+        # - Python: 21
+        # - Python37x: 22
+        # - Perl: 23
+        # - Python311x: 24
+        # - OneService_SQL: 25
+        # - ONE_SERVICE_SQL_ADB_FOR_PG: 26
+        # - OneService_SQL_Hive11x: 27
+        # - OneService_SQL_Hive23x: 29
+        # - ONE_SERVICE_SQL_TDH_INCEPTOR: 75
+        # - ONE_SERVICE_SQL_HIVE_CDP: 91
+        # - ONE_SERVICE_SQL_HIVE_ASIA_INFO_DP_53X: 92
+        # - Dlink: 30
+        # - ONE_SERVICE_SQL_ADB_FOR_MYSQL: 33
+        # - Logical: 31
+        # - Flink_Streaming: 41
+        # - Flink_Batch: 42
+        # - ADB_FOR_PG: 51
+        # - DryRun: 100
+        # - CHECK: 902
+        # - VIRTUAL: 999
+        # - INCEPTOR_SQL: 10000
+        # - HOLOGRES_SQL: 28
+        # - ARGODB_SQL: 76
+        # - IMPALA_SQL: 78
+        # - STARROCKS_SQL: 79
+        # - SPARK_SQL: 80
+        # - GAUSS_SQL: 81
+        # - DATABASE_SQL: 998
+        # - EXTERNAL_TRIGGER: 997.
+        # 
         # This parameter is required.
         self.task_type = task_type
 

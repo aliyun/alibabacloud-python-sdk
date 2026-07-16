@@ -14,8 +14,11 @@ class DqlResult(DaraModel):
         submit_preview_result: main_models.SubmitPreviewResult = None,
         table_results: List[main_models.TableResult] = None,
     ):
+        # The statement index.
         self.statement_index = statement_index
+        # The submit preview results.
         self.submit_preview_result = submit_preview_result
+        # The table results.
         self.table_results = table_results
 
     def validate(self):

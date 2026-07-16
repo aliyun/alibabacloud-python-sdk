@@ -16,10 +16,15 @@ class ViewSchema(DaraModel):
         options: Dict[str, str] = None,
         query: str = None,
     ):
+        # The comment.
         self.comment = comment
+        # Queries for different engines.
         self.dialects = dialects
+        # The list of field definitions for the view.
         self.fields = fields
+        # The configuration parameters for the view.
         self.options = options
+        # The default query for the view.
         self.query = query
 
     def validate(self):

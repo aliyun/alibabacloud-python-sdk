@@ -13,10 +13,17 @@ class AttachTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request status code. A value of OK indicates that the request succeeded.
         self.code = code
+        # The quantity of successfully appended entries.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):

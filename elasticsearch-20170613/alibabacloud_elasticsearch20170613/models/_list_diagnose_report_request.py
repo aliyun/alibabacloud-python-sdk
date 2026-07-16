@@ -15,23 +15,38 @@ class ListDiagnoseReportRequest(DaraModel):
         start_time: int = None,
         trigger: str = None,
     ):
-        # SYSTEM
+        # Specifies whether to display the details of diagnostic items.
         self.detail = detail
-        # 1
+        # The end timestamp of the query. Unit: milliseconds.
+        # - Minimum value: 1000000000000
+        # - Maximum value: 2000000000000.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # 1594569600000
+        # The language of the reports to retrieve. Default value: the browser language. Valid values:
+        # 
+        # - en: English
+        # - zh: Simplified Chinese
+        # - zt: Traditional Chinese
+        # - es: Spanish
+        # - fr: French.
         self.lang = lang
-        # 20
+        # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
-        # true
+        # The number of reports per page. Default value: 10. Minimum value: 1. Maximum value: 500.
         self.size = size
-        # 1595174399999
+        # The start timestamp of the query. Unit: milliseconds.
+        # 
+        # - Minimum value: 1000000000000
+        # - Maximum value: 2000000000000.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The ID of the request.
+        # The trigger method of the health diagnostics. Valid values:
+        # 
+        # - SYSTEM (default): automatically triggered by the system
+        # - INNER: internally triggered
+        # - USER: manually triggered by the user.
         self.trigger = trigger
 
     def validate(self):

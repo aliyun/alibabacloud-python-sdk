@@ -18,15 +18,15 @@ class ModifyRouterInterfaceSpecRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the router interface is deployed.
+        # The region where the router interface is deployed.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -36,22 +36,33 @@ class ModifyRouterInterfaceSpecRequest(DaraModel):
         # 
         # This parameter is required.
         self.router_interface_id = router_interface_id
-        # The specification of the router interface. Valid specifications and bandwidth values:
+        # The specification of the router interface. The following table describes the available specifications and the corresponding bandwidths:
         # 
-        # *   **Mini.2**: 2 Mbit/s
-        # *   **Mini.5**: 5 Mbit/s
-        # *   **Small.1**: 10 Mbit/s
-        # *   **Small.2**: 20 Mbit/s
-        # *   **Small.5**: 50 Mbit/s
-        # *   **Middle.1**: 100 Mbit/s
-        # *   **Middle.2**: 200 Mbit/s
-        # *   **Middle.5**: 500 Mbit/s
-        # *   **Large.1**: 1,000 Mbit/s
-        # *   **Large.2**: 2,000 Mbit/s
-        # *   **Large.5**: 5,000 Mbit/s
-        # *   **Xlarge.1**: 10,000 Mbit/s
+        # * **Mini.2**: 2 Mbps
         # 
-        # >  When **Role** is set to **AcceptingSide**, set **Spec** to **Negative**.
+        # * **Mini.5**: 5 Mbps
+        # 
+        # * **Small.1**: 10 Mbps
+        # 
+        # * **Small.2**: 20 Mbps
+        # 
+        # * **Small.5**: 50 Mbps
+        # 
+        # * **Middle.1**: 100 Mbps
+        # 
+        # * **Middle.2**: 200 Mbps
+        # 
+        # * **Middle.5**: 500 Mbps
+        # 
+        # * **Large.1**: 1000 Mbps
+        # 
+        # * **Large.2**: 2000 Mbps
+        # 
+        # * **Large.5**: 5000 Mbps
+        # 
+        # * **Xlarge.1**: 10000 Mbps
+        # 
+        # > If **Role** is set to **AcceptingSide** (accepter), set **Spec** to **Negative**.
         # 
         # This parameter is required.
         self.spec = spec

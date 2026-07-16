@@ -18,12 +18,19 @@ class GetQualityCheckSchemeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of 200 indicates success. Other values indicate failure. Use this code to determine the cause of a failure.
         self.code = code
+        # The QualityCheckScheme object. This is the JSON object of the quality check plan. For more information, see [`Description of quality check task objects`](https://help.aliyun.com/document_detail/453292.html).
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # If an error occurs, this field provides details about the error. If the request is successful, the value is **successful**.
         self.message = message
+        # The list of returned messages.
         self.messages = messages
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. A value of true indicates success. A value of false or null indicates failure.
         self.success = success
 
     def validate(self):
@@ -105,22 +112,39 @@ class GetQualityCheckSchemeResponseBodyData(DaraModel):
         update_user_name: str = None,
         version: int = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The username of the creator.
         self.create_user_name = create_user_name
+        # The data type of the quality check plan. Valid values: 0 (text) and 1 (audio).
         self.data_type = data_type
+        # The description.
         self.description = description
+        # The total score of the quality check plan.
         self.init_score = init_score
+        # The name of the quality check plan.
         self.name = name
+        # The list of associated rule IDs.
         self.rule_ids = rule_ids
+        # The list of rules.
         self.rule_list = rule_list
+        # The list of quality check dimensions.
         self.scheme_check_type_list = scheme_check_type_list
+        # The quality check plan ID.
         self.scheme_id = scheme_id
+        # The quality check plan template ID.
         self.scheme_template_id = scheme_template_id
+        # The status. Valid values: 0 (deleted), 1 (published), 2 (unpublished), and 3 (updated but not published). Default value: 2.
         self.status = status
+        # The type of the quality check plan template. Valid values: 1 (system-built) and 2 (custom).
         self.template_type = template_type
+        # The type of the quality check plan. Valid values: 0 (system-built) and 1 (custom).
         self.type = type
+        # The time when the plan was last updated.
         self.update_time = update_time
+        # The username of the user who last updated the plan.
         self.update_user_name = update_user_name
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -266,11 +290,17 @@ class GetQualityCheckSchemeResponseBodyDataSchemeCheckTypeList(DaraModel):
         score: int = None,
         source_score: int = None,
     ):
+        # The name of the quality check dimension.
         self.check_name = check_name
+        # The ID of the quality check dimension type.
         self.check_type = check_type
+        # The status. Valid values: 0 (disabled) and 1 (enabled).
         self.enable = enable
+        # The quality check plan ID.
         self.scheme_id = scheme_id
+        # The score of the quality check dimension.
         self.score = score
+        # The original score.
         self.source_score = source_score
 
     def validate(self):

@@ -14,11 +14,17 @@ class StartMicroOutboundResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Customer information.
         self.customer_info = customer_info
+        # Command ID.
         self.invoke_cmd_id = invoke_cmd_id
+        # Creation Time
         self.invoke_create_time = invoke_create_time
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

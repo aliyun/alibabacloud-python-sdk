@@ -15,10 +15,10 @@ class GetSmsTemplateRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # SMS template code.
+        # The code of the SMS template.
         # 
-        # - Obtain the SMS template code from the return parameters of the [CreateSmsTemplate](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-createsmstemplate?spm) API.
-        # - View the SMS template code on the [Template Management](https://dysms.console.aliyun.com/domestic/text/template) page.
+        # - Obtain the SMS template code from the response parameters of the [CreateSmsTemplate](https://help.aliyun.com/document_detail/2807431.html) operation.
+        # - View the SMS template code on the [Templates](https://dysms.console.aliyun.com/domestic/text/template) page.
         # 
         # This parameter is required.
         self.template_code = template_code

@@ -24,8 +24,9 @@ class ListCatalogsRequest(DaraModel):
         self.name = name
         # The order in which the tables are sorted. Default value: Asc. Valid values:
         # 
-        # *   Asc: ascending order.
-        # *   Desc: descending order.
+        # - Asc: ascending order.
+        # 
+        # - Desc: descending order.
         self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -35,21 +36,24 @@ class ListCatalogsRequest(DaraModel):
         # 
         # Currently, only the DLF and StarRocks types are supported.
         # 
-        # *   For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
-        # *   For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
+        # - For the DLF type, you can query all catalog lists. The format of `ParentMetaEntityId` is `DLF`.
         # 
-        # > \\
-        # `instance_id`: The instance ID. Required if the data source is registered in instance mode.\\
-        # `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
+        # - For the StarRocks type, you can query the catalogs of a specific instance. The format of `ParentMetaEntityId` `is StarRocks:(instance_id|encoded_jdbc_url)`.
+        # 
+        # > <br>`instance_id`: The instance ID. Required if the data source is registered in instance mode.<br>
+        # > `encoded_jdbc_url`: The JDBC connection string encoded with URL encoding. Required if the data source is registered in connection-string mode.
         # 
         # This parameter is required.
         self.parent_meta_entity_id = parent_meta_entity_id
         # The sort field. Default value: CreateTime. Valid values:
         # 
-        # *   CreateTime
-        # *   ModifyTime
-        # *   Name
-        # *   Type
+        # - CreateTime
+        # 
+        # - ModifyTime
+        # 
+        # - Name
+        # 
+        # - Type
         self.sort_by = sort_by
         # The type. Supports exact match. If left empty, all types are queried.
         self.types = types

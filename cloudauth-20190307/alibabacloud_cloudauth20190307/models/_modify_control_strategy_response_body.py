@@ -12,13 +12,13 @@ class ModifyControlStrategyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Information returned by the API call.
+        # The response message returned by the operation.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Whether the response was successful.
+        # Indicates whether the response is successful.
         self.success = success
 
     def validate(self):

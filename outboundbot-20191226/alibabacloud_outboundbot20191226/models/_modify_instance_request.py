@@ -15,11 +15,20 @@ class ModifyInstanceRequest(DaraModel):
         instance_name: str = None,
         max_concurrent_conversation: int = None,
     ):
+        # A list of calling numbers.
+        # 
+        # > This parameter is optional.
         self.calling_number = calling_number
+        # The description of the instance.
         self.instance_description = instance_description
+        # The ID of the Outbound Bot instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the instance.
         self.instance_name = instance_name
+        # The maximum number of concurrent conversations.
+        # 
         # This parameter is required.
         self.max_concurrent_conversation = max_concurrent_conversation
 

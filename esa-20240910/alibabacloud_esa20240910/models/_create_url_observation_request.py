@@ -11,18 +11,18 @@ class CreateUrlObservationRequest(DaraModel):
         site_id: int = None,
         url: str = None,
     ):
-        # SDK integration. Supported
+        # The SDK integration method. Valid values:
         # 
-        # *   **automatic**
-        # *   **manual**
+        # - **automatic**: automatic integration.
+        # - **manual**: manual integration.
         # 
         # This parameter is required.
         self.sdk_type = sdk_type
-        # The website ID, which can be obtained by calling the [ListSites](~~ListSites~~) operation.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The URL of the web page to monitor.
+        # The URL of the web page to monitor. If the site name is example.com, set Url to example.com/test or site DNS record name/path.
         # 
         # This parameter is required.
         self.url = url

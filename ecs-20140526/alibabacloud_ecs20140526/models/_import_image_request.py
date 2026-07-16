@@ -31,108 +31,110 @@ class ImportImageRequest(DaraModel):
         storage_location_arn: str = None,
         tag: List[main_models.ImportImageRequestTag] = None,
     ):
-        # The system architecture. Valid values:
+        # The system architecture. Valid values: 
         # 
-        # *   i386
-        # *   x86_64
-        # *   arm64
+        # - i386.
+        # - x86_64.
+        # - arm64.
         # 
         # Default value: x86_64.
         self.architecture = architecture
         # The boot mode of the image. Valid values:
         # 
-        # *   BIOS
-        # *   UEFI
+        # - BIOS: BIOS boot mode.
+        # - UEFI: UEFI boot mode.
         # 
-        # Default value: BIOS. If you set `Architecture` to arm64, set this parameter to UEFI.
+        # Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI is supported.
         # 
-        # > Make sure that you are aware of the boot modes supported by the specified image, as thehe modified boot mode needs to be supported by the image. This way, instances that use this image can start.
+        # <notice>
+        # 
+        # To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot mode supported by the target image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+        # 
+        # </notice>.
         self.boot_mode = boot_mode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.** For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The image description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The mode in which to check the image. If you do not specify this parameter, the image is not checked. Only the standard check mode is supported.
+        # The image detection strategy. If this parameter is not specified, detection is not triggered. Only the Standard detection mode is supported.
         # 
-        # >  This parameter is supported for most Linux and Windows operating system versions. For more information about image check items and operating system limits for image check, see [Overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limits for image check](https://help.aliyun.com/document_detail/475800.html).
+        # > Most Linux and Windows versions are supported. For more information about image detection items and operating system limitations, see [Image detection overview](https://help.aliyun.com/document_detail/439819.html) and [Operating system limitations for image detection](https://help.aliyun.com/document_detail/475800.html).
         self.detection_strategy = detection_strategy
-        # Details about the custom images.
+        # The information list of the custom image to create.
         self.disk_device_mapping = disk_device_mapping
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # *   true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   false: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the resource status is queried.
         # 
         # Default value: false.
         self.dry_run = dry_run
-        # The attributes of the image.
+        # The image feature-related properties.
         self.features = features
-        # The image name. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `acs:` or `aliyun`. The name cannot contain `http://` or `https://`. The name can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
+        # The name of the image. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can contain digits, periods (.), colons (:), underscores (_), or hyphens (-).
         self.image_name = image_name
-        # The type of the license used to activate the operating system after the image is imported. Valid values:
+        # The license type. This parameter specifies the authorization mode when instances are created by calling [RunInstances](https://help.aliyun.com/document_detail/2679677.html) with the image. This value takes effect only for Windows Server images. Valid values:
+        # - Aliyun: Use the Alibaba Cloud official license. After the instance starts, the system attempts to automatically connect to the Alibaba Cloud KMS server for activation. The billing for the instance includes the Windows Server license fee.
+        # - BYOL: Bring Your Own License. After the instance starts, Alibaba Cloud does not automatically activate it. You must manually activate it by using your own valid license key. The billing for the instance does not include the Windows Server license fee.
         # 
-        # *   Auto: ECS checks the operating system of the image and allocates a license to the operating system. ECS first checks whether the operating system distribution specified by `Platform` has a license allocated through an official Alibaba Cloud channel. If yes, the allocated license is used. If no, the license that comes with the source operating system is used.
-        # *   Aliyun: The license allocated through an official Alibaba Cloud channel is used for the operating system distribution specified by `Platform`.
-        # *   BYOL: The license that comes with the source operating system is used. In this case, make sure that your license key is eligible for use in Alibaba Cloud.
-        # 
-        # Default value: Auto.
+        # Default value: Aliyun.
         self.license_type = license_type
-        # The operating system platform. Valid values:
+        # The operating system type. Valid values: 
         # 
-        # *   windows
-        # *   linux
+        # - windows. You must also set `LicenseType`.
+        # - linux.
         # 
         # Default value: linux.
         self.ostype = ostype
         self.owner_id = owner_id
-        # The operating system distribution. Valid values:
-        # 
-        # *   Aliyun
-        # *   Anolis
-        # *   CentOS
-        # *   Ubuntu
-        # *   CoreOS
-        # *   SUSE
-        # *   Debian
-        # *   OpenSUSE
-        # *   FreeBSD
-        # *   RedHat
-        # *   Kylin
-        # *   UOS
-        # *   Fedora
-        # *   Fedora CoreOS
-        # *   CentOS Stream
-        # *   AlmaLinux
-        # *   Rocky Linux
-        # *   Gentoo
-        # *   Customized Linux
-        # *   Others Linux
-        # *   Windows Server 2022
-        # *   Windows Server 2019
-        # *   Windows Server 2016
-        # *   Windows Server 2012
-        # *   Windows Server 2008
-        # *   Windows Server 2003
+        # The operating system version. Valid values: 
+        # - Aliyun
+        # - Anolis
+        # - CentOS
+        # - Ubuntu
+        # - CoreOS
+        # - SUSE
+        # - Debian
+        # - OpenSUSE
+        # - FreeBSD
+        # - RedHat
+        # - Kylin
+        # - UOS
+        # - Fedora
+        # - Fedora CoreOS
+        # - CentOS Stream
+        # - AlmaLinux
+        # - Rocky Linux
+        # - Gentoo
+        # - Customized Linux
+        # - Others Linux
+        # - Windows Server 2022
+        # - Windows Server 2019
+        # - Windows Server 2016
+        # - Windows Server 2012
+        # - Windows Server 2008
+        # - Windows Server 2003
+        # - Other Windows
         # 
         # Default value: Others Linux.
         self.platform = platform
-        # The region ID of the source image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the source custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which to assign the image.
+        # The ID of the enterprise resource group to which the imported image belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the RAM role used to import the image.
         self.role_name = role_name
-        # The Alibaba Cloud Resource Name (ARN) of the cloud box, which is used to uniquely identify a storage location in the cloud.
+        # The Alibaba Cloud Resource Name (ARN) of the CloudBox, which is used to uniquely identify the cloud storage location.
         # 
-        # >  Specify this parameter only if you import an image from OSS on CloudBox. Otherwise, you do not need to specify this parameter. For more information, see [What is OSS on CloudBox?](https://help.aliyun.com/document_detail/430190.html)
+        # > You need to specify this parameter only when you import an image file from OSS on CloudBox. If you do not use OSS on CloudBox, do not set this parameter. For more information, see [What is OSS on CloudBox](https://help.aliyun.com/document_detail/430190.html).
         # 
-        # The ARN must be in the following format: `arn:acs:cloudbox:{RegionId}:{AliUid}:cloudbox/{CloudBoxId}`. Replace `{RegionId}` with the region ID of the cloud box, `{AliUid}` with the ID of the Alibaba Cloud account to which the cloud box belongs, and `{CloudBoxId}` with the ID of the cloud box.
+        # The ARN must follow this format: `arn:acs:cloudbox:{RegionId}:{AliUid}:cloudbox/{CloudBoxId}`, where `{RegionId}` is the region ID of the CloudBox, `{AliUid}` is the Alibaba Cloud account ID, and `{CloudBoxId}` is the CloudBox ID.
         self.storage_location_arn = storage_location_arn
-        # The image tags.
+        # The tags of the image.
         self.tag = tag
 
     def validate(self):
@@ -295,9 +297,9 @@ class ImportImageRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the image. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The key of the image tag. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N of the image. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:`.
+        # The value of the image tag. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -332,17 +334,16 @@ class ImportImageRequestFeatures(DaraModel):
         imds_support: str = None,
         nvme_support: str = None,
     ):
-        # The metadata access mode version of the image. Valid values:
-        # 
-        # *   v1: You cannot set the metadata access mode to security hardening when you create instances from the image.
-        # *   v2: You can set the metadata access mode to security hardening when you create instances from the image.
+        # The metadata access mode of the image. Valid values:
+        # - v1: When you create an ECS instance from this image, you cannot set the metadata access mode to hardened mode only.
+        # - v2: When you create an ECS instance from this image, you can set the metadata access mode to hardened mode only.
         # 
         # Default value: v1.
         self.imds_support = imds_support
-        # Specifies whether the image supports the Non-Volatile Memory Express (NVMe) protocol. Valid values:
+        # Specifies whether the image supports NVMe. Valid values:
         # 
-        # *   supported: The image supports the NVMe protocol. Instances created from the image also support the NVMe protocol.
-        # *   unsupported: The image does not support the NVMe protocol. Instances created from the image do not support the NVMe protocol.
+        #  - supported: Instances created from this image support NVMe.
+        #  - unsupported: Instances created from this image do not support NVMe.
         self.nvme_support = nvme_support
 
     def validate(self):
@@ -381,44 +382,44 @@ class ImportImageRequestDiskDeviceMapping(DaraModel):
         ossbucket: str = None,
         ossobject: str = None,
     ):
-        # The device name of disk N in the custom image.
+        # The device name of DiskDeviceMapping.N.Device in the custom image.
         # 
-        # >  This parameter will be removed in the future. We recommend that you do not use this parameter to ensure future compatibility.
+        # > This parameter will be deprecated. For better compatibility, do not use this parameter.
         self.device = device
-        # The size of disk N in the custom image. Unit: GiB.
+        # The size of the custom image. Unit: GiB.
         # 
-        # You can use this parameter to specify the sizes of the system disk and data disks in the custom image. When you specify the size of the system disk, make sure that the specified size is greater than or equal to the size of the imported image file. Unit: GiB. Valid values:
+        # The size includes the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
         # 
-        # *   When the N value is 1, this parameter specifies the size of the system disk in the custom image. Valid values: 1 to 2048.
-        # *   When the N value is an integer in the range of 2 to 17, this parameter specifies the size of a data disk in the custom image. Valid values: 1 to 2048.
+        # - When N is 1, the value specifies the system disk size. Valid values: 1 to 2048.
+        # - When N is 2 to 17, the value specifies the data disk size. Valid values: 1 to 2048.
         # 
-        # After the image file is uploaded to an OSS bucket, you can view the size of the image file in the OSS bucket.
+        # After you upload the source image file to OSS, you can view the image file size in the OSS bucket.
         # 
-        # >  This parameter will be removed in the future. We recommend that you use `DiskDeviceMapping.N.DiskImageSize` to ensure future compatibility.
+        # > This parameter will be deprecated. For better compatibility, use `DiskDeviceMapping.N.DiskImageSize`.
         self.disk_im_size = disk_im_size
-        # The size of disk N in the custom image after the source image is imported.
+        # The size of the custom image after the image is imported.
         # 
-        # You can use this parameter to specify the sizes of the system disk and data disks in the custom image. When you specify the size of the system disk, make sure that the specified size is greater than or equal to the size of the imported image file. Unit: GiB. Valid values:
+        # The size includes the system disk and data disks. Make sure that the system disk space is greater than or equal to the size of the imported image file. Valid values:
         # 
-        # *   When the N value is 1, this parameter specifies the size of the system disk in the custom image. Valid values: 1 to 2048.
-        # *   When the N value is an integer in the range of 2 to 17, this parameter specifies the size of a data disk in the custom image. Valid values: 1 to 2048.
+        # - When N is 1, the value specifies the system disk size. Valid values: 1 to 2048. Unit: GiB.
+        # - When N is 2 to 17, the value specifies the data disk size. Valid values: 1 to 2048. Unit: GiB.
         # 
-        # After the image file is uploaded to an OSS bucket, you can view the size of the image file in the OSS bucket.
+        # After you upload the source image file to OSS, you can view the image file size in the OSS bucket.
         self.disk_image_size = disk_image_size
-        # The format of the source image. Valid values:
+        # The image format. Valid values:
         # 
-        # *   RAW
-        # *   VHD
-        # *   QCOW2
-        # *   VMDK (invitational preview)
+        # - RAW.
+        # - VHD.
+        # - QCOW2.
+        # - VMDK (in invitational preview).
         # 
-        # This parameter is empty by default, which indicates that the system checks the image format and uses the check result as the value of this parameter.
+        # Default value: null, which indicates that Alibaba Cloud automatically detects the image format. The detected format prevails.
         self.format = format
-        # The Object Storage Service (OSS) bucket where the image file is stored.
+        # The OSS bucket where the image file is stored.
         # 
-        # >  Before you import images for the first time, you must use RAM to authorize ECS to access your OSS buckets. If ECS is not authorized to access your OSS buckets, the `NoSetRoletoECSServiceAcount` error code is returned when you call the ImportImage operation. For more information, see **Usage notes**.
+        # > Before you import an image to this OSS bucket for the first time, add the RAM authorization policy as described in the **Operation description** section of this topic. Otherwise, the `NoSetRoletoECSServiceAccount` error is returned.
         self.ossbucket = ossbucket
-        # The name (key) of the object that the image file is stored as in the OSS bucket.
+        # The file name (key) of the image file stored in the OSS bucket after the image is uploaded to OSS.
         self.ossobject = ossobject
 
     def validate(self):

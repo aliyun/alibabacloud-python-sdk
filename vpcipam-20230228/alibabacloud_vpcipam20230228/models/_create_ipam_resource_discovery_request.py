@@ -23,20 +23,21 @@ class CreateIpamResourceDiscoveryRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.CreateIpamResourceDiscoveryRequestTag] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. Generate a unique parameter value from your client. The client token supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID is different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without sending the actual request. Valid value:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: Performs the dry run without creating a custom resource discovery instance. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # *   **false** (default): Performs a dry run and the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and a custom resource discovery instance is created.
+        # - **true**: Sends a check request without creating the resource discovery instance. The system checks for required parameters, request format, and service limits. If the check fails, an error is returned. If the check passes, the DryRunOperation error code is returned.
+        # 
+        # - **false** (default): Sends a normal request. After the request passes the check, an HTTP 2xx status code is returned and the resource discovery instance is created.
         self.dry_run = dry_run
-        # The description of resource discovery.
+        # The description of the resource discovery.
         self.ipam_resource_discovery_description = ipam_resource_discovery_description
         # The name of the resource discovery.
         self.ipam_resource_discovery_name = ipam_resource_discovery_name
-        # The list of effective regions.
+        # The list of regions where the resource discovery is effective.
         # 
         # This parameter is required.
         self.operating_region_list = operating_region_list
@@ -44,7 +45,7 @@ class CreateIpamResourceDiscoveryRequest(DaraModel):
         self.owner_id = owner_id
         # The request region.
         # 
-        # >  The request region is the hosted region of the resource discovery instance.
+        # > The request region is the hosted region of the resource discovery instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -52,7 +53,7 @@ class CreateIpamResourceDiscoveryRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tag information.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -155,13 +156,13 @@ class CreateIpamResourceDiscoveryRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys. You can specify at most 20 tag keys. It cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. You can specify empty strings as tag values.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -26,9 +26,11 @@ class ListDeploymentPackageFilesRequest(DaraModel):
         self.business_id = business_id
         # The change type. Valid values:
         # 
-        # *   0: addition
-        # *   1: update
-        # *   2: deletion
+        # - 0: addition
+        # 
+        # - 1: update
+        # 
+        # - 2: deletion
         self.change_type = change_type
         # The start date for committing. Specify the date in the yyyy-MM-dd format.
         self.commit_from = commit_from

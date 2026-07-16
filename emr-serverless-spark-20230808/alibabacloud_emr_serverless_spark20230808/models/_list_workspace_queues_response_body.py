@@ -16,15 +16,15 @@ class ListWorkspaceQueuesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token for the next page of results.
         self.next_token = next_token
         # The list of queues.
         self.queues = queues
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -101,42 +101,44 @@ class ListWorkspaceQueuesResponseBodyQueues(DaraModel):
         used_resource: str = None,
         workspace_id: str = None,
     ):
-        # The operations allowed for the queue.
+        # The list of allowed operations for the queue.
         self.allow_actions = allow_actions
-        # The time when the workspace was created.
+        # The creation time of the workspace.
         self.create_time = create_time
-        # The ID of the user who created the queue.
+        # The UID of the user who created the queue.
         self.creator = creator
-        # The environment types of the queue.
+        # The list of environment types for the queue.
         self.environments = environments
         self.gpu_spec = gpu_spec
-        # The maximum capacity of resources that can be used in the queue.
+        # The maximum resource capacity of the queue.
         self.max_resource = max_resource
-        # The minimum capacity of resources that can be used in the queue.
+        # The minimum resource capacity of the queue.
         self.min_resource = min_resource
         # The billing method. Valid values:
         # 
-        # *   PayAsYouGo
-        # *   Pre
+        # - PayAsYouGo: pay-as-you-go
+        # 
+        # - Pre: subscription
         self.payment_type = payment_type
         self.preheat = preheat
         # The queue label.
         self.properties = properties
         self.queue_category = queue_category
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
         # The queue architecture.
         self.queue_scope = queue_scope
-        # The status of the queue.
+        # The queue status.
         self.queue_status = queue_status
-        # The type of the queue. Valid values:
+        # The queue type. Valid values:
         # 
-        # *   instance
-        # *   instanceChildren
+        # - instance: A queue for a single task.
+        # 
+        # - instanceChildren: A queue for a parent task.
         self.queue_type = queue_type
         # The region ID.
         self.region_id = region_id
-        # The capacity of resources that are used in the queue.
+        # The used resource capacity of the queue.
         self.used_resource = used_resource
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -280,13 +282,13 @@ class ListWorkspaceQueuesResponseBodyQueuesAllowActions(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of a behavior.
+        # The Alibaba Cloud Resource Name (ARN) of the behavior.
         self.action_arn = action_arn
-        # The name of the permission.
+        # The permission name.
         self.action_name = action_name
-        # The dependencies of the operation.
+        # The list of action dependencies.
         self.dependencies = dependencies
-        # The description of the operation.
+        # The action description.
         self.description = description
         # The display name of the permission.
         self.display_name = display_name

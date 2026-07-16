@@ -13,18 +13,18 @@ class ListTagKeysRequest(DaraModel):
         resource_group_id: str = None,
         resource_type: str = None,
     ):
-        # The number of the page to return.
+        # The page number to return.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the bastion host.
+        # The region ID of the Bastionhost instance.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The type of the resource.
         # 
-        # Set the value to INSTANCE, which indicates that the resource is a bastion host.
+        # The only valid value is INSTANCE, which represents a Bastionhost instance.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -17,11 +17,17 @@ class ListAddableRolesResponseBody(DaraModel):
         role_list: List[main_models.ListAddableRolesResponseBodyRoleList] = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The list of roles.
         self.role_list = role_list
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +94,9 @@ class ListAddableRolesResponseBodyRoleList(DaraModel):
         code: str = None,
         name: str = None,
     ):
+        # The role code.
         self.code = code
+        # The role name.
         self.name = name
 
     def validate(self):

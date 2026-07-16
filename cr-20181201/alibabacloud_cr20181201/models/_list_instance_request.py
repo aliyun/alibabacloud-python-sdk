@@ -15,22 +15,29 @@ class ListInstanceRequest(DaraModel):
     ):
         # The instance name.
         self.instance_name = instance_name
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
-        # *   `PENDING`: The instance is being initialized.
-        # *   `INIT_ERROR`: The initialization of the instance fails.
-        # *   `STARTING`: The instance is being started.
-        # *   `RUNNING`: The instance is running.
-        # *   `STOPPING`: The instance is being stopped.
-        # *   `STOPPED`: The instance is stopped.
-        # *   `DELETING`: The instance is being deleted.
-        # *   `DELETED`: The instance is deleted.
+        # - `PENDING`: Initializing.
+        # 
+        # - `INIT_ERROR`: Initialization failed.
+        # 
+        # - `STARTING`: Starting.
+        # 
+        # - `RUNNING`: Running.
+        # 
+        # - `STOPPING`: Stopping.
+        # 
+        # - `STOPPED`: Stopped.
+        # 
+        # - `DELETING`: Deleting.
+        # 
+        # - `DELETED`: Deleted.
         self.instance_status = instance_status
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

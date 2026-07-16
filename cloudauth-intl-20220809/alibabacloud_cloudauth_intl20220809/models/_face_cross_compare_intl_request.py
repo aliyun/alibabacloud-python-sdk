@@ -19,34 +19,34 @@ class FaceCrossCompareIntlRequest(DaraModel):
         source_cface_picture: str = None,
         source_cface_picture_url: str = None,
     ):
-        # Comparison mode
-        # - 0-Chain comparison (default): A:B and B:C
-        # - 1-Circular comparison: A:B and B:C and C:A
+        # The comparison mode. Valid values:
+        # - 0: chain comparison (default). A:B and B:C.
+        # - 1: circular comparison. A:B, B:C, and C:A.
         self.compare_model = compare_model
-        # Face matching threshold.
+        # The face matching threshold. This parameter is reserved by the system and does not support custom values.
         self.face_verify_threshold = face_verify_threshold
-        # A unique business identifier for subsequent troubleshooting. It supports a combination of 32 alphanumeric characters, please ensure its uniqueness.
+        # The custom unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits with a length of 32 characters. Ensure that the value is unique.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
-        # Product solution to be integrated. Value: 
-        # FACE_CROSS_COMPARE
+        # The product solution to use. Valid values:
+        # FACE_CROSS_COMPARE.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Custom business scenario ID
+        # The custom business scenario ID.
         self.scene_code = scene_code
-        # Base64 encoded portrait photo.
+        # The Base64-encoded face photo.
         self.source_aface_picture = source_aface_picture
-        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
+        # The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.source_aface_picture_url = source_aface_picture_url
-        # Base64 encoded portrait photo.
+        # The Base64-encoded face photo.
         self.source_bface_picture = source_bface_picture
-        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
+        # The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.source_bface_picture_url = source_bface_picture_url
-        # Base64 encoded portrait photo.
+        # The Base64-encoded face photo.
         self.source_cface_picture = source_cface_picture
-        # Portrait image URL, accessible via HTTP or HTTPS on the public network.
+        # The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.source_cface_picture_url = source_cface_picture_url
 
     def validate(self):

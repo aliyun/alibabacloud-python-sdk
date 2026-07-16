@@ -11,7 +11,9 @@ class RestartLogstashResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.Logstash = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The details of the current instance.
         self.result = result
 
     def validate(self):

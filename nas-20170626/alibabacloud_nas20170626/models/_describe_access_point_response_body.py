@@ -13,7 +13,7 @@ class DescribeAccessPointResponseBody(DaraModel):
         access_point: main_models.DescribeAccessPointResponseBodyAccessPoint = None,
         request_id: str = None,
     ):
-        # The information about the access point.
+        # The access point information.
         self.access_point = access_point
         # The request ID.
         # 
@@ -55,11 +55,14 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         access_group: str = None,
         access_point_id: str = None,
         access_point_name: str = None,
+        agentic_space_id: str = None,
         create_time: str = None,
+        create_time_utc: str = None,
         domain_name: str = None,
         enabled_ram: bool = None,
         file_system_id: str = None,
         modify_time: str = None,
+        modify_time_utc: str = None,
         posix_user: main_models.DescribeAccessPointResponseBodyAccessPointPosixUser = None,
         region_id: str = None,
         root_path: str = None,
@@ -70,56 +73,62 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the access point.
+        # The access point ARN.
         self.arn = arn
-        # The name of the permission group.
+        # The permission group name.
         self.access_group = access_group
-        # The ID of the access point.
+        # The access point ID.
         self.access_point_id = access_point_id
-        # The name of the access point.
+        # The access point name.
         self.access_point_name = access_point_name
+        # AgenticSpace Id。
+        self.agentic_space_id = agentic_space_id
         # The time when the access point was created.
         self.create_time = create_time
-        # The domain name of the access point.
+        # The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        self.create_time_utc = create_time_utc
+        # The access point domain name.
         self.domain_name = domain_name
         # Indicates whether the RAM policy is enabled.
         self.enabled_ram = enabled_ram
-        # The ID of the file system.
+        # The file system ID.
         self.file_system_id = file_system_id
-        # The time when the access point was modified.
+        # The time when the access point was last modified.
         self.modify_time = modify_time
+        # The time when the AgenticSpace was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+        self.modify_time_utc = modify_time_utc
         # The POSIX user.
         self.posix_user = posix_user
         # The region ID.
         self.region_id = region_id
         # The root directory.
         self.root_path = root_path
-        # The permissions to create the root directory.
+        # The permissions for creating the root directory.
         self.root_path_permission = root_path_permission
-        # The status of the root directory.
+        # The current root directory status.
         # 
         # Valid values:
         # 
-        # *   0: The rootpath status is unknown.
-        # *   1: The rootpath does not exist and may be deleted.
-        # *   2: The rootpath is normal.
+        # - 0: The root path status is unknown.
+        # - 1: The root path does not exist. It may have been deleted by the user.
+        # - 2: The root path status is normal.
         self.root_path_status = root_path_status
-        # The status of the access point.
+        # The current access point status.
         # 
         # Valid values:
         # 
-        # *   Active: The access point is available.
-        # *   Inactive: The access point is unavailable.
-        # *   Pending: The access point is being created.
-        # *   Deleting: The access point is being deleted.
+        # - Active: active
+        # - Inactive: inactive
+        # - Pending: being created
+        # - Deleting: being deleted
         self.status = status
-        # The tags of the access point.
+        # The list of access point tags.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The VPC ID.
         # 
-        # You must select the VPC of the Elastic Compute Service (ECS) instance on which you want to mount the file system.
+        # The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -149,8 +158,14 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         if self.access_point_name is not None:
             result['AccessPointName'] = self.access_point_name
 
+        if self.agentic_space_id is not None:
+            result['AgenticSpaceId'] = self.agentic_space_id
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.create_time_utc is not None:
+            result['CreateTimeUtc'] = self.create_time_utc
 
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
@@ -163,6 +178,9 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
 
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
+
+        if self.modify_time_utc is not None:
+            result['ModifyTimeUtc'] = self.modify_time_utc
 
         if self.posix_user is not None:
             result['PosixUser'] = self.posix_user.to_map()
@@ -209,8 +227,14 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         if m.get('AccessPointName') is not None:
             self.access_point_name = m.get('AccessPointName')
 
+        if m.get('AgenticSpaceId') is not None:
+            self.agentic_space_id = m.get('AgenticSpaceId')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('CreateTimeUtc') is not None:
+            self.create_time_utc = m.get('CreateTimeUtc')
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
@@ -223,6 +247,9 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
 
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
+
+        if m.get('ModifyTimeUtc') is not None:
+            self.modify_time_utc = m.get('ModifyTimeUtc')
 
         if m.get('PosixUser') is not None:
             temp_model = main_models.DescribeAccessPointResponseBodyAccessPointPosixUser()
@@ -264,9 +291,9 @@ class DescribeAccessPointResponseBodyAccessPointTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a tag.
+        # The tag key.
         self.key = key
-        # The value of a tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -302,11 +329,11 @@ class DescribeAccessPointResponseBodyAccessPointRootPathPermission(DaraModel):
         owner_user_id: int = None,
         permission: str = None,
     ):
-        # The ID of the owner group.
+        # The file group ID.
         self.owner_group_id = owner_group_id
-        # The owner ID.
+        # The file owner ID.
         self.owner_user_id = owner_user_id
-        # The POSIX permission.
+        # The POSIX permissions.
         self.permission = permission
 
     def validate(self):
@@ -348,11 +375,11 @@ class DescribeAccessPointResponseBodyAccessPointPosixUser(DaraModel):
         posix_secondary_group_ids: List[int] = None,
         posix_user_id: int = None,
     ):
-        # The ID of the POSIX user group.
+        # The POSIX user group ID.
         self.posix_group_id = posix_group_id
-        # The IDs of the secondary user groups.
+        # The secondary user group ID.
         self.posix_secondary_group_ids = posix_secondary_group_ids
-        # The ID of the POSIX user.
+        # The POSIX user ID.
         self.posix_user_id = posix_user_id
 
     def validate(self):

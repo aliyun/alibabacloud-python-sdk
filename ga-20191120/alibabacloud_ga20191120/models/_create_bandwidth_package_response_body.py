@@ -11,15 +11,17 @@ class CreateBandwidthPackageResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the bandwidth plan.
+        # The bandwidth plan ID.
         self.bandwidth_package_id = bandwidth_package_id
         # The order ID.
         # 
-        # If bills are not automatically paid, you must go to the Order Center to complete the payments.
+        # <props="china">This parameter is returned only when you set ChargeType to PREPAY. If you set AutoPay to false, go to the [Order Hub](https://usercenter2.aliyun.com/order/list) to complete the payment.
         # 
-        # This parameter is returned only if ChargeType is set to PREPAY. If AutoPay is set to false, you must go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
+        # <props="intl">
+        # 
+        # This parameter is returned only when you set ChargeType to PREPAY. If you set AutoPay to false, go to the [Order Hub](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,14 +17,20 @@ class PutProvisionConfigInput(DaraModel):
         target: int = None,
         target_tracking_policies: List[main_models.TargetTrackingPolicy] = None,
     ):
+        # 是否始终分配CPU，默认为true。
         self.always_allocate_cpu = always_allocate_cpu
+        # 是否始终分配GPU，默认为true。
         self.always_allocate_gpu = always_allocate_gpu
         # The number of target provisioned instances. Valid values: [0,10000].
         self.default_target = default_target
         # public
         self.scheduled_actions = scheduled_actions
+        # >Notice: 建议不再使用该参数，请使用 defaultTarget 参数。 </notice>
+        # 预留的目标资源个数。取值范围为[0,10000]。
+        # 
         # This parameter is required.
         self.target = target
+        # 指标追踪伸缩策略配置。
         self.target_tracking_policies = target_tracking_policies
 
     def validate(self):

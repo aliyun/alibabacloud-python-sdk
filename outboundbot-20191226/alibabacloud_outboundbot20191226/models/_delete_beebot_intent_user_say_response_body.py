@@ -15,12 +15,19 @@ class DeleteBeebotIntentUserSayResponseBody(DaraModel):
         success: bool = None,
         user_say_id: int = None,
     ):
+        # Internal request ID
         self.beebot_request_id = beebot_request_id
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # API message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Success
         self.success = success
+        # User Say ID
         self.user_say_id = user_say_id
 
     def validate(self):

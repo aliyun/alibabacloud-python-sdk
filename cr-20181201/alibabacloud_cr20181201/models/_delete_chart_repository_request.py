@@ -11,15 +11,15 @@ class DeleteChartRepositoryRequest(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the repository.
+        # The repository name.
         # 
         # This parameter is required.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The namespace name.
         # 
         # This parameter is required.
         self.repo_namespace_name = repo_namespace_name

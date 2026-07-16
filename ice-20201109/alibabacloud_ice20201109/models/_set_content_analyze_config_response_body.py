@@ -10,7 +10,13 @@ class SetContentAnalyzeConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Request ID.
         self.request_id = request_id
+        # Indicates whether the configuration succeeded. Valid values:
+        # 
+        # - true: Success
+        # 
+        # - false: Failed
         self.success = success
 
     def validate(self):

@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._entity_media_basic_info import EntityMediaBasicInfo
 from ._add_yike_production_members_request import AddYikeProductionMembersRequest
 from ._add_yike_production_members_response_body import AddYikeProductionMembersResponseBody
 from ._add_yike_production_members_response import AddYikeProductionMembersResponse
@@ -29,6 +30,12 @@ from ._create_yike_workspace_response import CreateYikeWorkspaceResponse
 from ._delete_yike_asset_media_infos_request import DeleteYikeAssetMediaInfosRequest
 from ._delete_yike_asset_media_infos_response_body import DeleteYikeAssetMediaInfosResponseBody
 from ._delete_yike_asset_media_infos_response import DeleteYikeAssetMediaInfosResponse
+from ._get_image_generation_job_request import GetImageGenerationJobRequest
+from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBody
+from ._get_image_generation_job_response import GetImageGenerationJobResponse
+from ._get_video_generation_job_request import GetVideoGenerationJobRequest
+from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
+from ._get_video_generation_job_response import GetVideoGenerationJobResponse
 from ._get_yike_aiapp_job_request import GetYikeAIAppJobRequest
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBody
 from ._get_yike_aiapp_job_response import GetYikeAIAppJobResponse
@@ -38,6 +45,9 @@ from ._get_yike_agent_job_response import GetYikeAgentJobResponse
 from ._get_yike_asset_media_info_request import GetYikeAssetMediaInfoRequest
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBody
 from ._get_yike_asset_media_info_response import GetYikeAssetMediaInfoResponse
+from ._get_yike_project_export_job_request import GetYikeProjectExportJobRequest
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBody
+from ._get_yike_project_export_job_response import GetYikeProjectExportJobResponse
 from ._get_yike_prompt_expansion_voice_fix_job_request import GetYikePromptExpansionVoiceFixJobRequest
 from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBody
 from ._get_yike_prompt_expansion_voice_fix_job_response import GetYikePromptExpansionVoiceFixJobResponse
@@ -80,18 +90,30 @@ from ._set_yike_user_role_response import SetYikeUserRoleResponse
 from ._sub_yike_user_credit_request import SubYikeUserCreditRequest
 from ._sub_yike_user_credit_response_body import SubYikeUserCreditResponseBody
 from ._sub_yike_user_credit_response import SubYikeUserCreditResponse
+from ._submit_image_generation_job_request import SubmitImageGenerationJobRequest
+from ._submit_image_generation_job_response_body import SubmitImageGenerationJobResponseBody
+from ._submit_image_generation_job_response import SubmitImageGenerationJobResponse
+from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
+from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
+from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
 from ._submit_yike_aiapp_job_request import SubmitYikeAIAppJobRequest
 from ._submit_yike_aiapp_job_response_body import SubmitYikeAIAppJobResponseBody
 from ._submit_yike_aiapp_job_response import SubmitYikeAIAppJobResponse
 from ._submit_yike_avatar_narrator_job_request import SubmitYikeAvatarNarratorJobRequest
 from ._submit_yike_avatar_narrator_job_response_body import SubmitYikeAvatarNarratorJobResponseBody
 from ._submit_yike_avatar_narrator_job_response import SubmitYikeAvatarNarratorJobResponse
+from ._submit_yike_project_export_job_request import SubmitYikeProjectExportJobRequest
+from ._submit_yike_project_export_job_response_body import SubmitYikeProjectExportJobResponseBody
+from ._submit_yike_project_export_job_response import SubmitYikeProjectExportJobResponse
 from ._submit_yike_prompt_expansion_voice_fix_job_request import SubmitYikePromptExpansionVoiceFixJobRequest
 from ._submit_yike_prompt_expansion_voice_fix_job_response_body import SubmitYikePromptExpansionVoiceFixJobResponseBody
 from ._submit_yike_prompt_expansion_voice_fix_job_response import SubmitYikePromptExpansionVoiceFixJobResponse
 from ._submit_yike_storyboard_job_request import SubmitYikeStoryboardJobRequest
 from ._submit_yike_storyboard_job_response_body import SubmitYikeStoryboardJobResponseBody
 from ._submit_yike_storyboard_job_response import SubmitYikeStoryboardJobResponse
+from ._submit_yike_video_clone_job_request import SubmitYikeVideoCloneJobRequest
+from ._submit_yike_video_clone_job_response_body import SubmitYikeVideoCloneJobResponseBody
+from ._submit_yike_video_clone_job_response import SubmitYikeVideoCloneJobResponse
 from ._submit_yike_voice_narrator_job_request import SubmitYikeVoiceNarratorJobRequest
 from ._submit_yike_voice_narrator_job_response_body import SubmitYikeVoiceNarratorJobResponseBody
 from ._submit_yike_voice_narrator_job_response import SubmitYikeVoiceNarratorJobResponse
@@ -112,6 +134,8 @@ from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMe
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo
 from ._batch_get_yike_asset_media_infos_response_body import BatchGetYikeAssetMediaInfosResponseBodyMediaInfos
 from ._create_yike_user_response_body import CreateYikeUserResponseBodyUserInfo
+from ._get_image_generation_job_response_body import GetImageGenerationJobResponseBodyImageGenerationJob
+from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultAudioResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultImageResult
 from ._get_yike_aiapp_job_response_body import GetYikeAIAppJobResponseBodyResultVideoResult
@@ -125,7 +149,11 @@ from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoRespo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo
 from ._get_yike_asset_media_info_response_body import GetYikeAssetMediaInfoResponseBodyMediaInfo
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJobExportResult
+from ._get_yike_project_export_job_response_body import GetYikeProjectExportJobResponseBodyProjectExportJob
 from ._get_yike_prompt_expansion_voice_fix_job_response_body import GetYikePromptExpansionVoiceFixJobResponseBodyJobResult
+from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobCredit
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobParams
 from ._get_yike_storyboard_job_response_body import GetYikeStoryboardJobResponseBodyJobResult
 from ._get_yike_user_response_body import GetYikeUserResponseBodyUserInfo
@@ -136,6 +164,7 @@ from ._list_yike_workspaces_response_body import ListYikeWorkspacesResponseBodyW
 from ._precheck_yike_aiapp_job_response_body import PrecheckYikeAIAppJobResponseBodyResult
 
 __all__ = [
+    EntityMediaBasicInfo,
     AddYikeProductionMembersRequest,
     AddYikeProductionMembersResponseBody,
     AddYikeProductionMembersResponse,
@@ -163,6 +192,12 @@ __all__ = [
     DeleteYikeAssetMediaInfosRequest,
     DeleteYikeAssetMediaInfosResponseBody,
     DeleteYikeAssetMediaInfosResponse,
+    GetImageGenerationJobRequest,
+    GetImageGenerationJobResponseBody,
+    GetImageGenerationJobResponse,
+    GetVideoGenerationJobRequest,
+    GetVideoGenerationJobResponseBody,
+    GetVideoGenerationJobResponse,
     GetYikeAIAppJobRequest,
     GetYikeAIAppJobResponseBody,
     GetYikeAIAppJobResponse,
@@ -172,6 +207,9 @@ __all__ = [
     GetYikeAssetMediaInfoRequest,
     GetYikeAssetMediaInfoResponseBody,
     GetYikeAssetMediaInfoResponse,
+    GetYikeProjectExportJobRequest,
+    GetYikeProjectExportJobResponseBody,
+    GetYikeProjectExportJobResponse,
     GetYikePromptExpansionVoiceFixJobRequest,
     GetYikePromptExpansionVoiceFixJobResponseBody,
     GetYikePromptExpansionVoiceFixJobResponse,
@@ -214,18 +252,30 @@ __all__ = [
     SubYikeUserCreditRequest,
     SubYikeUserCreditResponseBody,
     SubYikeUserCreditResponse,
+    SubmitImageGenerationJobRequest,
+    SubmitImageGenerationJobResponseBody,
+    SubmitImageGenerationJobResponse,
+    SubmitVideoGenerationJobRequest,
+    SubmitVideoGenerationJobResponseBody,
+    SubmitVideoGenerationJobResponse,
     SubmitYikeAIAppJobRequest,
     SubmitYikeAIAppJobResponseBody,
     SubmitYikeAIAppJobResponse,
     SubmitYikeAvatarNarratorJobRequest,
     SubmitYikeAvatarNarratorJobResponseBody,
     SubmitYikeAvatarNarratorJobResponse,
+    SubmitYikeProjectExportJobRequest,
+    SubmitYikeProjectExportJobResponseBody,
+    SubmitYikeProjectExportJobResponse,
     SubmitYikePromptExpansionVoiceFixJobRequest,
     SubmitYikePromptExpansionVoiceFixJobResponseBody,
     SubmitYikePromptExpansionVoiceFixJobResponse,
     SubmitYikeStoryboardJobRequest,
     SubmitYikeStoryboardJobResponseBody,
     SubmitYikeStoryboardJobResponse,
+    SubmitYikeVideoCloneJobRequest,
+    SubmitYikeVideoCloneJobResponseBody,
+    SubmitYikeVideoCloneJobResponse,
     SubmitYikeVoiceNarratorJobRequest,
     SubmitYikeVoiceNarratorJobResponseBody,
     SubmitYikeVoiceNarratorJobResponse,
@@ -246,6 +296,8 @@ __all__ = [
     BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo,
     BatchGetYikeAssetMediaInfosResponseBodyMediaInfos,
     CreateYikeUserResponseBodyUserInfo,
+    GetImageGenerationJobResponseBodyImageGenerationJob,
+    GetVideoGenerationJobResponseBodyVideoGenerationJob,
     GetYikeAIAppJobResponseBodyResultAudioResult,
     GetYikeAIAppJobResponseBodyResultImageResult,
     GetYikeAIAppJobResponseBodyResultVideoResult,
@@ -259,7 +311,11 @@ __all__ = [
     GetYikeAssetMediaInfoResponseBodyMediaInfoFileInfoList,
     GetYikeAssetMediaInfoResponseBodyMediaInfoMediaBasicInfo,
     GetYikeAssetMediaInfoResponseBodyMediaInfo,
+    GetYikeProjectExportJobResponseBodyProjectExportJobExportResultSrtList,
+    GetYikeProjectExportJobResponseBodyProjectExportJobExportResult,
+    GetYikeProjectExportJobResponseBodyProjectExportJob,
     GetYikePromptExpansionVoiceFixJobResponseBodyJobResult,
+    GetYikeStoryboardJobResponseBodyJobCredit,
     GetYikeStoryboardJobResponseBodyJobParams,
     GetYikeStoryboardJobResponseBodyJobResult,
     GetYikeUserResponseBodyUserInfo,

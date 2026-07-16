@@ -9,12 +9,7 @@ class ModifyTenantConfigRequest(DaraModel):
         self,
         app_instance_group_expire_remind: bool = None,
     ):
-        # Specifies whether to enable the resource expiration reminder feature.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable resource expiration reminders.
         self.app_instance_group_expire_remind = app_instance_group_expire_remind
 
     def validate(self):

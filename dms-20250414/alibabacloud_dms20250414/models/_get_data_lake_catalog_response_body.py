@@ -14,10 +14,19 @@ class GetDataLakeCatalogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the data catalog.
         self.catalog = catalog
+        # The error code.
         self.error_code = error_code
+        # Error message returned when the request fails.
         self.error_message = error_message
+        # The ID of the request, used for log tracing and troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

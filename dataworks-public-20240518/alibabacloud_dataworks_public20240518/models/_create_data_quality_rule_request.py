@@ -21,32 +21,31 @@ class CreateDataQualityRuleRequest(DaraModel):
         target: main_models.CreateDataQualityRuleRequestTarget = None,
         template_code: str = None,
     ):
-        # The check settings for sample data.
+        # The sample check settings.
         self.checking_config = checking_config
-        # The description of the rule. The description can be up to 500 characters in length.
+        # The description of the rule. The maximum length is 500 characters.
         self.description = description
-        # Specifies whether to enable the monitoring rule.
+        # Specifies whether to enable the data quality rule.
         self.enabled = enabled
-        # The operations that you can perform after the rule-based check fails.
+        # The list of issue handlers for the data quality rule check.
         self.error_handlers = error_handlers
         # The name of the rule.
         # 
         # This parameter is required.
         self.name = name
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sampling settings.
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # The strength of the rule. Valid values:
-        # 
-        # *   Normal
-        # *   High
+        # The severity of the rule for the business (corresponding to the strong/weak rule on the page). Valid values:
+        # - Normal
+        # - High
         self.severity = severity
-        # The monitored object of the rule.
+        # The object monitored by the rule.
         self.target = target
-        # The ID of the template used by the rule.
+        # The unique identifier of the rule template that the rule references.
         self.template_code = template_code
 
     def validate(self):
@@ -148,25 +147,24 @@ class CreateDataQualityRuleRequestTarget(DaraModel):
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs. Valid values:
-        # 
-        # *   maxcompute
-        # *   emr
-        # *   cdh
-        # *   hologres
-        # *   analyticdb_for_postgresql
-        # *   analyticdb_for_mysql
-        # *   starrocks
+        # For a table-type dataset, the type of database to which the table belongs.
+        # - maxcompute
+        # - emr
+        # - cdh
+        # - hologres
+        # - analyticdb_for_postgresql
+        # - analyticdb_for_mysql
+        # - starrocks
         self.database_type = database_type
-        # The configuration of the partitioned table.
+        # The partition settings of the partitioned table.
         self.partition_spec = partition_spec
-        # The ID of the table that is limited by the rule in Data Map.
+        # The unique ID of the table in Data Map on which the rule operates.
         # 
         # This parameter is required.
         self.table_guid = table_guid
-        # The type of the monitored object. Valid values:
+        # The type of the monitored object.
         # 
-        # *   Table
+        # - Table
         self.type = type
 
     def validate(self):
@@ -215,29 +213,28 @@ class CreateDataQualityRuleRequestSamplingConfig(DaraModel):
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # The metrics used for sampling. You can leave this parameter empty if you use a rule template. Valid values:
-        # 
-        # *   Count: the number of rows in the table.
-        # *   Min: the minimum value of the field.
-        # *   Max: the maximum value of the field.
-        # *   Avg: the average value of the field.
-        # *   DistinctCount: the number of unique values of the field after deduplication.
-        # *   DistinctPercent: the proportion of the number of unique values of the field after deduplication to the number of rows in the table.
-        # *   DuplicatedCount: the number of duplicated values of the field.
-        # *   DuplicatedPercent: the proportion of the number of duplicated values of the field to the number of rows in the table.
-        # *   TableSize: the table size.
-        # *   NullValueCount: the number of rows in which the field value is null.
-        # *   NullValuePercent: the proportion of the number of rows in which the field value is null to the number of rows in the table.
-        # *   GroupCount: the field value and the number of rows for each field value.
-        # *   CountNotIn: the number of rows in which the field values are different from the referenced values that you specified in the rule.
-        # *   CountDistinctNotIn: the number of unique values that are different from the referenced values that you specified in the rule after deduplication.
-        # *   UserDefinedSql: specifies that data is sampled by executing custom SQL statements.
+        # The name of the metric to be sampled. You do not need to specify this parameter when a template is used.
+        # - Count: the number of rows in the table.
+        # - Min: the minimum value of the field.
+        # - Max: the maximum value of the field.
+        # - Avg: the average value of the field.
+        # - DistinctCount: the number of distinct values of the field.
+        # - DistinctPercent: the ratio of the number of distinct values of the field to the number of data rows.
+        # - DuplicatedCount: the number of duplicate values of the field.
+        # - DuplicatedPercent: the ratio of the number of duplicate values of the field to the number of data rows.
+        # - TableSize: the size of the table.
+        # - NullValueCount: the number of rows in which the field is null.
+        # - NullValuePercent: the ratio of rows in which the field is null.
+        # - GroupCount: the values aggregated by field value and the corresponding number of data rows for each value.
+        # - CountNotIn: the number of rows whose enum values do not match.
+        # - CountDistinctNotIn: the number of distinct values that do not match the enum values.
+        # - UserDefinedSql: collects samples by using a custom SQL statement.
         self.metric = metric
-        # The parameters required for sampling.
+        # The parameters required during sample collection.
         self.metric_parameters = metric_parameters
-        # The statements that are used to filter unnecessary data during sampling. The statements can be up to 16,777,215 characters in length.
+        # The condition used to perform a secondary filter on the irrelevant data during sampling. The maximum length is 16777215 characters.
         self.sampling_filter = sampling_filter
-        # The statements that are used to configure the parameters required for sampling before you execute the sampling statements. The statements can be up to 1,000 characters in length. Only the MaxCompute database is supported.
+        # The runtime parameter setting statements to be inserted and executed before the sampling statement is executed. The maximum length is 1000 characters. Only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -284,11 +281,10 @@ class CreateDataQualityRuleRequestErrorHandlers(DaraModel):
         error_data_filter: str = None,
         type: str = None,
     ):
-        # The SQL statement that is used to filter failed tasks. If you define the rule by using custom SQL statements, you must specify an SQL statement to filter failed tasks.
+        # For a custom SQL rule, you must specify an SQL statement to filter problematic data.
         self.error_data_filter = error_data_filter
-        # The type of the operation. Valid values:
-        # 
-        # *   SaveErrorData
+        # The handler type:
+        # - SaveErrorData
         self.type = type
 
     def validate(self):
@@ -324,18 +320,17 @@ class CreateDataQualityRuleRequestCheckingConfig(DaraModel):
         thresholds: main_models.CreateDataQualityRuleRequestCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # The method that is used to query the referenced samples. To obtain some types of thresholds, you need to query reference samples and perform aggregate operations on the reference values. In this example, an expression is used to specify the query method of referenced samples.
+        # Some types of thresholds require querying for reference samples and then summarizing the values of the reference samples to derive the threshold to be compared. An expression is used here to represent the query method for the reference samples.
         self.referenced_samples_filter = referenced_samples_filter
         # The threshold settings.
         self.thresholds = thresholds
-        # The method that is used to calculate a threshold. You can leave this parameter empty if you use a rule template. Valid values:
-        # 
-        # *   Fixed
-        # *   Fluctation
-        # *   FluctationDiscreate
-        # *   Auto
-        # *   Average
-        # *   Variance
+        # The threshold calculation method. You do not need to specify this parameter when a template is used.
+        # - Fixed
+        # - Fluctation
+        # - FluctationDiscreate
+        # - Auto
+        # - Average
+        # - Variance
         self.type = type
 
     def validate(self):
@@ -379,11 +374,11 @@ class CreateDataQualityRuleRequestCheckingConfigThresholds(DaraModel):
         expected: main_models.CreateDataQualityRuleRequestCheckingConfigThresholdsExpected = None,
         warned: main_models.CreateDataQualityRuleRequestCheckingConfigThresholdsWarned = None,
     ):
-        # The threshold settings for critical alerts.
+        # The threshold settings for a critical warning.
         self.critical = critical
-        # The expected threshold setting.
+        # The expected threshold settings.
         self.expected = expected
-        # The threshold settings for normal alerts.
+        # The threshold settings for a normal warning.
         self.warned = warned
 
     def validate(self):
@@ -435,22 +430,21 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsWarned(DaraModel):
     ):
         # The threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # For a fluctuation-type rule, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01 
+        # - Fluctuation drops below -0.01: $checkValue < -0.01 
+        # - Absolute value of the fluctuation: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # For a fixed-value type rule, you can also use an expression to configure the threshold. If both are configured at the same time, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # The comparison operator:
+        # - \\>
+        # - \\>=
+        # - \\<
+        # - \\<=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -496,22 +490,21 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsExpected(DaraModel):
     ):
         # The threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # For a fluctuation-type rule, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01 
+        # - Fluctuation drops below -0.01: $checkValue < -0.01 
+        # - Absolute value of the fluctuation: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # For a fixed-value type rule, you can also use an expression to configure the threshold. If both are configured at the same time, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # The comparison operator:
+        # - \\>
+        # - \\>=
+        # - \\<
+        # - \\<=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value
@@ -557,22 +550,21 @@ class CreateDataQualityRuleRequestCheckingConfigThresholdsCritical(DaraModel):
     ):
         # The threshold expression.
         # 
-        # If the template specified by the TemplateCode parameter is about fluctuation, you must use an expression to represent the threshold for fluctuation. Example:
+        # For a fluctuation-type rule, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # *   $checkValue > 0.01
-        # *   $checkValue < -0.01
-        # *   abs($checkValue) > 0.01
+        # - Fluctuation rises above 0.01: $checkValue > 0.01 
+        # - Fluctuation drops below -0.01: $checkValue < -0.01 
+        # - Absolute value of the fluctuation: abs($checkValue) > 0.01
         # 
-        # If the template specified by the TemplateCode parameter is about fixed value, you can also use an expression to represent the threshold. If you configure the Expression, Operator, and Value parameters for the threshold at the same time, the Expression parameter takes precedence over the Operator and Value parameters.
+        # For a fixed-value type rule, you can also use an expression to configure the threshold. If both are configured at the same time, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # The comparison operator. Valid values:
-        # 
-        # *   \\>
-        # *   \\>=
-        # *   <
-        # *   <=
-        # *   !=
-        # *   \\=
+        # The comparison operator:
+        # - \\>
+        # - \\>=
+        # - \\<
+        # - \\<=
+        # - !=
+        # - =
         self.operator = operator
         # The threshold value.
         self.value = value

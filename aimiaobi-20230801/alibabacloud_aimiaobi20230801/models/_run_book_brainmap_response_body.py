@@ -12,9 +12,11 @@ class RunBookBrainmapResponseBody(DaraModel):
         payload: main_models.RunBookBrainmapResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # The response header.
         self.header = header
+        # The response payload.
         self.payload = payload
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,7 +62,9 @@ class RunBookBrainmapResponseBodyPayload(DaraModel):
         output: main_models.RunBookBrainmapResponseBodyPayloadOutput = None,
         usage: main_models.RunBookBrainmapResponseBodyPayloadUsage = None,
     ):
+        # The generated output.
         self.output = output
+        # Details about token usage.
         self.usage = usage
 
     def validate(self):
@@ -101,8 +105,11 @@ class RunBookBrainmapResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The input token count.
         self.input_tokens = input_tokens
+        # The output token count.
         self.output_tokens = output_tokens
+        # The total token count.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -142,6 +149,7 @@ class RunBookBrainmapResponseBodyPayloadOutput(DaraModel):
         self,
         content: str = None,
     ):
+        # The mind map content.
         self.content = content
 
     def validate(self):
@@ -175,12 +183,19 @@ class RunBookBrainmapResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The event type.
         self.event = event
+        # The event description.
         self.event_info = event_info
+        # The session ID.
         self.session_id = session_id
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

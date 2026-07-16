@@ -11,15 +11,15 @@ class BandwidthPackageRemoveAcceleratorRequest(DaraModel):
         bandwidth_package_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the GA instance.
+        # The ID of the Alibaba Cloud Global Accelerator (GA) instance to disassociate from the bandwidth plan.
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The ID of the bandwidth plan.
+        # The ID of the bandwidth plan to disassociate from the Alibaba Cloud Global Accelerator (GA) instance.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region of the Alibaba Cloud Global Accelerator (GA) instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id

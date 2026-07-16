@@ -9,10 +9,11 @@ class GetConnectionRequest(DaraModel):
         self,
         encrypt_option: str = None,
     ):
-        # The encryption settings. Valid values:
+        # The encryption setting. Valid values:
         # 
-        # *   PlainText
-        # *   Secret
+        # - PlainText: The value is in plaintext.
+        # 
+        # - Secret: The value is in ciphertext.
         self.encrypt_option = encrypt_option
 
     def validate(self):

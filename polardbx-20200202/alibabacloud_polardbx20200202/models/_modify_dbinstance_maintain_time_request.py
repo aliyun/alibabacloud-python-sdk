@@ -12,11 +12,18 @@ class ModifyDBInstanceMaintainTimeRequest(DaraModel):
         maintain_time: str = None,
         region_id: str = None,
     ):
+        # The unique token.
         self.client_token = client_token
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The maintenance window in UTC. Valid values: 00:00Z-23:59Z.
+        # 
         # This parameter is required.
         self.maintain_time = maintain_time
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

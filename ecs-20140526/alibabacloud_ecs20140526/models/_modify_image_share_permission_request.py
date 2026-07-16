@@ -21,19 +21,23 @@ class ModifyImageSharePermissionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of Alibaba Cloud accounts to which you want to share the custom image. Valid values of N: 1 to 10. If you specify more than 10 Alibaba Cloud account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        # The IDs of the Alibaba Cloud accounts with which to share the image. You can specify up to 10 account IDs. If you specify more than 10 account IDs in a request, only the first 10 are processed.
         self.add_account = add_account
+        # Specifies whether to perform a dry run. A dry run checks for request parameter validity and permissions. If the request is valid, the `DryRunOperation` error code is returned. Otherwise, an error is returned. If the request is valid, no fee is incurred and no resource is created. Set the value to `true` to perform a dry run. Default value: `false`.
         self.dry_run = dry_run
-        # The ID of the shared custom image.
+        # The ID of the custom image.
         # 
-        # >  You can share images encrypted by using CMKs but cannot share images encrypted by using service keys. When you share an image encrypted by using a service key, an error is reported.
+        # >Notice: 
+        # 
+        # You can no longer share images that are encrypted by using a service key. You can share only images that are encrypted by using a customer managed key (CMK). If you attempt to share an image that is encrypted by using a service key, the request fails.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # Specifies whether to publish or unpublish a community image. Valid values:
+        # Specifies whether to publish or unpublish the community image. Valid values:
         # 
-        # *   true: publishes the custom image as a community image.
-        # *   false: unpublishes a community image. The unpublish operation takes effect only on community images.
+        # - true: publishes the image as a community image.
+        # 
+        # - false: unpublishes the community image. The image becomes a custom image. If the image is a custom image, this setting has no effect.
         # 
         # Default value: false.
         self.is_public = is_public
@@ -41,11 +45,11 @@ class ModifyImageSharePermissionRequest(DaraModel):
         self.launch_permission = launch_permission
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the custom image. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the custom image. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of Alibaba Cloud accounts from which you want to unshare the custom image. Valid values of N: 1 to 10. If you specify more than 10 Alibaba Cloud account IDs, the system processes only the first 10 account IDs. The excess account IDs are ignored.
+        # The IDs of the Alibaba Cloud accounts from which to unshare the image. You can specify up to 10 account IDs. If you specify more than 10 account IDs in a request, only the first 10 are processed.
         self.remove_account = remove_account
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

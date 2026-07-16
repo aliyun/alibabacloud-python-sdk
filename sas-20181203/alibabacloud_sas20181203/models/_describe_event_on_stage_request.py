@@ -9,10 +9,10 @@ class DescribeEventOnStageRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
 
     def validate(self):

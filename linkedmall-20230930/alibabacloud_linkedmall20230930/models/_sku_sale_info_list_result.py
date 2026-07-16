@@ -13,7 +13,9 @@ class SkuSaleInfoListResult(DaraModel):
         request_id: str = None,
         sku_sale_infos: List[main_models.SkuSaleInfo] = None,
     ):
+        # Request ID of the API call
         self.request_id = request_id
+        # Collection of SKU inventory records
         self.sku_sale_infos = sku_sale_infos
 
     def validate(self):

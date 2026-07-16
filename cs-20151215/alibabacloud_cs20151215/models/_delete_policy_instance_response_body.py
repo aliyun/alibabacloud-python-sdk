@@ -11,7 +11,7 @@ class DeletePolicyInstanceResponseBody(DaraModel):
         self,
         instances: List[str] = None,
     ):
-        # A list of policy instances.
+        # The list of policy instances.
         self.instances = instances
 
     def validate(self):

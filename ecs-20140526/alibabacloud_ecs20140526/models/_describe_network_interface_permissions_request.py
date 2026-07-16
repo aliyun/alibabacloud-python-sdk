@@ -19,25 +19,25 @@ class DescribeNetworkInterfacePermissionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of ENI N. You must specify `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query range.
+        # The ID of the network interface controller (NIC). You must specify `NetworkInterfaceId` or `NetworkInterfacePermissionId.N` to determine the query scope.
         self.network_interface_id = network_interface_id
-        # The IDs of ENI permissions. You can specify up to 100 ENI permission IDs.
+        # The list of NIC permission IDs. Number of elements in the list: 1 to 100.
         self.network_interface_permission_id = network_interface_permission_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number.
+        # The page number of the NIC permission list.
         # 
-        # Pages start from page 1.
+        # Minimum value: 1
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page for a paged query.
         # 
-        # Maximum value: 100.
+        # Maximum value: 100
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the ENI permission. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region of the network interface controller (NIC) permissions. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

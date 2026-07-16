@@ -11,18 +11,16 @@ class ModifyInterceptionRuleSwitchRequest(DaraModel):
         rule_ids: str = None,
         rule_switch: int = None,
     ):
-        # The ID of the cluster.
-        # 
-        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to query the IDs of clusters.
+        # The ID of the cluster that you want to modify.
+        # > You can call the [DescribeGroupedContainerInstances](~~DescribeGroupedContainerInstances~~) operation to obtain this parameter.
         self.cluster_id = cluster_id
-        # The IDs of the rules whose status you want to change. Separate multiple IDs with commas (,).
-        # 
-        # > You can call the [ListInterceptionRulePage](https://help.aliyun.com/document_detail/182997.html) operation to query the IDs of rules.
+        # The list of rule IDs to operate on. Separate multiple IDs with commas (,).
+        # > You can call the [ListInterceptionRulePage](~~ListInterceptionRulePage~~) operation to obtain this parameter.
         self.rule_ids = rule_ids
-        # Specifies whether the rule is enabled. Valid values:
+        # The switch status of the rule. Valid values:
         # 
-        # *   **1**: enabled
-        # *   **0**: disabled
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         self.rule_switch = rule_switch
 
     def validate(self):

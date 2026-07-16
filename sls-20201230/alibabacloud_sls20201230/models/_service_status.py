@@ -10,7 +10,14 @@ class ServiceStatus(DaraModel):
         enabled: bool = None,
         status: str = None,
     ):
+        # Indicates whether the service is activated.
         self.enabled = enabled
+        # Current status.
+        # 
+        # *   Opened: The service is activated.
+        # *   NotExist: The service does not exist.
+        # *   Opening: The service is activating.
+        # *   Closed: The service has overdue payments and is disabled.
         self.status = status
 
     def validate(self):

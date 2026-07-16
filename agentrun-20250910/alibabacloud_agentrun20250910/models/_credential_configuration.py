@@ -9,7 +9,7 @@ class CredentialConfiguration(DaraModel):
         self,
         credential_name: str = None,
     ):
-        # 凭证的唯一标识符
+        # The unique identifier for the credential.
         self.credential_name = credential_name
 
     def validate(self):

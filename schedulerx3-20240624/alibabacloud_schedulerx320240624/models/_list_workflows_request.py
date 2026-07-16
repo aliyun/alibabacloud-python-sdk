@@ -18,16 +18,31 @@ class ListWorkflowsRequest(DaraModel):
         status: int = None,
         workflow_id: int = None,
     ):
+        # The name of the application.
         self.app_name = app_name
+        # The ID of the cluster.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The description of the workflow.
         self.description = description
+        # The maximum number of entries to return. The default value is 10.
         self.max_results = max_results
+        # The name of the workflow.
         self.name = name
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If the return value is empty, no more data is returned.
         self.next_token = next_token
+        # The page number.
         self.page_num = page_num
+        # The number of entries per page.
         self.page_size = page_size
+        # The status of the workflow. If this parameter is not specified, workflows in the `disabled` state are returned by default. Valid values:
+        # 
+        # - `0`: disabled
+        # 
+        # - `1`: enabled
         self.status = status
+        # The ID of the workflow.
         self.workflow_id = workflow_id
 
     def validate(self):

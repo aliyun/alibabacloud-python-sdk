@@ -12,18 +12,21 @@ class DescribeWafScopeRequest(DaraModel):
         role_for: int = None,
         role_type: int = None,
     ):
-        # The ID of the entity.
+        # The entity ID.
         self.entity_id = entity_id
-        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # The region where the Data Management center of threat analysis is located. Select a region based on the location of your assets. Valid values:
         # 
-        # *   cn-hangzhou: Your assets reside in regions in China.
-        # *   ap-southeast-1: Your assets reside in regions outside China.
+        # - cn-hangzhou: Your assets are in the Chinese mainland or China (Hong Kong).
+        # 
+        # - ap-southeast-1: Your assets are outside China.
         self.region_id = region_id
-        # The ID of the account that you switch from the management account.
+        # The ID of a member. An administrator can use this parameter to assume the permissions of the member.
         self.role_for = role_for
-        # The type of the view. Valid values:
-        # - 0: the current Alibaba Cloud account
-        # - 1: the global account
+        # The view type.
+        # 
+        # - 0: the view of the current Alibaba Cloud account.
+        # 
+        # - 1: the view of all accounts within the enterprise.
         self.role_type = role_type
 
     def validate(self):

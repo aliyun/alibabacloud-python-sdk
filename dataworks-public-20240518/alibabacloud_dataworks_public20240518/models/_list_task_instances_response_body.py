@@ -179,8 +179,9 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.project_env = project_env
         # The DataWorks workspace ID.
         self.project_id = project_id
@@ -188,9 +189,11 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times the task is run. By default, the value starts from 1.
         self.run_number = run_number
@@ -206,14 +209,21 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   NotRun: The instance is not run.
-        # *   Running: The instance is running.
-        # *   WaitTime: The instance is waiting for the scheduling time to arrive.
-        # *   CheckingCondition: Branch conditions are being checked for the instance.
-        # *   WaitResource: The instance is waiting for resources.
-        # *   Failure: The instance fails to be run.
-        # *   Success: The instance is successfully run.
-        # *   Checking: Data quality is being checked for the instance.
+        # - NotRun: The instance is not run.
+        # 
+        # - Running: The instance is running.
+        # 
+        # - WaitTime: The instance is waiting for the scheduling time to arrive.
+        # 
+        # - CheckingCondition: Branch conditions are being checked for the instance.
+        # 
+        # - WaitResource: The instance is waiting for resources.
+        # 
+        # - Failure: The instance fails to be run.
+        # 
+        # - Success: The instance is successfully run.
+        # 
+        # - Checking: Data quality is being checked for the instance.
         self.status = status
         # The ID of the task for which the instance is generated.
         self.task_id = task_id
@@ -229,9 +239,11 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The scheduling time.
         self.trigger_time = trigger_time
@@ -239,9 +251,11 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.trigger_type = trigger_type
+        # Unified workflow instance ID. All task instances triggered under the same data timestamp share the same value for this field.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The timestamp for when it started waiting for resources.
         self.waiting_resource_time = waiting_resource_time
@@ -255,12 +269,17 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # 
         # Valid values:
         # 
-        # *   SmokeTest
-        # *   SupplementData
-        # *   Manual
-        # *   ManualWorkflow
-        # *   Normal
-        # *   ManualFlow
+        # - SmokeTest
+        # 
+        # - SupplementData
+        # 
+        # - Manual
+        # 
+        # - ManualWorkflow
+        # 
+        # - Normal
+        # 
+        # - ManualFlow
         self.workflow_instance_type = workflow_instance_type
         # The name of the workflow to which the instance belongs.
         self.workflow_name = workflow_name

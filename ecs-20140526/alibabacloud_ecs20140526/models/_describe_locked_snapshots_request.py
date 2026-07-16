@@ -20,35 +20,39 @@ class DescribeLockedSnapshotsRequest(DaraModel):
         resource_owner_id: int = None,
         snapshot_ids: List[str] = None,
     ):
-        # Specifies whether to perform only a dry run. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   true: The request is checked and is not executed. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the check fails, the corresponding error is returned. If the check passes, the error code DryRunOperation is returned.
-        # *   false (default): Sends a normal request, checks it, and executes the request directly if it passes the check.
+        # - true: performs a dry run without performing the actual operation. The system checks for required parameters, the request format, and business constraints. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # 
+        # - false (default): performs a dry run and performs the actual operation if the request passes the dry run.
         self.dry_run = dry_run
         # The lock status. Valid values:
         # 
-        # *   compliance-cooloff: The snapshot is locked in compliance mode but is still in a cooling-off period. Snapshots cannot be deleted. However, users with the corresponding RAM permissions can unlock snapshots, extend or shorten the cooling-off period, and extend or shorten the lock duration.
-        # *   compliance: The snapshot is locked in compliance mode and the cooling-off period has ended. Snapshots cannot be unlocked or deleted. However, users with the corresponding RAM permissions can extend the locked duration.
-        # *   expired: The snapshot was once locked, but the lock duration has ended and the lock has expired. The snapshot is not locked and can be deleted.
+        # - compliance-cooloff: The snapshot is locked in compliance mode and is within its cool-off period. The snapshot cannot be deleted. Users with the required RAM permissions can unlock the snapshot, extend or shorten the cool-off period, and extend or shorten the lock duration.
+        # 
+        # - compliance: The snapshot is locked in compliance mode and the cool-off period has ended. The snapshot cannot be unlocked or deleted. Users with the required RAM permissions can extend the lock duration.
+        # 
+        # - expired: The lock on the snapshot has expired. The snapshot is no longer locked and can be deleted.
         self.lock_status = lock_status
-        # The maximum number of entries to return on each page. Maximum value: 100.
+        # The number of entries per page. Maximum value: 100.
         # 
         # Default value:
         # 
-        # *   If no value is set or the set value is less than 10, the default value is 10.
-        # *   If you set a value greater than 100, the default value is 100.
+        # - If you do not specify this parameter or you specify a value smaller than 10, the default value is 10.
+        # 
+        # - If you specify a value larger than 100, the value is capped at 100.
         self.max_results = max_results
-        # The query token. Set the value to the `NextToken` parameter value returned in the last API call.
+        # The pagination token that is used in the next request to retrieve a new page of results. It is the `NextToken` value from a previous response.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions?spm=a2c4g.11186623.0.i2) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/zh/ecs/developer-reference/api-ecs-2014-05-26-describeregions?spm=a2c4g.11186623.0.i2) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The snapshot IDs. You can specify 1 to 100 IDs.
+        # An array of one to 100 snapshot IDs.
         self.snapshot_ids = snapshot_ids
 
     def validate(self):

@@ -12,10 +12,15 @@ class DescribeCustomEndpointListRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # Specifies whether to check if the compute node (CN) has been deleted.
         self.check_delete_cn = check_delete_cn
+        # The IDs of custom endpoints.
         self.custom_endpoint_ids = custom_endpoint_ids
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region in which the instance resides.
         self.region_id = region_id
 
     def validate(self):

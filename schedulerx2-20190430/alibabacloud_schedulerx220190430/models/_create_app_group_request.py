@@ -24,48 +24,55 @@ class CreateAppGroupRequest(DaraModel):
         region_id: str = None,
         schedule_busy_workers: bool = None,
     ):
-        # The AppKey for the application.
+        # The AppKey of the application.
         self.app_key = app_key
-        # The name of the application.
+        # The application name.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The type of application. Valid values:
+        # The application type.
         # 
-        # *   `TRACE`: Application Monitoring
-        # *   `EBPF`: Application Monitoring eBPF Edition
+        # - `1`: Standard application.
+        # 
+        # - `2`: Kubernetes (K8s) application.
         self.app_type = app_type
-        # The application version. 1: Basic version, 2: Professional version.
+        # The application version. Valid values: `1` (Basic Edition) and `2` (Professional Edition).
         self.app_version = app_version
-        # The description of the application.
+        # The application description.
         self.description = description
-        # Specifies whether to enable logging. Valid values:
+        # Specifies whether to enable logging.
         # 
-        # *   `true`: enabled
-        # *   `false`: disabled
+        # - `true`: Enable logging.
+        # 
+        # - `false`: Disable logging.
         self.enable_log = enable_log
-        # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The ID of the application group. You can find this ID on the **Application Management** page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
         # The maximum number of jobs.
         self.max_jobs = max_jobs
-        # The configuration of the alert. The value is a JSON string. For more information about this parameter, see **Additional information about request parameters**.
+        # Specifies the alert notification configuration as a JSON string. The string can contain the following properties: `sendChannel`, `alarmType`, and `webhookIsAtAll`.
+        # 
+        # > For more information, see the **Additional information about request parameters** section.
         self.monitor_config_json = monitor_config_json
-        # The configuration of alert contacts. The value is a JSON string.
+        # The alert contacts. This can include individual contacts and contact groups.
+        # 
+        # > For more information, see the **Additional information about request parameters** section.
         self.monitor_contacts_json = monitor_contacts_json
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The ID of the namespace. You can find this ID on the **Namespace** page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
         # The name of the namespace.
         self.namespace_name = namespace_name
-        # This parameter is not supported. You do not need to specify this parameter.
+        # This parameter is currently unsupported and can be left unspecified.
         self.namespace_source = namespace_source
+        # The notification policy name.
         self.notification_policy_name = notification_policy_name
-        # The region ID.
+        # The ID of the region.
         self.region_id = region_id
-        # Specifies whether to schedule a busy worker.
+        # Specifies whether to schedule jobs on a busy worker.
         self.schedule_busy_workers = schedule_busy_workers
 
     def validate(self):

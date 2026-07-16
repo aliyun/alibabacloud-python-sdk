@@ -10,6 +10,7 @@ class CreateRenderingProjectResponseBody(DaraModel):
         project_id: str = None,
         request_id: str = None,
     ):
+        # The project ID. Call ListRenderingProjects to view the project ID.
         self.project_id = project_id
         # Id of the request
         self.request_id = request_id

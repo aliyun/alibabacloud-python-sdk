@@ -19,13 +19,32 @@ class DescribeDBInstancePerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The node ID.
         self.dbinstance_id = dbinstance_id
+        # The database engine type. Valid values:
+        # 
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         self.dbtype = dbtype
+        # The MySQL version number. Valid values:
+        # 
+        # - **5.6**
+        # 
+        # - **5.7**
+        # 
+        # - **8.0**
         self.dbversion = dbversion
+        # The end time of the query. The time is in the `yyyy-MM-ddTHH:mmZ` format in UTC.
         self.end_time = end_time
+        # The database engine type.
         self.engine = engine
         self.performance_keys = performance_keys
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mmZ` format in UTC.
         self.start_time = start_time
 
     def validate(self):

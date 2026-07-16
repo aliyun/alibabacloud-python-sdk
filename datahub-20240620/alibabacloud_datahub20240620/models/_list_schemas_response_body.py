@@ -17,11 +17,17 @@ class ListSchemasResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The list of schemas.
         self.list = list
+        # The maximum number of records returned in this query.
         self.max_results = max_results
+        # The pagination token for the next query. If NextToken is empty, no more results are available. If NextToken has a value, the value indicates the token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -92,11 +98,17 @@ class ListSchemasResponseBodyList(DaraModel):
         topic_name: str = None,
         version_id: int = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator of the schema.
         self.creator = creator
+        # The project name.
         self.project_name = project_name
+        # The schema data corresponding to the version ID.
         self.record_schema = record_schema
+        # The topic name.
         self.topic_name = topic_name
+        # The schema version ID.
         self.version_id = version_id
 
     def validate(self):

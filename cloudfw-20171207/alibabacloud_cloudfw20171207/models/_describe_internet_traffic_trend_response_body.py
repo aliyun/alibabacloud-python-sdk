@@ -28,37 +28,37 @@ class DescribeInternetTrafficTrendResponseBody(DaraModel):
         total_out_bytes: int = None,
         total_session: int = None,
     ):
-        # The average inbound network throughput, which indicates the average number of bits that are sent inbound per second. Unit: bit/s.
+        # The average inbound network throughput. Unit: bps.
         self.avg_in_bps = avg_in_bps
-        # The average outbound network throughput, which indicates the average number of bits that are sent outbound per second. Unit: bit/s.
+        # The average outbound network throughput. Unit: bps.
         self.avg_out_bps = avg_out_bps
         # The average number of requests.
         self.avg_session = avg_session
-        # The total average inbound and outbound network throughput, which indicates the average number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        # The average total network throughput for inbound and outbound traffic. Unit: bps.
         self.avg_total_bps = avg_total_bps
-        # The statistics on traffic.
+        # A list of traffic statistics.
         self.data_list = data_list
-        # The timestamp generated when the bandwidth reaches the peak value. The value is a UNIX timestamp. Unit: seconds.
+        # The UNIX timestamp when the peak bandwidth was reached. Unit: seconds.
         self.max_bandwidth_time = max_bandwidth_time
-        # The maximum volume of excess traffic allowed per day.
+        # The peak daily excess traffic.
         self.max_day_exceed_bytes = max_day_exceed_bytes
-        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+        # The peak inbound network throughput. Unit: bps.
         self.max_in_bps = max_in_bps
-        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+        # The peak outbound network throughput. Unit: bps.
         self.max_out_bps = max_out_bps
-        # The number of requests during the peak hour of the network throughout.
+        # The peak number of requests.
         self.max_session = max_session
-        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
         self.max_total_bps = max_total_bps
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+        # The total inbound and outbound traffic. Unit: bytes.
         self.total_bytes = total_bytes
-        # The total volume of excess traffic.
+        # The total excess traffic.
         self.total_exceed_bytes = total_exceed_bytes
-        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+        # The total inbound traffic. Unit: bytes.
         self.total_in_bytes = total_in_bytes
-        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+        # The total outbound traffic. Unit: bytes.
         self.total_out_bytes = total_out_bytes
         # The total number of requests.
         self.total_session = total_session
@@ -201,27 +201,27 @@ class DescribeInternetTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_bps: int = None,
     ):
-        # The inbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
+        # The inbound network throughput. Unit: bps.
         self.in_bps = in_bps
-        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+        # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
+        # The inbound packet rate. Unit: pps.
         self.in_pps = in_pps
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound network throughput, which indicates the number of bits that are sent outbound per second. Unit: bit/s.
+        # The outbound network throughput. Unit: bps.
         self.out_bps = out_bps
-        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+        # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
-        # The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
+        # The outbound packet rate. Unit: pps.
         self.out_pps = out_pps
         # The number of requests.
         self.session_count = session_count
-        # The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
+        # The time when the traffic was recorded. This value is a UNIX timestamp in seconds.
         # 
-        # If processing is not complete at this point in time, -1 is returned for all other fields.
+        # If data for this time point has not been processed, the values of other fields are -1.
         self.time = time
-        # The total outbound and inbound network throughput, which indicates the total number of bits that are sent inbound and outbound per second. Unit: bit/s.
+        # The total inbound and outbound network throughput. Unit: bps.
         self.total_bps = total_bps
 
     def validate(self):

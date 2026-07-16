@@ -26,17 +26,20 @@ class DescribeCustomEventHistogramRequest(DaraModel):
         self.group_id = group_id
         # The severity level of the event. Valid values:
         # 
-        # *   CRITICAL
-        # *   WARN
-        # *   INFO
+        # - CRITICAL
+        # 
+        # - WARN
+        # 
+        # - INFO
         self.level = level
         # The event name.
         self.name = name
         self.region_id = region_id
         # The keywords that are used to search for the event.
         # 
-        # *   If you need to query the custom event whose content contains a and b, set the value to "a and b".
-        # *   If you need to query the custom event whose content contains a or b, set the value to "a or b".
+        # - If you need to query the custom event whose content contains a and b, set the value to "a and b".
+        # 
+        # - If you need to query the custom event whose content contains a or b, set the value to "a or b".
         self.search_keywords = search_keywords
         # The beginning of the time range to query.
         # 

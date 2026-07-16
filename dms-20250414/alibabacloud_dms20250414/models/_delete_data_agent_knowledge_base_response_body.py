@@ -14,11 +14,19 @@ class DeleteDataAgentKnowledgeBaseResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned by the operation.
         self.data = data
+        # The error code returned if the request fails.
         self.error_code = error_code
+        # The error message returned if the request fails.
         self.error_message = error_message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -72,6 +80,7 @@ class DeleteDataAgentKnowledgeBaseResponseBodyData(DaraModel):
         self,
         kb_uuid: str = None,
     ):
+        # The ID of the deleted knowledge base.
         self.kb_uuid = kb_uuid
 
     def validate(self):

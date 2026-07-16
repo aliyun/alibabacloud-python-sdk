@@ -14,11 +14,17 @@ class DescribeBudgetsRequest(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
+        # The budget name. Fuzzy search is supported.
         self.budget_name = budget_name
+        # The budget type.
         self.budget_type = budget_type
+        # The expiration status.
         self.expire_status = expire_status
+        # The primary marketplace ID. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
+        # Page number.
         self.page_no = page_no
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

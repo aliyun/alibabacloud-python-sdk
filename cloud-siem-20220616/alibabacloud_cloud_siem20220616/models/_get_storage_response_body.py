@@ -11,9 +11,9 @@ class GetStorageResponseBody(DaraModel):
         data: main_models.GetStorageResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the storage.
+        # The details of the storage settings.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,21 +52,23 @@ class GetStorageResponseBodyData(DaraModel):
         region: str = None,
         ttl: int = None,
     ):
-        # Indicates whether the storage region can be changed for once. Default value: false Valid values:
+        # Indicates whether you can change the storage region. You can change the storage region only once. The default value is false. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: You can change the storage region.
+        # 
+        # - false: You cannot change the storage region.
         self.can_operate = can_operate
-        # Indicates whether the storage region can be changed. Default value: false Valid values:
+        # Indicates whether you have permission to change the storage region. The default value is false. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: You have permission.
+        # 
+        # - false: You do not have permission.
         self.display_region = display_region
-        # The region where the data is stored.
+        # The storage region.
         # 
-        # If the data management center is **cn-hangzhou**, the default value of **Region** is cn-shanghai, which specifies the China (Shanghai) region. If the data management center is **ap-southeast-1**, the default value of **Region** is ap-southeast-1, which specifies the Singapore region.
+        # If the Data Management hub is in the **cn-hangzhou** region, the default value of **Region** is \\`cn-shanghai\\`. If the Data Management hub is in the **ap-southeast-1** region, the default value of **Region** is \\`ap-southeast-1\\`.
         self.region = region
-        # The storage period of logs. Unit: day. Default value: 180. Valid values: 30 to 3000.
+        # The storage duration in days. The default value is 180. The value must be an integer from 30 to 3000.
         self.ttl = ttl
 
     def validate(self):

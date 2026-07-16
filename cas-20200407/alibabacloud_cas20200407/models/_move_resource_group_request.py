@@ -22,13 +22,14 @@ class MoveResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource.\\
+        # The type of the resource.<br>
         # Default value: **instance**
         # 
         # Valid values:
         # 
-        # *   instance: certificate order
-        # *   Certificate: certificate
+        # - instance: certificate order
+        # 
+        # - Certificate: certificate
         # 
         # This parameter is required.
         self.resource_type = resource_type

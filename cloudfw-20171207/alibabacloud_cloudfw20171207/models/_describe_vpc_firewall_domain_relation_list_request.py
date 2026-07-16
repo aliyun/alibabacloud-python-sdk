@@ -22,18 +22,44 @@ class DescribeVpcFirewallDomainRelationListRequest(DaraModel):
         src_vpc_id: str = None,
         start_time: str = None,
     ):
+        # The number of the page to return.
         self.current_page = current_page
+        # The list of domain names.
         self.domain_list = domain_list
+        # The destination IP address to query.
         self.dst_ip = dst_ip
+        # The ID of the destination VPC.
         self.dst_vpc_id = dst_vpc_id
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The order in which to sort the queried entries. Valid values:
         self.order = order
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # The field by which to sort the queried entries. Valid values:
+        # 
+        # Default value: TotalBytes.
+        # 
+        # Valid values:
+        # 
+        # TotalBytes: Order by total traffic.
+        # 
+        # SessionCount: Order by session count.
         self.sort = sort
+        # The source IP address to query.
         self.src_ip = src_ip
+        # The ID of the source VPC.
         self.src_vpc_id = src_vpc_id
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

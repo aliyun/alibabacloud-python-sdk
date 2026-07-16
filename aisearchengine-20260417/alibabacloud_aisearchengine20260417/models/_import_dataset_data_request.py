@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List, Dict, Any
+
+from darabonba.model import DaraModel
+
+class ImportDatasetDataRequest(DaraModel):
+    def __init__(
+        self,
+        dataset_id: str = None,
+        records: List[Dict[str, Any]] = None,
+    ):
+        # The dataset ID. You can view this ID in the dataset list in the console.
+        self.dataset_id = dataset_id
+        # The list of data records to add or update. A maximum of 100 records can be included in a single batch operation.
+        # 
+        # Note: The records must strictly follow the schema configured for the target dataset in the console. The add or update logic depends on the primary key type of the target dataset. For detailed example requests, see the Request Description section below.
+        # 
+        # This parameter is required.
+        self.records = records
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dataset_id is not None:
+            result['datasetId'] = self.dataset_id
+
+        if self.records is not None:
+            result['records'] = self.records
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('datasetId') is not None:
+            self.dataset_id = m.get('datasetId')
+
+        if m.get('records') is not None:
+            self.records = m.get('records')
+
+        return self
+

@@ -16,29 +16,33 @@ class ListCertRequest(DaraModel):
         status: str = None,
         warehouse_id: int = None,
     ):
-        # 证书的类型 。取值：
+        # The certificate type. Valid values:
         # 
-        # - **CA**：表示CA证书。
-        # - **CERT**：表示签发的证书。
+        # - **CA**: CA certificate
+        # 
+        # - **CERT**: issued certificate
         self.cert_type = cert_type
-        # The number of the page to return. Default value: 1.
+        # The page number to return. The default value is 1.
         self.current_page = current_page
+        # A comma-separated list of certificate identifiers.
         self.identifiers = identifiers
-        # The keyword for the query. You can enter a name, domain name, or Subject Alternative Name (SAN) extension. Fuzzy match is supported.
+        # The keyword for a fuzzy search by name, domain name, or subject alternative name.
         self.key_word = key_word
-        # The number of entries to return on each page. Default value: 50.
+        # The number of entries per page. The default value is 50.
         self.show_size = show_size
         # The source of the certificate. Valid values:
         # 
-        # *   **upload**: uploaded certificate
-        # *   **aliyun**: Alibaba Cloud certificate
-        self.source_type = source_type
-        # The status of the certificate. Valid values:
+        # - **upload**: uploaded certificate
         # 
-        # *   **ISSUE**: issued
-        # *   **REVOKE**: revoked
+        # - **aliyun**: Alibaba Cloud certificate
+        self.source_type = source_type
+        # The certificate status. Valid values:
+        # 
+        # - **ISSUE**: issued
+        # 
+        # - **REVOKE**: revoked
         self.status = status
-        # The ID of the certificate repository. You can call the ListCertWarehouse API operation to query the IDs of certificate repositories.
+        # The warehouse ID. You can obtain this ID by calling the [ListCertWarehouse](https://help.aliyun.com/document_detail/453246.html) API.
         self.warehouse_id = warehouse_id
 
     def validate(self):

@@ -12,28 +12,26 @@ class DescribeLoginBaseConfigsRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: **5**.
+        # Settings for paged query. The number of logon configuration entries to display on each page when paging is used. Default value: **5**.
         self.page_size = page_size
-        # The server to which the configuration is applied. The value of this parameter is in the JSON format and contains the following fields:
+        # The selection mode for the assets on which the policy takes effect. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **Target**: the UUID or group ID of the server to add or delete.
+        # - **Target**: The UUID of the server to add or delete, or the ID of the server group.
         # 
-        # > If targetType is set to uuid, the value of Target is the UUID of the server. If targetType is set to groupId, the value of Target is the group ID of the server. If targetType is set to global, the value of Target is a hyphen (-).
+        # > If the targetType parameter is set to uuid, this parameter specifies the UUID of the server. If the targetType parameter is set to groupId, this parameter specifies the ID of the server group. If the targetType parameter is set to global, set this parameter to a hyphen (-).
         # 
-        # *   **targetType**: the type of the server to which the configuration is applied. Valid values:
-        # 
-        #     *   **uuid**: a server
-        #     *   **groupId**: a server group
-        #     *   **global**: all servers
+        # - **targetType**: The selection mode for the assets on which the policy takes effect. Valid values:
+        #     - **uuid**: queries by individual server.
+        #     - **groupId**: queries by server group.
+        #     - **global**: queries all servers.
         self.target = target
-        # The logon type of the configuration to query. Valid values:
-        # 
-        # *   **login_common_location**: common logon location
-        # *   **login_common_ip**: common logon IP address
-        # *   **login_common_time**: common logon time range
-        # *   **login_common_account**: common logon account
+        # The type of logon configuration to query. Valid values:
+        # - **login_common_location**: common logon location.
+        # - **login_common_ip**: common logon IP address.
+        # - **login_common_time**: common logon time.
+        # - **login_common_account**: common logon account.
         # 
         # This parameter is required.
         self.type = type

@@ -19,19 +19,32 @@ class CreateLLMConfigRequest(DaraModel):
         rps: int = None,
         workspace_id: str = None,
     ):
+        # The API key for the model.
+        # 
         # This parameter is required.
         self.api_key = api_key
+        # The base URL of the model service.
         self.base_url = base_url
+        # The batch size.
         self.batch_size = batch_size
+        # The embedding dimension. For a DashScope model, this value must match one of the fixed, valid dimensions supported by the model.
         self.embedding_dimension = embedding_dimension
         self.enable_fusion = enable_fusion
+        # The maximum number of input tokens.
         self.max_tokens = max_tokens
+        # The name of the model.
+        # 
         # This parameter is required.
         self.model = model
         self.model_type = model_type
+        # The name of the LLM configuration.
+        # 
         # This parameter is required.
         self.name = name
+        # The number of requests per second.
         self.rps = rps
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

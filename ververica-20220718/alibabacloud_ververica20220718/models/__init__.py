@@ -393,6 +393,10 @@ from ._start_job_with_params_response import StartJobWithParamsResponse
 from ._start_session_cluster_headers import StartSessionClusterHeaders
 from ._start_session_cluster_response_body import StartSessionClusterResponseBody
 from ._start_session_cluster_response import StartSessionClusterResponse
+from ._start_sql_execution_headers import StartSqlExecutionHeaders
+from ._start_sql_execution_request import StartSqlExecutionRequest
+from ._start_sql_execution_response_body import StartSqlExecutionResponseBody
+from ._start_sql_execution_response import StartSqlExecutionResponse
 from ._stop_apply_scheduled_plan_headers import StopApplyScheduledPlanHeaders
 from ._stop_apply_scheduled_plan_response_body import StopApplyScheduledPlanResponseBody
 from ._stop_apply_scheduled_plan_response import StopApplyScheduledPlanResponse
@@ -852,6 +856,10 @@ __all__ = [
     StartSessionClusterHeaders,
     StartSessionClusterResponseBody,
     StartSessionClusterResponse,
+    StartSqlExecutionHeaders,
+    StartSqlExecutionRequest,
+    StartSqlExecutionResponseBody,
+    StartSqlExecutionResponse,
     StopApplyScheduledPlanHeaders,
     StopApplyScheduledPlanResponseBody,
     StopApplyScheduledPlanResponse,

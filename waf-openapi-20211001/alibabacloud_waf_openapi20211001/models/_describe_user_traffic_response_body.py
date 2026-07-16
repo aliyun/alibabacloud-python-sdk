@@ -13,7 +13,9 @@ class DescribeUserTrafficResponseBody(DaraModel):
         request_id: str = None,
         user_traffic: List[main_models.DescribeUserTrafficResponseBodyUserTraffic] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of user traffic data.
         self.user_traffic = user_traffic
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeUserTrafficResponseBodyUserTraffic(DaraModel):
         index: int = None,
         pv: int = None,
     ):
+        # The sequence number sorted in chronological order.
         self.index = index
+        # The usage.
         self.pv = pv
 
     def validate(self):

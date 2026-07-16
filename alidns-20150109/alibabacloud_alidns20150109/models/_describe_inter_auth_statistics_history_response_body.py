@@ -13,8 +13,9 @@ class DescribeInterAuthStatisticsHistoryResponseBody(DaraModel):
         data: List[main_models.DescribeInterAuthStatisticsHistoryResponseBodyData] = None,
         request_id: str = None,
     ):
+        # An array of data objects.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -62,12 +63,23 @@ class DescribeInterAuthStatisticsHistoryResponseBodyData(DaraModel):
         timestamp: int = None,
         zone_name: str = None,
     ):
+        # The request count.
         self.count = count
+        # The domain name.
         self.domain_name = domain_name
+        # The DNS query protocol.
+        # 
+        # - UDP
+        # 
+        # - TCP
         self.protocol = protocol
+        # The query type.
         self.qtype = qtype
+        # The success rate or ratio.
         self.ratio = ratio
+        # The timestamp of the data point in milliseconds.
         self.timestamp = timestamp
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

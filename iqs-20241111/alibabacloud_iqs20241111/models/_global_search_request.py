@@ -12,10 +12,15 @@ class GlobalSearchRequest(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # Page number, starting from 1
         self.page = page
+        # Number of items per page
         self.page_size = page_size
+        # Search query content
+        # 
         # This parameter is required.
         self.query = query
+        # Web page publish time range
         self.time_range = time_range
 
     def validate(self):

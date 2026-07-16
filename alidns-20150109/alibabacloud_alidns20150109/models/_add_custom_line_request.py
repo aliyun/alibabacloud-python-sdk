@@ -15,18 +15,19 @@ class AddCustomLineRequest(DaraModel):
         lang: str = None,
         line_name: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name.<props="china">Call the [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation to obtain the domain name.<props="intl">Call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The CIDR blocks.
+        # The list of IP address segments.
         # 
         # This parameter is required.
         self.ip_segment = ip_segment
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The name of the custom line.
         # 
@@ -87,9 +88,9 @@ class AddCustomLineRequestIpSegment(DaraModel):
         end_ip: str = None,
         start_ip: str = None,
     ):
-        # The end IP address of the CIDR block.
+        # The end IP address of the segment.
         self.end_ip = end_ip
-        # The start IP address of the CIDR block.
+        # The start IP address of the segment.
         self.start_ip = start_ip
 
     def validate(self):

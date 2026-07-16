@@ -14,8 +14,11 @@ class ProductSpec(DaraModel):
         key_id: int = None,
         values: List[main_models.ProductSpecValue] = None,
     ):
+        # The name of the specification key.
         self.key = key
+        # Specification
         self.key_id = key_id
+        # The values of the rule key.
         self.values = values
 
     def validate(self):

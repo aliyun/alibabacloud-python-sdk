@@ -14,8 +14,11 @@ class QueryIpcQuotaResponseBody(DaraModel):
         request_id: str = None,
         total: str = None,
     ):
+        # List of IPC usage information.
         self.ipc_quota_infos = ipc_quota_infos
+        # Request ID.
         self.request_id = request_id
+        # Total number of records.
         self.total = total
 
     def validate(self):
@@ -66,9 +69,19 @@ class QueryIpcQuotaResponseBodyIpcQuotaInfos(DaraModel):
         date_time: str = None,
         max_quota: int = None,
     ):
+        # Capability. Valid values:
+        # 
+        # - understand: understanding
+        # 
+        # - understand-reid: understanding with reid
+        # 
+        # - search: search
         self.capability = capability
+        # Consumed quota.
         self.consumed_quota = consumed_quota
+        # Corresponding time. UTC time in the format: yyyy-MM-ddTHH:mm:ssZ.
         self.date_time = date_time
+        # Maximum available quota.
         self.max_quota = max_quota
 
     def validate(self):

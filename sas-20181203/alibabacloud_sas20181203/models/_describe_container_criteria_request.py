@@ -10,16 +10,15 @@ class DescribeContainerCriteriaRequest(DaraModel):
         group_field: str = None,
         value: str = None,
     ):
-        # The filter condition. Valid values:
-        # 
-        # *   **pod**: pod
-        # *   **appName**: application name
-        # *   **clusterId**: cluster ID
-        # *   **namespace**: namespace
-        # *   **image**: image
-        # *   **containerScan**: container scan
+        # The search field. Valid values:
+        # - **pod**: pod.
+        # - **appName**: application name.
+        # - **clusterId**: cluster ID.
+        # - **namespace**: namespace.
+        # - **image**: image.
+        # - **containerScan**: container scan.
         self.group_field = group_field
-        # The value of the filter condition. The value can be an application name, node name, namespace, cluster name, public IP address, pod address, region, pod, instance ID, cluster ID, or container ID. Fuzzy match is supported.
+        # The value of the search field. Fuzzy match is supported for application names, node names, namespaces, cluster names, public IP addresses, pod addresses, regions, pods, instance IDs, cluster IDs, and container IDs.
         self.value = value
 
     def validate(self):

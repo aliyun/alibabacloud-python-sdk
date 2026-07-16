@@ -12,9 +12,13 @@ class QueryAlertRulesShrinkRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The request body for querying alert rules.
         self.body_shrink = body_shrink
+        # The idempotency token.
         self.client_token = client_token
+        # The maximum number of data records to read in this request.
         self.max_results = max_results
+        # The token that marks the position from which you want to start reading data. If you leave this parameter empty, data is read from the beginning.
         self.next_token = next_token
 
     def validate(self):

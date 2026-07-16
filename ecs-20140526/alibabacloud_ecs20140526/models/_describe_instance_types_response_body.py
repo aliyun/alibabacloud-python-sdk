@@ -15,9 +15,9 @@ class DescribeInstanceTypesResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.instance_types = instance_types
-        # The query token returned in this call.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

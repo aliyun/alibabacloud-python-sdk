@@ -9,7 +9,7 @@ class ValidateHcWarningsResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

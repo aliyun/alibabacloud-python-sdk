@@ -74,45 +74,49 @@ class GetJobRunResponseBodyJobRun(DaraModel):
     ):
         # The code type of the job. Valid values:
         # 
-        # *   SQL
-        # *   JAR
-        # *   PYTHON
+        # - SQL
+        # 
+        # - JAR
+        # 
+        # - PYTHON
         self.code_type = code_type
-        # The configurations of the Spark jobs.
+        # The Spark configurations of the job.
         self.configuration_overrides = configuration_overrides
-        # The version of the Spark engine.
+        # The version that is displayed in the console.
         self.display_release_version = display_release_version
-        # The end time of the job.
+        # The time when the job ended.
         self.end_time = end_time
         # The environment ID.
         self.environment_id = environment_id
-        # The timeout period of the job.
+        # The timeout period for the job execution.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Indicates whether the Fusion engine is used for acceleration.
+        # Indicates whether to enable the Fusion engine to accelerate the job execution.
         self.fusion = fusion
-        # The information about Spark Driver.
+        # The Spark driver information.
         self.job_driver = job_driver
-        # The job ID.
+        # The job run ID.
         self.job_run_id = job_run_id
-        # The path where the operational logs are stored.
+        # The path of the run log.
         self.log = log
-        # The job name.
+        # The name of the job.
         self.name = name
+        # The access URL for the notebook of the job run.
         self.notebook_access_url = notebook_access_url
+        # The priority of the job run.
         self.priority = priority
-        # The version of the Spark engine on which the job runs.
+        # The Spark engine version.
         self.release_version = release_version
-        # The ID of the user who created the job.
+        # The UID of the user who creates the job.
         self.resource_owner_id = resource_owner_id
         # The name of the queue on which the job runs.
         self.resource_queue_id = resource_queue_id
-        # The job state.
+        # The state of the job.
         self.state = state
-        # The reason of the job status change.
+        # The reason for the state change.
         self.state_change_reason = state_change_reason
         # The time when the job was submitted.
         self.submit_time = submit_time
-        # The tags of the job.
+        # The tags.
         self.tags = tags
         # The web UI of the job.
         self.web_ui = web_ui

@@ -12,10 +12,19 @@ class DescribeAccountListRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # The name of the account. Specify this parameter to query a specific account.
         self.account_name = account_name
+        # The type of the account. Specify this parameter to query accounts of a specific type. If you set this parameter to null, all accounts are returned.
+        # 
+        # - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+        # - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
         self.account_type = account_type
+        # The name of the instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The region where the instance resides.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

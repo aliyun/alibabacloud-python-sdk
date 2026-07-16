@@ -17,21 +17,21 @@ class GetStoreViewResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   metricstore
+        # - metricstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   logstore
+        # - logstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.store_type = store_type
         # The Logstores or Metricstores.
         self.stores = stores

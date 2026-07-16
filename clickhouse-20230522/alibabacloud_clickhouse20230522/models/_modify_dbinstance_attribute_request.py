@@ -13,14 +13,15 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The configuration that you want to modify.
+        # The type of attribute to modify. Valid values:
         # 
-        # *   MaintainTime: the O\\&M time
-        # *   DBInstanceDescription: the cluster name
+        # - MaintainTime: Modify the O\\&M window.
+        # 
+        # - DBInstanceDescription: Modify the instance name.
         # 
         # This parameter is required.
         self.attribute_type = attribute_type
-        # The new value of the configuration.
+        # The new value for the attribute.
         # 
         # This parameter is required.
         self.attribute_value = attribute_value
@@ -28,7 +29,7 @@ class ModifyDBInstanceAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The code of the cloud service.
+        # The product code.
         self.product = product
         # The region ID.
         # 

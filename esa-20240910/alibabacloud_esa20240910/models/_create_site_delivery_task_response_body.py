@@ -14,14 +14,15 @@ class CreateSiteDeliveryTaskResponseBody(DaraModel):
     ):
         # The data center. Valid values:
         # 
-        # *   cn: the Chinese mainland.
-        # *   oversea: outside the Chinese mainland.
+        # - **cn**: Chinese mainland.
+        # 
+        # - **Overseas**: regions outside the Chinese mainland.
         self.data_center = data_center
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The website ID.[](~~2850189~~)
+        # Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API to obtain this ID.
         self.site_id = site_id
-        # The name of the delivery task.
+        # The name of the task.
         self.task_name = task_name
 
     def validate(self):

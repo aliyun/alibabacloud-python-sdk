@@ -16,10 +16,17 @@ class GetAiOutboundTaskListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Job list.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -77,10 +84,18 @@ class GetAiOutboundTaskListResponseBodyData(DaraModel):
         page_size: int = None,
         total_results: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Indicates whether there is a next page. Valid values:
+        # 
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_next_page = has_next_page
+        # Job information.
         self.list = list
+        # Page size.
         self.page_size = page_size
+        # Total number of data entries.
         self.total_results = total_results
 
     def validate(self):
@@ -151,17 +166,38 @@ class GetAiOutboundTaskListResponseBodyDataList(DaraModel):
         task_id: int = None,
         total_count: int = None,
     ):
+        # Concurrent outbound calls.
+        # 
+        # > Parameter specific to auto dialing.
         self.concurrent_rate = concurrent_rate
+        # The deadline for job creation. UNIX timestamp format, in milliseconds.
         self.create_time = create_time
+        # Job description.
         self.description = description
+        # The number of completed tasks.
         self.finish_count = finish_count
+        # Job completion rate.
         self.finish_rate = finish_rate
+        # Skill group ID (for predictive dialing) or IVR ID (for auto dialing).
         self.handler_id = handler_id
+        # Skill group name or IVR name.
         self.handler_name = handler_name
+        # Job name.
         self.name = name
+        # Task Status. Valid values:
+        # 
+        # - **0**: Not started.
+        # - **1**: In progress.
+        # - **2**: System paused.
+        # - **3**: Manually paused.
+        # - **4**: Completed.
+        # - **5**: Stopped.
         self.status = status
+        # Task status description.
         self.status_desc = status_desc
+        # Job ID.
         self.task_id = task_id
+        # Total number of jobs.
         self.total_count = total_count
 
     def validate(self):

@@ -14,11 +14,11 @@ class ListConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The configuration items.
+        # The list of configuration items.
         self.configs = configs
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The number of items returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -70,19 +70,23 @@ class ListConfigsResponseBodyConfigs(DaraModel):
         gmt_modified_time: str = None,
         labels: List[main_models.ListConfigsResponseBodyConfigsLabels] = None,
     ):
-        # The key of the configuration item. Supported keys:
+        # The key of the configuration item. The following keys are supported:
         # 
-        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
-        # *   tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
-        # *   quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
-        # *   predefinedTags: The predefined tags of the workspace. All created resources must have tags
+        # - tempStoragePath: The path for temporary storage. This key is valid only when CategoryName is set to CommonResourceConfig.
+        # 
+        # - isAutoRecycle: The automatic recycling configuration. This key is valid only when CategoryName is set to DLCAutoRecycle.
+        # 
+        # - priorityConfig: The priority configuration. This key is valid only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+        # 
+        # - quotaMaximumDuration: The configuration for the maximum runtime of a DLC task in a quota. This key is valid only when CategoryName is set to QuotaMaximumDuration.
+        # 
+        # - predefinedTags: The predefined labels for the workspace. Resources that you create must have these labels.
         self.config_key = config_key
         # The value of the configuration item.
         self.config_value = config_value
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
-        # The tags of the configuration item.
+        # The list of labels for the configuration item.
         self.labels = labels
 
     def validate(self):
@@ -143,9 +147,9 @@ class ListConfigsResponseBodyConfigsLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the label.
         self.key = key
-        # The tag value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

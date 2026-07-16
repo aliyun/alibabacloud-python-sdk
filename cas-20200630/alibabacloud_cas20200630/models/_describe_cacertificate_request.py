@@ -9,9 +9,9 @@ class DescribeCACertificateRequest(DaraModel):
         self,
         identifier: str = None,
     ):
-        # The unique identifier of the CA certificate that you want to query.
+        # The unique identifier of the CA certificate to query.
         # 
-        # >  You can call the [DescribeCACertificateList](https://help.aliyun.com/document_detail/328095.html) operation to query the unique identifiers of all CA certificates.
+        # > Call [DescribeCACertificateList](https://help.aliyun.com/document_detail/465957.html) to query the unique identifiers of all CA certificates.
         self.identifier = identifier
 
     def validate(self):

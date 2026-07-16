@@ -11,8 +11,11 @@ class StartSqlExecutionResult(DaraModel):
         sql_execution_id: str = None,
         success: bool = None,
     ):
+        # Indicates whether the SQL execution is newly created.
         self.newly_created = newly_created
+        # The SQL execution ID.
         self.sql_execution_id = sql_execution_id
+        # Indicates whether the SQL execution is successful.
         self.success = success
 
     def validate(self):

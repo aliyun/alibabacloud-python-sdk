@@ -16,12 +16,19 @@ class RunVideoScriptGenerateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates a normal response. This field is returned when the \\`Content-Type\\` is \\`json\\`.
         self.code = code
+        # The response header.
         self.header = header
+        # The HTTP status code. This field is returned when the \\`Content-Type\\` is \\`json\\`.
         self.http_status_code = http_status_code
+        # The error description. This field is returned when the \\`Content-Type\\` is \\`json\\`.
         self.message = message
+        # The response body.
         self.payload = payload
+        # The unique ID of the request. This field is returned when the \\`Content-Type\\` is \\`json\\`.
         self.request_id = request_id
+        # Indicates whether the request was successful. \\`true\\` indicates success. \\`false\\` indicates failure. This field is returned when the \\`Content-Type\\` is \\`json\\`.
         self.success = success
 
     def validate(self):
@@ -91,7 +98,9 @@ class RunVideoScriptGenerateResponseBodyPayload(DaraModel):
         output: main_models.RunVideoScriptGenerateResponseBodyPayloadOutput = None,
         usage: main_models.RunVideoScriptGenerateResponseBodyPayloadUsage = None,
     ):
+        # The output content object.
         self.output = output
+        # The token usage.
         self.usage = usage
 
     def validate(self):
@@ -132,8 +141,11 @@ class RunVideoScriptGenerateResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # The number of tokens used for the input.
         self.input_tokens = input_tokens
+        # The number of tokens for the output.
         self.output_tokens = output_tokens
+        # The total number of tokens.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -173,6 +185,7 @@ class RunVideoScriptGenerateResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # The text generation result.
         self.text = text
 
     def validate(self):
@@ -206,12 +219,19 @@ class RunVideoScriptGenerateResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message returned when the call fails.
         self.error_message = error_message
+        # The event name.
         self.event = event
+        # The session ID.
         self.session_id = session_id
+        # The status code.
         self.status_code = status_code
+        # The task ID.
         self.task_id = task_id
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Dict, List
+
 from alibabacloud_dataworks_public20240518 import models as main_models
 from darabonba.model import DaraModel
 
@@ -16,24 +18,25 @@ class Column(DaraModel):
         partition_key: bool = None,
         position: int = None,
         primary_key: bool = None,
+        statistics_infos: Dict[str, str] = None,
         table_id: str = None,
         type: str = None,
     ):
-        # Business metadata.
+        # The business metadata.
         self.business_metadata = business_metadata
         # The comment.
         self.comment = comment
-        # Specifies whether the column is a foreign key (only supported by MaxCompute).
+        # Indicates whether the column is a foreign key. Currently, only MaxCompute is supported.
         self.foreign_key = foreign_key
-        # The ID. For more information, see [Description of concepts related to metadata entities](https://help.aliyun.com/document_detail/2880092.html).
+        # The ID. For more information, see [Metadata entity concepts](https://help.aliyun.com/document_detail/2880092.html).
         # 
-        # The format is: `${EntityType}:${Instance ID or encoded URL}:${Catalog Identifier}:${Database name}:${Schema name}:${Table Name}:${Column name}`. Use empty strings as placeholders for non-existent hierarchy levels.
+        # The format is `${EntityType}:${instance ID or encoded URL}:${DataCatalogIdentity}:${DatabaseName}:${PatternName}:${TableName}:${ColumnName}`. Use an empty character as a placeholder for levels that do not exist.
         # 
-        # >  For the MaxCompute and DLF types, use an empty string as the placeholder for the instance ID. For MaxCompute, the database name refers to the MaxCompute project name. If the project has schema enabled, you must specify the schema name. Otherwise, use an empty string as the placeholder for the schema name.
+        # > For MaxCompute and DLF types, use an empty string as a placeholder for the instance ID. For MaxCompute, the database name is the MaxCompute project name. Projects with the three-layer model enabled must include the schema name. For projects without the three-layer model enabled, use an empty string as a placeholder for the schema name.
         # 
-        # >  For StarRocks, the catalog identifier is the catalog name. For DLF, it is the catalog ID. Other types do not support the catalog level and you can use an empty string as a placeholder.
+        # > For StarRocks, the data catalog identifier is the catalog name. For DLF, the data catalog identifier is the catalog ID. Other types do not support the catalog level, and you can use an empty string as a placeholder.
         # 
-        # Examples of ID formats for common types are as follows:
+        # The following examples show the ID formats for several common types:
         # 
         # `maxcompute-column:::project_name:[schema_name]:table_name:column_name`
         # 
@@ -45,25 +48,26 @@ class Column(DaraModel):
         # 
         # `mysql-column:(instance_id|encoded_jdbc_url)::database_name::table_name:column_name`
         # 
-        # > \\
-        # `instance_id`: The instance ID, required when the data source is registered in instance mode.\\
-        # `encoded_jdbc_url`: The URL-encoded JDBC connection string, which is required when the data source is registered via a connection string.\\
-        # `catalog_id`: The DLF catalog ID.\\
-        # `project_name`: The MaxCompute project name.\\
-        # `database_name`: The database name.\\
-        # `schema_name`: The schema name. For the MaxCompute type, this is required only if the project has enabled schema; otherwise, use an empty string as a placeholder.\\
-        # `table_name`: The table name.\\
-        # `column_name`: The field name.
+        # > Where   
+        # `instance_id`: The instance ID. This is required when the data source is registered in instance mode.   
+        # `encoded_jdbc_url`: The URL-encoded JDBC connection string. This is required when the data source is registered by using a connection string.   
+        # `catalog_id`: The DLF catalog ID.   
+        # `project_name`: The MaxCompute project name.   
+        # `database_name`: The database name.   
+        # `schema_name`: The schema name. For MaxCompute, this is required only when the three-layer model is enabled for the project. If the three-layer model is not enabled, use an empty string as a placeholder.    
+        # `table_name`: The table name.   
+        # `column_name`: The column name.
         self.id = id
         # The name.
         self.name = name
-        # Specifies whether the column is a partition key.
+        # Indicates whether the column is a partition key.
         self.partition_key = partition_key
-        # The position of the field.
+        # The position.
         self.position = position
-        # Specifies whether the column is a primary key (only supported by MaxCompute).
+        # Indicates whether the column is a primary key. Currently, only MaxCompute is supported.
         self.primary_key = primary_key
-        # The table ID. You can refer to the `Table` object.
+        self.statistics_infos = statistics_infos
+        # The table ID. For more information, see the `Table` object.
         self.table_id = table_id
         # The type.
         self.type = type
@@ -101,6 +105,9 @@ class Column(DaraModel):
         if self.primary_key is not None:
             result['PrimaryKey'] = self.primary_key
 
+        if self.statistics_infos is not None:
+            result['StatisticsInfos'] = self.statistics_infos
+
         if self.table_id is not None:
             result['TableId'] = self.table_id
 
@@ -136,6 +143,9 @@ class Column(DaraModel):
         if m.get('PrimaryKey') is not None:
             self.primary_key = m.get('PrimaryKey')
 
+        if m.get('StatisticsInfos') is not None:
+            self.statistics_infos = m.get('StatisticsInfos')
+
         if m.get('TableId') is not None:
             self.table_id = m.get('TableId')
 
@@ -149,9 +159,12 @@ class Column(DaraModel):
 class ColumnBusinessMetadata(DaraModel):
     def __init__(
         self,
+        custom_attributes: Dict[str, List[str]] = None,
         description: str = None,
     ):
-        # A business-level description of the field (supported only by MaxCompute, HMS (EMR clusters) and DLF.
+        # The custom attribute values, where key is the custom attribute identifier and value is the attribute value list.
+        self.custom_attributes = custom_attributes
+        # The business description of the field. Currently, only MaxCompute, HMS (EMR cluster), and DLF types are supported.
         self.description = description
 
     def validate(self):
@@ -162,6 +175,9 @@ class ColumnBusinessMetadata(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_attributes is not None:
+            result['CustomAttributes'] = self.custom_attributes
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -169,6 +185,9 @@ class ColumnBusinessMetadata(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomAttributes') is not None:
+            self.custom_attributes = m.get('CustomAttributes')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

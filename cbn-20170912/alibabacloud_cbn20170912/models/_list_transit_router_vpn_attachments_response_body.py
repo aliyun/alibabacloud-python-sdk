@@ -18,16 +18,17 @@ class ListTransitRouterVpnAttachmentsResponseBody(DaraModel):
     ):
         # The number of entries returned per page.
         self.max_results = max_results
-        # The token that determines the start point of the next query. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # *   If **NextToken** is not returned, it indicates that no additional results exist.
-        # *   If **NextToken** was returned in the previous query, specify the value to obtain the next set of results.
+        # - If **NextToken** is empty, it indicates that no next query is to be sent.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The information about the VPN attachment.
+        # A list of VPN connections.
         self.transit_router_attachments = transit_router_attachments
 
     def validate(self):
@@ -102,43 +103,47 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         vpn_region_id: str = None,
         zones: List[main_models.ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones] = None,
     ):
-        # Indicates the transit router can automatically advertise routes to the IPsec connection. Valid values:
+        # Indicates whether the transit router automatically advertises routes to the IPsec-VPN connection. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.auto_publish_route_enabled = auto_publish_route_enabled
-        # The ID of the Cloud Enterprise Network (CEN) instance.
+        # The ID of the CEN instance.
         self.cen_id = cen_id
-        # The billing method of the VPN attachment.
+        # The billing method of the VPN connection.
         # 
-        # Only POSTPAY may be returned, which is the default pay-as-you-go billing method.
+        # The value is set to POSTPAY, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
         # The time when the VPN connection was created.
         # 
-        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The entity that pays the fees of the network instance. Valid values:
+        # The party that pays for the network instance. Valid values:
         # 
-        # *   **PayByCenOwner**: the Alibaba Cloud account that owns the CEN instance.
-        # *   **PayByResourceOwner**: the Alibaba Cloud account that owns the network instance.
+        # - **PayByCenOwner**: The fees for the network instance are paid by the account that owns the CEN instance.
+        # 
+        # - **PayByResourceOwner**: The fees for the network instance are paid by the account that owns the network instance.
         self.order_type = order_type
-        # The type of resource attached to the transit router.
+        # The resource type of the VPN connection.
         # 
-        # Only **VPN** may be returned, which indicates that an IPsec-VPN connection is attached to the transit router.
+        # The value is set to **VPN**, which indicates that the transit router is connected to an IPsec-VPN connection.
         self.resource_type = resource_type
-        # The status of the VPN connection. Valid values:
+        # The status of the VPN connection.
         # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detaching**
+        # - **Attached**: The VPN connection is attached.
+        # 
+        # - **Attaching**: The VPN connection is being attached.
+        # 
+        # - **Detaching**: The VPN connection is being detached.
         self.status = status
         # A list of tags.
         self.tags = tags
-        # The description of the IPsec-VPN connection.
+        # The description of the VPN connection.
         self.transit_router_attachment_description = transit_router_attachment_description
-        # The ID of the VPN attachment.
+        # The ID of the VPN connection.
         self.transit_router_attachment_id = transit_router_attachment_id
-        # The name of the VPN attachment.
+        # The name of the VPN connection.
         self.transit_router_attachment_name = transit_router_attachment_name
         # The ID of the transit router.
         self.transit_router_id = transit_router_id
@@ -146,11 +151,11 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachments(DaraMo
         self.vpn_id = vpn_id
         # The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
         self.vpn_owner_id = vpn_owner_id
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The ID of the region where the IPsec-VPN connection is deployed.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/36063.html).
         self.vpn_region_id = vpn_region_id
-        # The zones in which the VPN attachment is deployed.
+        # A list of zones where the VPN connection is deployed.
         self.zones = zones
 
     def validate(self):
@@ -287,7 +292,7 @@ class ListTransitRouterVpnAttachmentsResponseBodyTransitRouterAttachmentsZones(D
     ):
         # The zone ID.
         # 
-        # You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the most recent zone list.
+        # For more information, see [DescribeZones](https://help.aliyun.com/document_detail/36064.html).
         self.zone_id = zone_id
 
     def validate(self):

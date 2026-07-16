@@ -13,13 +13,13 @@ class FaceGuardRiskResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceGuardRiskResponseBodyResult = None,
     ):
-        # The return code. A value of Success indicates that the API operation responded successfully. For more information about how to determine the authentication result, expand the **Return codes** section below.
+        # The return code.
         self.code = code
-        # A detailed description of the return code.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Result object
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -70,15 +70,19 @@ class FaceGuardRiskResponseBodyResult(DaraModel):
         risk_tags: str = None,
         transaction_id: str = None,
     ):
-        # The device risk probability predicted by the Device Guard algorithm. A higher score indicates a higher device risk.
+        # The device risk probability predicted by the Face Guard algorithm. A higher score indicates a higher device risk.
         # 
-        # Valid values: 0 to 100.
+        # Value range: 0 to 100.
         self.guard_risk_score = guard_risk_score
-        # Extended information. This is empty by default.
+        # The extended information in JSON format. The response is customized based on tenant requirements.
         self.risk_extends = risk_extends
-        # The device risk tags. Multiple risk tags are separated by commas (**,**). For more information about the risk tags and their meanings, expand the **Risk tags (RiskTags)** section below.
+        # The device risk tags.
+        # 
+        # - Multiple device risk tags are separated by commas (,), such as "ROOT,VPN,HOOK".
+        # 
+        # - For more information about device risk tags and their meanings, refer to the Face Guard tag description in the official documentation.
         self.risk_tags = risk_tags
-        # The transaction ID.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

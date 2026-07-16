@@ -11,15 +11,15 @@ class DeleteWebAuthnAuthenticatorRequest(DaraModel):
         instance_id: str = None,
         user_id: str = None,
     ):
-        # 认证器ID
+        # The authenticator ID.
         # 
         # This parameter is required.
         self.authenticator_id = authenticator_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # UserID
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

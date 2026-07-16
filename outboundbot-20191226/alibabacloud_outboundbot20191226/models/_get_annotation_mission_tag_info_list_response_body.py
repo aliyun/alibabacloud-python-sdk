@@ -17,11 +17,17 @@ class GetAnnotationMissionTagInfoListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Response message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetAnnotationMissionTagInfoListResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # Tag list
         self.annotation_mission_tag_info_list = annotation_mission_tag_info_list
+        # Response message
         self.message = message
+        # Indicates whether the call succeeded. A value of true indicates success. A value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -137,11 +146,17 @@ class GetAnnotationMissionTagInfoListResponseBodyDataAnnotationMissionTagInfoLis
         instance_id: str = None,
         tenant_id: str = None,
     ):
+        # Tag description
         self.annotation_mission_tag_info_description = annotation_mission_tag_info_description
+        # Tag ID
         self.annotation_mission_tag_info_id = annotation_mission_tag_info_id
+        # Tag name
         self.annotation_mission_tag_info_name = annotation_mission_tag_info_name
+        # Indicates whether the tag is deleted. A value of true indicates that the tag is deleted.
         self.delete = delete
+        # Instance ID
         self.instance_id = instance_id
+        # Tenant ID
         self.tenant_id = tenant_id
 
     def validate(self):

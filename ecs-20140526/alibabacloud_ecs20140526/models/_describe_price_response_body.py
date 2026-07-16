@@ -13,7 +13,7 @@ class DescribePriceResponseBody(DaraModel):
         price_info: main_models.DescribePriceResponseBodyPriceInfo = None,
         request_id: str = None,
     ):
-        # The information about the prices and promotion rules.
+        # The price information, including the price and promotion rules.
         self.price_info = price_info
         # The request ID.
         self.request_id = request_id
@@ -209,15 +209,15 @@ class DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice(DaraMo
     ):
         # The currency unit.
         # 
-        # China site (aliyun.com): CNY
+        # China site: CNY.
         # 
-        # International site (alibabacloud.com): USD
+        # International site: USD.
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The transaction price, which is equal to the original price minus the discount.
+        # The transaction price, which is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):
@@ -270,18 +270,18 @@ class DescribePriceResponseBodyPriceInfoPrice(DaraModel):
     ):
         # The currency unit.
         # 
-        # Alibaba Cloud China site (aliyun.com): CNY.
+        # China site: CNY.
         # 
-        # Alibaba Cloud International site (alibabacloud.com): USD.
+        # International site: USD.
         self.currency = currency
         self.detail_infos = detail_infos
         # The discount.
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # The hourly price of the reserved instance for which the No Upfront or Partial Upfront payment option is used.
+        # The hourly price of a reserved instance with the no upfront or partial upfront payment option.
         self.reserved_instance_hour_price = reserved_instance_hour_price
-        # The transaction price of the order. The transaction price is equal to the original price minus the discount.
+        # The transaction price, which is the original price minus the discount.
         self.trade_price = trade_price
 
     def validate(self):

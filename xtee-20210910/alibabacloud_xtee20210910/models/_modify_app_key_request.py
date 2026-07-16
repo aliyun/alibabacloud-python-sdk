@@ -12,15 +12,15 @@ class ModifyAppKeyRequest(DaraModel):
         memo: str = None,
         reg_id: str = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # Specifies the language type of the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
         # - **en**: English
         self.lang = lang
-        # appkey information.
+        # The AppKey information.
         self.app_key = app_key
-        # Application memo information.
+        # The memo information of the application.
         self.memo = memo
-        # Region code
+        # The region ID.
         self.reg_id = reg_id
 
     def validate(self):

@@ -19,7 +19,6 @@ class ListEventsResponseBody(DaraModel):
     ):
         self.events = events
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
         self.sync_token = sync_token
         self.vendor_request_id = vendor_request_id

@@ -10,8 +10,12 @@ class RunContinueContentRequest(DaraModel):
         content: str = None,
         workspace_id: str = None,
     ):
+        # Content to continue.
+        # 
         # This parameter is required.
         self.content = content
+        # Unique identifier for the Alibaba Cloud Model Studio workspace. For more information, see [Get the workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -13,12 +13,13 @@ class CreateProductOrdersRequest(DaraModel):
         auto_pay: bool = None,
         products: List[main_models.CreateProductOrdersRequestProducts] = None,
     ):
-        # Specifies whether to automatically pay for the provided products.
+        # Specifies whether to automatically pay for all products listed in the Products parameter.
         # 
-        # *   true
-        # *   false
+        # - true: Enables automatic payment.
+        # 
+        # - false: Disables automatic payment.
         self.auto_pay = auto_pay
-        # The list of products to be purchased. Separate them with commas (,).
+        # The list of products to purchase.
         self.products = products
 
     def validate(self):
@@ -66,36 +67,85 @@ class CreateProductOrdersRequestProducts(DaraModel):
         pricing_cycle: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to automatically renew the product.
+        # Specifies whether to enable auto-renewal.
         # 
-        # *   true
-        # *   false
+        # - true: Enables auto-renewal.
+        # 
+        # - false: Disables auto-renewal.
         self.auto_renew = auto_renew
-        # The billing method. Only POSTPAY is supported.
+        # The billing method. Currently, only POSTPAY is supported.
         self.charge_type = charge_type
-        # The purchase duration. You can use this parameter together with pricingCycle. Only 1 is supported.
+        # The subscription duration. This parameter is used with PricingCycle. Currently, only a value of 1 is supported.
         self.duration = duration
-        # The properties of the instance.
+        # The list of instance properties.
         # 
-        # *   DataWorks_share: [ { "Code": "region", "Value": "cn-shanghai" } ]
-        # *   OSS_share: [ { "Code": "commodity_type", "Value": "oss", "Name": "Object Storage Service" }, { "Code": "ord_time", "Value": "1:Hour", "Name": "1 Hour" } ]
-        # *   PAI_share: None
-        # *   China bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "odps_specification_type", "Value": "OdpsStandard" }, { "Code": "ord_time", "Value": "1:Hour" } ]
-        # *   International bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "ord_time", "Value": "1:Hour" } ]
+        # - DataWorks_share:
+        #   [ {
+        #   "Code": "region",
+        #   "Value": "cn-shanghai"
+        #   }
+        #   ]
+        # 
+        # - OSS_share:
+        #   [ {
+        #   "Code": "commodity_type",
+        #   "Value": "oss",
+        #   "Name": "Object Storage Service"
+        #   },
+        #   {
+        #   "Code": "ord_time",
+        #   "Value": "1:Hour",
+        #   "Name": "1 Hour"
+        #   }
+        #   ]
+        # 
+        # - PAI_share: None
+        # 
+        # - MaxCompute_share for accounts in mainland China:
+        #   [
+        #   {
+        #   "Code": "region",
+        #   "Value": "cn-hangzhou"
+        #   },
+        #   {
+        #   "Code": "odps_specification_type",
+        #   "Value": "OdpsStandard"
+        #   },
+        #   {
+        #   "Code": "ord_time",
+        #   "Value": "1:Hour"
+        #   }
+        #   ]
+        # 
+        # - MaxCompute_share for accounts outside mainland China:
+        #   [
+        #   {
+        #   "Code": "region",
+        #   "Value": "cn-hangzhou"
+        #   },
+        #   {
+        #   "Code": "ord_time",
+        #   "Value": "1:Hour"
+        #   }
+        #   ]
         self.instance_properties = instance_properties
-        # The type of the order. Only BUY is supported.
+        # The order type. Currently, only BUY is supported.
         self.order_type = order_type
-        # The billing cycle. Valid values:
+        # The billing cycle. The following values are supported:
         # 
-        # *   Month: The price is calculated every month. DataWorks_share only supports Month.
-        # *   Hour: The price is calculated every hour. OSS_share and MaxCompute_share only support Hour.
+        # - Month: Monthly billing. Only DataWorks_share supports this value.
+        # 
+        # - Hour: Hourly billing. Only OSS_share and MaxCompute_share support this value.
         self.pricing_cycle = pricing_cycle
-        # The product code. Valid values:
+        # The product code. The following codes are supported:
         # 
-        # *   DataWorks_share: pay-as-you-go DataWorks
-        # *   MaxCompute_share: pay-as-you-go MaxCompute
-        # *   PAI_share: pay-as-you-go PAI.
-        # *   OSS_share: pay-as-you-go OSS
+        # - DataWorks_share: The pay-as-you-go DataWorks product.
+        # 
+        # - MaxCompute_share: The pay-as-you-go MaxCompute product.
+        # 
+        # - PAI_share: The pay-as-you-go PAI product.
+        # 
+        # - OSS_share: The pay-as-you-go OSS product.
         self.product_code = product_code
 
     def validate(self):
@@ -169,11 +219,11 @@ class CreateProductOrdersRequestProductsInstanceProperties(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The property code.
+        # The code of the instance property.
         self.code = code
-        # The property name.
+        # The name of the instance property.
         self.name = name
-        # The property value.
+        # The value of the instance property.
         self.value = value
 
     def validate(self):

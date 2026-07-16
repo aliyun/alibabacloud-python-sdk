@@ -14,11 +14,11 @@ class ListAlertsResponseBody(DaraModel):
         results: List[main_models.Alert] = None,
         total: int = None,
     ):
-        # The number of alert rules that are returned.
+        # The number of alerts returned in the current response.
         self.count = count
-        # The alert rules.
+        # The list of alert configurations.
         self.results = results
-        # The total number of alert rules in the project.
+        # The total number of alerts in the project.
         self.total = total
 
     def validate(self):

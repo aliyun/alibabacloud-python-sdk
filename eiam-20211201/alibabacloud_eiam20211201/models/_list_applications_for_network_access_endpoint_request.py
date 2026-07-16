@@ -12,17 +12,17 @@ class ListApplicationsForNetworkAccessEndpointRequest(DaraModel):
         network_access_endpoint_id: str = None,
         next_token: str = None,
     ):
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 分页查询时每页行数。默认值为20，最大值为100。
+        # The number of entries per page in a paged query.
         self.max_results = max_results
-        # 网络端点ID。
+        # The network access endpoint ID.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The pagination token.
         self.next_token = next_token
 
     def validate(self):

@@ -14,11 +14,17 @@ class ListCustomDomainsRequest(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
+        # The custom domain name.
         self.domain_name = domain_name
+        # The domain type used for filtering. Valid values: STANDARD and SANDBOX.
         self.domain_type = domain_type
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The name of the resource associated with the custom domain.
         self.resource_name = resource_name
+        # The type of the resource associated with the custom domain.
         self.resource_type = resource_type
 
     def validate(self):

@@ -16,29 +16,40 @@ class UpdateTransportLayerApplicationShrinkRequest(DaraModel):
         site_id: int = None,
         static_ip: str = None,
     ):
-        # Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # The Layer 4 application ID. You can call the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) operation to obtain the application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # Specifies whether to enable network access optimization for the Chinese mainland. This feature is disabled by default. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: enabled.
+        # - off: disabled.
         self.cross_border_optimization = cross_border_optimization
-        # IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+        # The IP access rule switch. When enabled, WAF IP access rules take effect for the Layer 4 application. Valid values:
         # 
-        # - on: Enabled.
-        # - off: Disabled.
+        # - on: enabled.
+        # - off: disabled.
         self.ip_access_rule = ip_access_rule
-        # IPv6 switch.
+        # The IPv6 switch. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.ipv_6 = ipv_6
+        # Specifies whether to enable keep-alive protection. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.keep_alive_protection = keep_alive_protection
-        # Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+        # The list of forwarding rules. For each rule, all parameters except the comment are required.
         self.rules_shrink = rules_shrink
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
+        # Specifies whether to enable static IP. This feature is disabled by default. Valid values:
+        # 
+        # - on: enabled.
+        # - off: disabled.
         self.static_ip = static_ip
 
     def validate(self):

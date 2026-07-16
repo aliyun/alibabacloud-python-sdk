@@ -16,10 +16,15 @@ class DescribeCloudDiskGroupDrivesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The list of cloud disk team drives.
         self.cloud_drive_groups = cloud_drive_groups
+        # The total number of results.
         self.count = count
+        # The token that marks the start of the next query. An empty NextToken means no more results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):
@@ -87,14 +92,23 @@ class DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups(DaraModel):
         total_size: int = None,
         used_size: str = None,
     ):
+        # The time the drive was created.
         self.create_time = create_time
+        # The office network ID.
         self.directory_id = directory_id
+        # The drive ID.
         self.drive_id = drive_id
+        # The team drive ID.
         self.group_id = group_id
+        # The team drive name.
         self.group_name = group_name
+        # The organization ID of the team.
         self.org_id = org_id
+        # The status of the team drive.
         self.status = status
+        # The total capacity of the cloud disk team drive.
         self.total_size = total_size
+        # The used space size, in bytes.
         self.used_size = used_size
 
     def validate(self):

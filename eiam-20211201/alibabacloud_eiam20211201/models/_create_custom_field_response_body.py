@@ -10,7 +10,9 @@ class CreateCustomFieldResponseBody(DaraModel):
         field_id: str = None,
         request_id: str = None,
     ):
+        # The field ID.
         self.field_id = field_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

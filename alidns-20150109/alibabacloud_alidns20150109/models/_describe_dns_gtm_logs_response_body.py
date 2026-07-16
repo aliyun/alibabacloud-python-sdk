@@ -18,15 +18,15 @@ class DescribeDnsGtmLogsResponseBody(DaraModel):
         total_pages: int = None,
     ):
         self.logs = logs
-        # The number of the returned page.
+        # The page number. The value starts from 1. The default value is 1.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned per page. The maximum value is 100. The default value is 20.
         self.page_size = page_size
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The total number of entries returned on all pages.
+        # The total number of entries.
         self.total_items = total_items
-        # The total number of pages returned.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):

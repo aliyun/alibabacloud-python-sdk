@@ -19,13 +19,21 @@ class ListNormalizationRuleCapacitiesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The token for the next query. If the response is truncated, use this token in your next request to retrieve the next page of results. If this parameter is empty, all results have been returned.
         self.next_token = next_token
+        # The list of security capabilities that are associated with the normalization rules.
         self.normalization_rule_capacities = normalization_rule_capacities
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -105,8 +113,19 @@ class ListNormalizationRuleCapacitiesResponseBodyNormalizationRuleCapacities(Dar
         capacity_type: str = None,
         normalization_rule_id: str = None,
     ):
+        # The list of security capabilities.
         self.capacities = capacities
+        # The type of the security capability. Valid values:
+        # 
+        # - detection_preset_rule: predefined analysis rule.
+        # 
+        # - detection_custom_rule: custom analysis rule.
+        # 
+        # - incident_investigation: security event handling.
+        # 
+        # - soar_playbooks: predefined playbook.
         self.capacity_type = capacity_type
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
 
     def validate(self):

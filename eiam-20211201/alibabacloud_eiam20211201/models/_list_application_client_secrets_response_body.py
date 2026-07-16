@@ -14,11 +14,11 @@ class ListApplicationClientSecretsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the client keys.
+        # The information about the client secrets.
         self.application_client_secrets = application_client_secrets
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -73,23 +73,25 @@ class ListApplicationClientSecretsResponseBodyApplicationClientSecrets(DaraModel
         secret_id: str = None,
         status: str = None,
     ):
-        # The ID of the application that you want to query.
+        # The application ID.
         self.application_id = application_id
         # The client ID of the application.
         self.client_id = client_id
-        # The client key secret of the application. The value is not masked.
+        # The client secret of the application. The returned ClientSecret is masked.
         self.client_secret = client_secret
+        # The expiration time of the client secret. This is a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
+        # The last time the client secret was used. This is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
-        # The client key ID of the application.
+        # The client secret ID of the application.
         self.secret_id = secret_id
-        # The status of the client key. Valid values:
+        # The status of the client secret. Valid values:
         # 
-        # *   Enabled: The client key is enabled.
-        # *   Disabled: The client key is disabled.
+        # - enabled: The client secret is enabled.
+        # 
+        # - disabled: The client secret is disabled.
         self.status = status
 
     def validate(self):

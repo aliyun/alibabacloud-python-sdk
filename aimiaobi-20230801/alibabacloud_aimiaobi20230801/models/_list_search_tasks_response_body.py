@@ -20,14 +20,23 @@ class ListSearchTasksResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # Status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Fault description
         self.message = message
+        # Current page number
         self.page_number = page_number
+        # Number of records per page
         self.page_size = page_size
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates whether the request was successful. True for success, false for failed.
         self.success = success
+        # Total number of records
         self.total_count = total_count
 
     def validate(self):
@@ -116,11 +125,17 @@ class ListSearchTasksResponseBodyData(DaraModel):
         update_time: str = None,
         username: str = None,
     ):
+        # Creation time
         self.create_time = create_time
+        # Task type
         self.dialogue_type = dialogue_type
+        # Unique task identifier
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
+        # Modification time
         self.update_time = update_time
+        # Creator name
         self.username = username
 
     def validate(self):

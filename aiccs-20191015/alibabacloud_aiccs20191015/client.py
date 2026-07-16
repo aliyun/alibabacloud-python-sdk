@@ -21,7 +21,33 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'us-west-1': 'aiccs.aliyuncs.com',
+            'us-east-1': 'aiccs.aliyuncs.com',
+            'me-east-1': 'aiccs.aliyuncs.com',
+            'eu-west-1': 'aiccs.aliyuncs.com',
+            'eu-central-1': 'aiccs.aliyuncs.com',
+            'cn-zhangjiakou': 'aiccs.aliyuncs.com',
+            'cn-wulanchabu': 'aiccs.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'aiccs.aliyuncs.com',
+            'cn-shenzhen': 'aiccs.aliyuncs.com',
+            'cn-shanghai-finance-1': 'aiccs.aliyuncs.com',
+            'cn-shanghai': 'aiccs.aliyuncs.com',
+            'cn-qingdao': 'aiccs.aliyuncs.com',
+            'cn-north-2-gov-1': 'aiccs.aliyuncs.com',
+            'cn-huhehaote': 'aiccs.aliyuncs.com',
+            'cn-hongkong': 'aiccs.aliyuncs.com',
+            'cn-hangzhou-finance': 'aiccs.aliyuncs.com',
+            'cn-hangzhou': 'aiccs.aliyuncs.com',
+            'cn-chengdu': 'aiccs.aliyuncs.com',
+            'cn-beijing-finance-1': 'aiccs.aliyuncs.com',
+            'cn-beijing': 'aiccs.aliyuncs.com',
+            'ap-southeast-5': 'aiccs.aliyuncs.com',
+            'ap-southeast-3': 'aiccs.aliyuncs.com',
+            'ap-southeast-1': 'aiccs.aliyuncs.com',
+            'ap-northeast-1': 'aiccs.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('aiccs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -158,6 +184,388 @@ class Client(OpenApiClient):
     ) -> main_models.AddHotlineNumberResponse:
         runtime = RuntimeOptions()
         return await self.add_hotline_number_with_options_async(request, runtime)
+
+    def add_inbound_number_with_options(
+        self,
+        tmp_req: main_models.AddInboundNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInboundNumberResponse:
+        tmp_req.validate()
+        request = main_models.AddInboundNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.inbound_numbers):
+            request.inbound_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.inbound_numbers, 'InboundNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.inbound_numbers_shrink):
+            query['InboundNumbers'] = request.inbound_numbers_shrink
+        if not DaraCore.is_null(request.inbound_type):
+            query['InboundType'] = request.inbound_type
+        if not DaraCore.is_null(request.line_code):
+            query['LineCode'] = request.line_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInboundNumber',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInboundNumberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_inbound_number_with_options_async(
+        self,
+        tmp_req: main_models.AddInboundNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddInboundNumberResponse:
+        tmp_req.validate()
+        request = main_models.AddInboundNumberShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.inbound_numbers):
+            request.inbound_numbers_shrink = Utils.array_to_string_with_specified_style(tmp_req.inbound_numbers, 'InboundNumbers', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.inbound_numbers_shrink):
+            query['InboundNumbers'] = request.inbound_numbers_shrink
+        if not DaraCore.is_null(request.inbound_type):
+            query['InboundType'] = request.inbound_type
+        if not DaraCore.is_null(request.line_code):
+            query['LineCode'] = request.line_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddInboundNumber',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddInboundNumberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_inbound_number(
+        self,
+        request: main_models.AddInboundNumberRequest,
+    ) -> main_models.AddInboundNumberResponse:
+        runtime = RuntimeOptions()
+        return self.add_inbound_number_with_options(request, runtime)
+
+    async def add_inbound_number_async(
+        self,
+        request: main_models.AddInboundNumberRequest,
+    ) -> main_models.AddInboundNumberResponse:
+        runtime = RuntimeOptions()
+        return await self.add_inbound_number_with_options_async(request, runtime)
+
+    def add_large_model_with_options(
+        self,
+        tmp_req: main_models.AddLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.AddLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_large_model_with_options_async(
+        self,
+        tmp_req: main_models.AddLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.AddLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_large_model(
+        self,
+        request: main_models.AddLargeModelRequest,
+    ) -> main_models.AddLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.add_large_model_with_options(request, runtime)
+
+    async def add_large_model_async(
+        self,
+        request: main_models.AddLargeModelRequest,
+    ) -> main_models.AddLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.add_large_model_with_options_async(request, runtime)
+
+    def add_model_application_with_options(
+        self,
+        tmp_req: main_models.AddModelApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddModelApplicationResponse:
+        tmp_req.validate()
+        request = main_models.AddModelApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tts_config):
+            request.tts_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_cps):
+            query['ApplicationCps'] = request.application_cps
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.call_connected_trigger_model):
+            query['CallConnectedTriggerModel'] = request.call_connected_trigger_model
+        if not DaraCore.is_null(request.dyvms_scene_name):
+            query['DyvmsSceneName'] = request.dyvms_scene_name
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not DaraCore.is_null(request.mute_active):
+            query['MuteActive'] = request.mute_active
+        if not DaraCore.is_null(request.mute_duration):
+            query['MuteDuration'] = request.mute_duration
+        if not DaraCore.is_null(request.mute_hangup_num):
+            query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not DaraCore.is_null(request.recording_file):
+            query['RecordingFile'] = request.recording_file
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.speech_content):
+            query['SpeechContent'] = request.speech_content
+        if not DaraCore.is_null(request.speech_id):
+            query['SpeechId'] = request.speech_id
+        if not DaraCore.is_null(request.start_word):
+            query['StartWord'] = request.start_word
+        if not DaraCore.is_null(request.start_word_type):
+            query['StartWordType'] = request.start_word_type
+        if not DaraCore.is_null(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not DaraCore.is_null(request.usage_desc):
+            query['UsageDesc'] = request.usage_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddModelApplication',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddModelApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_model_application_with_options_async(
+        self,
+        tmp_req: main_models.AddModelApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddModelApplicationResponse:
+        tmp_req.validate()
+        request = main_models.AddModelApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tts_config):
+            request.tts_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_cps):
+            query['ApplicationCps'] = request.application_cps
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.call_connected_trigger_model):
+            query['CallConnectedTriggerModel'] = request.call_connected_trigger_model
+        if not DaraCore.is_null(request.dyvms_scene_name):
+            query['DyvmsSceneName'] = request.dyvms_scene_name
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not DaraCore.is_null(request.mute_active):
+            query['MuteActive'] = request.mute_active
+        if not DaraCore.is_null(request.mute_duration):
+            query['MuteDuration'] = request.mute_duration
+        if not DaraCore.is_null(request.mute_hangup_num):
+            query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not DaraCore.is_null(request.recording_file):
+            query['RecordingFile'] = request.recording_file
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.speech_content):
+            query['SpeechContent'] = request.speech_content
+        if not DaraCore.is_null(request.speech_id):
+            query['SpeechId'] = request.speech_id
+        if not DaraCore.is_null(request.start_word):
+            query['StartWord'] = request.start_word
+        if not DaraCore.is_null(request.start_word_type):
+            query['StartWordType'] = request.start_word_type
+        if not DaraCore.is_null(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not DaraCore.is_null(request.usage_desc):
+            query['UsageDesc'] = request.usage_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddModelApplication',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddModelApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_model_application(
+        self,
+        request: main_models.AddModelApplicationRequest,
+    ) -> main_models.AddModelApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.add_model_application_with_options(request, runtime)
+
+    async def add_model_application_async(
+        self,
+        request: main_models.AddModelApplicationRequest,
+    ) -> main_models.AddModelApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.add_model_application_with_options_async(request, runtime)
 
     def add_outer_account_with_options(
         self,
@@ -4671,6 +5079,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_all_department_with_options_async(request, runtime)
 
+    def get_audio_note_upload_url_with_options(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAudioNoteUploadUrl',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAudioNoteUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audio_note_upload_url_with_options_async(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['FileName'] = request.file_name
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAudioNoteUploadUrl',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAudioNoteUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audio_note_upload_url(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.get_audio_note_upload_url_with_options(request, runtime)
+
+    async def get_audio_note_upload_url_async(
+        self,
+        request: main_models.GetAudioNoteUploadUrlRequest,
+    ) -> main_models.GetAudioNoteUploadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.get_audio_note_upload_url_with_options_async(request, runtime)
+
     def get_call_dialog_content_with_options(
         self,
         request: main_models.GetCallDialogContentRequest,
@@ -8980,6 +9462,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tts_voice_code):
             query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.voice_type):
+            query['VoiceType'] = request.voice_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9014,6 +9498,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tts_voice_code):
             query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.voice_type):
+            query['VoiceType'] = request.voice_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9987,6 +10473,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_task_detail_with_options_async(request, runtime)
 
+    def llm_full_duplex_call_operate_with_options(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.command):
+            query['Command'] = request.command
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmFullDuplexCallOperate',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmFullDuplexCallOperateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_full_duplex_call_operate_with_options_async(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.command):
+            query['Command'] = request.command
+        if not DaraCore.is_null(request.param):
+            query['Param'] = request.param
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmFullDuplexCallOperate',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmFullDuplexCallOperateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_full_duplex_call_operate(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        runtime = RuntimeOptions()
+        return self.llm_full_duplex_call_operate_with_options(request, runtime)
+
+    async def llm_full_duplex_call_operate_async(
+        self,
+        request: main_models.LlmFullDuplexCallOperateRequest,
+    ) -> main_models.LlmFullDuplexCallOperateResponse:
+        runtime = RuntimeOptions()
+        return await self.llm_full_duplex_call_operate_with_options_async(request, runtime)
+
     def llm_smart_call_with_options(
         self,
         tmp_req: main_models.LlmSmartCallRequest,
@@ -10234,6 +10798,116 @@ class Client(OpenApiClient):
     ) -> main_models.LlmSmartCallEncryptResponse:
         runtime = RuntimeOptions()
         return await self.llm_smart_call_encrypt_with_options_async(request, runtime)
+
+    def llm_smart_call_full_duplex_with_options(
+        self,
+        tmp_req: main_models.LlmSmartCallFullDuplexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        tmp_req.validate()
+        request = main_models.LlmSmartCallFullDuplexShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.start_word_param):
+            request.start_word_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.start_word_param, 'StartWordParam', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.start_word_param_shrink):
+            query['StartWordParam'] = request.start_word_param_shrink
+        if not DaraCore.is_null(request.tts_speed):
+            query['TtsSpeed'] = request.tts_speed
+        if not DaraCore.is_null(request.tts_voice_code):
+            query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.tts_volume):
+            query['TtsVolume'] = request.tts_volume
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCallFullDuplex',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallFullDuplexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_smart_call_full_duplex_with_options_async(
+        self,
+        tmp_req: main_models.LlmSmartCallFullDuplexRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        tmp_req.validate()
+        request = main_models.LlmSmartCallFullDuplexShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.start_word_param):
+            request.start_word_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.start_word_param, 'StartWordParam', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.start_word_param_shrink):
+            query['StartWordParam'] = request.start_word_param_shrink
+        if not DaraCore.is_null(request.tts_speed):
+            query['TtsSpeed'] = request.tts_speed
+        if not DaraCore.is_null(request.tts_voice_code):
+            query['TtsVoiceCode'] = request.tts_voice_code
+        if not DaraCore.is_null(request.tts_volume):
+            query['TtsVolume'] = request.tts_volume
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCallFullDuplex',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallFullDuplexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_smart_call_full_duplex(
+        self,
+        request: main_models.LlmSmartCallFullDuplexRequest,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        runtime = RuntimeOptions()
+        return self.llm_smart_call_full_duplex_with_options(request, runtime)
+
+    async def llm_smart_call_full_duplex_async(
+        self,
+        request: main_models.LlmSmartCallFullDuplexRequest,
+    ) -> main_models.LlmSmartCallFullDuplexResponse:
+        runtime = RuntimeOptions()
+        return await self.llm_smart_call_full_duplex_with_options_async(request, runtime)
 
     def make_call_with_options(
         self,
@@ -13879,6 +14553,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.stop_task_with_options_async(request, runtime)
 
+    def submit_audio_note_with_options(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAudioNoteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.llm_model_id):
+            query['LlmModelId'] = request.llm_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAudioNote',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAudioNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_audio_note_with_options_async(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAudioNoteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_path):
+            query['FilePath'] = request.file_path
+        if not DaraCore.is_null(request.llm_model_id):
+            query['LlmModelId'] = request.llm_model_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAudioNote',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAudioNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_audio_note(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+    ) -> main_models.SubmitAudioNoteResponse:
+        runtime = RuntimeOptions()
+        return self.submit_audio_note_with_options(request, runtime)
+
+    async def submit_audio_note_async(
+        self,
+        request: main_models.SubmitAudioNoteRequest,
+    ) -> main_models.SubmitAudioNoteResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_audio_note_with_options_async(request, runtime)
+
     def suspend_hotline_service_with_options(
         self,
         request: main_models.SuspendHotlineServiceRequest,
@@ -14108,6 +14864,104 @@ class Client(OpenApiClient):
     ) -> main_models.TerminateAiOutboundTaskResponse:
         runtime = RuntimeOptions()
         return await self.terminate_ai_outbound_task_with_options_async(request, runtime)
+
+    def test_large_model_with_options(
+        self,
+        tmp_req: main_models.TestLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.TestLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.user_dialog_content):
+            query['UserDialogContent'] = request.user_dialog_content
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def test_large_model_with_options_async(
+        self,
+        tmp_req: main_models.TestLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TestLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.TestLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.user_dialog_content):
+            query['UserDialogContent'] = request.user_dialog_content
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TestLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TestLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def test_large_model(
+        self,
+        request: main_models.TestLargeModelRequest,
+    ) -> main_models.TestLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.test_large_model_with_options(request, runtime)
+
+    async def test_large_model_async(
+        self,
+        request: main_models.TestLargeModelRequest,
+    ) -> main_models.TestLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.test_large_model_with_options_async(request, runtime)
 
     def transfer_call_to_skill_group_with_options(
         self,
@@ -14662,6 +15516,366 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDepartmentResponse:
         runtime = RuntimeOptions()
         return await self.update_department_with_options_async(request, runtime)
+
+    def update_large_model_with_options(
+        self,
+        tmp_req: main_models.UpdateLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLargeModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_large_model_with_options_async(
+        self,
+        tmp_req: main_models.UpdateLargeModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateLargeModelResponse:
+        tmp_req.validate()
+        request = main_models.UpdateLargeModelShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.base_model):
+            request.base_model_shrink = Utils.array_to_string_with_specified_style(tmp_req.base_model, 'BaseModel', 'json')
+        query = {}
+        if not DaraCore.is_null(request.auth_code):
+            query['AuthCode'] = request.auth_code
+        if not DaraCore.is_null(request.base_model_shrink):
+            query['BaseModel'] = request.base_model_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_name):
+            query['ModelName'] = request.model_name
+        if not DaraCore.is_null(request.model_url):
+            query['ModelUrl'] = request.model_url
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.temperature):
+            query['Temperature'] = request.temperature
+        if not DaraCore.is_null(request.top_k):
+            query['TopK'] = request.top_k
+        if not DaraCore.is_null(request.top_p):
+            query['TopP'] = request.top_p
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateLargeModel',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateLargeModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_large_model(
+        self,
+        request: main_models.UpdateLargeModelRequest,
+    ) -> main_models.UpdateLargeModelResponse:
+        runtime = RuntimeOptions()
+        return self.update_large_model_with_options(request, runtime)
+
+    async def update_large_model_async(
+        self,
+        request: main_models.UpdateLargeModelRequest,
+    ) -> main_models.UpdateLargeModelResponse:
+        runtime = RuntimeOptions()
+        return await self.update_large_model_with_options_async(request, runtime)
+
+    def update_model_application_with_options(
+        self,
+        tmp_req: main_models.UpdateModelApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelApplicationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tts_config):
+            request.tts_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.application_cps):
+            query['ApplicationCps'] = request.application_cps
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.call_assistant_hangup):
+            query['CallAssistantHangup'] = request.call_assistant_hangup
+        if not DaraCore.is_null(request.call_assistant_recognize):
+            query['CallAssistantRecognize'] = request.call_assistant_recognize
+        if not DaraCore.is_null(request.call_connected_trigger_model):
+            query['CallConnectedTriggerModel'] = request.call_connected_trigger_model
+        if not DaraCore.is_null(request.dtmf_allowed_digits):
+            query['DtmfAllowedDigits'] = request.dtmf_allowed_digits
+        if not DaraCore.is_null(request.dtmf_auto_validate_enable):
+            query['DtmfAutoValidateEnable'] = request.dtmf_auto_validate_enable
+        if not DaraCore.is_null(request.dtmf_digit_count):
+            query['DtmfDigitCount'] = request.dtmf_digit_count
+        if not DaraCore.is_null(request.dtmf_input_timeout):
+            query['DtmfInputTimeout'] = request.dtmf_input_timeout
+        if not DaraCore.is_null(request.dtmf_out_of_range_action):
+            query['DtmfOutOfRangeAction'] = request.dtmf_out_of_range_action
+        if not DaraCore.is_null(request.dtmf_retry_play_times):
+            query['DtmfRetryPlayTimes'] = request.dtmf_retry_play_times
+        if not DaraCore.is_null(request.dtmf_retry_prompt_text):
+            query['DtmfRetryPromptText'] = request.dtmf_retry_prompt_text
+        if not DaraCore.is_null(request.dtmf_send_max_count):
+            query['DtmfSendMaxCount'] = request.dtmf_send_max_count
+        if not DaraCore.is_null(request.dtmf_send_wait_timeout):
+            query['DtmfSendWaitTimeout'] = request.dtmf_send_wait_timeout
+        if not DaraCore.is_null(request.dyvms_scene_name):
+            query['DyvmsSceneName'] = request.dyvms_scene_name
+        if not DaraCore.is_null(request.enable_dtmf_receive):
+            query['EnableDtmfReceive'] = request.enable_dtmf_receive
+        if not DaraCore.is_null(request.enable_dtmf_send):
+            query['EnableDtmfSend'] = request.enable_dtmf_send
+        if not DaraCore.is_null(request.enable_morse):
+            query['EnableMorse'] = request.enable_morse
+        if not DaraCore.is_null(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not DaraCore.is_null(request.mute_active):
+            query['MuteActive'] = request.mute_active
+        if not DaraCore.is_null(request.mute_duration):
+            query['MuteDuration'] = request.mute_duration
+        if not DaraCore.is_null(request.mute_hangup_num):
+            query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.mute_push_mode):
+            query['MutePushMode'] = request.mute_push_mode
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not DaraCore.is_null(request.recording_file):
+            query['RecordingFile'] = request.recording_file
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.speech_content):
+            query['SpeechContent'] = request.speech_content
+        if not DaraCore.is_null(request.speech_id):
+            query['SpeechId'] = request.speech_id
+        if not DaraCore.is_null(request.start_word):
+            query['StartWord'] = request.start_word
+        if not DaraCore.is_null(request.start_word_type):
+            query['StartWordType'] = request.start_word_type
+        if not DaraCore.is_null(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not DaraCore.is_null(request.usage_desc):
+            query['UsageDesc'] = request.usage_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelApplication',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_application_with_options_async(
+        self,
+        tmp_req: main_models.UpdateModelApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelApplicationResponse:
+        tmp_req.validate()
+        request = main_models.UpdateModelApplicationShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.interrupt_config):
+            request.interrupt_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.interrupt_config, 'InterruptConfig', 'json')
+        if not DaraCore.is_null(tmp_req.tts_config):
+            request.tts_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.application_cps):
+            query['ApplicationCps'] = request.application_cps
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.call_assistant_hangup):
+            query['CallAssistantHangup'] = request.call_assistant_hangup
+        if not DaraCore.is_null(request.call_assistant_recognize):
+            query['CallAssistantRecognize'] = request.call_assistant_recognize
+        if not DaraCore.is_null(request.call_connected_trigger_model):
+            query['CallConnectedTriggerModel'] = request.call_connected_trigger_model
+        if not DaraCore.is_null(request.dtmf_allowed_digits):
+            query['DtmfAllowedDigits'] = request.dtmf_allowed_digits
+        if not DaraCore.is_null(request.dtmf_auto_validate_enable):
+            query['DtmfAutoValidateEnable'] = request.dtmf_auto_validate_enable
+        if not DaraCore.is_null(request.dtmf_digit_count):
+            query['DtmfDigitCount'] = request.dtmf_digit_count
+        if not DaraCore.is_null(request.dtmf_input_timeout):
+            query['DtmfInputTimeout'] = request.dtmf_input_timeout
+        if not DaraCore.is_null(request.dtmf_out_of_range_action):
+            query['DtmfOutOfRangeAction'] = request.dtmf_out_of_range_action
+        if not DaraCore.is_null(request.dtmf_retry_play_times):
+            query['DtmfRetryPlayTimes'] = request.dtmf_retry_play_times
+        if not DaraCore.is_null(request.dtmf_retry_prompt_text):
+            query['DtmfRetryPromptText'] = request.dtmf_retry_prompt_text
+        if not DaraCore.is_null(request.dtmf_send_max_count):
+            query['DtmfSendMaxCount'] = request.dtmf_send_max_count
+        if not DaraCore.is_null(request.dtmf_send_wait_timeout):
+            query['DtmfSendWaitTimeout'] = request.dtmf_send_wait_timeout
+        if not DaraCore.is_null(request.dyvms_scene_name):
+            query['DyvmsSceneName'] = request.dyvms_scene_name
+        if not DaraCore.is_null(request.enable_dtmf_receive):
+            query['EnableDtmfReceive'] = request.enable_dtmf_receive
+        if not DaraCore.is_null(request.enable_dtmf_send):
+            query['EnableDtmfSend'] = request.enable_dtmf_send
+        if not DaraCore.is_null(request.enable_morse):
+            query['EnableMorse'] = request.enable_morse
+        if not DaraCore.is_null(request.interrupt_config_shrink):
+            query['InterruptConfig'] = request.interrupt_config_shrink
+        if not DaraCore.is_null(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not DaraCore.is_null(request.model_version):
+            query['ModelVersion'] = request.model_version
+        if not DaraCore.is_null(request.mute_active):
+            query['MuteActive'] = request.mute_active
+        if not DaraCore.is_null(request.mute_duration):
+            query['MuteDuration'] = request.mute_duration
+        if not DaraCore.is_null(request.mute_hangup_num):
+            query['MuteHangupNum'] = request.mute_hangup_num
+        if not DaraCore.is_null(request.mute_push_mode):
+            query['MutePushMode'] = request.mute_push_mode
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_name):
+            query['QualificationName'] = request.qualification_name
+        if not DaraCore.is_null(request.recording_file):
+            query['RecordingFile'] = request.recording_file
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.session_timeout):
+            query['SessionTimeout'] = request.session_timeout
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        if not DaraCore.is_null(request.speech_content):
+            query['SpeechContent'] = request.speech_content
+        if not DaraCore.is_null(request.speech_id):
+            query['SpeechId'] = request.speech_id
+        if not DaraCore.is_null(request.start_word):
+            query['StartWord'] = request.start_word
+        if not DaraCore.is_null(request.start_word_type):
+            query['StartWordType'] = request.start_word_type
+        if not DaraCore.is_null(request.tts_config_shrink):
+            query['TtsConfig'] = request.tts_config_shrink
+        if not DaraCore.is_null(request.usage_desc):
+            query['UsageDesc'] = request.usage_desc
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelApplication',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_application(
+        self,
+        request: main_models.UpdateModelApplicationRequest,
+    ) -> main_models.UpdateModelApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.update_model_application_with_options(request, runtime)
+
+    async def update_model_application_async(
+        self,
+        request: main_models.UpdateModelApplicationRequest,
+    ) -> main_models.UpdateModelApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_model_application_with_options_async(request, runtime)
 
     def update_outer_account_with_options(
         self,

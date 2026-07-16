@@ -15,9 +15,13 @@ class HiMarketHttpRoute(DaraModel):
         domains: List[main_models.HiMarketDomain] = None,
         match: main_models.HiMarketHttpRouteMatch = None,
     ):
+        # Indicates whether the route is a built-in route.
         self.builtin = builtin
+        # The route description.
         self.description = description
+        # The list of associated domain names.
         self.domains = domains
+        # The route matching rule.
         self.match = match
 
     def validate(self):
@@ -78,10 +82,15 @@ class HiMarketHttpRouteMatch(DaraModel):
         path: main_models.HiMarketHttpRouteMatchPath = None,
         query_params: List[main_models.HiMarketHttpRouteMatchQueryParams] = None,
     ):
+        # The list of header matching rules.
         self.headers = headers
+        # The list of HTTP methods.
         self.methods = methods
+        # The list of model matching rules (specific to Agent API).
         self.model_matches = model_matches
+        # The path matching rule.
         self.path = path
+        # The list of query parameter matching rules.
         self.query_params = query_params
 
     def validate(self):
@@ -165,9 +174,13 @@ class HiMarketHttpRouteMatchQueryParams(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
+        # The parameter name.
         self.name = name
+        # The matching type.
         self.type = type
+        # The matching value.
         self.value = value
 
     def validate(self):
@@ -215,8 +228,11 @@ class HiMarketHttpRouteMatchPath(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
+        # The matching type.
         self.type = type
+        # The path value.
         self.value = value
 
     def validate(self):
@@ -259,9 +275,13 @@ class HiMarketHttpRouteMatchModelMatches(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
+        # The parameter name.
         self.name = name
+        # The matching type.
         self.type = type
+        # The matching value.
         self.value = value
 
     def validate(self):
@@ -310,9 +330,13 @@ class HiMarketHttpRouteMatchHeaders(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # Indicates whether the matching is case-sensitive.
         self.case_sensitive = case_sensitive
+        # The parameter name.
         self.name = name
+        # The matching type.
         self.type = type
+        # The matching value.
         self.value = value
 
     def validate(self):

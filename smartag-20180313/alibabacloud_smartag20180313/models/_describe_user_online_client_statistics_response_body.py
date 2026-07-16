@@ -13,7 +13,7 @@ class DescribeUserOnlineClientStatisticsResponseBody(DaraModel):
         request_id: str = None,
         user_statistics: main_models.DescribeUserOnlineClientStatisticsResponseBodyUserStatistics = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         self.user_statistics = user_statistics
 

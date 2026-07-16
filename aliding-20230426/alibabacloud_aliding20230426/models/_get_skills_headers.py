@@ -50,7 +50,6 @@ class GetSkillsHeadersAccountContext(DaraModel):
         sso_ticket: str = None,
         account_id: str = None,
     ):
-        # Buc SsoTicket
         self.sso_ticket = sso_ticket
         # This parameter is required.
         self.account_id = account_id

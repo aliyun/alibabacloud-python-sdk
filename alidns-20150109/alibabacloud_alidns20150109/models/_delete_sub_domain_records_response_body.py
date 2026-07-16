@@ -11,11 +11,11 @@ class DeleteSubDomainRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The hostname.
+        # The host record.
         self.rr = rr
         # The request ID.
         self.request_id = request_id
-        # The total number of the DNS records to be deleted.
+        # The total number of DNS records that were deleted.
         self.total_count = total_count
 
     def validate(self):

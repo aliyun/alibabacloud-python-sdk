@@ -16,14 +16,25 @@ class CertNoThreeElementVerificationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The authorization code. Sources:
+        # - In the Cell Phone Number Service console, go to the [Tag Square](https://dytns.console.aliyun.com/analysis/square) page, select the **ID Card Three Elements** tag, and submit a usage application. After the application is approved, you will obtain the authorization code.
+        # - On the [My Applications](https://dytns.console.aliyun.com/analysis/apply) page of the Cell Phone Number Service console, view the approved **ID Card Three Elements** authorization ID.
+        # 
         # This parameter is required.
         self.auth_code = auth_code
+        # The name to be verified.
+        # 
         # This parameter is required.
         self.cert_name = cert_name
+        # The ID card number to be verified.
+        # 
         # This parameter is required.
         self.cert_no = cert_no
+        # The BASE64 encoding of the portrait photo to be verified. **Remove the encoded URI information (such as `data:image/png;base64,`) before submission**. The photo size and the BASE64-encoded size must not exceed 50 KB.
+        # 
         # This parameter is required.
         self.cert_picture = cert_picture
+        # Specifies whether to encrypt. Currently only unencrypted is supported.
         self.mask = mask
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

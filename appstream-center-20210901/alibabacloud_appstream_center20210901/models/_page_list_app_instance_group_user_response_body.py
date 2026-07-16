@@ -14,7 +14,7 @@ class PageListAppInstanceGroupUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The users.
+        # The queried users.
         self.users = users
 
     def validate(self):

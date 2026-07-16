@@ -13,9 +13,9 @@ class DescribeSafDeOrderResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeSafDeOrderResponseBodyResultObject = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -53,15 +53,15 @@ class DescribeSafDeOrderResponseBodyResultObject(DaraModel):
         open_user_type: int = None,
         regions: List[main_models.DescribeSafDeOrderResponseBodyResultObjectRegions] = None,
     ):
-        # Expiration time
+        # The expiration time.
         self.expiration_date = expiration_date
-        # Based on the product type subscribed by the customer, the console permissions are divided into three categories:
+        # The console permissions are classified into three categories based on the commodity type activated by the customer:
         # 
-        #      1. New Customer: Has not purchased/subscribed to any service.
-        #      2. Old Customer (Subscription): Customers who have purchased the SAF product.
-        #      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
+        #      1. New customer: has not purchased or activated any service.
+        #      2. Existing customer (subscription): has purchased the saf commodity.
+        #      3. Pay-as-you-go: has purchased the saf_bag commodity or activated saf_pos.
         self.open_user_type = open_user_type
-        # Activated region permission addresses.
+        # The activated region permission addresses.
         self.regions = regions
 
     def validate(self):
@@ -111,16 +111,16 @@ class DescribeSafDeOrderResponseBodyResultObjectRegions(DaraModel):
         region: str = None,
         specification: int = None,
     ):
-        # Expiration date (timestamp).
+        # The expiration date (timestamp).
         self.expiration_date = expiration_date
-        # Region ID.
+        # The region ID.
         self.region = region
-        # Specification model:
+        # The specification type:
         # 
-        # 1: Basic Edition 
-        # 2: Advanced Edition 
-        # 3: Premium Edition 
-        # 4: Flagship Edition
+        #  1: Basic Edition
+        #  2: Advanced Edition
+        #  3: Premium Edition
+        #  4: Ultimate Edition.
         self.specification = specification
 
     def validate(self):

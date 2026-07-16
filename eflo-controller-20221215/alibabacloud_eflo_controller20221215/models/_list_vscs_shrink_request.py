@@ -17,17 +17,17 @@ class ListVscsShrinkRequest(DaraModel):
         tag: List[main_models.ListVscsShrinkRequestTag] = None,
         vsc_name: str = None,
     ):
-        # The maximum number of data entries to return.
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # The token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
+        # The token that marks the position from which to start the query. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # The IDs of the nodes.
+        # The list of node IDs.
         self.node_ids_shrink = node_ids_shrink
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # The VSC name.
+        # The name of the VSC.
         self.vsc_name = vsc_name
 
     def validate(self):

@@ -10,8 +10,12 @@ class SubmitMaterialTaskRequest(DaraModel):
         task_param: str = None,
         task_type: str = None,
     ):
+        # The parameters of the task.
+        # 
         # This parameter is required.
         self.task_param = task_param
+        # The type of the task.
+        # 
         # This parameter is required.
         self.task_type = task_type
 

@@ -10,6 +10,7 @@ class CreateSessionClusterRequest(DaraModel):
         self,
         body: main_models.SessionCluster = None,
     ):
+        # The data structure of the session cluster to create.
         self.body = body
 
     def validate(self):

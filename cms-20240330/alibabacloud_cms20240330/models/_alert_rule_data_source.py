@@ -18,31 +18,42 @@ class AlertRuleDataSource(DaraModel):
         tenant_id: str = None,
         type: str = None,
     ):
-        # Applicable data source type: APM_DS.
-        # Application type: 
+        # Applies to the APM_DS data source type.
         # 
-        # - apm.
+        # The type of the application. Valid value:
+        # 
+        # - apm
         self.app_type = app_type
-        # Applicable data source type: SLS_MULTI_DS.
-        # List of sub-data sources.
+        # Applies to the SLS_MULTI_DS data source type.
+        # 
+        # A list of sub-data sources.
         self.ds_list = ds_list
-        # Applicable data source type: PROMETHEUS_DS.
-        # Prometheus instance ID.
+        # Applies to the PROMETHEUS_DS data source type.
+        # 
+        # The ID of the Prometheus instance.
         self.instance_id = instance_id
-        # Applicable data source type: ENTERPRISE_DS.
-        # Name of the enterprise cloud monitoring metric repository.
+        # Applies to the ENTERPRISE_DS data source type.
+        # 
+        # The name of the Hybrid Cloud Monitoring metric repository.
         self.namespace = namespace
-        # Applicable data source types: APM_DS, PROMETHEUS_DS.
-        # The regionId to which the data source belongs.
+        # Applies to the APM_DS and PROMETHEUS_DS data source types.
+        # 
+        # The ID of the region where the data source is located.
         self.region_id = region_id
         self.tenant_id = tenant_id
-        # Data source type.
+        # The data source type.
+        # 
         # Valid values:
-        # - PROMETHEUS_DS: Prometheus data source.
-        # - SLS_MULTI_DS: SLS data source.
-        # - APM_DS: Application monitoring data source.
-        # - CMS_BASIC_DS: Basic cloud monitoring data source.
-        # - ENTERPRISE_DS: Enterprise cloud monitoring data source.
+        # 
+        # - PROMETHEUS_DS: A Prometheus data source.
+        # 
+        # - SLS_MULTI_DS: An SLS data source.
+        # 
+        # - APM_DS: An Application Monitoring data source.
+        # 
+        # - CMS_BASIC_DS: A basic Cloud Monitor data source.
+        # 
+        # - ENTERPRISE_DS: A Hybrid Cloud Monitoring data source.
         # 
         # This parameter is required.
         self.type = type
@@ -119,16 +130,17 @@ class AlertRuleDataSourceDsList(DaraModel):
         store: str = None,
         type: str = None,
     ):
-        # SLS project
+        # The SLS project.
         self.project = project
         # The region where the SLS project is located.
         self.region_id = region_id
-        # LogStore/MetricStore name.
+        # The name of the LogStore or MetricStore.
         self.store = store
-        # Type of SLS data sub-source:
+        # The type of the SLS sub-data source. Valid values:
         # 
-        # - SLS_LOG_DS: LogStore data source.
-        # - SLS_METRIC_DS: MetricStore data source.
+        # - SLS_LOG_DS: A LogStore data source.
+        # 
+        # - SLS_METRIC_DS: A MetricStore data source.
         self.type = type
 
     def validate(self):

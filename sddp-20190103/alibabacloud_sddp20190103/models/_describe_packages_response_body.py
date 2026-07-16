@@ -18,9 +18,9 @@ class DescribePackagesResponseBody(DaraModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of the information about the packages.
+        # The information about the data asset packages.
         self.items = items
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -93,34 +93,39 @@ class DescribePackagesResponseBodyItems(DaraModel):
         sensitive_count: int = None,
         total_count: int = None,
     ):
-        # The point in time when the MaxCompute package was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the data asset package was created. This value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
-        # The ID of the package.
+        # The unique ID of the data asset package.
         self.id = id
-        # The ID of the instance to which the package belongs.
+        # The ID of the asset instance to which the data asset package belongs.
         self.instance_id = instance_id
-        # The name of the package.
+        # The name of the data asset package.
         self.name = name
-        # The account of the user that owns the package.
+        # The account of the data asset package owner.
         self.owner = owner
-        # The sensitivity level of the package. Valid values:
+        # The ID of the risk level for the data asset package.
         # 
-        # *   **1**: N/A, which indicates that no sensitive data is detected.
-        # *   **2**: S1, which indicates the low sensitivity level.
-        # *   **3**: S2, which indicates the medium sensitivity level.
-        # *   **4**: S3, which indicates the high sensitivity level.
-        # *   **5**: S4, which indicates the highest sensitivity level.
+        # - **1**: N/A: No sensitive data is detected.
+        # 
+        # - **2**: S1: Level 1 sensitive data.
+        # 
+        # - **3**: S2: Level 2 sensitive data.
+        # 
+        # - **4**: S3: Level 3 sensitive data.
+        # 
+        # - **5**: S4: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # The name of the sensitivity level for the package.
+        # The name of the risk level for the package.
         self.risk_level_name = risk_level_name
-        # Indicates whether the package contains sensitive data. Valid values:
+        # Indicates whether the data asset package contains sensitive data.
         # 
-        # *   true: yes
-        # *   false: no
+        # - true: Yes.
+        # 
+        # - false: No.
         self.sensitive = sensitive
-        # The total volume of sensitive data in the package. For example, the value can be the total number of sensitive tables in the MaxCompute package.
+        # The total number of sensitive data entries in the data asset package. For example, the total number of sensitive tables in MaxCompute.
         self.sensitive_count = sensitive_count
-        # The total volume of data in the package. For example, the value can be the total number of tables in the MaxCompute package.
+        # The total number of data entries in the data asset package. For example, the total number of tables in MaxCompute.
         self.total_count = total_count
 
     def validate(self):

@@ -13,14 +13,26 @@ class CreateScriptWaveformRequest(DaraModel):
         script_content: str = None,
         script_id: str = None,
     ):
+        # The ID of the recording file.
+        # 
+        # > Obtain this ID from the Folder parameter of the GetJobDataUploadParams operation.
+        # 
         # This parameter is required.
         self.file_id = file_id
+        # The name of the recording file.
+        # 
         # This parameter is required.
         self.file_name = file_name
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The text of the script.
+        # 
         # This parameter is required.
         self.script_content = script_content
+        # Scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

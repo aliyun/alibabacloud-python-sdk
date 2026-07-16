@@ -23,7 +23,6 @@ class QueryLiveWatchDetailResponseBody(DaraModel):
         self.playback_uv = playback_uv
         self.praise_count = praise_count
         self.pv = pv
-        # requestId
         self.request_id = request_id
         self.total_watch_time = total_watch_time
         self.uv = uv

@@ -13,9 +13,16 @@ class ExportAnalysisTagDetailByTaskIdRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Category filter list.
         self.categories = categories
+        # Unique task ID.
+        # 
+        # > By default, do not specify TaskId. The system automatically generates it. If subsequent tasks use the same TaskId, they belong to the same conversation group.
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Unique identifier for Alibaba Cloud Model Studio workspace. For more information, see [Get Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

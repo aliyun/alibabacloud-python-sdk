@@ -11,9 +11,11 @@ class MultiModalGuardForBase64Request(DaraModel):
         service: str = None,
         service_parameters: str = None,
     ):
+        # The base64-encoded string of the image.
         self.image_base_64str = image_base_64str
         # Service
         self.service = service
+        # The service parameters.
         self.service_parameters = service_parameters
 
     def validate(self):

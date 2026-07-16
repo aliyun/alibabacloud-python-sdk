@@ -16,15 +16,15 @@ class DescribeColumnsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number of the current page displayed in the results.
         self.current_page = current_page
-        # The data in the columns of the table.
+        # Column data in the data asset table.
         self.items = items
-        # The number of entries returned per page.
+        # The number of data entries displayed per page in the results.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID of the result.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of data entries in the results.
         self.total_count = total_count
 
     def validate(self):
@@ -107,106 +107,141 @@ class DescribeColumnsResponseBodyItems(DaraModel):
         table_id: int = None,
         table_name: str = None,
     ):
-        # The time when the data in the column of the table is created. Unit: milliseconds.
+        # The creation time of the column data in the data asset table, in milliseconds.
         self.creation_time = creation_time
-        # The type of data in the column of the table.
+        # The data type of the column data in the data asset table.
         self.data_type = data_type
-        # The type of the database engine.
+        # Database engine type.
         self.engine_type = engine_type
-        # The ID of the column of the table.
+        # The unique ID of the column in the data asset table.
         self.id = id
-        # The ID of the instance to which data in the column of the table belongs.
+        # The ID of the asset instance to which the column data in the data asset table belongs.
         self.instance_id = instance_id
-        # The name of the instance to which data in the column of the table belongs.
+        # The name of the asset instance to which the column data in the data asset table belongs.
         self.instance_name = instance_name
-        # The column encryption status. Valid values:
+        # Column encryption status. Valid values:
         # 
-        # *   **-1**: unencrypted
-        # *   **1**: encrypted
-        # *   **2**: encryption failed
+        # - **-1**: Not encrypted
+        # 
+        # - **1**: Encryption successful
+        # 
+        # - **2**: Encryption failed
         self.masking_status = masking_status
-        # A list of tags for data that hits the recognition model.
+        # The list of data tags hit by the detection model.
         self.model_tags = model_tags
-        # The name of the column of the table.
+        # The name of the column in the data asset table.
         self.name = name
-        # The name of the sensitivity level for asset. Valid values:
+        # The risk level name of the asset. Valid values:
         # 
-        # *   **N/A**: indicates that no sensitive data is detected.
-        # *   **S1**: indicates the low sensitivity level.
-        # *   **S2**: indicates the medium sensitivity level.
-        # *   **S3**: indicates the high sensitivity level.
-        # *   **S4**: indicates the highest sensitivity level.
+        # - **N/A**: No sensitive data detected.
+        # 
+        # - **S1**: Level 1 sensitive data.
+        # 
+        # - **S2**: Level 2 sensitive data.
+        # 
+        # - **S3**: Level 3 sensitive data.
+        # 
+        # - **S4**: Level 4 sensitive data.
         self.odps_risk_level_name = odps_risk_level_name
-        # The ID of the sensitivity level of the asset. Valid values:
+        # The risk level code of the asset. Valid values:
         # 
-        # *   **1**: N/A
-        # *   **2**: S1
-        # *   **3**: S2
-        # *   **4**: S3
-        # *   **5**: S4
+        # - **1**: N/A.
+        # 
+        # - **2**: S1.
+        # 
+        # - **3**: S2.
+        # 
+        # - **4**: S3.
+        # 
+        # - **5**: S4.
         self.odps_risk_level_value = odps_risk_level_value
-        # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
+        # The product name to which the column data in the data asset table belongs. Valid values: **MaxCompute, OSS, ADS, OTS, RDS**, and others.
         self.product_code = product_code
-        # The ID of the service to which the data object belongs. Valid values:
+        # The ID corresponding to the product name to which the data object belongs. Valid values:
         # 
-        # *   **1**: MaxCompute
-        # *   **2**: Object Storage Service (OSS)
-        # *   **3**: AnalyticDB for MySQL
-        # *   **4**: Tablestore (OTS)
-        # *   **5**: ApsaraDB RDS
-        # *   **6**: self-managed database
-        # *   **7**: PolarDB for Xscale (PolarDB-X)
-        # *   **8**: PolarDB
-        # *   **9**: AnalyticDB for PostgreSQL
-        # *   **10**: ApsaraDB for OceanBase
-        # *   **11**: ApsaraDB for MongoDB
-        # *   **25**: ApsaraDB for Redis
+        # - **1**: MaxCompute
+        # 
+        # - **2**: OSS
+        # 
+        # - **3**: ADB-MYSQL
+        # 
+        # - **4**: TableStore
+        # 
+        # - **5**: RDS
+        # 
+        # - **6**: SELF_DB
+        # 
+        # - **7**: PolarDB-X
+        # 
+        # - **8**: PolarDB
+        # 
+        # - **9**: ADB-PG
+        # 
+        # - **10**: OceanBase
+        # 
+        # - **11**: MongoDB
+        # 
+        # - **25**: Redis
         self.product_id = product_id
-        # The region in which the asset resides.
+        # The region where the asset is located.
         self.region_id = region_id
-        # The ID of the revision record.
+        # Correction record ID.
         self.revision_id = revision_id
-        # Indicates whether the column is revised. Valid values:
+        # Correction status. Valid values:
         # 
-        # *   1: yes
-        # *   0: no
+        # - 1: Corrected.
+        # 
+        # - 0: Not corrected.
         self.revision_status = revision_status
-        # The ID of the sensitivity level of data in the column of the table. Valid values:
+        # The risk level ID of the column data in the data asset table. Valid values:
         # 
-        # *   **1**: N/A
-        # *   **2**: S1
-        # *   **3**: S2
-        # *   **4**: S3
-        # *   **5**: S4
+        # - **1**: N/A.
+        # 
+        # - **2**: S1.
+        # 
+        # - **3**: S2.
+        # 
+        # - **4**: S3.
+        # 
+        # - **5**: S4.
         self.risk_level_id = risk_level_id
-        # The name of the sensitivity level for data in the column of the table. Valid values:
+        # The risk level name of the column data in the data asset table. Valid values:
         # 
-        # *   **N/A**: indicates that no sensitive data is detected.
-        # *   **S1**: indicates the low sensitivity level.
-        # *   **S2**: indicates the medium sensitivity level.
-        # *   **S3**: indicates the high sensitivity level.
-        # *   **S4**: indicates the highest sensitivity level.
+        # - **N/A**: No sensitive data detected.
+        # 
+        # - **S1**: Level 1 sensitive data.
+        # 
+        # - **S2**: Level 2 sensitive data.
+        # 
+        # - **S3**: Level 3 sensitive data.
+        # 
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
-        # The ID of the sensitive data detection rule that data in the column of the table hits.
+        # The ID of the sensitive data detection rule hit by the column data in the data asset table.
         self.rule_id = rule_id
-        # The name of the sensitive data detection rule that data in the column of the table hits.
+        # The name of the sensitive data detection rule hit by the column data in the data asset table.
         self.rule_name = rule_name
-        # The name of the sensitivity level. Valid values:
+        # Sensitivity level name. Valid values:
         # 
-        # *   **N/A**: indicates that no sensitive data is detected.
-        # *   **S1**: indicates the low sensitivity level.
-        # *   **S2**: indicates the medium sensitivity level.
-        # *   **S3**: indicates the high sensitivity level.
-        # *   **S4**: indicates the highest sensitivity level.
+        # - **N/A**: No sensitive data detected.
+        # 
+        # - **S1**: Level 1 sensitive data.
+        # 
+        # - **S2**: Level 2 sensitive data.
+        # 
+        # - **S3**: Level 3 sensitive data.
+        # 
+        # - **S4**: Level 4 sensitive data.
         self.sens_level_name = sens_level_name
-        # Indicates whether the column contains sensitive data. Valid values:
+        # Indicates whether the column data in the data asset table contains sensitive data. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The column data in the data asset table contains sensitive data.
+        # 
+        # - false: The column data in the data asset table does not contain sensitive data.
         self.sensitive = sensitive
-        # The ID of the table.
+        # The ID of the asset table to which the column data in the data asset table belongs.
         self.table_id = table_id
-        # The name of the table to which the revised column belongs.
+        # The name of the table to which the target column for correction belongs.
         self.table_name = table_name
 
     def validate(self):
@@ -381,17 +416,21 @@ class DescribeColumnsResponseBodyItemsModelTags(DaraModel):
         id: int = None,
         name: str = None,
     ):
-        # The tag ID.
+        # The data tag ID of the detection model.
         # 
-        # *   **101**: sensitive personal information
-        # *   **102**: personal information
-        # *   **103**: important information
+        # - **101**: Personal sensitive information.
+        # 
+        # - **102**: Personal information.
+        # 
+        # - **103**: Important data.
         self.id = id
-        # The tag name.
+        # The data tag name of the detection model.
         # 
-        # *   Sensitive personal information
-        # *   Personal information
-        # *   Important information
+        # - Personal sensitive information.
+        # 
+        # - Personal information.
+        # 
+        # - Important data.
         self.name = name
 
     def validate(self):

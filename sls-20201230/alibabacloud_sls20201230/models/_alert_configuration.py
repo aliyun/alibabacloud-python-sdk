@@ -33,34 +33,64 @@ class AlertConfiguration(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The alert annotations.
         self.annotations = annotations
+        # Specifies whether to enable automatic annotation.
+        # 
         # This parameter is required.
         self.auto_annotation = auto_annotation
+        # The alert trigger condition.
         self.condition_configuration = condition_configuration
+        # The ID of the dashboard to which the alert is attached.
         self.dashboard = dashboard
+        # The group evaluation configuration.
+        # 
         # This parameter is required.
         self.group_configuration = group_configuration
+        # The configurations for joining the results of query statements.
         self.join_configurations = join_configurations
+        # The alert labels.
         self.labels = labels
+        # The time until which the alert is muted.
         self.mute_until = mute_until
+        # Specifies whether to enable no-data alerts.
+        # 
         # This parameter is required.
         self.no_data_fire = no_data_fire
+        # The severity of no-data alerts.
         self.no_data_severity = no_data_severity
+        # The configuration for the SLS alert notification service.
         self.policy_configuration = policy_configuration
+        # The list of query statements.
+        # 
         # This parameter is required.
         self.query_list = query_list
+        # Specifies whether to send recovery alerts.
+        # 
         # This parameter is required.
         self.send_resolved = send_resolved
+        # The alert severity configurations.
+        # 
         # This parameter is required.
         self.severity_configurations = severity_configurations
+        # The configuration for sending alerts to the SLS alert management service.
         self.sink_alerthub = sink_alerthub
+        # The configuration for sending alerts to Cloud Monitor.
         self.sink_cms = sink_cms
+        # The configuration for sending alerts to the eventstore.
         self.sink_event_store = sink_event_store
+        # The custom alert tags.
         self.tags = tags
+        # The alert template configuration.
         self.template_configuration = template_configuration
+        # The consecutive trigger threshold.
+        # 
         # This parameter is required.
         self.threshold = threshold
+        # The type of the alert rule.
         self.type = type
+        # The version.
+        # 
         # This parameter is required.
         self.version = version
 

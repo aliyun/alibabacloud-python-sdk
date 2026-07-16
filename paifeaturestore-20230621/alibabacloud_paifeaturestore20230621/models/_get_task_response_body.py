@@ -21,18 +21,47 @@ class GetTaskResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # The task configuration.
         self.config = config
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The execution time.
         self.gmt_executed_time = gmt_executed_time
+        # The completion time.
         self.gmt_finished_time = gmt_finished_time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
+        # The ID of the target object.
         self.object_id = object_id
+        # The type of the target object.
+        # 
+        # - ModelFeature: model feature
+        # 
+        # - FeatureView: feature view
         self.object_type = object_type
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The request ID.
         self.request_id = request_id
+        # The task runtime configuration.
         self.running_config = running_config
+        # The status of the task.
+        # 
+        # - Initializing: The task is initializing.
+        # 
+        # - Running: The task is running.
+        # 
+        # - Success: The task completed successfully.
+        # 
+        # - Failure: The task failed.
         self.status = status
+        # The task type.
+        # 
+        # - OfflineToOnline: offline-to-online data synchronization
+        # 
+        # - ExportTrainingSet: training sample table export
         self.type = type
 
     def validate(self):

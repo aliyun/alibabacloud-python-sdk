@@ -14,13 +14,22 @@ class CreatePolarClawAgentRequest(DaraModel):
         restart: bool = None,
         workspace: str = None,
     ):
+        # The agent ID.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The avatar\\"s URL or path.
         self.avatar = avatar
+        # The emoji character.
         self.emoji = emoji
+        # Specifies whether to restart the gateway after the agent is created. The default value is `true`.
         self.restart = restart
+        # The absolute path of the agent workspace.
+        # 
         # This parameter is required.
         self.workspace = workspace
 

@@ -13,13 +13,13 @@ class DownloadVerifyRecordIntlResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Return code.
+        # The return code.
         self.code = code
-        # Returned data.
+        # The returned data.
         self.data = data
-        # Return message.
+        # The return message.
         self.message = message
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +68,9 @@ class DownloadVerifyRecordIntlResponseBodyData(DaraModel):
         download_task_id: str = None,
         url: str = None,
     ):
-        # Task ID, returned in asynchronous mode, used later with QueryDownloadTaskIntl to download the exported file.
+        # The task ID. This parameter is returned in asynchronous mode. Use QueryDownloadTaskIntl to download the exported file.
         self.download_task_id = download_task_id
-        # Exported file download link.
+        # The download URL of the exported file.
         self.url = url
 
     def validate(self):

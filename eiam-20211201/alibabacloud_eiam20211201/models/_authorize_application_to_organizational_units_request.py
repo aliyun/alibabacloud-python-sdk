@@ -14,17 +14,17 @@ class AuthorizeApplicationToOrganizationalUnitsRequest(DaraModel):
         instance_id: str = None,
         organizational_unit_ids: List[str] = None,
     ):
-        # The ID of the application on which you want to grant permissions.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
         # 应用角色ID。
         self.application_role_id = application_role_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IDs of the organizations to which you want to grant permissions. You can grant permissions to a maximum of 100 organizations at a time.
+        # The list of organization IDs. You can specify a maximum of 100 organization IDs per operation.
         # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids

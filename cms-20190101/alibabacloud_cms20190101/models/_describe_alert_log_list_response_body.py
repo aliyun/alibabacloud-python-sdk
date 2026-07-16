@@ -18,11 +18,11 @@ class DescribeAlertLogListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The queried alert logs.
+        # The list of alert history entries.
         self.alert_log_list = alert_log_list
         # The HTTP status code.
         # 
-        # > The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the call was successful.
         self.code = code
         # The error message.
         self.message = message
@@ -32,10 +32,11 @@ class DescribeAlertLogListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The call was successful.
+        # 
+        # - false: The call failed.
         self.success = success
 
     def validate(self):
@@ -138,81 +139,102 @@ class DescribeAlertLogListResponseBodyAlertLogList(DaraModel):
         send_status: str = None,
         webhook_list: List[main_models.DescribeAlertLogListResponseBodyAlertLogListWebhookList] = None,
     ):
-        # The timestamp that was generated when the alert was triggered.
+        # The timestamp when the alert was triggered.
         # 
         # Unit: milliseconds.
         self.alert_time = alert_time
-        # The details of the blacklist policy.
+        # The details of the matched alert blacklist.
         self.black_list_detail = black_list_detail
-        # The name of the blacklist policy.
+        # The name of the matched alert blacklist.
         self.black_list_name = black_list_name
-        # The ID of the blacklist policy.
+        # The UUID of the matched alert blacklist.
         self.black_list_uuid = black_list_uuid
+        # The list of Wangwang IDs of the alert contact.
         self.contact_aliiwwlist = contact_aliiwwlist
+        # The list of DingTalk accounts of the alert contact.
         self.contact_ding_list = contact_ding_list
+        # The list of alert contact groups.
         self.contact_groups = contact_groups
+        # The list of email addresses of the alert contact.
         self.contact_mail_list = contact_mail_list
+        # The list of phone numbers of the alert contact.
         self.contact_on_call_list = contact_on_call_list
+        # The list of phone numbers that receive text messages of the alert contact.
         self.contact_smslist = contact_smslist
-        # The dimensions of the resource that triggered alerts.
+        # The dimensions of the resource for which the alert is triggered.
         self.dimensions = dimensions
+        # The list of webhook URLs of DingTalk chatbots for the alert contact.
         self.dingding_webhook_list = dingding_webhook_list
-        # The alert rule based on which the alert is triggered.
+        # The rule that triggers the alert.
         self.escalation = escalation
-        # The event name.
+        # The name of the event.
         self.event_name = event_name
-        # The extended fields.
+        # The extended information of the alert.
         self.extended_info = extended_info
         # The ID of the application group.
         self.group_id = group_id
         # The name of the application group.
         self.group_name = group_name
-        # The resource ID.
+        # The ID of the resource.
         self.instance_id = instance_id
-        # The resource name.
+        # The name of the resource.
         self.instance_name = instance_name
-        # The alert level and the methods that are used to send alert notifications. Valid values:
+        # The alert level and notification methods. Valid values:
         # 
-        # *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   OK: No alert is generated.
+        # <props="china">- P2: phone calls, text messages, emails, and DingTalk chatbots.
+        # 
+        # <props="china">- P3: text messages, emails, and DingTalk chatbots.
+        # 
+        # <props="china">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="china">- OK: no alerts.
+        # 
+        # <props="intl">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="intl">- OK: no alerts.
+        # 
+        # <props="partner">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="partner">- OK: no alerts.
         self.level = level
-        # Indicates whether the alert level was changed. Valid values:
-        # 
-        # *   `P4->OK`: The alert level was changed from P4 to OK.
-        # *   `P4->P4`: The alert level was still P4.
+        # The change of the alert level. Valid values:
+        # - `P4->OK`: The alert level changes from P4 to OK, which indicates that the alert is cleared.
+        # - `P4->P4`: indicates a P4-level alert.
         self.level_change = level_change
         # The log ID.
         self.log_id = log_id
-        # The alert information in a JSON string.
+        # The alert-related information, which is a JSON string.
         self.message = message
-        # The metric name.
+        # The name of the metric.
         self.metric_name = metric_name
         # The namespace of the cloud service.
         self.namespace = namespace
-        # The identifier of the cloud service. Valid values:
+        # The cloud service identifier. Valid values:
         # 
-        # *   If the cloud service is provided by Alibaba Cloud, the abbreviation of the service name is returned. Example: ECS.
-        # *   If the cloud service is not provided by Alibaba Cloud, a value in the `acs_Service keyword` format is returned. Example: acs_networkmonitor.
+        # - For an Alibaba Cloud service, the value is the abbreviation of the cloud service name. Example: ECS.
+        # 
+        # - For a non-Alibaba Cloud service, the value is in the format of `acs_Product keyword`. Example: acs_networkmonitor.
         self.product = product
         # The ID of the alert rule.
         self.rule_id = rule_id
         # The name of the alert rule.
         self.rule_name = rule_name
-        # The details about the sending results of alert notifications.
+        # The details of the alert pushing result.
         self.send_detail = send_detail
-        # The sending results of alert notifications.
+        # The list of alert sending results.
         self.send_result_list = send_result_list
-        # The status of the alert. Valid values:
+        # The alert status. Valid values:
+        # - 0: An alert is triggered or cleared.
+        # - 1: The current time is not within the effective period of the alert.
+        # - 2: The current time is within the channel silence period.
+        # - 3: The host is being restarted.
+        # - 4: No alerts are sent.
         # 
-        # *   0: The alert is triggered or cleared.
-        # *   1: The alert is ineffective.
-        # *   2: The alert is muted.
-        # *   3: The host is restarting.
-        # *   4: No alert notification is sent.
-        # 
-        # If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
+        # <props="china">When the alert status is 0, an alert is triggered if Level is set to P2, P3, or P4; the alert is cleared if Level is set to OK.
+        # <props="intl">When the alert status is 0, an alert is triggered if Level is set to P4; the alert is cleared if Level is set to OK.
+        # <props="partner">When the alert status is 0, an alert is triggered if Level is set to P4; the alert is cleared if Level is set to OK.
         self.send_status = send_status
-        # The callback URLs.
+        # The list of URLs that are called back when the alert is triggered.
         self.webhook_list = webhook_list
 
     def validate(self):
@@ -469,11 +491,11 @@ class DescribeAlertLogListResponseBodyAlertLogListWebhookList(DaraModel):
         message: str = None,
         url: str = None,
     ):
-        # The status code of the alert callback.
+        # The status code returned for the alert callback.
         self.code = code
-        # The message returned for the alert callback.
+        # The information returned for the alert callback.
         self.message = message
-        # The callback URL.
+        # The URL that is called back when the alert is triggered.
         self.url = url
 
     def validate(self):
@@ -514,16 +536,15 @@ class DescribeAlertLogListResponseBodyAlertLogListSendResultList(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The category of the alert notification method. Valid values:
-        # 
-        # *   MAIL: email
-        # *   ALIIM: TradeManager
-        # *   SMS: text message
-        # *   CALL: phone call
-        # *   DING: DingTalk chatbot
-        # *   Merged: alert merging
+        # The channel that sends the alert. Valid values:
+        # - MAIL: email.
+        # - ALIIM: Wangwang.
+        # - SMS: text message.
+        # - CALL: phone call.
+        # - DING: DingTalk chatbot.
+        # - Merged: alert combination.
         self.key = key
-        # The notification object corresponding to the alert notification method.
+        # The notification target that corresponds to the alert channel.
         self.value = value
 
     def validate(self):
@@ -558,12 +579,13 @@ class DescribeAlertLogListResponseBodyAlertLogListSendDetail(DaraModel):
         channel_result_list: List[main_models.DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList] = None,
         result_code: str = None,
     ):
-        # The list of sending results that are categorized by notification method.
+        # The list of alert pushing results by alert channel.
         self.channel_result_list = channel_result_list
-        # Indicates whether the alert notifications are sent.
+        # The pushing status of the alert information.
         # 
-        # *   If the alert notifications are sent, the value "success" is returned.
-        # *   If the configuration is invalid, no alert notification is sent and an error code is returned.
+        # - success: The alert was pushed.
+        # 
+        # - error code: If a configuration error occurs and the pushing list is empty, an error code is displayed.
         self.result_code = result_code
 
     def validate(self):
@@ -606,17 +628,23 @@ class DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultList(Da
         channel: str = None,
         result_list: List[main_models.DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListResultList] = None,
     ):
-        # The method that is used to send alert notifications. Valid values:
+        # The alert pushing channel. Valid values:
         # 
-        # *   MAIL: email
-        # *   SMS: text message
-        # *   WEBHOOK: alert callback
-        # *   SLS: Simple Log Service
-        # *   ONCALL: phone call
-        # *   FC: Function Compute
-        # *   MNS: Message Service queue
+        # - MAIL: email.
+        # 
+        # - SMS: text message.
+        # 
+        # - WEBHOOK: alert callback.
+        # 
+        # - SLS: Log Service.
+        # 
+        # - ONCALL: phone call.
+        # 
+        # - FC: Function Compute.
+        # 
+        # - MNS: Message Service (MNS).
         self.channel = channel
-        # The sending results of alert notifications.
+        # The list of alert information results that CloudMonitor sends to the alert channel.
         self.result_list = result_list
 
     def validate(self):
@@ -662,20 +690,23 @@ class DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListRes
         success: bool = None,
         notify_target_list: List[str] = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # *   If the value of the `Channel` parameter is `WEBHOOK`, the status code is 200 or 500.
-        # *   If the value of the `Channel` parameter is `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is empty or not returned.
+        # - If `Channel` is set to `WEBHOOK`, the status code is 200 or 500.
+        # 
+        # - If `Channel` is set to `MAIL`, `SMS`, `SLS`, `ONCALL`, `FC`, or `MNS`, this parameter is unavailable or empty.
         self.code = code
-        # The details of the returned results.
+        # The details of the returned result.
         self.detail = detail
-        # The request ID returned when CloudMonitor calls another cloud service.
+        # The request ID returned by calling another cloud service.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # The result of calling the target.
         # 
-        # *   true
-        # *   false
+        # - true: The call was successful.
+        # 
+        # - false: The call failed.
         self.success = success
+        # The list of channel notifications.
         self.notify_target_list = notify_target_list
 
     def validate(self):
@@ -728,9 +759,9 @@ class DescribeAlertLogListResponseBodyAlertLogListExtendedInfo(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the extended field.
+        # The name of the extension field.
         self.name = name
-        # The value of the extended field.
+        # The value of the extension field.
         self.value = value
 
     def validate(self):
@@ -766,16 +797,29 @@ class DescribeAlertLogListResponseBodyAlertLogListEscalation(DaraModel):
         level: str = None,
         times: int = None,
     ):
-        # The description of the alert rule.
+        # The description of the rule that triggers the alert.
         # 
-        # >  The content of the alert rule. This parameter indicates the conditions that trigger an alert.
+        # > The body of the alert rule. An alert rule is triggered when the monitoring data meets the alert conditions.
         self.expression = expression
-        # The alert level and the methods that are used to send alert notifications. Valid values:
+        # The alert level and notification methods. Valid values:
         # 
-        # *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
-        # *   OK: No alert is generated.
+        # <props="china">- P2: phone calls, text messages, emails, and DingTalk chatbots.
+        # 
+        # <props="china">- P3: text messages, emails, and DingTalk chatbots.
+        # 
+        # <props="china">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="china">- OK: no alerts.
+        # 
+        # <props="intl">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="intl">- OK: no alerts.
+        # 
+        # <props="partner">- P4: emails and DingTalk chatbots.
+        # 
+        # <props="partner">- OK: no alerts.
         self.level = level
-        # The consecutive number of times for which the metric value meets the alert condition before an alert is triggered.
+        # The number of times that the alert is retried.
         self.times = times
 
     def validate(self):
@@ -816,9 +860,9 @@ class DescribeAlertLogListResponseBodyAlertLogListDimensions(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the dimension.
+        # The key of the alerting resource.
         self.key = key
-        # The value of the dimension.
+        # The value of the alerting resource.
         self.value = value
 
     def validate(self):

@@ -11,13 +11,12 @@ class DescribeUniBackupPoliciesRequest(DaraModel):
         page_size: int = None,
         policy_name: str = None,
     ):
-        # The number of the page to return. Default value: **1**.
+        # The page number from which to start displaying query results. Default value: **1**, which indicates that query results are displayed starting from page 1.
         self.current_page = current_page
-        # The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
+        # The maximum number of entries to display per page for a paginated query. The default number of entries per page is 20. If the PageSize parameter is left empty, 20 entries are returned by default.
+        # > We recommend that you do not leave PageSize empty.
         self.page_size = page_size
-        # The name of the anti-ransomware policy.
+        # The name of the database anti-ransomware backup policy.
         self.policy_name = policy_name
 
     def validate(self):

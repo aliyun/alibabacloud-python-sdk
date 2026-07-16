@@ -13,9 +13,9 @@ class DescribeEventVariableTemplateListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeEventVariableTemplateListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -59,11 +59,11 @@ class DescribeEventVariableTemplateListResponseBodyResultObject(DaraModel):
         template_name: str = None,
         variables: List[main_models.DescribeEventVariableTemplateListResponseBodyResultObjectVariables] = None,
     ):
-        # Template code.
+        # The template code.
         self.template_code = template_code
-        # Template name.
+        # The template name.
         self.template_name = template_name
-        # Variable list.
+        # The list of variables.
         self.variables = variables
 
     def validate(self):
@@ -117,19 +117,19 @@ class DescribeEventVariableTemplateListResponseBodyResultObjectVariables(DaraMod
         title: str = None,
         type: str = None,
     ):
-        # Variable code
+        # The variable code.
         self.code = code
-        # Description information.
+        # The description.
         self.description = description
-        # Variable input type
+        # The variable input type.
         self.field_type = field_type
-        # Primary key ID
+        # The primary key ID.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Title.
+        # The title.
         self.title = title
-        # Variable type.
+        # The variable type.
         self.type = type
 
     def validate(self):

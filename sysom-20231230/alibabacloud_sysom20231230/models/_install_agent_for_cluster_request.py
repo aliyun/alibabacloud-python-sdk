@@ -13,10 +13,17 @@ class InstallAgentForClusterRequest(DaraModel):
         config_id: str = None,
         grayscale_config: str = None,
     ):
+        # The component ID.
         self.agent_id = agent_id
+        # The component version.
         self.agent_version = agent_version
+        # The cluster ID.
+        # 
+        # > The cluster ID here must be an ACK cluster ID.
         self.cluster_id = cluster_id
+        # The component configuration ID.
         self.config_id = config_id
+        # The canary release configuration.
         self.grayscale_config = grayscale_config
 
     def validate(self):

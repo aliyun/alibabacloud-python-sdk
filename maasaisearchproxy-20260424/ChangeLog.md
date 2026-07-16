@@ -1,3 +1,9 @@
+2026-05-21 Version: 2.1.0
+- Support API OpenDatasetImportData.
+- Support API OpenDatasetResourceUrl.
+- Update API WebSearch: add request parameters body.searchType.
+
+
 2026-05-14 Version: 2.0.0
 - Update API WebSearch: add response parameters Body.data.result.$.date.
 - Update API WebSearch: add response parameters Body.data.result.$.source.

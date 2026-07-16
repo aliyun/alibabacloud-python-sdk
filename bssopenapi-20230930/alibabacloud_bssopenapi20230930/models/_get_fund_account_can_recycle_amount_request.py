@@ -10,8 +10,11 @@ class GetFundAccountCanRecycleAmountRequest(DaraModel):
         currency: str = None,
         recycle_from_fund_account_id: str = None,
     ):
+        # The currency.
+        # 
         # This parameter is required.
         self.currency = currency
+        # The ID of the source account (payer account) from which funds are reclaimed. If not specified, the account ID owned by the current account is used by default.
         self.recycle_from_fund_account_id = recycle_from_fund_account_id
 
     def validate(self):

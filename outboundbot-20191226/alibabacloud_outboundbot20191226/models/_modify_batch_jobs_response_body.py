@@ -17,11 +17,17 @@ class ModifyBatchJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the API call.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The information about the job group.
         self.job_group = job_group
+        # The message returned for the API call.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -88,13 +94,21 @@ class ModifyBatchJobsResponseBodyJobGroup(DaraModel):
         scenario_id: str = None,
         strategy: main_models.ModifyBatchJobsResponseBodyJobGroupStrategy = None,
     ):
+        # The list of calling numbers.
         self.calling_numbers = calling_numbers
+        # The time when the job group was created.
         self.creation_time = creation_time
+        # The key of the job file after it is uploaded.
         self.job_file_path = job_file_path
+        # The description of the job group.
         self.job_group_description = job_group_description
+        # The job group ID.
         self.job_group_id = job_group_id
+        # The name of the job group.
         self.job_group_name = job_group_name
+        # The scenario ID.
         self.scenario_id = scenario_id
+        # The execution policy.
         self.strategy = strategy
 
     def validate(self):
@@ -180,20 +194,35 @@ class ModifyBatchJobsResponseBodyJobGroupStrategy(DaraModel):
         type: str = None,
         working_time: List[main_models.ModifyBatchJobsResponseBodyJobGroupStrategyWorkingTime] = None,
     ):
+        # The custom data for the policy.
         self.customized = customized
+        # The end time.
         self.end_time = end_time
+        # The follow-up action after an execution epoch ends.
         self.follow_up_strategy = follow_up_strategy
+        # Indicates whether the policy is a template.
         self.is_template = is_template
+        # The maximum number of redials after a call fails.
         self.max_attempts_per_day = max_attempts_per_day
+        # The interval between redials.
         self.min_attempt_interval = min_attempt_interval
+        # The repeat mode.
         self.repeat_by = repeat_by
+        # The days of the week on which to repeat the execution.
         self.repeat_days = repeat_days
+        # The number routing policy.
         self.routing_strategy = routing_strategy
+        # The start time.
         self.start_time = start_time
+        # The policy description.
         self.strategy_description = strategy_description
+        # The policy ID.
         self.strategy_id = strategy_id
+        # The policy name.
         self.strategy_name = strategy_name
+        # The policy type.
         self.type = type
+        # The time frames during which the policy is executed.
         self.working_time = working_time
 
     def validate(self):
@@ -314,7 +343,9 @@ class ModifyBatchJobsResponseBodyJobGroupStrategyWorkingTime(DaraModel):
         begin_time: str = None,
         end_time: str = None,
     ):
+        # The start time.
         self.begin_time = begin_time
+        # The end time.
         self.end_time = end_time
 
     def validate(self):

@@ -18,26 +18,28 @@ class CreateTrFirewallV2RoutePolicyRequest(DaraModel):
         policy_type: str = None,
         src_candidate_list: List[main_models.CreateTrFirewallV2RoutePolicyRequestSrcCandidateList] = None,
     ):
-        # The secondary traffic redirection instances.
+        # The list of secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
-        # The instance ID of the VPC firewall.
+        # The VPC border firewall instance ID.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language type for receiving messages. Valid values:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # - **en**: English
         self.lang = lang
-        # The description of the traffic redirection instance.
+        # The traffic redirection description.
         self.policy_description = policy_description
-        # The name of the traffic redirection instance.
+        # The traffic redirection name.
         self.policy_name = policy_name
-        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # The traffic redirection scenario type for the VPC border firewall with Cloud Enterprise Network Enterprise Edition. Valid values:
         # 
-        # *   **fullmesh**: interconnected instances
-        # *   **one_to_one**: instance to instance
-        # *   **end_to_end**: instance to instances
+        # - **fullmesh**: Multi-point interconnection
+        # 
+        # - **one_to_one**: Point-to-point
+        # 
+        # - **end_to_end**: Point-to-multipoint
         self.policy_type = policy_type
-        # The primary traffic redirection instances.
+        # The list of primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
 
     def validate(self):

@@ -18,11 +18,11 @@ class ModifyDBClusterMaintainTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The maintenance window of the cluster. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # The maintenance window of the cluster. The format is HH:mmZ-HH:mmZ.
         # 
-        # For example, a value of 00:00Z-01:00Z indicates that routine maintenance can be performed on the cluster from 08:00 (UTC+8) to 09:00 (UTC+8).
+        # Example: 00:00Z-01:00Z. This means that routine maintenance can be performed from 00:00 to 01:00 (UTC), which is 08:00 to 09:00 (UTC+8).
         # 
-        # >  You can set the start time and end time of the maintenance window to the time on the hour, and the maintenance window is 1 hour.
+        # > The maintenance window must start on the hour and last for one hour.
         # 
         # This parameter is required.
         self.maintain_time = maintain_time

@@ -10,8 +10,12 @@ class RemoveTagRequest(DaraModel):
         app_key: int = None,
         tag_name: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The name of the tag to remove. You can remove only one tag at a time. Maximum length: 128 characters.
+        # 
         # This parameter is required.
         self.tag_name = tag_name
 

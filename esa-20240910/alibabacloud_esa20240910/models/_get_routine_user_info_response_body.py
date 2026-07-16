@@ -14,11 +14,8 @@ class GetRoutineUserInfoResponseBody(DaraModel):
         routines: List[main_models.GetRoutineUserInfoResponseBodyRoutines] = None,
         subdomains: List[str] = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The routines.
         self.routines = routines
-        # The subdomains.
         self.subdomains = subdomains
 
     def validate(self):
@@ -68,11 +65,8 @@ class GetRoutineUserInfoResponseBodyRoutines(DaraModel):
         description: str = None,
         routine_name: str = None,
     ):
-        # The time when the routine was created.
         self.create_time = create_time
-        # The routine description, which is Base64-encoded.
         self.description = description
-        # The routine name.
         self.routine_name = routine_name
 
     def validate(self):

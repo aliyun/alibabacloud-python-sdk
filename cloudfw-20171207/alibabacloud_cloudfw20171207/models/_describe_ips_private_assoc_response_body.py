@@ -15,9 +15,13 @@ class DescribeIpsPrivateAssocResponseBody(DaraModel):
         total_count: int = None,
         total_open_count: int = None,
     ):
+        # A list of details about private IP tracing for the intrusion prevention system (IPS).
         self.ips_private_assoc = ips_private_assoc
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The total number of assets that have private IP tracing for the IPS enabled.
         self.total_open_count = total_open_count
 
     def validate(self):
@@ -81,16 +85,27 @@ class DescribeIpsPrivateAssocResponseBodyIpsPrivateAssoc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
+        # The status of private IP tracing.
         self.assoc_info_status = assoc_info_status
+        # The error message.
         self.error_msg = error_msg
+        # The Alibaba Cloud account ID of the resource owner.
         self.member_uid = member_uid
+        # A list of protected IP addresses.
         self.protected_ip_list = protected_ip_list
+        # The ID of the region.
         self.region_id = region_id
+        # The ID of the instance.
         self.resource_id = resource_id
+        # The name of the instance.
         self.resource_name = resource_name
+        # The status of the association.
         self.status = status
+        # A list of unprotected IP addresses.
         self.unprotected_ip_list = unprotected_ip_list
+        # The ID of the VPC.
         self.vpc_id = vpc_id
+        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):

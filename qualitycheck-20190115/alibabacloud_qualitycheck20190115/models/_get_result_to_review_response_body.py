@@ -16,10 +16,15 @@ class GetResultToReviewResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Result code. **200** means success. Any other value means failure. Use this field to identify the cause.
         self.code = code
+        # Detailed response data.
         self.data = data
+        # Error details if the call fails. Returns **successful** on success.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded. true means success. **false** or **null** means failure.
         self.success = success
 
     def validate(self):
@@ -85,18 +90,26 @@ class GetResultToReviewResponseBodyData(DaraModel):
         total_score: int = None,
         vid: str = None,
     ):
+        # Protocol used in the audio URL. Possible values: http, https.
         self.audio_scheme = audio_scheme
+        # Audio URL without the protocol prefix (http\\:// or https\\://). Combine with AudioScheme to form the full URL.
         self.audio_url = audio_url
+        # Review comments.
         self.comments = comments
         self.dialogues = dialogues
+        # File ID.
         self.file_id = file_id
+        # File name.
         self.file_merge_name = file_merge_name
         self.hit_rule_review_info_list = hit_rule_review_info_list
         self.manual_score_info_list = manual_score_info_list
         self.review_history_list = review_history_list
         self.review_type_id_list = review_type_id_list
+        # Current task status. 0: incomplete. 1: complete. Use this field to check completion. Any other value indicates an error.
         self.status = status
+        # Quality inspection score.
         self.total_score = total_score
+        # File ID.
         self.vid = vid
 
     def validate(self):

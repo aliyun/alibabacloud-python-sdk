@@ -90,6 +90,7 @@ class ListServerGroupsResponseBodyServerGroups(DaraModel):
         create_time: str = None,
         cross_zone_enabled: bool = None,
         health_check_config: main_models.ListServerGroupsResponseBodyServerGroupsHealthCheckConfig = None,
+        ip_version_affinity_mode: str = None,
         ipv_6enabled: bool = None,
         protocol: str = None,
         related_load_balancer_ids: List[str] = None,
@@ -129,6 +130,7 @@ class ListServerGroupsResponseBodyServerGroups(DaraModel):
         self.cross_zone_enabled = cross_zone_enabled
         # The health check configurations.
         self.health_check_config = health_check_config
+        self.ip_version_affinity_mode = ip_version_affinity_mode
         # Indicates whether IPv6 is supported. Valid values:
         # 
         # *   **true**
@@ -229,6 +231,9 @@ class ListServerGroupsResponseBodyServerGroups(DaraModel):
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
 
+        if self.ip_version_affinity_mode is not None:
+            result['IpVersionAffinityMode'] = self.ip_version_affinity_mode
+
         if self.ipv_6enabled is not None:
             result['Ipv6Enabled'] = self.ipv_6enabled
 
@@ -302,6 +307,9 @@ class ListServerGroupsResponseBodyServerGroups(DaraModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = main_models.ListServerGroupsResponseBodyServerGroupsHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m.get('HealthCheckConfig'))
+
+        if m.get('IpVersionAffinityMode') is not None:
+            self.ip_version_affinity_mode = m.get('IpVersionAffinityMode')
 
         if m.get('Ipv6Enabled') is not None:
             self.ipv_6enabled = m.get('Ipv6Enabled')

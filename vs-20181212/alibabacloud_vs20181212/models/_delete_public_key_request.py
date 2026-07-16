@@ -9,6 +9,8 @@ class DeletePublicKeyRequest(DaraModel):
         self,
         key_name: str = None,
     ):
+        # The name of the public key.
+        # 
         # This parameter is required.
         self.key_name = key_name
 

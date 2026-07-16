@@ -22,33 +22,33 @@ class ListIntegrationPoliciesShrinkRequest(DaraModel):
         tag_shrink: str = None,
         workspace: str = None,
     ):
-        # Addon name.
+        # The addon name.
         self.addon_name = addon_name
-        # Bound resource ID
+        # The ID of the bound resource.
         self.bind_resource_id = bind_resource_id
-        # Filter for entity IDs, separated by commas
+        # The entity IDs used for filtering, separated by commas.
         self.entity_group_ids = entity_group_ids
-        # Used for Region query, separated by commas
+        # The region IDs used for filtering, separated by commas.
         self.filter_region_ids = filter_region_ids
-        # Maximum number of results to return. Default is 30, with a maximum of 100.
+        # The maximum number of results to return. Default value: 30. Maximum value: 100.
         self.max_results = max_results
-        # Used to return more results. This parameter is not required for the first query. For subsequent queries, use the Token obtained from the response.
+        # The token used to retrieve more results. You do not need to specify this parameter for the first request. Use the token returned from the previous query for subsequent requests.
         self.next_token = next_token
-        # Policy ID.
+        # The policy ID.
         self.policy_id = policy_id
-        # Rule name.
+        # The rule name.
         self.policy_name = policy_name
-        # Policy type
+        # The policy type.
         self.policy_type = policy_type
-        # Instance ID.
+        # The instance ID.
         self.prometheus_instance_id = prometheus_instance_id
-        # Used for general queries
+        # The keyword used for general queries.
         self.query = query
-        # Resource group ID.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Tag list.
+        # The tags.
         self.tag_shrink = tag_shrink
-        # Workspace.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):

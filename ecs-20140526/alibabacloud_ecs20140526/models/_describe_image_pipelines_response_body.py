@@ -17,13 +17,13 @@ class DescribeImagePipelinesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.image_pipeline = image_pipeline
-        # The number of entries per page.
+        # The number of entries per page for a paginated query.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. For information about how to use the return value, see the "Usage notes" section of this topic.
+        # The token used to retrieve the next page of results. This value is returned if the results are paginated.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of image templates returned.
+        # The total number of image pipelines that match the query criteria.
         self.total_count = total_count
 
     def validate(self):

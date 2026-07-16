@@ -28,9 +28,9 @@ class GetMultiAccountDeliveryChannelResponseBody(DaraModel):
         self.delivery_channel_name = delivery_channel_name
         # The request ID.
         self.request_id = request_id
-        # The delivery of resource configuration changes.
+        # The configurations for delivery of resource configuration change events.
         self.resource_change_delivery = resource_change_delivery
-        # The configurations of scheduled delivery of resource snapshots.
+        # The configurations for delivery of scheduled resource snapshots.
         self.resource_snapshot_delivery = resource_snapshot_delivery
 
     def validate(self):
@@ -111,17 +111,12 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDelivery(DaraMod
         self.custom_expression = custom_expression
         # The delivery time.
         self.delivery_time = delivery_time
-        # Indicates whether to enable the scheduled delivery of resource snapshots. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.enabled = enabled
-        # The SLS configuration.
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
         self.target_arn = target_arn
-        # The type of the delivery destination.
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -181,7 +176,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceSnapshotDeliverySlsPrope
         self,
         oversized_data_oss_target_arn: str = None,
     ):
-        # The ARN of the OSS bucket to which oversized data is delivered.
+        # The ARN of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -212,17 +207,12 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDelivery(DaraModel
         target_arn: str = None,
         target_type: str = None,
     ):
-        # Indicates whether to deliver resource configuration changes. Valid values:
-        # 
-        # - true
-        # 
-        # - false
         self.enabled = enabled
-        # The Simple Log Service (SLS) configuration.
+        # The Simple Log Service configurations.
         self.sls_properties = sls_properties
         # The ARN of the delivery destination.
         self.target_arn = target_arn
-        # The type of the delivery destination.
+        # The type of the destination.
         self.target_type = target_type
 
     def validate(self):
@@ -270,7 +260,7 @@ class GetMultiAccountDeliveryChannelResponseBodyResourceChangeDeliverySlsPropert
         self,
         oversized_data_oss_target_arn: str = None,
     ):
-        # The ARN of the Object Storage Service (OSS) bucket to which oversized data is delivered.
+        # The Alibaba Cloud Resource Name (ARN) of the destination to which large files are delivered.
         self.oversized_data_oss_target_arn = oversized_data_oss_target_arn
 
     def validate(self):
@@ -299,9 +289,9 @@ class GetMultiAccountDeliveryChannelResponseBodyDeliveryChannelFilter(DaraModel)
         account_scopes: List[str] = None,
         resource_types: List[str] = None,
     ):
-        # The accounts within the delivery scope.
+        # The effective account scopes of the delivery channel.
         self.account_scopes = account_scopes
-        # The types of delivered resources.
+        # The effective resource types of the delivery channel.
         self.resource_types = resource_types
 
     def validate(self):

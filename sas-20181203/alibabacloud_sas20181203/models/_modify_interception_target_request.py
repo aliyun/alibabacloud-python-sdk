@@ -17,27 +17,22 @@ class ModifyInterceptionTargetRequest(DaraModel):
         target_name: str = None,
         target_type: str = None,
     ):
-        # The name of the application.
-        # 
-        # > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+        # The application name.
+        # >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
         self.app_name = app_name
-        # An array that consists of images.
-        # 
-        # > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+        # The list of images.
+        # >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
         self.image_list = image_list
         # The namespace.
-        # 
-        # > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+        # >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # An array that consists of tags.
-        # 
-        # > You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain the value of this parameter.
+        # The list of labels.
+        # >You can call the [DescribeContainerTags](~~DescribeContainerTags~~) operation to obtain this parameter.
         self.tag_list = tag_list
         # The ID of the network object.
-        # 
-        # > You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain the value of this parameter.
+        # >You can call the [ListInterceptionTargetPage](~~ListInterceptionTargetPage~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.target_id = target_id
@@ -45,9 +40,8 @@ class ModifyInterceptionTargetRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_name = target_name
-        # The object type. Valid values:
-        # 
-        # *   **IMAGE**
+        # The target type. Valid values:
+        # - **IMAGE**: image.
         # 
         # This parameter is required.
         self.target_type = target_type

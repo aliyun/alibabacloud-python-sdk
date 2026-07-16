@@ -14,11 +14,11 @@ class DescribeAffectedAssetsResponseBody(DaraModel):
         page_info: main_models.DescribeAffectedAssetsResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # An array that consists of the affected servers.
+        # The queried server asset information.
         self.asset_list = asset_list
         # The pagination information.
         self.page_info = page_info
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class DescribeAffectedAssetsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries returned on the current page.
+        # The number of entries on the current page in a paginated query.
         self.count = count
-        # The page number of the returned page.
+        # The page number of the current page in a paginated query.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -129,17 +129,17 @@ class DescribeAffectedAssetsResponseBodyAssetList(DaraModel):
         risk_num: int = None,
         uuid: str = None,
     ):
-        # The ID of the server.
+        # The instance ID of the server.
         self.instance_id = instance_id
-        # The name of the server.
+        # The instance name of the server.
         self.instance_name = instance_name
         # The public IP address of the server.
         self.internet_ip = internet_ip
         # The private IP address of the server.
         self.intranet_ip = intranet_ip
-        # The number of viruses detected on the server.
+        # The number of virus detection risks on the server.
         self.risk_num = risk_num
-        # The UUID of the server.
+        # The unique identifier of the server.
         self.uuid = uuid
 
     def validate(self):

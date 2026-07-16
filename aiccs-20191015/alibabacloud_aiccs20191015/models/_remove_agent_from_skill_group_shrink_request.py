@@ -11,10 +11,19 @@ class RemoveAgentFromSkillGroupShrinkRequest(DaraModel):
         instance_id: str = None,
         skill_group_id: int = None,
     ):
+        # A list of agent IDs.
+        # 
         # This parameter is required.
         self.agent_ids_shrink = agent_ids_shrink
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Skill group ID.  
+        # 
+        # You can invoke the [QuerySkillGroups](https://help.aliyun.com/zh/aiccs/developer-reference/api-aiccs-2019-10-15-queryskillgroups) API and view the **SkillGroupId** in the response parameters to obtain the skill group ID.
+        # 
         # This parameter is required.
         self.skill_group_id = skill_group_id
 

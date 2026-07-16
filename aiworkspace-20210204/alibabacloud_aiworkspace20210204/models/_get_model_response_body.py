@@ -33,27 +33,29 @@ class GetModelResponseBody(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the workspace.
+        # The visibility of the workspace. Valid values:
         # 
-        # *   PRIVATE: The workspace is visible only to you and the administrator of the workspace.
-        # *   PUBLIC: The workspace is visible to all users.
+        # - PRIVATE: The model is visible only to you and administrators in the workspace.
+        # 
+        # - PUBLIC: The model is visible to everyone in the workspace.
         self.accessibility = accessibility
-        # The domain. This parameter specifies the domain for which the model is developed. Valid values: nlp and cv. nlp indicates natural language processing and cv indicates computer vision.
+        # The domain. This indicates the domain of the problem that the model is designed to solve, such as natural language processing (NLP) and computer vision (CV).
         self.domain = domain
         # Other information about the model.
         self.extra_info = extra_info
-        # The time when the model is created, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the model was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
+        # The time when the latest version was updated.
         self.gmt_latest_version_modified_time = gmt_latest_version_modified_time
-        # The time when the model is last modified, in UTC. The time follows the ISO 8601 standard.
+        # The UTC time when the model was last updated. The time is in the ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The model tags.
+        # The list of labels for the model.
         self.labels = labels
         # The latest version of the model.
         self.latest_version = latest_version
         # The model description.
         self.model_description = model_description
-        # The documentation of the model.
+        # The model document.
         self.model_doc = model_doc
         # The model ID.
         self.model_id = model_id
@@ -61,18 +63,19 @@ class GetModelResponseBody(DaraModel):
         self.model_name = model_name
         # The model type.
         self.model_type = model_type
-        # The sequence number of the model.
+        # The ordinal number.
         self.order_number = order_number
-        # The source of the model. The community or organization to which the model belongs, such as ModelScope or HuggingFace.
+        # The source of the model. This indicates the community or organization to which the source model belongs, such as ModelScope and HuggingFace.
         self.origin = origin
         # The ID of the Alibaba Cloud account.
         self.owner_id = owner_id
+        # The number of parameters, in millions.
         self.parameter_size = parameter_size
         # The provider.
         self.provider = provider
         # The request ID.
         self.request_id = request_id
-        # The task of the model. This parameter describes specific issues that the model solves, such as text-classification.
+        # The task. This indicates the specific problem that the model is designed to solve, such as text classification.
         self.task = task
         # The user ID.
         self.user_id = user_id

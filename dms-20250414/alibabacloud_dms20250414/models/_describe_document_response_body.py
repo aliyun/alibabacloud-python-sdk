@@ -14,10 +14,19 @@ class DescribeDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the document.
         self.data = data
+        # The error code returned when the request fails.
         self.error_code = error_code
+        # The error message returned when the request fails.
         self.error_message = error_message
+        # The unique request ID. Provide this ID for troubleshooting if an error occurs.
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.
+        # 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -83,18 +92,41 @@ class DescribeDocumentResponseBodyData(DaraModel):
         summary: str = None,
         text_splitter_name: str = None,
     ):
+        # The description of the document.
         self.description = description
+        # The number of chunks.
         self.docs_count = docs_count
+        # The name of the document loader.
         self.document_loader_name = document_loader_name
+        # The file extension of the document.
         self.file_ext = file_ext
+        # The size of the document in bytes.
         self.file_size = file_size
+        # The creation time of the document, in UTC.
         self.gmt_create = gmt_create
+        # The last modification time of the document, in UTC.
         self.gmt_modified = gmt_modified
+        # The ID of the knowledge base.
         self.kb_uuid = kb_uuid
+        # The keywords of the document.
         self.keywords = keywords
+        # The name of the document.
         self.name = name
+        # The document state. Possible values are:
+        # 
+        # - **0**: Parsing complete.
+        # 
+        # - **-1**: Not parsed.
+        # 
+        # - **-2**: Parsing in progress.
+        # 
+        # - **-3**: Parsing failed.
+        # 
+        # - **-4**: Parsing canceled.
         self.state = state
+        # The summary of the document.
         self.summary = summary
+        # The name of the text splitter.
         self.text_splitter_name = text_splitter_name
 
     def validate(self):

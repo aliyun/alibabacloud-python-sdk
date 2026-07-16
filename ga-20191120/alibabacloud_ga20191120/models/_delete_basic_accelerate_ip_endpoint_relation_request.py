@@ -13,9 +13,9 @@ class DeleteBasicAccelerateIpEndpointRelationRequest(DaraModel):
         endpoint_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the accelerated IP address.
+        # The accelerated IP address instance ID of the basic GA instance.
         # 
-        # You can call the [ListBasicAccelerateIps](https://help.aliyun.com/document_detail/2253393.html) operation to query the ID of the accelerated IP address.
+        # You can call [ListBasicAccelerateIps](https://help.aliyun.com/document_detail/2253393.html) to query the accelerated IP address instance ID.
         # 
         # This parameter is required.
         self.accelerate_ip_id = accelerate_ip_id
@@ -23,19 +23,19 @@ class DeleteBasicAccelerateIpEndpointRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
-        # The client token that is used to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of a request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value is different for each API request.
         self.client_token = client_token
-        # The ID of the endpoint.
+        # The endpoint ID of the basic GA instance.
         # 
-        # You can call the [ListBasicEndpoints](https://help.aliyun.com/document_detail/2253406.html) operation to query the ID of the endpoint.
+        # You can call [ListBasicEndpoints](https://help.aliyun.com/document_detail/2253406.html) to query the endpoint ID.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
-        # The ID of the region where the GA instance is deployed. Set the value to **cn-hangzhou**.
+        # The region ID of the Global Accelerator instance. Set the value to **ap-southeast-1**.
         # 
         # This parameter is required.
         self.region_id = region_id

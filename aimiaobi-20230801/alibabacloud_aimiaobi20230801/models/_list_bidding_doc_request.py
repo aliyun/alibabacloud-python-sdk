@@ -18,15 +18,25 @@ class ListBiddingDocRequest(DaraModel):
         task_status: int = None,
         workspace_id: str = None,
     ):
+        # End creation time, in timestamp format.
         self.create_time_end = create_time_end
+        # Start creation time, in timestamp format.
         self.create_time_start = create_time_start
+        # Current page number
         self.current = current
+        # Deprecated
         self.max_results = max_results
+        # Deprecated
         self.next_token = next_token
+        # Number of items per page. Default is 10.
         self.size = size
+        # Deprecated
         self.skip = skip
+        # Defines the task name.
         self.task_name = task_name
+        # Task status
         self.task_status = task_status
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

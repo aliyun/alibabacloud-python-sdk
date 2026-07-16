@@ -14,23 +14,23 @@ class UpdateImageVulWhitelistTargetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code **200** indicates that the request was successful. Other status codes indicate that the request failed. You can identify the cause of the failure based on the status code.
+        # The result code. A value of **200** indicates success. Any other value indicates failure. You can use this field to determine the cause of a failure.
         self.code = code
-        # Indicates whether the image vulnerability is added to the whitelist. Valid values:
+        # The processing result. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The returned message of the request result.
         self.message = message
-        # The request ID.
+        # The unique request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The API call was successful.
+        # - **false**: The API call failed.
         self.success = success
 
     def validate(self):

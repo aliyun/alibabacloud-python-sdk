@@ -17,79 +17,72 @@ class ModifyWebLockStartRequest(DaraModel):
         mode: str = None,
         uuid: str = None,
     ):
-        # The prevention mode. Valid values:
+        # The defense mode. Valid values:
         # 
-        # *   **block**: Interception Mode
-        # *   **audit**: Alert Mode
+        # - **block**: block
+        # - **audit**: alert.
         # 
         # This parameter is required.
         self.defence_mode = defence_mode
-        # The directory for which you want to enable web tamper proofing. Separate multiple directories with commas (,).
+        # The protection directories. Separate multiple directories with commas (,).
         # 
         # This parameter is required.
         self.dir = dir
-        # The directory for which you want to disable web tamper proofing.
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # The folder that does not require web tamper proofing protection (excluded folder).
+        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
         self.exclusive_dir = exclusive_dir
-        # The file for which you want to disable web tamper proofing.
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # The files that do not require web tamper proofing protection (excluded files).
+        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
         self.exclusive_file = exclusive_file
-        # The type of the file for which you want to disable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # The file types that do not require web tamper proofing protection (excluded file types). Separate multiple file types with commas (,). Valid values:
+        # - php
+        # - jsp
+        # - asp
+        # - aspx
+        # - js
+        # - cgi
+        # - html
+        # - htm
+        # - xml
+        # - shtml
+        # - shtm
+        # - jpg
+        # - gif
+        # - png
         # 
-        # *   php
-        # *   jsp
-        # *   asp
-        # *   aspx
-        # *   js
-        # *   cgi
-        # *   html
-        # *   htm
-        # *   xml
-        # *   shtml
-        # *   shtm
-        # *   jpg
-        # *   gif
-        # *   png
-        # 
-        # > If you set **Mode** to **blacklist**, you must specify this parameter.
+        # > This parameter is required when the Defense mode **Mode** is set to the **blacklist** pattern.
         self.exclusive_file_type = exclusive_file_type
-        # The type of the file for which you want to enable web tamper proofing. Separate multiple types with semicolons (;). Valid values:
+        # The file types that require web tamper proofing protection. Separate multiple file types with commas (,). Valid values:
+        # - php
+        # - jsp
+        # - asp
+        # - aspx
+        # - js
+        # - cgi
+        # - html
+        # - htm
+        # - xml
+        # - shtml
+        # - shtm
+        # - jpg
+        # - gif
+        # - png
         # 
-        # *   php
-        # *   jsp
-        # *   asp
-        # *   aspx
-        # *   js
-        # *   cgi
-        # *   html
-        # *   htm
-        # *   xml
-        # *   shtml
-        # *   shtm
-        # *   jpg
-        # *   gif
-        # *   png
-        # 
-        # > If you set **Mode** to **whitelist**, you must specify this parameter.
+        # > This parameter is required when the Defense mode **Mode** is set to the **whitelist** pattern.
         self.inclusive_file_type = inclusive_file_type
-        # The local path to the backup files of the protected directory.\\
-        # The directory format of a Linux server is different from that of a Windows server. You must enter the directory in the required format based on your operating system. Examples:
-        # 
-        # *   Linux server: /usr/local/aegis/bak
-        # *   Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak
+        # The local backup path used to back up the protection directories. The format of the protection directory path may differ between Linux servers and Windows servers. Make sure that you enter the path in the correct format. The following examples show the directory formats:
+        #  - Linux server: /usr/local/aegis/bak
+        #  - Windows server: C:\\Program Files (x86)\\Alibaba\\Aegis\\bak.
         # 
         # This parameter is required.
         self.local_backup_dir = local_backup_dir
-        # The protection mode of web tamper proofing. Valid values:
-        # 
-        # *   **whitelist**: In this mode, web tamper proofing is enabled for the specified directories and file types.
-        # *   **blacklist**: In this mode, web tamper proofing is enabled for the unspecified subdirectories, file types, and files in the protected directory.
+        # The protection type. Valid values:
+        # - **whitelist**: whitelist mode. Protects the specified protection directories and file types.
+        # - **blacklist**: blacklist mode. Protects all subdirectories, file types, and specified files in the protection directories that are not excluded.
         # 
         # This parameter is required.
         self.mode = mode
-        # The UUID of the server for which you want to enable web tamper proofing.
+        # The UUID of the server that you want to protect.
         # 
         # This parameter is required.
         self.uuid = uuid

@@ -11,55 +11,51 @@ class ModifyLoginBaseConfigRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # The details of the configuration that is used to detect unusual logons to your servers. The value of this parameter is in the JSON format and contains the following fields:
+        # The detailed configuration of the unusual logon detection rule for the server. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **totalCount**: the total number of servers.
-        # *   **uuidCount**: the number of servers to which the configuration is applied.
-        # *   **id**: the ID of the configuration.
-        # *   **location**: the common logon location.
+        # - **totalCount**: the total number of assets.
+        # - **uuidCount**: the number of assets on which the rule takes effect.
+        # - **id**: the ID of the unusual logon detection rule.
+        # - **location**: the name of the common logon location.
         # 
-        # > You must specify this field if the Type parameter is set to login_common_location.
+        # > This field is required only when the Type parameter is set to login_common_location.
         # 
-        # *   **ip**: the common logon IP address.
+        # - **ip**: the common logon IP address.
         # 
-        # > You must specify this field if the Type parameter is set to login_common_ip.
+        # > This field is required only when the Type parameter is set to login_common_ip.
         # 
-        # *   **endTime**: the end time of the common logon time range.
+        # - **endTime**: the end time of the common logon time range.
         # 
-        # > You must specify this field if the Type parameter is set to login_common_time.
+        # > This field is required only when the Type parameter is set to login_common_time.
         # 
-        # *   **startTime**: the start time of the common logon time range.
+        # - **startTime**: the start time of the common logon time range.
         # 
-        # > You must specify this field if the Type parameter is set to login_common_time.
+        # > This field is required only when the Type parameter is set to login_common_time.
         # 
-        # *   **account**: the common logon account.
+        # - **account**: the common logon account.
         # 
-        # > You must specify this field if the Type parameter is set to login_common_account.
+        # > This field is required only when the Type parameter is set to login_common_account.
         # 
         # This parameter is required.
         self.config = config
-        # The details of the server to which the configuration is applied. The value of this parameter is in the JSON format and contains the following fields:
+        # The configuration of the servers on which the unusual logon detection rule takes effect. This parameter is in JSON format and contains the following fields:
         # 
-        # *   **Target**: the UUID of the server.
-        # 
-        # *   **targetType**: the type of the server to which the configuration is applied. Valid values:
-        # 
-        #     *   **uuid**: a server
-        #     *   **groupId**: a server group
-        # 
-        # *   **flag**: the operation that you want to perform on the server. Valid values:
-        # 
-        #     *   **del**: removes the server from the configuration.
-        #     *   **add**: adds the server to the configuration.
+        # - **Target**: the UUID of the server to add or remove.
+        # - **targetType**: the mode for adding assets on which the rule takes effect. Valid values:
+        #     - **uuid**: add by individual server.
+        #     - **groupId**: add by server group.
+        # - **flag**: the operation to perform on the asset. Valid values:
+        #     - **del**: remove the server from the rule.
+        #     - **add**: add the server to the rule.
         # 
         # This parameter is required.
         self.target = target
-        # The logon type of the configuration to modify. Valid values:
+        # The type of unusual logon detection for the server. Valid values:
         # 
-        # *   **login_common_location**: common logon location
-        # *   **login_common_ip**: common logon IP address
-        # *   **login_common_time**: common logon time range
-        # *   **login_common_account**: common logon account
+        # - **login_common_location**: common logon location.
+        # - **login_common_ip**: common logon IP address.
+        # - **login_common_time**: common logon time.
+        # - **login_common_account**: common logon account.
         # 
         # This parameter is required.
         self.type = type

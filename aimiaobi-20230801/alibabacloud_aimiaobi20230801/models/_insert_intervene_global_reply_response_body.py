@@ -17,11 +17,17 @@ class InsertInterveneGlobalReplyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # status code
         self.code = code
+        # Business data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error description
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Whether successful: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -84,7 +90,9 @@ class InsertInterveneGlobalReplyResponseBodyData(DaraModel):
         task_id: str = None,
     ):
         self.code = code
+        # List of failed index IDs
         self.fail_id_list = fail_id_list
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

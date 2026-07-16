@@ -14,12 +14,19 @@ class OSSExportConfiguration(DaraModel):
         logstore: str = None,
         role_arn: str = None,
         sink: main_models.OSSExportConfigurationSink = None,
+        source_secure_transport: bool = None,
         to_time: int = None,
     ):
+        # The start time for the export, specified as a Unix timestamp. Set to 1 to export from the earliest available data in the Logstore.
         self.from_time = from_time
+        # The name of the source Logstore.
         self.logstore = logstore
+        # The ARN of the Resource Access Management (RAM) role that Log Service assumes to read data from the Logstore. You must specify the ARN of your role.
         self.role_arn = role_arn
+        # The configuration of the destination OSS sink.
         self.sink = sink
+        self.source_secure_transport = source_secure_transport
+        # The end time for the export, specified as a Unix timestamp. Set to 0 to run the task continuously until it is stopped.
         self.to_time = to_time
 
     def validate(self):
@@ -43,6 +50,9 @@ class OSSExportConfiguration(DaraModel):
         if self.sink is not None:
             result['sink'] = self.sink.to_map()
 
+        if self.source_secure_transport is not None:
+            result['sourceSecureTransport'] = self.source_secure_transport
+
         if self.to_time is not None:
             result['toTime'] = self.to_time
 
@@ -62,6 +72,9 @@ class OSSExportConfiguration(DaraModel):
         if m.get('sink') is not None:
             temp_model = main_models.OSSExportConfigurationSink()
             self.sink = temp_model.from_map(m.get('sink'))
+
+        if m.get('sourceSecureTransport') is not None:
+            self.source_secure_transport = m.get('sourceSecureTransport')
 
         if m.get('toTime') is not None:
             self.to_time = m.get('toTime')
@@ -87,25 +100,49 @@ class OSSExportConfigurationSink(DaraModel):
         suffix: str = None,
         time_zone: str = None,
     ):
+        # The name of the destination OSS bucket.
+        # 
         # This parameter is required.
         self.bucket = bucket
+        # The time in seconds to buffer data before exporting. The value must be an integer from 300 to 900.
         self.buffer_interval = buffer_interval
+        # The amount of data in MB to buffer before exporting. The value must be an integer from 5 to 256.
         self.buffer_size = buffer_size
+        # The compression type for the exported files. Valid values: `snappy`, `gzip`, `zstd`, and `none` (no compression).
         self.compression_type = compression_type
+        # Format-specific settings. The structure of this JSON object depends on the `contentType` value.
         self.content_detail = content_detail
+        # The format of the files stored in OSS. Valid values: `json`, `parquet`, `csv`, and `orc`.
         self.content_type = content_type
+        # The delivery delay.
+        # 
+        # > - This parameter is deprecated.
         self.delay_sec = delay_sec
+        # The delivery delay, in seconds. This value cannot exceed the data retention period of the source Logstore.
         self.delay_seconds = delay_seconds
+        # - For Object Storage Service (OSS): The OSS internal endpoint. You must use an endpoint in the same region as the Logstore. For more information, see [OSS access domains and data centers](https://help.aliyun.com/document_detail/31837.html). The endpoint must use the HTTPS protocol.
+        # 
+        # - For OSS-HDFS: The OSS-HDFS internal endpoint. You must use an endpoint in the same region as the Logstore.
+        # 
         # This parameter is required.
         self.endpoint = endpoint
+        # The path format for exported files. For more information, see [Path format](https://help.aliyun.com/document_detail/371934.html).
+        # 
         # This parameter is required.
         self.path_format = path_format
+        # The type of the path format.
+        # 
         # This parameter is required.
         self.path_format_type = path_format_type
+        # The prefix for files exported to the OSS bucket.
         self.prefix = prefix
+        # The ARN of the RAM role that Log Service assumes to write data to the OSS bucket. You must specify the ARN of your role.
+        # 
         # This parameter is required.
         self.role_arn = role_arn
+        # The suffix for the exported files.
         self.suffix = suffix
+        # The time zone used for the path format. For more information, see [Time zones](https://help.aliyun.com/document_detail/375323.html).
         self.time_zone = time_zone
 
     def validate(self):

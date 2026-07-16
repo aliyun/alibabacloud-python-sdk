@@ -24,23 +24,23 @@ class GetIpamPoolAllocationResponseBody(DaraModel):
     ):
         # The allocated CIDR block.
         self.cidr = cidr
-        # The time when the instance was created.
+        # The time when the allocation was created.
         self.creation_time = creation_time
-        # The description of the CIDR allocation of the IPAM pool.
+        # The description of the IPAM pool allocation.
         # 
-        # The description must be 1 to 256 characters in length and start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+        # The description must be 1 to 256 characters long. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. If you do not specify this parameter, the description is empty.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
-        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # The ID of the IPAM pool allocation.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
-        # The name of the CIDR allocation of the IPAM pool.
+        # The name of the IPAM pool allocation.
         # 
-        # It must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters long and cannot start with `http://` or `https://`.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
         # The ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
-        # The region of the IPAM pool.
+        # The region of the IPAM pool to which the CIDR block allocation belongs.
         # 
-        # >  If the IPAM pool to which the CIDR block allocation belongs has the region attribute, this parameter is the region of the IPAM pool. If not, this parameter is the IPAM hosted region.
+        # > If the IPAM pool has a region attribute, this parameter specifies the region of the IPAM pool. If the IPAM pool does not have a region attribute, this parameter specifies the managed region of IPAM.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -48,20 +48,23 @@ class GetIpamPoolAllocationResponseBody(DaraModel):
         self.resource_id = resource_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The effective region ID of the resource.
+        # The ID of the region where the resource is deployed.
         self.resource_region_id = resource_region_id
         # The type of the resource to which the CIDR block is allocated. Valid values:
         # 
-        # *   **VPC**
-        # *   **IpamPool**
-        # *   **Custom**
+        # - **VPC**: The resource is a VPC.
+        # 
+        # - **IpamPool**: The resource is a sub-pool.
+        # 
+        # - **Custom**: The resource is a custom reserved CIDR block.
         self.resource_type = resource_type
         # The source CIDR block.
         self.source_cidr = source_cidr
-        # The instance state. Valid values:
+        # The status of the allocation. Valid values:
         # 
-        # *   **Created**
-        # *   **Deleted**
+        # - **Created**
+        # 
+        # - **Deleted**
         self.status = status
 
     def validate(self):

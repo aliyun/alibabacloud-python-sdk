@@ -11,14 +11,15 @@ class DescribePolarSQLCollectorPolicyResponseBody(DaraModel):
         request_id: str = None,
         sqlcollector_status: str = None,
     ):
-        # The IDs of the clusters.
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the SQL Explorer feature is enabled. Valid values:
         # 
-        # *   **Enable**
-        # *   **Disabled**
+        # - **Enable**: The feature is enabled.
+        # 
+        # - **Disabled**: The feature is disabled.
         self.sqlcollector_status = sqlcollector_status
 
     def validate(self):

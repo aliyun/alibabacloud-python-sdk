@@ -16,10 +16,23 @@ class GetSkillGroupConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. A value of **200** indicates a successful response.
+        # 
+        # > Other values indicate a failed response. You can use this field to identify the cause of the failure.
         self.code = code
+        # The details of the skill group rule configuration.
         self.data = data
+        # The response message. If the request is successful, a value of **successful** is returned. If the request fails, an error message is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
+        # 
+        # The caller can use this field to determine whether the request was successful:
+        # 
+        # - **true**: The request was successful.
+        # 
+        # - false or **null**: The request failed.
         self.success = success
 
     def validate(self):
@@ -92,25 +105,51 @@ class GetSkillGroupConfigResponseBodyData(DaraModel):
         vocab_id: int = None,
         vocab_name: str = None,
     ):
+        # Indicates whether to perform a full-text quality check after the real-time quality check is complete. Valid values:
+        # 
+        # - 1: yes
+        # 
+        # - 0: no
         self.all_content_quality_check = all_content_quality_check
+        # The ID of the rule used for the full-text quality check.
         self.all_rids = all_rids
         self.all_rule_list = all_rule_list
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The configuration ID.
         self.id = id
+        # This is an internal parameter. You can ignore it.
         self.instance_id = instance_id
+        # The language model ID.
         self.model_id = model_id
+        # The language model name.
         self.model_name = model_name
+        # The configuration name.
         self.name = name
+        # The quality check type. Valid values:
+        # 
+        # - 0: offline
+        # 
+        # - 1: real-time
         self.quality_check_type = quality_check_type
+        # The quality check rule ID.
         self.rid = rid
         self.rule_list = rule_list
+        # The source of the skill group. The value is fixed at 0.
         self.skill_group_from = skill_group_from
+        # The skill group ID.
         self.skill_group_id = skill_group_id
+        # The skill group name.
         self.skill_group_name = skill_group_name
+        # The status of the configuration. Valid values: 0 (disabled) and 1 (enabled).
         self.status = status
+        # The configuration type. Valid values: 1 (custom configuration) and 0 (built-in configuration).
         self.type = type
+        # The time when the configuration was last updated.
         self.update_time = update_time
+        # The hotword ID.
         self.vocab_id = vocab_id
+        # The hotword name.
         self.vocab_name = vocab_name
 
     def validate(self):

@@ -15,33 +15,33 @@ class DescribeFileSystemsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         resource_group_id: str = None,
+        storage_type: str = None,
         tag: List[main_models.DescribeFileSystemsRequestTag] = None,
         vpc_id: str = None,
     ):
-        # The ID of the file system.
-        # 
-        # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
-        # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
-        # *   The IDs of CPFS file systems must start with cpfs-. Example: cpfs-125487\\*\\*\\*\\*.
-        # *   The IDs of CPFS SE file systems must start with cpfsse-. Example: cpfsse-022c71b134\\*\\*\\*\\*.
+        # The file system ID.
+        # - General-purpose NAS: 31a8e4****.
+        # - Extreme NAS: must start with extreme-, such as extreme-0015****.
+        # - Cloud Parallel File Storage (CPFS) (locally redundant): must start with cpfs-, such as cpfs-125487****.
+        # - CPFS SE (zone-redundant): must start with cpfsse-, such as cpfsse-022c71b134****.
         self.file_system_id = file_system_id
-        # The type of the file system.
+        # The file system type.
         # 
         # Valid values:
         # 
-        # *   all (default): All types.
-        # *   standard: General-purpose NAS
-        # *   extreme: Extreme NAS
-        # *   cpfs: CPFS (locally redundant storage)
-        # *   cpfsse: CPFS SE (zone-redundant storage)
+        # - all (default): queries all types.
+        # - standard: General-purpose NAS.
+        # - extreme: Extreme NAS.
+        # - cpfs: Cloud Parallel File Storage (CPFS) (locally redundant).
+        # - cpfsse: CPFS SE (zone-redundant).
         # 
-        # >  Separate multiple data types with commas (,).
+        # > To query multiple types, separate them with commas (,).
         self.file_system_type = file_system_type
-        # The page number.
+        # The page number of the file system list.
         # 
-        # Pages start from page 1. Default value: 1.
+        # Start value (default value): 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of file systems on each page during a paged query.
         # 
         # Valid values: 1 to 100.
         # 
@@ -49,13 +49,14 @@ class DescribeFileSystemsRequest(DaraModel):
         self.page_size = page_size
         # The resource group ID.
         # 
-        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
+        # You can view the resource group ID in the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?).
         self.resource_group_id = resource_group_id
-        # The details about the tags.
+        self.storage_type = storage_type
+        # The tag information.
         self.tag = tag
-        # The ID of the virtual private cloud (VPC).
+        # The virtual private cloud (VPC) ID.
         # 
-        # If you want to mount the file system on an Elastic Compute Service (ECS) instance, the file system and the ECS instance must reside in the same VPC.
+        # The VPC must be the same as the VPC of the Elastic Computing Service (ECS) server to which you want to mount the file system.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -84,6 +85,9 @@ class DescribeFileSystemsRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -111,6 +115,9 @@ class DescribeFileSystemsRequest(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+
         self.tag = []
         if m.get('Tag') is not None:
             for k1 in m.get('Tag'):
@@ -132,19 +139,19 @@ class DescribeFileSystemsRequestTag(DaraModel):
         # 
         # Limits:
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag key can be up to 128 characters in length.
-        # *   The tag key cannot start with `aliyun` or `acs:`.
-        # *   The tag key cannot contain `http://` or `https://`.
+        # - Valid values of N: 1 to 20.
+        # - The tag key can be up to 128 characters in length.
+        # - The tag key cannot start with `aliyun` or `acs:`.
+        # - The tag key cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
         # Limits:
         # 
-        # *   Valid values of N: 1 to 20.
-        # *   The tag value can be up to 128 characters in length.
-        # *   The tag value cannot start with `aliyun` or `acs:`.
-        # *   The tag value cannot contain `http://` or `https://`.
+        # - Valid values of N: 1 to 20.
+        # - The tag value can be up to 128 characters in length.
+        # - The tag value cannot start with `aliyun` or `acs:`.
+        # - The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

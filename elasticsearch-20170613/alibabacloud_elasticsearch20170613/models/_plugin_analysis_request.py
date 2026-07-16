@@ -10,7 +10,14 @@ class PluginAnalysisRequest(DaraModel):
         body: str = None,
         dry_run: str = None,
     ):
+        # Request body parameters  
+        # 
+        # ```json
         self.body = body
+        # Whether to perform pre-upgrade validation:  
+        # 
+        # - true: Validate only  
+        # - false: Upload directly
         self.dry_run = dry_run
 
     def validate(self):

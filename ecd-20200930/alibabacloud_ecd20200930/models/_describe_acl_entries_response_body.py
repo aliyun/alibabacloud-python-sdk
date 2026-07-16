@@ -72,8 +72,9 @@ class DescribeAclEntriesResponseBodyAclEntries(DaraModel):
         # 
         # Valid values:
         # 
-        # *   allow: whitelist
-        # *   disable: blacklist
+        # - allow: whitelist
+        # 
+        # - disable: blacklist
         self.policy = policy
         # The ID of the instance to which the ACL applies. You can specify an office network ID or a cloud computer ID.
         self.source_id = source_id
@@ -81,8 +82,9 @@ class DescribeAclEntriesResponseBodyAclEntries(DaraModel):
         # 
         # Valid values:
         # 
-        # *   desktop: cloud computer
-        # *   vpc: office network
+        # - desktop: cloud computer
+        # 
+        # - vpc: office network
         self.source_type = source_type
 
     def validate(self):

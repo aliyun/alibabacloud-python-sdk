@@ -51,8 +51,9 @@ class UpdateFileRequest(DaraModel):
         self.apply_schedule_immediately = apply_schedule_immediately
         # Specifies whether to enable automatic parsing for the file. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter corresponds to the Analyze Code setting in Properties > Dependencies for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.auto_parsing = auto_parsing
@@ -70,18 +71,25 @@ class UpdateFileRequest(DaraModel):
         # 
         # Examples:
         # 
-        # *   Scheduled at 05:30 every day: `00 30 05 * * ?`
-        # *   Scheduled at the 15th minute of every hour: `00 15 * * * ?`
-        # *   Scheduled every 10 minutes: `00 00/10 * * * ?`
-        # *   Scheduled every 10 minutes between 08:00 and 23:00 every day: `00 00-59/10 8-23 * * * ?`
-        # *   Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
-        # *   Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
-        # *   Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
+        # - Scheduled at 05:30 every day: `00 30 05 * * ?`
+        # 
+        # - Scheduled at the 15th minute of every hour: `00 15 * * * ?`
+        # 
+        # - Scheduled every 10 minutes: `00 00/10 * * * ?`
+        # 
+        # - Scheduled every 10 minutes between 08:00 and 23:00 every day: `00 00-59/10 8-23 * * * ?`
+        # 
+        # - Scheduled at 00:20 on the 1st day of every month: `00 20 00 1 * ?`
+        # 
+        # - Scheduled every 3 months starting from 00:10 on January 1: `00 10 00 1 1-12/3 ?`
+        # 
+        # - Scheduled at 00:05 on every Tuesday and Friday: `00 05 00 * * 2,5`
         # 
         # Due to the rules of the DataWorks scheduling system, cron expressions have the following restrictions:
         # 
-        # *   The minimum scheduling interval is 5 minutes.
-        # *   The earliest scheduling time each day is 00:05.
+        # - The minimum scheduling interval is 5 minutes.
+        # 
+        # - The earliest scheduling time each day is 00:05.
         self.cron_express = cron_express
         # The type of scheduling cycle. Valid values: NOT_DAY (minute, hour) and DAY (day, week, month).
         # 
@@ -93,10 +101,13 @@ class UpdateFileRequest(DaraModel):
         self.dependent_node_id_list = dependent_node_id_list
         # The dependency mode on the previous cycle. Valid values:
         # 
-        # *   SELF: Depends on the current node.
-        # *   CHILD: Depends on the child nodes.
-        # *   USER_DEFINE: Depends on other nodes.
-        # *   NONE: No dependencies. Does not depend on the previous cycle.
+        # - SELF: Depends on the current node.
+        # 
+        # - CHILD: Depends on the child nodes.
+        # 
+        # - USER_DEFINE: Depends on other nodes.
+        # 
+        # - NONE: No dependencies. Does not depend on the previous cycle.
         self.dependent_type = dependent_type
         # The timestamp (in milliseconds) when automatic scheduling stops.
         # 
@@ -148,27 +159,35 @@ class UpdateFileRequest(DaraModel):
         self.project_identifier = project_identifier
         # The rerun policy. Valid values:
         # 
-        # *   ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
-        # *   FAILURE_ALLOWED: Reruns are allowed only when the task fails.
-        # *   ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
+        # - ALL_ALLOWED: Reruns are allowed regardless of whether the task succeeds or fails.
+        # 
+        # - FAILURE_ALLOWED: Reruns are allowed only when the task fails.
+        # 
+        # - ALL_DENIED: Reruns are not allowed regardless of whether the task succeeds or fails.
         # 
         # This parameter corresponds to the Support for Rerun setting in Scheduling > Scheduling Policies for Data Studio tasks in the [DataWorks console](https://workbench.data.aliyun.com/console).
         # 
         # Valid values:
         # 
-        # *   ALL_ALLOWD
-        # *   FAILURE_ALLOWED
-        # *   ALL_DENIED
-        # *   ALL_ALLOWED
+        # - ALL_ALLOWD
+        # 
+        # - FAILURE_ALLOWED
+        # 
+        # - ALL_DENIED
+        # 
+        # - ALL_ALLOWED
         self.rerun_mode = rerun_mode
         # The resource group for the task published from the file. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/173913.html) operation to query the available resource groups in the workspace.
         self.resource_group_identifier = resource_group_identifier
         # The scheduling type. Valid values:
         # 
-        # *   NORMAL: Normal scheduled task.
-        # *   MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
-        # *   PAUSE: Paused task.
-        # *   SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
+        # - NORMAL: Normal scheduled task.
+        # 
+        # - MANUAL: Manually triggered node. Not scheduled for daily execution. Corresponds to nodes in manually triggered workflows.
+        # 
+        # - PAUSE: Paused task.
+        # 
+        # - SKIP: Dry-run task. Scheduled for daily execution but is directly marked as successful when scheduling starts.
         self.scheduler_type = scheduler_type
         # The timestamp (in milliseconds) when automatic scheduling starts.
         # 
@@ -176,15 +195,17 @@ class UpdateFileRequest(DaraModel):
         self.start_effect_date = start_effect_date
         # Specifies whether to start the task immediately after it is published. Valid values:
         # 
-        # *   true: Start the task immediately after it is published.
-        # *   false: Do not start the task immediately after it is published.
+        # - true: Start the task immediately after it is published.
+        # 
+        # - false: Do not start the task immediately after it is published.
         # 
         # This parameter corresponds to the Start Method setting in Configuration > Scheduling Policies in the right-side navigation pane on the editing page for EMR Spark Streaming and EMR Streaming SQL tasks in Data Studio in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.start_immediately = start_immediately
         # Specifies whether to skip execution. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # This parameter corresponds to the Skip Execution option in Properties > Schedule > Recurrence for data development nodes in the [DataWorks console](https://workbench.data.aliyun.com/console).
         self.stop = stop

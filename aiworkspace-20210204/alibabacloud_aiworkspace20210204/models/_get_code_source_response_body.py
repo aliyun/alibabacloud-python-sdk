@@ -24,39 +24,40 @@ class GetCodeSourceResponseBody(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The visibility of the code source. Valid values:
+        # The visibility of the code configuration. Valid values:
         # 
-        # *   PRIVATE: Visible only to you and the administrator of the workspace.
-        # *   PUBLIC: Visible to all members in the workspace.
+        # - PRIVATE: The configuration is visible only to you and the administrator in the workspace.
+        # 
+        # - PUBLIC: The configuration is visible to everyone in the workspace.
         self.accessibility = accessibility
         self.clone_type = clone_type
-        # The code repository branch.
+        # The branch of the code repository.
         self.code_branch = code_branch
-        # The code commit ID.
+        # The commit ID of the code.
         self.code_commit = code_commit
-        # The address of the code repository.
+        # The URL of the code repository.
         self.code_repo = code_repo
         # The token used to access the code repository.
         self.code_repo_access_token = code_repo_access_token
-        # The username of the code repository.
+        # The username for the code repository.
         self.code_repo_user_name = code_repo_user_name
-        # The ID of the code source.
+        # The ID of the code source configuration.
         self.code_source_id = code_source_id
-        # The description of the code source.
+        # The detailed description of the code configuration.
         self.description = description
-        # The name of the code source.
+        # The name of the code source configuration.
         self.display_name = display_name
-        # The time when the code source was created, in the ISO8601 format.
+        # The time when the code configuration was created. The time is in the ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the code source was modified, in the ISO8601 format.
+        # The time when the code configuration was last modified. The time is in the ISO 8601 format.
         self.gmt_modify_time = gmt_modify_time
-        # The local mount path of the code.
+        # The local mount path for the code.
         self.mount_path = mount_path
         # The request ID.
         self.request_id = request_id
-        # The ID of the creator.
+        # The ID of the user who created the code source configuration.
         self.user_id = user_id
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

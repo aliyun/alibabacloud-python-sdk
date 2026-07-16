@@ -10,7 +10,9 @@ class CreateVirtualBorderRouterResponseBody(DaraModel):
         request_id: str = None,
         vbr_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the virtual border router.
         self.vbr_id = vbr_id
 
     def validate(self):

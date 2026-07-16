@@ -11,10 +11,16 @@ class DescribeIntentRequest(DaraModel):
         intent_id: str = None,
         script_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The ID of the script.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

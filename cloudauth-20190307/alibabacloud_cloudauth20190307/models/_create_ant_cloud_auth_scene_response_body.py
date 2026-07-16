@@ -10,9 +10,9 @@ class CreateAntCloudAuthSceneResponseBody(DaraModel):
         request_id: str = None,
         scene_id: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Instance ID.
+        # The instance ID.
         self.scene_id = scene_id
 
     def validate(self):

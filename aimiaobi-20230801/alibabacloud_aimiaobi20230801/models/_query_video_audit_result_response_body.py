@@ -17,17 +17,17 @@ class QueryVideoAuditResultResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # 业务处理结果状态码
+        # Business status code
         self.code = code
-        # 视频审校的详细结果
+        # Video audit result data
         self.data = data
-        # HTTP响应状态码
+        # HTTP status code
         self.http_status_code = http_status_code
-        # 业务处理结果描述信息
+        # Return message
         self.message = message
-        # 本次API请求的唯一标识
+        # Request ID
         self.request_id = request_id
-        # 请求是否处理成功
+        # Is successful
         self.success = success
 
     def validate(self):
@@ -101,35 +101,35 @@ class QueryVideoAuditResultResponseBodyData(DaraModel):
         video_url: str = None,
         width: int = None,
     ):
-        # 视频总时长（秒）
+        # Video duration
         self.duration = duration
-        # 任务执行失败时的错误信息
+        # Error message
         self.error_message = error_message
-        # 视频帧率（FPS）
+        # Video frame rate
         self.fps = fps
-        # 已经完成审核的帧数
+        # Frames audited
         self.frame_audited = frame_audited
-        # 视频高度（像素）
+        # Video height
         self.height = height
-        # 抽取的图片URL列表
+        # Image URL list
         self.image_urls = image_urls
-        # 图片审核结果详情
+        # Audit results list
         self.results = results
-        # 任务状态：PENDING(待执行)、RUNNING(执行中)、SUCCESSED(成功)、FAILED(失败)、CANCELED(取消)
+        # Task status (PENDING: Queued, RUNNING: In progress, SUCCESSED: Successful, FAILED: Failed, CANCELED: Task canceled)
         self.status = status
-        # 视频审校的文本结果
+        # Reviewed text
         self.text = text
-        # 需要审核的视频帧总数
+        # Frames to audit
         self.total_frame_audit = total_frame_audit
-        # 视频总帧数
+        # Total frames
         self.total_frames = total_frames
-        # 检测到的视频分镜总数
+        # Total shots
         self.total_shots = total_shots
-        # 被审核的视频文件Key
+        # Video FileKey
         self.video_file_key = video_file_key
-        # 被审核的视频URL地址
+        # Video URL
         self.video_url = video_url
-        # 视频宽度（像素）
+        # Video width
         self.width = width
 
     def validate(self):
@@ -261,13 +261,21 @@ class QueryVideoAuditResultResponseBodyDataResults(DaraModel):
         result: List[main_models.QueryVideoAuditResultResponseBodyDataResultsResult] = None,
         risk_level: str = None,
     ):
-        # 对应图片的ID，与ImageUrl中的id字段对应
+        # Image ID (Associate with ImageUrls[].Id to get image information)
         self.data_id = data_id
-        # 审核请求ID
+        # Request ID
         self.req_id = req_id
-        # 图片检测的风险标签、置信分等参数结果
+        # Detection results
         self.result = result
-        # 风险等级：high(高风险)、medium(中风险)、low(低风险)、none(未检测到风险)
+        # Risk level
+        # 
+        # - high: High risk
+        # 
+        # - medium: Medium risk
+        # 
+        # - low: Low risk
+        # 
+        # - none: No risk
         self.risk_level = risk_level
 
     def validate(self):
@@ -323,11 +331,19 @@ class QueryVideoAuditResultResponseBodyDataResultsResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # 0到100分，保留到小数点后2位，部分标签无置信分
+        # From 0 to 100, retained to 2 decimal places. Some labels do not have a confidence score.
         self.confidence = confidence
-        # Label字段的解释说明
+        # Explanation of the Label field
         self.description = description
-        # 图片内容检测运算后返回的标签，如：nonLabel（未检测出风险）
+        # Risk label
+        # 
+        # The label of the image content review result. For example: nonLabel (no risk detected).
+        # 
+        # The label can also be a risk level that is determined by the high-risk and low-risk thresholds that you set. Valid return values are:
+        # ● high: high risk
+        # ● medium: medium risk
+        # ● low: low risk
+        # ● none: no risk detected
         self.label = label
 
     def validate(self):
@@ -369,9 +385,11 @@ class QueryVideoAuditResultResponseBodyDataImageUrls(DaraModel):
         timestamp: float = None,
         url: str = None,
     ):
-        # 图片ID，与AliyunImageAuditResult中的dataId对应
+        # Image ID (Associate with Results[].DataId to get audit result information)
         self.id = id
+        # Timestamp (milliseconds)
         self.timestamp = timestamp
+        # Image URL
         self.url = url
 
     def validate(self):

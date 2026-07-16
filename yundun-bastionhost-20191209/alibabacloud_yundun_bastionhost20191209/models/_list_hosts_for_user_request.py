@@ -29,17 +29,19 @@ class ListHostsForUserRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies the category of the hosts that you want to query. Valid values:
         # 
-        # *   **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
-        # *   **Unauthorized**: queries the hosts that the user is not authorized to manage.
+        # - **Authorized**: queries the hosts that the user is authorized to manage. This is the default value.
+        # 
+        # - **Unauthorized**: queries the hosts that the user is not authorized to manage.
         self.mode = mode
         # The operating system of the host that you want to query. Valid values:
         # 
-        # *   **Linux**
-        # *   **Windows**
+        # - **Linux**
+        # 
+        # - **Windows**
         self.ostype = ostype
         # The number of the page. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.\\
+        # The number of entries per page.<br>
         # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned per page.
         # 
         # > We recommend that you do not leave this parameter empty.

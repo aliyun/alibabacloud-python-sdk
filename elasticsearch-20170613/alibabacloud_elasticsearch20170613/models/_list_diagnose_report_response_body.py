@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_elasticsearch20170613 import models as main_models
 from darabonba.model import DaraModel
@@ -14,15 +14,11 @@ class ListDiagnoseReportResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.ListDiagnoseReportResponseBodyResult] = None,
     ):
-        # The total number of entries returned.
+        # The response headers.
         self.headers = headers
-        # The header of the response.
+        # The request ID.
         self.request_id = request_id
-        # The trigger mode of health diagnostics. Valid values:
-        # 
-        # *   SYSTEM: The system is automatically triggered.
-        # *   INNER: internal trigger
-        # *   USER: manually triggered by the user
+        # The returned results.
         self.result = result
 
     def validate(self):
@@ -73,30 +69,42 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
         self,
         create_time: int = None,
         diagnose_items: List[main_models.ListDiagnoseReportResponseBodyResultDiagnoseItems] = None,
+        diagnosis_mode: str = None,
         health: str = None,
         instance_id: str = None,
+        items: List[main_models.ListDiagnoseReportResponseBodyResultItems] = None,
         report_id: str = None,
         state: str = None,
         trigger: str = None,
     ):
-        # The ID of the report.
-        self.create_time = create_time
-        # The name of the item.
-        self.diagnose_items = diagnose_items
-        # Reports the list of diagnostic item information.
-        self.health = health
-        # The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
-        self.instance_id = instance_id
-        # The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
-        self.report_id = report_id
-        # The ID of the instance for diagnosis.
-        self.state = state
         # The timestamp when the report was created.
+        self.create_time = create_time
+        # The list of diagnostic items in the report.
+        self.diagnose_items = diagnose_items
+        self.diagnosis_mode = diagnosis_mode
+        # The overall health status of the cluster in the report. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
+        self.health = health
+        # The instance ID of the diagnosed instance.
+        self.instance_id = instance_id
+        self.items = items
+        # The report ID.
+        self.report_id = report_id
+        # The diagnostic status. Valid values: SUCCESS, FAILED, and RUNNING.
+        self.state = state
+        # The trigger method of the health diagnostics. Valid values:
+        # 
+        # - SYSTEM: automatically triggered by the system
+        # - INNER: internally triggered
+        # - USER: manually triggered by the user.
         self.trigger = trigger
 
     def validate(self):
         if self.diagnose_items:
             for v1 in self.diagnose_items:
+                 if v1:
+                    v1.validate()
+        if self.items:
+            for v1 in self.items:
                  if v1:
                     v1.validate()
 
@@ -113,11 +121,19 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
             for k1 in self.diagnose_items:
                 result['diagnoseItems'].append(k1.to_map() if k1 else None)
 
+        if self.diagnosis_mode is not None:
+            result['diagnosisMode'] = self.diagnosis_mode
+
         if self.health is not None:
             result['health'] = self.health
 
         if self.instance_id is not None:
             result['instanceId'] = self.instance_id
+
+        result['items'] = []
+        if self.items is not None:
+            for k1 in self.items:
+                result['items'].append(k1.to_map() if k1 else None)
 
         if self.report_id is not None:
             result['reportId'] = self.report_id
@@ -141,11 +157,20 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
                 temp_model = main_models.ListDiagnoseReportResponseBodyResultDiagnoseItems()
                 self.diagnose_items.append(temp_model.from_map(k1))
 
+        if m.get('diagnosisMode') is not None:
+            self.diagnosis_mode = m.get('diagnosisMode')
+
         if m.get('health') is not None:
             self.health = m.get('health')
 
         if m.get('instanceId') is not None:
             self.instance_id = m.get('instanceId')
+
+        self.items = []
+        if m.get('items') is not None:
+            for k1 in m.get('items'):
+                temp_model = main_models.ListDiagnoseReportResponseBodyResultItems()
+                self.items.append(temp_model.from_map(k1))
 
         if m.get('reportId') is not None:
             self.report_id = m.get('reportId')
@@ -158,6 +183,73 @@ class ListDiagnoseReportResponseBodyResult(DaraModel):
 
         return self
 
+class ListDiagnoseReportResponseBodyResultItems(DaraModel):
+    def __init__(
+        self,
+        desc: str = None,
+        detail: Dict[str, Any] = None,
+        item: str = None,
+        name: str = None,
+        state: str = None,
+        suggest: str = None,
+    ):
+        self.desc = desc
+        self.detail = detail
+        self.item = item
+        self.name = name
+        self.state = state
+        self.suggest = suggest
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desc is not None:
+            result['desc'] = self.desc
+
+        if self.detail is not None:
+            result['detail'] = self.detail
+
+        if self.item is not None:
+            result['item'] = self.item
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.state is not None:
+            result['state'] = self.state
+
+        if self.suggest is not None:
+            result['suggest'] = self.suggest
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('desc') is not None:
+            self.desc = m.get('desc')
+
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
+
+        if m.get('item') is not None:
+            self.item = m.get('item')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('state') is not None:
+            self.state = m.get('state')
+
+        if m.get('suggest') is not None:
+            self.suggest = m.get('suggest')
+
+        return self
+
 class ListDiagnoseReportResponseBodyResultDiagnoseItems(DaraModel):
     def __init__(
         self,
@@ -165,15 +257,11 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItems(DaraModel):
         health: str = None,
         item: str = None,
     ):
-        # The type of the diagnostic result. Valid values:
-        # 
-        # *   TEXT: text description
-        # *   CONSOLE_API: console-triggered
-        # *   ES_API: API triggered
-        self.detail = detail
         # The details of the diagnostic item.
+        self.detail = detail
+        # The health status of the diagnostic item. Valid values: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
+        # The name of the diagnostic item.
         self.item = item
 
     def validate(self):
@@ -219,14 +307,19 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail(DaraModel):
         suggest: str = None,
         type: str = None,
     ):
-        # The diagnosis.
-        self.desc = desc
         # The description of the diagnostic item.
-        self.name = name
-        # The suggestion for the diagnosis.
-        self.result = result
-        self.suggest = suggest
+        self.desc = desc
         # The full name of the diagnostic item.
+        self.name = name
+        # The diagnostic result.
+        self.result = result
+        # The diagnostic suggestion.
+        self.suggest = suggest
+        # The type of the diagnostic result. Valid values:
+        # 
+        # - TEXT: text description
+        # - CONSOLE_API: console-triggered
+        # - ES_API: API-triggered.
         self.type = type
 
     def validate(self):
@@ -278,7 +371,7 @@ class ListDiagnoseReportResponseBodyHeaders(DaraModel):
         self,
         x_total_count: int = None,
     ):
-        # The returned results.
+        # The total number of records returned.
         self.x_total_count = x_total_count
 
     def validate(self):

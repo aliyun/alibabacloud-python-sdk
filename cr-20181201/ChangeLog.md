@@ -1,3 +1,15 @@
+2026-07-09 Version: 2.2.0
+- Support API CreateInstanceCustomizedDomain.
+- Support API DeleteInstanceCustomizedDomain.
+- Support API GetInstanceCustomizedDomain.
+- Support API UpdateInstanceCustomizedDomain.
+
+
+2026-07-06 Version: 2.1.3
+- Update API CreateInstanceEndpointAclPolicy: add request parameters Entries.
+- Update API DeleteInstanceEndpointAclPolicy: add request parameters Entries.
+
+
 2026-05-12 Version: 2.1.2
 - Update API CreateRepoSyncRule: add request parameters LinkId.
 - Update API ListRepoSyncRule: add response parameters Body.SyncRules.$.LinkId.

@@ -54,9 +54,10 @@ class GetPolicyUserScopeResponseBodyUserScope(DaraModel):
         user_ids: List[str] = None,
     ):
         # The scope of users to whom the control policy applies.
-        # *   If **All** is returned for this parameter, the control policy applies to all users.
         # 
-        # *   If no value is returned for this parameter, the control policy applies to the assets specified in the return values of UserGroupIds and UserIds.
+        # - If **All** is returned for this parameter, the control policy applies to all users.
+        # 
+        # - If no value is returned for this parameter, the control policy applies to the assets specified in the return values of UserGroupIds and UserIds.
         self.scope_type = scope_type
         # The user groups to which the control policy applies.
         self.user_group_ids = user_group_ids

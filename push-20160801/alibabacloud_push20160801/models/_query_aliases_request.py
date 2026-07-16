@@ -10,8 +10,12 @@ class QueryAliasesRequest(DaraModel):
         app_key: int = None,
         device_id: str = None,
     ):
+        # The AppKey value.
+        # 
         # This parameter is required.
         self.app_key = app_key
+        # The unique identifier for the device in Mobile Push. It is 32 characters long and contains only digits and lowercase letters.
+        # 
         # This parameter is required.
         self.device_id = device_id
 

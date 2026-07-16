@@ -17,11 +17,11 @@ class DescribeRecordStatisticsSummaryResponseBody(DaraModel):
         total_items: int = None,
         total_pages: int = None,
     ):
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries returned per page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
-        # The request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         self.statistics = statistics
         # The total number of entries returned.

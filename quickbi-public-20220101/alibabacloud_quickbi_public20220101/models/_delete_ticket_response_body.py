@@ -14,11 +14,15 @@ class DeleteTicketResponseBody(DaraModel):
         # Request ID.
         self.request_id = request_id
         # Indicates whether the deletion was successful. Possible values:
+        # 
         # - true: The request was successful
+        # 
         # - false: The request failed
         self.result = result
         # Indicates whether the request was successful. Possible values:
+        # 
         # - true: The request was successful
+        # 
         # - false: The request failed
         self.success = success
 

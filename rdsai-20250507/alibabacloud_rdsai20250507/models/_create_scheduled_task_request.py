@@ -21,32 +21,44 @@ class CreateScheduledTaskRequest(DaraModel):
     ):
         # The description of the scheduled inspection task.
         self.description = description
-        # The new inspection frequency. Separate multiple values with commas (,). Default value: DAILY. Valid values:
+        # The inspection frequency. Use commas (,) to separate multiple values. The default is DAILY. Valid values:
         # 
-        # *   DAILY
-        # *   Monday
-        # *   Tuesday
-        # *   Wednesday
-        # *   Thursday
-        # *   Friday
-        # *   Saturday \\*Sunday
+        # - DAILY: Every day
         # 
-        # ### [](#daily--dailymonday--daily-)Note: DAILY takes precedence over other values. For example, if you enter DAILY,Monday, the backend uses DAILY as the inspection frequency.
+        # - Monday: Monday
+        # 
+        # - Tuesday: Tuesday
+        # 
+        # - Wednesday: Wednesday
+        # 
+        # - Thursday: Thursday
+        # 
+        # - Friday: Friday
+        # 
+        # - Saturday: Saturday
+        # 
+        # - Sunday: Sunday
+        # 
+        # ### Note: DAILY overrides weekly values. For example, if you enter DAILY,Monday, the system uses DAILY as the inspection frequency.
         self.frequency = frequency
         self.inspection_items = inspection_items
-        # The IDs of the related instances. Separate multiple IDs with commas (,).
+        # The IDs of the instances for the task. Use commas (,) to separate multiple IDs.
         self.instance_ids = instance_ids
-        # The name of the scheduled inspection task. The name cannot exceed 64 characters in length.
+        # The name of the scheduled inspection task. The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.name = name
+        # The ID of the region.
         self.region_id = region_id
+        # The report language. The default value is zh-CN. Supported values: zh-CN, zh-TW, ja-JP, and en-US.
         self.report_language = report_language
+        # The ID of the region where the report is stored.
         self.report_region_id = report_region_id
+        # The type of the report.
         self.report_type = report_type
-        # The time when the inspection task is executed. Specify the time in the ISO 8601 standard in the HH:mm:ssZ format. The time must be in UTC. Default value: 02:00 AM.
+        # The execution time for the scheduled inspection task. Specify the time in the HH:mm:ssZ format (UTC time). The default is 02:00:00Z.
         self.start_time = start_time
-        # The inspection time range. The default value is the latest 24 hours. Valid values: 1 to 168. The maximum value is 7 days.
+        # The time range of data to inspect, in hours. Valid values are from 1 to 168 (7 days). The default is 24.
         self.time_range = time_range
 
     def validate(self):

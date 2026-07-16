@@ -17,19 +17,23 @@ class DescribeDohSubDomainStatisticsSummaryRequest(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The end date of the query. The format is YYYY-MM-DD.
         # 
-        # The default value is the day when you query the required data.
+        # The default value is the current day.
         self.end_date = end_date
-        # The language type.
-        self.lang = lang
-        # The number of the page to return. Pages start from page 1. Default value: 1.
-        self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 100. Default value: 20.
-        self.page_size = page_size
-        # The beginning of the time range to query. Specify the time in the YYYY-MM-DD format.
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # You can query only the DNS records of the last 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
+        self.lang = lang
+        # The current page number. The value starts from 1. Default value: 1.
+        self.page_number = page_number
+        # The number of entries to return on each page for a paged query. Maximum value: 100. Default value: 20.
+        self.page_size = page_size
+        # The start date of the query. The format is YYYY-MM-DD.
+        # 
+        # You can query data only from the last 90 days. StartDate must be greater than or equal to `Now - 90`.
         self.start_date = start_date
         # The subdomain.
         self.sub_domain = sub_domain

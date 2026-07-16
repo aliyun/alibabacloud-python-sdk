@@ -10,12 +10,12 @@ class DeactivateZonesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result:
+        # The returned result. Valid values:
         # 
-        # - true: Zone offline successful
-        # - false: Zone offline failed
+        # - true: The zones are taken offline.
+        # - false: The zones failed to be taken offline.
         self.result = result
 
     def validate(self):

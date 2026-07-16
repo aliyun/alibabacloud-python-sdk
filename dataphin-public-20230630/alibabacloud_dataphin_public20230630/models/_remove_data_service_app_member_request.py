@@ -13,8 +13,12 @@ class RemoveDataServiceAppMemberRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command: main_models.RemoveDataServiceAppMemberRequestRemoveCommand = None,
     ):
+        # Tenant ID
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # Remove regular members from a data service application
+        # 
         # This parameter is required.
         self.remove_command = remove_command
 
@@ -52,8 +56,12 @@ class RemoveDataServiceAppMemberRequestRemoveCommand(DaraModel):
         app_id: int = None,
         member_ids: List[str] = None,
     ):
+        # Application ID
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # List of application member IDs
+        # 
         # This parameter is required.
         self.member_ids = member_ids
 

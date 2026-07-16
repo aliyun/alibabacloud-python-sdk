@@ -16,33 +16,39 @@ class CreateIngressResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # The HTTP status code or the error code. Valid values:
+        # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: The request was successful.
-        # *   **3xx**: The request was redirected.
-        # *   **4xx**: The request failed.
-        # *   **5xx**: A server error occurred.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A request error occurs.
+        # 
+        # - **5xx**: A server error occurs.
         self.code = code
-        # Responses.
+        # The returned results.
         self.data = data
-        # Error code. Valid values:
+        # The error code.
         # 
-        # *   If the request is successful, no **ErrorCode** fields are returned.
-        # *   Request failed: **ErrorCode** fields are returned. For more information, see **Error codes**.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # Additional information. Valid values:
+        # The returned message.
         # 
-        # *   The error message returned because the request is normal and **success** is returned.
-        # *   If the request is abnormal, the specific exception error code is returned.
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
         # Indicates whether the routing rule was created. Valid values:
         # 
-        # *   **true**: The ConfigMap was created.
-        # *   **false**: The ConfigMap failed to be created.
+        # - **true**: The routing rule was created.
+        # 
+        # - **false**: The routing rule failed to be created.
         self.success = success
-        # The ID of the trace. This parameter is used to query the exact call information.
+        # The trace ID that is used to query the details of the request.
         self.trace_id = trace_id
 
     def validate(self):

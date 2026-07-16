@@ -10,6 +10,8 @@ class UpdateKibanaSsoRequest(DaraModel):
         enable: str = None,
         network_type: str = None,
     ):
+        # true: Enabled; false: shutdown
+        # 
         # This parameter is required.
         self.enable = enable
         # PUBLIC, PRIVATE

@@ -17,43 +17,38 @@ class CreateGatewayRequest(DaraModel):
         name: str = None,
         replicas: int = None,
     ):
-        # The resource group ID. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        # The name of the resource group. For more information, see the ResourceName field that is returned by the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation when ResourceType is SelfManaged.
         self.resource_name = resource_name
         # Specifies whether to enable auto-renewal. Valid values:
         # 
-        # *   false (default)
-        # *   true
+        # - false (default): Auto-renewal is disabled.
+        # 
+        # - true: Auto-renewal is enabled.
         self.auto_renewal = auto_renewal
         # The billing method. Valid values:
         # 
-        # *   PrePaid: subscription.
-        # *   PostPaid: pay-as-you-go.
+        # - PrePaid: subscription.
+        # 
+        # - PostPaid: pay-as-you-go.
         self.charge_type = charge_type
-        # Specifies whether to enable Internet access. Default value: false.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable public network access. The default value is false.
         self.enable_internet = enable_internet
-        # Specifies whether to enable private access. Default value: true.
-        # 
-        # Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable internal network access. The default value is true.
         self.enable_intranet = enable_intranet
         self.gateway_type = gateway_type
-        # The instance type used by the private gateway. Valid values:
+        # The instance type of the private gateway. Valid values:
         # 
-        # *   2c4g
-        # *   4c8g
-        # *   8c16g
-        # *   16c32g
+        # - 2c4g
+        # 
+        # - 4c8g
+        # 
+        # - 8c16g
+        # 
+        # - 16c32g
         self.instance_type = instance_type
         # The alias of the private gateway.
         self.name = name
-        # The number of nodes in the private gateway.
+        # The number of nodes for the private gateway.
         self.replicas = replicas
 
     def validate(self):

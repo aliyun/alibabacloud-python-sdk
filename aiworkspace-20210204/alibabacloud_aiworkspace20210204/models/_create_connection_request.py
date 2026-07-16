@@ -20,40 +20,27 @@ class CreateConnectionRequest(DaraModel):
         secrets: Dict[str, str] = None,
         workspace_id: str = None,
     ):
-        # The accessibility of the workspace. Valid values:
-        # 
-        # *   PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
-        # *   PUBLIC: The workspace is accessible to all users in the workspace.
+        # The visibility of the workspace. The default value is `PRIVATE`.
         self.accessibility = accessibility
-        # The connection configurations, in key-value pairs. The key varies based on the connection type. For more information, see the supplementary notes below the request parameters.
+        # Configuration properties for the connection, provided as key-value pairs. The required keys depend on the connection type. For details, see the supplementary parameter information.
         # 
         # This parameter is required.
         self.configs = configs
-        # The connection name.
+        # The name of the connection.
         # 
         # This parameter is required.
         self.connection_name = connection_name
-        # The connection type. Valid values:
-        # 
-        # *   DashScopeConnection: Alibaba Cloud Model Studio connection
-        # *   OpenLLMConnection: open source model connection
-        # *   MilvusConnection: Milvus connection
-        # *   OpenSearchConnection: OpenSearch connection
-        # *   LindormConnection: Lindorm connection
-        # *   ElasticsearchConnection: Elasticsearch connection
-        # *   HologresConnection: Hologres connection
-        # *   RDSConnection: RDS connection
-        # *   CustomConnection: custom connection
+        # The type of the connection.
         self.connection_type = connection_type
-        # The connection description.
+        # The description of the connection.
         self.description = description
-        # The models, which apply to model service connections.
+        # A list of models. This parameter applies to model service connections.
         self.models = models
-        # The instance resource information of the connection, which applies to database connections.
+        # Resource metadata for the connection. This parameter is typically used for database connection types.
         self.resource_meta = resource_meta
-        # The configuration to be encrypted. Examples: the database logon account and password and the key of the model service.
+        # Sensitive connection properties that require encryption, such as database credentials or an API key for a model service.
         self.secrets = secrets
-        # The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+        # The ID of the workspace. To get this ID, call the [`ListWorkspaces`](https://help.aliyun.com/document_detail/449124.html) operation.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -142,6 +129,7 @@ class CreateConnectionRequestResourceMeta(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
     ):
+        # Additional configuration information.
         self.extra = extra
         # The instance ID.
         self.instance_id = instance_id
@@ -184,24 +172,29 @@ class CreateConnectionRequestModels(DaraModel):
     def __init__(
         self,
         display_name: str = None,
+        max_model_length: int = None,
         model: str = None,
         model_type: str = None,
+        support_reasoning: bool = None,
+        support_response_schema: bool = None,
+        support_vision: bool = None,
         tool_call: bool = None,
     ):
         # The display name of the model.
         self.display_name = display_name
-        # The model identifier.
+        # The context length.
+        self.max_model_length = max_model_length
+        # The model identifier. This value corresponds to the `model` parameter in an OpenAI API request.
         self.model = model
-        # The model type. Valid values:
-        # 
-        # *   LLM
-        # *   Embedding
-        # *   ReRank
+        # The model type.
         self.model_type = model_type
-        # Specifies whether a tool can be called by using ToolCall. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the model supports deep reasoning and can output the reasoning process as `reasoning_content`.
+        self.support_reasoning = support_reasoning
+        # Specifies whether the model supports structured output in the OpenAI API\\"s JSON Schema format.
+        self.support_response_schema = support_response_schema
+        # Specifies whether the model supports visual understanding.
+        self.support_vision = support_vision
+        # Specifies whether the model supports tool calling.
         self.tool_call = tool_call
 
     def validate(self):
@@ -215,11 +208,23 @@ class CreateConnectionRequestModels(DaraModel):
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
 
+        if self.max_model_length is not None:
+            result['MaxModelLength'] = self.max_model_length
+
         if self.model is not None:
             result['Model'] = self.model
 
         if self.model_type is not None:
             result['ModelType'] = self.model_type
+
+        if self.support_reasoning is not None:
+            result['SupportReasoning'] = self.support_reasoning
+
+        if self.support_response_schema is not None:
+            result['SupportResponseSchema'] = self.support_response_schema
+
+        if self.support_vision is not None:
+            result['SupportVision'] = self.support_vision
 
         if self.tool_call is not None:
             result['ToolCall'] = self.tool_call
@@ -231,11 +236,23 @@ class CreateConnectionRequestModels(DaraModel):
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
 
+        if m.get('MaxModelLength') is not None:
+            self.max_model_length = m.get('MaxModelLength')
+
         if m.get('Model') is not None:
             self.model = m.get('Model')
 
         if m.get('ModelType') is not None:
             self.model_type = m.get('ModelType')
+
+        if m.get('SupportReasoning') is not None:
+            self.support_reasoning = m.get('SupportReasoning')
+
+        if m.get('SupportResponseSchema') is not None:
+            self.support_response_schema = m.get('SupportResponseSchema')
+
+        if m.get('SupportVision') is not None:
+            self.support_vision = m.get('SupportVision')
 
         if m.get('ToolCall') is not None:
             self.tool_call = m.get('ToolCall')

@@ -11,9 +11,13 @@ class ModifyRenderingInstanceRequest(DaraModel):
         rendering_spec: str = None,
         storage_size: str = None,
     ):
+        # ID of the cloud application service instance. You can only upgrade or downgrade to another instance type in the same series.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
+        # Instance type of the cloud application service instance.
         self.rendering_spec = rendering_spec
+        # Cloud storage capacity used by the cloud application service instance. This is not local storage.
         self.storage_size = storage_size
 
     def validate(self):

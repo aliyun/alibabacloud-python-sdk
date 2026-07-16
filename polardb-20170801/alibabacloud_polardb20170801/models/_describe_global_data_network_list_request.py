@@ -10,7 +10,9 @@ class DescribeGlobalDataNetworkListRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The page number to return.
         self.page_number = page_number
+        # The number of records to return on each page.
         self.page_size = page_size
 
     def validate(self):

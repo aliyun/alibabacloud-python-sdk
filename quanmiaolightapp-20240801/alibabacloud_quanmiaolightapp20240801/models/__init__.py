@@ -3,6 +3,14 @@
 from __future__ import annotations
 
 from ._model_usage import ModelUsage
+from ._batch_cancel_tasks_request import BatchCancelTasksRequest
+from ._batch_cancel_tasks_shrink_request import BatchCancelTasksShrinkRequest
+from ._batch_cancel_tasks_response_body import BatchCancelTasksResponseBody
+from ._batch_cancel_tasks_response import BatchCancelTasksResponse
+from ._batch_query_task_status_request import BatchQueryTaskStatusRequest
+from ._batch_query_task_status_shrink_request import BatchQueryTaskStatusShrinkRequest
+from ._batch_query_task_status_response_body import BatchQueryTaskStatusResponseBody
+from ._batch_query_task_status_response import BatchQueryTaskStatusResponse
 from ._cancel_async_task_request import CancelAsyncTaskRequest
 from ._cancel_async_task_response_body import CancelAsyncTaskResponseBody
 from ._cancel_async_task_response import CancelAsyncTaskResponse
@@ -29,6 +37,9 @@ from ._get_file_content_response import GetFileContentResponse
 from ._get_tag_mining_analysis_task_request import GetTagMiningAnalysisTaskRequest
 from ._get_tag_mining_analysis_task_response_body import GetTagMiningAnalysisTaskResponseBody
 from ._get_tag_mining_analysis_task_response import GetTagMiningAnalysisTaskResponse
+from ._get_task_execution_statistics_request import GetTaskExecutionStatisticsRequest
+from ._get_task_execution_statistics_response_body import GetTaskExecutionStatisticsResponseBody
+from ._get_task_execution_statistics_response import GetTaskExecutionStatisticsResponse
 from ._get_video_analysis_config_response_body import GetVideoAnalysisConfigResponseBody
 from ._get_video_analysis_config_response import GetVideoAnalysisConfigResponse
 from ._get_video_analysis_task_request import GetVideoAnalysisTaskRequest
@@ -143,6 +154,10 @@ from ._update_video_detect_shot_config_response import UpdateVideoDetectShotConf
 from ._update_video_detect_shot_task_request import UpdateVideoDetectShotTaskRequest
 from ._update_video_detect_shot_task_response_body import UpdateVideoDetectShotTaskResponseBody
 from ._update_video_detect_shot_task_response import UpdateVideoDetectShotTaskResponse
+from ._batch_cancel_tasks_response_body import BatchCancelTasksResponseBodyDataResults
+from ._batch_cancel_tasks_response_body import BatchCancelTasksResponseBodyData
+from ._batch_query_task_status_response_body import BatchQueryTaskStatusResponseBodyDataTaskStatusList
+from ._batch_query_task_status_response_body import BatchQueryTaskStatusResponseBodyData
 from ._generate_broadcast_news_response_body import GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages
 from ._generate_broadcast_news_response_body import GenerateBroadcastNewsResponseBodyDataHotTopicSummaries
 from ._generate_broadcast_news_response_body import GenerateBroadcastNewsResponseBodyDataUsage
@@ -166,6 +181,8 @@ from ._get_tag_mining_analysis_task_response_body import GetTagMiningAnalysisTas
 from ._get_tag_mining_analysis_task_response_body import GetTagMiningAnalysisTaskResponseBodyDataResultsPayload
 from ._get_tag_mining_analysis_task_response_body import GetTagMiningAnalysisTaskResponseBodyDataResults
 from ._get_tag_mining_analysis_task_response_body import GetTagMiningAnalysisTaskResponseBodyData
+from ._get_task_execution_statistics_response_body import GetTaskExecutionStatisticsResponseBodyDataTpmPerMinute
+from ._get_task_execution_statistics_response_body import GetTaskExecutionStatisticsResponseBodyData
 from ._get_video_analysis_config_response_body import GetVideoAnalysisConfigResponseBodyData
 from ._get_video_analysis_task_response_body import GetVideoAnalysisTaskResponseBodyDataHeader
 from ._get_video_analysis_task_response_body import GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult
@@ -358,6 +375,14 @@ from ._update_video_detect_shot_task_response_body import UpdateVideoDetectShotT
 
 __all__ = [
     ModelUsage,
+    BatchCancelTasksRequest,
+    BatchCancelTasksShrinkRequest,
+    BatchCancelTasksResponseBody,
+    BatchCancelTasksResponse,
+    BatchQueryTaskStatusRequest,
+    BatchQueryTaskStatusShrinkRequest,
+    BatchQueryTaskStatusResponseBody,
+    BatchQueryTaskStatusResponse,
     CancelAsyncTaskRequest,
     CancelAsyncTaskResponseBody,
     CancelAsyncTaskResponse,
@@ -384,6 +409,9 @@ __all__ = [
     GetTagMiningAnalysisTaskRequest,
     GetTagMiningAnalysisTaskResponseBody,
     GetTagMiningAnalysisTaskResponse,
+    GetTaskExecutionStatisticsRequest,
+    GetTaskExecutionStatisticsResponseBody,
+    GetTaskExecutionStatisticsResponse,
     GetVideoAnalysisConfigResponseBody,
     GetVideoAnalysisConfigResponse,
     GetVideoAnalysisTaskRequest,
@@ -498,6 +526,10 @@ __all__ = [
     UpdateVideoDetectShotTaskRequest,
     UpdateVideoDetectShotTaskResponseBody,
     UpdateVideoDetectShotTaskResponse,
+    BatchCancelTasksResponseBodyDataResults,
+    BatchCancelTasksResponseBodyData,
+    BatchQueryTaskStatusResponseBodyDataTaskStatusList,
+    BatchQueryTaskStatusResponseBodyData,
     GenerateBroadcastNewsResponseBodyDataHotTopicSummariesImages,
     GenerateBroadcastNewsResponseBodyDataHotTopicSummaries,
     GenerateBroadcastNewsResponseBodyDataUsage,
@@ -521,6 +553,8 @@ __all__ = [
     GetTagMiningAnalysisTaskResponseBodyDataResultsPayload,
     GetTagMiningAnalysisTaskResponseBodyDataResults,
     GetTagMiningAnalysisTaskResponseBodyData,
+    GetTaskExecutionStatisticsResponseBodyDataTpmPerMinute,
+    GetTaskExecutionStatisticsResponseBodyData,
     GetVideoAnalysisConfigResponseBodyData,
     GetVideoAnalysisTaskResponseBodyDataHeader,
     GetVideoAnalysisTaskResponseBodyDataPayloadOutputAddDatasetDocumentsResult,

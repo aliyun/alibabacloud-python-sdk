@@ -22,34 +22,38 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
         target_artifact: main_models.GetArtifactBuildTaskResponseBodyTargetArtifact = None,
         task_status: str = None,
     ):
-        # The type of the artifact building task. Valid values:
+        # The artifact build type. Valid values:
         # 
-        # *   `IMAGE_TO_ACCELERATED_IMAGE`: builds accelerated images for Container Service for Kubernetes (ACK) clusters.
-        # *   `IMAGE_TO_ECI_ACCELERATED_IMAGE`: builds accelerated images for elastic container instances.
+        # - `IMAGE_TO_ACCELERATED_IMAGE`: an accelerated image for ACK.
+        # 
+        # - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: an accelerated image for ECI.
         self.artifact_build_type = artifact_build_type
-        # The ID of the artifact building task.
+        # The ID of the artifact build task.
         self.build_task_id = build_task_id
-        # The return value.
+        # The response code.
         self.code = code
-        # The time when the artifact building task ends.
+        # The Unix timestamp in seconds when the task ended.
         self.end_time = end_time
         self.instructions = instructions
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
         # The ID of the request.
         self.request_id = request_id
-        # The information about the source artifact.
+        # The source artifact.
         self.source_artifact = source_artifact
-        # The time when the artifact building task starts.
+        # The Unix timestamp in seconds when the task started.
         self.start_time = start_time
-        # The artifact that is built in the task.
+        # The target artifact.
         self.target_artifact = target_artifact
-        # The status of the artifact that is built in the task. Valid values:
+        # The status of the artifact build task. Valid values:
         # 
-        # *   `PENDING`: The artifact is being scheduled.
-        # *   `BUILDING`: The artifact is being built.
-        # *   `SUCCESS`: The artifact is built.
-        # *   `FAILED`: The artifact fails to be built.
+        # - `PENDING`: The task is being scheduled.
+        # 
+        # - `BUILDING`: The task is in progress.
+        # 
+        # - `SUCCESS`: The task is successful.
+        # 
+        # - `FAILED`: The task failed.
         self.task_status = task_status
 
     def validate(self):
@@ -144,11 +148,11 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(DaraModel):
         repo_id: str = None,
         version: str = None,
     ):
-        # The type of the artifact that is built in the task. The value can only be IMAGE.
+        # The artifact type. Currently, only `IMAGE` is supported.
         self.artifact_type = artifact_type
-        # The ID of the repository to which the artifact that is built in the task belongs. The repository can only be an image repository. The value is the same as the ID of the repository to which the source artifact belongs.
+        # The repository ID. It must be the same as the repository ID of the source artifact. Only image repositories are supported.
         self.repo_id = repo_id
-        # The version of the artifact that is built in the task. The artifact can only be an image.
+        # The artifact version. Currently, only image versions are supported.
         self.version = version
 
     def validate(self):
@@ -190,11 +194,11 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(DaraModel):
         repo_id: str = None,
         version: str = None,
     ):
-        # The type of the artifact that is built in the task. The value can only be IMAGE.
+        # The artifact type. Currently, only `IMAGE` is supported.
         self.artifact_type = artifact_type
-        # The ID of the repository to which the source artifact belongs. The repository can only be an image repository.
+        # The repository ID. Currently, only image repositories are supported.
         self.repo_id = repo_id
-        # The version of the artifact. The artifact can only be an image.
+        # The artifact version. Currently, only image versions are supported.
         self.version = version
 
     def validate(self):

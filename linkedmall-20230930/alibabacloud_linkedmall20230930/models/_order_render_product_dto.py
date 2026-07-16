@@ -12,10 +12,16 @@ class OrderRenderProductDTO(DaraModel):
         quantity: int = None,
         sku_id: str = None,
     ):
+        # Product ID
+        # 
         # This parameter is required.
         self.product_id = product_id
+        # Purchaser ID
+        # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
+        # Quantity
+        # 
         # This parameter is required.
         self.quantity = quantity
         # skuID

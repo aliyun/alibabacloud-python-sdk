@@ -16,8 +16,9 @@ class ListTagResourcesResponseBody(DaraModel):
     ):
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
-        # *   If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
+        # - If this is your first request and no next requests are to be performed, you do not need to specify this parameter.
+        # 
+        # - If a next request is to be performed, set the parameter to the value of NextToken that is returned from the last call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -76,8 +77,9 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
-        # *   **vpcendpoint**: endpoint
-        # *   **vpcendpointservice**: endpoint service
+        # - **vpcendpoint**: endpoint
+        # 
+        # - **vpcendpointservice**: endpoint service
         self.resource_type = resource_type
         # The key of tag N added to the resource.
         self.tag_key = tag_key

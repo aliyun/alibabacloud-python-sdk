@@ -22,20 +22,33 @@ class UpdateAirflowShrinkRequest(DaraModel):
         worker_serverless_replicas: int = None,
         workspace_id: str = None,
     ):
+        # The unique ID of the Airflow instance.
+        # 
         # This parameter is required.
         self.airflow_id = airflow_id
+        # The name of the Airflow instance.
         self.airflow_name = airflow_name
+        # The specifications of the Airflow instance.
         self.app_spec = app_spec
+        # A client token to ensure request idempotence.
         self.client_token = client_token
+        # The directory path where Airflow scans for DAGs.
         self.dags_dir = dags_dir
         self.data_mount_info_list_shrink = data_mount_info_list_shrink
+        # The description of the Airflow instance.
         self.description = description
         self.enable_serverless = enable_serverless
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
+        # The directory path where Airflow scans for plugins.
         self.plugins_dir = plugins_dir
+        # The path to the requirements file for package dependencies.
         self.requirement_file = requirement_file
+        # The path to the startup script for the Airflow instance.
         self.startup_file = startup_file
+        # The number of worker nodes.
         self.worker_serverless_replicas = worker_serverless_replicas
+        # The Data Management Service (DMS) workspace ID.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

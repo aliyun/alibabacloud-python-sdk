@@ -9,6 +9,7 @@ class ListPipelineIdsRequest(DaraModel):
         self,
         body: str = None,
     ):
+        # The request body parameters. For more information, see the RequestBody section below.
         self.body = body
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListOSSHDFSExportsResponseBody(DaraModel):
         results: List[main_models.OSSExport] = None,
         total: int = None,
     ):
+        # The number of OSS-HDFS export tasks returned in the current response.
         self.count = count
+        # The list of OSS-HDFS export tasks.
         self.results = results
+        # The total number of OSS-HDFS export tasks in the project.
         self.total = total
 
     def validate(self):

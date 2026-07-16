@@ -17,11 +17,25 @@ class QuerySmsTrademarkResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # The status code of the request.
+        # 
+        # - `OK` indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/101346.html).
         self.code = code
+        # A list of trademark details.
         self.data = data
+        # The description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - **true**: The request is successful.
+        # 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -93,19 +107,19 @@ class QuerySmsTrademarkResponseBodyData(DaraModel):
         trademark_pic_url: str = None,
         trademark_registration_number: str = None,
     ):
-        # 申请人名称
+        # The applicant name.
         self.trademark_applicant_name = trademark_applicant_name
-        # 专用权生失效日期
+        # The validity period of the trademark.
         self.trademark_eff_exp_date = trademark_eff_exp_date
-        # 商标材料id
+        # The trademark ID.
         self.trademark_id = trademark_id
-        # 商标名称
+        # The name of the trademark.
         self.trademark_name = trademark_name
-        # 商标截图Osskey（给签名传工单用）
+        # The Object Storage Service (OSS) file key for the trademark image.
         self.trademark_pic = trademark_pic
-        # 商标截图url地址
+        # The URL of the trademark screenshot.
         self.trademark_pic_url = trademark_pic_url
-        # 商标注册号
+        # The trademark registration number.
         self.trademark_registration_number = trademark_registration_number
 
     def validate(self):

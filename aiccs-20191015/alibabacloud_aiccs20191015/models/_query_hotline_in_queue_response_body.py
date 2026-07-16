@@ -13,10 +13,15 @@ class QueryHotlineInQueueResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.code = code
+        # Hotline agent data.
         self.data = data
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the API call succeeded.
         self.success = success
 
     def validate(self):

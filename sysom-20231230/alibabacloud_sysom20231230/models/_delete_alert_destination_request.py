@@ -9,6 +9,7 @@ class DeleteAlertDestinationRequest(DaraModel):
         self,
         id: int = None,
     ):
+        # The ID of the alert contact.
         self.id = id
 
     def validate(self):

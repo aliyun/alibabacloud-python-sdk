@@ -9,7 +9,7 @@ class UpdateCsrResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The unique ID of the request. Alibaba Cloud generates this ID for each request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

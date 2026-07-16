@@ -15,24 +15,23 @@ class DescribeListPocRequest(DaraModel):
         task_status: str = None,
         type: str = None,
     ):
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Task name.
+        # The task name.
         self.task_name = task_name
-        # The status of the import task. Valid values:
-        # 
-        # *   DOING
-        # *   FINISH
+        # The execution status of the import task. Valid values:
+        # - DOING: running
+        # - FINISH: completed.
         self.task_status = task_status
-        # Type
+        # The type.
         self.type = type
 
     def validate(self):

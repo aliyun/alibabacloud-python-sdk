@@ -17,51 +17,61 @@ class ListDatasetVersionsRequest(DaraModel):
         source_id: str = None,
         source_types: str = None,
     ):
-        # The dataset tag keys, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+        # The label keys used to filter the dataset list. Datasets are returned if their label keys contain the specified strings.
         self.label_keys = label_keys
-        # The dataset tag values, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+        # The label values used to filter the dataset list. Datasets are returned if their label values contain the specified strings.
         self.label_values = label_values
-        # The order in which the entries are sorted by the specific field on the returned page. Default value: ASC. Valid values:
+        # The sort order for the paged query. The default value is ASC. Valid values:
         # 
-        # *   ASC: ascending order
-        # *   DESC: descending order.
+        # - ASC: Ascending order.
+        # 
+        # - DESC: Descending order.
         self.order = order
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. The value starts from 1. The default is 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries to return on each page. The default value is 10.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The dataset properties. Valid values:
         # 
-        # *   DIRECTORY
-        # *   FILE
+        # - DIRECTORY: Folder.
+        # 
+        # - FILE: File.
         self.properties = properties
-        # The field used to sort the results in queries by page. Default value: GmtCreateTime.
-        # Valid values:
+        # The field to use for sorting in a paged query. The default value is GmtCreateTime. Valid values:
         # 
-        # *   SourceType
-        # *   DataSourceType
-        # *   DataSize
-        # *   DataCount
-        # *   Property
-        # *   GmtCreateTime: The results are sorted by creation time. This is the default value.
-        # *   GmtModifiedTime: The results are sorted by modification time.
-        # *   DatasetId
+        # - GmtCreateTime (default): Creation time.
+        # 
+        # - GmtModifiedTime: Modification time.
+        # 
+        # - SourceType
+        # 
+        # - DataSourceType
+        # 
+        # - Property
+        # 
+        # - DataSize
+        # 
+        # - DataCount
         self.sort_by = sort_by
-        # The data source ID.
+        # The ID of the data source.
         # 
-        # *   If SourceType is set to USER, the value of SourceId is a custom string.
-        # *   If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
-        # *   If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+        # - If SourceTypes is USER, you can specify a custom ID.
+        # 
+        # - If SourceTypes is ITAG, this is the ID of the iTAG annotation task.
+        # 
+        # - If SourceTypes is PAI_PUBLIC_DATASET, this parameter is empty by default.
         self.source_id = source_id
         # The source type. Valid values:
         # 
-        # *   PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
-        # *   ITAG: a dataset generated from a labeling job of iTAG.
-        # *   USER: a dataset registered by a user.
+        # - PAI-PUBLIC-DATASET: A public dataset from PAI.
+        # 
+        # - ITAG: A dataset generated from the annotation results of the iTAG module.
+        # 
+        # - USER: A dataset registered by a user.
         self.source_types = source_types
 
     def validate(self):

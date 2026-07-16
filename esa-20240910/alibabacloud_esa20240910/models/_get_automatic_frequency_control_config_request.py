@@ -10,8 +10,11 @@ class GetAutomaticFrequencyControlConfigRequest(DaraModel):
         site_id: int = None,
         site_version: int = None,
     ):
+        # The ID of the site. Call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain this ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The version of the site. If versioning is enabled, use this parameter to specify the site version. The default value is 0.
         self.site_version = site_version
 
     def validate(self):

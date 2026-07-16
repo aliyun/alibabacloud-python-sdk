@@ -17,17 +17,18 @@ class DescribeAccessPointsRequest(DaraModel):
     ):
         # The language of the response. Valid values:
         # 
-        # *   **zh-CN**: Chinese
-        # *   **en-US** (default): English
+        # - **zh-CN**: Chinese.
+        # 
+        # - **en-US** (default): English.
         self.accept_language = accept_language
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the access point.
+        # The ID of the region where the access point is located.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

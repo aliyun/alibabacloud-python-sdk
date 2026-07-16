@@ -13,7 +13,7 @@ class DescribeDBInstancesResponseBody(DaraModel):
         data: main_models.DescribeDBInstancesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -54,13 +54,13 @@ class DescribeDBInstancesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: str = None,
     ):
-        # The clusters.
+        # The list of instance details.
         self.dbinstances = dbinstances
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -137,53 +137,55 @@ class DescribeDBInstancesResponseBodyDataDBInstances(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The user ID.
+        # The account ID.
         self.ali_uid = ali_uid
         # The channel ID.
         self.bid = bid
-        # The billing method. Valid values:
+        # The billing method for the instance. Valid values:
         # 
-        # *   PrePaid: subscription
-        # *   PostPaid: pay-as-you-go
+        # - `PrePaid`: subscription.
+        # 
+        # - `PostPaid`: pay-as-you-go.
         self.charge_type = charge_type
-        # The time when the cluster was created.
+        # The instance creation time.
         self.create_time = create_time
-        # The cluster ID.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # Indicates whether the release protection feature is enabled for the cluster.
+        # Indicates whether deletion protection is enabled.
         self.deletion_protection = deletion_protection
-        # The cluster description.
+        # The instance description.
         self.description = description
-        # The engine type.
+        # The engine.
         self.engine = engine
         # The engine version.
         self.engine_version = engine_version
-        # The time when the cluster expires.
+        # The expiration time.
         self.expire_time = expire_time
         # The lock mode.
         self.lock_mode = lock_mode
-        # The reason why the cluster was locked.
+        # The reason for the lock.
         self.lock_reason = lock_reason
-        # The end time of the maintenance window.
+        # The maintenance window end time.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
+        # The maintenance window start time.
         self.maintain_start_time = maintain_start_time
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The maximum capacity for elastic scaling.
+        # The maximum compute capacity for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum capacity for elastic scaling.
+        # The minimum compute capacity for serverless elastic scaling.
         self.scale_min = scale_min
-        # The cluster status.
+        # The instance status.
         self.status = status
+        # The instance storage type.
         self.storage_type = storage_type
-        # The tags.
+        # The tags attached to the instance.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id

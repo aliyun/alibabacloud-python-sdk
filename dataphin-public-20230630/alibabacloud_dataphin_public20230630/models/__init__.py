@@ -107,6 +107,10 @@ from ._create_data_source_request import CreateDataSourceRequest
 from ._create_data_source_shrink_request import CreateDataSourceShrinkRequest
 from ._create_data_source_response_body import CreateDataSourceResponseBody
 from ._create_data_source_response import CreateDataSourceResponse
+from ._create_dataset_request import CreateDatasetRequest
+from ._create_dataset_shrink_request import CreateDatasetShrinkRequest
+from ._create_dataset_response_body import CreateDatasetResponseBody
+from ._create_dataset_response import CreateDatasetResponse
 from ._create_directory_request import CreateDirectoryRequest
 from ._create_directory_shrink_request import CreateDirectoryShrinkRequest
 from ._create_directory_response_body import CreateDirectoryResponseBody
@@ -191,6 +195,10 @@ from ._create_user_group_request import CreateUserGroupRequest
 from ._create_user_group_shrink_request import CreateUserGroupShrinkRequest
 from ._create_user_group_response_body import CreateUserGroupResponseBody
 from ._create_user_group_response import CreateUserGroupResponse
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequest
+from ._create_work_flow_by_json_shrink_request import CreateWorkFlowByJsonShrinkRequest
+from ._create_work_flow_by_json_response_body import CreateWorkFlowByJsonResponseBody
+from ._create_work_flow_by_json_response import CreateWorkFlowByJsonResponse
 from ._delete_ad_hoc_file_request import DeleteAdHocFileRequest
 from ._delete_ad_hoc_file_response_body import DeleteAdHocFileResponseBody
 from ._delete_ad_hoc_file_response import DeleteAdHocFileResponse
@@ -224,6 +232,9 @@ from ._delete_data_source_request import DeleteDataSourceRequest
 from ._delete_data_source_shrink_request import DeleteDataSourceShrinkRequest
 from ._delete_data_source_response_body import DeleteDataSourceResponseBody
 from ._delete_data_source_response import DeleteDataSourceResponse
+from ._delete_dataset_request import DeleteDatasetRequest
+from ._delete_dataset_response_body import DeleteDatasetResponseBody
+from ._delete_dataset_response import DeleteDatasetResponse
 from ._delete_directory_request import DeleteDirectoryRequest
 from ._delete_directory_response_body import DeleteDirectoryResponseBody
 from ._delete_directory_response import DeleteDirectoryResponse
@@ -348,6 +359,9 @@ from ._get_batch_task_udf_lineages_response import GetBatchTaskUdfLineagesRespon
 from ._get_batch_task_versions_request import GetBatchTaskVersionsRequest
 from ._get_batch_task_versions_response_body import GetBatchTaskVersionsResponseBody
 from ._get_batch_task_versions_response import GetBatchTaskVersionsResponse
+from ._get_batch_template_versions_request import GetBatchTemplateVersionsRequest
+from ._get_batch_template_versions_response_body import GetBatchTemplateVersionsResponseBody
+from ._get_batch_template_versions_response import GetBatchTemplateVersionsResponse
 from ._get_belong_asset_mapping_request import GetBelongAssetMappingRequest
 from ._get_belong_asset_mapping_shrink_request import GetBelongAssetMappingShrinkRequest
 from ._get_belong_asset_mapping_response_body import GetBelongAssetMappingResponseBody
@@ -426,6 +440,9 @@ from ._get_data_service_project_addable_users_response import GetDataServiceProj
 from ._get_data_source_dependencies_request import GetDataSourceDependenciesRequest
 from ._get_data_source_dependencies_response_body import GetDataSourceDependenciesResponseBody
 from ._get_data_source_dependencies_response import GetDataSourceDependenciesResponse
+from ._get_dataset_request import GetDatasetRequest
+from ._get_dataset_response_body import GetDatasetResponseBody
+from ._get_dataset_response import GetDatasetResponse
 from ._get_dev_object_dependency_request import GetDevObjectDependencyRequest
 from ._get_dev_object_dependency_response_body import GetDevObjectDependencyResponseBody
 from ._get_dev_object_dependency_response import GetDevObjectDependencyResponse
@@ -458,6 +475,18 @@ from ._get_node_up_down_stream_request import GetNodeUpDownStreamRequest
 from ._get_node_up_down_stream_shrink_request import GetNodeUpDownStreamShrinkRequest
 from ._get_node_up_down_stream_response_body import GetNodeUpDownStreamResponseBody
 from ._get_node_up_down_stream_response import GetNodeUpDownStreamResponse
+from ._get_operation_record_by_id_request import GetOperationRecordByIdRequest
+from ._get_operation_record_by_id_shrink_request import GetOperationRecordByIdShrinkRequest
+from ._get_operation_record_by_id_response_body import GetOperationRecordByIdResponseBody
+from ._get_operation_record_by_id_response import GetOperationRecordByIdResponse
+from ._get_operation_record_detail_request import GetOperationRecordDetailRequest
+from ._get_operation_record_detail_shrink_request import GetOperationRecordDetailShrinkRequest
+from ._get_operation_record_detail_response_body import GetOperationRecordDetailResponseBody
+from ._get_operation_record_detail_response import GetOperationRecordDetailResponse
+from ._get_operation_record_run_code_request import GetOperationRecordRunCodeRequest
+from ._get_operation_record_run_code_shrink_request import GetOperationRecordRunCodeShrinkRequest
+from ._get_operation_record_run_code_response_body import GetOperationRecordRunCodeResponseBody
+from ._get_operation_record_run_code_response import GetOperationRecordRunCodeResponse
 from ._get_operation_submit_status_request import GetOperationSubmitStatusRequest
 from ._get_operation_submit_status_response_body import GetOperationSubmitStatusResponseBody
 from ._get_operation_submit_status_response import GetOperationSubmitStatusResponse
@@ -659,6 +688,10 @@ from ._list_authorized_data_service_api_details_request import ListAuthorizedDat
 from ._list_authorized_data_service_api_details_shrink_request import ListAuthorizedDataServiceApiDetailsShrinkRequest
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBody
 from ._list_authorized_data_service_api_details_response import ListAuthorizedDataServiceApiDetailsResponse
+from ._list_batch_templates_request import ListBatchTemplatesRequest
+from ._list_batch_templates_shrink_request import ListBatchTemplatesShrinkRequest
+from ._list_batch_templates_response_body import ListBatchTemplatesResponseBody
+from ._list_batch_templates_response import ListBatchTemplatesResponse
 from ._list_biz_entities_request import ListBizEntitiesRequest
 from ._list_biz_entities_shrink_request import ListBizEntitiesShrinkRequest
 from ._list_biz_entities_response_body import ListBizEntitiesResponseBody
@@ -714,6 +747,10 @@ from ._list_data_source_with_config_request import ListDataSourceWithConfigReque
 from ._list_data_source_with_config_shrink_request import ListDataSourceWithConfigShrinkRequest
 from ._list_data_source_with_config_response_body import ListDataSourceWithConfigResponseBody
 from ._list_data_source_with_config_response import ListDataSourceWithConfigResponse
+from ._list_datasets_request import ListDatasetsRequest
+from ._list_datasets_shrink_request import ListDatasetsShrinkRequest
+from ._list_datasets_response_body import ListDatasetsResponseBody
+from ._list_datasets_response import ListDatasetsResponse
 from ._list_files_request import ListFilesRequest
 from ._list_files_shrink_request import ListFilesShrinkRequest
 from ._list_files_response_body import ListFilesResponseBody
@@ -730,6 +767,10 @@ from ._list_nodes_request import ListNodesRequest
 from ._list_nodes_shrink_request import ListNodesShrinkRequest
 from ._list_nodes_response_body import ListNodesResponseBody
 from ._list_nodes_response import ListNodesResponse
+from ._list_operation_record_request import ListOperationRecordRequest
+from ._list_operation_record_shrink_request import ListOperationRecordShrinkRequest
+from ._list_operation_record_response_body import ListOperationRecordResponseBody
+from ._list_operation_record_response import ListOperationRecordResponse
 from ._list_project_members_request import ListProjectMembersRequest
 from ._list_project_members_shrink_request import ListProjectMembersShrinkRequest
 from ._list_project_members_response_body import ListProjectMembersResponseBody
@@ -979,6 +1020,10 @@ from ._update_data_source_config_request import UpdateDataSourceConfigRequest
 from ._update_data_source_config_shrink_request import UpdateDataSourceConfigShrinkRequest
 from ._update_data_source_config_response_body import UpdateDataSourceConfigResponseBody
 from ._update_data_source_config_response import UpdateDataSourceConfigResponse
+from ._update_dataset_request import UpdateDatasetRequest
+from ._update_dataset_shrink_request import UpdateDatasetShrinkRequest
+from ._update_dataset_response_body import UpdateDatasetResponseBody
+from ._update_dataset_response import UpdateDatasetResponse
 from ._update_file_directory_request import UpdateFileDirectoryRequest
 from ._update_file_directory_response_body import UpdateFileDirectoryResponseBody
 from ._update_file_directory_response import UpdateFileDirectoryResponse
@@ -1154,6 +1199,17 @@ from ._create_data_source_request import CreateDataSourceRequestCreateCommandPro
 from ._create_data_source_request import CreateDataSourceRequestCreateCommandProdDataSourceCreate
 from ._create_data_source_request import CreateDataSourceRequestCreateCommand
 from ._create_data_source_response_body import CreateDataSourceResponseBodyCreateResult
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumns
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchema
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchema
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommandVersionConfig
+from ._create_dataset_request import CreateDatasetRequestCreateCommand
 from ._create_directory_request import CreateDirectoryRequestCreateCommand
 from ._create_node_supplement_request import CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList
 from ._create_node_supplement_request import CreateNodeSupplementRequestCreateCommandFilterList
@@ -1236,6 +1292,9 @@ from ._create_stream_batch_job_mapping_request import CreateStreamBatchJobMappin
 from ._create_stream_batch_job_mapping_response_body import CreateStreamBatchJobMappingResponseBodyData
 from ._create_udf_request import CreateUdfRequestCreateCommand
 from ._create_user_group_request import CreateUserGroupRequestCreateCommand
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequestContext
+from ._create_work_flow_by_json_request import CreateWorkFlowByJsonRequestCreateCommand
+from ._create_work_flow_by_json_response_body import CreateWorkFlowByJsonResponseBodyData
 from ._delete_batch_task_request import DeleteBatchTaskRequestDeleteCommand
 from ._delete_biz_metric_request import DeleteBizMetricRequestDeleteBizMetricCommand
 from ._delete_biz_metric_response_body import DeleteBizMetricResponseBodyData
@@ -1308,6 +1367,8 @@ from ._get_batch_task_udf_lineages_response_body import GetBatchTaskUdfLineagesR
 from ._get_batch_task_udf_lineages_response_body import GetBatchTaskUdfLineagesResponseBodyData
 from ._get_batch_task_versions_response_body import GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList
 from ._get_batch_task_versions_response_body import GetBatchTaskVersionsResponseBodyData
+from ._get_batch_template_versions_response_body import GetBatchTemplateVersionsResponseBodyDataTemplateVersionList
+from ._get_batch_template_versions_response_body import GetBatchTemplateVersionsResponseBodyData
 from ._get_belong_asset_mapping_request import GetBelongAssetMappingRequestAssetMappingQuery
 from ._get_belong_asset_mapping_response_body import GetBelongAssetMappingResponseBodyMappingRelationList
 from ._get_biz_entity_info_response_body import GetBizEntityInfoResponseBodyBizEntityInfoBizObject
@@ -1370,6 +1431,19 @@ from ._get_data_service_authorized_projects_response_body import GetDataServiceA
 from ._get_data_service_my_projects_response_body import GetDataServiceMyProjectsResponseBodyProjectList
 from ._get_data_service_project_addable_users_response_body import GetDataServiceProjectAddableUsersResponseBodyUserList
 from ._get_data_source_dependencies_response_body import GetDataSourceDependenciesResponseBodyDependencyList
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOOwnerList
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchema
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTOVersionList
+from ._get_dataset_response_body import GetDatasetResponseBodyDatasetDTO
 from ._get_dev_object_dependency_response_body import GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod
 from ._get_dev_object_dependency_response_body import GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextParamList
 from ._get_dev_object_dependency_response_body import GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList
@@ -1398,6 +1472,13 @@ from ._get_node_up_down_stream_response_body import GetNodeUpDownStreamResponseB
 from ._get_node_up_down_stream_response_body import GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList
 from ._get_node_up_down_stream_response_body import GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList
 from ._get_node_up_down_stream_response_body import GetNodeUpDownStreamResponseBodyNodeDagInfo
+from ._get_operation_record_by_id_request import GetOperationRecordByIdRequestDetailCommand
+from ._get_operation_record_by_id_response_body import GetOperationRecordByIdResponseBodyOperationLogDTO
+from ._get_operation_record_detail_request import GetOperationRecordDetailRequestRecordDetailCommand
+from ._get_operation_record_detail_response_body import GetOperationRecordDetailResponseBodyOperationRecordDetailResponseResults
+from ._get_operation_record_detail_response_body import GetOperationRecordDetailResponseBodyOperationRecordDetailResponse
+from ._get_operation_record_run_code_request import GetOperationRecordRunCodeRequestCodeCommand
+from ._get_operation_record_run_code_response_body import GetOperationRecordRunCodeResponseBodyOperationLogCodeResponse
 from ._get_operation_submit_status_response_body import GetOperationSubmitStatusResponseBodyOperationSubmitJob
 from ._get_physical_instance_response_body import GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator
 from ._get_physical_instance_response_body import GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier
@@ -1607,6 +1688,9 @@ from ._list_authorized_data_service_api_details_response_body import ListAuthori
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResultData
 from ._list_authorized_data_service_api_details_response_body import ListAuthorizedDataServiceApiDetailsResponseBodyResult
+from ._list_batch_templates_request import ListBatchTemplatesRequestListQuery
+from ._list_batch_templates_response_body import ListBatchTemplatesResponseBodyPageResultTemplateList
+from ._list_batch_templates_response_body import ListBatchTemplatesResponseBodyPageResult
 from ._list_biz_entities_request import ListBizEntitiesRequestListQueryFilterCriteria
 from ._list_biz_entities_request import ListBizEntitiesRequestListQuery
 from ._list_biz_entities_response_body import ListBizEntitiesResponseBodyPageResultBizEntityList
@@ -1659,6 +1743,21 @@ from ._list_data_source_with_config_response_body import ListDataSourceWithConfi
 from ._list_data_source_with_config_response_body import ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo
 from ._list_data_source_with_config_response_body import ListDataSourceWithConfigResponseBodyPageResultDataSourceList
 from ._list_data_source_with_config_response_body import ListDataSourceWithConfigResponseBodyPageResult
+from ._list_datasets_request import ListDatasetsRequestDatasetQuery
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataOwnerList
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFileStorageConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchema
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultDataVersionList
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResultResultData
+from ._list_datasets_response_body import ListDatasetsResponseBodyPageResult
 from ._list_files_request import ListFilesRequestListQuery
 from ._list_files_response_body import ListFilesResponseBodyFileList
 from ._list_instances_request import ListInstancesRequestListQuery
@@ -1679,6 +1778,9 @@ from ._list_nodes_response_body import ListNodesResponseBodyPageResultNodeListOw
 from ._list_nodes_response_body import ListNodesResponseBodyPageResultNodeListProjectInfo
 from ._list_nodes_response_body import ListNodesResponseBodyPageResultNodeList
 from ._list_nodes_response_body import ListNodesResponseBodyPageResult
+from ._list_operation_record_request import ListOperationRecordRequestListCommand
+from ._list_operation_record_response_body import ListOperationRecordResponseBodyOperationLogListResponseResultData
+from ._list_operation_record_response_body import ListOperationRecordResponseBodyOperationLogListResponse
 from ._list_project_members_request import ListProjectMembersRequestListQuery
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResultProjectMemberList
 from ._list_project_members_response_body import ListProjectMembersResponseBodyPageResult
@@ -1840,6 +1942,7 @@ from ._revoke_data_service_api_request import RevokeDataServiceApiRequestRevokeC
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommandResourceList
 from ._revoke_resource_permission_request import RevokeResourcePermissionRequestRevokeCommand
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig
+from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandParamList
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandSparkClientInfo
 from ._submit_batch_task_request import SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod
@@ -1888,6 +1991,17 @@ from ._update_data_service_app_member_request import UpdateDataServiceAppMemberR
 from ._update_data_source_basic_info_request import UpdateDataSourceBasicInfoRequestUpdateCommand
 from ._update_data_source_config_request import UpdateDataSourceConfigRequestUpdateCommandConfigItemList
 from ._update_data_source_config_request import UpdateDataSourceConfigRequestUpdateCommand
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigFileStorageConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumns
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchema
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchema
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommandVersionConfig
+from ._update_dataset_request import UpdateDatasetRequestUpdateCommand
 from ._update_pipeline_request import UpdatePipelineRequestContext
 from ._update_pipeline_request import UpdatePipelineRequestUpdateCommandNodeInfo
 from ._update_pipeline_request import UpdatePipelineRequestUpdateCommandPipelineConfigHops
@@ -2086,6 +2200,10 @@ __all__ = [
     CreateDataSourceShrinkRequest,
     CreateDataSourceResponseBody,
     CreateDataSourceResponse,
+    CreateDatasetRequest,
+    CreateDatasetShrinkRequest,
+    CreateDatasetResponseBody,
+    CreateDatasetResponse,
     CreateDirectoryRequest,
     CreateDirectoryShrinkRequest,
     CreateDirectoryResponseBody,
@@ -2170,6 +2288,10 @@ __all__ = [
     CreateUserGroupShrinkRequest,
     CreateUserGroupResponseBody,
     CreateUserGroupResponse,
+    CreateWorkFlowByJsonRequest,
+    CreateWorkFlowByJsonShrinkRequest,
+    CreateWorkFlowByJsonResponseBody,
+    CreateWorkFlowByJsonResponse,
     DeleteAdHocFileRequest,
     DeleteAdHocFileResponseBody,
     DeleteAdHocFileResponse,
@@ -2203,6 +2325,9 @@ __all__ = [
     DeleteDataSourceShrinkRequest,
     DeleteDataSourceResponseBody,
     DeleteDataSourceResponse,
+    DeleteDatasetRequest,
+    DeleteDatasetResponseBody,
+    DeleteDatasetResponse,
     DeleteDirectoryRequest,
     DeleteDirectoryResponseBody,
     DeleteDirectoryResponse,
@@ -2327,6 +2452,9 @@ __all__ = [
     GetBatchTaskVersionsRequest,
     GetBatchTaskVersionsResponseBody,
     GetBatchTaskVersionsResponse,
+    GetBatchTemplateVersionsRequest,
+    GetBatchTemplateVersionsResponseBody,
+    GetBatchTemplateVersionsResponse,
     GetBelongAssetMappingRequest,
     GetBelongAssetMappingShrinkRequest,
     GetBelongAssetMappingResponseBody,
@@ -2405,6 +2533,9 @@ __all__ = [
     GetDataSourceDependenciesRequest,
     GetDataSourceDependenciesResponseBody,
     GetDataSourceDependenciesResponse,
+    GetDatasetRequest,
+    GetDatasetResponseBody,
+    GetDatasetResponse,
     GetDevObjectDependencyRequest,
     GetDevObjectDependencyResponseBody,
     GetDevObjectDependencyResponse,
@@ -2437,6 +2568,18 @@ __all__ = [
     GetNodeUpDownStreamShrinkRequest,
     GetNodeUpDownStreamResponseBody,
     GetNodeUpDownStreamResponse,
+    GetOperationRecordByIdRequest,
+    GetOperationRecordByIdShrinkRequest,
+    GetOperationRecordByIdResponseBody,
+    GetOperationRecordByIdResponse,
+    GetOperationRecordDetailRequest,
+    GetOperationRecordDetailShrinkRequest,
+    GetOperationRecordDetailResponseBody,
+    GetOperationRecordDetailResponse,
+    GetOperationRecordRunCodeRequest,
+    GetOperationRecordRunCodeShrinkRequest,
+    GetOperationRecordRunCodeResponseBody,
+    GetOperationRecordRunCodeResponse,
     GetOperationSubmitStatusRequest,
     GetOperationSubmitStatusResponseBody,
     GetOperationSubmitStatusResponse,
@@ -2638,6 +2781,10 @@ __all__ = [
     ListAuthorizedDataServiceApiDetailsShrinkRequest,
     ListAuthorizedDataServiceApiDetailsResponseBody,
     ListAuthorizedDataServiceApiDetailsResponse,
+    ListBatchTemplatesRequest,
+    ListBatchTemplatesShrinkRequest,
+    ListBatchTemplatesResponseBody,
+    ListBatchTemplatesResponse,
     ListBizEntitiesRequest,
     ListBizEntitiesShrinkRequest,
     ListBizEntitiesResponseBody,
@@ -2693,6 +2840,10 @@ __all__ = [
     ListDataSourceWithConfigShrinkRequest,
     ListDataSourceWithConfigResponseBody,
     ListDataSourceWithConfigResponse,
+    ListDatasetsRequest,
+    ListDatasetsShrinkRequest,
+    ListDatasetsResponseBody,
+    ListDatasetsResponse,
     ListFilesRequest,
     ListFilesShrinkRequest,
     ListFilesResponseBody,
@@ -2709,6 +2860,10 @@ __all__ = [
     ListNodesShrinkRequest,
     ListNodesResponseBody,
     ListNodesResponse,
+    ListOperationRecordRequest,
+    ListOperationRecordShrinkRequest,
+    ListOperationRecordResponseBody,
+    ListOperationRecordResponse,
     ListProjectMembersRequest,
     ListProjectMembersShrinkRequest,
     ListProjectMembersResponseBody,
@@ -2958,6 +3113,10 @@ __all__ = [
     UpdateDataSourceConfigShrinkRequest,
     UpdateDataSourceConfigResponseBody,
     UpdateDataSourceConfigResponse,
+    UpdateDatasetRequest,
+    UpdateDatasetShrinkRequest,
+    UpdateDatasetResponseBody,
+    UpdateDatasetResponse,
     UpdateFileDirectoryRequest,
     UpdateFileDirectoryResponseBody,
     UpdateFileDirectoryResponse,
@@ -3133,6 +3292,17 @@ __all__ = [
     CreateDataSourceRequestCreateCommandProdDataSourceCreate,
     CreateDataSourceRequestCreateCommand,
     CreateDataSourceResponseBodyCreateResult,
+    CreateDatasetRequestCreateCommandVersionConfigFileStorageConfig,
+    CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig,
+    CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchemaColumns,
+    CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfigTableSchema,
+    CreateDatasetRequestCreateCommandVersionConfigMetadataStorageConfig,
+    CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig,
+    CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns,
+    CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfigTableSchema,
+    CreateDatasetRequestCreateCommandVersionConfigRealtimeMetaTableConfig,
+    CreateDatasetRequestCreateCommandVersionConfig,
+    CreateDatasetRequestCreateCommand,
     CreateDirectoryRequestCreateCommand,
     CreateNodeSupplementRequestCreateCommandDownStreamNodeIdList,
     CreateNodeSupplementRequestCreateCommandFilterList,
@@ -3215,6 +3385,9 @@ __all__ = [
     CreateStreamBatchJobMappingResponseBodyData,
     CreateUdfRequestCreateCommand,
     CreateUserGroupRequestCreateCommand,
+    CreateWorkFlowByJsonRequestContext,
+    CreateWorkFlowByJsonRequestCreateCommand,
+    CreateWorkFlowByJsonResponseBodyData,
     DeleteBatchTaskRequestDeleteCommand,
     DeleteBizMetricRequestDeleteBizMetricCommand,
     DeleteBizMetricResponseBodyData,
@@ -3287,6 +3460,8 @@ __all__ = [
     GetBatchTaskUdfLineagesResponseBodyData,
     GetBatchTaskVersionsResponseBodyDataBatchTaskVersionList,
     GetBatchTaskVersionsResponseBodyData,
+    GetBatchTemplateVersionsResponseBodyDataTemplateVersionList,
+    GetBatchTemplateVersionsResponseBodyData,
     GetBelongAssetMappingRequestAssetMappingQuery,
     GetBelongAssetMappingResponseBodyMappingRelationList,
     GetBizEntityInfoResponseBodyBizEntityInfoBizObject,
@@ -3349,6 +3524,19 @@ __all__ = [
     GetDataServiceMyProjectsResponseBodyProjectList,
     GetDataServiceProjectAddableUsersResponseBodyUserList,
     GetDataSourceDependenciesResponseBodyDependencyList,
+    GetDatasetResponseBodyDatasetDTOOwnerList,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageConfig,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchema,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfig,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfig,
+    GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig,
+    GetDatasetResponseBodyDatasetDTOVersionList,
+    GetDatasetResponseBodyDatasetDTO,
     GetDevObjectDependencyResponseBodyDevObjectDependencyListDependencyPeriod,
     GetDevObjectDependencyResponseBodyDevObjectDependencyListOutputContextParamList,
     GetDevObjectDependencyResponseBodyDevObjectDependencyListOwnerList,
@@ -3377,6 +3565,13 @@ __all__ = [
     GetNodeUpDownStreamResponseBodyNodeDagInfoStartNodeList,
     GetNodeUpDownStreamResponseBodyNodeDagInfoUpStreamNodeList,
     GetNodeUpDownStreamResponseBodyNodeDagInfo,
+    GetOperationRecordByIdRequestDetailCommand,
+    GetOperationRecordByIdResponseBodyOperationLogDTO,
+    GetOperationRecordDetailRequestRecordDetailCommand,
+    GetOperationRecordDetailResponseBodyOperationRecordDetailResponseResults,
+    GetOperationRecordDetailResponseBodyOperationRecordDetailResponse,
+    GetOperationRecordRunCodeRequestCodeCommand,
+    GetOperationRecordRunCodeResponseBodyOperationLogCodeResponse,
     GetOperationSubmitStatusResponseBodyOperationSubmitJob,
     GetPhysicalInstanceResponseBodyInstanceNodeInfoCreator,
     GetPhysicalInstanceResponseBodyInstanceNodeInfoModifier,
@@ -3586,6 +3781,9 @@ __all__ = [
     ListAuthorizedDataServiceApiDetailsResponseBodyResultDataAuthorizedProdReturnParameters,
     ListAuthorizedDataServiceApiDetailsResponseBodyResultData,
     ListAuthorizedDataServiceApiDetailsResponseBodyResult,
+    ListBatchTemplatesRequestListQuery,
+    ListBatchTemplatesResponseBodyPageResultTemplateList,
+    ListBatchTemplatesResponseBodyPageResult,
     ListBizEntitiesRequestListQueryFilterCriteria,
     ListBizEntitiesRequestListQuery,
     ListBizEntitiesResponseBodyPageResultBizEntityList,
@@ -3638,6 +3836,21 @@ __all__ = [
     ListDataSourceWithConfigResponseBodyPageResultDataSourceListProdDataSourceInfo,
     ListDataSourceWithConfigResponseBodyPageResultDataSourceList,
     ListDataSourceWithConfigResponseBodyPageResult,
+    ListDatasetsRequestDatasetQuery,
+    ListDatasetsResponseBodyPageResultResultDataOwnerList,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigFileStorageConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchema,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig,
+    ListDatasetsResponseBodyPageResultResultDataVersionList,
+    ListDatasetsResponseBodyPageResultResultData,
+    ListDatasetsResponseBodyPageResult,
     ListFilesRequestListQuery,
     ListFilesResponseBodyFileList,
     ListInstancesRequestListQuery,
@@ -3658,6 +3871,9 @@ __all__ = [
     ListNodesResponseBodyPageResultNodeListProjectInfo,
     ListNodesResponseBodyPageResultNodeList,
     ListNodesResponseBodyPageResult,
+    ListOperationRecordRequestListCommand,
+    ListOperationRecordResponseBodyOperationLogListResponseResultData,
+    ListOperationRecordResponseBodyOperationLogListResponse,
     ListProjectMembersRequestListQuery,
     ListProjectMembersResponseBodyPageResultProjectMemberList,
     ListProjectMembersResponseBodyPageResult,
@@ -3819,6 +4035,7 @@ __all__ = [
     RevokeResourcePermissionRequestRevokeCommandResourceList,
     RevokeResourcePermissionRequestRevokeCommand,
     SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig,
+    SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams,
     SubmitBatchTaskRequestSubmitCommandParamList,
     SubmitBatchTaskRequestSubmitCommandSparkClientInfo,
     SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod,
@@ -3867,6 +4084,17 @@ __all__ = [
     UpdateDataSourceBasicInfoRequestUpdateCommand,
     UpdateDataSourceConfigRequestUpdateCommandConfigItemList,
     UpdateDataSourceConfigRequestUpdateCommand,
+    UpdateDatasetRequestUpdateCommandVersionConfigFileStorageConfig,
+    UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumnsVectorIndexConfig,
+    UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchemaColumns,
+    UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfigTableSchema,
+    UpdateDatasetRequestUpdateCommandVersionConfigMetadataStorageConfig,
+    UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig,
+    UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchemaColumns,
+    UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfigTableSchema,
+    UpdateDatasetRequestUpdateCommandVersionConfigRealtimeMetaTableConfig,
+    UpdateDatasetRequestUpdateCommandVersionConfig,
+    UpdateDatasetRequestUpdateCommand,
     UpdatePipelineRequestContext,
     UpdatePipelineRequestUpdateCommandNodeInfo,
     UpdatePipelineRequestUpdateCommandPipelineConfigHops,

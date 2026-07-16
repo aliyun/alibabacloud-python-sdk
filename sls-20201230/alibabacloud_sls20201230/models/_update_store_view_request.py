@@ -17,21 +17,21 @@ class UpdateStoreViewRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   metricstore
+        # - metricstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   logstore
+        # - logstore
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
         # This parameter is required.
         self.store_type = store_type

@@ -12,9 +12,13 @@ class SaveConfigDataSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
         self.code = code
+        # The error message if the request fails. If the request succeeds, the value is successful.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
         self.success = success
 
     def validate(self):

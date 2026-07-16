@@ -14,8 +14,11 @@ class CreateCostCenterResponseBody(DaraModel):
         metadata: Any = None,
         request_id: str = None,
     ):
+        # Data list
         self.cost_center_dto_list = cost_center_dto_list
+        # Response metadata
         self.metadata = metadata
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +69,13 @@ class CreateCostCenterResponseBodyCostCenterDtoList(DaraModel):
         owner_account_id: int = None,
         parent_cost_center_id: int = None,
     ):
+        # Cost center ID
         self.cost_center_id = cost_center_id
+        # Cost center name (must be unique within the same account)
         self.cost_center_name = cost_center_name
+        # Owner user ID of the cost center
         self.owner_account_id = owner_account_id
+        # Parent cost center ID
         self.parent_cost_center_id = parent_cost_center_id
 
     def validate(self):

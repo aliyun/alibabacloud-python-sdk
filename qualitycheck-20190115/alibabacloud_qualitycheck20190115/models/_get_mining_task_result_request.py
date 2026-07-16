@@ -10,7 +10,9 @@ class GetMiningTaskResultRequest(DaraModel):
         base_me_agent_id: int = None,
         task_id: str = None,
     ):
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # Task ID
         self.task_id = task_id
 
     def validate(self):

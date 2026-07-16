@@ -14,17 +14,17 @@ class DescribeDetailStartResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Error details
+        # The error details.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
-        # Indicates whether the operation was successful, with true representing success.
+        # Indicates whether the operation was successful. A value of true indicates success.
         self.success = success
 
     def validate(self):

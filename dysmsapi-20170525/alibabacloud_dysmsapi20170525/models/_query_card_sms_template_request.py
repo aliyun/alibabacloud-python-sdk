@@ -9,11 +9,11 @@ class QueryCardSmsTemplateRequest(DaraModel):
         self,
         template_code: str = None,
     ):
-        # The code of the message template.
+        # The code of the card SMS template. Valid values:
         # 
-        # You can view the template code in the **Template Code** column on the **Templates** tab of the **Go China** page in the Alibaba Cloud SMS console.
+        # - After you call the [CreateCardSmsTemplate](~~CreateCardSmsTemplate~~) operation, the value of the **TemplateCode** response parameter is the code of the newly created card SMS template.
         # 
-        # > Make sure that the message template has been approved.
+        # - You can also log on to the [Domestic Card SMS](https://dysms.console.aliyun.com/domestic/card) page in the console and view the card SMS template code on the **Template Management** tab.
         # 
         # This parameter is required.
         self.template_code = template_code

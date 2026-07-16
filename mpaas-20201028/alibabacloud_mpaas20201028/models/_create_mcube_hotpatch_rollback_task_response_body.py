@@ -14,7 +14,6 @@ class CreateMcubeHotpatchRollbackTaskResponseBody(DaraModel):
         result_message: str = None,
     ):
         self.create_hotpatch_rollback_task_result = create_hotpatch_rollback_task_result
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_message = result_message

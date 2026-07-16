@@ -10,28 +10,24 @@ class JobDiagnosis(DaraModel):
         self,
         diagnose_id: str = None,
         diagnose_time: int = None,
+        health_score: int = None,
         namespace: str = None,
         risk_level: str = None,
         symptoms: main_models.JobDiagnosisSymptoms = None,
         workspace: str = None,
     ):
-        # The diagnostic task ID.
+        # The diagnostic ID.
         self.diagnose_id = diagnose_id
-        # The time when the deployment is diagnosed.
+        # The diagnostic time.
         self.diagnose_time = diagnose_time
+        self.health_score = health_score
         # The namespace.
         self.namespace = namespace
-        # The severity level of the risk.
-        # 
-        # Valid values:
-        # 
-        # *   RISK_LEVEL_HIGH
-        # *   RISK_LEVEL_MID
-        # *   RISK_LEVEL_LOW
+        # The risk level.
         self.risk_level = risk_level
         # The diagnostic details.
         self.symptoms = symptoms
-        # The workspace to which the deployment belongs.
+        # The workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -48,6 +44,9 @@ class JobDiagnosis(DaraModel):
 
         if self.diagnose_time is not None:
             result['diagnoseTime'] = self.diagnose_time
+
+        if self.health_score is not None:
+            result['healthScore'] = self.health_score
 
         if self.namespace is not None:
             result['namespace'] = self.namespace
@@ -70,6 +69,9 @@ class JobDiagnosis(DaraModel):
 
         if m.get('diagnoseTime') is not None:
             self.diagnose_time = m.get('diagnoseTime')
+
+        if m.get('healthScore') is not None:
+            self.health_score = m.get('healthScore')
 
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')

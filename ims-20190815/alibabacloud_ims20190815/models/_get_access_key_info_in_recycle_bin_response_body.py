@@ -69,8 +69,9 @@ class GetAccessKeyInfoInRecycleBinResponseBodyAccessKey(DaraModel):
         self.user_principal_name = user_principal_name
         # Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.user_recycled = user_recycled
 
     def validate(self):

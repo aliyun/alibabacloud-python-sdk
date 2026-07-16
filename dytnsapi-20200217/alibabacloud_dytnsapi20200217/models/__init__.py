@@ -65,6 +65,9 @@ from ._get_uaidapply_token_sign_response import GetUAIDApplyTokenSignResponse
 from ._get_uaidconversion_sign_request import GetUAIDConversionSignRequest
 from ._get_uaidconversion_sign_response_body import GetUAIDConversionSignResponseBody
 from ._get_uaidconversion_sign_response import GetUAIDConversionSignResponse
+from ._history_three_elements_verification_request import HistoryThreeElementsVerificationRequest
+from ._history_three_elements_verification_response_body import HistoryThreeElementsVerificationResponseBody
+from ._history_three_elements_verification_response import HistoryThreeElementsVerificationResponse
 from ._invalid_phone_number_filter_request import InvalidPhoneNumberFilterRequest
 from ._invalid_phone_number_filter_response_body import InvalidPhoneNumberFilterResponseBody
 from ._invalid_phone_number_filter_response import InvalidPhoneNumberFilterResponse
@@ -141,6 +144,9 @@ from ._uaidverification_response import UAIDVerificationResponse
 from ._update_contacts_request import UpdateContactsRequest
 from ._update_contacts_response_body import UpdateContactsResponseBody
 from ._update_contacts_response import UpdateContactsResponse
+from ._virtual_three_elements_verification_request import VirtualThreeElementsVerificationRequest
+from ._virtual_three_elements_verification_response_body import VirtualThreeElementsVerificationResponseBody
+from ._virtual_three_elements_verification_response import VirtualThreeElementsVerificationResponse
 from ._cert_no_three_element_verification_response_body import CertNoThreeElementVerificationResponseBodyData
 from ._cert_no_two_element_verification_response_body import CertNoTwoElementVerificationResponseBodyData
 from ._company_four_elements_verification_response_body import CompanyFourElementsVerificationResponseBodyDataDetailInfo
@@ -164,6 +170,7 @@ from ._describe_phone_number_risk_response_body import DescribePhoneNumberRiskRe
 from ._describe_phone_twice_tel_verify_response_body import DescribePhoneTwiceTelVerifyResponseBodyData
 from ._get_uaidapply_token_sign_response_body import GetUAIDApplyTokenSignResponseBodyData
 from ._get_uaidconversion_sign_response_body import GetUAIDConversionSignResponseBodyData
+from ._history_three_elements_verification_response_body import HistoryThreeElementsVerificationResponseBodyData
 from ._invalid_phone_number_filter_response_body import InvalidPhoneNumberFilterResponseBodyData
 from ._list_contacts_response_body import ListContactsResponseBodyData
 from ._phone_number_convert_service_response_body import PhoneNumberConvertServiceResponseBodyData
@@ -188,6 +195,7 @@ from ._two_elements_verification_response_body import TwoElementsVerificationRes
 from ._uaidcollection_response_body import UAIDCollectionResponseBodyModel
 from ._uaidconversion_response_body import UAIDConversionResponseBodyModel
 from ._uaidverification_response_body import UAIDVerificationResponseBodyData
+from ._virtual_three_elements_verification_response_body import VirtualThreeElementsVerificationResponseBodyData
 
 __all__ = [
     CertNoThreeElementVerificationRequest,
@@ -253,6 +261,9 @@ __all__ = [
     GetUAIDConversionSignRequest,
     GetUAIDConversionSignResponseBody,
     GetUAIDConversionSignResponse,
+    HistoryThreeElementsVerificationRequest,
+    HistoryThreeElementsVerificationResponseBody,
+    HistoryThreeElementsVerificationResponse,
     InvalidPhoneNumberFilterRequest,
     InvalidPhoneNumberFilterResponseBody,
     InvalidPhoneNumberFilterResponse,
@@ -329,6 +340,9 @@ __all__ = [
     UpdateContactsRequest,
     UpdateContactsResponseBody,
     UpdateContactsResponse,
+    VirtualThreeElementsVerificationRequest,
+    VirtualThreeElementsVerificationResponseBody,
+    VirtualThreeElementsVerificationResponse,
     CertNoThreeElementVerificationResponseBodyData,
     CertNoTwoElementVerificationResponseBodyData,
     CompanyFourElementsVerificationResponseBodyDataDetailInfo,
@@ -352,6 +366,7 @@ __all__ = [
     DescribePhoneTwiceTelVerifyResponseBodyData,
     GetUAIDApplyTokenSignResponseBodyData,
     GetUAIDConversionSignResponseBodyData,
+    HistoryThreeElementsVerificationResponseBodyData,
     InvalidPhoneNumberFilterResponseBodyData,
     ListContactsResponseBodyData,
     PhoneNumberConvertServiceResponseBodyData,
@@ -375,5 +390,6 @@ __all__ = [
     TwoElementsVerificationResponseBodyData,
     UAIDCollectionResponseBodyModel,
     UAIDConversionResponseBodyModel,
-    UAIDVerificationResponseBodyData
+    UAIDVerificationResponseBodyData,
+    VirtualThreeElementsVerificationResponseBodyData
 ]

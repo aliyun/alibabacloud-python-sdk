@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_ice20201109 import models as main_models
 from darabonba.model import DaraModel
 
@@ -13,7 +15,7 @@ class GetProjectExportJobResponseBody(DaraModel):
     ):
         # The project export task.
         self.project_export_job = project_export_job
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56,31 +58,30 @@ class GetProjectExportJobResponseBodyProjectExportJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The error code for the failed export task.
-        # >Notice: Use the error code for troubleshooting.
+        # The error code of the project export task.
+        # >Notice: Check this field when the task fails.
         self.code = code
-        # The exported data.
+        # The export result.
         self.export_result = export_result
-        # The export type. Valid values:
-        # 
-        # *   **BaseTimeline**: exports the timeline.
-        # *   **AdobePremierePro**: exports an Adobe Premiere Pro project.
+        # The type of the project export. Valid values:
+        # - **BaseTimeline**: timeline.
+        # - **AdobePremierePro**: Adobe Premiere Pro project.
         self.export_type = export_type
         # The ID of the project export task.
         self.job_id = job_id
-        # The error message for the failed export task.
-        # >Notice: Use the error message for troubleshooting.
+        # The error message of the project export task.
+        # 
+        # >Notice: Check this field when the task fails.
         self.message = message
         # The ID of the online editing project.
         self.project_id = project_id
         # The status of the project export task. Valid values:
-        # 
-        # - Init: Initializing
-        # - Processing
-        # - Success
-        # - Failed
+        # - **Init**: initial state.
+        # - **Processing**: processing.
+        # - **Success**: succeeded.
+        # - **Failed**: failed.
         self.status = status
-        # The user-defined data in the JSON format.
+        # The custom settings in JSON format.
         self.user_data = user_data
 
     def validate(self):
@@ -150,13 +151,72 @@ class GetProjectExportJobResponseBodyProjectExportJob(DaraModel):
 class GetProjectExportJobResponseBodyProjectExportJobExportResult(DaraModel):
     def __init__(
         self,
+        audio_url: str = None,
         project_url: str = None,
+        srt_list: List[main_models.GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList] = None,
         timeline: str = None,
     ):
-        # The URL of the exported project, which is typically a signed OSS URL. This field is returned when ExportType is AdobePremierePro.
+        self.audio_url = audio_url
+        # The file URL of the exported project, which is typically an authenticated OSS URL. This field is returned when the export type is AdobePremierePro.
         self.project_url = project_url
-        # The timeline of the online editing job. This field is returned when ExportType is BaseTimeline. For data structure, see [Timeline](https://help.aliyun.com/document_detail/198823.html).
+        self.srt_list = srt_list
+        # The online editing timeline. This field is returned when the export type is BaseTimeline. For more information about the structure, see [Timeline configuration](https://help.aliyun.com/document_detail/198823.html).
         self.timeline = timeline
+
+    def validate(self):
+        if self.srt_list:
+            for v1 in self.srt_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_url is not None:
+            result['AudioUrl'] = self.audio_url
+
+        if self.project_url is not None:
+            result['ProjectUrl'] = self.project_url
+
+        result['SrtList'] = []
+        if self.srt_list is not None:
+            for k1 in self.srt_list:
+                result['SrtList'].append(k1.to_map() if k1 else None)
+
+        if self.timeline is not None:
+            result['Timeline'] = self.timeline
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioUrl') is not None:
+            self.audio_url = m.get('AudioUrl')
+
+        if m.get('ProjectUrl') is not None:
+            self.project_url = m.get('ProjectUrl')
+
+        self.srt_list = []
+        if m.get('SrtList') is not None:
+            for k1 in m.get('SrtList'):
+                temp_model = main_models.GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList()
+                self.srt_list.append(temp_model.from_map(k1))
+
+        if m.get('Timeline') is not None:
+            self.timeline = m.get('Timeline')
+
+        return self
+
+class GetProjectExportJobResponseBodyProjectExportJobExportResultSrtList(DaraModel):
+    def __init__(
+        self,
+        srt_url: str = None,
+        tag: str = None,
+    ):
+        self.srt_url = srt_url
+        self.tag = tag
 
     def validate(self):
         pass
@@ -166,21 +226,21 @@ class GetProjectExportJobResponseBodyProjectExportJobExportResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.project_url is not None:
-            result['ProjectUrl'] = self.project_url
+        if self.srt_url is not None:
+            result['SrtUrl'] = self.srt_url
 
-        if self.timeline is not None:
-            result['Timeline'] = self.timeline
+        if self.tag is not None:
+            result['Tag'] = self.tag
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ProjectUrl') is not None:
-            self.project_url = m.get('ProjectUrl')
+        if m.get('SrtUrl') is not None:
+            self.srt_url = m.get('SrtUrl')
 
-        if m.get('Timeline') is not None:
-            self.timeline = m.get('Timeline')
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
 
         return self
 

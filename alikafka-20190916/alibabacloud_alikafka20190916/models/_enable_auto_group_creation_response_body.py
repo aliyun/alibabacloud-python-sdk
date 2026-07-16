@@ -12,15 +12,15 @@ class EnableAutoGroupCreationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned HTTP status code.
+        # The return code.
         # 
-        # If the value **200** is returned, the request is successful.
+        # A value of **200** indicates success.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

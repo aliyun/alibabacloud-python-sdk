@@ -13,7 +13,7 @@ class ListDownStreamBindingsRequest(DaraModel):
         next_token: str = None,
         virtual_host: str = None,
     ):
-        # The exchange name.
+        # The name of the exchange.
         # 
         # This parameter is required.
         self.exchange_name = exchange_name
@@ -21,9 +21,9 @@ class ListDownStreamBindingsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return.
+        # The maximum number of results to return.
         self.max_results = max_results
-        # The token that marks the end position of the previous returned page. To obtain the next batch of data, call the operation again by using the value of NextToken returned by the previous request. If you call this operation for the first time or want to query all results, set NextToken to an empty string.
+        # The token that is used to retrieve the next page of results. If this is your first call, or if you have retrieved all results, leave this parameter empty.
         self.next_token = next_token
         # The name of the vhost to which the exchange belongs.
         # 

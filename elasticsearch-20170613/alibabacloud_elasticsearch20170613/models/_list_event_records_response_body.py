@@ -13,7 +13,9 @@ class ListEventRecordsResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.ListEventRecordsResponseBodyResult = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return Result
         self.result = result
 
     def validate(self):
@@ -50,7 +52,9 @@ class ListEventRecordsResponseBodyResult(DaraModel):
         result: List[main_models.ListEventRecordsResponseBodyResultResult] = None,
         total: str = None,
     ):
+        # Content
         self.result = result
+        # Total number of records
         self.total = total
 
     def validate(self):
@@ -103,17 +107,29 @@ class ListEventRecordsResponseBodyResultResult(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # Is auto-alarm enabled
         self.auto_alarm = auto_alarm
+        # Management event display name
         self.display_name = display_name
+        # is Preview
         self.dry_run = dry_run
+        # event level
         self.level = level
+        # is O&M processing required
         self.must_ops = must_ops
+        # product type of the management event
         self.product = product
+        # scheduled running time
         self.schedule_execute_time = schedule_execute_time
+        # scheduled end time
         self.schedule_finish_time = schedule_finish_time
+        # Management event content
         self.show_content = show_content
+        # Event occurrence source
         self.source = source
+        # Event status
         self.status = status
+        # Event type
         self.type = type
 
     def validate(self):
@@ -216,13 +232,21 @@ class ListEventRecordsResponseBodyResultResultShowContent(DaraModel):
         instance_id: str = None,
         ops_change_id: str = None,
     ):
+        # Operation suggestion
         self.action_suggest = action_suggest
+        # Description of the management event
         self.desc = desc
+        # Management event status
         self.event_status = event_status
+        # Time of occurrence
         self.event_time = event_time
+        # End Time of O&M execution for the management event
         self.execute_finish_time = execute_finish_time
+        # Start Time of O&M execution for the management event
         self.execute_start_time = execute_start_time
+        # Instance ID of the occurrence
         self.instance_id = instance_id
+        # Execution ID of the cluster Change
         self.ops_change_id = ops_change_id
 
     def validate(self):
@@ -296,8 +320,11 @@ class ListEventRecordsResponseBodyResultResultShowContentActionSuggest(DaraModel
         suggest_text: str = None,
         suggest_type: str = None,
     ):
+        # Operation suggestion
         self.suggest_actions = suggest_actions
+        # Operation suggestion text
         self.suggest_text = suggest_text
+        # Operation suggestion type
         self.suggest_type = suggest_type
 
     def validate(self):

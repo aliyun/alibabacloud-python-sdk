@@ -12,11 +12,18 @@ class AsyncEditTimelineShrinkRequest(DaraModel):
         timelines_shrink: str = None,
         workspace_id: str = None,
     ):
+        # Enable automatic clip adjustment
         self.auto_clips = auto_clips
+        # Unique identifier of the task
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Array structure of video editing timelines
+        # 
         # This parameter is required.
         self.timelines_shrink = timelines_shrink
+        # [Model Studio workspace ID](https://help.aliyun.com/document_detail/2782167.html)
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

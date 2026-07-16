@@ -13,15 +13,15 @@ class FileUploadResponseBody(DaraModel):
         request_id: str = None,
         result_object: str = None,
     ):
-        # Status code.
+        # The status code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Information returned by the API request.
+        # The message returned for the request.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The response result.
         self.result_object = result_object
 
     def validate(self):

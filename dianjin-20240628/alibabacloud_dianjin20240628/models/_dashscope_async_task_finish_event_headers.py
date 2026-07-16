@@ -13,6 +13,7 @@ class DashscopeAsyncTaskFinishEventHeaders(DaraModel):
         x_load_test: bool = None,
     ):
         self.common_headers = common_headers
+        # Indicates whether the request is part of a stress test
         self.x_load_test = x_load_test
 
     def validate(self):

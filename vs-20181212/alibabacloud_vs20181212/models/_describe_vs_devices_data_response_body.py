@@ -14,6 +14,7 @@ class DescribeVsDevicesDataResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.devices_data_per_interval = devices_data_per_interval
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

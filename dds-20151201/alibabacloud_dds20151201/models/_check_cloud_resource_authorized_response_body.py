@@ -13,15 +13,17 @@ class CheckCloudResourceAuthorizedResponseBody(DaraModel):
     ):
         # Indicates whether KMS keys are authorized to ApsaraDB for MongoDB instances. Valid values:
         # 
-        # *   **0**: KMS keys are not authorized.
-        # *   **1**: KMS keys are authorized.
-        # *   **2**: KMS is not enabled.
+        # - **0**: KMS keys are not authorized.
+        # 
+        # - **1**: KMS keys are authorized.
+        # 
+        # - **2**: KMS is not enabled.
         self.authorization_state = authorization_state
         # The ID of the request.
         self.request_id = request_id
         # The role information of the authorized Alibaba Resource Name (ARN).
         # 
-        # >  This parameter is returned only when the value of the **AuthorizationState** parameter is **1**.
+        # > This parameter is returned only when the value of the **AuthorizationState** parameter is **1**.
         self.role_arn = role_arn
 
     def validate(self):

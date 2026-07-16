@@ -10,9 +10,9 @@ class ListUserConfigsRequest(DaraModel):
         category_names: str = None,
         config_keys: str = None,
     ):
-        # The category. Currently, only DataPrivacyConfig is supported.
+        # The category. Only DataPrivacyConfig is supported.
         self.category_names = category_names
-        # The configuration item keys. Currently, only customizePAIAssumedRole is supported.
+        # A collection of configuration keys. Only customizePAIAssumedRole is supported.
         self.config_keys = config_keys
 
     def validate(self):

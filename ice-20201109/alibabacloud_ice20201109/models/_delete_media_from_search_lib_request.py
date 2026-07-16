@@ -18,6 +18,7 @@ class DeleteMediaFromSearchLibRequest(DaraModel):
         self.media_id = media_id
         # The message body.
         self.msg_body = msg_body
+        # Namespace.
         self.namespace = namespace
         # The name of the search library. Default value: ims-default-search-lib.
         self.search_lib_name = search_lib_name

@@ -14,11 +14,11 @@ class DescribeInvocationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The objects that are returned.
+        # The list of returned results.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -71,25 +71,17 @@ class DescribeInvocationsResponseBodyData(DaraModel):
         output: str = None,
         start_time: str = None,
     ):
-        # The end time of the command execution.
+        # The time when the command finished running.
         self.finish_time = finish_time
-        # The ID of the cloud phone instance on which the command is executed.
+        # The ID of the instance where the command was run.
         self.instance_id = instance_id
-        # The ID of the execution.
+        # The ID of the command execution.
         self.invocation_id = invocation_id
-        # The execution state of the command.
-        # 
-        # Valid values:
-        # 
-        # *   Failed: The execution of the command failed.
-        # *   Timeout: The execution of the command timed out.
-        # *   Running: The command is being executed.
-        # *   Success: The execution of the command is successful.
-        # *   Pending: The command is waiting to be executed.
+        # The status of the command execution.
         self.invocation_status = invocation_status
         # The output of the command execution.
         self.output = output
-        # The start time of the command execution.
+        # The time when the command started to run.
         self.start_time = start_time
 
     def validate(self):

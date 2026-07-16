@@ -13,10 +13,31 @@ class ModifySlsDispatchStatusRequest(DaraModel):
         new_region_id: str = None,
         site: str = None,
     ):
+        # The key for the log category. Valid values:
+        # 
+        # **internet_log**
+        # 
+        # **vpc_firewall_log**
+        # 
+        # **nat_firewall_log**
+        # 
+        # **ipv6_firewall_log**
+        # 
+        # **dns_firewall_log**.
         self.dispatch_value = dispatch_value
+        # Specifies whether to deliver logs. A value of \\`true\\` enables delivery, and \\`false\\` disables it.
         self.enable_status = enable_status
+        # The supported filter conditions. Valid values:
+        # 
+        # **attack**
+        # 
+        # **acl**
+        # 
+        # **other**.
         self.filter_keys = filter_keys
+        # The region.
         self.new_region_id = new_region_id
+        # The site to modify. If the log version is 1, leave this parameter empty or set it to \\`global\\`. If the log version is 2, set this parameter to \\`cn\\` or \\`intl\\`.
         self.site = site
 
     def validate(self):

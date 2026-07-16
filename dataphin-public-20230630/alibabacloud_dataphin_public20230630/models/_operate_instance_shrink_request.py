@@ -11,9 +11,16 @@ class OperateInstanceShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         operate_command_shrink: str = None,
     ):
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD (default): production environment.
         self.env = env
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operation request.
+        # 
         # This parameter is required.
         self.operate_command_shrink = operate_command_shrink
 

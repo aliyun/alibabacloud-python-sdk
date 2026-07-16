@@ -11,9 +11,9 @@ class DescribeSafOrderResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeSafOrderResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object.
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -49,7 +49,7 @@ class DescribeSafOrderResponseBodyResultObject(DaraModel):
         self,
         expiration_date: int = None,
     ):
-        # Expiration date (timestamp).
+        # The expiration date (UNIX timestamp).
         self.expiration_date = expiration_date
 
     def validate(self):

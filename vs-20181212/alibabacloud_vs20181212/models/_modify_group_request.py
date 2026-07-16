@@ -20,18 +20,44 @@ class ModifyGroupRequest(DaraModel):
         push_domain: str = None,
         region: str = None,
     ):
+        # Callback URL for device or stream status updates in the group.
         self.callback = callback
+        # Description of the space.
         self.description = description
+        # Indicates whether the space is enabled.
         self.enabled = enabled
+        # The ID of the space.
+        # 
         # This parameter is required.
         self.id = id
+        # Ingest protocol used by the group. Valid values:
+        # 
+        # - gb28181
+        # 
+        # - rtmp
         self.in_protocol = in_protocol
+        # Whether on-demand stream pulling is enabled. Valid values:
+        # 
+        # - false (default)
+        # 
+        # - true
         self.lazy_pull = lazy_pull
+        # Space name.
         self.name = name
+        # Playback protocols used by the group. Separate multiple values with commas. Valid values:
+        # 
+        # - flv
+        # 
+        # - hls
+        # 
+        # - rtmp
         self.out_protocol = out_protocol
         self.owner_id = owner_id
+        # Streaming domain used by the group.
         self.play_domain = play_domain
+        # Ingest domain used by the group. Applies only to groups that use the RTMP ingest protocol.
         self.push_domain = push_domain
+        # The region where the space is located. This region serves as the service center.
         self.region = region
 
     def validate(self):

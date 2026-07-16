@@ -17,25 +17,25 @@ class DescribeSceneRulePageListRequest(DaraModel):
         rule_name: str = None,
         rule_status: str = None,
     ):
-        # Set the language type for requests and received messages. Default value is **zh**. Values: 
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Creation type
+        # The creation type.
         self.create_type = create_type
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Event code
+        # The event code.
         self.event_code = event_code
-        # Number of items per page in the returned results. Default value: 20, minimum value: 1, maximum value: 50.
+        # The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
         self.page_size = page_size
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Strategy type
+        # The policy type.
         self.rule_auth_type = rule_auth_type
-        # Strategy name
+        # The policy name.
         self.rule_name = rule_name
-        # Strategy status
+        # The policy status.
         self.rule_status = rule_status
 
     def validate(self):

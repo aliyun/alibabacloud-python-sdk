@@ -10,7 +10,7 @@ class DescribeDiagnosticReportAttributesRequest(DaraModel):
         region_id: str = None,
         report_id: str = None,
     ):
-        # The region ID of the diagnostic report. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region. Call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to get the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

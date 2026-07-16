@@ -15,13 +15,29 @@ class ListCustomHostnamesRequest(DaraModel):
         site_id: int = None,
         status: str = None,
     ):
+        # The SaaS domain name.
         self.hostname = hostname
+        # The search match mode for the SaaS domain name. Default value: exact. Valid values:
+        # - **prefix**: prefix match.
+        # - **suffix**: suffix match.
+        # - **exact**: exact match.
+        # - **fuzzy**: fuzzy match.
         self.name_match_type = name_match_type
+        # The page number for a paged query. The value must be greater than or equal to 1.
         self.page_number = page_number
+        # The number of entries per page for a paged query. Valid values: 1 to 500.
         self.page_size = page_size
+        # The associated record ID. You can call the [ListRecords](https://help.aliyun.com/document_detail/2850265.html) operation to obtain the record ID.
         self.record_id = record_id
+        # The site ID. You can call the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation to obtain the site ID.
+        # 
         # This parameter is required.
         self.site_id = site_id
+        # The SaaS domain name status. Valid values:
+        # - **pending**: pending verification.
+        # - **active**: activated.
+        # - **conflicted**: occupied.
+        # - **offline**: offline.
         self.status = status
 
     def validate(self):

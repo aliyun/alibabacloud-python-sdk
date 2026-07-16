@@ -59,10 +59,13 @@ class GetCreateWorkflowInstancesResultResponseBodyResult(DaraModel):
         self.failure_message = failure_message
         # The creation status. Valid values:
         # 
-        # *   Creating
-        # *   Created
-        # *   CreateFailure
+        # - Creating
+        # 
+        # - Created
+        # 
+        # - CreateFailure
         self.status = status
+        # Unified workflow instance ID. For all task instances triggered under the same data timestamp in a single trigger, the value of this field is identical. This field is returned after successful creation.
         self.unified_workflow_instance_ids = unified_workflow_instance_ids
         # The workflow instance IDs. This parameter is returned only if the creation is successful.
         self.workflow_instance_ids = workflow_instance_ids

@@ -12,9 +12,9 @@ class DescribeVendorListResponseBody(DaraModel):
         request_id: str = None,
         vendor_name_list: List[str] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
-        # An array that consists of the service providers.
+        # The list of vendors.
         self.vendor_name_list = vendor_name_list
 
     def validate(self):

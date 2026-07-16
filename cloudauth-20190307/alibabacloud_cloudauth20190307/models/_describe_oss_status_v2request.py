@@ -10,11 +10,11 @@ class DescribeOssStatusV2Request(DaraModel):
         service_code: str = None,
         source_ip: str = None,
     ):
-        # ServiceCode for Real Person Cloud products:
-        # - **antcloudauth**: Financial-grade real person authentication
-        # - **cloudauthst (discontinued)**: Enhanced real person authentication
+        # The ServiceCode of the ID Verification product. Valid values:
+        # - **antcloudauth**: financial-grade ID Verification.
+        # - **cloudauthst (discontinued)**: enhanced ID Verification.
         self.service_code = service_code
-        # Visitor\\"s source IP address.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

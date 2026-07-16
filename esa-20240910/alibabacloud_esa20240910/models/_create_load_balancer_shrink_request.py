@@ -25,57 +25,58 @@ class CreateLoadBalancerShrinkRequest(DaraModel):
         sub_region_pools: Any = None,
         ttl: int = None,
     ):
-        # Configuration for failover across pools.
+        # The cross-origin address pool back-to-origin configuration.
         self.adaptive_routing_shrink = adaptive_routing_shrink
-        # List of default pools.
+        # The list of default address pool IDs.
         # 
         # This parameter is required.
         self.default_pools_shrink = default_pools_shrink
-        # Detailed description of the load balancer, for easier management and identification.
+        # The description of the load balancer for management and identification purposes.
         self.description = description
-        # Whether the load balancer is enabled.
+        # Specifies whether the load balancer is enabled. Valid values:
         # 
         # - true: Enabled.
         # - false: Not enabled.
         self.enabled = enabled
-        # Fallback pool ID, where traffic will be directed when all other pools are unavailable.
+        # The fallback address pool ID. Traffic is directed to this pool when all other pools are unavailable.
         # 
         # This parameter is required.
         self.fallback_pool = fallback_pool
-        # Monitor configuration, used for health checks.
+        # The monitor configuration for health checks.
         # 
         # This parameter is required.
         self.monitor_shrink = monitor_shrink
-        # The name of the load balancer, which must meet the domain name format validation and be a subdomain under the site.
+        # The name of the load balancer. The name must be in a valid domain name format and must be a subdomain of the site.
         # 
         # This parameter is required.
         self.name = name
-        # Weighted round-robin configuration, used to control the traffic distribution weights among different pools.
+        # The weighted round-robin configuration that controls the traffic distribution weight across different address pools.
         self.random_steering_shrink = random_steering_shrink
-        # Address pools corresponding to primary regions.
+        # The address pools mapped to primary regions.
         self.region_pools = region_pools
-        # Rule information.
+        # The rule information.
         self.rules_shrink = rules_shrink
-        # Session persistence, with possible values:
-        # - off: Not enabled.
-        # - ip: Session persistence by IP.
-        # - cookie: Session persistence by cookie.
+        # The session persistence mode. Valid values:
+        # - off: disabled.
+        # - ip: IP-based session persistence.
+        # - cookie: cookie-based session persistence.
+        # - http_header: HTTP header-based session persistence.
         self.session_affinity = session_affinity
-        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # Load balancing strategy.
+        # The load balancing policy. Valid values:
         # 
-        # - geo: Geographical strategy.
-        # - random: Weighted round-robin.
-        # - order: Primary and backup method.
+        # - geo: geo-based routing.
+        # - random: weighted round-robin.
+        # - order: primary/secondary mode.
         # 
         # This parameter is required.
         self.steering_policy = steering_policy
-        # Address pools corresponding to secondary regions. When multiple secondary regions share the same set of address pools, the keys can be concatenated with commas.
+        # The address pools mapped to secondary regions. If multiple secondary regions share the same set of address pools, you can concatenate the secondary region names with commas as the key.
         self.sub_region_pools = sub_region_pools
-        # TTL value, the time-to-live for DNS records, with a default of 30 seconds. The value range is 10-600.
+        # The TTL value, which specifies the time-to-live of the DNS record. Default value: 30 seconds. Valid values: 10 to 600.
         self.ttl = ttl
 
     def validate(self):

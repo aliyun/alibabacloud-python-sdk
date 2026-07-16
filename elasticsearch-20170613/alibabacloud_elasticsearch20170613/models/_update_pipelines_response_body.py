@@ -10,12 +10,12 @@ class UpdatePipelinesResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the pipeline is updated. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true: The pipeline is updated.
-        # *   false: The pipeline fails to be updated.
+        # - true: The update was successful.
+        # - false: The update failed.
         self.result = result
 
     def validate(self):

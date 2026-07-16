@@ -12,13 +12,13 @@ class QueryJenkinsImageRegistryPersistenceDayResponseBody(DaraModel):
         request_id: str = None,
         time_cost: int = None,
     ):
-        # The retention period. Unit: days.
+        # The repository retention duration. Unit: days.
         self.data = data
-        # The HTTP status code returned.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The time consumed. Unit: seconds.
+        # The time consumed for the execution. Unit: seconds.
         self.time_cost = time_cost
 
     def validate(self):

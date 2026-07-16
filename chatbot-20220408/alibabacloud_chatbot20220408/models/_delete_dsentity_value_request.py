@@ -12,11 +12,18 @@ class DeleteDSEntityValueRequest(DaraModel):
         entity_value_id: int = None,
         instance_id: str = None,
     ):
+        # The Agent key. If omitted, the system uses the default Agent. You can get this key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The unique identifier of the entity.
+        # 
         # This parameter is required.
         self.entity_id = entity_id
+        # The unique identifier of the entity value.
+        # 
         # This parameter is required.
         self.entity_value_id = entity_value_id
+        # The unique identifier of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

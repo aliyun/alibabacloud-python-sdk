@@ -31,6 +31,8 @@ class CreateInstanceRequest(DaraModel):
         instance_endpoint_type: str = None,
         instance_name: str = None,
         instance_type: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
         network_type: str = None,
         node_type: str = None,
         owner_account: str = None,
@@ -60,181 +62,235 @@ class CreateInstanceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # Specifies whether to enable append-only file (AOF) persistence for the instance. Valid values:
+        # Specifies whether to enable AOF persistence for the new instance. Valid values:
         # 
-        # *   **yes** (default): enables AOF persistence.
-        # *   **no**: disables AOF persistence.
+        # - **yes** (default): Enables AOF persistence.
         # 
-        # **
+        # - **no**: Disables AOF persistence.
         # 
-        # **Description** This parameter is applicable to classic instances, and is unavailable for cloud-native instances.
+        # > This parameter is available only for classic edition instances. AOF persistence cannot be configured for cloud native edition instances at creation.
         self.appendonly = appendonly
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # *   **true**: enables auto-renewal.
-        # *   **false** (default): disables auto-renewal.
-        self.auto_renew = auto_renew
-        # The subscription duration that is supported by auto-renewal. Unit: month. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # - **true**: Enables auto-renewal.
         # 
-        # >  This parameter is required if the **AutoRenew** parameter is set to **true**.
+        # - **false** (default): Disables auto-renewal.
+        self.auto_renew = auto_renew
+        # The auto-renewal duration, in months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # 
+        # > This parameter is required when **AutoRenew** is set to **true**.
         self.auto_renew_period = auto_renew_period
         # Specifies whether to use a coupon. Valid values:
         # 
-        # *   **true**: uses a coupon.
-        # *   **false** (default): does not use a coupon.
+        # - **true**: Uses a coupon.
+        # 
+        # - **false** (default): Does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # If your instance is a cloud-native cluster instance, we recommend that you use [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) to query the backup set ID of the cluster instance, such as cb-xx. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        # The ID of the backup that you want to use to create the new instance. You can obtain backup IDs by calling the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation. If the source instance has a cluster architecture, you must specify the backup IDs of all its shards, separated by commas (for example, "10\\*\\*,11\\*\\*,15\\*\\*").
         # 
-        # You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,). Example: "10\\*\\*,11\\*\\*,15\\*\\*".
+        # > If your source instance is a cloud native cluster instance, it is recommended to call [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) to get a cluster backup ID (for example, "cb-xx") and use the `ClusterBackupId` parameter instead. This avoids the need to specify the backup ID for each shard.
         self.backup_id = backup_id
-        # The ID of the promotional event or business information.
+        # The campaign ID or business information.
         self.business_info = business_info
-        # The storage capacity of the instance. Unit: MB.
+        # The storage capacity of the instance, in MB.
         # 
-        # > You must specify at least one of the **Capacity** and **InstanceClass** parameters when you call this operation.
+        # > You must specify either the **Capacity** or the **InstanceClass** parameter.
         self.capacity = capacity
-        # The billing method of the instance. Valid values:
+        # The billing method. Valid values:
         # 
-        # *   **PrePaid**: subscription
-        # *   **PostPaid** (default): pay-as-you-go
+        # - **PrePaid**: subscription.
+        # 
+        # - **PostPaid** (default): pay-as-you-go.
         self.charge_type = charge_type
-        # This parameter is supported for specific new cluster instances. You can query the backup set ID by using the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation.
+        # The ID of the cluster backup. You can get this ID by calling the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation. This parameter is available for some cloud native cluster instances.
         # 
-        # *   If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the **BackupId** parameter.
-        # *   If this parameter is not supported, set the BackupId parameter to the IDs of backup sets for all shards of the source instance, separated by commas (,). Example: "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
+        # - This parameter is mutually exclusive with `BackupId`.
+        # 
+        # - If this parameter is not available for your instance, you must specify the backup ID of each shard in the `BackupId` parameter (for example, "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22").
         self.cluster_backup_id = cluster_backup_id
-        # The operation that you want to perform. Set the value to **AllocateInstancePublicConnection**.
+        # The prefix of the connection string. The prefix must be 8 to 40 characters long, start with a lowercase letter, and contain only lowercase letters and digits.
+        # 
+        # > The full connection string is in the format: \\<prefix>.redis.rds.aliyuncs.com.
         self.connection_string_prefix = connection_string_prefix
         # The coupon code. Default value: `default`.
         self.coupon_no = coupon_no
-        # The ID of the dedicated cluster. This parameter is required if you create an instance in a dedicated cluster.
+        # The ID of the dedicated host group. This parameter is required when you create a Redis instance in a dedicated host group.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs a dry run and does not create the instance. The system prechecks the request parameters, request format, service limits, and available resources. If the request fails to pass the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, the instance is created.
+        # - **true**: Checks the request for validity without creating the instance. The system verifies required parameters, request format, and service limits. If the request is valid, the `DryRunOperation` error code is returned. If the request is invalid, an error message is returned.
+        # 
+        # - **false** (default): Sends the request. If the request is valid, the instance is created.
         self.dry_run = dry_run
-        # The engine version. Valid values for **classic instances**:
+        # The Redis engine version. Valid values for **classic edition** instances:
         # 
-        # *   **2.8** (not recommended due to [scheduled EOFS](https://help.aliyun.com/document_detail/2674657.html))
-        # *   **4.0** (not recommended)
-        # *   **5.0**
+        # - **2.8** (Not recommended. [Support for this version is scheduled to be discontinued](https://help.aliyun.com/document_detail/2674657.html).)
         # 
-        # Valid values for **cloud-native instances**:
+        # - **4.0** (Not recommended.)
         # 
-        # *   **5.0**
-        # *   **6.0** (recommended)
-        # *   **7.0**
+        # - **5.0**
         # 
-        # >  The default value is **5.0**.
+        # Valid values for **cloud native edition** instances:
+        # 
+        # - **5.0**
+        # 
+        # - **6.0** (Recommended)
+        # 
+        # - **7.0**
+        # 
+        # > The default value is **5.0**.
         self.engine_version = engine_version
-        # Specifies whether to use the new instance as the first child instance of a distributed instance. Valid values:
+        # Specifies whether to create the new instance as the first child instance of a distributed instance. Valid values:
         # 
-        # *   **true**: uses the new instance as the first child instance.
-        # *   **false** (default): does not use the new instance as the first child instance.
+        # - **true**: Creates the instance as the first child instance.
         # 
-        # > 
+        # - **false** (default): Does not create the instance as the first child instance.
         # 
-        # *   If you want to create a Tair DRAM-based instance that runs Redis 5.0, you must set this parameter to **true**.
-        # 
-        # *   This parameter is available only on the China site (aliyun.com).
+        # > * If you set this parameter to **true**, the new instance must be a Tair memory-enhanced instance that runs Redis 5.0.
+        # >
+        # > * This parameter is available only in Chinese mainland.
         self.global_instance = global_instance
-        # The ID of the distributed instance. This parameter is available only on the China site (aliyun.com).
+        # The ID of the distributed instance. This parameter is available only in Chinese mainland.
+        # 
+        # <props="china">
+        # 
+        # This parameter is required to add the new instance as a child of a distributed instance. For more information and the console procedure, see [Add a child instance to a distributed instance](https://help.aliyun.com/document_detail/106885.html).
         self.global_instance_id = global_instance_id
-        # The global IP whitelist template for the instance. Multiple IP whitelist templates should be separated by English commas (,) and cannot be duplicated.
+        # The IDs of the security groups to associate with the instance. You can specify multiple security group IDs, separated by commas (,). IDs cannot be repeated.
+        # >Notice: This parameter is available only for cloud native edition instances. Security groups are not supported for classic edition instances.
         self.global_security_group_ids = global_security_group_ids
-        # The instance type. For example, redis.master.small.default indicates a Community Edition standard master-replica instance that has 1 GB of memory. For more information, see [Overview](https://help.aliyun.com/document_detail/26350.html).
+        # The instance type. For example, `redis.master.small.default` specifies a 1 GB Community Edition (classic edition) instance with a standard, dual-replica architecture. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/26350.html).
         # 
-        # **
-        # 
-        # **Description** You must specify at least one of the **Capacity** and **InstanceClass** parameters when you call the CreateInstance operation.
+        # > You must specify either the **Capacity** or the **InstanceClass** parameter.
         self.instance_class = instance_class
-        self.instance_endpoint_type = instance_endpoint_type
-        # The name of the instance. The name must be 2 to 80 characters in length and must start with a letter. It cannot contain spaces or specific special characters. These special characters include `@ / : = " < > { [ ] }`
-        self.instance_name = instance_name
-        # The database engine of the instance. Valid values:
+        # The connection endpoint type. This parameter is applicable only when you create a dual-zone, read/write splitting instance of the cloud native edition. If this parameter is not specified, `AzIndependentEndpoint` is used. Valid values:
         # 
-        # *   **Redis** (default)
-        # *   **Memcache**
+        # - **AzIndependentEndpoint**: (**Default**) Zone-Independent Endpoint. The primary and secondary zones each provide an independent connection string for zone-local access.
+        # 
+        # - **UnifiedEndpoint**: Unified Endpoint. Provides a single connection string to access nodes in both zones, which may result in cross-zone access.
+        # 
+        # >Notice: 
+        # 
+        # This parameter is applicable only to dual-zone, read/write splitting instances of the cloud native edition. For other instance types, only zone-independent endpoints are supported, and specifying `UnifiedEndpoint` has no effect.
+        # 
+        # 
+        # 
+        # >Notice: 
+        # 
+        # The `UnifiedEndpoint` parameter is currently available only to allowlisted users. API calls will fail if you are not on the allowlist. To be added to the allowlist, submit a ticket.
+        self.instance_endpoint_type = instance_endpoint_type
+        # The name of the instance. The name must be 2 to 80 characters long, start with a letter (uppercase or lowercase) or a Chinese character, and not contain spaces or the characters `@/:=”<>{[]}`.
+        self.instance_name = instance_name
+        # The instance type. Valid values:
+        # 
+        # - **Redis** (default)
+        # 
+        # - **Memcache**
         self.instance_type = instance_type
+        # The end time of the maintenance window. Specify the time in the *HH:mm*Z format (UTC). For example, to set the end time to 02:00 (UTC+8), specify `18:00Z`.
+        # 
+        # > The duration of the maintenance window must be at least one hour.
+        # 
+        # > If this parameter is not specified, the maintenance window ends at 06:00 (UTC+8), which is 22:00 (UTC).
+        self.maintain_end_time = maintain_end_time
+        # The start of the maintenance window. Specify the time in the *HH:mm*Z format (UTC). For example, to set the start time to 01:00 (UTC+8), specify `17:00Z`.
+        # 
+        # > If this parameter is not specified, the maintenance window starts at 02:00 (UTC+8), which is 18:00 (UTC).
+        self.maintain_start_time = maintain_start_time
         # The network type. Valid value:
         # 
-        # *   **VPC** (default)
+        # - **VPC**: Deploys the instance in a Virtual Private Cloud. This is the default value.
         self.network_type = network_type
         # The node type. Valid values:
         # 
-        # *   **MASTER_SLAVE**: high availability (master-replica)
-        # *   **STAND_ALONE**: standalone
-        # *   **double**: master-replica
-        # *   **single**: standalone
+        # - **MASTER_SLAVE**: high-availability (primary-replica)
         # 
-        # >  To create a cloud-native instance, set this parameter to **MASTER_SLAVE** or **STAND_ALONE**. To create a classic instance, set this parameter to **double** or **single**.
+        # - **STAND_ALONE**: standalone (single-node)
+        # 
+        # - **double**: primary-replica
+        # 
+        # - **single**: standalone (single-node)
+        # 
+        # > Set this parameter to **MASTER_SLAVE** or **STAND_ALONE** for cloud native edition instances. Set this parameter to **double** or **single** for classic edition instances.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The parameter template ID, which must be globally unique.
+        # The ID of the parameter group. This ID must be globally unique.>Notice:  This parameter is available only for cloud native edition instances.
         self.param_group_id = param_group_id
-        # The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and specific special characters. These special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # The password for the instance. The password must be 8 to 32 characters long and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The allowed special characters are `!@#$%^&*()_+-=`.
         self.password = password
-        # The subscription duration. Valid values: **1**, 2, 3, 4, 5, 6, 7, 8, **9**, **12**, **24**,**36**, and **60**. Unit: months.
+        # The subscription duration, in months. Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
         # 
-        # > This parameter is available and required only if the **ChargeType** parameter is set to **PrePaid**.
+        # > This parameter is available and required only when **ChargeType** is set to **PrePaid**.
         self.period = period
-        # The port number that is used to connect to the instance. Valid values: **1024** to **65535**. Default value: **6379**.
+        # The service port of the instance. The port number must be between **1** and **65535**. The default value is **6379**.
         self.port = port
-        # The private IP address of the instance.
+        # The private IP address of the new instance.
         # 
-        # > The private IP address must be available within the CIDR block of the vSwitch to which to connect the instance.
+        # > The IP address must be within the CIDR block of the specified vSwitch.
         self.private_ip_address = private_ip_address
-        # The number of read replicas in the primary zone. This parameter applies only to read/write splitting instances that use cloud disks. You can use this parameter to customize the number of read replicas. Valid values: 1 to 9.
+        # The number of read-only replicas in the primary zone. This parameter is available only when creating a read/write splitting instance of the cloud native edition.
         # 
-        # >  The sum of the values of this parameter and SlaveReadOnlyCount cannot be greater than 9.
+        # - For a standard-architecture instance, the value must be an integer from 1 to 9.
+        # 
+        # - For a cluster-architecture instance, the value must be an integer from 1 to 4. This specifies the number of read-only replicas for each data shard.
+        # 
+        # > If you create a multi-zone instance, you can use this parameter and `SlaveReadOnlyCount` to customize the number of read-only replicas in the primary and secondary zones.
+        # >
+        # > - The sum of this parameter and `SlaveReadOnlyCount` cannot exceed 9 for a standard-architecture instance.
+        # >
+        # > - The sum of this parameter and `SlaveReadOnlyCount` cannot exceed 4 for a cluster-architecture instance.
         self.read_only_count = read_only_count
-        # When creating an instance using a specified backup set, whether to restore account, kernel parameter (whitelist), and whitelist (config) information from the original backup set. For example, if you need to restore account information, the value should be `{"account":true}`.
-        # By default, it is empty, indicating that no account, kernel parameter, or whitelist information will be restored from the original backup set. 
-        # > This parameter applies only to cloud-native instances and requires that the original backup set has saved the account, kernel parameter, and whitelist information. You can use the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) API to check if the RecoverConfigMode parameter in the specified backup set contains the above information.
+        # Specifies which configurations to restore from the backup when creating an instance. Valid values include `account`, `config`, and `whitelist`. For example, to restore account settings, specify `account`. To restore multiple configurations, separate them with commas.
+        # 
+        # By default, this parameter is empty, which means no configurations are restored.
+        # 
+        # > This parameter is applicable only to cloud native edition instances. The source backup must contain the specified configurations. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation and check the `RecoverConfigMode` field in the response to determine which configurations a backup contains.
         self.recover_config_mode = recover_config_mode
-        # The ID of the region where you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list.
+        # The ID of the region in which to create the instance. Call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to get a list of region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The number of slave replicas in the primary availability zone. This parameter is applicable only for creating cloud-native cluster edition multi-replica instances, allowing you to customize the number of slave replicas. The value range is 1 to 4.
-        # > > - The sum of this parameter and SlaveReplicaCount cannot exceed 4. 
-        # >> - Only one of this parameter and ReadOnlyCount can be passed; there are no instances that simultaneously include both replicas and read-only nodes. 
-        # >> - Primary-secondary instances do not support multiple replicas.
+        # The number of replicas in the primary zone. This parameter is available only for multi-replica cluster instances of the cloud native edition. You can specify a value from 1 to 4.
+        # 
+        # > When creating a multi-zone instance, you can use this parameter and `SlaveReplicaCount` to customize the number of replicas in the primary and secondary zones. The sum of `ReplicaCount` and `SlaveReplicaCount` cannot exceed 4.
         self.replica_count = replica_count
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # If data flashback is enabled for the source instance, you can use this parameter to specify a point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the point in time to create an instance. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The point in time to which you want to restore data, specified in the *yyyy-MM-dd*T*HH:mm:ss*Z (UTC) format.
         self.restore_time = restore_time
-        # The secondary zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the most recent zone list.
+        # The ID of the secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the latest list of zones.
         # 
-        # > If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
+        # > The value of this parameter cannot be the same as the value of the `ZoneId` parameter, and you cannot specify a multi-zone ID.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
-        # The number of shards. This parameter applies only to cloud-native cluster instances.
+        # The number of shards. This parameter is available only for cloud native edition instances.
+        # 
+        # - A value of **1** creates an instance with a standard architecture.
+        # 
+        # - A value greater than **1** creates an instance with a cluster architecture.
         self.shard_count = shard_count
-        # The number of read replicas in the secondary zone. This parameter is used to create a read/write splitting instance that is deployed across multiple zones. The sum of the values of this parameter and ReadOnlyCount cannot be greater than 9.
-        # 
-        # > When you create a multi-zone read/write splitting instance, you must specify both SlaveReadOnlyCount and SecondaryZoneId.
+        # The number of read-only replicas in the secondary zone.
         self.slave_read_only_count = slave_read_only_count
-        # Used for specifying the number of slave replicas in the secondary availability zone when creating a multi-AZ cloud-native cluster edition with multiple replicas. The sum of this parameter and ReplicaCount cannot exceed 4. <notice>When creating a multi-AZ cloud-native cluster edition with multiple replicas, both SlaveReplicaCount and SecondaryZoneId parameters must be specified.</notice>
+        # The number of replicas in the secondary zone.
         self.slave_replica_count = slave_replica_count
-        # If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance.
+        # To create an instance from a backup, specify the ID of the source instance.
         # 
-        # >  After you specify the SrcDBInstanceId parameter, use the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster instances), or **RestoreTime** parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+        # > This parameter must be used in conjunction with one of the following parameters: **BackupId**, **ClusterBackupId** (recommended for cloud native, cluster-architecture instances), or **RestoreTime**.
         self.src_dbinstance_id = src_dbinstance_id
         # The tags of the instance.
         self.tag = tag
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token is case-sensitive. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client-generated token to ensure the idempotence of the request. The token must be unique across requests, case-sensitive, and cannot exceed 64 ASCII characters.
         self.token = token
-        # The ID of the vSwitch to which you want the instance to connect.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC.
         self.vpc_id = vpc_id
-        # The primary zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent zone list.
+        # The ID of the primary zone for the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473763.html) operation to query available zones.
+        # 
+        # > You can also specify a secondary zone by using the `SecondaryZoneId` parameter. The primary and replica nodes are then deployed in the specified primary and secondary zones to create a dual-zone architecture for in-city disaster recovery. For example, you can set the `ZoneId` parameter to "cn-hangzhou-h" and the `SecondaryZoneId` parameter to "cn-hangzhou-g".
         self.zone_id = zone_id
 
     def validate(self):
@@ -310,6 +366,12 @@ class CreateInstanceRequest(DaraModel):
 
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
@@ -464,6 +526,12 @@ class CreateInstanceRequest(DaraModel):
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
 
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
+
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
 
@@ -559,14 +627,15 @@ class CreateInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The keys of the tags that are added to the instance.
+        # The key of the tag.
         # 
-        # > *   **N** specifies the serial number of the tag. Up to 20 tags can be added to a single instance. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag.
-        # > *   If the key of the tag does not exist, the tag is automatically created.
+        # > - `N` represents the sequence number of the tag, from 1 to 20. You can add a maximum of 20 tags to an instance.
+        # >
+        # > - If the tag key does not exist, it is automatically created.
         self.key = key
-        # The values of the tags that are added to the instance.
+        # The value for tag `N`.
         # 
-        # > **N** specifies the serial number of the tag. For example, **Tag.1.Value** specifies the value of the first tag and **Tag.2.Value** specifies the value of the second tag.
+        # > The N in **Tag.N.Value** specifies the sequence number of the tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
         self.value = value
 
     def validate(self):

@@ -17,11 +17,13 @@ class GetTemplateResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If success is false, a business error code is returned.
+        # 
+        # - If success is true, an empty value is returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - Returns an error message if success is false.
+        # 
+        # - Returns an empty value if success is true.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code

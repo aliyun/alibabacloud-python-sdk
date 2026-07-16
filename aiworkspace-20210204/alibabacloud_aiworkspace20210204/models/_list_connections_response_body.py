@@ -16,15 +16,15 @@ class ListConnectionsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The connection list.
+        # List of connections.
         self.connections = connections
-        # The maximum number of entries per page.
+        # Maximum number of entries per page.
         self.max_results = max_results
-        # The pagination token that indicates the start position from which to retrieve data on the next page.
+        # Token for retrieving the next page of results.
         self.next_token = next_token
-        # The request ID.
+        # Request ID. Used for troubleshooting.
         self.request_id = request_id
-        # The total number of connections that meet the filter conditions.
+        # Total number of connections that match the query conditions.
         self.total_count = total_count
 
     def validate(self):

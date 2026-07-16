@@ -19,13 +19,13 @@ class KillProcessRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The query statement or query statements that you want to stop executing. If you want to stop executing multiple query statements, separate the statements with commas (,).
+        # The search statement to stop. To stop multiple statements, separate them with commas (,).
         # 
-        # >  If you do not set this parameter, all query statements are stopped by default.
+        # > If you do not specify this parameter, all search statements are stopped by default.
         self.initial_query_id = initial_query_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -18,28 +18,28 @@ class RescaleApplicationVerticallyRequest(DaraModel):
         min_ready_instance_ratio: int = None,
         min_ready_instances: int = None,
     ):
-        # The app ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Target CPU specification. Unit: millicore.
+        # The CPU specifications, in millicores.
         # 
         # This parameter is required.
         self.cpu = cpu
         self.deploy = deploy
-        # The disk size. Unit: GB.
+        # The disk size for each node, in GB.
         self.disk_size = disk_size
-        # Target memory specification. Unit: MB.
+        # The memory size, in MB.
         # 
         # This parameter is required.
         self.memory = memory
         self.resource_type = resource_type
         self.v_switch_id = v_switch_id
-        # Enable application scale rules automatically.
+        # Specifies whether to automatically enable the auto scaling rule.
         self.auto_enable_application_scaling_rule = auto_enable_application_scaling_rule
-        # The ratio of minimum ready instances.
+        # The minimum percentage of ready instances.
         self.min_ready_instance_ratio = min_ready_instance_ratio
-        # Minimum ready instances.
+        # The minimum number of ready instances.
         self.min_ready_instances = min_ready_instances
 
     def validate(self):

@@ -16,10 +16,17 @@ class ListRobotNodeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Request status code. A return value of OK indicates that the request succeeded.
         self.code = code
+        # List of robot nodes.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Whether the API invocation succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -83,10 +90,18 @@ class ListRobotNodeResponseBodyData(DaraModel):
         node_name: str = None,
         process_name: str = None,
     ):
+        # Whether it is an output. Valid values:
+        # 
+        # - **1**: Yes.
+        # - **0**: No.
         self.is_output = is_output
+        # Model name.
         self.model_name = model_name
+        # Output ID.
         self.node_identifier = node_identifier
+        # Node name.
         self.node_name = node_name
+        # Flow name.
         self.process_name = process_name
 
     def validate(self):

@@ -9,10 +9,10 @@ class OpenAckServiceRequest(DaraModel):
         self,
         type: str = None,
     ):
-        # The type of service that you want to activate. Valid values:
+        # The type of service to activate. Valid values:
         # 
-        # *   `propayasgo`: ACK clusters (including ACK managed clusters and ACK dedicated clusters), ACK Serverless clusters, and registered clusters.
-        # *   `edgepayasgo`: ACK Edge clusters.
+        # - `propayasgo`: Container Service for Kubernetes (including ACK managed clusters and ACK dedicated clusters), Container Service Serverless, and registered clusters.
+        # - `edgepayasgo`: Container Service Edge.
         self.type = type
 
     def validate(self):

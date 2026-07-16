@@ -12,10 +12,17 @@ class ListParameterVersionsRequest(DaraModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # The parameter ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Specifies the page number of the results to return. Default value: 1.
         self.page_number = page_number
+        # Specifies the number of entries to return per page. Default value: 20.
         self.page_size = page_size
+        # Specifies the sort criterion in the format \\<sort field> \\<sort order>. You can omit Asc for ascending order. The only valid value for the sort field is:
+        # 
+        # - Version (Desc/Asc)
         self.sort_by = sort_by
 
     def validate(self):

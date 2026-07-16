@@ -21,7 +21,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'cloud-siem.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'cloud-siem.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloud-siem', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -1018,6 +1022,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleVersion'] = request.normalization_rule_version
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.product_id):
@@ -1084,6 +1090,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleVersion'] = request.normalization_rule_version
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.product_id):
@@ -1138,6 +1146,8 @@ class Client(OpenApiClient):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.normalization_category_id):
             body['NormalizationCategoryId'] = request.normalization_category_id
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
         if not DaraCore.is_null(request.normalization_fields):
             body['NormalizationFields'] = request.normalization_fields
         if not DaraCore.is_null(request.normalization_schema_description):
@@ -1148,12 +1158,18 @@ class Client(OpenApiClient):
             body['NormalizationSchemaName'] = request.normalization_schema_name
         if not DaraCore.is_null(request.normalization_schema_type):
             body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
         if not DaraCore.is_null(request.target_log_store):
             body['TargetLogStore'] = request.target_log_store
+        if not DaraCore.is_null(request.vendor_id):
+            body['VendorId'] = request.vendor_id
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1184,6 +1200,8 @@ class Client(OpenApiClient):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.normalization_category_id):
             body['NormalizationCategoryId'] = request.normalization_category_id
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
         if not DaraCore.is_null(request.normalization_fields):
             body['NormalizationFields'] = request.normalization_fields
         if not DaraCore.is_null(request.normalization_schema_description):
@@ -1194,12 +1212,18 @@ class Client(OpenApiClient):
             body['NormalizationSchemaName'] = request.normalization_schema_name
         if not DaraCore.is_null(request.normalization_schema_type):
             body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
+        if not DaraCore.is_null(request.product_id):
+            body['ProductId'] = request.product_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
         if not DaraCore.is_null(request.target_log_store):
             body['TargetLogStore'] = request.target_log_store
+        if not DaraCore.is_null(request.vendor_id):
+            body['VendorId'] = request.vendor_id
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -2708,6 +2732,8 @@ class Client(OpenApiClient):
             body['ExtendContentPacked'] = request.extend_content_packed
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_condition):
+            body['LogCondition'] = request.log_condition
         if not DaraCore.is_null(request.log_project_name):
             body['LogProjectName'] = request.log_project_name
         if not DaraCore.is_null(request.log_query):
@@ -2758,6 +2784,8 @@ class Client(OpenApiClient):
             body['ExtendContentPacked'] = request.extend_content_packed
         if not DaraCore.is_null(request.lang):
             body['Lang'] = request.lang
+        if not DaraCore.is_null(request.log_condition):
+            body['LogCondition'] = request.log_condition
         if not DaraCore.is_null(request.log_project_name):
             body['LogProjectName'] = request.log_project_name
         if not DaraCore.is_null(request.log_query):
@@ -2886,6 +2914,92 @@ class Client(OpenApiClient):
     ) -> main_models.ExecuteUpgradeResponse:
         runtime = RuntimeOptions()
         return await self.execute_upgrade_with_options_async(request, runtime)
+
+    def get_alert_with_options(
+        self,
+        request: main_models.GetAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_with_options_async(
+        self,
+        request: main_models.GetAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert(
+        self,
+        request: main_models.GetAlertRequest,
+    ) -> main_models.GetAlertResponse:
+        runtime = RuntimeOptions()
+        return self.get_alert_with_options(request, runtime)
+
+    async def get_alert_async(
+        self,
+        request: main_models.GetAlertRequest,
+    ) -> main_models.GetAlertResponse:
+        runtime = RuntimeOptions()
+        return await self.get_alert_with_options_async(request, runtime)
 
     def get_auto_dispose_config_with_options(
         self,
@@ -3452,6 +3566,8 @@ class Client(OpenApiClient):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.normalization_rule_id):
             body['NormalizationRuleId'] = request.normalization_rule_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -3486,6 +3602,8 @@ class Client(OpenApiClient):
             body['Lang'] = request.lang
         if not DaraCore.is_null(request.normalization_rule_id):
             body['NormalizationRuleId'] = request.normalization_rule_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -3695,6 +3813,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_normalization_schema_with_options_async(request, runtime)
 
+    def get_response_rule_statistic_with_options(
+        self,
+        request: main_models.GetResponseRuleStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResponseRuleStatisticResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResponseRuleStatistic',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResponseRuleStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_response_rule_statistic_with_options_async(
+        self,
+        request: main_models.GetResponseRuleStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResponseRuleStatisticResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResponseRuleStatistic',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResponseRuleStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_response_rule_statistic(
+        self,
+        request: main_models.GetResponseRuleStatisticRequest,
+    ) -> main_models.GetResponseRuleStatisticResponse:
+        runtime = RuntimeOptions()
+        return self.get_response_rule_statistic_with_options(request, runtime)
+
+    async def get_response_rule_statistic_async(
+        self,
+        request: main_models.GetResponseRuleStatisticRequest,
+    ) -> main_models.GetResponseRuleStatisticResponse:
+        runtime = RuntimeOptions()
+        return await self.get_response_rule_statistic_with_options_async(request, runtime)
+
     def get_user_config_with_options(
         self,
         request: main_models.GetUserConfigRequest,
@@ -3772,6 +3972,136 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserConfigResponse:
         runtime = RuntimeOptions()
         return await self.get_user_config_with_options_async(request, runtime)
+
+    def list_alerts_with_options(
+        self,
+        request: main_models.ListAlertsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_level):
+            body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_direction):
+            body['OrderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.order_field_name):
+            body['OrderFieldName'] = request.order_field_name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_condition):
+            body['QueryCondition'] = request.query_condition
+        if not DaraCore.is_null(request.query_view_id):
+            body['QueryViewId'] = request.query_view_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlerts',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alerts_with_options_async(
+        self,
+        request: main_models.ListAlertsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_level):
+            body['AlertLevel'] = request.alert_level
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.end_time):
+            body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_direction):
+            body['OrderDirection'] = request.order_direction
+        if not DaraCore.is_null(request.order_field_name):
+            body['OrderFieldName'] = request.order_field_name
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_condition):
+            body['QueryCondition'] = request.query_condition
+        if not DaraCore.is_null(request.query_view_id):
+            body['QueryViewId'] = request.query_view_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.start_time):
+            body['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlerts',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alerts(
+        self,
+        request: main_models.ListAlertsRequest,
+    ) -> main_models.ListAlertsResponse:
+        runtime = RuntimeOptions()
+        return self.list_alerts_with_options(request, runtime)
+
+    async def list_alerts_async(
+        self,
+        request: main_models.ListAlertsRequest,
+    ) -> main_models.ListAlertsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_alerts_with_options_async(request, runtime)
 
     def list_auto_dispose_entities_with_options(
         self,
@@ -3878,6 +4208,144 @@ class Client(OpenApiClient):
     ) -> main_models.ListAutoDisposeEntitiesResponse:
         runtime = RuntimeOptions()
         return await self.list_auto_dispose_entities_with_options_async(request, runtime)
+
+    def list_data_connectors_with_options(
+        self,
+        tmp_req: main_models.ListDataConnectorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataConnectorsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataConnectorsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_connector_ids):
+            request.data_connector_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_connector_ids, 'DataConnectorIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_connector_ids_shrink):
+            body['DataConnectorIds'] = request.data_connector_ids_shrink
+        if not DaraCore.is_null(request.data_connector_name):
+            body['DataConnectorName'] = request.data_connector_name
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.data_connector_type):
+            body['DataConnectorType'] = request.data_connector_type
+        if not DaraCore.is_null(request.dest_data_source_id):
+            body['DestDataSourceId'] = request.dest_data_source_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
+        if not DaraCore.is_null(request.order_type):
+            body['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.sls_ingestion_job_name):
+            body['SlsIngestionJobName'] = request.sls_ingestion_job_name
+        if not DaraCore.is_null(request.src_data_type):
+            body['SrcDataType'] = request.src_data_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataConnectors',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataConnectorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_connectors_with_options_async(
+        self,
+        tmp_req: main_models.ListDataConnectorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataConnectorsResponse:
+        tmp_req.validate()
+        request = main_models.ListDataConnectorsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_connector_ids):
+            request.data_connector_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_connector_ids, 'DataConnectorIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_connector_ids_shrink):
+            body['DataConnectorIds'] = request.data_connector_ids_shrink
+        if not DaraCore.is_null(request.data_connector_name):
+            body['DataConnectorName'] = request.data_connector_name
+        if not DaraCore.is_null(request.data_connector_status):
+            body['DataConnectorStatus'] = request.data_connector_status
+        if not DaraCore.is_null(request.data_connector_type):
+            body['DataConnectorType'] = request.data_connector_type
+        if not DaraCore.is_null(request.dest_data_source_id):
+            body['DestDataSourceId'] = request.dest_data_source_id
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_field):
+            body['OrderField'] = request.order_field
+        if not DaraCore.is_null(request.order_type):
+            body['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.sls_ingestion_job_name):
+            body['SlsIngestionJobName'] = request.sls_ingestion_job_name
+        if not DaraCore.is_null(request.src_data_type):
+            body['SrcDataType'] = request.src_data_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataConnectors',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataConnectorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_connectors(
+        self,
+        request: main_models.ListDataConnectorsRequest,
+    ) -> main_models.ListDataConnectorsResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_connectors_with_options(request, runtime)
+
+    async def list_data_connectors_async(
+        self,
+        request: main_models.ListDataConnectorsRequest,
+    ) -> main_models.ListDataConnectorsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_connectors_with_options_async(request, runtime)
 
     def list_data_ingestion_templates_with_options(
         self,
@@ -5286,6 +5754,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
+        if not DaraCore.is_null(request.normalization_schema_type):
+            body['NormalizationSchemaType'] = request.normalization_schema_type
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -5324,6 +5796,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.next_token):
             body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
+        if not DaraCore.is_null(request.normalization_schema_type):
+            body['NormalizationSchemaType'] = request.normalization_schema_type
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -5580,6 +6056,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleType'] = request.normalization_rule_type
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.order_type):
@@ -5642,6 +6120,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleType'] = request.normalization_rule_type
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.order_type):
@@ -5706,8 +6186,12 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.normalization_category_id):
             body['NormalizationCategoryId'] = request.normalization_category_id
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
         if not DaraCore.is_null(request.normalization_schema_type):
             body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -5746,8 +6230,12 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.normalization_category_id):
             body['NormalizationCategoryId'] = request.normalization_category_id
+        if not DaraCore.is_null(request.normalization_field_source):
+            body['NormalizationFieldSource'] = request.normalization_field_source
         if not DaraCore.is_null(request.normalization_schema_type):
             body['NormalizationSchemaType'] = request.normalization_schema_type
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.region_id):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
@@ -5784,6 +6272,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListNormalizationSchemasResponse:
         runtime = RuntimeOptions()
         return await self.list_normalization_schemas_with_options_async(request, runtime)
+
+    def list_normalization_security_domains_with_options(
+        self,
+        request: main_models.ListNormalizationSecurityDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNormalizationSecurityDomainsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNormalizationSecurityDomains',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNormalizationSecurityDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_normalization_security_domains_with_options_async(
+        self,
+        request: main_models.ListNormalizationSecurityDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListNormalizationSecurityDomainsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListNormalizationSecurityDomains',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListNormalizationSecurityDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_normalization_security_domains(
+        self,
+        request: main_models.ListNormalizationSecurityDomainsRequest,
+    ) -> main_models.ListNormalizationSecurityDomainsResponse:
+        runtime = RuntimeOptions()
+        return self.list_normalization_security_domains_with_options(request, runtime)
+
+    async def list_normalization_security_domains_async(
+        self,
+        request: main_models.ListNormalizationSecurityDomainsRequest,
+    ) -> main_models.ListNormalizationSecurityDomainsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_normalization_security_domains_with_options_async(request, runtime)
 
     def list_products_with_options(
         self,
@@ -5894,6 +6468,198 @@ class Client(OpenApiClient):
     ) -> main_models.ListProductsResponse:
         runtime = RuntimeOptions()
         return await self.list_products_with_options_async(request, runtime)
+
+    def list_query_views_with_options(
+        self,
+        request: main_models.ListQueryViewsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQueryViewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query_view_scene):
+            body['QueryViewScene'] = request.query_view_scene
+        if not DaraCore.is_null(request.query_view_type):
+            body['QueryViewType'] = request.query_view_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQueryViews',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQueryViewsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_query_views_with_options_async(
+        self,
+        request: main_models.ListQueryViewsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQueryViewsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.query_view_scene):
+            body['QueryViewScene'] = request.query_view_scene
+        if not DaraCore.is_null(request.query_view_type):
+            body['QueryViewType'] = request.query_view_type
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQueryViews',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQueryViewsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_query_views(
+        self,
+        request: main_models.ListQueryViewsRequest,
+    ) -> main_models.ListQueryViewsResponse:
+        runtime = RuntimeOptions()
+        return self.list_query_views_with_options(request, runtime)
+
+    async def list_query_views_async(
+        self,
+        request: main_models.ListQueryViewsRequest,
+    ) -> main_models.ListQueryViewsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_query_views_with_options_async(request, runtime)
+
+    def list_response_rule_fields_with_options(
+        self,
+        request: main_models.ListResponseRuleFieldsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResponseRuleFieldsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResponseRuleFields',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResponseRuleFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_response_rule_fields_with_options_async(
+        self,
+        request: main_models.ListResponseRuleFieldsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResponseRuleFieldsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResponseRuleFields',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResponseRuleFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_response_rule_fields(
+        self,
+        request: main_models.ListResponseRuleFieldsRequest,
+    ) -> main_models.ListResponseRuleFieldsResponse:
+        runtime = RuntimeOptions()
+        return self.list_response_rule_fields_with_options(request, runtime)
+
+    async def list_response_rule_fields_async(
+        self,
+        request: main_models.ListResponseRuleFieldsRequest,
+    ) -> main_models.ListResponseRuleFieldsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_response_rule_fields_with_options_async(request, runtime)
 
     def list_response_rules_with_options(
         self,
@@ -6012,6 +6778,108 @@ class Client(OpenApiClient):
     ) -> main_models.ListResponseRulesResponse:
         runtime = RuntimeOptions()
         return await self.list_response_rules_with_options_async(request, runtime)
+
+    def list_tags_with_options(
+        self,
+        request: main_models.ListTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.target_relation):
+            body['TargetRelation'] = request.target_relation
+        if not DaraCore.is_null(request.target_type):
+            body['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_uuid):
+            body['TargetUuid'] = request.target_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTags',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tags_with_options_async(
+        self,
+        request: main_models.ListTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.target_relation):
+            body['TargetRelation'] = request.target_relation
+        if not DaraCore.is_null(request.target_type):
+            body['TargetType'] = request.target_type
+        if not DaraCore.is_null(request.target_uuid):
+            body['TargetUuid'] = request.target_uuid
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTags',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tags(
+        self,
+        request: main_models.ListTagsRequest,
+    ) -> main_models.ListTagsResponse:
+        runtime = RuntimeOptions()
+        return self.list_tags_with_options(request, runtime)
+
+    async def list_tags_async(
+        self,
+        request: main_models.ListTagsRequest,
+    ) -> main_models.ListTagsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tags_with_options_async(request, runtime)
 
     def list_traffic_statistics_with_options(
         self,
@@ -6564,6 +7432,96 @@ class Client(OpenApiClient):
     ) -> main_models.SetDefaultNormalizationRuleVersionResponse:
         runtime = RuntimeOptions()
         return await self.set_default_normalization_rule_version_with_options_async(request, runtime)
+
+    def update_alert_with_options(
+        self,
+        request: main_models.UpdateAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_status):
+            body['AlertStatus'] = request.alert_status
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_with_options_async(
+        self,
+        request: main_models.UpdateAlertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.alert_status):
+            body['AlertStatus'] = request.alert_status
+        if not DaraCore.is_null(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlert',
+            version = '2024-12-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert(
+        self,
+        request: main_models.UpdateAlertRequest,
+    ) -> main_models.UpdateAlertResponse:
+        runtime = RuntimeOptions()
+        return self.update_alert_with_options(request, runtime)
+
+    async def update_alert_async(
+        self,
+        request: main_models.UpdateAlertRequest,
+    ) -> main_models.UpdateAlertResponse:
+        runtime = RuntimeOptions()
+        return await self.update_alert_with_options_async(request, runtime)
 
     def update_auto_dispose_config_with_options(
         self,
@@ -7976,6 +8934,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleType'] = request.normalization_rule_type
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.product_id):
@@ -8042,6 +9002,8 @@ class Client(OpenApiClient):
             body['NormalizationRuleType'] = request.normalization_rule_type
         if not DaraCore.is_null(request.normalization_schema_id):
             body['NormalizationSchemaId'] = request.normalization_schema_id
+        if not DaraCore.is_null(request.normalization_security_domain_id):
+            body['NormalizationSecurityDomainId'] = request.normalization_security_domain_id
         if not DaraCore.is_null(request.order_field):
             body['OrderField'] = request.order_field
         if not DaraCore.is_null(request.product_id):

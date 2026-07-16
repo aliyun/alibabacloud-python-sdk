@@ -15,7 +15,6 @@ class VirtualDeliveryToMsceneResponseBody(DaraModel):
         success: bool = None,
     ):
         self.mpaas_user_gamecenter_payment_virtualdelivery_response = mpaas_user_gamecenter_payment_virtualdelivery_response
-        # Id of the request
         self.request_id = request_id
         self.result_code = result_code
         self.result_msg = result_msg

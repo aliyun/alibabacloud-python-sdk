@@ -20,17 +20,30 @@ class RunDocQaRequest(DaraModel):
         session_id: str = None,
         workspace_id: str = None,
     ):
+        # Array of folder IDs for filtering. This parameter takes effect only when SearchSource is set to fromIndexLib.
         self.category_ids = category_ids
+        # Array of historical context content
         self.conversation_contexts = conversation_contexts
+        # Array of multiple document IDs
         self.doc_ids = doc_ids
+        # Custom model name defined by the User
         self.model_name = model_name
+        # Question
+        # 
         # This parameter is required.
         self.query = query
+        # Associated content actively provided by the questioner
         self.reference_content = reference_content
+        # Search source
+        # 
         # This parameter is required.
         self.search_source = search_source
+        # Conversation ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Alibaba Cloud Model Studio workspace ID. For details on how to obtain it, see [How to Use Workspaces](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -116,7 +129,9 @@ class RunDocQaRequestConversationContexts(DaraModel):
         content: str = None,
         role: str = None,
     ):
+        # Q&A pair content
         self.content = content
+        # Role
         self.role = role
 
     def validate(self):

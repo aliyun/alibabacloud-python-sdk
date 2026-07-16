@@ -15,6 +15,8 @@ class HttpApiDeployConfig(DaraModel):
         builtin_route_names: List[str] = None,
         custom_domain_ids: List[str] = None,
         custom_domain_infos: List[main_models.HttpApiDeployConfigCustomDomainInfos] = None,
+        env_domain_ids: List[str] = None,
+        env_domain_infos: List[main_models.HttpApiDeployConfigEnvDomainInfos] = None,
         environment_id: str = None,
         gateway_id: str = None,
         gateway_info: main_models.GatewayInfo = None,
@@ -25,37 +27,46 @@ class HttpApiDeployConfig(DaraModel):
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
     ):
-        # Specifies whether to enable automatic deployment.
+        # Indicates whether auto-deploy is enabled.
         self.auto_deploy = auto_deploy
         # The publishing scenario.
         self.backend_scene = backend_scene
+        # The list of built-in route names.
         self.builtin_route_names = builtin_route_names
-        # The IDs of the custom domain names.
+        # The list of custom domain name IDs.
         self.custom_domain_ids = custom_domain_ids
-        # The information about the custom domain names.
+        # The list of custom domain name information.
         self.custom_domain_infos = custom_domain_infos
+        # The list of environment domain name IDs. If this parameter is not specified, all environment domain names are bound. An empty array indicates that no environment domain names are bound.
+        self.env_domain_ids = env_domain_ids
+        # The list of environment domain name information.
+        self.env_domain_infos = env_domain_infos
         # The environment ID.
         self.environment_id = environment_id
-        # The instance ID.
+        # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The instance information.
+        # The gateway information.
         self.gateway_info = gateway_info
-        # 网关类型
+        # The gateway type.
         self.gateway_type = gateway_type
-        # The Mock settings.
+        # The mock configuration.
         self.mock = mock
-        # The policy configurations.
+        # The list of policy configurations.
         self.policy_configs = policy_configs
-        # routeBackend
+        # The backend service information.
         self.route_backend = route_backend
-        # The service configurations.
+        # The list of service configurations.
         self.service_configs = service_configs
-        # The information about the sub-domain names.
+        # The list of subdomain information.
         self.sub_domains = sub_domains
 
     def validate(self):
         if self.custom_domain_infos:
             for v1 in self.custom_domain_infos:
+                 if v1:
+                    v1.validate()
+        if self.env_domain_infos:
+            for v1 in self.env_domain_infos:
                  if v1:
                     v1.validate()
         if self.gateway_info:
@@ -98,6 +109,14 @@ class HttpApiDeployConfig(DaraModel):
         if self.custom_domain_infos is not None:
             for k1 in self.custom_domain_infos:
                 result['customDomainInfos'].append(k1.to_map() if k1 else None)
+
+        if self.env_domain_ids is not None:
+            result['envDomainIds'] = self.env_domain_ids
+
+        result['envDomainInfos'] = []
+        if self.env_domain_infos is not None:
+            for k1 in self.env_domain_infos:
+                result['envDomainInfos'].append(k1.to_map() if k1 else None)
 
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
@@ -153,6 +172,15 @@ class HttpApiDeployConfig(DaraModel):
             for k1 in m.get('customDomainInfos'):
                 temp_model = main_models.HttpApiDeployConfigCustomDomainInfos()
                 self.custom_domain_infos.append(temp_model.from_map(k1))
+
+        if m.get('envDomainIds') is not None:
+            self.env_domain_ids = m.get('envDomainIds')
+
+        self.env_domain_infos = []
+        if m.get('envDomainInfos') is not None:
+            for k1 in m.get('envDomainInfos'):
+                temp_model = main_models.HttpApiDeployConfigEnvDomainInfos()
+                self.env_domain_infos.append(temp_model.from_map(k1))
 
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
@@ -267,29 +295,29 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # Legacy gateway service ID for backward compatibility
+        # The gateway service ID.
         self.gateway_service_id = gateway_service_id
-        # Intent classification code
+        # The intent code.
         self.intent_code = intent_code
-        # Match conditions
+        # The matching condition.
         self.match = match
         # The model name.
         self.model_name = model_name
         # The model name matching rule.
         self.model_name_pattern = model_name_pattern
-        # Multi-service routing strategy type
+        # The multi-service routing strategy type.
         self.multi_service_route_strategy = multi_service_route_strategy
-        # Service display name
+        # The service display name.
         self.name = name
-        # Observability metrics-based routing config
+        # The observability-based routing configuration.
         self.observability_route_config = observability_route_config
-        # Service port number
+        # The service port number.
         self.port = port
-        # Service protocol
+        # The service protocol (HTTP/HTTPS).
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # Service version tag for tag-based routing scenarios
+        # The service version label.
         self.version = version
         # The service weight.
         self.weight = weight
@@ -398,11 +426,11 @@ class HttpApiDeployConfigServiceConfigsObservabilityRouteConfig(DaraModel):
         queue_size: int = None,
         rate_limit: float = None,
     ):
-        # Routing mode
+        # The routing mode.
         self.mode = mode
-        # Queue size
+        # The queue size.
         self.queue_size = queue_size
-        # Max traffic ratio per single service
+        # The maximum traffic ratio for a single service.
         self.rate_limit = rate_limit
 
     def validate(self):
@@ -434,6 +462,52 @@ class HttpApiDeployConfigServiceConfigsObservabilityRouteConfig(DaraModel):
 
         if m.get('rateLimit') is not None:
             self.rate_limit = m.get('rateLimit')
+
+        return self
+
+class HttpApiDeployConfigEnvDomainInfos(DaraModel):
+    def __init__(
+        self,
+        domain_id: str = None,
+        name: str = None,
+        protocol: str = None,
+    ):
+        # The domain name ID.
+        self.domain_id = domain_id
+        # The domain name.
+        self.name = name
+        # The protocol.
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain_id is not None:
+            result['domainId'] = self.domain_id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('domainId') is not None:
+            self.domain_id = m.get('domainId')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
 
         return self
 

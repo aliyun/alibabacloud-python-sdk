@@ -17,13 +17,13 @@ class DescribeAutoSnapshotPolicyExResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.auto_snapshot_policies = auto_snapshot_policies
-        # The page number.
+        # The page number of the automatic snapshot policy list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page when automatic snapshot policies are displayed in paging mode.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of automatic snapshot policies
+        # The total number of automatic snapshot policies.
         self.total_count = total_count
 
     def validate(self):

@@ -13,7 +13,7 @@ class EnableRuleRequest(DaraModel):
     ):
         # The bastion host ID.
         # 
-        # >  You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the bastion host ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -23,7 +23,7 @@ class EnableRuleRequest(DaraModel):
         self.region_id = region_id
         # The ID of the authorization rule that you want to enable.
         # 
-        # >  You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
+        # > You can call the [ListRules](https://help.aliyun.com/document_detail/2758868.html) operation to query the authorization rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id

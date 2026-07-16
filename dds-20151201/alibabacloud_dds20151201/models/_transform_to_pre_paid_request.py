@@ -20,17 +20,19 @@ class TransformToPrePaidRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **true**: enables automatic payment.
-        # *   **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](https://help.aliyun.com/document_detail/85052.html).
+        # - **true**: enables automatic payment.
         # 
-        # >  Default value: **true**.
+        # - **false**: disables automatic payment. For more information, see [Renew an ApsaraDB for MongoDB subscription instance](https://help.aliyun.com/document_detail/85052.html).
+        # 
+        # > Default value: **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
         # 
-        # >  Default value: **false**.
+        # - **false**
+        # 
+        # > Default value: **false**.
         self.auto_renew = auto_renew
         # The business information. This is an additional parameter.
         self.business_info = business_info

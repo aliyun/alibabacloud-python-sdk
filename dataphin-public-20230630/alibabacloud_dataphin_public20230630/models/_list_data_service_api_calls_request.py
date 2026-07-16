@@ -12,10 +12,16 @@ class ListDataServiceApiCallsRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
+        # The query conditions.
+        # 
         # This parameter is required.
         self.list_query = list_query
+        # The ID of the tenant.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the data service project.
+        # 
         # This parameter is required.
         self.project_id = project_id
 
@@ -67,18 +73,30 @@ class ListDataServiceApiCallsRequestListQuery(DaraModel):
         start_time: str = None,
         successful: bool = None,
     ):
+        # The ID of the API.
         self.api_id = api_id
+        # The name of the API.
         self.api_name = api_name
-        # appKey
+        # The application key.
+        # >Notice: This parameter is deprecated. Use AppKeyStr instead.
         self.app_key = app_key
+        # The application key.
         self.app_key_str = app_key_str
+        # The IP address.
         self.client_ip = client_ip
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Indicates whether the call was successful.
         self.successful = successful
 
     def validate(self):

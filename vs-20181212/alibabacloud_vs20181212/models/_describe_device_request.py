@@ -12,9 +12,13 @@ class DescribeDeviceRequest(DaraModel):
         include_stats: bool = None,
         owner_id: int = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Return directory information. Default value: false.
         self.include_directory = include_directory
+        # Return stream statistics. Default value: false.
         self.include_stats = include_stats
         self.owner_id = owner_id
 

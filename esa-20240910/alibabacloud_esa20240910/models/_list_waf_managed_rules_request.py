@@ -21,37 +21,46 @@ class ListWafManagedRulesRequest(DaraModel):
         query_args: main_models.ListWafManagedRulesRequestQueryArgs = None,
         site_id: int = None,
     ):
-        # Attack type of the vulnerability protection event. Values:
+        # The attack type of the vulnerability prevention event. Valid values:
         # - SQL injection
-        # - Cross-site scripting
-        # - Code execution
+        # - cross-site scripting (XSS)
+        # - code execute
         # - CRLF
-        # - Local file inclusion
-        # - Remote file inclusion
-        # - Webshell
-        # - Cross-site request forgery
-        # - Other
+        # - local file inclusion (LFI)
+        # - remote file inclusion (RFI)
+        # - webshell
+        # - cross-site request forgery
+        # - Others
         # - SEMA
         # 
         # This parameter is required.
         self.attack_type = attack_type
-        # ID of the WAF rule.
+        # The ID of the WAF rule.
         self.id = id
+        # The WAF instance ID.
         self.instance_id = instance_id
-        # Language type, which will be used to return the response. Value range:
+        # The language type. The response is returned in the specified language. Valid values:
         # 
         # - **en**: English.
         # - **zh**: Chinese.
         self.language = language
+        # The managed ruleset configuration in JSON string format.
+        # 
+        # Contains the AttackType, ProtectionLevel, Action, and ManagedRules subfields. When ProtectionLevel is set to -1 (custom mode), specify the status and action for each rule through the ManagedRules array.
         self.managed_ruleset = managed_ruleset
-        # Query page number.
+        # The page number.
         self.page_number = page_number
-        # Query page size.
+        # The page size.
         self.page_size = page_size
+        # The currently saved protection level, which represents the existing configuration state in the database.
+        # 
+        # Valid values: -1 (custom mode), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+        # 
+        # Difference from ManagedRuleset.ProtectionLevel: this parameter indicates the currently effective configuration, while ManagedRuleset.ProtectionLevel indicates the target value being passed in.
         self.protection_level = protection_level
-        # Query conditions.
+        # The query conditions.
         self.query_args = query_args
-        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # The site ID. You can obtain the site ID by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
         self.site_id = site_id
 
     def validate(self):
@@ -141,13 +150,13 @@ class ListWafManagedRulesRequestQueryArgs(DaraModel):
         protection_levels: List[int] = None,
         status: str = None,
     ):
-        # Action.
+        # The action.
         self.action = action
-        # Fuzzy search for rule ID or rule name.
+        # Fuzzy match by rule ID or rule name.
         self.id_name_like = id_name_like
-        # List of rule protection levels.
+        # The list of rule protection levels.
         self.protection_levels = protection_levels
-        # Status.
+        # The status.
         self.status = status
 
     def validate(self):
@@ -196,9 +205,23 @@ class ListWafManagedRulesRequestManagedRuleset(DaraModel):
         managed_rules: List[main_models.ListWafManagedRulesRequestManagedRulesetManagedRules] = None,
         protection_level: int = None,
     ):
+        # The unified action when ProtectionLevel is greater than 0. This parameter cannot be empty in this case.
+        # 
+        # Common valid values: monitor, deny, js, captcha. The actual available values depend on the instance quota.
         self.action = action
+        # The attack type encoding. The value cannot be 0.
+        # 
+        # Example values: 11 (SQL injection), 12 (XSS), 13 (code execute), 14 (CRLF), 15 (local file inclusion (LFI)), 16 (remote file inclusion (RFI)), 17 (WebShell), 22 (command injection), 26 (SSRF), 27 (path traversal), 28 (protocol violation), 31 (scanner behavior).
         self.attack_type = attack_type
+        # The rule configuration list in custom mode. This parameter is used only when ProtectionLevel is set to -1.
+        # 
+        # Each element contains Id, Status, and Action, which are used to specify the enabled status and action for each managed rule.
         self.managed_rules = managed_rules
+        # The protection level within the ruleset.
+        # 
+        # Valid values: -1 (custom mode, specify each rule through ManagedRules), 1 (loose), 2 (medium), 3 (strict), 4 (super strict).
+        # 
+        # When the value is -1, ManagedRules cannot be empty. When the value is greater than 0, Action cannot be empty.
         self.protection_level = protection_level
 
     def validate(self):
@@ -254,8 +277,17 @@ class ListWafManagedRulesRequestManagedRulesetManagedRules(DaraModel):
         id: int = None,
         status: str = None,
     ):
+        # The action for a single rule. This parameter takes effect only in custom mode (ProtectionLevel = -1).
+        # 
+        # Common valid values: monitor, deny, js, captcha. The actual available values depend on the instance quota.
         self.action = action
+        # The unique ID of a single managed rule.
         self.id = id
+        # The rule enabled status.
+        # 
+        # Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.status = status
 
     def validate(self):

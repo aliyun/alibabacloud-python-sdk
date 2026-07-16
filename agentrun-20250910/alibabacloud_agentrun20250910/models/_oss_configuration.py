@@ -8,18 +8,28 @@ class OssConfiguration(DaraModel):
     def __init__(
         self,
         bucket_name: str = None,
+        endpoint: str = None,
         mount_point: str = None,
         permission: str = None,
         prefix: str = None,
         region: str = None,
     ):
+        # The name of the OSS bucket.
+        # 
         # This parameter is required.
         self.bucket_name = bucket_name
+        self.endpoint = endpoint
+        # The mount point for the OSS bucket.
+        # 
         # This parameter is required.
         self.mount_point = mount_point
+        # The access permission for the mount point.
         self.permission = permission
+        # The object prefix or path within the OSS bucket.
+        # 
         # This parameter is required.
         self.prefix = prefix
+        # The region where the OSS bucket is located.
         self.region = region
 
     def validate(self):
@@ -32,6 +42,9 @@ class OssConfiguration(DaraModel):
             result = _map
         if self.bucket_name is not None:
             result['bucketName'] = self.bucket_name
+
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
 
         if self.mount_point is not None:
             result['mountPoint'] = self.mount_point
@@ -51,6 +64,9 @@ class OssConfiguration(DaraModel):
         m = m or dict()
         if m.get('bucketName') is not None:
             self.bucket_name = m.get('bucketName')
+
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
 
         if m.get('mountPoint') is not None:
             self.mount_point = m.get('mountPoint')

@@ -23,70 +23,80 @@ class DocOcrMaxRequest(DaraModel):
         scene_code: str = None,
         spoof: str = None,
     ):
-        # Specifies whether to enable verification with an authoritative data source to enhance document anti-spoofing capabilities.
+        # Specifies whether to enable authoritative data source verification to enhance document anti-forgery capabilities.
         # 
-        # - **T**: Enable
+        # - **T**: enabled.
         # 
-        # - **F**: Disable (default)
+        # - **F**: disabled (default).
         # 
         # > 
-        # > - **Applicable document types**: Chinese resident ID cards (CHN01001) and Chinese mainland driver\\"s licenses (CHN02001).
-        # > - **Data transfer declaration**: If you enable this parameter, you agree to transfer the user\\"s name and certificate number to an authoritative data source in the Chinese mainland for consistency verification.
-        # > - **Performance impact:** After you enable this feature, the response time of the API operation increases by 1 to 2 seconds. Adjust the timeout setting.
+        # > - **Applicable document types**: China resident identity card (CHN01001) and Chinese mainland driver\\"s license (CHN02001).
+        # > - **Data transmission statement**: Enabling this parameter indicates your consent to transmit the user\\"s name and document number to an authoritative data source in the Chinese mainland for consistency verification.
+        # > - **Performance impact**: After this feature is enabled, the API response time increases by approximately 1 to 2 seconds. Adjust the timeout settings accordingly.
         self.authorize = authorize
-        # Page expected to be recognized
+        # The expected page to recognize. Valid values:
         # 
-        # - 01 (default): ID portrait.
+        # - 01 (default): the portrait side of the document.
         # 
-        # - 02: Back of the certificate
+        # - 02: the back side of the document.
         self.doc_page = doc_page
-        # Document type.
-        # Format: Country (region) code + document type abbreviation + page (optional)
-        # Note: If provided, it will automatically check if it matches the model recognition result; if empty, the document type will be returned after model recognition.
+        # The document type.
+        # - Format: country code + document type abbreviation + page (optional).
+        # 
+        # Note:
+        # - OcrModel = 0: DocType is required. Specify the document type. The existing logic remains unchanged.
+        # - OcrModel = 1 or 2: DocType must be left empty.
         self.doc_type = doc_type
-        # Document image, base64 encoded binary stream
+        # The Base64-encoded image of the card or certificate.
+        # 
+        # If you use IdOcrPictureBase64 to pass in the document image, check the image size and do not pass in an excessively large image.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # Document image URL
+        # The URL of the card or certificate image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # Whether to turn on the certificate anti-counterfeiting function:
+        # Specifies whether to enable the document anti-forgery feature. Valid values:
         # 
-        # - T: open
+        # - T: enabled.
         # 
-        # - F (default): not turned on.
+        # - F (default): disabled.
         self.id_spoof = id_spoof
-        # Custom OCR quality detection threshold mode:
+        # The custom OCR quality detection threshold mode. Valid values:
         # 
-        # - 0: System default
-        # - 1: Strict mode
-        # - 2: Lenient mode
-        # - 3 (default): Disable quality detection
+        # - 0: system default.
+        # - 1: strict mode.
+        # - 2: loose mode.
+        # - 3 (default): quality detection disabled.
         self.id_threshold = id_threshold
-        # A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
+        # The custom unique business identifier, which is used for subsequent troubleshooting.
+        # 
+        # The value can contain up to 32 characters, including letters and digits. Make sure the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
+        # The custom user ID or another identifier that can identify a specific user, such as a phone number or email address.
+        # 
+        # We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # OCR recognition mode.
-        # 0: General document mode.
-        # 1: Custom mode.
+        # The OCR recognition mode. Valid values:
+        # 
+        # - 0: general document recognition mode (default).
+        # 
+        # - 1: automatic document classification mode.
+        # 
+        # - 2: automatic document classification + general recognition mode.
         self.ocr_model = ocr_model
-        # Specifies whether to return additional OCR fields in a standardized format:
-        # 
-        # - **0**: No (default)
-        # 
-        # - **1**: Yes
+        # Specifies whether to enable OCR key field standardization. Valid values:
+        # - 0: no (default). 
+        # - 1: yes.
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to be integrated.
+        # The product solution to use.
         # 
-        # Value: ID_OCR_MAX
+        # Set this parameter to ID_OCR_MAX.
         self.product_code = product_code
-        # Prompt (for custom mode)
+        # >Warning: This field is deprecated.</warning>.
         self.prompt = prompt
-        # Custom scene code, used to distinguish business scenarios, a 10-digit number.
-        self.scene_code = scene_code
-        # Whether to enable document anti-counterfeiting function, default is not enabled.
+        # The custom authentication scenario ID. You can use this scenario ID to query related records in the console.
         # 
-        # - T: Enable document anti-counterfeiting function.
-        # - F: Do not enable.
+        # The value can contain up to 10 characters, including letters, digits, and underscores.
+        self.scene_code = scene_code
+        # <warning>This field is deprecated.</warning>.
         self.spoof = spoof
 
     def validate(self):

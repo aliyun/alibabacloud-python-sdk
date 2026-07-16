@@ -1,3 +1,8 @@
+2026-07-01 Version: 2.4.1
+- Update API ListIpamDiscoveredResource: add response parameters Body.IpamDiscoveredResources.$.ResourceName.
+- Update API ListIpamResourceCidrs: add response parameters Body.IpamResourceCidrs.$.ResourceName.
+
+
 2026-04-20 Version: 2.4.0
 - Support API ListIpamDiscoveredIpAddresses.
 

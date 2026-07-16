@@ -12,19 +12,20 @@ class DescribeDomainDetailRequest(DaraModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The domain name that you want to query.
+        # The domain name to query.
         self.domain = domain
+        # The domain name ID.
         self.domain_id = domain_id
         # The ID of the WAF instance.
-        # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance resides. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou:** the Chinese mainland.
-        # *   **ap-southeast-1:** outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
 
     def validate(self):

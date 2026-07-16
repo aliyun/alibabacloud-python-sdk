@@ -13,10 +13,15 @@ class DescribeFirewallDropStatisticsResponseBody(DaraModel):
         total_drop_cnt: int = None,
         vuln_drop_cnt: int = None,
     ):
+        # The number of packets blocked by access control list (ACL) policies.
         self.acl_drop_cnt = acl_drop_cnt
+        # The number of packets blocked by the intrusion prevention system (IPS).
         self.ips_drop_cnt = ips_drop_cnt
+        # The request ID.
         self.request_id = request_id
+        # The total number of blocked packets.
         self.total_drop_cnt = total_drop_cnt
+        # The number of packets blocked by the vulnerability prevention feature.
         self.vuln_drop_cnt = vuln_drop_cnt
 
     def validate(self):

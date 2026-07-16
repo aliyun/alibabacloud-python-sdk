@@ -19,21 +19,21 @@ class SubmitDNAJobShrinkRequest(DaraModel):
         template_id: str = None,
         user_data: str = None,
     ):
-        # The configurations of the media fingerprint analysis job. The value is a JSON object. If you specify this parameter, the template parameters are overwritten.
+        # The DNA configuration in JSON format. If specified, these settings override the corresponding template parameters.
         self.config = config
-        # The ID of the media fingerprint library. If you do not specify this parameter, the default media fingerprint library is used. For more information about how to create a media fingerprint library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
+        # The DNA library ID. To create a DNA library, see [CreateDNADB](https://help.aliyun.com/document_detail/479275.html).
         # 
         # This parameter is required.
         self.dbid = dbid
-        # The input file for media fingerprint analysis.
+        # The input DNA file.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the ApsaraVideo Media Processing (MPS) queue to which the media fingerprint analysis job is submitted.
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
-        # The primary key of the video. You must make sure that each primary key is unique.
+        # The unique primary key for the video. You are responsible for ensuring its uniqueness.
         # 
         # This parameter is required.
         self.primary_key = primary_key
@@ -41,7 +41,7 @@ class SubmitDNAJobShrinkRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The template ID.
         self.template_id = template_id
-        # The user-defined data. The data can be up to 128 bytes in length.
+        # The user-defined data. The maximum length is 128 bytes.
         self.user_data = user_data
 
     def validate(self):

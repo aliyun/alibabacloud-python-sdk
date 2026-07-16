@@ -11,8 +11,11 @@ class GetLibraryListRequest(DaraModel):
         page_size: int = None,
         query: str = None,
     ):
+        # Page number
         self.page = page
+        # Number of records per page
         self.page_size = page_size
+        # Search keywords. Supports document library names and descriptions.
         self.query = query
 
     def validate(self):

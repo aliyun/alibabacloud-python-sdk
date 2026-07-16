@@ -72,13 +72,15 @@ class GetInstanceADAuthServerResponseBodyAD(DaraModel):
         self.filter = filter
         # Indicates whether passwords are required. Valid values:
         # 
-        # *   **true**:
-        # *   **false**
+        # - **true**:
+        # 
+        # - **false**
         self.has_password = has_password
         # Indicates whether SSL is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.is_ssl = is_ssl
         # The field that is used to indicate the mobile phone number of a user on the AD server.
         self.mobile_mapping = mobile_mapping

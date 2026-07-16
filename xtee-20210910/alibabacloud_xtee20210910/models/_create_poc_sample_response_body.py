@@ -14,10 +14,15 @@ class CreatePocSampleResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CreatePocSampleResponseBodyResultObject = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -75,10 +80,15 @@ class CreatePocSampleResponseBodyResultObject(DaraModel):
         tab: str = None,
         warning_message: str = None,
     ):
+        # Indicates whether validation warnings exist.
         self.has_warnings = has_warnings
+        # Sample ID.
         self.sample_id = sample_id
+        # Sample Name.
         self.sample_name = sample_name
+        # Scenario.
         self.tab = tab
+        # Warning summary.
         self.warning_message = warning_message
 
     def validate(self):

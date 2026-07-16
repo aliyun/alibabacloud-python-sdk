@@ -16,10 +16,17 @@ class InsertAiOutboundPhoneNumsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code.
         self.code = code
+        # Import result.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.  
+        # - **true**: Succeeded.  
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -75,8 +82,11 @@ class InsertAiOutboundPhoneNumsResponseBodyData(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # Details of failed numbers.
         self.fail_info = fail_info
+        # Number of successfully imported entries.
         self.success_count = success_count
+        # Total number of imported entries.
         self.total_count = total_count
 
     def validate(self):
@@ -126,8 +136,11 @@ class InsertAiOutboundPhoneNumsResponseBodyDataFailInfo(DaraModel):
         msg: str = None,
         phone_num: str = None,
     ):
+        # Custom business information.
         self.biz_data = biz_data
+        # Description of the failure reason.
         self.msg = msg
+        # The callee number for outbound calls.
         self.phone_num = phone_num
 
     def validate(self):

@@ -29,8 +29,9 @@ class GetOpaStrategyDetailNewResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.success = success
 
     def validate(self):
@@ -122,21 +123,25 @@ class GetOpaStrategyDetailNewResponseBodyData(DaraModel):
         self.label = label
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # Indicates whether the rule supports malicious Internet images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.malicious_image = malicious_image
         # The number of entries per page.
         self.page_size = page_size
         # The action that is performed when the rule is hit. Valid values:
         # 
-        # *   **1**: trigger alerts
-        # *   **2**: block
-        # *   **3**: allow
+        # - **1**: trigger alerts
+        # 
+        # - **2**: block
+        # 
+        # - **3**: allow
         self.rule_action = rule_action
         # The application scope.
         self.scopes = scopes
@@ -148,8 +153,9 @@ class GetOpaStrategyDetailNewResponseBodyData(DaraModel):
         self.strategy_template_id = strategy_template_id
         # Indicates whether the rule supports unscanned images. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**
+        # 
+        # - **false**
         self.un_scaned_image = un_scaned_image
         # The image tags that are added to the whitelist.
         self.white_list = white_list
@@ -293,8 +299,9 @@ class GetOpaStrategyDetailNewResponseBodyDataScopes(DaraModel):
         self.ack_policy_instance_id = ack_policy_instance_id
         # Indicates whether all namespaces are included. Valid values:
         # 
-        # *   **1**: yes
-        # *   **0**: no
+        # - **1**: yes
+        # 
+        # - **0**: no
         self.all_namespace = all_namespace
         # The cluster ID.
         self.cluster_id = cluster_id
@@ -488,13 +495,15 @@ class GetOpaStrategyDetailNewResponseBodyDataAlarmDetailVulRiskClass(DaraModel):
     ):
         # The ID of the vulnerability types. Valid values:
         # 
-        # *   **cve**: system vulnerability
-        # *   **app**: application vulnerability
+        # - **cve**: system vulnerability
+        # 
+        # - **app**: application vulnerability
         self.id = id
         # The name of the vulnerability. Valid values:
         # 
-        # *   **system vulnerability**
-        # *   **application vulnerability**
+        # - **system vulnerability**
+        # 
+        # - **application vulnerability**
         self.name = name
 
     def validate(self):
@@ -613,11 +622,11 @@ class GetOpaStrategyDetailNewResponseBodyDataAlarmDetailSensitiveFileItem(DaraMo
     ):
         # The ID of the sensitive files.
         # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
         self.id = id
         # The name of the sensitive files.
         # 
-        # >  You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
+        # > You can call the [GetSensitiveDefineRuleConfig](~~GetSensitiveDefineRuleConfig~~) operation to query the ID of the malicious sample.
         self.name = name
 
     def validate(self):
@@ -781,11 +790,11 @@ class GetOpaStrategyDetailNewResponseBodyDataAlarmDetailBuildRiskItem(DaraModel)
     ):
         # The ID of the image build risk.
         # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
         self.id = id
         # The name of the image build risk.
         # 
-        # >  You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
+        # > You can call the [ListImageBuildRiskItem](~~ListImageBuildRiskItem~~) operation to query the ID of the malicious sample.
         self.name = name
 
     def validate(self):

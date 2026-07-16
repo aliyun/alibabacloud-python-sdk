@@ -19,55 +19,27 @@ class ModifyPolicyGroupShrinkRequest(DaraModel):
         resolution_width: int = None,
         watermark_shrink: str = None,
     ):
-        # Specifies whether to enable the webcam redirection feature.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
+        # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # The read/write permissions on the clipboard.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: ready and write.
-        # *   off: read/write disabled.
+        # The clipboard permission.
         self.clipboard = clipboard
-        # The file transfer policy of the Alibaba Cloud Workspace web client.
-        # 
-        # Valid values:
-        # 
-        # *   all: File upload and download are supported.
-        # *   download: Only file download is supported.
-        # *   upload: Only file upload is supported.
-        # *   off: File upload or download is forbidden.
+        # The file transfer policy for the Wuying web client.
         self.html_5file_transfer = html_5file_transfer
-        # The read/write permissions on the on-premises drive.
-        # 
-        # Valid values:
-        # 
-        # *   read: read-only.
-        # *   readwrite: ready and write.
-        # *   off: read/write disabled.
+        # The local disk mapping permission.
         self.local_drive = local_drive
         # Specifies whether to lock the resolution.
-        # 
-        # Valid values:
-        # 
-        # *   off
-        # *   on
         self.lock_resolution = lock_resolution
-        # The network redirection policy.
+        # Network redirection.
         self.net_redirect_policy_shrink = net_redirect_policy_shrink
-        # The ID of the policy.
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # The name of the policy.
+        # The policy name.
         self.policy_group_name = policy_group_name
         # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
         # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
+        # The screen watermark.
         self.watermark_shrink = watermark_shrink
 
     def validate(self):

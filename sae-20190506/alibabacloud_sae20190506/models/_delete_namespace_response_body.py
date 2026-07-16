@@ -16,26 +16,31 @@ class DeleteNamespaceResponseBody(DaraModel):
     ):
         # The HTTP status code. Valid values:
         # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
         # The error code.
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # - If the request is successful, this parameter is not returned.
+        # 
+        # - If the request fails, this parameter is returned. For more information, see the **Error codes** section in this topic.
         self.error_code = error_code
-        # The returned message.
+        # The additional information that is returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the namespace was deleted. Valid values:
         # 
-        # *   **true**: indicates that the namespace was deleted.
-        # *   **false**: indicates that the namespace could not be deleted.
+        # - **true**: The namespace was deleted.
+        # 
+        # - **false**: The namespace failed to be deleted.
         self.success = success
-        # The ID of the trace. It can be used to query the details of a request.
+        # The trace ID. You can use this ID to query the details of a request.
         self.trace_id = trace_id
 
     def validate(self):

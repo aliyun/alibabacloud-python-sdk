@@ -19,19 +19,11 @@ class TagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources.
+        # A list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
-        # 
-        # Valid values:
-        # 
-        # *   Node
-        # *   Vcc
-        # *   Cluster
-        # *   Vpd
-        # *   Subnet
         # 
         # This parameter is required.
         self.resource_type = resource_type

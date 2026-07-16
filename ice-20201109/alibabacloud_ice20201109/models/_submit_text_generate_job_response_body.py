@@ -10,9 +10,9 @@ class SubmitTextGenerateJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The job ID.
+        # The smart job ID.
         self.job_id = job_id
-        # The request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

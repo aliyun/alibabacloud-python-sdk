@@ -22,56 +22,77 @@ class UpdateSmsSignShrinkRequest(DaraModel):
         third_party: bool = None,
         trademark_id: int = None,
     ):
+        # The ID of the app\\"s ICP filing entity.
+        # 
+        # > - This parameter is required if `SignSource` is set to 2.
+        # >
+        # > - You can obtain the filing entity ID by calling the [Create ICP Filing Entity](~~CreateSmsAppIcpRecord~~) operation.
         self.app_icp_record_id = app_icp_record_id
-        # Application scenarios, instructions as follows:
-        # - For registered websites, please enter the domain name registered with MIIT, including HTTP or HTTPS.
-        # - For launched apps, provide the display link from the app store with HTTP or HTTPS, ensuring the app is online.
-        # - For public accounts or mini-programs, fill in the full name, ensuring they are online.
-        # - For e-commerce platform store names (for enterprise users only), provide the display link with HTTP or HTTPS.
+        # The app store link. This parameter is required if the signature source (`SignSource`) is an app (the value is 2). The link must start with `http://` or `https://`, and the app must be published in the app store.
         self.apply_scene_content = apply_scene_content
+        # The authorization letter ID. This parameter is required if the signature is for third-party use (`ThirdParty` is set to `true`). The Unified Social Credit Code on the authorization letter must match the code in the selected qualification\\"s information.
         self.authorization_letter_id = authorization_letter_id
-        # Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
+        # Additional supporting materials. You can upload supporting business documents or business screenshots to help with the review. For details on what to upload, see [Signature application materials](~~108076#section-xup-k46-yi4~~).
         self.more_data_shrink = more_data_shrink
         self.owner_id = owner_id
-        # Approved or under-review qualification ID.
+        # The ID of the approved qualification.
         # 
-        # > - Before applying for an SMS signature, please first [apply for qualifications](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK).
-        # > - You can view the qualification ID on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
+        # > - You must [apply for a qualification](https://help.aliyun.com/zh/sms/user-guide/new-qualification?spm=a2c4g.11186623.0.0.718d187bbkpMRK) before applying for an SMS signature.
+        # >
+        # > - You can find the qualification ID on the [qualification management](https://dysms.console.aliyun.com/domestic/text/qualification) page.
         # 
         # This parameter is required.
         self.qualification_id = qualification_id
-        # Explanation of the SMS signature scenario, with a maximum length of 200 characters.
+        # A description of the SMS signature\\"s use case. This information is used during the review and must be 200 characters or less.
         # 
-        # > The scenario explanation is one of the reference information for signature review. Please provide a detailed description of the usage scenarios of the launched business, along with verifiable information such as website links, registered domain addresses, app store download links, full names of public accounts or mini-programs, etc. For login scenarios, test account credentials are also required. A well-informed application explanation will enhance the efficiency of signature and template reviews. Refer to the **Application Scenarios** column in the [Signature Source](https://help.aliyun.com/zh/sms/user-guide/signature-specifications-1?spm=a2c4g.11186623.0.i2#section-xup-k46-yi4) table for filling in SMS scenarios.
+        # > - Describe the use case for your live service. Include relevant links, such as a website link or an app store link.
+        # >
+        # > - Provide a complete example of an SMS message that reflects your use case.
+        # >
+        # > - Provide the values for any variables. Describe the use case in detail and explain why the variables are necessary.
+        # >
+        # > - If the signature involves a government agency or public institution, provide its official landline number.
+        # 
+        # Providing complete and accurate information accelerates the review process. If you do not provide the required information, your signature application may be rejected.
         self.remark = remark
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Signature not yet approved.
+        # The name of the rejected SMS signature. You can find rejected SMS signatures on the [Domestic Messages > Signature Management](https://dysms.console.aliyun.com/domestic/text/sign) page in the console, or by calling the [QuerySmsSignList](~~QuerySmsSignList~~) operation.
         # 
         # This parameter is required.
         self.sign_name = sign_name
-        # Source of the signature. Values:
+        # The signature source. Valid values:
         # 
-        # - **0**: Full name or abbreviation of enterprises and institutions.
-        # - **1**: Full name or abbreviation of MIIT-registered websites.
-        # - **2**: Full name or abbreviation of app applications.
-        # - **3**: Full name or abbreviation of public accounts or mini-programs.
-        # - **4**: Full name or abbreviation of e-commerce platform store names.
-        # - **5**: Full name or abbreviation of trademarks.
+        # - **0**: The full or abbreviated name of an enterprise or public institution. **(Recommended)**
+        # 
+        # - **5**: The full or abbreviated trademark name.
+        # 
+        # - **2**: The full or abbreviated name of an app. **(Not recommended)**
+        # 
+        # For more information, see [signature source](~~108076#section-fow-bfu-wo9~~).
         # 
         # This parameter is required.
         self.sign_source = sign_source
-        # Signature type. It is recommended to use the default value.
+        # The signature type. Valid values:
         # 
-        # - **0**: Verification code
-        # - **1**: General (default)
+        # - **0**: verification code.
+        # 
+        # - **1**: general (default).
+        # 
+        # We recommend that you use the default value, **general**.
         self.sign_type = sign_type
-        # Whether the signature is for self-use or others.
+        # The signature purpose. Valid values:
         # 
-        # - false: Self-use
-        # - true: Others
-        # >Notice: When the signature is for self-use, select the self-use qualification ID; when it\\"s for others, choose the others\\" qualification ID.
+        # - false: for own use (default). The signature is for a business, website, or product owned by your account\\"s verified entity.
+        # 
+        # - true: for third-party use. The signature is for a business, website, or product not owned by your account\\"s verified entity.
+        #   >Notice: Ensure the selected qualification ID matches the signature purpose (for own use or for third-party use).
         self.third_party = third_party
+        # The trademark entity ID.
+        # 
+        # > - This parameter is required if `SignSource` is set to 5.
+        # >
+        # > - You can obtain the trademark entity ID by calling the [Create Trademark Entity](~~CreateSmsTrademark~~) operation.
         self.trademark_id = trademark_id
 
     def validate(self):

@@ -69,13 +69,13 @@ class ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels(DaraModel):
         # 
         # Valid values:
         # 
-        # *   COORDINATING: The collaboration task is being executed.
+        # - COORDINATING: The collaboration task is being executed.
         # 
-        # *   TERMINATING: The collaboration task is being terminated.
+        # - TERMINATING: The collaboration task is being terminated.
         # 
-        # *   TERMINATED: The collaboration task is terminated.
+        # - TERMINATED: The collaboration task is terminated.
         # 
-        # *   PENDING: The collaboration task is pending to be executed.
+        # - PENDING: The collaboration task is pending to be executed.
         self.coordinate_status = coordinate_status
         # The ticket that is used to establish the Adaptive Streaming Protocol (ASP)-based connection.
         self.coordinate_ticket = coordinate_ticket
@@ -83,11 +83,11 @@ class ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels(DaraModel):
         # 
         # Valid values:
         # 
-        # *   ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
+        # - ADMIN_INITIATE_FORCE: The administrator forcibly initiates the collaboration request.
         # 
-        # *   ADMIN_INITIATE: The administrator initiates the collaboration request.
+        # - ADMIN_INITIATE: The administrator initiates the collaboration request.
         # 
-        # *   COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
+        # - COORDINATOR_INITIATE_FORCE: The coordinator forcibly initiates the collaboration request.
         self.initiator_type = initiator_type
         # The ID of the Alibaba Cloud account of the end user.
         self.owner_user_id = owner_user_id

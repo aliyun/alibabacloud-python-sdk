@@ -21,32 +21,32 @@ class ListHoneypotEventsRequest(DaraModel):
         risk_level_list: List[str] = None,
         src_ip: str = None,
     ):
-        # The probe IDs.
+        # The list of probe IDs.
         self.agent_id_list = agent_id_list
         # The ID of the alert.
         self.alarm_event_id = alarm_event_id
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # The status of the event. Valid values:
+        # The event status. Valid values:
         # 
-        # *   **y**: handled
-        # *   **n**: unhandled
-        # *   **a**: all statuses
+        # - **y**: Handled.
+        # - **n**: Unhandled.
+        # - **a**: All.
         self.dealed = dealed
-        # The honeypot IDs.
+        # The list of honeypot IDs.
         self.honeypot_id_list = honeypot_id_list
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The number of entries per page. Default value: **20**.
+        # The maximum number of entries per page in a paging query. Default value: **20**.
         self.page_size = page_size
-        # The ID of the attacker profile.
+        # The ID of the attacker portrait.
         self.portrait_id = portrait_id
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The risk levels.
+        # The list of risk levels.
         self.risk_level_list = risk_level_list
         # The source IP address of the attack.
         self.src_ip = src_ip

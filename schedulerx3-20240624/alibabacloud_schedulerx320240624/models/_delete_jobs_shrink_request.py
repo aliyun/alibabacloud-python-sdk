@@ -11,11 +11,15 @@ class DeleteJobsShrinkRequest(DaraModel):
         cluster_id: str = None,
         job_ids_shrink: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # -
+        # The IDs of the jobs to delete.
         self.job_ids_shrink = job_ids_shrink
 
     def validate(self):

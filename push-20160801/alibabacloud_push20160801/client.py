@@ -1191,8 +1191,16 @@ class Client(OpenApiClient):
             query['AndroidXiaoMiNotifyTitle'] = request.android_xiao_mi_notify_title
         if not DaraCore.is_null(request.android_xiaomi_big_picture_url):
             query['AndroidXiaomiBigPictureUrl'] = request.android_xiaomi_big_picture_url
+        if not DaraCore.is_null(request.android_xiaomi_focus_param):
+            query['AndroidXiaomiFocusParam'] = request.android_xiaomi_focus_param
+        if not DaraCore.is_null(request.android_xiaomi_focus_pics):
+            query['AndroidXiaomiFocusPics'] = request.android_xiaomi_focus_pics
         if not DaraCore.is_null(request.android_xiaomi_image_url):
             query['AndroidXiaomiImageUrl'] = request.android_xiaomi_image_url
+        if not DaraCore.is_null(request.android_xiaomi_template_id):
+            query['AndroidXiaomiTemplateId'] = request.android_xiaomi_template_id
+        if not DaraCore.is_null(request.android_xiaomi_template_params):
+            query['AndroidXiaomiTemplateParams'] = request.android_xiaomi_template_params
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.body):
@@ -1457,8 +1465,16 @@ class Client(OpenApiClient):
             query['AndroidXiaoMiNotifyTitle'] = request.android_xiao_mi_notify_title
         if not DaraCore.is_null(request.android_xiaomi_big_picture_url):
             query['AndroidXiaomiBigPictureUrl'] = request.android_xiaomi_big_picture_url
+        if not DaraCore.is_null(request.android_xiaomi_focus_param):
+            query['AndroidXiaomiFocusParam'] = request.android_xiaomi_focus_param
+        if not DaraCore.is_null(request.android_xiaomi_focus_pics):
+            query['AndroidXiaomiFocusPics'] = request.android_xiaomi_focus_pics
         if not DaraCore.is_null(request.android_xiaomi_image_url):
             query['AndroidXiaomiImageUrl'] = request.android_xiaomi_image_url
+        if not DaraCore.is_null(request.android_xiaomi_template_id):
+            query['AndroidXiaomiTemplateId'] = request.android_xiaomi_template_id
+        if not DaraCore.is_null(request.android_xiaomi_template_params):
+            query['AndroidXiaomiTemplateParams'] = request.android_xiaomi_template_params
         if not DaraCore.is_null(request.app_key):
             query['AppKey'] = request.app_key
         if not DaraCore.is_null(request.body):

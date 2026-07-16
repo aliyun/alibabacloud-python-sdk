@@ -22,13 +22,15 @@ class DescribeDataLimitDetailRequest(DaraModel):
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
-        # *   **zh**: Simplified Chinese.
-        # *   **en**: English
+        # - **zh**: Simplified Chinese.
+        # 
+        # - **en**: English
         self.lang = lang
         # The network type of the data asset that you want to query. Valid values:
         # 
-        # *   **1**: virtual private cloud (VPC)
-        # *   **2**: classic network
+        # - **1**: virtual private cloud (VPC)
+        # 
+        # - **2**: classic network
         self.network_type = network_type
 
     def validate(self):

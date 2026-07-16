@@ -10,13 +10,12 @@ class GetLocalDefaultRegionResponseBody(DaraModel):
         request_id: str = None,
         status: int = None,
     ):
-        # The request ID.
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
         # The access type of the multi-cloud site. Valid values:
-        # 
-        # *   **0**: The current site is not the default site of the multi-cloud site. You can specify a site as the default site of the multi-cloud site.
-        # *   **1**: The current site is the default site of the multi-cloud site.
-        # *   **2**: Another site is set as the default site of the multi-cloud site.
+        # - **0**: No default site exists. You can select one.
+        # - **1**: The current site is already the default site.
+        # - **2**: Another site is already set as the default site.
         self.status = status
 
     def validate(self):

@@ -10,7 +10,10 @@ class UpdateProjectRequest(DaraModel):
         comment: str = None,
         project_name: str = None,
     ):
+        # The description of the project.
         self.comment = comment
+        # The name of the project.
+        # 
         # This parameter is required.
         self.project_name = project_name
 

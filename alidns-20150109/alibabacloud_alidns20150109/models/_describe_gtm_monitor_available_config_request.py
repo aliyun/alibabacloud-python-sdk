@@ -9,7 +9,7 @@ class DescribeGtmMonitorAvailableConfigRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language of the values of specific response parameters.
+        # The language of the response.
         self.lang = lang
 
     def validate(self):

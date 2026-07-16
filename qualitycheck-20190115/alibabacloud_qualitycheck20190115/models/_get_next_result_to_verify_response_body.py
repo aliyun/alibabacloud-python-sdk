@@ -16,10 +16,15 @@ class GetNextResultToVerifyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code. A value of **200** indicates success. Other values indicate failure. The caller can determine the cause of failure using this field.
         self.code = code
+        # File details.
         self.data = data
+        # Error details if an error occurs. If successful, the value is \\"successful\\".
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. The caller can determine if the request was successful using this field: \\`true\\` indicates success; \\`false\\`/\\`null\\` indicates failure.
         self.success = success
 
     def validate(self):
@@ -86,19 +91,32 @@ class GetNextResultToVerifyResponseBodyData(DaraModel):
         verified: bool = None,
         verified_count: int = None,
     ):
+        # The protocol of the audio URL. Possible values: http, https.
         self.audio_scheme = audio_scheme
+        # The audio URL, excluding http/https.
         self.audio_url = audio_url
         self.dialogues = dialogues
+        # The total duration of files in the current task, in seconds.
         self.duration = duration
+        # File ID.
         self.file_id = file_id
+        # File name.
         self.file_name = file_name
+        # The number of incorrect words in the transcription.
         self.incorrect_words = incorrect_words
+        # The index of the current file. Pass this value when manually verifying the next data entry. It starts from 1, so the first entry has a value of 1.
         self.index = index
+        # Current recognition accuracy.
         self.precision = precision
+        # File status. Possible values: 0: Not completed; 1: Not completed; 2: Completed; 3: Completed.
         self.status = status
+        # The total number of files for this task.
         self.total_count = total_count
+        # Last update time.
         self.update_time = update_time
+        # Indicates whether manual verification has been performed. Possible values: \\`false\\`: Not yet verified; \\`true\\`: Already verified.
         self.verified = verified
+        # The total number of verified files.
         self.verified_count = verified_count
 
     def validate(self):

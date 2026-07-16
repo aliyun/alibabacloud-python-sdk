@@ -13,12 +13,19 @@ class ModifyRateLimitPolicyRequest(DaraModel):
         rate_limit_tpm: str = None,
         region_id: str = None,
     ):
+        # The gateway instance ID.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The rate limit policy ID.
+        # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The maximum number of requests per minute.
         self.rate_limit_rpm = rate_limit_rpm
+        # The maximum number of tokens per minute.
         self.rate_limit_tpm = rate_limit_tpm
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

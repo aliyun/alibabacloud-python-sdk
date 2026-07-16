@@ -15,12 +15,17 @@ class SubmitLongTextTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The result code of the API call.
         self.code = code
+        # The object that contains the returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # A message that corresponds to the code.
         self.message = message
-        # Id of the request
+        # The unique ID for the API request, used for tracing.
         self.request_id = request_id
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -82,8 +87,11 @@ class SubmitLongTextTranslateTaskResponseBodyData(DaraModel):
         task_id: str = None,
         tracking_data: str = None,
     ):
+        # The status of the translation task.
         self.status = status
+        # The ID of the long-text translation task.
         self.task_id = task_id
+        # A custom string passed from the request to the response unmodified. This is useful for tracking or correlating API calls.
         self.tracking_data = tracking_data
 
     def validate(self):

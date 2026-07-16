@@ -1,3 +1,9 @@
+2026-07-15 Version: 2.2.2
+- Update API CreateJob: add request parameters StartTime.
+- Update API ListJobs: add response parameters Body.Data.Jobs.$.StartTime.
+- Update API UpdateJob: add request parameters StartTime.
+
+
 2026-03-20 Version: 2.2.1
 - Update API ListJobs: add request parameters PageNum.
 - Update API ListJobs: add request parameters PageSize.

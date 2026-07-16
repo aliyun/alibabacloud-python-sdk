@@ -17,11 +17,17 @@ class ListAgentProfilesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the request.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -103,23 +109,39 @@ class ListAgentProfilesResponseBodyData(DaraModel):
         update_time: str = None,
         variables_json: str = None,
     ):
+        # The ID of the agent configuration.
         self.agent_profile_id = agent_profile_id
+        # The ID of the agent template.
         self.agent_profile_template_id = agent_profile_template_id
-        # agent type
+        # The agent type.
         self.agent_type = agent_type
+        # The time when the configuration was created.
         self.create_time = create_time
+        # The description.
         self.description = description
+        # The instance ID.
         self.instance_id = instance_id
+        # The instruction configuration in JSON format.
         self.instruction_json = instruction_json
+        # The label definitions in JSON format.
         self.labels_json = labels_json
+        # The model ID.
         self.model = model
+        # The model configuration.
         self.model_config = model_config
+        # The prompt for the professional pattern.
         self.prompt = prompt
+        # The agent configuration.
         self.prompt_json = prompt_json
+        # The scenario.
         self.scenario = scenario
+        # The scenario ID.
         self.script_id = script_id
+        # Indicates whether this is a system template.
         self.system = system
+        # The time when the configuration was last modified.
         self.update_time = update_time
+        # The variable configuration in JSON format.
         self.variables_json = variables_json
 
     def validate(self):

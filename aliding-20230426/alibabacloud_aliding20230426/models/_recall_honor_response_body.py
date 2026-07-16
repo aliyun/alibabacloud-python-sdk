@@ -23,7 +23,6 @@ class RecallHonorResponseBody(DaraModel):
         self.error_ctx = error_ctx
         self.error_msg = error_msg
         self.http_status_code = http_status_code
-        # requestId
         self.request_id = request_id
         self.success = success
 

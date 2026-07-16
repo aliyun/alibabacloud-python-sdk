@@ -109,6 +109,9 @@ from ._create_workspace_response import CreateWorkspaceResponse
 from ._create_workspace_resource_request import CreateWorkspaceResourceRequest
 from ._create_workspace_resource_response_body import CreateWorkspaceResourceResponseBody
 from ._create_workspace_resource_response import CreateWorkspaceResourceResponse
+from ._create_workspace_role_request import CreateWorkspaceRoleRequest
+from ._create_workspace_role_response_body import CreateWorkspaceRoleResponseBody
+from ._create_workspace_role_response import CreateWorkspaceRoleResponse
 from ._delete_code_source_request import DeleteCodeSourceRequest
 from ._delete_code_source_response_body import DeleteCodeSourceResponseBody
 from ._delete_code_source_response import DeleteCodeSourceResponse
@@ -175,6 +178,9 @@ from ._delete_workspace_response import DeleteWorkspaceResponse
 from ._delete_workspace_resource_request import DeleteWorkspaceResourceRequest
 from ._delete_workspace_resource_response_body import DeleteWorkspaceResourceResponseBody
 from ._delete_workspace_resource_response import DeleteWorkspaceResourceResponse
+from ._delete_workspace_roles_request import DeleteWorkspaceRolesRequest
+from ._delete_workspace_roles_response_body import DeleteWorkspaceRolesResponseBody
+from ._delete_workspace_roles_response import DeleteWorkspaceRolesResponse
 from ._get_code_source_request import GetCodeSourceRequest
 from ._get_code_source_response_body import GetCodeSourceResponseBody
 from ._get_code_source_response import GetCodeSourceResponse
@@ -210,6 +216,9 @@ from ._get_experiment_response import GetExperimentResponse
 from ._get_image_request import GetImageRequest
 from ._get_image_response_body import GetImageResponseBody
 from ._get_image_response import GetImageResponse
+from ._get_instance_job_request import GetInstanceJobRequest
+from ._get_instance_job_response_body import GetInstanceJobResponseBody
+from ._get_instance_job_response import GetInstanceJobResponse
 from ._get_member_request import GetMemberRequest
 from ._get_member_response_body import GetMemberResponseBody
 from ._get_member_response import GetMemberResponse
@@ -228,6 +237,9 @@ from ._get_run_response import GetRunResponse
 from ._get_workspace_request import GetWorkspaceRequest
 from ._get_workspace_response_body import GetWorkspaceResponseBody
 from ._get_workspace_response import GetWorkspaceResponse
+from ._get_workspace_role_request import GetWorkspaceRoleRequest
+from ._get_workspace_role_response_body import GetWorkspaceRoleResponseBody
+from ._get_workspace_role_response import GetWorkspaceRoleResponse
 from ._list_code_sources_request import ListCodeSourcesRequest
 from ._list_code_sources_response_body import ListCodeSourcesResponseBody
 from ._list_code_sources_response import ListCodeSourcesResponse
@@ -298,6 +310,9 @@ from ._list_runs_response import ListRunsResponse
 from ._list_user_configs_request import ListUserConfigsRequest
 from ._list_user_configs_response_body import ListUserConfigsResponseBody
 from ._list_user_configs_response import ListUserConfigsResponse
+from ._list_workspace_roles_request import ListWorkspaceRolesRequest
+from ._list_workspace_roles_response_body import ListWorkspaceRolesResponseBody
+from ._list_workspace_roles_response import ListWorkspaceRolesResponse
 from ._list_workspace_users_request import ListWorkspaceUsersRequest
 from ._list_workspace_users_response_body import ListWorkspaceUsersResponseBody
 from ._list_workspace_users_response import ListWorkspaceUsersResponse
@@ -382,6 +397,9 @@ from ._update_workspace_response import UpdateWorkspaceResponse
 from ._update_workspace_resource_request import UpdateWorkspaceResourceRequest
 from ._update_workspace_resource_response_body import UpdateWorkspaceResourceResponseBody
 from ._update_workspace_resource_response import UpdateWorkspaceResourceResponse
+from ._update_workspace_role_request import UpdateWorkspaceRoleRequest
+from ._update_workspace_role_response_body import UpdateWorkspaceRoleResponseBody
+from ._update_workspace_role_response import UpdateWorkspaceRoleResponse
 from ._validate_connection_request import ValidateConnectionRequest
 from ._validate_connection_response_body import ValidateConnectionResponseBody
 from ._validate_connection_response import ValidateConnectionResponse
@@ -408,6 +426,9 @@ from ._create_workspace_resource_request import CreateWorkspaceResourceRequestRe
 from ._create_workspace_resource_request import CreateWorkspaceResourceRequestResourcesQuotas
 from ._create_workspace_resource_request import CreateWorkspaceResourceRequestResources
 from ._create_workspace_resource_response_body import CreateWorkspaceResourceResponseBodyResources
+from ._create_workspace_role_request import CreateWorkspaceRoleRequestModulePermissionsPermissionsPermissionRules
+from ._create_workspace_role_request import CreateWorkspaceRoleRequestModulePermissionsPermissions
+from ._create_workspace_role_request import CreateWorkspaceRoleRequestModulePermissions
 from ._get_config_response_body import GetConfigResponseBodyLabels
 from ._get_connection_response_body import GetConnectionResponseBodyModels
 from ._get_connection_response_body import GetConnectionResponseBodyResourceMeta
@@ -417,6 +438,9 @@ from ._get_default_workspace_response_body import GetDefaultWorkspaceResponseBod
 from ._get_image_response_body import GetImageResponseBodyLabels
 from ._get_permission_response_body import GetPermissionResponseBodyPermissionRules
 from ._get_workspace_response_body import GetWorkspaceResponseBodyOwner
+from ._get_workspace_role_response_body import GetWorkspaceRoleResponseBodyModulePermissionsPermissionsPermissionRules
+from ._get_workspace_role_response_body import GetWorkspaceRoleResponseBodyModulePermissionsPermissions
+from ._get_workspace_role_response_body import GetWorkspaceRoleResponseBodyModulePermissions
 from ._list_configs_response_body import ListConfigsResponseBodyConfigsLabels
 from ._list_configs_response_body import ListConfigsResponseBodyConfigs
 from ._list_experiment_request import ListExperimentRequestOptions
@@ -439,6 +463,10 @@ from ._list_resources_response_body import ListResourcesResponseBodyResourcesQuo
 from ._list_resources_response_body import ListResourcesResponseBodyResourcesQuotas
 from ._list_resources_response_body import ListResourcesResponseBodyResources
 from ._list_user_configs_response_body import ListUserConfigsResponseBodyConfigs
+from ._list_workspace_roles_response_body import ListWorkspaceRolesResponseBodyRolesModulePermissionsPermissionsPermissionRules
+from ._list_workspace_roles_response_body import ListWorkspaceRolesResponseBodyRolesModulePermissionsPermissions
+from ._list_workspace_roles_response_body import ListWorkspaceRolesResponseBodyRolesModulePermissions
+from ._list_workspace_roles_response_body import ListWorkspaceRolesResponseBodyRoles
 from ._list_workspace_users_response_body import ListWorkspaceUsersResponseBodyUsers
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._set_user_configs_request import SetUserConfigsRequestConfigs
@@ -448,6 +476,9 @@ from ._update_configs_request import UpdateConfigsRequestConfigs
 from ._update_connection_request import UpdateConnectionRequestModels
 from ._update_dataset_request import UpdateDatasetRequestSharingConfig
 from ._update_workspace_resource_request import UpdateWorkspaceResourceRequestLabels
+from ._update_workspace_role_request import UpdateWorkspaceRoleRequestModulePermissionsPermissionsPermissionRules
+from ._update_workspace_role_request import UpdateWorkspaceRoleRequestModulePermissionsPermissions
+from ._update_workspace_role_request import UpdateWorkspaceRoleRequestModulePermissions
 
 __all__ = [
     CodeSourceItem,
@@ -557,6 +588,9 @@ __all__ = [
     CreateWorkspaceResourceRequest,
     CreateWorkspaceResourceResponseBody,
     CreateWorkspaceResourceResponse,
+    CreateWorkspaceRoleRequest,
+    CreateWorkspaceRoleResponseBody,
+    CreateWorkspaceRoleResponse,
     DeleteCodeSourceRequest,
     DeleteCodeSourceResponseBody,
     DeleteCodeSourceResponse,
@@ -623,6 +657,9 @@ __all__ = [
     DeleteWorkspaceResourceRequest,
     DeleteWorkspaceResourceResponseBody,
     DeleteWorkspaceResourceResponse,
+    DeleteWorkspaceRolesRequest,
+    DeleteWorkspaceRolesResponseBody,
+    DeleteWorkspaceRolesResponse,
     GetCodeSourceRequest,
     GetCodeSourceResponseBody,
     GetCodeSourceResponse,
@@ -658,6 +695,9 @@ __all__ = [
     GetImageRequest,
     GetImageResponseBody,
     GetImageResponse,
+    GetInstanceJobRequest,
+    GetInstanceJobResponseBody,
+    GetInstanceJobResponse,
     GetMemberRequest,
     GetMemberResponseBody,
     GetMemberResponse,
@@ -676,6 +716,9 @@ __all__ = [
     GetWorkspaceRequest,
     GetWorkspaceResponseBody,
     GetWorkspaceResponse,
+    GetWorkspaceRoleRequest,
+    GetWorkspaceRoleResponseBody,
+    GetWorkspaceRoleResponse,
     ListCodeSourcesRequest,
     ListCodeSourcesResponseBody,
     ListCodeSourcesResponse,
@@ -746,6 +789,9 @@ __all__ = [
     ListUserConfigsRequest,
     ListUserConfigsResponseBody,
     ListUserConfigsResponse,
+    ListWorkspaceRolesRequest,
+    ListWorkspaceRolesResponseBody,
+    ListWorkspaceRolesResponse,
     ListWorkspaceUsersRequest,
     ListWorkspaceUsersResponseBody,
     ListWorkspaceUsersResponse,
@@ -830,6 +876,9 @@ __all__ = [
     UpdateWorkspaceResourceRequest,
     UpdateWorkspaceResourceResponseBody,
     UpdateWorkspaceResourceResponse,
+    UpdateWorkspaceRoleRequest,
+    UpdateWorkspaceRoleResponseBody,
+    UpdateWorkspaceRoleResponse,
     ValidateConnectionRequest,
     ValidateConnectionResponseBody,
     ValidateConnectionResponse,
@@ -856,6 +905,9 @@ __all__ = [
     CreateWorkspaceResourceRequestResourcesQuotas,
     CreateWorkspaceResourceRequestResources,
     CreateWorkspaceResourceResponseBodyResources,
+    CreateWorkspaceRoleRequestModulePermissionsPermissionsPermissionRules,
+    CreateWorkspaceRoleRequestModulePermissionsPermissions,
+    CreateWorkspaceRoleRequestModulePermissions,
     GetConfigResponseBodyLabels,
     GetConnectionResponseBodyModels,
     GetConnectionResponseBodyResourceMeta,
@@ -865,6 +917,9 @@ __all__ = [
     GetImageResponseBodyLabels,
     GetPermissionResponseBodyPermissionRules,
     GetWorkspaceResponseBodyOwner,
+    GetWorkspaceRoleResponseBodyModulePermissionsPermissionsPermissionRules,
+    GetWorkspaceRoleResponseBodyModulePermissionsPermissions,
+    GetWorkspaceRoleResponseBodyModulePermissions,
     ListConfigsResponseBodyConfigsLabels,
     ListConfigsResponseBodyConfigs,
     ListExperimentRequestOptions,
@@ -887,6 +942,10 @@ __all__ = [
     ListResourcesResponseBodyResourcesQuotas,
     ListResourcesResponseBodyResources,
     ListUserConfigsResponseBodyConfigs,
+    ListWorkspaceRolesResponseBodyRolesModulePermissionsPermissionsPermissionRules,
+    ListWorkspaceRolesResponseBodyRolesModulePermissionsPermissions,
+    ListWorkspaceRolesResponseBodyRolesModulePermissions,
+    ListWorkspaceRolesResponseBodyRoles,
     ListWorkspaceUsersResponseBodyUsers,
     ListWorkspacesResponseBodyWorkspaces,
     SetUserConfigsRequestConfigs,
@@ -895,5 +954,8 @@ __all__ = [
     UpdateConfigsRequestConfigs,
     UpdateConnectionRequestModels,
     UpdateDatasetRequestSharingConfig,
-    UpdateWorkspaceResourceRequestLabels
+    UpdateWorkspaceResourceRequestLabels,
+    UpdateWorkspaceRoleRequestModulePermissionsPermissionsPermissionRules,
+    UpdateWorkspaceRoleRequestModulePermissionsPermissions,
+    UpdateWorkspaceRoleRequestModulePermissions
 ]

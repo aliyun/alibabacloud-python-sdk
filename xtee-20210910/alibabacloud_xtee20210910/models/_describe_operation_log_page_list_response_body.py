@@ -17,17 +17,17 @@ class DescribeOperationLogPageListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, default value is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -99,19 +99,19 @@ class DescribeOperationLogPageListResponseBodyResultObject(DaraModel):
         operation_type: str = None,
         user_name: str = None,
     ):
-        # Client IP.
+        # The client IP address.
         self.client_ip = client_ip
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Content after operation
+        # The content after the operation.
         self.new_content = new_content
-        # Content before operation
+        # The content before the operation.
         self.old_content = old_content
-        # Operation summary
+        # The brief description of the operation.
         self.operation_summary = operation_summary
-        # Operation type.
+        # The operation type.
         self.operation_type = operation_type
-        # Operator
+        # The operator.
         self.user_name = user_name
 
     def validate(self):

@@ -419,6 +419,9 @@ from ._describe_peak_trend_response import DescribePeakTrendResponse
 from ._describe_poc_functions_request import DescribePocFunctionsRequest
 from ._describe_poc_functions_response_body import DescribePocFunctionsResponseBody
 from ._describe_poc_functions_response import DescribePocFunctionsResponse
+from ._describe_postpay_bills_request import DescribePostpayBillsRequest
+from ._describe_postpay_bills_response_body import DescribePostpayBillsResponseBody
+from ._describe_postpay_bills_response import DescribePostpayBillsResponse
 from ._describe_prepay_daily_bills_request import DescribePrepayDailyBillsRequest
 from ._describe_prepay_daily_bills_response_body import DescribePrepayDailyBillsResponseBody
 from ._describe_prepay_daily_bills_response import DescribePrepayDailyBillsResponse
@@ -835,6 +838,7 @@ from ._describe_hybrid_cloud_clusters_response_body import DescribeHybridCloudCl
 from ._describe_hybrid_cloud_groups_response_body import DescribeHybridCloudGroupsResponseBodyGroups
 from ._describe_hybrid_cloud_process_monitor_response_body import DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors
 from ._describe_hybrid_cloud_resource_detail_response_body import DescribeHybridCloudResourceDetailResponseBodyDomainListen
+from ._describe_hybrid_cloud_resource_detail_response_body import DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts
 from ._describe_hybrid_cloud_resource_detail_response_body import DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders
 from ._describe_hybrid_cloud_resource_detail_response_body import DescribeHybridCloudResourceDetailResponseBodyDomainRedirect
 from ._describe_hybrid_cloud_resource_detail_response_body import DescribeHybridCloudResourceDetailResponseBodyDomain
@@ -867,6 +871,7 @@ from ._describe_network_flow_top_nmetric_response_body import DescribeNetworkFlo
 from ._describe_network_flow_top_nmetric_response_body import DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData
 from ._describe_peak_trend_response_body import DescribePeakTrendResponseBodyFlowChart
 from ._describe_poc_functions_response_body import DescribePocFunctionsResponseBodyFunctions
+from ._describe_postpay_bills_response_body import DescribePostpayBillsResponseBodyBillDetail
 from ._describe_prepay_daily_bills_response_body import DescribePrepayDailyBillsResponseBodyBills
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols
 from ._describe_product_instances_response_body import DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates
@@ -1367,6 +1372,9 @@ __all__ = [
     DescribePocFunctionsRequest,
     DescribePocFunctionsResponseBody,
     DescribePocFunctionsResponse,
+    DescribePostpayBillsRequest,
+    DescribePostpayBillsResponseBody,
+    DescribePostpayBillsResponse,
     DescribePrepayDailyBillsRequest,
     DescribePrepayDailyBillsResponseBody,
     DescribePrepayDailyBillsResponse,
@@ -1783,6 +1791,7 @@ __all__ = [
     DescribeHybridCloudGroupsResponseBodyGroups,
     DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors,
     DescribeHybridCloudResourceDetailResponseBodyDomainListen,
+    DescribeHybridCloudResourceDetailResponseBodyDomainRedirectBackendPorts,
     DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders,
     DescribeHybridCloudResourceDetailResponseBodyDomainRedirect,
     DescribeHybridCloudResourceDetailResponseBodyDomain,
@@ -1815,6 +1824,7 @@ __all__ = [
     DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData,
     DescribePeakTrendResponseBodyFlowChart,
     DescribePocFunctionsResponseBodyFunctions,
+    DescribePostpayBillsResponseBodyBillDetail,
     DescribePrepayDailyBillsResponseBodyBills,
     DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols,
     DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates,

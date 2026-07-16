@@ -13,7 +13,9 @@ class DescribeConnectableClustersResponseBody(DaraModel):
         request_id: str = None,
         result: List[main_models.DescribeConnectableClustersResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -56,7 +58,9 @@ class DescribeConnectableClustersResponseBodyResult(DaraModel):
         instances: str = None,
         network_type: str = None,
     ):
+        # The instance ID of instances that can establish private network peering.
         self.instances = instances
+        # The network type of the instance.
         self.network_type = network_type
 
     def validate(self):

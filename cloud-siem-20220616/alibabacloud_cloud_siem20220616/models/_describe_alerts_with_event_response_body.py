@@ -16,18 +16,19 @@ class DescribeAlertsWithEventResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
-        # The data returned.
+        # The response payload.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - `true`: The request was successful.
+        # 
+        # - `false`: The request failed.
         self.success = success
 
     def validate(self):
@@ -84,7 +85,7 @@ class DescribeAlertsWithEventResponseBodyData(DaraModel):
     ):
         # The pagination information.
         self.page_info = page_info
-        # The detailed data.
+        # The details of the alerts.
         self.response_data = response_data
 
     def validate(self):
@@ -169,86 +170,103 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(DaraModel):
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
-        # The internal code of the alert description.
+        # The Medusa code of the alert description.
         self.alert_desc_code = alert_desc_code
-        # The alert description in English.
+        # The English description of the alert.
         self.alert_desc_en = alert_desc_en
-        # The details of the alert.
+        # A JSON-formatted string that contains the alert details.
         self.alert_detail = alert_detail
-        # The displayed details of the alert.
+        # A list of objects that contain detailed alert attributes.
         self.alert_info_list = alert_info_list
-        # The risk level. Valid values:
+        # The threat level of the alert. Valid values:
         # 
-        # *   serious: high.
-        # *   suspicious: medium.
-        # *   remind: low.
+        # - `serious`: high
+        # 
+        # - `suspicious`: medium
+        # 
+        # - `remind`: low
         self.alert_level = alert_level
         # The name of the alert.
         self.alert_name = alert_name
-        # The internal code of the alert name.
+        # The Medusa code of the alert name.
         self.alert_name_code = alert_name_code
-        # The alert name in English.
+        # The English name of the alert.
         self.alert_name_en = alert_name_en
-        # The source of the alert.
+        # The source product of the alert.
         self.alert_src_prod = alert_src_prod
-        # The sub-module of the alert source.
+        # The submodule of the source product.
         self.alert_src_prod_module = alert_src_prod_module
         # The title of the alert.
         self.alert_title = alert_title
-        # The alert title in English.
+        # The English title of the alert.
         self.alert_title_en = alert_title_en
         # The type of the alert.
         self.alert_type = alert_type
-        # The internal code of the alert type.
+        # The Medusa code of the alert type.
         self.alert_type_code = alert_type_code
-        # The alert type in English.
+        # The English type of the alert.
         self.alert_type_en = alert_type_en
         # The UUID of the alert.
         self.alert_uuid = alert_uuid
-        # The details of the asset.
+        # A JSON-formatted string that lists the assets associated with the alert.
         self.asset_list = asset_list
-        # The tag of the ATT\\&CK technique.
+        # The ATT\\&CK tag.
         self.att_ck = att_ck
-        # The code of the cloud service provider. Valid values:
+        # The cloud service provider. Valid values:
         # 
-        # *   aliyun: Alibaba Cloud.
-        # *   qcloud: Tencent Cloud.
-        # *   hcloud: Huawei Cloud.
+        # - `aliyun`: Alibaba Cloud
+        # 
+        # - `qcloud`: Tencent Cloud
+        # 
+        # - `hcloud`: Huawei Cloud
         self.cloud_code = cloud_code
+        # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
-        # The time when the alert was closed.
+        # The end time of the alert.
         self.end_time = end_time
-        # The details of the entity.
+        # A JSON-formatted string that lists the entities involved in the alert.
         self.entity_list = entity_list
+        # A JSON-formatted string that contains extended information about the alert.
         self.extend_content = extend_content
-        # The time when the alert was received.
+        # The time when the alert was created.
         self.gmt_create = gmt_create
         # The time when the alert was last updated.
         self.gmt_modified = gmt_modified
         # The unique ID of the alert.
         self.id = id
-        # The UUID of the event.
+        # The universally unique identifier (UUID) of the event.
         self.incident_uuid = incident_uuid
+        # A JSON-formatted string that contains the investigation report for the alert.
         self.investigation_report = investigation_report
-        # Indicates whether an attack is defended against. Valid values:
+        # Indicates whether the attack was blocked. Valid values:
         # 
-        # *   0: detected.
-        # *   1: blocked.
+        # - `0`: detected
+        # 
+        # - `1`: blocked
         self.is_defend = is_defend
         # The time when the alert was recorded.
         self.log_time = log_time
         # The UUID of the alert log.
         self.log_uuid = log_uuid
-        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
+        # The ID of the main account associated with the alert.
         self.main_user_id = main_user_id
-        # The time when the alert was triggered.
+        # The time when the alert occurred.
         self.occur_time = occur_time
+        # The cloud service ID.
         self.product_id = product_id
-        # The time at which the alert was first generated.
+        # The time when the alert first occurred.
         self.start_time = start_time
-        # The ID of the Alibaba Cloud account within which the alert is generated.
+        # The ID of the sub-account that generated the alert.
         self.sub_user_id = sub_user_id
+        # The name of the sub-account that generated the alert.
         self.sub_user_name = sub_user_name
+        # The cloud service provider. Valid values:
+        # 
+        # - `aliyun`: Alibaba Cloud
+        # 
+        # - `qcloud`: Tencent Cloud
+        # 
+        # - `hcloud`: Huawei Cloud
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -514,11 +532,11 @@ class DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList(DaraModel
         key_name: str = None,
         values: str = None,
     ):
-        # The attribute key.
+        # The key of the alert attribute.
         self.key = key
-        # The name of the key.
+        # The display name of the alert attribute.
         self.key_name = key_name
-        # The value of the key.
+        # The value of the alert attribute.
         self.values = values
 
     def validate(self):
@@ -562,9 +580,9 @@ class DescribeAlertsWithEventResponseBodyDataPageInfo(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

@@ -17,20 +17,21 @@ class ListIpamPoolAllocationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of entries returned for the current query.
         self.count = count
-        # The IDs of the instances to which CIDR blocks are allocated from the IPAM pool.
+        # A list of IPAM pool CIDR block allocations.
         self.ipam_pool_allocations = ipam_pool_allocations
-        # The number of entries per page.
+        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next page exists.
+        # 
+        # - If a value is returned for **NextToken**, the value is the token that determines the start point of the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -112,34 +113,39 @@ class ListIpamPoolAllocationsResponseBodyIpamPoolAllocations(DaraModel):
         self.cidr = cidr
         # The time when the instance was created.
         self.creation_time = creation_time
-        # The description of the allocation.
+        # The description of the IPAM pool CIDR block allocation.
         self.ipam_pool_allocation_description = ipam_pool_allocation_description
-        # The ID of the instance to which CIDR blocks are allocated from the IPAM pool.
+        # The instance ID of the IPAM pool CIDR block allocation.
         self.ipam_pool_allocation_id = ipam_pool_allocation_id
-        # The name of the allocation.
+        # The name of the IPAM pool CIDR block allocation.
         self.ipam_pool_allocation_name = ipam_pool_allocation_name
-        # The ID of the IPAM pool.
+        # The instance ID of the IPAM pool.
         self.ipam_pool_id = ipam_pool_id
-        # The region ID of the resource.
+        # The region of the IPAM pool that contains the CIDR block allocation.
+        # 
+        # > If the IPAM pool has a specific region, this parameter specifies that region. If the IPAM pool does not have a specific region, this parameter specifies the managed region of IPAM.
         self.region_id = region_id
         # The ID of the resource to which the CIDR block is allocated.
         self.resource_id = resource_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The effective region ID of the resource.
+        # The ID of the region where the resource is deployed.
         self.resource_region_id = resource_region_id
         # The type of the resource to which the CIDR block is allocated. Valid values:
         # 
-        # *   **VPC**
-        # *   **IpamPool**
-        # *   **Custom**
+        # - **VPC**: The resource is a VPC.
+        # 
+        # - **IpamPool**: The resource is a child IPAM pool.
+        # 
+        # - **Custom**: The resource is a custom reserved CIDR block.
         self.resource_type = resource_type
         # The source CIDR block.
         self.source_cidr = source_cidr
         # The status of the instance. Valid values:
         # 
-        # *   **Created**
-        # *   **Deleted**
+        # - **Created**: The instance is created.
+        # 
+        # - **Deleted**: The instance is deleted.
         self.status = status
 
     def validate(self):

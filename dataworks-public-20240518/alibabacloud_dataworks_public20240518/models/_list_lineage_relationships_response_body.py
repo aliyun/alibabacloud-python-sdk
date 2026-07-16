@@ -14,9 +14,9 @@ class ListLineageRelationshipsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The pagination result.
+        # The pagination information.
         self.paging_info = paging_info
-        # The request ID. Used for locating and troubleshooting issues.
+        # The ID of the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -63,13 +63,13 @@ class ListLineageRelationshipsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of data tables.
+        # An array of data lineage relationships.
         self.lineage_relationships = lineage_relationships
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

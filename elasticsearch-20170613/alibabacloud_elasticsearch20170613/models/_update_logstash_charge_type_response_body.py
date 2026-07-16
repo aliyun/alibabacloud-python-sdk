@@ -10,12 +10,12 @@ class UpdateLogstashChargeTypeResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the billing method of the cluster is switched. Valid values:
+        # The returned result. Valid values:
         # 
-        # *   true: The billing method is switched.
-        # *   false: The billing method fails to be switched.
+        # - true: The conversion succeeded.
+        # - false: The conversion failed.
         self.result = result
 
     def validate(self):

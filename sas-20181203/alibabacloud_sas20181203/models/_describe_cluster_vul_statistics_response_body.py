@@ -11,9 +11,9 @@ class DescribeClusterVulStatisticsResponseBody(DaraModel):
         request_id: str = None,
         vul_stat: main_models.DescribeClusterVulStatisticsResponseBodyVulStat = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The statistics of the vulnerabilities.
+        # The vulnerability statistics.
         self.vul_stat = vul_stat
 
     def validate(self):
@@ -51,11 +51,11 @@ class DescribeClusterVulStatisticsResponseBodyVulStat(DaraModel):
         later_count: str = None,
         nntf_count: str = None,
     ):
-        # The number of high-risk vulnerabilities.
+        # The number of high-severity vulnerabilities.
         self.asap_count = asap_count
-        # The number of medium-risk vulnerabilities.
+        # The number of medium-severity vulnerabilities.
         self.later_count = later_count
-        # The number of low-risk vulnerabilities.
+        # The number of low-severity vulnerabilities.
         self.nntf_count = nntf_count
 
     def validate(self):

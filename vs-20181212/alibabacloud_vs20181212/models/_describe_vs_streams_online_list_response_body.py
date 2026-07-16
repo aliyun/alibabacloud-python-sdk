@@ -18,10 +18,15 @@ class DescribeVsStreamsOnlineListResponseBody(DaraModel):
         total_page: int = None,
     ):
         self.online_info = online_info
+        # The page number.
         self.page_num = page_num
+        # The number of entries displayed per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries that meet the criteria.
         self.total_num = total_num
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):

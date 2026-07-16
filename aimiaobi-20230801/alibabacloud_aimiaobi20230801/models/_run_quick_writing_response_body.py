@@ -13,9 +13,13 @@ class RunQuickWritingResponseBody(DaraModel):
         payload: main_models.RunQuickWritingResponseBodyPayload = None,
         request_id: str = None,
     ):
+        # Indicates whether the response package has ended.
         self.end = end
+        # Response header
         self.header = header
+        # Response body
         self.payload = payload
+        # Request ID
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +71,9 @@ class RunQuickWritingResponseBodyPayload(DaraModel):
         output: main_models.RunQuickWritingResponseBodyPayloadOutput = None,
         usage: main_models.RunQuickWritingResponseBodyPayloadUsage = None,
     ):
+        # Output
         self.output = output
+        # Token usage information
         self.usage = usage
 
     def validate(self):
@@ -108,8 +114,11 @@ class RunQuickWritingResponseBodyPayloadUsage(DaraModel):
         output_tokens: int = None,
         total_tokens: int = None,
     ):
+        # Number of input tokens used
         self.input_tokens = input_tokens
+        # Number of output tokens
         self.output_tokens = output_tokens
+        # Total number of tokens
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -149,6 +158,7 @@ class RunQuickWritingResponseBodyPayloadOutput(DaraModel):
         self,
         text: str = None,
     ):
+        # Text generation result
         self.text = text
 
     def validate(self):
@@ -182,12 +192,19 @@ class RunQuickWritingResponseBodyHeader(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # Error code
         self.error_code = error_code
+        # Error message
         self.error_message = error_message
+        # SSE event. task-started: started, task-finished: finished, task-failed: failed.
         self.event = event
+        # Session ID
         self.session_id = session_id
+        # HTTP response code
         self.status_code = status_code
+        # Task ID
         self.task_id = task_id
+        # Trace ID
         self.trace_id = trace_id
 
     def validate(self):

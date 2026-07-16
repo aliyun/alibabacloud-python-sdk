@@ -15,58 +15,48 @@ class QueryPreCheckDatabaseResponseBody(DaraModel):
         result: str = None,
         updated_time: int = None,
     ):
-        # The time when the precheck task was complete.
+        # The time when the pre-check was completed.
         self.completed_time = completed_time
-        # The time when the precheck task was started.
+        # The time when the pre-check started.
         self.created_time = created_time
-        # The status of the precheck task. Valid values:
+        # The status description of the pre-check task. Valid values:
         # 
-        # *   **completed**: complete
-        # *   **created**: started
-        # *   **error**: failed
+        # - **completed**: Completed.
+        # - **created**: Started.
+        # - **error**: Pre-check failed.
         self.description = description
-        # The precheck progress in percentage. Valid values: 0 to 100.
+        # The pre-check progress. Valid values: 0 to 100.
         self.progress = progress
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The result of the precheck task. The value is a JSON string that contains the following fields:
+        # The task result of the dry run node. The value is a JSON string. The KEY valid values are:
         # 
-        # *   **instanceId**: the ID of the server that hosts the database
+        # - **instanceId**: the instance ID of the server where the database resides.
+        # - **checkTime**: the dry run time.
+        # - **sourceType**: the database type.
+        # - **results**: the dry run items and task results.
+        #     - **item**: the dry run item.
+        #     - **result**: the dry run task result.
         # 
-        # *   **checkTime**: the precheck time
-        # 
-        # *   **sourceType**: the database type
-        # 
-        # *   **results**: the precheck item and result
-        # 
-        #     *   **item**: the precheck item
-        #     *   **result**: the precheck result
-        # 
-        # > The following section describes the precheck items:
-        # 
-        # *   MSSQL
-        # 
-        #     *   **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
-        #     *   **SERVICE_CONNECTIVITY**: control network connectivity check
-        #     *   **SQL_SERVER_DB_IN_SIMPLE_RECOVERY_MODE**: recovery mode check
-        #     *   **SQL_SERVER_DB_NOT_ONLINE**: SQL Server database status check
-        # 
-        # *   ORACLE
-        # 
-        #     *   **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
-        #     *   **SERVICE_CONNECTIVITY**: control network connectivity check
-        #     *   **ORACLE_INSTANCE_STATUS**: Oracle instance status check
-        #     *   **ORACLE_DB_STATUS**: Oracle database status check
-        #     *   **ARCHIVELOG**: archive mode check
-        # 
-        # *   MYSQL
-        # 
-        #     *   **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check
-        #     *   **SERVICE_CONNECTIVITY**: control network connectivity check
-        #     *   **MYSQL_VERSION**: Supports full backup version checking
-        #     *   **MYSQL_BINLOG**: BINLOG check
+        # > Dry run item description
+        # > - MSSQL
+        # >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.	
+        # >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
+        # >     - **SQL_SERVER_DB_IN_SIMPLE_RECOVERY_MODE**: recovery mode check.
+        # >     - **SQL_SERVER_DB_NOT_ONLINE**: SQL Server database status check.
+        # > - ORACLE
+        # >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.	
+        # >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
+        # >     - **ORACLE_INSTANCE_STATUS**: Oracle instance status check.
+        # >     - **ORACLE_DB_STATUS**: Oracle database status check.
+        # >     - **ARCHIVELOG**: archive mode check.
+        # > - MYSQL
+        # >     - **OSS_INTERNAL_ENDPOINT_CONNECTIVITY**: OSS connectivity check.	
+        # >     - **SERVICE_CONNECTIVITY**: control network connectivity check.
+        # >     - **MYSQL_VERSION**: version check for full backup support.
+        # >     - **MYSQL_BINLOG**: BINLOG check.
         self.result = result
-        # The time when the precheck task was last updated.
+        # The time when the pre-check was last updated.
         self.updated_time = updated_time
 
     def validate(self):

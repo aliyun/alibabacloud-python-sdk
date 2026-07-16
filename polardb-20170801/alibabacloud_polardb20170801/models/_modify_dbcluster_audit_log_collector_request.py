@@ -16,8 +16,9 @@ class ModifyDBClusterAuditLogCollectorRequest(DaraModel):
     ):
         # Specifies whether to enable or disable SQL collector. Valid values:
         # 
-        # *   Enable
-        # *   Disable
+        # - Enable
+        # 
+        # - Disable
         # 
         # This parameter is required.
         self.collector_status = collector_status

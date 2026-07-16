@@ -15,25 +15,24 @@ class OperateImageBaselineWhitelistRequest(DaraModel):
         operation: str = None,
         scan_range: List[str] = None,
     ):
-        # The keys of baseline check items.
+        # The list of baseline sub-item keys.
         # 
         # This parameter is required.
         self.baseline_item_key_list = baseline_item_key_list
-        # The UUID of the image.
+        # The image UUID.
         self.image_uuid = image_uuid
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The operation that you want to perform on the check items. Valid values:
+        # The operation type. Valid values:
         # 
-        # *   **add**: adds the check items to the whitelist
-        # *   **del**: removes the check items from the whitelist
+        # - **add**: increase.
+        # - **del**: delete.
         # 
         # This parameter is required.
         self.operation = operation
-        # The types of the assets that you want to scan.
+        # The collection of scan ranges.
         self.scan_range = scan_range
 
     def validate(self):

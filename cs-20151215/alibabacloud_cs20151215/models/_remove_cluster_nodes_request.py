@@ -13,13 +13,9 @@ class RemoveClusterNodesRequest(DaraModel):
         nodes: List[str] = None,
         release_node: bool = None,
     ):
-        # Specifies whether to evict all pods from the nodes that you want to remove.
         self.drain_node = drain_node
-        # The list of nodes to be removed.
-        # 
         # This parameter is required.
         self.nodes = nodes
-        # Specifies whether to release the Elastic Compute Service (ECS) instances when they are removed from the cluster.
         self.release_node = release_node
 
     def validate(self):

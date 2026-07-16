@@ -16,10 +16,15 @@ class UpdateRspDomainServerProhibitStatusForGatewayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the access denial. This field is returned only when Resource Access Management (RAM) authentication fails.
         self.access_denied_detail = access_denied_detail
+        # The returned data.
         self.data = data
+        # Indicates whether the request can be retried if it fails. true: The request can be retried. false: The request cannot be retried.
         self.recoverable_error = recoverable_error
+        # The unique ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. true: The request was successful. false: The request failed.
         self.success = success
 
     def validate(self):
@@ -77,7 +82,9 @@ class UpdateRspDomainServerProhibitStatusForGatewayResponseBodyData(DaraModel):
         domain_name: str = None,
         status_list: List[main_models.UpdateRspDomainServerProhibitStatusForGatewayResponseBodyDataStatusList] = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The status information of the task.
         self.status_list = status_list
 
     def validate(self):
@@ -121,8 +128,11 @@ class UpdateRspDomainServerProhibitStatusForGatewayResponseBodyDataStatusList(Da
         status: str = None,
         status_msg: str = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The current status of the domain name.
         self.status = status
+        # The message for the domain name status.
         self.status_msg = status_msg
 
     def validate(self):
@@ -168,12 +178,23 @@ class UpdateRspDomainServerProhibitStatusForGatewayResponseBodyAccessDeniedDetai
         no_permission_type: str = None,
         policy_type: str = None,
     ):
+        # The unauthorized operation that was attempted.
         self.auth_action = auth_action
+        # The display name of the authorized entity.
         self.auth_principal_display_name = auth_principal_display_name
+        # The ID of the owner of the authorized entity.
         self.auth_principal_owner_id = auth_principal_owner_id
+        # The identity type.
         self.auth_principal_type = auth_principal_type
+        # The encrypted complete diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
+        # The reason why authentication failed. Valid values:
+        # 
+        # - ExplicitDeny: The access is explicitly denied.
+        # 
+        # - ImplicitDeny: The access is implicitly denied.
         self.no_permission_type = no_permission_type
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

@@ -18,16 +18,28 @@ class RunCustomHotTopicViewPointAnalysisRequest(DaraModel):
         user_back: str = None,
         workspace_id: str = None,
     ):
+        # Model follow-up question
         self.ask_user = ask_user
+        # Prompt for custom hot topic viewpoint analysis
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # Rewritten query
         self.search_query = search_query
+        # Set to true to skip the follow-up question
         self.skip_ask_user = skip_ask_user
+        # The hot topic for analysis
         self.topic = topic
+        # Hot topic ID
         self.topic_id = topic_id
+        # Hot topic source
         self.topic_source = topic_source
+        # Hot topic version
         self.topic_version = topic_version
+        # User feedback
         self.user_back = user_back
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get the Workspace ID](https://help.aliyun.com/document_detail/2782167.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

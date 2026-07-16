@@ -12,12 +12,20 @@ class CreateDataPermissionsShrinkRequest(DaraModel):
         permission_user_infos_shrink: str = None,
         workspace_id: str = None,
     ):
+        # A unique identifier for the permission.
+        # 
         # This parameter is required.
         self.data_id = data_id
+        # The permission type. Currently, only \\`dataset\\` is supported.
+        # 
         # This parameter is required.
         self.data_type = data_type
+        # The users to whom you want to assign permissions.
+        # 
         # This parameter is required.
         self.permission_user_infos_shrink = permission_user_infos_shrink
+        # The unique identifier of the Alibaba Cloud Model Studio workspace. For more information, see [Get workspaceId](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

@@ -18,22 +18,22 @@ class ListGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The status code returned by the API request.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The groups.
+        # The list of server groups.
         self.list = list
-        # The error message.
+        # The detailed information of the error code.
         self.message = message
-        # The pagination information.
+        # The pagination information of the query results.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
         self.request_id = request_id
-        # Indicates whether exceptions are handled. Valid values:
+        # Indicates whether the exception event was processed. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Processed.
+        # - **false**: Not processed.
         self.success = success
 
     def validate(self):
@@ -114,9 +114,9 @@ class ListGroupsResponseBodyPageInfo(DaraModel):
     ):
         # The number of entries returned on the current page.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paging query.
         self.current_page = current_page
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The NextToken value returned when the NextToken method is used.
         self.next_token = next_token
         # The number of entries per page.
         self.page_size = page_size
@@ -174,14 +174,13 @@ class ListGroupsResponseBodyList(DaraModel):
         group_id: int = None,
         group_name: str = None,
     ):
-        # The server group type. Valid values:
-        # 
-        # *   **0**: default group
-        # *   **1**: other group
+        # The type of the server group. Valid values:
+        # - **0**: default group
+        # - **1**: other group.
         self.group_flag = group_flag
-        # The server group ID.
+        # The ID of the server group.
         self.group_id = group_id
-        # The server group name.
+        # The name of the server group.
         self.group_name = group_name
 
     def validate(self):

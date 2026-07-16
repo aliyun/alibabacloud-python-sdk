@@ -11,7 +11,7 @@ class GetDockerhubImageRiskRankInfoRequest(DaraModel):
         self,
         types: List[str] = None,
     ):
-        # The dimension types.
+        # The image dimension types to query.
         self.types = types
 
     def validate(self):

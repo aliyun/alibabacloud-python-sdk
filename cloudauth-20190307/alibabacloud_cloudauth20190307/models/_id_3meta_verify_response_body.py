@@ -13,20 +13,22 @@ class Id3MetaVerifyResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.Id3MetaVerifyResponseBodyResultObject = None,
     ):
-        # Return code: 200 indicates success, others indicate failure.
+        # The response code. A value of 200 indicates success. Other values indicate failure.
+        # 
         # **Important**
-        # - This parameter indicates whether the interface was called correctly. For detailed return code explanations, please refer to the error codes.
-        # - Check the business verification result through the fields in `ResultObject`.
+        # 
+        # - This parameter indicates only whether the API call is successful. For more information about return codes, see error codes.
+        # - Check the fields in ResultObject for the business verification result.
         self.code = code
-        # Interface call return message.
+        # The response message of the API call.
         # 
         # **Important**
         # 
-        # This parameter only indicates whether there was an exception with the interface.
+        # This parameter indicates only whether the API call is abnormal.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Result object.
+        # The result object.
         self.result_object = result_object
 
     def validate(self):
@@ -74,15 +76,17 @@ class Id3MetaVerifyResponseBodyResultObject(DaraModel):
         self,
         biz_code: str = None,
         face_detail: str = None,
+        sub_code: str = None,
     ):
-        # Identity verification result:
+        # The identity verification result. Valid values:
         # 
-        # - 1: Consistent
-        # - 2: Inconsistent
-        # - 3: No record found
+        # - 1: Consistent.
+        # - 2: Inconsistent.
+        # - 3: No record found.
         self.biz_code = biz_code
-        # Image comparison score.
+        # The face comparison score.
         self.face_detail = face_detail
+        self.sub_code = sub_code
 
     def validate(self):
         pass
@@ -98,6 +102,9 @@ class Id3MetaVerifyResponseBodyResultObject(DaraModel):
         if self.face_detail is not None:
             result['FaceDetail'] = self.face_detail
 
+        if self.sub_code is not None:
+            result['SubCode'] = self.sub_code
+
         return result
 
     def from_map(self, m: dict = None):
@@ -107,6 +114,9 @@ class Id3MetaVerifyResponseBodyResultObject(DaraModel):
 
         if m.get('FaceDetail') is not None:
             self.face_detail = m.get('FaceDetail')
+
+        if m.get('SubCode') is not None:
+            self.sub_code = m.get('SubCode')
 
         return self
 

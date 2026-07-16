@@ -19,25 +19,37 @@ class GetWafRulesetResponseBody(DaraModel):
         status: str = None,
         update_time: str = None,
     ):
-        # Ruleset ID.
+        # The ID of the WAF ruleset. You can call the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation to obtain the ID.
         self.id = id
-        # Ruleset name.
+        # The ruleset name.
         # 
         # This parameter is required.
         self.name = name
-        # The WAF operation phase applicable to the ruleset.
+        # The WAF rule execution phase. Valid values:
+        # - http_whitelist: whitelist rules
+        # - http_custom: custom rules
+        # - http_managed: managed rules
+        # - http_anti_scan: scan protection rules
+        # - http_ratelimit: rate limiting rules
+        # - ip_access_rule: IP access rules
+        # - http_bot: advanced mode bots
+        # - http_security_level_rule: security rules
         # 
         # This parameter is required.
         self.phase = phase
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of rule configurations in the ruleset.
+        # The list of rule configurations in the ruleset.
         self.rules = rules
-        # Shared configurations for the rules in the ruleset.
+        # The shared configuration of rules in the ruleset.
         self.shared = shared
-        # Ruleset status.
+        # The ruleset status.
         self.status = status
-        # The last modified time of the ruleset.
+        # The last modification time of the ruleset.
+        # 
+        # Format: RFC 3339 / ISO 8601, UTC time zone (ending with Z).
+        # 
+        # Example: 2026-06-10T14:23:45Z
         self.update_time = update_time
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeDBClusterServerlessConfRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # Serverless cluster ID.
+        # The ID of the serverless cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

@@ -19,15 +19,17 @@ class ListDataSourcesShrinkRequest(DaraModel):
     ):
         # The environment in which the data sources are used. Valid values:
         # 
-        # *   Dev: development environment
-        # *   Prod: production environment
+        # - Dev: development environment
+        # 
+        # - Prod: production environment
         self.env_type = env_type
         # The name of the data source. Fuzzy match by data source name is supported.
         self.name = name
         # The order in which you want to sort the data sources. Valid values:
         # 
-        # *   Desc: descending order
-        # *   Asc: ascending order
+        # - Desc: descending order
+        # 
+        # - Asc: ascending order
         # 
         # Default value: Desc
         self.order = order
@@ -43,16 +45,19 @@ class ListDataSourcesShrinkRequest(DaraModel):
         self.project_id = project_id
         # The field that you want to use to sort the data sources. Valid values:
         # 
-        # *   CreateTime
-        # *   Id
-        # *   Name
+        # - CreateTime
+        # 
+        # - Id
+        # 
+        # - Name
         # 
         # Default value: CreateTime
         self.sort_by = sort_by
         # The tag of the data source. This parameter specifies a filter condition.
         # 
-        # *   You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
-        # *   If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
+        # - You can specify multiple tags, which are in the logical AND relation. For example, you can query the data sources that contain the following tags: `["tag1", "tag2", "tag3"]`.
+        # 
+        # - If you do not configure this parameter, tag-based filtering is not performed. You can specify up to 10 tags.
         self.tags = tags
         # The data source types. This parameter specifies a filter condition. You can specify multiple data source types.
         self.types_shrink = types_shrink

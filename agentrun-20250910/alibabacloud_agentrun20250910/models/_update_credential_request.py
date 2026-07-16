@@ -10,6 +10,7 @@ class UpdateCredentialRequest(DaraModel):
         self,
         body: main_models.UpdateCredentialInput = None,
     ):
+        # The new configuration for the credential.
         self.body = body
 
     def validate(self):

@@ -17,10 +17,15 @@ class DescribeVsTopDomainsByFlowResponseBody(DaraModel):
         start_time: str = None,
         top_domains: main_models.DescribeVsTopDomainsByFlowResponseBodyTopDomains = None,
     ):
+        # The total number of domain names under your account.
         self.domain_count = domain_count
+        # The total number of **running** domain names under your account.
         self.domain_online_count = domain_online_count
+        # The end time of the query time range.
         self.end_time = end_time
+        # The ID of the request.
         self.request_id = request_id
+        # The start time of the query.
         self.start_time = start_time
         self.top_domains = top_domains
 

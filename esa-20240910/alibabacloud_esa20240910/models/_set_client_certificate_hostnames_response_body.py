@@ -15,14 +15,15 @@ class SetClientCertificateHostnamesResponseBody(DaraModel):
         site_id: int = None,
         site_name: str = None,
     ):
+        # The list of domain names to associate.
         self.hostnames = hostnames
-        # The ID of the client CA certificate.
+        # The client CA certificate ID.
         self.id = id
         # The request ID.
         self.request_id = request_id
-        # The website ID.
+        # The site ID.
         self.site_id = site_id
-        # The website name.
+        # The site name.
         self.site_name = site_name
 
     def validate(self):

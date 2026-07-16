@@ -27,43 +27,41 @@ class CreateUserRequest(DaraModel):
         user_external_id: str = None,
         username: str = None,
     ):
-        # The password initialization method. Set the value to random,
-        # 
-        # *   which indicates that the password is randomly generated.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: How to ensure idempotence.
         self.client_token = client_token
-        # The custom extended fields.
+        # The list of custom fields.
         self.custom_fields = custom_fields
-        # The description of the organization. The value can be up to 256 characters in length.
+        # The description. The description can be up to 256 characters in length.
         self.description = description
-        # The display name of the account. The display name can be up to 64 characters in length.
+        # The display name of the account. The display name can be up to 128 characters in length.
         self.display_name = display_name
-        # The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-).
+        # The email address. The email prefix can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-). The email address can be up to 128 characters in length.
         self.email = email
-        # The description of the account. The description can be up to 256 characters in length.
+        # Specifies whether the email address is verified as a trusted email address. This parameter is required if Email is specified. If no special business requirement exists, set this parameter to true.
         self.email_verified = email_verified
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the mobile phone number is a trusted mobile phone number. This parameter is required if the PhoneNumber parameter is specified. If you have no special business requirements, set this parameter to true.
+        # The list of organizational unit IDs to which the account belongs. An account can belong to multiple organizational units.
         self.organizational_unit_ids = organizational_unit_ids
-        # The password of the account. For more information,view the password policyof the instanceinthe IDaaS console.
+        # The password. The password must meet the requirements of the password policy.
         self.password = password
-        # The configurations for password initialization.
+        # The password initialization configuration.
         self.password_initialization_config = password_initialization_config
-        # The ID of the account.
+        # The phone number. The value is a 6 to 15-digit number.
         self.phone_number = phone_number
-        # The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (_), periods (.), and hyphens (-).
+        # Specifies whether the phone number is verified as a trusted phone number. This parameter is required if PhoneNumber is specified. If no special business requirement exists, set this parameter to true.
         self.phone_number_verified = phone_number_verified
-        # The IDs of organizational units to which the account belongs. An account can belong to multiple organizational units.
+        # The phone region code. The value is a 1 to 6-digit number and does not include a plus sign (+).
         self.phone_region = phone_region
-        # 主组织ID。
+        # The ID of the primary organizational unit.
         # 
         # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
-        # The display name of the account. The display name can be up to 64 characters in length.
+        # The external ID of the account. This parameter is used to associate the account with an external system. The value can be up to 128 characters in length. If this parameter is not specified, the account ID is used by default.
         self.user_external_id = user_external_id
-        # The name of the extended field. You must create the extended field in advance. To create an extended field, log on to the IDaaS console. In the left-side navigation pane, choose Accounts > Extended Fields, and then click Create Field on the Extended Fields page.
+        # The username. The username can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-). The username can be up to 256 characters in length.
         # 
         # This parameter is required.
         self.username = username
@@ -197,18 +195,18 @@ class CreateUserRequestPasswordInitializationConfig(DaraModel):
         password_initialization_type: str = None,
         user_notification_channels: List[str] = None,
     ):
-        # Specifies whether to forcibly change the password status. Default value: disabled. Valid values:
-        # *   enabled:forcibly changes the password status.
-        # * disabled: does not forcibly change the password status.
+        # The forced password change status. By default, this feature is not enabled. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
         # The priority of the password initialization policy. By default, this parameter does not take effect. Valid values:
-        # *   global:The password initialization policy globally takes effect.
-        # *   custom: The password initialization policy takes effect based on custom settings.
+        # - global: The global policy policy priority. The instance-level password initialization policy is used, and the password initialization policy specified in this request does not take effect. For more information, refer to the password initialization policy in password-related policies.
+        # - custom: The custom policy policy priority. The password initialization policy defined in this request is used, including whether to enable forced password change, the password initialization method, and the notification channel.
         self.password_initialization_policy_priority = password_initialization_policy_priority
-        # The password initialization method. Set the value to random,
-        # *   whichindicates that the password is randomly generated.
+        # The password initialization method. Valid values:
+        # - random: random.
         self.password_initialization_type = password_initialization_type
-        # The value of the extended field. The value follows the limits on the properties of the extended field.
+        # The list of password notification channels.
         self.user_notification_channels = user_notification_channels
 
     def validate(self):
@@ -255,9 +253,9 @@ class CreateUserRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
-        # The name of the extended field. You must create the extended field in advance. To create an extended field, log on to the IDaaS console. In the left-side navigation pane, choose Accounts > Extended Fields, and then click Create Field on the Extended Fields page.
+        # The identifier of the custom field. Create the custom field in advance. For more information, refer to the custom fields module in the console.
         self.field_name = field_name
-        # The value of the extended field. The value follows the limits on the properties of the extended field.
+        # The value of the custom field. The value must comply with the attribute constraints of the corresponding custom field.
         self.field_value = field_value
 
     def validate(self):

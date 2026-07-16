@@ -13,7 +13,7 @@ class ModifyDataSourceLogResponseBody(DaraModel):
     ):
         # The data returned.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -50,9 +50,9 @@ class ModifyDataSourceLogResponseBodyData(DaraModel):
         count: int = None,
         log_instance_id: str = None,
     ):
-        # The number of logs that are modified. The value 1 indicates that the modification is successful, and a value less than or equal to 0 indicates that the modification failed.
+        # The number of modified logs. A value of 1 indicates success. A value of 0 or less indicates failure.
         self.count = count
-        # The ID of the log. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+        # The ID of the log. The threat analysis feature generates this ID by calculating an MD5 hash of the parameters.
         self.log_instance_id = log_instance_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class CancelLogstashDeletionRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A unique token used to ensure idempotence of the request. The client generates this value. The value must be unique among different requests and can be up to 64 ASCII characters in length.
         self.client_token = client_token
 
     def validate(self):

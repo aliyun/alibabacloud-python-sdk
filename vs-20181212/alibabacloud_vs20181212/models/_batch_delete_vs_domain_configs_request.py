@@ -11,8 +11,12 @@ class BatchDeleteVsDomainConfigsRequest(DaraModel):
         function_names: str = None,
         owner_id: int = None,
     ):
+        # The accelerated domain names. Separate multiple domain names with commas.
+        # 
         # This parameter is required.
         self.domain_names = domain_names
+        # The feature names. Separate multiple features with commas.
+        # 
         # This parameter is required.
         self.function_names = function_names
         self.owner_id = owner_id

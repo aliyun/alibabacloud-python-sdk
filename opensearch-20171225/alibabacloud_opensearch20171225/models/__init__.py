@@ -11,6 +11,7 @@ from ._data_source import DataSource
 from ._domain import Domain
 from ._first_rank import FirstRank
 from ._prepay_order_info import PrepayOrderInfo
+from ._proceeding import Proceeding
 from ._query_processor import QueryProcessor
 from ._quota import Quota
 from ._scheduled_task import ScheduledTask
@@ -331,6 +332,9 @@ from ._update_abtest_group_response import UpdateABTestGroupResponse
 from ._update_abtest_scene_request import UpdateABTestSceneRequest
 from ._update_abtest_scene_response_body import UpdateABTestSceneResponseBody
 from ._update_abtest_scene_response import UpdateABTestSceneResponse
+from ._update_app_group_delete_protection_request import UpdateAppGroupDeleteProtectionRequest
+from ._update_app_group_delete_protection_response_body import UpdateAppGroupDeleteProtectionResponseBody
+from ._update_app_group_delete_protection_response import UpdateAppGroupDeleteProtectionResponse
 from ._update_fetch_fields_request import UpdateFetchFieldsRequest
 from ._update_fetch_fields_response_body import UpdateFetchFieldsResponseBody
 from ._update_fetch_fields_response import UpdateFetchFieldsResponse
@@ -552,6 +556,7 @@ from ._tag_resources_request import TagResourcesRequestTag
 from ._update_abtest_experiment_response_body import UpdateABTestExperimentResponseBodyResult
 from ._update_abtest_group_response_body import UpdateABTestGroupResponseBodyResult
 from ._update_abtest_scene_response_body import UpdateABTestSceneResponseBodyResult
+from ._update_app_group_delete_protection_response_body import UpdateAppGroupDeleteProtectionResponseBodyResult
 from ._update_function_instance_request import UpdateFunctionInstanceRequestCreateParameters
 from ._update_function_instance_request import UpdateFunctionInstanceRequestUsageParameters
 from ._update_function_resource_request import UpdateFunctionResourceRequestDataGeneratorsInputFeatures
@@ -572,6 +577,7 @@ __all__ = [
     Domain,
     FirstRank,
     PrepayOrderInfo,
+    Proceeding,
     QueryProcessor,
     Quota,
     ScheduledTask,
@@ -892,6 +898,9 @@ __all__ = [
     UpdateABTestSceneRequest,
     UpdateABTestSceneResponseBody,
     UpdateABTestSceneResponse,
+    UpdateAppGroupDeleteProtectionRequest,
+    UpdateAppGroupDeleteProtectionResponseBody,
+    UpdateAppGroupDeleteProtectionResponse,
     UpdateFetchFieldsRequest,
     UpdateFetchFieldsResponseBody,
     UpdateFetchFieldsResponse,
@@ -1113,6 +1122,7 @@ __all__ = [
     UpdateABTestExperimentResponseBodyResult,
     UpdateABTestGroupResponseBodyResult,
     UpdateABTestSceneResponseBodyResult,
+    UpdateAppGroupDeleteProtectionResponseBodyResult,
     UpdateFunctionInstanceRequestCreateParameters,
     UpdateFunctionInstanceRequestUsageParameters,
     UpdateFunctionResourceRequestDataGeneratorsInputFeatures,

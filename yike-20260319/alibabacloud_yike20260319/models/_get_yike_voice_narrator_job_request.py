@@ -9,6 +9,8 @@ class GetYikeVoiceNarratorJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
+        # The task ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
 

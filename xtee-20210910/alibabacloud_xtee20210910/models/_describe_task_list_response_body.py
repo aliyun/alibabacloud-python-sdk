@@ -17,17 +17,17 @@ class DescribeTaskListResponseBody(DaraModel):
         total_item: int = None,
         total_page: int = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Current page number.
+        # The current page number.
         self.current_page = current_page
-        # Page size, with a default value of 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Returned object
+        # The returned object.
         self.result_object = result_object
-        # Total number of items
+        # The total number of entries.
         self.total_item = total_item
-        # Total number of pages
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -101,31 +101,30 @@ class DescribeTaskListResponseBodyResultObject(DaraModel):
         task_log_id: int = None,
         task_type: str = None,
     ):
-        # Completion time, in milliseconds.
+        # The completion time. Unit: milliseconds.
         self.completion_time = completion_time
-        # Creation time.
+        # The creation time.
         self.create_time = create_time
-        # Task ID.
+        # The task ID.
         self.id = id
-        # Total number of mark information.
+        # The total number of mark entries.
         self.mark = mark
-        # Remark.
+        # The remarks.
         self.remark = remark
-        # Scene name
+        # The scenario name.
         self.scene_name = scene_name
-        # Data status.
-        # 
-        # -1: Failed
-        # 0: Deleted
-        # 1: Pending
-        # 2: Success
+        # The data status. Valid values:
+        # - -1: Failed.
+        # - 0: Deleted.
+        # - 1: Pending.
+        # - 2: Succeeded.
         self.status = status
-        # Task ID.
+        # The task ID.
         self.task_log_id = task_log_id
-        # Task type
-        # 1: Data upload
-        # 2: Supplemental upload
-        # 3: Labeling
+        # The task type. Valid values:
+        # - 1: data upload
+        # - 2: supplementary upload
+        # - 3: labeling.
         self.task_type = task_type
 
     def validate(self):

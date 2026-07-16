@@ -13,8 +13,15 @@ class GetVmcoreDiagnosisTaskResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
+        # - `code == Success` indicates that the authorization is successful.
+        # - Other status codes indicate that the authorization failed. Check the `message` field for the detailed fault information.
         self.code = code
+        # The returned result.
         self.data = data
+        # The error message.
+        # - If `code == Success`, this field is empty.
+        # - Otherwise, this field contains the request error information.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,12 +77,19 @@ class GetVmcoreDiagnosisTaskResponseBodyData(DaraModel):
         task_type: str = None,
         urls: main_models.GetVmcoreDiagnosisTaskResponseBodyDataUrls = None,
     ):
+        # The time when the task was created.
         self.created_at = created_at
+        # The diagnostic result.
         self.diagnose_result = diagnose_result
+        # The diagnostic error message.
         self.error_msg = error_msg
+        # The task ID.
         self.task_id = task_id
+        # The task status.
         self.task_status = task_status
+        # The task type.
         self.task_type = task_type
+        # The download URLs of related files associated with the task.
         self.urls = urls
 
     def validate(self):
@@ -144,9 +158,13 @@ class GetVmcoreDiagnosisTaskResponseBodyDataUrls(DaraModel):
         dmesg_url: str = None,
         vmcore_url: str = None,
     ):
+        # The download URL of the debuginfo-common RPM package.
         self.debuginfo_common_url = debuginfo_common_url
+        # The download URL of the debuginfo RPM package.
         self.debuginfo_url = debuginfo_url
+        # The download URL of the dmesg log.
         self.dmesg_url = dmesg_url
+        # The download URL of the vmcore file.
         self.vmcore_url = vmcore_url
 
     def validate(self):

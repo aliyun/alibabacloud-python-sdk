@@ -13,6 +13,8 @@ class GetTablesHeaders(DaraModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # The workspace ID.
+        # 
         # This parameter is required.
         self.workspace = workspace
 

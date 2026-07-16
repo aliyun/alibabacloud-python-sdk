@@ -13,10 +13,15 @@ class CreateDataAgentSessionShrinkRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The file ID.
         self.file = file
+        # The session configuration.
         self.session_config_shrink = session_config_shrink
+        # The session title. Supports Chinese and English. Maximum length: 128 characters.
         self.title = title
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

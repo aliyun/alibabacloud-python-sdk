@@ -12,7 +12,7 @@ class CreateMemberRequest(DaraModel):
         self,
         members: List[main_models.CreateMemberRequestMembers] = None,
     ):
-        # The members.
+        # The list of members.
         # 
         # This parameter is required.
         self.members = members
@@ -55,7 +55,7 @@ class CreateMemberRequestMembers(DaraModel):
         # 
         # This parameter is required.
         self.roles = roles
-        # The member IDs. Multiple member IDs are separated by commas (,). You can call [ListMembers](https://help.aliyun.com/document_detail/449135.html) to obtain the member IDs.
+        # The member IDs. Use commas (,) to separate multiple IDs. For more information, see [ListMembers](https://help.aliyun.com/document_detail/449135.html).
         # 
         # This parameter is required.
         self.user_id = user_id

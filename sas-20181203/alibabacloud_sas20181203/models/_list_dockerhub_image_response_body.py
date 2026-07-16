@@ -13,9 +13,9 @@ class ListDockerhubImageResponseBody(DaraModel):
         image_list: List[main_models.ListDockerhubImageResponseBodyImageList] = None,
         request_id: str = None,
     ):
-        # The information about the images.
+        # The list of image information.
         self.image_list = image_list
-        # The request ID.
+        # The unique identifier that Alibaba Cloud generates for the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,15 +72,15 @@ class ListDockerhubImageResponseBodyImageList(DaraModel):
         self.hc_count = hc_count
         # The image ID.
         self.image_id = image_id
-        # The size of the image. Unit: bytes.
+        # The image size, in bytes.
         self.image_size = image_size
-        # The name of the image repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The namespace to which the image repository belongs.
+        # The image namespace.
         self.repo_namespace = repo_namespace
         # The risk details of the image.
         self.risk_level_detail = risk_level_detail
-        # The tag of the image.
+        # The image tag.
         self.tag = tag
         # The UUID of the image.
         self.uuid = uuid

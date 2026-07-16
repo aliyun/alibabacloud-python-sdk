@@ -17,12 +17,17 @@ class GetDataServiceApiDocumentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The API documentation.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -117,41 +122,103 @@ class GetDataServiceApiDocumentResponseBodyData(DaraModel):
         update_rate: int = None,
         version: str = None,
     ):
+        # The API ID.
         self.api_id = api_id
+        # The API registration information.
         self.api_register_info = api_register_info
+        # The timeout period of the direct API, in seconds.
         self.api_timeout = api_timeout
+        # The business unit name. This parameter has a value only for logical tables.
         self.biz_unit_name = biz_unit_name
+        # The cache duration, in seconds.
         self.cache_time = cache_time
+        # The creation type. Valid values:
+        # - 0: custom mode
+        # - 1: wizard mode
+        # - 2: direct API.
         self.create_type = create_type
+        # The description.
         self.description = description
+        # The data source ID of the direct API.
         self.direct_datasource_id = direct_datasource_id
+        # The data source name of the direct API.
         self.direct_datasource_name = direct_datasource_name
+        # The environment. Valid values:
+        # - 0: dev
+        # - 1: prod.
         self.env = env
+        # The API group ID.
         self.group_id = group_id
+        # The API group name.
         self.group_name = group_name
+        # Indicates whether the table is a logical table.
         self.is_logical_table = is_logical_table
+        # Indicates whether the query is a paged query. Valid values:
+        # - 1: Yes.
+        # - 0: No.
         self.is_paged_query = is_paged_query
+        # Specifies whether the SQL is special. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.is_special_sql = is_special_sql
+        # The mode. Valid values:
+        # - 0: basic
+        # - 1: dev_prod.
         self.mode = mode
+        # The API name.
         self.name = name
+        # Specifies whether caching is enabled. Valid values:
+        # - 0: Disabled.
+        # - 1: Enabled.
         self.open_cache = open_cache
+        # The data service project ID.
         self.project_id = project_id
+        # The data service project name.
         self.project_name = project_name
+        # The protocol. Valid values:
+        # - 1: HTTPS
+        # - 2: HTTP
+        # - 3: both HTTP and HTTPS.
         self.protocol = protocol
+        # The list of common parameters.
         self.public_param_list = public_param_list
+        # The request method. Valid values:
+        # - 1: get
+        # - 2: list.
         self.request_method = request_method
+        # The list of request parameters.
         self.request_param_list = request_param_list
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The resource group name.
         self.resource_group_name = resource_group_name
+        # The list of response parameters.
         self.response_param_list = response_param_list
+        # The sample invocation result.
         self.result_sample = result_sample
+        # The maximum number of records returned by the direct API.
         self.return_limit = return_limit
+        # The return data type. Valid values:
+        # - 1: JSON.
         self.return_type = return_type
+        # The script type. Valid values:
+        # - NORMAL_SQL: basic SQL
+        # - MYBATIS_SQL: advanced SQL
+        # - AVIATOR: Aviator expression.
         self.script_type = script_type
+        # The SQL statement.
         self.sql = sql
+        # The logical table name. This parameter has a value only for logical tables.
         self.table_name = table_name
+        # The timeout period, in seconds.
         self.timeout = timeout
+        # The update frequency. Valid values:
+        # - 0: custom
+        # - 1: daily
+        # - 2: hourly
+        # - 3: every minute.
         self.update_rate = update_rate
+        # The version.
         self.version = version
 
     def validate(self):
@@ -421,9 +488,13 @@ class GetDataServiceApiDocumentResponseBodyDataResponseParamList(DaraModel):
         sample: str = None,
         type: str = None,
     ):
+        # The parameter description.
         self.description = description
+        # The frontend parameter name.
         self.name = name
+        # The parameter example.
         self.sample = sample
+        # The parameter type.
         self.type = type
 
     def validate(self):
@@ -474,11 +545,19 @@ class GetDataServiceApiDocumentResponseBodyDataRequestParamList(DaraModel):
         sample: str = None,
         type: str = None,
     ):
+        # The default value.
         self.default_value = default_value
+        # The parameter description.
         self.description = description
+        # Specifies whether the request parameter is required. Valid values:
+        # - 1: Required.
+        # - 0: Optional.
         self.is_required = is_required
+        # The frontend parameter name.
         self.name = name
+        # The parameter example.
         self.sample = sample
+        # The parameter type.
         self.type = type
 
     def validate(self):
@@ -540,10 +619,17 @@ class GetDataServiceApiDocumentResponseBodyDataPublicParamList(DaraModel):
         sample: str = None,
         type: str = None,
     ):
+        # The parameter description.
         self.description = description
+        # Specifies whether the request parameter is required. Valid values:
+        # - 1: Required.
+        # - 0: Optional.
         self.is_required = is_required
+        # The frontend parameter name.
         self.name = name
+        # The parameter example.
         self.sample = sample
+        # The parameter type.
         self.type = type
 
     def validate(self):
@@ -603,14 +689,32 @@ class GetDataServiceApiDocumentResponseBodyDataApiRegisterInfo(DaraModel):
         timeout: int = None,
         url: str = None,
     ):
+        # The authentication method for the API data source. Valid values:
+        # - 1: BearToken
+        # - 2: ApiKey
+        # - 3: None
+        # - 4: AppKeyAuth
+        # - 5: BasicAuth.
         self.auth_type = auth_type
+        # The API data source ID.
         self.datasource_id = datasource_id
+        # The API data source name.
         self.datasource_name = datasource_name
+        # The HTTP method for the registered API. Valid values:
+        # - 1: GET
+        # - 2: POST.
         self.http_method = http_method
+        # The mode. Valid values:
+        # - 0: basic
+        # - 1: dev_prod.
         self.mode = mode
+        # The service path.
         self.path = path
+        # The request protocol for the API data source.
         self.protocol = protocol
+        # The timeout period, in seconds.
         self.timeout = timeout
+        # The API data source URL.
         self.url = url
 
     def validate(self):

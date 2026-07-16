@@ -17,13 +17,15 @@ class CreateConsumerGroupRequest(DaraModel):
         self.consumer_group = consumer_group
         # Specifies whether to consume data in sequence. Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     *   In a shard, data is consumed in ascending order based on the value of the \\*\\*__tag__:__receive_time__\\*\\* field.
-        #     *   If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
-        #     *   If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
+        #   - In a shard, data is consumed in ascending order based on the value of the \\*\\*__tag__:__receive_time__\\*\\* field.
         # 
-        # *   false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
+        #   - If a shard is split, data in the original shard is consumed first. Then, data in the new shards is consumed at the same time.
+        # 
+        #   - If shards are merged, data in the original shards is consumed first. Then, data in the new shard is consumed.
+        # 
+        # - false Data in all shards is consumed at the same time. If a new shard is generated after a shard is split or after shards are merged, data in the new shard is immediately consumed.
         # 
         # This parameter is required.
         self.order = order

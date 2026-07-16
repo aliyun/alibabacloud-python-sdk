@@ -16,7 +16,7 @@ class DescribeAlertTypeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The request status code.
         self.code = code
         # The data returned.
         self.data = data
@@ -26,8 +26,9 @@ class DescribeAlertTypeResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,9 +89,9 @@ class DescribeAlertTypeResponseBodyData(DaraModel):
         alert_type: str = None,
         alert_type_mds: str = None,
     ):
-        # The type of the risk.
+        # The threat type.
         self.alert_type = alert_type
-        # The internal code of the risk type.
+        # The Medusa code of the threat type.
         self.alert_type_mds = alert_type_mds
 
     def validate(self):

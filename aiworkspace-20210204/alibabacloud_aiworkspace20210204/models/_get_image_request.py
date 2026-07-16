@@ -9,10 +9,12 @@ class GetImageRequest(DaraModel):
         self,
         verbose: bool = None,
     ):
-        # Specifies whether to display non-essential information, which contains tags. Valid values:
+        # Specifies whether to display non-essential information. Non-essential information currently includes labels.
+        # Valid values:
         # 
-        # *   false (default)
-        # *   true
+        # - false (default): Does not display non-essential information.
+        # 
+        # - true: Displays non-essential information.
         self.verbose = verbose
 
     def validate(self):

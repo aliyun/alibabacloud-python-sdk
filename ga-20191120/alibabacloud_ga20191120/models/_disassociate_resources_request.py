@@ -14,14 +14,25 @@ class DisassociateResourcesRequest(DaraModel):
         dry_run: bool = None,
         region_id: str = None,
     ):
+        # Alibaba Cloud Global Accelerator (GA) instance ID.
+        # 
         # This parameter is required.
         self.accelerator_id = accelerator_id
+        # Linked instance ID.
+        # 
         # This parameter is required.
         self.associated_resource_id = associated_resource_id
+        # Region ID of the linked instance.
         self.associated_resource_region_id = associated_resource_region_id
+        # Resource type of the linked peripheral resource.
+        # 
         # This parameter is required.
         self.associated_resource_type = associated_resource_type
+        # Specifies whether to perform a dry run of the request. Valid values:  
+        # - **true**: Sends a dry run request without detaching the resource. The system checks whether required parameters are specified, whether the request format is valid, and whether business limits are met. If the check fails, an error is returned. If the check passes, an HTTP 2xx status code is returned.  
+        # - **false** (default): Sends a normal request. If the check passes, an HTTP 2xx status code is returned and the endpoint group is created immediately.
         self.dry_run = dry_run
+        # Region ID of the Alibaba Cloud Global Accelerator (GA) instance. Valid value: **cn-hangzhou** only.
         self.region_id = region_id
 
     def validate(self):

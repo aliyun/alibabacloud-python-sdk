@@ -15,7 +15,6 @@ class ListWorkspacesResponseBody(DaraModel):
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
         self.next_token = next_token
-        # requestId
         self.request_id = request_id
         self.workspaces = workspaces
 

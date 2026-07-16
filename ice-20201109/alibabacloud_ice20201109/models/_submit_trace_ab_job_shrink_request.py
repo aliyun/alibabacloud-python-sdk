@@ -15,25 +15,27 @@ class SubmitTraceAbJobShrinkRequest(DaraModel):
         total_time: int = None,
         user_data: str = None,
     ):
-        # The key that is encoded by using the Base64 algorithm.
+        # The Base64-encoded encryption key.
         self.cipher_base_64ed = cipher_base_64ed
-        # The source video file for A/B watermarking.
+        # The input video for the A/B stream forensic watermarking job.
         # 
-        # > OSS object or media asset must reside in the same region as the IMS service region. This API supports only videos that last at least 3 minutes. If the video is too short, the call may fail, or no output may be returned.
+        # > - The Object Storage Service (OSS) file or media asset must be in the same region where Intelligent Media Services (IMS) is deployed.
+        # >
+        # > - This operation supports only videos that are three minutes or longer. Using a shorter video may cause the API call to fail or produce no output.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
-        # The watermark level, which specifies the channel to embed watermarks. Valid values: 0 specifies the 0u channel, 1 specifies the 1uv channel, and 2 specifies the 2yuv channel.
+        # The watermark level, which specifies the embedding channel. Valid values: `0` (U channel), `1` (UV channels), and `2` (YUV channels).
         self.level = level
-        # The output directory path.
+        # The output location for the A/B stream job. This must be an OSS directory.
         # 
         # This parameter is required.
         self.output_shrink = output_shrink
-        # The start point of watermark embedding. Unit: seconds.
+        # The start time for watermark embedding, in seconds.
         self.start_time = start_time
-        # The duration of the watermark embedding. Unit: seconds.
+        # The total duration for watermark embedding, in seconds.
         self.total_time = total_time
-        # The custom data, which can be up to 1,024 bytes in size.
+        # User data to include in the request. The maximum length is 1,024 bytes.
         self.user_data = user_data
 
     def validate(self):

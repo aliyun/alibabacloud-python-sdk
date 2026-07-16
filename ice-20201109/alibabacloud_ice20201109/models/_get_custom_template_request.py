@@ -13,9 +13,9 @@ class GetCustomTemplateRequest(DaraModel):
     ):
         # The template subtype.
         self.subtype = subtype
-        # The template ID.
+        # The ID of the custom template.
         self.template_id = template_id
-        # The ID of the template type that is used to query the default template. This parameter is required if TemplateId is not specified.
+        # The ID of the template type. This parameter is required if you omit `TemplateId` to get a default template.
         self.type = type
 
     def validate(self):

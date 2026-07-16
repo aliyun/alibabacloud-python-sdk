@@ -14,8 +14,11 @@ class BatchGetYikeAssetMediaInfosResponseBody(DaraModel):
         media_infos: List[main_models.BatchGetYikeAssetMediaInfosResponseBodyMediaInfos] = None,
         request_id: str = None,
     ):
+        # The list of IDs of media assets that failed to be obtained.
         self.ignored_list = ignored_list
+        # The list of matched media assets.
         self.media_infos = media_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -66,9 +69,13 @@ class BatchGetYikeAssetMediaInfosResponseBodyMediaInfos(DaraModel):
         media_basic_info: main_models.BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo = None,
         media_id: str = None,
     ):
+        # The business data.
         self.biz_data = biz_data
+        # The list of file information.
         self.file_info_list = file_info_list
+        # The basic information about the media asset.
         self.media_basic_info = media_basic_info
+        # The ID of the media asset.
         self.media_id = media_id
 
     def validate(self):
@@ -146,24 +153,43 @@ class BatchGetYikeAssetMediaInfosResponseBodyMediaInfosMediaBasicInfo(DaraModel)
         transcode_status: str = None,
         user_data: str = None,
     ):
+        # The business to which the media asset belongs.
         self.biz = biz
+        # The business type.
         self.business_type = business_type
+        # The category of the media asset.
         self.category = category
+        # The URL of the cover image.
         self.cover_url = cover_url
+        # The time when the media asset was created.
         self.create_time = create_time
+        # The time when the media asset was deleted.
         self.deleted_time = deleted_time
+        # The description of the media asset.
         self.description = description
+        # The source URL of the media asset.
         self.input_url = input_url
+        # The ID of the media asset.
         self.media_id = media_id
+        # The tags of the media asset.
         self.media_tags = media_tags
+        # The type of the media asset.
         self.media_type = media_type
+        # The time when the media asset was last modified.
         self.modified_time = modified_time
+        # The snapshots.
         self.snapshots = snapshots
+        # The source of the media asset.
         self.source = source
+        # The sprite images.
         self.sprite_images = sprite_images
+        # The status of the media asset.
         self.status = status
+        # The title of the media asset.
         self.title = title
+        # The transcoding status.
         self.transcode_status = transcode_status
+        # The custom user data.
         self.user_data = user_data
 
     def validate(self):
@@ -299,6 +325,7 @@ class BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo = None,
     ):
+        # The basic information about the file, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -338,16 +365,27 @@ class BatchGetYikeAssetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo
         region: str = None,
         width: str = None,
     ):
+        # The bitrate.
         self.bitrate = bitrate
+        # The duration of the file.
         self.duration = duration
+        # The name of the file.
         self.file_name = file_name
+        # The size of the file, in bytes.
         self.file_size = file_size
+        # The status of the file.
         self.file_status = file_status
+        # The type of the file.
         self.file_type = file_type
+        # The OSS URL of the file.
         self.file_url = file_url
+        # The container format of the file.
         self.format_name = format_name
+        # The height.
         self.height = height
+        # The region where the file is stored.
         self.region = region
+        # The width.
         self.width = width
 
     def validate(self):
@@ -446,17 +484,29 @@ class BatchGetYikeAssetMediaInfosResponseBodyMediaInfosBizData(DaraModel):
         source_name: str = None,
         source_type: str = None,
     ):
+        # The audit label.
         self.audit_blocked_label = audit_blocked_label
+        # The audit status.
         self.audit_status = audit_status
+        # The ID of the creation job.
         self.creation_job_id = creation_job_id
+        # The ID of the folder.
         self.folder_id = folder_id
+        # Indicates whether the media asset is a favorite.
         self.is_favorite = is_favorite
+        # Indicates whether the media asset is logically deleted.
         self.is_logical_deleted = is_logical_deleted
+        # The sub-type of the media asset.
         self.media_asset_sub_type = media_asset_sub_type
+        # The type of the media asset.
         self.media_asset_type = media_asset_type
+        # The ID of the production.
         self.production_id = production_id
+        # The source ID.
         self.source_id = source_id
+        # The source name.
         self.source_name = source_name
+        # The source type.
         self.source_type = source_type
 
     def validate(self):

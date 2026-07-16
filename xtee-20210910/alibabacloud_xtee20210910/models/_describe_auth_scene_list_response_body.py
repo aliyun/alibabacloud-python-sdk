@@ -13,9 +13,9 @@ class DescribeAuthSceneListResponseBody(DaraModel):
         request_id: str = None,
         result_object: List[main_models.DescribeAuthSceneListResponseBodyResultObject] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -57,7 +57,7 @@ class DescribeAuthSceneListResponseBodyResultObject(DaraModel):
         self,
         service_code: str = None,
     ):
-        # Service code
+        # The service code.
         self.service_code = service_code
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeLoginBaseConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The description of the configuration.
+        # The list of logon configuration details.
         self.base_configs = base_configs
-        # The page number of the returned page.
+        # The current page number in the paging query result.
         self.current_page = current_page
-        # The number of entries returned per page. Default value: **20**.
+        # The number of logon configuration entries displayed on each page in the paging query result. Default value: **20**.
         self.page_size = page_size
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of logon configuration entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -100,15 +100,15 @@ class DescribeLoginBaseConfigsResponseBodyBaseConfigs(DaraModel):
         self.ip = ip
         # The common logon location.
         self.location = location
-        # Corresponding configuration remark information.
+        # The remark information displayed for the corresponding configuration.
         self.remark = remark
         # The start time of the common logon time range.
         self.start_time = start_time
-        # The details of the servers to which the configuration is applied.
+        # The list of details about the servers on which the rule takes effect.
         self.target_list = target_list
         # The total number of servers.
         self.total_count = total_count
-        # The number of servers to which the configuration is applied.
+        # The number of servers on which the rule takes effect.
         self.uuid_count = uuid_count
 
     def validate(self):
@@ -193,13 +193,13 @@ class DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList(DaraModel):
         target: str = None,
         target_type: str = None,
     ):
-        # The UUID or group ID of the server.
+        # The UUID of the server or the ID of the server group on which the rule takes effect.
         self.target = target
-        # The type of the server to which the configuration is applied. Valid values:
+        # The selection mode for the assets on which the rule takes effect. Valid values:
         # 
-        # *   **uuid**: a server
-        # *   **groupId**: a server group
-        # *   **global**: all servers
+        # - **uuid**: added by individual asset.
+        # - **groupId**: added by server group.
+        # - **global**: all assets are selected.
         self.target_type = target_type
 
     def validate(self):

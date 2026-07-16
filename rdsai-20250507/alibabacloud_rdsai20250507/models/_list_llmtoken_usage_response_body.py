@@ -22,7 +22,6 @@ class ListLLMTokenUsageResponseBody(DaraModel):
         self.explicit_cached_tokens = explicit_cached_tokens
         self.implicit_cached_tokens = implicit_cached_tokens
         self.prompt_tokens = prompt_tokens
-        # Id of the request
         self.request_id = request_id
         self.token_usages = token_usages
         self.total_tokens = total_tokens

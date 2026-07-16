@@ -16,11 +16,15 @@ class GetWorkflowDAGResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The Response Code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The Error Message.
         self.message = message
-        # Id of the request
+        # The Request ID.
         self.request_id = request_id
+        # Indicates whether the request succeeded.
         self.success = success
 
     def validate(self):
@@ -75,7 +79,9 @@ class GetWorkflowDAGResponseBodyData(DaraModel):
         edges: List[main_models.GetWorkflowDAGResponseBodyDataEdges] = None,
         nodes: List[main_models.GetWorkflowDAGResponseBodyDataNodes] = None,
     ):
+        # A list of Edges in the Workflow DAG.
         self.edges = edges
+        # A list of Nodes in the Workflow DAG.
         self.nodes = nodes
 
     def validate(self):
@@ -132,12 +138,23 @@ class GetWorkflowDAGResponseBodyDataNodes(DaraModel):
         name: str = None,
         status: int = None,
     ):
+        # The Application Name.
         self.app_name = app_name
+        # The coordinates of the Node.
         self.coordinate = coordinate
+        # The Dependency Strategy.
         self.dependent_strategy = dependent_strategy
+        # The Job ID.
         self.id = id
+        # The Job type.
         self.job_type = job_type
+        # The Job name.
         self.name = name
+        # The Job Status.
+        # 
+        # - 0: Disabled
+        # 
+        # - 1: Enabled
         self.status = status
 
     def validate(self):
@@ -206,9 +223,13 @@ class GetWorkflowDAGResponseBodyDataNodesCoordinate(DaraModel):
         x: float = None,
         y: float = None,
     ):
+        # Optional. The height of the Node.
         self.height = height
+        # Optional. The width of the Node.
         self.width = width
+        # The x-coordinate of the Node.
         self.x = x
+        # The y-coordinate of the Node.
         self.y = y
 
     def validate(self):
@@ -255,7 +276,9 @@ class GetWorkflowDAGResponseBodyDataEdges(DaraModel):
         source: int = None,
         target: int = None,
     ):
+        # The Job ID of the source Node.
         self.source = source
+        # The Job ID of the target Node.
         self.target = target
 
     def validate(self):

@@ -36,6 +36,7 @@ class CreateJobRequest(DaraModel):
         queue_size: int = None,
         region_id: str = None,
         send_channel: str = None,
+        start_time: int = None,
         status: int = None,
         success_notice_enable: bool = None,
         task_attempt_interval: int = None,
@@ -48,134 +49,148 @@ class CreateJobRequest(DaraModel):
         timezone: str = None,
         xattrs: str = None,
     ):
-        # The time interval between retry attempts in case of a job failure. Unit: seconds. Default value: 30.
+        # The retry interval on failure. Unit: seconds. Default value: 30.
         self.attempt_interval = attempt_interval
-        # If you set TimeType to 1 (cron), you can specify calendar days.
+        # The custom calendar. This parameter is available for the cron time type.
         self.calendar = calendar
-        # The full path of the job interface class.
+        # The full path of the node interface class.
         # 
-        # This parameter is available only when you set JobType to java. You must enter a full path.
+        # This field is required only when you select the Java node type. Specify the full path.
         self.class_name = class_name
-        # The number of threads that a single worker triggers simultaneously. You can specify this parameter for MapReduce jobs. Default value: 5.
+        # The advanced configuration for parallel grid nodes. The number of threads triggered for a single execution on a single machine. Default value: 5.
         self.consumer_size = consumer_size
-        # The information about the alert contact.
-        self.contact_info = contact_info
-        # The script content. This parameter is required when you set JobType to python, shell, go, or k8s.
-        self.content = content
-        # If you set TimeType to 1 (cron), you can specify a time offset. Unit: seconds.
-        self.data_offset = data_offset
-        # The job description.
-        self.description = description
-        # The number of task distribution threads. This parameter is an advanced configuration item of the MapReduce job. Default value: 5.
-        self.dispatcher_size = dispatcher_size
-        # The execution mode of the job. Valid values:
+        # The node contact information.
         # 
-        # *   **Stand-alone operation**
-        # *   **Broadcast run**
-        # *   **Visual MapReduce**
-        # *   **MapReduce**
-        # *   **Shard run**
+        # >Notice: This field is deprecated.</notice>
+        self.contact_info = contact_info
+        # - If the node type is python, shell, or k8s, specify the corresponding script content.
+        # - If the node type is golang, the content format example is {"jobName":"HelloWorld"}.
+        self.content = content
+        # The time offset. Unit: seconds. This parameter is available for the cron time type.
+        self.data_offset = data_offset
+        # The node description.
+        self.description = description
+        # The advanced configuration for parallel grid nodes. The number of subtask dispatch threads. Default value: 5.
+        self.dispatcher_size = dispatcher_size
+        # The node execution mode. The following execution modes are supported:
+        # 
+        # - **Standalone**: standalone
+        # - **Broadcast**: broadcast
+        # - **Visual MapReduce**: parallel
+        # - **MapReduce**: batch
+        # - **Sharding**: sharding
         # 
         # This parameter is required.
         self.execute_mode = execute_mode
-        # Specifies whether to trigger an alert when a job fails. Valid values:
+        # Specifies whether to enable the failure alert. Valid values:
         # 
-        # *   **true**: triggers an alert when a job fails.
-        # *   **false**: does not trigger an alert when a job fails.
+        # - **true**: Enables the failure alert.
+        # - **false**: Disables the failure alert.
         self.fail_enable = fail_enable
-        # The maximum number of consecutive failures before an alert is triggered. An alert will be triggered if the number of consecutive failures reaches the value of this parameter.
+        # The number of consecutive failures before an alert is triggered.
         self.fail_times = fail_times
-        # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The application ID. You can obtain the application ID on the Application Management page in the console.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The job type. Valid values:
+        # The node type. The following node types are supported:
         # 
-        # *   java
-        # *   python
-        # *   shell
-        # *   go
-        # *   http
-        # *   xxljob
-        # *   dataworks
-        # *   k8s
-        # *   springschedule
+        # - java
+        # - python
+        # - shell
+        # - go
+        # - http
+        # - xxljob
+        # - dataworks
+        # - k8s
+        # - springschedule
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The maximum number of retry attempts in case of a job failure. Specify this parameter based on your business requirements. Default value: 0.
+        # The maximum number of retries on failure. Set this parameter based on your business requirements. Default value: 0.
         self.max_attempt = max_attempt
-        # The maximum number of concurrent instances. By default, only one instance can run at a time. When an instance is running, the next instance is not triggered even if the scheduled start time arrives.
+        # The maximum number of concurrently running instances. Default value: 1. This means that if the previous trigger has not finished running, the next trigger is not performed even if the scheduled time arrives.
         self.max_concurrency = max_concurrency
-        # Specifies whether to generate an alert if no machines are available to run the job. Valid values:
-        # 
-        # *   **true**: generates an alert if no machines are available to run the job.
-        # *   **false**: does not generate an alert if no machines are available to run the job.
+        # Specifies whether to enable the no-available-machine alert. Valid values:
+        # - **true**: Enables the no-available-machine alert.
+        # - **false**: Disables the no-available-machine alert.
         self.miss_worker_enable = miss_worker_enable
-        # The job name.
+        # The node name.
         # 
         # This parameter is required.
         self.name = name
-        # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The namespace ID. You can obtain the namespace ID on the Namespace page in the console.
         # 
         # This parameter is required.
         self.namespace = namespace
-        # The source of the namespace. You must specify this parameter only if the namespace is provided by a third party.
+        # This parameter is required only for special third-party users.
         self.namespace_source = namespace_source
-        # The number of entries per page. You can specify this parameter for MapReduce jobs. Default value: 100.
+        # The advanced configuration for parallel grid nodes. The number of subtasks pulled in a single request. Default value: 100.
         self.page_size = page_size
-        # The user-defined parameters that you can obtain when the job is running.
+        # The user-defined parameters that can be obtained at runtime.
         self.parameters = parameters
+        # The node priority. Valid values:
+        # - **1**: low
+        # - **5**: medium
+        # - **10**: high
+        # - **15**: very high
         self.priority = priority
-        # The maximum capacity of the task queue. You can specify this parameter for MapReduce jobs. Default value: 10000.
+        # The advanced configuration for parallel grid nodes. The maximum cache size of the subtask queue. Default value: 10000.
         self.queue_size = queue_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The method that is used to send alerts. Set the value to sms. Default value: sms.
+        # The alert notification channel.
+        # 
+        # - Use the default channel of the application group: default.
+        # - Specify a notification channel for the node: sms, mail, phone, or webhook.
         self.send_channel = send_channel
-        # Specifies whether to enable the job. If this parameter is set to 0, the job is disabled. If this parameter is set to 1, the job is enabled. Default value: 1.
+        self.start_time = start_time
+        # The node status. Valid values: 0: disabled. 1: enabled. Default value: 1 (enabled).
         self.status = status
-        # Specifies whether to send notifications for successfully running the job.
+        # Specifies whether to enable the success notification.
         self.success_notice_enable = success_notice_enable
-        # The time interval between retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
+        # The advanced configuration for parallel grid nodes. The retry interval for a failed subtask. Default value: 0.
         self.task_attempt_interval = task_attempt_interval
-        # The maximum number of retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
+        # The advanced configuration for parallel grid nodes. The number of retries for a failed subtask. Default value: 0.
         self.task_max_attempt = task_max_attempt
-        # The time expression. Specify the time expression based on the value of TimeType:
+        # The time expression. Set the time expression based on the selected time type.
         # 
-        # *   If you set TimeType to **1** (cron), specify this parameter to a standard CRON expression.
-        # *   If you set TimeType to **100** (api), no time expression is required.
-        # *   If you set TimeType to **3** (fixed_rate), specify this parameter to a fixed frequency in seconds. For example, if you set this parameter to 30, the system triggers a job every 30 seconds.
-        # *   If you set TimeType to **4** (second_delay), specify this parameter to a fixed delay after which the job is triggered. Valid values: 1 to 60. Unit: seconds.
-        # *   If you set TimeType to **5** (one_time), specify this parameter to a specific time point at which the job is triggered. The time is in the format of yyyy-MM-dd HH:mm:ss, such as 2022-10-10 10:10:00, or a timestamp in milliseconds.
+        # - **cron**: Specify a standard cron expression. Online verification is supported.
+        # - **api**: No time expression is required.
+        # - **fixed_rate**: Specify a fixed frequency value in seconds. For example, 30 indicates that the node is triggered every 30 seconds.
+        # - **second_delay**: Specify a fixed delay in seconds before each execution (1s to 60s).
+        # - **one_time**: Specify a time in the format of yyyy-MM-dd HH:mm:ss or a timestamp in milliseconds. For example, "2022-10-10 10:10:00".
         self.time_expression = time_expression
-        # The time type. Valid values:
+        # The time type. The following time types are supported:
         # 
-        # *   **1**: cron
-        # *   **3**: fixed_rate
-        # *   **4**: second_delay
-        # *   **5**: one_time
-        # *   **100**: api
+        # - **cron**: 1
+        # - **fixed_rate**: 3
+        # - **second_delay**: 4
+        # - **one_time**: 5 
+        # - **api**: 100
+        # - **none**: -1
         # 
         # This parameter is required.
         self.time_type = time_type
         # The timeout threshold. Unit: seconds. Default value: 7200.
         self.timeout = timeout
-        # Specifies whether to enable the timeout alert feature. If the feature is enabled, an alert will be triggered upon a timeout. Valid values:
+        # Specifies whether to enable the timeout alert. Valid values:
         # 
-        # *   **true**: enables the timeout alert feature.
-        # *   **false**: disables the timeout alert feature.
+        # - **true**: Enables the timeout alert.
+        # - **false**: Disables the timeout alert.
         self.timeout_enable = timeout_enable
-        # Specifies whether to enable the timeout termination feature. If the feature is enabled, a job will automatically be terminated if it times out. Valid values:
+        # Specifies whether to enable timeout termination. Valid values:
         # 
-        # *   **true**: enables the timeout termination feature.
-        # *   **false**: disables the timeout termination feature.
+        # - **true**: Enables timeout termination.
+        # - **false**: Disables timeout termination.
         self.timeout_kill_enable = timeout_kill_enable
-        # Time zone.
+        # The time zone.
         self.timezone = timezone
-        # The extended attributes. If you set JobType to k8s, this parameter is required. For a job whose resource type is Job-YAML, set this parameter to {"resource":"job"}. For a job whose resource type is Shell-Script, set this parameter to {"image":"busybox","resource":"shell"}.
+        # If the node type is k8s, configure this parameter.
+        # Job task: {"resource":"job"}
+        # Shell task: {"image":"busybox","resource":"shell"}
         self.xattrs = xattrs
 
     def validate(self):
@@ -268,6 +283,9 @@ class CreateJobRequest(DaraModel):
 
         if self.send_channel is not None:
             result['SendChannel'] = self.send_channel
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
 
         if self.status is not None:
             result['Status'] = self.status
@@ -387,6 +405,9 @@ class CreateJobRequest(DaraModel):
         if m.get('SendChannel') is not None:
             self.send_channel = m.get('SendChannel')
 
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -430,13 +451,13 @@ class CreateJobRequestContactInfo(DaraModel):
         user_name: str = None,
         user_phone: str = None,
     ):
-        # The webhook URL of the DingTalk chatbot.[](https://open.dingtalk.com/document/org/application-types)
+        # The webhook URL of the DingTalk chatbot for the alert contact\\"s DingTalk group. References: [DingTalk development documentation](https://open.dingtalk.com/document/org/application-types).
         self.ding = ding
         # The email address of the alert contact.
         self.user_mail = user_mail
         # The name of the alert contact.
         self.user_name = user_name
-        # The mobile number of the alert contact.
+        # The mobile phone number of the alert recipient.
         self.user_phone = user_phone
 
     def validate(self):

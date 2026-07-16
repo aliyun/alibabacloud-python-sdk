@@ -16,26 +16,35 @@ class UpdateConfigMapResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the ConfigMap instance was updated. Valid values:
+        # The HTTP status code or the POP error code.
         # 
-        # *   **true**: The instance was updated.
-        # *   **false**: The instance failed to be updated.
+        # - **2xx**: The request is successful.
+        # 
+        # - **3xx**: The request is redirected.
+        # 
+        # - **4xx**: A request error occurred.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The ID of the ConfigMap instance.
-        self.data = data
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx:**: indicates that the call was successful.
-        # *   **3xx**: indicates that the call was redirected.
-        # *   **4xx**: indicates that the call failed.
-        # *   **5xx**: indicates that a server error occurred.
-        self.error_code = error_code
-        # The ID of the trace. The ID is used to query the details of a request.
-        self.message = message
-        # The returned information.
-        self.request_id = request_id
-        self.success = success
         # The returned result.
+        self.data = data
+        # The error code.
+        # 
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section in this topic.
+        self.error_code = error_code
+        # Additional information about the call.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the ConfigMap instance was updated.
+        # 
+        # - **true**: The instance was updated.
+        # 
+        # - **false**: The instance failed to be updated.
+        self.success = success
+        # The trace ID that is used to query the details of the call.
         self.trace_id = trace_id
 
     def validate(self):
@@ -101,10 +110,7 @@ class UpdateConfigMapResponseBodyData(DaraModel):
         self,
         config_map_id: str = None,
     ):
-        # The returned error code. Valid values:
-        # 
-        # *   If the call is successful, the **ErrorCode** parameter is not returned.
-        # *   If the call fails, the **ErrorCode** parameter is returned. For more information, see the "**Error codes**" section of this topic.
+        # The ID of the ConfigMap instance.
         self.config_map_id = config_map_id
 
     def validate(self):

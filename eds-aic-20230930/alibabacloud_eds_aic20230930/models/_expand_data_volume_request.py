@@ -17,12 +17,18 @@ class ExpandDataVolumeRequest(DaraModel):
         promotion_id: str = None,
         share_data_volume: int = None,
     ):
+        # Specifies whether to enable automatic payment. The default value is false.
         self.auto_pay = auto_pay
+        # The region ID.
         self.biz_region_id = biz_region_id
+        # The IDs of the cloud phone matrices.
         self.node_ids = node_ids
         self.paid_call_back_url = paid_call_back_url
+        # The size of the instance storage. Unit: GiB.
         self.phone_data_volume = phone_data_volume
+        # The promotion ID.
         self.promotion_id = promotion_id
+        # The size of the shared storage for the matrix. Unit: GiB.
         self.share_data_volume = share_data_volume
 
     def validate(self):

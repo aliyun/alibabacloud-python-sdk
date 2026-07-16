@@ -50,9 +50,15 @@ from ._create_access_point_response import CreateAccessPointResponse
 from ._create_access_rule_request import CreateAccessRuleRequest
 from ._create_access_rule_response_body import CreateAccessRuleResponseBody
 from ._create_access_rule_response import CreateAccessRuleResponse
+from ._create_agentic_space_request import CreateAgenticSpaceRequest
+from ._create_agentic_space_response_body import CreateAgenticSpaceResponseBody
+from ._create_agentic_space_response import CreateAgenticSpaceResponse
 from ._create_auto_snapshot_policy_request import CreateAutoSnapshotPolicyRequest
 from ._create_auto_snapshot_policy_response_body import CreateAutoSnapshotPolicyResponseBody
 from ._create_auto_snapshot_policy_response import CreateAutoSnapshotPolicyResponse
+from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequest
+from ._create_cpfs_access_point_response_body import CreateCpfsAccessPointResponseBody
+from ._create_cpfs_access_point_response import CreateCpfsAccessPointResponse
 from ._create_data_flow_request import CreateDataFlowRequest
 from ._create_data_flow_response_body import CreateDataFlowResponseBody
 from ._create_data_flow_response import CreateDataFlowResponse
@@ -113,9 +119,15 @@ from ._delete_access_point_response import DeleteAccessPointResponse
 from ._delete_access_rule_request import DeleteAccessRuleRequest
 from ._delete_access_rule_response_body import DeleteAccessRuleResponseBody
 from ._delete_access_rule_response import DeleteAccessRuleResponse
+from ._delete_agentic_space_request import DeleteAgenticSpaceRequest
+from ._delete_agentic_space_response_body import DeleteAgenticSpaceResponseBody
+from ._delete_agentic_space_response import DeleteAgenticSpaceResponse
 from ._delete_auto_snapshot_policy_request import DeleteAutoSnapshotPolicyRequest
 from ._delete_auto_snapshot_policy_response_body import DeleteAutoSnapshotPolicyResponseBody
 from ._delete_auto_snapshot_policy_response import DeleteAutoSnapshotPolicyResponse
+from ._delete_cpfs_access_point_request import DeleteCpfsAccessPointRequest
+from ._delete_cpfs_access_point_response_body import DeleteCpfsAccessPointResponseBody
+from ._delete_cpfs_access_point_response import DeleteCpfsAccessPointResponse
 from ._delete_data_flow_request import DeleteDataFlowRequest
 from ._delete_data_flow_response_body import DeleteDataFlowResponseBody
 from ._delete_data_flow_response import DeleteDataFlowResponse
@@ -158,6 +170,9 @@ from ._describe_access_points_response import DescribeAccessPointsResponse
 from ._describe_access_rules_request import DescribeAccessRulesRequest
 from ._describe_access_rules_response_body import DescribeAccessRulesResponseBody
 from ._describe_access_rules_response import DescribeAccessRulesResponse
+from ._describe_agentic_spaces_request import DescribeAgenticSpacesRequest
+from ._describe_agentic_spaces_response_body import DescribeAgenticSpacesResponseBody
+from ._describe_agentic_spaces_response import DescribeAgenticSpacesResponse
 from ._describe_auto_snapshot_policies_request import DescribeAutoSnapshotPoliciesRequest
 from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshotPoliciesResponseBody
 from ._describe_auto_snapshot_policies_response import DescribeAutoSnapshotPoliciesResponse
@@ -167,6 +182,12 @@ from ._describe_auto_snapshot_tasks_response import DescribeAutoSnapshotTasksRes
 from ._describe_black_list_clients_request import DescribeBlackListClientsRequest
 from ._describe_black_list_clients_response_body import DescribeBlackListClientsResponseBody
 from ._describe_black_list_clients_response import DescribeBlackListClientsResponse
+from ._describe_cpfs_access_point_mounted_clients_request import DescribeCpfsAccessPointMountedClientsRequest
+from ._describe_cpfs_access_point_mounted_clients_response_body import DescribeCpfsAccessPointMountedClientsResponseBody
+from ._describe_cpfs_access_point_mounted_clients_response import DescribeCpfsAccessPointMountedClientsResponse
+from ._describe_cpfs_access_points_request import DescribeCpfsAccessPointsRequest
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBody
+from ._describe_cpfs_access_points_response import DescribeCpfsAccessPointsResponse
 from ._describe_data_flow_sub_tasks_request import DescribeDataFlowSubTasksRequest
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBody
 from ._describe_data_flow_sub_tasks_response import DescribeDataFlowSubTasksResponse
@@ -255,6 +276,9 @@ from ._enable_recycle_bin_response import EnableRecycleBinResponse
 from ._enable_smb_acl_request import EnableSmbAclRequest
 from ._enable_smb_acl_response_body import EnableSmbAclResponseBody
 from ._enable_smb_acl_response import EnableSmbAclResponse
+from ._get_agentic_space_request import GetAgenticSpaceRequest
+from ._get_agentic_space_response_body import GetAgenticSpaceResponseBody
+from ._get_agentic_space_response import GetAgenticSpaceResponse
 from ._get_directory_or_file_properties_request import GetDirectoryOrFilePropertiesRequest
 from ._get_directory_or_file_properties_response_body import GetDirectoryOrFilePropertiesResponseBody
 from ._get_directory_or_file_properties_response import GetDirectoryOrFilePropertiesResponse
@@ -267,6 +291,9 @@ from ._get_protocol_mount_target_response import GetProtocolMountTargetResponse
 from ._get_recycle_bin_attribute_request import GetRecycleBinAttributeRequest
 from ._get_recycle_bin_attribute_response_body import GetRecycleBinAttributeResponseBody
 from ._get_recycle_bin_attribute_response import GetRecycleBinAttributeResponse
+from ._list_access_points_request import ListAccessPointsRequest
+from ._list_access_points_response_body import ListAccessPointsResponseBody
+from ._list_access_points_response import ListAccessPointsResponse
 from ._list_directories_and_files_request import ListDirectoriesAndFilesRequest
 from ._list_directories_and_files_response_body import ListDirectoriesAndFilesResponseBody
 from ._list_directories_and_files_response import ListDirectoriesAndFilesResponse
@@ -294,9 +321,15 @@ from ._modify_access_point_response import ModifyAccessPointResponse
 from ._modify_access_rule_request import ModifyAccessRuleRequest
 from ._modify_access_rule_response_body import ModifyAccessRuleResponseBody
 from ._modify_access_rule_response import ModifyAccessRuleResponse
+from ._modify_agentic_space_request import ModifyAgenticSpaceRequest
+from ._modify_agentic_space_response_body import ModifyAgenticSpaceResponseBody
+from ._modify_agentic_space_response import ModifyAgenticSpaceResponse
 from ._modify_auto_snapshot_policy_request import ModifyAutoSnapshotPolicyRequest
 from ._modify_auto_snapshot_policy_response_body import ModifyAutoSnapshotPolicyResponseBody
 from ._modify_auto_snapshot_policy_response import ModifyAutoSnapshotPolicyResponse
+from ._modify_cpfs_access_point_request import ModifyCpfsAccessPointRequest
+from ._modify_cpfs_access_point_response_body import ModifyCpfsAccessPointResponseBody
+from ._modify_cpfs_access_point_response import ModifyCpfsAccessPointResponse
 from ._modify_data_flow_request import ModifyDataFlowRequest
 from ._modify_data_flow_response_body import ModifyDataFlowResponseBody
 from ._modify_data_flow_response import ModifyDataFlowResponse
@@ -339,6 +372,9 @@ from ._reset_file_system_response import ResetFileSystemResponse
 from ._retry_lifecycle_retrieve_job_request import RetryLifecycleRetrieveJobRequest
 from ._retry_lifecycle_retrieve_job_response_body import RetryLifecycleRetrieveJobResponseBody
 from ._retry_lifecycle_retrieve_job_response import RetryLifecycleRetrieveJobResponse
+from ._set_agentic_space_quota_request import SetAgenticSpaceQuotaRequest
+from ._set_agentic_space_quota_response_body import SetAgenticSpaceQuotaResponseBody
+from ._set_agentic_space_quota_response import SetAgenticSpaceQuotaResponse
 from ._set_dir_quota_request import SetDirQuotaRequest
 from ._set_dir_quota_response_body import SetDirQuotaResponseBody
 from ._set_dir_quota_response import SetDirQuotaResponse
@@ -374,8 +410,11 @@ from ._upgrade_file_system_response_body import UpgradeFileSystemResponseBody
 from ._upgrade_file_system_response import UpgradeFileSystemResponse
 from ._apply_data_flow_auto_refresh_request import ApplyDataFlowAutoRefreshRequestAutoRefreshs
 from ._attach_vsc_to_filesystems_request import AttachVscToFilesystemsRequestResourceIds
+from ._attach_vsc_to_filesystems_request import AttachVscToFilesystemsRequestRoleChain
 from ._create_access_point_request import CreateAccessPointRequestTag
 from ._create_access_point_response_body import CreateAccessPointResponseBodyAccessPoint
+from ._create_agentic_space_request import CreateAgenticSpaceRequestQuota
+from ._create_cpfs_access_point_request import CreateCpfsAccessPointRequestRootDirectory
 from ._create_data_flow_request import CreateDataFlowRequestAutoRefreshs
 from ._create_data_flow_sub_task_request import CreateDataFlowSubTaskRequestCondition
 from ._create_file_system_request import CreateFileSystemRequestTag
@@ -396,10 +435,17 @@ from ._describe_access_points_response_body import DescribeAccessPointsResponseB
 from ._describe_access_points_response_body import DescribeAccessPointsResponseBodyAccessPoints
 from ._describe_access_rules_response_body import DescribeAccessRulesResponseBodyAccessRulesAccessRule
 from ._describe_access_rules_response_body import DescribeAccessRulesResponseBodyAccessRules
+from ._describe_agentic_spaces_request import DescribeAgenticSpacesRequestFilters
+from ._describe_agentic_spaces_response_body import DescribeAgenticSpacesResponseBodyAgenticSpacesAgenticSpaceQuota
+from ._describe_agentic_spaces_response_body import DescribeAgenticSpacesResponseBodyAgenticSpacesAgenticSpace
+from ._describe_agentic_spaces_response_body import DescribeAgenticSpacesResponseBodyAgenticSpaces
 from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy
 from ._describe_auto_snapshot_policies_response_body import DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask
 from ._describe_auto_snapshot_tasks_response_body import DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks
+from ._describe_cpfs_access_point_mounted_clients_response_body import DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory
+from ._describe_cpfs_access_points_response_body import DescribeCpfsAccessPointsResponseBodyAccessPoints
 from ._describe_data_flow_sub_tasks_request import DescribeDataFlowSubTasksRequestFilters
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail
 from ._describe_data_flow_sub_tasks_response_body import DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats
@@ -449,6 +495,7 @@ from ._describe_filesets_response_body import DescribeFilesetsResponseBodyEntrie
 from ._describe_filesystems_associated_hpn_zones_request import DescribeFilesystemsAssociatedHpnZonesRequestFilesystems
 from ._describe_filesystems_associated_hpn_zones_response_body import DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems
 from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVscAttachInfoRequestResourceIds
+from ._describe_filesystems_vsc_attach_info_request import DescribeFilesystemsVscAttachInfoRequestRoleChain
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo
 from ._describe_filesystems_vsc_attach_info_response_body import DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo
 from ._describe_lifecycle_policies_response_body import DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules
@@ -486,11 +533,19 @@ from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZonePer
 from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZone
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
 from ._detach_vsc_from_filesystems_request import DetachVscFromFilesystemsRequestResourceIds
+from ._detach_vsc_from_filesystems_request import DetachVscFromFilesystemsRequestRoleChain
+from ._get_agentic_space_response_body import GetAgenticSpaceResponseBodyAgenticSpaceQuota
+from ._get_agentic_space_response_body import GetAgenticSpaceResponseBodyAgenticSpace
 from ._get_directory_or_file_properties_response_body import GetDirectoryOrFilePropertiesResponseBodyEntry
 from ._get_fileset_response_body import GetFilesetResponseBodyDataQuota
 from ._get_fileset_response_body import GetFilesetResponseBodyData
 from ._get_protocol_mount_target_response_body import GetProtocolMountTargetResponseBodyProtocolMountTarget
 from ._get_recycle_bin_attribute_response_body import GetRecycleBinAttributeResponseBodyRecycleBinAttribute
+from ._list_access_points_request import ListAccessPointsRequestFilters
+from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPointsPosixUser
+from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPointsRootPathPermission
+from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPointsTags
+from ._list_access_points_response_body import ListAccessPointsResponseBodyAccessPoints
 from ._list_directories_and_files_response_body import ListDirectoriesAndFilesResponseBodyEntries
 from ._list_lifecycle_retrieve_jobs_response_body import ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs
 from ._list_recently_recycled_directories_response_body import ListRecentlyRecycledDirectoriesResponseBodyEntries
@@ -553,9 +608,15 @@ __all__ = [
     CreateAccessRuleRequest,
     CreateAccessRuleResponseBody,
     CreateAccessRuleResponse,
+    CreateAgenticSpaceRequest,
+    CreateAgenticSpaceResponseBody,
+    CreateAgenticSpaceResponse,
     CreateAutoSnapshotPolicyRequest,
     CreateAutoSnapshotPolicyResponseBody,
     CreateAutoSnapshotPolicyResponse,
+    CreateCpfsAccessPointRequest,
+    CreateCpfsAccessPointResponseBody,
+    CreateCpfsAccessPointResponse,
     CreateDataFlowRequest,
     CreateDataFlowResponseBody,
     CreateDataFlowResponse,
@@ -616,9 +677,15 @@ __all__ = [
     DeleteAccessRuleRequest,
     DeleteAccessRuleResponseBody,
     DeleteAccessRuleResponse,
+    DeleteAgenticSpaceRequest,
+    DeleteAgenticSpaceResponseBody,
+    DeleteAgenticSpaceResponse,
     DeleteAutoSnapshotPolicyRequest,
     DeleteAutoSnapshotPolicyResponseBody,
     DeleteAutoSnapshotPolicyResponse,
+    DeleteCpfsAccessPointRequest,
+    DeleteCpfsAccessPointResponseBody,
+    DeleteCpfsAccessPointResponse,
     DeleteDataFlowRequest,
     DeleteDataFlowResponseBody,
     DeleteDataFlowResponse,
@@ -661,6 +728,9 @@ __all__ = [
     DescribeAccessRulesRequest,
     DescribeAccessRulesResponseBody,
     DescribeAccessRulesResponse,
+    DescribeAgenticSpacesRequest,
+    DescribeAgenticSpacesResponseBody,
+    DescribeAgenticSpacesResponse,
     DescribeAutoSnapshotPoliciesRequest,
     DescribeAutoSnapshotPoliciesResponseBody,
     DescribeAutoSnapshotPoliciesResponse,
@@ -670,6 +740,12 @@ __all__ = [
     DescribeBlackListClientsRequest,
     DescribeBlackListClientsResponseBody,
     DescribeBlackListClientsResponse,
+    DescribeCpfsAccessPointMountedClientsRequest,
+    DescribeCpfsAccessPointMountedClientsResponseBody,
+    DescribeCpfsAccessPointMountedClientsResponse,
+    DescribeCpfsAccessPointsRequest,
+    DescribeCpfsAccessPointsResponseBody,
+    DescribeCpfsAccessPointsResponse,
     DescribeDataFlowSubTasksRequest,
     DescribeDataFlowSubTasksResponseBody,
     DescribeDataFlowSubTasksResponse,
@@ -758,6 +834,9 @@ __all__ = [
     EnableSmbAclRequest,
     EnableSmbAclResponseBody,
     EnableSmbAclResponse,
+    GetAgenticSpaceRequest,
+    GetAgenticSpaceResponseBody,
+    GetAgenticSpaceResponse,
     GetDirectoryOrFilePropertiesRequest,
     GetDirectoryOrFilePropertiesResponseBody,
     GetDirectoryOrFilePropertiesResponse,
@@ -770,6 +849,9 @@ __all__ = [
     GetRecycleBinAttributeRequest,
     GetRecycleBinAttributeResponseBody,
     GetRecycleBinAttributeResponse,
+    ListAccessPointsRequest,
+    ListAccessPointsResponseBody,
+    ListAccessPointsResponse,
     ListDirectoriesAndFilesRequest,
     ListDirectoriesAndFilesResponseBody,
     ListDirectoriesAndFilesResponse,
@@ -797,9 +879,15 @@ __all__ = [
     ModifyAccessRuleRequest,
     ModifyAccessRuleResponseBody,
     ModifyAccessRuleResponse,
+    ModifyAgenticSpaceRequest,
+    ModifyAgenticSpaceResponseBody,
+    ModifyAgenticSpaceResponse,
     ModifyAutoSnapshotPolicyRequest,
     ModifyAutoSnapshotPolicyResponseBody,
     ModifyAutoSnapshotPolicyResponse,
+    ModifyCpfsAccessPointRequest,
+    ModifyCpfsAccessPointResponseBody,
+    ModifyCpfsAccessPointResponse,
     ModifyDataFlowRequest,
     ModifyDataFlowResponseBody,
     ModifyDataFlowResponse,
@@ -842,6 +930,9 @@ __all__ = [
     RetryLifecycleRetrieveJobRequest,
     RetryLifecycleRetrieveJobResponseBody,
     RetryLifecycleRetrieveJobResponse,
+    SetAgenticSpaceQuotaRequest,
+    SetAgenticSpaceQuotaResponseBody,
+    SetAgenticSpaceQuotaResponse,
     SetDirQuotaRequest,
     SetDirQuotaResponseBody,
     SetDirQuotaResponse,
@@ -877,8 +968,11 @@ __all__ = [
     UpgradeFileSystemResponse,
     ApplyDataFlowAutoRefreshRequestAutoRefreshs,
     AttachVscToFilesystemsRequestResourceIds,
+    AttachVscToFilesystemsRequestRoleChain,
     CreateAccessPointRequestTag,
     CreateAccessPointResponseBodyAccessPoint,
+    CreateAgenticSpaceRequestQuota,
+    CreateCpfsAccessPointRequestRootDirectory,
     CreateDataFlowRequestAutoRefreshs,
     CreateDataFlowSubTaskRequestCondition,
     CreateFileSystemRequestTag,
@@ -899,10 +993,17 @@ __all__ = [
     DescribeAccessPointsResponseBodyAccessPoints,
     DescribeAccessRulesResponseBodyAccessRulesAccessRule,
     DescribeAccessRulesResponseBodyAccessRules,
+    DescribeAgenticSpacesRequestFilters,
+    DescribeAgenticSpacesResponseBodyAgenticSpacesAgenticSpaceQuota,
+    DescribeAgenticSpacesResponseBodyAgenticSpacesAgenticSpace,
+    DescribeAgenticSpacesResponseBodyAgenticSpaces,
     DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPolicy,
     DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPolicies,
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasksAutoSnapshotTask,
     DescribeAutoSnapshotTasksResponseBodyAutoSnapshotTasks,
+    DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient,
+    DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory,
+    DescribeCpfsAccessPointsResponseBodyAccessPoints,
     DescribeDataFlowSubTasksRequestFilters,
     DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskFileDetail,
     DescribeDataFlowSubTasksResponseBodyDataFlowSubTaskDataFlowSubTaskProgressStats,
@@ -952,6 +1053,7 @@ __all__ = [
     DescribeFilesystemsAssociatedHpnZonesRequestFilesystems,
     DescribeFilesystemsAssociatedHpnZonesResponseBodyFilesystems,
     DescribeFilesystemsVscAttachInfoRequestResourceIds,
+    DescribeFilesystemsVscAttachInfoRequestRoleChain,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo,
     DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo,
     DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules,
@@ -989,11 +1091,19 @@ __all__ = [
     DescribeZonesResponseBodyZonesZone,
     DescribeZonesResponseBodyZones,
     DetachVscFromFilesystemsRequestResourceIds,
+    DetachVscFromFilesystemsRequestRoleChain,
+    GetAgenticSpaceResponseBodyAgenticSpaceQuota,
+    GetAgenticSpaceResponseBodyAgenticSpace,
     GetDirectoryOrFilePropertiesResponseBodyEntry,
     GetFilesetResponseBodyDataQuota,
     GetFilesetResponseBodyData,
     GetProtocolMountTargetResponseBodyProtocolMountTarget,
     GetRecycleBinAttributeResponseBodyRecycleBinAttribute,
+    ListAccessPointsRequestFilters,
+    ListAccessPointsResponseBodyAccessPointsPosixUser,
+    ListAccessPointsResponseBodyAccessPointsRootPathPermission,
+    ListAccessPointsResponseBodyAccessPointsTags,
+    ListAccessPointsResponseBodyAccessPoints,
     ListDirectoriesAndFilesResponseBodyEntries,
     ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs,
     ListRecentlyRecycledDirectoriesResponseBodyEntries,

@@ -16,12 +16,19 @@ class GetJobDiagnosisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the abnormal diagnostic items.
         self.access_denied_detail = access_denied_detail
+        # The diagnostics result.
         self.data = data
+        # The error code. This parameter is not empty when success is false, indicating a business error code. This parameter is empty when success is true.
         self.error_code = error_code
+        # The error message. This parameter is not empty when success is false, indicating a business error message. This parameter is empty when success is true.
         self.error_message = error_message
+        # The HTTP status code, which is always 200. Use the success parameter to determine whether the request was successful.
         self.http_code = http_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

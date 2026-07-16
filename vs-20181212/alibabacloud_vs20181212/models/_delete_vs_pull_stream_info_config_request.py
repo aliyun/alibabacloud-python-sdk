@@ -12,11 +12,17 @@ class DeleteVsPullStreamInfoConfigRequest(DaraModel):
         owner_id: int = None,
         stream_name: str = None,
     ):
+        # The application name for the live stream.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # Your stream pulling domain.
+        # 
         # This parameter is required.
         self.domain_name = domain_name
         self.owner_id = owner_id
+        # The name of the live stream.
+        # 
         # This parameter is required.
         self.stream_name = stream_name
 

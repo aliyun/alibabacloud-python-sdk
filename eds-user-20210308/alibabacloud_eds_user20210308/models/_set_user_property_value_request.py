@@ -13,6 +13,7 @@ class SetUserPropertyValueRequest(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # Channel
         self.business_channel = business_channel
         # The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
         # 

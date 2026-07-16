@@ -22,33 +22,41 @@ class UpdateMediaInfoRequest(DaraModel):
     ):
         # Specifies whether to append tags. Default value: false. Valid values:
         # 
-        # *   true: updates the MediaTags parameter by appending new tags.
-        # *   false: updates the MediaTags parameter by overwriting existing tags with new tags.
+        # - true: updates the MediaTags parameter by appending new tags.
+        # 
+        # - false: updates the MediaTags parameter by overwriting existing tags with new tags.
         self.append_tags = append_tags
         # The business type. Valid values:
         # 
-        # *   subtitles
-        # *   watermark
-        # *   opening
-        # *   ending
-        # *   general
+        # - subtitles
+        # 
+        # - watermark
+        # 
+        # - opening
+        # 
+        # - ending
+        # 
+        # - general
         self.business_type = business_type
         # The category ID.
         self.cate_id = cate_id
         # The category.
         # 
-        # *   The value can be up to 64 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The value can be up to 64 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         self.category = category
         # The URL of the thumbnail.
         # 
-        # *   The value can be up to 128 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The value can be up to 128 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         self.cover_url = cover_url
         # The content description.
         # 
-        # *   The value can be up to 1,024 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The value can be up to 1,024 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         self.description = description
         # The input URL of the media asset in another service. The URL must be bound to the ID of the media asset in IMS. The URL cannot be modified once registered.
         # 
@@ -56,23 +64,27 @@ class UpdateMediaInfoRequest(DaraModel):
         # 
         # 1\\. http(s)://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
         # 
-        # 2\\. oss://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
+        # 2\\. oss\\://example-bucket/example.mp4. This format indicates that the region in which the OSS bucket of the media asset resides is the same as the region in which OSS is activated.
         self.input_url = input_url
         # The ID of the media asset. If this parameter is left empty, you must specify the input URL of the media asset, which has been registered in the IMS content library.
         self.media_id = media_id
         # The tags.
         # 
-        # *   Up to 16 tags are supported.
-        # *   Separate multiple tags with commas (,).
-        # *   Each tag can be up to 32 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - Up to 16 tags are supported.
+        # 
+        # - Separate multiple tags with commas (,).
+        # 
+        # - Each tag can be up to 32 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         self.media_tags = media_tags
         # The custom ID. The ID can be 6 to 64 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). Make sure that the ID is unique among users.
         self.reference_id = reference_id
         # The title.
         # 
-        # *   The value can be up to 128 bytes in length.
-        # *   The value must be encoded in UTF-8.
+        # - The value can be up to 128 bytes in length.
+        # 
+        # - The value must be encoded in UTF-8.
         self.title = title
         # The user data. It can be up to 1,024 bytes in size.
         self.user_data = user_data

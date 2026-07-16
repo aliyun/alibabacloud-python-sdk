@@ -1,3 +1,33 @@
+2026-07-08 Version: 1.9.1
+- Update API SubmitYikeStoryboardJob: add request parameters NeedCaption.
+- Update API SubmitYikeStoryboardJob: add request parameters ShotPromptLang.
+
+
+2026-07-02 Version: 1.9.0
+- Support API GetImageGenerationJob.
+- Support API GetVideoGenerationJob.
+- Support API SubmitImageGenerationJob.
+- Support API SubmitVideoGenerationJob.
+
+
+2026-07-02 Version: 1.8.0
+- Support API SubmitYikeVideoCloneJob.
+
+
+2026-06-30 Version: 1.7.0
+- Support API GetYikeProjectExportJob.
+- Support API SubmitYikeProjectExportJob.
+
+
+2026-05-27 Version: 1.6.3
+- Update API GetYikeAgentJob: add response parameters Body.CreateTime.
+- Update API GetYikeAgentJob: add response parameters Body.FinishTime.
+
+
+2026-05-26 Version: 1.6.2
+- Update API GetYikeStoryboardJob: add response parameters Body.JobCredit.
+
+
 2026-05-21 Version: 1.6.1
 - Generated python 2026-03-19 for Yike.
 

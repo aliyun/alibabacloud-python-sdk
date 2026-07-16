@@ -10,7 +10,10 @@ class TestRuleV4Request(DaraModel):
         is_scheme_data: int = None,
         test_json: str = None,
     ):
+        # Whether this is the new quality check version. Valid values: 0 (legacy version) and 1 (new version). Default value: 1.
         self.is_scheme_data = is_scheme_data
+        # JSON request parameters for rule testing. For details, see the supplemental description of request parameters.
+        # 
         # This parameter is required.
         self.test_json = test_json
 

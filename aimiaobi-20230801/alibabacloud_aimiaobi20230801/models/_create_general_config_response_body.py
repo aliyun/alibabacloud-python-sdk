@@ -15,11 +15,17 @@ class CreateGeneralConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # Response data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Unique request identifier
         self.request_id = request_id
+        # Indicates success: true for success, false for failure
         self.success = success
 
     def validate(self):
@@ -82,9 +88,13 @@ class CreateGeneralConfigResponseBodyData(DaraModel):
         config_value: str = None,
         config_value_type: str = None,
     ):
+        # Configuration description
         self.config_desc = config_desc
+        # Unique identifier of the configuration item
         self.config_key = config_key
+        # Configuration value
         self.config_value = config_value
+        # Configuration type
         self.config_value_type = config_value_type
 
     def validate(self):

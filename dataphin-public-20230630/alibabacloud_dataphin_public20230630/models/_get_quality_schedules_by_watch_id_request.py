@@ -10,8 +10,12 @@ class GetQualitySchedulesByWatchIdRequest(DaraModel):
         op_tenant_id: int = None,
         watch_id: int = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The monitored object ID.
+        # 
         # This parameter is required.
         self.watch_id = watch_id
 

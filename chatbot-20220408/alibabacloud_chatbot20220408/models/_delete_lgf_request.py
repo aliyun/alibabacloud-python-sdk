@@ -12,12 +12,17 @@ class DeleteLgfRequest(DaraModel):
         intent_id: int = None,
         lgf_id: int = None,
     ):
+        # The key of the business space. If omitted, the default business space is used. You can find this key on the Business Management page of your primary account.
         self.agent_key = agent_key
+        # The robot ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
-        # lgf Id
+        # The ID of the LGF configuration.
         # 
         # This parameter is required.
         self.lgf_id = lgf_id

@@ -14,15 +14,26 @@ class ListBeebotIntentLgfRequest(DaraModel):
         page_size: int = None,
         script_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The intent ID.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The utterance template.
         self.lgf_text = lgf_text
+        # The page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # Number of items
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # The scenario ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

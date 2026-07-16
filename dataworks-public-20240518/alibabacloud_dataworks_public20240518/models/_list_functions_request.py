@@ -32,12 +32,17 @@ class ListFunctionsRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Math: mathematical operation function
-        # *   Aggregate: aggregate function
-        # *   String: string processing function
-        # *   Date: date function
-        # *   Analytic: window function
-        # *   Other: other functions
+        # - Math: mathematical operation function
+        # 
+        # - Aggregate: aggregate function
+        # 
+        # - String: string processing function
+        # 
+        # - Date: date function
+        # 
+        # - Analytic: window function
+        # 
+        # - Other: other functions
         self.type = type
 
     def validate(self):

@@ -10,11 +10,11 @@ class GetQueueRequest(DaraModel):
         cluster_id: str = None,
         queue_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
-        # You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
+        # You can call [ListClusters](https://help.aliyun.com/document_detail/87116.html) to query the cluster ID.
         self.cluster_id = cluster_id
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
 
     def validate(self):

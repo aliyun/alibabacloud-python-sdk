@@ -15,13 +15,13 @@ class ListServiceInstanceResourcesResponseBody(DaraModel):
         request_id: str = None,
         resources: List[main_models.ListServiceInstanceResourcesResponseBodyResources] = None,
     ):
-        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
+        # The number of entries returned on each page. Maximum value: 100. Default value: 20.
         self.max_results = max_results
-        # A pagination token.
+        # The token to retrieve the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The resources.
+        # The list of resources.
         self.resources = resources
 
     def validate(self):
@@ -90,35 +90,41 @@ class ListServiceInstanceResourcesResponseBodyResources(DaraModel):
         self.expire_time = expire_time
         # The billing method. Valid values:
         # 
-        # *   Subscription
-        # *   PayAsYouGo
-        self.pay_type = pay_type
-        # The code of the cloud service.
-        self.product_code = product_code
-        # The type of the cloud service.
-        self.product_type = product_type
-        # The renewal state. Valid values:
+        # - Subscription: subscription.
         # 
-        # *   AutoRenewal
-        # *   ManualRenewal
-        # *   NotRenewal
+        # - PayAsYouGo: pay-as-you-go.
+        self.pay_type = pay_type
+        # The product code.
+        self.product_code = product_code
+        # The product type.
+        self.product_type = product_type
+        # The renewal status. Valid values:
+        # 
+        # - AutoRenewal: auto-renewal.
+        # 
+        # - ManualRenewal: manual renewal.
+        # 
+        # - NotRenewal: no renewal.
         self.renew_status = renew_status
         # The renewal period.
         self.renewal_period = renewal_period
         # The unit of the renewal period. Valid values:
         # 
-        # *   Month
-        # *   Year
+        # - Month: month.
+        # 
+        # - Year: year.
         self.renewal_period_unit = renewal_period_unit
         # The ARN of the resource.
         self.resource_arn = resource_arn
-        # The state of the resource. Valid values:
+        # The status of the resource. Valid values:
         # 
-        # *   running
-        # *   waiting
-        # *   terminated
+        # - running: The resource is running.
         # 
-        # >  This parameter is returned only for containers.
+        # - waiting: The resource is pending.
+        # 
+        # - terminated: The resource is terminated.
+        # 
+        # > This parameter is returned only for container resources.
         self.status = status
 
     def validate(self):

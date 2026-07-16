@@ -16,21 +16,23 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tags: List[main_models.Tag] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The token that determines the start point of the next query.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of cluster IDs.
+        # The list of resource IDs to query.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
-        # The resource type. Set the value to `CLUSTER`.
+        # The resource type.
+        # 
+        # CLUSTER: cluster.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of labels that you want to query. You can specify up to 20 labels.
+        # The list of tags to query. A maximum of 20 items can be specified.
         self.tags = tags
 
     def validate(self):

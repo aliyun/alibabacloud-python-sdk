@@ -17,13 +17,9 @@ class ModifyAppPolicyShrinkRequest(DaraModel):
         self.app_policy_id = app_policy_id
         # The product type.
         # 
-        # Enumerated values:
-        # 
-        # *   CloudApp: RDS Cloud App
-        # 
         # This parameter is required.
         self.product_type = product_type
-        # Displays the policy.
+        # The display policy.
         self.video_policy_shrink = video_policy_shrink
 
     def validate(self):

@@ -16,10 +16,17 @@ class ListSkillGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A value of "Success" indicates that the request succeeded.
         self.code = code
+        # Skill group information.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -83,10 +90,15 @@ class ListSkillGroupResponseBodyData(DaraModel):
         name: str = None,
         skill_group_id: int = None,
     ):
+        # Channel type of the skill group.
         self.channel_type = channel_type
+        # Skill group description.
         self.description = description
+        # Display name of the skill group.
         self.display_name = display_name
+        # Name of the skill group.
         self.name = name
+        # Skill group ID.
         self.skill_group_id = skill_group_id
 
     def validate(self):

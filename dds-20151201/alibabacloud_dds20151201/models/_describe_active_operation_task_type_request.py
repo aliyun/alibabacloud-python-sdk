@@ -16,8 +16,9 @@ class DescribeActiveOperationTaskTypeRequest(DaraModel):
     ):
         # Specifies whether to return historical O\\&M tasks. Valid values:
         # 
-        # *   **0** (default): The system returns only pending O\\&M tasks.
-        # *   **1**: The system returns historical O\\&M tasks.
+        # - **0** (default): The system returns only pending O\\&M tasks.
+        # 
+        # - **1**: The system returns historical O\\&M tasks.
         self.is_history = is_history
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -16,9 +16,9 @@ class ListAIAgentVoiceprintsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of voiceprints that match the query criteria.
+        # The total number of matching voiceprints.
         self.total_count = total_count
-        # The voiceprints.
+        # A list of voiceprint objects.
         self.voiceprints = voiceprints
 
     def validate(self):
@@ -68,11 +68,11 @@ class ListAIAgentVoiceprintsResponseBodyVoiceprints(DaraModel):
         gmt_modified: str = None,
         voiceprint_id: str = None,
     ):
-        # The creation time of the voiceprint.
+        # The time the voiceprint was created. The time is in UTC and formatted according to the ISO 8601 standard.
         self.gmt_create = gmt_create
-        # The last modification time of the voiceprint.
+        # The time the voiceprint was last modified. The time is in UTC and formatted according to the ISO 8601 standard.
         self.gmt_modified = gmt_modified
-        # The unique identifier for the voiceprint.
+        # The unique voiceprint ID.
         self.voiceprint_id = voiceprint_id
 
     def validate(self):

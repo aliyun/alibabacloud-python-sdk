@@ -13,15 +13,15 @@ class ListNodesRequest(DaraModel):
         size: int = None,
         tags: str = None,
     ):
-        # The IDs of the ECS instances.
+        # The list of ECS instance IDs.
         self.ecs_instance_ids = ecs_instance_ids
-        # The name of the ECS instance.
+        # The ECS instance name.
         self.ecs_instance_name = ecs_instance_name
-        # The number of the page to return.
+        # The page number of the returned results.
         self.page = page
-        # The number of entries to return on each page.
+        # The number of results per page.
         self.size = size
-        # The tags of the ECS instance. You must configure tagKey and tagValue.
+        # The tag information of the ECS instance. The tag key (tagKey) and tag value (tagValue) must be included.
         self.tags = tags
 
     def validate(self):

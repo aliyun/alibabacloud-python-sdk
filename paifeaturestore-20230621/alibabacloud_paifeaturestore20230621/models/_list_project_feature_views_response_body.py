@@ -14,8 +14,11 @@ class ListProjectFeatureViewsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of feature views.
         self.feature_views = feature_views
+        # The request ID.
         self.request_id = request_id
+        # The total count of feature views.
         self.total_count = total_count
 
     def validate(self):
@@ -68,11 +71,23 @@ class ListProjectFeatureViewsResponseBodyFeatureViews(DaraModel):
         parent_join_id: str = None,
         type: str = None,
     ):
+        # The feature view ID.
         self.feature_view_id = feature_view_id
+        # A list of features.
         self.features = features
+        # The join ID of the feature entity.
         self.join_id = join_id
+        # The feature view name.
         self.name = name
+        # The join ID of the parent feature entity.
         self.parent_join_id = parent_join_id
+        # The type of the feature view.
+        # 
+        # - Batch: A feature view that processes data in batches.
+        # 
+        # - Stream: A feature view that processes data as a stream.
+        # 
+        # - Sequence: A feature view that represents a sequence of features.
         self.type = type
 
     def validate(self):
@@ -140,8 +155,31 @@ class ListProjectFeatureViewsResponseBodyFeatureViewsFeatures(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # A list of field attributes. Valid values:
+        # 
+        # - Partition: Indicates that the feature is a partition field.
+        # 
+        # - PrimaryKey: Indicates that the feature is a primary key.
+        # 
+        # - EventTime: Indicates that the feature represents the event time.
         self.attributes = attributes
+        # The feature name.
         self.name = name
+        # The feature type. Valid values include:
+        # 
+        # - INT32
+        # 
+        # - INT64
+        # 
+        # - FLOAT
+        # 
+        # - DOUBLE
+        # 
+        # - STRING
+        # 
+        # - BOOLEAN
+        # 
+        # - TIMESTAMP
         self.type = type
 
     def validate(self):

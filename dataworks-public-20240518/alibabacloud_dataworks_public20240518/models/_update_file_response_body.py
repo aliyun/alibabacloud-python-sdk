@@ -23,8 +23,9 @@ class UpdateFileResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the call succeeded. Valid values:
         # 
-        # *   true: The call succeeded.
-        # *   false: The call failed.
+        # - true: The call succeeded.
+        # 
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeSnapshotSettingResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DescribeSnapshotSettingResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The return results.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -50,9 +50,9 @@ class DescribeSnapshotSettingResponseBodyResult(DaraModel):
         enable: bool = None,
         quartz_regex: str = None,
     ):
-        # Whether to enable automatic backup.
+        # Indicates whether automatic backup is enabled.
         self.enable = enable
-        # Automatic backup time configuration, using Quartz Cron expression.
+        # The automatic backup time configuration, specified as a Quartz Cron expression.
         self.quartz_regex = quartz_regex
 
     def validate(self):

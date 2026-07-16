@@ -16,13 +16,13 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the endpoint group mappings.
+        # The destination configurations of the endpoint group.
         self.destinations = destinations
-        # The number of the returned page.
+        # The page number of the list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -93,37 +93,38 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinations(DaraMod
         service_managed_infos: List[main_models.ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceManagedInfos] = None,
         to_port: int = None,
     ):
-        # The GA instance ID.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA) instance to which the endpoint group destination configuration belongs.
         self.accelerator_id = accelerator_id
-        # The ID of the endpoint group mapping.
+        # The ID of the endpoint group destination configuration.
         self.destination_id = destination_id
-        # The endpoint group ID.
+        # The ID of the endpoint group to which the destination configuration belongs.
         self.endpoint_group_id = endpoint_group_id
-        # The first port of the backend service port range.
+        # The start port of the backend service of the endpoint group.
         self.from_port = from_port
-        # The listener ID.
+        # The ID of the listener to which the endpoint group destination configuration belongs.
         self.listener_id = listener_id
-        # The backend service protocols of the endpoint group. Valid values:
+        # The Protocol Type of the backend service of the endpoint group.
         # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **TCP,UDP**
+        # - **TCP**: TCP protocol.
+        # 
+        # - **UDP**: UDP protocol.
+        # 
+        # - **TCP,UDP**: TCP and UDP protocols.
         self.protocols = protocols
-        # The ID of the service that manages the GA instance.
-        # 
-        # >  This parameter takes effect only if **ServiceManaged** is set to **True**.
+        # The ID of the service to which the managed instance belongs.
+        # > This parameter is valid only when **ServiceManaged** is set to **True**.
         self.service_id = service_id
-        # Indicates whether the GA instance is managed. Valid values:
+        # Indicates whether the instance is managed. Valid values:  
         # 
-        # *   true
-        # *   false
+        # - true: The instance is managed.  
+        # 
+        # - false: The instance is not managed.
         self.service_managed = service_managed
-        # The actions that you can perform on the managed instance.
-        # 
-        # >  - This parameter takes effect only if **ServiceManaged** is set to **True**.
-        # >  - You can perform only specific actions on the managed instance.
+        # The list of action policies that the user can execute on the managed instance.
+        # > This parameter is valid only when **ServiceManaged** is set to **True**.
+        # > - When the instance is in the managed state, user operations on the instance are restricted, and certain operations are prohibited.
         self.service_managed_infos = service_managed_infos
-        # The last port of the backend service port range.
+        # The end port of the backend service of the endpoint group.
         self.to_port = to_port
 
     def validate(self):
@@ -215,31 +216,27 @@ class ListCustomRoutingEndpointGroupDestinationsResponseBodyDestinationsServiceM
         child_type: str = None,
         is_managed: bool = None,
     ):
-        # The name of the action that you can perform on the managed instance. Valid values:
-        # 
-        # *   **Create**: Create an instance.
-        # *   **Update**: Update the current instance.
-        # *   **Delete**: Delete the current instance.
-        # *   **Associate**: Reference the current instance.
-        # *   **UserUnmanaged**: Unmanage the instance.
-        # *   **CreateChild**: Create a child resource in the current instance.
+        # The name of the managed policy action. Valid values:
+        # - **Create**: Create an instance.
+        # - **Update**: Update the current instance.
+        # - **Delete**: Delete the current instance.
+        # - **Associate**: Reference or be referenced by the current instance.
+        # - **UserUnmanaged**: Unmanage the instance.
+        # - **CreateChild**: Create a child resource under the current instance.
         self.action = action
         # The type of the child resource. Valid values:
-        # 
-        # *   **Listener**: listener.
-        # *   **IpSet**: acceleration region.
-        # *   **EndpointGroup**: endpoint group.
-        # *   **ForwardingRule**: forwarding rule.
-        # *   **Endpoint**: endpoint.
-        # *   **EndpointGroupDestination**: protocol mapping of an endpoint group associated with a custom routing listener.
-        # *   **EndpointPolicy**: traffic policy of an endpoint associated with a custom routing listener.
-        # 
-        # >  This parameter takes effect only if **Action** is set to **CreateChild**.
+        # - **Listener**: listener resource.
+        # - **IpSet**: acceleration region resource.
+        # - **EndpointGroup**: endpoint group resource.
+        # - **ForwardingRule**: forwarding rule resource.
+        # - **Endpoint**: endpoint resource.
+        # - **EndpointGroupDestination**: protocol mapping resource of the endpoint group under a custom routing listener.
+        # - **EndpointPolicy**: endpoint traffic policy resource under a custom routing listener.
+        # > This parameter is valid only when **Action** is set to **CreateChild**.
         self.child_type = child_type
-        # Indicates whether the specified actions are managed. Valid values:
-        # 
-        # *   **true**: The specified actions are managed, and you cannot perform the specified actions on the managed instance.
-        # *   **false**: The specified actions are not managed, and you can perform the specified actions on the managed instance.
+        # Indicates whether the managed policy action is managed. Valid values:
+        # - **true**: The managed policy action is managed. The user cannot perform the action specified by Action on the managed instance.
+        # - **false**: The managed policy action is not managed. The user can perform the action specified by Action on the managed instance.
         self.is_managed = is_managed
 
     def validate(self):

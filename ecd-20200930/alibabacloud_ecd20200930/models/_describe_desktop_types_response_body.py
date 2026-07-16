@@ -13,9 +13,9 @@ class DescribeDesktopTypesResponseBody(DaraModel):
         desktop_types: List[main_models.DescribeDesktopTypesResponseBodyDesktopTypes] = None,
         request_id: str = None,
     ):
-        # The specifications.
+        # The details of the specifications.
         self.desktop_types = desktop_types
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,37 +74,32 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
     ):
         # The number of vCPUs.
         self.cpu_count = cpu_count
-        # The size of the data disk. Unit: GiB.
+        # The size of the data disk, in GiB.
         self.data_disk_size = data_disk_size
         self.description = description
-        # The ID of the cloud desktop type.
+        # The specification ID.
         self.desktop_type_id = desktop_type_id
-        # The status of the cloud desktop type. If SUFFICIENT is returned, the number of cloud desktops of the type is sufficient.
+        # The availability of the specification. A value of `SUFFICIENT` indicates that the specification is in stock.
         self.desktop_type_status = desktop_type_status
         self.env_id = env_id
         self.env_type = env_type
-        # The number of GPUs.
+        # The number of GPU cores.
         self.gpu_count = gpu_count
-        # The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
+        # The GPU memory size in MiB. This parameter is valid only for GPU-accelerated cloud desktops.
         self.gpu_memory = gpu_memory
-        # The GPU memory.
+        # The GPU memory size.
         self.gpu_spec = gpu_spec
-        # The family of the cloud desktop type.
+        # The instance type family.
         self.instance_type_family = instance_type_family
-        # The number of sessions supported by the specification.
+        # The maximum number of concurrent sessions that is supported by the cloud desktop specification.
         self.max_session_count = max_session_count
-        # The memory size. Unit: MiB.
+        # The memory size, in MiB.
         self.memory_size = memory_size
-        # The sales modes of the specifications.
+        # The purchase options for the specification.
         self.scopes = scopes
-        # The inventory status of the specification.
-        # 
-        # Valid values:
-        # 
-        # *   Insufficient
-        # *   Sufficient
+        # The inventory status.
         self.stock_state = stock_state
-        # The size of the system disk. Unit: GiB.
+        # The size of the system disk, in GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

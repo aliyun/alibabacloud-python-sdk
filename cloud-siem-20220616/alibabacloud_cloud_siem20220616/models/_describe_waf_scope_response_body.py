@@ -16,18 +16,19 @@ class DescribeWafScopeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code of the request.
         self.code = code
         # The data returned.
         self.data = data
-        # The returned message.
+        # The message returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -89,9 +90,9 @@ class DescribeWafScopeResponseBodyData(DaraModel):
         domains: List[str] = None,
         instance_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account in SIEM.
+        # The ID of the Alibaba Cloud account.
         self.aliuid = aliuid
-        # The domain names that are protected by the WAF instance.
+        # The list of domain names that are protected by the WAF instance.
         self.domains = domains
         # The ID of the WAF instance.
         self.instance_id = instance_id

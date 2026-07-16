@@ -10,11 +10,15 @@ class ConfirmPipelineBatchRequest(DaraModel):
         confirm: bool = None,
         pipeline_id: str = None,
     ):
-        # true
+        # Specifies whether to start the next batch. Valid values:
+        # 
+        # - **true**: Start the next batch.
+        # 
+        # - **false**: Terminate the process.
         # 
         # This parameter is required.
         self.confirm = confirm
-        # The ID of the batch. You can call the [DescribeChangeOrder](https://www.alibabacloud.com/help/zh/sae/serverless-app-engine-classic/developer-reference/api-sae-2019-05-06-describechangeorder-old?spm=a2c63.p38356.help-menu-search-118957.d_0) operation to obtain the ID.
+        # The pipeline ID. To obtain the ID, call the <props="china">[DescribeChangeOrder](https://help.aliyun.com/zh/sae/serverless-app-engine-upgrade/developer-reference/api-sae-2019-05-06-describechangeorder?spm=a2c4g.11186623.help-menu-search-118957.d_0)<props="intl">[DescribeChangeOrder](https://www.alibabacloud.com/help/zh/sae/serverless-app-engine-classic/developer-reference/api-sae-2019-05-06-describechangeorder-old?spm=a2c63.p38356.help-menu-search-118957.d_0) operation.
         # 
         # This parameter is required.
         self.pipeline_id = pipeline_id

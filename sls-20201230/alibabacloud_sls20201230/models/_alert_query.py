@@ -21,26 +21,47 @@ class AlertQuery(DaraModel):
         time_span_type: str = None,
         ui: str = None,
     ):
+        # Chart name
         self.chart_title = chart_title
+        # Dashboard ID
         self.dashboard_id = dashboard_id
+        # End time
+        # 
         # This parameter is required.
         self.end = end
+        # Whether to enable Dedicated SQL
         self.power_sql_mode = power_sql_mode
+        # Project name
+        # 
         # This parameter is required.
         self.project = project
+        # Query and analysis statement
+        # 
         # This parameter is required.
         self.query = query
+        # Region
+        # 
         # This parameter is required.
         self.region = region
+        # Role ARN
         self.role_arn = role_arn
+        # Start time
+        # 
         # This parameter is required.
         self.start = start
+        # Store name
+        # 
         # This parameter is required.
         self.store = store
+        # Store type
+        # 
         # This parameter is required.
         self.store_type = store_type
+        # Time span type
+        # 
         # This parameter is required.
         self.time_span_type = time_span_type
+        # Used by the frontend for specific-scenario alerts
         self.ui = ui
 
     def validate(self):

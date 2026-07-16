@@ -17,17 +17,29 @@ class RunDocIntroductionRequest(DaraModel):
         workspace_id: str = None,
         reference_content: str = None,
     ):
+        # Purge cache
         self.clean_cache = clean_cache
+        # Document ID
+        # 
         # This parameter is required.
         self.doc_id = doc_id
+        # Custom requirements for the document summary
         self.introduction_prompt = introduction_prompt
+        # Custom requirements for key points
         self.key_point_prompt = key_point_prompt
+        # User-defined model name
         self.model_name = model_name
+        # Conversation ID
+        # 
         # This parameter is required.
         self.session_id = session_id
+        # Custom requirements for the summary content
         self.summary_prompt = summary_prompt
+        # Unique identifier (UUID) of the Alibaba Cloud Model Studio workspace. For more information, see [Workspace ID](https://help.aliyun.com/document_detail/2587495.html).
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
+        # Content to generate the summary from. If not empty, this value takes precedence over docId.
         self.reference_content = reference_content
 
     def validate(self):

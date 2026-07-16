@@ -76,9 +76,11 @@ class UpdateUserResponseBodyUser(DaraModel):
         self.mobile_phone = mobile_phone
         # The source of the RAM user. Valid values:
         # 
-        # *   Manual: The RAM user is manually created in the RAM console.
-        # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
-        # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
+        # - Manual: The RAM user is manually created in the RAM console.
+        # 
+        # - SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
+        # 
+        # - CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
         # The time when the information about the RAM user was updated.
         self.update_date = update_date

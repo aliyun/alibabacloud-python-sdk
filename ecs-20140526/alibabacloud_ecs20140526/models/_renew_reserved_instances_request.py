@@ -23,8 +23,9 @@ class RenewReservedInstancesRequest(DaraModel):
     ):
         # Specifies whether to enable auto-renewal for the reserved instance. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         # 
         # Default value: false.
         self.auto_renew = auto_renew

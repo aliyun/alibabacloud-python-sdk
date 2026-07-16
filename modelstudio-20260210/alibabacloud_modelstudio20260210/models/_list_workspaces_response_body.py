@@ -20,15 +20,26 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
+        # The response status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The number of entries per page.
         self.max_results = max_results
+        # The response message.
         self.message = message
+        # The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the API call was successful. Valid values:
+        # 
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
+        # The total number of records.
         self.total_count = total_count
+        # The list of business workspaces.
         self.workspaces = workspaces
 
     def validate(self):
@@ -119,10 +130,15 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
     ):
         # API Host。
         self.api_host = api_host
+        # The creation time.
         self.gmt_create = gmt_create
+        # The region ID.
         self.region = region
+        # The service deployment scope. For more information, see [documentation](https://www.alibabacloud.com/help/zh/model-studio/regions/).
         self.service_site = service_site
+        # The business workspace ID.
         self.workspace_id = workspace_id
+        # The business workspace name.
         self.workspace_name = workspace_name
 
     def validate(self):

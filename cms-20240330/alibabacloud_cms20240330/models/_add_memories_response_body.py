@@ -13,7 +13,9 @@ class AddMemoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.AddMemoriesResponseBodyResults] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Request results.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,11 @@ class AddMemoriesResponseBodyResults(DaraModel):
         message: str = None,
         status: str = None,
     ):
+        # Event ID.
         self.event_id = event_id
+        # Details.
         self.message = message
+        # Processing status.
         self.status = status
 
     def validate(self):

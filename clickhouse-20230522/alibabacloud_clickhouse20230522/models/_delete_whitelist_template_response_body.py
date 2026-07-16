@@ -13,7 +13,9 @@ class DeleteWhitelistTemplateResponseBody(DaraModel):
         data: main_models.DeleteWhitelistTemplateResponseBodyData = None,
         request_id: str = None,
     ):
+        # The data returned from the call.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -49,6 +51,7 @@ class DeleteWhitelistTemplateResponseBodyData(DaraModel):
         self,
         templates: List[main_models.DeleteWhitelistTemplateResponseBodyDataTemplates] = None,
     ):
+        # The whitelist templates.
         self.templates = templates
 
     def validate(self):
@@ -86,8 +89,11 @@ class DeleteWhitelistTemplateResponseBodyDataTemplates(DaraModel):
         security_iplist: str = None,
         template_id: str = None,
     ):
+        # The instances associated with the template.
         self.db_instances = db_instances
+        # The IP whitelist.
         self.security_iplist = security_iplist
+        # The whitelist template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -135,6 +141,7 @@ class DeleteWhitelistTemplateResponseBodyDataTemplatesDbInstances(DaraModel):
         self,
         db_instance_name: str = None,
     ):
+        # The ID of the instance.
         self.db_instance_name = db_instance_name
 
     def validate(self):

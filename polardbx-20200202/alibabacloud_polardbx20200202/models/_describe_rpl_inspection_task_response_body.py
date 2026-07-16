@@ -15,9 +15,13 @@ class DescribeRplInspectionTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The task details.
         self.data = data
+        # The error message of the task.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -66,7 +70,9 @@ class DescribeRplInspectionTaskResponseBodyData(DaraModel):
         inspection_task_list: List[main_models.DescribeRplInspectionTaskResponseBodyDataInspectionTaskList] = None,
         slink_stage: str = None,
     ):
+        # The machine task information.
         self.inspection_task_list = inspection_task_list
+        # The slink status.
         self.slink_stage = slink_stage
 
     def validate(self):
@@ -114,13 +120,19 @@ class DescribeRplInspectionTaskResponseBodyDataInspectionTaskList(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
+        # The timestamp when the task was created.
         self.create_time = create_time
+        # The description of the inspection task.
         self.description = description
+        # The task ID.
         self.id = id
         # slinktaskid。
         self.slink_task_id = slink_task_id
+        # The stage name.
         self.stage = stage
+        # The task status.
         self.status = status
+        # The timestamp of the most recent task update.
         self.update_time = update_time
 
     def validate(self):

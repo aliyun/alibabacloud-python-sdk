@@ -10,7 +10,9 @@ class GetClipsBuildInResourceRequest(DaraModel):
         resource_type: int = None,
         workspace_id: str = None,
     ):
+        # The resource type.
         self.resource_type = resource_type
+        # The ID of the Alibaba Cloud Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

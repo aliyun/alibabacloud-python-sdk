@@ -26,8 +26,9 @@ class UpdateAcceleratorCrossBorderModeRequest(DaraModel):
         self.client_token = client_token
         # The type of transmission network of the GA instance. Valid values:
         # 
-        # *   **bgpPro**: BGP (Multi-ISP) Pro. BGP (Multi-ISP) Pro lines are used for cross-border acceleration. You do not need to complete real-name verification.
-        # *   **private**: cross-border Express Connect circuit. Cross-border Express Connect circuits provide better acceleration performance but require real-name verification.
+        # - **bgpPro**: BGP (Multi-ISP) Pro. BGP (Multi-ISP) Pro lines are used for cross-border acceleration. You do not need to complete real-name verification.
+        # 
+        # - **private**: cross-border Express Connect circuit. Cross-border Express Connect circuits provide better acceleration performance but require real-name verification.
         # 
         # This parameter is required.
         self.cross_border_mode = cross_border_mode

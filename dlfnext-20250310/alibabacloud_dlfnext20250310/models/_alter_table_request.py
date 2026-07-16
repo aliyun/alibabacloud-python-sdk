@@ -12,6 +12,7 @@ class AlterTableRequest(DaraModel):
         self,
         changes: List[main_models.FullSchemaChange] = None,
     ):
+        # The changes made to the table.
         self.changes = changes
 
     def validate(self):

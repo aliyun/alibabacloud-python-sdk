@@ -16,10 +16,15 @@ class ListRolesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Role information.
         self.data = data
+        # Status code. A return value of 200 indicates that the request succeeded.
         self.http_status_code = http_status_code
+        # Status code description.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -86,13 +91,21 @@ class ListRolesResponseBodyData(DaraModel):
         role_id: int = None,
         title: str = None,
     ):
+        # Tenant ID.
         self.bu_id = bu_id
+        # Role code.
         self.code = code
+        # Creation Time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.create_time = create_time
+        # Role description.
         self.description = description
+        # ID of the group to which the role belongs.
         self.role_group_id = role_group_id
+        # Name of the role group to which the role belongs.
         self.role_group_name = role_group_name
+        # Role ID.
         self.role_id = role_id
+        # Role name.
         self.title = title
 
     def validate(self):

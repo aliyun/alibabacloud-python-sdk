@@ -14,11 +14,11 @@ class ListIngestProcessorsRequest(DaraModel):
     ):
         # The display name of the ingest processor.
         self.display_name = display_name
-        # The offset. Default value: 0.
+        # The offset value. The default value is 0.
         self.offset = offset
         # The identifier of the ingest processor.
         self.processor_name = processor_name
-        # The number of entries. Default value: 200.
+        # The number of entries to return. The default value is 200.
         self.size = size
 
     def validate(self):

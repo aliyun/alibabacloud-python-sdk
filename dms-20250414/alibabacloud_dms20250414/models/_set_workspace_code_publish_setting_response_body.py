@@ -13,10 +13,19 @@ class SetWorkspaceCodePublishSettingResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code if the call fails.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message returned if the call fails. This parameter is empty if the call succeeds.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # 
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

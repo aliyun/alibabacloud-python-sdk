@@ -22,20 +22,46 @@ class CreateHighlightTaskRequest(DaraModel):
         type: str = None,
         user_data: str = None,
     ):
+        # The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
         self.credential_config = credential_config
+        # The editing configuration.
         self.edit = edit
+        # The highlight configuration.
         self.highlight = highlight
+        # The highlight recognition mode. Valid values:
+        # 
+        # - Scene: scene and frame recognition.
+        # 
+        # - Average (default): average slice recognition.
         self.mode = mode
+        # The message notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
         self.notification = notification
+        # The output configuration.
+        # 
         # This parameter is required.
         self.output = output
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The list of media resources to process.
+        # A maximum of 10 videos are supported.
+        # 
         # This parameter is required.
         self.sources = sources
+        # The custom tags used to search for and filter asynchronous tasks.
         self.tags = tags
+        # The processing type. Valid values:
+        # 
+        # - Retrieval: highlight extraction.
+        # 
+        # - Concat: video composition.
+        # 
+        # - Compose: one-click video creation.
+        # 
         # This parameter is required.
         self.type = type
+        # The custom user data, which is returned in asynchronous message notifications.
         self.user_data = user_data
 
     def validate(self):
@@ -148,8 +174,14 @@ class CreateHighlightTaskRequestSources(DaraModel):
         start_time: float = None,
         uri: str = None,
     ):
+        # The duration of the media clip. Unit: seconds. Default value: 0, which indicates the end of the video.
+        # This parameter takes effect only when Type is set to Concat.
         self.duration = duration
+        # The start time of the media resource. Valid values: [0, video duration].
+        # This parameter takes effect only when Type is set to Concat.
         self.start_time = start_time
+        # The URI of the media resource (OSS URI). Only videos are supported.
+        # 
         # This parameter is required.
         self.uri = uri
 
@@ -196,13 +228,29 @@ class CreateHighlightTaskRequestOutput(DaraModel):
         uri: str = None,
         video: main_models.TargetVideo = None,
     ):
+        # The audio processing parameter settings.
+        # >Notice: If Audio is empty, the first audio stream (if any) is directly copied to the output file.
         self.audio = audio
+        # The media container type. This parameter is required when Type is set to Concat or Compose. Valid values:
+        # 
+        # - Audio and video containers: mp4, mkv, mov, asf, avi, mxf, ts, flv
+        # 
+        # >Notice: Container and URI must be specified together..
         self.container = container
+        # The maximum duration of the clipped video. Unit: seconds.
         self.max_duration = max_duration
+        # The media segmentation settings. By default, no segmentation is performed.
         self.segment = segment
+        # The playback speed of the media. Valid values: [0.5, 1.0]. Default value: 1.0.
+        # 
+        # > This value is the ratio of the default playback speed of the transcoded media file to that of the source media file. This is not speed-adjusted transcoding.
         self.speed = speed
+        # The URI of the output file.
+        # 
         # This parameter is required.
         self.uri = uri
+        # The video processing parameter settings.
+        # >Notice: If Video is empty, the first video stream (if any) is directly copied to the output file.
         self.video = video
 
     def validate(self):
@@ -276,8 +324,15 @@ class CreateHighlightTaskRequestOutputSegment(DaraModel):
         format: str = None,
         start_number: int = None,
     ):
+        # The segment duration. Unit: seconds.
         self.duration = duration
+        # The media segmentation format. Valid values:
+        # 
+        # - hls
+        # 
+        # - dash.
         self.format = format
+        # The start number. Only hls is supported. Default value: 0.
         self.start_number = start_number
 
     def validate(self):
@@ -317,6 +372,18 @@ class CreateHighlightTaskRequestHighlight(DaraModel):
         self,
         content: str = None,
     ):
+        # The highlight content. Valid values:
+        # 
+        # - Pets
+        # 
+        # - People
+        # 
+        # - Sports
+        # 
+        # - Meetings
+        # 
+        # The value cannot exceed 100 characters.
+        # 
         # This parameter is required.
         self.content = content
 
@@ -351,13 +418,49 @@ class CreateHighlightTaskRequestEdit(DaraModel):
         vfx_effect_mode: str = None,
         vfx_effects: List[main_models.CreateHighlightTaskRequestEditVfxEffects] = None,
     ):
+        # The background music mode. Default value: Closed. Valid values:
+        # 
+        # - Random: custom background music, randomly selected based on weight.
+        # 
+        # - Sequential: custom background music, applied in order.
+        # 
+        # - Closed: no background music.
         self.background_music_mode = background_music_mode
+        # The background music tracks. This parameter takes effect when BackgroundMusicMode is set to Random or Sequential.
+        # **The maximum number is 1.**.
         self.background_musics = background_musics
+        # The editing mode. Valid values:
+        # 
+        # - Sequential: sequential mode.
+        # 
         # This parameter is required.
         self.mode = mode
+        # The transition mode. Default value: Closed. Valid values:
+        # 
+        # - Auto: automatic transition.
+        # 
+        # - Random: custom transition, randomly selected based on weight.
+        # 
+        # - Sequential: custom transition, applied in order.
+        # 
+        # - Closed: no transition.
         self.transition_mode = transition_mode
+        # The transition effects.
+        # This parameter takes effect when TransitionMode is set to Random or Sequential.
+        # A maximum of 10 transitions are supported.
         self.transitions = transitions
+        # The effect mode. Default value: Closed. Valid values:
+        # 
+        # - Auto: automatic effect.
+        # 
+        # - Random: custom effect, randomly selected based on weight.
+        # 
+        # - Sequential: custom effect, applied in order.
+        # 
+        # - Closed: no effect.
         self.vfx_effect_mode = vfx_effect_mode
+        # The visual effects. This parameter takes effect when VfxEffectMode is set to Random or Sequential.
+        # A maximum of 10 effects are supported.
         self.vfx_effects = vfx_effects
 
     def validate(self):
@@ -448,8 +551,12 @@ class CreateHighlightTaskRequestEditVfxEffects(DaraModel):
         vfx_effect: str = None,
         weight: int = None,
     ):
+        # The visual effect. For more information, see [Effects](https://www.alibabacloud.com/help/en/imm/developer-reference/effects).
+        # 
         # This parameter is required.
         self.vfx_effect = vfx_effect
+        # The effect weight. Valid values: [1, 100]. Default value: 50.
+        # This parameter takes effect when VfxEffectMode is set to Random.
         self.weight = weight
 
     def validate(self):
@@ -485,9 +592,15 @@ class CreateHighlightTaskRequestEditTransitions(DaraModel):
         transition: str = None,
         weight: int = None,
     ):
+        # The transition duration. Unit: seconds. If the transition duration is greater than the clip duration minus 1, the transition effect on that clip does not take effect.
+        # Valid values: [0, 5].
         self.duration = duration
+        # The transition effect. For more information, see [Transition effects](https://www.alibabacloud.com/help/en/imm/developer-reference/transition-effect).
+        # 
         # This parameter is required.
         self.transition = transition
+        # The transition weight. Valid values: [1, 100]. Default value: 50.
+        # This parameter takes effect when TransitionMode is set to Random.
         self.weight = weight
 
     def validate(self):
@@ -528,8 +641,11 @@ class CreateHighlightTaskRequestEditBackgroundMusics(DaraModel):
         uri: str = None,
         volume: float = None,
     ):
+        # The URI of the background music (OSS URI). Only audio files are supported.
+        # 
         # This parameter is required.
         self.uri = uri
+        # The volume intensity of the background music. Valid values: [0, 10]. Default value: 0.2. A value of 1 indicates the original volume.
         self.volume = volume
 
     def validate(self):

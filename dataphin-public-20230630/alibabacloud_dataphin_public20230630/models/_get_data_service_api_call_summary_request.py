@@ -12,12 +12,20 @@ class GetDataServiceApiCallSummaryRequest(DaraModel):
         project_id: int = None,
         start_time: str = None,
     ):
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the data service project.
+        # 
         # This parameter is required.
         self.project_id = project_id
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

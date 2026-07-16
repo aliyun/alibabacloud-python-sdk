@@ -11,12 +11,21 @@ class ListAvailableTtsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tts_voice_code: str = None,
+        voice_type: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 复刻音色编码
+        # The voice code for a custom voice. You can find it on the [Custom Voice](https://aiccs.console.aliyun.com/engine/voiceprint) page.
         self.tts_voice_code = tts_voice_code
+        # The type of the TTS voice. Valid values:
+        # 
+        # `SYSTEM`: system voice.
+        # 
+        # `COSYCLONE`: cloned voice.
+        # 
+        # `BL-CUSTOM`: premium custom voice.
+        self.voice_type = voice_type
 
     def validate(self):
         pass
@@ -38,6 +47,9 @@ class ListAvailableTtsRequest(DaraModel):
         if self.tts_voice_code is not None:
             result['TtsVoiceCode'] = self.tts_voice_code
 
+        if self.voice_type is not None:
+            result['VoiceType'] = self.voice_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +65,9 @@ class ListAvailableTtsRequest(DaraModel):
 
         if m.get('TtsVoiceCode') is not None:
             self.tts_voice_code = m.get('TtsVoiceCode')
+
+        if m.get('VoiceType') is not None:
+            self.voice_type = m.get('VoiceType')
 
         return self
 

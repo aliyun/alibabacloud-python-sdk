@@ -16,14 +16,15 @@ class ListMembersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 一次获取的最大记录数。
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # The list of members.
         self.members = members
-        # 下一页TOKEN。
+        # The token for the next page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 记录总数。
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,19 +91,21 @@ class ListMembersResponseBodyMembers(DaraModel):
         user_type: str = None,
         visible: bool = None,
     ):
-        # 针对此用户允许的操作列表。
+        # The list of operations allowed for this user.
         self.actions = actions
+        # The time when the member was created.
         self.create_time = create_time
-        # 用户展示名称。
+        # The display name of the user.
         self.display_name = display_name
-        # 用户 arn。
+        # The Alibaba Cloud Resource Name (ARN) of the user.
         self.member_arn = member_arn
-        # 用户角色列表。
+        # The list of roles in the workspace.
         self.roles = roles
-        # 用户名称。
+        # The username.
         self.user_name = user_name
-        # 用户类型。
+        # The type of the user.
         self.user_type = user_type
+        # Indicates whether the member is visible.
         self.visible = visible
 
     def validate(self):
@@ -193,15 +196,15 @@ class ListMembersResponseBodyMembersRoles(DaraModel):
         role_arn: str = None,
         role_name: str = None,
     ):
-        # 权限列表。
+        # The list of permissions.
         self.actions = actions
-        # 创建时间。
+        # The time when the role was created.
         self.create_time = create_time
-        # 描述。
+        # The description.
         self.description = description
-        # 角色 arn。
+        # The ARN of the role.
         self.role_arn = role_arn
-        # 角色名称。
+        # The name of the role.
         self.role_name = role_name
 
     def validate(self):
@@ -265,15 +268,15 @@ class ListMembersResponseBodyMembersRolesActions(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # 行为 arn。
+        # The ARN of the action.
         self.action_arn = action_arn
-        # 权限名称。
+        # The name of the permission.
         self.action_name = action_name
-        # action 依赖列表。
+        # The list of action dependencies.
         self.dependencies = dependencies
-        # action 描述。
+        # The description of the action.
         self.description = description
-        # 权限展示名称。
+        # The display name of the permission.
         self.display_name = display_name
 
     def validate(self):
@@ -329,15 +332,15 @@ class ListMembersResponseBodyMembersActions(DaraModel):
         description: str = None,
         display_name: str = None,
     ):
-        # 行为 arn。
+        # The ARN of the action.
         self.action_arn = action_arn
-        # 权限名称。
+        # The name of the permission.
         self.action_name = action_name
-        # action 依赖列表。
+        # The list of action dependencies.
         self.dependencies = dependencies
-        # action 描述。
+        # The description of the action.
         self.description = description
-        # 权限展示名称。
+        # The display name of the permission.
         self.display_name = display_name
 
     def validate(self):

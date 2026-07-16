@@ -101,7 +101,6 @@ class GetAuditRequestByTypeUnAuditResponseBodyData(DaraModel):
         self.creator = creator
         self.gmt_create = gmt_create
         self.gmt_modifier = gmt_modifier
-        # ID
         self.id = id
         self.maap_service_no = maap_service_no
         self.modifier = modifier
@@ -264,7 +263,6 @@ class GetAuditRequestByTypeUnAuditResponseBodyDataAuditRecord(DaraModel):
         self.now_recovery = now_recovery
         self.recovery_date = recovery_date
         self.reply_content = reply_content
-        # SuspensionDate
         self.suspension_date = suspension_date
         self.web_address = web_address
 

@@ -14,11 +14,17 @@ class GetMaxAttemptsPerDayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the API.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The maximum number of redial attempts after a call fails.
         self.max_attempts_per_day = max_attempts_per_day
+        # The message returned for the API.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

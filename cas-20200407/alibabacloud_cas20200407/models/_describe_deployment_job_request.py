@@ -9,7 +9,7 @@ class DescribeDeploymentJobRequest(DaraModel):
         self,
         job_id: int = None,
     ):
-        # The ID of the deployment job. The **ID** of the job is returned after you call the [CreateDeploymentJob](https://help.aliyun.com/document_detail/2712234.html) operation. You can also call the [ListDeploymentJob](https://help.aliyun.com/document_detail/2712223.html) operation to obtain the ID.
+        # The ID of the deployment job. To get the job ID, call the [CreateDeploymentJob](https://help.aliyun.com/document_detail/2712234.html) or [ListDeploymentJob](https://help.aliyun.com/document_detail/2712223.html) operation.
         # 
         # This parameter is required.
         self.job_id = job_id

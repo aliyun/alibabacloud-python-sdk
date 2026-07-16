@@ -29,12 +29,30 @@ from ._create_service_usage_request import CreateServiceUsageRequest
 from ._create_service_usage_shrink_request import CreateServiceUsageShrinkRequest
 from ._create_service_usage_response_body import CreateServiceUsageResponseBody
 from ._create_service_usage_response import CreateServiceUsageResponse
+from ._create_skill_request import CreateSkillRequest
+from ._create_skill_response_body import CreateSkillResponseBody
+from ._create_skill_response import CreateSkillResponse
+from ._create_skill_file_detect_request import CreateSkillFileDetectRequest
+from ._create_skill_file_detect_response_body import CreateSkillFileDetectResponseBody
+from ._create_skill_file_detect_response import CreateSkillFileDetectResponse
+from ._create_skill_hub_config_request import CreateSkillHubConfigRequest
+from ._create_skill_hub_config_response_body import CreateSkillHubConfigResponseBody
+from ._create_skill_hub_config_response import CreateSkillHubConfigResponse
+from ._create_skill_space_request import CreateSkillSpaceRequest
+from ._create_skill_space_response_body import CreateSkillSpaceResponseBody
+from ._create_skill_space_response import CreateSkillSpaceResponse
 from ._delete_backup_request import DeleteBackupRequest
 from ._delete_backup_response_body import DeleteBackupResponseBody
 from ._delete_backup_response import DeleteBackupResponse
 from ._delete_service_instances_request import DeleteServiceInstancesRequest
 from ._delete_service_instances_response_body import DeleteServiceInstancesResponseBody
 from ._delete_service_instances_response import DeleteServiceInstancesResponse
+from ._delete_skill_request import DeleteSkillRequest
+from ._delete_skill_response_body import DeleteSkillResponseBody
+from ._delete_skill_response import DeleteSkillResponse
+from ._delete_skill_space_request import DeleteSkillSpaceRequest
+from ._delete_skill_space_response_body import DeleteSkillSpaceResponseBody
+from ._delete_skill_space_response import DeleteSkillSpaceResponse
 from ._deploy_service_instance_request import DeployServiceInstanceRequest
 from ._deploy_service_instance_response_body import DeployServiceInstanceResponseBody
 from ._deploy_service_instance_response import DeployServiceInstanceResponse
@@ -42,6 +60,7 @@ from ._describe_regions_request import DescribeRegionsRequest
 from ._describe_regions_response_body import DescribeRegionsResponseBody
 from ._describe_regions_response import DescribeRegionsResponse
 from ._generate_service_policy_request import GenerateServicePolicyRequest
+from ._generate_service_policy_shrink_request import GenerateServicePolicyShrinkRequest
 from ._generate_service_policy_response_body import GenerateServicePolicyResponseBody
 from ._generate_service_policy_response import GenerateServicePolicyResponse
 from ._get_backup_request import GetBackupRequest
@@ -70,6 +89,18 @@ from ._get_service_provisions_response import GetServiceProvisionsResponse
 from ._get_service_template_parameter_constraints_request import GetServiceTemplateParameterConstraintsRequest
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBody
 from ._get_service_template_parameter_constraints_response import GetServiceTemplateParameterConstraintsResponse
+from ._get_skill_request import GetSkillRequest
+from ._get_skill_response_body import GetSkillResponseBody
+from ._get_skill_response import GetSkillResponse
+from ._get_skill_file_detect_result_request import GetSkillFileDetectResultRequest
+from ._get_skill_file_detect_result_response_body import GetSkillFileDetectResultResponseBody
+from ._get_skill_file_detect_result_response import GetSkillFileDetectResultResponse
+from ._get_skill_hub_config_request import GetSkillHubConfigRequest
+from ._get_skill_hub_config_response_body import GetSkillHubConfigResponseBody
+from ._get_skill_hub_config_response import GetSkillHubConfigResponse
+from ._get_skill_space_request import GetSkillSpaceRequest
+from ._get_skill_space_response_body import GetSkillSpaceResponseBody
+from ._get_skill_space_response import GetSkillSpaceResponse
 from ._get_user_information_request import GetUserInformationRequest
 from ._get_user_information_response_body import GetUserInformationResponseBody
 from ._get_user_information_response import GetUserInformationResponse
@@ -79,6 +110,9 @@ from ._list_backups_response import ListBackupsResponse
 from ._list_policies_request import ListPoliciesRequest
 from ._list_policies_response_body import ListPoliciesResponseBody
 from ._list_policies_response import ListPoliciesResponse
+from ._list_public_skills_request import ListPublicSkillsRequest
+from ._list_public_skills_response_body import ListPublicSkillsResponseBody
+from ._list_public_skills_response import ListPublicSkillsResponse
 from ._list_restore_tasks_request import ListRestoreTasksRequest
 from ._list_restore_tasks_response_body import ListRestoreTasksResponseBody
 from ._list_restore_tasks_response import ListRestoreTasksResponse
@@ -105,6 +139,15 @@ from ._list_service_usages_response import ListServiceUsagesResponse
 from ._list_services_request import ListServicesRequest
 from ._list_services_response_body import ListServicesResponseBody
 from ._list_services_response import ListServicesResponse
+from ._list_skill_files_request import ListSkillFilesRequest
+from ._list_skill_files_response_body import ListSkillFilesResponseBody
+from ._list_skill_files_response import ListSkillFilesResponse
+from ._list_skill_spaces_request import ListSkillSpacesRequest
+from ._list_skill_spaces_response_body import ListSkillSpacesResponseBody
+from ._list_skill_spaces_response import ListSkillSpacesResponse
+from ._list_skills_request import ListSkillsRequest
+from ._list_skills_response_body import ListSkillsResponseBody
+from ._list_skills_response import ListSkillsResponse
 from ._list_tag_keys_request import ListTagKeysRequest
 from ._list_tag_keys_response_body import ListTagKeysResponseBody
 from ._list_tag_keys_response import ListTagKeysResponse
@@ -114,6 +157,9 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tag_values_request import ListTagValuesRequest
 from ._list_tag_values_response_body import ListTagValuesResponseBody
 from ._list_tag_values_response import ListTagValuesResponse
+from ._renew_service_instance_request import RenewServiceInstanceRequest
+from ._renew_service_instance_response_body import RenewServiceInstanceResponseBody
+from ._renew_service_instance_response import RenewServiceInstanceResponse
 from ._renew_service_instance_resources_request import RenewServiceInstanceResourcesRequest
 from ._renew_service_instance_resources_response_body import RenewServiceInstanceResourcesResponseBody
 from ._renew_service_instance_resources_response import RenewServiceInstanceResourcesResponse
@@ -146,6 +192,9 @@ from ._update_service_usage_request import UpdateServiceUsageRequest
 from ._update_service_usage_shrink_request import UpdateServiceUsageShrinkRequest
 from ._update_service_usage_response_body import UpdateServiceUsageResponseBody
 from ._update_service_usage_response import UpdateServiceUsageResponse
+from ._update_skill_request import UpdateSkillRequest
+from ._update_skill_response_body import UpdateSkillResponseBody
+from ._update_skill_response import UpdateSkillResponse
 from ._update_user_information_request import UpdateUserInformationRequest
 from ._update_user_information_response_body import UpdateUserInformationResponseBody
 from ._update_user_information_response import UpdateUserInformationResponse
@@ -212,10 +261,14 @@ from ._get_service_template_parameter_constraints_request import GetServiceTempl
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors
 from ._get_service_template_parameter_constraints_response_body import GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints
+from ._get_skill_response_body import GetSkillResponseBodyLocales
 from ._get_user_information_response_body import GetUserInformationResponseBodyDeliverySettings
 from ._list_backups_request import ListBackupsRequestFilter
 from ._list_backups_response_body import ListBackupsResponseBodyBackups
 from ._list_policies_response_body import ListPoliciesResponseBodyPolicies
+from ._list_public_skills_request import ListPublicSkillsRequestFilter
+from ._list_public_skills_response_body import ListPublicSkillsResponseBodySkillsLocales
+from ._list_public_skills_response_body import ListPublicSkillsResponseBodySkills
 from ._list_restore_tasks_request import ListRestoreTasksRequestFilter
 from ._list_restore_tasks_response_body import ListRestoreTasksResponseBodyRestoreTasks
 from ._list_service_instance_bill_response_body import ListServiceInstanceBillResponseBodyItem
@@ -243,6 +296,13 @@ from ._list_services_response_body import ListServicesResponseBodyServicesServic
 from ._list_services_response_body import ListServicesResponseBodyServicesServiceLocaleConfigs
 from ._list_services_response_body import ListServicesResponseBodyServicesTags
 from ._list_services_response_body import ListServicesResponseBodyServices
+from ._list_skill_files_request import ListSkillFilesRequestFilter
+from ._list_skill_files_response_body import ListSkillFilesResponseBodySkillFiles
+from ._list_skill_spaces_request import ListSkillSpacesRequestFilter
+from ._list_skill_spaces_response_body import ListSkillSpacesResponseBodySkillSpaces
+from ._list_skills_request import ListSkillsRequestFilter
+from ._list_skills_response_body import ListSkillsResponseBodySkillsLocales
+from ._list_skills_response_body import ListSkillsResponseBodySkills
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._renew_service_instance_resources_request import RenewServiceInstanceResourcesRequestResourcePeriod
@@ -282,12 +342,30 @@ __all__ = [
     CreateServiceUsageShrinkRequest,
     CreateServiceUsageResponseBody,
     CreateServiceUsageResponse,
+    CreateSkillRequest,
+    CreateSkillResponseBody,
+    CreateSkillResponse,
+    CreateSkillFileDetectRequest,
+    CreateSkillFileDetectResponseBody,
+    CreateSkillFileDetectResponse,
+    CreateSkillHubConfigRequest,
+    CreateSkillHubConfigResponseBody,
+    CreateSkillHubConfigResponse,
+    CreateSkillSpaceRequest,
+    CreateSkillSpaceResponseBody,
+    CreateSkillSpaceResponse,
     DeleteBackupRequest,
     DeleteBackupResponseBody,
     DeleteBackupResponse,
     DeleteServiceInstancesRequest,
     DeleteServiceInstancesResponseBody,
     DeleteServiceInstancesResponse,
+    DeleteSkillRequest,
+    DeleteSkillResponseBody,
+    DeleteSkillResponse,
+    DeleteSkillSpaceRequest,
+    DeleteSkillSpaceResponseBody,
+    DeleteSkillSpaceResponse,
     DeployServiceInstanceRequest,
     DeployServiceInstanceResponseBody,
     DeployServiceInstanceResponse,
@@ -295,6 +373,7 @@ __all__ = [
     DescribeRegionsResponseBody,
     DescribeRegionsResponse,
     GenerateServicePolicyRequest,
+    GenerateServicePolicyShrinkRequest,
     GenerateServicePolicyResponseBody,
     GenerateServicePolicyResponse,
     GetBackupRequest,
@@ -323,6 +402,18 @@ __all__ = [
     GetServiceTemplateParameterConstraintsRequest,
     GetServiceTemplateParameterConstraintsResponseBody,
     GetServiceTemplateParameterConstraintsResponse,
+    GetSkillRequest,
+    GetSkillResponseBody,
+    GetSkillResponse,
+    GetSkillFileDetectResultRequest,
+    GetSkillFileDetectResultResponseBody,
+    GetSkillFileDetectResultResponse,
+    GetSkillHubConfigRequest,
+    GetSkillHubConfigResponseBody,
+    GetSkillHubConfigResponse,
+    GetSkillSpaceRequest,
+    GetSkillSpaceResponseBody,
+    GetSkillSpaceResponse,
     GetUserInformationRequest,
     GetUserInformationResponseBody,
     GetUserInformationResponse,
@@ -332,6 +423,9 @@ __all__ = [
     ListPoliciesRequest,
     ListPoliciesResponseBody,
     ListPoliciesResponse,
+    ListPublicSkillsRequest,
+    ListPublicSkillsResponseBody,
+    ListPublicSkillsResponse,
     ListRestoreTasksRequest,
     ListRestoreTasksResponseBody,
     ListRestoreTasksResponse,
@@ -358,6 +452,15 @@ __all__ = [
     ListServicesRequest,
     ListServicesResponseBody,
     ListServicesResponse,
+    ListSkillFilesRequest,
+    ListSkillFilesResponseBody,
+    ListSkillFilesResponse,
+    ListSkillSpacesRequest,
+    ListSkillSpacesResponseBody,
+    ListSkillSpacesResponse,
+    ListSkillsRequest,
+    ListSkillsResponseBody,
+    ListSkillsResponse,
     ListTagKeysRequest,
     ListTagKeysResponseBody,
     ListTagKeysResponse,
@@ -367,6 +470,9 @@ __all__ = [
     ListTagValuesRequest,
     ListTagValuesResponseBody,
     ListTagValuesResponse,
+    RenewServiceInstanceRequest,
+    RenewServiceInstanceResponseBody,
+    RenewServiceInstanceResponse,
     RenewServiceInstanceResourcesRequest,
     RenewServiceInstanceResourcesResponseBody,
     RenewServiceInstanceResourcesResponse,
@@ -399,6 +505,9 @@ __all__ = [
     UpdateServiceUsageShrinkRequest,
     UpdateServiceUsageResponseBody,
     UpdateServiceUsageResponse,
+    UpdateSkillRequest,
+    UpdateSkillResponseBody,
+    UpdateSkillResponse,
     UpdateUserInformationRequest,
     UpdateUserInformationResponseBody,
     UpdateUserInformationResponse,
@@ -465,10 +574,14 @@ __all__ = [
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints,
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsQueryErrors,
     GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints,
+    GetSkillResponseBodyLocales,
     GetUserInformationResponseBodyDeliverySettings,
     ListBackupsRequestFilter,
     ListBackupsResponseBodyBackups,
     ListPoliciesResponseBodyPolicies,
+    ListPublicSkillsRequestFilter,
+    ListPublicSkillsResponseBodySkillsLocales,
+    ListPublicSkillsResponseBodySkills,
     ListRestoreTasksRequestFilter,
     ListRestoreTasksResponseBodyRestoreTasks,
     ListServiceInstanceBillResponseBodyItem,
@@ -496,6 +609,13 @@ __all__ = [
     ListServicesResponseBodyServicesServiceLocaleConfigs,
     ListServicesResponseBodyServicesTags,
     ListServicesResponseBodyServices,
+    ListSkillFilesRequestFilter,
+    ListSkillFilesResponseBodySkillFiles,
+    ListSkillSpacesRequestFilter,
+    ListSkillSpacesResponseBodySkillSpaces,
+    ListSkillsRequestFilter,
+    ListSkillsResponseBodySkillsLocales,
+    ListSkillsResponseBodySkills,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     RenewServiceInstanceResourcesRequestResourcePeriod,

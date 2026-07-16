@@ -16,14 +16,20 @@ class TerminateVirtualBorderRouterRequest(DaraModel):
         user_cidr: str = None,
         vbr_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the VBR is deployed. You can call the `DescribeRegions` operation to obtain the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The client-side CIDR block. This parameter is required for a connection over an Express Connect circuit.
         self.user_cidr = user_cidr
+        # The ID of the VBR.
+        # 
         # This parameter is required.
         self.vbr_id = vbr_id
 

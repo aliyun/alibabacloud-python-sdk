@@ -13,11 +13,15 @@ class BeginSessionResponseBody(DaraModel):
         silence_reply_timeout: int = None,
         welcome_message: str = None,
     ):
+        # The ASR end-pointing detection time, in milliseconds.
         self.asr_max_end_silence = asr_max_end_silence
+        # Indicates whether voice playback is interruptible.
         self.interruptible = interruptible
+        # The request ID.
         self.request_id = request_id
-        # 静默超时时间
+        # The silence timeout, in seconds.
         self.silence_reply_timeout = silence_reply_timeout
+        # The welcome message.
         self.welcome_message = welcome_message
 
     def validate(self):

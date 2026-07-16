@@ -18,13 +18,15 @@ class CreateConsumerAuthorizationRuleRequest(DaraModel):
     ):
         # The list of resource authorization information.
         self.authorization_resource_infos = authorization_resource_infos
-        # The expiry mode. Valid values: LongTerm and ShortTerm.
+        # The expiration mode. Valid values:
+        # - LongTerm: long-term
+        # - ShortTerm: short-term
         self.expire_mode = expire_mode
         # The expiration time.
         self.expire_timestamp = expire_timestamp
-        # The type of the parent resource.
+        # The parent resource type.
         self.parent_resource_type = parent_resource_type
-        # The resource type,
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

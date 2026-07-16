@@ -10,13 +10,12 @@ class EnableResourceCenterResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The activation status of the service. Valid values:
         # 
-        # - Pending: The service is being activated.
-        # 
-        # - Enabled: The service is activated.
+        # *   Pending: The service is being activated.
+        # *   Enabled: The service is activated.
         self.status = status
 
     def validate(self):

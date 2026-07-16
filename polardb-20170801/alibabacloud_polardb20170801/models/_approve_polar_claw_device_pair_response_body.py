@@ -17,12 +17,17 @@ class ApprovePolarClawDevicePairResponseBody(DaraModel):
         pair_request_id: str = None,
         request_id: str = None,
     ):
+        # The application ID.
         self.application_id = application_id
+        # The response status code.
         self.code = code
+        # The paired device information.
         self.device = device
+        # The response message.
         self.message = message
+        # The pairing request ID.
         self.pair_request_id = pair_request_id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,12 +93,19 @@ class ApprovePolarClawDevicePairResponseBodyDevice(DaraModel):
         role: str = None,
         scopes: List[str] = None,
     ):
+        # The creation time of the device pairing, in Unix milliseconds.
         self.created_at_ms = created_at_ms
+        # The device family.
         self.device_family = device_family
+        # The unique ID of the device.
         self.device_id = device_id
+        # The display name of the device.
         self.display_name = display_name
+        # The operating system of the device.
         self.platform = platform
+        # The role of the device.
         self.role = role
+        # A list of permission scopes.
         self.scopes = scopes
 
     def validate(self):

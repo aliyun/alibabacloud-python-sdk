@@ -10,8 +10,12 @@ class DeleteRegisterLineageShrinkRequest(DaraModel):
         delete_register_lineage_command_shrink: str = None,
         op_tenant_id: int = None,
     ):
+        # The command for deleting registered lineage.
+        # 
         # This parameter is required.
         self.delete_register_lineage_command_shrink = delete_register_lineage_command_shrink
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 

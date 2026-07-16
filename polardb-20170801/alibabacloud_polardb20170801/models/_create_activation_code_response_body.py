@@ -21,25 +21,25 @@ class CreateActivationCodeResponseBody(DaraModel):
     ):
         # The time when the activation code takes effect.
         self.activate_at = activate_at
-        # The activation code in the base64 format. The activation code is decoded and stored into a file named license.lic. PolarDB can access and read the license.lic file upon startup to validate the license or perform related operations.
+        # The content of the activation code. Decode this Base64-encoded content and save it to the \\`license.lic\\` file. PolarDB reads this file on startup.
         self.cert_content_b64 = cert_content_b64
         # The description of the activation code.
         self.description = description
-        # The time when the activation code expires.
+        # The expiration time.
         self.expire_at = expire_at
-        # The time when the activation code was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the activation code was last updated.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The activation code ID.
+        # The ID of the activation code.
         self.id = id
         # The MAC address.
         self.mac_address = mac_address
         # The name of the activation code.
         self.name = name
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # The system identifier of the database.
+        # The unique system identifier of the database.
         self.system_identifier = system_identifier
 
     def validate(self):

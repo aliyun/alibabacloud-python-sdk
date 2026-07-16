@@ -13,9 +13,9 @@ class IncreaseListResponseBody(DaraModel):
         data: main_models.IncreaseListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The information about the batch task.
+        # The batch task information.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -55,9 +55,9 @@ class IncreaseListResponseBodyData(DaraModel):
         total_count: int = None,
     ):
         self.increments = increments
-        # The number of the page to return.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries returned.
         self.page_size = page_size
         # The total number of tasks.
         self.total_count = total_count

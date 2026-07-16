@@ -22,20 +22,69 @@ class CreateAccountZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The description of the account. The description must meet the following requirements:
+        # 
+        # - Cannot start with `http://` or `https://`.
+        # 
+        # - Be 2 to 256 characters in length.
         self.account_description = account_description
+        # The account name. The name must meet the following requirements:
+        # 
+        # - Start with a lowercase letter and end with a letter or a digit.
+        # 
+        # - Contain only lowercase letters, digits, and underscores (_).
+        # 
+        # - Be 2 to 16 characters in length.
+        # 
+        # - Cannot be a reserved username, such as root or admin.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The account password. The password must meet the following requirements:
+        # 
+        # - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # 
+        # - Be 8 to 32 characters in length.
+        # 
+        # - Special characters are `!@#$%^&*()_+-=`.
+        # 
         # This parameter is required.
         self.account_password = account_password
+        # The permissions of the account. Valid values:
+        # 
+        # - ReadWrite: read and write permissions.
+        # 
+        # - ReadOnly: read-only permissions.
+        # 
+        # - DMLOnly: DML permissions only.
+        # 
+        # - DDLOnly: DDL permissions only.
+        # 
+        # - ReadIndex: read and index permissions.
         self.account_privilege = account_privilege
+        # The account type. Valid values:
+        # 
+        # - Normal: a standard account.
+        # 
+        # - Super: a privileged account.
         self.account_type = account_type
+        # A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database that the destination account can access. You can specify multiple database names. Separate them with commas (,).
         self.dbname = dbname
+        # The node type.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # Specifies whether to grant permissions on all current and future databases in the cluster. Valid values:
+        # 
+        # - 0 or empty: Does not grant permissions.
+        # 
+        # - 1: Grants permissions.
         self.priv_for_all_db = priv_for_all_db
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

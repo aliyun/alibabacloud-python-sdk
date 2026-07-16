@@ -13,9 +13,9 @@ class ListAvailableAccelerateAreasResponseBody(DaraModel):
         areas: List[main_models.ListAvailableAccelerateAreasResponseBodyAreas] = None,
         request_id: str = None,
     ):
-        # The information about acceleration areas.
+        # The list of areas.
         self.areas = areas
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,11 +59,11 @@ class ListAvailableAccelerateAreasResponseBodyAreas(DaraModel):
         local_name: str = None,
         region_list: List[main_models.ListAvailableAccelerateAreasResponseBodyAreasRegionList] = None,
     ):
-        # The ID of the acceleration area.
+        # The ID of the area.
         self.area_id = area_id
-        # The acceleration area name.
+        # The name of the area.
         self.local_name = local_name
-        # The information about acceleration regions.
+        # The list of regions.
         self.region_list = region_list
 
     def validate(self):
@@ -118,27 +118,31 @@ class ListAvailableAccelerateAreasResponseBodyAreasRegionList(DaraModel):
     ):
         # Indicates whether the region is in the Chinese mainland. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: The region is in the Chinese mainland.
+        # 
+        # - **false**: The region is not in the Chinese mainland.
         self.china_mainland = china_mainland
-        # The line type of the elastic IP address (EIP) in the acceleration region. Valid values:
+        # The line type of the public IP address in the acceleration region.
         # 
-        # *   **BGP**: BGP (Multi-ISP) lines.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines.
+        # - **BGP** (default): BGP (Multi-ISP) line.
+        # 
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro line.
         self.isp_type_list = isp_type_list
-        # The acceleration region name.
+        # The name of the region.
         self.local_name = local_name
-        # Indicates whether multiple zones are supported. Valid values:
+        # Indicates whether multi-zone deployment is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Multi-zone deployment is supported.
+        # 
+        # - **false**: Multi-zone deployment is not supported.
         self.multi_az = multi_az
-        # The ID of the acceleration region.
+        # The ID of the region.
         self.region_id = region_id
         # Indicates whether IPv6 is supported. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: IPv6 is supported.
+        # 
+        # - **false**: IPv6 is not supported.
         self.support_ipv_6 = support_ipv_6
 
     def validate(self):

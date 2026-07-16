@@ -18,15 +18,25 @@ class DescribeInternetOpenStatisticResponseBody(DaraModel):
         internet_unprotected_port_num: int = None,
         request_id: str = None,
     ):
+        # The total number of public IP addresses exposed to the Internet.
         self.internet_ip_num = internet_ip_num
+        # The total number of ports exposed to the Internet.
         self.internet_port_num = internet_port_num
+        # The number of risky public IP addresses exposed to the Internet.
         self.internet_risk_ip_num = internet_risk_ip_num
+        # The number of risky ports.
         self.internet_risk_port_num = internet_risk_port_num
+        # The number of risky applications.
         self.internet_risk_service_num = internet_risk_service_num
+        # The total number of applications exposed to the Internet.
         self.internet_service_num = internet_service_num
+        # The number of public IP addresses of Server Load Balancer (SLB) instances.
         self.internet_slb_ip_num = internet_slb_ip_num
+        # The number of public ports of SLB instances.
         self.internet_slb_ip_port_num = internet_slb_ip_port_num
+        # The number of ports that are not protected by an access control list (ACL).
         self.internet_unprotected_port_num = internet_unprotected_port_num
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

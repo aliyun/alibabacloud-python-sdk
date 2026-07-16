@@ -14,15 +14,26 @@ class CreateDatasetRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # The ID of the data source.
+        # 
         # This parameter is required.
         self.ds_id = ds_id
+        # The name of the table.
+        # 
         # This parameter is required.
         self.table_name = table_name
+        # The ID of the destination folder.
         self.target_directory_id = target_directory_id
+        # The name of the dataset.
+        # 
         # This parameter is required.
         self.user_define_cube_name = user_define_cube_name
+        # The user ID of a Quick BI user who has permissions to create datasets. This is not your Alibaba Cloud account ID. To obtain the user ID, call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV\\&params=%7B%7D\\&tab=DOC\\&sdkStyle=old\\&RegionId=cn-hangzhou) operation.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # The ID of the workspace.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 

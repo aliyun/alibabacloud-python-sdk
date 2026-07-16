@@ -65,8 +65,11 @@ class ListAiToolsResponseBody(DaraModel):
         name: str = None,
         description: str = None,
     ):
+        # The fields of the tool.
         self.fields = fields
+        # The name of the tool.
         self.name = name
+        # The description of the tool.
         self.description = description
 
     def validate(self):
@@ -119,11 +122,17 @@ class ListAiToolsResponseBodyFields(DaraModel):
         example: str = None,
         description: str = None,
     ):
+        # The name of the field.
         self.name = name
+        # The valid values for the field.
         self.option = option
+        # Indicates whether the field is required.
         self.required = required
+        # The type of the field.
         self.type = type
+        # An example of the field.
         self.example = example
+        # The description of the field.
         self.description = description
 
     def validate(self):

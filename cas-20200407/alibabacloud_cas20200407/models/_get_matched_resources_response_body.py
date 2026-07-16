@@ -14,9 +14,13 @@ class GetMatchedResourcesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # 请求接口返回的数据。
         self.data = data
+        # 分页参数：结果集的最大数量，默认值为 20。
         self.max_results = max_results
+        # 下一个查询开始 Token，NextToken 为空说明没有下一个。
         self.next_token = next_token
+        # 本次请求的 ID。
         self.request_id = request_id
 
     def validate(self):

@@ -14,8 +14,11 @@ class ListInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of instances.
         self.instances = instances
+        # The request ID.
         self.request_id = request_id
+        # The total number of instances.
         self.total_count = total_count
 
     def validate(self):
@@ -70,13 +73,35 @@ class ListInstancesResponseBodyInstances(DaraModel):
         status: str = None,
         type: str = None,
     ):
+        # Information about the FeatureDB instance.
         self.feature_dbinfo = feature_dbinfo
+        # Information about the FeatureDB instance.
         self.feature_dbinstance_info = feature_dbinstance_info
+        # The creation time.
         self.gmt_create_time = gmt_create_time
+        # The update time.
         self.gmt_modified_time = gmt_modified_time
+        # The instance ID.
         self.instance_id = instance_id
+        # The region where the instance is located.
+        # 
+        # - cn-hangzhou
+        # 
+        # - cn-beijing
+        # 
+        # - cn-shanghai
+        # 
+        # - cn-shenzhen
         self.region_id = region_id
+        # The status of the instance.
+        # 
+        # - Initializing
+        # 
+        # - Running
+        # 
+        # - Stopped
         self.status = status
+        # The instance type. Currently, only Basic is supported.
         self.type = type
 
     def validate(self):
@@ -151,6 +176,7 @@ class ListInstancesResponseBodyInstancesFeatureDBInstanceInfo(DaraModel):
         self,
         status: str = None,
     ):
+        # The status of the FeatureDB instance.
         self.status = status
 
     def validate(self):
@@ -178,6 +204,7 @@ class ListInstancesResponseBodyInstancesFeatureDBInfo(DaraModel):
         self,
         status: str = None,
     ):
+        # The status of the FeatureDB instance.
         self.status = status
 
     def validate(self):

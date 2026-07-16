@@ -17,36 +17,43 @@ class ListDataQualityScanRunsShrinkRequest(DaraModel):
         sort_by: str = None,
         status: str = None,
     ):
-        # The earliest time when the data quality monitor starts to run.
+        # The earliest start time of a data quality scan run to include in the results. Specify the time as a UNIX timestamp in milliseconds.
         self.create_time_from = create_time_from
-        # The latest time when the data quality monitor starts to run.
+        # The latest start time of a data quality scan run to include in the results. Specify the time as a UNIX timestamp in milliseconds.
         self.create_time_to = create_time_to
-        # The ID of the data quality monitor.
+        # The ID of the data quality scan.
         self.data_quality_scan_id = data_quality_scan_id
-        # The extended query filter. Supported parameters:
+        # An object with advanced filter conditions. The following parameters are supported:
         # 
-        # *   TaskInstanceId
+        # - `TaskInstanceId`: The ID of the task instance.
+        # 
+        # - `RunNumber`: The run number of the instance.
         self.filter_shrink = filter_shrink
-        # The page number of the results. Default value: 1.
+        # The page number to return. Default value: 1.
         self.page_number = page_number
-        # The number of records per page. Default value: 10.
+        # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
         # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The list of sorting fields. Supports fields such as last modified time and creation time. Format: "SortField+SortOrder (Desc/Asc)", where Asc is the default. Valid values:
+        # The sort field and order for the results. The format is `FieldName Order`. The default order is ascending (Asc). Supported fields:
         # 
-        # *   CreateTime (Desc/Asc)
-        # *   Id (Desc/Asc)
+        # - CreateTime (Desc/Asc)
+        # 
+        # - Id (Desc/Asc)
         self.sort_by = sort_by
-        # The status of the data quality check result.
+        # The status of the data quality scan run. Valid values:
         # 
-        # *   Pass
-        # *   Running
-        # *   Error
-        # *   Fail
-        # *   Warn
+        # - Pass
+        # 
+        # - Running
+        # 
+        # - Error
+        # 
+        # - Fail
+        # 
+        # - Warn
         self.status = status
 
     def validate(self):

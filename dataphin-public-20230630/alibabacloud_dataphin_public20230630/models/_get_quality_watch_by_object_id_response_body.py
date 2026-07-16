@@ -15,12 +15,17 @@ class GetQualityWatchByObjectIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error details from the backend.
         self.message = message
+        # The details of the monitored object.
         self.quality_watch_info = quality_watch_info
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -97,23 +102,48 @@ class GetQualityWatchByObjectIdResponseBodyQualityWatchInfo(DaraModel):
         table_info: main_models.GetQualityWatchByObjectIdResponseBodyQualityWatchInfoTableInfo = None,
         type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The name of the creator.
         self.creator_name = creator_name
+        # The datasource details.
         self.data_source_info = data_source_info
+        # The number of enabled rules.
         self.enabled_rule_count = enabled_rule_count
+        # The monitoring ID.
         self.id = id
+        # The metric details.
         self.index_info = index_info
+        # The ID of the most recent quality watchtask for the monitored object.
         self.latest_watch_task_id = latest_watch_task_id
+        # The status of the most recent quality watchtask for the monitored object.
         self.latest_watch_task_status = latest_watch_task_status
+        # The user ID of the last modifier.
         self.modifier = modifier
+        # The modification time.
         self.modify_time = modify_time
+        # The monitoring name.
         self.name = name
+        # The user ID of the quality owner.
         self.quality_owner = quality_owner
+        # The display name of the quality owner.
         self.quality_owner_name = quality_owner_name
+        # The number of rules.
         self.rule_count = rule_count
+        # The status. Valid values:
+        # - ENABLE
+        # - DISABLE.
         self.status = status
+        # The monitored table object.
         self.table_info = table_info
+        # The monitored object type. Valid values:
+        # - TABLE: Dataphin table.
+        # - DATASOURCE_TABLE: global table.
+        # - DATASOURCE: datasource.
+        # - INDEX: metric.
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
         self.type = type
 
     def validate(self):
@@ -265,20 +295,43 @@ class GetQualityWatchByObjectIdResponseBodyQualityWatchInfoTableInfo(DaraModel):
         project_name: str = None,
         type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The table catalog.
         self.catalog = catalog
+        # The datasource ID.
         self.data_source_id = data_source_id
+        # The datasource type.
         self.data_source_type = data_source_type
+        # The description.
         self.description = description
+        # The environment identifier. Valid values:
+        # - DEV
+        # - PROD.
         self.env = env
+        # The table ID.
         self.id = id
+        # Indicates whether the table is a partitioned table.
         self.is_partition_table = is_partition_table
+        # The table name.
         self.name = name
+        # The user ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_name = owner_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The type. Valid values:
+        # - LOGIC_DIM_TABLE: logical dimension table.
+        # - LOGIC_FACT_TABLE: logical fact table.
+        # - LOGIC_SUM_TABLE: logical aggregate table.
+        # - LOGIC_LABEL_TABLE: logical label table.
+        # - PHYSICAL_TABLE: physical table.
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
         self.type = type
 
     def validate(self):
@@ -407,23 +460,46 @@ class GetQualityWatchByObjectIdResponseBodyQualityWatchInfoIndexInfo(DaraModel):
         project_name: str = None,
         type: str = None,
     ):
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The metric catalog.
         self.catalog = catalog
+        # The name of the cell aggregate table.
         self.cell_sum_logic_table_name = cell_sum_logic_table_name
+        # The computation type of the metric. Valid values:
+        # - AUTO
+        # - CUSTOM
+        # - MOUNT
+        # - COMBINE.
         self.compute_type = compute_type
+        # The data type of the metric.
         self.date_type = date_type
+        # The description.
         self.description = description
+        # The display name of the metric.
         self.display_name = display_name
+        # The display name of the statistical granularity.
         self.granularity_display_name = granularity_display_name
+        # The statistical granularity ID.
         self.granularity_id = granularity_id
+        # The metric GUID.
         self.guid = guid
+        # The metric ID.
         self.id = id
+        # The metric name.
         self.name = name
+        # The user ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_name = owner_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The metric type. Valid values:
+        # - INDEX.
         self.type = type
 
     def validate(self):
@@ -562,15 +638,29 @@ class GetQualityWatchByObjectIdResponseBodyQualityWatchInfoDataSourceInfo(DaraMo
         owner_name: str = None,
         type: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # The creator.
         self.creator = creator
+        # The name of the creator.
         self.creator_name = creator_name
+        # The environment identifier. Valid values:
+        # - PROD
+        # - DEV.
         self.env = env
+        # The datasource ID.
         self.id = id
+        # The modification time.
         self.modify_time = modify_time
+        # The datasource name.
         self.name = name
+        # The user ID of the owner.
         self.owner = owner
+        # The name of the owner.
         self.owner_name = owner_name
+        # The datasource type. Valid values:
+        # - MAX_COMPUTE
+        # - HADOOP.
         self.type = type
 
     def validate(self):

@@ -6,6 +6,18 @@ from ._add_hotline_number_request import AddHotlineNumberRequest
 from ._add_hotline_number_shrink_request import AddHotlineNumberShrinkRequest
 from ._add_hotline_number_response_body import AddHotlineNumberResponseBody
 from ._add_hotline_number_response import AddHotlineNumberResponse
+from ._add_inbound_number_request import AddInboundNumberRequest
+from ._add_inbound_number_shrink_request import AddInboundNumberShrinkRequest
+from ._add_inbound_number_response_body import AddInboundNumberResponseBody
+from ._add_inbound_number_response import AddInboundNumberResponse
+from ._add_large_model_request import AddLargeModelRequest
+from ._add_large_model_shrink_request import AddLargeModelShrinkRequest
+from ._add_large_model_response_body import AddLargeModelResponseBody
+from ._add_large_model_response import AddLargeModelResponse
+from ._add_model_application_request import AddModelApplicationRequest
+from ._add_model_application_shrink_request import AddModelApplicationShrinkRequest
+from ._add_model_application_response_body import AddModelApplicationResponseBody
+from ._add_model_application_response import AddModelApplicationResponse
 from ._add_outer_account_request import AddOuterAccountRequest
 from ._add_outer_account_response_body import AddOuterAccountResponseBody
 from ._add_outer_account_response import AddOuterAccountResponse
@@ -169,6 +181,9 @@ from ._get_ai_outbound_task_progress_response import GetAiOutboundTaskProgressRe
 from ._get_all_department_request import GetAllDepartmentRequest
 from ._get_all_department_response_body import GetAllDepartmentResponseBody
 from ._get_all_department_response import GetAllDepartmentResponse
+from ._get_audio_note_upload_url_request import GetAudioNoteUploadUrlRequest
+from ._get_audio_note_upload_url_response_body import GetAudioNoteUploadUrlResponseBody
+from ._get_audio_note_upload_url_response import GetAudioNoteUploadUrlResponse
 from ._get_call_dialog_content_request import GetCallDialogContentRequest
 from ._get_call_dialog_content_response_body import GetCallDialogContentResponseBody
 from ._get_call_dialog_content_response import GetCallDialogContentResponse
@@ -382,6 +397,9 @@ from ._list_task_response import ListTaskResponse
 from ._list_task_detail_request import ListTaskDetailRequest
 from ._list_task_detail_response_body import ListTaskDetailResponseBody
 from ._list_task_detail_response import ListTaskDetailResponse
+from ._llm_full_duplex_call_operate_request import LlmFullDuplexCallOperateRequest
+from ._llm_full_duplex_call_operate_response_body import LlmFullDuplexCallOperateResponseBody
+from ._llm_full_duplex_call_operate_response import LlmFullDuplexCallOperateResponse
 from ._llm_smart_call_request import LlmSmartCallRequest
 from ._llm_smart_call_shrink_request import LlmSmartCallShrinkRequest
 from ._llm_smart_call_response_body import LlmSmartCallResponseBody
@@ -390,6 +408,10 @@ from ._llm_smart_call_encrypt_request import LlmSmartCallEncryptRequest
 from ._llm_smart_call_encrypt_shrink_request import LlmSmartCallEncryptShrinkRequest
 from ._llm_smart_call_encrypt_response_body import LlmSmartCallEncryptResponseBody
 from ._llm_smart_call_encrypt_response import LlmSmartCallEncryptResponse
+from ._llm_smart_call_full_duplex_request import LlmSmartCallFullDuplexRequest
+from ._llm_smart_call_full_duplex_shrink_request import LlmSmartCallFullDuplexShrinkRequest
+from ._llm_smart_call_full_duplex_response_body import LlmSmartCallFullDuplexResponseBody
+from ._llm_smart_call_full_duplex_response import LlmSmartCallFullDuplexResponse
 from ._make_call_request import MakeCallRequest
 from ._make_call_response_body import MakeCallResponseBody
 from ._make_call_response import MakeCallResponse
@@ -509,6 +531,9 @@ from ._stop_ai_outbound_task_response import StopAiOutboundTaskResponse
 from ._stop_task_request import StopTaskRequest
 from ._stop_task_response_body import StopTaskResponseBody
 from ._stop_task_response import StopTaskResponse
+from ._submit_audio_note_request import SubmitAudioNoteRequest
+from ._submit_audio_note_response_body import SubmitAudioNoteResponseBody
+from ._submit_audio_note_response import SubmitAudioNoteResponse
 from ._suspend_hotline_service_request import SuspendHotlineServiceRequest
 from ._suspend_hotline_service_response_body import SuspendHotlineServiceResponseBody
 from ._suspend_hotline_service_response import SuspendHotlineServiceResponse
@@ -518,6 +543,10 @@ from ._suspend_outbound_task_response import SuspendOutboundTaskResponse
 from ._terminate_ai_outbound_task_request import TerminateAiOutboundTaskRequest
 from ._terminate_ai_outbound_task_response_body import TerminateAiOutboundTaskResponseBody
 from ._terminate_ai_outbound_task_response import TerminateAiOutboundTaskResponse
+from ._test_large_model_request import TestLargeModelRequest
+from ._test_large_model_shrink_request import TestLargeModelShrinkRequest
+from ._test_large_model_response_body import TestLargeModelResponseBody
+from ._test_large_model_response import TestLargeModelResponse
 from ._transfer_call_to_skill_group_request import TransferCallToSkillGroupRequest
 from ._transfer_call_to_skill_group_response_body import TransferCallToSkillGroupResponseBody
 from ._transfer_call_to_skill_group_response import TransferCallToSkillGroupResponse
@@ -535,6 +564,14 @@ from ._update_ai_outbound_task_response import UpdateAiOutboundTaskResponse
 from ._update_department_request import UpdateDepartmentRequest
 from ._update_department_response_body import UpdateDepartmentResponseBody
 from ._update_department_response import UpdateDepartmentResponse
+from ._update_large_model_request import UpdateLargeModelRequest
+from ._update_large_model_shrink_request import UpdateLargeModelShrinkRequest
+from ._update_large_model_response_body import UpdateLargeModelResponseBody
+from ._update_large_model_response import UpdateLargeModelResponse
+from ._update_model_application_request import UpdateModelApplicationRequest
+from ._update_model_application_shrink_request import UpdateModelApplicationShrinkRequest
+from ._update_model_application_response_body import UpdateModelApplicationResponseBody
+from ._update_model_application_response import UpdateModelApplicationResponse
 from ._update_outer_account_request import UpdateOuterAccountRequest
 from ._update_outer_account_response_body import UpdateOuterAccountResponseBody
 from ._update_outer_account_response import UpdateOuterAccountResponse
@@ -542,6 +579,8 @@ from ._update_skill_group_request import UpdateSkillGroupRequest
 from ._update_skill_group_response_body import UpdateSkillGroupResponseBody
 from ._update_skill_group_response import UpdateSkillGroupResponse
 from ._add_hotline_number_request import AddHotlineNumberRequestOutboundRangeList
+from ._add_inbound_number_response_body import AddInboundNumberResponseBodyData
+from ._add_model_application_request import AddModelApplicationRequestTtsConfig
 from ._batch_create_quality_projects_response_body import BatchCreateQualityProjectsResponseBodyData
 from ._cancel_ai_call_details_response_body import CancelAiCallDetailsResponseBodyData
 from ._create_ai_outbound_task_request import CreateAiOutboundTaskRequestRecallRule
@@ -568,6 +607,7 @@ from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgr
 from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgressResponseBodyDataTaskProgress
 from ._get_ai_outbound_task_progress_response_body import GetAiOutboundTaskProgressResponseBodyData
 from ._get_all_department_response_body import GetAllDepartmentResponseBodyData
+from ._get_audio_note_upload_url_response_body import GetAudioNoteUploadUrlResponseBodyData
 from ._get_call_dialog_content_response_body import GetCallDialogContentResponseBodyData
 from ._get_customer_info_response_body import GetCustomerInfoResponseBodyData
 from ._get_dep_group_tree_data_response_body import GetDepGroupTreeDataResponseBodyDataGroupDTOS
@@ -696,13 +736,29 @@ from ._query_touch_list_response_body import QueryTouchListResponseBodyResultDat
 from ._query_touch_list_response_body import QueryTouchListResponseBodyResultData
 from ._remove_agent_from_skill_group_response_body import RemoveAgentFromSkillGroupResponseBodyData
 from ._reset_hotline_number_request import ResetHotlineNumberRequestOutboundRangeList
+from ._test_large_model_response_body import TestLargeModelResponseBodyData
 from ._update_ai_outbound_task_request import UpdateAiOutboundTaskRequestRecallRule
+from ._update_model_application_request import UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO
+from ._update_model_application_request import UpdateModelApplicationRequestInterruptConfig
+from ._update_model_application_request import UpdateModelApplicationRequestTtsConfig
 
 __all__ = [
     AddHotlineNumberRequest,
     AddHotlineNumberShrinkRequest,
     AddHotlineNumberResponseBody,
     AddHotlineNumberResponse,
+    AddInboundNumberRequest,
+    AddInboundNumberShrinkRequest,
+    AddInboundNumberResponseBody,
+    AddInboundNumberResponse,
+    AddLargeModelRequest,
+    AddLargeModelShrinkRequest,
+    AddLargeModelResponseBody,
+    AddLargeModelResponse,
+    AddModelApplicationRequest,
+    AddModelApplicationShrinkRequest,
+    AddModelApplicationResponseBody,
+    AddModelApplicationResponse,
     AddOuterAccountRequest,
     AddOuterAccountResponseBody,
     AddOuterAccountResponse,
@@ -866,6 +922,9 @@ __all__ = [
     GetAllDepartmentRequest,
     GetAllDepartmentResponseBody,
     GetAllDepartmentResponse,
+    GetAudioNoteUploadUrlRequest,
+    GetAudioNoteUploadUrlResponseBody,
+    GetAudioNoteUploadUrlResponse,
     GetCallDialogContentRequest,
     GetCallDialogContentResponseBody,
     GetCallDialogContentResponse,
@@ -1079,6 +1138,9 @@ __all__ = [
     ListTaskDetailRequest,
     ListTaskDetailResponseBody,
     ListTaskDetailResponse,
+    LlmFullDuplexCallOperateRequest,
+    LlmFullDuplexCallOperateResponseBody,
+    LlmFullDuplexCallOperateResponse,
     LlmSmartCallRequest,
     LlmSmartCallShrinkRequest,
     LlmSmartCallResponseBody,
@@ -1087,6 +1149,10 @@ __all__ = [
     LlmSmartCallEncryptShrinkRequest,
     LlmSmartCallEncryptResponseBody,
     LlmSmartCallEncryptResponse,
+    LlmSmartCallFullDuplexRequest,
+    LlmSmartCallFullDuplexShrinkRequest,
+    LlmSmartCallFullDuplexResponseBody,
+    LlmSmartCallFullDuplexResponse,
     MakeCallRequest,
     MakeCallResponseBody,
     MakeCallResponse,
@@ -1206,6 +1272,9 @@ __all__ = [
     StopTaskRequest,
     StopTaskResponseBody,
     StopTaskResponse,
+    SubmitAudioNoteRequest,
+    SubmitAudioNoteResponseBody,
+    SubmitAudioNoteResponse,
     SuspendHotlineServiceRequest,
     SuspendHotlineServiceResponseBody,
     SuspendHotlineServiceResponse,
@@ -1215,6 +1284,10 @@ __all__ = [
     TerminateAiOutboundTaskRequest,
     TerminateAiOutboundTaskResponseBody,
     TerminateAiOutboundTaskResponse,
+    TestLargeModelRequest,
+    TestLargeModelShrinkRequest,
+    TestLargeModelResponseBody,
+    TestLargeModelResponse,
     TransferCallToSkillGroupRequest,
     TransferCallToSkillGroupResponseBody,
     TransferCallToSkillGroupResponse,
@@ -1232,6 +1305,14 @@ __all__ = [
     UpdateDepartmentRequest,
     UpdateDepartmentResponseBody,
     UpdateDepartmentResponse,
+    UpdateLargeModelRequest,
+    UpdateLargeModelShrinkRequest,
+    UpdateLargeModelResponseBody,
+    UpdateLargeModelResponse,
+    UpdateModelApplicationRequest,
+    UpdateModelApplicationShrinkRequest,
+    UpdateModelApplicationResponseBody,
+    UpdateModelApplicationResponse,
     UpdateOuterAccountRequest,
     UpdateOuterAccountResponseBody,
     UpdateOuterAccountResponse,
@@ -1239,6 +1320,8 @@ __all__ = [
     UpdateSkillGroupResponseBody,
     UpdateSkillGroupResponse,
     AddHotlineNumberRequestOutboundRangeList,
+    AddInboundNumberResponseBodyData,
+    AddModelApplicationRequestTtsConfig,
     BatchCreateQualityProjectsResponseBodyData,
     CancelAiCallDetailsResponseBodyData,
     CreateAiOutboundTaskRequestRecallRule,
@@ -1265,6 +1348,7 @@ __all__ = [
     GetAiOutboundTaskProgressResponseBodyDataTaskProgress,
     GetAiOutboundTaskProgressResponseBodyData,
     GetAllDepartmentResponseBodyData,
+    GetAudioNoteUploadUrlResponseBodyData,
     GetCallDialogContentResponseBodyData,
     GetCustomerInfoResponseBodyData,
     GetDepGroupTreeDataResponseBodyDataGroupDTOS,
@@ -1393,5 +1477,9 @@ __all__ = [
     QueryTouchListResponseBodyResultData,
     RemoveAgentFromSkillGroupResponseBodyData,
     ResetHotlineNumberRequestOutboundRangeList,
-    UpdateAiOutboundTaskRequestRecallRule
+    TestLargeModelResponseBodyData,
+    UpdateAiOutboundTaskRequestRecallRule,
+    UpdateModelApplicationRequestInterruptConfigAvoidInterruptDTO,
+    UpdateModelApplicationRequestInterruptConfig,
+    UpdateModelApplicationRequestTtsConfig
 ]

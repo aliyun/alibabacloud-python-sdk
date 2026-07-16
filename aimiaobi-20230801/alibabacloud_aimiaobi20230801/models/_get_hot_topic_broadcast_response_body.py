@@ -17,11 +17,17 @@ class GetHotTopicBroadcastResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # status code
         self.code = code
+        # Business Data
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Fault description
         self.message = message
+        # Request UUID
         self.request_id = request_id
+        # is successful: true indicates Succeeded, false indicates failed
         self.success = success
 
     def validate(self):
@@ -83,8 +89,11 @@ class GetHotTopicBroadcastResponseBodyData(DaraModel):
         total_count: int = None,
         total_token_info: main_models.GetHotTopicBroadcastResponseBodyDataTotalTokenInfo = None,
     ):
+        # List of hot spot bulletins
         self.data = data
+        # Total count
         self.total_count = total_count
+        # Estimated total number of tokens required for generation
         self.total_token_info = total_token_info
 
     def validate(self):
@@ -138,9 +147,13 @@ class GetHotTopicBroadcastResponseBodyDataTotalTokenInfo(DaraModel):
         output_tokens: int = None,
         word_count: int = None,
     ):
+        # Total number of hot spots
         self.hot_topic_count = hot_topic_count
+        # Estimated number of input tokens
         self.input_tokens = input_tokens
+        # Estimated number of output tokens
         self.output_tokens = output_tokens
+        # Estimated total word count
         self.word_count = word_count
 
     def validate(self):
@@ -202,22 +215,39 @@ class GetHotTopicBroadcastResponseBodyDataData(DaraModel):
         text_summary: str = None,
         url: str = None,
     ):
+        # Hot topic category
         self.category = category
+        # Creation Time
         self.create_time = create_time
+        # Custom hotness value
         self.custom_hot_value = custom_hot_value
+        # Custom text summarization of the hot spot topic
         self.custom_text_summary = custom_text_summary
+        # Name of the hot spot topic
         self.hot_topic = hot_topic
+        # hot spot topic summary Version
         self.hot_topic_version = hot_topic_version
+        # Hotness value
         self.hot_value = hot_value
+        # hot spot topic ID
         self.id = id
+        # List of hot spot topic images
         self.images = images
+        # Input Token
         self.input_token = input_token
+        # List of Regions associated with the hot spot
         self.locations = locations
+        # Article List
         self.news = news
+        # Output Token
         self.output_token = output_token
+        # Published At
         self.pub_time = pub_time
+        # Structured summary of hot spot topics
         self.summary = summary
+        # Text summary of the hot topic
         self.text_summary = text_summary
+        # Hot list URL
         self.url = url
 
     def validate(self):
@@ -363,8 +393,11 @@ class GetHotTopicBroadcastResponseBodyDataDataSummary(DaraModel):
         output_token: int = None,
         summaries: List[main_models.GetHotTopicBroadcastResponseBodyDataDataSummarySummaries] = None,
     ):
+        # Number of input tokens used to generate this summary
         self.input_token = input_token
+        # Number of output tokens used to generate this summary
         self.output_token = output_token
+        # List of structured summaries
         self.summaries = summaries
 
     def validate(self):
@@ -413,7 +446,9 @@ class GetHotTopicBroadcastResponseBodyDataDataSummarySummaries(DaraModel):
         summary: str = None,
         title: str = None,
     ):
+        # Summary
         self.summary = summary
+        # title
         self.title = title
 
     def validate(self):
@@ -464,24 +499,41 @@ class GetHotTopicBroadcastResponseBodyDataDataNews(DaraModel):
         uuid: str = None,
         website: str = None,
     ):
+        # Model categorization result
         self.analysis_category = analysis_category
+        # aggregated hot spot name
         self.analysis_topic = analysis_topic
+        # Author
         self.author = author
+        # Categorization
         self.category = category
+        # News content
         self.comments = comments
+        # News content
         self.content = content
+        # Ingestion time
         self.create_time = create_time
+        # Source
         self.domain = domain
+        # Date of entry
         self.dt = dt
+        # original hot spot name
         self.hot_topic = hot_topic
+        # Image list
         self.img_list = img_list
         # logo
         self.logo = logo
+        # Published At
         self.pub_time = pub_time
+        # Summary
         self.summary = summary
+        # title
         self.title = title
+        # news URL
         self.url = url
+        # Primary key ID
         self.uuid = uuid
+        # website
         self.website = website
 
     def validate(self):
@@ -620,7 +672,9 @@ class GetHotTopicBroadcastResponseBodyDataDataNewsComments(DaraModel):
         text: str = None,
         username: str = None,
     ):
+        # Content
         self.text = text
+        # Username
         self.username = username
 
     def validate(self):
@@ -654,6 +708,7 @@ class GetHotTopicBroadcastResponseBodyDataDataImages(DaraModel):
         self,
         url: str = None,
     ):
+        # URL link
         self.url = url
 
     def validate(self):

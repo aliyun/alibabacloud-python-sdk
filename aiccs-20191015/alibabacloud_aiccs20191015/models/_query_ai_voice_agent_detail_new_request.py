@@ -11,9 +11,13 @@ class QueryAiVoiceAgentDetailNewRequest(DaraModel):
         branch_id: str = None,
         version_id: str = None,
     ):
+        # The ID of the agent.
+        # 
         # This parameter is required.
         self.agent_id = agent_id
+        # The ID of the branch. If you do not specify this parameter, the active branch is used.
         self.branch_id = branch_id
+        # The ID of the version. If you do not specify this parameter, the system uses the latest published version for the specified branch. You must specify BranchId when you use this parameter.
         self.version_id = version_id
 
     def validate(self):

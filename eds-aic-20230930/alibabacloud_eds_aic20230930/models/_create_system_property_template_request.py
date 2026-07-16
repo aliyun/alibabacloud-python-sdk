@@ -15,9 +15,21 @@ class CreateSystemPropertyTemplateRequest(DaraModel):
         system_property_info: main_models.CreateSystemPropertyTemplateRequestSystemPropertyInfo = None,
         template_name: str = None,
     ):
+        # Specifies whether to automatically generate preset system properties.
         self.enable_auto = enable_auto
+        # The URL of the property template file. The API parses the file synchronously. An error is returned if the file format is invalid.
+        # 
+        # > The file must be in the following format: `{ "properties":{"key1":"value1"}}`.
         self.file_path = file_path
+        # The information about the system property template.
         self.system_property_info = system_property_info
+        # The name of the template. The name must meet the following requirements:
+        # 
+        # - Be 2 to 32 characters in length.
+        # 
+        # - Start with an uppercase or lowercase letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # 
+        # - Contain letters, digits, colons (:), underscores (_), and hyphens (-). Periods (.) are not supported.
         self.template_name = template_name
 
     def validate(self):
@@ -80,21 +92,37 @@ class CreateSystemPropertyTemplateRequestSystemPropertyInfo(DaraModel):
         ro_product_model: str = None,
         rw_ro_serial_no: str = None,
     ):
+        # A list of custom properties.
         self.custom_property_infos = custom_property_infos
+        # > This parameter is not yet available for use.
         self.ro_bootloader = ro_bootloader
+        # > This parameter is not yet available for use.
         self.ro_build_display_id = ro_build_display_id
+        # > This parameter is not yet available for use.
         self.ro_build_fingerprint = ro_build_fingerprint
+        # > This parameter is not yet available for use.
         self.ro_build_host = ro_build_host
+        # > This parameter is not yet available for use.
         self.ro_build_id = ro_build_id
+        # > This parameter is not yet available for use.
         self.ro_build_product = ro_build_product
+        # > This parameter is not yet available for use.
         self.ro_build_tags = ro_build_tags
+        # > This parameter is not yet available for use.
         self.ro_build_type = ro_build_type
+        # > This parameter is not yet available for use.
         self.ro_build_user = ro_build_user
+        # > This parameter is not yet available for use.
         self.ro_product_board = ro_product_board
+        # > This parameter is not yet available for use.
         self.ro_product_brand = ro_product_brand
+        # > This parameter is not yet available for use.
         self.ro_product_device = ro_product_device
+        # > This parameter is not yet available for use.
         self.ro_product_manufacturer = ro_product_manufacturer
+        # > This parameter is not yet available for use.
         self.ro_product_model = ro_product_model
+        # > This parameter is not yet available for use.
         self.rw_ro_serial_no = rw_ro_serial_no
 
     def validate(self):
@@ -221,7 +249,9 @@ class CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos(D
         property_name: str = None,
         property_value: str = None,
     ):
+        # The key of the custom property.
         self.property_name = property_name
+        # The value of the custom property.
         self.property_value = property_value
 
     def validate(self):

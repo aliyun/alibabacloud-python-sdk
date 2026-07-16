@@ -12,10 +12,16 @@ class UpdateUserSayShrinkRequest(DaraModel):
         user_say_definition_shrink: str = None,
         user_say_id: int = None,
     ):
+        # The workspace key. If you omit this parameter, the default workspace is used. You can find this key on the Workspace Management page in your main account.
         self.agent_key = agent_key
+        # The ID of the bot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The definition of the user say.
         self.user_say_definition_shrink = user_say_definition_shrink
+        # The ID of the user say.
+        # 
         # This parameter is required.
         self.user_say_id = user_say_id
 

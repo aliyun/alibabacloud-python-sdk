@@ -12,7 +12,9 @@ class ModifyDisplayConfigShrinkRequest(DaraModel):
         android_instance_ids: List[str] = None,
         display_config_shrink: str = None,
     ):
+        # A list of instance IDs.
         self.android_instance_ids = android_instance_ids
+        # The display settings.
         self.display_config_shrink = display_config_shrink
 
     def validate(self):

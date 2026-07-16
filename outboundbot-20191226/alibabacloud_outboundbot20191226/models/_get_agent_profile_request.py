@@ -11,9 +11,16 @@ class GetAgentProfileRequest(DaraModel):
         app_ip: str = None,
         instance_id: str = None,
     ):
+        # The ID of the agent configuration.
+        # 
+        # > The agent configuration ID for a created scenario is available in the ChatbotId parameter returned by the DescribeScript operation.
+        # 
         # This parameter is required.
         self.agent_profile_id = agent_profile_id
+        # The IP address of the application. This is a system field and is optional.
         self.app_ip = app_ip
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

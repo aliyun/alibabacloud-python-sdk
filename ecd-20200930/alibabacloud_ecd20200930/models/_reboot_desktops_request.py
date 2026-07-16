@@ -16,13 +16,14 @@ class RebootDesktopsRequest(DaraModel):
         region_id: str = None,
     ):
         self.create_snapshot = create_snapshot
-        # The IDs of the cloud computers. You can specify 1 to 100 IDs.
+        # An array of 1 to 100 desktop IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
+        # Specifies whether to install system patches.
         self.os_update = os_update
         self.patch_id = patch_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+        # The ID of the region. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where Elastic Desktop Service is available.
         # 
         # This parameter is required.
         self.region_id = region_id

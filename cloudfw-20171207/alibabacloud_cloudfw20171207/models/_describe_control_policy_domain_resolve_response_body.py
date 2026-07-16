@@ -13,7 +13,9 @@ class DescribeControlPolicyDomainResolveResponseBody(DaraModel):
         request_id: str = None,
         resolve_result: List[main_models.DescribeControlPolicyDomainResolveResponseBodyResolveResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The domain name resolution results.
         self.resolve_result = resolve_result
 
     def validate(self):
@@ -58,9 +60,13 @@ class DescribeControlPolicyDomainResolveResponseBodyResolveResult(DaraModel):
         ip_version: int = None,
         update_time: int = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IP address list.
         self.ip_addr_list = ip_addr_list
+        # The supported IP address version.
         self.ip_version = ip_version
+        # The update time. The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970 (UTC).
         self.update_time = update_time
 
     def validate(self):

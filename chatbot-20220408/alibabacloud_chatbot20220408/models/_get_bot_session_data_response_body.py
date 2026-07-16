@@ -13,8 +13,11 @@ class GetBotSessionDataResponseBody(DaraModel):
         datas: List[Dict[str, Any]] = None,
         request_id: str = None,
     ):
+        # The API call latency, in milliseconds (ms).
         self.cost_time = cost_time
+        # An array of objects containing the data details.
         self.datas = datas
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

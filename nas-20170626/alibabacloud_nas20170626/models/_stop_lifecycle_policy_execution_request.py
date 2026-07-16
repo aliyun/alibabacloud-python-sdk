@@ -10,8 +10,12 @@ class StopLifecyclePolicyExecutionRequest(DaraModel):
         file_system_id: str = None,
         lifecycle_policy_id: str = None,
     ):
+        # The ID of the file system.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The ID of the lifecycle policy.
+        # 
         # This parameter is required.
         self.lifecycle_policy_id = lifecycle_policy_id
 

@@ -10,8 +10,10 @@ class GetRuleRequest(DaraModel):
         base_me_agent_id: int = None,
         json_str: str = None,
     ):
-        # baseMeAgentId
+        # Workspace ID
         self.base_me_agent_id = base_me_agent_id
+        # A complete JSON string. See the detailed information below.
+        # 
         # This parameter is required.
         self.json_str = json_str
 

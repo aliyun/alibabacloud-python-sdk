@@ -16,10 +16,15 @@ class CreateDataAgentSessionRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
+        # The current DMS unit.
         self.dmsunit = dmsunit
+        # The file ID.
         self.file = file
+        # The session configuration.
         self.session_config = session_config
+        # The session title. Supports Chinese and English. Maximum length: 128 characters.
         self.title = title
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -84,17 +89,40 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         report_water_mark: str = None,
         user_oss_bucket: str = None,
     ):
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
+        # The custom agent stage. Valid values:
+        # 
+        # - **debug**: Test stage.
+        # 
+        # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
+        # Specifies whether to enable web search.
         self.enable_search = enable_search
         self.encrypt_key = encrypt_key
         self.encrypt_type = encrypt_type
         self.kb_uuid_list = kb_uuid_list
+        # The language. Valid values:
+        # 
+        # - **CHINESE**: Chinese
+        # 
+        # - **ENGLISH**: English
         self.language = language
+        # A list of MCP server IDs.
         self.mcp_server_ids = mcp_server_ids
+        # The mode. Valid values:
+        # 
+        # - **ASK_DATA**: Quick inquiry mode.
+        # 
+        # - **ANALYSIS**: Analysis mode.
+        # 
+        # - **INSIGHT**: Insight mode.
         self.mode = mode
         self.report_page_width = report_page_width
         self.report_water_mark = report_water_mark
+        # The OSS bucket name.
+        # 
+        # - This bucket stores intermediate files and report artifacts from the analysis.
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):

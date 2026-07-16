@@ -16,13 +16,21 @@ class CreateLibraryResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Processing time in milliseconds
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Operation success status
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):

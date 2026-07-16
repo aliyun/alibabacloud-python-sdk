@@ -10,7 +10,7 @@ class DescribeCertificatePrivateKeyResponseBody(DaraModel):
         encrypted_data: str = None,
         request_id: str = None,
     ):
-        # The content of the encrypted private key.
+        # The encrypted content of the private key.
         self.encrypted_data = encrypted_data
         # The ID of the request.
         self.request_id = request_id

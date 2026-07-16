@@ -1,3 +1,23 @@
+2026-07-15 Version: 1.9.2
+- Update API ListRayHistoryServers: add request parameters StoragePath.
+
+
+2026-06-10 Version: 1.9.1
+- Generated python 2020-12-03 for pai-dlc.
+
+2026-06-04 Version: 1.9.0
+- Support API GetMetrics.
+
+
+2026-06-01 Version: 1.8.0
+- Support API CreateRayHistoryServer.
+- Support API DeleteRayHistoryServer.
+- Support API GetRayHistoryServer.
+- Support API ListRayHistoryServers.
+- Support API StartRayHistoryServer.
+- Support API StopRayHistoryServer.
+
+
 2026-05-18 Version: 1.7.3
 - Generated python 2020-12-03 for pai-dlc.
 

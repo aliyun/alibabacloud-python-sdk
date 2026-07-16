@@ -13,13 +13,23 @@ class StartCallRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
     ):
+        # Agent account name, which is the phone number or mailbox entered during account registration. It is unique within the instance.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # Callee number for the hotline outbound call.
+        # 
         # This parameter is required.
         self.callee = callee
+        # Caller number for the hotline outbound call.
+        # 
         # This parameter is required.
         self.caller = caller
+        # Unique customer request ID. Used for idempotency validation. You can generate it using a UUID.
         self.client_token = client_token
+        # Artificial Intelligence Cloud Call Service (AICCS) instance ID.  
+        # You can obtain it from **Instance Management** in the left-side navigation pane of the [Artificial Intelligence Cloud Call Service console](https://aiccs.console.aliyun.com/overview).
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

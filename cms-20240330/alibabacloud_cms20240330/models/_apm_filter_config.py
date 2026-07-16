@@ -11,15 +11,15 @@ class ApmFilterConfig(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # 维度键
+        # The tag key to filter by. For example, to filter traces by region, set this parameter to `RegionId`.
         # 
         # This parameter is required.
         self.key = key
-        # 过滤类型
+        # The comparison operator used to match the tag\\"s value. Valid values: `EQUAL` and `NOT_EQUAL`.
         # 
         # This parameter is required.
         self.type = type
-        # 过滤值（type 为 ALL/DISABLED 时可为空）
+        # The value to compare against the tag\\"s value. Used with the `key` and `type` parameters to form a complete filter condition.
         self.value = value
 
     def validate(self):

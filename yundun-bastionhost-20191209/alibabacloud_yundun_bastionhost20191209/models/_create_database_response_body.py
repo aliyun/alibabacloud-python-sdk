@@ -10,9 +10,9 @@ class CreateDatabaseResponseBody(DaraModel):
         database_id: str = None,
         request_id: str = None,
     ):
-        # The database ID.
+        # The ID of the database instance.
         self.database_id = database_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

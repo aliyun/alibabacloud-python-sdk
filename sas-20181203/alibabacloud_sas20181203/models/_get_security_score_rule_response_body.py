@@ -15,16 +15,15 @@ class GetSecurityScoreRuleResponseBody(DaraModel):
         security_score_category_list: List[main_models.GetSecurityScoreRuleResponseBodySecurityScoreCategoryList] = None,
         security_score_rule_list: List[main_models.GetSecurityScoreRuleResponseBodySecurityScoreRuleList] = None,
     ):
-        # The status of the custom settings of the security score feature.
-        # 
-        # *   true: enabled
-        # *   false: disabled
+        # The enabling status of the custom security scoring rule. Valid values:
+        # - true: Enabled.
+        # - false: Not enabled.
         self.enable_status = enable_status
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
-        # The information about the new version of the security score rule.
+        # The list of new security score rules.
         self.security_score_category_list = security_score_category_list
-        # The information about the old version of the security score rule.
+        # The list of legacy security score rules.
         self.security_score_rule_list = security_score_rule_list
 
     def validate(self):
@@ -90,22 +89,21 @@ class GetSecurityScoreRuleResponseBodySecurityScoreRuleList(DaraModel):
         security_score_item_list: List[main_models.GetSecurityScoreRuleResponseBodySecurityScoreRuleListSecurityScoreItemList] = None,
         title: str = None,
     ):
-        # The deduction module that is supported by the security score feature. Valid values:
-        # 
-        # *   SS_REINFORCE: issue in key feature configuration
-        # *   SS_ALARM: unhandled alert
-        # *   SS_VUL: unfixed vulnerability
-        # *   SS_HC: baseline risk
-        # *   SS_CLOUD_HC: risk item of configuration assessment
-        # *   SS_AK: risk of AccessKey pair leaks
+        # The type of the security score rule. Valid values:
+        # - SS_REINFORCE: Key feature configuration.
+        # - SS_ALARM: Pending alerts.
+        # - SS_VUL: Pending vulnerabilities to fix.
+        # - SS_HC: Baseline issues.
+        # - SS_CLOUD_HC: Cloud platform configuration check item issues.
+        # - SS_AK: AccessKey leakage risk exists.
         self.rule_type = rule_type
-        # The deduction threshold of the deduction module.
+        # The deduction value of the security score rule.
         # 
-        # >  Valid values: 0 to 100. The sum of the deduction thresholds for all deduction modules must be equal to 100.
+        # > The configurable range is 0 to 100 points. The sum of all security score rule deduction thresholds must equal 100 points.
         self.score = score
-        # The deduction items of the deduction module.
+        # The list of individual deduction items for the security score rule.
         self.security_score_item_list = security_score_item_list
-        # The description of the deduction module.
+        # The description of the security score rule.
         self.title = title
 
     def validate(self):
@@ -162,54 +160,48 @@ class GetSecurityScoreRuleResponseBodySecurityScoreRuleListSecurityScoreItemList
         sub_rule_type: str = None,
         title: str = None,
     ):
-        # The penalty point of the deduction item.
+        # The deduction value of the individual item.
         self.score = score
-        # The threshold for the deduction item.
+        # The deduction threshold of the individual item.
         # 
-        # >  Valid values: 0 to the deduction threshold of the deduction module.
+        # > The configurable range is 0 to the deduction threshold of the security score rule.
         self.score_threshold = score_threshold
-        # The deduction item of the deduction module. The following list describes the deduction modules and their deduction items:
+        # The sub-rule type of the security score deduction item. The relationship between security score categorization types and sub-rule types is as follows:
+        # - SS_REINFORCE: Key feature configuration.
+        #   - XPRESS_INSTALL: Security Center service authorization is not enabled.
+        #   - REINFORCE_SUSPICIOUS: Anti-virus feature is not enabled.
+        #   - RANSOMWARE: Anti-ransomware policy is not enabled.
+        #   - WEB_LOCK: Web tamper-proofing feature is not enabled.
+        #   - VIRUS_SCHEDULE_SCAN: Periodic virus scan policy is not enabled.
+        #   - IMAGE_REPO_SCAN: Container image scan scope is not configured.
+        #   - IMAGE_SCAN_TASK: One-click container image security risk scan has not been executed.
         # 
-        # *   SS_REINFORCE: issue in key feature configuration
+        # - SS_ALARM: Pending alerts.
+        #   - ALARM_SERIOUS: One unhandled high-risk alert event exists.
+        #   - ALARM_SUSPICIOUS: One unhandled medium-risk alert event exists.
+        #   - ALARM_REMIND: One unhandled low-risk alert event exists.
         # 
-        #     *   XPRESS_INSTALL: Security Center is not authorized.
-        #     *   REINFORCE_SUSPICIOUS: The antivirus feature is disabled.
-        #     *   RANSOMWARE: The anti-ransomware policy is disabled.
-        #     *   WEB_LOCK: The web tamper proofing feature is disabled.
-        #     *   VIRUS_SCHEDULE_SCAN: The periodic virus scan policy is disabled.
-        #     *   IMAGE_REPO_SCAN: The range of container image scan is not configured.
-        #     *   IMAGE_SCAN_TASK: The feature of one-click scan of container images for security risks is not performed.
+        # - SS_VUL: Pending vulnerabilities to fix.
+        #   - CMS_UNFIX: One unfixed CMS vulnerability exists.
+        #   - WIN_UNFIX: One unfixed Windows host vulnerability exists.
+        #   - CVE_UNFIX: One unfixed Linux host vulnerability exists.
+        #   - ERM_UNFIX: One unfixed emergency vulnerability exists.
+        #   - ERM_UNCHECK: One undetected emergency vulnerability exists.
         # 
-        # *   SS_ALARM: unhandled alert.
+        # - SS_HC: Baseline issues.
+        #   - WEAK_EXPLOIT: Weak password risk exposed to the Internet exists.
+        #   - WEAK_PASSWORD: Weak password risk exists.
+        #   - HC_EXPLOIT: High-risk intrusion vulnerability exists.
+        #   - HC_OTHER_WARNING: Security configuration risk exists.
         # 
-        #     *   ALARM_SERIOUS: An unhandled high-risk alert event is detected.
-        #     *   ALARM_SUSPICIOUS: An unhandled medium-risk alarm event is detected.
-        #     *   ALARM_REMIND: An unhandled low-risk alarm event is detected.
+        # - SS_CLOUD_HC: Cloud platform configuration check item issues.
+        #   - CSPM_CIEM_NOT_PASS: One failed CIEM check item exists.
+        #   - CSPM_RISK_NOT_PASS: One failed security risk check item exists.
+        #   - CSPM_COMPLIANCE_NOT_PASS: One failed compliance check item exists.
         # 
-        # *   SS_VUL: unfixed vulnerability
-        # 
-        #     *   CMS_UNFIX: An unfixed Web-CMS vulnerability is detected.
-        #     *   WIN_UNFIX: An unfixed Windows host vulnerability is detected.
-        #     *   CVE_UNFIX: An unfixed Linux host vulnerability is detected.
-        #     *   ERM_UNFIX: An unfixed urgent vulnerability is detected.
-        #     *   ERM_UNCHECK: An undetected urgent vulnerability exists.
-        # 
-        # *   SS_HC: baseline risks
-        # 
-        #     *   WEAK_EXPLOIT: Weak passwords are exposed to the Internet.
-        #     *   WEAK_PASSWORD: Weak passwords exist.
-        #     *   HC_EXPLOIT: The data source may be hacked.
-        #     *   HC_OTHER_WARNING: Security configuration risks exist.
-        # 
-        # *   SS_CLOUD_HC: Cloud platform configuration check item problem.
-        # 
-        #     *   CSPM_CIEM_NOT_PASS: A CIEM check item failed the check.
-        #     *   CSPM_RISK_NOT_PASS: A security risk check item failed the check.
-        #     *   CSPM_COMPLIANCE_NOT_PASS: A compliance check item failed the check.
-        # 
-        # *   SS_AK: risk of AccessKey pair leaks
+        # - SS_AK: AccessKey leakage risk exists.
         self.sub_rule_type = sub_rule_type
-        # The description of the deduction item in a deduction module.
+        # The description of the sub-rule type for the security score deduction item.
         self.title = title
 
     def validate(self):
@@ -259,15 +251,14 @@ class GetSecurityScoreRuleResponseBodySecurityScoreCategoryList(DaraModel):
         title: str = None,
     ):
         # The category of the security score rule. Valid values:
-        # 
-        # *   **SS_SAS_HANDLE**: security governance.
-        # *   **SS_SAS_RESPOND**: security response.
+        # - **SS_SAS_HANDLE**: Security governance.
+        # - **SS_SAS_RESPOND**: Security response.
         self.category = category
-        # The threshold of deduction for the security score rule type.
+        # The deduction threshold of the security score rule category.
         self.score = score
-        # The deduction items of the security score rule.
+        # The deduction list of security score rule types.
         self.security_rule_list = security_rule_list
-        # The category of the security score rule.
+        # The name of the security score rule category.
         self.title = title
 
     def validate(self):
@@ -326,9 +317,9 @@ class GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleList(
     ):
         # The type of the security score rule.
         self.rule_type = rule_type
-        # The threshold of deduction for the security score rule type.
+        # The deduction threshold of the security score rule type.
         self.score = score
-        # The sub-deduction items of the security score rule.
+        # The deduction list of security score rule sub-items.
         self.security_score_item_list = security_score_item_list
         # The name of the security score rule type.
         self.title = title
@@ -387,28 +378,28 @@ class GetSecurityScoreRuleResponseBodySecurityScoreCategoryListSecurityRuleListS
         sub_rule_type: str = None,
         title: str = None,
     ):
-        # The deduction score for the item.
+        # The deduction value of the individual item.
         self.score = score
-        # The threshold of the deduction score for the item.
+        # The deduction threshold of the individual item.
         self.score_threshold = score_threshold
-        # The type of the sub-deduction item. Valid values:
+        # The type of the security score rule sub-item. Valid values:
         # 
-        # *   **SS_SAS_WEAK_PW**: unhandled weak password risk.
-        # *   **SS_SAS_ALARM**: unhandled alert in Security Center.
-        # *   **SS_SAS_EMG_VUL**: unfixed urgent vulnerability.
-        # *   **SS_SAS_APP_VUL**: unfixed application vulnerability.
-        # *   **SS_SAS_SYS_VUL**: unfixed system vulnerability.
-        # *   **SS_SAS_CLOUD_HC**: unhandled cloud security posture management (CSPM) risk.
-        # *   **SS_SDDP_DATA_RISK**: unhandled data security risk.
-        # *   **SS_WAF_API_RISK**: unhandled API security risk.
-        # *   **SS_DDOS_BH_ASSET**: asset on which blackhole filtering is triggered.
-        # *   **SS_SAS_AK_LEAK**: unhandled AK/SK leak event.
-        # *   **SS_PRODUCT_CONNECT**: security service not integrated.
-        # *   **SS_KEY_CONFIG**: key feature configuration.
-        # *   **SS_PRODUCT_EXPIRE**: service that is about to expire.
-        # *   **SS_AI_RISK**: AI application risk.
+        # - **SS_SAS_WEAK_PW**: Pending weak passwords to fix.
+        # - **SS_SAS_ALARM**: Pending Security Center alerts.
+        # - **SS_SAS_EMG_VUL**: Pending emergency vulnerabilities to fix.
+        # - **SS_SAS_APP_VUL**: Pending application vulnerabilities to fix.
+        # - **SS_SAS_SYS_VUL**: Pending system vulnerabilities to fix.
+        # - **SS_SAS_CLOUD_HC**: Pending Cloud Security Posture Management (CSPM) risks.
+        # - **SS_SDDP_DATA_RISK**: Pending data security risks to remediate.
+        # - **SS_WAF_API_RISK**: Pending API security risks.
+        # - **SS_DDOS_BH_ASSET**: Assets in Black Hole Activated status.
+        # - **SS_SAS_AK_LEAK**: Unhandled AccessKey/SecretKey leakage events.
+        # - **SS_PRODUCT_CONNECT**: Security products not in Normal connection status.
+        # - **SS_KEY_CONFIG**: Key feature configuration.
+        # - **SS_PRODUCT_EXPIRE**: Products about to expire.
+        # - **SS_AI_RISK**: AI application risks.
         self.sub_rule_type = sub_rule_type
-        # The name of the sub-deduction item of the security score rule.
+        # The name of the security score rule sub-item.
         self.title = title
 
     def validate(self):

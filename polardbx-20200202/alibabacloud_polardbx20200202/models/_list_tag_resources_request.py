@@ -16,12 +16,19 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
+        # The token for the next query. If this parameter is empty, no more results exist.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource IDs. You can specify up to 50 subkeys.
         self.resource_id = resource_id
+        # The resource type. Set this parameter to PolarDBXInstance.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The list of labels. You can specify up to 20 subkeys.
         self.tag = tag
 
     def validate(self):
@@ -82,7 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The label key.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):

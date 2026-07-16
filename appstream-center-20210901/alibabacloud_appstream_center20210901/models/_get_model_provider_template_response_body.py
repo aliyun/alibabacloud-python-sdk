@@ -11,7 +11,9 @@ class GetModelProviderTemplateResponseBody(DaraModel):
         data: main_models.GetModelProviderTemplateResponseBodyData = None,
         request_id: str = None,
     ):
+        # The returned data object.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +54,17 @@ class GetModelProviderTemplateResponseBodyData(DaraModel):
         provider_name: str = None,
         provider_template_id: str = None,
     ):
+        # The JSON configuration object of the model provider template.
         self.config = config
+        # The description of the model provider template.
         self.description = description
+        # Indicates whether the WUYING secure gateway proxy is enabled.
         self.enable_wuying_proxy = enable_wuying_proxy
+        # The name of the model provider template.
         self.name = name
+        # The name of the model provider.
         self.provider_name = provider_name
+        # The ID of the model provider template.
         self.provider_template_id = provider_template_id
 
     def validate(self):

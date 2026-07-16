@@ -14,10 +14,17 @@ class GetHotlineCallActionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Returned data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded. Valid values:
+        # - **true**: Succeeded.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -87,22 +94,42 @@ class GetHotlineCallActionResponseBodyData(DaraModel):
         task_id: int = None,
         touch_id: int = None,
     ):
+        # Customer ID.
         self.action_id = action_id
+        # Tenant ID.
         self.bu_id = bu_id
+        # Callout ID.
         self.callout_id = callout_id
+        # Call name.
         self.callout_name = callout_name
+        # Ticket ID.
         self.case_id = case_id
+        # Channel ID.
         self.channel_id = channel_id
+        # Channel Type. Valid values:
+        # 
+        # - **1**: Hotline.
+        # - **2**: Online.
         self.channel_type = channel_type
+        # Department ID.
         self.dep_id = dep_id
+        # Indicates whether the call is transferred.
         self.is_transfer = is_transfer
+        # Membership ID.
         self.member_id = member_id
+        # Membership List.
         self.member_list = member_list
+        # Membership name.
         self.member_name = member_name
+        # Agent ID.
         self.servicer_id = servicer_id
+        # Agent name.
         self.servicer_name = servicer_name
+        # Sub-touch ID.
         self.sub_touch_id = sub_touch_id
+        # Job ID.
         self.task_id = task_id
+        # Touch ID.
         self.touch_id = touch_id
 
     def validate(self):

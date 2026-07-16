@@ -12,16 +12,17 @@ class BatchDisableJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The additional information that was returned.
+        # A message that provides more information about the response.
         self.message = message
-        # The ID of the request.
+        # The unique ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Whether the operation was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # - **true**: The operation was successful.
+        # 
+        # - **false**: The operation failed.
         self.success = success
 
     def validate(self):

@@ -20,7 +20,11 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-shanghai': 'cloud-siem.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'cloud-siem.ap-southeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloud-siem', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4661,6 +4665,198 @@ class Client(OpenApiClient):
     ) -> main_models.GetCapacityResponse:
         runtime = RuntimeOptions()
         return await self.get_capacity_with_options_async(request, runtime)
+
+    def get_data_storage_with_options(
+        self,
+        request: main_models.GetDataStorageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataStorageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataStorage',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataStorageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_storage_with_options_async(
+        self,
+        request: main_models.GetDataStorageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataStorageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.lang):
+            body['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataStorage',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataStorageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_storage(
+        self,
+        request: main_models.GetDataStorageRequest,
+    ) -> main_models.GetDataStorageResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_storage_with_options(request, runtime)
+
+    async def get_data_storage_async(
+        self,
+        request: main_models.GetDataStorageRequest,
+    ) -> main_models.GetDataStorageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_storage_with_options_async(request, runtime)
+
+    def get_entitiy_stat_with_options(
+        self,
+        request: main_models.GetEntitiyStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEntitiyStatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.asset_name):
+            body['AssetName'] = request.asset_name
+        if not DaraCore.is_null(request.asset_uuid):
+            body['AssetUuid'] = request.asset_uuid
+        if not DaraCore.is_null(request.entity_name):
+            body['EntityName'] = request.entity_name
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
+        if not DaraCore.is_null(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not DaraCore.is_null(request.is_asset):
+            body['IsAsset'] = request.is_asset
+        if not DaraCore.is_null(request.is_malware_entity):
+            body['IsMalwareEntity'] = request.is_malware_entity
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEntitiyStat',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEntitiyStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_entitiy_stat_with_options_async(
+        self,
+        request: main_models.GetEntitiyStatRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEntitiyStatResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.asset_name):
+            body['AssetName'] = request.asset_name
+        if not DaraCore.is_null(request.asset_uuid):
+            body['AssetUuid'] = request.asset_uuid
+        if not DaraCore.is_null(request.entity_name):
+            body['EntityName'] = request.entity_name
+        if not DaraCore.is_null(request.entity_type):
+            body['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.entity_uuid):
+            body['EntityUuid'] = request.entity_uuid
+        if not DaraCore.is_null(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not DaraCore.is_null(request.is_asset):
+            body['IsAsset'] = request.is_asset
+        if not DaraCore.is_null(request.is_malware_entity):
+            body['IsMalwareEntity'] = request.is_malware_entity
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.role_for):
+            body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.role_type):
+            body['RoleType'] = request.role_type
+        if not DaraCore.is_null(request.tags):
+            body['Tags'] = request.tags
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEntitiyStat',
+            version = '2022-06-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEntitiyStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_entitiy_stat(
+        self,
+        request: main_models.GetEntitiyStatRequest,
+    ) -> main_models.GetEntitiyStatResponse:
+        runtime = RuntimeOptions()
+        return self.get_entitiy_stat_with_options(request, runtime)
+
+    async def get_entitiy_stat_async(
+        self,
+        request: main_models.GetEntitiyStatRequest,
+    ) -> main_models.GetEntitiyStatResponse:
+        runtime = RuntimeOptions()
+        return await self.get_entitiy_stat_with_options_async(request, runtime)
 
     def get_storage_with_options(
         self,

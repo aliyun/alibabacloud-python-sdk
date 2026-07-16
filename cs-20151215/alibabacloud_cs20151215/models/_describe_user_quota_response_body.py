@@ -18,21 +18,18 @@ class DescribeUserQuotaResponseBody(DaraModel):
         node_quota: int = None,
         quotas: Dict[str, main_models.QuotasValue] = None,
     ):
-        # The quota of Container Service for Kubernetes (ACK) managed clusters. Default value: 20. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The quota for managed clusters. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
         self.amk_cluster_quota = amk_cluster_quota
-        # The quota of ACK Serverless clusters. Default value: 20. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The quota for ASK clusters. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
         self.ask_cluster_quota = ask_cluster_quota
-        # The quota of node pools in an ACK cluster. Default value: 20. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The node pool quota per cluster. Default value: 20. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
         self.cluster_nodepool_quota = cluster_nodepool_quota
-        # The quota of clusters that belong to an Alibaba Cloud account. Default value: 50. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The total cluster quota per account. Default value: 50. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
         self.cluster_quota = cluster_quota
-        # This parameter is discontinued.
-        # 
-        # The quotas of enhanced edge node pools.
         self.edge_improved_nodepool_quota = edge_improved_nodepool_quota
-        # The quota of nodes in an ACK cluster. Default value: 100. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
+        # The node quota per cluster. Default value: 100. To request a quota increase beyond the default value, [submit a request on the Quota Center page](https://quotas.console.aliyun.com/products/csk/quotas).
         self.node_quota = node_quota
-        # Information about the new quota.
+        # The new quota items. If this field is returned, the values in this field take precedence.
         self.quotas = quotas
 
     def validate(self):
@@ -109,19 +106,8 @@ class DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota(DaraModel):
         count: int = None,
         period: int = None,
     ):
-        # This parameter is discontinued.
-        # 
-        # The maximum bandwidth of each enhanced edge node pool. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # This parameter is discontinued.
-        # 
-        # The maximum number of enhanced edge node pools that you can create within an Alibaba Cloud account.
         self.count = count
-        # This parameter is discontinued.
-        # 
-        # The maximum subscription duration of an enhanced edge node pool. Unit: months.
-        # 
-        # >  You are charged for enhanced edge node pools based on the pay-as-you-go billing method. Therefore, you can ignore this parameter.
         self.period = period
 
     def validate(self):

@@ -12,7 +12,7 @@ class CheckServiceRoleRequest(DaraModel):
         self,
         roles: List[main_models.CheckServiceRoleRequestRoles] = None,
     ):
-        # The list of service roles you want to check.
+        # The list of service roles to check.
         # 
         # This parameter is required.
         self.roles = roles
@@ -50,7 +50,7 @@ class CheckServiceRoleRequestRoles(DaraModel):
         self,
         name: str = None,
     ):
-        # The server role name. For more information about the service roles and their permissions in ACK, see [ACK roles](https://help.aliyun.com/document_detail/86483.html).
+        # Container service role name. For information about container service roles and permission scopes included in ACK, see [ACK service roles](https://help.aliyun.com/document_detail/86483.html).
         # 
         # This parameter is required.
         self.name = name

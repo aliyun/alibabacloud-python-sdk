@@ -79,8 +79,9 @@ class GetWorkflowResponseBodyWorkflow(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The workflow ID.
         self.id = id
@@ -268,16 +269,19 @@ class GetWorkflowResponseBodyWorkflowTrigger(DaraModel):
         self.end_time = end_time
         # The running mode of the workflow after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.recurrence = recurrence
         # The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
         self.start_time = start_time
         # The trigger type. Valid values:
         # 
-        # *   Scheduler: scheduling cycle-based trigger
-        # *   Manual: manual trigger
+        # - Scheduler: scheduling cycle-based trigger
+        # 
+        # - Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -364,8 +368,9 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
         self.description = description
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod
-        # *   Dev
+        # - Prod
+        # 
+        # - Dev
         self.env_type = env_type
         # The task ID.
         self.id = id
@@ -385,9 +390,11 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
         self.rerun_interval = rerun_interval
         # The rerun mode. Valid values:
         # 
-        # *   AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # *   FailureAllowed: The task can be rerun only after it fails to run.
-        # *   AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+        # 
+        # - FailureAllowed: The task can be rerun only after it fails to run.
+        # 
+        # - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
         self.rerun_mode = rerun_mode
         # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
         self.rerun_times = rerun_times
@@ -397,9 +404,11 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
         self.timeout = timeout
         # The running mode of the task after it is triggered. Valid values:
         # 
-        # *   Pause
-        # *   Skip
-        # *   Normal
+        # - Pause
+        # 
+        # - Skip
+        # 
+        # - Normal
         self.trigger_recurrence = trigger_recurrence
         # The type of the task.
         self.type = type
@@ -741,10 +750,13 @@ class GetWorkflowResponseBodyWorkflowDependencies(DaraModel):
     ):
         # The scheduling dependency type. Valid values:
         # 
-        # *   CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
-        # *   CrossCycleDependsOnSelf: cross-cycle dependency on the current node
-        # *   CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # *   Normal: same-cycle scheduling dependency
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on the level-1 descendant nodes of a node
+        # 
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the current node
+        # 
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
+        # 
+        # - Normal: same-cycle scheduling dependency
         self.type = type
         # The identifier of the output of the ancestor task. This parameter is returned only if `same-cycle scheduling dependencies` and the node input are configured.
         self.upstream_output = upstream_output

@@ -14,7 +14,7 @@ class RedeployInstanceResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the redeployment task.
         # 
-        # You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the redeployment result.
+        # You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the migration result.
         self.task_id = task_id
 
     def validate(self):

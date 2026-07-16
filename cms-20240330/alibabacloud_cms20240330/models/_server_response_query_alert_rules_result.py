@@ -18,14 +18,23 @@ class ServerResponseQueryAlertRulesResult(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The status code of the response. A status code of `200` indicates a successful request.
         self.code = code
+        # The response payload.
         self.data = data
+        # The response message. If the request fails, this field contains details about the error.
         self.message = message
+        # The token to retrieve the next page of results. A null value indicates that no more results are available.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The unique request ID, used for troubleshooting.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values: `true` and `false`.
         self.success = success
+        # The total number of alert rules that match the query.
         self.total = total
 
     def validate(self):

@@ -1,3 +1,52 @@
+2026-07-14 Version: 5.0.0
+- Delete API DescribeFlowStatistic.
+- Update API CreateDesktops: add request parameters OuPath.
+- Update API CreateDesktops: add request parameters SubPayType.
+- Update API CreateNetworkPackage: add request parameters Tag.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AutoReconnect.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.DeviceConnectHint.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.FileMigrate.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ResetDesktop.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.WuyingKeeper.
+- Update API DescribeNetworkPackages: add request parameters Tag.
+- Update API DescribeNetworkPackages: add response parameters Body.NetworkPackages.$.Tags.
+
+
+2026-06-10 Version: 4.26.5
+- Update API AddUserToDesktopGroup: add request parameters OrgId.
+- Update API CreateConfigGroup: add request parameters ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API DescribeDesktopGroups: add response parameters Body.DesktopGroups.$.OrgId.
+- Update API DescribeTimerGroup: add response parameters Body.Data.ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API ModifyTimerGroup: add request parameters ConfigTimers.$.SegmentTimers.$.IpSegments.
+- Update API RemoveUserFromDesktopGroup: add request parameters OrgId.
+
+
+2026-06-09 Version: 4.26.4
+- Update API DescribeGlobalTimerBatches: add request parameters ResourceTypes.
+- Update API DescribeGlobalTimerRecords: add request parameters ResourceTypes.
+- Update API DescribeGlobalTimerRecords: add request parameters WuyingServerIds.
+- Update API DescribeGlobalTimerRecords: add response parameters Body.Results.$.ResourceParentId.
+
+
+2026-06-03 Version: 4.26.3
+- Update API DescribeDesktopMetadata: add request parameters EndUserId.
+
+
+2026-05-28 Version: 4.26.2
+- Update API DescribeGlobalDesktopRecords: add request parameters BusinessChannel.
+- Update API ModifyDesktopHostName: add request parameters DesktopIds.
+- Update API ModifyDesktopName: add request parameters DesktopIds.
+- Update API ModifyDesktopName: add request parameters UserAssignMode.
+
+
+2026-05-25 Version: 4.26.1
+- Update API DescribeRecordFile: add request parameters ResourceType.
+
+
+2026-05-25 Version: 4.26.0
+- Support API QueryHistoryUsageDurationRank.
+
+
 2026-05-13 Version: 4.25.2
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnFullScreen.
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AdminKeyboardOnWindows.

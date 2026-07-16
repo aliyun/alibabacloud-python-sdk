@@ -13,9 +13,9 @@ class DescribeScoreSectionNumLineChartResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DescribeScoreSectionNumLineChartResponseBodyResultObject = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returned object
+        # The response object.
         self.result_object = result_object
 
     def validate(self):
@@ -52,9 +52,9 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObject(DaraModel):
         series: List[main_models.DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries] = None,
         xaxis: main_models.DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis = None,
     ):
-        # Data list
+        # The data list.
         self.series = series
-        # Details of xaxis node.
+        # The xaxis node details.
         self.xaxis = xaxis
 
     def validate(self):
@@ -99,7 +99,7 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis(DaraModel):
         self,
         data: List[str] = None,
     ):
-        # Data structure.
+        # The data structure.
         self.data = data
 
     def validate(self):
@@ -128,9 +128,9 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries(DaraModel):
         data: List[str] = None,
         name: str = None,
     ):
-        # List of current category results.
+        # The result list for the current category.
         self.data = data
-        # Category name.
+        # The category name.
         self.name = name
 
     def validate(self):

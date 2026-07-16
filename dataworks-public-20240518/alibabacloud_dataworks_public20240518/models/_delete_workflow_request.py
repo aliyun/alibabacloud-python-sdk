@@ -15,8 +15,9 @@ class DeleteWorkflowRequest(DaraModel):
         self.client_unique_code = client_unique_code
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The workflow ID.
         # 

@@ -12,9 +12,11 @@ class UpdateWorkspaceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The ID of the order.
         self.order_id = order_id
-        # Id of the request
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,6 +58,7 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         self,
         order_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
 
     def validate(self):

@@ -16,17 +16,19 @@ class DescribeMonitoringConfigResponseBody(DaraModel):
     ):
         # Indicates whether the CloudMonitor agent is automatically installed on existing Elastic Compute Service (ECS) instances. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.auto_install = auto_install
         # The status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # Indicates whether the CloudMonitor agent is automatically installed on new ECS instances. Valid values: Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.enable_install_agent_new_ecs = enable_install_agent_new_ecs
         # The error message.
         self.message = message
@@ -34,8 +36,9 @@ class DescribeMonitoringConfigResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true
+        # 
+        # - false
         self.success = success
 
     def validate(self):

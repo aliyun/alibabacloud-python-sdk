@@ -15,11 +15,23 @@ class ModifyInstancePropertiesRequest(DaraModel):
         resource_type: str = None,
         value: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The instance ID.
         self.instance_ids = instance_ids
+        # The key of the attribute.
         self.key = key
+        # The resource type.
+        # > This parameter is case-sensitive. Ensure that the value is spelled correctly.
+        # 
         # This parameter is required.
         self.resource_type = resource_type
+        # The value of the attribute.
+        # 
+        # - PackageUsedUpStrategy: Valid values:
+        #    - Postpaid: Enters the pay-as-you-go phase.
+        #    - Shutdown: Hibernation.
+        #    - Maintenance: Shuts down and enters O&M mode. Client connections are not allowed.
         self.value = value
 
     def validate(self):

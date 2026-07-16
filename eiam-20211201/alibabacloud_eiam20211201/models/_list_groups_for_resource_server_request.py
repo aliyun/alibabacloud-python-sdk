@@ -17,17 +17,21 @@ class ListGroupsForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
+        # The ID of the resource server application.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The filter conditions.
         self.filter = filter
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token for the next page of results. You do not need to provide this parameter for the first request. For subsequent requests, set this to the `NextToken` value from the previous response.
         self.next_token = next_token
-        # 权限唯一标识。
+        # The ID of the scope.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
@@ -94,7 +98,9 @@ class ListGroupsForResourceServerRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
+        # The name of the filter condition. The only valid value is GroupIds.
         self.name = name
+        # The values for the filter condition.
         self.value = value
 
     def validate(self):

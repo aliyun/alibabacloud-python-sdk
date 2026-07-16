@@ -19,29 +19,29 @@ class CreateAddonReleaseRequest(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The Addon name of the component that needs to be monitored.
+        # The name of the add-on to integrate.
         # 
         # This parameter is required.
         self.addon_name = addon_name
-        # The language type of the component.
+        # The language of the add-on.
         self.aliyun_lang = aliyun_lang
-        # Whether it is a dry run, default is false.
+        # Specifies whether to perform a dry run. The default value is false.
         self.dry_run = dry_run
-        # Field rules
+        # The entity discovery rules.
         self.entity_rules = entity_rules
-        # Environment type. If the Policy type is CS and ECS, use accordingly; otherwise, it is unified as Cloud.
+        # The environment type. Set this parameter to CS for container environments or ECS for ECS environments. For all other environment types, set this parameter to Cloud.
         self.env_type = env_type
-        # Parent AddonReleaseId.
+        # The ID of the parent AddonRelease.
         self.parent_addon_release_id = parent_addon_release_id
-        # The plugin name after access. If not specified, a default rule name will be generated.
+        # The name of the release after the integration. If you do not specify this parameter, a default name is generated.
         self.release_name = release_name
-        # Input metadata.
+        # The metadata.
         self.values = values
-        # The version of the Addon component that needs to be monitored.
+        # The version of the add-on to integrate.
         # 
         # This parameter is required.
         self.version = version
-        # The workspace name for installing the component resources.
+        # The name of the workspace where the add-on is installed.
         self.workspace = workspace
 
     def validate(self):

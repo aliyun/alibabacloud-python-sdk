@@ -11,8 +11,11 @@ class AttachColumnarInstanceResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The name of the created instance.
         self.dbinstance_name = dbinstance_name
+        # The request ID.
         self.request_id = request_id
+        # The backend task ID.
         self.task_id = task_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class ListRegionsResponseBody(DaraModel):
         region_models: List[main_models.ListRegionsResponseBodyRegionModels] = None,
         request_id: str = None,
     ):
-        # The region IDs.
+        # The list of region IDs.
         self.region_models = region_models
         # The request ID.
         self.request_id = request_id

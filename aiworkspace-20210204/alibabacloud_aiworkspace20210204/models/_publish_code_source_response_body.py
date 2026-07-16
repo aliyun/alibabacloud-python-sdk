@@ -10,9 +10,9 @@ class PublishCodeSourceResponseBody(DaraModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the code source that is successfully published.
+        # The ID of the code source that was published.
         self.code_source_id = code_source_id
-        # The request ID. You can use the ID to locate logs and troubleshoot issues.
+        # The ID of the request. This is used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

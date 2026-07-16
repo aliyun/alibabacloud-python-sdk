@@ -13,8 +13,9 @@ class DescribeNetworkChannelResponseBody(DaraModel):
         channel_infos: List[main_models.DescribeNetworkChannelResponseBodyChannelInfos] = None,
         request_id: str = None,
     ):
+        # A list of network channels.
         self.channel_infos = channel_infos
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,14 +65,23 @@ class DescribeNetworkChannelResponseBodyChannelInfos(DaraModel):
         target_type: str = None,
         vpc_id: str = None,
     ):
+        # The channel name.
         self.channel_name = channel_name
+        # The ID of the source cluster.
         self.dbcluster_id = dbcluster_id
+        # The notes about the channel.
         self.notes = notes
+        # The region ID.
         self.region_id = region_id
+        # The ID of the target cluster.
         self.target_dbcluster_id = target_dbcluster_id
+        # The IP address of the target cluster.
         self.target_ip = target_ip
+        # The port of the target cluster.
         self.target_port = target_port
+        # The type of the target cluster.
         self.target_type = target_type
+        # The ID of the VPC that contains the endpoint.
         self.vpc_id = vpc_id
 
     def validate(self):

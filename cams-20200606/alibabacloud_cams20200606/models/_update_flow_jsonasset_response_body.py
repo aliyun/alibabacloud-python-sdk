@@ -14,12 +14,13 @@ class UpdateFlowJSONAssetResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The result returns OK as normal.
+        # The response code. OK indicates success.
         self.code = code
         # The returned data.
         self.data = data
-        # Error description information.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -75,7 +76,7 @@ class UpdateFlowJSONAssetResponseBodyData(DaraModel):
         self,
         flow_id: str = None,
     ):
-        # The Flow ID.
+        # Flow ID。
         self.flow_id = flow_id
 
     def validate(self):

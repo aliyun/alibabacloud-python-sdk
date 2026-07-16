@@ -15,32 +15,35 @@ class UpdateCustomScenePolicyRequest(DaraModel):
         start_time: str = None,
         template: str = None,
     ):
-        # The time when the policy expires.
+        # The end time of the policy.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time must be in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The policy name.
+        # The name of the policy.
         # 
         # This parameter is required.
         self.name = name
-        # The IDs of the websites that you want to associate with the policy. Separate multiple IDs with commas (,).
+        # The site IDs to associate with the policy. Use a comma (,) to separate multiple IDs.
+        # 
+        # > This parameter is deprecated. We recommend using the `SiteIds` parameter instead. If the `SiteIds` parameter is specified, the `Objects` parameter is ignored. You must specify a value for either the `Objects` or `SiteIds` parameter.
         self.objects = objects
-        # The policy ID, which can be obtained by calling the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
+        # To obtain the policy ID, call the [DescribeCustomScenePolicies](https://help.aliyun.com/document_detail/2850508.html) operation.
         # 
         # This parameter is required.
         self.policy_id = policy_id
+        # The site IDs to associate with the policy. Use a comma (,) to separate multiple IDs.
         self.site_ids = site_ids
-        # The time when the policy takes effect.
+        # The start time of the policy.
         # 
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The time must be in UTC and in the ISO 8601 format: yyyy-MM-ddTHH:mm:ssZ.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The name of the policy template. Valid value:
+        # The name of the template. Valid value:
         # 
-        # *   **promotion**: major events.
+        # - **promotion**: major promotion
         # 
         # This parameter is required.
         self.template = template

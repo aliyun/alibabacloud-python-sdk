@@ -12,9 +12,9 @@ class SubmitAvatarTrainingJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
@@ -58,7 +58,7 @@ class SubmitAvatarTrainingJobResponseBodyData(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the digital human training job.
+        # The unique identifier for the avatar training job.
         self.job_id = job_id
 
     def validate(self):

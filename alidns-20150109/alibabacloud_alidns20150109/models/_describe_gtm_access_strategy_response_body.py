@@ -27,39 +27,66 @@ class DescribeGtmAccessStrategyResponseBody(DaraModel):
         strategy_mode: str = None,
         strategy_name: str = None,
     ):
-        # The access policy.
+        # The switchover policy for the address pool groups:
+        # 
+        # - **AUTO**: Automatic switchover
+        # 
+        # - **DEFAULT**: Primary address pool group
+        # 
+        # - **FAILOVER**: Secondary address pool group
         self.access_mode = access_mode
         # The access status. Valid values:
         # 
-        # *   **DEFAULT**: Indicates normal when the default address pool is accessed.
-        # *   **FAILOVER**: Indicates an exception when a failover address pool is accessed.
+        # - **DEFAULT**: Normal. Access requests are routed to the primary address pool group.
+        # 
+        # - **FAILOVER**: Abnormal. Access requests are routed to the secondary address pool group.
         self.access_status = access_status
-        # Indicates whether health check is enabled for the default address pool.
+        # The health check status of the primary address pool group. Valid values:
+        # 
+        # - **OPEN**: Enabled
+        # 
+        # - **CLOSE**: Disabled
+        # 
+        # - **UNCONFIGURED**: Not configured
         self.default_addr_pool_monitor_status = default_addr_pool_monitor_status
-        # The name of the default address pool.
+        # The name of the primary address pool group.
         self.default_addr_pool_name = default_addr_pool_name
-        # The availability status of the default address pool.
+        # The availability status of the primary address pool group. Valid values:
+        # 
+        # - **AVAILABLE**: The address pool group is available.
+        # 
+        # - **NOT_AVAILABLE**: The address pool group is unavailable.
         self.default_addr_pool_status = default_addr_pool_status
-        # The ID of the default address pool.
+        # The ID of the primary address pool group.
         self.defult_addr_pool_id = defult_addr_pool_id
-        # The ID of the failover address pool.
+        # The ID of the secondary address pool group. If no secondary address pool group is configured, **EMPTY** is returned.
         self.failover_addr_pool_id = failover_addr_pool_id
-        # Indicates whether health check is enabled for the failover address pool.
+        # The health check status of the secondary address pool group. Valid values:
+        # 
+        # - **OPEN**: Enabled
+        # 
+        # - **CLOSE**: Disabled
+        # 
+        # - **UNCONFIGURED**: Not configured
         self.failover_addr_pool_monitor_status = failover_addr_pool_monitor_status
-        # The name of the failover address pool.
+        # The name of the secondary address pool group.
         self.failover_addr_pool_name = failover_addr_pool_name
-        # The availability status of the failover address pool.
+        # The availability status of the secondary address pool group. Valid values:
+        # 
+        # - **AVAILABLE**: The address pool group is available.
+        # 
+        # - **NOT_AVAILABLE**: The address pool group is unavailable.
         self.failover_addr_pool_status = failover_addr_pool_status
-        # The ID of the GTM instance whose access policy details you want to query.
+        # The ID of the associated Global Traffic Manager (GTM) instance.
         self.instance_id = instance_id
         self.lines = lines
-        # The ID of the request.
+        # The unique request ID.
         self.request_id = request_id
-        # The ID of the access policy queried.
+        # The policy ID.
         self.strategy_id = strategy_id
-        # The mode of traffic scheduling.
+        # The policy mode. SELF_DEFINED indicates a custom policy.
         self.strategy_mode = strategy_mode
-        # The name of the access policy queried.
+        # The name of the access policy.
         self.strategy_name = strategy_name
 
     def validate(self):

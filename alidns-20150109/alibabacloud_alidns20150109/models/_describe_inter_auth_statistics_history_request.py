@@ -15,12 +15,21 @@ class DescribeInterAuthStatisticsHistoryRequest(DaraModel):
         statistical_type: str = None,
         zone_name: str = None,
     ):
+        # The domain name.<props="china">You can get this value by calling the [DescribeDomains](https://help.aliyun.com/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c4g.11186623.help-menu-search-29697.d_0) operation.
+        # <props="intl">You can get this value by calling the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation.
         self.domain_name = domain_name
+        # The end of the time range to query. This value is a Unix timestamp in milliseconds.
+        # >Warning: A large time range for a domain with a high volume of resolution logs may cause query timeouts or inaccurate results.
         self.end_timestamp = end_timestamp
+        # The DNS response code.
         self.rcode = rcode
+        # The server region.
         self.server_region = server_region
+        # The start of the time range to query. This value is a Unix timestamp in milliseconds.
         self.start_timestamp = start_timestamp
+        # The statistical metric type.
         self.statistical_type = statistical_type
+        # The zone name.
         self.zone_name = zone_name
 
     def validate(self):

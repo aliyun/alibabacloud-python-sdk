@@ -13,9 +13,9 @@ class GetOssScanConfigResponseBody(DaraModel):
         data: main_models.GetOssScanConfigResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data returned.
+        # The data details.
         self.data = data
-        # The request ID.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -68,44 +68,43 @@ class GetOssScanConfigResponseBodyData(DaraModel):
         scan_day_list: List[int] = None,
         start_time: str = None,
     ):
-        # Indicates whether the prefixes of all objects are matched.
+        # Indicates whether all prefixes are matched.
         self.all_key_prefix = all_key_prefix
         # The number of buckets.
         self.bucket_count = bucket_count
-        # The name of the bucket.
+        # The bucket name.
         self.bucket_name = bucket_name
-        # The names of the buckets.
+        # The list of bucket names.
         self.bucket_name_list = bucket_name_list
-        # The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the number of files exceeds this value, the decompression operation stops. Files that have already been decompressed are still scanned.
         self.decompress_max_file_count = decompress_max_file_count
-        # The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+        # The maximum number of decompression layers for nested compressed files. Minimum value: 1. Maximum value: 5. If the number of layers exceeds this value, the decompression operation stops. Files that have already been decompressed are still scanned.
         self.decompress_max_layer = decompress_max_layer
-        # The decryption methods.
+        # The list of decryption types.
         self.decryption_list = decryption_list
-        # Indicates whether the check policy is enabled. Valid values:
-        # 
-        # *   **1**: enabled.
-        # *   **0**: disabled.
+        # Indicates whether the policy is enabled. Valid values:
+        # - **1**: enabled
+        # - **0**: disabled.
         self.enable = enable
-        # The end time of the check. The time is in the HH:mm:ss format.
+        # The scan end time in the HH:mm:ss format.
         self.end_time = end_time
         # The policy ID.
         self.id = id
-        # The prefixes of the objects.
+        # The file prefix list.
         self.key_prefix_list = key_prefix_list
-        # The suffixes of the objects that are checked.
+        # The list of file suffixes to scan.
         self.key_suffix_list = key_suffix_list
-        # The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+        # Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
         self.last_modified_start_time = last_modified_start_time
-        # The timestamp when the configuration was last modified.
+        # The timestamp of the last update.
         self.last_update_time = last_update_time
         # The policy name.
         self.name = name
-        # Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+        # Specifies whether to enable real-time incremental scanning. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
         self.real_time_incr = real_time_incr
-        # The days when the check is performed. The value indicates the days of the week.
+        # The scan days. Each number represents a day of the week.
         self.scan_day_list = scan_day_list
-        # The start time of the check. The time is in the HH:mm:ss format.
+        # The scan start time in the HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

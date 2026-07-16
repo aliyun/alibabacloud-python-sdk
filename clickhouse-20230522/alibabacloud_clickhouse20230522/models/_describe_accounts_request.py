@@ -21,9 +21,11 @@ class DescribeAccountsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # 
+        # - **50**
+        # 
+        # - **100**
         self.page_size = page_size
         # The code of the cloud service.
         self.product = product

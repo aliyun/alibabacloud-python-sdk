@@ -10,7 +10,9 @@ class ListDatasourceTablesRequest(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
+        # The schema name.
         self.schema_name = schema_name
+        # Filters the results by table name.
         self.table_name = table_name
 
     def validate(self):

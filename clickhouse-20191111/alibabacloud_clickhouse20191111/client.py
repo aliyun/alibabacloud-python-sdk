@@ -65,7 +65,19 @@ class Client(OpenApiClient):
             'me-east-1': 'clickhouse.aliyuncs.com',
             'rus-west-1-pop': 'clickhouse.aliyuncs.com',
             'us-east-1': 'clickhouse.aliyuncs.com',
-            'us-west-1': 'clickhouse.aliyuncs.com'
+            'us-west-1': 'clickhouse.aliyuncs.com',
+            'me-central-1': 'clickhouse.me-central-1.aliyuncs.com',
+            'eu-west-1': 'clickhouse.eu-west-1.aliyuncs.com',
+            'eu-central-1': 'clickhouse.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'clickhouse.cn-zhangjiakou.aliyuncs.com',
+            'cn-wulanchabu': 'clickhouse.aliyuncs.com',
+            'cn-huhehaote': 'clickhouse.cn-huhehaote.aliyuncs.com',
+            'cn-guangzhou': 'clickhouse.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'clickhouse.cn-chengdu.aliyuncs.com',
+            'ap-southeast-6': 'clickhouse.ap-southeast-6.aliyuncs.com',
+            'ap-southeast-5': 'clickhouse.ap-southeast-5.aliyuncs.com',
+            'ap-southeast-3': 'clickhouse.aliyuncs.com',
+            'ap-northeast-1': 'clickhouse.ap-northeast-1.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('clickhouse', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -951,6 +963,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.scaling_type):
+            query['ScalingType'] = request.scaling_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -993,6 +1007,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.scaling_type):
+            query['ScalingType'] = request.scaling_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -14,11 +14,11 @@ class DescribeHybridProxyClusterListResponseBody(DaraModel):
         page_info: main_models.DescribeHybridProxyClusterListResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The proxy clusters.
+        # The list of clusters.
         self.cluster_list = cluster_list
         # The pagination information.
         self.page_info = page_info
-        # The request ID.
+        # The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class DescribeHybridProxyClusterListResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The number of entries on the current page.
+        # The number of entries displayed on the current page.
         self.count = count
-        # The page number.
+        # The page number of the current page in a paged query.
         self.current_page = current_page
-        # The number of entries per page.
+        # The maximum number of entries displayed on each page in a paged query.
         self.page_size = page_size
         # The total number of entries returned.
         self.total_count = total_count
@@ -133,25 +133,25 @@ class DescribeHybridProxyClusterListResponseBodyClusterList(DaraModel):
         remark: str = None,
         status: str = None,
     ):
-        # The ID of the credential that is used for cluster authentication.
+        # The credential ID for cluster authentication.
         self.auth_key = auth_key
-        # The key of the credential that is used for cluster authentication.
+        # The credential key for cluster authentication.
         self.auth_key_secret = auth_key_secret
-        # The number of servers that are connected to the proxy cluster.
+        # The number of Security Center clients connected to the current cluster.
         self.client_count = client_count
         # The name of the proxy cluster.
         self.cluster_name = cluster_name
-        # The installation command for the node of the proxy cluster.
+        # The installation command for the current proxy cluster node.
         self.install_command = install_command
-        # The endpoint of the cluster. An IP address or a domain name is specified.
+        # The access address of the cluster, which can be an IP address or a domain name.
         self.ip = ip
-        # The timestamp when the cluster last sent a heartbeat message. Unit: milliseconds.
+        # The timestamp of the last heartbeat from the cluster. Unit: milliseconds.
         self.last_heart_time = last_heart_time
         # The number of proxy nodes.
         self.proxy_count = proxy_count
-        # The description of the proxy cluster.
+        # The remarks of the proxy cluster.
         self.remark = remark
-        # The status of the cluster.
+        # The running status of the cluster.
         self.status = status
 
     def validate(self):

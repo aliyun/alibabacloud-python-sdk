@@ -11,6 +11,8 @@ class ListApiKeysRequest(DaraModel):
         description: str = None,
         max_results: int = None,
         next_token: str = None,
+        order: str = None,
+        order_by: str = None,
         skip: int = None,
         uid: str = None,
         workspace_id: str = None,
@@ -19,6 +21,8 @@ class ListApiKeysRequest(DaraModel):
         self.description = description
         self.max_results = max_results
         self.next_token = next_token
+        self.order = order
+        self.order_by = order_by
         self.skip = skip
         self.uid = uid
         self.workspace_id = workspace_id
@@ -42,6 +46,12 @@ class ListApiKeysRequest(DaraModel):
 
         if self.next_token is not None:
             result['nextToken'] = self.next_token
+
+        if self.order is not None:
+            result['order'] = self.order
+
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
 
         if self.skip is not None:
             result['skip'] = self.skip
@@ -67,6 +77,12 @@ class ListApiKeysRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('order') is not None:
+            self.order = m.get('order')
+
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
 
         if m.get('skip') is not None:
             self.skip = m.get('skip')

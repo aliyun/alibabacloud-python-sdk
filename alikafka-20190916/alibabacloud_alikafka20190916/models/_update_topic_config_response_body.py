@@ -13,15 +13,15 @@ class UpdateTopicConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code. If the request is successful, 200 is returned.
+        # The status code. A value of 200 indicates that the call was successful.
         self.code = code
         # The returned data.
         self.data = data
         # The returned message.
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

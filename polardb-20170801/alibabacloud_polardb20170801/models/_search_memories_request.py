@@ -15,15 +15,25 @@ class SearchMemoriesRequest(DaraModel):
         query: str = None,
         top_k: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The start time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
         self.create_time_begin = create_time_begin
+        # The end time for filtering memories by creation time. Must be in UTC and ISO 8601 format.
         self.create_time_end = create_time_end
+        # The agent ID associated with the memory.
         self.memory_agent_id = memory_agent_id
+        # The user ID associated with the memory.
+        # 
         # This parameter is required.
         self.memory_user_id = memory_user_id
+        # The search query.
+        # 
         # This parameter is required.
         self.query = query
+        # The maximum number of results to return.
         self.top_k = top_k
 
     def validate(self):

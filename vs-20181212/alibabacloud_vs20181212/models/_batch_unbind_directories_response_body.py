@@ -13,7 +13,9 @@ class BatchUnbindDirectoriesResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.BatchUnbindDirectoriesResponseBodyResults] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of results.
         self.results = results
 
     def validate(self):
@@ -57,8 +59,13 @@ class BatchUnbindDirectoriesResponseBodyResults(DaraModel):
         directory_id: str = None,
         error: str = None,
     ):
+        # Folder ID.
         self.device_id = device_id
+        # The folder ID.
         self.directory_id = directory_id
+        # The error message for the detach operation.
+        # 
+        # > This field appears only if an error occurs.
         self.error = error
 
     def validate(self):

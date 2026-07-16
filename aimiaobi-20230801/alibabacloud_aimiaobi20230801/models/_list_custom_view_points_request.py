@@ -19,15 +19,25 @@ class ListCustomViewPointsRequest(DaraModel):
         topic: str = None,
         topic_id: str = None,
     ):
+        # The unique identifier of the workspace. For more information, see [AgentKey](https://help.aliyun.com/document_detail/2587494.html).
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # The viewpoint to filter by.
         self.attitude = attitude
+        # A list of viewpoints to filter by.
         self.attitudes = attitudes
+        # The ID of the custom viewpoint.
         self.custom_view_point_id = custom_view_point_id
+        # A list of custom viewpoint IDs.
         self.custom_view_point_ids = custom_view_point_ids
+        # The maximum number of results to return.
         self.max_results = max_results
+        # The token for the next page of results.
         self.next_token = next_token
+        # The topic of the hot list.
         self.topic = topic
+        # The topic ID.
         self.topic_id = topic_id
 
     def validate(self):

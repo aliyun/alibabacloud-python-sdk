@@ -18,14 +18,19 @@ class ListRecognitionLibsRequest(DaraModel):
     ):
         # The type of recognition algorithm. Valid values:
         # 
-        # *   landmark
-        # *   object
-        # *   logo
-        # *   face
-        # *   label
+        # - landmark
+        # 
+        # - object
+        # 
+        # - logo
+        # 
+        # - face
+        # 
+        # - label
         # 
         # This parameter is required.
         self.algorithm = algorithm
+        # Library ID. If provided, the query returns only this specific library. A list of IDs separated by commas (",") is also supported.
         self.lib_id = lib_id
         self.owner_account = owner_account
         self.owner_id = owner_id

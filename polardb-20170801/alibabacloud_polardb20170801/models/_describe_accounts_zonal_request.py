@@ -19,15 +19,33 @@ class DescribeAccountsZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
         self.account_name = account_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The maximum number of entries to return in a single request.
         self.max_results = max_results
+        # The token to retrieve the next page of results. You do not need to specify this parameter for the first request. In a subsequent request, set this parameter to the NextToken value returned in the previous response.
         self.next_token = next_token
+        # The node type. This parameter is required when you query the accounts of a PolarDB Search node.
+        # 
+        # - Search
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. The value must be an integer that is greater than 0. The default value is 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Valid values:
+        # 
+        # - 30
+        # 
+        # - 50
+        # 
+        # - 100
+        # 
+        # The default value is 30.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

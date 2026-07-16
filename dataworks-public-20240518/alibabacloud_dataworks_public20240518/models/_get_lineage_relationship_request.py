@@ -9,7 +9,7 @@ class GetLineageRelationshipRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # The lineage ID. You can refer to the return result of the ListLineageRelationships operation.
+        # The lineage relationship ID. You can get this ID from the response to the ListLineageRelationships operation.
         # 
         # This parameter is required.
         self.id = id

@@ -31,25 +31,45 @@ class IncidentEventForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # The UNIX timestamp of the automatic recovery.
         self.auto_recover_time = auto_recover_time
+        # The details of the event.
         self.content = content
+        # The number of times the event was triggered.
         self.count = count
+        # The dimension information of the event.
         self.dimension = dimension
+        # The information about the associated resource.
         self.event_resource = event_resource
+        # The criteria for grouping.
         self.group_by = group_by
+        # The unique ID of the event.
         self.incident_event_uuid = incident_event_uuid
+        # The unique ID of the incident to which the event belongs.
         self.incident_uuid = incident_uuid
+        # The key-value pairs of custom tags.
         self.labels = labels
+        # The UNIX timestamp of the last occurrence.
         self.last_time = last_time
+        # The UNIX timestamp of the recovery.
         self.recover_time = recover_time
+        # The list of search index fields.
         self.search_index = search_index
+        # The severity level of the event.
         self.severity = severity
+        # The statistics on the number of events for each severity level.
         self.severity_count_map = severity_count_map
+        # The current status code of the event.
         self.state = state
+        # The text index field.
         self.text_index = text_index
+        # The UNIX timestamp when the event occurred.
         self.time = time
+        # The title of the event.
         self.title = title
+        # The ID of the user who created or triggered the event.
         self.user_id = user_id
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

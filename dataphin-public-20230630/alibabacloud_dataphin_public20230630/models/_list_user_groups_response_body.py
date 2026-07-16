@@ -17,11 +17,17 @@ class ListUserGroupsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The paged query result.
         self.page_result = page_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,7 +88,9 @@ class ListUserGroupsResponseBodyPageResult(DaraModel):
         total_count: int = None,
         user_group_list: List[main_models.ListUserGroupsResponseBodyPageResultUserGroupList] = None,
     ):
+        # The total number of records.
         self.total_count = total_count
+        # The paged list.
         self.user_group_list = user_group_list
 
     def validate(self):
@@ -129,11 +137,17 @@ class ListUserGroupsResponseBodyPageResultUserGroupList(DaraModel):
         my_role: str = None,
         name: str = None,
     ):
+        # Specifies whether the user group is enabled.
         self.active = active
+        # The administrators of the user group.
         self.admin_list = admin_list
+        # The description of the user group.
         self.description = description
+        # The user group ID.
         self.id = id
+        # The role of the current user in the user group.
         self.my_role = my_role
+        # The user group name.
         self.name = name
 
     def validate(self):
@@ -201,8 +215,11 @@ class ListUserGroupsResponseBodyPageResultUserGroupListAdminList(DaraModel):
         display_name: str = None,
         id: str = None,
     ):
+        # The account name of the user.
         self.account_name = account_name
+        # The username.
         self.display_name = display_name
+        # The user ID.
         self.id = id
 
     def validate(self):

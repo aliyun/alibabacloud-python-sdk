@@ -10,7 +10,9 @@ class CreateIpcOrderResponseBody(DaraModel):
         purchase_status: str = None,
         request_id: str = None,
     ):
+        # The purchase status.
         self.purchase_status = purchase_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

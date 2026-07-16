@@ -10,9 +10,9 @@ class GrayTrafficWeight(DaraModel):
         version: str = None,
         weight: float = None,
     ):
-        # 灰度版本号
+        # The identifier of the gray version.
         self.version = version
-        # 流量权重比例（0.0-1.0）
+        # The traffic weight, a value from 0.0 to 1.0.
         self.weight = weight
 
     def validate(self):

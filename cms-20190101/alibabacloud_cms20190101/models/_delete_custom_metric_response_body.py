@@ -13,7 +13,7 @@ class DeleteCustomMetricResponseBody(DaraModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call is successful.
+        # > The status code 200 indicates that the call is successful.
         self.code = code
         # The returned message.
         self.message = message

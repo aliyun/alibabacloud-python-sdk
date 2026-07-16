@@ -11,8 +11,11 @@ class GetNotebookTaskStatusRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # The Notebook session ID.
         self.session_id = session_id
+        # The scheduling task ID.
         self.task_id = task_id
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

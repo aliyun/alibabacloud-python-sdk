@@ -14,11 +14,18 @@ class DeleteFileUploadResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Return struct
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message returned when the invocation fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request succeeded. Valid values:
+        # 
+        # - **true**: The request succeeded.                                 
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -72,6 +79,7 @@ class DeleteFileUploadResponseBodyData(DaraModel):
         self,
         file_id: str = None,
     ):
+        # File ID
         self.file_id = file_id
 
     def validate(self):

@@ -15,9 +15,9 @@ class ListSecretReferencesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The response message.
         self.message = message
@@ -78,7 +78,7 @@ class ListSecretReferencesResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
@@ -137,17 +137,17 @@ class ListSecretReferencesResponseBodyDataItems(DaraModel):
         mcp_server_config: main_models.ListSecretReferencesResponseBodyDataItemsMcpServerConfig = None,
         resource_type: str = None,
     ):
-        # The information about the plug-in that references the current key.
+        # The plug-in information that references the current secret.
         self.plugin_config = plugin_config
-        # The service information that references the current key.
+        # The service information that references the current secret.
         self.service_config = service_config
-        # The consumer information that references the current key.
+        # The consumer information that references the current secret.
         self.consumer_config = consumer_config
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # MCP service information that references the current key.
+        # The MCP server information that references the current secret.
         self.mcp_server_config = mcp_server_config
-        # The type of resource.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):
@@ -218,7 +218,7 @@ class ListSecretReferencesResponseBodyDataItemsMcpServerConfig(DaraModel):
         name: str = None,
         route_id: str = None,
     ):
-        # The HTTP API ID.
+        # HTTP API ID。
         self.http_api_id = http_api_id
         # The route name.
         self.name = name

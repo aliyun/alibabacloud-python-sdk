@@ -13,11 +13,19 @@ class ContinuousMoveRequest(DaraModel):
         tilt: str = None,
         zoom: str = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.id = id
         self.owner_id = owner_id
+        # Pan speed. A positive value moves the camera left.<br>
+        # Valid values: -1.0 to 1.0<br>
         self.pan = pan
+        # Tilt speed. A positive value moves the camera up.<br>
+        # Valid values: -1.0 to 1.0<br>
         self.tilt = tilt
+        # Zoom speed. A positive value zooms in.<br>
+        # Valid values: -1.0 to 1.0<br>
         self.zoom = zoom
 
     def validate(self):

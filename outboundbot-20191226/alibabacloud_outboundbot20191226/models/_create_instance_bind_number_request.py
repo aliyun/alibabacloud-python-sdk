@@ -10,7 +10,13 @@ class CreateInstanceBindNumberRequest(DaraModel):
         instance_list: str = None,
         number: str = None,
     ):
+        # List of outbound calling instance IDs.
+        # 
+        # > Modifying this parameter overwrites previous parameters. Setting this parameter to empty clears the number binding list.
         self.instance_list = instance_list
+        # The number to bind (required).
+        # 
+        # > For the list of numbers, see the Number parameter returned by the ListAllTenantBindNumberBinding API.
         self.number = number
 
     def validate(self):

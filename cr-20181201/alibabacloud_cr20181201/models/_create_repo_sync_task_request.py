@@ -18,23 +18,45 @@ class CreateRepoSyncTaskRequest(DaraModel):
         target_tag: str = None,
         target_user_id: str = None,
     ):
+        # Source instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to overwrite an existing image:
+        # 
+        # - `true`: Overwrite the existing image.
+        # 
+        # - `false`: Do not overwrite the existing image.
         self.override = override
+        # Image repository ID in the source instance
+        # 
         # This parameter is required.
         self.repo_id = repo_id
+        # Image tag in the source instance
+        # 
         # This parameter is required.
         self.tag = tag
+        # Target instance ID
+        # 
         # This parameter is required.
         self.target_instance_id = target_instance_id
+        # Namespace in the target instance
+        # 
         # This parameter is required.
         self.target_namespace = target_namespace
+        # Region ID of the target instance
+        # 
         # This parameter is required.
         self.target_region_id = target_region_id
+        # Name of the image repository in the target instance
+        # 
         # This parameter is required.
         self.target_repo_name = target_repo_name
+        # Image tag in the target instance
+        # 
         # This parameter is required.
         self.target_tag = target_tag
+        # UID of the account to which the target instance belongs
         self.target_user_id = target_user_id
 
     def validate(self):

@@ -18,49 +18,47 @@ class ListApplicationsRequest(DaraModel):
         custom_fields: List[main_models.ListApplicationsRequestCustomFields] = None,
         instance_id: str = None,
         m_2mclient_status: str = None,
+        managed_service_code: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_server_status: str = None,
+        service_managed: bool = None,
         sso_type: str = None,
         status: str = None,
     ):
+        # The application creation type. If this parameter is left empty, applications of the user_custom type are queried by default. To query applications of all types, set this parameter to all.
         self.application_creation_type = application_creation_type
+        # The application identity type. If this parameter is left empty, applications of the application type are queried by default. To query applications of all identity types, set this parameter to all.
         self.application_identity_type = application_identity_type
-        # The IDs of the applications.
+        # The list of application IDs.
         self.application_ids = application_ids
-        # The name of the application. Only fuzzy match from the leftmost character is supported.
+        # The application name. Only left fuzzy match is supported.
         self.application_name = application_name
-        # The authorization of the application. Valid values:
-        # 
-        # *   authorize_required: Only the user with explicit authorization can access the application.
-        # *   default_all: By default, all users can access the application.
+        # The application access authorization type. Valid values:
+        # - authorize_required: Explicit authorization is required for access.
+        # - default_all: All members have access permissions by default.
         self.authorization_type = authorization_type
+        # The list of custom fields.
         self.custom_fields = custom_fields
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Used to determine whether M2M client identity is enabled.
-        # - enabled
-        # - disabled
+        # Specifies whether the M2M Client identity is enabled.
         self.m_2mclient_status = m_2mclient_status
-        # The number of the page to return.
+        self.managed_service_code = managed_service_code
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The page size.
         self.page_size = page_size
-        # Used to determine whether the ResourceServer capability is enabled.
-        # - enabled
-        # - disabled
+        # Specifies whether the ResourceServer capability is enabled.
         self.resource_server_status = resource_server_status
-        # SSO type.
-        # - oidc
-        # - saml2
-        # - oauth2/m2m
+        self.service_managed = service_managed
+        # The SSO type filter condition. Multiple types can be separated by commas, such as oauth2/m2m,oidc+oauth2/m2m.
         self.sso_type = sso_type
-        # The status of the application. Valid values:
-        # 
-        # *   Enabled: The application is enabled.
-        # *   Disabled: The application is disabled.
+        # The application status. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.status = status
 
     def validate(self):
@@ -100,6 +98,9 @@ class ListApplicationsRequest(DaraModel):
         if self.m_2mclient_status is not None:
             result['M2MClientStatus'] = self.m_2mclient_status
 
+        if self.managed_service_code is not None:
+            result['ManagedServiceCode'] = self.managed_service_code
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -108,6 +109,9 @@ class ListApplicationsRequest(DaraModel):
 
         if self.resource_server_status is not None:
             result['ResourceServerStatus'] = self.resource_server_status
+
+        if self.service_managed is not None:
+            result['ServiceManaged'] = self.service_managed
 
         if self.sso_type is not None:
             result['SsoType'] = self.sso_type
@@ -146,6 +150,9 @@ class ListApplicationsRequest(DaraModel):
         if m.get('M2MClientStatus') is not None:
             self.m_2mclient_status = m.get('M2MClientStatus')
 
+        if m.get('ManagedServiceCode') is not None:
+            self.managed_service_code = m.get('ManagedServiceCode')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 
@@ -154,6 +161,9 @@ class ListApplicationsRequest(DaraModel):
 
         if m.get('ResourceServerStatus') is not None:
             self.resource_server_status = m.get('ResourceServerStatus')
+
+        if m.get('ServiceManaged') is not None:
+            self.service_managed = m.get('ServiceManaged')
 
         if m.get('SsoType') is not None:
             self.sso_type = m.get('SsoType')
@@ -169,7 +179,10 @@ class ListApplicationsRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
+        # The custom field identifier. Valid values:
+        # - agent_type: the agent type.
         self.field_name = field_name
+        # The custom field value.
         self.field_value = field_value
 
     def validate(self):

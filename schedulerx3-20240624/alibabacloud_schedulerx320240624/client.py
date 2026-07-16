@@ -20,7 +20,21 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'eu-central-1': 'schedulerx3.eu-central-1.aliyuncs.com',
+            'cn-zhangjiakou': 'schedulerx3.cn-zhangjiakou.aliyuncs.com',
+            'cn-shenzhen': 'schedulerx3.cn-shenzhen.aliyuncs.com',
+            'cn-shanghai-finance-1': 'schedulerx3.cn-shanghai-finance-1.aliyuncs.com',
+            'cn-shanghai': 'schedulerx3.cn-shanghai.aliyuncs.com',
+            'cn-hongkong': 'schedulerx3.cn-hongkong.aliyuncs.com',
+            'cn-hangzhou': 'schedulerx3.cn-hangzhou.aliyuncs.com',
+            'cn-guangzhou': 'schedulerx3.cn-guangzhou.aliyuncs.com',
+            'cn-chengdu': 'schedulerx3.cn-chengdu.aliyuncs.com',
+            'cn-beijing': 'schedulerx3.cn-beijing.aliyuncs.com',
+            'ap-southeast-1': 'schedulerx3.ap-southeast-1.aliyuncs.com',
+            'ap-northeast-1': 'schedulerx3.ap-northeast-1.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('schedulerx3', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -252,6 +266,8 @@ class Client(OpenApiClient):
             body['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
         if not DaraCore.is_null(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not DaraCore.is_null(request.vpc_id):
@@ -304,6 +320,8 @@ class Client(OpenApiClient):
             body['EngineType'] = request.engine_type
         if not DaraCore.is_null(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not DaraCore.is_null(request.source):
+            body['Source'] = request.source
         if not DaraCore.is_null(request.v_switches_shrink):
             body['VSwitches'] = request.v_switches_shrink
         if not DaraCore.is_null(request.vpc_id):
@@ -341,6 +359,84 @@ class Client(OpenApiClient):
     ) -> main_models.CreateClusterResponse:
         runtime = RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
+
+    def create_contact_with_options(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_contact_with_options_async(
+        self,
+        request: main_models.CreateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_contact(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return self.create_contact_with_options(request, runtime)
+
+    async def create_contact_async(
+        self,
+        request: main_models.CreateContactRequest,
+    ) -> main_models.CreateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.create_contact_with_options_async(request, runtime)
 
     def create_datasource_with_options(
         self,
@@ -443,10 +539,16 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.integration_type):
+            body['IntegrationType'] = request.integration_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.network):
@@ -457,6 +559,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -487,10 +591,16 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
+        if not DaraCore.is_null(request.integration_type):
+            body['IntegrationType'] = request.integration_type
         if not DaraCore.is_null(request.name):
             body['Name'] = request.name
         if not DaraCore.is_null(request.network):
@@ -501,6 +611,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1142,6 +1254,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
+    def delete_contact_with_options(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_contact_with_options_async(
+        self,
+        request: main_models.DeleteContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_contact(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return self.delete_contact_with_options(request, runtime)
+
+    async def delete_contact_async(
+        self,
+        request: main_models.DeleteContactRequest,
+    ) -> main_models.DeleteContactResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_contact_with_options_async(request, runtime)
+
     def delete_datasource_with_options(
         self,
         request: main_models.DeleteDatasourceRequest,
@@ -1227,6 +1409,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -1257,6 +1441,8 @@ class Client(OpenApiClient):
             body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -3519,6 +3705,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListClustersResponse:
         runtime = RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
+
+    def list_contacts_with_options(
+        self,
+        request: main_models.ListContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_contacts_with_options_async(
+        self,
+        request: main_models.ListContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContacts',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_contacts(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        return self.list_contacts_with_options(request, runtime)
+
+    async def list_contacts_async(
+        self,
+        request: main_models.ListContactsRequest,
+    ) -> main_models.ListContactsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_contacts_with_options_async(request, runtime)
 
     def list_datasources_with_options(
         self,
@@ -6962,6 +7226,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_cluster_with_options_async(request, runtime)
 
+    def update_contact_with_options(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_contact_with_options_async(
+        self,
+        request: main_models.UpdateContactRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateContactResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.config):
+            body['Config'] = request.config
+        if not DaraCore.is_null(request.contact_name):
+            body['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateContact',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateContactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_contact(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return self.update_contact_with_options(request, runtime)
+
+    async def update_contact_async(
+        self,
+        request: main_models.UpdateContactRequest,
+    ) -> main_models.UpdateContactResponse:
+        runtime = RuntimeOptions()
+        return await self.update_contact_with_options_async(request, runtime)
+
     def update_datasource_with_options(
         self,
         request: main_models.UpdateDatasourceRequest,
@@ -7063,12 +7409,18 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         if not DaraCore.is_null(request.network):
             body['Network'] = request.network
         if not DaraCore.is_null(request.protocol):
@@ -7077,6 +7429,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -7107,12 +7461,18 @@ class Client(OpenApiClient):
             body['ApiKey'] = request.api_key
         if not DaraCore.is_null(request.auth_type):
             body['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.auto_scale):
+            body['AutoScale'] = request.auto_scale
         if not DaraCore.is_null(request.cluster_id):
             body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.cms_workspace_id):
+            body['CmsWorkspaceId'] = request.cms_workspace_id
         if not DaraCore.is_null(request.description):
             body['Description'] = request.description
         if not DaraCore.is_null(request.id):
             body['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
         if not DaraCore.is_null(request.network):
             body['Network'] = request.network
         if not DaraCore.is_null(request.protocol):
@@ -7121,6 +7481,8 @@ class Client(OpenApiClient):
             body['WorkerType'] = request.worker_type
         if not DaraCore.is_null(request.workers):
             body['Workers'] = request.workers
+        if not DaraCore.is_null(request.xattrs):
+            body['XAttrs'] = request.xattrs
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

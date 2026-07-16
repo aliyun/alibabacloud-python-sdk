@@ -12,7 +12,9 @@ class DeletePptArtifactRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.external_user_id = external_user_id
+        # The ID of the PPT work.
         self.ppt_artifact_id = ppt_artifact_id
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

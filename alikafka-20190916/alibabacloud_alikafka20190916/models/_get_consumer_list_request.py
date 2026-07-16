@@ -13,15 +13,15 @@ class GetConsumerListRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The name of the consumer group. If you do not configure this parameter, all consumer groups are queried.
+        # The ID of the consumer group. If you do not specify this parameter, information about all consumer groups is returned.
         self.consumer_id = consumer_id
-        # The page number.
+        # The number of the page to return.
         self.current_page = current_page
         # The ID of the instance to which the consumer group belongs.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to be returned per page.
+        # The number of consumer groups to return on each page.
         self.page_size = page_size
         # The region ID of the instance to which the consumer group belongs.
         # 

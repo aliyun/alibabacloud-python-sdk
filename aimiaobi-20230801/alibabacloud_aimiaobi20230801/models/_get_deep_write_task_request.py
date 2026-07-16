@@ -10,7 +10,9 @@ class GetDeepWriteTaskRequest(DaraModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # Task ID
         self.task_id = task_id
+        # [workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
 
     def validate(self):

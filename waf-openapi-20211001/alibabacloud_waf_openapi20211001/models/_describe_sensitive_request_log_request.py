@@ -22,42 +22,43 @@ class DescribeSensitiveRequestLogRequest(DaraModel):
         sensitive_data: str = None,
         start_time: int = None,
     ):
+        # The account information.
         self.account = account
-        # The API.
+        # The API operation.
         self.api_format = api_format
         # The IP address.
         self.client_ip = client_ip
-        # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # The hybrid cloud cluster ID.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
         self.end_time = end_time
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The domain name of the API.
+        # The domain name to which the API operation belongs.
         self.matched_host = matched_host
-        # The page number. Default value: **1**.
+        # The page number of the page to return in a paged query. Default value: **1**, which indicates the first page. Paging starts from page 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: **10**.
+        # The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page. Paging starts from page 1.
         self.page_size = page_size
-        # The region ID of the WAF instance. Valid values:
+        # The region where the WAF instance is deployed. Valid values:
         # 
-        # *   **cn-hangzhou**: Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the Alibaba Cloud resource group.
+        # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The type of the sensitive data.
-        # 
-        # >  You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported types of sensitive data.
+        # The sensitive data type.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_code = sensitive_code
         # The response sensitive data.
         self.sensitive_data = sensitive_data
-        # The beginning of the time range to query. The value is a UNIX timestamp displayed in UTC. Unit: seconds.
+        # The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):

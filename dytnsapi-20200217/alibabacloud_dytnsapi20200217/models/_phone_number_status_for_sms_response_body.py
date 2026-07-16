@@ -13,17 +13,19 @@ class PhoneNumberStatusForSmsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. Valid values:
+        # The request status code. Valid values:
         # 
-        # *   **OK**: The request is successful.
-        # *   **OperatorLimit**: The carrier prohibits the query of the phone number.
-        # *   **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
+        # - **OK**: The request was successful.
+        # 
+        # - **OperatorLimit**: The carrier restricts queries for this phone number.
+        # 
+        # - **RequestFrequencyLimit**: Indicates that requests for a single number are too frequent. Due to carrier restrictions, repeated queries for the same number within a short period are prohibited. If you receive this error code, try again later.
         self.code = code
-        # The response parameters.
+        # A container for the returned data.
         self.data = data
-        # The returned message.
+        # The description of the status code.
         self.message = message
-        # The unique request ID. It is a common parameter and can be used to troubleshoot issues.
+        # The unique ID of the request. Use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -72,24 +74,31 @@ class PhoneNumberStatusForSmsResponseBodyData(DaraModel):
         carrier: str = None,
         status: str = None,
     ):
-        # The basic carrier who assigns the phone number. If the queried phone number involves mobile number portability, the carrier after mobile number portability is returned. Valid values:
+        # The carrier of the phone number. If the number has been ported, this parameter returns the current carrier. Valid values:
         # 
-        # *   **CMCC**: China Mobile
-        # *   **CUCC**: China Unicom
-        # *   **CTCC**: China Telecom
+        # - **CMCC**: China Mobile.
         # 
-        # >  You are not allowed to query the phone numbers assigned by China Broadnet.
+        # - **CUCC**: China Unicom.
+        # 
+        # - **CTCC**: China Telecom.
+        # 
+        # > Queries for China Broadnet numbers are not supported.
         self.carrier = carrier
-        # The returned status for the queried phone number. Valid values:
+        # The status of the phone number. Valid values:
         # 
-        # *   **NORMAL**: The queried phone number can be reached.
-        # *   **SHUTDOWN**: The queried phone number is suspended.
-        # *   **POWER_OFF**: The phone is powered off.
-        # *   **NOT_EXIST**: The queried phone number is a nonexistent number.
-        # *   **DEFECT**: The queried phone number is invalid.
-        # *   **UNKNOWN**: The queried phone number is unknown.
+        # - **NORMAL**: Active.
         # 
-        # >  Due to system adjustment of the carrier, the BUSY, SUSPECTED_POWER_OFF, and POWER_OFF states cannot be returned for the numbers assigned by China Telecom. [For more information, see the official announcements](https://help.aliyun.com/document_detail/2489709.html).
+        # - **SHUTDOWN**: Shutdown.
+        # 
+        # - **POWER_OFF**: Powered off.
+        # 
+        # - **NOT_EXIST**: Non-existent number.
+        # 
+        # - **DEFECT**: Invalid number.
+        # 
+        # - **UNKNOWN**: Unknown.
+        # 
+        # > Due to carrier system adjustments, the statuses for busy, suspected to be powered off, and powered off are not returned for China Telecom numbers. For more information, see the [official announcement](https://help.aliyun.com/document_detail/2489709.html).
         self.status = status
 
     def validate(self):

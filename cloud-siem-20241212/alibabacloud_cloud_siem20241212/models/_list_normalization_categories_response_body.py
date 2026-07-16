@@ -16,10 +16,15 @@ class ListNormalizationCategoriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned on the current page.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results. If the response does not contain this parameter, no more results are available.
         self.next_token = next_token
+        # A list of normalization categories.
         self.normalization_categories = normalization_categories
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +85,9 @@ class ListNormalizationCategoriesResponseBodyNormalizationCategories(DaraModel):
         normalization_category_id: str = None,
         normalization_category_name: str = None,
     ):
+        # The ID of the normalization category.
         self.normalization_category_id = normalization_category_id
+        # The name of the normalization category.
         self.normalization_category_name = normalization_category_name
 
     def validate(self):

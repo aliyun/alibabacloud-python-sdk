@@ -12,7 +12,7 @@ class CreateRoutineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # The result of the operation. Indicates whether the operation was successful.
         self.status = status
 
     def validate(self):

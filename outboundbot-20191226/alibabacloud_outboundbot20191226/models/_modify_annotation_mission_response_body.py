@@ -15,11 +15,17 @@ class ModifyAnnotationMissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # Response data.
         self.data = data
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the call succeeded. true: The call succeeded. false: The call failed.
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class ModifyAnnotationMissionResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
+        # Error message.
         self.message = message
+        # Indicates whether the operation succeeded.
         self.success = success
 
     def validate(self):

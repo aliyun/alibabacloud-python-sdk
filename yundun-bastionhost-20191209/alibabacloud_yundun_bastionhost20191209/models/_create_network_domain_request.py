@@ -31,8 +31,9 @@ class CreateNetworkDomainRequest(DaraModel):
         self.network_domain_name = network_domain_name
         # The connection mode of the network domain to be created. Valid values:
         # 
-        # *   Direct
-        # *   Proxy
+        # - Direct
+        # 
+        # - Proxy
         # 
         # This parameter is required.
         self.network_domain_type = network_domain_type
@@ -116,6 +117,7 @@ class CreateNetworkDomainRequestProxies(DaraModel):
         # The node type of the proxy server. Valid values:
         # 
         # - **Master**: primary proxy server.
+        # 
         # - **Slave**: secondary proxy server.
         self.node_type = node_type
         # The Base64-encoded password of the proxy server.
@@ -125,7 +127,9 @@ class CreateNetworkDomainRequestProxies(DaraModel):
         # The proxy type. Valid values:
         # 
         # - **SSHProxy**
+        # 
         # - **HTTPProxy**
+        # 
         # - **Socks5Proxy**
         self.proxy_type = proxy_type
         # The username of the proxy server.

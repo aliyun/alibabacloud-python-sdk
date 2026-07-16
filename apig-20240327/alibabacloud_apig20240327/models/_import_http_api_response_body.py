@@ -15,11 +15,11 @@ class ImportHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The response status code.
         self.code = code
         # The API information.
         self.data = data
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -73,7 +73,7 @@ class ImportHttpApiResponseBodyData(DaraModel):
     ):
         # The dry run result.
         self.dry_run_info = dry_run_info
-        # The API ID.
+        # The unique ID of the HTTP API.
         self.http_api_id = http_api_id
         # The API name.
         self.name = name
@@ -119,25 +119,32 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         exist_http_api_info: main_models.HttpApiApiInfo = None,
         failure_components: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureComponents] = None,
         failure_operations: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureOperations] = None,
+        failure_routes: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes] = None,
         mcp_tools_definition: str = None,
         success_components: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents] = None,
         success_operations: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations] = None,
+        success_routes: List[main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes] = None,
         warning_messages: List[str] = None,
     ):
-        # The error messages. If an error message is returned, the API fails to be imported.
+        # The error messages. If error messages are not empty, the API cannot be successfully imported.
         self.error_messages = error_messages
-        # The existing APIs. If an existing API is returned, the import updates the existing API.
+        # The information about the existing API. If this field is not empty, the import action updates this API.
         self.exist_http_api_info = exist_http_api_info
-        # The data structs that fail the dry run.
+        # The list of data structures that failed the dry run.
         self.failure_components = failure_components
-        # The operations that fail the dry run.
+        # The list of operations that failed the dry run.
         self.failure_operations = failure_operations
+        # The list of routes that failed.
+        self.failure_routes = failure_routes
+        # The MCP tool definition information.
         self.mcp_tools_definition = mcp_tools_definition
-        # The data structs that pass the dry run.
+        # The list of data structures that passed the dry run.
         self.success_components = success_components
-        # The operations that pass the dry run.
+        # The list of operations that passed the dry run.
         self.success_operations = success_operations
-        # The alerts. If an alert is returned, specific operations or structs may fail to be imported.
+        # The list of routes that were successfully imported.
+        self.success_routes = success_routes
+        # The warning messages. If warning messages are not empty, some operations or data structures may not be imported successfully.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -151,12 +158,20 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
             for v1 in self.failure_operations:
                  if v1:
                     v1.validate()
+        if self.failure_routes:
+            for v1 in self.failure_routes:
+                 if v1:
+                    v1.validate()
         if self.success_components:
             for v1 in self.success_components:
                  if v1:
                     v1.validate()
         if self.success_operations:
             for v1 in self.success_operations:
+                 if v1:
+                    v1.validate()
+        if self.success_routes:
+            for v1 in self.success_routes:
                  if v1:
                     v1.validate()
 
@@ -181,6 +196,11 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
             for k1 in self.failure_operations:
                 result['failureOperations'].append(k1.to_map() if k1 else None)
 
+        result['failureRoutes'] = []
+        if self.failure_routes is not None:
+            for k1 in self.failure_routes:
+                result['failureRoutes'].append(k1.to_map() if k1 else None)
+
         if self.mcp_tools_definition is not None:
             result['mcpToolsDefinition'] = self.mcp_tools_definition
 
@@ -193,6 +213,11 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         if self.success_operations is not None:
             for k1 in self.success_operations:
                 result['successOperations'].append(k1.to_map() if k1 else None)
+
+        result['successRoutes'] = []
+        if self.success_routes is not None:
+            for k1 in self.success_routes:
+                result['successRoutes'].append(k1.to_map() if k1 else None)
 
         if self.warning_messages is not None:
             result['warningMessages'] = self.warning_messages
@@ -220,6 +245,12 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
                 temp_model = main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureOperations()
                 self.failure_operations.append(temp_model.from_map(k1))
 
+        self.failure_routes = []
+        if m.get('failureRoutes') is not None:
+            for k1 in m.get('failureRoutes'):
+                temp_model = main_models.ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes()
+                self.failure_routes.append(temp_model.from_map(k1))
+
         if m.get('mcpToolsDefinition') is not None:
             self.mcp_tools_definition = m.get('mcpToolsDefinition')
 
@@ -235,8 +266,51 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
                 temp_model = main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations()
                 self.success_operations.append(temp_model.from_map(k1))
 
+        self.success_routes = []
+        if m.get('successRoutes') is not None:
+            for k1 in m.get('successRoutes'):
+                temp_model = main_models.ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes()
+                self.success_routes.append(temp_model.from_map(k1))
+
         if m.get('warningMessages') is not None:
             self.warning_messages = m.get('warningMessages')
+
+        return self
+
+class ImportHttpApiResponseBodyDataDryRunInfoSuccessRoutes(DaraModel):
+    def __init__(
+        self,
+        action: str = None,
+        name: str = None,
+    ):
+        # The action type.
+        self.action = action
+        # The name.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action is not None:
+            result['action'] = self.action
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
 
         return self
 
@@ -248,12 +322,12 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The action that will be performed for the operation after the dry run.
+        # The action to be performed after the dry run. Valid values:
         # 
-        # *   Create: The operation is created.
-        # *   Update: The operation is updated.
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
-        # The HTTP method of the operation.
+        # The operation method.
         self.method = method
         # The operation name.
         self.name = name
@@ -304,12 +378,12 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         action: str = None,
         name: str = None,
     ):
-        # The action that will be performed for the data struct after the dry run.
+        # The action to be performed after the dry run. Valid values:
         # 
-        # *   Create: The data struct is created.
-        # *   Update: The data struct is updated.
+        # - Create: Create.
+        # - Update: Update.
         self.action = action
-        # The data struct name.
+        # The data structure name.
         self.name = name
 
     def validate(self):
@@ -338,6 +412,43 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
 
         return self
 
+class ImportHttpApiResponseBodyDataDryRunInfoFailureRoutes(DaraModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        name: str = None,
+    ):
+        # The error message.
+        self.error_message = error_message
+        # The parameter name.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        return self
+
 class ImportHttpApiResponseBodyDataDryRunInfoFailureOperations(DaraModel):
     def __init__(
         self,
@@ -347,7 +458,7 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureOperations(DaraModel):
     ):
         # The error message.
         self.error_message = error_message
-        # The HTTP method of the operation.
+        # The operation method.
         self.method = method
         # The operation path.
         self.path = path
@@ -392,7 +503,7 @@ class ImportHttpApiResponseBodyDataDryRunInfoFailureComponents(DaraModel):
     ):
         # The error message.
         self.error_message = error_message
-        # The data struct name.
+        # The data structure name.
         self.name = name
 
     def validate(self):

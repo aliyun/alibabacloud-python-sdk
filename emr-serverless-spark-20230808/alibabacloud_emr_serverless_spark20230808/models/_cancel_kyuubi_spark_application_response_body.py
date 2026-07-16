@@ -11,7 +11,9 @@ class CancelKyuubiSparkApplicationResponseBody(DaraModel):
         body: main_models.CancelKyuubiSparkApplicationResponseBodyBody = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.body = body
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,7 +50,13 @@ class CancelKyuubiSparkApplicationResponseBodyBody(DaraModel):
         application_id: str = None,
         success: bool = None,
     ):
+        # The ID of the Spark application submitted by Kyuubi.
         self.application_id = application_id
+        # Indicates whether the request was successful.
+        # 
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

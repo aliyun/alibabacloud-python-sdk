@@ -13,15 +13,15 @@ class WafQuotaInteger(DaraModel):
         less_than: int = None,
         less_than_or_equal: int = None,
     ):
-        # Is equal to
+        # 等于。
         self.equal = equal
-        # Is greater than
+        # 大于。
         self.greater_than = greater_than
-        # Is greater than or equal to
+        # 大于等于。
         self.greater_than_or_equal = greater_than_or_equal
-        # Is less than
+        # 小于。
         self.less_than = less_than
-        # Is less than or equal to
+        # 小于等于。
         self.less_than_or_equal = less_than_or_equal
 
     def validate(self):

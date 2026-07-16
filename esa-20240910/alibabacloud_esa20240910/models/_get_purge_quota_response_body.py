@@ -15,11 +15,13 @@ class GetPurgeQuotaResponseBody(DaraModel):
     ):
         # The total quota.
         self.quota = quota
+        # The total quota at 30-day granularity. A value of 0 indicates that this quota is not configured.
         self.quota_30day = quota_30day
         # The request ID.
         self.request_id = request_id
-        # The quota usage.
+        # The used quota.
         self.usage = usage
+        # The used quota at 30-day granularity.
         self.usage_30day = usage_30day
 
     def validate(self):

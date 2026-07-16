@@ -12,9 +12,13 @@ class DescribeMetricListRequest(DaraModel):
         metric_name: str = None,
         start_time: int = None,
     ):
+        # The end time as a UNIX timestamp in seconds.
         self.end_time = end_time
+        # The instance ID.
         self.instance = instance
+        # The metric name.
         self.metric_name = metric_name
+        # The start time as a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

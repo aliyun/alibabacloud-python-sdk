@@ -13,8 +13,12 @@ class DeleteQualityTemplatesRequest(DaraModel):
         delete_command: main_models.DeleteQualityTemplatesRequestDeleteCommand = None,
         op_tenant_id: int = None,
     ):
+        # The delete instruction.
+        # 
         # This parameter is required.
         self.delete_command = delete_command
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -51,6 +55,8 @@ class DeleteQualityTemplatesRequestDeleteCommand(DaraModel):
         self,
         template_id_list: List[int] = None,
     ):
+        # The template object IDs.
+        # 
         # This parameter is required.
         self.template_id_list = template_id_list
 

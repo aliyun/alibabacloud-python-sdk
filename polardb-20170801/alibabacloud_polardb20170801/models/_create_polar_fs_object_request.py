@@ -10,8 +10,12 @@ class CreatePolarFsObjectRequest(DaraModel):
         path: str = None,
         polar_fs_instance_id: str = None,
     ):
+        # The absolute path of the directory to create.
+        # 
         # This parameter is required.
         self.path = path
+        # The PolarFS instance id.
+        # 
         # This parameter is required.
         self.polar_fs_instance_id = polar_fs_instance_id
 

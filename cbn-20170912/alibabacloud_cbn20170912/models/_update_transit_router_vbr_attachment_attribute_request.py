@@ -21,19 +21,21 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
     ):
         # Specifies whether to allow the Enterprise Edition transit router to automatically advertise routes to the VBR. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Allows the Enterprise Edition transit router to automatically advertise routes to the VBR.
+        # 
+        # - **false**: Does not allow the Enterprise Edition transit router to automatically advertise routes to the VBR.
         self.auto_publish_route_enabled = auto_publish_route_enabled
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use your client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Default values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an operation is performed.
         self.dry_run = dry_run
         self.order_type = order_type
         self.owner_account = owner_account
@@ -42,7 +44,7 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The new description of the VBR connection.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The description can be empty or 1 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.transit_router_attachment_description = transit_router_attachment_description
         # The ID of the VBR connection.
         # 
@@ -50,7 +52,7 @@ class UpdateTransitRouterVbrAttachmentAttributeRequest(DaraModel):
         self.transit_router_attachment_id = transit_router_attachment_id
         # The new name of the VBR connection.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
+        # The name can be empty or 1 to 128 characters in length. It cannot start with `http://` or `https://`.
         self.transit_router_attachment_name = transit_router_attachment_name
 
     def validate(self):

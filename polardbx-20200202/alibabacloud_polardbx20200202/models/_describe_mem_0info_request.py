@@ -10,8 +10,12 @@ class DescribeMem0InfoRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
+        # Instance Name
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # Region
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -13,8 +13,6 @@ class DescribePhoneNumberAttributeRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The phone number that you want to query.
-        # 
         # This parameter is required.
         self.phone_number = phone_number
         self.resource_owner_account = resource_owner_account

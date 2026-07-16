@@ -15,11 +15,17 @@ class CreateDataSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Error code. OK indicates that the request is successful.
         self.code = code
+        # Data source creation result
         self.create_result = create_result
+        # HTTP status code returned by the backend
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request is successful
         self.success = success
 
     def validate(self):
@@ -80,7 +86,9 @@ class CreateDataSourceResponseBodyCreateResult(DaraModel):
         dev_data_source_id: int = None,
         prod_data_source_id: int = None,
     ):
+        # Development environment data source ID
         self.dev_data_source_id = dev_data_source_id
+        # Production environment data source ID
         self.prod_data_source_id = prod_data_source_id
 
     def validate(self):

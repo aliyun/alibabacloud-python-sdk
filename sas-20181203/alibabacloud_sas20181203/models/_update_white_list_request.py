@@ -10,13 +10,12 @@ class UpdateWhiteListRequest(DaraModel):
         registry_id: int = None,
         white_list: str = None,
     ):
-        # The ID of the image repository.
-        # 
-        # >  You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain the ID.
+        # The image repository ID.
+        # >You can call the [PageImageRegistry](~~PageImageRegistry~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.registry_id = registry_id
-        # The IP address whitelist. Separate multiple IP addresses with commas (,).
+        # The whitelist. Separate multiple whitelisted addresses with commas (,).
         # 
         # This parameter is required.
         self.white_list = white_list

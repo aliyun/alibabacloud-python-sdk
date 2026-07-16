@@ -12,7 +12,9 @@ class ListLogRegionsResponseBody(DaraModel):
         log_regions: List[str] = None,
         request_id: str = None,
     ):
+        # A list of log storage region IDs.
         self.log_regions = log_regions
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

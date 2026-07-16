@@ -9,9 +9,9 @@ class DescribeRegionsRequest(DaraModel):
         self,
         client_token: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A parameter to ensure idempotence.
         # 
-        # >  #### You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # > This parameter ensures that each request is processed only once. Generate a unique value on the client for each request. The value can be up to 64 ASCII characters long and must not contain non-ASCII characters.
         self.client_token = client_token
 
     def validate(self):

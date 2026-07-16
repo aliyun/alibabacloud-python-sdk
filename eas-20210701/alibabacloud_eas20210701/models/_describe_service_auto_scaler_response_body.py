@@ -115,15 +115,17 @@ class DescribeServiceAutoScalerResponseBodyScaleStrategies(DaraModel):
     ):
         # The metric name. Valid values:
         # 
-        # *   QPS: the queries per second (QPS) for an individual instance.
-        # *   CPU: the CPU utilization.
+        # - QPS: the queries per second (QPS) for an individual instance.
+        # 
+        # - CPU: the CPU utilization.
         self.metric_name = metric_name
         # The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
         self.service = service
         # The threshold of the metric that triggers auto scaling.
         # 
-        # *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
-        # *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+        # - If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+        # 
+        # - If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
         self.threshold = threshold
 
     def validate(self):
@@ -167,8 +169,9 @@ class DescribeServiceAutoScalerResponseBodyCurrentMetrics(DaraModel):
     ):
         # The metric name. Valid values:
         # 
-        # *   QPS
-        # *   CPU
+        # - QPS
+        # 
+        # - CPU
         self.metric_name = metric_name
         # The service for which the metric is specified.
         self.service = service

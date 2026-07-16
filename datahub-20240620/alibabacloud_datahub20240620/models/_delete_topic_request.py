@@ -10,8 +10,12 @@ class DeleteTopicRequest(DaraModel):
         project_name: str = None,
         topic_name: str = None,
     ):
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The name of the topic to delete.
+        # 
         # This parameter is required.
         self.topic_name = topic_name
 

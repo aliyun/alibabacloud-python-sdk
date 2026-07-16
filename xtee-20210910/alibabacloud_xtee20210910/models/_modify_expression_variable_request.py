@@ -21,49 +21,49 @@ class ModifyExpressionVariableRequest(DaraModel):
         reg_id: str = None,
         title: str = None,
     ):
-        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
-        # - **zh**: Chinese
-        # - **en**: English
+        # The language of the request and response. Default value: **zh**. Valid values:
+        # - **zh**: Chinese.
+        # - **en**: English.
         self.lang = lang
-        # Data version.
+        # The data version.
         # 
         # This parameter is required.
         self.data_version = data_version
-        # Description.
+        # The description.
         self.description = description
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Expression
+        # The expression.
         # 
         # This parameter is required.
         self.expression = expression
-        # Expression display
+        # The display name of the expression.
         # 
         # This parameter is required.
         self.expression_title = expression_title
-        # Calculation expression variable
+        # The calculation expression variable.
         self.expression_variable = expression_variable
-        # Variable ID
+        # The variable ID.
         # 
         # This parameter is required.
         self.id = id
-        # Variable name
+        # The variable name.
         self.name = name
-        # Outlier
+        # The outlier value.
         # 
         # This parameter is required.
         self.outlier = outlier
-        # Output
+        # The output.
         # 
         # This parameter is required.
         self.outputs = outputs
-        # Region code
+        # The region code.
         # 
         # This parameter is required.
         self.reg_id = reg_id
-        # Title.
+        # The title.
         # 
         # This parameter is required.
         self.title = title

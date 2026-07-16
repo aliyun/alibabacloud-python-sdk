@@ -23,20 +23,61 @@ class CreateJobGroupRequest(DaraModel):
         script_id: str = None,
         strategy_json: str = None,
     ):
+        # List of caller numbers. If not specified, all numbers attached to the instance are selected by default.
         self.calling_number = calling_number
+        # Configuration parameters for flash SMS push, in JSON format, containing third-party flash SMS configuration information.  
+        # - templateId: Flash SMS Template ID.  
+        # - configId: Flash SMS configuration ID.  
+        # - templateContent: Flash SMS Content.  
+        # 
+        # > Obtain the value of templateContent from the partner providing the flash SMS capability.
         self.flash_sms_extras = flash_sms_extras
+        # Instance ID
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Task description.
         self.job_group_description = job_group_description
+        # Task name.
+        # 
         # This parameter is required.
         self.job_group_name = job_group_name
+        # Concurrent guarantee value.  
+        # - When a job starts, it is guaranteed a minimum of N concurrent executions.  
+        # - The sum of concurrent guarantee values for jobs with the same priority must not exceed the instance concurrency limit.  
+        # - If the concurrent guarantee value is configured as 0, the system intelligently assigns idle concurrency resources.
         self.min_concurrency = min_concurrency
+        # Job group priority. Valid values:
+        # - **Urgent**: Urgent job.
+        # - **Daily**: Daily job.
         self.priority = priority
+        # List of caller numbers for redial.
         self.recall_calling_number = recall_calling_number
+        # Redial policy in JSON format. The default value of parameters in the JSON is false.
+        # 
+        # - **emptyNumberIgnore**: Do not make outbound calls to nonexistent numbers.
+        # - **inArrearsIgnore**: Do not make outbound calls for overdue payments.
+        # - **outOfServiceIgnore**: Do not make outbound calls to out-of-service numbers.
         self.recall_strategy_json = recall_strategy_json
+        # Optimal ringing duration. Default value is 25.
         self.ringing_duration = ringing_duration
+        # Deprecated
         self.scenario_id = scenario_id
+        # Scenario ID.
         self.script_id = script_id
+        # Job execution policy.  
+        # - repeatBy: Recurrence type. Options are Once (no recurrence), Week (weekly recurrence), and Month (monthly recurrence).  
+        # - startTime: Policy start time for time-based execution.  
+        # - endTime: Policy end time for time-based execution.  
+        # > Execution modes are as follows:  
+        # > - If no start or end time is specified, the job executes immediately.  
+        # > - If start and end times are provided, the job executes based on the schedule, and a recurrence type (repeatBy) must be selected.  
+        # - workingTime: Allowed outbound calling time segment.  
+        # - maxAttemptsPerDay: Maximum number of call attempts per day for numbers under this job.  
+        # - minAttemptInterval: Minimum time interval between retry calls for a number, in minutes.  
+        # - routingStrategy: Number routing strategy. Options are None (not specified), LocalFirst (local city numbers prioritized), and LocalProvinceFirst (local province numbers prioritized).  
+        # - repeatDays: Execution dates corresponding to the recurrence type. If repeatBy is Week, 0 represents Sunday and 1–6 represent Monday through Saturday. If repeatBy is Month, values 1–31 represent the 1st through the 31st day of the month; months without the specified date skip execution (for example, if the 30th is selected, February skips execution).  
+        # - repeatable: Whether loop task is enabled, true/false.
         self.strategy_json = strategy_json
 
     def validate(self):

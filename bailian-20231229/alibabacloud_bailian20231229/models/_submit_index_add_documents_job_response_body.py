@@ -15,20 +15,21 @@ class SubmitIndexAddDocumentsJobResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # HTTP status code
+        # The error code returned on failure.
         self.code = code
-        # The data returned.
+        # The business data.
         self.data = data
-        # The error message.
+        # The error message returned on failure.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The HTTP status code returned.
+        # The response status code.
         self.status = status
-        # Indications whether the API call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request was successful.
+        # 
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -88,7 +89,7 @@ class SubmitIndexAddDocumentsJobResponseBodyData(DaraModel):
         self,
         id: str = None,
     ):
-        # The primary key ID of the task, `JobId`.
+        # The job ID, also known as `JobId`.
         self.id = id
 
     def validate(self):

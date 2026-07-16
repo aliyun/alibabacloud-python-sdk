@@ -11,9 +11,14 @@ class RecoverRenderingDataPackageRequest(DaraModel):
         load_mode: str = None,
         rendering_instance_id: str = None,
     ):
+        # Cloud application service data pack ID
+        # 
         # This parameter is required.
         self.data_package_id = data_package_id
+        # Data loading mode. Valid values: System or Process. Default value: System. System indicates system-level loading, which offers high stability but takes longer. Process indicates process-level loading, which provides high timeliness but relatively lower stability.
         self.load_mode = load_mode
+        # Cloud application service instance ID
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

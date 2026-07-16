@@ -14,13 +14,17 @@ class ListIMBotsRequest(DaraModel):
         page_size: int = None,
         status: str = None,
     ):
+        # The ID of the agent runtime.
         self.agent_runtime_id = agent_runtime_id
+        # The business type of the bot.
         self.bot_biz_type = bot_biz_type
+        # The name of the IM bot. The system performs a case-insensitive substring search.
         self.bot_name = bot_name
-        # 默认 1；传入时须 ≥ 1
+        # The page number. Must be greater than or equal to 1. Default: 1.
         self.page_number = page_number
-        # 默认 20；传入时须 1–100
+        # The number of entries per page. Valid values: 1–100. Default: 20.
         self.page_size = page_size
+        # The status of the bot.
         self.status = status
 
     def validate(self):

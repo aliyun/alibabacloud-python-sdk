@@ -21,45 +21,65 @@ class ListTagResourcesRequest(DaraModel):
         tag: List[main_models.ListTagResourcesRequestTag] = None,
         tag_filter: List[main_models.ListTagResourcesRequestTagFilter] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token to retrieve the next page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The ID of the region where the resource is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. Valid values of N: 1 to 50.
+        # The ID of an ECS resource. The value of N ranges from 1 to 50.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Valid values:
         # 
-        # *   instance: ECS instance
-        # *   disk: disk
-        # *   snapshot: snapshot
-        # *   image: image
-        # *   securitygroup: security group
-        # *   volume: storage volume
-        # *   eni: elastic network interface (ENI)
-        # *   ddh: dedicated host
-        # *   ddhcluster: dedicated host cluster
-        # *   keypair: SSH key pair
-        # *   launchtemplate: launch template
-        # *   reservedinstance: reserved instance
-        # *   snapshotpolicy: automatic snapshot policy
-        # *   elasticityassurance: elasticity assurance
-        # *   capacityreservation: capacity reservation
-        # *   command: Cloud Assistant command
-        # *   invocation: Cloud Assistant command execution result or file delivery result
-        # *   activation: activation code for a Cloud Assistant managed instance
-        # *   managedinstance: Cloud Assistant managed instance
+        # - instance: ECS instance
+        # 
+        # - disk: disk
+        # 
+        # - snapshot: snapshot
+        # 
+        # - image: image
+        # 
+        # - securitygroup: security group
+        # 
+        # - volume: volume
+        # 
+        # - eni: elastic network interface
+        # 
+        # - ddh: dedicated host
+        # 
+        # - ddhcluster: dedicated host cluster
+        # 
+        # - keypair: SSH key pair
+        # 
+        # - launchtemplate: launch template
+        # 
+        # - reservedinstance: reserved instance
+        # 
+        # - snapshotpolicy: snapshot policy
+        # 
+        # - elasticityassurance: Elasticity Assurance
+        # 
+        # - capacityreservation: capacity reservation
+        # 
+        # - command: Cloud Assistant command
+        # 
+        # - invocation: The result of a command execution or file delivery in Cloud Assistant
+        # 
+        # - activation: Cloud Assistant managed instance activation code
+        # 
+        # - managedinstance: Cloud Assistant managed instance
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tags.
+        # A list of tags.
         self.tag = tag
-        # The regular expressions used to filter tags.
+        # A list of tag filters.
+        # 
+        # > This parameter is in invitation-only preview and is not yet available.
         self.tag_filter = tag_filter
 
     def validate(self):
@@ -159,18 +179,21 @@ class ListTagResourcesRequestTagFilter(DaraModel):
         tag_key: str = None,
         tag_values: List[str] = None,
     ):
-        # The key of tag N used for fuzzy search of ECS resources. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 5.
+        # The tag key to use for a fuzzy match. The tag key must be 1 to 128 characters in length. The value of N ranges from 1 to 5.
         # 
-        # The `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N) is used for fuzzy search of ECS resources that have specified tags added. In the specified tags, a single tag key may correspond to one or more tag values. Fuzzy search may have a latency of 2 seconds. A fuzzy search can return a result set of entries about a maximum of 5,000 resources.
+        # Use the `TagFilter.N` parameter to perform a fuzzy match on tags to find matching ECS resources. Each filter consists of one key and one or more values. A fuzzy match may have a 2-second latency and is supported only for queries that return 5,000 or fewer resources after filtering.
         # 
-        # *   When you use `TagFilter.N.TagKey` for fuzzy search of ECS resources, you must leave `TagFilter.N.TagValues.N` empty. For example, to query ECS resources whose tags contain the `environment` tag key, you can set `TagFilter.1.TagKey` to `env*` for prefix search, `*env*` for infix search, or `env` for exact search, but you must leave `TagFilter.1.TagValues` empty.
-        # *   When you use `TagFilter.N.TagValues.N` for fuzzy search of ECS resources, you must set `TagFilter.N.TagKey` to an exact value. For example, to query ECS resources that have a tag composed of the `env` tag key and the `product` tag value, you must set `TagFilter.1.TagKey` to `env` and can set `TagFilter.1.TagValues.1` to `proc*` for prefix search, to `*proc*` for infix search, or to `proc` for exact search. Only one of the preceding search methods can be used for each tag key (`TagFilter.N.TagKey`). If multiple search methods are configured for a tag key, the first search method prevails.
-        # *   If you specify multiple tag keys, only the ECS resources that have all the specified tag keys added are returned.
-        # *   If you specify a tag key that corresponds to multiple tag values, all the ECS resources that have one or more of these tag key-value pairs added are returned.
+        # - To perform a fuzzy match by tag key (`TagFilter.N.TagKey`), you must leave the tag values (`TagFilter.N.TagValues.N`) empty. For example, to search for ECS resources that have the tag key `environment`, you can set `TagFilter.1.TagKey` to `env*` (prefix match), `*env*` (substring match), or `env` (exact match), but you must leave `TagFilter.1.TagValues` empty.
         # 
-        # > The `TagFilter.N` parameter pair (TagFilter.N.TagKey and TagFilter.N.TagValues.N) cannot be used together with the `Tag.N` parameter pair (Tag.N.Key and Tag.N.Value). Otherwise, an error message is returned.
+        # - To perform a fuzzy match by tag value (`TagFilter.N.TagValues.N`), you must set the tag key (`TagFilter.N.TagKey`) to an exact value. For example, to search for ECS resources with the tag key `env` and the tag value `product`, you must set `TagFilter.1.TagKey` to `env`. You can then set `TagFilter.1.TagValues.1` to `proc*` (prefix match), `*proc*` (substring match), or `proc` (exact match). For the same `TagKey`, you can use only one search pattern. If you specify multiple patterns, the system uses only the first pattern.
+        # 
+        # - Tag keys are combined by using a logical AND. The operation returns only the ECS resources that match all specified tag keys.
+        # 
+        # - Tag values for the same tag key are combined by using a logical OR. The operation returns the ECS resources that match any of the specified tag values for that tag key.
+        # 
+        # > You cannot specify both the `TagFilter.N` and `Tag.N` parameters in the same request.
         self.tag_key = tag_key
-        # The values of tag N used for fuzzy search of ECS resources. The tag values must be 1 to 128 characters in length. Valid values of N: 1 to 5. For more information, see the description of `TagFilter.N.TagKey`.
+        # The tag values to use for a fuzzy match. The tag value must be 1 to 128 characters in length. The value of N ranges from 1 to 5. For more information, see the description of the `TagFilter.N.TagKey` parameter.
         self.tag_values = tag_values
 
     def validate(self):
@@ -205,24 +228,27 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N used for exact search of ECS resources. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # The tag key to use for an exact match. The tag key must be 1 to 128 characters in length. The value of N ranges from 1 to 20.
         # 
-        # Methods of using the `Tag.N` parameter pair (Tag.N.Key and Tag.N.Value):
+        # Usage notes for the `Tag.N` parameter:
         # 
-        # *   Method 1: Use this parameter pair for exact search of ECS resources that have specified tags added. Each tag is a key-value pair.
+        # - Method 1: To find ECS resources that have specific tags.
         # 
-        #     *   If you specify only `Tag.N.Key`, all ECS resources whose tags contain the specified tag key are returned.
-        #     *   If you specify only `Tag.N.Value`, the `InvalidParameter.TagValue` error is returned.
-        #     *   If you specify multiple tag key-value pairs, only the ECS resources that have all these tag key-value pairs added are returned.
+        #   - If you specify only `Tag.N.Key`, the operation returns all resources that have the specified tag key.
         # 
-        # *   Method 2: Use this parameter pair to query resource information of a non-default resource group. Set `Key` to `acs:rm:rgId` and `Value` to the ID of a resource group.
+        #   - If you specify only `Tag.N.Value`, the operation returns an `InvalidParameter.TagValue` error.
         # 
-        #     *   If you set `Key` to `acs:rm:rgId`, you must set `Value` to the ID of a non-default resource group. If you set Value to the ID of the default resource group, an error message is returned.
-        #     *   If you set `Key` to `acs:rm:rgId`, you cannot specify other Tag.N parameter pairs. If you specify multiple `Tag.N` parameter pairs to query resource groups and resources at the same time, an error message is returned.
+        #   - If you specify multiple tag key-value pairs, the operation returns only the ECS resources that match all specified pairs.
+        # 
+        # - Method 2: To query resources in a non-default resource group.
+        # 
+        #   - If you set `Key` to `acs:rm:rgId`, you must set `Value` to the ID of a non-default resource group. If you specify the ID of the default resource group, the operation returns an error.
+        # 
+        #   - If you set `Key` to `acs:rm:rgId`, you cannot specify other tag key-value pairs. If you use multiple `Tag.N` parameters to query for resources by both resource group and tag, the operation returns an error.
         self.key = key
-        # The value of tag N used for exact search of ECS resources. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
+        # The tag value to use for an exact match. The tag value must be 1 to 128 characters in length. The value of N ranges from 1 to 20.
         # 
-        # > When Key is set to `acs:rm:rgId`, you can set Value only to the ID of a non-default resource group.
+        # > When `Key` is `acs:rm:rgId`, you must set this parameter to the ID of a non-default resource group.
         self.value = value
 
     def validate(self):

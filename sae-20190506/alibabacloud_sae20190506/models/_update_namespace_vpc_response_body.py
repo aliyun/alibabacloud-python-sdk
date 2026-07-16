@@ -14,30 +14,37 @@ class UpdateNamespaceVpcResponseBody(DaraModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # Indicates whether the VPC information was updated. Valid values:
+        # The HTTP status code. The value can be a POP error code. Valid values:
         # 
-        # *   **true**: indicates that the information was updated.
-        # *   **false**: indicates that the information could not be updated.
+        # - **2xx**: The request was successful.
+        # 
+        # - **3xx**: The request was redirected.
+        # 
+        # - **4xx**: The request was invalid.
+        # 
+        # - **5xx**: A server error occurred.
         self.code = code
-        # The HTTP status code. Valid values:
-        # 
-        # *   **2xx**: indicates that the request was successful.
-        # *   **3xx**: indicates that the request was redirected.
-        # *   **4xx**: indicates that the request was invalid.
-        # *   **5xx**: indicates that a server error occurred.
-        self.error_code = error_code
-        # The ID of the trace. It can be used to query the details of a request.
-        self.message = message
-        # The returned message.
-        # 
-        # *   **success** is returned when the request succeeds.
-        # *   An error code is returned when the request fails.
-        self.request_id = request_id
-        self.success = success
         # The error code.
         # 
-        # *   The **ErrorCode** parameter is not returned when the request succeeds.
-        # *   The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
+        # - This parameter is not returned if the request is successful.
+        # 
+        # - This parameter is returned if the request fails. For more information, see the **Error codes** section of this topic.
+        self.error_code = error_code
+        # The returned message.
+        # 
+        # - If the request is successful, **success** is returned.
+        # 
+        # - If the request fails, an error code is returned.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the VPC was updated. Valid values:
+        # 
+        # - **true**: The VPC was updated.
+        # 
+        # - **false**: The VPC failed to be updated.
+        self.success = success
+        # The trace ID. You can use it to query the details of a call.
         self.trace_id = trace_id
 
     def validate(self):

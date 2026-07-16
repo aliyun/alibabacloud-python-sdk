@@ -13,7 +13,7 @@ class GetConversationalAutomationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The space ID of the RAM user within the independent software vendor (ISV) account or the instance ID of the customer of Alibaba Cloud.
+        # The space ID of the ISV sub-customer or the instance ID.
         # 
         # This parameter is required.
         self.cust_space_id = cust_space_id

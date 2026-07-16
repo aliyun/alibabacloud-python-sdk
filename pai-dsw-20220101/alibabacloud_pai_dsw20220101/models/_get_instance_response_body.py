@@ -57,6 +57,7 @@ class GetInstanceResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
         tags: List[main_models.GetInstanceResponseBodyTags] = None,
+        tenant_id: str = None,
         terminal_url: str = None,
         user_command_id: str = None,
         user_id: str = None,
@@ -200,6 +201,7 @@ class GetInstanceResponseBody(DaraModel):
         self.success = success
         # The tags.
         self.tags = tags
+        self.tenant_id = tenant_id
         # The terminal URL.
         self.terminal_url = terminal_url
         self.user_command_id = user_command_id
@@ -424,6 +426,9 @@ class GetInstanceResponseBody(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+
         if self.terminal_url is not None:
             result['TerminalUrl'] = self.terminal_url
 
@@ -623,6 +628,9 @@ class GetInstanceResponseBody(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.GetInstanceResponseBodyTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
 
         if m.get('TerminalUrl') is not None:
             self.terminal_url = m.get('TerminalUrl')

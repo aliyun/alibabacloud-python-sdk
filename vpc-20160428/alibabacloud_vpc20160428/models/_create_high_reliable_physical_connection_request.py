@@ -25,58 +25,59 @@ class CreateHighReliablePhysicalConnectionRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.CreateHighReliablePhysicalConnectionRequestTag] = None,
     ):
-        # The language to display the results. Valid values:
+        # The language of the response. Valid values:
         # 
-        # *   **zh-CN** (default): Chinese
-        # *   **en-US**: English
+        # - **zh-CN** (default): Chinese.
+        # - **en-US**: English.
         self.accept_language = accept_language
-        # The access points.
+        # The list of access points.
         # 
         # This parameter is required.
         self.ap_list = ap_list
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # The advanced features of the device.
+        # The list of advanced device capabilities.
         self.device_advanced_capacity = device_advanced_capacity
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # - **true**: performs a dry run without creating the instance. The system checks the required parameters, request format, and instance status. If the check fails, the error code `DRYRUN.FAIL` is returned along with the corresponding error list. If the check succeeds, the code `DRYRUN.SUCCESS` is returned.
+        # 
+        # - **false** (default): sends the request. After the request passes the check, the instance is created.
         self.dry_run = dry_run
-        # The high availability mode. Valid values:
+        # The zone-redundancy mode. Valid values:
         # 
-        # - **MultiApMultiDevice** : This mode supports two access points and two devices, and provides the maximum disaster recovery capability.
-        # - **MultiApSingleDevice** : This mode supports two access points and one device, and provides robust disaster recovery capability.
-        # - **SingleApMultiDevice** : This mode supports one access point and two devices, and is recommended for non-critical business test and development.
-        # - **SingleApMultiConnection** : This mode supports one access point, one device, and multiple physical ports. Only users in the whitelist can use this mode. To use this mode, contact your account manager.
+        # - **MultiApMultiDevice**: maximum disaster recovery. This mode supports two different access points and two different devices, providing maximum disaster recovery.
+        # - **MultiApSingleDevice**: enhanced disaster recovery. This mode supports two different access points and one device, providing enhanced disaster recovery.
+        # - **SingleApMultiDevice**: development and testing. This mode supports one access point and two devices. This mode is recommended only for development and testing of non-critical workloads.
+        # - **SingleApMultiConnection**: high-bandwidth load balancing. This mode is available only to users in the whitelist. It supports one access point, one device, and multiple physical ports. To use this mode, contact your account manager.
         # 
         # This parameter is required.
         self.high_reliable_type = high_reliable_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The port type. Valid values:
+        # The port type of the Express Connect circuit. Valid values:
         # 
-        # *   **100Base-T**: 100 Mbit/s copper Ethernet port
-        # *   **1000Base-T**: 1,000 Mbit/s copper Ethernet port
-        # *   **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
-        # *   **10GBase-T**: 10,000 Mbit/s copper Ethernet port
-        # *   **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
-        # *   **40GBase-LR**: 40,000 Mbit/s single-mode optical port
-        # *   **100GBase-LR**: 100,000 Mbit/s single-mode optical port
+        # - **1000Base-LX**: GE single-mode optical port (10 km).
         # 
-        # >  To use ports 40GBase-LR and 100GBase-LR, you must first contact your account manager.
+        # - **10GBase-LR**: 10 GE single-mode optical port (10 km).
+        # 
+        # - **40GBase-LR**: 40 GE single-mode optical port.
+        # 
+        # - **100GBase-LR**: 100 GE single-mode optical port.
+        #     
+        # > 40GBase-LR and 100GBase-LR are subject to the actual port availability. For information about port availability, contact your account manager.
         # 
         # This parameter is required.
         self.port_type = port_type
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the Express Connect circuit belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -204,13 +205,13 @@ class CreateHighReliablePhysicalConnectionRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource. Valid values of N: 1 to 20. The tag value cannot be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and must start with a letter or Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -254,45 +255,67 @@ class CreateHighReliablePhysicalConnectionRequestApList(DaraModel):
         region_id: str = None,
         type: str = None,
     ):
-        # The ID of the access point that is associated with the Express Connect circuit.
+        # The ID of the access point for the Express Connect circuit.
         # 
-        # > Two access points must be specified when **HighReliableType** is set to **MultiApMultiDevice** or **MultiApSingleDevice**. One access point must be specified when **HighReliableType** is set to **SingleApMultiDevice** or **SingleApMultiConnection**.
+        # > When **HighReliableType** is set to **MultiApMultiDevice** or **MultiApSingleDevice**, you must specify two different access points. When **HighReliableType** is set to **SingleApMultiDevice** or **SingleApMultiConnection**, you must specify one access point.
         # 
         # This parameter is required.
         self.access_point_id = access_point_id
-        # The maximum bandwidth of the hosted connection. Unit: Mbit/s.
+        # The bandwidth of the shared Express Connect circuits. Unit: Mbit/s.
         # 
         # Valid values: 50, 100, 200, 300, 400, 500, 1000, 2000, 4000, 5000, 8000, and 10000.
         self.bandwidth = bandwidth
-        # The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
+        # The circuit code provided by the connectivity provider for the Express Connect circuit.
         self.circuit_code = circuit_code
         # The description of the Express Connect circuit.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and must start with a letter or Chinese character, but cannot start with `http://` or `https://`.
         self.description = description
         # The connectivity provider of the Express Connect circuit. Valid values:
         # 
-        # *   **CT**: China Telecom.
-        # *   **CU**: China Unicom.
-        # *   **CM**: China Mobile.
-        # *   **CO**: other connectivity providers in the Chinese mainland.
-        # *   **Equinix**: Equinix.
-        # *   **Other**: other connectivity providers outside the Chinese mainland.
+        # - **CT**: China Telecom.
+        # 
+        # - **CU**: China Unicom.
+        # 
+        # - **CM**: China Mobile.
+        # 
+        # - **CO**: other Chinese carriers. 
+        # 
+        # - **Equinix**: Equinix.
+        # 
+        # - **Other**: other carriers outside the Chinese mainland.
         # 
         # This parameter is required.
         self.line_operator = line_operator
-        # The name of the Express Connect circuit.
+        # The name of the Express Connect circuit.  
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter but cannot start with `http://` or` https://`.
+        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
         self.name = name
+        # The optical module model supported by the access point of the Express Connect circuit. Valid values:
+        # - 1000Base-LX: 
+        #   - `SFP-GE-LR-SM1310,10KM`
+        #   - `SFP-GE-ER-SM1310,40KM`
+        #   - `SFP-GE-ZR-SM1550,80KM`
+        # - 10GBase-LR: 
+        #   - `SFP-10G-LR-SM1310,10KM`
+        #   - `SFP-10G-ER-SM1550,40KM` 
+        #   - `SFP-10G-ZR-SM1550,80KM`  
+        # - 40GBase-LR: 
+        #   - `QSFP-40G-LR4-WDM1300,10KM`
+        #   - `QSFP-40G-ER4-WDM1300,40KM`
+        #   - `QSFP-40G-ZR4-WDM1300,80KM`
+        # - 100GBase-LR: 
+        #   - `QSFP28-100G-LR4-WDM1300,10KM`
+        #   - `QSFP28-100G-ER4-WDM1300,40KM`
+        #   - `QSFP28-100G-ZR4-WDM1300,80KM`.
         self.optical_module_model = optical_module_model
-        # The geographical location of the data center.
+        # The geographic location of the on-premises data center.
         self.peer_location = peer_location
-        # The number of ports. Valid values: 2 to 16. This parameter is required only when **HighReliableType** is set to **SingleApMultiConnection**.
+        # The number of ports. This parameter is required only when **HighReliableType** is set to **SingleApMultiConnection**. Valid values: 2 to 16.
         self.port_num = port_num
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

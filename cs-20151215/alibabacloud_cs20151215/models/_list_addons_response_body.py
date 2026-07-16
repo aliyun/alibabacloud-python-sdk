@@ -55,29 +55,38 @@ class ListAddonsResponseBodyAddons(DaraModel):
         supported_actions: List[str] = None,
         version: str = None,
     ):
-        # Architectures supported by the component. Valid values:
-        # 
-        # *   amd64
-        # *   arm64
+        # The CPU architectures supported by the component.
         self.architecture = architecture
-        # The category of the component.
+        # The component categorization. Valid values:
+        # 
+        # - core: core component.
+        # - network: network type component.
+        # - security: security component.
+        # - storage: storage component.
+        # - monitor: logging and monitoring component.
+        # - application: application component.
+        # 
+        # An empty value indicates that the component belongs to another category.
         self.category = category
-        # The schema of the custom parameters of the component.
+        # The schema of custom parameters for the component.
         self.config_schema = config_schema
-        # Indicates whether the component is automatically installed by default.
+        # Indicates whether the component is installed by default. Valid values:
+        # 
+        # - true: The component is installed by default when a cluster is created.
+        # 
+        # - false: The component is not installed by default.
         self.install_by_default = install_by_default
-        # Indicates whether the component is fully managed.
+        # Indicates whether the component is managed. Valid values:
+        # 
+        # - true: The component is managed.
+        # 
+        # - false: The component is not managed.
         self.managed = managed
         # The component name.
         self.name = name
-        # Operations supported by the component. Valid values:
-        # 
-        # *   Install
-        # *   Upgrade
-        # *   Modify
-        # *   Uninstall
+        # The operations supported by the component.
         self.supported_actions = supported_actions
-        # The version number.
+        # The component version.
         self.version = version
 
     def validate(self):

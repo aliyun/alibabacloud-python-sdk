@@ -11,8 +11,12 @@ class UpdateDataSourceBasicInfoRequest(DaraModel):
         op_tenant_id: int = None,
         update_command: main_models.UpdateDataSourceBasicInfoRequestUpdateCommand = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The basic information to edit for the data source.
+        # 
         # This parameter is required.
         self.update_command = update_command
 
@@ -51,10 +55,16 @@ class UpdateDataSourceBasicInfoRequestUpdateCommand(DaraModel):
         id: int = None,
         name: str = None,
     ):
+        # The data source description.
+        # 
         # This parameter is required.
         self.description = description
+        # The data source ID.
+        # 
         # This parameter is required.
         self.id = id
+        # The data source name.
+        # 
         # This parameter is required.
         self.name = name
 

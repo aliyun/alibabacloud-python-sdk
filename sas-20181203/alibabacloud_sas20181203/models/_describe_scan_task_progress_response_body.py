@@ -11,28 +11,22 @@ class DescribeScanTaskProgressResponseBody(DaraModel):
         scan_task_progress: str = None,
         target_info: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The progress of the virus scan task. Valid values:
-        # 
-        # *   **init**: The task is being initialized.
-        # *   **Processing**: The task is running.
-        # *   **Success**: The task is complete.
-        # *   **Failed**: The task fails.
+        # - **init**: The scan task is being initialized.
+        # - **Processing**: The scan task is in progress.
+        # - **Success**: The scan task is complete.
+        # - **Failed**: The scan task failed.
         self.scan_task_progress = scan_task_progress
-        # The information about the asset on which the virus scan task runs. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
-        # 
-        # *   **type**: the type of the asset on which you want to perform a virus scan task. Valid values:
-        # 
-        #     *   **groupId**: server group.
-        #     *   **uuid**: server.
-        # 
-        # *   **name**: the name of the server group or server.
-        # 
-        # *   **target**: the asset on which the virus scan task runs. The value of this field varies based on the value of the type field.
-        # 
-        #     *   If the **type** field is set to **groupId**, the value of this field is the ID of the server group.
-        #     *   If the **type** field is set to **uuid**, the value of this field is the universally unique identifier (UUID) of the server.
+        # The asset information scanned by the virus scan node. This parameter is a string converted from a JSON array in character format. The following fields are included:
+        # - **type**: The Asset Type on which the virus scan is executed. Valid values:
+        #     - **groupId**: server group.
+        #     - **uuid**: server.
+        # - **name**: The name of the server group or server.
+        # - **target**: The asset on which the virus scan is executed. The following describes the values of this field:
+        #     - If **type** is set to **groupId**, this field specifies the server group ID.
+        #     - If **type** is set to **uuid**, this field specifies the UUID of the server.
         self.target_info = target_info
 
     def validate(self):

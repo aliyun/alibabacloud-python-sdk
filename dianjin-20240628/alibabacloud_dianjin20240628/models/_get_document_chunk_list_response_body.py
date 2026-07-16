@@ -19,13 +19,21 @@ class GetDocumentChunkListResponseBody(DaraModel):
         success: bool = None,
         time: str = None,
     ):
+        # Time consumed
         self.cost = cost
+        # Response data
         self.data = data
+        # Data type
         self.data_type = data_type
+        # Error code
         self.err_code = err_code
+        # Error message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Success status
         self.success = success
+        # Timestamp
         self.time = time
 
     def validate(self):
@@ -101,10 +109,15 @@ class GetDocumentChunkListResponseBodyData(DaraModel):
         total_pages: int = None,
         total_records: int = None,
     ):
+        # Current page
         self.current_page = current_page
+        # Records per page
         self.page_size = page_size
+        # Records
         self.records = records
+        # Total pages
         self.total_pages = total_pages
+        # Total records
         self.total_records = total_records
 
     def validate(self):
@@ -177,19 +190,33 @@ class GetDocumentChunkListResponseBodyDataRecords(DaraModel):
         score: float = None,
         title: str = None,
     ):
+        # Document chunk ID
         self.chunk_id = chunk_id
+        # Document chunk metadata
         self.chunk_meta = chunk_meta
+        # Document chunk OSS address
         self.chunk_oss_url = chunk_oss_url
+        # Document chunk text
         self.chunk_text = chunk_text
+        # Document chunk type
         self.chunk_type = chunk_type
+        # Document ID
         self.doc_id = doc_id
+        # Document type
         self.file_type = file_type
+        # Library ID
         self.library_id = library_id
+        # Library name
         self.library_name = library_name
+        # Next document chunk ID
         self.next_chunk_id = next_chunk_id
+        # Document chunk position
         self.pos = pos
+        # Previous document chunk ID
         self.pre_chunk_id = pre_chunk_id
+        # Document chunk score
         self.score = score
+        # Document title
         self.title = title
 
     def validate(self):
@@ -305,8 +332,11 @@ class GetDocumentChunkListResponseBodyDataRecordsPos(DaraModel):
         page: int = None,
         text_highlight_area: List[int] = None,
     ):
+        # Coordinate
         self.axis_array = axis_array
+        # Page number
         self.page = page
+        # Text highlight area, used for highlighting text-type files
         self.text_highlight_area = text_highlight_area
 
     def validate(self):

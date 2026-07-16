@@ -13,18 +13,14 @@ class UpgradeAndroidInstanceGroupRequest(DaraModel):
         paid_call_back_url: str = None,
         promotion_id: str = None,
     ):
-        # Specifies whether to enable the auto-payment feature.
-        # 
-        # Valid values:
-        # 
-        # *   true: enables the auto-payment feature. Make sure that your Alibaba Cloud account has sufficient balance.
-        # *   false: disables the auto-payment feature. You need to manually complete the payment process.
+        # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
-        # The number of instances that you want to increase.
+        # The number of instances to add to the instance group.
         self.increase_number_of_instance = increase_number_of_instance
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
         self.paid_call_back_url = paid_call_back_url
+        # The promotion ID.
         self.promotion_id = promotion_id
 
     def validate(self):

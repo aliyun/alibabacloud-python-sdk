@@ -9,7 +9,7 @@ class GetDataQualityRuleTemplateRequest(DaraModel):
         self,
         code: str = None,
     ):
-        # The code for the template.
+        # The code of the rule template.
         # 
         # This parameter is required.
         self.code = code

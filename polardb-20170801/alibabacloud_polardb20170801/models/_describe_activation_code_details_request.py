@@ -16,7 +16,7 @@ class DescribeActivationCodeDetailsRequest(DaraModel):
     ):
         # The ID of the activation code.
         self.activation_code_id = activation_code_id
-        # The Alibaba Cloud order ID (including the virtual order ID).
+        # The Alibaba Cloud order ID, including virtual orders.
         # 
         # This parameter is required.
         self.aliyun_order_id = aliyun_order_id

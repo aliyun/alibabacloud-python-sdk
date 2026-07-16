@@ -14,10 +14,15 @@ class DownloadSubTaskResultResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DownloadSubTaskResultResponseBodyResultObject = None,
     ):
+        # status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # request ID.
         self.request_id = request_id
+        # Return Result.
         self.result_object = result_object
 
     def validate(self):
@@ -72,7 +77,9 @@ class DownloadSubTaskResultResponseBodyResultObject(DaraModel):
         status: str = None,
         url: str = None,
     ):
+        # Status.
         self.status = status
+        # OSS download URL.
         self.url = url
 
     def validate(self):

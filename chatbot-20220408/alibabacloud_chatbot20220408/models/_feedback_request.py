@@ -14,11 +14,19 @@ class FeedbackRequest(DaraModel):
         message_id: str = None,
         session_id: str = None,
     ):
+        # The key for the business space. If this parameter is not set, the system uses the default business space. You can obtain the key from the business management page of your primary account.
         self.agent_key = agent_key
+        # The feedback rating for the response. This parameter corresponds to `FeedbackType` in the session history API.
+        # 
+        # Enumerated values: \\"good\\" (a positive rating) and \\"bad\\" (a negative rating).
         self.feedback = feedback
+        # The detailed feedback content. You can provide this as a raw string or as a JSON string. If you use a JSON string, the \\"content\\" field corresponds to \\"FeedbackUserInfo\\" and the \\"feedbackLabels\\" field corresponds to \\"FeedbackLabels\\" in the session history.
         self.feedback_content = feedback_content
+        # The unique identifier of the chatbot instance.
         self.instance_id = instance_id
+        # The unique identifier of a single message within the session.
         self.message_id = message_id
+        # The unique identifier for the session. The instant messaging (IM) system uses this ID to track the conversation.
         self.session_id = session_id
 
     def validate(self):

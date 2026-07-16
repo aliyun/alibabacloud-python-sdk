@@ -20,7 +20,7 @@ class ModifyCommandRequest(DaraModel):
         timeout: int = None,
         working_dir: str = None,
     ):
-        # >  This parameter is no longer used and does not take effect.
+        # > This parameter is no longer used and does not take effect.
         self.command_content = command_content
         # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
         # 

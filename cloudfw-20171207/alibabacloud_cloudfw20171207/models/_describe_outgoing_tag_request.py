@@ -14,13 +14,29 @@ class DescribeOutgoingTagRequest(DaraModel):
         start_time: str = None,
         tag_id: str = None,
     ):
+        # The type of the destination. Valid values:
+        # 
+        # - **Domain**: domain name.
+        # 
+        # - **DstIP**: IP address.
         self.dst_type = dst_type
+        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The language of the content. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The source IP address of the visitor.
         self.source_ip = source_ip
+        # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # The ID of the tag.
         self.tag_id = tag_id
 
     def validate(self):

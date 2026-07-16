@@ -10,9 +10,9 @@ class UnbindAppDomainRequest(DaraModel):
         biz_id: str = None,
         domain_name: str = None,
     ):
-        # Business ID
+        # The business ID.
         self.biz_id = biz_id
-        # Domain Name
+        # The domain name.
         self.domain_name = domain_name
 
     def validate(self):

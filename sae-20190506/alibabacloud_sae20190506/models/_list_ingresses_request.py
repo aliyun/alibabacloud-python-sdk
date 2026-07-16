@@ -12,13 +12,15 @@ class ListIngressesRequest(DaraModel):
         namespace_id: str = None,
         page_size: int = None,
     ):
-        # The ID of an application.
+        # The application ID.
         self.app_id = app_id
+        # The current page number.
         self.current_page = current_page
-        # The ID of a namespace.
+        # The namespace ID.
         # 
         # This parameter is required.
         self.namespace_id = namespace_id
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

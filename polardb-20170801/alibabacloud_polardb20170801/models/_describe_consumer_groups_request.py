@@ -13,11 +13,25 @@ class DescribeConsumerGroupsRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
+        # The ID of the gateway instance.
+        # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
+        # The page number to return. The default value is 1.
         self.page_number = page_number
+        # The number of records to return per page. Valid values:
+        # 
+        # - **30**
+        # 
+        # - **50**
+        # 
+        # - **100**
+        # 
+        # The default value is 30.
         self.page_size = page_size
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):

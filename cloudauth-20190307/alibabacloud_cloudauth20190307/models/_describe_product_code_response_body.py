@@ -17,17 +17,17 @@ class DescribeProductCodeResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # Current query page number.
+        # The current page number.
         self.current_page = current_page
-        # List of product code information.
+        # The list of product code information.
         self.items = items
-        # Number of products per page.
+        # The number of products displayed per page.
         self.page_size = page_size
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
-        # Total number of returned results.
+        # The total number of entries returned.
         self.total_count = total_count
-        # Total number of pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -94,9 +94,9 @@ class DescribeProductCodeResponseBodyItems(DaraModel):
         product_code: str = None,
         product_name: str = None,
     ):
-        # Product code.
+        # The product code.
         self.product_code = product_code
-        # Name corresponding to the product code.
+        # The name corresponding to the product code.
         self.product_name = product_name
 
     def validate(self):

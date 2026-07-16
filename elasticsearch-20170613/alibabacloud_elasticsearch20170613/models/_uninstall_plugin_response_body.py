@@ -12,9 +12,8 @@ class UninstallPluginResponseBody(DaraModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of plug-ins to be unloaded. If the unloading fails, an exception is returned.
         self.result = result
 
     def validate(self):

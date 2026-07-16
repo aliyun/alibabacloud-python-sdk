@@ -11,9 +11,13 @@ class GetDataLakeCatalogRequest(DaraModel):
         tid: int = None,
         workspace_id: int = None,
     ):
+        # The name of the data catalog.
+        # 
         # This parameter is required.
         self.catalog_name = catalog_name
+        # The tenant ID. You can call the GetUserActiveTenant or ListUserTenants operation to obtain this value.
         self.tid = tid
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

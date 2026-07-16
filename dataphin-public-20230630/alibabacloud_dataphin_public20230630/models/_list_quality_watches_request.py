@@ -13,7 +13,10 @@ class ListQualityWatchesRequest(DaraModel):
         list_query: main_models.ListQualityWatchesRequestListQuery = None,
         op_tenant_id: int = None,
     ):
+        # The paged query conditions.
         self.list_query = list_query
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
 
@@ -67,23 +70,69 @@ class ListQualityWatchesRequestListQuery(DaraModel):
         table_type_list: List[str] = None,
         watch_type_list: List[str] = None,
     ):
+        # The business unit names.
         self.biz_unit_name_list = biz_unit_name_list
+        # Specifies whether to query only monitored objects owned by the current user.
         self.current_user_owned = current_user_owned
+        # The data source IDs.
         self.data_source_id_list = data_source_id_list
+        # The data source owners.
         self.data_source_owner_list = data_source_owner_list
+        # The data source scope. Valid values:
+        # - STREAMING: real-time only
+        # - OFFLINE: offline only
+        # - ALL: real-time and offline.
         self.data_source_scope_list = data_source_scope_list
+        # The data source type, such as MAX_COMPUTE, HADOOP, or MYSQL.
         self.data_source_type_list = data_source_type_list
+        # The metric computation type. Valid values:
+        # - AUTO: automated coding
+        # - CUSTOM: expert coding
+        # - MOUNT: external table registration
+        # - COMBINE: derived metric specific.
         self.index_compute_type_list = index_compute_type_list
+        # The metric owners.
         self.index_owner_list = index_owner_list
+        # The search keyword. This is the name of the monitored table.
         self.keyword = keyword
+        # The task status. Valid values:
+        # - NOT_RUN: not executed
+        # - WAITING: waiting
+        # - RUNNING: executing
+        # - SUCCESS: executed successfully
+        # - FAILED: execution failed
+        # - CANCEL: canceled
+        # - TIMEOUT: timed out
+        # - OFFLINE: offline.
         self.latest_watch_task_status_list = latest_watch_task_status_list
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
+        # The project names.
         self.project_name_list = project_name_list
+        # The quality owners.
         self.quality_owner_list = quality_owner_list
+        # The status of the monitored object. Valid values:
+        # - ENABLE: enabled
+        # - DISABLE: disabled.
         self.status_list = status_list
+        # The table owners.
         self.table_owner_list = table_owner_list
+        # The table type. Valid values:
+        # - LOGIC_DIM_TABLE: logical dimension table
+        # - LOGIC_FACT_TABLE: logical fact table
+        # - LOGIC_SUM_TABLE: logical aggregate table
+        # - LOGIC_LABEL_TABLE: logical label table
+        # - PHYSICAL_TABLE: physical table
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
         self.table_type_list = table_type_list
+        # The monitored object type. Valid values:
+        # - TABLE: Dataphin table
+        # - DATASOURCE_TABLE: full-domain table
+        # - DATASOURCE: data source
+        # - INDEX: metric
+        # - REALTIME_LOGICAL_TABLE: real-time meta table.
         self.watch_type_list = watch_type_list
 
     def validate(self):

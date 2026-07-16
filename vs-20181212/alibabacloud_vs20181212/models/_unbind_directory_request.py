@@ -11,8 +11,12 @@ class UnbindDirectoryRequest(DaraModel):
         directory_id: str = None,
         owner_id: int = None,
     ):
+        # Device ID.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # Folder ID.
+        # 
         # This parameter is required.
         self.directory_id = directory_id
         self.owner_id = owner_id

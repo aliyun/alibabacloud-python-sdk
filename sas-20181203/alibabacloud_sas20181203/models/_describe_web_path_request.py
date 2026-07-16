@@ -11,13 +11,13 @@ class DescribeWebPathRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
-        # The number of the page to return.
+        # The page number of the current page in a paged query. Paging is used to display results.
         self.current_page = current_page
-        # The number of entries to return on each page.
+        # The maximum number of entries per page in a paged query. Paging is used to display results.
         self.page_size = page_size
-        # The type of the alert configuration. Valid values:
+        # The alert configuration type. Valid values:
         # 
-        # *   **web_path**
+        # - **web_path**.
         self.type = type
 
     def validate(self):

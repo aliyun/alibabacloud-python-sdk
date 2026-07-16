@@ -15,23 +15,23 @@ class ChatappBindWabaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denied detail.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The request status code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -92,9 +92,9 @@ class ChatappBindWabaResponseBodyData(DaraModel):
         cust_space_id: str = None,
         waba_id: str = None,
     ):
-        # The space ID of the user within the independent software vendor (ISV) account.
+        # The customer space ID.
         self.cust_space_id = cust_space_id
-        # The ID of the WhatsApp Business Account (WABA).
+        # waba Id。
         self.waba_id = waba_id
 
     def validate(self):

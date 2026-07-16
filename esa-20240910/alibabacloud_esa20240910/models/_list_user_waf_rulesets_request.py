@@ -14,11 +14,33 @@ class ListUserWafRulesetsRequest(DaraModel):
         phase: str = None,
         query_args: main_models.ListUserWafRulesetsRequestQueryArgs = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number to return.
         self.page_number = page_number
+        # The number of entries to return on each page.
         self.page_size = page_size
+        # Specifies the execution phase of the WAF rule.
+        # 
+        # - `http_whitelist`: whitelist rule
+        # 
+        # - `http_custom`: custom rule
+        # 
+        # - `http_managed`: managed rule
+        # 
+        # - `http_anti_scan`: anti-scan rule
+        # 
+        # - `http_ratelimit`: rate limit rule
+        # 
+        # - `ip_access_rule`: IP access rule
+        # 
+        # - `http_bot`: advanced mode bot
+        # 
+        # - `http_security_level_rule`: security rule
         self.phase = phase
+        # Parameters for filtering and sorting the results.
         self.query_args = query_args
 
     def validate(self):
@@ -74,8 +96,11 @@ class ListUserWafRulesetsRequestQueryArgs(DaraModel):
         name_like: str = None,
         order_by: str = None,
     ):
+        # Specifies whether to sort results in descending order.
         self.desc = desc
+        # A string for a fuzzy search of ruleset names.
         self.name_like = name_like
+        # The field by which to sort results.
         self.order_by = order_by
 
     def validate(self):

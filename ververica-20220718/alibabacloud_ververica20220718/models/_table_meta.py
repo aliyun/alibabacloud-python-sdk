@@ -11,8 +11,11 @@ class TableMeta(DaraModel):
         database_name: str = None,
         table_name: str = None,
     ):
+        # The catalog name.
         self.catalog_name = catalog_name
+        # The database name.
         self.database_name = database_name
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

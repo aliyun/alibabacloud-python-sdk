@@ -9,9 +9,8 @@ class DeleteCycleTaskRequest(DaraModel):
         self,
         config_id: str = None,
     ):
-        # The ID of the task configuration.
-        # 
-        # >  You can call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to query the IDs of task configurations.
+        # The ID of the configuration.
+        # >Call the [DescribeCycleTaskList](~~DescribeCycleTaskList~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.config_id = config_id

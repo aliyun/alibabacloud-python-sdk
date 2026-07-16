@@ -21,15 +21,30 @@ class GetYikeAIAppJobResponseBody(DaraModel):
         result: main_models.GetYikeAIAppJobResponseBodyResult = None,
         status: str = None,
     ):
+        # The AI application ID.
         self.app_id = app_id
+        # The input parameters for the AI application run. The value is a string obtained after JSON serialize.
         self.app_params = app_params
+        # The time when the task ended. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.execution_finish_time = execution_finish_time
+        # The time when the task started. The time is in the yyyy-mm-ddTHH:mm:ssZ format (UTC).
         self.execution_start_time = execution_start_time
+        # The folder ID.
         self.folder_id = folder_id
+        # The task ID.
         self.job_id = job_id
+        # The project ID.
         self.production_id = production_id
+        # The request ID.
         self.request_id = request_id
+        # The task execution result.
         self.result = result
+        # The task status. Valid values:
+        # - Created: The task is created.
+        # - Queuing: The task is queuing.
+        # - Executing: The task is being executed.
+        # - Finished: The task is finished.
+        # - Failed: The task failed.
         self.status = status
 
     def validate(self):
@@ -115,8 +130,11 @@ class GetYikeAIAppJobResponseBodyResult(DaraModel):
         image_result: List[main_models.GetYikeAIAppJobResponseBodyResultImageResult] = None,
         video_result: List[main_models.GetYikeAIAppJobResponseBodyResultVideoResult] = None,
     ):
+        # The audio task result.
         self.audio_result = audio_result
+        # The image task result.
         self.image_result = image_result
+        # The video task result.
         self.video_result = video_result
 
     def validate(self):
@@ -183,7 +201,9 @@ class GetYikeAIAppJobResponseBodyResultVideoResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The media asset ID.
         self.media_id = media_id
+        # The output file URL.
         self.output_url = output_url
 
     def validate(self):
@@ -218,7 +238,9 @@ class GetYikeAIAppJobResponseBodyResultImageResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The media asset ID.
         self.media_id = media_id
+        # The output file URL.
         self.output_url = output_url
 
     def validate(self):
@@ -253,7 +275,9 @@ class GetYikeAIAppJobResponseBodyResultAudioResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
+        # The media asset ID.
         self.media_id = media_id
+        # The output file URL.
         self.output_url = output_url
 
     def validate(self):

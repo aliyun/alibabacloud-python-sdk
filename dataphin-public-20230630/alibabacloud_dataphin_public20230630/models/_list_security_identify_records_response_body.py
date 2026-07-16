@@ -17,12 +17,17 @@ class ListSecurityIdentifyRecordsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The backend response code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The backend exception details.
         self.message = message
+        # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +88,9 @@ class ListSecurityIdentifyRecordsResponseBodyPageResult(DaraModel):
         identify_record_list: List[main_models.ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList] = None,
         total_count: int = None,
     ):
+        # The list of identification records.
         self.identify_record_list = identify_record_list
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -153,34 +160,73 @@ class ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList(DaraMo
         table_name: str = None,
         table_type: str = None,
     ):
+        # The actual match rate.
         self.actual_identify_rate = actual_identify_rate
+        # The business date.
         self.biz_date = biz_date
+        # The display name of the business unit.
         self.biz_unit_display_name = biz_unit_display_name
+        # The business unit ID.
         self.biz_unit_id = biz_unit_id
+        # The business unit name.
         self.biz_unit_name = biz_unit_name
+        # The classification abbreviation.
         self.classify_abbreviation = classify_abbreviation
+        # The classification ID.
         self.classify_id = classify_id
+        # The classification name.
         self.classify_name = classify_name
+        # The classification effective status. Valid values:
+        # - ENABLE: enabled.
+        # - DISABLE: disabled.
         self.classify_status = classify_status
+        # The datasource ID.
         self.datasource_id = datasource_id
+        # The datasource name.
         self.datasource_name = datasource_name
+        # The field description.
         self.field_description = field_description
+        # The field ID.
         self.field_id = field_id
+        # The field name.
         self.field_name = field_name
+        # The identification record ID.
         self.id = id
+        # Indicates whether this is a better match.
         self.is_better_match = is_better_match
+        # Indicates whether a custom tagging rule is used.
         self.is_custom_identify = is_custom_identify
+        # Indicates whether the record is locked.
         self.is_locked = is_locked
+        # The classification level abbreviation.
         self.level_abbreviation = level_abbreviation
+        # The classification level index.
         self.level_index = level_index
+        # The classification level name.
         self.level_name = level_name
+        # The display name of the project.
         self.project_display_name = project_display_name
+        # The project ID.
         self.project_id = project_id
+        # The project name.
         self.project_name = project_name
+        # The table description.
         self.table_description = table_description
+        # The table environment.
         self.table_env = table_env
+        # The table ID.
         self.table_id = table_id
+        # The table name.
         self.table_name = table_name
+        # The table type. Valid values:
+        # - LOGIC_TABLE: logical table.
+        # - LOGIC_DIM_TABLE: logical dimension table.
+        # - LOGIC_FACT_TABLE: logical fact table.
+        # - LOGIC_SUM_TABLE: logical aggregate table.
+        # - LOGIC_ODM_SOURCE: source table.
+        # - LOGIC_LABEL_TABLE: logical label table.
+        # - PHYSICAL_TABLE: physical table.
+        # - REAL_TIME_LOGIC_TABLE: real-time configured logical table.
         self.table_type = table_type
 
     def validate(self):

@@ -15,14 +15,21 @@ class BrowserSessionOut(DaraModel):
         session_idle_timeout_seconds: int = None,
         status: str = None,
     ):
+        # The unique identifier for the browser.
         self.browser_id = browser_id
+        # The browser name.
         self.browser_name = browser_name
+        # The time the session was created.
         self.created_at = created_at
+        # The time the session was last updated.
         self.last_updated_at = last_updated_at
+        # The unique identifier for the session.
+        # 
         # This parameter is required.
         self.session_id = session_id
-        # 会话空闲超时时间，单位为秒
+        # The session idle timeout, in seconds.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
+        # The session status.
         self.status = status
 
     def validate(self):

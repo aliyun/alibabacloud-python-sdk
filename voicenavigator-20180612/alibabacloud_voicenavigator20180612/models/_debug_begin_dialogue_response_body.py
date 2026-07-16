@@ -13,10 +13,15 @@ class DebugBeginDialogueResponseBody(DaraModel):
         request_id: str = None,
         text_response: str = None,
     ):
+        # The action to perform.
         self.action = action
+        # The action parameters.
         self.action_params = action_params
+        # Specifies whether the Interactive Voice Response (IVR) broadcast can be interrupted.
         self.interruptible = interruptible
+        # The unique ID of the request.
         self.request_id = request_id
+        # The broadcast content.
         self.text_response = text_response
 
     def validate(self):

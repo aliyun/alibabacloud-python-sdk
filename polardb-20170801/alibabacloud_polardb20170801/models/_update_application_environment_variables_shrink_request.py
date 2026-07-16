@@ -11,9 +11,13 @@ class UpdateApplicationEnvironmentVariablesShrinkRequest(DaraModel):
         restart: bool = None,
         variables_shrink: str = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # Specifies whether to restart the gateway after the update. The default value is true.
         self.restart = restart
+        # A mapping from environment variable names to values.
         self.variables_shrink = variables_shrink
 
     def validate(self):

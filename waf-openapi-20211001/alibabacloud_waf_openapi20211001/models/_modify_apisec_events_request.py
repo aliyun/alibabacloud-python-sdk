@@ -19,33 +19,42 @@ class ModifyApisecEventsRequest(DaraModel):
         user_status: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
+        # 
+        # > This parameter is available only for hybrid cloud scenarios. Call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain information about hybrid cloud clusters.
         self.cluster_id = cluster_id
-        # The IDs of the security events.
+        # A list of API security event IDs.
         # 
         # This parameter is required.
         self.event_ids = event_ids
-        self.event_scope = event_scope
-        # The ID of the Web Application Firewall (WAF) instance.
+        # The dimension of the security event. Valid values:
         # 
-        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # - **ip** (default): IP security event.
+        # 
+        # - **account**: account security event.
+        self.event_scope = event_scope
+        # The ID of the WAF instance.
+        # 
+        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The description.
+        # The remarks.
         self.note = note
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
-        # *   **cn-hangzhou**: the Chinese mainland.
-        # *   **ap-southeast-1**: outside the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland.
+        # 
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # 阿里云资源组ID。
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The status of the event. Valid values:
         # 
-        # *   **toBeConfirmed**
-        # *   **confirmed**
-        # *   **ignored**
+        # - **toBeConfirmed**: The event is pending confirmation.
+        # 
+        # - **confirmed**: The event is confirmed.
+        # 
+        # - **ignored**: The event is ignored.
         # 
         # This parameter is required.
         self.user_status = user_status

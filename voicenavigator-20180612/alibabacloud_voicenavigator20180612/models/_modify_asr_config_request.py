@@ -18,15 +18,27 @@ class ModifyAsrConfigRequest(DaraModel):
         entry_id: str = None,
         nls_service_type: str = None,
     ):
+        # The AppKey of the engine.
         self.app_key = app_key
+        # The ASR acoustic model ID.
         self.asr_acoustic_model_id = asr_acoustic_model_id
+        # The ASR hotword ID.
         self.asr_class_vocabulary_id = asr_class_vocabulary_id
+        # The dataset ID.
         self.asr_customization_id = asr_customization_id
         self.asr_overrides = asr_overrides
+        # The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
         self.asr_vocabulary_id = asr_vocabulary_id
+        # The policy level. Valid values:
+        # 
+        # - 0: system.
+        # - 1: tenant.
+        # - 2: instance.
         self.config_level = config_level
         self.engine = engine
+        # The entity ID corresponding to config_level.
         self.entry_id = entry_id
+        # NluServiceType
         self.nls_service_type = nls_service_type
 
     def validate(self):

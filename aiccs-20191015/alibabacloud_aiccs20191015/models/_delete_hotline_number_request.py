@@ -10,8 +10,12 @@ class DeleteHotlineNumberRequest(DaraModel):
         hotline_number: str = None,
         instance_id: str = None,
     ):
+        # The hotline number.
+        # 
         # This parameter is required.
         self.hotline_number = hotline_number
+        # The Artificial Intelligence Cloud Call Service (AICCS) instance ID. You can obtain it from the Artificial Intelligence Cloud Call Service console.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

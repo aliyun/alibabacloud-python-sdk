@@ -15,7 +15,7 @@ class GetMediaMarksResponseBody(DaraModel):
         self.media_id = media_id
         # The queried marks.
         # 
-        # *   The value is in the JSONArray format.
+        # - The value is in the JSONArray format.
         self.media_marks = media_marks
         # The request ID.
         self.request_id = request_id

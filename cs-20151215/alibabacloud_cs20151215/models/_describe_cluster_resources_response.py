@@ -74,45 +74,44 @@ class DescribeClusterResourcesResponseBody(DaraModel):
         creator_type: str = None,
         extra_info: Dict[str, Any] = None,
     ):
-        # The cluster ID.
+        # 集群ID。
         self.cluster_id = cluster_id
-        # The time when the resource was created.
+        # 资源创建时间。
         self.created = created
-        # The resource ID.
+        # 资源ID。
         self.instance_id = instance_id
-        # The resource information. For more information about how to query the source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+        # 资源信息。关于资源的源信息，请参见[ListStackResources](https://help.aliyun.com/document_detail/133836.html)。
         self.resource_info = resource_info
-        # The resource type.
+        # 资源类型。
         self.resource_type = resource_type
-        # The resource status. Valid values:
+        # 资源状态。可选值：
         # 
-        # *   `CREATE_COMPLETE`: the resource is created.
-        # *   `CREATE_FAILED`: the resource failed to be created.
-        # *   `CREATE_IN_PROGRESS`: the resource is being created.
-        # *   `DELETE_FAILED`: the resource failed to be deleted.
-        # *   `DELETE_IN_PROGRESS`: the resource is being deleted.
-        # *   `ROLLBACK_COMPLETE`: the resource is rolled back.
-        # *   `ROLLBACK_FAILED`: the resource failed to be rolled back.
-        # *   `ROLLBACK_IN_PROGRESS`: the resource is being rolled back.
+        # - `CREATE_COMPLETE`：成功创建资源。
+        # - `CREATE_FAILED`：创建资源失败。
+        # - `CREATE_IN_PROGRESS`：创建资源中。
+        # - `DELETE_FAILED`：删除资源失败。
+        # - `DELETE_IN_PROGRESS`：删除资源中。
+        # - `ROLLBACK_COMPLETE`：成功回滚。
+        # - `ROLLBACK_FAILED`：回滚失败。
+        # - `ROLLBACK_IN_PROGRESS`：回滚中。
         self.state = state
-        # Specifies whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
+        # 资源是否由ACK创建：
         # 
-        # *   1: the resource is created by ACK.
-        # *   0: the resource is an existing resource.
+        # - 1：表示由ACK创建。
+        # - 0：表示该资源为已有资源。
         self.auto_create = auto_create
-        # The dependent resources.
+        # 依赖资源列表。
         self.dependencies = dependencies
-        # The Kubernetes object with which the resource is associated.
+        # 资源关联的k8s对象。
         self.associated_object = associated_object
-        # The deletion behavior of the resource when the cluster is deleted.
+        # 删除集群时该资源的删除行为。
         self.delete_behavior = delete_behavior
-        # The type of the resource creator. Valid values:
-        # 
-        # *   user: The resource is created by the user.
-        # *   system: The resource is created by the ACK management system.
-        # *   addon: The resource is created by a cluster component.
+        # 该资源创建者的类型。可能的取值：
+        # - user：由用户自行创建；
+        # - system：由ACK管控系统创建；
+        # - addon：由集群组件创建。
         self.creator_type = creator_type
-        # The additional information about the resource.
+        # 资源的其他信息。
         self.extra_info = extra_info
 
     def validate(self):
@@ -221,9 +220,17 @@ class DescribeClusterResourcesResponseBodyDeleteBehavior(DaraModel):
         delete_by_default: bool = None,
         changeable: bool = None,
     ):
-        # Specifies whether to delete the resource by default when the cluster is deleted.
+        # 删除集群时是否默认删除该资源。
+        # 
+        # - true：默认删除该资源。
+        # 
+        # - fasle：不删除该资源。
         self.delete_by_default = delete_by_default
-        # Specifies whether the default behavior returned in delete_by_default can be changed.
+        # `delete_by_default`的默认行为是否可以更改。
+        # 
+        # - true：可以更改。
+        # 
+        # - false：不支持更改。
         self.changeable = changeable
 
     def validate(self):
@@ -259,11 +266,11 @@ class DescribeClusterResourcesResponseBodyAssociatedObject(DaraModel):
         namespace: str = None,
         name: str = None,
     ):
-        # The Kubernetes object type.
+        # k8s对象类型。
         self.kind = kind
-        # The namespace in which the Kubernetes object resides.
+        # k8s对象命名空间。
         self.namespace = namespace
-        # The Kubernetes object name.
+        # k8s对象名称。
         self.name = name
 
     def validate(self):
@@ -305,11 +312,11 @@ class DescribeClusterResourcesResponseBodyDependencies(DaraModel):
         resource_type: str = None,
         instance_id: str = None,
     ):
-        # The ID of the cluster to which the dependent resource is related.
+        # 依赖资源的集群ID。
         self.cluster_id = cluster_id
-        # The dependent resource type.
+        # 依赖资源类型。
         self.resource_type = resource_type
-        # The dependent resource ID.
+        # 依赖资源实例ID。
         self.instance_id = instance_id
 
     def validate(self):

@@ -17,11 +17,19 @@ class GetSchemeTaskConfigResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # Result code. **200** means success.
+        # 
+        # > Any other value means failure. The caller can use this field to identify the cause.
         self.code = code
+        # Response data. See the additional notes below.
         self.data = data
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details if the request failed. Returns successful if the request succeeded.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Indicates whether the request succeeded. Use this field to check the result: true means success, false or null means failure.
         self.success = success
 
     def validate(self):
@@ -93,18 +101,55 @@ class GetSchemeTaskConfigResponseBodyData(DaraModel):
         source_data_type: str = None,
         status: str = None,
     ):
+        # Task priority:
+        # 
+        # - 0 (low)
+        # 
+        # - 1 (medium)
+        # 
+        # - 2 (high)
         self.asr_task_priority = asr_task_priority
+        # Assignment type
         self.assign_type = assign_type
+        # Data configuration
         self.data_config = data_config
+        # Quality inspection task ID
         self.id = id
+        # Manual review
         self.manual_review = manual_review
+        # Language model ID
         self.mode_customization_id = mode_customization_id
+        # Language model name
         self.model_name = model_name
+        # Quality inspection task name
         self.name = name
+        # Quality inspection scheme IDs
         self.scheme_id_list = scheme_id_list
+        # Quality inspection schemes
         self.scheme_list = scheme_list
+        # Quality inspection task ID
         self.scheme_task_config_id = scheme_task_config_id
+        # Quality inspection result type:
+        # 
+        # - 1: offline voice
+        # 
+        # - 2: offline text
+        # 
+        # - 3: real-time voice
+        # 
+        # - 4: real-time text
+        # 
+        # - 5: contact center secondary quality inspection
+        # 
+        # - 51: call center voice secondary quality inspection
+        # 
+        # - 52: call center text secondary quality inspection
+        # 
+        # - 11: dataset voice
+        # 
+        # - 12: dataset text
         self.source_data_type = source_data_type
+        # Enable status. Valid values: 0 (disabled) or 1 (enabled)
         self.status = status
 
     def validate(self):
@@ -216,7 +261,9 @@ class GetSchemeTaskConfigResponseBodyDataSchemeList(DaraModel):
         name: str = None,
         scheme_id: int = None,
     ):
+        # Quality inspection scheme name
         self.name = name
+        # Quality inspection scheme ID
         self.scheme_id = scheme_id
 
     def validate(self):
@@ -253,9 +300,13 @@ class GetSchemeTaskConfigResponseBodyDataDataConfig(DaraModel):
         index: int = None,
         result_param: str = None,
     ):
+        # Data screening items for on-the-fly recording
         self.assign_configs = assign_configs
+        # Dataset task. Manage datasets.
         self.data_sets = data_sets
+        # Index number
         self.index = index
+        # JSON text for filtering conditions used in secondary quality inspection. For details, see the request parameters of the GetResult API.
         self.result_param = result_param
 
     def validate(self):
@@ -309,6 +360,7 @@ class GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigs(DaraModel):
         self,
         assign_config_contests: List[main_models.GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigContests] = None,
     ):
+        # Parameter matching configurations for on-the-fly recording
         self.assign_config_contests = assign_config_contests
 
     def validate(self):
@@ -348,10 +400,47 @@ class GetSchemeTaskConfigResponseBodyDataDataConfigAssignConfigsAssignConfigCont
         symbol: int = None,
         value: str = None,
     ):
+        # Type of the value
+        # 
+        # - 0: String
+        # 
+        # - 1: Number
+        # 
+        # - 2: List (use list type for all parameter values when using =)
+        # 
+        # - 3: Date
+        # 
+        # - 4: List_Json
         self.data_type = data_type
+        # List of on-the-fly recording data
         self.list_object = list_object
+        # Check item name
         self.name = name
+        # Operator
+        # 
+        # - 1: ==
+        # 
+        # - 2: >
+        # 
+        # - 3: <
+        # 
+        # - 4: range
+        # 
+        # - 5: >=
+        # 
+        # - 6: <=
+        # 
+        # - 7: !=
+        # 
+        # - 8: null
+        # 
+        # - 9: not null
+        # 
+        # - 10: contains
+        # 
+        # - 11: does not contain
         self.symbol = symbol
+        # Matching value for on-the-fly recording data
         self.value = value
 
     def validate(self):

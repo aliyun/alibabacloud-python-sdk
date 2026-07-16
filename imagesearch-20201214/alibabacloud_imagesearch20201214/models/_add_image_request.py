@@ -24,72 +24,90 @@ class AddImageRequest(DaraModel):
         str_attr_3: str = None,
         str_attr_4: str = None,
     ):
-        # The category of the image. For more information, see [Category reference](https://help.aliyun.com/document_detail/179184.html).
+        # The image category. For more information, refer to [Category reference](https://help.aliyun.com/document_detail/179184.html).
+        # > - For product image search, if you specify a category, the specified category is used. If you do not specify a category, the system predicts the category. The predicted category result can be obtained from the response.
+        # <props="china">
+        # - For fabric, trademark, generic, furniture, and industrial hardware image search, the system sets the category to 88888888 regardless of whether you specify a category.
         # 
-        # > *   For product image search, if you specify a category for an image, the specified category prevails. If you do not specify a category for an image, the system predicts the category, and returns the prediction result in the response.
-        # >*   For generic image search, only 88888888 may be returned for this parameter in the response regardless of whether a category is specified.
+        # - For generic image search, the system sets the category to 88888888 regardless of whether you specify a category.
         self.category_id = category_id
-        # Specifies whether to identify the subject in the image and search for images based on the subject identification result. Default value: true. Valid values:
+        # Specifies whether to perform subject identification. Default value: true.
+        #  - true: The system performs subject identification and searches based on the identified subject. The subject identification result can be obtained from the response.
+        # - false: The system does not perform subject identification and searches based on the entire image.
         # 
-        # *   true: The system identifies the subject in the image, and searches for images based on the subject identification result. The subject identification result is included in the response.
-        # *   false: The system does not identify the subject in the image, and searches for images based on the entire image.
+        # <props="china">For fabric image search, this parameter is ignored. The system searches based on the entire image..
         self.crop = crop
-        # The user-defined content. The value can be up to 4,096 characters in length.
-        # 
-        # > If you specify this parameter, the response includes this parameter and its value. You can add text such as an image description.
+        # The custom content defined by the user. The content can be up to 4,096 characters in length.
+        # >This field is returned in query results. For example, you can add a text description of the image.
         self.custom_content = custom_content
-        # The name of the Image Search instance. The name can be up to 20 characters in length. If an Image Search instance is purchased, you can log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance. If no Image Search instance is purchased, you must purchase an instance. For more information, see [Activate Image Search](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
-        # 
-        # > The instance name is not the instance ID.
+        # The name of the Image Search instance. The name can be up to 20 characters in length.
+        # If you have purchased an Image Search instance, log on to the [Image Search console](https://imagesearch.console.aliyun.com/) to view the instance name.
+        # If you have not purchased an Image Search instance, refer to [Activate the service](https://help.aliyun.com/document_detail/179178.html) and [Create an instance](https://help.aliyun.com/document_detail/66569.html).
+        # >The instance name is not the instance ID. Do not confuse the two.
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+        # The integer attribute. This attribute can be used to filter query results and is returned in query results.
         self.int_attr = int_attr
-        # The attribute, which is an integer. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
+        # The integer attribute. This attribute can be used to filter query results and is returned in query results.
         self.int_attr_2 = int_attr_2
+        # The integer attribute. This attribute can be used to filter query results and is returned in query results.
         self.int_attr_3 = int_attr_3
+        # The integer attribute. This attribute can be used to filter query results and is returned in query results.
         self.int_attr_4 = int_attr_4
-        # The image file. The image file is encoded in Base64.
+        # The image content.
+        #  - The image size cannot exceed 4 MB.
+        #  - Image formats: PNG, JPG, JPEG, BMP, GIF, WEBP, TIFF, and PPM.
+        #  - The transmission wait time cannot exceed 5 seconds.
+        # <props="china">
+        #  - For product image search, generic image search, furniture image search, and industrial hardware image search, the image width and height must be at least 100 pixels and at most 4,096 pixels.
+        #   For trademark image search, the image width and height must be at least 200 pixels and less than 4,096 pixels.
+        #  For fabric image search, the image width and height must be at least 448 pixels and at most 4,096 pixels.
         # 
-        # *   The file size of the image cannot exceed 4 MB.
-        # *   The following image formats are supported: PNG, JPG, JPEG, BMP, GIF, WebP, TIFF, and PPM.
-        # *   The transmission timeout period cannot exceed 5 seconds.
-        # *   For product and generic image searches, the length and width of the image must range from 100 pixels to 4,096 pixels.
-        # *   The image cannot contain rotation settings.
+        # <props="intl">
+        #  - For product image search and generic image search, the image width and height must be at least 100 pixels and at most 4,096 pixels.
         # 
-        # > *   If you use SDKs to call this operation, you do not need to specify **PicContent**. The SDKs encapsulate this parameter and automatically encode its value in Base64. For more information about how to use Image Search SDK for Java, see [Java SDK](https://help.aliyun.com/document_detail/179188.html).
-        # >*   If you use OpenAPI Explorer to call this operation, you can select only the **2019-03-25** version. If you call this operation of other versions, the value of **PicContent** cannot be encoded in Base64.
+        # - The image must not contain rotation information.
+        # 
+        # > - **When calling by using an SDK:**
+        #   - If you use a V3 SDK, you do not need to set the PicContent field. The SDK encapsulates this field as PicContentObject and automatically converts it to Base64 encoding. For specific examples, refer to [Java SDK](https://help.aliyun.com/document_detail/179188.html).
+        #   - The SDK does not support passing image URLs directly. The V3 SDK provides an alternative method to upload images by URL. For specific examples, refer to [Java SDK](https://help.aliyun.com/document_detail/179188.html).
+        # - **When calling by using the Alibaba Cloud OpenAPI platform:**
+        #   - If you use the **2019-03-25** version, set the **PicContent** field to the **Base64** encoding of the image.
+        #   - If you use the **2020-12-14** version, click to upload the image directly in the **PicContent** field.
         # 
         # This parameter is required.
         self.pic_content = pic_content
-        # The name of the image. The name can be up to 512 characters in length.
-        # 
-        # > *   An image is uniquely identified by the values of ProductId and PicName.
-        # >*   If you add an image whose product ID (ProductId) and image name (PicName) are the same as those of an existing image, the newly added image overwrites the existing image.
+        # The image name. The name can be up to 256 characters in length.
+        # > - ProductId and PicName uniquely identify an image.
+        # - If you add multiple images with the same ProductId and PicName, only the last added image is retained. Previously added images are overwritten.
         # 
         # This parameter is required.
         self.pic_name = pic_name
-        # The ID of the product. The ID can be up to 512 characters in length.
+        # The product ID. The ID can be up to 256 characters in length.
         # 
-        # > A product may have multiple images.
+        # >A product can have multiple images.
         # 
         # This parameter is required.
         self.product_id = product_id
-        # The subject area of the image, in the format of `x1,x2,y1,y2`. `x1 and y1` represent the position in the upper-left corner, in pixels. `x2 and y2` represent the position in the lower-right corner, in pixels.
+        # The subject region of the image, in the format of `x1,x2,y1,y2`, where `x1,y1` is the upper-left point and `x2,y2` is the lower-right point.
+        # > - If you specify Region, the system searches based on the specified Region regardless of the Crop parameter value.
+        # <props="china">
+        # - For fabric image search, this parameter is ignored. The system searches based on the entire image.
         # 
-        # > *   If you specify Region, the system searches for images based on the value of Region regardless of the value of Crop.
-        # >*   The value of Region does not have a unit. The value is generated based on the length and width of the image. If the length and width of the image are scaled, the value of Region must be proportionally adjusted.
+        # - The Region parameter has no unit. The values are based on the pixel dimensions of the image. If the image is scaled, the Region parameter values must be scaled proportionally.
         self.region = region
-        # The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
-        # 
-        # > The value cannot contain the following special characters: \\ ¥ $ & %
+        # The string attribute. The attribute can be up to 128 characters in length. This attribute can be used to filter query results and is returned in query results.
+        # > Special characters such as \\¥$&% are not supported.
         self.str_attr = str_attr
-        # The attribute, which is a string. The value can be up to 128 characters in length. The attribute can be used to filter images when you search for images. If you specify this parameter, the response includes this parameter and its value.
-        # 
-        # > The value cannot contain the following special characters: \\ ¥ $ & %
+        # The string attribute. The attribute can be up to 128 characters in length. This attribute can be used to filter query results and is returned in query results.
+        # > Special characters such as \\¥$&% are not supported.
         self.str_attr_2 = str_attr_2
+        # The string attribute. The attribute can be up to 128 characters in length. This attribute can be used to filter query results and is returned in query results.
+        # > Special characters such as \\¥$&% are not supported.
         self.str_attr_3 = str_attr_3
+        # The string attribute. The attribute can be up to 128 characters in length. This attribute can be used to filter query results and is returned in query results.
+        # > Special characters such as \\¥$&% are not supported.
         self.str_attr_4 = str_attr_4
 
     def validate(self):

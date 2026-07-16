@@ -22,17 +22,27 @@ class AllocateSupabaseForAdminResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # The details of the permission verification failure.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether retry is allowed.
         self.allow_retry = allow_retry
+        # The application name.
         self.app_name = app_name
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
+        # The error parameters.
         self.error_args = error_args
+        # The response data.
         self.module = module
         # Id of the request
         self.request_id = request_id
+        # The error code.
         self.root_error_code = root_error_code
+        # The error message.
         self.root_error_msg = root_error_msg
+        # Indicates whether the request is processed synchronously.
         self.synchro = synchro
 
     def validate(self):
@@ -144,29 +154,53 @@ class AllocateSupabaseForAdminResponseBodyModule(DaraModel):
         tenant_id: str = None,
         user_id: str = None,
     ):
+        # The anonymous key.
         self.anon_key = anon_key
+        # The business ID.
         self.biz_id = biz_id
+        # The time when the database instance was created.
         self.db_instance_create_time = db_instance_create_time
+        # The database instance ID.
         self.db_instance_id = db_instance_id
+        # The public URL of the database.
         self.db_public_url = db_public_url
+        # The database type.
         self.db_type = db_type
+        # The additional information.
         self.extra = extra
+        # The time when the instance creation was completed.
         self.instance_create_finished_time = instance_create_finished_time
+        # The creation status of the instance.
         self.instance_create_status = instance_create_status
+        # The deletion flag.
         self.is_deleted = is_deleted
+        # The password used to access the ApsaraDB RDS database.
         self.rds_database_password = rds_database_password
+        # The service key.
         self.service_key = service_key
+        # The instance status. Valid values:
+        # - 0: paused
+        # - 1: running
         self.status = status
+        # The password for the Supabase Dashboard.
         self.supabase_dashboard_password = supabase_dashboard_password
+        # The username for the Supabase Dashboard.
         self.supabase_dashboard_user_name = supabase_dashboard_user_name
+        # The time when the Supabase instance was created.
         self.supabase_instance_create_time = supabase_instance_create_time
+        # The Supabase instance ID.
         self.supabase_instance_id = supabase_instance_id
         # Supabase Kong URL
         self.supabase_kong_url = supabase_kong_url
+        # The private endpoint of the Supabase instance.
         self.supabase_private_ip = supabase_private_ip
+        # The public endpoint of the Supabase instance.
         self.supabase_public_ip = supabase_public_ip
+        # The public URL of the Supabase instance.
         self.supabase_public_url = supabase_public_url
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

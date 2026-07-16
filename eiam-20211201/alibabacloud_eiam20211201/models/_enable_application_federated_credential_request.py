@@ -11,15 +11,15 @@ class EnableApplicationFederatedCredentialRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # 应用联邦凭证Id
+        # The ID of the application federated credential.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id
-        # IDaaS的应用资源ID。
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

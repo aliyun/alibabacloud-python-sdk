@@ -12,9 +12,9 @@ class RenewAppInstanceGroupResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The error code.
+        # The error code returned if the call failed.
         self.code = code
-        # The error message.
+        # The error message returned if the call failed.
         self.message = message
         # The order ID.
         self.order_id = order_id

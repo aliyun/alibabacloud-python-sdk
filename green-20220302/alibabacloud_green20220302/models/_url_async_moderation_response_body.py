@@ -13,11 +13,11 @@ class UrlAsyncModerationResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The returned HTTP status code.
+        # The return code. A value of 200 indicates that the request was successful.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message that is returned in response to the request.
+        # The response message for the current request.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
@@ -68,9 +68,9 @@ class UrlAsyncModerationResponseBodyData(DaraModel):
         data_id: str = None,
         req_id: str = None,
     ):
-        # The ID of the moderated object.
+        # The value of dataId that you specified in the API request. If you did not specify this parameter in the request, this field is not returned.
         self.data_id = data_id
-        # The reqId field returned by the Url Async Moderation API.
+        # The ReqId field returned by the enhanced URL asynchronous moderation API. You can use this field to query the detection results.
         self.req_id = req_id
 
     def validate(self):

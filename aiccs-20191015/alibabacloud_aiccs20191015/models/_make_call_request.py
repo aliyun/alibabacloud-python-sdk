@@ -14,15 +14,26 @@ class MakeCallRequest(DaraModel):
         outer_account_id: str = None,
         outer_account_type: str = None,
     ):
+        # Called number.
+        # 
         # This parameter is required.
         self.called_number = called_number
+        # Calling number.
+        # 
         # This parameter is required.
         self.calling_number = calling_number
+        # Operation code.
+        # 
         # This parameter is required.
         self.command_code = command_code
+        # Pass-through business information.
         self.ext_info = ext_info
+        # External account ID.
+        # 
         # This parameter is required.
         self.outer_account_id = outer_account_id
+        # External account type.
+        # 
         # This parameter is required.
         self.outer_account_type = outer_account_type
 

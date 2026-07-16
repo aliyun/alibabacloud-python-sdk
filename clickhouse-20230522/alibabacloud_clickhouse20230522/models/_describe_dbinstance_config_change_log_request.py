@@ -14,14 +14,28 @@ class DescribeDBInstanceConfigChangeLogRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The end time of the query. Format: yyyy-MM-dd hh:mm:ss.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The page number to return.
         self.page_number = page_number
+        # The number of entries to return per page. Default value: 30. Valid values:
+        # 
+        # - **30** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The start time of the query. Format: yyyy-MM-dd hh:mm:ss.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

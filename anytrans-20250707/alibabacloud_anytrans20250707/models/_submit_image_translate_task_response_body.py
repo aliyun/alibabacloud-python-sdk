@@ -15,11 +15,17 @@ class SubmitImageTranslateTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response error code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID, used for tracing API calls.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class SubmitImageTranslateTaskResponseBodyData(DaraModel):
         task_id: str = None,
         tracking_data: str = None,
     ):
+        # The status of the translation task.
         self.status = status
+        # The ID of the image translation task.
         self.task_id = task_id
+        # User-defined passthrough data returned unmodified in the response, which is useful for tracking purposes.
         self.tracking_data = tracking_data
 
     def validate(self):

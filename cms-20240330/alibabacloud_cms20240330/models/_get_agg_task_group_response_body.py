@@ -14,11 +14,11 @@ class GetAggTaskGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Aggregation task group.
+        # The aggregation task group.
         self.agg_task_group = agg_task_group
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -80,47 +80,47 @@ class GetAggTaskGroupResponseBodyAggTaskGroup(DaraModel):
         update_time: str = None,
         user_id: str = None,
     ):
-        # Aggregation task group configuration.
+        # The configuration of the aggregation task group.
         self.agg_task_group_config = agg_task_group_config
-        # Summary of the aggregation task group configuration.
+        # The summary of the aggregation task group configuration.
         self.agg_task_group_config_hash = agg_task_group_config_hash
-        # ID of the aggregation task group.
+        # The ID of the aggregation task group.
         self.agg_task_group_id = agg_task_group_id
-        # Name of the aggregation task group.
+        # The name of the aggregation task group.
         self.agg_task_group_name = agg_task_group_name
-        # Scheduling expression for the aggregation task group when the scheduling mode is \\"Cron\\".
+        # The scheduling expression of the aggregation task group when the scheduling mode is set to Cron.
         self.cron_expr = cron_expr
-        # Fixed delay time (in seconds) for scheduling.
+        # The fixed delay time for scheduling, in seconds.
         self.delay = delay
-        # Description of the aggregation task group.
+        # The description of the aggregation task group.
         self.description = description
-        # Second-level timestamp corresponding to the start time of scheduling (not yet effective).
+        # The UNIX timestamp in seconds that corresponds to the start time of the scheduling. This parameter is not yet in effect.
         self.from_time = from_time
-        # Maximum number of retries for executing the aggregation task.
+        # The maximum number of retries to execute the aggregation task.
         self.max_retries = max_retries
-        # Maximum retry time for executing the aggregation task.
+        # The maximum runtime of the aggregation task, in seconds.
         self.max_run_time_in_seconds = max_run_time_in_seconds
-        # Pre-check configuration.
+        # The dry run configuration.
         self.precheck_string = precheck_string
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
-        # Scheduling mode.
+        # The scheduling mode.
         self.schedule_mode = schedule_mode
-        # Scheduling time expression.
+        # The scheduling time expression.
         self.schedule_time_expr = schedule_time_expr
-        # ID of the source Prometheus instance for the aggregation task group.
+        # The ID of the source Prometheus instance for the aggregation task group.
         self.source_prometheus_id = source_prometheus_id
-        # Status of the aggregation task group.
+        # The status of the aggregation task group.
         self.status = status
-        # Resource group tags
+        # The tags of the resource group.
         self.tags = tags
-        # The target Prometheus instance ID of the aggregation task group.
+        # The ID of the target Prometheus instance for the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
-        # The second-level timestamp corresponding to the end time of the scheduling.
+        # The UNIX timestamp in seconds that corresponds to the end time of the scheduling.
         self.to_time = to_time
-        # The update time (timestamp) of the aggregation task group.
+        # The time when the aggregation task group was updated. This is a timestamp.
         self.update_time = update_time
-        # The user to whom the aggregation task group belongs.
+        # The user to which the aggregation task group belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -277,7 +277,7 @@ class GetAggTaskGroupResponseBodyAggTaskGroupTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Key of the resource group tag.
+        # The key of the resource group tag.
         self.key = key
         # The value of the resource group tag.
         self.value = value

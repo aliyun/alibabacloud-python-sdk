@@ -10,6 +10,7 @@ class CreateWorkspaceRequest(DaraModel):
         self,
         body: main_models.CreateWorkspaceInput = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

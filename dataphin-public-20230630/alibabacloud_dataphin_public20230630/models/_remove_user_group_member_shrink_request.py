@@ -10,8 +10,12 @@ class RemoveUserGroupMemberShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         remove_command_shrink: str = None,
     ):
+        # The tenant ID.
+        # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The command to remove user group members.
+        # 
         # This parameter is required.
         self.remove_command_shrink = remove_command_shrink
 

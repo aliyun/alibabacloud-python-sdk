@@ -9,6 +9,8 @@ class VerifyCustomHostnameRequest(DaraModel):
         self,
         hostname_id: int = None,
     ):
+        # The ID of the SaaS domain name. You can call the [ListCustomHostnames](https://help.aliyun.com/document_detail/3018667.html) operation to obtain the ID.
+        # 
         # This parameter is required.
         self.hostname_id = hostname_id
 

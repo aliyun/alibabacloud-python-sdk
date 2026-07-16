@@ -19,20 +19,19 @@ class PutEventRuleTargetsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
-        # 
-        # >  The status code 200 indicates that the request was successful.
+        # The status code.
+        # >The value 200 indicates success.
         self.code = code
         self.failed_contact_parameters = failed_contact_parameters
         self.failed_fc_parameters = failed_fc_parameters
         self.failed_mns_parameters = failed_mns_parameters
-        # The number of resources that failed to be created or modified.
+        # The number of failed parameters.
         self.failed_parameter_count = failed_parameter_count
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values: true and false.
+        # Indicates whether the operation was successful. The value true indicates success. The value false indicates failure.
         self.success = success
 
     def validate(self):

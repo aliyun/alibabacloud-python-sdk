@@ -10,8 +10,13 @@ class DescribeAuthVerifyRequest(DaraModel):
         certify_id: str = None,
         scene_id: int = None,
     ):
+        # The unique identifier for ID Verification.
+        # Obtain this value by calling InitAuthVerify to initiate an OCR request.
+        # 
         # This parameter is required.
         self.certify_id = certify_id
+        # The authentication scenario ID.
+        # 
         # This parameter is required.
         self.scene_id = scene_id
 

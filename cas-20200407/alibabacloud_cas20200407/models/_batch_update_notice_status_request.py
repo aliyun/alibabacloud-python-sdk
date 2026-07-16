@@ -13,12 +13,25 @@ class BatchUpdateNoticeStatusRequest(DaraModel):
         notice_status: str = None,
         source_ip: str = None,
     ):
+        # The list of primary key identifiers to be synchronized to Certificate Management Service. Separate multiple IDs with commas (,).
+        # 
         # This parameter is required.
         self.ids = ids
+        # The language type for the request and the received message. Valid values:
+        # 
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
+        # The business code of message notification. The value is fixed as ssl.
         self.notice_biz = notice_biz
+        # Specifies whether to enable message notification.
+        # \\--enable: enables message notification.
+        # \\--disable: disables message notification.
+        # 
         # This parameter is required.
         self.notice_status = notice_status
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

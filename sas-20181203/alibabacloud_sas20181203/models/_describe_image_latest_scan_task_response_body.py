@@ -13,9 +13,9 @@ class DescribeImageLatestScanTaskResponseBody(DaraModel):
         request_id: str = None,
         task: List[main_models.DescribeImageLatestScanTaskResponseBodyTask] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the information about the task.
+        # The task information.
         self.task = task
 
     def validate(self):
@@ -69,46 +69,45 @@ class DescribeImageLatestScanTaskResponseBodyTask(DaraModel):
         task_id: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the task was created. Format: yyyy-MM-ddTHH:mm:ss.
         self.create = create
-        # The number of images that are scanned.
+        # The number of completed image tasks.
         self.finish = finish
-        # The end time of the task. A value is returned only when the task is in the Finished state. Otherwise, the returned value is empty.
+        # The time when the task ended. This parameter is returned only when the task status is Finished. Otherwise, an empty value is returned.
         self.finish_time = finish_time
         # The task ID.
         self.id = id
-        # The time when the task was last modified. The time is in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the task was last modified. Format: yyyy-MM-ddTHH:mm:ss.
         self.modified = modified
-        # The name of the task.
+        # The task name.
         self.name = name
-        # The method in which the task was created. A task can be created in the Security Center console or by calling an API operation. Valid values:
+        # The creation method. Valid values:
         # 
-        # *   **console_batch**: The task was created in the Security Center console.
-        # *   **openapi**: The task was created by calling an API operation.
+        # - **console_batch**: console
+        # - **openapi**: API.
         self.source = source
-        # The start time of the task.
+        # The time when the task started.
         self.start_time = start_time
-        # The status of the task. Valid value:
+        # The task status. Valid values:
         # 
-        # *   **PROCESSING**: The task is running.
-        # *   **START**: The task is being started.
-        # *   **MESSAGE_SEND**: The scan task is sent.
-        # *   **PRE_ANALYZER**: The image is in precheck.
-        # *   **SUCCESS**: The task was successful.
-        # *   **FAIL**: The task failed.
-        # *   **TIMOUT**: The task timed out.
+        # - **PROCESSING**: The task is being executed.
+        # - **START**: The task is starting.
+        # - **MESSAGE_SEND**: The scan is being distributed.
+        # - **PRE_ANALYZER**: The image is being pre-checked.
+        # - **SUCCESS**: The task is executed.
+        # - **FAIL**: The task failed.
+        # - **TIMOUT**: The task timed out.
         self.status = status
-        # The digest value of the image.
+        # The digest of the target image.
         self.target = target
-        # The type of the scanned asset. Valid value:
+        # The scan target type. Valid values:
         # 
-        # *   **IMAGE**
+        # - **IMAGE**: image.
         self.target_type = target_type
         # The ID of the scan task.
         self.task_id = task_id
-        # The type of the task. Valid value:
-        # 
-        # *   **IMAGE_SCAN**
+        # The task type. Valid values:
+        # - **IMAGE_SCAN**: image scan.
         self.task_type = task_type
 
     def validate(self):

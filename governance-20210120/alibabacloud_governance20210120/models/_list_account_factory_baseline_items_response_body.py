@@ -70,7 +70,7 @@ class ListAccountFactoryBaselineItemsResponseBodyBaselineItems(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The dependency of the baseline item.
+        # The dependencies of the baseline item.
         self.depends_on = depends_on
         # The description of the baseline item.
         self.description = description

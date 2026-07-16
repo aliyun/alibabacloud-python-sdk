@@ -13,9 +13,13 @@ class GetRecordUrlResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data list.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -64,7 +68,9 @@ class GetRecordUrlResponseBodyData(DaraModel):
         acid: str = None,
         oss_link: str = None,
     ):
+        # The session ID.
         self.acid = acid
+        # The recording link.
         self.oss_link = oss_link
 
     def validate(self):

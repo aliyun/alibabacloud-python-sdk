@@ -13,7 +13,9 @@ class ModifyAutoRepairPolicyRequest(DaraModel):
         name: str = None,
         rules: List[main_models.ModifyAutoRepairPolicyRequestRules] = None,
     ):
+        # The name of the self-healing rule.
         self.name = name
+        # The list of self-healing sub-rules.
         self.rules = rules
 
     def validate(self):
@@ -56,7 +58,9 @@ class ModifyAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.ModifyAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
+        # The list of identified faults.
         self.incidents = incidents
+        # The repair procedure.
         self.repair_procedure = repair_procedure
 
     def validate(self):
@@ -109,8 +113,11 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedure(DaraModel):
         intervention: main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention = None,
         name: str = None,
     ):
+        # The parameter settings of the flow.
         self.config = config
+        # The configuration for manual intervention in the procedure.
         self.intervention = intervention
+        # The name of the procedure.
         self.name = name
 
     def validate(self):
@@ -155,9 +162,13 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
+        # The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to perform the operations in this phase. After completing the phase operations, ACK automatically removes the authorization inquiry and authorization confirmation labels for this phase. If you do not promptly add the following labels for authorization, ACK does not perform the actions in this phase or subsequent phases, and the node may remain in a damaged state.
         self.approved_label = approved_label
+        # Specifies whether to enable manual approval.
         self.enable = enable
+        # The label configuration for authorization inquiry. When this phase is reached, ACK adds the following labels to your node and waits for you to authorize the execution of the phase action.
         self.inquiring_label = inquiring_label
+        # The type of approval.
         self.type = type
 
     def validate(self):
@@ -209,7 +220,9 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabe
         key: str = None,
         value: str = None,
     ):
+        # The label key value.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -244,7 +257,9 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
         key: str = None,
         value: str = None,
     ):
+        # The label key value.
         self.key = key
+        # The label value.
         self.value = value
 
     def validate(self):
@@ -279,7 +294,9 @@ class ModifyAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # The fault name.
         self.name = name
+        # The type of manual approval.
         self.type = type
 
     def validate(self):

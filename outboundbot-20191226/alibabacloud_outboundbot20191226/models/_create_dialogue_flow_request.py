@@ -12,12 +12,20 @@ class CreateDialogueFlowRequest(DaraModel):
         instance_id: str = None,
         script_id: str = None,
     ):
+        # The type of the dialogue flow. Use `MainFlow` for a main flow or `SubFlow` for a subflow.
+        # 
         # This parameter is required.
         self.dialogue_flow_type = dialogue_flow_type
+        # The dialogue flow name.
+        # 
         # This parameter is required.
         self.dialogue_name = dialogue_name
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The script ID.
+        # 
         # This parameter is required.
         self.script_id = script_id
 

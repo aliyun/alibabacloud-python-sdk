@@ -11,8 +11,19 @@ class ResetDataStorageRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - **zh** (default): Chinese.
+        # 
+        # - **en**: English.
         self.lang = lang
+        # The region of the Data Management center. Select a region for the Data Management center based on the region where your assets are located. Valid values:
+        # 
+        # - cn-hangzhou: The assets are in the Chinese mainland.
+        # 
+        # - ap-southeast-1: The assets are in a region outside China.
         self.region_id = region_id
+        # The user ID of a member. An administrator uses this ID to switch to the member\\"s perspective.
         self.role_for = role_for
 
     def validate(self):

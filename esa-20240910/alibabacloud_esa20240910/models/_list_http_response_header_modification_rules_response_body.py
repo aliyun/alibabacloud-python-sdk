@@ -17,17 +17,17 @@ class ListHttpResponseHeaderModificationRulesResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # List of modified HTTP response headers.
+        # The list of HTTP response header modifications.
         self.configs = configs
-        # Page number.
+        # The current page number, which is the same as the PageNumber request parameter.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total count.
+        # The total number of entries.
         self.total_count = total_count
-        # Total pages.
+        # The total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -100,27 +100,27 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigs(DaraModel):
         sequence: int = None,
         site_version: int = None,
     ):
-        # Configuration ID.
+        # The configuration ID.
         self.config_id = config_id
-        # Configuration type. Possible values:
-        # - global: Global configuration.
-        # - rule: Rule configuration.
+        # The configuration type. Valid values:
+        # - global: global configuration.
+        # - rule: rule configuration.
         self.config_type = config_type
-        # Modify response headers, supporting add, delete, and modify operations.
+        # The response header modifications. Three operations are supported: add, delete, and modify.
         self.response_header_modification = response_header_modification
-        # Rule content, using conditional expressions to match user requests. This parameter is not required when adding a global configuration. There are two usage scenarios:
-        # - Match all incoming requests: Set the value to true
-        # - Match specific requests: Set the value to a custom expression, for example: (http.host eq \\"video.example.com\\")
+        # The rule content, which uses a conditional expression to match user requests. You do not need to set this parameter when you add a global configuration. Two scenarios are supported:
+        # - Match all incoming requests: set the value to true.
+        # - Match specific requests: set the value to a custom expression, for example, (http.host eq \\"video.example.com\\").
         self.rule = rule
-        # Rule switch. This parameter is not required when adding a global configuration. Possible values:
-        # - on: Enable.
-        # - off: Disable.
+        # The rule switch. You do not need to set this parameter when you add a global configuration. Valid values:
+        # - on: enabled.
+        # - off: disabled.
         self.rule_enable = rule_enable
-        # Rule name. This parameter is not required when adding a global configuration.
+        # The rule name. You do not need to set this parameter when you add a global configuration.
         self.rule_name = rule_name
-        # Rule execution order. The smaller the value, the higher the priority.
+        # The execution order of the rule. A smaller value indicates a higher priority.
         self.sequence = sequence
-        # Version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the effective version of the configuration, with the default being version 0.
+        # The version number of the site configuration. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration takes effect. Default value: 0.
         self.site_version = site_version
 
     def validate(self):
@@ -201,15 +201,18 @@ class ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMo
         type: str = None,
         value: str = None,
     ):
-        # Name of the response header.
+        # The response header name.
         self.name = name
-        # Operation type. The value range is as follows:
-        # - add: Add.
-        # - del: Delete
-        # - modify: Modify.
+        # The operation type. Valid values:
+        # - add: adds a response header.
+        # - del: deletes a response header.
+        # - modify: modifies a response header.
         self.operation = operation
+        # The value type. Valid values:
+        # - static: static pattern.
+        # - dynamic: dynamic schema.
         self.type = type
-        # Response header value.
+        # The response header value.
         self.value = value
 
     def validate(self):

@@ -25,21 +25,21 @@ class CancelCdsFileShareLinkResponseBody(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.success = success
 
     def validate(self):

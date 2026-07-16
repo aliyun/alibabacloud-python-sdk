@@ -16,11 +16,30 @@ class UpdateCloudAppInfoRequest(DaraModel):
         pkg_labels: List[str] = None,
         stable_patch_id: str = None,
     ):
+        # The ID of the cloud application, which corresponds to a unique application package.
+        # 
         # This parameter is required.
         self.app_id = app_id
+        # The description of the application.
         self.description = description
+        # Information about the patch package to upload.
+        # 
+        # 1. This parameter is not supported when PkgType is android.
+        # 
+        # 2. For the same AppId, only one patch can be in the process of uploading at a time. This means only one patch can be in a state other than its desired state.
         self.patch = patch
+        # The tags for the cloud application. You can select multiple tags. This action resets all existing tags for the cloud application.
+        # 
+        # 1. Valid values:
+        #    hot, game, and app.
+        # 
+        # 2. Special case:
+        #    To delete all tags, enter ["NULL"].
         self.pkg_labels = pkg_labels
+        # The ID of the stable patch. This patch is used by default if you do not specify a PatchId when the application is in use, such as during a session startup. This parameter is not supported when PkgType is android.
+        # Special value:
+        # 
+        # 1. If you set this parameter to origin, the patch version is removed and the initial version is used.
         self.stable_patch_id = stable_patch_id
 
     def validate(self):
@@ -79,11 +98,36 @@ class UpdateCloudAppInfoRequestPatch(DaraModel):
         pkg_format: str = None,
         rendering_instance_id: str = None,
     ):
+        # Specifies whether to automatically set the patch as the stable version after it is successfully uploaded. The default value is false.
         self.as_stable_patch = as_stable_patch
+        # The download URL for the patch package.
+        # You must specify either RenderingInstanceId or DownloadURL.
+        # DownloadURL takes precedence.
         self.download_url = download_url
+        # The MD5 hash of the patch package, used to verify integrity. This parameter is valid only if DownloadURL is not empty. It is required if DownloadURL is not empty.
         self.md_5 = md_5
+        # The name or description of the patch package. This is a unique identifier under the AppId.
+        # Default naming conventions:
+        # 
+        # 1. Cannot be origin or all.
+        # 
+        # 2. Must be 1 to 50 characters in length.
+        # 
+        # 3. Can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.).
+        # 
+        # 4. The first and last characters must be a letter or a digit.
         self.patch_name = patch_name
+        # The format of the installation package. By default, the system uses the file extension from the download URL. This parameter is valid only if DownloadURL is not empty. Valid values:
+        # 
+        # 1. tar.gz
+        # 
+        # 2. tar
+        # 
+        # 3. zip
+        # 
+        # 4. rar
         self.pkg_format = pkg_format
+        # The instance ID required to create the patch package. This parameter is valid only in the Android application marketplace scenario (PkgType=andrpid_appmarket). Specify either RenderingInstanceId or DownloadURL. DownloadURL takes precedence.
         self.rendering_instance_id = rendering_instance_id
 
     def validate(self):

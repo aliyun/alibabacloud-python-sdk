@@ -13,17 +13,19 @@ class SendChatappMessageResponseBody(DaraModel):
         message_id: str = None,
         request_id: str = None,
     ):
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The HTTP status code returned.
+        # The response code.
         # 
-        # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+        # - OK indicates that the request was successful.
+        # 
+        # - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the message that was sent.
+        # The message ID.
         self.message_id = message_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

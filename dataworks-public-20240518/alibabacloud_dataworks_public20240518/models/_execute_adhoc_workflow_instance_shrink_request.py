@@ -18,8 +18,9 @@ class ExecuteAdhocWorkflowInstanceShrinkRequest(DaraModel):
         self.biz_date = biz_date
         # The environment of the workspace. Valid values:
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # - Prod: production environment
+        # 
+        # - Dev: development environment
         self.env_type = env_type
         # The name of the workflow instance.
         # 

@@ -11,7 +11,6 @@ class CreateOrgHonorTemplateResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.honor_id = honor_id
-        # requestId
         self.request_id = request_id
 
     def validate(self):

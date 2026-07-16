@@ -13,8 +13,9 @@ class ProtocolConfiguration(DaraModel):
         protocol_settings: List[main_models.ProtocolSettings] = None,
         type: str = None,
     ):
-        # 详细的协议配置信息
+        # Detailed protocol configuration information
         self.protocol_settings = protocol_settings
+        # Protocol Type
         self.type = type
 
     def validate(self):

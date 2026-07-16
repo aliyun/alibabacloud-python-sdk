@@ -21,21 +21,21 @@ class CopyCdsFileRequest(DaraModel):
         # 
         # Valid values:
         # 
-        # *   true
+        # - true
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   false
+        # - false
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.auto_rename = auto_rename
         # The ID of the cloud disk.
         # 
@@ -47,12 +47,13 @@ class CopyCdsFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # 目标复制文件所在的个人空间ID（即UserId，您可以在DescribeCloudDriveUsers接口返回的报文中获取。）或者目标复制文件所在的团队空间ID（即GroupId，您可以在DescribeCloudDriveGroups接口返回的报文中获取。）
-        # > FileReceiverId和FileReceiverType都为空时，默认复制到文件所在的个人空间。
-        # >
+        # 目标复制文件所在的个人空间 ID（即 UserId，您可以在 DescribeCloudDriveUsers 接口返回的报文中获取。）或者目标复制文件所在的团队空间 ID（即 GroupId，您可以在 DescribeCloudDriveGroups 接口返回的报文中获取。）
+        # 
+        # > FileReceiverId 和 FileReceiverType 都为空时，默认复制到文件所在的个人空间。
         self.file_receiver_id = file_receiver_id
         # 文件所属的空间类型。
         self.file_receiver_type = file_receiver_type
+        # The team Space ID.
         self.group_id = group_id
         # The ID of the parent folder of the folder to which you want to copy the file. If you want to copy the file to the root directory, set this parameter to root.
         # 

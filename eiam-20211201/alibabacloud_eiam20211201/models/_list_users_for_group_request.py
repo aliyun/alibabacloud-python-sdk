@@ -23,11 +23,11 @@ class ListUsersForGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: 1.
+        # The page number. The default value is 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20. Maximum value: 100.
+        # The number of entries per page. The default value is 20. The maximum value is 100.
         self.page_size = page_size
-        # The account IDs. A maximum of 100 accounts can be queried.
+        # A list of account IDs. The list can contain a maximum of 100 IDs.
         self.user_ids = user_ids
 
     def validate(self):

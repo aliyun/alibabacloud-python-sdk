@@ -14,15 +14,26 @@ class ModifyUnrecognizingConfigRequest(DaraModel):
         prompt: str = None,
         threshold: int = None,
     ):
+        # The rejection action performed after the final rejection prompt is played.
+        # 
         # This parameter is required.
         self.final_action = final_action
+        # The action parameters for the rejection action, in JSON format.
         self.final_action_params = final_action_params
+        # The final rejection prompt. The service plays this prompt when the rejection threshold is met.
+        # 
         # This parameter is required.
         self.final_prompt = final_prompt
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The rejection prompt played when the service fails to recognize user input.
+        # 
         # This parameter is required.
         self.prompt = prompt
+        # The rejection threshold. The maximum number of consecutive rejections before the service triggers the rejection action.
+        # 
         # This parameter is required.
         self.threshold = threshold
 

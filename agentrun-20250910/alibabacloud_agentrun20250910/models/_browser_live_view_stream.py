@@ -9,6 +9,7 @@ class BrowserLiveViewStream(DaraModel):
         self,
         stream_endpoint: str = None,
     ):
+        # The WebSocket (WSS) stream endpoint.
         self.stream_endpoint = stream_endpoint
 
     def validate(self):

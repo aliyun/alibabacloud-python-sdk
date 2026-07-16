@@ -16,13 +16,21 @@ class ScalingPolicy(DaraModel):
         start_time: str = None,
         time_zone: str = None,
     ):
+        # The time when the policy expires.
         self.end_time = end_time
+        # The maximum number of instances.
         self.max_instances = max_instances
+        # The target value for the metric.
         self.metric_target = metric_target
+        # The type of metric to track. ProvisionedConcurrencyUtilization is the concurrency utilization of provisioned instances. CPUUtilization is the CPU utilization. GPUMemUtilization is the GPU memory utilization.
         self.metric_type = metric_type
+        # The minimum number of instances.
         self.min_instances = min_instances
+        # The name of the policy.
         self.name = name
+        # The time when the policy takes effect.
         self.start_time = start_time
+        # The time zone. If this parameter is empty, the times for startTime, endTime, and scheduleExpression must be in Coordinated Universal Time (UTC).
         self.time_zone = time_zone
 
     def validate(self):

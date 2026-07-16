@@ -11,15 +11,15 @@ class DeleteClientPublicKeyRequest(DaraModel):
         client_public_key_id: str = None,
         instance_id: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # 应用ClientPublicKey的ID
+        # The ID of the application ClientPublicKey.
         # 
         # This parameter is required.
         self.client_public_key_id = client_public_key_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

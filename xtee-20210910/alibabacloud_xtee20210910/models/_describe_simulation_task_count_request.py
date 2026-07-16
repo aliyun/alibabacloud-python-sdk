@@ -16,27 +16,27 @@ class DescribeSimulationTaskCountRequest(DaraModel):
         reg_id: str = None,
         start_time: int = None,
     ):
-        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
         # - **zh**: Chinese
-        # - **en**: English
+        # - **en**: English.
         self.lang = lang
-        # Data source configuration
+        # The datasource config.
         self.data_source_config = data_source_config
-        # Data source type
+        # The data source type.
         self.data_source_type = data_source_type
-        # Task end time.
+        # The end time of the task.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Event code
+        # The event code.
         # 
         # This parameter is required.
         self.event_code = event_code
-        # Filter
+        # The filter.
         self.filters_str = filters_str
-        # Region code
+        # The region code.
         self.reg_id = reg_id
-        # Task start time.
+        # The start time of the task.
         # 
         # This parameter is required.
         self.start_time = start_time

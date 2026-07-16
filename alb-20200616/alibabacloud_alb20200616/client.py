@@ -1096,6 +1096,8 @@ class Client(OpenApiClient):
             query['ModificationProtectionConfig'] = request.modification_protection_config
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.vpc_id):
@@ -1150,6 +1152,8 @@ class Client(OpenApiClient):
             query['ModificationProtectionConfig'] = request.modification_protection_config
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_ids):
+            query['SecurityGroupIds'] = request.security_group_ids
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.vpc_id):
@@ -1492,6 +1496,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            query['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.ipv_6enabled):
             query['Ipv6Enabled'] = request.ipv_6enabled
         if not DaraCore.is_null(request.protocol):
@@ -1554,6 +1560,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            query['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.ipv_6enabled):
             query['Ipv6Enabled'] = request.ipv_6enabled
         if not DaraCore.is_null(request.protocol):
@@ -1938,6 +1946,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1970,6 +1980,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -6604,6 +6616,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         if not DaraCore.is_null(request.zone_mappings):
             query['ZoneMappings'] = request.zone_mappings
         req = open_api_util_models.OpenApiRequest(
@@ -6640,6 +6654,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         if not DaraCore.is_null(request.zone_mappings):
             query['ZoneMappings'] = request.zone_mappings
         req = open_api_util_models.OpenApiRequest(
@@ -6856,6 +6872,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         if not DaraCore.is_null(request.zone_mappings):
             query['ZoneMappings'] = request.zone_mappings
         req = open_api_util_models.OpenApiRequest(
@@ -6890,6 +6908,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.load_balancer_id):
             query['LoadBalancerId'] = request.load_balancer_id
+        if not DaraCore.is_null(request.retain_resource_type):
+            query['RetainResourceType'] = request.retain_resource_type
         if not DaraCore.is_null(request.zone_mappings):
             query['ZoneMappings'] = request.zone_mappings
         req = open_api_util_models.OpenApiRequest(
@@ -7212,6 +7232,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            query['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.scheduler):
             query['Scheduler'] = request.scheduler
         if not DaraCore.is_null(request.server_group_id):
@@ -7264,6 +7286,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.health_check_config):
             query['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            query['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.scheduler):
             query['Scheduler'] = request.scheduler
         if not DaraCore.is_null(request.server_group_id):

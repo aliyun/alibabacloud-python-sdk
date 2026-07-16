@@ -12,11 +12,11 @@ class DistributeImageRequest(DaraModel):
         distribute_region_list: List[str] = None,
         image_id: str = None,
     ):
-        # The regions to which you want to distribute an image.
+        # The list of destination regions.
         # 
         # This parameter is required.
         self.distribute_region_list = distribute_region_list
-        # The ID of the image that you want to distribute.
+        # The ID of the image.
         # 
         # This parameter is required.
         self.image_id = image_id

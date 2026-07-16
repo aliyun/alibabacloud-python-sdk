@@ -20,10 +20,8 @@ class InsInvoiceScanQueryResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -195,59 +193,42 @@ class InsInvoiceScanQueryResponseBodyModuleItems(DaraModel):
         self.amount_without_tax = amount_without_tax
         self.bill_date = bill_date
         self.category = category
-        # 校验码
         self.check_code = check_code
         self.cost_center = cost_center
         self.department = department
-        # 开票人
         self.drawer = drawer
-        # 应用ID
         self.id = id
         self.insurance_company = insurance_company
         self.insurance_order_id = insurance_order_id
         self.insurance_type = insurance_type
         self.invoice_code = invoice_code
         self.invoice_day = invoice_day
-        # 发票明细
         self.invoice_details = invoice_details
-        # 发票地区
         self.invoice_location = invoice_location
         self.invoice_no = invoice_no
-        # 发票抬头
         self.invoice_title = invoice_title
         self.invoice_type = invoice_type
-        # 机器码
         self.machine_code = machine_code
         self.ofd_oss_url = ofd_oss_url
         self.order_id = order_id
         self.oss_url = oss_url
         self.passenger = passenger
-        # 密码区
         self.password_area = password_area
         self.project = project
-        # 购方银行信息
         self.purchaser_bank_account_info = purchaser_bank_account_info
-        # 购方联系方式
         self.purchaser_contact_info = purchaser_contact_info
         self.purchaser_name = purchaser_name
         self.purchaser_tax_no = purchaser_tax_no
-        # 收款人
         self.recipient = recipient
-        # 备注
         self.remarks = remarks
-        # 复核人
         self.reviewer = reviewer
-        # 销售方银行信息
         self.seller_bank_account_info = seller_bank_account_info
-        # 销售方联系方式
         self.seller_contact_info = seller_contact_info
         self.seller_name = seller_name
         self.seller_tax_no = seller_tax_no
-        # 校验码
         self.smart_check_code = smart_check_code
         self.tax_amount = tax_amount
         self.tax_rate = tax_rate
-        # 大写金额
         self.total_amount_in_words = total_amount_in_words
         self.xml_oss_url = xml_oss_url
 
@@ -538,23 +519,14 @@ class InsInvoiceScanQueryResponseBodyModuleItemsInvoiceDetails(DaraModel):
         unit: str = None,
         unit_price: str = None,
     ):
-        # 金额
         self.amount = amount
-        # 行号
         self.index = index
-        # 货物或应税劳务、服务名称
         self.item_name = item_name
-        # 数量
         self.quantity = quantity
-        # 规格型号
         self.specification = specification
-        # 税额
         self.tax = tax
-        # 税率
         self.tax_rate = tax_rate
-        # 单位
         self.unit = unit
-        # 单价
         self.unit_price = unit_price
 
     def validate(self):

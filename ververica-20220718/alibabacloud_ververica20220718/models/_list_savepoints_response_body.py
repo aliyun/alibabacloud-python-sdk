@@ -20,14 +20,17 @@ class ListSavepointsResponseBody(DaraModel):
         success: bool = None,
         total_size: int = None,
     ):
-        # *   If the value of success was true, a list of savepoints was returned.
-        # *   If the value of success was false, a null value was returned.
+        # - If the value of success was true, a list of savepoints was returned.
+        # 
+        # - If the value of success was false, a null value was returned.
         self.data = data
-        # *   If the value of success was false, an error code was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error code was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_code = error_code
-        # *   If the value of success was false, an error message was returned.
-        # *   If the value of success was true, a null value was returned.
+        # - If the value of success was false, an error message was returned.
+        # 
+        # - If the value of success was true, a null value was returned.
         self.error_message = error_message
         # The value was fixed to 200.
         self.http_code = http_code

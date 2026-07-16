@@ -13,7 +13,9 @@ class GetNormalizationRuleResponseBody(DaraModel):
         normalization_rule: main_models.GetNormalizationRuleResponseBodyNormalizationRule = None,
         request_id: str = None,
     ):
+        # The normalization rule.
         self.normalization_rule = normalization_rule
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,6 +53,7 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         extend_content_packed: str = None,
         extend_field_store_mode: str = None,
         normalization_category_id: str = None,
+        normalization_field_source: str = None,
         normalization_rule_description: str = None,
         normalization_rule_expression: str = None,
         normalization_rule_format: str = None,
@@ -62,29 +65,63 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         normalization_rule_type: str = None,
         normalization_rule_version: int = None,
         normalization_schema_id: str = None,
+        normalization_security_domain_id: str = None,
         order_field: str = None,
         product_id: str = None,
         update_time: int = None,
         vendor_id: str = None,
     ):
+        # The creation time.
         self.create_time = create_time
+        # Specifies whether to pack non-standard fields into the extend_content field. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
+        # The storage mode for extended fields. Valid values:
+        # - flat: ingested as-is.
+        # - reject: not ingested.
+        # - pack: packed into the extend_content field.
         self.extend_field_store_mode = extend_field_store_mode
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
+        self.normalization_field_source = normalization_field_source
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
+        # The normalization rule ID.
         self.normalization_rule_id = normalization_rule_id
+        # The list of normalization rule IDs.
         self.normalization_rule_ids = normalization_rule_ids
+        # The mode of the normalization rule. Valid values:
+        # - both
+        # - scan
+        # - realtime.
         self.normalization_rule_mode = normalization_rule_mode
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
+        # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
+        # The type of the normalization rule. Valid values:
+        # - predefined: predefined normalization rule.
+        # - custom: custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
+        # The normalization schema ID.
         self.normalization_schema_id = normalization_schema_id
+        self.normalization_security_domain_id = normalization_security_domain_id
+        # The field used to sort the rule list. Valid values:
+        # - GmtModified: sorted by modification time.
+        # - Id: sorted by rule ID (default).
         self.order_field = order_field
+        # The product ID.
         self.product_id = product_id
+        # The update time.
         self.update_time = update_time
+        # The vendor ID associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -106,6 +143,9 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
 
         if self.normalization_category_id is not None:
             result['NormalizationCategoryId'] = self.normalization_category_id
+
+        if self.normalization_field_source is not None:
+            result['NormalizationFieldSource'] = self.normalization_field_source
 
         if self.normalization_rule_description is not None:
             result['NormalizationRuleDescription'] = self.normalization_rule_description
@@ -140,6 +180,9 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         if self.normalization_schema_id is not None:
             result['NormalizationSchemaId'] = self.normalization_schema_id
 
+        if self.normalization_security_domain_id is not None:
+            result['NormalizationSecurityDomainId'] = self.normalization_security_domain_id
+
         if self.order_field is not None:
             result['OrderField'] = self.order_field
 
@@ -167,6 +210,9 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
 
         if m.get('NormalizationCategoryId') is not None:
             self.normalization_category_id = m.get('NormalizationCategoryId')
+
+        if m.get('NormalizationFieldSource') is not None:
+            self.normalization_field_source = m.get('NormalizationFieldSource')
 
         if m.get('NormalizationRuleDescription') is not None:
             self.normalization_rule_description = m.get('NormalizationRuleDescription')
@@ -200,6 +246,9 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
 
         if m.get('NormalizationSchemaId') is not None:
             self.normalization_schema_id = m.get('NormalizationSchemaId')
+
+        if m.get('NormalizationSecurityDomainId') is not None:
+            self.normalization_security_domain_id = m.get('NormalizationSecurityDomainId')
 
         if m.get('OrderField') is not None:
             self.order_field = m.get('OrderField')

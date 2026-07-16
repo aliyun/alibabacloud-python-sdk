@@ -10,7 +10,7 @@ class CreateRouteEntryResponseBody(DaraModel):
         request_id: str = None,
         route_entry_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the custom route entry.
         self.route_entry_id = route_entry_id

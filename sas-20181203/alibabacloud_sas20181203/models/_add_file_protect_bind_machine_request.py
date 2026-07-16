@@ -13,8 +13,11 @@ class AddFileProtectBindMachineRequest(DaraModel):
         block_uuids: List[str] = None,
         none_uuids: List[str] = None,
     ):
+        # The list of servers for which the alert protection level is enabled.
         self.alert_uuids = alert_uuids
+        # The list of servers for which tamper-proofing is enabled.
         self.block_uuids = block_uuids
+        # The list of servers for which file protection is disabled.
         self.none_uuids = none_uuids
 
     def validate(self):

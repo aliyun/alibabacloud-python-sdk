@@ -15,11 +15,17 @@ class CreateComputeSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code. A value of OK indicates that the request was successful.
         self.code = code
+        # The creation result.
         self.create_result = create_result
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -79,6 +85,7 @@ class CreateComputeSourceResponseBodyCreateResult(DaraModel):
         self,
         id: int = None,
     ):
+        # The ID of the compute source.
         self.id = id
 
     def validate(self):

@@ -10,6 +10,7 @@ class MultimodalQueryContext(DaraModel):
         self,
         original_query: main_models.MultimodalOriginalQuery = None,
     ):
+        # Alibaba
         self.original_query = original_query
 
     def validate(self):

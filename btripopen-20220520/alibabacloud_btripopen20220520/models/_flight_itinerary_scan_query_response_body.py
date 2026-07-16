@@ -20,10 +20,8 @@ class FlightItineraryScanQueryResponseBody(DaraModel):
         self.code = code
         self.message = message
         self.module = module
-        # requestId
         self.request_id = request_id
         self.success = success
-        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -183,7 +181,6 @@ class FlightItineraryScanQueryResponseBodyModuleItems(DaraModel):
         validation_code: str = None,
         xml_oss_url: str = None,
     ):
-        # 销售单位代号
         self.agent_code = agent_code
         self.apply_id = apply_id
         self.bill_date = bill_date
@@ -191,17 +188,13 @@ class FlightItineraryScanQueryResponseBodyModuleItems(DaraModel):
         self.build = build
         self.cost_center = cost_center
         self.department = department
-        # 机票行程明细
         self.flights = flights
         self.fuel_surcharge = fuel_surcharge
-        # UK
         self.id = id
         self.insurance = insurance
         self.invoice_title = invoice_title
         self.invoice_type = invoice_type
-        # 填开单位
         self.issue_company = issue_company
-        # 填开日期
         self.issue_date = issue_date
         self.itinerary_num = itinerary_num
         self.ofd_oss_url = ofd_oss_url
@@ -211,7 +204,6 @@ class FlightItineraryScanQueryResponseBodyModuleItems(DaraModel):
         self.passenger_name = passenger_name
         self.pdf_oss_url = pdf_oss_url
         self.project = project
-        # 提示信息
         self.prompt_message = prompt_message
         self.purchaser_name = purchaser_name
         self.purchaser_tax_no = purchaser_tax_no
@@ -221,7 +213,6 @@ class FlightItineraryScanQueryResponseBodyModuleItems(DaraModel):
         self.ticket_no = ticket_no
         self.ticket_price = ticket_price
         self.total_price = total_price
-        # 验证码
         self.validation_code = validation_code
         self.xml_oss_url = xml_oss_url
 
@@ -467,29 +458,17 @@ class FlightItineraryScanQueryResponseBodyModuleItemsFlights(DaraModel):
         valid_from_date: str = None,
         valid_to_date: str = None,
     ):
-        # 航班至
         self.arrival_station = arrival_station
-        # 座位等级
         self.cabin_class = cabin_class
-        # 承运人
         self.carrier = carrier
-        # 航班从
         self.departure_station = departure_station
-        # 日期
         self.flight_date = flight_date
-        # 航班号
         self.flight_number = flight_number
-        # 时间
         self.flight_time = flight_time
-        # 免费行李
         self.free_baggage_allowance = free_baggage_allowance
-        # 行号
         self.index = index
-        # 客票级别
         self.seat_class = seat_class
-        # 客票生效日期
         self.valid_from_date = valid_from_date
-        # 有效截止日期
         self.valid_to_date = valid_to_date
 
     def validate(self):

@@ -15,7 +15,7 @@ class ModifyScheduledTaskResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned results.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

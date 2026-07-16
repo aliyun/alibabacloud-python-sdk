@@ -11,11 +11,13 @@ class SetJobTemplateDefaultVersionResponseBody(DaraModel):
         gmt_modify_time: str = None,
         request_id: str = None,
     ):
-        # 设置后的默认版本号
+        # The current default version number.
         self.default_version = default_version
+        # The time the template was last modified.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modify_time = gmt_modify_time
-        # 本次请求的 ID，用于诊断和答疑。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

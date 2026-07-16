@@ -14,11 +14,17 @@ class AssignJobsAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The asynchronous task ID.
         self.async_task_id = async_task_id
+        # The API status code.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The API response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

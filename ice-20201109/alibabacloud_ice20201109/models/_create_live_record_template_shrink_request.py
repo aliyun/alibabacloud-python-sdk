@@ -10,7 +10,7 @@ class CreateLiveRecordTemplateShrinkRequest(DaraModel):
         name: str = None,
         record_format_shrink: str = None,
     ):
-        # The name of the template.
+        # The name of the Live Record Template.
         # 
         # This parameter is required.
         self.name = name

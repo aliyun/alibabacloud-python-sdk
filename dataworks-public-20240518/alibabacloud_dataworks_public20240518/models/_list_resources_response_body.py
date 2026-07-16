@@ -132,7 +132,7 @@ class ListResourcesResponseBodyPagingInfoResources(DaraModel):
         self.data_source = data_source
         # The unique identifier of the file resource.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # > Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The timestamp when the file resource was last modified.
         self.modify_time = modify_time
@@ -150,8 +150,9 @@ class ListResourcesResponseBodyPagingInfoResources(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Local
-        # *   OSS
+        # - Local
+        # 
+        # - OSS
         self.source_type = source_type
         # The destination storage path.
         self.target_path = target_path
@@ -159,18 +160,23 @@ class ListResourcesResponseBodyPagingInfoResources(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Gateway
-        # *   OSS
-        # *   HDFS
+        # - Gateway
+        # 
+        # - OSS
+        # 
+        # - HDFS
         self.target_type = target_type
         # The resource type.
         # 
         # Valid values:
         # 
-        # *   Python
-        # *   Jar
-        # *   Archive
-        # *   File
+        # - Python
+        # 
+        # - Jar
+        # 
+        # - Archive
+        # 
+        # - File
         self.type = type
 
     def validate(self):
@@ -279,7 +285,7 @@ class ListResourcesResponseBodyPagingInfoResourcesScript(DaraModel):
     ):
         # The ID of the script.
         # 
-        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The script path.
         self.path = path

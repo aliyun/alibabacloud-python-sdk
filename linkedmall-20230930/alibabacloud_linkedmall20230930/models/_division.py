@@ -13,10 +13,15 @@ class Division(DaraModel):
         parent_id: int = None,
         pinyin: str = None,
     ):
+        # Address encoding
         self.division_code = division_code
+        # Address Level
         self.division_level = division_level
+        # Address Name
         self.division_name = division_name
+        # Parent ID
         self.parent_id = parent_id
+        # Address pinyin
         self.pinyin = pinyin
 
     def validate(self):

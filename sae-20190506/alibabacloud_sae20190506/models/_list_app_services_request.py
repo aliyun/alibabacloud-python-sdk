@@ -17,33 +17,39 @@ class ListAppServicesRequest(DaraModel):
         service_type: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the application. You must specify only one of the following parameters: vpcId, namespace ID, and application ID.
+        # The application ID. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
         self.app_id = app_id
-        # The ID of the MSE Nacos instance. This parameter is required when the registry type is set to MSE Nacos.
+        # The instance ID of MSE Nacos. This parameter is required if the service registry is MSE Nacos.
         self.nacos_instance_id = nacos_instance_id
-        # The ID of the MSE Nacos namespace. This parameter is required when the registry type is set to MSE Nacos.
+        # The namespace ID of MSE Nacos. This parameter is required if the service registry is MSE Nacos.
         self.nacos_namespace_id = nacos_namespace_id
-        # The ID of the namespace. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+        # The namespace ID. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
         self.namespace_id = namespace_id
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The registry type. Valid values:
+        # The service registry type. Valid values:
         # 
-        # *   **0**: SAE Nacos
-        # *   **1**: SAE built-in Nacos
-        # *   **2** :MSE Nacos
-        # *   **9**: SAE Kubernetes service
+        # - **0**: SAE Nacos
+        # 
+        # - **1**: self-managed service registry
+        # 
+        # - **2**: MSE Nacos
+        # 
+        # - **9**: SAE K8s Service
         self.registry_type = registry_type
         # The service type. Valid values:
         # 
-        # *   **dubbo**
-        # *   **springCloud**
-        # *   **hsf**
-        # *   **k8sService**
+        # - **dubbo**
+        # 
+        # - **springCloud**
+        # 
+        # - **hsf**
+        # 
+        # - **k8sService**
         self.service_type = service_type
-        # The unique identifier of the VPC. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+        # The ID of the VPC. Specify exactly one of the following parameters: `VpcId`, `NamespaceId`, or `AppId`.
         self.vpc_id = vpc_id
 
     def validate(self):

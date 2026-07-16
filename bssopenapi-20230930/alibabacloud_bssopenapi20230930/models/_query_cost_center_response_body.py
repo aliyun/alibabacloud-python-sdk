@@ -17,12 +17,17 @@ class QueryCostCenterResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of financial unit data.
         self.cost_center_dto_list = cost_center_dto_list
+        # The current page number.
         self.current_page = current_page
+        # The metadata of the response struct.
         self.metadata = metadata
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -93,14 +98,23 @@ class QueryCostCenterResponseBodyCostCenterDtoList(DaraModel):
         owner_account_id: int = None,
         parent_cost_center_id: int = None,
         prev_cost_center_id: int = None,
+        priority: int = None,
     ):
+        # The code of the financial unit.
         self.cost_center_code = cost_center_code
+        # The ID of the financial unit.
         self.cost_center_id = cost_center_id
+        # The name of the financial unit. The name must be unique within the same account.
         self.cost_center_name = cost_center_name
+        # The level of the financial unit node.
         self.level = level
+        # The ID of the user who owns the financial unit.
         self.owner_account_id = owner_account_id
+        # The ID of the parent financial unit.
         self.parent_cost_center_id = parent_cost_center_id
+        # The ID of the previous financial unit.
         self.prev_cost_center_id = prev_cost_center_id
+        self.priority = priority
 
     def validate(self):
         pass
@@ -131,6 +145,9 @@ class QueryCostCenterResponseBodyCostCenterDtoList(DaraModel):
         if self.prev_cost_center_id is not None:
             result['PrevCostCenterId'] = self.prev_cost_center_id
 
+        if self.priority is not None:
+            result['Priority'] = self.priority
+
         return result
 
     def from_map(self, m: dict = None):
@@ -155,6 +172,9 @@ class QueryCostCenterResponseBodyCostCenterDtoList(DaraModel):
 
         if m.get('PrevCostCenterId') is not None:
             self.prev_cost_center_id = m.get('PrevCostCenterId')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         return self
 

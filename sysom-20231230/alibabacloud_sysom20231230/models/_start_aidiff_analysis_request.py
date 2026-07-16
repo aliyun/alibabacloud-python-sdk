@@ -13,8 +13,12 @@ class StartAIDiffAnalysisRequest(DaraModel):
         task_1: main_models.StartAIDiffAnalysisRequestTask1 = None,
         task_2: main_models.StartAIDiffAnalysisRequestTask2 = None,
     ):
+        # The task1 parameters.
+        # 
         # This parameter is required.
         self.task_1 = task_1
+        # The task2 parameters.
+        # 
         # This parameter is required.
         self.task_2 = task_2
 
@@ -57,12 +61,20 @@ class StartAIDiffAnalysisRequestTask2(DaraModel):
         step_end: float = None,
         step_start: float = None,
     ):
+        # The AI analysis ID.
+        # 
         # This parameter is required.
         self.analysis_id = analysis_id
+        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
+        # 
         # This parameter is required.
         self.pids = pids
+        # The step end time, calculated based on the selected step number.
+        # 
         # This parameter is required.
         self.step_end = step_end
+        # The step start time, calculated based on the selected step number.
+        # 
         # This parameter is required.
         self.step_start = step_start
 
@@ -112,9 +124,13 @@ class StartAIDiffAnalysisRequestTask1(DaraModel):
         step_end: float = None,
         step_start: float = None,
     ):
+        # The AI analysis ID.
         self.analysis_id = analysis_id
+        # The pids of AI job processes. Batch input is supported. Separate multiple pids with commas.
         self.pids = pids
+        # The step end time, calculated based on the selected step number.
         self.step_end = step_end
+        # The step start time, calculated based on the selected step number.
         self.step_start = step_start
 
     def validate(self):

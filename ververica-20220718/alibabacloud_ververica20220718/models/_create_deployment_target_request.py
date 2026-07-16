@@ -11,7 +11,10 @@ class CreateDeploymentTargetRequest(DaraModel):
         body: main_models.ResourceSpec = None,
         deployment_target_name: str = None,
     ):
+        # The data structure that represents the resources for the deployment target.
         self.body = body
+        # The name of the deployment target.
+        # 
         # This parameter is required.
         self.deployment_target_name = deployment_target_name
 

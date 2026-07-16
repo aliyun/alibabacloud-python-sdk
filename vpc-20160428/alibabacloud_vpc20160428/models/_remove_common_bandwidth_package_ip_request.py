@@ -17,14 +17,29 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the Internet Shared Bandwidth instance.
+        # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
+        # A client token used to ensure the idempotence of the request.  
+        # 
+        # Generate a unique value for this parameter from your client to guarantee uniqueness across different requests. ClientToken supports only ASCII characters.  
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
         self.client_token = client_token
         self.dry_run = dry_run
+        # The ID of the EIP instance.  
+        # 
+        # You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) API to query the ID of the EIP instance.
+        # 
         # This parameter is required.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the Internet Shared Bandwidth instance.  
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) API to obtain the region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account

@@ -14,8 +14,12 @@ class DeleteBackupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The backup ID.
+        # 
         # This parameter is required.
         self.backup_id = backup_id
+        # The instance ID.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account

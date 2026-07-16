@@ -11,15 +11,15 @@ class ApplyCertificateRequest(DaraModel):
         site_id: int = None,
         type: str = None,
     ):
-        # List of domains, separated by commas.
+        # A comma-separated list of domain names.
         # 
         # This parameter is required.
         self.domains = domains
-        # Site ID.
+        # The site ID.
         # 
         # This parameter is required.
         self.site_id = site_id
-        # The certificate type. Valid values: lets_encrypt, digicert_single, and digicert_wildcard.
+        # The certificate type. Valid values: `lets_encrypt` for a Let\\"s Encrypt certificate, `digicert_single` for a Digicert single-domain certificate, and `digicert_wildcard` for a Digicert wildcard certificate.
         self.type = type
 
     def validate(self):

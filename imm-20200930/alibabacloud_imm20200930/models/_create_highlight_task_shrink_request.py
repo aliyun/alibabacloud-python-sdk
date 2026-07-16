@@ -19,20 +19,46 @@ class CreateHighlightTaskShrinkRequest(DaraModel):
         type: str = None,
         user_data: str = None,
     ):
+        # The China authorization configuration. **Leave this parameter empty unless you have specific requirements.**.
         self.credential_config_shrink = credential_config_shrink
+        # The editing configuration.
         self.edit_shrink = edit_shrink
+        # The highlight configuration.
         self.highlight_shrink = highlight_shrink
+        # The highlight recognition mode. Valid values:
+        # 
+        # - Scene: scene and frame recognition.
+        # 
+        # - Average (default): average slice recognition.
         self.mode = mode
+        # The message notification configuration. For more information, click Notification. For the format of asynchronous notification messages, see [Asynchronous notification message format](https://www.alibabacloud.com/help/en/imm/developer-reference/asynchronous-notification-message-examples).
         self.notification_shrink = notification_shrink
+        # The output configuration.
+        # 
         # This parameter is required.
         self.output_shrink = output_shrink
+        # The project name.
+        # 
         # This parameter is required.
         self.project_name = project_name
+        # The list of media resources to process.
+        # A maximum of 10 videos are supported.
+        # 
         # This parameter is required.
         self.sources_shrink = sources_shrink
+        # The custom tags used to search for and filter asynchronous tasks.
         self.tags_shrink = tags_shrink
+        # The processing type. Valid values:
+        # 
+        # - Retrieval: highlight extraction.
+        # 
+        # - Concat: video composition.
+        # 
+        # - Compose: one-click video creation.
+        # 
         # This parameter is required.
         self.type = type
+        # The custom user data, which is returned in asynchronous message notifications.
         self.user_data = user_data
 
     def validate(self):

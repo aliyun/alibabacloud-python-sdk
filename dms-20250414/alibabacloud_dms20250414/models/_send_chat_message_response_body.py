@@ -14,9 +14,13 @@ class SendChatMessageResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The response data.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
         # Success
         self.success = success
@@ -72,12 +76,15 @@ class SendChatMessageResponseBodyData(DaraModel):
         self,
         agent_id: str = None,
         message: str = None,
+        message_id: str = None,
         session_id: str = None,
     ):
         # AgentId
         self.agent_id = agent_id
         # Message
         self.message = message
+        # The message ID.
+        self.message_id = message_id
         # SessionId
         self.session_id = session_id
 
@@ -95,6 +102,9 @@ class SendChatMessageResponseBodyData(DaraModel):
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+
         if self.session_id is not None:
             result['SessionId'] = self.session_id
 
@@ -107,6 +117,9 @@ class SendChatMessageResponseBodyData(DaraModel):
 
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
 
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')

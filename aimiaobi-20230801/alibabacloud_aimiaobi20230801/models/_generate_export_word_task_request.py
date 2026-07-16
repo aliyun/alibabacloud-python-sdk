@@ -10,8 +10,12 @@ class GenerateExportWordTaskRequest(DaraModel):
         agent_key: str = None,
         generated_content_id: int = None,
     ):
+        # Unique identifier of the workspace: AgentKey
+        # 
         # This parameter is required.
         self.agent_key = agent_key
+        # Unique identifier of the document
+        # 
         # This parameter is required.
         self.generated_content_id = generated_content_id
 

@@ -9,6 +9,8 @@ class DescribeNotifyConfigRequest(DaraModel):
         self,
         aiagent_id: str = None,
     ):
+        # The ID of the AIAgent.
+        # 
         # This parameter is required.
         self.aiagent_id = aiagent_id
 

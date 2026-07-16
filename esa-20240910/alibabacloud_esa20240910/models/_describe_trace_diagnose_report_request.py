@@ -10,7 +10,9 @@ class DescribeTraceDiagnoseReportRequest(DaraModel):
         task_id: str = None,
         trace_id: str = None,
     ):
+        # The diagnostic task ID. You must specify at least one of TraceId and TaskId. If neither is specified, the API returns an error.
         self.task_id = task_id
+        # The diagnostic trace ID. You must specify at least one of TraceId and TaskId. If neither is specified, the API returns an error.
         self.trace_id = trace_id
 
     def validate(self):

@@ -22,54 +22,69 @@ class EvaluateRegionResourceRequest(DaraModel):
         sub_domain: str = None,
         zone_id: str = None,
     ):
-        # The cluster link type. The backend randomly selects the default value. Valid values:
+        # The link type of the cluster. The backend randomly selects a default value. Valid values:
         # 
-        # *   **lvs**: Linux virtual server.
-        # *   **proxy**: proxy server.
-        # *   **dns**: domain name system.
+        # - **lvs**: Linux Virtual Server.
+        # 
+        # - **proxy**: proxy server.
+        # 
+        # - **dns**: Domain Name System.
         self.dbinstance_conn_type = dbinstance_conn_type
-        # The specifications of the node. For information about node specifications, see the following topics:
+        # The node specifications. For more information, see the following documents:
         # 
-        # *   PolarDB for MySQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
-        # *   PolarDB for Oracle: [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html)
-        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html)
+        # - PolarDB for MySQL: [Compute node specifications](https://help.aliyun.com/document_detail/102542.html).
+        # 
+        # - PolarDB for PostgreSQL (Oracle Compatible): [Compute node specifications](https://help.aliyun.com/document_detail/207921.html).
+        # 
+        # - PolarDB for PostgreSQL: [Compute node specifications](https://help.aliyun.com/document_detail/209380.html).
         # 
         # This parameter is required.
         self.dbnode_class = dbnode_class
-        # The type of the database engine. Valid values:
+        # The database engine type. Valid values:
         # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **Oracle**
+        # - **MySQL**
+        # 
+        # - **PostgreSQL**
+        # 
+        # - **Oracle**
         # 
         # This parameter is required.
         self.dbtype = dbtype
-        # The version of the database engine
+        # The version of the database engine.
         # 
-        # *   Valid values for the MySQL database engine:
+        # - Valid values for MySQL:
         # 
-        #     *   **5.6**
-        #     *   **5.7**
-        #     *   **8.0**
+        #   - **5.6**
         # 
-        # *   Valid values for the PostgreSQL database engine:
+        #   - **5.7**
         # 
-        #     *   **11**
-        #     *   **14**
+        #   - **8.0**
         # 
-        # *   Valid value for the Oracle database engine: **11**
+        # - Valid values for PostgreSQL:
+        # 
+        #   - **11**
+        # 
+        #   - **14**
+        # 
+        # - Valid values for Oracle:
+        # 
+        #   - **11**
+        # 
+        #   - **14**
         # 
         # This parameter is required.
         self.dbversion = dbversion
-        # Specifies whether to return the zones in which the single-zone deployment method is supported. Default value: 0. Valid values:
+        # Specifies whether to return the list of zones that support single-zone deployment. Valid values:
         # 
-        # *   **0**: no value returned
-        # *   **1**: returns the zones.
+        # - **0** (default): The list is not returned.
+        # 
+        # - **1**: The list is returned.
         self.dispense_mode = dispense_mode
-        # Specifies whether to create Maxscale. Valid values:
+        # Specifies whether to create a MaxScale cluster. Valid values:
         # 
-        # *   **true** (default)
-        # *   **false**
+        # - **true** (default): A MaxScale cluster is created.
+        # 
+        # - **false**: A MaxScale cluster is not created.
         # 
         # This parameter is required.
         self.need_max_scale_link = need_max_scale_link
@@ -77,7 +92,7 @@ class EvaluateRegionResourceRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -85,11 +100,11 @@ class EvaluateRegionResourceRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The subdomain. It is the child domain of the top-level domain name or parent domain. For example, if the parent domain name is cn-beijing, its child domain can be cn-beijing-i-aliyun.
+        # The subdomain. A subdomain is a level below a top-level domain. For example, if the parent domain is \\`cn-beijing\\`, a valid subdomain is \\`cn-beijing-i-aliyun\\`.
         self.sub_domain = sub_domain
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
         # 
         # This parameter is required.
         self.zone_id = zone_id

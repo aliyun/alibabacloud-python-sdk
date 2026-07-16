@@ -16,14 +16,15 @@ class DescribeAutoProvisioningGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The auto provisioning groups.
         self.auto_provisioning_groups = auto_provisioning_groups
-        # The number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of queried auto provisioning groups.
+        # The total number of auto provisioning groups found.
         self.total_count = total_count
 
     def validate(self):

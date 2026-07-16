@@ -18,12 +18,19 @@ class SubmitSmartAuditRequest(DaraModel):
         workspace_id: str = None,
         image_urls: List[main_models.SubmitSmartAuditRequestImageUrls] = None,
     ):
+        # Parameters for image audit
         self.image_url_list = image_url_list
+        # Rule library ID for rule-based auditing (default: Default)
         self.note_id = note_id
+        # List of sub-audit codes
         self.sub_codes = sub_codes
+        # Word library name for dictionary-based auditing (default: Default)
         self.terms_name = terms_name
+        # Content to be audited
         self.text = text
+        # [Workspace ID](https://help.aliyun.com/document_detail/2782167.html)
         self.workspace_id = workspace_id
+        # Parameters for image audit (deprecated; use ImageUrlList instead)
         self.image_urls = image_urls
 
     def validate(self):
@@ -105,7 +112,9 @@ class SubmitSmartAuditRequestImageUrls(DaraModel):
         id: str = None,
         url: str = None,
     ):
+        # Unique image identifier
         self.id = id
+        # The URL can be a web link or a base64-encoded string.
         self.url = url
 
     def validate(self):
@@ -140,7 +149,9 @@ class SubmitSmartAuditRequestImageUrlList(DaraModel):
         id: str = None,
         url: str = None,
     ):
+        # Unique image identifier
         self.id = id
+        # The URL can be a web link or a base64-encoded string.
         self.url = url
 
     def validate(self):

@@ -21,65 +21,87 @@ class SetPasswordPolicyRequest(DaraModel):
         require_symbols: bool = None,
         require_uppercase_characters: bool = None,
     ):
-        # Specifies whether to disable logon after the password expires. Valid values:
+        # Specifies whether logon is blocked after a password expires.
         # 
-        # *   true: After the password expires, you cannot use the password to log on to the console. You can log on to the console only after you reset the password by using your Alibaba Cloud account or as a RAM user that has administrative rights.
-        # *   false: After the password expires, you can change the password to log on to the console. This is the default value.
+        # - true: After a password expires, the RAM user cannot log on to the console. An Alibaba Cloud account owner or a RAM administrator must reset the password before the RAM user can log on.
+        # 
+        # - false (default): After a password expires, the RAM user can change the password and then log on.
         self.hard_expire = hard_expire
+        # Validity period for initial passwords. Initial passwords apply to newly created RAM users or users whose console logon settings are re-enabled.
+        # 
+        # Valid values: 0 to 90. Unit: days.
+        # 
+        # Default value: 14.
+        # 
+        # A value of 0 disables this constraint.
         self.initial_password_age = initial_password_age
+        # Specifies whether threat passwords are blocked when set using APIs.
+        # 
+        # Default value: false
+        # 
+        # - true
+        # 
+        # - false (default)
         self.intercept_risk_password_on_api = intercept_risk_password_on_api
-        # The maximum number of password retries. If you enter the wrong passwords for the specified consecutive times, the account is locked for one hour.
+        # Maximum number of failed password attempts. After the specified number of consecutive incorrect password attempts, the account is locked for one hour.
         # 
         # Valid values: 0 to 32.
         # 
-        # The default value is 0, which indicates that the password retries are not limited.
+        # Default value: 0, which disables this constraint.
         self.max_login_attemps = max_login_attemps
-        # The validity period of the password.
+        # Password validity period.
         # 
         # Valid values: 0 to 1095. Unit: days.
         # 
-        # The default value is 0, which indicates that the password never expires.
+        # Default value: 0, which means passwords never expire.
         self.max_password_age = max_password_age
-        # The minimum number of unique characters in the password.
+        # Minimum number of unique characters in a password.
         # 
         # Valid values: 0 to 8.
         # 
-        # The default value is 0, which indicates that no limits are imposed on the number of unique characters in a password.
+        # Default value: 0, which imposes no restriction.
         self.minimum_password_different_character = minimum_password_different_character
-        # The minimum number of characters in the password.
+        # Minimum password length.
         # 
-        # Valid values: 8 to 32. Default value: 8.
+        # Valid values: 8 to 32.
+        # 
+        # Default value: 8.
         self.minimum_password_length = minimum_password_length
-        # Specifies whether to exclude the username from the password. Valid values:
+        # Specifies whether passwords must not contain the user name.
         # 
-        # *   true: A password cannot contain the username.
-        # *   false: A password can contain the username. This is the default value.
+        # - true
+        # 
+        # - false (default)
         self.password_not_contain_user_name = password_not_contain_user_name
-        # The policy for password history check.
+        # Prevents reuse of previous passwords.
         # 
-        # The previous N passwords cannot be reused. Valid values of N: 0 to 24.
+        # Valid values: 0 to 24. This value specifies how many previous passwords are blocked from reuse.
         # 
-        # The default value is 0, which indicates that RAM users can reuse previous passwords.
+        # Default value: 0, which disables this constraint.
         self.password_reuse_prevention = password_reuse_prevention
-        # Specifies whether the password must contain lowercase letters. Valid values:
+        # Specifies whether passwords must contain lowercase letters.
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.require_lowercase_characters = require_lowercase_characters
-        # Specifies whether the password must contain digits. Valid values:
+        # Specifies whether passwords must contain numbers.
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.require_numbers = require_numbers
-        # Specifies whether the password must contain special characters. Valid values:
+        # Specifies whether passwords must contain special characters.
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.require_symbols = require_symbols
-        # Specifies whether the password must contain uppercase letters. Valid values:
+        # Specifies whether passwords must contain uppercase letters.
         # 
-        # *   true
-        # *   false (default)
+        # - true
+        # 
+        # - false (default)
         self.require_uppercase_characters = require_uppercase_characters
 
     def validate(self):

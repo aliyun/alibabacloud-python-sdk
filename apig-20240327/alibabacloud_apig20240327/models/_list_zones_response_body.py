@@ -15,13 +15,13 @@ class ListZonesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The response status code.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
-        # Response message.
+        # The response message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +69,7 @@ class ListZonesResponseBodyData(DaraModel):
         self,
         items: List[main_models.ListZonesResponseBodyDataItems] = None,
     ):
-        # The list of queried zones.
+        # The list of zones.
         self.items = items
 
     def validate(self):
@@ -106,9 +106,9 @@ class ListZonesResponseBodyDataItems(DaraModel):
         support_qat: str = None,
         zone_id: str = None,
     ):
-        # Whether QAT (Quality Assurance Testing) is supported in this zone
+        # Indicates whether QuickAssist Technology (QAT) is supported.
         self.support_qat = support_qat
-        # The zone identifier
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

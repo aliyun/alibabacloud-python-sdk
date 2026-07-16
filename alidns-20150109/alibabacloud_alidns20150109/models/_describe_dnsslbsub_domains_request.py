@@ -14,22 +14,23 @@ class DescribeDNSSLBSubDomainsRequest(DaraModel):
         rr: str = None,
         user_client_ip: str = None,
     ):
-        # The domain name. You can call the [DescribeDomains](https://www.alibabacloud.com/help/zh/dns/api-alidns-2015-01-09-describedomains?spm=a2c63.p38356.help-menu-search-29697.d_0) operation to obtain the domain name.
+        # The domain name. Call the [DescribeDomains](https://www.alibabacloud.com/help/en/dns/api-alidns-2015-01-09-describedomains) operation to obtain the domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The language of the response. Valid values:
+        # The language of the response. Valid values are:
         # 
-        # *   **zh** (default): Chinese
-        # *   **en**: English
+        # - **zh**: Chinese. This is the default value.
+        # 
+        # - **en**: English.
         self.lang = lang
-        # The page number. Pages start from page **1**. Default value: **1**.
+        # The page number. The value starts from **1**. The default value is **1**.
         self.page_number = page_number
-        # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
+        # The number of entries to return on each page. The maximum value is **100**. The default value is **20**.
         self.page_size = page_size
-        # The hostname.
+        # The host record.
         self.rr = rr
-        # The IP address of the user account.
+        # The IP address of the client.
         self.user_client_ip = user_client_ip
 
     def validate(self):

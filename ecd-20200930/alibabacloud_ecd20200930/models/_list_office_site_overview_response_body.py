@@ -90,77 +90,77 @@ class ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults(DaraModel):
         # 
         # Default values:
         # 
-        # *   CONFIGUSERFAILED
+        # - CONFIGUSERFAILED
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   REGISTERING
+        # - REGISTERING
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   REGISTERED
+        # - REGISTERED
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   NEEDCONFIGTRUST
+        # - NEEDCONFIGTRUST
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CONFIGUSERING
+        # - CONFIGUSERING
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CONFIGTRUSTFAILED
+        # - CONFIGTRUSTFAILED
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   ERROR
+        # - ERROR
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   CONFIGTRUSTING
+        # - CONFIGTRUSTING
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        # *   NEEDCONFIGUSER
+        # - NEEDCONFIGUSER
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         # 
-        #     <!-- -->
+        #   <!-- -->
         self.office_site_status = office_site_status
         # The ID of the region where the office network resides.
         self.region_id = region_id
@@ -176,9 +176,11 @@ class ListOfficeSiteOverviewResponseBodyOfficeSiteOverviewResults(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard (default): standard, exclusive VPC
-        # *   customized: custom, user VPC
-        # *   basic: basic, shared VPC
+        # - standard (default): standard, exclusive VPC
+        # 
+        # - customized: custom, user VPC
+        # 
+        # - basic: basic, shared VPC
         self.vpc_type = vpc_type
         # The number of cloud computers that are about to expire in the office network.
         self.will_expired_eds_count = will_expired_eds_count

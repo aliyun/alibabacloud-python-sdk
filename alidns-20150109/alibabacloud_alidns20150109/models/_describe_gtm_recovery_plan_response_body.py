@@ -26,34 +26,40 @@ class DescribeGtmRecoveryPlanResponseBody(DaraModel):
         update_time: str = None,
         update_timestamp: int = None,
     ):
-        # The time when the disaster recovery plan was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the disaster recovery plan was created.
         self.create_time = create_time
-        # The time when the disaster recovery plan was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the disaster recovery plan was created. This value is a UNIX timestamp.
         self.create_timestamp = create_timestamp
-        # The number of faulty address pools.
+        # The number of abnormal address pools.
         self.fault_addr_pool_num = fault_addr_pool_num
         self.fault_addr_pools = fault_addr_pools
-        # The time when the disaster recovery plan was last executed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the disaster recovery plan was last executed.
         self.last_execute_time = last_execute_time
-        # The time when the disaster recovery plan was last executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the disaster recovery plan was last executed. This value is a UNIX timestamp.
         self.last_execute_timestamp = last_execute_timestamp
-        # The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the disaster recovery plan was last rolled back. The value is a string that represents a UNIX timestamp.
         self.last_rollback_time = last_rollback_time
-        # The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the disaster recovery plan was last rolled back. This value is a UNIX timestamp.
         self.last_rollback_timestamp = last_rollback_timestamp
         # The name of the disaster recovery plan.
         self.name = name
         # The ID of the disaster recovery plan.
         self.recovery_plan_id = recovery_plan_id
-        # The description of the disaster recovery plan.
+        # The remarks.
         self.remark = remark
         # The request ID.
         self.request_id = request_id
-        # The status of the disaster recovery plan.
+        # The status of the disaster recovery plan:
+        # 
+        # - UNEXECUTED: The disaster recovery plan is not executed.
+        # 
+        # - EXECUTED: The disaster recovery plan is being executed.
+        # 
+        # - ROLLED_BACK: The disaster recovery plan is being rolled back.
         self.status = status
-        # The time when the disaster recovery plan was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the disaster recovery plan was last updated.
         self.update_time = update_time
-        # The time when the disaster recovery plan was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the disaster recovery plan was last updated. This value is a UNIX timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

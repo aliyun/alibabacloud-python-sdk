@@ -11,7 +11,6 @@ class GetUserIdShrinkRequest(DaraModel):
         union_id: str = None,
     ):
         self.tenant_context_shrink = tenant_context_shrink
-        # unionId
         self.union_id = union_id
 
     def validate(self):

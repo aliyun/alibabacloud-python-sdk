@@ -47,6 +47,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryTaskConcurrencyResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.application_code):
+            body['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -75,6 +77,8 @@ class Client(OpenApiClient):
     ) -> main_models.QueryTaskConcurrencyResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.application_code):
+            body['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -123,6 +127,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
         body = {}
+        if not DaraCore.is_null(request.call_end_time_begin):
+            body['CallEndTimeBegin'] = request.call_end_time_begin
+        if not DaraCore.is_null(request.call_end_time_end):
+            body['CallEndTimeEnd'] = request.call_end_time_end
+        if not DaraCore.is_null(request.call_start_time_begin):
+            body['CallStartTimeBegin'] = request.call_start_time_begin
+        if not DaraCore.is_null(request.call_start_time_end):
+            body['CallStartTimeEnd'] = request.call_start_time_end
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
         if not DaraCore.is_null(request.customer_name_or_phone):
@@ -173,6 +185,14 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
         body = {}
+        if not DaraCore.is_null(request.call_end_time_begin):
+            body['CallEndTimeBegin'] = request.call_end_time_begin
+        if not DaraCore.is_null(request.call_end_time_end):
+            body['CallEndTimeEnd'] = request.call_end_time_end
+        if not DaraCore.is_null(request.call_start_time_begin):
+            body['CallStartTimeBegin'] = request.call_start_time_begin
+        if not DaraCore.is_null(request.call_start_time_end):
+            body['CallStartTimeEnd'] = request.call_start_time_end
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
         if not DaraCore.is_null(request.customer_name_or_phone):

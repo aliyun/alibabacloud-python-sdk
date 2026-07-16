@@ -65,31 +65,35 @@ class ListBindDataSourcesResponseBodyData(DaraModel):
         log_count: int = None,
         task_count: int = None,
     ):
-        # The ID of the cloud account.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The username of the cloud account.
+        # The name of the multicloud account.
         self.account_name = account_name
-        # The code of the cloud service provider. Valid values:
+        # The code of the multicloud environment. Valid values:
         # 
-        # *   qcloud: Tencent Cloud
-        # *   aliyun: Alibaba Cloud
-        # *   hcloud: Huawei Cloud
+        # - qcloud: Tencent Cloud.
+        # 
+        # - aliyun: Alibaba Cloud.
+        # 
+        # - hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
-        # The ID of the data source. The ID is an MD5 hash value that is calculated by the threat analysis feature based on specific parameters.
+        # The ID of the data source. This ID is an MD5 hash value that is calculated by Threat Analysis based on specific parameters.
         self.data_source_instance_id = data_source_instance_id
         # The name of the data source.
         self.data_source_name = data_source_name
-        # The remarks on the data source.
+        # The remarks of the data source.
         self.data_source_remark = data_source_remark
         # The type of the data source. Valid values:
         # 
-        # *   obs: Huawei Cloud Object Storage Service (OBS)
-        # *   wafApi: download API of Tencent Cloud Web Application Firewall (WAF)
-        # *   ckafka: Tencent Cloud Kafka (CKafka)
+        # - obs: Huawei Cloud OBS.
+        # 
+        # - wafApi: Tencent Cloud WAF download API.
+        # 
+        # - ckafka: Tencent Cloud CKafka.
         self.data_source_type = data_source_type
-        # The number of logs that are added within the data source.
+        # The number of logs added to the data source.
         self.log_count = log_count
-        # The number of existing tasks that are created to add logs within the data source.
+        # The number of log collection tasks created for the data source.
         self.task_count = task_count
 
     def validate(self):

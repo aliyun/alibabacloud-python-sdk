@@ -13,8 +13,9 @@ class ListSaasPermissionGroupInfosResponseBody(DaraModel):
         data: List[main_models.ListSaasPermissionGroupInfosResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The permission details for integrated SaaS pages.
         self.data = data
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -59,9 +60,13 @@ class ListSaasPermissionGroupInfosResponseBodyData(DaraModel):
         pg_infos: List[main_models.ListSaasPermissionGroupInfosResponseBodyDataPgInfos] = None,
         saas_code: str = None,
     ):
+        # The name of the page in English.
         self.en_name = en_name
+        # The name of the page.
         self.name = name
+        # The SaaS permission groups.
         self.pg_infos = pg_infos
+        # The unique code for the SaaS page.
         self.saas_code = saas_code
 
     def validate(self):
@@ -117,8 +122,11 @@ class ListSaasPermissionGroupInfosResponseBodyDataPgInfos(DaraModel):
         pg_en_name: str = None,
         pg_name: str = None,
     ):
+        # The unique permission group code.
         self.pg_code = pg_code
+        # The English name of the permission group.
         self.pg_en_name = pg_en_name
+        # The name of the permission group.
         self.pg_name = pg_name
 
     def validate(self):

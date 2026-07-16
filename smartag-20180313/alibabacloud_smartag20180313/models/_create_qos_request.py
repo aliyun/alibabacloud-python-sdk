@@ -17,17 +17,17 @@ class CreateQosRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The description of the QoS policy.
+        # The description of the QoS policy instance.
         # 
-        # The description must be 1 to 512 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
+        # The description must be 1 to 512 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.qos_description = qos_description
-        # The name of the QoS policy.
+        # The name of the QoS policy instance.
         # 
-        # The name must be 2 to 100 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.qos_name = qos_name
-        # The ID of the region where the QoS policy is deployed.
+        # The region ID of the QoS policy instance.
         # 
         # This parameter is required.
         self.region_id = region_id

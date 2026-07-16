@@ -13,10 +13,15 @@ class TagResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code of the API call.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The message returned for the API call.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

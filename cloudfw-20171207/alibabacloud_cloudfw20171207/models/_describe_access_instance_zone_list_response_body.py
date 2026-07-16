@@ -14,8 +14,11 @@ class DescribeAccessInstanceZoneListResponseBody(DaraModel):
         zone_list: List[str] = None,
         zones: List[main_models.DescribeAccessInstanceZoneListResponseBodyZones] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of zones.
         self.zone_list = zone_list
+        # The list of zones.
         self.zones = zones
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeAccessInstanceZoneListResponseBodyZones(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
+        # The name of the zone in the local language.
         self.local_name = local_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

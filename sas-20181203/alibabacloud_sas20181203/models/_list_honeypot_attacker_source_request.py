@@ -23,8 +23,9 @@ class ListHoneypotAttackerSourceRequest(DaraModel):
         self.end_time_stamp = end_time_stamp
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # 
+        # - **en**: English
         self.lang = lang
         # The number of entries to return on each page.
         self.page_size = page_size

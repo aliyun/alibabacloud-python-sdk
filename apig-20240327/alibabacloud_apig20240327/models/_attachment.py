@@ -9,29 +9,35 @@ from darabonba.model import DaraModel
 class Attachment(DaraModel):
     def __init__(
         self,
+        attach_resource_id: str = None,
         attach_resource_ids: List[str] = None,
+        attach_resource_parent_ids: List[str] = None,
         attach_resource_type: str = None,
         environment_id: str = None,
         gateway_id: str = None,
         policy_attachment_id: str = None,
     ):
-        # The resource IDs.
+        # attachResourceId
+        self.attach_resource_id = attach_resource_id
+        # The list of mounted resource IDs.
         self.attach_resource_ids = attach_resource_ids
-        # The supported mount point type. Valid values:
+        # The list of parent IDs of the mounted resource.
+        self.attach_resource_parent_ids = attach_resource_parent_ids
+        # The type of mount point supported by the policy. Valid values:
         # 
-        # *   HttpApi: an HTTP API
-        # *   Operation: an operation in an HTTP API
-        # *   GatewayRoute: a gateway route
-        # *   GatewayService: a gateway service
-        # *   GatewayServicePort: a gateway service port
-        # *   Domain: a gateway domain name
-        # *   Gateway: a gateway instance
+        # - HttpApi: HttpApi.
+        # - Operation: Operation of HttpApi.
+        # - GatewayRoute: gateway route.
+        # - GatewayService: gateway service.
+        # - GatewayServicePort: gateway service port.
+        # - Domain: gateway domain name.
+        # - Gateway: gateway.
         self.attach_resource_type = attach_resource_type
-        # The environment to which the mounted resource belongs. If an asterisk (\\*) is returned as the environment ID, the mounted resource is not related to the environment.
+        # The environment to which the mounted resource belongs. If the environment ID is *, the mounted resource of the policy is not associated with any environment.
         self.environment_id = environment_id
-        # The instance to which the mounted resource belongs.
+        # The gateway to which the mounted resource belongs.
         self.gateway_id = gateway_id
-        # The mount ID.
+        # The policy mount ID.
         self.policy_attachment_id = policy_attachment_id
 
     def validate(self):
@@ -42,8 +48,14 @@ class Attachment(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+
         if self.attach_resource_ids is not None:
             result['attachResourceIds'] = self.attach_resource_ids
+
+        if self.attach_resource_parent_ids is not None:
+            result['attachResourceParentIds'] = self.attach_resource_parent_ids
 
         if self.attach_resource_type is not None:
             result['attachResourceType'] = self.attach_resource_type
@@ -61,8 +73,14 @@ class Attachment(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+
         if m.get('attachResourceIds') is not None:
             self.attach_resource_ids = m.get('attachResourceIds')
+
+        if m.get('attachResourceParentIds') is not None:
+            self.attach_resource_parent_ids = m.get('attachResourceParentIds')
 
         if m.get('attachResourceType') is not None:
             self.attach_resource_type = m.get('attachResourceType')

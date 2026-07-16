@@ -12,12 +12,20 @@ class DisableRightsSeparationRequest(DaraModel):
         dba_account_password: str = None,
         region_id: str = None,
     ):
+        # The name of the database instance.
+        # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
+        # The name of the DBA account.
+        # 
         # This parameter is required.
         self.dba_account_name = dba_account_name
+        # The password of the DBA account.
+        # 
         # This parameter is required.
         self.dba_account_password = dba_account_password
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

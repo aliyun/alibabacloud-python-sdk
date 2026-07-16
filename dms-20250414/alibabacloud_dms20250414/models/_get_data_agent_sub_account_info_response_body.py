@@ -14,10 +14,15 @@ class GetDataAgentSubAccountInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned data structure.
         self.data = data
+        # The error code.
         self.error_code = error_code
+        # The error message returned if the call fails.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -75,10 +80,15 @@ class GetDataAgentSubAccountInfoResponseBodyData(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        # The time when the user was created in RAM. This is a UNIX timestamp in seconds.
         self.create_date = create_date
+        # The ID of the Alibaba Cloud account to which the user belongs.
         self.main_account_id = main_account_id
+        # The time when the user information was last updated. This is a UNIX timestamp in seconds.
         self.update_date = update_date
+        # The UID of the queried RAM user.
         self.user_id = user_id
+        # The name of the queried RAM user.
         self.user_name = user_name
 
     def validate(self):

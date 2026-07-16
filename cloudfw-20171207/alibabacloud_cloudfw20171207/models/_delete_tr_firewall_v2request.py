@@ -10,12 +10,13 @@ class DeleteTrFirewallV2Request(DaraModel):
         firewall_id: str = None,
         lang: str = None,
     ):
-        # The instance ID of the VPC firewall.
+        # The ID of the VPC firewall for the transit router.
         self.firewall_id = firewall_id
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
 
     def validate(self):

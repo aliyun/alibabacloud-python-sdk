@@ -19,15 +19,37 @@ class UpdateContactsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The email address of the contact.
         self.contact_email = contact_email
+        # The ID of the contact to update. You can retrieve the ID by calling the ListContacts operation.
+        # 
         # This parameter is required.
         self.contact_id = contact_id
+        # The name of the contact.
         self.contact_name = contact_name
+        # The mobile phone number of the contact.
         self.contact_phone = contact_phone
+        # Enables or disables email alerts. Valid values:
+        # 
+        # - 0: disabled.
+        # 
+        # - 1: enabled.
         self.mail_status = mail_status
+        # Enables or disables alerts for number status.
+        # Valid values:
+        # 
+        # - **true**: enabled.
+        # 
+        # - **false**: disabled.
         self.open_status_warning = open_status_warning
+        # Enables or disables alerts for number attribution queries. Valid values: -**true**: enabled. -**false**: disabled.
         self.opent_attribution_warning = opent_attribution_warning
         self.owner_id = owner_id
+        # Enables or disables phone call alerts. Valid values:
+        # 
+        # - 0: disabled.
+        # 
+        # - 1: enabled.
         self.phone_status = phone_status
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

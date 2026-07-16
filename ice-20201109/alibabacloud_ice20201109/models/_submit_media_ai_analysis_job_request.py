@@ -15,6 +15,7 @@ class SubmitMediaAiAnalysisJobRequest(DaraModel):
         self.analysis_params = analysis_params
         # The media asset that you want to analyze. You can specify an Object Storage Service (OSS) URL, a media asset ID, or an external URL.
         self.input = input
+        # Custom settings in JSON format, with a maximum length of 512 bytes. Supports [custom webhook address configuration](https://help.aliyun.com/document_detail/451631.html).
         self.user_data = user_data
 
     def validate(self):

@@ -9,9 +9,9 @@ class CreateRdDefaultSyncListRequest(DaraModel):
         self,
         folder_ids: str = None,
     ):
-        # The IDs of the folders in the resource directory.
+        # The list of folder IDs in the resource directory.
         # 
-        # >  You can call the [GetRdTree](~~GetRdTree~~) operation to obtain the IDs of the folders. Separate multiple folder IDs with commas (,). If you do not specify a value for this parameter, the existing member list is cleared.
+        # > You can call [GetRdTree](~~GetRdTree~~) to obtain folder IDs. Separate multiple folder IDs with commas (,). If you do not specify this parameter, the existing configuration list is cleared.
         self.folder_ids = folder_ids
 
     def validate(self):

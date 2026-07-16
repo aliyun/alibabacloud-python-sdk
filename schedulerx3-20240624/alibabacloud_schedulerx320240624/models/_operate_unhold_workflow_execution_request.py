@@ -11,10 +11,16 @@ class OperateUnholdWorkflowExecutionRequest(DaraModel):
         cluster_id: str = None,
         workflow_execution_id: int = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The workflow execution ID.
+        # 
         # This parameter is required.
         self.workflow_execution_id = workflow_execution_id
 

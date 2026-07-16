@@ -39,33 +39,69 @@ class GetRayClusterResponseBody(DaraModel):
         volume_ids: List[str] = None,
         worker_spec: List[main_models.GetRayClusterResponseBodyWorkerSpec] = None,
     ):
+        # The ID of the Ray cluster.
         self.cluster_id = cluster_id
+        # The time when the cluster was created. This is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The UID of the user who created the cluster.
         self.creator = creator
+        # The nickname of the creator.
         self.creator_name = creator_name
+        # The URL of the Ray Dashboard for this cluster.
         self.dashboard_url = dashboard_url
+        # The description of the Ray cluster.
         self.description = description
+        # The version of the Ray engine.
         self.display_release_version = display_release_version
+        # Additional parameters in JSON format.
         self.extra_param = extra_param
+        # The gRPC endpoint for the internal network. You can also use the domain name in this endpoint to submit Ray jobs.
         self.grpc_endpoint = grpc_endpoint
+        # The configuration of the head node.
         self.head_spec = head_spec
+        # The ID of the Ray cluster node.
         self.instance_id = instance_id
+        # The list of nodes in the Ray cluster.
         self.instances = instances
+        # The public endpoint for submitting Ray jobs.
         self.job_url = job_url
         self.job_url_inner = job_url_inner
+        # The error message. Returned when `state` is `Error`.
         self.message = message
+        # Indicates whether the configuration was modified.
         self.modified = modified
+        # The time when the cluster was last updated. This is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
+        # The UID of the user who last updated the cluster.
         self.modifier = modifier
+        # The nickname of the modifier.
         self.modifier_name = modifier_name
+        # The name of the Ray cluster.
         self.name = name
+        # The name of the network connection.
         self.network_service_name = network_service_name
+        # The request ID.
         self.request_id = request_id
+        # The time when the cluster started. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The session state. Valid values:
+        # 
+        # - Starting: The session is starting.
+        # 
+        # - Running: The session is running.
+        # 
+        # - Stopping: The session is being stopped.
+        # 
+        # - Stopped: The session is stopped.
+        # 
+        # - Error: The session has failed.
         self.state = state
+        # The authentication token for submitting Ray jobs. Add this token to the request header in the format `"ray-token": "token"`.
         self.submit_token = submit_token
+        # The ID of the Alibaba Cloud account that created the cluster.
         self.user_id = user_id
         self.volume_ids = volume_ids
+        # The list of worker node group configurations.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -283,14 +319,22 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         replica: int = None,
         worker_type: str = None,
     ):
+        # The number of CPU cores per worker node.
         self.cpu = cpu
         self.gpu_spec = gpu_spec
+        # The name of the worker node group.
         self.group_name = group_name
+        # The maximum number of worker nodes in the group.
         self.max_replica = max_replica
+        # The memory size per worker node. Unit: Gi.
         self.memory = memory
+        # The minimum number of worker nodes in the group.
         self.min_replica = min_replica
+        # The name of the queue.
         self.queue_name = queue_name
+        # The number of worker nodes.
         self.replica = replica
+        # The type of the worker node group.
         self.worker_type = worker_type
 
     def validate(self):
@@ -376,16 +420,27 @@ class GetRayClusterResponseBodyInstances(DaraModel):
         start_time: int = None,
         type: str = None,
     ):
+        # The exit code of the main container.
         self.container_exit_code = container_exit_code
+        # The state of the main container.
         self.container_state = container_state
+        # The status message of the main container.
         self.container_state_message = container_state_message
+        # Additional information about the main container state.
         self.container_state_reason = container_state_reason
+        # The time when the node was created. This is a UNIX timestamp in milliseconds.
         self.create_time = create_time
+        # The node ID.
         self.instance_id = instance_id
+        # The status message of the node pod.
         self.message = message
+        # The phase of the node pod.
         self.phase = phase
+        # Additional information about the node.
         self.reason = reason
+        # The time when the node started. This is a UNIX timestamp in milliseconds.
         self.start_time = start_time
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -479,12 +534,18 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         queue_name: str = None,
         replica: int = None,
     ):
+        # The number of CPU cores.
         self.cpu = cpu
+        # Specifies whether auto scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         self.gpu_spec = gpu_spec
+        # The idle timeout period for worker nodes, in seconds. Applies only when auto scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
+        # The memory size. Unit: Gi.
         self.memory = memory
+        # The name of the queue.
         self.queue_name = queue_name
+        # The number of nodes.
         self.replica = replica
 
     def validate(self):

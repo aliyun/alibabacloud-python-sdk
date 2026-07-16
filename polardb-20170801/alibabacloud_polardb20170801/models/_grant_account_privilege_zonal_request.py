@@ -17,13 +17,32 @@ class GrantAccountPrivilegeZonalRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name.
+        # 
         # This parameter is required.
         self.account_name = account_name
+        # The account permissions. Valid values:
+        # 
+        # - ReadWrite: Read and write permissions.
+        # 
+        # - ReadOnly: Read-only permissions.
+        # 
+        # - DMLOnly: DML-only permissions.
+        # 
+        # - DDLOnly: DDL-only permissions.
+        # 
+        # - ReadIndex: Read-only and index permissions.
+        # 
         # This parameter is required.
         self.account_privilege = account_privilege
+        # A client-generated token that ensures the idempotence of the request. Make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # The name of the database for which to grant permissions. To grant permissions for multiple databases, separate the database names with a comma (,).
+        # 
         # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account

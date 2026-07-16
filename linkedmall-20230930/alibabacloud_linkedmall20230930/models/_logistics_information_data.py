@@ -17,14 +17,23 @@ class LogisticsInformationData(DaraModel):
         tracking_company_name: str = None,
         tracking_number: str = None,
     ):
+        # The logistics status. A value of 2 indicates that the order is shipped and awaits the buyer\\"s confirmation of receipt.
         self.logistics_status = logistics_status
+        # The time when the information was last updated, in yyyy-MM-dd HH:mm:ss format.
         self.modified_time = modified_time
+        # The order ID.
         self.order_id = order_id
+        # The ID of the order line.
         self.order_line_id = order_line_id
+        # The external ID of the purchase order, provided upon creation.
         self.outer_purchase_order_id = outer_purchase_order_id
+        # The ID of the purchaser.
         self.purchaser_id = purchaser_id
+        # The code of the logistics company.
         self.tracking_company_code = tracking_company_code
+        # The name of the logistics company.
         self.tracking_company_name = tracking_company_name
+        # The tracking number.
         self.tracking_number = tracking_number
 
     def validate(self):

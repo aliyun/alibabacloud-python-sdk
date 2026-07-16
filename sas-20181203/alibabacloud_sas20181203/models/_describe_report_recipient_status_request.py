@@ -11,16 +11,16 @@ class DescribeReportRecipientStatusRequest(DaraModel):
         recipients: str = None,
         source_ip: str = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
+        # The language type of the request and response. Default value: **zh**. Valid values:
         # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
-        # The email address of the recipient. Separate multiple email addresses with commas (,).
+        # The email addresses of the contacts. Separate multiple email addresses with commas (,).
         # 
         # This parameter is required.
         self.recipients = recipients
-        # The source IP address of the request.
+        # The IP address of the access source.
         self.source_ip = source_ip
 
     def validate(self):

@@ -15,7 +15,8 @@ class GetSmsOcrOssInfoRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # OCR任务类型
+        # The OCR task type. Valid values:
+        # - ICP_DOMAIN: ICP filing screenshot for domain-type links.
         self.task_type = task_type
 
     def validate(self):

@@ -13,12 +13,12 @@ class DeleteSmsQualificationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # 工单ID
+        # The review ticket ID. You can obtain the qualification and its corresponding review ticket ID under the current account by calling the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation, or on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page of Domestic Messages in the console.
         # 
         # This parameter is required.
         self.order_id = order_id
         self.owner_id = owner_id
-        # 资质组ID
+        # The qualification ID, which is the ID returned when you [apply for a qualification](~~SubmitSmsQualification~~). You can obtain the qualification ID under the current account by calling the [QuerySmsQualificationRecord](~~QuerySmsQualificationRecord~~) operation, or on the [Qualification Management](https://dysms.console.aliyun.com/domestic/text/qualification) page of Domestic Messages in the console.
         # 
         # This parameter is required.
         self.qualification_group_id = qualification_group_id

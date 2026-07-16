@@ -1,3 +1,10 @@
+2026-05-25 Version: 4.9.0
+- Support API CreateStageModel.
+- Support API DeleteStageModel.
+- Support API DescribeStageModels.
+- Support API ModifyStageModel.
+
+
 2026-04-14 Version: 4.8.10
 - Update API DescribeInstances: add request parameters PageNumber.
 - Update API DescribeInstances: add request parameters PageSize.

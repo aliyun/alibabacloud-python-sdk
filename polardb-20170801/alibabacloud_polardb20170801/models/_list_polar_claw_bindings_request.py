@@ -12,7 +12,10 @@ class ListPolarClawBindingsRequest(DaraModel):
         agent_list: List[str] = None,
         application_id: str = None,
     ):
+        # A list of agent IDs to filter the bindings.
         self.agent_list = agent_list
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
 

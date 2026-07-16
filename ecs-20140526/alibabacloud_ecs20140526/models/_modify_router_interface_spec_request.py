@@ -17,17 +17,25 @@ class ModifyRouterInterfaceSpecRequest(DaraModel):
         spec: str = None,
         user_cidr: str = None,
     ):
+        # A client token to ensure that the request is idempotent. You can generate this token from your client, but you must ensure that it is unique across requests. The token must consist of only ASCII characters and not exceed 64 characters in length.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of the region where the router interface is located. To obtain the latest list of regions, call the [DescribeRegions](~~DescribeRegions~~) operation.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the router interface.
+        # 
         # This parameter is required.
         self.router_interface_id = router_interface_id
+        # The new specification of the router interface. The supported specifications vary based on the type and region of the router interface. For more information, see the pricing page of Express Connect.
+        # 
         # This parameter is required.
         self.spec = spec
+        # The client-side CIDR block for the router interface. This parameter is used for VBR-to-VPC connections. The system assigns a gateway IP address from this CIDR block to the VBR to forward traffic to the VPC.
         self.user_cidr = user_cidr
 
     def validate(self):

@@ -13,13 +13,13 @@ class DeleteVerifyResultResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.DeleteVerifyResultResponseBodyResult = None,
     ):
-        # Return code
+        # The return code.
         self.code = code
-        # Return message
+        # The return message.
         self.message = message
-        # ID of this request
+        # The request ID.
         self.request_id = request_id
-        # Return result
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -68,9 +68,11 @@ class DeleteVerifyResultResponseBodyResult(DaraModel):
         delete_result: str = None,
         transaction_id: str = None,
     ):
-        # Deletion result. Y indicates successful deletion, N indicates failed deletion
+        # The deletion result. Valid values:
+        # - Y: The deletion was successful.
+        # - N: The deletion failed.
         self.delete_result = delete_result
-        # Unique identifier of the authentication request
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

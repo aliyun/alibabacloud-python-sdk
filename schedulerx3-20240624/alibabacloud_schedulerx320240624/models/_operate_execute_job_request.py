@@ -14,14 +14,23 @@ class OperateExecuteJobRequest(DaraModel):
         label: str = None,
         worker: str = None,
     ):
+        # The application name.
+        # 
         # This parameter is required.
         self.app_name = app_name
+        # The cluster ID.
+        # 
         # This parameter is required.
         self.cluster_id = cluster_id
+        # The custom parameters for the job instance.
         self.instance_parameters = instance_parameters
+        # The job ID.
+        # 
         # This parameter is required.
         self.job_id = job_id
+        # The label used to select a specific worker.
         self.label = label
+        # The address (`workerAddr`) of a specific worker.
         self.worker = worker
 
     def validate(self):

@@ -23,29 +23,29 @@ class CreateClusterRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.CreateClusterRequestTag] = None,
     ):
-        # Cluster description
+        # The cluster description.
         self.cluster_description = cluster_description
-        # Cluster name
+        # The cluster name.
         self.cluster_name = cluster_name
-        # Cluster type
+        # The cluster type.
         self.cluster_type = cluster_type
-        # Components (software instances)
+        # The components (software instances).
         self.components = components
-        # Cluster number
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # Whether to allow skipping failed nodes, the default value is False
+        # Specifies whether to skip failed nodes. Default value: False.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # Network information
+        # The network information.
         self.networks = networks
-        # Node VSwitches
+        # The node vSwitches.
         self.nimiz_vswitches = nimiz_vswitches
-        # Node group list
+        # The list of node groups.
         self.node_groups = node_groups
-        # Whether the network interface supports jumbo frames
+        # Specifies whether the network interface supports jumbo frames.
         self.open_eni_jumbo_frame = open_eni_jumbo_frame
-        # Resource group ID
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Resource tags
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -169,9 +169,9 @@ class CreateClusterRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Key
+        # The tag key.
         self.key = key
-        # Value
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -218,31 +218,34 @@ class CreateClusterRequestNodeGroups(DaraModel):
         virtual_gpu_enabled: bool = None,
         zone_id: str = None,
     ):
-        # Whether to support file system mounting
+        # Specifies whether file system mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
+        # The list of hyper nodes.
         self.hyper_nodes = hyper_nodes
-        # System image ID
+        # The system image ID.
         self.image_id = image_id
-        # Key pair name.
+        # The key pair name.
         self.key_pair_name = key_pair_name
-        # Login password
+        # The logon password.
         self.login_password = login_password
-        # Machine type
+        # The machine type.
         self.machine_type = machine_type
-        # Node group description
+        # The node group description.
         self.node_group_description = node_group_description
-        # Node group name
+        # The node group name.
         self.node_group_name = node_group_name
-        # Node list
+        # The list of nodes.
         self.nodes = nodes
+        # The RAM role name of the node. You can call the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the specified role must be set to Lingjun AI Computing Service.
+        # Note: Clearing an existing role is not supported.
         self.ram_role_name = ram_role_name
-        # System disk information
+        # The system cloud disk information.
         self.system_disk = system_disk
-        # Instance custom data. It needs to be encoded in Base64, and the original data should not exceed 16 KB.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # Whether to enable gpu virtualization or not
+        # Specifies whether to enable GPU splitting.
         self.virtual_gpu_enabled = virtual_gpu_enabled
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -370,15 +373,15 @@ class CreateClusterRequestNodeGroupsSystemDisk(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # Disk type. The value range is:
+        # The cloud disk type. Valid values:
         # 
-        # - cloud_essd: ESSD disk.
+        #  - cloud_essd: Enterprise SSD (ESSD).
         self.category = category
-        # When creating an ESSD disk as the system disk, set the performance level of the disk. The value range is:
-        # - PL0: Maximum random read/write IOPS for a single disk is 10,000.
-        # - PL1: Maximum random read/write IOPS for a single disk is 50,000.
+        # Settings for the performance level (PL) when an ESSD is created as the system cloud disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
         self.performance_level = performance_level
-        # Unit: GB.
+        # The cloud disk size. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -423,17 +426,17 @@ class CreateClusterRequestNodeGroupsNodes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Data disk specifications.
+        # The data cloud disk specifications.
         self.data_disk = data_disk
-        # Hostname
+        # The hostname.
         self.hostname = hostname
-        # Login password
+        # The logon password.
         self.login_password = login_password
-        # Node ID
+        # The node ID.
         self.node_id = node_id
-        # VSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -504,15 +507,17 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
+        # Specifies whether to enable I/O performance burst.
         self.bursting_enabled = bursting_enabled
-        # Type
+        # The cloud disk type.
         self.category = category
-        # Whether the data disk is deleted with the node when it is unsubscribed
+        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
-        # Data disk performance level
+        # The performance parameter of the data cloud disk.
         self.performance_level = performance_level
+        # The provisioned performance (IOPS). Valid values: 0 to 50000.
         self.provisioned_iops = provisioned_iops
-        # Disk size
+        # The cloud disk size.
         self.size = size
 
     def validate(self):
@@ -575,11 +580,17 @@ class CreateClusterRequestNodeGroupsHyperNodes(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The list of data cloud disks.
         self.data_disk = data_disk
+        # The hostname.
         self.hostname = hostname
+        # The hyper node ID.
         self.hyper_node_id = hyper_node_id
+        # The logon password.
         self.login_password = login_password
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -650,11 +661,25 @@ class CreateClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
+        # Specifies whether to enable I/O performance burst.
         self.bursting_enabled = bursting_enabled
+        # The cloud disk type. Valid values:
+        # 
+        #  - cloud_essd: Enterprise SSD (ESSD).
         self.category = category
+        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
         self.delete_with_node = delete_with_node
+        # Settings for the performance level (PL) when an ESSD is created as the data cloud disk. Valid values:
+        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
+        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
+        # - PL2: a maximum of 100,000 random read/write IOPS per cloud disk.
+        # - PL3: a maximum of 1,000,000 random read/write IOPS per cloud disk.
+        # 
+        # Default value: PL1.
         self.performance_level = performance_level
+        # The provisioned performance of read/write IOPS for the ESSD AutoPL cloud disk (per disk).
         self.provisioned_iops = provisioned_iops
+        # The cloud disk size. Unit: GiB.
         self.size = size
 
     def validate(self):
@@ -719,21 +744,21 @@ class CreateClusterRequestNetworks(DaraModel):
         vpc_id: str = None,
         vpd_info: main_models.CreateClusterRequestNetworksVpdInfo = None,
     ):
-        # IP allocation policy
+        # The IP allocation policy.
         self.ip_allocation_policy = ip_allocation_policy
-        # Vpd configuration information
+        # The VPD configuration information.
         self.new_vpd_info = new_vpd_info
-        # Security group ID
+        # The security group ID.
         self.security_group_id = security_group_id
-        # IP version
+        # The IP version.
         self.tail_ip_version = tail_ip_version
-        # VSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VSwitch Zone ID
+        # The zone ID of the vSwitch.
         self.v_switch_zone_id = v_switch_zone_id
-        # VPC ID
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # Reuse VPD information
+        # The information about the reused VPD.
         self.vpd_info = vpd_info
 
     def validate(self):
@@ -818,9 +843,9 @@ class CreateClusterRequestNetworksVpdInfo(DaraModel):
         vpd_id: str = None,
         vpd_subnets: List[str] = None,
     ):
-        # VPC ID
+        # The VPC ID.
         self.vpd_id = vpd_id
-        # List of cluster subnet IDs
+        # The list of cluster subnet IDs.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -860,19 +885,19 @@ class CreateClusterRequestNetworksNewVpdInfo(DaraModel):
         vpd_cidr: str = None,
         vpd_subnets: List[main_models.CreateClusterRequestNetworksNewVpdInfoVpdSubnets] = None,
     ):
-        # Cloud Enterprise Network ID
+        # The Cloud Enterprise Network (CEN) instance ID.
         self.cen_id = cen_id
-        # Cloud link CIDR
+        # The cloud link CIDR block.
         self.cloud_link_cidr = cloud_link_cidr
-        # Cloud link ID
+        # The cloud link ID.
         self.cloud_link_id = cloud_link_id
-        # Virtual Private Cloud (VPC)
+        # The VPC ID.
         self.monitor_vpc_id = monitor_vpc_id
-        # VPC switch
+        # The vSwitch ID.
         self.monitor_vswitch_id = monitor_vswitch_id
-        # Cluster network segment
+        # The cluster CIDR block.
         self.vpd_cidr = vpd_cidr
-        # Cluster subnets
+        # The cluster subnets.
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -946,11 +971,11 @@ class CreateClusterRequestNetworksNewVpdInfoVpdSubnets(DaraModel):
         subnet_type: str = None,
         zone_id: str = None,
     ):
-        # Subnet CIDR
+        # The subnet CIDR block.
         self.subnet_cidr = subnet_cidr
-        # Subnet type
+        # The subnet type.
         self.subnet_type = subnet_type
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -992,11 +1017,11 @@ class CreateClusterRequestNetworksIpAllocationPolicy(DaraModel):
         machine_type_policy: List[main_models.CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy] = None,
         node_policy: List[main_models.CreateClusterRequestNetworksIpAllocationPolicyNodePolicy] = None,
     ):
-        # Bond policy
+        # The bond policy.
         self.bond_policy = bond_policy
-        # Machine type allocation policy
+        # The machine type allocation policy.
         self.machine_type_policy = machine_type_policy
-        # Node allocation policy
+        # The node allocation policy.
         self.node_policy = node_policy
 
     def validate(self):
@@ -1057,9 +1082,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicy(DaraModel):
         bonds: List[main_models.CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds] = None,
         node_id: str = None,
     ):
-        # Bond information
+        # The bond information.
         self.bonds = bonds
-        # Node ID
+        # The node ID.
         self.node_id = node_id
 
     def validate(self):
@@ -1102,9 +1127,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds(DaraModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source subnet for the cluster
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):
@@ -1139,9 +1164,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy(DaraModel)
         bonds: List[main_models.CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds] = None,
         machine_type: str = None,
     ):
-        # Bond information
+        # The bond information.
         self.bonds = bonds
-        # Machine type
+        # The machine type.
         self.machine_type = machine_type
 
     def validate(self):
@@ -1184,9 +1209,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds(DaraM
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source subnet for the cluster
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):
@@ -1221,9 +1246,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicy(DaraModel):
         bond_default_subnet: str = None,
         bonds: List[main_models.CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds] = None,
     ):
-        # Default bond subnet for the cluster
+        # The default bond cluster subnet.
         self.bond_default_subnet = bond_default_subnet
-        # Bond information
+        # The bond information.
         self.bonds = bonds
 
     def validate(self):
@@ -1266,9 +1291,9 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds(DaraModel):
         name: str = None,
         subnet: str = None,
     ):
-        # Bond name
+        # The bond name.
         self.name = name
-        # IP source subnet for the cluster
+        # The cluster subnet from which the IP address is allocated.
         self.subnet = subnet
 
     def validate(self):
@@ -1303,9 +1328,9 @@ class CreateClusterRequestComponents(DaraModel):
         component_config: main_models.CreateClusterRequestComponentsComponentConfig = None,
         component_type: str = None,
     ):
-        # Component configuration
+        # The component configuration.
         self.component_config = component_config
-        # Component type
+        # The component type.
         self.component_type = component_type
 
     def validate(self):
@@ -1342,9 +1367,9 @@ class CreateClusterRequestComponentsComponentConfig(DaraModel):
         basic_args: Any = None,
         node_units: List[Any] = None,
     ):
-        # Basic component parameters
+        # The basic parameters of the component.
         self.basic_args = basic_args
-        # Node pool configuration, used to establish the correspondence between node groups and node pools. Required when ComponentType is "ACKEdge", otherwise it can be empty.
+        # The node pool configuration, which is used to establish the mapping between node groups and node pools. This parameter is required when ComponentType is set to ACKEdge. Leave this parameter empty for other component types.
         self.node_units = node_units
 
     def validate(self):

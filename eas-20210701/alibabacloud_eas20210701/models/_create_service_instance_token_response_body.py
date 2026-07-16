@@ -13,10 +13,15 @@ class CreateServiceInstanceTokenResponseBody(DaraModel):
         url: str = None,
         workbench_url: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # This parameter is not used.
         self.streamlog_url = streamlog_url
+        # This parameter is not used.
         self.token = token
+        # This parameter is not used.
         self.url = url
+        # URL for logging on to the container using Workbench.
         self.workbench_url = workbench_url
 
     def validate(self):

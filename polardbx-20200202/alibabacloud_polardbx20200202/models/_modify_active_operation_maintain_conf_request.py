@@ -14,16 +14,31 @@ class ModifyActiveOperationMaintainConfRequest(DaraModel):
         region_id: str = None,
         status: int = None,
     ):
+        # The day of the week. Valid values: 1 to 7.
+        # 
         # This parameter is required.
         self.cycle_time = cycle_time
+        # The cycle mode. Set this parameter to Week.
+        # 
         # This parameter is required.
         self.cycle_type = cycle_type
+        # The end time.
+        # 
         # This parameter is required.
         self.maintain_end_time = maintain_end_time
+        # The start time.
+        # 
         # This parameter is required.
         self.maintain_start_time = maintain_start_time
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # Specifies whether to enable the configuration. Valid values:
+        # 
+        # - **1**: Enabled.
+        # - **0**: Disabled.
+        # 
         # This parameter is required.
         self.status = status
 

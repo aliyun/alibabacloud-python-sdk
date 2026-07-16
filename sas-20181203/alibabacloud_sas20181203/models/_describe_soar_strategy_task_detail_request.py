@@ -10,14 +10,12 @@ class DescribeSoarStrategyTaskDetailRequest(DaraModel):
         lang: str = None,
         strategy_task_id: int = None,
     ):
-        # The language of the content within the request and response. Default value: **zh**. Valid values:
-        # 
-        # *   **zh**: Chinese
-        # *   **en**: English
+        # The language type for the request and response messages. Default value: **zh**. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English.
         self.lang = lang
         # The ID of the policy task.
-        # 
-        # >  You can call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain the ID.
+        # >Call the [DescribeSoarStrategyTasks](~~DescribeSoarStrategyTasks~~) operation to obtain this parameter.
         # 
         # This parameter is required.
         self.strategy_task_id = strategy_task_id

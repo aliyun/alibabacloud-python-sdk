@@ -9,6 +9,8 @@ class DescribeRenderingInstanceRequest(DaraModel):
         self,
         rendering_instance_id: str = None,
     ):
+        # The ID of the rendering instance.
+        # 
         # This parameter is required.
         self.rendering_instance_id = rendering_instance_id
 

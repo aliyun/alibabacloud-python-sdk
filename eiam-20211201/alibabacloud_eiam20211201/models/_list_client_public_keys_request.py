@@ -12,16 +12,17 @@ class ListClientPublicKeysRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # IDaaS的应用资源ID。
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # IDaaS EIAM实例的ID。
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The number of entries to return on each page of a paged query.
         self.max_results = max_results
-        # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+        # The token for the next page of results. Set this to the NextToken value from the previous API call. For the first query, leave this parameter empty.
         self.next_token = next_token
 
     def validate(self):

@@ -15,19 +15,19 @@ class DescribePocOssTokenResponseBody(DaraModel):
         signature: str = None,
         result_object: bool = None,
     ):
-        # AccessKeyId for OSS file upload
+        # The AccessKey ID used to upload files to OSS.
         self.access_id = access_id
-        # Host address.
+        # The host address.
         self.host = host
-        # The Key required for file upload.
+        # The key required for file upload.
         self.key = key
-        # OSS security policy.
+        # The OSS security policy.
         self.policy = policy
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Upload signature information.
+        # The signature information for the upload.
         self.signature = signature
-        # Return result.
+        # The returned result.
         self.result_object = result_object
 
     def validate(self):

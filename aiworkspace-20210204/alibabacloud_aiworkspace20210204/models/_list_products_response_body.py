@@ -14,8 +14,11 @@ class ListProductsResponseBody(DaraModel):
         request_id: str = None,
         services: List[main_models.ListProductsResponseBodyServices] = None,
     ):
+        # The list of products.
         self.products = products
+        # The request ID.
         self.request_id = request_id
+        # The list of services.
         self.services = services
 
     def validate(self):
@@ -74,8 +77,11 @@ class ListProductsResponseBodyServices(DaraModel):
         open_url: str = None,
         service_code: str = None,
     ):
+        # Indicates whether the service is activated.
         self.is_open = is_open
+        # The activation URL.
         self.open_url = open_url
+        # The service code.
         self.service_code = service_code
 
     def validate(self):
@@ -119,10 +125,14 @@ class ListProductsResponseBodyProducts(DaraModel):
         product_id: str = None,
         purchase_url: str = None,
     ):
+        # Indicates whether the user has permission to purchase the product.
         self.has_permission_to_purchase = has_permission_to_purchase
+        # Indicates whether the product is purchased.
         self.is_purchased = is_purchased
+        # The product code.
         self.product_code = product_code
         self.product_id = product_id
+        # The purchase URL.
         self.purchase_url = purchase_url
 
     def validate(self):

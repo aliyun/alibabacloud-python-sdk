@@ -25,6 +25,8 @@ class UpdateRulesAttributeRequest(DaraModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The forwarding rules.
+        # 
         # This parameter is required.
         self.rules = rules
 
@@ -77,11 +79,17 @@ class UpdateRulesAttributeRequestRules(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # The priority of the forwarding rule.
         self.priority = priority
+        # The forwarding rules.
         self.rule_actions = rule_actions
+        # The match conditions of the forwarding rule.
         self.rule_conditions = rule_conditions
+        # The ID of the forwarding rule.
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # The name of the forwarding rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -159,15 +167,25 @@ class UpdateRulesAttributeRequestRulesRuleConditions(DaraModel):
         source_ip_config: main_models.UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig = None,
         type: str = None,
     ):
+        # The configuration of the cookie.
         self.cookie_config = cookie_config
+        # The configuration of the HTTP header.
         self.header_config = header_config
+        # The match conditions for hostnames.
         self.host_config = host_config
+        # The configuration of the HTTP request method.
         self.method_config = method_config
+        # The match conditions for query strings.
         self.path_config = path_config
+        # The match conditions for query strings.
         self.query_string_config = query_string_config
+        # The HTTP response headers.
         self.response_header_config = response_header_config
+        # The match conditions for response status codes.
         self.response_status_code_config = response_status_code_config
+        # Traffic matching based on source IP addresses.
         self.source_ip_config = source_ip_config
+        # The condition type of the forwarding rule.
         self.type = type
 
     def validate(self):
@@ -275,6 +293,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsSourceIpConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # You can add one or more IP addresses, including CIDR blocks.
         self.values = values
 
     def validate(self):
@@ -302,6 +321,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsResponseStatusCodeConfig(Dar
         self,
         values: List[str] = None,
     ):
+        # The match conditions.
         self.values = values
 
     def validate(self):
@@ -330,7 +350,9 @@ class UpdateRulesAttributeRequestRulesRuleConditionsResponseHeaderConfig(DaraMod
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of the response header.
         self.key = key
+        # The values of the response header.
         self.values = values
 
     def validate(self):
@@ -364,6 +386,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfig(DaraModel)
         self,
         values: List[main_models.UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues] = None,
     ):
+        # The key-value pairs of query strings.
         self.values = values
 
     def validate(self):
@@ -400,7 +423,9 @@ class UpdateRulesAttributeRequestRulesRuleConditionsQueryStringConfigValues(Dara
         key: str = None,
         value: str = None,
     ):
+        # The key of the query string.
         self.key = key
+        # The value of the query string.
         self.value = value
 
     def validate(self):
@@ -434,6 +459,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsPathConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The paths to which requests are forwarded.
         self.values = values
 
     def validate(self):
@@ -461,6 +487,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsMethodConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The HTTP request methods.
         self.values = values
 
     def validate(self):
@@ -488,6 +515,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsHostConfig(DaraModel):
         self,
         values: List[str] = None,
     ):
+        # The hostnames.
         self.values = values
 
     def validate(self):
@@ -516,7 +544,9 @@ class UpdateRulesAttributeRequestRulesRuleConditionsHeaderConfig(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The key of the header.
         self.key = key
+        # The values of the HTTP header.
         self.values = values
 
     def validate(self):
@@ -550,6 +580,7 @@ class UpdateRulesAttributeRequestRulesRuleConditionsCookieConfig(DaraModel):
         self,
         values: List[main_models.UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues] = None,
     ):
+        # The key-value pairs of cookies.
         self.values = values
 
     def validate(self):
@@ -586,7 +617,9 @@ class UpdateRulesAttributeRequestRulesRuleConditionsCookieConfigValues(DaraModel
         key: str = None,
         value: str = None,
     ):
+        # The cookie key.
         self.key = key
+        # The cookie value.
         self.value = value
 
     def validate(self):
@@ -630,17 +663,30 @@ class UpdateRulesAttributeRequestRulesRuleActions(DaraModel):
         traffic_mirror_config: main_models.UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig = None,
         type: str = None,
     ):
+        # The cross-origin resource sharing (CORS) configuration.
         self.cors_config = cors_config
+        # The configuration of the action to return a custom response.
         self.fixed_response_config = fixed_response_config
+        # The configuration of the action to forward requests to server groups.
         self.forward_group_config = forward_group_config
+        # The configuration of the action to insert a header.
         self.insert_header_config = insert_header_config
+        # The priority of the action.
+        # 
         # This parameter is required.
         self.order = order
+        # The configuration of the redirect action.
         self.redirect_config = redirect_config
+        # The configuration of the HTTP header to be removed.
         self.remove_header_config = remove_header_config
+        # The configuration of the rewrite action.
         self.rewrite_config = rewrite_config
+        # The configuration of traffic throttling.
         self.traffic_limit_config = traffic_limit_config
+        # The configuration of traffic mirroring.
         self.traffic_mirror_config = traffic_mirror_config
+        # The type of action.
+        # 
         # This parameter is required.
         self.type = type
 
@@ -756,7 +802,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfig(DaraModel):
         mirror_group_config: main_models.UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
         target_type: str = None,
     ):
+        # The configuration of the server group to which traffic is mirrored.
         self.mirror_group_config = mirror_group_config
+        # The type of the target to which network traffic is mirrored.
         self.target_type = target_type
 
     def validate(self):
@@ -792,6 +840,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupC
         self,
         server_group_tuples: List[main_models.UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples] = None,
     ):
+        # The server group to which traffic is mirrored.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -827,6 +876,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficMirrorConfigMirrorGroupC
         self,
         server_group_id: str = None,
     ):
+        # The server group ID.
         self.server_group_id = server_group_id
 
     def validate(self):
@@ -855,7 +905,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsTrafficLimitConfig(DaraModel):
         per_ip_qps: int = None,
         qps: int = None,
     ):
+        # The number of requests per IP address.
         self.per_ip_qps = per_ip_qps
+        # The number of queries per second (QPS).
         self.qps = qps
 
     def validate(self):
@@ -891,8 +943,11 @@ class UpdateRulesAttributeRequestRulesRuleActionsRewriteConfig(DaraModel):
         path: str = None,
         query: str = None,
     ):
+        # The hostname of the destination to which requests are forwarded.
         self.host = host
+        # The path to which requests are forwarded.
         self.path = path
+        # The query string of the URL to which requests are forwarded.
         self.query = query
 
     def validate(self):
@@ -932,6 +987,7 @@ class UpdateRulesAttributeRequestRulesRuleActionsRemoveHeaderConfig(DaraModel):
         self,
         key: str = None,
     ):
+        # The key of the header.
         self.key = key
 
     def validate(self):
@@ -964,11 +1020,17 @@ class UpdateRulesAttributeRequestRulesRuleActionsRedirectConfig(DaraModel):
         protocol: str = None,
         query: str = None,
     ):
+        # The hostname to which requests are redirected.
         self.host = host
+        # The HTTP status code that indicates the redirect type.
         self.http_code = http_code
+        # The path of the destination to which requests are forwarded.
         self.path = path
+        # The port to which requests are forwarded.
         self.port = port
+        # The protocol of the destination to which requests are forwarded.
         self.protocol = protocol
+        # The query string to which requests are redirected.
         self.query = query
 
     def validate(self):
@@ -1029,9 +1091,13 @@ class UpdateRulesAttributeRequestRulesRuleActionsInsertHeaderConfig(DaraModel):
         value: str = None,
         value_type: str = None,
     ):
+        # Specifies whether to overwrite the header in the request.
         self.cover_enabled = cover_enabled
+        # The key of the HTTP header.
         self.key = key
+        # The value of the HTTP header.
         self.value = value
+        # The type of the header value.
         self.value_type = value_type
 
     def validate(self):
@@ -1078,7 +1144,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfig(DaraModel):
         server_group_sticky_session: main_models.UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[main_models.UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        # The configuration of session persistence for server groups.
         self.server_group_sticky_session = server_group_sticky_session
+        # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
@@ -1124,7 +1192,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupTu
         server_group_id: str = None,
         weight: int = None,
     ):
+        # The ID of the server group.
         self.server_group_id = server_group_id
+        # The weight of the server group.
         self.weight = weight
 
     def validate(self):
@@ -1159,7 +1229,9 @@ class UpdateRulesAttributeRequestRulesRuleActionsForwardGroupConfigServerGroupSt
         enabled: bool = None,
         timeout: int = None,
     ):
+        # Specifies whether to enable session persistence.
         self.enabled = enabled
+        # The timeout period for sessions.
         self.timeout = timeout
 
     def validate(self):
@@ -1195,8 +1267,11 @@ class UpdateRulesAttributeRequestRulesRuleActionsFixedResponseConfig(DaraModel):
         content_type: str = None,
         http_code: str = None,
     ):
+        # The content of the response.
         self.content = content
+        # The content type of the response.
         self.content_type = content_type
+        # The HTTP status code in the response.
         self.http_code = http_code
 
     def validate(self):
@@ -1241,11 +1316,17 @@ class UpdateRulesAttributeRequestRulesRuleActionsCorsConfig(DaraModel):
         expose_headers: List[str] = None,
         max_age: int = None,
     ):
+        # Specifies whether to allow credentials to be carried in CORS requests.
         self.allow_credentials = allow_credentials
+        # The trusted headers of CORS requests.
         self.allow_headers = allow_headers
+        # The trusted HTTP methods of CORS requests.
         self.allow_methods = allow_methods
+        # The trusted origins.
         self.allow_origin = allow_origin
+        # The headers that can be exposed.
         self.expose_headers = expose_headers
+        # The maximum cache time for dry runs in the browser.
         self.max_age = max_age
 
     def validate(self):

@@ -25,26 +25,28 @@ class ListWuyingServerRequest(DaraModel):
         wuying_server_id_list: List[str] = None,
         wuying_server_name_or_id: str = None,
     ):
+        # The list of statuses for joining a virtual node pool.
         self.add_virtual_node_pool_status_list = add_virtual_node_pool_status_list
         # The region ID.
         self.biz_region_id = biz_region_id
         self.biz_type = biz_type
-        # The billing method of the Internet access package.
+        # The billing type.
         self.charge_type = charge_type
         # The image ID.
         self.image_id = image_id
-        # The office network IDs.
+        # The office network ID.
         self.office_site_id = office_site_id
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The page size.
         self.page_size = page_size
         self.product_type = product_type
-        # Workstation specifications.
+        # The workstation instance type.
         self.server_instance_type = server_instance_type
-        # The status of the workstation.
+        # The workstation status.
         self.status = status
         self.users = users
+        # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list

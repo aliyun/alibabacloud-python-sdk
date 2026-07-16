@@ -18,15 +18,26 @@ class SubmitDocTranslateTaskRequest(DaraModel):
         text: str = None,
         workspace_id: str = None,
     ):
+        # Extension parameters that control translation features.
         self.ext = ext
+        # The format for the translation.
         self.format = format
+        # The translation model.
+        # 
         # This parameter is required.
         self.scene = scene
+        # The source language code.
+        # 
         # This parameter is required.
         self.source_language = source_language
+        # The target language code.
         self.target_language = target_language
+        # The URL of the document to translate.
+        # 
         # This parameter is required.
         self.text = text
+        # The ID of the Model Studio workspace for the current request.
+        # 
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -97,10 +108,15 @@ class SubmitDocTranslateTaskRequestExt(DaraModel):
         terminologies: List[main_models.SubmitDocTranslateTaskRequestExtTerminologies] = None,
         tracking_data: str = None,
     ):
+        # Configuration settings for the translation job.
         self.config = config
+        # A prompt that tailors the translation style to a specific domain.
         self.domain_hint = domain_hint
+        # A map for advanced configuration. Use `bizUserId` to apply terminologies on a per-user basis and `bizType` to apply them on a per-scenario basis. This prevents terminology conflicts between different users or scenarios.
         self.param_map = param_map
+        # The glossary to apply to the translation.
         self.terminologies = terminologies
+        # User-defined pass-through data. The service does not process this data and returns it as-is in the response. This is useful for scenarios such as tracking.
         self.tracking_data = tracking_data
 
     def validate(self):
@@ -164,7 +180,9 @@ class SubmitDocTranslateTaskRequestExtTerminologies(DaraModel):
         src: str = None,
         tgt: str = None,
     ):
+        # The source text that the custom translation will replace.
         self.src = src
+        # The custom translation for the corresponding source term.
         self.tgt = tgt
 
     def validate(self):
@@ -199,7 +217,9 @@ class SubmitDocTranslateTaskRequestExtConfig(DaraModel):
         is_bilingual: bool = None,
         skip_img_trans: bool = None,
     ):
+        # Specifies whether to generate a bilingual document containing both the source and target text.
         self.is_bilingual = is_bilingual
+        # Specifies whether to translate images in PDF documents.
         self.skip_img_trans = skip_img_trans
 
     def validate(self):

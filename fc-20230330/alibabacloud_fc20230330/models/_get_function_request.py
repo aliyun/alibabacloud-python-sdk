@@ -9,7 +9,7 @@ class GetFunctionRequest(DaraModel):
         self,
         qualifier: str = None,
     ):
-        # 2023-03-10T10:10:10Z
+        # The version or alias of the function.
         self.qualifier = qualifier
 
     def validate(self):

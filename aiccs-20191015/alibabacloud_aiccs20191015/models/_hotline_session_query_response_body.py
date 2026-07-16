@@ -16,10 +16,15 @@ class HotlineSessionQueryResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # Status code. A value of "Success" indicates that the request succeeded.
         self.code = code
+        # Call data.
         self.data = data
+        # Description of the status code.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Indicates whether the API call succeeded.
         self.success = success
 
     def validate(self):
@@ -76,9 +81,13 @@ class HotlineSessionQueryResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # Call detail records.
         self.call_detail_record = call_detail_record
+        # Current page number.
         self.page_number = page_number
+        # Number of items per page.
         self.page_size = page_size
+        # Total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -160,34 +169,122 @@ class HotlineSessionQueryResponseBodyDataCallDetailRecord(DaraModel):
         servicer_name: str = None,
         trunk_call: str = None,
     ):
+        # Session ID. The acid in WebSocket after an incoming call.
         self.acid = acid
+        # Agent ID.  
+        # 
+        # > This field is null in non–change owner scenarios.
         self.active_transfer_id = active_transfer_id
+        # Call duration, in seconds.  
+        # 
+        # > Unconnected calls do not include call duration.
         self.call_continue_time = call_continue_time
+        # Call result. Valid values:
+        # 
+        # - **normal**: Normal hang-up.
+        # - **touchRouteError**: Queue hang-up.
+        # - **touchInQueue**: Queue hang-up.
+        # - **touchInLoss**: Queue hang-up.
+        # - **userHangup**: User hang-up or IVR hang-up.
+        # - **sysHangup**: System hang-up or IVR hang-up.
+        # - **transferAgent**: User hang-up or IVR hang-up.
+        # - **dailing**: Agent hang-up or ring-off hang-up.
+        # - **TouchRingCallLoss**: Queue hang-up or ring-off hang-up.
         self.call_result = call_result
+        # Call type. Valid values:
+        # - **1**: Outbound call
+        # - **2**: Inbound call
+        # - **3**: Change owner
         self.call_type = call_type
+        # Called number.
         self.called_number = called_number
+        # Calling party number, such as a user\\"s phone number, agent number, or machine number.
         self.calling_number = calling_number
+        # Call creation time.
+        # 
+        # > - In outbound scenarios, this is the time when the outbound call was initiated.
+        # > - In inbound scenarios, this is the time when the call entered the ACC system.
         self.create_time = create_time
+        # Satisfaction rating, indicated by star level. Valid values:
+        # 
+        # - **2**: Two-star satisfaction
+        # - **3**: Three-star satisfaction
+        # - **4**: Four-star satisfaction
+        # - **5**: Five-star satisfaction
+        # 
+        # > This field has no data in outbound scenarios or scenarios where the call was not answered.
         self.evaluation_level = evaluation_level
+        # Satisfaction score. Valid values:
+        # - **1**: Very dissatisfied
+        # - **2**: Dissatisfied
+        # - **3**: Neutral
+        # - **4**: Satisfied
+        # - **5**: Very satisfied
+        # 
+        # > This field has no data in outbound scenarios or scenarios where the call was not answered.
         self.evaluation_score = evaluation_score
+        # Skill group ID.  
+        # 
+        # > When CallType is **1**, outbound call scenarios do not include skill group information.
         self.group_id = group_id
+        # Skill group name.  
+        # > When CallType is **1**, outbound call scenarios do not include skill group information.
         self.group_name = group_name
+        # Party that hung up. Valid values:  
+        # 
+        # - **1**: System hung up  
+        # - **2**: Customer hung up  
+        # - **3**: Agent hung up  
+        # - **null**: Unknown
         self.hang_up_role = hang_up_role
+        # Hang-up time.
         self.hang_up_time = hang_up_time
+        # The GUID of the call detail record.
         self.id = id
+        # Time when the call entered the queue for assignment.  
+        # 
+        # > Outbound call scenarios do not include queue entry time.
         self.in_queue_time = in_queue_time
+        # Membership ID.
         self.member_id = member_id
+        # Membership name.
         self.member_name = member_name
+        # The time when the hotline call is assigned and dequeued.
+        # 
+        # > Outbound scenarios do not have a dequeue time.
         self.out_queue_time = out_queue_time
+        # Agent ID. The phone number to which the call is transferred.
+        # > This field is null in non-transfer scenarios.
         self.passive_transfer_id = passive_transfer_id
+        # The recipient of the transferred session. Valid values:
+        # - **1**: Agent ID.
+        # - **2**: Transferred phone number.
+        # 
+        # > This field is null in non-transfer scenarios.
         self.passive_transfer_id_type = passive_transfer_id_type
+        # The time when the call is answered.
         self.pick_up_time = pick_up_time
+        # Queue duration.
         self.queue_up_continue_time = queue_up_continue_time
+        # Ringing duration, in seconds.
+        # 
+        # > Outbound scenarios do not have ringing duration.
         self.ring_continue_time = ring_continue_time
+        # The time when ringing ends.
+        # 
+        # > Outbound scenarios do not have a ring end time.
         self.ring_end_time = ring_end_time
+        # Ringing start time.  
+        # 
+        # > Outbound call scenarios do not include ringing start time.
         self.ring_start_time = ring_start_time
+        # Agent ID.  
+        # > In inbound scenarios, agent information is unavailable until the call is assigned to an agent.
         self.servicer_id = servicer_id
+        # Agent name.
+        # > Agent information is unavailable before the call is assigned to an agent in inbound scenarios.
         self.servicer_name = servicer_name
+        # Long-distance call.
         self.trunk_call = trunk_call
 
     def validate(self):

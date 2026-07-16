@@ -19,22 +19,33 @@ class QuerySmsQualificationRecordRequest(DaraModel):
         use_by_self: bool = None,
         work_order_id: int = None,
     ):
-        # 公司名
+        # The company name.
         self.company_name = company_name
-        # 法人姓名
+        # The name of the legal representative.
         self.legal_person_name = legal_person_name
         self.owner_id = owner_id
+        # The page number. Default value: 1.
         self.page_no = page_no
+        # The number of entries per page. Valid values: **1 to 50**.
         self.page_size = page_size
-        # 资质组名称
+        # The qualification name.
         self.qualification_group_name = qualification_group_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # 审核状态。INT:审核中FAILED:审核失败,PASSED:审核通过,NOT_FINISH:资料待补充,CANCELED:已撤回
+        # The review status. Valid values:
+        # 
+        # - INIT: Under review.
+        # - NOT_PASS: Review rejected. 
+        # - PASS: Review approved.
+        # - NOT_FINISH: Additional information required.
+        # - CANCEL: Withdrawn.
         self.state = state
-        # 是否自用
+        # The purpose of the qualification application. Valid values:
+        # 
+        # - **true**: For self-use.
+        # - **false**: For use by others.
         self.use_by_self = use_by_self
-        # 工单ID
+        # The review ticket ID.
         self.work_order_id = work_order_id
 
     def validate(self):

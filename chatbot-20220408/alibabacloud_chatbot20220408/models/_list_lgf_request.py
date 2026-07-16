@@ -14,13 +14,21 @@ class ListLgfRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The key of the business space. If you do not specify this parameter, the default business space is used. You can obtain the key from the Business Management page of your main account.
         self.agent_key = agent_key
+        # The ID of the chatbot.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the intent.
+        # 
         # This parameter is required.
         self.intent_id = intent_id
+        # The text used to filter the advanced semantic configurations.
         self.lgf_text = lgf_text
+        # The number of the page to return. Defaults to 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Defaults to 10.
         self.page_size = page_size
 
     def validate(self):

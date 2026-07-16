@@ -17,21 +17,21 @@ class ChatMessagesResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The answer.
+        # The content of the generated answer.
         self.answer = answer
         # The ID of the conversation.
         self.conversation_id = conversation_id
-        # The creation time of the conversation.
+        # The time when the message was created. This value is a UNIX timestamp.
         self.created_at = created_at
-        # The event.
+        # The event associated with the message.
         self.event = event
-        # The message ID.
+        # The ID of the message, which is distinct from `MessageId`.
         self.id = id
-        # The message ID.
+        # The unique ID of the message.
         self.message_id = message_id
         # The query mode.
         self.mode = mode
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the asynchronous task.
         self.task_id = task_id

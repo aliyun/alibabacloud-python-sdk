@@ -14,10 +14,15 @@ class AddContextsRequest(DaraModel):
         items: List[main_models.AddContextsRequestItems] = None,
         memory_type: str = None,
     ):
+        # The context type.
+        # 
         # This parameter is required.
         self.context_type = context_type
+        # An array of context items.
+        # 
         # This parameter is required.
         self.items = items
+        # The memory type.
         self.memory_type = memory_type
 
     def validate(self):
@@ -80,21 +85,37 @@ class AddContextsRequestItems(DaraModel):
         trigger_condition: str = None,
         user_id: str = None,
     ):
+        # The unique agent ID.
         self.agent_id = agent_id
+        # The application ID.
         self.app_id = app_id
+        # A list of categories to apply to the context item.
         self.categories = categories
+        # The content of the context item.
         self.content = content
+        # The custom instructions for processing the context.
         self.custom_instructions = custom_instructions
+        # An object containing experience information for the context.
         self.experience = experience
+        # The expiration timestamp for the context item.
         self.expiration_date = expiration_date
+        # Specifies whether the context item is immutable. If set to `true`, the item cannot be changed after it is created. The default value is `false`.
         self.immutable = immutable
+        # Specifies whether to perform inference based on the context. The default value is `false`.
         self.infer = infer
+        # A map of key-value pairs to apply as labels.
         self.labels = labels
+        # An array of message objects.
         self.messages = messages
+        # Key-value pairs to store as metadata.
         self.metadata = metadata
+        # The run ID.
         self.run_id = run_id
+        # The timestamp of the context item.
         self.timestamp = timestamp
+        # The condition that triggers the context.
         self.trigger_condition = trigger_condition
+        # The unique user ID.
         self.user_id = user_id
 
     def validate(self):

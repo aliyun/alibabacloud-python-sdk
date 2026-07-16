@@ -11,8 +11,11 @@ class EndCoordinationRequest(DaraModel):
         instance_id: str = None,
         owner_user_id: str = None,
     ):
+        # The user ID of the coordination participant.
         self.coordinator_user_id = coordinator_user_id
+        # The ID of the instance that is in a coordination session.
         self.instance_id = instance_id
+        # The user ID of the coordination initiator.
         self.owner_user_id = owner_user_id
 
     def validate(self):

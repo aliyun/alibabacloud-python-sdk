@@ -11,9 +11,11 @@ class ListPredefinedScopesRequest(DaraModel):
     ):
         # The type of the application. Valid values:
         # 
-        # *   WebApp
-        # *   NativeApp
-        # *   ServerApp
+        # - WebApp
+        # 
+        # - NativeApp
+        # 
+        # - ServerApp
         # 
         # If this parameter is empty, the permissions on all types of applications are queried.
         self.app_type = app_type

@@ -12,7 +12,6 @@ class Dataset(DaraModel):
         self,
         bind_count: int = None,
         create_time: str = None,
-        dataset_config: main_models.DatasetConfig = None,
         dataset_max_bind_count: int = None,
         dataset_max_entity_count: int = None,
         dataset_max_file_count: int = None,
@@ -27,43 +26,40 @@ class Dataset(DaraModel):
         update_time: str = None,
         workflow_parameters: List[main_models.WorkflowParameter] = None,
     ):
-        # The current number of OSS buckets that are bound to the dataset.
+        # The number of OSS buckets currently bound to the dataset.
         self.bind_count = bind_count
-        # The timestamp when the dataset was created. The timestamp must be in the RFC3339Nano format.
+        # The timestamp when the dataset was created, in RFC3339Nano format.
         self.create_time = create_time
-        self.dataset_config = dataset_config
-        # The maximum number of bindings for the dataset.
+        # The maximum number of bindings allowed for each dataset.
         self.dataset_max_bind_count = dataset_max_bind_count
-        # The maximum number of metadata entities for the dataset.
+        # The maximum number of metadata entities allowed in the dataset.
         self.dataset_max_entity_count = dataset_max_entity_count
-        # The maximum number of files for the dataset.
+        # The maximum number of files allowed in the dataset.
         self.dataset_max_file_count = dataset_max_file_count
-        # The maximum number of metadata relationships for the dataset.
+        # The maximum number of metadata relationships allowed in the dataset.
         self.dataset_max_relation_count = dataset_max_relation_count
-        # The maximum total size of files in the dataset. Unit: bytes.
+        # The maximum total file size allowed in the dataset, in bytes.
         self.dataset_max_total_file_size = dataset_max_total_file_size
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The dataset description.
+        # The description of the dataset.
         self.description = description
         # The current number of files in the dataset.
         self.file_count = file_count
-        # The name of the project.
+        # The project name.
         self.project_name = project_name
-        # The ID of the workflow template.
+        # The workflow template ID.
         self.template_id = template_id
-        # The total size of files in the dataset. Unit: bytes.
+        # The total file size in the dataset, in bytes.
         self.total_file_size = total_file_size
-        # The timestamp when the dataset was last modified. The timestamp must be in the RFC3339Nano format.
+        # The timestamp when the dataset was last modified, in RFC3339Nano format.
         # 
-        # >  If a dataset has never been modified after it was created, the timestamp when the dataset was last modified is the same as the timestamp when the dataset was created.
+        # >If the dataset has not been updated since it was created, this timestamp is the same as the creation timestamp.
         self.update_time = update_time
-        # 自定义参数
+        # The custom parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
-        if self.dataset_config:
-            self.dataset_config.validate()
         if self.workflow_parameters:
             for v1 in self.workflow_parameters:
                  if v1:
@@ -79,9 +75,6 @@ class Dataset(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
-
-        if self.dataset_config is not None:
-            result['DatasetConfig'] = self.dataset_config.to_map()
 
         if self.dataset_max_bind_count is not None:
             result['DatasetMaxBindCount'] = self.dataset_max_bind_count
@@ -133,10 +126,6 @@ class Dataset(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
-
-        if m.get('DatasetConfig') is not None:
-            temp_model = main_models.DatasetConfig()
-            self.dataset_config = temp_model.from_map(m.get('DatasetConfig'))
 
         if m.get('DatasetMaxBindCount') is not None:
             self.dataset_max_bind_count = m.get('DatasetMaxBindCount')

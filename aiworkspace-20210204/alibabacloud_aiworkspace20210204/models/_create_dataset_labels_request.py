@@ -12,7 +12,7 @@ class CreateDatasetLabelsRequest(DaraModel):
         self,
         labels: List[main_models.Label] = None,
     ):
-        # The tags.
+        # The list of labels.
         self.labels = labels
 
     def validate(self):

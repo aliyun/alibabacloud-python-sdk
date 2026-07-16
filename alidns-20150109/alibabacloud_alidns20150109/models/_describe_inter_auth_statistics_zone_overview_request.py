@@ -11,8 +11,11 @@ class DescribeInterAuthStatisticsZoneOverviewRequest(DaraModel):
         server_region: str = None,
         zone_name: str = None,
     ):
+        # The statistical period. Valid values: DAY, WEEK, and MONTH.
         self.overview_period = overview_period
+        # The region.
         self.server_region = server_region
+        # The name of the zone.
         self.zone_name = zone_name
 
     def validate(self):

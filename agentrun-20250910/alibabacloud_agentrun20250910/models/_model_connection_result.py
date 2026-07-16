@@ -12,11 +12,11 @@ class ModelConnectionResult(DaraModel):
         data: main_models.ModelConnection = None,
         request_id: str = None,
     ):
-        # SUCCESS 为成功，失败情况返回对应错误类型
+        # `SUCCESS` indicates a successful request. On failure, this field returns the error type.
         self.code = code
-        # 模型连接的详细信息
+        # The resulting model connection object.
         self.data = data
-        # 唯一的请求标识符，用于问题追踪
+        # The unique request ID used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

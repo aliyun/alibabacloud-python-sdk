@@ -11,16 +11,17 @@ class UpdatePostpayUserNatStatusRequest(DaraModel):
         lang: str = None,
         operate: str = None,
     ):
-        # The instance ID of Cloud Firewall.
+        # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # *   **zh** (default)
-        # *   **en**
+        # - **zh** (default): Chinese
+        # 
+        # - **en**: English
         self.lang = lang
-        # The operation type.
+        # The type of operation. Valid value:
         # 
-        # *   Set the value to open.
+        # - open: Enables the NAT border firewall.
         self.operate = operate
 
     def validate(self):

@@ -15,10 +15,17 @@ class ListClusterAgentInstallRecordsRequest(DaraModel):
         plugin_version: str = None,
     ):
         self.agent_config_id = agent_config_id
+        # Filter by cluster ID.
+        # 
+        # > This cluster ID is not the ACK cluster ID, but the `cluster_id` field in the data returned by this API, or the `id` field in the data returned by the ListCluster API.
         self.cluster_id = cluster_id
+        # Current page number (starting from 1)
         self.current = current
+        # Page size
         self.page_size = page_size
+        # Specify this parameter to filter the installation list for a specific agent. Can be used in combination with the plugin_version parameter.
         self.plugin_id = plugin_id
+        # Cannot be used alone. Use in combination with plugin_id to filter the installation list for a specific agent version.
         self.plugin_version = plugin_version
 
     def validate(self):
